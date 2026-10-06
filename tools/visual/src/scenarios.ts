@@ -244,6 +244,59 @@ export const scenarios: Scenario[] = [
       return problems;
     },
   },
+  // For each message-level status rule of pain.002: enter a violating pair and require the rules panel to show a violation.
+  ...[
+    { rule: 'GroupStatusAcceptedRule', group: 'ACCP', payment: 'RJCT' },
+    { rule: 'GroupStatusPendingRule', group: 'PDNG', payment: 'RJCT' },
+    { rule: 'GroupStatusRejectedRule', group: 'RJCT', payment: 'ACCP' },
+    { rule: 'GroupStatusReceivedRule', group: 'RCVD', payment: 'RCVD' },
+  ].map(
+    (c): Scenario => ({
+      name: `rules-pain002-${c.rule}`,
+      app: 'demo-form',
+      query: '?message=pain.002.001.15',
+      viewport: { width: 1440, height: 1200 },
+      steps: async (page) => {
+        await page.locator('#OriginalGroupInformationAndStatus-GroupStatus').fill(c.group);
+        await clickText(page, 'button', /add original payment information and status/i);
+        await settle(400);
+        await page.locator('#OriginalPaymentInformationAndStatus-0-PaymentInformationStatus').fill(c.payment);
+        await settle(600);
+      },
+      expect: async (page) => {
+        const r = await page.evaluate((rule) => {
+          const panel = [...document.querySelectorAll('details')].find((e) => /Business rules|Reglas de negocio/i.test(e.querySelector(':scope > summary')?.textContent ?? ''));
+          const item = [...(panel?.querySelectorAll('li') ?? [])].find((li) => li.textContent?.includes(rule));
+          return { summary: panel?.querySelector(':scope > summary')?.textContent ?? 'NO PANEL', item: (item?.textContent ?? 'NOT LISTED').slice(0, 90) };
+        }, c.rule);
+        return /^\W*(Failed|Fail)/i.test(r.item) || /✗|Failed|violat/i.test(r.item) ? [] : [`${c.rule} should fail for group ${c.group} + payment ${c.payment}: panel says "${r.summary.slice(0, 80)}"; rule row "${r.item}"`];
+      },
+    }),
+  ),
+  {
+    // reported by a user: status ABCD (not RJCT/PDNG) with additional information must violate StatusReasonInformationRule
+    name: 'rules-pain002-StatusReasonInformationRule',
+    app: 'demo-form',
+    query: '?message=pain.002.001.15',
+    viewport: { width: 1440, height: 1200 },
+    steps: async (page) => {
+      await page.locator('#OriginalGroupInformationAndStatus-GroupStatus').fill('ABCD');
+      await clickText(page, 'button', /^\+ add status reason information$/i);
+      await settle(300);
+      await clickText(page, 'button', /^\+ add additional information$/i);
+      await settle(300);
+      await page.locator('[id*="AdditionalInformation"]').fill('It just failed.');
+      await settle(600);
+    },
+    expect: async (page) => {
+      const r = await page.evaluate(() => {
+        const panel = [...document.querySelectorAll('details')].find((e) => /Business rules|Reglas de negocio/i.test(e.querySelector(':scope > summary')?.textContent ?? ''));
+        const item = [...(panel?.querySelectorAll('li') ?? [])].find((li) => li.textContent?.includes('StatusReasonInformationRule'));
+        return { summary: panel?.querySelector(':scope > summary')?.textContent ?? 'NO PANEL', item: (item?.textContent ?? 'NOT LISTED').slice(0, 90) };
+      });
+      return /✗|Failed|violat/i.test(r.item) ? [] : [`StatusReasonInformationRule should fail: panel says "${r.summary.slice(0, 80)}"; row "${r.item}"`];
+    },
+  },
   { name: 'type-picker-open-narrow', app: 'demo-form', viewport: { width: 480, height: 900 }, steps: openType },
   { name: 'display-open', app: 'demo-form', viewport: { width: 1440, height: 900 }, steps: openDisplay },
   { name: 'display-open-narrow-spanish', app: 'demo-form', query: '?lang=es', viewport: { width: 480, height: 900 }, steps: openDisplay },

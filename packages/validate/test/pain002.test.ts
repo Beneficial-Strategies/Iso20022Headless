@@ -148,3 +148,30 @@ describe('package entry points', () => {
     for (const m of messageIndex) expect(pkg.exports[`./${m.module}`], m.module).toBe(`./src/generated/${m.module}.ts`);
   });
 });
+
+describe('status reason rule: a list inside a list (reported by a user)', () => {
+  // GroupStatus is not RJCT or PDNG, so StatusReasonInformation/AdditionalInformation must be absent.
+  const msg = (groupStatus: string, reasons?: unknown) => ({
+    GroupHeader: { MessageIdentification: '87787878878778877', CreationDateTime: '2026-10-06T15:44:55-05:00' },
+    OriginalGroupInformationAndStatus: {
+      OriginalMessageIdentification: '54465464646554',
+      OriginalMessageNameIdentification: 'hhhjjjjjj',
+      GroupStatus: groupStatus,
+      ...(reasons ? { StatusReasonInformation: reasons } : {}),
+    },
+  });
+  const rule = (v: unknown) => results(v).find((r) => r.rule === 'StatusReasonInformationRule' && r.instancePath === 'OriginalGroupInformationAndStatus')?.status;
+
+  it('fails for the reported message: status ABCD with additional information', () => {
+    expect(rule(msg('ABCD', [{ AdditionalInformation: ['It just failed.'] }]))).toBe('fail');
+  });
+  it('passes for RJCT or PDNG, and without additional information', () => {
+    expect(rule(msg('RJCT', [{ AdditionalInformation: ['It just failed.'] }]))).toBe('pass');
+    expect(rule(msg('PDNG', [{ AdditionalInformation: ['It just failed.'] }]))).toBe('pass');
+    expect(rule(msg('ABCD'))).toBe('pass');
+    expect(rule(msg('ABCD', [{ Reason: { Code: 'AC01' } }]))).toBe('pass');
+  });
+  it('finds additional information on a later status reason', () => {
+    expect(rule(msg('ABCD', [{ Reason: { Code: 'AC01' } }, { AdditionalInformation: ['late'] }]))).toBe('fail');
+  });
+});
