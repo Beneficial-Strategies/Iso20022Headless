@@ -65,7 +65,7 @@ createDefinitions('es', { fields: { [isoId]: 'Texto corregido.' } }, { es })
 
 * Machine drafts of payment terminology need a banker's review. The glossary fixes the core terms, but the
   choices (for example *ordenante* for Debtor) are a starting point.
-* Check ISO's terms for translating and republishing their text, and your translation service's terms for the
+* Check ISO's terms for translating and republishing their text (tracked in issue #1), and your translation service's terms for the
   text you send it, before shipping translations.
 * Element labels are translated once per English name and shared by every element with that name; a reviewer can
   override a single element by its id.

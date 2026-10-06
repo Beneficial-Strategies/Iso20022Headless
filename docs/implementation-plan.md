@@ -52,7 +52,7 @@ published; nothing here has been run through CI. Decisions and changes versus th
 - **Spec text is English only.** The ISO repository has no translations. Spanish *interface* text and
   validation messages are shipped; Spanish element names, definitions, code names and rule text are not.
   English fallbacks are labelled in the UI. Translating them is a separate, reviewable piece of work
-  (about 460 definitions plus ~230 element names); check licensing of ISO text before shipping translations.
+  (about 460 definitions plus ~230 element names); check licensing of ISO text before shipping translations (tracked in issue #1).
 - **Translation workflow (built 2026-10-06).** Spec text is translated through catalogs in
   `packages/validate/src/locales/<lang>.catalog.json` (entry = text + status `machine`/`reviewed` + hash of the
   English). `tools/i18n` extracts units, lints and merges machine drafts (never overwriting reviewed entries),

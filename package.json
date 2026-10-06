@@ -8,6 +8,7 @@
     "test": "pnpm -r run test",
     "i18n": "pnpm --filter @beneficial-strategies/iso20022-i18n-tools run i18n",
     "i18n:check": "pnpm --filter @beneficial-strategies/iso20022-i18n-tools run i18n check es",
-    "visual": "pnpm --filter @beneficial-strategies/iso20022-visual run visual"
+    "visual": "pnpm --filter @beneficial-strategies/iso20022-visual run visual",
+    "pages:build": "pnpm --filter @beneficial-strategies/iso20022-demo-form run build:pages && pnpm --filter @beneficial-strategies/iso20022-demo-zod run build:pages && node tools/pages/assemble.mjs"
   }
 }

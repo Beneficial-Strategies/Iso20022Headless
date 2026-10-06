@@ -1,0 +1,87 @@
+name: Test and deploy demos to GitHub Pages
+
+# Every push and pull request is verified. Only a push to main deploys.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# One deployment at a time; a newer push waits rather than cancelling a deploy in progress.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: Test and build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # pnpm's version comes from "packageManager" in package.json
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm -r run typecheck
+      - run: pnpm -r run test
+
+      # fails if the English spec text changed since the Spanish was translated
+      - run: pnpm i18n:check
+
+      - name: Build both demos and assemble the site
+        run: pnpm pages:build
+
+      # Serves the built site under /<repo>/ like Pages does and loads every page in the Chrome installed on the runner
+      - name: Smoke-test the built site under its sub-path
+        run: pnpm visual pages --prefix "/${{ github.event.repository.name }}/"
+
+      - name: Upload the site
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: verify
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+  # Layout checks across 22 states, with screenshots attached. Informational: it does not block the deploy.
+  visual:
+    name: Visual and layout checks
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm visual check
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: visual-screenshots
+          path: tools/visual/out
+          if-no-files-found: ignore

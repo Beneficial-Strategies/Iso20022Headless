@@ -5,9 +5,10 @@
  *   pnpm visual shots [--only name] [--out dir]    save a screenshot of every state (default: tools/visual/out)
  *   pnpm visual check [--only name] [--out dir]    same, and fail on layout problems (exit code 1)
  *   pnpm visual selftest                           inject known defects and prove the checks catch them
+ *   pnpm visual pages [--site dir] [--prefix /repo/]  smoke-test the built GitHub Pages site under its sub-path
  *   pnpm visual list                               list the states
  */
-import { mkdirSync } from 'node:fs';
+import { existsSync, mkdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { Browser, Page } from 'puppeteer-core';
@@ -15,6 +16,7 @@ import { launch } from './browser.ts';
 import { runPageChecks, type Violation } from './checks.ts';
 import { scenarios, type Scenario } from './scenarios.ts';
 import { startApp, type Running } from './servers.ts';
+import { serveStatic } from './static.ts';
 
 const here = dirname(fileURLToPath(import.meta.url));
 
@@ -46,8 +48,9 @@ async function main(argv: string[]): Promise<number> {
     for (const s of scenarios) console.log(`${s.name.padEnd(30)} ${s.app} ${s.viewport.width}x${s.viewport.height}${s.query ?? ''}`);
     return 0;
   }
+  if (cmd === 'pages') return pagesSmokeTest(argv);
   if (cmd !== 'shots' && cmd !== 'check' && cmd !== 'selftest') {
-    console.error('usage: pnpm visual <shots|check|selftest|list> [--only name] [--out dir]');
+    console.error('usage: pnpm visual <shots|check|selftest|pages|list> [--only name] [--out dir]');
     return 2;
   }
 
@@ -96,6 +99,70 @@ async function main(argv: string[]): Promise<number> {
     await browser?.close();
     await Promise.all(Object.values(apps).map((a) => a.close()));
   }
+}
+
+/**
+ * The built site (`pnpm pages:build`) served under the sub-path GitHub Pages uses. Proves what a visitor gets:
+ * every asset loads (including the lazily loaded Spanish chunk), nothing logs an error, and the demos render.
+ */
+async function pagesSmokeTest(argv: string[]): Promise<number> {
+  const site = resolve(arg(argv, '--site') ?? resolve(here, '../../../site'));
+  const prefix = arg(argv, '--prefix') ?? process.env.PAGES_PREFIX ?? '/Iso20022Headless/';
+  if (!existsSync(resolve(site, 'index.html'))) {
+    console.error(`no built site in ${site}. Run: pnpm pages:build`);
+    return 2;
+  }
+  const out = resolve(arg(argv, '--out') ?? resolve(here, '../out'));
+  mkdirSync(out, { recursive: true });
+  const served = await serveStatic(site, prefix);
+  const browser = await launch();
+  const cases: { name: string; path: string; expect: (page: Page) => Promise<string[]> }[] = [
+    {
+      name: 'landing page',
+      path: '',
+      expect: async (page) => {
+        const links = await page.evaluate(() => [...document.querySelectorAll('a.button')].map((a) => (a as HTMLAnchorElement).href));
+        return links.length === 2 && links.every((l) => l.startsWith(served.url)) ? [] : [`expected two demo links under ${served.url}, got ${JSON.stringify(links)}`];
+      },
+    },
+    { name: 'form demo', path: 'form/', expect: async (page) => ((await page.$('#GroupHeader-MessageIdentification')) ? [] : ['the form did not render']) },
+    { name: 'zod demo', path: 'zod/', expect: async (page) => ((await page.$('#GroupHeader-MessageIdentification')) ? [] : ['the form did not render']) },
+    {
+      name: 'Spanish (lazy chunk)',
+      path: 'form/?lang=es',
+      expect: async (page) => ((await page.evaluate(() => document.body.textContent ?? '')).includes('Identificación del mensaje') ? [] : ['Spanish labels did not load: the lazy catalog chunk is missing or failed']),
+    },
+    {
+      name: 'JSON output',
+      path: 'form/?format=json',
+      expect: async (page) => ((await page.evaluate(() => document.querySelector('.cm-content')?.textContent ?? '')).includes('"Document"') ? [] : ['JSON output not shown']),
+    },
+  ];
+  let failed = 0;
+  try {
+    for (const c of cases) {
+      const page = await browser.newPage();
+      const problems: string[] = [];
+      await page.setViewport({ width: 1280, height: 800 });
+      page.on('pageerror', (e) => problems.push(`page error: ${String(e).slice(0, 200)}`));
+      page.on('console', (m) => m.type() === 'error' && !m.location().url?.includes('favicon') && problems.push(`console error: ${m.text().slice(0, 200)}`));
+      page.on('response', (r) => r.status() >= 400 && !r.url().includes('favicon') && problems.push(`HTTP ${r.status()}: ${r.url().replace(served.url, '/')}`));
+      page.on('requestfailed', (r) => problems.push(`request failed: ${r.url().replace(served.url, '/')}`));
+      await page.goto(served.url + c.path, { waitUntil: 'networkidle0' });
+      await settle(500);
+      problems.push(...(await c.expect(page)));
+      problems.push(...(await runPageChecks(page)).filter((v) => c.path !== '' || !v.check.startsWith('no-form-area')).filter((v) => v.check !== 'no-form-area').map((v) => `${v.check}: ${v.detail}`));
+      await page.screenshot({ path: resolve(out, `pages-${c.name.replace(/\W+/g, '-')}.png`) });
+      await page.close();
+      if (problems.length) failed++;
+      console.log(problems.length ? `✗ ${c.name}\n${problems.map((p) => `    - ${p}`).join('\n')}` : `✓ ${c.name}`);
+    }
+  } finally {
+    await browser.close();
+    await served.close();
+  }
+  console.log(failed ? `\n${failed} page(s) failed under ${prefix}` : `\nAll pages load correctly under ${prefix}`);
+  return failed ? 1 : 0;
 }
 
 /**
