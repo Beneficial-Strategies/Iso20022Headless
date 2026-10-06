@@ -11,6 +11,8 @@
  * A message is a template with `{param}` placeholders, or a function (for plurals and the like).
  */
 
+import { formatHint } from './patterns.ts';
+
 export type IssueCode =
   | 'required'
   | 'invalid_type'
@@ -50,15 +52,15 @@ export interface Issue {
   params?: MessageParams;
 }
 
-/** English. Wording is the library's historical default; formats share "Invalid format". */
+/** English. A text that does not match its pattern says what is expected (see `formatHint`). */
 export const en: ValidationMessages = {
   required: 'Required',
   invalid_type: 'Invalid value',
-  invalid_format: 'Invalid format',
-  decimal_format: 'Invalid format',
-  date_format: 'Invalid format',
-  datetime_format: 'Invalid format',
-  year_format: 'Invalid format',
+  invalid_format: ({ pattern }) => formatHint(pattern as string | undefined, 'en') ?? 'Invalid format',
+  decimal_format: 'Enter a number using digits and an optional decimal point, for example 1500.25',
+  date_format: 'Use the format YYYY-MM-DD, for example 2026-10-06',
+  datetime_format: 'Use YYYY-MM-DDThh:mm:ss followed by Z or an offset such as +02:00, for example 2026-10-06T09:30:00Z',
+  year_format: 'Use a 4-digit year, for example 2026',
   too_short: 'Must be at least {min} characters',
   too_long: 'Must be at most {max} characters',
   too_few_items: 'At least {min} required',
@@ -80,11 +82,11 @@ const plural = (n: number | string | undefined, one: string, many: string): stri
 export const es: ValidationMessages = {
   required: 'Obligatorio',
   invalid_type: 'Valor no válido',
-  invalid_format: 'Formato no válido',
-  decimal_format: 'Formato no válido',
-  date_format: 'Formato no válido',
-  datetime_format: 'Formato no válido',
-  year_format: 'Formato no válido',
+  invalid_format: ({ pattern }) => formatHint(pattern as string | undefined, 'es') ?? 'Formato no válido',
+  decimal_format: 'Introduzca un número con dígitos y, opcionalmente, un punto decimal, por ejemplo 1500.25',
+  date_format: 'Use el formato AAAA-MM-DD, por ejemplo 2026-10-06',
+  datetime_format: 'Use AAAA-MM-DDThh:mm:ss seguido de Z o de un desfase como +02:00, por ejemplo 2026-10-06T09:30:00Z',
+  year_format: 'Use un año de 4 dígitos, por ejemplo 2026',
   too_short: ({ min }) => `Debe tener al menos ${min} ${plural(min, 'carácter', 'caracteres')}`,
   too_long: ({ max }) => `Debe tener como máximo ${max} ${plural(max, 'carácter', 'caracteres')}`,
   too_few_items: 'Se requieren al menos {min}',
