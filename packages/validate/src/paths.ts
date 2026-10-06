@@ -166,3 +166,48 @@ export function descriptorAt(
   }
   return found;
 }
+
+/**
+ * Prepare form state for validation. Empty strings count as "not entered", but required components stay
+ * in place (even empty) so that each missing required field reports its own error at its own path,
+ * instead of one "Required" on the whole group. Optional components that are empty disappear, as does
+ * anything the user has not filled in. For serialization use `pruneEmpty`, which drops all empties.
+ */
+export function pruneForValidation(types: TypeDescriptors, typeName: string, value: unknown, required = true): unknown {
+  const t = types[typeName];
+  if (value === '' || value === undefined || value === null) return required && t && (t.kind === 'component' || t.kind === 'amount') ? {} : undefined;
+  if (!t || (t.kind !== 'component' && t.kind !== 'choice' && t.kind !== 'amount')) return value;
+  if (typeof value !== 'object' || Array.isArray(value)) return value;
+  const src = value as Record<string, unknown>;
+  const out: Record<string, unknown> = {};
+
+  if (t.kind === 'amount') {
+    for (const k of ['Ccy', 'Value']) if (typeof src[k] === 'string' && src[k] !== '') out[k] = src[k];
+    return out;
+  }
+
+  if (t.kind === 'choice') {
+    // only the alternative that was actually selected; none selected stays `{}` ("select one")
+    for (const f of t.choiceOptions ?? []) {
+      if (f.name in src) out[f.name] = pruneForValidation(types, f.type, src[f.name], true);
+    }
+    return out;
+  }
+
+  for (const f of t.fields ?? []) {
+    const v = src[f.name];
+    if (f.repeat) {
+      if (v === undefined) {
+        if (f.required && f.repeat.min > 0) out[f.name] = [];
+        continue;
+      }
+      out[f.name] = (Array.isArray(v) ? v : []).map((item) => pruneForValidation(types, f.type, item, true));
+    } else {
+      const pv = pruneForValidation(types, f.type, v, f.required);
+      if (pv !== undefined) out[f.name] = pv;
+    }
+  }
+  // A component that is present (required, or ticked "Include") stays even if empty, so its
+  // own required fields report errors. Absent optional components are simply absent.
+  return out;
+}

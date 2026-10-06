@@ -7,7 +7,7 @@ import {
   formatIssues,
   getIn,
   initialValue,
-  pruneEmpty,
+  pruneForValidation,
   type TypeDescriptors,
   type ValidationMessages,
 } from '@beneficial-strategies/iso20022-validate';
@@ -67,7 +67,7 @@ export function useIso20022Form(message: MessageDefinition): Iso20022Form {
   const [allTouched, setAllTouched] = useState(false);
 
   const allErrors = useMemo(() => {
-    const r = schema.safeParse(pruneEmpty(values) ?? {});
+    const r = schema.safeParse(pruneForValidation(typeDescriptors, rootType, values));
     return r.success ? {} : formatIssues(r.error, messages);
   }, [schema, values, messages]);
 

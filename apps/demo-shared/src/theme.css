@@ -94,7 +94,8 @@ body {
 
 /* Plain skin: the form is bare semantic HTML, but Tailwind's base reset strips the browser's default
    borders, backgrounds and margins from form controls, which would leave it invisible. `revert` restores
-   the browser's own styling inside the form area only. (color-scheme above makes those defaults follow the theme.) */
-html[data-skin='plain'] [data-form-area] * {
+   the browser's own styling inside what the skin renders (the rules panel and buttons around it keep the
+   page styling). color-scheme above makes those defaults follow the theme. */
+html[data-skin='plain'] [data-schema-form] * {
   all: revert;
 }

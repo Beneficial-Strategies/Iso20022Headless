@@ -66,6 +66,16 @@ published; nothing here has been run through CI. Decisions and changes versus th
 - Fixed along the way: a pristine form validated to a single root-level "Required" instead of per-field
   errors, so tabbing out of an empty required field showed nothing.
 
+### Visual and layout checks (built 2026-10-06)
+`tools/visual` drives both demos in a locally installed Chrome (`pnpm visual shots | check | selftest`; see its
+README). `check` measures layout problems that have shipped before (popups clipped by the scroll panel, invisible
+controls, wrapping header buttons, overflow, console/HTML errors) across 19 states (themes, sizes, languages, skins,
+narrow and short windows, each popup open). A self-test injects known defects to prove the checks fire. Not wired into
+CI and does no image comparison (renders differ across machines). First run found a real bug that the jsdom tests
+missed: a required field inside a fully-empty group reported "Required" on the group, not on the field. Fixed with
+`pruneForValidation` (required components stay in place when validating; included optional ones stay; absent ones
+stay absent).
+
 ### Known gaps in the slice
 - Business rules: only `PaymentInstruction51`'s 17 constraints are captured. 11 are enforced by a small
   evaluator (`validate/src/rules.ts`, Presence/Absence/EqualToValue/DifferentFromValue/WithInList/NotWithInList,

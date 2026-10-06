@@ -7,6 +7,7 @@
     "typecheck": "pnpm -r run typecheck",
     "test": "pnpm -r run test",
     "i18n": "pnpm --filter @beneficial-strategies/iso20022-i18n-tools run i18n",
-    "i18n:check": "pnpm --filter @beneficial-strategies/iso20022-i18n-tools run i18n check es"
+    "i18n:check": "pnpm --filter @beneficial-strategies/iso20022-i18n-tools run i18n check es",
+    "visual": "pnpm --filter @beneficial-strategies/iso20022-visual run visual"
   }
 }

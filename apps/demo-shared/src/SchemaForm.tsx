@@ -245,6 +245,8 @@ export function SchemaForm({ form }: { form: FormApi }) {
   const root = form.typeDescriptors[form.rootType]!;
   const fields = root.kind === 'choice' ? [] : (root.fields ?? []);
   return (
+    // data-schema-form marks everything the skin renders, so page chrome around it can be told apart
+    <div data-schema-form>
     <S.Stack>
       {root.kind === 'choice' ? (
         <ChoiceNode
@@ -258,5 +260,6 @@ export function SchemaForm({ form }: { form: FormApi }) {
         fields.map((f) => <FieldNode key={f.name} form={form} field={f} path={f.name} label={labelOf(f)} depth={0} />)
       )}
     </S.Stack>
+    </div>
   );
 }

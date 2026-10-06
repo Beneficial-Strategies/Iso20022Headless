@@ -5,7 +5,7 @@ import {
   formatIssues,
   getIn,
   initialValue,
-  pruneEmpty,
+  pruneForValidation,
   removeIn,
   setIn,
 } from '@beneficial-strategies/iso20022-validate';
@@ -21,7 +21,7 @@ export function useZodForm({ schema, typeDescriptors, rootType, messages }: Form
   const [allTouched, setAllTouched] = useState(false);
 
   const allErrors = useMemo(() => {
-    const r = schema.safeParse(pruneEmpty(values) ?? {});
+    const r = schema.safeParse(pruneForValidation(typeDescriptors, rootType, values));
     return r.success ? {} : formatIssues(r.error, messages);
   }, [schema, values, messages]);
 
