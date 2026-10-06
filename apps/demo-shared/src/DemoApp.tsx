@@ -6,11 +6,23 @@ import { DescribedSelect, I18nProvider, Popup, SchemaForm, SkinProvider, skinIds
 import { serializeFragment, serializeFragmentIsoJson, serializeToIsoJson, serializeToXml } from '@beneficial-strategies/iso20022-serialize';
 import { XmlPane } from './XmlPane.tsx';
 import { SettingsPanel } from './SettingsPanel.tsx';
+import { useClipboard } from './clipboard.ts';
 import { ImplementDialog } from './ImplementDialog.tsx';
+import { planPaste } from './paste.ts';
+import { PasteReport, type PasteReportData } from './PasteReport.tsx';
 import { useSettings, type Format } from './settings.ts';
 
 const messageIds = messageIndex.map((m) => m.identifier);
 const bundleCache = new Map<string, MessageBundle>();
+
+/** Load a message on demand and remember it, so the app can show it as soon as it is selected. */
+async function loadBundle(identifier: string): Promise<MessageBundle> {
+  const cached = bundleCache.get(identifier);
+  if (cached) return cached;
+  const b = await messageIndex.find((m) => m.identifier === identifier)!.load();
+  bundleCache.set(identifier, b);
+  return b;
+}
 
 /** Load a message on demand (each message is its own chunk) and remember it. */
 function useMessageBundle(identifier: string): MessageBundle | undefined {
@@ -183,11 +195,80 @@ function RulesPanel({ results }: { results: RuleResult[] }) {
   );
 }
 
-function Editor({ bundle, useForm, typeName, dark, format }: { bundle: MessageBundle; useForm: UseForm; typeName: string; dark: boolean; format: Format }) {
+/** Values pasted for a message that was not selected: carried across the switch, applied once the new editor is up. */
+interface Incoming {
+  identifier: string;
+  typeName: string;
+  values: unknown;
+  report: PasteReportData;
+}
+
+function Editor({
+  bundle,
+  useForm,
+  typeName,
+  dark,
+  format,
+  incoming,
+  onSwitch,
+  onIncomingApplied,
+}: {
+  bundle: MessageBundle;
+  useForm: UseForm;
+  typeName: string;
+  dark: boolean;
+  format: Format;
+  incoming?: Incoming | undefined;
+  onSwitch: (incoming: Incoming) => void;
+  onIncomingApplied: () => void;
+}) {
   const { t, validation } = useI18n();
   const form = useForm({ schema: (bundle.schemas as Record<string, z.ZodType>)[typeName]!, typeDescriptors: bundle.typeDescriptors, rootType: typeName, messages: validation });
   const [submitted, setSubmitted] = useState(false);
   const [implementOpen, setImplementOpen] = useState(false);
+  const clipboard = useClipboard();
+  const [report, setReport] = useState<PasteReportData | undefined>(undefined);
+
+  // a paste that named another message: its values arrive with the new editor
+  useEffect(() => {
+    if (!incoming) return;
+    form.setValues(incoming.values);
+    form.touchAll();
+    setReport(incoming.report);
+    onIncomingApplied();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  /** Paste XML or JSON from the clipboard into the selected object (or, for XML naming another message, into that one). */
+  const doPaste = async (): Promise<void> => {
+    let text: string;
+    try {
+      text = await clipboard.read();
+    } catch {
+      setReport({ kind: 'error', error: { code: 'clipboard_unreadable' } });
+      return;
+    }
+    const plan = await planPaste(text, { identifier: bundle.message.identifier, bundle, typeName }, loadBundle);
+    if (!plan.ok) {
+      setReport({ kind: 'error', error: plan.error });
+      return;
+    }
+    const done: PasteReportData = {
+      kind: 'done',
+      format: plan.format,
+      issues: plan.issues,
+      ...(plan.target.identifier !== bundle.message.identifier ? { switchedTo: plan.target.identifier } : {}),
+    };
+    if (plan.switched) {
+      onSwitch({ identifier: plan.target.identifier, typeName: plan.target.typeName, values: plan.values, report: done });
+      return;
+    }
+    form.setValues(plan.values);
+    form.touchAll(); // show what is wrong with the loaded values right away
+    setReport(done);
+  };
+  const pasteLabel = clipboard.kind === 'xml' ? t('pasteXml') : clipboard.kind === 'json' ? t('pasteJson') : t('paste');
+  const pasteTitle = clipboard.kind === 'none' ? t('pasteNoData') : clipboard.kind === 'blocked' ? t('pasteBlocked') : clipboard.kind === 'unknown' ? t('pasteUnknown') : undefined;
   const output = useMemo(() => {
     const whole = typeName === bundle.message.rootType;
     if (format === 'json') {
@@ -246,8 +327,15 @@ function Editor({ bundle, useForm, typeName, dark, format }: { bundle: MessageBu
             {valid ? t('valid') : t('draft', { n: errorCount })}
           </span>
         </div>
+        {report ? <PasteReport report={report} onDismiss={() => setReport(undefined)} /> : null}
         <div className="min-h-0 flex-1">
-          <XmlPane xml={output} dark={dark} format={format} />
+          <XmlPane
+            xml={output}
+            dark={dark}
+            format={format}
+            onCopied={clipboard.noteCopied}
+            paste={{ label: pasteLabel, ...(pasteTitle ? { title: pasteTitle } : {}), disabled: clipboard.kind === 'none' || clipboard.kind === 'blocked', onClick: () => void doPaste() }}
+          />
         </div>
       </section>
     </div>
@@ -265,6 +353,7 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
   const [chosenType, setChosenType] = useState<{ message: string; type: string } | undefined>();
   // a type chosen for another message does not apply here: fall back to the whole message
   const typeName = bundle && chosenType?.message === settings.message && bundle.typeDescriptors[chosenType.type] ? chosenType.type : bundle?.message.rootType;
+  const [incoming, setIncoming] = useState<Incoming | undefined>(undefined);
   const i18n = useCreateI18n(locale, overrides);
   const skin = skins.find((s) => s.id === settings.skin) ?? skins[0]!;
   return (
@@ -285,7 +374,21 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
         </header>
         <SkinProvider value={skin}>
           {bundle && typeName ? (
-            <Editor key={`${settings.message}/${typeName}`} bundle={bundle} useForm={useForm} typeName={typeName} dark={resolvedTheme === 'dark'} format={settings.format} />
+            <Editor
+              key={`${settings.message}/${typeName}`}
+              bundle={bundle}
+              useForm={useForm}
+              typeName={typeName}
+              dark={resolvedTheme === 'dark'}
+              format={settings.format}
+              incoming={incoming && incoming.identifier === settings.message && incoming.typeName === typeName ? incoming : undefined}
+              onSwitch={(next) => {
+                setIncoming(next);
+                setChosenType({ message: next.identifier, type: next.typeName });
+                update({ message: next.identifier });
+              }}
+              onIncomingApplied={() => setIncoming(undefined)}
+            />
           ) : (
             <p className="text-sm text-muted" role="status">
               {i18n.t('loading')}

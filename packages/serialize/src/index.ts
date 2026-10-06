@@ -163,3 +163,5 @@ export function serializeFragment(types: TypeDescriptors, typeName: string, valu
   out.push(`</${typeName}>`);
   return out.join('\n') + '\n';
 }
+export * from './parse.ts';
+export { parseXmlDocument, XmlError, type XmlNode } from './xml.ts';

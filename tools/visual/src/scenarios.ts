@@ -6,6 +6,8 @@ export interface Scenario {
   /** Query string, e.g. `?theme=dark&lang=es`. Settings live in the URL, so no clicking is needed for them. */
   query?: string;
   viewport: { width: number; height: number };
+  /** Clipboard for the page: `granted` allows reading it (without a prompt), `denied` blocks it; `text` is put on it after load. */
+  clipboard?: { access: 'granted' | 'denied'; text?: string };
   /** Interact with the page before it is checked and photographed. */
   steps?: (page: Page) => Promise<void>;
   /** Extra assertions specific to this state. Return a list of problems. */
@@ -38,6 +40,159 @@ async function addPaymentAndOpenMethod(page: Page): Promise<void> {
 }
 
 const popupText = (page: Page): Promise<string> => page.evaluate(() => document.querySelector('[data-placement]')?.textContent ?? '');
+
+// ---------------------------------------------------------------------------- paste from the clipboard
+
+const NS = (id: string): string => `urn:iso:std:iso:20022:tech:xsd:${id}`;
+// the message a user pasted when reporting a bug: group status ABCD with additional information
+const USER_XML = `<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="${NS('pain.002.001.15')}">
+  <CstmrPmtStsRpt>
+    <GrpHdr><MsgId>87787878878778877</MsgId><CreDtTm>2026-10-06T15:44:55-05:00</CreDtTm></GrpHdr>
+    <OrgnlGrpInfAndSts>
+      <OrgnlMsgId>54465464646554</OrgnlMsgId><OrgnlMsgNmId>hhhjjjjjj</OrgnlMsgNmId><GrpSts>ABCD</GrpSts>
+      <StsRsnInf><AddtlInf>It just failed.</AddtlInf></StsRsnInf>
+    </OrgnlGrpInfAndSts>
+  </CstmrPmtStsRpt>
+</Document>`;
+const PAIN001_XML = `<Document xmlns="${NS('pain.001.001.13')}"><CstmrCdtTrfInitn><GrpHdr><MsgId>FROM-001</MsgId></GrpHdr></CstmrCdtTrfInitn></Document>`;
+const PAIN002_JSON = JSON.stringify({ Document: { CstmrPmtStsRpt: { GrpHdr: { MsgId: 'JSON-1' }, OrgnlGrpInfAndSts: { OrgnlMsgId: 'O1', GrpSts: 'RJCT' } } } });
+
+/** The paste button's label and whether it is disabled, after giving the clipboard check a moment. */
+async function pasteButton(page: Page, wantLabel?: RegExp): Promise<{ label: string; disabled: boolean; title: string }> {
+  for (let i = 0; i < 20; i++) {
+    const b = await page.evaluate(() => {
+      const el = [...document.querySelectorAll<HTMLButtonElement>('[aria-label="XML preview"] button')].find((x) => /^(Paste|Pegar)/.test(x.textContent ?? ''));
+      return { label: el?.textContent ?? '', disabled: el?.disabled ?? true, title: el?.title ?? '' };
+    });
+    if (!wantLabel || wantLabel.test(b.label)) return b;
+    await settle(250);
+  }
+  return page.evaluate(() => {
+    const el = [...document.querySelectorAll<HTMLButtonElement>('[aria-label="XML preview"] button')].find((x) => /^(Paste|Pegar)/.test(x.textContent ?? ''));
+    return { label: el?.textContent ?? '', disabled: el?.disabled ?? true, title: el?.title ?? '' };
+  });
+}
+const reportText = (page: Page): Promise<string> => page.evaluate(() => document.querySelector('[data-paste-report]')?.textContent ?? '');
+const fieldValue = (page: Page, id: string): Promise<string> => page.evaluate((i) => (document.getElementById(i) as HTMLInputElement | null)?.value ?? 'NO FIELD', id);
+
+function pasteScenarios(): Scenario[] {
+  const base = { app: 'demo-form' as const, viewport: { width: 1440, height: 1000 } };
+  const click = async (page: Page): Promise<void> => {
+    await clickText(page, '[aria-label="XML preview"] button', /^(Paste)/);
+    await settle(900);
+  };
+  const all: Scenario[] = [
+    {
+      ...base,
+      name: 'paste-user-message',
+      query: '?message=pain.002.001.15',
+      clipboard: { access: 'granted', text: USER_XML },
+      steps: async (page) => {
+        await pasteButton(page, /^Paste XML$/);
+        await click(page);
+      },
+      expect: async (page) => {
+        const problems: string[] = [];
+        if ((await fieldValue(page, 'OriginalGroupInformationAndStatus-GroupStatus')) !== 'ABCD') problems.push('GroupStatus was not loaded');
+        if ((await fieldValue(page, 'GroupHeader-MessageIdentification')) !== '87787878878778877') problems.push('MessageIdentification was not loaded');
+        if (!/Loaded XML/.test(await reportText(page))) problems.push(`report is "${await reportText(page)}"`);
+        const rules = await page.evaluate(() => [...document.querySelectorAll('details > summary')].map((e) => e.textContent ?? '').find((x) => /Business rules/.test(x)) ?? '');
+        if (!/1 violated/.test(rules)) problems.push(`the status reason rule should be violated by the pasted message: "${rules}"`);
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'paste-switches-message-by-namespace',
+      query: '?message=pain.002.001.15',
+      clipboard: { access: 'granted', text: PAIN001_XML },
+      steps: async (page) => {
+        await pasteButton(page, /^Paste XML$/);
+        await click(page);
+      },
+      expect: async (page) => {
+        const problems: string[] = [];
+        const picker = await page.evaluate(() => document.querySelector('#message-picker')?.textContent ?? '');
+        if (!/pain\.001\.001\.13/.test(picker)) problems.push(`the message was not switched: picker says "${picker}"`);
+        if ((await fieldValue(page, 'GroupHeader-MessageIdentification')) !== 'FROM-001') problems.push('the pasted value was not loaded into the new message');
+        if (!/Switched to pain\.001\.001\.13/.test(await reportText(page))) problems.push(`report is "${await reportText(page)}"`);
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'paste-unknown-namespace',
+      query: '?message=pain.002.001.15',
+      clipboard: { access: 'granted', text: USER_XML.replace('pain.002.001.15', 'pain.999.001.01') },
+      steps: async (page) => {
+        await pasteButton(page, /^Paste XML$/);
+        await click(page);
+      },
+      expect: async (page) => {
+        const problems: string[] = [];
+        if (!/No message in this library uses the namespace/.test(await reportText(page))) problems.push(`no clear error: "${await reportText(page)}"`);
+        if ((await fieldValue(page, 'OriginalGroupInformationAndStatus-GroupStatus')) !== '') problems.push('something was loaded even though the paste was refused');
+        const picker = await page.evaluate(() => document.querySelector('#message-picker')?.textContent ?? '');
+        if (!/pain\.002\.001\.15/.test(picker)) problems.push('the message changed');
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'paste-json',
+      query: '?message=pain.002.001.15',
+      clipboard: { access: 'granted', text: PAIN002_JSON },
+      steps: async (page) => {
+        await pasteButton(page, /^Paste JSON$/);
+        await click(page);
+      },
+      expect: async (page) => ((await fieldValue(page, 'GroupHeader-MessageIdentification')) === 'JSON-1' && /Loaded JSON/.test(await reportText(page)) ? [] : [`JSON not loaded: "${await reportText(page)}"`]),
+    },
+    {
+      ...base,
+      name: 'paste-disabled-without-xml-or-json',
+      query: '?message=pain.002.001.15',
+      clipboard: { access: 'granted', text: 'just some words, not XML' },
+      steps: async (page) => {
+        await pasteButton(page, /^Paste$/);
+        await settle(1800); // let the clipboard check run
+      },
+      expect: async (page) => {
+        const b = await pasteButton(page);
+        return b.disabled && b.label === 'Paste' && /no XML or JSON/.test(b.title) ? [] : [`expected a disabled "Paste": ${JSON.stringify(b)}`];
+      },
+    },
+    {
+      ...base,
+      name: 'paste-disabled-when-clipboard-blocked',
+      query: '?message=pain.002.001.15',
+      clipboard: { access: 'denied' },
+      steps: async (page) => {
+        await settle(1200);
+      },
+      expect: async (page) => {
+        const b = await pasteButton(page);
+        return b.disabled && /blocked/i.test(b.title) ? [] : [`expected a disabled button explaining the block: ${JSON.stringify(b)}`];
+      },
+    },
+    {
+      ...base,
+      name: 'paste-error-spanish',
+      query: '?message=pain.002.001.15&lang=es',
+      clipboard: { access: 'granted', text: USER_XML.replace('pain.002.001.15', 'pain.999.001.01') },
+      steps: async (page) => {
+        await pasteButton(page, /^Pegar XML$/);
+        await clickText(page, '[aria-label="XML preview"] button', /^Pegar/);
+        await settle(900);
+      },
+      expect: async (page) => (/Ningún mensaje de esta biblioteca usa el espacio de nombres/.test(await reportText(page)) ? [] : [`not in Spanish: "${await reportText(page)}"`]),
+    },
+  ];
+  // the Zod-only demo uses a hand-written form hook: the same paste must work there
+  const first = all.find((x) => x.name === 'paste-user-message')!;
+  return [...all, { ...first, name: 'paste-user-message-zod-demo', app: 'demo-zod' }];
+}
 
 export const scenarios: Scenario[] = [
   { name: 'default', app: 'demo-form', viewport: { width: 1440, height: 900 } },
@@ -297,6 +452,7 @@ export const scenarios: Scenario[] = [
       return /✗|Failed|violat/i.test(r.item) ? [] : [`StatusReasonInformationRule should fail: panel says "${r.summary.slice(0, 80)}"; row "${r.item}"`];
     },
   },
+  ...pasteScenarios(),
   { name: 'type-picker-open-narrow', app: 'demo-form', viewport: { width: 480, height: 900 }, steps: openType },
   { name: 'display-open', app: 'demo-form', viewport: { width: 1440, height: 900 }, steps: openDisplay },
   { name: 'display-open-narrow-spanish', app: 'demo-form', query: '?lang=es', viewport: { width: 480, height: 900 }, steps: openDisplay },
@@ -386,3 +542,5 @@ export const scenarios: Scenario[] = [
   { name: 'zod-demo', app: 'demo-zod', viewport: { width: 1440, height: 900 } },
   { name: 'zod-demo-plain-dark', app: 'demo-zod', query: '?skin=plain&theme=dark', viewport: { width: 1440, height: 900 } },
 ];
+
+

@@ -51,6 +51,8 @@ export interface Iso20022Form {
   addListItem: (path: string, type: string) => void;
   removeListItem: (path: string, index: number) => void;
   touchAll: () => void;
+  /** Replace all values (for example with data loaded from XML, shaped by `hydrate`) and forget which fields were touched. */
+  setValues: (values: unknown) => void;
 }
 
 const idOf = (path: string): string => path.replace(/[^A-Za-z0-9]+/g, '-').replace(/-$/, '');
@@ -61,7 +63,10 @@ const idOf = (path: string): string => path.replace(/[^A-Za-z0-9]+/g, '-').repla
  */
 export function useIso20022Form(message: MessageDefinition): Iso20022Form {
   const { schema, typeDescriptors, rootType, messages } = message;
-  const form = useForm({ defaultValues: initialValue(typeDescriptors, rootType) as Record<string, unknown> });
+  // Stable across renders: TanStack compares these with its own defaults on every render and resets an untouched form
+  // when they differ, which would undo `setValues`.
+  const defaultValues = useMemo(() => initialValue(typeDescriptors, rootType) as Record<string, unknown>, [typeDescriptors, rootType]);
+  const form = useForm({ defaultValues });
   const values = useStore(form.store, (s) => s.values);
   const fieldMeta = useStore(form.store, (s) => s.fieldMeta) as Record<string, { isTouched?: boolean } | undefined>;
   const [allTouched, setAllTouched] = useState(false);
@@ -156,5 +161,9 @@ export function useIso20022Form(message: MessageDefinition): Iso20022Form {
     addListItem,
     removeListItem,
     touchAll: () => setAllTouched(true),
+    setValues: (next) => {
+      form.reset(next as never, { keepDefaultValues: true });
+      setAllTouched(false);
+    },
   };
 }
