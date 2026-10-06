@@ -13,6 +13,8 @@ import { pruneEmpty, type BooleanRule, type RuleExpression, type RuleGroup, type
  * checked once with everything under it absent. `[n]` picks one element, counting from 1 as in XPath
  * (`/A[1]` is the first A, so `Presence(/A[1])` means "there is at least one A").
  *
+ * A literal `number of occurrences of A` (also written `Number Occurrences A`) is how many times `A` occurs.
+ * A path `substring(/A/B,1,8)` is the first 8 characters of `/A/B` (positions count from 1, as in XPath).
  * A literal `sum of /A/B` is the exact decimal total of every occurrence of `/A/B` (an amount counts by its value).
  * `/A/@Currency` is the currency of an amount (its `Ccy`). `EqualToNode` / `DifferentFromNode` compare two fields; as in
  * XPath, comparing with a field that is absent is false for both.
@@ -97,8 +99,24 @@ function resolve(instance: unknown, segs: Seg[], binding: Map<string, number>): 
   return cur;
 }
 
+/** A path without its leading slash is relative to the same root, so `A/B` means `/A/B`. */
+const rooted = (p: string): string => (p.startsWith('/') ? p : `/${p}`);
+
 /** `sum of /A/B`: the path whose occurrences are added up. */
-const sumPath = (literal: string | undefined): string | undefined => /^sum of (\/\S+)$/.exec(literal ?? '')?.[1];
+const sumPath = (literal: string | undefined): string | undefined => {
+  const m = /^sum of\s+(\S+)$/i.exec(literal ?? '');
+  return m ? rooted(m[1]!) : undefined;
+};
+
+/** `number of occurrences of A` / `Number Occurrences A`: the path whose occurrences are counted. */
+const countPath = (literal: string | undefined): string | undefined => {
+  const m = /^(?:number of occurrences of|number occurrences)\s+(\S+)$/i.exec(literal ?? '');
+  return m ? rooted(m[1]!) : undefined;
+};
+
+/** `substring(/A/B,1,8)`: the path inside, and which characters to take. */
+const SUBSTRING = /^substring\(\s*(\S+?)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)$/;
+const innerPath = (path: string): string => SUBSTRING.exec(path)?.[1] ?? path;
 
 /** Every value at a path, across all occurrences of every list on the way (no `[*]` needed). */
 function collectAll(instance: unknown, segs: Seg[]): unknown[] {
@@ -136,8 +154,10 @@ function equalsSum(value: unknown, occurrences: unknown[]): boolean {
 }
 
 function evalRule(ctx: RuleContext, owner: string, r: BooleanRule, instance: unknown, binding: Map<string, number>): boolean {
-  const segs = parseRulePath(r.path);
-  const value = resolve(instance, segs, binding);
+  const sub = SUBSTRING.exec(r.path);
+  const segs = parseRulePath(sub ? sub[1]! : r.path);
+  let value = resolve(instance, segs, binding);
+  if (sub) value = typeof value === 'string' ? value.slice(Number(sub[2]) - 1, Number(sub[2]) - 1 + Number(sub[3])) : undefined;
   switch (r.op) {
     case 'Presence':
       return value !== undefined;
@@ -150,6 +170,17 @@ function evalRule(ctx: RuleContext, owner: string, r: BooleanRule, instance: unk
         if (value === undefined) return false;
         const equal = equalsSum(value, collectAll(instance, parseRulePath(sum)));
         return r.op === 'EqualToValue' ? equal : !equal;
+      }
+      const count = countPath(r.value);
+      if (count !== undefined) {
+        if (value === undefined) return false;
+        const equal = /^\d+$/.test(String(value)) && BigInt(String(value)) === BigInt(collectAll(instance, parseRulePath(count)).length);
+        return r.op === 'EqualToValue' ? equal : !equal;
+      }
+      if (sub) {
+        // a piece of text: compare with the literal as written (it is not a code)
+        if (value === undefined) return false;
+        return r.op === 'EqualToValue' ? value === r.value : value !== r.value;
       }
       const t = leafType(ctx, owner, segs);
       const wire =
@@ -193,7 +224,7 @@ function eachLists(e: RuleExpression): { prefix: string; segs: Seg[] }[] {
   const out: { prefix: string; segs: Seg[] }[] = [];
   for (const g of [e.mustBe, e.onCondition]) {
     for (const r of g?.rules ?? []) {
-      for (const path of [r.path, ...(r.op === 'EqualToNode' || r.op === 'DifferentFromNode' ? [r.value ?? ''] : [])]) {
+      for (const path of [innerPath(r.path), ...(r.op === 'EqualToNode' || r.op === 'DifferentFromNode' ? [r.value ?? ''] : [])]) {
         const segs = parseRulePath(path);
         let prefix = '';
         segs.forEach((s, i) => {
@@ -206,11 +237,26 @@ function eachLists(e: RuleExpression): { prefix: string; segs: Seg[] }[] {
   return out;
 }
 
+/** Does a rule path name real fields of the type? (`/A/@Currency` is valid after an amount.) */
+function pathExists(ctx: RuleContext, owner: string, path: string): boolean {
+  let t: TypeDescriptor | undefined = ctx.types[owner];
+  for (const s of parseRulePath(path)) {
+    if (s.name === '@Currency') return t?.kind === 'amount';
+    const f = [...(t?.fields ?? []), ...(t?.choiceOptions ?? [])].find((x) => x.name === s.name);
+    if (!f) return false;
+    t = ctx.types[f.type];
+  }
+  return t !== undefined;
+}
+
 /** Reject rules we cannot check mechanically, independent of the data (so the status never depends on it). */
 function assertSupported(ctx: RuleContext, owner: string, e: RuleExpression): void {
   for (const g of [e.mustBe, e.onCondition]) {
     for (const r of g?.rules ?? []) {
-      if ((r.op === 'EqualToValue' || r.op === 'DifferentFromValue') && sumPath(r.value) === undefined) {
+      // a path that is not a field (a typo in the spec, say) would read as "absent" for ever and give wrong answers
+      const named = [innerPath(r.path), ...(r.op === 'EqualToNode' || r.op === 'DifferentFromNode' ? [r.value ?? ''] : []), ...[sumPath(r.value), countPath(r.value)].filter((x): x is string => x !== undefined)];
+      for (const p of named) if (!pathExists(ctx, owner, p)) throw new Unsupported({ code: 'rule_path_unknown', params: { path: p } });
+      if ((r.op === 'EqualToValue' || r.op === 'DifferentFromValue') && sumPath(r.value) === undefined && countPath(r.value) === undefined && !SUBSTRING.test(r.path)) {
         const t = leafType(ctx, owner, parseRulePath(r.path));
         const known =
           (t?.kind === 'code' && t.options?.some((o) => o.name === r.value || o.value === r.value)) ||

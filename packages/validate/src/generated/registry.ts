@@ -160,4 +160,67 @@ export const messageIndex: readonly MessageInfo[] = [
     load: () =>
       import('./pacs003.ts').then((m) => ({ message: m.pacs003Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
+  {
+    identifier: "pacs.004.001.15",
+    name: "PaymentReturnV15",
+    title: "Payment Return",
+    area: "pacs",
+    module: "pacs004",
+    load: () =>
+      import('./pacs004.ts').then((m) => ({ message: m.pacs004Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "pacs.007.001.14",
+    name: "FIToFIPaymentReversalV14",
+    title: "FI To FI Payment Reversal",
+    area: "pacs",
+    module: "pacs007",
+    load: () =>
+      import('./pacs007.ts').then((m) => ({ message: m.pacs007Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "pacs.008.001.14",
+    name: "FIToFICustomerCreditTransferV14",
+    title: "FI To FI Customer Credit Transfer",
+    area: "pacs",
+    module: "pacs008",
+    load: () =>
+      import('./pacs008.ts').then((m) => ({ message: m.pacs008Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "pacs.009.001.13",
+    name: "FinancialInstitutionCreditTransferV13",
+    title: "Financial Institution Credit Transfer",
+    area: "pacs",
+    module: "pacs009",
+    load: () =>
+      import('./pacs009.ts').then((m) => ({ message: m.pacs009Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "pacs.010.001.06",
+    name: "FinancialInstitutionDirectDebitV06",
+    title: "Financial Institution Direct Debit",
+    area: "pacs",
+    module: "pacs010",
+    load: () =>
+      import('./pacs010.ts').then((m) => ({ message: m.pacs010Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "pacs.028.001.07",
+    name: "FIToFIPaymentStatusRequestV07",
+    title: "FI To FI Payment Status Request",
+    area: "pacs",
+    module: "pacs028",
+    load: () =>
+      import('./pacs028.ts').then((m) => ({ message: m.pacs028Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "pacs.029.001.02",
+    name: "MultilateralSettlementRequestV02",
+    title: "Multilateral Settlement Request",
+    area: "pacs",
+    module: "pacs029",
+    load: () =>
+      import('./pacs029.ts').then((m) => ({ message: m.pacs029Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
 ];

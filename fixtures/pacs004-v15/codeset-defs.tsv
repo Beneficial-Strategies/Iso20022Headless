@@ -1,0 +1,3 @@
+codeSet	isoId	text
+ExternalReturnReason1Code	_amolg9p-Ed-ak6NoX_4Aeg_1571382159	Specifies the return reason, as published in an external return reason code list.|External code sets can be downloaded from www.iso20022.org.
+Instruction4Code	_aW-_8tp-Ed-ak6NoX_4Aeg_-1362532082	Specifies further instructions concerning the processing of a payment instruction, provided by the sending clearing agent to the next agent(s).

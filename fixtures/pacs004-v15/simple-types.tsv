@@ -1,0 +1,3 @@
+name	isoId	xsiType	pattern	minLength	maxLength	totalDigits	fractionDigits	minInclusive	maxInclusive	other
+HexBinaryText	_fSB70eUrEe-hiLO2BySjZw	Text	[0-9a-fA-F]+							
+ISOTime	_YYU64dp-Ed-ak6NoX_4Aeg_-1253016814	Time								

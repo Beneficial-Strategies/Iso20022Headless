@@ -3,6 +3,13 @@
 import type { TypeDescriptors } from '../runtime.ts';
 import { typeDescriptors as pacs002Descriptors } from './pacs002.ts';
 import { typeDescriptors as pacs003Descriptors } from './pacs003.ts';
+import { typeDescriptors as pacs004Descriptors } from './pacs004.ts';
+import { typeDescriptors as pacs007Descriptors } from './pacs007.ts';
+import { typeDescriptors as pacs008Descriptors } from './pacs008.ts';
+import { typeDescriptors as pacs009Descriptors } from './pacs009.ts';
+import { typeDescriptors as pacs010Descriptors } from './pacs010.ts';
+import { typeDescriptors as pacs028Descriptors } from './pacs028.ts';
+import { typeDescriptors as pacs029Descriptors } from './pacs029.ts';
 import { typeDescriptors as pain001Descriptors } from './pain001.ts';
 import { typeDescriptors as pain002Descriptors } from './pain002.ts';
 import { typeDescriptors as pain007Descriptors } from './pain007.ts';
@@ -19,6 +26,13 @@ import { typeDescriptors as pain018Descriptors } from './pain018.ts';
 export const allTypeDescriptors: TypeDescriptors = {
   ...pacs002Descriptors,
   ...pacs003Descriptors,
+  ...pacs004Descriptors,
+  ...pacs007Descriptors,
+  ...pacs008Descriptors,
+  ...pacs009Descriptors,
+  ...pacs010Descriptors,
+  ...pacs028Descriptors,
+  ...pacs029Descriptors,
   ...pain001Descriptors,
   ...pain002Descriptors,
   ...pain007Descriptors,

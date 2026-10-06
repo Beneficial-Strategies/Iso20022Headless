@@ -8,6 +8,7 @@ import {
   indicator,
   isoDate,
   isoDateTime,
+  isoTime,
   textType,
   type FieldDescriptor,
   type TypeDescriptors,
@@ -91,6 +92,7 @@ import {
   BaseOneRateSchema,
   ActiveCurrencyAndAmountSchema,
   UUIDv4IdentifierSchema,
+  PaymentIdentification13Schema,
   Priority2CodeSchema,
   ClearingChannel2CodeSchema,
   ExternalServiceLevel1CodeSchema,
@@ -157,7 +159,9 @@ import {
   SecuritiesAttributes1Schema,
   StructuredRemittanceInformation22Schema,
   RemittanceInformation26Schema,
+  Priority3CodeSchema,
   ISODateTimeSchema,
+  SettlementDateTimeIndication1Schema,
   Max350TextSchema,
   SupplementaryDataEnvelope1Schema,
   SupplementaryData1Schema,
@@ -167,23 +171,10 @@ import {
   Max15NumericTextSchema,
   ExternalCashClearingSystem1CodeSchema,
   ClearingSystemIdentification3ChoiceSchema,
+  SettlementMethod2CodeSchema,
+  SettlementInstruction14Schema,
   sharedTypeDescriptors,
 } from './shared.ts';
-
-export const PaymentIdentification13Schema = z.strictObject({
-  ClearingSystemReference: Max35TextSchema.optional(),
-  EndToEndIdentification: Max35TextSchema,
-  InstructionIdentification: Max35TextSchema.optional(),
-  TransactionIdentification: Max35TextSchema.optional(),
-  UETR: UUIDv4IdentifierSchema.optional(),
-});
-
-export const Priority3CodeSchema = z.enum(["HIGH", "NORM", "URGT"]);
-
-export const SettlementDateTimeIndication1Schema = z.strictObject({
-  CreditDateTime: ISODateTimeSchema.optional(),
-  DebitDateTime: ISODateTimeSchema.optional(),
-});
 
 export const DirectDebitTransactionInformation35Schema = z.strictObject({
   ChargeBearer: ChargeBearerType1CodeSchema,
@@ -224,14 +215,6 @@ export const DirectDebitTransactionInformation35Schema = z.strictObject({
   UltimateDebtor: PartyIdentification272Schema.optional(),
 });
 
-export const SettlementMethod2CodeSchema = z.enum(["CLRG", "INDA", "INGA"]);
-
-export const SettlementInstruction14Schema = z.strictObject({
-  ClearingSystem: ClearingSystemIdentification3ChoiceSchema.optional(),
-  SettlementAccount: CashAccount40Schema.optional(),
-  SettlementMethod: SettlementMethod2CodeSchema,
-});
-
 export const GroupHeader125Schema = z.strictObject({
   Authorisation: z.array(Authorisation1ChoiceSchema).max(2).optional(),
   BatchBooking: BatchBookingIndicatorSchema.optional(),
@@ -256,36 +239,6 @@ export const FIToFICustomerDirectDebitV12Schema = z.strictObject({
 const f = (d: FieldDescriptor): FieldDescriptor => d;
 
 const ownTypeDescriptors: TypeDescriptors = {
-  "PaymentIdentification13": {
-    name: "PaymentIdentification13",
-    isoId: "_uwh3MRUHEequmIwg9GMA4Q",
-    kind: "component",
-    fields: [
-      f({ name: "ClearingSystemReference", isoId: "_vHb7XRUHEequmIwg9GMA4Q", xmlTag: "ClrSysRef", displayName: displayName("ClearingSystemReference"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "EndToEndIdentification", isoId: "_vHb7VxUHEequmIwg9GMA4Q", xmlTag: "EndToEndId", displayName: displayName("EndToEndIdentification"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "InstructionIdentification", isoId: "_vHb7VRUHEequmIwg9GMA4Q", xmlTag: "InstrId", displayName: displayName("InstructionIdentification"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "TransactionIdentification", isoId: "_vHb7WRUHEequmIwg9GMA4Q", xmlTag: "TxId", displayName: displayName("TransactionIdentification"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "UETR", isoId: "_vHb7WxUHEequmIwg9GMA4Q", xmlTag: "UETR", displayName: displayName("UETR"), kind: "text", type: "UUIDv4Identifier", required: false }),
-    ],
-    rules: [
-      { name: "TransactionIdentificationPresenceRule", isoId: "_vHb7URUHEequmIwg9GMA4Q", text: "TransactionIdentification or UETR must be present. Both may be present", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/TransactionIdentification"},{"op":"Presence","path":"/UETR"}]}} },
-    ],
-  },
-  "Priority3Code": {
-    name: "Priority3Code",
-    isoId: "_aKUc8Np-Ed-ak6NoX_4Aeg_1584820248",
-    kind: "code",
-    options: [{ value: "HIGH", name: "High", isoId: "_aKUc8tp-Ed-ak6NoX_4Aeg_1584820309" }, { value: "NORM", name: "Normal", isoId: "_aKUc89p-Ed-ak6NoX_4Aeg_1584820310" }, { value: "URGT", name: "Urgent", isoId: "_aKUc8dp-Ed-ak6NoX_4Aeg_1584820280" }],
-  },
-  "SettlementDateTimeIndication1": {
-    name: "SettlementDateTimeIndication1",
-    isoId: "_QIYeB9p-Ed-ak6NoX_4Aeg_-498720410",
-    kind: "component",
-    fields: [
-      f({ name: "CreditDateTime", isoId: "_QIhn4dp-Ed-ak6NoX_4Aeg_-356497199", xmlTag: "CdtDtTm", displayName: displayName("CreditDateTime"), kind: "datetime", type: "ISODateTime", required: false }),
-      f({ name: "DebitDateTime", isoId: "_QIhn4Np-Ed-ak6NoX_4Aeg_-425762310", xmlTag: "DbtDtTm", displayName: displayName("DebitDateTime"), kind: "datetime", type: "ISODateTime", required: false }),
-    ],
-  },
   "DirectDebitTransactionInformation35": {
     name: "DirectDebitTransactionInformation35",
     isoId: "a6fc8316-6307-4582-89c4-560440222204",
@@ -341,26 +294,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       { name: "IntermediaryAgent2Rule", isoId: "19f08e5a-4d26-4c90-b9df-b6bcc3689fad", text: "If IntermediaryAgent2 is present, then IntermediaryAgent1 must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/IntermediaryAgent1"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/IntermediaryAgent2"}]}} },
       { name: "IntermediaryAgent3Rule", isoId: "bed1cfac-0784-44dc-b67e-9552d6edffd0", text: "If IntermediaryAgent3 is present, then IntermediaryAgent2 must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/IntermediaryAgent2"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/IntermediaryAgent3"}]}} },
       { name: "InstructedAmountAndExchangeRate3Rule", isoId: "ed6333c2-6746-4a18-bb5b-910c360c6270", text: "If InstructedAmount is not present, then ExchangeRate is not allowed.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/ExchangeRate"}]},"onCondition":{"connector":"AND","rules":[{"op":"Absence","path":"/InstructedAmount"}]}} },
-    ],
-  },
-  "SettlementMethod2Code": {
-    name: "SettlementMethod2Code",
-    isoId: "_ZMCPxtp-Ed-ak6NoX_4Aeg_-673388484",
-    kind: "code",
-    options: [{ value: "CLRG", name: "ClearingSystem", isoId: "_ZMMAwNp-Ed-ak6NoX_4Aeg_-673388407" }, { value: "INDA", name: "InstructedAgent", isoId: "_ZMCPx9p-Ed-ak6NoX_4Aeg_-673388466" }, { value: "INGA", name: "InstructingAgent", isoId: "_ZMCPyNp-Ed-ak6NoX_4Aeg_-673388449" }],
-  },
-  "SettlementInstruction14": {
-    name: "SettlementInstruction14",
-    isoId: "_g2NR-9cZEeqRFcf2R4bPBw",
-    kind: "component",
-    fields: [
-      f({ name: "ClearingSystem", isoId: "_g38-WdcZEeqRFcf2R4bPBw", xmlTag: "ClrSys", displayName: displayName("ClearingSystem"), kind: "choice", type: "ClearingSystemIdentification3Choice", required: false }),
-      f({ name: "SettlementAccount", isoId: "_g38-V9cZEeqRFcf2R4bPBw", xmlTag: "SttlmAcct", displayName: displayName("SettlementAccount"), kind: "component", type: "CashAccount40", required: false }),
-      f({ name: "SettlementMethod", isoId: "_g38-VdcZEeqRFcf2R4bPBw", xmlTag: "SttlmMtd", displayName: displayName("SettlementMethod"), kind: "code", type: "SettlementMethod2Code", required: true }),
-    ],
-    rules: [
-      { name: "SettlementMethodAgentRule", isoId: "_g38-UdcZEeqRFcf2R4bPBw", text: "If SettlementMethod is equal to INDA or INGA, then ClearingSystem is not allowed.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/ClearingSystem"}]},"onCondition":{"connector":"OR","rules":[{"op":"EqualToValue","path":"/SettlementMethod","value":"InstructingAgent"},{"op":"EqualToValue","path":"/SettlementMethod","value":"InstructedAgent"}]}} },
-      { name: "SettlementMethodClearingRule", isoId: "_g38-U9cZEeqRFcf2R4bPBw", text: "If SettlementMethod is equal to CLRG, then ClearingSystem must be present and SettlementAccount is not allowed.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/SettlementAccount"},{"op":"Presence","path":"/ClearingSystem"}]},"onCondition":{"connector":"AND","rules":[{"op":"EqualToValue","path":"/SettlementMethod","value":"ClearingSystem"}]}} },
     ],
   },
   "GroupHeader125": {
@@ -487,6 +420,7 @@ export const typeDescriptors: TypeDescriptors = {
   "BaseOneRate": sharedTypeDescriptors["BaseOneRate"]!,
   "ActiveCurrencyAndAmount": sharedTypeDescriptors["ActiveCurrencyAndAmount"]!,
   "UUIDv4Identifier": sharedTypeDescriptors["UUIDv4Identifier"]!,
+  "PaymentIdentification13": sharedTypeDescriptors["PaymentIdentification13"]!,
   "Priority2Code": sharedTypeDescriptors["Priority2Code"]!,
   "ClearingChannel2Code": sharedTypeDescriptors["ClearingChannel2Code"]!,
   "ExternalServiceLevel1Code": sharedTypeDescriptors["ExternalServiceLevel1Code"]!,
@@ -553,7 +487,9 @@ export const typeDescriptors: TypeDescriptors = {
   "SecuritiesAttributes1": sharedTypeDescriptors["SecuritiesAttributes1"]!,
   "StructuredRemittanceInformation22": sharedTypeDescriptors["StructuredRemittanceInformation22"]!,
   "RemittanceInformation26": sharedTypeDescriptors["RemittanceInformation26"]!,
+  "Priority3Code": sharedTypeDescriptors["Priority3Code"]!,
   "ISODateTime": sharedTypeDescriptors["ISODateTime"]!,
+  "SettlementDateTimeIndication1": sharedTypeDescriptors["SettlementDateTimeIndication1"]!,
   "Max350Text": sharedTypeDescriptors["Max350Text"]!,
   "SupplementaryDataEnvelope1": sharedTypeDescriptors["SupplementaryDataEnvelope1"]!,
   "SupplementaryData1": sharedTypeDescriptors["SupplementaryData1"]!,
@@ -563,6 +499,8 @@ export const typeDescriptors: TypeDescriptors = {
   "Max15NumericText": sharedTypeDescriptors["Max15NumericText"]!,
   "ExternalCashClearingSystem1Code": sharedTypeDescriptors["ExternalCashClearingSystem1Code"]!,
   "ClearingSystemIdentification3Choice": sharedTypeDescriptors["ClearingSystemIdentification3Choice"]!,
+  "SettlementMethod2Code": sharedTypeDescriptors["SettlementMethod2Code"]!,
+  "SettlementInstruction14": sharedTypeDescriptors["SettlementInstruction14"]!,
   ...ownTypeDescriptors,
 };
 

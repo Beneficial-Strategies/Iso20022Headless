@@ -94,5 +94,61 @@
     "bodyTag": "FIToFICstmrDrctDbt",
     "out": "pacs003",
     "dir": "pacs003-v12"
+  },
+  {
+    "name": "PaymentReturnV15",
+    "id": "e139f53a-df51-43c2-a761-b5231fafa5eb",
+    "identifier": "pacs.004.001.15",
+    "bodyTag": "PmtRtr",
+    "out": "pacs004",
+    "dir": "pacs004-v15"
+  },
+  {
+    "name": "FIToFIPaymentReversalV14",
+    "id": "_fSVgYZe9EfCsfrvk22Hpaw",
+    "identifier": "pacs.007.001.14",
+    "bodyTag": "FIToFIPmtRvsl",
+    "out": "pacs007",
+    "dir": "pacs007-v14"
+  },
+  {
+    "name": "FIToFICustomerCreditTransferV14",
+    "id": "e4b25b72-ba17-4566-8e91-56a48803083c",
+    "identifier": "pacs.008.001.14",
+    "bodyTag": "FIToFICstmrCdtTrf",
+    "out": "pacs008",
+    "dir": "pacs008-v14"
+  },
+  {
+    "name": "FinancialInstitutionCreditTransferV13",
+    "id": "b70980f0-c5be-4e42-bb84-24f01b90e88e",
+    "identifier": "pacs.009.001.13",
+    "bodyTag": "FICdtTrf",
+    "out": "pacs009",
+    "dir": "pacs009-v13"
+  },
+  {
+    "name": "FinancialInstitutionDirectDebitV06",
+    "id": "_R3LnHzEZEe6kQ-WGAhcVPQ",
+    "identifier": "pacs.010.001.06",
+    "bodyTag": "FIDrctDbt",
+    "out": "pacs010",
+    "dir": "pacs010-v06"
+  },
+  {
+    "name": "FIToFIPaymentStatusRequestV07",
+    "id": "8fa60901-04a4-4c2d-8d76-a9c734a35cb6",
+    "identifier": "pacs.028.001.07",
+    "bodyTag": "FIToFIPmtStsReq",
+    "out": "pacs028",
+    "dir": "pacs028-v07"
+  },
+  {
+    "name": "MultilateralSettlementRequestV02",
+    "id": "_R3QfeTEZEe6kQ-WGAhcVPQ",
+    "identifier": "pacs.029.001.02",
+    "bodyTag": "MulSttlmReq",
+    "out": "pacs029",
+    "dir": "pacs029-v02"
   }
 ]

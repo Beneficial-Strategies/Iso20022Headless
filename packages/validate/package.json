@@ -22,6 +22,13 @@
     "./pain018": "./src/generated/pain018.ts",
     "./pacs002": "./src/generated/pacs002.ts",
     "./pacs003": "./src/generated/pacs003.ts",
+    "./pacs004": "./src/generated/pacs004.ts",
+    "./pacs007": "./src/generated/pacs007.ts",
+    "./pacs008": "./src/generated/pacs008.ts",
+    "./pacs009": "./src/generated/pacs009.ts",
+    "./pacs010": "./src/generated/pacs010.ts",
+    "./pacs028": "./src/generated/pacs028.ts",
+    "./pacs029": "./src/generated/pacs029.ts",
     "./all": "./src/generated/all.ts"
   },
   "scripts": {

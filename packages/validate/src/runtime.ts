@@ -13,6 +13,7 @@ export type FieldKind =
   | 'number'
   | 'date'
   | 'datetime'
+  | 'time'
   | 'boolean'
   | 'code'
   | 'amount'
@@ -142,6 +143,8 @@ export const isoDateTime = z
     /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})?$/,
     'datetime_format',
   );
+/** A time of day, `hh:mm:ss` with optional fractions and `Z` or an offset (xs:time). Format only, like the date types. */
+export const isoTime = z.string().regex(/^\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})?$/, 'time_format');
 export const isoYear = z.string().regex(/^\d{4}$/, 'year_format');
 export const indicator = z.enum(['true', 'false']);
 export const anyXml = z.string().min(1);

@@ -92,7 +92,7 @@ function Leaf(p: NodeProps) {
   } else if (type.kind === 'any') {
     control = <S.Text field={props} multiline mono placeholder={t('rawXml')} />;
   } else {
-    const hint = type.kind === 'datetime' ? '2026-10-05T09:30:00Z' : type.kind === 'number' ? 'e.g. 1500.25' : undefined;
+    const hint = type.kind === 'datetime' ? '2026-10-05T09:30:00Z' : type.kind === 'time' ? '09:30:00Z' : type.kind === 'number' ? 'e.g. 1500.25' : undefined;
     const input = (
       <S.Text field={props} type={type.kind === 'date' ? 'date' : 'text'} maxLength={type.maxLength} placeholder={hint} inputMode={type.kind === 'number' ? 'decimal' : undefined} />
     );

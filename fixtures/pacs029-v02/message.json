@@ -1,0 +1,35 @@
+{
+  "identifier": "pacs.029.001.02",
+  "name": "MultilateralSettlementRequestV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:pacs.029.001.02",
+  "bodyTag": "MulSttlmReq",
+  "out": "pacs029",
+  "isoId": "_R3QfeTEZEe6kQ-WGAhcVPQ",
+  "definition": "The MultilateralSettlementRequest message is sent from an instructing agent to a market infrastructure to settle obligations between their participants using accounts held in a settlement service.||Usage: The MultilateralSettlementRequest message can contain one or more settlement instructions with multiple movements between accounts. By default, all movements present in an individual instruction shall be processed as a batch entry rather than a single entry per individual movement.",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "_R3QfezEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader104",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SettlementRequest",
+      "isoId": "_R3QffTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SttlmReq",
+      "type": "MultilateralSettlementRequest3",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3QffzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

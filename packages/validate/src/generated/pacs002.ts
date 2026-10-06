@@ -8,6 +8,7 @@ import {
   indicator,
   isoDate,
   isoDateTime,
+  isoTime,
   textType,
   type FieldDescriptor,
   type TypeDescriptors,
@@ -75,7 +76,9 @@ import {
   GenericIdentification3Schema,
   ChargeType3ChoiceSchema,
   Charges16Schema,
+  SHA256SignatureTextSchema,
   DateAndDateTime2ChoiceSchema,
+  OriginalGroupInformation33Schema,
   ActiveOrHistoricCurrencyCodeSchema,
   EquivalentAmount2Schema,
   AmountType4ChoiceSchema,
@@ -189,14 +192,6 @@ export const GroupHeader120Schema = z.strictObject({
   OriginalBusinessQuery: OriginalBusinessQuery1Schema.optional(),
 });
 
-export const SHA256SignatureTextSchema = textType({pattern: "([0-9A-F][0-9A-F]){32}"});
-
-export const OriginalGroupInformation33Schema = z.strictObject({
-  OriginalCreationDateTime: ISODateTimeSchema.optional(),
-  OriginalMessageIdentification: Max35TextSchema,
-  OriginalMessageNameIdentification: Max35TextSchema,
-});
-
 export const PaymentTransaction177Schema = z.strictObject({
   AcceptanceDateTime: ISODateTimeSchema.optional(),
   AccountServicerReference: Max35TextSchema.optional(),
@@ -249,22 +244,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "InstructingAgent", isoId: "_3l-lBTEyEe6g-ffJsqGiSA", xmlTag: "InstgAgt", displayName: displayName("InstructingAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
       f({ name: "MessageIdentification", isoId: "_3l-lATEyEe6g-ffJsqGiSA", xmlTag: "MsgId", displayName: displayName("MessageIdentification"), kind: "text", type: "Max35Text", required: true }),
       f({ name: "OriginalBusinessQuery", isoId: "_3l-lCTEyEe6g-ffJsqGiSA", xmlTag: "OrgnlBizQry", displayName: displayName("OriginalBusinessQuery"), kind: "component", type: "OriginalBusinessQuery1", required: false }),
-    ],
-  },
-  "SHA256SignatureText": {
-    name: "SHA256SignatureText",
-    isoId: "_GG-XID6vEe-QZYT2pcGFZw",
-    kind: "text",
-    pattern: "([0-9A-F][0-9A-F]){32}",
-  },
-  "OriginalGroupInformation33": {
-    name: "OriginalGroupInformation33",
-    isoId: "cbf73edd-b654-4c5f-88c4-856c0c41d474",
-    kind: "component",
-    fields: [
-      f({ name: "OriginalCreationDateTime", isoId: "79f0fece-3e2c-4843-ace6-0239f629aaed", xmlTag: "OrgnlCreDtTm", displayName: displayName("OriginalCreationDateTime"), kind: "datetime", type: "ISODateTime", required: false }),
-      f({ name: "OriginalMessageIdentification", isoId: "8222206f-49ba-4180-aa0c-a8e82f8b6dd8", xmlTag: "OrgnlMsgId", displayName: displayName("OriginalMessageIdentification"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "OriginalMessageNameIdentification", isoId: "738f6e99-c66f-4c87-b2e4-469a21ebca6b", xmlTag: "OrgnlMsgNmId", displayName: displayName("OriginalMessageNameIdentification"), kind: "text", type: "Max35Text", required: true }),
     ],
   },
   "PaymentTransaction177": {
@@ -380,7 +359,9 @@ export const typeDescriptors: TypeDescriptors = {
   "GenericIdentification3": sharedTypeDescriptors["GenericIdentification3"]!,
   "ChargeType3Choice": sharedTypeDescriptors["ChargeType3Choice"]!,
   "Charges16": sharedTypeDescriptors["Charges16"]!,
+  "SHA256SignatureText": sharedTypeDescriptors["SHA256SignatureText"]!,
   "DateAndDateTime2Choice": sharedTypeDescriptors["DateAndDateTime2Choice"]!,
+  "OriginalGroupInformation33": sharedTypeDescriptors["OriginalGroupInformation33"]!,
   "ActiveOrHistoricCurrencyCode": sharedTypeDescriptors["ActiveOrHistoricCurrencyCode"]!,
   "EquivalentAmount2": sharedTypeDescriptors["EquivalentAmount2"]!,
   "AmountType4Choice": sharedTypeDescriptors["AmountType4Choice"]!,

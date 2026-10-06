@@ -109,3 +109,174 @@ PaymentIdentification13	_vHb7URUHEequmIwg9GMA4Q	TransactionIdentificationPresenc
 GroupHeader125	_5nyEsTEyEe6g-ffJsqGiSA	TotalInterbankSettlementAmountAndDateRule	If TotalInterbankSettlementAmount is present, then InterbankSettlementDate must be present.
 SettlementInstruction14	_g38-UdcZEeqRFcf2R4bPBw	SettlementMethodAgentRule	If SettlementMethod is equal to INDA or INGA, then ClearingSystem is not allowed.
 SettlementInstruction14	_g38-U9cZEeqRFcf2R4bPBw	SettlementMethodClearingRule	If SettlementMethod is equal to CLRG, then ClearingSystem must be present and SettlementAccount is not allowed.
+PaymentReturnV15	75690a21-2d0d-4256-a266-186bbc048d11	InstructedAgentRule	If GroupHeader/InstructedAgent is present, then TransactionInformation/InstructedAgent is not allowed.
+PaymentReturnV15	64ac2f6e-9bc9-453e-991b-3c92be85e922	InstructingAgentRule	If GroupHeader/InstructingAgent is present, then TransactionInformation/InstructingAgent is not allowed.
+PaymentReturnV15	24e1b198-6d62-4fd4-a45c-609239b270f8	GroupReturnAndNumberOfTransactionsRule	If GroupHeader/GroupReturn is false, then GroupHeader/NumberOfTransactions must equal the number of occurrences of TransactionInformation.
+PaymentReturnV15	ef6c1bf0-5c35-4f92-9cae-9c971af886b9	GroupReturnAndReturnReasonRule	If GroupHeader/GroupReturn is true, then OriginalGroupInformation/ReturnReasonInformation/ReturnReason must be present.
+PaymentReturnV15	1fdb66f8-1c88-4e7f-a426-92f25dd9d2d2	TotalReturnedInterbankSettlementAmountRule	If GroupHeader/TotalReturnedInterbankSettlementAmount is present, then all occurrences of TransactionInformation/ReturnedInterbankSettlementAmount must have the same currency as the currency of GroupHeader/TotalReturnedInterbankSettlementAmount.
+PaymentReturnV15	345d2b6d-44af-426f-85d3-3d3f46154631	TotalReturnedInterbankSettlementAmountAndSumRule	GroupHeader/TotalReturnedInterbankSettlementAmount must equal the sum of all occurrences of TransactionInformation/ReturnedInterbankSettlementAmount when present.
+PaymentReturnV15	0aee1994-18e1-4460-8dae-1f6150f61889	OriginalGroupInformationRule	If OriginalGroupInformation is present, then TransactionInformation/OriginalGroupInformation is not allowed.
+PaymentReturnV15	07966e2d-eaf7-4a3d-b17c-2bbb77ffd2d1	NoCoverSettlementMethodRule	GroupHeader/SettlementInformation/SettlementMethod must be different from COVE (Cover) when returning direct debit transactions.
+PaymentReturnV15	0fb68aa4-f6f3-4958-8c62-0e9173b2f0da	GroupHeaderInterbankSettlementDateRule	If GroupHeader/InterbankSettlementDate is present, then TransactionInformation/InterbankSettlementDate is not allowed.
+PaymentReturnV15	86bd9968-d8dd-4fa0-9f96-5874b1c90de7	TransactionInterbankSettlementDateRule	If GroupHeader/InterbankSettlementDate is not present, then TransactionInformation/InterbankSettlementDate must be present.
+PaymentReturnV15	ac11f375-b095-4f7d-b0d9-3f157af9be95	GroupReturnAndTransactionInformationNotPresentRule	If GroupHeader/GroupReturn is true, then TransactionInformation is not allowed.
+PaymentReturnV15	2fc9f0aa-6ad8-46ef-aa6e-3c0cd1065aa2	GroupReturnAndTransactionInformationPresentRule	If GroupHeader/GroupReturn is false, then at least one occurrence of TransactionInformation must be present.
+PaymentReturnV15	cec62a8d-41f2-4526-a974-9de3884da417	SupplementaryDataRule	The SupplementaryData building block at message level must not be used to provide additional information about a transaction. The SupplementaryData element at transaction level should be used for that purpose.
+PaymentReturnV15	586d1909-6ad5-48d5-bdf2-08bc87ba646e	PaymentTypeInformationRule	If GroupHeader/PaymentTypeInformation is present, then TransactionInformation/PaymentTypeInformation is not allowed.
+PaymentReturnReason7	_wuE5ETEyEe6g-ffJsqGiSA	ReturnReasonRule	If Reason/Code is equal to NARR, then AddititionalInformation must be present.
+CreditTransferTransaction72	7ffd86da-7f5f-44ac-bb5f-90788eb3f2b4	UltimateDebtorGuideline	UltimateDebtor may only be present if different from Debtor.
+CreditTransferTransaction72	38714371-fe92-4068-8414-4e3e306215b5	UltimateCreditorGuideline	UltimateCreditor may only be present if different from Creditor.
+CreditTransferTransaction72	619ffeda-4b83-4da9-8fd5-092a91fbaa05	IntermediaryAgent2Rule	If IntermediaryAgent2 is present, then IntermediaryAgent1 must be present.
+CreditTransferTransaction72	44b23c1a-0ea1-4c5e-8e88-2633dbffd596	IntermediaryAgent3Rule	If IntermediaryAgent3 is present, then IntermediaryAgent2 must be present.
+CreditTransferTransaction72	e6c002a3-b0eb-4774-b6b6-ca2619f9dea0	IntermediaryAgent1AccountRule	If IntermediaryAgent1Account is present, then IntermediaryAgent1 must be present.
+CreditTransferTransaction72	8e17f53f-20b0-426a-8954-274155d602c7	IntermediaryAgent2AccountRule	If IntermediaryAgent2Account is present, then IntermediaryAgent2 must be present.
+CreditTransferTransaction72	60059116-85c0-48b3-9740-f1419d7cf1b4	IntermediaryAgent3AccountRule	If IntermediaryAgent3Account is present, then IntermediaryAgent3 must be present.
+CreditTransferTransaction72	10570ae0-760c-484a-94df-1324cc3e2bfe	PreviousInstructingAgent1AccountRule	If PreviousInstructingAgent1Account is present, then PreviousInstructingAgent1 must be present.
+CreditTransferTransaction72	83023ee0-2d2b-4421-bbfa-6ce691b92b99	PreviousInstructingAgent2AccountRule	If PreviousInstructingAgent2Account is present, then PreviousInstructingAgent2 must be present.
+CreditTransferTransaction72	516fec7d-4d4f-4dad-b1bf-a351bbef66bb	PreviousInstructingAgent3AccountRule	If PreviousInstructingAgent3Account is present, then PreviousInstructingAgent3 must be present.
+CreditTransferTransaction72	7f7499b5-00ba-4068-8c1b-a761721a2baf	PreviousInstructingAgent1Guideline	It is recommended that, when present, PreviousInstructingAgent1 is the closest to the DebtorAgent in the payment chain.
+CreditTransferTransaction72	3572f956-5954-4e0f-94c4-b70482f1fd05	PreviousInstructingAgent2Rule	If PreviousInstructingAgent2 is present, then PreviousInstructingAgent1 must be present.
+CreditTransferTransaction72	38605b2b-b8a6-4f75-b4a4-bb11b6da04b8	PreviousInstructingAgent3Rule	If PreviousInstructingAgent3 is present, then PreviousInstructingAgent2 must be present.
+CreditTransferTransaction82	_eeABUbpXEfCPZvweyV2nEg	UltimateDebtorGuideline	UltimateDebtor may only be present if different from Debtor.
+CreditTransferTransaction82	_eeABU7pXEfCPZvweyV2nEg	UltimateCreditorGuideline	UltimateCreditor may only be present if different from Creditor.
+CreditTransferTransaction82	_eeABVbpXEfCPZvweyV2nEg	IntermediaryAgent2Rule	If IntermediaryAgent2 is present, then IntermediaryAgent1 must be present.
+CreditTransferTransaction82	_eeABV7pXEfCPZvweyV2nEg	IntermediaryAgent3Rule	If IntermediaryAgent3 is present, then IntermediaryAgent2 must be present.
+CreditTransferTransaction82	_eeABWbpXEfCPZvweyV2nEg	IntermediaryAgent1Rule	If IntermediaryAgent1 is present, then CreditorAgent must be present.
+CreditTransferTransaction82	_eeABW7pXEfCPZvweyV2nEg	IntermediaryAgent1AccountRule	If IntermediaryAgent1Account is present, then IntermediaryAgent1 must be present.
+CreditTransferTransaction82	_eeABXbpXEfCPZvweyV2nEg	IntermediaryAgent2AccountRule	If IntermediaryAgent2Account is present, then IntermediaryAgent2 must be present.
+CreditTransferTransaction82	_eeABX7pXEfCPZvweyV2nEg	IntermediaryAgent3AccountRule	If IntermediaryAgent3Account is present, then IntermediaryAgent3 must be present.
+CreditTransferTransaction82	_eeABYbpXEfCPZvweyV2nEg	DebtorAgentAccountRule	If DebtorAgentAccount is present, then DebtorAgent must be present.
+CreditTransferTransaction82	_eeABY7pXEfCPZvweyV2nEg	CreditorAgentAccountRule	If CreditorAgentAccount is present, then CreditorAgent must be present.
+CreditTransferTransaction82	_eeABZbpXEfCPZvweyV2nEg	PreviousInstructingAgent1AccountRule	If PreviousInstructingAgent1Account is present, then PreviousInstructingAgent1 must be present.
+CreditTransferTransaction82	_eeABZ7pXEfCPZvweyV2nEg	PreviousInstructingAgent2AccountRule	If PreviousInstructingAgent2Account is present, then PreviousInstructingAgent2 must be present.
+CreditTransferTransaction82	_eeABabpXEfCPZvweyV2nEg	PreviousInstructingAgent3AccountRule	If PreviousInstructingAgent3Account is present, then PreviousInstructingAgent3 must be present.
+CreditTransferTransaction82	_eeABa7pXEfCPZvweyV2nEg	PreviousInstructingAgent2Rule	If PreviousInstructingAgent2 is present, then PreviousInstructingAgent1 must be present.
+CreditTransferTransaction82	_eeABbbpXEfCPZvweyV2nEg	PreviousInstructingAgent3Rule	If PreviousInstructingAgent3 is present, then PreviousInstructingAgent2 must be present.
+CreditTransferTransaction82	_eeABb7pXEfCPZvweyV2nEg	PreviousInstructingAgent1Guideline	It is recommended that, when present, PreviousInstructingAgent1 is the closest to the DebtorAgent in the payment chain.
+CreditTransferTransaction80	_e61QsXePEfCdoODv2ypKfw	UltimateDebtorGuideline	UltimateDebtor may only be present if different from Debtor.
+CreditTransferTransaction80	_e61Qs3ePEfCdoODv2ypKfw	UltimateCreditorGuideline	UltimateCreditor may only be present if different from Creditor.
+CreditTransferTransaction80	_e61QtXePEfCdoODv2ypKfw	IntermediaryAgent2Rule	If IntermediaryAgent2 is present, then IntermediaryAgent1 must be present.
+CreditTransferTransaction80	_e61Qt3ePEfCdoODv2ypKfw	IntermediaryAgent3Rule	If IntermediaryAgent3 is present, then IntermediaryAgent2 must be present.
+CreditTransferTransaction80	_e61QuXePEfCdoODv2ypKfw	IntermediaryAgent1Rule	If IntermediaryAgent1 is present, then CreditorAgent must be present.
+CreditTransferTransaction80	_e61Qu3ePEfCdoODv2ypKfw	IntermediaryAgent1AccountRule	If IntermediaryAgent1Account is present, then IntermediaryAgent1 must be present.
+CreditTransferTransaction80	_e61QvXePEfCdoODv2ypKfw	IntermediaryAgent2AccountRule	If IntermediaryAgent2Account is present, then IntermediaryAgent2 must be present.
+CreditTransferTransaction80	_e61Qv3ePEfCdoODv2ypKfw	IntermediaryAgent3AccountRule	If IntermediaryAgent3Account is present, then IntermediaryAgent3 must be present.
+CreditTransferTransaction80	_e61QwXePEfCdoODv2ypKfw	DebtorAgentAccountRule	If DebtorAgentAccount is present, then DebtorAgent must be present.
+CreditTransferTransaction80	_e61Qw3ePEfCdoODv2ypKfw	CreditorAgentAccountRule	If CreditorAgentAccount is present, then CreditorAgent must be present.
+CreditTransferTransaction80	_e61QxXePEfCdoODv2ypKfw	PreviousInstructingAgent1AccountRule	If PreviousInstructingAgent1Account is present, then PreviousInstructingAgent1 must be present.
+CreditTransferTransaction80	_e61Qx3ePEfCdoODv2ypKfw	PreviousInstructingAgent2AccountRule	If PreviousInstructingAgent2Account is present, then PreviousInstructingAgent2 must be present.
+CreditTransferTransaction80	_e61QyXePEfCdoODv2ypKfw	PreviousInstructingAgent3AccountRule	If PreviousInstructingAgent3Account is present, then PreviousInstructingAgent3 must be present.
+CreditTransferTransaction80	_e61Qy3ePEfCdoODv2ypKfw	PreviousInstructingAgent2Rule	If PreviousInstructingAgent2 is present, then PreviousInstructingAgent1 must be present.
+CreditTransferTransaction80	_e61QzXePEfCdoODv2ypKfw	PreviousInstructingAgent3Rule	If PreviousInstructingAgent3 is present, then PreviousInstructingAgent2 must be present.
+CreditTransferTransaction80	_e61Qz3ePEfCdoODv2ypKfw	PreviousInstructingAgent1Guideline	It is recommended that, when present, PreviousInstructingAgent1 is the closest to the DebtorAgent in the payment chain.
+TransactionParties11	_5eNR8TEyEe6g-ffJsqGiSA	IntermediaryAgent1AccountRule	If IntermediaryAgent1Account is present, then IntermediaryAgent1 must be present.
+TransactionParties11	_5eNR8zEyEe6g-ffJsqGiSA	IntermediaryAgent2AccountRule	If IntermediaryAgent2Account is present, then IntermediaryAgent2 must be present.
+TransactionParties11	_5eNR9TEyEe6g-ffJsqGiSA	IntermediaryAgent3AccountRule	If IntermediaryAgent3Account is present, then IntermediaryAgent3 must be present.
+TransactionParties11	_5eNR9zEyEe6g-ffJsqGiSA	PreviousInstructingAgent1AccountRule	If PreviousInstructingAgent1Account is present, then PreviousInstructingAgent1 must be present.
+TransactionParties11	_5eNR-TEyEe6g-ffJsqGiSA	PreviousInstructingAgent2AccountRule	If PreviousInstructingAgent2Account is present, then PreviousInstructingAgent2 must be present.
+TransactionParties11	_5eNR-zEyEe6g-ffJsqGiSA	PreviousInstructingAgent3AccountRule	If PreviousInstructingAgent3Account is present, then PreviousInstructingAgent3 must be present.
+GroupHeader127	_56Y3oTEyEe6g-ffJsqGiSA	ControlSumAndGroupReversalRule	If GroupReversal is true, then ControlSum is not allowed.
+GroupHeader127	_56Y3ozEyEe6g-ffJsqGiSA	GroupReversalAndNumberOfTransactionsGuideline	If GroupReversal is true, then NumberOfTransactions equals the number of transactions in the original message.
+GroupHeader127	_56Y3pTEyEe6g-ffJsqGiSA	TotalInterbankSettlementAmountAndDateRule	If TotalReversedInterbankSettlementAmount is present, then InterbankSettlementDate must be present.
+AdditionalDateTime1	_INFGcHtUEe-Lep0ggPzKKw	AdditionalDateTimePresenceRule	AcceptanceDateTime or PoolingAdjustmentDate or ExpiryDateTime must be present. All can be present.
+FIToFICustomerCreditTransferV14	1c36cf36-1fac-488f-905f-3433a08ea1ca	InstructedAgentRule	If GroupHeader/InstructedAgent is present, then CreditTransferTransactionInformation/InstructedAgent is not allowed.
+FIToFICustomerCreditTransferV14	305d9b22-23b6-458e-9cf1-cae8ee75c5fa	InstructingAgentRule	If GroupHeader/InstructingAgent is present, then CreditTransferTransactionInformation/InstructingAgent is not allowed.
+FIToFICustomerCreditTransferV14	9e341212-16fa-4a2d-9cac-8df8d47a98e2	TotalInterbankSettlementAmountRule	If GroupHeader/TotalInterbankSettlementAmount is present, then all occurrences of CreditTransferTransactionInformation/InterbankSettlementAmount must have the same currency as the currency of GroupHeader/TotalInterbankSettlementAmount.
+FIToFICustomerCreditTransferV14	0e7f3726-4654-4c1e-8c20-b590cb2763f8	TotalInterbankSettlementAmountAndSumRule	If GroupHeader/TotalInterbankSettlementAmount is present, then it must equal the sum of all occurrences of CreditTransferTransactionInformation/InterbankSettlementAmount.
+FIToFICustomerCreditTransferV14	c6aa2107-7ec6-49a3-a6a0-1e2b9d50e2e3	GroupHeaderInterbankSettlementDateRule	If GroupHeader/InterbankSettlementDate is present, then CreditTransferTransactionInformation/InterbankSettlementDate is not allowed.
+FIToFICustomerCreditTransferV14	ddce2dad-0918-41ea-b84c-baef59a5f6b3	TransactionInterbankSettlementDateRule	If GroupHeader/InterbankSettlementDate is not present, then CreditTransferTransactionInformation/InterbankSettlementDate must be present.
+FIToFICustomerCreditTransferV14	afc2e884-44de-4812-a35c-5445a3af1685	PaymentTypeInformationRule	If GroupHeader/PaymentTypeInformation is present, then CreditTransferTransactionInformation/PaymentTypeInformation is not allowed.
+FIToFICustomerCreditTransferV14	e772627c-5367-463f-aaf0-9143543ac684	NumberOfTransactionsAndCreditTransfersRule	GroupHeader/NumberOfTransactions must equal the number of occurrences of CreditTransferTransactionInformation.
+FIToFICustomerCreditTransferV14	acb9f093-dd7e-44ca-90ba-e4bde59e73ff	SupplementaryDataRule	The SupplementaryData building block at message level must not be used to provide additional information about a transaction. The SupplementaryData element at transaction level should be used for that purpose.
+FIToFICustomerCreditTransferV14	ab7d45bb-7945-41b9-bc1e-fb6c27c5bb67	GroupHeaderExpiryDateTimeRule	If GroupHeader/ExpiryDateTime is present, then CreditTransferTransactionInformation/AdditionalDateTime/ExpiryDateTime is not allowed.
+FinancialInstitutionCreditTransferV13	c30f1a17-8790-41b7-9d35-b7f03ce46d98	InstructedAgentRule	If GroupHeader/InstructedAgent is present, then CreditTransferTransactionInformation/InstructedAgent is not allowed.
+FinancialInstitutionCreditTransferV13	d57e2c12-c3cc-43d0-bc5b-2a108ebaf8c7	InstructingAgentRule	If GroupHeader/InstructingAgent is present, then CreditTransferTransactionInformation/InstructingAgent is not allowed.
+FinancialInstitutionCreditTransferV13	d365018f-f80f-4dfb-ac7f-95b3da0948b0	TotalInterbankSettlementAmountRule	If GroupHeader/TotalInterbankSettlementAmount is present, then all occurrences of CreditTransferTransactionInformation/InterbankSettlementAmount must have the same currency as the currency of GroupHeader/TotalInterbankSettlementAmount.
+FinancialInstitutionCreditTransferV13	2ee3e97d-49ae-4494-bcd8-f88d32012e28	TotalInterbankSettlementAmountAndSumRule	If GroupHeader/TotalInterbankSettlementAmount is present, then it must equal the sum of all occurrences of CreditTransferTransactionInformation/InterbankSettlementAmount.
+FinancialInstitutionCreditTransferV13	92857e3a-4cf3-4927-b1d9-5f30990907f4	GroupHeaderInterbankSettlementDateRule	If GroupHeader/InterbankSettlementDate is present, then CreditTransferTransactionInformation/InterbankSettlementDate is not allowed.
+FinancialInstitutionCreditTransferV13	883867a5-0c1c-40ba-a9e2-2b26a954334a	TransactionInterbankSettlementDateRule	If GroupHeader/InterbankSettlementDate is not present, then CreditTransferTransactionInformation/InterbankSettlementDate must be present.
+FinancialInstitutionCreditTransferV13	13587853-aad0-4ba5-8de7-e0ebee7c4778	PaymentTypeInformationRule	If GroupHeader/PaymentTypeInformation is present, then CreditTransferTransactionInformation/PaymentTypeInformation is not allowed.
+FinancialInstitutionCreditTransferV13	acdd18db-abcc-45d3-ba1c-e6563b140783	SupplementaryDataRule	The SupplementaryData building block at message level must not be used to provide additional information about a transaction. The SupplementaryData element at transaction level should be used for that purpose.
+FinancialInstitutionCreditTransferV13	7800d790-cb89-4f5c-b981-cd670c8269c0	GroupHeaderExpiryDateTimeRule	If GroupHeader/ExpiryDateTime is present, then CreditTransferTransactionInformation/ExpiryDateTime is not allowed.
+CreditTransferTransaction66	_69BZUTEyEe6g-ffJsqGiSA	UltimateCreditorGuideline	UltimateCreditor may only be present if different from Creditor.
+CreditTransferTransaction66	_69BZUzEyEe6g-ffJsqGiSA	IntermediaryAgent2Rule	If IntermediaryAgent2 is present, then IntermediaryAgent1 must be present.
+CreditTransferTransaction66	_69BZVTEyEe6g-ffJsqGiSA	IntermediaryAgent3Rule	If IntermediaryAgent3 is present, then IntermediaryAgent2 must be present.
+CreditTransferTransaction66	_69BZVzEyEe6g-ffJsqGiSA	IntermediaryAgent1Rule	If IntermediaryAgent1 is present, then CreditorAgent must be present.
+CreditTransferTransaction66	_69BZWTEyEe6g-ffJsqGiSA	IntermediaryAgent1AccountRule	If IntermediaryAgent1Account is present, then IntermediaryAgent1 must be present.
+CreditTransferTransaction66	_69BZWzEyEe6g-ffJsqGiSA	IntermediaryAgent2AccountRule	If IntermediaryAgent2Account is present, then IntermediaryAgent2 must be present.
+CreditTransferTransaction66	_69BZXTEyEe6g-ffJsqGiSA	IntermediaryAgent3AccountRule	If IntermediaryAgent3Account is present, then IntermediaryAgent3 must be present.
+CreditTransferTransaction66	_69BZXzEyEe6g-ffJsqGiSA	CreditorAgentAccountRule	If CreditorAgentAccount is present, then CreditorAgent must be present.
+CreditTransferTransaction66	_69BZYTEyEe6g-ffJsqGiSA	TotalInterbankSettlementAmountRule	If CreditInformation/TotalInterbankSettlementAmount is present, then all occurrences of DirectDebitTransactionInformation/InterbankSettlementAmount must have the same currency as the currency of CreditInformation/TotalInterbankSettlementAmount.
+CreditTransferTransaction66	_69BZYzEyEe6g-ffJsqGiSA	TotalInterbankSettlementAmountAndSumRule	If TotalInterbankSettlementAmount is present, then it must equal the sum of all occurrences of DirectDebitTransactionInformation/InterbankSettlementAmount.
+CreditTransferTransaction66	_69BZZTEyEe6g-ffJsqGiSA	InterbankSettlementDateRule	If InterbankSettlementDate is present, then DirectDebitTransactionInformation/InterbankSettlementDate is not allowed.
+CreditTransferTransaction66	_69BZZzEyEe6g-ffJsqGiSA	PaymentTypeInformationRule	If PaymentTypeInformation is present, then DirectDebitTransactionInformation/PaymentTypeInformation is not allowed.
+GroupHeader123	_5GR6ITEyEe6g-ffJsqGiSA	GroupReturnAndNumberOfTransactionsGuideline	If GroupReturn is true, then NumberOfTransactions equals the number of transactions in the original message.
+GroupHeader123	_5GR6IzEyEe6g-ffJsqGiSA	TotalInterbankSettlementAmountAndDateRule	If TotalReturnedInterbankSettlementAmount is present, then InterbankSettlementDate must be present.
+GroupHeader123	_5GR6JTEyEe6g-ffJsqGiSA	ControlSumAndGroupReturnRule	If GroupReturn is true, then ControlSum is not allowed.
+PaymentTransaction168	984cce59-d0ab-4c34-9d18-776c99e494f2	ReturnedInstructedAmountAndExchangeRate1Rule	If ReturnedInstructedAmount is present and the currency is different from the currency in ReturnedInterbankSettlementAmount, then ExchangeRate must be present.
+PaymentTransaction168	73840069-51ec-4c84-9a1c-d69997e38a4c	ReturnedInstructedAmountAndExchangeRate2Rule	If ReturnedInstructedAmount is present and the currency is the same as the currency in ReturnedInterbankSettlementAmount, then ExchangeRate is not allowed.
+PaymentTransaction168	c5bd4bdb-ee05-45e4-b79f-357260c63416	ChargesInformationAndReturnedInstructedAmountRule	If ChargesInformation is present, then ReturnedInstructedAmount must be present.
+OriginalTransactionReference45	9592eef4-f498-4cd8-aee6-1abd61125bf0	UnderlyingCustomerCreditTransferRule	The UnderlyingCustomerCreditTransfer element can only be present if present in the original transaction being returned.
+OriginalTransactionReference45	4a5c8946-d113-4030-9d2f-7a7d7d2f46c1	UnderlyingFinancialInstitutionCreditTransferRule	The UnderlyingFinancialInstitutionCreditTransfer element can only be present if present in the original transaction being returned.
+TransactionAllocation2	_eP7wIbpXEfCPZvweyV2nEg	UnderlyingAllocationGuideline	UnderlyingAllocation may only be present if bilaterally agreed.
+FIToFIPaymentReversalV14	_fSVga5e9EfCsfrvk22Hpaw	GroupReversalAndTransactionInformationNotPresentRule	If GroupHeader/GroupReversal is true, then TransactionInformation is not allowed.
+FIToFIPaymentReversalV14	_fSVgbZe9EfCsfrvk22Hpaw	GroupReversalAndTransactionInformationPresentRule	If GroupHeader/GroupReversal is false, then at least one occurrence of TransactionInformation must be present.
+FIToFIPaymentReversalV14	_fSVgb5e9EfCsfrvk22Hpaw	GroupReversalAndReasonRule	If GroupHeader/GroupReversal is true, then OriginalGroupInformation/ReversalReasonInformation/Reason must present.
+FIToFIPaymentReversalV14	_fSVgcZe9EfCsfrvk22Hpaw	InstructedAgentRule	If GroupHeader/InstructedAgent is present, then TransactionInformation/InstructedAgent is not allowed.
+FIToFIPaymentReversalV14	_fSVgc5e9EfCsfrvk22Hpaw	InstructingAgentRule	If GroupHeader/InstructingAgent is present, then TransactionInformation/InstructingAgent is not allowed.
+FIToFIPaymentReversalV14	_fSVgdZe9EfCsfrvk22Hpaw	GroupHeaderInterbankSettlementDateRule	If GroupHeader/InterbankSettlementDate is present, then TransactionInformation/InterbankSettlementDate is not allowed.
+FIToFIPaymentReversalV14	_fSVgd5e9EfCsfrvk22Hpaw	TransactionInterbankSettlementDateRule	If GroupHeader/InterbankSettlementDate is not present, then TransactionInformation/InterbankSettlementDate must be present.
+FIToFIPaymentReversalV14	_fSVgeZe9EfCsfrvk22Hpaw	GroupReversalAndNumberOfTransactionsRule	If GroupHeader/GroupReversal is false, then GroupHeader/NumberOfTransactions must equal the number of occurrences of TransactionInformation.
+FIToFIPaymentReversalV14	_fSVge5e9EfCsfrvk22Hpaw	TotalReversedInterbankSettlementAmountRule	If GroupHeader/TotalReversedInterbankSettlementAmount is present, then all occurrences of TransactionInformation/ReversedInterbankSettlementAmount must have the same currency as the currency of GroupHeader/TotalReversedInterbankSettlementAmount.
+FIToFIPaymentReversalV14	_fSVgfZe9EfCsfrvk22Hpaw	TotalReversedInterbankSettlementAmountAndSumRule	GroupHeader/TotalReversedInterbankSettlementAmount must equal the sum of all individual TransactionInformation/ReversedInterbankSettlementAmount when present.
+FIToFIPaymentReversalV14	_fSVgf5e9EfCsfrvk22Hpaw	NoCoverSettlementMethodRule	GroupHeader/SettlementInformation/SettlementMethod must be different from COVE (Cover) when reversing direct debit transactions.
+FIToFIPaymentReversalV14	_fSVggZe9EfCsfrvk22Hpaw	SupplementaryDataRule	The SupplementaryData building block at message level must not be used to provide additional information about a transaction. The SupplementaryData element at transaction level should be used for that purpose.
+FIToFIPaymentReversalV14	_fSVgg5e9EfCsfrvk22Hpaw	OriginalGroupInformationRule	If OriginalGroupInformation is present, then TransactionInformation/OriginalGroupInformation is not allowed.
+PaymentTransaction182	_qHE_4Ze-EfCsfrvk22Hpaw	ReversedInstructedAmountAndExchangeRate1Rule	If ReversedInstructedAmount is present and the currency is different from the currency in InterbankSettlementAmount, then ExchangeRate must be present.
+PaymentTransaction182	_qHFm8Ze-EfCsfrvk22Hpaw	ReversedInstructedAmountAndExchangeRate2Rule	If ReversedInstructedAmount is present and the currency is the same as the currency in InterbankSettlementAmount, then ExchangeRate is not allowed.
+PaymentTransaction182	_qHFm85e-EfCsfrvk22Hpaw	ChargesInformationAndReversedInstructedAmountRule	If ChargesInformation is present, then ReversedInstructedAmount must be present.
+CreditTransferTransaction73	b27d24df-a2e0-403e-97ca-8f8843cd3f4a	ChargesInformationGuideline	The repetitive ChargesInformation should contain all information on charges amount and which party has taken the charges, separately for each agent along the payment chain.
+CreditTransferTransaction73	7b58d5ca-c8df-4a88-9815-9a0b0a2f8fbb	UltimateDebtorGuideline	UltimateDebtor may only be present if different from Debtor.
+CreditTransferTransaction73	4357d7b1-3595-4da4-a59c-41172e32aaf4	UltimateCreditorGuideline	UltimateCreditor may only be present if different from Creditor.
+CreditTransferTransaction73	09392e0d-7754-4a59-97b4-b14ee05fa030	InstructedAmountAndExchangeRate1Rule	If InstructedAmount is present and the currency is different from the currency in InterbankSettlementAmount, then ExchangeRate must be present.
+CreditTransferTransaction73	0513fee7-d09f-426f-a2b2-d84ae6957a06	InstructedAmountAndExchangeRate2Rule	If InstructedAmount is present and the currency is the same as the currency in InterbankSettlementAmount, then ExchangeRate is not allowed.
+CreditTransferTransaction73	b38161c8-248e-4dc3-847b-7bfa656633a2	ChargesInformationAndInstructedAmountRule	If ChargesInformation is present, then InstructedAmount must be present.
+CreditTransferTransaction73	37435adf-ff21-4200-9566-92eb60416d1f	ChargesAmountGuideline	If ChargesInformation is present, then the currency of ChargesInformation/ChargesAmount is recommended to be the same as the currency of InterbankSettlementAmount.
+CreditTransferTransaction73	5c9f78e9-d73c-4e2e-b246-8fa991c2d57d	ChargeBearerAndChargesInformationRule	If ChargeBearer contains DEBT, then ChargesInformation may be present to communicate charges that have been added for (the) InstructedAgent(s). If ChargeBearer contains CRED, then at least one occurrence of ChargesInformation must be present to communicate charges that have been deducted from the InstructedAmount by (the) InstructingAgent(s). If ChargeBearer contains SHAR or SLEV, then ChargesInformation is optional.
+CreditTransferTransaction73	84ea4932-f898-4697-8dc7-b622cc67e858	InstructionForCreditorAgentRule	If InstructionForCreditorAgent/Code contains CHQB (PayCreditorByCheque), then CreditorAccount is not allowed.
+CreditTransferTransaction73	3eb72cfe-125c-43c1-ace6-65e19ce930c1	IntermediaryAgent2Rule	If IntermediaryAgent2 is present, then IntermediaryAgent1 must be present.
+CreditTransferTransaction73	81af95a2-ce32-4b5b-a009-fefdd6438168	IntermediaryAgent3Rule	If IntermediaryAgent3 is present, then IntermediaryAgent2 must be present.
+CreditTransferTransaction73	2dc18528-b03e-4d37-9fda-73f4c6746032	IntermediaryAgent1AccountRule	If IntermediaryAgent1Account is present, then IntermediaryAgent1 must be present.
+CreditTransferTransaction73	643a435a-8942-43d0-8009-383b53647aa8	IntermediaryAgent2AccountRule	If IntermediaryAgent2Account is present, then IntermediaryAgent2 must be present.
+CreditTransferTransaction73	9bd47424-ad31-4470-91bf-2a783e3aa2f3	IntermediaryAgent3AccountRule	If IntermediaryAgent3Account is present, then IntermediaryAgent3 must be present.
+CreditTransferTransaction73	2bb5c363-6702-465f-92b8-64bf51569b0e	InstructedAmountAndExchangeRate3Rule	If InstructedAmount is not present, then ExchangeRate is not allowed.
+CreditTransferTransaction73	43b4199e-41be-40d5-a562-6adbc9e5412b	PreviousInstructingAgent2AccountRule	If PreviousInstructingAgent2Account is present, then PreviousInstructingAgent2 must be present.
+CreditTransferTransaction73	2b72c341-a930-4d6b-83f7-3ab769251524	PreviousInstructingAgent3AccountRule	If PreviousInstructingAgent3Account is present, then PreviousInstructingAgent3 must be present.
+CreditTransferTransaction73	0164c3eb-75aa-4304-a43b-42b8387fd5c1	PreviousInstructingAgent1Guideline	It is recommended that, when present, PreviousInstructingAgent1 is the closest to the DebtorAgent in the payment chain.
+CreditTransferTransaction73	fbe12ace-0c03-45af-9400-614bcefb3df2	PreviousInstructingAgent2Rule	If PreviousInstructingAgent2 is present, then PreviousInstructingAgent1 must be present.
+CreditTransferTransaction73	4067dd9e-6751-48f6-ae29-928791345c4b	PreviousInstructingAgent3Rule	If PreviousInstructingAgent3 is present, then PreviousInstructingAgent2 must be present.
+CreditTransferTransaction73	33acbd21-4476-4282-855c-58db16a5278b	PreviousInstructingAgent1AccountRule	If PreviousInstructingAgent1Account is present, then PreviousInstructingAgent1 must be present.
+GroupHeader131	_scu_oW9YEe-Mlpx0N5T4gg	TotalInterbankSettlementAmountAndDateRule	If TotalInterbankSettlementAmount is present, then InterbankSettlementDate must be present.
+CreditTransferTransaction79	_H4G78XePEfCdoODv2ypKfw	UltimateDebtorGuideline	UltimateDebtor may only be present if different from Debtor.
+CreditTransferTransaction79	_H4G783ePEfCdoODv2ypKfw	UltimateCreditorGuideline	UltimateCreditor may only be present if different from Creditor.
+CreditTransferTransaction79	_H4G79XePEfCdoODv2ypKfw	IntermediaryAgent2Rule	If IntermediaryAgent2 is present, then IntermediaryAgent1 must be present.
+CreditTransferTransaction79	_H4HjAXePEfCdoODv2ypKfw	IntermediaryAgent3Rule	If IntermediaryAgent3 is present, then IntermediaryAgent2 must be present.
+CreditTransferTransaction79	_H4HjA3ePEfCdoODv2ypKfw	IntermediaryAgent1Rule	If IntermediaryAgent1 is present, then CreditorAgent must be present.
+CreditTransferTransaction79	_H4HjBXePEfCdoODv2ypKfw	IntermediaryAgent1AccountRule	If IntermediaryAgent1Account is present, then IntermediaryAgent1 must be present.
+CreditTransferTransaction79	_H4HjB3ePEfCdoODv2ypKfw	IntermediaryAgent2AccountRule	If IntermediaryAgent2Account is present, then IntermediaryAgent2 must be present.
+CreditTransferTransaction79	_H4HjCXePEfCdoODv2ypKfw	IntermediaryAgent3AccountRule	If IntermediaryAgent3Account is present, then IntermediaryAgent3 must be present.
+CreditTransferTransaction79	_H4HjC3ePEfCdoODv2ypKfw	DebtorAgentAccountRule	If DebtorAgentAccount is present, then DebtorAgent must be present.
+CreditTransferTransaction79	_H4HjDXePEfCdoODv2ypKfw	CreditorAgentAccountRule	If CreditorAgentAccount is present, then CreditorAgent must be present.
+CreditTransferTransaction79	_H4HjD3ePEfCdoODv2ypKfw	PreviousInstructingAgent1AccountRule	If PreviousInstructingAgent1Account is present, then PreviousInstructingAgent1 must be present.
+CreditTransferTransaction79	_H4HjEXePEfCdoODv2ypKfw	PreviousInstructingAgent2AccountRule	If PreviousInstructingAgent2Account is present, then PreviousInstructingAgent2 must be present.
+CreditTransferTransaction79	_H4HjE3ePEfCdoODv2ypKfw	PreviousInstructingAgent3AccountRule	If PreviousInstructingAgent3Account is present, then PreviousInstructingAgent3 must be present.
+CreditTransferTransaction79	_H4HjFXePEfCdoODv2ypKfw	PreviousInstructingAgent2Rule	If PreviousInstructingAgent2 is present, then PreviousInstructingAgent1 must be present.
+CreditTransferTransaction79	_H4HjF3ePEfCdoODv2ypKfw	PreviousInstructingAgent3Rule	If PreviousInstructingAgent3 is present, then PreviousInstructingAgent2 must be present.
+CreditTransferTransaction79	_H4HjGXePEfCdoODv2ypKfw	PreviousInstructingAgent1Guideline	It is recommended that, when present, PreviousInstructingAgent1 is the closest to the DebtorAgent in the payment chain.
+CreditTransferTransaction79	_H4HjG3ePEfCdoODv2ypKfw	UnderlyingCustomerAndFinancialInstitutionCreditTransferRule	UnderlyingFinancialInstitutionCreditTransfer or UnderlyingCustomerCreditTransfer must be absent. Both may be absent.
+FinancialInstitutionDirectDebitV06	_R3LnITEZEe6kQ-WGAhcVPQ	SupplementaryDataRule	The SupplementaryData building block at message level must not be used to provide additional information about a transaction. The SupplementaryData element at transaction level should be used for that purpose.
+DirectDebitTransactionInformation33	_6_TRQTEyEe6g-ffJsqGiSA	UltimateDebtorGuideline	UltimateDebtor may only be present if different from Debtor.
+FIToFIPaymentStatusRequestV07	9a6fc3c1-763c-49db-b2d0-1088772b8cfa	OriginalGroupInformationAbsenceRule	If OriginalGroupInformation is absent, then TransactionInformation[*]/OriginalGroupInformation must be present.
+FIToFIPaymentStatusRequestV07	b9acc7b0-a6e0-491e-a33a-0833f051c508	OriginalGroupInformationMultiplePresenceRule	If OriginalGroupInformation is present and multiple times (Occurrence > 1), then TransactionInformation[*]/OriginalGroupInformation must be present.
+FIToFIPaymentStatusRequestV07	0f8295b7-73e6-491e-bc52-62093fdc9a6e	OriginalGroupInformationSinglePresenceRule	If OriginalGroupInformationAndStatus is present and only once, then TransactionInformationAndStatus[*]/OriginalGroupInformation must be absent.
+FIToFIPaymentStatusRequestV07	216421c4-2192-4e4c-b9bd-80c8c5435696	SupplementaryDataRule	The SupplementaryData building block at message level must not be used to provide additional information about a transaction. The SupplementaryData element at transaction level should be used for that purpose.
