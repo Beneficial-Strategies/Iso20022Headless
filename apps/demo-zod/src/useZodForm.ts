@@ -84,5 +84,10 @@ export function useZodForm({ schema, typeDescriptors, rootType, messages }: Form
       set(path, [...((getIn(values, path) as unknown[] | undefined) ?? []), emptyValue(typeDescriptors, type)]),
     removeListItem: (path, index) => setValues((cur: unknown) => removeIn(cur, `${path}[${index}]`)),
     touchAll: () => setAllTouched(true),
+    setValues: (next) => {
+      setValues(next);
+      setTouched(new Set());
+      setAllTouched(false);
+    },
   };
 }

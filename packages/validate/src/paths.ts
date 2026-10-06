@@ -79,6 +79,37 @@ export function emptyValue(types: TypeDescriptors, typeName: string): unknown {
   return '';
 }
 
+/**
+ * Shape loaded values (for example parsed from XML) like the form's own state, so they can be edited:
+ * required components exist even if the source left them out, a list is always an array, an amount has both
+ * parts, and every leaf is a string. Anything absent in `value` stays absent (optional) or empty (required).
+ */
+export function hydrate(types: TypeDescriptors, typeName: string, value: unknown): unknown {
+  const t = types[typeName];
+  if (!t) throw new Error(`unknown type ${typeName}`);
+  const str = (v: unknown): string => (typeof v === 'string' ? v : v === undefined || v === null || typeof v === 'object' ? '' : String(v));
+  const src = value !== null && typeof value === 'object' && !Array.isArray(value) ? (value as Record<string, unknown>) : {};
+  if (t.kind === 'amount') return { Ccy: str(src.Ccy), Value: str(src.Value) };
+  if (t.kind === 'choice') {
+    const out: Record<string, unknown> = {};
+    for (const f of t.choiceOptions ?? []) {
+      if (f.name in src) {
+        out[f.name] = hydrate(types, f.type, src[f.name]);
+        break; // exactly one alternative
+      }
+    }
+    return out;
+  }
+  if (t.kind !== 'component') return str(value);
+  const out = initialValue(types, typeName);
+  for (const f of t.fields ?? []) {
+    const v = src[f.name];
+    if (v === undefined) continue;
+    out[f.name] = f.repeat ? (Array.isArray(v) ? v : [v]).map((item) => hydrate(types, f.type, item)) : hydrate(types, f.type, v);
+  }
+  return out;
+}
+
 /** Initial form values: required components exist (so their leaves can be edited), optionals are absent. */
 export function initialValue(types: TypeDescriptors, typeName: string): Record<string, unknown> {
   const t = types[typeName];

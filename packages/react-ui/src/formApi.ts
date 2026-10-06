@@ -33,6 +33,8 @@ export interface FormApi {
   addListItem: (path: string, type: string) => void;
   removeListItem: (path: string, index: number) => void;
   touchAll: () => void;
+  /** Replace all values (for example with data loaded from XML, shaped by `hydrate`) and forget which fields were touched. */
+  setValues: (values: unknown) => void;
 }
 
 export interface FormTarget {

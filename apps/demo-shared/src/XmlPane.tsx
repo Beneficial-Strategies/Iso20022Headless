@@ -7,7 +7,28 @@ import { oneDark } from '@codemirror/theme-one-dark';
 import { useI18n } from '@beneficial-strategies/iso20022-react-ui';
 
 /** Read-only, highlighted view of the generated XML or JSON, with a copy button. */
-export function XmlPane({ xml: text, dark = false, format = 'xml' }: { xml: string; dark?: boolean; format?: 'xml' | 'json' }) {
+export interface PasteButton {
+  label: string;
+  title?: string;
+  disabled: boolean;
+  onClick: () => void;
+}
+
+export function XmlPane({
+  xml: text,
+  dark = false,
+  format = 'xml',
+  paste,
+  onCopied,
+}: {
+  xml: string;
+  dark?: boolean;
+  format?: 'xml' | 'json';
+  /** A paste button next to the copy button. */
+  paste?: PasteButton;
+  /** Called with the text the copy button put on the clipboard. */
+  onCopied?: (text: string) => void;
+}) {
   const host = useRef<HTMLDivElement>(null);
   const view = useRef<EditorView | null>(null);
   const theme = useRef(new Compartment());
@@ -43,12 +64,24 @@ export function XmlPane({ xml: text, dark = false, format = 'xml' }: { xml: stri
 
   return (
     <div className="flex h-full flex-col">
-      <div className="mb-1 flex justify-end">
+      <div className="mb-1 flex justify-end gap-2">
+        {paste ? (
+          <button
+            type="button"
+            disabled={paste.disabled}
+            title={paste.title}
+            className="rounded border border-fg bg-surface px-2 py-0.5 text-xs text-fg hover:bg-surface-alt focus-visible:ring-2 focus-visible:ring-focus disabled:cursor-not-allowed disabled:opacity-50"
+            onClick={paste.onClick}
+          >
+            {paste.label}
+          </button>
+        ) : null}
         <button
           type="button"
           className="rounded bg-fg px-2 py-0.5 text-xs text-surface hover:opacity-80 focus-visible:ring-2 focus-visible:ring-focus"
           onClick={() => {
             void navigator.clipboard.writeText(text).then(() => {
+              onCopied?.(text);
               setCopied(true);
               setTimeout(() => setCopied(false), 1200);
             });

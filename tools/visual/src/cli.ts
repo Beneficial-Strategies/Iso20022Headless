@@ -27,8 +27,12 @@ function arg(argv: string[], flag: string): string | undefined {
 
 const settle = (ms = 300) => new Promise((r) => setTimeout(r, ms));
 
-async function open(browser: Browser, base: string, s: Pick<Scenario, 'query' | 'viewport'>): Promise<{ page: Page; problems: string[] }> {
+async function open(browser: Browser, base: string, s: Pick<Scenario, 'query' | 'viewport' | 'clipboard'>): Promise<{ page: Page; problems: string[] }> {
   const page = await browser.newPage();
+  if (s.clipboard) {
+    // granted: the page may read and write the clipboard without a prompt; denied: all permissions off
+    await browser.defaultBrowserContext().overridePermissions(new URL(base).origin, s.clipboard.access === 'granted' ? ['clipboard-read', 'clipboard-write', 'clipboard-sanitized-write'] : []);
+  }
   const problems: string[] = [];
   await page.setViewport({ ...s.viewport, deviceScaleFactor: 1 });
   page.on('console', (m) => {
@@ -39,6 +43,10 @@ async function open(browser: Browser, base: string, s: Pick<Scenario, 'query' | 
   page.on('pageerror', (e) => problems.push(`page error: ${String(e).slice(0, 240)}`));
   await page.goto(base + (s.query ?? ''), { waitUntil: 'networkidle0' });
   await settle();
+  if (s.clipboard?.text !== undefined) {
+    await page.bringToFront();
+    await page.evaluate((t) => navigator.clipboard.writeText(t), s.clipboard.text);
+  }
   return { page, problems };
 }
 
