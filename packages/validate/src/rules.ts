@@ -10,7 +10,8 @@ import { pruneEmpty, type BooleanRule, type RuleExpression, type RuleGroup, type
  *
  * Paths are `/A/B[*]/C`, relative to the instance. `[*]` ranges over an array: the rule is checked
  * once per element (a rule holds only if it holds for every element); an empty or missing array is
- * checked once with everything under it absent.
+ * checked once with everything under it absent. `[n]` picks one element, counting from 1 as in XPath
+ * (`/A[1]` is the first A, so `Presence(/A[1])` means "there is at least one A").
  *
  * The spec writes code values by NAME (`Cheque`); our values are wire strings (`CHK`). Literals are
  * mapped through the code set of the field being compared. A literal comparison on a field that is
@@ -42,13 +43,18 @@ export interface RuleContext {
 interface Seg {
   name: string;
   each: boolean;
+  /** 1-based position, for `[n]`. */
+  index?: number;
 }
 
 const parseRulePath = (path: string): Seg[] =>
   path
     .split('/')
     .filter(Boolean)
-    .map((p) => ({ name: p.replace(/\[\*\]$/, ''), each: p.endsWith('[*]') }));
+    .map((p): Seg => {
+      const m = /^(.*?)(?:\[(\*|\d+)\])?$/.exec(p)!;
+      return { name: m[1]!, each: m[2] === '*', ...(m[2] && m[2] !== '*' ? { index: Number(m[2]) } : {}) };
+    });
 
 class Unsupported extends Error {
   constructor(readonly issue: Issue) {
@@ -79,6 +85,9 @@ function resolve(instance: unknown, segs: Seg[], binding: Map<string, number>): 
       const i = binding.get(prefix);
       if (i === undefined || i < 0 || !Array.isArray(cur)) return undefined;
       cur = cur[i];
+    } else if (s.index !== undefined) {
+      if (!Array.isArray(cur)) return undefined;
+      cur = cur[s.index - 1];
     }
   }
   return cur;
@@ -95,7 +104,12 @@ function evalRule(ctx: RuleContext, owner: string, r: BooleanRule, instance: unk
     case 'EqualToValue':
     case 'DifferentFromValue': {
       const t = leafType(ctx, owner, segs);
-      const wire = t?.kind === 'code' ? t.options?.find((o) => o.name === r.value || o.value === r.value)?.value : undefined;
+      const wire =
+        t?.kind === 'code'
+          ? t.options?.find((o) => o.name === r.value || o.value === r.value)?.value
+          : t?.kind === 'boolean' && ['true', 'false', '1', '0'].includes(r.value ?? '')
+            ? r.value // indicators are written as "true"/"false" (or "1"/"0")
+            : undefined;
       if (wire === undefined) throw new Unsupported({ code: 'rule_literal_not_code_value', params: { value: r.value, path: r.path } });
       if (value === undefined) return false;
       return r.op === 'EqualToValue' ? value === wire : value !== wire;
@@ -138,7 +152,9 @@ function assertSupported(ctx: RuleContext, owner: string, e: RuleExpression): vo
     for (const r of g?.rules ?? []) {
       if (r.op === 'EqualToValue' || r.op === 'DifferentFromValue') {
         const t = leafType(ctx, owner, parseRulePath(r.path));
-        const known = t?.kind === 'code' && t.options?.some((o) => o.name === r.value || o.value === r.value);
+        const known =
+          (t?.kind === 'code' && t.options?.some((o) => o.name === r.value || o.value === r.value)) ||
+          (t?.kind === 'boolean' && ['true', 'false', '1', '0'].includes(r.value ?? ''));
         if (!known) throw new Unsupported({ code: 'rule_literal_not_code_value', params: { value: r.value, path: r.path } });
       } else if (r.op === 'WithInList' || r.op === 'NotWithInList') {
         if (!ctx.codeLists?.[r.value ?? ''] && !ctx.types[r.value ?? '']?.options) {

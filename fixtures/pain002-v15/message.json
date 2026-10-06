@@ -1,0 +1,41 @@
+{
+  "identifier": "pain.002.001.15",
+  "name": "CustomerPaymentStatusReportV15",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:pain.002.001.15",
+  "bodyTag": "CstmrPmtStsRpt",
+  "out": "pain002",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "5826f1b5-60df-449e-8459-63c26afb2782",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader128",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "OriginalGroupInformationAndStatus",
+      "isoId": "b990ab78-3ea0-4682-9ef5-2e1dfc9895b9",
+      "xmlTag": "OrgnlGrpInfAndSts",
+      "type": "OriginalGroupHeader22",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "OriginalPaymentInformationAndStatus",
+      "isoId": "f09d7713-e82e-4797-b496-eb54848623fb",
+      "xmlTag": "OrgnlPmtInfAndSts",
+      "type": "OriginalPaymentInstruction56",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "577bd1cc-1274-4c70-8675-1765f35ef58c",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

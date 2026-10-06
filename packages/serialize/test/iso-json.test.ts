@@ -1,6 +1,6 @@
 import { XMLParser } from 'fast-xml-parser';
 import { describe, expect, it } from 'vitest';
-import { pain001Message } from '@beneficial-strategies/iso20022-validate';
+import { pain001Message } from '@beneficial-strategies/iso20022-validate/pain001';
 import { serializeFragmentIsoJson, serializeToIsoJson, serializeToXml } from '../src/index.ts';
 
 const sample = () => ({

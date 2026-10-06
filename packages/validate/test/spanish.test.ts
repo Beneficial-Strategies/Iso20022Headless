@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { createDefinitions, typeDescriptors } from '../src/definitions.ts';
+import { createDefinitions } from '../src/definitions.ts';
+import { allTypeDescriptors as typeDescriptors } from '../src/generated/all.ts';
 import { loadDefinitionCatalog, shippedDefinitionLocales } from '../src/locales/index.ts';
 import es from '../src/locales/es.ts';
 

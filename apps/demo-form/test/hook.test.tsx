@@ -3,7 +3,7 @@ import { cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { I18nProvider, SchemaForm, createI18n } from '@beneficial-strategies/iso20022-demo-shared';
 import { useIso20022Form } from '@beneficial-strategies/iso20022-react';
-import { pain001Message, schemas } from '@beneficial-strategies/iso20022-validate';
+import { pain001Message, schemas } from '@beneficial-strategies/iso20022-validate/pain001';
 
 afterEach(cleanup);
 

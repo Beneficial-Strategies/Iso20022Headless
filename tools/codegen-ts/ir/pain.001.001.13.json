@@ -4,6 +4,7 @@
     "name": "CustomerCreditTransferInitiationV13",
     "namespace": "urn:iso:std:iso:20022:tech:xsd:pain.001.001.13",
     "bodyTag": "CstmrCdtTrfInitn",
+    "out": "pain001",
     "blocks": [
       {
         "name": "GroupHeader",

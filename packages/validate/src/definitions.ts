@@ -1,10 +1,9 @@
 // Spec definitions and translated labels. A separate entry point, so validation-only consumers
 // don't bundle ~50 KB of prose.
 import type { FieldDescriptor, TypeDescriptor } from './runtime.ts';
-import { codeDefinitions, codeSetDefinitions, fieldDefinitions, typeDefinitions } from './generated/pain001.definitions.ts';
+import { codeDefinitions, codeSetDefinitions, fieldDefinitions, typeDefinitions } from './generated/definitions.ts';
 
-export * from './generated/pain001.definitions.ts';
-export { typeDescriptors } from './generated/pain001.ts';
+export * from './generated/definitions.ts';
 
 export type TranslationStatus = 'machine' | 'reviewed';
 

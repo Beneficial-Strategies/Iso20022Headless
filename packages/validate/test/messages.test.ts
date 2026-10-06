@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { ZodType } from 'zod';
-import { collectIssues, createMessages, en, es, formatIssue, formatIssues, formatMessage, ISSUE_CODES, schemas } from '../src/index.ts';
+import { collectIssues, createMessages, en, es, formatIssue, formatIssues, formatMessage, ISSUE_CODES } from '../src/index.ts';
+import { schemas } from '../src/generated/pain001.ts';
 
 const errors = (schema: ZodType, v: unknown) => {
   const r = schema.safeParse(v);

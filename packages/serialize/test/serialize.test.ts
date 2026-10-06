@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { pain001Message } from '@beneficial-strategies/iso20022-validate';
+import { pain001Message } from '@beneficial-strategies/iso20022-validate/pain001';
 import { serializeToXml } from '../src/index.ts';
 
 describe('serializeToXml', () => {

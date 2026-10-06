@@ -1,0 +1,23 @@
+codeSetName	isoId	restrictionOf	code	enumName
+ClearingChannel2Code	_a_OEo9p-Ed-ak6NoX_4Aeg_1501459302	ClearingChannelCode	BOOK	BookTransfer
+ClearingChannel2Code	_a_OEo9p-Ed-ak6NoX_4Aeg_1501459302	ClearingChannelCode	MPNS	MassPaymentNetSystem
+ClearingChannel2Code	_a_OEo9p-Ed-ak6NoX_4Aeg_1501459302	ClearingChannelCode	RTGS	RealTimeGrossSettlementSystem
+ClearingChannel2Code	_a_OEo9p-Ed-ak6NoX_4Aeg_1501459302	ClearingChannelCode	RTNS	RealTimeNetSettlementSystem
+ExternalPaymentGroupStatus1Code	_v9bSwWXiEeap-P22vGV91g		*EXTERNAL*	minLength=1 maxLength=4; ~13 codes (not enumerated)
+ExternalPaymentTransactionStatus1Code	_wCGbwZRjEeazAtAtDSg0Nw		*EXTERNAL*	minLength=1 maxLength=4; ~25 codes (not enumerated)
+PaymentMethod4Code	_Z0kPYdp-Ed-ak6NoX_4Aeg_-2121115820	PaymentMethodCode	CHK	Cheque
+PaymentMethod4Code	_Z0kPYdp-Ed-ak6NoX_4Aeg_-2121115820	PaymentMethodCode	DD	DirectDebit
+PaymentMethod4Code	_Z0kPYdp-Ed-ak6NoX_4Aeg_-2121115820	PaymentMethodCode	TRA	TransferAdvice
+PaymentMethod4Code	_Z0kPYdp-Ed-ak6NoX_4Aeg_-2121115820	PaymentMethodCode	TRF	CreditTransfer
+SequenceType3Code	_t90OI1kyEeGeoaLUQk__nA_2097556198	SequenceTypeCode	FNAL	Final
+SequenceType3Code	_t90OI1kyEeGeoaLUQk__nA_2097556198	SequenceTypeCode	FRST	First
+SequenceType3Code	_t90OI1kyEeGeoaLUQk__nA_2097556198	SequenceTypeCode	OOFF	OneOff
+SequenceType3Code	_t90OI1kyEeGeoaLUQk__nA_2097556198	SequenceTypeCode	RCUR	Recurring
+SequenceType3Code	_t90OI1kyEeGeoaLUQk__nA_2097556198	SequenceTypeCode	RPRE	Represented
+SettlementMethod1Code	_ZMCPwdp-Ed-ak6NoX_4Aeg_-115267772	SettlementMethodCode	CLRG	ClearingSystem
+SettlementMethod1Code	_ZMCPwdp-Ed-ak6NoX_4Aeg_-115267772	SettlementMethodCode	COVE	CoverMethod
+SettlementMethod1Code	_ZMCPwdp-Ed-ak6NoX_4Aeg_-115267772	SettlementMethodCode	INDA	InstructedAgent
+SettlementMethod1Code	_ZMCPwdp-Ed-ak6NoX_4Aeg_-115267772	SettlementMethodCode	INGA	InstructingAgent
+ExternalCashClearingSystem1Code	_amVqktp-Ed-ak6NoX_4Aeg_1632765855		*EXTERNAL*	minLength=1 maxLength=3; ~144 codes (not enumerated)
+ExternalChargeType1Code	_t9qdIFkyEeGeoaLUQk__nA_-849686320		*EXTERNAL*	minLength=1 maxLength=4; ~14 codes (not enumerated)
+ExternalStatusReason1Code	_amolhtp-Ed-ak6NoX_4Aeg_1672970561		*EXTERNAL*	minLength=1 maxLength=4; ~315 codes (not enumerated)

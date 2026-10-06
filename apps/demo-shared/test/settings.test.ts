@@ -16,6 +16,7 @@ describe('settings in the URL', () => {
       skin: 'plain',
       lang: 'es',
       format: 'json',
+      message: 'pain.001.001.13',
     });
   });
 
@@ -52,5 +53,14 @@ describe('settings in the URL', () => {
   it('a locale added by the consumer is accepted from the URL', () => {
     expect(parseSettings('?lang=fr', skins, ['en', 'es', 'fr']).lang).toBe('fr');
     expect(parseSettings('?lang=fr', skins).lang).toBe('auto');
+  });
+
+  it('the message comes from the URL when it is one we have; anything else falls back to the default', () => {
+    const ids = ['pain.001.001.13', 'pain.002.001.15'];
+    expect(parseSettings('?message=pain.002.001.15', skins, undefined, ids).message).toBe('pain.002.001.15');
+    expect(parseSettings('?message=pacs.008.001.13', skins, undefined, ids).message).toBe('pain.001.001.13');
+    expect(parseSettings('?message=pain.002.001.15', skins).message).toBe('pain.001.001.13'); // not offered
+    expect(settingsToSearch({ ...DEFAULT_SETTINGS, message: 'pain.002.001.15' })).toBe('?message=pain.002.001.15');
+    expect(settingsToSearch(DEFAULT_SETTINGS)).toBe('');
   });
 });

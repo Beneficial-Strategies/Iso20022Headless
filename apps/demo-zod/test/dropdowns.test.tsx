@@ -2,7 +2,7 @@ import { afterEach, describe, expect, it } from 'vitest';
 import { cleanup, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { SchemaForm } from '@beneficial-strategies/iso20022-demo-shared';
-import { pain001Message, schemas } from '@beneficial-strategies/iso20022-validate';
+import { pain001Message, schemas } from '@beneficial-strategies/iso20022-validate/pain001';
 import { useZodForm } from '../src/useZodForm.ts';
 
 afterEach(cleanup);

@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { descriptorAt, emptyValue, getIn, initialValue, parsePath, pain001Message, pruneForValidation, removeIn, setIn, toPath } from '../src/index.ts';
+import { descriptorAt, emptyValue, getIn, initialValue, parsePath, pruneForValidation, removeIn, setIn, toPath } from '../src/index.ts';
+import { pain001Message } from '../src/generated/pain001.ts';
 
 const types = pain001Message.typeDescriptors;
 const root = pain001Message.rootType;
@@ -38,7 +39,7 @@ describe('path helpers', () => {
 
 describe('pruneForValidation', () => {
   it('keeps required components so each field reports its own error', async () => {
-    const { pruneForValidation, schemas, formatIssues } = await import('../src/index.ts');
+    const { pruneForValidation, formatIssues } = await import('../src/index.ts');
     const form = initialValue(types, root) as Record<string, unknown>; // every field empty
     const pruned = pruneForValidation(types, root, form) as Record<string, unknown>;
     expect(pruned).toHaveProperty('GroupHeader');
@@ -47,7 +48,6 @@ describe('pruneForValidation', () => {
     expect(errors['GroupHeader.MessageIdentification']).toBe('Required');
     expect(errors['GroupHeader']).toBeUndefined(); // not one error for the whole group
     expect(errors['PaymentInformation[0].PaymentMethod']).toBeDefined();
-    void schemas;
   });
 
   it('drops optional components and empty values, keeps entered ones', () => {
