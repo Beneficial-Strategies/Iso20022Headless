@@ -6,9 +6,9 @@ const types = Object.values(typeDescriptors);
 const fields = types.flatMap((t) => [...(t.fields ?? []), ...(t.choiceOptions ?? [])]);
 
 describe('ISO ids on descriptors', () => {
-  it('every type except the synthetic message root has an id; ids are unique', () => {
+  it('every type, including each message root, has an id; ids are unique', () => {
     const missing = types.filter((t) => !t.isoId).map((t) => t.name);
-    expect(missing.sort()).toEqual(['CustomerCreditTransferInitiationV13', 'CustomerPaymentStatusReportV15']);
+    expect(missing).toEqual([]);
     const ids = types.map((t) => t.isoId).filter(Boolean);
     expect(new Set(ids).size).toBe(ids.length);
   });
@@ -54,9 +54,9 @@ describe('definitions are keyed by id and fully covered', () => {
     expect(missing).toEqual([]);
   });
 
-  it('counts match the captures (pain.001 + pain.002): 487 elements, 118 types, 110 codes', () => {
+  it('counts match the captures (pain.001 + pain.002): 487 elements, 120 types, 110 codes', () => {
     expect(Object.keys(fieldDefinitions)).toHaveLength(487);
-    expect(Object.keys(typeDefinitions)).toHaveLength(118);
+    expect(Object.keys(typeDefinitions)).toHaveLength(120);
     expect(Object.keys(codeDefinitions)).toHaveLength(110);
   });
 });

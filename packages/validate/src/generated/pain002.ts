@@ -758,6 +758,7 @@ const ownTypeDescriptors: TypeDescriptors = {
   },
   "CustomerPaymentStatusReportV15": {
     name: "CustomerPaymentStatusReportV15",
+    isoId: "0a3b2906-aae5-4c8c-b5cb-4ce211d29911",
     kind: "component",
     fields: [
       f({ name: "GroupHeader", isoId: "5826f1b5-60df-449e-8459-63c26afb2782", xmlTag: "GrpHdr", displayName: displayName("GroupHeader"), kind: "component", type: "GroupHeader128", required: true }),

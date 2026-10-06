@@ -25,6 +25,11 @@
   --warn-soft: #fffbeb;
   --warn-line: #d97706;
   --warn-fg: #78350f;
+  /* app title bar: an inverse, gradient band that reads as chrome, not as part of the form */
+  --bar-from: #1e1b4b;
+  --bar-to: #4338ca;
+  --bar-fg: #ffffff;
+  --bar-muted: #c7d2fe;
 }
 
 :root[data-theme='dark'] {
@@ -49,6 +54,10 @@
   --warn-soft: #3b2a06;
   --warn-line: #a16207;
   --warn-fg: #fde68a;
+  --bar-from: #020617;
+  --bar-to: #312e81;
+  --bar-fg: #ffffff;
+  --bar-muted: #c7d2fe;
 }
 
 @theme inline {
@@ -72,6 +81,10 @@
   --color-warn-soft: var(--warn-soft);
   --color-warn-line: var(--warn-line);
   --color-warn-fg: var(--warn-fg);
+  --color-bar-from: var(--bar-from);
+  --color-bar-to: var(--bar-to);
+  --color-bar-fg: var(--bar-fg);
+  --color-bar-muted: var(--bar-muted);
 }
 
 /* Text size: everything is in rem, so scaling the root scales the whole UI. */

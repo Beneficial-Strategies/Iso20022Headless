@@ -9599,6 +9599,13 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "type:0a3b2906-aae5-4c8c-b5cb-4ce211d29911": {
+      "text": "Alcance|El mensaje CustomerPaymentStatusReport lo envía una entidad instruida a la parte anterior de la cadena de pago. Se utiliza para informar a esa parte sobre el estado positivo o negativo de una instrucción (individual o de archivo). También se utiliza para informar sobre una instrucción pendiente.|Uso|El mensaje CustomerPaymentStatusReport se intercambia entre una entidad y un cliente que no es una entidad financiera para proporcionar información sobre el estado de instrucciones enviadas anteriormente. Su uso puede estar regulado por un acuerdo bilateral o multilateral entre la entidad y el cliente que no es una entidad financiera.|El mensaje CustomerPaymentStatusReport puede utilizarse para informar sobre el estado (por ejemplo, un rechazo o una aceptación) de la iniciación de una transferencia de crédito, de un adeudo directo, así como de la iniciación de otras instrucciones del cliente.|El mensaje CustomerPaymentStatusReport hace referencia a la(s) instrucción(es) original(es) únicamente mediante referencias o mediante referencias y un conjunto de elementos de la instrucción original.|El mensaje CustomerPaymentStatusReport puede utilizarse en escenarios nacionales y transfronterizos.|El mensaje CustomerPaymentStatusReport también puede enviarse al receptor del pago en un escenario de pago en tiempo real, ya que ambas partes de la operación deben ser informadas de su estado (es decir, que se abona al beneficiario o que la operación es rechazada).",
+      "source": "074021f15662",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "type:11374abc-92e8-4404-9e28-3abe0e95451e": {
       "text": "Proporciona más detalles sobre las operaciones originales a las que se refiere el mensaje de informe de estado.",
       "source": "9641bf69ed14",
@@ -9651,6 +9658,13 @@
     "type:c1b2745a-8979-4069-a0c7-2a93a3ff6de8": {
       "text": "Proporciona detalles adicionales específicos de la operación u operaciones individuales incluidas en el mensaje.",
       "source": "d3030f502fee",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "type:faf24cbe-3869-45f3-a382-ffcd8713ffd3": {
+      "text": "Alcance|El mensaje CustomerCreditTransferInitiation lo envía la parte iniciadora a la entidad de reenvío o a la entidad del ordenante. Se utiliza para solicitar el movimiento de fondos de la cuenta del ordenante a un beneficiario.|Uso|El mensaje CustomerCreditTransferInitiation puede contener una o más instrucciones de transferencia de crédito del cliente.|El mensaje CustomerCreditTransferInitiation se utiliza para intercambiar:|- Una o más instancias de una iniciación de transferencia de crédito;|- Operaciones de pago que dan lugar a transferencias contables en la entidad del ordenante o a pagos a otra entidad financiera;|- Operaciones de pago que dan lugar a una transferencia electrónica de efectivo a la cuenta del beneficiario o a la emisión de un cheque.|El mensaje puede utilizarse en un escenario directo o en un escenario de reenvío:|- En un escenario directo, el mensaje se envía directamente a la entidad del ordenante. La entidad del ordenante es la administradora de la cuenta del ordenante.|- En un escenario de reenvío, el mensaje se envía a una entidad de reenvío. La entidad de reenvío actúa como una entidad financiera concentradora. Reenviará el mensaje CustomerCreditTransferInitiation a la entidad del ordenante.|El mensaje también puede ser utilizado por una parte iniciadora que tenga autoridad para enviarlo en nombre del ordenante. Esto contempla, por ejemplo, el caso de una fábrica de pagos que inicia todos los pagos en nombre de una gran empresa.|El mensaje CustomerCreditTransferInitiation puede utilizarse en escenarios nacionales y transfronterizos.|La entidad del ordenante no debe utilizar el mensaje CustomerCreditTransferInitiation para ejecutar la(s) instrucción(es) de transferencia de crédito. En su lugar, debe utilizarse el mensaje FIToFICustomerCreditTransfer.",
+      "source": "b3bb92255938",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"

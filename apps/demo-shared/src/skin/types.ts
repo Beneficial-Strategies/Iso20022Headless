@@ -61,6 +61,8 @@ export interface Skin {
   /** Header of a repeatable element: title, help, cardinality, add button. */
   ListHeader: (p: { title: string; info: ReactNode; caption: string; action: ReactNode }) => ReactNode;
   ListItem: (p: { removeLabel: string; onRemove: () => void; children: ReactNode }) => ReactNode;
+  /** Heading of the whole form (the message or type being edited), with its help. */
+  Title: (p: { children: ReactNode; info: ReactNode }) => ReactNode;
   /** Help text for an element (spec definition). */
   Info: (p: { def: Localized | undefined; label: string }) => ReactNode;
 }

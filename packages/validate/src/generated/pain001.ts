@@ -725,6 +725,7 @@ const ownTypeDescriptors: TypeDescriptors = {
   },
   "CustomerCreditTransferInitiationV13": {
     name: "CustomerCreditTransferInitiationV13",
+    isoId: "faf24cbe-3869-45f3-a382-ffcd8713ffd3",
     kind: "component",
     fields: [
       f({ name: "GroupHeader", isoId: "4f529681-cc64-42c7-ae7b-39fffcdcad88", xmlTag: "GrpHdr", displayName: displayName("GroupHeader"), kind: "component", type: "GroupHeader114", required: true }),

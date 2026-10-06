@@ -17,6 +17,11 @@ export const plainSkin: Skin = {
   label: 'Plain HTML',
   description: 'Unstyled semantic HTML: fieldset, label, native select, details. Browser defaults only.',
   Stack: ({ children }) => <div>{children}</div>,
+  Title: ({ children, info }) => (
+    <h2>
+      {children} {info}
+    </h2>
+  ),
   Group: function Group({ title, required, info, error, children }) {
     const { t } = useI18n();
     return (

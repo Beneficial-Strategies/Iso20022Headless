@@ -38,6 +38,9 @@ interface MessageConfig {
   bodyTag: string;
   /** Output module name, e.g. pain001. */
   out: string;
+  /** Repository id and spec text of the message definition itself (tooltip for the whole message). */
+  isoId?: string;
+  definition?: string;
   blocks: Block[];
 }
 
@@ -347,7 +350,7 @@ for (const [, cfg] of configs) {
     resolveType(b.type);
     return { name: b.name, isoId: b.isoId, xmlTag: b.xmlTag, type: b.type, kind: ir.get(b.type)!.kind, min: b.min, max: b.max };
   });
-  ir.set(cfg.name, { name: cfg.name, kind: 'component', fields });
+  ir.set(cfg.name, { name: cfg.name, ...(cfg.isoId ? { isoId: cfg.isoId } : {}), kind: 'component', fields });
   rootName.set(cfg.identifier, cfg.name);
 }
 for (const [scope, rules] of rulesByScope) {
@@ -636,6 +639,7 @@ for (const d of dirs) {
   for (const c of rowsOf(d, 'codedefs.tsv', true)) if (ir.has(c[0]!)) codeDefs[c[3]!] = c.slice(4).join('\t').trim();
   for (const c of rowsOf(d, 'codeset-defs.tsv', true)) if (ir.has(c[0]!)) codeSetDefs[c[1]!] = c.slice(2).join('\t').trim();
 }
+for (const cfg of configs.values()) if (cfg.isoId && cfg.definition) typeDefs[cfg.isoId] = cfg.definition;
 const sortedEntries = (o: Record<string, string>): string =>
   Object.keys(o)
     .sort()
