@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Command } from 'cmdk';
 import type { z } from 'zod';
-import { evaluateRules, formatIssue, messageIndex, ruleCodeLists, type MessageBundle, type RuleResult } from '@beneficial-strategies/iso20022-validate';
+import { areaIndex, evaluateRules, formatIssue, messageIndex, ruleCodeLists, type MessageBundle, type RuleResult } from '@beneficial-strategies/iso20022-validate';
 import { DescribedSelect, I18nProvider, Popup, SchemaForm, SkinProvider, skinIds, skins, supportedLocales, useCreateI18n, useI18n, type I18nOverrides, type UiKey, type UseForm } from '@beneficial-strategies/iso20022-react-ui';
 import { serializeFragment, serializeFragmentIsoJson, serializeToIsoJson, serializeToXml } from '@beneficial-strategies/iso20022-serialize';
 import { XmlPane } from './XmlPane.tsx';
@@ -50,7 +50,30 @@ function useMessageBundle(identifier: string): MessageBundle | undefined {
   return bundle;
 }
 
-function MessagePicker({ value, onChange }: { value: string; onChange: (id: string) => void }) {
+/** The first choice: which business area (pain, pacs, ...). Names and descriptions are the repository's, translated where we have it. */
+function AreaPicker({ value, onChange }: { value: string; onChange: (code: string) => void }) {
+  const { t, lang } = useI18n();
+  return (
+    <div className="w-[min(6.5rem,100%)] min-w-0 shrink-0">
+      <DescribedSelect
+        id="area-picker"
+        ariaLabel={t('areaLabel')}
+        value={value}
+        options={areaIndex.map((a) => ({
+          value: a.code,
+          label: a.code,
+          description: lang === 'en' ? `${a.name}: ${a.definition}` : `${t(`areaName_${a.code}` as UiKey)}: ${t(`areaDesc_${a.code}` as UiKey)}`,
+        }))}
+        onChange={(v) => v && onChange(v)}
+        placeholder={t('areaLabel')}
+        allowEmpty={false}
+      />
+    </div>
+  );
+}
+
+/** The second choice: a message of the chosen area. */
+function MessagePicker({ area, value, onChange }: { area: string; value: string; onChange: (id: string) => void }) {
   const { t } = useI18n();
   return (
     <div className="w-[min(9rem,100%)] min-w-0 shrink-0">
@@ -58,9 +81,10 @@ function MessagePicker({ value, onChange }: { value: string; onChange: (id: stri
         id="message-picker"
         ariaLabel={t('messageLabel')}
         value={value}
-        options={messageIndex.map((m) => ({ value: m.identifier, label: m.identifier, description: m.title }))}
+        options={messageIndex.filter((m) => m.area === area).map((m) => ({ value: m.identifier, label: m.identifier, description: m.title }))}
         onChange={(v) => v && onChange(v)}
         placeholder={t('messageLabel')}
+        allowEmpty={false}
       />
     </div>
   );
@@ -379,6 +403,10 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
   // a type chosen for another message does not apply here: fall back to the whole message
   const typeName = bundle && chosenType?.message === settings.message && bundle.typeDescriptors[chosenType.type] ? chosenType.type : bundle?.message.rootType;
   const [incoming, setIncoming] = useState<Incoming | undefined>(undefined);
+  // the area follows the message (a URL, a paste or a file can change the message); switching back to an area returns to its last message
+  const area = messageIndex.find((m) => m.identifier === settings.message)?.area ?? areaIndex[0]!.code;
+  const lastInArea = useRef<Record<string, string>>({});
+  lastInArea.current[area] = settings.message;
   const i18n = useCreateI18n(locale, overrides);
   const skin = skins.find((s) => s.id === settings.skin) ?? skins[0]!;
   return (
@@ -392,7 +420,8 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
             </div>
           </div>
           <div className="flex min-w-0 flex-wrap items-end justify-start gap-2 sm:flex-nowrap sm:justify-end">
-            <MessagePicker value={settings.message} onChange={(message) => update({ message })} />
+            <AreaPicker value={area} onChange={(code) => update({ message: lastInArea.current[code] ?? messageIndex.find((m) => m.area === code)!.identifier })} />
+            <MessagePicker area={area} value={settings.message} onChange={(message) => update({ message })} />
             {bundle && typeName ? <TypePicker bundle={bundle} value={typeName} onChange={(type) => setChosenType({ message: settings.message, type })} /> : null}
             <SettingsPanel settings={settings} skins={skins} locales={locales} onChange={update} />
           </div>

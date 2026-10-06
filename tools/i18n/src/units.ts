@@ -4,7 +4,7 @@ import { codeDefinitions, codeSetDefinitions, fieldDefinitions, typeDefinitions 
 import { displayName } from '../../../packages/validate/src/runtime.ts';
 
 /** The messages whose text the catalog covers (all generated messages). */
-export const MESSAGE = 'pain.001.001.13, pain.002.001.15, pain.007.001.13, pain.008.001.12, pain.009.001.08, pain.010.001.08, pain.011.001.08, pain.012.001.08, pain.013.001.12, pain.014.001.12, pain.017.001.04, pain.018.001.04';
+export const MESSAGE = 'pain.001.001.13, pain.002.001.15, pain.007.001.13, pain.008.001.12, pain.009.001.08, pain.010.001.08, pain.011.001.08, pain.012.001.08, pain.013.001.12, pain.014.001.12, pain.017.001.04, pain.018.001.04, pacs.002.001.16, pacs.003.001.12';
 
 /** Every translatable string of the message, from the generated descriptors and definitions. English only. */
 export function extractUnits(): Unit[] {

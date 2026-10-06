@@ -1,12 +1,98 @@
 [
-  { "name": "CustomerPaymentReversalV13", "id": "bf413c78-37ae-4bd7-bfe4-b88659e3626d", "identifier": "pain.007.001.13", "bodyTag": "CstmrPmtRvsl", "out": "pain007", "dir": "pain007-v13" },
-  { "name": "CustomerDirectDebitInitiationV12", "id": "7869e710-db06-4132-848e-539312ac3db9", "identifier": "pain.008.001.12", "bodyTag": "CstmrDrctDbtInitn", "out": "pain008", "dir": "pain008-v12" },
-  { "name": "MandateInitiationRequestV08", "id": "_R3P4fzEZEe6kQ-WGAhcVPQ", "identifier": "pain.009.001.08", "bodyTag": "MndtInitnReq", "out": "pain009", "dir": "pain009-v08" },
-  { "name": "MandateAmendmentRequestV08", "id": "_R3P4TzEZEe6kQ-WGAhcVPQ", "identifier": "pain.010.001.08", "bodyTag": "MndtAmdmntReq", "out": "pain010", "dir": "pain010-v08" },
-  { "name": "MandateCancellationRequestV08", "id": "_R3P4XzEZEe6kQ-WGAhcVPQ", "identifier": "pain.011.001.08", "bodyTag": "MndtCxlReq", "out": "pain011", "dir": "pain011-v08" },
-  { "name": "MandateAcceptanceReportV08", "id": "_R3P4PzEZEe6kQ-WGAhcVPQ", "identifier": "pain.012.001.08", "bodyTag": "MndtAccptncRpt", "out": "pain012", "dir": "pain012-v08" },
-  { "name": "CreditorPaymentActivationRequestV12", "id": "d2b0673a-1f10-4086-ad39-b4f95fef2cb5", "identifier": "pain.013.001.12", "bodyTag": "CdtrPmtActvtnReq", "out": "pain013", "dir": "pain013-v12" },
-  { "name": "CreditorPaymentActivationRequestStatusReportV12", "id": "f36c5c5e-539b-48a7-974d-3cfeeacd209e", "identifier": "pain.014.001.12", "bodyTag": "CdtrPmtActvtnReqStsRpt", "out": "pain014", "dir": "pain014-v12" },
-  { "name": "MandateCopyRequestV04", "id": "_R3P4bzEZEe6kQ-WGAhcVPQ", "identifier": "pain.017.001.04", "bodyTag": "MndtCpyReq", "out": "pain017", "dir": "pain017-v04" },
-  { "name": "MandateSuspensionRequestV04", "id": "_R3P4jTEZEe6kQ-WGAhcVPQ", "identifier": "pain.018.001.04", "bodyTag": "MndtSspnsnReq", "out": "pain018", "dir": "pain018-v04" }
+  {
+    "name": "CustomerPaymentReversalV13",
+    "id": "bf413c78-37ae-4bd7-bfe4-b88659e3626d",
+    "identifier": "pain.007.001.13",
+    "bodyTag": "CstmrPmtRvsl",
+    "out": "pain007",
+    "dir": "pain007-v13"
+  },
+  {
+    "name": "CustomerDirectDebitInitiationV12",
+    "id": "7869e710-db06-4132-848e-539312ac3db9",
+    "identifier": "pain.008.001.12",
+    "bodyTag": "CstmrDrctDbtInitn",
+    "out": "pain008",
+    "dir": "pain008-v12"
+  },
+  {
+    "name": "MandateInitiationRequestV08",
+    "id": "_R3P4fzEZEe6kQ-WGAhcVPQ",
+    "identifier": "pain.009.001.08",
+    "bodyTag": "MndtInitnReq",
+    "out": "pain009",
+    "dir": "pain009-v08"
+  },
+  {
+    "name": "MandateAmendmentRequestV08",
+    "id": "_R3P4TzEZEe6kQ-WGAhcVPQ",
+    "identifier": "pain.010.001.08",
+    "bodyTag": "MndtAmdmntReq",
+    "out": "pain010",
+    "dir": "pain010-v08"
+  },
+  {
+    "name": "MandateCancellationRequestV08",
+    "id": "_R3P4XzEZEe6kQ-WGAhcVPQ",
+    "identifier": "pain.011.001.08",
+    "bodyTag": "MndtCxlReq",
+    "out": "pain011",
+    "dir": "pain011-v08"
+  },
+  {
+    "name": "MandateAcceptanceReportV08",
+    "id": "_R3P4PzEZEe6kQ-WGAhcVPQ",
+    "identifier": "pain.012.001.08",
+    "bodyTag": "MndtAccptncRpt",
+    "out": "pain012",
+    "dir": "pain012-v08"
+  },
+  {
+    "name": "CreditorPaymentActivationRequestV12",
+    "id": "d2b0673a-1f10-4086-ad39-b4f95fef2cb5",
+    "identifier": "pain.013.001.12",
+    "bodyTag": "CdtrPmtActvtnReq",
+    "out": "pain013",
+    "dir": "pain013-v12"
+  },
+  {
+    "name": "CreditorPaymentActivationRequestStatusReportV12",
+    "id": "f36c5c5e-539b-48a7-974d-3cfeeacd209e",
+    "identifier": "pain.014.001.12",
+    "bodyTag": "CdtrPmtActvtnReqStsRpt",
+    "out": "pain014",
+    "dir": "pain014-v12"
+  },
+  {
+    "name": "MandateCopyRequestV04",
+    "id": "_R3P4bzEZEe6kQ-WGAhcVPQ",
+    "identifier": "pain.017.001.04",
+    "bodyTag": "MndtCpyReq",
+    "out": "pain017",
+    "dir": "pain017-v04"
+  },
+  {
+    "name": "MandateSuspensionRequestV04",
+    "id": "_R3P4jTEZEe6kQ-WGAhcVPQ",
+    "identifier": "pain.018.001.04",
+    "bodyTag": "MndtSspnsnReq",
+    "out": "pain018",
+    "dir": "pain018-v04"
+  },
+  {
+    "name": "FIToFIPaymentStatusReportV16",
+    "id": "42d3d142-0665-41d5-b5b7-87bdd32671d8",
+    "identifier": "pacs.002.001.16",
+    "bodyTag": "FIToFIPmtStsRpt",
+    "out": "pacs002",
+    "dir": "pacs002-v16"
+  },
+  {
+    "name": "FIToFICustomerDirectDebitV12",
+    "id": "c2cf0163-0762-45bc-8280-200f601fb57e",
+    "identifier": "pacs.003.001.12",
+    "bodyTag": "FIToFICstmrDrctDbt",
+    "out": "pacs003",
+    "dir": "pacs003-v12"
+  }
 ]

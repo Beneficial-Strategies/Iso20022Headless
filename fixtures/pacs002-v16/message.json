@@ -1,0 +1,43 @@
+{
+  "identifier": "pacs.002.001.16",
+  "name": "FIToFIPaymentStatusReportV16",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:pacs.002.001.16",
+  "bodyTag": "FIToFIPmtStsRpt",
+  "out": "pacs002",
+  "isoId": "42d3d142-0665-41d5-b5b7-87bdd32671d8",
+  "definition": "Scope|The FIToFIPaymentStatusReport message is sent by an instructed agent to the previous party in the payment chain. It is used to inform this party about the positive or negative status of an instruction (either single or file). It is also used to report on a pending instruction.|Usage|The FIToFIPaymentStatusReport message is exchanged between agents to provide status information about instructions previously sent. Its usage may be governed by a bilateral or multilateral agreement between the agents.|The FIToFIPaymentStatusReport message can be used to provide information about the status (e.g. rejection, acceptance) of a credit transfer instruction, a direct debit instruction, as well as other intra-agent instructions (for example FIToFIPaymentCancellationRequest).|The FIToFIPaymentStatusReport message refers to the original instruction(s) by means of references only or by means of references and a set of elements from the original instruction.|The FIToFIPaymentStatusReport message can be used in domestic and cross-border scenarios.|The FIToFIPaymentStatusReport may also be sent to the receiver of the payment in a real time payment scenario, as both sides of the transactions must be informed of the status of the transaction (for example either the beneficiary is credited, or the transaction is rejected).",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "41a5ecc4-8d71-4335-b39a-cb6d2d06607e",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader120",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "OriginalGroupInformationAndStatus",
+      "isoId": "3bb44617-e520-49e3-bcff-c1a8332471d3",
+      "xmlTag": "OrgnlGrpInfAndSts",
+      "type": "OriginalGroupHeader22",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "89146242-eb93-4413-9216-547f57d5271e",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "TransactionInformationAndStatus",
+      "isoId": "beb71d07-a6f5-4d42-8dae-cfde1a2cb7ae",
+      "xmlTag": "TxInfAndSts",
+      "type": "PaymentTransaction177",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

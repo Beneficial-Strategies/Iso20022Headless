@@ -1,4 +1,6 @@
 export * from './generated/shared.ts';
+export * from './generated/pacs002.ts';
+export * from './generated/pacs003.ts';
 export * from './generated/pain001.ts';
 export * from './generated/pain002.ts';
 export * from './generated/pain007.ts';

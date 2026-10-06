@@ -369,6 +369,26 @@ export interface DatePeriod3 {
   ToDate?: string;
 }
 
+export interface MandateRelatedInformation16 {
+  MandateIdentification?: string;
+  DateOfSignature?: string;
+  AmendmentIndicator?: 'true' | 'false';
+  AmendmentInformationDetails?: AmendmentInformationDetails15;
+  ElectronicSignature?: string;
+  FirstCollectionDate?: string;
+  FinalCollectionDate?: string;
+  Frequency?: Frequency36Choice;
+  Reason?: MandateSetupReason1Choice;
+  TrackingDays?: string;
+}
+
+export interface DirectDebitTransaction12 {
+  CreditorSchemeIdentification?: PartyIdentification272;
+  MandateRelatedInformation?: MandateRelatedInformation16;
+  PreNotificationDate?: string;
+  PreNotificationIdentification?: string;
+}
+
 export interface PartyAndSignature4 {
   Party: PartyIdentification272;
   Signature: string;
@@ -546,19 +566,6 @@ export type MandateReason1Choice =
   | { Code: string }
   | { Proprietary: string };
 
-export interface MandateRelatedInformation16 {
-  MandateIdentification?: string;
-  DateOfSignature?: string;
-  AmendmentIndicator?: 'true' | 'false';
-  AmendmentInformationDetails?: AmendmentInformationDetails15;
-  ElectronicSignature?: string;
-  FirstCollectionDate?: string;
-  FinalCollectionDate?: string;
-  Frequency?: Frequency36Choice;
-  Reason?: MandateSetupReason1Choice;
-  TrackingDays?: string;
-}
-
 export type MandateRelatedData5Choice =
   | { DirectDebitMandate: MandateRelatedInformation16 }
   | { CreditTransferMandate: CreditTransferMandateData1 };
@@ -567,6 +574,27 @@ export interface NumberOfTransactionsPerStatus5 {
   DetailedNumberOfTransactions: string;
   DetailedStatus: string;
   DetailedControlSum?: string;
+}
+
+export type StatusReason6Choice =
+  | { Code: string }
+  | { Proprietary: string };
+
+export interface StatusReasonInformation14 {
+  Originator?: PartyIdentification272;
+  Reason?: StatusReason6Choice;
+  AdditionalInformation?: Array<string>;
+}
+
+export interface OriginalGroupHeader22 {
+  OriginalMessageIdentification: string;
+  OriginalMessageNameIdentification: string;
+  OriginalCreationDateTime?: string;
+  OriginalNumberOfTransactions?: string;
+  OriginalControlSum?: string;
+  GroupStatus?: string;
+  StatusReasonInformation?: Array<StatusReasonInformation14>;
+  NumberOfTransactionsPerStatus?: Array<NumberOfTransactionsPerStatus5>;
 }
 
 export type OriginalMandate10Choice =
@@ -779,16 +807,6 @@ export interface RemittanceLocationData2 {
 export interface RemittanceLocation8 {
   RemittanceIdentification?: string;
   RemittanceLocationDetails?: Array<RemittanceLocationData2>;
-}
-
-export type StatusReason6Choice =
-  | { Code: string }
-  | { Proprietary: string };
-
-export interface StatusReasonInformation14 {
-  Originator?: PartyIdentification272;
-  Reason?: StatusReason6Choice;
-  AdditionalInformation?: Array<string>;
 }
 
 export interface SupplementaryData1 {

@@ -327,6 +327,95 @@ function fileScenarios(): Scenario[] {
   ];
 }
 
+// ---------------------------------------------------------------------------- the area dropdown (pain, pacs)
+
+const optionsOf = (page: Page): Promise<string[]> => page.evaluate(() => [...document.querySelectorAll('[role=option]')].map((o) => o.textContent ?? ''));
+const messageIs = (page: Page, id: string): Promise<boolean> => page.evaluate((i) => (document.querySelector('#message-picker')?.textContent ?? '').includes(i), id);
+
+function areaScenarios(): Scenario[] {
+  const base = { app: 'demo-form' as const, viewport: { width: 1440, height: 900 } };
+  return [
+    {
+      ...base,
+      name: 'area-dropdown-open',
+      steps: async (page) => {
+        await page.locator('#area-picker').click();
+        await settle(400);
+      },
+      expect: async (page) => {
+        const o = await optionsOf(page);
+        const problems: string[] = [];
+        if (o.length !== 2) problems.push(`expected two areas, found ${o.length}`);
+        if (!o.some((x) => /^pain.*Payments Initiation: Messages that support the initiation of a payment/.test(x))) problems.push(`pain is not described: ${JSON.stringify(o)}`);
+        if (!o.some((x) => /^pacs.*Payments Clearing and Settlement: Messages that support the clearing and settlement/.test(x))) problems.push(`pacs is not described: ${JSON.stringify(o)}`);
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'area-dropdown-open-spanish',
+      query: '?lang=es',
+      steps: async (page) => {
+        await page.locator('#area-picker').click();
+        await settle(400);
+      },
+      expect: async (page) => {
+        const o = await optionsOf(page);
+        return o.some((x) => /Iniciación de pagos: Mensajes que respaldan la iniciación/.test(x)) && o.some((x) => /Compensación y liquidación de pagos: Mensajes que respaldan/.test(x)) ? [] : [`not in Spanish: ${JSON.stringify(o)}`];
+      },
+    },
+    {
+      ...base,
+      name: 'area-switch-to-pacs-and-back',
+      query: '?message=pain.008.001.12',
+      steps: async (page) => {
+        await page.locator('#area-picker').click();
+        await settle(300);
+        await clickText(page, '[role=option]', /^pacs/);
+        await settle(900);
+      },
+      expect: async (page) => {
+        const problems: string[] = [];
+        if (!(await messageIs(page, 'pacs.002.001.16'))) problems.push('choosing pacs did not select the first pacs message');
+        const title = await page.evaluate(() => document.querySelector('[data-schema-form] h2')?.textContent ?? '');
+        if (!/FI To FI Payment Status Report/.test(title)) problems.push(`the form is "${title}"`);
+        // the message list now holds only pacs messages, each described
+        await page.locator('#message-picker').click();
+        await settle(300);
+        const o = await optionsOf(page);
+        if (o.length !== 2 || !o.every((x) => x.startsWith('pacs.'))) problems.push(`message list is ${JSON.stringify(o)}`);
+        if (!o.some((x) => /pacs\.003\.001\.12.*FI To FI Customer Direct Debit/.test(x))) problems.push('messages are not described');
+        await page.keyboard.press('Escape');
+        await settle(200);
+        // back to pain: the message used there before is remembered
+        await page.locator('#area-picker').click();
+        await settle(300);
+        await clickText(page, '[role=option]', /^pain/);
+        await settle(900);
+        if (!(await messageIs(page, 'pain.008.001.12'))) problems.push('going back to pain did not return to pain.008.001.12');
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'area-follows-a-pasted-message',
+      query: '?message=pain.002.001.15',
+      clipboard: { access: 'granted', text: '<Document xmlns="urn:iso:std:iso:20022:tech:xsd:pacs.002.001.16"><FIToFIPmtStsRpt><GrpHdr><MsgId>P-1</MsgId></GrpHdr></FIToFIPmtStsRpt></Document>' },
+      steps: async (page) => {
+        await pasteButton(page, /^Paste XML$/);
+        await clickText(page, '[aria-label="XML preview"] button', /^(Paste)/);
+        await settle(1000);
+      },
+      expect: async (page) => {
+        const area = await page.evaluate(() => document.querySelector('#area-picker')?.textContent ?? '');
+        return /pacs/.test(area) && (await messageIs(page, 'pacs.002.001.16')) && (await fieldValue(page, 'GroupHeader-MessageIdentification')) === 'P-1'
+          ? []
+          : [`the area did not follow the message: area "${area}"`];
+      },
+    },
+  ];
+}
+
 export const scenarios: Scenario[] = [
   { name: 'default', app: 'demo-form', viewport: { width: 1440, height: 900 } },
   {
@@ -377,8 +466,8 @@ export const scenarios: Scenario[] = [
     },
   },
   { name: 'pain002-dark-spanish', app: 'demo-zod', query: '?message=pain.002.001.15&theme=dark&lang=es', viewport: { width: 1440, height: 900 } },
-  // every other pain message loads and renders (generated, so a new message only needs its identifier added here)
-  ...['pain.007.001.13', 'pain.008.001.12', 'pain.009.001.08', 'pain.010.001.08', 'pain.011.001.08', 'pain.012.001.08', 'pain.013.001.12', 'pain.014.001.12', 'pain.017.001.04', 'pain.018.001.04'].map(
+  // every other message (pain and pacs) loads and renders (generated, so a new message only needs its identifier added here)
+  ...['pain.007.001.13', 'pain.008.001.12', 'pain.009.001.08', 'pain.010.001.08', 'pain.011.001.08', 'pain.012.001.08', 'pain.013.001.12', 'pain.014.001.12', 'pain.017.001.04', 'pain.018.001.04', 'pacs.002.001.16', 'pacs.003.001.12'].map(
     (id): Scenario => ({
       name: `message-${id}`,
       app: 'demo-form',
@@ -587,6 +676,7 @@ export const scenarios: Scenario[] = [
   },
   ...pasteScenarios(),
   ...fileScenarios(),
+  ...areaScenarios(),
   { name: 'type-picker-open-narrow', app: 'demo-form', viewport: { width: 480, height: 900 }, steps: openType },
   { name: 'display-open', app: 'demo-form', viewport: { width: 1440, height: 900 }, steps: openDisplay },
   { name: 'display-open-narrow-spanish', app: 'demo-form', query: '?lang=es', viewport: { width: 480, height: 900 }, steps: openDisplay },

@@ -1,0 +1,14 @@
+[
+  {
+    "code": "pain",
+    "name": "Payments Initiation",
+    "isoId": "_sPjJomtdEeCY4-KZ9JEyUQ_-735475843",
+    "definition": "Messages that support the initiation of a payment from the ordering customer to a financial institution that services a cash account and reporting its status."
+  },
+  {
+    "code": "pacs",
+    "name": "Payments Clearing and Settlement",
+    "isoId": "_sPQOvmtdEeCY4-KZ9JEyUQ_-735475843",
+    "definition": "Messages that support the clearing and settlement processes for payment transactions between financial institutions."
+  }
+]

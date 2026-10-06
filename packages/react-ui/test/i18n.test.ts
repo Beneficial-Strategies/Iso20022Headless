@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
+import { areaIndex, messageIndex } from '@beneficial-strategies/iso20022-validate';
 import { allTypeDescriptors as typeDescriptors } from '@beneficial-strategies/iso20022-validate/all';
 import { createI18n, supportedLocales } from '../src/i18n/context.tsx';
-import { UI_KEYS, uiEn, uiEs } from '../src/i18n/messages.ts';
+import { UI_KEYS, uiEn, uiEs, type UiKey } from '../src/i18n/messages.ts';
 
 const method = typeDescriptors.PaymentInstruction51!.fields!.find((f) => f.name === 'PaymentMethod')!;
 
@@ -64,5 +65,24 @@ describe('consumer overrides', () => {
     const i = createI18n('es', overrides);
     expect(i.defs.field(method, typeDescriptors[method.type])).toEqual({ text: 'Medio de pago.', lang: 'es' });
     expect(i.defs.label(method, 'Payment Method').text).toBe('Método de pago');
+  });
+});
+
+describe('business areas (the first dropdown)', () => {
+  it('every area has a name and description in English and Spanish, and the English matches the registry', () => {
+    expect(areaIndex.length).toBeGreaterThan(1);
+    for (const a of areaIndex) {
+      expect(uiEn[`areaName_${a.code}` as UiKey], a.code).toBe(a.name);
+      expect(uiEn[`areaDesc_${a.code}` as UiKey], a.code).toBe(a.definition);
+      expect(uiEs[`areaName_${a.code}` as UiKey], a.code).toBeTruthy();
+      expect(uiEs[`areaDesc_${a.code}` as UiKey], a.code).toBeTruthy();
+    }
+  });
+
+  it('every message belongs to a listed area, and every listed area has a message', () => {
+    const codes = new Set(areaIndex.map((a) => a.code));
+    for (const m of messageIndex) expect(codes.has(m.area), m.identifier).toBe(true);
+    for (const a of areaIndex) expect(messageIndex.some((m) => m.area === a.code), a.code).toBe(true);
+    expect(messageIndex.every((m) => m.identifier.startsWith(`${m.area}.`))).toBe(true);
   });
 });

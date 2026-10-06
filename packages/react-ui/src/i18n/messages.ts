@@ -24,6 +24,8 @@ const KEYS = [
   'pasteXml', 'pasteJson', 'paste', 'pasteNoData', 'pasteBlocked', 'pasteUnknown', 'pasteDone', 'pasteDoneIssues', 'pasteSwitched', 'pasteFailed', 'pasteDismiss', 'pasteMoreIssues', 'pasteError_empty', 'pasteError_not_xml_or_json', 'pasteError_unknown_namespace', 'pasteError_xml_syntax', 'pasteError_json_syntax', 'pasteError_not_json_object', 'pasteError_wrong_root', 'pasteError_wrong_body', 'pasteError_whole_message_for_part', 'pasteError_fragment_mismatch', 'pasteError_clipboard_unreadable', 'pasteIssue_unknown_element', 'pasteIssue_duplicate_element', 'pasteIssue_multiple_choices', 'pasteIssue_unexpected_text', 'pasteIssue_unexpected_element',
   // files and deployment
   'loadFile', 'saveXml', 'saveJson', 'fileDone', 'fileDoneIssues', 'fileFailed', 'fileError_empty', 'fileError_not_xml_or_json', 'fileError_unreadable', 'fileError_too_large', 'stepServe', 'noteServe',
+  // business areas (the first dropdown): English text is the repository's; keep it equal to the registry (a test checks)
+  'areaLabel', 'areaName_pain', 'areaDesc_pain', 'areaName_pacs', 'areaDesc_pacs',
 ] as const;
 
 export type UiKey = (typeof KEYS)[number];
@@ -178,6 +180,11 @@ export const uiEn: UiMessages = {
   fileError_too_large: 'The file is too large (the limit is 20 MB).',
   stepServe: 'When you deploy',
   noteServe: 'Bundlers name each built file after its content, so a changed file always gets a new name. Serve those files with a long cache lifetime and browsers download them once, then keep them; also turn on Brotli compression if your host offers it (about 20% smaller than gzip).',
+  areaLabel: 'Area',
+  areaName_pain: 'Payments Initiation',
+  areaDesc_pain: 'Messages that support the initiation of a payment from the ordering customer to a financial institution that services a cash account and reporting its status.',
+  areaName_pacs: 'Payments Clearing and Settlement',
+  areaDesc_pacs: 'Messages that support the clearing and settlement processes for payment transactions between financial institutions.',
 };
 
 const plural = (n: number | string | undefined, one: string, many: string): string => (Number(n) === 1 ? one : many);
@@ -327,6 +334,11 @@ export const uiEs: UiMessages = {
   fileError_too_large: 'El archivo es demasiado grande (el límite es 20 MB).',
   stepServe: 'Al desplegar',
   noteServe: 'Los empaquetadores dan a cada archivo generado un nombre basado en su contenido, así que un archivo modificado siempre tiene un nombre nuevo. Sirva esos archivos con una vigencia de caché larga y los navegadores los descargarán una sola vez y los conservarán; active también la compresión Brotli si su servidor la ofrece (alrededor de un 20 % menor que gzip).',
+  areaLabel: 'Área',
+  areaName_pain: 'Iniciación de pagos',
+  areaDesc_pain: 'Mensajes que respaldan la iniciación de un pago desde el cliente ordenante hacia una entidad financiera que administra una cuenta de efectivo, y la comunicación de su estado.',
+  areaName_pacs: 'Compensación y liquidación de pagos',
+  areaDesc_pacs: 'Mensajes que respaldan los procesos de compensación y liquidación de operaciones de pago entre entidades financieras.',
 };
 
 /** Languages shipped with the demo. Others can be added through `createI18n` / `DemoApp`'s `i18n` prop. */

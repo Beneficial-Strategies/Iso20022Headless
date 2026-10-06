@@ -22,8 +22,8 @@ const results = (v: unknown) => evaluateRules(ctx, pain002Message.rootType, v);
 const status = (v: unknown, rule: string) => results(v).find((r) => r.rule === rule)?.status;
 
 describe('the message registry', () => {
-  const ALL = ['pain.001.001.13', 'pain.002.001.15', 'pain.007.001.13', 'pain.008.001.12', 'pain.009.001.08', 'pain.010.001.08', 'pain.011.001.08', 'pain.012.001.08', 'pain.013.001.12', 'pain.014.001.12', 'pain.017.001.04', 'pain.018.001.04'];
-  it('lists every pain message and loads each on demand', async () => {
+  const ALL = ['pain.001.001.13', 'pain.002.001.15', 'pain.007.001.13', 'pain.008.001.12', 'pain.009.001.08', 'pain.010.001.08', 'pain.011.001.08', 'pain.012.001.08', 'pain.013.001.12', 'pain.014.001.12', 'pain.017.001.04', 'pain.018.001.04', 'pacs.002.001.16', 'pacs.003.001.12'];
+  it('lists every message (pain, then pacs) and loads each on demand', async () => {
     expect(messageIndex.map((m) => m.identifier)).toEqual(ALL);
     expect(messageIndex.map((m) => m.module)).toEqual(ALL.map((id) => id.slice(0, 8).replace('.', '')));
     const loaded = await Promise.all(messageIndex.map((m) => m.load()));

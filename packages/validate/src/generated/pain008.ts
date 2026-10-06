@@ -87,6 +87,7 @@ import {
   AmendmentInformationDetails15Schema,
   Max1025TextSchema,
   MandateRelatedInformation16Schema,
+  DirectDebitTransaction12Schema,
   ActiveOrHistoricCurrencyAndAmountSchema,
   UUIDv4IdentifierSchema,
   PaymentIdentification6Schema,
@@ -175,13 +176,6 @@ export const GroupHeader118Schema = z.strictObject({
   NumberOfTransactions: Max15NumericTextSchema,
 });
 
-export const DirectDebitTransaction12Schema = z.strictObject({
-  CreditorSchemeIdentification: PartyIdentification272Schema.optional(),
-  MandateRelatedInformation: MandateRelatedInformation16Schema.optional(),
-  PreNotificationDate: ISODateSchema.optional(),
-  PreNotificationIdentification: Max35TextSchema.optional(),
-});
-
 export const DirectDebitTransactionInformation34Schema = z.strictObject({
   ChargeBearer: ChargeBearerType1CodeSchema.optional(),
   Debtor: PartyIdentification272Schema,
@@ -247,17 +241,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "InitiatingParty", isoId: "_2vIcmzEyEe6g-ffJsqGiSA", xmlTag: "InitgPty", displayName: displayName("InitiatingParty"), kind: "component", type: "PartyIdentification272", required: true }),
       f({ name: "MessageIdentification", isoId: "_2vIckTEyEe6g-ffJsqGiSA", xmlTag: "MsgId", displayName: displayName("MessageIdentification"), kind: "text", type: "Max35Text", required: true }),
       f({ name: "NumberOfTransactions", isoId: "_2vIclzEyEe6g-ffJsqGiSA", xmlTag: "NbOfTxs", displayName: displayName("NumberOfTransactions"), kind: "text", type: "Max15NumericText", required: true }),
-    ],
-  },
-  "DirectDebitTransaction12": {
-    name: "DirectDebitTransaction12",
-    isoId: "_wuFgITEyEe6g-ffJsqGiSA",
-    kind: "component",
-    fields: [
-      f({ name: "CreditorSchemeIdentification", isoId: "_wwc3ozEyEe6g-ffJsqGiSA", xmlTag: "CdtrSchmeId", displayName: displayName("CreditorSchemeIdentification"), kind: "component", type: "PartyIdentification272", required: false }),
-      f({ name: "MandateRelatedInformation", isoId: "_wwc3oTEyEe6g-ffJsqGiSA", xmlTag: "MndtRltdInf", displayName: displayName("MandateRelatedInformation"), kind: "component", type: "MandateRelatedInformation16", required: false }),
-      f({ name: "PreNotificationDate", isoId: "_wwc3pzEyEe6g-ffJsqGiSA", xmlTag: "PreNtfctnDt", displayName: displayName("PreNotificationDate"), kind: "date", type: "ISODate", required: false }),
-      f({ name: "PreNotificationIdentification", isoId: "_wwc3pTEyEe6g-ffJsqGiSA", xmlTag: "PreNtfctnId", displayName: displayName("PreNotificationIdentification"), kind: "text", type: "Max35Text", required: false }),
     ],
   },
   "DirectDebitTransactionInformation34": {
@@ -420,6 +403,7 @@ export const typeDescriptors: TypeDescriptors = {
   "AmendmentInformationDetails15": sharedTypeDescriptors["AmendmentInformationDetails15"]!,
   "Max1025Text": sharedTypeDescriptors["Max1025Text"]!,
   "MandateRelatedInformation16": sharedTypeDescriptors["MandateRelatedInformation16"]!,
+  "DirectDebitTransaction12": sharedTypeDescriptors["DirectDebitTransaction12"]!,
   "ActiveOrHistoricCurrencyAndAmount": sharedTypeDescriptors["ActiveOrHistoricCurrencyAndAmount"]!,
   "UUIDv4Identifier": sharedTypeDescriptors["UUIDv4Identifier"]!,
   "PaymentIdentification6": sharedTypeDescriptors["PaymentIdentification6"]!,

@@ -13,6 +13,10 @@ import { pruneEmpty, type BooleanRule, type RuleExpression, type RuleGroup, type
  * checked once with everything under it absent. `[n]` picks one element, counting from 1 as in XPath
  * (`/A[1]` is the first A, so `Presence(/A[1])` means "there is at least one A").
  *
+ * A literal `sum of /A/B` is the exact decimal total of every occurrence of `/A/B` (an amount counts by its value).
+ * `/A/@Currency` is the currency of an amount (its `Ccy`). `EqualToNode` / `DifferentFromNode` compare two fields; as in
+ * XPath, comparing with a field that is absent is false for both.
+ *
  * The spec writes code values by NAME (`Cheque`); our values are wire strings (`CHK`). Literals are
  * mapped through the code set of the field being compared. A literal comparison on a field that is
  * not a code (e.g. the pseudo-literal "Branch of DebtorAgent" against a Name) cannot be checked
@@ -79,7 +83,7 @@ function resolve(instance: unknown, segs: Seg[], binding: Map<string, number>): 
   let prefix = '';
   for (const s of segs) {
     if (cur === undefined || cur === null) return undefined;
-    cur = (cur as Record<string, unknown>)[s.name];
+    cur = (cur as Record<string, unknown>)[s.name === '@Currency' ? 'Ccy' : s.name]; // the currency attribute of an amount
     prefix += `/${s.name}`;
     if (s.each) {
       const i = binding.get(prefix);
@@ -93,6 +97,44 @@ function resolve(instance: unknown, segs: Seg[], binding: Map<string, number>): 
   return cur;
 }
 
+/** `sum of /A/B`: the path whose occurrences are added up. */
+const sumPath = (literal: string | undefined): string | undefined => /^sum of (\/\S+)$/.exec(literal ?? '')?.[1];
+
+/** Every value at a path, across all occurrences of every list on the way (no `[*]` needed). */
+function collectAll(instance: unknown, segs: Seg[]): unknown[] {
+  let level: unknown[] = [instance];
+  for (const s of segs) {
+    const next: unknown[] = [];
+    for (const node of level) {
+      if (node === undefined || node === null) continue;
+      const v = (node as Record<string, unknown>)[s.name === '@Currency' ? 'Ccy' : s.name];
+      for (const item of Array.isArray(v) ? v : [v]) if (item !== undefined) next.push(item);
+    }
+    level = next;
+  }
+  return level;
+}
+
+/** A decimal (or an amount's value) as digits and a scale, so sums are exact. Undefined if it is not a decimal. */
+function decimalOf(v: unknown): { n: bigint; scale: number } | undefined {
+  const text = typeof v === 'object' && v !== null ? (v as { Value?: unknown }).Value : v;
+  const m = /^(-?)(\d+)(?:\.(\d+))?$/.exec(String(text ?? ''));
+  if (!m) return undefined;
+  const frac = m[3] ?? '';
+  return { n: BigInt(`${m[1]}${m[2]}${frac}`), scale: frac.length };
+}
+
+/** Is the value at the left of a `sum of` rule equal to the exact sum of the occurrences at the path? */
+function equalsSum(value: unknown, occurrences: unknown[]): boolean {
+  const total = decimalOf(value);
+  if (!total) return false;
+  const parts = occurrences.map(decimalOf);
+  if (parts.some((p) => p === undefined)) return false;
+  const scale = Math.max(total.scale, ...parts.map((p) => p!.scale));
+  const up = (d: { n: bigint; scale: number }): bigint => d.n * 10n ** BigInt(scale - d.scale);
+  return up(total) === parts.reduce((sum, p) => sum + up(p!), 0n);
+}
+
 function evalRule(ctx: RuleContext, owner: string, r: BooleanRule, instance: unknown, binding: Map<string, number>): boolean {
   const segs = parseRulePath(r.path);
   const value = resolve(instance, segs, binding);
@@ -103,6 +145,12 @@ function evalRule(ctx: RuleContext, owner: string, r: BooleanRule, instance: unk
       return value === undefined;
     case 'EqualToValue':
     case 'DifferentFromValue': {
+      const sum = sumPath(r.value);
+      if (sum !== undefined) {
+        if (value === undefined) return false;
+        const equal = equalsSum(value, collectAll(instance, parseRulePath(sum)));
+        return r.op === 'EqualToValue' ? equal : !equal;
+      }
       const t = leafType(ctx, owner, segs);
       const wire =
         t?.kind === 'code'
@@ -113,6 +161,12 @@ function evalRule(ctx: RuleContext, owner: string, r: BooleanRule, instance: unk
       if (wire === undefined) throw new Unsupported({ code: 'rule_literal_not_code_value', params: { value: r.value, path: r.path } });
       if (value === undefined) return false;
       return r.op === 'EqualToValue' ? value === wire : value !== wire;
+    }
+    case 'EqualToNode':
+    case 'DifferentFromNode': {
+      const other = resolve(instance, parseRulePath(r.value ?? ''), binding);
+      if (value === undefined || other === undefined) return false; // nothing to compare: neither equal nor different
+      return r.op === 'EqualToNode' ? String(value) === String(other) : String(value) !== String(other);
     }
     case 'WithInList':
     case 'NotWithInList': {
@@ -139,12 +193,14 @@ function eachLists(e: RuleExpression): { prefix: string; segs: Seg[] }[] {
   const out: { prefix: string; segs: Seg[] }[] = [];
   for (const g of [e.mustBe, e.onCondition]) {
     for (const r of g?.rules ?? []) {
-      const segs = parseRulePath(r.path);
-      let prefix = '';
-      segs.forEach((s, i) => {
-        prefix += `/${s.name}`;
-        if (s.each && !out.some((l) => l.prefix === prefix)) out.push({ prefix, segs: segs.slice(0, i + 1).map((x, j) => (j === i ? { ...x, each: false } : x)) });
-      });
+      for (const path of [r.path, ...(r.op === 'EqualToNode' || r.op === 'DifferentFromNode' ? [r.value ?? ''] : [])]) {
+        const segs = parseRulePath(path);
+        let prefix = '';
+        segs.forEach((s, i) => {
+          prefix += `/${s.name}`;
+          if (s.each && !out.some((l) => l.prefix === prefix)) out.push({ prefix, segs: segs.slice(0, i + 1).map((x, j) => (j === i ? { ...x, each: false } : x)) });
+        });
+      }
     }
   }
   return out;
@@ -154,7 +210,7 @@ function eachLists(e: RuleExpression): { prefix: string; segs: Seg[] }[] {
 function assertSupported(ctx: RuleContext, owner: string, e: RuleExpression): void {
   for (const g of [e.mustBe, e.onCondition]) {
     for (const r of g?.rules ?? []) {
-      if (r.op === 'EqualToValue' || r.op === 'DifferentFromValue') {
+      if ((r.op === 'EqualToValue' || r.op === 'DifferentFromValue') && sumPath(r.value) === undefined) {
         const t = leafType(ctx, owner, parseRulePath(r.path));
         const known =
           (t?.kind === 'code' && t.options?.some((o) => o.name === r.value || o.value === r.value)) ||
