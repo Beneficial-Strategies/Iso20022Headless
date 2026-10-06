@@ -131,16 +131,20 @@ function evalGroup(ctx: RuleContext, owner: string, g: RuleGroup, instance: unkn
   return g.connector === 'AND' ? results.every(Boolean) : results.some(Boolean);
 }
 
-/** Every `[*]` prefix (`/A/B`) used by the rule, in first-seen order. */
-function eachPrefixes(e: RuleExpression): string[] {
-  const out: string[] = [];
+/**
+ * Every `[*]` list used by the rule, outer lists before the lists inside them: the prefix (`/A/B`, which keys the
+ * binding) and the path to the list itself, whose own marker is dropped so that resolving it yields the array.
+ */
+function eachLists(e: RuleExpression): { prefix: string; segs: Seg[] }[] {
+  const out: { prefix: string; segs: Seg[] }[] = [];
   for (const g of [e.mustBe, e.onCondition]) {
     for (const r of g?.rules ?? []) {
+      const segs = parseRulePath(r.path);
       let prefix = '';
-      for (const s of parseRulePath(r.path)) {
+      segs.forEach((s, i) => {
         prefix += `/${s.name}`;
-        if (s.each && !out.includes(prefix)) out.push(prefix);
-      }
+        if (s.each && !out.some((l) => l.prefix === prefix)) out.push({ prefix, segs: segs.slice(0, i + 1).map((x, j) => (j === i ? { ...x, each: false } : x)) });
+      });
     }
   }
   return out;
@@ -168,18 +172,17 @@ function assertSupported(ctx: RuleContext, owner: string, e: RuleExpression): vo
 /** Evaluate one expression against one instance. Throws `Unsupported` for rules that cannot be checked. */
 export function evaluateExpression(ctx: RuleContext, owner: string, e: RuleExpression, instance: unknown): boolean {
   assertSupported(ctx, owner, e);
-  const prefixes = eachPrefixes(e);
-  const lengths = prefixes.map((p) => {
-    const v = resolve(instance, parseRulePath(p), new Map());
-    return Array.isArray(v) ? v.length : 0;
-  });
-  // Cartesian product over each `[*]` range; an empty range is checked once as "-1" (everything absent).
+  // One binding per combination of elements of the `[*]` lists. A list inside another is measured within each chosen
+  // element of the outer one; an empty (or missing) list is checked once as "-1", meaning everything under it is absent.
   let bindings: Map<string, number>[] = [new Map()];
-  prefixes.forEach((p, i) => {
-    const n = lengths[i]!;
-    const idx = n === 0 ? [-1] : Array.from({ length: n }, (_, k) => k);
-    bindings = bindings.flatMap((b) => idx.map((k) => new Map(b).set(p, k)));
-  });
+  for (const { prefix, segs } of eachLists(e)) {
+    bindings = bindings.flatMap((b) => {
+      const v = resolve(instance, segs, b);
+      const n = Array.isArray(v) ? v.length : 0;
+      const idx = n === 0 ? [-1] : Array.from({ length: n }, (_, k) => k);
+      return idx.map((k) => new Map(b).set(prefix, k));
+    });
+  }
   return bindings.every((b) => {
     if (e.onCondition && !evalGroup(ctx, owner, e.onCondition, instance, b)) return true;
     return evalGroup(ctx, owner, e.mustBe, instance, b);

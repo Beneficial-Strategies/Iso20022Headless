@@ -125,3 +125,31 @@ describe('business rule evaluation (PaymentInstruction51)', () => {
     expect(holds({ Items: [{ a: '1' }] })).toBe(true);
   });
 });
+
+describe('lists inside lists: /A[*]/B[*]', () => {
+  const types = {
+    Root: { name: 'Root', kind: 'component' as const, fields: [{ name: 'Flag', xmlTag: 'F', displayName: 'Flag', kind: 'text' as const, type: 'Txt', required: false }, { name: 'Items', xmlTag: 'I', displayName: 'Items', kind: 'component' as const, type: 'Item', required: false, repeat: { min: 0, max: null } }] },
+    Item: { name: 'Item', kind: 'component' as const, fields: [{ name: 'Notes', xmlTag: 'N', displayName: 'Notes', kind: 'text' as const, type: 'Txt', required: false, repeat: { min: 0, max: null } }] },
+    Txt: { name: 'Txt', kind: 'text' as const },
+  };
+  // when Flag is present, no note may exist in any item
+  const expression = {
+    mustBe: { connector: 'OR' as const, rules: [{ op: 'Absence' as const, path: '/Items[*]/Notes[*]' }] },
+    onCondition: { connector: 'AND' as const, rules: [{ op: 'Presence' as const, path: '/Flag' }] },
+  };
+  const holds = (v: unknown) => evaluateExpression({ types }, 'Root', expression, v);
+
+  it('fails when an inner list element exists', () => {
+    expect(holds({ Flag: 'x', Items: [{ Notes: ['n'] }] })).toBe(false);
+  });
+  it('finds the inner element in a later outer element, not only the first', () => {
+    expect(holds({ Flag: 'x', Items: [{}, { Notes: ['n'] }] })).toBe(false);
+    expect(holds({ Flag: 'x', Items: [{ Notes: ['a', 'b'] }, { Notes: ['c'] }] })).toBe(false);
+  });
+  it('passes when every inner list is empty or missing, or the condition does not apply', () => {
+    expect(holds({ Flag: 'x', Items: [{}, {}] })).toBe(true);
+    expect(holds({ Flag: 'x' })).toBe(true);
+    expect(holds({ Items: [{ Notes: ['n'] }] })).toBe(true);
+  });
+});
+

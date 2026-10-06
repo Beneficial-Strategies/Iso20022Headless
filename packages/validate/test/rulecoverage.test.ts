@@ -41,4 +41,17 @@ describe('business rule coverage', () => {
       'PaymentInstruction48.PaymentTypeInformationRule',
     ]);
   });
+
+  it('has exactly one kind of rule with a list inside a list, and a behavior test for it', () => {
+    // evaluateExpression handles /A[*]/B[*] (see rules.test.ts and pain002.test.ts). If another rule ever uses it,
+    // this fails so that someone writes a behavior test for that rule too.
+    const nested: string[] = [];
+    for (const t of Object.values(allTypeDescriptors)) {
+      for (const r of t.rules ?? []) {
+        const paths = [...(r.expression?.mustBe.rules ?? []), ...(r.expression?.onCondition?.rules ?? [])].map((x) => x.path);
+        if (paths.some((p) => (p.match(/\[\*\]/g) ?? []).length >= 2)) nested.push(r.name);
+      }
+    }
+    expect([...new Set(nested)]).toEqual(['StatusReasonInformationRule']);
+  });
 });
