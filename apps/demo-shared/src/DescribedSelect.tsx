@@ -1,10 +1,8 @@
 import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent } from 'react';
 
-export interface DescribedOption {
-  value: string;
-  label: string;
-  description?: string | undefined;
-}
+import type { DescribedOption } from './skin/types.ts';
+
+export type { DescribedOption };
 
 interface Props {
   id: string;
@@ -133,14 +131,14 @@ export function DescribedSelect({ id, value, options, onChange, onBlur, placehol
         aria-describedby={describedBy}
         className={
           className ??
-          'flex w-full items-center justify-between rounded border border-slate-300 bg-white px-2 py-1 text-left text-sm shadow-sm focus:border-indigo-500 focus:outline-none aria-[invalid=true]:border-red-500 aria-[invalid=true]:bg-red-50'
+          'flex w-full items-center justify-between rounded border border-edge bg-surface px-2 py-1 text-left text-sm text-fg shadow-sm focus:border-focus focus:outline-none focus-visible:ring-2 focus-visible:ring-focus aria-[invalid=true]:border-danger-line aria-[invalid=true]:bg-danger-soft'
         }
         onClick={() => (open ? setOpen(false) : openList())}
         onKeyDown={onKeyDown}
         onBlur={() => onBlur?.()}
       >
-        <span className={selected.value === '' ? 'text-slate-500' : ''}>{selected.label}</span>
-        <span aria-hidden="true" className="ml-2 text-xs text-slate-500">▾</span>
+        <span className={selected.value === '' ? 'text-muted' : ''}>{selected.label}</span>
+        <span aria-hidden="true" className="ml-2 text-xs text-muted">▾</span>
       </button>
       {open ? (
         <ul
@@ -148,7 +146,7 @@ export function DescribedSelect({ id, value, options, onChange, onBlur, placehol
           id={listId}
           role="listbox"
           aria-label="Options"
-          className="absolute z-30 mt-1 max-h-72 w-[min(34rem,90vw)] overflow-auto rounded border border-slate-300 bg-white py-1 shadow-lg"
+          className="absolute z-30 mt-1 max-h-72 w-[min(34rem,90vw)] overflow-auto rounded border border-edge bg-surface py-1 text-fg shadow-lg"
         >
           {all.map((o, i) => (
             <li
@@ -156,13 +154,13 @@ export function DescribedSelect({ id, value, options, onChange, onBlur, placehol
               id={`${listId}-${i}`}
               role="option"
               aria-selected={i === selectedIndex}
-              className={`cursor-pointer px-3 py-1.5 text-sm ${i === active ? 'bg-indigo-100' : ''} ${i === selectedIndex ? 'font-semibold' : ''}`}
+              className={`cursor-pointer px-3 py-1.5 text-sm ${i === active ? 'bg-accent-soft' : ''} ${i === selectedIndex ? 'font-semibold' : ''}`}
               onMouseEnter={() => setActive(i)}
               onMouseDown={(e) => e.preventDefault() /* keep focus on the combobox */}
               onClick={() => choose(i)}
             >
-              <div className={o.value === '' ? 'text-slate-500' : ''}>{o.label}</div>
-              {o.description ? <div className="mt-0.5 text-xs font-normal text-slate-600">{oneLine(o.description)}</div> : null}
+              <div className={o.value === '' ? 'text-muted' : ''}>{o.label}</div>
+              {o.description ? <div className="mt-0.5 text-xs font-normal text-muted">{oneLine(o.description)}</div> : null}
             </li>
           ))}
         </ul>

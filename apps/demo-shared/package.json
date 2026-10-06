@@ -17,7 +17,8 @@
     "@codemirror/state": "^6.5.0",
     "@codemirror/view": "^6.38.0",
     "cmdk": "^1.1.1",
-    "codemirror": "^6.0.1"
+    "codemirror": "^6.0.1",
+    "@codemirror/theme-one-dark": "^6.1.2"
   },
   "peerDependencies": {
     "react": ">=18",

@@ -44,7 +44,7 @@ export function Info({ text, label }: { text: string | undefined; label: string 
         aria-label={`About ${label}`}
         aria-expanded={open}
         aria-controls={open ? id : undefined}
-        className="inline-flex h-4 w-4 items-center justify-center rounded-full border border-slate-400 text-[10px] font-semibold leading-none text-slate-600 hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+        className="inline-flex h-4 w-4 items-center justify-center rounded-full border border-edge text-[10px] font-semibold leading-none text-muted hover:bg-surface-alt focus:outline-none focus-visible:ring-2 focus-visible:ring-focus"
         onClick={() => setOpen((o) => !o)}
       >
         i
@@ -53,7 +53,7 @@ export function Info({ text, label }: { text: string | undefined; label: string 
         <span
           id={id}
           role="note"
-          className="absolute left-5 top-0 z-30 block w-72 max-w-[80vw] space-y-1 rounded border border-slate-300 bg-white p-2 text-left text-xs font-normal text-slate-700 shadow-lg"
+          className="absolute left-5 top-0 z-30 block w-72 max-w-[80vw] space-y-1 rounded border border-edge bg-surface p-2 text-left text-xs font-normal text-fg shadow-lg"
         >
           {paragraphs(text).map((p, i) => (
             <span key={i} className="block">

@@ -1,12 +1,8 @@
 import type { FieldDescriptor } from '@beneficial-strategies/iso20022-validate';
-import type { ReactNode } from 'react';
-import type { FormApi } from './formApi.ts';
-import { DescribedSelect } from './DescribedSelect.tsx';
-import { Info, definitionFor } from './Info.tsx';
 import { codeDefinitions } from '@beneficial-strategies/iso20022-validate/definitions';
-
-const inputCls =
-  'w-full rounded border border-slate-300 bg-white px-2 py-1 text-sm shadow-sm focus:border-indigo-500 focus:outline-none aria-[invalid=true]:border-red-500 aria-[invalid=true]:bg-red-50';
+import type { FormApi } from './formApi.ts';
+import { definitionFor } from './Info.tsx';
+import { useSkin } from './skin/context.tsx';
 
 /** Current local time as an ISO 20022 date-time with explicit UTC offset, e.g. 2026-10-05T21:30:00-04:00. */
 function localIsoNow(): string {
@@ -22,32 +18,12 @@ function localIsoNow(): string {
   );
 }
 
-function Label({ htmlFor, field, label, info }: { htmlFor?: string; field: { required: boolean }; label: string; info?: ReactNode }) {
-  return (
-    <div className="mb-0.5 flex items-center gap-1">
-      <label htmlFor={htmlFor} className="block text-xs font-medium text-slate-700">
-        {label}
-        {field.required ? (
-          <>
-            <span aria-hidden="true" className="text-red-600"> *</span>
-            <span className="ml-1 font-normal text-slate-500">(required)</span>
-          </>
-        ) : null}
-      </label>
-      {info}
-    </div>
-  );
-}
+const idOf = (path: string): string => path.replace(/[^A-Za-z0-9]+/g, '-').replace(/-$/, '');
 
 function ErrorText({ form, path }: { form: FormApi; path: string }) {
+  const S = useSkin();
   const msg = form.errors[path];
-  if (!msg) return null;
-  const id = path.replace(/[^A-Za-z0-9]+/g, '-').replace(/-$/, '') + '-error';
-  return (
-    <p id={id} role="alert" className="mt-0.5 text-xs text-red-700">
-      {msg}
-    </p>
-  );
+  return msg ? <S.Error id={`${idOf(path)}-error`}>{msg}</S.Error> : null;
 }
 
 interface NodeProps {
@@ -64,17 +40,24 @@ interface NodeProps {
   depth: number;
 }
 
-function Leaf({ form, field, path, label, required, parentType, noInfo }: NodeProps) {
+function useInfo({ parentType, field, label, noInfo }: Pick<NodeProps, 'parentType' | 'field' | 'label' | 'noInfo'>) {
+  const S = useSkin();
+  return noInfo ? null : <S.Info text={definitionFor(parentType, field)} label={label} />;
+}
+
+function Leaf(p: NodeProps) {
+  const { form, field, path, label, required } = p;
+  const S = useSkin();
+  const info = useInfo(p);
   const t = form.typeDescriptors[field.type]!;
   const props = form.getFieldProps(path);
-  const fieldReq = { required: required ?? field.required };
   let control;
   if (t.kind === 'code' && t.options) {
     const codeDef = props.value ? codeDefinitions[`${t.name}.${props.value}`] : undefined;
     const describedBy = [props['aria-describedby'], codeDef ? `${props.id}-codedef` : ''].filter(Boolean).join(' ');
     control = (
       <>
-        <DescribedSelect
+        <S.Select
           id={props.id}
           value={props.value}
           options={t.options.map((o) => ({ value: o.value, label: `${o.value} — ${o.name}`, description: codeDefinitions[`${t.name}.${o.value}`] }))}
@@ -84,16 +67,12 @@ function Leaf({ form, field, path, label, required, parentType, noInfo }: NodePr
           required={props['aria-required'] === true}
           describedBy={describedBy || undefined}
         />
-        {codeDef ? (
-          <p id={`${props.id}-codedef`} className="mt-0.5 text-xs text-slate-500">
-            {codeDef}
-          </p>
-        ) : null}
+        {codeDef ? <S.Hint id={`${props.id}-codedef`}>{codeDef}</S.Hint> : null}
       </>
     );
   } else if (t.kind === 'boolean') {
     control = (
-      <DescribedSelect
+      <S.Select
         id={props.id}
         value={props.value}
         options={[{ value: 'true', label: 'true' }, { value: 'false', label: 'false' }]}
@@ -105,104 +84,98 @@ function Leaf({ form, field, path, label, required, parentType, noInfo }: NodePr
       />
     );
   } else if (t.kind === 'any') {
-    control = <textarea {...props} rows={2} className={inputCls + ' font-mono'} placeholder="<xml/> (raw XML)" />;
+    control = <S.Text field={props} multiline mono placeholder="<xml/> (raw XML)" />;
   } else {
-    const type = t.kind === 'date' ? 'date' : 'text';
-    const hint =
-      t.kind === 'datetime' ? '2026-10-05T09:30:00Z' : t.kind === 'number' ? 'e.g. 1500.25' : undefined;
+    const hint = t.kind === 'datetime' ? '2026-10-05T09:30:00Z' : t.kind === 'number' ? 'e.g. 1500.25' : undefined;
     const input = (
-      <input {...props} type={type} maxLength={t.maxLength} placeholder={hint} className={inputCls} inputMode={t.kind === 'number' ? 'decimal' : undefined} />
+      <S.Text field={props} type={t.kind === 'date' ? 'date' : 'text'} maxLength={t.maxLength} placeholder={hint} inputMode={t.kind === 'number' ? 'decimal' : undefined} />
     );
     control =
       t.kind === 'datetime' && props.value === '' ? (
-        <div className="flex gap-2">
-          <div className="flex-1">{input}</div>
-          <button
-            type="button"
-            className="rounded bg-slate-700 px-2 text-xs text-white hover:bg-slate-600"
-            aria-label={`Set ${label} to the current local time`}
-            onClick={() => props.onChange(localIsoNow())}
-          >
+        <S.Row weights={['grow', 'fixed']}>
+          {input}
+          <S.Button variant="secondary" ariaLabel={`Set ${label} to the current local time`} onClick={() => props.onChange(localIsoNow())}>
             Now
-          </button>
-        </div>
+          </S.Button>
+        </S.Row>
       ) : (
         input
       );
   }
   return (
-    <div>
-      <Label htmlFor={props.id} field={fieldReq} label={label} info={noInfo ? null : <Info text={definitionFor(parentType, field)} label={label} />} />
+    <S.Field id={props.id} label={label} required={required ?? field.required} info={info} error={<ErrorText form={form} path={path} />}>
       {control}
-      <ErrorText form={form} path={path} />
-    </div>
+    </S.Field>
   );
 }
 
-function AmountNode({ form, field, path, label, required, parentType, noInfo }: NodeProps) {
+function AmountNode(p: NodeProps) {
+  const { form, field, path, label, required } = p;
+  const S = useSkin();
+  const info = useInfo(p);
   const ccy = form.getFieldProps(`${path}.Ccy`);
   const val = form.getFieldProps(`${path}.Value`);
-  const fieldReq = { required: required ?? field.required };
   return (
-    <div>
-      <Label field={fieldReq} label={label} info={noInfo ? null : <Info text={definitionFor(parentType, field)} label={label} />} />
-      <div className="flex gap-2">
-        <div className="w-24">
-          <input {...ccy} placeholder="EUR" aria-label={`${label} currency`} className={inputCls} />
+    <S.Field
+      label={label}
+      required={required ?? field.required}
+      info={info}
+      error={<ErrorText form={form} path={path} />}
+    >
+      <S.Row weights={['fixed', 'grow']}>
+        <div>
+          <S.Text field={ccy} placeholder="EUR" ariaLabel={`${label} currency`} />
           <ErrorText form={form} path={`${path}.Ccy`} />
         </div>
-        <div className="flex-1">
-          <input {...val} placeholder="0.00" inputMode="decimal" aria-label={`${label} amount`} className={inputCls} />
+        <div>
+          <S.Text field={val} placeholder="0.00" inputMode="decimal" ariaLabel={`${label} amount`} />
           <ErrorText form={form} path={`${path}.Value`} />
         </div>
-      </div>
-      <ErrorText form={form} path={path} />
-    </div>
+      </S.Row>
+    </S.Field>
   );
 }
 
-function ChoiceNode({ form, field, path, label, required, depth, parentType, noInfo }: NodeProps) {
+function ChoiceNode(p: NodeProps) {
+  const { form, field, path, label, required, depth } = p;
+  const S = useSkin();
+  const info = useInfo(p);
   const t = form.typeDescriptors[field.type]!;
   const selected = form.getChoice(path);
   const option = t.choiceOptions?.find((o) => o.name === selected);
-  const id = path.replace(/[^A-Za-z0-9]+/g, '-').replace(/-$/, '');
-  const fieldReq = { required: required ?? field.required };
+  const id = idOf(path);
+  const isRequired = required ?? field.required;
   return (
-    <div className="rounded border border-dashed border-slate-300 p-2">
-      <Label htmlFor={id} field={fieldReq} label={`${label} — choose one`} info={noInfo ? null : <Info text={definitionFor(parentType, field)} label={label} />} />
-      <DescribedSelect
-        id={id}
-        value={selected ?? ''}
-        options={(t.choiceOptions ?? []).map((o) => ({ value: o.name, label: o.displayName, description: definitionFor(field.type, o) }))}
-        onChange={(v) => form.selectChoice(path, field.type, v || undefined)}
-        invalid={Boolean(form.errors[path])}
-        required={fieldReq.required}
-        describedBy={form.errors[path] ? `${id}-error` : undefined}
-      />
-      <ErrorText form={form} path={path} />
+    <S.ChoiceBox>
+      <S.Field id={id} label={`${label} — choose one`} required={isRequired} info={info} error={<ErrorText form={form} path={path} />}>
+        <S.Select
+          id={id}
+          value={selected ?? ''}
+          options={(t.choiceOptions ?? []).map((o) => ({ value: o.name, label: o.displayName, description: definitionFor(field.type, o) }))}
+          onChange={(v) => form.selectChoice(path, field.type, v || undefined)}
+          invalid={Boolean(form.errors[path])}
+          required={isRequired}
+          describedBy={form.errors[path] ? `${id}-error` : undefined}
+        />
+      </S.Field>
       {option ? (
-        <div className="mt-2">
-          <ValueNode form={form} field={option} path={`${path}.${option.name}`} label={option.displayName} required depth={depth + 1} parentType={field.type} />
-        </div>
+        <ValueNode form={form} field={option} path={`${path}.${option.name}`} label={option.displayName} required depth={depth + 1} parentType={field.type} />
       ) : null}
-    </div>
+    </S.ChoiceBox>
   );
 }
 
-function ComponentNode({ form, field, path, label, required, depth, parentType, noInfo }: NodeProps) {
+function ComponentNode(p: NodeProps) {
+  const { form, field, path, label, required, depth } = p;
+  const S = useSkin();
+  const info = useInfo(p);
   const t = form.typeDescriptors[field.type]!;
   return (
-    <fieldset className="rounded border border-slate-200 bg-slate-50/60 p-3">
-      <legend className="px-1 text-sm font-semibold text-slate-800">
-        {label}
-        {(required ?? field.required) ? <span className="ml-1 text-xs font-normal text-slate-500">(required)</span> : null}
-        {noInfo ? null : <span className="ml-1 align-middle"><Info text={definitionFor(parentType, field)} label={label} /></span>}
-      </legend>
-      <div className="space-y-3">
-        {t.fields?.map((f) => <FieldNode key={f.name} form={form} field={f} path={`${path}.${f.name}`} label={f.displayName} depth={depth + 1} parentType={t.name} />)}
-      </div>
-      <ErrorText form={form} path={path} />
-    </fieldset>
+    <S.Group title={label} required={required ?? field.required} info={info} error={<ErrorText form={form} path={path} />}>
+      {t.fields?.map((f) => (
+        <FieldNode key={f.name} form={form} field={f} path={`${path}.${f.name}`} label={f.displayName} depth={depth + 1} parentType={t.name} />
+      ))}
+    </S.Group>
   );
 }
 
@@ -215,42 +188,30 @@ function ValueNode(p: NodeProps) {
 }
 
 function FieldNode({ form, field, path, label, depth, parentType }: Omit<NodeProps, 'required'>) {
+  const S = useSkin();
   const t = form.typeDescriptors[field.type]!;
   if (field.repeat) {
     const items = (form.getValue(path) as unknown[] | undefined) ?? [];
     const max = field.repeat.max;
     return (
-      <div className="space-y-2">
-        <div className="flex items-center justify-between">
-          <span className="text-sm font-semibold text-slate-800">
-            {label}
-            <span className="ml-1 align-middle"><Info text={definitionFor(parentType, field)} label={label} /></span>
-            <span className="ml-1 text-xs font-normal text-slate-500">
-              ({field.required ? 'required, ' : ''}{field.repeat.min}..{max ?? '∞'})
-            </span>
-          </span>
-          <button
-            type="button"
-            className="rounded bg-indigo-600 px-2 py-0.5 text-xs text-white hover:bg-indigo-700 disabled:opacity-40"
-            disabled={max !== null && items.length >= max}
-            onClick={() => form.addListItem(path, field.type)}
-          >
-            + Add {label}
-          </button>
-        </div>
-        {items.map((_, i) => (
-          <div key={i} className="relative">
-            <button
-              type="button"
-              aria-label={`Remove ${label} ${i + 1}`}
-              className="absolute right-1 top-1 z-10 rounded bg-white px-1.5 text-xs text-red-700 ring-1 ring-red-300 hover:bg-red-50"
-              onClick={() => form.removeListItem(path, i)}
-            >
-              Remove
-            </button>
-            <ValueNode form={form} field={field} path={`${path}[${i}]`} label={`${label} ${i + 1}`} required depth={depth + 1} parentType={parentType} noInfo />
-          </div>
-        ))}
+      <div>
+        <S.ListHeader
+          title={label}
+          info={<S.Info text={definitionFor(parentType, field)} label={label} />}
+          caption={`${field.required ? 'required, ' : ''}${field.repeat.min}..${max ?? '∞'}`}
+          action={
+            <S.Button disabled={max !== null && items.length >= max} onClick={() => form.addListItem(path, field.type)}>
+              + Add {label}
+            </S.Button>
+          }
+        />
+        <S.Stack>
+          {items.map((_, i) => (
+            <S.ListItem key={i} removeLabel={`Remove ${label} ${i + 1}`} onRemove={() => form.removeListItem(path, i)}>
+              <ValueNode form={form} field={field} path={`${path}[${i}]`} label={`${label} ${i + 1}`} required depth={depth + 1} parentType={parentType} noInfo />
+            </S.ListItem>
+          ))}
+        </S.Stack>
         <ErrorText form={form} path={path} />
       </div>
     );
@@ -258,21 +219,16 @@ function FieldNode({ form, field, path, label, depth, parentType }: Omit<NodePro
   const container = t.kind === 'component' || t.kind === 'choice';
   if (!field.required && container) {
     const present = form.isPresent(path);
-    const id = `include-${path.replace(/[^A-Za-z0-9]+/g, '-')}`;
     return (
       <div>
-        <div className="flex items-center gap-2">
-          <input id={id} type="checkbox" checked={present} onChange={(e) => form.setPresent(path, field.type, e.target.checked)} />
-          <label htmlFor={id} className="text-sm text-slate-700">
-            Include <span className="font-medium">{label}</span> <span className="text-xs text-slate-500">(optional)</span>
-          </label>
-          <Info text={definitionFor(parentType, field)} label={label} />
-        </div>
-        {present ? (
-          <div className="mt-2">
-            <ValueNode form={form} field={field} path={path} label={label} required depth={depth + 1} parentType={parentType} />
-          </div>
-        ) : null}
+        <S.Toggle
+          id={`include-${idOf(path)}`}
+          checked={present}
+          onChange={(c) => form.setPresent(path, field.type, c)}
+          label={label}
+          info={<S.Info text={definitionFor(parentType, field)} label={label} />}
+        />
+        {present ? <ValueNode form={form} field={field} path={path} label={label} required depth={depth + 1} parentType={parentType} /> : null}
       </div>
     );
   }
@@ -281,10 +237,11 @@ function FieldNode({ form, field, path, label, depth, parentType }: Omit<NodePro
 
 /** Generic recursive renderer for any generated type. Demo-only: the library itself renders nothing. */
 export function SchemaForm({ form }: { form: FormApi }) {
+  const S = useSkin();
   const root = form.typeDescriptors[form.rootType]!;
   const fields = root.kind === 'choice' ? [] : (root.fields ?? []);
   return (
-    <div className="space-y-4">
+    <S.Stack>
       {root.kind === 'choice' ? (
         <ChoiceNode
           form={form}
@@ -296,6 +253,6 @@ export function SchemaForm({ form }: { form: FormApi }) {
       ) : (
         fields.map((f) => <FieldNode key={f.name} form={form} field={f} path={f.name} label={f.displayName} depth={0} parentType={root.name} />)
       )}
-    </div>
+    </S.Stack>
   );
 }
