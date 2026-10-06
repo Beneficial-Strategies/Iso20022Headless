@@ -227,7 +227,7 @@ interface Known {
 const KNOWN: Record<string, Known> = {
   '[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}': {
     name: { en: 'BIC (8 or 11 characters)', es: 'BIC (8 u 11 caracteres)' },
-    example: 'DEUTDEFF or DEUTDEFF500',
+    example: 'DEUTDEFF / DEUTDEFF500',
   },
   '[A-Z0-9]{18,18}[0-9]{2,2}': { name: { en: 'LEI (20 characters)', es: 'LEI (20 caracteres)' }, example: '529900T8BM49AURSDO55' },
   '[A-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}': { name: { en: 'IBAN', es: 'IBAN' }, example: 'DE89370400440532013000' },
