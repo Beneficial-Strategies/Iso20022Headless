@@ -20,6 +20,8 @@
     "./pain014": "./src/generated/pain014.ts",
     "./pain017": "./src/generated/pain017.ts",
     "./pain018": "./src/generated/pain018.ts",
+    "./pacs002": "./src/generated/pacs002.ts",
+    "./pacs003": "./src/generated/pacs003.ts",
     "./all": "./src/generated/all.ts"
   },
   "scripts": {

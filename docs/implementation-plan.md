@@ -109,7 +109,7 @@ camt.055 and is not included). **212 types are shared by two or more messages an
 (about 6 to 9 KB gzipped each) because most of each message is shared. Adding the ten messages needed only 43 new components,
 11 new choices, 2 new simple types and 11 new code sets. Business rules: 117 in total, 67 machine-checkable, 48 prose-only
 (guidelines and rules the spec gives only as text), 2 reported as unsupported; see `packages/validate/test/rulecoverage.test.ts`.
-Capture is now mostly scripted from the MCP's `get_spec_snapshot` (`tools/spec-extract`); see `docs/mcp-bulk-export-spec.md`.
+The first message of a second business area (pacs.002 and pacs.003) added only 9 components, because the pacs messages reuse most of the pain types; the demo has an Area dropdown (pain, pacs) before the message dropdown. Capture is now mostly scripted from the MCP's `get_spec_snapshot` (`tools/spec-extract`); see `docs/mcp-bulk-export-spec.md`.
 
 ---
 

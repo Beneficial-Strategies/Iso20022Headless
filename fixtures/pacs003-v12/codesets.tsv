@@ -1,0 +1,7 @@
+codeSetName	isoId	restrictionOf	code	enumName
+Priority3Code	_aKUc8Np-Ed-ak6NoX_4Aeg_1584820248	PriorityCode	HIGH	High
+Priority3Code	_aKUc8Np-Ed-ak6NoX_4Aeg_1584820248	PriorityCode	NORM	Normal
+Priority3Code	_aKUc8Np-Ed-ak6NoX_4Aeg_1584820248	PriorityCode	URGT	Urgent
+SettlementMethod2Code	_ZMCPxtp-Ed-ak6NoX_4Aeg_-673388484	SettlementMethodCode	CLRG	ClearingSystem
+SettlementMethod2Code	_ZMCPxtp-Ed-ak6NoX_4Aeg_-673388484	SettlementMethodCode	INDA	InstructedAgent
+SettlementMethod2Code	_ZMCPxtp-Ed-ak6NoX_4Aeg_-673388484	SettlementMethodCode	INGA	InstructingAgent

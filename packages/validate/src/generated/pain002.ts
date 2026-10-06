@@ -66,6 +66,7 @@ import {
   StatusReasonInformation14Schema,
   ExternalPaymentTransactionStatus1CodeSchema,
   NumberOfTransactionsPerStatus5Schema,
+  OriginalGroupHeader22Schema,
   UUIDv4IdentifierSchema,
   ActiveOrHistoricCurrencyAndAmountSchema,
   ExternalChargeType1CodeSchema,
@@ -185,17 +186,6 @@ export const GroupHeader128Schema = z.strictObject({
   CreditorAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
 });
 
-export const OriginalGroupHeader22Schema = z.strictObject({
-  OriginalMessageIdentification: Max35TextSchema,
-  OriginalMessageNameIdentification: Max35TextSchema,
-  OriginalCreationDateTime: ISODateTimeSchema.optional(),
-  OriginalNumberOfTransactions: Max15NumericTextSchema.optional(),
-  OriginalControlSum: DecimalNumberSchema.optional(),
-  GroupStatus: ExternalPaymentGroupStatus1CodeSchema.optional(),
-  StatusReasonInformation: z.array(StatusReasonInformation14Schema).optional(),
-  NumberOfTransactionsPerStatus: z.array(NumberOfTransactionsPerStatus5Schema).optional(),
-});
-
 export const ActiveCurrencyCodeSchema = textType({pattern: "[A-Z]{3,3}"});
 
 export const CurrencyExchange13Schema = z.strictObject({
@@ -265,25 +255,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "ForwardingAgent", isoId: "_6jjJZzEyEe6g-ffJsqGiSA", xmlTag: "FwdgAgt", displayName: displayName("ForwardingAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
       f({ name: "DebtorAgent", isoId: "_6jjJaTEyEe6g-ffJsqGiSA", xmlTag: "DbtrAgt", displayName: displayName("DebtorAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
       f({ name: "CreditorAgent", isoId: "_6jjJazEyEe6g-ffJsqGiSA", xmlTag: "CdtrAgt", displayName: displayName("CreditorAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
-    ],
-  },
-  "OriginalGroupHeader22": {
-    name: "OriginalGroupHeader22",
-    isoId: "_4qUW4TEyEe6g-ffJsqGiSA",
-    kind: "component",
-    fields: [
-      f({ name: "OriginalMessageIdentification", isoId: "_4smO1TEyEe6g-ffJsqGiSA", xmlTag: "OrgnlMsgId", displayName: displayName("OriginalMessageIdentification"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "OriginalMessageNameIdentification", isoId: "_4smO1zEyEe6g-ffJsqGiSA", xmlTag: "OrgnlMsgNmId", displayName: displayName("OriginalMessageNameIdentification"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "OriginalCreationDateTime", isoId: "_4smO2TEyEe6g-ffJsqGiSA", xmlTag: "OrgnlCreDtTm", displayName: displayName("OriginalCreationDateTime"), kind: "datetime", type: "ISODateTime", required: false }),
-      f({ name: "OriginalNumberOfTransactions", isoId: "_4smO2zEyEe6g-ffJsqGiSA", xmlTag: "OrgnlNbOfTxs", displayName: displayName("OriginalNumberOfTransactions"), kind: "text", type: "Max15NumericText", required: false }),
-      f({ name: "OriginalControlSum", isoId: "_4smO3TEyEe6g-ffJsqGiSA", xmlTag: "OrgnlCtrlSum", displayName: displayName("OriginalControlSum"), kind: "number", type: "DecimalNumber", required: false }),
-      f({ name: "GroupStatus", isoId: "_4smO3zEyEe6g-ffJsqGiSA", xmlTag: "GrpSts", displayName: displayName("GroupStatus"), kind: "code", type: "ExternalPaymentGroupStatus1Code", required: false }),
-      f({ name: "StatusReasonInformation", isoId: "_4smO4TEyEe6g-ffJsqGiSA", xmlTag: "StsRsnInf", displayName: displayName("StatusReasonInformation"), kind: "component", type: "StatusReasonInformation14", required: false, repeat: { min: 0, max: null } }),
-      f({ name: "NumberOfTransactionsPerStatus", isoId: "_4smO4zEyEe6g-ffJsqGiSA", xmlTag: "NbOfTxsPerSts", displayName: displayName("NumberOfTransactionsPerStatus"), kind: "component", type: "NumberOfTransactionsPerStatus5", required: false, repeat: { min: 0, max: null } }),
-    ],
-    rules: [
-      { name: "StatusReasonInformationRule", isoId: "_4smO0TEyEe6g-ffJsqGiSA", text: "If GroupStatus is present and is different from RJCT or PDNG then StatusReasonInformation/AdditionalInformation must be absent.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Absence","path":"/StatusReasonInformation[*]/AdditionalInformation[*]"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/GroupStatus"},{"op":"NotWithInList","path":"/GroupStatus","value":"ValidationRulePendingAndRejected1Code"}]}} },
-      { name: "NumberOfTransactionPerStatusGuideline", isoId: "_4smO0zEyEe6g-ffJsqGiSA", text: "OriginalGroupInformationAndStatus/NumberOfTransactionsPerStatus should only be present if GroupStatus equals 'PART'." },
     ],
   },
   "ActiveCurrencyCode": {
@@ -439,6 +410,7 @@ export const typeDescriptors: TypeDescriptors = {
   "StatusReasonInformation14": sharedTypeDescriptors["StatusReasonInformation14"]!,
   "ExternalPaymentTransactionStatus1Code": sharedTypeDescriptors["ExternalPaymentTransactionStatus1Code"]!,
   "NumberOfTransactionsPerStatus5": sharedTypeDescriptors["NumberOfTransactionsPerStatus5"]!,
+  "OriginalGroupHeader22": sharedTypeDescriptors["OriginalGroupHeader22"]!,
   "UUIDv4Identifier": sharedTypeDescriptors["UUIDv4Identifier"]!,
   "ActiveOrHistoricCurrencyAndAmount": sharedTypeDescriptors["ActiveOrHistoricCurrencyAndAmount"]!,
   "ExternalChargeType1Code": sharedTypeDescriptors["ExternalChargeType1Code"]!,

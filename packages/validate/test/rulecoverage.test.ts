@@ -23,8 +23,8 @@ describe('business rule coverage', () => {
   const named = (status: string) => all.filter((r) => r.result.status === status).map((r) => `${r.type}.${r.rule}`);
 
   it('finds every rule and checks the machine-readable ones', () => {
-    expect(all.length).toBe(117);
-    expect(named('pass').length + named('fail').length).toBe(67);
+    expect(all.length).toBe(149);
+    expect(named('pass').length + named('fail').length).toBe(94);
   });
 
   it('cannot check exactly two rules: a literal that is not a code value, reported and never guessed', () => {

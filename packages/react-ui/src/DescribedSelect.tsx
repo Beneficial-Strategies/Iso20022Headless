@@ -13,6 +13,8 @@ interface Props {
   onChange: (value: string) => void;
   onBlur?: () => void;
   placeholder?: string;
+  /** Offer a blank choice (to clear the field). On by default; turn it off when something must always be chosen. */
+  allowEmpty?: boolean;
   invalid?: boolean;
   required?: boolean;
   describedBy?: string | undefined;
@@ -29,7 +31,7 @@ const oneLine = (s: string): string => s.split('|').map((x) => x.trim()).filter(
  * description. A native <select> cannot render anything but plain text in its options.
  * Keyboard: Arrow Up/Down, Home/End, Enter/Space to choose, Escape to close, type to jump.
  */
-export function DescribedSelect({ id, value, options, onChange, onBlur, placeholder: placeholderProp, invalid, required, describedBy, ariaLabel, className }: Props) {
+export function DescribedSelect({ id, value, options, onChange, onBlur, placeholder: placeholderProp, allowEmpty = true, invalid, required, describedBy, ariaLabel, className }: Props) {
   const { t } = useI18n();
   const placeholder = placeholderProp ?? t('select');
   const listId = useId();
@@ -40,7 +42,7 @@ export function DescribedSelect({ id, value, options, onChange, onBlur, placehol
   const typed = useRef({ text: '', at: 0 });
   const [open, setOpen] = useState(false);
   // The empty "none" entry is always first so a value can be cleared.
-  const all = useMemo<DescribedOption[]>(() => [{ value: '', label: placeholder }, ...options], [options, placeholder]);
+  const all = useMemo<DescribedOption[]>(() => (allowEmpty ? [{ value: '', label: placeholder }, ...options] : options.length > 0 ? options : [{ value: '', label: placeholder }]), [allowEmpty, options, placeholder]);
   const selectedIndex = Math.max(0, all.findIndex((o) => o.value === value));
   const [active, setActive] = useState(selectedIndex);
   const selected = all[selectedIndex]!;

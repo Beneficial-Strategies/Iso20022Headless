@@ -12,13 +12,14 @@ const ctx = { types: allTypeDescriptors, codeLists: ruleCodeLists };
 const segsOf = (path: string) =>
   path.split('/').filter(Boolean).map((p) => {
     const m = /^(.*?)(?:\[(\*|\d+)\])?$/.exec(p)!;
-    return { name: m[1]!, list: m[2] !== undefined };
+    return { name: m[1] === '@Currency' ? 'Ccy' : m[1]!, list: m[2] !== undefined, /** `[n]` needs at least n elements for the nth to exist */ min: m[2] !== undefined && m[2] !== '*' ? Number(m[2]) : 1 };
   });
 
 /** The type a rule path ends at, walking descriptors from the owner. */
 function leafOf(owner: TypeDescriptor, path: string): TypeDescriptor | undefined {
   let t: TypeDescriptor | undefined = owner;
   for (const s of segsOf(path)) {
+    if (s.name === 'Ccy' && t?.kind === 'amount') return undefined; // the currency attribute: a plain code, no options known here
     const f: FieldDescriptor | undefined = [...(t?.fields ?? []), ...(t?.choiceOptions ?? [])].find((x) => x.name === s.name);
     if (!f) return undefined;
     t = allTypeDescriptors[f.type];
@@ -33,7 +34,8 @@ function setAt(root: Record<string, unknown>, path: string, value: unknown): voi
   segs.forEach((s, i) => {
     const last = i === segs.length - 1;
     if (s.list) {
-      const arr = (cur[s.name] as Record<string, unknown>[] | undefined) ?? (cur[s.name] = [{}]);
+      const arr = (cur[s.name] as Record<string, unknown>[] | undefined) ?? (cur[s.name] = []);
+      while (arr.length < s.min) arr.push({});
       if (last) {
         if (arr[0] === undefined || Object.keys(arr[0]).length === 0) arr[0] = value as Record<string, unknown>;
       } else cur = arr[0] as Record<string, unknown>;
@@ -57,15 +59,16 @@ interface Reach {
 function reach(t: TypeDescriptor, rule: RuleDescriptor): Reach | undefined {
   const e = rule.expression!;
   const ops = [...e.mustBe.rules, ...(e.onCondition?.rules ?? [])];
-  const paths = [...new Set(ops.map((r) => r.path))];
+  const nodeOps = ['EqualToNode', 'DifferentFromNode'];
+  const paths = [...new Set(ops.flatMap((r) => (nodeOps.includes(r.op) && r.value ? [r.path, r.value] : [r.path])))];
   // candidate values for each path: absent, a generic value, and every code value the rule or the field knows
   const options = paths.map((p) => {
-    const vals = new Set<string>(['x']);
+    const vals = new Set<string>(['x', '0', '1']); // a word, and decimals for rules that add amounts up
     const leaf = leafOf(t, p);
     for (const o of leaf?.options ?? []) vals.add(o.value);
     for (const r of ops.filter((r) => r.path === p)) {
-      if (r.value && ruleCodeLists[r.value]) for (const v of ruleCodeLists[r.value]!) vals.add(v);
-      if (r.value && allTypeDescriptors[r.value]?.options) for (const o of allTypeDescriptors[r.value]!.options!) vals.add(o.value);
+      if (r.value && !nodeOps.includes(r.op) && ruleCodeLists[r.value]) for (const v of ruleCodeLists[r.value]!) vals.add(v);
+      if (r.value && !nodeOps.includes(r.op) && allTypeDescriptors[r.value]?.options) for (const o of allTypeDescriptors[r.value]!.options!) vals.add(o.value);
       if (leaf?.kind === 'boolean') (vals.add('true'), vals.add('false'));
     }
     vals.add('ZZZZ'); // a value in no list
@@ -105,7 +108,7 @@ describe('every machine-checkable rule can both pass and fail', () => {
   }
 
   it('covers every checkable rule', () => {
-    expect(all.length).toBe(67);
+    expect(all.length).toBe(94);
   });
 
   it('none is stuck always passing or always failing', () => {

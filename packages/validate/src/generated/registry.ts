@@ -8,21 +8,37 @@ export interface MessageBundle {
   typeDescriptors: TypeDescriptors;
 }
 
+export interface AreaInfo {
+  /** The first part of a message identifier, e.g. `pain`. */
+  code: string;
+  name: string;
+  /** The repository's description of the business area. */
+  definition: string;
+}
+
 export interface MessageInfo {
   identifier: string;
   name: string;
   title: string;
+  /** Business area code (`pain`, `pacs`): the first part of the identifier. */
+  area: string;
   /** Entry point under the validate package, e.g. `pain001` for `@beneficial-strategies/iso20022-validate/pain001`. */
   module: string;
   /** Loads the message on demand, so a page only downloads the messages it uses. */
   load: () => Promise<MessageBundle>;
 }
 
+export const areaIndex: readonly AreaInfo[] = [
+  { code: "pain", name: "Payments Initiation", definition: "Messages that support the initiation of a payment from the ordering customer to a financial institution that services a cash account and reporting its status." },
+  { code: "pacs", name: "Payments Clearing and Settlement", definition: "Messages that support the clearing and settlement processes for payment transactions between financial institutions." },
+];
+
 export const messageIndex: readonly MessageInfo[] = [
   {
     identifier: "pain.001.001.13",
     name: "CustomerCreditTransferInitiationV13",
     title: "Customer Credit Transfer Initiation",
+    area: "pain",
     module: "pain001",
     load: () =>
       import('./pain001.ts').then((m) => ({ message: m.pain001Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
@@ -31,6 +47,7 @@ export const messageIndex: readonly MessageInfo[] = [
     identifier: "pain.002.001.15",
     name: "CustomerPaymentStatusReportV15",
     title: "Customer Payment Status Report",
+    area: "pain",
     module: "pain002",
     load: () =>
       import('./pain002.ts').then((m) => ({ message: m.pain002Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
@@ -39,6 +56,7 @@ export const messageIndex: readonly MessageInfo[] = [
     identifier: "pain.007.001.13",
     name: "CustomerPaymentReversalV13",
     title: "Customer Payment Reversal",
+    area: "pain",
     module: "pain007",
     load: () =>
       import('./pain007.ts').then((m) => ({ message: m.pain007Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
@@ -47,6 +65,7 @@ export const messageIndex: readonly MessageInfo[] = [
     identifier: "pain.008.001.12",
     name: "CustomerDirectDebitInitiationV12",
     title: "Customer Direct Debit Initiation",
+    area: "pain",
     module: "pain008",
     load: () =>
       import('./pain008.ts').then((m) => ({ message: m.pain008Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
@@ -55,6 +74,7 @@ export const messageIndex: readonly MessageInfo[] = [
     identifier: "pain.009.001.08",
     name: "MandateInitiationRequestV08",
     title: "Mandate Initiation Request",
+    area: "pain",
     module: "pain009",
     load: () =>
       import('./pain009.ts').then((m) => ({ message: m.pain009Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
@@ -63,6 +83,7 @@ export const messageIndex: readonly MessageInfo[] = [
     identifier: "pain.010.001.08",
     name: "MandateAmendmentRequestV08",
     title: "Mandate Amendment Request",
+    area: "pain",
     module: "pain010",
     load: () =>
       import('./pain010.ts').then((m) => ({ message: m.pain010Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
@@ -71,6 +92,7 @@ export const messageIndex: readonly MessageInfo[] = [
     identifier: "pain.011.001.08",
     name: "MandateCancellationRequestV08",
     title: "Mandate Cancellation Request",
+    area: "pain",
     module: "pain011",
     load: () =>
       import('./pain011.ts').then((m) => ({ message: m.pain011Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
@@ -79,6 +101,7 @@ export const messageIndex: readonly MessageInfo[] = [
     identifier: "pain.012.001.08",
     name: "MandateAcceptanceReportV08",
     title: "Mandate Acceptance Report",
+    area: "pain",
     module: "pain012",
     load: () =>
       import('./pain012.ts').then((m) => ({ message: m.pain012Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
@@ -87,6 +110,7 @@ export const messageIndex: readonly MessageInfo[] = [
     identifier: "pain.013.001.12",
     name: "CreditorPaymentActivationRequestV12",
     title: "Creditor Payment Activation Request",
+    area: "pain",
     module: "pain013",
     load: () =>
       import('./pain013.ts').then((m) => ({ message: m.pain013Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
@@ -95,6 +119,7 @@ export const messageIndex: readonly MessageInfo[] = [
     identifier: "pain.014.001.12",
     name: "CreditorPaymentActivationRequestStatusReportV12",
     title: "Creditor Payment Activation Request Status Report",
+    area: "pain",
     module: "pain014",
     load: () =>
       import('./pain014.ts').then((m) => ({ message: m.pain014Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
@@ -103,6 +128,7 @@ export const messageIndex: readonly MessageInfo[] = [
     identifier: "pain.017.001.04",
     name: "MandateCopyRequestV04",
     title: "Mandate Copy Request",
+    area: "pain",
     module: "pain017",
     load: () =>
       import('./pain017.ts').then((m) => ({ message: m.pain017Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
@@ -111,8 +137,27 @@ export const messageIndex: readonly MessageInfo[] = [
     identifier: "pain.018.001.04",
     name: "MandateSuspensionRequestV04",
     title: "Mandate Suspension Request",
+    area: "pain",
     module: "pain018",
     load: () =>
       import('./pain018.ts').then((m) => ({ message: m.pain018Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "pacs.002.001.16",
+    name: "FIToFIPaymentStatusReportV16",
+    title: "FI To FI Payment Status Report",
+    area: "pacs",
+    module: "pacs002",
+    load: () =>
+      import('./pacs002.ts').then((m) => ({ message: m.pacs002Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "pacs.003.001.12",
+    name: "FIToFICustomerDirectDebitV12",
+    title: "FI To FI Customer Direct Debit",
+    area: "pacs",
+    module: "pacs003",
+    load: () =>
+      import('./pacs003.ts').then((m) => ({ message: m.pacs003Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
 ];

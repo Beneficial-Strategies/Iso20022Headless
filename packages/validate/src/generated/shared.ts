@@ -510,6 +510,30 @@ export const DatePeriod3Schema = z.strictObject({
   ToDate: ISODateSchema.optional(),
 });
 
+export const TrueFalseIndicatorSchema = indicator;
+
+export const Max1025TextSchema = textType({min: 1, max: 1025});
+
+export const MandateRelatedInformation16Schema = z.strictObject({
+  MandateIdentification: Max35TextSchema.optional(),
+  DateOfSignature: ISODateSchema.optional(),
+  AmendmentIndicator: TrueFalseIndicatorSchema.optional(),
+  AmendmentInformationDetails: AmendmentInformationDetails15Schema.optional(),
+  ElectronicSignature: Max1025TextSchema.optional(),
+  FirstCollectionDate: ISODateSchema.optional(),
+  FinalCollectionDate: ISODateSchema.optional(),
+  Frequency: Frequency36ChoiceSchema.optional(),
+  Reason: MandateSetupReason1ChoiceSchema.optional(),
+  TrackingDays: Exact2NumericTextSchema.optional(),
+});
+
+export const DirectDebitTransaction12Schema = z.strictObject({
+  CreditorSchemeIdentification: PartyIdentification272Schema.optional(),
+  MandateRelatedInformation: MandateRelatedInformation16Schema.optional(),
+  PreNotificationDate: ISODateSchema.optional(),
+  PreNotificationIdentification: Max35TextSchema.optional(),
+});
+
 export const SkipPayloadSchema = anyXml;
 
 export const PartyAndSignature4Schema = z.strictObject({
@@ -644,8 +668,6 @@ export const GarnishmentType1Schema = z.strictObject({
   Issuer: Max35TextSchema.optional(),
 });
 
-export const TrueFalseIndicatorSchema = indicator;
-
 export const Garnishment4Schema = z.strictObject({
   Type: GarnishmentType1Schema,
   Garnishee: PartyIdentification272Schema.optional(),
@@ -733,21 +755,6 @@ export const MandateReason1ChoiceSchema = choiceOf({
   Proprietary: Max35TextSchema,
 });
 
-export const Max1025TextSchema = textType({min: 1, max: 1025});
-
-export const MandateRelatedInformation16Schema = z.strictObject({
-  MandateIdentification: Max35TextSchema.optional(),
-  DateOfSignature: ISODateSchema.optional(),
-  AmendmentIndicator: TrueFalseIndicatorSchema.optional(),
-  AmendmentInformationDetails: AmendmentInformationDetails15Schema.optional(),
-  ElectronicSignature: Max1025TextSchema.optional(),
-  FirstCollectionDate: ISODateSchema.optional(),
-  FinalCollectionDate: ISODateSchema.optional(),
-  Frequency: Frequency36ChoiceSchema.optional(),
-  Reason: MandateSetupReason1ChoiceSchema.optional(),
-  TrackingDays: Exact2NumericTextSchema.optional(),
-});
-
 export const MandateRelatedData5ChoiceSchema = choiceOf({
   DirectDebitMandate: MandateRelatedInformation16Schema,
   CreditTransferMandate: CreditTransferMandateData1Schema,
@@ -767,6 +774,28 @@ export const NumberOfTransactionsPerStatus5Schema = z.strictObject({
   DetailedNumberOfTransactions: Max15NumericTextSchema,
   DetailedStatus: ExternalPaymentTransactionStatus1CodeSchema,
   DetailedControlSum: DecimalNumberSchema.optional(),
+});
+
+export const StatusReason6ChoiceSchema = choiceOf({
+  Code: ExternalStatusReason1CodeSchema,
+  Proprietary: Max35TextSchema,
+});
+
+export const StatusReasonInformation14Schema = z.strictObject({
+  Originator: PartyIdentification272Schema.optional(),
+  Reason: StatusReason6ChoiceSchema.optional(),
+  AdditionalInformation: z.array(Max105TextSchema).optional(),
+});
+
+export const OriginalGroupHeader22Schema = z.strictObject({
+  OriginalMessageIdentification: Max35TextSchema,
+  OriginalMessageNameIdentification: Max35TextSchema,
+  OriginalCreationDateTime: ISODateTimeSchema.optional(),
+  OriginalNumberOfTransactions: Max15NumericTextSchema.optional(),
+  OriginalControlSum: DecimalNumberSchema.optional(),
+  GroupStatus: ExternalPaymentGroupStatus1CodeSchema.optional(),
+  StatusReasonInformation: z.array(StatusReasonInformation14Schema).optional(),
+  NumberOfTransactionsPerStatus: z.array(NumberOfTransactionsPerStatus5Schema).optional(),
 });
 
 export const OriginalMandate10ChoiceSchema = choiceOf({
@@ -999,17 +1028,6 @@ export const RemittanceLocationData2Schema = z.strictObject({
 export const RemittanceLocation8Schema = z.strictObject({
   RemittanceIdentification: Max35TextSchema.optional(),
   RemittanceLocationDetails: z.array(RemittanceLocationData2Schema).optional(),
-});
-
-export const StatusReason6ChoiceSchema = choiceOf({
-  Code: ExternalStatusReason1CodeSchema,
-  Proprietary: Max35TextSchema,
-});
-
-export const StatusReasonInformation14Schema = z.strictObject({
-  Originator: PartyIdentification272Schema.optional(),
-  Reason: StatusReason6ChoiceSchema.optional(),
-  AdditionalInformation: z.array(Max105TextSchema).optional(),
 });
 
 export const SupplementaryDataEnvelope1Schema = anyXml;
@@ -2039,6 +2057,50 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "ToDate", isoId: "_Lx7Og0avEemG5fbqCekzMw", xmlTag: "ToDt", displayName: displayName("ToDate"), kind: "date", type: "ISODate", required: false }),
     ],
   },
+  "TrueFalseIndicator": {
+    name: "TrueFalseIndicator",
+    isoId: "_YXvFBNp-Ed-ak6NoX_4Aeg_143431716",
+    kind: "boolean",
+  },
+  "Max1025Text": {
+    name: "Max1025Text",
+    isoId: "_YYer5tp-Ed-ak6NoX_4Aeg_-179722305",
+    kind: "text",
+    minLength: 1,
+    maxLength: 1025,
+  },
+  "MandateRelatedInformation16": {
+    name: "MandateRelatedInformation16",
+    isoId: "_wJuO0TEyEe6g-ffJsqGiSA",
+    kind: "component",
+    fields: [
+      f({ name: "MandateIdentification", isoId: "_wL-RlTEyEe6g-ffJsqGiSA", xmlTag: "MndtId", displayName: displayName("MandateIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "DateOfSignature", isoId: "_wL-RlzEyEe6g-ffJsqGiSA", xmlTag: "DtOfSgntr", displayName: displayName("DateOfSignature"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "AmendmentIndicator", isoId: "_wL-RmTEyEe6g-ffJsqGiSA", xmlTag: "AmdmntInd", displayName: displayName("AmendmentIndicator"), kind: "boolean", type: "TrueFalseIndicator", required: false }),
+      f({ name: "AmendmentInformationDetails", isoId: "_wL-RmzEyEe6g-ffJsqGiSA", xmlTag: "AmdmntInfDtls", displayName: displayName("AmendmentInformationDetails"), kind: "component", type: "AmendmentInformationDetails15", required: false }),
+      f({ name: "ElectronicSignature", isoId: "_wL-RnTEyEe6g-ffJsqGiSA", xmlTag: "ElctrncSgntr", displayName: displayName("ElectronicSignature"), kind: "text", type: "Max1025Text", required: false }),
+      f({ name: "FirstCollectionDate", isoId: "_wL-RnzEyEe6g-ffJsqGiSA", xmlTag: "FrstColltnDt", displayName: displayName("FirstCollectionDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "FinalCollectionDate", isoId: "_wL-RoTEyEe6g-ffJsqGiSA", xmlTag: "FnlColltnDt", displayName: displayName("FinalCollectionDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "Frequency", isoId: "_wL-RozEyEe6g-ffJsqGiSA", xmlTag: "Frqcy", displayName: displayName("Frequency"), kind: "choice", type: "Frequency36Choice", required: false }),
+      f({ name: "Reason", isoId: "_wL-RpTEyEe6g-ffJsqGiSA", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "choice", type: "MandateSetupReason1Choice", required: false }),
+      f({ name: "TrackingDays", isoId: "_wL-RpzEyEe6g-ffJsqGiSA", xmlTag: "TrckgDays", displayName: displayName("TrackingDays"), kind: "text", type: "Exact2NumericText", required: false }),
+    ],
+    rules: [
+      { name: "AmendmentIndicatorTrueRule", isoId: "_wL-RkTEyEe6g-ffJsqGiSA", text: "If AmendmentIndicator is true, then AmendmentInformationDetails must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/AmendmentInformationDetails"}]},"onCondition":{"connector":"AND","rules":[{"op":"EqualToValue","path":"/AmendmentIndicator","value":"true"}]}} },
+      { name: "AmendmentIndicatorFalseRule", isoId: "_wL-RkzEyEe6g-ffJsqGiSA", text: "If AmendmentIndicator is false, then AmendmentInformationDetails is not allowed.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/AmendmentInformationDetails"}]},"onCondition":{"connector":"AND","rules":[{"op":"EqualToValue","path":"/AmendmentIndicator","value":"false"}]}} },
+    ],
+  },
+  "DirectDebitTransaction12": {
+    name: "DirectDebitTransaction12",
+    isoId: "_wuFgITEyEe6g-ffJsqGiSA",
+    kind: "component",
+    fields: [
+      f({ name: "CreditorSchemeIdentification", isoId: "_wwc3ozEyEe6g-ffJsqGiSA", xmlTag: "CdtrSchmeId", displayName: displayName("CreditorSchemeIdentification"), kind: "component", type: "PartyIdentification272", required: false }),
+      f({ name: "MandateRelatedInformation", isoId: "_wwc3oTEyEe6g-ffJsqGiSA", xmlTag: "MndtRltdInf", displayName: displayName("MandateRelatedInformation"), kind: "component", type: "MandateRelatedInformation16", required: false }),
+      f({ name: "PreNotificationDate", isoId: "_wwc3pzEyEe6g-ffJsqGiSA", xmlTag: "PreNtfctnDt", displayName: displayName("PreNotificationDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "PreNotificationIdentification", isoId: "_wwc3pTEyEe6g-ffJsqGiSA", xmlTag: "PreNtfctnId", displayName: displayName("PreNotificationIdentification"), kind: "text", type: "Max35Text", required: false }),
+    ],
+  },
   "SkipPayload": {
     name: "SkipPayload",
     isoId: "_co81cYKXEee7hrXqLO3yQg",
@@ -2335,11 +2397,6 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Issuer", isoId: "_LWYzFYnnEeOORMXOfBk1Bw", xmlTag: "Issr", displayName: displayName("Issuer"), kind: "text", type: "Max35Text", required: false }),
     ],
   },
-  "TrueFalseIndicator": {
-    name: "TrueFalseIndicator",
-    isoId: "_YXvFBNp-Ed-ak6NoX_4Aeg_143431716",
-    kind: "boolean",
-  },
   "Garnishment4": {
     name: "Garnishment4",
     isoId: "_v9i0ETEyEe6g-ffJsqGiSA",
@@ -2475,34 +2532,6 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Proprietary", isoId: "_TOt8x9p-Ed-ak6NoX_4Aeg_193514895", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
     ],
   },
-  "Max1025Text": {
-    name: "Max1025Text",
-    isoId: "_YYer5tp-Ed-ak6NoX_4Aeg_-179722305",
-    kind: "text",
-    minLength: 1,
-    maxLength: 1025,
-  },
-  "MandateRelatedInformation16": {
-    name: "MandateRelatedInformation16",
-    isoId: "_wJuO0TEyEe6g-ffJsqGiSA",
-    kind: "component",
-    fields: [
-      f({ name: "MandateIdentification", isoId: "_wL-RlTEyEe6g-ffJsqGiSA", xmlTag: "MndtId", displayName: displayName("MandateIdentification"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "DateOfSignature", isoId: "_wL-RlzEyEe6g-ffJsqGiSA", xmlTag: "DtOfSgntr", displayName: displayName("DateOfSignature"), kind: "date", type: "ISODate", required: false }),
-      f({ name: "AmendmentIndicator", isoId: "_wL-RmTEyEe6g-ffJsqGiSA", xmlTag: "AmdmntInd", displayName: displayName("AmendmentIndicator"), kind: "boolean", type: "TrueFalseIndicator", required: false }),
-      f({ name: "AmendmentInformationDetails", isoId: "_wL-RmzEyEe6g-ffJsqGiSA", xmlTag: "AmdmntInfDtls", displayName: displayName("AmendmentInformationDetails"), kind: "component", type: "AmendmentInformationDetails15", required: false }),
-      f({ name: "ElectronicSignature", isoId: "_wL-RnTEyEe6g-ffJsqGiSA", xmlTag: "ElctrncSgntr", displayName: displayName("ElectronicSignature"), kind: "text", type: "Max1025Text", required: false }),
-      f({ name: "FirstCollectionDate", isoId: "_wL-RnzEyEe6g-ffJsqGiSA", xmlTag: "FrstColltnDt", displayName: displayName("FirstCollectionDate"), kind: "date", type: "ISODate", required: false }),
-      f({ name: "FinalCollectionDate", isoId: "_wL-RoTEyEe6g-ffJsqGiSA", xmlTag: "FnlColltnDt", displayName: displayName("FinalCollectionDate"), kind: "date", type: "ISODate", required: false }),
-      f({ name: "Frequency", isoId: "_wL-RozEyEe6g-ffJsqGiSA", xmlTag: "Frqcy", displayName: displayName("Frequency"), kind: "choice", type: "Frequency36Choice", required: false }),
-      f({ name: "Reason", isoId: "_wL-RpTEyEe6g-ffJsqGiSA", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "choice", type: "MandateSetupReason1Choice", required: false }),
-      f({ name: "TrackingDays", isoId: "_wL-RpzEyEe6g-ffJsqGiSA", xmlTag: "TrckgDays", displayName: displayName("TrackingDays"), kind: "text", type: "Exact2NumericText", required: false }),
-    ],
-    rules: [
-      { name: "AmendmentIndicatorTrueRule", isoId: "_wL-RkTEyEe6g-ffJsqGiSA", text: "If AmendmentIndicator is true, then AmendmentInformationDetails must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/AmendmentInformationDetails"}]},"onCondition":{"connector":"AND","rules":[{"op":"EqualToValue","path":"/AmendmentIndicator","value":"true"}]}} },
-      { name: "AmendmentIndicatorFalseRule", isoId: "_wL-RkzEyEe6g-ffJsqGiSA", text: "If AmendmentIndicator is false, then AmendmentInformationDetails is not allowed.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/AmendmentInformationDetails"}]},"onCondition":{"connector":"AND","rules":[{"op":"EqualToValue","path":"/AmendmentIndicator","value":"false"}]}} },
-    ],
-  },
   "MandateRelatedData5Choice": {
     name: "MandateRelatedData5Choice",
     isoId: "_RA3lIbvIEfCYYbmqNrQFSg",
@@ -2554,6 +2583,47 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "DetailedNumberOfTransactions", isoId: "_-1rj05RuEeazAtAtDSg0Nw", xmlTag: "DtldNbOfTxs", displayName: displayName("DetailedNumberOfTransactions"), kind: "text", type: "Max15NumericText", required: true }),
       f({ name: "DetailedStatus", isoId: "_-1rj1ZRuEeazAtAtDSg0Nw", xmlTag: "DtldSts", displayName: displayName("DetailedStatus"), kind: "code", type: "ExternalPaymentTransactionStatus1Code", required: true }),
       f({ name: "DetailedControlSum", isoId: "_-1rj15RuEeazAtAtDSg0Nw", xmlTag: "DtldCtrlSum", displayName: displayName("DetailedControlSum"), kind: "number", type: "DecimalNumber", required: false }),
+    ],
+  },
+  "StatusReason6Choice": {
+    name: "StatusReason6Choice",
+    isoId: "_TRGiZtp-Ed-ak6NoX_4Aeg_-1877638998",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_TRGiZ9p-Ed-ak6NoX_4Aeg_-1877638996", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalStatusReason1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_TRGiaNp-Ed-ak6NoX_4Aeg_-1877638936", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
+    ],
+  },
+  "StatusReasonInformation14": {
+    name: "StatusReasonInformation14",
+    isoId: "_xPVMATEyEe6g-ffJsqGiSA",
+    kind: "component",
+    fields: [
+      f({ name: "Originator", isoId: "_xRzRMTEyEe6g-ffJsqGiSA", xmlTag: "Orgtr", displayName: displayName("Originator"), kind: "component", type: "PartyIdentification272", required: false }),
+      f({ name: "Reason", isoId: "_xRzRMzEyEe6g-ffJsqGiSA", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "choice", type: "StatusReason6Choice", required: false }),
+      f({ name: "AdditionalInformation", isoId: "_xRzRNTEyEe6g-ffJsqGiSA", xmlTag: "AddtlInf", displayName: displayName("AdditionalInformation"), kind: "text", type: "Max105Text", required: false, repeat: { min: 0, max: null } }),
+    ],
+    rules: [
+      { name: "StatusReasonRule", isoId: "_xRyqITEyEe6g-ffJsqGiSA", text: "If Reason/Code is equal to NARR, then AddititionalInformation must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/AdditionalInformation[1]"}]},"onCondition":{"connector":"AND","rules":[{"op":"WithInList","path":"/Reason/Code","value":"ValidationRuleNarrative1Code"},{"op":"Presence","path":"/Reason"},{"op":"Presence","path":"/Reason/Code"}]}} },
+    ],
+  },
+  "OriginalGroupHeader22": {
+    name: "OriginalGroupHeader22",
+    isoId: "_4qUW4TEyEe6g-ffJsqGiSA",
+    kind: "component",
+    fields: [
+      f({ name: "OriginalMessageIdentification", isoId: "_4smO1TEyEe6g-ffJsqGiSA", xmlTag: "OrgnlMsgId", displayName: displayName("OriginalMessageIdentification"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "OriginalMessageNameIdentification", isoId: "_4smO1zEyEe6g-ffJsqGiSA", xmlTag: "OrgnlMsgNmId", displayName: displayName("OriginalMessageNameIdentification"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "OriginalCreationDateTime", isoId: "_4smO2TEyEe6g-ffJsqGiSA", xmlTag: "OrgnlCreDtTm", displayName: displayName("OriginalCreationDateTime"), kind: "datetime", type: "ISODateTime", required: false }),
+      f({ name: "OriginalNumberOfTransactions", isoId: "_4smO2zEyEe6g-ffJsqGiSA", xmlTag: "OrgnlNbOfTxs", displayName: displayName("OriginalNumberOfTransactions"), kind: "text", type: "Max15NumericText", required: false }),
+      f({ name: "OriginalControlSum", isoId: "_4smO3TEyEe6g-ffJsqGiSA", xmlTag: "OrgnlCtrlSum", displayName: displayName("OriginalControlSum"), kind: "number", type: "DecimalNumber", required: false }),
+      f({ name: "GroupStatus", isoId: "_4smO3zEyEe6g-ffJsqGiSA", xmlTag: "GrpSts", displayName: displayName("GroupStatus"), kind: "code", type: "ExternalPaymentGroupStatus1Code", required: false }),
+      f({ name: "StatusReasonInformation", isoId: "_4smO4TEyEe6g-ffJsqGiSA", xmlTag: "StsRsnInf", displayName: displayName("StatusReasonInformation"), kind: "component", type: "StatusReasonInformation14", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "NumberOfTransactionsPerStatus", isoId: "_4smO4zEyEe6g-ffJsqGiSA", xmlTag: "NbOfTxsPerSts", displayName: displayName("NumberOfTransactionsPerStatus"), kind: "component", type: "NumberOfTransactionsPerStatus5", required: false, repeat: { min: 0, max: null } }),
+    ],
+    rules: [
+      { name: "StatusReasonInformationRule", isoId: "_4smO0TEyEe6g-ffJsqGiSA", text: "If GroupStatus is present and is different from RJCT or PDNG then StatusReasonInformation/AdditionalInformation must be absent.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Absence","path":"/StatusReasonInformation[*]/AdditionalInformation[*]"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/GroupStatus"},{"op":"NotWithInList","path":"/GroupStatus","value":"ValidationRulePendingAndRejected1Code"}]}} },
+      { name: "NumberOfTransactionPerStatusGuideline", isoId: "_4smO0zEyEe6g-ffJsqGiSA", text: "OriginalGroupInformationAndStatus/NumberOfTransactionsPerStatus should only be present if GroupStatus equals 'PART'." },
     ],
   },
   "OriginalMandate10Choice": {
@@ -2943,28 +3013,6 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     fields: [
       f({ name: "RemittanceIdentification", isoId: "_0KjnATEyEe6g-ffJsqGiSA", xmlTag: "RmtId", displayName: displayName("RemittanceIdentification"), kind: "text", type: "Max35Text", required: false }),
       f({ name: "RemittanceLocationDetails", isoId: "_0KjnAzEyEe6g-ffJsqGiSA", xmlTag: "RmtLctnDtls", displayName: displayName("RemittanceLocationDetails"), kind: "component", type: "RemittanceLocationData2", required: false, repeat: { min: 0, max: null } }),
-    ],
-  },
-  "StatusReason6Choice": {
-    name: "StatusReason6Choice",
-    isoId: "_TRGiZtp-Ed-ak6NoX_4Aeg_-1877638998",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_TRGiZ9p-Ed-ak6NoX_4Aeg_-1877638996", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalStatusReason1Code", required: true }),
-      f({ name: "Proprietary", isoId: "_TRGiaNp-Ed-ak6NoX_4Aeg_-1877638936", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
-    ],
-  },
-  "StatusReasonInformation14": {
-    name: "StatusReasonInformation14",
-    isoId: "_xPVMATEyEe6g-ffJsqGiSA",
-    kind: "component",
-    fields: [
-      f({ name: "Originator", isoId: "_xRzRMTEyEe6g-ffJsqGiSA", xmlTag: "Orgtr", displayName: displayName("Originator"), kind: "component", type: "PartyIdentification272", required: false }),
-      f({ name: "Reason", isoId: "_xRzRMzEyEe6g-ffJsqGiSA", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "choice", type: "StatusReason6Choice", required: false }),
-      f({ name: "AdditionalInformation", isoId: "_xRzRNTEyEe6g-ffJsqGiSA", xmlTag: "AddtlInf", displayName: displayName("AdditionalInformation"), kind: "text", type: "Max105Text", required: false, repeat: { min: 0, max: null } }),
-    ],
-    rules: [
-      { name: "StatusReasonRule", isoId: "_xRyqITEyEe6g-ffJsqGiSA", text: "If Reason/Code is equal to NARR, then AddititionalInformation must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/AdditionalInformation[1]"}]},"onCondition":{"connector":"AND","rules":[{"op":"WithInList","path":"/Reason/Code","value":"ValidationRuleNarrative1Code"},{"op":"Presence","path":"/Reason"},{"op":"Presence","path":"/Reason/Code"}]}} },
     ],
   },
   "SupplementaryDataEnvelope1": {

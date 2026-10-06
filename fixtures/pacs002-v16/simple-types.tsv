@@ -1,0 +1,2 @@
+name	isoId	xsiType	pattern	minLength	maxLength	totalDigits	fractionDigits	minInclusive	maxInclusive	other
+SHA256SignatureText	_GG-XID6vEe-QZYT2pcGFZw	Text	([0-9A-F][0-9A-F]){32}							

@@ -86,3 +86,19 @@ describe('DescribedSelect', () => {
     expect(screen.getByTestId('value').textContent).toBe('TRF');
   });
 });
+
+describe('allowEmpty', () => {
+  const opts = [{ value: 'a', label: 'A' }, { value: 'b', label: 'B' }];
+  it('offers a blank choice by default, so an optional field can be cleared', async () => {
+    const user = userEvent.setup();
+    render(<DescribedSelect id="s" value="a" options={opts} onChange={() => {}} placeholder="Pick" />);
+    await user.click(screen.getByRole('combobox'));
+    expect(screen.getAllByRole('option').map((o) => o.textContent)).toEqual(['Pick', 'A', 'B']);
+  });
+  it('lists only the real choices when something must always be chosen', async () => {
+    const user = userEvent.setup();
+    render(<DescribedSelect id="s" value="a" options={opts} onChange={() => {}} placeholder="Pick" allowEmpty={false} />);
+    await user.click(screen.getByRole('combobox'));
+    expect(screen.getAllByRole('option').map((o) => o.textContent)).toEqual(['A', 'B']);
+  });
+});

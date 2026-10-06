@@ -58,13 +58,22 @@ export interface TypeDescriptor {
   rules?: RuleDescriptor[];
 }
 
-export type RuleOp = 'Presence' | 'Absence' | 'EqualToValue' | 'DifferentFromValue' | 'WithInList' | 'NotWithInList';
+export type RuleOp =
+  | 'Presence'
+  | 'Absence'
+  | 'EqualToValue'
+  | 'DifferentFromValue'
+  | 'WithInList'
+  | 'NotWithInList'
+  // compare with another field: `value` is then a path, not a literal
+  | 'EqualToNode'
+  | 'DifferentFromNode';
 
 export interface BooleanRule {
   op: RuleOp;
   /** Path relative to the owning component, e.g. `/CreditTransferTransactionInformation[*]/CreditorAgent`. */
   path: string;
-  /** Literal (code NAME, as in the spec) or, for list ops, the name of a code set. */
+  /** Literal (code NAME, as in the spec), for list ops the name of a code set, for `…ToNode` ops a path (same syntax as `path`). */
   value?: string;
 }
 
