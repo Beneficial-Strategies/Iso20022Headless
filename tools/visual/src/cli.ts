@@ -15,7 +15,7 @@ import type { Browser, Page } from 'puppeteer-core';
 import { launch } from './browser.ts';
 import { runPageChecks, type Violation } from './checks.ts';
 import { scenarios, type Scenario } from './scenarios.ts';
-import { startApp, type Running } from './servers.ts';
+import { startApp, type AppName, type Running } from './servers.ts';
 import { serveStatic } from './static.ts';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -67,7 +67,7 @@ async function main(argv: string[]): Promise<number> {
   let browser: Browser | undefined;
   try {
     const needed = cmd === 'selftest' ? ['demo-form'] : [...new Set(list.map((s) => s.app))];
-    for (const [i, name] of needed.entries()) apps[name] = await startApp(name as 'demo-form' | 'demo-zod', 5290 + i);
+    for (const [i, name] of needed.entries()) apps[name] = await startApp(name as AppName, 5290 + i);
     browser = await launch();
 
     if (cmd === 'selftest') return await selftest(browser, apps['demo-form']!.url);
@@ -80,7 +80,9 @@ async function main(argv: string[]): Promise<number> {
         await settle();
         await page.screenshot({ path: resolve(out, `${s.name}.png`) });
         if (cmd === 'check') {
-          const found = [...(await runPageChecks(page)).map((v) => `${v.check}: ${v.detail}`), ...problems, ...((await s.expect?.(page)) ?? [])];
+          // the quickstart apps are not the demo, so they have no demo form area
+          const violations = (await runPageChecks(page)).filter((v) => !(s.app.startsWith('quickstart') && v.check === 'no-form-area'));
+          const found = [...violations.map((v) => `${v.check}: ${v.detail}`), ...problems, ...((await s.expect?.(page)) ?? [])];
           if (found.length) failed++;
           console.log(found.length ? `✗ ${s.name}\n${found.map((f) => `    - ${f}`).join('\n')}` : `✓ ${s.name}`);
         } else {

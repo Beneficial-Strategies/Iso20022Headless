@@ -9,7 +9,7 @@ import {
   removeIn,
   setIn,
 } from '@beneficial-strategies/iso20022-validate';
-import type { FieldProps, FormApi, FormTarget } from '@beneficial-strategies/iso20022-demo-shared';
+import type { FieldProps, FormApi, FormTarget } from '@beneficial-strategies/iso20022-react-ui';
 
 /**
  * The same FormApi as the library's hook, built by hand on plain React state + the generated Zod

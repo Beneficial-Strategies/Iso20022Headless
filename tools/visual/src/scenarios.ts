@@ -2,7 +2,7 @@ import type { Page } from 'puppeteer-core';
 
 export interface Scenario {
   name: string;
-  app: 'demo-form' | 'demo-zod';
+  app: 'demo-form' | 'demo-zod' | 'quickstart-react' | 'quickstart-tailwind';
   /** Query string, e.g. `?theme=dark&lang=es`. Settings live in the URL, so no clicking is needed for them. */
   query?: string;
   viewport: { width: number; height: number };
@@ -135,6 +135,90 @@ export const scenarios: Scenario[] = [
       const problems: string[] = [];
       if (!/Not a valid BIC \(8 or 11 characters\)\. Expected: 4 uppercase letters or digits/.test(text)) problems.push(`BIC error is not explanatory: ${text}`);
       if (!/Not a valid LEI \(20 characters\)/.test(text)) problems.push(`LEI error is not explanatory: ${text}`);
+      return problems;
+    },
+  },
+  {
+    name: 'implement-dialog',
+    app: 'demo-form',
+    viewport: { width: 1440, height: 900 },
+    steps: async (page) => {
+      await clickText(page, 'button', /^Implement!$/);
+      await settle(500);
+    },
+    expect: async (page) => {
+      const r = await page.evaluate(() => {
+        const d = document.querySelector('dialog');
+        return { open: Boolean(d?.open), text: d?.textContent ?? '' };
+      });
+      const problems: string[] = [];
+      if (!r.open) problems.push('the Implement! dialog did not open');
+      if (!/not published to npm yet/.test(r.text)) problems.push('the not-yet-published note is missing');
+      if (!/npm install @beneficial-strategies\/iso20022-react-ui/.test(r.text)) problems.push('the install command is missing');
+      if (!/export function CustomerCreditTransferInitiationV13Editor/.test(r.text)) problems.push('the component is not named after the edited type');
+      return problems;
+    },
+  },
+  {
+    name: 'implement-dialog-all-options',
+    app: 'demo-form',
+    viewport: { width: 1440, height: 900 },
+    steps: async (page) => {
+      await clickText(page, 'button', /^Implement!$/);
+      await settle(400);
+      for (const label of [/^Vue$/, /^Svelte$/, /Angular or plain/, /Tailwind CSS v4/, /XML or ISO JSON/]) await clickText(page, 'dialog label', label);
+      await clickText(page, 'dialog label', /^pnpm$/);
+    },
+    expect: async (page) => {
+      const text = await page.evaluate(() => document.querySelector('dialog')?.textContent ?? '');
+      const problems: string[] = [];
+      for (const [re, what] of [
+        [/pnpm add @beneficial-strategies\/iso20022-react-ui/, 'pnpm install command'],
+        [/skin=\{tailwindSkin\}/, 'Tailwind skin in the component'],
+        [/@source "\.\.\/node_modules/, 'Tailwind CSS lines'],
+        [/serializeToXml/, 'XML output for the whole message'],
+        [/newValue = \(\) => initialValue/, 'framework-neutral model'],
+        [/reactive\(newValue\(\)\)/, 'Vue snippet'],
+        [/\$state\(newValue\(\)\)/, 'Svelte snippet'],
+      ] as const) if (!re.test(text)) problems.push(`missing ${what}`);
+      return problems;
+    },
+  },
+  { name: 'implement-dialog-spanish-narrow', app: 'demo-form', query: '?lang=es', viewport: { width: 480, height: 900 }, steps: async (page) => { await clickText(page, 'button', /^¡Implementar!$/); await settle(400); } },
+  {
+    name: 'quickstart-react',
+    app: 'quickstart-react',
+    viewport: { width: 900, height: 700 },
+    steps: async (page) => {
+      await page.locator('#FinancialInstitutionIdentification-BICFI').fill('deutdeff');
+      await page.keyboard.press('Tab');
+      await settle();
+    },
+    expect: async (page) => {
+      const r = await page.evaluate(() => ({ h2: document.querySelector('h2')?.textContent ?? '', alert: document.querySelector('[role=alert]')?.textContent ?? '' }));
+      const problems: string[] = [];
+      if (!/Branch And Financial Institution Identification8/.test(r.h2)) problems.push(`heading is "${r.h2}"`);
+      if (!/Not a valid BIC/.test(r.alert)) problems.push(`BIC error is "${r.alert}"`);
+      return problems;
+    },
+  },
+  {
+    name: 'quickstart-tailwind',
+    app: 'quickstart-tailwind',
+    viewport: { width: 900, height: 700 },
+    steps: async (page) => {
+      await page.locator('#FinancialInstitutionIdentification-BICFI').fill('deutdeff');
+      await page.keyboard.press('Tab');
+      await settle();
+    },
+    expect: async (page) => {
+      const r = await page.evaluate(() => {
+        const input = document.querySelector('#FinancialInstitutionIdentification-BICFI');
+        return { radius: input ? getComputedStyle(input).borderRadius : '', alert: document.querySelector('[role=alert]')?.textContent ?? '' };
+      });
+      const problems: string[] = [];
+      if (r.radius === '0px' || r.radius === '') problems.push('Tailwind styles are not applied to the input');
+      if (!/Not a valid BIC/.test(r.alert)) problems.push(`BIC error is "${r.alert}"`);
       return problems;
     },
   },

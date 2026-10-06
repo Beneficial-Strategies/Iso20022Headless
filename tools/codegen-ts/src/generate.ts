@@ -606,11 +606,11 @@ writeOut(
   HEADER +
     "import type { ZodType } from 'zod';\nimport type { TypeDescriptors } from '../runtime.ts';\n\n" +
     'export interface MessageBundle {\n  message: { identifier: string; namespace: string; rootTag: string; bodyTag: string; rootType: string; schema: ZodType; typeDescriptors: TypeDescriptors };\n  schemas: Record<string, ZodType>;\n  typeDescriptors: TypeDescriptors;\n}\n\n' +
-    'export interface MessageInfo {\n  identifier: string;\n  name: string;\n  title: string;\n  /** Loads the message on demand, so a page only downloads the messages it uses. */\n  load: () => Promise<MessageBundle>;\n}\n\n' +
+    'export interface MessageInfo {\n  identifier: string;\n  name: string;\n  title: string;\n  /** Entry point under the validate package, e.g. `pain001` for `@beneficial-strategies/iso20022-validate/pain001`. */\n  module: string;\n  /** Loads the message on demand, so a page only downloads the messages it uses. */\n  load: () => Promise<MessageBundle>;\n}\n\n' +
     `export const messageIndex: readonly MessageInfo[] = [\n${[...configs.values()]
       .map(
         (c) =>
-          `  {\n    identifier: ${q(c.identifier)},\n    name: ${q(c.name)},\n    title: ${q(title(c.name))},\n    load: () =>\n      import('./${c.out}.ts').then((m) => ({ message: m.${c.out}Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),\n  },`,
+          `  {\n    identifier: ${q(c.identifier)},\n    name: ${q(c.name)},\n    title: ${q(title(c.name))},\n    module: ${q(c.out)},\n    load: () =>\n      import('./${c.out}.ts').then((m) => ({ message: m.${c.out}Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),\n  },`,
       )
       .join('\n')}\n];\n`,
 );

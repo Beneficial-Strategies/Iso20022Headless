@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it } from 'vitest';
 import { cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { I18nProvider, SchemaForm, createI18n, type I18nOverrides } from '@beneficial-strategies/iso20022-demo-shared';
+import { I18nProvider, SchemaForm, createI18n, type I18nOverrides } from '@beneficial-strategies/iso20022-react-ui';
 import { pain001Message, schemas } from '@beneficial-strategies/iso20022-validate/pain001';
 import { useZodForm } from '../src/useZodForm.ts';
 

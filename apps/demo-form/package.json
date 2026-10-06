@@ -15,7 +15,8 @@
     "@beneficial-strategies/iso20022-validate": "workspace:*",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "@beneficial-strategies/iso20022-react": "workspace:*"
+    "@beneficial-strategies/iso20022-react": "workspace:*",
+    "@beneficial-strategies/iso20022-react-ui": "workspace:*"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.0",

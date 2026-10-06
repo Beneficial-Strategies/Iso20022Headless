@@ -1,0 +1,3 @@
+@import "tailwindcss";
+@import "@beneficial-strategies/iso20022-react-ui/theme.css";
+@source "../node_modules/@beneficial-strategies/iso20022-react-ui/src";

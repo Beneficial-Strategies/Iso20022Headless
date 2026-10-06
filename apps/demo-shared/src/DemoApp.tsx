@@ -2,17 +2,12 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Command } from 'cmdk';
 import type { z } from 'zod';
 import { evaluateRules, formatIssue, messageIndex, ruleCodeLists, type MessageBundle, type RuleResult } from '@beneficial-strategies/iso20022-validate';
-import { DescribedSelect } from './DescribedSelect.tsx';
+import { DescribedSelect, I18nProvider, Popup, SchemaForm, SkinProvider, skinIds, skins, supportedLocales, useCreateI18n, useI18n, type I18nOverrides, type UiKey, type UseForm } from '@beneficial-strategies/iso20022-react-ui';
 import { serializeFragment, serializeFragmentIsoJson, serializeToIsoJson, serializeToXml } from '@beneficial-strategies/iso20022-serialize';
-import type { UseForm } from './formApi.ts';
-import type { UiKey } from './i18n/messages.ts';
-import { SchemaForm } from './SchemaForm.tsx';
 import { XmlPane } from './XmlPane.tsx';
-import { Popup } from './Popup.tsx';
-import { I18nProvider, supportedLocales, useCreateI18n, useI18n, type I18nOverrides } from './i18n/context.tsx';
 import { SettingsPanel } from './SettingsPanel.tsx';
+import { ImplementDialog } from './ImplementDialog.tsx';
 import { useSettings, type Format } from './settings.ts';
-import { SkinProvider, skinIds, skins } from './skin/index.ts';
 
 const messageIds = messageIndex.map((m) => m.identifier);
 const bundleCache = new Map<string, MessageBundle>();
@@ -192,6 +187,7 @@ function Editor({ bundle, useForm, typeName, dark, format }: { bundle: MessageBu
   const { t, validation } = useI18n();
   const form = useForm({ schema: (bundle.schemas as Record<string, z.ZodType>)[typeName]!, typeDescriptors: bundle.typeDescriptors, rootType: typeName, messages: validation });
   const [submitted, setSubmitted] = useState(false);
+  const [implementOpen, setImplementOpen] = useState(false);
   const output = useMemo(() => {
     const whole = typeName === bundle.message.rootType;
     if (format === 'json') {
@@ -222,7 +218,22 @@ function Editor({ bundle, useForm, typeName, dark, format }: { bundle: MessageBu
           >
             {t('doneEditing')}
           </button>
+          <button
+            type="button"
+            className="rounded border border-accent bg-surface px-3 py-1.5 text-sm font-semibold text-accent hover:bg-accent-soft focus-visible:ring-2 focus-visible:ring-focus"
+            onClick={() => setImplementOpen(true)}
+          >
+            {t('implement')}
+          </button>
           {submitted ? <span className="text-sm text-muted">{valid ? t('looksComplete') : t('problemsRemain', { n: errorCount })}</span> : null}
+          {implementOpen ? (
+            <ImplementDialog
+              type={typeName}
+              isMessageRoot={typeName === bundle.message.rootType}
+              module={messageIndex.find((m) => m.identifier === bundle.message.identifier)?.module ?? ''}
+              onClose={() => setImplementOpen(false)}
+            />
+          ) : null}
         </div>
       </section>
       <section className="flex min-h-0 flex-col" aria-label="XML preview">
