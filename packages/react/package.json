@@ -1,0 +1,28 @@
+{
+  "name": "@beneficial-strategies/iso20022-react",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run --passWithNoTests"
+  },
+  "dependencies": {
+    "@beneficial-strategies/iso20022-validate": "workspace:*",
+    "@tanstack/react-form": "^1.0.0"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "zod": ">=4"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "react": "^19.0.0",
+    "typescript": "^5.9.0",
+    "vitest": "^3.2.0",
+    "zod": "^4.0.0"
+  }
+}

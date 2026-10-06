@@ -1,0 +1,4557 @@
+{
+  "message": {
+    "identifier": "pain.001.001.13",
+    "name": "CustomerCreditTransferInitiationV13",
+    "namespace": "urn:iso:std:iso:20022:tech:xsd:pain.001.001.13",
+    "bodyTag": "CstmrCdtTrfInitn",
+    "blocks": [
+      {
+        "name": "GroupHeader",
+        "xmlTag": "GrpHdr",
+        "type": "GroupHeader114",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "PaymentInformation",
+        "xmlTag": "PmtInf",
+        "type": "PaymentInstruction51",
+        "min": 1,
+        "max": null
+      },
+      {
+        "name": "SupplementaryData",
+        "xmlTag": "SplmtryData",
+        "type": "SupplementaryData1",
+        "min": 0,
+        "max": null
+      }
+    ]
+  },
+  "root": "CustomerCreditTransferInitiationV13",
+  "order": [
+    "Max35Text",
+    "ISODateTime",
+    "Authorisation1Code",
+    "Max128Text",
+    "Authorisation1Choice",
+    "Max15NumericText",
+    "DecimalNumber",
+    "Max140Text",
+    "AddressType2Code",
+    "Exact4AlphaNumericText",
+    "GenericIdentification30",
+    "AddressType3Choice",
+    "Max70Text",
+    "Max16Text",
+    "CountryCode",
+    "PostalAddress27",
+    "AnyBICDec2014Identifier",
+    "LEIIdentifier",
+    "Max256Text",
+    "ExternalOrganisationIdentification1Code",
+    "OrganisationIdentificationSchemeName1Choice",
+    "GenericOrganisationIdentification3",
+    "OrganisationIdentification39",
+    "ISODate",
+    "DateAndPlaceOfBirth1",
+    "ExternalPersonIdentification1Code",
+    "PersonIdentificationSchemeName1Choice",
+    "GenericPersonIdentification2",
+    "PersonIdentification18",
+    "Party52Choice",
+    "NamePrefix2Code",
+    "PhoneNumber",
+    "Max2048Text",
+    "Max4Text",
+    "OtherContact1",
+    "PreferredContactMethod2Code",
+    "Contact13",
+    "PartyIdentification272",
+    "BICFIDec2014Identifier",
+    "ExternalClearingSystemIdentification1Code",
+    "ClearingSystemIdentification2Choice",
+    "ClearingSystemMemberIdentification2",
+    "ExternalFinancialInstitutionIdentification1Code",
+    "FinancialIdentificationSchemeName1Choice",
+    "GenericFinancialIdentification1",
+    "FinancialInstitutionIdentification23",
+    "BranchData5",
+    "BranchAndFinancialInstitutionIdentification8",
+    "PaymentInitiationSource1",
+    "GroupHeader114",
+    "PaymentMethod3Code",
+    "AdviceType1Code",
+    "AdviceType1Choice",
+    "AdviceType1",
+    "BatchBookingIndicator",
+    "Priority2Code",
+    "ExternalServiceLevel1Code",
+    "ServiceLevel8Choice",
+    "ExternalLocalInstrument1Code",
+    "LocalInstrument2Choice",
+    "ExternalCategoryPurpose1Code",
+    "CategoryPurpose1Choice",
+    "PaymentTypeInformation26",
+    "DateAndDateTime2Choice",
+    "IBAN2007Identifier",
+    "Max34Text",
+    "ExternalAccountIdentification1Code",
+    "AccountSchemeName1Choice",
+    "GenericAccountIdentification1",
+    "AccountIdentification4Choice",
+    "ExternalCashAccountType1Code",
+    "CashAccountType2Choice",
+    "ActiveOrHistoricCurrencyCode",
+    "ExternalProxyAccountType1Code",
+    "ProxyAccountType1Choice",
+    "ProxyAccountIdentification1",
+    "CashAccount40",
+    "ChargeBearerType1Code",
+    "UUIDv4Identifier",
+    "PaymentIdentification6",
+    "ActiveOrHistoricCurrencyAndAmount",
+    "EquivalentAmount2",
+    "AmountType4Choice",
+    "BaseOneRate",
+    "ExchangeRateType1Code",
+    "ExchangeRate1",
+    "MandateClassification1Code",
+    "MandateClassification1Choice",
+    "MandateTypeInformation2",
+    "Max10KBinary",
+    "Frequency6Code",
+    "FrequencyPeriod1",
+    "Exact2NumericText",
+    "FrequencyAndMoment1",
+    "Frequency36Choice",
+    "ExternalMandateSetupReason1Code",
+    "MandateSetupReason1Choice",
+    "CreditTransferMandateData1",
+    "ChequeType2Code",
+    "NameAndAddress18",
+    "ChequeDelivery1Code",
+    "ChequeDeliveryMethod1Choice",
+    "Cheque19",
+    "ExternalCreditorAgentInstruction1Code",
+    "InstructionForCreditorAgent3",
+    "ExternalDebtorAgentInstruction1Code",
+    "InstructionForDebtorAgent1",
+    "ExternalPurpose1Code",
+    "Purpose2Choice",
+    "RegulatoryReportingType1Code",
+    "RegulatoryAuthority2",
+    "ExternalRegulatoryReportingType1Code",
+    "RegulatoryReportingType1Choice",
+    "Max10Text",
+    "StructuredRegulatoryReporting5",
+    "RegulatoryReporting10",
+    "TaxParty1",
+    "TaxAuthorisation1",
+    "TaxParty2",
+    "Number",
+    "ISOYear",
+    "TaxRecordPeriod1Code",
+    "DatePeriod2",
+    "TaxPeriod3",
+    "PercentageRate",
+    "TaxRecordDetails3",
+    "TaxAmount3",
+    "TaxRecord3",
+    "TaxData1",
+    "RemittanceLocationMethod2Code",
+    "RemittanceLocationData2",
+    "RemittanceLocation8",
+    "ExternalDocumentType1Code",
+    "DocumentType2Choice",
+    "DocumentType1",
+    "ExternalDateType1Code",
+    "DateType2Choice",
+    "DateAndType1",
+    "ExternalDocumentLineType1Code",
+    "DocumentLineType1Choice",
+    "DocumentLineType1",
+    "DocumentLineIdentification1",
+    "ExternalDocumentAmountType1Code",
+    "DocumentAmountType1Choice",
+    "DocumentAmount1",
+    "CreditDebitCode",
+    "DocumentAdjustment1",
+    "RemittanceAmount4",
+    "DocumentLineInformation2",
+    "ReferredDocumentInformation8",
+    "ExternalCreditorReferenceType1Code",
+    "CreditorReferenceType2Choice",
+    "CreditorReferenceType3",
+    "CreditorReferenceInformation3",
+    "ExternalGarnishmentType1Code",
+    "GarnishmentType1Choice",
+    "GarnishmentType1",
+    "TrueFalseIndicator",
+    "Garnishment4",
+    "UTIIdentifier",
+    "ActiveCurrencyAndAmount",
+    "SecuritiesAttributes1",
+    "StructuredRemittanceInformation22",
+    "RemittanceInformation26",
+    "Max350Text",
+    "SupplementaryDataEnvelope1",
+    "SupplementaryData1",
+    "CreditTransferTransaction76",
+    "PaymentInstruction51",
+    "CustomerCreditTransferInitiationV13"
+  ],
+  "types": {
+    "Max35Text": {
+      "name": "Max35Text",
+      "kind": "text",
+      "minLength": 1,
+      "maxLength": 35
+    },
+    "ISODateTime": {
+      "name": "ISODateTime",
+      "kind": "datetime"
+    },
+    "Authorisation1Code": {
+      "name": "Authorisation1Code",
+      "kind": "code",
+      "options": [
+        {
+          "value": "AUTH",
+          "name": "PreAuthorisedFile"
+        },
+        {
+          "value": "FDET",
+          "name": "FileLevelAuthorisationDetails"
+        },
+        {
+          "value": "FSUM",
+          "name": "FileLevelAuthorisationSummary"
+        },
+        {
+          "value": "ILEV",
+          "name": "InstructionLevelAuthorisation"
+        }
+      ]
+    },
+    "Max128Text": {
+      "name": "Max128Text",
+      "kind": "text",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "Authorisation1Choice": {
+      "name": "Authorisation1Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "xmlTag": "Cd",
+          "type": "Authorisation1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "xmlTag": "Prtry",
+          "type": "Max128Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Max15NumericText": {
+      "name": "Max15NumericText",
+      "kind": "text",
+      "pattern": "[0-9]{1,15}"
+    },
+    "DecimalNumber": {
+      "name": "DecimalNumber",
+      "kind": "number",
+      "totalDigits": 18,
+      "fractionDigits": 17
+    },
+    "Max140Text": {
+      "name": "Max140Text",
+      "kind": "text",
+      "minLength": 1,
+      "maxLength": 140
+    },
+    "AddressType2Code": {
+      "name": "AddressType2Code",
+      "kind": "code",
+      "options": [
+        {
+          "value": "ADDR",
+          "name": "Postal"
+        },
+        {
+          "value": "BIZZ",
+          "name": "Business"
+        },
+        {
+          "value": "DLVY",
+          "name": "DeliveryTo"
+        },
+        {
+          "value": "HOME",
+          "name": "Residential"
+        },
+        {
+          "value": "MLTO",
+          "name": "MailTo"
+        },
+        {
+          "value": "PBOX",
+          "name": "POBox"
+        }
+      ]
+    },
+    "Exact4AlphaNumericText": {
+      "name": "Exact4AlphaNumericText",
+      "kind": "text",
+      "pattern": "[a-zA-Z0-9]{4}"
+    },
+    "GenericIdentification30": {
+      "name": "GenericIdentification30",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "xmlTag": "Id",
+          "type": "Exact4AlphaNumericText",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "xmlTag": "Issr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SchemeName",
+          "xmlTag": "SchmeNm",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "AddressType3Choice": {
+      "name": "AddressType3Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "xmlTag": "Cd",
+          "type": "AddressType2Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Max70Text": {
+      "name": "Max70Text",
+      "kind": "text",
+      "minLength": 1,
+      "maxLength": 70
+    },
+    "Max16Text": {
+      "name": "Max16Text",
+      "kind": "text",
+      "minLength": 1,
+      "maxLength": 16
+    },
+    "CountryCode": {
+      "name": "CountryCode",
+      "kind": "code",
+      "pattern": "[A-Z]{2,2}"
+    },
+    "PostalAddress27": {
+      "name": "PostalAddress27",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "AddressType",
+          "xmlTag": "AdrTp",
+          "type": "AddressType3Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CareOf",
+          "xmlTag": "CareOf",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Department",
+          "xmlTag": "Dept",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SubDepartment",
+          "xmlTag": "SubDept",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "StreetName",
+          "xmlTag": "StrtNm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "BuildingNumber",
+          "xmlTag": "BldgNb",
+          "type": "Max16Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "BuildingName",
+          "xmlTag": "BldgNm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Floor",
+          "xmlTag": "Flr",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "UnitNumber",
+          "xmlTag": "UnitNb",
+          "type": "Max16Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PostBox",
+          "xmlTag": "PstBx",
+          "type": "Max16Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Room",
+          "xmlTag": "Room",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PostCode",
+          "xmlTag": "PstCd",
+          "type": "Max16Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TownName",
+          "xmlTag": "TwnNm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TownLocationName",
+          "xmlTag": "TwnLctnNm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "DistrictName",
+          "xmlTag": "DstrctNm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CountrySubDivision",
+          "xmlTag": "CtrySubDvsn",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Country",
+          "xmlTag": "Ctry",
+          "type": "CountryCode",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "AddressLine",
+          "xmlTag": "AdrLine",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 0,
+          "max": 7
+        }
+      ]
+    },
+    "AnyBICDec2014Identifier": {
+      "name": "AnyBICDec2014Identifier",
+      "kind": "text",
+      "pattern": "[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}"
+    },
+    "LEIIdentifier": {
+      "name": "LEIIdentifier",
+      "kind": "text",
+      "pattern": "[A-Z0-9]{18,18}[0-9]{2,2}"
+    },
+    "Max256Text": {
+      "name": "Max256Text",
+      "kind": "text",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "ExternalOrganisationIdentification1Code": {
+      "name": "ExternalOrganisationIdentification1Code",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "OrganisationIdentificationSchemeName1Choice": {
+      "name": "OrganisationIdentificationSchemeName1Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "xmlTag": "Cd",
+          "type": "ExternalOrganisationIdentification1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "GenericOrganisationIdentification3": {
+      "name": "GenericOrganisationIdentification3",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "xmlTag": "Id",
+          "type": "Max256Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SchemeName",
+          "xmlTag": "SchmeNm",
+          "type": "OrganisationIdentificationSchemeName1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "xmlTag": "Issr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "OrganisationIdentification39": {
+      "name": "OrganisationIdentification39",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "AnyBIC",
+          "xmlTag": "AnyBIC",
+          "type": "AnyBICDec2014Identifier",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "LEI",
+          "xmlTag": "LEI",
+          "type": "LEIIdentifier",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Other",
+          "xmlTag": "Othr",
+          "type": "GenericOrganisationIdentification3",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    },
+    "ISODate": {
+      "name": "ISODate",
+      "kind": "date"
+    },
+    "DateAndPlaceOfBirth1": {
+      "name": "DateAndPlaceOfBirth1",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "BirthDate",
+          "xmlTag": "BirthDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ProvinceOfBirth",
+          "xmlTag": "PrvcOfBirth",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CityOfBirth",
+          "xmlTag": "CityOfBirth",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CountryOfBirth",
+          "xmlTag": "CtryOfBirth",
+          "type": "CountryCode",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ExternalPersonIdentification1Code": {
+      "name": "ExternalPersonIdentification1Code",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "PersonIdentificationSchemeName1Choice": {
+      "name": "PersonIdentificationSchemeName1Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "xmlTag": "Cd",
+          "type": "ExternalPersonIdentification1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "GenericPersonIdentification2": {
+      "name": "GenericPersonIdentification2",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "xmlTag": "Id",
+          "type": "Max256Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SchemeName",
+          "xmlTag": "SchmeNm",
+          "type": "PersonIdentificationSchemeName1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "xmlTag": "Issr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "PersonIdentification18": {
+      "name": "PersonIdentification18",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "DateAndPlaceOfBirth",
+          "xmlTag": "DtAndPlcOfBirth",
+          "type": "DateAndPlaceOfBirth1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Other",
+          "xmlTag": "Othr",
+          "type": "GenericPersonIdentification2",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    },
+    "Party52Choice": {
+      "name": "Party52Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "OrganisationIdentification",
+          "xmlTag": "OrgId",
+          "type": "OrganisationIdentification39",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "PrivateIdentification",
+          "xmlTag": "PrvtId",
+          "type": "PersonIdentification18",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "NamePrefix2Code": {
+      "name": "NamePrefix2Code",
+      "kind": "code",
+      "options": [
+        {
+          "value": "DOCT",
+          "name": "Doctor"
+        },
+        {
+          "value": "MADM",
+          "name": "Madam"
+        },
+        {
+          "value": "MIKS",
+          "name": "GenderNeutral"
+        },
+        {
+          "value": "MISS",
+          "name": "Miss"
+        },
+        {
+          "value": "MIST",
+          "name": "Mister"
+        }
+      ]
+    },
+    "PhoneNumber": {
+      "name": "PhoneNumber",
+      "kind": "text",
+      "pattern": "\\+[0-9]{1,3}-[0-9()+\\-]{1,30}"
+    },
+    "Max2048Text": {
+      "name": "Max2048Text",
+      "kind": "text",
+      "minLength": 1,
+      "maxLength": 2048
+    },
+    "Max4Text": {
+      "name": "Max4Text",
+      "kind": "text",
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "OtherContact1": {
+      "name": "OtherContact1",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "ChannelType",
+          "xmlTag": "ChanlTp",
+          "type": "Max4Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Identification",
+          "xmlTag": "Id",
+          "type": "Max128Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "PreferredContactMethod2Code": {
+      "name": "PreferredContactMethod2Code",
+      "kind": "code",
+      "options": [
+        {
+          "value": "CELL",
+          "name": "MobileOrCellPhone"
+        },
+        {
+          "value": "FAXX",
+          "name": "Fax"
+        },
+        {
+          "value": "LETT",
+          "name": "Letter"
+        },
+        {
+          "value": "MAIL",
+          "name": "Email"
+        },
+        {
+          "value": "ONLI",
+          "name": "Online"
+        },
+        {
+          "value": "PHON",
+          "name": "Phone"
+        }
+      ]
+    },
+    "Contact13": {
+      "name": "Contact13",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "NamePrefix",
+          "xmlTag": "NmPrfx",
+          "type": "NamePrefix2Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Name",
+          "xmlTag": "Nm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PhoneNumber",
+          "xmlTag": "PhneNb",
+          "type": "PhoneNumber",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "MobileNumber",
+          "xmlTag": "MobNb",
+          "type": "PhoneNumber",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "FaxNumber",
+          "xmlTag": "FaxNb",
+          "type": "PhoneNumber",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "URLAddress",
+          "xmlTag": "URLAdr",
+          "type": "Max2048Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "EmailAddress",
+          "xmlTag": "EmailAdr",
+          "type": "Max256Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "EmailPurpose",
+          "xmlTag": "EmailPurp",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "JobTitle",
+          "xmlTag": "JobTitl",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Responsibility",
+          "xmlTag": "Rspnsblty",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Department",
+          "xmlTag": "Dept",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Other",
+          "xmlTag": "Othr",
+          "type": "OtherContact1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "PreferredMethod",
+          "xmlTag": "PrefrdMtd",
+          "type": "PreferredContactMethod2Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "PartyIdentification272": {
+      "name": "PartyIdentification272",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Name",
+          "xmlTag": "Nm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PostalAddress",
+          "xmlTag": "PstlAdr",
+          "type": "PostalAddress27",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Identification",
+          "xmlTag": "Id",
+          "type": "Party52Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CountryOfResidence",
+          "xmlTag": "CtryOfRes",
+          "type": "CountryCode",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ContactDetails",
+          "xmlTag": "CtctDtls",
+          "type": "Contact13",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "BICFIDec2014Identifier": {
+      "name": "BICFIDec2014Identifier",
+      "kind": "text",
+      "pattern": "[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}"
+    },
+    "ExternalClearingSystemIdentification1Code": {
+      "name": "ExternalClearingSystemIdentification1Code",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 5
+    },
+    "ClearingSystemIdentification2Choice": {
+      "name": "ClearingSystemIdentification2Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "xmlTag": "Cd",
+          "type": "ExternalClearingSystemIdentification1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ClearingSystemMemberIdentification2": {
+      "name": "ClearingSystemMemberIdentification2",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "ClearingSystemIdentification",
+          "xmlTag": "ClrSysId",
+          "type": "ClearingSystemIdentification2Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "MemberIdentification",
+          "xmlTag": "MmbId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ExternalFinancialInstitutionIdentification1Code": {
+      "name": "ExternalFinancialInstitutionIdentification1Code",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "FinancialIdentificationSchemeName1Choice": {
+      "name": "FinancialIdentificationSchemeName1Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "xmlTag": "Cd",
+          "type": "ExternalFinancialInstitutionIdentification1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "GenericFinancialIdentification1": {
+      "name": "GenericFinancialIdentification1",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "xmlTag": "Id",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SchemeName",
+          "xmlTag": "SchmeNm",
+          "type": "FinancialIdentificationSchemeName1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "xmlTag": "Issr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "FinancialInstitutionIdentification23": {
+      "name": "FinancialInstitutionIdentification23",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "BICFI",
+          "xmlTag": "BICFI",
+          "type": "BICFIDec2014Identifier",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ClearingSystemMemberIdentification",
+          "xmlTag": "ClrSysMmbId",
+          "type": "ClearingSystemMemberIdentification2",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "LEI",
+          "xmlTag": "LEI",
+          "type": "LEIIdentifier",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Name",
+          "xmlTag": "Nm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PostalAddress",
+          "xmlTag": "PstlAdr",
+          "type": "PostalAddress27",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Other",
+          "xmlTag": "Othr",
+          "type": "GenericFinancialIdentification1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "BranchData5": {
+      "name": "BranchData5",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "xmlTag": "Id",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "LEI",
+          "xmlTag": "LEI",
+          "type": "LEIIdentifier",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Name",
+          "xmlTag": "Nm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PostalAddress",
+          "xmlTag": "PstlAdr",
+          "type": "PostalAddress27",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "BranchAndFinancialInstitutionIdentification8": {
+      "name": "BranchAndFinancialInstitutionIdentification8",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "FinancialInstitutionIdentification",
+          "xmlTag": "FinInstnId",
+          "type": "FinancialInstitutionIdentification23",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "BranchIdentification",
+          "xmlTag": "BrnchId",
+          "type": "BranchData5",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "PaymentInitiationSource1": {
+      "name": "PaymentInitiationSource1",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Name",
+          "xmlTag": "Nm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Provider",
+          "xmlTag": "Prvdr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Version",
+          "xmlTag": "Vrsn",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "GroupHeader114": {
+      "name": "GroupHeader114",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "MessageIdentification",
+          "xmlTag": "MsgId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CreationDateTime",
+          "xmlTag": "CreDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Authorisation",
+          "xmlTag": "Authstn",
+          "type": "Authorisation1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 2
+        },
+        {
+          "name": "NumberOfTransactions",
+          "xmlTag": "NbOfTxs",
+          "type": "Max15NumericText",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ControlSum",
+          "xmlTag": "CtrlSum",
+          "type": "DecimalNumber",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "InitiatingParty",
+          "xmlTag": "InitgPty",
+          "type": "PartyIdentification272",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ForwardingAgent",
+          "xmlTag": "FwdgAgt",
+          "type": "BranchAndFinancialInstitutionIdentification8",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "InitiationSource",
+          "xmlTag": "InitnSrc",
+          "type": "PaymentInitiationSource1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "PaymentMethod3Code": {
+      "name": "PaymentMethod3Code",
+      "kind": "code",
+      "options": [
+        {
+          "value": "CHK",
+          "name": "Cheque"
+        },
+        {
+          "value": "TRA",
+          "name": "TransferAdvice"
+        },
+        {
+          "value": "TRF",
+          "name": "CreditTransfer"
+        }
+      ]
+    },
+    "AdviceType1Code": {
+      "name": "AdviceType1Code",
+      "kind": "code",
+      "options": [
+        {
+          "value": "ADND",
+          "name": "AdviceWithoutDetails"
+        },
+        {
+          "value": "ADWD",
+          "name": "AdviceWithDetails"
+        }
+      ]
+    },
+    "AdviceType1Choice": {
+      "name": "AdviceType1Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "xmlTag": "Cd",
+          "type": "AdviceType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "AdviceType1": {
+      "name": "AdviceType1",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "CreditAdvice",
+          "xmlTag": "CdtAdvc",
+          "type": "AdviceType1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "DebitAdvice",
+          "xmlTag": "DbtAdvc",
+          "type": "AdviceType1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "BatchBookingIndicator": {
+      "name": "BatchBookingIndicator",
+      "kind": "boolean"
+    },
+    "Priority2Code": {
+      "name": "Priority2Code",
+      "kind": "code",
+      "options": [
+        {
+          "value": "HIGH",
+          "name": "High"
+        },
+        {
+          "value": "NORM",
+          "name": "Normal"
+        }
+      ]
+    },
+    "ExternalServiceLevel1Code": {
+      "name": "ExternalServiceLevel1Code",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "ServiceLevel8Choice": {
+      "name": "ServiceLevel8Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "xmlTag": "Cd",
+          "type": "ExternalServiceLevel1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ExternalLocalInstrument1Code": {
+      "name": "ExternalLocalInstrument1Code",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 35
+    },
+    "LocalInstrument2Choice": {
+      "name": "LocalInstrument2Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "xmlTag": "Cd",
+          "type": "ExternalLocalInstrument1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ExternalCategoryPurpose1Code": {
+      "name": "ExternalCategoryPurpose1Code",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "CategoryPurpose1Choice": {
+      "name": "CategoryPurpose1Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "xmlTag": "Cd",
+          "type": "ExternalCategoryPurpose1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "PaymentTypeInformation26": {
+      "name": "PaymentTypeInformation26",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "InstructionPriority",
+          "xmlTag": "InstrPrty",
+          "type": "Priority2Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ServiceLevel",
+          "xmlTag": "SvcLvl",
+          "type": "ServiceLevel8Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "LocalInstrument",
+          "xmlTag": "LclInstrm",
+          "type": "LocalInstrument2Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CategoryPurpose",
+          "xmlTag": "CtgyPurp",
+          "type": "CategoryPurpose1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "DateAndDateTime2Choice": {
+      "name": "DateAndDateTime2Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Date",
+          "xmlTag": "Dt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "DateTime",
+          "xmlTag": "DtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "IBAN2007Identifier": {
+      "name": "IBAN2007Identifier",
+      "kind": "text",
+      "pattern": "[A-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}"
+    },
+    "Max34Text": {
+      "name": "Max34Text",
+      "kind": "text",
+      "minLength": 1,
+      "maxLength": 34
+    },
+    "ExternalAccountIdentification1Code": {
+      "name": "ExternalAccountIdentification1Code",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "AccountSchemeName1Choice": {
+      "name": "AccountSchemeName1Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "xmlTag": "Cd",
+          "type": "ExternalAccountIdentification1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "GenericAccountIdentification1": {
+      "name": "GenericAccountIdentification1",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "xmlTag": "Id",
+          "type": "Max34Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SchemeName",
+          "xmlTag": "SchmeNm",
+          "type": "AccountSchemeName1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "xmlTag": "Issr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "AccountIdentification4Choice": {
+      "name": "AccountIdentification4Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "IBAN",
+          "xmlTag": "IBAN",
+          "type": "IBAN2007Identifier",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Other",
+          "xmlTag": "Othr",
+          "type": "GenericAccountIdentification1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ExternalCashAccountType1Code": {
+      "name": "ExternalCashAccountType1Code",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "CashAccountType2Choice": {
+      "name": "CashAccountType2Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "xmlTag": "Cd",
+          "type": "ExternalCashAccountType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ActiveOrHistoricCurrencyCode": {
+      "name": "ActiveOrHistoricCurrencyCode",
+      "kind": "code",
+      "pattern": "[A-Z]{3,3}"
+    },
+    "ExternalProxyAccountType1Code": {
+      "name": "ExternalProxyAccountType1Code",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "ProxyAccountType1Choice": {
+      "name": "ProxyAccountType1Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "xmlTag": "Cd",
+          "type": "ExternalProxyAccountType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ProxyAccountIdentification1": {
+      "name": "ProxyAccountIdentification1",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Type",
+          "xmlTag": "Tp",
+          "type": "ProxyAccountType1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Identification",
+          "xmlTag": "Id",
+          "type": "Max2048Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "CashAccount40": {
+      "name": "CashAccount40",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "xmlTag": "Id",
+          "type": "AccountIdentification4Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Type",
+          "xmlTag": "Tp",
+          "type": "CashAccountType2Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Currency",
+          "xmlTag": "Ccy",
+          "type": "ActiveOrHistoricCurrencyCode",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Name",
+          "xmlTag": "Nm",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Proxy",
+          "xmlTag": "Prxy",
+          "type": "ProxyAccountIdentification1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "ChargeBearerType1Code": {
+      "name": "ChargeBearerType1Code",
+      "kind": "code",
+      "options": [
+        {
+          "value": "CRED",
+          "name": "BorneByCreditor"
+        },
+        {
+          "value": "DEBT",
+          "name": "BorneByDebtor"
+        },
+        {
+          "value": "SHAR",
+          "name": "Shared"
+        },
+        {
+          "value": "SLEV",
+          "name": "FollowingServiceLevel"
+        }
+      ]
+    },
+    "UUIDv4Identifier": {
+      "name": "UUIDv4Identifier",
+      "kind": "text",
+      "pattern": "[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}"
+    },
+    "PaymentIdentification6": {
+      "name": "PaymentIdentification6",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "InstructionIdentification",
+          "xmlTag": "InstrId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "EndToEndIdentification",
+          "xmlTag": "EndToEndId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "UETR",
+          "xmlTag": "UETR",
+          "type": "UUIDv4Identifier",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "ActiveOrHistoricCurrencyAndAmount": {
+      "name": "ActiveOrHistoricCurrencyAndAmount",
+      "kind": "amount",
+      "pattern": "[A-Z]{3,3}",
+      "totalDigits": 18,
+      "fractionDigits": 5,
+      "minInclusive": 0
+    },
+    "EquivalentAmount2": {
+      "name": "EquivalentAmount2",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Amount",
+          "xmlTag": "Amt",
+          "type": "ActiveOrHistoricCurrencyAndAmount",
+          "kind": "amount",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CurrencyOfTransfer",
+          "xmlTag": "CcyOfTrf",
+          "type": "ActiveOrHistoricCurrencyCode",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "AmountType4Choice": {
+      "name": "AmountType4Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "InstructedAmount",
+          "xmlTag": "InstdAmt",
+          "type": "ActiveOrHistoricCurrencyAndAmount",
+          "kind": "amount",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "EquivalentAmount",
+          "xmlTag": "EqvtAmt",
+          "type": "EquivalentAmount2",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "BaseOneRate": {
+      "name": "BaseOneRate",
+      "kind": "number",
+      "totalDigits": 11,
+      "fractionDigits": 10
+    },
+    "ExchangeRateType1Code": {
+      "name": "ExchangeRateType1Code",
+      "kind": "code",
+      "options": [
+        {
+          "value": "AGRD",
+          "name": "Agreed"
+        },
+        {
+          "value": "SALE",
+          "name": "Sale"
+        },
+        {
+          "value": "SPOT",
+          "name": "Spot"
+        }
+      ]
+    },
+    "ExchangeRate1": {
+      "name": "ExchangeRate1",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "UnitCurrency",
+          "xmlTag": "UnitCcy",
+          "type": "ActiveOrHistoricCurrencyCode",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ExchangeRate",
+          "xmlTag": "XchgRate",
+          "type": "BaseOneRate",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "RateType",
+          "xmlTag": "RateTp",
+          "type": "ExchangeRateType1Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ContractIdentification",
+          "xmlTag": "CtrctId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "MandateClassification1Code": {
+      "name": "MandateClassification1Code",
+      "kind": "code",
+      "options": [
+        {
+          "value": "FIXE",
+          "name": "Fixed"
+        },
+        {
+          "value": "USGB",
+          "name": "UsageBased"
+        },
+        {
+          "value": "VARI",
+          "name": "Variable"
+        }
+      ]
+    },
+    "MandateClassification1Choice": {
+      "name": "MandateClassification1Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "xmlTag": "Cd",
+          "type": "MandateClassification1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "MandateTypeInformation2": {
+      "name": "MandateTypeInformation2",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "ServiceLevel",
+          "xmlTag": "SvcLvl",
+          "type": "ServiceLevel8Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "LocalInstrument",
+          "xmlTag": "LclInstrm",
+          "type": "LocalInstrument2Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CategoryPurpose",
+          "xmlTag": "CtgyPurp",
+          "type": "CategoryPurpose1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Classification",
+          "xmlTag": "Clssfctn",
+          "type": "MandateClassification1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "Max10KBinary": {
+      "name": "Max10KBinary",
+      "kind": "text",
+      "maxLength": 10240
+    },
+    "Frequency6Code": {
+      "name": "Frequency6Code",
+      "kind": "code",
+      "options": [
+        {
+          "value": "ADHO",
+          "name": "Adhoc"
+        },
+        {
+          "value": "DAIL",
+          "name": "Daily"
+        },
+        {
+          "value": "FRTN",
+          "name": "Fortnightly"
+        },
+        {
+          "value": "INDA",
+          "name": "IntraDay"
+        },
+        {
+          "value": "MIAN",
+          "name": "SemiAnnual"
+        },
+        {
+          "value": "MNTH",
+          "name": "Monthly"
+        },
+        {
+          "value": "QURT",
+          "name": "Quarterly"
+        },
+        {
+          "value": "WEEK",
+          "name": "Weekly"
+        },
+        {
+          "value": "YEAR",
+          "name": "Annual"
+        }
+      ]
+    },
+    "FrequencyPeriod1": {
+      "name": "FrequencyPeriod1",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Type",
+          "xmlTag": "Tp",
+          "type": "Frequency6Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CountPerPeriod",
+          "xmlTag": "CntPerPrd",
+          "type": "DecimalNumber",
+          "kind": "number",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Exact2NumericText": {
+      "name": "Exact2NumericText",
+      "kind": "text",
+      "pattern": "[0-9]{2}"
+    },
+    "FrequencyAndMoment1": {
+      "name": "FrequencyAndMoment1",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Type",
+          "xmlTag": "Tp",
+          "type": "Frequency6Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "PointInTime",
+          "xmlTag": "PtInTm",
+          "type": "Exact2NumericText",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Frequency36Choice": {
+      "name": "Frequency36Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Type",
+          "xmlTag": "Tp",
+          "type": "Frequency6Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Period",
+          "xmlTag": "Prd",
+          "type": "FrequencyPeriod1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "PointInTime",
+          "xmlTag": "PtInTm",
+          "type": "FrequencyAndMoment1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ExternalMandateSetupReason1Code": {
+      "name": "ExternalMandateSetupReason1Code",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "MandateSetupReason1Choice": {
+      "name": "MandateSetupReason1Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "xmlTag": "Cd",
+          "type": "ExternalMandateSetupReason1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "xmlTag": "Prtry",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "CreditTransferMandateData1": {
+      "name": "CreditTransferMandateData1",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "MandateIdentification",
+          "xmlTag": "MndtId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Type",
+          "xmlTag": "Tp",
+          "type": "MandateTypeInformation2",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "DateOfSignature",
+          "xmlTag": "DtOfSgntr",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "DateOfVerification",
+          "xmlTag": "DtOfVrfctn",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ElectronicSignature",
+          "xmlTag": "ElctrncSgntr",
+          "type": "Max10KBinary",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "FirstPaymentDate",
+          "xmlTag": "FrstPmtDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "FinalPaymentDate",
+          "xmlTag": "FnlPmtDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Frequency",
+          "xmlTag": "Frqcy",
+          "type": "Frequency36Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Reason",
+          "xmlTag": "Rsn",
+          "type": "MandateSetupReason1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "ChequeType2Code": {
+      "name": "ChequeType2Code",
+      "kind": "code",
+      "options": [
+        {
+          "value": "BCHQ",
+          "name": "BankCheque"
+        },
+        {
+          "value": "CCCH",
+          "name": "CertifiedCustomerCheque"
+        },
+        {
+          "value": "CCHQ",
+          "name": "CustomerCheque"
+        },
+        {
+          "value": "DRFT",
+          "name": "Draft"
+        },
+        {
+          "value": "ELDR",
+          "name": "ElectronicDraft"
+        }
+      ]
+    },
+    "NameAndAddress18": {
+      "name": "NameAndAddress18",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Name",
+          "xmlTag": "Nm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Address",
+          "xmlTag": "Adr",
+          "type": "PostalAddress27",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ChequeDelivery1Code": {
+      "name": "ChequeDelivery1Code",
+      "kind": "code",
+      "options": [
+        {
+          "value": "CRCD",
+          "name": "CourierToCreditor"
+        },
+        {
+          "value": "CRDB",
+          "name": "CourierToDebtor"
+        },
+        {
+          "value": "CRFA",
+          "name": "CourierToFinalAgent"
+        },
+        {
+          "value": "MLCD",
+          "name": "MailToCreditor"
+        },
+        {
+          "value": "MLDB",
+          "name": "MailToDebtor"
+        },
+        {
+          "value": "MLFA",
+          "name": "MailToFinalAgent"
+        },
+        {
+          "value": "PUCD",
+          "name": "PickUpByCreditor"
+        },
+        {
+          "value": "PUDB",
+          "name": "PickUpByDebtor"
+        },
+        {
+          "value": "PUFA",
+          "name": "PickUpByFinalAgent"
+        },
+        {
+          "value": "RGCD",
+          "name": "RegisteredMailToCreditor"
+        },
+        {
+          "value": "RGDB",
+          "name": "RegisteredMailToDebtor"
+        },
+        {
+          "value": "RGFA",
+          "name": "RegisteredMailToFinalAgent"
+        }
+      ]
+    },
+    "ChequeDeliveryMethod1Choice": {
+      "name": "ChequeDeliveryMethod1Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "xmlTag": "Cd",
+          "type": "ChequeDelivery1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Cheque19": {
+      "name": "Cheque19",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "ChequeType",
+          "xmlTag": "ChqTp",
+          "type": "ChequeType2Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ChequeNumber",
+          "xmlTag": "ChqNb",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ChequeFrom",
+          "xmlTag": "ChqFr",
+          "type": "NameAndAddress18",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "DeliveryMethod",
+          "xmlTag": "DlvryMtd",
+          "type": "ChequeDeliveryMethod1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "DeliverTo",
+          "xmlTag": "DlvrTo",
+          "type": "NameAndAddress18",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "InstructionPriority",
+          "xmlTag": "InstrPrty",
+          "type": "Priority2Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ChequeMaturityDate",
+          "xmlTag": "ChqMtrtyDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "FormsCode",
+          "xmlTag": "FrmsCd",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "MemoField",
+          "xmlTag": "MemoFld",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 2
+        },
+        {
+          "name": "RegionalClearingZone",
+          "xmlTag": "RgnlClrZone",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PrintLocation",
+          "xmlTag": "PrtLctn",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Signature",
+          "xmlTag": "Sgntr",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 0,
+          "max": 5
+        }
+      ]
+    },
+    "ExternalCreditorAgentInstruction1Code": {
+      "name": "ExternalCreditorAgentInstruction1Code",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "InstructionForCreditorAgent3": {
+      "name": "InstructionForCreditorAgent3",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Code",
+          "xmlTag": "Cd",
+          "type": "ExternalCreditorAgentInstruction1Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "InstructionInformation",
+          "xmlTag": "InstrInf",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "ExternalDebtorAgentInstruction1Code": {
+      "name": "ExternalDebtorAgentInstruction1Code",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "InstructionForDebtorAgent1": {
+      "name": "InstructionForDebtorAgent1",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Code",
+          "xmlTag": "Cd",
+          "type": "ExternalDebtorAgentInstruction1Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "InstructionInformation",
+          "xmlTag": "InstrInf",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "ExternalPurpose1Code": {
+      "name": "ExternalPurpose1Code",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "Purpose2Choice": {
+      "name": "Purpose2Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "xmlTag": "Cd",
+          "type": "ExternalPurpose1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "RegulatoryReportingType1Code": {
+      "name": "RegulatoryReportingType1Code",
+      "kind": "code",
+      "options": [
+        {
+          "value": "BOTH",
+          "name": "Both"
+        },
+        {
+          "value": "CRED",
+          "name": "Credit"
+        },
+        {
+          "value": "DEBT",
+          "name": "Debit"
+        }
+      ]
+    },
+    "RegulatoryAuthority2": {
+      "name": "RegulatoryAuthority2",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Name",
+          "xmlTag": "Nm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Country",
+          "xmlTag": "Ctry",
+          "type": "CountryCode",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "ExternalRegulatoryReportingType1Code": {
+      "name": "ExternalRegulatoryReportingType1Code",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "RegulatoryReportingType1Choice": {
+      "name": "RegulatoryReportingType1Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "xmlTag": "Cd",
+          "type": "ExternalRegulatoryReportingType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Max10Text": {
+      "name": "Max10Text",
+      "kind": "text",
+      "minLength": 1,
+      "maxLength": 10
+    },
+    "StructuredRegulatoryReporting5": {
+      "name": "StructuredRegulatoryReporting5",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Type",
+          "xmlTag": "Tp",
+          "type": "RegulatoryReportingType1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Date",
+          "xmlTag": "Dt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Country",
+          "xmlTag": "Ctry",
+          "type": "CountryCode",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ReportingCode",
+          "xmlTag": "RptgCd",
+          "type": "Max10Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Amount",
+          "xmlTag": "Amt",
+          "type": "ActiveOrHistoricCurrencyAndAmount",
+          "kind": "amount",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Information",
+          "xmlTag": "Inf",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": null
+        }
+      ]
+    },
+    "RegulatoryReporting10": {
+      "name": "RegulatoryReporting10",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "DebitCreditReportingIndicator",
+          "xmlTag": "DbtCdtRptgInd",
+          "type": "RegulatoryReportingType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Authority",
+          "xmlTag": "Authrty",
+          "type": "RegulatoryAuthority2",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Details",
+          "xmlTag": "Dtls",
+          "type": "StructuredRegulatoryReporting5",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    },
+    "TaxParty1": {
+      "name": "TaxParty1",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "TaxIdentification",
+          "xmlTag": "TaxId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "RegistrationIdentification",
+          "xmlTag": "RegnId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TaxType",
+          "xmlTag": "TaxTp",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "TaxAuthorisation1": {
+      "name": "TaxAuthorisation1",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Title",
+          "xmlTag": "Titl",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Name",
+          "xmlTag": "Nm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "TaxParty2": {
+      "name": "TaxParty2",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "TaxIdentification",
+          "xmlTag": "TaxId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "RegistrationIdentification",
+          "xmlTag": "RegnId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TaxType",
+          "xmlTag": "TaxTp",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Authorisation",
+          "xmlTag": "Authstn",
+          "type": "TaxAuthorisation1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "Number": {
+      "name": "Number",
+      "kind": "number",
+      "totalDigits": 18,
+      "fractionDigits": 0
+    },
+    "ISOYear": {
+      "name": "ISOYear",
+      "kind": "text",
+      "pattern": "\\d{4}"
+    },
+    "TaxRecordPeriod1Code": {
+      "name": "TaxRecordPeriod1Code",
+      "kind": "code",
+      "options": [
+        {
+          "value": "HLF1",
+          "name": "FirstHalf"
+        },
+        {
+          "value": "HLF2",
+          "name": "SecondHalf"
+        },
+        {
+          "value": "MM01",
+          "name": "FirstMonth"
+        },
+        {
+          "value": "MM02",
+          "name": "SecondMonth"
+        },
+        {
+          "value": "MM03",
+          "name": "ThirdMonth"
+        },
+        {
+          "value": "MM04",
+          "name": "FourthMonth"
+        },
+        {
+          "value": "MM05",
+          "name": "FifthMonth"
+        },
+        {
+          "value": "MM06",
+          "name": "SixthMonth"
+        },
+        {
+          "value": "MM07",
+          "name": "SeventhMonth"
+        },
+        {
+          "value": "MM08",
+          "name": "EighthMonth"
+        },
+        {
+          "value": "MM09",
+          "name": "NinthMonth"
+        },
+        {
+          "value": "MM10",
+          "name": "TenthMonth"
+        },
+        {
+          "value": "MM11",
+          "name": "EleventhMonth"
+        },
+        {
+          "value": "MM12",
+          "name": "TwelfthMonth"
+        },
+        {
+          "value": "QTR1",
+          "name": "FirstQuarter"
+        },
+        {
+          "value": "QTR2",
+          "name": "SecondQuarter"
+        },
+        {
+          "value": "QTR3",
+          "name": "ThirdQuarter"
+        },
+        {
+          "value": "QTR4",
+          "name": "FourthQuarter"
+        }
+      ]
+    },
+    "DatePeriod2": {
+      "name": "DatePeriod2",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "FromDate",
+          "xmlTag": "FrDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ToDate",
+          "xmlTag": "ToDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "TaxPeriod3": {
+      "name": "TaxPeriod3",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Year",
+          "xmlTag": "Yr",
+          "type": "ISOYear",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Type",
+          "xmlTag": "Tp",
+          "type": "TaxRecordPeriod1Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "FromToDate",
+          "xmlTag": "FrToDt",
+          "type": "DatePeriod2",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "PercentageRate": {
+      "name": "PercentageRate",
+      "kind": "number",
+      "totalDigits": 11,
+      "fractionDigits": 10
+    },
+    "TaxRecordDetails3": {
+      "name": "TaxRecordDetails3",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Period",
+          "xmlTag": "Prd",
+          "type": "TaxPeriod3",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Amount",
+          "xmlTag": "Amt",
+          "type": "ActiveOrHistoricCurrencyAndAmount",
+          "kind": "amount",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "TaxAmount3": {
+      "name": "TaxAmount3",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Rate",
+          "xmlTag": "Rate",
+          "type": "PercentageRate",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TaxableBaseAmount",
+          "xmlTag": "TaxblBaseAmt",
+          "type": "ActiveOrHistoricCurrencyAndAmount",
+          "kind": "amount",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TotalAmount",
+          "xmlTag": "TtlAmt",
+          "type": "ActiveOrHistoricCurrencyAndAmount",
+          "kind": "amount",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Details",
+          "xmlTag": "Dtls",
+          "type": "TaxRecordDetails3",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    },
+    "TaxRecord3": {
+      "name": "TaxRecord3",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Type",
+          "xmlTag": "Tp",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Category",
+          "xmlTag": "Ctgy",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CategoryDetails",
+          "xmlTag": "CtgyDtls",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "DebtorStatus",
+          "xmlTag": "DbtrSts",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CertificateIdentification",
+          "xmlTag": "CertId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "FormsCode",
+          "xmlTag": "FrmsCd",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Period",
+          "xmlTag": "Prd",
+          "type": "TaxPeriod3",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TaxAmount",
+          "xmlTag": "TaxAmt",
+          "type": "TaxAmount3",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "AdditionalInformation",
+          "xmlTag": "AddtlInf",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "TaxData1": {
+      "name": "TaxData1",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Creditor",
+          "xmlTag": "Cdtr",
+          "type": "TaxParty1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Debtor",
+          "xmlTag": "Dbtr",
+          "type": "TaxParty2",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "UltimateDebtor",
+          "xmlTag": "UltmtDbtr",
+          "type": "TaxParty2",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "AdministrationZone",
+          "xmlTag": "AdmstnZone",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ReferenceNumber",
+          "xmlTag": "RefNb",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Method",
+          "xmlTag": "Mtd",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TotalTaxableBaseAmount",
+          "xmlTag": "TtlTaxblBaseAmt",
+          "type": "ActiveOrHistoricCurrencyAndAmount",
+          "kind": "amount",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TotalTaxAmount",
+          "xmlTag": "TtlTaxAmt",
+          "type": "ActiveOrHistoricCurrencyAndAmount",
+          "kind": "amount",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Date",
+          "xmlTag": "Dt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SequenceNumber",
+          "xmlTag": "SeqNb",
+          "type": "Number",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Record",
+          "xmlTag": "Rcrd",
+          "type": "TaxRecord3",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    },
+    "RemittanceLocationMethod2Code": {
+      "name": "RemittanceLocationMethod2Code",
+      "kind": "code",
+      "options": [
+        {
+          "value": "EDIC",
+          "name": "ElectronicDataInterchange"
+        },
+        {
+          "value": "EMAL",
+          "name": "EMail"
+        },
+        {
+          "value": "FAXI",
+          "name": "Fax"
+        },
+        {
+          "value": "POST",
+          "name": "Post"
+        },
+        {
+          "value": "SMSM",
+          "name": "SMS"
+        },
+        {
+          "value": "URID",
+          "name": "UniformResourceIdentifier"
+        }
+      ]
+    },
+    "RemittanceLocationData2": {
+      "name": "RemittanceLocationData2",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Method",
+          "xmlTag": "Mtd",
+          "type": "RemittanceLocationMethod2Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ElectronicAddress",
+          "xmlTag": "ElctrncAdr",
+          "type": "Max2048Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PostalAddress",
+          "xmlTag": "PstlAdr",
+          "type": "NameAndAddress18",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "RemittanceLocation8": {
+      "name": "RemittanceLocation8",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "RemittanceIdentification",
+          "xmlTag": "RmtId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "RemittanceLocationDetails",
+          "xmlTag": "RmtLctnDtls",
+          "type": "RemittanceLocationData2",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    },
+    "ExternalDocumentType1Code": {
+      "name": "ExternalDocumentType1Code",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "DocumentType2Choice": {
+      "name": "DocumentType2Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "xmlTag": "Cd",
+          "type": "ExternalDocumentType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "DocumentType1": {
+      "name": "DocumentType1",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "CodeOrProprietary",
+          "xmlTag": "CdOrPrtry",
+          "type": "DocumentType2Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "xmlTag": "Issr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "ExternalDateType1Code": {
+      "name": "ExternalDateType1Code",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "DateType2Choice": {
+      "name": "DateType2Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "xmlTag": "Cd",
+          "type": "ExternalDateType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "DateAndType1": {
+      "name": "DateAndType1",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Type",
+          "xmlTag": "Tp",
+          "type": "DateType2Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Date",
+          "xmlTag": "Dt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ExternalDocumentLineType1Code": {
+      "name": "ExternalDocumentLineType1Code",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "DocumentLineType1Choice": {
+      "name": "DocumentLineType1Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "xmlTag": "Cd",
+          "type": "ExternalDocumentLineType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "DocumentLineType1": {
+      "name": "DocumentLineType1",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "CodeOrProprietary",
+          "xmlTag": "CdOrPrtry",
+          "type": "DocumentLineType1Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "xmlTag": "Issr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "DocumentLineIdentification1": {
+      "name": "DocumentLineIdentification1",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Type",
+          "xmlTag": "Tp",
+          "type": "DocumentLineType1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Number",
+          "xmlTag": "Nb",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "RelatedDate",
+          "xmlTag": "RltdDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "ExternalDocumentAmountType1Code": {
+      "name": "ExternalDocumentAmountType1Code",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "DocumentAmountType1Choice": {
+      "name": "DocumentAmountType1Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "xmlTag": "Cd",
+          "type": "ExternalDocumentAmountType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "DocumentAmount1": {
+      "name": "DocumentAmount1",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Type",
+          "xmlTag": "Tp",
+          "type": "DocumentAmountType1Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Amount",
+          "xmlTag": "Amt",
+          "type": "ActiveOrHistoricCurrencyAndAmount",
+          "kind": "amount",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "CreditDebitCode": {
+      "name": "CreditDebitCode",
+      "kind": "code",
+      "options": [
+        {
+          "value": "CRDT",
+          "name": "Credit"
+        },
+        {
+          "value": "DBIT",
+          "name": "Debit"
+        }
+      ]
+    },
+    "DocumentAdjustment1": {
+      "name": "DocumentAdjustment1",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Amount",
+          "xmlTag": "Amt",
+          "type": "ActiveOrHistoricCurrencyAndAmount",
+          "kind": "amount",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CreditDebitIndicator",
+          "xmlTag": "CdtDbtInd",
+          "type": "CreditDebitCode",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Reason",
+          "xmlTag": "Rsn",
+          "type": "Max4Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "AdditionalInformation",
+          "xmlTag": "AddtlInf",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "RemittanceAmount4": {
+      "name": "RemittanceAmount4",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "RemittanceAmountAndType",
+          "xmlTag": "RmtAmtAndTp",
+          "type": "DocumentAmount1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "AdjustmentAmountAndReason",
+          "xmlTag": "AdjstmntAmtAndRsn",
+          "type": "DocumentAdjustment1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    },
+    "DocumentLineInformation2": {
+      "name": "DocumentLineInformation2",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "xmlTag": "Id",
+          "type": "DocumentLineIdentification1",
+          "kind": "component",
+          "min": 1,
+          "max": null
+        },
+        {
+          "name": "Description",
+          "xmlTag": "Desc",
+          "type": "Max2048Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Amount",
+          "xmlTag": "Amt",
+          "type": "RemittanceAmount4",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "ReferredDocumentInformation8": {
+      "name": "ReferredDocumentInformation8",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Type",
+          "xmlTag": "Tp",
+          "type": "DocumentType1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Number",
+          "xmlTag": "Nb",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "RelatedDate",
+          "xmlTag": "RltdDt",
+          "type": "DateAndType1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "LineDetails",
+          "xmlTag": "LineDtls",
+          "type": "DocumentLineInformation2",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    },
+    "ExternalCreditorReferenceType1Code": {
+      "name": "ExternalCreditorReferenceType1Code",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "CreditorReferenceType2Choice": {
+      "name": "CreditorReferenceType2Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "xmlTag": "Cd",
+          "type": "ExternalCreditorReferenceType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "CreditorReferenceType3": {
+      "name": "CreditorReferenceType3",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "CodeOrProprietary",
+          "xmlTag": "CdOrPrtry",
+          "type": "CreditorReferenceType2Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "xmlTag": "Issr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "CreditorReferenceInformation3": {
+      "name": "CreditorReferenceInformation3",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Type",
+          "xmlTag": "Tp",
+          "type": "CreditorReferenceType3",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Reference",
+          "xmlTag": "Ref",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "ExternalGarnishmentType1Code": {
+      "name": "ExternalGarnishmentType1Code",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "GarnishmentType1Choice": {
+      "name": "GarnishmentType1Choice",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "xmlTag": "Cd",
+          "type": "ExternalGarnishmentType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "GarnishmentType1": {
+      "name": "GarnishmentType1",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "CodeOrProprietary",
+          "xmlTag": "CdOrPrtry",
+          "type": "GarnishmentType1Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "xmlTag": "Issr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "TrueFalseIndicator": {
+      "name": "TrueFalseIndicator",
+      "kind": "boolean"
+    },
+    "Garnishment4": {
+      "name": "Garnishment4",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Type",
+          "xmlTag": "Tp",
+          "type": "GarnishmentType1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Garnishee",
+          "xmlTag": "Grnshee",
+          "type": "PartyIdentification272",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "GarnishmentAdministrator",
+          "xmlTag": "GrnshmtAdmstr",
+          "type": "PartyIdentification272",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ReferenceNumber",
+          "xmlTag": "RefNb",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Date",
+          "xmlTag": "Dt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "RemittedAmount",
+          "xmlTag": "RmtdAmt",
+          "type": "ActiveOrHistoricCurrencyAndAmount",
+          "kind": "amount",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "FamilyMedicalInsuranceIndicator",
+          "xmlTag": "FmlyMdclInsrncInd",
+          "type": "TrueFalseIndicator",
+          "kind": "boolean",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "EmployeeTerminationIndicator",
+          "xmlTag": "MplyeeTermntnInd",
+          "type": "TrueFalseIndicator",
+          "kind": "boolean",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "UTIIdentifier": {
+      "name": "UTIIdentifier",
+      "kind": "text",
+      "pattern": "[A-Z0-9]{18}[0-9]{2}[A-Z0-9]{0,32}"
+    },
+    "ActiveCurrencyAndAmount": {
+      "name": "ActiveCurrencyAndAmount",
+      "kind": "amount",
+      "pattern": "[A-Z]{3,3}",
+      "totalDigits": 18,
+      "fractionDigits": 5,
+      "minInclusive": 0
+    },
+    "SecuritiesAttributes1": {
+      "name": "SecuritiesAttributes1",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "UniqueTransactionIdentifier",
+          "xmlTag": "UnqTxIdr",
+          "type": "UTIIdentifier",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Amount",
+          "xmlTag": "Amt",
+          "type": "ActiveCurrencyAndAmount",
+          "kind": "amount",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "StructuredRemittanceInformation22": {
+      "name": "StructuredRemittanceInformation22",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "ReferredDocumentInformation",
+          "xmlTag": "RfrdDocInf",
+          "type": "ReferredDocumentInformation8",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "ReferredDocumentAmount",
+          "xmlTag": "RfrdDocAmt",
+          "type": "RemittanceAmount4",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CreditorReferenceInformation",
+          "xmlTag": "CdtrRefInf",
+          "type": "CreditorReferenceInformation3",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Invoicer",
+          "xmlTag": "Invcr",
+          "type": "PartyIdentification272",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Invoicee",
+          "xmlTag": "Invcee",
+          "type": "PartyIdentification272",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TaxRemittance",
+          "xmlTag": "TaxRmt",
+          "type": "TaxData1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "GarnishmentRemittance",
+          "xmlTag": "GrnshmtRmt",
+          "type": "Garnishment4",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SecuritiesData",
+          "xmlTag": "SctiesData",
+          "type": "SecuritiesAttributes1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "AdditionalRemittanceInformation",
+          "xmlTag": "AddtlRmtInf",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 3
+        }
+      ]
+    },
+    "RemittanceInformation26": {
+      "name": "RemittanceInformation26",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Unstructured",
+          "xmlTag": "Ustrd",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "Structured",
+          "xmlTag": "Strd",
+          "type": "StructuredRemittanceInformation22",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    },
+    "Max350Text": {
+      "name": "Max350Text",
+      "kind": "text",
+      "minLength": 1,
+      "maxLength": 350
+    },
+    "SupplementaryDataEnvelope1": {
+      "name": "SupplementaryDataEnvelope1",
+      "kind": "any"
+    },
+    "SupplementaryData1": {
+      "name": "SupplementaryData1",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "PlaceAndName",
+          "xmlTag": "PlcAndNm",
+          "type": "Max350Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Envelope",
+          "xmlTag": "Envlp",
+          "type": "SupplementaryDataEnvelope1",
+          "kind": "any",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "CreditTransferTransaction76": {
+      "name": "CreditTransferTransaction76",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "PaymentIdentification",
+          "xmlTag": "PmtId",
+          "type": "PaymentIdentification6",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "PaymentTypeInformation",
+          "xmlTag": "PmtTpInf",
+          "type": "PaymentTypeInformation26",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Amount",
+          "xmlTag": "Amt",
+          "type": "AmountType4Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ExchangeRateInformation",
+          "xmlTag": "XchgRateInf",
+          "type": "ExchangeRate1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ChargeBearer",
+          "xmlTag": "ChrgBr",
+          "type": "ChargeBearerType1Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "MandateRelatedInformation",
+          "xmlTag": "MndtRltdInf",
+          "type": "CreditTransferMandateData1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ChequeInstruction",
+          "xmlTag": "ChqInstr",
+          "type": "Cheque19",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "UltimateDebtor",
+          "xmlTag": "UltmtDbtr",
+          "type": "PartyIdentification272",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "IntermediaryAgent1",
+          "xmlTag": "IntrmyAgt1",
+          "type": "BranchAndFinancialInstitutionIdentification8",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "IntermediaryAgent1Account",
+          "xmlTag": "IntrmyAgt1Acct",
+          "type": "CashAccount40",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "IntermediaryAgent2",
+          "xmlTag": "IntrmyAgt2",
+          "type": "BranchAndFinancialInstitutionIdentification8",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "IntermediaryAgent2Account",
+          "xmlTag": "IntrmyAgt2Acct",
+          "type": "CashAccount40",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "IntermediaryAgent3",
+          "xmlTag": "IntrmyAgt3",
+          "type": "BranchAndFinancialInstitutionIdentification8",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "IntermediaryAgent3Account",
+          "xmlTag": "IntrmyAgt3Acct",
+          "type": "CashAccount40",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CreditorAgent",
+          "xmlTag": "CdtrAgt",
+          "type": "BranchAndFinancialInstitutionIdentification8",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CreditorAgentAccount",
+          "xmlTag": "CdtrAgtAcct",
+          "type": "CashAccount40",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Creditor",
+          "xmlTag": "Cdtr",
+          "type": "PartyIdentification272",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CreditorAccount",
+          "xmlTag": "CdtrAcct",
+          "type": "CashAccount40",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "UltimateCreditor",
+          "xmlTag": "UltmtCdtr",
+          "type": "PartyIdentification272",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "InstructionForCreditorAgent",
+          "xmlTag": "InstrForCdtrAgt",
+          "type": "InstructionForCreditorAgent3",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "InstructionForDebtorAgent",
+          "xmlTag": "InstrForDbtrAgt",
+          "type": "InstructionForDebtorAgent1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Purpose",
+          "xmlTag": "Purp",
+          "type": "Purpose2Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "RegulatoryReporting",
+          "xmlTag": "RgltryRptg",
+          "type": "RegulatoryReporting10",
+          "kind": "component",
+          "min": 0,
+          "max": 10
+        },
+        {
+          "name": "Tax",
+          "xmlTag": "Tax",
+          "type": "TaxData1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "RelatedRemittanceInformation",
+          "xmlTag": "RltdRmtInf",
+          "type": "RemittanceLocation8",
+          "kind": "component",
+          "min": 0,
+          "max": 10
+        },
+        {
+          "name": "RemittanceInformation",
+          "xmlTag": "RmtInf",
+          "type": "RemittanceInformation26",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SupplementaryData",
+          "xmlTag": "SplmtryData",
+          "type": "SupplementaryData1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    },
+    "PaymentInstruction51": {
+      "name": "PaymentInstruction51",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "PaymentInformationIdentification",
+          "xmlTag": "PmtInfId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "PaymentMethod",
+          "xmlTag": "PmtMtd",
+          "type": "PaymentMethod3Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "RequestedAdviceType",
+          "xmlTag": "ReqdAdvcTp",
+          "type": "AdviceType1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "BatchBooking",
+          "xmlTag": "BtchBookg",
+          "type": "BatchBookingIndicator",
+          "kind": "boolean",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "NumberOfTransactions",
+          "xmlTag": "NbOfTxs",
+          "type": "Max15NumericText",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ControlSum",
+          "xmlTag": "CtrlSum",
+          "type": "DecimalNumber",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PaymentTypeInformation",
+          "xmlTag": "PmtTpInf",
+          "type": "PaymentTypeInformation26",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "RequestedExecutionDate",
+          "xmlTag": "ReqdExctnDt",
+          "type": "DateAndDateTime2Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "PoolingAdjustmentDate",
+          "xmlTag": "PoolgAdjstmntDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Debtor",
+          "xmlTag": "Dbtr",
+          "type": "PartyIdentification272",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "DebtorAccount",
+          "xmlTag": "DbtrAcct",
+          "type": "CashAccount40",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "DebtorAgent",
+          "xmlTag": "DbtrAgt",
+          "type": "BranchAndFinancialInstitutionIdentification8",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "DebtorAgentAccount",
+          "xmlTag": "DbtrAgtAcct",
+          "type": "CashAccount40",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "InstructionForDebtorAgent",
+          "xmlTag": "InstrForDbtrAgt",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "UltimateDebtor",
+          "xmlTag": "UltmtDbtr",
+          "type": "PartyIdentification272",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ChargeBearer",
+          "xmlTag": "ChrgBr",
+          "type": "ChargeBearerType1Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ChargesAccount",
+          "xmlTag": "ChrgsAcct",
+          "type": "CashAccount40",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ChargesAccountAgent",
+          "xmlTag": "ChrgsAcctAgt",
+          "type": "BranchAndFinancialInstitutionIdentification8",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CreditTransferTransactionInformation",
+          "xmlTag": "CdtTrfTxInf",
+          "type": "CreditTransferTransaction76",
+          "kind": "component",
+          "min": 1,
+          "max": null
+        }
+      ],
+      "rules": [
+        {
+          "name": "PaymentTypeInformationRule",
+          "text": "If PaymentTypeInformation is present, then CreditTransferTransactionInformation/PaymentTypeInformation is not allowed."
+        },
+        {
+          "name": "ChequeInstructionRule",
+          "text": "If PaymentMethod is different from CHK (Cheque), then CreditTransferTransactionInformation/ChequeInstruction is not allowed."
+        },
+        {
+          "name": "ChargesAccountRule",
+          "text": "If ChargesAccountAgent is present, then ChargesAccount must be present."
+        },
+        {
+          "name": "ChargesAccountAgentRule",
+          "text": "If ChargesAccountAgent is present, then it must contain a branch of the DebtorAgent. It must not contain a completely different agent."
+        },
+        {
+          "name": "UltimateDebtorGuideline",
+          "text": "UltimateDebtor may only be present if different from Debtor."
+        },
+        {
+          "name": "ChequeInstructionDeliverToDebtorGuideline",
+          "text": "If CreditTransferTransactionInformation/ChequeInstruction/DeliveryMethod is present and if CreditTransferTransactionInformation/ChequeInstruction/DeliveryMethod/Code is CRDB (CourierToDebtor), MLDB (MailToDebtor), PUDB (PickUpByDebtor) or RGDB (RegisteredMailToDebtor), then CreditTransferTransactionInformation/ChequeInstruction/DeliverTo may only be present if different from Debtor."
+        },
+        {
+          "name": "ChequeInstructionDeliverToCreditorGuideline",
+          "text": "If PaymentInformation/CreditTransferTransactionInformation/ChequeInstruction/DeliveryMethod is present and is CRCD (CourierToCreditor), MLCD (MailToCreditor), PUCD (PickUpByCreditor) or RGCD (RegisteredMailToCreditor), then CreditTransferTransactionInformation/ChequeInstruction/DeliverTo may only be present if different from CreditTransferTransactionInformation/Creditor."
+        },
+        {
+          "name": "ChequeInstructionDeliverToCreditorAgentGuideline",
+          "text": "If CreditTransferTransactionInformation/ChequeInstruction/DeliveryMethod is present and is CRFA (CourierToFinalAgent), MLFA (MailToFinalAgent), PUFA (PickUpByFinalAgent) or RGFA (RegisteredMailToFinalAgent), then CreditTransferTransactionInformation/ChequeInstruction/DeliverTo may only be present if different from CreditTransferTransactionInformation/Creditor."
+        },
+        {
+          "name": "ChequeFromGuideline",
+          "text": "CreditTransferTransactionInformation/ChequeInstruction/ChequeFrom may only be present if different from CreditTransferTransactionInformation/UltimateDebtor or Debtor."
+        },
+        {
+          "name": "ChargeBearerRule",
+          "text": "If ChargeBearer is present, then CreditTransferTransactionInformation/ChargeBearer is not allowed. If CreditTransferTransactionInformation/ChargeBearer is present, then ChargeBearer is not allowed. CreditTransferTransactionInformation/ChargeBearer and ChargeBearer may both be absent."
+        },
+        {
+          "name": "UltimateDebtorRule",
+          "text": "If UltimateDebtor is present, then CreditTransferTransactionInformation/UltimateDebtor is not allowed. If CreditTransferTransactionInformation/UltimateDebtor is present, then UltimateDebtor is not allowed. CreditTransferTransactionInformation/UltimateDebtor and UltimateDebtor may both be absent."
+        },
+        {
+          "name": "ChequeAndCreditorAccountRule",
+          "text": "If PaymentMethod is CHK (Cheque), then CreditTransferTransactionInformation/CreditorAccount is not allowed."
+        },
+        {
+          "name": "ChequeDeliveryAndCreditorAgentRule",
+          "text": "If PaymentMethod is CHK (Cheque) and CreditTransferTransactionInformation/ChequeInstruction/DeliveryMethod/Code is present and is equal to MLFA (MailToFinalAgent), CRFA (CourierToFinalAgent), RGFA (RegisteredMailToFinalAgent) or PUFA (PickUpByFinalAgent), then CreditTransferTransactionInformation/CreditorAgent must be present."
+        },
+        {
+          "name": "ChequeDeliveryAndNoCreditorAgentRule",
+          "text": "If PaymentMethod is CHK (Cheque) and CreditTransferTransactionInformation/ChequeInstruction/DeliveryMethod/Code is present and different from MLFA (MailToFinalAgent), CRFA (CourierToFinalAgent), RGFA (RegisteredMailToFinalAgent) or PUFA (PickUpByFinalAgent), then CreditTransferTransactionInformation/CreditorAgent is not allowed."
+        },
+        {
+          "name": "NonChequePaymentMethodRule",
+          "text": "If PaymentMethod is different from CHK (Cheque) and CreditTransferTransactionInformation/Creditor is not present, then CreditTransferTransactionInformation/CreditorAccount must be present."
+        },
+        {
+          "name": "ChequeNoDeliveryAndNoCreditorAgentRule",
+          "text": "If PaymentMethod is CHK (Cheque) and CreditTransferTransactionInformation/ChequeInstruction/DeliveryMethod is not present, then CreditTransferTransactionInformation/CreditorAgent is not allowed."
+        },
+        {
+          "name": "InstructionForDebtorAgentRule",
+          "text": "If InstructionForDebtorAgent is present, then CreditTransferTransactionInformation/InstructionForDebtorAgent is not allowed. If CreditTransferTransactionInformation/InstructionForDebtorAgent is present, then InstructionForDebtorAgent is not allowed. CreditTransferTransactionInformation/InstructionForDebtorAgent and InstructionForDebtorAgent may both be absent."
+        }
+      ]
+    },
+    "CustomerCreditTransferInitiationV13": {
+      "name": "CustomerCreditTransferInitiationV13",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "GroupHeader",
+          "xmlTag": "GrpHdr",
+          "type": "GroupHeader114",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "PaymentInformation",
+          "xmlTag": "PmtInf",
+          "type": "PaymentInstruction51",
+          "kind": "component",
+          "min": 1,
+          "max": null
+        },
+        {
+          "name": "SupplementaryData",
+          "xmlTag": "SplmtryData",
+          "type": "SupplementaryData1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    }
+  }
+}

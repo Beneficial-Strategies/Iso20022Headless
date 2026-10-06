@@ -1,0 +1,40 @@
+{
+  "_note": "Hand-assembled from MCP universal_lookup calls on 2026-10-05. Sample only, not a full closure.",
+  "message": {
+    "id": "faf24cbe-3869-45f3-a382-ffcd8713ffd3",
+    "name": "CustomerCreditTransferInitiationV13",
+    "identifier": "pain.001.001.13",
+    "xmlTag": "CstmrCdtTrfInitn",
+    "status": "Registered",
+    "blocks": [
+      { "id": "4f529681-cc64-42c7-ae7b-39fffcdcad88", "name": "GroupHeader", "xmlTag": "GrpHdr",
+        "minOccurs": 1, "maxOccurs": 1, "status": "Provisionally Registered", "type": "_yjuzITEyEe6g-ffJsqGiSA" }
+    ]
+  },
+  "types": {
+    "_yjuzITEyEe6g-ffJsqGiSA": {
+      "kind": "component", "name": "GroupHeader114", "status": "Registered",
+      "elements": [
+        { "id": "_yl9nwTEyEe6g-ffJsqGiSA", "name": "MessageIdentification", "xmlTag": "MsgId" },
+        { "id": "_yl9nxzEyEe6g-ffJsqGiSA", "name": "NumberOfTransactions", "xmlTag": "NbOfTxs",
+          "minOccurs": 1, "maxOccurs": 1, "status": "Provisionally Registered",
+          "simpleType": "_YXbjAtp-Ed-ak6NoX_4Aeg_-1365324848" }
+      ]
+    },
+    "_YXbjAtp-Ed-ak6NoX_4Aeg_-1365324848": { "kind": "text", "name": "Max15NumericText", "pattern": "[0-9]{1,15}" },
+    "_YW1tKdp-Ed-ak6NoX_4Aeg_1913463446": { "kind": "text", "name": "Max35Text", "minLength": 1, "maxLength": 35 },
+    "_YYxm0dp-Ed-ak6NoX_4Aeg_1226525818": { "kind": "identifier", "name": "IBAN2007Identifier",
+      "pattern": "[A-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}" },
+    "_6L-JzW48EeiU9cctagi5ow": {
+      "kind": "choice", "name": "Party38Choice", "status": "Registered",
+      "variants": [
+        { "name": "OrganisationIdentification", "xmlTag": "OrgId", "type": "_6VggQW48EeiU9cctagi5ow" },
+        { "name": "PrivateIdentification", "xmlTag": "PrvtId" }
+      ]
+    },
+    "_Z0aeYtp-Ed-ak6NoX_4Aeg_1813568342": {
+      "kind": "codeset", "name": "PaymentMethod3Code",
+      "codes": [ { "name": "Cheque", "wireValue": null }, { "name": "CreditTransfer", "wireValue": null }, { "name": "TransferAdvice", "wireValue": null } ]
+    }
+  }
+}

@@ -1,0 +1,118 @@
+codeSetName	isoId	restrictionOf	code	enumName
+PaymentMethod3Code	_Z0aeYtp-Ed-ak6NoX_4Aeg_1813568342	PaymentMethodCode	CHK	Cheque
+PaymentMethod3Code	_Z0aeYtp-Ed-ak6NoX_4Aeg_1813568342	PaymentMethodCode	TRA	TransferAdvice
+PaymentMethod3Code	_Z0aeYtp-Ed-ak6NoX_4Aeg_1813568342	PaymentMethodCode	TRF	CreditTransfer
+ChargeBearerType1Code	_a8PpINp-Ed-ak6NoX_4Aeg_940131843	ChargeBearerTypeCode	CRED	BorneByCreditor
+ChargeBearerType1Code	_a8PpINp-Ed-ak6NoX_4Aeg_940131843	ChargeBearerTypeCode	DEBT	BorneByDebtor
+ChargeBearerType1Code	_a8PpINp-Ed-ak6NoX_4Aeg_940131843	ChargeBearerTypeCode	SHAR	Shared
+ChargeBearerType1Code	_a8PpINp-Ed-ak6NoX_4Aeg_940131843	ChargeBearerTypeCode	SLEV	FollowingServiceLevel
+NamePrefix2Code	_ODhzcHRmEeiH1ZOt2UD8vQ	NamePrefixCode	DOCT	Doctor
+NamePrefix2Code	_ODhzcHRmEeiH1ZOt2UD8vQ	NamePrefixCode	MADM	Madam
+NamePrefix2Code	_ODhzcHRmEeiH1ZOt2UD8vQ	NamePrefixCode	MIKS	GenderNeutral
+NamePrefix2Code	_ODhzcHRmEeiH1ZOt2UD8vQ	NamePrefixCode	MISS	Miss
+NamePrefix2Code	_ODhzcHRmEeiH1ZOt2UD8vQ	NamePrefixCode	MIST	Mister
+PreferredContactMethod2Code	_OQ1V0DIDEe6mzvR3CHiUhA	PreferredContactMethodCode	CELL	MobileOrCellPhone
+PreferredContactMethod2Code	_OQ1V0DIDEe6mzvR3CHiUhA	PreferredContactMethodCode	FAXX	Fax
+PreferredContactMethod2Code	_OQ1V0DIDEe6mzvR3CHiUhA	PreferredContactMethodCode	LETT	Letter
+PreferredContactMethod2Code	_OQ1V0DIDEe6mzvR3CHiUhA	PreferredContactMethodCode	MAIL	Email
+PreferredContactMethod2Code	_OQ1V0DIDEe6mzvR3CHiUhA	PreferredContactMethodCode	ONLI	Online
+PreferredContactMethod2Code	_OQ1V0DIDEe6mzvR3CHiUhA	PreferredContactMethodCode	PHON	Phone
+ChequeType2Code	_a-xYudp-Ed-ak6NoX_4Aeg_1427080756	ChequeTypeCode	BCHQ	BankCheque
+ChequeType2Code	_a-xYudp-Ed-ak6NoX_4Aeg_1427080756	ChequeTypeCode	CCCH	CertifiedCustomerCheque
+ChequeType2Code	_a-xYudp-Ed-ak6NoX_4Aeg_1427080756	ChequeTypeCode	CCHQ	CustomerCheque
+ChequeType2Code	_a-xYudp-Ed-ak6NoX_4Aeg_1427080756	ChequeTypeCode	DRFT	Draft
+ChequeType2Code	_a-xYudp-Ed-ak6NoX_4Aeg_1427080756	ChequeTypeCode	ELDR	ElectronicDraft
+Priority2Code	_aKLTBNp-Ed-ak6NoX_4Aeg_-581472374	PriorityCode	HIGH	High
+Priority2Code	_aKLTBNp-Ed-ak6NoX_4Aeg_-581472374	PriorityCode	NORM	Normal
+ExchangeRateType1Code	_aksr2Np-Ed-ak6NoX_4Aeg_-75535887	ExchangeRateTypeCode	AGRD	Agreed
+ExchangeRateType1Code	_aksr2Np-Ed-ak6NoX_4Aeg_-75535887	ExchangeRateTypeCode	SALE	Sale
+ExchangeRateType1Code	_aksr2Np-Ed-ak6NoX_4Aeg_-75535887	ExchangeRateTypeCode	SPOT	Spot
+RegulatoryReportingType1Code	_ZbFYZtp-Ed-ak6NoX_4Aeg_-1577941174	RegulatoryReportingTypeCode	BOTH	Both
+RegulatoryReportingType1Code	_ZbFYZtp-Ed-ak6NoX_4Aeg_-1577941174	RegulatoryReportingTypeCode	CRED	Credit
+RegulatoryReportingType1Code	_ZbFYZtp-Ed-ak6NoX_4Aeg_-1577941174	RegulatoryReportingTypeCode	DEBT	Debit
+RemittanceLocationMethod2Code	_ZsX8tNp-Ed-ak6NoX_4Aeg_-517543090	RemittanceLocationMethodCode	EDIC	ElectronicDataInterchange
+RemittanceLocationMethod2Code	_ZsX8tNp-Ed-ak6NoX_4Aeg_-517543090	RemittanceLocationMethodCode	EMAL	EMail
+RemittanceLocationMethod2Code	_ZsX8tNp-Ed-ak6NoX_4Aeg_-517543090	RemittanceLocationMethodCode	FAXI	Fax
+RemittanceLocationMethod2Code	_ZsX8tNp-Ed-ak6NoX_4Aeg_-517543090	RemittanceLocationMethodCode	POST	Post
+RemittanceLocationMethod2Code	_ZsX8tNp-Ed-ak6NoX_4Aeg_-517543090	RemittanceLocationMethodCode	SMSM	SMS
+RemittanceLocationMethod2Code	_ZsX8tNp-Ed-ak6NoX_4Aeg_-517543090	RemittanceLocationMethodCode	URID	UniformResourceIdentifier
+CreditDebitCode	_bTfEdtp-Ed-ak6NoX_4Aeg_826087773	AmountDirectionCode	CRDT	Credit
+CreditDebitCode	_bTfEdtp-Ed-ak6NoX_4Aeg_826087773	AmountDirectionCode	DBIT	Debit
+TaxRecordPeriod1Code	_YiT9VNp-Ed-ak6NoX_4Aeg_-1322025669	TaxRecordPeriodCode	HLF1	FirstHalf
+TaxRecordPeriod1Code	_YiT9VNp-Ed-ak6NoX_4Aeg_-1322025669	TaxRecordPeriodCode	HLF2	SecondHalf
+TaxRecordPeriod1Code	_YiT9VNp-Ed-ak6NoX_4Aeg_-1322025669	TaxRecordPeriodCode	MM01	FirstMonth
+TaxRecordPeriod1Code	_YiT9VNp-Ed-ak6NoX_4Aeg_-1322025669	TaxRecordPeriodCode	MM02	SecondMonth
+TaxRecordPeriod1Code	_YiT9VNp-Ed-ak6NoX_4Aeg_-1322025669	TaxRecordPeriodCode	MM03	ThirdMonth
+TaxRecordPeriod1Code	_YiT9VNp-Ed-ak6NoX_4Aeg_-1322025669	TaxRecordPeriodCode	MM04	FourthMonth
+TaxRecordPeriod1Code	_YiT9VNp-Ed-ak6NoX_4Aeg_-1322025669	TaxRecordPeriodCode	MM05	FifthMonth
+TaxRecordPeriod1Code	_YiT9VNp-Ed-ak6NoX_4Aeg_-1322025669	TaxRecordPeriodCode	MM06	SixthMonth
+TaxRecordPeriod1Code	_YiT9VNp-Ed-ak6NoX_4Aeg_-1322025669	TaxRecordPeriodCode	MM07	SeventhMonth
+TaxRecordPeriod1Code	_YiT9VNp-Ed-ak6NoX_4Aeg_-1322025669	TaxRecordPeriodCode	MM08	EighthMonth
+TaxRecordPeriod1Code	_YiT9VNp-Ed-ak6NoX_4Aeg_-1322025669	TaxRecordPeriodCode	MM09	NinthMonth
+TaxRecordPeriod1Code	_YiT9VNp-Ed-ak6NoX_4Aeg_-1322025669	TaxRecordPeriodCode	MM10	TenthMonth
+TaxRecordPeriod1Code	_YiT9VNp-Ed-ak6NoX_4Aeg_-1322025669	TaxRecordPeriodCode	MM11	EleventhMonth
+TaxRecordPeriod1Code	_YiT9VNp-Ed-ak6NoX_4Aeg_-1322025669	TaxRecordPeriodCode	MM12	TwelfthMonth
+TaxRecordPeriod1Code	_YiT9VNp-Ed-ak6NoX_4Aeg_-1322025669	TaxRecordPeriodCode	QTR1	FirstQuarter
+TaxRecordPeriod1Code	_YiT9VNp-Ed-ak6NoX_4Aeg_-1322025669	TaxRecordPeriodCode	QTR2	SecondQuarter
+TaxRecordPeriod1Code	_YiT9VNp-Ed-ak6NoX_4Aeg_-1322025669	TaxRecordPeriodCode	QTR3	ThirdQuarter
+TaxRecordPeriod1Code	_YiT9VNp-Ed-ak6NoX_4Aeg_-1322025669	TaxRecordPeriodCode	QTR4	FourthQuarter
+Frequency6Code	_t8BeYFkyEeGeoaLUQk__nA_1722188519	FrequencyCode	ADHO	Adhoc
+Frequency6Code	_t8BeYFkyEeGeoaLUQk__nA_1722188519	FrequencyCode	DAIL	Daily
+Frequency6Code	_t8BeYFkyEeGeoaLUQk__nA_1722188519	FrequencyCode	FRTN	Fortnightly
+Frequency6Code	_t8BeYFkyEeGeoaLUQk__nA_1722188519	FrequencyCode	INDA	IntraDay
+Frequency6Code	_t8BeYFkyEeGeoaLUQk__nA_1722188519	FrequencyCode	MIAN	SemiAnnual
+Frequency6Code	_t8BeYFkyEeGeoaLUQk__nA_1722188519	FrequencyCode	MNTH	Monthly
+Frequency6Code	_t8BeYFkyEeGeoaLUQk__nA_1722188519	FrequencyCode	QURT	Quarterly
+Frequency6Code	_t8BeYFkyEeGeoaLUQk__nA_1722188519	FrequencyCode	WEEK	Weekly
+Frequency6Code	_t8BeYFkyEeGeoaLUQk__nA_1722188519	FrequencyCode	YEAR	Annual
+Authorisation1Code	_bjbk9Np-Ed-ak6NoX_4Aeg_300324450	AuthorisationCode	AUTH	PreAuthorisedFile
+Authorisation1Code	_bjbk9Np-Ed-ak6NoX_4Aeg_300324450	AuthorisationCode	FDET	FileLevelAuthorisationDetails
+Authorisation1Code	_bjbk9Np-Ed-ak6NoX_4Aeg_300324450	AuthorisationCode	FSUM	FileLevelAuthorisationSummary
+Authorisation1Code	_bjbk9Np-Ed-ak6NoX_4Aeg_300324450	AuthorisationCode	ILEV	InstructionLevelAuthorisation
+AddressType2Code	_bm2sYNp-Ed-ak6NoX_4Aeg_595056355	AddressTypeCode	ADDR	Postal
+AddressType2Code	_bm2sYNp-Ed-ak6NoX_4Aeg_595056355	AddressTypeCode	BIZZ	Business
+AddressType2Code	_bm2sYNp-Ed-ak6NoX_4Aeg_595056355	AddressTypeCode	DLVY	DeliveryTo
+AddressType2Code	_bm2sYNp-Ed-ak6NoX_4Aeg_595056355	AddressTypeCode	HOME	Residential
+AddressType2Code	_bm2sYNp-Ed-ak6NoX_4Aeg_595056355	AddressTypeCode	MLTO	MailTo
+AddressType2Code	_bm2sYNp-Ed-ak6NoX_4Aeg_595056355	AddressTypeCode	PBOX	POBox
+AdviceType1Code	_U8Z8ANomEembTrt_WixjyQ	AdviceTypeCode	ADND	AdviceWithoutDetails
+AdviceType1Code	_U8Z8ANomEembTrt_WixjyQ	AdviceTypeCode	ADWD	AdviceWithDetails
+ChequeDelivery1Code	_a-Usx9p-Ed-ak6NoX_4Aeg_681596924	ChequeDeliveryCode	CRCD	CourierToCreditor
+ChequeDelivery1Code	_a-Usx9p-Ed-ak6NoX_4Aeg_681596924	ChequeDeliveryCode	CRDB	CourierToDebtor
+ChequeDelivery1Code	_a-Usx9p-Ed-ak6NoX_4Aeg_681596924	ChequeDeliveryCode	CRFA	CourierToFinalAgent
+ChequeDelivery1Code	_a-Usx9p-Ed-ak6NoX_4Aeg_681596924	ChequeDeliveryCode	MLCD	MailToCreditor
+ChequeDelivery1Code	_a-Usx9p-Ed-ak6NoX_4Aeg_681596924	ChequeDeliveryCode	MLDB	MailToDebtor
+ChequeDelivery1Code	_a-Usx9p-Ed-ak6NoX_4Aeg_681596924	ChequeDeliveryCode	MLFA	MailToFinalAgent
+ChequeDelivery1Code	_a-Usx9p-Ed-ak6NoX_4Aeg_681596924	ChequeDeliveryCode	PUCD	PickUpByCreditor
+ChequeDelivery1Code	_a-Usx9p-Ed-ak6NoX_4Aeg_681596924	ChequeDeliveryCode	PUDB	PickUpByDebtor
+ChequeDelivery1Code	_a-Usx9p-Ed-ak6NoX_4Aeg_681596924	ChequeDeliveryCode	PUFA	PickUpByFinalAgent
+ChequeDelivery1Code	_a-Usx9p-Ed-ak6NoX_4Aeg_681596924	ChequeDeliveryCode	RGCD	RegisteredMailToCreditor
+ChequeDelivery1Code	_a-Usx9p-Ed-ak6NoX_4Aeg_681596924	ChequeDeliveryCode	RGDB	RegisteredMailToDebtor
+ChequeDelivery1Code	_a-Usx9p-Ed-ak6NoX_4Aeg_681596924	ChequeDeliveryCode	RGFA	RegisteredMailToFinalAgent
+MandateClassification1Code	_dYdaoGVREeacpJ-gG9kyUQ	MandateClassificationCode	FIXE	Fixed
+MandateClassification1Code	_dYdaoGVREeacpJ-gG9kyUQ	MandateClassificationCode	USGB	UsageBased
+MandateClassification1Code	_dYdaoGVREeacpJ-gG9kyUQ	MandateClassificationCode	VARI	Variable
+CountryCode	_bTfEctp-Ed-ak6NoX_4Aeg_-804722522		*PATTERN*	[A-Z]{2,2} (ISO 3166 alpha-2; no code list in repository; not enumerated)
+ActiveOrHistoricCurrencyCode	_bqIp6tp-Ed-ak6NoX_4Aeg_1823330336		*PATTERN*	[A-Z]{3,3} (ISO 4217; no code list in repository; not enumerated)
+ActiveCurrencyCode	_bqIp5tp-Ed-ak6NoX_4Aeg_-1326801359		*PATTERN*	[A-Z]{3,3} (ISO 4217; only reached via ActiveCurrencyAndAmount currencyIdentifierSet; not enumerated)
+ExternalCashAccountType1Code	_t7bogVkyEeGeoaLUQk__nA_-2034002224		*EXTERNAL*	minLength=1 maxLength=4; ~28 codes listed by repository (enum names only, wire values not enumerated here)
+ExternalCategoryPurpose1Code	_amVqk9p-Ed-ak6NoX_4Aeg_-1953720198		*EXTERNAL*	minLength=1 maxLength=4; ~49 codes (not enumerated)
+ExternalLocalInstrument1Code	_ame0gdp-Ed-ak6NoX_4Aeg_-1943783063		*EXTERNAL*	minLength=1 maxLength=35; ~115 codes (not enumerated)
+ExternalServiceLevel1Code	_amolhdp-Ed-ak6NoX_4Aeg_-670764132		*EXTERNAL*	minLength=1 maxLength=4; ~29 codes (not enumerated)
+ExternalClearingSystemIdentification1Code	_amVqlNp-Ed-ak6NoX_4Aeg_319823369		*EXTERNAL*	minLength=1 maxLength=5; ~172 codes (not enumerated)
+ExternalFinancialInstitutionIdentification1Code	_ame0gNp-Ed-ak6NoX_4Aeg_-1716707444		*EXTERNAL*	minLength=1 maxLength=4; 0 codes in repository
+ExternalProxyAccountType1Code	_ioPgonh3EeidzqjNEfehPg		*EXTERNAL*	minLength=1 maxLength=4; ~22 codes (not enumerated)
+ExternalPurpose1Code	_amolgNp-Ed-ak6NoX_4Aeg_1652079816		*EXTERNAL*	minLength=1 maxLength=4; ~366 codes (not enumerated)
+ExternalMandateSetupReason1Code	_hsQScD2MEeS6DKIV6SF6gw		*EXTERNAL*	minLength=1 maxLength=4; 0 codes in repository
+ExternalRegulatoryReportingType1Code	_8T8SAHeKEfCdoODv2ypKfw		*EXTERNAL*	minLength=1 maxLength=4; ~5 codes (not enumerated)
+ExternalAccountIdentification1Code	_amL5ktp-Ed-ak6NoX_4Aeg_-2079691647		*EXTERNAL*	minLength=1 maxLength=4; ~4 codes (not enumerated)
+ExternalCreditorReferenceType1Code	_T0xV8DH3Ee6mzvR3CHiUhA		*EXTERNAL*	minLength=1 maxLength=4; ~7 codes (not enumerated)
+ExternalDateType1Code	_UPTvIDHyEe6BxvG014AZzQ		*EXTERNAL*	minLength=1 maxLength=4; ~5 codes (not enumerated)
+ExternalDocumentAmountType1Code	_Shv5wDH1Ee6BxvG014AZzQ		*EXTERNAL*	minLength=1 maxLength=4; ~27 codes (not enumerated)
+ExternalDocumentLineType1Code	_Nv6E4RtqEeOa4Kl-9PmHww		*EXTERNAL*	minLength=1 maxLength=4; ~19 codes (not enumerated)
+ExternalDocumentType1Code	_TRd1lQEcEeCQm6a_G2yO_w_-2000804231		*EXTERNAL*	minLength=1 maxLength=4; ~23 codes (not enumerated)
+ExternalGarnishmentType1Code	_DsFkYInoEeOORMXOfBk1Bw		*EXTERNAL*	minLength=1 maxLength=4; ~3 codes (not enumerated)
+ExternalOrganisationIdentification1Code	_ame0hNp-Ed-ak6NoX_4Aeg_-1667686354		*EXTERNAL*	minLength=1 maxLength=4; ~15 codes (not enumerated)
+ExternalPersonIdentification1Code	_ame0hdp-Ed-ak6NoX_4Aeg_-1698163033		*EXTERNAL*	minLength=1 maxLength=4; ~11 codes (not enumerated)
+ExternalCreditorAgentInstruction1Code	_gVopcMP-Eemsic1bQcEtLA		*EXTERNAL*	minLength=1 maxLength=4; ~14 codes (not enumerated)
+ExternalDebtorAgentInstruction1Code	_hokV-csaEemxFbEZK-FMzw		*EXTERNAL*	minLength=1 maxLength=4; ~7 codes (not enumerated)

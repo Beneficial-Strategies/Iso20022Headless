@@ -1,0 +1,10 @@
+{
+  "name": "iso20022-headless",
+  "private": true,
+  "packageManager": "pnpm@10.34.6",
+  "scripts": {
+    "codegen": "pnpm --filter @beneficial-strategies/iso20022-codegen run generate",
+    "typecheck": "pnpm -r run typecheck",
+    "test": "pnpm -r run test"
+  }
+}
