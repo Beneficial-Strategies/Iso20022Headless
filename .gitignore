@@ -4,3 +4,4 @@ dist
 *.tsbuildinfo
 tools/visual/out
 site
+.vite
