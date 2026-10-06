@@ -1,0 +1,7 @@
+choice	memberId	memberName	text
+DocumentFormat1Choice	_932rtXltEeG7BsjMvd1mEw_1631851618	Code	Document format.
+DocumentFormat1Choice	_932rtnltEeG7BsjMvd1mEw_-654250826	Proprietary	Document format expressed as a proprietary code.
+DocumentType1Choice	_iYH70HiJEeidzqjNEfehPg	Code	Document type, in a coded form.
+DocumentType1Choice	_iYH70XiJEeidzqjNEfehPg	Proprietary	Document type, in a proprietary form.
+AmountOrRate1Choice	_Q-Uncdp-Ed-ak6NoX_4Aeg_512767945	Amount	Amount expressed as an amount of money.
+AmountOrRate1Choice	_Q-Unctp-Ed-ak6NoX_4Aeg_827689641	Rate	Amount expressed as a rate.

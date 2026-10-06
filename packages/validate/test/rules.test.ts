@@ -18,7 +18,8 @@ const present = { Name: 'x' }; // stands in for "element present"
 
 describe('business rule evaluation (PaymentInstruction51)', () => {
   it('reports every rule: 11 evaluable, 1 unsupported, 5 prose-only guidelines', () => {
-    const results = run(pi());
+    // rules of the nested types (account, cheque, ...) are reported too; this test is about the instruction's own
+    const results = run(pi()).filter((r) => r.instancePath === 'PaymentInformation[0]');
     expect(results).toHaveLength(17);
     const by = (s: string) => results.filter((r) => r.status === s).length;
     expect(by('prose-only')).toBe(5);

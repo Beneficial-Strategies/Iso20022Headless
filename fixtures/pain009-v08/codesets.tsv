@@ -1,0 +1,9 @@
+codeSetName	isoId	restrictionOf	code	enumName
+Frequency10Code	_iotXoGoEEearR-CA7eRZXQ	FrequencyCode	MIAN	SemiAnnual
+Frequency10Code	_iotXoGoEEearR-CA7eRZXQ	FrequencyCode	NEVR	Never
+Frequency10Code	_iotXoGoEEearR-CA7eRZXQ	FrequencyCode	QURT	Quarterly
+Frequency10Code	_iotXoGoEEearR-CA7eRZXQ	FrequencyCode	RATE	Rate
+Frequency10Code	_iotXoGoEEearR-CA7eRZXQ	FrequencyCode	YEAR	Annual
+ExternalAuthenticationChannel1Code	_5C8hAZdfEea1K6JAcAwoVg		*EXTERNAL*	minLength=1 maxLength=4; ~4 codes (not enumerated)
+SequenceType2Code	_ZKPgB9p-Ed-ak6NoX_4Aeg_868377274	SequenceTypeCode	OOFF	OneOff
+SequenceType2Code	_ZKPgB9p-Ed-ak6NoX_4Aeg_868377274	SequenceTypeCode	RCUR	Recurring

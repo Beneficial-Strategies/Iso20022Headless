@@ -2068,6 +2068,33 @@
           "min": 0,
           "max": 1
         }
+      ],
+      "rules": [
+        {
+          "name": "IdentificationOrProxyPresenceRule",
+          "isoId": "_gkOC0BksEeuOlLLYYxcZSA",
+          "text": "Identification must be present or Proxy must be present. Both may be present.",
+          "expression": {
+            "mustBe": {
+              "connector": "OR",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/Identification"
+                },
+                {
+                  "op": "Presence",
+                  "path": "/Proxy"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "IdentificationAndProxyGuideline",
+          "isoId": "_LS3voBktEeuOlLLYYxcZSA",
+          "text": "If the account identification is not defined through a conventional identification such as an email address or a mobile number, then the proxy element should be used for the identification of the account."
+        }
       ]
     },
     "ChargeBearerType1Code": {
@@ -2889,6 +2916,38 @@
           "min": 0,
           "max": 5
         }
+      ],
+      "rules": [
+        {
+          "name": "ChequeMaturityDateRule",
+          "isoId": "_4qTIwTEyEe6g-ffJsqGiSA",
+          "text": "If ChequeMaturityDate is present, then ChequeType must be present and equal to DRFT or ELDR.",
+          "expression": {
+            "mustBe": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/ChequeType"
+                },
+                {
+                  "op": "WithInList",
+                  "path": "/ChequeType",
+                  "value": "ChequeType3Code"
+                }
+              ]
+            },
+            "onCondition": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/ChequeMaturityDate"
+                }
+              ]
+            }
+          }
+        }
       ]
     },
     "ExternalCreditorAgentInstruction1Code": {
@@ -3135,6 +3194,28 @@
           "kind": "text",
           "min": 0,
           "max": null
+        }
+      ],
+      "rules": [
+        {
+          "name": "ReportingCodeAndInformationRule",
+          "isoId": "_SqGJwHeNEfCdoODv2ypKfw",
+          "text": "Reporting code or information must be present. Both may be present.",
+          "expression": {
+            "mustBe": {
+              "connector": "OR",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/ReportingCode"
+                },
+                {
+                  "op": "Presence",
+                  "path": "/Information[*]"
+                }
+              ]
+            }
+          }
         }
       ]
     },
@@ -4157,6 +4238,13 @@
           "min": 0,
           "max": null
         }
+      ],
+      "rules": [
+        {
+          "name": "RemittanceAmountAndTypeGuideline",
+          "isoId": "_pVWNkF4MEe6aotWpFSvDfw",
+          "text": "If Type/Code is equal to CREN, DUPA or REMI for RemittanceAmountAndType, RemittanceAmountAndType must not be repeated."
+        }
       ]
     },
     "DocumentLineInformation2": {
@@ -4649,6 +4737,13 @@
           "min": 1,
           "max": 1
         }
+      ],
+      "rules": [
+        {
+          "name": "SupplementaryDataRule",
+          "isoId": "_Qn988tp-Ed-ak6NoX_4Aeg_-1492355109",
+          "text": "This component may not be used without the explicit approval of a SEG and submission to the RA of ISO 20022 compliant structure(s) to be used in the Envelope element."
+        }
       ]
     },
     "CreditTransferTransaction76": {
@@ -4898,6 +4993,169 @@
           "kind": "component",
           "min": 0,
           "max": null
+        }
+      ],
+      "rules": [
+        {
+          "name": "UltimateCreditorGuideline",
+          "isoId": "c6779a34-6806-49c5-85fd-fca2fe4dc660",
+          "text": "UltimateCreditor may only be present if different from Creditor."
+        },
+        {
+          "name": "UltimateDebtorGuideline",
+          "isoId": "098b7efc-39e3-4c55-a8f1-331c73e010c7",
+          "text": "UltimateDebtor may only be present if different from Debtor."
+        },
+        {
+          "name": "IntermediaryAgent2Rule",
+          "isoId": "b443870c-19e4-4fc9-82a7-23efcf02561e",
+          "text": "If IntermediaryAgent2 is present, then IntermediaryAgent1 must be present.",
+          "expression": {
+            "mustBe": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/IntermediaryAgent1"
+                }
+              ]
+            },
+            "onCondition": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/IntermediaryAgent2"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "IntermediaryAgent3Rule",
+          "isoId": "ef5f8d69-11d2-4462-bb6f-f547bafe95ac",
+          "text": "If IntermediaryAgent3 is present, then IntermediaryAgent2 must be present.",
+          "expression": {
+            "mustBe": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/IntermediaryAgent2"
+                }
+              ]
+            },
+            "onCondition": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/IntermediaryAgent3"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "InstructionForCreditorAgentRule",
+          "isoId": "66b63ce3-3991-47a3-bdf1-200ac434d493",
+          "text": "If InstructionForCreditorAgent/Code contains CHQB, then CreditorAccount is not allowed.",
+          "expression": {
+            "mustBe": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Absence",
+                  "path": "/CreditorAccount"
+                }
+              ]
+            },
+            "onCondition": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "WithInList",
+                  "path": "/InstructionForCreditorAgent[*]/Code",
+                  "value": "ValidationRulePayCreditorByCheque1Code"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "IntermediaryAgent1AccountRule",
+          "isoId": "745ada65-b979-40b7-b5ea-71134ab4e295",
+          "text": "If IntermediaryAgent1Account is present, then IntermediaryAgent1 must be present.",
+          "expression": {
+            "mustBe": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Absence",
+                  "path": "/IntermediaryAgent1Account"
+                }
+              ]
+            },
+            "onCondition": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Absence",
+                  "path": "/IntermediaryAgent1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "IntermediaryAgent2AccountRule",
+          "isoId": "01207227-68ac-4620-8b96-5be683a5cf7a",
+          "text": "If IntermediaryAgent2Account is present, then IntermediaryAgent2 must be present.",
+          "expression": {
+            "mustBe": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Absence",
+                  "path": "/IntermediaryAgent2Account"
+                }
+              ]
+            },
+            "onCondition": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Absence",
+                  "path": "/IntermediaryAgent2"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "IntermediaryAgent3AccountRule",
+          "isoId": "2d348c31-1b7c-4b77-8204-9073ce1321e8",
+          "text": "If IntermediaryAgent3Account is present, then IntermediaryAgent3 must be present.",
+          "expression": {
+            "mustBe": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Absence",
+                  "path": "/IntermediaryAgent3Account"
+                }
+              ]
+            },
+            "onCondition": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Absence",
+                  "path": "/IntermediaryAgent3"
+                }
+              ]
+            }
+          }
         }
       ]
     },
@@ -5479,6 +5737,13 @@
           "kind": "component",
           "min": 0,
           "max": null
+        }
+      ],
+      "rules": [
+        {
+          "name": "SupplementaryDataRule",
+          "isoId": "d3104d39-8b8c-4962-96e5-7f22701d55c7",
+          "text": "The SupplementaryData building block at message level must not be used to provide additional information about a transaction. The SupplementaryData element at transaction level should be used for that purpose."
         }
       ]
     }

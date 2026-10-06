@@ -1,0 +1,35 @@
+{
+  "identifier": "pain.010.001.08",
+  "name": "MandateAmendmentRequestV08",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:pain.010.001.08",
+  "bodyTag": "MndtAmdmntReq",
+  "out": "pain010",
+  "isoId": "_R3P4TzEZEe6kQ-WGAhcVPQ",
+  "definition": "Scope|The MandateAmendmentRequest message is sent by the initiator of the request to his agent and/or counterparty. The initiator can both be the debtor or the creditor (or where appropriate the debtor agent).|The MandateAmendmentRequest message is forwarded by the agent of the initiator to the agent of the counterparty.|A MandateAmendmentRequest message is used to request the amendment of specific information in an existing mandate. The MandateAmendmentRequest message must reflect the new data of the element(s) to be amended and at a minimum a unique reference to the existing mandate. If accepted, this MandateAmendmentRequest message together with the MandateAcceptanceReport message confirming the acceptance will be considered as a valid amendment on an existing mandate, agreed upon by all parties. The amended mandate will from then on be considered the valid mandate.|Usage|The MandateAmendmentRequest message can contain one or more request(s) to amend a specific mandate.|The messages can be exchanged between creditor and creditor agent or debtor and debtor agent and between creditor agent and debtor agent.|The message can also be used by an initiating party that has authority to send the message on behalf of the creditor or debtor.|The MandateAmendmentRequest message can be used in domestic and cross-border scenarios.|If all elements in the existing Mandate need to be amended or the underlying contract is different, then the MandateAmendmentRequest message should not be used. The existing Mandate has to be cancelled and a new Mandate has to be initiated.",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "_R3P4WTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader110",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3P4XTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "UnderlyingAmendmentDetails",
+      "isoId": "_R3P4WzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "UndrlygAmdmntDtls",
+      "type": "MandateAmendment8",
+      "min": 1,
+      "max": null
+    }
+  ]
+}

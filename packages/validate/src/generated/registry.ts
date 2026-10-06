@@ -35,4 +35,84 @@ export const messageIndex: readonly MessageInfo[] = [
     load: () =>
       import('./pain002.ts').then((m) => ({ message: m.pain002Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
+  {
+    identifier: "pain.007.001.13",
+    name: "CustomerPaymentReversalV13",
+    title: "Customer Payment Reversal",
+    module: "pain007",
+    load: () =>
+      import('./pain007.ts').then((m) => ({ message: m.pain007Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "pain.008.001.12",
+    name: "CustomerDirectDebitInitiationV12",
+    title: "Customer Direct Debit Initiation",
+    module: "pain008",
+    load: () =>
+      import('./pain008.ts').then((m) => ({ message: m.pain008Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "pain.009.001.08",
+    name: "MandateInitiationRequestV08",
+    title: "Mandate Initiation Request",
+    module: "pain009",
+    load: () =>
+      import('./pain009.ts').then((m) => ({ message: m.pain009Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "pain.010.001.08",
+    name: "MandateAmendmentRequestV08",
+    title: "Mandate Amendment Request",
+    module: "pain010",
+    load: () =>
+      import('./pain010.ts').then((m) => ({ message: m.pain010Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "pain.011.001.08",
+    name: "MandateCancellationRequestV08",
+    title: "Mandate Cancellation Request",
+    module: "pain011",
+    load: () =>
+      import('./pain011.ts').then((m) => ({ message: m.pain011Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "pain.012.001.08",
+    name: "MandateAcceptanceReportV08",
+    title: "Mandate Acceptance Report",
+    module: "pain012",
+    load: () =>
+      import('./pain012.ts').then((m) => ({ message: m.pain012Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "pain.013.001.12",
+    name: "CreditorPaymentActivationRequestV12",
+    title: "Creditor Payment Activation Request",
+    module: "pain013",
+    load: () =>
+      import('./pain013.ts').then((m) => ({ message: m.pain013Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "pain.014.001.12",
+    name: "CreditorPaymentActivationRequestStatusReportV12",
+    title: "Creditor Payment Activation Request Status Report",
+    module: "pain014",
+    load: () =>
+      import('./pain014.ts').then((m) => ({ message: m.pain014Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "pain.017.001.04",
+    name: "MandateCopyRequestV04",
+    title: "Mandate Copy Request",
+    module: "pain017",
+    load: () =>
+      import('./pain017.ts').then((m) => ({ message: m.pain017Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "pain.018.001.04",
+    name: "MandateSuspensionRequestV04",
+    title: "Mandate Suspension Request",
+    module: "pain018",
+    load: () =>
+      import('./pain018.ts').then((m) => ({ message: m.pain018Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
 ];

@@ -1,0 +1,3 @@
+codeSet	code	enumName	isoId	text
+PaymentMethod7Code	CHK	Cheque	_YbT9ddp-Ed-ak6NoX_4Aeg_-1320976702	Written order to a bank to pay a certain amount of money from one person to another person.
+PaymentMethod7Code	TRF	CreditTransfer	_YbT9dtp-Ed-ak6NoX_4Aeg_-2113712619	Transfer of an amount of money in the books of the account servicer.

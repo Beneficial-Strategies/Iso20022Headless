@@ -1,0 +1,5 @@
+codeSetName	isoId	restrictionOf	code	enumName
+ExternalDocumentFormat1Code	_-MOeE27iEeKo25nLKvGr8w_969448361		*EXTERNAL*	minLength=1 maxLength=4; ~5 codes (not enumerated)
+LanguageCode	_adsE5Np-Ed-ak6NoX_4Aeg_2082946596		*EXTERNAL*	no code list, length or pattern published (ValidationByTable); not enumerated
+PaymentMethod7Code	_YbT9dNp-Ed-ak6NoX_4Aeg_698889928	PaymentMethodCode	CHK	Cheque
+PaymentMethod7Code	_YbT9dNp-Ed-ak6NoX_4Aeg_698889928	PaymentMethodCode	TRF	CreditTransfer

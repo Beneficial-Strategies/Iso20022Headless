@@ -1,0 +1,35 @@
+{
+  "identifier": "pain.017.001.04",
+  "name": "MandateCopyRequestV04",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:pain.017.001.04",
+  "bodyTag": "MndtCpyReq",
+  "out": "pain017",
+  "isoId": "_R3P4bzEZEe6kQ-WGAhcVPQ",
+  "definition": "Scope|The MandateCopyRequest message is sent by the initiator of the request to his agent. The initiator can either be the debtor or the creditor.|The MandateCopyRequest message is forwarded by the agent of the initiator to the agent of the counterparty.|A MandateCopyRequest message is used to request a copy of an existing mandate. If accepted, the mandate copy can be sent using the MandateAcceptanceReport message.|Usage|The MandateCopyRequest message can contain one or more copy requests.|The messages can be exchanged between creditor and creditor agent or debtor and debtor agent and between creditor agent and debtor agent.|The message can also be used by an initiating party that has authority to send the message on behalf of the creditor or debtor.|The MandateCopyRequest message can be used in domestic and cross-border scenarios.",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "_R3P4eTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader110",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3P4fTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "UnderlyingCopyRequestDetails",
+      "isoId": "_R3P4ezEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "UndrlygCpyReqDtls",
+      "type": "MandateCopy4",
+      "min": 1,
+      "max": null
+    }
+  ]
+}

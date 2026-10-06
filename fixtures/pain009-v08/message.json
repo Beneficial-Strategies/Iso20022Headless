@@ -1,0 +1,35 @@
+{
+  "identifier": "pain.009.001.08",
+  "name": "MandateInitiationRequestV08",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:pain.009.001.08",
+  "bodyTag": "MndtInitnReq",
+  "out": "pain009",
+  "isoId": "_R3P4fzEZEe6kQ-WGAhcVPQ",
+  "definition": "Scope|The MandateInitiationRequest message is sent by the initiator of the request to his agent. The initiator can either be the debtor or the creditor.|The MandateInitiationRequest message is forwarded by the agent of the initiator to the agent of the counterparty.|The MandateInitiationRequest message is used to setup the instruction that allows the debtor agent to accept instructions from the creditor, through the creditor agent, to debit the account of the debtor.|Usage|The MandateInitiationRequest message can contain one or more request(s) to setup a specific mandate.|The messages can be exchanged between creditor and creditor agent or debtor and debtor agent and between creditor agent and debtor agent.|The message can also be used by an initiating party that has authority to send the message on behalf of the creditor or debtor.|The MandateInitiationRequest message can be used in domestic and cross-border scenarios.",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "_R3P4hzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader110",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Mandate",
+      "isoId": "_R3P4iTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Mndt",
+      "type": "Mandate23",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3P4izEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

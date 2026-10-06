@@ -3,8 +3,28 @@
 import type { TypeDescriptors } from '../runtime.ts';
 import { typeDescriptors as pain001Descriptors } from './pain001.ts';
 import { typeDescriptors as pain002Descriptors } from './pain002.ts';
+import { typeDescriptors as pain007Descriptors } from './pain007.ts';
+import { typeDescriptors as pain008Descriptors } from './pain008.ts';
+import { typeDescriptors as pain009Descriptors } from './pain009.ts';
+import { typeDescriptors as pain010Descriptors } from './pain010.ts';
+import { typeDescriptors as pain011Descriptors } from './pain011.ts';
+import { typeDescriptors as pain012Descriptors } from './pain012.ts';
+import { typeDescriptors as pain013Descriptors } from './pain013.ts';
+import { typeDescriptors as pain014Descriptors } from './pain014.ts';
+import { typeDescriptors as pain017Descriptors } from './pain017.ts';
+import { typeDescriptors as pain018Descriptors } from './pain018.ts';
 
 export const allTypeDescriptors: TypeDescriptors = {
   ...pain001Descriptors,
   ...pain002Descriptors,
+  ...pain007Descriptors,
+  ...pain008Descriptors,
+  ...pain009Descriptors,
+  ...pain010Descriptors,
+  ...pain011Descriptors,
+  ...pain012Descriptors,
+  ...pain013Descriptors,
+  ...pain014Descriptors,
+  ...pain017Descriptors,
+  ...pain018Descriptors,
 };

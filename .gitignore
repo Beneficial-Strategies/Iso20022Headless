@@ -5,3 +5,4 @@ dist
 tools/visual/out
 site
 .vite
+fixtures/*/needs.json

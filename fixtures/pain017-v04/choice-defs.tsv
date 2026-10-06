@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+MandateStatus1Choice	_ChH7ZJnAEeao_Z127E9uYg	Code	Status of the mandate, in a coded form as published in an external list.
+MandateStatus1Choice	_ChH7ZZnAEeao_Z127E9uYg	Proprietary	Name of the identification scheme, in a free text form.

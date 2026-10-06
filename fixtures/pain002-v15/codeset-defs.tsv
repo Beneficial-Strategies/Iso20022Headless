@@ -1,10 +1,10 @@
 codeSet	isoId	text
 ClearingChannel2Code	_a_OEo9p-Ed-ak6NoX_4Aeg_1501459302	Specifies the clearing channel for the routing of the transaction, as part of the payment type identification.
-ExternalPaymentGroupStatus1Code	_v9bSwWXiEeap-P22vGV91g	Specifies the status of a group of payment instructions, as published in an external payment group status code set. External code sets can be downloaded from www.iso20022.org.
-ExternalPaymentTransactionStatus1Code	_wCGbwZRjEeazAtAtDSg0Nw	Specifies the status of an individual payment instructions, as published in an external payment transaction status code set. External code sets can be downloaded from www.iso20022.org.
+ExternalPaymentGroupStatus1Code	_v9bSwWXiEeap-P22vGV91g	Specifies the status of a group of payment instructions, as published in an external payment group status code set.|External code sets can be downloaded from www.iso20022.org.
+ExternalPaymentTransactionStatus1Code	_wCGbwZRjEeazAtAtDSg0Nw	Specifies the status of an individual payment instructions, as published in an external payment transaction status code set.|External code sets can be downloaded from www.iso20022.org.
 PaymentMethod4Code	_Z0kPYdp-Ed-ak6NoX_4Aeg_-2121115820	Specifies the transfer method that will be used to transfer an amount of money.
 SequenceType3Code	_t90OI1kyEeGeoaLUQk__nA_2097556198	Specifies the type of the current transaction that belongs to a sequence of transactions.
 SettlementMethod1Code	_ZMCPwdp-Ed-ak6NoX_4Aeg_-115267772	Specifies the method used to settle the credit transfer instruction.
-ExternalCashClearingSystem1Code	_amVqktp-Ed-ak6NoX_4Aeg_1632765855	Specifies the cash clearing system, as published in an external cash clearing system code list. External code sets can be downloaded from www.iso20022.org.
-ExternalChargeType1Code	_t9qdIFkyEeGeoaLUQk__nA_-849686320	Specifies the nature, or use, of the charges in the format of character string with a maximum length of 4 characters. The list of valid codes is an external code list published separately. External code sets can be downloaded from www.iso20022.org.
-ExternalStatusReason1Code	_amolhtp-Ed-ak6NoX_4Aeg_1672970561	Specifies the status reason, as published in an external status reason code list. External code sets can be downloaded from www.iso20022.org.
+ExternalCashClearingSystem1Code	_amVqktp-Ed-ak6NoX_4Aeg_1632765855	Specifies the cash clearing system, as published in an external cash clearing system code list.|External code sets can be downloaded from www.iso20022.org.
+ExternalChargeType1Code	_t9qdIFkyEeGeoaLUQk__nA_-849686320	Specifies the nature, or use, of the charges in the format of character string with a maximum length of 4 characters.|The list of valid codes is an external code list published separately.|External code sets can be downloaded from www.iso20022.org.
+ExternalStatusReason1Code	_amolhtp-Ed-ak6NoX_4Aeg_1672970561	Specifies the status reason, as published in an external status reason code list.|External code sets can be downloaded from www.iso20022.org.
