@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Command } from 'cmdk';
 import type { z } from 'zod';
-import { pain001Message, schemas } from '@beneficial-strategies/iso20022-validate';
+import { evaluateRules, pain001Message, ruleCodeLists, schemas, type RuleResult } from '@beneficial-strategies/iso20022-validate';
 import { serializeFragment, serializeToXml } from '@beneficial-strategies/iso20022-serialize';
 import type { UseForm } from './formApi.ts';
 import { SchemaForm } from './SchemaForm.tsx';
@@ -50,6 +50,40 @@ function TypePicker({ value, onChange }: { value: string; onChange: (t: string) 
   );
 }
 
+const STATUS: Record<RuleResult['status'], { icon: string; label: string; cls: string }> = {
+  pass: { icon: '✓', label: 'passes', cls: 'text-emerald-700' },
+  fail: { icon: '✗', label: 'violated', cls: 'text-red-700' },
+  unsupported: { icon: '!', label: 'cannot be checked automatically', cls: 'text-amber-700' },
+  'prose-only': { icon: '○', label: 'guideline (not machine-checkable)', cls: 'text-slate-500' },
+};
+
+function RulesPanel({ results }: { results: RuleResult[] }) {
+  if (results.length === 0) return null;
+  const failed = results.filter((r) => r.status === 'fail');
+  const counts = (['pass', 'fail', 'unsupported', 'prose-only'] as const).map((k) => `${results.filter((r) => r.status === k).length} ${STATUS[k].label}`);
+  return (
+    <details className="mt-4 rounded border border-amber-300 bg-amber-50 p-3 text-xs" open={failed.length > 0}>
+      <summary className="cursor-pointer font-semibold text-amber-900">
+        Business rules ({failed.length > 0 ? `${failed.length} violated` : 'none violated'}) <span className="font-normal">— {counts.join(', ')}</span>
+      </summary>
+      <ul className="mt-2 space-y-1.5">
+        {results.map((r) => {
+          const st = STATUS[r.status];
+          return (
+            <li key={`${r.instancePath}:${r.rule}`} className="text-slate-800">
+              <span className={`mr-1 font-bold ${st.cls}`} aria-hidden="true">{st.icon}</span>
+              <span className="sr-only">{st.label}: </span>
+              <span className="font-mono">{r.rule}</span>
+              {r.instancePath ? <span className="text-slate-500"> @ {r.instancePath}</span> : null}: {r.text}
+              {r.reason ? <span className="text-amber-800"> ({r.reason})</span> : null}
+            </li>
+          );
+        })}
+      </ul>
+    </details>
+  );
+}
+
 function Editor({ useForm, typeName }: { useForm: UseForm; typeName: string }) {
   const form = useForm({ schema: (schemas as unknown as Record<string, z.ZodType>)[typeName]!, typeDescriptors: pain001Message.typeDescriptors, rootType: typeName });
   const [submitted, setSubmitted] = useState(false);
@@ -60,24 +94,18 @@ function Editor({ useForm, typeName }: { useForm: UseForm; typeName: string }) {
         : serializeFragment(pain001Message.typeDescriptors, typeName, form.values),
     [form.values, typeName],
   );
-  const errorCount = Object.keys(form.allErrors).length;
-  const rules = pain001Message.typeDescriptors[typeName]?.rules;
+  const ruleResults = useMemo(
+    () => evaluateRules({ types: pain001Message.typeDescriptors, codeLists: ruleCodeLists }, typeName, form.values),
+    [form.values, typeName],
+  );
+  const failedRules = ruleResults.filter((r) => r.status === 'fail');
+  const errorCount = Object.keys(form.allErrors).length + failedRules.length;
+  const valid = form.isValid && failedRules.length === 0;
   return (
     <div className="grid min-h-0 flex-1 grid-cols-1 gap-4 lg:grid-cols-2">
       <section className="min-h-0 overflow-auto pr-2" aria-label="Form">
         <SchemaForm form={form} />
-        {rules?.length ? (
-          <details className="mt-4 rounded border border-amber-300 bg-amber-50 p-3 text-xs">
-            <summary className="cursor-pointer font-semibold text-amber-900">Business rules not enforced by the schema ({rules.length})</summary>
-            <ul className="mt-2 list-disc space-y-1 pl-5 text-amber-900">
-              {rules.map((r) => (
-                <li key={r.name}>
-                  <span className="font-mono">{r.name}</span>: {r.text}
-                </li>
-              ))}
-            </ul>
-          </details>
-        ) : null}
+        <RulesPanel results={ruleResults} />
         <div className="mt-4 flex items-center gap-3">
           <button
             type="button"
@@ -89,17 +117,17 @@ function Editor({ useForm, typeName }: { useForm: UseForm; typeName: string }) {
           >
             Done editing
           </button>
-          {submitted ? <span className="text-sm text-slate-600">{form.isValid ? 'Looks complete.' : `${errorCount} problem(s) remain.`}</span> : null}
+          {submitted ? <span className="text-sm text-slate-600">{valid ? 'Looks complete.' : `${errorCount} problem(s) remain.`}</span> : null}
         </div>
       </section>
       <section className="flex min-h-0 flex-col" aria-label="XML preview">
         <div className="mb-1 flex items-center gap-2 text-sm">
           <span className="font-semibold">XML</span>
           <span
-            className={`rounded px-2 py-0.5 text-xs ${form.isValid ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}`}
+            className={`rounded px-2 py-0.5 text-xs ${valid ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}`}
             role="status"
           >
-            {form.isValid ? 'valid' : `draft — ${errorCount} problem(s)`}
+            {valid ? 'valid' : `draft — ${errorCount} problem(s)`}
           </span>
         </div>
         <div className="min-h-0 flex-1">

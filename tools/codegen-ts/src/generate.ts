@@ -52,7 +52,7 @@ interface IrType {
   external?: boolean;
   fields?: Field[];
   choiceOptions?: Field[];
-  rules?: { name: string; text: string }[];
+  rules?: { name: string; text: string; expression?: RuleExprIr }[];
 }
 
 // ---------------------------------------------------------------- parsing
@@ -80,11 +80,62 @@ const codesets = new Map<string, string[][]>();
 for (const r of codeRows) (codesets.get(r[0]!) ?? codesets.set(r[0]!, []).get(r[0]!)!).push(r);
 
 const rulesFile = resolve(fixtures, 'constraints-PaymentInstruction51.tsv');
+interface BooleanRuleIr {
+  op: string;
+  path: string;
+  value?: string;
+}
+interface RuleExprIr {
+  mustBe: { connector: 'AND' | 'OR'; rules: BooleanRuleIr[] };
+  onCondition?: { connector: 'AND' | 'OR'; rules: BooleanRuleIr[] };
+}
+
+/** Parse the spec's RuleDefinition XML. The format is regular (mustBe / onCondition groups of BooleanRule). */
+function parseExpression(xml: string, name: string): RuleExprIr {
+  const group = (tag: string): RuleExprIr['mustBe'] | undefined => {
+    const m = new RegExp(`<${tag}>(.*?)</${tag}>`, 's').exec(xml);
+    if (!m) return undefined;
+    const body = m[1]!;
+    const connector = /<connector>(AND|OR)<\/connector>/.exec(body)?.[1] as 'AND' | 'OR' | undefined;
+    if (!connector) throw new Error(`rule ${name}: no connector in ${tag}`);
+    const rules: BooleanRuleIr[] = [];
+    for (const r of body.matchAll(/<BooleanRule xsi:type="(\w+)">(.*?)<\/BooleanRule>/gs)) {
+      const left = /<leftOperand>([^<]*)<\/leftOperand>/.exec(r[2]!)?.[1];
+      const right = /<rightOperand>([^<]*)<\/rightOperand>/.exec(r[2]!)?.[1];
+      if (!left) throw new Error(`rule ${name}: BooleanRule without leftOperand`);
+      rules.push({ op: r[1]!, path: left, ...(right !== undefined ? { value: right } : {}) });
+    }
+    if (rules.length === 0) throw new Error(`rule ${name}: empty ${tag}`);
+    return { connector, rules };
+  };
+  const mustBe = group('mustBe');
+  if (!mustBe) throw new Error(`rule ${name}: no mustBe`);
+  const onCondition = group('onCondition');
+  return { mustBe, ...(onCondition ? { onCondition } : {}) };
+}
+
+const expressionsFile = resolve(fixtures, 'constraint-expressions-PaymentInstruction51.tsv');
+const expressionByName = new Map<string, string>();
+if (existsSync(expressionsFile)) {
+  for (const r of rowsOf('constraint-expressions-PaymentInstruction51.tsv').slice(1)) {
+    if (r[2]) expressionByName.set(r[1]!, r[2]);
+  }
+}
 const paymentInstructionRules = existsSync(rulesFile)
   ? rowsOf('constraints-PaymentInstruction51.tsv')
       .slice(1)
-      .map((r) => ({ name: r[1]!, text: r[2]! }))
+      .map((r) => {
+        const xml = expressionByName.get(r[1]!);
+        return { name: r[1]!, text: r[2]!, ...(xml ? { expression: parseExpression(xml, r[1]!) } : {}) };
+      })
   : [];
+
+// Code sets that expressions reference but that are not types in the message closure.
+const ruleCodeLists: Record<string, string[]> = {};
+const ruleCodeListsFile = resolve(fixtures, 'rule-codelists.tsv');
+if (existsSync(ruleCodeListsFile)) {
+  for (const r of rowsOf('rule-codelists.tsv').slice(1)) (ruleCodeLists[r[0]!] ??= []).push(r[1]!);
+}
 
 // ---------------------------------------------------------------- type resolution
 const ir = new Map<string, IrType>();
@@ -394,10 +445,11 @@ for (const n of order) {
   if (t.options) props.push(`options: [${t.options.map((o) => `{ value: ${q(o.value)}, name: ${q(o.name)} }`).join(', ')}]`);
   if (t.fields) props.push(`fields: [\n${t.fields.map((x) => `      f(${descField(x)}),`).join('\n')}\n    ]`);
   if (t.choiceOptions) props.push(`choiceOptions: [\n${t.choiceOptions.map((x) => `      f(${descField({ ...x, min: 1 })}),`).join('\n')}\n    ]`);
-  if (t.rules) props.push(`rules: [\n${t.rules.map((r) => `      { name: ${q(r.name)}, text: ${q(r.text)} },`).join('\n')}\n    ]`);
+  if (t.rules) props.push(`rules: [\n${t.rules.map((r) => `      { name: ${q(r.name)}, text: ${q(r.text)}${r.expression ? `, expression: ${JSON.stringify(r.expression)}` : ''} },`).join('\n')}\n    ]`);
   zodTs += `  ${q(n)}: {\n    ${props.join(',\n    ')},\n  },\n`;
 }
 zodTs += `};\n\n`;
+zodTs += `/** Code lists referenced by rule expressions that are not message types: set name -> wire values. */\nexport const ruleCodeLists: Record<string, string[]> = ${JSON.stringify(ruleCodeLists)};\n\n`;
 zodTs += `/** Schemas for every component/choice type, for editing a single type on its own. */\nexport const schemas = {\n${order.filter((n) => ['component', 'choice'].includes(ir.get(n)!.kind)).map((n) => `  ${q(n)}: ${schemaName(n)},`).join('\n')}\n} as const;\n\n`;
 zodTs += `export const pain001Message = {\n  identifier: ${q(MESSAGE.identifier)},\n  namespace: ${q(MESSAGE.namespace)},\n  rootTag: 'Document',\n  bodyTag: ${q(MESSAGE.bodyTag)},\n  rootType: ${q(rootName)},\n  schema: ${schemaName(rootName)},\n  typeDescriptors,\n} as const;\n`;
 writeFileSync(resolve(root, 'packages/validate/src/generated/pain001.ts'), zodTs);

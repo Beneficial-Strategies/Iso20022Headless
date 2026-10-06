@@ -50,8 +50,36 @@ export interface TypeDescriptor {
   fields?: FieldDescriptor[];
   /** choice: the alternatives. Exactly one may be present. */
   choiceOptions?: FieldDescriptor[];
-  /** Business rules that cannot be expressed structurally (prose from the spec). */
-  rules?: { name: string; text: string }[];
+  /** Business rules that cannot be expressed structurally: spec prose, plus the machine-readable form when the spec has one. */
+  rules?: RuleDescriptor[];
+}
+
+export type RuleOp = 'Presence' | 'Absence' | 'EqualToValue' | 'DifferentFromValue' | 'WithInList' | 'NotWithInList';
+
+export interface BooleanRule {
+  op: RuleOp;
+  /** Path relative to the owning component, e.g. `/CreditTransferTransactionInformation[*]/CreditorAgent`. */
+  path: string;
+  /** Literal (code NAME, as in the spec) or, for list ops, the name of a code set. */
+  value?: string;
+}
+
+export interface RuleGroup {
+  connector: 'AND' | 'OR';
+  rules: BooleanRule[];
+}
+
+export interface RuleExpression {
+  mustBe: RuleGroup;
+  /** Rule applies only when this holds; absent means unconditional. */
+  onCondition?: RuleGroup;
+}
+
+export interface RuleDescriptor {
+  name: string;
+  text: string;
+  /** Absent for spec "Guidelines", which are prose only. */
+  expression?: RuleExpression;
 }
 
 export type TypeDescriptors = Record<string, TypeDescriptor>;

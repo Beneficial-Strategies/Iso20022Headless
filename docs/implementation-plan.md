@@ -37,9 +37,11 @@ published; nothing here has been run through CI. Decisions and changes versus th
   appearing only once valid. A "Now" button appears beside blank date-time fields.
 
 ### Known gaps in the slice
-- Only 17 prose business rules (`PaymentInstruction51`) are captured. Machine-readable constraint
-  `expression` is truncated at 200 characters by the server (fix pending), so no rules are enforced yet,
-  only displayed.
+- Business rules: only `PaymentInstruction51`'s 17 constraints are captured. 11 are enforced by a small
+  evaluator (`validate/src/rules.ts`, Presence/Absence/EqualToValue/DifferentFromValue/WithInList/NotWithInList,
+  `[*]` ranges, code NAME to wire value mapping); 1 is reported unsupported (pseudo-literal comparison);
+  5 are prose-only guidelines. Other types' constraints are not captured yet. The server's 200-character
+  truncation of property values was fixed on staging 2026-10-06.
 - 21 external code sets (purpose, clearing system, local instrument, ...) are plain strings, not enumerated.
 - Code values carry no definitions in the UI yet.
 - Free-tier layout and escaped-pipe handling of the server fix are untested; `simulate_tier` and

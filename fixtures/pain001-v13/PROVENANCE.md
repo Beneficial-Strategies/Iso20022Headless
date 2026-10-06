@@ -20,6 +20,7 @@ deployed** at capture time, so no machine-readable constraint `expression` value
 | `constraints-PaymentInstruction51.tsv` | same call on `PaymentInstruction51` | Two independent captures, byte-identical. Only this one component's rules. |
 | `codedefs.tsv`, `codeset-defs.tsv` | `get_code_set_details(<name>)` for the 17 enumerated sets (+ 3 pattern-only sets' headers) | Two independent agent captures, 93 codes, zero differences. Source typos preserved verbatim (e.g. `TaxRecordPeriod1Code` MM01/MM02 swapped, "forth quarter"). |
 | `constraint-expressions-PaymentInstruction51.tsv` | `universal_lookup(<constraint id>)`, `expression` property | Two independent agent captures, byte-identical, none truncated (needs the property-truncation fix, live on staging 2026-10-06). 12 of 17 constraints have an expression; the 5 Guidelines have none. Codes appear as enum NAMES (`Cheque`), not wire values (`CHK`). |
+| `rule-codelists.tsv` | `get_code_set_details("ChequeDelivery2Code")` | Typed from tool output (4 rows); cross-checked against the rule prose (MLFA, CRFA, RGFA, PUFA). Referenced by two rule expressions; not a type in the message closure. |
 | `notes.md` | crawl agent's report | Counts, anomalies. |
 
 ## Refreshing
