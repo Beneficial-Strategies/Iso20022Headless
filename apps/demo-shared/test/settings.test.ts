@@ -9,17 +9,18 @@ describe('settings in the URL', () => {
   });
 
   it('reads every setting', () => {
-    expect(parseSettings('?theme=dark&size=xlarge&density=compact&skin=plain&lang=es', skins)).toEqual({
+    expect(parseSettings('?theme=dark&size=xlarge&density=compact&skin=plain&lang=es&format=json', skins)).toEqual({
       theme: 'dark',
       size: 'xlarge',
       density: 'compact',
       skin: 'plain',
       lang: 'es',
+      format: 'json',
     });
   });
 
   it('ignores unknown values instead of trusting the URL', () => {
-    expect(parseSettings('?theme=neon&size=huge&density=tiny&skin=evil&lang=klingon', skins)).toEqual(DEFAULT_SETTINGS);
+    expect(parseSettings('?theme=neon&size=huge&density=tiny&skin=evil&lang=klingon&format=yaml', skins)).toEqual(DEFAULT_SETTINGS);
   });
 
   it('writes only non-default values and round-trips', () => {

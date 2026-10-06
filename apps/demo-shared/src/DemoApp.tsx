@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Command } from 'cmdk';
 import type { z } from 'zod';
 import { evaluateRules, formatIssue, pain001Message, ruleCodeLists, schemas, type RuleResult } from '@beneficial-strategies/iso20022-validate';
-import { serializeFragment, serializeToXml } from '@beneficial-strategies/iso20022-serialize';
+import { serializeFragment, serializeFragmentIsoJson, serializeToIsoJson, serializeToXml } from '@beneficial-strategies/iso20022-serialize';
 import type { UseForm } from './formApi.ts';
 import type { UiKey } from './i18n/messages.ts';
 import { SchemaForm } from './SchemaForm.tsx';
@@ -10,7 +10,7 @@ import { XmlPane } from './XmlPane.tsx';
 import { Popup } from './Popup.tsx';
 import { I18nProvider, supportedLocales, useCreateI18n, useI18n, type I18nOverrides } from './i18n/context.tsx';
 import { SettingsPanel } from './SettingsPanel.tsx';
-import { useSettings } from './settings.ts';
+import { useSettings, type Format } from './settings.ts';
 import { SkinProvider, skinIds, skins } from './skin/index.ts';
 
 const MESSAGE_TYPE = pain001Message.rootType;
@@ -144,17 +144,17 @@ function RulesPanel({ results }: { results: RuleResult[] }) {
   );
 }
 
-function Editor({ useForm, typeName, dark }: { useForm: UseForm; typeName: string; dark: boolean }) {
+function Editor({ useForm, typeName, dark, format }: { useForm: UseForm; typeName: string; dark: boolean; format: Format }) {
   const { t, validation } = useI18n();
   const form = useForm({ schema: (schemas as unknown as Record<string, z.ZodType>)[typeName]!, typeDescriptors: pain001Message.typeDescriptors, rootType: typeName, messages: validation });
   const [submitted, setSubmitted] = useState(false);
-  const xml = useMemo(
-    () =>
-      typeName === MESSAGE_TYPE
-        ? serializeToXml(pain001Message, form.values)
-        : serializeFragment(pain001Message.typeDescriptors, typeName, form.values),
-    [form.values, typeName],
-  );
+  const output = useMemo(() => {
+    const whole = typeName === MESSAGE_TYPE;
+    if (format === 'json') {
+      return whole ? serializeToIsoJson(pain001Message, form.values) : serializeFragmentIsoJson(pain001Message.typeDescriptors, typeName, form.values);
+    }
+    return whole ? serializeToXml(pain001Message, form.values) : serializeFragment(pain001Message.typeDescriptors, typeName, form.values);
+  }, [form.values, typeName, format]);
   const ruleResults = useMemo(
     () => evaluateRules({ types: pain001Message.typeDescriptors, codeLists: ruleCodeLists }, typeName, form.values),
     [form.values, typeName],
@@ -183,7 +183,7 @@ function Editor({ useForm, typeName, dark }: { useForm: UseForm; typeName: strin
       </section>
       <section className="flex min-h-0 flex-col" aria-label="XML preview">
         <div className="mb-1 flex items-center gap-2 text-sm">
-          <span className="font-semibold">{t('xml')}</span>
+          <span className="font-semibold">{t(`format_${format}`)}</span>
           <span
             className={`rounded px-2 py-0.5 text-xs ${valid ? 'bg-ok-soft text-ok-fg' : 'bg-warn-soft text-warn-fg'}`}
             role="status"
@@ -192,7 +192,7 @@ function Editor({ useForm, typeName, dark }: { useForm: UseForm; typeName: strin
           </span>
         </div>
         <div className="min-h-0 flex-1">
-          <XmlPane xml={xml} dark={dark} />
+          <XmlPane xml={output} dark={dark} format={format} />
         </div>
       </section>
     </div>
@@ -223,7 +223,7 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
           </div>
         </header>
         <SkinProvider value={skin}>
-          <Editor key={typeName} useForm={useForm} typeName={typeName} dark={resolvedTheme === 'dark'} />
+          <Editor key={typeName} useForm={useForm} typeName={typeName} dark={resolvedTheme === 'dark'} format={settings.format} />
         </SkinProvider>
       </div>
     </I18nProvider>

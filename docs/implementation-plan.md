@@ -76,6 +76,11 @@ missed: a required field inside a fully-empty group reported "Required" on the g
 `pruneForValidation` (required components stay in place when validating; included optional ones stay; absent ones
 stay absent).
 
+### JSON output (built 2026-10-06)
+Display → Output format switches the pane between XML and ISO 20022 JSON (`?format=json`). Rules and sources, including a
+discrepancy with the MCP's summary of the 2018 whitepaper, are in `docs/iso-json-syntax.md`. The serializer is cross-checked
+against ISO's Annex A algorithm applied to our XML.
+
 ### Known gaps in the slice
 - Business rules: only `PaymentInstruction51`'s 17 constraints are captured. 11 are enforced by a small
   evaluator (`validate/src/rules.ts`, Presence/Absence/EqualToValue/DifferentFromValue/WithInList/NotWithInList,

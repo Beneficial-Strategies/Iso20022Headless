@@ -120,6 +120,39 @@ export const scenarios: Scenario[] = [
       return r.alerts > 0 && r.invalid === 'true' && r.described === 'Required' ? [] : [`expected a "Required" alert linked to the field, got ${JSON.stringify(r)}`];
     },
   },
+  {
+    name: 'json-output',
+    app: 'demo-form',
+    query: '?format=json',
+    viewport: { width: 1440, height: 900 },
+    steps: async (page) => {
+      await page.locator('#GroupHeader-MessageIdentification').fill('MSG-1');
+      await settle();
+    },
+    expect: async (page) => {
+      const r = await page.evaluate(() => ({
+        text: document.querySelector('.cm-content')?.textContent ?? '',
+        header: [...document.querySelectorAll('section[aria-label] span.font-semibold')].map((e) => e.textContent).join('|'),
+        copy: [...document.querySelectorAll('button')].some((b) => b.textContent === 'Copy JSON'),
+      }));
+      const problems: string[] = [];
+      if (!/"Document"/.test(r.text) || !/"CstmrCdtTrfInitn"/.test(r.text)) problems.push('JSON pane does not show the Document / CstmrCdtTrfInitn structure');
+      if (!/"MsgId":\s*"MSG-1"/.test(r.text)) problems.push('typing a message id does not appear as "MsgId" in the JSON');
+      if (/<Document/.test(r.text)) problems.push('XML is still shown in JSON mode');
+      if (!r.copy) problems.push('the copy button does not say "Copy JSON"');
+      return problems;
+    },
+  },
+  { name: 'json-output-dark-spanish', app: 'demo-form', query: '?format=json&theme=dark&lang=es', viewport: { width: 1440, height: 900 } },
+  {
+    name: 'xml-output',
+    app: 'demo-form',
+    viewport: { width: 1440, height: 900 },
+    expect: async (page) => {
+      const text = await page.evaluate(() => document.querySelector('.cm-content')?.textContent ?? '');
+      return /<Document/.test(text) && !/"Document"/.test(text) ? [] : ['XML is not the default output'];
+    },
+  },
   { name: 'zod-demo', app: 'demo-zod', viewport: { width: 1440, height: 900 } },
   { name: 'zod-demo-plain-dark', app: 'demo-zod', query: '?skin=plain&theme=dark', viewport: { width: 1440, height: 900 } },
 ];

@@ -2,7 +2,7 @@ import { useEffect, useId, useRef, useState } from 'react';
 import { Popup } from './Popup.tsx';
 import { useI18n } from './i18n/context.tsx';
 import { LANGUAGE_NAMES, type UiKey } from './i18n/messages.ts';
-import { DENSITIES, SIZES, THEMES, type Settings } from './settings.ts';
+import { DENSITIES, FORMATS, SIZES, THEMES, type Settings } from './settings.ts';
 import type { Skin } from './skin/types.ts';
 
 function Radios({ legend, name, options, value, onChange, hint }: { legend: string; name: string; options: { value: string; label: string }[]; value: string; onChange: (v: string) => void; hint?: string | undefined }) {
@@ -80,6 +80,7 @@ export function SettingsPanel({
       {open ? (
         <Popup ref={popup} anchor={button.current} id={id} role="dialog" label={t('displayDialog')} width={416} align="end" className="rounded border border-edge bg-surface p-3 shadow-lg">
           <Radios legend={t('language')} name="lang" value={settings.lang} onChange={(v) => onChange({ lang: v })} options={[{ value: 'auto', label: t('lang_auto') }, ...locales.map((l) => ({ value: l, label: LANGUAGE_NAMES[l] ?? l }))]} />
+          <Radios legend={t('outputFormat')} name="format" value={settings.format} onChange={(v) => onChange({ format: v as Settings['format'] })} options={FORMATS.map((v) => ({ value: v, label: named(`format_${v}`) }))} hint={settings.format === 'json' ? t('formatHint') : undefined} />
           <Radios legend={t('theme')} name="theme" value={settings.theme} onChange={(v) => onChange({ theme: v as Settings['theme'] })} options={THEMES.map((v) => ({ value: v, label: named(`theme_${v}`) }))} hint={t('themeHint')} />
           <Radios legend={t('textSize')} name="size" value={settings.size} onChange={(v) => onChange({ size: v as Settings['size'] })} options={SIZES.map((v) => ({ value: v, label: named(`size_${v}`) }))} />
           <Radios legend={t('density')} name="density" value={settings.density} onChange={(v) => onChange({ density: v as Settings['density'] })} options={DENSITIES.map((v) => ({ value: v, label: named(`density_${v}`) }))} />

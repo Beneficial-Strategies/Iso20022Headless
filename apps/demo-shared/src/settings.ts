@@ -3,10 +3,12 @@ import { useCallback, useEffect, useState } from 'react';
 export const THEMES = ['system', 'light', 'dark'] as const;
 export const SIZES = ['normal', 'large', 'xlarge'] as const;
 export const DENSITIES = ['comfortable', 'compact'] as const;
+export const FORMATS = ['xml', 'json'] as const;
 
 export type Theme = (typeof THEMES)[number];
 export type Size = (typeof SIZES)[number];
 export type Density = (typeof DENSITIES)[number];
+export type Format = (typeof FORMATS)[number];
 
 export interface Settings {
   theme: Theme;
@@ -16,9 +18,11 @@ export interface Settings {
   skin: string;
   /** Locale tag, or `auto` to follow the browser. */
   lang: string;
+  /** Output shown beside the form. */
+  format: Format;
 }
 
-export const DEFAULT_SETTINGS: Settings = { theme: 'system', size: 'normal', density: 'comfortable', skin: 'tailwind', lang: 'auto' };
+export const DEFAULT_SETTINGS: Settings = { theme: 'system', size: 'normal', density: 'comfortable', skin: 'tailwind', lang: 'auto', format: 'xml' };
 
 export const DEFAULT_LOCALES: readonly string[] = ['en', 'es'];
 
@@ -34,6 +38,7 @@ export function parseSettings(search: string, skins: readonly string[], locales:
     density: pick(DENSITIES, q.get('density'), DEFAULT_SETTINGS.density),
     skin: pick(skins, q.get('skin'), DEFAULT_SETTINGS.skin),
     lang: pick(['auto', ...locales], q.get('lang'), DEFAULT_SETTINGS.lang),
+    format: pick(FORMATS, q.get('format'), DEFAULT_SETTINGS.format),
   };
 }
 

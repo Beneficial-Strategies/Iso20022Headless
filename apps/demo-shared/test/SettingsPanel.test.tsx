@@ -23,7 +23,7 @@ describe('settings panel', () => {
     expect(screen.queryByRole('dialog')).toBeNull();
     await user.click(screen.getByRole('button', { name: /Display/ }));
     expect(screen.getByRole('dialog', { name: /Display settings/ })).toBeTruthy();
-    for (const name of ['Light', 'Dark', 'System', 'Normal', 'Large', 'Extra large', 'Comfortable', 'Compact', 'Tailwind', 'Plain HTML']) {
+    for (const name of ['XML', 'JSON', 'Light', 'Dark', 'System', 'Normal', 'Large', 'Extra large', 'Comfortable', 'Compact', 'Tailwind', 'Plain HTML']) {
       expect(screen.getByRole('radio', { name })).toBeTruthy();
     }
   });
@@ -38,13 +38,14 @@ describe('settings panel', () => {
     await user.click(screen.getByRole('radio', { name: 'Large' }));
     await user.click(screen.getByRole('radio', { name: 'Compact' }));
     await user.click(screen.getByRole('radio', { name: 'Plain HTML' }));
+    await user.click(screen.getByRole('radio', { name: 'JSON' }));
     expect(html.dataset.theme).toBe('dark');
     expect(html.dataset.size).toBe('large');
     expect(html.dataset.density).toBe('compact');
     expect(html.dataset.skin).toBe('plain');
-    expect(window.location.search).toBe('?theme=dark&size=large&density=compact&skin=plain');
+    expect(window.location.search).toBe('?theme=dark&size=large&density=compact&skin=plain&format=json');
     await user.click(screen.getByRole('radio', { name: 'Normal' }));
-    expect(window.location.search).toBe('?theme=dark&density=compact&skin=plain');
+    expect(window.location.search).toBe('?theme=dark&density=compact&skin=plain&format=json');
   });
 
   it('starts from the URL, so a link reproduces a view', () => {
