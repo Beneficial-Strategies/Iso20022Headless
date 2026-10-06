@@ -1,0 +1,68 @@
+import { describe, expect, it } from 'vitest';
+import { typeDescriptors } from '@beneficial-strategies/iso20022-validate/definitions';
+import { createI18n, supportedLocales } from '../src/i18n/context.tsx';
+import { UI_KEYS, uiEn, uiEs } from '../src/i18n/messages.ts';
+
+const method = typeDescriptors.PaymentInstruction51!.fields!.find((f) => f.name === 'PaymentMethod')!;
+
+describe('interface catalogs', () => {
+  it('Spanish has every key that English has, and nothing extra', () => {
+    expect(Object.keys(uiEs).sort()).toEqual(Object.keys(uiEn).sort());
+    expect(UI_KEYS.length).toBe(Object.keys(uiEn).length);
+  });
+
+  it('every message has the same placeholders in both languages (plain templates)', () => {
+    const slots = (m: unknown) => (typeof m === 'string' ? [...m.matchAll(/\{(\w+)\}/g)].map((x) => x[1]).sort() : null);
+    for (const k of UI_KEYS) {
+      const [e, s] = [slots(uiEn[k]), slots(uiEs[k])];
+      if (e && s) expect(s, k).toEqual(e);
+    }
+  });
+
+  it('English text is the library default and plural forms read well in Spanish', () => {
+    const en = createI18n('en');
+    const es = createI18n('es');
+    expect(en.t('doneEditing')).toBe('Done editing');
+    expect(en.t('draft', { n: 3 })).toBe('draft — 3 problem(s)');
+    expect(es.t('draft', { n: 1 })).toBe('borrador — 1 problema');
+    expect(es.t('draft', { n: 3 })).toBe('borrador — 3 problemas');
+    expect(es.t('problemsRemain', { n: 1 })).toBe('Queda 1 problema.');
+    expect(es.t('problemsRemain', { n: 2 })).toBe('Quedan 2 problemas.');
+    expect(es.t('add', { label: 'Pago' })).toBe('+ Añadir Pago');
+  });
+
+  it('regional tags and unknown languages fall back sensibly', () => {
+    expect(createI18n('es-MX').t('doneEditing')).toBe('Edición terminada');
+    expect(createI18n('fr').t('doneEditing')).toBe('Done editing');
+  });
+});
+
+describe('consumer overrides', () => {
+  it('override one message and keep the rest of the shipped language', () => {
+    const i = createI18n('es', { ui: { es: { doneEditing: 'Terminado' } }, validation: { es: { required: 'Campo obligatorio' } } });
+    expect(i.t('doneEditing')).toBe('Terminado');
+    expect(i.t('copyXml')).toBe('Copiar XML'); // untouched shipped Spanish
+    expect(i.validation.required).toBe('Campo obligatorio');
+    expect(i.validation.select_one).toBe('Seleccione una opción'); // untouched shipped Spanish
+  });
+
+  it('add a language the library does not ship; missing keys fall back to English', () => {
+    const overrides = { ui: { fr: { doneEditing: 'Terminé' } }, validation: { fr: { required: 'Obligatoire' } } };
+    const i = createI18n('fr', overrides);
+    expect(i.t('doneEditing')).toBe('Terminé');
+    expect(i.t('copyXml')).toBe('Copy XML');
+    expect(i.validation.required).toBe('Obligatoire');
+    expect(supportedLocales(overrides)).toEqual(['en', 'es', 'fr']);
+  });
+
+  it('spec text and labels: English fallback is reported, translations win and are marked as such', () => {
+    const none = createI18n('es');
+    expect(none.defs.field(method, typeDescriptors[method.type])?.lang).toBe('en'); // not translated
+    expect(none.defs.label(method, 'Payment Method')).toEqual({ text: 'Payment Method', lang: 'en' });
+
+    const overrides = { definitions: { es: { fields: { [method.isoId!]: 'Medio de pago.' }, labels: { [method.isoId!]: 'Método de pago' } } } };
+    const i = createI18n('es', overrides);
+    expect(i.defs.field(method, typeDescriptors[method.type])).toEqual({ text: 'Medio de pago.', lang: 'es' });
+    expect(i.defs.label(method, 'Payment Method').text).toBe('Método de pago');
+  });
+});

@@ -1,0 +1,8 @@
+{
+  "name": "@beneficial-strategies/iso20022-codegen",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": { "generate": "node src/generate.ts", "typecheck": "tsc -p tsconfig.json" },
+  "devDependencies": { "@types/node": "^24.0.0", "typescript": "^5.9.0" }
+}

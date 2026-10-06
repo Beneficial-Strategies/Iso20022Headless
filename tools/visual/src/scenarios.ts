@@ -1,0 +1,158 @@
+import type { Page } from 'puppeteer-core';
+
+export interface Scenario {
+  name: string;
+  app: 'demo-form' | 'demo-zod';
+  /** Query string, e.g. `?theme=dark&lang=es`. Settings live in the URL, so no clicking is needed for them. */
+  query?: string;
+  viewport: { width: number; height: number };
+  /** Interact with the page before it is checked and photographed. */
+  steps?: (page: Page) => Promise<void>;
+  /** Extra assertions specific to this state. Return a list of problems. */
+  expect?: (page: Page) => Promise<string[]>;
+}
+
+const settle = (ms = 300) => new Promise((r) => setTimeout(r, ms));
+
+async function clickText(page: Page, selector: string, pattern: RegExp): Promise<void> {
+  const ok = await page.evaluate(
+    (sel, src) => {
+      const re = new RegExp(src, 'i');
+      const el = [...document.querySelectorAll<HTMLElement>(sel)].find((e) => re.test(e.textContent ?? '') || re.test(e.getAttribute('aria-label') ?? ''));
+      el?.click();
+      return Boolean(el);
+    },
+    selector,
+    pattern.source,
+  );
+  if (!ok) throw new Error(`nothing matching ${selector} / ${pattern}`);
+  await settle();
+}
+
+const openType = (page: Page) => clickText(page, 'header button', /type:|tipo:/);
+const openDisplay = (page: Page) => clickText(page, 'header button', /display|pantalla/);
+async function addPaymentAndOpenMethod(page: Page): Promise<void> {
+  await clickText(page, 'button', /add payment information|añadir información del pago/);
+  await page.locator('#PaymentInformation-0-PaymentMethod').click();
+  await settle();
+}
+
+const popupText = (page: Page): Promise<string> => page.evaluate(() => document.querySelector('[data-placement]')?.textContent ?? '');
+
+export const scenarios: Scenario[] = [
+  { name: 'default', app: 'demo-form', viewport: { width: 1440, height: 900 } },
+  { name: 'dark', app: 'demo-form', query: '?theme=dark', viewport: { width: 1440, height: 900 } },
+  { name: 'large-text', app: 'demo-form', query: '?size=large', viewport: { width: 1440, height: 900 } },
+  { name: 'xlarge-spanish', app: 'demo-form', query: '?size=xlarge&lang=es', viewport: { width: 1440, height: 900 } },
+  { name: 'compact', app: 'demo-form', query: '?density=compact', viewport: { width: 1440, height: 900 } },
+  {
+    name: 'plain-skin',
+    app: 'demo-form',
+    query: '?skin=plain',
+    viewport: { width: 1440, height: 900 },
+    expect: async (page) => {
+      const classes = await page.evaluate(() => document.querySelectorAll('[data-schema-form] [class]').length);
+      return classes === 0 ? [] : [`the plain skin should carry no class attributes, found ${classes}`];
+    },
+  },
+  { name: 'plain-skin-dark-spanish', app: 'demo-form', query: '?skin=plain&theme=dark&lang=es', viewport: { width: 1440, height: 900 } },
+  { name: 'narrow', app: 'demo-form', viewport: { width: 480, height: 900 } },
+  {
+    name: 'type-picker-open',
+    app: 'demo-form',
+    viewport: { width: 1440, height: 900 },
+    steps: openType,
+    expect: async (page) => {
+      const w = await page.evaluate(() => document.querySelector('[data-placement]')?.getBoundingClientRect().width ?? 0);
+      return w >= 440 ? [] : [`type list is only ${Math.round(w)}px wide`];
+    },
+  },
+  { name: 'type-picker-open-narrow', app: 'demo-form', viewport: { width: 480, height: 900 }, steps: openType },
+  { name: 'display-open', app: 'demo-form', viewport: { width: 1440, height: 900 }, steps: openDisplay },
+  { name: 'display-open-narrow-spanish', app: 'demo-form', query: '?lang=es', viewport: { width: 480, height: 900 }, steps: openDisplay },
+  {
+    name: 'dropdown-open',
+    app: 'demo-form',
+    viewport: { width: 1440, height: 900 },
+    steps: addPaymentAndOpenMethod,
+    expect: async (page) => {
+      const t = await popupText(page);
+      const missing = ['CHK — Cheque', 'TRA — TransferAdvice', 'TRF — CreditTransfer', 'Written order to a bank', 'in the books of the account servicer'].filter((s) => !t.includes(s));
+      return missing.length ? [`dropdown is missing: ${missing.join('; ')}`] : [];
+    },
+  },
+  { name: 'dropdown-open-short-window', app: 'demo-form', viewport: { width: 1100, height: 560 }, steps: addPaymentAndOpenMethod },
+  {
+    name: 'dropdown-open-spanish',
+    app: 'demo-form',
+    query: '?lang=es',
+    viewport: { width: 1440, height: 900 },
+    steps: addPaymentAndOpenMethod,
+    expect: async (page) => {
+      const t = await popupText(page);
+      return /Orden escrita dirigida a un banco/.test(t) ? [] : ['Spanish code descriptions are not shown in the dropdown'];
+    },
+  },
+  {
+    name: 'help-note-open',
+    app: 'demo-form',
+    viewport: { width: 1440, height: 900 },
+    steps: async (page) => {
+      await page.locator("button[aria-label='About Creation Date Time']").click();
+      await settle();
+    },
+    expect: async (page) => ((await popupText(page)).includes('Date and time at which the message was created') ? [] : ['help note text is missing']),
+  },
+  {
+    name: 'required-error',
+    app: 'demo-form',
+    viewport: { width: 1440, height: 900 },
+    steps: async (page) => {
+      await page.locator('#GroupHeader-MessageIdentification').click();
+      await page.keyboard.press('Tab');
+      await settle();
+    },
+    expect: async (page) => {
+      const r = await page.evaluate(() => {
+        const input = document.querySelector('#GroupHeader-MessageIdentification');
+        return { alerts: document.querySelectorAll('[role=alert]').length, invalid: input?.getAttribute('aria-invalid'), described: input && document.getElementById(input.getAttribute('aria-describedby') ?? '')?.textContent };
+      });
+      return r.alerts > 0 && r.invalid === 'true' && r.described === 'Required' ? [] : [`expected a "Required" alert linked to the field, got ${JSON.stringify(r)}`];
+    },
+  },
+  {
+    name: 'json-output',
+    app: 'demo-form',
+    query: '?format=json',
+    viewport: { width: 1440, height: 900 },
+    steps: async (page) => {
+      await page.locator('#GroupHeader-MessageIdentification').fill('MSG-1');
+      await settle();
+    },
+    expect: async (page) => {
+      const r = await page.evaluate(() => ({
+        text: document.querySelector('.cm-content')?.textContent ?? '',
+        header: [...document.querySelectorAll('section[aria-label] span.font-semibold')].map((e) => e.textContent).join('|'),
+        copy: [...document.querySelectorAll('button')].some((b) => b.textContent === 'Copy JSON'),
+      }));
+      const problems: string[] = [];
+      if (!/"Document"/.test(r.text) || !/"CstmrCdtTrfInitn"/.test(r.text)) problems.push('JSON pane does not show the Document / CstmrCdtTrfInitn structure');
+      if (!/"MsgId":\s*"MSG-1"/.test(r.text)) problems.push('typing a message id does not appear as "MsgId" in the JSON');
+      if (/<Document/.test(r.text)) problems.push('XML is still shown in JSON mode');
+      if (!r.copy) problems.push('the copy button does not say "Copy JSON"');
+      return problems;
+    },
+  },
+  { name: 'json-output-dark-spanish', app: 'demo-form', query: '?format=json&theme=dark&lang=es', viewport: { width: 1440, height: 900 } },
+  {
+    name: 'xml-output',
+    app: 'demo-form',
+    viewport: { width: 1440, height: 900 },
+    expect: async (page) => {
+      const text = await page.evaluate(() => document.querySelector('.cm-content')?.textContent ?? '');
+      return /<Document/.test(text) && !/"Document"/.test(text) ? [] : ['XML is not the default output'];
+    },
+  },
+  { name: 'zod-demo', app: 'demo-zod', viewport: { width: 1440, height: 900 } },
+  { name: 'zod-demo-plain-dark', app: 'demo-zod', query: '?skin=plain&theme=dark', viewport: { width: 1440, height: 900 } },
+];

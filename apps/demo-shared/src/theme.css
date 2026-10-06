@@ -1,0 +1,101 @@
+/* Semantic design tokens for the demo chrome and the Tailwind skin.
+   Components use classes like bg-surface / text-fg / border-edge, never raw palette colors, so
+   light/dark is a variable swap. The data-* attributes are set on <html> by the settings hook. */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+:root {
+  color-scheme: light;
+  --surface: #ffffff;
+  --surface-alt: #f1f5f9;
+  --fg: #0f172a;
+  --muted: #475569;
+  --line: #cbd5e1; /* decorative borders */
+  --edge: #64748b; /* control borders (3:1 against surface) */
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+  --accent-fg: #ffffff;
+  --accent-soft: #e0e7ff;
+  --focus: #4f46e5; /* focus ring / active border: 3:1 against the surfaces */
+  --danger: #b91c1c;
+  --danger-soft: #fef2f2;
+  --danger-line: #dc2626;
+  --ok: #047857;
+  --ok-soft: #d1fae5;
+  --ok-fg: #065f46;
+  --warn-soft: #fffbeb;
+  --warn-line: #d97706;
+  --warn-fg: #78350f;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --surface: #0b1220;
+  --surface-alt: #172033;
+  --fg: #e2e8f0;
+  --muted: #9fb0c6;
+  --line: #334155;
+  --edge: #64748b;
+  --accent: #4f46e5;
+  --accent-hover: #5a5eee;
+  --accent-fg: #ffffff;
+  --accent-soft: #26235f;
+  --focus: #818cf8;
+  --danger: #fca5a5;
+  --danger-soft: #3b0d0d;
+  --danger-line: #f87171;
+  --ok: #047857;
+  --ok-soft: #064e3b;
+  --ok-fg: #a7f3d0;
+  --warn-soft: #3b2a06;
+  --warn-line: #a16207;
+  --warn-fg: #fde68a;
+}
+
+@theme inline {
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-edge: var(--edge);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+  --color-focus: var(--focus);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-danger-line: var(--danger-line);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-ok-fg: var(--ok-fg);
+  --color-warn-soft: var(--warn-soft);
+  --color-warn-line: var(--warn-line);
+  --color-warn-fg: var(--warn-fg);
+}
+
+/* Text size: everything is in rem, so scaling the root scales the whole UI. */
+html[data-size='large'] {
+  font-size: 118.75%;
+}
+html[data-size='xlarge'] {
+  font-size: 137.5%;
+}
+
+/* Density: Tailwind spacing utilities are multiples of --spacing. */
+html[data-density='compact'] {
+  --spacing: 0.17rem;
+}
+
+body {
+  background: var(--surface);
+  color: var(--fg);
+}
+
+/* Plain skin: the form is bare semantic HTML, but Tailwind's base reset strips the browser's default
+   borders, backgrounds and margins from form controls, which would leave it invisible. `revert` restores
+   the browser's own styling inside what the skin renders (the rules panel and buttons around it keep the
+   page styling). color-scheme above makes those defaults follow the theme. */
+html[data-skin='plain'] [data-schema-form] * {
+  all: revert;
+}

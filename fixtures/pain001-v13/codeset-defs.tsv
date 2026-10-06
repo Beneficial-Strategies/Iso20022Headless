@@ -1,0 +1,21 @@
+codeSet	isoId	text
+AddressType2Code	_bm2sYNp-Ed-ak6NoX_4Aeg_595056355	Specifies the type of address.
+AdviceType1Code	_U8Z8ANomEembTrt_WixjyQ	Specifies the type of advice to provide back in the report.
+Authorisation1Code	_bjbk9Np-Ed-ak6NoX_4Aeg_300324450	Specifies the level of approval depending on a number of factors, including payment type, threshold amount or local country or operations practice.
+ChargeBearerType1Code	_a8PpINp-Ed-ak6NoX_4Aeg_940131843	Specifies which party(ies) will pay charges due for processing of the instruction.
+ChequeDelivery1Code	_a-Usx9p-Ed-ak6NoX_4Aeg_681596924	Specifies the method to be used in delivering a cheque to a party.
+ChequeType2Code	_a-xYudp-Ed-ak6NoX_4Aeg_1427080756	Specifies the type of cheque.
+CreditDebitCode	_bTfEdtp-Ed-ak6NoX_4Aeg_826087773	Specifies if an operation is an increase or a decrease.
+ExchangeRateType1Code	_aksr2Np-Ed-ak6NoX_4Aeg_-75535887	Specifies a type of financial or commercial document.
+Frequency6Code	_t8BeYFkyEeGeoaLUQk__nA_1722188519	Specifies the regularity of an event.
+MandateClassification1Code	_dYdaoGVREeacpJ-gG9kyUQ	Specifies the type of direct debit amount, such as fixed or variable.
+NamePrefix2Code	_ODhzcHRmEeiH1ZOt2UD8vQ	Specifies the terms used to formally address a person.
+PaymentMethod3Code	_Z0aeYtp-Ed-ak6NoX_4Aeg_1813568342	Specifies the transfer method that will be used to transfer an amount of money.
+PreferredContactMethod2Code	_OQ1V0DIDEe6mzvR3CHiUhA	Preferred method used to reach the individual contact within an organisation.
+Priority2Code	_aKLTBNp-Ed-ak6NoX_4Aeg_-581472374	Specifies the priority level of an event.
+RegulatoryReportingType1Code	_ZbFYZtp-Ed-ak6NoX_4Aeg_-1577941174	Identifies whether the regulatory reporting information applies to the debit side, to the credit side or to both debit and credit sides of the transaction.
+RemittanceLocationMethod2Code	_ZsX8tNp-Ed-ak6NoX_4Aeg_-517543090	Specifies the method used to deliver the remittance advice information.
+TaxRecordPeriod1Code	_YiT9VNp-Ed-ak6NoX_4Aeg_-1322025669	Specifies the period related to the tax payment.
+CountryCode	_bTfEctp-Ed-ak6NoX_4Aeg_-804722522	Code to identify a country, a dependency, or another area of particular geopolitical interest, on the basis of country names obtained from the United Nations (ISO 3166, Alpha-2 code).
+ActiveOrHistoricCurrencyCode	_bqIp6tp-Ed-ak6NoX_4Aeg_1823330336	A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds".
+ActiveCurrencyCode	_bqIp5tp-Ed-ak6NoX_4Aeg_-1326801359	A code allocated to a currency by a Maintenance Agency under an international identification scheme as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds".

@@ -1,0 +1,60 @@
+choice	memberId	memberName	text
+AccountIdentification4Choice	_Pdwzotp-Ed-ak6NoX_4Aeg_-1833658189	IBAN	International Bank Account Number (IBAN) - identifier used internationally by financial institutions to uniquely identify the account of a customer. Further specifications of the format and content of the IBAN can be found in the standard ISO 13616 "Banking and related financial services - International Bank Account Number (IBAN)" version 1997-10-01, or later revisions.
+AccountIdentification4Choice	_Pdwzo9p-Ed-ak6NoX_4Aeg_-1833657786	Other	Unique identification of an account, as assigned by the account servicer, using an identification scheme.
+AccountSchemeName1Choice	_P_4pQdp-Ed-ak6NoX_4Aeg_191053818	Code	Name of the identification scheme, in a coded form as published in an external list.
+AccountSchemeName1Choice	_P_4pQtp-Ed-ak6NoX_4Aeg_194748605	Proprietary	Name of the identification scheme, in a free text form.
+AddressType3Choice	_C7IDQRb-EeiyVv5j1vf1VQ	Code	Type of address expressed as a code.
+AddressType3Choice	_C7IDQxb-EeiyVv5j1vf1VQ	Proprietary	Type of address expressed as a proprietary code.
+AdviceType1Choice	_u3TXxNomEembTrt_WixjyQ	Code	Advice type, in a coded form.
+AdviceType1Choice	_u3TXxdomEembTrt_WixjyQ	Proprietary	Advice type, in a proprietary form.
+AmountType4Choice	__k-HA1kJEeSeLKjZh_lWZw	InstructedAmount	Amount of money to be moved between the debtor and creditor, before deduction of charges, expressed in the currency as ordered by the initiating party.  Usage: This amount has to be transported unchanged through the transaction chain.
+AmountType4Choice	__k-HBVkJEeSeLKjZh_lWZw	EquivalentAmount	Amount of money to be moved between the debtor and creditor, expressed in the currency of the debtor's account, and the currency in which the amount is to be moved.
+Authorisation1Choice	_RD1Zl9p-Ed-ak6NoX_4Aeg_-955120142	Code	Specifies the authorisation, in a coded form.
+Authorisation1Choice	_RD_KkNp-Ed-ak6NoX_4Aeg_-955120080	Proprietary	Specifies the authorisation, in a free text form.
+CashAccountType2Choice	_sb6WgVkyEeGeoaLUQk__nA_-1937269286	Code	Account type, in a coded form.
+CashAccountType2Choice	_scEHgFkyEeGeoaLUQk__nA_1436723705	Proprietary	Nature or use of the account in a proprietary form.
+CategoryPurpose1Choice	_THaa5dp-Ed-ak6NoX_4Aeg_1223014481	Code	Category purpose, as published in an external category purpose code list.
+CategoryPurpose1Choice	_THaa5tp-Ed-ak6NoX_4Aeg_1621974146	Proprietary	Category purpose, in a proprietary form.
+ChequeDeliveryMethod1Choice	_QbwF59p-Ed-ak6NoX_4Aeg_1044150030	Code	Specifies the delivery method of the cheque by the debtor's agent.
+ChequeDeliveryMethod1Choice	_QbwF6Np-Ed-ak6NoX_4Aeg_1076475245	Proprietary	Specifies a proprietary delivery method of the cheque by the debtor's agent.
+ClearingSystemIdentification2Choice	_TMoSEdp-Ed-ak6NoX_4Aeg_-1410917191	Code	Identification of a clearing system, in a coded form as published in an external list.
+ClearingSystemIdentification2Choice	_TMoSEtp-Ed-ak6NoX_4Aeg_-1409997159	Proprietary	Identification code for a clearing system, that has not yet been identified in the list of clearing systems.
+CreditorReferenceType2Choice	_71zDITEsEe6GxLzpkVnWYg	Code	Type of creditor reference, as published in an external creditor reference type code set.
+CreditorReferenceType2Choice	_71zDIzEsEe6GxLzpkVnWYg	Proprietary	Type of creditor reference, in a proprietary form.
+DateAndDateTime2Choice	_fPH6gZlhEeeE1Ya-LgRsuQ	Date	Specified date.
+DateAndDateTime2Choice	_fPH6g5lhEeeE1Ya-LgRsuQ	DateTime	Specified date and time.
+DateType2Choice	_8Mjz0DLNEe6C5PjOhOZ_sw	Code	Specifies the date type, as published in an external date type code set.
+DateType2Choice	_8Mjz0TLNEe6C5PjOhOZ_sw	Proprietary	Specifies the date type, in a free-text form.
+DocumentAmountType1Choice	_9DBuZTH0Ee6BxvG014AZzQ	Code	Specifies the amount type, as published in an external referred amount code set.
+DocumentAmountType1Choice	_9DBuZDH0Ee6BxvG014AZzQ	Proprietary	Specifies the amount type, in a free-text form.
+DocumentLineType1Choice	__rM9WabkEeKvUvwX_r3tzA	Code	Line identification type in a coded form.
+DocumentLineType1Choice	__rM9XabkEeKvUvwX_r3tzA	Proprietary	Proprietary identification of the type of the remittance document.
+DocumentType2Choice	_O65nkTE0Ee62xuUQ2zyZww	Code	Type of remittance document, as published in an external document type code set.
+DocumentType2Choice	_O65nkzE0Ee62xuUQ2zyZww	Proprietary	Type of remittance document, in a proprietary form.
+FinancialIdentificationSchemeName1Choice	_QALkMdp-Ed-ak6NoX_4Aeg_-2021925430	Code	Name of the identification scheme, in a coded form as published in an external list.
+FinancialIdentificationSchemeName1Choice	_QALkMtp-Ed-ak6NoX_4Aeg_-2021925152	Proprietary	Name of the identification scheme, in a free text form.
+Frequency36Choice	_seR6MWk2Eeanu6HLe77Rkg	Type	Specifies a frequency in terms of a specified period type.
+Frequency36Choice	_seR6M2k2Eeanu6HLe77Rkg	Period	Specifies a frequency in terms of a count per period within a specified period type.
+Frequency36Choice	_6IxUQWk2Eeanu6HLe77Rkg	PointInTime	Specifies a frequency in terms of an exact point in time or moment within a specified period type.
+GarnishmentType1Choice	_lG0rQ4nnEeOORMXOfBk1Bw	Code	Garnishment type in a coded form. Would suggest this to be an External Code List to contain: GNCS    Garnishment from a third party payer for Child Support GNDP    Garnishment from a Direct Payer for Child Support GTPP     Garnishment from a third party payer to taxing agency.
+GarnishmentType1Choice	_lG0rRYnnEeOORMXOfBk1Bw	Proprietary	Proprietary identification of the type of garnishment.
+LocalInstrument2Choice	_TF7NI9p-Ed-ak6NoX_4Aeg_365018928	Code	Specifies the local instrument, as published in an external local instrument code list.
+LocalInstrument2Choice	_TF7NJNp-Ed-ak6NoX_4Aeg_365018959	Proprietary	Specifies the local instrument, as a proprietary code.
+MandateClassification1Choice	_JThthWoDEearR-CA7eRZXQ	Code	Category purpose, as published in an external category purpose code list.
+MandateClassification1Choice	_JThthGoDEearR-CA7eRZXQ	Proprietary	Category purpose, in a proprietary form.
+MandateSetupReason1Choice	_iQq8NT2OEeS6DKIV6SF6gw	Code	Reason for the mandate setup, as published in an external reason code list.
+MandateSetupReason1Choice	_iQq8Nz2OEeS6DKIV6SF6gw	Proprietary	Reason for the mandate setup, in a proprietary form.
+OrganisationIdentificationSchemeName1Choice	_QACaQ9p-Ed-ak6NoX_4Aeg_362604423	Code	Name of the identification scheme, in a coded form as published in an external list.
+OrganisationIdentificationSchemeName1Choice	_QACaRNp-Ed-ak6NoX_4Aeg_362604483	Proprietary	Name of the identification scheme, in a free text form.
+Party52Choice	_bKD8ATFIEe651u5xu3f5iw	OrganisationIdentification	Unique and unambiguous way to identify an organisation.
+Party52Choice	_bKD8AzFIEe651u5xu3f5iw	PrivateIdentification	Unique and unambiguous identification of a person, for example a passport.
+PersonIdentificationSchemeName1Choice	_P_4pRNp-Ed-ak6NoX_4Aeg_2056543161	Code	Name of the identification scheme, in a coded form as published in an external list.
+PersonIdentificationSchemeName1Choice	_P_4pRdp-Ed-ak6NoX_4Aeg_2056543469	Proprietary	Name of the identification scheme, in a free text form.
+ProxyAccountType1Choice	_dyoclXh3EeidzqjNEfehPg	Code	Name of the identification scheme, in a coded form as published in an external list.
+ProxyAccountType1Choice	_dyoclHh3EeidzqjNEfehPg	Proprietary	Name of the identification scheme, in a free text form.
+Purpose2Choice	_P6qyH9p-Ed-ak6NoX_4Aeg_-1283223370	Code	Underlying reason for the payment transaction, as published in an external purpose code list.
+Purpose2Choice	_P6qyINp-Ed-ak6NoX_4Aeg_-1283223318	Proprietary	Purpose, in a proprietary form.
+RegulatoryReportingType1Choice	_rJAakHeLEfCdoODv2ypKfw	Code	Type of regulatory reporting, in a coded form.
+RegulatoryReportingType1Choice	_75HhwHeLEfCdoODv2ypKfw	Proprietary	Type of regulatory reporting, in a proprietary form.
+ServiceLevel8Choice	_QJa_zdp-Ed-ak6NoX_4Aeg_1912716972	Code	Specifies a pre-agreed service or level of service between the parties, as published in an external service level code list.
+ServiceLevel8Choice	_QJa_ztp-Ed-ak6NoX_4Aeg_1912716994	Proprietary	Specifies a pre-agreed service or level of service between the parties, as a proprietary code.

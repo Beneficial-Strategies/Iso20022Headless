@@ -1,0 +1,13 @@
+{
+  "name": "@beneficial-strategies/iso20022-i18n-tools",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "i18n": "node src/cli.ts",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": { "fast-xml-parser": "^5.2.0" },
+  "devDependencies": { "@types/node": "^24.0.0", "typescript": "^5.9.0", "vitest": "^3.2.0" }
+}

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ISO 20022 headless demos</title>
+    <style>
+      :root { color-scheme: light dark; --bg: #fff; --fg: #0f172a; --muted: #475569; --line: #cbd5e1; --card: #f1f5f9; --accent: #4f46e5; }
+      @media (prefers-color-scheme: dark) { :root { --bg: #0b1220; --fg: #e2e8f0; --muted: #9fb0c6; --line: #334155; --card: #172033; --accent: #818cf8; } }
+      body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.5 system-ui, -apple-system, 'Segoe UI', sans-serif; }
+      main { max-width: 52rem; margin: 0 auto; padding: 2rem 1rem 3rem; }
+      h1 { font-size: 1.6rem; margin: 0 0 .25rem; }
+      p { margin: .5rem 0; }
+      .muted { color: var(--muted); }
+      .cards { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); margin: 1.5rem 0; }
+      .card { border: 1px solid var(--line); background: var(--card); border-radius: .5rem; padding: 1rem; }
+      .card h2 { font-size: 1.1rem; margin: 0 0 .25rem; }
+      a { color: var(--accent); }
+      a.button { display: inline-block; margin-top: .5rem; padding: .4rem .8rem; border-radius: .35rem; background: var(--accent); color: var(--bg); text-decoration: none; font-weight: 600; }
+      a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      ul { padding-left: 1.25rem; }
+      code { font-size: .9em; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>ISO 20022 headless demos</h1>
+      <p class="muted">
+        A schema-driven data-entry form for the ISO 20022 <code>pain.001.001.13</code> (customer credit transfer initiation) message,
+        with live XML or ISO 20022 JSON output. The library renders nothing: every pixel on these pages is the demo's own markup.
+      </p>
+      <div class="cards">
+        <section class="card">
+          <h2>With the TanStack Form hook</h2>
+          <p class="muted">Form state comes from our React hook, built on TanStack Form. Validation is the generated Zod schema.</p>
+          <a class="button" href="./form/">Open the demo</a>
+        </section>
+        <section class="card">
+          <h2>Zod only</h2>
+          <p class="muted">The same UI and the same schema, with the form state hand-written in about 80 lines of plain React.</p>
+          <a class="button" href="./zod/">Open the demo</a>
+        </section>
+      </div>
+      <h2>Things to try</h2>
+      <ul>
+        <li>Open <strong>Display</strong> (top right): language (English or Español), theme, text size, density, output format (XML or JSON), and the form skin.</li>
+        <li>Pick another part of the message with the <strong>Type</strong> field, such as a postal address or a whole payment instruction.</li>
+        <li>Click the <strong>i</strong> next to a label for the ISO 20022 definition; choose a code to see what it means.</li>
+        <li>Leave a required field empty, or break a business rule, and watch the validation and the rules panel respond.</li>
+      </ul>
+      <p class="muted">
+        Settings are kept in the page address, so a link reproduces your view. Nothing you type leaves your browser: these are static pages with no server.
+      </p>
+      <p class="muted">
+        Definitions and code lists come from the ISO 20022 repository. The Spanish text is machine-translated and marked as not yet reviewed.
+        Source and documentation:
+        <a href="https://github.com/Beneficial-Strategies/Iso20022Headless">github.com/Beneficial-Strategies/Iso20022Headless</a>.
+      </p>
+    </main>
+  </body>
+</html>

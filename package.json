@@ -1,0 +1,14 @@
+{
+  "name": "iso20022-headless",
+  "private": true,
+  "packageManager": "pnpm@10.34.6",
+  "scripts": {
+    "codegen": "pnpm --filter @beneficial-strategies/iso20022-codegen run generate",
+    "typecheck": "pnpm -r run typecheck",
+    "test": "pnpm -r run test",
+    "i18n": "pnpm --filter @beneficial-strategies/iso20022-i18n-tools run i18n",
+    "i18n:check": "pnpm --filter @beneficial-strategies/iso20022-i18n-tools run i18n check es",
+    "visual": "pnpm --filter @beneficial-strategies/iso20022-visual run visual",
+    "pages:build": "pnpm --filter @beneficial-strategies/iso20022-demo-form run build:pages && pnpm --filter @beneficial-strategies/iso20022-demo-zod run build:pages && node tools/pages/assemble.mjs"
+  }
+}

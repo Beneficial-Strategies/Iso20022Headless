@@ -1,0 +1,23 @@
+{
+  "name": "@beneficial-strategies/iso20022-validate",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./definitions": "./src/definitions.ts",
+    "./locales": "./src/locales/index.ts",
+    "./locales/es": "./src/locales/es.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.0",
+    "vitest": "^3.2.0"
+  }
+}

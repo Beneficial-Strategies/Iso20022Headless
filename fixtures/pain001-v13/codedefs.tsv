@@ -1,0 +1,94 @@
+codeSet	code	enumName	isoId	text
+AddressType2Code	ADDR	Postal	_bm2sYdp-Ed-ak6NoX_4Aeg_878577717	Address is the complete postal address.
+AddressType2Code	BIZZ	Business	_bm2sZNp-Ed-ak6NoX_4Aeg_2106193529	Address is the business address.
+AddressType2Code	DLVY	DeliveryTo	_bm2sZtp-Ed-ak6NoX_4Aeg_2106193624	Address is the address to which delivery is to take place.
+AddressType2Code	HOME	Residential	_bm2sY9p-Ed-ak6NoX_4Aeg_2106193409	Address is the home address.
+AddressType2Code	MLTO	MailTo	_bm2sZdp-Ed-ak6NoX_4Aeg_2106193606	Address is the address to which mail is sent.
+AddressType2Code	PBOX	POBox	_bm2sYtp-Ed-ak6NoX_4Aeg_878578132	Address is a postal office (PO) box.
+AdviceType1Code	ADND	AdviceWithoutDetails	_Xz3CQe8XEemSR6j6KWQzCg	Advice without  transaction details is requested.
+AdviceType1Code	ADWD	AdviceWithDetails	_XiPt0e8XEemSR6j6KWQzCg	Advice with transaction details is requested.
+Authorisation1Code	AUTH	PreAuthorisedFile	_bjbk9dp-Ed-ak6NoX_4Aeg_300324481	Indicates a file has been pre authorised or approved within the originating customer environment and no further approval is required.
+Authorisation1Code	FDET	FileLevelAuthorisationDetails	_bjbk9tp-Ed-ak6NoX_4Aeg_300324503	Indicates that a file requires additional file level approval, with the ability to view both the payment information block and supporting customer credit transaction detail.
+Authorisation1Code	FSUM	FileLevelAuthorisationSummary	_bjbk99p-Ed-ak6NoX_4Aeg_300324534	Indicates that a file requires additional file level approval, with the ability to view only the payment information block level information.
+Authorisation1Code	ILEV	InstructionLevelAuthorisation	_bjbk-Np-Ed-ak6NoX_4Aeg_300324565	Indicates that a file requires all customer transactions to be authorised or approved.
+ChargeBearerType1Code	CRED	BorneByCreditor	_a8PpItp-Ed-ak6NoX_4Aeg_1019555004	All transaction charges are to be borne by the creditor.
+ChargeBearerType1Code	DEBT	BorneByDebtor	_a8PpIdp-Ed-ak6NoX_4Aeg_1019554986	All transaction charges are to be borne by the debtor.
+ChargeBearerType1Code	SHAR	Shared	_a8PpI9p-Ed-ak6NoX_4Aeg_1019555021	In a credit transfer context, means that transaction charges on the sender side are to be borne by the debtor, transaction charges on the receiver side are to be borne by the creditor. In a direct debit context, means that transaction charges on the sender side are to be borne by the creditor, transaction charges on the receiver side are to be borne by the debtor.
+ChargeBearerType1Code	SLEV	FollowingServiceLevel	_a8PpJNp-Ed-ak6NoX_4Aeg_1139613709	Charges are to be applied following the rules agreed in the service level and/or scheme.
+ChequeDelivery1Code	CRCD	CourierToCreditor	_a-edw9p-Ed-ak6NoX_4Aeg_740702569	Cheque is to be sent through courier services to creditor.
+ChequeDelivery1Code	CRDB	CourierToDebtor	_a-edwtp-Ed-ak6NoX_4Aeg_740702267	Cheque is to be sent through courier services to debtor.
+ChequeDelivery1Code	CRFA	CourierToFinalAgent	_a-edxNp-Ed-ak6NoX_4Aeg_740702664	Cheque is to be sent through courier services to creditor agent.
+ChequeDelivery1Code	MLCD	MailToCreditor	_a-edwNp-Ed-ak6NoX_4Aeg_740702112	Cheque is to be sent through mail services to creditor.
+ChequeDelivery1Code	MLDB	MailToDebtor	_a-UsyNp-Ed-ak6NoX_4Aeg_740702059	Cheque is to be sent through mail services to debtor.
+ChequeDelivery1Code	MLFA	MailToFinalAgent	_a-edwdp-Ed-ak6NoX_4Aeg_740702197	Cheque is to be sent through mail services to creditor agent.
+ChequeDelivery1Code	PUCD	PickUpByCreditor	_a-edxtp-Ed-ak6NoX_4Aeg_740703067	Cheque will be picked up by the creditor.
+ChequeDelivery1Code	PUDB	PickUpByDebtor	_a-edxdp-Ed-ak6NoX_4Aeg_740702989	Cheque will be picked up by the debtor.
+ChequeDelivery1Code	PUFA	PickUpByFinalAgent	_a-edx9p-Ed-ak6NoX_4Aeg_740703144	Cheque will be picked up by the creditor agent.
+ChequeDelivery1Code	RGCD	RegisteredMailToCreditor	_a-edydp-Ed-ak6NoX_4Aeg_740703534	Cheque is to be sent through registered mail services to creditor.
+ChequeDelivery1Code	RGDB	RegisteredMailToDebtor	_a-edyNp-Ed-ak6NoX_4Aeg_740703222	Cheque is to be sent through registered mail services to debtor.
+ChequeDelivery1Code	RGFA	RegisteredMailToFinalAgent	_a-edytp-Ed-ak6NoX_4Aeg_740703629	Cheque is to be sent through registered mail services to creditor agent.
+ChequeType2Code	BCHQ	BankCheque	_a-7Jstp-Ed-ak6NoX_4Aeg_1485265197	Cheque drawn on the account of the debtor's financial institution, which is debited on the debtor's account when the cheque is issued.These cheques are printed by the debtor's financial institution and payment is guaranteed by the financial institution. Synonym is 'cashier's cheque'.
+ChequeType2Code	CCCH	CertifiedCustomerCheque	_a-7Jsdp-Ed-ak6NoX_4Aeg_1485265119	Cheque drawn on the account of the debtor, and debited on the debtor's account when the cheque is cashed. The financial institution prints and certifies the cheque, guaranteeing the payment.
+ChequeType2Code	CCHQ	CustomerCheque	_a-7JsNp-Ed-ak6NoX_4Aeg_1485265041	Cheque drawn on the account of the debtor, and debited on the debtor's account when the cheque is cashed. Synonym is 'corporate cheque'.
+ChequeType2Code	DRFT	Draft	_a-7Js9p-Ed-ak6NoX_4Aeg_1485265523	A guaranteed bank cheque with a future value date (do not pay before], which in commercial terms is a 'negotiatable instrument': the beneficiary can receive early payment from any bank under subtraction of a discount. The ordering customer's account is debited on value date.
+ChequeType2Code	ELDR	ElectronicDraft	_a-7JtNp-Ed-ak6NoX_4Aeg_-1349960623	An instrument with a future value date (do not pay before], which in commercial terms is a 'negotiatable instrument': the beneficiary can receive early payment from any bank under subtraction of a discount. The ordering customer's account is debited on value date.
+CreditDebitCode	CRDT	Credit	_bTfEd9p-Ed-ak6NoX_4Aeg_-635010261	Operation is an increase.
+CreditDebitCode	DBIT	Debit	_bTfEeNp-Ed-ak6NoX_4Aeg_-610075163	Operation is a decrease.
+ExchangeRateType1Code	AGRD	Agreed	_ak11wtp-Ed-ak6NoX_4Aeg_-75535484	Exchange rate applied is the rate agreed between the parties.
+ExchangeRateType1Code	SALE	Sale	_ak11wdp-Ed-ak6NoX_4Aeg_-75535501	Exchange rate applied is the market rate at the time of the sale.
+ExchangeRateType1Code	SPOT	Spot	_ak11wNp-Ed-ak6NoX_4Aeg_-75535808	Exchange rate applied is the spot rate.
+Frequency6Code	ADHO	Adhoc	_t8LPY1kyEeGeoaLUQk__nA_-1804960693	Event takes place on request or as necessary.
+Frequency6Code	DAIL	Daily	_t8LPYlkyEeGeoaLUQk__nA_-1041657550	Event takes place every day.
+Frequency6Code	FRTN	Fortnightly	_t8LPZVkyEeGeoaLUQk__nA_468950968	Event takes place every two weeks.
+Frequency6Code	INDA	IntraDay	_t8LPZFkyEeGeoaLUQk__nA_-1816059470	Event takes place several times a day.
+Frequency6Code	MIAN	SemiAnnual	_t8LPYFkyEeGeoaLUQk__nA_1420457571	Event takes place every six months or two times a year.
+Frequency6Code	MNTH	Monthly	_t8BeYlkyEeGeoaLUQk__nA_380423276	Event takes place every month or once a month.
+Frequency6Code	QURT	Quarterly	_t8BeY1kyEeGeoaLUQk__nA_834510545	Event takes place every three months or four times a year.
+Frequency6Code	WEEK	Weekly	_t8LPYVkyEeGeoaLUQk__nA_1729241450	Event takes place once a week.
+Frequency6Code	YEAR	Annual	_t8BeYVkyEeGeoaLUQk__nA_569640725	Event takes place every year or once a year.
+MandateClassification1Code	FIXE	Fixed	_nHOmAWVREeacpJ-gG9kyUQ	Direct debit amount is fixed.
+MandateClassification1Code	USGB	UsageBased	_nMlnIWVREeacpJ-gG9kyUQ	Direct debit amount is based on usage.
+MandateClassification1Code	VARI	Variable	_nVz0kWVREeacpJ-gG9kyUQ	Direct debit amount is variable.
+NamePrefix2Code	DOCT	Doctor	_SmTbEXRmEeiH1ZOt2UD8vQ	Title of the person is Doctor or Dr.
+NamePrefix2Code	MADM	Madam	_SseUgXRmEeiH1ZOt2UD8vQ	Title of the person is Madam.
+NamePrefix2Code	MIKS	GenderNeutral	_TCckgXRmEeiH1ZOt2UD8vQ	Title of the person is gender neutral (Mx).
+NamePrefix2Code	MISS	Miss	_SzqhoXRmEeiH1ZOt2UD8vQ	Title of the person is Miss.
+NamePrefix2Code	MIST	Mister	_S6p6cXRmEeiH1ZOt2UD8vQ	Title of the person is Mister or Mr.
+PaymentMethod3Code	CHK	Cheque	_Z0aeY9p-Ed-ak6NoX_4Aeg_1931781357	Written order to a bank to pay a certain amount of money from one person to another person.
+PaymentMethod3Code	TRA	TransferAdvice	_Z0kPYNp-Ed-ak6NoX_4Aeg_1931781417	Transfer of an amount of money in the books of the account servicer. An advice should be sent back to the account owner.
+PaymentMethod3Code	TRF	CreditTransfer	_Z0aeZNp-Ed-ak6NoX_4Aeg_1931781374	Transfer of an amount of money in the books of the account servicer.
+PreferredContactMethod2Code	CELL	MobileOrCellPhone	_RyuIMTIDEe6mzvR3CHiUhA	Preferred method used to reach the contact is per mobile or cell phone.
+PreferredContactMethod2Code	FAXX	Fax	_RoX5YTIDEe6mzvR3CHiUhA	Preferred method used to reach the contact is per fax.
+PreferredContactMethod2Code	LETT	Letter	_RtfC4TIDEe6mzvR3CHiUhA	Preferred method used to reach the contact is per letter.
+PreferredContactMethod2Code	MAIL	Email	_Ri2gMTIDEe6mzvR3CHiUhA	Preferred method used to reach the contact is per email.
+PreferredContactMethod2Code	ONLI	Online	_R3wZMTIDEe6mzvR3CHiUhA	Preferred method used to reach the contact is online.
+PreferredContactMethod2Code	PHON	Phone	_R8yqMTIDEe6mzvR3CHiUhA	Preferred method used to reach the contact is per phone.
+Priority2Code	HIGH	High	_aKLTBdp-Ed-ak6NoX_4Aeg_-216681953	Priority level is high.
+Priority2Code	NORM	Normal	_aKLTBtp-Ed-ak6NoX_4Aeg_-190820973	Priority level is normal.
+RegulatoryReportingType1Code	BOTH	Both	_ZbPJYdp-Ed-ak6NoX_4Aeg_-1237159367	Regulatory information applies to both credit and debit sides.
+RegulatoryReportingType1Code	CRED	Credit	_ZbFYZ9p-Ed-ak6NoX_4Aeg_-1519759906	Regulatory information applies to the credit side.
+RegulatoryReportingType1Code	DEBT	Debit	_ZbPJYNp-Ed-ak6NoX_4Aeg_-1464346584	Regulatory information applies to the debit side.
+RemittanceLocationMethod2Code	EDIC	ElectronicDataInterchange	_ZsX8ttp-Ed-ak6NoX_4Aeg_-517543029	Remittance advice information must be sent through Electronic Data Interchange (EDI).
+RemittanceLocationMethod2Code	EMAL	EMail	_ZsX8uNp-Ed-ak6NoX_4Aeg_-517542998	Remittance advice information must be sent through e-mail.
+RemittanceLocationMethod2Code	FAXI	Fax	_ZsX8tdp-Ed-ak6NoX_4Aeg_-517543060	Remittance advice information must be faxed.
+RemittanceLocationMethod2Code	POST	Post	_ZsX8udp-Ed-ak6NoX_4Aeg_-517542968	Remittance advice information must be sent through postal services.
+RemittanceLocationMethod2Code	SMSM	SMS	_ZshGoNp-Ed-ak6NoX_4Aeg_-333762381	Remittance advice information must be sent through by phone as a short message service (SMS).
+RemittanceLocationMethod2Code	URID	UniformResourceIdentifier	_ZsX8t9p-Ed-ak6NoX_4Aeg_-517543028	Remittance advice information needs to be sent to a Uniform Resource Identifier (URI). URI is a compact string of characters that uniquely identify an abstract or physical resource. URI's are the super-set of identifiers, such as URLs, email addresses, ftp sites, etc, and as such, provide the syntax for all of the identification schemes.
+TaxRecordPeriod1Code	HLF1	FirstHalf	_Yim4Qtp-Ed-ak6NoX_4Aeg_-1322024837	Tax is related to the first half of the period.
+TaxRecordPeriod1Code	HLF2	SecondHalf	_Yim4Q9p-Ed-ak6NoX_4Aeg_-1322024806	Tax is related to the second half of the period.
+TaxRecordPeriod1Code	MM01	FirstMonth	_YiT9Vdp-Ed-ak6NoX_4Aeg_-1322025421	Tax is related to the second month of the period.
+TaxRecordPeriod1Code	MM02	SecondMonth	_YiT9Vtp-Ed-ak6NoX_4Aeg_-1322025391	Tax is related to the first month of the period.
+TaxRecordPeriod1Code	MM03	ThirdMonth	_YiT9V9p-Ed-ak6NoX_4Aeg_-1322025390	Tax is related to the third month of the period.
+TaxRecordPeriod1Code	MM04	FourthMonth	_YiT9WNp-Ed-ak6NoX_4Aeg_-1322025360	Tax is related to the fourth month of the period.
+TaxRecordPeriod1Code	MM05	FifthMonth	_YiduUNp-Ed-ak6NoX_4Aeg_-1322025330	Tax is related to the fifth month of the period.
+TaxRecordPeriod1Code	MM06	SixthMonth	_YiduUdp-Ed-ak6NoX_4Aeg_-1322025329	Tax is related to the sixth month of the period.
+TaxRecordPeriod1Code	MM07	SeventhMonth	_YiduUtp-Ed-ak6NoX_4Aeg_-1322025299	Tax is related to the seventh month of the period.
+TaxRecordPeriod1Code	MM08	EighthMonth	_YiduU9p-Ed-ak6NoX_4Aeg_-1322025268	Tax is related to the eighth month of the period.
+TaxRecordPeriod1Code	MM09	NinthMonth	_YiduVNp-Ed-ak6NoX_4Aeg_-1322024990	Tax is related to the ninth month of the period.
+TaxRecordPeriod1Code	MM10	TenthMonth	_YiduVdp-Ed-ak6NoX_4Aeg_-1322024989	Tax is related to the tenth month of the period.
+TaxRecordPeriod1Code	MM11	EleventhMonth	_YiduVtp-Ed-ak6NoX_4Aeg_-1322024959	Tax is related to the eleventh month of the period.
+TaxRecordPeriod1Code	MM12	TwelfthMonth	_YiduV9p-Ed-ak6NoX_4Aeg_-1322024929	Tax is related to the twelfth month of the period.
+TaxRecordPeriod1Code	QTR1	FirstQuarter	_YiduWNp-Ed-ak6NoX_4Aeg_-1322024928	Tax is related to the first quarter of the period.
+TaxRecordPeriod1Code	QTR2	SecondQuarter	_YiduWdp-Ed-ak6NoX_4Aeg_-1322024898	Tax is related to the second quarter of the period.
+TaxRecordPeriod1Code	QTR3	ThirdQuarter	_Yim4QNp-Ed-ak6NoX_4Aeg_-1322024867	Tax is related to the third quarter of the period.
+TaxRecordPeriod1Code	QTR4	FourthQuarter	_Yim4Qdp-Ed-ak6NoX_4Aeg_-1322024866	Tax is related to the forth quarter of the period.

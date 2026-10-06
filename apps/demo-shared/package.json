@@ -1,0 +1,42 @@
+{
+  "name": "@beneficial-strategies/iso20022-demo-shared",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@beneficial-strategies/iso20022-serialize": "workspace:*",
+    "@beneficial-strategies/iso20022-validate": "workspace:*",
+    "@codemirror/lang-xml": "^6.1.0",
+    "@codemirror/state": "^6.5.0",
+    "@codemirror/view": "^6.38.0",
+    "cmdk": "^1.1.1",
+    "codemirror": "^6.0.1",
+    "@codemirror/theme-one-dark": "^6.1.2",
+    "@codemirror/lang-json": "^6.0.1"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18",
+    "zod": ">=4"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.9.0",
+    "zod": "^4.0.0",
+    "vitest": "^3.2.0",
+    "jsdom": "^26.0.0",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.0",
+    "@testing-library/dom": "^10.4.0"
+  }
+}

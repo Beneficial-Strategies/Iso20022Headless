@@ -1,0 +1,461 @@
+RecordType	name/parent	isoId/memberId	name/memberName	kind-or-xmlTag	status-or-kind	checksum-or-dataTypeName	definition-or-minOccurs	maxOccurs	definition
+# DATATYPE: DATATYPE name isoId kind status checksum definition; MEMBER: MEMBER parentName memberId memberName xmlTag kind dataTypeName minOccurs maxOccurs definition
+DATATYPE	GroupHeader114	_yjuzITEyEe6g-ffJsqGiSA	MessageComponent	Registered	FE968D6B5D7AF31D	Set of characteristics shared by all individual transactions included in the message.
+MEMBER	GroupHeader114	_yl9nwTEyEe6g-ffJsqGiSA	MessageIdentification	MsgId	Attribute	Max35Text	1	1	Point to point reference, as assigned by the instructing party, and sent to the next party in the chain to unambiguously
+MEMBER	GroupHeader114	_yl9nwzEyEe6g-ffJsqGiSA	CreationDateTime	CreDtTm	Attribute	ISODateTime	1	1	Date and time at which the message was created.
+MEMBER	GroupHeader114	_yl9nxTEyEe6g-ffJsqGiSA	Authorisation	Authstn	Choice	Authorisation1Choice	0	2	User identification or any user key to be used to check whether the initiating party is allowed to initiate transactions
+MEMBER	GroupHeader114	_yl9nxzEyEe6g-ffJsqGiSA	NumberOfTransactions	NbOfTxs	Attribute	Max15NumericText	1	1	Number of individual transactions contained in the message.
+MEMBER	GroupHeader114	_yl9nyTEyEe6g-ffJsqGiSA	ControlSum	CtrlSum	Attribute	DecimalNumber	0	1	Total of all individual amounts included in the message, irrespective of currencies.
+MEMBER	GroupHeader114	_yl9nyzEyEe6g-ffJsqGiSA	InitiatingParty	InitgPty	Component	PartyIdentification272	1	1	Party that initiates the payment.||Usage: This can either be the debtor or the party that initiates the credit transfer 
+MEMBER	GroupHeader114	_yl9nzTEyEe6g-ffJsqGiSA	ForwardingAgent	FwdgAgt	Component	BranchAndFinancialInstitutionIdentification8	0	1	Financial institution that receives the instruction from the initiating party and forwards it to the next agent in the 
+MEMBER	GroupHeader114	_yl9nzzEyEe6g-ffJsqGiSA	InitiationSource	InitnSrc	Component	PaymentInitiationSource1	0	1	Source application or software used to initiate the payment.
+DATATYPE	BranchAndFinancialInstitutionIdentification8	_vxnQ0TEyEe6g-ffJsqGiSA	MessageComponent	Registered	D085352B86EA4164	Unique and unambiguous identification of a financial institution or a branch of a financial institution.
+MEMBER	BranchAndFinancialInstitutionIdentification8	_v0atMTEyEe6g-ffJsqGiSA	FinancialInstitutionIdentification	FinInstnId	Component	FinancialInstitutionIdentification23	1	1	Unique and unambiguous identification of a financial institution, as assigned under an internationally recognised o
+MEMBER	BranchAndFinancialInstitutionIdentification8	_v0atMzEyEe6g-ffJsqGiSA	BranchIdentification	BrnchId	Component	BranchData5	0	1	Identifies a specific branch of a financial institution.||Usage: This component should be used in case the identificati
+DATATYPE	PartyIdentification272	_vtFWJTEyEe6g-ffJsqGiSA	MessageComponent	Registered	0E200501BFE58E40	Specifies the identification of a person or an organisation.
+MEMBER	PartyIdentification272	_vvZqUzEyEe6g-ffJsqGiSA	Name	Nm	Attribute	Max140Text	0	1	Name by which a party is known and which is usually used to identify that party.
+MEMBER	PartyIdentification272	_vvZqVTEyEe6g-ffJsqGiSA	PostalAddress	PstlAdr	Component	PostalAddress27	0	1	Information that locates and identifies a specific address, as defined by postal services.
+MEMBER	PartyIdentification272	_vvZqVzEyEe6g-ffJsqGiSA	Identification	Id	Choice	Party52Choice	0	1	Unique and unambiguous identification of a party.
+MEMBER	PartyIdentification272	_vvZqWTEyEe6g-ffJsqGiSA	CountryOfResidence	CtryOfRes	Codeset	CountryCode	0	1	Country in which a person resides (the place of a person's home). In the case of a company, it is the country from whi
+MEMBER	PartyIdentification272	_vvZqWzEyEe6g-ffJsqGiSA	ContactDetails	CtctDtls	Component	Contact13	0	1	Set of elements used to indicate how to contact the party.
+DATATYPE	PaymentInitiationSource1	_qBeboMQJEemsic1bQcEtLA	MessageComponent	Registered	C3098B714E275E1A	Specifies the source used to initiate the payment (such as an application or a software).
+MEMBER	PaymentInitiationSource1	_7F6NAMQJEemsic1bQcEtLA	Name	Nm	Attribute	Max140Text	1	1	Name of the application or software used to initiate the payment.
+MEMBER	PaymentInitiationSource1	_0kOosMQJEemsic1bQcEtLA	Provider	Prvdr	Attribute	Max35Text	0	1	Provider of the application or software used to initiate the payment.
+MEMBER	PaymentInitiationSource1	_ADKKIMQKEemsic1bQcEtLA	Version	Vrsn	Attribute	Max35Text	0	1	Version of the application or software used to initiate the payment.
+DATATYPE	PaymentInstruction51	a376f506-35bc-4f88-9925-eceabe35beea	MessageComponent	Registered	80F516469A378CB0	Characteristics that apply to the debit side of the payment transactions included in the credit transfer initiation.
+MEMBER	PaymentInstruction51	dfeb6565-c0a1-4f42-98be-7280338a0602	PaymentInformationIdentification	PmtInfId	Attribute	Max35Text	1	1	Unique identification, as assigned by a sending party, to unambiguously identify the payment information group within 
+MEMBER	PaymentInstruction51	25277459-8fd6-4b15-9818-eb4466437d8e	PaymentMethod	PmtMtd	Codeset	PaymentMethod3Code	1	1	Specifies the means of payment that will be used to move the amount of money.
+MEMBER	PaymentInstruction51	792e197b-8059-4633-822e-c2e08e2c9eab	RequestedAdviceType	ReqdAdvcTp	Component	AdviceType1	0	1	Type of advice details requested.
+MEMBER	PaymentInstruction51	0dcd68c1-4680-4ea8-979f-db22db1ea892	BatchBooking	BtchBookg	Attribute	BatchBookingIndicator	0	1	Identifies whether a single entry per individual transaction or a batch entry for the sum of the amounts of all transact
+MEMBER	PaymentInstruction51	5bb724bf-3b06-4052-abd4-6bbd3bc3c929	NumberOfTransactions	NbOfTxs	Attribute	Max15NumericText	0	1	Number of individual transactions contained in the payment information group.
+MEMBER	PaymentInstruction51	9ea5345e-08d4-42ac-8ba6-19b791caf194	ControlSum	CtrlSum	Attribute	DecimalNumber	0	1	Total of all individual amounts included in the group, irrespective of currencies.
+MEMBER	PaymentInstruction51	5702cc97-50ec-42e4-a6a0-e7990c68e96b	PaymentTypeInformation	PmtTpInf	Component	PaymentTypeInformation26	0	1	Set of elements used to further specify the type of transaction.
+MEMBER	PaymentInstruction51	fabfdc67-f1b0-4093-9749-ae4a9a37d218	RequestedExecutionDate	ReqdExctnDt	Choice	DateAndDateTime2Choice	1	1	Date at which the initiating party requests the clearing agent to process the payment. |Usage: This is the date on whi
+MEMBER	PaymentInstruction51	7f3ee28b-3e13-410c-ae42-32bf1a03e034	PoolingAdjustmentDate	PoolgAdjstmntDt	Attribute	ISODate	0	1	Date used for the correction of the value date of a cash pool movement that has been posted with a different value dat
+MEMBER	PaymentInstruction51	8cbc1d76-4752-4b60-ad06-cf654d5ed8c4	Debtor	Dbtr	Component	PartyIdentification272	1	1	Party that owes an amount of money to the (ultimate) creditor.
+MEMBER	PaymentInstruction51	77c33575-9d67-40bf-91c0-444673414068	DebtorAccount	DbtrAcct	Component	CashAccount40	1	1	Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transa
+MEMBER	PaymentInstruction51	9519236d-4e5b-43c9-ba39-5350f6c5b21b	DebtorAgent	DbtrAgt	Component	BranchAndFinancialInstitutionIdentification8	1	1	Financial institution servicing an account for the debtor.
+MEMBER	PaymentInstruction51	e1b92d70-b384-4ab7-a835-41fb9e651750	DebtorAgentAccount	DbtrAgtAcct	Component	CashAccount40	0	1	Unambiguous identification of the account of the debtor agent at its servicing agent in the payment chain.
+MEMBER	PaymentInstruction51	7741a44b-38b8-4773-8179-da314dc13e6c	InstructionForDebtorAgent	InstrForDbtrAgt	Attribute	Max140Text	0	1	Further information related to the processing of the payment instruction, that may need to be acted upon by the debto
+MEMBER	PaymentInstruction51	df870f37-ef4b-4f2b-9460-eed769150513	UltimateDebtor	UltmtDbtr	Component	PartyIdentification272	0	1	Ultimate party that owes an amount of money to the (ultimate) creditor.
+MEMBER	PaymentInstruction51	195dd6c9-842b-4fbc-8e9f-ce671def233c	ChargeBearer	ChrgBr	Codeset	ChargeBearerType1Code	0	1	Specifies which party/parties will bear the charges associated with the processing of the payment transaction.
+MEMBER	PaymentInstruction51	96a6d108-ae5c-49fc-9583-f4a1df602599	ChargesAccount	ChrgsAcct	Component	CashAccount40	0	1	Account used to process charges associated with a transaction.||Usage: Charges account should be used when charges have 
+MEMBER	PaymentInstruction51	3d017737-58db-4aa5-8b3f-001b8c73293b	ChargesAccountAgent	ChrgsAcctAgt	Component	BranchAndFinancialInstitutionIdentification8	0	1	Agent that services a charges account.||Usage: Charges account agent should only be used when the charges account agent 
+MEMBER	PaymentInstruction51	efdc5154-cbfe-46ef-a00b-941804dc87a5	CreditTransferTransactionInformation	CdtTrfTxInf	Component	CreditTransferTransaction76	1	*	Provides information on the individual transaction(s) included in the message.
+DATATYPE	SupplementaryData1	_Qn0zC9p-Ed-ak6NoX_4Aeg_468227563	MessageComponent	Registered	E291E170DA100DA4	Additional information that can not be captured in the structured fields and/or any other specific block.
+MEMBER	SupplementaryData1	_Qn988Np-Ed-ak6NoX_4Aeg_354388497	PlaceAndName	PlcAndNm	Attribute	Max350Text	0	1	Unambiguous reference to the location where the supplementary data must be inserted in the message instance.|In the 
+MEMBER	SupplementaryData1	_Qn988dp-Ed-ak6NoX_4Aeg_-642683856	Envelope	Envlp	Attribute	SupplementaryDataEnvelope1	1	1	Technical element wrapping the supplementary data.
+DATATYPE	Authorisation1Choice	_RD1Zltp-Ed-ak6NoX_4Aeg_-955120203	Choice	Registered	E8A46308FE8A3A97	Provides the details on the user identification or any user key that allows to check if the initiating party is allowed 
+DATATYPE	AdviceType1	_5ZNFsNolEembTrt_WixjyQ	MessageComponent	Registered	E8403A9FC20EBE68	Specifies the type of advice to report back for the transaction.
+MEMBER	AdviceType1	_bQTjANomEembTrt_WixjyQ	CreditAdvice	CdtAdvc	Choice	AdviceType1Choice	0	1	Type of credit advice requested.
+MEMBER	AdviceType1	_fU3koNomEembTrt_WixjyQ	DebitAdvice	DbtAdvc	Choice	AdviceType1Choice	0	1	Type de debit advice requested.
+DATATYPE	BranchData5	_v0bUQTEyEe6g-ffJsqGiSA	MessageComponent	Registered	B7C18337205F4A4D	Information that locates and identifies a specific branch of a financial institution.
+MEMBER	BranchData5	_v2tzQTEyEe6g-ffJsqGiSA	Identification	Id	Attribute	Max35Text	0	1	Unique and unambiguous identification of a branch of a financial institution.
+MEMBER	BranchData5	_v2tzQzEyEe6g-ffJsqGiSA	LEI	LEI	Attribute	LEIIdentifier	0	1	Legal entity identification for the branch of the financial institution.
+MEMBER	BranchData5	_v2tzRTEyEe6g-ffJsqGiSA	Name	Nm	Attribute	Max140Text	0	1	Name by which an agent is known and which is usually used to identify that agent.
+MEMBER	BranchData5	_v2tzRzEyEe6g-ffJsqGiSA	PostalAddress	PstlAdr	Component	PostalAddress27	0	1	Information that locates and identifies a specific address, as defined by postal services.
+DATATYPE	CashAccount40	_avXPcdcZEeqRFcf2R4bPBw	MessageComponent	Registered	4167DB1CC967E502	Provides the details to identify an account.
+MEMBER	CashAccount40	_awzZ49cZEeqRFcf2R4bPBw	Identification	Id	Choice	AccountIdentification4Choice	0	1	Unique and unambiguous identification for the account between the account owner and the account servicer.
+MEMBER	CashAccount40	_awzZ5dcZEeqRFcf2R4bPBw	Type	Tp	Choice	CashAccountType2Choice	0	1	Specifies the nature, or use of the account.
+MEMBER	CashAccount40	_awzZ59cZEeqRFcf2R4bPBw	Currency	Ccy	Codeset	ActiveOrHistoricCurrencyCode	0	1	Identification of the currency in which the account is held. ||Usage: Currency should only be used in case one and the
+MEMBER	CashAccount40	_awzZ6dcZEeqRFcf2R4bPBw	Name	Nm	Attribute	Max70Text	0	1	Name of the account, as assigned by the account servicing institution, in agreement with the account owner in order t
+MEMBER	CashAccount40	_awzZ69cZEeqRFcf2R4bPBw	Proxy	Prxy	Component	ProxyAccountIdentification1	0	1	Specifies an alternate assumed name for the identification of the account. 
+DATATYPE	Contact13	_YinuxzE_Ee62xuUQ2zyZww	MessageComponent	Registered	C33298A192DE1D8D	Specifies the details of the contact person.
+MEMBER	Contact13	_YlNIsjE_Ee62xuUQ2zyZww	NamePrefix	NmPrfx	Codeset	NamePrefix2Code	0	1	Specifies the terms used to formally address a person.
+MEMBER	Contact13	_YlNItDE_Ee62xuUQ2zyZww	Name	Nm	Attribute	Max140Text	0	1	Name by which a party is known and which is usually used to identify that party.
+MEMBER	Contact13	_YlNItjE_Ee62xuUQ2zyZww	PhoneNumber	PhneNb	Attribute	PhoneNumber	0	1	Collection of information that identifies a phone number, as defined by telecom services.
+MEMBER	Contact13	_YlNIuDE_Ee62xuUQ2zyZww	MobileNumber	MobNb	Attribute	PhoneNumber	0	1	Collection of information that identifies a mobile phone number, as defined by telecom services.
+MEMBER	Contact13	_YlNIujE_Ee62xuUQ2zyZww	FaxNumber	FaxNb	Attribute	PhoneNumber	0	1	Collection of information that identifies a FAX number, as defined by telecom services.
+MEMBER	Contact13	_tZUA0THvEe6BxvG014AZzQ	URLAddress	URLAdr	Attribute	Max2048Text	0	1	Address for the Universal Resource Locator (URL), for example an address used over the www (HTTP) service.
+MEMBER	Contact13	_YlNIvDE_Ee62xuUQ2zyZww	EmailAddress	EmailAdr	Attribute	Max256Text	0	1	Address for electronic mail (e-mail).
+MEMBER	Contact13	_YlNIvjE_Ee62xuUQ2zyZww	EmailPurpose	EmailPurp	Attribute	Max35Text	0	1	Purpose for which an email address may be used.
+MEMBER	Contact13	_YlNIwDE_Ee62xuUQ2zyZww	JobTitle	JobTitl	Attribute	Max35Text	0	1	Title of the function.
+MEMBER	Contact13	_YlNIwjE_Ee62xuUQ2zyZww	Responsibility	Rspnsblty	Attribute	Max35Text	0	1	Role of a person in an organisation.
+MEMBER	Contact13	_YlNIxDE_Ee62xuUQ2zyZww	Department	Dept	Attribute	Max70Text	0	1	Identification of a division of a large organisation or building.
+MEMBER	Contact13	_YlNIxjE_Ee62xuUQ2zyZww	Other	Othr	Component	OtherContact1	0	*	Contact details in another form.
+MEMBER	Contact13	_YlNIyDE_Ee62xuUQ2zyZww	PreferredMethod	PrefrdMtd	Codeset	PreferredContactMethod2Code	0	1	Preferred method used to reach the contact.
+DATATYPE	CreditTransferTransaction76	c1b2745a-8979-4069-a0c7-2a93a3ff6de8	MessageComponent	Registered	54D4196F17496216	Provide further details specific to the individual transaction(s) included in the message.
+MEMBER	CreditTransferTransaction76	92465cdb-cd16-458f-9d50-953ca23dfdb2	PaymentIdentification	PmtId	Component	PaymentIdentification6	1	1	Set of elements used to reference a payment instruction.
+MEMBER	CreditTransferTransaction76	d5aace43-7038-44fe-b777-f4bec11be962	PaymentTypeInformation	PmtTpInf	Component	PaymentTypeInformation26	0	1	Set of elements used to further specify the type of transaction.
+MEMBER	CreditTransferTransaction76	8a16abe3-50a6-432d-9dc4-5b3ac91914ce	Amount	Amt	Choice	AmountType4Choice	1	1	Amount of money to be moved between the debtor and creditor, before deduction of charges, expressed in the curren
+MEMBER	CreditTransferTransaction76	2560feb3-98eb-4333-93f1-cca643d13591	ExchangeRateInformation	XchgRateInf	Component	ExchangeRate1	0	1	Provides details on the currency exchange rate and contract.
+MEMBER	CreditTransferTransaction76	7d7b0c0e-884f-4f8b-b53c-f94e4062bd7a	ChargeBearer	ChrgBr	Codeset	ChargeBearerType1Code	0	1	Specifies which party/parties will bear the charges associated with the processing of the payment transaction.
+MEMBER	CreditTransferTransaction76	d6454bb6-3005-4781-8dae-02f0855baa56	MandateRelatedInformation	MndtRltdInf	Component	CreditTransferMandateData1	0	1	Provides further details of the mandate signed between the creditor and the debtor.
+MEMBER	CreditTransferTransaction76	fd4d4076-30bc-4c77-987d-9421d542bce1	ChequeInstruction	ChqInstr	Component	Cheque19	0	1	Set of elements needed to issue a cheque.
+MEMBER	CreditTransferTransaction76	ff55435e-db04-48f1-8eca-b78492eccd69	UltimateDebtor	UltmtDbtr	Component	PartyIdentification272	0	1	Ultimate party that owes an amount of money to the (ultimate) creditor.
+MEMBER	CreditTransferTransaction76	a4eb321c-5f60-4dde-8bce-4d90cc67c8d8	IntermediaryAgent1	IntrmyAgt1	Component	BranchAndFinancialInstitutionIdentification8	0	1	Agent between the debtor's agent and the creditor's agent.||Usage: If more than one intermediary agent is present, t
+MEMBER	CreditTransferTransaction76	ed7ea073-aa67-4ce4-b27d-9e432a966345	IntermediaryAgent1Account	IntrmyAgt1Acct	Component	CashAccount40	0	1	Unambiguous identification of the account of the intermediary agent 1 at its servicing agent in the payment chain.
+MEMBER	CreditTransferTransaction76	29f18707-cfc7-4b14-8d3d-6d1811b8e547	IntermediaryAgent2	IntrmyAgt2	Component	BranchAndFinancialInstitutionIdentification8	0	1	Agent between the debtor's agent and the creditor's agent.||Usage: If more than two intermediary agents are present,
+MEMBER	CreditTransferTransaction76	b38b6b58-3292-4db1-8d5d-87c913add402	IntermediaryAgent2Account	IntrmyAgt2Acct	Component	CashAccount40	0	1	Unambiguous identification of the account of the intermediary agent 2 at its servicing agent in the payment chain.
+MEMBER	CreditTransferTransaction76	4fc8d3ae-497b-4fa2-9da1-8b8cea4f5363	IntermediaryAgent3	IntrmyAgt3	Component	BranchAndFinancialInstitutionIdentification8	0	1	Agent between the debtor's agent and the creditor's agent.||Usage: If IntermediaryAgent3 is present, then it identifies
+MEMBER	CreditTransferTransaction76	c16f42a1-96fa-4e15-96b0-fce3d235c817	IntermediaryAgent3Account	IntrmyAgt3Acct	Component	CashAccount40	0	1	Unambiguous identification of the account of the intermediary agent 3 at its servicing agent in the payment chain.
+MEMBER	CreditTransferTransaction76	3a6e698c-3e07-4d61-90e6-c4a83376946c	CreditorAgent	CdtrAgt	Component	BranchAndFinancialInstitutionIdentification8	0	1	Financial institution servicing an account for the creditor.
+MEMBER	CreditTransferTransaction76	95390afe-93bc-4f46-a6d8-3cadbeef6e97	CreditorAgentAccount	CdtrAgtAcct	Component	CashAccount40	0	1	Unambiguous identification of the account of the creditor agent at its servicing agent to which a credit entry wil
+MEMBER	CreditTransferTransaction76	3ef4aeae-6e4f-4b08-b62f-f8c5ac1218c1	Creditor	Cdtr	Component	PartyIdentification272	0	1	Party to which an amount of money is due.
+MEMBER	CreditTransferTransaction76	1bb9f7fd-a7bd-4cfd-bb7d-487e03a8b141	CreditorAccount	CdtrAcct	Component	CashAccount40	0	1	Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of 
+MEMBER	CreditTransferTransaction76	aa7124b6-2225-4553-90d5-41188066e954	UltimateCreditor	UltmtCdtr	Component	PartyIdentification272	0	1	Ultimate party to which an amount of money is due.
+MEMBER	CreditTransferTransaction76	bc60b0fd-91b0-48fa-b2da-1c0479a84937	InstructionForCreditorAgent	InstrForCdtrAgt	Component	InstructionForCreditorAgent3	0	*	Further information related to the processing of the payment instruction, provided by the initiating party, and in
+MEMBER	CreditTransferTransaction76	ac0066e9-3069-4b56-bc27-0e5d70338156	InstructionForDebtorAgent	InstrForDbtrAgt	Component	InstructionForDebtorAgent1	0	1	Further information related to the processing of the payment instruction, that may need to be acted upon by the d
+MEMBER	CreditTransferTransaction76	0c1a6500-067b-43a2-af2f-b4c0c27e742e	Purpose	Purp	Choice	Purpose2Choice	0	1	Underlying reason for the payment transaction.|Usage: Purpose is used by the end-customers, that is initiating p
+MEMBER	CreditTransferTransaction76	09380866-7741-4b24-9c69-b7d72c30a4b8	RegulatoryReporting	RgltryRptg	Component	RegulatoryReporting10	0	10	Information needed due to regulatory and statutory requirements.
+MEMBER	CreditTransferTransaction76	fdb85b7a-6253-416a-a6d8-ad45e7aeb5cf	Tax	Tax	Component	TaxData1	0	1	Provides details on the tax.
+MEMBER	CreditTransferTransaction76	19b65d0b-ae00-448e-8634-7312c00a25dd	RelatedRemittanceInformation	RltdRmtInf	Component	RemittanceLocation8	0	10	Provides information related to the handling of the remittance information by any of the agents in the transactio
+MEMBER	CreditTransferTransaction76	d1bb375e-efe5-432c-b1ab-d4665a734a8c	RemittanceInformation	RmtInf	Component	RemittanceInformation26	0	1	Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, suc
+MEMBER	CreditTransferTransaction76	2d676c9f-81d5-4a9f-a206-9665e3bbb0df	SupplementaryData	SplmtryData	Component	SupplementaryData1	0	*	Additional information that cannot be captured in the structured elements and/or any other specific block.
+DATATYPE	FinancialInstitutionIdentification23	_v2tzSTEyEe6g-ffJsqGiSA	MessageComponent	Registered	4DB0751631399031	Specifies the details to identify a financial institution.
+MEMBER	FinancialInstitutionIdentification23	_v5D8oTEyEe6g-ffJsqGiSA	BICFI	BICFI	Attribute	BICFIDec2014Identifier	0	1	Code allocated to a financial institution by the ISO 9362 Registration Authority as described in ISO 9362 "Banking 
+MEMBER	FinancialInstitutionIdentification23	_v5D8ozEyEe6g-ffJsqGiSA	ClearingSystemMemberIdentification	ClrSysMmbId	Component	ClearingSystemMemberIdentification2	0	1	Information used to identify a member within a clearing system.
+MEMBER	FinancialInstitutionIdentification23	_v5D8pTEyEe6g-ffJsqGiSA	LEI	LEI	Attribute	LEIIdentifier	0	1	Legal entity identifier of the financial institution.
+MEMBER	FinancialInstitutionIdentification23	_v5D8pzEyEe6g-ffJsqGiSA	Name	Nm	Attribute	Max140Text	0	1	Name by which an agent is known and which is usually used to identify that agent.
+MEMBER	FinancialInstitutionIdentification23	_v5D8qTEyEe6g-ffJsqGiSA	PostalAddress	PstlAdr	Component	PostalAddress27	0	1	Information that locates and identifies a specific address, as defined by postal services.
+MEMBER	FinancialInstitutionIdentification23	_v5D8qzEyEe6g-ffJsqGiSA	Other	Othr	Component	GenericFinancialIdentification1	0	1	Unique identification of an agent, as assigned by an institution, using an identification scheme.
+DATATYPE	PaymentTypeInformation26	_YPH8YXR0EeiH1ZOt2UD8vQ	MessageComponent	Registered	8CB83E8DF2C098BD	Provides further details of the type of payment.
+MEMBER	PaymentTypeInformation26	_YaAWs3R0EeiH1ZOt2UD8vQ	InstructionPriority	InstrPrty	Codeset	Priority2Code	0	1	Indicator of the urgency or order of importance that the instructing party would like the instructed party to appl
+MEMBER	PaymentTypeInformation26	_YaAWtXR0EeiH1ZOt2UD8vQ	ServiceLevel	SvcLvl	Choice	ServiceLevel8Choice	0	*	Agreement under which or rules under which the transaction should be processed.
+MEMBER	PaymentTypeInformation26	_YaAWt3R0EeiH1ZOt2UD8vQ	LocalInstrument	LclInstrm	Choice	LocalInstrument2Choice	0	1	User community specific instrument.||Usage: This element is used to specify a local instrument, local clearing option an
+MEMBER	PaymentTypeInformation26	_YaAWuXR0EeiH1ZOt2UD8vQ	CategoryPurpose	CtgyPurp	Choice	CategoryPurpose1Choice	0	1	Specifies the high level purpose of the instruction based on a set of pre-defined categories.|Usage: This is used by 
+DATATYPE	PostalAddress27	_vvaRYTEyEe6g-ffJsqGiSA	MessageComponent	Registered	4B22D317B57B961D	Information that locates and identifies a specific address, as defined by postal services.
+MEMBER	PostalAddress27	_vxk0kTEyEe6g-ffJsqGiSA	AddressType	AdrTp	Choice	AddressType3Choice	0	1	Identifies the nature of the postal address.
+MEMBER	PostalAddress27	_5-dq0DHsEe6BxvG014AZzQ	CareOf	CareOf	Attribute	Max140Text	0	1	Identifies an addressee that is accepting the correspondence for the intended recipient. Using care of ensures the
+MEMBER	PostalAddress27	_vxk0kzEyEe6g-ffJsqGiSA	Department	Dept	Attribute	Max70Text	0	1	Identification of a division of a large organisation or building.
+MEMBER	PostalAddress27	_vxk0lTEyEe6g-ffJsqGiSA	SubDepartment	SubDept	Attribute	Max70Text	0	1	Identification of a sub-division of a large organisation or building.
+MEMBER	PostalAddress27	_vxk0lzEyEe6g-ffJsqGiSA	StreetName	StrtNm	Attribute	Max140Text	0	1	Name of a street or thoroughfare.
+MEMBER	PostalAddress27	_vxk0mTEyEe6g-ffJsqGiSA	BuildingNumber	BldgNb	Attribute	Max16Text	0	1	Number that identifies the position of a building on a street.
+MEMBER	PostalAddress27	_vxk0mzEyEe6g-ffJsqGiSA	BuildingName	BldgNm	Attribute	Max140Text	0	1	Name of the building or house.
+MEMBER	PostalAddress27	_vxk0nTEyEe6g-ffJsqGiSA	Floor	Flr	Attribute	Max70Text	0	1	Floor or storey within a building.
+MEMBER	PostalAddress27	_kWPIsDHtEe6BxvG014AZzQ	UnitNumber	UnitNb	Attribute	Max16Text	0	1	Identifies a flat or dwelling within the building.
+MEMBER	PostalAddress27	_vxk0nzEyEe6g-ffJsqGiSA	PostBox	PstBx	Attribute	Max16Text	0	1	Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for.
+MEMBER	PostalAddress27	_vxk0oTEyEe6g-ffJsqGiSA	Room	Room	Attribute	Max70Text	0	1	Building room number.
+MEMBER	PostalAddress27	_vxk0ozEyEe6g-ffJsqGiSA	PostCode	PstCd	Attribute	Max16Text	0	1	Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting
+MEMBER	PostalAddress27	_vxk0pTEyEe6g-ffJsqGiSA	TownName	TwnNm	Attribute	Max140Text	0	1	Name of a built-up area, with defined boundaries, and a local government.
+MEMBER	PostalAddress27	_vxk0pzEyEe6g-ffJsqGiSA	TownLocationName	TwnLctnNm	Attribute	Max140Text	0	1	Specific location name within the town.
+MEMBER	PostalAddress27	_vxk0qTEyEe6g-ffJsqGiSA	DistrictName	DstrctNm	Attribute	Max140Text	0	1	Identifies a subdivision within a country sub-division.
+MEMBER	PostalAddress27	_vxk0qzEyEe6g-ffJsqGiSA	CountrySubDivision	CtrySubDvsn	Attribute	Max35Text	0	1	Identifies a subdivision of a country such as state, region, county.
+MEMBER	PostalAddress27	_vxlboTEyEe6g-ffJsqGiSA	Country	Ctry	Codeset	CountryCode	0	1	Nation with its own government.
+MEMBER	PostalAddress27	_vxlbozEyEe6g-ffJsqGiSA	AddressLine	AdrLine	Attribute	Max70Text	0	7	Information that locates and identifies a specific address, as defined by postal services, presented in free format text
+DATATYPE	DateAndDateTime2Choice	_fGuzgZlhEeeE1Ya-LgRsuQ	Choice	Registered	6197FE4DD2AF4360	Choice between a date or a date and time format.
+DATATYPE	Party52Choice	_bHNcUTFIEe651u5xu3f5iw	Choice	Registered	A7578A87C3D06073	Specifies the identification of a person or an organisation.
+DATATYPE	ClearingSystemMemberIdentification2	_TMehHNp-Ed-ak6NoX_4Aeg_151445359	MessageComponent	Registered	9BC903C552F9304C	Unique identification, as assigned by a clearing system, to unambiguously identify a member of the clearing system.
+MEMBER	ClearingSystemMemberIdentification2	_TMehHdp-Ed-ak6NoX_4Aeg_-1082144614	ClearingSystemIdentification	ClrSysId	Choice	ClearingSystemIdentification2Choice	0	1	Specification of a pre-agreed offering between clearing agents or the channel through which the payment instruction
+MEMBER	ClearingSystemMemberIdentification2	_TMehHtp-Ed-ak6NoX_4Aeg_151445420	MemberIdentification	MmbId	Attribute	Max35Text	1	1	Identification of a member of a clearing system.
+DATATYPE	GenericFinancialIdentification1	_QALkM9p-Ed-ak6NoX_4Aeg_-2141717394	MessageComponent	Registered	85CCB89A577D5B44	Information related to an identification of a financial institution.
+MEMBER	GenericFinancialIdentification1	_QALkNNp-Ed-ak6NoX_4Aeg_-2141717392	Identification	Id	Attribute	Max35Text	1	1	Unique and unambiguous identification of a person.
+MEMBER	GenericFinancialIdentification1	_QALkNdp-Ed-ak6NoX_4Aeg_-2141717054	SchemeName	SchmeNm	Choice	FinancialIdentificationSchemeName1Choice	0	1	Name of the identification scheme.
+MEMBER	GenericFinancialIdentification1	_QALkNtp-Ed-ak6NoX_4Aeg_-2141717116	Issuer	Issr	Attribute	Max35Text	0	1	Entity that assigns the identification.
+DATATYPE	OtherContact1	_6SokSZqlEeGSON8vddiWzQ_1969673172	MessageComponent	Registered	C5E4FBE07CA22CB6	Communication device number or electronic address used for communication.
+MEMBER	OtherContact1	_6SokSpqlEeGSON8vddiWzQ_444512870	ChannelType	ChanlTp	Attribute	Max4Text	1	1	Method used to contact the financial institution’s contact for the specific tax region.
+MEMBER	OtherContact1	_6SokS5qlEeGSON8vddiWzQ_938910947	Identification	Id	Attribute	Max128Text	0	1	Communication value such as phone number or email address.
+DATATYPE	PaymentIdentification6	_xnoxwXrgEeidVZmeoasaWQ	MessageComponent	Registered	957999C83E4AC130	Provides further means of referencing a payment transaction.
+MEMBER	PaymentIdentification6	_x6fcUXrgEeidVZmeoasaWQ	InstructionIdentification	InstrId	Attribute	Max35Text	0	1	Unique identification as assigned by an instructing party for an instructed party to unambiguously identify the in
+MEMBER	PaymentIdentification6	_x6gDYXrgEeidVZmeoasaWQ	EndToEndIdentification	EndToEndId	Attribute	Max35Text	1	1	Unique identification assigned by the initiating party to unambiguously identify the transaction. This identificat
+MEMBER	PaymentIdentification6	_hU3t4XrgEeidVZmeoasaWQ	UETR	UETR	Attribute	UUIDv4Identifier	0	1	Universally unique identifier to provide an end-to-end reference of a payment transaction.
+DATATYPE	ProxyAccountIdentification1	_luR59Xh2EeidzqjNEfehPg	MessageComponent	Registered	48FA7317D69CA1A1	Information related to a proxy  identification of the account.
+MEMBER	ProxyAccountIdentification1	_luR59nh2EeidzqjNEfehPg	Type	Tp	Choice	ProxyAccountType1Choice	0	1	Type of the proxy identification.
+MEMBER	ProxyAccountIdentification1	_luR593h2EeidzqjNEfehPg	Identification	Id	Attribute	Max2048Text	1	1	Identification used to indicate the account identification under another specified name.
+DATATYPE	AccountIdentification4Choice	_Pdwzodp-Ed-ak6NoX_4Aeg_-1833658219	Choice	Registered	3AC8EE980D09E9A3	Specifies the unique identification of an account as assigned by the account servicer.
+DATATYPE	AddressType3Choice	_CneugRb-EeiyVv5j1vf1VQ	Choice	Registered	1942B7C50B3A8D28	Choice of formats for the type of address.
+DATATYPE	AdviceType1Choice	_u3TXw9omEembTrt_WixjyQ	Choice	Registered	B100423C859DE9AC	Specifies the type of advice requested for the transaction.
+DATATYPE	CashAccountType2Choice	_sb6WgFkyEeGeoaLUQk__nA_1768299331	Choice	Registered	3BEEEBE6B0909ED1	Nature or use of the account.
+DATATYPE	CategoryPurpose1Choice	_THaa5Np-Ed-ak6NoX_4Aeg_1223014142	Choice	Registered	51510E458A4F9A28	Specifies the high level purpose of the instruction based on a set of pre-defined categories.|Usage: This is used by t
+DATATYPE	LocalInstrument2Choice	_TF7NItp-Ed-ak6NoX_4Aeg_365018897	Choice	Registered	E54FC312C4D79C36	Set of elements that further identifies the type of local instruments being requested by the initiating party.
+DATATYPE	ServiceLevel8Choice	_QJa_zNp-Ed-ak6NoX_4Aeg_1912716963	Choice	Registered	7F31956FAB29BCF7	Specifies the service level of the transaction.
+DATATYPE	Cheque19	_4oDGATEyEe6g-ffJsqGiSA	MessageComponent	Registered	DA7AD9619CD51204	Characteristics of a cheque instruction, such as cheque type or cheque number.
+MEMBER	Cheque19	_4qTIwzEyEe6g-ffJsqGiSA	ChequeType	ChqTp	Codeset	ChequeType2Code	0	1	Specifies the type of cheque to be issued.
+MEMBER	Cheque19	_4qTIxTEyEe6g-ffJsqGiSA	ChequeNumber	ChqNb	Attribute	Max35Text	0	1	Unique and unambiguous identifier for a cheque as assigned by the agent.
+MEMBER	Cheque19	_4qTIxzEyEe6g-ffJsqGiSA	ChequeFrom	ChqFr	Component	NameAndAddress18	0	1	Identifies the party that ordered the issuance of the cheque.
+MEMBER	Cheque19	_4qTIyTEyEe6g-ffJsqGiSA	DeliveryMethod	DlvryMtd	Choice	ChequeDeliveryMethod1Choice	0	1	Specifies the delivery method of the cheque by the debtor's agent.
+MEMBER	Cheque19	_4qTIyzEyEe6g-ffJsqGiSA	DeliverTo	DlvrTo	Component	NameAndAddress18	0	1	Party to whom the debtor's agent needs to send the cheque.
+MEMBER	Cheque19	_4qTIzTEyEe6g-ffJsqGiSA	InstructionPriority	InstrPrty	Codeset	Priority2Code	0	1	Urgency or order of importance that the originator would like the recipient of the payment instruction to apply
+MEMBER	Cheque19	_4qTIzzEyEe6g-ffJsqGiSA	ChequeMaturityDate	ChqMtrtyDt	Attribute	ISODate	0	1	Date when the draft becomes payable and the debtor's account is debited.
+MEMBER	Cheque19	_4qTI0TEyEe6g-ffJsqGiSA	FormsCode	FrmsCd	Attribute	Max35Text	0	1	Identifies, in a coded form, the cheque layout, company logo and digitised signature to be used to print the che
+MEMBER	Cheque19	_4qTI0zEyEe6g-ffJsqGiSA	MemoField	MemoFld	Attribute	Max35Text	0	2	Information that needs to be printed on a cheque, used by the payer to add miscellaneous information.
+MEMBER	Cheque19	_4qTI1TEyEe6g-ffJsqGiSA	RegionalClearingZone	RgnlClrZone	Attribute	Max35Text	0	1	Regional area in which the cheque can be cleared, when a country has no nation-wide cheque clearing organisati
+MEMBER	Cheque19	_4qTI1zEyEe6g-ffJsqGiSA	PrintLocation	PrtLctn	Attribute	Max35Text	0	1	Specifies the print location of the cheque.
+MEMBER	Cheque19	_4qTI2TEyEe6g-ffJsqGiSA	Signature	Sgntr	Attribute	Max70Text	0	5	Signature to be used by the cheque servicer on a specific cheque to be printed.
+DATATYPE	CreditTransferMandateData1	_EVj2MclqEem0vqvvoqYsqQ	MessageComponent	Registered	8B3F5F3E879D7BE8	Provides further details related to a credit transfer mandate signed between the creditor and the debtor.
+MEMBER	CreditTransferMandateData1	_EgIuh8lqEem0vqvvoqYsqQ	MandateIdentification	MndtId	Attribute	Max35Text	0	1	Unique identification, as assigned by the creditor, to unambiguously identify the mandate.
+MEMBER	CreditTransferMandateData1	_CLrtsclsEem0vqvvoqYsqQ	Type	Tp	Component	MandateTypeInformation2	0	1	Specifies the type of mandate, such as paper, electronic or scheme.
+MEMBER	CreditTransferMandateData1	_EgIuiclqEem0vqvvoqYsqQ	DateOfSignature	DtOfSgntr	Attribute	ISODate	0	1	Date on which the credit transfer mandate has been signed by the debtor.
+MEMBER	CreditTransferMandateData1	_MBcj0MlqEem0vqvvoqYsqQ	DateOfVerification	DtOfVrfctn	Attribute	ISODateTime	0	1	Date on which the credit transfer mandate has been verified.
+MEMBER	CreditTransferMandateData1	_EgIuj8lqEem0vqvvoqYsqQ	ElectronicSignature	ElctrncSgntr	Attribute	Max10KBinary	0	1	Additional security provisions, such as a digital signature, as provided by the debtor.
+MEMBER	CreditTransferMandateData1	_EgIukclqEem0vqvvoqYsqQ	FirstPaymentDate	FrstPmtDt	Attribute	ISODate	0	1	Date of the first payment of a recurrent credit transfer as per the mandate.
+MEMBER	CreditTransferMandateData1	_EgIuk8lqEem0vqvvoqYsqQ	FinalPaymentDate	FnlPmtDt	Attribute	ISODate	0	1	Date of the final payment of a recurrent credit transfer as per the mandate.
+MEMBER	CreditTransferMandateData1	_EgIulclqEem0vqvvoqYsqQ	Frequency	Frqcy	Choice	Frequency36Choice	0	1	Regularity with which credit transfer instructions are to be created and processed.
+MEMBER	CreditTransferMandateData1	_EgIul8lqEem0vqvvoqYsqQ	Reason	Rsn	Choice	MandateSetupReason1Choice	0	1	Reason for the setup of the credit transfer mandate.||Usage: |The reason will allow the user to distinguish bet
+DATATYPE	ExchangeRate1	_t0booVkyEeGeoaLUQk__nA_667162887	MessageComponent	Registered	6693918D2BB971CA	Further detailed information on the exchange rate that has been used in the payment transaction.
+MEMBER	ExchangeRate1	_t0boolkyEeGeoaLUQk__nA_-816743916	UnitCurrency	UnitCcy	Codeset	ActiveOrHistoricCurrencyCode	0	1	Currency in which the rate of exchange is expressed in a currency exchange. In the example 1GBP = xxxCUR, the uni
+MEMBER	ExchangeRate1	_t0boo1kyEeGeoaLUQk__nA_2015981061	ExchangeRate	XchgRate	Attribute	BaseOneRate	0	1	The factor used for conversion of an amount from one currency to another. This reflects the price at which one c
+MEMBER	ExchangeRate1	_t0bopFkyEeGeoaLUQk__nA_1712924546	RateType	RateTp	Codeset	ExchangeRateType1Code	0	1	Specifies the type used to complete the currency exchange.
+MEMBER	ExchangeRate1	_t0bopVkyEeGeoaLUQk__nA_198863021	ContractIdentification	CtrctId	Attribute	Max35Text	0	1	Unique and unambiguous reference to the foreign exchange contract agreed between the initiating party/creditor 
+DATATYPE	InstructionForCreditorAgent3	_PRQQx8QAEemsic1bQcEtLA	MessageComponent	Registered	2F64DC287A603A17	Further information related to the processing of the payment instruction that may need to be acted upon by the c
+MEMBER	InstructionForCreditorAgent3	_PdEe8cQAEemsic1bQcEtLA	Code	Cd	Codeset	ExternalCreditorAgentInstruction1Code	0	1	Coded information related to the processing of the payment instruction, provided by the initiating party, and in
+MEMBER	InstructionForCreditorAgent3	_PdEe88QAEemsic1bQcEtLA	InstructionInformation	InstrInf	Attribute	Max140Text	0	1	Further information complementing the coded instruction or instruction to the creditor's agent that is bilaterall
+DATATYPE	InstructionForDebtorAgent1	_WpOTg8saEemxFbEZK-FMzw	MessageComponent	Registered	71CCBF808BBDF328	Further information related to the processing of the payment instruction that may need to be acted upon by the d
+MEMBER	InstructionForDebtorAgent1	_WpOThMsaEemxFbEZK-FMzw	Code	Cd	Codeset	ExternalDebtorAgentInstruction1Code	0	1	Coded information related to the processing of the payment instruction, provided by the initiating party, and in
+MEMBER	InstructionForDebtorAgent1	_WpOThcsaEemxFbEZK-FMzw	InstructionInformation	InstrInf	Attribute	Max140Text	0	1	Further information complementing the coded instruction or instruction to the creditor's agent that is bilaterall
+DATATYPE	RegulatoryReporting10	_FyCZkXeKEfCdoODv2ypKfw	MessageComponent	Registered	22B49B4B5F387E95	Information needed due to regulatory and/or statutory requirements.
+MEMBER	RegulatoryReporting10	_F6fK8XeKEfCdoODv2ypKfw	DebitCreditReportingIndicator	DbtCdtRptgInd	Codeset	RegulatoryReportingType1Code	1	1	Identifies whether the regulatory reporting information applies to the debit side, to the credit side or to both 
+MEMBER	RegulatoryReporting10	_F6fK83eKEfCdoODv2ypKfw	Authority	Authrty	Component	RegulatoryAuthority2	0	1	Entity requiring the regulatory reporting information.
+MEMBER	RegulatoryReporting10	_F6fK9XeKEfCdoODv2ypKfw	Details	Dtls	Component	StructuredRegulatoryReporting5	0	*	Set of elements used to provide details on the regulatory reporting information.
+DATATYPE	RemittanceInformation26	36b7291f-b8fd-4d08-957c-47b12fd4de39	MessageComponent	Registered	0087D211A1D6C80F	Information supplied to enable the matching/reconciliation of an entry with the items that the payment is inten
+MEMBER	RemittanceInformation26	0e6013b5-9c54-427c-9d10-916f8c067660	Unstructured	Ustrd	Attribute	Max140Text	0	*	Information supplied to enable the matching/reconciliation of an entry with the items that the payment is inten
+MEMBER	RemittanceInformation26	b54fa6b6-78a6-4d2c-8352-07d43e611622	Structured	Strd	Component	StructuredRemittanceInformation22	0	*	Information supplied to enable the matching/reconciliation of an entry with the items that the payment is inten
+DATATYPE	RemittanceLocation8	_0IULUTEyEe6g-ffJsqGiSA	MessageComponent	Registered	F4A001C899220212	Provides information on the remittance advice.
+MEMBER	RemittanceLocation8	_0KjnATEyEe6g-ffJsqGiSA	RemittanceIdentification	RmtId	Attribute	Max35Text	0	1	Unique identification, as assigned by the initiating party, to unambiguously identify the remittance information
+MEMBER	RemittanceLocation8	_0KjnAzEyEe6g-ffJsqGiSA	RemittanceLocationDetails	RmtLctnDtls	Component	RemittanceLocationData2	0	*	Set of elements used to provide information on the location and/or delivery of the remittance information.
+DATATYPE	TaxData1	_n7DtAd4lEeqt1ZcLzWyWFw	MessageComponent	Registered	EBC52BB3CAF3BA24	Details about tax paid, or to be paid, to the government in accordance with the law, including pre-defined param
+MEMBER	TaxData1	_n9ZPQd4lEeqt1ZcLzWyWFw	Creditor	Cdtr	Component	TaxParty1	0	1	Party on the credit side of the transaction to which the tax applies.
+MEMBER	TaxData1	_n9ZPQ94lEeqt1ZcLzWyWFw	Debtor	Dbtr	Component	TaxParty2	0	1	Party on the debit side of the transaction to which the tax applies.
+MEMBER	TaxData1	_n9ZPRd4lEeqt1ZcLzWyWFw	UltimateDebtor	UltmtDbtr	Component	TaxParty2	0	1	Ultimate party that owes an amount of money to the (ultimate) creditor, in this case, to the taxing authority.
+MEMBER	TaxData1	_n9ZPR94lEeqt1ZcLzWyWFw	AdministrationZone	AdmstnZone	Attribute	Max35Text	0	1	Territorial part of a country to which the tax payment is related.
+MEMBER	TaxData1	_n9ZPSd4lEeqt1ZcLzWyWFw	ReferenceNumber	RefNb	Attribute	Max140Text	0	1	Tax reference information that is specific to a taxing agency.
+MEMBER	TaxData1	_n9ZPS94lEeqt1ZcLzWyWFw	Method	Mtd	Attribute	Max35Text	0	1	Method used to indicate the underlying business or how the tax is paid.
+MEMBER	TaxData1	_n9ZPTd4lEeqt1ZcLzWyWFw	TotalTaxableBaseAmount	TtlTaxblBaseAmt	Amount	ActiveOrHistoricCurrencyAndAmount	0	1	Total amount of money on which the tax is based.
+MEMBER	TaxData1	_n9ZPT94lEeqt1ZcLzWyWFw	TotalTaxAmount	TtlTaxAmt	Amount	ActiveOrHistoricCurrencyAndAmount	0	1	Total amount of money as result of the calculation of the tax.
+MEMBER	TaxData1	_n9ZPUd4lEeqt1ZcLzWyWFw	Date	Dt	Attribute	ISODate	0	1	Date by which tax is due.
+MEMBER	TaxData1	_n9ZPU94lEeqt1ZcLzWyWFw	SequenceNumber	SeqNb	Attribute	Number	0	1	Sequential number of the tax report.
+MEMBER	TaxData1	_n9ZPVd4lEeqt1ZcLzWyWFw	Record	Rcrd	Component	TaxRecord3	0	*	Record of tax details.
+DATATYPE	AmountType4Choice	__S0AAVkJEeSeLKjZh_lWZw	Choice	Registered	97EC4B8E2F78F708	Specifies the amount of money to be moved between the debtor and creditor, before deduction of charges, expressed
+DATATYPE	ClearingSystemIdentification2Choice	_TMoSENp-Ed-ak6NoX_4Aeg_-1410917193	Choice	Registered	0E67FD2E8C499CCD	Choice of a clearing system identifier.
+DATATYPE	FinancialIdentificationSchemeName1Choice	_QALkMNp-Ed-ak6NoX_4Aeg_-2021925461	Choice	Registered	3C92BDCBBC9B2646	Sets of elements to identify a name of the organisation identification scheme.
+DATATYPE	ProxyAccountType1Choice	_dyock3h3EeidzqjNEfehPg	Choice	Registered	32B579D392B740F3	Specifies the scheme used for the identification of an account alias.
+DATATYPE	Purpose2Choice	_P6qyHtp-Ed-ak6NoX_4Aeg_-1283223379	Choice	Registered	15A5A4C03532BA57	Specifies the underlying reason for the payment transaction.|Usage: Purpose is used by the end-customers, that is in
+DATATYPE	MandateTypeInformation2	_cm369kjwEeaVLL5QKJ4f-A	MessageComponent	Registered	0CD8E2525768E387	Set of elements used to further detail the information related to the type of payment.
+MEMBER	MandateTypeInformation2	_cvK7QUjwEeaVLL5QKJ4f-A	ServiceLevel	SvcLvl	Choice	ServiceLevel8Choice	0	1	Agreement under which or rules under which the mandate resides.
+MEMBER	MandateTypeInformation2	_cvK7Q0jwEeaVLL5QKJ4f-A	LocalInstrument	LclInstrm	Choice	LocalInstrument2Choice	0	1	User community specific instrument.|Usage: This element is used to specify a local instrument, local clearing option and
+MEMBER	MandateTypeInformation2	_T6WPoUjwEeaVLL5QKJ4f-A	CategoryPurpose	CtgyPurp	Choice	CategoryPurpose1Choice	0	1	Specifies the high level purpose of the mandate based on a set of pre-defined categories.
+MEMBER	MandateTypeInformation2	_3MJbIGVREeacpJ-gG9kyUQ	Classification	Clssfctn	Choice	MandateClassification1Choice	0	1	Type of direct debit instruction.
+DATATYPE	NameAndAddress18	_0MzpxzEyEe6g-ffJsqGiSA	MessageComponent	Registered	60F37674C1D6738D	Information that locates and identifies a party.
+MEMBER	NameAndAddress18	_0PLoUTEyEe6g-ffJsqGiSA	Name	Nm	Attribute	Max140Text	1	1	Name by which a party is known and is usually used to identify that party.
+MEMBER	NameAndAddress18	_0PLoUzEyEe6g-ffJsqGiSA	Address	Adr	Component	PostalAddress27	1	1	Postal address of a party.
+DATATYPE	RegulatoryAuthority2	_Pc3bxNp-Ed-ak6NoX_4Aeg_-1526379440	MessageComponent	Registered	25ACBCF08D645502	Entity requiring the regulatory reporting information.
+MEMBER	RegulatoryAuthority2	_Pc3bxdp-Ed-ak6NoX_4Aeg_-1526379192	Name	Nm	Attribute	Max140Text	0	1	Name of the entity requiring the regulatory reporting information.
+MEMBER	RegulatoryAuthority2	_Pc3bxtp-Ed-ak6NoX_4Aeg_-1526379191	Country	Ctry	Codeset	CountryCode	0	1	Country of the entity that requires the regulatory reporting information.
+DATATYPE	RemittanceLocationData2	_0KjnBTEyEe6g-ffJsqGiSA	MessageComponent	Registered	4B37DA5CB1E30629	Provides additional details on the remittance advice.
+MEMBER	RemittanceLocationData2	_0MzpwTEyEe6g-ffJsqGiSA	Method	Mtd	Codeset	RemittanceLocationMethod2Code	1	1	Method used to deliver the remittance advice information.
+MEMBER	RemittanceLocationData2	_0MzpwzEyEe6g-ffJsqGiSA	ElectronicAddress	ElctrncAdr	Attribute	Max2048Text	0	1	Electronic address to which an agent is to send the remittance information.
+MEMBER	RemittanceLocationData2	_0MzpxTEyEe6g-ffJsqGiSA	PostalAddress	PstlAdr	Component	NameAndAddress18	0	1	Postal address to which an agent is to send the remittance information.
+DATATYPE	StructuredRegulatoryReporting5	_F6fyAXeKEfCdoODv2ypKfw	MessageComponent	Registered	9257C54E30CB5A25	Information needed due to regulatory and statutory requirements.
+MEMBER	StructuredRegulatoryReporting5	_GC8jYXeKEfCdoODv2ypKfw	Type	Tp	Choice	RegulatoryReportingType1Choice	0	1	Specifies the type of the information supplied in the regulatory reporting details.
+MEMBER	StructuredRegulatoryReporting5	_GC8jY3eKEfCdoODv2ypKfw	Date	Dt	Attribute	ISODate	0	1	Date related to the specified type of regulatory reporting details.
+MEMBER	StructuredRegulatoryReporting5	_GC8jZXeKEfCdoODv2ypKfw	Country	Ctry	Codeset	CountryCode	0	1	Country related to the specified type of regulatory reporting details.
+MEMBER	StructuredRegulatoryReporting5	_GC8jZ3eKEfCdoODv2ypKfw	ReportingCode	RptgCd	Attribute	Max10Text	0	1	Specifies the nature, purpose, and reason for the transaction to be reported for regulatory and statutory require
+MEMBER	StructuredRegulatoryReporting5	_GC8jaXeKEfCdoODv2ypKfw	Amount	Amt	Amount	ActiveOrHistoricCurrencyAndAmount	0	1	Amount of money to be reported for regulatory and statutory requirements.
+MEMBER	StructuredRegulatoryReporting5	_GC8ja3eKEfCdoODv2ypKfw	Information	Inf	Attribute	Max35Text	0	*	Additional details that cater for specific domestic regulatory requirements.
+DATATYPE	StructuredRemittanceInformation22	228ed14b-2fc2-4f3f-bc8e-47c7306ee6f5	MessageComponent	Registered	77A6254BF7FFFDC5	Information supplied to enable the matching/reconciliation of an entry with the items that the payment is inten
+MEMBER	StructuredRemittanceInformation22	bca856fd-f648-4226-b434-720e4690a282	ReferredDocumentInformation	RfrdDocInf	Component	ReferredDocumentInformation8	0	*	Provides the identification and the content of the referred document.
+MEMBER	StructuredRemittanceInformation22	4f957ffb-5d3b-4394-9a7f-2a9e29fd7de3	ReferredDocumentAmount	RfrdDocAmt	Component	RemittanceAmount4	0	1	Provides details on the amounts of the referred document.
+MEMBER	StructuredRemittanceInformation22	1b8df50c-23eb-430b-bee1-bbb7a69a330f	CreditorReferenceInformation	CdtrRefInf	Component	CreditorReferenceInformation3	0	1	Reference information provided by the creditor to allow the identification of the underlying documents.
+MEMBER	StructuredRemittanceInformation22	e833af6d-1941-4fbc-9309-a36a6a12dcdf	Invoicer	Invcr	Component	PartyIdentification272	0	1	Identification of the organisation issuing the invoice, when it is different from the creditor or ultimate cred
+MEMBER	StructuredRemittanceInformation22	1d324249-cab3-4481-8edd-a84312709aaf	Invoicee	Invcee	Component	PartyIdentification272	0	1	Identification of the party to whom an invoice is issued, when it is different from the debtor or ultimate debtor
+MEMBER	StructuredRemittanceInformation22	54566ff8-4585-4417-a80c-60cec518d1a2	TaxRemittance	TaxRmt	Component	TaxData1	0	1	Provides remittance information about a payment made for tax-related purposes.
+MEMBER	StructuredRemittanceInformation22	f4f6fbbd-f620-47af-b240-ef0295b3863a	GarnishmentRemittance	GrnshmtRmt	Component	Garnishment4	0	1	Provides remittance information about a payment for garnishment-related purposes.
+MEMBER	StructuredRemittanceInformation22	37a60672-6182-4d2f-aaac-fef4ab894dee	SecuritiesData	SctiesData	Component	SecuritiesAttributes1	0	*	Provides information on the securities trades that make up the payment.
+MEMBER	StructuredRemittanceInformation22	a58c069f-f64a-40e8-bccf-9f64dc1c1edf	AdditionalRemittanceInformation	AddtlRmtInf	Attribute	Max140Text	0	3	Additional information, in free text form, to complement the structured remittance information.
+DATATYPE	TaxParty1	_PdBMxtp-Ed-ak6NoX_4Aeg_-1937885674	MessageComponent	Registered	16AA05BC14550B2D	Details about the entity involved in the tax paid or to be paid.
+MEMBER	TaxParty1	_PdBMx9p-Ed-ak6NoX_4Aeg_-1937885612	TaxIdentification	TaxId	Attribute	Max35Text	0	1	Tax identification number of the creditor.
+MEMBER	TaxParty1	_PdBMyNp-Ed-ak6NoX_4Aeg_-1937885613	RegistrationIdentification	RegnId	Attribute	Max35Text	0	1	Unique identification, as assigned by an organisation, to unambiguously identify a party.
+MEMBER	TaxParty1	_PdKWsNp-Ed-ak6NoX_4Aeg_-1937885634	TaxType	TaxTp	Attribute	Max35Text	0	1	Type of tax payer.
+DATATYPE	TaxParty2	_PdBMwdp-Ed-ak6NoX_4Aeg_920823246	MessageComponent	Registered	61B893B11F0B6C14	Details about the entity involved in the tax paid or to be paid.
+MEMBER	TaxParty2	_PdBMwtp-Ed-ak6NoX_4Aeg_920823361	TaxIdentification	TaxId	Attribute	Max35Text	0	1	Tax identification number of the debtor.
+MEMBER	TaxParty2	_PdBMw9p-Ed-ak6NoX_4Aeg_920823300	RegistrationIdentification	RegnId	Attribute	Max35Text	0	1	Unique identification, as assigned by an organisation, to unambiguously identify a party.
+MEMBER	TaxParty2	_PdBMxNp-Ed-ak6NoX_4Aeg_920823277	TaxType	TaxTp	Attribute	Max35Text	0	1	Type of tax payer.
+MEMBER	TaxParty2	_PdBMxdp-Ed-ak6NoX_4Aeg_-137944593	Authorisation	Authstn	Component	TaxAuthorisation1	0	1	Details of the authorised tax paying party.
+DATATYPE	TaxRecord3	_n9ZPV94lEeqt1ZcLzWyWFw	MessageComponent	Registered	A2B9D3C8F1ADBAAF	Set of elements used to define the tax record.
+MEMBER	TaxRecord3	_n-65Qd4lEeqt1ZcLzWyWFw	Type	Tp	Attribute	Max35Text	0	1	High level code to identify the type of tax details.
+MEMBER	TaxRecord3	_n-65Q94lEeqt1ZcLzWyWFw	Category	Ctgy	Attribute	Max35Text	0	1	Specifies the tax code as published by the tax authority.
+MEMBER	TaxRecord3	_n-65Rd4lEeqt1ZcLzWyWFw	CategoryDetails	CtgyDtls	Attribute	Max35Text	0	1	Provides further details of the category tax code.
+MEMBER	TaxRecord3	_n-65R94lEeqt1ZcLzWyWFw	DebtorStatus	DbtrSts	Attribute	Max35Text	0	1	Code provided by local authority to identify the status of the party that has drawn up the settlement document.
+MEMBER	TaxRecord3	_n-65Sd4lEeqt1ZcLzWyWFw	CertificateIdentification	CertId	Attribute	Max35Text	0	1	Identification number of the tax report as assigned by the taxing authority.
+MEMBER	TaxRecord3	_n-65S94lEeqt1ZcLzWyWFw	FormsCode	FrmsCd	Attribute	Max35Text	0	1	Identifies, in a coded form, on which template the tax report is to be provided.
+MEMBER	TaxRecord3	_n-65Td4lEeqt1ZcLzWyWFw	Period	Prd	Component	TaxPeriod3	0	1	Set of elements used to provide details on the period of time related to the tax payment.
+MEMBER	TaxRecord3	_n-65T94lEeqt1ZcLzWyWFw	TaxAmount	TaxAmt	Component	TaxAmount3	0	1	Set of elements used to provide information on the amount of the tax record.
+MEMBER	TaxRecord3	_n-65Ud4lEeqt1ZcLzWyWFw	AdditionalInformation	AddtlInf	Attribute	Max140Text	0	1	Further details of the tax record.
+DATATYPE	ChequeDeliveryMethod1Choice	_QbwF5tp-Ed-ak6NoX_4Aeg_258234806	Choice	Registered	1EBB941EE4E64410	Set of characteristics related to a cheque instruction, such as cheque type or cheque number.
+DATATYPE	Frequency36Choice	_sVM2vWk2Eeanu6HLe77Rkg	Choice	Registered	FC5C0081A9069B2B	Choice of format for a frequency, for example, the frequency of payment.
+DATATYPE	MandateSetupReason1Choice	_iQq8ND2OEeS6DKIV6SF6gw	Choice	Registered	386C3D7B2BF3FFC3	Specifies the reason for the setup of the mandate.
+DATATYPE	CreditorReferenceInformation3	_7u-CcTEsEe6GxLzpkVnWYg	MessageComponent	Registered	61D91FB180C24CB2	Reference information provided by the creditor to allow the identification of the underlying documents.
+MEMBER	CreditorReferenceInformation3	_7xH-gTEsEe6GxLzpkVnWYg	Type	Tp	Component	CreditorReferenceType3	0	1	Specifies the type of creditor reference.
+MEMBER	CreditorReferenceInformation3	_7xH-gzEsEe6GxLzpkVnWYg	Reference	Ref	Attribute	Max35Text	0	1	Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction.||Usage: If avai
+DATATYPE	Garnishment4	_v9i0ETEyEe6g-ffJsqGiSA	MessageComponent	Registered	4DF57A230D9110ED	Provides remittance information about a payment for garnishment-related purposes.
+MEMBER	Garnishment4	_v_0E4TEyEe6g-ffJsqGiSA	Type	Tp	Component	GarnishmentType1	1	1	Specifies the type of garnishment.
+MEMBER	Garnishment4	_v_0E4zEyEe6g-ffJsqGiSA	Garnishee	Grnshee	Component	PartyIdentification272	0	1	Ultimate party that owes an amount of money to the (ultimate) creditor, in this case, to the garnisher.
+MEMBER	Garnishment4	_v_0E5TEyEe6g-ffJsqGiSA	GarnishmentAdministrator	GrnshmtAdmstr	Component	PartyIdentification272	0	1	Party on the credit side of the transaction who administers the garnishment on behalf of the ultimate beneficiary
+MEMBER	Garnishment4	_v_0E5zEyEe6g-ffJsqGiSA	ReferenceNumber	RefNb	Attribute	Max140Text	0	1	Reference information that is specific to the agency receiving the garnishment.
+MEMBER	Garnishment4	_v_0E6TEyEe6g-ffJsqGiSA	Date	Dt	Attribute	ISODate	0	1	Date of payment which garnishment was taken from.
+MEMBER	Garnishment4	_v_0E6zEyEe6g-ffJsqGiSA	RemittedAmount	RmtdAmt	Amount	ActiveOrHistoricCurrencyAndAmount	0	1	Amount of money remitted for the referred document.
+MEMBER	Garnishment4	_v_0E7TEyEe6g-ffJsqGiSA	FamilyMedicalInsuranceIndicator	FmlyMdclInsrncInd	Attribute	TrueFalseIndicator	0	1	Indicates if the person to whom the garnishment applies (that is, the ultimate debtor) has family medical insuranc
+MEMBER	Garnishment4	_v_0E7zEyEe6g-ffJsqGiSA	EmployeeTerminationIndicator	MplyeeTermntnInd	Attribute	TrueFalseIndicator	0	1	Indicates if the employment of the person to whom the garnishment applies (that is, the ultimate debtor) has been
+DATATYPE	ReferredDocumentInformation8	_OzVnATE0Ee62xuUQ2zyZww	MessageComponent	Registered	04F9030BC84ECB23	Set of elements used to identify the documents referred to in the remittance information.
+MEMBER	ReferredDocumentInformation8	_O2BuoTE0Ee62xuUQ2zyZww	Type	Tp	Component	DocumentType1	0	1	Specifies the type of referred document.
+MEMBER	ReferredDocumentInformation8	_O2BuozE0Ee62xuUQ2zyZww	Number	Nb	Attribute	Max35Text	0	1	Unique and unambiguous identification of the referred document.
+MEMBER	ReferredDocumentInformation8	_O2BupTE0Ee62xuUQ2zyZww	RelatedDate	RltdDt	Component	DateAndType1	0	1	Date and date type associated with the referred document.
+MEMBER	ReferredDocumentInformation8	_O2BupzE0Ee62xuUQ2zyZww	LineDetails	LineDtls	Component	DocumentLineInformation2	0	*	Set of elements used to provide the content of the referred document line.
+DATATYPE	RemittanceAmount4	_SNLNYDH0Ee6BxvG014AZzQ	MessageComponent	Registered	EEC55DBBCC7B5E95	Provides details on the amounts of the referred document.
+MEMBER	RemittanceAmount4	_dA5OoTH0Ee6BxvG014AZzQ	RemittanceAmountAndType	RmtAmtAndTp	Component	DocumentAmount1	0	*	Type and amount of money for the referred document.
+MEMBER	RemittanceAmount4	_F3FzsTKzEe6dJsbzsnAdDg	AdjustmentAmountAndReason	AdjstmntAmtAndRsn	Component	DocumentAdjustment1	0	*	Specifies detailed information on the amount and reason of the adjustment.
+DATATYPE	SecuritiesAttributes1	15df450f-df3b-4230-9d9a-8fba15b89a4e	MessageComponent	Registered	D5E4217E1DF18AF3	Provides information on the securities trades that make up the payment.
+MEMBER	SecuritiesAttributes1	990f0523-22dd-4e09-9b3d-eddb7308c0f8	UniqueTransactionIdentifier	UnqTxIdr	Attribute	UTIIdentifier	1	1	Unique transaction identifier will be created at the time a transaction is first executed, shared with all registe
+MEMBER	SecuritiesAttributes1	a264d9c2-b9dd-4b00-9d6c-9225ff512c45	Amount	Amt	Amount	ActiveCurrencyAndAmount	0	1	Amount of money for the trade.
+DATATYPE	TaxAmount3	_n-65U94lEeqt1ZcLzWyWFw	MessageComponent	Registered	B75C535B0D41FC8F	Set of elements used to provide information on the tax amount(s) of tax record.
+MEMBER	TaxAmount3	_oAWcod4lEeqt1ZcLzWyWFw	Rate	Rate	Attribute	PercentageRate	0	1	Rate used to calculate the tax.
+MEMBER	TaxAmount3	_oAWco94lEeqt1ZcLzWyWFw	TaxableBaseAmount	TaxblBaseAmt	Amount	ActiveOrHistoricCurrencyAndAmount	0	1	Amount of money on which the tax is based.
+MEMBER	TaxAmount3	_oAWcpd4lEeqt1ZcLzWyWFw	TotalAmount	TtlAmt	Amount	ActiveOrHistoricCurrencyAndAmount	0	1	Total amount that is the result of the calculation of the tax for the record.
+MEMBER	TaxAmount3	_oAWcp94lEeqt1ZcLzWyWFw	Details	Dtls	Component	TaxRecordDetails3	0	*	Set of elements used to provide details on the tax period and amount.
+DATATYPE	TaxAuthorisation1	_Pc3bx9p-Ed-ak6NoX_4Aeg_-197973580	MessageComponent	Registered	4D708C5D7864C78B	Details of the authorised tax paying party.
+MEMBER	TaxAuthorisation1	_Pc3byNp-Ed-ak6NoX_4Aeg_-197973519	Title	Titl	Attribute	Max35Text	0	1	Title or position of debtor or the debtor's authorised representative.
+MEMBER	TaxAuthorisation1	_PdBMwNp-Ed-ak6NoX_4Aeg_-197973549	Name	Nm	Attribute	Max140Text	0	1	Name of the debtor or the debtor's authorised representative.
+DATATYPE	TaxPeriod3	_oB4Gpd4lEeqt1ZcLzWyWFw	MessageComponent	Registered	6319A699810C0F4C	Period of time details related to the tax payment.
+MEMBER	TaxPeriod3	_oDl94d4lEeqt1ZcLzWyWFw	Year	Yr	Attribute	ISOYear	0	1	Year related to the tax payment.
+MEMBER	TaxPeriod3	_oDl9494lEeqt1ZcLzWyWFw	Type	Tp	Codeset	TaxRecordPeriod1Code	0	1	Identification of the period related to the tax payment.
+MEMBER	TaxPeriod3	_oDl95d4lEeqt1ZcLzWyWFw	FromToDate	FrToDt	Component	DatePeriod2	0	1	Range of time between a start date and an end date for which the tax report is provided.
+DATATYPE	MandateClassification1Choice	_JThtg2oDEearR-CA7eRZXQ	Choice	Registered	21022D1D033156E4	Specifies the high level purpose of the instruction based on a set of pre-defined categories.|Usage: This is used 
+DATATYPE	RegulatoryReportingType1Choice	_JVOXAHeLEfCdoODv2ypKfw	Choice	Registered	D460ACFD95CC9081	Type of regulatory reporting.
+DATATYPE	CreditorReferenceType3	_7xH-hTEsEe6GxLzpkVnWYg	MessageComponent	Registered	A63CF44B01290860	Specifies the type of creditor reference.
+MEMBER	CreditorReferenceType3	_7zR6oTEsEe6GxLzpkVnWYg	CodeOrProprietary	CdOrPrtry	Choice	CreditorReferenceType2Choice	1	1	Coded or proprietary format creditor reference type.
+MEMBER	CreditorReferenceType3	_7zR6ozEsEe6GxLzpkVnWYg	Issuer	Issr	Attribute	Max35Text	0	1	Entity that assigns the credit reference type.
+DATATYPE	DateAndType1	_wbqsoDHxEe6BxvG014AZzQ	MessageComponent	Registered	86E964450BE7768F	Specifies the date and type associated with the referred document.
+MEMBER	DateAndType1	_Z8iXsDHyEe6BxvG014AZzQ	Type	Tp	Choice	DateType2Choice	1	1	Type of date associated with the referred document.
+MEMBER	DateAndType1	__mTDwDHxEe6BxvG014AZzQ	Date	Dt	Attribute	ISODate	1	1	Date associated with the referred document.
+DATATYPE	DatePeriod2	_lZP5MYaDEee8r9VKRbnJSg	MessageComponent	Registered	E470F155CA22C0A7	Range of time defined by a start date and an end date.
+MEMBER	DatePeriod2	_lhvG0YaDEee8r9VKRbnJSg	FromDate	FrDt	Attribute	ISODate	1	1	Start date of the range.
+MEMBER	DatePeriod2	_lhvG04aDEee8r9VKRbnJSg	ToDate	ToDt	Attribute	ISODate	1	1	End date of the range.
+DATATYPE	DocumentAdjustment1	_UP-lctp-Ed-ak6NoX_4Aeg_1188294125	MessageComponent	Registered	54E19143B3DD7528	Set of elements used to provide information on the amount and reason of the document adjustment.
+MEMBER	DocumentAdjustment1	_UP-lc9p-Ed-ak6NoX_4Aeg_1531842196	Amount	Amt	Amount	ActiveOrHistoricCurrencyAndAmount	1	1	Amount of money of the document adjustment.
+MEMBER	DocumentAdjustment1	_UP-ldNp-Ed-ak6NoX_4Aeg_1554008423	CreditDebitIndicator	CdtDbtInd	Codeset	CreditDebitCode	0	1	Specifies whether the adjustment must be subtracted or added to the total amount.
+MEMBER	DocumentAdjustment1	_UP-lddp-Ed-ak6NoX_4Aeg_1641741581	Reason	Rsn	Attribute	Max4Text	0	1	Specifies the reason for the adjustment.
+MEMBER	DocumentAdjustment1	_UP-ldtp-Ed-ak6NoX_4Aeg_1656516606	AdditionalInformation	AddtlInf	Attribute	Max140Text	0	1	Provides further details on the document adjustment.
+DATATYPE	DocumentAmount1	_vRiGoDKzEe6dJsbzsnAdDg	MessageComponent	Registered	1AD8CFB60469DCDC	Provides details on the amount and type of the referred document.
+MEMBER	DocumentAmount1	_QSHLojK0Ee6dJsbzsnAdDg	Type	Tp	Choice	DocumentAmountType1Choice	1	1	Defines the type of amount.
+MEMBER	DocumentAmount1	_QSHLozK0Ee6dJsbzsnAdDg	Amount	Amt	Amount	ActiveOrHistoricCurrencyAndAmount	1	1	Amount of money for the referred document.
+DATATYPE	DocumentLineInformation2	_eZxMgTE4Ee62xuUQ2zyZww	MessageComponent	Registered	6EB5EBE58C5CFB93	Provides document line information.
+MEMBER	DocumentLineInformation2	_ecr9oTE4Ee62xuUQ2zyZww	Identification	Id	Component	DocumentLineIdentification1	1	*	Provides identification of the document line.
+MEMBER	DocumentLineInformation2	_ecr9ozE4Ee62xuUQ2zyZww	Description	Desc	Attribute	Max2048Text	0	1	Description associated with the document line.
+MEMBER	DocumentLineInformation2	_ecr9pTE4Ee62xuUQ2zyZww	Amount	Amt	Component	RemittanceAmount4	0	1	Provides details on the amounts of the document line.
+DATATYPE	DocumentType1	_O2EK4TE0Ee62xuUQ2zyZww	MessageComponent	Registered	B70547183632EE2D	Specifies the type of the document referred in the remittance information.
+MEMBER	DocumentType1	_O4i3ITE0Ee62xuUQ2zyZww	CodeOrProprietary	CdOrPrtry	Choice	DocumentType2Choice	1	1	Coded or proprietary format referred document type.
+MEMBER	DocumentType1	_O4jeMTE0Ee62xuUQ2zyZww	Issuer	Issr	Attribute	Max35Text	0	1	Identification of the issuer of the reference document type.
+DATATYPE	GarnishmentType1	_LLLooYnnEeOORMXOfBk1Bw	MessageComponent	Registered	6F8B3DA8F09C3271	Specifies the type of garnishment.
+MEMBER	GarnishmentType1	_LWYzE4nnEeOORMXOfBk1Bw	CodeOrProprietary	CdOrPrtry	Choice	GarnishmentType1Choice	1	1	Provides the type details of the garnishment.
+MEMBER	GarnishmentType1	_LWYzFYnnEeOORMXOfBk1Bw	Issuer	Issr	Attribute	Max35Text	0	1	Identification of the issuer of the garnishment type.
+DATATYPE	TaxRecordDetails3	_oAWcqd4lEeqt1ZcLzWyWFw	MessageComponent	Registered	060C093DA82BE00B	Provides information on the individual tax amount(s) per period of the tax record.
+MEMBER	TaxRecordDetails3	_oB4God4lEeqt1ZcLzWyWFw	Period	Prd	Component	TaxPeriod3	0	1	Set of elements used to provide details on the period of time related to the tax payment.
+MEMBER	TaxRecordDetails3	_oB4Go94lEeqt1ZcLzWyWFw	Amount	Amt	Amount	ActiveOrHistoricCurrencyAndAmount	1	1	Underlying tax amount related to the specified period.
+DATATYPE	ActiveCurrencyAndAmount	_YX4O9tp-Ed-ak6NoX_4Aeg_-836081793	Amount	Registered	05C51FF7D96BEADB	A number of monetary units specified in an active currency where the unit of currency is explicit and compliant w
+MEMBER	ActiveCurrencyAndAmount	_YX4O9tp-Ed-ak6NoX_4Aeg_-836081793_Currency	ActiveCurrencyAndAmount_Currency	Currency	Attribute	ActiveCurrencyAndAmount_Currency	1	1	The currency in which this amount is measured.
+MEMBER	ActiveCurrencyAndAmount	_YX4O9tp-Ed-ak6NoX_4Aeg_-836081793_Amount	ActiveCurrencyAndAmount_Amount	Amount	Attribute	ActiveCurrencyAndAmount_Amount	1	1	Amount of the transaction.
+DATATYPE	ActiveOrHistoricCurrencyAndAmount	_YYB_9tp-Ed-ak6NoX_4Aeg_-1587763373	Amount	Registered	14963BA03478BDCB	A number of monetary units specified in an active or a historic currency where the unit of currency is explicit and comp
+MEMBER	ActiveOrHistoricCurrencyAndAmount	_YYB_9tp-Ed-ak6NoX_4Aeg_-1587763373_Currency	ActiveOrHistoricCurrencyAndAmount_Currency	Currency	Attribute	ActiveOrHistoricCurrencyAndAmount_Currency	1	1	The currency in which this amount is measured.
+MEMBER	ActiveOrHistoricCurrencyAndAmount	_YYB_9tp-Ed-ak6NoX_4Aeg_-1587763373_Amount	ActiveOrHistoricCurrencyAndAmount_Amount	Amount	Attribute	ActiveOrHistoricCurrencyAndAmount_Amount	1	1	Amount of the transaction.
+DATATYPE	DocumentLineIdentification1	_1QJJIabjEeKvUvwX_r3tzA	MessageComponent	Registered	C18D334FDC04DD4A	Identifies the documents referred to in the remittance information.
+MEMBER	DocumentLineIdentification1	_1Z0plabjEeKvUvwX_r3tzA	Type	Tp	Component	DocumentLineType1	0	1	Specifies the type of referred document line identification.
+MEMBER	DocumentLineIdentification1	_1Z0pmabjEeKvUvwX_r3tzA	Number	Nb	Attribute	Max35Text	0	1	Identification of the type specified for the referred document line.
+MEMBER	DocumentLineIdentification1	_1Z0pnabjEeKvUvwX_r3tzA	RelatedDate	RltdDt	Attribute	ISODate	0	1	Date associated with the referred document line.
+DATATYPE	DocumentLineType1	_cX4kMablEeKvUvwX_r3tzA	MessageComponent	Registered	EEA48FA630037ED6	Specifies the type of the document line identification.
+MEMBER	DocumentLineType1	_ciKhlablEeKvUvwX_r3tzA	CodeOrProprietary	CdOrPrtry	Choice	DocumentLineType1Choice	1	1	Provides the type details of the referred document line identification.
+MEMBER	DocumentLineType1	_ciKhmablEeKvUvwX_r3tzA	Issuer	Issr	Attribute	Max35Text	0	1	Identification of the issuer of the reference document line identificationtype.
+DATATYPE	EquivalentAmount2	_P57LM9p-Ed-ak6NoX_4Aeg_853564482	MessageComponent	Registered	B6EC51CE3C31D75C	Amount of money to be moved between the debtor and creditor, expressed in the currency of the debtor's account, and
+MEMBER	EquivalentAmount2	_P57LNNp-Ed-ak6NoX_4Aeg_853564730	Amount	Amt	Amount	ActiveOrHistoricCurrencyAndAmount	1	1	Amount of money to be moved between debtor and creditor, before deduction of charges, expressed in the currency of
+MEMBER	EquivalentAmount2	_P57LNdp-Ed-ak6NoX_4Aeg_853564760	CurrencyOfTransfer	CcyOfTrf	Codeset	ActiveOrHistoricCurrencyCode	1	1	Specifies the currency of the to be transferred amount, which is different from the currency of the debtor's account.
+DATATYPE	FrequencyAndMoment1	_CWY182k3Eeanu6HLe77Rkg	MessageComponent	Registered	DACC920CAAB96DF1	Defines a frequency in terms a specific moment within a specified period type.
+MEMBER	FrequencyAndMoment1	_CWY19Wk3Eeanu6HLe77Rkg	Type	Tp	Codeset	Frequency6Code	1	1	Period for which the number of instructions are to be created and processed.
+MEMBER	FrequencyAndMoment1	_CWY19Gk3Eeanu6HLe77Rkg	PointInTime	PtInTm	Attribute	Exact2NumericText	1	1	Further information on the exact point in time the event should take place.
+DATATYPE	FrequencyPeriod1	_B0q0IR7zEeSxevWRRWxNAg	MessageComponent	Registered	06C18C03DA552F07	Defines a frequency in terms on counts per period for a specific period type.
+MEMBER	FrequencyPeriod1	_1bz5sB71EeSxevWRRWxNAg	Type	Tp	Codeset	Frequency6Code	1	1	Period for which the number of instructions are to be created and processed.
+MEMBER	FrequencyPeriod1	_OPlVUB72EeSxevWRRWxNAg	CountPerPeriod	CntPerPrd	Attribute	DecimalNumber	1	1	Number of instructions to be created and processed during the specified period.
+DATATYPE	GenericAccountIdentification1	_P_u4Rdp-Ed-ak6NoX_4Aeg_2078050796	MessageComponent	Registered	CBA4FD070CA7A09F	Information related to a generic account identification.
+MEMBER	GenericAccountIdentification1	_P_u4Rtp-Ed-ak6NoX_4Aeg_2078970799	Identification	Id	Attribute	Max34Text	1	1	Identification assigned by an institution.
+MEMBER	GenericAccountIdentification1	_P_u4R9p-Ed-ak6NoX_4Aeg_-162653838	SchemeName	SchmeNm	Choice	AccountSchemeName1Choice	0	1	Name of the identification scheme.
+MEMBER	GenericAccountIdentification1	_P_u4SNp-Ed-ak6NoX_4Aeg_-2119026269	Issuer	Issr	Attribute	Max35Text	0	1	Entity that assigns the identification.
+DATATYPE	GenericIdentification30	_P-Pqgtp-Ed-ak6NoX_4Aeg_-1987897352	MessageComponent	Registered	3A23EF68EA8DF622	Information related to an identification, for example, party identification or account identification.
+MEMBER	GenericIdentification30	_P-Pqg9p-Ed-ak6NoX_4Aeg_-2101736418	Identification	Id	Attribute	Exact4AlphaNumericText	1	1	Proprietary information, often a code, issued by the data source scheme issuer.
+MEMBER	GenericIdentification30	_P-PqhNp-Ed-ak6NoX_4Aeg_1196158525	Issuer	Issr	Attribute	Max35Text	1	1	Entity that assigns the identification.
+MEMBER	GenericIdentification30	_P-Pqhdp-Ed-ak6NoX_4Aeg_491043910	SchemeName	SchmeNm	Attribute	Max35Text	0	1	Short textual description of the scheme.
+DATATYPE	OrganisationIdentification39	_bKD8BTFIEe651u5xu3f5iw	MessageComponent	Registered	E37EDC5397A679CE	Unique and unambiguous way to identify an organisation.
+MEMBER	OrganisationIdentification39	_bM2KQTFIEe651u5xu3f5iw	AnyBIC	AnyBIC	Attribute	AnyBICDec2014Identifier	0	1	Business identification code of the organisation.
+MEMBER	OrganisationIdentification39	_bM2KQzFIEe651u5xu3f5iw	LEI	LEI	Attribute	LEIIdentifier	0	1	Legal entity identification as an alternate identification for a party.
+MEMBER	OrganisationIdentification39	_bM2KRTFIEe651u5xu3f5iw	Other	Othr	Component	GenericOrganisationIdentification3	0	*	Unique identification of an organisation, as assigned by an institution, using an identification scheme.
+DATATYPE	PersonIdentification18	_-9oltTFLEe651u5xu3f5iw	MessageComponent	Registered	477ADA3D479E1D8E	Unique and unambiguous way to identify a person.
+MEMBER	PersonIdentification18	__Aaz8TFLEe651u5xu3f5iw	DateAndPlaceOfBirth	DtAndPlcOfBirth	Component	DateAndPlaceOfBirth1	0	1	Date and place of birth of a person.
+MEMBER	PersonIdentification18	__Aaz8zFLEe651u5xu3f5iw	Other	Othr	Component	GenericPersonIdentification2	0	*	Unique identification of a person, as assigned by an institution, using an identification scheme.
+DATATYPE	DateAndPlaceOfBirth1	_jU8IEa9UEeeJJK1oRb-jTw	MessageComponent	Registered	975504A97F9C56A3	Date and place of birth of a person.
+MEMBER	DateAndPlaceOfBirth1	_jexZga9UEeeJJK1oRb-jTw	BirthDate	BirthDt	Attribute	ISODate	1	1	Date on which a person is born.
+MEMBER	DateAndPlaceOfBirth1	_jexZg69UEeeJJK1oRb-jTw	ProvinceOfBirth	PrvcOfBirth	Attribute	Max35Text	0	1	Province where a person was born.
+MEMBER	DateAndPlaceOfBirth1	_jexZha9UEeeJJK1oRb-jTw	CityOfBirth	CityOfBirth	Attribute	Max35Text	1	1	City where a person was born.
+MEMBER	DateAndPlaceOfBirth1	_jexZh69UEeeJJK1oRb-jTw	CountryOfBirth	CtryOfBirth	Codeset	CountryCode	1	1	Country where a person was born.
+DATATYPE	GenericOrganisationIdentification3	_bM2KRzFIEe651u5xu3f5iw	MessageComponent	Registered	1DF2F6A1CC7EE25A	Information related to an identification of an organisation.
+MEMBER	GenericOrganisationIdentification3	_bPnKYTFIEe651u5xu3f5iw	Identification	Id	Attribute	Max256Text	1	1	Identification assigned by an institution.
+MEMBER	GenericOrganisationIdentification3	_bPnKYzFIEe651u5xu3f5iw	SchemeName	SchmeNm	Choice	OrganisationIdentificationSchemeName1Choice	0	1	Name of the identification scheme.
+MEMBER	GenericOrganisationIdentification3	_bPnKZTFIEe651u5xu3f5iw	Issuer	Issr	Attribute	Max35Text	0	1	Entity that assigns the identification.
+DATATYPE	GenericPersonIdentification2	__Aaz9TFLEe651u5xu3f5iw	MessageComponent	Registered	3A9F0D519218B39E	Information related to an identification of a person.
+MEMBER	GenericPersonIdentification2	__DYoYTFLEe651u5xu3f5iw	Identification	Id	Attribute	Max256Text	1	1	Unique and unambiguous identification of a person.
+MEMBER	GenericPersonIdentification2	__DYoYzFLEe651u5xu3f5iw	SchemeName	SchmeNm	Choice	PersonIdentificationSchemeName1Choice	0	1	Name of the identification scheme.
+MEMBER	GenericPersonIdentification2	__DYoZTFLEe651u5xu3f5iw	Issuer	Issr	Attribute	Max35Text	0	1	Entity that assigns the identification.
+DATATYPE	AccountSchemeName1Choice	_P_4pQNp-Ed-ak6NoX_4Aeg_-240227306	Choice	Registered	29E85D9AE6B83BCF	Sets of elements to identify a name of the identification scheme.
+DATATYPE	CreditorReferenceType2Choice	_7zR6pTEsEe6GxLzpkVnWYg	Choice	Registered	59909B41CF3391CA	Specifies the type of document referred by the creditor.
+DATATYPE	DateType2Choice	_5NXe0DLNEe6C5PjOhOZ_sw	Choice	Registered	205F595E696D60B2	Specifies the type of date for the referred document.
+DATATYPE	DocumentAmountType1Choice	_9DBuYzH0Ee6BxvG014AZzQ	Choice	Registered	5574D6BF2E2A9346	Specifies the amount type.
+DATATYPE	DocumentLineType1Choice	__hXr4abkEeKvUvwX_r3tzA	Choice	Registered	92955CF5417CAB37	Specifies the type of the document line identification.
+DATATYPE	DocumentType2Choice	_O4jeMzE0Ee62xuUQ2zyZww	Choice	Registered	3594B31DF53678D3	Specifies the type of the document.
+DATATYPE	GarnishmentType1Choice	_k8MIkYnnEeOORMXOfBk1Bw	Choice	Registered	155AEDD786CC0A61	Specifies the type of garnishment.
+DATATYPE	OrganisationIdentificationSchemeName1Choice	_QACaQtp-Ed-ak6NoX_4Aeg_362604391	Choice	Registered	F3295BE711086D54	Sets of elements to identify a name of the organisation identification scheme.
+DATATYPE	PersonIdentificationSchemeName1Choice	_P_4pQ9p-Ed-ak6NoX_4Aeg_2056543129	Choice	Registered	EC5F6DEA8CC63464	Sets of elements to identify a name of the identification scheme.
+MEMBER	Authorisation1Choice	_RD1Zl9p-Ed-ak6NoX_4Aeg_-955120142	Code	Cd	Codeset	Authorisation1Code	1	1	Specifies the authorisation, in a coded form.
+MEMBER	Authorisation1Choice	_RD_KkNp-Ed-ak6NoX_4Aeg_-955120080	Proprietary	Prtry	Attribute	Max128Text	1	1	Specifies the authorisation, in a free text form.
+MEMBER	AccountIdentification4Choice	_Pdwzotp-Ed-ak6NoX_4Aeg_-1833658189	IBAN	IBAN	Attribute	IBAN2007Identifier	1	1	International Bank Account Number (IBAN) - identifier used internationally by financial institutions to uniquely ident
+MEMBER	AccountIdentification4Choice	_Pdwzo9p-Ed-ak6NoX_4Aeg_-1833657786	Other	Othr	Component	GenericAccountIdentification1	1	1	Unique identification of an account, as assigned by the account servicer, using an identification scheme.
+MEMBER	AddressType3Choice	_C7IDQRb-EeiyVv5j1vf1VQ	Code	Cd	Codeset	AddressType2Code	1	1	Type of address expressed as a code.
+MEMBER	AddressType3Choice	_C7IDQxb-EeiyVv5j1vf1VQ	Proprietary	Prtry	Component	GenericIdentification30	1	1	Type of address expressed as a proprietary code.
+MEMBER	AdviceType1Choice	_u3TXxNomEembTrt_WixjyQ	Code	Cd	Codeset	AdviceType1Code	1	1	Advice type, in a coded form.
+MEMBER	AdviceType1Choice	_u3TXxdomEembTrt_WixjyQ	Proprietary	Prtry	Attribute	Max35Text	1	1	Advice type, in a proprietary form.
+MEMBER	CashAccountType2Choice	_sb6WgVkyEeGeoaLUQk__nA_-1937269286	Code	Cd	Codeset	ExternalCashAccountType1Code	1	1	Account type, in a coded form.
+MEMBER	CashAccountType2Choice	_scEHgFkyEeGeoaLUQk__nA_1436723705	Proprietary	Prtry	Attribute	Max35Text	1	1	Nature or use of the account in a proprietary form.
+MEMBER	CategoryPurpose1Choice	_THaa5dp-Ed-ak6NoX_4Aeg_1223014481	Code	Cd	Codeset	ExternalCategoryPurpose1Code	1	1	Category purpose, as published in an external category purpose code list.
+MEMBER	CategoryPurpose1Choice	_THaa5tp-Ed-ak6NoX_4Aeg_1621974146	Proprietary	Prtry	Attribute	Max35Text	1	1	Category purpose, in a proprietary form.
+MEMBER	LocalInstrument2Choice	_TF7NI9p-Ed-ak6NoX_4Aeg_365018928	Code	Cd	Codeset	ExternalLocalInstrument1Code	1	1	Specifies the local instrument, as published in an external local instrument code list.
+MEMBER	LocalInstrument2Choice	_TF7NJNp-Ed-ak6NoX_4Aeg_365018959	Proprietary	Prtry	Attribute	Max35Text	1	1	Specifies the local instrument, as a proprietary code.
+MEMBER	ServiceLevel8Choice	_QJa_zdp-Ed-ak6NoX_4Aeg_1912716972	Code	Cd	Codeset	ExternalServiceLevel1Code	1	1	Specifies a pre-agreed service or level of service between the parties, as published in an external service level code
+MEMBER	ServiceLevel8Choice	_QJa_ztp-Ed-ak6NoX_4Aeg_1912716994	Proprietary	Prtry	Attribute	Max35Text	1	1	Specifies a pre-agreed service or level of service between the parties, as a proprietary code.
+MEMBER	AmountType4Choice	__k-HA1kJEeSeLKjZh_lWZw	InstructedAmount	InstdAmt	Amount	ActiveOrHistoricCurrencyAndAmount	1	1	Amount of money to be moved between the debtor and creditor, before deduction of charges, expressed in the currency
+MEMBER	AmountType4Choice	__k-HBVkJEeSeLKjZh_lWZw	EquivalentAmount	EqvtAmt	Component	EquivalentAmount2	1	1	Amount of money to be moved between the debtor and creditor, expressed in the currency of the debtor's account, and 
+MEMBER	ClearingSystemIdentification2Choice	_TMoSEdp-Ed-ak6NoX_4Aeg_-1410917191	Code	Cd	Codeset	ExternalClearingSystemIdentification1Code	1	1	Identification of a clearing system, in a coded form as published in an external list.
+MEMBER	ClearingSystemIdentification2Choice	_TMoSEtp-Ed-ak6NoX_4Aeg_-1409997159	Proprietary	Prtry	Attribute	Max35Text	1	1	Identification code for a clearing system, that has not yet been identified in the list of clearing systems.
+MEMBER	FinancialIdentificationSchemeName1Choice	_QALkMdp-Ed-ak6NoX_4Aeg_-2021925430	Code	Cd	Codeset	ExternalFinancialInstitutionIdentification1Code	1	1	Name of the identification scheme, in a coded form as published in an external list.
+MEMBER	FinancialIdentificationSchemeName1Choice	_QALkMtp-Ed-ak6NoX_4Aeg_-2021925152	Proprietary	Prtry	Attribute	Max35Text	1	1	Name of the identification scheme, in a free text form.
+MEMBER	ProxyAccountType1Choice	_dyoclXh3EeidzqjNEfehPg	Code	Cd	Codeset	ExternalProxyAccountType1Code	1	1	Name of the identification scheme, in a coded form as published in an external list.
+MEMBER	ProxyAccountType1Choice	_dyoclHh3EeidzqjNEfehPg	Proprietary	Prtry	Attribute	Max35Text	1	1	Name of the identification scheme, in a free text form.
+MEMBER	Purpose2Choice	_P6qyH9p-Ed-ak6NoX_4Aeg_-1283223370	Code	Cd	Codeset	ExternalPurpose1Code	1	1	Underlying reason for the payment transaction, as published in an external purpose code list.
+MEMBER	Purpose2Choice	_P6qyINp-Ed-ak6NoX_4Aeg_-1283223318	Proprietary	Prtry	Attribute	Max35Text	1	1	Purpose, in a proprietary form.
+MEMBER	ChequeDeliveryMethod1Choice	_QbwF59p-Ed-ak6NoX_4Aeg_1044150030	Code	Cd	Codeset	ChequeDelivery1Code	1	1	Specifies the delivery method of the cheque by the debtor's agent.
+MEMBER	ChequeDeliveryMethod1Choice	_QbwF6Np-Ed-ak6NoX_4Aeg_1076475245	Proprietary	Prtry	Attribute	Max35Text	1	1	Specifies a proprietary delivery method of the cheque by the debtor's agent.
+MEMBER	Frequency36Choice	_seR6MWk2Eeanu6HLe77Rkg	Type	Tp	Codeset	Frequency6Code	1	1	Specifies a frequency in terms of a specified period type.
+MEMBER	Frequency36Choice	_seR6M2k2Eeanu6HLe77Rkg	Period	Prd	Component	FrequencyPeriod1	1	1	Specifies a frequency in terms of a count per period within a specified period type.
+MEMBER	Frequency36Choice	_6IxUQWk2Eeanu6HLe77Rkg	PointInTime	PtInTm	Component	FrequencyAndMoment1	1	1	Specifies a frequency in terms of an exact point in time or moment within a specified period type.
+MEMBER	MandateSetupReason1Choice	_iQq8NT2OEeS6DKIV6SF6gw	Code	Cd	Codeset	ExternalMandateSetupReason1Code	1	1	Reason for the mandate setup, as published in an external reason code list.
+MEMBER	MandateSetupReason1Choice	_iQq8Nz2OEeS6DKIV6SF6gw	Proprietary	Prtry	Attribute	Max70Text	1	1	Reason for the mandate setup, in a proprietary form.
+MEMBER	MandateClassification1Choice	_JThthWoDEearR-CA7eRZXQ	Code	Cd	Codeset	MandateClassification1Code	1	1	Category purpose, as published in an external category purpose code list.
+MEMBER	MandateClassification1Choice	_JThthGoDEearR-CA7eRZXQ	Proprietary	Prtry	Attribute	Max35Text	1	1	Category purpose, in a proprietary form.
+MEMBER	RegulatoryReportingType1Choice	_rJAakHeLEfCdoODv2ypKfw	Code	Cd	Codeset	ExternalRegulatoryReportingType1Code	1	1	Type of regulatory reporting, in a coded form.
+MEMBER	RegulatoryReportingType1Choice	_75HhwHeLEfCdoODv2ypKfw	Proprietary	Prtry	Attribute	Max35Text	1	1	Type of regulatory reporting, in a proprietary form.
+MEMBER	DateAndDateTime2Choice	_fPH6gZlhEeeE1Ya-LgRsuQ	Date	Dt	Attribute	ISODate	1	1	Specified date.
+MEMBER	DateAndDateTime2Choice	_fPH6g5lhEeeE1Ya-LgRsuQ	DateTime	DtTm	Attribute	ISODateTime	1	1	Specified date and time.
+MEMBER	Party52Choice	_bKD8ATFIEe651u5xu3f5iw	OrganisationIdentification	OrgId	Component	OrganisationIdentification39	1	1	Unique and unambiguous way to identify an organisation.
+MEMBER	Party52Choice	_bKD8AzFIEe651u5xu3f5iw	PrivateIdentification	PrvtId	Component	PersonIdentification18	1	1	Unique identification of a person, for example a passport.
+MEMBER	AccountSchemeName1Choice	_P_4pQdp-Ed-ak6NoX_4Aeg_191053818	Code	Cd	Codeset	ExternalAccountIdentification1Code	1	1	Name of the identification scheme, in a coded form as published in an external list.
+MEMBER	AccountSchemeName1Choice	_P_4pQtp-Ed-ak6NoX_4Aeg_194748605	Proprietary	Prtry	Attribute	Max35Text	1	1	Name of the identification scheme, in a free text form.
+MEMBER	CreditorReferenceType2Choice	_71zDITEsEe6GxLzpkVnWYg	Code	Cd	Codeset	ExternalCreditorReferenceType1Code	1	1	Type of creditor reference, as published in an external creditor reference type code set.
+MEMBER	CreditorReferenceType2Choice	_71zDIzEsEe6GxLzpkVnWYg	Proprietary	Prtry	Attribute	Max35Text	1	1	Type of creditor reference, in a proprietary form.
+MEMBER	DateType2Choice	_8Mjz0DLNEe6C5PjOhOZ_sw	Code	Cd	Codeset	ExternalDateType1Code	1	1	Specifies the date type, as published in an external date type code set.
+MEMBER	DateType2Choice	_8Mjz0TLNEe6C5PjOhOZ_sw	Proprietary	Prtry	Attribute	Max35Text	1	1	Specifies the date type, in a free-text form.
+MEMBER	DocumentAmountType1Choice	_9DBuZTH0Ee6BxvG014AZzQ	Code	Cd	Codeset	ExternalDocumentAmountType1Code	1	1	Specifies the amount type, as published in an external referred amount code set.
+MEMBER	DocumentAmountType1Choice	_9DBuZDH0Ee6BxvG014AZzQ	Proprietary	Prtry	Attribute	Max35Text	1	1	Specifies the amount type, in a free-text form.
+MEMBER	DocumentLineType1Choice	__rM9WabkEeKvUvwX_r3tzA	Code	Cd	Codeset	ExternalDocumentLineType1Code	1	1	Line identification type in a coded form.
+MEMBER	DocumentLineType1Choice	__rM9XabkEeKvUvwX_r3tzA	Proprietary	Prtry	Attribute	Max35Text	1	1	Proprietary identification of the type of the remittance document.
+MEMBER	DocumentType2Choice	_O65nkTE0Ee62xuUQ2zyZww	Code	Cd	Codeset	ExternalDocumentType1Code	1	1	Type of remittance document, as published in an external document type code set.
+MEMBER	DocumentType2Choice	_O65nkzE0Ee62xuUQ2zyZww	Proprietary	Prtry	Attribute	Max35Text	1	1	Type of remittance document, in a proprietary form.
+MEMBER	GarnishmentType1Choice	_lG0rQ4nnEeOORMXOfBk1Bw	Code	Cd	Codeset	ExternalGarnishmentType1Code	1	1	Garnishment type in a coded form.
+MEMBER	GarnishmentType1Choice	_lG0rRYnnEeOORMXOfBk1Bw	Proprietary	Prtry	Attribute	Max35Text	1	1	Proprietary identification of the type of garnishment.
+MEMBER	OrganisationIdentificationSchemeName1Choice	_QACaQ9p-Ed-ak6NoX_4Aeg_362604423	Code	Cd	Codeset	ExternalOrganisationIdentification1Code	1	1	Name of the identification scheme, in a coded form as published in an external list.
+MEMBER	OrganisationIdentificationSchemeName1Choice	_QACaRNp-Ed-ak6NoX_4Aeg_362604483	Proprietary	Prtry	Attribute	Max35Text	1	1	Name of the identification scheme, in a free text form.
+MEMBER	PersonIdentificationSchemeName1Choice	_P_4pRNp-Ed-ak6NoX_4Aeg_2056543161	Code	Cd	Codeset	ExternalPersonIdentification1Code	1	1	Name of the identification scheme, in a coded form as published in an external list.
+MEMBER	PersonIdentificationSchemeName1Choice	_P_4pRdp-Ed-ak6NoX_4Aeg_2056543469	Proprietary	Prtry	Attribute	Max35Text	1	1	Name of the identification scheme, in a free text form.
