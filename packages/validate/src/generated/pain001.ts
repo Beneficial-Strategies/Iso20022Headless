@@ -2361,9 +2361,9 @@ export const typeDescriptors: TypeDescriptors = {
     name: "CustomerCreditTransferInitiationV13",
     kind: "component",
     fields: [
-      f({ name: "GroupHeader", xmlTag: "GrpHdr", displayName: displayName("GroupHeader"), kind: "component", type: "GroupHeader114", required: true }),
-      f({ name: "PaymentInformation", xmlTag: "PmtInf", displayName: displayName("PaymentInformation"), kind: "component", type: "PaymentInstruction51", required: true, repeat: { min: 1, max: null } }),
-      f({ name: "SupplementaryData", xmlTag: "SplmtryData", displayName: displayName("SupplementaryData"), kind: "component", type: "SupplementaryData1", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "GroupHeader", isoId: "4f529681-cc64-42c7-ae7b-39fffcdcad88", xmlTag: "GrpHdr", displayName: displayName("GroupHeader"), kind: "component", type: "GroupHeader114", required: true }),
+      f({ name: "PaymentInformation", isoId: "b6643da8-3a66-4f88-b614-a1d23277da15", xmlTag: "PmtInf", displayName: displayName("PaymentInformation"), kind: "component", type: "PaymentInstruction51", required: true, repeat: { min: 1, max: null } }),
+      f({ name: "SupplementaryData", isoId: "a3d39e1f-0adb-48a1-955a-24f12678a777", xmlTag: "SplmtryData", displayName: displayName("SupplementaryData"), kind: "component", type: "SupplementaryData1", required: false, repeat: { min: 0, max: null } }),
     ],
   },
 };

@@ -12,10 +12,8 @@ describe('ISO ids on descriptors', () => {
     expect(new Set(ids).size).toBe(ids.length);
   });
 
-  it('every element has an id, except the three message building blocks', () => {
-    const root = typeDescriptors.CustomerCreditTransferInitiationV13!;
-    const blocks = new Set((root.fields ?? []).map((f) => f.name));
-    const missing = fields.filter((f) => !f.isoId && !blocks.has(f.name));
+  it('every element has an id, including the three message building blocks', () => {
+    const missing = fields.filter((f) => !f.isoId).map((f) => f.name);
     expect(missing).toEqual([]);
   });
 

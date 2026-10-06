@@ -4,6 +4,9 @@ import type { Skin } from './types.ts';
 
 const paras = paragraphs;
 
+// <details> may not sit inside <p>, so field wrappers are <div>s with the vertical rhythm of a paragraph.
+const BLOCK = { margin: '0.75em 0' } as const;
+
 /**
  * No classes and no CSS of its own: bare semantic HTML (fieldset, legend, label, input, native
  * select, details). The browser's default styles and the page's color-scheme do all the work.
@@ -20,8 +23,9 @@ export const plainSkin: Skin = {
       <fieldset>
         <legend>
           {title}
-          {required ? ` ${t('required')}` : ''} {info}
+          {required ? ` ${t('required')}` : ''}
         </legend>
+        {info}
         {children}
         {error}
       </fieldset>
@@ -31,16 +35,16 @@ export const plainSkin: Skin = {
   Field: function Field({ id, label, required, info, error, children }) {
     const { t } = useI18n();
     return (
-      <p>
+      <div style={BLOCK}>
         <label htmlFor={id}>
           {label}
           {required ? ` ${t('required')}` : ''}
-        </label>{' '}
-        {info}
+        </label>
         <br />
         {children}
         {error}
-      </p>
+        {info}
+      </div>
     );
   },
   Row: ({ children }) => <span>{children}</span>,
@@ -104,16 +108,18 @@ export const plainSkin: Skin = {
   Toggle: function Toggle({ id, checked, onChange, label, info }) {
     const { t } = useI18n();
     return (
-      <p>
+      <div style={BLOCK}>
         <input id={id} type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)} />
-        <label htmlFor={id}> {t('include', { label })} {t('optional')}</label> {info}
-      </p>
+        <label htmlFor={id}> {t('include', { label })} {t('optional')}</label>
+        {info}
+      </div>
     );
   },
   ListHeader: ({ title, info, caption, action }) => (
-    <p>
-      <b>{title}</b> ({caption}) {info} {action}
-    </p>
+    <div style={BLOCK}>
+      <b>{title}</b> ({caption}) {action}
+      {info}
+    </div>
   ),
   ListItem: function ListItem({ removeLabel, onRemove, children }) {
     const { t } = useI18n();
@@ -131,8 +137,8 @@ export const plainSkin: Skin = {
     const { t, lang } = useI18n();
     if (!def) return null;
     return (
-      <details style={{ display: 'inline' }}>
-        <summary aria-label={t('aboutLabel', { label })} style={{ display: 'inline', cursor: 'pointer' }}>
+      <details>
+        <summary aria-label={t('aboutLabel', { label })} title={t('aboutLabel', { label })}>
           ?
         </summary>
         {paras(def.text).map((p, i) => (

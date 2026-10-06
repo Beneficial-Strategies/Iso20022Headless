@@ -1,5 +1,6 @@
 import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent } from 'react';
 
+import { Popup } from './Popup.tsx';
 import { useI18n } from './i18n/context.tsx';
 import type { DescribedOption } from './skin/types.ts';
 
@@ -31,6 +32,8 @@ export function DescribedSelect({ id, value, options, onChange, onBlur, placehol
   const placeholder = placeholderProp ?? t('select');
   const listId = useId();
   const root = useRef<HTMLDivElement>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
+  const popup = useRef<HTMLDivElement>(null);
   const list = useRef<HTMLUListElement>(null);
   const typed = useRef({ text: '', at: 0 });
   const [open, setOpen] = useState(false);
@@ -43,7 +46,8 @@ export function DescribedSelect({ id, value, options, onChange, onBlur, placehol
   useEffect(() => {
     if (!open) return;
     const onDown = (e: MouseEvent) => {
-      if (root.current && !root.current.contains(e.target as Node)) setOpen(false);
+      const t = e.target as Node;
+      if (root.current && !root.current.contains(t) && !popup.current?.contains(t)) setOpen(false);
     };
     document.addEventListener('mousedown', onDown);
     return () => document.removeEventListener('mousedown', onDown);
@@ -122,6 +126,7 @@ export function DescribedSelect({ id, value, options, onChange, onBlur, placehol
   return (
     <div ref={root} className="relative">
       <button
+        ref={trigger}
         type="button"
         id={id}
         role="combobox"
@@ -144,13 +149,8 @@ export function DescribedSelect({ id, value, options, onChange, onBlur, placehol
         <span aria-hidden="true" className="ml-2 text-xs text-muted">▾</span>
       </button>
       {open ? (
-        <ul
-          ref={list}
-          id={listId}
-          role="listbox"
-          aria-label={t('options')}
-          className="absolute z-30 mt-1 max-h-72 w-[min(34rem,90vw)] overflow-auto rounded border border-edge bg-surface py-1 text-fg shadow-lg"
-        >
+        <Popup ref={popup} anchor={trigger.current} width={544} minWidth={0} className="rounded border border-edge bg-surface text-fg shadow-lg">
+        <ul ref={list} id={listId} role="listbox" aria-label={t('options')} className="py-1">
           {all.map((o, i) => (
             <li
               key={o.value || '__none'}
@@ -167,6 +167,7 @@ export function DescribedSelect({ id, value, options, onChange, onBlur, placehol
             </li>
           ))}
         </ul>
+        </Popup>
       ) : null}
     </div>
   );

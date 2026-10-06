@@ -13,9 +13,9 @@ describe('extraction', () => {
   it('finds every translatable unit of the message, with unique keys', () => {
     expect(new Set(units.map((x) => x.key)).size).toBe(units.length);
     const count = (k: string) => units.filter((x) => x.kind === k).length;
-    expect(units.length).toBe(1035);
+    expect(units.length).toBe(1038);
     expect(count('field')).toBe(358);
-    expect(count('label')).toBe(358);
+    expect(count('label')).toBe(361); // 358 elements + the 3 message building blocks
     expect(count('type')).toBe(97);
     expect(count('code')).toBe(93);
     expect(count('codeName')).toBe(93);

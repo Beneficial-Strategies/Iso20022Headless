@@ -6155,6 +6155,13 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "label:4f529681-cc64-42c7-ae7b-39fffcdcad88": {
+      "text": "Encabezado del grupo",
+      "source": "668f7ea8565e",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "label:4f957ffb-5d3b-4394-9a7f-2a9e29fd7de3": {
       "text": "Importe del documento referido",
       "source": "015efaec5787",
@@ -6288,6 +6295,13 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "label:a3d39e1f-0adb-48a1-955a-24f12678a777": {
+      "text": "Datos complementarios",
+      "source": "7fc6fcfe6a59",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "label:a4eb321c-5f60-4dde-8bce-4d90cc67c8d8": {
       "text": "Entidad intermediaria 1",
       "source": "a0e0afadb024",
@@ -6326,6 +6340,13 @@
     "label:b54fa6b6-78a6-4d2c-8352-07d43e611622": {
       "text": "Estructurada",
       "source": "9000a8e590b0",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:b6643da8-3a66-4f88-b614-a1d23277da15": {
+      "text": "Información del pago",
+      "source": "1eb2588957f7",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"

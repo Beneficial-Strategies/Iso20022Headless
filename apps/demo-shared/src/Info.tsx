@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import type { Localized } from '@beneficial-strategies/iso20022-validate/definitions';
+import { Popup } from './Popup.tsx';
 import { useI18n } from './i18n/context.tsx';
 
 /** The MCP uses `||` for paragraph breaks and `|` for line breaks. Render both as paragraphs. */
@@ -16,12 +17,15 @@ export function Info({ def, label }: { def: Localized | undefined; label: string
   const [open, setOpen] = useState(false);
   const id = useId();
   const root = useRef<HTMLSpanElement>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
+  const popup = useRef<HTMLDivElement>(null);
   const { t, lang } = useI18n();
 
   useEffect(() => {
     if (!open) return;
     const onDown = (e: MouseEvent) => {
-      if (root.current && !root.current.contains(e.target as Node)) setOpen(false);
+      const t = e.target as Node;
+      if (root.current && !root.current.contains(t) && !popup.current?.contains(t)) setOpen(false);
     };
     document.addEventListener('mousedown', onDown);
     return () => document.removeEventListener('mousedown', onDown);
@@ -37,6 +41,7 @@ export function Info({ def, label }: { def: Localized | undefined; label: string
       }}
     >
       <button
+        ref={trigger}
         type="button"
         aria-label={t('aboutLabel', { label })}
         aria-expanded={open}
@@ -47,10 +52,13 @@ export function Info({ def, label }: { def: Localized | undefined; label: string
         i
       </button>
       {open ? (
-        <span
+        <Popup
+          ref={popup}
+          anchor={trigger.current}
           id={id}
           role="note"
-          className="absolute left-5 top-0 z-30 block w-72 max-w-[80vw] space-y-1 rounded border border-edge bg-surface p-2 text-left text-xs font-normal text-fg shadow-lg"
+          width={288}
+          className="space-y-1 rounded border border-edge bg-surface p-2 text-left text-xs font-normal text-fg shadow-lg"
         >
           {paragraphs(def.text).map((p, i) => (
             <span key={i} className="block">
@@ -59,7 +67,7 @@ export function Info({ def, label }: { def: Localized | undefined; label: string
           ))}
           {def.lang !== lang ? <span className="block text-muted" lang={def.lang}>{t('englishNote')}</span> : null}
           {def.lang === lang && def.status === 'machine' ? <span className="block text-muted">{t('machineNote')}</span> : null}
-        </span>
+        </Popup>
       ) : null}
     </span>
   );

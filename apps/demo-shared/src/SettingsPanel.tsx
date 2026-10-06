@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef, useState } from 'react';
+import { Popup } from './Popup.tsx';
 import { useI18n } from './i18n/context.tsx';
 import { LANGUAGE_NAMES, type UiKey } from './i18n/messages.ts';
 import { DENSITIES, SIZES, THEMES, type Settings } from './settings.ts';
@@ -39,11 +40,13 @@ export function SettingsPanel({
   const id = useId();
   const root = useRef<HTMLDivElement>(null);
   const button = useRef<HTMLButtonElement>(null);
+  const popup = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!open) return;
     const onDown = (e: MouseEvent) => {
-      if (root.current && !root.current.contains(e.target as Node)) setOpen(false);
+      const t = e.target as Node;
+      if (root.current && !root.current.contains(t) && !popup.current?.contains(t)) setOpen(false);
     };
     document.addEventListener('mousedown', onDown);
     return () => document.removeEventListener('mousedown', onDown);
@@ -69,13 +72,13 @@ export function SettingsPanel({
         aria-haspopup="dialog"
         aria-expanded={open}
         aria-controls={open ? id : undefined}
-        className="rounded border border-edge bg-surface px-3 py-1.5 text-sm text-fg hover:bg-surface-alt focus-visible:ring-2 focus-visible:ring-focus"
+        className="whitespace-nowrap rounded border border-edge bg-surface px-3 py-1.5 text-sm text-fg hover:bg-surface-alt focus-visible:ring-2 focus-visible:ring-focus"
         onClick={() => setOpen((o) => !o)}
       >
         {t('display')}
       </button>
       {open ? (
-        <div id={id} role="dialog" aria-label={t('displayDialog')} className="absolute right-0 z-40 mt-1 w-[min(26rem,92vw)] rounded border border-edge bg-surface p-3 shadow-lg">
+        <Popup ref={popup} anchor={button.current} id={id} role="dialog" label={t('displayDialog')} width={416} align="end" className="rounded border border-edge bg-surface p-3 shadow-lg">
           <Radios legend={t('language')} name="lang" value={settings.lang} onChange={(v) => onChange({ lang: v })} options={[{ value: 'auto', label: t('lang_auto') }, ...locales.map((l) => ({ value: l, label: LANGUAGE_NAMES[l] ?? l }))]} />
           <Radios legend={t('theme')} name="theme" value={settings.theme} onChange={(v) => onChange({ theme: v as Settings['theme'] })} options={THEMES.map((v) => ({ value: v, label: named(`theme_${v}`) }))} hint={t('themeHint')} />
           <Radios legend={t('textSize')} name="size" value={settings.size} onChange={(v) => onChange({ size: v as Settings['size'] })} options={SIZES.map((v) => ({ value: v, label: named(`size_${v}`) }))} />
@@ -89,7 +92,7 @@ export function SettingsPanel({
             hint={skin ? t(`skin_${skin.id}_desc` as UiKey) || skin.description : undefined}
           />
           <p className="text-xs text-muted">{t('settingsNote')}</p>
-        </div>
+        </Popup>
       ) : null}
     </div>
   );

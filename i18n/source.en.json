@@ -8280,6 +8280,30 @@
       "text": "If InstructionForDebtorAgent is present, then CreditTransferTransactionInformation/InstructionForDebtorAgent is not allowed. If CreditTransferTransactionInformation/InstructionForDebtorAgent is present, then InstructionForDebtorAgent is not allowed. CreditTransferTransactionInformation/InstructionForDebtorAgent and InstructionForDebtorAgent may both be absent.",
       "context": "Business rule InstructionForDebtorAgentRule of PaymentInstruction51",
       "hash": "ab2c4370e81e"
+    },
+    {
+      "key": "label:4f529681-cc64-42c7-ae7b-39fffcdcad88",
+      "kind": "label",
+      "id": "4f529681-cc64-42c7-ae7b-39fffcdcad88",
+      "text": "Group Header",
+      "context": "Form label for the element CustomerCreditTransferInitiationV13.GroupHeader (XML tag GrpHdr)",
+      "hash": "668f7ea8565e"
+    },
+    {
+      "key": "label:b6643da8-3a66-4f88-b614-a1d23277da15",
+      "kind": "label",
+      "id": "b6643da8-3a66-4f88-b614-a1d23277da15",
+      "text": "Payment Information",
+      "context": "Form label for the element CustomerCreditTransferInitiationV13.PaymentInformation (XML tag PmtInf)",
+      "hash": "1eb2588957f7"
+    },
+    {
+      "key": "label:a3d39e1f-0adb-48a1-955a-24f12678a777",
+      "kind": "label",
+      "id": "a3d39e1f-0adb-48a1-955a-24f12678a777",
+      "text": "Supplementary Data",
+      "context": "Form label for the element CustomerCreditTransferInitiationV13.SupplementaryData (XML tag SplmtryData)",
+      "hash": "7fc6fcfe6a59"
     }
   ]
 }

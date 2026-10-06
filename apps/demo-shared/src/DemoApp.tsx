@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Command } from 'cmdk';
 import type { z } from 'zod';
 import { evaluateRules, formatIssue, pain001Message, ruleCodeLists, schemas, type RuleResult } from '@beneficial-strategies/iso20022-validate';
@@ -7,6 +7,7 @@ import type { UseForm } from './formApi.ts';
 import type { UiKey } from './i18n/messages.ts';
 import { SchemaForm } from './SchemaForm.tsx';
 import { XmlPane } from './XmlPane.tsx';
+import { Popup } from './Popup.tsx';
 import { I18nProvider, supportedLocales, useCreateI18n, useI18n, type I18nOverrides } from './i18n/context.tsx';
 import { SettingsPanel } from './SettingsPanel.tsx';
 import { useSettings } from './settings.ts';
@@ -17,40 +18,69 @@ const MESSAGE_TYPE = pain001Message.rootType;
 function TypePicker({ value, onChange }: { value: string; onChange: (t: string) => void }) {
   const { t } = useI18n();
   const [open, setOpen] = useState(false);
+  const root = useRef<HTMLDivElement>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
+  const popup = useRef<HTMLDivElement>(null);
   const names = useMemo(() => [MESSAGE_TYPE, ...Object.keys(schemas).filter((n) => n !== MESSAGE_TYPE && pain001Message.typeDescriptors[n]?.kind === 'component').sort()], []);
+
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e: MouseEvent) => {
+      const target = e.target as Node;
+      if (!root.current?.contains(target) && !popup.current?.contains(target)) setOpen(false);
+    };
+    document.addEventListener('mousedown', onDown);
+    return () => document.removeEventListener('mousedown', onDown);
+  }, [open]);
+
   return (
-    <div className="relative w-96">
+    <div
+      ref={root}
+      className="relative w-[min(34rem,100%)] min-w-0 grow sm:grow-0"
+      onKeyDown={(e) => {
+        if (e.key === 'Escape' && open) {
+          setOpen(false);
+          trigger.current?.focus();
+        }
+      }}
+    >
       <button
+        ref={trigger}
         type="button"
         aria-haspopup="listbox"
         aria-expanded={open}
+        title={value}
         className="w-full rounded border border-edge bg-surface px-3 py-1.5 text-left text-sm text-fg hover:bg-surface-alt focus-visible:ring-2 focus-visible:ring-focus"
         onClick={() => setOpen((o) => !o)}
       >
-        <span className="text-muted">{t('typeLabel')}</span>
-        <span className="font-mono">{value}</span>
+        <span className="block truncate">
+          <span className="text-muted">{t('typeLabel')}</span>
+          <span className="font-mono">{value}</span>
+        </span>
       </button>
       {open ? (
-        <Command className="absolute z-20 mt-1 w-full rounded border border-edge bg-surface text-fg shadow-lg" label={t('findType')}>
-          <Command.Input autoFocus placeholder={t('typeSearch')} className="w-full border-b border-line bg-surface px-3 py-2 text-sm text-fg outline-none" />
-          <Command.List className="max-h-72 overflow-auto p-1">
-            <Command.Empty className="px-3 py-2 text-sm text-muted">{t('noMatch')}</Command.Empty>
-            {names.map((n) => (
-              <Command.Item
-                key={n}
-                value={n}
-                className="cursor-pointer rounded px-3 py-1 font-mono text-xs aria-selected:bg-accent-soft"
-                onSelect={() => {
-                  onChange(n);
-                  setOpen(false);
-                }}
-              >
-                {n}
-                {n === MESSAGE_TYPE ? <span className="ml-2 font-sans text-muted">{t('wholeMessage', { id: pain001Message.identifier })}</span> : null}
-              </Command.Item>
-            ))}
-          </Command.List>
-        </Command>
+        <Popup ref={popup} anchor={trigger.current} width="anchor" minWidth={448} className="rounded border border-edge bg-surface text-fg shadow-lg">
+          <Command label={t('findType')}>
+            <Command.Input autoFocus placeholder={t('typeSearch')} className="w-full border-b border-line bg-surface px-3 py-2 text-sm text-fg outline-none" />
+            <Command.List className="max-h-[min(18rem,50vh)] overflow-auto p-1">
+              <Command.Empty className="px-3 py-2 text-sm text-muted">{t('noMatch')}</Command.Empty>
+              {names.map((n) => (
+                <Command.Item
+                  key={n}
+                  value={n}
+                  className="cursor-pointer rounded px-3 py-1 font-mono text-xs aria-selected:bg-accent-soft"
+                  onSelect={() => {
+                    onChange(n);
+                    setOpen(false);
+                  }}
+                >
+                  {n}
+                  {n === MESSAGE_TYPE ? <span className="ml-2 font-sans text-muted">{t('wholeMessage', { id: pain001Message.identifier })}</span> : null}
+                </Command.Item>
+              ))}
+            </Command.List>
+          </Command>
+        </Popup>
       ) : null}
     </div>
   );
@@ -134,7 +164,7 @@ function Editor({ useForm, typeName, dark }: { useForm: UseForm; typeName: strin
   const valid = form.isValid && failedRules.length === 0;
   return (
     <div className="grid min-h-0 flex-1 grid-cols-1 gap-4 lg:grid-cols-2">
-      <section className="min-h-0 overflow-auto pr-2" aria-label="Form">
+      <section className="min-h-0 overflow-auto pr-2" aria-label="Form" data-form-area>
         <SchemaForm form={form} />
         <RulesPanel results={ruleResults} />
         <div className="mt-4 flex items-center gap-3">
@@ -183,11 +213,11 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
     <I18nProvider value={i18n}>
       <div className="flex h-screen flex-col bg-surface p-4 text-fg">
         <header className="mb-3 flex flex-wrap items-end justify-between gap-3">
-          <div>
+          <div className="min-w-0 flex-1 basis-80">
             <h1 className="text-lg font-semibold">{i18n.t(`title_${variant}` as UiKey)}</h1>
             <p className="max-w-3xl text-xs text-muted">{i18n.t(`blurb_${variant}` as UiKey)}</p>
           </div>
-          <div className="flex items-end gap-2">
+          <div className="flex min-w-0 flex-wrap items-end gap-2 sm:flex-nowrap">
             <TypePicker value={typeName} onChange={setTypeName} />
             <SettingsPanel settings={settings} skins={skins} locales={locales} onChange={update} />
           </div>

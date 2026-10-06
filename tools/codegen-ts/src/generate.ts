@@ -23,9 +23,9 @@ const MESSAGE = {
   namespace: 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.13',
   bodyTag: 'CstmrCdtTrfInitn',
   blocks: [
-    { name: 'GroupHeader', xmlTag: 'GrpHdr', type: 'GroupHeader114', min: 1, max: 1 },
-    { name: 'PaymentInformation', xmlTag: 'PmtInf', type: 'PaymentInstruction51', min: 1, max: null },
-    { name: 'SupplementaryData', xmlTag: 'SplmtryData', type: 'SupplementaryData1', min: 0, max: null },
+    { name: 'GroupHeader', isoId: '4f529681-cc64-42c7-ae7b-39fffcdcad88', xmlTag: 'GrpHdr', type: 'GroupHeader114', min: 1, max: 1 },
+    { name: 'PaymentInformation', isoId: 'b6643da8-3a66-4f88-b614-a1d23277da15', xmlTag: 'PmtInf', type: 'PaymentInstruction51', min: 1, max: null },
+    { name: 'SupplementaryData', isoId: 'a3d39e1f-0adb-48a1-955a-24f12678a777', xmlTag: 'SplmtryData', type: 'SupplementaryData1', min: 0, max: null },
   ],
 };
 
@@ -294,7 +294,7 @@ function resolve_(name: string): void {
 const rootName = MESSAGE.name;
 const rootFields: Field[] = MESSAGE.blocks.map((b) => {
   resolve_(b.type);
-  return { name: b.name, xmlTag: b.xmlTag, type: b.type, kind: ir.get(b.type)!.kind, min: b.min, max: b.max };
+  return { name: b.name, isoId: b.isoId, xmlTag: b.xmlTag, type: b.type, kind: ir.get(b.type)!.kind, min: b.min, max: b.max };
 });
 ir.set(rootName, { name: rootName, kind: 'component', fields: rootFields });
 const pi = ir.get('PaymentInstruction51');

@@ -122,15 +122,17 @@ export const tailwindSkin: Skin = {
   ListItem: function ListItem({ removeLabel, onRemove, children }) {
     const { t } = useI18n();
     return (
-      <div className="relative">
-        <button
-          type="button"
-          aria-label={removeLabel}
-          className="absolute right-1 top-1 z-10 rounded bg-surface px-1.5 text-xs text-danger ring-1 ring-danger-line hover:bg-danger-soft"
-          onClick={onRemove}
-        >
-          {t('remove')}
-        </button>
+      <div>
+        <div className="mb-1 flex justify-end">
+          <button
+            type="button"
+            aria-label={removeLabel}
+            className="rounded bg-surface px-1.5 py-0.5 text-xs text-danger ring-1 ring-danger-line hover:bg-danger-soft focus-visible:ring-2 focus-visible:ring-focus"
+            onClick={onRemove}
+          >
+            {t('remove')}
+          </button>
+        </div>
         {children}
       </div>
     );
