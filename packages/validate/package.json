@@ -5,7 +5,9 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
-    "./definitions": "./src/definitions.ts"
+    "./definitions": "./src/definitions.ts",
+    "./locales": "./src/locales/index.ts",
+    "./locales/es": "./src/locales/es.ts"
   },
   "scripts": {
     "typecheck": "tsc -p tsconfig.json",

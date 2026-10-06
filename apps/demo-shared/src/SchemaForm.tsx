@@ -1,7 +1,6 @@
 import type { FieldDescriptor } from '@beneficial-strategies/iso20022-validate';
-import { codeDefinitions } from '@beneficial-strategies/iso20022-validate/definitions';
 import type { FormApi } from './formApi.ts';
-import { definitionFor } from './Info.tsx';
+import { useI18n } from './i18n/context.tsx';
 import { useSkin } from './skin/context.tsx';
 
 /** Current local time as an ISO 20022 date-time with explicit UTC offset, e.g. 2026-10-05T21:30:00-04:00. */
@@ -26,9 +25,13 @@ function ErrorText({ form, path }: { form: FormApi; path: string }) {
   return msg ? <S.Error id={`${idOf(path)}-error`}>{msg}</S.Error> : null;
 }
 
+/** Translated element label (English name derived from the ISO element name when there is no translation). */
+function useLabel() {
+  const { defs } = useI18n();
+  return (f: FieldDescriptor): string => defs.label(f, f.displayName).text;
+}
+
 interface NodeProps {
-  /** Type that owns this field; used to look up its spec definition. */
-  parentType?: string;
   /** Suppress the info button (e.g. repeated list items). */
   noInfo?: boolean;
   form: FormApi;
@@ -40,27 +43,30 @@ interface NodeProps {
   depth: number;
 }
 
-function useInfo({ parentType, field, label, noInfo }: Pick<NodeProps, 'parentType' | 'field' | 'label' | 'noInfo'>) {
+function useInfo({ form, field, label, noInfo }: Pick<NodeProps, 'form' | 'field' | 'label' | 'noInfo'>) {
   const S = useSkin();
-  return noInfo ? null : <S.Info text={definitionFor(parentType, field)} label={label} />;
+  const { defs } = useI18n();
+  return noInfo ? null : <S.Info def={defs.field(field, form.typeDescriptors[field.type])} label={label} />;
 }
 
 function Leaf(p: NodeProps) {
   const { form, field, path, label, required } = p;
   const S = useSkin();
+  const { t, defs } = useI18n();
   const info = useInfo(p);
-  const t = form.typeDescriptors[field.type]!;
+  const type = form.typeDescriptors[field.type]!;
   const props = form.getFieldProps(path);
   let control;
-  if (t.kind === 'code' && t.options) {
-    const codeDef = props.value ? codeDefinitions[`${t.name}.${props.value}`] : undefined;
+  if (type.kind === 'code' && type.options) {
+    const selected = type.options.find((o) => o.value === props.value);
+    const codeDef = selected ? defs.code(selected)?.text : undefined;
     const describedBy = [props['aria-describedby'], codeDef ? `${props.id}-codedef` : ''].filter(Boolean).join(' ');
     control = (
       <>
         <S.Select
           id={props.id}
           value={props.value}
-          options={t.options.map((o) => ({ value: o.value, label: `${o.value} — ${o.name}`, description: codeDefinitions[`${t.name}.${o.value}`] }))}
+          options={type.options.map((o) => ({ value: o.value, label: `${o.value} — ${defs.codeName(o, o.name).text}`, description: defs.code(o)?.text }))}
           onChange={props.onChange}
           onBlur={props.onBlur}
           invalid={props['aria-invalid'] === true}
@@ -70,7 +76,7 @@ function Leaf(p: NodeProps) {
         {codeDef ? <S.Hint id={`${props.id}-codedef`}>{codeDef}</S.Hint> : null}
       </>
     );
-  } else if (t.kind === 'boolean') {
+  } else if (type.kind === 'boolean') {
     control = (
       <S.Select
         id={props.id}
@@ -83,19 +89,19 @@ function Leaf(p: NodeProps) {
         describedBy={props['aria-describedby']}
       />
     );
-  } else if (t.kind === 'any') {
-    control = <S.Text field={props} multiline mono placeholder="<xml/> (raw XML)" />;
+  } else if (type.kind === 'any') {
+    control = <S.Text field={props} multiline mono placeholder={t('rawXml')} />;
   } else {
-    const hint = t.kind === 'datetime' ? '2026-10-05T09:30:00Z' : t.kind === 'number' ? 'e.g. 1500.25' : undefined;
+    const hint = type.kind === 'datetime' ? '2026-10-05T09:30:00Z' : type.kind === 'number' ? 'e.g. 1500.25' : undefined;
     const input = (
-      <S.Text field={props} type={t.kind === 'date' ? 'date' : 'text'} maxLength={t.maxLength} placeholder={hint} inputMode={t.kind === 'number' ? 'decimal' : undefined} />
+      <S.Text field={props} type={type.kind === 'date' ? 'date' : 'text'} maxLength={type.maxLength} placeholder={hint} inputMode={type.kind === 'number' ? 'decimal' : undefined} />
     );
     control =
-      t.kind === 'datetime' && props.value === '' ? (
+      type.kind === 'datetime' && props.value === '' ? (
         <S.Row weights={['grow', 'fixed']}>
           {input}
-          <S.Button variant="secondary" ariaLabel={`Set ${label} to the current local time`} onClick={() => props.onChange(localIsoNow())}>
-            Now
+          <S.Button variant="secondary" ariaLabel={t('nowAria', { label })} onClick={() => props.onChange(localIsoNow())}>
+            {t('now')}
           </S.Button>
         </S.Row>
       ) : (
@@ -112,23 +118,19 @@ function Leaf(p: NodeProps) {
 function AmountNode(p: NodeProps) {
   const { form, field, path, label, required } = p;
   const S = useSkin();
+  const { t } = useI18n();
   const info = useInfo(p);
   const ccy = form.getFieldProps(`${path}.Ccy`);
   const val = form.getFieldProps(`${path}.Value`);
   return (
-    <S.Field
-      label={label}
-      required={required ?? field.required}
-      info={info}
-      error={<ErrorText form={form} path={path} />}
-    >
+    <S.Field label={label} required={required ?? field.required} info={info} error={<ErrorText form={form} path={path} />}>
       <S.Row weights={['fixed', 'grow']}>
         <div>
-          <S.Text field={ccy} placeholder="EUR" ariaLabel={`${label} currency`} />
+          <S.Text field={ccy} placeholder="EUR" ariaLabel={t('currencyOf', { label })} />
           <ErrorText form={form} path={`${path}.Ccy`} />
         </div>
         <div>
-          <S.Text field={val} placeholder="0.00" inputMode="decimal" ariaLabel={`${label} amount`} />
+          <S.Text field={val} placeholder="0.00" inputMode="decimal" ariaLabel={t('amountOf', { label })} />
           <ErrorText form={form} path={`${path}.Value`} />
         </div>
       </S.Row>
@@ -139,28 +141,32 @@ function AmountNode(p: NodeProps) {
 function ChoiceNode(p: NodeProps) {
   const { form, field, path, label, required, depth } = p;
   const S = useSkin();
+  const { t, defs } = useI18n();
+  const labelOf = useLabel();
   const info = useInfo(p);
-  const t = form.typeDescriptors[field.type]!;
+  const type = form.typeDescriptors[field.type]!;
   const selected = form.getChoice(path);
-  const option = t.choiceOptions?.find((o) => o.name === selected);
+  const option = type.choiceOptions?.find((o) => o.name === selected);
   const id = idOf(path);
   const isRequired = required ?? field.required;
   return (
     <S.ChoiceBox>
-      <S.Field id={id} label={`${label} — choose one`} required={isRequired} info={info} error={<ErrorText form={form} path={path} />}>
+      <S.Field id={id} label={t('chooseOne', { label })} required={isRequired} info={info} error={<ErrorText form={form} path={path} />}>
         <S.Select
           id={id}
           value={selected ?? ''}
-          options={(t.choiceOptions ?? []).map((o) => ({ value: o.name, label: o.displayName, description: definitionFor(field.type, o) }))}
+          options={(type.choiceOptions ?? []).map((o) => ({
+            value: o.name,
+            label: labelOf(o),
+            description: defs.field(o, form.typeDescriptors[o.type])?.text,
+          }))}
           onChange={(v) => form.selectChoice(path, field.type, v || undefined)}
           invalid={Boolean(form.errors[path])}
           required={isRequired}
           describedBy={form.errors[path] ? `${id}-error` : undefined}
         />
       </S.Field>
-      {option ? (
-        <ValueNode form={form} field={option} path={`${path}.${option.name}`} label={option.displayName} required depth={depth + 1} parentType={field.type} />
-      ) : null}
+      {option ? <ValueNode form={form} field={option} path={`${path}.${option.name}`} label={labelOf(option)} required depth={depth + 1} /> : null}
     </S.ChoiceBox>
   );
 }
@@ -168,12 +174,13 @@ function ChoiceNode(p: NodeProps) {
 function ComponentNode(p: NodeProps) {
   const { form, field, path, label, required, depth } = p;
   const S = useSkin();
+  const labelOf = useLabel();
   const info = useInfo(p);
-  const t = form.typeDescriptors[field.type]!;
+  const type = form.typeDescriptors[field.type]!;
   return (
     <S.Group title={label} required={required ?? field.required} info={info} error={<ErrorText form={form} path={path} />}>
-      {t.fields?.map((f) => (
-        <FieldNode key={f.name} form={form} field={f} path={`${path}.${f.name}`} label={f.displayName} depth={depth + 1} parentType={t.name} />
+      {type.fields?.map((f) => (
+        <FieldNode key={f.name} form={form} field={f} path={`${path}.${f.name}`} label={labelOf(f)} depth={depth + 1} />
       ))}
     </S.Group>
   );
@@ -187,9 +194,11 @@ function ValueNode(p: NodeProps) {
   return <Leaf {...p} />;
 }
 
-function FieldNode({ form, field, path, label, depth, parentType }: Omit<NodeProps, 'required'>) {
+function FieldNode({ form, field, path, label, depth }: Omit<NodeProps, 'required'>) {
   const S = useSkin();
-  const t = form.typeDescriptors[field.type]!;
+  const { t, defs } = useI18n();
+  const type = form.typeDescriptors[field.type]!;
+  const info = <S.Info def={defs.field(field, type)} label={label} />;
   if (field.repeat) {
     const items = (form.getValue(path) as unknown[] | undefined) ?? [];
     const max = field.repeat.max;
@@ -197,18 +206,18 @@ function FieldNode({ form, field, path, label, depth, parentType }: Omit<NodePro
       <div>
         <S.ListHeader
           title={label}
-          info={<S.Info text={definitionFor(parentType, field)} label={label} />}
-          caption={`${field.required ? 'required, ' : ''}${field.repeat.min}..${max ?? '∞'}`}
+          info={info}
+          caption={`${field.required ? t('listRequired') : ''}${field.repeat.min}..${max ?? '∞'}`}
           action={
             <S.Button disabled={max !== null && items.length >= max} onClick={() => form.addListItem(path, field.type)}>
-              + Add {label}
+              {t('add', { label })}
             </S.Button>
           }
         />
         <S.Stack>
           {items.map((_, i) => (
-            <S.ListItem key={i} removeLabel={`Remove ${label} ${i + 1}`} onRemove={() => form.removeListItem(path, i)}>
-              <ValueNode form={form} field={field} path={`${path}[${i}]`} label={`${label} ${i + 1}`} required depth={depth + 1} parentType={parentType} noInfo />
+            <S.ListItem key={i} removeLabel={t('removeItem', { label, n: i + 1 })} onRemove={() => form.removeListItem(path, i)}>
+              <ValueNode form={form} field={field} path={`${path}[${i}]`} label={`${label} ${i + 1}`} required depth={depth + 1} noInfo />
             </S.ListItem>
           ))}
         </S.Stack>
@@ -216,28 +225,23 @@ function FieldNode({ form, field, path, label, depth, parentType }: Omit<NodePro
       </div>
     );
   }
-  const container = t.kind === 'component' || t.kind === 'choice';
+  const container = type.kind === 'component' || type.kind === 'choice';
   if (!field.required && container) {
     const present = form.isPresent(path);
     return (
       <div>
-        <S.Toggle
-          id={`include-${idOf(path)}`}
-          checked={present}
-          onChange={(c) => form.setPresent(path, field.type, c)}
-          label={label}
-          info={<S.Info text={definitionFor(parentType, field)} label={label} />}
-        />
-        {present ? <ValueNode form={form} field={field} path={path} label={label} required depth={depth + 1} parentType={parentType} /> : null}
+        <S.Toggle id={`include-${idOf(path)}`} checked={present} onChange={(c) => form.setPresent(path, field.type, c)} label={label} info={info} />
+        {present ? <ValueNode form={form} field={field} path={path} label={label} required depth={depth + 1} /> : null}
       </div>
     );
   }
-  return <ValueNode form={form} field={field} path={path} label={label} depth={depth} parentType={parentType} />;
+  return <ValueNode form={form} field={field} path={path} label={label} depth={depth} />;
 }
 
 /** Generic recursive renderer for any generated type. Demo-only: the library itself renders nothing. */
 export function SchemaForm({ form }: { form: FormApi }) {
   const S = useSkin();
+  const labelOf = useLabel();
   const root = form.typeDescriptors[form.rootType]!;
   const fields = root.kind === 'choice' ? [] : (root.fields ?? []);
   return (
@@ -251,7 +255,7 @@ export function SchemaForm({ form }: { form: FormApi }) {
           depth={0}
         />
       ) : (
-        fields.map((f) => <FieldNode key={f.name} form={form} field={f} path={f.name} label={f.displayName} depth={0} parentType={root.name} />)
+        fields.map((f) => <FieldNode key={f.name} form={form} field={f} path={f.name} label={labelOf(f)} depth={0} />)
       )}
     </S.Stack>
   );

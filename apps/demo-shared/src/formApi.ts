@@ -1,5 +1,5 @@
 import type { ChangeEvent } from 'react';
-import type { TypeDescriptors } from '@beneficial-strategies/iso20022-validate';
+import type { TypeDescriptors, ValidationMessages } from '@beneficial-strategies/iso20022-validate';
 import type { z } from 'zod';
 
 /**
@@ -39,6 +39,8 @@ export interface FormTarget {
   schema: z.ZodType;
   typeDescriptors: TypeDescriptors;
   rootType: string;
+  /** Wording for validation errors; English when omitted. */
+  messages?: ValidationMessages;
 }
 
 export type UseForm = (target: FormTarget) => FormApi;

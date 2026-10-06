@@ -1,5 +1,6 @@
 import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent } from 'react';
 
+import { useI18n } from './i18n/context.tsx';
 import type { DescribedOption } from './skin/types.ts';
 
 export type { DescribedOption };
@@ -25,7 +26,9 @@ const oneLine = (s: string): string => s.split('|').map((x) => x.trim()).filter(
  * description. A native <select> cannot render anything but plain text in its options.
  * Keyboard: Arrow Up/Down, Home/End, Enter/Space to choose, Escape to close, type to jump.
  */
-export function DescribedSelect({ id, value, options, onChange, onBlur, placeholder = '— select —', invalid, required, describedBy, className }: Props) {
+export function DescribedSelect({ id, value, options, onChange, onBlur, placeholder: placeholderProp, invalid, required, describedBy, className }: Props) {
+  const { t } = useI18n();
+  const placeholder = placeholderProp ?? t('select');
   const listId = useId();
   const root = useRef<HTMLDivElement>(null);
   const list = useRef<HTMLUListElement>(null);
@@ -145,7 +148,7 @@ export function DescribedSelect({ id, value, options, onChange, onBlur, placehol
           ref={list}
           id={listId}
           role="listbox"
-          aria-label="Options"
+          aria-label={t('options')}
           className="absolute z-30 mt-1 max-h-72 w-[min(34rem,90vw)] overflow-auto rounded border border-edge bg-surface py-1 text-fg shadow-lg"
         >
           {all.map((o, i) => (

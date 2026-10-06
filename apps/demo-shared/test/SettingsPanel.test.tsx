@@ -7,7 +7,7 @@ import { skinIds, skins } from '../src/skin/index.ts';
 
 function Harness() {
   const { settings, update } = useSettings(skinIds);
-  return <SettingsPanel settings={settings} skins={skins} onChange={update} />;
+  return <SettingsPanel settings={settings} skins={skins} locales={['en', 'es']} onChange={update} />;
 }
 
 beforeEach(() => {

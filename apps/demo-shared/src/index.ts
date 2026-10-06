@@ -5,3 +5,5 @@ export * from './XmlPane.tsx';
 export * from './settings.ts';
 export * from './skin/index.ts';
 export * from './SettingsPanel.tsx';
+export * from './i18n/context.tsx';
+export * from './i18n/messages.ts';

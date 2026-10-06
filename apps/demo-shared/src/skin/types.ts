@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import type { Localized } from '@beneficial-strategies/iso20022-validate/definitions';
 import type { FieldProps } from '../formApi.ts';
 
 export interface DescribedOption {
@@ -61,5 +62,5 @@ export interface Skin {
   ListHeader: (p: { title: string; info: ReactNode; caption: string; action: ReactNode }) => ReactNode;
   ListItem: (p: { removeLabel: string; onRemove: () => void; children: ReactNode }) => ReactNode;
   /** Help text for an element (spec definition). */
-  Info: (p: { text: string | undefined; label: string }) => ReactNode;
+  Info: (p: { def: Localized | undefined; label: string }) => ReactNode;
 }

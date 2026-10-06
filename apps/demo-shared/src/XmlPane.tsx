@@ -3,12 +3,14 @@ import { EditorView, basicSetup } from 'codemirror';
 import { Compartment, EditorState } from '@codemirror/state';
 import { xml } from '@codemirror/lang-xml';
 import { oneDark } from '@codemirror/theme-one-dark';
+import { useI18n } from './i18n/context.tsx';
 
 export function XmlPane({ xml: text, dark = false }: { xml: string; dark?: boolean }) {
   const host = useRef<HTMLDivElement>(null);
   const view = useRef<EditorView | null>(null);
   const theme = useRef(new Compartment());
   const [copied, setCopied] = useState(false);
+  const { t } = useI18n();
 
   useEffect(() => {
     if (!host.current) return;
@@ -45,7 +47,7 @@ export function XmlPane({ xml: text, dark = false }: { xml: string; dark?: boole
             });
           }}
         >
-          {copied ? 'Copied' : 'Copy XML'}
+          {copied ? t('copied') : t('copyXml')}
         </button>
       </div>
       <div ref={host} className="min-h-0 flex-1 overflow-auto rounded border border-edge text-xs" />

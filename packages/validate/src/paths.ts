@@ -1,4 +1,5 @@
 import type { z } from 'zod';
+import { ISSUE_CODES, en, formatIssue, type Issue, type IssueCode, type MessageParams, type ValidationMessages } from './messages.ts';
 import type { FieldDescriptor, TypeDescriptors } from './runtime.ts';
 
 /**
@@ -94,43 +95,54 @@ function emptyField(types: TypeDescriptors, f: FieldDescriptor): unknown {
   return emptyValue(types, f.type);
 }
 
-type Issue = z.core.$ZodIssue;
+type ZodIssue = z.core.$ZodIssue;
 
-function friendly(issue: Issue): string {
+const KNOWN = new Set<string>(ISSUE_CODES);
+
+/** Map a Zod issue to a library issue: a code plus parameters, with no wording. */
+function toIssue(issue: ZodIssue): Issue {
   switch (issue.code) {
     case 'invalid_type':
-      return /undefined/.test(issue.message) || (issue as { input?: unknown }).input === undefined
-        ? 'Required'
-        : 'Invalid value';
+      return { code: (issue as { input?: unknown }).input === undefined || /undefined/.test(issue.message) ? 'required' : 'invalid_type' };
     case 'invalid_format':
-      return 'Invalid format';
+      // validators in runtime.ts name their own format codes via the message
+      return { code: KNOWN.has(issue.message) ? (issue.message as IssueCode) : 'invalid_format' };
     case 'too_small':
       return issue.origin === 'array'
-        ? `At least ${String(issue.minimum)} required`
-        : `Must be at least ${String(issue.minimum)} characters`;
+        ? { code: 'too_few_items', params: { min: Number(issue.minimum) } }
+        : { code: 'too_short', params: { min: Number(issue.minimum) } };
     case 'too_big':
       return issue.origin === 'array'
-        ? `At most ${String(issue.maximum)} allowed`
-        : `Must be at most ${String(issue.maximum)} characters`;
+        ? { code: 'too_many_items', params: { max: Number(issue.maximum) } }
+        : { code: 'too_long', params: { max: Number(issue.maximum) } };
     case 'invalid_value':
-      return 'Not an allowed value';
+      return { code: 'not_allowed_value' };
     case 'invalid_union':
-      return 'Select one option';
+      return { code: 'select_one' };
     case 'unrecognized_keys':
-      return 'Not allowed here';
+      return { code: 'not_allowed_here' };
+    case 'custom': {
+      const params = (issue as { params?: MessageParams }).params;
+      return { code: KNOWN.has(issue.message) ? (issue.message as IssueCode) : 'invalid', ...(params ? { params } : {}) };
+    }
     default:
-      return issue.message;
+      return { code: 'invalid' };
   }
 }
 
-/** First error per path, keyed by `A.B[0].C` paths, with plain-language messages. */
-export function formatIssues(error: z.ZodError | undefined): Record<string, string> {
-  const out: Record<string, string> = {};
+/** First problem per path (`A.B[0].C`), as codes and parameters. Localize with `formatIssue`. */
+export function collectIssues(error: z.ZodError | undefined): Record<string, Issue> {
+  const out: Record<string, Issue> = {};
   for (const issue of error?.issues ?? []) {
     const key = toPath(issue.path);
-    if (!(key in out)) out[key] = friendly(issue);
+    if (!(key in out)) out[key] = toIssue(issue);
   }
   return out;
+}
+
+/** First error per path, as display text from the given catalog (English by default). */
+export function formatIssues(error: z.ZodError | undefined, messages: ValidationMessages = en): Record<string, string> {
+  return Object.fromEntries(Object.entries(collectIssues(error)).map(([k, v]) => [k, formatIssue(v, messages)]));
 }
 
 /**

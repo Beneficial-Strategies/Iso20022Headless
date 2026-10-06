@@ -60,3 +60,15 @@ describe('skins render the same form with different markup', () => {
     expect(summary?.getAttribute('aria-label')).toMatch(/^About /);
   });
 });
+
+describe('required errors on a pristine form', () => {
+  it('leaving an empty required field shows its error even when nothing else is filled in', async () => {
+    const user = userEvent.setup();
+    render(<Form skin={tailwindSkin} />);
+    const method = screen.getByRole('combobox', { name: /^Payment Method/ });
+    await user.click(method);
+    await user.keyboard('{Escape}');
+    await user.tab();
+    expect((await screen.findAllByRole('alert')).length).toBeGreaterThan(0);
+  });
+});

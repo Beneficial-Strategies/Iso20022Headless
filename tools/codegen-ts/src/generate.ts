@@ -33,6 +33,7 @@ const MESSAGE = {
 type Kind = 'text' | 'number' | 'date' | 'datetime' | 'boolean' | 'code' | 'amount' | 'any' | 'component' | 'choice';
 interface Field {
   name: string;
+  isoId?: string;
   xmlTag: string;
   type: string;
   kind: Kind;
@@ -41,6 +42,7 @@ interface Field {
 }
 interface IrType {
   name: string;
+  isoId?: string;
   kind: Kind;
   minLength?: number;
   maxLength?: number;
@@ -48,11 +50,11 @@ interface IrType {
   totalDigits?: number;
   fractionDigits?: number;
   minInclusive?: number;
-  options?: { value: string; name: string }[];
+  options?: { value: string; name: string; isoId?: string }[];
   external?: boolean;
   fields?: Field[];
   choiceOptions?: Field[];
-  rules?: { name: string; text: string; expression?: RuleExprIr }[];
+  rules?: { name: string; isoId?: string; text: string; expression?: RuleExprIr }[];
 }
 
 // ---------------------------------------------------------------- parsing
@@ -78,6 +80,12 @@ for (const r of rowsOf('simple-types.tsv').slice(1)) simple.set(r[0]!, r);
 const codeRows = rowsOf('codesets.tsv').slice(1);
 const codesets = new Map<string, string[][]>();
 for (const r of codeRows) (codesets.get(r[0]!) ?? codesets.set(r[0]!, []).get(r[0]!)!).push(r);
+
+// ISO ids of individual codes, from codedefs.tsv (codeSet, code, enumName, isoId, text)
+const codeIsoIds = new Map<string, string>();
+if (existsSync(resolve(fixtures, 'codedefs.tsv'))) {
+  for (const r of rowsOf('codedefs.tsv').slice(1)) codeIsoIds.set(`${r[0]}\t${r[1]}`, r[3]!);
+}
 
 const rulesFile = resolve(fixtures, 'constraints-PaymentInstruction51.tsv');
 interface BooleanRuleIr {
@@ -126,7 +134,7 @@ const paymentInstructionRules = existsSync(rulesFile)
       .slice(1)
       .map((r) => {
         const xml = expressionByName.get(r[1]!);
-        return { name: r[1]!, text: r[2]!, ...(xml ? { expression: parseExpression(xml, r[1]!) } : {}) };
+        return { name: r[1]!, isoId: r[0]!, text: r[2]!, ...(xml ? { expression: parseExpression(xml, r[1]!) } : {}) };
       })
   : [];
 
@@ -153,7 +161,7 @@ function regexOk(p: string, where: string): string {
 function simpleType(name: string): IrType {
   const r = simple.get(name)!;
   const [, , xsi, pattern, minLength, maxLength, totalDigits, fractionDigits, minInclusive] = r;
-  const base: IrType = { name, kind: 'text' };
+  const base: IrType = { name, kind: 'text', ...(r[1] && !r[1].startsWith('(') ? { isoId: r[1] } : {}) };
   switch (xsi) {
     case 'Text':
     case 'IdentifierSet':
@@ -196,13 +204,14 @@ function codeType(name: string): IrType {
   const marker = first[3];
   if (marker === '*PATTERN*') {
     const p = /^(\S+)/.exec(first[4]!)![1]!;
-    return { name, kind: 'code', pattern: regexOk(p, name) };
+    return { name, isoId: first[1], kind: 'code', pattern: regexOk(p, name) };
   }
   if (marker === '*EXTERNAL*') {
     const min = /minLength=(\d+)/.exec(first[4]!)?.[1];
     const max = /maxLength=(\d+)/.exec(first[4]!)?.[1];
     return {
       name,
+      isoId: first[1],
       kind: 'code',
       external: true,
       ...(min ? { minLength: Number(min) } : {}),
@@ -211,8 +220,11 @@ function codeType(name: string): IrType {
   }
   return {
     name,
+    isoId: first[1],
     kind: 'code',
-    options: rows.map((r) => ({ value: r[3]!, name: r[4]! })).sort((a, b) => a.value.localeCompare(b.value)),
+    options: rows
+      .map((r) => ({ value: r[3]!, name: r[4]!, ...(codeIsoIds.has(`${name}\t${r[3]}`) ? { isoId: codeIsoIds.get(`${name}\t${r[3]}`)! } : {}) }))
+      .sort((a, b) => a.value.localeCompare(b.value)),
   };
 }
 
@@ -222,6 +234,7 @@ function amountType(name: string): IrType {
   const curPattern = codesets.get(cur)![0]![4]!.split(' ')[0]!;
   return {
     name,
+    isoId: r[1],
     kind: 'amount',
     pattern: regexOk(curPattern, name),
     totalDigits: num(r[6]),
@@ -232,11 +245,12 @@ function amountType(name: string): IrType {
 
 function toField(m: string[]): Field {
   // MEMBER parent id name xmlTag kind dataTypeName minOccurs maxOccurs definition
-  const [, , , name, xmlTag, , dataTypeName, minOccurs, maxOccurs] = m;
+  const [, , memberId, name, xmlTag, , dataTypeName, minOccurs, maxOccurs] = m;
   const type = dataTypeName!;
   resolve_(type);
   return {
     name: name!,
+    ...(memberId ? { isoId: memberId } : {}),
     xmlTag: xmlTag!,
     type,
     kind: ir.get(type)!.kind,
@@ -261,11 +275,11 @@ function resolve_(name: string): void {
     } else if (kind === 'Choice') {
       ir.set(name, { name, kind: 'choice' }); // placeholder, no cycles expected but guard anyway
       const choiceOptions = (members.get(name) ?? []).map(toField);
-      ir.set(name, { name, kind: 'choice', choiceOptions });
+      ir.set(name, { name, isoId: dt[2]!, kind: 'choice', choiceOptions });
     } else {
       ir.set(name, { name, kind: 'component' });
       const fields = (members.get(name) ?? []).map(toField);
-      ir.set(name, { name, kind: 'component', fields });
+      ir.set(name, { name, isoId: dt[2]!, kind: 'component', fields });
     }
   } else if (inCode) {
     ir.set(name, codeType(name));
@@ -423,6 +437,7 @@ for (const n of order) {
 const descField = (f: Field): string => {
   const parts = [
     `name: ${q(f.name)}`,
+    ...(f.isoId ? [`isoId: ${q(f.isoId)}`] : []),
     `xmlTag: ${q(f.xmlTag)}`,
     `displayName: displayName(${q(f.name)})`,
     `kind: ${q(f.kind)}`,
@@ -436,16 +451,16 @@ const descField = (f: Field): string => {
 zodTs += `const f = (d: FieldDescriptor): FieldDescriptor => d;\n\nexport const typeDescriptors: TypeDescriptors = {\n`;
 for (const n of order) {
   const t = ir.get(n)!;
-  const props = [`name: ${q(n)}`, `kind: ${q(t.kind)}`];
+  const props = [`name: ${q(n)}`, ...(t.isoId ? [`isoId: ${q(t.isoId)}`] : []), `kind: ${q(t.kind)}`];
   for (const k of ['minLength', 'maxLength', 'totalDigits', 'fractionDigits', 'minInclusive'] as const) {
     if (t[k] !== undefined) props.push(`${k}: ${t[k]}`);
   }
   if (t.pattern !== undefined) props.push(`pattern: ${q(t.pattern)}`);
   if (t.external) props.push('external: true');
-  if (t.options) props.push(`options: [${t.options.map((o) => `{ value: ${q(o.value)}, name: ${q(o.name)} }`).join(', ')}]`);
+  if (t.options) props.push(`options: [${t.options.map((o) => `{ value: ${q(o.value)}, name: ${q(o.name)}${o.isoId ? `, isoId: ${q(o.isoId)}` : ''} }`).join(', ')}]`);
   if (t.fields) props.push(`fields: [\n${t.fields.map((x) => `      f(${descField(x)}),`).join('\n')}\n    ]`);
   if (t.choiceOptions) props.push(`choiceOptions: [\n${t.choiceOptions.map((x) => `      f(${descField({ ...x, min: 1 })}),`).join('\n')}\n    ]`);
-  if (t.rules) props.push(`rules: [\n${t.rules.map((r) => `      { name: ${q(r.name)}, text: ${q(r.text)}${r.expression ? `, expression: ${JSON.stringify(r.expression)}` : ''} },`).join('\n')}\n    ]`);
+  if (t.rules) props.push(`rules: [\n${t.rules.map((r) => `      { name: ${q(r.name)}${r.isoId ? `, isoId: ${q(r.isoId)}` : ''}, text: ${q(r.text)}${r.expression ? `, expression: ${JSON.stringify(r.expression)}` : ''} },`).join('\n')}\n    ]`);
   zodTs += `  ${q(n)}: {\n    ${props.join(',\n    ')},\n  },\n`;
 }
 zodTs += `};\n\n`;
@@ -465,8 +480,8 @@ if (existsSync(snapshotFile)) {
   for (const l of readFileSync(snapshotFile, 'utf8').split('\n')) {
     if (!l || l.startsWith('#')) continue;
     const c = l.split('\t');
-    if (c[0] === 'DATATYPE' && ir.has(c[1]!)) typeDefs[c[1]!] = c[c.length - 1]!.trim();
-    else if (c[0] === 'MEMBER' && ir.has(c[1]!)) fieldDefs[`${c[1]}.${c[3]}`] = c[c.length - 1]!.trim();
+    if (c[0] === 'DATATYPE' && ir.has(c[1]!)) typeDefs[c[2]!] = c[c.length - 1]!.trim();
+    else if (c[0] === 'MEMBER' && ir.has(c[1]!)) fieldDefs[c[2]!] = c[c.length - 1]!.trim();
   }
 }
 const choiceDefsFile = resolve(fixtures, 'choice-defs.tsv');
@@ -474,7 +489,7 @@ if (existsSync(choiceDefsFile)) {
   for (const l of readFileSync(choiceDefsFile, 'utf8').split('\n').slice(1)) {
     if (!l) continue;
     const c = l.split('\t');
-    fieldDefs[`${c[0]}.${c[2]}`] = c.slice(3).join('\t').trim();
+    fieldDefs[c[1]!] = c.slice(3).join('\t').trim();
   }
 }
 // Code values: definition per code keyed `CodeSet.wireValue`, plus one definition per code set.
@@ -486,7 +501,7 @@ if (existsSync(codeDefsFile)) {
   for (const l of readFileSync(codeDefsFile, 'utf8').split('\n').slice(1)) {
     if (!l) continue;
     const c = l.split('\t');
-    if (ir.has(c[0]!)) codeDefs[`${c[0]}.${c[1]}`] = c.slice(4).join('\t').trim();
+    if (ir.has(c[0]!)) codeDefs[c[3]!] = c.slice(4).join('\t').trim();
   }
 }
 const codeSetDefsFile = resolve(fixtures, 'codeset-defs.tsv');
@@ -494,7 +509,7 @@ if (existsSync(codeSetDefsFile)) {
   for (const l of readFileSync(codeSetDefsFile, 'utf8').split('\n').slice(1)) {
     if (!l) continue;
     const c = l.split('\t');
-    if (ir.has(c[0]!)) codeSetDefs[c[0]!] = c.slice(2).join('\t').trim();
+    if (ir.has(c[0]!)) codeSetDefs[c[1]!] = c.slice(2).join('\t').trim();
   }
 }
 const sortedEntries = (o: Record<string, string>): string =>
@@ -506,10 +521,11 @@ writeFileSync(
   resolve(root, 'packages/validate/src/generated/pain001.definitions.ts'),
   HEADER +
     '// Definitions use `|` for line breaks and `||` for paragraph breaks, as returned by the MCP.\n' +
+    '// All maps are keyed by ISO 20022 repository id (see isoId on the descriptors).\n' +
     `export const typeDefinitions: Record<string, string> = {\n${sortedEntries(typeDefs)}\n};\n\n` +
-    `/** Keyed by \`ParentType.ElementName\`. */\nexport const fieldDefinitions: Record<string, string> = {\n${sortedEntries(fieldDefs)}\n};\n\n` +
-    `/** Keyed by \`CodeSet.wireValue\`. */\nexport const codeDefinitions: Record<string, string> = {\n${sortedEntries(codeDefs)}\n};\n\n` +
-    `export const codeSetDefinitions: Record<string, string> = {\n${sortedEntries(codeSetDefs)}\n};\n`,
+    `/** Keyed by element id. */\nexport const fieldDefinitions: Record<string, string> = {\n${sortedEntries(fieldDefs)}\n};\n\n` +
+    `/** Keyed by code id. */\nexport const codeDefinitions: Record<string, string> = {\n${sortedEntries(codeDefs)}\n};\n\n` +
+    `/** Keyed by code set id. */\nexport const codeSetDefinitions: Record<string, string> = {\n${sortedEntries(codeSetDefs)}\n};\n`,
 );
 console.log(
   `definitions: ${Object.keys(typeDefs).length} types, ${Object.keys(fieldDefs).length} fields, ` +

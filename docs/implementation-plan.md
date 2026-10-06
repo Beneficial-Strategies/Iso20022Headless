@@ -36,6 +36,36 @@ published; nothing here has been run through CI. Decisions and changes versus th
   (hand-rolled state, no form library). The XML pane is always live with a valid/draft badge, rather than
   appearing only once valid. A "Now" button appears beside blank date-time fields.
 
+### Localization (decided and built 2026-10-06)
+- **The library reports codes, never prose.** `collectIssues` returns `{ code, params }` per field path
+  (and rule diagnostics use the same codes). `formatIssues(error, messages)` turns them into text. The
+  library ships English and Spanish catalogs (`validate/src/messages.ts`); consumers override any key
+  (`createMessages('es', { required: 'Campo obligatorio' })`) or add a language by passing a partial catalog.
+  English wording is unchanged from before (a test pins it).
+- **ISO ids on every descriptor** (types, elements, code options), and spec definitions are keyed by id
+  rather than by version-specific names. `createDefinitions(locale, overrides)` layers: consumer overrides,
+  the exact locale, its language, then English, and reports which language each text is actually in, so a UI
+  can mark untranslated text. Translated element names use the same catalogs (`labels`, by id).
+- **Demo interface text** has English and Spanish catalogs with the same override mechanism
+  (`createI18n`, `DemoApp`'s `i18n` prop). A Language group in the Display panel (Automatic / English /
+  Español, plus any locale the consumer adds) is kept in the URL and sets `<html lang>`.
+- **Spec text is English only.** The ISO repository has no translations. Spanish *interface* text and
+  validation messages are shipped; Spanish element names, definitions, code names and rule text are not.
+  English fallbacks are labelled in the UI. Translating them is a separate, reviewable piece of work
+  (about 460 definitions plus ~230 element names); check licensing of ISO text before shipping translations.
+- **Translation workflow (built 2026-10-06).** Spec text is translated through catalogs in
+  `packages/validate/src/locales/<lang>.catalog.json` (entry = text + status `machine`/`reviewed` + hash of the
+  English). `tools/i18n` extracts units, lints and merges machine drafts (never overwriting reviewed entries),
+  exports/imports **XLIFF 2.0** for a human reviewer or a translation platform, and flags stale entries
+  (`pnpm i18n check es`, for CI). Spanish was machine-drafted in full (1035 units) with a glossary; it loads lazily
+  (about 38 KB gzipped) and the UI marks it "machine translated, not yet reviewed" until reviewed. See
+  `i18n/README.md` for the hand-off process.
+- **Ids are per message version.** Catalogs keyed by element id do not carry over to the next version of a
+  message. The stable business-layer link (`businessElementTrace` / `trace` in the MCP) is not captured yet;
+  capturing it would let a translation be written once per business element.
+- Fixed along the way: a pristine form validated to a single root-level "Required" instead of per-field
+  errors, so tabbing out of an empty required field showed nothing.
+
 ### Known gaps in the slice
 - Business rules: only `PaymentInstruction51`'s 17 constraints are captured. 11 are enforced by a small
   evaluator (`validate/src/rules.ts`, Presence/Absence/EqualToValue/DifferentFromValue/WithInList/NotWithInList,

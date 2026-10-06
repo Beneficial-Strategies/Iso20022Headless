@@ -23,6 +23,8 @@ export type FieldKind =
 export interface FieldDescriptor {
   /** ISO element name; also the key in the value object. */
   name: string;
+  /** Stable ISO 20022 repository id of this element (key for translations and definitions). */
+  isoId?: string;
   xmlTag: string;
   displayName: string;
   kind: FieldKind;
@@ -35,6 +37,8 @@ export interface FieldDescriptor {
 
 export interface TypeDescriptor {
   name: string;
+  /** ISO 20022 repository id of this type. */
+  isoId?: string;
   kind: FieldKind;
   minLength?: number;
   maxLength?: number;
@@ -43,7 +47,7 @@ export interface TypeDescriptor {
   fractionDigits?: number;
   minInclusive?: number;
   /** Code sets: allowed wire values. Absent for external or pattern-only sets. */
-  options?: { value: string; name: string }[];
+  options?: { value: string; name: string; isoId?: string }[];
   /** External code set: values are maintained outside ISO 20022 and not enumerated here. */
   external?: boolean;
   /** component: ordered fields. */
@@ -77,6 +81,8 @@ export interface RuleExpression {
 
 export interface RuleDescriptor {
   name: string;
+  /** ISO 20022 repository id of the constraint. */
+  isoId?: string;
   text: string;
   /** Absent for spec "Guidelines", which are prose only. */
   expression?: RuleExpression;
@@ -105,29 +111,29 @@ export function decimalType(c: {
 }): z.ZodType<string> {
   return z
     .string()
-    .regex(/^-?\d+(\.\d+)?$/, 'Must be a decimal number')
+    .regex(/^-?\d+(\.\d+)?$/, 'decimal_format')
     .superRefine((v, ctx) => {
       const [int = '', frac = ''] = v.replace('-', '').split('.');
       if (c.fractionDigits !== undefined && frac.length > c.fractionDigits) {
-        ctx.addIssue({ code: 'custom', message: `At most ${c.fractionDigits} fraction digits` });
+        ctx.addIssue({ code: 'custom', message: 'fraction_digits', params: { max: c.fractionDigits } });
       }
       if (c.totalDigits !== undefined && int.length + frac.length > c.totalDigits) {
-        ctx.addIssue({ code: 'custom', message: `At most ${c.totalDigits} digits in total` });
+        ctx.addIssue({ code: 'custom', message: 'total_digits', params: { max: c.totalDigits } });
       }
       if (c.minInclusive !== undefined && Number(v) < c.minInclusive) {
-        ctx.addIssue({ code: 'custom', message: `Must be at least ${c.minInclusive}` });
+        ctx.addIssue({ code: 'custom', message: 'min_inclusive', params: { min: c.minInclusive } });
       }
     });
 }
 
-export const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}(Z|[+-]\d{2}:\d{2})?$/, 'Must be YYYY-MM-DD');
+export const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}(Z|[+-]\d{2}:\d{2})?$/, 'date_format');
 export const isoDateTime = z
   .string()
   .regex(
     /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})?$/,
-    'Must be YYYY-MM-DDThh:mm:ss[.fff][Z|±hh:mm]',
+    'datetime_format',
   );
-export const isoYear = z.string().regex(/^\d{4}$/, 'Must be a 4-digit year');
+export const isoYear = z.string().regex(/^\d{4}$/, 'year_format');
 export const indicator = z.enum(['true', 'false']);
 export const anyXml = z.string().min(1);
 

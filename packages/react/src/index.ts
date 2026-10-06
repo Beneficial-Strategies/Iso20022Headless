@@ -9,12 +9,15 @@ import {
   initialValue,
   pruneEmpty,
   type TypeDescriptors,
+  type ValidationMessages,
 } from '@beneficial-strategies/iso20022-validate';
 
 export interface MessageDefinition {
   schema: z.ZodType;
   typeDescriptors: TypeDescriptors;
   rootType: string;
+  /** Wording for validation errors (see `createMessages`); English when omitted. */
+  messages?: ValidationMessages;
 }
 
 export interface FieldProps {
@@ -57,16 +60,16 @@ const idOf = (path: string): string => path.replace(/[^A-Za-z0-9]+/g, '-').repla
  * and descriptors own validation and structure. Returns props to spread; renders nothing.
  */
 export function useIso20022Form(message: MessageDefinition): Iso20022Form {
-  const { schema, typeDescriptors, rootType } = message;
+  const { schema, typeDescriptors, rootType, messages } = message;
   const form = useForm({ defaultValues: initialValue(typeDescriptors, rootType) as Record<string, unknown> });
   const values = useStore(form.store, (s) => s.values);
   const fieldMeta = useStore(form.store, (s) => s.fieldMeta) as Record<string, { isTouched?: boolean } | undefined>;
   const [allTouched, setAllTouched] = useState(false);
 
   const allErrors = useMemo(() => {
-    const r = schema.safeParse(pruneEmpty(values));
-    return r.success ? {} : formatIssues(r.error);
-  }, [schema, values]);
+    const r = schema.safeParse(pruneEmpty(values) ?? {});
+    return r.success ? {} : formatIssues(r.error, messages);
+  }, [schema, values, messages]);
 
   const touchedPaths = Object.keys(fieldMeta).filter((p) => fieldMeta[p]?.isTouched);
   const errors = useMemo(() => {

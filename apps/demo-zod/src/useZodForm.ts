@@ -15,15 +15,15 @@ import type { FieldProps, FormApi, FormTarget } from '@beneficial-strategies/iso
  * The same FormApi as the library's hook, built by hand on plain React state + the generated Zod
  * schema. Everything a consumer without TanStack Form has to write for themselves.
  */
-export function useZodForm({ schema, typeDescriptors, rootType }: FormTarget): FormApi {
+export function useZodForm({ schema, typeDescriptors, rootType, messages }: FormTarget): FormApi {
   const [values, setValues] = useState<unknown>(() => initialValue(typeDescriptors, rootType));
   const [touched, setTouched] = useState<ReadonlySet<string>>(new Set());
   const [allTouched, setAllTouched] = useState(false);
 
   const allErrors = useMemo(() => {
-    const r = schema.safeParse(pruneEmpty(values));
-    return r.success ? {} : formatIssues(r.error);
-  }, [schema, values]);
+    const r = schema.safeParse(pruneEmpty(values) ?? {});
+    return r.success ? {} : formatIssues(r.error, messages);
+  }, [schema, values, messages]);
 
   const errors = useMemo(() => {
     if (allTouched) return allErrors;

@@ -1,7 +1,8 @@
+import { paragraphs } from '../Info.tsx';
+import { useI18n } from '../i18n/context.tsx';
 import type { Skin } from './types.ts';
 
-/** Spec definitions use `|` for line breaks; render them as separate paragraphs. */
-const paras = (text: string): string[] => text.split('|').map((s) => s.trim()).filter(Boolean);
+const paras = paragraphs;
 
 /**
  * No classes and no CSS of its own: bare semantic HTML (fieldset, legend, label, input, native
@@ -13,29 +14,35 @@ export const plainSkin: Skin = {
   label: 'Plain HTML',
   description: 'Unstyled semantic HTML: fieldset, label, native select, details. Browser defaults only.',
   Stack: ({ children }) => <div>{children}</div>,
-  Group: ({ title, required, info, error, children }) => (
-    <fieldset>
-      <legend>
-        {title}
-        {required ? ' (required)' : ''} {info}
-      </legend>
-      {children}
-      {error}
-    </fieldset>
-  ),
+  Group: function Group({ title, required, info, error, children }) {
+    const { t } = useI18n();
+    return (
+      <fieldset>
+        <legend>
+          {title}
+          {required ? ` ${t('required')}` : ''} {info}
+        </legend>
+        {children}
+        {error}
+      </fieldset>
+    );
+  },
   ChoiceBox: ({ children }) => <blockquote>{children}</blockquote>,
-  Field: ({ id, label, required, info, error, children }) => (
-    <p>
-      <label htmlFor={id}>
-        {label}
-        {required ? ' (required)' : ''}
-      </label>{' '}
-      {info}
-      <br />
-      {children}
-      {error}
-    </p>
-  ),
+  Field: function Field({ id, label, required, info, error, children }) {
+    const { t } = useI18n();
+    return (
+      <p>
+        <label htmlFor={id}>
+          {label}
+          {required ? ` ${t('required')}` : ''}
+        </label>{' '}
+        {info}
+        <br />
+        {children}
+        {error}
+      </p>
+    );
+  },
   Row: ({ children }) => <span>{children}</span>,
   Text: ({ field, type = 'text', maxLength, placeholder, inputMode, ariaLabel, multiline }) =>
     multiline ? (
@@ -43,7 +50,8 @@ export const plainSkin: Skin = {
     ) : (
       <input {...field} type={type} maxLength={maxLength} placeholder={placeholder} inputMode={inputMode} aria-label={ariaLabel} />
     ),
-  Select: ({ id, value, options, onChange, onBlur, invalid, required, describedBy }) => {
+  Select: function Select({ id, value, options, onChange, onBlur, invalid, required, describedBy }) {
+    const { t } = useI18n();
     const selected = options.find((o) => o.value === value);
     const hintId = `${id}-opt`;
     return (
@@ -57,7 +65,7 @@ export const plainSkin: Skin = {
           aria-required={required || undefined}
           aria-describedby={[describedBy, selected?.description ? hintId : ''].filter(Boolean).join(' ') || undefined}
         >
-          <option value="">— select —</option>
+          <option value="">{t('select')}</option>
           {options.map((o) => (
             <option key={o.value} value={o.value} title={o.description ? paras(o.description).join(' ') : undefined}>
               {o.label}
@@ -84,44 +92,67 @@ export const plainSkin: Skin = {
       {children}
     </small>
   ),
-  Error: ({ id, children }) => (
-    <strong id={id} role="alert">
-      <br />
-      Error: {children}
-    </strong>
-  ),
-  Toggle: ({ id, checked, onChange, label, info }) => (
-    <p>
-      <input id={id} type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)} />
-      <label htmlFor={id}> Include {label} (optional)</label> {info}
-    </p>
-  ),
+  Error: function Error({ id, children }) {
+    const { t } = useI18n();
+    return (
+      <strong id={id} role="alert">
+        <br />
+        {t('errorPrefix')} {children}
+      </strong>
+    );
+  },
+  Toggle: function Toggle({ id, checked, onChange, label, info }) {
+    const { t } = useI18n();
+    return (
+      <p>
+        <input id={id} type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)} />
+        <label htmlFor={id}> {t('include', { label })} {t('optional')}</label> {info}
+      </p>
+    );
+  },
   ListHeader: ({ title, info, caption, action }) => (
     <p>
       <b>{title}</b> ({caption}) {info} {action}
     </p>
   ),
-  ListItem: ({ removeLabel, onRemove, children }) => (
-    <div>
-      {children}
-      <button type="button" aria-label={removeLabel} onClick={onRemove}>
-        Remove
-      </button>
-      <hr />
-    </div>
-  ),
-  Info: ({ text, label }) =>
-    text ? (
+  ListItem: function ListItem({ removeLabel, onRemove, children }) {
+    const { t } = useI18n();
+    return (
+      <div>
+        {children}
+        <button type="button" aria-label={removeLabel} onClick={onRemove}>
+          {t('remove')}
+        </button>
+        <hr />
+      </div>
+    );
+  },
+  Info: function Info({ def, label }) {
+    const { t, lang } = useI18n();
+    if (!def) return null;
+    return (
       <details style={{ display: 'inline' }}>
-        <summary aria-label={`About ${label}`} style={{ display: 'inline', cursor: 'pointer' }}>
+        <summary aria-label={t('aboutLabel', { label })} style={{ display: 'inline', cursor: 'pointer' }}>
           ?
         </summary>
-        {paras(text).map((p, i) => (
+        {paras(def.text).map((p, i) => (
           <small key={i}>
             <br />
             {p}
           </small>
         ))}
+        {def.lang !== lang ? (
+          <small lang={def.lang}>
+            <br />
+            {t('englishNote')}
+          </small>
+        ) : def.status === 'machine' ? (
+          <small>
+            <br />
+            {t('machineNote')}
+          </small>
+        ) : null}
       </details>
-    ) : null,
+    );
+  },
 };

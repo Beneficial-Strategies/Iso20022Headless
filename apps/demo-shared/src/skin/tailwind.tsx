@@ -1,4 +1,5 @@
 import { DescribedSelect } from '../DescribedSelect.tsx';
+import { useI18n } from '../i18n/context.tsx';
 import { Info } from '../Info.tsx';
 import type { Skin } from './types.ts';
 
@@ -15,38 +16,44 @@ const btn = {
 export const tailwindSkin: Skin = {
   id: 'tailwind',
   label: 'Tailwind',
-  description: 'Utility-class styling with a custom accessible dropdown and help popovers.',
+  description: 'Utility-class styling with a custom accessible dropdown and help popovers.', // shown via the skin_tailwind* UI messages
   Stack: ({ children }) => <div className="space-y-3">{children}</div>,
-  Group: ({ title, required, info, error, children }) => (
-    <fieldset className="rounded border border-line bg-surface-alt p-3">
-      <legend className="px-1 text-sm font-semibold text-fg">
-        {title}
-        {required ? <span className="ml-1 text-xs font-normal text-muted">(required)</span> : null}
-        {info ? <span className="ml-1 align-middle">{info}</span> : null}
-      </legend>
-      <div className="space-y-3">{children}</div>
-      {error}
-    </fieldset>
-  ),
+  Group: function Group({ title, required, info, error, children }) {
+    const { t } = useI18n();
+    return (
+      <fieldset className="rounded border border-line bg-surface-alt p-3">
+        <legend className="px-1 text-sm font-semibold text-fg">
+          {title}
+          {required ? <span className="ml-1 text-xs font-normal text-muted">{t('required')}</span> : null}
+          {info ? <span className="ml-1 align-middle">{info}</span> : null}
+        </legend>
+        <div className="space-y-3">{children}</div>
+        {error}
+      </fieldset>
+    );
+  },
   ChoiceBox: ({ children }) => <div className="rounded border border-dashed border-edge p-2">{children}</div>,
-  Field: ({ id, label, required, info, error, children }) => (
-    <div>
-      <div className="mb-0.5 flex items-center gap-1">
-        <label htmlFor={id} className="block text-xs font-medium text-fg">
-          {label}
-          {required ? (
-            <>
-              <span aria-hidden="true" className="text-danger"> *</span>
-              <span className="ml-1 font-normal text-muted">(required)</span>
-            </>
-          ) : null}
-        </label>
-        {info}
+  Field: function Field({ id, label, required, info, error, children }) {
+    const { t } = useI18n();
+    return (
+      <div>
+        <div className="mb-0.5 flex items-center gap-1">
+          <label htmlFor={id} className="block text-xs font-medium text-fg">
+            {label}
+            {required ? (
+              <>
+                <span aria-hidden="true" className="text-danger"> *</span>
+                <span className="ml-1 font-normal text-muted">{t('required')}</span>
+              </>
+            ) : null}
+          </label>
+          {info}
+        </div>
+        {children}
+        {error}
       </div>
-      {children}
-      {error}
-    </div>
-  ),
+    );
+  },
   Row: ({ children, weights }) => (
     <div className="flex gap-2">
       {(Array.isArray(children) ? children : [children]).map((c, i) => (
@@ -86,15 +93,22 @@ export const tailwindSkin: Skin = {
       {children}
     </p>
   ),
-  Toggle: ({ id, checked, onChange, label, info }) => (
-    <div className="flex items-center gap-2">
-      <input id={id} type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)} />
-      <label htmlFor={id} className="text-sm text-fg">
-        Include <span className="font-medium">{label}</span> <span className="text-xs text-muted">(optional)</span>
-      </label>
-      {info}
-    </div>
-  ),
+  Toggle: function Toggle({ id, checked, onChange, label, info }) {
+    const { t } = useI18n();
+    // word order differs between languages: split the translated sentence around the label
+    const [before = '', after = ''] = t('include', { label: '\u0001' }).split('\u0001');
+    return (
+      <div className="flex items-center gap-2">
+        <input id={id} type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)} />
+        <label htmlFor={id} className="text-sm text-fg">
+          {before}
+          <span className="font-medium">{label}</span>
+          {after} <span className="text-xs text-muted">{t('optional')}</span>
+        </label>
+        {info}
+      </div>
+    );
+  },
   ListHeader: ({ title, info, caption, action }) => (
     <div className="flex items-center justify-between">
       <span className="text-sm font-semibold text-fg">
@@ -105,18 +119,21 @@ export const tailwindSkin: Skin = {
       {action}
     </div>
   ),
-  ListItem: ({ removeLabel, onRemove, children }) => (
-    <div className="relative">
-      <button
-        type="button"
-        aria-label={removeLabel}
-        className="absolute right-1 top-1 z-10 rounded bg-surface px-1.5 text-xs text-danger ring-1 ring-danger-line hover:bg-danger-soft"
-        onClick={onRemove}
-      >
-        Remove
-      </button>
-      {children}
-    </div>
-  ),
-  Info: ({ text, label }) => <Info text={text} label={label} />,
+  ListItem: function ListItem({ removeLabel, onRemove, children }) {
+    const { t } = useI18n();
+    return (
+      <div className="relative">
+        <button
+          type="button"
+          aria-label={removeLabel}
+          className="absolute right-1 top-1 z-10 rounded bg-surface px-1.5 text-xs text-danger ring-1 ring-danger-line hover:bg-danger-soft"
+          onClick={onRemove}
+        >
+          {t('remove')}
+        </button>
+        {children}
+      </div>
+    );
+  },
+  Info: ({ def, label }) => <Info def={def} label={label} />,
 };

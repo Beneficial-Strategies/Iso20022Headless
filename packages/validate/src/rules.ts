@@ -1,3 +1,4 @@
+import type { Issue } from './messages.ts';
 import { pruneEmpty, type BooleanRule, type RuleExpression, type RuleGroup, type TypeDescriptor, type TypeDescriptors } from './runtime.ts';
 
 /**
@@ -23,11 +24,13 @@ export interface RuleResult {
   /** Path of the component instance the rule was checked against, e.g. `PaymentInformation[0]`. */
   instancePath: string;
   rule: string;
+  /** ISO id of the constraint (key for translations of its text). */
+  isoId?: string;
   status: RuleStatus;
   /** The spec's prose for the rule. */
   text: string;
-  /** Why a rule is unsupported. */
-  reason?: string;
+  /** Why a rule is unsupported, as a code plus parameters (localize with `formatIssue`). */
+  reason?: Issue;
 }
 
 export interface RuleContext {
@@ -47,7 +50,11 @@ const parseRulePath = (path: string): Seg[] =>
     .filter(Boolean)
     .map((p) => ({ name: p.replace(/\[\*\]$/, ''), each: p.endsWith('[*]') }));
 
-class Unsupported extends Error {}
+class Unsupported extends Error {
+  constructor(readonly issue: Issue) {
+    super(issue.code);
+  }
+}
 
 /** Type descriptor of the field a path ends at, walking descriptors from the owning type. */
 function leafType(ctx: RuleContext, owner: string, segs: Seg[]): TypeDescriptor | undefined {
@@ -89,19 +96,19 @@ function evalRule(ctx: RuleContext, owner: string, r: BooleanRule, instance: unk
     case 'DifferentFromValue': {
       const t = leafType(ctx, owner, segs);
       const wire = t?.kind === 'code' ? t.options?.find((o) => o.name === r.value || o.value === r.value)?.value : undefined;
-      if (wire === undefined) throw new Unsupported(`literal "${r.value}" is not a value of a code set at ${r.path}`);
+      if (wire === undefined) throw new Unsupported({ code: 'rule_literal_not_code_value', params: { value: r.value, path: r.path } });
       if (value === undefined) return false;
       return r.op === 'EqualToValue' ? value === wire : value !== wire;
     }
     case 'WithInList':
     case 'NotWithInList': {
       const list = ctx.codeLists?.[r.value ?? ''] ?? ctx.types[r.value ?? '']?.options?.map((o) => o.value);
-      if (!list) throw new Unsupported(`code list ${r.value} is not available`);
+      if (!list) throw new Unsupported({ code: 'rule_code_list_unavailable', params: { list: r.value } });
       if (value === undefined) return false;
       return r.op === 'WithInList' ? list.includes(String(value)) : !list.includes(String(value));
     }
     default:
-      throw new Unsupported(`operator ${String(r.op)}`);
+      throw new Unsupported({ code: 'rule_operator_unsupported', params: { op: String(r.op) } });
   }
 }
 
@@ -132,10 +139,10 @@ function assertSupported(ctx: RuleContext, owner: string, e: RuleExpression): vo
       if (r.op === 'EqualToValue' || r.op === 'DifferentFromValue') {
         const t = leafType(ctx, owner, parseRulePath(r.path));
         const known = t?.kind === 'code' && t.options?.some((o) => o.name === r.value || o.value === r.value);
-        if (!known) throw new Unsupported(`literal "${r.value}" is not a value of a code set at ${r.path}`);
+        if (!known) throw new Unsupported({ code: 'rule_literal_not_code_value', params: { value: r.value, path: r.path } });
       } else if (r.op === 'WithInList' || r.op === 'NotWithInList') {
         if (!ctx.codeLists?.[r.value ?? ''] && !ctx.types[r.value ?? '']?.options) {
-          throw new Unsupported(`code list ${r.value} is not available`);
+          throw new Unsupported({ code: 'rule_code_list_unavailable', params: { list: r.value } });
         }
       }
     }
@@ -201,7 +208,7 @@ export function evaluateRules(ctx: RuleContext, rootType: string, values: unknow
     if (!t.rules?.length) continue;
     for (const inst of findInstances(ctx.types, rootType, pruned, typeName)) {
       for (const rule of t.rules) {
-        const base = { instancePath: inst.path, rule: rule.name, text: rule.text };
+        const base = { instancePath: inst.path, rule: rule.name, ...(rule.isoId ? { isoId: rule.isoId } : {}), text: rule.text };
         if (!rule.expression) {
           results.push({ ...base, status: 'prose-only' });
           continue;
@@ -211,7 +218,7 @@ export function evaluateRules(ctx: RuleContext, rootType: string, values: unknow
           results.push({ ...base, status: ok ? 'pass' : 'fail' });
         } catch (e) {
           if (!(e instanceof Unsupported)) throw e;
-          results.push({ ...base, status: 'unsupported', reason: e.message });
+          results.push({ ...base, status: 'unsupported', reason: e.issue });
         }
       }
     }
