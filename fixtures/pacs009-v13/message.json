@@ -1,0 +1,35 @@
+{
+  "identifier": "pacs.009.001.13",
+  "name": "FinancialInstitutionCreditTransferV13",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:pacs.009.001.13",
+  "bodyTag": "FICdtTrf",
+  "out": "pacs009",
+  "isoId": "b70980f0-c5be-4e42-bb84-24f01b90e88e",
+  "definition": "Scope|The FinancialInstitutionCreditTransfer message is sent by a debtor financial institution to a creditor financial institution, directly or through other agents and/or a payment clearing and settlement system.|It is used to move funds from a debtor account to a creditor, where both debtor and creditor are financial institutions.|Usage|The FinancialInstitutionCreditTransfer message is exchanged between agents and can contain one or more credit transfer instructions where debtor and creditor are both financial institutions.|The FinancialInstitutionCreditTransfer message does not allow for grouping: a CreditTransferTransactionInformation block must be present for each credit transfer transaction.|The FinancialInstitutionCreditTransfer message can be used in domestic and cross-border scenarios.",
+  "blocks": [
+    {
+      "name": "CreditTransferTransactionInformation",
+      "isoId": "e66cdf0e-276e-409f-b217-dcbc5645b9f0",
+      "xmlTag": "CdtTrfTxInf",
+      "type": "CreditTransferTransaction79",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "GroupHeader",
+      "isoId": "a836a288-a238-4cb6-9f06-304337195c9c",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader131",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "fb63d1b4-d925-496c-be59-107d1fad6626",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

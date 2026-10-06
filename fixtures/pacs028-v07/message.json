@@ -1,0 +1,43 @@
+{
+  "identifier": "pacs.028.001.07",
+  "name": "FIToFIPaymentStatusRequestV07",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:pacs.028.001.07",
+  "bodyTag": "FIToFIPmtStsReq",
+  "out": "pacs028",
+  "isoId": "8fa60901-04a4-4c2d-8d76-a9c734a35cb6",
+  "definition": "Scope|The FinancialInstitutionToFinancialInstitutionPaymentStatusRequest message is sent by the debtor agent to the creditor agent, directly or through other agents and/or a payment clearing and settlement system. It is used to request a FIToFIPaymentStatusReport message containing information on the status of a previously sent instruction. |Usage|The FIToFIPaymentStatusRequest message is exchanged between agents to request status information about instructions previously sent. Its usage will always be governed by a bilateral agreement between the agents.|The FIToFIPaymentStatusRequest message can be used to request information about the status (such as rejection, acceptance) of a credit transfer instruction, a direct debit instruction, as well as other intra-agent instructions (for example FIToFIPaymentCancellationRequest).|The FIToFIPaymentStatusRequest message refers to the original instruction(s) by means of references only or by means of references and a set of elements from the original instruction.|The FIToFIPaymentStatusRequest message can be used in domestic and cross-border scenarios.",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "e51be480-61e1-4646-a5a7-c4b9838a775a",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader109",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "OriginalGroupInformation",
+      "isoId": "0a64b5a8-078b-4b84-b18e-56ae8dddc36a",
+      "xmlTag": "OrgnlGrpInf",
+      "type": "OriginalGroupInformation27",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "5293f05c-ea9d-49ae-9f27-cbd6c4c5749b",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "TransactionInformation",
+      "isoId": "90aac879-4ce6-47de-b1cb-733385b663e9",
+      "xmlTag": "TxInf",
+      "type": "PaymentTransaction171",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

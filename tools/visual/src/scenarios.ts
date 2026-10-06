@@ -383,7 +383,7 @@ function areaScenarios(): Scenario[] {
         await page.locator('#message-picker').click();
         await settle(300);
         const o = await optionsOf(page);
-        if (o.length !== 2 || !o.every((x) => x.startsWith('pacs.'))) problems.push(`message list is ${JSON.stringify(o)}`);
+        if (o.length !== 9 || !o.every((x) => x.startsWith('pacs.'))) problems.push(`message list is ${JSON.stringify(o)}`);
         if (!o.some((x) => /pacs\.003\.001\.12.*FI To FI Customer Direct Debit/.test(x))) problems.push('messages are not described');
         await page.keyboard.press('Escape');
         await settle(200);
@@ -467,7 +467,7 @@ export const scenarios: Scenario[] = [
   },
   { name: 'pain002-dark-spanish', app: 'demo-zod', query: '?message=pain.002.001.15&theme=dark&lang=es', viewport: { width: 1440, height: 900 } },
   // every other message (pain and pacs) loads and renders (generated, so a new message only needs its identifier added here)
-  ...['pain.007.001.13', 'pain.008.001.12', 'pain.009.001.08', 'pain.010.001.08', 'pain.011.001.08', 'pain.012.001.08', 'pain.013.001.12', 'pain.014.001.12', 'pain.017.001.04', 'pain.018.001.04', 'pacs.002.001.16', 'pacs.003.001.12'].map(
+  ...['pain.007.001.13', 'pain.008.001.12', 'pain.009.001.08', 'pain.010.001.08', 'pain.011.001.08', 'pain.012.001.08', 'pain.013.001.12', 'pain.014.001.12', 'pain.017.001.04', 'pain.018.001.04', 'pacs.002.001.16', 'pacs.003.001.12', 'pacs.004.001.15', 'pacs.007.001.14', 'pacs.008.001.14', 'pacs.009.001.13', 'pacs.010.001.06', 'pacs.028.001.07', 'pacs.029.001.02'].map(
     (id): Scenario => ({
       name: `message-${id}`,
       app: 'demo-form',

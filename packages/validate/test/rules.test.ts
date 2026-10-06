@@ -211,3 +211,54 @@ describe('comparing with another field, the currency attribute, and sums', () =>
   });
 });
 
+describe('counting occurrences, taking part of a text, and sums written without a leading slash', () => {
+  const field = (name: string, type: string, repeat = false) => ({ name, xmlTag: name, displayName: name, kind: 'text' as const, type, required: false, ...(repeat ? { repeat: { min: 0, max: null } } : {}) });
+  const types = {
+    Root: { name: 'Root', kind: 'component' as const, fields: [field('Count', 'Txt'), field('Name', 'Txt'), field('Items', 'Item', true), field('Total', 'Amt')] },
+    Item: { name: 'Item', kind: 'component' as const, fields: [field('Id', 'Txt'), field('Amount', 'Amt')] },
+    Txt: { name: 'Txt', kind: 'text' as const },
+    Amt: { name: 'Amt', kind: 'amount' as const },
+  };
+  const run = (expression: object, v: unknown) => evaluateExpression({ types } as never, 'Root', expression as never, v);
+  const items = (n: number) => Array.from({ length: n }, (_, i) => ({ Id: `i${i}` }));
+
+  describe('"number of occurrences of" (and the spelling "Number Occurrences")', () => {
+    for (const literal of ['number of occurrences of Items', 'Number Occurrences Items', 'number of occurrences of /Items']) {
+      it(`${literal}: the count must match the number of items`, () => {
+        const rule = { mustBe: { connector: 'AND', rules: [{ op: 'EqualToValue', path: '/Count', value: literal }] } };
+        expect(run(rule, { Count: '3', Items: items(3) })).toBe(true);
+        expect(run(rule, { Count: '2', Items: items(3) })).toBe(false);
+        expect(run(rule, { Count: '0', Items: [] })).toBe(true);
+        expect(run(rule, { Count: '03', Items: items(3) })).toBe(true); // 03 is the number 3
+        expect(run(rule, { Count: 'three', Items: items(3) })).toBe(false);
+        expect(run(rule, { Items: items(3) })).toBe(false); // no count given
+      });
+    }
+  });
+
+  describe('substring(path,start,length)', () => {
+    const rule = { mustBe: { connector: 'AND', rules: [{ op: 'DifferentFromValue', path: 'substring(/Name,1,8)', value: 'pacs.003' }] }, onCondition: { connector: 'AND', rules: [{ op: 'Presence', path: '/Count' }] } };
+    it('compares the first characters with the text as written (positions count from 1)', () => {
+      expect(run(rule, { Count: '1', Name: 'pacs.003.001.12' })).toBe(false);
+      expect(run(rule, { Count: '1', Name: 'pacs.008.001.14' })).toBe(true);
+      expect(run(rule, { Count: '1', Name: 'pacs.00' })).toBe(true); // shorter than 8: not equal
+    });
+    it('a missing text is neither equal nor different, so it fails a "different" test (as with any absent field)', () => {
+      expect(run(rule, { Count: '1' })).toBe(false);
+    });
+    it('takes a middle piece', () => {
+      const mid = { mustBe: { connector: 'AND', rules: [{ op: 'EqualToValue', path: 'substring(/Name,6,3)', value: '003' }] } };
+      expect(run(mid, { Name: 'pacs.003.001.12' })).toBe(true);
+      expect(run(mid, { Name: 'pacs.008.001.14' })).toBe(false);
+    });
+  });
+
+  it('"sum of" without a leading slash means the same as with one', () => {
+    const rule = (lit: string) => ({ mustBe: { connector: 'AND', rules: [{ op: 'EqualToValue', path: '/Total', value: lit }] } });
+    const v = { Total: { Ccy: 'EUR', Value: '5' }, Items: [{ Amount: { Ccy: 'EUR', Value: '2' } }, { Amount: { Ccy: 'EUR', Value: '3' } }] };
+    expect(run(rule('sum of Items/Amount'), v)).toBe(true);
+    expect(run(rule('sum of /Items/Amount'), v)).toBe(true);
+    expect(run(rule('sum of Items/Amount'), { ...v, Total: { Ccy: 'EUR', Value: '6' } })).toBe(false);
+  });
+});
+

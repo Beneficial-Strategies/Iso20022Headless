@@ -8,6 +8,7 @@ import {
   indicator,
   isoDate,
   isoDateTime,
+  isoTime,
   textType,
   type FieldDescriptor,
   type TypeDescriptors,

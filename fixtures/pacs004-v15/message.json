@@ -1,0 +1,43 @@
+{
+  "identifier": "pacs.004.001.15",
+  "name": "PaymentReturnV15",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:pacs.004.001.15",
+  "bodyTag": "PmtRtr",
+  "out": "pacs004",
+  "isoId": "e139f53a-df51-43c2-a761-b5231fafa5eb",
+  "definition": "Scope|The PaymentReturn message is sent by an agent to the previous agent in the payment chain to undo a payment previously settled.|Usage|The PaymentReturn message is exchanged between agents to return funds after settlement of credit transfer instructions (that is FIToFICustomerCreditTransfer message and FinancialInstitutionCreditTransfer message) or direct debit instructions (FIToFICustomerDirectDebit message).|The PaymentReturn message should not be used between agents and non-financial institution customers. Non-financial institution customers will be informed about a debit or a credit on their account(s) through a BankToCustomerDebitCreditNotification message ('notification') and/or BankToCustomerAccountReport/BankToCustomerStatement message ('statement').|The PaymentReturn message can be used to return single instructions or multiple instructions from one or different files.|The PaymentReturn message can be used in domestic and cross-border scenarios.|The PaymentReturn message refers to the original instruction(s) by means of references only or by means of references and a set of elements from the original instruction.",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "c6c306a7-2b9a-4a6b-bfea-bf258e4b8286",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader123",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "OriginalGroupInformation",
+      "isoId": "0e957bb8-35db-4a3e-95f2-0fbbedad50d4",
+      "xmlTag": "OrgnlGrpInf",
+      "type": "OriginalGroupHeader19",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "d0a1ecd8-6ab1-4bbe-8f69-10c58884b188",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "TransactionInformation",
+      "isoId": "01ee91b6-c16d-463c-a27f-4517755a3bed",
+      "xmlTag": "TxInf",
+      "type": "PaymentTransaction168",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

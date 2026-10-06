@@ -37,8 +37,12 @@ function setAt(root: Record<string, unknown>, path: string, value: unknown): voi
       const arr = (cur[s.name] as Record<string, unknown>[] | undefined) ?? (cur[s.name] = []);
       while (arr.length < s.min) arr.push({});
       if (last) {
-        if (arr[0] === undefined || Object.keys(arr[0]).length === 0) arr[0] = value as Record<string, unknown>;
-      } else cur = arr[0] as Record<string, unknown>;
+        if (arr[0] === undefined || (typeof arr[0] === 'object' && Object.keys(arr[0]).length === 0)) arr[0] = value as Record<string, unknown>;
+      } else {
+        // another path goes through here: it needs an object, even if a plain value was put here first
+        if (typeof arr[0] !== 'object' || arr[0] === null) arr[0] = {};
+        cur = arr[0] as Record<string, unknown>;
+      }
     } else if (last) {
       if (typeof cur[s.name] !== 'object' || cur[s.name] === null) cur[s.name] = value;
     } else {
@@ -108,7 +112,7 @@ describe('every machine-checkable rule can both pass and fail', () => {
   }
 
   it('covers every checkable rule', () => {
-    expect(all.length).toBe(94);
+    expect(all.length).toBe(232);
   });
 
   it('none is stuck always passing or always failing', () => {

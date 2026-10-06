@@ -51,7 +51,7 @@ const configs = new Map<string, MessageConfig>();
 for (const d of dirs) configs.set(d, JSON.parse(readFileSync(resolve(fixturesRoot, d, 'message.json'), 'utf8')) as MessageConfig);
 
 // ---------------------------------------------------------------- IR types
-type Kind = 'text' | 'number' | 'date' | 'datetime' | 'boolean' | 'code' | 'amount' | 'any' | 'component' | 'choice';
+type Kind = 'text' | 'number' | 'date' | 'datetime' | 'time' | 'boolean' | 'code' | 'amount' | 'any' | 'component' | 'choice';
 interface Field {
   name: string;
   isoId?: string;
@@ -238,6 +238,8 @@ function simpleType(name: string): IrType {
       return { ...base, kind: 'date' };
     case 'DateTime':
       return { ...base, kind: 'datetime' };
+    case 'Time':
+      return { ...base, kind: 'time' };
     case 'Year':
       return { ...base, kind: 'text', pattern: '\\d{4}' };
     case 'Indicator':
@@ -453,6 +455,8 @@ function zodExpr(t: IrType): string {
       return 'isoDate';
     case 'datetime':
       return 'isoDateTime';
+    case 'time':
+      return 'isoTime';
     case 'boolean':
       return 'indicator';
     case 'any':
@@ -525,7 +529,7 @@ function descriptorsTs(names: string[]): string {
   return out;
 }
 
-const ZOD_IMPORT = `import { z } from 'zod';\nimport {\n  anyXml,\n  choiceOf,\n  decimalType,\n  displayName,\n  indicator,\n  isoDate,\n  isoDateTime,\n  textType,\n  type FieldDescriptor,\n  type TypeDescriptors,\n} from '../runtime.ts';\n`;
+const ZOD_IMPORT = `import { z } from 'zod';\nimport {\n  anyXml,\n  choiceOf,\n  decimalType,\n  displayName,\n  indicator,\n  isoDate,\n  isoDateTime,\n  isoTime,\n  textType,\n  type FieldDescriptor,\n  type TypeDescriptors,\n} from '../runtime.ts';\n`;
 const sharedCols = (names: string[]): string[] => names.filter(isShared);
 
 // ---------------------------------------------------------------- emit IR (per message)
@@ -686,7 +690,7 @@ for (const [, cfg] of configs) {
   const all = closure.get(cfg.identifier)!;
   console.log(
     `${cfg.identifier}: ${all.length} types (${ownOrder(cfg).length} own, ${sharedCols(all).length} shared): ` +
-      ['component', 'choice', 'amount', 'code', 'text', 'number', 'date', 'datetime', 'boolean', 'any'].map((k) => `${k}=${count(all, k)}`).join(' '),
+      ['component', 'choice', 'amount', 'code', 'text', 'number', 'date', 'datetime', 'time', 'boolean', 'any'].map((k) => `${k}=${count(all, k)}`).join(' '),
   );
 }
 console.log(`shared by 2+ messages: ${sharedOrder.length} types. definitions: ${Object.keys(typeDefs).length} types, ${Object.keys(fieldDefs).length} fields, ${Object.keys(codeDefs).length} codes, ${Object.keys(codeSetDefs).length} code sets`);

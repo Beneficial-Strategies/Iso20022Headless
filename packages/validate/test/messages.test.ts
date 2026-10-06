@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { ZodType } from 'zod';
 import { collectIssues, createMessages, en, es, formatIssue, formatIssues, formatMessage, ISSUE_CODES } from '../src/index.ts';
 import { schemas } from '../src/generated/pain001.ts';
+import { isoTime } from '../src/runtime.ts';
 
 const errors = (schema: ZodType, v: unknown) => {
   const r = schema.safeParse(v);
@@ -103,5 +104,15 @@ describe('catalogs', () => {
     const issue = { code: 'rule_literal_not_code_value', params: { value: 'Branch', path: '/Name' } } as const;
     expect(formatIssue(issue, en)).toBe('literal "Branch" is not a value of a code set at /Name');
     expect(formatIssue(issue, es)).toContain('no es un valor');
+  });
+});
+
+describe('time of day (ISOTime)', () => {
+  it('accepts hh:mm:ss with optional fractions, Z or an offset', () => {
+    for (const ok of ['09:30:00', '09:30:00Z', '09:30:00.123Z', '09:30:00+02:00', '24:00:00']) expect(isoTime.safeParse(ok).success, ok).toBe(true);
+  });
+  it('rejects other shapes with a message that shows the expected form', () => {
+    for (const bad of ['9:30:00', '09:30', 'noon', '09:30:00 UTC', '2026-01-01T09:30:00']) expect(isoTime.safeParse(bad).success, bad).toBe(false);
+    expect(formatIssues(isoTime.safeParse('noon').error)['']).toContain('09:30:00Z');
   });
 });

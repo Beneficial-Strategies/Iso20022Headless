@@ -99,3 +99,50 @@ describe('pacs.003 transaction: an exchange rate is needed exactly when the curr
     expect(status(T, base, 'InstructedAmountAndExchangeRate2Rule')).toBe('pass');
   });
 });
+
+describe('pacs.004, 007, 008: the number of transactions must match the transactions given', () => {
+  const tx = (n: number) => Array.from({ length: n }, (_, i) => ({ OriginalInstructionIdentification: `I${i}` }));
+  it('pacs.008: always', () => {
+    const T = 'FIToFICustomerCreditTransferV14';
+    const msg = (declared: string, n: number) => ({ GroupHeader: { NumberOfTransactions: declared }, CreditTransferTransactionInformation: tx(n) });
+    expect(status(T, msg('2', 2), 'NumberOfTransactionsAndCreditTransfersRule')).toBe('pass');
+    expect(status(T, msg('3', 2), 'NumberOfTransactionsAndCreditTransfersRule')).toBe('fail');
+  });
+  it('pacs.007 (reversal): when it is not a whole-group reversal', () => {
+    const T = 'FIToFIPaymentReversalV14';
+    const msg = (group: string, declared: string, n: number) => ({ GroupHeader: { GroupReversal: group, NumberOfTransactions: declared }, TransactionInformation: tx(n) });
+    expect(status(T, msg('false', '2', 2), 'GroupReversalAndNumberOfTransactionsRule')).toBe('pass');
+    expect(status(T, msg('false', '5', 2), 'GroupReversalAndNumberOfTransactionsRule')).toBe('fail');
+    expect(status(T, msg('true', '5', 2), 'GroupReversalAndNumberOfTransactionsRule')).toBe('pass'); // a group reversal: not applicable
+  });
+  it('pacs.004 (return): when it is not a whole-group return', () => {
+    const T = 'PaymentReturnV15';
+    const msg = (group: string, declared: string, n: number) => ({ GroupHeader: { GroupReturn: group, NumberOfTransactions: declared }, TransactionInformation: tx(n) });
+    expect(status(T, msg('false', '3', 2), 'GroupReturnAndNumberOfTransactionsRule')).toBe('fail');
+    expect(status(T, msg('false', '2', 2), 'GroupReturnAndNumberOfTransactionsRule')).toBe('pass');
+  });
+});
+
+describe('pacs.004 and pacs.007: the cover method is not allowed for direct debits (substring of the original message name)', () => {
+  for (const T of ['PaymentReturnV15', 'FIToFIPaymentReversalV14']) {
+    it(`${T}`, () => {
+      const msg = (original: string, method: string) => ({ GroupHeader: { SettlementInformation: { SettlementMethod: method } }, OriginalGroupInformation: { OriginalMessageNameIdentification: original } });
+      expect(status(T, msg('pacs.003.001.12', 'COVE'), 'NoCoverSettlementMethodRule')).toBe('fail'); // a direct debit settled by cover
+      expect(status(T, msg('pacs.008.001.14', 'COVE'), 'NoCoverSettlementMethodRule')).toBe('pass'); // a credit transfer may be
+      expect(status(T, msg('pacs.003.001.12', 'INDA'), 'NoCoverSettlementMethodRule')).toBe('pass'); // not cover
+    });
+  }
+});
+
+describe('rules the spec gives with a misspelled field are reported, not guessed', () => {
+  it('the two sum rules of pacs.004 and pacs.007 name ReturnedInterbankSttlementAmount / ReversedInterbankSttlementAmount', () => {
+    const results = (type: string, rule: string) => evaluateRules(ctx, type, { __probe: true }).find((r) => r.rule === rule && r.instancePath === '');
+    for (const [type, rule] of [['PaymentReturnV15', 'TotalReturnedInterbankSettlementAmountAndSumRule'], ['FIToFIPaymentReversalV14', 'TotalReversedInterbankSettlementAmountAndSumRule']] as const) {
+      const r = results(type, rule)!;
+      expect(r.status).toBe('unsupported');
+      expect(r.reason).toMatchObject({ code: 'rule_path_unknown' });
+      expect(r.reason?.params?.path).toMatch(/Sttlement/);
+    }
+  });
+});
+

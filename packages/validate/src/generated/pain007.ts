@@ -8,6 +8,7 @@ import {
   indicator,
   isoDate,
   isoDateTime,
+  isoTime,
   textType,
   type FieldDescriptor,
   type TypeDescriptors,
@@ -63,6 +64,10 @@ import {
   PartyIdentification272Schema,
   Max15NumericTextSchema,
   Max105TextSchema,
+  ExternalReversalReason1CodeSchema,
+  ReversalReason4ChoiceSchema,
+  PaymentReversalReason10Schema,
+  OriginalGroupHeader20Schema,
   BatchBookingIndicatorSchema,
   ChargeBearerType1CodeSchema,
   ActiveOrHistoricCurrencyAndAmountSchema,
@@ -181,26 +186,6 @@ export const GroupHeader124Schema = z.strictObject({
   NumberOfTransactions: Max15NumericTextSchema,
 });
 
-export const ExternalReversalReason1CodeSchema = textType({min: 1, max: 4});
-
-export const ReversalReason4ChoiceSchema = choiceOf({
-  Code: ExternalReversalReason1CodeSchema,
-  Proprietary: Max35TextSchema,
-});
-
-export const PaymentReversalReason10Schema = z.strictObject({
-  AdditionalInformation: z.array(Max105TextSchema).optional(),
-  Originator: PartyIdentification272Schema.optional(),
-  Reason: ReversalReason4ChoiceSchema.optional(),
-});
-
-export const OriginalGroupHeader20Schema = z.strictObject({
-  OriginalCreationDateTime: ISODateTimeSchema.optional(),
-  OriginalMessageIdentification: Max35TextSchema,
-  OriginalMessageNameIdentification: Max35TextSchema,
-  ReversalReasonInformation: z.array(PaymentReversalReason10Schema).optional(),
-});
-
 export const PaymentTransaction174Schema = z.strictObject({
   ChargeBearer: ChargeBearerType1CodeSchema.optional(),
   OriginalEndToEndIdentification: Max35TextSchema.optional(),
@@ -254,44 +239,6 @@ const ownTypeDescriptors: TypeDescriptors = {
     rules: [
       { name: "ControlSumAndGroupReversalRule", isoId: "_5SE6cTEyEe6g-ffJsqGiSA", text: "If GroupReversal is true, then ControlSum is not allowed.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/ControlSum"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/GroupReversal"},{"op":"EqualToValue","path":"/GroupReversal","value":"true"}]}} },
       { name: "GroupReversalAndNumberOfTransactionsGuideline", isoId: "_5SE6czEyEe6g-ffJsqGiSA", text: "If GroupReversal is true, then NumberOfTransactions equals the number of transactions in the original message." },
-    ],
-  },
-  "ExternalReversalReason1Code": {
-    name: "ExternalReversalReason1Code",
-    isoId: "_amolhNp-Ed-ak6NoX_4Aeg_1644342151",
-    kind: "code",
-    minLength: 1,
-    maxLength: 4,
-    external: true,
-  },
-  "ReversalReason4Choice": {
-    name: "ReversalReason4Choice",
-    isoId: "_TQ8xYNp-Ed-ak6NoX_4Aeg_-340627899",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_TRGiYNp-Ed-ak6NoX_4Aeg_-340627868", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalReversalReason1Code", required: true }),
-      f({ name: "Proprietary", isoId: "_TRGiYdp-Ed-ak6NoX_4Aeg_-340627837", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
-    ],
-  },
-  "PaymentReversalReason10": {
-    name: "PaymentReversalReason10",
-    isoId: "_yEc2KTEyEe6g-ffJsqGiSA",
-    kind: "component",
-    fields: [
-      f({ name: "AdditionalInformation", isoId: "_yGtf9TEyEe6g-ffJsqGiSA", xmlTag: "AddtlInf", displayName: displayName("AdditionalInformation"), kind: "text", type: "Max105Text", required: false, repeat: { min: 0, max: null } }),
-      f({ name: "Originator", isoId: "_yGtf8TEyEe6g-ffJsqGiSA", xmlTag: "Orgtr", displayName: displayName("Originator"), kind: "component", type: "PartyIdentification272", required: false }),
-      f({ name: "Reason", isoId: "_yGtf8zEyEe6g-ffJsqGiSA", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "choice", type: "ReversalReason4Choice", required: false }),
-    ],
-  },
-  "OriginalGroupHeader20": {
-    name: "OriginalGroupHeader20",
-    isoId: "_yCJJATEyEe6g-ffJsqGiSA",
-    kind: "component",
-    fields: [
-      f({ name: "OriginalCreationDateTime", isoId: "_yEc2JTEyEe6g-ffJsqGiSA", xmlTag: "OrgnlCreDtTm", displayName: displayName("OriginalCreationDateTime"), kind: "datetime", type: "ISODateTime", required: false }),
-      f({ name: "OriginalMessageIdentification", isoId: "_yEc2ITEyEe6g-ffJsqGiSA", xmlTag: "OrgnlMsgId", displayName: displayName("OriginalMessageIdentification"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "OriginalMessageNameIdentification", isoId: "_yEc2IzEyEe6g-ffJsqGiSA", xmlTag: "OrgnlMsgNmId", displayName: displayName("OriginalMessageNameIdentification"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "ReversalReasonInformation", isoId: "_yEc2JzEyEe6g-ffJsqGiSA", xmlTag: "RvslRsnInf", displayName: displayName("ReversalReasonInformation"), kind: "component", type: "PaymentReversalReason10", required: false, repeat: { min: 0, max: null } }),
     ],
   },
   "PaymentTransaction174": {
@@ -403,6 +350,10 @@ export const typeDescriptors: TypeDescriptors = {
   "PartyIdentification272": sharedTypeDescriptors["PartyIdentification272"]!,
   "Max15NumericText": sharedTypeDescriptors["Max15NumericText"]!,
   "Max105Text": sharedTypeDescriptors["Max105Text"]!,
+  "ExternalReversalReason1Code": sharedTypeDescriptors["ExternalReversalReason1Code"]!,
+  "ReversalReason4Choice": sharedTypeDescriptors["ReversalReason4Choice"]!,
+  "PaymentReversalReason10": sharedTypeDescriptors["PaymentReversalReason10"]!,
+  "OriginalGroupHeader20": sharedTypeDescriptors["OriginalGroupHeader20"]!,
   "BatchBookingIndicator": sharedTypeDescriptors["BatchBookingIndicator"]!,
   "ChargeBearerType1Code": sharedTypeDescriptors["ChargeBearerType1Code"]!,
   "ActiveOrHistoricCurrencyAndAmount": sharedTypeDescriptors["ActiveOrHistoricCurrencyAndAmount"]!,

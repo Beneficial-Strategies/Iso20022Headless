@@ -32,6 +32,8 @@ function sample(types: TypeDescriptors, typeName: string, depth = 0): unknown {
         return '2026-01-02';
       case 'datetime':
         return '2026-01-02T03:04:05Z';
+      case 'time':
+        return '03:04:05.5+02:00';
       case 'any':
         return `<Envlp a="1">raw &amp; text ${n}<Inner/></Envlp>`;
       case 'code':

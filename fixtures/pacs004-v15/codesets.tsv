@@ -1,0 +1,4 @@
+codeSetName	isoId	restrictionOf	code	enumName
+ExternalReturnReason1Code	_amolg9p-Ed-ak6NoX_4Aeg_1571382159		*EXTERNAL*	minLength=1 maxLength=4; ~104 codes (not enumerated)
+Instruction4Code	_aW-_8tp-Ed-ak6NoX_4Aeg_-1362532082	InstructionCode	PHOA	PhoneNextAgent
+Instruction4Code	_aW-_8tp-Ed-ak6NoX_4Aeg_-1362532082	InstructionCode	TELA	TelecomNextAgent
