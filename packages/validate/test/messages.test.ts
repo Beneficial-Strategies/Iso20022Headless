@@ -16,7 +16,8 @@ describe('issues are codes plus parameters', () => {
     const e = errors(group, { ...goodHeader, MessageIdentification: 'x'.repeat(40), NumberOfTransactions: 'abc' });
     const issues = collectIssues(e);
     expect(issues.MessageIdentification).toEqual({ code: 'too_long', params: { max: 35 } });
-    expect(issues.NumberOfTransactions).toEqual({ code: 'invalid_format' });
+    expect(issues.NumberOfTransactions?.code).toBe('invalid_format');
+    expect(issues.NumberOfTransactions?.params?.pattern).toContain('[0-9]{1,15}'); // the pattern travels with the issue, for wording
   });
 
   it('required fields report `required`', () => {
@@ -30,13 +31,13 @@ describe('issues are codes plus parameters', () => {
   });
 });
 
-describe('English default wording is unchanged', () => {
+describe('English default wording', () => {
   const text = (v: unknown) => formatIssues(errors(group, v));
   it.each([
     ['required', (({ MessageIdentification: _o, ...r }) => r)(goodHeader), 'MessageIdentification', 'Required'],
     ['too long', { ...goodHeader, MessageIdentification: 'x'.repeat(36) }, 'MessageIdentification', 'Must be at most 35 characters'],
-    ['bad pattern', { ...goodHeader, NumberOfTransactions: 'abc' }, 'NumberOfTransactions', 'Invalid format'],
-    ['bad date-time', { ...goodHeader, CreationDateTime: 'x' }, 'CreationDateTime', 'Invalid format'],
+    ['bad pattern', { ...goodHeader, NumberOfTransactions: 'abc' }, 'NumberOfTransactions', 'Invalid format. Expected: 1 to 15 digits.'],
+    ['bad date-time', { ...goodHeader, CreationDateTime: 'x' }, 'CreationDateTime', 'Use YYYY-MM-DDThh:mm:ss followed by Z or an offset such as +02:00, for example 2026-10-06T09:30:00Z'],
   ])('%s', (_n, value, path, expected) => {
     expect(text(value)[path]).toBe(expected);
   });

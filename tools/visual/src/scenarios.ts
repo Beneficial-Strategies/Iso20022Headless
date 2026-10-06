@@ -115,6 +115,29 @@ export const scenarios: Scenario[] = [
       return w >= 440 ? [] : [`type list is only ${Math.round(w)}px wide`];
     },
   },
+  {
+    name: 'format-hint',
+    app: 'demo-form',
+    viewport: { width: 1440, height: 900 },
+    steps: async (page) => {
+      await openType(page);
+      await page.keyboard.type('BranchAndFinancialInstitutionIdentification8');
+      await settle();
+      await clickText(page, '[cmdk-item]', /^BranchAndFinancialInstitutionIdentification8/);
+      await settle(600);
+      await page.locator('#FinancialInstitutionIdentification-BICFI').fill('deutdeff');
+      await page.locator('#FinancialInstitutionIdentification-LEI').fill('123');
+      await page.keyboard.press('Tab');
+      await settle();
+    },
+    expect: async (page) => {
+      const text = await page.evaluate(() => [...document.querySelectorAll('[role=alert]')].map((e) => e.textContent ?? '').join(' | '));
+      const problems: string[] = [];
+      if (!/Not a valid BIC \(8 or 11 characters\)\. Expected: 4 uppercase letters or digits/.test(text)) problems.push(`BIC error is not explanatory: ${text}`);
+      if (!/Not a valid LEI \(20 characters\)/.test(text)) problems.push(`LEI error is not explanatory: ${text}`);
+      return problems;
+    },
+  },
   { name: 'type-picker-open-narrow', app: 'demo-form', viewport: { width: 480, height: 900 }, steps: openType },
   { name: 'display-open', app: 'demo-form', viewport: { width: 1440, height: 900 }, steps: openDisplay },
   { name: 'display-open-narrow-spanish', app: 'demo-form', query: '?lang=es', viewport: { width: 480, height: 900 }, steps: openDisplay },

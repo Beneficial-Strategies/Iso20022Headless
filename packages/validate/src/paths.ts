@@ -106,7 +106,8 @@ function toIssue(issue: ZodIssue): Issue {
       return { code: (issue as { input?: unknown }).input === undefined || /undefined/.test(issue.message) ? 'required' : 'invalid_type' };
     case 'invalid_format':
       // validators in runtime.ts name their own format codes via the message
-      return { code: KNOWN.has(issue.message) ? (issue.message as IssueCode) : 'invalid_format' };
+      if (KNOWN.has(issue.message)) return { code: issue.message as IssueCode };
+      return { code: 'invalid_format', ...('pattern' in issue && typeof issue.pattern === 'string' ? { params: { pattern: issue.pattern } } : {}) };
     case 'too_small':
       return issue.origin === 'array'
         ? { code: 'too_few_items', params: { min: Number(issue.minimum) } }
