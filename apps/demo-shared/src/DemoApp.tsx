@@ -45,7 +45,7 @@ function useMessageBundle(identifier: string): MessageBundle | undefined {
 function MessagePicker({ value, onChange }: { value: string; onChange: (id: string) => void }) {
   const { t } = useI18n();
   return (
-    <div className="w-[min(15rem,100%)] min-w-0 shrink-0">
+    <div className="w-[min(9rem,100%)] min-w-0 shrink-0">
       <DescribedSelect
         id="message-picker"
         ariaLabel={t('messageLabel')}
@@ -80,7 +80,7 @@ function TypePicker({ bundle, value, onChange }: { bundle: MessageBundle; value:
   return (
     <div
       ref={root}
-      className="relative w-[min(34rem,100%)] min-w-0 grow sm:grow-0"
+      className="relative w-[34rem] max-w-full min-w-0 shrink"
       onKeyDown={(e) => {
         if (e.key === 'Escape' && open) {
           setOpen(false);
@@ -259,12 +259,14 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
   return (
     <I18nProvider value={i18n}>
       <div className="flex h-screen flex-col bg-surface p-4 text-fg">
-        <header className="mb-3 flex flex-wrap items-end justify-between gap-3">
-          <div className="min-w-0 flex-1 basis-80">
-            <h1 className="text-lg font-semibold">{i18n.t(`title_${variant}` as UiKey)}</h1>
-            <p className="max-w-3xl text-xs text-muted">{i18n.t(`blurb_${variant}` as UiKey)}</p>
+        <header className="mb-3">
+          <div className="-mx-4 -mt-4 mb-3 border-b border-bar-from bg-linear-to-r from-bar-from to-bar-to px-4 py-3 shadow-md">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+              <h1 className="text-xl font-bold tracking-tight text-bar-fg">{i18n.t(`title_${variant}` as UiKey)}</h1>
+              <p className="min-w-0 max-w-2xl text-xs text-bar-muted sm:text-right">{i18n.t(`blurb_${variant}` as UiKey)}</p>
+            </div>
           </div>
-          <div className="flex min-w-0 flex-wrap items-end gap-2 sm:flex-nowrap">
+          <div className="flex min-w-0 flex-wrap items-end justify-start gap-2 sm:flex-nowrap sm:justify-end">
             <MessagePicker value={settings.message} onChange={(message) => update({ message })} />
             {bundle && typeName ? <TypePicker bundle={bundle} value={typeName} onChange={(type) => setChosenType({ message: settings.message, type })} /> : null}
             <SettingsPanel settings={settings} skins={skins} locales={locales} onChange={update} />

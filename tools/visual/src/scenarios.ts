@@ -54,6 +54,40 @@ export const scenarios: Scenario[] = [
       return problems;
     },
   },
+  {
+    name: 'editor-title',
+    app: 'demo-form',
+    viewport: { width: 1440, height: 900 },
+    steps: async (page) => {
+      await page.locator("button[aria-label='About Customer Credit Transfer Initiation V13']").click();
+      await settle();
+    },
+    expect: async (page) => {
+      const r = await page.evaluate(() => {
+        const h = document.querySelector<HTMLElement>('[data-schema-form] h2');
+        const legend = document.querySelector<HTMLElement>('[data-schema-form] legend');
+        const size = (e: Element | null) => (e ? parseFloat(getComputedStyle(e).fontSize) : 0);
+        const first = document.querySelector('[data-schema-form]')?.firstElementChild?.firstElementChild;
+        return { title: h?.textContent ?? '', h: size(h), legend: size(legend), first: first === h };
+      });
+      const problems: string[] = [];
+      if (!/Customer Credit Transfer Initiation V13/.test(r.title)) problems.push(`title is "${r.title}"`);
+      if (!(r.h > r.legend)) problems.push(`title font (${r.h}px) is not larger than the group heading (${r.legend}px)`);
+      if (!r.first) problems.push('the title is not the first thing in the form');
+      if (!(await popupText(page)).includes('sent by the initiating party')) problems.push('the message description is missing from the help note');
+      return problems;
+    },
+  },
+  {
+    name: 'editor-title-spanish-plain',
+    app: 'demo-form',
+    query: '?lang=es&skin=plain&message=pain.002.001.15',
+    viewport: { width: 1440, height: 900 },
+    expect: async (page) => {
+      const r = await page.evaluate(() => document.querySelector('[data-schema-form] h2')?.textContent ?? '');
+      return /Customer Payment Status Report V15/.test(r) ? [] : [`title is "${r}"`];
+    },
+  },
   { name: 'pain002-dark-spanish', app: 'demo-zod', query: '?message=pain.002.001.15&theme=dark&lang=es', viewport: { width: 1440, height: 900 } },
   { name: 'dark', app: 'demo-form', query: '?theme=dark', viewport: { width: 1440, height: 900 } },
   { name: 'large-text', app: 'demo-form', query: '?size=large', viewport: { width: 1440, height: 900 } },

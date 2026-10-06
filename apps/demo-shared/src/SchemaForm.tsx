@@ -1,4 +1,4 @@
-import type { FieldDescriptor } from '@beneficial-strategies/iso20022-validate';
+import { displayName, type FieldDescriptor } from '@beneficial-strategies/iso20022-validate';
 import type { FormApi } from './formApi.ts';
 import { useI18n } from './i18n/context.tsx';
 import { useSkin } from './skin/context.tsx';
@@ -242,12 +242,15 @@ function FieldNode({ form, field, path, label, depth }: Omit<NodeProps, 'require
 export function SchemaForm({ form }: { form: FormApi }) {
   const S = useSkin();
   const labelOf = useLabel();
+  const { defs } = useI18n();
   const root = form.typeDescriptors[form.rootType]!;
+  const title = displayName(root.name);
   const fields = root.kind === 'choice' ? [] : (root.fields ?? []);
   return (
     // data-schema-form marks everything the skin renders, so page chrome around it can be told apart
     <div data-schema-form>
     <S.Stack>
+      <S.Title info={<S.Info def={defs.type(root)} label={title} />}>{title}</S.Title>
       {root.kind === 'choice' ? (
         <ChoiceNode
           form={form}

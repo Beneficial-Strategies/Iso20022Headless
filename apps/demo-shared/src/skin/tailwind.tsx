@@ -18,6 +18,12 @@ export const tailwindSkin: Skin = {
   label: 'Tailwind',
   description: 'Utility-class styling with a custom accessible dropdown and help popovers.', // shown via the skin_tailwind* UI messages
   Stack: ({ children }) => <div className="space-y-3">{children}</div>,
+  Title: ({ children, info }) => (
+    <h2 className="mb-3 text-2xl font-bold text-fg">
+      {children}
+      {info ? <span className="ml-2 align-middle text-base font-normal">{info}</span> : null}
+    </h2>
+  ),
   Group: function Group({ title, required, info, error, children }) {
     const { t } = useI18n();
     return (
