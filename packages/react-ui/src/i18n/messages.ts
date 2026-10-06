@@ -22,6 +22,8 @@ const KEYS = [
   'noteRenderer', 'noteLanguage', 'noteTailwind', 'noteCoreFields', 'pickStack',
   // paste from the clipboard
   'pasteXml', 'pasteJson', 'paste', 'pasteNoData', 'pasteBlocked', 'pasteUnknown', 'pasteDone', 'pasteDoneIssues', 'pasteSwitched', 'pasteFailed', 'pasteDismiss', 'pasteMoreIssues', 'pasteError_empty', 'pasteError_not_xml_or_json', 'pasteError_unknown_namespace', 'pasteError_xml_syntax', 'pasteError_json_syntax', 'pasteError_not_json_object', 'pasteError_wrong_root', 'pasteError_wrong_body', 'pasteError_whole_message_for_part', 'pasteError_fragment_mismatch', 'pasteError_clipboard_unreadable', 'pasteIssue_unknown_element', 'pasteIssue_duplicate_element', 'pasteIssue_multiple_choices', 'pasteIssue_unexpected_text', 'pasteIssue_unexpected_element',
+  // files and deployment
+  'loadFile', 'saveXml', 'saveJson', 'fileDone', 'fileDoneIssues', 'fileFailed', 'fileError_empty', 'fileError_not_xml_or_json', 'fileError_unreadable', 'fileError_too_large', 'stepServe', 'noteServe',
 ] as const;
 
 export type UiKey = (typeof KEYS)[number];
@@ -164,6 +166,18 @@ export const uiEn: UiMessages = {
   pasteIssue_multiple_choices: 'More than one alternative at {path} ({detail}); the first was used.',
   pasteIssue_unexpected_text: 'Unexpected text at {path} was ignored.',
   pasteIssue_unexpected_element: 'Unexpected {detail} inside a single value at {path} was ignored.',
+  loadFile: 'Load file…',
+  saveXml: 'Save XML',
+  saveJson: 'Save JSON',
+  fileDone: 'Loaded {format} from {name}.',
+  fileDoneIssues: 'Loaded {format} from {name}, but {n} could not be placed:',
+  fileFailed: 'Nothing was loaded.',
+  fileError_empty: 'The file is empty.',
+  fileError_not_xml_or_json: 'The file does not contain XML or JSON.',
+  fileError_unreadable: 'The file could not be read.',
+  fileError_too_large: 'The file is too large (the limit is 20 MB).',
+  stepServe: 'When you deploy',
+  noteServe: 'Bundlers name each built file after its content, so a changed file always gets a new name. Serve those files with a long cache lifetime and browsers download them once, then keep them; also turn on Brotli compression if your host offers it (about 20% smaller than gzip).',
 };
 
 const plural = (n: number | string | undefined, one: string, many: string): string => (Number(n) === 1 ? one : many);
@@ -301,6 +315,18 @@ export const uiEs: UiMessages = {
   pasteIssue_multiple_choices: 'Hay más de una alternativa en {path} ({detail}); se usó la primera.',
   pasteIssue_unexpected_text: 'Se ignoró texto inesperado en {path}.',
   pasteIssue_unexpected_element: 'Se ignoró {detail} inesperado dentro de un valor simple en {path}.',
+  loadFile: 'Cargar archivo…',
+  saveXml: 'Guardar XML',
+  saveJson: 'Guardar JSON',
+  fileDone: 'Se cargó {format} desde {name}.',
+  fileDoneIssues: 'Se cargó {format} desde {name}, pero {n} no se pudieron colocar:',
+  fileFailed: 'No se cargó nada.',
+  fileError_empty: 'El archivo está vacío.',
+  fileError_not_xml_or_json: 'El archivo no contiene XML ni JSON.',
+  fileError_unreadable: 'No se pudo leer el archivo.',
+  fileError_too_large: 'El archivo es demasiado grande (el límite es 20 MB).',
+  stepServe: 'Al desplegar',
+  noteServe: 'Los empaquetadores dan a cada archivo generado un nombre basado en su contenido, así que un archivo modificado siempre tiene un nombre nuevo. Sirva esos archivos con una vigencia de caché larga y los navegadores los descargarán una sola vez y los conservarán; active también la compresión Brotli si su servidor la ofrece (alrededor de un 20 % menor que gzip).',
 };
 
 /** Languages shipped with the demo. Others can be added through `createI18n` / `DemoApp`'s `i18n` prop. */

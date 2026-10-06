@@ -41,8 +41,9 @@ function emitOne(types: TypeDescriptors, f: FieldDescriptor, value: unknown, ind
       return;
     }
     case 'amount': {
-      const a = value as { Ccy: string; Value: string };
-      out.push(`${open} Ccy="${esc(a.Ccy)}">${esc(a.Value)}</${f.xmlTag}>`);
+      // a draft may have only one of the two parts; write what there is (an empty currency or value), as the JSON form does
+      const a = value as { Ccy?: string; Value?: string };
+      out.push(`${open} Ccy="${esc(a.Ccy ?? '')}">${esc(a.Value ?? '')}</${f.xmlTag}>`);
       return;
     }
     case 'any':

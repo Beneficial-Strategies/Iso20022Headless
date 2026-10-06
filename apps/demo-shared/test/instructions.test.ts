@@ -27,10 +27,18 @@ describe('instructions', () => {
 
   it('React: install, component named after the type, usage', () => {
     const steps = buildInstructions({ ...base, react: true });
-    expect(steps.map((s) => s.title)).toEqual(['stepInstall', 'stepComponent', 'stepUse']);
+    expect(steps.map((s) => s.title)).toEqual(['stepInstall', 'stepComponent', 'stepUse', 'stepServe']);
     expect(steps[0]!.snippets[0]!.code).toBe('npm install @beneficial-strategies/iso20022-react-ui @beneficial-strategies/iso20022-validate zod');
     expect(snippet(steps, `${N}.tsx`)).toContain(`export function ${N}()`);
     expect(steps[2]!.snippets[0]!.code).toContain(`<${N} />`);
+  });
+
+  it('ends with how to serve the built files, for every stack', () => {
+    for (const stack of [{ react: true }, { vue: true }, { svelte: true }, { other: true }]) {
+      const steps = buildInstructions({ ...base, ...stack });
+      expect(steps.at(-1)!.title).toBe('stepServe');
+      expect(steps.at(-1)!.snippets[0]!.code).toContain('Cache-Control: public, max-age=31536000, immutable');
+    }
   });
 
   it('uses the package manager chosen', () => {

@@ -1,3 +1,6 @@
+import { existsSync, mkdtempSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import type { Page } from 'puppeteer-core';
 
 export interface Scenario {
@@ -192,6 +195,136 @@ function pasteScenarios(): Scenario[] {
   // the Zod-only demo uses a hand-written form hook: the same paste must work there
   const first = all.find((x) => x.name === 'paste-user-message')!;
   return [...all, { ...first, name: 'paste-user-message-zod-demo', app: 'demo-zod' }];
+}
+
+// ---------------------------------------------------------------------------- saving and loading files
+
+const scratch = (): string => mkdtempSync(join(tmpdir(), 'iso20022-visual-'));
+const writeScratch = (name: string, content: string | Buffer): string => {
+  const p = join(scratch(), name);
+  writeFileSync(p, content);
+  return p;
+};
+/** Send downloads to a folder we can read, so a saved file can be checked. */
+async function downloadsTo(page: Page): Promise<string> {
+  const dir = scratch();
+  const client = await page.createCDPSession();
+  await client.send('Browser.setDownloadBehavior', { behavior: 'allow', downloadPath: dir });
+  return dir;
+}
+async function savedFile(dir: string, name: string): Promise<string | undefined> {
+  for (let i = 0; i < 30; i++) {
+    if (existsSync(join(dir, name)) && !readdirSync(dir).some((f) => f.endsWith('.crdownload'))) return readFileSync(join(dir, name), 'utf8');
+    await settle(200);
+  }
+  return undefined;
+}
+async function chooseFile(page: Page, path: string): Promise<void> {
+  const input = await page.$('input[data-load-file]');
+  if (!input) throw new Error('no file input');
+  await input.uploadFile(path);
+  await settle(1000);
+}
+
+function fileScenarios(): Scenario[] {
+  const base = { app: 'demo-form' as const, viewport: { width: 1440, height: 1000 } };
+  const saveButton = (page: Page, label: RegExp): Promise<void> => clickText(page, '[aria-label="XML preview"] button', label);
+  // the data a saved-and-reloaded round trip leaves behind, for the checks that run after the steps
+  const trip: { saved?: string; after?: { id: string; status: string; fresh: string } } = {};
+  return [
+    {
+      ...base,
+      name: 'file-load-user-message',
+      query: '?message=pain.002.001.15',
+      steps: async (page) => chooseFile(page, writeScratch('user-message.xml', USER_XML)),
+      expect: async (page) => {
+        const problems: string[] = [];
+        if ((await fieldValue(page, 'OriginalGroupInformationAndStatus-GroupStatus')) !== 'ABCD') problems.push('GroupStatus was not loaded');
+        if (!/Loaded XML from user-message\.xml/.test(await reportText(page))) problems.push(`report is "${await reportText(page)}"`);
+        return problems;
+      },
+    },
+    {
+      ...base,
+      app: 'demo-zod',
+      name: 'file-load-user-message-zod-demo',
+      query: '?message=pain.002.001.15',
+      steps: async (page) => chooseFile(page, writeScratch('user-message.xml', USER_XML)),
+      expect: async (page) => ((await fieldValue(page, 'GroupHeader-MessageIdentification')) === '87787878878778877' ? [] : ['not loaded in the Zod-only demo']),
+    },
+    {
+      ...base,
+      name: 'file-save-then-load-back',
+      query: '?message=pain.002.001.15',
+      steps: async (page) => {
+        const dir = await downloadsTo(page);
+        await page.locator('#GroupHeader-MessageIdentification').fill('SAVED-1');
+        await page.locator('#OriginalGroupInformationAndStatus-GroupStatus').fill('RJCT');
+        await settle(400);
+        await saveButton(page, /^Save XML$/);
+        trip.saved = await savedFile(dir, 'pain.002.001.15.xml');
+        // a fresh page has nothing in it; load the file we just saved
+        await page.goto(page.url(), { waitUntil: 'networkidle0' });
+        const fresh = await fieldValue(page, 'GroupHeader-MessageIdentification');
+        if (trip.saved) await chooseFile(page, join(dir, 'pain.002.001.15.xml'));
+        trip.after = { id: await fieldValue(page, 'GroupHeader-MessageIdentification'), status: await fieldValue(page, 'OriginalGroupInformationAndStatus-GroupStatus'), fresh };
+      },
+      expect: async () => {
+        const problems: string[] = [];
+        if (!trip.saved) problems.push('no file was saved');
+        else if (!/<MsgId>SAVED-1<\/MsgId>/.test(trip.saved) || !/<GrpSts>RJCT<\/GrpSts>/.test(trip.saved)) problems.push('the saved file does not hold what was typed');
+        if (trip.after?.fresh !== '') problems.push('the fresh page was not empty');
+        if (trip.after?.id !== 'SAVED-1' || trip.after?.status !== 'RJCT') problems.push(`loading the saved file did not restore the values: ${JSON.stringify(trip.after)}`);
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'file-save-json',
+      query: '?message=pain.002.001.15&format=json',
+      steps: async (page) => {
+        const dir = await downloadsTo(page);
+        await page.locator('#GroupHeader-MessageIdentification').fill('JSON-SAVED');
+        await settle(400);
+        await saveButton(page, /^Save JSON$/);
+        trip.saved = await savedFile(dir, 'pain.002.001.15.json');
+      },
+      expect: async () => {
+        try {
+          const j = JSON.parse(trip.saved ?? '');
+          return j.Document?.CstmrPmtStsRpt?.GrpHdr?.MsgId === 'JSON-SAVED' ? [] : ['the saved JSON does not hold what was typed'];
+        } catch {
+          return ['no valid JSON file was saved'];
+        }
+      },
+    },
+    {
+      ...base,
+      name: 'file-load-switches-message-by-namespace',
+      query: '?message=pain.002.001.15',
+      steps: async (page) => chooseFile(page, writeScratch('other.xml', PAIN001_XML)),
+      expect: async (page) => {
+        const picker = await page.evaluate(() => document.querySelector('#message-picker')?.textContent ?? '');
+        return /pain\.001\.001\.13/.test(picker) && (await fieldValue(page, 'GroupHeader-MessageIdentification')) === 'FROM-001' && /Switched to pain\.001\.001\.13/.test(await reportText(page))
+          ? []
+          : [`not switched and loaded: picker "${picker}", report "${await reportText(page)}"`];
+      },
+    },
+    {
+      ...base,
+      name: 'file-load-not-xml-spanish',
+      query: '?message=pain.002.001.15&lang=es',
+      steps: async (page) => chooseFile(page, writeScratch('notes.txt', 'just some words')),
+      expect: async (page) => (/El archivo no contiene XML ni JSON/.test(await reportText(page)) ? [] : [`report is "${await reportText(page)}"`]),
+    },
+    {
+      ...base,
+      name: 'file-load-too-large',
+      query: '?message=pain.002.001.15',
+      steps: async (page) => chooseFile(page, writeScratch('huge.xml', Buffer.alloc(21 * 1024 * 1024, 'a'))),
+      expect: async (page) => (/too large/.test(await reportText(page)) ? [] : [`report is "${await reportText(page)}"`]),
+    },
+  ];
 }
 
 export const scenarios: Scenario[] = [
@@ -453,6 +586,7 @@ export const scenarios: Scenario[] = [
     },
   },
   ...pasteScenarios(),
+  ...fileScenarios(),
   { name: 'type-picker-open-narrow', app: 'demo-form', viewport: { width: 480, height: 900 }, steps: openType },
   { name: 'display-open', app: 'demo-form', viewport: { width: 1440, height: 900 }, steps: openDisplay },
   { name: 'display-open-narrow-spanish', app: 'demo-form', query: '?lang=es', viewport: { width: 480, height: 900 }, steps: openDisplay },

@@ -7,9 +7,10 @@ import { serializeFragment, serializeFragmentIsoJson, serializeToIsoJson, serial
 import { XmlPane } from './XmlPane.tsx';
 import { SettingsPanel } from './SettingsPanel.tsx';
 import { useClipboard } from './clipboard.ts';
+import { downloadText, readTextFile, saveFileName } from './files.ts';
 import { ImplementDialog } from './ImplementDialog.tsx';
 import { planPaste } from './paste.ts';
-import { PasteReport, type PasteReportData } from './PasteReport.tsx';
+import { PasteReport, type PasteReportData, type TextSource } from './PasteReport.tsx';
 import { useSettings, type Format } from './settings.ts';
 
 const messageIds = messageIndex.map((m) => m.identifier);
@@ -239,24 +240,21 @@ function Editor({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  /** Paste XML or JSON from the clipboard into the selected object (or, for XML naming another message, into that one). */
-  const doPaste = async (): Promise<void> => {
-    let text: string;
-    try {
-      text = await clipboard.read();
-    } catch {
-      setReport({ kind: 'error', error: { code: 'clipboard_unreadable' } });
-      return;
-    }
+  /**
+   * Load XML or JSON text into the selected object (or, for XML naming another message, into that one).
+   * The same path serves Paste and Load file; only the wording of the report differs.
+   */
+  const loadText = async (text: string, source: TextSource): Promise<void> => {
     const plan = await planPaste(text, { identifier: bundle.message.identifier, bundle, typeName }, loadBundle);
     if (!plan.ok) {
-      setReport({ kind: 'error', error: plan.error });
+      setReport({ kind: 'error', error: plan.error, source });
       return;
     }
     const done: PasteReportData = {
       kind: 'done',
       format: plan.format,
       issues: plan.issues,
+      source,
       ...(plan.target.identifier !== bundle.message.identifier ? { switchedTo: plan.target.identifier } : {}),
     };
     if (plan.switched) {
@@ -267,6 +265,31 @@ function Editor({
     form.touchAll(); // show what is wrong with the loaded values right away
     setReport(done);
   };
+
+  const doPaste = async (): Promise<void> => {
+    const source: TextSource = { kind: 'clipboard' };
+    let text: string;
+    try {
+      text = await clipboard.read();
+    } catch {
+      setReport({ kind: 'error', error: { code: 'clipboard_unreadable' }, source });
+      return;
+    }
+    await loadText(text, source);
+  };
+
+  const doLoadFile = async (file: File): Promise<void> => {
+    const source: TextSource = { kind: 'file', name: file.name };
+    const read = await readTextFile(file);
+    if (!read.ok) {
+      setReport({ kind: 'error', error: { code: read.reason === 'too_large' ? 'file_too_large' : 'file_unreadable' }, source });
+      return;
+    }
+    await loadText(read.text, source);
+  };
+
+  /** Save exactly what the pane shows, as XML or ISO JSON, whichever is selected. */
+  const doSave = (): void => downloadText(saveFileName(bundle.message.identifier, typeName, bundle.message.rootType, format), output, format);
   const pasteLabel = clipboard.kind === 'xml' ? t('pasteXml') : clipboard.kind === 'json' ? t('pasteJson') : t('paste');
   const pasteTitle = clipboard.kind === 'none' ? t('pasteNoData') : clipboard.kind === 'blocked' ? t('pasteBlocked') : clipboard.kind === 'unknown' ? t('pasteUnknown') : undefined;
   const output = useMemo(() => {
@@ -334,6 +357,8 @@ function Editor({
             dark={dark}
             format={format}
             onCopied={clipboard.noteCopied}
+            load={{ label: t('loadFile'), onFile: (f) => void doLoadFile(f) }}
+            save={{ label: t(format === 'json' ? 'saveJson' : 'saveXml'), onClick: doSave }}
             paste={{ label: pasteLabel, ...(pasteTitle ? { title: pasteTitle } : {}), disabled: clipboard.kind === 'none' || clipboard.kind === 'blocked', onClick: () => void doPaste() }}
           />
         </div>

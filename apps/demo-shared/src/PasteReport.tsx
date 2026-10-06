@@ -2,16 +2,24 @@ import type { ParseIssue } from '@beneficial-strategies/iso20022-serialize';
 import { useI18n, type UiKey } from '@beneficial-strategies/iso20022-react-ui';
 import type { PasteError } from './paste.ts';
 
-/** The outcome of the last paste, shown until dismissed. */
+/** Where the text came from: the clipboard (Paste) or a file the user chose (Load file). */
+export type TextSource = { kind: 'clipboard' } | { kind: 'file'; name: string };
+
+/** The outcome of the last paste or file load, shown until dismissed. */
 export type PasteReportData =
-  | { kind: 'error'; error: PasteError }
-  | { kind: 'done'; format: 'xml' | 'json'; issues: ParseIssue[]; /** The message that was loaded instead of the selected one. */ switchedTo?: string };
+  | { kind: 'error'; error: PasteError; source: TextSource }
+  | { kind: 'done'; format: 'xml' | 'json'; issues: ParseIssue[]; source: TextSource; /** The message that was loaded instead of the selected one. */ switchedTo?: string };
 
 type T = (key: UiKey, params?: Record<string, string | number | undefined>) => string;
 
-/** One sentence saying why nothing was pasted. */
-export function describePasteError(t: T, e: PasteError): string {
+/** One sentence saying why nothing was pasted or loaded. */
+export function describePasteError(t: T, e: PasteError, source: TextSource = { kind: 'clipboard' }): string {
+  if (source.kind === 'file' && (e.code === 'empty' || e.code === 'not_xml_or_json')) return t(`fileError_${e.code}`);
   switch (e.code) {
+    case 'file_unreadable':
+      return t('fileError_unreadable');
+    case 'file_too_large':
+      return t('fileError_too_large');
     case 'unknown_namespace':
       return t('pasteError_unknown_namespace', { namespace: e.namespace });
     case 'whole_message_for_part':
@@ -57,14 +65,20 @@ export function PasteReport({ report, onDismiss }: { report: PasteReportData; on
       <div className="min-w-0 flex-1">
         {report.kind === 'error' ? (
           <>
-            <p className="font-semibold">{t('pasteFailed')}</p>
-            <p>{describePasteError(t, report.error)}</p>
+            <p className="font-semibold">{t(report.source.kind === 'file' ? 'fileFailed' : 'pasteFailed')}</p>
+            <p>{describePasteError(t, report.error, report.source)}</p>
           </>
         ) : (
           <>
             {report.switchedTo ? <p className="font-semibold">{t('pasteSwitched', { message: report.switchedTo })}</p> : null}
             <p className={report.switchedTo ? '' : 'font-semibold'}>
-              {issues.length > 0 ? t('pasteDoneIssues', { format: report.format.toUpperCase(), n: issues.length }) : t('pasteDone', { format: report.format.toUpperCase() })}
+              {report.source.kind === 'file'
+                ? issues.length > 0
+                  ? t('fileDoneIssues', { format: report.format.toUpperCase(), name: report.source.name, n: issues.length })
+                  : t('fileDone', { format: report.format.toUpperCase(), name: report.source.name })
+                : issues.length > 0
+                  ? t('pasteDoneIssues', { format: report.format.toUpperCase(), n: issues.length })
+                  : t('pasteDone', { format: report.format.toUpperCase() })}
             </p>
             {issues.length > 0 ? (
               <ul className="mt-1 list-disc space-y-0.5 pl-4">

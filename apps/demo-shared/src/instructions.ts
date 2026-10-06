@@ -30,19 +30,20 @@ export type StepTitle =
   | 'stepStyles'
   | 'stepCore'
   | 'stepCoreVue'
-  | 'stepCoreSvelte';
+  | 'stepCoreSvelte'
+  | 'stepServe';
 
 export interface Snippet {
   /** File name to suggest, when the snippet is a file. */
   file?: string;
-  lang: 'bash' | 'tsx' | 'ts' | 'css' | 'vue' | 'svelte';
+  lang: 'bash' | 'tsx' | 'ts' | 'css' | 'vue' | 'svelte' | 'http';
   code: string;
 }
 
 export interface Step {
   title: StepTitle;
   /** A line of explanation shown under the title, as a message key. */
-  note?: 'noteRenderer' | 'noteLanguage' | 'noteTailwind' | 'noteCoreFields';
+  note?: 'noteRenderer' | 'noteLanguage' | 'noteTailwind' | 'noteCoreFields' | 'noteServe';
   snippets: Snippet[];
 }
 
@@ -168,6 +169,10 @@ export function buildInstructions(o: ImplementOptions): Step[] {
     steps.push({ title: 'stepCore', note: 'noteRenderer', snippets: [{ file: `${name}.ts`, lang: 'ts', code: coreModel(o) }] });
     if (o.vue) steps.push({ title: 'stepCoreVue', snippets: [{ file: `${name}.vue`, lang: 'vue', code: VUE.replace('MODEL', name) }] });
     if (o.svelte) steps.push({ title: 'stepCoreSvelte', snippets: [{ file: `${name}.svelte`, lang: 'svelte', code: SVELTE.replace('MODEL', name) }] });
+  }
+  // every stack: how to serve the built files so browsers download them once
+  if (steps.length > 0) {
+    steps.push({ title: 'stepServe', note: 'noteServe', snippets: [{ file: 'response header for your built assets', lang: 'http', code: 'Cache-Control: public, max-age=31536000, immutable\n' }] });
   }
   return steps;
 }
