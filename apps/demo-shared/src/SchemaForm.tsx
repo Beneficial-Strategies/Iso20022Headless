@@ -1,6 +1,7 @@
 import type { FieldDescriptor } from '@beneficial-strategies/iso20022-validate';
 import type { ReactNode } from 'react';
 import type { FormApi } from './formApi.ts';
+import { DescribedSelect } from './DescribedSelect.tsx';
 import { Info, definitionFor } from './Info.tsx';
 import { codeDefinitions } from '@beneficial-strategies/iso20022-validate/definitions';
 
@@ -73,14 +74,16 @@ function Leaf({ form, field, path, label, required, parentType, noInfo }: NodePr
     const describedBy = [props['aria-describedby'], codeDef ? `${props.id}-codedef` : ''].filter(Boolean).join(' ');
     control = (
       <>
-        <select {...props} aria-describedby={describedBy || undefined} className={inputCls}>
-          <option value="">—</option>
-          {t.options.map((o) => (
-            <option key={o.value} value={o.value}>
-              {o.value} — {o.name}
-            </option>
-          ))}
-        </select>
+        <DescribedSelect
+          id={props.id}
+          value={props.value}
+          options={t.options.map((o) => ({ value: o.value, label: `${o.value} — ${o.name}`, description: codeDefinitions[`${t.name}.${o.value}`] }))}
+          onChange={props.onChange}
+          onBlur={props.onBlur}
+          invalid={props['aria-invalid'] === true}
+          required={props['aria-required'] === true}
+          describedBy={describedBy || undefined}
+        />
         {codeDef ? (
           <p id={`${props.id}-codedef`} className="mt-0.5 text-xs text-slate-500">
             {codeDef}
@@ -90,11 +93,16 @@ function Leaf({ form, field, path, label, required, parentType, noInfo }: NodePr
     );
   } else if (t.kind === 'boolean') {
     control = (
-      <select {...props} className={inputCls}>
-        <option value="">—</option>
-        <option value="true">true</option>
-        <option value="false">false</option>
-      </select>
+      <DescribedSelect
+        id={props.id}
+        value={props.value}
+        options={[{ value: 'true', label: 'true' }, { value: 'false', label: 'false' }]}
+        onChange={props.onChange}
+        onBlur={props.onBlur}
+        invalid={props['aria-invalid'] === true}
+        required={props['aria-required'] === true}
+        describedBy={props['aria-describedby']}
+      />
     );
   } else if (t.kind === 'any') {
     control = <textarea {...props} rows={2} className={inputCls + ' font-mono'} placeholder="<xml/> (raw XML)" />;
@@ -162,21 +170,15 @@ function ChoiceNode({ form, field, path, label, required, depth, parentType, noI
   return (
     <div className="rounded border border-dashed border-slate-300 p-2">
       <Label htmlFor={id} field={fieldReq} label={`${label} — choose one`} info={noInfo ? null : <Info text={definitionFor(parentType, field)} label={label} />} />
-      <select
+      <DescribedSelect
         id={id}
-        className={inputCls}
         value={selected ?? ''}
-        aria-required={fieldReq.required || undefined}
-        aria-invalid={form.errors[path] ? true : undefined}
-        onChange={(e) => form.selectChoice(path, field.type, e.target.value || undefined)}
-      >
-        <option value="">— select —</option>
-        {t.choiceOptions?.map((o) => (
-          <option key={o.name} value={o.name}>
-            {o.displayName}
-          </option>
-        ))}
-      </select>
+        options={(t.choiceOptions ?? []).map((o) => ({ value: o.name, label: o.displayName, description: definitionFor(field.type, o) }))}
+        onChange={(v) => form.selectChoice(path, field.type, v || undefined)}
+        invalid={Boolean(form.errors[path])}
+        required={fieldReq.required}
+        describedBy={form.errors[path] ? `${id}-error` : undefined}
+      />
       <ErrorText form={form} path={path} />
       {option ? (
         <div className="mt-2">
