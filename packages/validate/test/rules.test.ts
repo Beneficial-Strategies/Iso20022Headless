@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { evaluateRules, pain001Message, ruleCodeLists, typeDescriptors } from '../src/index.ts';
+import { evaluateExpression, evaluateRules, ruleCodeLists } from '../src/index.ts';
+import { pain001Message, typeDescriptors } from '../src/generated/pain001.ts';
 
 const ctx = { types: typeDescriptors, codeLists: ruleCodeLists };
 
@@ -104,5 +105,22 @@ describe('business rule evaluation (PaymentInstruction51)', () => {
     });
     const failing = results.filter((r) => r.status === 'fail');
     expect(failing.map((r) => `${r.instancePath}:${r.rule}`)).toEqual(['PaymentInformation[1]:ChargesAccountRule']);
+  });
+
+  it('numeric path indexes count from 1, as in XPath: Presence(/A[1]) means "at least one A"', () => {
+    const types = {
+      Root: { name: 'Root', kind: 'component' as const, fields: [{ name: 'Items', xmlTag: 'It', displayName: 'Items', kind: 'component' as const, type: 'Item', required: false, repeat: { min: 0, max: null } }, { name: 'Flag', xmlTag: 'Fl', displayName: 'Flag', kind: 'text' as const, type: 'Txt', required: false }] },
+      Item: { name: 'Item', kind: 'component' as const, fields: [] },
+      Txt: { name: 'Txt', kind: 'text' as const },
+    };
+    // if there is a first Item, Flag must be absent
+    const expression = {
+      mustBe: { connector: 'AND' as const, rules: [{ op: 'Absence' as const, path: '/Flag' }] },
+      onCondition: { connector: 'AND' as const, rules: [{ op: 'Presence' as const, path: '/Items[1]' }] },
+    };
+    const holds = (v: unknown) => evaluateExpression({ types }, 'Root', expression, v);
+    expect(holds({ Flag: 'x' })).toBe(true); // no Items: the condition is false, the rule does not apply
+    expect(holds({ Items: [{ a: '1' }], Flag: 'x' })).toBe(false);
+    expect(holds({ Items: [{ a: '1' }] })).toBe(true);
   });
 });

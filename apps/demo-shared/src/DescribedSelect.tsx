@@ -16,6 +16,8 @@ interface Props {
   invalid?: boolean;
   required?: boolean;
   describedBy?: string | undefined;
+  /** Accessible name when no <label> points at the control. */
+  ariaLabel?: string | undefined;
   className?: string;
 }
 
@@ -27,7 +29,7 @@ const oneLine = (s: string): string => s.split('|').map((x) => x.trim()).filter(
  * description. A native <select> cannot render anything but plain text in its options.
  * Keyboard: Arrow Up/Down, Home/End, Enter/Space to choose, Escape to close, type to jump.
  */
-export function DescribedSelect({ id, value, options, onChange, onBlur, placeholder: placeholderProp, invalid, required, describedBy, className }: Props) {
+export function DescribedSelect({ id, value, options, onChange, onBlur, placeholder: placeholderProp, invalid, required, describedBy, ariaLabel, className }: Props) {
   const { t } = useI18n();
   const placeholder = placeholderProp ?? t('select');
   const listId = useId();
@@ -137,6 +139,7 @@ export function DescribedSelect({ id, value, options, onChange, onBlur, placehol
         aria-invalid={invalid || undefined}
         aria-required={required || undefined}
         aria-describedby={describedBy}
+        aria-label={ariaLabel}
         className={
           className ??
           'flex w-full items-center justify-between rounded border border-edge bg-surface px-2 py-1 text-left text-sm text-fg shadow-sm focus:border-focus focus:outline-none focus-visible:ring-2 focus-visible:ring-focus aria-[invalid=true]:border-danger-line aria-[invalid=true]:bg-danger-soft'

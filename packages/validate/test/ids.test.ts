@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { codeDefinitions, createDefinitions, fieldDefinitions, typeDefinitions, typeDescriptors } from '../src/definitions.ts';
+import { codeDefinitions, createDefinitions, fieldDefinitions, typeDefinitions } from '../src/definitions.ts';
+import { allTypeDescriptors as typeDescriptors } from '../src/generated/all.ts';
 
 const types = Object.values(typeDescriptors);
 const fields = types.flatMap((t) => [...(t.fields ?? []), ...(t.choiceOptions ?? [])]);
@@ -7,7 +8,7 @@ const fields = types.flatMap((t) => [...(t.fields ?? []), ...(t.choiceOptions ??
 describe('ISO ids on descriptors', () => {
   it('every type except the synthetic message root has an id; ids are unique', () => {
     const missing = types.filter((t) => !t.isoId).map((t) => t.name);
-    expect(missing).toEqual(['CustomerCreditTransferInitiationV13']);
+    expect(missing.sort()).toEqual(['CustomerCreditTransferInitiationV13', 'CustomerPaymentStatusReportV15']);
     const ids = types.map((t) => t.isoId).filter(Boolean);
     expect(new Set(ids).size).toBe(ids.length);
   });
@@ -25,7 +26,7 @@ describe('ISO ids on descriptors', () => {
 
   it('enumerated code options carry ids', () => {
     const options = types.flatMap((t) => t.options ?? []);
-    expect(options.length).toBe(93);
+    expect(options.length).toBe(110); // enumerated codes across both messages
     expect(options.every((o) => o.isoId)).toBe(true);
   });
 });
@@ -53,10 +54,10 @@ describe('definitions are keyed by id and fully covered', () => {
     expect(missing).toEqual([]);
   });
 
-  it('counts match the capture: 362 elements, 97 types, 93 codes', () => {
-    expect(Object.keys(fieldDefinitions)).toHaveLength(362);
-    expect(Object.keys(typeDefinitions)).toHaveLength(97);
-    expect(Object.keys(codeDefinitions)).toHaveLength(93);
+  it('counts match the captures (pain.001 + pain.002): 487 elements, 118 types, 110 codes', () => {
+    expect(Object.keys(fieldDefinitions)).toHaveLength(487);
+    expect(Object.keys(typeDefinitions)).toHaveLength(118);
+    expect(Object.keys(codeDefinitions)).toHaveLength(110);
   });
 });
 

@@ -14,7 +14,7 @@ const KEYS = [
   // settings
   'display', 'displayDialog', 'theme', 'theme_system', 'theme_light', 'theme_dark', 'themeHint', 'textSize', 'size_normal',
   'size_large', 'size_xlarge', 'density', 'density_comfortable', 'density_compact', 'skinLegend', 'skin_tailwind',
-  'skin_tailwind_desc', 'skin_plain', 'skin_plain_desc', 'language', 'lang_auto', 'outputFormat', 'format_xml', 'format_json', 'formatHint', 'copyJson', 'settingsNote',
+  'skin_tailwind_desc', 'skin_plain', 'skin_plain_desc', 'language', 'lang_auto', 'outputFormat', 'format_xml', 'format_json', 'formatHint', 'copyJson', 'messageLabel', 'loading', 'settingsNote',
 ] as const;
 
 export type UiKey = (typeof KEYS)[number];
@@ -97,6 +97,8 @@ export const uiEn: UiMessages = {
   format_json: 'JSON',
   formatHint: 'JSON follows the ISO 20022 JSON syntax (TSG, June 2025): abbreviated tags, arrays for repeating elements, amounts as { amt, Ccy }.',
   copyJson: 'Copy JSON',
+  messageLabel: 'Message',
+  loading: 'Loading…',
   settingsNote: 'Settings are kept in the page address, so a link reproduces this view.',
 };
 
@@ -175,6 +177,8 @@ export const uiEs: UiMessages = {
   format_json: 'JSON',
   formatHint: 'JSON sigue la sintaxis JSON de ISO 20022 (TSG, junio de 2025): etiquetas abreviadas, matrices para elementos repetidos e importes como { amt, Ccy }.',
   copyJson: 'Copiar JSON',
+  messageLabel: 'Mensaje',
+  loading: 'Cargando…',
   settingsNote: 'Los ajustes se guardan en la dirección de la página, de modo que un enlace reproduce esta vista.',
 };
 

@@ -41,6 +41,20 @@ const popupText = (page: Page): Promise<string> => page.evaluate(() => document.
 
 export const scenarios: Scenario[] = [
   { name: 'default', app: 'demo-form', viewport: { width: 1440, height: 900 } },
+  {
+    name: 'pain002',
+    app: 'demo-form',
+    query: '?message=pain.002.001.15',
+    viewport: { width: 1440, height: 900 },
+    expect: async (page) => {
+      const r = await page.evaluate(() => ({ group: Boolean(document.querySelector('#GroupHeader-MessageIdentification')), xml: document.querySelector('.cm-content')?.textContent ?? '' }));
+      const problems: string[] = [];
+      if (!r.group) problems.push('pain.002 form did not render its GroupHeader');
+      if (!/pain\.002\.001\.15/.test(r.xml)) problems.push('XML pane does not use the pain.002 namespace');
+      return problems;
+    },
+  },
+  { name: 'pain002-dark-spanish', app: 'demo-zod', query: '?message=pain.002.001.15&theme=dark&lang=es', viewport: { width: 1440, height: 900 } },
   { name: 'dark', app: 'demo-form', query: '?theme=dark', viewport: { width: 1440, height: 900 } },
   { name: 'large-text', app: 'demo-form', query: '?size=large', viewport: { width: 1440, height: 900 } },
   { name: 'xlarge-spanish', app: 'demo-form', query: '?size=xlarge&lang=es', viewport: { width: 1440, height: 900 } },

@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { pain001Message, pruneEmpty, typeDescriptors } from '../src/index.ts';
+import { pruneEmpty } from '../src/index.ts';
+import { pain001Message, typeDescriptors } from '../src/generated/pain001.ts';
 
 const valid = () => ({
   GroupHeader: {

@@ -1,14 +1,10 @@
 import { hashOf, type Unit } from './catalog.ts';
-import {
-  codeDefinitions,
-  codeSetDefinitions,
-  fieldDefinitions,
-  typeDefinitions,
-  typeDescriptors,
-} from '../../../packages/validate/src/definitions.ts';
+import { allTypeDescriptors as typeDescriptors } from '../../../packages/validate/src/generated/all.ts';
+import { codeDefinitions, codeSetDefinitions, fieldDefinitions, typeDefinitions } from '../../../packages/validate/src/generated/definitions.ts';
 import { displayName } from '../../../packages/validate/src/runtime.ts';
 
-export const MESSAGE = 'pain.001.001.13';
+/** The messages whose text the catalog covers (all generated messages). */
+export const MESSAGE = 'pain.001.001.13, pain.002.001.15';
 
 /** Every translatable string of the message, from the generated descriptors and definitions. English only. */
 export function extractUnits(): Unit[] {

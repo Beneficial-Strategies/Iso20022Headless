@@ -1,7 +1,35 @@
 {
   "locale": "es",
-  "message": "pain.001.001.13",
+  "message": "pain.001.001.13, pain.002.001.15",
   "entries": {
+    "code:_a_OEp9p-Ed-ak6NoX_4Aeg_1524547392": {
+      "text": "Pago mediante transferencia contable interna.",
+      "source": "e16291fc0ace",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "code:_a_OEpdp-Ed-ak6NoX_4Aeg_1501460232": {
+      "text": "El canal de compensación es un sistema de liquidación neta en tiempo real.",
+      "source": "36f56df40d60",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "code:_a_OEpNp-Ed-ak6NoX_4Aeg_1501459782": {
+      "text": "El canal de compensación es un sistema de liquidación bruta en tiempo real.",
+      "source": "1b69caf908c5",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "code:_a_OEptp-Ed-ak6NoX_4Aeg_1501460309": {
+      "text": "El canal de compensación es un sistema de liquidación neta de pagos masivos.",
+      "source": "b2c6d48ae87b",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "code:_a-7Js9p-Ed-ak6NoX_4Aeg_1485265523": {
       "text": "Cheque bancario garantizado con una fecha valor futura (no pagar antes de), que en términos comerciales es un «instrumento negociable»: el beneficiario puede recibir el pago anticipado de cualquier banco con la deducción de un descuento. La cuenta del cliente ordenante se adeuda en la fecha valor.",
       "source": "f7583f6df28d",
@@ -422,6 +450,41 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "code:_t90OJFkyEeGeoaLUQk__nA_908612180": {
+      "text": "Primer cobro de una serie de instrucciones de adeudo directo.",
+      "source": "526cfb76b514",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "code:_t99_I1kyEeGeoaLUQk__nA_-1832965217": {
+      "text": "Cobro utilizado para volver a presentar operaciones de adeudo directo previamente revertidas o devueltas.",
+      "source": "d1f0bcff18b8",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "code:_t99_IFkyEeGeoaLUQk__nA_1026483165": {
+      "text": "Instrucción de adeudo directo en la que la autorización del ordenante se utiliza para operaciones de adeudo directo periódicas iniciadas por el beneficiario.",
+      "source": "1df0883eb5aa",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "code:_t99_IlkyEeGeoaLUQk__nA_1948646475": {
+      "text": "Instrucción de adeudo directo en la que la autorización del ordenante se utiliza para iniciar una única operación de adeudo directo.",
+      "source": "4da2ca7e63b4",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "code:_t99_IVkyEeGeoaLUQk__nA_-1801335368": {
+      "text": "Último cobro de una serie de instrucciones de adeudo directo.",
+      "source": "4867ca05c4cc",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "code:_TCckgXRmEeiH1ZOt2UD8vQ": {
       "text": "El tratamiento de la persona es neutro en cuanto al género (Mx).",
       "source": "c75fb5ce7877",
@@ -583,9 +646,37 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "code:_Z0kPY9p-Ed-ak6NoX_4Aeg_-2121115388": {
+      "text": "Transferencia de una cantidad de dinero en los libros de la entidad gestora de la cuenta.",
+      "source": "3efdce2a610f",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "code:_Z0kPYNp-Ed-ak6NoX_4Aeg_1931781417": {
       "text": "Transferencia de una cantidad de dinero en los libros de la entidad gestora de la cuenta. Debe enviarse un aviso al titular de la cuenta.",
       "source": "e0babf6ddf52",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "code:_Z0kPYtp-Ed-ak6NoX_4Aeg_-2121115778": {
+      "text": "Orden escrita dirigida a un banco para pagar una cantidad determinada de dinero de una persona a otra.",
+      "source": "84ece8cb7a2e",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "code:_Z0kPZdp-Ed-ak6NoX_4Aeg_-2121115311": {
+      "text": "Transferencia de una cantidad de dinero en los libros de la entidad gestora de la cuenta. Debe enviarse un aviso al titular de la cuenta.",
+      "source": "e0babf6ddf52",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "code:_Z0kPZNp-Ed-ak6NoX_4Aeg_-2121115346": {
+      "text": "Cobro por parte del beneficiario de un importe de dinero de la cuenta bancaria del ordenante. El importe y las fechas de los cobros pueden variar.",
+      "source": "bb30413f4172",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -607,6 +698,34 @@
     "code:_ZbPJYNp-Ed-ak6NoX_4Aeg_-1464346584": {
       "text": "La información regulatoria se aplica al lado del débito.",
       "source": "2c58f0c0d54f",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "code:_ZMCPw9p-Ed-ak6NoX_4Aeg_543203158": {
+      "text": "La liquidación la realiza la entidad que instruye y reenvía el pago a la siguiente parte de la cadena de pago.",
+      "source": "6a6bbcaa4660",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "code:_ZMCPwtp-Ed-ak6NoX_4Aeg_301241605": {
+      "text": "La liquidación la realiza la entidad instruida para ejecutar una instrucción de pago.",
+      "source": "0a75af63e563",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "code:_ZMCPxdp-Ed-ak6NoX_4Aeg_569985423": {
+      "text": "La liquidación se realiza a través de un sistema de compensación de pagos.",
+      "source": "997c2f5ef08a",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "code:_ZMCPxNp-Ed-ak6NoX_4Aeg_546899109": {
+      "text": "La liquidación se realiza mediante un pago de cobertura.",
+      "source": "a7bf004606df",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -649,6 +768,34 @@
     "code:_ZsX8uNp-Ed-ak6NoX_4Aeg_-517542998": {
       "text": "La información del aviso de remesa debe enviarse por correo electrónico.",
       "source": "0aee9ce17b59",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "codeName:_a_OEp9p-Ed-ak6NoX_4Aeg_1524547392": {
+      "text": "Transferencia contable",
+      "source": "ff608d2d71fa",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "codeName:_a_OEpdp-Ed-ak6NoX_4Aeg_1501460232": {
+      "text": "Sistema de liquidación neta en tiempo real",
+      "source": "b9b777ebeda6",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "codeName:_a_OEpNp-Ed-ak6NoX_4Aeg_1501459782": {
+      "text": "Sistema de liquidación bruta en tiempo real",
+      "source": "2b22667202ea",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "codeName:_a_OEptp-Ed-ak6NoX_4Aeg_1501460309": {
+      "text": "Sistema de liquidación neta de pagos masivos",
+      "source": "4644ba59ff4e",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -1073,6 +1220,41 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "codeName:_t90OJFkyEeGeoaLUQk__nA_908612180": {
+      "text": "Primero",
+      "source": "a151ceb1711a",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "codeName:_t99_I1kyEeGeoaLUQk__nA_-1832965217": {
+      "text": "Representado",
+      "source": "86b2a9812a17",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "codeName:_t99_IFkyEeGeoaLUQk__nA_1026483165": {
+      "text": "Recurrente",
+      "source": "c0c06e547b1b",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "codeName:_t99_IlkyEeGeoaLUQk__nA_1948646475": {
+      "text": "Único",
+      "source": "c67349f079a7",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "codeName:_t99_IVkyEeGeoaLUQk__nA_-1801335368": {
+      "text": "Final",
+      "source": "f4ed8fa656b7",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "codeName:_TCckgXRmEeiH1ZOt2UD8vQ": {
       "text": "Neutro en cuanto al género",
       "source": "a9cf1f642156",
@@ -1234,9 +1416,37 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "codeName:_Z0kPY9p-Ed-ak6NoX_4Aeg_-2121115388": {
+      "text": "Transferencia",
+      "source": "c7065576bb95",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "codeName:_Z0kPYNp-Ed-ak6NoX_4Aeg_1931781417": {
       "text": "Aviso de transferencia",
       "source": "b80bb331eada",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "codeName:_Z0kPYtp-Ed-ak6NoX_4Aeg_-2121115778": {
+      "text": "Cheque",
+      "source": "71665973a0c1",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "codeName:_Z0kPZdp-Ed-ak6NoX_4Aeg_-2121115311": {
+      "text": "Aviso de transferencia",
+      "source": "b80bb331eada",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "codeName:_Z0kPZNp-Ed-ak6NoX_4Aeg_-2121115346": {
+      "text": "Adeudo directo",
+      "source": "650fba45484e",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -1258,6 +1468,34 @@
     "codeName:_ZbPJYNp-Ed-ak6NoX_4Aeg_-1464346584": {
       "text": "Débito",
       "source": "ae224acb87e2",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "codeName:_ZMCPw9p-Ed-ak6NoX_4Aeg_543203158": {
+      "text": "Entidad instructora",
+      "source": "4e79663366c8",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "codeName:_ZMCPwtp-Ed-ak6NoX_4Aeg_301241605": {
+      "text": "Entidad instruida",
+      "source": "dcf288b26deb",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "codeName:_ZMCPxdp-Ed-ak6NoX_4Aeg_569985423": {
+      "text": "Sistema de compensación",
+      "source": "9dbb4583eb85",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "codeName:_ZMCPxNp-Ed-ak6NoX_4Aeg_546899109": {
+      "text": "Método de cobertura",
+      "source": "e9b8f361fffc",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -1304,6 +1542,13 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "codeSet:_a_OEo9p-Ed-ak6NoX_4Aeg_1501459302": {
+      "text": "Especifica el canal de compensación para el encaminamiento de la operación, como parte de la identificación del tipo de pago.",
+      "source": "4ea40aa91086",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "codeSet:_a-Usx9p-Ed-ak6NoX_4Aeg_681596924": {
       "text": "Especifica el método que se utilizará para entregar un cheque a una parte.",
       "source": "a14bfaec430f",
@@ -1339,6 +1584,20 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "codeSet:_amolhtp-Ed-ak6NoX_4Aeg_1672970561": {
+      "text": "Especifica el motivo del estado, según se publica en una lista externa de códigos de motivos de estado. Los conjuntos de códigos externos pueden descargarse de www.iso20022.org.",
+      "source": "7bd64f459b06",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "codeSet:_amVqktp-Ed-ak6NoX_4Aeg_1632765855": {
+      "text": "Especifica el sistema de compensación de efectivo, según se publica en una lista externa de códigos de sistemas de compensación de efectivo. Los conjuntos de códigos externos pueden descargarse de www.iso20022.org.",
+      "source": "3c8962d9dcaf",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "codeSet:_bjbk9Np-Ed-ak6NoX_4Aeg_300324450": {
       "text": "Especifica el nivel de aprobación en función de varios factores, entre ellos el tipo de pago, el importe umbral o la práctica local del país o de las operaciones.",
       "source": "fdead19e5ea4",
@@ -1349,6 +1608,13 @@
     "codeSet:_bm2sYNp-Ed-ak6NoX_4Aeg_595056355": {
       "text": "Especifica el tipo de dirección.",
       "source": "9e93f180e07b",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "codeSet:_bqIp5tp-Ed-ak6NoX_4Aeg_-1326801359": {
+      "text": "Código asignado a una moneda por una agencia de mantenimiento conforme a un esquema internacional de identificación, tal como se describe en la última edición de la norma internacional ISO 4217 «Códigos para la representación de monedas y fondos».",
+      "source": "f89325bb3f9a",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -1402,9 +1668,37 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "codeSet:_t90OI1kyEeGeoaLUQk__nA_2097556198": {
+      "text": "Especifica el tipo de la operación actual que pertenece a una secuencia de operaciones.",
+      "source": "86b61780d06d",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "codeSet:_t9qdIFkyEeGeoaLUQk__nA_-849686320": {
+      "text": "Especifica la naturaleza o el uso de los gastos en formato de cadena de caracteres con una longitud máxima de 4 caracteres. La lista de códigos válidos es una lista externa de códigos publicada por separado. Los conjuntos de códigos externos pueden descargarse de www.iso20022.org.",
+      "source": "aa36c6ad74b0",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "codeSet:_U8Z8ANomEembTrt_WixjyQ": {
       "text": "Especifica el tipo de aviso que se devolverá en el informe.",
       "source": "58ce204d891f",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "codeSet:_v9bSwWXiEeap-P22vGV91g": {
+      "text": "Especifica el estado de un grupo de instrucciones de pago, según se publica en un conjunto externo de códigos de estado de grupos de pago. Los conjuntos de códigos externos pueden descargarse de www.iso20022.org.",
+      "source": "7fceda5551be",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "codeSet:_wCGbwZRjEeazAtAtDSg0Nw": {
+      "text": "Especifica el estado de una instrucción de pago individual, según se publica en un conjunto externo de códigos de estado de operaciones de pago. Los conjuntos de códigos externos pueden descargarse de www.iso20022.org.",
+      "source": "09e5384df073",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -1423,9 +1717,23 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "codeSet:_Z0kPYdp-Ed-ak6NoX_4Aeg_-2121115820": {
+      "text": "Especifica el método de transferencia que se utilizará para transferir un importe de dinero.",
+      "source": "5a89762b0dcc",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "codeSet:_ZbFYZtp-Ed-ak6NoX_4Aeg_-1577941174": {
       "text": "Identifica si la información de reporte regulatorio se aplica al lado del débito, al lado del crédito o a ambos lados, débito y crédito, de la operación.",
       "source": "d4c8674a1303",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "codeSet:_ZMCPwdp-Ed-ak6NoX_4Aeg_-115267772": {
+      "text": "Especifica el método utilizado para liquidar la instrucción de transferencia.",
+      "source": "e5f682cad708",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -1507,6 +1815,27 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "field:_-1rj05RuEeazAtAtDSg0Nw": {
+      "text": "Número de operaciones individuales contenidas en el mensaje, detallado por estado.",
+      "source": "ce1fd8bfac99",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_-1rj15RuEeazAtAtDSg0Nw": {
+      "text": "Total de todos los importes individuales incluidos en el mensaje, independientemente de las monedas, detallado por estado.",
+      "source": "b1734e730014",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_-1rj1ZRuEeazAtAtDSg0Nw": {
+      "text": "Estado de operación común a todas las operaciones individuales notificadas.",
+      "source": "32d91497df66",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "field:_0KjnATEyEe6g-ffJsqGiSA": {
       "text": "Identificación única, asignada por la parte iniciadora, para identificar inequívocamente la información de remesa enviada por separado de la instrucción de pago, como un aviso de remesa.",
       "source": "a7ba8315b55a",
@@ -1563,9 +1892,58 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "field:_1bDlkTEyEe6g-ffJsqGiSA": {
+      "text": "Momento en que se ha confirmado una actualización del sistema de seguimiento. ||Uso: |Esta fecha puede ser el momento en que una entidad proporciona al sistema de seguimiento una actualización de estado pendiente o aquel en que se ha abonado al beneficiario y este puede disponer del importe de dinero (según lo confirmado al sistema de seguimiento por la entidad del beneficiario).",
+      "source": "6093460d95af",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_1bDlkzEyEe6g-ffJsqGiSA": {
+      "text": "Importe de dinero confirmado al sistema de seguimiento por la entidad.",
+      "source": "c4ff205cc9ae",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_1bDllTEyEe6g-ffJsqGiSA": {
+      "text": "Proporciona información de seguimiento de la operación para una entidad concreta que interviene en la cadena de la operación.",
+      "source": "a25b14294de9",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "field:_1bz5sB71EeSxevWRRWxNAg": {
       "text": "Período para el que deben crearse y procesarse el número de instrucciones.",
       "source": "d8424acb8336",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_1dWroTEyEe6g-ffJsqGiSA": {
+      "text": "Identificación de una entidad en el sistema de seguimiento.",
+      "source": "6fd4b4526102",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_1dWrozEyEe6g-ffJsqGiSA": {
+      "text": "Especifica qué parte o partes soportarán los gastos asociados al tratamiento de la operación de pago.",
+      "source": "f257c665fb0a",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_1dWrpTEyEe6g-ffJsqGiSA": {
+      "text": "Gastos de la operación que debe pagar el responsable de los gastos.",
+      "source": "79c35ebe5e1c",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_1dWrpzEyEe6g-ffJsqGiSA": {
+      "text": "Proporciona los detalles del tipo y de las divisas utilizadas en el cambio de divisas.",
+      "source": "c644d9ef538b",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -1682,6 +2060,62 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "field:_4smO1TEyEe6g-ffJsqGiSA": {
+      "text": "Referencia punto a punto, asignada por la parte instructora original, para identificar de forma inequívoca el mensaje original.",
+      "source": "0a40dbc5e074",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_4smO1zEyEe6g-ffJsqGiSA": {
+      "text": "Especifica el identificador del nombre del mensaje original al que se refiere el mensaje.",
+      "source": "7e615a2a252c",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_4smO2TEyEe6g-ffJsqGiSA": {
+      "text": "Fecha y hora en la que se creó el mensaje original.",
+      "source": "433f211441f4",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_4smO2zEyEe6g-ffJsqGiSA": {
+      "text": "Número de operaciones individuales contenidas en el mensaje original.",
+      "source": "f77c6ac82db2",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_4smO3TEyEe6g-ffJsqGiSA": {
+      "text": "Total de todos los importes individuales incluidos en el mensaje original, independientemente de las monedas.",
+      "source": "601f7b3ea864",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_4smO3zEyEe6g-ffJsqGiSA": {
+      "text": "Especifica el estado de un grupo de operaciones.",
+      "source": "80126d5dc10e",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_4smO4TEyEe6g-ffJsqGiSA": {
+      "text": "Proporciona información detallada sobre el motivo del estado.",
+      "source": "6a2d6ab47b21",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_4smO4zEyEe6g-ffJsqGiSA": {
+      "text": "Información detallada sobre el número de operaciones para cada estado de operación idéntico.",
+      "source": "277c1fd476ff",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "field:_5-dq0DHsEe6BxvG014AZzQ": {
       "text": "Identifica a un destinatario que acepta la correspondencia en nombre del receptor previsto. El uso de «a la atención de» garantiza que la correspondencia llegue al receptor correcto en lugar de ser devuelta al remitente.",
       "source": "a7bd09633d29",
@@ -1692,6 +2126,48 @@
     "field:_6IxUQWk2Eeanu6HLe77Rkg": {
       "text": "Especifica una frecuencia en términos de un punto exacto en el tiempo o momento dentro de un tipo de período especificado.",
       "source": "6e840bb39380",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_6jjJaTEyEe6g-ffJsqGiSA": {
+      "text": "Entidad financiera que gestiona una cuenta del ordenante.",
+      "source": "c8c072c93d53",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_6jjJazEyEe6g-ffJsqGiSA": {
+      "text": "Entidad financiera que gestiona una cuenta del beneficiario.",
+      "source": "adc1097ceb08",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_6jjJYTEyEe6g-ffJsqGiSA": {
+      "text": "Referencia punto a punto, asignada por la parte instructora y enviada a la siguiente parte de la cadena para identificar de forma inequívoca el mensaje.|Uso: La parte instructora debe asegurarse de que 'MessageIdentification' sea único por parte instruida durante un período previamente acordado.",
+      "source": "166e7e586b01",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_6jjJYzEyEe6g-ffJsqGiSA": {
+      "text": "Fecha y hora en que se creó el mensaje.",
+      "source": "8a971494d071",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_6jjJZTEyEe6g-ffJsqGiSA": {
+      "text": "Parte que inicia el mensaje de estado.",
+      "source": "7e52751938cf",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_6jjJZzEyEe6g-ffJsqGiSA": {
+      "text": "Entidad financiera que recibe la instrucción de la parte iniciadora y la reenvía a la siguiente entidad de la cadena de pago.",
+      "source": "41b2889c2959",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -1923,6 +2399,48 @@
     "field:_ciKhmablEeKvUvwX_r3tzA": {
       "text": "Identificación del emisor del tipo de identificación de la línea del documento de referencia.",
       "source": "c279137d50f9",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_clCMs3R0EeiH1ZOt2UD8vQ": {
+      "text": "Indicador de la urgencia o del orden de importancia que la parte instructora desea que la parte instruida aplique al procesamiento de la instrucción.",
+      "source": "91c994538179",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_clCMt3R0EeiH1ZOt2UD8vQ": {
+      "text": "Acuerdo o normas en virtud de los cuales debe procesarse la operación.",
+      "source": "ea792efce43e",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_clCMtXR0EeiH1ZOt2UD8vQ": {
+      "text": "Especifica el canal de compensación que se utilizará para procesar la instrucción de pago.",
+      "source": "33b696fa9e42",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_clCMu3R0EeiH1ZOt2UD8vQ": {
+      "text": "Identifica la secuencia del adeudo directo, como primero, recurrente, final o único.",
+      "source": "f83e25c20ce0",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_clCMuXR0EeiH1ZOt2UD8vQ": {
+      "text": "Instrumento específico de una comunidad de usuarios.||Uso: Este elemento se utiliza para especificar un instrumento local o una opción de compensación local, o para calificar más el servicio o el nivel de servicio.",
+      "source": "ec4c756ffca5",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_clCMvXR0EeiH1ZOt2UD8vQ": {
+      "text": "Especifica la finalidad de alto nivel de la instrucción basada en un conjunto de categorías predefinidas.|Uso: Lo utiliza la parte iniciadora para proporcionar información sobre el procesamiento del pago. Es probable que desencadene un procesamiento especial por parte de cualquiera de las entidades que intervienen en la cadena de pago.",
+      "source": "56de59b15339",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -2417,6 +2935,34 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "field:_NF4WQ4W7EeiDBOVr6AJAFA": {
+      "text": "Moneda a la cual se convierte un importe en una conversión de moneda.",
+      "source": "27a7d20cc590",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_NF4WQYW7EeiDBOVr6AJAFA": {
+      "text": "Moneda desde la cual se convierte un importe en una conversión de moneda.",
+      "source": "cf8856783140",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_NF4WRYW7EeiDBOVr6AJAFA": {
+      "text": "Factor utilizado para convertir un importe de una moneda a otra. Refleja el precio al que se compró una moneda con otra moneda.",
+      "source": "aecea0470569",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_NF4WSYW7EeiDBOVr6AJAFA": {
+      "text": "Divisa en la que se expresa el tipo de cambio en un cambio de divisas. En el ejemplo 1GBP = xxxCUR, la divisa unitaria es GBP.",
+      "source": "fcc03c4ca9ef",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "field:_O2BuoTE0Ee62xuUQ2zyZww": {
       "text": "Especifica el tipo de documento referenciado.",
       "source": "2a558625e79d",
@@ -2609,6 +3155,20 @@
     "field:_P-PqhNp-Ed-ak6NoX_4Aeg_1196158525": {
       "text": "Entidad que asigna la identificación.",
       "source": "957a3b3b6d9c",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_P-sWc9p-Ed-ak6NoX_4Aeg_1555083105": {
+      "text": "Entidad que asigna la identificación.",
+      "source": "957a3b3b6d9c",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_P-sWctp-Ed-ak6NoX_4Aeg_1256785338": {
+      "text": "Nombre o número asignado por una entidad para permitir su reconocimiento, por ejemplo, un identificador de cuenta.",
+      "source": "744632399453",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -2865,6 +3425,20 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "field:_RH9Ek7vIEfCYYbmqNrQFSg": {
+      "text": "Datos específicos del mandato de transferencia.",
+      "source": "ef34f06edc96",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_RH9EkbvIEfCYYbmqNrQFSg": {
+      "text": "Datos específicos del mandato de adeudo directo.",
+      "source": "158d7d7268d9",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "field:_rJAakHeLEfCdoODv2ypKfw": {
       "text": "Tipo de reporte regulatorio, en forma codificada.",
       "source": "5afc943c9ca5",
@@ -2963,6 +3537,20 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "field:_tjJEU1kyEeGeoaLUQk__nA_-265813283": {
+      "text": "Tipo de gastos en forma propietaria, según lo defina el emisor.",
+      "source": "967f68e7b246",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_tjJEUlkyEeGeoaLUQk__nA_-734620698": {
+      "text": "Tipo de gastos, en forma codificada.",
+      "source": "6ccb4145507b",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "field:_TMehHdp-Ed-ak6NoX_4Aeg_-1082144614": {
       "text": "Especificación de una oferta acordada previamente entre entidades de compensación o del canal a través del cual se procesa la instrucción de pago.",
       "source": "b23aaccd1e28",
@@ -2987,6 +3575,34 @@
     "field:_TMoSEtp-Ed-ak6NoX_4Aeg_-1409997159": {
       "text": "Código de identificación de un sistema de compensación que aún no ha sido identificado en la lista de sistemas de compensación.",
       "source": "6888f48ee9d6",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_TMVXJ9p-Ed-ak6NoX_4Aeg_948374951": {
+      "text": "Identificación del sistema de compensación en forma propietaria.",
+      "source": "d06792cacc2e",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_TMVXJtp-Ed-ak6NoX_4Aeg_948374929": {
+      "text": "Infraestructura a través de la cual se procesa la instrucción de pago, según se publica en una lista externa de códigos de identificación de sistemas de compensación.",
+      "source": "1561854c7e48",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_TRGiaNp-Ed-ak6NoX_4Aeg_-1877638936": {
+      "text": "Motivo del estado, en forma propietaria.",
+      "source": "34f0d32f0dfd",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_TRGiZ9p-Ed-ak6NoX_4Aeg_-1877638996": {
+      "text": "Motivo del estado, según se publica en una lista externa de códigos de motivo.",
+      "source": "9235ed0744a3",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -3180,6 +3796,20 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "field:_vtFWITEyEe6g-ffJsqGiSA": {
+      "text": "Identificación de una persona o una organización.",
+      "source": "084d7c1b720c",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_vtFWIzEyEe6g-ffJsqGiSA": {
+      "text": "Identificación de una entidad financiera.",
+      "source": "00e5d1e40126",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "field:_vvZqUzEyEe6g-ffJsqGiSA": {
       "text": "Nombre por el que se conoce a una parte y que suele utilizarse para identificarla.",
       "source": "ff4977f834b0",
@@ -3327,6 +3957,223 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "field:_wHZ6sTEyEe6g-ffJsqGiSA": {
+      "text": "Método utilizado para liquidar las instrucciones de pago (o el lote de instrucciones de pago).",
+      "source": "df25eaa735ee",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wHZ6szEyEe6g-ffJsqGiSA": {
+      "text": "Cuenta de finalidad específica utilizada para registrar los apuntes de adeudo y de abono resultantes de la operación.",
+      "source": "2fb6dafc20eb",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wHZ6tTEyEe6g-ffJsqGiSA": {
+      "text": "Especificación de una oferta acordada previamente entre entidades de compensación o del canal a través del cual se procesa la instrucción de pago.",
+      "source": "b23aaccd1e28",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wHZ6tzEyEe6g-ffJsqGiSA": {
+      "text": "Entidad a través de la cual la entidad instructora reembolsará a la entidad instruida.||Uso: Si InstructingAgent e InstructedAgent tienen la misma entidad de reembolso, solo debe utilizarse InstructingReimbursementAgent.",
+      "source": "eec975541a24",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wHZ6uTEyEe6g-ffJsqGiSA": {
+      "text": "Identificación inequívoca de la cuenta de la entidad de reembolso instructora en su entidad gestora de la cadena de pago.",
+      "source": "f2caa37484f5",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wHZ6uzEyEe6g-ffJsqGiSA": {
+      "text": "Entidad en la que se reembolsará a la entidad instruida.|Uso: Si InstructedReimbursementAgent contiene una sucursal de InstructedAgent, la parte indicada en InstructedAgent reclamará el reembolso a esa sucursal o será pagada por ella.|Uso: Si InstructingAgent e InstructedAgent tienen la misma entidad de reembolso, solo debe utilizarse InstructingReimbursementAgent.",
+      "source": "ef1b795d5f74",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wHZ6vTEyEe6g-ffJsqGiSA": {
+      "text": "Identificación inequívoca de la cuenta de la entidad de reembolso instruida en su entidad gestora de la cadena de pago.",
+      "source": "85149d6daa77",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wHZ6vzEyEe6g-ffJsqGiSA": {
+      "text": "Entidad en la que se reembolsará a la entidad instruida.|Uso: Si ThirdReimbursementAgent contiene una sucursal de InstructedAgent, la parte indicada en InstructedAgent reclamará el reembolso a esa sucursal o será pagada por ella.",
+      "source": "b73b4fd50080",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wHZ6wTEyEe6g-ffJsqGiSA": {
+      "text": "Identificación inequívoca de la cuenta de la tercera entidad de reembolso en su entidad gestora de la cadena de pago.",
+      "source": "7e0ceb063c10",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wL-RlTEyEe6g-ffJsqGiSA": {
+      "text": "Identificación única, asignada por el beneficiario, para identificar inequívocamente el mandato.",
+      "source": "7cb243d6c301",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wL-RlzEyEe6g-ffJsqGiSA": {
+      "text": "Fecha en la que el ordenante firmó el mandato de adeudo directo.",
+      "source": "ae36e0d42450",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wL-RmTEyEe6g-ffJsqGiSA": {
+      "text": "Indicador que notifica si el mandato subyacente ha sido modificado o no.",
+      "source": "efc8827b1d01",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wL-RmzEyEe6g-ffJsqGiSA": {
+      "text": "Lista de elementos del mandato que han sido modificados.",
+      "source": "77f5add59825",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wL-RnTEyEe6g-ffJsqGiSA": {
+      "text": "Disposiciones de seguridad adicionales, como una firma digital, proporcionadas por el ordenante.",
+      "source": "5aefc030fc9d",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wL-RnzEyEe6g-ffJsqGiSA": {
+      "text": "Fecha del primer cobro de un adeudo directo según el mandato.",
+      "source": "63c8d0793eca",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wL-RoTEyEe6g-ffJsqGiSA": {
+      "text": "Fecha del último cobro de un adeudo directo según el mandato.",
+      "source": "18df28cb00b3",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wL-RozEyEe6g-ffJsqGiSA": {
+      "text": "Regularidad con la que se deben crear y procesar las instrucciones de adeudo directo.",
+      "source": "fa6f4219caec",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wL-RpTEyEe6g-ffJsqGiSA": {
+      "text": "Motivo del mandato de adeudo directo para permitir al usuario distinguir entre distintos mandatos del mismo beneficiario.",
+      "source": "903ba95818d2",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wL-RpzEyEe6g-ffJsqGiSA": {
+      "text": "Especifica el número de días durante los que debe realizarse el seguimiento de la instrucción de adeudo directo.",
+      "source": "4ac99b4b1c45",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wOeL_TEyEe6g-ffJsqGiSA": {
+      "text": "Entidad del ordenante original que ha sido modificada.",
+      "source": "5866da213019",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wOeL_zEyEe6g-ffJsqGiSA": {
+      "text": "Cuenta de la entidad del ordenante original que ha sido modificada.",
+      "source": "cdbb8f9f5d26",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wOeL-TEyEe6g-ffJsqGiSA": {
+      "text": "Ordenante original que ha sido modificado.",
+      "source": "5b21476495da",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wOeL-zEyEe6g-ffJsqGiSA": {
+      "text": "Cuenta del ordenante original que ha sido modificada.",
+      "source": "97c654ead2b0",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wOeL8TEyEe6g-ffJsqGiSA": {
+      "text": "Identificación única, asignada por el beneficiario, para identificar de forma inequívoca el mandato original.",
+      "source": "6badd002358f",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wOeL8zEyEe6g-ffJsqGiSA": {
+      "text": "Identificación del esquema del beneficiario original que ha sido modificada.",
+      "source": "cb3295d6cc14",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wOeL9TEyEe6g-ffJsqGiSA": {
+      "text": "Entidad del beneficiario original que ha sido modificada.",
+      "source": "501ba0b0f498",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wOeL9zEyEe6g-ffJsqGiSA": {
+      "text": "Cuenta de la entidad del beneficiario original que ha sido modificada.",
+      "source": "abc4c82ab6a5",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wOeMATEyEe6g-ffJsqGiSA": {
+      "text": "Fecha original del último cobro que ha sido modificada.",
+      "source": "8a699763449f",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wOeMAzEyEe6g-ffJsqGiSA": {
+      "text": "Frecuencia original que ha sido modificada.",
+      "source": "109e30a538bf",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wOeMBTEyEe6g-ffJsqGiSA": {
+      "text": "Motivo original del mandato para permitir al usuario distinguir entre distintos mandatos del mismo beneficiario.",
+      "source": "6d12cef22521",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_wOeMBzEyEe6g-ffJsqGiSA": {
+      "text": "Número original de días de seguimiento que ha sido modificado.",
+      "source": "84ca400a5347",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "field:_WpOThcsaEemxFbEZK-FMzw": {
       "text": "Información adicional que complementa la instrucción codificada o la instrucción a la entidad del beneficiario, acordada bilateralmente o específica de una comunidad de usuarios.",
       "source": "7e8c5cb365c8",
@@ -3351,6 +4198,48 @@
     "field:_x6gDYXrgEeidVZmeoasaWQ": {
       "text": "Identificación única asignada por la parte iniciadora para identificar inequívocamente la operación. Esta identificación se transmite sin cambios a lo largo de toda la cadena de extremo a extremo.||Uso: La identificación de extremo a extremo puede utilizarse para la conciliación o para vincular tareas relacionadas con la operación. Puede incluirse en varios mensajes relacionados con la operación.",
       "source": "a8f1baa868f5",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_x9boITEyEe6g-ffJsqGiSA": {
+      "text": "Gastos de la operación que debe pagar el responsable de los gastos.",
+      "source": "79c35ebe5e1c",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_x9boIzEyEe6g-ffJsqGiSA": {
+      "text": "Entidad que percibe los gastos de la operación o a la que se le adeudan.",
+      "source": "d80a45e0dd55",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_x9boJTEyEe6g-ffJsqGiSA": {
+      "text": "Define el tipo de gastos.",
+      "source": "0940fad09bc9",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_xRzRMTEyEe6g-ffJsqGiSA": {
+      "text": "Parte que emite el estado.",
+      "source": "490e01897a7f",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_xRzRMzEyEe6g-ffJsqGiSA": {
+      "text": "Especifica el motivo del informe de estado.",
+      "source": "b49fe10a60cb",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:_xRzRNTEyEe6g-ffJsqGiSA": {
+      "text": "Más detalles sobre el motivo del estado.||Uso: La información adicional puede utilizarse para varios fines, como la notificación de información reparada.",
+      "source": "539fb74fae2d",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -3530,9 +4419,30 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "field:03067730-3ce5-4e02-898d-8310250932f0": {
+      "text": "Identificación única, asignada por la parte instructora original para la parte instruida original, para identificar de forma inequívoca la instrucción original.",
+      "source": "585f6bd1af1d",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "field:09380866-7741-4b24-9c69-b7d72c30a4b8": {
       "text": "Información necesaria debido a requisitos regulatorios y legales.",
       "source": "753d85157a1b",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:0a00c043-6a84-40f5-b2ee-e880e52bb301": {
+      "text": "Referencia única, asignada por un sistema de compensación, para identificar de forma inequívoca la instrucción.",
+      "source": "9579dd54894e",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:0ae0ca04-76d8-48dc-b7e1-8e8d4b61d05f": {
+      "text": "Identificación inequívoca de la cuenta de la entidad del beneficiario en su entidad gestora, en la que se realizará un abono como resultado de la operación de pago.",
+      "source": "2baea3100df2",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -3558,6 +4468,27 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "field:0edf9c27-d8d0-4053-858c-54543f476842": {
+      "text": "Identificación única, asignada por la parte iniciadora original, para identificar de forma inequívoca la operación original.",
+      "source": "57a0eb2b75a5",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:18061f66-cc9b-41af-837e-0fd1dd375540": {
+      "text": "Parte final que debe un importe de dinero al beneficiario (final).",
+      "source": "4e4da2edae63",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:1857a166-8ee0-46a5-82d5-005fb9c13278": {
+      "text": "Parte a la que se debe un importe de dinero.",
+      "source": "c5cf66d52615",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "field:195dd6c9-842b-4fbc-8e9f-ce671def233c": {
       "text": "Especifica qué parte o partes soportarán los gastos asociados al tratamiento de la operación de pago.",
       "source": "f257c665fb0a",
@@ -3579,6 +4510,13 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "field:1b99f5c8-275a-437f-88a2-ec0882d9db3a": {
+      "text": "Especifica el medio de pago que se utilizará para mover la cantidad de dinero.",
+      "source": "f21b9d00bca0",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "field:1bb9f7fd-a7bd-4cfd-bb7d-487e03a8b141": {
       "text": "Identificación inequívoca de la cuenta del beneficiario en la que se contabilizará un abono como resultado de la operación de pago.",
       "source": "56557232ada2",
@@ -3586,9 +4524,23 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "field:1be9b19e-277c-43a8-a46e-57b91fa98d5e": {
+      "text": "Especifica los detalles sobre cómo se completó la liquidación de la(s) operación(es) original(es) entre la entidad instructora y la entidad instruida.",
+      "source": "d87f61bbb0b3",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "field:1d324249-cab3-4481-8edd-a84312709aaf": {
       "text": "Identificación de la parte a la que se emite una factura, cuando es distinta del ordenante o del ordenante final.",
       "source": "e891ec10cd2e",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:244480b6-1ea0-4f4c-b5da-00e695b6d0ae": {
+      "text": "Información proporcionada para permitir la conciliación de un apunte con las partidas que la transferencia pretende liquidar, como facturas comerciales en un sistema de cuentas a cobrar.",
+      "source": "3d9f13baacbb",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -3607,9 +4559,23 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "field:286699fd-b24b-4c0e-a2ae-b9ffc5a160be": {
+      "text": "Elementos clave utilizados para identificar la operación original a la que se hace referencia.",
+      "source": "926c02d50b0c",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "field:29f18707-cfc7-4b14-8d3d-6d1811b8e547": {
       "text": "Entidad situada entre la entidad del ordenante y la entidad del beneficiario.||Uso: si hay más de dos entidades intermediarias, IntermediaryAgent2 identifica a la entidad situada entre IntermediaryAgent1 e IntermediaryAgent3.",
       "source": "4f6819bf211a",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:2a9f041c-2fbd-4d81-8533-0b646ea8d64f": {
+      "text": "Fecha en la que la parte iniciadora solicita a la entidad compensadora que procese el pago. |Uso: Es la fecha en la que debe adeudarse la cuenta del ordenante. Si el pago es mediante cheque, la fecha en que el banco debe emitir el cheque.",
+      "source": "4268abcd07a4",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -3649,6 +4615,55 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "field:3fb75c3f-ed40-4acc-97d5-9938f1e4fb94": {
+      "text": "Parte que debe una cantidad de dinero al beneficiario (final).",
+      "source": "544299c25477",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:4198462d-1f2b-445e-a7c0-405d1211efcd": {
+      "text": "Información adicional que no puede recogerse en los elementos estructurados ni en ningún otro bloque específico.",
+      "source": "62ea4c517f00",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:44d0a66d-cde0-4022-942f-27b686e23e1a": {
+      "text": "Fecha y hora en la que el beneficiario solicita que el importe de dinero sea cobrado al ordenante.",
+      "source": "0ffec1cf085b",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:48803fbe-0c31-4f35-88c3-6b916596aff4": {
+      "text": "Identificador único universal para proporcionar la referencia de extremo a extremo original de una operación de pago.",
+      "source": "ffbff1d90568",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:491ebc1b-7b30-40b2-9a4c-91ac564cd3e5": {
+      "text": "Información detallada sobre el número de operaciones para cada estado de operación idéntico.",
+      "source": "277c1fd476ff",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:4c3d7e5b-c9b4-49bb-a096-ca819bc98d66": {
+      "text": "Proporciona información detallada sobre el motivo del estado.",
+      "source": "6a2d6ab47b21",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:4f32e264-3c93-4db4-804f-a6635273e95d": {
+      "text": "Identificación única, asignada por una parte instructora para una parte instruida, para identificar de forma inequívoca el estado notificado.|Uso: La parte instructora es la parte que envía el mensaje de estado y no la parte que envió la instrucción original sobre la que se informa.",
+      "source": "d86ce4caea6f",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "field:4f957ffb-5d3b-4394-9a7f-2a9e29fd7de3": {
       "text": "Proporciona detalles sobre los importes del documento referido.",
       "source": "549086952089",
@@ -3677,9 +4692,51 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "field:58b9d896-d612-4c5e-b8f2-991c8534811a": {
+      "text": "Identificación inequívoca de la cuenta de la entidad del ordenante en su entidad gestora de la cadena de pago.",
+      "source": "f129881ab113",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "field:5bb724bf-3b06-4052-abd4-6bbd3bc3c929": {
       "text": "Número de operaciones individuales contenidas en el grupo de información del pago.",
       "source": "3a4e13d3e642",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:6baed1b4-fc6a-4992-9fc8-28232bf9e9f4": {
+      "text": "Parte acreedora que firma el mandato.",
+      "source": "2e648e439716",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:70277fc6-d3d5-40ac-b0a1-f370e6f97e00": {
+      "text": "Conjunto de elementos utilizados para especificar con más detalle el tipo de operación.",
+      "source": "59f8e25b02de",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:71ca4a0a-f729-4ccb-a0a0-0d8881a7c0b3": {
+      "text": "Identificación inequívoca de la cuenta del ordenante en la que se realizará un adeudo como resultado de la operación.",
+      "source": "5283f08cb21e",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:734babc0-496a-4d03-af0e-2bc2418b69cb": {
+      "text": "Importe de dinero que se debe mover entre el ordenante y el beneficiario, antes de la deducción de gastos, expresado en la divisa ordenada por la parte iniciadora.",
+      "source": "0d37e98c0726",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:76bdfef3-85e9-4f46-930c-5f1421e7d0bf": {
+      "text": "Entidad financiera que gestiona una cuenta del beneficiario.",
+      "source": "adc1097ceb08",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -3708,6 +4765,13 @@
     "field:7d7b0c0e-884f-4f8b-b53c-f94e4062bd7a": {
       "text": "Especifica qué parte o partes soportarán los gastos asociados al tratamiento de la operación de pago.",
       "source": "f257c665fb0a",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:7e3d81bd-53c1-44cc-96fc-9a06770d3ade": {
+      "text": "Proporciona información detallada sobre el motivo del estado.",
+      "source": "6a2d6ab47b21",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -3782,6 +4846,27 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "field:a3560f2c-3a9f-43c2-8b52-4ed255ff5e9d": {
+      "text": "Identificación única, asignada por la parte emisora original, para identificar de forma inequívoca el grupo de información del pago original.",
+      "source": "75d19281b010",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:a38d1f7a-ffa5-40ae-aae0-b237f3c5f6bd": {
+      "text": "Entidad financiera que gestiona una cuenta del ordenante.",
+      "source": "c8c072c93d53",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:a443ab45-284d-440b-8bb0-cdb9032e7390": {
+      "text": "Parte final a la que se debe un importe de dinero.",
+      "source": "b78204d54b9a",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "field:a4eb321c-5f60-4dde-8bce-4d90cc67c8d8": {
       "text": "Entidad situada entre la entidad del ordenante y la entidad del beneficiario.||Uso: si hay más de una entidad intermediaria, IntermediaryAgent1 identifica a la entidad situada entre DebtorAgent e IntermediaryAgent2.",
       "source": "727021cbeb58",
@@ -3792,6 +4877,13 @@
     "field:a58c069f-f64a-40e8-bccf-9f64dc1c1edf": {
       "text": "Información adicional, en forma de texto libre, para complementar la información de remesa estructurada.",
       "source": "090be8e3668f",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:a75a4d13-f203-4103-a400-23949b61569b": {
+      "text": "Identificación inequívoca de la cuenta del beneficiario en la que se contabilizará un abono como resultado de la operación de pago.",
+      "source": "56557232ada2",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -3810,6 +4902,13 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "field:ac34c00d-fa60-4268-be4e-84a6abd37f5f": {
+      "text": "Motivo subyacente de la operación de pago.||Uso: |La finalidad es utilizada por los clientes finales, es decir, la parte iniciadora, el ordenante (final) o el beneficiario (final), para proporcionar información sobre la naturaleza del pago. La finalidad es un elemento de contenido que no es utilizado para el procesamiento por ninguna de las entidades que intervienen en la cadena de pago.",
+      "source": "5f5ee2dbaad2",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "field:b38b6b58-3292-4db1-8d5d-87c913add402": {
       "text": "Identificación inequívoca de la cuenta de la entidad intermediaria 2 en su entidad gestora en la cadena de pago.",
       "source": "d82915fbf6bf",
@@ -3820,6 +4919,20 @@
     "field:b54fa6b6-78a6-4d2c-8352-07d43e611622": {
       "text": "Información proporcionada para permitir la correspondencia y la conciliación de un apunte con las partidas que el pago pretende liquidar, como facturas comerciales en un sistema de cuentas por cobrar, de forma estructurada.",
       "source": "b78f5b004495",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:b95bfa26-b565-459e-b720-a1224291db62": {
+      "text": "Especifica el estado de una operación, según se publica en una lista externa de códigos de estado de operaciones de pago.",
+      "source": "104d62bb4132",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:b9d9e4e3-c695-4bcd-a6a6-68a30253f8a8": {
+      "text": "Total de todos los importes individuales incluidos en el grupo de información del pago original, independientemente de las monedas.",
+      "source": "3ea3094fd553",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -3838,6 +4951,13 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "field:c0ef9d4a-4b9e-4f54-88a6-e1478d1d183a": {
+      "text": "Número de operaciones individuales contenidas en el grupo de información del pago original.",
+      "source": "a4d1b23427aa",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "field:c16f42a1-96fa-4e15-96b0-fce3d235c817": {
       "text": "Identificación inequívoca de la cuenta de la entidad intermediaria 3 en su entidad gestora en la cadena de pago.",
       "source": "c40429217774",
@@ -3845,9 +4965,44 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "field:c71ae9d9-fb45-43d8-a4af-b01c2dfc0014": {
+      "text": "Especifica el estado del grupo de información del pago.",
+      "source": "a29ceb830f73",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:cff4dd3b-df37-4738-bcbe-e79736e1be61": {
+      "text": "Referencia única, asignada por la entidad gestora de la cuenta, para identificar de forma inequívoca la instrucción.",
+      "source": "bab2ef78403a",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "field:d1bb375e-efe5-432c-b1ab-d4665a734a8c": {
       "text": "Información proporcionada para permitir la conciliación de un apunte con las partidas que la transferencia pretende liquidar, como facturas comerciales en un sistema de cuentas a cobrar.",
       "source": "3d9f13baacbb",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:d39996df-b0fe-41fd-98cf-1643722d1864": {
+      "text": "Importe de dinero movido entre la entidad instructora y la entidad instruida.",
+      "source": "0db5b344e74b",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:d4b6afe1-a35e-4d30-a64f-b09610c54da6": {
+      "text": "Fecha en la que el importe deja de estar disponible para la entidad que lo adeuda y en la que pasa a estar disponible para la entidad a la que se le debe.",
+      "source": "2736afcf772d",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:d4f9c89a-1287-4e9b-ab53-e29165f85536": {
+      "text": "Proporciona información sobre los gastos relacionados con el procesamiento del rechazo de la instrucción.|Uso: Se transmite únicamente con fines informativos. La liquidación de los gastos se realizará por separado.",
+      "source": "1a33e6444f45",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -3862,6 +5017,20 @@
     "field:d6454bb6-3005-4781-8dae-02f0855baa56": {
       "text": "Proporciona más detalles del mandato firmado entre el beneficiario y el ordenante.",
       "source": "8346d450f704",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:da0203a1-5dff-4c76-b85e-a04952d14db1": {
+      "text": "Proporciona información sobre el seguimiento de la operación interbancaria relacionada con el pago.",
+      "source": "e69673e6527d",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:daa1b218-cd35-46e9-8318-5e1a7eab1b89": {
+      "text": "Proporciona información sobre las operaciones originales a las que se refiere el mensaje de informe de estado.",
+      "source": "a15e701fe798",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -3908,6 +5077,13 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "field:f02f25c6-dd7a-498f-ae89-4fe505d5ea38": {
+      "text": "Momento en el que la orden de pago de la parte iniciadora cumple las condiciones de procesamiento de la entidad gestora de la cuenta. Esto significa que la entidad gestora de la cuenta ha recibido la orden de pago y ha aplicado comprobaciones como la autorización o la disponibilidad de fondos.",
+      "source": "7186dbbe1cb3",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "field:f4f6fbbd-f620-47af-b240-ef0295b3863a": {
       "text": "Proporciona información de remesa sobre un pago con fines relacionados con el embargo.",
       "source": "4d7301a8cae2",
@@ -3918,6 +5094,13 @@
     "field:fabfdc67-f1b0-4093-9749-ae4a9a37d218": {
       "text": "Fecha en la que la parte iniciadora solicita a la entidad compensadora que procese el pago. |Uso: Es la fecha en la que debe adeudarse la cuenta del ordenante. Si el pago es mediante cheque, la fecha en que el banco debe emitir el cheque.",
       "source": "4268abcd07a4",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "field:fc567b98-d441-4a81-9445-eee18eae29aa": {
+      "text": "Proporciona más detalles del mandato firmado entre el beneficiario y el ordenante.",
+      "source": "8346d450f704",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -4013,6 +5196,27 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "label:_-1rj05RuEeazAtAtDSg0Nw": {
+      "text": "Número de operaciones detallado",
+      "source": "f822fefc6528",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_-1rj15RuEeazAtAtDSg0Nw": {
+      "text": "Suma de control detallada",
+      "source": "c46a817ed07e",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_-1rj1ZRuEeazAtAtDSg0Nw": {
+      "text": "Estado detallado",
+      "source": "6c31bb07dd30",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "label:_0KjnATEyEe6g-ffJsqGiSA": {
       "text": "Identificación de la remesa",
       "source": "5ebea3dc62e2",
@@ -4069,9 +5273,58 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "label:_1bDlkTEyEe6g-ffJsqGiSA": {
+      "text": "Fecha confirmada",
+      "source": "81b01cd08680",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_1bDlkzEyEe6g-ffJsqGiSA": {
+      "text": "Importe confirmado",
+      "source": "dbbd30b10101",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_1bDllTEyEe6g-ffJsqGiSA": {
+      "text": "Registro de seguimiento",
+      "source": "5a28d141afda",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "label:_1bz5sB71EeSxevWRRWxNAg": {
       "text": "Tipo",
       "source": "baaddf70fb5d",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_1dWroTEyEe6g-ffJsqGiSA": {
+      "text": "Entidad",
+      "source": "11b39c93777e",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_1dWrozEyEe6g-ffJsqGiSA": {
+      "text": "Gastos",
+      "source": "2381b242e776",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_1dWrpTEyEe6g-ffJsqGiSA": {
+      "text": "Importe de los gastos",
+      "source": "5731660cfadf",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_1dWrpzEyEe6g-ffJsqGiSA": {
+      "text": "Datos del tipo de cambio",
+      "source": "7b72644101de",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -4188,6 +5441,62 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "label:_4smO1TEyEe6g-ffJsqGiSA": {
+      "text": "Identificación del mensaje original",
+      "source": "f55cb7e97f7f",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_4smO1zEyEe6g-ffJsqGiSA": {
+      "text": "Identificación del nombre del mensaje original",
+      "source": "cf2ff36cfddc",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_4smO2TEyEe6g-ffJsqGiSA": {
+      "text": "Fecha y hora de creación originales",
+      "source": "092e92457a83",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_4smO2zEyEe6g-ffJsqGiSA": {
+      "text": "Número de operaciones original",
+      "source": "c20a8e840843",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_4smO3TEyEe6g-ffJsqGiSA": {
+      "text": "Suma de control original",
+      "source": "2b673189314e",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_4smO3zEyEe6g-ffJsqGiSA": {
+      "text": "Estado del grupo",
+      "source": "2c75c46e66ae",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_4smO4TEyEe6g-ffJsqGiSA": {
+      "text": "Información del motivo del estado",
+      "source": "24797e30d9a8",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_4smO4zEyEe6g-ffJsqGiSA": {
+      "text": "Número de operaciones por estado",
+      "source": "8f3a50ccf924",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "label:_5-dq0DHsEe6BxvG014AZzQ": {
       "text": "A la atención de",
       "source": "d35b54361515",
@@ -4198,6 +5507,48 @@
     "label:_6IxUQWk2Eeanu6HLe77Rkg": {
       "text": "Momento puntual",
       "source": "7c0a96ed8b40",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_6jjJaTEyEe6g-ffJsqGiSA": {
+      "text": "Entidad del ordenante",
+      "source": "b3f04e590ed0",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_6jjJazEyEe6g-ffJsqGiSA": {
+      "text": "Entidad del beneficiario",
+      "source": "e442d0d39cee",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_6jjJYTEyEe6g-ffJsqGiSA": {
+      "text": "Identificación del mensaje",
+      "source": "1c54405f9544",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_6jjJYzEyEe6g-ffJsqGiSA": {
+      "text": "Fecha y hora de creación",
+      "source": "8f022c54d396",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_6jjJZTEyEe6g-ffJsqGiSA": {
+      "text": "Parte iniciadora",
+      "source": "1362e840f0e8",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_6jjJZzEyEe6g-ffJsqGiSA": {
+      "text": "Entidad de reenvío",
+      "source": "a7de90ad3f8a",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -4429,6 +5780,48 @@
     "label:_ciKhmablEeKvUvwX_r3tzA": {
       "text": "Emisor",
       "source": "39e02c46a083",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_clCMs3R0EeiH1ZOt2UD8vQ": {
+      "text": "Prioridad de la instrucción",
+      "source": "3ebcdc88e752",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_clCMt3R0EeiH1ZOt2UD8vQ": {
+      "text": "Nivel de servicio",
+      "source": "273349ff898a",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_clCMtXR0EeiH1ZOt2UD8vQ": {
+      "text": "Canal de compensación",
+      "source": "1f27c0b49de1",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_clCMu3R0EeiH1ZOt2UD8vQ": {
+      "text": "Tipo de secuencia",
+      "source": "e6855f89c6b5",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_clCMuXR0EeiH1ZOt2UD8vQ": {
+      "text": "Instrumento local",
+      "source": "588ad695f477",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_clCMvXR0EeiH1ZOt2UD8vQ": {
+      "text": "Finalidad de la categoría",
+      "source": "e7a89cb600b7",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -4923,6 +6316,34 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "label:_NF4WQ4W7EeiDBOVr6AJAFA": {
+      "text": "Divisa de destino",
+      "source": "55d9735d1f49",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_NF4WQYW7EeiDBOVr6AJAFA": {
+      "text": "Divisa de origen",
+      "source": "10028af29842",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_NF4WRYW7EeiDBOVr6AJAFA": {
+      "text": "Tipo de cambio",
+      "source": "5b21b52b58cb",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_NF4WSYW7EeiDBOVr6AJAFA": {
+      "text": "Divisa unitaria",
+      "source": "0ac503c25eb2",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "label:_O2BuoTE0Ee62xuUQ2zyZww": {
       "text": "Tipo",
       "source": "baaddf70fb5d",
@@ -5115,6 +6536,20 @@
     "label:_P-PqhNp-Ed-ak6NoX_4Aeg_1196158525": {
       "text": "Emisor",
       "source": "39e02c46a083",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_P-sWc9p-Ed-ak6NoX_4Aeg_1555083105": {
+      "text": "Emisor",
+      "source": "39e02c46a083",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_P-sWctp-Ed-ak6NoX_4Aeg_1256785338": {
+      "text": "Identificación",
+      "source": "91f606b32dfc",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -5371,6 +6806,20 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "label:_RH9Ek7vIEfCYYbmqNrQFSg": {
+      "text": "Mandato de transferencia",
+      "source": "327c4d3127bf",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_RH9EkbvIEfCYYbmqNrQFSg": {
+      "text": "Mandato de adeudo directo",
+      "source": "d053a9537617",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "label:_rJAakHeLEfCdoODv2ypKfw": {
       "text": "Código",
       "source": "340f463033e0",
@@ -5469,6 +6918,20 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "label:_tjJEU1kyEeGeoaLUQk__nA_-265813283": {
+      "text": "Propietario",
+      "source": "b904752a04b4",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_tjJEUlkyEeGeoaLUQk__nA_-734620698": {
+      "text": "Código",
+      "source": "340f463033e0",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "label:_TMehHdp-Ed-ak6NoX_4Aeg_-1082144614": {
       "text": "Identificación del sistema de compensación",
       "source": "3ee79647d93c",
@@ -5493,6 +6956,34 @@
     "label:_TMoSEtp-Ed-ak6NoX_4Aeg_-1409997159": {
       "text": "Propietario",
       "source": "b904752a04b4",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_TMVXJ9p-Ed-ak6NoX_4Aeg_948374951": {
+      "text": "Propietario",
+      "source": "b904752a04b4",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_TMVXJtp-Ed-ak6NoX_4Aeg_948374929": {
+      "text": "Código",
+      "source": "340f463033e0",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_TRGiaNp-Ed-ak6NoX_4Aeg_-1877638936": {
+      "text": "Propietario",
+      "source": "b904752a04b4",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_TRGiZ9p-Ed-ak6NoX_4Aeg_-1877638996": {
+      "text": "Código",
+      "source": "340f463033e0",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -5686,6 +7177,20 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "label:_vtFWITEyEe6g-ffJsqGiSA": {
+      "text": "Parte",
+      "source": "dfa82f21b3f3",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_vtFWIzEyEe6g-ffJsqGiSA": {
+      "text": "Entidad",
+      "source": "11b39c93777e",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "label:_vvZqUzEyEe6g-ffJsqGiSA": {
       "text": "Nombre",
       "source": "dcd1d5223f73",
@@ -5833,6 +7338,223 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "label:_wHZ6sTEyEe6g-ffJsqGiSA": {
+      "text": "Método de liquidación",
+      "source": "b5683c2ebadb",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wHZ6szEyEe6g-ffJsqGiSA": {
+      "text": "Cuenta de liquidación",
+      "source": "e29f9c83ae0b",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wHZ6tTEyEe6g-ffJsqGiSA": {
+      "text": "Sistema de compensación",
+      "source": "cc9d62649fe9",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wHZ6tzEyEe6g-ffJsqGiSA": {
+      "text": "Entidad de reembolso instructora",
+      "source": "8ab33cc32d13",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wHZ6uTEyEe6g-ffJsqGiSA": {
+      "text": "Cuenta de la entidad de reembolso instructora",
+      "source": "6a67b02465ce",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wHZ6uzEyEe6g-ffJsqGiSA": {
+      "text": "Entidad de reembolso instruida",
+      "source": "2929fb272171",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wHZ6vTEyEe6g-ffJsqGiSA": {
+      "text": "Cuenta de la entidad de reembolso instruida",
+      "source": "62b9a7d474ce",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wHZ6vzEyEe6g-ffJsqGiSA": {
+      "text": "Tercera entidad de reembolso",
+      "source": "8610fa7fd926",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wHZ6wTEyEe6g-ffJsqGiSA": {
+      "text": "Cuenta de la tercera entidad de reembolso",
+      "source": "f9998217d59a",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wL-RlTEyEe6g-ffJsqGiSA": {
+      "text": "Identificación del mandato",
+      "source": "e4478f1f3059",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wL-RlzEyEe6g-ffJsqGiSA": {
+      "text": "Fecha de la firma",
+      "source": "e1ff6f444fa0",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wL-RmTEyEe6g-ffJsqGiSA": {
+      "text": "Indicador de modificación",
+      "source": "183793e5625d",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wL-RmzEyEe6g-ffJsqGiSA": {
+      "text": "Detalles de la información de modificación",
+      "source": "00a817b0f521",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wL-RnTEyEe6g-ffJsqGiSA": {
+      "text": "Firma electrónica",
+      "source": "d98eaa0f83b5",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wL-RnzEyEe6g-ffJsqGiSA": {
+      "text": "Fecha del primer cobro",
+      "source": "837dd17a616a",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wL-RoTEyEe6g-ffJsqGiSA": {
+      "text": "Fecha final de cobro",
+      "source": "541d1de068cc",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wL-RozEyEe6g-ffJsqGiSA": {
+      "text": "Frecuencia",
+      "source": "16b6668d9831",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wL-RpTEyEe6g-ffJsqGiSA": {
+      "text": "Motivo",
+      "source": "f81ab834de5f",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wL-RpzEyEe6g-ffJsqGiSA": {
+      "text": "Días de seguimiento",
+      "source": "d19d52964eff",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wOeL_TEyEe6g-ffJsqGiSA": {
+      "text": "Entidad del ordenante original",
+      "source": "00eb5b54a1cd",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wOeL_zEyEe6g-ffJsqGiSA": {
+      "text": "Cuenta de la entidad del ordenante original",
+      "source": "15c56e19120f",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wOeL-TEyEe6g-ffJsqGiSA": {
+      "text": "Ordenante original",
+      "source": "b0f0a7abc5d8",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wOeL-zEyEe6g-ffJsqGiSA": {
+      "text": "Cuenta del ordenante original",
+      "source": "1ad9e2b43cfa",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wOeL8TEyEe6g-ffJsqGiSA": {
+      "text": "Identificación del mandato original",
+      "source": "46fe236a06aa",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wOeL8zEyEe6g-ffJsqGiSA": {
+      "text": "Identificación del esquema del beneficiario original",
+      "source": "2fdfbee3362a",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wOeL9TEyEe6g-ffJsqGiSA": {
+      "text": "Entidad del beneficiario original",
+      "source": "1af469c3b0ca",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wOeL9zEyEe6g-ffJsqGiSA": {
+      "text": "Cuenta de la entidad del beneficiario original",
+      "source": "7ce6f93a3515",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wOeMATEyEe6g-ffJsqGiSA": {
+      "text": "Fecha final de cobro original",
+      "source": "04c711575fc2",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wOeMAzEyEe6g-ffJsqGiSA": {
+      "text": "Frecuencia original",
+      "source": "cdf7423a570c",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wOeMBTEyEe6g-ffJsqGiSA": {
+      "text": "Motivo original",
+      "source": "6cc87b13b655",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_wOeMBzEyEe6g-ffJsqGiSA": {
+      "text": "Días de seguimiento originales",
+      "source": "2241f639b484",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "label:_WpOThcsaEemxFbEZK-FMzw": {
       "text": "Información de la instrucción",
       "source": "1f99f4492d40",
@@ -5857,6 +7579,48 @@
     "label:_x6gDYXrgEeidVZmeoasaWQ": {
       "text": "Identificación de extremo a extremo",
       "source": "260026caa93f",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_x9boITEyEe6g-ffJsqGiSA": {
+      "text": "Importe",
+      "source": "49e96d7cdf58",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_x9boIzEyEe6g-ffJsqGiSA": {
+      "text": "Entidad",
+      "source": "11b39c93777e",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_x9boJTEyEe6g-ffJsqGiSA": {
+      "text": "Tipo",
+      "source": "baaddf70fb5d",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_xRzRMTEyEe6g-ffJsqGiSA": {
+      "text": "Originador",
+      "source": "e24e7917d4fc",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_xRzRMzEyEe6g-ffJsqGiSA": {
+      "text": "Motivo",
+      "source": "f81ab834de5f",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:_xRzRNTEyEe6g-ffJsqGiSA": {
+      "text": "Información adicional",
+      "source": "9276bb4d881a",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -6036,9 +7800,30 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "label:03067730-3ce5-4e02-898d-8310250932f0": {
+      "text": "Identificación de la instrucción original",
+      "source": "dbc05aa4b278",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "label:09380866-7741-4b24-9c69-b7d72c30a4b8": {
       "text": "Información regulatoria",
       "source": "a3e5ea3b5ff2",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:0a00c043-6a84-40f5-b2ee-e880e52bb301": {
+      "text": "Referencia del sistema de compensación",
+      "source": "ae918ef62e2b",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:0ae0ca04-76d8-48dc-b7e1-8e8d4b61d05f": {
+      "text": "Cuenta de la entidad del beneficiario",
+      "source": "51464f516273",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -6064,6 +7849,27 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "label:0edf9c27-d8d0-4053-858c-54543f476842": {
+      "text": "Identificación de extremo a extremo original",
+      "source": "1e57077d1d56",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:18061f66-cc9b-41af-837e-0fd1dd375540": {
+      "text": "Ordenante final",
+      "source": "22e4680ac07f",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:1857a166-8ee0-46a5-82d5-005fb9c13278": {
+      "text": "Beneficiario",
+      "source": "f7174c739cbf",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "label:195dd6c9-842b-4fbc-8e9f-ce671def233c": {
       "text": "Gastos",
       "source": "2381b242e776",
@@ -6085,6 +7891,13 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "label:1b99f5c8-275a-437f-88a2-ec0882d9db3a": {
+      "text": "Método de pago",
+      "source": "f89a4e175577",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "label:1bb9f7fd-a7bd-4cfd-bb7d-487e03a8b141": {
       "text": "Cuenta del beneficiario",
       "source": "ad67613e390d",
@@ -6092,9 +7905,23 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "label:1be9b19e-277c-43a8-a46e-57b91fa98d5e": {
+      "text": "Información de liquidación",
+      "source": "814919d0f061",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "label:1d324249-cab3-4481-8edd-a84312709aaf": {
       "text": "Destinatario de la factura",
       "source": "32408dbe8d6c",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:244480b6-1ea0-4f4c-b5da-00e695b6d0ae": {
+      "text": "Información de remesa",
+      "source": "2a0943c100e6",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -6113,9 +7940,23 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "label:286699fd-b24b-4c0e-a2ae-b9ffc5a160be": {
+      "text": "Referencia de la operación original",
+      "source": "a6b89cc5c3f2",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "label:29f18707-cfc7-4b14-8d3d-6d1811b8e547": {
       "text": "Entidad intermediaria 2",
       "source": "c8a1b964d8e4",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:2a9f041c-2fbd-4d81-8533-0b646ea8d64f": {
+      "text": "Fecha de ejecución solicitada",
+      "source": "9c50aab4cc76",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -6155,6 +7996,55 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "label:3fb75c3f-ed40-4acc-97d5-9938f1e4fb94": {
+      "text": "Ordenante",
+      "source": "2435a8e7ed1d",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:4198462d-1f2b-445e-a7c0-405d1211efcd": {
+      "text": "Datos complementarios",
+      "source": "7fc6fcfe6a59",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:44d0a66d-cde0-4022-942f-27b686e23e1a": {
+      "text": "Fecha de cobro solicitada",
+      "source": "30366e2e557e",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:48803fbe-0c31-4f35-88c3-6b916596aff4": {
+      "text": "UETR original",
+      "source": "9c6c149f1f86",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:491ebc1b-7b30-40b2-9a4c-91ac564cd3e5": {
+      "text": "Número de operaciones por estado",
+      "source": "8f3a50ccf924",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:4c3d7e5b-c9b4-49bb-a096-ca819bc98d66": {
+      "text": "Información del motivo del estado",
+      "source": "24797e30d9a8",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:4f32e264-3c93-4db4-804f-a6635273e95d": {
+      "text": "Identificación del estado",
+      "source": "bec7ea6e1246",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "label:4f529681-cc64-42c7-ae7b-39fffcdcad88": {
       "text": "Encabezado del grupo",
       "source": "668f7ea8565e",
@@ -6190,9 +8080,65 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "label:577bd1cc-1274-4c70-8675-1765f35ef58c": {
+      "text": "Datos complementarios",
+      "source": "7fc6fcfe6a59",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:5826f1b5-60df-449e-8459-63c26afb2782": {
+      "text": "Encabezado del grupo",
+      "source": "668f7ea8565e",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:58b9d896-d612-4c5e-b8f2-991c8534811a": {
+      "text": "Cuenta de la entidad del ordenante",
+      "source": "4897d7edd827",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "label:5bb724bf-3b06-4052-abd4-6bbd3bc3c929": {
       "text": "Número de operaciones",
       "source": "63a022b51512",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:6baed1b4-fc6a-4992-9fc8-28232bf9e9f4": {
+      "text": "Identificación del esquema del beneficiario",
+      "source": "af1bbe19e5b9",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:70277fc6-d3d5-40ac-b0a1-f370e6f97e00": {
+      "text": "Información del tipo de pago",
+      "source": "05f5aa76333b",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:71ca4a0a-f729-4ccb-a0a0-0d8881a7c0b3": {
+      "text": "Cuenta del ordenante",
+      "source": "ae5cbda1412a",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:734babc0-496a-4d03-af0e-2bc2418b69cb": {
+      "text": "Importe",
+      "source": "49e96d7cdf58",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:76bdfef3-85e9-4f46-930c-5f1421e7d0bf": {
+      "text": "Entidad del beneficiario",
+      "source": "e442d0d39cee",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -6221,6 +8167,13 @@
     "label:7d7b0c0e-884f-4f8b-b53c-f94e4062bd7a": {
       "text": "Gastos",
       "source": "2381b242e776",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:7e3d81bd-53c1-44cc-96fc-9a06770d3ade": {
+      "text": "Información del motivo del estado",
+      "source": "24797e30d9a8",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -6295,9 +8248,30 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "label:a3560f2c-3a9f-43c2-8b52-4ed255ff5e9d": {
+      "text": "Identificación de la información del pago original",
+      "source": "80ba871b36e4",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:a38d1f7a-ffa5-40ae-aae0-b237f3c5f6bd": {
+      "text": "Entidad del ordenante",
+      "source": "b3f04e590ed0",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "label:a3d39e1f-0adb-48a1-955a-24f12678a777": {
       "text": "Datos complementarios",
       "source": "7fc6fcfe6a59",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:a443ab45-284d-440b-8bb0-cdb9032e7390": {
+      "text": "Beneficiario final",
+      "source": "355eecb0a96c",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -6316,6 +8290,13 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "label:a75a4d13-f203-4103-a400-23949b61569b": {
+      "text": "Cuenta del beneficiario",
+      "source": "ad67613e390d",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "label:aa7124b6-2225-4553-90d5-41188066e954": {
       "text": "Beneficiario final",
       "source": "355eecb0a96c",
@@ -6326,6 +8307,13 @@
     "label:ac0066e9-3069-4b56-bc27-0e5d70338156": {
       "text": "Instrucción para la entidad del ordenante",
       "source": "f4020e9fea36",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:ac34c00d-fa60-4268-be4e-84a6abd37f5f": {
+      "text": "Finalidad",
+      "source": "d4e8830a71c7",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -6351,6 +8339,27 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "label:b95bfa26-b565-459e-b720-a1224291db62": {
+      "text": "Estado de la operación",
+      "source": "f4b3309699de",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:b990ab78-3ea0-4682-9ef5-2e1dfc9895b9": {
+      "text": "Información y estado del grupo original",
+      "source": "7650053c39eb",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:b9d9e4e3-c695-4bcd-a6a6-68a30253f8a8": {
+      "text": "Suma de control original",
+      "source": "2b673189314e",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "label:bc60b0fd-91b0-48fa-b2da-1c0479a84937": {
       "text": "Instrucción para la entidad del beneficiario",
       "source": "bc4bb412985c",
@@ -6365,6 +8374,13 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "label:c0ef9d4a-4b9e-4f54-88a6-e1478d1d183a": {
+      "text": "Número de operaciones original",
+      "source": "c20a8e840843",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "label:c16f42a1-96fa-4e15-96b0-fce3d235c817": {
       "text": "Cuenta de la entidad intermediaria 3",
       "source": "74b475b5863a",
@@ -6372,9 +8388,44 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "label:c71ae9d9-fb45-43d8-a4af-b01c2dfc0014": {
+      "text": "Estado de la información del pago",
+      "source": "c0e621494e6d",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:cff4dd3b-df37-4738-bcbe-e79736e1be61": {
+      "text": "Referencia de la entidad gestora de la cuenta",
+      "source": "9cafc70decc9",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "label:d1bb375e-efe5-432c-b1ab-d4665a734a8c": {
       "text": "Información de remesa",
       "source": "2a0943c100e6",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:d39996df-b0fe-41fd-98cf-1643722d1864": {
+      "text": "Importe de liquidación interbancaria",
+      "source": "8a3ce10b8dcb",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:d4b6afe1-a35e-4d30-a64f-b09610c54da6": {
+      "text": "Fecha de liquidación interbancaria",
+      "source": "d332ea25fa1f",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:d4f9c89a-1287-4e9b-ab53-e29165f85536": {
+      "text": "Información de gastos",
+      "source": "34afa1213a5f",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -6389,6 +8440,20 @@
     "label:d6454bb6-3005-4781-8dae-02f0855baa56": {
       "text": "Información relacionada con el mandato",
       "source": "a385f6a7f864",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:da0203a1-5dff-4c76-b85e-a04952d14db1": {
+      "text": "Datos de seguimiento",
+      "source": "3b8f2940fc28",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:daa1b218-cd35-46e9-8318-5e1a7eab1b89": {
+      "text": "Información y estado de la operación",
+      "source": "22305629290a",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -6435,6 +8500,20 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "label:f02f25c6-dd7a-498f-ae89-4fe505d5ea38": {
+      "text": "Fecha y hora de aceptación",
+      "source": "962ccafa4592",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:f09d7713-e82e-4797-b496-eb54848623fb": {
+      "text": "Información y estado del pago original",
+      "source": "c8cd8e867734",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "label:f4f6fbbd-f620-47af-b240-ef0295b3863a": {
       "text": "Remesa de embargo",
       "source": "7ce5f96585ed",
@@ -6445,6 +8524,13 @@
     "label:fabfdc67-f1b0-4093-9749-ae4a9a37d218": {
       "text": "Fecha de ejecución solicitada",
       "source": "9c50aab4cc76",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "label:fc567b98-d441-4a81-9445-eee18eae29aa": {
+      "text": "Información relacionada con el mandato",
+      "source": "a385f6a7f864",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -6466,6 +8552,97 @@
     "label:ff55435e-db04-48f1-8eca-b78492eccd69": {
       "text": "Ordenante final",
       "source": "22e4680ac07f",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "rule:_4smO0TEyEe6g-ffJsqGiSA": {
+      "text": "Si GroupStatus está presente y es distinto de RJCT o PDNG, StatusReasonInformation/AdditionalInformation debe estar ausente.",
+      "source": "55bb902132db",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "rule:_4smO0zEyEe6g-ffJsqGiSA": {
+      "text": "OriginalGroupInformationAndStatus/NumberOfTransactionsPerStatus solo debería estar presente si GroupStatus es igual a 'PART'.",
+      "source": "f041c6a4ee1a",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "rule:_wHZ6oTEyEe6g-ffJsqGiSA": {
+      "text": "Si ThirdReimbursementAgent está presente, InstructingReimbursementAgent e InstructedReimbursementAgent deben estar presentes ambos.",
+      "source": "a533c5ce2daf",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "rule:_wHZ6ozEyEe6g-ffJsqGiSA": {
+      "text": "Si SettlementMethod es igual a INDA o INGA, no se permiten ReimbursementAgent(s) ni ClearingSystem.",
+      "source": "1cc8a83cde52",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "rule:_wHZ6pTEyEe6g-ffJsqGiSA": {
+      "text": "Si SettlementMethod es igual a COVE, no se permiten SettlementAccount ni ClearingSystem.",
+      "source": "0f27342189df",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "rule:_wHZ6pzEyEe6g-ffJsqGiSA": {
+      "text": "Si SettlementMethod es igual a COVE, InstructedReimbursementAgent o InstructingReimbursementAgent debe estar presente.",
+      "source": "618edfba4638",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "rule:_wHZ6qTEyEe6g-ffJsqGiSA": {
+      "text": "Si SettlementMethod es igual a CLRG, no se permiten SettlementAccount ni ReimbursementAgent(s).",
+      "source": "d02b06e632f8",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "rule:_wHZ6qzEyEe6g-ffJsqGiSA": {
+      "text": "Si InstructingReimbursementAgentAccount está presente, InstructingReimbursementAgent debe estar presente.",
+      "source": "8f1209ded1d7",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "rule:_wHZ6rTEyEe6g-ffJsqGiSA": {
+      "text": "Si InstructedReimbursementAgentAccount está presente, InstructedReimbursementAgent debe estar presente.",
+      "source": "a70b450b5a98",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "rule:_wHZ6rzEyEe6g-ffJsqGiSA": {
+      "text": "Si ThirdReimbursementAgentAccount está presente, ThirdReimbursementAgent debe estar presente.",
+      "source": "c502c772d239",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "rule:_wL-RkTEyEe6g-ffJsqGiSA": {
+      "text": "Si AmendmentIndicator es verdadero, AmendmentInformationDetails debe estar presente.",
+      "source": "18f34d21a84a",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "rule:_wL-RkzEyEe6g-ffJsqGiSA": {
+      "text": "Si AmendmentIndicator es falso, no se permite AmendmentInformationDetails.",
+      "source": "9ce666a8c11a",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "rule:_xRyqITEyEe6g-ffJsqGiSA": {
+      "text": "Si Reason/Code es igual a NARR, AddititionalInformation debe estar presente.",
+      "source": "973cf1a9886e",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -6498,6 +8675,13 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "rule:30aeaa1b-02ac-411b-890d-bfbe815c69ae": {
+      "text": "Si OriginalGroupInformationAndStatus/GroupStatus está presente y es igual a RJCT (Rejected), OriginalPaymentInformationAndStatus/PaymentInformationStatus, si está presente, debe ser igual a RJCT (Rejected).",
+      "source": "cadb401ad09b",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "rule:374a5e44-a1c3-4d49-90b5-93a017d69219": {
       "text": "Si PaymentMethod es distinto de CHK (Cheque) y CreditTransferTransactionInformation/Creditor no está presente, entonces CreditTransferTransactionInformation/CreditorAccount debe estar presente.",
       "source": "9dbb10ca0d02",
@@ -6515,6 +8699,20 @@
     "rule:512b30fa-329d-4db6-835e-861a1edac310": {
       "text": "Si PaymentMethod es CHK (Cheque) y CreditTransferTransactionInformation/ChequeInstruction/DeliveryMethod/Code está presente y es igual a MLFA (MailToFinalAgent), CRFA (CourierToFinalAgent), RGFA (RegisteredMailToFinalAgent) o PUFA (PickUpByFinalAgent), entonces CreditTransferTransactionInformation/CreditorAgent debe estar presente.",
       "source": "1661ffddb1da",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "rule:54677de5-564f-47e9-a9e3-9b834e296092": {
+      "text": "Si OriginalGroupInformationAndStatus/GroupStatus está presente y es igual a RCVD (Received), no se permite OriginalPaymentInformationAndStatus/PaymentInformationStatus.",
+      "source": "44d6ad156513",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "rule:79942120-063f-4ded-8ecf-8f8162c78a50": {
+      "text": "Si OriginalPaymentInformationAndStatus/PaymentInformationStatus está presente y es igual a PDNG (Pending), TransactionInformationAndStatus/TransactionStatus debe ser distinto de RJCT (Rejected).",
+      "source": "08b5301bc7bb",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -6540,9 +8738,30 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "rule:85856e51-51ca-460e-abc4-868ebbe80e0a": {
+      "text": "Si OriginalGroupInformationAndStatus/GroupStatus está presente y es igual a PDNG (Pending), OriginalPaymentInformationAndStatus/PaymentInformationStatus debe ser distinto de RJCT (Rejected).",
+      "source": "d450772a0929",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "rule:953b8c6a-870e-446e-8ef6-452a3b36482b": {
       "text": "Si PaymentTypeInformation está presente, entonces CreditTransferTransactionInformation/PaymentTypeInformation no está permitido.",
       "source": "d21ba71a76ef",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "rule:9bf6991f-df93-4f3f-a2ef-765fca0ee9be": {
+      "text": "Si OriginalPaymentInformationAndStatus/PaymentInformationStatus está presente y es igual a RCVD (Received), no se permite TransactionInformationAndStatus/TransactionStatus.",
+      "source": "518aa7603586",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "rule:9c1efa66-83a6-4806-9846-1cf888f3ecec": {
+      "text": "Si OriginalGroupInformationAndStatus/GroupStatus está presente y es igual a ACTC (AcceptedTechnicalValidation), ACCP (AcceptedCustomerProfile), ACSP (AcceptedSettlementInProcess), ACSC (AcceptedSettlementCompleted) o ACWC (AcceptedWithChange), OriginalPaymentInformationAndStatus/PaymentInformationStatus debe ser distinto de RJCT (Rejected).",
+      "source": "f48fdb3cee25",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -6557,6 +8776,27 @@
     "rule:c3d70612-34a4-4804-a8ae-db12c4970f5f": {
       "text": "UltimateDebtor solo puede estar presente si es distinto de Debtor.",
       "source": "5f22e2978119",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "rule:c9e26518-ce60-4924-bbf8-3d2e969f7b44": {
+      "text": "Si OriginalPaymentInformationAndStatus/PaymentInformationStatus está presente y es igual a RJCT (Rejceted), TransactionInformationAndStatus/TransactionStatus, si está presente, debe ser igual a RJCT (Rejected).",
+      "source": "ed6813e0fd21",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "rule:ccb10d3a-d709-4f54-97b1-7e332a4fe7d9": {
+      "text": "Si PaymentInformationStatus está presente y es igual a ACTC (AcceptedTechnicalValidation), ACCP (AcceptedCustomerProfile), ACSP (AcceptedSettlementInProcess), ACSC (AcceptedSettlementCompleted) o ACWC (AcceptedWithChange), TransactionInformationAndStatus/TransactionStatus debe ser distinto de RJCT (Rejected).",
+      "source": "3d6e319d974b",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "rule:dc431f9d-b7e5-4f15-a0f6-5bfbf1bdd95e": {
+      "text": "El bloque SupplementaryData a nivel de mensaje no debe utilizarse para proporcionar información adicional sobre una operación. Para ese fin debe utilizarse el elemento SupplementaryData a nivel de operación.",
+      "source": "000430c8aa47",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -6617,6 +8857,13 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "type:_-qEw2ZRuEeazAtAtDSg0Nw": {
+      "text": "Conjunto de elementos utilizados para proporcionar información detallada sobre el número de operaciones que se notifican con un estado de operación específico.",
+      "source": "1fe5cfa9c727",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "type:_0IULUTEyEe6g-ffJsqGiSA": {
       "text": "Proporciona información sobre el aviso de remesa.",
       "source": "788b7d21086c",
@@ -6638,6 +8885,13 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "type:_1bDllzEyEe6g-ffJsqGiSA": {
+      "text": "Especifica la información del sistema de seguimiento propia de la entidad para una operación de pago.",
+      "source": "e5fcd8bc1f40",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "type:_1QJJIabjEeKvUvwX_r3tzA": {
       "text": "Identifica los documentos a los que se hace referencia en la información de remesa.",
       "source": "7ca192e2fb87",
@@ -6645,9 +8899,23 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "type:_1YwfgTEyEe6g-ffJsqGiSA": {
+      "text": "Especifica la información detallada proporcionada por un sistema de seguimiento de pagos.",
+      "source": "0a70cb3e78f4",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "type:_4oDGATEyEe6g-ffJsqGiSA": {
       "text": "Características de una instrucción de cheque, como el tipo de cheque o el número de cheque.",
       "source": "391355bb8444",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "type:_4qUW4TEyEe6g-ffJsqGiSA": {
+      "text": "Proporciona detalles sobre el grupo original al que se refiere el mensaje.",
+      "source": "237a1d511e54",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -6662,6 +8930,13 @@
     "type:_5ZNFsNolEembTrt_WixjyQ": {
       "text": "Especifica el tipo de aviso que se debe notificar para la operación.",
       "source": "355866b6242a",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "type:_6hTGoTEyEe6g-ffJsqGiSA": {
+      "text": "Proporciona las características compartidas por todas las operaciones individuales incluidas en el mensaje.",
+      "source": "cffdb9936d11",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -6732,6 +9007,13 @@
     "type:_bM2KRzFIEe651u5xu3f5iw": {
       "text": "Información relacionada con una identificación de una organización.",
       "source": "8e7e34b32596",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "type:_caAocXR0EeiH1ZOt2UD8vQ": {
+      "text": "Proporciona detalles adicionales del tipo de pago.",
+      "source": "c89163eb8f3e",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -6862,6 +9144,13 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "type:_M5wl0IW7EeiDBOVr6AJAFA": {
+      "text": "Describe los detalles del cambio de divisas.",
+      "source": "9a79a3ff1b70",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "type:_n-65U94lEeqt1ZcLzWyWFw": {
       "text": "Conjunto de elementos utilizados para proporcionar información sobre el importe o los importes del impuesto del registro fiscal.",
       "source": "2d2642205ebc",
@@ -6940,6 +9229,13 @@
       "date": "2026-10-06"
     },
     "type:_P-Pqgtp-Ed-ak6NoX_4Aeg_-1987897352": {
+      "text": "Información relacionada con una identificación, por ejemplo, la identificación de una parte o de una cuenta.",
+      "source": "e1c9631e1cd1",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "type:_P-sWcdp-Ed-ak6NoX_4Aeg_1185673654": {
       "text": "Información relacionada con una identificación, por ejemplo, la identificación de una parte o de una cuenta.",
       "source": "e1c9631e1cd1",
       "status": "machine",
@@ -7051,6 +9347,13 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "type:_RA3lIbvIEfCYYbmqNrQFSg": {
+      "text": "Elección de la información relacionada con el mandato.",
+      "source": "636b75f5ae8b",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "type:_RD1Zltp-Ed-ak6NoX_4Aeg_-955120203": {
       "text": "Proporciona los detalles sobre la identificación del usuario o cualquier clave de usuario que permita comprobar si la parte iniciadora está autorizada a emitir la operación.",
       "source": "457cef3a4ef3",
@@ -7100,6 +9403,13 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "type:_tjJEUVkyEeGeoaLUQk__nA_-594962709": {
+      "text": "Especifica el tipo de gasto.",
+      "source": "0e1f3c2f62c0",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "type:_TMehHNp-Ed-ak6NoX_4Aeg_151445359": {
       "text": "Identificación única, asignada por un sistema de compensación, para identificar inequívocamente a un miembro del sistema de compensación.",
       "source": "85040818a567",
@@ -7110,6 +9420,20 @@
     "type:_TMoSENp-Ed-ak6NoX_4Aeg_-1410917193": {
       "text": "Elección de un identificador de sistema de compensación.",
       "source": "ef73be1b132d",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "type:_TMVXJdp-Ed-ak6NoX_4Aeg_948374898": {
+      "text": "Especifica la identificación del sistema de compensación.",
+      "source": "5a5b8dc1ceb5",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "type:_TRGiZtp-Ed-ak6NoX_4Aeg_-1877638998": {
+      "text": "Especifica el motivo del estado de la operación.",
+      "source": "053f4f54917e",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -7149,6 +9473,13 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "type:_vqulsTEyEe6g-ffJsqGiSA": {
+      "text": "Identificación de una persona, una organización o una entidad financiera.",
+      "source": "b97f79be5b34",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "type:_vRiGoDKzEe6dJsbzsnAdDg": {
       "text": "Proporciona detalles sobre el importe y el tipo del documento referido.",
       "source": "8125745ae094",
@@ -7184,6 +9515,27 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "type:_wFG0kTEyEe6g-ffJsqGiSA": {
+      "text": "Proporciona más detalles sobre la liquidación de la instrucción.",
+      "source": "f09ddeeb0d9d",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "type:_wJuO0TEyEe6g-ffJsqGiSA": {
+      "text": "Proporciona más detalles relacionados con un mandato de adeudo directo firmado entre el beneficiario y el ordenante.",
+      "source": "a37c867aa495",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "type:_wL-4oTEyEe6g-ffJsqGiSA": {
+      "text": "Proporciona más detalles sobre la lista de elementos del mandato de adeudo directo que se han modificado cuando se ha activado el indicador de modificación.",
+      "source": "8af8520ba1a6",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "type:_WpOTg8saEemxFbEZK-FMzw": {
       "text": "Información adicional relacionada con el procesamiento de la instrucción de pago sobre la que puede ser necesario que actúe la entidad del ordenante. La instrucción puede referirse a un nivel de servicio, puede ser una instrucción que debe ejecutar la entidad del ordenante, o puede ser información requerida por la entidad del ordenante.",
       "source": "bd37776ebb58",
@@ -7191,9 +9543,23 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "type:_x7KXQTEyEe6g-ffJsqGiSA": {
+      "text": "Proporciona información sobre los gastos relacionados con la operación de pago.",
+      "source": "311bffafb52e",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "type:_xnoxwXrgEeidVZmeoasaWQ": {
       "text": "Proporciona medios adicionales de referencia a una operación de pago.",
       "source": "d2c746275d58",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "type:_xPVMATEyEe6g-ffJsqGiSA": {
+      "text": "Proporciona información sobre el motivo del estado de la operación.",
+      "source": "ee6ae4b36eb4",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
@@ -7233,6 +9599,13 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "type:11374abc-92e8-4404-9e28-3abe0e95451e": {
+      "text": "Proporciona más detalles sobre las operaciones originales a las que se refiere el mensaje de informe de estado.",
+      "source": "9641bf69ed14",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "type:15df450f-df3b-4230-9d9a-8fba15b89a4e": {
       "text": "Proporciona información sobre las operaciones de valores que componen el pago.",
       "source": "a96e0e1a4d10",
@@ -7254,9 +9627,23 @@
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"
     },
+    "type:830133ba-0d8f-4554-8a2e-779f67d6fbd1": {
+      "text": "Proporciona información detallada sobre la operación original a la que se refiere el mensaje de informe de estado.",
+      "source": "f958051a5508",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
     "type:a376f506-35bc-4f88-9925-eceabe35beea": {
       "text": "Características que se aplican al lado del débito de las operaciones de pago incluidas en la iniciación de transferencias.",
       "source": "a065860ae459",
+      "status": "machine",
+      "by": "claude-sonnet-5-5",
+      "date": "2026-10-06"
+    },
+    "type:b6168479-406c-4e82-b807-50ae6886bee6": {
+      "text": "Especifica los elementos clave tal como se definieron en la operación original.",
+      "source": "e09cccdcacdf",
       "status": "machine",
       "by": "claude-sonnet-5-5",
       "date": "2026-10-06"

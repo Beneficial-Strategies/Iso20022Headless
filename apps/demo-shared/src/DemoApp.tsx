@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Command } from 'cmdk';
 import type { z } from 'zod';
-import { evaluateRules, formatIssue, pain001Message, ruleCodeLists, schemas, type RuleResult } from '@beneficial-strategies/iso20022-validate';
+import { evaluateRules, formatIssue, messageIndex, ruleCodeLists, type MessageBundle, type RuleResult } from '@beneficial-strategies/iso20022-validate';
+import { DescribedSelect } from './DescribedSelect.tsx';
 import { serializeFragment, serializeFragmentIsoJson, serializeToIsoJson, serializeToXml } from '@beneficial-strategies/iso20022-serialize';
 import type { UseForm } from './formApi.ts';
 import type { UiKey } from './i18n/messages.ts';
@@ -13,15 +14,58 @@ import { SettingsPanel } from './SettingsPanel.tsx';
 import { useSettings, type Format } from './settings.ts';
 import { SkinProvider, skinIds, skins } from './skin/index.ts';
 
-const MESSAGE_TYPE = pain001Message.rootType;
+const messageIds = messageIndex.map((m) => m.identifier);
+const bundleCache = new Map<string, MessageBundle>();
 
-function TypePicker({ value, onChange }: { value: string; onChange: (t: string) => void }) {
+/** Load a message on demand (each message is its own chunk) and remember it. */
+function useMessageBundle(identifier: string): MessageBundle | undefined {
+  const [bundle, setBundle] = useState<MessageBundle | undefined>(() => bundleCache.get(identifier));
+  useEffect(() => {
+    const cached = bundleCache.get(identifier);
+    if (cached) {
+      setBundle(cached);
+      return;
+    }
+    setBundle(undefined);
+    let live = true;
+    void messageIndex
+      .find((m) => m.identifier === identifier)!
+      .load()
+      .then((b) => {
+        bundleCache.set(identifier, b);
+        if (live) setBundle(b);
+      });
+    return () => {
+      live = false;
+    };
+  }, [identifier]);
+  return bundle;
+}
+
+function MessagePicker({ value, onChange }: { value: string; onChange: (id: string) => void }) {
+  const { t } = useI18n();
+  return (
+    <div className="w-[min(15rem,100%)] min-w-0 shrink-0">
+      <DescribedSelect
+        id="message-picker"
+        ariaLabel={t('messageLabel')}
+        value={value}
+        options={messageIndex.map((m) => ({ value: m.identifier, label: m.identifier, description: m.title }))}
+        onChange={(v) => v && onChange(v)}
+        placeholder={t('messageLabel')}
+      />
+    </div>
+  );
+}
+
+function TypePicker({ bundle, value, onChange }: { bundle: MessageBundle; value: string; onChange: (t: string) => void }) {
   const { t } = useI18n();
   const [open, setOpen] = useState(false);
   const root = useRef<HTMLDivElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
   const popup = useRef<HTMLDivElement>(null);
-  const names = useMemo(() => [MESSAGE_TYPE, ...Object.keys(schemas).filter((n) => n !== MESSAGE_TYPE && pain001Message.typeDescriptors[n]?.kind === 'component').sort()], []);
+  const messageType = bundle.message.rootType;
+  const names = useMemo(() => [messageType, ...Object.keys(bundle.schemas).filter((n) => n !== messageType && bundle.typeDescriptors[n]?.kind === 'component').sort()], [bundle, messageType]);
 
   useEffect(() => {
     if (!open) return;
@@ -75,7 +119,7 @@ function TypePicker({ value, onChange }: { value: string; onChange: (t: string) 
                   }}
                 >
                   {n}
-                  {n === MESSAGE_TYPE ? <span className="ml-2 font-sans text-muted">{t('wholeMessage', { id: pain001Message.identifier })}</span> : null}
+                  {n === messageType ? <span className="ml-2 font-sans text-muted">{t('wholeMessage', { id: bundle.message.identifier })}</span> : null}
                 </Command.Item>
               ))}
             </Command.List>
@@ -144,20 +188,20 @@ function RulesPanel({ results }: { results: RuleResult[] }) {
   );
 }
 
-function Editor({ useForm, typeName, dark, format }: { useForm: UseForm; typeName: string; dark: boolean; format: Format }) {
+function Editor({ bundle, useForm, typeName, dark, format }: { bundle: MessageBundle; useForm: UseForm; typeName: string; dark: boolean; format: Format }) {
   const { t, validation } = useI18n();
-  const form = useForm({ schema: (schemas as unknown as Record<string, z.ZodType>)[typeName]!, typeDescriptors: pain001Message.typeDescriptors, rootType: typeName, messages: validation });
+  const form = useForm({ schema: (bundle.schemas as Record<string, z.ZodType>)[typeName]!, typeDescriptors: bundle.typeDescriptors, rootType: typeName, messages: validation });
   const [submitted, setSubmitted] = useState(false);
   const output = useMemo(() => {
-    const whole = typeName === MESSAGE_TYPE;
+    const whole = typeName === bundle.message.rootType;
     if (format === 'json') {
-      return whole ? serializeToIsoJson(pain001Message, form.values) : serializeFragmentIsoJson(pain001Message.typeDescriptors, typeName, form.values);
+      return whole ? serializeToIsoJson(bundle.message, form.values) : serializeFragmentIsoJson(bundle.typeDescriptors, typeName, form.values);
     }
-    return whole ? serializeToXml(pain001Message, form.values) : serializeFragment(pain001Message.typeDescriptors, typeName, form.values);
-  }, [form.values, typeName, format]);
+    return whole ? serializeToXml(bundle.message, form.values) : serializeFragment(bundle.typeDescriptors, typeName, form.values);
+  }, [bundle, form.values, typeName, format]);
   const ruleResults = useMemo(
-    () => evaluateRules({ types: pain001Message.typeDescriptors, codeLists: ruleCodeLists }, typeName, form.values),
-    [form.values, typeName],
+    () => evaluateRules({ types: bundle.typeDescriptors, codeLists: ruleCodeLists }, typeName, form.values),
+    [bundle, form.values, typeName],
   );
   const failedRules = ruleResults.filter((r) => r.status === 'fail');
   const errorCount = Object.keys(form.allErrors).length + failedRules.length;
@@ -204,9 +248,12 @@ function Editor({ useForm, typeName, dark, format }: { useForm: UseForm; typeNam
  * spec text per locale (keep the object stable, e.g. define it outside the component).
  */
 export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form' | 'zod'; useForm: UseForm; i18n?: I18nOverrides }) {
-  const [typeName, setTypeName] = useState<string>(MESSAGE_TYPE);
   const locales = useMemo(() => supportedLocales(overrides), [overrides]);
-  const { settings, resolvedTheme, locale, update } = useSettings(skinIds, locales);
+  const { settings, resolvedTheme, locale, update } = useSettings(skinIds, locales, messageIds);
+  const bundle = useMessageBundle(settings.message);
+  const [chosenType, setChosenType] = useState<{ message: string; type: string } | undefined>();
+  // a type chosen for another message does not apply here: fall back to the whole message
+  const typeName = bundle && chosenType?.message === settings.message && bundle.typeDescriptors[chosenType.type] ? chosenType.type : bundle?.message.rootType;
   const i18n = useCreateI18n(locale, overrides);
   const skin = skins.find((s) => s.id === settings.skin) ?? skins[0]!;
   return (
@@ -218,12 +265,19 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
             <p className="max-w-3xl text-xs text-muted">{i18n.t(`blurb_${variant}` as UiKey)}</p>
           </div>
           <div className="flex min-w-0 flex-wrap items-end gap-2 sm:flex-nowrap">
-            <TypePicker value={typeName} onChange={setTypeName} />
+            <MessagePicker value={settings.message} onChange={(message) => update({ message })} />
+            {bundle && typeName ? <TypePicker bundle={bundle} value={typeName} onChange={(type) => setChosenType({ message: settings.message, type })} /> : null}
             <SettingsPanel settings={settings} skins={skins} locales={locales} onChange={update} />
           </div>
         </header>
         <SkinProvider value={skin}>
-          <Editor key={typeName} useForm={useForm} typeName={typeName} dark={resolvedTheme === 'dark'} format={settings.format} />
+          {bundle && typeName ? (
+            <Editor key={`${settings.message}/${typeName}`} bundle={bundle} useForm={useForm} typeName={typeName} dark={resolvedTheme === 'dark'} format={settings.format} />
+          ) : (
+            <p className="text-sm text-muted" role="status">
+              {i18n.t('loading')}
+            </p>
+          )}
         </SkinProvider>
       </div>
     </I18nProvider>

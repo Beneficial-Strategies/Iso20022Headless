@@ -20,9 +20,11 @@ export interface Settings {
   lang: string;
   /** Output shown beside the form. */
   format: Format;
+  /** Message identifier, e.g. pain.002.001.15. */
+  message: string;
 }
 
-export const DEFAULT_SETTINGS: Settings = { theme: 'system', size: 'normal', density: 'comfortable', skin: 'tailwind', lang: 'auto', format: 'xml' };
+export const DEFAULT_SETTINGS: Settings = { theme: 'system', size: 'normal', density: 'comfortable', skin: 'tailwind', lang: 'auto', format: 'xml', message: 'pain.001.001.13' };
 
 export const DEFAULT_LOCALES: readonly string[] = ['en', 'es'];
 
@@ -30,7 +32,12 @@ const pick = <T extends string>(allowed: readonly T[], v: string | null, fallbac
   (allowed as readonly string[]).includes(v ?? '') ? (v as T) : fallback;
 
 /** Settings live in the URL (`?theme=dark&size=large`), so a configuration is linkable and nothing is stored. */
-export function parseSettings(search: string, skins: readonly string[], locales: readonly string[] = DEFAULT_LOCALES): Settings {
+export function parseSettings(
+  search: string,
+  skins: readonly string[],
+  locales: readonly string[] = DEFAULT_LOCALES,
+  messages: readonly string[] = [DEFAULT_SETTINGS.message],
+): Settings {
   const q = new URLSearchParams(search);
   return {
     theme: pick(THEMES, q.get('theme'), DEFAULT_SETTINGS.theme),
@@ -39,6 +46,7 @@ export function parseSettings(search: string, skins: readonly string[], locales:
     skin: pick(skins, q.get('skin'), DEFAULT_SETTINGS.skin),
     lang: pick(['auto', ...locales], q.get('lang'), DEFAULT_SETTINGS.lang),
     format: pick(FORMATS, q.get('format'), DEFAULT_SETTINGS.format),
+    message: pick(messages, q.get('message'), DEFAULT_SETTINGS.message),
   };
 }
 
@@ -74,8 +82,9 @@ export function resolveTheme(theme: Theme, systemDark: boolean): 'light' | 'dark
 export function useSettings(
   skins: readonly string[],
   locales: readonly string[] = DEFAULT_LOCALES,
+  messages: readonly string[] = [DEFAULT_SETTINGS.message],
 ): { settings: Settings; resolvedTheme: 'light' | 'dark'; locale: string; update: (patch: Partial<Settings>) => void } {
-  const [settings, setSettings] = useState<Settings>(() => parseSettings(typeof window === 'undefined' ? '' : window.location.search, skins, locales));
+  const [settings, setSettings] = useState<Settings>(() => parseSettings(typeof window === 'undefined' ? '' : window.location.search, skins, locales, messages));
   const [systemDark, setSystemDark] = useState(prefersDark);
 
   useEffect(() => {

@@ -1,33 +1,51 @@
 /**
  * Codegen: MCP-derived TSV fixtures -> JSON IR -> TypeScript interfaces + Zod schemas + descriptors.
  *
- * Inputs (fixtures/pain001-v13/, captured from the ISO 20022 MCP server):
- *   complex-types.tsv, simple-types.tsv, codesets.tsv, constraints-PaymentInstruction51.tsv
+ * Inputs: every directory under fixtures/ that holds a message.json (one per message), each with
+ *   message.json, complex-types.tsv, simple-types.tsv, codesets.tsv, snapshot-raw.tsv, codedefs.tsv, codeset-defs.tsv,
+ *   choice-defs.tsv, constraints*.tsv, constraint-expressions*.tsv, rule-codelists.tsv   (all optional except the first four)
+ * A type that appears in several messages is defined once: the fixtures are merged into one pool.
+ *
  * Outputs (committed):
- *   tools/codegen-ts/ir/pain.001.001.13.json
- *   packages/types/src/generated/pain001.ts
- *   packages/validate/src/generated/pain001.ts
+ *   tools/codegen-ts/ir/<identifier>.json                      per message
+ *   packages/validate/src/generated/shared.ts                  types used by more than one message (+ rule code lists)
+ *   packages/validate/src/generated/<out>.ts                   per message: its own types, schemas, descriptors, message object
+ *   packages/validate/src/generated/definitions.ts             spec text for all messages, keyed by ISO id
+ *   packages/validate/src/generated/registry.ts                message index with lazy loaders
+ *   packages/validate/src/generated/all.ts                     descriptors of every message (tools and tests)
+ *   packages/types/src/generated/shared.ts, <out>.ts           interfaces
  */
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../../..');
-const fixtures = resolve(root, 'fixtures/pain001-v13');
+const fixturesRoot = resolve(root, 'fixtures');
 
-// ---------------------------------------------------------------- message definition
-// From the MCP: pain.001.001.13 (CustomerCreditTransferInitiationV13) building blocks.
-const MESSAGE = {
-  identifier: 'pain.001.001.13',
-  name: 'CustomerCreditTransferInitiationV13',
-  namespace: 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.13',
-  bodyTag: 'CstmrCdtTrfInitn',
-  blocks: [
-    { name: 'GroupHeader', isoId: '4f529681-cc64-42c7-ae7b-39fffcdcad88', xmlTag: 'GrpHdr', type: 'GroupHeader114', min: 1, max: 1 },
-    { name: 'PaymentInformation', isoId: 'b6643da8-3a66-4f88-b614-a1d23277da15', xmlTag: 'PmtInf', type: 'PaymentInstruction51', min: 1, max: null },
-    { name: 'SupplementaryData', isoId: 'a3d39e1f-0adb-48a1-955a-24f12678a777', xmlTag: 'SplmtryData', type: 'SupplementaryData1', min: 0, max: null },
-  ],
-};
+// ---------------------------------------------------------------- message definitions
+interface Block {
+  name: string;
+  isoId: string;
+  xmlTag: string;
+  type: string;
+  min: number;
+  max: number | null;
+}
+interface MessageConfig {
+  identifier: string;
+  name: string;
+  namespace: string;
+  bodyTag: string;
+  /** Output module name, e.g. pain001. */
+  out: string;
+  blocks: Block[];
+}
+
+const dirs = readdirSync(fixturesRoot)
+  .filter((d) => existsSync(resolve(fixturesRoot, d, 'message.json')))
+  .sort();
+const configs = new Map<string, MessageConfig>();
+for (const d of dirs) configs.set(d, JSON.parse(readFileSync(resolve(fixturesRoot, d, 'message.json'), 'utf8')) as MessageConfig);
 
 // ---------------------------------------------------------------- IR types
 type Kind = 'text' | 'number' | 'date' | 'datetime' | 'boolean' | 'code' | 'amount' | 'any' | 'component' | 'choice';
@@ -39,6 +57,15 @@ interface Field {
   kind: Kind;
   min: number;
   max: number | null;
+}
+interface BooleanRuleIr {
+  op: string;
+  path: string;
+  value?: string;
+}
+interface RuleExprIr {
+  mustBe: { connector: 'AND' | 'OR'; rules: BooleanRuleIr[] };
+  onCondition?: { connector: 'AND' | 'OR'; rules: BooleanRuleIr[] };
 }
 interface IrType {
   name: string;
@@ -57,47 +84,60 @@ interface IrType {
   rules?: { name: string; isoId?: string; text: string; expression?: RuleExprIr }[];
 }
 
-// ---------------------------------------------------------------- parsing
-const rowsOf = (file: string): string[][] =>
-  readFileSync(resolve(fixtures, file), 'utf8')
+// ---------------------------------------------------------------- reading fixtures
+const num = (s: string | undefined): number | undefined => (s === undefined || s === '' ? undefined : Number(s));
+
+/** Rows of a tab-separated fixture; `#` comment lines and blank lines are dropped, and so is a header row if asked. */
+function rowsOf(dir: string, file: string, header = false): string[][] {
+  const p = resolve(fixturesRoot, dir, file);
+  if (!existsSync(p)) return [];
+  const rows = readFileSync(p, 'utf8')
     .split('\n')
     .filter((l) => l.length > 0 && !l.startsWith('#'))
     .map((l) => l.split('\t'));
+  return header ? rows.slice(1) : rows;
+}
+const filesMatching = (dir: string, re: RegExp): string[] => readdirSync(resolve(fixturesRoot, dir)).filter((f) => re.test(f)).sort();
 
-const num = (s: string | undefined): number | undefined => (s === undefined || s === '' ? undefined : Number(s));
-
-const complexRows = rowsOf('complex-types.tsv').filter((r) => r[0] === 'DATATYPE' || r[0] === 'MEMBER');
+// The pool: everything from every message's fixtures, merged. First definition of a name wins; a conflict is an error.
 const datatypes = new Map<string, string[]>();
 const members = new Map<string, string[][]>();
-for (const r of complexRows) {
-  if (r[0] === 'DATATYPE') datatypes.set(r[1]!, r);
-  else (members.get(r[1]!) ?? members.set(r[1]!, []).get(r[1]!)!).push(r);
-}
-
 const simple = new Map<string, string[]>();
-for (const r of rowsOf('simple-types.tsv').slice(1)) simple.set(r[0]!, r);
-
-const codeRows = rowsOf('codesets.tsv').slice(1);
 const codesets = new Map<string, string[][]>();
-for (const r of codeRows) (codesets.get(r[0]!) ?? codesets.set(r[0]!, []).get(r[0]!)!).push(r);
-
-// ISO ids of individual codes, from codedefs.tsv (codeSet, code, enumName, isoId, text)
 const codeIsoIds = new Map<string, string>();
-if (existsSync(resolve(fixtures, 'codedefs.tsv'))) {
-  for (const r of rowsOf('codedefs.tsv').slice(1)) codeIsoIds.set(`${r[0]}\t${r[1]}`, r[3]!);
+const ruleCodeLists: Record<string, string[]> = {};
+const problems: string[] = [];
+
+for (const d of dirs) {
+  const localTypes = new Map<string, string[]>();
+  const localMembers = new Map<string, string[][]>();
+  for (const r of rowsOf(d, 'complex-types.tsv')) {
+    if (r[0] === 'DATATYPE') localTypes.set(r[1]!, r);
+    else if (r[0] === 'MEMBER') (localMembers.get(r[1]!) ?? localMembers.set(r[1]!, []).get(r[1]!)!).push(r);
+  }
+  for (const [name, row] of localTypes) {
+    const have = datatypes.get(name);
+    if (have) {
+      if (have[2] !== row[2]) problems.push(`type ${name} has different ids in ${d} (${row[2]}) and an earlier message (${have[2]})`);
+      continue;
+    }
+    datatypes.set(name, row);
+    members.set(name, localMembers.get(name) ?? []);
+  }
+  for (const r of rowsOf(d, 'simple-types.tsv', true)) if (!simple.has(r[0]!)) simple.set(r[0]!, r);
+  for (const r of rowsOf(d, 'codesets.tsv', true)) {
+    const have = codesets.get(r[0]!);
+    if (!have) codesets.set(r[0]!, [r]);
+    else if (have[0]![1] === r[1] && !have.some((h) => h[3] === r[3])) have.push(r); // more codes of the same set
+  }
+  for (const r of rowsOf(d, 'codedefs.tsv', true)) codeIsoIds.set(`${r[0]}\t${r[1]}`, r[3]!);
+  for (const r of rowsOf(d, 'rule-codelists.tsv', true)) {
+    const list = (ruleCodeLists[r[0]!] ??= []);
+    if (!list.includes(r[1]!)) list.push(r[1]!);
+  }
 }
 
-const rulesFile = resolve(fixtures, 'constraints-PaymentInstruction51.tsv');
-interface BooleanRuleIr {
-  op: string;
-  path: string;
-  value?: string;
-}
-interface RuleExprIr {
-  mustBe: { connector: 'AND' | 'OR'; rules: BooleanRuleIr[] };
-  onCondition?: { connector: 'AND' | 'OR'; rules: BooleanRuleIr[] };
-}
-
+// ---------------------------------------------------------------- business rules (constraints)
 /** Parse the spec's RuleDefinition XML. The format is regular (mustBe / onCondition groups of BooleanRule). */
 function parseExpression(xml: string, name: string): RuleExprIr {
   const group = (tag: string): RuleExprIr['mustBe'] | undefined => {
@@ -122,32 +162,40 @@ function parseExpression(xml: string, name: string): RuleExprIr {
   return { mustBe, ...(onCondition ? { onCondition } : {}) };
 }
 
-const expressionsFile = resolve(fixtures, 'constraint-expressions-PaymentInstruction51.tsv');
-const expressionByName = new Map<string, string>();
-if (existsSync(expressionsFile)) {
-  for (const r of rowsOf('constraint-expressions-PaymentInstruction51.tsv').slice(1)) {
-    if (r[2]) expressionByName.set(r[1]!, r[2]);
+/**
+ * constraints*.tsv: either `scope id name text` (header starts with "scope") or, in the older single-scope files,
+ * `id name text` with the scope taken from the file name (constraints-<Scope>.tsv). Expressions likewise, keyed by constraint id.
+ */
+function scopedRows(dir: string, file: string): { scope: string; cols: string[] }[] {
+  const rows = rowsOf(dir, file);
+  const head = rows[0];
+  if (!head) return [];
+  if (head[0] === 'scope') return rows.slice(1).map((r) => ({ scope: r[0]!, cols: r.slice(1) }));
+  const scope = /^constraints?-(?:expressions-)?(.+)\.tsv$/.exec(file)?.[1] ?? file;
+  return rows.slice(1).map((r) => ({ scope, cols: r }));
+}
+
+const expressionById = new Map<string, string>();
+const rulesByScope = new Map<string, { name: string; isoId: string; text: string; expression?: RuleExprIr }[]>();
+for (const d of dirs) {
+  for (const f of filesMatching(d, /^constraint-expressions.*\.tsv$/)) {
+    for (const { cols } of scopedRows(d, f)) if (cols[2]) expressionById.set(cols[0]!, cols[2]);
   }
 }
-const paymentInstructionRules = existsSync(rulesFile)
-  ? rowsOf('constraints-PaymentInstruction51.tsv')
-      .slice(1)
-      .map((r) => {
-        const xml = expressionByName.get(r[1]!);
-        return { name: r[1]!, isoId: r[0]!, text: r[2]!, ...(xml ? { expression: parseExpression(xml, r[1]!) } : {}) };
-      })
-  : [];
-
-// Code sets that expressions reference but that are not types in the message closure.
-const ruleCodeLists: Record<string, string[]> = {};
-const ruleCodeListsFile = resolve(fixtures, 'rule-codelists.tsv');
-if (existsSync(ruleCodeListsFile)) {
-  for (const r of rowsOf('rule-codelists.tsv').slice(1)) (ruleCodeLists[r[0]!] ??= []).push(r[1]!);
+for (const d of dirs) {
+  for (const f of filesMatching(d, /^constraints.*\.tsv$/)) {
+    for (const { scope, cols } of scopedRows(d, f)) {
+      const [id, name, text] = cols as [string, string, string];
+      const list = rulesByScope.get(scope) ?? rulesByScope.set(scope, []).get(scope)!;
+      if (list.some((r) => r.isoId === id)) continue;
+      const xml = expressionById.get(id);
+      list.push({ name, isoId: id, text, ...(xml ? { expression: parseExpression(xml, name) } : {}) });
+    }
+  }
 }
 
 // ---------------------------------------------------------------- type resolution
 const ir = new Map<string, IrType>();
-const problems: string[] = [];
 
 function regexOk(p: string, where: string): string {
   try {
@@ -247,7 +295,7 @@ function toField(m: string[]): Field {
   // MEMBER parent id name xmlTag kind dataTypeName minOccurs maxOccurs definition
   const [, , memberId, name, xmlTag, , dataTypeName, minOccurs, maxOccurs] = m;
   const type = dataTypeName!;
-  resolve_(type);
+  resolveType(type);
   return {
     name: name!,
     ...(memberId ? { isoId: memberId } : {}),
@@ -259,7 +307,7 @@ function toField(m: string[]): Field {
   };
 }
 
-function resolve_(name: string): void {
+function resolveType(name: string): void {
   if (ir.has(name)) return;
   const inDt = datatypes.has(name);
   const inCode = codesets.has(name);
@@ -275,6 +323,7 @@ function resolve_(name: string): void {
     } else if (kind === 'Choice') {
       ir.set(name, { name, kind: 'choice' }); // placeholder, no cycles expected but guard anyway
       const choiceOptions = (members.get(name) ?? []).map(toField);
+      if (choiceOptions.length === 0) problems.push(`choice ${name} has no variants: capture them into the fixtures`);
       ir.set(name, { name, isoId: dt[2]!, kind: 'choice', choiceOptions });
     } else {
       ir.set(name, { name, kind: 'component' });
@@ -290,44 +339,59 @@ function resolve_(name: string): void {
   }
 }
 
-// root
-const rootName = MESSAGE.name;
-const rootFields: Field[] = MESSAGE.blocks.map((b) => {
-  resolve_(b.type);
-  return { name: b.name, isoId: b.isoId, xmlTag: b.xmlTag, type: b.type, kind: ir.get(b.type)!.kind, min: b.min, max: b.max };
-});
-ir.set(rootName, { name: rootName, kind: 'component', fields: rootFields });
-const pi = ir.get('PaymentInstruction51');
-if (pi && paymentInstructionRules.length > 0) pi.rules = paymentInstructionRules;
-
+// each message: a synthetic root type holding its building blocks, then the types reachable from it
+const closure = new Map<string, string[]>(); // message identifier -> types in dependency order
+const rootName = new Map<string, string>();
+for (const [, cfg] of configs) {
+  const fields: Field[] = cfg.blocks.map((b) => {
+    resolveType(b.type);
+    return { name: b.name, isoId: b.isoId, xmlTag: b.xmlTag, type: b.type, kind: ir.get(b.type)!.kind, min: b.min, max: b.max };
+  });
+  ir.set(cfg.name, { name: cfg.name, kind: 'component', fields });
+  rootName.set(cfg.identifier, cfg.name);
+}
+for (const [scope, rules] of rulesByScope) {
+  const t = ir.get(scope);
+  if (t) t.rules = rules;
+  else console.warn(`note: constraints for ${scope} are not used by any message and were skipped`);
+}
 if (problems.length > 0) {
   console.error('PROBLEMS:\n' + problems.join('\n'));
   process.exit(1);
 }
 
-// dependency order (post-order DFS from the root)
-const order: string[] = [];
-const seen = new Set<string>();
-function visit(n: string): void {
-  if (seen.has(n)) return;
-  seen.add(n);
-  const t = ir.get(n)!;
-  for (const f of [...(t.fields ?? []), ...(t.choiceOptions ?? [])]) visit(f.type);
-  order.push(n);
+function dependencyOrder(start: string[], keep: (n: string) => boolean): string[] {
+  const out: string[] = [];
+  const seen = new Set<string>();
+  const visit = (n: string): void => {
+    if (seen.has(n) || !keep(n)) return;
+    seen.add(n);
+    const t = ir.get(n)!;
+    for (const f of [...(t.fields ?? []), ...(t.choiceOptions ?? [])]) visit(f.type);
+    out.push(n);
+  };
+  start.forEach(visit);
+  return out;
 }
-visit(rootName);
+for (const [, cfg] of configs) closure.set(cfg.identifier, dependencyOrder([cfg.name], () => true));
 
-// ---------------------------------------------------------------- emit IR
-const irOut = resolve(root, 'tools/codegen-ts/ir');
-mkdirSync(irOut, { recursive: true });
-writeFileSync(
-  resolve(irOut, `${MESSAGE.identifier}.json`),
-  JSON.stringify({ message: MESSAGE, root: rootName, order, types: Object.fromEntries(order.map((n) => [n, ir.get(n)])) }, null, 2) + '\n',
-);
+// which messages use each type, and so which types are shared
+const usedBy = new Map<string, Set<string>>();
+for (const [id, names] of closure) for (const n of names) (usedBy.get(n) ?? usedBy.set(n, new Set()).get(n)!).add(id);
+const isShared = (n: string): boolean => (usedBy.get(n)?.size ?? 0) > 1;
+const sharedOrder = dependencyOrder([...usedBy.keys()].filter(isShared).sort(), isShared);
+const ownOrder = (cfg: MessageConfig): string[] => closure.get(cfg.identifier)!.filter((n) => !isShared(n));
 
-// ---------------------------------------------------------------- emit types
+// ---------------------------------------------------------------- emit helpers
 const HEADER = '// GENERATED by tools/codegen-ts from the ISO 20022 MCP spec data. Do not edit.\n';
 const q = (s: string): string => JSON.stringify(s);
+const schemaName = (n: string): string => `${n}Schema`;
+const cap = (s: string): string => s.charAt(0).toUpperCase() + s.slice(1);
+const writeOut = (rel: string, text: string): void => {
+  const p = resolve(root, rel);
+  mkdirSync(dirname(p), { recursive: true });
+  writeFileSync(p, text);
+};
 
 function tsLeaf(t: IrType): string {
   switch (t.kind) {
@@ -347,40 +411,39 @@ function fieldTs(f: Field, optionalMark: boolean): string {
   return `${f.name}${optionalMark && f.min === 0 ? '?' : ''}: ${arr};`;
 }
 
-let typesTs = HEADER + `// ${MESSAGE.identifier} (${MESSAGE.name}). Leaf values are wire strings.\n\n`;
-for (const n of order) {
-  const t = ir.get(n)!;
-  if (t.kind === 'component') {
-    typesTs += `export interface ${n} {\n${(t.fields ?? []).map((f) => '  ' + fieldTs(f, true)).join('\n')}\n}\n\n`;
-  } else if (t.kind === 'choice') {
-    const alts = (t.choiceOptions ?? []).map((f) => `{ ${fieldTs({ ...f, min: 1 }, false).replace(/;$/, '')} }`);
-    typesTs += `export type ${n} =\n  | ${alts.join('\n  | ')};\n\n`;
-  } else if (t.kind === 'amount') {
-    typesTs += `export interface ${n} {\n  /** Currency code, serialized as the Ccy attribute. */\n  Ccy: string;\n  Value: string;\n}\n\n`;
+function interfacesTs(names: string[]): string {
+  let out = '';
+  for (const n of names) {
+    const t = ir.get(n)!;
+    if (t.kind === 'component') {
+      out += `export interface ${n} {\n${(t.fields ?? []).map((f) => '  ' + fieldTs(f, true)).join('\n')}\n}\n\n`;
+    } else if (t.kind === 'choice') {
+      const alts = (t.choiceOptions ?? []).map((f) => `{ ${fieldTs({ ...f, min: 1 }, false).replace(/;$/, '')} }`);
+      out += `export type ${n} =\n  | ${alts.join('\n  | ')};\n\n`;
+    } else if (t.kind === 'amount') {
+      out += `export interface ${n} {\n  /** Currency code, serialized as the Ccy attribute. */\n  Ccy: string;\n  Value: string;\n}\n\n`;
+    }
   }
+  return out;
 }
-typesTs += `export type Pain001Document = ${rootName};\n`;
-writeFileSync(resolve(root, 'packages/types/src/generated/pain001.ts'), typesTs);
 
-// ---------------------------------------------------------------- emit zod + descriptors
+const opts = (parts: (string | false)[]): string => parts.filter(Boolean).join(', ');
+
 function zodExpr(t: IrType): string {
+  const textArgs = opts([
+    t.minLength !== undefined && `min: ${t.minLength}`,
+    t.maxLength !== undefined && `max: ${t.maxLength}`,
+    t.pattern !== undefined && `pattern: ${q(t.pattern)}`,
+  ]);
   switch (t.kind) {
     case 'text':
-      return `textType({${[
-        t.minLength !== undefined ? `min: ${t.minLength}` : '',
-        t.maxLength !== undefined ? `max: ${t.maxLength}` : '',
-        t.pattern !== undefined ? `pattern: ${q(t.pattern)}` : '',
-      ]
-        .filter(Boolean)
-        .join(', ')}})`;
+      return `textType({${textArgs}})`;
     case 'number':
-      return `decimalType({${[
-        t.totalDigits !== undefined ? `totalDigits: ${t.totalDigits}` : '',
-        t.fractionDigits !== undefined ? `fractionDigits: ${t.fractionDigits}` : '',
-        t.minInclusive !== undefined ? `minInclusive: ${t.minInclusive}` : '',
-      ]
-        .filter(Boolean)
-        .join(', ')}})`;
+      return `decimalType({${opts([
+        t.totalDigits !== undefined && `totalDigits: ${t.totalDigits}`,
+        t.fractionDigits !== undefined && `fractionDigits: ${t.fractionDigits}`,
+        t.minInclusive !== undefined && `minInclusive: ${t.minInclusive}`,
+      ])}})`;
     case 'date':
       return 'isoDate';
     case 'datetime':
@@ -390,14 +453,7 @@ function zodExpr(t: IrType): string {
     case 'any':
       return 'anyXml';
     case 'code':
-      if (t.options) return `z.enum([${t.options.map((o) => q(o.value)).join(', ')}])`;
-      return `textType({${[
-        t.minLength !== undefined ? `min: ${t.minLength}` : '',
-        t.maxLength !== undefined ? `max: ${t.maxLength}` : '',
-        t.pattern !== undefined ? `pattern: ${q(t.pattern)}` : '',
-      ]
-        .filter(Boolean)
-        .join(', ')}})`;
+      return t.options ? `z.enum([${t.options.map((o) => q(o.value)).join(', ')}])` : `textType({${textArgs}})`;
     case 'amount':
       return `z.strictObject({ Ccy: textType({ pattern: ${q(t.pattern!)} }), Value: decimalType({ totalDigits: ${t.totalDigits}, fractionDigits: ${t.fractionDigits}, minInclusive: ${t.minInclusive} }) })`;
     default:
@@ -405,12 +461,8 @@ function zodExpr(t: IrType): string {
   }
 }
 
-const schemaName = (n: string): string => `${n}Schema`;
-
 function fieldZod(f: Field): string {
-  const t = ir.get(f.type)!;
-  const ref = t.kind === 'component' || t.kind === 'choice' ? schemaName(t.name) : `${schemaName(t.name)}`;
-  let e = ref;
+  let e = schemaName(f.type);
   if (f.max !== 1) {
     e = `z.array(${e})`;
     if (f.min > 0) e += `.min(${f.min})`;
@@ -420,18 +472,19 @@ function fieldZod(f: Field): string {
   return e;
 }
 
-let zodTs =
-  HEADER +
-  `import { z } from 'zod';\nimport {\n  anyXml,\n  choiceOf,\n  decimalType,\n  displayName,\n  indicator,\n  isoDate,\n  isoDateTime,\n  textType,\n  type FieldDescriptor,\n  type TypeDescriptors,\n} from '../runtime.ts';\n\n`;
-for (const n of order) {
-  const t = ir.get(n)!;
-  if (t.kind === 'component') {
-    zodTs += `export const ${schemaName(n)} = z.strictObject({\n${(t.fields ?? []).map((f) => `  ${f.name}: ${fieldZod(f)},`).join('\n')}\n});\n\n`;
-  } else if (t.kind === 'choice') {
-    zodTs += `export const ${schemaName(n)} = choiceOf({\n${(t.choiceOptions ?? []).map((f) => `  ${f.name}: ${fieldZod({ ...f, min: 1 })},`).join('\n')}\n});\n\n`;
-  } else {
-    zodTs += `export const ${schemaName(n)} = ${zodExpr(t)};\n\n`;
+function schemasTs(names: string[]): string {
+  let out = '';
+  for (const n of names) {
+    const t = ir.get(n)!;
+    if (t.kind === 'component') {
+      out += `export const ${schemaName(n)} = z.strictObject({\n${(t.fields ?? []).map((f) => `  ${f.name}: ${fieldZod(f)},`).join('\n')}\n});\n\n`;
+    } else if (t.kind === 'choice') {
+      out += `export const ${schemaName(n)} = choiceOf({\n${(t.choiceOptions ?? []).map((f) => `  ${f.name}: ${fieldZod({ ...f, min: 1 })},`).join('\n')}\n});\n\n`;
+    } else {
+      out += `export const ${schemaName(n)} = ${zodExpr(t)};\n\n`;
+    }
   }
+  return out;
 }
 
 const descField = (f: Field): string => {
@@ -448,77 +501,148 @@ const descField = (f: Field): string => {
   return `{ ${parts.join(', ')} }`;
 };
 
-zodTs += `const f = (d: FieldDescriptor): FieldDescriptor => d;\n\nexport const typeDescriptors: TypeDescriptors = {\n`;
-for (const n of order) {
-  const t = ir.get(n)!;
-  const props = [`name: ${q(n)}`, ...(t.isoId ? [`isoId: ${q(t.isoId)}`] : []), `kind: ${q(t.kind)}`];
-  for (const k of ['minLength', 'maxLength', 'totalDigits', 'fractionDigits', 'minInclusive'] as const) {
-    if (t[k] !== undefined) props.push(`${k}: ${t[k]}`);
+function descriptorsTs(names: string[]): string {
+  let out = '';
+  for (const n of names) {
+    const t = ir.get(n)!;
+    const props = [`name: ${q(n)}`, ...(t.isoId ? [`isoId: ${q(t.isoId)}`] : []), `kind: ${q(t.kind)}`];
+    for (const k of ['minLength', 'maxLength', 'totalDigits', 'fractionDigits', 'minInclusive'] as const) {
+      if (t[k] !== undefined) props.push(`${k}: ${t[k]}`);
+    }
+    if (t.pattern !== undefined) props.push(`pattern: ${q(t.pattern)}`);
+    if (t.external) props.push('external: true');
+    if (t.options) props.push(`options: [${t.options.map((o) => `{ value: ${q(o.value)}, name: ${q(o.name)}${o.isoId ? `, isoId: ${q(o.isoId)}` : ''} }`).join(', ')}]`);
+    if (t.fields) props.push(`fields: [\n${t.fields.map((x) => `      f(${descField(x)}),`).join('\n')}\n    ]`);
+    if (t.choiceOptions) props.push(`choiceOptions: [\n${t.choiceOptions.map((x) => `      f(${descField({ ...x, min: 1 })}),`).join('\n')}\n    ]`);
+    if (t.rules) props.push(`rules: [\n${t.rules.map((r) => `      { name: ${q(r.name)}${r.isoId ? `, isoId: ${q(r.isoId)}` : ''}, text: ${q(r.text)}${r.expression ? `, expression: ${JSON.stringify(r.expression)}` : ''} },`).join('\n')}\n    ]`);
+    out += `  ${q(n)}: {\n    ${props.join(',\n    ')},\n  },\n`;
   }
-  if (t.pattern !== undefined) props.push(`pattern: ${q(t.pattern)}`);
-  if (t.external) props.push('external: true');
-  if (t.options) props.push(`options: [${t.options.map((o) => `{ value: ${q(o.value)}, name: ${q(o.name)}${o.isoId ? `, isoId: ${q(o.isoId)}` : ''} }`).join(', ')}]`);
-  if (t.fields) props.push(`fields: [\n${t.fields.map((x) => `      f(${descField(x)}),`).join('\n')}\n    ]`);
-  if (t.choiceOptions) props.push(`choiceOptions: [\n${t.choiceOptions.map((x) => `      f(${descField({ ...x, min: 1 })}),`).join('\n')}\n    ]`);
-  if (t.rules) props.push(`rules: [\n${t.rules.map((r) => `      { name: ${q(r.name)}${r.isoId ? `, isoId: ${q(r.isoId)}` : ''}, text: ${q(r.text)}${r.expression ? `, expression: ${JSON.stringify(r.expression)}` : ''} },`).join('\n')}\n    ]`);
-  zodTs += `  ${q(n)}: {\n    ${props.join(',\n    ')},\n  },\n`;
+  return out;
 }
-zodTs += `};\n\n`;
-zodTs += `/** Code lists referenced by rule expressions that are not message types: set name -> wire values. */\nexport const ruleCodeLists: Record<string, string[]> = ${JSON.stringify(ruleCodeLists)};\n\n`;
-zodTs += `/** Schemas for every component/choice type, for editing a single type on its own. */\nexport const schemas = {\n${order.filter((n) => ['component', 'choice'].includes(ir.get(n)!.kind)).map((n) => `  ${q(n)}: ${schemaName(n)},`).join('\n')}\n} as const;\n\n`;
-zodTs += `export const pain001Message = {\n  identifier: ${q(MESSAGE.identifier)},\n  namespace: ${q(MESSAGE.namespace)},\n  rootTag: 'Document',\n  bodyTag: ${q(MESSAGE.bodyTag)},\n  rootType: ${q(rootName)},\n  schema: ${schemaName(rootName)},\n  typeDescriptors,\n} as const;\n`;
-writeFileSync(resolve(root, 'packages/validate/src/generated/pain001.ts'), zodTs);
 
-// ---------------------------------------------------------------- emit definitions (separate module)
+const ZOD_IMPORT = `import { z } from 'zod';\nimport {\n  anyXml,\n  choiceOf,\n  decimalType,\n  displayName,\n  indicator,\n  isoDate,\n  isoDateTime,\n  textType,\n  type FieldDescriptor,\n  type TypeDescriptors,\n} from '../runtime.ts';\n`;
+const sharedCols = (names: string[]): string[] => names.filter(isShared);
+
+// ---------------------------------------------------------------- emit IR (per message)
+const irOut = resolve(root, 'tools/codegen-ts/ir');
+mkdirSync(irOut, { recursive: true });
+for (const [, cfg] of configs) {
+  const order = closure.get(cfg.identifier)!;
+  writeOut(
+    `tools/codegen-ts/ir/${cfg.identifier}.json`,
+    JSON.stringify({ message: cfg, root: cfg.name, order, types: Object.fromEntries(order.map((n) => [n, ir.get(n)])) }, null, 2) + '\n',
+  );
+}
+
+// ---------------------------------------------------------------- emit types package
+writeOut(
+  'packages/types/src/generated/shared.ts',
+  HEADER + '// Types used by more than one message. Leaf values are wire strings.\n\n' + (interfacesTs(sharedOrder) || 'export {};\n'),
+);
+const typesIndex: string[] = ["export * from './generated/shared.ts';"];
+for (const [, cfg] of configs) {
+  const own = ownOrder(cfg);
+  const refsShared = new Set<string>();
+  for (const n of own) {
+    for (const f of [...(ir.get(n)!.fields ?? []), ...(ir.get(n)!.choiceOptions ?? [])]) {
+      const t = ir.get(f.type)!;
+      if (isShared(f.type) && (t.kind === 'component' || t.kind === 'choice' || t.kind === 'amount')) refsShared.add(f.type);
+    }
+  }
+  const imp = refsShared.size ? `import type { ${[...refsShared].sort().join(', ')} } from './shared.ts';\n\n` : '';
+  writeOut(
+    `packages/types/src/generated/${cfg.out}.ts`,
+    HEADER + `// ${cfg.identifier} (${cfg.name}). Leaf values are wire strings.\n` + imp + (imp ? '' : '\n') + interfacesTs(own) + `export type ${cap(cfg.out)}Document = ${cfg.name};\n`,
+  );
+  typesIndex.push(`export * from './generated/${cfg.out}.ts';`);
+}
+writeOut('packages/types/src/index.ts', typesIndex.join('\n') + '\n');
+
+// ---------------------------------------------------------------- emit validate: shared + per message
+const sharedDescriptors = descriptorsTs(sharedOrder);
+writeOut(
+  'packages/validate/src/generated/shared.ts',
+  HEADER +
+    ZOD_IMPORT +
+    '\n// Types used by more than one message are defined once, here.\n\n' +
+    schemasTs(sharedOrder) +
+    'const f = (d: FieldDescriptor): FieldDescriptor => d;\n\n' +
+    `export const sharedTypeDescriptors: TypeDescriptors = {\n${sharedDescriptors}};\n`,
+);
+writeOut(
+  'packages/validate/src/generated/rulelists.ts',
+  HEADER + `/** Code lists referenced by rule expressions that are not message types: set name -> wire values. */\nexport const ruleCodeLists: Record<string, string[]> = ${JSON.stringify(ruleCodeLists)};\n`,
+);
+
+for (const [, cfg] of configs) {
+  const own = ownOrder(cfg);
+  const all = closure.get(cfg.identifier)!;
+  const shared = sharedCols(all);
+  const importShared = shared.length ? `import {\n${shared.map((n) => `  ${schemaName(n)},`).join('\n')}\n  sharedTypeDescriptors,\n} from './shared.ts';\n` : '';
+  const body =
+    HEADER +
+    ZOD_IMPORT +
+    importShared +
+    '\n' +
+    schemasTs(own) +
+    'const f = (d: FieldDescriptor): FieldDescriptor => d;\n\n' +
+    `const ownTypeDescriptors: TypeDescriptors = {\n${descriptorsTs(own)}};\n\n` +
+    `/** Descriptors for every type of ${cfg.identifier}, shared ones included. */\nexport const typeDescriptors: TypeDescriptors = {\n${shared.map((n) => `  ${q(n)}: sharedTypeDescriptors[${q(n)}]!,`).join('\n')}\n  ...ownTypeDescriptors,\n};\n\n` +
+    `/** Schemas for every component/choice type, for editing a single type on its own. */\nexport const schemas = {\n${all
+      .filter((n) => ['component', 'choice'].includes(ir.get(n)!.kind))
+      .map((n) => `  ${q(n)}: ${schemaName(n)},`)
+      .join('\n')}\n} as const;\n\n` +
+    `export const ${cfg.out}Message = {\n  identifier: ${q(cfg.identifier)},\n  namespace: ${q(cfg.namespace)},\n  rootTag: 'Document',\n  bodyTag: ${q(cfg.bodyTag)},\n  rootType: ${q(cfg.name)},\n  schema: ${schemaName(cfg.name)},\n  typeDescriptors,\n} as const;\n`;
+  writeOut(`packages/validate/src/generated/${cfg.out}.ts`, body);
+}
+
+// registry (lazy loaders) and the union of all descriptors
+const title = (name: string): string => name.replace(/V\d+$/, '').replace(/([a-z0-9])([A-Z])/g, '$1 $2');
+writeOut(
+  'packages/validate/src/generated/registry.ts',
+  HEADER +
+    "import type { ZodType } from 'zod';\nimport type { TypeDescriptors } from '../runtime.ts';\n\n" +
+    'export interface MessageBundle {\n  message: { identifier: string; namespace: string; rootTag: string; bodyTag: string; rootType: string; schema: ZodType; typeDescriptors: TypeDescriptors };\n  schemas: Record<string, ZodType>;\n  typeDescriptors: TypeDescriptors;\n}\n\n' +
+    'export interface MessageInfo {\n  identifier: string;\n  name: string;\n  title: string;\n  /** Loads the message on demand, so a page only downloads the messages it uses. */\n  load: () => Promise<MessageBundle>;\n}\n\n' +
+    `export const messageIndex: readonly MessageInfo[] = [\n${[...configs.values()]
+      .map(
+        (c) =>
+          `  {\n    identifier: ${q(c.identifier)},\n    name: ${q(c.name)},\n    title: ${q(title(c.name))},\n    load: () =>\n      import('./${c.out}.ts').then((m) => ({ message: m.${c.out}Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),\n  },`,
+      )
+      .join('\n')}\n];\n`,
+);
+writeOut(
+  'packages/validate/src/generated/all.ts',
+  HEADER +
+    "// The descriptors of every message together. Loads every message: for tools and tests, not for pages.\nimport type { TypeDescriptors } from '../runtime.ts';\n" +
+    [...configs.values()].map((c) => `import { typeDescriptors as ${c.out}Descriptors } from './${c.out}.ts';`).join('\n') +
+    `\n\nexport const allTypeDescriptors: TypeDescriptors = {\n${[...configs.values()].map((c) => `  ...${c.out}Descriptors,`).join('\n')}\n};\n`,
+);
+
+// ---------------------------------------------------------------- emit definitions (all messages, one module)
 // Spec prose for tooltips. Kept out of the descriptors so validation-only consumers don't pay for it.
 // Sources: snapshot-raw.tsv (types + members; saved verbatim from the MCP) and, for Choice variants
-// (which the snapshot omits), choice-defs.tsv (looked up per Choice and cross-checked).
+// (which the snapshot omits), choice-defs.tsv; codedefs.tsv / codeset-defs.tsv for codes and code sets.
 const typeDefs: Record<string, string> = {};
 const fieldDefs: Record<string, string> = {};
-const snapshotFile = resolve(fixtures, 'snapshot-raw.tsv');
-if (existsSync(snapshotFile)) {
-  for (const l of readFileSync(snapshotFile, 'utf8').split('\n')) {
-    if (!l || l.startsWith('#')) continue;
-    const c = l.split('\t');
+const codeDefs: Record<string, string> = {};
+const codeSetDefs: Record<string, string> = {};
+for (const d of dirs) {
+  for (const c of rowsOf(d, 'snapshot-raw.tsv')) {
     if (c[0] === 'DATATYPE' && ir.has(c[1]!)) typeDefs[c[2]!] = c[c.length - 1]!.trim();
     else if (c[0] === 'MEMBER' && ir.has(c[1]!)) fieldDefs[c[2]!] = c[c.length - 1]!.trim();
   }
-}
-const choiceDefsFile = resolve(fixtures, 'choice-defs.tsv');
-if (existsSync(choiceDefsFile)) {
-  for (const l of readFileSync(choiceDefsFile, 'utf8').split('\n').slice(1)) {
-    if (!l) continue;
-    const c = l.split('\t');
-    fieldDefs[c[1]!] = c.slice(3).join('\t').trim();
-  }
-}
-// Code values: definition per code keyed `CodeSet.wireValue`, plus one definition per code set.
-// Sources: codedefs.tsv / codeset-defs.tsv (get_code_set_details, double-captured and diffed).
-const codeDefs: Record<string, string> = {};
-const codeSetDefs: Record<string, string> = {};
-const codeDefsFile = resolve(fixtures, 'codedefs.tsv');
-if (existsSync(codeDefsFile)) {
-  for (const l of readFileSync(codeDefsFile, 'utf8').split('\n').slice(1)) {
-    if (!l) continue;
-    const c = l.split('\t');
-    if (ir.has(c[0]!)) codeDefs[c[3]!] = c.slice(4).join('\t').trim();
-  }
-}
-const codeSetDefsFile = resolve(fixtures, 'codeset-defs.tsv');
-if (existsSync(codeSetDefsFile)) {
-  for (const l of readFileSync(codeSetDefsFile, 'utf8').split('\n').slice(1)) {
-    if (!l) continue;
-    const c = l.split('\t');
-    if (ir.has(c[0]!)) codeSetDefs[c[1]!] = c.slice(2).join('\t').trim();
-  }
+  for (const c of rowsOf(d, 'choice-defs.tsv', true)) fieldDefs[c[1]!] = c.slice(3).join('\t').trim();
+  for (const c of rowsOf(d, 'codedefs.tsv', true)) if (ir.has(c[0]!)) codeDefs[c[3]!] = c.slice(4).join('\t').trim();
+  for (const c of rowsOf(d, 'codeset-defs.tsv', true)) if (ir.has(c[0]!)) codeSetDefs[c[1]!] = c.slice(2).join('\t').trim();
 }
 const sortedEntries = (o: Record<string, string>): string =>
   Object.keys(o)
     .sort()
     .map((k) => `  ${q(k)}: ${q(o[k]!)},`)
     .join('\n');
-writeFileSync(
-  resolve(root, 'packages/validate/src/generated/pain001.definitions.ts'),
+writeOut(
+  'packages/validate/src/generated/definitions.ts',
   HEADER +
     '// Definitions use `|` for line breaks and `||` for paragraph breaks, as returned by the MCP.\n' +
     '// All maps are keyed by ISO 20022 repository id (see isoId on the descriptors).\n' +
@@ -527,14 +651,14 @@ writeFileSync(
     `/** Keyed by code id. */\nexport const codeDefinitions: Record<string, string> = {\n${sortedEntries(codeDefs)}\n};\n\n` +
     `/** Keyed by code set id. */\nexport const codeSetDefinitions: Record<string, string> = {\n${sortedEntries(codeSetDefs)}\n};\n`,
 );
-console.log(
-  `definitions: ${Object.keys(typeDefs).length} types, ${Object.keys(fieldDefs).length} fields, ` +
-    `${Object.keys(codeDefs).length} codes, ${Object.keys(codeSetDefs).length} code sets`,
-);
 
-console.log(
-  `generated ${order.length} types: ` +
-    ['component', 'choice', 'amount', 'code', 'text', 'number', 'date', 'datetime', 'boolean', 'any']
-      .map((k) => `${k}=${order.filter((n) => ir.get(n)!.kind === k).length}`)
-      .join(' '),
-);
+// ---------------------------------------------------------------- summary
+const count = (names: string[], k: string): number => names.filter((n) => ir.get(n)!.kind === k).length;
+for (const [, cfg] of configs) {
+  const all = closure.get(cfg.identifier)!;
+  console.log(
+    `${cfg.identifier}: ${all.length} types (${ownOrder(cfg).length} own, ${sharedCols(all).length} shared): ` +
+      ['component', 'choice', 'amount', 'code', 'text', 'number', 'date', 'datetime', 'boolean', 'any'].map((k) => `${k}=${count(all, k)}`).join(' '),
+  );
+}
+console.log(`shared by 2+ messages: ${sharedOrder.length} types. definitions: ${Object.keys(typeDefs).length} types, ${Object.keys(fieldDefs).length} fields, ${Object.keys(codeDefs).length} codes, ${Object.keys(codeSetDefs).length} code sets`);

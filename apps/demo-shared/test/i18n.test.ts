@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { typeDescriptors } from '@beneficial-strategies/iso20022-validate/definitions';
+import { allTypeDescriptors as typeDescriptors } from '@beneficial-strategies/iso20022-validate/all';
 import { createI18n, supportedLocales } from '../src/i18n/context.tsx';
 import { UI_KEYS, uiEn, uiEs } from '../src/i18n/messages.ts';
 

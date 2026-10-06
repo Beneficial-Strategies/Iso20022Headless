@@ -1,0 +1,11 @@
+choice	memberId	memberName	text
+StatusReason6Choice	_TRGiZ9p-Ed-ak6NoX_4Aeg_-1877638996	Code	Reason for the status, as published in an external reason code list.
+StatusReason6Choice	_TRGiaNp-Ed-ak6NoX_4Aeg_-1877638936	Proprietary	Reason for the status, in a proprietary form.
+ChargeType3Choice	_tjJEUlkyEeGeoaLUQk__nA_-734620698	Code	Charge type, in a coded form.
+ChargeType3Choice	_tjJEU1kyEeGeoaLUQk__nA_-265813283	Proprietary	Type of charge in a proprietary form, as defined by the issuer.
+MandateRelatedData5Choice	_RH9EkbvIEfCYYbmqNrQFSg	DirectDebitMandate	Specific direct debit mandate data.
+MandateRelatedData5Choice	_RH9Ek7vIEfCYYbmqNrQFSg	CreditTransferMandate	Specific credit transfer mandate data.
+Party50Choice	_vtFWITEyEe6g-ffJsqGiSA	Party	Identification of a person or an organisation.
+Party50Choice	_vtFWIzEyEe6g-ffJsqGiSA	Agent	Identification of a financial institution.
+ClearingSystemIdentification3Choice	_TMVXJtp-Ed-ak6NoX_4Aeg_948374929	Code	Infrastructure through which the payment instruction is processed, as published in an external clearing system identification code list.
+ClearingSystemIdentification3Choice	_TMVXJ9p-Ed-ak6NoX_4Aeg_948374951	Proprietary	Clearing system identification in a proprietary form.
