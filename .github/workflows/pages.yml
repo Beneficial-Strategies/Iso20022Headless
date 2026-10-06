@@ -10,11 +10,6 @@ on:
 permissions:
   contents: read
 
-# One deployment at a time; a newer push waits rather than cancelling a deploy in progress.
-concurrency:
-  group: pages
-  cancel-in-progress: false
-
 jobs:
   verify:
     name: Test and build
@@ -65,11 +60,16 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    # One deployment at a time; a newer push waits rather than cancelling a deploy in progress.
+    # This is on the deploy job only: if a deployment ever sticks, tests and pull-request checks still run.
+    concurrency:
+      group: pages
+      cancel-in-progress: false
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
 
-  # Layout checks across 22 states, with screenshots attached. Informational: it does not block the deploy.
+  # Layout checks across every demo state, with screenshots attached. Informational: it does not block the deploy.
   visual:
     name: Visual and layout checks
     runs-on: ubuntu-latest
