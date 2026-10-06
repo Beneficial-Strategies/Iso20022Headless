@@ -38,7 +38,10 @@ export type PasteError =
   | { code: 'whole_message_for_part'; typeName: string }
   /** A single component other than the one being edited. */
   | { code: 'fragment_mismatch'; found: string; typeName: string }
-  | { code: 'clipboard_unreadable' };
+  | { code: 'clipboard_unreadable' }
+  /** A file that could not be read, or is bigger than we read. */
+  | { code: 'file_unreadable' }
+  | { code: 'file_too_large' };
 
 export type PastePlan =
   | {

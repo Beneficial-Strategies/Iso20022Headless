@@ -14,11 +14,25 @@ export interface PasteButton {
   onClick: () => void;
 }
 
+/** "Load file…": a button that opens the file chooser and hands the chosen file back. */
+export interface LoadButton {
+  label: string;
+  onFile: (file: File) => void;
+}
+
+/** "Save XML" / "Save JSON": hands the shown text to the browser as a file. */
+export interface SaveButton {
+  label: string;
+  onClick: () => void;
+}
+
 export function XmlPane({
   xml: text,
   dark = false,
   format = 'xml',
   paste,
+  load,
+  save,
   onCopied,
 }: {
   xml: string;
@@ -26,6 +40,8 @@ export function XmlPane({
   format?: 'xml' | 'json';
   /** A paste button next to the copy button. */
   paste?: PasteButton;
+  load?: LoadButton;
+  save?: SaveButton;
   /** Called with the text the copy button put on the clipboard. */
   onCopied?: (text: string) => void;
 }) {
@@ -34,6 +50,7 @@ export function XmlPane({
   const theme = useRef(new Compartment());
   const language = useRef(new Compartment());
   const [copied, setCopied] = useState(false);
+  const fileInput = useRef<HTMLInputElement>(null);
   const { t } = useI18n();
 
   useEffect(() => {
@@ -64,7 +81,32 @@ export function XmlPane({
 
   return (
     <div className="flex h-full flex-col">
-      <div className="mb-1 flex justify-end gap-2">
+      <div className="mb-1 flex flex-wrap justify-end gap-2">
+        {load ? (
+          <>
+            <input
+              ref={fileInput}
+              type="file"
+              accept=".xml,.json,application/xml,text/xml,application/json"
+              className="sr-only"
+              tabIndex={-1}
+              aria-label={load.label}
+              data-load-file
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                e.target.value = ''; // choosing the same file again must still fire
+                if (file) load.onFile(file);
+              }}
+            />
+            <button
+              type="button"
+              className="rounded border border-fg bg-surface px-2 py-0.5 text-xs text-fg hover:bg-surface-alt focus-visible:ring-2 focus-visible:ring-focus"
+              onClick={() => fileInput.current?.click()}
+            >
+              {load.label}
+            </button>
+          </>
+        ) : null}
         {paste ? (
           <button
             type="button"
@@ -89,6 +131,15 @@ export function XmlPane({
         >
           {copied ? t('copied') : format === 'json' ? t('copyJson') : t('copyXml')}
         </button>
+        {save ? (
+          <button
+            type="button"
+            className="rounded border border-fg bg-surface px-2 py-0.5 text-xs text-fg hover:bg-surface-alt focus-visible:ring-2 focus-visible:ring-focus"
+            onClick={save.onClick}
+          >
+            {save.label}
+          </button>
+        ) : null}
       </div>
       <div ref={host} className="min-h-0 flex-1 overflow-auto rounded border border-edge text-xs" />
     </div>

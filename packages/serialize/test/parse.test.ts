@@ -201,3 +201,22 @@ describe('what cannot be read is reported', () => {
     expect(r.ok && (r.values as { GroupHeader: { CreationDateTime: string } }).GroupHeader.CreationDateTime).toBe('not a date');
   });
 });
+
+describe('a partly filled amount (a draft)', () => {
+  const b = bundles.find((x) => x.message.identifier === 'pain.001.001.13')!;
+  const m = b.message;
+  const draft = (a: object) => ({ PaymentInformation: [{ CreditTransferTransactionInformation: [{ Amount: { InstructedAmount: a } }] }] });
+
+  it.each([
+    ['only a value', { Ccy: '', Value: '12' }],
+    ['only a currency', { Ccy: 'EUR', Value: '' }],
+  ])('is written (it used to throw in XML) and reads back: %s', (_label, a) => {
+    const xml = serializeToXml(m, draft(a));
+    expect(xml).toContain('<InstdAmt Ccy="');
+    const r = parseXmlMessage(m, xml);
+    expect(r.ok).toBe(true);
+    expect(r.ok && pruneEmpty(r.values)).toEqual(pruneEmpty(draft(a)));
+    const j = parseIsoJsonMessage(m, serializeToIsoJson(m, draft(a)));
+    expect(j.ok && pruneEmpty(j.values)).toEqual(pruneEmpty(draft(a)));
+  });
+});
