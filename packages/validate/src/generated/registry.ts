@@ -12,6 +12,8 @@ export interface MessageInfo {
   identifier: string;
   name: string;
   title: string;
+  /** Entry point under the validate package, e.g. `pain001` for `@beneficial-strategies/iso20022-validate/pain001`. */
+  module: string;
   /** Loads the message on demand, so a page only downloads the messages it uses. */
   load: () => Promise<MessageBundle>;
 }
@@ -21,6 +23,7 @@ export const messageIndex: readonly MessageInfo[] = [
     identifier: "pain.001.001.13",
     name: "CustomerCreditTransferInitiationV13",
     title: "Customer Credit Transfer Initiation",
+    module: "pain001",
     load: () =>
       import('./pain001.ts').then((m) => ({ message: m.pain001Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -28,6 +31,7 @@ export const messageIndex: readonly MessageInfo[] = [
     identifier: "pain.002.001.15",
     name: "CustomerPaymentStatusReportV15",
     title: "Customer Payment Status Report",
+    module: "pain002",
     load: () =>
       import('./pain002.ts').then((m) => ({ message: m.pain002Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },

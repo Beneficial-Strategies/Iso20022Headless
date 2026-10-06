@@ -3,7 +3,7 @@ import { cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { SettingsPanel } from '../src/SettingsPanel.tsx';
 import { useSettings } from '../src/settings.ts';
-import { skinIds, skins } from '../src/skin/index.ts';
+import { skinIds, skins } from '@beneficial-strategies/iso20022-react-ui';
 
 function Harness() {
   const { settings, update } = useSettings(skinIds);

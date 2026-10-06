@@ -1,9 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react';
-import { Popup } from './Popup.tsx';
-import { useI18n } from './i18n/context.tsx';
-import { LANGUAGE_NAMES, type UiKey } from './i18n/messages.ts';
+import { LANGUAGE_NAMES, Popup, useI18n, type Skin, type UiKey } from '@beneficial-strategies/iso20022-react-ui';
 import { DENSITIES, FORMATS, SIZES, THEMES, type Settings } from './settings.ts';
-import type { Skin } from './skin/types.ts';
 
 function Radios({ legend, name, options, value, onChange, hint }: { legend: string; name: string; options: { value: string; label: string }[]; value: string; onChange: (v: string) => void; hint?: string | undefined }) {
   return (

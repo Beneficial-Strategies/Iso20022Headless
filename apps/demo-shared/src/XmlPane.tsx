@@ -4,7 +4,7 @@ import { Compartment, EditorState } from '@codemirror/state';
 import { xml } from '@codemirror/lang-xml';
 import { json } from '@codemirror/lang-json';
 import { oneDark } from '@codemirror/theme-one-dark';
-import { useI18n } from './i18n/context.tsx';
+import { useI18n } from '@beneficial-strategies/iso20022-react-ui';
 
 /** Read-only, highlighted view of the generated XML or JSON, with a copy button. */
 export function XmlPane({ xml: text, dark = false, format = 'xml' }: { xml: string; dark?: boolean; format?: 'xml' | 'json' }) {

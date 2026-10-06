@@ -32,7 +32,7 @@ published; nothing here has been run through CI. Decisions and changes versus th
   so validation-only consumers don't pay for prose. Used by the demo's accessible "i" popovers.
 - **React hook:** built on TanStack Form for values/touched state; validation is the generated Zod
   schema via `formatIssues` (plain-language messages). Path syntax is TanStack's `A.B[0].C` everywhere.
-- **Demos:** two, sharing one schema-driven UI (`apps/demo-shared`): `demo-form` (our hook) and `demo-zod`
+- **Demos:** two, sharing one schema-driven UI (the renderer, skins and interface text are the package `packages/react-ui`; the demo app around it is `apps/demo-shared`): `demo-form` (our hook) and `demo-zod`
   (hand-rolled state, no form library). The XML pane is always live with a valid/draft badge, rather than
   appearing only once valid. A "Now" button appears beside blank date-time fields.
 

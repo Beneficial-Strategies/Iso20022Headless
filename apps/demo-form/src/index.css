@@ -1,3 +1,4 @@
 @import "tailwindcss";
-@import "../../demo-shared/src/theme.css";
+@import "../../../packages/react-ui/src/theme.css";
+@source "../../../packages/react-ui/src";
 @source "../../demo-shared/src";

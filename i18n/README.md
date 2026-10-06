@@ -3,7 +3,7 @@
 The ISO 20022 repository is English only. This directory and `tools/i18n` hold the process for translating
 the spec text the UI shows (element names, definitions, code names, business rules) and for handing it to a
 person to correct. Interface wording and validation messages are separate: they live in
-`apps/demo-shared/src/i18n/messages.ts` and `packages/validate/src/messages.ts`.
+`packages/react-ui/src/i18n/messages.ts` and `packages/validate/src/messages.ts`.
 
 ## What is where
 

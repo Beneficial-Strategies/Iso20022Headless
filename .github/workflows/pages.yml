@@ -37,6 +37,10 @@ jobs:
       # fails if the English spec text changed since the Spanish was translated
       - run: pnpm i18n:check
 
+      # The apps the "Implement!" instructions describe; they must build exactly as the instructions say
+      - name: Build the quickstart apps
+        run: pnpm --filter './apps/quickstart-*' run build
+
       - name: Build both demos and assemble the site
         run: pnpm pages:build
 
