@@ -103,6 +103,14 @@ browser lazy-loads a message via dynamic `import()`. First generator change befo
 types once across messages**. Generate 2-3 more messages (pain.002 plus a pacs/camt one) to measure real
 sharing before locking this in. Verify npm's current package size limits before publishing.
 
+### Measured with the whole pain family (2026-10-06)
+All twelve latest pain messages are generated (pain.001, 002, 007, 008, 009, 010, 011, 012, 013, 014, 017, 018; pain.006 moved to
+camt.055 and is not included). **212 types are shared by two or more messages and emitted once**; per-message modules are small
+(about 6 to 9 KB gzipped each) because most of each message is shared. Adding the ten messages needed only 43 new components,
+11 new choices, 2 new simple types and 11 new code sets. Business rules: 117 in total, 67 machine-checkable, 48 prose-only
+(guidelines and rules the spec gives only as text), 2 reported as unsupported; see `packages/validate/test/rulecoverage.test.ts`.
+Capture is now mostly scripted from the MCP's `get_spec_snapshot` (`tools/spec-extract`); see `docs/mcp-bulk-export-spec.md`.
+
 ---
 
 ## Context

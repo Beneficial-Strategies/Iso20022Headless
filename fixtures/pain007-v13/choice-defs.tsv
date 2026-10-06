@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+ReversalReason4Choice	_TRGiYNp-Ed-ak6NoX_4Aeg_-340627868	Code	Reason for the reversal, as published in an external reason code list.
+ReversalReason4Choice	_TRGiYdp-Ed-ak6NoX_4Aeg_-340627837	Proprietary	Reason for the reversal, in a proprietary form.

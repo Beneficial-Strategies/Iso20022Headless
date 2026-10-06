@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+OriginalMandate11Choice	_1koYUzEyEe6g-ffJsqGiSA	OriginalMandate	Provides the original mandate data.
+OriginalMandate11Choice	_1koYUTEyEe6g-ffJsqGiSA	OriginalMandateIdentification	Unique identification, as assigned by the responsible party (such as the creditor) or agent (such as the debtor agent), to unambiguously identify the original mandate.

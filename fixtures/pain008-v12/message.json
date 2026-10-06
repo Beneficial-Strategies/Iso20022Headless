@@ -1,0 +1,35 @@
+{
+  "identifier": "pain.008.001.12",
+  "name": "CustomerDirectDebitInitiationV12",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:pain.008.001.12",
+  "bodyTag": "CstmrDrctDbtInitn",
+  "out": "pain008",
+  "isoId": "7869e710-db06-4132-848e-539312ac3db9",
+  "definition": "Scope|The CustomerDirectDebitInitiation message is sent by the initiating party to the forwarding agent or creditor agent. It is used to request single or bulk collection(s) of funds from one or various debtor's account(s) for a creditor.|Usage|The CustomerDirectDebitInitiation message can contain one or more direct debit instructions.|The message can be used in a direct or a relay scenario:|- In a direct scenario, the message is sent directly to the creditor agent. The creditor agent is the account servicer of the creditor.|- In a relay scenario, the message is sent to a forwarding agent. The forwarding agent acts as a concentrating financial institution. It will forward the CustomerDirectDebitInitiation message to the creditor agent.|The message can also be used by an initiating party that has authority to send the message on behalf of the creditor. This caters for example for the scenario of a payments factory initiating all payments on behalf of a large corporate.|The CustomerDirectDebitInitiation message can be used in domestic and cross-border scenarios.|The CustomerDirectDebitInitiation may or may not contain mandate related information, i.e. extracts from a mandate, such as MandateIdentification or DateOfSignature. The CustomerDirectDebitInitiation message must not be considered as a mandate.|The CustomerDirectDebitInitiation message must not be used by the creditor agent to execute the direct debit instruction(s). The FIToFICustomerDirectDebit message must be used instead.",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "7649d11a-0c77-4f58-8010-93f8f01ba250",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader118",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "PaymentInformation",
+      "isoId": "92c8e8ef-dfa6-4140-9e19-282c8793a3b1",
+      "xmlTag": "PmtInf",
+      "type": "PaymentInstruction50",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "73661aee-0e74-4b8d-9e78-91f4cc99299e",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

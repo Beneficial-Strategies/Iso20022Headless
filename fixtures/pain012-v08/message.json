@@ -1,0 +1,35 @@
+{
+  "identifier": "pain.012.001.08",
+  "name": "MandateAcceptanceReportV08",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:pain.012.001.08",
+  "bodyTag": "MndtAccptncRpt",
+  "out": "pain012",
+  "isoId": "_R3P4PzEZEe6kQ-WGAhcVPQ",
+  "definition": "Scope|The MandateAcceptanceReport message is sent from the agent of the receiver (debtor or creditor) of the MandateRequest message (initiation, amendment or cancellation) to the agent of the initiator of the MandateRequest message (debtor or creditor).|A MandateAcceptanceReport message is used to confirm the acceptance or rejection of a MandateRequest message. Where acceptance is part of the full process flow, a MandateRequest message only becomes valid after a confirmation of acceptance is received through a MandateAcceptanceReport message from the agent of the receiver.|Usage|The MandateAcceptanceReport message can contain one or more confirmation(s) of acceptance or rejection of a specific Mandate Request.|The messages can be exchanged between debtor agent and creditor agent and between debtor agent and debtor and creditor agent and creditor.|The MandateAcceptanceReport message can be used in domestic and cross-border scenarios.",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "_R3P4STEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader110",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3P4TTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "UnderlyingAcceptanceDetails",
+      "isoId": "_R3P4SzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "UndrlygAccptncDtls",
+      "type": "MandateAcceptance8",
+      "min": 1,
+      "max": null
+    }
+  ]
+}

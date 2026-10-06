@@ -1,0 +1,4 @@
+codeSet	isoId	text
+Frequency10Code	_iotXoGoEEearR-CA7eRZXQ	Specifies the regularity of an event.
+ExternalAuthenticationChannel1Code	_5C8hAZdfEea1K6JAcAwoVg	Specifies the transaction authentication channel, as published in an external authentication channel code set.|External code sets can be downloaded from www.iso20022.org.
+SequenceType2Code	_ZKPgB9p-Ed-ak6NoX_4Aeg_868377274	Specifies whether a once off transaction is covered or whether recurring transactions are covered.

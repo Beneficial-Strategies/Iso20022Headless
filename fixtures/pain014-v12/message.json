@@ -1,0 +1,43 @@
+{
+  "identifier": "pain.014.001.12",
+  "name": "CreditorPaymentActivationRequestStatusReportV12",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:pain.014.001.12",
+  "bodyTag": "CdtrPmtActvtnReqStsRpt",
+  "out": "pain014",
+  "isoId": "f36c5c5e-539b-48a7-974d-3cfeeacd209e",
+  "definition": "The CreditorPaymentActivationRequestStatusReport message is sent by a party to the next party in the creditor payment activation request chain. It is used to inform the latter about the positive or negative status of a creditor payment activation request (either single or file).",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "2cc04b59-bfa4-4a29-9e6c-7ff80b350e77",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader111",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "OriginalGroupInformationAndStatus",
+      "isoId": "bd604005-8293-4614-b335-5319984d9cf9",
+      "xmlTag": "OrgnlGrpInfAndSts",
+      "type": "OriginalGroupInformation32",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "OriginalPaymentInformationAndStatus",
+      "isoId": "1d824a06-ea62-49a0-917a-3f81accade78",
+      "xmlTag": "OrgnlPmtInfAndSts",
+      "type": "OriginalPaymentInstruction52",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "a8049a31-d289-4e37-884b-254e5a2478af",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

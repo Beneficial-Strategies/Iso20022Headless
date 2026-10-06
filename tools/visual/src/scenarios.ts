@@ -89,6 +89,28 @@ export const scenarios: Scenario[] = [
     },
   },
   { name: 'pain002-dark-spanish', app: 'demo-zod', query: '?message=pain.002.001.15&theme=dark&lang=es', viewport: { width: 1440, height: 900 } },
+  // every other pain message loads and renders (generated, so a new message only needs its identifier added here)
+  ...['pain.007.001.13', 'pain.008.001.12', 'pain.009.001.08', 'pain.010.001.08', 'pain.011.001.08', 'pain.012.001.08', 'pain.013.001.12', 'pain.014.001.12', 'pain.017.001.04', 'pain.018.001.04'].map(
+    (id): Scenario => ({
+      name: `message-${id}`,
+      app: 'demo-form',
+      query: `?message=${id}`,
+      viewport: { width: 1440, height: 900 },
+      expect: async (page) => {
+        const r = await page.evaluate(() => ({
+          fields: document.querySelectorAll('[data-schema-form] input, [data-schema-form] select, [data-schema-form] button[aria-haspopup]').length,
+          xml: document.querySelector('.cm-content')?.textContent ?? '',
+          title: document.querySelector('[data-schema-form] h2')?.textContent ?? '',
+        }));
+        const problems: string[] = [];
+        if (r.fields === 0) problems.push('the form has no fields');
+        if (!r.xml.includes(`xsd:${id}`)) problems.push(`XML does not use the ${id} namespace`);
+        if (!r.title) problems.push('no heading');
+        return problems;
+      },
+    }),
+  ),
+  { name: 'message-pain013-dark-spanish', app: 'demo-zod', query: '?message=pain.013.001.12&theme=dark&lang=es', viewport: { width: 1440, height: 900 } },
   { name: 'dark', app: 'demo-form', query: '?theme=dark', viewport: { width: 1440, height: 900 } },
   { name: 'large-text', app: 'demo-form', query: '?size=large', viewport: { width: 1440, height: 900 } },
   { name: 'xlarge-spanish', app: 'demo-form', query: '?size=xlarge&lang=es', viewport: { width: 1440, height: 900 } },

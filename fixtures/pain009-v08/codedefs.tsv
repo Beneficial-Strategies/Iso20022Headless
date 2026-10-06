@@ -1,0 +1,8 @@
+codeSet	code	enumName	isoId	text
+Frequency10Code	MIAN	SemiAnnual	_6xlcIWoEEearR-CA7eRZXQ	Event takes place every six months or two times a year.
+Frequency10Code	NEVR	Never	_ns-iwWoEEearR-CA7eRZXQ	Event does never take place.
+Frequency10Code	QURT	Quarterly	_7SZDIWoEEearR-CA7eRZXQ	Event takes place every three months or four times a year.
+Frequency10Code	RATE	Rate	_5MNZwWoEEearR-CA7eRZXQ	Event takes place based on a change of a rate.
+Frequency10Code	YEAR	Annual	_vQ94oWoEEearR-CA7eRZXQ	Event takes place every year or once a year.
+SequenceType2Code	OOFF	OneOff	_ZKZRANp-Ed-ak6NoX_4Aeg_868377553	Direct debit instruction where the debtor's authorisation is used to initiate one single direct debit transaction.
+SequenceType2Code	RCUR	Recurring	_ZKPgCNp-Ed-ak6NoX_4Aeg_868377522	Direct debit instruction where the debtor's authorisation is used for regular direct debit transactions initiated by the creditor.

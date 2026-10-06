@@ -1,35 +1,145 @@
 [
-  { "term": "Debtor", "to": "ordenante", "note": "Party that owes money / orders the payment. Spanish banking: ordenante." },
-  { "term": "Creditor", "to": "beneficiario", "note": "Party that is owed money / receives the payment." },
-  { "term": "Ultimate Debtor", "to": "ordenante final" },
-  { "term": "Ultimate Creditor", "to": "beneficiario final" },
-  { "term": "Debtor Agent", "to": "entidad del ordenante", "note": "Agent = the financial institution acting for the party: 'entidad'." },
-  { "term": "Creditor Agent", "to": "entidad del beneficiario" },
-  { "term": "Intermediary Agent", "to": "entidad intermediaria" },
-  { "term": "Forwarding Agent", "to": "entidad de reenvío" },
-  { "term": "Initiating Party", "to": "parte iniciadora" },
-  { "term": "Credit Transfer", "to": "transferencia" },
-  { "term": "Payment Information", "to": "información del pago" },
-  { "term": "Transaction", "to": "operación", "note": "Not 'transacción'." },
-  { "term": "Instruction", "to": "instrucción" },
-  { "term": "Remittance Information", "to": "información de remesa" },
-  { "term": "Charge Bearer", "to": "gastos", "note": "Who bears the charges: 'responsable de los gastos'." },
-  { "term": "Control Sum", "to": "suma de control" },
-  { "term": "Number of Transactions", "to": "número de operaciones" },
-  { "term": "Requested Execution Date", "to": "fecha de ejecución solicitada" },
-  { "term": "Batch Booking", "to": "lote", "note": "Batch = 'lote'." },
-  { "term": "Account", "to": "cuenta" },
-  { "term": "Mandate", "to": "mandato" },
-  { "term": "Purpose", "to": "finalidad" },
-  { "term": "Authorisation", "to": "autorización" },
-  { "term": "Supplementary Data", "to": "datos complementarios" },
-  { "term": "Garnishment", "to": "embargo" },
-  { "term": "Message", "to": "mensaje" },
-  { "term": "Payment", "to": "pago" },
-  { "term": "Party", "to": "parte" },
-  { "term": "Financial Institution", "to": "entidad financiera" },
-  { "term": "Reference", "to": "referencia" },
-  { "term": "Identification", "to": "identificación" },
-  { "term": "Cheque", "to": "cheque" },
-  { "term": "Creation Date Time", "to": "fecha y hora de creación" }
+  {
+    "term": "Debtor",
+    "to": "ordenante",
+    "note": "Party that owes money / orders the payment. Spanish banking: ordenante."
+  },
+  {
+    "term": "Creditor",
+    "to": "beneficiario",
+    "note": "Party that is owed money / receives the payment."
+  },
+  {
+    "term": "Ultimate Debtor",
+    "to": "ordenante final"
+  },
+  {
+    "term": "Ultimate Creditor",
+    "to": "beneficiario final"
+  },
+  {
+    "term": "Debtor Agent",
+    "to": "entidad del ordenante",
+    "note": "Agent = the financial institution acting for the party: 'entidad'."
+  },
+  {
+    "term": "Creditor Agent",
+    "to": "entidad del beneficiario"
+  },
+  {
+    "term": "Intermediary Agent",
+    "to": "entidad intermediaria"
+  },
+  {
+    "term": "Forwarding Agent",
+    "to": "entidad de reenvío"
+  },
+  {
+    "term": "Initiating Party",
+    "to": "parte iniciadora"
+  },
+  {
+    "term": "Credit Transfer",
+    "to": "transferencia"
+  },
+  {
+    "term": "Payment Information",
+    "to": "información del pago"
+  },
+  {
+    "term": "Transaction",
+    "to": "operación",
+    "note": "Not 'transacción'."
+  },
+  {
+    "term": "Instruction",
+    "to": "instrucción"
+  },
+  {
+    "term": "Remittance Information",
+    "to": "información de remesa"
+  },
+  {
+    "term": "Charge Bearer",
+    "to": "gastos",
+    "note": "Who bears the charges: 'responsable de los gastos'."
+  },
+  {
+    "term": "Control Sum",
+    "to": "suma de control"
+  },
+  {
+    "term": "Number of Transactions",
+    "to": "número de operaciones"
+  },
+  {
+    "term": "Requested Execution Date",
+    "to": "fecha de ejecución solicitada"
+  },
+  {
+    "term": "Batch Booking",
+    "to": "lote",
+    "note": "Batch = 'lote'."
+  },
+  {
+    "term": "Account",
+    "to": "cuenta"
+  },
+  {
+    "term": "Mandate",
+    "to": "mandato"
+  },
+  {
+    "term": "Purpose",
+    "to": "finalidad"
+  },
+  {
+    "term": "Authorisation",
+    "to": "autorización"
+  },
+  {
+    "term": "Supplementary Data",
+    "to": "datos complementarios"
+  },
+  {
+    "term": "Garnishment",
+    "to": "embargo"
+  },
+  {
+    "term": "Message",
+    "to": "mensaje"
+  },
+  {
+    "term": "Payment",
+    "to": "pago"
+  },
+  {
+    "term": "Party",
+    "to": "parte"
+  },
+  {
+    "term": "Financial Institution",
+    "to": "entidad financiera"
+  },
+  {
+    "term": "Reference",
+    "to": "referencia"
+  },
+  {
+    "term": "Identification",
+    "to": "identificación"
+  },
+  {
+    "term": "Cheque",
+    "to": "cheque"
+  },
+  {
+    "term": "Creation Date Time",
+    "to": "fecha y hora de creación"
+  },
+  {
+    "term": "Reversal",
+    "to": "reversión",
+    "note": "Reversal of a settled payment (pain.007). Not 'anulación' (cancellation) or 'devolución' (return)."
+  }
 ]

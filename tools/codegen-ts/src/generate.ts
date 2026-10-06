@@ -178,14 +178,16 @@ function scopedRows(dir: string, file: string): { scope: string; cols: string[] 
   return rows.slice(1).map((r) => ({ scope, cols: r }));
 }
 
+// rules gathered across several messages live in fixtures/rules (no message.json), next to the per-message files
+const ruleDirs = existsSync(resolve(fixturesRoot, 'rules')) ? [...dirs, 'rules'] : dirs;
 const expressionById = new Map<string, string>();
 const rulesByScope = new Map<string, { name: string; isoId: string; text: string; expression?: RuleExprIr }[]>();
-for (const d of dirs) {
+for (const d of ruleDirs) {
   for (const f of filesMatching(d, /^constraint-expressions.*\.tsv$/)) {
     for (const { cols } of scopedRows(d, f)) if (cols[2]) expressionById.set(cols[0]!, cols[2]);
   }
 }
-for (const d of dirs) {
+for (const d of ruleDirs) {
   for (const f of filesMatching(d, /^constraints.*\.tsv$/)) {
     for (const { scope, cols } of scopedRows(d, f)) {
       const [id, name, text] = cols as [string, string, string];

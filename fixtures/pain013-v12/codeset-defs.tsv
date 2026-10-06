@@ -1,0 +1,4 @@
+codeSet	isoId	text
+ExternalDocumentFormat1Code	_-MOeE27iEeKo25nLKvGr8w_969448361	Specifies the external document format code in the format of a character string with a maximum length of 4 characters. The list of valid codes is an external code list published separately.|External code sets can be downloaded from www.iso20022.org.
+LanguageCode	_adsE5Np-Ed-ak6NoX_4Aeg_2082946596	Specifies a language.
+PaymentMethod7Code	_YbT9dNp-Ed-ak6NoX_4Aeg_698889928	Specifies the transfer method that will be used to transfer the cash.

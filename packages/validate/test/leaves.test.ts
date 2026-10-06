@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import type { FieldDescriptor, TypeDescriptor, TypeDescriptors } from '../src/index.ts';
-import { pain001Message } from '../src/generated/pain001.ts';
-import { pain002Message } from '../src/generated/pain002.ts';
+import { messageIndex } from '../src/index.ts';
+
+const bundles = await Promise.all(messageIndex.map((m) => m.load()));
 
 /**
  * Does validation reach every leaf of the hierarchy? For every leaf field, at every place it can occur
@@ -70,12 +71,12 @@ const reported = (schema: { safeParse(v: unknown): any }, value: unknown): strin
   return r.success ? [] : allIssues(r.error.issues);
 };
 
-describe.each([pain001Message, pain002Message])('every leaf is validated in $identifier', (message) => {
+describe.each(bundles.map((b) => b.message))('every leaf is validated in $identifier', (message) => {
   const types = message.typeDescriptors as TypeDescriptors;
   const leaves = collectLeaves(types, message.rootType);
 
   it('covers a substantial number of leaf positions', () => {
-    expect(leaves.length).toBeGreaterThan(100);
+    expect(leaves.length).toBeGreaterThan(60);
   });
 
   it('rejects a wrong JSON type at every leaf position', () => {

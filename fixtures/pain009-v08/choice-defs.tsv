@@ -1,0 +1,5 @@
+choice	memberId	memberName	text
+Frequency37Choice	_GlS6xWoFEearR-CA7eRZXQ	Code	Frequency expressed as an ISO 20022 code.
+Frequency37Choice	_GlS6xGoFEearR-CA7eRZXQ	Proprietary	Frequency expressed as a proprietary code.
+AuthenticationChannel1Choice	_U4Y95ZdgEea1K6JAcAwoVg	Code	Authentication channel expressed as an external ISO 20022 code.
+AuthenticationChannel1Choice	_U4Y95JdgEea1K6JAcAwoVg	Proprietary	Authentication channel expressed as a proprietary code.

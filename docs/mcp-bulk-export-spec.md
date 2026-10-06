@@ -27,6 +27,19 @@ Sample IR: `fixtures/pain001-v13-sample.ir.json`.
 6. Element IDs for a type's children appear only after drilling into that type; the message
    -> block -> `complexType` hop must be followed explicitly.
 
+## Update 2026-10-06: `get_spec_snapshot` now exists
+The staging MCP has a bulk tool, `get_spec_snapshot(artifactType, page)`, which returns the whole repository as TSV (messages,
+components with their elements, choices with their variants, code sets with codes, simple types). Saved to files, it replaces most of the
+hand crawl: `tools/spec-extract` builds a message's structure from it (verified against the hand-captured pain.002), and ten more
+pain messages were added with a handful of targeted lookups instead of hundreds.
+
+Still missing from it, so still looked up one by one:
+- **Simple-type facets**: `SIMPLETYPE` rows have a name, id and definition but no min/max length, pattern, digits or bounds.
+- **Code names**: `CODE` rows give the wire value and definition but not the enum name (`Cheque`), which rules and UIs use.
+- **Business rules**: no constraint records at all, neither prose nor machine-readable expressions.
+- Which messages supersede which (`nextVersions`) is not in the message list; it is on the message node.
+Adding these three to the snapshot would make a message a pure script run.
+
 ## Proposed tool: `export_message_closure`
 Input: `messageDefinitionId` (or identifier like `pain.001.001.13`).
 Output: JSON, shaped like the sample IR:

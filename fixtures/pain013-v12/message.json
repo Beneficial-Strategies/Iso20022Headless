@@ -1,0 +1,35 @@
+{
+  "identifier": "pain.013.001.12",
+  "name": "CreditorPaymentActivationRequestV12",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:pain.013.001.12",
+  "bodyTag": "CdtrPmtActvtnReq",
+  "out": "pain013",
+  "isoId": "d2b0673a-1f10-4086-ad39-b4f95fef2cb5",
+  "definition": "The CreditorPaymentActivationRequest message is sent by the Creditor sending party to the Debtor receiving party, directly or through agents. It is used by a Creditor to request movement of funds from the debtor account to a creditor.",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "e6843f93-1013-4748-af4c-918891444d0d",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader112",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "PaymentInformation",
+      "isoId": "1ace99a5-3b67-4ad7-966c-b4c6da06ab0d",
+      "xmlTag": "PmtInf",
+      "type": "PaymentInstruction48",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "5269acef-88de-46c4-a0ec-5c1d27565f56",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

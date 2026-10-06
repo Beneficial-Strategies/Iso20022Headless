@@ -1,0 +1,2 @@
+codeSetName	isoId	restrictionOf	code	enumName
+ExternalMandateStatus1Code	_qC1AgJm_Eeao_Z127E9uYg		*EXTERNAL*	minLength=1 maxLength=4; ~7 codes (not enumerated)

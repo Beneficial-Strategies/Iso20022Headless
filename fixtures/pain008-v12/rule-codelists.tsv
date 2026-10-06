@@ -1,0 +1,6 @@
+# Code sets referenced by pain.008 / pain.013 / pain.014 constraint expressions (WithInList / NotWithInList) that are not types in the message closures.
+# Source: staging get_code_set_details for each, 2026-10-06.
+codeSet	code	enumName
+ChequeType3Code	DRFT	Draft
+ChequeType3Code	ELDR	ElectronicDraft
+ValidationRulePayCreditorByCheque1Code	CHQB	PayCreditorByCheque

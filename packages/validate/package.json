@@ -10,6 +10,16 @@
     "./locales/es": "./src/locales/es.ts",
     "./pain001": "./src/generated/pain001.ts",
     "./pain002": "./src/generated/pain002.ts",
+    "./pain007": "./src/generated/pain007.ts",
+    "./pain008": "./src/generated/pain008.ts",
+    "./pain009": "./src/generated/pain009.ts",
+    "./pain010": "./src/generated/pain010.ts",
+    "./pain011": "./src/generated/pain011.ts",
+    "./pain012": "./src/generated/pain012.ts",
+    "./pain013": "./src/generated/pain013.ts",
+    "./pain014": "./src/generated/pain014.ts",
+    "./pain017": "./src/generated/pain017.ts",
+    "./pain018": "./src/generated/pain018.ts",
     "./all": "./src/generated/all.ts"
   },
   "scripts": {

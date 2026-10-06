@@ -22,10 +22,12 @@ const results = (v: unknown) => evaluateRules(ctx, pain002Message.rootType, v);
 const status = (v: unknown, rule: string) => results(v).find((r) => r.rule === rule)?.status;
 
 describe('the message registry', () => {
-  it('lists both messages and loads each on demand', async () => {
-    expect(messageIndex.map((m) => m.identifier)).toEqual(['pain.001.001.13', 'pain.002.001.15']);
+  const ALL = ['pain.001.001.13', 'pain.002.001.15', 'pain.007.001.13', 'pain.008.001.12', 'pain.009.001.08', 'pain.010.001.08', 'pain.011.001.08', 'pain.012.001.08', 'pain.013.001.12', 'pain.014.001.12', 'pain.017.001.04', 'pain.018.001.04'];
+  it('lists every pain message and loads each on demand', async () => {
+    expect(messageIndex.map((m) => m.identifier)).toEqual(ALL);
+    expect(messageIndex.map((m) => m.module)).toEqual(ALL.map((id) => id.slice(0, 8).replace('.', '')));
     const loaded = await Promise.all(messageIndex.map((m) => m.load()));
-    expect(loaded.map((b) => b.message.identifier)).toEqual(['pain.001.001.13', 'pain.002.001.15']);
+    expect(loaded.map((b) => b.message.identifier)).toEqual(ALL);
     for (const b of loaded) expect(Object.keys(b.schemas).length).toBeGreaterThan(40);
   });
 });
@@ -136,5 +138,13 @@ describe('pain.002.001.15 business rules', () => {
   it('guidelines and rules without an expression are prose-only', () => {
     expect(status(sample(), 'SupplementaryDataRule')).toBe('prose-only');
     expect(status(sample(), 'NumberOfTransactionPerStatusGuideline')).toBe('prose-only');
+  });
+});
+
+describe('package entry points', () => {
+  it('every message in the registry can be imported as @beneficial-strategies/iso20022-validate/<module>', async () => {
+    const { readFileSync } = await import('node:fs');
+    const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
+    for (const m of messageIndex) expect(pkg.exports[`./${m.module}`], m.module).toBe(`./src/generated/${m.module}.ts`);
   });
 });

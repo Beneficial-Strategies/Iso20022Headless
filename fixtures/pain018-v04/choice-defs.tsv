@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+MandateSuspensionReason1Choice	_gW_7xYPDEeahmOIR_zFG6A	Code	Reason, as published in an external reason code list.
+MandateSuspensionReason1Choice	_gW_7xIPDEeahmOIR_zFG6A	Proprietary	Reason, in a proprietary form.
