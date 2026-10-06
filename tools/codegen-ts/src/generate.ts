@@ -425,6 +425,26 @@ if (existsSync(choiceDefsFile)) {
     fieldDefs[`${c[0]}.${c[2]}`] = c.slice(3).join('\t').trim();
   }
 }
+// Code values: definition per code keyed `CodeSet.wireValue`, plus one definition per code set.
+// Sources: codedefs.tsv / codeset-defs.tsv (get_code_set_details, double-captured and diffed).
+const codeDefs: Record<string, string> = {};
+const codeSetDefs: Record<string, string> = {};
+const codeDefsFile = resolve(fixtures, 'codedefs.tsv');
+if (existsSync(codeDefsFile)) {
+  for (const l of readFileSync(codeDefsFile, 'utf8').split('\n').slice(1)) {
+    if (!l) continue;
+    const c = l.split('\t');
+    if (ir.has(c[0]!)) codeDefs[`${c[0]}.${c[1]}`] = c.slice(4).join('\t').trim();
+  }
+}
+const codeSetDefsFile = resolve(fixtures, 'codeset-defs.tsv');
+if (existsSync(codeSetDefsFile)) {
+  for (const l of readFileSync(codeSetDefsFile, 'utf8').split('\n').slice(1)) {
+    if (!l) continue;
+    const c = l.split('\t');
+    if (ir.has(c[0]!)) codeSetDefs[c[0]!] = c.slice(2).join('\t').trim();
+  }
+}
 const sortedEntries = (o: Record<string, string>): string =>
   Object.keys(o)
     .sort()
@@ -435,9 +455,14 @@ writeFileSync(
   HEADER +
     '// Definitions use `|` for line breaks and `||` for paragraph breaks, as returned by the MCP.\n' +
     `export const typeDefinitions: Record<string, string> = {\n${sortedEntries(typeDefs)}\n};\n\n` +
-    `/** Keyed by \`ParentType.ElementName\`. */\nexport const fieldDefinitions: Record<string, string> = {\n${sortedEntries(fieldDefs)}\n};\n`,
+    `/** Keyed by \`ParentType.ElementName\`. */\nexport const fieldDefinitions: Record<string, string> = {\n${sortedEntries(fieldDefs)}\n};\n\n` +
+    `/** Keyed by \`CodeSet.wireValue\`. */\nexport const codeDefinitions: Record<string, string> = {\n${sortedEntries(codeDefs)}\n};\n\n` +
+    `export const codeSetDefinitions: Record<string, string> = {\n${sortedEntries(codeSetDefs)}\n};\n`,
 );
-console.log(`definitions: ${Object.keys(typeDefs).length} types, ${Object.keys(fieldDefs).length} fields`);
+console.log(
+  `definitions: ${Object.keys(typeDefs).length} types, ${Object.keys(fieldDefs).length} fields, ` +
+    `${Object.keys(codeDefs).length} codes, ${Object.keys(codeSetDefs).length} code sets`,
+);
 
 console.log(
   `generated ${order.length} types: ` +

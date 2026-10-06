@@ -2,6 +2,7 @@ import type { FieldDescriptor } from '@beneficial-strategies/iso20022-validate';
 import type { ReactNode } from 'react';
 import type { FormApi } from './formApi.ts';
 import { Info, definitionFor } from './Info.tsx';
+import { codeDefinitions } from '@beneficial-strategies/iso20022-validate/definitions';
 
 const inputCls =
   'w-full rounded border border-slate-300 bg-white px-2 py-1 text-sm shadow-sm focus:border-indigo-500 focus:outline-none aria-[invalid=true]:border-red-500 aria-[invalid=true]:bg-red-50';
@@ -68,15 +69,24 @@ function Leaf({ form, field, path, label, required, parentType, noInfo }: NodePr
   const fieldReq = { required: required ?? field.required };
   let control;
   if (t.kind === 'code' && t.options) {
+    const codeDef = props.value ? codeDefinitions[`${t.name}.${props.value}`] : undefined;
+    const describedBy = [props['aria-describedby'], codeDef ? `${props.id}-codedef` : ''].filter(Boolean).join(' ');
     control = (
-      <select {...props} className={inputCls}>
-        <option value="">—</option>
-        {t.options.map((o) => (
-          <option key={o.value} value={o.value}>
-            {o.value} — {o.name}
-          </option>
-        ))}
-      </select>
+      <>
+        <select {...props} aria-describedby={describedBy || undefined} className={inputCls}>
+          <option value="">—</option>
+          {t.options.map((o) => (
+            <option key={o.value} value={o.value}>
+              {o.value} — {o.name}
+            </option>
+          ))}
+        </select>
+        {codeDef ? (
+          <p id={`${props.id}-codedef`} className="mt-0.5 text-xs text-slate-500">
+            {codeDef}
+          </p>
+        ) : null}
+      </>
     );
   } else if (t.kind === 'boolean') {
     control = (
