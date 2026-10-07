@@ -8,10 +8,11 @@ import { XmlPane } from './XmlPane.tsx';
 import { SettingsPanel } from './SettingsPanel.tsx';
 import { useClipboard } from './clipboard.ts';
 import { downloadText, readTextFile, saveFileName } from './files.ts';
+import { AboutDialog, Banner } from './Banner.tsx';
 import { ImplementDialog } from './ImplementDialog.tsx';
 import { planPaste } from './paste.ts';
 import { PasteReport, type PasteReportData, type TextSource } from './PasteReport.tsx';
-import { useSettings, type Format } from './settings.ts';
+import { useSettings, wantsImplementationBanner, type Format } from './settings.ts';
 
 const messageIds = messageIndex.map((m) => m.identifier);
 const bundleCache = new Map<string, MessageBundle>();
@@ -420,6 +421,9 @@ function Editor({
 export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form' | 'zod'; useForm: UseForm; i18n?: I18nOverrides }) {
   const locales = useMemo(() => supportedLocales(overrides), [overrides]);
   const { settings, resolvedTheme, locale, update } = useSettings(skinIds, locales, messageIds);
+  // ?ImplementationBanner=true brings back the original banner; the settings code keeps unknown query parameters
+  const implementationBanner = useMemo(() => (typeof window === 'undefined' ? false : wantsImplementationBanner(window.location.search)), []);
+  const [aboutOpen, setAboutOpen] = useState(false);
   const bundle = useMessageBundle(settings.message);
   const [chosenType, setChosenType] = useState<{ message: string; type: string } | undefined>();
   // a type chosen for another message does not apply here: fall back to the whole message
@@ -435,12 +439,16 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
     <I18nProvider value={i18n}>
       <div className="flex h-screen flex-col bg-surface p-4 text-fg">
         <header className="mb-3">
-          <div className="-mx-4 -mt-4 mb-3 border-b border-bar-from bg-linear-to-r from-bar-from to-bar-to px-4 py-3 shadow-md">
-            <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-              <h1 className="text-xl font-bold tracking-tight text-bar-fg">{i18n.t(`title_${variant}` as UiKey)}</h1>
-              <p className="min-w-0 max-w-2xl text-xs text-bar-muted sm:text-right">{i18n.t(`blurb_${variant}` as UiKey)}</p>
+          {implementationBanner ? (
+            <div className="-mx-4 -mt-4 mb-3 border-b border-bar-from bg-linear-to-r from-bar-from to-bar-to px-4 py-3 shadow-md">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+                <h1 className="text-xl font-bold tracking-tight text-bar-fg">{i18n.t(`title_${variant}` as UiKey)}</h1>
+                <p className="min-w-0 max-w-2xl text-xs text-bar-muted sm:text-right">{i18n.t(`blurb_${variant}` as UiKey)}</p>
+              </div>
             </div>
-          </div>
+          ) : (
+            <Banner onAbout={() => setAboutOpen(true)} />
+          )}
           <div className="flex min-w-0 flex-wrap items-end justify-start gap-2 sm:flex-nowrap sm:justify-end">
             <AreaPicker value={area} onChange={(code) => update({ message: lastInArea.current[code] ?? messageIndex.find((m) => m.area === code)!.identifier })} />
             <MessagePicker area={area} value={settings.message} onChange={(message) => update({ message })} />
@@ -449,6 +457,7 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
             <SettingsPanel settings={settings} skins={skins} locales={locales} onChange={update} />
           </div>
         </header>
+        {aboutOpen ? <AboutDialog onClose={() => setAboutOpen(false)} /> : null}
         <SkinProvider value={skin}>
           {bundle && typeName ? (
             <Editor

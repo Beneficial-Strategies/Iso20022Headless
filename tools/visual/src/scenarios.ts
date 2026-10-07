@@ -332,6 +332,169 @@ function fileScenarios(): Scenario[] {
 const optionsOf = (page: Page): Promise<string[]> => page.evaluate(() => [...document.querySelectorAll('[role=option]')].map((o) => o.textContent ?? ''));
 const messageIs = (page: Page, id: string): Promise<boolean> => page.evaluate((i) => (document.querySelector('#message-picker')?.textContent ?? '').includes(i), id);
 
+// ---------------------------------------------------------------------------- the banner and the "about" window
+
+function bannerScenarios(): Scenario[] {
+  const base = { viewport: { width: 1440, height: 900 } };
+  const bannerInfo = (page: Page) =>
+    page.evaluate(() => {
+      const header = document.querySelector('header');
+      const logo = header?.querySelector<HTMLAnchorElement>('a[href^="https://beneficialstrategies.com"]');
+      const img = logo?.querySelector('img');
+      const q = header?.querySelector<HTMLButtonElement>('button[aria-haspopup=dialog][aria-label]:not([aria-label=""])');
+      const about = [...(header?.querySelectorAll<HTMLButtonElement>('button') ?? [])].find((b) => b.textContent?.trim() === '?');
+      const l = logo?.getBoundingClientRect();
+      const r = about?.getBoundingClientRect();
+      return {
+        h1: header?.querySelector('h1')?.textContent ?? '',
+        titleSize: parseFloat(getComputedStyle(header?.querySelector('h1') ?? document.body).fontSize),
+        titleCentre: (() => {
+          const e = header?.querySelector('h1');
+          if (!e) return -1;
+          const range = document.createRange();
+          range.selectNodeContents(e);
+          const rr = range.getBoundingClientRect();
+          return Math.abs((rr.left + rr.right) / 2 - window.innerWidth / 2);
+        })(),
+        // the largest text on the page other than the banner title
+        otherMax: Math.max(
+          0,
+          ...[...document.querySelectorAll<HTMLElement>('body *')]
+            .filter((e) => e !== header?.querySelector('h1') && [...e.childNodes].some((n) => n.nodeType === 3 && (n.textContent ?? '').trim() !== ''))
+            .filter((e) => e.getClientRects().length > 0 && getComputedStyle(e).visibility !== 'hidden')
+            .map((e) => parseFloat(getComputedStyle(e).fontSize)),
+        ),
+        titleBold: Number(getComputedStyle(header?.querySelector('h1') ?? document.body).fontWeight) >= 700,
+        href: logo?.getAttribute('href') ?? '',
+        target: logo?.target ?? '',
+        rel: logo?.rel ?? '',
+        src: img?.getAttribute('src') ?? '',
+        loaded: !!img && img.complete && img.naturalWidth > 0,
+        logoLeft: l ? l.left : -1,
+        qRight: r ? window.innerWidth - r.right : -1,
+        qSize: r ? Math.round(r.width) : 0,
+        hasQ: !!about && !!q,
+      };
+    });
+  const dialogText = (page: Page) => page.evaluate(() => document.querySelector('dialog[open]')?.textContent ?? '');
+  return [
+    {
+      ...base,
+      name: 'banner-default',
+      app: 'demo-form',
+      expect: async (page) => {
+        const b = await bannerInfo(page);
+        const problems: string[] = [];
+        if (/TanStack/.test(b.h1)) problems.push(`the original banner is shown ("${b.h1}")`);
+        if (b.h1 !== 'ISO 20022 Message Explorer') problems.push(`banner title is "${b.h1}"`);
+        if (!b.titleBold) problems.push('the banner title is not bold');
+        if (!(b.titleSize > b.otherMax)) problems.push(`the banner title (${b.titleSize}px) is not larger than all other text (${b.otherMax}px)`);
+        if (b.titleCentre > 6) problems.push(`the banner title is ${Math.round(b.titleCentre)}px off the centre`);
+        if (b.href !== 'https://beneficialstrategies.com') problems.push(`logo links to "${b.href}"`);
+        if (b.target !== '_blank' || !/noopener/.test(b.rel)) problems.push(`logo link opens with target="${b.target}" rel="${b.rel}"`);
+        if (b.src !== 'https://beneficialstrategies.com/img/Beneficial%20Strategies%20Logo.svg') problems.push(`logo source is "${b.src}"`);
+        if (!b.loaded) problems.push('the logo image did not load');
+        if (b.logoLeft < 0 || b.logoLeft > 24) problems.push(`the logo is not at the left (${b.logoLeft}px)`);
+        if (!b.hasQ) problems.push('no question mark button');
+        if (b.qRight < 0 || b.qRight > 24) problems.push(`the question mark is not at the far right (${b.qRight}px from the edge)`);
+        if (b.qSize < 36) problems.push(`the question mark is only ${b.qSize}px`);
+        return problems;
+      },
+    },
+    { ...base, name: 'banner-default-zod', app: 'demo-zod', expect: async (page) => ((await bannerInfo(page)).h1 === 'ISO 20022 Message Explorer' ? [] : ['no new banner in the Zod demo']) },
+    { ...base, name: 'banner-title-spanish', app: 'demo-form', query: '?lang=es&theme=dark', expect: async (page) => ((await bannerInfo(page)).h1 === 'Explorador de mensajes ISO 20022' ? [] : ['the banner title is not in Spanish']) },
+    { ...base, name: 'banner-dark', app: 'demo-form', query: '?theme=dark', expect: async (page) => ((await bannerInfo(page)).loaded ? [] : ['logo did not load in dark mode']) },
+    { name: 'banner-narrow', app: 'demo-form', viewport: { width: 400, height: 800 } },
+    {
+      ...base,
+      name: 'banner-implementation',
+      app: 'demo-form',
+      query: '?ImplementationBanner=true',
+      expect: async (page) => {
+        const b = await bannerInfo(page);
+        const problems: string[] = [];
+        if (!/TanStack Form hook/.test(b.h1)) problems.push(`the original banner is missing ("${b.h1}")`);
+        if (b.href) problems.push('the new banner is shown too');
+        if (b.h1 === 'ISO 20022 Message Explorer') problems.push('the new title is shown too');
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'banner-implementation-zod',
+      app: 'demo-zod',
+      query: '?ImplementationBanner=true',
+      expect: async (page) => (/TanStack|Zod/.test((await bannerInfo(page)).h1) ? [] : ['the original banner is missing in the Zod demo']),
+    },
+    {
+      ...base,
+      name: 'banner-implementation-false',
+      app: 'demo-form',
+      query: '?ImplementationBanner=false',
+      expect: async (page) => ((await bannerInfo(page)).hasQ ? [] : ['ImplementationBanner=false should show the new banner']),
+    },
+    {
+      ...base,
+      name: 'banner-implementation-survives-changes',
+      app: 'demo-form',
+      query: '?ImplementationBanner=true',
+      steps: async (page) => {
+        await clickText(page, 'header button', /display|pantalla/);
+        await settle(300);
+        await clickText(page, '[role=dialog] label', /dark/i);
+        await settle(400);
+      },
+      expect: async (page) => {
+        const url = await page.evaluate(() => window.location.search);
+        const h1 = (await bannerInfo(page)).h1;
+        return [...(/ImplementationBanner=true/.test(url) ? [] : [`the parameter was dropped from the URL: ${url}`]), ...(/TanStack/.test(h1) ? [] : ['the original banner disappeared after a setting changed'])];
+      },
+    },
+    {
+      ...base,
+      name: 'about-open',
+      app: 'demo-form',
+      steps: async (page) => {
+        await clickText(page, 'header button', /^\?$/);
+        await settle(500);
+      },
+      expect: async (page) => {
+        const t = await dialogText(page);
+        const problems: string[] = [];
+        for (const w of ['Explore ISO 20022 messages', 'Explore the format and the content', 'Create a new message', 'Save it and come back later', 'illustrations for your analysis documents', 'in your own application', 'Start exploring'])
+          if (!t.includes(w)) problems.push(`the about window lacks "${w}"`);
+        // exploring first, the programmer's part last
+        if (t.indexOf('Explore the format') > t.indexOf('in your own application')) problems.push('the sections are not in the intended order');
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'about-open-dark-spanish',
+      app: 'demo-form',
+      query: '?theme=dark&lang=es',
+      steps: async (page) => {
+        await clickText(page, 'header button', /^\?$/);
+        await settle(500);
+      },
+      expect: async (page) => ((await dialogText(page)).includes('Explore los mensajes ISO 20022') ? [] : ['the about window is not in Spanish']),
+    },
+    {
+      ...base,
+      name: 'about-close',
+      app: 'demo-form',
+      steps: async (page) => {
+        await clickText(page, 'header button', /^\?$/);
+        await settle(400);
+        await clickText(page, 'dialog button', /start exploring/i);
+        await settle(400);
+      },
+      expect: async (page) => ((await dialogText(page)) === '' ? [] : ['the about window did not close']),
+    },
+    { name: 'about-open-narrow', app: 'demo-form', viewport: { width: 400, height: 800 }, steps: async (page) => { await clickText(page, 'header button', /^\?$/); await settle(500); } },
+  ];
+}
+
 // ---------------------------------------------------------------------------- the link to the published specification
 
 const specLink = (page: Page): Promise<{ href: string; target: string; rel: string; text: string } | null> =>
@@ -821,6 +984,7 @@ export const scenarios: Scenario[] = [
   ...pasteScenarios(),
   ...fileScenarios(),
   ...areaScenarios(),
+  ...bannerScenarios(),
   ...specLinkScenarios(),
   { name: 'type-picker-open-narrow', app: 'demo-form', viewport: { width: 480, height: 900 }, steps: openType },
   { name: 'display-open', app: 'demo-form', viewport: { width: 1440, height: 900 }, steps: openDisplay },

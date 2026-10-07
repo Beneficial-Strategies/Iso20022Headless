@@ -50,6 +50,15 @@ export function parseSettings(
   };
 }
 
+/**
+ * `?ImplementationBanner=true` asks for the original banner (title and a note about the demo) instead of the
+ * Beneficial Strategies one. Missing or anything else means the new banner. The name and the value are case-insensitive.
+ */
+export function wantsImplementationBanner(search: string): boolean {
+  for (const [k, v] of new URLSearchParams(search)) if (k.toLowerCase() === 'implementationbanner') return v.trim().toLowerCase() === 'true';
+  return false;
+}
+
 /** Only non-default values are written, so the default URL stays clean. */
 export function settingsToSearch(s: Settings, existing = ''): string {
   const q = new URLSearchParams(existing);

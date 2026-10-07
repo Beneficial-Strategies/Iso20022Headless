@@ -32,6 +32,10 @@ const KEYS = [
   'helpClickHint',
   // zoom into a component type
   'zoomLabel', 'zoomTip', 'zoomShort',
+  // banner and the "about this tool" window
+  'bannerTitle', 'logoAlt', 'logoLink', 'aboutOpen', 'aboutTitle', 'aboutIntro', 'aboutClose', 'aboutStart',
+  'aboutExploreTitle', 'aboutExploreBody', 'aboutCreateTitle', 'aboutCreateBody', 'aboutSaveTitle', 'aboutSaveBody',
+  'aboutIllustrateTitle', 'aboutIllustrateBody', 'aboutBuildTitle', 'aboutBuildBody', 'aboutFootnote',
 ] as const;
 
 export type UiKey = (typeof KEYS)[number];
@@ -200,6 +204,30 @@ export const uiEn: UiMessages = {
   zoomTip:
     'This message subset is based upon the ISO 20022 type {type}. If you are adding or editing lookup values that may be persisted somewhere, you might need a control based on this subset of message data. Click Zoom to zoom in to that data type in isolation from the outer message.',
   zoomShort: 'Zoom',
+  bannerTitle: 'ISO 20022 Message Explorer',
+  logoAlt: 'Beneficial Strategies',
+  logoLink: 'Beneficial Strategies home page (opens in a new window)',
+  aboutOpen: 'About this tool: what you can do here',
+  aboutTitle: 'Explore ISO 20022 messages',
+  aboutIntro: 'A hands-on way to see what is really inside the messages banks and payment systems exchange, and to build your own.',
+  aboutClose: 'Close',
+  aboutStart: 'Start exploring',
+  aboutExploreTitle: 'Explore the format and the content',
+  aboutExploreBody:
+    'Pick an area and a message, and see every element it can hold: what it is called, what it means in the official ISO 20022 definition, which values are allowed, and which business rules tie fields together. Hover the i next to any label for its definition; View Specification opens the official page.',
+  aboutCreateTitle: 'Create a new message',
+  aboutCreateBody:
+    'Fill in the form to build a message from scratch. Your entries are checked as you type, and the finished message appears beside the form as XML or ISO 20022 JSON.',
+  aboutSaveTitle: 'Save it and come back later',
+  aboutSaveBody:
+    'Save what you have to a file and load it again whenever you like, or paste a message you already have to see it laid out as a form. Everything stays in your browser.',
+  aboutIllustrateTitle: 'Grab illustrations for your analysis documents',
+  aboutIllustrateBody:
+    'Zoom into just the part of a message you want to talk about, then take a screenshot of the form or copy its XML or JSON into your document. Display settings let you choose language, light or dark, and text size.',
+  aboutBuildTitle: 'Use these controls in your own application',
+  aboutBuildBody:
+    'Like how the form looks and behaves? Choose Implement! under the form for step-by-step instructions to add the same controls to your own application and style them your way.',
+  aboutFootnote: 'Definitions and code lists come from the ISO 20022 repository. Spanish text is machine-translated and not yet reviewed.',
 };
 
 const plural = (n: number | string | undefined, one: string, many: string): string => (Number(n) === 1 ? one : many);
@@ -363,6 +391,30 @@ export const uiEs: UiMessages = {
   zoomTip:
     'Este subconjunto del mensaje se basa en el tipo ISO 20022 {type}. Si está agregando o editando valores de consulta que quizá se guarden en algún lugar, puede necesitar un control basado en este subconjunto de datos del mensaje. Haga clic en Zoom para acercarse a ese tipo de datos, aislado del mensaje que lo contiene.',
   zoomShort: 'Zoom',
+  bannerTitle: 'Explorador de mensajes ISO 20022',
+  logoAlt: 'Beneficial Strategies',
+  logoLink: 'Página de inicio de Beneficial Strategies (se abre en una ventana nueva)',
+  aboutOpen: 'Acerca de esta herramienta: qué puede hacer aquí',
+  aboutTitle: 'Explore los mensajes ISO 20022',
+  aboutIntro: 'Una forma práctica de ver qué contienen realmente los mensajes que intercambian bancos y sistemas de pago, y de crear los suyos.',
+  aboutClose: 'Cerrar',
+  aboutStart: 'Empezar a explorar',
+  aboutExploreTitle: 'Explore el formato y el contenido',
+  aboutExploreBody:
+    'Elija un área y un mensaje, y vea cada elemento que puede contener: cómo se llama, qué significa según la definición oficial de ISO 20022, qué valores admite y qué reglas de negocio relacionan unos campos con otros. Pase el cursor sobre la i junto a cualquier etiqueta para ver su definición; Ver especificación abre la página oficial.',
+  aboutCreateTitle: 'Cree un mensaje nuevo',
+  aboutCreateBody:
+    'Complete el formulario para construir un mensaje desde cero. Sus datos se validan mientras escribe, y el mensaje terminado aparece junto al formulario como XML o JSON de ISO 20022.',
+  aboutSaveTitle: 'Guárdelo y continúe más tarde',
+  aboutSaveBody:
+    'Guarde lo que tenga en un archivo y cárguelo de nuevo cuando quiera, o pegue un mensaje que ya tenga para verlo como formulario. Todo permanece en su navegador.',
+  aboutIllustrateTitle: 'Obtenga ilustraciones para sus documentos de análisis',
+  aboutIllustrateBody:
+    'Amplíe solo la parte del mensaje de la que quiere hablar y haga una captura de pantalla del formulario, o copie su XML o JSON en su documento. En Pantalla puede elegir el idioma, el modo claro u oscuro y el tamaño del texto.',
+  aboutBuildTitle: 'Use estos controles en su propia aplicación',
+  aboutBuildBody:
+    '¿Le gusta cómo se ve y se comporta el formulario? Elija Implement! debajo del formulario para obtener instrucciones paso a paso y añadir los mismos controles a su aplicación, con su propio estilo.',
+  aboutFootnote: 'Las definiciones y las listas de códigos provienen del repositorio de ISO 20022. El texto en español es una traducción automática y aún no está revisado.',
 };
 
 /** Languages shipped with the demo. Others can be added through `createI18n` / `DemoApp`'s `i18n` prop. */
