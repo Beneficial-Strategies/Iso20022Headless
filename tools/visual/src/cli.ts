@@ -38,6 +38,8 @@ async function open(browser: Browser, base: string, s: Pick<Scenario, 'query' | 
   page.on('console', (m) => {
     if (m.type() !== 'error') return;
     if (m.location().url?.includes('favicon')) return;
+    // the page tries ISO's address for the message's XSD; the browser refuses it (no cross-origin permission), by design
+    if (`${m.location().url ?? ''} ${m.text()}`.includes('iso20022.org/sites/default/files/documents/messages/')) return;
     problems.push(`console error: ${m.text().slice(0, 240).replace(/\s+/g, ' ')}`);
   });
   page.on('pageerror', (e) => problems.push(`page error: ${String(e).slice(0, 240)}`));
@@ -143,6 +145,25 @@ async function pagesSmokeTest(argv: string[]): Promise<number> {
       expect: async (page) => ((await page.evaluate(() => document.querySelector('header h1')?.textContent ?? '')).includes('TanStack Form hook') ? [] : ['the original banner is not shown']),
     },
     {
+      name: 'XSD validation in the built site (the worker and the WebAssembly are served)',
+      path: 'form/',
+      expect: async (page) => {
+        const xsd = decodeURIComponent(new URL('../xsd/pain.001.001.13.test.xsd', import.meta.url).pathname);
+        const input = await page.$('input[data-load-schema]');
+        if (!input) return ['no schema file input'];
+        await input.uploadFile(xsd);
+        await new Promise((r) => setTimeout(r, 600));
+        await page.evaluate(() => [...document.querySelectorAll('button')].find((b) => b.textContent === 'XSD Validate')?.click());
+        for (let i = 0; i < 40; i++) {
+          const text = await page.evaluate(() => document.querySelector('[data-xsd-panel]')?.textContent ?? '');
+          if (/Missing child/.test(text)) return [];
+          if (/could not run/i.test(text)) return [`the validator did not run: ${text.slice(0, 200)}`];
+          await new Promise((r) => setTimeout(r, 250));
+        }
+        return ['the validation window never reported the empty message'];
+      },
+    },
+    {
       name: 'form demo opened directly (Beneficial Strategies banner)',
       path: 'form/',
       expect: async (page) => ((await page.evaluate(() => document.querySelector('header h1')?.textContent ?? '')) === 'ISO 20022 Message Explorer' ? [] : ['the new banner is not shown']),
@@ -166,9 +187,11 @@ async function pagesSmokeTest(argv: string[]): Promise<number> {
       const problems: string[] = [];
       await page.setViewport({ width: 1280, height: 800 });
       page.on('pageerror', (e) => problems.push(`page error: ${String(e).slice(0, 200)}`));
-      page.on('console', (m) => m.type() === 'error' && !m.location().url?.includes('favicon') && problems.push(`console error: ${m.text().slice(0, 200)}`));
+      // the page tries ISO's address for the message's XSD; the browser refuses it (no cross-origin permission), by design
+      const isoSchema = (text: string): boolean => text.includes('iso20022.org/sites/default/files/documents/messages/');
+      page.on('console', (m) => m.type() === 'error' && !m.location().url?.includes('favicon') && !isoSchema(`${m.location().url ?? ''} ${m.text()}`) && problems.push(`console error: ${m.text().slice(0, 200)}`));
       page.on('response', (r) => r.status() >= 400 && !r.url().includes('favicon') && problems.push(`HTTP ${r.status()}: ${r.url().replace(served.url, '/')}`));
-      page.on('requestfailed', (r) => problems.push(`request failed: ${r.url().replace(served.url, '/')}`));
+      page.on('requestfailed', (r) => !isoSchema(r.url()) && problems.push(`request failed: ${r.url().replace(served.url, '/')}`));
       await page.goto(served.url + c.path, { waitUntil: 'networkidle0' });
       await settle(500);
       problems.push(...(await c.expect(page)));

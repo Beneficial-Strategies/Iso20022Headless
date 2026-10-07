@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { EditorView, basicSetup } from 'codemirror';
 import { Compartment, EditorState } from '@codemirror/state';
 import { xml } from '@codemirror/lang-xml';
@@ -33,6 +33,8 @@ export function XmlPane({
   paste,
   load,
   save,
+  leading,
+  below,
   onCopied,
 }: {
   xml: string;
@@ -42,6 +44,10 @@ export function XmlPane({
   paste?: PasteButton;
   load?: LoadButton;
   save?: SaveButton;
+  /** Buttons before the others (left of "Load file…"). */
+  leading?: ReactNode;
+  /** Content under the XML, such as a validation window. */
+  below?: ReactNode;
   /** Called with the text the copy button put on the clipboard. */
   onCopied?: (text: string) => void;
 }) {
@@ -82,6 +88,7 @@ export function XmlPane({
   return (
     <div className="flex h-full flex-col">
       <div className="mb-1 flex flex-wrap justify-end gap-2">
+        {leading}
         {load ? (
           <>
             <input
@@ -142,6 +149,7 @@ export function XmlPane({
         ) : null}
       </div>
       <div ref={host} className="min-h-0 flex-1 overflow-auto rounded border border-edge text-xs" />
+      {below}
     </div>
   );
 }

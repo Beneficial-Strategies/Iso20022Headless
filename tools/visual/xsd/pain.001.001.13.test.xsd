@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  A REDUCED stand-in for ISO's pain.001.001.13 schema, used only by the browser checks (tools/visual).
+  It keeps the real namespace, the real names of the types it defines and their element order and facets, but
+  defines only the group header; the payment information is left open (xs:anyType, optional here). It is NOT the ISO schema.
+-->
+<xs:schema xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.13" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:iso:std:iso:20022:tech:xsd:pain.001.001.13">
+  <xs:element name="Document" type="Document"/>
+  <xs:complexType name="Document">
+    <xs:sequence>
+      <xs:element name="CstmrCdtTrfInitn" type="CustomerCreditTransferInitiationV13"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CustomerCreditTransferInitiationV13">
+    <xs:sequence>
+      <xs:element name="GrpHdr" type="GroupHeader114"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="PmtInf" type="xs:anyType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GroupHeader114">
+    <xs:sequence>
+      <xs:element name="MsgId" type="Max35Text"/>
+      <xs:element name="CreDtTm" type="ISODateTime"/>
+      <xs:element name="NbOfTxs" type="Max15NumericText"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="CtrlSum" type="xs:decimal"/>
+      <xs:element name="InitgPty" type="PartyIdentification272"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartyIdentification272">
+    <xs:sequence>
+      <xs:element maxOccurs="1" minOccurs="0" name="Nm" type="Max140Text"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Max35Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="35"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max140Text">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="140"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Max15NumericText">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{1,15}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ISODateTime">
+    <xs:restriction base="xs:dateTime"/>
+  </xs:simpleType>
+</xs:schema>

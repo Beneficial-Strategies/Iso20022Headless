@@ -24,6 +24,8 @@ export interface MessageInfo {
   area: string;
   /** Entry point under the validate package, e.g. `pain001` for `@beneficial-strategies/iso20022-validate/pain001`. */
   module: string;
+  /** Where ISO publishes the XSD schema of this message (the ISO 20022 repository gives the same pattern for every message). */
+  xsdUrl: string;
   /** Loads the message on demand, so a page only downloads the messages it uses. */
   load: () => Promise<MessageBundle>;
 }
@@ -41,6 +43,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "Customer Credit Transfer Initiation",
     area: "pain",
     module: "pain001",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pain/schemas/pain.001.001.13.xsd",
     load: () =>
       import('./pain001.ts').then((m) => ({ message: m.pain001Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -50,6 +53,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "Customer Payment Status Report",
     area: "pain",
     module: "pain002",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pain/schemas/pain.002.001.15.xsd",
     load: () =>
       import('./pain002.ts').then((m) => ({ message: m.pain002Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -59,6 +63,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "Customer Payment Reversal",
     area: "pain",
     module: "pain007",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pain/schemas/pain.007.001.13.xsd",
     load: () =>
       import('./pain007.ts').then((m) => ({ message: m.pain007Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -68,6 +73,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "Customer Direct Debit Initiation",
     area: "pain",
     module: "pain008",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pain/schemas/pain.008.001.12.xsd",
     load: () =>
       import('./pain008.ts').then((m) => ({ message: m.pain008Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -77,6 +83,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "Mandate Initiation Request",
     area: "pain",
     module: "pain009",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pain/schemas/pain.009.001.08.xsd",
     load: () =>
       import('./pain009.ts').then((m) => ({ message: m.pain009Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -86,6 +93,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "Mandate Amendment Request",
     area: "pain",
     module: "pain010",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pain/schemas/pain.010.001.08.xsd",
     load: () =>
       import('./pain010.ts').then((m) => ({ message: m.pain010Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -95,6 +103,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "Mandate Cancellation Request",
     area: "pain",
     module: "pain011",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pain/schemas/pain.011.001.08.xsd",
     load: () =>
       import('./pain011.ts').then((m) => ({ message: m.pain011Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -104,6 +113,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "Mandate Acceptance Report",
     area: "pain",
     module: "pain012",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pain/schemas/pain.012.001.08.xsd",
     load: () =>
       import('./pain012.ts').then((m) => ({ message: m.pain012Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -113,6 +123,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "Creditor Payment Activation Request",
     area: "pain",
     module: "pain013",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pain/schemas/pain.013.001.12.xsd",
     load: () =>
       import('./pain013.ts').then((m) => ({ message: m.pain013Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -122,6 +133,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "Creditor Payment Activation Request Status Report",
     area: "pain",
     module: "pain014",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pain/schemas/pain.014.001.12.xsd",
     load: () =>
       import('./pain014.ts').then((m) => ({ message: m.pain014Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -131,6 +143,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "Mandate Copy Request",
     area: "pain",
     module: "pain017",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pain/schemas/pain.017.001.04.xsd",
     load: () =>
       import('./pain017.ts').then((m) => ({ message: m.pain017Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -140,6 +153,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "Mandate Suspension Request",
     area: "pain",
     module: "pain018",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pain/schemas/pain.018.001.04.xsd",
     load: () =>
       import('./pain018.ts').then((m) => ({ message: m.pain018Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -149,6 +163,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "FI To FI Payment Status Report",
     area: "pacs",
     module: "pacs002",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pacs/schemas/pacs.002.001.16.xsd",
     load: () =>
       import('./pacs002.ts').then((m) => ({ message: m.pacs002Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -158,6 +173,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "FI To FI Customer Direct Debit",
     area: "pacs",
     module: "pacs003",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pacs/schemas/pacs.003.001.12.xsd",
     load: () =>
       import('./pacs003.ts').then((m) => ({ message: m.pacs003Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -167,6 +183,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "Payment Return",
     area: "pacs",
     module: "pacs004",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pacs/schemas/pacs.004.001.15.xsd",
     load: () =>
       import('./pacs004.ts').then((m) => ({ message: m.pacs004Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -176,6 +193,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "FI To FI Payment Reversal",
     area: "pacs",
     module: "pacs007",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pacs/schemas/pacs.007.001.14.xsd",
     load: () =>
       import('./pacs007.ts').then((m) => ({ message: m.pacs007Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -185,6 +203,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "FI To FI Customer Credit Transfer",
     area: "pacs",
     module: "pacs008",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pacs/schemas/pacs.008.001.14.xsd",
     load: () =>
       import('./pacs008.ts').then((m) => ({ message: m.pacs008Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -194,6 +213,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "Financial Institution Credit Transfer",
     area: "pacs",
     module: "pacs009",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pacs/schemas/pacs.009.001.13.xsd",
     load: () =>
       import('./pacs009.ts').then((m) => ({ message: m.pacs009Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -203,6 +223,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "Financial Institution Direct Debit",
     area: "pacs",
     module: "pacs010",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pacs/schemas/pacs.010.001.06.xsd",
     load: () =>
       import('./pacs010.ts').then((m) => ({ message: m.pacs010Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -212,6 +233,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "FI To FI Payment Status Request",
     area: "pacs",
     module: "pacs028",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pacs/schemas/pacs.028.001.07.xsd",
     load: () =>
       import('./pacs028.ts').then((m) => ({ message: m.pacs028Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -221,6 +243,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "Multilateral Settlement Request",
     area: "pacs",
     module: "pacs029",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pacs/schemas/pacs.029.001.02.xsd",
     load: () =>
       import('./pacs029.ts').then((m) => ({ message: m.pacs029Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -230,6 +253,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "ATM Device Report",
     area: "caam",
     module: "caam001",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.001.001.05.xsd",
     load: () =>
       import('./caam001.ts').then((m) => ({ message: m.caam001Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -239,6 +263,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "ATM Device Control",
     area: "caam",
     module: "caam002",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.002.001.04.xsd",
     load: () =>
       import('./caam002.ts').then((m) => ({ message: m.caam002Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -248,6 +273,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "ATM Key Download Request",
     area: "caam",
     module: "caam003",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.003.001.05.xsd",
     load: () =>
       import('./caam003.ts').then((m) => ({ message: m.caam003Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -257,6 +283,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "ATM Key Download Response",
     area: "caam",
     module: "caam004",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.004.001.05.xsd",
     load: () =>
       import('./caam004.ts').then((m) => ({ message: m.caam004Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -266,6 +293,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "ATM Diagnostic Request",
     area: "caam",
     module: "caam005",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.005.001.03.xsd",
     load: () =>
       import('./caam005.ts').then((m) => ({ message: m.caam005Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -275,6 +303,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "ATM Diagnostic Response",
     area: "caam",
     module: "caam006",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.006.001.02.xsd",
     load: () =>
       import('./caam006.ts').then((m) => ({ message: m.caam006Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -284,6 +313,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "Host To ATM Request",
     area: "caam",
     module: "caam007",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.007.001.01.xsd",
     load: () =>
       import('./caam007.ts').then((m) => ({ message: m.caam007Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -293,6 +323,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "Host To ATM Acknowledgement",
     area: "caam",
     module: "caam008",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.008.001.01.xsd",
     load: () =>
       import('./caam008.ts').then((m) => ({ message: m.caam008Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -302,6 +333,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "ATM Reconciliation Advice",
     area: "caam",
     module: "caam009",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.009.001.03.xsd",
     load: () =>
       import('./caam009.ts').then((m) => ({ message: m.caam009Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -311,6 +343,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "ATM Reconciliation Acknowledgement",
     area: "caam",
     module: "caam010",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.010.001.03.xsd",
     load: () =>
       import('./caam010.ts').then((m) => ({ message: m.caam010Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -320,6 +353,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "ATM Exception Advice",
     area: "caam",
     module: "caam011",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.011.001.02.xsd",
     load: () =>
       import('./caam011.ts').then((m) => ({ message: m.caam011Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -329,6 +363,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "ATM Exception Acknowledgement",
     area: "caam",
     module: "caam012",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.012.001.02.xsd",
     load: () =>
       import('./caam012.ts').then((m) => ({ message: m.caam012Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -338,6 +373,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "ATM Configuration Report",
     area: "caam",
     module: "caam013",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.013.001.01.xsd",
     load: () =>
       import('./caam013.ts').then((m) => ({ message: m.caam013Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -347,6 +383,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "ATM Configuration Control",
     area: "caam",
     module: "caam014",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.014.001.01.xsd",
     load: () =>
       import('./caam014.ts').then((m) => ({ message: m.caam014Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -356,6 +393,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "ATM Reconciliation Request",
     area: "caam",
     module: "caam015",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.015.001.01.xsd",
     load: () =>
       import('./caam015.ts').then((m) => ({ message: m.caam015Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
@@ -365,6 +403,7 @@ export const messageIndex: readonly MessageInfo[] = [
     title: "ATM Reconciliation Response",
     area: "caam",
     module: "caam016",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.016.001.01.xsd",
     load: () =>
       import('./caam016.ts').then((m) => ({ message: m.caam016Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
