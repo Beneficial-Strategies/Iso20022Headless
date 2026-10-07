@@ -26,6 +26,8 @@ const KEYS = [
   'loadFile', 'saveXml', 'saveJson', 'fileDone', 'fileDoneIssues', 'fileFailed', 'fileError_empty', 'fileError_not_xml_or_json', 'fileError_unreadable', 'fileError_too_large', 'stepServe', 'noteServe',
   // business areas (the first dropdown): English text is the repository's; keep it equal to the registry (a test checks)
   'areaLabel', 'areaName_pain', 'areaDesc_pain', 'areaName_pacs', 'areaDesc_pacs', 'areaName_caam', 'areaDesc_caam',
+  // link to the published specification of the selected type
+  'viewSpec', 'viewSpecTitle',
 ] as const;
 
 export type UiKey = (typeof KEYS)[number];
@@ -187,6 +189,8 @@ export const uiEn: UiMessages = {
   areaDesc_pacs: 'Messages that support the clearing and settlement processes for payment transactions between financial institutions.',
   areaName_caam: 'ATM Management',
   areaDesc_caam: 'Messages that support card related terminal management services between an Automated Teller Machine (ATM) and an Acquirer.',
+  viewSpec: 'View Specification ↗',
+  viewSpecTitle: 'Open the ISO 20022 repository page for {type} in a new window',
 };
 
 const plural = (n: number | string | undefined, one: string, many: string): string => (Number(n) === 1 ? one : many);
@@ -343,6 +347,8 @@ export const uiEs: UiMessages = {
   areaDesc_pacs: 'Mensajes que respaldan los procesos de compensación y liquidación de operaciones de pago entre entidades financieras.',
   areaName_caam: 'Gestión de cajeros automáticos',
   areaDesc_caam: 'Mensajes que respaldan los servicios de gestión de terminales relacionados con tarjetas entre un cajero automático (ATM) y un adquirente.',
+  viewSpec: 'Ver especificación ↗',
+  viewSpecTitle: 'Abrir la página del repositorio de ISO 20022 para {type} en una ventana nueva',
 };
 
 /** Languages shipped with the demo. Others can be added through `createI18n` / `DemoApp`'s `i18n` prop. */
