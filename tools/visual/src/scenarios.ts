@@ -1,6 +1,7 @@
 import { existsSync, mkdtempSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { dirname, join } from 'node:path';
 import type { Page } from 'puppeteer-core';
 
 export interface Scenario {
@@ -331,6 +332,313 @@ function fileScenarios(): Scenario[] {
 
 const optionsOf = (page: Page): Promise<string[]> => page.evaluate(() => [...document.querySelectorAll('[role=option]')].map((o) => o.textContent ?? ''));
 const messageIs = (page: Page, id: string): Promise<boolean> => page.evaluate((i) => (document.querySelector('#message-picker')?.textContent ?? '').includes(i), id);
+
+// ---------------------------------------------------------------------------- "Copy as": what the screen shows, for documents and tools
+
+const COPY_OUT = join(dirname(fileURLToPath(import.meta.url)), '../out');
+const copyAsButton = '[data-copy-as]';
+async function openCopyAs(page: Page): Promise<void> {
+  await page.click(copyAsButton);
+  await page.waitForSelector('[role=menu]', { timeout: 5000 });
+  await settle(200);
+}
+async function copyAs(page: Page, format: string): Promise<void> {
+  await openCopyAs(page);
+  await page.click(`[role=menuitem][data-format=${format}]`);
+  for (let i = 0; i < 40; i++) {
+    if ((await page.$eval('[data-copy-status]', (e) => e.textContent ?? '')) !== '') break;
+    await settle(150);
+  }
+}
+const clipText = (page: Page): Promise<string> => page.evaluate(() => navigator.clipboard.readText());
+const clipTypes = (page: Page) =>
+  page.evaluate(async () => {
+    const out: Record<string, string> = {};
+    for (const item of await navigator.clipboard.read()) {
+      for (const type of item.types) {
+        const blob = await item.getType(type);
+        out[type] = type.startsWith('image/') ? `${blob.size}` : await blob.text();
+      }
+    }
+    return out;
+  });
+const copyStatus = (page: Page): Promise<string> => page.$eval('[data-copy-status]', (e) => e.textContent ?? '');
+const optionIn = (page: Page, which: string): Promise<boolean> => page.$eval(`[data-option=${which}]`, (e) => e.getAttribute('aria-checked') === 'true');
+async function toggleOption(page: Page, which: string): Promise<void> {
+  await openCopyAs(page);
+  await page.click(`[data-option=${which}]`);
+  await page.keyboard.press('Escape');
+  await settle(150);
+}
+async function includeSection(page: Page, id: string): Promise<void> {
+  await page.click(`#${id}`);
+  await settle(300);
+}
+
+function copyAsScenarios(): Scenario[] {
+  const base = { app: 'demo-form' as const, viewport: { width: 1440, height: 1000 }, clipboard: { access: 'granted' as const } };
+  const fill = async (page: Page) => {
+    await page.locator('#GroupHeader-MessageIdentification').fill('MSG-1');
+    await page.locator('#GroupHeader-NumberOfTransactions').fill('2');
+    await page.locator('#GroupHeader-InitiatingParty-Name').fill('Acme Ltd');
+    await settle(300);
+  };
+  return [
+    {
+      ...base,
+      name: 'copyas-menu-open',
+      steps: openCopyAs,
+      expect: async (page) => {
+        const r = await page.evaluate(() => {
+          const btn = document.querySelector<HTMLElement>('[data-copy-as]')!.getBoundingClientRect();
+          const form = document.querySelector<HTMLElement>('[data-form-area]')!.getBoundingClientRect();
+          const xml = document.querySelector<HTMLElement>('[aria-label="XML preview"]')!.getBoundingClientRect();
+          const menu = document.querySelector('[role=menu]');
+          return {
+            above: btn.bottom <= form.top + 1,
+            left: btn.left < xml.left && btn.left >= form.left - 1,
+            items: [...(menu?.querySelectorAll('[role=menuitem]') ?? [])].map((e) => e.getAttribute('data-format')),
+            checks: [...(menu?.querySelectorAll('[role=menuitemcheckbox]') ?? [])].map((e) => e.getAttribute('data-option')),
+            focused: document.activeElement?.getAttribute('role'),
+          };
+        });
+        const problems: string[] = [];
+        if (!r.above) problems.push('the button is not above the left panel');
+        if (!r.left) problems.push('the button is not at the left');
+        if (JSON.stringify(r.items) !== JSON.stringify(['word', 'markdown', 'spreadsheet', 'outline', 'json', 'image'])) problems.push(`menu items are ${JSON.stringify(r.items)}`);
+        if (JSON.stringify(r.checks) !== JSON.stringify(['definitions', 'excluded', 'emptyOptional'])) problems.push(`options are ${JSON.stringify(r.checks)}`);
+        if (r.focused !== 'menuitem') problems.push(`focus is on "${r.focused}", not the first item`);
+        if (await optionIn(page, 'definitions')) problems.push('definitions should be off by default');
+        if (!(await optionIn(page, 'excluded')) || !(await optionIn(page, 'emptyOptional'))) problems.push('the other two options should be on by default');
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'copyas-keyboard',
+      steps: async (page) => {
+        await page.focus(copyAsButton);
+        await page.keyboard.press('Enter');
+        await page.waitForSelector('[role=menu]');
+        await settle(200);
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('Enter'); // the third item: spreadsheet
+        await settle(1200);
+      },
+      expect: async (page) => {
+        const text = await clipText(page);
+        return [
+          ...(text.startsWith('Level\tPath\tElement') ? [] : [`the keyboard did not copy the spreadsheet: "${text.slice(0, 60)}"`]),
+          ...((await page.evaluate(() => document.activeElement?.hasAttribute('data-copy-as'))) ? [] : ['focus did not return to the button']),
+          ...((await page.$('[role=menu]')) ? ['the menu stayed open'] : []),
+        ];
+      },
+    },
+    {
+      ...base,
+      name: 'copyas-markdown-follows-the-screen',
+      steps: async (page) => {
+        await fill(page);
+        await includeSection(page, 'include-GroupHeader-InitiatingParty-PostalAddress');
+        await page.locator('#GroupHeader-InitiatingParty-PostalAddress-TownName').fill('Berlin');
+        await settle(300);
+        await copyAs(page, 'markdown');
+      },
+      expect: async (page) => {
+        const md = await clipText(page);
+        const problems: string[] = [];
+        for (const line of [
+          '# Customer Credit Transfer Initiation V13',
+          '`pain.001.001.13` · CustomerCreditTransferInitiationV13',
+          '- **Group Header** (required)',
+          '  - **Message Identification** (required): MSG-1',
+          '  - **Number Of Transactions** (required): 2',
+          '    - **Name** (optional): Acme Ltd'.replace(/^ {4}/, '    '),
+          '      - **Town Name** (optional): Berlin',
+          '    - **Identification** (optional): *not included*',
+          '  - **Forwarding Agent** (optional): *not included*',
+        ])
+          if (!md.includes(line)) problems.push(`missing: ${line}`);
+        if (!/^- \*\*Payment Information\*\* \(list 1\.\.∞, required\)/m.test(md)) problems.push('the payment information list is not described');
+        if (!/Copied as Markdown/.test(await copyStatus(page))) problems.push(`status is "${await copyStatus(page)}"`);
+        // what the screen shows: the included address is open, the others are not
+        const shown = await page.evaluate(() => ({
+          address: !!document.querySelector('#GroupHeader-InitiatingParty-PostalAddress-TownName'),
+          identification: !!document.querySelector('#GroupHeader-InitiatingParty-Identification-OrganisationIdentification-AnyBIC, [id^="GroupHeader-InitiatingParty-Identification"]:not([id^="include"])'),
+        }));
+        if (!shown.address) problems.push('the screen does not show the address the copy says is included');
+        if (shown.identification) problems.push('the screen shows an identification the copy says is not included');
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'copyas-options',
+      steps: async (page) => {
+        await fill(page);
+        await toggleOption(page, 'excluded'); // off: leave out sections that are not included
+        await toggleOption(page, 'emptyOptional'); // off: leave out optional elements left empty
+        await toggleOption(page, 'definitions'); // on
+        await copyAs(page, 'markdown');
+      },
+      expect: async (page) => {
+        const md = await clipText(page);
+        const problems: string[] = [];
+        if (/Forwarding Agent|Initiation Source|Postal Address/.test(md)) problems.push('sections that are not included were not left out');
+        if (/Control Sum/.test(md)) problems.push('an optional element left empty was not left out');
+        if (!/Creation Date Time\*\* \(required\): \*\(empty\)\*/.test(md)) problems.push('a required element left empty must still show');
+        if (!/- _Point to point reference/.test(md)) problems.push('definitions were not added');
+        // the menu remembers its options
+        await openCopyAs(page);
+        if ((await optionIn(page, 'excluded')) || (await optionIn(page, 'emptyOptional')) || !(await optionIn(page, 'definitions'))) problems.push('the menu did not keep the options');
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'copyas-word',
+      steps: async (page) => {
+        await fill(page);
+        await copyAs(page, 'word');
+      },
+      expect: async (page) => {
+        const c = await clipTypes(page);
+        const problems: string[] = [];
+        const html = c['text/html'] ?? '';
+        if (!/<table[^>]*>/.test(html) || !html.includes('<h2>Customer Credit Transfer Initiation V13</h2>')) problems.push('no table with a heading on the clipboard as HTML');
+        if (!html.includes('MSG-1') || !html.includes('Acme Ltd')) problems.push('the values are missing from the HTML');
+        if (/class=/.test(html)) problems.push('the HTML carries classes, which word processors drop');
+        const text = c['text/plain'] ?? '';
+        if (!text.startsWith('Customer Credit Transfer Initiation V13 (pain.001.001.13)') || !text.includes('Message Identification (required): MSG-1')) problems.push(`the plain-text form is "${text.slice(0, 80)}"`);
+        // pasted into an editable area, as a word processor would take it: a real table appears
+        const pasted = await page.evaluate((h) => {
+          const box = document.createElement('div');
+          box.contentEditable = 'true';
+          document.body.appendChild(box);
+          box.innerHTML = h;
+          const r = { tables: box.querySelectorAll('table').length, rows: box.querySelectorAll('tr').length };
+          box.remove();
+          return r;
+        }, html);
+        if (pasted.tables !== 1 || pasted.rows < 10) problems.push(`the HTML does not make a table of rows: ${JSON.stringify(pasted)}`);
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'copyas-spreadsheet-and-outline-and-json',
+      steps: async (page) => {
+        await fill(page);
+        await copyAs(page, 'spreadsheet');
+        (globalThis as unknown as { __tsv: string }).__tsv = await clipText(page);
+        await copyAs(page, 'outline');
+        (globalThis as unknown as { __outline: string }).__outline = await clipText(page);
+        await copyAs(page, 'json');
+      },
+      expect: async (page) => {
+        const g = globalThis as unknown as { __tsv: string; __outline: string };
+        const problems: string[] = [];
+        const rows = g.__tsv.replace(/\n$/, '').split('\n').map((l) => l.split('\t'));
+        if (rows[0]![0] !== 'Level' || !rows.some((r) => r[1] === 'GroupHeader.MessageIdentification' && r[8] === 'MSG-1')) problems.push('the spreadsheet rows are wrong');
+        if (new Set(rows.map((r) => r.length)).size !== 1) problems.push('the spreadsheet rows differ in width');
+        if (!g.__outline.includes('    Message Identification (required): MSG-1')) problems.push('the outline is wrong');
+        const json = JSON.parse(await clipText(page));
+        if (json.identifier !== 'pain.001.001.13' || json.elements[0].name !== 'GroupHeader') problems.push('the JSON is wrong');
+        if (json.elements[0].children?.[0]?.value !== 'MSG-1') problems.push('the JSON lacks the value');
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'copyas-image',
+      steps: async (page) => {
+        await fill(page);
+        await copyAs(page, 'image');
+        await settle(500);
+      },
+      expect: async (page) => {
+        const problems: string[] = [];
+        const png = await page.evaluate(async () => {
+          for (const item of await navigator.clipboard.read()) {
+            if (!item.types.includes('image/png')) continue;
+            const blob = await item.getType('image/png');
+            const bitmap = await createImageBitmap(blob);
+            const buffer = new Uint8Array(await blob.arrayBuffer());
+            let binary = '';
+            for (const b of buffer) binary += String.fromCharCode(b);
+            return { width: bitmap.width, height: bitmap.height, base64: btoa(binary) };
+          }
+          return undefined;
+        });
+        if (!png) return [`no image on the clipboard (status "${await copyStatus(page)}")`];
+        const form = await page.evaluate(() => {
+          const r = document.querySelector('[data-schema-form]')!.getBoundingClientRect();
+          return { width: r.width, height: r.height };
+        });
+        if (png.width < form.width * 1.8) problems.push(`the picture is ${png.width}px wide for a ${Math.round(form.width)}px form`);
+        if (png.height < form.height * 1.8) problems.push(`the picture is ${png.height}px high for a ${Math.round(form.height)}px form (the form scrolls: all of it must be in the picture)`);
+        writeFileSync(join(COPY_OUT, 'copyas-image-clipboard.png'), Buffer.from(png.base64, 'base64'));
+        if (!/Copied as Image/.test(await copyStatus(page))) problems.push(`status is "${await copyStatus(page)}"`);
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'copyas-zoomed-part',
+      steps: async (page) => {
+        await openType(page);
+        await page.keyboard.type('GroupHeader114');
+        await settle();
+        await clickText(page, '[cmdk-item]', /^GroupHeader114/);
+        await settle(700);
+        await page.locator('#MessageIdentification').fill('MSG-9');
+        await settle(300);
+        await copyAs(page, 'markdown');
+      },
+      expect: async (page) => {
+        const md = await clipText(page);
+        return [
+          ...(md.startsWith('# Group Header114\n\n`pain.001.001.13` · GroupHeader114') ? [] : [`heading is "${md.slice(0, 80)}"`]),
+          ...(md.includes('- **Message Identification** (required): MSG-9') ? [] : ['the zoomed part\'s value is missing']),
+          ...(/Payment Information/.test(md) ? ['the rest of the message is in the copy'] : []),
+        ];
+      },
+    },
+    {
+      ...base,
+      name: 'copyas-spanish',
+      query: '?lang=es',
+      steps: async (page) => {
+        await page.locator('#GroupHeader-MessageIdentification').fill('MSG-1');
+        await settle(300);
+        await copyAs(page, 'markdown');
+      },
+      expect: async (page) => {
+        const md = await clipText(page);
+        const label = await page.$eval(copyAsButton, (e) => e.textContent ?? '');
+        return [
+          ...(/Copiar como/.test(label) ? [] : [`the button says "${label}"`]),
+          ...(md.includes('- **Identificación del mensaje** (obligatorio): MSG-1') ? [] : [`not in Spanish: ${md.slice(0, 200)}`]),
+          ...(/Copiado como Markdown/.test(await copyStatus(page)) ? [] : [`status is "${await copyStatus(page)}"`]),
+        ];
+      },
+    },
+    {
+      ...base,
+      name: 'copyas-json-output-mode',
+      query: '?format=json',
+      steps: async (page) => {
+        await page.locator('#GroupHeader-MessageIdentification').fill('MSG-1');
+        await settle(300);
+        await copyAs(page, 'markdown');
+      },
+      expect: async (page) => ((await clipText(page)).includes('- **Message Identification** (required): MSG-1') ? [] : ['the copy depends on the XML/JSON output setting']),
+    },
+    { ...base, name: 'copyas-narrow', viewport: { width: 480, height: 900 }, steps: openCopyAs },
+    { ...base, name: 'copyas-menu-dark-spanish', query: '?theme=dark&lang=es', steps: openCopyAs },
+  ];
+}
 
 // ---------------------------------------------------------------------------- XSD validation
 
@@ -1286,6 +1594,7 @@ export const scenarios: Scenario[] = [
   ...pasteScenarios(),
   ...fileScenarios(),
   ...areaScenarios(),
+  ...copyAsScenarios(),
   ...xsdScenarios(),
   ...bannerScenarios(),
   ...specLinkScenarios(),

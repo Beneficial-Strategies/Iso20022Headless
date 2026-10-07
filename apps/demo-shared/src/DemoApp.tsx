@@ -17,6 +17,8 @@ import { useXsd, type XsdHandle } from './useXsd.ts';
 import { devProxyUrl } from './xsd.ts';
 import { XsdButton, XsdNotice, XsdPanel } from './XsdValidate.tsx';
 import { zoomExtra } from './ZoomButton.tsx';
+import { CopyAsMenu } from './CopyAsMenu.tsx';
+import { DEFAULT_OPTIONS, type ExportOptions } from './screenExport.ts';
 
 const messageIds = messageIndex.map((m) => m.identifier);
 const bundleCache = new Map<string, MessageBundle>();
@@ -263,6 +265,8 @@ function Editor({
   onIncomingApplied,
   onZoom,
   xsd,
+  copyOptions,
+  onCopyOptions,
 }: {
   bundle: MessageBundle;
   useForm: UseForm;
@@ -276,6 +280,9 @@ function Editor({
   onZoom: (type: string) => void;
   /** The XSD of the chosen message (kept when only the type changes). */
   xsd: XsdHandle;
+  /** What the "Copy as" menu includes (kept when only the type changes). */
+  copyOptions: ExportOptions;
+  onCopyOptions: (o: ExportOptions) => void;
 }) {
   const { t, validation } = useI18n();
   // the zoom buttons beside the "i" are the demo's own, not the form library's
@@ -364,7 +371,18 @@ function Editor({
   const valid = form.isValid && failedRules.length === 0;
   return (
     <div className="grid min-h-0 flex-1 grid-cols-1 gap-4 lg:grid-cols-2">
-      <section className="min-h-0 overflow-auto pr-2" aria-label="Form" data-form-area>
+      <div className="flex min-h-0 flex-col">
+      <div className="mb-2 shrink-0">
+        <CopyAsMenu
+          form={form}
+          identifier={bundle.message.identifier}
+          options={copyOptions}
+          onOptions={onCopyOptions}
+          imageTarget={() => document.querySelector<HTMLElement>('[data-schema-form]')}
+          fileStem={saveFileName(bundle.message.identifier, typeName, bundle.message.rootType, 'xml').replace(/\.xml$/, '')}
+        />
+      </div>
+      <section className="min-h-0 flex-1 overflow-auto pr-2" aria-label="Form" data-form-area>
         <SchemaForm form={form} fieldExtra={fieldExtra} />
         <RulesPanel results={ruleResults} />
         <div className="mt-4 flex items-center gap-3">
@@ -396,6 +414,7 @@ function Editor({
           ) : null}
         </div>
       </section>
+      </div>
       <section className="flex min-h-0 flex-col" aria-label="XML preview">
         <div className="mb-1 flex items-center gap-2 text-sm">
           <span className="font-semibold">{t(`format_${format}`)}</span>
@@ -447,6 +466,7 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
   // ?ImplementationBanner=true brings back the original banner; the settings code keeps unknown query parameters
   const implementationBanner = useMemo(() => (typeof window === 'undefined' ? false : wantsImplementationBanner(window.location.search)), []);
   const [aboutOpen, setAboutOpen] = useState(false);
+  const [copyOptions, setCopyOptions] = useState<ExportOptions>(DEFAULT_OPTIONS);
   const bundle = useMessageBundle(settings.message);
   const messageInfo = messageIndex.find((m) => m.identifier === settings.message);
   // the schema belongs to the message: choosing another message (not just another type of it) starts over
@@ -503,6 +523,8 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
               onIncomingApplied={() => setIncoming(undefined)}
               onZoom={(type) => setChosenType({ message: settings.message, type })}
               xsd={xsd}
+              copyOptions={copyOptions}
+              onCopyOptions={setCopyOptions}
             />
           ) : (
             <p className="text-sm text-muted" role="status">
