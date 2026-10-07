@@ -2,7 +2,7 @@
 // path /iso20022-xsd/* goes to the Worker first, which passes ISO's XSD schemas through to the page.
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "iso20022-explorer",
+  "name": "iso20022headless",
   "main": "tools/cloudflare/src/worker.ts",
   "compatibility_date": "2026-10-01",
   "assets": {
@@ -10,5 +10,8 @@
     "binding": "ASSETS",
     "run_worker_first": ["/iso20022-xsd/*"]
   },
+  // the built-in address (<name>.<account>.workers.dev) and per-branch preview addresses stay on; said here so that wrangler need not warn about defaults
+  "workers_dev": true,
+  "preview_urls": true,
   "observability": { "enabled": true }
 }
