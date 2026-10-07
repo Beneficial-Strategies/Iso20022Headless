@@ -1,0 +1,43 @@
+{
+  "identifier": "caam.012.001.02",
+  "name": "ATMExceptionAcknowledgementV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:caam.012.001.02",
+  "bodyTag": "ATMXcptnAck",
+  "out": "caam012",
+  "isoId": "_46x7YaFCEe-MRKYsaX6JDg",
+  "definition": "The ATMExceptionAcknowledgement message is sent by an acquirer or its agent to an ATM to acknowledge the receipt of an ATMExceptionAdvice message.",
+  "blocks": [
+    {
+      "name": "ATMExceptionAcknowledgement",
+      "isoId": "_46x7Z6FCEe-MRKYsaX6JDg",
+      "xmlTag": "ATMXcptnAck",
+      "type": "ATMExceptionAcknowledgement2",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Header",
+      "isoId": "_46x7Y6FCEe-MRKYsaX6JDg",
+      "xmlTag": "Hdr",
+      "type": "Header32",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ProtectedATMExceptionAcknowledgement",
+      "isoId": "_46x7ZaFCEe-MRKYsaX6JDg",
+      "xmlTag": "PrtctdATMXcptnAck",
+      "type": "ContentInformationType10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SecurityTrailer",
+      "isoId": "_46x7aaFCEe-MRKYsaX6JDg",
+      "xmlTag": "SctyTrlr",
+      "type": "ContentInformationType15",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

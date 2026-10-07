@@ -327,7 +327,7 @@ function fileScenarios(): Scenario[] {
   ];
 }
 
-// ---------------------------------------------------------------------------- the area dropdown (pain, pacs)
+// ---------------------------------------------------------------------------- the area dropdown (pain, pacs, caam)
 
 const optionsOf = (page: Page): Promise<string[]> => page.evaluate(() => [...document.querySelectorAll('[role=option]')].map((o) => o.textContent ?? ''));
 const messageIs = (page: Page, id: string): Promise<boolean> => page.evaluate((i) => (document.querySelector('#message-picker')?.textContent ?? '').includes(i), id);
@@ -345,9 +345,10 @@ function areaScenarios(): Scenario[] {
       expect: async (page) => {
         const o = await optionsOf(page);
         const problems: string[] = [];
-        if (o.length !== 2) problems.push(`expected two areas, found ${o.length}`);
+        if (o.length !== 3) problems.push(`expected three areas, found ${o.length}`);
         if (!o.some((x) => /^pain.*Payments Initiation: Messages that support the initiation of a payment/.test(x))) problems.push(`pain is not described: ${JSON.stringify(o)}`);
         if (!o.some((x) => /^pacs.*Payments Clearing and Settlement: Messages that support the clearing and settlement/.test(x))) problems.push(`pacs is not described: ${JSON.stringify(o)}`);
+        if (!o.some((x) => /^caam.*ATM Management: Messages that support card related terminal management/.test(x))) problems.push(`caam is not described: ${JSON.stringify(o)}`);
         return problems;
       },
     },
@@ -361,7 +362,7 @@ function areaScenarios(): Scenario[] {
       },
       expect: async (page) => {
         const o = await optionsOf(page);
-        return o.some((x) => /Iniciación de pagos: Mensajes que respaldan la iniciación/.test(x)) && o.some((x) => /Compensación y liquidación de pagos: Mensajes que respaldan/.test(x)) ? [] : [`not in Spanish: ${JSON.stringify(o)}`];
+        return o.some((x) => /Iniciación de pagos: Mensajes que respaldan la iniciación/.test(x)) && o.some((x) => /Compensación y liquidación de pagos: Mensajes que respaldan/.test(x)) && o.some((x) => /Gestión de cajeros automáticos: Mensajes que respaldan/.test(x)) ? [] : [`not in Spanish: ${JSON.stringify(o)}`];
       },
     },
     {
@@ -467,7 +468,7 @@ export const scenarios: Scenario[] = [
   },
   { name: 'pain002-dark-spanish', app: 'demo-zod', query: '?message=pain.002.001.15&theme=dark&lang=es', viewport: { width: 1440, height: 900 } },
   // every other message (pain and pacs) loads and renders (generated, so a new message only needs its identifier added here)
-  ...['pain.007.001.13', 'pain.008.001.12', 'pain.009.001.08', 'pain.010.001.08', 'pain.011.001.08', 'pain.012.001.08', 'pain.013.001.12', 'pain.014.001.12', 'pain.017.001.04', 'pain.018.001.04', 'pacs.002.001.16', 'pacs.003.001.12', 'pacs.004.001.15', 'pacs.007.001.14', 'pacs.008.001.14', 'pacs.009.001.13', 'pacs.010.001.06', 'pacs.028.001.07', 'pacs.029.001.02'].map(
+  ...['pain.007.001.13', 'pain.008.001.12', 'pain.009.001.08', 'pain.010.001.08', 'pain.011.001.08', 'pain.012.001.08', 'pain.013.001.12', 'pain.014.001.12', 'pain.017.001.04', 'pain.018.001.04', 'pacs.002.001.16', 'pacs.003.001.12', 'pacs.004.001.15', 'pacs.007.001.14', 'pacs.008.001.14', 'pacs.009.001.13', 'pacs.010.001.06', 'pacs.028.001.07', 'pacs.029.001.02', 'caam.001.001.05', 'caam.002.001.04', 'caam.003.001.05', 'caam.004.001.05', 'caam.005.001.03', 'caam.006.001.02', 'caam.007.001.01', 'caam.008.001.01', 'caam.009.001.03', 'caam.010.001.03', 'caam.011.001.02', 'caam.012.001.02', 'caam.013.001.01', 'caam.014.001.01', 'caam.015.001.01', 'caam.016.001.01'].map(
     (id): Scenario => ({
       name: `message-${id}`,
       app: 'demo-form',

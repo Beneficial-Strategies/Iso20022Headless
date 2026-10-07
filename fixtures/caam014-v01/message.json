@@ -1,0 +1,43 @@
+{
+  "identifier": "caam.014.001.01",
+  "name": "ATMConfigurationControlV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:caam.014.001.01",
+  "bodyTag": "ATMCfgtnCtrl",
+  "out": "caam014",
+  "isoId": "_B9H34KE-Ee-MRKYsaX6JDg",
+  "definition": "Information related to the protocol management on a segment of the path from the ATM to the acquirer.",
+  "blocks": [
+    {
+      "name": "ATMConfigurationControl",
+      "isoId": "_KBR7kKE-Ee-MRKYsaX6JDg",
+      "xmlTag": "ATMCfgtnCtrl",
+      "type": "ATMConfigurationControlComponent1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Header",
+      "isoId": "_JcInIKE-Ee-MRKYsaX6JDg",
+      "xmlTag": "Hdr",
+      "type": "Header31",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ProtectedATMConfigurationControl",
+      "isoId": "_JwCakKE-Ee-MRKYsaX6JDg",
+      "xmlTag": "PrtctdATMCfgtnCtrl",
+      "type": "ContentInformationType10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SecurityTrailer",
+      "isoId": "_KcvvkKE-Ee-MRKYsaX6JDg",
+      "xmlTag": "SctyTrlr",
+      "type": "ContentInformationType15",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

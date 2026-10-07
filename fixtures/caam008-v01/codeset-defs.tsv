@@ -1,0 +1,13 @@
+codeSet	isoId	text
+MessageFunction7Code	_ha36YInyEeS9F4Qrq_eaVA	Identifies the type of process related to an ATM message.
+PartyType12Code	_oci7cIn0EeS9F4Qrq_eaVA	Type of identified entity.
+ContentType2Code	_gQ7oMWizEeS87LmvcA55sg	Identification of the type of a Cryptographic Message Syntax (CMS) data structure.
+Algorithm15Code	_-7tyIWjBEeSP8Z8nx8HTuQ	Cryptographic algorithms for encryptions with a symmetric cryptographic key.
+BytePadding1Code	_zBfYoGi9EeS87LmvcA55sg	Byte padding for a cypher block chaining mode encryption, if the padding is not implicit.
+EncryptionFormat1Code	_IJtXQGi4EeS87LmvcA55sg	Format of data before encryption, if the format is not plaintext or implicit.
+Algorithm13Code	_lh7HEWi7EeS87LmvcA55sg	Cryptographic algorithms for the protection of transported keys.
+Algorithm7Code	_FLfa8AmFEeKKaIHo7gv4XA	Asymmetric encryption algorithm of a transport key.
+Algorithm11Code	_x-PlMWi4EeS87LmvcA55sg	Identification of a digest algorithm.
+Algorithm8Code	_TdaocAmFEeKKaIHo7gv4XA	Mask generator functions of the RSAES-OAEP encryption algorithm (RSA Encryption Scheme: Optimal Asymmetric Encryption Padding).
+AttributeType1Code	_TSEShwEcEeCQm6a_G2yO_w_1647054539	Type of attribute of a distinguished name (DN).
+Algorithm12Code	_h6npMWi7EeS87LmvcA55sg	Cryptographic algorithms for the MAC (Message Authentication Code).

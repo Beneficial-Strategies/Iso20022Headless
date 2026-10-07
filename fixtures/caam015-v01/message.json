@@ -1,0 +1,43 @@
+{
+  "identifier": "caam.015.001.01",
+  "name": "ATMReconciliationRequestV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:caam.015.001.01",
+  "bodyTag": "ATMRcncltnReq",
+  "out": "caam015",
+  "isoId": "_aI6GcKE-Ee-MRKYsaX6JDg",
+  "definition": "The ATMReconciliationRequest is sent by an ATM to a maintenance host to notify updates to the reconciliation counts.",
+  "blocks": [
+    {
+      "name": "ATMReconciliationRequest",
+      "isoId": "_gafZQKE-Ee-MRKYsaX6JDg",
+      "xmlTag": "ATMRcncltnReq",
+      "type": "ATMReconciliationRequestComponent1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Header",
+      "isoId": "_fVlmsKE-Ee-MRKYsaX6JDg",
+      "xmlTag": "Hdr",
+      "type": "Header31",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ProtectedATMReconciliationRequest",
+      "isoId": "_fnXTMKE-Ee-MRKYsaX6JDg",
+      "xmlTag": "PrtctdATMRcncltnReq",
+      "type": "ContentInformationType10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SecurityTrailer",
+      "isoId": "_gtQkQKE-Ee-MRKYsaX6JDg",
+      "xmlTag": "SctyTrlr",
+      "type": "ContentInformationType15",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

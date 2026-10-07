@@ -1,0 +1,1802 @@
+{
+  "message": {
+    "identifier": "caam.005.001.03",
+    "name": "ATMDiagnosticRequestV03",
+    "namespace": "urn:iso:std:iso:20022:tech:xsd:caam.005.001.03",
+    "bodyTag": "ATMDgnstcReq",
+    "out": "caam005",
+    "isoId": "_h37q0aFCEe-MRKYsaX6JDg",
+    "definition": "The ATMDiagnosticRequest message is sent from an ATM to an acquirer to verify the availability of the acquirer. The acquirer will also validate that this ATM is a valid ATM for its particular network.",
+    "blocks": [
+      {
+        "name": "ATMDiagnosticRequest",
+        "isoId": "_h37q16FCEe-MRKYsaX6JDg",
+        "xmlTag": "ATMDgnstcReq",
+        "type": "ATMDiagnosticRequest3",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "name": "Header",
+        "isoId": "_h37q06FCEe-MRKYsaX6JDg",
+        "xmlTag": "Hdr",
+        "type": "Header31",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "ProtectedATMDiagnosticRequest",
+        "isoId": "_h37q1aFCEe-MRKYsaX6JDg",
+        "xmlTag": "PrtctdATMDgnstcReq",
+        "type": "ContentInformationType10",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "name": "SecurityTrailer",
+        "isoId": "_h37q2aFCEe-MRKYsaX6JDg",
+        "xmlTag": "SctyTrlr",
+        "type": "ContentInformationType15",
+        "min": 0,
+        "max": 1
+      }
+    ]
+  },
+  "root": "ATMDiagnosticRequestV03",
+  "order": [
+    "ATMStatus1Code",
+    "Max35Text",
+    "ATMStatus2",
+    "AutomatedTellerMachine7",
+    "Acquirer7",
+    "ATMEnvironment9",
+    "ATMDiagnosticRequest3",
+    "ISODateTime",
+    "Max3NumericText",
+    "MessageFunction11Code",
+    "ATMMessageFunction2",
+    "Max6Text",
+    "Min2Max3AlphaText",
+    "PartyType12Code",
+    "GenericIdentification77",
+    "Traceability4",
+    "Header31",
+    "ContentType2Code",
+    "Algorithm15Code",
+    "BytePadding1Code",
+    "EncryptionFormat1Code",
+    "Max500Binary",
+    "Parameter6",
+    "AlgorithmIdentification14",
+    "Max100KBinary",
+    "EncryptedContent3",
+    "Min5Max16Binary",
+    "Max140Text",
+    "Number",
+    "KEKIdentifier2",
+    "Algorithm13Code",
+    "AlgorithmIdentification13",
+    "KEK4",
+    "Max5000Binary",
+    "Algorithm7Code",
+    "Algorithm11Code",
+    "Algorithm8Code",
+    "Parameter5",
+    "AlgorithmIdentification12",
+    "Parameter4",
+    "AlgorithmIdentification11",
+    "AttributeType1Code",
+    "RelativeDistinguishedName1",
+    "CertificateIssuer1",
+    "Max35Binary",
+    "IssuerAndSerialNumber1",
+    "Recipient5Choice",
+    "KeyTransport4",
+    "Recipient4Choice",
+    "EnvelopedData4",
+    "ContentInformationType10",
+    "EncapsulatedContent3",
+    "Max140Binary",
+    "Algorithm12Code",
+    "Parameter7",
+    "AlgorithmIdentification15",
+    "AuthenticatedData4",
+    "ContentInformationType15",
+    "ATMDiagnosticRequestV03"
+  ],
+  "types": {
+    "ATMStatus1Code": {
+      "name": "ATMStatus1Code",
+      "isoId": "_n7mq8IqLEeSRT5rEzcAHEw",
+      "kind": "code",
+      "options": [
+        {
+          "value": "INSV",
+          "name": "InService",
+          "isoId": "_pVnK0YqLEeSRT5rEzcAHEw"
+        },
+        {
+          "value": "OUTS",
+          "name": "OutOfService",
+          "isoId": "_pZx5IYqLEeSRT5rEzcAHEw"
+        }
+      ]
+    },
+    "Max35Text": {
+      "name": "Max35Text",
+      "kind": "text",
+      "isoId": "_YW1tKdp-Ed-ak6NoX_4Aeg_1913463446",
+      "minLength": 1,
+      "maxLength": 35
+    },
+    "ATMStatus2": {
+      "name": "ATMStatus2",
+      "isoId": "_inj9QZ9bEe-nbM0aSPcoiQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "CurrentStatus",
+          "isoId": "_iog_gZ9bEe-nbM0aSPcoiQ",
+          "xmlTag": "CurSts",
+          "type": "ATMStatus1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CurrentStatusReason",
+          "isoId": "_v4Ms4J9bEe-nbM0aSPcoiQ",
+          "xmlTag": "CurStsRsn",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "DemandedStatus",
+          "isoId": "_iog_g59bEe-nbM0aSPcoiQ",
+          "xmlTag": "DmnddSts",
+          "type": "ATMStatus1Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "AutomatedTellerMachine7": {
+      "name": "AutomatedTellerMachine7",
+      "isoId": "_OFzg0YtrEeSDLd7nI4Quzw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "AdditionalIdentification",
+          "isoId": "_OSw-w4trEeSDLd7nI4Quzw",
+          "xmlTag": "AddtlId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Identification",
+          "isoId": "_OSw-wYtrEeSDLd7nI4Quzw",
+          "xmlTag": "Id",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SequenceNumber",
+          "isoId": "_OSw-xYtrEeSDLd7nI4Quzw",
+          "xmlTag": "SeqNb",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "Acquirer7": {
+      "name": "Acquirer7",
+      "isoId": "_077-4Yn1EeS9F4Qrq_eaVA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "AcquiringInstitution",
+          "isoId": "_1Ivr0Yn1EeS9F4Qrq_eaVA",
+          "xmlTag": "AcqrgInstn",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Branch",
+          "isoId": "_1Ivr04n1EeS9F4Qrq_eaVA",
+          "xmlTag": "Brnch",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "ATMEnvironment9": {
+      "name": "ATMEnvironment9",
+      "isoId": "_-clJMYtqEeSDLd7nI4Quzw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "ATM",
+          "isoId": "_-pPsN4tqEeSDLd7nI4Quzw",
+          "xmlTag": "ATM",
+          "type": "AutomatedTellerMachine7",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ATMManagerIdentification",
+          "isoId": "_-pPsM4tqEeSDLd7nI4Quzw",
+          "xmlTag": "ATMMgrId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Acquirer",
+          "isoId": "_-pPsMYtqEeSDLd7nI4Quzw",
+          "xmlTag": "Acqrr",
+          "type": "Acquirer7",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "ATMDiagnosticRequest3": {
+      "name": "ATMDiagnosticRequest3",
+      "isoId": "_UftQ0aETEe-MRKYsaX6JDg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "ATMGlobalStatus",
+          "isoId": "_Ug6xw6ETEe-MRKYsaX6JDg",
+          "xmlTag": "ATMGblSts",
+          "type": "ATMStatus2",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Environment",
+          "isoId": "_Ug6xwaETEe-MRKYsaX6JDg",
+          "xmlTag": "Envt",
+          "type": "ATMEnvironment9",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ISODateTime": {
+      "name": "ISODateTime",
+      "kind": "datetime",
+      "isoId": "_YW1tKtp-Ed-ak6NoX_4Aeg_-1624336183"
+    },
+    "Max3NumericText": {
+      "name": "Max3NumericText",
+      "kind": "text",
+      "isoId": "_YYU649p-Ed-ak6NoX_4Aeg_-996165274",
+      "pattern": "[0-9]{1,3}"
+    },
+    "MessageFunction11Code": {
+      "name": "MessageFunction11Code",
+      "isoId": "_evJWQa1xEeWMg5rOByfExw",
+      "kind": "code",
+      "options": [
+        {
+          "value": "ACMD",
+          "name": "ATMControl",
+          "isoId": "_e61o561xEeWMg5rOByfExw"
+        },
+        {
+          "value": "BALN",
+          "name": "ATMBalance",
+          "isoId": "_e61o4a1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "CMPA",
+          "name": "ATMCompletionAcknowledgement",
+          "isoId": "_e61o461xEeWMg5rOByfExw"
+        },
+        {
+          "value": "CMPD",
+          "name": "ATMCompletionAdvice",
+          "isoId": "_e61o5a1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "CSEC",
+          "name": "SecurityControl",
+          "isoId": "_e61pEa1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "DIAP",
+          "name": "ATMDiagnosticResponse",
+          "isoId": "_e61o7a1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "DIAQ",
+          "name": "ATMDiagnosticRequest",
+          "isoId": "_e61o661xEeWMg5rOByfExw"
+        },
+        {
+          "value": "DPSK",
+          "name": "ATMDepositCompletionAcknowledgement",
+          "isoId": "_lLyCga1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "DPSP",
+          "name": "ATMDepositResponse",
+          "isoId": "_lmAgYa1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "DPSQ",
+          "name": "ATMDepositRequest",
+          "isoId": "_ld0Nsa1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "DPSV",
+          "name": "ATMDepositCompletionAdvice",
+          "isoId": "_lT-VMa1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "DSEC",
+          "name": "SecurityDetails",
+          "isoId": "_e61pE61xEeWMg5rOByfExw"
+        },
+        {
+          "value": "DVCC",
+          "name": "ATMDeviceControl",
+          "isoId": "_e61o6a1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "EXPK",
+          "name": "ATMExceptionAcknowledgement",
+          "isoId": "_mGqWYa1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "EXPV",
+          "name": "ATMExceptionAdvice",
+          "isoId": "_mOakMa1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "GSTS",
+          "name": "ATMGlobalStatus",
+          "isoId": "_e61o761xEeWMg5rOByfExw"
+        },
+        {
+          "value": "H2AP",
+          "name": "HostToATMAcknowledgement",
+          "isoId": "_e61pC61xEeWMg5rOByfExw"
+        },
+        {
+          "value": "H2AQ",
+          "name": "HostToATMRequest",
+          "isoId": "_e61pDa1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "INQC",
+          "name": "CountersInquiry",
+          "isoId": "_e61pCa1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "INQP",
+          "name": "ATMInquiryResponse",
+          "isoId": "_e61o861xEeWMg5rOByfExw"
+        },
+        {
+          "value": "INQQ",
+          "name": "ATMInquiryRequest",
+          "isoId": "_e61o8a1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "KYAP",
+          "name": "ATMKeyDownloadResponse",
+          "isoId": "_e61o961xEeWMg5rOByfExw"
+        },
+        {
+          "value": "KYAQ",
+          "name": "ATMKeyDownloadRequest",
+          "isoId": "_e61o9a1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "PINP",
+          "name": "ATMPINManagementResponse",
+          "isoId": "_e61o-61xEeWMg5rOByfExw"
+        },
+        {
+          "value": "PINQ",
+          "name": "ATMPINManagementRequest",
+          "isoId": "_e61o-a1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "RJAP",
+          "name": "ATMResponseReject",
+          "isoId": "_e61o_61xEeWMg5rOByfExw"
+        },
+        {
+          "value": "RJAQ",
+          "name": "ATMRequestReject",
+          "isoId": "_e61o_a1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "RPTC",
+          "name": "CountersReport",
+          "isoId": "_rsA1Ua1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "SKSC",
+          "name": "SecurityKeyCompletion",
+          "isoId": "_e61pFa1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "SSTS",
+          "name": "SecurityKeyStatus",
+          "isoId": "_e61pF61xEeWMg5rOByfExw"
+        },
+        {
+          "value": "TMOP",
+          "name": "ATMOperation",
+          "isoId": "_e61pD61xEeWMg5rOByfExw"
+        },
+        {
+          "value": "TRFP",
+          "name": "ATMTransferResponse",
+          "isoId": "_oCFhQa1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "TRFQ",
+          "name": "ATMTransferRequest",
+          "isoId": "_n5vdka1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "WITK",
+          "name": "ATMWithdrawalAknowledgement",
+          "isoId": "_e61pA61xEeWMg5rOByfExw"
+        },
+        {
+          "value": "WITP",
+          "name": "ATMWithdrawalResponse",
+          "isoId": "_e61pB61xEeWMg5rOByfExw"
+        },
+        {
+          "value": "WITQ",
+          "name": "ATMWithdrawalRequest",
+          "isoId": "_e61pBa1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "WITV",
+          "name": "ATMWithdrawalAdvice",
+          "isoId": "_e61pAa1xEeWMg5rOByfExw"
+        }
+      ]
+    },
+    "ATMMessageFunction2": {
+      "name": "ATMMessageFunction2",
+      "isoId": "_nymwQa1wEeWMg5rOByfExw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "ATMServiceCode",
+          "isoId": "_n-hsY61wEeWMg5rOByfExw",
+          "xmlTag": "ATMSvcCd",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Function",
+          "isoId": "_n-hsYa1wEeWMg5rOByfExw",
+          "xmlTag": "Fctn",
+          "type": "MessageFunction11Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "HostServiceCode",
+          "isoId": "_n-hsZa1wEeWMg5rOByfExw",
+          "xmlTag": "HstSvcCd",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "Max6Text": {
+      "name": "Max6Text",
+      "kind": "text",
+      "isoId": "_YYxm2dp-Ed-ak6NoX_4Aeg_-1496274846",
+      "minLength": 1,
+      "maxLength": 6
+    },
+    "Min2Max3AlphaText": {
+      "name": "Min2Max3AlphaText",
+      "kind": "text",
+      "isoId": "_4qROcGeeEeSh-d9-KfCEyA",
+      "pattern": "[a-zA-Z]{2,3}"
+    },
+    "PartyType12Code": {
+      "name": "PartyType12Code",
+      "isoId": "_oci7cIn0EeS9F4Qrq_eaVA",
+      "kind": "code",
+      "options": [
+        {
+          "value": "ACQR",
+          "name": "Acquirer",
+          "isoId": "_rAuvcYn0EeS9F4Qrq_eaVA"
+        },
+        {
+          "value": "ATMG",
+          "name": "ATMManager",
+          "isoId": "_rM8mg4n0EeS9F4Qrq_eaVA"
+        },
+        {
+          "value": "CISP",
+          "name": "CardIssuerProcessor",
+          "isoId": "_r0egk4n0EeS9F4Qrq_eaVA"
+        },
+        {
+          "value": "DLIS",
+          "name": "DelegateIssuer",
+          "isoId": "_sAb484n0EeS9F4Qrq_eaVA"
+        },
+        {
+          "value": "HSTG",
+          "name": "HostingEntity",
+          "isoId": "_s-0Mw4n0EeS9F4Qrq_eaVA"
+        },
+        {
+          "value": "ITAG",
+          "name": "IntermediaryAgent",
+          "isoId": "_tIgUQ4n0EeS9F4Qrq_eaVA"
+        },
+        {
+          "value": "OATM",
+          "name": "OriginatingATM",
+          "isoId": "_t-Q3k4n0EeS9F4Qrq_eaVA"
+        }
+      ]
+    },
+    "GenericIdentification77": {
+      "name": "GenericIdentification77",
+      "isoId": "_wVGBgYnzEeS9F4Qrq_eaVA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Country",
+          "isoId": "_wh5ud4nzEeS9F4Qrq_eaVA",
+          "xmlTag": "Ctry",
+          "type": "Min2Max3AlphaText",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Identification",
+          "isoId": "_wh5ucYnzEeS9F4Qrq_eaVA",
+          "xmlTag": "Id",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "isoId": "_wh5udYnzEeS9F4Qrq_eaVA",
+          "xmlTag": "Issr",
+          "type": "PartyType12Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ShortName",
+          "isoId": "_wh5ueYnzEeS9F4Qrq_eaVA",
+          "xmlTag": "ShrtNm",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Type",
+          "isoId": "_wh5uc4nzEeS9F4Qrq_eaVA",
+          "xmlTag": "Tp",
+          "type": "PartyType12Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Traceability4": {
+      "name": "Traceability4",
+      "isoId": "_iwOuUYnzEeS9F4Qrq_eaVA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "RelayIdentification",
+          "isoId": "_i854YYnzEeS9F4Qrq_eaVA",
+          "xmlTag": "RlayId",
+          "type": "GenericIdentification77",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SequenceNumber",
+          "isoId": "_rXzs8Cq5EeWRf8RNsvC5fQ",
+          "xmlTag": "SeqNb",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TraceDateTimeIn",
+          "isoId": "_i854Y4nzEeS9F4Qrq_eaVA",
+          "xmlTag": "TracDtTmIn",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "TraceDateTimeOut",
+          "isoId": "_i854ZYnzEeS9F4Qrq_eaVA",
+          "xmlTag": "TracDtTmOut",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Header31": {
+      "name": "Header31",
+      "isoId": "_eMl4Qa1wEeWMg5rOByfExw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "CreationDateTime",
+          "isoId": "_eYzvV61wEeWMg5rOByfExw",
+          "xmlTag": "CreDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ExchangeIdentification",
+          "isoId": "_eYzvVa1wEeWMg5rOByfExw",
+          "xmlTag": "XchgId",
+          "type": "Max3NumericText",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "InitiatingParty",
+          "isoId": "_eYzvWa1wEeWMg5rOByfExw",
+          "xmlTag": "InitgPty",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "MessageFunction",
+          "isoId": "_eYzvUa1wEeWMg5rOByfExw",
+          "xmlTag": "MsgFctn",
+          "type": "ATMMessageFunction2",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ProcessState",
+          "isoId": "_eYzvXa1wEeWMg5rOByfExw",
+          "xmlTag": "PrcStat",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ProtocolVersion",
+          "isoId": "_eYzvU61wEeWMg5rOByfExw",
+          "xmlTag": "PrtcolVrsn",
+          "type": "Max6Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "RecipientParty",
+          "isoId": "_eYzvW61wEeWMg5rOByfExw",
+          "xmlTag": "RcptPty",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Traceability",
+          "isoId": "_eYzvX61wEeWMg5rOByfExw",
+          "xmlTag": "Tracblt",
+          "type": "Traceability4",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    },
+    "ContentType2Code": {
+      "name": "ContentType2Code",
+      "isoId": "_gQ7oMWizEeS87LmvcA55sg",
+      "kind": "code",
+      "options": [
+        {
+          "value": "AUTH",
+          "name": "AuthenticatedData",
+          "isoId": "_gd_z22izEeS87LmvcA55sg"
+        },
+        {
+          "value": "DATA",
+          "name": "PlainData",
+          "isoId": "_gd_z0WizEeS87LmvcA55sg"
+        },
+        {
+          "value": "DGST",
+          "name": "DigestedData",
+          "isoId": "_gd_z12izEeS87LmvcA55sg"
+        },
+        {
+          "value": "EVLP",
+          "name": "EnvelopedData",
+          "isoId": "_gd_z1WizEeS87LmvcA55sg"
+        },
+        {
+          "value": "SIGN",
+          "name": "SignedData",
+          "isoId": "_gd_z02izEeS87LmvcA55sg"
+        }
+      ]
+    },
+    "Algorithm15Code": {
+      "name": "Algorithm15Code",
+      "isoId": "_-7tyIWjBEeSP8Z8nx8HTuQ",
+      "kind": "code",
+      "options": [
+        {
+          "value": "E3DC",
+          "name": "DES112CBC",
+          "isoId": "__IaKU2jBEeSP8Z8nx8HTuQ"
+        },
+        {
+          "value": "EA2C",
+          "name": "AES128CBC",
+          "isoId": "__IaKUWjBEeSP8Z8nx8HTuQ"
+        },
+        {
+          "value": "EA5C",
+          "name": "AES256CBC",
+          "isoId": "_DeJbgWjCEeSP8Z8nx8HTuQ"
+        },
+        {
+          "value": "EA9C",
+          "name": "AES192CBC",
+          "isoId": "_DT3eIWjCEeSP8Z8nx8HTuQ"
+        }
+      ]
+    },
+    "BytePadding1Code": {
+      "name": "BytePadding1Code",
+      "isoId": "_zBfYoGi9EeS87LmvcA55sg",
+      "kind": "code",
+      "options": [
+        {
+          "value": "LNGT",
+          "name": "LengthPadding",
+          "isoId": "_3sV-MWi9EeS87LmvcA55sg"
+        },
+        {
+          "value": "NUL8",
+          "name": "Null80Padding",
+          "isoId": "_3x6asWi9EeS87LmvcA55sg"
+        },
+        {
+          "value": "NULG",
+          "name": "NullLengthPadding",
+          "isoId": "_344lYWi9EeS87LmvcA55sg"
+        },
+        {
+          "value": "NULL",
+          "name": "NullPadding",
+          "isoId": "_3-_NYWi9EeS87LmvcA55sg"
+        },
+        {
+          "value": "RAND",
+          "name": "RandomPadding",
+          "isoId": "_4Hdz8Wi9EeS87LmvcA55sg"
+        }
+      ]
+    },
+    "EncryptionFormat1Code": {
+      "name": "EncryptionFormat1Code",
+      "isoId": "_IJtXQGi4EeS87LmvcA55sg",
+      "kind": "code",
+      "options": [
+        {
+          "value": "TR31",
+          "name": "TR31",
+          "isoId": "_KUksUGi4EeS87LmvcA55sg"
+        },
+        {
+          "value": "TR34",
+          "name": "TR34",
+          "isoId": "_KfMn8Wi4EeS87LmvcA55sg"
+        }
+      ]
+    },
+    "Max500Binary": {
+      "name": "Max500Binary",
+      "kind": "text",
+      "isoId": "_TQbTygEcEeCQm6a_G2yO_w_-1786895632",
+      "maxLength": 500
+    },
+    "Parameter6": {
+      "name": "Parameter6",
+      "isoId": "_jKs7kWi8EeS87LmvcA55sg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "BytePadding",
+          "isoId": "_67hP8Gi9EeS87LmvcA55sg",
+          "xmlTag": "BPddg",
+          "type": "BytePadding1Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "EncryptionFormat",
+          "isoId": "_1Fd4AGi8EeS87LmvcA55sg",
+          "xmlTag": "NcrptnFrmt",
+          "type": "EncryptionFormat1Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "InitialisationVector",
+          "isoId": "_jXzjcWi8EeS87LmvcA55sg",
+          "xmlTag": "InitlstnVctr",
+          "type": "Max500Binary",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "AlgorithmIdentification14": {
+      "name": "AlgorithmIdentification14",
+      "isoId": "_IHpysWjBEeSP8Z8nx8HTuQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Algorithm",
+          "isoId": "_IUswMWjBEeSP8Z8nx8HTuQ",
+          "xmlTag": "Algo",
+          "type": "Algorithm15Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Parameter",
+          "isoId": "_IUswM2jBEeSP8Z8nx8HTuQ",
+          "xmlTag": "Param",
+          "type": "Parameter6",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "Max100KBinary": {
+      "name": "Max100KBinary",
+      "kind": "text",
+      "isoId": "_TQRizgEcEeCQm6a_G2yO_w_-1416376531",
+      "maxLength": 102400
+    },
+    "EncryptedContent3": {
+      "name": "EncryptedContent3",
+      "isoId": "_tsmQMWjAEeSP8Z8nx8HTuQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "ContentEncryptionAlgorithm",
+          "isoId": "_t6HHw2jAEeSP8Z8nx8HTuQ",
+          "xmlTag": "CnttNcrptnAlgo",
+          "type": "AlgorithmIdentification14",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ContentType",
+          "isoId": "_t6HHwWjAEeSP8Z8nx8HTuQ",
+          "xmlTag": "CnttTp",
+          "type": "ContentType2Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "EncryptedData",
+          "isoId": "_t6HHxWjAEeSP8Z8nx8HTuQ",
+          "xmlTag": "NcrptdData",
+          "type": "Max100KBinary",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Min5Max16Binary": {
+      "name": "Min5Max16Binary",
+      "kind": "text",
+      "isoId": "_TQlExAEcEeCQm6a_G2yO_w_-1295689418",
+      "maxLength": 16
+    },
+    "Max140Text": {
+      "name": "Max140Text",
+      "kind": "text",
+      "isoId": "_YXlUAtp-Ed-ak6NoX_4Aeg_2103068114",
+      "minLength": 1,
+      "maxLength": 140
+    },
+    "Number": {
+      "name": "Number",
+      "kind": "number",
+      "isoId": "_YXbjBtp-Ed-ak6NoX_4Aeg_1560899033",
+      "totalDigits": 18,
+      "fractionDigits": 0
+    },
+    "KEKIdentifier2": {
+      "name": "KEKIdentifier2",
+      "isoId": "_RmrIUWi1EeS87LmvcA55sg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "DerivationIdentification",
+          "isoId": "_RzjGtWi1EeS87LmvcA55sg",
+          "xmlTag": "DerivtnId",
+          "type": "Min5Max16Binary",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "KeyIdentification",
+          "isoId": "_RzjGsWi1EeS87LmvcA55sg",
+          "xmlTag": "KeyId",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "KeyVersion",
+          "isoId": "_RzjGs2i1EeS87LmvcA55sg",
+          "xmlTag": "KeyVrsn",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SequenceNumber",
+          "isoId": "_riRHoGi1EeS87LmvcA55sg",
+          "xmlTag": "SeqNb",
+          "type": "Number",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "Algorithm13Code": {
+      "name": "Algorithm13Code",
+      "isoId": "_lh7HEWi7EeS87LmvcA55sg",
+      "kind": "code",
+      "options": [
+        {
+          "value": "DKP9",
+          "name": "DUKPT2009",
+          "isoId": "_lu-ElWi7EeS87LmvcA55sg"
+        },
+        {
+          "value": "E3DC",
+          "name": "DES112CBC",
+          "isoId": "_lu-Ek2i7EeS87LmvcA55sg"
+        },
+        {
+          "value": "EA2C",
+          "name": "AES128CBC",
+          "isoId": "_lu-EkWi7EeS87LmvcA55sg"
+        },
+        {
+          "value": "EA5C",
+          "name": "AES256CBC",
+          "isoId": "_TfXrIWi8EeS87LmvcA55sg"
+        },
+        {
+          "value": "EA9C",
+          "name": "AES192CBC",
+          "isoId": "_TZJuYWi8EeS87LmvcA55sg"
+        },
+        {
+          "value": "UKA1",
+          "name": "UKPTwithAES128",
+          "isoId": "_lu-EmWi7EeS87LmvcA55sg"
+        },
+        {
+          "value": "UKPT",
+          "name": "UKPT",
+          "isoId": "_lu-El2i7EeS87LmvcA55sg"
+        }
+      ]
+    },
+    "AlgorithmIdentification13": {
+      "name": "AlgorithmIdentification13",
+      "isoId": "_ocQmsWi6EeS87LmvcA55sg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Algorithm",
+          "isoId": "_opqJgWi6EeS87LmvcA55sg",
+          "xmlTag": "Algo",
+          "type": "Algorithm13Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Parameter",
+          "isoId": "_opqwkGi6EeS87LmvcA55sg",
+          "xmlTag": "Param",
+          "type": "Parameter6",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "KEK4": {
+      "name": "KEK4",
+      "isoId": "_Hf56YWi6EeS87LmvcA55sg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "EncryptedKey",
+          "isoId": "_Hs9e92i6EeS87LmvcA55sg",
+          "xmlTag": "NcrptdKey",
+          "type": "Max500Binary",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "KEKIdentification",
+          "isoId": "_Hs9e82i6EeS87LmvcA55sg",
+          "xmlTag": "KEKId",
+          "type": "KEKIdentifier2",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "KeyEncryptionAlgorithm",
+          "isoId": "_Hs9e9Wi6EeS87LmvcA55sg",
+          "xmlTag": "KeyNcrptnAlgo",
+          "type": "AlgorithmIdentification13",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Version",
+          "isoId": "_Hs9e8Wi6EeS87LmvcA55sg",
+          "xmlTag": "Vrsn",
+          "type": "Number",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "Max5000Binary": {
+      "name": "Max5000Binary",
+      "kind": "text",
+      "isoId": "_TQbTyQEcEeCQm6a_G2yO_w_-655974114",
+      "maxLength": 5000
+    },
+    "Algorithm7Code": {
+      "name": "Algorithm7Code",
+      "isoId": "_FLfa8AmFEeKKaIHo7gv4XA",
+      "kind": "code",
+      "options": [
+        {
+          "value": "ERSA",
+          "name": "RSAEncryption",
+          "isoId": "_NyQccQmFEeKKaIHo7gv4XA"
+        },
+        {
+          "value": "RSAO",
+          "name": "RSAES-OAEP",
+          "isoId": "_OC6uoQmFEeKKaIHo7gv4XA"
+        }
+      ]
+    },
+    "Algorithm11Code": {
+      "name": "Algorithm11Code",
+      "isoId": "_x-PlMWi4EeS87LmvcA55sg",
+      "kind": "code",
+      "options": [
+        {
+          "value": "HS01",
+          "name": "SHA1",
+          "isoId": "_I6AWUWi5EeS87LmvcA55sg"
+        },
+        {
+          "value": "HS25",
+          "name": "SHA256",
+          "isoId": "_yLO4UWi4EeS87LmvcA55sg"
+        },
+        {
+          "value": "HS38",
+          "name": "SHA384",
+          "isoId": "_yLO4U2i4EeS87LmvcA55sg"
+        },
+        {
+          "value": "HS51",
+          "name": "SHA512",
+          "isoId": "_yLO4VWi4EeS87LmvcA55sg"
+        }
+      ]
+    },
+    "Algorithm8Code": {
+      "name": "Algorithm8Code",
+      "isoId": "_TdaocAmFEeKKaIHo7gv4XA",
+      "kind": "code",
+      "options": [
+        {
+          "value": "MGF1",
+          "name": "MGF1",
+          "isoId": "_Z4B7cQmFEeKKaIHo7gv4XA"
+        }
+      ]
+    },
+    "Parameter5": {
+      "name": "Parameter5",
+      "isoId": "_fKsxMWi5EeS87LmvcA55sg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "DigestAlgorithm",
+          "isoId": "_fX1OQWi5EeS87LmvcA55sg",
+          "xmlTag": "DgstAlgo",
+          "type": "Algorithm11Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "AlgorithmIdentification12": {
+      "name": "AlgorithmIdentification12",
+      "isoId": "_TH2DUWi5EeS87LmvcA55sg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Algorithm",
+          "isoId": "_TUzhQWi5EeS87LmvcA55sg",
+          "xmlTag": "Algo",
+          "type": "Algorithm8Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Parameter",
+          "isoId": "_TU0IUWi5EeS87LmvcA55sg",
+          "xmlTag": "Param",
+          "type": "Parameter5",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "Parameter4": {
+      "name": "Parameter4",
+      "isoId": "_T2MB8Wi3EeS87LmvcA55sg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "DigestAlgorithm",
+          "isoId": "_UDGckWi3EeS87LmvcA55sg",
+          "xmlTag": "DgstAlgo",
+          "type": "Algorithm11Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "EncryptionFormat",
+          "isoId": "_TVZzoGi4EeS87LmvcA55sg",
+          "xmlTag": "NcrptnFrmt",
+          "type": "EncryptionFormat1Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "MaskGeneratorAlgorithm",
+          "isoId": "_UDGck2i3EeS87LmvcA55sg",
+          "xmlTag": "MskGnrtrAlgo",
+          "type": "AlgorithmIdentification12",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "AlgorithmIdentification11": {
+      "name": "AlgorithmIdentification11",
+      "isoId": "_edXRcWi2EeS87LmvcA55sg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Algorithm",
+          "isoId": "_esAKYWi2EeS87LmvcA55sg",
+          "xmlTag": "Algo",
+          "type": "Algorithm7Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Parameter",
+          "isoId": "_esAKY2i2EeS87LmvcA55sg",
+          "xmlTag": "Param",
+          "type": "Parameter4",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "AttributeType1Code": {
+      "name": "AttributeType1Code",
+      "isoId": "_TSEShwEcEeCQm6a_G2yO_w_1647054539",
+      "kind": "code",
+      "options": [
+        {
+          "value": "CATT",
+          "name": "CountryName",
+          "isoId": "_TSESjAEcEeCQm6a_G2yO_w_189442098"
+        },
+        {
+          "value": "CNAT",
+          "name": "CommonName",
+          "isoId": "_TSESiAEcEeCQm6a_G2yO_w_399531534"
+        },
+        {
+          "value": "LATT",
+          "name": "Locality",
+          "isoId": "_TSESiQEcEeCQm6a_G2yO_w_807359888"
+        },
+        {
+          "value": "OATT",
+          "name": "OrganisationName",
+          "isoId": "_TSESigEcEeCQm6a_G2yO_w_-1550382235"
+        },
+        {
+          "value": "OUAT",
+          "name": "OrganisationUnitName",
+          "isoId": "_TSESiwEcEeCQm6a_G2yO_w_-2013772510"
+        }
+      ]
+    },
+    "RelativeDistinguishedName1": {
+      "name": "RelativeDistinguishedName1",
+      "isoId": "_Sw--ugEcEeCQm6a_G2yO_w_-2086938163",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "AttributeType",
+          "isoId": "_Sw--uwEcEeCQm6a_G2yO_w_2126667271",
+          "xmlTag": "AttrTp",
+          "type": "AttributeType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "AttributeValue",
+          "isoId": "_Sw--vAEcEeCQm6a_G2yO_w_-1820514760",
+          "xmlTag": "AttrVal",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "CertificateIssuer1": {
+      "name": "CertificateIssuer1",
+      "isoId": "_Sw--vQEcEeCQm6a_G2yO_w_152932975",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "RelativeDistinguishedName",
+          "isoId": "_SxIvsAEcEeCQm6a_G2yO_w_1329577257",
+          "xmlTag": "RltvDstngshdNm",
+          "type": "RelativeDistinguishedName1",
+          "kind": "component",
+          "min": 1,
+          "max": null
+        }
+      ]
+    },
+    "Max35Binary": {
+      "name": "Max35Binary",
+      "kind": "text",
+      "isoId": "_TQbTxQEcEeCQm6a_G2yO_w_-1886160012",
+      "maxLength": 35
+    },
+    "IssuerAndSerialNumber1": {
+      "name": "IssuerAndSerialNumber1",
+      "isoId": "_SxIvsQEcEeCQm6a_G2yO_w_-65882528",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Issuer",
+          "isoId": "_SxIvsgEcEeCQm6a_G2yO_w_1368507280",
+          "xmlTag": "Issr",
+          "type": "CertificateIssuer1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SerialNumber",
+          "isoId": "_SxIvswEcEeCQm6a_G2yO_w_683840175",
+          "xmlTag": "SrlNb",
+          "type": "Max35Binary",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Recipient5Choice": {
+      "name": "Recipient5Choice",
+      "isoId": "_0DRU0Wi0EeS87LmvcA55sg",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "IssuerAndSerialNumber",
+          "isoId": "_HdnNoGi1EeS87LmvcA55sg",
+          "xmlTag": "IssrAndSrlNb",
+          "type": "IssuerAndSerialNumber1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "KeyIdentifier",
+          "isoId": "_0QOLtWi0EeS87LmvcA55sg",
+          "xmlTag": "KeyIdr",
+          "type": "KEKIdentifier2",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "KeyTransport4": {
+      "name": "KeyTransport4",
+      "isoId": "_e-hIoWi0EeS87LmvcA55sg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "EncryptedKey",
+          "isoId": "_fLktN2i0EeS87LmvcA55sg",
+          "xmlTag": "NcrptdKey",
+          "type": "Max5000Binary",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "KeyEncryptionAlgorithm",
+          "isoId": "_fLktNWi0EeS87LmvcA55sg",
+          "xmlTag": "KeyNcrptnAlgo",
+          "type": "AlgorithmIdentification11",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "RecipientIdentification",
+          "isoId": "_fLktM2i0EeS87LmvcA55sg",
+          "xmlTag": "RcptId",
+          "type": "Recipient5Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Version",
+          "isoId": "_fLktMWi0EeS87LmvcA55sg",
+          "xmlTag": "Vrsn",
+          "type": "Number",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "Recipient4Choice": {
+      "name": "Recipient4Choice",
+      "isoId": "_NoPZUWi0EeS87LmvcA55sg",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "KEK",
+          "isoId": "_N1aSo2i0EeS87LmvcA55sg",
+          "xmlTag": "KEK",
+          "type": "KEK4",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "KeyIdentifier",
+          "isoId": "_N1aSpWi0EeS87LmvcA55sg",
+          "xmlTag": "KeyIdr",
+          "type": "KEKIdentifier2",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "KeyTransport",
+          "isoId": "_N1aSoWi0EeS87LmvcA55sg",
+          "xmlTag": "KeyTrnsprt",
+          "type": "KeyTransport4",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "EnvelopedData4": {
+      "name": "EnvelopedData4",
+      "isoId": "_vJy54WizEeS87LmvcA55sg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "EncryptedContent",
+          "isoId": "_vXG9JWizEeS87LmvcA55sg",
+          "xmlTag": "NcrptdCntt",
+          "type": "EncryptedContent3",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Recipient",
+          "isoId": "_vXG9I2izEeS87LmvcA55sg",
+          "xmlTag": "Rcpt",
+          "type": "Recipient4Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": null
+        },
+        {
+          "name": "Version",
+          "isoId": "_vXG9IWizEeS87LmvcA55sg",
+          "xmlTag": "Vrsn",
+          "type": "Number",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "ContentInformationType10": {
+      "name": "ContentInformationType10",
+      "isoId": "_UfeMUWizEeS87LmvcA55sg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "ContentType",
+          "isoId": "_Us-c0WizEeS87LmvcA55sg",
+          "xmlTag": "CnttTp",
+          "type": "ContentType2Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "EnvelopedData",
+          "isoId": "_Us-c02izEeS87LmvcA55sg",
+          "xmlTag": "EnvlpdData",
+          "type": "EnvelopedData4",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "EncapsulatedContent3": {
+      "name": "EncapsulatedContent3",
+      "isoId": "_tmwjwWkJEeS7zPBpvm732w",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Content",
+          "isoId": "_tz6O82kJEeS7zPBpvm732w",
+          "xmlTag": "Cntt",
+          "type": "Max100KBinary",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ContentType",
+          "isoId": "_tz6O8WkJEeS7zPBpvm732w",
+          "xmlTag": "CnttTp",
+          "type": "ContentType2Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Max140Binary": {
+      "name": "Max140Binary",
+      "kind": "text",
+      "isoId": "_TQbTwgEcEeCQm6a_G2yO_w_-323033513",
+      "maxLength": 140
+    },
+    "Algorithm12Code": {
+      "name": "Algorithm12Code",
+      "isoId": "_h6npMWi7EeS87LmvcA55sg",
+      "kind": "code",
+      "options": [
+        {
+          "value": "CMA1",
+          "name": "SHA256CMACwithAES128",
+          "isoId": "_iHlHJWi7EeS87LmvcA55sg"
+        },
+        {
+          "value": "CMA5",
+          "name": "SHA512CMACwithAES256",
+          "isoId": "_Ew-kEWi8EeS87LmvcA55sg"
+        },
+        {
+          "value": "CMA9",
+          "name": "SHA384CMACwithAES192",
+          "isoId": "_DoWIEWi8EeS87LmvcA55sg"
+        },
+        {
+          "value": "MACC",
+          "name": "RetailCBCMAC",
+          "isoId": "_iHlHIWi7EeS87LmvcA55sg"
+        },
+        {
+          "value": "MCC1",
+          "name": "RetailSHA1MAC",
+          "isoId": "_BK51QWi8EeS87LmvcA55sg"
+        },
+        {
+          "value": "MCCS",
+          "name": "RetailSHA256MAC",
+          "isoId": "_iHlHI2i7EeS87LmvcA55sg"
+        }
+      ]
+    },
+    "Parameter7": {
+      "name": "Parameter7",
+      "isoId": "_PrnlsWkJEeS7zPBpvm732w",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "BytePadding",
+          "isoId": "_fwDSoGkJEeS7zPBpvm732w",
+          "xmlTag": "BPddg",
+          "type": "BytePadding1Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "InitialisationVector",
+          "isoId": "_P4zGEWkJEeS7zPBpvm732w",
+          "xmlTag": "InitlstnVctr",
+          "type": "Max500Binary",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "AlgorithmIdentification15": {
+      "name": "AlgorithmIdentification15",
+      "isoId": "__YZO0WkIEeS7zPBpvm732w",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Algorithm",
+          "isoId": "__ll9UWkIEeS7zPBpvm732w",
+          "xmlTag": "Algo",
+          "type": "Algorithm12Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Parameter",
+          "isoId": "__ll9U2kIEeS7zPBpvm732w",
+          "xmlTag": "Param",
+          "type": "Parameter7",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "AuthenticatedData4": {
+      "name": "AuthenticatedData4",
+      "isoId": "_lguGMGkIEeS7zPBpvm732w",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "EncapsulatedContent",
+          "isoId": "_lty452kIEeS7zPBpvm732w",
+          "xmlTag": "NcpsltdCntt",
+          "type": "EncapsulatedContent3",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "MAC",
+          "isoId": "_lty46WkIEeS7zPBpvm732w",
+          "xmlTag": "MAC",
+          "type": "Max140Binary",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "MACAlgorithm",
+          "isoId": "_lty45WkIEeS7zPBpvm732w",
+          "xmlTag": "MACAlgo",
+          "type": "AlgorithmIdentification15",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Recipient",
+          "isoId": "_lty442kIEeS7zPBpvm732w",
+          "xmlTag": "Rcpt",
+          "type": "Recipient4Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": null
+        },
+        {
+          "name": "Version",
+          "isoId": "_lty44WkIEeS7zPBpvm732w",
+          "xmlTag": "Vrsn",
+          "type": "Number",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "ContentInformationType15": {
+      "name": "ContentInformationType15",
+      "isoId": "_uSOuUCrHEeWRf8RNsvC5fQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "AuthenticatedData",
+          "isoId": "_udKL8yrHEeWRf8RNsvC5fQ",
+          "xmlTag": "AuthntcdData",
+          "type": "AuthenticatedData4",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ContentType",
+          "isoId": "_udKL8SrHEeWRf8RNsvC5fQ",
+          "xmlTag": "CnttTp",
+          "type": "ContentType2Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ATMDiagnosticRequestV03": {
+      "name": "ATMDiagnosticRequestV03",
+      "isoId": "_h37q0aFCEe-MRKYsaX6JDg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "ATMDiagnosticRequest",
+          "isoId": "_h37q16FCEe-MRKYsaX6JDg",
+          "xmlTag": "ATMDgnstcReq",
+          "type": "ATMDiagnosticRequest3",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Header",
+          "isoId": "_h37q06FCEe-MRKYsaX6JDg",
+          "xmlTag": "Hdr",
+          "type": "Header31",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ProtectedATMDiagnosticRequest",
+          "isoId": "_h37q1aFCEe-MRKYsaX6JDg",
+          "xmlTag": "PrtctdATMDgnstcReq",
+          "type": "ContentInformationType10",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SecurityTrailer",
+          "isoId": "_h37q2aFCEe-MRKYsaX6JDg",
+          "xmlTag": "SctyTrlr",
+          "type": "ContentInformationType15",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    }
+  }
+}

@@ -77,6 +77,7 @@ import {
   DateAndDateTime2ChoiceSchema,
   ActiveCurrencyAndAmountSchema,
   ChargeBearerType1CodeSchema,
+  ActiveCurrencyCodeSchema,
   BaseOneRateSchema,
   ActiveOrHistoricCurrencyCodeSchema,
   EquivalentAmount2Schema,
@@ -187,8 +188,6 @@ export const GroupHeader128Schema = z.strictObject({
   CreditorAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
 });
 
-export const ActiveCurrencyCodeSchema = textType({pattern: "[A-Z]{3,3}"});
-
 export const CurrencyExchange13Schema = z.strictObject({
   SourceCurrency: ActiveCurrencyCodeSchema,
   TargetCurrency: ActiveCurrencyCodeSchema,
@@ -257,12 +256,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "DebtorAgent", isoId: "_6jjJaTEyEe6g-ffJsqGiSA", xmlTag: "DbtrAgt", displayName: displayName("DebtorAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
       f({ name: "CreditorAgent", isoId: "_6jjJazEyEe6g-ffJsqGiSA", xmlTag: "CdtrAgt", displayName: displayName("CreditorAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
     ],
-  },
-  "ActiveCurrencyCode": {
-    name: "ActiveCurrencyCode",
-    isoId: "_bqIp5tp-Ed-ak6NoX_4Aeg_-1326801359",
-    kind: "code",
-    pattern: "[A-Z]{3,3}",
   },
   "CurrencyExchange13": {
     name: "CurrencyExchange13",
@@ -421,6 +414,7 @@ export const typeDescriptors: TypeDescriptors = {
   "DateAndDateTime2Choice": sharedTypeDescriptors["DateAndDateTime2Choice"]!,
   "ActiveCurrencyAndAmount": sharedTypeDescriptors["ActiveCurrencyAndAmount"]!,
   "ChargeBearerType1Code": sharedTypeDescriptors["ChargeBearerType1Code"]!,
+  "ActiveCurrencyCode": sharedTypeDescriptors["ActiveCurrencyCode"]!,
   "BaseOneRate": sharedTypeDescriptors["BaseOneRate"]!,
   "ActiveOrHistoricCurrencyCode": sharedTypeDescriptors["ActiveOrHistoricCurrencyCode"]!,
   "EquivalentAmount2": sharedTypeDescriptors["EquivalentAmount2"]!,

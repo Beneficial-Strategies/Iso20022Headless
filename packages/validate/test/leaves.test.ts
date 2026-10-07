@@ -103,7 +103,7 @@ describe.each(bundles.map((b) => b.message))('every leaf is validated in $identi
 
   it('checks both parts of every amount', () => {
     const amounts = leaves.filter((l) => l.type.kind === 'amount');
-    expect(amounts.length).toBeGreaterThan(0);
+    // most ATM messages carry no currency amount, so there may be none to check
     for (const a of amounts) {
       expect(reported(message.schema, nest(a.path, { Ccy: 'eur', Value: '1' }))).toContain([...a.path, 'Ccy'].join('.'));
       expect(reported(message.schema, nest(a.path, { Ccy: 'EUR', Value: 'abc' }))).toContain([...a.path, 'Value'].join('.'));

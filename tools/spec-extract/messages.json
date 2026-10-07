@@ -150,5 +150,133 @@
     "bodyTag": "MulSttlmReq",
     "out": "pacs029",
     "dir": "pacs029-v02"
+  },
+  {
+    "name": "ATMDeviceReportV05",
+    "id": "_ab22kbXuEfCUZfsQO4rYeA",
+    "identifier": "caam.001.001.05",
+    "bodyTag": "ATMDvcRpt",
+    "out": "caam001",
+    "dir": "caam001-v05"
+  },
+  {
+    "name": "ATMDeviceControlV04",
+    "id": "_RxMQwaFCEe-MRKYsaX6JDg",
+    "identifier": "caam.002.001.04",
+    "bodyTag": "ATMDvcCtrl",
+    "out": "caam002",
+    "dir": "caam002-v04"
+  },
+  {
+    "name": "ATMKeyDownloadRequestV05",
+    "id": "_e_hPAbXuEfCUZfsQO4rYeA",
+    "identifier": "caam.003.001.05",
+    "bodyTag": "ATMKeyDwnldReq",
+    "out": "caam003",
+    "dir": "caam003-v05"
+  },
+  {
+    "name": "ATMKeyDownloadResponseV05",
+    "id": "_ilIq0bXuEfCUZfsQO4rYeA",
+    "identifier": "caam.004.001.05",
+    "bodyTag": "ATMKeyDwnldRspn",
+    "out": "caam004",
+    "dir": "caam004-v05"
+  },
+  {
+    "name": "ATMDiagnosticRequestV03",
+    "id": "_h37q0aFCEe-MRKYsaX6JDg",
+    "identifier": "caam.005.001.03",
+    "bodyTag": "ATMDgnstcReq",
+    "out": "caam005",
+    "dir": "caam005-v03"
+  },
+  {
+    "name": "ATMDiagnosticResponseV02",
+    "id": "_mBmd4a46EeWRfYPBaeOY8w",
+    "identifier": "caam.006.001.02",
+    "bodyTag": "ATMDgnstcRspn",
+    "out": "caam006",
+    "dir": "caam006-v02"
+  },
+  {
+    "name": "HostToATMRequestV01",
+    "id": "_ZgfQ4ItqEeSDLd7nI4Quzw",
+    "identifier": "caam.007.001.01",
+    "bodyTag": "HstToATMReq",
+    "out": "caam007",
+    "dir": "caam007-v01"
+  },
+  {
+    "name": "HostToATMAcknowledgementV01",
+    "id": "_uoX0IItrEeSDLd7nI4Quzw",
+    "identifier": "caam.008.001.01",
+    "bodyTag": "HstToATMAck",
+    "out": "caam008",
+    "dir": "caam008-v01"
+  },
+  {
+    "name": "ATMReconciliationAdviceV03",
+    "id": "_ouWJAKFCEe-MRKYsaX6JDg",
+    "identifier": "caam.009.001.03",
+    "bodyTag": "ATMRcncltnAdvc",
+    "out": "caam009",
+    "dir": "caam009-v03"
+  },
+  {
+    "name": "ATMReconciliationAcknowledgementV03",
+    "id": "_udcZ0aFCEe-MRKYsaX6JDg",
+    "identifier": "caam.010.001.03",
+    "bodyTag": "ATMRcncltnAck",
+    "out": "caam010",
+    "dir": "caam010-v03"
+  },
+  {
+    "name": "ATMExceptionAdviceV02",
+    "id": "_z73KUaFCEe-MRKYsaX6JDg",
+    "identifier": "caam.011.001.02",
+    "bodyTag": "ATMXcptnAdvc",
+    "out": "caam011",
+    "dir": "caam011-v02"
+  },
+  {
+    "name": "ATMExceptionAcknowledgementV02",
+    "id": "_46x7YaFCEe-MRKYsaX6JDg",
+    "identifier": "caam.012.001.02",
+    "bodyTag": "ATMXcptnAck",
+    "out": "caam012",
+    "dir": "caam012-v02"
+  },
+  {
+    "name": "ATMConfigurationReportV01",
+    "id": "_dnp6sKE9Ee-MRKYsaX6JDg",
+    "identifier": "caam.013.001.01",
+    "bodyTag": "ATMCfgtnRpt",
+    "out": "caam013",
+    "dir": "caam013-v01"
+  },
+  {
+    "name": "ATMConfigurationControlV01",
+    "id": "_B9H34KE-Ee-MRKYsaX6JDg",
+    "identifier": "caam.014.001.01",
+    "bodyTag": "ATMCfgtnCtrl",
+    "out": "caam014",
+    "dir": "caam014-v01"
+  },
+  {
+    "name": "ATMReconciliationRequestV01",
+    "id": "_aI6GcKE-Ee-MRKYsaX6JDg",
+    "identifier": "caam.015.001.01",
+    "bodyTag": "ATMRcncltnReq",
+    "out": "caam015",
+    "dir": "caam015-v01"
+  },
+  {
+    "name": "ATMReconciliationResponseV01",
+    "id": "_v5SpkKE-Ee-MRKYsaX6JDg",
+    "identifier": "caam.016.001.01",
+    "bodyTag": "ATMRcncltnRspn",
+    "out": "caam016",
+    "dir": "caam016-v01"
   }
 ]

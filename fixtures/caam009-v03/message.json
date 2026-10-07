@@ -1,0 +1,43 @@
+{
+  "identifier": "caam.009.001.03",
+  "name": "ATMReconciliationAdviceV03",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:caam.009.001.03",
+  "bodyTag": "ATMRcncltnAdvc",
+  "out": "caam009",
+  "isoId": "_ouWJAKFCEe-MRKYsaX6JDg",
+  "definition": "The ATMReconciliationAdvice message is sent by an ATM to an acquirer or its agent to send all the counters of the ATM. It can be sent by an operator function or as a response of a command sent by an agent or a server.",
+  "blocks": [
+    {
+      "name": "ATMReconciliationAdvice",
+      "isoId": "_ouWJBqFCEe-MRKYsaX6JDg",
+      "xmlTag": "ATMRcncltnAdvc",
+      "type": "ATMReconciliationAdvice3",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Header",
+      "isoId": "_ouWJAqFCEe-MRKYsaX6JDg",
+      "xmlTag": "Hdr",
+      "type": "Header32",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ProtectedATMReconciliationAdvice",
+      "isoId": "_ouWJBKFCEe-MRKYsaX6JDg",
+      "xmlTag": "PrtctdATMRcncltnAdvc",
+      "type": "ContentInformationType10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SecurityTrailer",
+      "isoId": "_ouWJCKFCEe-MRKYsaX6JDg",
+      "xmlTag": "SctyTrlr",
+      "type": "ContentInformationType15",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+choice	memberId	memberName	text
+ATMCommandParameters1Choice	_w2lB4IqLEeSRT5rEzcAHEw	ATMRequiredGlobalStatus	Required status of the ATM, parameters of the status update command.
+ATMCommandParameters1Choice	_0OWO8IqLEeSRT5rEzcAHEw	ExpectedMessageFunction	Message to send for the send message command.
+ATMCommandParameters1Choice	_43VMQIqLEeSRT5rEzcAHEw	RequiredConfigurationParameter	Parameters to be used by the configuration update command.

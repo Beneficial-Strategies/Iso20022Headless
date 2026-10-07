@@ -1,0 +1,589 @@
+codeSet	code	enumName	isoId	text
+ATMStatus1Code	INSV	InService	_pVnK0YqLEeSRT5rEzcAHEw	Component is in service.
+ATMStatus1Code	OUTS	OutOfService	_pZx5IYqLEeSRT5rEzcAHEw	ATM out of service.
+ATMSecurityScheme3Code	APPK	ApplicationRemoteKeyLoading	_P2UZcV2VEeekzJIz1JxYSQ	Application key download protected by a share symmetric key.
+ATMSecurityScheme3Code	CERT	CertificateRemoteKeyLoading	_P2UZc12VEeekzJIz1JxYSQ	Key download protected by asymmetric keys authenticated by a certificate.
+ATMSecurityScheme3Code	DTCH	GermanRemoteKeyLoading	_P2UZd12VEeekzJIz1JxYSQ	Key download conform to the German ATM key download security scheme.
+ATMSecurityScheme3Code	FRAN	FrenchRemoteKeyLoading	_P2UZdV2VEeekzJIz1JxYSQ	Key download conform to the French ATM key download security scheme.
+ATMSecurityScheme3Code	LUXG	LuxemburgRemoteKeyLoading	_P2UZeV2VEeekzJIz1JxYSQ	Key download conform to the Luxemburg ATM key download security scheme.
+ATMSecurityScheme3Code	MANU	ManualKeyEntry	_P2UZe12VEeekzJIz1JxYSQ	Manual key entry on the ATM.
+ATMSecurityScheme3Code	NONE	Unitialised	_P2UZgV2VEeekzJIz1JxYSQ	No key exchange performed, no security scheme defined.
+ATMSecurityScheme3Code	PKIP	PKIKeyDownload	_P2UZfV2VEeekzJIz1JxYSQ	Key download protected by asymmetric keys authenticated by a PKI (Public Key Infrastructure).
+ATMSecurityScheme3Code	SIGN	SignatureRemoteKeyLoading	_P2UZf12VEeekzJIz1JxYSQ	Key download protected by asymmetric keys authenticated by a digital signature.
+ATMSecurityScheme3Code	TR34	TR34	_RJAJUV2VEeekzJIz1JxYSQ	ANSI X9 TR34 2012 scheme for the distribution of the symmetric public keys and the initial master key.
+ATMStatus3Code	OPER	InOperation	_EcoHQYtDEeSxlKlAGYErFg	Component is activated and in operation.
+ATMStatus3Code	STOP	Stopped	_Esa2wYtDEeSxlKlAGYErFg	Component has been stopped.
+ATMStatus3Code	WACT	WaitingActivation	_Ey1AwYtDEeSxlKlAGYErFg	Component has been loaded, but not yet activated.
+FailureReason6Code	CMPR	Compromised	_6MpPwYtDEeSxlKlAGYErFg	Key is compromised.
+FailureReason6Code	EXPR	Expired	_6XX5EYtDEeSxlKlAGYErFg	Key has expired.
+FailureReason6Code	KCVE	InvalidKCV	_7HWkgYtDEeSxlKlAGYErFg	Key check value is incorrect.
+FailureReason6Code	KLOD	KeyLoadError	_7N6fgYtDEeSxlKlAGYErFg	Error during the key download in the security device.
+KeyUsage1Code	DCPT	Decryption	_KSJO8n1DEeCF8NjrBemJWQ_119194564	Key may decrypt.
+KeyUsage1Code	DDEC	DataDecryption	_KSJO9H1DEeCF8NjrBemJWQ_-1258974949	Key may decrypt data.
+KeyUsage1Code	DENC	DataEncryption	_KSJO831DEeCF8NjrBemJWQ_1538814257	Key may encrypt data.
+KeyUsage1Code	ENCR	Encryption	_KSJO8X1DEeCF8NjrBemJWQ_952269426	Key may encrypt.
+KeyUsage1Code	KEYD	KeyDerivation	_KSSY531DEeCF8NjrBemJWQ_1499653549	Key may derive keys.
+KeyUsage1Code	KEYG	KeyGeneration	_KSSY5H1DEeCF8NjrBemJWQ_1055922580	Key may generate keys.
+KeyUsage1Code	KEYI	KeyImport	_KSSY5X1DEeCF8NjrBemJWQ_-1633900113	Key may import keys.
+KeyUsage1Code	KEYX	KeyExport	_KSSY5n1DEeCF8NjrBemJWQ_-204001317	Key may export keys.
+KeyUsage1Code	MACG	MessageAuthenticationCodeGeneration	_KSJO931DEeCF8NjrBemJWQ_1560885913	Key may generate message authentication codes (MAC).
+KeyUsage1Code	MACV	MessageAuthenticationCodeVerification	_KSJO-H1DEeCF8NjrBemJWQ_584260954	Key may verify message authentication codes (MAC).
+KeyUsage1Code	PIND	PINDecryption	_KSSY4n1DEeCF8NjrBemJWQ_-108961006	Key may decrypt personal identification numbers (PIN).
+KeyUsage1Code	PINE	PINEncryption	_KSSY4X1DEeCF8NjrBemJWQ_-1604204545	Key may encrypt personal identification numbers (PIN).
+KeyUsage1Code	PINV	PINVerification	_KSSY431DEeCF8NjrBemJWQ_596427236	Key may verify personal identification numbers (PIN).
+KeyUsage1Code	SIGG	SignatureGeneration	_KSJO-X1DEeCF8NjrBemJWQ_-918308253	Key may generate digital signatures.
+KeyUsage1Code	SUGV	SignatureVerification	_KSSY4H1DEeCF8NjrBemJWQ_951000548	Key may verify digital signatures.
+KeyUsage1Code	TRNI	TranslateInput	_KSJO9X1DEeCF8NjrBemJWQ_1013497304	Key may encrypt information before translation.
+KeyUsage1Code	TRNX	TranslateOutput	_KSJO9n1DEeCF8NjrBemJWQ_940936689	Key may encrypt information after translation.
+CryptographicKeyType5Code	AES2	AES128	_jCaJxaACEfC4Q_xhaK1hdQ	AES (Advanced Encryption Standard) 128 bits cryptographic key as defined by the Federal Information Processing Standards (FIPS 197 - November 6, 2001 - Advanced Encryption Standard).
+CryptographicKeyType5Code	AES5	AES256	_jCaJzaACEfC4Q_xhaK1hdQ	AES (Advanced Encryption Standard) encryption with a 256 bits cryptographic key as defined by the Federal Information Processing Standards (FIPS 197 – November 6, 2001 - Advanced Encryption Standard).
+CryptographicKeyType5Code	AES9	AES192	_jCaJy6ACEfC4Q_xhaK1hdQ	AES (Advanced Encryption Standard) encryption with a 192 bits cryptographic key as defined by the Federal Information Processing Standards (FIPS 197 – November 6, 2001 - Advanced Encryption Standard).
+CryptographicKeyType5Code	DKAE	DUKPTAES	_CGR_kaAFEfC4Q_xhaK1hdQ	DUKPT AES (Derived Unique Key Per Transaction) algorithm.
+CryptographicKeyType5Code	DKP9	DUKPT2009	_jCaJyaACEfC4Q_xhaK1hdQ	DUKPT (Derived Unique Key Per Transaction) key, as specified in ANSI X9.24-2009 Annex A.
+CryptographicKeyType5Code	ECCC	ECC	_BKGrMaAFEfC4Q_xhaK1hdQ	Elliptic-curve cryptography.
+CryptographicKeyType5Code	EDE3	DES112	_jCaJx6ACEfC4Q_xhaK1hdQ	Data encryption standard key of 112 bits (without the parity bits).
+CryptographicKeyType5Code	EDE4	DES168	_jCaJz6ACEfC4Q_xhaK1hdQ	Data encryption standard key of 168 bits (without the parity bits).
+CryptographicKeyType5Code	RSAC	RSA	_A4U-saAFEfC4Q_xhaK1hdQ	Rivest, Shamir and Adleman.
+CryptographicKeyType5Code	UKA2	UKPTAES192	_9sNoAaAEEfC4Q_xhaK1hdQ	UKPT (Unique Key Per Transaction) or Master Session Key key encryption, using Advanced Encryption Standard with a 192 bits cryptographic key, approved by the Federal Information Processing Standards (FIPS 197 - November 6, 2001 - Advanced Encryption Standard).
+CryptographicKeyType5Code	UKA6	UKPTAES256	__5vPgaAEEfC4Q_xhaK1hdQ	UKPT (Unique Key Per Transaction). Encryption key using AES (Advanced Encryption Standard) with a  256 bits length key. FIPS 197 - 6 November 2001).
+CryptographicKeyType5Code	UKA8	UKPTAES128	_GvfYMaB6EfC4Q_xhaK1hdQ	UKPT (Unique Key Per Transaction). Encryption key using AES (Advanced Encryption Standard) with a 128 bits length key. FIPS 197 - 6 November 2001).
+TR34Status1Code	BUND	Bound	_MpMAQbTjEeeQy4o2AayYHg	The device is bound.
+TR34Status1Code	UBND	Unbound	_MtU5YbTjEeeQy4o2AayYHg	The device is unbound.
+Algorithm11Code	HS01	SHA1	_I6AWUWi5EeS87LmvcA55sg	The DEPRECATED Message digest algorithm SHA-1 as defined in FIPS 180-1 - (ASN.1 Object Identifier: id-sha1).
+Algorithm11Code	HS25	SHA256	_yLO4UWi4EeS87LmvcA55sg	Message digest algorithm SHA-256 as defined in FIPS 180-1 and 2 - (ASN.1 Object Identifier: id-sha256).
+Algorithm11Code	HS38	SHA384	_yLO4U2i4EeS87LmvcA55sg	Message digest algorithm SHA-384 as defined in FIPS 180-1 and 2 - (ASN.1 Object Identifier: id-sha384).
+Algorithm11Code	HS51	SHA512	_yLO4VWi4EeS87LmvcA55sg	Message digest algorithm SHA-512 as defined in FIPS 180-1 and 2 - (ASN.1 Object Identifier: id-sha512).
+Algorithm14Code	ERS1	SHA1WithRSA	_x0rDYWjBEeSP8Z8nx8HTuQ	The DEPRECATED Signature algorithms with RSA (PKCS #1 version 2.1), using SHA-1 digest algorithm - (ASN.1 Object Identifier: sha1WithRSAEncryption).
+Algorithm14Code	ERS2	SHA256WithRSA	_i_XcAWjBEeSP8Z8nx8HTuQ	Signature algorithms with RSA, using SHA-256 digest algorithm - (ASN.1 Object Identifier: sha256WithRSAEncryption).
+Algorithm14Code	RPSS	RSASSA-PSS	_2ytDoWjBEeSP8Z8nx8HTuQ	Signature algorithm with Appendix, Probabilistic Signature Scheme (PKCS #1 version 2.1), - (ASN.1 Object Identifier: id-RSASSA-PSS).
+Algorithm7Code	ERSA	RSAEncryption	_NyQccQmFEeKKaIHo7gv4XA	RSA encryption algorithm - (ASN.1 Object Identifier: rsaEncryption).
+Algorithm7Code	RSAO	RSAES-OAEP	_OC6uoQmFEeKKaIHo7gv4XA	RSA encryption scheme based on Optimal Asymmetric Encryption scheme (PKCS #1 version 2.1) - (ASN.1 Object Identifier: id-RSAES-OAEP).
+EncryptionFormat1Code	TR31	TR31	_KUksUGi4EeS87LmvcA55sg	Format of a cryptographic key specified by the ANSI X9 TR-31 standard.
+EncryptionFormat1Code	TR34	TR34	_KfMn8Wi4EeS87LmvcA55sg	Format of a cryptographic key specified by the ANSI X9 TR-34 standard.
+Algorithm15Code	E3DC	DES112CBC	__IaKU2jBEeSP8Z8nx8HTuQ	Triple DES (Data Encryption Standard) CBC (Chaining Block Cypher) encryption with double length key (112 Bit) as defined in FIPS PUB 46-3 - (ASN.1 Object Identifier: des-ede3-cbc).
+Algorithm15Code	EA2C	AES128CBC	__IaKUWjBEeSP8Z8nx8HTuQ	AES (Advanced Encryption Standard) CBC (Chaining Block Cypher) encryption with a 128 bits cryptographic key as defined by the Federal Information Processing Standards (FIPS 197 - November 6, 2001 - Advanced Encryption Standard).
+Algorithm15Code	EA5C	AES256CBC	_DeJbgWjCEeSP8Z8nx8HTuQ	AES (Advanced Encryption Standard) CBC (Chaining Block Cypher) encryption with a 256 bits cryptographic key as defined by the Federal Information Processing Standards (FIPS 197 – November 6, 2001 - Advanced Encryption Standard).
+Algorithm15Code	EA9C	AES192CBC	_DT3eIWjCEeSP8Z8nx8HTuQ	AES (Advanced Encryption Standard) CBC (Chaining Block Cypher) encryption with a 192 bits cryptographic key as defined by the Federal Information Processing Standards (FIPS 197 – November 6, 2001 - Advanced Encryption Standard).
+Algorithm13Code	DKP9	DUKPT2009	_lu-ElWi7EeS87LmvcA55sg	DUKPT (Derived Unique Key Per Transaction) algorithm, as specified in ANSI X9.24-2009 Annex A.
+Algorithm13Code	E3DC	DES112CBC	_lu-Ek2i7EeS87LmvcA55sg	Triple DES (Data Encryption Standard) CBC (Chaining Block Cypher) encryption with double length key (112 Bit) as defined in FIPS PUB 46-3 - (ASN.1 Object Identifier: des-ede3-cbc).
+Algorithm13Code	EA2C	AES128CBC	_lu-EkWi7EeS87LmvcA55sg	AES (Advanced Encryption Standard) CBC (Chaining Block Cypher) encryption with a 128 bits cryptographic key as defined by the Federal Information Processing Standards (FIPS 197 - November 6, 2001 - Advanced Encryption Standard).
+Algorithm13Code	EA5C	AES256CBC	_TfXrIWi8EeS87LmvcA55sg	AES (Advanced Encryption Standard) CBC (Chaining Block Cypher) encryption with a 256 bits cryptographic key as defined by the Federal Information Processing Standards (FIPS 197 – November 6, 2001 - Advanced Encryption Standard).
+Algorithm13Code	EA9C	AES192CBC	_TZJuYWi8EeS87LmvcA55sg	AES (Advanced Encryption Standard) CBC (Chaining Block Cypher) encryption with a 192 bits cryptographic key as defined by the Federal Information Processing Standards (FIPS 197 – November 6, 2001 - Advanced Encryption Standard).
+Algorithm13Code	UKA1	UKPTwithAES128	_lu-EmWi7EeS87LmvcA55sg	UKPT (Unique Key Per Transaction) or Master Session Key key encryption, using Advanced Encryption Standard with a 128 bits cryptographic key, approved by the Federal Information Processing Standards (FIPS 197 - November 6, 2001 - Advanced Encryption Standard).
+Algorithm13Code	UKPT	UKPT	_lu-El2i7EeS87LmvcA55sg	UKPT (Unique Key Per Transaction) or Master Session Key key encryption - (ASN.1 Object Identifier: id-ukpt-wrap).
+Algorithm12Code	CMA1	SHA256CMACwithAES128	_iHlHJWi7EeS87LmvcA55sg	CMAC (Cipher based Message Authentication Code) defined by the National Institute of Standards and Technology (NIST 800-38B - May 2005), using the block cipher Advanced Encryption Standard with a 128 bits cryptographic key, approved by the Federal Information Processing Standards (FIPS 197 - November 6, 2001 - Advanced Encryption Standard). The CMAC algorithm is computed on the SHA-256 digest of the message.
+Algorithm12Code	CMA5	SHA512CMACwithAES256	_Ew-kEWi8EeS87LmvcA55sg	CMAC (Cipher based Message Authentication Code) defined by the National Institute of Standards and Technology (NIST 800-38B - May 2005), using the block cipher Advanced Encryption Standard with a 256 bits cryptographic key, approved by the Federal Information Processing Standards (FIPS 197 - November 6, 2001 - Advanced Encryption Standard). The CMAC algorithm is computed on the SHA-512 digest of the message.
+Algorithm12Code	CMA9	SHA384CMACwithAES192	_DoWIEWi8EeS87LmvcA55sg	CMAC (Cipher based Message Authentication Code) defined by the National Institute of Standards and Technology (NIST 800-38B - May 2005), using the block cipher Advanced Encryption Standard with a 192 bits cryptographic key, approved by the Federal Information Processing Standards (FIPS 197 - November 6, 2001 - Advanced Encryption Standard). The CMAC algorithm is computed on the SHA-384 digest of the message.
+Algorithm12Code	MACC	RetailCBCMAC	_iHlHIWi7EeS87LmvcA55sg	Retail CBC (Chaining Block Cypher) MAC (Message Authentication Code) (cf. ISO 9807, ANSI X9.19) - (ASN.1 Object Identifier: id-retail-cbc-mac).
+Algorithm12Code	MCC1	RetailSHA1MAC	_BK51QWi8EeS87LmvcA55sg	The DEPRECATED Retail-CBC-MAC with SHA-1 (Secure Hash standard) - (ASN.1 Object Identifier: id-retail-cbc-mac-sha-1).
+Algorithm12Code	MCCS	RetailSHA256MAC	_iHlHI2i7EeS87LmvcA55sg	Retail-CBC-MAC with SHA-256 (Secure HAsh standard) - (ASN.1 Object Identifier: id-retail-cbc-mac-sha-256).
+MessageProtection1Code	EVLP	EnvelopedMessage	_L8IuwYrgEeSvuOJS0mmL0g	Messages contain an encrypted body and a MAC or a digital signature computed on the complete message (header plus body after encryption).
+MessageProtection1Code	MACB	MACBody	_MBfv4YrgEeSvuOJS0mmL0g	Messages contain a MAC or a digital signature computed on the body only.
+MessageProtection1Code	MACM	MACMessage	_MHUEA4rgEeSvuOJS0mmL0g	Messages contain a MAC or a digital signature computed on the complete message (header plus body).
+MessageProtection1Code	UNPR	NoProtection	_MLxtQYrgEeSvuOJS0mmL0g	Messages are not protected, no encryption and no MAC or digital signature.
+PINFormat4Code	ANSI	ANSI0	_cX59sYocEeSirOZJBRz_nA	ANSI 0 PIN block format.
+PINFormat4Code	BKSY	Banksys	_ch9RkYocEeSirOZJBRz_nA	Banksys PIN block format.
+PINFormat4Code	BNCM	Bancomat	_cdXsgYocEeSirOZJBRz_nA	Italian Bancomat PIN block format.
+PINFormat4Code	DBLC	DieboldCO	_csVVkYocEeSirOZJBRz_nA	Diebold CO PIN block format.
+PINFormat4Code	DBLD	Diebold	_cm6qEYocEeSirOZJBRz_nA	Diebold PIN block format.
+PINFormat4Code	ECI2	ECI2	_cxdtMYocEeSirOZJBRz_nA	ECI2 PIN block format.
+PINFormat4Code	ECI3	ECI3	_c2nS8YocEeSirOZJBRz_nA	ECI3 PIN block format.
+PINFormat4Code	EMVS	EMVRSA	_c7vqkYocEeSirOZJBRz_nA	EMV ISO2 PIN block format encrypted with the EMV RSA cryptographic key for the PIN.
+PINFormat4Code	IBM3	IBM3624	_dA53YYocEeSirOZJBRz_nA	IBM 3624 PIN block format.
+PINFormat4Code	ISO0	ISO0	_dHp_oYocEeSirOZJBRz_nA	PIN diversified with the card account number, conforming to the standard ISO 9564-2.
+PINFormat4Code	ISO1	ISO1	_dNsWMYocEeSirOZJBRz_nA	PIN completed with random padding characters, conforming to the standard ISO 9564-2.
+PINFormat4Code	ISO2	ISO2	_dSkPIYocEeSirOZJBRz_nA	PIN without diversification characters, conforming to the standard ISO 9564-2.
+PINFormat4Code	ISO3	ISO3	_dYIEkYocEeSirOZJBRz_nA	PIN diversified with the card account number and random characters, conforming to the standard ISO 9564-2.
+PINFormat4Code	ISO4	ISO4	_ddshEYocEeSirOZJBRz_nA	PIN format used with AES encryption, conforming to the new ISO SC2 format.
+PINFormat4Code	ISO5	ISO5	_djMFEYocEeSirOZJBRz_nA	Alternative PIN format used with AES encryption, conforming to the new ISO SC2 format.
+PINFormat4Code	VIS2	VISA2	_dqC7AYocEeSirOZJBRz_nA	VISA2 PIN block format.
+PINFormat4Code	VIS3	VISA3	_dvrB4YocEeSirOZJBRz_nA	VISA3 PIN block format.
+ATMStatus2Code	OPER	InOperation	_fZ82sYr-EeSvuOJS0mmL0g	Component is activated and in operation.
+ATMStatus2Code	OUTS	OutOfService	_fkcPc4r-EeSvuOJS0mmL0g	ATM out of service.
+FailureReason5Code	HRDW	Hardware	_-lfssYr-EeSvuOJS0mmL0g	Hardware error on the device.
+FailureReason5Code	SECR	Security	_4Y2kQYr-EeSvuOJS0mmL0g	General security error.
+ATMSecurityScheme4Code	APPK	ApplicationRemoteKeyLoading	_bkJVsV2ZEeekzJIz1JxYSQ	Application key download protected by a share symmetric key.
+ATMSecurityScheme4Code	CERT	CertificateRemoteKeyLoading	_bkJVs12ZEeekzJIz1JxYSQ	Key download protected by asymmetric keys authenticated by a certificate.
+ATMSecurityScheme4Code	DTCH	GermanRemoteKeyLoading	_bkJVt12ZEeekzJIz1JxYSQ	Key download conform to the German ATM key download security scheme.
+ATMSecurityScheme4Code	FRAN	FrenchRemoteKeyLoading	_bkJVtV2ZEeekzJIz1JxYSQ	Key download conform to the French ATM key download security scheme.
+ATMSecurityScheme4Code	LUXG	LuxemburgRemoteKeyLoading	_bkJVuV2ZEeekzJIz1JxYSQ	Key download conform to the Luxemburg ATM key download security scheme.
+ATMSecurityScheme4Code	MANU	ManualKeyEntry	_bkJVu12ZEeekzJIz1JxYSQ	Manual key entry on the ATM.
+ATMSecurityScheme4Code	PKIP	PKIKeyDownload	_bkJVvV2ZEeekzJIz1JxYSQ	Key download protected by asymmetric keys authenticated by a PKI (Public Key Infrastructure).
+ATMSecurityScheme4Code	SIGN	SignatureRemoteKeyLoading	_bkJVv12ZEeekzJIz1JxYSQ	Key download protected by asymmetric keys authenticated by a digital signature.
+ATMSecurityScheme4Code	TR34	TR34	_c68wkV2ZEeekzJIz1JxYSQ	ANSI X9 TR34 2012 scheme for the distribution of the symmetric public keys and the initial master key.
+ATMCommand7Code	ABAL	ATMBalance	_dYEI4ZxCEe-Jl6tBAvMHqA	Provide the ATM counters, resetting those that are applicable.
+ATMCommand7Code	ASTS	ATMStatusUpdate	_dYEI45xCEe-Jl6tBAvMHqA	Status of the ATM required by the ATM manager.
+ATMCommand7Code	CCNT	CountersInquiry	_dYEI55xCEe-Jl6tBAvMHqA	Request the value of the ATM counters.
+ATMCommand7Code	CFGT	ConfigurationUpdate	_dYEI5ZxCEe-Jl6tBAvMHqA	Update the ATM configuration parameters.
+ATMCommand7Code	DISC	Disconnect	_dYEI6ZxCEe-Jl6tBAvMHqA	Perform a disconnection followed by a reconnection.
+ATMCommand7Code	HKCG	HLAKeyReplace	_dYEI-5xCEe-Jl6tBAvMHqA	Replace an existing key using a Higher Level Authority (HLA) key. In the TR34 scheme this would be used to implement a HLA Rebind operation.
+ATMCommand7Code	HKRV	HLAKeyRemove	_dYEI_ZxCEe-Jl6tBAvMHqA	Remove a cryptographic key using a Higher Level Authority key (HLA). In the TR34 scheme this would be used to implement a HLA Unbind operation.
+ATMCommand7Code	KACT	KeyActivation	_dYEI65xCEe-Jl6tBAvMHqA	Activate cryptographic keys.
+ATMCommand7Code	KCHG	KeyReplace	_dYEI_5xCEe-Jl6tBAvMHqA	Replaces an existing cryptographic key. In a TR34 scheme this would be used to implement a Rebind operation.
+ATMCommand7Code	KDAC	KeyDeactivation	_dYEI7ZxCEe-Jl6tBAvMHqA	Deactivate cryptographic keys.
+ATMCommand7Code	KDWL	KeyDownload	_dYEI75xCEe-Jl6tBAvMHqA	Start a cryptographic key download.
+ATMCommand7Code	KRMV	KeyRemove	_dYEI8ZxCEe-Jl6tBAvMHqA	Remove cryptographic keys.
+ATMCommand7Code	RREQ	ReconciliationRequest	_VrWNEaDdEe-MRKYsaX6JDg	Send a ReconciliationRequest message.
+ATMCommand7Code	SCFU	SecurityDeviceConfigurationUpdate	_dYEI85xCEe-Jl6tBAvMHqA	Update the configuration of the hardware security module on the ATM.
+ATMCommand7Code	SNDM	SendMessage	_dYEI-ZxCEe-Jl6tBAvMHqA	Send a specific message to initiate a process.
+ATMCommand7Code	SSCU	SecurityDeviceSchemeUpdate	_dYEI9ZxCEe-Jl6tBAvMHqA	Update the security scheme of the hardware security module on the ATM.
+ATMCommand7Code	SSTU	SecurityDeviceStatusUpdate	_dYEI95xCEe-Jl6tBAvMHqA	Update the status of the hardware security module on the ATM.
+TerminalManagementActionResult2Code	CNTE	ConnectionError	_wh7IcYr3EeSvuOJS0mmL0g	Problem to connect while performing the action.
+TerminalManagementActionResult2Code	FMTE	FormatError	_ws0w44r3EeSvuOJS0mmL0g	Data transferred has a wrong format.
+TerminalManagementActionResult2Code	HRDW	Hardware	_w1T-g4r3EeSvuOJS0mmL0g	Hardware error.
+TerminalManagementActionResult2Code	NSUP	NotSupported	_x7CQcor3EeSvuOJS0mmL0g	Action is not supported.
+TerminalManagementActionResult2Code	SECR	Security	_yF5co4r3EeSvuOJS0mmL0g	Security error.
+TerminalManagementActionResult2Code	SUCC	Success	_yNUTQYr3EeSvuOJS0mmL0g	Action was successfully performed.
+TerminalManagementActionResult2Code	SYNE	SyntaxError	_zAQME4r3EeSvuOJS0mmL0g	Data transferred has a wrong syntax.
+TerminalManagementActionResult2Code	TIMO	Timeout	_zG0HE4r3EeSvuOJS0mmL0g	Timeout expired during the data transfer.
+TerminalManagementActionResult2Code	UKRF	UnknownKeyReference	_zbnSY4r3EeSvuOJS0mmL0g	Cryptographic key reference used for the data signature is not valid.
+DataSetCategory7Code	AMNT	PreDefinedAmount	_A1wL44n-EeShMpas3885ww	Predefined amounts to be presented to the customer.
+DataSetCategory7Code	APPR	ApplicationParameters	_6zEQs4n9EeShMpas3885ww	Payment application specific configuration parameters for the point of interaction (POI) system.
+DataSetCategory7Code	ATMC	ATMConfiguration	_2KOdUYn9EeShMpas3885ww	Configuration parameters of the ATM.
+DataSetCategory7Code	ATMP	ATMProtocol	_2RPEQ4n9EeShMpas3885ww	ATM protocol parameters, including the configuration of the hosts.
+DataSetCategory7Code	CPRC	CardConfiguration	__XsSc4n9EeShMpas3885ww	Configuration of the cards accepted by the terminal.
+DataSetCategory7Code	CRAP	CardApplication	__QYwk4n9EeShMpas3885ww	Configuration parameters of the card application.
+DataSetCategory7Code	LOCC	LocationConfiguration	_CL-X84n-EeShMpas3885ww	Configuration of the location.
+DataSetCategory7Code	MNOC	MobileOperator	_E8OSA4n-EeShMpas3885ww	Configuration of the mobile operator cards accepted by the terminal.
+DataSetCategory7Code	OEXR	OfflineExchangeRate	_As9cQ4n-EeShMpas3885ww	Local rates for currency exchanges.
+TransactionEnvironment2Code	PRIV	Private	_d7rAgXsIEeSR68OJvMfxJQ	Private environment.
+TransactionEnvironment2Code	PUBL	Public	_eDeRoXsIEeSR68OJvMfxJQ	Public environment.
+ATMDevice2Code	ALRM	AlarmSensors	_6MaQYYqtEeSIDtZ76p6McQ	Alarm sensors, such as tamper, seismic or heat sensors.
+ATMDevice2Code	BRCD	BarCodeReader	_6VDPA4qtEeSIDtZ76p6McQ	Device scanning barcodes using any scanning technology.
+ATMDevice2Code	CAMR	Camera	_6WicwYqtEeSIDtZ76p6McQ	Camera, recorder, video mixer.
+ATMDevice2Code	CDIS	CustomerConsole	_7Ido8YqtEeSIDtZ76p6McQ	Customer display and keyboard.
+ATMDevice2Code	CHCK	CheckReader	_7G90I4qtEeSIDtZ76p6McQ	Check reader and check image scanner.
+ATMDevice2Code	CRDD	CardDispenser	_6jM_w4qtEeSIDtZ76p6McQ	Device dispensing card to a consumer.
+ATMDevice2Code	CRDR	CardUnit	_6oH8AYqtEeSIDtZ76p6McQ	Device to read and optionally write card with various entry modes.
+ATMDevice2Code	CSHD	CashDispenser	_6w6ro4qtEeSIDtZ76p6McQ	Device dispensing cash in an automated environment, or with an operator present.
+ATMDevice2Code	CSHI	CashInModule	_62Ii04qtEeSIDtZ76p6McQ	Device accepting in-out of items as coupons, documents, bills and coins.
+ATMDevice2Code	CSHR	CashRecycler	_6-LEgYqtEeSIDtZ76p6McQ	Compound device with cash in module, cash dispenser, and cash exchange.
+ATMDevice2Code	DOOR	DoorSensors	_7yCKYYqtEeSIDtZ76p6McQ	Door sensors, such as cabinet, safe or vandal shield doors.
+ATMDevice2Code	DPRN	DocumentPrinter	_7pFpwYqtEeSIDtZ76p6McQ	Printer for full-size forms documents and supporting the printing of text and graphic.
+ATMDevice2Code	DPST	Deposit	_7hMSAYqtEeSIDtZ76p6McQ	Device for the deposit of media in envelopes or deposit of bags containing bulk media.
+ATMDevice2Code	INPM	InputProcessingModule	_75e2MYqtEeSIDtZ76p6McQ	Self service device processing items.
+ATMDevice2Code	JPRN	JournalPrinter	_8MtUMYqtEeSIDtZ76p6McQ	Continuous form device used to record a hardcopy audit trail of transactions, and for certain report printing requirements.
+ATMDevice2Code	JRNL	Journal	_8BYN8YqtEeSIDtZ76p6McQ	Event log.
+ATMDevice2Code	PINR	PINKeypad	_8oa_0YqtEeSIDtZ76p6McQ	Hardware security module allowing the PIN (Personal Identification Number) entry, secure storing of cryptographic keys, and other cryptographic functions.
+ATMDevice2Code	PSBK	PassbookPrinter	_8g-UAYqtEeSIDtZ76p6McQ	Passbook device supporting automatic positioning of the book.
+ATMDevice2Code	RPRN	ReceiptPrinter	_8wxDgYqtEeSIDtZ76p6McQ	Receipt printer used to print cut sheet documents.
+ATMDevice2Code	RWDR	WithdrawalReceipt	_YA_OIY65EeSUpManOYhRpw	Receipt of the withdrawal transactions.
+ATMDevice2Code	SCAN	ScannerPrinter	_840MQYqtEeSIDtZ76p6McQ	Device incorporating both the capabilities to scan inserted documents and optionally to print on them.
+ATMDevice2Code	SNSR	OtherSensor	_8YoQUYqtEeSIDtZ76p6McQ	Other sensors and indicators unit.
+TransactionEnvironment3Code	BRCH	Branch	_6F6BoXsIEeSR68OJvMfxJQ	Bank environment.
+TransactionEnvironment3Code	MERC	Merchant	_6Md8oXsIEeSR68OJvMfxJQ	Merchant environment.
+TransactionEnvironment3Code	OTHR	Other	_6SkkoXsIEeSR68OJvMfxJQ	Other environments, for instance a mall or an airport.
+MessageFunction11Code	ACMD	ATMControl	_e61o561xEeWMg5rOByfExw	Global ATM commands.
+MessageFunction11Code	BALN	ATMBalance	_e61o4a1xEeWMg5rOByfExw	Provide the ATM counters resettting those that are applicable.
+MessageFunction11Code	CMPA	ATMCompletionAcknowledgement	_e61o461xEeWMg5rOByfExw	Acknowledgement of a completion advice.
+MessageFunction11Code	CMPD	ATMCompletionAdvice	_e61o5a1xEeWMg5rOByfExw	Advice of an ATM transaction completion.
+MessageFunction11Code	CSEC	SecurityControl	_e61pEa1xEeWMg5rOByfExw	Security Commands.
+MessageFunction11Code	DIAP	ATMDiagnosticResponse	_e61o7a1xEeWMg5rOByfExw	Response to a diagnostic request.
+MessageFunction11Code	DIAQ	ATMDiagnosticRequest	_e61o661xEeWMg5rOByfExw	Request for a diagnostic.
+MessageFunction11Code	DPSK	ATMDepositCompletionAcknowledgement	_lLyCga1xEeWMg5rOByfExw	Acknowledgement of a deposit completion advice.
+MessageFunction11Code	DPSP	ATMDepositResponse	_lmAgYa1xEeWMg5rOByfExw	Response to a deposit request.
+MessageFunction11Code	DPSQ	ATMDepositRequest	_ld0Nsa1xEeWMg5rOByfExw	Request for a deposit.
+MessageFunction11Code	DPSV	ATMDepositCompletionAdvice	_lT-VMa1xEeWMg5rOByfExw	Advice of an ATM deposit transaction completion.
+MessageFunction11Code	DSEC	SecurityDetails	_e61pE61xEeWMg5rOByfExw	Security detailed report.
+MessageFunction11Code	DVCC	ATMDeviceControl	_e61o6a1xEeWMg5rOByfExw	Maintenance commands to perform.
+MessageFunction11Code	EXPK	ATMExceptionAcknowledgement	_mGqWYa1xEeWMg5rOByfExw	Acknowledgement of an exception advice.
+MessageFunction11Code	EXPV	ATMExceptionAdvice	_mOakMa1xEeWMg5rOByfExw	Advice of an ATM exception.
+MessageFunction11Code	GSTS	ATMGlobalStatus	_e61o761xEeWMg5rOByfExw	Global status of the ATM.
+MessageFunction11Code	H2AP	HostToATMAcknowledgement	_e61pC61xEeWMg5rOByfExw	Acknowledgement of a request from a host to an ATM for contacting.
+MessageFunction11Code	H2AQ	HostToATMRequest	_e61pDa1xEeWMg5rOByfExw	Request from a host to an ATM to be contacted by this ATM.
+MessageFunction11Code	INQC	CountersInquiry	_e61pCa1xEeWMg5rOByfExw	Request the value of the ATM counters.
+MessageFunction11Code	INQP	ATMInquiryResponse	_e61o861xEeWMg5rOByfExw	Response to an inquiry request.
+MessageFunction11Code	INQQ	ATMInquiryRequest	_e61o8a1xEeWMg5rOByfExw	Request for an inquiry.
+MessageFunction11Code	KYAP	ATMKeyDownloadResponse	_e61o961xEeWMg5rOByfExw	Response to a key download.
+MessageFunction11Code	KYAQ	ATMKeyDownloadRequest	_e61o9a1xEeWMg5rOByfExw	Request for a key download.
+MessageFunction11Code	PINP	ATMPINManagementResponse	_e61o-61xEeWMg5rOByfExw	Response to a cardholder PIN management request.
+MessageFunction11Code	PINQ	ATMPINManagementRequest	_e61o-a1xEeWMg5rOByfExw	Request for a cardholder PIN management.
+MessageFunction11Code	RJAP	ATMResponseReject	_e61o_61xEeWMg5rOByfExw	Rejected response message.
+MessageFunction11Code	RJAQ	ATMRequestReject	_e61o_a1xEeWMg5rOByfExw	Rejected request message.
+MessageFunction11Code	RPTC	CountersReport	_rsA1Ua1xEeWMg5rOByfExw	Provide the value of the ATM counters, no reinitialisation of the counters.
+MessageFunction11Code	SKSC	SecurityKeyCompletion	_e61pFa1xEeWMg5rOByfExw	Result of the key download with the status of the downloaded keys including key check values.
+MessageFunction11Code	SSTS	SecurityKeyStatus	_e61pF61xEeWMg5rOByfExw	Status of cryptographic keys.
+MessageFunction11Code	TMOP	ATMOperation	_e61pD61xEeWMg5rOByfExw	Logical or physical operation on the ATM.
+MessageFunction11Code	TRFP	ATMTransferResponse	_oCFhQa1xEeWMg5rOByfExw	Response to a fund transfer request.
+MessageFunction11Code	TRFQ	ATMTransferRequest	_n5vdka1xEeWMg5rOByfExw	Request for a fund transfer.
+MessageFunction11Code	WITK	ATMWithdrawalAknowledgement	_e61pA61xEeWMg5rOByfExw	Acknowledgement of a withdrawal transaction advice.
+MessageFunction11Code	WITP	ATMWithdrawalResponse	_e61pB61xEeWMg5rOByfExw	Response to a withdrawal transaction request.
+MessageFunction11Code	WITQ	ATMWithdrawalRequest	_e61pBa1xEeWMg5rOByfExw	Request for a withdrawal transaction.
+MessageFunction11Code	WITV	ATMWithdrawalAdvice	_e61pAa1xEeWMg5rOByfExw	Response of a withdrawal transaction.
+PartyType12Code	ACQR	Acquirer	_rAuvcYn0EeS9F4Qrq_eaVA	Entity acquiring card transactions.
+PartyType12Code	ATMG	ATMManager	_rM8mg4n0EeS9F4Qrq_eaVA	Entity managing the ATM.
+PartyType12Code	CISP	CardIssuerProcessor	_r0egk4n0EeS9F4Qrq_eaVA	Entity providing issuing card payment processing services on behalf on an issuer.
+PartyType12Code	DLIS	DelegateIssuer	_sAb484n0EeS9F4Qrq_eaVA	Party to whom the card issuer delegates to authorise card payment transactions.
+PartyType12Code	HSTG	HostingEntity	_s-0Mw4n0EeS9F4Qrq_eaVA	Entity hosting the ATM.
+PartyType12Code	ITAG	IntermediaryAgent	_tIgUQ4n0EeS9F4Qrq_eaVA	Party acting on behalf of other parties to process or forward data to other parties.
+PartyType12Code	OATM	OriginatingATM	_t-Q3k4n0EeS9F4Qrq_eaVA	ATM initiating the transaction.
+ContentType2Code	AUTH	AuthenticatedData	_gd_z22izEeS87LmvcA55sg	MAC (Message Authentication Code), with encryption key - (ASN.1 Object Identifier: id-ct-authData).
+ContentType2Code	DATA	PlainData	_gd_z0WizEeS87LmvcA55sg	Generic, non cryptographic, or unqualified data content - (ASN.1 Object Identifier: id-data).
+ContentType2Code	DGST	DigestedData	_gd_z12izEeS87LmvcA55sg	Message digest - (ASN.1 Object Identifier: id-digestedData).
+ContentType2Code	EVLP	EnvelopedData	_gd_z1WizEeS87LmvcA55sg	Encrypted data, with encryption key - (ASN.1 Object Identifier: id-envelopedData).
+ContentType2Code	SIGN	SignedData	_gd_z02izEeS87LmvcA55sg	Digital signature - (ASN.1 Object Identifier: id-signedData).
+BytePadding1Code	LNGT	LengthPadding	_3sV-MWi9EeS87LmvcA55sg	Message to encrypt is completed by a byte value containing the total number of added bytes.
+BytePadding1Code	NUL8	Null80Padding	_3x6asWi9EeS87LmvcA55sg	Message to encrypt is completed by one bit of value 1, followed by null bits until the encryption block length is reached.
+BytePadding1Code	NULG	NullLengthPadding	_344lYWi9EeS87LmvcA55sg	Message to encrypt is completed by null byte values, the last byte containing the total number of added bytes.
+BytePadding1Code	NULL	NullPadding	_3-_NYWi9EeS87LmvcA55sg	Message to encrypt is completed by null bytes.
+BytePadding1Code	RAND	RandomPadding	_4Hdz8Wi9EeS87LmvcA55sg	Message to encrypt is completed by random value, the last byte containing the total number of added bytes.
+Algorithm8Code	MGF1	MGF1	_Z4B7cQmFEeKKaIHo7gv4XA	Generator Function, used for RSA encryption and RSA igital signature (PKCS #1 version 2.1) - (ASN.1 Object Identifier: id-mgf1).
+AttributeType1Code	CATT	CountryName	_TSESjAEcEeCQm6a_G2yO_w_189442098	Country name of the attribute (ASN.1 Object Identifier: id-at-countryName).
+AttributeType1Code	CNAT	CommonName	_TSESiAEcEeCQm6a_G2yO_w_399531534	Common name of the attribute (ASN.1 Object Identifier: id-at-commonName).
+AttributeType1Code	LATT	Locality	_TSESiQEcEeCQm6a_G2yO_w_807359888	Locality of the attribute (ASN.1 Object Identifier: id-at-localityName).
+AttributeType1Code	OATT	OrganisationName	_TSESigEcEeCQm6a_G2yO_w_-1550382235	Organization name of the attribute (ASN.1 Object Identifier: id-at-organizationName).
+AttributeType1Code	OUAT	OrganisationUnitName	_TSESiwEcEeCQm6a_G2yO_w_-2013772510	Organization unit name of the attribute (ASN.1 Object Identifier: id-at-organizationalUnitName).
+MessageFunction8Code	BALN	ATMBalance	_qGK2cSycEeWT0qwwEKj7sA	Provide the ATM counters resettting those that are applicable.
+MessageFunction8Code	DSEC	SecurityDetails	_uCydASycEeWT0qwwEKj7sA	Security detailed report.
+MessageFunction8Code	GSTS	ATMGlobalStatus	_rsG5gSycEeWT0qwwEKj7sA	Global status of the ATM.
+MessageFunction8Code	INQC	CountersInquiry	_vAyWUSycEeWT0qwwEKj7sA	Request the value of the ATM counters.
+MessageFunction8Code	KEYQ	KeyExchangeRequest	_xK0k8SycEeWT0qwwEKj7sA	Request of a key exchange.
+MessageFunction8Code	SSTS	SecurityKeyStatus	_yriw0SycEeWT0qwwEKj7sA	Status of cryptographic keys.
+CryptographicKeyType4Code	APPL	Application	_VAq5oYtJEeSxlKlAGYErFg	Key used to protect application information.
+CryptographicKeyType4Code	DATA	Data	_VKNQI4tJEeSxlKlAGYErFg	Key used to protect data in the messages.
+CryptographicKeyType4Code	DYNC	Dynamic	_VcPbU4tJEeSxlKlAGYErFg	Any cryptographic key that can be downloaded.
+CryptographicKeyType4Code	KENC	KeyEncryption	_Vntrg4tJEeSxlKlAGYErFg	Key used to encrypt other keys.
+CryptographicKeyType4Code	MACK	MAC	_V28aU4tJEeSxlKlAGYErFg	Key used to generate the MAC of a message.
+CryptographicKeyType4Code	PINK	PIN	_WBHC84tJEeSxlKlAGYErFg	Key used to encrypt a PIN.
+CryptographicKeyType4Code	WRKG	Working	_WJwBk4tJEeSxlKlAGYErFg	Temporary key used to download keys.
+ATMCommandReason1Code	DIAG	Diagnostic	_Z7ffwYtHEeSxlKlAGYErFg	Request the status of or action from the ATM to perform a diagnostic.
+ATMCommandReason1Code	MONI	Monitoring	_aBKC4YtHEeSxlKlAGYErFg	Supervise the ATM.
+ATMCommandReason1Code	SECU	SecurityError	_aLIeQ4tHEeSxlKlAGYErFg	Security error.
+ATMCommandReason1Code	SYNC	Synchronisation	_aQWVc4tHEeSxlKlAGYErFg	Desynchronisation of dialogue between entities.
+ATMCommandReason1Code	UPDT	Update	_aW6QcYtHEeSxlKlAGYErFg	Update the ATM.
+TMSContactLevel2Code	ASAP	AsSoonAsPossible	_fZ92gYqKEeSRT5rEzcAHEw	Terminal management system has to be contacted as soon as possible (for example after reconciliation).
+TMSContactLevel2Code	CRIT	Critical	_feJL4YqKEeSRT5rEzcAHEw	Terminal management system has to be contacted before the next transaction.
+TMSContactLevel2Code	DTIM	DateTime	_fidrMYqKEeSRT5rEzcAHEw	Terminal management system has to be contacted at the date and time provided.
+TMSContactLevel2Code	ENCS	EndCustomerSession	_fn1TYYqKEeSRT5rEzcAHEw	After the end of the customer session.
+TR34Command1Code	BIND	Bind	_KalWQV2lEeekzJIz1JxYSQ	TR34 bind operation.
+TR34Command1Code	HILR	HigherLevelRebind	_KfcoIV2lEeekzJIz1JxYSQ	TR34 Higher Level rebind operation.
+TR34Command1Code	HILU	HigherLevelUnbind	_KiyQAV2lEeekzJIz1JxYSQ	TR34 Higher Level unbind operation.
+TR34Command1Code	RBND	Rebind	_KndUoV2lEeekzJIz1JxYSQ	TR34 rebind operation.
+TR34Command1Code	UBND	Unbind	_KsIZQV2lEeekzJIz1JxYSQ	TR34 unbind operation.
+ATMCommand4Code	ABAL	ATMBalance	_pnbUIa2BEeWMg5rOByfExw	Provide the ATM counters, resetting those that are applicable.
+ATMCommand4Code	ASTS	ATMStatusUpdate	_pnbUI62BEeWMg5rOByfExw	Status of the ATM required by the ATM manager.
+ATMCommand4Code	CCNT	CountersInquiry	_pnbUJ62BEeWMg5rOByfExw	Request the value of the ATM counters.
+ATMCommand4Code	CFGT	ConfigurationUpdate	_pnbUJa2BEeWMg5rOByfExw	Update the ATM configuration parameters.
+ATMCommand4Code	DISC	Disconnect	_pnbUKa2BEeWMg5rOByfExw	Perform a disconnection followed by a reconnection.
+ATMCommand4Code	RPTC	CountersReport	_rZ0e0a2BEeWMg5rOByfExw	Provide the value of the ATM counters, no reinitialisation of the counters.
+ATMCommand4Code	SNDM	SendMessage	_pnbUK62BEeWMg5rOByfExw	Send a specific message to initiate a process.
+MessageFunction7Code	ACMD	ATMControl	_nq01g4nyEeS9F4Qrq_eaVA	Global ATM commands.
+MessageFunction7Code	BALN	ATMBalance	_nT2f8YnyEeS9F4Qrq_eaVA	Provide the ATM counters resettting those that are applicable.
+MessageFunction7Code	CMPA	ATMCompletionAcknowledgement	_neu6Q4nyEeS9F4Qrq_eaVA	Acknowledgement of a completion advice.
+MessageFunction7Code	CMPD	ATMCompletionAdvice	_nksYU4nyEeS9F4Qrq_eaVA	Advice of an ATM transaction completion.
+MessageFunction7Code	CSEC	SecurityControl	_untvI4nyEeS9F4Qrq_eaVA	Security Commands.
+MessageFunction7Code	DIAP	ATMDiagnosticResponse	_n-Csc4nyEeS9F4Qrq_eaVA	Response to a diagnostic request.
+MessageFunction7Code	DIAQ	ATMDiagnosticRequest	_n4FOY4nyEeS9F4Qrq_eaVA	Request for a diagnostic.
+MessageFunction7Code	DSEC	SecurityDetails	_vaugc4nyEeS9F4Qrq_eaVA	Security detailed report.
+MessageFunction7Code	DVCC	ATMDeviceControl	_nwyTk4nyEeS9F4Qrq_eaVA	Maintenance commands to perform.
+MessageFunction7Code	GSTS	ATMGlobalStatus	_oEJ7g4nyEeS9F4Qrq_eaVA	Global status of the ATM.
+MessageFunction7Code	H2AP	HostToATMAcknowledgement	_tMFeo4nyEeS9F4Qrq_eaVA	Acknowledgement of a request from a host to an ATM for contacting.
+MessageFunction7Code	H2AQ	HostToATMRequest	_tSMts4nyEeS9F4Qrq_eaVA	Request from a host to an ATM to be contacted by this ATM.
+MessageFunction7Code	INQC	CountersInquiry	_rAP5M4nyEeS9F4Qrq_eaVA	Request the value of the ATM counters.
+MessageFunction7Code	INQP	ATMInquiryResponse	_oQOoo4nyEeS9F4Qrq_eaVA	Response to an inquiry request.
+MessageFunction7Code	INQQ	ATMInquiryRequest	_oKHZk4nyEeS9F4Qrq_eaVA	Request for an inquiry.
+MessageFunction7Code	KYAP	ATMKeyDownloadResponse	_ocT804nyEeS9F4Qrq_eaVA	Response to a key download.
+MessageFunction7Code	KYAQ	ATMKeyDownloadRequest	_oWMGs4nyEeS9F4Qrq_eaVA	Request for a key download.
+MessageFunction7Code	PINP	ATMPINManagementResponse	_okqAgYnyEeS9F4Qrq_eaVA	Response to a cardholder PIN management request.
+MessageFunction7Code	PINQ	ATMPINManagementRequest	_oibL44nyEeS9F4Qrq_eaVA	Request for a cardholder PIN management.
+MessageFunction7Code	RJAP	ATMResponseReject	_oyqnU4nyEeS9F4Qrq_eaVA	Rejected response message.
+MessageFunction7Code	RJAQ	ATMRequestReject	_osj_U4nyEeS9F4Qrq_eaVA	Rejected request message.
+MessageFunction7Code	SKSC	SecurityKeyCompletion	_v9qOY4nyEeS9F4Qrq_eaVA	Result of the key download with the status of the downloaded keys including key check values.
+MessageFunction7Code	SSTS	SecurityKeyStatus	_whAMA4nyEeS9F4Qrq_eaVA	Status of cryptographic keys.
+MessageFunction7Code	TMOP	ATMOperation	_uYV2Y4nyEeS9F4Qrq_eaVA	Logical or physical operation on the ATM.
+MessageFunction7Code	WITK	ATMWithdrawalAknowledgement	_o6twEYnyEeS9F4Qrq_eaVA	Acknowledgement of a withdrawal transaction advice.
+MessageFunction7Code	WITP	ATMWithdrawalResponse	_pLIKo4nyEeS9F4Qrq_eaVA	Response to a withdrawal transaction request.
+MessageFunction7Code	WITQ	ATMWithdrawalRequest	_pEsyg4nyEeS9F4Qrq_eaVA	Request for a withdrawal transaction.
+MessageFunction7Code	WITV	ATMWithdrawalAdvice	_o4oFY4nyEeS9F4Qrq_eaVA	Response of a withdrawal transaction.
+ATMCommand5Code	ABAL	ATMBalance	_mQuCga47EeWRfYPBaeOY8w	Provide the ATM counters, resetting those that are applicable.
+ATMCommand5Code	CCNT	CountersInquiry	_mQuCg647EeWRfYPBaeOY8w	Request the value of the ATM counters.
+ATMCommand5Code	RPTC	CountersReport	_p8M1wa47EeWRfYPBaeOY8w	Provide the value of the ATM counters, no reinitialisation of the counters.
+CardDataReading1Code	BRCD	BarCode	_TSXNdAEcEeCQm6a_G2yO_w_1172443458	Bar code.
+CardDataReading1Code	CICC	ICC	_TSXNdgEcEeCQm6a_G2yO_w_-1892344504	ICC (Integrated Circuit Card) with contact containing software applications conform to ISO 7816.
+CardDataReading1Code	CTLS	ProximityReader	_TSXNeAEcEeCQm6a_G2yO_w_1689489202	Contactless proximity reader.
+CardDataReading1Code	DFLE	AccountData	_TSXNdwEcEeCQm6a_G2yO_w_44880669	Account data on file.
+CardDataReading1Code	ECTL	EMVProximityReader	_TSXNeQEcEeCQm6a_G2yO_w_-154379787	Contactless proximity reader, with application conform to the standard EMV (standard initiated by Europay, Mastercard and Visa).
+CardDataReading1Code	MGST	MagneticStripe	_TSXNdQEcEeCQm6a_G2yO_w_-439664208	Magnetic stripe.
+CardDataReading1Code	PHYS	Physical	_TSXNcwEcEeCQm6a_G2yO_w_-764781715	Keyboard entry or OCR reading of embossing or printed data, either at time of transaction or after the event.
+CardDataReading1Code	TAGC	Tag	_TSXNcgEcEeCQm6a_G2yO_w_1877381084	Tag reading capabilities (RFID, etc.).
+ATMMediaType4Code	CARD	Cards	_gftZ0ZxDEe-Jl6tBAvMHqA	Card media.
+ATMMediaType4Code	CHCK	Check	_gftZ35xDEe-Jl6tBAvMHqA	Check media.
+ATMMediaType4Code	CMDT	Commodity	_gftZ1ZxDEe-Jl6tBAvMHqA	Non fixed value of the media, for instance gold, silver.
+ATMMediaType4Code	COIN	Coins	_gftZ05xDEe-Jl6tBAvMHqA	Coin media.
+ATMMediaType4Code	CPNS	Coupons	_gftZ15xDEe-Jl6tBAvMHqA	Coupon media.
+ATMMediaType4Code	ENVP	Envelope	_GknCAaDeEe-MRKYsaX6JDg	One envelope containing unknown amounts of unknown items.
+ATMMediaType4Code	MLTP	Multiple	_HOGq8aDeEe-MRKYsaX6JDg	Multiple items either outside of envelope or in multiple envelopes.
+ATMMediaType4Code	NOTE	Notes	_gftZ2ZxDEe-Jl6tBAvMHqA	Bank note media.
+ATMMediaType4Code	STMP	Stamps	_gftZ25xDEe-Jl6tBAvMHqA	Stamp media.
+ATMMediaType4Code	UDTM	Undetermined	_gftZ3ZxDEe-Jl6tBAvMHqA	Undetermined medias.
+ATMCassetteStatus1Code	CUFL	Full	_SblCQaDZEe-MRKYsaX6JDg	The cash unit is full.
+ATMCassetteStatus1Code	CUHG	High	_aoVoUaDZEe-MRKYsaX6JDg	The cash unit is high, that is it has reached or exceeded the threshold defined for this cassette.
+ATMCassetteStatus1Code	CULW	Low	_bdXy4aDZEe-MRKYsaX6JDg	The cash unit is low, that is it has reached or is below the threshold defined for this cassette.
+ATMCassetteStatus1Code	CUMP	Manipulated	_fIqY4aDZEe-MRKYsaX6JDg	The device has been inserted when the device was not in an exchange state.
+ATMCassetteStatus1Code	CUMS	Missing	_dnYzYaDZEe-MRKYsaX6JDg	The cash unit is missing.
+ATMCassetteStatus1Code	CUMT	Empty	_cIKcUaDZEe-MRKYsaX6JDg	The cash unit is empty.
+ATMCassetteStatus1Code	CUNA	NotAvailable	_eHWs4aDZEe-MRKYsaX6JDg	The values of this cash unit are not available.
+ATMCassetteStatus1Code	CUNP	Inoperative	_dBuhkaDZEe-MRKYsaX6JDg	The cash unit is inoperative.
+ATMCassetteStatus1Code	CUNR	NoReference	_e2bZYaDZEe-MRKYsaX6JDg	There are no reference values available for this cash unit.
+ATMCassetteStatus1Code	CUOK	Ok	_R7sBQaDZEe-MRKYsaX6JDg	The cash unit is in a good state.
+ATMCounterType3Code	BDAY	BusinessDay	_dX8Td-f5Ee-WxJHuD6vKTw	Counters since the beginning of the business day.
+ATMCounterType3Code	CTOF	CutOff	_dX8Tdef5Ee-WxJHuD6vKTw	Counters since the last cut-off.
+ATMCounterType3Code	CTXN	CustomerTransaction	_dX8Tc-f5Ee-WxJHuD6vKTw	Counters for a customer transaction.
+ATMCounterType3Code	INQU	CountersInquiry	_dX8Tcef5Ee-WxJHuD6vKTw	Counters since the last counters inquiry.
+ATMCounterType3Code	OPER	OperatorAdjust	_dX8Te-f5Ee-WxJHuD6vKTw	Counters since the last update by an operator on the ATM.
+ATMCounterType3Code	PRTN	Operation	_dX8Teef5Ee-WxJHuD6vKTw	Counters as a result of some replenishment operation carried out by an operator (for example adding cash to a cash unit).
+ATMCounterType3Code	SLRP	SinceLastReplenishmentPoint	_dX8Tfef5Ee-WxJHuD6vKTw	Counters since last replenishment point.
+ATMMediaType3Code	CNTR	Counterfeit	_dBRK0a4DEeWL1uap3dNhCQ	Detected counterfeit media.
+ATMMediaType3Code	FITN	Fit	_dPbio64DEeWL1uap3dNhCQ	Fit media.
+ATMMediaType3Code	FITU	FitAndUnfit	_daqiQ64DEeWL1uap3dNhCQ	Fit or unfit media, if fitness cannot be determined.
+ATMMediaType3Code	SPCT	Suspect	_ecYd864DEeWL1uap3dNhCQ	Suspect media.
+ATMMediaType3Code	UNFT	Unfit	_euKxg64DEeWL1uap3dNhCQ	Unfit media (unacceptable quality).
+ATMMediaType3Code	UNRG	Unrecognised	_e3j-E64DEeWL1uap3dNhCQ	Unrecognised media.
+ATMNoteType1Code	ALLT	All	_V2iWcYqgEeS4a4abTJTSSw	All fit bank note types.
+ATMNoteType1Code	CNTR	Counterfeit	_V7mcoYqgEeS4a4abTJTSSw	Detected counterfeit notes.
+ATMNoteType1Code	IDVD	Individual	_WAqi0YqgEeS4a4abTJTSSw	All types of fit bank notes specified in an individual list.
+ATMNoteType1Code	SCNT	SuspectedCounterfeit	_WHEs0YqgEeS4a4abTJTSSw	Suspected counterfeit notes.
+ATMNoteType1Code	UNFT	Unfit	_WNL74YqgEeS4a4abTJTSSw	Unfit bank notes (unacceptable quality).
+ATMCassetteType1Code	DISP	Out	_8CFg8YqfEeS4a4abTJTSSw	Cassette for dispense.
+ATMCassetteType1Code	DPST	In	_783pwYqfEeS4a4abTJTSSw	Cassette for deposits.
+ATMCassetteType1Code	RCYC	Recycling	_8HvdAYqfEeS4a4abTJTSSw	Cassette for recycling.
+ATMCassetteType1Code	RJCT	Reject	_8NQ2MYqfEeS4a4abTJTSSw	Cassette for reject.
+ATMCassetteType1Code	RPLT	Replenishment	_8Sn3UYqfEeS4a4abTJTSSw	Cassette for replenishment.
+ATMCassetteType1Code	RTRC	Retract	_8X_fgYqfEeS4a4abTJTSSw	Cassette for retract.
+FailureReason9Code	CDCL	CardDeclined	_3BpY45xHEe-Jl6tBAvMHqA	Integrated circuit card declines the transaction before or after the authorisation.
+FailureReason9Code	CDCP	CardCaptured	_3BpY4ZxHEe-Jl6tBAvMHqA	ATM manager has requested to capture the card.
+FailureReason9Code	CDER	CardError	_3BpY5ZxHEe-Jl6tBAvMHqA	Unable to complete transaction with the card.
+FailureReason9Code	CDFG	ForgottenCard	_3BpY65xHEe-Jl6tBAvMHqA	Customer has left the card in the ATM or a motorised card reader.
+FailureReason9Code	CDRT	CardRetained	_3BpZA5xHEe-Jl6tBAvMHqA	Card has been retained by the ATM or the terminal.
+FailureReason9Code	CFGC	CashDispenserRetractCounted	_7FhBIaDgEe-MRKYsaX6JDg	Following a cash dispense operation the consumer forgot to take the returned notes, which have subsequently been retracted following a Present time-out. The number of notes retracted is known as the device was able to count the notes retracted.
+FailureReason9Code	CHFG	CashDispenserRetract	_2lWooaDgEe-MRKYsaX6JDg	Following a cash dispense operation the consumer forgot to take the notes, which have subsequently been retracted following a Present time-out. The number of notes retracted is unknown.
+FailureReason9Code	CQFG	ChequeDepositRetract	_4CqUIaDgEe-MRKYsaX6JDg	Following cheques being returned, on a cheque deposit operation, the consumer forgot to take the returned cheques, causing them to be retracted. The number of cheques retracted is unknown.
+FailureReason9Code	CQRT	ChequesRetained	_8fUssaDgEe-MRKYsaX6JDg	Cheques have been retained by the terminal since it has been unable to return them.
+FailureReason9Code	CSRV	OutOfCustomerService	_3BpZAZxHEe-Jl6tBAvMHqA	ATM manager has requested to the ATM to stop customer services.
+FailureReason9Code	CUCL	CustomerCancel	_3BpY55xHEe-Jl6tBAvMHqA	Customer cancellation, for example removing the card before the end of the transaction.
+FailureReason9Code	CUDC	CustomerDecline	_3BpY6ZxHEe-Jl6tBAvMHqA	Customer has declined additional fees or a lower amount, transaction fails.
+FailureReason9Code	CUTO	CustomerTimeOut	_3BpZBZxHEe-Jl6tBAvMHqA	Customer has not been performed in time an action.
+FailureReason9Code	DCFG	CashDepositRetract	_3UzvoaDgEe-MRKYsaX6JDg	Following a cash return, on a deposit operation, the consumer forgot to take the returned notes, causing them to be retracted. The number of notes retracted is unknown.
+FailureReason9Code	DCRT	DepositsRetained	_8yYyoaDgEe-MRKYsaX6JDg	Cash has been retained by the terminal since it has been unable to return it.
+FailureReason9Code	DFGC	CashDepositRetractCounted	_6MfucaDgEe-MRKYsaX6JDg	Following a cash return, on a deposit operation, the consumer forgot to take the returned notes, causing them to be retracted. The number of notes retracted is known as the device was able to count the notes retracted.
+FailureReason9Code	FILL	FullfilmentError	_3BpY7ZxHEe-Jl6tBAvMHqA	Unable to fulfil, for instance dispensing the cash.
+FailureReason9Code	FMTE	FormatError	_1A060aDgEe-MRKYsaX6JDg	The ATM Manager has sent a response message in response to an authorisation request where some of its required elements were badly formatted (for example an integer value where a dateTime value was expected).
+FailureReason9Code	LATE	TooLateResponse	_3BpY-ZxHEe-Jl6tBAvMHqA	Response to the previous message was received too late.
+FailureReason9Code	MALF	Malfunction	_3BpY75xHEe-Jl6tBAvMHqA	Suspected malfunction.
+FailureReason9Code	NDCL	OnLineDeclined	_3BpY8ZxHEe-Jl6tBAvMHqA	Online authorisation declined the transaction.
+FailureReason9Code	QFGC	ChequeDepositRetractCounted	_7iOLQaDgEe-MRKYsaX6JDg	Following cheques being returned, on a cheque deposit operation, the consumer forgot to take the returned cheques, causing them to be retracted. The number of cheques retracted is known as the device was able to count the cheques retracted.
+FailureReason9Code	RJCT	Reject	_0flO8aDgEe-MRKYsaX6JDg	The ATM Manager has sent an ATMReject message in response to an authorisation request.
+FailureReason9Code	RSTR	Restart	_9x79UajyEe--FqfI7l8ySw	The ATM has restarted.
+FailureReason9Code	SECU	SecurityError	_3BpY85xHEe-Jl6tBAvMHqA	Security error has occurred in the authorisation response message sent by the acquirer.
+FailureReason9Code	SFRD	SuspectedFraud	_3BpY9ZxHEe-Jl6tBAvMHqA	Card payment transaction fails because the merchant suspect a fraud.
+FailureReason9Code	TIMO	TimeOut	_3BpY95xHEe-Jl6tBAvMHqA	Timeout while waiting for a response to a request message, or no response was received (for example connection release before receiving the response).
+FailureReason9Code	UCMP	UnableToComplete	_3BpY_ZxHEe-Jl6tBAvMHqA	Unable to complete the transaction after the authorisation response.
+FailureReason9Code	UCPT	UnableToCapture	_3BpY-5xHEe-Jl6tBAvMHqA	Unable to capture the card as requested.
+FailureReason9Code	USND	UnableToSend	_3BpY_5xHEe-Jl6tBAvMHqA	Unable to deliver the request message to the recipient party.
+FailureReason9Code	VLTE	ValidationError	_1mvEQaDgEe-MRKYsaX6JDg	The ATM Manager has sent a response message in response to an authorisation request where some of its required elements were invalid (for example an incorrect ExchangeIdentifier).
+ATMCounterType2Code	BDAY	BusinessDay	_1uqAseg5EeSbwP3G-MV9YA	Counters since the beginning of the business day.
+ATMCounterType2Code	CTOF	CutOff	_2Osyseg5EeSbwP3G-MV9YA	Counters since the last cut-off.
+ATMCounterType2Code	INQU	CountersInquiry	_14WIMeg5EeSbwP3G-MV9YA	Counters since the last counters inquiry.
+ATMCounterType2Code	OPER	OperatorAdjust	_2iEaoeg5EeSbwP3G-MV9YA	Counters since the last update by an operator on the ATM.
+ATMOperation2Code	ADJU	Adjust	_BOMpQZxEEe-Jl6tBAvMHqA	Adjust logical counters of the cassette.
+ATMOperation2Code	INSR	InsertMedia	_BOMpQ5xEEe-Jl6tBAvMHqA	Add physically media to cassette.
+ATMOperation2Code	LOAD	Loading	_BOMpRZxEEe-Jl6tBAvMHqA	Loading cassette.
+ATMOperation2Code	RCUP	RemoteCounterUpdate	_VdwnkaDeEe-MRKYsaX6JDg	Remotely updating an ATM counter.
+ATMOperation2Code	REMV	RemoveMedia	_BOMpR5xEEe-Jl6tBAvMHqA	Substract physically media from cassette.
+ATMOperation2Code	SWAP	Swap	_7QjVwajeEe--FqfI7l8ySw	Unload all cassettes, and load a new set of cassettes to replace these. The Cassette structures determines what was removed and what was added.
+ATMOperation2Code	UNLD	Unloading	_BOMpSZxEEe-Jl6tBAvMHqA	Unloading cassette.
+Response12Code	APPR	Approved	_KpCkUZxKEe-Jl6tBAvMHqA	Service has been successfuly provided.
+Response12Code	ASUP	ApprovalSuspended	_5Syp0aDhEe-MRKYsaX6JDg	To provide this service additional information needs to be provided by the customer.
+Response12Code	DECL	Declined	_KpCkU5xKEe-Jl6tBAvMHqA	Service is declined.
+Response12Code	PART	PartialApproved	_KpCkVZxKEe-Jl6tBAvMHqA	Service has been partialy provided.
+ResultDetail5Code	ACPI	InvalidAcceptor	_o3PoeZxKEe-Jl6tBAvMHqA	Issuer denies the acceptor.
+ResultDetail5Code	ACQS	AcquirerNotSupported	_o3PoU5xKEe-Jl6tBAvMHqA	Acquirer is not supported.
+ResultDetail5Code	ACTC	ClosedAccount	_o3PoYZxKEe-Jl6tBAvMHqA	Account is no more usable for the transaction.
+ResultDetail5Code	ACTF	AccountNotFound	_o3PoUZxKEe-Jl6tBAvMHqA	Account of the cardholder or the customer is not found.
+ResultDetail5Code	ACTT	ToAccountError	_o3Po6ZxKEe-Jl6tBAvMHqA	To account status error.
+ResultDetail5Code	ADCC	AgreeDCC	_aTvFwaDjEe-MRKYsaX6JDg	Consumer must choose whether to accept DCC offer provided to authorise the transaction. See <Tx><CcyConvsElgblty>.
+ResultDetail5Code	ADDI	InvalidAddress	_o3PofZxKEe-Jl6tBAvMHqA	Part of the specified address is incorrect.
+ResultDetail5Code	AGFE	AgreeFee	_YzroQaDjEe-MRKYsaX6JDg	Consumer must agree fee from those provided to authorise the transaction. See <Tx><AuthstnRslt><FeeToAdd>.
+ResultDetail5Code	AMLV	AMLValidation	_o3PoVZxKEe-Jl6tBAvMHqA	Error on AML (Anti Money Laundering) validation.
+ResultDetail5Code	AMMA	AccountMatchesMultipleAccounts	_YOvvMaDjEe-MRKYsaX6JDg	The account details provided in the request message matches multiple accounts.
+ResultDetail5Code	AMTA	AmountNotFound	_o3PoV5xKEe-Jl6tBAvMHqA	Amount not found.
+ResultDetail5Code	AMTD	DepositAmountLimit	_o3Poa5xKEe-Jl6tBAvMHqA	Amount of deposit transactions exceeds the limit.
+ResultDetail5Code	AMTI	InvalidAmount	_o3Poe5xKEe-Jl6tBAvMHqA	Requested amount is outside the card limits, or the currency is invalid.
+ResultDetail5Code	AMTO	InvalidOriginalAmount	_o3Poh5xKEe-Jl6tBAvMHqA	Original amount is invalid.
+ResultDetail5Code	AMTW	WithdrawalAmountLimit	_o3PpA5xKEe-Jl6tBAvMHqA	Amount of withdrawal transactions exceeds card limit.
+ResultDetail5Code	AUTH	AuthenticationFailed	_o3PoWZxKEe-Jl6tBAvMHqA	Cardholder or customer could not be authenticated, for instance due to an incorrect login identification or an incorrect password.
+ResultDetail5Code	BALO	OutOfBalance	_o3Pov5xKEe-Jl6tBAvMHqA	Out of balance.
+ResultDetail5Code	BANK	BankNotFound	_o3PoW5xKEe-Jl6tBAvMHqA	Bank not found.
+ResultDetail5Code	BRHI	InvalidBranch	_o3Pof5xKEe-Jl6tBAvMHqA	Invalid branch or bank information.
+ResultDetail5Code	CHDI	InvalidCardholderIdentification	_o3PogZxKEe-Jl6tBAvMHqA	Identification of the cardholder or the customer does not match.
+ResultDetail5Code	CMKY	UnavailablecommunicationKey	_o3Po-ZxKEe-Jl6tBAvMHqA	Communication keys are not available.
+ResultDetail5Code	CNTC	SuspectedCounterfeitCard	_o3Po35xKEe-Jl6tBAvMHqA	Counterfeit card suspected by the issuer or the processor.
+ResultDetail5Code	CRDA	NoCardRecord	_o3PorZxKEe-Jl6tBAvMHqA	No card file record.
+ResultDetail5Code	CRDF	CardVerificationFailed	_o3PoX5xKEe-Jl6tBAvMHqA	Identification of the card is invalid.
+ResultDetail5Code	CRDI	InvalidCardNumber	_o3Pog5xKEe-Jl6tBAvMHqA	Identification of the card is invalid.
+ResultDetail5Code	CRDL	LostCard	_o3Poo5xKEe-Jl6tBAvMHqA	Card has been declared lost.
+ResultDetail5Code	CRDR	CardError	_o3PoXZxKEe-Jl6tBAvMHqA	Card error, for instance invalid ARQC (Authorisation ReQuest Cryptogram).
+ResultDetail5Code	CRDS	StolenCard	_o3Po25xKEe-Jl6tBAvMHqA	Card has been declared stolen.
+ResultDetail5Code	CRDT	RestrictedCard	_o3Po0ZxKEe-Jl6tBAvMHqA	Requested service not allowed by the card.
+ResultDetail5Code	CRDU	UneffectiveCard	_o3Po-5xKEe-Jl6tBAvMHqA	Card is not active yet.
+ResultDetail5Code	CRDW	WrongCard	_o3PpB5xKEe-Jl6tBAvMHqA	Other card used for the original transaction.
+ResultDetail5Code	CRDX	ExpiredCard	_o3Pob5xKEe-Jl6tBAvMHqA	Card has expired.
+ResultDetail5Code	CTFV	InvalidCertificate	_o3PohZxKEe-Jl6tBAvMHqA	Digital certificate cannot be authenticated, is expired or revoked.
+ResultDetail5Code	CTVG	CutoverInProcess	_o3PoY5xKEe-Jl6tBAvMHqA	Cutover is in progress, transaction could not be processed.
+ResultDetail5Code	DATI	InvalidTransactionDateTime	_o3Pok5xKEe-Jl6tBAvMHqA	Date time of the transaction is invalid.
+ResultDetail5Code	DBER	DatabaseError	_o3PoZZxKEe-Jl6tBAvMHqA	Database access error.
+ResultDetail5Code	FDCL	FallbackDeclined	_o3PocZxKEe-Jl6tBAvMHqA	Issuer declined the fall-back transaction.
+ResultDetail5Code	FEEM	FeeMissing	_W4-IoajyEe--FqfI7l8ySw	Transaction fee is missing from the request.
+ResultDetail5Code	FEES	DisputedFees	_o3PoZ5xKEe-Jl6tBAvMHqA	Transaction fees are disputed by the issuer.
+ResultDetail5Code	FMTR	FormatError	_o3Poc5xKEe-Jl6tBAvMHqA	Invalid format of the message or its content.
+ResultDetail5Code	FNDI	InsufficientFunds	_o3Pod5xKEe-Jl6tBAvMHqA	Account balance is not sufficient.
+ResultDetail5Code	FRDS	SuspectedFraud	_o3Po4ZxKEe-Jl6tBAvMHqA	Fraudulent transaction is suspected by the issuer or the processor.
+ResultDetail5Code	ICCM	MissingICCData	_o3PoqZxKEe-Jl6tBAvMHqA	ICC data elements required for processing the ICC transaction were not present in the message.
+ResultDetail5Code	ISSF	IssuerNotFound	_o3Pol5xKEe-Jl6tBAvMHqA	Issuer is not found.
+ResultDetail5Code	ISSO	IssuerSignedOff	_o3PomZxKEe-Jl6tBAvMHqA	Transaction could not be processed as Issuer is signed off.
+ResultDetail5Code	ISSP	IssuerInoperative	_o3PolZxKEe-Jl6tBAvMHqA	Issuer is inoperative.
+ResultDetail5Code	ISST	IssuerTimeOut	_o3Pom5xKEe-Jl6tBAvMHqA	Transaction could not be processed as Issuer times out.
+ResultDetail5Code	ISSU	IssuerUnavailable	_o3PonZxKEe-Jl6tBAvMHqA	Transaction could not be processed as Issuer is unavailable.
+ResultDetail5Code	KEYS	KeyStorageSaturation	_o3Pon5xKEe-Jl6tBAvMHqA	Storage space not available for the key.
+ResultDetail5Code	LBLA	LiabilityAccepted	_o3PooZxKEe-Jl6tBAvMHqA	Transaction is processed and liability is accepted.
+ResultDetail5Code	LBLU	NoLiabilityAccepted	_o3Por5xKEe-Jl6tBAvMHqA	Transaction is processed, but liability is not accepted.
+ResultDetail5Code	MACK	MACKeyError	_o3Pop5xKEe-Jl6tBAvMHqA	MAC key error.
+ResultDetail5Code	MACR	MACError	_o3PopZxKEe-Jl6tBAvMHqA	MAC error.
+ResultDetail5Code	MEDI	InvalidMediaType	_o3PpCZxKEe-Jl6tBAvMHqA	The requested media are not allowed for the service.
+ResultDetail5Code	NMBD	DepositNumberLimit	_o3PobZxKEe-Jl6tBAvMHqA	Number of deposit transactions or items exceeds the limit.
+ResultDetail5Code	NMBW	WithdrawalNumberLimit	_o3PpBZxKEe-Jl6tBAvMHqA	Number of withdrawal transactions exceeds card limit.
+ResultDetail5Code	NPRA	NotPermittedToAcceptor	_o3Pos5xKEe-Jl6tBAvMHqA	Process not permitted to the acceptor (for example fall back).
+ResultDetail5Code	NPRC	NotPermittedToCardholder	_o3PouZxKEe-Jl6tBAvMHqA	Transaction not permitted to the cardholder or the customer.
+ResultDetail5Code	OFFL	OffLineProcess	_o3PotZxKEe-Jl6tBAvMHqA	Transaction has been processed offline by the terminal.
+ResultDetail5Code	ONLP	OffLineProcessAfterReferral	_o3Pot5xKEe-Jl6tBAvMHqA	Transaction has been processed offline after referral.
+ResultDetail5Code	ORGF	UnableToFindOriginal	_o3Po8ZxKEe-Jl6tBAvMHqA	Transaction could not be processed as original is not found.
+ResultDetail5Code	OTHR	OtherError	_o3PovZxKEe-Jl6tBAvMHqA	Other error.
+ResultDetail5Code	PINA	NotAbleToValidatePIN	_o3PosZxKEe-Jl6tBAvMHqA	PIN could not be validated.
+ResultDetail5Code	PINC	PINChangeRequired	_o3Pow5xKEe-Jl6tBAvMHqA	Cardholder must change the PIN to be able to perform the transaction.
+ResultDetail5Code	PIND	PINDataRequired	_o3PoxZxKEe-Jl6tBAvMHqA	Additional information are required to verify the PIN.
+ResultDetail5Code	PINE	PINEncryptionError	_o3Poy5xKEe-Jl6tBAvMHqA	Decrypted PIN block is invalid.
+ResultDetail5Code	PINN	NewPINInvalid	_o3Poq5xKEe-Jl6tBAvMHqA	New PIN is invalid (PIN change).
+ResultDetail5Code	PINS	PINSecurityError	_o3Pox5xKEe-Jl6tBAvMHqA	PIN length or PIN key is invalid.
+ResultDetail5Code	PINV	InvalidPIN	_o3PoiZxKEe-Jl6tBAvMHqA	PIN is invalid.
+ResultDetail5Code	PINX	PINTriesExceeded	_o3PoyZxKEe-Jl6tBAvMHqA	Last attempt of the PIN verification fails.
+ResultDetail5Code	QMAX	QueueMaximumExceeded	_o3PozZxKEe-Jl6tBAvMHqA	Store and forward queue maximum exceeded.
+ResultDetail5Code	RECD	RecurringDataError	_o3Poz5xKEe-Jl6tBAvMHqA	Recurring Error on Data.
+ResultDetail5Code	SACT	SelectAccount	_ZfF8waDjEe-MRKYsaX6JDg	Consumer must select an account from those provided to authorise the transaction. See <Tx><AcctInf>.
+ResultDetail5Code	SECV	SecurityViolation	_o3Po05xKEe-Jl6tBAvMHqA	Security violation, for instance invalid ARPC (Authorisation ResPonse Cryptogram).
+ResultDetail5Code	SEQO	OutOfSequence	_o3PowZxKEe-Jl6tBAvMHqA	Message is out of sequence.
+ResultDetail5Code	SFWE	SoftwareOrHardwareError	_o3Po15xKEe-Jl6tBAvMHqA	Security software or hardware error.
+ResultDetail5Code	SGNI	InvalidSignature	_o3PojZxKEe-Jl6tBAvMHqA	Signed message has an invalid signature.
+ResultDetail5Code	SPCC	SpecialConditions	_o3Po2ZxKEe-Jl6tBAvMHqA	Special card conditions not respected.
+ResultDetail5Code	SRCH	SurchargeNotPermitted	_o3Po3ZxKEe-Jl6tBAvMHqA	Surcharging is not permitted.
+ResultDetail5Code	SRVI	InvalidService	_o3PpC5xKEe-Jl6tBAvMHqA	The requested service is not allowed.
+ResultDetail5Code	SRVU	ServiceNotEnabled	_o3Po1ZxKEe-Jl6tBAvMHqA	Cardholder or customer has not enabled the service with the service provider.
+ResultDetail5Code	SVSU	UnsupportedService	_o3Po_ZxKEe-Jl6tBAvMHqA	Requested service not supported.
+ResultDetail5Code	SYSM	SystemMalfunction	_o3Po5ZxKEe-Jl6tBAvMHqA	System Malfunction.
+ResultDetail5Code	SYSP	SystemInoperative	_o3Po45xKEe-Jl6tBAvMHqA	Processing temporary not available.
+ResultDetail5Code	TKID	InvalidTokenIdentification	_o3Poj5xKEe-Jl6tBAvMHqA	Identification of the token provider or the token requestor is invalid.
+ResultDetail5Code	TKKO	InvalidToken	_o3Poi5xKEe-Jl6tBAvMHqA	Token cannot be used to surrogate a PAN (Primary Account Number).
+ResultDetail5Code	TRMI	TerminalNotConfigured	_o3Po55xKEe-Jl6tBAvMHqA	Server received a terminal identification that it does not have any knowledge of.
+ResultDetail5Code	TTLV	TotalsNotAvailable	_o3Po65xKEe-Jl6tBAvMHqA	Totals are not available.
+ResultDetail5Code	TXND	TransactionDuplicate	_o3Po75xKEe-Jl6tBAvMHqA	Transaction identification already used for another transaction.
+ResultDetail5Code	TXNG	InProgress	_o3PodZxKEe-Jl6tBAvMHqA	Original request is in progress.
+ResultDetail5Code	TXNL	ExceededTransactionLifeCycle	_o3PoaZxKEe-Jl6tBAvMHqA	Validity period of the transaction is exceeded.
+ResultDetail5Code	TXNM	OriginalDoesNotMatch	_o3Pou5xKEe-Jl6tBAvMHqA	Original is found, but transaction does not match.
+ResultDetail5Code	TXNU	TransactionDidNotComplete	_o3Po7ZxKEe-Jl6tBAvMHqA	Transaction did not complete at the terminal.
+ResultDetail5Code	TXNV	InvalidTransaction	_o3PokZxKEe-Jl6tBAvMHqA	Transaction is invalid.
+ResultDetail5Code	UNBC	UnacceptableCurrency	_o3Po95xKEe-Jl6tBAvMHqA	Currency is unacceptable for the Issuer or the processor.
+ResultDetail5Code	UNBO	UnableToGoOnLine	_o3Po85xKEe-Jl6tBAvMHqA	Transaction cannot be processed online by the terminal.
+ResultDetail5Code	UNBP	UnableToProcessOffLine	_o3Po9ZxKEe-Jl6tBAvMHqA	Transaction cannot be processed offline.
+ResultDetail5Code	VNDF	VendorNotFound	_o3PpAZxKEe-Jl6tBAvMHqA	Vendor not found.
+ResultDetail5Code	VNDR	VendorFormatError	_o3Po_5xKEe-Jl6tBAvMHqA	Vendor format has an error.
+ATMServiceType11Code	ACCD	AccountDownload	_fRf03ee6Ee-AuZFZ3aE3Cg	Download accounts associated to the customer card.
+ATMServiceType11Code	ASTS	AccountStatements	_fRf0t-e6Ee-AuZFZ3aE3Cg	Request a full statement (that is a legal statement) related to a customer account.
+ATMServiceType11Code	BLCQ	BalanceInquiry	_fRf0uee6Ee-AuZFZ3aE3Cg	Balance inquiry.
+ATMServiceType11Code	CDVF	CardVerification	_fRf0u-e6Ee-AuZFZ3aE3Cg	Verification of the card.
+ATMServiceType11Code	CHSN	ChosenWithdrawal	_fRf0vee6Ee-AuZFZ3aE3Cg	Amount and notes values are chosen by the customer.
+ATMServiceType11Code	CMPF	CustomerProfile	_fRf0v-e6Ee-AuZFZ3aE3Cg	Ask for customer profile with eventualy related account information.
+ATMServiceType11Code	DCCS	DynamicCurrencyConversion	_fRf0wee6Ee-AuZFZ3aE3Cg	Ask to a DCC service provider to qualify the currency conversion for the card.
+ATMServiceType11Code	DPSN	NonVerifiedDeposit	_fRf0yee6Ee-AuZFZ3aE3Cg	Deposit of media items unverified by the ATM, for instance in an envelope.
+ATMServiceType11Code	DPSV	VerifiedDeposit	_fRf02-e6Ee-AuZFZ3aE3Cg	Deposit of media items verified by the ATM.
+ATMServiceType11Code	EMVS	SelectEMVApplication	_fRf01ee6Ee-AuZFZ3aE3Cg	Select the EMV applications allowed by the acquirer.
+ATMServiceType11Code	MCHG	MakingChange	_fRf0x-e6Ee-AuZFZ3aE3Cg	Making change between media types.
+ATMServiceType11Code	MINI	MiniStatement	_fRf03-e6Ee-AuZFZ3aE3Cg	Request a mini-statement (i.e. partial statement) related to a customer account.
+ATMServiceType11Code	PATH	PreAuthorisedWithdrawal	_fRf00ee6Ee-AuZFZ3aE3Cg	Withdrawal transaction was pre-authorised by another channel, for instance a mobile. The amount could be absent from the withdrawal request message.
+ATMServiceType11Code	PINC	PINChange	_fRf0y-e6Ee-AuZFZ3aE3Cg	Modification of the card PIN value.
+ATMServiceType11Code	PINR	PINRecovery	_fRf0zee6Ee-AuZFZ3aE3Cg	Resetting of a PIN.
+ATMServiceType11Code	PINU	PINUnblock	_fRf0z-e6Ee-AuZFZ3aE3Cg	Unblock the PIN.
+ATMServiceType11Code	PRFL	ProfileWithdrawal	_fRf00-e6Ee-AuZFZ3aE3Cg	Amount and notes Values are pre-defined by the customer profile.
+ATMServiceType11Code	SPRV	SupervisedWithdrawal	_fRf02ee6Ee-AuZFZ3aE3Cg	Withdrawal authorised by a supervisor.
+ATMServiceType11Code	STDR	StandardWithdrawal	_fRf01-e6Ee-AuZFZ3aE3Cg	Standard withdrawal of items.
+ATMServiceType11Code	TRFC	CustomerTransfer	_fRf0see6Ee-AuZFZ3aE3Cg	Funds transfer between accounts belonging to the customer in the same bank.
+ATMServiceType11Code	TRFI	InterCustomerTransfer	_fRf0s-e6Ee-AuZFZ3aE3Cg	Funds transfer to another customer.
+ATMServiceType11Code	TRFP	Payment	_fRf0tee6Ee-AuZFZ3aE3Cg	Funds transfer to pay a third party.
+ATMServiceType11Code	XRTD	ExchangeRateDeposit	_fRf0w-e6Ee-AuZFZ3aE3Cg	Ask for exchange rate for the ongoing deposit transaction.
+ATMServiceType11Code	XRTW	ExchangeRateWithdrawal	_fRf0xee6Ee-AuZFZ3aE3Cg	Ask for exchange rate for the ongoing withdrawal transaction.
+CardholderVerificationCapability3Code	FBIG	OfflineBiographics	_x6xsQYn7EeShMpas3885ww	Offline biographics.
+CardholderVerificationCapability3Code	FBIO	OfflineBiometrics	_x1FT8Yn7EeShMpas3885ww	Offline biometrics.
+CardholderVerificationCapability3Code	FCPN	OfflinePINClear	_v1O8EYn7EeShMpas3885ww	Offline PIN in clear (Personal Identification Number).
+CardholderVerificationCapability3Code	FDSG	OfflineDigitalSignature	_xFjUcYn7EeShMpas3885ww	Offline digital signature analysis.
+CardholderVerificationCapability3Code	FEPN	OfflinePINEncrypted	_v7pGEYn7EeShMpas3885ww	Offline PIN encrypted (Personal Identification Number).
+CardholderVerificationCapability3Code	NPIN	OnLinePIN	_uI4vAYn7EeShMpas3885ww	Online PIN (Personal Identification Number).
+CardholderVerificationCapability3Code	PCOD	PersonalCode	_zQIVoYn7EeShMpas3885ww	Personal code of the customer for banking services.
+CardholderVerificationCapability3Code	PKIS	PKISignature	_ylWTQYn7EeShMpas3885ww	PKI (Public Key Infrastructure) based digital signature.
+CardDataReading4Code	CICC	ICC	_KP7HoYn7EeShMpas3885ww	ICC (Integrated Circuit Card) with contact containing software applications conform to ISO 7816.
+CardDataReading4Code	CTLS	ProximityReader	_LaEmkYn7EeShMpas3885ww	Contactless proximity reader.
+CardDataReading4Code	ECTL	EMVProximityReader	_KJE4wYn7EeShMpas3885ww	Contactless proximity reader, with application conform to the standard EMV (standard initiated by Europay, Mastercard and Visa).
+CardDataReading4Code	MGST	MagneticStripe	_KX-QYYn7EeShMpas3885ww	Magnetic stripe.
+OutputFormat1Code	HTML	XHTML	_-sGugXr5EeSZrs_hiwNOWA	XHTML document which includes a subset of the XHTML output tag.
+OutputFormat1Code	MREF	MessageReference	_-Q8cgXr5EeSZrs_hiwNOWA	Predefined configured messages, identified by a reference.
+OutputFormat1Code	TEXT	SimpleText	_-m43UXr5EeSZrs_hiwNOWA	Text without format attributes.
+UserInterface5Code	CDSP	CardholderDisplay	_7SQisa13EeWMg5rOByfExw	Cardholder display or interface.
+UserInterface5Code	CRCP	CardholderReceipt	_7SQis613EeWMg5rOByfExw	Cardholder receipt.
+UserInterface5Code	CRDO	OtherCardholderInterface	_7SQiua13EeWMg5rOByfExw	Other interface of the cardholder, for instance e-mail or smartphone message.
+ATMMediaType1Code	CARD	Cards	_JV2vAYqeEeS4a4abTJTSSw	Card media.
+ATMMediaType1Code	CMDT	Commodity	_Jiqb8YqeEeS4a4abTJTSSw	Non fixed value of the media, for instance gold, silver.
+ATMMediaType1Code	COIN	Coins	_Jcs94YqeEeS4a4abTJTSSw	Coin media.
+ATMMediaType1Code	CPNS	Coupons	_JnvJMYqeEeS4a4abTJTSSw	Coupon media.
+ATMMediaType1Code	NOTE	Notes	_J9VlwYqeEeS4a4abTJTSSw	Bank note media.
+ATMMediaType1Code	STMP	Stamps	_KFrpcYqeEeS4a4abTJTSSw	Stamp media.
+ATMMediaType1Code	UDTM	Undetermined	_KMFzcYqeEeS4a4abTJTSSw	Undetermined medias.
+AuthenticationMethod7Code	BIOM	Biometry	_CGhKAYobEeSirOZJBRz_nA	Biometric authentication of the cardholder.
+AuthenticationMethod7Code	FPIN	OfflinePIN	_DaprYYobEeSirOZJBRz_nA	Off-line PIN authentication (Personal Identification Number).
+AuthenticationMethod7Code	MOBL	Mobile	_CV8tIYobEeSirOZJBRz_nA	Customer mobile device.
+AuthenticationMethod7Code	NPIN	OnLinePIN	_DgP9EYobEeSirOZJBRz_nA	On-line PIN authentication (Personal Identification Number).
+AuthenticationMethod7Code	OTHR	Other	_ChAGkYobEeSirOZJBRz_nA	Other customer authentication.
+AuthenticationMethod7Code	PSWD	Password	_FZTJYYobEeSirOZJBRz_nA	Authentication by a password.
+AuthenticationMethod7Code	SCNL	SecuredChannel	_G1VpkYobEeSirOZJBRz_nA	Channel-encrypted transaction.
+AuthenticationMethod7Code	SCRT	SecureCertificate	_FquQkYobEeSirOZJBRz_nA	Electronic commerce transaction secured with the X.509 certificate of a customer.
+AuthenticationMethod7Code	TOKA	AuthenticationToken	_BIbxIYobEeSirOZJBRz_nA	A token is used to verify an already performed authentication.
+Verification1Code	ERRR	TechnicalError	_xwe_wWjpEeSDR-pyia6Xtg	Device or entity to perform the verification was unavailable.
+Verification1Code	FAIL	Failed	_xPkEAWjpEeSDR-pyia6Xtg	Verification failed.
+Verification1Code	MISS	Missing	_xVtvUWjpEeSDR-pyia6Xtg	Information required to perform the verification was missing.
+Verification1Code	NOVF	NotPerformed	_xdGwwWjpEeSDR-pyia6Xtg	Verification has not been performed.
+Verification1Code	PART	PartialMatch	_xib8sWjpEeSDR-pyia6Xtg	Verification was partially successful.
+Verification1Code	SUCC	Successful	_xpMsAWjpEeSDR-pyia6Xtg	Verification was successful.
+AuthenticationEntity2Code	ACQR	Acquirer	_xWp_8WjoEeSDR-pyia6Xtg	Acquirer of the transaction.
+AuthenticationEntity2Code	AGNT	AuthorisedAgent	_a4ZqM2joEeSDR-pyia6Xtg	Authorisation agent of the issuer.
+AuthenticationEntity2Code	ICCD	ICC	_a4ZqMWjoEeSDR-pyia6Xtg	Application in the chip card (Integrated Circuit Card), for instance an offline PIN verification.
+AuthenticationEntity2Code	ISSR	Issuer	_xlWjQWjoEeSDR-pyia6Xtg	Card issuer.
+AuthenticationEntity2Code	MERC	Merchant	_a4ZqNWjoEeSDR-pyia6Xtg	Merchant (for example signature verification by the attendant).
+AuthenticationEntity2Code	TRML	Terminal	_xytCwWjoEeSDR-pyia6Xtg	Secure application in the terminal.
+ATMCustomerProfile1Code	CRDF	CardInformation	_kD1O8YoZEeSirOZJBRz_nA	Customer profile is deduced from the card data and the local configuration.
+ATMCustomerProfile1Code	OREQ	OtherRequest	_kMZ8IYoZEeSirOZJBRz_nA	Customer profile is sent via an account enquiry selecting an account.
+ATMCustomerProfile1Code	PREQ	ProfileRequest	_kUNNQYoZEeSirOZJBRz_nA	Customer profile is built via a specific profile message exchange.
+FailureReason8Code	CDCP	CardCaptured	_tV4i065FEeWCgYcWSNgX5g	ATM manager has requested to capture the card.
+FailureReason8Code	CDFG	ForgottenCard	_uU69865FEeWCgYcWSNgX5g	Customer has left the card in the ATM or a motorised card reader.
+FailureReason8Code	CDRT	CardRetained	_tLl-Ya5FEeWCgYcWSNgX5g	Card has been retained by the ATM or the terminal.
+FailureReason8Code	CUCL	CustomerCancel	_th8o465FEeWCgYcWSNgX5g	Customer cancellation, for example removing the card before the end of the transaction.
+FailureReason8Code	MALF	Malfunction	_upyas65FEeWCgYcWSNgX5g	Suspected malfunction.
+FailureReason8Code	SECU	SecurityError	_vc0aI65FEeWCgYcWSNgX5g	Security error has occurred in the authorisation response message sent by the acquirer.
+FailureReason8Code	SFRD	SuspectedFraud	_vomMU65FEeWCgYcWSNgX5g	Card payment transaction fails because the merchant suspect a fraud.
+FailureReason8Code	UCPT	UnableToCapture	_wAJJo65FEeWCgYcWSNgX5g	Unable to capture the card as requested.
+Response2Code	APPR	Approved	_-2kqIWqHEeS8RZDTbvnB_A	Service has been successfuly provided.
+Response2Code	DECL	Declined	__G0Fk2qHEeS8RZDTbvnB_A	Service is declined.
+ActivationStatus2Code	FAIL	Fail	_mV40I8EQEe-MiKrW3VQ1Sg	The configuration update has failed.
+ActivationStatus2Code	WACT	AwaitingActivation	_mV40IcEQEe-MiKrW3VQ1Sg	The configuration download was successful and is now awaiting a future activation date.
+ATMActionType1Code	APLY	Apply	_IV7A4aDZEe-MRKYsaX6JDg	The received configuration must be applied.
+ATMActionType1Code	NONE	None	_IbFNsaDZEe-MRKYsaX6JDg	There is no specific action required with the received configuration.
+ATMPropertyType1Code	BOOL	Boolean	_r1XVAaDZEe-MRKYsaX6JDg	The property is encoded as a Boolean.
+ATMPropertyType1Code	CSVF	CSV	_sXE68aDZEe-MRKYsaX6JDg	The property is a CSV string representing a table of data.
+ATMPropertyType1Code	JSON	JSON	_sJvCgaDZEe-MRKYsaX6JDg	The property is encoded in JSON.
+ATMPropertyType1Code	NMBR	Number	_rgsFgaDZEe-MRKYsaX6JDg	The property is encoded as a Number.
+ATMPropertyType1Code	STRG	String	_rMunsaDZEe-MRKYsaX6JDg	The property is encoded as a String.

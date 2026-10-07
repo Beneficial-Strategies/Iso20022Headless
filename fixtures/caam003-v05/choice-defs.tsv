@@ -1,0 +1,5 @@
+choice	memberId	memberName	text
+KeyValue3Choice	_Pa-OMcPzEfCTf8R2j0RpdQ	EncryptedKeyValue	Encrypted value of the cryptographic key.
+KeyValue3Choice	_Pa-OM8PzEfCTf8R2j0RpdQ	TRRelatedData	Data block for a TR31 or TR34 block, where the block does not contain a key (for example the TR34 unbind which contains the signed authorization data).
+ATMSignature3Choice	_CObUYcPzEfCTf8R2j0RpdQ	DigitalSignature	Digital signature of implicit data depending on the security scheme download procedure.
+ATMSignature3Choice	_CObUY8PzEfCTf8R2j0RpdQ	TRRelatedData	The data block for a TR31 or TR34 block, where the block does not contain a key (for example the TR34 unbind which contains the signed authorization data).

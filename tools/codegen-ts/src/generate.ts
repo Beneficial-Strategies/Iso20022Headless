@@ -285,7 +285,12 @@ function codeType(name: string): IrType {
 
 function amountType(name: string): IrType {
   const r = simple.get(name)!;
-  const cur = /currencyIdentifierSet=(\w+)/.exec(r[10]!)![1]!;
+  const curMatch = /currencyIdentifierSet=(\w+)/.exec(r[10]!);
+  if (!curMatch) {
+    // The currency is implied by the context (no currency attribute on the wire): a plain decimal.
+    return { name, isoId: r[1], kind: 'number', totalDigits: num(r[6]), fractionDigits: num(r[7]), minInclusive: num(r[8]) };
+  }
+  const cur = curMatch[1]!;
   const curPattern = codesets.get(cur)![0]![4]!.split(' ')[0]!;
   return {
     name,

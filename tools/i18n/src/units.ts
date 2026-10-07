@@ -4,7 +4,7 @@ import { codeDefinitions, codeSetDefinitions, fieldDefinitions, typeDefinitions 
 import { displayName } from '../../../packages/validate/src/runtime.ts';
 
 /** The messages whose text the catalog covers (all generated messages). */
-export const MESSAGE = 'pain.001.001.13, pain.002.001.15, pain.007.001.13, pain.008.001.12, pain.009.001.08, pain.010.001.08, pain.011.001.08, pain.012.001.08, pain.013.001.12, pain.014.001.12, pain.017.001.04, pain.018.001.04, pacs.002.001.16, pacs.003.001.12, pacs.004.001.15, pacs.007.001.14, pacs.008.001.14, pacs.009.001.13, pacs.010.001.06, pacs.028.001.07, pacs.029.001.02';
+export const MESSAGE = 'pain.001.001.13, pain.002.001.15, pain.007.001.13, pain.008.001.12, pain.009.001.08, pain.010.001.08, pain.011.001.08, pain.012.001.08, pain.013.001.12, pain.014.001.12, pain.017.001.04, pain.018.001.04, pacs.002.001.16, pacs.003.001.12, pacs.004.001.15, pacs.007.001.14, pacs.008.001.14, pacs.009.001.13, pacs.010.001.06, pacs.028.001.07, pacs.029.001.02, caam.001.001.05, caam.002.001.04, caam.003.001.05, caam.004.001.05, caam.005.001.03, caam.006.001.02, caam.007.001.01, caam.008.001.01, caam.009.001.03, caam.010.001.03, caam.011.001.02, caam.012.001.02, caam.013.001.01, caam.014.001.01, caam.015.001.01, caam.016.001.01';
 
 /** Every translatable string of the message, from the generated descriptors and definitions. English only. */
 export function extractUnits(): Unit[] {

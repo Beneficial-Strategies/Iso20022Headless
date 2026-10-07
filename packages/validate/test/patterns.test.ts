@@ -28,7 +28,12 @@ describe('describePattern', () => {
   });
 
   it('gives up (undefined) on features it does not describe, instead of guessing', () => {
-    for (const p of ['a|b', '[^0-9]', '.*', '\\w+', '(?=x)y']) expect(describePattern(p)).toBeUndefined();
+    for (const p of ['[^0-9]', '.*', '\\w+', '(?=x)y']) expect(describePattern(p)).toBeUndefined();
+  });
+
+  it('describes alternatives, one after the other', () => {
+    expect(describePattern('([0-9]{4})-[0-9]{2}|[0-9]{2}-[0-9]{2}')).toBe('4 digits, then the character "-", then 2 digits; or 2 digits, then the character "-", then 2 digits');
+    expect(describePattern('[0-9]{2}|[a-z]', 'es')).toBe('2 dígitos; o 1 letra minúscula');
   });
 
   it('describes every text pattern the generated schemas use', () => {

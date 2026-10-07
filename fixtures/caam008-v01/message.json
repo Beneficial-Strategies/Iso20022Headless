@@ -1,0 +1,43 @@
+{
+  "identifier": "caam.008.001.01",
+  "name": "HostToATMAcknowledgementV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:caam.008.001.01",
+  "bodyTag": "HstToATMAck",
+  "out": "caam008",
+  "isoId": "_uoX0IItrEeSDLd7nI4Quzw",
+  "definition": "The HostToATMAcknowledgement message is sent by an ATM to a host to acknowledge the receipt of a HostToATMRequest message.",
+  "blocks": [
+    {
+      "name": "Header",
+      "isoId": "_0sB_sItrEeSDLd7nI4Quzw",
+      "xmlTag": "Hdr",
+      "type": "Header20",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "HostToATMAcknowledgement",
+      "isoId": "_FlTp8ItsEeSDLd7nI4Quzw",
+      "xmlTag": "HstToATMAck",
+      "type": "HostToATMAcknowledgement1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ProtectedHostToATMAcknowledgement",
+      "isoId": "_7SogQItrEeSDLd7nI4Quzw",
+      "xmlTag": "PrtctdHstToATMAck",
+      "type": "ContentInformationType10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SecurityTrailer",
+      "isoId": "_JNBXgItsEeSDLd7nI4Quzw",
+      "xmlTag": "SctyTrlr",
+      "type": "ContentInformationType15",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}
