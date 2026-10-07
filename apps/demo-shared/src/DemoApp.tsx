@@ -13,6 +13,9 @@ import { ImplementDialog } from './ImplementDialog.tsx';
 import { planPaste } from './paste.ts';
 import { PasteReport, type PasteReportData, type TextSource } from './PasteReport.tsx';
 import { useSettings, wantsImplementationBanner, type Format } from './settings.ts';
+import { useXsd, type XsdHandle } from './useXsd.ts';
+import { devProxyUrl } from './xsd.ts';
+import { XsdButton, XsdNotice, XsdPanel } from './XsdValidate.tsx';
 
 const messageIds = messageIndex.map((m) => m.identifier);
 const bundleCache = new Map<string, MessageBundle>();
@@ -258,6 +261,7 @@ function Editor({
   onSwitch,
   onIncomingApplied,
   onZoom,
+  xsd,
 }: {
   bundle: MessageBundle;
   useForm: UseForm;
@@ -269,6 +273,8 @@ function Editor({
   onIncomingApplied: () => void;
   /** Show a component type on its own: the same as picking it in the type list. */
   onZoom: (type: string) => void;
+  /** The XSD of the chosen message (kept when only the type changes). */
+  xsd: XsdHandle;
 }) {
   const { t, validation } = useI18n();
   const form = useForm({ schema: (bundle.schemas as Record<string, z.ZodType>)[typeName]!, typeDescriptors: bundle.typeDescriptors, rootType: typeName, messages: validation });
@@ -404,6 +410,13 @@ function Editor({
             dark={dark}
             format={format}
             onCopied={clipboard.noteCopied}
+            leading={<XsdButton xsd={xsd} xmlOutput={format === 'xml'} />}
+            below={
+              <>
+                <XsdNotice xsd={xsd} />
+                <XsdPanel xsd={xsd} request={{ xml: output, namespace: bundle.message.namespace, type: typeName, isMessage: typeName === bundle.message.rootType }} />
+              </>
+            }
             load={{ label: t('loadFile'), onFile: (f) => void doLoadFile(f) }}
             save={{ label: t(format === 'json' ? 'saveJson' : 'saveXml'), onClick: doSave }}
             paste={{ label: pasteLabel, ...(pasteTitle ? { title: pasteTitle } : {}), disabled: clipboard.kind === 'none' || clipboard.kind === 'blocked', onClick: () => void doPaste() }}
@@ -413,6 +426,10 @@ function Editor({
     </div>
   );
 }
+
+/** Under `vite` (not in a build) the dev server can fetch ISO's schemas for the page; VITE_XSD_PROXY=off turns that off. */
+const viteEnv = (import.meta as unknown as { env?: Record<string, string | boolean | undefined> }).env;
+const DEV_XSD_PROXY = viteEnv?.DEV === true && viteEnv.VITE_XSD_PROXY !== 'off';
 
 /**
  * `variant` picks the title/blurb. `i18n` overrides interface text, validation messages and
@@ -425,6 +442,10 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
   const implementationBanner = useMemo(() => (typeof window === 'undefined' ? false : wantsImplementationBanner(window.location.search)), []);
   const [aboutOpen, setAboutOpen] = useState(false);
   const bundle = useMessageBundle(settings.message);
+  const messageInfo = messageIndex.find((m) => m.identifier === settings.message);
+  // the schema belongs to the message: choosing another message (not just another type of it) starts over
+  const proxyUrl = DEV_XSD_PROXY ? devProxyUrl(messageInfo?.xsdUrl ?? '') : undefined;
+  const xsd = useXsd(messageInfo && bundle && bundle.message.identifier === messageInfo.identifier ? { identifier: messageInfo.identifier, xsdUrl: messageInfo.xsdUrl, namespace: bundle.message.namespace, proxyUrl } : undefined);
   const [chosenType, setChosenType] = useState<{ message: string; type: string } | undefined>();
   // a type chosen for another message does not apply here: fall back to the whole message
   const typeName = bundle && chosenType?.message === settings.message && bundle.typeDescriptors[chosenType.type] ? chosenType.type : bundle?.message.rootType;
@@ -475,6 +496,7 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
               }}
               onIncomingApplied={() => setIncoming(undefined)}
               onZoom={(type) => setChosenType({ message: settings.message, type })}
+              xsd={xsd}
             />
           ) : (
             <p className="text-sm text-muted" role="status">

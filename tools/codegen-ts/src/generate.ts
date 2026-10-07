@@ -623,6 +623,8 @@ interface AreaFixture {
 }
 const areas: AreaFixture[] = JSON.parse(readFileSync(resolve(fixturesRoot, 'areas.json'), 'utf8'));
 const areaOf = (identifier: string): string => identifier.split('.')[0]!;
+// The repository's XSD Schema property of a message (staging MCP, universal_lookup): every one looks like this.
+const xsdUrl = (identifier: string): string => `https://www.iso20022.org/sites/default/files/documents/messages/${areaOf(identifier)}/schemas/${identifier}.xsd`;
 for (const c of configs.values()) if (!areas.some((x) => x.code === areaOf(c.identifier))) problems.push(`no business area ${areaOf(c.identifier)} in fixtures/areas.json for ${c.identifier}`);
 // the order messages are listed in: by area (as in areas.json), then identifier
 const listed = [...configs.values()].sort((x, y) => areas.findIndex((a) => a.code === areaOf(x.identifier)) - areas.findIndex((a) => a.code === areaOf(y.identifier)) || x.identifier.localeCompare(y.identifier));
@@ -635,7 +637,7 @@ writeOut(
   HEADER +
     "import type { ZodType } from 'zod';\nimport type { TypeDescriptors } from '../runtime.ts';\n\n" +
     'export interface MessageBundle {\n  message: { identifier: string; namespace: string; rootTag: string; bodyTag: string; rootType: string; schema: ZodType; typeDescriptors: TypeDescriptors };\n  schemas: Record<string, ZodType>;\n  typeDescriptors: TypeDescriptors;\n}\n\n' +
-    'export interface AreaInfo {\n  /** The first part of a message identifier, e.g. `pain`. */\n  code: string;\n  name: string;\n  /** The repository\'s description of the business area. */\n  definition: string;\n}\n\nexport interface MessageInfo {\n  identifier: string;\n  name: string;\n  title: string;\n  /** Business area code (`pain`, `pacs`): the first part of the identifier. */\n  area: string;\n  /** Entry point under the validate package, e.g. `pain001` for `@beneficial-strategies/iso20022-validate/pain001`. */\n  module: string;\n  /** Loads the message on demand, so a page only downloads the messages it uses. */\n  load: () => Promise<MessageBundle>;\n}\n\n' +
+    'export interface AreaInfo {\n  /** The first part of a message identifier, e.g. `pain`. */\n  code: string;\n  name: string;\n  /** The repository\'s description of the business area. */\n  definition: string;\n}\n\nexport interface MessageInfo {\n  identifier: string;\n  name: string;\n  title: string;\n  /** Business area code (`pain`, `pacs`): the first part of the identifier. */\n  area: string;\n  /** Entry point under the validate package, e.g. `pain001` for `@beneficial-strategies/iso20022-validate/pain001`. */\n  module: string;\n  /** Where ISO publishes the XSD schema of this message (the ISO 20022 repository gives the same pattern for every message). */\n  xsdUrl: string;\n  /** Loads the message on demand, so a page only downloads the messages it uses. */\n  load: () => Promise<MessageBundle>;\n}\n\n' +
     `export const areaIndex: readonly AreaInfo[] = [\n${areas
       .filter((a) => listed.some((c) => areaOf(c.identifier) === a.code))
       .map((a) => `  { code: ${q(a.code)}, name: ${q(a.name)}, definition: ${q(a.definition)} },`)
@@ -643,7 +645,7 @@ writeOut(
     `export const messageIndex: readonly MessageInfo[] = [\n${listed
       .map(
         (c) =>
-          `  {\n    identifier: ${q(c.identifier)},\n    name: ${q(c.name)},\n    title: ${q(title(c.name))},\n    area: ${q(areaOf(c.identifier))},\n    module: ${q(c.out)},\n    load: () =>\n      import('./${c.out}.ts').then((m) => ({ message: m.${c.out}Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),\n  },`,
+          `  {\n    identifier: ${q(c.identifier)},\n    name: ${q(c.name)},\n    title: ${q(title(c.name))},\n    area: ${q(areaOf(c.identifier))},\n    module: ${q(c.out)},\n    xsdUrl: ${q(xsdUrl(c.identifier))},\n    load: () =>\n      import('./${c.out}.ts').then((m) => ({ message: m.${c.out}Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),\n  },`,
       )
       .join('\n')}\n];\n`,
 );

@@ -14,6 +14,8 @@ export interface Running {
 
 /** Start an app's own Vite dev server on a free port. No manual `pnpm dev` needed. */
 export async function startApp(name: AppName, port: number): Promise<Running> {
+  // the checks must not depend on the network: the dev server's fetching of ISO's schemas is off (the page then behaves like a deployed one)
+  process.env.VITE_XSD_PROXY = 'off';
   const server: ViteDevServer = await createServer({
     root: resolve(root, 'apps', name),
     logLevel: 'error',

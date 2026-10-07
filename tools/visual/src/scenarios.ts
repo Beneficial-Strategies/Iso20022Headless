@@ -332,6 +332,308 @@ function fileScenarios(): Scenario[] {
 const optionsOf = (page: Page): Promise<string[]> => page.evaluate(() => [...document.querySelectorAll('[role=option]')].map((o) => o.textContent ?? ''));
 const messageIs = (page: Page, id: string): Promise<boolean> => page.evaluate((i) => (document.querySelector('#message-picker')?.textContent ?? '').includes(i), id);
 
+// ---------------------------------------------------------------------------- XSD validation
+
+// A reduced stand-in for ISO's pain.001.001.13 schema (see the file). ISO's own site sends no cross-origin permission, so
+// the page cannot fetch the real one: a state like the deployed page's, where the schema must be loaded from a file.
+const TEST_XSD = decodeURIComponent(new URL('../xsd/pain.001.001.13.test.xsd', import.meta.url).pathname);
+const ISO_XSD = 'https://www.iso20022.org/sites/default/files/documents/messages/pain/schemas/pain.001.001.13.xsd';
+
+const xsdButton = (page: Page) =>
+  page.evaluate(() => {
+    const b = [...document.querySelectorAll<HTMLButtonElement>('[aria-label="XML preview"] button')].find((x) => /XSD Validate|Validar XSD/.test(x.textContent ?? ''));
+    const load = [...document.querySelectorAll<HTMLButtonElement>('[aria-label="XML preview"] button')].find((x) => /Load file|Cargar archivo/.test(x.textContent ?? ''));
+    const r = b?.getBoundingClientRect();
+    const l = load?.getBoundingClientRect();
+    return {
+      found: !!b,
+      state: b?.dataset.xsdState ?? '',
+      disabled: b?.getAttribute('aria-disabled') ?? '',
+      title: b?.title ?? '',
+      leftOfLoad: !!r && !!l && r.right <= l.left + 1 && Math.abs(r.top - l.top) < 3,
+    };
+  });
+const waitForXsd = async (page: Page, state: string): Promise<void> => {
+  for (let i = 0; i < 40; i++) {
+    if ((await xsdButton(page)).state === state) return;
+    await settle(250);
+  }
+};
+const loadSchemaFile = async (page: Page, path: string): Promise<void> => {
+  const input = await page.$('input[data-load-schema]');
+  if (!input) throw new Error('no schema file input');
+  await input.uploadFile(path);
+  await settle(700);
+};
+const clickXsd = (page: Page) => clickText(page, '[aria-label="XML preview"] button', /^(XSD Validate|Validar XSD)$/);
+const panel = (page: Page) =>
+  page.evaluate(() => {
+    const p = document.querySelector('[data-xsd-panel]');
+    return { open: !!p, count: p?.querySelector('[data-xsd-count]')?.textContent ?? '', text: p?.textContent ?? '', lines: [...(p?.querySelectorAll('li') ?? [])].map((li) => li.textContent ?? '') };
+  });
+const waitForPanel = async (page: Page, until: (p: Awaited<ReturnType<typeof panel>>) => boolean): Promise<void> => {
+  for (let i = 0; i < 60; i++) {
+    if (until(await panel(page))) return;
+    await settle(250);
+  }
+};
+const xmlText = (page: Page) => page.evaluate(() => document.querySelector('.cm-content')?.textContent ?? '');
+/** The ids of the group header's fields: with the whole message shown they start with "GroupHeader-", shown on its own they do not. */
+async function fillGroupHeader(page: Page, prefix = 'GroupHeader-'): Promise<void> {
+  await page.locator(`#${prefix}MessageIdentification`).fill('MSG-1');
+  await clickText(page, 'button', /^now$|^ahora$/);
+  await page.locator(`#${prefix}NumberOfTransactions`).fill('1');
+  await page.locator(`#${prefix}InitiatingParty-Name`).fill('Acme Ltd');
+  await settle(700);
+}
+
+function xsdScenarios(): Scenario[] {
+  const base = { app: 'demo-form' as const, viewport: { width: 1440, height: 1000 } };
+  return [
+    {
+      ...base,
+      name: 'xsd-button-without-schema',
+      steps: async (page) => waitForXsd(page, 'unavailable'),
+      expect: async (page) => {
+        const b = await xsdButton(page);
+        const problems: string[] = [];
+        if (!b.found) return ['no XSD Validate button'];
+        if (!b.leftOfLoad) problems.push('the button is not to the left of Load file…, on the same line');
+        if (b.state !== 'unavailable') problems.push(`state is "${b.state}", expected the schema to be unavailable (ISO sends no cross-origin permission)`);
+        if (b.disabled !== 'true') problems.push('the button is not disabled');
+        if (b.title !== `Could not load schema from ${ISO_XSD}. Right-click to load from local file.`) problems.push(`hover text is "${b.title}"`);
+        // a click does nothing while it is disabled
+        await clickXsd(page);
+        if ((await panel(page)).open) problems.push('clicking the disabled button opened the validation window');
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'xsd-right-click-opens-the-file-chooser',
+      steps: async (page) => {
+        await waitForXsd(page, 'unavailable');
+        await page.evaluate(() => {
+          (window as unknown as { __chooser: number }).__chooser = 0;
+          document.querySelector<HTMLInputElement>('input[data-load-schema]')!.addEventListener('click', (e) => {
+            e.preventDefault(); // no native dialog in a headless run
+            (window as unknown as { __chooser: number }).__chooser++;
+          });
+        });
+        const b = [...(await page.$$('[aria-label="XML preview"] button'))];
+        for (const h of b) if (/XSD Validate/.test(await h.evaluate((e) => e.textContent ?? ''))) await h.click({ button: 'right' });
+        await settle(300);
+      },
+      expect: async (page) => ((await page.evaluate(() => (window as unknown as { __chooser: number }).__chooser)) === 1 ? [] : ['right-clicking the disabled button did not open the file chooser']),
+    },
+    {
+      ...base,
+      name: 'xsd-load-from-file-then-validate',
+      steps: async (page) => {
+        await waitForXsd(page, 'unavailable');
+        await loadSchemaFile(page, TEST_XSD);
+      },
+      expect: async (page) => {
+        const b = await xsdButton(page);
+        const problems: string[] = [];
+        if (b.state !== 'ready' || b.disabled !== 'false') problems.push(`after loading the file the state is "${b.state}", disabled="${b.disabled}"`);
+        if (b.title !== 'Validate the text of the message below using pain.001.001.13.test.xsd (loaded from your computer)') problems.push(`hover text is "${b.title}"`);
+        await clickXsd(page);
+        await waitForPanel(page, (p) => p.open && /error/.test(p.count));
+        const first = await panel(page);
+        if (!first.open) return [...problems, 'the validation window did not open'];
+        if (!/Validation Errors/.test(first.text)) problems.push('the window has no title');
+        if (!first.lines.some((l) => /MsgId|CreDtTm|Missing child/.test(l))) problems.push(`no complaint about the empty group header: ${JSON.stringify(first.lines)}`);
+        if (!first.lines.every((l) => /^Line \d+/.test(l))) problems.push(`some errors carry no line number: ${JSON.stringify(first.lines)}`);
+        const n = first.lines.length;
+        // correcting the data refreshes the window, and the errors go away
+        await fillGroupHeader(page);
+        await waitForPanel(page, (p) => p.count === '✓');
+        const last = await panel(page);
+        if (last.count !== '✓') problems.push(`after filling the group header the window says "${last.count}" ${JSON.stringify(last.lines)} (it had ${n} errors)`);
+        if (!/conforms to the schema/.test(last.text)) problems.push('no "valid" message');
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'xsd-errors-follow-the-edits',
+      steps: async (page) => {
+        await waitForXsd(page, 'unavailable');
+        await loadSchemaFile(page, TEST_XSD);
+        await clickXsd(page);
+        await fillGroupHeader(page);
+        await waitForPanel(page, (p) => p.count === '✓');
+        await page.locator('#GroupHeader-NumberOfTransactions').fill('12ab'); // the schema wants digits only
+        await waitForPanel(page, (p) => /error/.test(p.count));
+      },
+      expect: async (page) => {
+        const p = await panel(page);
+        const problems: string[] = [];
+        if (!/NbOfTxs/.test(p.text) || !/pattern/.test(p.text)) problems.push(`the bad number of transactions is not reported: ${JSON.stringify(p.lines)}`);
+        if (p.count !== '1 error') problems.push(`expected exactly "1 error", got "${p.count}"`);
+        if (/\{urn:/.test(p.text)) problems.push('the message still carries the namespace noise');
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'xsd-panel-below-the-xml',
+      steps: async (page) => {
+        await waitForXsd(page, 'unavailable');
+        await loadSchemaFile(page, TEST_XSD);
+        await clickXsd(page);
+        await waitForPanel(page, (p) => /error/.test(p.count));
+      },
+      expect: async (page) => {
+        const r = await page.evaluate(() => {
+          const pane = document.querySelector('.cm-editor')?.getBoundingClientRect();
+          const p = document.querySelector('[data-xsd-panel]')?.getBoundingClientRect();
+          return { below: !!pane && !!p && p.top >= pane.bottom - 1, inside: !!p && p.bottom <= window.innerHeight + 1, small: !!p && p.height < window.innerHeight * 0.4 };
+        });
+        return [...(r.below ? [] : ['the window is not below the XML']), ...(r.inside ? [] : ['the window runs off the page']), ...(r.small ? [] : ['the window is not small'])];
+      },
+    },
+    {
+      ...base,
+      name: 'xsd-wrong-schema-file',
+      steps: async (page) => {
+        await waitForXsd(page, 'unavailable');
+        const dir = mkdtempSync(join(tmpdir(), 'xsd-'));
+        const other = join(dir, 'pain.002.xsd');
+        writeFileSync(other, readFileSync(TEST_XSD, 'utf8').replaceAll('pain.001.001.13', 'pain.002.001.15'));
+        await loadSchemaFile(page, other);
+      },
+      expect: async (page) => {
+        const b = await xsdButton(page);
+        const note = await page.evaluate(() => document.querySelector('[data-xsd-notice]')?.textContent ?? '');
+        return [
+          ...(b.state === 'unavailable' ? [] : [`a schema for another message was accepted (state "${b.state}")`]),
+          ...(/is a schema for urn:iso:std:iso:20022:tech:xsd:pain\.002\.001\.15, not for urn:iso:std:iso:20022:tech:xsd:pain\.001\.001\.13/.test(note) ? [] : [`the notice is "${note}"`]),
+        ];
+      },
+    },
+    {
+      ...base,
+      name: 'xsd-not-a-schema-file',
+      steps: async (page) => {
+        await waitForXsd(page, 'unavailable');
+        const dir = mkdtempSync(join(tmpdir(), 'xsd-'));
+        const bad = join(dir, 'notes.xsd');
+        writeFileSync(bad, '<hello>not a schema</hello>');
+        await loadSchemaFile(page, bad);
+      },
+      expect: async (page) => {
+        const note = await page.evaluate(() => document.querySelector('[data-xsd-notice]')?.textContent ?? '');
+        return /notes\.xsd is not an XML Schema/.test(note) ? [] : [`the notice is "${note}"`];
+      },
+    },
+    {
+      ...base,
+      name: 'xsd-zoomed-part-gets-the-namespace',
+      steps: async (page) => {
+        await waitForXsd(page, 'unavailable');
+        await loadSchemaFile(page, TEST_XSD); // loaded while the whole message is shown
+        await openType(page);
+        await page.keyboard.type('GroupHeader114');
+        await settle();
+        await clickText(page, '[cmdk-item]', /^GroupHeader114/);
+        await settle(900);
+        await clickXsd(page); // the schema is still there: only the type changed
+        await waitForPanel(page, (p) => /error/.test(p.count));
+      },
+      expect: async (page) => {
+        const problems: string[] = [];
+        const first = await panel(page);
+        if (!first.open) return ['the schema did not survive choosing another type of the same message'];
+        if (!first.lines.some((l) => /MsgId|Missing child/.test(l))) problems.push(`the part was not validated: ${JSON.stringify(first.lines)}`);
+        const shown = await xmlText(page);
+        if (/xmlns/.test(shown)) problems.push('the namespace was inserted into the XML shown');
+        if (!/^\s*<GroupHeader114>/.test(shown.replace(/^<\?xml[^>]*\?>\s*/, ''))) problems.push(`the XML shown starts with "${shown.slice(0, 40)}"`);
+        await fillGroupHeader(page, '');
+        await waitForPanel(page, (p) => p.count === '✓');
+        if ((await panel(page)).count !== '✓') problems.push('the zoomed group header never became valid');
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'xsd-schema-reset-by-another-message',
+      steps: async (page) => {
+        await waitForXsd(page, 'unavailable');
+        await loadSchemaFile(page, TEST_XSD);
+        await clickXsd(page);
+        await waitForPanel(page, (p) => p.open);
+        await page.locator('#message-picker').click();
+        await settle(300);
+        await clickText(page, '[role=option]', /^pain\.002\.001\.15/);
+        await settle(1200);
+        await waitForXsd(page, 'unavailable');
+      },
+      expect: async (page) => {
+        const b = await xsdButton(page);
+        const p = await panel(page);
+        return [
+          ...(b.state === 'unavailable' ? [] : [`the schema of the previous message is still in use ("${b.state}")`]),
+          ...(b.title.includes('pain.002.001.15.xsd') ? [] : [`hover text does not name the new message's schema: "${b.title}"`]),
+          ...(p.open ? ['the validation window stayed open'] : []),
+        ];
+      },
+    },
+    {
+      ...base,
+      name: 'xsd-json-output',
+      query: '?format=json',
+      steps: async () => {
+        await settle(1500);
+      },
+      expect: async (page) => {
+        const b = await xsdButton(page);
+        return [...(b.disabled === 'true' ? [] : ['the button should be disabled for JSON output']), ...(b.title === 'XSD validation checks XML. Switch the output to XML to use it.' ? [] : [`hover text is "${b.title}"`])];
+      },
+    },
+    {
+      ...base,
+      name: 'xsd-spanish-dark',
+      query: '?lang=es&theme=dark',
+      steps: async (page) => {
+        await settle(1500);
+        await loadSchemaFile(page, TEST_XSD);
+        await clickXsd(page);
+        await waitForPanel(page, (p) => p.open);
+      },
+      expect: async (page) => {
+        const b = await xsdButton(page);
+        const p = await panel(page);
+        return [
+          ...(b.title === 'Validar el texto del mensaje de abajo con pain.001.001.13.test.xsd (cargado desde su equipo)' ? [] : [`hover text is "${b.title}"`]),
+          ...(/Errores de validación/.test(p.text) ? [] : ['the window is not in Spanish']),
+        ];
+      },
+    },
+    // Optional: with VISUAL_ISO_XSD=/path/to/pain.001.001.13.xsd (ISO's own file) the real schema is used. Not run by default: ISO's file is not in the repository.
+    ...(process.env.VISUAL_ISO_XSD
+      ? [
+          {
+            ...base,
+            name: 'xsd-real-iso-schema',
+            steps: async (page: Page) => {
+              await waitForXsd(page, 'unavailable');
+              await loadSchemaFile(page, process.env.VISUAL_ISO_XSD!);
+              await clickXsd(page);
+              await waitForPanel(page, (p) => /error/.test(p.count));
+            },
+            expect: async (page: Page) => {
+              const p = await panel(page);
+              return p.lines.some((l) => /GrpHdr|MsgId|Missing child/.test(l)) ? [] : [`the real schema's complaints are missing: ${JSON.stringify(p.lines)}`];
+            },
+          } satisfies Scenario,
+        ]
+      : []),
+    { name: 'xsd-narrow', app: 'demo-form', viewport: { width: 480, height: 900 }, steps: async (page) => { await waitForXsd(page, 'unavailable'); await loadSchemaFile(page, TEST_XSD); await clickXsd(page); await settle(2000); } },
+  ];
+}
+
 // ---------------------------------------------------------------------------- the banner and the "about" window
 
 function bannerScenarios(): Scenario[] {
@@ -984,6 +1286,7 @@ export const scenarios: Scenario[] = [
   ...pasteScenarios(),
   ...fileScenarios(),
   ...areaScenarios(),
+  ...xsdScenarios(),
   ...bannerScenarios(),
   ...specLinkScenarios(),
   { name: 'type-picker-open-narrow', app: 'demo-form', viewport: { width: 480, height: 900 }, steps: openType },
