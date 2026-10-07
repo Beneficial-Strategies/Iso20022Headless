@@ -39,11 +39,12 @@ before relying on this; the design is a pass-through of their public files, not 
    root of the site, with the pages set to ask their own site for schemas (`VITE_XSD_PROXY=on`). The GitHub Pages build
    (`pnpm pages:build`: both demos and the landing page) does not set it and is not affected.
 4. **Variables**: `NODE_VERSION` = `24`.
-5. After the first deploy: **Settings → Domains & Routes** → add the custom domain `iso20022.explorer.beneficialstrategies.com`
-   (the site must be at the root of a host: the Worker answers `/iso20022-xsd/*` at the root). That name is two levels below
-   `beneficialstrategies.com`; Cloudflare's free universal certificate normally covers only one level, so check that the
-   certificate for it is issued (Workers custom domains normally create one for the exact name). If it is not, a one-level
-   name such as `iso20022-explorer.beneficialstrategies.com` avoids the question.
+5. After the first deploy: **Settings → Domains & Routes → Add → Custom domain**. The live name is
+   `iso20022-explorer.beneficialstrategies.com` (the site must be at the root of a host: the Worker answers `/iso20022-xsd/*`
+   at the root). Use a name **one level** below the zone: Cloudflare's free universal certificate covers `beneficialstrategies.com`
+   and `*.beneficialstrategies.com` only, so a name such as `iso20022.explorer.beneficialstrategies.com` (two levels) gets a DNS
+   record but fails the TLS handshake (`alert handshake failure`) until a certificate is ordered for it (Advanced Certificate
+   Manager, paid). Tried and confirmed on 2026-10-07.
 6. Try it: `curl -I https://<your host>/iso20022-xsd/pain/schemas/pain.001.001.13.xsd` should say `200` with
    `content-type: application/xml`, and the demo's **XSD Validate** button should be enabled without any file.
 
@@ -64,6 +65,6 @@ permissions). There is no API token in the repository or in GitHub; no secrets a
 
 ## Status
 
-First deployed 2026-10-07 on `workers.dev` (as a Worker named `iso20022headless`, before it was recreated under the name in `wrangler.jsonc`). Checked there: the schema pass-through returns ISO's
+First deployed 2026-10-07 on `workers.dev` and then at `https://iso20022-explorer.beneficialstrategies.com/` (as a Worker named `iso20022headless`, before it was recreated under the name in `wrangler.jsonc`). Checked there: the schema pass-through returns ISO's
 `pain.001.001.13`, `pacs.008.001.14` and `caam.001.001.05` files byte for byte (so ISO accepts Cloudflare's addresses), the second
 request is an edge-cache hit, bad paths answer 404, and in a real browser **XSD Validate** enables itself and validates.
