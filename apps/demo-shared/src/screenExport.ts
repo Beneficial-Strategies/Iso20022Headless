@@ -14,7 +14,7 @@ export interface ExportOptions {
 export const DEFAULT_OPTIONS: ExportOptions = { definitions: false, excluded: true, emptyOptional: true };
 
 /** Whether the options show this node. */
-function visible(node: ScreenNode, opts: ExportOptions): boolean {
+export function visible(node: ScreenNode, opts: ExportOptions): boolean {
   if (node.status === 'excluded') return opts.excluded;
   if (!opts.emptyOptional && !node.required) {
     if (node.status === 'empty') return false;

@@ -11,6 +11,8 @@ belongs to the demo app (`apps/demo-shared`), not to the form library, and it is
 | Plain-text outline | an indented tree |
 | JSON | the same structure, for tools |
 | Image (PNG) | the whole form, scrolled or not, at twice the pixels with a margin; a browser that cannot put an image on the clipboard saves a file |
+| SVG for Figma | the SVG markup as text: paste onto a Figma canvas (see below) |
+| SVG file | the same drawing saved as `<identifier>.svg`, to drag into Figma |
 
 Options (kept while only the type changes): **include the ISO 20022 definitions** (off), **show optional sections that are not
 included** (on; one line each, so the reader sees what was chosen), **show optional elements left empty** (on; required elements
@@ -29,7 +31,19 @@ column headings) follow the page language; ISO names do not. Nothing leaves the 
   (each format read back from the real clipboard, the options, keyboard, Spanish, zoomed part, narrow screen). The picture the
   image check reads from the clipboard is saved as `tools/visual/out/copyas-image-clipboard.png`.
 
-## Toward Figma
+## For Figma
 
-The JSON is meant as the input of a later Figma plugin (it reads the screen description and builds frames); an SVG export in a
-wireframe style, which Figma imports by drag and drop, is the other planned step.
+`screenSvg.ts` draws the screen model as a **wireframe** in plain SVG: groups, rectangles, paths and text only (no styles, classes,
+embedded HTML or references, which design tools drop), greys plus one red for errors, so look and feel can be added in Figma.
+Every element has an `id` made from its ISO path (`GroupHeader.MessageIdentification.input`, a list entry `[0]` is `.0`), which
+Figma uses as the **layer name**. It shows what the screen shows: input boxes with their values, required stars, selects with a
+caret, amounts as currency and amount boxes, lists with their add button and entries, choices in a dashed frame, optional
+sections as a checked or unchecked "Include …" box, errors in red; the options above apply (definitions wrap under the elements).
+
+Text is measured with the browser's own text engine, so lines and boxes fit; Figma will use its own font (Inter, or a
+substitute), so widths can differ a little. There is no auto layout or components in an SVG import: the analyst gets positioned,
+named layers. The JSON copy is meant as the input of a later Figma plugin that would build frames with auto layout and components.
+
+Checked here: the SVG is well-formed XML, uses only the elements and attributes above, has unique valid ids, stays inside its
+page with no overlapping input boxes, and the browser loads it as a picture of the declared size (`copyas-figma-svg` saves a render
+as `tools/visual/out/copyas-figma-svg-render.png`). **Not checked here: importing into Figma itself.**
