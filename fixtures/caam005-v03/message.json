@@ -1,0 +1,43 @@
+{
+  "identifier": "caam.005.001.03",
+  "name": "ATMDiagnosticRequestV03",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:caam.005.001.03",
+  "bodyTag": "ATMDgnstcReq",
+  "out": "caam005",
+  "isoId": "_h37q0aFCEe-MRKYsaX6JDg",
+  "definition": "The ATMDiagnosticRequest message is sent from an ATM to an acquirer to verify the availability of the acquirer. The acquirer will also validate that this ATM is a valid ATM for its particular network.",
+  "blocks": [
+    {
+      "name": "ATMDiagnosticRequest",
+      "isoId": "_h37q16FCEe-MRKYsaX6JDg",
+      "xmlTag": "ATMDgnstcReq",
+      "type": "ATMDiagnosticRequest3",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Header",
+      "isoId": "_h37q06FCEe-MRKYsaX6JDg",
+      "xmlTag": "Hdr",
+      "type": "Header31",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ProtectedATMDiagnosticRequest",
+      "isoId": "_h37q1aFCEe-MRKYsaX6JDg",
+      "xmlTag": "PrtctdATMDgnstcReq",
+      "type": "ContentInformationType10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SecurityTrailer",
+      "isoId": "_h37q2aFCEe-MRKYsaX6JDg",
+      "xmlTag": "SctyTrlr",
+      "type": "ContentInformationType15",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

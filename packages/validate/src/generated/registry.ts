@@ -31,6 +31,7 @@ export interface MessageInfo {
 export const areaIndex: readonly AreaInfo[] = [
   { code: "pain", name: "Payments Initiation", definition: "Messages that support the initiation of a payment from the ordering customer to a financial institution that services a cash account and reporting its status." },
   { code: "pacs", name: "Payments Clearing and Settlement", definition: "Messages that support the clearing and settlement processes for payment transactions between financial institutions." },
+  { code: "caam", name: "ATM Management", definition: "Messages that support card related terminal management services between an Automated Teller Machine (ATM) and an Acquirer." },
 ];
 
 export const messageIndex: readonly MessageInfo[] = [
@@ -222,5 +223,149 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "pacs029",
     load: () =>
       import('./pacs029.ts').then((m) => ({ message: m.pacs029Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "caam.001.001.05",
+    name: "ATMDeviceReportV05",
+    title: "ATM Device Report",
+    area: "caam",
+    module: "caam001",
+    load: () =>
+      import('./caam001.ts').then((m) => ({ message: m.caam001Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "caam.002.001.04",
+    name: "ATMDeviceControlV04",
+    title: "ATM Device Control",
+    area: "caam",
+    module: "caam002",
+    load: () =>
+      import('./caam002.ts').then((m) => ({ message: m.caam002Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "caam.003.001.05",
+    name: "ATMKeyDownloadRequestV05",
+    title: "ATM Key Download Request",
+    area: "caam",
+    module: "caam003",
+    load: () =>
+      import('./caam003.ts').then((m) => ({ message: m.caam003Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "caam.004.001.05",
+    name: "ATMKeyDownloadResponseV05",
+    title: "ATM Key Download Response",
+    area: "caam",
+    module: "caam004",
+    load: () =>
+      import('./caam004.ts').then((m) => ({ message: m.caam004Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "caam.005.001.03",
+    name: "ATMDiagnosticRequestV03",
+    title: "ATM Diagnostic Request",
+    area: "caam",
+    module: "caam005",
+    load: () =>
+      import('./caam005.ts').then((m) => ({ message: m.caam005Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "caam.006.001.02",
+    name: "ATMDiagnosticResponseV02",
+    title: "ATM Diagnostic Response",
+    area: "caam",
+    module: "caam006",
+    load: () =>
+      import('./caam006.ts').then((m) => ({ message: m.caam006Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "caam.007.001.01",
+    name: "HostToATMRequestV01",
+    title: "Host To ATM Request",
+    area: "caam",
+    module: "caam007",
+    load: () =>
+      import('./caam007.ts').then((m) => ({ message: m.caam007Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "caam.008.001.01",
+    name: "HostToATMAcknowledgementV01",
+    title: "Host To ATM Acknowledgement",
+    area: "caam",
+    module: "caam008",
+    load: () =>
+      import('./caam008.ts').then((m) => ({ message: m.caam008Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "caam.009.001.03",
+    name: "ATMReconciliationAdviceV03",
+    title: "ATM Reconciliation Advice",
+    area: "caam",
+    module: "caam009",
+    load: () =>
+      import('./caam009.ts').then((m) => ({ message: m.caam009Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "caam.010.001.03",
+    name: "ATMReconciliationAcknowledgementV03",
+    title: "ATM Reconciliation Acknowledgement",
+    area: "caam",
+    module: "caam010",
+    load: () =>
+      import('./caam010.ts').then((m) => ({ message: m.caam010Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "caam.011.001.02",
+    name: "ATMExceptionAdviceV02",
+    title: "ATM Exception Advice",
+    area: "caam",
+    module: "caam011",
+    load: () =>
+      import('./caam011.ts').then((m) => ({ message: m.caam011Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "caam.012.001.02",
+    name: "ATMExceptionAcknowledgementV02",
+    title: "ATM Exception Acknowledgement",
+    area: "caam",
+    module: "caam012",
+    load: () =>
+      import('./caam012.ts').then((m) => ({ message: m.caam012Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "caam.013.001.01",
+    name: "ATMConfigurationReportV01",
+    title: "ATM Configuration Report",
+    area: "caam",
+    module: "caam013",
+    load: () =>
+      import('./caam013.ts').then((m) => ({ message: m.caam013Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "caam.014.001.01",
+    name: "ATMConfigurationControlV01",
+    title: "ATM Configuration Control",
+    area: "caam",
+    module: "caam014",
+    load: () =>
+      import('./caam014.ts').then((m) => ({ message: m.caam014Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "caam.015.001.01",
+    name: "ATMReconciliationRequestV01",
+    title: "ATM Reconciliation Request",
+    area: "caam",
+    module: "caam015",
+    load: () =>
+      import('./caam015.ts').then((m) => ({ message: m.caam015Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "caam.016.001.01",
+    name: "ATMReconciliationResponseV01",
+    title: "ATM Reconciliation Response",
+    area: "caam",
+    module: "caam016",
+    load: () =>
+      import('./caam016.ts').then((m) => ({ message: m.caam016Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
 ];

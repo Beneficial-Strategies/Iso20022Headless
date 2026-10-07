@@ -3,7 +3,7 @@
  * can say what was expected ("4 uppercase letters or digits, then ...") instead of just "Invalid format".
  *
  * Handles the subset ISO patterns use: character classes, `\d`, escaped and literal characters,
- * groups, and the quantifiers `{n}`, `{n,m}`, `{n,}`, `?`, `+`, `*`. Anything else (alternation,
+ * groups, alternation (`A|B`), and the quantifiers `{n}`, `{n,m}`, `{n,}`, `?`, `+`, `*`. Anything else (alternation,
  * negated classes, ...) is not described: `describePattern` returns undefined and callers fall back.
  */
 
@@ -19,7 +19,8 @@ interface CharSet {
 type Node =
   | { kind: 'set'; set: CharSet; min: number; max: number }
   | { kind: 'lit'; ch: string; min: number; max: number }
-  | { kind: 'group'; seq: Node[]; min: number; max: number };
+  | { kind: 'group'; seq: Node[]; min: number; max: number }
+  | { kind: 'alt'; branches: Node[][]; min: number; max: number };
 
 class Unsupported extends Error {}
 
@@ -70,16 +71,24 @@ function parse(src: string): Node[] {
     if (/[a-zA-Z0-9]/.test(c)) throw new Unsupported(); // \w, \s, \b ... are not described
     return c;
   };
+  const alt = (): Node[] => {
+    const branches = [seq()];
+    while (src[i] === '|') {
+      i++;
+      branches.push(seq());
+    }
+    return branches.length === 1 ? branches[0]! : [{ kind: 'alt', branches, min: 1, max: 1 }];
+  };
   const seq = (): Node[] => {
     const out: Node[] = [];
-    while (i < src.length && src[i] !== ')') {
+    while (i < src.length && src[i] !== ')' && src[i] !== '|') {
       const c = src[i]!;
-      if (c === '|' || c === '.' || c === '^' || c === '$') throw new Unsupported();
+      if (c === '.' || c === '^' || c === '$') throw new Unsupported();
       if (c === '(') {
         i++;
         if (src.startsWith('?:', i)) i += 2;
         else if (src[i] === '?') throw new Unsupported();
-        const inner = seq();
+        const inner = alt();
         if (src[i++] !== ')') throw new Unsupported();
         const [min, max] = quantifier();
         out.push({ kind: 'group', seq: inner, min, max });
@@ -126,7 +135,7 @@ function parse(src: string): Node[] {
     }
     return out;
   };
-  const nodes = seq();
+  const nodes = alt();
   if (i < src.length) throw new Unsupported();
   return nodes;
 }
@@ -138,6 +147,7 @@ interface Words {
   digit: [string, string];
   hex: [string, string];
   or: string;
+  alternative: string;
   anyOf: string;
   then: string;
   optionally: string;
@@ -155,6 +165,7 @@ const WORDS: Record<PatternLang, Words> = {
     digit: ['digit', 'digits'],
     hex: ['lowercase hexadecimal digit', 'lowercase hexadecimal digits'],
     or: ' or ',
+    alternative: '; or ',
     anyOf: 'any of',
     then: ', then ',
     optionally: 'optionally ',
@@ -170,6 +181,7 @@ const WORDS: Record<PatternLang, Words> = {
     digit: ['dígito', 'dígitos'],
     hex: ['dígito hexadecimal en minúscula', 'dígitos hexadecimales en minúscula'],
     or: ' o ',
+    alternative: '; o ',
     anyOf: 'cualquiera de',
     then: ', luego ',
     optionally: 'opcionalmente ',
@@ -197,9 +209,15 @@ function describeNodes(nodes: Node[], w: Words): string {
     .map((n) => {
       const optional = n.min === 0 && n.max === 1;
       const body = (plural: boolean): string =>
-        n.kind === 'set' ? noun(n.set, plural, w) : n.kind === 'lit' ? `${w.character} "${n.ch}"` : describeNodes(n.seq, w);
+        n.kind === 'set'
+          ? noun(n.set, plural, w)
+          : n.kind === 'lit'
+            ? `${w.character} "${n.ch}"`
+            : n.kind === 'alt'
+              ? n.branches.map((b) => describeNodes(b, w)).join(w.alternative)
+              : describeNodes(n.seq, w);
       if (optional) return `${w.optionally}${body(false)}`;
-      if (n.kind === 'group') return body(false); // a repeated group: describe once; counts below would misread it
+      if (n.kind === 'group' || n.kind === 'alt') return body(false); // a repeated group: describe once; counts below would misread it
       if (n.kind === 'lit') return n.min === 1 && n.max === 1 ? body(false) : `${n.min === n.max ? n.min : `${n.min}${w.to}${n.max}`} × "${n.ch}"`;
       const count =
         n.min === n.max ? `${n.min}` : n.max === Infinity ? (n.min === 0 ? w.anyNumberOf.trim() : `${n.min}${w.orMore}`) : `${n.min}${w.to}${n.max}`;

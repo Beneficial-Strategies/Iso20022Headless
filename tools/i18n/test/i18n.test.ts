@@ -13,13 +13,13 @@ describe('extraction', () => {
   it('finds every translatable unit of the message, with unique keys', () => {
     expect(new Set(units.map((x) => x.key)).size).toBe(units.length);
     const count = (k: string) => units.filter((x) => x.kind === k).length;
-    expect(units.length).toBe(3764);
-    expect(count('field')).toBe(1419);
-    expect(count('label')).toBe(1489); // 1419 elements + the message building blocks of the twenty-one messages (70)
-    expect(count('type')).toBe(236);
-    expect(count('code')).toBe(128);
-    expect(count('codeName')).toBe(128);
-    expect(count('codeSet')).toBe(44);
+    expect(units.length).toBe(6309);
+    expect(count('field')).toBe(1966);
+    expect(count('label')).toBe(2100); // 1966 elements + the message building blocks of the thirty-seven messages (134)
+    expect(count('type')).toBe(381);
+    expect(count('code')).toBe(716);
+    expect(count('codeName')).toBe(716);
+    expect(count('codeSet')).toBe(110);
     expect(count('rule')).toBe(320);
   });
   it('every unit has text, a context and a hash of its text', () => {

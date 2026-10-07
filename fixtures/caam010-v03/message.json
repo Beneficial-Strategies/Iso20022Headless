@@ -1,0 +1,43 @@
+{
+  "identifier": "caam.010.001.03",
+  "name": "ATMReconciliationAcknowledgementV03",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:caam.010.001.03",
+  "bodyTag": "ATMRcncltnAck",
+  "out": "caam010",
+  "isoId": "_udcZ0aFCEe-MRKYsaX6JDg",
+  "definition": "The ATMReconciliationAcknowledgement message is sent by an acquirer or its agent to an ATM to acknowledge the receipt of an ATMReconciliationAdvice message.",
+  "blocks": [
+    {
+      "name": "ATMReconciliationAcknowledgement",
+      "isoId": "_udcZ16FCEe-MRKYsaX6JDg",
+      "xmlTag": "ATMRcncltnAck",
+      "type": "ATMReconciliationAcknowledgement3",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Header",
+      "isoId": "_udcZ06FCEe-MRKYsaX6JDg",
+      "xmlTag": "Hdr",
+      "type": "Header32",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ProtectedATMReconciliationAcknowledgement",
+      "isoId": "_udcZ1aFCEe-MRKYsaX6JDg",
+      "xmlTag": "PrtctdATMRcncltnAck",
+      "type": "ContentInformationType10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SecurityTrailer",
+      "isoId": "_udcZ2aFCEe-MRKYsaX6JDg",
+      "xmlTag": "SctyTrlr",
+      "type": "ContentInformationType15",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

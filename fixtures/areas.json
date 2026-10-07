@@ -10,5 +10,11 @@
     "name": "Payments Clearing and Settlement",
     "isoId": "_sPQOvmtdEeCY4-KZ9JEyUQ_-735475843",
     "definition": "Messages that support the clearing and settlement processes for payment transactions between financial institutions."
+  },
+  {
+    "code": "caam",
+    "name": "ATM Management",
+    "isoId": "_9QyroIniEeSEIt-Xs5V4sA",
+    "definition": "Messages that support card related terminal management services between an Automated Teller Machine (ATM) and an Acquirer."
   }
 ]

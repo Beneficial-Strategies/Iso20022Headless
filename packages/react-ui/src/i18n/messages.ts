@@ -25,7 +25,7 @@ const KEYS = [
   // files and deployment
   'loadFile', 'saveXml', 'saveJson', 'fileDone', 'fileDoneIssues', 'fileFailed', 'fileError_empty', 'fileError_not_xml_or_json', 'fileError_unreadable', 'fileError_too_large', 'stepServe', 'noteServe',
   // business areas (the first dropdown): English text is the repository's; keep it equal to the registry (a test checks)
-  'areaLabel', 'areaName_pain', 'areaDesc_pain', 'areaName_pacs', 'areaDesc_pacs',
+  'areaLabel', 'areaName_pain', 'areaDesc_pain', 'areaName_pacs', 'areaDesc_pacs', 'areaName_caam', 'areaDesc_caam',
 ] as const;
 
 export type UiKey = (typeof KEYS)[number];
@@ -185,6 +185,8 @@ export const uiEn: UiMessages = {
   areaDesc_pain: 'Messages that support the initiation of a payment from the ordering customer to a financial institution that services a cash account and reporting its status.',
   areaName_pacs: 'Payments Clearing and Settlement',
   areaDesc_pacs: 'Messages that support the clearing and settlement processes for payment transactions between financial institutions.',
+  areaName_caam: 'ATM Management',
+  areaDesc_caam: 'Messages that support card related terminal management services between an Automated Teller Machine (ATM) and an Acquirer.',
 };
 
 const plural = (n: number | string | undefined, one: string, many: string): string => (Number(n) === 1 ? one : many);
@@ -339,6 +341,8 @@ export const uiEs: UiMessages = {
   areaDesc_pain: 'Mensajes que respaldan la iniciación de un pago desde el cliente ordenante hacia una entidad financiera que administra una cuenta de efectivo, y la comunicación de su estado.',
   areaName_pacs: 'Compensación y liquidación de pagos',
   areaDesc_pacs: 'Mensajes que respaldan los procesos de compensación y liquidación de operaciones de pago entre entidades financieras.',
+  areaName_caam: 'Gestión de cajeros automáticos',
+  areaDesc_caam: 'Mensajes que respaldan los servicios de gestión de terminales relacionados con tarjetas entre un cajero automático (ATM) y un adquirente.',
 };
 
 /** Languages shipped with the demo. Others can be added through `createI18n` / `DemoApp`'s `i18n` prop. */

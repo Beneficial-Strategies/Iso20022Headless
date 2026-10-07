@@ -1,0 +1,43 @@
+{
+  "identifier": "caam.013.001.01",
+  "name": "ATMConfigurationReportV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:caam.013.001.01",
+  "bodyTag": "ATMCfgtnRpt",
+  "out": "caam013",
+  "isoId": "_dnp6sKE9Ee-MRKYsaX6JDg",
+  "definition": "The ATMConfigurationReport is sent by an ATM to a maintenance host to report the version of the configuration which is active.",
+  "blocks": [
+    {
+      "name": "ATMConfigurationReport",
+      "isoId": "_3fbJ8KE9Ee-MRKYsaX6JDg",
+      "xmlTag": "ATMCfgtnRpt",
+      "type": "ATMConfigurationReportComponent1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Header",
+      "isoId": "_sdBMcKE9Ee-MRKYsaX6JDg",
+      "xmlTag": "Hdr",
+      "type": "Header31",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ProtectedATMConfigurationReport",
+      "isoId": "_zufO8KE9Ee-MRKYsaX6JDg",
+      "xmlTag": "PrtctdATMCfgtnRpt",
+      "type": "ContentInformationType10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SecurityTrailer",
+      "isoId": "_7Mn0cKE9Ee-MRKYsaX6JDg",
+      "xmlTag": "SctyTrlr",
+      "type": "ContentInformationType15",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

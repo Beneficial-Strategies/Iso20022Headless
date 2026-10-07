@@ -1,0 +1,26 @@
+codeSet	isoId	text
+ATMStatus1Code	_n7mq8IqLEeSRT5rEzcAHEw	Status of the ATM.
+MessageFunction8Code	_gPu80CycEeWT0qwwEKj7sA	Identifies the type of process requested by the host to an ATM.
+CryptographicKeyType4Code	_NwgesItJEeSxlKlAGYErFg	Category of the cryptographic key.
+DataSetCategory7Code	_uif28In9EeShMpas3885ww	Type of an ATM configuration.
+ATMSecurityScheme4Code	_bbRtkV2ZEeekzJIz1JxYSQ	Key exchange security schemes implemented in the hardware security module of the ATM.
+Algorithm11Code	_x-PlMWi4EeS87LmvcA55sg	Identification of a digest algorithm.
+Algorithm14Code	_iygrwWjBEeSP8Z8nx8HTuQ	Cryptographic algorithms for digital signatures.
+Algorithm7Code	_FLfa8AmFEeKKaIHo7gv4XA	Asymmetric encryption algorithm of a transport key.
+EncryptionFormat1Code	_IJtXQGi4EeS87LmvcA55sg	Format of data before encryption, if the format is not plaintext or implicit.
+Algorithm15Code	_-7tyIWjBEeSP8Z8nx8HTuQ	Cryptographic algorithms for encryptions with a symmetric cryptographic key.
+Algorithm13Code	_lh7HEWi7EeS87LmvcA55sg	Cryptographic algorithms for the protection of transported keys.
+Algorithm12Code	_h6npMWi7EeS87LmvcA55sg	Cryptographic algorithms for the MAC (Message Authentication Code).
+MessageProtection1Code	_JUfXEIrgEeSvuOJS0mmL0g	Mechanism used to protect the message of the ATM protocol.
+PINFormat4Code	_XsWNgIocEeSirOZJBRz_nA	Format of an ATM PIN block before encryption.
+ATMStatus2Code	_dpBEkIr-EeSvuOJS0mmL0g	Current status of the security device.
+ATMCommandReason1Code	_DJvmQItHEeSxlKlAGYErFg	Reason for sending the command.
+ATMCommand7Code	_dWn-cZxCEe-Jl6tBAvMHqA	Type of command performed by the ATM.
+TMSContactLevel2Code	_cNM_kIqKEeSRT5rEzcAHEw	Urgency of the command.
+TransactionEnvironment3Code	_3dTnsHsIEeSR68OJvMfxJQ	Indicates the entity hosting the terminal performing the transaction.
+MessageFunction11Code	_evJWQa1xEeWMg5rOByfExw	Identifies the type of process related to an ATM message.
+PartyType12Code	_oci7cIn0EeS9F4Qrq_eaVA	Type of identified entity.
+ContentType2Code	_gQ7oMWizEeS87LmvcA55sg	Identification of the type of a Cryptographic Message Syntax (CMS) data structure.
+BytePadding1Code	_zBfYoGi9EeS87LmvcA55sg	Byte padding for a cypher block chaining mode encryption, if the padding is not implicit.
+Algorithm8Code	_TdaocAmFEeKKaIHo7gv4XA	Mask generator functions of the RSAES-OAEP encryption algorithm (RSA Encryption Scheme: Optimal Asymmetric Encryption Padding).
+AttributeType1Code	_TSEShwEcEeCQm6a_G2yO_w_1647054539	Type of attribute of a distinguished name (DN).

@@ -1,0 +1,43 @@
+{
+  "identifier": "caam.011.001.02",
+  "name": "ATMExceptionAdviceV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:caam.011.001.02",
+  "bodyTag": "ATMXcptnAdvc",
+  "out": "caam011",
+  "isoId": "_z73KUaFCEe-MRKYsaX6JDg",
+  "definition": "The ATMExceptionAdvice message is sent by an ATM to an acquirer or its agent to inform of that an exception occurred outside a service.",
+  "blocks": [
+    {
+      "name": "ATMExceptionAdvice",
+      "isoId": "_z73KV6FCEe-MRKYsaX6JDg",
+      "xmlTag": "ATMXcptnAdvc",
+      "type": "ATMExceptionAdvice2",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Header",
+      "isoId": "_z73KU6FCEe-MRKYsaX6JDg",
+      "xmlTag": "Hdr",
+      "type": "Header32",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ProtectedATMExceptionAdvice",
+      "isoId": "_z73KVaFCEe-MRKYsaX6JDg",
+      "xmlTag": "PrtctdATMXcptnAdvc",
+      "type": "ContentInformationType10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SecurityTrailer",
+      "isoId": "_z73KWaFCEe-MRKYsaX6JDg",
+      "xmlTag": "SctyTrlr",
+      "type": "ContentInformationType15",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}
