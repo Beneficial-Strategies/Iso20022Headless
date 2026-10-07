@@ -2,7 +2,7 @@
 // path /iso20022-xsd/* goes to the Worker first, which passes ISO's XSD schemas through to the page.
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "iso20022headless",
+  "name": "iso20022-explorer",
   "main": "tools/cloudflare/src/worker.ts",
   "compatibility_date": "2026-10-01",
   "assets": {

@@ -32,7 +32,7 @@ before relying on this; the design is a pass-through of their public files, not 
 ## Setting it up (Workers Builds: Cloudflare watches the repository)
 
 1. Cloudflare dashboard → **Workers & Pages** → **Create** → **Import a repository** → this repository.
-2. Worker name `iso20022headless` (it must match `name` in `wrangler.jsonc`, or Cloudflare warns and offers a pull request to fix it), production branch `main`.
+2. Worker name `iso20022-explorer` (it must match `name` in `wrangler.jsonc`; if it does not, the build still deploys, under the dashboard's name, but warns and Cloudflare offers a pull request to change the file). A Worker cannot be renamed in the dashboard: to change the name, create a new Worker and delete the old one. Production branch `main`.
 3. **Build command**: `pnpm install --frozen-lockfile && pnpm pages:cloudflare`
    **Deploy command**: `npx wrangler deploy` (the default).
    `pnpm pages:cloudflare` builds **only the TanStack Form demo** (not the Zod-only demo, not the landing page) and puts it at the
@@ -64,6 +64,6 @@ permissions). There is no API token in the repository or in GitHub; no secrets a
 
 ## Status
 
-Deployed 2026-10-07 at `https://iso20022headless.<account>.workers.dev`. Checked there: the schema pass-through returns ISO's
+First deployed 2026-10-07 on `workers.dev` (as a Worker named `iso20022headless`, before it was recreated under the name in `wrangler.jsonc`). Checked there: the schema pass-through returns ISO's
 `pain.001.001.13`, `pacs.008.001.14` and `caam.001.001.05` files byte for byte (so ISO accepts Cloudflare's addresses), the second
 request is an edge-cache hit, bad paths answer 404, and in a real browser **XSD Validate** enables itself and validates.
