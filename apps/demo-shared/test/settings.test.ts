@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DEFAULT_SETTINGS, parseSettings, resolveLocale, resolveTheme, settingsToSearch } from '../src/settings.ts';
+import { DEFAULT_SETTINGS, parseSettings, resolveLocale, resolveTheme, settingsToSearch, wantsImplementationBanner } from '../src/settings.ts';
 
 const skins = ['tailwind', 'plain'];
 
@@ -62,5 +62,25 @@ describe('settings in the URL', () => {
     expect(parseSettings('?message=pain.002.001.15', skins).message).toBe('pain.001.001.13'); // not offered
     expect(settingsToSearch({ ...DEFAULT_SETTINGS, message: 'pain.002.001.15' })).toBe('?message=pain.002.001.15');
     expect(settingsToSearch(DEFAULT_SETTINGS)).toBe('');
+  });
+});
+
+describe('?ImplementationBanner=true brings back the original banner', () => {
+  it('is true only for "true" (name and value in any case)', () => {
+    expect(wantsImplementationBanner('?ImplementationBanner=true')).toBe(true);
+    expect(wantsImplementationBanner('?implementationbanner=TRUE')).toBe(true);
+    expect(wantsImplementationBanner('?lang=es&ImplementationBanner=true&theme=dark')).toBe(true);
+  });
+
+  it('is false when missing, false, empty or anything else', () => {
+    for (const q of ['', '?', '?lang=es', '?ImplementationBanner=false', '?ImplementationBanner=', '?ImplementationBanner', '?ImplementationBanner=1', '?ImplementationBanner=yes']) {
+      expect(wantsImplementationBanner(q), q).toBe(false);
+    }
+  });
+
+  it('survives a change of settings, which rewrite the address', () => {
+    const next = settingsToSearch({ ...DEFAULT_SETTINGS, theme: 'dark' }, '?ImplementationBanner=true');
+    expect(wantsImplementationBanner(next)).toBe(true);
+    expect(next).toContain('theme=dark');
   });
 });
