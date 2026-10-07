@@ -12,7 +12,8 @@ Worker fetches ISO's schema for the page, so the button enables itself (see `doc
 | `wrangler.jsonc` | The Worker: `site/` as assets; only `/iso20022-xsd/*` runs the Worker first. |
 | `tools/cloudflare/src/worker.ts` | The entry: schema requests to the pass-through, everything else to the assets. |
 | `tools/cloudflare/src/xsd-proxy.ts` | The pass-through, written to be tested without a network (`tools/cloudflare/test`). |
-| `tools/pages/_headers` | Cache (built files for a year) and security headers; copied into `site/` by `pnpm pages:build`. GitHub Pages ignores it. |
+| `tools/pages/assemble-cloudflare.mjs`, `_headers.cloudflare` | The Cloudflare site: the TanStack Form demo at the root, with cache (built files for a year) and security headers. |
+| `tools/pages/_headers` | The same headers for the GitHub Pages layout (`/form/`, `/zod/`); GitHub Pages ignores the file. |
 
 ## The pass-through, and what it will not do
 
@@ -32,9 +33,11 @@ before relying on this; the design is a pass-through of their public files, not 
 
 1. Cloudflare dashboard → **Workers & Pages** → **Create** → **Import a repository** → this repository.
 2. Project name `iso20022-explorer` (it must match `name` in `wrangler.jsonc`), production branch `main`.
-3. **Build command**: `pnpm install --frozen-lockfile && VITE_XSD_PROXY=on pnpm pages:build`
+3. **Build command**: `pnpm install --frozen-lockfile && pnpm pages:cloudflare`
    **Deploy command**: `npx wrangler deploy` (the default).
-   `VITE_XSD_PROXY=on` makes the built pages ask their own site for schemas; the GitHub Pages build does not set it.
+   `pnpm pages:cloudflare` builds **only the TanStack Form demo** (not the Zod-only demo, not the landing page) and puts it at the
+   root of the site, with the pages set to ask their own site for schemas (`VITE_XSD_PROXY=on`). The GitHub Pages build
+   (`pnpm pages:build`: both demos and the landing page) does not set it and is not affected.
 4. **Variables**: `NODE_VERSION` = `24`.
 5. After the first deploy: **Settings → Domains & Routes** → add the custom domain `iso20022.explorer.beneficialstrategies.com`
    (the site must be at the root of a host: the Worker answers `/iso20022-xsd/*` at the root). That name is two levels below
@@ -50,7 +53,7 @@ falls back to the right-click file loading, exactly as on GitHub Pages. Nothing 
 ## Trying it on your machine
 
 ```
-VITE_XSD_PROXY=on pnpm pages:build
+pnpm pages:cloudflare
 npx wrangler dev          # http://localhost:8787, Cloudflare's local runtime
 ```
 
