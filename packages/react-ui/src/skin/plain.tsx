@@ -166,4 +166,6 @@ export const plainSkin: Skin = {
       </details>
     );
   },
+  // the plain skin's help is a native <details>: it already shows its text inline, so there is no separate note
+  InfoNote: () => null,
 };

@@ -43,11 +43,11 @@ export interface Skin {
   /** Vertical list of sibling fields. */
   Stack: (p: { children: ReactNode }) => ReactNode;
   /** A component: titled group of fields. */
-  Group: (p: { title: string; required: boolean; info: ReactNode; error: ReactNode; children: ReactNode }) => ReactNode;
+  Group: (p: { title: string; required: boolean; info: ReactNode; note?: ReactNode; error: ReactNode; children: ReactNode }) => ReactNode;
   /** A Choice: selector plus the chosen alternative's fields. */
   ChoiceBox: (p: { children: ReactNode }) => ReactNode;
   /** A single labelled control. */
-  Field: (p: { id?: string | undefined; label: string; required: boolean; info: ReactNode; error: ReactNode; children: ReactNode }) => ReactNode;
+  Field: (p: { id?: string | undefined; label: string; required: boolean; info: ReactNode; note?: ReactNode; error: ReactNode; children: ReactNode }) => ReactNode;
   /** Controls side by side (currency + amount, input + button). */
   Row: (p: { children: ReactNode; weights?: ('fixed' | 'grow')[] }) => ReactNode;
   Text: (p: TextProps) => ReactNode;
@@ -57,12 +57,17 @@ export interface Skin {
   Hint: (p: { id: string; children: ReactNode }) => ReactNode;
   Error: (p: { id: string; children: ReactNode }) => ReactNode;
   /** "Include optional element" switch. */
-  Toggle: (p: { id: string; checked: boolean; onChange: (checked: boolean) => void; label: string; info: ReactNode }) => ReactNode;
+  Toggle: (p: { id: string; checked: boolean; onChange: (checked: boolean) => void; label: string; info: ReactNode; note?: ReactNode }) => ReactNode;
   /** Header of a repeatable element: title, help, cardinality, add button. */
-  ListHeader: (p: { title: string; info: ReactNode; caption: string; action: ReactNode }) => ReactNode;
+  ListHeader: (p: { title: string; info: ReactNode; note?: ReactNode; caption: string; action: ReactNode }) => ReactNode;
   ListItem: (p: { removeLabel: string; onRemove: () => void; children: ReactNode }) => ReactNode;
   /** Heading of the whole form (the message or type being edited), with its help. */
-  Title: (p: { children: ReactNode; info: ReactNode }) => ReactNode;
-  /** Help text for an element (spec definition). */
-  Info: (p: { def: Localized | undefined; label: string }) => ReactNode;
+  Title: (p: { children: ReactNode; info: ReactNode; note?: ReactNode }) => ReactNode;
+  /**
+   * The help button for an element. Hovering (or keyboard focus) shows the spec definition in a popup; clicking calls
+   * `onToggle`, which shows the same text inline, as the element's `InfoNote`, under its label.
+   */
+  Info: (p: { def: Localized | undefined; label: string; open: boolean; onToggle: () => void; noteId: string }) => ReactNode;
+  /** The inline help text shown while the help button is toggled on. The skin places it under the label (`note` props). */
+  InfoNote: (p: { def: Localized | undefined; id: string }) => ReactNode;
 }

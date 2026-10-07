@@ -22,6 +22,8 @@ import { schemas, typeDescriptors } from '@beneficial-strategies/iso20022-valida
 - **More control:** use `useIso20022Form` (from `@beneficial-strategies/iso20022-react`) and `<SchemaForm form={form} />` directly.
 
 The package also holds the pieces the demos use: `SchemaForm`, the skins, `I18nProvider`, `DescribedSelect`, `Info`, `Popup`.
+
+Help on an element: hovering (or keyboard-focusing) the "i" button shows the definition in a popup that ends with a hint to click; clicking it shows the same text inline under the label. A skin supplies `Info` (the button, given `open`/`onToggle`/`noteId`) and `InfoNote` (the inline text), and places the `note` it is passed under the label in `Field`, `Group`, `Toggle`, `ListHeader` and `Title`; the plain skin keeps a native `<details>`.
 Everything the demo app adds around them (message picker, settings, XML pane, "Implement!") stays in `apps/demo-shared`.
 
 ## Bundle size

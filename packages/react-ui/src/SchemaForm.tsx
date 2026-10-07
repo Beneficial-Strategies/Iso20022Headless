@@ -1,4 +1,6 @@
+import { useId, useState, type ReactNode } from 'react';
 import { displayName, type FieldDescriptor } from '@beneficial-strategies/iso20022-validate';
+import type { Localized } from '@beneficial-strategies/iso20022-validate/definitions';
 import type { FormApi } from './formApi.ts';
 import { useI18n } from './i18n/context.tsx';
 import { useSkin } from './skin/context.tsx';
@@ -43,17 +45,28 @@ interface NodeProps {
   depth: number;
 }
 
-function useInfo({ form, field, label, noInfo }: Pick<NodeProps, 'form' | 'field' | 'label' | 'noInfo'>) {
+/** The help for an element: the "i" button (hover shows a popup) and the inline note a click on it shows under the label. */
+function useHelp(def: Localized | undefined, label: string, skip?: boolean): { info: ReactNode; note: ReactNode } {
   const S = useSkin();
+  const [open, setOpen] = useState(false);
+  const noteId = useId();
+  if (skip || !def) return { info: null, note: null };
+  return {
+    info: <S.Info def={def} label={label} open={open} onToggle={() => setOpen((o) => !o)} noteId={noteId} />,
+    note: open ? <S.InfoNote def={def} id={noteId} /> : null,
+  };
+}
+
+function useInfo({ form, field, label, noInfo }: Pick<NodeProps, 'form' | 'field' | 'label' | 'noInfo'>) {
   const { defs } = useI18n();
-  return noInfo ? null : <S.Info def={defs.field(field, form.typeDescriptors[field.type])} label={label} />;
+  return useHelp(defs.field(field, form.typeDescriptors[field.type]), label, noInfo);
 }
 
 function Leaf(p: NodeProps) {
   const { form, field, path, label, required } = p;
   const S = useSkin();
   const { t, defs } = useI18n();
-  const info = useInfo(p);
+  const { info, note } = useInfo(p);
   const type = form.typeDescriptors[field.type]!;
   const props = form.getFieldProps(path);
   let control;
@@ -109,7 +122,7 @@ function Leaf(p: NodeProps) {
       );
   }
   return (
-    <S.Field id={props.id} label={label} required={required ?? field.required} info={info} error={<ErrorText form={form} path={path} />}>
+    <S.Field id={props.id} label={label} required={required ?? field.required} info={info} note={note} error={<ErrorText form={form} path={path} />}>
       {control}
     </S.Field>
   );
@@ -119,11 +132,11 @@ function AmountNode(p: NodeProps) {
   const { form, field, path, label, required } = p;
   const S = useSkin();
   const { t } = useI18n();
-  const info = useInfo(p);
+  const { info, note } = useInfo(p);
   const ccy = form.getFieldProps(`${path}.Ccy`);
   const val = form.getFieldProps(`${path}.Value`);
   return (
-    <S.Field label={label} required={required ?? field.required} info={info} error={<ErrorText form={form} path={path} />}>
+    <S.Field label={label} required={required ?? field.required} info={info} note={note} error={<ErrorText form={form} path={path} />}>
       <S.Row weights={['fixed', 'grow']}>
         <div>
           <S.Text field={ccy} placeholder="EUR" ariaLabel={t('currencyOf', { label })} />
@@ -143,7 +156,7 @@ function ChoiceNode(p: NodeProps) {
   const S = useSkin();
   const { t, defs } = useI18n();
   const labelOf = useLabel();
-  const info = useInfo(p);
+  const { info, note } = useInfo(p);
   const type = form.typeDescriptors[field.type]!;
   const selected = form.getChoice(path);
   const option = type.choiceOptions?.find((o) => o.name === selected);
@@ -151,7 +164,7 @@ function ChoiceNode(p: NodeProps) {
   const isRequired = required ?? field.required;
   return (
     <S.ChoiceBox>
-      <S.Field id={id} label={t('chooseOne', { label })} required={isRequired} info={info} error={<ErrorText form={form} path={path} />}>
+      <S.Field id={id} label={t('chooseOne', { label })} required={isRequired} info={info} note={note} error={<ErrorText form={form} path={path} />}>
         <S.Select
           id={id}
           value={selected ?? ''}
@@ -175,10 +188,10 @@ function ComponentNode(p: NodeProps) {
   const { form, field, path, label, required, depth } = p;
   const S = useSkin();
   const labelOf = useLabel();
-  const info = useInfo(p);
+  const { info, note } = useInfo(p);
   const type = form.typeDescriptors[field.type]!;
   return (
-    <S.Group title={label} required={required ?? field.required} info={info} error={<ErrorText form={form} path={path} />}>
+    <S.Group title={label} required={required ?? field.required} info={info} note={note} error={<ErrorText form={form} path={path} />}>
       {type.fields?.map((f) => (
         <FieldNode key={f.name} form={form} field={f} path={`${path}.${f.name}`} label={labelOf(f)} depth={depth + 1} />
       ))}
@@ -198,7 +211,7 @@ function FieldNode({ form, field, path, label, depth }: Omit<NodeProps, 'require
   const S = useSkin();
   const { t, defs } = useI18n();
   const type = form.typeDescriptors[field.type]!;
-  const info = <S.Info def={defs.field(field, type)} label={label} />;
+  const { info, note } = useHelp(defs.field(field, type), label);
   if (field.repeat) {
     const items = (form.getValue(path) as unknown[] | undefined) ?? [];
     const max = field.repeat.max;
@@ -207,6 +220,7 @@ function FieldNode({ form, field, path, label, depth }: Omit<NodeProps, 'require
         <S.ListHeader
           title={label}
           info={info}
+          note={note}
           caption={`${field.required ? t('listRequired') : ''}${field.repeat.min}..${max ?? '∞'}`}
           action={
             <S.Button disabled={max !== null && items.length >= max} onClick={() => form.addListItem(path, field.type)}>
@@ -230,7 +244,7 @@ function FieldNode({ form, field, path, label, depth }: Omit<NodeProps, 'require
     const present = form.isPresent(path);
     return (
       <div>
-        <S.Toggle id={`include-${idOf(path)}`} checked={present} onChange={(c) => form.setPresent(path, field.type, c)} label={label} info={info} />
+        <S.Toggle id={`include-${idOf(path)}`} checked={present} onChange={(c) => form.setPresent(path, field.type, c)} label={label} info={info} note={note} />
         {present ? <ValueNode form={form} field={field} path={path} label={label} required depth={depth + 1} /> : null}
       </div>
     );
@@ -245,12 +259,13 @@ export function SchemaForm({ form }: { form: FormApi }) {
   const { defs } = useI18n();
   const root = form.typeDescriptors[form.rootType]!;
   const title = displayName(root.name);
+  const rootHelp = useHelp(defs.type(root), title);
   const fields = root.kind === 'choice' ? [] : (root.fields ?? []);
   return (
     // data-schema-form marks everything the skin renders, so page chrome around it can be told apart
     <div data-schema-form>
     <S.Stack>
-      <S.Title info={<S.Info def={defs.type(root)} label={title} />}>{title}</S.Title>
+      <S.Title info={rootHelp.info} note={rootHelp.note}>{title}</S.Title>
       {root.kind === 'choice' ? (
         <ChoiceNode
           form={form}

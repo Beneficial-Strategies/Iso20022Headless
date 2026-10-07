@@ -1,6 +1,6 @@
 import { DescribedSelect } from '../DescribedSelect.tsx';
 import { useI18n } from '../i18n/context.tsx';
-import { Info } from '../Info.tsx';
+import { Info, InfoNote } from '../Info.tsx';
 import type { Skin } from './types.ts';
 
 const control =
@@ -18,13 +18,16 @@ export const tailwindSkin: Skin = {
   label: 'Tailwind',
   description: 'Utility-class styling with a custom accessible dropdown and help popovers.', // shown via the skin_tailwind* UI messages
   Stack: ({ children }) => <div className="space-y-3">{children}</div>,
-  Title: ({ children, info }) => (
-    <h2 className="mb-3 text-2xl font-bold text-fg">
-      {children}
-      {info ? <span className="ml-2 align-middle text-base font-normal">{info}</span> : null}
-    </h2>
+  Title: ({ children, info, note }) => (
+    <div className="mb-3">
+      <h2 className="text-2xl font-bold text-fg">
+        {children}
+        {info ? <span className="ml-2 align-middle text-base font-normal">{info}</span> : null}
+      </h2>
+      {note}
+    </div>
   ),
-  Group: function Group({ title, required, info, error, children }) {
+  Group: function Group({ title, required, info, note, error, children }) {
     const { t } = useI18n();
     return (
       <fieldset className="rounded border border-line bg-surface-alt p-3">
@@ -33,13 +36,14 @@ export const tailwindSkin: Skin = {
           {required ? <span className="ml-1 text-xs font-normal text-muted">{t('required')}</span> : null}
           {info ? <span className="ml-1 align-middle">{info}</span> : null}
         </legend>
+        {note}
         <div className="space-y-3">{children}</div>
         {error}
       </fieldset>
     );
   },
   ChoiceBox: ({ children }) => <div className="rounded border border-dashed border-edge p-2">{children}</div>,
-  Field: function Field({ id, label, required, info, error, children }) {
+  Field: function Field({ id, label, required, info, note, error, children }) {
     const { t } = useI18n();
     return (
       <div>
@@ -55,6 +59,7 @@ export const tailwindSkin: Skin = {
           </label>
           {info}
         </div>
+        {note}
         {children}
         {error}
       </div>
@@ -99,30 +104,36 @@ export const tailwindSkin: Skin = {
       {children}
     </p>
   ),
-  Toggle: function Toggle({ id, checked, onChange, label, info }) {
+  Toggle: function Toggle({ id, checked, onChange, label, info, note }) {
     const { t } = useI18n();
     // word order differs between languages: split the translated sentence around the label
     const [before = '', after = ''] = t('include', { label: '\u0001' }).split('\u0001');
     return (
-      <div className="flex items-center gap-2">
-        <input id={id} type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)} />
-        <label htmlFor={id} className="text-sm text-fg">
-          {before}
-          <span className="font-medium">{label}</span>
-          {after} <span className="text-xs text-muted">{t('optional')}</span>
-        </label>
-        {info}
+      <div>
+        <div className="flex items-center gap-2">
+          <input id={id} type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)} />
+          <label htmlFor={id} className="text-sm text-fg">
+            {before}
+            <span className="font-medium">{label}</span>
+            {after} <span className="text-xs text-muted">{t('optional')}</span>
+          </label>
+          {info}
+        </div>
+        {note ? <div className="ml-6">{note}</div> : null}
       </div>
     );
   },
-  ListHeader: ({ title, info, caption, action }) => (
-    <div className="flex items-center justify-between">
-      <span className="text-sm font-semibold text-fg">
-        {title}
-        <span className="ml-1 align-middle">{info}</span>
-        <span className="ml-1 text-xs font-normal text-muted">({caption})</span>
-      </span>
-      {action}
+  ListHeader: ({ title, info, note, caption, action }) => (
+    <div>
+      <div className="flex items-center justify-between">
+        <span className="text-sm font-semibold text-fg">
+          {title}
+          <span className="ml-1 align-middle">{info}</span>
+          <span className="ml-1 text-xs font-normal text-muted">({caption})</span>
+        </span>
+        {action}
+      </div>
+      {note}
     </div>
   ),
   ListItem: function ListItem({ removeLabel, onRemove, children }) {
@@ -143,5 +154,6 @@ export const tailwindSkin: Skin = {
       </div>
     );
   },
-  Info: ({ def, label }) => <Info def={def} label={label} />,
+  Info: (p) => <Info {...p} />,
+  InfoNote: (p) => <InfoNote {...p} />,
 };
