@@ -1,11 +1,12 @@
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react';
 import { Popup, useI18n, type FormApi } from '@beneficial-strategies/iso20022-react-ui';
-import { copyPng, copyRich, copyText, elementToPng, type CopyResult } from './copyOut.ts';
+import { copyPng, copyRich, copyText, downloadBlob, elementToPng, type CopyResult } from './copyOut.ts';
 import { useDemoText, type DemoKey } from './demoText.ts';
 import { toHtml, toJson, toMarkdown, toOutline, toTsv, type ExportOptions } from './screenExport.ts';
 import { buildScreenModel } from './screenModel.ts';
+import { browserMeasure, toFigmaSvg } from './screenSvg.ts';
 
-type Format = 'word' | 'markdown' | 'spreadsheet' | 'outline' | 'json' | 'image';
+type Format = 'word' | 'markdown' | 'spreadsheet' | 'outline' | 'json' | 'image' | 'figma' | 'svgfile';
 
 const FORMATS: { id: Format; label: DemoKey; description: DemoKey }[] = [
   { id: 'word', label: 'fmtWord', description: 'fmtWordDesc' },
@@ -14,6 +15,8 @@ const FORMATS: { id: Format; label: DemoKey; description: DemoKey }[] = [
   { id: 'outline', label: 'fmtOutline', description: 'fmtOutlineDesc' },
   { id: 'json', label: 'fmtJson', description: 'fmtJsonDesc' },
   { id: 'image', label: 'fmtImage', description: 'fmtImageDesc' },
+  { id: 'figma', label: 'fmtFigma', description: 'fmtFigmaDesc' },
+  { id: 'svgfile', label: 'fmtSvgFile', description: 'fmtSvgFileDesc' },
 ];
 
 const ITEM = 'block w-full rounded px-2 py-1.5 text-left hover:bg-accent-soft focus:bg-accent-soft focus:outline-none focus-visible:ring-2 focus-visible:ring-focus';
@@ -90,6 +93,12 @@ export function CopyAsMenu({
       else if (format === 'markdown') result = await copyText(toMarkdown(model, t, options));
       else if (format === 'spreadsheet') result = await copyText(toTsv(model, t, options));
       else if (format === 'outline') result = await copyText(toOutline(model, t, options));
+      else if (format === 'figma') result = await copyText(toFigmaSvg(model, t, options, browserMeasure()));
+      else if (format === 'svgfile') {
+        downloadBlob(new Blob([toFigmaSvg(model, t, options, browserMeasure())], { type: 'image/svg+xml' }), `${fileStem}.svg`);
+        setStatus({ text: t('saved', { format: name }), ok: true });
+        return;
+      }
       else result = await copyText(toJson(model, options));
     } catch (e) {
       result = { ok: false, why: e instanceof Error ? e.message : String(e) };
@@ -138,10 +147,13 @@ export function CopyAsMenu({
         <Popup ref={popup} anchor={button.current} id={id} role="menu" label={t('copyAsMenu')} width={360} className="rounded border border-edge bg-surface p-1 text-sm text-fg shadow-lg">
           <div onKeyDown={onKeyDown}>
             {FORMATS.map((f) => (
-              <button key={f.id} type="button" role="menuitem" data-format={f.id} className={ITEM} onClick={() => void run(f.id)}>
-                <span className="block font-medium">{t(f.label)}</span>
-                <span className="block text-xs text-muted">{t(f.description)}</span>
-              </button>
+              <div key={f.id}>
+                {f.id === 'figma' ? <div role="separator" className="my-1 border-t border-line" /> : null}
+                <button type="button" role="menuitem" data-format={f.id} className={ITEM} onClick={() => void run(f.id)}>
+                  <span className="block font-medium">{t(f.label)}</span>
+                  <span className="block text-xs text-muted">{t(f.description)}</span>
+                </button>
+              </div>
             ))}
             <div role="separator" className="my-1 border-t border-line" />
             <button type="button" role="menuitemcheckbox" aria-checked={options.definitions} data-option="definitions" className={`${ITEM} flex items-center gap-2`} onClick={() => onOptions({ ...options, definitions: !options.definitions })}>

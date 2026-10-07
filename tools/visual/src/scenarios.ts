@@ -405,7 +405,7 @@ function copyAsScenarios(): Scenario[] {
         const problems: string[] = [];
         if (!r.above) problems.push('the button is not above the left panel');
         if (!r.left) problems.push('the button is not at the left');
-        if (JSON.stringify(r.items) !== JSON.stringify(['word', 'markdown', 'spreadsheet', 'outline', 'json', 'image'])) problems.push(`menu items are ${JSON.stringify(r.items)}`);
+        if (JSON.stringify(r.items) !== JSON.stringify(['word', 'markdown', 'spreadsheet', 'outline', 'json', 'image', 'figma', 'svgfile'])) problems.push(`menu items are ${JSON.stringify(r.items)}`);
         if (JSON.stringify(r.checks) !== JSON.stringify(['definitions', 'excluded', 'emptyOptional'])) problems.push(`options are ${JSON.stringify(r.checks)}`);
         if (r.focused !== 'menuitem') problems.push(`focus is on "${r.focused}", not the first item`);
         if (await optionIn(page, 'definitions')) problems.push('definitions should be off by default');
@@ -634,6 +634,93 @@ function copyAsScenarios(): Scenario[] {
         await copyAs(page, 'markdown');
       },
       expect: async (page) => ((await clipText(page)).includes('- **Message Identification** (required): MSG-1') ? [] : ['the copy depends on the XML/JSON output setting']),
+    },
+    {
+      ...base,
+      name: 'copyas-figma-svg',
+      steps: async (page) => {
+        await fill(page);
+        await includeSection(page, 'include-GroupHeader-InitiatingParty-PostalAddress');
+        await page.locator('#GroupHeader-InitiatingParty-PostalAddress-TownName').fill('Berlin');
+        await page.locator('#GroupHeader-NumberOfTransactions').fill('2x');
+        await page.keyboard.press('Tab');
+        await settle(300);
+        await copyAs(page, 'figma');
+      },
+      expect: async (page) => {
+        const svg = await clipText(page);
+        const problems: string[] = [];
+        if (!svg.startsWith('<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg"')) problems.push(`not SVG: ${svg.slice(0, 80)}`);
+        if (/<style|class=|foreignObject|<use|href=|<image/.test(svg)) problems.push('the SVG uses something a design tool drops');
+        // the browser must read it as a picture, with the size it declares, and every id unique
+        const r = await page.evaluate(async (text) => {
+          const doc = new DOMParser().parseFromString(text, 'image/svg+xml');
+          const ids = [...doc.querySelectorAll('[id]')].map((e) => e.id);
+          const url = URL.createObjectURL(new Blob([text], { type: 'image/svg+xml' }));
+          const img = new Image();
+          await new Promise<void>((ok, bad) => {
+            img.onload = () => ok();
+            img.onerror = () => bad(new Error('the browser could not read the SVG'));
+            img.src = url;
+          });
+          const text1 = (id: string) => doc.getElementById(id)?.textContent ?? null;
+          return {
+            parseError: doc.querySelector('parsererror') !== null,
+            unique: new Set(ids).size === ids.length,
+            width: img.naturalWidth,
+            height: img.naturalHeight,
+            title: text1('Title'),
+            msg: text1('GroupHeader.MessageIdentification.input.value'),
+            town: text1('GroupHeader.InitiatingParty.PostalAddress.TownName.input.value'),
+            err: text1('GroupHeader.NumberOfTransactions.error'),
+            excluded: text1('GroupHeader.ForwardingAgent.include.label'),
+            payment: doc.getElementById('PaymentInformation') !== null,
+            count: ids.length,
+          };
+        }, svg);
+        if (r.parseError) problems.push('the SVG is not well-formed');
+        if (!r.unique) problems.push('ids are not unique');
+        if (r.width !== 760 || r.height < 1500) problems.push(`the picture is ${r.width}x${r.height}`);
+        if (r.title !== 'Customer Credit Transfer Initiation V13') problems.push(`title "${r.title}"`);
+        if (r.msg !== 'MSG-1' || r.town !== 'Berlin') problems.push(`values ${r.msg} / ${r.town}`);
+        if (!/^Error: /.test(r.err ?? '')) problems.push(`the error is "${r.err}"`);
+        if (r.excluded !== 'Include Forwarding Agent') problems.push(`left-out section is "${r.excluded}"`);
+        if (!r.payment) problems.push('the payment information list is missing');
+        if (!/Copied as SVG for Figma/.test(await copyStatus(page))) problems.push(`status is "${await copyStatus(page)}"`);
+        // a picture to look at
+        const shot = await page.browser().newPage();
+        try {
+          await shot.setViewport({ width: r.width, height: r.height });
+          await shot.goto(`data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}`);
+          await shot.screenshot({ path: join(COPY_OUT, 'copyas-figma-svg-render.png'), fullPage: true });
+        } finally {
+          await shot.close();
+        }
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'copyas-svg-file',
+      steps: async (page) => {
+        await fill(page);
+        const dir = await downloadsTo(page);
+        (globalThis as unknown as { __dir: string }).__dir = dir;
+        await openCopyAs(page);
+        await page.click('[role=menuitem][data-format=svgfile]');
+        await settle(1200);
+      },
+      expect: async (page) => {
+        const dir = (globalThis as unknown as { __dir: string }).__dir;
+        const files = readdirSync(dir);
+        const problems: string[] = [];
+        if (!files.includes('pain.001.001.13.svg')) return [`no SVG saved; the folder holds ${JSON.stringify(files)}`];
+        const saved = readFileSync(join(dir, 'pain.001.001.13.svg'), 'utf8');
+        if (!saved.startsWith('<?xml') || !saved.includes('id="MessageIdentification"') && !saved.includes('GroupHeader.MessageIdentification')) problems.push('the saved file is not the drawing');
+        if (!saved.includes('>MSG-1<')) problems.push('the saved file lacks the value');
+        if (!/Saved SVG file/.test(await copyStatus(page))) problems.push(`status is "${await copyStatus(page)}"`);
+        return problems;
+      },
     },
     { ...base, name: 'copyas-narrow', viewport: { width: 480, height: 900 }, steps: openCopyAs },
     { ...base, name: 'copyas-menu-dark-spanish', query: '?theme=dark&lang=es', steps: openCopyAs },
