@@ -332,6 +332,45 @@ function fileScenarios(): Scenario[] {
 const optionsOf = (page: Page): Promise<string[]> => page.evaluate(() => [...document.querySelectorAll('[role=option]')].map((o) => o.textContent ?? ''));
 const messageIs = (page: Page, id: string): Promise<boolean> => page.evaluate((i) => (document.querySelector('#message-picker')?.textContent ?? '').includes(i), id);
 
+// ---------------------------------------------------------------------------- the link to the published specification
+
+const specLink = (page: Page): Promise<{ href: string; target: string; rel: string; text: string } | null> =>
+  page.evaluate(() => {
+    const a = document.querySelector<HTMLAnchorElement>('header a[href*="standardsrepository"]');
+    return a ? { href: a.href, target: a.target, rel: a.rel, text: a.textContent ?? '' } : null;
+  });
+
+function specLinkScenarios(): Scenario[] {
+  const check = (type: string, text: RegExp) => async (page: Page): Promise<string[]> => {
+    const l = await specLink(page);
+    if (!l) return ['no View Specification link in the header'];
+    const problems: string[] = [];
+    if (l.href !== `https://www.iso20022.org/standardsrepository/type/${type}`) problems.push(`href is ${l.href}`);
+    if (l.target !== '_blank') problems.push(`target is "${l.target}", not a separate window`);
+    if (!/noopener/.test(l.rel)) problems.push(`rel is "${l.rel}"`);
+    if (!text.test(l.text)) problems.push(`text is "${l.text}"`);
+    return problems;
+  };
+  return [
+    { name: 'spec-link', app: 'demo-form', viewport: { width: 1440, height: 900 }, expect: check('CustomerCreditTransferInitiationV13', /View Specification/) },
+    { name: 'spec-link-spanish-caam', app: 'demo-form', query: '?message=caam.001.001.05&lang=es', viewport: { width: 1440, height: 900 }, expect: check('ATMDeviceReportV05', /Ver especificación/) },
+    { name: 'spec-link-narrow', app: 'demo-form', viewport: { width: 480, height: 900 }, expect: check('CustomerCreditTransferInitiationV13', /View Specification/) },
+    {
+      name: 'spec-link-follows-the-chosen-type',
+      app: 'demo-form',
+      viewport: { width: 1440, height: 900 },
+      steps: async (page) => {
+        await openType(page);
+        await page.keyboard.type('BranchAndFinancialInstitutionIdentification8');
+        await settle();
+        await clickText(page, '[cmdk-item]', /^BranchAndFinancialInstitutionIdentification8/);
+        await settle(600);
+      },
+      expect: check('BranchAndFinancialInstitutionIdentification8', /View Specification/),
+    },
+  ];
+}
+
 function areaScenarios(): Scenario[] {
   const base = { app: 'demo-form' as const, viewport: { width: 1440, height: 900 } };
   return [
@@ -678,6 +717,7 @@ export const scenarios: Scenario[] = [
   ...pasteScenarios(),
   ...fileScenarios(),
   ...areaScenarios(),
+  ...specLinkScenarios(),
   { name: 'type-picker-open-narrow', app: 'demo-form', viewport: { width: 480, height: 900 }, steps: openType },
   { name: 'display-open', app: 'demo-form', viewport: { width: 1440, height: 900 }, steps: openDisplay },
   { name: 'display-open-narrow-spanish', app: 'demo-form', query: '?lang=es', viewport: { width: 480, height: 900 }, steps: openDisplay },

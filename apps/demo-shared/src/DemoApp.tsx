@@ -72,6 +72,25 @@ function AreaPicker({ value, onChange }: { value: string; onChange: (code: strin
   );
 }
 
+/** The ISO 20022 repository page of a type (a message component or a whole message). */
+const specUrl = (type: string): string => `https://www.iso20022.org/standardsrepository/type/${encodeURIComponent(type)}`;
+
+/** Opens the published specification of the selected type in a separate window. */
+function SpecLink({ type }: { type: string }) {
+  const { t } = useI18n();
+  return (
+    <a
+      href={specUrl(type)}
+      target="_blank"
+      rel="noopener noreferrer"
+      title={t('viewSpecTitle', { type })}
+      className="shrink-0 whitespace-nowrap rounded border border-edge bg-surface px-3 py-1.5 text-sm text-fg hover:bg-surface-alt focus-visible:ring-2 focus-visible:ring-focus"
+    >
+      {t('viewSpec')}
+    </a>
+  );
+}
+
 /** The second choice: a message of the chosen area. */
 function MessagePicker({ area, value, onChange }: { area: string; value: string; onChange: (id: string) => void }) {
   const { t } = useI18n();
@@ -423,6 +442,7 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
             <AreaPicker value={area} onChange={(code) => update({ message: lastInArea.current[code] ?? messageIndex.find((m) => m.area === code)!.identifier })} />
             <MessagePicker area={area} value={settings.message} onChange={(message) => update({ message })} />
             {bundle && typeName ? <TypePicker bundle={bundle} value={typeName} onChange={(type) => setChosenType({ message: settings.message, type })} /> : null}
+            {bundle && typeName ? <SpecLink type={typeName} /> : null}
             <SettingsPanel settings={settings} skins={skins} locales={locales} onChange={update} />
           </div>
         </header>
