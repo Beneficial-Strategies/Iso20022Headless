@@ -30,8 +30,6 @@ const KEYS = [
   'viewSpec', 'viewSpecTitle',
   // help for an element
   'helpClickHint',
-  // zoom into a component type
-  'zoomLabel', 'zoomTip', 'zoomShort',
   // XSD validation of the XML
   'xsdLabel', 'xsdReady', 'xsdReadyFile', 'xsdLoading', 'xsdUnavailable', 'xsdNeedsXml', 'xsdNotSchema', 'xsdWrongSchema', 'xsdReadFailed',
   'xsdPanelTitle', 'xsdValid', 'xsdOneError', 'xsdErrors', 'xsdChecking', 'xsdEngineFailed', 'xsdClose', 'xsdLine', 'xsdLoadOther', 'xsdSchemaFrom',
@@ -203,10 +201,6 @@ export const uiEn: UiMessages = {
   viewSpec: 'View Specification ↗',
   viewSpecTitle: 'Open the ISO 20022 repository page for {type} in a new window',
   helpClickHint: 'Click to view in form',
-  zoomLabel: 'Zoom in to {type}',
-  zoomTip:
-    'This message subset is based upon the ISO 20022 type {type}. If you are adding or editing lookup values that may be persisted somewhere, you might need a control based on this subset of message data. Click Zoom to zoom in to that data type in isolation from the outer message.',
-  zoomShort: 'Zoom',
   xsdLabel: 'XSD Validate',
   xsdReady: 'Validate the text of the message below using {location}',
   xsdReadyFile: 'Validate the text of the message below using {file} (loaded from your computer)',
@@ -409,10 +403,6 @@ export const uiEs: UiMessages = {
   viewSpec: 'Ver especificación ↗',
   viewSpecTitle: 'Abrir la página del repositorio de ISO 20022 para {type} en una ventana nueva',
   helpClickHint: 'Haga clic para verlo en el formulario',
-  zoomLabel: 'Hacer zoom en {type}',
-  zoomTip:
-    'Este subconjunto del mensaje se basa en el tipo ISO 20022 {type}. Si está agregando o editando valores de consulta que quizá se guarden en algún lugar, puede necesitar un control basado en este subconjunto de datos del mensaje. Haga clic en Zoom para acercarse a ese tipo de datos, aislado del mensaje que lo contiene.',
-  zoomShort: 'Zoom',
   xsdLabel: 'Validar XSD',
   xsdReady: 'Validar el texto del mensaje de abajo con {location}',
   xsdReadyFile: 'Validar el texto del mensaje de abajo con {file} (cargado desde su equipo)',

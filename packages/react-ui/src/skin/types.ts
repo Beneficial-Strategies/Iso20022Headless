@@ -65,10 +65,10 @@ export interface Skin {
   Title: (p: { children: ReactNode; info: ReactNode; note?: ReactNode }) => ReactNode;
   /**
    * The help button for an element. Hovering (or keyboard focus) shows the spec definition in a popup; clicking calls
-   * `onToggle`, which shows the same text inline, as the element's `InfoNote`, under its label. When `zoom` is given
-   * (the element is a component the form can show on its own), a zoom button follows it and calls `zoom.onZoom`.
+   * `onToggle`, which shows the same text inline, as the element's `InfoNote`, under its label. `extra` is what the host
+   * put beside it (`SchemaForm`'s `fieldExtra`): the skin shows it right after the button and adds nothing of its own.
    */
-  Info: (p: { def: Localized | undefined; label: string; open: boolean; onToggle: () => void; noteId: string; zoom?: { type: string; onZoom: () => void } | undefined }) => ReactNode;
+  Info: (p: { def: Localized | undefined; label: string; open: boolean; onToggle: () => void; noteId: string; extra?: ReactNode }) => ReactNode;
   /** The inline help text shown while the help button is toggled on. The skin places it under the label (`note` props). */
   InfoNote: (p: { def: Localized | undefined; id: string }) => ReactNode;
 }

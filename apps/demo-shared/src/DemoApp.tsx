@@ -16,6 +16,7 @@ import { useSettings, wantsImplementationBanner, type Format } from './settings.
 import { useXsd, type XsdHandle } from './useXsd.ts';
 import { devProxyUrl } from './xsd.ts';
 import { XsdButton, XsdNotice, XsdPanel } from './XsdValidate.tsx';
+import { zoomExtra } from './ZoomButton.tsx';
 
 const messageIds = messageIndex.map((m) => m.identifier);
 const bundleCache = new Map<string, MessageBundle>();
@@ -277,6 +278,8 @@ function Editor({
   xsd: XsdHandle;
 }) {
   const { t, validation } = useI18n();
+  // the zoom buttons beside the "i" are the demo's own, not the form library's
+  const fieldExtra = useMemo(() => zoomExtra(onZoom), [onZoom]);
   const form = useForm({ schema: (bundle.schemas as Record<string, z.ZodType>)[typeName]!, typeDescriptors: bundle.typeDescriptors, rootType: typeName, messages: validation });
   const [submitted, setSubmitted] = useState(false);
   const [implementOpen, setImplementOpen] = useState(false);
@@ -362,7 +365,7 @@ function Editor({
   return (
     <div className="grid min-h-0 flex-1 grid-cols-1 gap-4 lg:grid-cols-2">
       <section className="min-h-0 overflow-auto pr-2" aria-label="Form" data-form-area>
-        <SchemaForm form={form} onZoom={onZoom} />
+        <SchemaForm form={form} fieldExtra={fieldExtra} />
         <RulesPanel results={ruleResults} />
         <div className="mt-4 flex items-center gap-3">
           <button

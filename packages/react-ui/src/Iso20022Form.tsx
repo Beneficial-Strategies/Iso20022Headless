@@ -1,8 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, type ReactNode } from 'react';
 import type { ZodType } from 'zod';
 import { useIso20022Form } from '@beneficial-strategies/iso20022-react';
 import type { TypeDescriptors } from '@beneficial-strategies/iso20022-validate';
-import { SchemaForm } from './SchemaForm.tsx';
+import { SchemaForm, type FieldExtraContext } from './SchemaForm.tsx';
 import { I18nProvider, useCreateI18n, type I18nOverrides } from './i18n/context.tsx';
 import { SkinProvider } from './skin/context.tsx';
 import { plainSkin } from './skin/plain.tsx';
@@ -22,15 +22,15 @@ export interface Iso20022FormProps {
   locale?: string;
   /** Replace any interface text, validation message or definition. See `I18nOverrides`. */
   overrides?: I18nOverrides;
-  /** Adds a zoom button to every element that is a component type, called with that type's name (e.g. to render it on its own). */
-  onZoom?: (type: string) => void;
+  /** Something to show right after the "i" of every element (a button, an icon, a link); see `SchemaForm`. */
+  fieldExtra?: (element: FieldExtraContext) => ReactNode;
 }
 
 /**
  * A ready-to-use form for one ISO 20022 type, with validation, prompts and definitions working.
  * It is a thin convenience over `useIso20022Form` + `SchemaForm`; use those directly for more control.
  */
-export function Iso20022Form({ type, schemas, typeDescriptors, onChange, skin = plainSkin, locale = 'en', overrides, onZoom }: Iso20022FormProps) {
+export function Iso20022Form({ type, schemas, typeDescriptors, onChange, skin = plainSkin, locale = 'en', overrides, fieldExtra }: Iso20022FormProps) {
   const schema = schemas[type];
   if (!schema) throw new Error(`Iso20022Form: unknown type "${type}". Use a type name from the message module's \`schemas\`.`);
   const i18n = useCreateI18n(locale, overrides);
@@ -45,7 +45,7 @@ export function Iso20022Form({ type, schemas, typeDescriptors, onChange, skin = 
   return (
     <I18nProvider value={i18n}>
       <SkinProvider value={skin}>
-        <SchemaForm form={form} {...(onZoom ? { onZoom } : {})} />
+        <SchemaForm form={form} {...(fieldExtra ? { fieldExtra } : {})} />
       </SkinProvider>
     </I18nProvider>
   );
