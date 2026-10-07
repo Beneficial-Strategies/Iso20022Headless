@@ -1,0 +1,9 @@
+# Used by Cloudflare (static assets); GitHub Pages ignores this file.
+# Built files are named after their content, so they can be kept for a year.
+/form/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+/zod/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin

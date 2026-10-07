@@ -4,6 +4,7 @@
  *   site/form/        demo using our TanStack Form hook
  *   site/zod/         demo using only Zod
  *   site/.nojekyll    publish files as they are (no Jekyll processing)
+ *   site/_headers     cache and security headers (read by Cloudflare, ignored by GitHub Pages)
  * Run `pnpm pages:build`, which builds both demos with a relative base and then calls this.
  */
 import { cpSync, existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
@@ -25,5 +26,6 @@ rmSync(site, { recursive: true, force: true });
 mkdirSync(site, { recursive: true });
 for (const [from, to] of parts) cpSync(resolve(root, from), resolve(site, to), { recursive: true });
 cpSync(resolve(root, 'tools/pages/index.html'), resolve(site, 'index.html'));
+cpSync(resolve(root, 'tools/pages/_headers'), resolve(site, '_headers')); // read by Cloudflare, ignored by GitHub Pages
 writeFileSync(resolve(site, '.nojekyll'), '');
 console.log(`site assembled in ${site}: index.html, form/, zod/`);

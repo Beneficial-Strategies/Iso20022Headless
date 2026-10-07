@@ -1,0 +1,12 @@
+{
+  "name": "@beneficial-strategies/iso20022-cloudflare",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "The Cloudflare Worker that serves the built demos and passes ISO's XSD schemas through to the page (docs/cloudflare-deploy.md).",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "devDependencies": { "@types/node": "^24.0.0", "typescript": "^5.9.0", "vitest": "^3.2.0" }
+}

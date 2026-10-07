@@ -427,9 +427,12 @@ function Editor({
   );
 }
 
-/** Under `vite` (not in a build) the dev server can fetch ISO's schemas for the page; VITE_XSD_PROXY=off turns that off. */
+/**
+ * Whether the page's own site passes ISO's schemas through (`/iso20022-xsd/...`): the dev server does, unless
+ * VITE_XSD_PROXY=off; a deployed build asks for it with VITE_XSD_PROXY=on (the Cloudflare Worker, docs/cloudflare-deploy.md).
+ */
 const viteEnv = (import.meta as unknown as { env?: Record<string, string | boolean | undefined> }).env;
-const DEV_XSD_PROXY = viteEnv?.DEV === true && viteEnv.VITE_XSD_PROXY !== 'off';
+const DEV_XSD_PROXY = viteEnv?.VITE_XSD_PROXY === 'on' || (viteEnv?.DEV === true && viteEnv.VITE_XSD_PROXY !== 'off');
 
 /**
  * `variant` picks the title/blurb. `i18n` overrides interface text, validation messages and
