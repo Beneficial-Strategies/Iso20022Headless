@@ -28,6 +28,8 @@ const KEYS = [
   'areaLabel', 'areaName_pain', 'areaDesc_pain', 'areaName_pacs', 'areaDesc_pacs', 'areaName_caam', 'areaDesc_caam',
   // link to the published specification of the selected type
   'viewSpec', 'viewSpecTitle',
+  // help for an element
+  'helpClickHint',
 ] as const;
 
 export type UiKey = (typeof KEYS)[number];
@@ -191,6 +193,7 @@ export const uiEn: UiMessages = {
   areaDesc_caam: 'Messages that support card related terminal management services between an Automated Teller Machine (ATM) and an Acquirer.',
   viewSpec: 'View Specification ↗',
   viewSpecTitle: 'Open the ISO 20022 repository page for {type} in a new window',
+  helpClickHint: 'Click to view in form',
 };
 
 const plural = (n: number | string | undefined, one: string, many: string): string => (Number(n) === 1 ? one : many);
@@ -349,6 +352,7 @@ export const uiEs: UiMessages = {
   areaDesc_caam: 'Mensajes que respaldan los servicios de gestión de terminales relacionados con tarjetas entre un cajero automático (ATM) y un adquirente.',
   viewSpec: 'Ver especificación ↗',
   viewSpecTitle: 'Abrir la página del repositorio de ISO 20022 para {type} en una ventana nueva',
+  helpClickHint: 'Haga clic para verlo en el formulario',
 };
 
 /** Languages shipped with the demo. Others can be added through `createI18n` / `DemoApp`'s `i18n` prop. */

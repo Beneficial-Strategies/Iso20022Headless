@@ -485,13 +485,15 @@ export const scenarios: Scenario[] = [
         const legend = document.querySelector<HTMLElement>('[data-schema-form] legend');
         const size = (e: Element | null) => (e ? parseFloat(getComputedStyle(e).fontSize) : 0);
         const first = document.querySelector('[data-schema-form]')?.firstElementChild?.firstElementChild;
-        return { title: h?.textContent ?? '', h: size(h), legend: size(legend), first: first === h };
+        const note = document.querySelector('[data-schema-form] [role=note]')?.textContent ?? '';
+        // the title block (heading, then its help text) is the first thing; the heading comes first in it
+        return { title: h?.textContent ?? '', h: size(h), legend: size(legend), first: first === h || first?.firstElementChild === h, note };
       });
       const problems: string[] = [];
       if (!/Customer Credit Transfer Initiation V13/.test(r.title)) problems.push(`title is "${r.title}"`);
       if (!(r.h > r.legend)) problems.push(`title font (${r.h}px) is not larger than the group heading (${r.legend}px)`);
       if (!r.first) problems.push('the title is not the first thing in the form');
-      if (!(await popupText(page)).includes('sent by the initiating party')) problems.push('the message description is missing from the help note');
+      if (!r.note.includes('sent by the initiating party')) problems.push(`the message description is missing from the help note: "${r.note}"`);
       return problems;
     },
   },
@@ -745,6 +747,33 @@ export const scenarios: Scenario[] = [
     },
   },
   {
+    name: 'help-hover-popup',
+    app: 'demo-form',
+    viewport: { width: 1440, height: 900 },
+    steps: async (page) => {
+      await page.locator("button[aria-label='About Creation Date Time']").hover();
+      await settle();
+    },
+    expect: async (page) => {
+      const t = await popupText(page);
+      const problems: string[] = [];
+      if (!t.includes('Date and time at which the message was created')) problems.push(`hover popup text is missing: "${t}"`);
+      if (!t.endsWith('Click to view in form')) problems.push(`the popup does not end with "Click to view in form": "${t}"`);
+      return problems;
+    },
+  },
+  {
+    name: 'help-hover-popup-spanish',
+    app: 'demo-form',
+    query: '?lang=es',
+    viewport: { width: 1440, height: 900 },
+    steps: async (page) => {
+      await page.locator("button[aria-label='Acerca de Fecha y hora de creación']").hover();
+      await settle();
+    },
+    expect: async (page) => ((await popupText(page)).endsWith('Haga clic para verlo en el formulario') ? [] : [`not in Spanish: "${await popupText(page)}"`]),
+  },
+  {
     name: 'help-note-open',
     app: 'demo-form',
     viewport: { width: 1440, height: 900 },
@@ -752,7 +781,47 @@ export const scenarios: Scenario[] = [
       await page.locator("button[aria-label='About Creation Date Time']").click();
       await settle();
     },
-    expect: async (page) => ((await popupText(page)).includes('Date and time at which the message was created') ? [] : ['help note text is missing']),
+    expect: async (page) => {
+      const r = await page.evaluate(() => {
+        const note = document.querySelector<HTMLElement>('[data-schema-form] [role=note]');
+        const label = note?.parentElement?.querySelector('label');
+        const optional = [...document.querySelectorAll<HTMLElement>('[data-schema-form] span')].find((e) => /^\(?optional\)?$/.test(e.textContent ?? ''));
+        const size = (e: Element | null | undefined) => (e ? parseFloat(getComputedStyle(e).fontSize) : 0);
+        const input = note?.parentElement?.querySelector('input');
+        return {
+          text: note?.textContent ?? '',
+          popup: document.querySelector('[data-placement]') !== null,
+          size: size(note),
+          optionalSize: size(optional),
+          belowLabel: !!label && !!note && label.getBoundingClientRect().bottom <= note.getBoundingClientRect().top + 1,
+          aboveInput: !!input && !!note && note.getBoundingClientRect().bottom <= input.getBoundingClientRect().top + 1,
+        };
+      });
+      const problems: string[] = [];
+      if (!r.text.includes('Date and time at which the message was created')) problems.push(`inline help text is missing: "${r.text}"`);
+      if (r.text.includes('Click to view')) problems.push('the inline note repeats the popup hint');
+      if (r.popup) problems.push('the popup is still shown next to the inline note');
+      if (!r.belowLabel) problems.push('the note is not below the label');
+      if (!r.aboveInput) problems.push('the note is not above the field');
+      if (r.optionalSize && Math.abs(r.size - r.optionalSize) > 1) problems.push(`note text is ${r.size}px but "(optional)" is ${r.optionalSize}px`);
+      return problems;
+    },
+  },
+  {
+    name: 'help-click-then-leave',
+    app: 'demo-form',
+    viewport: { width: 1440, height: 900 },
+    steps: async (page) => {
+      const i = page.locator("button[aria-label='About Creation Date Time']");
+      await i.click();
+      await i.click(); // text hidden again; the button keeps the focus
+      await page.mouse.move(700, 500);
+      await settle();
+    },
+    expect: async (page) => {
+      const r = await page.evaluate(() => ({ popup: document.querySelector('[data-placement]') !== null, note: document.querySelector('[data-schema-form] [role=note]') !== null }));
+      return [...(r.popup ? ['a click left the popup pinned after the pointer moved away'] : []), ...(r.note ? ['the inline text did not close on the second click'] : [])];
+    },
   },
   {
     name: 'required-error',
