@@ -25,7 +25,7 @@ The package also holds the pieces the demos use: `SchemaForm`, the skins, `I18nP
 
 Help on an element: hovering (or keyboard-focusing) the "i" button shows the definition in a popup that ends with a hint to click; clicking it shows the same text inline under the label. A skin supplies `Info` (the button, given `open`/`onToggle`/`noteId`) and `InfoNote` (the inline text), and places the `note` it is passed under the label in `Field`, `Group`, `Toggle`, `ListHeader` and `Title`; the plain skin keeps a native `<details>`.
 
-Zoom: give `SchemaForm` (or `Iso20022Form`) an `onZoom(type)` callback and every element that is a component type gets a zoom button after its "i" (hover explains it); clicking calls `onZoom` with the type name. The demos use it to show that type on its own, the same as picking it in the type list. Without `onZoom` there are no zoom buttons.
+Adding your own control beside the "i": give `SchemaForm` (or `Iso20022Form`) a `fieldExtra(element)` function. It is called for every element that has an "i" with `{ type, kind, name, label, path }` and may return a button, an icon or a link, which is shown right after the "i". The library puts nothing there itself: what it is, what it says and what it does belong to your application. `useHoverTip`, `Popup` and `INFO_BUTTON_CLASS` are exported so that such a control can hover and look like the "i". The demos use it for their own zoom button (`apps/demo-shared/src/ZoomButton.tsx`), which shows a component type on its own.
 Everything the demo app adds around them (message picker, settings, XML pane, "Implement!") stays in `apps/demo-shared`.
 
 ## Bundle size

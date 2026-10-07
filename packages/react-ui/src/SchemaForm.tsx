@@ -45,28 +45,41 @@ interface NodeProps {
   depth: number;
 }
 
-/** Set by `SchemaForm` when the host can show a component type on its own; without it there are no zoom buttons. */
-const ZoomContext = createContext<((type: string) => void) | undefined>(undefined);
+/** What `SchemaForm` tells a host's `fieldExtra` about an element. */
+export interface FieldExtraContext {
+  /** The ISO 20022 type of the element, e.g. `PartyIdentification272`. */
+  type: string;
+  /** `component` (has fields), `choice`, or a value type (`text`, `code`, `amount`, ...). */
+  kind: string;
+  /** The element's name, e.g. `InitiatingParty`. */
+  name: string;
+  /** The label shown for it. */
+  label: string;
+  /** Where it is in the form, e.g. `GroupHeader.InitiatingParty`. */
+  path: string;
+}
+
+/** Set by `SchemaForm` when the host wants something beside the "i" of every element (`fieldExtra`). */
+const ExtraRenderer = createContext<((element: FieldExtraContext) => ReactNode) | undefined>(undefined);
 
 /** The help for an element: the "i" button (hover shows a popup) and the inline note a click on it shows under the label. */
-function useHelp(def: Localized | undefined, label: string, skip?: boolean, zoomType?: string): { info: ReactNode; note: ReactNode } {
+function useHelp(def: Localized | undefined, label: string, skip?: boolean, element?: FieldExtraContext): { info: ReactNode; note: ReactNode } {
   const S = useSkin();
   const [open, setOpen] = useState(false);
   const noteId = useId();
-  const onZoom = useContext(ZoomContext);
-  if (skip || (!def && !(zoomType && onZoom))) return { info: null, note: null };
-  const zoom = zoomType && onZoom ? { type: zoomType, onZoom: () => onZoom(zoomType) } : undefined;
+  const fieldExtra = useContext(ExtraRenderer);
+  const extra = element ? fieldExtra?.(element) : undefined;
+  if (skip || (!def && !extra)) return { info: null, note: null };
   return {
-    info: <S.Info def={def} label={label} open={open} onToggle={() => setOpen((o) => !o)} noteId={noteId} zoom={zoom} />,
+    info: <S.Info def={def} label={label} open={open} onToggle={() => setOpen((o) => !o)} noteId={noteId} extra={extra} />,
     note: open ? <S.InfoNote def={def} id={noteId} /> : null,
   };
 }
 
-function useInfo({ form, field, label, noInfo }: Pick<NodeProps, 'form' | 'field' | 'label' | 'noInfo'>) {
+function useInfo({ form, field, label, path, noInfo }: Pick<NodeProps, 'form' | 'field' | 'label' | 'path' | 'noInfo'>) {
   const { defs } = useI18n();
   const type = form.typeDescriptors[field.type];
-  // a component (not a choice or a value) can be shown on its own, like picking it in a type list
-  return useHelp(defs.field(field, type), label, noInfo, type?.kind === 'component' ? field.type : undefined);
+  return useHelp(defs.field(field, type), label, noInfo, { type: field.type, kind: type?.kind ?? field.kind, name: field.name, label, path });
 }
 
 function Leaf(p: NodeProps) {
@@ -218,7 +231,7 @@ function FieldNode({ form, field, path, label, depth }: Omit<NodeProps, 'require
   const S = useSkin();
   const { t, defs } = useI18n();
   const type = form.typeDescriptors[field.type]!;
-  const { info, note } = useHelp(defs.field(field, type), label, false, type.kind === 'component' ? field.type : undefined);
+  const { info, note } = useHelp(defs.field(field, type), label, false, { type: field.type, kind: type.kind, name: field.name, label, path });
   if (field.repeat) {
     const items = (form.getValue(path) as unknown[] | undefined) ?? [];
     const max = field.repeat.max;
@@ -261,10 +274,11 @@ function FieldNode({ form, field, path, label, depth }: Omit<NodeProps, 'require
 
 /**
  * Generic recursive renderer for any generated type. Demo-only: the library itself renders nothing.
- * `onZoom`, when given, adds a zoom button to every element that is a component type; it is called with that type's name
- * (the host decides what zooming means, e.g. showing that type on its own).
+ * `fieldExtra`, when given, is called for every element that has an "i" and may return something to show right after it:
+ * a button, an icon, a link. The library puts nothing there itself, so what it is and what it does belongs to the host
+ * (the demos use it for a "zoom" button that shows a component type on its own).
  */
-export function SchemaForm({ form, onZoom }: { form: FormApi; onZoom?: (type: string) => void }) {
+export function SchemaForm({ form, fieldExtra }: { form: FormApi; fieldExtra?: (element: FieldExtraContext) => ReactNode }) {
   const S = useSkin();
   const labelOf = useLabel();
   const { defs } = useI18n();
@@ -275,7 +289,7 @@ export function SchemaForm({ form, onZoom }: { form: FormApi; onZoom?: (type: st
   return (
     // data-schema-form marks everything the skin renders, so page chrome around it can be told apart
     <div data-schema-form>
-    <ZoomContext.Provider value={onZoom}>
+    <ExtraRenderer.Provider value={fieldExtra}>
     <S.Stack>
       <S.Title info={rootHelp.info} note={rootHelp.note}>{title}</S.Title>
       {root.kind === 'choice' ? (
@@ -290,7 +304,7 @@ export function SchemaForm({ form, onZoom }: { form: FormApi; onZoom?: (type: st
         fields.map((f) => <FieldNode key={f.name} form={form} field={f} path={f.name} label={labelOf(f)} depth={0} />)
       )}
     </S.Stack>
-    </ZoomContext.Provider>
+    </ExtraRenderer.Provider>
     </div>
   );
 }

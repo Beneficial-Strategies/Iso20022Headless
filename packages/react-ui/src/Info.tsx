@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState, type FocusEvent, type RefObject } from 'react';
+import { useEffect, useId, useRef, useState, type FocusEvent, type ReactNode, type RefObject } from 'react';
 import type { Localized } from '@beneficial-strategies/iso20022-validate/definitions';
 import { Popup } from './Popup.tsx';
 import { useI18n } from './i18n/context.tsx';
@@ -24,8 +24,11 @@ function HelpText({ def, muted }: { def: Localized; muted?: string }) {
   );
 }
 
-/** Hover (or keyboard focus) state of a button that shows a popup. A mouse click leaves focus on the button, which must not pin the popup. */
-function useHoverTip(trigger: RefObject<HTMLElement | null>, suppress = false) {
+/**
+ * Hover (or keyboard focus) state of a button that shows a popup. A mouse click leaves focus on the button, which must not pin
+ * the popup. Exported so that buttons a host adds beside the "i" (see `SchemaForm`'s `fieldExtra`) can behave the same.
+ */
+export function useHoverTip(trigger: RefObject<HTMLElement | null>, suppress = false) {
   const [hover, setHover] = useState(false);
   const [focused, setFocused] = useState(false);
   const show = (hover || focused) && !suppress;
@@ -65,61 +68,16 @@ function useHoverTip(trigger: RefObject<HTMLElement | null>, suppress = false) {
   };
 }
 
-const ICON_BUTTON =
+/** The look of the round "i" button, for buttons a host adds beside it. */
+export const INFO_BUTTON_CLASS =
   'inline-flex h-4 w-4 items-center justify-center rounded-full border border-edge text-[10px] font-semibold leading-none text-muted hover:bg-surface-alt focus:outline-none focus-visible:ring-2 focus-visible:ring-focus';
-
-/** Zoom in to a component type on its own: a magnifier button; hovering explains what it does. */
-function ZoomButton({ type, onZoom }: { type: string; onZoom: () => void }) {
-  const trigger = useRef<HTMLButtonElement>(null);
-  const tipId = useId();
-  const { t } = useI18n();
-  const tip = useHoverTip(trigger);
-  return (
-    <span
-      className="relative inline-flex"
-      onKeyDown={(e) => {
-        if (e.key === 'Escape') tip.hide();
-      }}
-    >
-      <button
-        ref={trigger}
-        type="button"
-        aria-label={t('zoomLabel', { type })}
-        aria-describedby={tip.show ? tipId : undefined}
-        className={ICON_BUTTON}
-        {...tip.handlers}
-        onClick={() => {
-          tip.hide();
-          onZoom();
-        }}
-      >
-        <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" aria-hidden="true">
-          <circle cx="5" cy="5" r="3.4" />
-          <path d="M7.6 7.6 L10.8 10.8" />
-          <path d="M3.7 5 H6.3 M5 3.7 V6.3" strokeWidth="1" />
-        </svg>
-      </button>
-      {tip.show ? (
-        <Popup
-          anchor={trigger.current}
-          role="tooltip"
-          id={tipId}
-          width={320}
-          className="space-y-1 rounded border border-edge bg-surface p-2 text-left text-xs font-normal text-fg shadow-lg"
-        >
-          {t('zoomTip', { type })}
-        </Popup>
-      ) : null}
-    </span>
-  );
-}
 
 /**
  * Help for an element: an "i" button. Hovering it (or focusing it with the keyboard) shows the definition in a
  * popup that ends with a hint to click; clicking it (or Enter/Space) shows the same text inline under the label,
  * until it is clicked again or Escape is pressed. While the inline text is shown, no popup is needed. When the text
  * is in a different language than the page (spec text with no translation), it says so.
- * For an element that is itself a component, a zoom button follows the "i" (see `ZoomButton`).
+ * `extra` is whatever the host wants beside the "i" (see `SchemaForm`'s `fieldExtra`); the library puts nothing there itself.
  */
 export function Info({
   def,
@@ -127,21 +85,21 @@ export function Info({
   open,
   onToggle,
   noteId,
-  zoom,
+  extra,
 }: {
   def: Localized | undefined;
   label: string;
   open: boolean;
   onToggle: () => void;
   noteId: string;
-  zoom?: { type: string; onZoom: () => void } | undefined;
+  extra?: ReactNode;
 }) {
   const trigger = useRef<HTMLButtonElement>(null);
   const tipId = useId();
   const { t } = useI18n();
   const tip = useHoverTip(trigger, open);
 
-  if (!def && !zoom) return null;
+  if (!def && !extra) return null;
   return (
     <span className="inline-flex items-center gap-1">
       {def ? (
@@ -160,7 +118,7 @@ export function Info({
             aria-expanded={open}
             aria-controls={open ? noteId : undefined}
             aria-describedby={tip.show ? tipId : undefined}
-            className={ICON_BUTTON}
+            className={INFO_BUTTON_CLASS}
             {...tip.handlers}
             onClick={onToggle}
           >
@@ -180,7 +138,7 @@ export function Info({
           ) : null}
         </span>
       ) : null}
-      {zoom ? <ZoomButton type={zoom.type} onZoom={zoom.onZoom} /> : null}
+      {extra}
     </span>
   );
 }

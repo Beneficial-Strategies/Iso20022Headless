@@ -1,17 +1,19 @@
 import { afterEach, describe, expect, it } from 'vitest';
 import { cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { SchemaForm, SkinProvider, tailwindSkin } from '@beneficial-strategies/iso20022-react-ui';
+import { SchemaForm, SkinProvider, plainSkin, tailwindSkin, type FieldExtraContext, type Skin } from '@beneficial-strategies/iso20022-react-ui';
+import { zoomExtra } from '@beneficial-strategies/iso20022-demo-shared';
 import { pain001Message, schemas } from '@beneficial-strategies/iso20022-validate/pain001';
 import { useZodForm } from '../src/useZodForm.ts';
 
 afterEach(cleanup);
 
-function Form({ onZoom }: { onZoom?: (type: string) => void }) {
+function Form({ onZoom, fieldExtra, skin = tailwindSkin }: { onZoom?: (type: string) => void; fieldExtra?: (element: FieldExtraContext) => React.ReactNode; skin?: Skin }) {
   const form = useZodForm({ schema: schemas.PaymentInstruction51 as never, typeDescriptors: pain001Message.typeDescriptors, rootType: 'PaymentInstruction51' });
+  const extra = fieldExtra ?? (onZoom ? zoomExtra(onZoom) : undefined);
   return (
-    <SkinProvider value={tailwindSkin}>
-      <SchemaForm form={form} {...(onZoom ? { onZoom } : {})} />
+    <SkinProvider value={skin}>
+      <SchemaForm form={form} {...(extra ? { fieldExtra: extra } : {})} />
     </SkinProvider>
   );
 }
@@ -79,7 +81,7 @@ describe('the "i" help button', () => {
   });
 });
 
-describe('the zoom button next to the "i"', () => {
+describe('the demo\'s zoom button, imposed beside the "i" from outside the library', () => {
   const zoomButtons = () => screen.queryAllByRole('button', { name: /^Zoom in to / });
 
   it('is not shown unless the host can zoom (no onZoom)', () => {
@@ -121,5 +123,60 @@ describe('the zoom button next to the "i"', () => {
     expect(screen.queryByRole('tooltip')).toBeNull();
     await user.click(button);
     expect(zoomed).toEqual(['PaymentTypeInformation26']);
+  });
+});
+
+describe('fieldExtra: the library\'s neutral slot beside the "i"', () => {
+  it('puts nothing there by itself: without fieldExtra the library has no zoom, or anything else, beside the "i"', () => {
+    const { container } = render(<Form />);
+    expect(screen.queryAllByRole('button', { name: /zoom/i })).toHaveLength(0);
+    expect(container.textContent).not.toMatch(/zoom/i);
+    for (const i of screen.getAllByRole('button', { name: /^About / })) expect(i.parentElement!.parentElement!.children).toHaveLength(1);
+  });
+
+  it('is called for every element that has an "i", with what the host needs to decide', () => {
+    const seen: FieldExtraContext[] = [];
+    render(<Form fieldExtra={(e) => (seen.push(e), null)} />);
+    const by = (name: string) => seen.find((e) => e.name === name)!;
+    expect(by('PaymentMethod')).toMatchObject({ type: 'PaymentMethod3Code', kind: 'code', label: 'Payment Method', path: 'PaymentMethod' });
+    expect(by('PaymentTypeInformation')).toMatchObject({ type: 'PaymentTypeInformation26', kind: 'component' });
+    expect(seen.some((e) => e.kind === 'choice')).toBe(true);
+    expect(seen.some((e) => e.kind === 'component')).toBe(true);
+    // not for the form title (it is not an element)
+    expect(seen.find((e) => e.type === 'PaymentInstruction51' && e.path === '')).toBeUndefined();
+  });
+
+  it('shows what the host returns right after the "i", in the same place', () => {
+    render(<Form fieldExtra={(e) => (e.name === 'PaymentMethod' ? <button type="button">Mine</button> : null)} />);
+    const mine = screen.getByRole('button', { name: 'Mine' });
+    const i = screen.getByRole('button', { name: 'About Payment Method' });
+    expect(mine.parentElement).toBe(i.parentElement!.parentElement); // both inside the same wrapper
+    expect(i.compareDocumentPosition(mine) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(screen.getAllByRole('button', { name: 'Mine' })).toHaveLength(1);
+  });
+
+  it('works in the plain skin as well', () => {
+    render(<Form skin={plainSkin} fieldExtra={(e) => (e.name === 'PaymentMethod' ? <button type="button">Mine</button> : null)} />);
+    expect(screen.getAllByRole('button', { name: 'Mine' })).toHaveLength(1);
+  });
+
+  it('the demo\'s zoom is just one use of it: its text is the demo\'s own, in English and Spanish', async () => {
+    const user = userEvent.setup();
+    const { unmount } = render(<Form onZoom={() => {}} />);
+    await user.hover(screen.getAllByRole('button', { name: 'Zoom in to PaymentTypeInformation26' })[0]!);
+    expect(screen.getByRole('tooltip').textContent).toContain('Click Zoom to zoom in to that data type');
+    unmount();
+  });
+
+  it('the demo\'s zoom adapts to the skin: in the plain skin it is an ordinary button with no classes', () => {
+    const { container } = render(<Form skin={plainSkin} onZoom={() => {}} />);
+    const zooms = screen.getAllByRole('button', { name: /^Zoom in to / });
+    expect(zooms.length).toBeGreaterThan(0);
+    for (const z of zooms) {
+      expect(z.textContent).toBe('Zoom');
+      expect(z.hasAttribute('class')).toBe(false);
+      expect(z.hasAttribute('title')).toBe(true);
+    }
+    expect(container.querySelectorAll('[class]')).toHaveLength(0);
   });
 });
