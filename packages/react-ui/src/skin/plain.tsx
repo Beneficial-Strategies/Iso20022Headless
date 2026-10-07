@@ -138,10 +138,11 @@ export const plainSkin: Skin = {
       </div>
     );
   },
-  Info: function Info({ def, label }) {
+  Info: function Info({ def, label, zoom }) {
     const { t, lang } = useI18n();
-    if (!def) return null;
+    if (!def) return zoom ? <ZoomPlain type={zoom.type} onZoom={zoom.onZoom} /> : null;
     return (
+      <>
       <details>
         <summary aria-label={t('aboutLabel', { label })} title={t('aboutLabel', { label })}>
           ?
@@ -164,8 +165,20 @@ export const plainSkin: Skin = {
           </small>
         ) : null}
       </details>
+      {zoom ? <ZoomPlain type={zoom.type} onZoom={zoom.onZoom} /> : null}
+      </>
     );
   },
   // the plain skin's help is a native <details>: it already shows its text inline, so there is no separate note
   InfoNote: () => null,
 };
+
+/** The plain skin's zoom: an ordinary button. */
+function ZoomPlain({ type, onZoom }: { type: string; onZoom: () => void }) {
+  const { t } = useI18n();
+  return (
+    <button type="button" aria-label={t('zoomLabel', { type })} title={t('zoomTip', { type })} onClick={onZoom}>
+      {t('zoomShort')}
+    </button>
+  );
+}

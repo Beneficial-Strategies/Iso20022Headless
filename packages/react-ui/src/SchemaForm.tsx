@@ -1,4 +1,4 @@
-import { useId, useState, type ReactNode } from 'react';
+import { createContext, useContext, useId, useState, type ReactNode } from 'react';
 import { displayName, type FieldDescriptor } from '@beneficial-strategies/iso20022-validate';
 import type { Localized } from '@beneficial-strategies/iso20022-validate/definitions';
 import type { FormApi } from './formApi.ts';
@@ -45,21 +45,28 @@ interface NodeProps {
   depth: number;
 }
 
+/** Set by `SchemaForm` when the host can show a component type on its own; without it there are no zoom buttons. */
+const ZoomContext = createContext<((type: string) => void) | undefined>(undefined);
+
 /** The help for an element: the "i" button (hover shows a popup) and the inline note a click on it shows under the label. */
-function useHelp(def: Localized | undefined, label: string, skip?: boolean): { info: ReactNode; note: ReactNode } {
+function useHelp(def: Localized | undefined, label: string, skip?: boolean, zoomType?: string): { info: ReactNode; note: ReactNode } {
   const S = useSkin();
   const [open, setOpen] = useState(false);
   const noteId = useId();
-  if (skip || !def) return { info: null, note: null };
+  const onZoom = useContext(ZoomContext);
+  if (skip || (!def && !(zoomType && onZoom))) return { info: null, note: null };
+  const zoom = zoomType && onZoom ? { type: zoomType, onZoom: () => onZoom(zoomType) } : undefined;
   return {
-    info: <S.Info def={def} label={label} open={open} onToggle={() => setOpen((o) => !o)} noteId={noteId} />,
+    info: <S.Info def={def} label={label} open={open} onToggle={() => setOpen((o) => !o)} noteId={noteId} zoom={zoom} />,
     note: open ? <S.InfoNote def={def} id={noteId} /> : null,
   };
 }
 
 function useInfo({ form, field, label, noInfo }: Pick<NodeProps, 'form' | 'field' | 'label' | 'noInfo'>) {
   const { defs } = useI18n();
-  return useHelp(defs.field(field, form.typeDescriptors[field.type]), label, noInfo);
+  const type = form.typeDescriptors[field.type];
+  // a component (not a choice or a value) can be shown on its own, like picking it in a type list
+  return useHelp(defs.field(field, type), label, noInfo, type?.kind === 'component' ? field.type : undefined);
 }
 
 function Leaf(p: NodeProps) {
@@ -211,7 +218,7 @@ function FieldNode({ form, field, path, label, depth }: Omit<NodeProps, 'require
   const S = useSkin();
   const { t, defs } = useI18n();
   const type = form.typeDescriptors[field.type]!;
-  const { info, note } = useHelp(defs.field(field, type), label);
+  const { info, note } = useHelp(defs.field(field, type), label, false, type.kind === 'component' ? field.type : undefined);
   if (field.repeat) {
     const items = (form.getValue(path) as unknown[] | undefined) ?? [];
     const max = field.repeat.max;
@@ -252,8 +259,12 @@ function FieldNode({ form, field, path, label, depth }: Omit<NodeProps, 'require
   return <ValueNode form={form} field={field} path={path} label={label} depth={depth} />;
 }
 
-/** Generic recursive renderer for any generated type. Demo-only: the library itself renders nothing. */
-export function SchemaForm({ form }: { form: FormApi }) {
+/**
+ * Generic recursive renderer for any generated type. Demo-only: the library itself renders nothing.
+ * `onZoom`, when given, adds a zoom button to every element that is a component type; it is called with that type's name
+ * (the host decides what zooming means, e.g. showing that type on its own).
+ */
+export function SchemaForm({ form, onZoom }: { form: FormApi; onZoom?: (type: string) => void }) {
   const S = useSkin();
   const labelOf = useLabel();
   const { defs } = useI18n();
@@ -264,6 +275,7 @@ export function SchemaForm({ form }: { form: FormApi }) {
   return (
     // data-schema-form marks everything the skin renders, so page chrome around it can be told apart
     <div data-schema-form>
+    <ZoomContext.Provider value={onZoom}>
     <S.Stack>
       <S.Title info={rootHelp.info} note={rootHelp.note}>{title}</S.Title>
       {root.kind === 'choice' ? (
@@ -278,6 +290,7 @@ export function SchemaForm({ form }: { form: FormApi }) {
         fields.map((f) => <FieldNode key={f.name} form={form} field={f} path={f.name} label={labelOf(f)} depth={0} />)
       )}
     </S.Stack>
+    </ZoomContext.Provider>
     </div>
   );
 }

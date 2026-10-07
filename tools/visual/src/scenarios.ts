@@ -340,6 +340,108 @@ const specLink = (page: Page): Promise<{ href: string; target: string; rel: stri
     return a ? { href: a.href, target: a.target, rel: a.rel, text: a.textContent ?? '' } : null;
   });
 
+// ---------------------------------------------------------------------------- zoom into a component type
+
+const ZOOM = (type: string) => `button[aria-label='Zoom in to ${type}']`;
+const typeButtonText = (page: Page): Promise<string> => page.evaluate(() => document.querySelector<HTMLElement>('header button[aria-haspopup=listbox][title]')?.textContent ?? '');
+
+function zoomScenarios(): Scenario[] {
+  const base = { app: 'demo-form' as const, viewport: { width: 1440, height: 900 } };
+  return [
+    {
+      ...base,
+      name: 'zoom-button-beside-help',
+      expect: async (page) => {
+        const r = await page.evaluate(() => {
+          const z = document.querySelector<HTMLElement>("[data-schema-form] button[aria-label='Zoom in to PartyIdentification272']");
+          const i = z?.parentElement?.parentElement?.querySelector<HTMLElement>("button[aria-label^='About']");
+          const a = i?.getBoundingClientRect();
+          const b = z?.getBoundingClientRect();
+          const title = document.querySelector('[data-schema-form] h2');
+          return {
+            found: !!z && !!i,
+            toTheRight: !!a && !!b && b.left >= a.right - 1 && b.left - a.right < 12,
+            sameRow: !!a && !!b && Math.abs(a.top + a.height / 2 - (b.top + b.height / 2)) < 2,
+            sameSize: !!a && !!b && Math.abs(a.width - b.width) < 1 && Math.abs(a.height - b.height) < 1,
+            titleZoom: title?.querySelector("[aria-label^='Zoom']") !== null,
+          };
+        });
+        const problems: string[] = [];
+        if (!r.found) problems.push('no zoom button beside an "i"');
+        if (!r.toTheRight) problems.push('the zoom button is not just to the right of the "i"');
+        if (!r.sameRow) problems.push('the zoom button is not on the same line as the "i"');
+        if (!r.sameSize) problems.push('the zoom button is not the size of the "i"');
+        if (r.titleZoom) problems.push('the form title has a zoom button');
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'zoom-hover-popup',
+      steps: async (page) => {
+        await page.locator(ZOOM('PartyIdentification272')).hover();
+        await settle();
+      },
+      expect: async (page) => {
+        const t = await popupText(page);
+        const problems: string[] = [];
+        if (!t.includes('based upon the ISO 20022 type PartyIdentification272')) problems.push(`hover text is "${t}"`);
+        if (!t.includes('Click Zoom to zoom in to that data type in isolation from the outer message.')) problems.push('the Click Zoom sentence is missing');
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'zoom-hover-popup-spanish',
+      query: '?lang=es',
+      steps: async (page) => {
+        await page.locator("button[aria-label='Hacer zoom en PartyIdentification272']").hover();
+        await settle();
+      },
+      expect: async (page) => ((await popupText(page)).includes('Haga clic en Zoom para acercarse') ? [] : [`not in Spanish: "${await popupText(page)}"`]),
+    },
+    {
+      ...base,
+      name: 'zoom-click-selects-the-type',
+      steps: async (page) => {
+        await page.locator(ZOOM('PartyIdentification272')).click();
+        await settle(800);
+      },
+      expect: async (page) => {
+        const r = await page.evaluate(() => ({
+          title: document.querySelector('[data-schema-form] h2')?.textContent ?? '',
+          spec: document.querySelector<HTMLAnchorElement>('header a[href*=standardsrepository]')?.href ?? '',
+          popup: document.querySelector('[data-placement]') !== null,
+        }));
+        const problems: string[] = [];
+        const picker = await typeButtonText(page);
+        if (!/PartyIdentification272/.test(picker)) problems.push(`the type picker shows "${picker}"`);
+        if (!/Party Identification\s?272/.test(r.title)) problems.push(`the form title is "${r.title}"`);
+        if (!r.spec.endsWith('/type/PartyIdentification272')) problems.push(`the specification link is ${r.spec}`);
+        if (r.popup) problems.push('the zoom popup is still open after the click');
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'zoom-into-branch-data',
+      steps: async (page) => {
+        await openType(page);
+        await page.keyboard.type('BranchAndFinancialInstitutionIdentification8');
+        await settle();
+        await clickText(page, '[cmdk-item]', /^BranchAndFinancialInstitutionIdentification8/);
+        await settle(600);
+        await page.locator(ZOOM('BranchData5')).click();
+        await settle(800);
+      },
+      expect: async (page) => {
+        const picker = await typeButtonText(page);
+        return /BranchData5/.test(picker) ? [] : [`the type picker shows "${picker}"`];
+      },
+    },
+  ];
+}
+
 function specLinkScenarios(): Scenario[] {
   const check = (type: string, text: RegExp) => async (page: Page): Promise<string[]> => {
     const l = await specLink(page);
@@ -807,6 +909,7 @@ export const scenarios: Scenario[] = [
       return problems;
     },
   },
+  ...zoomScenarios(),
   {
     name: 'help-click-then-leave',
     app: 'demo-form',
