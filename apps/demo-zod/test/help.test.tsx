@@ -7,11 +7,11 @@ import { useZodForm } from '../src/useZodForm.ts';
 
 afterEach(cleanup);
 
-function Form() {
+function Form({ onZoom }: { onZoom?: (type: string) => void }) {
   const form = useZodForm({ schema: schemas.PaymentInstruction51 as never, typeDescriptors: pain001Message.typeDescriptors, rootType: 'PaymentInstruction51' });
   return (
     <SkinProvider value={tailwindSkin}>
-      <SchemaForm form={form} />
+      <SchemaForm form={form} {...(onZoom ? { onZoom } : {})} />
     </SkinProvider>
   );
 }
@@ -76,5 +76,50 @@ describe('the "i" help button', () => {
     await user.click(about());
     await user.click(screen.getAllByRole('button', { name: /^About /, expanded: false })[0]!);
     expect(screen.getAllByRole('note')).toHaveLength(2);
+  });
+});
+
+describe('the zoom button next to the "i"', () => {
+  const zoomButtons = () => screen.queryAllByRole('button', { name: /^Zoom in to / });
+
+  it('is not shown unless the host can zoom (no onZoom)', () => {
+    render(<Form />);
+    expect(zoomButtons()).toHaveLength(0);
+  });
+
+  it('is shown on components only, not on values or choices, and not on the form title', () => {
+    render(<Form onZoom={() => {}} />);
+    const names = zoomButtons().map((b) => b.getAttribute('aria-label'));
+    expect(names.length).toBeGreaterThan(0);
+    expect(names).toContain('Zoom in to PaymentTypeInformation26');
+    expect(names).not.toContain('Zoom in to PaymentInstruction51'); // the type being edited
+    expect(names.every((n) => /^Zoom in to [A-Z][A-Za-z]*\d+$/.test(n!))).toBe(true);
+    // the title has an "i" but nothing to zoom into
+    const title = screen.getByRole('heading', { level: 2 });
+    expect(title.querySelector('[aria-label^="Zoom in"]')).toBeNull();
+    expect(title.querySelector('[aria-label^="About"]')).toBeTruthy();
+  });
+
+  it('sits right after the "i" of the same element', () => {
+    render(<Form onZoom={() => {}} />);
+    const zoom = screen.getAllByRole('button', { name: 'Zoom in to PaymentTypeInformation26' })[0]!;
+    const i = zoom.closest('span.inline-flex.items-center')!.querySelector('button[aria-label^="About"]')!;
+    expect(i.compareDocumentPosition(zoom) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(i.getAttribute('aria-label')).toBe('About Payment Type Information');
+  });
+
+  it('hovering explains it, naming the type, and clicking asks the host to zoom into that type', async () => {
+    const user = userEvent.setup();
+    const zoomed: string[] = [];
+    render(<Form onZoom={(t) => zoomed.push(t)} />);
+    const button = screen.getAllByRole('button', { name: 'Zoom in to PaymentTypeInformation26' })[0]!;
+    await user.hover(button);
+    const tip = screen.getByRole('tooltip').textContent!;
+    expect(tip).toContain('based upon the ISO 20022 type PaymentTypeInformation26');
+    expect(tip).toContain('Click Zoom to zoom in to that data type in isolation from the outer message.');
+    await user.unhover(button);
+    expect(screen.queryByRole('tooltip')).toBeNull();
+    await user.click(button);
+    expect(zoomed).toEqual(['PaymentTypeInformation26']);
   });
 });

@@ -256,6 +256,7 @@ function Editor({
   incoming,
   onSwitch,
   onIncomingApplied,
+  onZoom,
 }: {
   bundle: MessageBundle;
   useForm: UseForm;
@@ -265,6 +266,8 @@ function Editor({
   incoming?: Incoming | undefined;
   onSwitch: (incoming: Incoming) => void;
   onIncomingApplied: () => void;
+  /** Show a component type on its own: the same as picking it in the type list. */
+  onZoom: (type: string) => void;
 }) {
   const { t, validation } = useI18n();
   const form = useForm({ schema: (bundle.schemas as Record<string, z.ZodType>)[typeName]!, typeDescriptors: bundle.typeDescriptors, rootType: typeName, messages: validation });
@@ -352,7 +355,7 @@ function Editor({
   return (
     <div className="grid min-h-0 flex-1 grid-cols-1 gap-4 lg:grid-cols-2">
       <section className="min-h-0 overflow-auto pr-2" aria-label="Form" data-form-area>
-        <SchemaForm form={form} />
+        <SchemaForm form={form} onZoom={onZoom} />
         <RulesPanel results={ruleResults} />
         <div className="mt-4 flex items-center gap-3">
           <button
@@ -462,6 +465,7 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
                 update({ message: next.identifier });
               }}
               onIncomingApplied={() => setIncoming(undefined)}
+              onZoom={(type) => setChosenType({ message: settings.message, type })}
             />
           ) : (
             <p className="text-sm text-muted" role="status">

@@ -22,13 +22,15 @@ export interface Iso20022FormProps {
   locale?: string;
   /** Replace any interface text, validation message or definition. See `I18nOverrides`. */
   overrides?: I18nOverrides;
+  /** Adds a zoom button to every element that is a component type, called with that type's name (e.g. to render it on its own). */
+  onZoom?: (type: string) => void;
 }
 
 /**
  * A ready-to-use form for one ISO 20022 type, with validation, prompts and definitions working.
  * It is a thin convenience over `useIso20022Form` + `SchemaForm`; use those directly for more control.
  */
-export function Iso20022Form({ type, schemas, typeDescriptors, onChange, skin = plainSkin, locale = 'en', overrides }: Iso20022FormProps) {
+export function Iso20022Form({ type, schemas, typeDescriptors, onChange, skin = plainSkin, locale = 'en', overrides, onZoom }: Iso20022FormProps) {
   const schema = schemas[type];
   if (!schema) throw new Error(`Iso20022Form: unknown type "${type}". Use a type name from the message module's \`schemas\`.`);
   const i18n = useCreateI18n(locale, overrides);
@@ -43,7 +45,7 @@ export function Iso20022Form({ type, schemas, typeDescriptors, onChange, skin = 
   return (
     <I18nProvider value={i18n}>
       <SkinProvider value={skin}>
-        <SchemaForm form={form} />
+        <SchemaForm form={form} {...(onZoom ? { onZoom } : {})} />
       </SkinProvider>
     </I18nProvider>
   );
