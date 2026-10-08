@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createMessages, describePattern, formatHint, formatIssues } from '../src/index.ts';
+import { createMessages, describePattern, formatHint, formatIssues, patternMaxLength } from '../src/index.ts';
 import { allTypeDescriptors } from '../src/generated/all.ts';
 import { pain001Message } from '../src/generated/pain001.ts';
 
@@ -80,5 +80,33 @@ describe('format errors in the form messages', () => {
   it('explains dates, date-times and amounts', () => {
     const e = run({ GroupHeader: { CreationDateTime: 'x', MessageIdentification: 'm' } });
     expect(e['GroupHeader.CreationDateTime']).toContain('YYYY-MM-DDThh:mm:ss');
+  });
+});
+
+describe('patternMaxLength: the most characters a value can have', () => {
+  it('reads fixed and ranged repeats, and adds them up', () => {
+    expect(patternMaxLength('[A-Z]{2,2}')).toBe(2);
+    expect(patternMaxLength('[A-Z]{3,3}')).toBe(3);
+    expect(patternMaxLength('[0-9]{1,15}')).toBe(15);
+    expect(patternMaxLength('[A-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}')).toBe(34); // an IBAN
+    expect(patternMaxLength('[A-Z0-9]{18,18}[0-9]{2,2}')).toBe(20); // a LEI
+  });
+
+  it('counts an optional group at its longest: a BIC is 8 or 11', () => {
+    expect(patternMaxLength('[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}')).toBe(11);
+  });
+
+  it('takes the longest alternative', () => {
+    expect(patternMaxLength('([0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2})|([0-9]{2,2}-[0-9]{2,2})|([0-9]{4,4}-[0-9]{2,2})')).toBe(10);
+    expect(patternMaxLength('a|bcd')).toBe(3);
+  });
+
+  it('is undefined when there is no limit, or the pattern is not one this reads', () => {
+    for (const p of ['[0-9]+', '[A-Z]*', '[0-9]{1,}', '\\w+', '.*', '(?=x)y', '[^0-9]{2}']) expect(patternMaxLength(p), p).toBeUndefined();
+  });
+
+  it('accepts the anchored forms the schemas use', () => {
+    expect(patternMaxLength('^[A-Z]{2,2}$')).toBe(2);
+    expect(patternMaxLength('/^(?:[A-Z]{3,3})$/')).toBe(3);
   });
 });

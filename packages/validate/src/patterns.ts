@@ -226,6 +226,26 @@ function describeNodes(nodes: Node[], w: Words): string {
     .join(w.then);
 }
 
+const longest = (nodes: Node[]): number =>
+  nodes.reduce((sum, n) => {
+    const inner = n.kind === 'set' || n.kind === 'lit' ? 1 : n.kind === 'group' ? longest(n.seq) : Math.max(...n.branches.map(longest));
+    return sum + inner * n.max;
+  }, 0);
+
+/**
+ * The most characters a value matching the pattern can have, or undefined when there is no limit or the pattern uses
+ * something this does not read. A BIC is 11, a country code 2, an IBAN 34. Used to size an input to what it can hold.
+ */
+export function patternMaxLength(pattern: string): number | undefined {
+  try {
+    const n = longest(parse(normalizePattern(pattern)));
+    return Number.isFinite(n) ? n : undefined;
+  } catch (e) {
+    if (e instanceof Unsupported) return undefined;
+    throw e;
+  }
+}
+
 /** What a pattern accepts, in words; undefined when the pattern uses features this does not describe. */
 export function describePattern(pattern: string, lang: PatternLang = 'en'): string | undefined {
   try {

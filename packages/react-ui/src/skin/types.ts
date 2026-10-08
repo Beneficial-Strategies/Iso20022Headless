@@ -18,6 +18,8 @@ export interface TextProps {
   ariaLabel?: string | undefined;
   multiline?: boolean;
   mono?: boolean;
+  /** About how many characters the control needs to be wide; the skin sizes it to that (a little more) instead of the full width. */
+  chars?: number | undefined;
 }
 
 export interface SelectProps {
@@ -29,6 +31,8 @@ export interface SelectProps {
   invalid?: boolean;
   required?: boolean;
   describedBy?: string | undefined;
+  /** About how many characters the longest option needs; see `TextProps.chars`. */
+  chars?: number | undefined;
 }
 
 /**
@@ -49,7 +53,7 @@ export interface Skin {
   /** A single labelled control. */
   Field: (p: { id?: string | undefined; label: string; required: boolean; info: ReactNode; note?: ReactNode; error: ReactNode; children: ReactNode }) => ReactNode;
   /** Controls side by side (currency + amount, input + button). */
-  Row: (p: { children: ReactNode; weights?: ('fixed' | 'grow')[] }) => ReactNode;
+  Row: (p: { children: ReactNode; weights?: ('fixed' | 'grow' | 'auto')[]; chars?: number | undefined }) => ReactNode;
   Text: (p: TextProps) => ReactNode;
   Select: (p: SelectProps) => ReactNode;
   Button: (p: { children: ReactNode; onClick: () => void; variant?: 'primary' | 'secondary' | 'danger'; disabled?: boolean; ariaLabel?: string }) => ReactNode;
