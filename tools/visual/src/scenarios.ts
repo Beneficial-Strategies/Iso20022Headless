@@ -331,7 +331,7 @@ function fileScenarios(): Scenario[] {
   ];
 }
 
-// ---------------------------------------------------------------------------- the area dropdown (pain, pacs, caam)
+// ---------------------------------------------------------------------------- the area dropdown (pain, pacs, caam, camt)
 
 const optionsOf = (page: Page): Promise<string[]> => page.evaluate(() => [...document.querySelectorAll('[role=option]')].map((o) => o.textContent ?? ''));
 const messageIs = (page: Page, id: string): Promise<boolean> => page.evaluate((i) => (document.querySelector('#message-picker')?.textContent ?? '').includes(i), id);
@@ -1724,6 +1724,20 @@ function languageScenarios(): Scenario[] {
     { ...base, name: 'language-german-copy-as-and-page-text', query: '?lang=de', expect: shows(/Kopieren als/, /Nachricht|Anzeige/) },
     { ...base, name: 'language-french-copy-as-and-page-text', query: '?lang=fr', expect: shows(/Copier en tant que/, /Affichage/) },
     { ...base, name: 'language-portuguese-copy-as-and-page-text', query: '?lang=pt', expect: shows(/Copiar como/, /Exibição/) },
+    {
+      ...base,
+      name: 'camt-053-opens-in-its-area',
+      query: '?message=camt.053.001.14&lang=en',
+      expect: async (page) => {
+        const facts = await page.evaluate(() => ({ text: document.body.innerText, area: document.querySelector('#area-picker')?.textContent ?? '', message: document.querySelector('#message-picker')?.textContent ?? '' }));
+        const problems: string[] = [];
+        if (!/Bank To Customer Statement/i.test(facts.text)) problems.push('the statement message is not shown');
+        if (!/camt/.test(facts.area)) problems.push(`the area picker says "${facts.area}", not camt`);
+        if (!/camt\.053\.001\.14/.test(facts.message)) problems.push(`the message picker says "${facts.message}"`);
+        return problems;
+      },
+    },
+    { ...base, name: 'camt-053-german-spec-text', query: '?message=camt.053.001.14&lang=de', expect: shows(/Gruppenkopf/, /Nachrichtenidentifikation/) },
     { ...base, name: 'language-iso-english-keeps-iso-spelling', query: '?lang=en', expect: shows(/Authorisation/i) },
     { ...base, name: 'language-american-english-spelling', query: '?lang=en-US', expect: async (page) => [...(await shows(/Authorization/i)(page)), ...(await lacks(/Authoris|Organis/i)(page))] },
   ];
@@ -1956,10 +1970,11 @@ function areaScenarios(): Scenario[] {
       expect: async (page) => {
         const o = await optionsOf(page);
         const problems: string[] = [];
-        if (o.length !== 3) problems.push(`expected three areas, found ${o.length}`);
+        if (o.length !== 4) problems.push(`expected four areas, found ${o.length}`);
         if (!o.some((x) => /^pain.*Payments Initiation: Messages that support the initiation of a payment/.test(x))) problems.push(`pain is not described: ${JSON.stringify(o)}`);
         if (!o.some((x) => /^pacs.*Payments Clearing and Settlement: Messages that support the clearing and settlement/.test(x))) problems.push(`pacs is not described: ${JSON.stringify(o)}`);
         if (!o.some((x) => /^caam.*ATM Management: Messages that support card related terminal management/.test(x))) problems.push(`caam is not described: ${JSON.stringify(o)}`);
+        if (!o.some((x) => /^camt.*Cash Management: Messages that support the reporting and advicing of the cash side/.test(x))) problems.push(`camt is not described: ${JSON.stringify(o)}`);
         return problems;
       },
     },
@@ -2081,7 +2096,7 @@ export const scenarios: Scenario[] = [
   },
   { name: 'pain002-dark-spanish', app: 'demo-zod', query: '?message=pain.002.001.15&theme=dark&lang=es', viewport: { width: 1440, height: 900 } },
   // every other message (pain and pacs) loads and renders (generated, so a new message only needs its identifier added here)
-  ...['pain.007.001.13', 'pain.008.001.12', 'pain.009.001.08', 'pain.010.001.08', 'pain.011.001.08', 'pain.012.001.08', 'pain.013.001.12', 'pain.014.001.12', 'pain.017.001.04', 'pain.018.001.04', 'pacs.002.001.16', 'pacs.003.001.12', 'pacs.004.001.15', 'pacs.007.001.14', 'pacs.008.001.14', 'pacs.009.001.13', 'pacs.010.001.06', 'pacs.028.001.07', 'pacs.029.001.02', 'caam.001.001.05', 'caam.002.001.04', 'caam.003.001.05', 'caam.004.001.05', 'caam.005.001.03', 'caam.006.001.02', 'caam.007.001.01', 'caam.008.001.01', 'caam.009.001.03', 'caam.010.001.03', 'caam.011.001.02', 'caam.012.001.02', 'caam.013.001.01', 'caam.014.001.01', 'caam.015.001.01', 'caam.016.001.01'].map(
+  ...['pain.007.001.13', 'pain.008.001.12', 'pain.009.001.08', 'pain.010.001.08', 'pain.011.001.08', 'pain.012.001.08', 'pain.013.001.12', 'pain.014.001.12', 'pain.017.001.04', 'pain.018.001.04', 'pacs.002.001.16', 'pacs.003.001.12', 'pacs.004.001.15', 'pacs.007.001.14', 'pacs.008.001.14', 'pacs.009.001.13', 'pacs.010.001.06', 'pacs.028.001.07', 'pacs.029.001.02', 'caam.001.001.05', 'caam.002.001.04', 'caam.003.001.05', 'caam.004.001.05', 'caam.005.001.03', 'caam.006.001.02', 'caam.007.001.01', 'caam.008.001.01', 'caam.009.001.03', 'caam.010.001.03', 'caam.011.001.02', 'caam.012.001.02', 'caam.013.001.01', 'caam.014.001.01', 'caam.015.001.01', 'caam.016.001.01', 'camt.029.001.14', 'camt.052.001.14', 'camt.053.001.14', 'camt.054.001.14', 'camt.055.001.13', 'camt.056.001.12'].map(
     (id): Scenario => ({
       name: `message-${id}`,
       app: 'demo-form',
