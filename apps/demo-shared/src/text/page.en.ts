@@ -135,6 +135,8 @@ export const pageEn: PageMessages = {
   areaDesc_pacs: 'Messages that support the clearing and settlement processes for payment transactions between financial institutions.',
   areaName_caam: 'ATM Management',
   areaDesc_caam: 'Messages that support card related terminal management services between an Automated Teller Machine (ATM) and an Acquirer.',
+  areaName_camt: 'Cash Management',
+  areaDesc_camt: 'Messages that support the reporting and advicing of the cash side of any financial transactions, including cash movements, transactions and balances, plus any exceptions and investigations related to cash transactions.',
   xsdLabel: 'XSD Validate',
   xsdReady: 'Validate the text of the message below using {location}',
   xsdReadyFile: 'Validate the text of the message below using {file} (loaded from your computer)',

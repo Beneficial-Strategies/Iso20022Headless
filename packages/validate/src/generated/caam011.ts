@@ -82,6 +82,7 @@ import {
   EnvelopedData4Schema,
   ContentInformationType10Schema,
   PaymentCard37Schema,
+  Max500TextSchema,
   Max140BinarySchema,
   TransactionEnvironment3CodeSchema,
   TerminalHosting1Schema,
@@ -148,8 +149,6 @@ export const AutomatedTellerMachine12Schema = z.strictObject({
   LocationCategory: TransactionEnvironment2CodeSchema.optional(),
   SequenceNumber: Max35TextSchema.optional(),
 });
-
-export const Max500TextSchema = textType({min: 1, max: 500});
 
 export const AuthenticationMethod7CodeSchema = z.enum(["BIOM", "FPIN", "MOBL", "NPIN", "OTHR", "PSWD", "SCNL", "SCRT", "TOKA"]);
 
@@ -290,13 +289,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "LocationCategory", isoId: "_ZJOkO6EUEe-MRKYsaX6JDg", xmlTag: "LctnCtgy", displayName: displayName("LocationCategory"), kind: "code", type: "TransactionEnvironment2Code", required: false }),
       f({ name: "SequenceNumber", isoId: "_ZJOkNaEUEe-MRKYsaX6JDg", xmlTag: "SeqNb", displayName: displayName("SequenceNumber"), kind: "text", type: "Max35Text", required: false }),
     ],
-  },
-  "Max500Text": {
-    name: "Max500Text",
-    isoId: "_YY7X0Np-Ed-ak6NoX_4Aeg_-1502136823",
-    kind: "text",
-    minLength: 1,
-    maxLength: 500,
   },
   "AuthenticationMethod7Code": {
     name: "AuthenticationMethod7Code",
@@ -479,6 +471,7 @@ export const typeDescriptors: TypeDescriptors = {
   "EnvelopedData4": sharedTypeDescriptors["EnvelopedData4"]!,
   "ContentInformationType10": sharedTypeDescriptors["ContentInformationType10"]!,
   "PaymentCard37": sharedTypeDescriptors["PaymentCard37"]!,
+  "Max500Text": sharedTypeDescriptors["Max500Text"]!,
   "Max140Binary": sharedTypeDescriptors["Max140Binary"]!,
   "TransactionEnvironment3Code": sharedTypeDescriptors["TransactionEnvironment3Code"]!,
   "TerminalHosting1": sharedTypeDescriptors["TerminalHosting1"]!,

@@ -11,4 +11,4 @@ ISINOct2015Identifier	_rMvjUYIXEeWE0I8iABxEQA	IdentifierSet	[A-Z]{2,2}[A-Z0-9]{9
 Max20000Text	_YYxm19p-Ed-ak6NoX_4Aeg_-598584038	Text		1	20000					
 Max30DecimalNumber	_xNcaMBrKEeyhRdHRjakS2w	Quantity				30	29			
 NonNegativeDecimalNumber	_mX4tAyGwEeKjd4jizyIDGA	Quantity				18	17	0		
-ActiveOrHistoricCurrencyAnd13DecimalAmount	_YYB_9Np-Ed-ak6NoX_4Aeg_-771372619	Amount				18	13	0		currencyIdentifierSet=_bqIp6tp-Ed-ak6NoX_4Aeg_1823330336
+ActiveOrHistoricCurrencyAnd13DecimalAmount	_YYB_9Np-Ed-ak6NoX_4Aeg_-771372619	Amount				18	13	0		currencyIdentifierSet=ActiveOrHistoricCurrencyCode (_bqIp6tp-Ed-ak6NoX_4Aeg_1823330336)

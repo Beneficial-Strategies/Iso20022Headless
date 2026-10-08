@@ -103,6 +103,13 @@ export function writeStructure(spec: Spec, closure: Closure, isNew: (name: strin
       choiceDefs.push(tsv([name, v[1], v[2], v[6]]));
     }
   }
+  // an amount type is a DATATYPE row of kind Amount (its constraints are in simple-types.tsv)
+  for (const name of closure.amounts.filter(isNew)) {
+    const a = spec.amounts.get(name)!;
+    const head = tsv(['DATATYPE', name, a.isoId, 'Amount', a.status, a.checksum, a.definition]);
+    complex.push(head);
+    raw.push(head);
+  }
   const codeSetDefs = ['codeSet\tisoId\ttext', ...closure.codeSets.filter(isNewCodeSet).map((n) => tsv([n, spec.codeSets.get(n)!.isoId, spec.codeSets.get(n)!.definition]))];
   return { complexTypes: complex.join('\n') + '\n', snapshotRaw: raw.join('\n') + '\n', choiceDefs: choiceDefs.join('\n') + '\n', codeSetDefs: codeSetDefs.join('\n') + '\n' };
 }
@@ -156,9 +163,11 @@ export function simpleTypeRows(spec: Spec, names: string[]): string[][] {
     const t = spec.simpleTypes.get(name) ?? spec.amounts.get(name) ?? spec.externalSchemas.get(name);
     const f = spec.facets.get(name) ?? {};
     const exact = f.length;
+    // the currency set is an id in the snapshot; the generator reads it as `Name (id)`
+    const setName = (id: string): string => [...spec.codeSets.values()].find((c) => c.isoId === id)?.name ?? id;
     const other = Object.entries(f)
       .filter(([k]) => !COLUMN_FACETS.has(k))
-      .map(([k, v]) => `${k}=${v}`)
+      .map(([k, v]) => `${k}=${k === 'currencyIdentifierSet' && spec.codeSets.size ? `${setName(v)} (${v})` : v}`)
       .join('; ');
     return [
       name, t?.isoId ?? '', f.specType ?? (spec.externalSchemas.has(name) ? 'ExternalSchema' : ''), f.pattern ?? '', f.minLength ?? exact ?? '', f.maxLength ?? exact ?? '',

@@ -34,7 +34,7 @@ const KEYS = [
   'pasteIssue_duplicate_element', 'pasteIssue_multiple_choices', 'pasteIssue_unexpected_text', 'pasteIssue_unexpected_element', 'loadFile', 'saveXml',
   'saveJson', 'fileDone', 'fileDoneIssues', 'fileFailed', 'fileError_empty', 'fileError_not_xml_or_json',
   'fileError_unreadable', 'fileError_too_large', 'stepServe', 'noteServe', 'areaLabel', 'areaName_pain',
-  'areaDesc_pain', 'areaName_pacs', 'areaDesc_pacs', 'areaName_caam', 'areaDesc_caam', 'xsdLabel',
+  'areaDesc_pain', 'areaName_pacs', 'areaDesc_pacs', 'areaName_caam', 'areaDesc_caam', 'areaName_camt', 'areaDesc_camt', 'xsdLabel',
   'xsdReady', 'xsdReadyFile', 'xsdLoading', 'xsdUnavailable', 'xsdNeedsXml', 'xsdNotSchema',
   'xsdWrongSchema', 'xsdReadFailed', 'xsdPanelTitle', 'xsdValid', 'xsdOneError', 'xsdErrors',
   'xsdChecking', 'xsdEngineFailed', 'xsdClose', 'xsdLine', 'xsdLoadOther', 'xsdSchemaFrom',

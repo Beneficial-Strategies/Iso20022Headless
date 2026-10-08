@@ -448,3 +448,4 @@ DATATYPE	EntryStatus1Choice	_DICS8IaoEeeUws0ZryHQ2w	Choice	Registered	B5E004AD12
 DATATYPE	TechnicalInputChannel1Choice	_Rpr4odp-Ed-ak6NoX_4Aeg_-1373581543	Choice	Registered	BAA4CC20B79C943F	Specifies the technical input channel.
 DATATYPE	SequenceRange1Choice	_rsIb84y3EeeGkvZr3jtnCQ	Choice	Registered	D968673B61A03971	Specifies a choice of sequences.
 DATATYPE	ReportingSource1Choice	_RqIkkdp-Ed-ak6NoX_4Aeg_-1706426921	Choice	Registered	1B7B3CFD3F53D87F	Specifies the source used to generate the reporting.
+DATATYPE	ActiveOrHistoricCurrencyAnd13DecimalAmount	_YYB_9Np-Ed-ak6NoX_4Aeg_-771372619	Amount	Registered	37A352BF3DD135A0	A number of monetary units specified in an active or a historic currency where the unit of currency is explicit and compliant with ISO 4217. The number of fractional digits (or minor unit of currency) is not checked as per ISO 4217: It must be lesser than or equal to 13.|Note: The decimal separator is a dot.

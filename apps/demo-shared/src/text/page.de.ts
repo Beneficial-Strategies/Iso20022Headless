@@ -136,6 +136,8 @@ export const pageDe: PageMessages = {
   areaDesc_pacs: 'Nachrichten, die die Clearing- und Abwicklungsprozesse für Zahlungsvorgänge zwischen Finanzinstituten unterstützen.',
   areaName_caam: 'Geldautomatenverwaltung',
   areaDesc_caam: 'Nachrichten, die kartenbezogene Terminalverwaltungsdienste zwischen einem Geldautomaten (ATM) und einem Acquirer unterstützen.',
+  areaName_camt: 'Cash-Management',
+  areaDesc_camt: 'Nachrichten, die die Meldung und Avisierung der Zahlungsmittelseite beliebiger Finanztransaktionen unterstützen, einschließlich Zahlungsmittelbewegungen, Transaktionen und Salden, sowie Ausnahmen und Untersuchungen im Zusammenhang mit Zahlungsmitteltransaktionen.',
   xsdLabel: 'XSD prüfen',
   xsdReady: 'Den Text der Nachricht unten mit {location} prüfen',
   xsdReadyFile: 'Den Text der Nachricht unten mit {file} prüfen (von Ihrem Computer geladen)',

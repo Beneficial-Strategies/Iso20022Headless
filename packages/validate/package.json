@@ -48,7 +48,13 @@
     "./caam013": "./src/generated/caam013.ts",
     "./caam014": "./src/generated/caam014.ts",
     "./caam015": "./src/generated/caam015.ts",
-    "./caam016": "./src/generated/caam016.ts"
+    "./caam016": "./src/generated/caam016.ts",
+    "./camt029": "./src/generated/camt029.ts",
+    "./camt052": "./src/generated/camt052.ts",
+    "./camt053": "./src/generated/camt053.ts",
+    "./camt054": "./src/generated/camt054.ts",
+    "./camt055": "./src/generated/camt055.ts",
+    "./camt056": "./src/generated/camt056.ts"
   },
   "scripts": {
     "typecheck": "tsc -p tsconfig.json",

@@ -13,6 +13,8 @@ const ctx = { types, codeLists: ruleCodeLists };
 const KNOWN_SPEC_TYPOS: Record<string, string> = {
   'FIToFIPaymentReversalV14.TotalReversedInterbankSettlementAmountAndSumRule': 'the expression says ReversedInterbankSttlementAmount (missing "e"); the field is ReversedInterbankSettlementAmount',
   'PaymentReturnV15.TotalReturnedInterbankSettlementAmountAndSumRule': 'the expression says ReturnedInterbankSttlementAmount (missing "e"); the field is ReturnedInterbankSettlementAmount',
+  // a copy of the rule of UnderlyingTransaction36 (where TransactionInformation exists); UnderlyingTransaction37 has OriginalPaymentInformationAndCancellation instead
+  'UnderlyingTransaction37.GroupCancellationAndNumberOfTransactionsRule': 'the rule counts TransactionInformation, which UnderlyingTransaction37 does not have (it was copied from UnderlyingTransaction36)',
 };
 
 describe('rule paths', () => {

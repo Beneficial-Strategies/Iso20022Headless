@@ -17,7 +17,7 @@ export interface Spec {
   choices: Map<string, { name: string; isoId: string; status: string; checksum: string; definition: string }>;
   /** VARIANT rows by choice name. */
   variants: Map<string, string[][]>;
-  amounts: Map<string, { name: string; isoId: string; definition: string }>;
+  amounts: Map<string, { name: string; isoId: string; status: string; checksum: string; definition: string }>;
   simpleTypes: Map<string, { name: string; isoId: string; definition: string }>;
   externalSchemas: Map<string, { name: string; isoId: string; definition: string }>;
   codeSets: Map<string, { name: string; isoId: string; definition: string }>;
@@ -72,7 +72,7 @@ export function addSnapshot(spec: Spec, text: string): void {
         push(spec.variants, c[1]!, c.slice(1));
         break;
       case 'AMOUNT':
-        unique(spec.amounts, { name: c[1]!, isoId: c[2]!, definition: c[6] ?? '' }, 'amount');
+        unique(spec.amounts, { name: c[1]!, isoId: c[2]!, status: c[3] ?? '', checksum: c[5] ?? '', definition: c[6] ?? '' }, 'amount');
         break;
       case 'SIMPLETYPE':
         unique(spec.simpleTypes, { name: c[1]!, isoId: c[2]!, definition: c[6] ?? '' }, 'simple type');

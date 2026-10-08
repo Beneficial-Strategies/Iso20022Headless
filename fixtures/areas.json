@@ -16,5 +16,11 @@
     "name": "ATM Management",
     "isoId": "_9QyroIniEeSEIt-Xs5V4sA",
     "definition": "Messages that support card related terminal management services between an Automated Teller Machine (ATM) and an Acquirer."
+  },
+  {
+    "code": "camt",
+    "name": "Cash Management",
+    "isoId": "_sPGdsGtdEeCY4-KZ9JEyUQ_-735475843",
+    "definition": "Messages that support the reporting and advicing of the cash side of any financial transactions, including cash movements, transactions and balances, plus any exceptions and investigations related to cash transactions."
   }
 ]

@@ -17,6 +17,12 @@ import { typeDescriptors as caam013Descriptors } from './caam013.ts';
 import { typeDescriptors as caam014Descriptors } from './caam014.ts';
 import { typeDescriptors as caam015Descriptors } from './caam015.ts';
 import { typeDescriptors as caam016Descriptors } from './caam016.ts';
+import { typeDescriptors as camt029Descriptors } from './camt029.ts';
+import { typeDescriptors as camt052Descriptors } from './camt052.ts';
+import { typeDescriptors as camt053Descriptors } from './camt053.ts';
+import { typeDescriptors as camt054Descriptors } from './camt054.ts';
+import { typeDescriptors as camt055Descriptors } from './camt055.ts';
+import { typeDescriptors as camt056Descriptors } from './camt056.ts';
 import { typeDescriptors as pacs002Descriptors } from './pacs002.ts';
 import { typeDescriptors as pacs003Descriptors } from './pacs003.ts';
 import { typeDescriptors as pacs004Descriptors } from './pacs004.ts';
@@ -56,6 +62,12 @@ export const allTypeDescriptors: TypeDescriptors = {
   ...caam014Descriptors,
   ...caam015Descriptors,
   ...caam016Descriptors,
+  ...camt029Descriptors,
+  ...camt052Descriptors,
+  ...camt053Descriptors,
+  ...camt054Descriptors,
+  ...camt055Descriptors,
+  ...camt056Descriptors,
   ...pacs002Descriptors,
   ...pacs003Descriptors,
   ...pacs004Descriptors,

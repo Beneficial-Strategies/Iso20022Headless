@@ -34,6 +34,7 @@ export const areaIndex: readonly AreaInfo[] = [
   { code: "pain", name: "Payments Initiation", definition: "Messages that support the initiation of a payment from the ordering customer to a financial institution that services a cash account and reporting its status." },
   { code: "pacs", name: "Payments Clearing and Settlement", definition: "Messages that support the clearing and settlement processes for payment transactions between financial institutions." },
   { code: "caam", name: "ATM Management", definition: "Messages that support card related terminal management services between an Automated Teller Machine (ATM) and an Acquirer." },
+  { code: "camt", name: "Cash Management", definition: "Messages that support the reporting and advicing of the cash side of any financial transactions, including cash movements, transactions and balances, plus any exceptions and investigations related to cash transactions." },
 ];
 
 export const messageIndex: readonly MessageInfo[] = [
@@ -406,5 +407,65 @@ export const messageIndex: readonly MessageInfo[] = [
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.016.001.01.xsd",
     load: () =>
       import('./caam016.ts').then((m) => ({ message: m.caam016Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.029.001.14",
+    name: "ResolutionOfInvestigationV14",
+    title: "Resolution Of Investigation",
+    area: "camt",
+    module: "camt029",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.029.001.14.xsd",
+    load: () =>
+      import('./camt029.ts').then((m) => ({ message: m.camt029Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.052.001.14",
+    name: "BankToCustomerAccountReportV14",
+    title: "Bank To Customer Account Report",
+    area: "camt",
+    module: "camt052",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.052.001.14.xsd",
+    load: () =>
+      import('./camt052.ts').then((m) => ({ message: m.camt052Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.053.001.14",
+    name: "BankToCustomerStatementV14",
+    title: "Bank To Customer Statement",
+    area: "camt",
+    module: "camt053",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.053.001.14.xsd",
+    load: () =>
+      import('./camt053.ts').then((m) => ({ message: m.camt053Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.054.001.14",
+    name: "BankToCustomerDebitCreditNotificationV14",
+    title: "Bank To Customer Debit Credit Notification",
+    area: "camt",
+    module: "camt054",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.054.001.14.xsd",
+    load: () =>
+      import('./camt054.ts').then((m) => ({ message: m.camt054Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.055.001.13",
+    name: "CustomerPaymentCancellationRequestV13",
+    title: "Customer Payment Cancellation Request",
+    area: "camt",
+    module: "camt055",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.055.001.13.xsd",
+    load: () =>
+      import('./camt055.ts').then((m) => ({ message: m.camt055Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.056.001.12",
+    name: "FIToFIPaymentCancellationRequestV12",
+    title: "FI To FI Payment Cancellation Request",
+    area: "camt",
+    module: "camt056",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.056.001.12.xsd",
+    load: () =>
+      import('./camt056.ts').then((m) => ({ message: m.camt056Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
 ];

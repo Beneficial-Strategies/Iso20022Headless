@@ -242,6 +242,8 @@ function simpleType(name: string): IrType {
       return { ...base, kind: 'time' };
     case 'Year':
       return { ...base, kind: 'text', pattern: '\\d{4}' };
+    case 'YearMonth':
+      return { ...base, kind: 'text', pattern: '\\d{4}-(0[1-9]|1[0-2])' };
     case 'Indicator':
       return { ...base, kind: 'boolean' };
     case 'Binary':
