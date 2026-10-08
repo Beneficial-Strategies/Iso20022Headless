@@ -4,27 +4,27 @@ import type { ActiveOrHistoricCurrencyAndAmount, Case6, CaseAssignment6, Control
 
 export interface PaymentTransaction176 {
   CancellationIdentification?: string;
-  CancellationReasonInformation?: Array<PaymentCancellationReason6>;
   Case?: Case6;
-  OriginalEndToEndIdentification?: string;
-  OriginalInstructedAmount?: ActiveOrHistoricCurrencyAndAmount;
   OriginalInstructionIdentification?: string;
-  OriginalRequestedCollectionDate?: string;
-  OriginalRequestedExecutionDate?: DateAndDateTime2Choice;
-  OriginalTransactionReference?: OriginalTransactionReference47;
+  OriginalEndToEndIdentification?: string;
   OriginalUETR?: string;
+  OriginalInstructedAmount?: ActiveOrHistoricCurrencyAndAmount;
+  OriginalRequestedExecutionDate?: DateAndDateTime2Choice;
+  OriginalRequestedCollectionDate?: string;
+  CancellationReasonInformation?: Array<PaymentCancellationReason6>;
+  OriginalTransactionReference?: OriginalTransactionReference47;
   SupplementaryData?: Array<SupplementaryData1>;
 }
 
 export interface OriginalPaymentInstruction55 {
-  CancellationReasonInformation?: Array<PaymentCancellationReason6>;
-  Case?: Case6;
-  ControlSum?: string;
-  NumberOfTransactions?: string;
-  OriginalGroupInformation?: OriginalGroupInformation33;
-  OriginalPaymentInformationIdentification: string;
   PaymentCancellationIdentification?: string;
+  Case?: Case6;
+  OriginalPaymentInformationIdentification: string;
+  OriginalGroupInformation?: OriginalGroupInformation33;
+  NumberOfTransactions?: string;
+  ControlSum?: string;
   PaymentInformationCancellation?: 'true' | 'false';
+  CancellationReasonInformation?: Array<PaymentCancellationReason6>;
   TransactionInformation?: Array<PaymentTransaction176>;
 }
 
@@ -37,8 +37,8 @@ export interface CustomerPaymentCancellationRequestV13 {
   Assignment: CaseAssignment6;
   Case?: Case6;
   ControlData?: ControlData1;
-  SupplementaryData?: Array<SupplementaryData1>;
   Underlying: Array<UnderlyingTransaction37>;
+  SupplementaryData?: Array<SupplementaryData1>;
 }
 
 export type Camt055Document = CustomerPaymentCancellationRequestV13;

@@ -3,21 +3,21 @@
 import type { ATMEnvironment7, ContentInformationType10, ContentInformationType15, Header31 } from './shared.ts';
 
 export interface ATMVersionReport1 {
-  ConfigurationStatus: "FAIL" | "WACT";
   ConfigurationVersion: string;
+  ConfigurationStatus: "FAIL" | "WACT";
   FailReason?: string;
 }
 
 export interface ATMConfigurationReportComponent1 {
-  ActiveVersion?: string;
   Environment: ATMEnvironment7;
+  ActiveVersion?: string;
   NonActiveVersion?: Array<ATMVersionReport1>;
 }
 
 export interface ATMConfigurationReportV01 {
-  ATMConfigurationReport?: ATMConfigurationReportComponent1;
   Header: Header31;
   ProtectedATMConfigurationReport?: ContentInformationType10;
+  ATMConfigurationReport?: ATMConfigurationReportComponent1;
   SecurityTrailer?: ContentInformationType15;
 }
 

@@ -3,48 +3,48 @@
 import type { ActiveCurrencyAndAmount, BranchAndFinancialInstitutionIdentification8, CashAccount40, GroupHeader110, MandateAdjustment1, MandateAuthentication1, MandateOccurrences5, MandateReason1Choice, MandateSetupReason1Choice, MandateTypeInformation2, OriginalMandate10Choice, OriginalMessageInformation1, PartyIdentification272, ReferredMandateDocument2, SupplementaryData1 } from './shared.ts';
 
 export interface MandateAmendmentReason3 {
-  AdditionalInformation?: Array<string>;
   Originator?: PartyIdentification272;
   Reason: MandateReason1Choice;
+  AdditionalInformation?: Array<string>;
 }
 
 export interface Mandate21 {
-  Adjustment?: MandateAdjustment1;
+  MandateIdentification: string;
+  MandateRequestIdentification?: string;
   Authentication?: MandateAuthentication1;
+  Type?: MandateTypeInformation2;
+  Occurrences?: MandateOccurrences5;
+  TrackingIndicator: 'true' | 'false';
+  FirstCollectionAmount?: ActiveCurrencyAndAmount;
   CollectionAmount?: ActiveCurrencyAndAmount;
+  MaximumAmount?: ActiveCurrencyAndAmount;
+  Adjustment?: MandateAdjustment1;
+  Reason?: MandateSetupReason1Choice;
+  CreditorSchemeIdentification?: PartyIdentification272;
   Creditor?: PartyIdentification272;
   CreditorAccount?: CashAccount40;
   CreditorAgent?: BranchAndFinancialInstitutionIdentification8;
-  CreditorSchemeIdentification?: PartyIdentification272;
+  UltimateCreditor?: PartyIdentification272;
   Debtor?: PartyIdentification272;
   DebtorAccount?: CashAccount40;
   DebtorAgent?: BranchAndFinancialInstitutionIdentification8;
-  FirstCollectionAmount?: ActiveCurrencyAndAmount;
-  MandateIdentification: string;
-  MandateReference?: string;
-  MandateRequestIdentification?: string;
-  MaximumAmount?: ActiveCurrencyAndAmount;
-  Occurrences?: MandateOccurrences5;
-  Reason?: MandateSetupReason1Choice;
-  ReferredDocument?: Array<ReferredMandateDocument2>;
-  TrackingIndicator: 'true' | 'false';
-  Type?: MandateTypeInformation2;
-  UltimateCreditor?: PartyIdentification272;
   UltimateDebtor?: PartyIdentification272;
+  MandateReference?: string;
+  ReferredDocument?: Array<ReferredMandateDocument2>;
 }
 
 export interface MandateAmendment8 {
+  OriginalMessageInformation?: OriginalMessageInformation1;
   AmendmentReason: MandateAmendmentReason3;
   Mandate: Mandate21;
   OriginalMandate: OriginalMandate10Choice;
-  OriginalMessageInformation?: OriginalMessageInformation1;
   SupplementaryData?: Array<SupplementaryData1>;
 }
 
 export interface MandateAmendmentRequestV08 {
   GroupHeader: GroupHeader110;
-  SupplementaryData?: Array<SupplementaryData1>;
   UnderlyingAmendmentDetails: Array<MandateAmendment8>;
+  SupplementaryData?: Array<SupplementaryData1>;
 }
 
 export type Pain010Document = MandateAmendmentRequestV08;

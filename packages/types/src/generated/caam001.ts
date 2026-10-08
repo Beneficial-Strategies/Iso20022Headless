@@ -2,61 +2,61 @@
 // caam.001.001.05 (ATMDeviceReportV05). Leaf values are wire strings.
 import type { ATMCommand15, ATMCommand16, ATMEnvironment6, ATMSecurityConfiguration1, ATMStatus2, ContentInformationType10, ContentInformationType13, Header31 } from './shared.ts';
 
-export interface CryptographicKey20 {
-  ActivationDate?: string;
-  AdditionalIdentification?: string;
-  CurrentStatus: "OPER" | "STOP" | "WACT";
-  DeactivationDate?: string;
-  FailureReason?: "CMPR" | "EXPR" | "KCVE" | "KLOD";
-  Function: Array<"DCPT" | "DDEC" | "DENC" | "ENCR" | "KEYD" | "KEYG" | "KEYI" | "KEYX" | "MACG" | "MACV" | "PIND" | "PINE" | "PINV" | "SIGG" | "SUGV" | "TRNI" | "TRNX">;
-  Identification?: string;
-  KeyCheckValue?: string;
-  Name?: string;
-  SecurityDomainIdentification?: string;
-  SequenceCounter?: string;
-  Type: "AES2" | "AES5" | "AES9" | "DKAE" | "DKP9" | "ECCC" | "EDE3" | "EDE4" | "RSAC" | "UKA2" | "UKA6" | "UKA8";
-  Version?: string;
-}
-
 export interface ATMEquipment2 {
-  FirmwareIdentification?: string;
-  FirmwareProvider?: string;
-  FirmwareVersion?: string;
   Manufacturer?: string;
   Model?: string;
-  SerialNumber?: string;
   Version?: string;
+  SerialNumber?: string;
+  FirmwareProvider?: string;
+  FirmwareIdentification?: string;
+  FirmwareVersion?: string;
 }
 
 export interface ATMSecurityDevice2 {
-  BindingState?: "BUND" | "UBND";
-  CurrentConfiguration: ATMSecurityConfiguration1;
-  CurrentStatus: "OPER" | "OUTS";
   DeviceProperty?: ATMEquipment2;
-  Incident?: "HRDW" | "SECR";
+  CurrentConfiguration: ATMSecurityConfiguration1;
   SupportedConfiguration?: ATMSecurityConfiguration1;
+  CurrentStatus: "OPER" | "OUTS";
+  Incident?: "HRDW" | "SECR";
+  BindingState?: "BUND" | "UBND";
+}
+
+export interface CryptographicKey20 {
+  Name?: string;
+  Identification?: string;
+  SecurityDomainIdentification?: string;
+  AdditionalIdentification?: string;
+  Version?: string;
+  SequenceCounter?: string;
+  Type: "AES2" | "AES5" | "AES9" | "DKAE" | "DKP9" | "ECCC" | "EDE3" | "EDE4" | "RSAC" | "UKA2" | "UKA6" | "UKA8";
+  Function: Array<"DCPT" | "DDEC" | "DENC" | "ENCR" | "KEYD" | "KEYG" | "KEYI" | "KEYX" | "MACG" | "MACV" | "PIND" | "PINE" | "PINV" | "SIGG" | "SUGV" | "TRNI" | "TRNX">;
+  ActivationDate?: string;
+  DeactivationDate?: string;
+  KeyCheckValue?: string;
+  CurrentStatus: "OPER" | "STOP" | "WACT";
+  FailureReason?: "CMPR" | "EXPR" | "KCVE" | "KLOD";
 }
 
 export interface ATMSecurityContext6 {
   CurrentSecurityScheme: "APPK" | "CERT" | "DTCH" | "FRAN" | "LUXG" | "MANU" | "NONE" | "PKIP" | "SIGN" | "TR34";
-  HostChallenge?: string;
-  Key?: Array<CryptographicKey20>;
-  SecurityDevice: ATMSecurityDevice2;
   SecuritySchemeCapabilities?: Array<"APPK" | "CERT" | "DTCH" | "FRAN" | "LUXG" | "MANU" | "PKIP" | "SIGN" | "TR34">;
+  SecurityDevice: ATMSecurityDevice2;
+  Key?: Array<CryptographicKey20>;
+  HostChallenge?: string;
 }
 
 export interface ATMDeviceReport5 {
-  ATMGlobalStatus: ATMStatus2;
-  ATMSecurityContext?: ATMSecurityContext6;
-  CommandContext?: ATMCommand16;
-  CommandResult?: Array<ATMCommand15>;
   Environment: ATMEnvironment6;
+  ATMGlobalStatus: ATMStatus2;
+  CommandResult?: Array<ATMCommand15>;
+  CommandContext?: ATMCommand16;
+  ATMSecurityContext?: ATMSecurityContext6;
 }
 
 export interface ATMDeviceReportV05 {
-  ATMDeviceReport?: ATMDeviceReport5;
   Header: Header31;
   ProtectedATMDeviceReport?: ContentInformationType10;
+  ATMDeviceReport?: ATMDeviceReport5;
   SecurityTrailer?: ContentInformationType13;
 }
 

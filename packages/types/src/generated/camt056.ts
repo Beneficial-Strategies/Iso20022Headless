@@ -3,20 +3,20 @@
 import type { ActiveOrHistoricCurrencyAndAmount, BranchAndFinancialInstitutionIdentification8, Case6, CaseAssignment6, ControlData1, OriginalGroupHeader21, OriginalGroupInformation33, OriginalTransactionReference47, PaymentCancellationReason6, SupplementaryData1 } from './shared.ts';
 
 export interface PaymentTransaction172 {
-  Assignee?: BranchAndFinancialInstitutionIdentification8;
-  Assigner?: BranchAndFinancialInstitutionIdentification8;
   CancellationIdentification?: string;
-  CancellationReasonInformation?: Array<PaymentCancellationReason6>;
   Case?: Case6;
-  OriginalClearingSystemReference?: string;
-  OriginalEndToEndIdentification?: string;
   OriginalGroupInformation?: OriginalGroupInformation33;
   OriginalInstructionIdentification?: string;
+  OriginalEndToEndIdentification?: string;
+  OriginalTransactionIdentification?: string;
+  OriginalUETR?: string;
+  OriginalClearingSystemReference?: string;
   OriginalInterbankSettlementAmount?: ActiveOrHistoricCurrencyAndAmount;
   OriginalInterbankSettlementDate?: string;
-  OriginalTransactionIdentification?: string;
+  Assigner?: BranchAndFinancialInstitutionIdentification8;
+  Assignee?: BranchAndFinancialInstitutionIdentification8;
+  CancellationReasonInformation?: Array<PaymentCancellationReason6>;
   OriginalTransactionReference?: OriginalTransactionReference47;
-  OriginalUETR?: string;
   SupplementaryData?: Array<SupplementaryData1>;
 }
 
@@ -29,8 +29,8 @@ export interface FIToFIPaymentCancellationRequestV12 {
   Assignment: CaseAssignment6;
   Case?: Case6;
   ControlData?: ControlData1;
-  SupplementaryData?: Array<SupplementaryData1>;
   Underlying: Array<UnderlyingTransaction36>;
+  SupplementaryData?: Array<SupplementaryData1>;
 }
 
 export type Camt056Document = FIToFIPaymentCancellationRequestV12;

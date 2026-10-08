@@ -44,254 +44,67 @@
   },
   "root": "ATMDiagnosticRequestV03",
   "order": [
-    "ATMStatus1Code",
-    "Max35Text",
-    "ATMStatus2",
-    "AutomatedTellerMachine7",
-    "Acquirer7",
-    "ATMEnvironment9",
-    "ATMDiagnosticRequest3",
-    "ISODateTime",
-    "Max3NumericText",
     "MessageFunction11Code",
+    "Max35Text",
     "ATMMessageFunction2",
     "Max6Text",
-    "Min2Max3AlphaText",
+    "Max3NumericText",
+    "ISODateTime",
     "PartyType12Code",
+    "Min2Max3AlphaText",
     "GenericIdentification77",
     "Traceability4",
     "Header31",
     "ContentType2Code",
-    "Algorithm15Code",
-    "BytePadding1Code",
-    "EncryptionFormat1Code",
-    "Max500Binary",
-    "Parameter6",
-    "AlgorithmIdentification14",
-    "Max100KBinary",
-    "EncryptedContent3",
-    "Min5Max16Binary",
-    "Max140Text",
     "Number",
+    "AttributeType1Code",
+    "Max140Text",
+    "RelativeDistinguishedName1",
+    "CertificateIssuer1",
+    "Max35Binary",
+    "IssuerAndSerialNumber1",
+    "Min5Max16Binary",
     "KEKIdentifier2",
-    "Algorithm13Code",
-    "AlgorithmIdentification13",
-    "KEK4",
-    "Max5000Binary",
+    "Recipient5Choice",
     "Algorithm7Code",
+    "EncryptionFormat1Code",
     "Algorithm11Code",
     "Algorithm8Code",
     "Parameter5",
     "AlgorithmIdentification12",
     "Parameter4",
     "AlgorithmIdentification11",
-    "AttributeType1Code",
-    "RelativeDistinguishedName1",
-    "CertificateIssuer1",
-    "Max35Binary",
-    "IssuerAndSerialNumber1",
-    "Recipient5Choice",
+    "Max5000Binary",
     "KeyTransport4",
+    "Algorithm13Code",
+    "Max500Binary",
+    "BytePadding1Code",
+    "Parameter6",
+    "AlgorithmIdentification13",
+    "KEK4",
     "Recipient4Choice",
+    "Algorithm15Code",
+    "AlgorithmIdentification14",
+    "Max100KBinary",
+    "EncryptedContent3",
     "EnvelopedData4",
     "ContentInformationType10",
-    "EncapsulatedContent3",
-    "Max140Binary",
+    "Acquirer7",
+    "AutomatedTellerMachine7",
+    "ATMEnvironment9",
+    "ATMStatus1Code",
+    "ATMStatus2",
+    "ATMDiagnosticRequest3",
     "Algorithm12Code",
     "Parameter7",
     "AlgorithmIdentification15",
+    "EncapsulatedContent3",
+    "Max140Binary",
     "AuthenticatedData4",
     "ContentInformationType15",
     "ATMDiagnosticRequestV03"
   ],
   "types": {
-    "ATMStatus1Code": {
-      "name": "ATMStatus1Code",
-      "isoId": "_n7mq8IqLEeSRT5rEzcAHEw",
-      "kind": "code",
-      "options": [
-        {
-          "value": "INSV",
-          "name": "InService",
-          "isoId": "_pVnK0YqLEeSRT5rEzcAHEw"
-        },
-        {
-          "value": "OUTS",
-          "name": "OutOfService",
-          "isoId": "_pZx5IYqLEeSRT5rEzcAHEw"
-        }
-      ]
-    },
-    "Max35Text": {
-      "name": "Max35Text",
-      "kind": "text",
-      "isoId": "_YW1tKdp-Ed-ak6NoX_4Aeg_1913463446",
-      "minLength": 1,
-      "maxLength": 35
-    },
-    "ATMStatus2": {
-      "name": "ATMStatus2",
-      "isoId": "_inj9QZ9bEe-nbM0aSPcoiQ",
-      "kind": "component",
-      "fields": [
-        {
-          "name": "CurrentStatus",
-          "isoId": "_iog_gZ9bEe-nbM0aSPcoiQ",
-          "xmlTag": "CurSts",
-          "type": "ATMStatus1Code",
-          "kind": "code",
-          "min": 1,
-          "max": 1
-        },
-        {
-          "name": "CurrentStatusReason",
-          "isoId": "_v4Ms4J9bEe-nbM0aSPcoiQ",
-          "xmlTag": "CurStsRsn",
-          "type": "Max35Text",
-          "kind": "text",
-          "min": 0,
-          "max": null
-        },
-        {
-          "name": "DemandedStatus",
-          "isoId": "_iog_g59bEe-nbM0aSPcoiQ",
-          "xmlTag": "DmnddSts",
-          "type": "ATMStatus1Code",
-          "kind": "code",
-          "min": 0,
-          "max": 1
-        }
-      ]
-    },
-    "AutomatedTellerMachine7": {
-      "name": "AutomatedTellerMachine7",
-      "isoId": "_OFzg0YtrEeSDLd7nI4Quzw",
-      "kind": "component",
-      "fields": [
-        {
-          "name": "AdditionalIdentification",
-          "isoId": "_OSw-w4trEeSDLd7nI4Quzw",
-          "xmlTag": "AddtlId",
-          "type": "Max35Text",
-          "kind": "text",
-          "min": 0,
-          "max": 1
-        },
-        {
-          "name": "Identification",
-          "isoId": "_OSw-wYtrEeSDLd7nI4Quzw",
-          "xmlTag": "Id",
-          "type": "Max35Text",
-          "kind": "text",
-          "min": 1,
-          "max": 1
-        },
-        {
-          "name": "SequenceNumber",
-          "isoId": "_OSw-xYtrEeSDLd7nI4Quzw",
-          "xmlTag": "SeqNb",
-          "type": "Max35Text",
-          "kind": "text",
-          "min": 0,
-          "max": 1
-        }
-      ]
-    },
-    "Acquirer7": {
-      "name": "Acquirer7",
-      "isoId": "_077-4Yn1EeS9F4Qrq_eaVA",
-      "kind": "component",
-      "fields": [
-        {
-          "name": "AcquiringInstitution",
-          "isoId": "_1Ivr0Yn1EeS9F4Qrq_eaVA",
-          "xmlTag": "AcqrgInstn",
-          "type": "Max35Text",
-          "kind": "text",
-          "min": 0,
-          "max": 1
-        },
-        {
-          "name": "Branch",
-          "isoId": "_1Ivr04n1EeS9F4Qrq_eaVA",
-          "xmlTag": "Brnch",
-          "type": "Max35Text",
-          "kind": "text",
-          "min": 0,
-          "max": 1
-        }
-      ]
-    },
-    "ATMEnvironment9": {
-      "name": "ATMEnvironment9",
-      "isoId": "_-clJMYtqEeSDLd7nI4Quzw",
-      "kind": "component",
-      "fields": [
-        {
-          "name": "ATM",
-          "isoId": "_-pPsN4tqEeSDLd7nI4Quzw",
-          "xmlTag": "ATM",
-          "type": "AutomatedTellerMachine7",
-          "kind": "component",
-          "min": 1,
-          "max": 1
-        },
-        {
-          "name": "ATMManagerIdentification",
-          "isoId": "_-pPsM4tqEeSDLd7nI4Quzw",
-          "xmlTag": "ATMMgrId",
-          "type": "Max35Text",
-          "kind": "text",
-          "min": 0,
-          "max": 1
-        },
-        {
-          "name": "Acquirer",
-          "isoId": "_-pPsMYtqEeSDLd7nI4Quzw",
-          "xmlTag": "Acqrr",
-          "type": "Acquirer7",
-          "kind": "component",
-          "min": 0,
-          "max": 1
-        }
-      ]
-    },
-    "ATMDiagnosticRequest3": {
-      "name": "ATMDiagnosticRequest3",
-      "isoId": "_UftQ0aETEe-MRKYsaX6JDg",
-      "kind": "component",
-      "fields": [
-        {
-          "name": "ATMGlobalStatus",
-          "isoId": "_Ug6xw6ETEe-MRKYsaX6JDg",
-          "xmlTag": "ATMGblSts",
-          "type": "ATMStatus2",
-          "kind": "component",
-          "min": 1,
-          "max": 1
-        },
-        {
-          "name": "Environment",
-          "isoId": "_Ug6xwaETEe-MRKYsaX6JDg",
-          "xmlTag": "Envt",
-          "type": "ATMEnvironment9",
-          "kind": "component",
-          "min": 1,
-          "max": 1
-        }
-      ]
-    },
-    "ISODateTime": {
-      "name": "ISODateTime",
-      "kind": "datetime",
-      "isoId": "_YW1tKtp-Ed-ak6NoX_4Aeg_-1624336183"
-    },
-    "Max3NumericText": {
-      "name": "Max3NumericText",
-      "kind": "text",
-      "isoId": "_YYU649p-Ed-ak6NoX_4Aeg_-996165274",
-      "pattern": "[0-9]{1,3}"
-    },
     "MessageFunction11Code": {
       "name": "MessageFunction11Code",
       "isoId": "_evJWQa1xEeWMg5rOByfExw",
@@ -484,20 +297,18 @@
         }
       ]
     },
+    "Max35Text": {
+      "name": "Max35Text",
+      "kind": "text",
+      "isoId": "_YW1tKdp-Ed-ak6NoX_4Aeg_1913463446",
+      "minLength": 1,
+      "maxLength": 35
+    },
     "ATMMessageFunction2": {
       "name": "ATMMessageFunction2",
       "isoId": "_nymwQa1wEeWMg5rOByfExw",
       "kind": "component",
       "fields": [
-        {
-          "name": "ATMServiceCode",
-          "isoId": "_n-hsY61wEeWMg5rOByfExw",
-          "xmlTag": "ATMSvcCd",
-          "type": "Max35Text",
-          "kind": "text",
-          "min": 0,
-          "max": 1
-        },
         {
           "name": "Function",
           "isoId": "_n-hsYa1wEeWMg5rOByfExw",
@@ -505,6 +316,15 @@
           "type": "MessageFunction11Code",
           "kind": "code",
           "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ATMServiceCode",
+          "isoId": "_n-hsY61wEeWMg5rOByfExw",
+          "xmlTag": "ATMSvcCd",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
           "max": 1
         },
         {
@@ -525,11 +345,16 @@
       "minLength": 1,
       "maxLength": 6
     },
-    "Min2Max3AlphaText": {
-      "name": "Min2Max3AlphaText",
+    "Max3NumericText": {
+      "name": "Max3NumericText",
       "kind": "text",
-      "isoId": "_4qROcGeeEeSh-d9-KfCEyA",
-      "pattern": "[a-zA-Z]{2,3}"
+      "isoId": "_YYU649p-Ed-ak6NoX_4Aeg_-996165274",
+      "pattern": "[0-9]{1,3}"
+    },
+    "ISODateTime": {
+      "name": "ISODateTime",
+      "kind": "datetime",
+      "isoId": "_YW1tKtp-Ed-ak6NoX_4Aeg_-1624336183"
     },
     "PartyType12Code": {
       "name": "PartyType12Code",
@@ -573,26 +398,32 @@
         }
       ]
     },
+    "Min2Max3AlphaText": {
+      "name": "Min2Max3AlphaText",
+      "kind": "text",
+      "isoId": "_4qROcGeeEeSh-d9-KfCEyA",
+      "pattern": "[a-zA-Z]{2,3}"
+    },
     "GenericIdentification77": {
       "name": "GenericIdentification77",
       "isoId": "_wVGBgYnzEeS9F4Qrq_eaVA",
       "kind": "component",
       "fields": [
         {
-          "name": "Country",
-          "isoId": "_wh5ud4nzEeS9F4Qrq_eaVA",
-          "xmlTag": "Ctry",
-          "type": "Min2Max3AlphaText",
-          "kind": "text",
-          "min": 0,
-          "max": 1
-        },
-        {
           "name": "Identification",
           "isoId": "_wh5ucYnzEeS9F4Qrq_eaVA",
           "xmlTag": "Id",
           "type": "Max35Text",
           "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Type",
+          "isoId": "_wh5uc4nzEeS9F4Qrq_eaVA",
+          "xmlTag": "Tp",
+          "type": "PartyType12Code",
+          "kind": "code",
           "min": 1,
           "max": 1
         },
@@ -606,21 +437,21 @@
           "max": 1
         },
         {
+          "name": "Country",
+          "isoId": "_wh5ud4nzEeS9F4Qrq_eaVA",
+          "xmlTag": "Ctry",
+          "type": "Min2Max3AlphaText",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
           "name": "ShortName",
           "isoId": "_wh5ueYnzEeS9F4Qrq_eaVA",
           "xmlTag": "ShrtNm",
           "type": "Max35Text",
           "kind": "text",
           "min": 0,
-          "max": 1
-        },
-        {
-          "name": "Type",
-          "isoId": "_wh5uc4nzEeS9F4Qrq_eaVA",
-          "xmlTag": "Tp",
-          "type": "PartyType12Code",
-          "kind": "code",
-          "min": 1,
           "max": 1
         }
       ]
@@ -674,11 +505,20 @@
       "kind": "component",
       "fields": [
         {
-          "name": "CreationDateTime",
-          "isoId": "_eYzvV61wEeWMg5rOByfExw",
-          "xmlTag": "CreDtTm",
-          "type": "ISODateTime",
-          "kind": "datetime",
+          "name": "MessageFunction",
+          "isoId": "_eYzvUa1wEeWMg5rOByfExw",
+          "xmlTag": "MsgFctn",
+          "type": "ATMMessageFunction2",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ProtocolVersion",
+          "isoId": "_eYzvU61wEeWMg5rOByfExw",
+          "xmlTag": "PrtcolVrsn",
+          "type": "Max6Text",
+          "kind": "text",
           "min": 1,
           "max": 1
         },
@@ -692,6 +532,15 @@
           "max": 1
         },
         {
+          "name": "CreationDateTime",
+          "isoId": "_eYzvV61wEeWMg5rOByfExw",
+          "xmlTag": "CreDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 1,
+          "max": 1
+        },
+        {
           "name": "InitiatingParty",
           "isoId": "_eYzvWa1wEeWMg5rOByfExw",
           "xmlTag": "InitgPty",
@@ -701,36 +550,18 @@
           "max": 1
         },
         {
-          "name": "MessageFunction",
-          "isoId": "_eYzvUa1wEeWMg5rOByfExw",
-          "xmlTag": "MsgFctn",
-          "type": "ATMMessageFunction2",
-          "kind": "component",
-          "min": 1,
-          "max": 1
-        },
-        {
-          "name": "ProcessState",
-          "isoId": "_eYzvXa1wEeWMg5rOByfExw",
-          "xmlTag": "PrcStat",
+          "name": "RecipientParty",
+          "isoId": "_eYzvW61wEeWMg5rOByfExw",
+          "xmlTag": "RcptPty",
           "type": "Max35Text",
           "kind": "text",
           "min": 0,
           "max": 1
         },
         {
-          "name": "ProtocolVersion",
-          "isoId": "_eYzvU61wEeWMg5rOByfExw",
-          "xmlTag": "PrtcolVrsn",
-          "type": "Max6Text",
-          "kind": "text",
-          "min": 1,
-          "max": 1
-        },
-        {
-          "name": "RecipientParty",
-          "isoId": "_eYzvW61wEeWMg5rOByfExw",
-          "xmlTag": "RcptPty",
+          "name": "ProcessState",
+          "isoId": "_eYzvXa1wEeWMg5rOByfExw",
+          "xmlTag": "PrcStat",
           "type": "Max35Text",
           "kind": "text",
           "min": 0,
@@ -779,181 +610,118 @@
         }
       ]
     },
-    "Algorithm15Code": {
-      "name": "Algorithm15Code",
-      "isoId": "_-7tyIWjBEeSP8Z8nx8HTuQ",
+    "Number": {
+      "name": "Number",
+      "kind": "number",
+      "isoId": "_YXbjBtp-Ed-ak6NoX_4Aeg_1560899033",
+      "totalDigits": 18,
+      "fractionDigits": 0
+    },
+    "AttributeType1Code": {
+      "name": "AttributeType1Code",
+      "isoId": "_TSEShwEcEeCQm6a_G2yO_w_1647054539",
       "kind": "code",
       "options": [
         {
-          "value": "E3DC",
-          "name": "DES112CBC",
-          "isoId": "__IaKU2jBEeSP8Z8nx8HTuQ"
+          "value": "CATT",
+          "name": "CountryName",
+          "isoId": "_TSESjAEcEeCQm6a_G2yO_w_189442098"
         },
         {
-          "value": "EA2C",
-          "name": "AES128CBC",
-          "isoId": "__IaKUWjBEeSP8Z8nx8HTuQ"
+          "value": "CNAT",
+          "name": "CommonName",
+          "isoId": "_TSESiAEcEeCQm6a_G2yO_w_399531534"
         },
         {
-          "value": "EA5C",
-          "name": "AES256CBC",
-          "isoId": "_DeJbgWjCEeSP8Z8nx8HTuQ"
+          "value": "LATT",
+          "name": "Locality",
+          "isoId": "_TSESiQEcEeCQm6a_G2yO_w_807359888"
         },
         {
-          "value": "EA9C",
-          "name": "AES192CBC",
-          "isoId": "_DT3eIWjCEeSP8Z8nx8HTuQ"
+          "value": "OATT",
+          "name": "OrganisationName",
+          "isoId": "_TSESigEcEeCQm6a_G2yO_w_-1550382235"
+        },
+        {
+          "value": "OUAT",
+          "name": "OrganisationUnitName",
+          "isoId": "_TSESiwEcEeCQm6a_G2yO_w_-2013772510"
         }
       ]
     },
-    "BytePadding1Code": {
-      "name": "BytePadding1Code",
-      "isoId": "_zBfYoGi9EeS87LmvcA55sg",
-      "kind": "code",
-      "options": [
-        {
-          "value": "LNGT",
-          "name": "LengthPadding",
-          "isoId": "_3sV-MWi9EeS87LmvcA55sg"
-        },
-        {
-          "value": "NUL8",
-          "name": "Null80Padding",
-          "isoId": "_3x6asWi9EeS87LmvcA55sg"
-        },
-        {
-          "value": "NULG",
-          "name": "NullLengthPadding",
-          "isoId": "_344lYWi9EeS87LmvcA55sg"
-        },
-        {
-          "value": "NULL",
-          "name": "NullPadding",
-          "isoId": "_3-_NYWi9EeS87LmvcA55sg"
-        },
-        {
-          "value": "RAND",
-          "name": "RandomPadding",
-          "isoId": "_4Hdz8Wi9EeS87LmvcA55sg"
-        }
-      ]
-    },
-    "EncryptionFormat1Code": {
-      "name": "EncryptionFormat1Code",
-      "isoId": "_IJtXQGi4EeS87LmvcA55sg",
-      "kind": "code",
-      "options": [
-        {
-          "value": "TR31",
-          "name": "TR31",
-          "isoId": "_KUksUGi4EeS87LmvcA55sg"
-        },
-        {
-          "value": "TR34",
-          "name": "TR34",
-          "isoId": "_KfMn8Wi4EeS87LmvcA55sg"
-        }
-      ]
-    },
-    "Max500Binary": {
-      "name": "Max500Binary",
+    "Max140Text": {
+      "name": "Max140Text",
       "kind": "text",
-      "isoId": "_TQbTygEcEeCQm6a_G2yO_w_-1786895632",
-      "maxLength": 500
+      "isoId": "_YXlUAtp-Ed-ak6NoX_4Aeg_2103068114",
+      "minLength": 1,
+      "maxLength": 140
     },
-    "Parameter6": {
-      "name": "Parameter6",
-      "isoId": "_jKs7kWi8EeS87LmvcA55sg",
+    "RelativeDistinguishedName1": {
+      "name": "RelativeDistinguishedName1",
+      "isoId": "_Sw--ugEcEeCQm6a_G2yO_w_-2086938163",
       "kind": "component",
       "fields": [
         {
-          "name": "BytePadding",
-          "isoId": "_67hP8Gi9EeS87LmvcA55sg",
-          "xmlTag": "BPddg",
-          "type": "BytePadding1Code",
+          "name": "AttributeType",
+          "isoId": "_Sw--uwEcEeCQm6a_G2yO_w_2126667271",
+          "xmlTag": "AttrTp",
+          "type": "AttributeType1Code",
           "kind": "code",
-          "min": 0,
+          "min": 1,
           "max": 1
         },
         {
-          "name": "EncryptionFormat",
-          "isoId": "_1Fd4AGi8EeS87LmvcA55sg",
-          "xmlTag": "NcrptnFrmt",
-          "type": "EncryptionFormat1Code",
-          "kind": "code",
-          "min": 0,
-          "max": 1
-        },
-        {
-          "name": "InitialisationVector",
-          "isoId": "_jXzjcWi8EeS87LmvcA55sg",
-          "xmlTag": "InitlstnVctr",
-          "type": "Max500Binary",
+          "name": "AttributeValue",
+          "isoId": "_Sw--vAEcEeCQm6a_G2yO_w_-1820514760",
+          "xmlTag": "AttrVal",
+          "type": "Max140Text",
           "kind": "text",
-          "min": 0,
+          "min": 1,
           "max": 1
         }
       ]
     },
-    "AlgorithmIdentification14": {
-      "name": "AlgorithmIdentification14",
-      "isoId": "_IHpysWjBEeSP8Z8nx8HTuQ",
+    "CertificateIssuer1": {
+      "name": "CertificateIssuer1",
+      "isoId": "_Sw--vQEcEeCQm6a_G2yO_w_152932975",
       "kind": "component",
       "fields": [
         {
-          "name": "Algorithm",
-          "isoId": "_IUswMWjBEeSP8Z8nx8HTuQ",
-          "xmlTag": "Algo",
-          "type": "Algorithm15Code",
-          "kind": "code",
-          "min": 1,
-          "max": 1
-        },
-        {
-          "name": "Parameter",
-          "isoId": "_IUswM2jBEeSP8Z8nx8HTuQ",
-          "xmlTag": "Param",
-          "type": "Parameter6",
+          "name": "RelativeDistinguishedName",
+          "isoId": "_SxIvsAEcEeCQm6a_G2yO_w_1329577257",
+          "xmlTag": "RltvDstngshdNm",
+          "type": "RelativeDistinguishedName1",
           "kind": "component",
-          "min": 0,
-          "max": 1
+          "min": 1,
+          "max": null
         }
       ]
     },
-    "Max100KBinary": {
-      "name": "Max100KBinary",
+    "Max35Binary": {
+      "name": "Max35Binary",
       "kind": "text",
-      "isoId": "_TQRizgEcEeCQm6a_G2yO_w_-1416376531",
-      "maxLength": 102400
+      "isoId": "_TQbTxQEcEeCQm6a_G2yO_w_-1886160012",
+      "maxLength": 35
     },
-    "EncryptedContent3": {
-      "name": "EncryptedContent3",
-      "isoId": "_tsmQMWjAEeSP8Z8nx8HTuQ",
+    "IssuerAndSerialNumber1": {
+      "name": "IssuerAndSerialNumber1",
+      "isoId": "_SxIvsQEcEeCQm6a_G2yO_w_-65882528",
       "kind": "component",
       "fields": [
         {
-          "name": "ContentEncryptionAlgorithm",
-          "isoId": "_t6HHw2jAEeSP8Z8nx8HTuQ",
-          "xmlTag": "CnttNcrptnAlgo",
-          "type": "AlgorithmIdentification14",
+          "name": "Issuer",
+          "isoId": "_SxIvsgEcEeCQm6a_G2yO_w_1368507280",
+          "xmlTag": "Issr",
+          "type": "CertificateIssuer1",
           "kind": "component",
           "min": 1,
           "max": 1
         },
         {
-          "name": "ContentType",
-          "isoId": "_t6HHwWjAEeSP8Z8nx8HTuQ",
-          "xmlTag": "CnttTp",
-          "type": "ContentType2Code",
-          "kind": "code",
-          "min": 1,
-          "max": 1
-        },
-        {
-          "name": "EncryptedData",
-          "isoId": "_t6HHxWjAEeSP8Z8nx8HTuQ",
-          "xmlTag": "NcrptdData",
-          "type": "Max100KBinary",
+          "name": "SerialNumber",
+          "isoId": "_SxIvswEcEeCQm6a_G2yO_w_683840175",
+          "xmlTag": "SrlNb",
+          "type": "Max35Binary",
           "kind": "text",
           "min": 1,
           "max": 1
@@ -966,34 +734,11 @@
       "isoId": "_TQlExAEcEeCQm6a_G2yO_w_-1295689418",
       "maxLength": 16
     },
-    "Max140Text": {
-      "name": "Max140Text",
-      "kind": "text",
-      "isoId": "_YXlUAtp-Ed-ak6NoX_4Aeg_2103068114",
-      "minLength": 1,
-      "maxLength": 140
-    },
-    "Number": {
-      "name": "Number",
-      "kind": "number",
-      "isoId": "_YXbjBtp-Ed-ak6NoX_4Aeg_1560899033",
-      "totalDigits": 18,
-      "fractionDigits": 0
-    },
     "KEKIdentifier2": {
       "name": "KEKIdentifier2",
       "isoId": "_RmrIUWi1EeS87LmvcA55sg",
       "kind": "component",
       "fields": [
-        {
-          "name": "DerivationIdentification",
-          "isoId": "_RzjGtWi1EeS87LmvcA55sg",
-          "xmlTag": "DerivtnId",
-          "type": "Min5Max16Binary",
-          "kind": "text",
-          "min": 0,
-          "max": 1
-        },
         {
           "name": "KeyIdentification",
           "isoId": "_RzjGsWi1EeS87LmvcA55sg",
@@ -1020,124 +765,42 @@
           "kind": "number",
           "min": 0,
           "max": 1
-        }
-      ]
-    },
-    "Algorithm13Code": {
-      "name": "Algorithm13Code",
-      "isoId": "_lh7HEWi7EeS87LmvcA55sg",
-      "kind": "code",
-      "options": [
-        {
-          "value": "DKP9",
-          "name": "DUKPT2009",
-          "isoId": "_lu-ElWi7EeS87LmvcA55sg"
         },
         {
-          "value": "E3DC",
-          "name": "DES112CBC",
-          "isoId": "_lu-Ek2i7EeS87LmvcA55sg"
-        },
-        {
-          "value": "EA2C",
-          "name": "AES128CBC",
-          "isoId": "_lu-EkWi7EeS87LmvcA55sg"
-        },
-        {
-          "value": "EA5C",
-          "name": "AES256CBC",
-          "isoId": "_TfXrIWi8EeS87LmvcA55sg"
-        },
-        {
-          "value": "EA9C",
-          "name": "AES192CBC",
-          "isoId": "_TZJuYWi8EeS87LmvcA55sg"
-        },
-        {
-          "value": "UKA1",
-          "name": "UKPTwithAES128",
-          "isoId": "_lu-EmWi7EeS87LmvcA55sg"
-        },
-        {
-          "value": "UKPT",
-          "name": "UKPT",
-          "isoId": "_lu-El2i7EeS87LmvcA55sg"
-        }
-      ]
-    },
-    "AlgorithmIdentification13": {
-      "name": "AlgorithmIdentification13",
-      "isoId": "_ocQmsWi6EeS87LmvcA55sg",
-      "kind": "component",
-      "fields": [
-        {
-          "name": "Algorithm",
-          "isoId": "_opqJgWi6EeS87LmvcA55sg",
-          "xmlTag": "Algo",
-          "type": "Algorithm13Code",
-          "kind": "code",
-          "min": 1,
-          "max": 1
-        },
-        {
-          "name": "Parameter",
-          "isoId": "_opqwkGi6EeS87LmvcA55sg",
-          "xmlTag": "Param",
-          "type": "Parameter6",
-          "kind": "component",
+          "name": "DerivationIdentification",
+          "isoId": "_RzjGtWi1EeS87LmvcA55sg",
+          "xmlTag": "DerivtnId",
+          "type": "Min5Max16Binary",
+          "kind": "text",
           "min": 0,
           "max": 1
         }
       ]
     },
-    "KEK4": {
-      "name": "KEK4",
-      "isoId": "_Hf56YWi6EeS87LmvcA55sg",
-      "kind": "component",
-      "fields": [
+    "Recipient5Choice": {
+      "name": "Recipient5Choice",
+      "isoId": "_0DRU0Wi0EeS87LmvcA55sg",
+      "kind": "choice",
+      "choiceOptions": [
         {
-          "name": "EncryptedKey",
-          "isoId": "_Hs9e92i6EeS87LmvcA55sg",
-          "xmlTag": "NcrptdKey",
-          "type": "Max500Binary",
-          "kind": "text",
+          "name": "IssuerAndSerialNumber",
+          "isoId": "_HdnNoGi1EeS87LmvcA55sg",
+          "xmlTag": "IssrAndSrlNb",
+          "type": "IssuerAndSerialNumber1",
+          "kind": "component",
           "min": 1,
           "max": 1
         },
         {
-          "name": "KEKIdentification",
-          "isoId": "_Hs9e82i6EeS87LmvcA55sg",
-          "xmlTag": "KEKId",
+          "name": "KeyIdentifier",
+          "isoId": "_0QOLtWi0EeS87LmvcA55sg",
+          "xmlTag": "KeyIdr",
           "type": "KEKIdentifier2",
           "kind": "component",
           "min": 1,
           "max": 1
-        },
-        {
-          "name": "KeyEncryptionAlgorithm",
-          "isoId": "_Hs9e9Wi6EeS87LmvcA55sg",
-          "xmlTag": "KeyNcrptnAlgo",
-          "type": "AlgorithmIdentification13",
-          "kind": "component",
-          "min": 1,
-          "max": 1
-        },
-        {
-          "name": "Version",
-          "isoId": "_Hs9e8Wi6EeS87LmvcA55sg",
-          "xmlTag": "Vrsn",
-          "type": "Number",
-          "kind": "number",
-          "min": 0,
-          "max": 1
         }
       ]
-    },
-    "Max5000Binary": {
-      "name": "Max5000Binary",
-      "kind": "text",
-      "isoId": "_TQbTyQEcEeCQm6a_G2yO_w_-655974114",
-      "maxLength": 5000
     },
     "Algorithm7Code": {
       "name": "Algorithm7Code",
@@ -1153,6 +816,23 @@
           "value": "RSAO",
           "name": "RSAES-OAEP",
           "isoId": "_OC6uoQmFEeKKaIHo7gv4XA"
+        }
+      ]
+    },
+    "EncryptionFormat1Code": {
+      "name": "EncryptionFormat1Code",
+      "isoId": "_IJtXQGi4EeS87LmvcA55sg",
+      "kind": "code",
+      "options": [
+        {
+          "value": "TR31",
+          "name": "TR31",
+          "isoId": "_KUksUGi4EeS87LmvcA55sg"
+        },
+        {
+          "value": "TR34",
+          "name": "TR34",
+          "isoId": "_KfMn8Wi4EeS87LmvcA55sg"
         }
       ]
     },
@@ -1242,19 +922,19 @@
       "kind": "component",
       "fields": [
         {
-          "name": "DigestAlgorithm",
-          "isoId": "_UDGckWi3EeS87LmvcA55sg",
-          "xmlTag": "DgstAlgo",
-          "type": "Algorithm11Code",
+          "name": "EncryptionFormat",
+          "isoId": "_TVZzoGi4EeS87LmvcA55sg",
+          "xmlTag": "NcrptnFrmt",
+          "type": "EncryptionFormat1Code",
           "kind": "code",
           "min": 0,
           "max": 1
         },
         {
-          "name": "EncryptionFormat",
-          "isoId": "_TVZzoGi4EeS87LmvcA55sg",
-          "xmlTag": "NcrptnFrmt",
-          "type": "EncryptionFormat1Code",
+          "name": "DigestAlgorithm",
+          "isoId": "_UDGckWi3EeS87LmvcA55sg",
+          "xmlTag": "DgstAlgo",
+          "type": "Algorithm11Code",
           "kind": "code",
           "min": 0,
           "max": 1
@@ -1295,134 +975,11 @@
         }
       ]
     },
-    "AttributeType1Code": {
-      "name": "AttributeType1Code",
-      "isoId": "_TSEShwEcEeCQm6a_G2yO_w_1647054539",
-      "kind": "code",
-      "options": [
-        {
-          "value": "CATT",
-          "name": "CountryName",
-          "isoId": "_TSESjAEcEeCQm6a_G2yO_w_189442098"
-        },
-        {
-          "value": "CNAT",
-          "name": "CommonName",
-          "isoId": "_TSESiAEcEeCQm6a_G2yO_w_399531534"
-        },
-        {
-          "value": "LATT",
-          "name": "Locality",
-          "isoId": "_TSESiQEcEeCQm6a_G2yO_w_807359888"
-        },
-        {
-          "value": "OATT",
-          "name": "OrganisationName",
-          "isoId": "_TSESigEcEeCQm6a_G2yO_w_-1550382235"
-        },
-        {
-          "value": "OUAT",
-          "name": "OrganisationUnitName",
-          "isoId": "_TSESiwEcEeCQm6a_G2yO_w_-2013772510"
-        }
-      ]
-    },
-    "RelativeDistinguishedName1": {
-      "name": "RelativeDistinguishedName1",
-      "isoId": "_Sw--ugEcEeCQm6a_G2yO_w_-2086938163",
-      "kind": "component",
-      "fields": [
-        {
-          "name": "AttributeType",
-          "isoId": "_Sw--uwEcEeCQm6a_G2yO_w_2126667271",
-          "xmlTag": "AttrTp",
-          "type": "AttributeType1Code",
-          "kind": "code",
-          "min": 1,
-          "max": 1
-        },
-        {
-          "name": "AttributeValue",
-          "isoId": "_Sw--vAEcEeCQm6a_G2yO_w_-1820514760",
-          "xmlTag": "AttrVal",
-          "type": "Max140Text",
-          "kind": "text",
-          "min": 1,
-          "max": 1
-        }
-      ]
-    },
-    "CertificateIssuer1": {
-      "name": "CertificateIssuer1",
-      "isoId": "_Sw--vQEcEeCQm6a_G2yO_w_152932975",
-      "kind": "component",
-      "fields": [
-        {
-          "name": "RelativeDistinguishedName",
-          "isoId": "_SxIvsAEcEeCQm6a_G2yO_w_1329577257",
-          "xmlTag": "RltvDstngshdNm",
-          "type": "RelativeDistinguishedName1",
-          "kind": "component",
-          "min": 1,
-          "max": null
-        }
-      ]
-    },
-    "Max35Binary": {
-      "name": "Max35Binary",
+    "Max5000Binary": {
+      "name": "Max5000Binary",
       "kind": "text",
-      "isoId": "_TQbTxQEcEeCQm6a_G2yO_w_-1886160012",
-      "maxLength": 35
-    },
-    "IssuerAndSerialNumber1": {
-      "name": "IssuerAndSerialNumber1",
-      "isoId": "_SxIvsQEcEeCQm6a_G2yO_w_-65882528",
-      "kind": "component",
-      "fields": [
-        {
-          "name": "Issuer",
-          "isoId": "_SxIvsgEcEeCQm6a_G2yO_w_1368507280",
-          "xmlTag": "Issr",
-          "type": "CertificateIssuer1",
-          "kind": "component",
-          "min": 1,
-          "max": 1
-        },
-        {
-          "name": "SerialNumber",
-          "isoId": "_SxIvswEcEeCQm6a_G2yO_w_683840175",
-          "xmlTag": "SrlNb",
-          "type": "Max35Binary",
-          "kind": "text",
-          "min": 1,
-          "max": 1
-        }
-      ]
-    },
-    "Recipient5Choice": {
-      "name": "Recipient5Choice",
-      "isoId": "_0DRU0Wi0EeS87LmvcA55sg",
-      "kind": "choice",
-      "choiceOptions": [
-        {
-          "name": "IssuerAndSerialNumber",
-          "isoId": "_HdnNoGi1EeS87LmvcA55sg",
-          "xmlTag": "IssrAndSrlNb",
-          "type": "IssuerAndSerialNumber1",
-          "kind": "component",
-          "min": 1,
-          "max": 1
-        },
-        {
-          "name": "KeyIdentifier",
-          "isoId": "_0QOLtWi0EeS87LmvcA55sg",
-          "xmlTag": "KeyIdr",
-          "type": "KEKIdentifier2",
-          "kind": "component",
-          "min": 1,
-          "max": 1
-        }
-      ]
+      "isoId": "_TQbTyQEcEeCQm6a_G2yO_w_-655974114",
+      "maxLength": 5000
     },
     "KeyTransport4": {
       "name": "KeyTransport4",
@@ -1430,11 +987,20 @@
       "kind": "component",
       "fields": [
         {
-          "name": "EncryptedKey",
-          "isoId": "_fLktN2i0EeS87LmvcA55sg",
-          "xmlTag": "NcrptdKey",
-          "type": "Max5000Binary",
-          "kind": "text",
+          "name": "Version",
+          "isoId": "_fLktMWi0EeS87LmvcA55sg",
+          "xmlTag": "Vrsn",
+          "type": "Number",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "RecipientIdentification",
+          "isoId": "_fLktM2i0EeS87LmvcA55sg",
+          "xmlTag": "RcptId",
+          "type": "Recipient5Choice",
+          "kind": "choice",
           "min": 1,
           "max": 1
         },
@@ -1448,21 +1014,194 @@
           "max": 1
         },
         {
-          "name": "RecipientIdentification",
-          "isoId": "_fLktM2i0EeS87LmvcA55sg",
-          "xmlTag": "RcptId",
-          "type": "Recipient5Choice",
-          "kind": "choice",
+          "name": "EncryptedKey",
+          "isoId": "_fLktN2i0EeS87LmvcA55sg",
+          "xmlTag": "NcrptdKey",
+          "type": "Max5000Binary",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Algorithm13Code": {
+      "name": "Algorithm13Code",
+      "isoId": "_lh7HEWi7EeS87LmvcA55sg",
+      "kind": "code",
+      "options": [
+        {
+          "value": "DKP9",
+          "name": "DUKPT2009",
+          "isoId": "_lu-ElWi7EeS87LmvcA55sg"
+        },
+        {
+          "value": "E3DC",
+          "name": "DES112CBC",
+          "isoId": "_lu-Ek2i7EeS87LmvcA55sg"
+        },
+        {
+          "value": "EA2C",
+          "name": "AES128CBC",
+          "isoId": "_lu-EkWi7EeS87LmvcA55sg"
+        },
+        {
+          "value": "EA5C",
+          "name": "AES256CBC",
+          "isoId": "_TfXrIWi8EeS87LmvcA55sg"
+        },
+        {
+          "value": "EA9C",
+          "name": "AES192CBC",
+          "isoId": "_TZJuYWi8EeS87LmvcA55sg"
+        },
+        {
+          "value": "UKA1",
+          "name": "UKPTwithAES128",
+          "isoId": "_lu-EmWi7EeS87LmvcA55sg"
+        },
+        {
+          "value": "UKPT",
+          "name": "UKPT",
+          "isoId": "_lu-El2i7EeS87LmvcA55sg"
+        }
+      ]
+    },
+    "Max500Binary": {
+      "name": "Max500Binary",
+      "kind": "text",
+      "isoId": "_TQbTygEcEeCQm6a_G2yO_w_-1786895632",
+      "maxLength": 500
+    },
+    "BytePadding1Code": {
+      "name": "BytePadding1Code",
+      "isoId": "_zBfYoGi9EeS87LmvcA55sg",
+      "kind": "code",
+      "options": [
+        {
+          "value": "LNGT",
+          "name": "LengthPadding",
+          "isoId": "_3sV-MWi9EeS87LmvcA55sg"
+        },
+        {
+          "value": "NUL8",
+          "name": "Null80Padding",
+          "isoId": "_3x6asWi9EeS87LmvcA55sg"
+        },
+        {
+          "value": "NULG",
+          "name": "NullLengthPadding",
+          "isoId": "_344lYWi9EeS87LmvcA55sg"
+        },
+        {
+          "value": "NULL",
+          "name": "NullPadding",
+          "isoId": "_3-_NYWi9EeS87LmvcA55sg"
+        },
+        {
+          "value": "RAND",
+          "name": "RandomPadding",
+          "isoId": "_4Hdz8Wi9EeS87LmvcA55sg"
+        }
+      ]
+    },
+    "Parameter6": {
+      "name": "Parameter6",
+      "isoId": "_jKs7kWi8EeS87LmvcA55sg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "EncryptionFormat",
+          "isoId": "_1Fd4AGi8EeS87LmvcA55sg",
+          "xmlTag": "NcrptnFrmt",
+          "type": "EncryptionFormat1Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "InitialisationVector",
+          "isoId": "_jXzjcWi8EeS87LmvcA55sg",
+          "xmlTag": "InitlstnVctr",
+          "type": "Max500Binary",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "BytePadding",
+          "isoId": "_67hP8Gi9EeS87LmvcA55sg",
+          "xmlTag": "BPddg",
+          "type": "BytePadding1Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "AlgorithmIdentification13": {
+      "name": "AlgorithmIdentification13",
+      "isoId": "_ocQmsWi6EeS87LmvcA55sg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Algorithm",
+          "isoId": "_opqJgWi6EeS87LmvcA55sg",
+          "xmlTag": "Algo",
+          "type": "Algorithm13Code",
+          "kind": "code",
           "min": 1,
           "max": 1
         },
         {
+          "name": "Parameter",
+          "isoId": "_opqwkGi6EeS87LmvcA55sg",
+          "xmlTag": "Param",
+          "type": "Parameter6",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "KEK4": {
+      "name": "KEK4",
+      "isoId": "_Hf56YWi6EeS87LmvcA55sg",
+      "kind": "component",
+      "fields": [
+        {
           "name": "Version",
-          "isoId": "_fLktMWi0EeS87LmvcA55sg",
+          "isoId": "_Hs9e8Wi6EeS87LmvcA55sg",
           "xmlTag": "Vrsn",
           "type": "Number",
           "kind": "number",
           "min": 0,
+          "max": 1
+        },
+        {
+          "name": "KEKIdentification",
+          "isoId": "_Hs9e82i6EeS87LmvcA55sg",
+          "xmlTag": "KEKId",
+          "type": "KEKIdentifier2",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "KeyEncryptionAlgorithm",
+          "isoId": "_Hs9e9Wi6EeS87LmvcA55sg",
+          "xmlTag": "KeyNcrptnAlgo",
+          "type": "AlgorithmIdentification13",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "EncryptedKey",
+          "isoId": "_Hs9e92i6EeS87LmvcA55sg",
+          "xmlTag": "NcrptdKey",
+          "type": "Max500Binary",
+          "kind": "text",
+          "min": 1,
           "max": 1
         }
       ]
@@ -1472,6 +1211,15 @@
       "isoId": "_NoPZUWi0EeS87LmvcA55sg",
       "kind": "choice",
       "choiceOptions": [
+        {
+          "name": "KeyTransport",
+          "isoId": "_N1aSoWi0EeS87LmvcA55sg",
+          "xmlTag": "KeyTrnsprt",
+          "type": "KeyTransport4",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
         {
           "name": "KEK",
           "isoId": "_N1aSo2i0EeS87LmvcA55sg",
@@ -1489,13 +1237,96 @@
           "kind": "component",
           "min": 1,
           "max": 1
+        }
+      ]
+    },
+    "Algorithm15Code": {
+      "name": "Algorithm15Code",
+      "isoId": "_-7tyIWjBEeSP8Z8nx8HTuQ",
+      "kind": "code",
+      "options": [
+        {
+          "value": "E3DC",
+          "name": "DES112CBC",
+          "isoId": "__IaKU2jBEeSP8Z8nx8HTuQ"
         },
         {
-          "name": "KeyTransport",
-          "isoId": "_N1aSoWi0EeS87LmvcA55sg",
-          "xmlTag": "KeyTrnsprt",
-          "type": "KeyTransport4",
+          "value": "EA2C",
+          "name": "AES128CBC",
+          "isoId": "__IaKUWjBEeSP8Z8nx8HTuQ"
+        },
+        {
+          "value": "EA5C",
+          "name": "AES256CBC",
+          "isoId": "_DeJbgWjCEeSP8Z8nx8HTuQ"
+        },
+        {
+          "value": "EA9C",
+          "name": "AES192CBC",
+          "isoId": "_DT3eIWjCEeSP8Z8nx8HTuQ"
+        }
+      ]
+    },
+    "AlgorithmIdentification14": {
+      "name": "AlgorithmIdentification14",
+      "isoId": "_IHpysWjBEeSP8Z8nx8HTuQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Algorithm",
+          "isoId": "_IUswMWjBEeSP8Z8nx8HTuQ",
+          "xmlTag": "Algo",
+          "type": "Algorithm15Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Parameter",
+          "isoId": "_IUswM2jBEeSP8Z8nx8HTuQ",
+          "xmlTag": "Param",
+          "type": "Parameter6",
           "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "Max100KBinary": {
+      "name": "Max100KBinary",
+      "kind": "text",
+      "isoId": "_TQRizgEcEeCQm6a_G2yO_w_-1416376531",
+      "maxLength": 102400
+    },
+    "EncryptedContent3": {
+      "name": "EncryptedContent3",
+      "isoId": "_tsmQMWjAEeSP8Z8nx8HTuQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "ContentType",
+          "isoId": "_t6HHwWjAEeSP8Z8nx8HTuQ",
+          "xmlTag": "CnttTp",
+          "type": "ContentType2Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ContentEncryptionAlgorithm",
+          "isoId": "_t6HHw2jAEeSP8Z8nx8HTuQ",
+          "xmlTag": "CnttNcrptnAlgo",
+          "type": "AlgorithmIdentification14",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "EncryptedData",
+          "isoId": "_t6HHxWjAEeSP8Z8nx8HTuQ",
+          "xmlTag": "NcrptdData",
+          "type": "Max100KBinary",
+          "kind": "text",
           "min": 1,
           "max": 1
         }
@@ -1507,11 +1338,11 @@
       "kind": "component",
       "fields": [
         {
-          "name": "EncryptedContent",
-          "isoId": "_vXG9JWizEeS87LmvcA55sg",
-          "xmlTag": "NcrptdCntt",
-          "type": "EncryptedContent3",
-          "kind": "component",
+          "name": "Version",
+          "isoId": "_vXG9IWizEeS87LmvcA55sg",
+          "xmlTag": "Vrsn",
+          "type": "Number",
+          "kind": "number",
           "min": 0,
           "max": 1
         },
@@ -1525,11 +1356,11 @@
           "max": null
         },
         {
-          "name": "Version",
-          "isoId": "_vXG9IWizEeS87LmvcA55sg",
-          "xmlTag": "Vrsn",
-          "type": "Number",
-          "kind": "number",
+          "name": "EncryptedContent",
+          "isoId": "_vXG9JWizEeS87LmvcA55sg",
+          "xmlTag": "NcrptdCntt",
+          "type": "EncryptedContent3",
+          "kind": "component",
           "min": 0,
           "max": 1
         }
@@ -1560,36 +1391,174 @@
         }
       ]
     },
-    "EncapsulatedContent3": {
-      "name": "EncapsulatedContent3",
-      "isoId": "_tmwjwWkJEeS7zPBpvm732w",
+    "Acquirer7": {
+      "name": "Acquirer7",
+      "isoId": "_077-4Yn1EeS9F4Qrq_eaVA",
       "kind": "component",
       "fields": [
         {
-          "name": "Content",
-          "isoId": "_tz6O82kJEeS7zPBpvm732w",
-          "xmlTag": "Cntt",
-          "type": "Max100KBinary",
+          "name": "AcquiringInstitution",
+          "isoId": "_1Ivr0Yn1EeS9F4Qrq_eaVA",
+          "xmlTag": "AcqrgInstn",
+          "type": "Max35Text",
           "kind": "text",
           "min": 0,
           "max": 1
         },
         {
-          "name": "ContentType",
-          "isoId": "_tz6O8WkJEeS7zPBpvm732w",
-          "xmlTag": "CnttTp",
-          "type": "ContentType2Code",
-          "kind": "code",
+          "name": "Branch",
+          "isoId": "_1Ivr04n1EeS9F4Qrq_eaVA",
+          "xmlTag": "Brnch",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "AutomatedTellerMachine7": {
+      "name": "AutomatedTellerMachine7",
+      "isoId": "_OFzg0YtrEeSDLd7nI4Quzw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_OSw-wYtrEeSDLd7nI4Quzw",
+          "xmlTag": "Id",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "AdditionalIdentification",
+          "isoId": "_OSw-w4trEeSDLd7nI4Quzw",
+          "xmlTag": "AddtlId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SequenceNumber",
+          "isoId": "_OSw-xYtrEeSDLd7nI4Quzw",
+          "xmlTag": "SeqNb",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "ATMEnvironment9": {
+      "name": "ATMEnvironment9",
+      "isoId": "_-clJMYtqEeSDLd7nI4Quzw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Acquirer",
+          "isoId": "_-pPsMYtqEeSDLd7nI4Quzw",
+          "xmlTag": "Acqrr",
+          "type": "Acquirer7",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ATMManagerIdentification",
+          "isoId": "_-pPsM4tqEeSDLd7nI4Quzw",
+          "xmlTag": "ATMMgrId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ATM",
+          "isoId": "_-pPsN4tqEeSDLd7nI4Quzw",
+          "xmlTag": "ATM",
+          "type": "AutomatedTellerMachine7",
+          "kind": "component",
           "min": 1,
           "max": 1
         }
       ]
     },
-    "Max140Binary": {
-      "name": "Max140Binary",
-      "kind": "text",
-      "isoId": "_TQbTwgEcEeCQm6a_G2yO_w_-323033513",
-      "maxLength": 140
+    "ATMStatus1Code": {
+      "name": "ATMStatus1Code",
+      "isoId": "_n7mq8IqLEeSRT5rEzcAHEw",
+      "kind": "code",
+      "options": [
+        {
+          "value": "INSV",
+          "name": "InService",
+          "isoId": "_pVnK0YqLEeSRT5rEzcAHEw"
+        },
+        {
+          "value": "OUTS",
+          "name": "OutOfService",
+          "isoId": "_pZx5IYqLEeSRT5rEzcAHEw"
+        }
+      ]
+    },
+    "ATMStatus2": {
+      "name": "ATMStatus2",
+      "isoId": "_inj9QZ9bEe-nbM0aSPcoiQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "CurrentStatus",
+          "isoId": "_iog_gZ9bEe-nbM0aSPcoiQ",
+          "xmlTag": "CurSts",
+          "type": "ATMStatus1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CurrentStatusReason",
+          "isoId": "_v4Ms4J9bEe-nbM0aSPcoiQ",
+          "xmlTag": "CurStsRsn",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "DemandedStatus",
+          "isoId": "_iog_g59bEe-nbM0aSPcoiQ",
+          "xmlTag": "DmnddSts",
+          "type": "ATMStatus1Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "ATMDiagnosticRequest3": {
+      "name": "ATMDiagnosticRequest3",
+      "isoId": "_UftQ0aETEe-MRKYsaX6JDg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Environment",
+          "isoId": "_Ug6xwaETEe-MRKYsaX6JDg",
+          "xmlTag": "Envt",
+          "type": "ATMEnvironment9",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ATMGlobalStatus",
+          "isoId": "_Ug6xw6ETEe-MRKYsaX6JDg",
+          "xmlTag": "ATMGblSts",
+          "type": "ATMStatus2",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
     },
     "Algorithm12Code": {
       "name": "Algorithm12Code",
@@ -1634,20 +1603,20 @@
       "kind": "component",
       "fields": [
         {
-          "name": "BytePadding",
-          "isoId": "_fwDSoGkJEeS7zPBpvm732w",
-          "xmlTag": "BPddg",
-          "type": "BytePadding1Code",
-          "kind": "code",
-          "min": 0,
-          "max": 1
-        },
-        {
           "name": "InitialisationVector",
           "isoId": "_P4zGEWkJEeS7zPBpvm732w",
           "xmlTag": "InitlstnVctr",
           "type": "Max500Binary",
           "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "BytePadding",
+          "isoId": "_fwDSoGkJEeS7zPBpvm732w",
+          "xmlTag": "BPddg",
+          "type": "BytePadding1Code",
+          "kind": "code",
           "min": 0,
           "max": 1
         }
@@ -1678,11 +1647,69 @@
         }
       ]
     },
+    "EncapsulatedContent3": {
+      "name": "EncapsulatedContent3",
+      "isoId": "_tmwjwWkJEeS7zPBpvm732w",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "ContentType",
+          "isoId": "_tz6O8WkJEeS7zPBpvm732w",
+          "xmlTag": "CnttTp",
+          "type": "ContentType2Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Content",
+          "isoId": "_tz6O82kJEeS7zPBpvm732w",
+          "xmlTag": "Cntt",
+          "type": "Max100KBinary",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "Max140Binary": {
+      "name": "Max140Binary",
+      "kind": "text",
+      "isoId": "_TQbTwgEcEeCQm6a_G2yO_w_-323033513",
+      "maxLength": 140
+    },
     "AuthenticatedData4": {
       "name": "AuthenticatedData4",
       "isoId": "_lguGMGkIEeS7zPBpvm732w",
       "kind": "component",
       "fields": [
+        {
+          "name": "Version",
+          "isoId": "_lty44WkIEeS7zPBpvm732w",
+          "xmlTag": "Vrsn",
+          "type": "Number",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Recipient",
+          "isoId": "_lty442kIEeS7zPBpvm732w",
+          "xmlTag": "Rcpt",
+          "type": "Recipient4Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": null
+        },
+        {
+          "name": "MACAlgorithm",
+          "isoId": "_lty45WkIEeS7zPBpvm732w",
+          "xmlTag": "MACAlgo",
+          "type": "AlgorithmIdentification15",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
         {
           "name": "EncapsulatedContent",
           "isoId": "_lty452kIEeS7zPBpvm732w",
@@ -1700,33 +1727,6 @@
           "kind": "text",
           "min": 1,
           "max": 1
-        },
-        {
-          "name": "MACAlgorithm",
-          "isoId": "_lty45WkIEeS7zPBpvm732w",
-          "xmlTag": "MACAlgo",
-          "type": "AlgorithmIdentification15",
-          "kind": "component",
-          "min": 1,
-          "max": 1
-        },
-        {
-          "name": "Recipient",
-          "isoId": "_lty442kIEeS7zPBpvm732w",
-          "xmlTag": "Rcpt",
-          "type": "Recipient4Choice",
-          "kind": "choice",
-          "min": 1,
-          "max": null
-        },
-        {
-          "name": "Version",
-          "isoId": "_lty44WkIEeS7zPBpvm732w",
-          "xmlTag": "Vrsn",
-          "type": "Number",
-          "kind": "number",
-          "min": 0,
-          "max": 1
         }
       ]
     },
@@ -1736,20 +1736,20 @@
       "kind": "component",
       "fields": [
         {
-          "name": "AuthenticatedData",
-          "isoId": "_udKL8yrHEeWRf8RNsvC5fQ",
-          "xmlTag": "AuthntcdData",
-          "type": "AuthenticatedData4",
-          "kind": "component",
-          "min": 1,
-          "max": 1
-        },
-        {
           "name": "ContentType",
           "isoId": "_udKL8SrHEeWRf8RNsvC5fQ",
           "xmlTag": "CnttTp",
           "type": "ContentType2Code",
           "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "AuthenticatedData",
+          "isoId": "_udKL8yrHEeWRf8RNsvC5fQ",
+          "xmlTag": "AuthntcdData",
+          "type": "AuthenticatedData4",
+          "kind": "component",
           "min": 1,
           "max": 1
         }
@@ -1760,15 +1760,6 @@
       "isoId": "_h37q0aFCEe-MRKYsaX6JDg",
       "kind": "component",
       "fields": [
-        {
-          "name": "ATMDiagnosticRequest",
-          "isoId": "_h37q16FCEe-MRKYsaX6JDg",
-          "xmlTag": "ATMDgnstcReq",
-          "type": "ATMDiagnosticRequest3",
-          "kind": "component",
-          "min": 0,
-          "max": 1
-        },
         {
           "name": "Header",
           "isoId": "_h37q06FCEe-MRKYsaX6JDg",
@@ -1783,6 +1774,15 @@
           "isoId": "_h37q1aFCEe-MRKYsaX6JDg",
           "xmlTag": "PrtctdATMDgnstcReq",
           "type": "ContentInformationType10",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ATMDiagnosticRequest",
+          "isoId": "_h37q16FCEe-MRKYsaX6JDg",
+          "xmlTag": "ATMDgnstcReq",
+          "type": "ATMDiagnosticRequest3",
           "kind": "component",
           "min": 0,
           "max": 1

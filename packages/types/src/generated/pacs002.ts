@@ -3,40 +3,40 @@
 import type { BranchAndFinancialInstitutionIdentification8, Charges16, DateAndDateTime2Choice, OriginalBusinessQuery1, OriginalGroupHeader22, OriginalGroupInformation33, OriginalTransactionReference47, StatusReasonInformation14, SupplementaryData1 } from './shared.ts';
 
 export interface GroupHeader120 {
-  CreationDateTime: string;
-  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
-  InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
   MessageIdentification: string;
+  CreationDateTime: string;
+  InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
+  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
   OriginalBusinessQuery?: OriginalBusinessQuery1;
 }
 
 export interface PaymentTransaction177 {
-  AcceptanceDateTime?: string;
-  AccountServicerReference?: string;
-  ChargesInformation?: Array<Charges16>;
-  ClearingSystemReference?: string;
-  CreditSettlementKey?: string;
-  EffectiveInterbankSettlementDate?: DateAndDateTime2Choice;
-  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
-  InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
-  OriginalEndToEndIdentification?: string;
+  StatusIdentification?: string;
   OriginalGroupInformation?: OriginalGroupInformation33;
   OriginalInstructionIdentification?: string;
+  OriginalEndToEndIdentification?: string;
   OriginalTransactionIdentification?: string;
-  OriginalTransactionReference?: OriginalTransactionReference47;
   OriginalUETR?: string;
-  ProcessingDate?: DateAndDateTime2Choice;
-  StatusIdentification?: string;
-  StatusReasonInformation?: Array<StatusReasonInformation14>;
-  SupplementaryData?: Array<SupplementaryData1>;
   TransactionStatus?: string;
+  StatusReasonInformation?: Array<StatusReasonInformation14>;
+  ChargesInformation?: Array<Charges16>;
+  AcceptanceDateTime?: string;
+  ProcessingDate?: DateAndDateTime2Choice;
+  EffectiveInterbankSettlementDate?: DateAndDateTime2Choice;
+  AccountServicerReference?: string;
+  ClearingSystemReference?: string;
+  CreditSettlementKey?: string;
+  InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
+  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
+  OriginalTransactionReference?: OriginalTransactionReference47;
+  SupplementaryData?: Array<SupplementaryData1>;
 }
 
 export interface FIToFIPaymentStatusReportV16 {
   GroupHeader: GroupHeader120;
   OriginalGroupInformationAndStatus?: Array<OriginalGroupHeader22>;
-  SupplementaryData?: Array<SupplementaryData1>;
   TransactionInformationAndStatus?: Array<PaymentTransaction177>;
+  SupplementaryData?: Array<SupplementaryData1>;
 }
 
 export type Pacs002Document = FIToFIPaymentStatusReportV16;

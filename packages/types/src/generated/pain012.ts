@@ -4,50 +4,50 @@ import type { ActiveOrHistoricCurrencyAndAmount, BranchAndFinancialInstitutionId
 
 export interface AcceptanceResult6 {
   Accepted: 'true' | 'false';
-  AdditionalRejectReasonInformation?: Array<string>;
   RejectReason?: MandateReason1Choice;
+  AdditionalRejectReasonInformation?: Array<string>;
 }
 
 export interface Mandate22 {
-  Adjustment?: MandateAdjustment1;
+  MandateIdentification?: string;
+  MandateRequestIdentification?: string;
   Authentication?: MandateAuthentication1;
+  Type?: MandateTypeInformation2;
+  Occurrences?: MandateOccurrences5;
+  TrackingIndicator: 'true' | 'false';
+  FirstCollectionAmount?: ActiveOrHistoricCurrencyAndAmount;
   CollectionAmount?: ActiveOrHistoricCurrencyAndAmount;
+  MaximumAmount?: ActiveOrHistoricCurrencyAndAmount;
+  Adjustment?: MandateAdjustment1;
+  Reason?: MandateSetupReason1Choice;
+  CreditorSchemeIdentification?: PartyIdentification272;
   Creditor: PartyIdentification272;
   CreditorAccount?: CashAccount40;
   CreditorAgent?: BranchAndFinancialInstitutionIdentification8;
-  CreditorSchemeIdentification?: PartyIdentification272;
+  UltimateCreditor?: PartyIdentification272;
   Debtor: PartyIdentification272;
   DebtorAccount?: CashAccount40;
   DebtorAgent: BranchAndFinancialInstitutionIdentification8;
-  FirstCollectionAmount?: ActiveOrHistoricCurrencyAndAmount;
-  MandateIdentification?: string;
-  MandateReference?: string;
-  MandateRequestIdentification?: string;
-  MaximumAmount?: ActiveOrHistoricCurrencyAndAmount;
-  Occurrences?: MandateOccurrences5;
-  Reason?: MandateSetupReason1Choice;
-  ReferredDocument?: Array<ReferredMandateDocument2>;
-  TrackingIndicator: 'true' | 'false';
-  Type?: MandateTypeInformation2;
-  UltimateCreditor?: PartyIdentification272;
   UltimateDebtor?: PartyIdentification272;
+  MandateReference?: string;
+  ReferredDocument?: Array<ReferredMandateDocument2>;
 }
 
 export type OriginalMandate11Choice =
-  | { OriginalMandate: Mandate22 }
-  | { OriginalMandateIdentification: string };
+  | { OriginalMandateIdentification: string }
+  | { OriginalMandate: Mandate22 };
 
 export interface MandateAcceptance8 {
+  OriginalMessageInformation?: OriginalMessageInformation1;
   AcceptanceResult: AcceptanceResult6;
   OriginalMandate?: OriginalMandate11Choice;
-  OriginalMessageInformation?: OriginalMessageInformation1;
   SupplementaryData?: Array<SupplementaryData1>;
 }
 
 export interface MandateAcceptanceReportV08 {
   GroupHeader: GroupHeader110;
-  SupplementaryData?: Array<SupplementaryData1>;
   UnderlyingAcceptanceDetails: Array<MandateAcceptance8>;
+  SupplementaryData?: Array<SupplementaryData1>;
 }
 
 export type Pain012Document = MandateAcceptanceReportV08;

@@ -4,64 +4,64 @@ import type { ActiveCurrencyAndAmount, ActiveOrHistoricCurrencyAndAmount, Branch
 
 export interface AdditionalDateTime1 {
   AcceptanceDateTime?: string;
-  ExpiryDateTime?: string;
   PoolingAdjustmentDate?: string;
+  ExpiryDateTime?: string;
 }
 
 export interface CreditTransferTransaction73 {
+  PaymentIdentification: PaymentIdentification13;
+  PaymentTypeInformation?: PaymentTypeInformation28;
+  InterbankSettlementAmount: ActiveCurrencyAndAmount;
+  InterbankSettlementDate?: string;
+  SettlementPriority?: "HIGH" | "NORM" | "URGT";
+  SettlementTimeIndication?: SettlementDateTimeIndication1;
+  SettlementTimeRequest?: SettlementTimeRequest2;
   AdditionalDateTime?: AdditionalDateTime1;
+  InstructedAmount?: ActiveOrHistoricCurrencyAndAmount;
+  ExchangeRate?: string;
   AgreedRate?: CurrencyExchange26;
   ChargeBearer: "CRED" | "DEBT" | "SHAR" | "SLEV";
   ChargesInformation?: Array<Charges16>;
-  Creditor: PartyIdentification272;
-  CreditorAccount?: CashAccount40;
-  CreditorAgent: BranchAndFinancialInstitutionIdentification8;
-  CreditorAgentAccount?: CashAccount40;
-  Debtor: PartyIdentification272;
-  DebtorAccount?: CashAccount40;
-  DebtorAgent: BranchAndFinancialInstitutionIdentification8;
-  DebtorAgentAccount?: CashAccount40;
-  ExchangeRate?: string;
-  InitiatingParty?: PartyIdentification272;
-  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
-  InstructedAmount?: ActiveOrHistoricCurrencyAndAmount;
-  InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
-  InstructionForCreditorAgent?: Array<InstructionForCreditorAgent3>;
-  InstructionForNextAgent?: Array<InstructionForNextAgent1>;
-  InterbankSettlementAmount: ActiveCurrencyAndAmount;
-  InterbankSettlementDate?: string;
-  IntermediaryAgent1?: BranchAndFinancialInstitutionIdentification8;
-  IntermediaryAgent1Account?: CashAccount40;
-  IntermediaryAgent2?: BranchAndFinancialInstitutionIdentification8;
-  IntermediaryAgent2Account?: CashAccount40;
-  IntermediaryAgent3?: BranchAndFinancialInstitutionIdentification8;
-  IntermediaryAgent3Account?: CashAccount40;
   MandateRelatedInformation?: CreditTransferMandateData1;
-  PaymentIdentification: PaymentIdentification13;
   PaymentSignature?: CryptographicKey1Choice;
-  PaymentTypeInformation?: PaymentTypeInformation28;
   PreviousInstructingAgent1?: BranchAndFinancialInstitutionIdentification8;
   PreviousInstructingAgent1Account?: CashAccount40;
   PreviousInstructingAgent2?: BranchAndFinancialInstitutionIdentification8;
   PreviousInstructingAgent2Account?: CashAccount40;
   PreviousInstructingAgent3?: BranchAndFinancialInstitutionIdentification8;
   PreviousInstructingAgent3Account?: CashAccount40;
+  InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
+  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
+  IntermediaryAgent1?: BranchAndFinancialInstitutionIdentification8;
+  IntermediaryAgent1Account?: CashAccount40;
+  IntermediaryAgent2?: BranchAndFinancialInstitutionIdentification8;
+  IntermediaryAgent2Account?: CashAccount40;
+  IntermediaryAgent3?: BranchAndFinancialInstitutionIdentification8;
+  IntermediaryAgent3Account?: CashAccount40;
+  UltimateDebtor?: PartyIdentification272;
+  InitiatingParty?: PartyIdentification272;
+  Debtor: PartyIdentification272;
+  DebtorAccount?: CashAccount40;
+  DebtorAgent: BranchAndFinancialInstitutionIdentification8;
+  DebtorAgentAccount?: CashAccount40;
+  CreditorAgent: BranchAndFinancialInstitutionIdentification8;
+  CreditorAgentAccount?: CashAccount40;
+  Creditor: PartyIdentification272;
+  CreditorAccount?: CashAccount40;
+  UltimateCreditor?: PartyIdentification272;
+  InstructionForCreditorAgent?: Array<InstructionForCreditorAgent3>;
+  InstructionForNextAgent?: Array<InstructionForNextAgent1>;
   Purpose?: Purpose2Choice;
   RegulatoryReporting?: Array<RegulatoryReporting10>;
+  Tax?: TaxData1;
   RelatedRemittanceInformation?: Array<RemittanceLocation8>;
   RemittanceInformation?: RemittanceInformation26;
-  SettlementPriority?: "HIGH" | "NORM" | "URGT";
-  SettlementTimeIndication?: SettlementDateTimeIndication1;
-  SettlementTimeRequest?: SettlementTimeRequest2;
   SupplementaryData?: Array<SupplementaryData1>;
-  Tax?: TaxData1;
-  UltimateCreditor?: PartyIdentification272;
-  UltimateDebtor?: PartyIdentification272;
 }
 
 export interface FIToFICustomerCreditTransferV14 {
-  CreditTransferTransactionInformation: Array<CreditTransferTransaction73>;
   GroupHeader: GroupHeader131;
+  CreditTransferTransactionInformation: Array<CreditTransferTransaction73>;
   SupplementaryData?: Array<SupplementaryData1>;
 }
 

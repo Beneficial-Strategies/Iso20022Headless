@@ -3,164 +3,164 @@
 import type { ActiveCurrencyAndAmount, ActiveOrHistoricCurrencyAndAmount, AmountType4Choice, Authorisation1Choice, BranchAndFinancialInstitutionIdentification8, CashAccount40, Charges16, CreditTransferTransaction72, CryptographicKey1Choice, CurrencyExchange26, DateAndDateTime2Choice, InstructionForCreditorAgent3, InstructionForNextAgent1, MandateRelatedData5Choice, OriginalGroupInformation33, Party50Choice, PartyIdentification272, PaymentIdentification13, PaymentTypeInformation27, PaymentTypeInformation28, Purpose2Choice, RemittanceInformation2, RemittanceInformation26, ReturnReason5Choice, SettlementDateTimeIndication1, SettlementInstruction15, SettlementTimeRequest2, SupplementaryData1, TransactionAllocation2 } from './shared.ts';
 
 export interface GroupHeader123 {
+  MessageIdentification: string;
+  CreationDateTime: string;
   Authorisation?: Array<Authorisation1Choice>;
   BatchBooking?: 'true' | 'false';
-  ControlSum?: string;
-  CreationDateTime: string;
-  GroupReturn?: 'true' | 'false';
-  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
-  InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
-  InterbankSettlementDate?: string;
-  MessageIdentification: string;
   NumberOfTransactions: string;
-  PaymentTypeInformation?: PaymentTypeInformation28;
-  SettlementInformation: SettlementInstruction15;
+  ControlSum?: string;
+  GroupReturn?: 'true' | 'false';
   TotalReturnedInterbankSettlementAmount?: ActiveCurrencyAndAmount;
+  InterbankSettlementDate?: string;
+  SettlementInformation: SettlementInstruction15;
+  PaymentTypeInformation?: PaymentTypeInformation28;
+  InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
+  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
 }
 
 export interface PaymentReturnReason7 {
-  AdditionalInformation?: Array<string>;
   Originator?: PartyIdentification272;
   Reason?: ReturnReason5Choice;
+  AdditionalInformation?: Array<string>;
 }
 
 export interface OriginalGroupHeader19 {
-  OriginalCreationDateTime?: string;
   OriginalMessageIdentification: string;
   OriginalMessageNameIdentification: string;
+  OriginalCreationDateTime?: string;
   ReturnReasonInformation?: Array<PaymentReturnReason7>;
 }
 
-export interface CreditTransferTransaction82 {
-  Creditor: BranchAndFinancialInstitutionIdentification8;
-  CreditorAccount?: CashAccount40;
+export interface TransactionParties11 {
+  UltimateDebtor?: Party50Choice;
+  Debtor: Party50Choice;
+  DebtorAccount?: CashAccount40;
+  InitiatingParty?: Party50Choice;
+  DebtorAgent?: BranchAndFinancialInstitutionIdentification8;
+  DebtorAgentAccount?: CashAccount40;
+  PreviousInstructingAgent1?: BranchAndFinancialInstitutionIdentification8;
+  PreviousInstructingAgent1Account?: CashAccount40;
+  PreviousInstructingAgent2?: BranchAndFinancialInstitutionIdentification8;
+  PreviousInstructingAgent2Account?: CashAccount40;
+  PreviousInstructingAgent3?: BranchAndFinancialInstitutionIdentification8;
+  PreviousInstructingAgent3Account?: CashAccount40;
+  IntermediaryAgent1?: BranchAndFinancialInstitutionIdentification8;
+  IntermediaryAgent1Account?: CashAccount40;
+  IntermediaryAgent2?: BranchAndFinancialInstitutionIdentification8;
+  IntermediaryAgent2Account?: CashAccount40;
+  IntermediaryAgent3?: BranchAndFinancialInstitutionIdentification8;
+  IntermediaryAgent3Account?: CashAccount40;
   CreditorAgent?: BranchAndFinancialInstitutionIdentification8;
   CreditorAgentAccount?: CashAccount40;
+  Creditor: Party50Choice;
+  CreditorAccount?: CashAccount40;
+  UltimateCreditor?: Party50Choice;
+}
+
+export interface CreditTransferTransaction82 {
+  PaymentIdentification: PaymentIdentification13;
+  PaymentTypeInformation?: PaymentTypeInformation28;
+  InterbankSettlementAmount: ActiveCurrencyAndAmount;
+  InterbankSettlementDate?: string;
+  SettlementPriority?: "HIGH" | "NORM" | "URGT";
+  SettlementTimeIndication?: SettlementDateTimeIndication1;
+  SettlementTimeRequest?: SettlementTimeRequest2;
+  ExpiryDateTime?: string;
+  PaymentSignature?: CryptographicKey1Choice;
+  PreviousInstructingAgent1?: BranchAndFinancialInstitutionIdentification8;
+  PreviousInstructingAgent1Account?: CashAccount40;
+  PreviousInstructingAgent2?: BranchAndFinancialInstitutionIdentification8;
+  PreviousInstructingAgent2Account?: CashAccount40;
+  PreviousInstructingAgent3?: BranchAndFinancialInstitutionIdentification8;
+  PreviousInstructingAgent3Account?: CashAccount40;
+  InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
+  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
+  IntermediaryAgent1?: BranchAndFinancialInstitutionIdentification8;
+  IntermediaryAgent1Account?: CashAccount40;
+  IntermediaryAgent2?: BranchAndFinancialInstitutionIdentification8;
+  IntermediaryAgent2Account?: CashAccount40;
+  IntermediaryAgent3?: BranchAndFinancialInstitutionIdentification8;
+  IntermediaryAgent3Account?: CashAccount40;
+  UltimateDebtor?: BranchAndFinancialInstitutionIdentification8;
   Debtor: BranchAndFinancialInstitutionIdentification8;
   DebtorAccount?: CashAccount40;
   DebtorAgent?: BranchAndFinancialInstitutionIdentification8;
   DebtorAgentAccount?: CashAccount40;
-  ExpiryDateTime?: string;
-  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
-  InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
+  CreditorAgent?: BranchAndFinancialInstitutionIdentification8;
+  CreditorAgentAccount?: CashAccount40;
+  Creditor: BranchAndFinancialInstitutionIdentification8;
+  CreditorAccount?: CashAccount40;
+  UltimateCreditor?: BranchAndFinancialInstitutionIdentification8;
   InstructionForCreditorAgent?: Array<InstructionForCreditorAgent3>;
   InstructionForNextAgent?: Array<InstructionForNextAgent1>;
-  InterbankSettlementAmount: ActiveCurrencyAndAmount;
-  InterbankSettlementDate?: string;
-  IntermediaryAgent1?: BranchAndFinancialInstitutionIdentification8;
-  IntermediaryAgent1Account?: CashAccount40;
-  IntermediaryAgent2?: BranchAndFinancialInstitutionIdentification8;
-  IntermediaryAgent2Account?: CashAccount40;
-  IntermediaryAgent3?: BranchAndFinancialInstitutionIdentification8;
-  IntermediaryAgent3Account?: CashAccount40;
-  PaymentIdentification: PaymentIdentification13;
-  PaymentSignature?: CryptographicKey1Choice;
-  PaymentTypeInformation?: PaymentTypeInformation28;
-  PreviousInstructingAgent1?: BranchAndFinancialInstitutionIdentification8;
-  PreviousInstructingAgent1Account?: CashAccount40;
-  PreviousInstructingAgent2?: BranchAndFinancialInstitutionIdentification8;
-  PreviousInstructingAgent2Account?: CashAccount40;
-  PreviousInstructingAgent3?: BranchAndFinancialInstitutionIdentification8;
-  PreviousInstructingAgent3Account?: CashAccount40;
   Purpose?: Purpose2Choice;
   RemittanceInformation?: RemittanceInformation2;
-  SettlementPriority?: "HIGH" | "NORM" | "URGT";
-  SettlementTimeIndication?: SettlementDateTimeIndication1;
-  SettlementTimeRequest?: SettlementTimeRequest2;
-  UltimateCreditor?: BranchAndFinancialInstitutionIdentification8;
-  UltimateDebtor?: BranchAndFinancialInstitutionIdentification8;
   UnderlyingAllocation?: Array<TransactionAllocation2>;
 }
 
 export interface OriginalTransactionReference45 {
+  InterbankSettlementAmount?: ActiveOrHistoricCurrencyAndAmount;
   Amount?: AmountType4Choice;
-  Creditor?: Party50Choice;
-  CreditorAccount?: CashAccount40;
-  CreditorAgent?: BranchAndFinancialInstitutionIdentification8;
-  CreditorAgentAccount?: CashAccount40;
+  InterbankSettlementDate?: string;
+  RequestedCollectionDate?: string;
+  RequestedExecutionDate?: DateAndDateTime2Choice;
   CreditorSchemeIdentification?: PartyIdentification272;
+  SettlementInformation?: SettlementInstruction15;
+  PaymentTypeInformation?: PaymentTypeInformation27;
+  PaymentMethod?: "CHK" | "DD" | "TRA" | "TRF";
+  MandateRelatedInformation?: MandateRelatedData5Choice;
+  RemittanceInformation?: RemittanceInformation26;
+  UltimateDebtor?: Party50Choice;
   Debtor?: Party50Choice;
   DebtorAccount?: CashAccount40;
   DebtorAgent?: BranchAndFinancialInstitutionIdentification8;
   DebtorAgentAccount?: CashAccount40;
-  InterbankSettlementAmount?: ActiveOrHistoricCurrencyAndAmount;
-  InterbankSettlementDate?: string;
-  MandateRelatedInformation?: MandateRelatedData5Choice;
-  PaymentMethod?: "CHK" | "DD" | "TRA" | "TRF";
-  PaymentTypeInformation?: PaymentTypeInformation27;
-  Purpose?: Purpose2Choice;
-  RemittanceInformation?: RemittanceInformation26;
-  RequestedCollectionDate?: string;
-  RequestedExecutionDate?: DateAndDateTime2Choice;
-  SettlementInformation?: SettlementInstruction15;
+  CreditorAgent?: BranchAndFinancialInstitutionIdentification8;
+  CreditorAgentAccount?: CashAccount40;
+  Creditor?: Party50Choice;
+  CreditorAccount?: CashAccount40;
   UltimateCreditor?: Party50Choice;
-  UltimateDebtor?: Party50Choice;
+  Purpose?: Purpose2Choice;
   UnderlyingCustomerCreditTransfer?: CreditTransferTransaction72;
   UnderlyingFinancialInstitutionCreditTransfer?: CreditTransferTransaction82;
 }
 
-export interface TransactionParties11 {
-  Creditor: Party50Choice;
-  CreditorAccount?: CashAccount40;
-  CreditorAgent?: BranchAndFinancialInstitutionIdentification8;
-  CreditorAgentAccount?: CashAccount40;
-  Debtor: Party50Choice;
-  DebtorAccount?: CashAccount40;
-  DebtorAgent?: BranchAndFinancialInstitutionIdentification8;
-  DebtorAgentAccount?: CashAccount40;
-  InitiatingParty?: Party50Choice;
-  IntermediaryAgent1?: BranchAndFinancialInstitutionIdentification8;
-  IntermediaryAgent1Account?: CashAccount40;
-  IntermediaryAgent2?: BranchAndFinancialInstitutionIdentification8;
-  IntermediaryAgent2Account?: CashAccount40;
-  IntermediaryAgent3?: BranchAndFinancialInstitutionIdentification8;
-  IntermediaryAgent3Account?: CashAccount40;
-  PreviousInstructingAgent1?: BranchAndFinancialInstitutionIdentification8;
-  PreviousInstructingAgent1Account?: CashAccount40;
-  PreviousInstructingAgent2?: BranchAndFinancialInstitutionIdentification8;
-  PreviousInstructingAgent2Account?: CashAccount40;
-  PreviousInstructingAgent3?: BranchAndFinancialInstitutionIdentification8;
-  PreviousInstructingAgent3Account?: CashAccount40;
-  UltimateCreditor?: Party50Choice;
-  UltimateDebtor?: Party50Choice;
-}
-
 export interface PaymentTransaction168 {
-  AgreedRate?: CurrencyExchange26;
-  ChargeBearer?: "CRED" | "DEBT" | "SHAR" | "SLEV";
-  ChargesInformation?: Array<Charges16>;
-  ClearingSystemReference?: string;
-  CompensationAmount?: ActiveOrHistoricCurrencyAndAmount;
-  ExchangeRate?: string;
-  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
-  InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
-  InterbankSettlementDate?: string;
-  OriginalClearingSystemReference?: string;
-  OriginalEndToEndIdentification?: string;
+  ReturnIdentification?: string;
   OriginalGroupInformation?: OriginalGroupInformation33;
   OriginalInstructionIdentification?: string;
+  OriginalEndToEndIdentification?: string;
+  OriginalTransactionIdentification?: string;
+  OriginalUETR?: string;
+  OriginalClearingSystemReference?: string;
   OriginalInterbankSettlementAmount?: ActiveOrHistoricCurrencyAndAmount;
   OriginalInterbankSettlementDate?: string;
-  OriginalTransactionIdentification?: string;
-  OriginalTransactionReference?: OriginalTransactionReference45;
-  OriginalUETR?: string;
   PaymentTypeInformation?: PaymentTypeInformation28;
-  ReturnChain?: TransactionParties11;
-  ReturnIdentification?: string;
-  ReturnReasonInformation?: Array<PaymentReturnReason7>;
-  ReturnedInstructedAmount?: ActiveOrHistoricCurrencyAndAmount;
   ReturnedInterbankSettlementAmount: ActiveCurrencyAndAmount;
+  InterbankSettlementDate?: string;
   SettlementPriority?: "HIGH" | "NORM" | "URGT";
   SettlementTimeIndication?: SettlementDateTimeIndication1;
   SettlementTimeRequest?: SettlementTimeRequest2;
+  ReturnedInstructedAmount?: ActiveOrHistoricCurrencyAndAmount;
+  ExchangeRate?: string;
+  AgreedRate?: CurrencyExchange26;
+  CompensationAmount?: ActiveOrHistoricCurrencyAndAmount;
+  ChargeBearer?: "CRED" | "DEBT" | "SHAR" | "SLEV";
+  ChargesInformation?: Array<Charges16>;
+  ClearingSystemReference?: string;
+  InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
+  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
+  ReturnChain?: TransactionParties11;
+  ReturnReasonInformation?: Array<PaymentReturnReason7>;
+  OriginalTransactionReference?: OriginalTransactionReference45;
   SupplementaryData?: Array<SupplementaryData1>;
 }
 
 export interface PaymentReturnV15 {
   GroupHeader: GroupHeader123;
   OriginalGroupInformation?: OriginalGroupHeader19;
-  SupplementaryData?: Array<SupplementaryData1>;
   TransactionInformation?: Array<PaymentTransaction168>;
+  SupplementaryData?: Array<SupplementaryData1>;
 }
 
 export type Pacs004Document = PaymentReturnV15;

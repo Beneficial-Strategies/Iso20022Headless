@@ -52,10 +52,10 @@
   },
   "root": "FIToFIPaymentCancellationRequestV12",
   "order": [
+    "Max35Text",
     "Max140Text",
     "AddressType2Code",
     "Exact4AlphaNumericText",
-    "Max35Text",
     "GenericIdentification30",
     "AddressType3Choice",
     "Max70Text",
@@ -100,19 +100,17 @@
     "CaseAssignment6",
     "YesNoIndicator",
     "Case6",
-    "DecimalNumber",
     "Max15NumericText",
+    "DecimalNumber",
     "ControlData1",
-    "Max350Text",
-    "SupplementaryDataEnvelope1",
-    "SupplementaryData1",
-    "Max105Text",
+    "GroupCancellationIndicator",
     "ExternalCancellationReason1Code",
     "CancellationReason33Choice",
+    "Max105Text",
     "PaymentCancellationReason6",
-    "GroupCancellationIndicator",
     "OriginalGroupHeader21",
     "OriginalGroupInformation33",
+    "UUIDv4Identifier",
     "ActiveOrHistoricCurrencyAndAmount",
     "ActiveOrHistoricCurrencyCode",
     "EquivalentAmount2",
@@ -209,12 +207,21 @@
     "ExternalPurpose1Code",
     "Purpose2Choice",
     "OriginalTransactionReference47",
-    "UUIDv4Identifier",
+    "Max350Text",
+    "SupplementaryDataEnvelope1",
+    "SupplementaryData1",
     "PaymentTransaction172",
     "UnderlyingTransaction36",
     "FIToFIPaymentCancellationRequestV12"
   ],
   "types": {
+    "Max35Text": {
+      "name": "Max35Text",
+      "kind": "text",
+      "isoId": "_YW1tKdp-Ed-ak6NoX_4Aeg_1913463446",
+      "minLength": 1,
+      "maxLength": 35
+    },
     "Max140Text": {
       "name": "Max140Text",
       "kind": "text",
@@ -264,13 +271,6 @@
       "kind": "text",
       "isoId": "_YYLJ6Np-Ed-ak6NoX_4Aeg_-1265890753",
       "pattern": "[a-zA-Z0-9]{4}"
-    },
-    "Max35Text": {
-      "name": "Max35Text",
-      "kind": "text",
-      "isoId": "_YW1tKdp-Ed-ak6NoX_4Aeg_1913463446",
-      "minLength": 1,
-      "maxLength": 35
     },
     "GenericIdentification30": {
       "name": "GenericIdentification30",
@@ -1398,11 +1398,11 @@
       "kind": "component",
       "fields": [
         {
-          "name": "Assignee",
-          "isoId": "_vqt-pTEyEe6g-ffJsqGiSA",
-          "xmlTag": "Assgne",
-          "type": "Party50Choice",
-          "kind": "choice",
+          "name": "Identification",
+          "isoId": "_vqt-oTEyEe6g-ffJsqGiSA",
+          "xmlTag": "Id",
+          "type": "Max35Text",
+          "kind": "text",
           "min": 1,
           "max": 1
         },
@@ -1416,20 +1416,20 @@
           "max": 1
         },
         {
+          "name": "Assignee",
+          "isoId": "_vqt-pTEyEe6g-ffJsqGiSA",
+          "xmlTag": "Assgne",
+          "type": "Party50Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
           "name": "CreationDateTime",
           "isoId": "_vqt-pzEyEe6g-ffJsqGiSA",
           "xmlTag": "CreDtTm",
           "type": "ISODateTime",
           "kind": "datetime",
-          "min": 1,
-          "max": 1
-        },
-        {
-          "name": "Identification",
-          "isoId": "_vqt-oTEyEe6g-ffJsqGiSA",
-          "xmlTag": "Id",
-          "type": "Max35Text",
-          "kind": "text",
           "min": 1,
           "max": 1
         }
@@ -1446,20 +1446,20 @@
       "kind": "component",
       "fields": [
         {
-          "name": "Creator",
-          "isoId": "_w8wOQzEyEe6g-ffJsqGiSA",
-          "xmlTag": "Cretr",
-          "type": "Party50Choice",
-          "kind": "choice",
-          "min": 1,
-          "max": 1
-        },
-        {
           "name": "Identification",
           "isoId": "_w8wOQTEyEe6g-ffJsqGiSA",
           "xmlTag": "Id",
           "type": "Max35Text",
           "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Creator",
+          "isoId": "_w8wOQzEyEe6g-ffJsqGiSA",
+          "xmlTag": "Cretr",
+          "type": "Party50Choice",
+          "kind": "choice",
           "min": 1,
           "max": 1
         },
@@ -1474,6 +1474,12 @@
         }
       ]
     },
+    "Max15NumericText": {
+      "name": "Max15NumericText",
+      "kind": "text",
+      "isoId": "_YXbjAtp-Ed-ak6NoX_4Aeg_-1365324848",
+      "pattern": "[0-9]{1,15}"
+    },
     "DecimalNumber": {
       "name": "DecimalNumber",
       "kind": "number",
@@ -1481,26 +1487,11 @@
       "totalDigits": 18,
       "fractionDigits": 17
     },
-    "Max15NumericText": {
-      "name": "Max15NumericText",
-      "kind": "text",
-      "isoId": "_YXbjAtp-Ed-ak6NoX_4Aeg_-1365324848",
-      "pattern": "[0-9]{1,15}"
-    },
     "ControlData1": {
       "name": "ControlData1",
       "isoId": "_RqlQiNp-Ed-ak6NoX_4Aeg_518525040",
       "kind": "component",
       "fields": [
-        {
-          "name": "ControlSum",
-          "isoId": "_RquacNp-Ed-ak6NoX_4Aeg_518525163",
-          "xmlTag": "CtrlSum",
-          "type": "DecimalNumber",
-          "kind": "number",
-          "min": 0,
-          "max": 1
-        },
         {
           "name": "NumberOfTransactions",
           "isoId": "_RqlQidp-Ed-ak6NoX_4Aeg_518525132",
@@ -1509,59 +1500,22 @@
           "kind": "text",
           "min": 1,
           "max": 1
-        }
-      ]
-    },
-    "Max350Text": {
-      "name": "Max350Text",
-      "kind": "text",
-      "isoId": "_YW1tKNp-Ed-ak6NoX_4Aeg_1778996852",
-      "minLength": 1,
-      "maxLength": 350
-    },
-    "SupplementaryDataEnvelope1": {
-      "name": "SupplementaryDataEnvelope1",
-      "kind": "any",
-      "isoId": "_Kz9KwJDrEeSLQ8ob-qtemg"
-    },
-    "SupplementaryData1": {
-      "name": "SupplementaryData1",
-      "isoId": "_Qn0zC9p-Ed-ak6NoX_4Aeg_468227563",
-      "kind": "component",
-      "fields": [
-        {
-          "name": "PlaceAndName",
-          "isoId": "_Qn988Np-Ed-ak6NoX_4Aeg_354388497",
-          "xmlTag": "PlcAndNm",
-          "type": "Max350Text",
-          "kind": "text",
-          "min": 0,
-          "max": 1
         },
         {
-          "name": "Envelope",
-          "isoId": "_Qn988dp-Ed-ak6NoX_4Aeg_-642683856",
-          "xmlTag": "Envlp",
-          "type": "SupplementaryDataEnvelope1",
-          "kind": "any",
-          "min": 1,
+          "name": "ControlSum",
+          "isoId": "_RquacNp-Ed-ak6NoX_4Aeg_518525163",
+          "xmlTag": "CtrlSum",
+          "type": "DecimalNumber",
+          "kind": "number",
+          "min": 0,
           "max": 1
-        }
-      ],
-      "rules": [
-        {
-          "name": "SupplementaryDataRule",
-          "isoId": "_Qn988tp-Ed-ak6NoX_4Aeg_-1492355109",
-          "text": "This component may not be used without the explicit approval of a SEG and submission to the RA of ISO 20022 compliant structure(s) to be used in the Envelope element."
         }
       ]
     },
-    "Max105Text": {
-      "name": "Max105Text",
-      "kind": "text",
-      "isoId": "_YXvFBdp-Ed-ak6NoX_4Aeg_-1994317052",
-      "minLength": 1,
-      "maxLength": 105
+    "GroupCancellationIndicator": {
+      "name": "GroupCancellationIndicator",
+      "kind": "boolean",
+      "isoId": "_YY7X1Np-Ed-ak6NoX_4Aeg_1656514158"
     },
     "ExternalCancellationReason1Code": {
       "name": "ExternalCancellationReason1Code",
@@ -1596,20 +1550,18 @@
         }
       ]
     },
+    "Max105Text": {
+      "name": "Max105Text",
+      "kind": "text",
+      "isoId": "_YXvFBdp-Ed-ak6NoX_4Aeg_-1994317052",
+      "minLength": 1,
+      "maxLength": 105
+    },
     "PaymentCancellationReason6": {
       "name": "PaymentCancellationReason6",
       "isoId": "_wwdesTEyEe6g-ffJsqGiSA",
       "kind": "component",
       "fields": [
-        {
-          "name": "AdditionalInformation",
-          "isoId": "_wy8K9TEyEe6g-ffJsqGiSA",
-          "xmlTag": "AddtlInf",
-          "type": "Max105Text",
-          "kind": "text",
-          "min": 0,
-          "max": null
-        },
         {
           "name": "Originator",
           "isoId": "_wy8K8TEyEe6g-ffJsqGiSA",
@@ -1627,13 +1579,17 @@
           "kind": "choice",
           "min": 0,
           "max": 1
+        },
+        {
+          "name": "AdditionalInformation",
+          "isoId": "_wy8K9TEyEe6g-ffJsqGiSA",
+          "xmlTag": "AddtlInf",
+          "type": "Max105Text",
+          "kind": "text",
+          "min": 0,
+          "max": null
         }
       ]
-    },
-    "GroupCancellationIndicator": {
-      "name": "GroupCancellationIndicator",
-      "kind": "boolean",
-      "isoId": "_YY7X1Np-Ed-ak6NoX_4Aeg_1656514158"
     },
     "OriginalGroupHeader21": {
       "name": "OriginalGroupHeader21",
@@ -1641,13 +1597,13 @@
       "kind": "component",
       "fields": [
         {
-          "name": "CancellationReasonInformation",
-          "isoId": "_zRc00TEyEe6g-ffJsqGiSA",
-          "xmlTag": "CxlRsnInf",
-          "type": "PaymentCancellationReason6",
-          "kind": "component",
+          "name": "GroupCancellationIdentification",
+          "isoId": "_zRc0wTEyEe6g-ffJsqGiSA",
+          "xmlTag": "GrpCxlId",
+          "type": "Max35Text",
+          "kind": "text",
           "min": 0,
-          "max": null
+          "max": 1
         },
         {
           "name": "Case",
@@ -1655,6 +1611,42 @@
           "xmlTag": "Case",
           "type": "Case6",
           "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "OriginalMessageIdentification",
+          "isoId": "_zRc0xTEyEe6g-ffJsqGiSA",
+          "xmlTag": "OrgnlMsgId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "OriginalMessageNameIdentification",
+          "isoId": "_zRc0xzEyEe6g-ffJsqGiSA",
+          "xmlTag": "OrgnlMsgNmId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "OriginalCreationDateTime",
+          "isoId": "_zRc0yTEyEe6g-ffJsqGiSA",
+          "xmlTag": "OrgnlCreDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "NumberOfTransactions",
+          "isoId": "_zRc0yzEyEe6g-ffJsqGiSA",
+          "xmlTag": "NbOfTxs",
+          "type": "Max15NumericText",
+          "kind": "text",
           "min": 0,
           "max": 1
         },
@@ -1677,49 +1669,13 @@
           "max": 1
         },
         {
-          "name": "GroupCancellationIdentification",
-          "isoId": "_zRc0wTEyEe6g-ffJsqGiSA",
-          "xmlTag": "GrpCxlId",
-          "type": "Max35Text",
-          "kind": "text",
+          "name": "CancellationReasonInformation",
+          "isoId": "_zRc00TEyEe6g-ffJsqGiSA",
+          "xmlTag": "CxlRsnInf",
+          "type": "PaymentCancellationReason6",
+          "kind": "component",
           "min": 0,
-          "max": 1
-        },
-        {
-          "name": "NumberOfTransactions",
-          "isoId": "_zRc0yzEyEe6g-ffJsqGiSA",
-          "xmlTag": "NbOfTxs",
-          "type": "Max15NumericText",
-          "kind": "text",
-          "min": 0,
-          "max": 1
-        },
-        {
-          "name": "OriginalCreationDateTime",
-          "isoId": "_zRc0yTEyEe6g-ffJsqGiSA",
-          "xmlTag": "OrgnlCreDtTm",
-          "type": "ISODateTime",
-          "kind": "datetime",
-          "min": 0,
-          "max": 1
-        },
-        {
-          "name": "OriginalMessageIdentification",
-          "isoId": "_zRc0xTEyEe6g-ffJsqGiSA",
-          "xmlTag": "OrgnlMsgId",
-          "type": "Max35Text",
-          "kind": "text",
-          "min": 1,
-          "max": 1
-        },
-        {
-          "name": "OriginalMessageNameIdentification",
-          "isoId": "_zRc0xzEyEe6g-ffJsqGiSA",
-          "xmlTag": "OrgnlMsgNmId",
-          "type": "Max35Text",
-          "kind": "text",
-          "min": 1,
-          "max": 1
+          "max": null
         }
       ],
       "rules": [
@@ -1765,15 +1721,6 @@
       "kind": "component",
       "fields": [
         {
-          "name": "OriginalCreationDateTime",
-          "isoId": "79f0fece-3e2c-4843-ace6-0239f629aaed",
-          "xmlTag": "OrgnlCreDtTm",
-          "type": "ISODateTime",
-          "kind": "datetime",
-          "min": 0,
-          "max": 1
-        },
-        {
           "name": "OriginalMessageIdentification",
           "isoId": "8222206f-49ba-4180-aa0c-a8e82f8b6dd8",
           "xmlTag": "OrgnlMsgId",
@@ -1790,8 +1737,23 @@
           "kind": "text",
           "min": 1,
           "max": 1
+        },
+        {
+          "name": "OriginalCreationDateTime",
+          "isoId": "79f0fece-3e2c-4843-ace6-0239f629aaed",
+          "xmlTag": "OrgnlCreDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 0,
+          "max": 1
         }
       ]
+    },
+    "UUIDv4Identifier": {
+      "name": "UUIDv4Identifier",
+      "kind": "text",
+      "isoId": "_TQIBwHrVEeidVZmeoasaWQ",
+      "pattern": "[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}"
     },
     "ActiveOrHistoricCurrencyAndAmount": {
       "name": "ActiveOrHistoricCurrencyAndAmount",
@@ -5064,35 +5026,55 @@
         }
       ]
     },
-    "UUIDv4Identifier": {
-      "name": "UUIDv4Identifier",
+    "Max350Text": {
+      "name": "Max350Text",
       "kind": "text",
-      "isoId": "_TQIBwHrVEeidVZmeoasaWQ",
-      "pattern": "[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}"
+      "isoId": "_YW1tKNp-Ed-ak6NoX_4Aeg_1778996852",
+      "minLength": 1,
+      "maxLength": 350
+    },
+    "SupplementaryDataEnvelope1": {
+      "name": "SupplementaryDataEnvelope1",
+      "kind": "any",
+      "isoId": "_Kz9KwJDrEeSLQ8ob-qtemg"
+    },
+    "SupplementaryData1": {
+      "name": "SupplementaryData1",
+      "isoId": "_Qn0zC9p-Ed-ak6NoX_4Aeg_468227563",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "PlaceAndName",
+          "isoId": "_Qn988Np-Ed-ak6NoX_4Aeg_354388497",
+          "xmlTag": "PlcAndNm",
+          "type": "Max350Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Envelope",
+          "isoId": "_Qn988dp-Ed-ak6NoX_4Aeg_-642683856",
+          "xmlTag": "Envlp",
+          "type": "SupplementaryDataEnvelope1",
+          "kind": "any",
+          "min": 1,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "SupplementaryDataRule",
+          "isoId": "_Qn988tp-Ed-ak6NoX_4Aeg_-1492355109",
+          "text": "This component may not be used without the explicit approval of a SEG and submission to the RA of ISO 20022 compliant structure(s) to be used in the Envelope element."
+        }
+      ]
     },
     "PaymentTransaction172": {
       "name": "PaymentTransaction172",
       "isoId": "983dfe0b-8406-465c-8059-079b5243aa85",
       "kind": "component",
       "fields": [
-        {
-          "name": "Assignee",
-          "isoId": "08879ab1-ef8b-48b7-8b54-08678921543a",
-          "xmlTag": "Assgne",
-          "type": "BranchAndFinancialInstitutionIdentification8",
-          "kind": "component",
-          "min": 0,
-          "max": 1
-        },
-        {
-          "name": "Assigner",
-          "isoId": "37455edf-3bd1-470f-a8a7-2772eaa50581",
-          "xmlTag": "Assgnr",
-          "type": "BranchAndFinancialInstitutionIdentification8",
-          "kind": "component",
-          "min": 0,
-          "max": 1
-        },
         {
           "name": "CancellationIdentification",
           "isoId": "32db28b3-7648-423b-9f3e-ed5ce5019d78",
@@ -5103,38 +5085,11 @@
           "max": 1
         },
         {
-          "name": "CancellationReasonInformation",
-          "isoId": "94ef6c96-ded9-4516-af98-cf760ef0e26e",
-          "xmlTag": "CxlRsnInf",
-          "type": "PaymentCancellationReason6",
-          "kind": "component",
-          "min": 0,
-          "max": null
-        },
-        {
           "name": "Case",
           "isoId": "7e4351ef-6361-4475-903b-6abcd4f758bd",
           "xmlTag": "Case",
           "type": "Case6",
           "kind": "component",
-          "min": 0,
-          "max": 1
-        },
-        {
-          "name": "OriginalClearingSystemReference",
-          "isoId": "98e52064-770b-4ee2-912e-f943be02004c",
-          "xmlTag": "OrgnlClrSysRef",
-          "type": "Max35Text",
-          "kind": "text",
-          "min": 0,
-          "max": 1
-        },
-        {
-          "name": "OriginalEndToEndIdentification",
-          "isoId": "55a5a837-a8bb-42fb-b555-e038212306eb",
-          "xmlTag": "OrgnlEndToEndId",
-          "type": "Max35Text",
-          "kind": "text",
           "min": 0,
           "max": 1
         },
@@ -5151,6 +5106,42 @@
           "name": "OriginalInstructionIdentification",
           "isoId": "0aea58fc-aae0-4993-a9c4-cd1f66a01283",
           "xmlTag": "OrgnlInstrId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "OriginalEndToEndIdentification",
+          "isoId": "55a5a837-a8bb-42fb-b555-e038212306eb",
+          "xmlTag": "OrgnlEndToEndId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "OriginalTransactionIdentification",
+          "isoId": "4a6fdf2a-48d1-4998-a056-ec80bcd7b632",
+          "xmlTag": "OrgnlTxId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "OriginalUETR",
+          "isoId": "3d992e21-8e13-4b32-b0c5-d52b7abedecd",
+          "xmlTag": "OrgnlUETR",
+          "type": "UUIDv4Identifier",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "OriginalClearingSystemReference",
+          "isoId": "98e52064-770b-4ee2-912e-f943be02004c",
+          "xmlTag": "OrgnlClrSysRef",
           "type": "Max35Text",
           "kind": "text",
           "min": 0,
@@ -5175,13 +5166,31 @@
           "max": 1
         },
         {
-          "name": "OriginalTransactionIdentification",
-          "isoId": "4a6fdf2a-48d1-4998-a056-ec80bcd7b632",
-          "xmlTag": "OrgnlTxId",
-          "type": "Max35Text",
-          "kind": "text",
+          "name": "Assigner",
+          "isoId": "37455edf-3bd1-470f-a8a7-2772eaa50581",
+          "xmlTag": "Assgnr",
+          "type": "BranchAndFinancialInstitutionIdentification8",
+          "kind": "component",
           "min": 0,
           "max": 1
+        },
+        {
+          "name": "Assignee",
+          "isoId": "08879ab1-ef8b-48b7-8b54-08678921543a",
+          "xmlTag": "Assgne",
+          "type": "BranchAndFinancialInstitutionIdentification8",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CancellationReasonInformation",
+          "isoId": "94ef6c96-ded9-4516-af98-cf760ef0e26e",
+          "xmlTag": "CxlRsnInf",
+          "type": "PaymentCancellationReason6",
+          "kind": "component",
+          "min": 0,
+          "max": null
         },
         {
           "name": "OriginalTransactionReference",
@@ -5189,15 +5198,6 @@
           "xmlTag": "OrgnlTxRef",
           "type": "OriginalTransactionReference47",
           "kind": "component",
-          "min": 0,
-          "max": 1
-        },
-        {
-          "name": "OriginalUETR",
-          "isoId": "3d992e21-8e13-4b32-b0c5-d52b7abedecd",
-          "xmlTag": "OrgnlUETR",
-          "type": "UUIDv4Identifier",
-          "kind": "text",
           "min": 0,
           "max": 1
         },
@@ -5396,21 +5396,21 @@
           "max": 1
         },
         {
-          "name": "SupplementaryData",
-          "isoId": "214b764d-5b2d-4f7a-9237-028620870fe5",
-          "xmlTag": "SplmtryData",
-          "type": "SupplementaryData1",
-          "kind": "component",
-          "min": 0,
-          "max": null
-        },
-        {
           "name": "Underlying",
           "isoId": "237fff91-5aeb-4788-8ef1-6ce224ca480a",
           "xmlTag": "Undrlyg",
           "type": "UnderlyingTransaction36",
           "kind": "component",
           "min": 1,
+          "max": null
+        },
+        {
+          "name": "SupplementaryData",
+          "isoId": "214b764d-5b2d-4f7a-9237-028620870fe5",
+          "xmlTag": "SplmtryData",
+          "type": "SupplementaryData1",
+          "kind": "component",
+          "min": 0,
           "max": null
         }
       ],

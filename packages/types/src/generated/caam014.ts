@@ -9,17 +9,17 @@ export interface ATMPropertyComponent1 {
 }
 
 export interface ATMConfigurationControlComponent1 {
-  ActionRequired: "APLY" | "NONE";
-  ActivationDate?: string;
-  ConfigurationVersion?: string;
   Environment: ATMEnvironment7;
+  ConfigurationVersion?: string;
+  ActionRequired: "APLY" | "NONE";
   Property?: Array<ATMPropertyComponent1>;
+  ActivationDate?: string;
 }
 
 export interface ATMConfigurationControlV01 {
-  ATMConfigurationControl?: ATMConfigurationControlComponent1;
   Header: Header31;
   ProtectedATMConfigurationControl?: ContentInformationType10;
+  ATMConfigurationControl?: ATMConfigurationControlComponent1;
   SecurityTrailer?: ContentInformationType15;
 }
 

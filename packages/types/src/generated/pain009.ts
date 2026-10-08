@@ -3,29 +3,29 @@
 import type { ActiveCurrencyAndAmount, BranchAndFinancialInstitutionIdentification8, CashAccount40, GroupHeader110, MandateAdjustment1, MandateAuthentication1, MandateOccurrences5, MandateSetupReason1Choice, MandateTypeInformation2, PartyIdentification272, ReferredMandateDocument2, SupplementaryData1 } from './shared.ts';
 
 export interface Mandate23 {
-  Adjustment?: MandateAdjustment1;
+  MandateIdentification?: Array<string>;
+  MandateRequestIdentification: string;
   Authentication?: MandateAuthentication1;
+  Type?: MandateTypeInformation2;
+  Occurrences?: MandateOccurrences5;
+  TrackingIndicator: 'true' | 'false';
+  FirstCollectionAmount?: ActiveCurrencyAndAmount;
   CollectionAmount?: ActiveCurrencyAndAmount;
+  MaximumAmount?: ActiveCurrencyAndAmount;
+  Adjustment?: MandateAdjustment1;
+  Reason?: MandateSetupReason1Choice;
+  CreditorSchemeIdentification?: PartyIdentification272;
   Creditor: PartyIdentification272;
   CreditorAccount?: CashAccount40;
   CreditorAgent?: BranchAndFinancialInstitutionIdentification8;
-  CreditorSchemeIdentification?: PartyIdentification272;
+  UltimateCreditor?: PartyIdentification272;
   Debtor: PartyIdentification272;
   DebtorAccount?: CashAccount40;
   DebtorAgent: BranchAndFinancialInstitutionIdentification8;
-  FirstCollectionAmount?: ActiveCurrencyAndAmount;
-  MandateIdentification?: Array<string>;
+  UltimateDebtor?: PartyIdentification272;
   MandateReference?: string;
-  MandateRequestIdentification: string;
-  MaximumAmount?: ActiveCurrencyAndAmount;
-  Occurrences?: MandateOccurrences5;
-  Reason?: MandateSetupReason1Choice;
   ReferredDocument?: Array<ReferredMandateDocument2>;
   SupplementaryData?: Array<SupplementaryData1>;
-  TrackingIndicator: 'true' | 'false';
-  Type?: MandateTypeInformation2;
-  UltimateCreditor?: PartyIdentification272;
-  UltimateDebtor?: PartyIdentification272;
 }
 
 export interface MandateInitiationRequestV08 {

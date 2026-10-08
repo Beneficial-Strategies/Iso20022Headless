@@ -3,55 +3,55 @@
 import type { ActiveOrHistoricCurrencyAndAmount, AdviceType1, Authorisation1Choice, BranchAndFinancialInstitutionIdentification8, CashAccount40, DirectDebitTransaction12, PartyIdentification272, PaymentIdentification6, PaymentTypeInformation29, Purpose2Choice, RegulatoryReporting10, RemittanceInformation26, RemittanceLocation8, SupplementaryData1, TaxData1 } from './shared.ts';
 
 export interface GroupHeader118 {
-  Authorisation?: Array<Authorisation1Choice>;
-  ControlSum?: string;
-  CreationDateTime: string;
-  ForwardingAgent?: BranchAndFinancialInstitutionIdentification8;
-  InitiatingParty: PartyIdentification272;
   MessageIdentification: string;
+  CreationDateTime: string;
+  Authorisation?: Array<Authorisation1Choice>;
   NumberOfTransactions: string;
+  ControlSum?: string;
+  InitiatingParty: PartyIdentification272;
+  ForwardingAgent?: BranchAndFinancialInstitutionIdentification8;
 }
 
 export interface DirectDebitTransactionInformation34 {
-  ChargeBearer?: "CRED" | "DEBT" | "SHAR" | "SLEV";
-  Debtor: PartyIdentification272;
-  DebtorAccount: CashAccount40;
-  DebtorAgent: BranchAndFinancialInstitutionIdentification8;
-  DebtorAgentAccount?: CashAccount40;
-  DirectDebitTransaction?: DirectDebitTransaction12;
-  InstructedAmount: ActiveOrHistoricCurrencyAndAmount;
-  InstructionForCreditorAgent?: string;
   PaymentIdentification: PaymentIdentification6;
   PaymentTypeInformation?: PaymentTypeInformation29;
+  InstructedAmount: ActiveOrHistoricCurrencyAndAmount;
+  ChargeBearer?: "CRED" | "DEBT" | "SHAR" | "SLEV";
+  DirectDebitTransaction?: DirectDebitTransaction12;
+  UltimateCreditor?: PartyIdentification272;
+  DebtorAgent: BranchAndFinancialInstitutionIdentification8;
+  DebtorAgentAccount?: CashAccount40;
+  Debtor: PartyIdentification272;
+  DebtorAccount: CashAccount40;
+  UltimateDebtor?: PartyIdentification272;
+  InstructionForCreditorAgent?: string;
   Purpose?: Purpose2Choice;
   RegulatoryReporting?: Array<RegulatoryReporting10>;
+  Tax?: TaxData1;
   RelatedRemittanceInformation?: Array<RemittanceLocation8>;
   RemittanceInformation?: RemittanceInformation26;
   SupplementaryData?: Array<SupplementaryData1>;
-  Tax?: TaxData1;
-  UltimateCreditor?: PartyIdentification272;
-  UltimateDebtor?: PartyIdentification272;
 }
 
 export interface PaymentInstruction50 {
+  PaymentInformationIdentification: string;
+  PaymentMethod: "DD";
+  RequestedAdviceType?: AdviceType1;
   BatchBooking?: 'true' | 'false';
-  ChargeBearer?: "CRED" | "DEBT" | "SHAR" | "SLEV";
-  ChargesAccount?: CashAccount40;
-  ChargesAccountAgent?: BranchAndFinancialInstitutionIdentification8;
+  NumberOfTransactions?: string;
   ControlSum?: string;
+  PaymentTypeInformation?: PaymentTypeInformation29;
+  RequestedCollectionDate: string;
   Creditor: PartyIdentification272;
   CreditorAccount: CashAccount40;
   CreditorAgent: BranchAndFinancialInstitutionIdentification8;
   CreditorAgentAccount?: CashAccount40;
+  UltimateCreditor?: PartyIdentification272;
+  ChargeBearer?: "CRED" | "DEBT" | "SHAR" | "SLEV";
+  ChargesAccount?: CashAccount40;
+  ChargesAccountAgent?: BranchAndFinancialInstitutionIdentification8;
   CreditorSchemeIdentification?: PartyIdentification272;
   DirectDebitTransactionInformation: Array<DirectDebitTransactionInformation34>;
-  NumberOfTransactions?: string;
-  PaymentInformationIdentification: string;
-  PaymentMethod: "DD";
-  PaymentTypeInformation?: PaymentTypeInformation29;
-  RequestedAdviceType?: AdviceType1;
-  RequestedCollectionDate: string;
-  UltimateCreditor?: PartyIdentification272;
 }
 
 export interface CustomerDirectDebitInitiationV12 {

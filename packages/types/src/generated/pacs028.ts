@@ -3,40 +3,40 @@
 import type { BranchAndFinancialInstitutionIdentification8, OriginalGroupInformation33, OriginalTransactionReference47, SupplementaryData1 } from './shared.ts';
 
 export interface GroupHeader109 {
-  CreationDateTime: string;
-  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
-  InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
   MessageIdentification: string;
+  CreationDateTime: string;
+  InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
+  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
 }
 
 export interface OriginalGroupInformation27 {
-  OriginalControlSum?: string;
-  OriginalCreationDateTime?: string;
   OriginalMessageIdentification: string;
   OriginalMessageNameIdentification: string;
+  OriginalCreationDateTime?: string;
   OriginalNumberOfTransactions?: string;
+  OriginalControlSum?: string;
 }
 
 export interface PaymentTransaction171 {
-  AcceptanceDateTime?: string;
-  ClearingSystemReference?: string;
-  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
-  InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
-  OriginalEndToEndIdentification?: string;
+  StatusRequestIdentification?: string;
   OriginalGroupInformation?: OriginalGroupInformation33;
   OriginalInstructionIdentification?: string;
+  OriginalEndToEndIdentification?: string;
   OriginalTransactionIdentification?: string;
-  OriginalTransactionReference?: OriginalTransactionReference47;
   OriginalUETR?: string;
-  StatusRequestIdentification?: string;
+  AcceptanceDateTime?: string;
+  ClearingSystemReference?: string;
+  InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
+  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
+  OriginalTransactionReference?: OriginalTransactionReference47;
   SupplementaryData?: Array<SupplementaryData1>;
 }
 
 export interface FIToFIPaymentStatusRequestV07 {
   GroupHeader: GroupHeader109;
   OriginalGroupInformation?: Array<OriginalGroupInformation27>;
-  SupplementaryData?: Array<SupplementaryData1>;
   TransactionInformation?: Array<PaymentTransaction171>;
+  SupplementaryData?: Array<SupplementaryData1>;
 }
 
 export type Pacs028Document = FIToFIPaymentStatusRequestV07;

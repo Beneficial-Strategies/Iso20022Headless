@@ -7,16 +7,16 @@ export type MandateStatus1Choice =
   | { Proprietary: string };
 
 export interface MandateCopy4 {
-  MandateStatus?: MandateStatus1Choice;
-  OriginalMandate: OriginalMandate10Choice;
   OriginalMessageInformation?: OriginalMessageInformation1;
+  OriginalMandate: OriginalMandate10Choice;
+  MandateStatus?: MandateStatus1Choice;
   SupplementaryData?: Array<SupplementaryData1>;
 }
 
 export interface MandateCopyRequestV04 {
   GroupHeader: GroupHeader110;
-  SupplementaryData?: Array<SupplementaryData1>;
   UnderlyingCopyRequestDetails: Array<MandateCopy4>;
+  SupplementaryData?: Array<SupplementaryData1>;
 }
 
 export type Pain017Document = MandateCopyRequestV04;

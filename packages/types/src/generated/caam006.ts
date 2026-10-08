@@ -3,14 +3,14 @@
 import type { ATMCommand7, ATMEnvironment6, ContentInformationType10, ContentInformationType15, Header31 } from './shared.ts';
 
 export interface ATMDiagnosticResponse2 {
-  Command?: Array<ATMCommand7>;
   Environment: ATMEnvironment6;
+  Command?: Array<ATMCommand7>;
 }
 
 export interface ATMDiagnosticResponseV02 {
-  ATMDiagnosticResponse?: ATMDiagnosticResponse2;
   Header: Header31;
   ProtectedATMDiagnosticResponse?: ContentInformationType10;
+  ATMDiagnosticResponse?: ATMDiagnosticResponse2;
   SecurityTrailer?: ContentInformationType15;
 }
 

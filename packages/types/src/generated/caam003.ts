@@ -2,43 +2,43 @@
 // caam.003.001.05 (ATMKeyDownloadRequestV05). Leaf values are wire strings.
 import type { ATMCommand15, ATMCommand16, ATMEquipment1, ATMSecurityContext3, ATMSignature3Choice, Acquirer7, ContentInformationType10, ContentInformationType13, CryptographicKey21, Header31, PostalAddress17, TerminalHosting1 } from './shared.ts';
 
-export interface SecurityParameters18 {
-  ATMChallenge?: string;
-  Certificate?: Array<string>;
-  Key?: CryptographicKey21;
-  RequestedKey?: string;
-  SignatureChoice?: ATMSignature3Choice;
-}
-
 export interface AutomatedTellerMachine6 {
-  AdditionalIdentification?: string;
-  Equipment?: ATMEquipment1;
   Identification: string;
+  AdditionalIdentification?: string;
+  SequenceNumber?: string;
   Location?: PostalAddress17;
   LocationCategory?: "PRIV" | "PUBL";
-  SequenceNumber?: string;
+  Equipment?: ATMEquipment1;
 }
 
 export interface ATMEnvironment15 {
-  ATM: AutomatedTellerMachine6;
-  ATMManagerIdentification?: string;
   Acquirer?: Acquirer7;
+  ATMManagerIdentification?: string;
   HostingEntity?: TerminalHosting1;
+  ATM: AutomatedTellerMachine6;
+}
+
+export interface SecurityParameters18 {
+  Key?: CryptographicKey21;
+  SignatureChoice?: ATMSignature3Choice;
+  Certificate?: Array<string>;
+  ATMChallenge?: string;
+  RequestedKey?: string;
 }
 
 export interface ATMKeyDownloadRequest6 {
+  Environment: ATMEnvironment15;
+  CommandResult?: Array<ATMCommand15>;
+  CommandContext?: ATMCommand16;
   ATMSecurityContext: ATMSecurityContext3;
   ATMSecurityParameters: SecurityParameters18;
-  CommandContext?: ATMCommand16;
-  CommandResult?: Array<ATMCommand15>;
-  Environment: ATMEnvironment15;
   HostChallenge?: string;
 }
 
 export interface ATMKeyDownloadRequestV05 {
-  ATMKeyDownloadRequest?: ATMKeyDownloadRequest6;
   Header: Header31;
   ProtectedATMKeyDownloadRequest?: ContentInformationType10;
+  ATMKeyDownloadRequest?: ATMKeyDownloadRequest6;
   SecurityTrailer?: ContentInformationType13;
 }
 

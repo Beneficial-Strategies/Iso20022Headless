@@ -3,6 +3,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { simpleTypeRows, simpleTypesTsv, closureOf, messageJson, writeStructure, type Closure, type MessageSpec } from './extract.ts';
 import { loadSnapshots } from './snapshot.ts';
+import { mergeOrders, orderFileText, parseOrderFile, typeOrders } from './xsd-order.ts';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../../..');
 const fixtures = resolve(root, 'fixtures');
@@ -32,6 +33,7 @@ const arg = (name: string): string | undefined => {
 
 function main(): number {
   const cmd = process.argv[2];
+  if (cmd === 'order') return writeOrder();
   const dir = arg('--snapshots');
   if (!['analyze', 'write', 'verify'].includes(cmd ?? '') || !dir) {
     console.error('usage: spec-extract <analyze|write|verify> --snapshots <dir of saved get_spec_snapshot files> [--only <message name>]');
@@ -159,6 +161,28 @@ function verifySimpleTypes(spec: ReturnType<typeof loadSnapshots>): number {
   }
   console.log(`simple types: ${compared} committed rows compared with the snapshot's facets; differences: ${bad}`);
   return bad;
+}
+
+/**
+ * `order --xsd <dir of XSD files>`: add the member order of every type in those XSDs to fixtures/member-order.tsv (existing lines are
+ * kept; a type that an XSD orders differently from the file is an error).
+ */
+function writeOrder(): number {
+  const dir = arg('--xsd');
+  if (!dir) {
+    console.error('usage: spec-extract order --xsd <dir of ISO XSD files (e.g. camt.053.001.14.xsd)>');
+    return 2;
+  }
+  const file = resolve(fixtures, 'member-order.tsv');
+  const files = new Map<string, ReturnType<typeof typeOrders>>();
+  if (existsSync(file)) files.set('fixtures/member-order.tsv', [...parseOrderFile(readFileSync(file, 'utf8'))].map(([type, tags]) => ({ type, tags })));
+  for (const f of readdirSync(dir).filter((x) => x.endsWith('.xsd')).sort()) files.set(f, typeOrders(readFileSync(resolve(dir, f), 'utf8')));
+  const { orders, conflicts } = mergeOrders(files);
+  for (const c of conflicts) console.log(`conflict: ${c}`);
+  if (conflicts.length) return 1;
+  writeFileSync(file, orderFileText(orders));
+  console.log(`member-order.tsv: ${orders.size} types from ${files.size - (existsSync(file) ? 0 : 0)} files`);
+  return 0;
 }
 
 process.exit(main());

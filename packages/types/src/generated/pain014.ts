@@ -3,78 +3,78 @@
 import type { ActiveCurrencyAndAmount, AmountType4Choice, BranchAndFinancialInstitutionIdentification8, CashAccount40, Charges16, CreditTransferMandateData1, DateAndDateTime2Choice, Document15, NumberOfTransactionsPerStatus5, PartyIdentification272, PaymentCondition2, PaymentTypeInformation29, RemittanceInformation26, StatusReasonInformation14, SupplementaryData1 } from './shared.ts';
 
 export interface GroupHeader111 {
-  CreationDateTime: string;
-  CreditorAgent?: BranchAndFinancialInstitutionIdentification8;
-  DebtorAgent?: BranchAndFinancialInstitutionIdentification8;
-  ForwardingAgent?: BranchAndFinancialInstitutionIdentification8;
-  InitiatingParty: PartyIdentification272;
   MessageIdentification: string;
+  CreationDateTime: string;
+  InitiatingParty: PartyIdentification272;
+  ForwardingAgent?: BranchAndFinancialInstitutionIdentification8;
+  DebtorAgent?: BranchAndFinancialInstitutionIdentification8;
+  CreditorAgent?: BranchAndFinancialInstitutionIdentification8;
 }
 
 export interface OriginalGroupInformation32 {
-  GroupStatus?: string;
-  NumberOfTransactionsPerStatus?: Array<NumberOfTransactionsPerStatus5>;
-  OriginalControlSum?: string;
-  OriginalCreationDateTime?: string;
   OriginalMessageIdentification: string;
   OriginalMessageNameIdentification: string;
+  OriginalCreationDateTime?: string;
   OriginalNumberOfTransactions?: string;
+  OriginalControlSum?: string;
+  GroupStatus?: string;
   StatusReasonInformation?: Array<StatusReasonInformation14>;
-}
-
-export interface OriginalTransactionReference46 {
-  Amount?: AmountType4Choice;
-  Creditor: PartyIdentification272;
-  CreditorAccount?: CashAccount40;
-  CreditorAgent: BranchAndFinancialInstitutionIdentification8;
-  CreditorAgentAccount?: CashAccount40;
-  Debtor?: PartyIdentification272;
-  DebtorAccount?: CashAccount40;
-  DebtorAgent?: BranchAndFinancialInstitutionIdentification8;
-  DebtorAgentAccount?: CashAccount40;
-  EnclosedFile?: Array<Document15>;
-  ExpiryDate?: DateAndDateTime2Choice;
-  MandateRelatedInformation?: CreditTransferMandateData1;
-  PaymentCondition?: PaymentCondition2;
-  PaymentMethod?: "CHK" | "DD" | "TRA" | "TRF";
-  PaymentTypeInformation?: PaymentTypeInformation29;
-  RemittanceInformation?: RemittanceInformation26;
-  RequestedExecutionDate?: DateAndDateTime2Choice;
-  UltimateCreditor?: PartyIdentification272;
-  UltimateDebtor?: PartyIdentification272;
+  NumberOfTransactionsPerStatus?: Array<NumberOfTransactionsPerStatus5>;
 }
 
 export interface PaymentConditionStatus2 {
   AcceptedAmount?: ActiveCurrencyAndAmount;
-  EarlyPayment?: 'true' | 'false';
   GuaranteedPayment?: 'true' | 'false';
+  EarlyPayment?: 'true' | 'false';
+}
+
+export interface OriginalTransactionReference46 {
+  Amount?: AmountType4Choice;
+  RequestedExecutionDate?: DateAndDateTime2Choice;
+  ExpiryDate?: DateAndDateTime2Choice;
+  PaymentCondition?: PaymentCondition2;
+  PaymentTypeInformation?: PaymentTypeInformation29;
+  PaymentMethod?: "CHK" | "DD" | "TRA" | "TRF";
+  MandateRelatedInformation?: CreditTransferMandateData1;
+  RemittanceInformation?: RemittanceInformation26;
+  EnclosedFile?: Array<Document15>;
+  UltimateDebtor?: PartyIdentification272;
+  Debtor?: PartyIdentification272;
+  DebtorAccount?: CashAccount40;
+  DebtorAgent?: BranchAndFinancialInstitutionIdentification8;
+  DebtorAgentAccount?: CashAccount40;
+  CreditorAgent: BranchAndFinancialInstitutionIdentification8;
+  CreditorAgentAccount?: CashAccount40;
+  Creditor: PartyIdentification272;
+  CreditorAccount?: CashAccount40;
+  UltimateCreditor?: PartyIdentification272;
 }
 
 export interface PaymentTransaction169 {
+  StatusIdentification?: string;
+  OriginalInstructionIdentification?: string;
+  OriginalEndToEndIdentification?: string;
+  OriginalUETR?: string;
+  TransactionStatus?: string;
+  StatusReasonInformation?: Array<StatusReasonInformation14>;
+  PaymentConditionStatus?: PaymentConditionStatus2;
+  ChargesInformation?: Array<Charges16>;
+  DebtorDecisionDateTime?: string;
   AcceptanceDateTime?: string;
   AccountServicerReference?: string;
-  ChargesInformation?: Array<Charges16>;
   ClearingSystemReference?: string;
-  DebtorDecisionDateTime?: string;
-  EnclosedFile?: Array<Document15>;
-  OriginalEndToEndIdentification?: string;
-  OriginalInstructionIdentification?: string;
   OriginalTransactionReference?: OriginalTransactionReference46;
-  OriginalUETR?: string;
-  PaymentConditionStatus?: PaymentConditionStatus2;
-  StatusIdentification?: string;
-  StatusReasonInformation?: Array<StatusReasonInformation14>;
+  EnclosedFile?: Array<Document15>;
   SupplementaryData?: Array<SupplementaryData1>;
-  TransactionStatus?: string;
 }
 
 export interface OriginalPaymentInstruction52 {
-  NumberOfTransactionsPerStatus?: Array<NumberOfTransactionsPerStatus5>;
-  OriginalControlSum?: string;
-  OriginalNumberOfTransactions?: string;
   OriginalPaymentInformationIdentification: string;
+  OriginalNumberOfTransactions?: string;
+  OriginalControlSum?: string;
   PaymentInformationStatus?: string;
   StatusReasonInformation?: Array<StatusReasonInformation14>;
+  NumberOfTransactionsPerStatus?: Array<NumberOfTransactionsPerStatus5>;
   TransactionInformationAndStatus?: Array<PaymentTransaction169>;
 }
 

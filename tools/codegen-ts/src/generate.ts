@@ -105,6 +105,35 @@ const filesMatching = (dir: string, re: RegExp): string[] => readdirSync(resolve
 // The pool: everything from every message's fixtures, merged. First definition of a name wins; a conflict is an error.
 const datatypes = new Map<string, string[]>();
 const members = new Map<string, string[][]>();
+
+// The order of a type's members on the wire is the XSD's (fixtures/member-order.tsv, made by `spec-extract order` from ISO's XSDs): the
+// MCP snapshot lists members alphabetically, and an XML message in any other order is not valid.
+const memberOrder = new Map<string, string[]>();
+{
+  const file = resolve(fixturesRoot, 'member-order.tsv');
+  if (existsSync(file)) {
+    for (const line of readFileSync(file, 'utf8').split('\n').slice(1).filter(Boolean)) {
+      const [type, tags] = line.split('\t');
+      memberOrder.set(type!, tags!.split(','));
+    }
+  }
+}
+
+/** `items` of a type in XSD sequence. A type with two or more members and no order, or with other members than the XSD, is a problem. */
+function inSequence<T>(type: string, items: T[], tagOf: (item: T) => string): T[] {
+  if (items.length < 2) return items;
+  const order = memberOrder.get(type);
+  if (!order) {
+    problems.push(`no XSD member order for ${type}: run \`spec-extract order --xsd <dir with the XSD of a message that uses it>\``);
+    return items;
+  }
+  const tags = items.map(tagOf);
+  if (tags.length !== order.length || tags.some((t) => !order.includes(t))) {
+    problems.push(`member order of ${type}: the XSD has ${order.join(',')} but the data has ${tags.join(',')}`);
+    return items;
+  }
+  return [...items].sort((a, b) => order.indexOf(tagOf(a)) - order.indexOf(tagOf(b)));
+}
 const simple = new Map<string, string[]>();
 const codesets = new Map<string, string[][]>();
 const codeIsoIds = new Map<string, string>();
@@ -336,12 +365,12 @@ function resolveType(name: string): void {
       ir.set(name, amountType(name));
     } else if (kind === 'Choice') {
       ir.set(name, { name, kind: 'choice' }); // placeholder, no cycles expected but guard anyway
-      const choiceOptions = (members.get(name) ?? []).map(toField);
+      const choiceOptions = inSequence(name, members.get(name) ?? [], (m) => m[4]!).map(toField);
       if (choiceOptions.length === 0) problems.push(`choice ${name} has no variants: capture them into the fixtures`);
       ir.set(name, { name, isoId: dt[2]!, kind: 'choice', choiceOptions });
     } else {
       ir.set(name, { name, kind: 'component' });
-      const fields = (members.get(name) ?? []).map(toField);
+      const fields = inSequence(name, members.get(name) ?? [], (m) => m[4]!).map(toField);
       ir.set(name, { name, isoId: dt[2]!, kind: 'component', fields });
     }
   } else if (inCode) {
@@ -357,7 +386,7 @@ function resolveType(name: string): void {
 const closure = new Map<string, string[]>(); // message identifier -> types in dependency order
 const rootName = new Map<string, string>();
 for (const [, cfg] of configs) {
-  const fields: Field[] = cfg.blocks.map((b) => {
+  const fields: Field[] = inSequence(cfg.name, cfg.blocks, (b) => b.xmlTag).map((b) => {
     resolveType(b.type);
     return { name: b.name, isoId: b.isoId, xmlTag: b.xmlTag, type: b.type, kind: ir.get(b.type)!.kind, min: b.min, max: b.max };
   });

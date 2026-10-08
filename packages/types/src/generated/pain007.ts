@@ -3,38 +3,38 @@
 import type { ActiveOrHistoricCurrencyAndAmount, Authorisation1Choice, BranchAndFinancialInstitutionIdentification8, OriginalGroupHeader20, OriginalTransactionReference47, PartyIdentification272, PaymentReversalReason10, SupplementaryData1 } from './shared.ts';
 
 export interface GroupHeader124 {
-  Authorisation?: Array<Authorisation1Choice>;
-  ControlSum?: string;
+  MessageIdentification: string;
   CreationDateTime: string;
-  CreditorAgent?: BranchAndFinancialInstitutionIdentification8;
-  DebtorAgent?: BranchAndFinancialInstitutionIdentification8;
-  ForwardingAgent?: BranchAndFinancialInstitutionIdentification8;
+  Authorisation?: Array<Authorisation1Choice>;
+  NumberOfTransactions: string;
+  ControlSum?: string;
   GroupReversal?: 'true' | 'false';
   InitiatingParty?: PartyIdentification272;
-  MessageIdentification: string;
-  NumberOfTransactions: string;
+  ForwardingAgent?: BranchAndFinancialInstitutionIdentification8;
+  DebtorAgent?: BranchAndFinancialInstitutionIdentification8;
+  CreditorAgent?: BranchAndFinancialInstitutionIdentification8;
 }
 
 export interface PaymentTransaction174 {
-  ChargeBearer?: "CRED" | "DEBT" | "SHAR" | "SLEV";
-  OriginalEndToEndIdentification?: string;
-  OriginalInstructedAmount?: ActiveOrHistoricCurrencyAndAmount;
-  OriginalInstructionIdentification?: string;
-  OriginalTransactionReference?: OriginalTransactionReference47;
-  OriginalUETR?: string;
   ReversalIdentification?: string;
-  ReversalReasonInformation?: Array<PaymentReversalReason10>;
+  OriginalInstructionIdentification?: string;
+  OriginalEndToEndIdentification?: string;
+  OriginalUETR?: string;
+  OriginalInstructedAmount?: ActiveOrHistoricCurrencyAndAmount;
   ReversedInstructedAmount?: ActiveOrHistoricCurrencyAndAmount;
+  ChargeBearer?: "CRED" | "DEBT" | "SHAR" | "SLEV";
+  ReversalReasonInformation?: Array<PaymentReversalReason10>;
+  OriginalTransactionReference?: OriginalTransactionReference47;
   SupplementaryData?: Array<SupplementaryData1>;
 }
 
 export interface OriginalPaymentInstruction53 {
-  BatchBooking?: 'true' | 'false';
-  OriginalControlSum?: string;
-  OriginalNumberOfTransactions?: string;
-  OriginalPaymentInformationIdentification: string;
-  PaymentInformationReversal?: 'true' | 'false';
   ReversalPaymentInformationIdentification?: string;
+  OriginalPaymentInformationIdentification: string;
+  OriginalNumberOfTransactions?: string;
+  OriginalControlSum?: string;
+  BatchBooking?: 'true' | 'false';
+  PaymentInformationReversal?: 'true' | 'false';
   ReversalReasonInformation?: Array<PaymentReversalReason10>;
   TransactionInformation?: Array<PaymentTransaction174>;
 }

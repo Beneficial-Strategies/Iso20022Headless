@@ -8,8 +8,8 @@ export interface HostToATMAcknowledgement1 {
 
 export interface HostToATMAcknowledgementV01 {
   Header: Header20;
-  HostToATMAcknowledgement?: HostToATMAcknowledgement1;
   ProtectedHostToATMAcknowledgement?: ContentInformationType10;
+  HostToATMAcknowledgement?: HostToATMAcknowledgement1;
   SecurityTrailer?: ContentInformationType15;
 }
 

@@ -3,10 +3,10 @@
 import type { ActiveCurrencyAndAmount, CashAccount40, PartyIdentification272, SettlementInstruction14, SettlementTimeRequest2, SupplementaryData1 } from './shared.ts';
 
 export interface GroupHeader104 {
-  ControlSum?: string;
-  CreationDateTime: string;
   MessageIdentification: string;
+  CreationDateTime: string;
   NumberOfSettlementRequests: string;
+  ControlSum?: string;
   SettlementInformation?: SettlementInstruction14;
 }
 
@@ -16,24 +16,24 @@ export interface AmountAndDirection5 {
 }
 
 export interface MovementRecord2 {
-  Amount: AmountAndDirection5;
   Identification: string;
+  SequenceNumber?: string;
+  Amount: AmountAndDirection5;
+  SettlementAgent?: PartyIdentification272;
+  SettlementAgentAccount?: CashAccount40;
   Participant?: PartyIdentification272;
   ParticipantAccount?: CashAccount40;
   Reference?: string;
-  SequenceNumber?: string;
-  SettlementAgent?: PartyIdentification272;
-  SettlementAgentAccount?: CashAccount40;
 }
 
 export interface MultilateralSettlementRequest3 {
   InstructionIdentification: string;
   InstructionPriority?: "HIGH" | "NORM" | "URGT";
-  MovementRecord: Array<MovementRecord2>;
-  NumberOfMovementRecords?: string;
-  SettlementCycle?: string;
-  SettlementPriority?: "HIGH" | "NORM" | "URGT";
   SettlementTimeRequest?: SettlementTimeRequest2;
+  SettlementPriority?: "HIGH" | "NORM" | "URGT";
+  SettlementCycle?: string;
+  NumberOfMovementRecords?: string;
+  MovementRecord: Array<MovementRecord2>;
 }
 
 export interface MultilateralSettlementRequestV02 {
