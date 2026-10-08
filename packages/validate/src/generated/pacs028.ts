@@ -14,10 +14,10 @@ import {
   type TypeDescriptors,
 } from '../runtime.ts';
 import {
+  Max35TextSchema,
   ISODateTimeSchema,
   BICFIDec2014IdentifierSchema,
   ExternalClearingSystemIdentification1CodeSchema,
-  Max35TextSchema,
   ClearingSystemIdentification2ChoiceSchema,
   ClearingSystemMemberIdentification2Schema,
   LEIIdentifierSchema,
@@ -36,12 +36,10 @@ import {
   FinancialInstitutionIdentification23Schema,
   BranchData5Schema,
   BranchAndFinancialInstitutionIdentification8Schema,
-  DecimalNumberSchema,
   Max15NumericTextSchema,
-  Max350TextSchema,
-  SupplementaryDataEnvelope1Schema,
-  SupplementaryData1Schema,
+  DecimalNumberSchema,
   OriginalGroupInformation33Schema,
+  UUIDv4IdentifierSchema,
   ActiveOrHistoricCurrencyAndAmountSchema,
   ActiveOrHistoricCurrencyCodeSchema,
   EquivalentAmount2Schema,
@@ -161,45 +159,47 @@ import {
   ExternalPurpose1CodeSchema,
   Purpose2ChoiceSchema,
   OriginalTransactionReference47Schema,
-  UUIDv4IdentifierSchema,
+  Max350TextSchema,
+  SupplementaryDataEnvelope1Schema,
+  SupplementaryData1Schema,
   sharedTypeDescriptors,
 } from './shared.ts';
 
 export const GroupHeader109Schema = z.strictObject({
-  CreationDateTime: ISODateTimeSchema,
-  InstructedAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
-  InstructingAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
   MessageIdentification: Max35TextSchema,
+  CreationDateTime: ISODateTimeSchema,
+  InstructingAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
+  InstructedAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
 });
 
 export const OriginalGroupInformation27Schema = z.strictObject({
-  OriginalControlSum: DecimalNumberSchema.optional(),
-  OriginalCreationDateTime: ISODateTimeSchema.optional(),
   OriginalMessageIdentification: Max35TextSchema,
   OriginalMessageNameIdentification: Max35TextSchema,
+  OriginalCreationDateTime: ISODateTimeSchema.optional(),
   OriginalNumberOfTransactions: Max15NumericTextSchema.optional(),
+  OriginalControlSum: DecimalNumberSchema.optional(),
 });
 
 export const PaymentTransaction171Schema = z.strictObject({
-  AcceptanceDateTime: ISODateTimeSchema.optional(),
-  ClearingSystemReference: Max35TextSchema.optional(),
-  InstructedAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
-  InstructingAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
-  OriginalEndToEndIdentification: Max35TextSchema.optional(),
+  StatusRequestIdentification: Max35TextSchema.optional(),
   OriginalGroupInformation: OriginalGroupInformation33Schema.optional(),
   OriginalInstructionIdentification: Max35TextSchema.optional(),
+  OriginalEndToEndIdentification: Max35TextSchema.optional(),
   OriginalTransactionIdentification: Max35TextSchema.optional(),
-  OriginalTransactionReference: OriginalTransactionReference47Schema.optional(),
   OriginalUETR: UUIDv4IdentifierSchema.optional(),
-  StatusRequestIdentification: Max35TextSchema.optional(),
+  AcceptanceDateTime: ISODateTimeSchema.optional(),
+  ClearingSystemReference: Max35TextSchema.optional(),
+  InstructingAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
+  InstructedAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
+  OriginalTransactionReference: OriginalTransactionReference47Schema.optional(),
   SupplementaryData: z.array(SupplementaryData1Schema).optional(),
 });
 
 export const FIToFIPaymentStatusRequestV07Schema = z.strictObject({
   GroupHeader: GroupHeader109Schema,
   OriginalGroupInformation: z.array(OriginalGroupInformation27Schema).optional(),
-  SupplementaryData: z.array(SupplementaryData1Schema).optional(),
   TransactionInformation: z.array(PaymentTransaction171Schema).optional(),
+  SupplementaryData: z.array(SupplementaryData1Schema).optional(),
 });
 
 const f = (d: FieldDescriptor): FieldDescriptor => d;
@@ -210,10 +210,10 @@ const ownTypeDescriptors: TypeDescriptors = {
     isoId: "_wYcAQTEyEe6g-ffJsqGiSA",
     kind: "component",
     fields: [
-      f({ name: "CreationDateTime", isoId: "_wa10AzEyEe6g-ffJsqGiSA", xmlTag: "CreDtTm", displayName: displayName("CreationDateTime"), kind: "datetime", type: "ISODateTime", required: true }),
-      f({ name: "InstructedAgent", isoId: "_wa10BzEyEe6g-ffJsqGiSA", xmlTag: "InstdAgt", displayName: displayName("InstructedAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
-      f({ name: "InstructingAgent", isoId: "_wa10BTEyEe6g-ffJsqGiSA", xmlTag: "InstgAgt", displayName: displayName("InstructingAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
       f({ name: "MessageIdentification", isoId: "_wa10ATEyEe6g-ffJsqGiSA", xmlTag: "MsgId", displayName: displayName("MessageIdentification"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "CreationDateTime", isoId: "_wa10AzEyEe6g-ffJsqGiSA", xmlTag: "CreDtTm", displayName: displayName("CreationDateTime"), kind: "datetime", type: "ISODateTime", required: true }),
+      f({ name: "InstructingAgent", isoId: "_wa10BTEyEe6g-ffJsqGiSA", xmlTag: "InstgAgt", displayName: displayName("InstructingAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
+      f({ name: "InstructedAgent", isoId: "_wa10BzEyEe6g-ffJsqGiSA", xmlTag: "InstdAgt", displayName: displayName("InstructedAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
     ],
   },
   "OriginalGroupInformation27": {
@@ -221,11 +221,11 @@ const ownTypeDescriptors: TypeDescriptors = {
     isoId: "_6x8aIRdSEea6o_d8S96x5g",
     kind: "component",
     fields: [
-      f({ name: "OriginalControlSum", isoId: "_7FfoSxdSEea6o_d8S96x5g", xmlTag: "OrgnlCtrlSum", displayName: displayName("OriginalControlSum"), kind: "number", type: "DecimalNumber", required: false }),
-      f({ name: "OriginalCreationDateTime", isoId: "_7FfoRxdSEea6o_d8S96x5g", xmlTag: "OrgnlCreDtTm", displayName: displayName("OriginalCreationDateTime"), kind: "datetime", type: "ISODateTime", required: false }),
       f({ name: "OriginalMessageIdentification", isoId: "_7FfoQxdSEea6o_d8S96x5g", xmlTag: "OrgnlMsgId", displayName: displayName("OriginalMessageIdentification"), kind: "text", type: "Max35Text", required: true }),
       f({ name: "OriginalMessageNameIdentification", isoId: "_7FfoRRdSEea6o_d8S96x5g", xmlTag: "OrgnlMsgNmId", displayName: displayName("OriginalMessageNameIdentification"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "OriginalCreationDateTime", isoId: "_7FfoRxdSEea6o_d8S96x5g", xmlTag: "OrgnlCreDtTm", displayName: displayName("OriginalCreationDateTime"), kind: "datetime", type: "ISODateTime", required: false }),
       f({ name: "OriginalNumberOfTransactions", isoId: "_7FfoSRdSEea6o_d8S96x5g", xmlTag: "OrgnlNbOfTxs", displayName: displayName("OriginalNumberOfTransactions"), kind: "text", type: "Max15NumericText", required: false }),
+      f({ name: "OriginalControlSum", isoId: "_7FfoSxdSEea6o_d8S96x5g", xmlTag: "OrgnlCtrlSum", displayName: displayName("OriginalControlSum"), kind: "number", type: "DecimalNumber", required: false }),
     ],
   },
   "PaymentTransaction171": {
@@ -233,17 +233,17 @@ const ownTypeDescriptors: TypeDescriptors = {
     isoId: "8f5f6e58-5f38-4c81-985e-27a4edf16d5a",
     kind: "component",
     fields: [
-      f({ name: "AcceptanceDateTime", isoId: "c8227be5-d09b-4f0e-824d-a95ab72e73de", xmlTag: "AccptncDtTm", displayName: displayName("AcceptanceDateTime"), kind: "datetime", type: "ISODateTime", required: false }),
-      f({ name: "ClearingSystemReference", isoId: "e608b458-763a-45bf-b35f-32d729979bb7", xmlTag: "ClrSysRef", displayName: displayName("ClearingSystemReference"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "InstructedAgent", isoId: "d6529ce8-dc5b-4a21-a311-3e3b8d36243b", xmlTag: "InstdAgt", displayName: displayName("InstructedAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
-      f({ name: "InstructingAgent", isoId: "a6917c43-d533-4fb1-ad70-1a1a6b08cb70", xmlTag: "InstgAgt", displayName: displayName("InstructingAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
-      f({ name: "OriginalEndToEndIdentification", isoId: "610dd1b6-931c-4867-af05-9dbb71755f7a", xmlTag: "OrgnlEndToEndId", displayName: displayName("OriginalEndToEndIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "StatusRequestIdentification", isoId: "92d96915-2e3a-4ab5-9130-92e1d1401109", xmlTag: "StsReqId", displayName: displayName("StatusRequestIdentification"), kind: "text", type: "Max35Text", required: false }),
       f({ name: "OriginalGroupInformation", isoId: "7ebae343-b1e1-4282-9422-69ccf7994ad5", xmlTag: "OrgnlGrpInf", displayName: displayName("OriginalGroupInformation"), kind: "component", type: "OriginalGroupInformation33", required: false }),
       f({ name: "OriginalInstructionIdentification", isoId: "5dbbd40c-8bdb-4c16-abb1-e5215c87164a", xmlTag: "OrgnlInstrId", displayName: displayName("OriginalInstructionIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "OriginalEndToEndIdentification", isoId: "610dd1b6-931c-4867-af05-9dbb71755f7a", xmlTag: "OrgnlEndToEndId", displayName: displayName("OriginalEndToEndIdentification"), kind: "text", type: "Max35Text", required: false }),
       f({ name: "OriginalTransactionIdentification", isoId: "8a523ac3-778a-4857-a07d-e659d0bf06ae", xmlTag: "OrgnlTxId", displayName: displayName("OriginalTransactionIdentification"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "OriginalTransactionReference", isoId: "ac62a849-873b-49a7-897a-028862fb572a", xmlTag: "OrgnlTxRef", displayName: displayName("OriginalTransactionReference"), kind: "component", type: "OriginalTransactionReference47", required: false }),
       f({ name: "OriginalUETR", isoId: "a66b61df-268a-4c50-bb01-4a6e3f0447ce", xmlTag: "OrgnlUETR", displayName: displayName("OriginalUETR"), kind: "text", type: "UUIDv4Identifier", required: false }),
-      f({ name: "StatusRequestIdentification", isoId: "92d96915-2e3a-4ab5-9130-92e1d1401109", xmlTag: "StsReqId", displayName: displayName("StatusRequestIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "AcceptanceDateTime", isoId: "c8227be5-d09b-4f0e-824d-a95ab72e73de", xmlTag: "AccptncDtTm", displayName: displayName("AcceptanceDateTime"), kind: "datetime", type: "ISODateTime", required: false }),
+      f({ name: "ClearingSystemReference", isoId: "e608b458-763a-45bf-b35f-32d729979bb7", xmlTag: "ClrSysRef", displayName: displayName("ClearingSystemReference"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "InstructingAgent", isoId: "a6917c43-d533-4fb1-ad70-1a1a6b08cb70", xmlTag: "InstgAgt", displayName: displayName("InstructingAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
+      f({ name: "InstructedAgent", isoId: "d6529ce8-dc5b-4a21-a311-3e3b8d36243b", xmlTag: "InstdAgt", displayName: displayName("InstructedAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
+      f({ name: "OriginalTransactionReference", isoId: "ac62a849-873b-49a7-897a-028862fb572a", xmlTag: "OrgnlTxRef", displayName: displayName("OriginalTransactionReference"), kind: "component", type: "OriginalTransactionReference47", required: false }),
       f({ name: "SupplementaryData", isoId: "a0c30313-1d0a-44b1-b8e9-8c07859c02a2", xmlTag: "SplmtryData", displayName: displayName("SupplementaryData"), kind: "component", type: "SupplementaryData1", required: false, repeat: { min: 0, max: null } }),
     ],
   },
@@ -254,8 +254,8 @@ const ownTypeDescriptors: TypeDescriptors = {
     fields: [
       f({ name: "GroupHeader", isoId: "e51be480-61e1-4646-a5a7-c4b9838a775a", xmlTag: "GrpHdr", displayName: displayName("GroupHeader"), kind: "component", type: "GroupHeader109", required: true }),
       f({ name: "OriginalGroupInformation", isoId: "0a64b5a8-078b-4b84-b18e-56ae8dddc36a", xmlTag: "OrgnlGrpInf", displayName: displayName("OriginalGroupInformation"), kind: "component", type: "OriginalGroupInformation27", required: false, repeat: { min: 0, max: null } }),
-      f({ name: "SupplementaryData", isoId: "5293f05c-ea9d-49ae-9f27-cbd6c4c5749b", xmlTag: "SplmtryData", displayName: displayName("SupplementaryData"), kind: "component", type: "SupplementaryData1", required: false, repeat: { min: 0, max: null } }),
       f({ name: "TransactionInformation", isoId: "90aac879-4ce6-47de-b1cb-733385b663e9", xmlTag: "TxInf", displayName: displayName("TransactionInformation"), kind: "component", type: "PaymentTransaction171", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "SupplementaryData", isoId: "5293f05c-ea9d-49ae-9f27-cbd6c4c5749b", xmlTag: "SplmtryData", displayName: displayName("SupplementaryData"), kind: "component", type: "SupplementaryData1", required: false, repeat: { min: 0, max: null } }),
     ],
     rules: [
       { name: "OriginalGroupInformationAbsenceRule", isoId: "9a6fc3c1-763c-49db-b2d0-1088772b8cfa", text: "If OriginalGroupInformation is absent, then TransactionInformation[*]/OriginalGroupInformation must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/TransactionInformation[*]/OriginalGroupInformation"}]},"onCondition":{"connector":"AND","rules":[{"op":"Absence","path":"/OriginalGroupInformation[1]"}]}} },
@@ -268,10 +268,10 @@ const ownTypeDescriptors: TypeDescriptors = {
 
 /** Descriptors for every type of pacs.028.001.07, shared ones included. */
 export const typeDescriptors: TypeDescriptors = {
+  "Max35Text": sharedTypeDescriptors["Max35Text"]!,
   "ISODateTime": sharedTypeDescriptors["ISODateTime"]!,
   "BICFIDec2014Identifier": sharedTypeDescriptors["BICFIDec2014Identifier"]!,
   "ExternalClearingSystemIdentification1Code": sharedTypeDescriptors["ExternalClearingSystemIdentification1Code"]!,
-  "Max35Text": sharedTypeDescriptors["Max35Text"]!,
   "ClearingSystemIdentification2Choice": sharedTypeDescriptors["ClearingSystemIdentification2Choice"]!,
   "ClearingSystemMemberIdentification2": sharedTypeDescriptors["ClearingSystemMemberIdentification2"]!,
   "LEIIdentifier": sharedTypeDescriptors["LEIIdentifier"]!,
@@ -290,12 +290,10 @@ export const typeDescriptors: TypeDescriptors = {
   "FinancialInstitutionIdentification23": sharedTypeDescriptors["FinancialInstitutionIdentification23"]!,
   "BranchData5": sharedTypeDescriptors["BranchData5"]!,
   "BranchAndFinancialInstitutionIdentification8": sharedTypeDescriptors["BranchAndFinancialInstitutionIdentification8"]!,
-  "DecimalNumber": sharedTypeDescriptors["DecimalNumber"]!,
   "Max15NumericText": sharedTypeDescriptors["Max15NumericText"]!,
-  "Max350Text": sharedTypeDescriptors["Max350Text"]!,
-  "SupplementaryDataEnvelope1": sharedTypeDescriptors["SupplementaryDataEnvelope1"]!,
-  "SupplementaryData1": sharedTypeDescriptors["SupplementaryData1"]!,
+  "DecimalNumber": sharedTypeDescriptors["DecimalNumber"]!,
   "OriginalGroupInformation33": sharedTypeDescriptors["OriginalGroupInformation33"]!,
+  "UUIDv4Identifier": sharedTypeDescriptors["UUIDv4Identifier"]!,
   "ActiveOrHistoricCurrencyAndAmount": sharedTypeDescriptors["ActiveOrHistoricCurrencyAndAmount"]!,
   "ActiveOrHistoricCurrencyCode": sharedTypeDescriptors["ActiveOrHistoricCurrencyCode"]!,
   "EquivalentAmount2": sharedTypeDescriptors["EquivalentAmount2"]!,
@@ -415,7 +413,9 @@ export const typeDescriptors: TypeDescriptors = {
   "ExternalPurpose1Code": sharedTypeDescriptors["ExternalPurpose1Code"]!,
   "Purpose2Choice": sharedTypeDescriptors["Purpose2Choice"]!,
   "OriginalTransactionReference47": sharedTypeDescriptors["OriginalTransactionReference47"]!,
-  "UUIDv4Identifier": sharedTypeDescriptors["UUIDv4Identifier"]!,
+  "Max350Text": sharedTypeDescriptors["Max350Text"]!,
+  "SupplementaryDataEnvelope1": sharedTypeDescriptors["SupplementaryDataEnvelope1"]!,
+  "SupplementaryData1": sharedTypeDescriptors["SupplementaryData1"]!,
   ...ownTypeDescriptors,
 };
 
@@ -433,7 +433,6 @@ export const schemas = {
   "BranchAndFinancialInstitutionIdentification8": BranchAndFinancialInstitutionIdentification8Schema,
   "GroupHeader109": GroupHeader109Schema,
   "OriginalGroupInformation27": OriginalGroupInformation27Schema,
-  "SupplementaryData1": SupplementaryData1Schema,
   "OriginalGroupInformation33": OriginalGroupInformation33Schema,
   "EquivalentAmount2": EquivalentAmount2Schema,
   "AmountType4Choice": AmountType4ChoiceSchema,
@@ -506,6 +505,7 @@ export const schemas = {
   "Party50Choice": Party50ChoiceSchema,
   "Purpose2Choice": Purpose2ChoiceSchema,
   "OriginalTransactionReference47": OriginalTransactionReference47Schema,
+  "SupplementaryData1": SupplementaryData1Schema,
   "PaymentTransaction171": PaymentTransaction171Schema,
   "FIToFIPaymentStatusRequestV07": FIToFIPaymentStatusRequestV07Schema,
 } as const;

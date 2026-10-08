@@ -3,22 +3,22 @@
 import type { AccountInterest4, CashAccount40, CashAccount43, CashBalance8, DateTimePeriod1, GroupHeader116, Pagination1, ReportEntry16, ReportingSource1Choice, SequenceRange1Choice, SupplementaryData1, TotalTransactions6 } from './shared.ts';
 
 export interface AccountStatement15 {
-  Account: CashAccount43;
-  AdditionalStatementInformation?: string;
-  Balance: Array<CashBalance8>;
-  CopyDuplicateIndicator?: "CODU" | "COPY" | "DUPL";
-  CreationDateTime?: string;
-  ElectronicSequenceNumber?: string;
-  Entry?: Array<ReportEntry16>;
-  FromToDate?: DateTimePeriod1;
   Identification: string;
-  Interest?: Array<AccountInterest4>;
-  LegalSequenceNumber?: string;
-  RelatedAccount?: CashAccount40;
-  ReportingSequence?: SequenceRange1Choice;
-  ReportingSource?: ReportingSource1Choice;
   StatementPagination?: Pagination1;
+  ElectronicSequenceNumber?: string;
+  ReportingSequence?: SequenceRange1Choice;
+  LegalSequenceNumber?: string;
+  CreationDateTime?: string;
+  FromToDate?: DateTimePeriod1;
+  CopyDuplicateIndicator?: "CODU" | "COPY" | "DUPL";
+  ReportingSource?: ReportingSource1Choice;
+  Account: CashAccount43;
+  RelatedAccount?: CashAccount40;
+  Interest?: Array<AccountInterest4>;
+  Balance: Array<CashBalance8>;
   TransactionsSummary?: TotalTransactions6;
+  Entry?: Array<ReportEntry16>;
+  AdditionalStatementInformation?: string;
 }
 
 export interface BankToCustomerStatementV14 {

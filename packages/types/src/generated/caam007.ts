@@ -3,15 +3,15 @@
 import type { ATMCommandIdentification1, ATMEnvironment9, ContentInformationType10, ContentInformationType15, Header20 } from './shared.ts';
 
 export interface HostToATMRequest1 {
-  CommandIdentification?: ATMCommandIdentification1;
   Environment: ATMEnvironment9;
+  CommandIdentification?: ATMCommandIdentification1;
   ExpectedMessageFunction: "BALN" | "DSEC" | "GSTS" | "INQC" | "KEYQ" | "SSTS";
 }
 
 export interface HostToATMRequestV01 {
   Header: Header20;
-  HostToATMRequest?: HostToATMRequest1;
   ProtectedHostToATMRequest?: ContentInformationType10;
+  HostToATMRequest?: HostToATMRequest1;
   SecurityTrailer?: ContentInformationType15;
 }
 

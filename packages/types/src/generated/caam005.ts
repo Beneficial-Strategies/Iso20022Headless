@@ -3,14 +3,14 @@
 import type { ATMEnvironment9, ATMStatus2, ContentInformationType10, ContentInformationType15, Header31 } from './shared.ts';
 
 export interface ATMDiagnosticRequest3 {
-  ATMGlobalStatus: ATMStatus2;
   Environment: ATMEnvironment9;
+  ATMGlobalStatus: ATMStatus2;
 }
 
 export interface ATMDiagnosticRequestV03 {
-  ATMDiagnosticRequest?: ATMDiagnosticRequest3;
   Header: Header31;
   ProtectedATMDiagnosticRequest?: ContentInformationType10;
+  ATMDiagnosticRequest?: ATMDiagnosticRequest3;
   SecurityTrailer?: ContentInformationType15;
 }
 

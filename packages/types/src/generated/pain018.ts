@@ -7,23 +7,23 @@ export type MandateSuspensionReason1Choice =
   | { Proprietary: string };
 
 export interface MandateSuspensionReason3 {
-  AdditionalInformation?: Array<string>;
   Originator?: PartyIdentification272;
   Reason: MandateSuspensionReason1Choice;
+  AdditionalInformation?: Array<string>;
 }
 
 export interface MandateSuspension4 {
-  OriginalMandate: OriginalMandate10Choice;
-  OriginalMessageInformation?: OriginalMessageInformation1;
-  SupplementaryData?: Array<SupplementaryData1>;
-  SuspensionReason: MandateSuspensionReason3;
   SuspensionRequestIdentification: string;
+  OriginalMessageInformation?: OriginalMessageInformation1;
+  SuspensionReason: MandateSuspensionReason3;
+  OriginalMandate: OriginalMandate10Choice;
+  SupplementaryData?: Array<SupplementaryData1>;
 }
 
 export interface MandateSuspensionRequestV04 {
   GroupHeader: GroupHeader110;
-  SupplementaryData?: Array<SupplementaryData1>;
   UnderlyingSuspensionDetails: Array<MandateSuspension4>;
+  SupplementaryData?: Array<SupplementaryData1>;
 }
 
 export type Pain018Document = MandateSuspensionRequestV04;

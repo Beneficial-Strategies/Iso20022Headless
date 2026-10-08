@@ -36,12 +36,11 @@
   },
   "root": "MultilateralSettlementRequestV02",
   "order": [
-    "DecimalNumber",
-    "ISODateTime",
     "Max35Text",
+    "ISODateTime",
     "Max15NumericText",
-    "ExternalCashClearingSystem1Code",
-    "ClearingSystemIdentification3Choice",
+    "DecimalNumber",
+    "SettlementMethod2Code",
     "IBAN2007Identifier",
     "Max34Text",
     "ExternalAccountIdentification1Code",
@@ -57,10 +56,14 @@
     "Max2048Text",
     "ProxyAccountIdentification1",
     "CashAccount40",
-    "SettlementMethod2Code",
+    "ExternalCashClearingSystem1Code",
+    "ClearingSystemIdentification3Choice",
     "SettlementInstruction14",
     "GroupHeader104",
     "Priority3Code",
+    "ISOTime",
+    "SettlementTimeRequest2",
+    "Number",
     "ActiveCurrencyAndAmount",
     "CreditDebitCode",
     "AmountAndDirection5",
@@ -94,10 +97,7 @@
     "PreferredContactMethod2Code",
     "Contact13",
     "PartyIdentification272",
-    "Number",
     "MovementRecord2",
-    "ISOTime",
-    "SettlementTimeRequest2",
     "MultilateralSettlementRequest3",
     "Max350Text",
     "SupplementaryDataEnvelope1",
@@ -105,18 +105,6 @@
     "MultilateralSettlementRequestV02"
   ],
   "types": {
-    "DecimalNumber": {
-      "name": "DecimalNumber",
-      "kind": "number",
-      "isoId": "_YXlUA9p-Ed-ak6NoX_4Aeg_1283031972",
-      "totalDigits": 18,
-      "fractionDigits": 17
-    },
-    "ISODateTime": {
-      "name": "ISODateTime",
-      "kind": "datetime",
-      "isoId": "_YW1tKtp-Ed-ak6NoX_4Aeg_-1624336183"
-    },
     "Max35Text": {
       "name": "Max35Text",
       "kind": "text",
@@ -124,42 +112,43 @@
       "minLength": 1,
       "maxLength": 35
     },
+    "ISODateTime": {
+      "name": "ISODateTime",
+      "kind": "datetime",
+      "isoId": "_YW1tKtp-Ed-ak6NoX_4Aeg_-1624336183"
+    },
     "Max15NumericText": {
       "name": "Max15NumericText",
       "kind": "text",
       "isoId": "_YXbjAtp-Ed-ak6NoX_4Aeg_-1365324848",
       "pattern": "[0-9]{1,15}"
     },
-    "ExternalCashClearingSystem1Code": {
-      "name": "ExternalCashClearingSystem1Code",
-      "isoId": "_amVqktp-Ed-ak6NoX_4Aeg_1632765855",
-      "kind": "code",
-      "external": true,
-      "minLength": 1,
-      "maxLength": 3
+    "DecimalNumber": {
+      "name": "DecimalNumber",
+      "kind": "number",
+      "isoId": "_YXlUA9p-Ed-ak6NoX_4Aeg_1283031972",
+      "totalDigits": 18,
+      "fractionDigits": 17
     },
-    "ClearingSystemIdentification3Choice": {
-      "name": "ClearingSystemIdentification3Choice",
-      "isoId": "_TMVXJdp-Ed-ak6NoX_4Aeg_948374898",
-      "kind": "choice",
-      "choiceOptions": [
+    "SettlementMethod2Code": {
+      "name": "SettlementMethod2Code",
+      "isoId": "_ZMCPxtp-Ed-ak6NoX_4Aeg_-673388484",
+      "kind": "code",
+      "options": [
         {
-          "name": "Code",
-          "isoId": "_TMVXJtp-Ed-ak6NoX_4Aeg_948374929",
-          "xmlTag": "Cd",
-          "type": "ExternalCashClearingSystem1Code",
-          "kind": "code",
-          "min": 1,
-          "max": 1
+          "value": "CLRG",
+          "name": "ClearingSystem",
+          "isoId": "_ZMMAwNp-Ed-ak6NoX_4Aeg_-673388407"
         },
         {
-          "name": "Proprietary",
-          "isoId": "_TMVXJ9p-Ed-ak6NoX_4Aeg_948374951",
-          "xmlTag": "Prtry",
-          "type": "Max35Text",
-          "kind": "text",
-          "min": 1,
-          "max": 1
+          "value": "INDA",
+          "name": "InstructedAgent",
+          "isoId": "_ZMCPx9p-Ed-ak6NoX_4Aeg_-673388466"
+        },
+        {
+          "value": "INGA",
+          "name": "InstructingAgent",
+          "isoId": "_ZMCPyNp-Ed-ak6NoX_4Aeg_-673388449"
         }
       ]
     },
@@ -458,25 +447,36 @@
         }
       ]
     },
-    "SettlementMethod2Code": {
-      "name": "SettlementMethod2Code",
-      "isoId": "_ZMCPxtp-Ed-ak6NoX_4Aeg_-673388484",
+    "ExternalCashClearingSystem1Code": {
+      "name": "ExternalCashClearingSystem1Code",
+      "isoId": "_amVqktp-Ed-ak6NoX_4Aeg_1632765855",
       "kind": "code",
-      "options": [
+      "external": true,
+      "minLength": 1,
+      "maxLength": 3
+    },
+    "ClearingSystemIdentification3Choice": {
+      "name": "ClearingSystemIdentification3Choice",
+      "isoId": "_TMVXJdp-Ed-ak6NoX_4Aeg_948374898",
+      "kind": "choice",
+      "choiceOptions": [
         {
-          "value": "CLRG",
-          "name": "ClearingSystem",
-          "isoId": "_ZMMAwNp-Ed-ak6NoX_4Aeg_-673388407"
+          "name": "Code",
+          "isoId": "_TMVXJtp-Ed-ak6NoX_4Aeg_948374929",
+          "xmlTag": "Cd",
+          "type": "ExternalCashClearingSystem1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
         },
         {
-          "value": "INDA",
-          "name": "InstructedAgent",
-          "isoId": "_ZMCPx9p-Ed-ak6NoX_4Aeg_-673388466"
-        },
-        {
-          "value": "INGA",
-          "name": "InstructingAgent",
-          "isoId": "_ZMCPyNp-Ed-ak6NoX_4Aeg_-673388449"
+          "name": "Proprietary",
+          "isoId": "_TMVXJ9p-Ed-ak6NoX_4Aeg_948374951",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
         }
       ]
     },
@@ -486,12 +486,12 @@
       "kind": "component",
       "fields": [
         {
-          "name": "ClearingSystem",
-          "isoId": "_g38-WdcZEeqRFcf2R4bPBw",
-          "xmlTag": "ClrSys",
-          "type": "ClearingSystemIdentification3Choice",
-          "kind": "choice",
-          "min": 0,
+          "name": "SettlementMethod",
+          "isoId": "_g38-VdcZEeqRFcf2R4bPBw",
+          "xmlTag": "SttlmMtd",
+          "type": "SettlementMethod2Code",
+          "kind": "code",
+          "min": 1,
           "max": 1
         },
         {
@@ -504,12 +504,12 @@
           "max": 1
         },
         {
-          "name": "SettlementMethod",
-          "isoId": "_g38-VdcZEeqRFcf2R4bPBw",
-          "xmlTag": "SttlmMtd",
-          "type": "SettlementMethod2Code",
-          "kind": "code",
-          "min": 1,
+          "name": "ClearingSystem",
+          "isoId": "_g38-WdcZEeqRFcf2R4bPBw",
+          "xmlTag": "ClrSys",
+          "type": "ClearingSystemIdentification3Choice",
+          "kind": "choice",
+          "min": 0,
           "max": 1
         }
       ],
@@ -583,12 +583,12 @@
       "kind": "component",
       "fields": [
         {
-          "name": "ControlSum",
-          "isoId": "_7ua3uQcYEeyTDbUIoCmuCw",
-          "xmlTag": "CtrlSum",
-          "type": "DecimalNumber",
-          "kind": "number",
-          "min": 0,
+          "name": "MessageIdentification",
+          "isoId": "_7ua3sQcYEeyTDbUIoCmuCw",
+          "xmlTag": "MsgId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
           "max": 1
         },
         {
@@ -601,21 +601,21 @@
           "max": 1
         },
         {
-          "name": "MessageIdentification",
-          "isoId": "_7ua3sQcYEeyTDbUIoCmuCw",
-          "xmlTag": "MsgId",
-          "type": "Max35Text",
-          "kind": "text",
-          "min": 1,
-          "max": 1
-        },
-        {
           "name": "NumberOfSettlementRequests",
           "isoId": "_7ua3twcYEeyTDbUIoCmuCw",
           "xmlTag": "NbOfSttlmReqs",
           "type": "Max15NumericText",
           "kind": "text",
           "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ControlSum",
+          "isoId": "_7ua3uQcYEeyTDbUIoCmuCw",
+          "xmlTag": "CtrlSum",
+          "type": "DecimalNumber",
+          "kind": "number",
+          "min": 0,
           "max": 1
         },
         {
@@ -650,6 +650,61 @@
           "isoId": "_aKUc8dp-Ed-ak6NoX_4Aeg_1584820280"
         }
       ]
+    },
+    "ISOTime": {
+      "name": "ISOTime",
+      "kind": "time",
+      "isoId": "_YYU64dp-Ed-ak6NoX_4Aeg_-1253016814"
+    },
+    "SettlementTimeRequest2": {
+      "name": "SettlementTimeRequest2",
+      "isoId": "_QIrY6dp-Ed-ak6NoX_4Aeg_2050617089",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "CLSTime",
+          "isoId": "_QIrY6tp-Ed-ak6NoX_4Aeg_2050617120",
+          "xmlTag": "CLSTm",
+          "type": "ISOTime",
+          "kind": "time",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TillTime",
+          "isoId": "_QIrY69p-Ed-ak6NoX_4Aeg_2142970270",
+          "xmlTag": "TillTm",
+          "type": "ISOTime",
+          "kind": "time",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "FromTime",
+          "isoId": "_QIrY7Np-Ed-ak6NoX_4Aeg_2123575201",
+          "xmlTag": "FrTm",
+          "type": "ISOTime",
+          "kind": "time",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "RejectTime",
+          "isoId": "_QI1J4Np-Ed-ak6NoX_4Aeg_2138351566",
+          "xmlTag": "RjctTm",
+          "type": "ISOTime",
+          "kind": "time",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "Number": {
+      "name": "Number",
+      "kind": "number",
+      "isoId": "_YXbjBtp-Ed-ak6NoX_4Aeg_1560899033",
+      "totalDigits": 18,
+      "fractionDigits": 0
     },
     "ActiveCurrencyAndAmount": {
       "name": "ActiveCurrencyAndAmount",
@@ -1568,18 +1623,29 @@
         }
       ]
     },
-    "Number": {
-      "name": "Number",
-      "kind": "number",
-      "isoId": "_YXbjBtp-Ed-ak6NoX_4Aeg_1560899033",
-      "totalDigits": 18,
-      "fractionDigits": 0
-    },
     "MovementRecord2": {
       "name": "MovementRecord2",
       "isoId": "_0BP6ATEyEe6g-ffJsqGiSA",
       "kind": "component",
       "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_0DhK4TEyEe6g-ffJsqGiSA",
+          "xmlTag": "Id",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SequenceNumber",
+          "isoId": "_0DhK4zEyEe6g-ffJsqGiSA",
+          "xmlTag": "SeqNb",
+          "type": "Number",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        },
         {
           "name": "Amount",
           "isoId": "_0DhK5TEyEe6g-ffJsqGiSA",
@@ -1590,12 +1656,21 @@
           "max": 1
         },
         {
-          "name": "Identification",
-          "isoId": "_0DhK4TEyEe6g-ffJsqGiSA",
-          "xmlTag": "Id",
-          "type": "Max35Text",
-          "kind": "text",
-          "min": 1,
+          "name": "SettlementAgent",
+          "isoId": "_0DhK5zEyEe6g-ffJsqGiSA",
+          "xmlTag": "SttlmAgt",
+          "type": "PartyIdentification272",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SettlementAgentAccount",
+          "isoId": "_0DhK6TEyEe6g-ffJsqGiSA",
+          "xmlTag": "SttlmAgtAcct",
+          "type": "CashAccount40",
+          "kind": "component",
+          "min": 0,
           "max": 1
         },
         {
@@ -1622,81 +1697,6 @@
           "xmlTag": "Ref",
           "type": "Max35Text",
           "kind": "text",
-          "min": 0,
-          "max": 1
-        },
-        {
-          "name": "SequenceNumber",
-          "isoId": "_0DhK4zEyEe6g-ffJsqGiSA",
-          "xmlTag": "SeqNb",
-          "type": "Number",
-          "kind": "number",
-          "min": 0,
-          "max": 1
-        },
-        {
-          "name": "SettlementAgent",
-          "isoId": "_0DhK5zEyEe6g-ffJsqGiSA",
-          "xmlTag": "SttlmAgt",
-          "type": "PartyIdentification272",
-          "kind": "component",
-          "min": 0,
-          "max": 1
-        },
-        {
-          "name": "SettlementAgentAccount",
-          "isoId": "_0DhK6TEyEe6g-ffJsqGiSA",
-          "xmlTag": "SttlmAgtAcct",
-          "type": "CashAccount40",
-          "kind": "component",
-          "min": 0,
-          "max": 1
-        }
-      ]
-    },
-    "ISOTime": {
-      "name": "ISOTime",
-      "kind": "time",
-      "isoId": "_YYU64dp-Ed-ak6NoX_4Aeg_-1253016814"
-    },
-    "SettlementTimeRequest2": {
-      "name": "SettlementTimeRequest2",
-      "isoId": "_QIrY6dp-Ed-ak6NoX_4Aeg_2050617089",
-      "kind": "component",
-      "fields": [
-        {
-          "name": "CLSTime",
-          "isoId": "_QIrY6tp-Ed-ak6NoX_4Aeg_2050617120",
-          "xmlTag": "CLSTm",
-          "type": "ISOTime",
-          "kind": "time",
-          "min": 0,
-          "max": 1
-        },
-        {
-          "name": "FromTime",
-          "isoId": "_QIrY7Np-Ed-ak6NoX_4Aeg_2123575201",
-          "xmlTag": "FrTm",
-          "type": "ISOTime",
-          "kind": "time",
-          "min": 0,
-          "max": 1
-        },
-        {
-          "name": "RejectTime",
-          "isoId": "_QI1J4Np-Ed-ak6NoX_4Aeg_2138351566",
-          "xmlTag": "RjctTm",
-          "type": "ISOTime",
-          "kind": "time",
-          "min": 0,
-          "max": 1
-        },
-        {
-          "name": "TillTime",
-          "isoId": "_QIrY69p-Ed-ak6NoX_4Aeg_2142970270",
-          "xmlTag": "TillTm",
-          "type": "ISOTime",
-          "kind": "time",
           "min": 0,
           "max": 1
         }
@@ -1726,29 +1726,11 @@
           "max": 1
         },
         {
-          "name": "MovementRecord",
-          "isoId": "_0BPS_TEyEe6g-ffJsqGiSA",
-          "xmlTag": "MvmntRcrd",
-          "type": "MovementRecord2",
+          "name": "SettlementTimeRequest",
+          "isoId": "_0BPS9TEyEe6g-ffJsqGiSA",
+          "xmlTag": "SttlmTmReq",
+          "type": "SettlementTimeRequest2",
           "kind": "component",
-          "min": 2,
-          "max": null
-        },
-        {
-          "name": "NumberOfMovementRecords",
-          "isoId": "_0BPS-zEyEe6g-ffJsqGiSA",
-          "xmlTag": "NbOfMvmntRcrds",
-          "type": "Number",
-          "kind": "number",
-          "min": 0,
-          "max": 1
-        },
-        {
-          "name": "SettlementCycle",
-          "isoId": "_0BPS-TEyEe6g-ffJsqGiSA",
-          "xmlTag": "SttlmCycl",
-          "type": "Max35Text",
-          "kind": "text",
           "min": 0,
           "max": 1
         },
@@ -1762,13 +1744,31 @@
           "max": 1
         },
         {
-          "name": "SettlementTimeRequest",
-          "isoId": "_0BPS9TEyEe6g-ffJsqGiSA",
-          "xmlTag": "SttlmTmReq",
-          "type": "SettlementTimeRequest2",
-          "kind": "component",
+          "name": "SettlementCycle",
+          "isoId": "_0BPS-TEyEe6g-ffJsqGiSA",
+          "xmlTag": "SttlmCycl",
+          "type": "Max35Text",
+          "kind": "text",
           "min": 0,
           "max": 1
+        },
+        {
+          "name": "NumberOfMovementRecords",
+          "isoId": "_0BPS-zEyEe6g-ffJsqGiSA",
+          "xmlTag": "NbOfMvmntRcrds",
+          "type": "Number",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "MovementRecord",
+          "isoId": "_0BPS_TEyEe6g-ffJsqGiSA",
+          "xmlTag": "MvmntRcrd",
+          "type": "MovementRecord2",
+          "kind": "component",
+          "min": 2,
+          "max": null
         }
       ]
     },

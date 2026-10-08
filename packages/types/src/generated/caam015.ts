@@ -3,9 +3,9 @@
 import type { ATMReconciliationRequestComponent1, ContentInformationType10, ContentInformationType15, Header31 } from './shared.ts';
 
 export interface ATMReconciliationRequestV01 {
-  ATMReconciliationRequest?: ATMReconciliationRequestComponent1;
   Header: Header31;
   ProtectedATMReconciliationRequest?: ContentInformationType10;
+  ATMReconciliationRequest?: ATMReconciliationRequestComponent1;
   SecurityTrailer?: ContentInformationType15;
 }
 

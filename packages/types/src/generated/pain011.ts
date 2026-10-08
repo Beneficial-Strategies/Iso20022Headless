@@ -3,22 +3,22 @@
 import type { GroupHeader110, MandateReason1Choice, OriginalMandate10Choice, OriginalMessageInformation1, PartyIdentification272, SupplementaryData1 } from './shared.ts';
 
 export interface MandateCancellationReason2 {
-  AdditionalInformation?: Array<string>;
   Originator?: PartyIdentification272;
   Reason: MandateReason1Choice;
+  AdditionalInformation?: Array<string>;
 }
 
 export interface MandateCancellation8 {
+  OriginalMessageInformation?: OriginalMessageInformation1;
   CancellationReason: MandateCancellationReason2;
   OriginalMandate: OriginalMandate10Choice;
-  OriginalMessageInformation?: OriginalMessageInformation1;
   SupplementaryData?: Array<SupplementaryData1>;
 }
 
 export interface MandateCancellationRequestV08 {
   GroupHeader: GroupHeader110;
-  SupplementaryData?: Array<SupplementaryData1>;
   UnderlyingCancellationDetails: Array<MandateCancellation8>;
+  SupplementaryData?: Array<SupplementaryData1>;
 }
 
 export type Pain011Document = MandateCancellationRequestV08;

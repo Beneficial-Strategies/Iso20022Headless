@@ -14,10 +14,10 @@ import {
   type TypeDescriptors,
 } from '../runtime.ts';
 import {
+  Max35TextSchema,
   Max140TextSchema,
   AddressType2CodeSchema,
   Exact4AlphaNumericTextSchema,
-  Max35TextSchema,
   GenericIdentification30Schema,
   AddressType3ChoiceSchema,
   Max70TextSchema,
@@ -60,12 +60,13 @@ import {
   Party50ChoiceSchema,
   ISODateTimeSchema,
   CaseAssignment6Schema,
-  Max105TextSchema,
-  DecimalNumberSchema,
-  Max15NumericTextSchema,
   YesNoIndicatorSchema,
   Case6Schema,
+  Max15NumericTextSchema,
+  DecimalNumberSchema,
+  Max105TextSchema,
   OriginalGroupInformation33Schema,
+  UUIDv4IdentifierSchema,
   ActiveOrHistoricCurrencyAndAmountSchema,
   DateAndDateTime2ChoiceSchema,
   ActiveOrHistoricCurrencyCodeSchema,
@@ -162,7 +163,6 @@ import {
   ExternalPurpose1CodeSchema,
   Purpose2ChoiceSchema,
   OriginalTransactionReference47Schema,
-  UUIDv4IdentifierSchema,
   ExternalChargeType1CodeSchema,
   GenericIdentification3Schema,
   ChargeType3ChoiceSchema,
@@ -171,136 +171,6 @@ import {
   SupplementaryData1Schema,
   sharedTypeDescriptors,
 } from './shared.ts';
-
-export const ExternalPaymentCancellationRejection1CodeSchema = textType({min: 1, max: 4});
-
-export const CancellationStatusReason3ChoiceSchema = choiceOf({
-  Code: ExternalPaymentCancellationRejection1CodeSchema,
-  Proprietary: Max35TextSchema,
-});
-
-export const CancellationStatusReason5Schema = z.strictObject({
-  AdditionalInformation: z.array(Max105TextSchema).optional(),
-  Originator: PartyIdentification272Schema.optional(),
-  Reason: CancellationStatusReason3ChoiceSchema.optional(),
-});
-
-export const GroupCancellationStatus1CodeSchema = z.enum(["ACCR", "PACR", "PDCR", "RJCR"]);
-
-export const TransactionIndividualStatus1CodeSchema = z.enum(["ACCP", "ACCR", "ACSC", "ACSP", "ACTC", "ACWC", "PDNG", "RJCT"]);
-
-export const NumberOfTransactionsPerStatus1Schema = z.strictObject({
-  DetailedControlSum: DecimalNumberSchema.optional(),
-  DetailedNumberOfTransactions: Max15NumericTextSchema,
-  DetailedStatus: TransactionIndividualStatus1CodeSchema,
-});
-
-export const OriginalGroupHeader23Schema = z.strictObject({
-  CancellationStatusReasonInformation: z.array(CancellationStatusReason5Schema).optional(),
-  GroupCancellationStatus: GroupCancellationStatus1CodeSchema.optional(),
-  NumberOfTransactionsPerCancellationStatus: z.array(NumberOfTransactionsPerStatus1Schema).optional(),
-  OriginalControlSum: DecimalNumberSchema.optional(),
-  OriginalCreationDateTime: ISODateTimeSchema.optional(),
-  OriginalGroupCancellationIdentification: Max35TextSchema.optional(),
-  OriginalMessageIdentification: Max35TextSchema,
-  OriginalMessageNameIdentification: Max35TextSchema,
-  OriginalNumberOfTransactions: Max15NumericTextSchema.optional(),
-  ResolvedCase: Case6Schema.optional(),
-});
-
-export const CancellationIndividualStatus1CodeSchema = z.enum(["ACCR", "PDCR", "RJCR"]);
-
-export const NumberOfCancellationsPerStatus1Schema = z.strictObject({
-  DetailedControlSum: DecimalNumberSchema.optional(),
-  DetailedNumberOfTransactions: Max15NumericTextSchema,
-  DetailedStatus: CancellationIndividualStatus1CodeSchema,
-});
-
-export const PaymentTransaction175Schema = z.strictObject({
-  CancellationStatusIdentification: Max35TextSchema.optional(),
-  CancellationStatusReasonInformation: z.array(CancellationStatusReason5Schema).optional(),
-  OriginalEndToEndIdentification: Max35TextSchema.optional(),
-  OriginalInstructedAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
-  OriginalInstructionIdentification: Max35TextSchema.optional(),
-  OriginalRequestedCollectionDate: ISODateSchema.optional(),
-  OriginalRequestedExecutionDate: DateAndDateTime2ChoiceSchema.optional(),
-  OriginalTransactionReference: OriginalTransactionReference47Schema.optional(),
-  ResolvedCase: Case6Schema.optional(),
-  TransactionCancellationStatus: CancellationIndividualStatus1CodeSchema.optional(),
-  UETR: UUIDv4IdentifierSchema.optional(),
-});
-
-export const OriginalPaymentInstruction54Schema = z.strictObject({
-  CancellationStatusReasonInformation: z.array(CancellationStatusReason5Schema).optional(),
-  NumberOfTransactionsPerCancellationStatus: z.array(NumberOfCancellationsPerStatus1Schema).optional(),
-  OriginalControlSum: DecimalNumberSchema.optional(),
-  OriginalGroupInformation: OriginalGroupInformation33Schema.optional(),
-  OriginalNumberOfTransactions: Max15NumericTextSchema.optional(),
-  OriginalPaymentInformationCancellationIdentification: Max35TextSchema.optional(),
-  OriginalPaymentInformationIdentification: Max35TextSchema,
-  PaymentInformationCancellationStatus: GroupCancellationStatus1CodeSchema.optional(),
-  ResolvedCase: Case6Schema.optional(),
-  TransactionInformationAndStatus: z.array(PaymentTransaction175Schema).optional(),
-});
-
-export const Charges14Schema = z.strictObject({
-  Agent: BranchAndFinancialInstitutionIdentification8Schema,
-  AgentAccount: CashAccount40Schema.optional(),
-  Amount: ActiveOrHistoricCurrencyAndAmountSchema,
-  Type: ChargeType3ChoiceSchema.optional(),
-});
-
-export const ExternalPaymentCompensationReason1CodeSchema = textType({min: 1, max: 4});
-
-export const CompensationReason1ChoiceSchema = choiceOf({
-  Code: ExternalPaymentCompensationReason1CodeSchema,
-  Proprietary: Max35TextSchema,
-});
-
-export const Compensation5Schema = z.strictObject({
-  Amount: ActiveCurrencyAndAmountSchema,
-  CreditorAgent: BranchAndFinancialInstitutionIdentification8Schema,
-  CreditorAgentAccount: CashAccount40Schema.optional(),
-  DebtorAgent: BranchAndFinancialInstitutionIdentification8Schema,
-  DebtorAgentAccount: CashAccount40Schema.optional(),
-  Reason: CompensationReason1ChoiceSchema,
-});
-
-export const ResolutionData5Schema = z.strictObject({
-  ChargesInformation: z.array(Charges14Schema).optional(),
-  ClearingChannel: ClearingChannel2CodeSchema.optional(),
-  Compensation: Compensation5Schema.optional(),
-  EndToEndIdentification: Max35TextSchema.optional(),
-  InterbankSettlementAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
-  InterbankSettlementDate: ISODateSchema.optional(),
-  TransactionIdentification: Max35TextSchema.optional(),
-  UETR: UUIDv4IdentifierSchema.optional(),
-});
-
-export const PaymentTransaction170Schema = z.strictObject({
-  Assignee: Party50ChoiceSchema.optional(),
-  Assigner: Party50ChoiceSchema.optional(),
-  CancellationStatusIdentification: Max35TextSchema.optional(),
-  CancellationStatusReasonInformation: z.array(CancellationStatusReason5Schema).optional(),
-  OriginalClearingSystemReference: Max35TextSchema.optional(),
-  OriginalEndToEndIdentification: Max35TextSchema.optional(),
-  OriginalGroupInformation: OriginalGroupInformation33Schema.optional(),
-  OriginalInstructionIdentification: Max35TextSchema.optional(),
-  OriginalInterbankSettlementAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
-  OriginalInterbankSettlementDate: ISODateSchema.optional(),
-  OriginalTransactionIdentification: Max35TextSchema.optional(),
-  OriginalTransactionReference: OriginalTransactionReference47Schema.optional(),
-  OriginalUETR: UUIDv4IdentifierSchema.optional(),
-  ResolutionRelatedInformation: ResolutionData5Schema.optional(),
-  ResolvedCase: Case6Schema.optional(),
-  TransactionCancellationStatus: CancellationIndividualStatus1CodeSchema.optional(),
-});
-
-export const UnderlyingTransaction35Schema = z.strictObject({
-  OriginalGroupInformationAndStatus: OriginalGroupHeader23Schema.optional(),
-  OriginalPaymentInformationAndStatus: z.array(OriginalPaymentInstruction54Schema).optional(),
-  TransactionInformationAndStatus: z.array(PaymentTransaction170Schema).optional(),
-});
 
 export const ExternalInvestigationExecutionConfirmation1CodeSchema = textType({min: 1, max: 4});
 
@@ -312,244 +182,154 @@ export const ModificationStatusReason1ChoiceSchema = choiceOf({
 });
 
 export const InvestigationStatus6ChoiceSchema = choiceOf({
-  AssignmentCancellationConfirmation: YesNoIndicatorSchema,
   Confirmation: ExternalInvestigationExecutionConfirmation1CodeSchema,
-  DuplicateOf: Case6Schema,
   RejectedModification: ModificationStatusReason1ChoiceSchema,
+  DuplicateOf: Case6Schema,
+  AssignmentCancellationConfirmation: YesNoIndicatorSchema,
+});
+
+export const GroupCancellationStatus1CodeSchema = z.enum(["ACCR", "PACR", "PDCR", "RJCR"]);
+
+export const ExternalPaymentCancellationRejection1CodeSchema = textType({min: 1, max: 4});
+
+export const CancellationStatusReason3ChoiceSchema = choiceOf({
+  Code: ExternalPaymentCancellationRejection1CodeSchema,
+  Proprietary: Max35TextSchema,
+});
+
+export const CancellationStatusReason5Schema = z.strictObject({
+  Originator: PartyIdentification272Schema.optional(),
+  Reason: CancellationStatusReason3ChoiceSchema.optional(),
+  AdditionalInformation: z.array(Max105TextSchema).optional(),
+});
+
+export const TransactionIndividualStatus1CodeSchema = z.enum(["ACCP", "ACCR", "ACSC", "ACSP", "ACTC", "ACWC", "PDNG", "RJCT"]);
+
+export const NumberOfTransactionsPerStatus1Schema = z.strictObject({
+  DetailedNumberOfTransactions: Max15NumericTextSchema,
+  DetailedStatus: TransactionIndividualStatus1CodeSchema,
+  DetailedControlSum: DecimalNumberSchema.optional(),
+});
+
+export const OriginalGroupHeader23Schema = z.strictObject({
+  OriginalGroupCancellationIdentification: Max35TextSchema.optional(),
+  ResolvedCase: Case6Schema.optional(),
+  OriginalMessageIdentification: Max35TextSchema,
+  OriginalMessageNameIdentification: Max35TextSchema,
+  OriginalCreationDateTime: ISODateTimeSchema.optional(),
+  OriginalNumberOfTransactions: Max15NumericTextSchema.optional(),
+  OriginalControlSum: DecimalNumberSchema.optional(),
+  GroupCancellationStatus: GroupCancellationStatus1CodeSchema.optional(),
+  CancellationStatusReasonInformation: z.array(CancellationStatusReason5Schema).optional(),
+  NumberOfTransactionsPerCancellationStatus: z.array(NumberOfTransactionsPerStatus1Schema).optional(),
+});
+
+export const CancellationIndividualStatus1CodeSchema = z.enum(["ACCR", "PDCR", "RJCR"]);
+
+export const NumberOfCancellationsPerStatus1Schema = z.strictObject({
+  DetailedNumberOfTransactions: Max15NumericTextSchema,
+  DetailedStatus: CancellationIndividualStatus1CodeSchema,
+  DetailedControlSum: DecimalNumberSchema.optional(),
+});
+
+export const PaymentTransaction175Schema = z.strictObject({
+  CancellationStatusIdentification: Max35TextSchema.optional(),
+  ResolvedCase: Case6Schema.optional(),
+  OriginalInstructionIdentification: Max35TextSchema.optional(),
+  OriginalEndToEndIdentification: Max35TextSchema.optional(),
+  UETR: UUIDv4IdentifierSchema.optional(),
+  TransactionCancellationStatus: CancellationIndividualStatus1CodeSchema.optional(),
+  CancellationStatusReasonInformation: z.array(CancellationStatusReason5Schema).optional(),
+  OriginalInstructedAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
+  OriginalRequestedExecutionDate: DateAndDateTime2ChoiceSchema.optional(),
+  OriginalRequestedCollectionDate: ISODateSchema.optional(),
+  OriginalTransactionReference: OriginalTransactionReference47Schema.optional(),
+});
+
+export const OriginalPaymentInstruction54Schema = z.strictObject({
+  OriginalPaymentInformationCancellationIdentification: Max35TextSchema.optional(),
+  ResolvedCase: Case6Schema.optional(),
+  OriginalPaymentInformationIdentification: Max35TextSchema,
+  OriginalGroupInformation: OriginalGroupInformation33Schema.optional(),
+  OriginalNumberOfTransactions: Max15NumericTextSchema.optional(),
+  OriginalControlSum: DecimalNumberSchema.optional(),
+  PaymentInformationCancellationStatus: GroupCancellationStatus1CodeSchema.optional(),
+  CancellationStatusReasonInformation: z.array(CancellationStatusReason5Schema).optional(),
+  NumberOfTransactionsPerCancellationStatus: z.array(NumberOfCancellationsPerStatus1Schema).optional(),
+  TransactionInformationAndStatus: z.array(PaymentTransaction175Schema).optional(),
+});
+
+export const ExternalPaymentCompensationReason1CodeSchema = textType({min: 1, max: 4});
+
+export const CompensationReason1ChoiceSchema = choiceOf({
+  Code: ExternalPaymentCompensationReason1CodeSchema,
+  Proprietary: Max35TextSchema,
+});
+
+export const Compensation5Schema = z.strictObject({
+  Amount: ActiveCurrencyAndAmountSchema,
+  DebtorAgent: BranchAndFinancialInstitutionIdentification8Schema,
+  DebtorAgentAccount: CashAccount40Schema.optional(),
+  CreditorAgent: BranchAndFinancialInstitutionIdentification8Schema,
+  CreditorAgentAccount: CashAccount40Schema.optional(),
+  Reason: CompensationReason1ChoiceSchema,
+});
+
+export const Charges14Schema = z.strictObject({
+  Amount: ActiveOrHistoricCurrencyAndAmountSchema,
+  Agent: BranchAndFinancialInstitutionIdentification8Schema,
+  AgentAccount: CashAccount40Schema.optional(),
+  Type: ChargeType3ChoiceSchema.optional(),
+});
+
+export const ResolutionData5Schema = z.strictObject({
+  EndToEndIdentification: Max35TextSchema.optional(),
+  TransactionIdentification: Max35TextSchema.optional(),
+  UETR: UUIDv4IdentifierSchema.optional(),
+  InterbankSettlementAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
+  InterbankSettlementDate: ISODateSchema.optional(),
+  ClearingChannel: ClearingChannel2CodeSchema.optional(),
+  Compensation: Compensation5Schema.optional(),
+  ChargesInformation: z.array(Charges14Schema).optional(),
+});
+
+export const PaymentTransaction170Schema = z.strictObject({
+  CancellationStatusIdentification: Max35TextSchema.optional(),
+  ResolvedCase: Case6Schema.optional(),
+  OriginalGroupInformation: OriginalGroupInformation33Schema.optional(),
+  OriginalInstructionIdentification: Max35TextSchema.optional(),
+  OriginalEndToEndIdentification: Max35TextSchema.optional(),
+  OriginalTransactionIdentification: Max35TextSchema.optional(),
+  OriginalClearingSystemReference: Max35TextSchema.optional(),
+  OriginalUETR: UUIDv4IdentifierSchema.optional(),
+  TransactionCancellationStatus: CancellationIndividualStatus1CodeSchema.optional(),
+  CancellationStatusReasonInformation: z.array(CancellationStatusReason5Schema).optional(),
+  ResolutionRelatedInformation: ResolutionData5Schema.optional(),
+  OriginalInterbankSettlementAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
+  OriginalInterbankSettlementDate: ISODateSchema.optional(),
+  Assigner: Party50ChoiceSchema.optional(),
+  Assignee: Party50ChoiceSchema.optional(),
+  OriginalTransactionReference: OriginalTransactionReference47Schema.optional(),
+});
+
+export const UnderlyingTransaction35Schema = z.strictObject({
+  OriginalGroupInformationAndStatus: OriginalGroupHeader23Schema.optional(),
+  OriginalPaymentInformationAndStatus: z.array(OriginalPaymentInstruction54Schema).optional(),
+  TransactionInformationAndStatus: z.array(PaymentTransaction170Schema).optional(),
 });
 
 export const ResolutionOfInvestigationV14Schema = z.strictObject({
   Assignment: CaseAssignment6Schema,
-  CancellationDetails: z.array(UnderlyingTransaction35Schema).optional(),
-  ResolutionRelatedInformation: ResolutionData5Schema.optional(),
   ResolvedCase: Case6Schema.optional(),
   Status: InvestigationStatus6ChoiceSchema,
+  CancellationDetails: z.array(UnderlyingTransaction35Schema).optional(),
+  ResolutionRelatedInformation: ResolutionData5Schema.optional(),
   SupplementaryData: z.array(SupplementaryData1Schema).optional(),
 });
 
 const f = (d: FieldDescriptor): FieldDescriptor => d;
 
 const ownTypeDescriptors: TypeDescriptors = {
-  "ExternalPaymentCancellationRejection1Code": {
-    name: "ExternalPaymentCancellationRejection1Code",
-    isoId: "_-LDBoIlyEeePr-EGJjGYzQ",
-    kind: "code",
-    minLength: 1,
-    maxLength: 4,
-    external: true,
-  },
-  "CancellationStatusReason3Choice": {
-    name: "CancellationStatusReason3Choice",
-    isoId: "_skGdSYlrEeePr-EGJjGYzQ",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_sx1XQ4lrEeePr-EGJjGYzQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalPaymentCancellationRejection1Code", required: true }),
-      f({ name: "Proprietary", isoId: "_sx1XRYlrEeePr-EGJjGYzQ", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
-    ],
-  },
-  "CancellationStatusReason5": {
-    name: "CancellationStatusReason5",
-    isoId: "_zn6M8TEyEe6g-ffJsqGiSA",
-    kind: "component",
-    fields: [
-      f({ name: "AdditionalInformation", isoId: "_zqauZTEyEe6g-ffJsqGiSA", xmlTag: "AddtlInf", displayName: displayName("AdditionalInformation"), kind: "text", type: "Max105Text", required: false, repeat: { min: 0, max: null } }),
-      f({ name: "Originator", isoId: "_zqauYTEyEe6g-ffJsqGiSA", xmlTag: "Orgtr", displayName: displayName("Originator"), kind: "component", type: "PartyIdentification272", required: false }),
-      f({ name: "Reason", isoId: "_zqauYzEyEe6g-ffJsqGiSA", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "choice", type: "CancellationStatusReason3Choice", required: false }),
-    ],
-  },
-  "GroupCancellationStatus1Code": {
-    name: "GroupCancellationStatus1Code",
-    isoId: "_auruQ9p-Ed-ak6NoX_4Aeg_-1224774658",
-    kind: "code",
-    options: [{ value: "ACCR", name: "AcceptedCancellationRequest", isoId: "_auruRtp-Ed-ak6NoX_4Aeg_-305868752" }, { value: "PACR", name: "PartiallyAcceptedCancellationRequest", isoId: "_auruRNp-Ed-ak6NoX_4Aeg_-305868783" }, { value: "PDCR", name: "PendingCancellationRequest", isoId: "_auruR9p-Ed-ak6NoX_4Aeg_-91612397" }, { value: "RJCR", name: "RejectedCancellationRequest", isoId: "_auruRdp-Ed-ak6NoX_4Aeg_-305868753" }],
-  },
-  "TransactionIndividualStatus1Code": {
-    name: "TransactionIndividualStatus1Code",
-    isoId: "_Yrsi2Np-Ed-ak6NoX_4Aeg_-1851702308",
-    kind: "code",
-    options: [{ value: "ACCP", name: "AcceptedCustomerProfile", isoId: "_Yr2T0tp-Ed-ak6NoX_4Aeg_-1851701953" }, { value: "ACCR", name: "AcceptedCancellationRequest", isoId: "_Yr2T1dp-Ed-ak6NoX_4Aeg_-1478599372" }, { value: "ACSC", name: "AcceptedSettlementCompleted", isoId: "_Yr2T1Np-Ed-ak6NoX_4Aeg_-1851701918" }, { value: "ACSP", name: "AcceptedSettlementInProcess", isoId: "_Yr2T09p-Ed-ak6NoX_4Aeg_-1851701936" }, { value: "ACTC", name: "AcceptedTechnicalValidation", isoId: "_Yrsi2dp-Ed-ak6NoX_4Aeg_-1851702290" }, { value: "ACWC", name: "AcceptedWithChange", isoId: "_Yr2T1tp-Ed-ak6NoX_4Aeg_-1456435332" }, { value: "PDNG", name: "Pending", isoId: "_Yr2T0dp-Ed-ak6NoX_4Aeg_-1851701978" }, { value: "RJCT", name: "Rejected", isoId: "_Yr2T0Np-Ed-ak6NoX_4Aeg_-1851702013" }],
-  },
-  "NumberOfTransactionsPerStatus1": {
-    name: "NumberOfTransactionsPerStatus1",
-    isoId: "_RFBsa9p-Ed-ak6NoX_4Aeg_187558079",
-    kind: "component",
-    fields: [
-      f({ name: "DetailedControlSum", isoId: "_RFLdYNp-Ed-ak6NoX_4Aeg_-1896383471", xmlTag: "DtldCtrlSum", displayName: displayName("DetailedControlSum"), kind: "number", type: "DecimalNumber", required: false }),
-      f({ name: "DetailedNumberOfTransactions", isoId: "_RFBsbNp-Ed-ak6NoX_4Aeg_1091683583", xmlTag: "DtldNbOfTxs", displayName: displayName("DetailedNumberOfTransactions"), kind: "text", type: "Max15NumericText", required: true }),
-      f({ name: "DetailedStatus", isoId: "_RFBsbdp-Ed-ak6NoX_4Aeg_1140631688", xmlTag: "DtldSts", displayName: displayName("DetailedStatus"), kind: "code", type: "TransactionIndividualStatus1Code", required: true }),
-    ],
-  },
-  "OriginalGroupHeader23": {
-    name: "OriginalGroupHeader23",
-    isoId: "_73Gb8TEyEe6g-ffJsqGiSA",
-    kind: "component",
-    fields: [
-      f({ name: "CancellationStatusReasonInformation", isoId: "_75XF1TEyEe6g-ffJsqGiSA", xmlTag: "CxlStsRsnInf", displayName: displayName("CancellationStatusReasonInformation"), kind: "component", type: "CancellationStatusReason5", required: false, repeat: { min: 0, max: null } }),
-      f({ name: "GroupCancellationStatus", isoId: "_75XF0zEyEe6g-ffJsqGiSA", xmlTag: "GrpCxlSts", displayName: displayName("GroupCancellationStatus"), kind: "code", type: "GroupCancellationStatus1Code", required: false }),
-      f({ name: "NumberOfTransactionsPerCancellationStatus", isoId: "_75XF1zEyEe6g-ffJsqGiSA", xmlTag: "NbOfTxsPerCxlSts", displayName: displayName("NumberOfTransactionsPerCancellationStatus"), kind: "component", type: "NumberOfTransactionsPerStatus1", required: false, repeat: { min: 0, max: null } }),
-      f({ name: "OriginalControlSum", isoId: "_75XF0TEyEe6g-ffJsqGiSA", xmlTag: "OrgnlCtrlSum", displayName: displayName("OriginalControlSum"), kind: "number", type: "DecimalNumber", required: false }),
-      f({ name: "OriginalCreationDateTime", isoId: "_75XFzTEyEe6g-ffJsqGiSA", xmlTag: "OrgnlCreDtTm", displayName: displayName("OriginalCreationDateTime"), kind: "datetime", type: "ISODateTime", required: false }),
-      f({ name: "OriginalGroupCancellationIdentification", isoId: "_75XFxTEyEe6g-ffJsqGiSA", xmlTag: "OrgnlGrpCxlId", displayName: displayName("OriginalGroupCancellationIdentification"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "OriginalMessageIdentification", isoId: "_75XFyTEyEe6g-ffJsqGiSA", xmlTag: "OrgnlMsgId", displayName: displayName("OriginalMessageIdentification"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "OriginalMessageNameIdentification", isoId: "_75XFyzEyEe6g-ffJsqGiSA", xmlTag: "OrgnlMsgNmId", displayName: displayName("OriginalMessageNameIdentification"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "OriginalNumberOfTransactions", isoId: "_75XFzzEyEe6g-ffJsqGiSA", xmlTag: "OrgnlNbOfTxs", displayName: displayName("OriginalNumberOfTransactions"), kind: "text", type: "Max15NumericText", required: false }),
-      f({ name: "ResolvedCase", isoId: "_75XFxzEyEe6g-ffJsqGiSA", xmlTag: "RslvdCase", displayName: displayName("ResolvedCase"), kind: "component", type: "Case6", required: false }),
-    ],
-    rules: [
-      { name: "CancellationStatusReasonInformationRule", isoId: "_75XFwTEyEe6g-ffJsqGiSA", text: "If GroupCancellationStatus is present and is different from RejectedCancellationRequest (RJCR) or PendingCancellationRequest (PDCR), then CancellationStatusReasonInformation/AdditionalInformation is not allowed.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"EqualToValue","path":"/GroupCancellationStatus","value":"PendingCancellationRequest"},{"op":"EqualToValue","path":"/GroupCancellationStatus","value":"RejectedCancellationRequest"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/CancellationStatusReasonInformation[1]"},{"op":"Presence","path":"/CancellationStatusReasonInformation[*]/AdditionalInformation[*]"},{"op":"Presence","path":"/GroupCancellationStatus"}]}} },
-      { name: "NumberOfTransactionsPerCancellationStatusGuideline", isoId: "_75XFwzEyEe6g-ffJsqGiSA", text: "OriginalGroupInformationAndStatus/NumberOfTransactionsPerStatus should only be present if GroupCancellationStatus equals PACR." },
-    ],
-  },
-  "CancellationIndividualStatus1Code": {
-    name: "CancellationIndividualStatus1Code",
-    isoId: "_bXW31tp-Ed-ak6NoX_4Aeg_349830100",
-    kind: "code",
-    options: [{ value: "ACCR", name: "AcceptedCancellationRequest", isoId: "_bXgo0Np-Ed-ak6NoX_4Aeg_349830162" }, { value: "PDCR", name: "PendingCancellationRequest", isoId: "_bXgo0dp-Ed-ak6NoX_4Aeg_349830163" }, { value: "RJCR", name: "RejectedCancellationRequest", isoId: "_bXW319p-Ed-ak6NoX_4Aeg_349830132" }],
-  },
-  "NumberOfCancellationsPerStatus1": {
-    name: "NumberOfCancellationsPerStatus1",
-    isoId: "_Rquaddp-Ed-ak6NoX_4Aeg_847606645",
-    kind: "component",
-    fields: [
-      f({ name: "DetailedControlSum", isoId: "_RquaeNp-Ed-ak6NoX_4Aeg_847606954", xmlTag: "DtldCtrlSum", displayName: displayName("DetailedControlSum"), kind: "number", type: "DecimalNumber", required: false }),
-      f({ name: "DetailedNumberOfTransactions", isoId: "_Rquadtp-Ed-ak6NoX_4Aeg_847606677", xmlTag: "DtldNbOfTxs", displayName: displayName("DetailedNumberOfTransactions"), kind: "text", type: "Max15NumericText", required: true }),
-      f({ name: "DetailedStatus", isoId: "_Rquad9p-Ed-ak6NoX_4Aeg_847606923", xmlTag: "DtldSts", displayName: displayName("DetailedStatus"), kind: "code", type: "CancellationIndividualStatus1Code", required: true }),
-    ],
-  },
-  "PaymentTransaction175": {
-    name: "PaymentTransaction175",
-    isoId: "f28abd97-87f7-4ba6-9319-f413bbaf2ab9",
-    kind: "component",
-    fields: [
-      f({ name: "CancellationStatusIdentification", isoId: "36d16ae9-745e-451c-9874-fdf39d996a6c", xmlTag: "CxlStsId", displayName: displayName("CancellationStatusIdentification"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "CancellationStatusReasonInformation", isoId: "3adcb492-7bd2-4700-9892-09545cac5fee", xmlTag: "CxlStsRsnInf", displayName: displayName("CancellationStatusReasonInformation"), kind: "component", type: "CancellationStatusReason5", required: false, repeat: { min: 0, max: null } }),
-      f({ name: "OriginalEndToEndIdentification", isoId: "9dc2493b-b147-4676-b077-d1d305be02ca", xmlTag: "OrgnlEndToEndId", displayName: displayName("OriginalEndToEndIdentification"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "OriginalInstructedAmount", isoId: "4c6f16e2-bc63-4168-bf61-c3945c8baed9", xmlTag: "OrgnlInstdAmt", displayName: displayName("OriginalInstructedAmount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: false }),
-      f({ name: "OriginalInstructionIdentification", isoId: "f2493cbc-a2f7-40b9-b175-e196e8c08309", xmlTag: "OrgnlInstrId", displayName: displayName("OriginalInstructionIdentification"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "OriginalRequestedCollectionDate", isoId: "83e9c75d-f7a6-481c-8227-01a7e51eed22", xmlTag: "OrgnlReqdColltnDt", displayName: displayName("OriginalRequestedCollectionDate"), kind: "date", type: "ISODate", required: false }),
-      f({ name: "OriginalRequestedExecutionDate", isoId: "fe90abdc-bd9b-473d-a515-0a03aee55f76", xmlTag: "OrgnlReqdExctnDt", displayName: displayName("OriginalRequestedExecutionDate"), kind: "choice", type: "DateAndDateTime2Choice", required: false }),
-      f({ name: "OriginalTransactionReference", isoId: "cf231583-c183-4a6d-ad05-207a7de8c62b", xmlTag: "OrgnlTxRef", displayName: displayName("OriginalTransactionReference"), kind: "component", type: "OriginalTransactionReference47", required: false }),
-      f({ name: "ResolvedCase", isoId: "72faace8-bf63-4cf6-9754-add85442334a", xmlTag: "RslvdCase", displayName: displayName("ResolvedCase"), kind: "component", type: "Case6", required: false }),
-      f({ name: "TransactionCancellationStatus", isoId: "1cc55122-0331-41e3-9ddd-f28b78037676", xmlTag: "TxCxlSts", displayName: displayName("TransactionCancellationStatus"), kind: "code", type: "CancellationIndividualStatus1Code", required: false }),
-      f({ name: "UETR", isoId: "7e8d314c-ff80-497e-93a3-d8074bfb75a2", xmlTag: "UETR", displayName: displayName("UETR"), kind: "text", type: "UUIDv4Identifier", required: false }),
-    ],
-  },
-  "OriginalPaymentInstruction54": {
-    name: "OriginalPaymentInstruction54",
-    isoId: "aeb8d0a2-b685-444d-8a96-7df0af319a94",
-    kind: "component",
-    fields: [
-      f({ name: "CancellationStatusReasonInformation", isoId: "bcf86d54-9c6f-4d19-937f-e8e2186d0680", xmlTag: "CxlStsRsnInf", displayName: displayName("CancellationStatusReasonInformation"), kind: "component", type: "CancellationStatusReason5", required: false, repeat: { min: 0, max: null } }),
-      f({ name: "NumberOfTransactionsPerCancellationStatus", isoId: "f73b5403-6214-4452-903e-798a873caa5f", xmlTag: "NbOfTxsPerCxlSts", displayName: displayName("NumberOfTransactionsPerCancellationStatus"), kind: "component", type: "NumberOfCancellationsPerStatus1", required: false, repeat: { min: 0, max: null } }),
-      f({ name: "OriginalControlSum", isoId: "85c2e206-5a00-4ecf-af6d-c6602fdd4152", xmlTag: "OrgnlCtrlSum", displayName: displayName("OriginalControlSum"), kind: "number", type: "DecimalNumber", required: false }),
-      f({ name: "OriginalGroupInformation", isoId: "c0d2297e-5469-49fd-9f10-04ef9fce2297", xmlTag: "OrgnlGrpInf", displayName: displayName("OriginalGroupInformation"), kind: "component", type: "OriginalGroupInformation33", required: false }),
-      f({ name: "OriginalNumberOfTransactions", isoId: "5a4011b4-f0e4-471b-9854-91c2bb68c6db", xmlTag: "OrgnlNbOfTxs", displayName: displayName("OriginalNumberOfTransactions"), kind: "text", type: "Max15NumericText", required: false }),
-      f({ name: "OriginalPaymentInformationCancellationIdentification", isoId: "fa857e2d-2534-4dd9-aedb-e7b89532d547", xmlTag: "OrgnlPmtInfCxlId", displayName: displayName("OriginalPaymentInformationCancellationIdentification"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "OriginalPaymentInformationIdentification", isoId: "811d115c-8d3a-493c-9839-dca205dac843", xmlTag: "OrgnlPmtInfId", displayName: displayName("OriginalPaymentInformationIdentification"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "PaymentInformationCancellationStatus", isoId: "a4db0d80-5c4e-41d4-b29b-eaa8261aab8b", xmlTag: "PmtInfCxlSts", displayName: displayName("PaymentInformationCancellationStatus"), kind: "code", type: "GroupCancellationStatus1Code", required: false }),
-      f({ name: "ResolvedCase", isoId: "23d9d878-d18c-4b52-ac5a-9666175ec106", xmlTag: "RslvdCase", displayName: displayName("ResolvedCase"), kind: "component", type: "Case6", required: false }),
-      f({ name: "TransactionInformationAndStatus", isoId: "6f3b0b5a-d29b-46b0-aa8c-e92cbfef29ae", xmlTag: "TxInfAndSts", displayName: displayName("TransactionInformationAndStatus"), kind: "component", type: "PaymentTransaction175", required: false, repeat: { min: 0, max: null } }),
-    ],
-    rules: [
-      { name: "CancellationStatusReasonInformationRule", isoId: "18db279a-fd94-499f-9107-797fc6950155", text: "If PaymentInformationCancellationStatus is present and is different from RJCR (RejectedCancellationRequest) or PNCR (PendingCancellationRequest), then CancellationStatusReasonInformation/AdditionalInformation is not allowed.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"EqualToValue","path":"/PaymentInformationCancellationStatus","value":"PendingCancellationRequest"},{"op":"EqualToValue","path":"/PaymentInformationCancellationStatus","value":"RejectedCancellationRequest"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/CancellationStatusReasonInformation[1]"},{"op":"Presence","path":"/CancellationStatusReasonInformation[*]/AdditionalInformation[*]"},{"op":"Presence","path":"/PaymentInformationCancellationStatus"}]}} },
-      { name: "NumberOfTransactionsPerCancellationStatusGuideline", isoId: "e65970cf-2e46-46f4-bdc0-7924b7d237c1", text: "OriginalGroupInformationAndStatus/NumberOfTransactionsPerStatus should only be present if GroupCancellationStatus equals PACR (PartialCancellationRequest)." },
-      { name: "PaymentInformationOrTransactionResolvedCaseRule", isoId: "f5341290-88ab-471e-9154-0b729b047a45", text: "ResolvedCase may be present at either ResolvedCase, OriginalGroupInformationAndStatus level, OriginalPaymentInformationAndStatus or TransactionInformationAndStatus level.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/TransactionInformationAndStatus[*]/ResolvedCase"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/ResolvedCase"},{"op":"Presence","path":"/TransactionInformationAndStatus[1]"}]}} },
-    ],
-  },
-  "Charges14": {
-    name: "Charges14",
-    isoId: "_xNGXbTEyEe6g-ffJsqGiSA",
-    kind: "component",
-    fields: [
-      f({ name: "Agent", isoId: "_xPUk8zEyEe6g-ffJsqGiSA", xmlTag: "Agt", displayName: displayName("Agent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: true }),
-      f({ name: "AgentAccount", isoId: "_xPUk9TEyEe6g-ffJsqGiSA", xmlTag: "AgtAcct", displayName: displayName("AgentAccount"), kind: "component", type: "CashAccount40", required: false }),
-      f({ name: "Amount", isoId: "_xPUk8TEyEe6g-ffJsqGiSA", xmlTag: "Amt", displayName: displayName("Amount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: true }),
-      f({ name: "Type", isoId: "_xPUk9zEyEe6g-ffJsqGiSA", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "ChargeType3Choice", required: false }),
-    ],
-  },
-  "ExternalPaymentCompensationReason1Code": {
-    name: "ExternalPaymentCompensationReason1Code",
-    isoId: "_CHK8YIjYEeeDW7_wB-eK_g",
-    kind: "code",
-    minLength: 1,
-    maxLength: 4,
-    external: true,
-  },
-  "CompensationReason1Choice": {
-    name: "CompensationReason1Choice",
-    isoId: "_UyHYkIjYEeeDW7_wB-eK_g",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_a-QKsIjYEeeDW7_wB-eK_g", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalPaymentCompensationReason1Code", required: true }),
-      f({ name: "Proprietary", isoId: "_d3NU0IjYEeeDW7_wB-eK_g", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
-    ],
-  },
-  "Compensation5": {
-    name: "Compensation5",
-    isoId: "_xK4w6zEyEe6g-ffJsqGiSA",
-    kind: "component",
-    fields: [
-      f({ name: "Amount", isoId: "_xNGXYTEyEe6g-ffJsqGiSA", xmlTag: "Amt", displayName: displayName("Amount"), kind: "amount", type: "ActiveCurrencyAndAmount", required: true }),
-      f({ name: "CreditorAgent", isoId: "_xNGXZzEyEe6g-ffJsqGiSA", xmlTag: "CdtrAgt", displayName: displayName("CreditorAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: true }),
-      f({ name: "CreditorAgentAccount", isoId: "_xNGXaTEyEe6g-ffJsqGiSA", xmlTag: "CdtrAgtAcct", displayName: displayName("CreditorAgentAccount"), kind: "component", type: "CashAccount40", required: false }),
-      f({ name: "DebtorAgent", isoId: "_xNGXYzEyEe6g-ffJsqGiSA", xmlTag: "DbtrAgt", displayName: displayName("DebtorAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: true }),
-      f({ name: "DebtorAgentAccount", isoId: "_xNGXZTEyEe6g-ffJsqGiSA", xmlTag: "DbtrAgtAcct", displayName: displayName("DebtorAgentAccount"), kind: "component", type: "CashAccount40", required: false }),
-      f({ name: "Reason", isoId: "_xNGXazEyEe6g-ffJsqGiSA", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "choice", type: "CompensationReason1Choice", required: true }),
-    ],
-  },
-  "ResolutionData5": {
-    name: "ResolutionData5",
-    isoId: "_xIfkMTEyEe6g-ffJsqGiSA",
-    kind: "component",
-    fields: [
-      f({ name: "ChargesInformation", isoId: "_xK4w6TEyEe6g-ffJsqGiSA", xmlTag: "ChrgsInf", displayName: displayName("ChargesInformation"), kind: "component", type: "Charges14", required: false, repeat: { min: 0, max: null } }),
-      f({ name: "ClearingChannel", isoId: "_xK4w5TEyEe6g-ffJsqGiSA", xmlTag: "ClrChanl", displayName: displayName("ClearingChannel"), kind: "code", type: "ClearingChannel2Code", required: false }),
-      f({ name: "Compensation", isoId: "_xK4w5zEyEe6g-ffJsqGiSA", xmlTag: "Compstn", displayName: displayName("Compensation"), kind: "component", type: "Compensation5", required: false }),
-      f({ name: "EndToEndIdentification", isoId: "_xK4J0TEyEe6g-ffJsqGiSA", xmlTag: "EndToEndId", displayName: displayName("EndToEndIdentification"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "InterbankSettlementAmount", isoId: "_xK4w4TEyEe6g-ffJsqGiSA", xmlTag: "IntrBkSttlmAmt", displayName: displayName("InterbankSettlementAmount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: false }),
-      f({ name: "InterbankSettlementDate", isoId: "_xK4w4zEyEe6g-ffJsqGiSA", xmlTag: "IntrBkSttlmDt", displayName: displayName("InterbankSettlementDate"), kind: "date", type: "ISODate", required: false }),
-      f({ name: "TransactionIdentification", isoId: "_xK4J0zEyEe6g-ffJsqGiSA", xmlTag: "TxId", displayName: displayName("TransactionIdentification"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "UETR", isoId: "_xK4J1TEyEe6g-ffJsqGiSA", xmlTag: "UETR", displayName: displayName("UETR"), kind: "text", type: "UUIDv4Identifier", required: false }),
-    ],
-  },
-  "PaymentTransaction170": {
-    name: "PaymentTransaction170",
-    isoId: "fabb9d7f-4990-4269-b3d4-5ce76ae558c4",
-    kind: "component",
-    fields: [
-      f({ name: "Assignee", isoId: "42451038-5276-4ef4-bd11-b210a4f67424", xmlTag: "Assgne", displayName: displayName("Assignee"), kind: "choice", type: "Party50Choice", required: false }),
-      f({ name: "Assigner", isoId: "c9846b8b-3359-4c44-894b-73cbd929969e", xmlTag: "Assgnr", displayName: displayName("Assigner"), kind: "choice", type: "Party50Choice", required: false }),
-      f({ name: "CancellationStatusIdentification", isoId: "5f69c79a-3dc5-46fa-9ca8-dec1d0d36fcf", xmlTag: "CxlStsId", displayName: displayName("CancellationStatusIdentification"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "CancellationStatusReasonInformation", isoId: "3c424c92-c163-4619-bff2-6179006d5a1f", xmlTag: "CxlStsRsnInf", displayName: displayName("CancellationStatusReasonInformation"), kind: "component", type: "CancellationStatusReason5", required: false, repeat: { min: 0, max: null } }),
-      f({ name: "OriginalClearingSystemReference", isoId: "47cb1bef-ddf1-4e3c-ae5b-29f26cab0d4e", xmlTag: "OrgnlClrSysRef", displayName: displayName("OriginalClearingSystemReference"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "OriginalEndToEndIdentification", isoId: "2efc4c62-2de7-41dd-909b-c2942324157d", xmlTag: "OrgnlEndToEndId", displayName: displayName("OriginalEndToEndIdentification"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "OriginalGroupInformation", isoId: "f30295b9-d812-45c6-8153-c8a1dd21fa87", xmlTag: "OrgnlGrpInf", displayName: displayName("OriginalGroupInformation"), kind: "component", type: "OriginalGroupInformation33", required: false }),
-      f({ name: "OriginalInstructionIdentification", isoId: "777992a6-8fe4-4109-9d1b-a5385dc0c734", xmlTag: "OrgnlInstrId", displayName: displayName("OriginalInstructionIdentification"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "OriginalInterbankSettlementAmount", isoId: "d4df4dc3-256c-497b-9201-591dd94814c1", xmlTag: "OrgnlIntrBkSttlmAmt", displayName: displayName("OriginalInterbankSettlementAmount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: false }),
-      f({ name: "OriginalInterbankSettlementDate", isoId: "a3cc7a47-2a9b-490e-a6c8-00f1b3bcc1c4", xmlTag: "OrgnlIntrBkSttlmDt", displayName: displayName("OriginalInterbankSettlementDate"), kind: "date", type: "ISODate", required: false }),
-      f({ name: "OriginalTransactionIdentification", isoId: "ff7b138e-3c67-46a0-881b-9aa7a1c6b358", xmlTag: "OrgnlTxId", displayName: displayName("OriginalTransactionIdentification"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "OriginalTransactionReference", isoId: "45a690b1-5875-4378-97a6-3276b9d3a433", xmlTag: "OrgnlTxRef", displayName: displayName("OriginalTransactionReference"), kind: "component", type: "OriginalTransactionReference47", required: false }),
-      f({ name: "OriginalUETR", isoId: "5ce55044-591a-43a1-9075-125488a5ea58", xmlTag: "OrgnlUETR", displayName: displayName("OriginalUETR"), kind: "text", type: "UUIDv4Identifier", required: false }),
-      f({ name: "ResolutionRelatedInformation", isoId: "7a579617-958c-4af0-af67-9793e14f9e65", xmlTag: "RsltnRltdInf", displayName: displayName("ResolutionRelatedInformation"), kind: "component", type: "ResolutionData5", required: false }),
-      f({ name: "ResolvedCase", isoId: "c8b8e37e-4977-434d-8f76-1add632fb7d4", xmlTag: "RslvdCase", displayName: displayName("ResolvedCase"), kind: "component", type: "Case6", required: false }),
-      f({ name: "TransactionCancellationStatus", isoId: "3f622acd-3f12-417c-acfb-4c09495acc88", xmlTag: "TxCxlSts", displayName: displayName("TransactionCancellationStatus"), kind: "code", type: "CancellationIndividualStatus1Code", required: false }),
-    ],
-  },
-  "UnderlyingTransaction35": {
-    name: "UnderlyingTransaction35",
-    isoId: "803140af-b4a1-4f4e-ac35-6b007ca7480a",
-    kind: "component",
-    fields: [
-      f({ name: "OriginalGroupInformationAndStatus", isoId: "500e3690-8d77-4334-9525-52ea1470aa53", xmlTag: "OrgnlGrpInfAndSts", displayName: displayName("OriginalGroupInformationAndStatus"), kind: "component", type: "OriginalGroupHeader23", required: false }),
-      f({ name: "OriginalPaymentInformationAndStatus", isoId: "6ec13301-4cb1-4e42-a786-6c9eb6a3edc1", xmlTag: "OrgnlPmtInfAndSts", displayName: displayName("OriginalPaymentInformationAndStatus"), kind: "component", type: "OriginalPaymentInstruction54", required: false, repeat: { min: 0, max: null } }),
-      f({ name: "TransactionInformationAndStatus", isoId: "32324361-a3d7-4b44-b544-9c1a2d916133", xmlTag: "TxInfAndSts", displayName: displayName("TransactionInformationAndStatus"), kind: "component", type: "PaymentTransaction170", required: false, repeat: { min: 0, max: null } }),
-    ],
-    rules: [
-      { name: "GroupOrPaymentInformationResolvedCaseRule", isoId: "76d46abe-edb2-4316-b63d-f8ccdf830718", text: "ResolvedCase may be present at either ResolvedCase, OriginalGroupInformationAndStatus level, OriginalPaymentInformationAndStatus or TransactionInformationAndStatus level.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/OriginalPaymentInformationAndStatus[*]/ResolvedCase"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/OriginalGroupInformationAndStatus"},{"op":"Presence","path":"/OriginalGroupInformationAndStatus/ResolvedCase"},{"op":"Presence","path":"/OriginalPaymentInformationAndStatus[1]"}]}} },
-      { name: "GroupOrInitiationTransactionResolvedCaseRule", isoId: "1f7b7a4c-ff66-488d-bd2a-22ecbd401551", text: "ResolvedCase may be present at either ResolvedCase, OriginalGroupInformationAndStatus level, OriginalPaymentInformationAndStatus or TransactionInformationAndStatus level.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/OriginalPaymentInformationAndStatus[*]/TransactionInformationAndStatus[*]/ResolvedCase"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/OriginalGroupInformationAndStatus"},{"op":"Presence","path":"/OriginalGroupInformationAndStatus/ResolvedCase"},{"op":"Presence","path":"/OriginalPaymentInformationAndStatus[1]"},{"op":"Presence","path":"/OriginalPaymentInformationAndStatus[1]/TransactionInformationAndStatus[1]"}]}} },
-      { name: "GroupOrInterbankTransactionResolvedCaseRule", isoId: "2823547f-6161-431a-8fcb-362c170537db", text: "ResolvedCase may be present at either ResolvedCase, OriginalGroupInformationAndStatus level, OriginalPaymentInformationAndStatus or TransactionInformationAndStatus level.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/TransactionInformationAndStatus[*]/ResolvedCase"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/OriginalGroupInformationAndStatus"},{"op":"Presence","path":"/OriginalGroupInformationAndStatus/ResolvedCase"},{"op":"Presence","path":"/TransactionInformationAndStatus[1]"}]}} },
-    ],
-  },
   "ExternalInvestigationExecutionConfirmation1Code": {
     name: "ExternalInvestigationExecutionConfirmation1Code",
     isoId: "_iF0dsImxEeeKR__nUfxjwA",
@@ -580,10 +360,230 @@ const ownTypeDescriptors: TypeDescriptors = {
     isoId: "_w8w1UTEyEe6g-ffJsqGiSA",
     kind: "choice",
     choiceOptions: [
-      f({ name: "AssignmentCancellationConfirmation", isoId: "_w_CGNzEyEe6g-ffJsqGiSA", xmlTag: "AssgnmtCxlConf", displayName: displayName("AssignmentCancellationConfirmation"), kind: "boolean", type: "YesNoIndicator", required: true }),
       f({ name: "Confirmation", isoId: "_w_CGMTEyEe6g-ffJsqGiSA", xmlTag: "Conf", displayName: displayName("Confirmation"), kind: "code", type: "ExternalInvestigationExecutionConfirmation1Code", required: true }),
-      f({ name: "DuplicateOf", isoId: "_w_CGNTEyEe6g-ffJsqGiSA", xmlTag: "DplctOf", displayName: displayName("DuplicateOf"), kind: "component", type: "Case6", required: true }),
       f({ name: "RejectedModification", isoId: "_w_CGMzEyEe6g-ffJsqGiSA", xmlTag: "RjctdMod", displayName: displayName("RejectedModification"), kind: "choice", type: "ModificationStatusReason1Choice", required: true }),
+      f({ name: "DuplicateOf", isoId: "_w_CGNTEyEe6g-ffJsqGiSA", xmlTag: "DplctOf", displayName: displayName("DuplicateOf"), kind: "component", type: "Case6", required: true }),
+      f({ name: "AssignmentCancellationConfirmation", isoId: "_w_CGNzEyEe6g-ffJsqGiSA", xmlTag: "AssgnmtCxlConf", displayName: displayName("AssignmentCancellationConfirmation"), kind: "boolean", type: "YesNoIndicator", required: true }),
+    ],
+  },
+  "GroupCancellationStatus1Code": {
+    name: "GroupCancellationStatus1Code",
+    isoId: "_auruQ9p-Ed-ak6NoX_4Aeg_-1224774658",
+    kind: "code",
+    options: [{ value: "ACCR", name: "AcceptedCancellationRequest", isoId: "_auruRtp-Ed-ak6NoX_4Aeg_-305868752" }, { value: "PACR", name: "PartiallyAcceptedCancellationRequest", isoId: "_auruRNp-Ed-ak6NoX_4Aeg_-305868783" }, { value: "PDCR", name: "PendingCancellationRequest", isoId: "_auruR9p-Ed-ak6NoX_4Aeg_-91612397" }, { value: "RJCR", name: "RejectedCancellationRequest", isoId: "_auruRdp-Ed-ak6NoX_4Aeg_-305868753" }],
+  },
+  "ExternalPaymentCancellationRejection1Code": {
+    name: "ExternalPaymentCancellationRejection1Code",
+    isoId: "_-LDBoIlyEeePr-EGJjGYzQ",
+    kind: "code",
+    minLength: 1,
+    maxLength: 4,
+    external: true,
+  },
+  "CancellationStatusReason3Choice": {
+    name: "CancellationStatusReason3Choice",
+    isoId: "_skGdSYlrEeePr-EGJjGYzQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_sx1XQ4lrEeePr-EGJjGYzQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalPaymentCancellationRejection1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_sx1XRYlrEeePr-EGJjGYzQ", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
+    ],
+  },
+  "CancellationStatusReason5": {
+    name: "CancellationStatusReason5",
+    isoId: "_zn6M8TEyEe6g-ffJsqGiSA",
+    kind: "component",
+    fields: [
+      f({ name: "Originator", isoId: "_zqauYTEyEe6g-ffJsqGiSA", xmlTag: "Orgtr", displayName: displayName("Originator"), kind: "component", type: "PartyIdentification272", required: false }),
+      f({ name: "Reason", isoId: "_zqauYzEyEe6g-ffJsqGiSA", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "choice", type: "CancellationStatusReason3Choice", required: false }),
+      f({ name: "AdditionalInformation", isoId: "_zqauZTEyEe6g-ffJsqGiSA", xmlTag: "AddtlInf", displayName: displayName("AdditionalInformation"), kind: "text", type: "Max105Text", required: false, repeat: { min: 0, max: null } }),
+    ],
+  },
+  "TransactionIndividualStatus1Code": {
+    name: "TransactionIndividualStatus1Code",
+    isoId: "_Yrsi2Np-Ed-ak6NoX_4Aeg_-1851702308",
+    kind: "code",
+    options: [{ value: "ACCP", name: "AcceptedCustomerProfile", isoId: "_Yr2T0tp-Ed-ak6NoX_4Aeg_-1851701953" }, { value: "ACCR", name: "AcceptedCancellationRequest", isoId: "_Yr2T1dp-Ed-ak6NoX_4Aeg_-1478599372" }, { value: "ACSC", name: "AcceptedSettlementCompleted", isoId: "_Yr2T1Np-Ed-ak6NoX_4Aeg_-1851701918" }, { value: "ACSP", name: "AcceptedSettlementInProcess", isoId: "_Yr2T09p-Ed-ak6NoX_4Aeg_-1851701936" }, { value: "ACTC", name: "AcceptedTechnicalValidation", isoId: "_Yrsi2dp-Ed-ak6NoX_4Aeg_-1851702290" }, { value: "ACWC", name: "AcceptedWithChange", isoId: "_Yr2T1tp-Ed-ak6NoX_4Aeg_-1456435332" }, { value: "PDNG", name: "Pending", isoId: "_Yr2T0dp-Ed-ak6NoX_4Aeg_-1851701978" }, { value: "RJCT", name: "Rejected", isoId: "_Yr2T0Np-Ed-ak6NoX_4Aeg_-1851702013" }],
+  },
+  "NumberOfTransactionsPerStatus1": {
+    name: "NumberOfTransactionsPerStatus1",
+    isoId: "_RFBsa9p-Ed-ak6NoX_4Aeg_187558079",
+    kind: "component",
+    fields: [
+      f({ name: "DetailedNumberOfTransactions", isoId: "_RFBsbNp-Ed-ak6NoX_4Aeg_1091683583", xmlTag: "DtldNbOfTxs", displayName: displayName("DetailedNumberOfTransactions"), kind: "text", type: "Max15NumericText", required: true }),
+      f({ name: "DetailedStatus", isoId: "_RFBsbdp-Ed-ak6NoX_4Aeg_1140631688", xmlTag: "DtldSts", displayName: displayName("DetailedStatus"), kind: "code", type: "TransactionIndividualStatus1Code", required: true }),
+      f({ name: "DetailedControlSum", isoId: "_RFLdYNp-Ed-ak6NoX_4Aeg_-1896383471", xmlTag: "DtldCtrlSum", displayName: displayName("DetailedControlSum"), kind: "number", type: "DecimalNumber", required: false }),
+    ],
+  },
+  "OriginalGroupHeader23": {
+    name: "OriginalGroupHeader23",
+    isoId: "_73Gb8TEyEe6g-ffJsqGiSA",
+    kind: "component",
+    fields: [
+      f({ name: "OriginalGroupCancellationIdentification", isoId: "_75XFxTEyEe6g-ffJsqGiSA", xmlTag: "OrgnlGrpCxlId", displayName: displayName("OriginalGroupCancellationIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "ResolvedCase", isoId: "_75XFxzEyEe6g-ffJsqGiSA", xmlTag: "RslvdCase", displayName: displayName("ResolvedCase"), kind: "component", type: "Case6", required: false }),
+      f({ name: "OriginalMessageIdentification", isoId: "_75XFyTEyEe6g-ffJsqGiSA", xmlTag: "OrgnlMsgId", displayName: displayName("OriginalMessageIdentification"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "OriginalMessageNameIdentification", isoId: "_75XFyzEyEe6g-ffJsqGiSA", xmlTag: "OrgnlMsgNmId", displayName: displayName("OriginalMessageNameIdentification"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "OriginalCreationDateTime", isoId: "_75XFzTEyEe6g-ffJsqGiSA", xmlTag: "OrgnlCreDtTm", displayName: displayName("OriginalCreationDateTime"), kind: "datetime", type: "ISODateTime", required: false }),
+      f({ name: "OriginalNumberOfTransactions", isoId: "_75XFzzEyEe6g-ffJsqGiSA", xmlTag: "OrgnlNbOfTxs", displayName: displayName("OriginalNumberOfTransactions"), kind: "text", type: "Max15NumericText", required: false }),
+      f({ name: "OriginalControlSum", isoId: "_75XF0TEyEe6g-ffJsqGiSA", xmlTag: "OrgnlCtrlSum", displayName: displayName("OriginalControlSum"), kind: "number", type: "DecimalNumber", required: false }),
+      f({ name: "GroupCancellationStatus", isoId: "_75XF0zEyEe6g-ffJsqGiSA", xmlTag: "GrpCxlSts", displayName: displayName("GroupCancellationStatus"), kind: "code", type: "GroupCancellationStatus1Code", required: false }),
+      f({ name: "CancellationStatusReasonInformation", isoId: "_75XF1TEyEe6g-ffJsqGiSA", xmlTag: "CxlStsRsnInf", displayName: displayName("CancellationStatusReasonInformation"), kind: "component", type: "CancellationStatusReason5", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "NumberOfTransactionsPerCancellationStatus", isoId: "_75XF1zEyEe6g-ffJsqGiSA", xmlTag: "NbOfTxsPerCxlSts", displayName: displayName("NumberOfTransactionsPerCancellationStatus"), kind: "component", type: "NumberOfTransactionsPerStatus1", required: false, repeat: { min: 0, max: null } }),
+    ],
+    rules: [
+      { name: "CancellationStatusReasonInformationRule", isoId: "_75XFwTEyEe6g-ffJsqGiSA", text: "If GroupCancellationStatus is present and is different from RejectedCancellationRequest (RJCR) or PendingCancellationRequest (PDCR), then CancellationStatusReasonInformation/AdditionalInformation is not allowed.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"EqualToValue","path":"/GroupCancellationStatus","value":"PendingCancellationRequest"},{"op":"EqualToValue","path":"/GroupCancellationStatus","value":"RejectedCancellationRequest"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/CancellationStatusReasonInformation[1]"},{"op":"Presence","path":"/CancellationStatusReasonInformation[*]/AdditionalInformation[*]"},{"op":"Presence","path":"/GroupCancellationStatus"}]}} },
+      { name: "NumberOfTransactionsPerCancellationStatusGuideline", isoId: "_75XFwzEyEe6g-ffJsqGiSA", text: "OriginalGroupInformationAndStatus/NumberOfTransactionsPerStatus should only be present if GroupCancellationStatus equals PACR." },
+    ],
+  },
+  "CancellationIndividualStatus1Code": {
+    name: "CancellationIndividualStatus1Code",
+    isoId: "_bXW31tp-Ed-ak6NoX_4Aeg_349830100",
+    kind: "code",
+    options: [{ value: "ACCR", name: "AcceptedCancellationRequest", isoId: "_bXgo0Np-Ed-ak6NoX_4Aeg_349830162" }, { value: "PDCR", name: "PendingCancellationRequest", isoId: "_bXgo0dp-Ed-ak6NoX_4Aeg_349830163" }, { value: "RJCR", name: "RejectedCancellationRequest", isoId: "_bXW319p-Ed-ak6NoX_4Aeg_349830132" }],
+  },
+  "NumberOfCancellationsPerStatus1": {
+    name: "NumberOfCancellationsPerStatus1",
+    isoId: "_Rquaddp-Ed-ak6NoX_4Aeg_847606645",
+    kind: "component",
+    fields: [
+      f({ name: "DetailedNumberOfTransactions", isoId: "_Rquadtp-Ed-ak6NoX_4Aeg_847606677", xmlTag: "DtldNbOfTxs", displayName: displayName("DetailedNumberOfTransactions"), kind: "text", type: "Max15NumericText", required: true }),
+      f({ name: "DetailedStatus", isoId: "_Rquad9p-Ed-ak6NoX_4Aeg_847606923", xmlTag: "DtldSts", displayName: displayName("DetailedStatus"), kind: "code", type: "CancellationIndividualStatus1Code", required: true }),
+      f({ name: "DetailedControlSum", isoId: "_RquaeNp-Ed-ak6NoX_4Aeg_847606954", xmlTag: "DtldCtrlSum", displayName: displayName("DetailedControlSum"), kind: "number", type: "DecimalNumber", required: false }),
+    ],
+  },
+  "PaymentTransaction175": {
+    name: "PaymentTransaction175",
+    isoId: "f28abd97-87f7-4ba6-9319-f413bbaf2ab9",
+    kind: "component",
+    fields: [
+      f({ name: "CancellationStatusIdentification", isoId: "36d16ae9-745e-451c-9874-fdf39d996a6c", xmlTag: "CxlStsId", displayName: displayName("CancellationStatusIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "ResolvedCase", isoId: "72faace8-bf63-4cf6-9754-add85442334a", xmlTag: "RslvdCase", displayName: displayName("ResolvedCase"), kind: "component", type: "Case6", required: false }),
+      f({ name: "OriginalInstructionIdentification", isoId: "f2493cbc-a2f7-40b9-b175-e196e8c08309", xmlTag: "OrgnlInstrId", displayName: displayName("OriginalInstructionIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "OriginalEndToEndIdentification", isoId: "9dc2493b-b147-4676-b077-d1d305be02ca", xmlTag: "OrgnlEndToEndId", displayName: displayName("OriginalEndToEndIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "UETR", isoId: "7e8d314c-ff80-497e-93a3-d8074bfb75a2", xmlTag: "UETR", displayName: displayName("UETR"), kind: "text", type: "UUIDv4Identifier", required: false }),
+      f({ name: "TransactionCancellationStatus", isoId: "1cc55122-0331-41e3-9ddd-f28b78037676", xmlTag: "TxCxlSts", displayName: displayName("TransactionCancellationStatus"), kind: "code", type: "CancellationIndividualStatus1Code", required: false }),
+      f({ name: "CancellationStatusReasonInformation", isoId: "3adcb492-7bd2-4700-9892-09545cac5fee", xmlTag: "CxlStsRsnInf", displayName: displayName("CancellationStatusReasonInformation"), kind: "component", type: "CancellationStatusReason5", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "OriginalInstructedAmount", isoId: "4c6f16e2-bc63-4168-bf61-c3945c8baed9", xmlTag: "OrgnlInstdAmt", displayName: displayName("OriginalInstructedAmount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: false }),
+      f({ name: "OriginalRequestedExecutionDate", isoId: "fe90abdc-bd9b-473d-a515-0a03aee55f76", xmlTag: "OrgnlReqdExctnDt", displayName: displayName("OriginalRequestedExecutionDate"), kind: "choice", type: "DateAndDateTime2Choice", required: false }),
+      f({ name: "OriginalRequestedCollectionDate", isoId: "83e9c75d-f7a6-481c-8227-01a7e51eed22", xmlTag: "OrgnlReqdColltnDt", displayName: displayName("OriginalRequestedCollectionDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "OriginalTransactionReference", isoId: "cf231583-c183-4a6d-ad05-207a7de8c62b", xmlTag: "OrgnlTxRef", displayName: displayName("OriginalTransactionReference"), kind: "component", type: "OriginalTransactionReference47", required: false }),
+    ],
+  },
+  "OriginalPaymentInstruction54": {
+    name: "OriginalPaymentInstruction54",
+    isoId: "aeb8d0a2-b685-444d-8a96-7df0af319a94",
+    kind: "component",
+    fields: [
+      f({ name: "OriginalPaymentInformationCancellationIdentification", isoId: "fa857e2d-2534-4dd9-aedb-e7b89532d547", xmlTag: "OrgnlPmtInfCxlId", displayName: displayName("OriginalPaymentInformationCancellationIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "ResolvedCase", isoId: "23d9d878-d18c-4b52-ac5a-9666175ec106", xmlTag: "RslvdCase", displayName: displayName("ResolvedCase"), kind: "component", type: "Case6", required: false }),
+      f({ name: "OriginalPaymentInformationIdentification", isoId: "811d115c-8d3a-493c-9839-dca205dac843", xmlTag: "OrgnlPmtInfId", displayName: displayName("OriginalPaymentInformationIdentification"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "OriginalGroupInformation", isoId: "c0d2297e-5469-49fd-9f10-04ef9fce2297", xmlTag: "OrgnlGrpInf", displayName: displayName("OriginalGroupInformation"), kind: "component", type: "OriginalGroupInformation33", required: false }),
+      f({ name: "OriginalNumberOfTransactions", isoId: "5a4011b4-f0e4-471b-9854-91c2bb68c6db", xmlTag: "OrgnlNbOfTxs", displayName: displayName("OriginalNumberOfTransactions"), kind: "text", type: "Max15NumericText", required: false }),
+      f({ name: "OriginalControlSum", isoId: "85c2e206-5a00-4ecf-af6d-c6602fdd4152", xmlTag: "OrgnlCtrlSum", displayName: displayName("OriginalControlSum"), kind: "number", type: "DecimalNumber", required: false }),
+      f({ name: "PaymentInformationCancellationStatus", isoId: "a4db0d80-5c4e-41d4-b29b-eaa8261aab8b", xmlTag: "PmtInfCxlSts", displayName: displayName("PaymentInformationCancellationStatus"), kind: "code", type: "GroupCancellationStatus1Code", required: false }),
+      f({ name: "CancellationStatusReasonInformation", isoId: "bcf86d54-9c6f-4d19-937f-e8e2186d0680", xmlTag: "CxlStsRsnInf", displayName: displayName("CancellationStatusReasonInformation"), kind: "component", type: "CancellationStatusReason5", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "NumberOfTransactionsPerCancellationStatus", isoId: "f73b5403-6214-4452-903e-798a873caa5f", xmlTag: "NbOfTxsPerCxlSts", displayName: displayName("NumberOfTransactionsPerCancellationStatus"), kind: "component", type: "NumberOfCancellationsPerStatus1", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "TransactionInformationAndStatus", isoId: "6f3b0b5a-d29b-46b0-aa8c-e92cbfef29ae", xmlTag: "TxInfAndSts", displayName: displayName("TransactionInformationAndStatus"), kind: "component", type: "PaymentTransaction175", required: false, repeat: { min: 0, max: null } }),
+    ],
+    rules: [
+      { name: "CancellationStatusReasonInformationRule", isoId: "18db279a-fd94-499f-9107-797fc6950155", text: "If PaymentInformationCancellationStatus is present and is different from RJCR (RejectedCancellationRequest) or PNCR (PendingCancellationRequest), then CancellationStatusReasonInformation/AdditionalInformation is not allowed.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"EqualToValue","path":"/PaymentInformationCancellationStatus","value":"PendingCancellationRequest"},{"op":"EqualToValue","path":"/PaymentInformationCancellationStatus","value":"RejectedCancellationRequest"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/CancellationStatusReasonInformation[1]"},{"op":"Presence","path":"/CancellationStatusReasonInformation[*]/AdditionalInformation[*]"},{"op":"Presence","path":"/PaymentInformationCancellationStatus"}]}} },
+      { name: "NumberOfTransactionsPerCancellationStatusGuideline", isoId: "e65970cf-2e46-46f4-bdc0-7924b7d237c1", text: "OriginalGroupInformationAndStatus/NumberOfTransactionsPerStatus should only be present if GroupCancellationStatus equals PACR (PartialCancellationRequest)." },
+      { name: "PaymentInformationOrTransactionResolvedCaseRule", isoId: "f5341290-88ab-471e-9154-0b729b047a45", text: "ResolvedCase may be present at either ResolvedCase, OriginalGroupInformationAndStatus level, OriginalPaymentInformationAndStatus or TransactionInformationAndStatus level.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/TransactionInformationAndStatus[*]/ResolvedCase"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/ResolvedCase"},{"op":"Presence","path":"/TransactionInformationAndStatus[1]"}]}} },
+    ],
+  },
+  "ExternalPaymentCompensationReason1Code": {
+    name: "ExternalPaymentCompensationReason1Code",
+    isoId: "_CHK8YIjYEeeDW7_wB-eK_g",
+    kind: "code",
+    minLength: 1,
+    maxLength: 4,
+    external: true,
+  },
+  "CompensationReason1Choice": {
+    name: "CompensationReason1Choice",
+    isoId: "_UyHYkIjYEeeDW7_wB-eK_g",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_a-QKsIjYEeeDW7_wB-eK_g", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalPaymentCompensationReason1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_d3NU0IjYEeeDW7_wB-eK_g", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
+    ],
+  },
+  "Compensation5": {
+    name: "Compensation5",
+    isoId: "_xK4w6zEyEe6g-ffJsqGiSA",
+    kind: "component",
+    fields: [
+      f({ name: "Amount", isoId: "_xNGXYTEyEe6g-ffJsqGiSA", xmlTag: "Amt", displayName: displayName("Amount"), kind: "amount", type: "ActiveCurrencyAndAmount", required: true }),
+      f({ name: "DebtorAgent", isoId: "_xNGXYzEyEe6g-ffJsqGiSA", xmlTag: "DbtrAgt", displayName: displayName("DebtorAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: true }),
+      f({ name: "DebtorAgentAccount", isoId: "_xNGXZTEyEe6g-ffJsqGiSA", xmlTag: "DbtrAgtAcct", displayName: displayName("DebtorAgentAccount"), kind: "component", type: "CashAccount40", required: false }),
+      f({ name: "CreditorAgent", isoId: "_xNGXZzEyEe6g-ffJsqGiSA", xmlTag: "CdtrAgt", displayName: displayName("CreditorAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: true }),
+      f({ name: "CreditorAgentAccount", isoId: "_xNGXaTEyEe6g-ffJsqGiSA", xmlTag: "CdtrAgtAcct", displayName: displayName("CreditorAgentAccount"), kind: "component", type: "CashAccount40", required: false }),
+      f({ name: "Reason", isoId: "_xNGXazEyEe6g-ffJsqGiSA", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "choice", type: "CompensationReason1Choice", required: true }),
+    ],
+  },
+  "Charges14": {
+    name: "Charges14",
+    isoId: "_xNGXbTEyEe6g-ffJsqGiSA",
+    kind: "component",
+    fields: [
+      f({ name: "Amount", isoId: "_xPUk8TEyEe6g-ffJsqGiSA", xmlTag: "Amt", displayName: displayName("Amount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: true }),
+      f({ name: "Agent", isoId: "_xPUk8zEyEe6g-ffJsqGiSA", xmlTag: "Agt", displayName: displayName("Agent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: true }),
+      f({ name: "AgentAccount", isoId: "_xPUk9TEyEe6g-ffJsqGiSA", xmlTag: "AgtAcct", displayName: displayName("AgentAccount"), kind: "component", type: "CashAccount40", required: false }),
+      f({ name: "Type", isoId: "_xPUk9zEyEe6g-ffJsqGiSA", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "ChargeType3Choice", required: false }),
+    ],
+  },
+  "ResolutionData5": {
+    name: "ResolutionData5",
+    isoId: "_xIfkMTEyEe6g-ffJsqGiSA",
+    kind: "component",
+    fields: [
+      f({ name: "EndToEndIdentification", isoId: "_xK4J0TEyEe6g-ffJsqGiSA", xmlTag: "EndToEndId", displayName: displayName("EndToEndIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "TransactionIdentification", isoId: "_xK4J0zEyEe6g-ffJsqGiSA", xmlTag: "TxId", displayName: displayName("TransactionIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "UETR", isoId: "_xK4J1TEyEe6g-ffJsqGiSA", xmlTag: "UETR", displayName: displayName("UETR"), kind: "text", type: "UUIDv4Identifier", required: false }),
+      f({ name: "InterbankSettlementAmount", isoId: "_xK4w4TEyEe6g-ffJsqGiSA", xmlTag: "IntrBkSttlmAmt", displayName: displayName("InterbankSettlementAmount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: false }),
+      f({ name: "InterbankSettlementDate", isoId: "_xK4w4zEyEe6g-ffJsqGiSA", xmlTag: "IntrBkSttlmDt", displayName: displayName("InterbankSettlementDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "ClearingChannel", isoId: "_xK4w5TEyEe6g-ffJsqGiSA", xmlTag: "ClrChanl", displayName: displayName("ClearingChannel"), kind: "code", type: "ClearingChannel2Code", required: false }),
+      f({ name: "Compensation", isoId: "_xK4w5zEyEe6g-ffJsqGiSA", xmlTag: "Compstn", displayName: displayName("Compensation"), kind: "component", type: "Compensation5", required: false }),
+      f({ name: "ChargesInformation", isoId: "_xK4w6TEyEe6g-ffJsqGiSA", xmlTag: "ChrgsInf", displayName: displayName("ChargesInformation"), kind: "component", type: "Charges14", required: false, repeat: { min: 0, max: null } }),
+    ],
+  },
+  "PaymentTransaction170": {
+    name: "PaymentTransaction170",
+    isoId: "fabb9d7f-4990-4269-b3d4-5ce76ae558c4",
+    kind: "component",
+    fields: [
+      f({ name: "CancellationStatusIdentification", isoId: "5f69c79a-3dc5-46fa-9ca8-dec1d0d36fcf", xmlTag: "CxlStsId", displayName: displayName("CancellationStatusIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "ResolvedCase", isoId: "c8b8e37e-4977-434d-8f76-1add632fb7d4", xmlTag: "RslvdCase", displayName: displayName("ResolvedCase"), kind: "component", type: "Case6", required: false }),
+      f({ name: "OriginalGroupInformation", isoId: "f30295b9-d812-45c6-8153-c8a1dd21fa87", xmlTag: "OrgnlGrpInf", displayName: displayName("OriginalGroupInformation"), kind: "component", type: "OriginalGroupInformation33", required: false }),
+      f({ name: "OriginalInstructionIdentification", isoId: "777992a6-8fe4-4109-9d1b-a5385dc0c734", xmlTag: "OrgnlInstrId", displayName: displayName("OriginalInstructionIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "OriginalEndToEndIdentification", isoId: "2efc4c62-2de7-41dd-909b-c2942324157d", xmlTag: "OrgnlEndToEndId", displayName: displayName("OriginalEndToEndIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "OriginalTransactionIdentification", isoId: "ff7b138e-3c67-46a0-881b-9aa7a1c6b358", xmlTag: "OrgnlTxId", displayName: displayName("OriginalTransactionIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "OriginalClearingSystemReference", isoId: "47cb1bef-ddf1-4e3c-ae5b-29f26cab0d4e", xmlTag: "OrgnlClrSysRef", displayName: displayName("OriginalClearingSystemReference"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "OriginalUETR", isoId: "5ce55044-591a-43a1-9075-125488a5ea58", xmlTag: "OrgnlUETR", displayName: displayName("OriginalUETR"), kind: "text", type: "UUIDv4Identifier", required: false }),
+      f({ name: "TransactionCancellationStatus", isoId: "3f622acd-3f12-417c-acfb-4c09495acc88", xmlTag: "TxCxlSts", displayName: displayName("TransactionCancellationStatus"), kind: "code", type: "CancellationIndividualStatus1Code", required: false }),
+      f({ name: "CancellationStatusReasonInformation", isoId: "3c424c92-c163-4619-bff2-6179006d5a1f", xmlTag: "CxlStsRsnInf", displayName: displayName("CancellationStatusReasonInformation"), kind: "component", type: "CancellationStatusReason5", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "ResolutionRelatedInformation", isoId: "7a579617-958c-4af0-af67-9793e14f9e65", xmlTag: "RsltnRltdInf", displayName: displayName("ResolutionRelatedInformation"), kind: "component", type: "ResolutionData5", required: false }),
+      f({ name: "OriginalInterbankSettlementAmount", isoId: "d4df4dc3-256c-497b-9201-591dd94814c1", xmlTag: "OrgnlIntrBkSttlmAmt", displayName: displayName("OriginalInterbankSettlementAmount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: false }),
+      f({ name: "OriginalInterbankSettlementDate", isoId: "a3cc7a47-2a9b-490e-a6c8-00f1b3bcc1c4", xmlTag: "OrgnlIntrBkSttlmDt", displayName: displayName("OriginalInterbankSettlementDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "Assigner", isoId: "c9846b8b-3359-4c44-894b-73cbd929969e", xmlTag: "Assgnr", displayName: displayName("Assigner"), kind: "choice", type: "Party50Choice", required: false }),
+      f({ name: "Assignee", isoId: "42451038-5276-4ef4-bd11-b210a4f67424", xmlTag: "Assgne", displayName: displayName("Assignee"), kind: "choice", type: "Party50Choice", required: false }),
+      f({ name: "OriginalTransactionReference", isoId: "45a690b1-5875-4378-97a6-3276b9d3a433", xmlTag: "OrgnlTxRef", displayName: displayName("OriginalTransactionReference"), kind: "component", type: "OriginalTransactionReference47", required: false }),
+    ],
+  },
+  "UnderlyingTransaction35": {
+    name: "UnderlyingTransaction35",
+    isoId: "803140af-b4a1-4f4e-ac35-6b007ca7480a",
+    kind: "component",
+    fields: [
+      f({ name: "OriginalGroupInformationAndStatus", isoId: "500e3690-8d77-4334-9525-52ea1470aa53", xmlTag: "OrgnlGrpInfAndSts", displayName: displayName("OriginalGroupInformationAndStatus"), kind: "component", type: "OriginalGroupHeader23", required: false }),
+      f({ name: "OriginalPaymentInformationAndStatus", isoId: "6ec13301-4cb1-4e42-a786-6c9eb6a3edc1", xmlTag: "OrgnlPmtInfAndSts", displayName: displayName("OriginalPaymentInformationAndStatus"), kind: "component", type: "OriginalPaymentInstruction54", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "TransactionInformationAndStatus", isoId: "32324361-a3d7-4b44-b544-9c1a2d916133", xmlTag: "TxInfAndSts", displayName: displayName("TransactionInformationAndStatus"), kind: "component", type: "PaymentTransaction170", required: false, repeat: { min: 0, max: null } }),
+    ],
+    rules: [
+      { name: "GroupOrPaymentInformationResolvedCaseRule", isoId: "76d46abe-edb2-4316-b63d-f8ccdf830718", text: "ResolvedCase may be present at either ResolvedCase, OriginalGroupInformationAndStatus level, OriginalPaymentInformationAndStatus or TransactionInformationAndStatus level.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/OriginalPaymentInformationAndStatus[*]/ResolvedCase"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/OriginalGroupInformationAndStatus"},{"op":"Presence","path":"/OriginalGroupInformationAndStatus/ResolvedCase"},{"op":"Presence","path":"/OriginalPaymentInformationAndStatus[1]"}]}} },
+      { name: "GroupOrInitiationTransactionResolvedCaseRule", isoId: "1f7b7a4c-ff66-488d-bd2a-22ecbd401551", text: "ResolvedCase may be present at either ResolvedCase, OriginalGroupInformationAndStatus level, OriginalPaymentInformationAndStatus or TransactionInformationAndStatus level.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/OriginalPaymentInformationAndStatus[*]/TransactionInformationAndStatus[*]/ResolvedCase"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/OriginalGroupInformationAndStatus"},{"op":"Presence","path":"/OriginalGroupInformationAndStatus/ResolvedCase"},{"op":"Presence","path":"/OriginalPaymentInformationAndStatus[1]"},{"op":"Presence","path":"/OriginalPaymentInformationAndStatus[1]/TransactionInformationAndStatus[1]"}]}} },
+      { name: "GroupOrInterbankTransactionResolvedCaseRule", isoId: "2823547f-6161-431a-8fcb-362c170537db", text: "ResolvedCase may be present at either ResolvedCase, OriginalGroupInformationAndStatus level, OriginalPaymentInformationAndStatus or TransactionInformationAndStatus level.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/TransactionInformationAndStatus[*]/ResolvedCase"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/OriginalGroupInformationAndStatus"},{"op":"Presence","path":"/OriginalGroupInformationAndStatus/ResolvedCase"},{"op":"Presence","path":"/TransactionInformationAndStatus[1]"}]}} },
     ],
   },
   "ResolutionOfInvestigationV14": {
@@ -592,10 +592,10 @@ const ownTypeDescriptors: TypeDescriptors = {
     kind: "component",
     fields: [
       f({ name: "Assignment", isoId: "b3f714df-09ec-4743-bbbd-4d71fda000a4", xmlTag: "Assgnmt", displayName: displayName("Assignment"), kind: "component", type: "CaseAssignment6", required: true }),
-      f({ name: "CancellationDetails", isoId: "96cfca62-8ddb-43f1-8f73-630fd5a3dfd8", xmlTag: "CxlDtls", displayName: displayName("CancellationDetails"), kind: "component", type: "UnderlyingTransaction35", required: false, repeat: { min: 0, max: null } }),
-      f({ name: "ResolutionRelatedInformation", isoId: "109ccacb-46e3-42e1-823d-edf4bd14a5c0", xmlTag: "RsltnRltdInf", displayName: displayName("ResolutionRelatedInformation"), kind: "component", type: "ResolutionData5", required: false }),
       f({ name: "ResolvedCase", isoId: "6332311f-5424-49da-b03f-b9acc37a02d8", xmlTag: "RslvdCase", displayName: displayName("ResolvedCase"), kind: "component", type: "Case6", required: false }),
       f({ name: "Status", isoId: "3465690a-f299-4bfa-8474-4279204ed9a1", xmlTag: "Sts", displayName: displayName("Status"), kind: "choice", type: "InvestigationStatus6Choice", required: true }),
+      f({ name: "CancellationDetails", isoId: "96cfca62-8ddb-43f1-8f73-630fd5a3dfd8", xmlTag: "CxlDtls", displayName: displayName("CancellationDetails"), kind: "component", type: "UnderlyingTransaction35", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "ResolutionRelatedInformation", isoId: "109ccacb-46e3-42e1-823d-edf4bd14a5c0", xmlTag: "RsltnRltdInf", displayName: displayName("ResolutionRelatedInformation"), kind: "component", type: "ResolutionData5", required: false }),
       f({ name: "SupplementaryData", isoId: "7c0f70b9-cc5f-4a9b-8aac-febfe9e90833", xmlTag: "SplmtryData", displayName: displayName("SupplementaryData"), kind: "component", type: "SupplementaryData1", required: false, repeat: { min: 0, max: null } }),
     ],
     rules: [
@@ -610,10 +610,10 @@ const ownTypeDescriptors: TypeDescriptors = {
 
 /** Descriptors for every type of camt.029.001.14, shared ones included. */
 export const typeDescriptors: TypeDescriptors = {
+  "Max35Text": sharedTypeDescriptors["Max35Text"]!,
   "Max140Text": sharedTypeDescriptors["Max140Text"]!,
   "AddressType2Code": sharedTypeDescriptors["AddressType2Code"]!,
   "Exact4AlphaNumericText": sharedTypeDescriptors["Exact4AlphaNumericText"]!,
-  "Max35Text": sharedTypeDescriptors["Max35Text"]!,
   "GenericIdentification30": sharedTypeDescriptors["GenericIdentification30"]!,
   "AddressType3Choice": sharedTypeDescriptors["AddressType3Choice"]!,
   "Max70Text": sharedTypeDescriptors["Max70Text"]!,
@@ -656,12 +656,13 @@ export const typeDescriptors: TypeDescriptors = {
   "Party50Choice": sharedTypeDescriptors["Party50Choice"]!,
   "ISODateTime": sharedTypeDescriptors["ISODateTime"]!,
   "CaseAssignment6": sharedTypeDescriptors["CaseAssignment6"]!,
-  "Max105Text": sharedTypeDescriptors["Max105Text"]!,
-  "DecimalNumber": sharedTypeDescriptors["DecimalNumber"]!,
-  "Max15NumericText": sharedTypeDescriptors["Max15NumericText"]!,
   "YesNoIndicator": sharedTypeDescriptors["YesNoIndicator"]!,
   "Case6": sharedTypeDescriptors["Case6"]!,
+  "Max15NumericText": sharedTypeDescriptors["Max15NumericText"]!,
+  "DecimalNumber": sharedTypeDescriptors["DecimalNumber"]!,
+  "Max105Text": sharedTypeDescriptors["Max105Text"]!,
   "OriginalGroupInformation33": sharedTypeDescriptors["OriginalGroupInformation33"]!,
+  "UUIDv4Identifier": sharedTypeDescriptors["UUIDv4Identifier"]!,
   "ActiveOrHistoricCurrencyAndAmount": sharedTypeDescriptors["ActiveOrHistoricCurrencyAndAmount"]!,
   "DateAndDateTime2Choice": sharedTypeDescriptors["DateAndDateTime2Choice"]!,
   "ActiveOrHistoricCurrencyCode": sharedTypeDescriptors["ActiveOrHistoricCurrencyCode"]!,
@@ -758,7 +759,6 @@ export const typeDescriptors: TypeDescriptors = {
   "ExternalPurpose1Code": sharedTypeDescriptors["ExternalPurpose1Code"]!,
   "Purpose2Choice": sharedTypeDescriptors["Purpose2Choice"]!,
   "OriginalTransactionReference47": sharedTypeDescriptors["OriginalTransactionReference47"]!,
-  "UUIDv4Identifier": sharedTypeDescriptors["UUIDv4Identifier"]!,
   "ExternalChargeType1Code": sharedTypeDescriptors["ExternalChargeType1Code"]!,
   "GenericIdentification3": sharedTypeDescriptors["GenericIdentification3"]!,
   "ChargeType3Choice": sharedTypeDescriptors["ChargeType3Choice"]!,
@@ -793,13 +793,15 @@ export const schemas = {
   "BranchAndFinancialInstitutionIdentification8": BranchAndFinancialInstitutionIdentification8Schema,
   "Party50Choice": Party50ChoiceSchema,
   "CaseAssignment6": CaseAssignment6Schema,
+  "Case6": Case6Schema,
+  "ModificationStatusReason1Choice": ModificationStatusReason1ChoiceSchema,
+  "InvestigationStatus6Choice": InvestigationStatus6ChoiceSchema,
   "CancellationStatusReason3Choice": CancellationStatusReason3ChoiceSchema,
   "CancellationStatusReason5": CancellationStatusReason5Schema,
   "NumberOfTransactionsPerStatus1": NumberOfTransactionsPerStatus1Schema,
-  "Case6": Case6Schema,
   "OriginalGroupHeader23": OriginalGroupHeader23Schema,
-  "NumberOfCancellationsPerStatus1": NumberOfCancellationsPerStatus1Schema,
   "OriginalGroupInformation33": OriginalGroupInformation33Schema,
+  "NumberOfCancellationsPerStatus1": NumberOfCancellationsPerStatus1Schema,
   "DateAndDateTime2Choice": DateAndDateTime2ChoiceSchema,
   "EquivalentAmount2": EquivalentAmount2Schema,
   "AmountType4Choice": AmountType4ChoiceSchema,
@@ -861,16 +863,14 @@ export const schemas = {
   "OriginalTransactionReference47": OriginalTransactionReference47Schema,
   "PaymentTransaction175": PaymentTransaction175Schema,
   "OriginalPaymentInstruction54": OriginalPaymentInstruction54Schema,
+  "CompensationReason1Choice": CompensationReason1ChoiceSchema,
+  "Compensation5": Compensation5Schema,
   "GenericIdentification3": GenericIdentification3Schema,
   "ChargeType3Choice": ChargeType3ChoiceSchema,
   "Charges14": Charges14Schema,
-  "CompensationReason1Choice": CompensationReason1ChoiceSchema,
-  "Compensation5": Compensation5Schema,
   "ResolutionData5": ResolutionData5Schema,
   "PaymentTransaction170": PaymentTransaction170Schema,
   "UnderlyingTransaction35": UnderlyingTransaction35Schema,
-  "ModificationStatusReason1Choice": ModificationStatusReason1ChoiceSchema,
-  "InvestigationStatus6Choice": InvestigationStatus6ChoiceSchema,
   "SupplementaryData1": SupplementaryData1Schema,
   "ResolutionOfInvestigationV14": ResolutionOfInvestigationV14Schema,
 } as const;

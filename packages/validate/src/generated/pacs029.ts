@@ -14,12 +14,11 @@ import {
   type TypeDescriptors,
 } from '../runtime.ts';
 import {
-  DecimalNumberSchema,
-  ISODateTimeSchema,
   Max35TextSchema,
+  ISODateTimeSchema,
   Max15NumericTextSchema,
-  ExternalCashClearingSystem1CodeSchema,
-  ClearingSystemIdentification3ChoiceSchema,
+  DecimalNumberSchema,
+  SettlementMethod2CodeSchema,
   IBAN2007IdentifierSchema,
   Max34TextSchema,
   ExternalAccountIdentification1CodeSchema,
@@ -35,9 +34,13 @@ import {
   Max2048TextSchema,
   ProxyAccountIdentification1Schema,
   CashAccount40Schema,
-  SettlementMethod2CodeSchema,
+  ExternalCashClearingSystem1CodeSchema,
+  ClearingSystemIdentification3ChoiceSchema,
   SettlementInstruction14Schema,
   Priority3CodeSchema,
+  ISOTimeSchema,
+  SettlementTimeRequest2Schema,
+  NumberSchema,
   ActiveCurrencyAndAmountSchema,
   CreditDebitCodeSchema,
   Max140TextSchema,
@@ -70,9 +73,6 @@ import {
   PreferredContactMethod2CodeSchema,
   Contact13Schema,
   PartyIdentification272Schema,
-  NumberSchema,
-  ISOTimeSchema,
-  SettlementTimeRequest2Schema,
   Max350TextSchema,
   SupplementaryDataEnvelope1Schema,
   SupplementaryData1Schema,
@@ -80,10 +80,10 @@ import {
 } from './shared.ts';
 
 export const GroupHeader104Schema = z.strictObject({
-  ControlSum: DecimalNumberSchema.optional(),
-  CreationDateTime: ISODateTimeSchema,
   MessageIdentification: Max35TextSchema,
+  CreationDateTime: ISODateTimeSchema,
   NumberOfSettlementRequests: Max15NumericTextSchema,
+  ControlSum: DecimalNumberSchema.optional(),
   SettlementInformation: SettlementInstruction14Schema.optional(),
 });
 
@@ -93,24 +93,24 @@ export const AmountAndDirection5Schema = z.strictObject({
 });
 
 export const MovementRecord2Schema = z.strictObject({
-  Amount: AmountAndDirection5Schema,
   Identification: Max35TextSchema,
+  SequenceNumber: NumberSchema.optional(),
+  Amount: AmountAndDirection5Schema,
+  SettlementAgent: PartyIdentification272Schema.optional(),
+  SettlementAgentAccount: CashAccount40Schema.optional(),
   Participant: PartyIdentification272Schema.optional(),
   ParticipantAccount: CashAccount40Schema.optional(),
   Reference: Max35TextSchema.optional(),
-  SequenceNumber: NumberSchema.optional(),
-  SettlementAgent: PartyIdentification272Schema.optional(),
-  SettlementAgentAccount: CashAccount40Schema.optional(),
 });
 
 export const MultilateralSettlementRequest3Schema = z.strictObject({
   InstructionIdentification: Max35TextSchema,
   InstructionPriority: Priority3CodeSchema.optional(),
-  MovementRecord: z.array(MovementRecord2Schema).min(2),
-  NumberOfMovementRecords: NumberSchema.optional(),
-  SettlementCycle: Max35TextSchema.optional(),
-  SettlementPriority: Priority3CodeSchema.optional(),
   SettlementTimeRequest: SettlementTimeRequest2Schema.optional(),
+  SettlementPriority: Priority3CodeSchema.optional(),
+  SettlementCycle: Max35TextSchema.optional(),
+  NumberOfMovementRecords: NumberSchema.optional(),
+  MovementRecord: z.array(MovementRecord2Schema).min(2),
 });
 
 export const MultilateralSettlementRequestV02Schema = z.strictObject({
@@ -127,10 +127,10 @@ const ownTypeDescriptors: TypeDescriptors = {
     isoId: "_7o6soQcYEeyTDbUIoCmuCw",
     kind: "component",
     fields: [
-      f({ name: "ControlSum", isoId: "_7ua3uQcYEeyTDbUIoCmuCw", xmlTag: "CtrlSum", displayName: displayName("ControlSum"), kind: "number", type: "DecimalNumber", required: false }),
-      f({ name: "CreationDateTime", isoId: "_7ua3swcYEeyTDbUIoCmuCw", xmlTag: "CreDtTm", displayName: displayName("CreationDateTime"), kind: "datetime", type: "ISODateTime", required: true }),
       f({ name: "MessageIdentification", isoId: "_7ua3sQcYEeyTDbUIoCmuCw", xmlTag: "MsgId", displayName: displayName("MessageIdentification"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "CreationDateTime", isoId: "_7ua3swcYEeyTDbUIoCmuCw", xmlTag: "CreDtTm", displayName: displayName("CreationDateTime"), kind: "datetime", type: "ISODateTime", required: true }),
       f({ name: "NumberOfSettlementRequests", isoId: "_7ua3twcYEeyTDbUIoCmuCw", xmlTag: "NbOfSttlmReqs", displayName: displayName("NumberOfSettlementRequests"), kind: "text", type: "Max15NumericText", required: true }),
+      f({ name: "ControlSum", isoId: "_7ua3uQcYEeyTDbUIoCmuCw", xmlTag: "CtrlSum", displayName: displayName("ControlSum"), kind: "number", type: "DecimalNumber", required: false }),
       f({ name: "SettlementInformation", isoId: "_7ua3vQcYEeyTDbUIoCmuCw", xmlTag: "SttlmInf", displayName: displayName("SettlementInformation"), kind: "component", type: "SettlementInstruction14", required: false }),
     ],
   },
@@ -148,14 +148,14 @@ const ownTypeDescriptors: TypeDescriptors = {
     isoId: "_0BP6ATEyEe6g-ffJsqGiSA",
     kind: "component",
     fields: [
-      f({ name: "Amount", isoId: "_0DhK5TEyEe6g-ffJsqGiSA", xmlTag: "Amt", displayName: displayName("Amount"), kind: "component", type: "AmountAndDirection5", required: true }),
       f({ name: "Identification", isoId: "_0DhK4TEyEe6g-ffJsqGiSA", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "SequenceNumber", isoId: "_0DhK4zEyEe6g-ffJsqGiSA", xmlTag: "SeqNb", displayName: displayName("SequenceNumber"), kind: "number", type: "Number", required: false }),
+      f({ name: "Amount", isoId: "_0DhK5TEyEe6g-ffJsqGiSA", xmlTag: "Amt", displayName: displayName("Amount"), kind: "component", type: "AmountAndDirection5", required: true }),
+      f({ name: "SettlementAgent", isoId: "_0DhK5zEyEe6g-ffJsqGiSA", xmlTag: "SttlmAgt", displayName: displayName("SettlementAgent"), kind: "component", type: "PartyIdentification272", required: false }),
+      f({ name: "SettlementAgentAccount", isoId: "_0DhK6TEyEe6g-ffJsqGiSA", xmlTag: "SttlmAgtAcct", displayName: displayName("SettlementAgentAccount"), kind: "component", type: "CashAccount40", required: false }),
       f({ name: "Participant", isoId: "_0DhK6zEyEe6g-ffJsqGiSA", xmlTag: "Ptcpt", displayName: displayName("Participant"), kind: "component", type: "PartyIdentification272", required: false }),
       f({ name: "ParticipantAccount", isoId: "_0DhK7TEyEe6g-ffJsqGiSA", xmlTag: "PtcptAcct", displayName: displayName("ParticipantAccount"), kind: "component", type: "CashAccount40", required: false }),
       f({ name: "Reference", isoId: "_0DhK7zEyEe6g-ffJsqGiSA", xmlTag: "Ref", displayName: displayName("Reference"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "SequenceNumber", isoId: "_0DhK4zEyEe6g-ffJsqGiSA", xmlTag: "SeqNb", displayName: displayName("SequenceNumber"), kind: "number", type: "Number", required: false }),
-      f({ name: "SettlementAgent", isoId: "_0DhK5zEyEe6g-ffJsqGiSA", xmlTag: "SttlmAgt", displayName: displayName("SettlementAgent"), kind: "component", type: "PartyIdentification272", required: false }),
-      f({ name: "SettlementAgentAccount", isoId: "_0DhK6TEyEe6g-ffJsqGiSA", xmlTag: "SttlmAgtAcct", displayName: displayName("SettlementAgentAccount"), kind: "component", type: "CashAccount40", required: false }),
     ],
   },
   "MultilateralSettlementRequest3": {
@@ -165,11 +165,11 @@ const ownTypeDescriptors: TypeDescriptors = {
     fields: [
       f({ name: "InstructionIdentification", isoId: "_0BPS8TEyEe6g-ffJsqGiSA", xmlTag: "InstrId", displayName: displayName("InstructionIdentification"), kind: "text", type: "Max35Text", required: true }),
       f({ name: "InstructionPriority", isoId: "_0BPS8zEyEe6g-ffJsqGiSA", xmlTag: "InstrPrty", displayName: displayName("InstructionPriority"), kind: "code", type: "Priority3Code", required: false }),
-      f({ name: "MovementRecord", isoId: "_0BPS_TEyEe6g-ffJsqGiSA", xmlTag: "MvmntRcrd", displayName: displayName("MovementRecord"), kind: "component", type: "MovementRecord2", required: true, repeat: { min: 2, max: null } }),
-      f({ name: "NumberOfMovementRecords", isoId: "_0BPS-zEyEe6g-ffJsqGiSA", xmlTag: "NbOfMvmntRcrds", displayName: displayName("NumberOfMovementRecords"), kind: "number", type: "Number", required: false }),
-      f({ name: "SettlementCycle", isoId: "_0BPS-TEyEe6g-ffJsqGiSA", xmlTag: "SttlmCycl", displayName: displayName("SettlementCycle"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "SettlementPriority", isoId: "_0BPS9zEyEe6g-ffJsqGiSA", xmlTag: "SttlmPrty", displayName: displayName("SettlementPriority"), kind: "code", type: "Priority3Code", required: false }),
       f({ name: "SettlementTimeRequest", isoId: "_0BPS9TEyEe6g-ffJsqGiSA", xmlTag: "SttlmTmReq", displayName: displayName("SettlementTimeRequest"), kind: "component", type: "SettlementTimeRequest2", required: false }),
+      f({ name: "SettlementPriority", isoId: "_0BPS9zEyEe6g-ffJsqGiSA", xmlTag: "SttlmPrty", displayName: displayName("SettlementPriority"), kind: "code", type: "Priority3Code", required: false }),
+      f({ name: "SettlementCycle", isoId: "_0BPS-TEyEe6g-ffJsqGiSA", xmlTag: "SttlmCycl", displayName: displayName("SettlementCycle"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "NumberOfMovementRecords", isoId: "_0BPS-zEyEe6g-ffJsqGiSA", xmlTag: "NbOfMvmntRcrds", displayName: displayName("NumberOfMovementRecords"), kind: "number", type: "Number", required: false }),
+      f({ name: "MovementRecord", isoId: "_0BPS_TEyEe6g-ffJsqGiSA", xmlTag: "MvmntRcrd", displayName: displayName("MovementRecord"), kind: "component", type: "MovementRecord2", required: true, repeat: { min: 2, max: null } }),
     ],
   },
   "MultilateralSettlementRequestV02": {
@@ -186,12 +186,11 @@ const ownTypeDescriptors: TypeDescriptors = {
 
 /** Descriptors for every type of pacs.029.001.02, shared ones included. */
 export const typeDescriptors: TypeDescriptors = {
-  "DecimalNumber": sharedTypeDescriptors["DecimalNumber"]!,
-  "ISODateTime": sharedTypeDescriptors["ISODateTime"]!,
   "Max35Text": sharedTypeDescriptors["Max35Text"]!,
+  "ISODateTime": sharedTypeDescriptors["ISODateTime"]!,
   "Max15NumericText": sharedTypeDescriptors["Max15NumericText"]!,
-  "ExternalCashClearingSystem1Code": sharedTypeDescriptors["ExternalCashClearingSystem1Code"]!,
-  "ClearingSystemIdentification3Choice": sharedTypeDescriptors["ClearingSystemIdentification3Choice"]!,
+  "DecimalNumber": sharedTypeDescriptors["DecimalNumber"]!,
+  "SettlementMethod2Code": sharedTypeDescriptors["SettlementMethod2Code"]!,
   "IBAN2007Identifier": sharedTypeDescriptors["IBAN2007Identifier"]!,
   "Max34Text": sharedTypeDescriptors["Max34Text"]!,
   "ExternalAccountIdentification1Code": sharedTypeDescriptors["ExternalAccountIdentification1Code"]!,
@@ -207,9 +206,13 @@ export const typeDescriptors: TypeDescriptors = {
   "Max2048Text": sharedTypeDescriptors["Max2048Text"]!,
   "ProxyAccountIdentification1": sharedTypeDescriptors["ProxyAccountIdentification1"]!,
   "CashAccount40": sharedTypeDescriptors["CashAccount40"]!,
-  "SettlementMethod2Code": sharedTypeDescriptors["SettlementMethod2Code"]!,
+  "ExternalCashClearingSystem1Code": sharedTypeDescriptors["ExternalCashClearingSystem1Code"]!,
+  "ClearingSystemIdentification3Choice": sharedTypeDescriptors["ClearingSystemIdentification3Choice"]!,
   "SettlementInstruction14": sharedTypeDescriptors["SettlementInstruction14"]!,
   "Priority3Code": sharedTypeDescriptors["Priority3Code"]!,
+  "ISOTime": sharedTypeDescriptors["ISOTime"]!,
+  "SettlementTimeRequest2": sharedTypeDescriptors["SettlementTimeRequest2"]!,
+  "Number": sharedTypeDescriptors["Number"]!,
   "ActiveCurrencyAndAmount": sharedTypeDescriptors["ActiveCurrencyAndAmount"]!,
   "CreditDebitCode": sharedTypeDescriptors["CreditDebitCode"]!,
   "Max140Text": sharedTypeDescriptors["Max140Text"]!,
@@ -242,9 +245,6 @@ export const typeDescriptors: TypeDescriptors = {
   "PreferredContactMethod2Code": sharedTypeDescriptors["PreferredContactMethod2Code"]!,
   "Contact13": sharedTypeDescriptors["Contact13"]!,
   "PartyIdentification272": sharedTypeDescriptors["PartyIdentification272"]!,
-  "Number": sharedTypeDescriptors["Number"]!,
-  "ISOTime": sharedTypeDescriptors["ISOTime"]!,
-  "SettlementTimeRequest2": sharedTypeDescriptors["SettlementTimeRequest2"]!,
   "Max350Text": sharedTypeDescriptors["Max350Text"]!,
   "SupplementaryDataEnvelope1": sharedTypeDescriptors["SupplementaryDataEnvelope1"]!,
   "SupplementaryData1": sharedTypeDescriptors["SupplementaryData1"]!,
@@ -253,7 +253,6 @@ export const typeDescriptors: TypeDescriptors = {
 
 /** Schemas for every component/choice type, for editing a single type on its own. */
 export const schemas = {
-  "ClearingSystemIdentification3Choice": ClearingSystemIdentification3ChoiceSchema,
   "AccountSchemeName1Choice": AccountSchemeName1ChoiceSchema,
   "GenericAccountIdentification1": GenericAccountIdentification1Schema,
   "AccountIdentification4Choice": AccountIdentification4ChoiceSchema,
@@ -261,8 +260,10 @@ export const schemas = {
   "ProxyAccountType1Choice": ProxyAccountType1ChoiceSchema,
   "ProxyAccountIdentification1": ProxyAccountIdentification1Schema,
   "CashAccount40": CashAccount40Schema,
+  "ClearingSystemIdentification3Choice": ClearingSystemIdentification3ChoiceSchema,
   "SettlementInstruction14": SettlementInstruction14Schema,
   "GroupHeader104": GroupHeader104Schema,
+  "SettlementTimeRequest2": SettlementTimeRequest2Schema,
   "AmountAndDirection5": AmountAndDirection5Schema,
   "GenericIdentification30": GenericIdentification30Schema,
   "AddressType3Choice": AddressType3ChoiceSchema,
@@ -279,7 +280,6 @@ export const schemas = {
   "Contact13": Contact13Schema,
   "PartyIdentification272": PartyIdentification272Schema,
   "MovementRecord2": MovementRecord2Schema,
-  "SettlementTimeRequest2": SettlementTimeRequest2Schema,
   "MultilateralSettlementRequest3": MultilateralSettlementRequest3Schema,
   "SupplementaryData1": SupplementaryData1Schema,
   "MultilateralSettlementRequestV02": MultilateralSettlementRequestV02Schema,

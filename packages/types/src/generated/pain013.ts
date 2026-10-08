@@ -3,57 +3,57 @@
 import type { AdviceType1, AmountType4Choice, BranchAndFinancialInstitutionIdentification8, CashAccount40, Cheque19, CreditTransferMandateData1, DateAndDateTime2Choice, Document15, InstructionForCreditorAgent3, PartyIdentification272, PaymentCondition2, PaymentIdentification6, PaymentTypeInformation29, Purpose2Choice, RegulatoryReporting10, RemittanceInformation26, RemittanceLocation8, SupplementaryData1, TaxData1 } from './shared.ts';
 
 export interface GroupHeader112 {
-  ControlSum?: string;
-  CreationDateTime: string;
-  ForwardingAgent?: BranchAndFinancialInstitutionIdentification8;
-  InitiatingParty: PartyIdentification272;
   MessageIdentification: string;
+  CreationDateTime: string;
   NumberOfTransactions: string;
+  ControlSum?: string;
+  InitiatingParty: PartyIdentification272;
+  ForwardingAgent?: BranchAndFinancialInstitutionIdentification8;
 }
 
 export interface CreditTransferTransaction74 {
+  PaymentIdentification: PaymentIdentification6;
+  PaymentTypeInformation?: PaymentTypeInformation29;
+  PaymentCondition?: PaymentCondition2;
+  RequestedExecutionDate?: DateAndDateTime2Choice;
   Amount: AmountType4Choice;
   ChargeBearer?: "CRED" | "DEBT" | "SHAR" | "SLEV";
+  MandateRelatedInformation?: CreditTransferMandateData1;
   ChequeInstruction?: Cheque19;
-  Creditor: PartyIdentification272;
-  CreditorAccount?: CashAccount40;
-  CreditorAgent: BranchAndFinancialInstitutionIdentification8;
-  CreditorAgentAccount?: CashAccount40;
-  EnclosedFile?: Array<Document15>;
-  InstructionForCreditorAgent?: Array<InstructionForCreditorAgent3>;
+  UltimateDebtor?: PartyIdentification272;
   IntermediaryAgent1?: BranchAndFinancialInstitutionIdentification8;
   IntermediaryAgent2?: BranchAndFinancialInstitutionIdentification8;
   IntermediaryAgent3?: BranchAndFinancialInstitutionIdentification8;
-  MandateRelatedInformation?: CreditTransferMandateData1;
-  PaymentCondition?: PaymentCondition2;
-  PaymentIdentification: PaymentIdentification6;
-  PaymentTypeInformation?: PaymentTypeInformation29;
+  CreditorAgent: BranchAndFinancialInstitutionIdentification8;
+  CreditorAgentAccount?: CashAccount40;
+  Creditor: PartyIdentification272;
+  CreditorAccount?: CashAccount40;
+  UltimateCreditor?: PartyIdentification272;
+  InstructionForCreditorAgent?: Array<InstructionForCreditorAgent3>;
   Purpose?: Purpose2Choice;
   RegulatoryReporting?: Array<RegulatoryReporting10>;
+  Tax?: TaxData1;
   RelatedRemittanceInformation?: Array<RemittanceLocation8>;
   RemittanceInformation?: RemittanceInformation26;
-  RequestedExecutionDate?: DateAndDateTime2Choice;
+  EnclosedFile?: Array<Document15>;
   SupplementaryData?: Array<SupplementaryData1>;
-  Tax?: TaxData1;
-  UltimateCreditor?: PartyIdentification272;
-  UltimateDebtor?: PartyIdentification272;
 }
 
 export interface PaymentInstruction48 {
-  ChargeBearer?: "CRED" | "DEBT" | "SHAR" | "SLEV";
-  CreditTransferTransaction: Array<CreditTransferTransaction74>;
+  PaymentInformationIdentification?: string;
+  PaymentMethod: "CHK" | "TRF";
+  RequestedAdviceType?: AdviceType1;
+  PaymentTypeInformation?: PaymentTypeInformation29;
+  RequestedExecutionDate?: DateAndDateTime2Choice;
+  ExpiryDate?: DateAndDateTime2Choice;
+  PaymentCondition?: PaymentCondition2;
   Debtor: PartyIdentification272;
   DebtorAccount?: CashAccount40;
   DebtorAgent: BranchAndFinancialInstitutionIdentification8;
   DebtorAgentAccount?: CashAccount40;
-  ExpiryDate?: DateAndDateTime2Choice;
-  PaymentCondition?: PaymentCondition2;
-  PaymentInformationIdentification?: string;
-  PaymentMethod: "CHK" | "TRF";
-  PaymentTypeInformation?: PaymentTypeInformation29;
-  RequestedAdviceType?: AdviceType1;
-  RequestedExecutionDate?: DateAndDateTime2Choice;
   UltimateDebtor?: PartyIdentification272;
+  ChargeBearer?: "CRED" | "DEBT" | "SHAR" | "SLEV";
+  CreditTransferTransaction: Array<CreditTransferTransaction74>;
 }
 
 export interface CreditorPaymentActivationRequestV12 {

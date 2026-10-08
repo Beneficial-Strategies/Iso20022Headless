@@ -3,87 +3,87 @@
 import type { ATMContext25, ATMEquipment1, Acquirer7, ContentInformationType10, ContentInformationType15, CurrencyAndAmount, Header32, PaymentCard37, PostalAddress17, TerminalHosting1, TransactionIdentifier3 } from './shared.ts';
 
 export interface DisplayCapabilities5 {
-  AvailableFormat?: Array<"HTML" | "MREF" | "TEXT">;
-  AvailableLanguage?: Array<string>;
   Destination: Array<"CDSP" | "CRCP" | "CRDO">;
-  LineWidth?: string;
+  AvailableFormat?: Array<"HTML" | "MREF" | "TEXT">;
   NumberOfLines?: string;
+  LineWidth?: string;
+  AvailableLanguage?: Array<string>;
 }
 
 export interface PointOfInteractionCapabilities10 {
-  ApprovalCodeLength?: string;
-  Authentication?: Array<"FBIG" | "FBIO" | "FCPN" | "FDSG" | "FEPN" | "NPIN" | "PCOD" | "PKIS">;
-  CardCaptureCapable?: 'true' | 'false';
   CardReadData?: Array<"CICC" | "CTLS" | "ECTL" | "MGST">;
   CardWriteData?: Array<"CICC" | "CTLS" | "ECTL" | "MGST">;
-  DepositedMedia?: Array<"CARD" | "CHCK" | "CMDT" | "COIN" | "CPNS" | "ENVP" | "MLTP" | "NOTE" | "STMP" | "UDTM">;
-  InteractiveTransactions?: Array<string>;
-  MaxScriptLength?: string;
-  MessageCapabilities?: Array<DisplayCapabilities5>;
+  Authentication?: Array<"FBIG" | "FBIO" | "FCPN" | "FDSG" | "FEPN" | "NPIN" | "PCOD" | "PKIS">;
   PINLengthCapabilities?: string;
-  ReceiptPrinting?: 'true' | 'false';
+  ApprovalCodeLength?: string;
+  MaxScriptLength?: string;
+  CardCaptureCapable?: 'true' | 'false';
   WithdrawalMedia?: Array<"CARD" | "CMDT" | "COIN" | "CPNS" | "NOTE" | "STMP" | "UDTM">;
+  DepositedMedia?: Array<"CARD" | "CHCK" | "CMDT" | "COIN" | "CPNS" | "ENVP" | "MLTP" | "NOTE" | "STMP" | "UDTM">;
+  MessageCapabilities?: Array<DisplayCapabilities5>;
+  InteractiveTransactions?: Array<string>;
+  ReceiptPrinting?: 'true' | 'false';
 }
 
 export interface AutomatedTellerMachine12 {
-  AdditionalIdentification?: string;
-  BaseCurrency: string;
-  Capabilities?: PointOfInteractionCapabilities10;
-  Equipment?: ATMEquipment1;
   Identification: string;
+  AdditionalIdentification?: string;
+  SequenceNumber?: string;
+  BaseCurrency: string;
   Location?: PostalAddress17;
   LocationCategory?: "PRIV" | "PUBL";
-  SequenceNumber?: string;
-}
-
-export interface TransactionVerificationResult5 {
-  AdditionalResult?: string;
-  AuthenticationToken?: string;
-  Method: "BIOM" | "FPIN" | "MOBL" | "NPIN" | "OTHR" | "PSWD" | "SCNL" | "SCRT" | "TOKA";
-  Result?: "ERRR" | "FAIL" | "MISS" | "NOVF" | "PART" | "SUCC";
-  VerificationEntity?: "ACQR" | "AGNT" | "ICCD" | "ISSR" | "MERC" | "TRML";
+  Capabilities?: PointOfInteractionCapabilities10;
+  Equipment?: ATMEquipment1;
 }
 
 export interface ATMCustomerProfile6 {
+  RetrievalMode: "CRDF" | "OREQ" | "PREQ";
+  ProfileReference?: string;
   CustomerIdentification?: string;
   PreferredLanguage?: string;
-  ProfileReference?: string;
-  RetrievalMode: "CRDF" | "OREQ" | "PREQ";
+}
+
+export interface TransactionVerificationResult5 {
+  Method: "BIOM" | "FPIN" | "MOBL" | "NPIN" | "OTHR" | "PSWD" | "SCNL" | "SCRT" | "TOKA";
+  VerificationEntity?: "ACQR" | "AGNT" | "ICCD" | "ISSR" | "MERC" | "TRML";
+  Result?: "ERRR" | "FAIL" | "MISS" | "NOVF" | "PART" | "SUCC";
+  AdditionalResult?: string;
+  AuthenticationToken?: string;
 }
 
 export interface ATMCustomer7 {
-  AuthenticationResult: Array<TransactionVerificationResult5>;
   Profile?: ATMCustomerProfile6;
   SelectedLanguage?: string;
+  AuthenticationResult: Array<TransactionVerificationResult5>;
 }
 
 export interface ATMEnvironment20 {
-  ATM: AutomatedTellerMachine12;
-  ATMManagerIdentification?: string;
   Acquirer?: Acquirer7;
-  Card?: PaymentCard37;
-  Customer?: ATMCustomer7;
+  ATMManagerIdentification?: string;
   HostingEntity?: TerminalHosting1;
+  ATM: AutomatedTellerMachine12;
+  Customer?: ATMCustomer7;
+  Card?: PaymentCard37;
 }
 
 export interface ATMTransaction40 {
-  ElectronicPurseBalance?: CurrencyAndAmount;
+  TransactionIdentification?: TransactionIdentifier3;
+  ReconciliationIdentification?: string;
   Exception: Array<"CDCP" | "CDFG" | "CDRT" | "CUCL" | "MALF" | "SECU" | "SFRD" | "UCPT">;
   ExceptionDetail?: Array<string>;
-  ReconciliationIdentification?: string;
-  TransactionIdentification?: TransactionIdentifier3;
+  ElectronicPurseBalance?: CurrencyAndAmount;
 }
 
 export interface ATMExceptionAdvice2 {
-  Context?: ATMContext25;
   Environment?: ATMEnvironment20;
+  Context?: ATMContext25;
   Transaction: ATMTransaction40;
 }
 
 export interface ATMExceptionAdviceV02 {
-  ATMExceptionAdvice?: ATMExceptionAdvice2;
   Header: Header32;
   ProtectedATMExceptionAdvice?: ContentInformationType10;
+  ATMExceptionAdvice?: ATMExceptionAdvice2;
   SecurityTrailer?: ContentInformationType15;
 }
 

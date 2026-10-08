@@ -2,61 +2,61 @@
 // pacs.010.001.06 (FinancialInstitutionDirectDebitV06). Leaf values are wire strings.
 import type { ActiveCurrencyAndAmount, BranchAndFinancialInstitutionIdentification8, CashAccount40, InstructionForCreditorAgent3, PaymentIdentification13, PaymentTypeInformation28, Purpose2Choice, RemittanceInformation2, SettlementDateTimeIndication1, SettlementTimeRequest2, SupplementaryData1 } from './shared.ts';
 
+export interface GroupHeader119 {
+  MessageIdentification: string;
+  CreationDateTime: string;
+  NumberOfTransactions: string;
+  ControlSum?: string;
+  InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
+  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
+}
+
 export interface DirectDebitTransactionInformation33 {
+  PaymentIdentification: PaymentIdentification13;
+  PaymentTypeInformation?: PaymentTypeInformation28;
+  InterbankSettlementAmount: ActiveCurrencyAndAmount;
+  InterbankSettlementDate?: string;
+  SettlementPriority?: "HIGH" | "NORM" | "URGT";
+  SettlementTimeIndication?: SettlementDateTimeIndication1;
+  SettlementTimeRequest?: SettlementTimeRequest2;
+  UltimateDebtor?: BranchAndFinancialInstitutionIdentification8;
   Debtor: BranchAndFinancialInstitutionIdentification8;
   DebtorAccount?: CashAccount40;
   DebtorAgent?: BranchAndFinancialInstitutionIdentification8;
   DebtorAgentAccount?: CashAccount40;
   InstructionForDebtorAgent?: string;
-  InterbankSettlementAmount: ActiveCurrencyAndAmount;
-  InterbankSettlementDate?: string;
-  PaymentIdentification: PaymentIdentification13;
-  PaymentTypeInformation?: PaymentTypeInformation28;
   Purpose?: Purpose2Choice;
   RemittanceInformation?: RemittanceInformation2;
-  SettlementPriority?: "HIGH" | "NORM" | "URGT";
-  SettlementTimeIndication?: SettlementDateTimeIndication1;
-  SettlementTimeRequest?: SettlementTimeRequest2;
-  UltimateDebtor?: BranchAndFinancialInstitutionIdentification8;
 }
 
 export interface CreditTransferTransaction66 {
-  BatchBooking?: 'true' | 'false';
   CreditIdentification: string;
-  Creditor: BranchAndFinancialInstitutionIdentification8;
-  CreditorAccount?: CashAccount40;
-  CreditorAgent?: BranchAndFinancialInstitutionIdentification8;
-  CreditorAgentAccount?: CashAccount40;
-  DirectDebitTransactionInformation: Array<DirectDebitTransactionInformation33>;
-  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
-  InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
-  InstructionForCreditorAgent?: Array<InstructionForCreditorAgent3>;
+  BatchBooking?: 'true' | 'false';
+  PaymentTypeInformation?: PaymentTypeInformation28;
+  TotalInterbankSettlementAmount?: ActiveCurrencyAndAmount;
   InterbankSettlementDate?: string;
+  SettlementTimeIndication?: SettlementDateTimeIndication1;
+  InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
+  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
   IntermediaryAgent1?: BranchAndFinancialInstitutionIdentification8;
   IntermediaryAgent1Account?: CashAccount40;
   IntermediaryAgent2?: BranchAndFinancialInstitutionIdentification8;
   IntermediaryAgent2Account?: CashAccount40;
   IntermediaryAgent3?: BranchAndFinancialInstitutionIdentification8;
   IntermediaryAgent3Account?: CashAccount40;
-  PaymentTypeInformation?: PaymentTypeInformation28;
-  SettlementTimeIndication?: SettlementDateTimeIndication1;
-  SupplementaryData?: Array<SupplementaryData1>;
-  TotalInterbankSettlementAmount?: ActiveCurrencyAndAmount;
+  CreditorAgent?: BranchAndFinancialInstitutionIdentification8;
+  CreditorAgentAccount?: CashAccount40;
+  Creditor: BranchAndFinancialInstitutionIdentification8;
+  CreditorAccount?: CashAccount40;
   UltimateCreditor?: BranchAndFinancialInstitutionIdentification8;
-}
-
-export interface GroupHeader119 {
-  ControlSum?: string;
-  CreationDateTime: string;
-  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
-  InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
-  MessageIdentification: string;
-  NumberOfTransactions: string;
+  InstructionForCreditorAgent?: Array<InstructionForCreditorAgent3>;
+  DirectDebitTransactionInformation: Array<DirectDebitTransactionInformation33>;
+  SupplementaryData?: Array<SupplementaryData1>;
 }
 
 export interface FinancialInstitutionDirectDebitV06 {
-  CreditInstruction: Array<CreditTransferTransaction66>;
   GroupHeader: GroupHeader119;
+  CreditInstruction: Array<CreditTransferTransaction66>;
   SupplementaryData?: Array<SupplementaryData1>;
 }
 

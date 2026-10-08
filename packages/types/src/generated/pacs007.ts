@@ -3,50 +3,50 @@
 import type { ActiveCurrencyAndAmount, ActiveOrHistoricCurrencyAndAmount, Authorisation1Choice, BranchAndFinancialInstitutionIdentification8, Charges16, OriginalGroupHeader20, OriginalGroupInformation33, OriginalTransactionReference47, PaymentReversalReason10, SettlementDateTimeIndication1, SettlementInstruction15, SupplementaryData1 } from './shared.ts';
 
 export interface GroupHeader127 {
+  MessageIdentification: string;
+  CreationDateTime: string;
   Authorisation?: Array<Authorisation1Choice>;
   BatchBooking?: 'true' | 'false';
-  ControlSum?: string;
-  CreationDateTime: string;
-  GroupReversal?: 'true' | 'false';
-  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
-  InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
-  InterbankSettlementDate?: string;
-  MessageIdentification: string;
   NumberOfTransactions: string;
-  SettlementInformation: SettlementInstruction15;
+  ControlSum?: string;
+  GroupReversal?: 'true' | 'false';
   TotalReversedInterbankSettlementAmount?: ActiveCurrencyAndAmount;
+  InterbankSettlementDate?: string;
+  SettlementInformation: SettlementInstruction15;
+  InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
+  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
 }
 
 export interface PaymentTransaction182 {
-  ChargeBearer?: "CRED" | "DEBT" | "SHAR" | "SLEV";
-  ChargesInformation?: Array<Charges16>;
-  CompensationAmount?: ActiveOrHistoricCurrencyAndAmount;
-  ExchangeRate?: string;
-  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
-  InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
-  InterbankSettlementDate?: string;
-  OriginalClearingSystemReference?: string;
-  OriginalEndToEndIdentification?: string;
+  ReversalIdentification?: string;
   OriginalGroupInformation?: OriginalGroupInformation33;
   OriginalInstructionIdentification?: string;
-  OriginalInterbankSettlementAmount?: ActiveOrHistoricCurrencyAndAmount;
+  OriginalEndToEndIdentification?: string;
   OriginalTransactionIdentification?: string;
-  OriginalTransactionReference?: OriginalTransactionReference47;
   OriginalUETR?: string;
-  ReversalIdentification?: string;
-  ReversalReasonInformation?: Array<PaymentReversalReason10>;
-  ReversedInstructedAmount?: ActiveOrHistoricCurrencyAndAmount;
+  OriginalClearingSystemReference?: string;
+  OriginalInterbankSettlementAmount?: ActiveOrHistoricCurrencyAndAmount;
   ReversedInterbankSettlementAmount: ActiveCurrencyAndAmount;
+  InterbankSettlementDate?: string;
   SettlementPriority?: "HIGH" | "NORM" | "URGT";
   SettlementTimeIndication?: SettlementDateTimeIndication1;
+  ReversedInstructedAmount?: ActiveOrHistoricCurrencyAndAmount;
+  ExchangeRate?: string;
+  CompensationAmount?: ActiveOrHistoricCurrencyAndAmount;
+  ChargeBearer?: "CRED" | "DEBT" | "SHAR" | "SLEV";
+  ChargesInformation?: Array<Charges16>;
+  InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
+  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
+  ReversalReasonInformation?: Array<PaymentReversalReason10>;
+  OriginalTransactionReference?: OriginalTransactionReference47;
   SupplementaryData?: Array<SupplementaryData1>;
 }
 
 export interface FIToFIPaymentReversalV14 {
   GroupHeader: GroupHeader127;
   OriginalGroupInformation?: OriginalGroupHeader20;
-  SupplementaryData?: Array<SupplementaryData1>;
   TransactionInformation?: Array<PaymentTransaction182>;
+  SupplementaryData?: Array<SupplementaryData1>;
 }
 
 export type Pacs007Document = FIToFIPaymentReversalV14;

@@ -3,9 +3,9 @@
 import type { ATMCommand7, ATMContext25, AutomatedTellerMachine3, ContentInformationType10, ContentInformationType15, Header32, TransactionIdentifier3 } from './shared.ts';
 
 export interface ATMTransaction41 {
-  Command?: Array<ATMCommand7>;
-  Response: "APPR" | "DECL";
   TransactionIdentification?: TransactionIdentifier3;
+  Response: "APPR" | "DECL";
+  Command?: Array<ATMCommand7>;
 }
 
 export interface ATMExceptionAcknowledgement2 {
@@ -15,9 +15,9 @@ export interface ATMExceptionAcknowledgement2 {
 }
 
 export interface ATMExceptionAcknowledgementV02 {
-  ATMExceptionAcknowledgement?: ATMExceptionAcknowledgement2;
   Header: Header32;
   ProtectedATMExceptionAcknowledgement?: ContentInformationType10;
+  ATMExceptionAcknowledgement?: ATMExceptionAcknowledgement2;
   SecurityTrailer?: ContentInformationType15;
 }
 

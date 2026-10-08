@@ -2,57 +2,57 @@
 // caam.009.001.03 (ATMReconciliationAdviceV03). Leaf values are wire strings.
 import type { ATMCassette3, ATMCommandIdentification1, ATMEquipment1, ATMTotals4, Acquirer7, ContentInformationType10, ContentInformationType15, Header32, PaymentCard37, PostalAddress17, TerminalHosting1, TransactionIdentifier3 } from './shared.ts';
 
-export interface ATMCommand9 {
-  CommandIdentification?: ATMCommandIdentification1;
-  Type: "ABAL" | "CCNT" | "RPTC";
-}
-
-export interface ATMCommand8 {
-  AdditionalErrorInformation?: string;
-  CommandIdentification?: ATMCommandIdentification1;
-  ProcessedDateTime: string;
-  RequiredDateTime?: string;
-  Result: "CNTE" | "FMTE" | "HRDW" | "NSUP" | "SECR" | "SUCC" | "SYNE" | "TIMO" | "UKRF";
-  Type: "ABAL" | "CCNT" | "RPTC";
-}
-
 export interface AutomatedTellerMachine8 {
-  AdditionalIdentification?: string;
-  BaseCurrency: string;
-  Equipment?: ATMEquipment1;
   Identification: string;
+  AdditionalIdentification?: string;
+  SequenceNumber?: string;
+  BaseCurrency: string;
   Location?: PostalAddress17;
   LocationCategory?: "PRIV" | "PUBL";
-  SequenceNumber?: string;
+  Equipment?: ATMEquipment1;
 }
 
 export interface ATMEnvironment22 {
-  ATM: AutomatedTellerMachine8;
-  ATMManagerIdentification?: string;
   Acquirer?: Acquirer7;
-  Card?: PaymentCard37;
+  ATMManagerIdentification?: string;
   HostingEntity?: TerminalHosting1;
+  ATM: AutomatedTellerMachine8;
+  Card?: PaymentCard37;
+}
+
+export interface ATMCommand8 {
+  Type: "ABAL" | "CCNT" | "RPTC";
+  RequiredDateTime?: string;
+  ProcessedDateTime: string;
+  CommandIdentification?: ATMCommandIdentification1;
+  Result: "CNTE" | "FMTE" | "HRDW" | "NSUP" | "SECR" | "SUCC" | "SYNE" | "TIMO" | "UKRF";
+  AdditionalErrorInformation?: string;
+}
+
+export interface ATMCommand9 {
+  Type: "ABAL" | "CCNT" | "RPTC";
+  CommandIdentification?: ATMCommandIdentification1;
 }
 
 export interface ATMTotals3 {
-  AdditionalIdentification?: string;
-  Amount?: string;
-  Count: string;
-  Currency?: string;
   Identification: string;
+  AdditionalIdentification?: string;
   Period: "BDAY" | "CTOF" | "INQU" | "OPER";
+  Currency?: string;
+  Count: string;
+  Amount?: string;
 }
 
 export interface ATMReconciliationOperation1 {
-  ATMTotals?: Array<ATMTotals4>;
-  AdditionalTransactionInformation?: string;
-  Cassette?: Array<ATMCassette3>;
-  Incident?: Array<"CDCL" | "CDCP" | "CDER" | "CDFG" | "CDRT" | "CFGC" | "CHFG" | "CQFG" | "CQRT" | "CSRV" | "CUCL" | "CUDC" | "CUTO" | "DCFG" | "DCRT" | "DFGC" | "FILL" | "FMTE" | "LATE" | "MALF" | "NDCL" | "QFGC" | "RJCT" | "RSTR" | "SECU" | "SFRD" | "TIMO" | "UCMP" | "UCPT" | "USND" | "VLTE">;
-  ReconciliationIdentification: string;
-  RetainedCard?: string;
-  TransactionIdentification: TransactionIdentifier3;
-  TransactionTotals?: Array<ATMTotals3>;
   TypeOfOperation?: "ADJU" | "INSR" | "LOAD" | "RCUP" | "REMV" | "SWAP" | "UNLD";
+  TransactionIdentification: TransactionIdentifier3;
+  ReconciliationIdentification: string;
+  ATMTotals?: Array<ATMTotals4>;
+  Cassette?: Array<ATMCassette3>;
+  TransactionTotals?: Array<ATMTotals3>;
+  RetainedCard?: string;
+  AdditionalTransactionInformation?: string;
+  Incident?: Array<"CDCL" | "CDCP" | "CDER" | "CDFG" | "CDRT" | "CFGC" | "CHFG" | "CQFG" | "CQRT" | "CSRV" | "CUCL" | "CUDC" | "CUTO" | "DCFG" | "DCRT" | "DFGC" | "FILL" | "FMTE" | "LATE" | "MALF" | "NDCL" | "QFGC" | "RJCT" | "RSTR" | "SECU" | "SFRD" | "TIMO" | "UCMP" | "UCPT" | "USND" | "VLTE">;
 }
 
 export interface ATMTransaction36 {
@@ -60,16 +60,16 @@ export interface ATMTransaction36 {
 }
 
 export interface ATMReconciliationAdvice3 {
-  CommandContext?: ATMCommand9;
-  CommandResult?: Array<ATMCommand8>;
   Environment: ATMEnvironment22;
+  CommandResult?: Array<ATMCommand8>;
+  CommandContext?: ATMCommand9;
   Transaction: ATMTransaction36;
 }
 
 export interface ATMReconciliationAdviceV03 {
-  ATMReconciliationAdvice?: ATMReconciliationAdvice3;
   Header: Header32;
   ProtectedATMReconciliationAdvice?: ContentInformationType10;
+  ATMReconciliationAdvice?: ATMReconciliationAdvice3;
   SecurityTrailer?: ContentInformationType15;
 }
 

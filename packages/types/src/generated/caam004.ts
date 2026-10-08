@@ -2,32 +2,32 @@
 // caam.004.001.05 (ATMKeyDownloadResponseV05). Leaf values are wire strings.
 import type { ATMCommandIdentification1, ATMCommandParameters1Choice, ATMEnvironment7, ATMSecurityContext3, ATMSignature3Choice, ContentInformationType10, ContentInformationType13, CryptographicKey21, Header31 } from './shared.ts';
 
-export interface ATMCommand17 {
-  CommandIdentification?: ATMCommandIdentification1;
-  CommandParameters?: ATMCommandParameters1Choice;
-  DateTime?: string;
-  Type: "ABAL" | "ASTS" | "CCNT" | "CFGT" | "DISC" | "HKCG" | "HKRV" | "KACT" | "KCHG" | "KDAC" | "KDWL" | "KRMV" | "RREQ" | "SCFU" | "SNDM" | "SSCU" | "SSTU";
-  Urgency: "ASAP" | "CRIT" | "DTIM" | "ENCS";
-}
-
 export interface SecurityParameters19 {
   HostChallenge?: string;
   Key?: Array<CryptographicKey21>;
   SignatureChoice?: ATMSignature3Choice;
 }
 
+export interface ATMCommand17 {
+  Type: "ABAL" | "ASTS" | "CCNT" | "CFGT" | "DISC" | "HKCG" | "HKRV" | "KACT" | "KCHG" | "KDAC" | "KDWL" | "KRMV" | "RREQ" | "SCFU" | "SNDM" | "SSCU" | "SSTU";
+  Urgency: "ASAP" | "CRIT" | "DTIM" | "ENCS";
+  DateTime?: string;
+  CommandIdentification?: ATMCommandIdentification1;
+  CommandParameters?: ATMCommandParameters1Choice;
+}
+
 export interface ATMKeyDownloadResponse6 {
-  ATMChallenge?: string;
-  ATMSecurityContext: ATMSecurityContext3;
-  Command?: Array<ATMCommand17>;
   Environment: ATMEnvironment7;
+  ATMSecurityContext: ATMSecurityContext3;
+  ATMChallenge?: string;
   HostSecurityParameters: SecurityParameters19;
+  Command?: Array<ATMCommand17>;
 }
 
 export interface ATMKeyDownloadResponseV05 {
-  ATMKeyDownloadResponse?: ATMKeyDownloadResponse6;
   Header: Header31;
   ProtectedATMKeyDownloadResponse?: ContentInformationType10;
+  ATMKeyDownloadResponse?: ATMKeyDownloadResponse6;
   SecurityTrailer?: ContentInformationType13;
 }
 

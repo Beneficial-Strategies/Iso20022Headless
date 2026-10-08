@@ -2,53 +2,53 @@
 // caam.002.001.04 (ATMDeviceControlV04). Leaf values are wire strings.
 import type { ATMCommandIdentification1, ATMConfigurationParameter1, ATMEnvironment7, ATMSecurityConfiguration1, ContentInformationType10, ContentInformationType13, Header31 } from './shared.ts';
 
+export interface ATMCommandParameters1 {
+  SerialNumber?: string;
+  RequiredConfiguration?: ATMSecurityConfiguration1;
+  RequiredStatus?: "OPER" | "OUTS";
+}
+
 export interface KEKIdentifier4 {
+  Name?: string;
   KeyIdentification?: string;
   KeyVersion?: string;
-  Name?: string;
 }
 
 export interface ATMConfigurationParameter2 {
-  Certificate?: Array<string>;
-  HostChallenge?: string;
   KeyCategory?: "APPL" | "DATA" | "DYNC" | "KENC" | "MACK" | "PINK" | "WRKG";
+  HostChallenge?: string;
+  Certificate?: Array<string>;
   KeyProperties?: Array<KEKIdentifier4>;
-}
-
-export interface ATMCommandParameters1 {
-  RequiredConfiguration?: ATMSecurityConfiguration1;
-  RequiredStatus?: "OPER" | "OUTS";
-  SerialNumber?: string;
 }
 
 export type ATMCommandParameters3Choice =
   | { ATMRequiredGlobalStatus: "INSV" | "OUTS" }
   | { ExpectedMessageFunction: "BALN" | "DSEC" | "GSTS" | "INQC" | "KEYQ" | "SSTS" }
-  | { Key: ATMConfigurationParameter2 }
   | { RequiredConfigurationParameter: ATMConfigurationParameter1 }
   | { RequiredSecurityScheme: "APPK" | "CERT" | "DTCH" | "FRAN" | "LUXG" | "MANU" | "PKIP" | "SIGN" | "TR34" }
-  | { SecurityDevice: ATMCommandParameters1 };
+  | { SecurityDevice: ATMCommandParameters1 }
+  | { Key: ATMConfigurationParameter2 };
 
 export interface ATMCommand14 {
-  AdditionalReasonInformation?: string;
-  CommandIdentification?: ATMCommandIdentification1;
-  CommandParameters?: ATMCommandParameters3Choice;
-  DateTime?: string;
-  Reason?: "DIAG" | "MONI" | "SECU" | "SYNC" | "UPDT";
-  TraceReason?: Array<"DIAG" | "MONI" | "SECU" | "SYNC" | "UPDT">;
   Type: "ABAL" | "ASTS" | "CCNT" | "CFGT" | "DISC" | "HKCG" | "HKRV" | "KACT" | "KCHG" | "KDAC" | "KDWL" | "KRMV" | "RREQ" | "SCFU" | "SNDM" | "SSCU" | "SSTU";
   Urgency: "ASAP" | "CRIT" | "DTIM" | "ENCS";
+  DateTime?: string;
+  CommandIdentification?: ATMCommandIdentification1;
+  Reason?: "DIAG" | "MONI" | "SECU" | "SYNC" | "UPDT";
+  TraceReason?: Array<"DIAG" | "MONI" | "SECU" | "SYNC" | "UPDT">;
+  AdditionalReasonInformation?: string;
+  CommandParameters?: ATMCommandParameters3Choice;
 }
 
 export interface ATMDeviceControl3 {
-  Command?: Array<ATMCommand14>;
   Environment: ATMEnvironment7;
+  Command?: Array<ATMCommand14>;
 }
 
 export interface ATMDeviceControlV04 {
-  ATMDeviceControl?: ATMDeviceControl3;
   Header: Header31;
   ProtectedATMDeviceControl?: ContentInformationType10;
+  ATMDeviceControl?: ATMDeviceControl3;
   SecurityTrailer?: ContentInformationType13;
 }
 

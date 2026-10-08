@@ -2,63 +2,63 @@
 // pacs.003.001.12 (FIToFICustomerDirectDebitV12). Leaf values are wire strings.
 import type { ActiveCurrencyAndAmount, ActiveOrHistoricCurrencyAndAmount, Authorisation1Choice, BranchAndFinancialInstitutionIdentification8, CashAccount40, Charges16, DirectDebitTransaction12, PartyIdentification272, PaymentIdentification13, PaymentTypeInformation27, Purpose2Choice, RegulatoryReporting10, RemittanceInformation26, RemittanceLocation8, SettlementDateTimeIndication1, SettlementInstruction14, SupplementaryData1 } from './shared.ts';
 
+export interface GroupHeader125 {
+  MessageIdentification: string;
+  CreationDateTime: string;
+  Authorisation?: Array<Authorisation1Choice>;
+  BatchBooking?: 'true' | 'false';
+  NumberOfTransactions: string;
+  ControlSum?: string;
+  TotalInterbankSettlementAmount?: ActiveCurrencyAndAmount;
+  InterbankSettlementDate?: string;
+  SettlementInformation: SettlementInstruction14;
+  PaymentTypeInformation?: PaymentTypeInformation27;
+  InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
+  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
+}
+
 export interface DirectDebitTransactionInformation35 {
+  PaymentIdentification: PaymentIdentification13;
+  PaymentTypeInformation?: PaymentTypeInformation27;
+  InterbankSettlementAmount: ActiveCurrencyAndAmount;
+  InterbankSettlementDate?: string;
+  SettlementPriority?: "HIGH" | "NORM" | "URGT";
+  SettlementTimeIndication?: SettlementDateTimeIndication1;
+  InstructedAmount?: ActiveOrHistoricCurrencyAndAmount;
+  ExchangeRate?: string;
   ChargeBearer: "CRED" | "DEBT" | "SHAR" | "SLEV";
   ChargesInformation?: Array<Charges16>;
+  RequestedCollectionDate?: string;
+  DirectDebitTransaction?: DirectDebitTransaction12;
   Creditor: PartyIdentification272;
   CreditorAccount?: CashAccount40;
   CreditorAgent: BranchAndFinancialInstitutionIdentification8;
   CreditorAgentAccount?: CashAccount40;
-  Debtor: PartyIdentification272;
-  DebtorAccount: CashAccount40;
-  DebtorAgent: BranchAndFinancialInstitutionIdentification8;
-  DebtorAgentAccount?: CashAccount40;
-  DirectDebitTransaction?: DirectDebitTransaction12;
-  ExchangeRate?: string;
+  UltimateCreditor?: PartyIdentification272;
   InitiatingParty?: PartyIdentification272;
-  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
-  InstructedAmount?: ActiveOrHistoricCurrencyAndAmount;
   InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
-  InterbankSettlementAmount: ActiveCurrencyAndAmount;
-  InterbankSettlementDate?: string;
+  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
   IntermediaryAgent1?: BranchAndFinancialInstitutionIdentification8;
   IntermediaryAgent1Account?: CashAccount40;
   IntermediaryAgent2?: BranchAndFinancialInstitutionIdentification8;
   IntermediaryAgent2Account?: CashAccount40;
   IntermediaryAgent3?: BranchAndFinancialInstitutionIdentification8;
   IntermediaryAgent3Account?: CashAccount40;
-  PaymentIdentification: PaymentIdentification13;
-  PaymentTypeInformation?: PaymentTypeInformation27;
+  Debtor: PartyIdentification272;
+  DebtorAccount: CashAccount40;
+  DebtorAgent: BranchAndFinancialInstitutionIdentification8;
+  DebtorAgentAccount?: CashAccount40;
+  UltimateDebtor?: PartyIdentification272;
   Purpose?: Purpose2Choice;
   RegulatoryReporting?: Array<RegulatoryReporting10>;
   RelatedRemittanceInformation?: Array<RemittanceLocation8>;
   RemittanceInformation?: RemittanceInformation26;
-  RequestedCollectionDate?: string;
-  SettlementPriority?: "HIGH" | "NORM" | "URGT";
-  SettlementTimeIndication?: SettlementDateTimeIndication1;
   SupplementaryData?: Array<SupplementaryData1>;
-  UltimateCreditor?: PartyIdentification272;
-  UltimateDebtor?: PartyIdentification272;
-}
-
-export interface GroupHeader125 {
-  Authorisation?: Array<Authorisation1Choice>;
-  BatchBooking?: 'true' | 'false';
-  ControlSum?: string;
-  CreationDateTime: string;
-  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
-  InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
-  InterbankSettlementDate?: string;
-  MessageIdentification: string;
-  NumberOfTransactions: string;
-  PaymentTypeInformation?: PaymentTypeInformation27;
-  SettlementInformation: SettlementInstruction14;
-  TotalInterbankSettlementAmount?: ActiveCurrencyAndAmount;
 }
 
 export interface FIToFICustomerDirectDebitV12 {
-  DirectDebitTransactionInformation: Array<DirectDebitTransactionInformation35>;
   GroupHeader: GroupHeader125;
+  DirectDebitTransactionInformation: Array<DirectDebitTransactionInformation35>;
   SupplementaryData?: Array<SupplementaryData1>;
 }
 

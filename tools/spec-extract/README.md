@@ -8,5 +8,7 @@ Turns the ISO 20022 MCP's `get_spec_snapshot` output into the fixture files the 
 3. `pnpm --filter @beneficial-strategies/iso20022-spec-extract run extract analyze --snapshots <dir>` shows how many types,
    simple types and code sets each message adds; `write` creates `message.json`, `complex-types.tsv`, `snapshot-raw.tsv`,
    `choice-defs.tsv`, `codeset-defs.tsv` and a `needs.json`; `verify` re-derives pain.002 and compares it with the committed fixture.
+3b. **Member order** is not in the snapshot (it lists members alphabetically): download the message's XSD and run
+   `node src/cli.ts order --xsd <folder of XSDs>` to add its types to `fixtures/member-order.tsv`; the generator refuses a multi-member type without an order. See `fixtures/PROVENANCE-member-order.md`.
 4. `needs.json` lists what the snapshot cannot give and a lookup must: simple-type facets, code names (`get_code_set_details`),
    and business rules (`universal_lookup`). See `fixtures/PROVENANCE-pain-007-to-018.md` for a worked example.

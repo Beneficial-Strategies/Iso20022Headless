@@ -3,19 +3,19 @@
 import type { ATMCassette3, ATMCommand7, ATMTotals4, AutomatedTellerMachine3, ContentInformationType10, ContentInformationType15, Header32, TransactionIdentifier3 } from './shared.ts';
 
 export interface ResponseType12 {
-  AdditionalResponseInformation?: string;
   Response: "APPR" | "ASUP" | "DECL" | "PART";
   ResponseReason?: "ACPI" | "ACQS" | "ACTC" | "ACTF" | "ACTT" | "ADCC" | "ADDI" | "AGFE" | "AMLV" | "AMMA" | "AMTA" | "AMTD" | "AMTI" | "AMTO" | "AMTW" | "AUTH" | "BALO" | "BANK" | "BRHI" | "CHDI" | "CMKY" | "CNTC" | "CRDA" | "CRDF" | "CRDI" | "CRDL" | "CRDR" | "CRDS" | "CRDT" | "CRDU" | "CRDW" | "CRDX" | "CTFV" | "CTVG" | "DATI" | "DBER" | "FDCL" | "FEEM" | "FEES" | "FMTR" | "FNDI" | "FRDS" | "ICCM" | "ISSF" | "ISSO" | "ISSP" | "ISST" | "ISSU" | "KEYS" | "LBLA" | "LBLU" | "MACK" | "MACR" | "MEDI" | "NMBD" | "NMBW" | "NPRA" | "NPRC" | "OFFL" | "ONLP" | "ORGF" | "OTHR" | "PINA" | "PINC" | "PIND" | "PINE" | "PINN" | "PINS" | "PINV" | "PINX" | "QMAX" | "RECD" | "SACT" | "SECV" | "SEQO" | "SFWE" | "SGNI" | "SPCC" | "SRCH" | "SRVI" | "SRVU" | "SVSU" | "SYSM" | "SYSP" | "TKID" | "TKKO" | "TRMI" | "TTLV" | "TXND" | "TXNG" | "TXNL" | "TXNM" | "TXNU" | "TXNV" | "UNBC" | "UNBO" | "UNBP" | "VNDF" | "VNDR";
+  AdditionalResponseInformation?: string;
 }
 
 export interface ATMTransaction52 {
+  TypeOfOperation?: "ADJU" | "INSR" | "LOAD" | "RCUP" | "REMV" | "SWAP" | "UNLD";
+  TransactionIdentification: TransactionIdentifier3;
+  ReconciliationIdentification: string;
+  TransactionResponse: ResponseType12;
   ATMTotals?: Array<ATMTotals4>;
   Cassette?: Array<ATMCassette3>;
   Command?: Array<ATMCommand7>;
-  ReconciliationIdentification: string;
-  TransactionIdentification: TransactionIdentifier3;
-  TransactionResponse: ResponseType12;
-  TypeOfOperation?: "ADJU" | "INSR" | "LOAD" | "RCUP" | "REMV" | "SWAP" | "UNLD";
 }
 
 export interface ATMReconciliationAcknowledgement3 {
@@ -24,9 +24,9 @@ export interface ATMReconciliationAcknowledgement3 {
 }
 
 export interface ATMReconciliationAcknowledgementV03 {
-  ATMReconciliationAcknowledgement?: ATMReconciliationAcknowledgement3;
   Header: Header32;
   ProtectedATMReconciliationAcknowledgement?: ContentInformationType10;
+  ATMReconciliationAcknowledgement?: ATMReconciliationAcknowledgement3;
   SecurityTrailer?: ContentInformationType15;
 }
 

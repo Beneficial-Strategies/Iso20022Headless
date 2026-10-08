@@ -2,73 +2,76 @@
 // camt.029.001.14 (ResolutionOfInvestigationV14). Leaf values are wire strings.
 import type { ActiveCurrencyAndAmount, ActiveOrHistoricCurrencyAndAmount, BranchAndFinancialInstitutionIdentification8, Case6, CaseAssignment6, CashAccount40, ChargeType3Choice, DateAndDateTime2Choice, OriginalGroupInformation33, OriginalTransactionReference47, Party50Choice, PartyIdentification272, SupplementaryData1 } from './shared.ts';
 
+export type ModificationStatusReason1Choice =
+  | { Code: string }
+  | { Proprietary: string };
+
+export type InvestigationStatus6Choice =
+  | { Confirmation: string }
+  | { RejectedModification: ModificationStatusReason1Choice }
+  | { DuplicateOf: Case6 }
+  | { AssignmentCancellationConfirmation: 'true' | 'false' };
+
 export type CancellationStatusReason3Choice =
   | { Code: string }
   | { Proprietary: string };
 
 export interface CancellationStatusReason5 {
-  AdditionalInformation?: Array<string>;
   Originator?: PartyIdentification272;
   Reason?: CancellationStatusReason3Choice;
+  AdditionalInformation?: Array<string>;
 }
 
 export interface NumberOfTransactionsPerStatus1 {
-  DetailedControlSum?: string;
   DetailedNumberOfTransactions: string;
   DetailedStatus: "ACCP" | "ACCR" | "ACSC" | "ACSP" | "ACTC" | "ACWC" | "PDNG" | "RJCT";
+  DetailedControlSum?: string;
 }
 
 export interface OriginalGroupHeader23 {
-  CancellationStatusReasonInformation?: Array<CancellationStatusReason5>;
-  GroupCancellationStatus?: "ACCR" | "PACR" | "PDCR" | "RJCR";
-  NumberOfTransactionsPerCancellationStatus?: Array<NumberOfTransactionsPerStatus1>;
-  OriginalControlSum?: string;
-  OriginalCreationDateTime?: string;
   OriginalGroupCancellationIdentification?: string;
+  ResolvedCase?: Case6;
   OriginalMessageIdentification: string;
   OriginalMessageNameIdentification: string;
+  OriginalCreationDateTime?: string;
   OriginalNumberOfTransactions?: string;
-  ResolvedCase?: Case6;
+  OriginalControlSum?: string;
+  GroupCancellationStatus?: "ACCR" | "PACR" | "PDCR" | "RJCR";
+  CancellationStatusReasonInformation?: Array<CancellationStatusReason5>;
+  NumberOfTransactionsPerCancellationStatus?: Array<NumberOfTransactionsPerStatus1>;
 }
 
 export interface NumberOfCancellationsPerStatus1 {
-  DetailedControlSum?: string;
   DetailedNumberOfTransactions: string;
   DetailedStatus: "ACCR" | "PDCR" | "RJCR";
+  DetailedControlSum?: string;
 }
 
 export interface PaymentTransaction175 {
   CancellationStatusIdentification?: string;
-  CancellationStatusReasonInformation?: Array<CancellationStatusReason5>;
-  OriginalEndToEndIdentification?: string;
-  OriginalInstructedAmount?: ActiveOrHistoricCurrencyAndAmount;
-  OriginalInstructionIdentification?: string;
-  OriginalRequestedCollectionDate?: string;
-  OriginalRequestedExecutionDate?: DateAndDateTime2Choice;
-  OriginalTransactionReference?: OriginalTransactionReference47;
   ResolvedCase?: Case6;
-  TransactionCancellationStatus?: "ACCR" | "PDCR" | "RJCR";
+  OriginalInstructionIdentification?: string;
+  OriginalEndToEndIdentification?: string;
   UETR?: string;
+  TransactionCancellationStatus?: "ACCR" | "PDCR" | "RJCR";
+  CancellationStatusReasonInformation?: Array<CancellationStatusReason5>;
+  OriginalInstructedAmount?: ActiveOrHistoricCurrencyAndAmount;
+  OriginalRequestedExecutionDate?: DateAndDateTime2Choice;
+  OriginalRequestedCollectionDate?: string;
+  OriginalTransactionReference?: OriginalTransactionReference47;
 }
 
 export interface OriginalPaymentInstruction54 {
-  CancellationStatusReasonInformation?: Array<CancellationStatusReason5>;
-  NumberOfTransactionsPerCancellationStatus?: Array<NumberOfCancellationsPerStatus1>;
-  OriginalControlSum?: string;
+  OriginalPaymentInformationCancellationIdentification?: string;
+  ResolvedCase?: Case6;
+  OriginalPaymentInformationIdentification: string;
   OriginalGroupInformation?: OriginalGroupInformation33;
   OriginalNumberOfTransactions?: string;
-  OriginalPaymentInformationCancellationIdentification?: string;
-  OriginalPaymentInformationIdentification: string;
+  OriginalControlSum?: string;
   PaymentInformationCancellationStatus?: "ACCR" | "PACR" | "PDCR" | "RJCR";
-  ResolvedCase?: Case6;
+  CancellationStatusReasonInformation?: Array<CancellationStatusReason5>;
+  NumberOfTransactionsPerCancellationStatus?: Array<NumberOfCancellationsPerStatus1>;
   TransactionInformationAndStatus?: Array<PaymentTransaction175>;
-}
-
-export interface Charges14 {
-  Agent: BranchAndFinancialInstitutionIdentification8;
-  AgentAccount?: CashAccount40;
-  Amount: ActiveOrHistoricCurrencyAndAmount;
-  Type?: ChargeType3Choice;
 }
 
 export type CompensationReason1Choice =
@@ -77,41 +80,48 @@ export type CompensationReason1Choice =
 
 export interface Compensation5 {
   Amount: ActiveCurrencyAndAmount;
-  CreditorAgent: BranchAndFinancialInstitutionIdentification8;
-  CreditorAgentAccount?: CashAccount40;
   DebtorAgent: BranchAndFinancialInstitutionIdentification8;
   DebtorAgentAccount?: CashAccount40;
+  CreditorAgent: BranchAndFinancialInstitutionIdentification8;
+  CreditorAgentAccount?: CashAccount40;
   Reason: CompensationReason1Choice;
 }
 
+export interface Charges14 {
+  Amount: ActiveOrHistoricCurrencyAndAmount;
+  Agent: BranchAndFinancialInstitutionIdentification8;
+  AgentAccount?: CashAccount40;
+  Type?: ChargeType3Choice;
+}
+
 export interface ResolutionData5 {
-  ChargesInformation?: Array<Charges14>;
-  ClearingChannel?: "BOOK" | "MPNS" | "RTGS" | "RTNS";
-  Compensation?: Compensation5;
   EndToEndIdentification?: string;
-  InterbankSettlementAmount?: ActiveOrHistoricCurrencyAndAmount;
-  InterbankSettlementDate?: string;
   TransactionIdentification?: string;
   UETR?: string;
+  InterbankSettlementAmount?: ActiveOrHistoricCurrencyAndAmount;
+  InterbankSettlementDate?: string;
+  ClearingChannel?: "BOOK" | "MPNS" | "RTGS" | "RTNS";
+  Compensation?: Compensation5;
+  ChargesInformation?: Array<Charges14>;
 }
 
 export interface PaymentTransaction170 {
-  Assignee?: Party50Choice;
-  Assigner?: Party50Choice;
   CancellationStatusIdentification?: string;
-  CancellationStatusReasonInformation?: Array<CancellationStatusReason5>;
-  OriginalClearingSystemReference?: string;
-  OriginalEndToEndIdentification?: string;
+  ResolvedCase?: Case6;
   OriginalGroupInformation?: OriginalGroupInformation33;
   OriginalInstructionIdentification?: string;
+  OriginalEndToEndIdentification?: string;
+  OriginalTransactionIdentification?: string;
+  OriginalClearingSystemReference?: string;
+  OriginalUETR?: string;
+  TransactionCancellationStatus?: "ACCR" | "PDCR" | "RJCR";
+  CancellationStatusReasonInformation?: Array<CancellationStatusReason5>;
+  ResolutionRelatedInformation?: ResolutionData5;
   OriginalInterbankSettlementAmount?: ActiveOrHistoricCurrencyAndAmount;
   OriginalInterbankSettlementDate?: string;
-  OriginalTransactionIdentification?: string;
+  Assigner?: Party50Choice;
+  Assignee?: Party50Choice;
   OriginalTransactionReference?: OriginalTransactionReference47;
-  OriginalUETR?: string;
-  ResolutionRelatedInformation?: ResolutionData5;
-  ResolvedCase?: Case6;
-  TransactionCancellationStatus?: "ACCR" | "PDCR" | "RJCR";
 }
 
 export interface UnderlyingTransaction35 {
@@ -120,22 +130,12 @@ export interface UnderlyingTransaction35 {
   TransactionInformationAndStatus?: Array<PaymentTransaction170>;
 }
 
-export type ModificationStatusReason1Choice =
-  | { Code: string }
-  | { Proprietary: string };
-
-export type InvestigationStatus6Choice =
-  | { AssignmentCancellationConfirmation: 'true' | 'false' }
-  | { Confirmation: string }
-  | { DuplicateOf: Case6 }
-  | { RejectedModification: ModificationStatusReason1Choice };
-
 export interface ResolutionOfInvestigationV14 {
   Assignment: CaseAssignment6;
-  CancellationDetails?: Array<UnderlyingTransaction35>;
-  ResolutionRelatedInformation?: ResolutionData5;
   ResolvedCase?: Case6;
   Status: InvestigationStatus6Choice;
+  CancellationDetails?: Array<UnderlyingTransaction35>;
+  ResolutionRelatedInformation?: ResolutionData5;
   SupplementaryData?: Array<SupplementaryData1>;
 }
 
