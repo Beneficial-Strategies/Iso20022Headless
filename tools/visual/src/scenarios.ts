@@ -39,7 +39,7 @@ const openType = async (page: Page): Promise<void> => {
   await page.click('[data-type-picker]');
   await settle();
 };
-const openDisplay = (page: Page) => clickText(page, 'header button', /display|pantalla/);
+const openDisplay = (page: Page) => clickText(page, 'header button', /display|pantalla|affichage|anzeige|exibi/);
 async function addPaymentAndOpenMethod(page: Page): Promise<void> {
   await clickText(page, 'button', /add payment information|añadir información del pago/);
   await page.locator('#PaymentInformation-0-PaymentMethod').click();
@@ -715,6 +715,7 @@ function copyAsScenarios(): Scenario[] {
     {
       ...base,
       name: 'copyas-markdown-follows-the-screen',
+      query: '?lang=en', // ISO English: the export carries the standard's own labels
       steps: async (page) => {
         await fill(page);
         await includeSection(page, 'include-GroupHeader-InitiatingParty-PostalAddress');
@@ -1676,6 +1677,52 @@ function specLinkScenarios(): Scenario[] {
   ];
 }
 
+/** Languages: the dropdown, each shipped language laid out (long German words, accents), and American spelling. */
+function languageScenarios(): Scenario[] {
+  const bodyText = (page: Page) => page.evaluate(() => document.body.innerText);
+  const openLang = async (page: Page) => {
+    await openDisplay(page);
+  };
+  const shows = (...needles: RegExp[]) => async (page: Page): Promise<string[]> => {
+    const text = await bodyText(page);
+    return needles.filter((n) => !n.test(text)).map((n) => `the page does not show ${n}`);
+  };
+  const lacks = (...needles: RegExp[]) => async (page: Page): Promise<string[]> => {
+    const text = await bodyText(page);
+    return needles.filter((n) => n.test(text)).map((n) => `the page still shows ${n}`);
+  };
+  const base = { app: 'demo-form' as const, viewport: { width: 1440, height: 900 } };
+  return [
+    {
+      ...base,
+      name: 'language-dropdown',
+      query: '?lang=de',
+      steps: openLang,
+      expect: async (page) => {
+        const facts = await page.evaluate(() => {
+          const sel = document.querySelector<HTMLSelectElement>('[role=dialog] select');
+          const a = [...document.querySelectorAll<HTMLAnchorElement>('[role=dialog] a')].find((x) => /issues\/new/.test(x.href));
+          return { values: sel ? [...sel.options].map((o) => `${o.value}=${o.textContent}`) : [], selected: sel?.value, href: a?.href ?? '', target: a?.target };
+        });
+        const problems: string[] = [];
+        const want = ['auto=Automatisch (Browser)', 'en=English (ISO)', 'en-US=English (US)', 'es=Español', 'fr=Français', 'de=Deutsch', 'pt=Português'];
+        if (JSON.stringify(facts.values) !== JSON.stringify(want)) problems.push(`the language list is ${JSON.stringify(facts.values)}`);
+        if (facts.selected !== 'de') problems.push(`the dropdown shows ${facts.selected}, not de`);
+        if (!/title=Wording\+%28de%29/.test(facts.href)) problems.push(`the report link does not name the language: ${facts.href}`);
+        if (facts.target !== '_blank') problems.push('the report link does not open a new window');
+        return problems;
+      },
+    },
+    { ...base, name: 'language-french', query: '?lang=fr', expect: shows(/Copier le XML|Enregistrer le XML/, /Explorateur de messages ISO 20022/) },
+    { ...base, name: 'language-german-narrow', query: '?lang=de&size=large', viewport: { width: 480, height: 900 }, expect: shows(/Anzeige/) },
+    { ...base, name: 'language-german-dark', query: '?lang=de&theme=dark', expect: shows(/XML speichern|Datei laden/, /ISO 20022 Message Explorer/) },
+    { ...base, name: 'language-portuguese-dark', query: '?lang=pt&theme=dark', expect: shows(/Guardar XML/, /Explorador de mensagens ISO 20022/) },
+    { ...base, name: 'language-portuguese-brazil-tag', query: '?lang=pt', expect: shows(/Guardar XML/) },
+    { ...base, name: 'language-iso-english-keeps-iso-spelling', query: '?lang=en', expect: shows(/Authorisation/i) },
+    { ...base, name: 'language-american-english-spelling', query: '?lang=en-US', expect: async (page) => [...(await shows(/Authorization/i)(page)), ...(await lacks(/Authoris|Organis/i)(page))] },
+  ];
+}
+
 /** What a browser tab shows: the title, and icons that really load. */
 export const headFacts = (page: Page) =>
   page.evaluate(async () => {
@@ -2246,12 +2293,14 @@ export const scenarios: Scenario[] = [
   ...pickerScenarios(),
   ...fieldWidthScenarios(),
   ...headScenarios(),
+  ...languageScenarios(),
   { name: 'type-picker-open-narrow', app: 'demo-form', viewport: { width: 480, height: 900 }, steps: openType },
   { name: 'display-open', app: 'demo-form', viewport: { width: 1440, height: 900 }, steps: openDisplay },
   { name: 'display-open-narrow-spanish', app: 'demo-form', query: '?lang=es', viewport: { width: 480, height: 900 }, steps: openDisplay },
   {
     name: 'dropdown-open',
     app: 'demo-form',
+    query: '?lang=en', // ISO English: the dropdown shows the standard's own words ("Cheque")
     viewport: { width: 1440, height: 900 },
     steps: addPaymentAndOpenMethod,
     expect: async (page) => {

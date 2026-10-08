@@ -528,7 +528,7 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
             <MessagePicker area={area} value={settings.message} onChange={(message) => update({ message })} />
             {bundle && typeName ? <TypePicker bundle={bundle} value={typeName} onChange={(type) => setChosenType({ message: settings.message, type })} /> : null}
             <HoverHelp className="shrink-0" title={dt('helpDisplayTitle')} text={dt('helpDisplay')}>
-              <SettingsPanel settings={settings} skins={skins} locales={locales} onChange={update} />
+              <SettingsPanel settings={settings} skins={skins} locales={locales} locale={locale} onChange={update} />
             </HoverHelp>
           </div>
         </header>

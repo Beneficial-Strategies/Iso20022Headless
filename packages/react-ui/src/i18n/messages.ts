@@ -1,4 +1,8 @@
 import { formatMessage, type MessageParams } from '@beneficial-strategies/iso20022-validate';
+import { plural } from './plural.ts';
+import { uiDe } from './ui.de.ts';
+import { uiFr } from './ui.fr.ts';
+import { uiPt } from './ui.pt.ts';
 
 export type UiMessage = string | ((p: MessageParams) => string);
 
@@ -14,7 +18,7 @@ const KEYS = [
   // settings
   'display', 'displayDialog', 'theme', 'theme_system', 'theme_light', 'theme_dark', 'themeHint', 'textSize', 'size_normal',
   'size_large', 'size_xlarge', 'density', 'density_comfortable', 'density_compact', 'skinLegend', 'skin_tailwind',
-  'skin_tailwind_desc', 'skin_plain', 'skin_plain_desc', 'language', 'lang_auto', 'outputFormat', 'format_xml', 'format_json', 'formatHint', 'copyJson', 'messageLabel', 'loading', 'settingsNote',
+  'skin_tailwind_desc', 'skin_plain', 'skin_plain_desc', 'language', 'lang_auto', 'reportWording', 'outputFormat', 'format_xml', 'format_json', 'formatHint', 'copyJson', 'messageLabel', 'loading', 'settingsNote',
   // implement dialog
   'implement', 'implementTitle', 'implementIntro', 'implementUnpublished', 'stackLabel', 'stackReact', 'stackVue', 'stackSvelte', 'stackOther',
   'stylingLabel', 'stylingTailwind', 'extrasLabel', 'extrasOutput', 'pmLabel', 'close', 'copy', 'copiedShort',
@@ -44,7 +48,14 @@ export type UiMessages = Record<UiKey, UiMessage>;
 export const UI_KEYS: readonly UiKey[] = KEYS;
 
 /** Language names are shown in their own language so a user can always find theirs. */
-export const LANGUAGE_NAMES: Record<string, string> = { en: 'English', es: 'Español' };
+export const LANGUAGE_NAMES: Record<string, string> = {
+  en: 'English (ISO)',
+  'en-US': 'English (US)',
+  es: 'Español',
+  fr: 'Français',
+  de: 'Deutsch',
+  pt: 'Português',
+};
 
 export const uiEn: UiMessages = {
   required: '(required)',
@@ -114,6 +125,7 @@ export const uiEn: UiMessages = {
   skin_plain_desc: 'Unstyled semantic HTML: fieldset, label, native select, details. Browser defaults only.',
   language: 'Language',
   lang_auto: 'Automatic (browser)',
+  reportWording: 'Report a wording problem',
   outputFormat: 'Output format',
   format_xml: 'XML',
   format_json: 'JSON',
@@ -245,7 +257,6 @@ export const uiEn: UiMessages = {
   aboutFootnote: 'Definitions and code lists come from the ISO 20022 repository. Spanish text is machine-translated and not yet reviewed.',
 };
 
-const plural = (n: number | string | undefined, one: string, many: string): string => (Number(n) === 1 ? one : many);
 
 export const uiEs: UiMessages = {
   required: '(obligatorio)',
@@ -315,6 +326,7 @@ export const uiEs: UiMessages = {
   skin_plain_desc: 'HTML semántico sin estilos: fieldset, label, select nativo y details. Solo los valores predeterminados del navegador.',
   language: 'Idioma',
   lang_auto: 'Automático (navegador)',
+  reportWording: 'Informar de un problema de redacción',
   outputFormat: 'Formato de salida',
   format_xml: 'XML',
   format_json: 'JSON',
@@ -446,8 +458,16 @@ export const uiEs: UiMessages = {
   aboutFootnote: 'Las definiciones y las listas de códigos provienen del repositorio de ISO 20022. El texto en español es una traducción automática y aún no está revisado.',
 };
 
-/** Languages shipped with the demo. Others can be added through `createI18n` / `DemoApp`'s `i18n` prop. */
-export const uiLocales: Record<string, Partial<UiMessages>> = { en: uiEn, es: uiEs };
+/** Languages shipped with the library. Others can be added through `createI18n` / `DemoApp`'s `i18n` prop. */
+export const uiLocales: Record<string, Partial<UiMessages>> = {
+  en: uiEn,
+  // American English changes the ISO text's spelling and a few terms (see the validate package's `enUS`); the interface wording needs nothing of its own
+  'en-US': {},
+  es: uiEs,
+  fr: uiFr,
+  de: uiDe,
+  pt: uiPt,
+};
 
 export function createUiMessages(locale: string, overrides: Partial<UiMessages> = {}, locales: Record<string, Partial<UiMessages>> = uiLocales): UiMessages {
   const lang = locale.split('-')[0] ?? 'en';

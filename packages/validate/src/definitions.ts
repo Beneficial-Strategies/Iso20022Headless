@@ -1,9 +1,11 @@
 // Spec definitions and translated labels. A separate entry point, so validation-only consumers
 // don't bundle ~50 KB of prose.
 import type { FieldDescriptor, TypeDescriptor } from './runtime.ts';
+import { applyVariant, englishVariants, type TextVariant } from './variants.ts';
 import { codeDefinitions, codeSetDefinitions, fieldDefinitions, typeDefinitions } from './generated/definitions.ts';
 
 export * from './generated/definitions.ts';
+export { applyVariant, englishVariants, enUS, type TextVariant } from './variants.ts';
 
 export type TranslationStatus = 'machine' | 'reviewed';
 
@@ -64,8 +66,12 @@ export function createDefinitions(
   locale = 'en',
   overrides: DefinitionCatalog = {},
   locales: Record<string, DefinitionCatalog> = definitionLocales,
+  variants: Record<string, TextVariant> = englishVariants,
 ): Definitions {
   const lang = locale.split('-')[0] ?? 'en';
+  // A regional English (`en-US`) is the ISO English with rewrite rules; text a catalog wrote for that tag itself is left alone.
+  const variant = lang === 'en' ? variants[locale] : undefined;
+  const iso = (l: Localized): Localized => (variant && l.lang === 'en' ? { ...l, text: applyVariant(l.text, variant) } : l);
   const layers: Layer[] = [];
   const add = (l: string, catalog: DefinitionCatalog | undefined) => catalog && layers.push({ lang: l, catalog });
   add(locale, overrides);
@@ -77,7 +83,7 @@ export function createDefinitions(
     if (!id) return undefined;
     for (const { lang: l, catalog } of layers) {
       const e = pick(catalog)?.[id];
-      if (e) return asLocalized(e, l);
+      if (e) return iso(asLocalized(e, l));
     }
     return undefined;
   };
@@ -88,8 +94,8 @@ export function createDefinitions(
     field: (field, fieldType) => find((c) => c.fields, field.isoId) ?? find((c) => c.types, fieldType?.isoId),
     type: (type) => find((c) => c.types, type?.isoId),
     code: (option) => find((c) => c.codes, option.isoId),
-    label: (field, fallback) => find((c) => c.labels, field.isoId) ?? { text: fallback, lang: 'en' },
-    codeName: (option, fallback) => find((c) => c.codeNames, option.isoId) ?? { text: fallback, lang: 'en' },
-    rule: (rule, fallback) => find((c) => c.rules, rule.isoId) ?? { text: fallback, lang: 'en' },
+    label: (field, fallback) => find((c) => c.labels, field.isoId) ?? iso({ text: fallback, lang: 'en' }),
+    codeName: (option, fallback) => find((c) => c.codeNames, option.isoId) ?? iso({ text: fallback, lang: 'en' }),
+    rule: (rule, fallback) => find((c) => c.rules, rule.isoId) ?? iso({ text: fallback, lang: 'en' }),
   };
 }

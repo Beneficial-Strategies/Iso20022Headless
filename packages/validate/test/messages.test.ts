@@ -78,7 +78,7 @@ describe('catalogs', () => {
 
   it('a regional tag falls back to its language, then to English', () => {
     expect(formatIssue({ code: 'required' }, createMessages('es-MX'))).toBe('Obligatorio');
-    expect(formatIssue({ code: 'required' }, createMessages('fr'))).toBe('Required');
+    expect(formatIssue({ code: 'required' }, createMessages('it'))).toBe('Required');
     expect(formatIssue({ code: 'required' }, createMessages())).toBe('Required');
   });
 
