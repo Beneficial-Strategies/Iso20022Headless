@@ -1557,6 +1557,57 @@ function zoomScenarios(): Scenario[] {
     },
     {
       ...base,
+      name: 'zoom-keeps-the-values',
+      steps: async (page) => {
+        await page.locator('#GroupHeader-MessageIdentification').fill('MSG-1');
+        await page.locator('#GroupHeader-InitiatingParty-Name').fill('Acme Ltd');
+        await settle(200);
+        await page.locator(ZOOM('PartyIdentification272')).click();
+        await settle(800);
+      },
+      expect: async (page) => {
+        const r = await page.evaluate(() => ({
+          name: document.querySelector<HTMLInputElement>('[data-schema-form] input[id$="Name"]')?.value ?? null,
+          errors: [...document.querySelectorAll('[data-schema-form] .text-danger')].map((e) => e.textContent ?? '').filter((t) => t.trim() && t.trim() !== '*'),
+          xml: document.querySelector('.cm-content')?.textContent ?? document.body.innerText,
+        }));
+        const problems: string[] = [];
+        if (r.name !== 'Acme Ltd') problems.push(`the zoomed form shows the name "${r.name}", not the one typed in the outer message`);
+        if (r.errors.length) problems.push(`zooming showed errors the user has not earned: ${JSON.stringify(r.errors)}`);
+        if (!/Acme Ltd/.test(r.xml)) problems.push('the XML of the zoomed part does not contain the name');
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'zoom-out-brings-the-outer-message-back-with-the-edits',
+      steps: async (page) => {
+        await page.locator('#GroupHeader-MessageIdentification').fill('MSG-1');
+        await page.locator('#GroupHeader-InitiatingParty-Name').fill('Acme Ltd');
+        await settle(200);
+        await page.locator(ZOOM('PartyIdentification272')).click();
+        await settle(800);
+        await page.locator('[data-schema-form] input[id$="Name"]').fill('Acme Holdings');
+        await settle(200);
+        await openType(page);
+        await page.keyboard.type('CustomerCreditTransferInitiationV13');
+        await settle();
+        await clickText(page, '[cmdk-item]', /^CustomerCreditTransferInitiationV13/);
+        await settle(800);
+      },
+      expect: async (page) => {
+        const r = await page.evaluate(() => ({
+          id: document.querySelector<HTMLInputElement>('#GroupHeader-MessageIdentification')?.value ?? null,
+          name: document.querySelector<HTMLInputElement>('#GroupHeader-InitiatingParty-Name')?.value ?? null,
+        }));
+        const problems: string[] = [];
+        if (r.id !== 'MSG-1') problems.push(`the message identification typed before zooming is "${r.id}"`);
+        if (r.name !== 'Acme Holdings') problems.push(`the name edited while zoomed did not come back: "${r.name}"`);
+        return problems;
+      },
+    },
+    {
+      ...base,
       name: 'zoom-into-branch-data',
       steps: async (page) => {
         await openType(page);

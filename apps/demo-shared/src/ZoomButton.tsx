@@ -4,7 +4,8 @@ import { INFO_BUTTON_CLASS, Popup, useHoverTip, useI18n, useSkin, type FieldExtr
 /**
  * The demos' own "zoom" button, imposed on the form from outside: the form library has no idea what zooming is. It is given
  * to `SchemaForm` as `fieldExtra`, so it appears right after the "i" of every element that is a component type; clicking it
- * calls `onZoom` with the type's name (the demos then show that type on its own, as picking it in the type list does).
+ * calls `onZoom` with the type's name and where the element sits (the demos then show that type on its own, starting with the
+ * element's values, as picking it in the type list does otherwise; see zoom.ts).
  * Its wording is the demo's too, in the languages the demos ship.
  */
 const TEXT: Record<string, { label: string; short: string; tip: string }> = {
@@ -79,6 +80,6 @@ export function ZoomButton({ type, onZoom }: { type: string; onZoom: () => void 
 
 /** The `fieldExtra` of the demos: a zoom button on every element that is a component type (not on values, choices, or the form title). */
 export const zoomExtra =
-  (onZoom: (type: string) => void) =>
+  (onZoom: (type: string, path: string) => void) =>
   (element: FieldExtraContext) =>
-    element.kind === 'component' ? <ZoomButton type={element.type} onZoom={() => onZoom(element.type)} /> : null;
+    element.kind === 'component' ? <ZoomButton type={element.type} onZoom={() => onZoom(element.type, element.path)} /> : null;
