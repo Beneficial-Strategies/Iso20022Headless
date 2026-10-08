@@ -1,0 +1,138 @@
+[
+  {
+    "term": "Debtor",
+    "to": "devedor"
+  },
+  {
+    "term": "Creditor",
+    "to": "credor"
+  },
+  {
+    "term": "Ultimate Debtor",
+    "to": "devedor final"
+  },
+  {
+    "term": "Ultimate Creditor",
+    "to": "credor final"
+  },
+  {
+    "term": "Debtor Agent",
+    "to": "instituição do devedor"
+  },
+  {
+    "term": "Creditor Agent",
+    "to": "instituição do credor"
+  },
+  {
+    "term": "Intermediary Agent",
+    "to": "instituição intermediária"
+  },
+  {
+    "term": "Forwarding Agent",
+    "to": "instituição de reenvio"
+  },
+  {
+    "term": "Initiating Party",
+    "to": "parte iniciadora"
+  },
+  {
+    "term": "Credit Transfer",
+    "to": "transferência"
+  },
+  {
+    "term": "Payment Information",
+    "to": "informações de pagamento"
+  },
+  {
+    "term": "Transaction",
+    "to": "operação"
+  },
+  {
+    "term": "Instruction",
+    "to": "instrução"
+  },
+  {
+    "term": "Remittance Information",
+    "to": "informações de remessa"
+  },
+  {
+    "term": "Charge Bearer",
+    "to": "encargos"
+  },
+  {
+    "term": "Control Sum",
+    "to": "soma de controlo"
+  },
+  {
+    "term": "Number of Transactions",
+    "to": "número de operações"
+  },
+  {
+    "term": "Requested Execution Date",
+    "to": "data de execução solicitada"
+  },
+  {
+    "term": "Batch Booking",
+    "to": "lote"
+  },
+  {
+    "term": "Account",
+    "to": "conta"
+  },
+  {
+    "term": "Mandate",
+    "to": "mandato"
+  },
+  {
+    "term": "Purpose",
+    "to": "finalidade"
+  },
+  {
+    "term": "Authorisation",
+    "to": "autorização"
+  },
+  {
+    "term": "Supplementary Data",
+    "to": "dados suplementares"
+  },
+  {
+    "term": "Garnishment",
+    "to": "penhora"
+  },
+  {
+    "term": "Message",
+    "to": "mensagem"
+  },
+  {
+    "term": "Payment",
+    "to": "pagamento"
+  },
+  {
+    "term": "Party",
+    "to": "parte"
+  },
+  {
+    "term": "Financial Institution",
+    "to": "instituição financeira"
+  },
+  {
+    "term": "Reference",
+    "to": "referência"
+  },
+  {
+    "term": "Identification",
+    "to": "identificação"
+  },
+  {
+    "term": "Cheque",
+    "to": "cheque"
+  },
+  {
+    "term": "Creation Date Time",
+    "to": "data e hora de criação"
+  },
+  {
+    "term": "Reversal",
+    "to": "reversão"
+  }
+]

@@ -34,7 +34,7 @@ export const tailwindSkin: Skin = {
   Group: function Group({ title, required, info, note, error, children }) {
     const { t } = useI18n();
     return (
-      <fieldset className="rounded border border-line bg-surface-alt p-3">
+      <fieldset className="min-w-0 rounded border border-line bg-surface-alt p-3">
         <legend className="px-1 text-sm font-semibold text-fg">
           {title}
           {required ? <span className="ml-1 text-xs font-normal text-muted">{t('required')}</span> : null}
@@ -94,7 +94,7 @@ export const tailwindSkin: Skin = {
       aria-label={ariaLabel}
       disabled={disabled}
       onClick={onClick}
-      className={`rounded px-2 py-0.5 text-xs focus-visible:ring-2 focus-visible:ring-focus disabled:opacity-40 ${btn[variant]}`}
+      className={`max-w-full break-words rounded px-2 py-0.5 text-xs focus-visible:ring-2 focus-visible:ring-focus disabled:opacity-40 ${btn[variant]}`}
     >
       {children}
     </button>
@@ -130,7 +130,7 @@ export const tailwindSkin: Skin = {
   },
   ListHeader: ({ title, info, note, caption, action }) => (
     <div>
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1">
         <span className="text-sm font-semibold text-fg">
           {title}
           <span className="ml-1 align-middle">{info}</span>

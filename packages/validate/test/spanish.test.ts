@@ -16,7 +16,7 @@ describe('the shipped Spanish catalog', () => {
     expect(shippedDefinitionLocales).toContain('es');
     expect(await loadDefinitionCatalog('es')).toBe(es);
     expect(await loadDefinitionCatalog('es-MX')).toBe(es);
-    expect(await loadDefinitionCatalog('fr')).toBeUndefined();
+    expect(await loadDefinitionCatalog('it')).toBeUndefined();
   });
 
   it('covers every element, type, code, code set and rule of the message', () => {

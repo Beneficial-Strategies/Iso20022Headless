@@ -9,15 +9,15 @@ Anything else a host registers (`I18nOverrides`) works the same way.
 | --- | --- | --- | --- | --- |
 | Interface text (buttons, dialogs) | `packages/react-ui/src/i18n` | ISO English | translated | translated |
 | Validation messages and pattern hints | `packages/validate/src/messages.ts`, `patterns.ts` | ISO English | translated | translated |
-| ISO spec text: element labels, definitions, code names, rules | `packages/validate/src/locales/<lang>.catalog.json` | ISO text rewritten (below) | translated | **not yet**; shows ISO English and says so |
+| ISO spec text: element labels, definitions, code names, rules | `packages/validate/src/locales/<lang>.catalog.json` | ISO text rewritten (below) | translated | translated |
 
-All translations are machine-drafted until a person reviews them. Spec-text entries carry that status; the interface says so too.
+All translations are machine-drafted until a person reviews them. Spec-text entries carry that status and the interface says so. Each spec-text catalog holds the 6,309 units of all 37 messages and loads on demand, so a language costs nothing until it is used. The core payment terms (Debtor, Creditor, Agent, ...) are fixed per language in `i18n/glossary.<lang>.json`.
 
 ## Fallback
 
 Text is looked up from the most specific tag to the least, and the last stop is always the ISO English text:
 
-    es-MX -> es -> en (ISO)          en-US -> en (ISO)          fr -> en (ISO)   (no French spec text yet)
+    es-MX -> es -> en (ISO)          en-US -> en (ISO)          pt-BR -> pt -> en (ISO)
 
 `en` is the ISO repository's wording exactly ("Organisation", "Cheque"), so it is the right choice when quoting the standard.
 The demos keep their own text separate from the library's, so their fallback is their own English, not the ISO text.

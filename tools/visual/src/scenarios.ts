@@ -1718,6 +1718,9 @@ function languageScenarios(): Scenario[] {
     { ...base, name: 'language-german-dark', query: '?lang=de&theme=dark', expect: shows(/XML speichern|Datei laden/, /ISO 20022 Message Explorer/) },
     { ...base, name: 'language-portuguese-dark', query: '?lang=pt&theme=dark', expect: shows(/Guardar XML/, /Explorador de mensagens ISO 20022/) },
     { ...base, name: 'language-portuguese-brazil-tag', query: '?lang=pt', expect: shows(/Guardar XML/) },
+    { ...base, name: 'language-french-spec-text', query: '?lang=fr', expect: shows(/En-tête de groupe/, /Identification du message/) },
+    { ...base, name: 'language-german-spec-text-dark', query: '?lang=de&theme=dark', expect: shows(/Gruppenkopf/, /Nachrichtenidentifikation/) },
+    { ...base, name: 'language-portuguese-spec-text', query: '?lang=pt', expect: shows(/Cabeçalho do grupo/, /Identificação da mensagem/) },
     { ...base, name: 'language-iso-english-keeps-iso-spelling', query: '?lang=en', expect: shows(/Authorisation/i) },
     { ...base, name: 'language-american-english-spelling', query: '?lang=en-US', expect: async (page) => [...(await shows(/Authorization/i)(page)), ...(await lacks(/Authoris|Organis/i)(page))] },
   ];
