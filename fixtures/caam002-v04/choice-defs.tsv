@@ -1,7 +1,7 @@
 choice	memberId	memberName	text
 ATMCommandParameters3Choice	_htqcMV2aEeekzJIz1JxYSQ	ATMRequiredGlobalStatus	Required status of the ATM, parameters of the status update command.
 ATMCommandParameters3Choice	_htqcM12aEeekzJIz1JxYSQ	ExpectedMessageFunction	Message to send for the send message command.
-ATMCommandParameters3Choice	_htqcO12aEeekzJIz1JxYSQ	Key	Parameters to be used by the various cryptographic key commands.
 ATMCommandParameters3Choice	_htqcNV2aEeekzJIz1JxYSQ	RequiredConfigurationParameter	Parameters to be used by the configuration update command.
 ATMCommandParameters3Choice	_htqcN12aEeekzJIz1JxYSQ	RequiredSecurityScheme	Parameters to be used by the security scheme update command.
 ATMCommandParameters3Choice	_htqcOV2aEeekzJIz1JxYSQ	SecurityDevice	Parameters to be used to update the configuration or the status security device.
+ATMCommandParameters3Choice	_htqcO12aEeekzJIz1JxYSQ	Key	Parameters to be used by the various cryptographic key commands.

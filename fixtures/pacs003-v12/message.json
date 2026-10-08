@@ -8,20 +8,20 @@
   "definition": "Scope|The FinancialInstitutionToFinancialInstitutionCustomerDirectDebit message is sent by the creditor agent to the debtor agent, directly or through other agents and/or a payment clearing and settlement system.|It is used to collect funds from a debtor account for a creditor.|Usage|The FItoFICustomerDirectDebit message can contain one or more customer direct debit instructions.|The FIToFICustomerDirectDebit message does not allow for grouping.|The FItoFICustomerDirectDebit message may or may not contain mandate related information, that is extracts from a mandate, such as the MandateIdentification or DateOfSignature. The FIToFICustomerDirectDebit message must not be considered as a mandate.|The FItoFICustomerDirectDebit message can be used in domestic and cross-border scenarios.",
   "blocks": [
     {
-      "name": "DirectDebitTransactionInformation",
-      "isoId": "c5179f78-56f5-42e9-9c68-4b71f61b26e7",
-      "xmlTag": "DrctDbtTxInf",
-      "type": "DirectDebitTransactionInformation35",
-      "min": 1,
-      "max": null
-    },
-    {
       "name": "GroupHeader",
       "isoId": "94e9c21c-7612-4bba-aaf5-7bcc976ee526",
       "xmlTag": "GrpHdr",
       "type": "GroupHeader125",
       "min": 1,
       "max": 1
+    },
+    {
+      "name": "DirectDebitTransactionInformation",
+      "isoId": "c5179f78-56f5-42e9-9c68-4b71f61b26e7",
+      "xmlTag": "DrctDbtTxInf",
+      "type": "DirectDebitTransactionInformation35",
+      "min": 1,
+      "max": null
     },
     {
       "name": "SupplementaryData",

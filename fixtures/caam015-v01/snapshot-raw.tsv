@@ -3,7 +3,7 @@ DATATYPE	ATMReconciliationRequestComponent1	_OKbxsJ2uEe-4seDr3Li2Ew	MessageCompo
 MEMBER	ATMReconciliationRequestComponent1	_bOon0J2uEe-4seDr3Li2Ew	Environment	Envt	Component	ATMEnvironment7	1	1	Environment of the transaction.
 MEMBER	ATMReconciliationRequestComponent1	_lVOdUJ2uEe-4seDr3Li2Ew	Transaction	Tx	Component	ATMTransaction30	0	1	Information of the reconciliation transaction.
 DATATYPE	ATMTransaction30	_yy25YJ2pEe-4seDr3Li2Ew	MessageComponent	Registered	865F8BF1568F2D4C	Information about reconciliation.
-MEMBER	ATMTransaction30	_b3t94J2qEe-4seDr3Li2Ew	Cassette	Csstt	Component	ATMCassette3	0	*	Information on the cassettes of the ATM.
-MEMBER	ATMTransaction30	_RxIIYJ2qEe-4seDr3Li2Ew	ReconciliationIdentification	RcncltnId	Attribute	Max35Text	0	1	Identification of the reconciliation period assigned by the ATM.
-MEMBER	ATMTransaction30	_Hqi58J2qEe-4seDr3Li2Ew	TransactionIdentification	TxId	Component	TransactionIdentifier3	0	1	Identification of the reconciliation transaction.
 MEMBER	ATMTransaction30	_9j7PQJ2pEe-4seDr3Li2Ew	TypeOfOperation	TpOfOpr	Codeset	ATMOperation2Code	1	1	Type of logical or physical operation on the ATM for which the counters are computed.
+MEMBER	ATMTransaction30	_Hqi58J2qEe-4seDr3Li2Ew	TransactionIdentification	TxId	Component	TransactionIdentifier3	0	1	Identification of the reconciliation transaction.
+MEMBER	ATMTransaction30	_RxIIYJ2qEe-4seDr3Li2Ew	ReconciliationIdentification	RcncltnId	Attribute	Max35Text	0	1	Identification of the reconciliation period assigned by the ATM.
+MEMBER	ATMTransaction30	_b3t94J2qEe-4seDr3Li2Ew	Cassette	Csstt	Component	ATMCassette3	0	*	Information on the cassettes of the ATM.

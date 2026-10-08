@@ -8,14 +8,6 @@
   "definition": "The ATMExceptionAcknowledgement message is sent by an acquirer or its agent to an ATM to acknowledge the receipt of an ATMExceptionAdvice message.",
   "blocks": [
     {
-      "name": "ATMExceptionAcknowledgement",
-      "isoId": "_46x7Z6FCEe-MRKYsaX6JDg",
-      "xmlTag": "ATMXcptnAck",
-      "type": "ATMExceptionAcknowledgement2",
-      "min": 0,
-      "max": 1
-    },
-    {
       "name": "Header",
       "isoId": "_46x7Y6FCEe-MRKYsaX6JDg",
       "xmlTag": "Hdr",
@@ -28,6 +20,14 @@
       "isoId": "_46x7ZaFCEe-MRKYsaX6JDg",
       "xmlTag": "PrtctdATMXcptnAck",
       "type": "ContentInformationType10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ATMExceptionAcknowledgement",
+      "isoId": "_46x7Z6FCEe-MRKYsaX6JDg",
+      "xmlTag": "ATMXcptnAck",
+      "type": "ATMExceptionAcknowledgement2",
       "min": 0,
       "max": 1
     },

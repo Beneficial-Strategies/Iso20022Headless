@@ -16,18 +16,18 @@
       "max": 1
     },
     {
-      "name": "HostToATMAcknowledgement",
-      "isoId": "_FlTp8ItsEeSDLd7nI4Quzw",
-      "xmlTag": "HstToATMAck",
-      "type": "HostToATMAcknowledgement1",
-      "min": 0,
-      "max": 1
-    },
-    {
       "name": "ProtectedHostToATMAcknowledgement",
       "isoId": "_7SogQItrEeSDLd7nI4Quzw",
       "xmlTag": "PrtctdHstToATMAck",
       "type": "ContentInformationType10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "HostToATMAcknowledgement",
+      "isoId": "_FlTp8ItsEeSDLd7nI4Quzw",
+      "xmlTag": "HstToATMAck",
+      "type": "HostToATMAcknowledgement1",
       "min": 0,
       "max": 1
     },

@@ -8,14 +8,6 @@
   "definition": "Information related to the protocol management on a segment of the path from the ATM to the acquirer.",
   "blocks": [
     {
-      "name": "ATMConfigurationControl",
-      "isoId": "_KBR7kKE-Ee-MRKYsaX6JDg",
-      "xmlTag": "ATMCfgtnCtrl",
-      "type": "ATMConfigurationControlComponent1",
-      "min": 0,
-      "max": 1
-    },
-    {
       "name": "Header",
       "isoId": "_JcInIKE-Ee-MRKYsaX6JDg",
       "xmlTag": "Hdr",
@@ -28,6 +20,14 @@
       "isoId": "_JwCakKE-Ee-MRKYsaX6JDg",
       "xmlTag": "PrtctdATMCfgtnCtrl",
       "type": "ContentInformationType10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ATMConfigurationControl",
+      "isoId": "_KBR7kKE-Ee-MRKYsaX6JDg",
+      "xmlTag": "ATMCfgtnCtrl",
+      "type": "ATMConfigurationControlComponent1",
       "min": 0,
       "max": 1
     },

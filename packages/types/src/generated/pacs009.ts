@@ -7,7 +7,7 @@ export interface CreditTransferTransaction80 {
   PaymentTypeInformation?: PaymentTypeInformation28;
   InterbankSettlementAmount: ActiveCurrencyAndAmount;
   InterbankSettlementDate?: string;
-  SettlementPriority?: "HIGH" | "NORM" | "URGT";
+  SettlementPriority?: "URGT" | "HIGH" | "NORM";
   SettlementTimeIndication?: SettlementDateTimeIndication1;
   SettlementTimeRequest?: SettlementTimeRequest2;
   ExpiryDateTime?: string;
@@ -49,7 +49,7 @@ export interface CreditTransferTransaction79 {
   PaymentTypeInformation?: PaymentTypeInformation28;
   InterbankSettlementAmount: ActiveCurrencyAndAmount;
   InterbankSettlementDate?: string;
-  SettlementPriority?: "HIGH" | "NORM" | "URGT";
+  SettlementPriority?: "URGT" | "HIGH" | "NORM";
   SettlementTimeIndication?: SettlementDateTimeIndication1;
   SettlementTimeRequest?: SettlementTimeRequest2;
   ExpiryDateTime?: string;

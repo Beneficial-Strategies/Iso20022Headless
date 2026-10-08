@@ -3,7 +3,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { simpleTypeRows, simpleTypesTsv, closureOf, messageJson, writeStructure, type Closure, type MessageSpec } from './extract.ts';
 import { loadSnapshots } from './snapshot.ts';
-import { mergeOrders, orderFileText, parseOrderFile, typeOrders } from './xsd-order.ts';
+import { codeOrders, mergeOrders, orderFileText, parseOrderFile, typeOrders } from './xsd-order.ts';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../../..');
 const fixtures = resolve(root, 'fixtures');
@@ -181,7 +181,18 @@ function writeOrder(): number {
   for (const c of conflicts) console.log(`conflict: ${c}`);
   if (conflicts.length) return 1;
   writeFileSync(file, orderFileText(orders));
-  console.log(`member-order.tsv: ${orders.size} types from ${files.size - (existsSync(file) ? 0 : 0)} files`);
+  console.log(`member-order.tsv: ${orders.size} types from ${files.size} files`);
+
+  // codes in the XSD's enumeration order, which is the spec's
+  const codeFile = resolve(fixtures, 'code-order.tsv');
+  const codeFiles = new Map<string, ReturnType<typeof codeOrders>>();
+  if (existsSync(codeFile)) codeFiles.set('fixtures/code-order.tsv', [...parseOrderFile(readFileSync(codeFile, 'utf8'))].map(([type, tags]) => ({ type, tags })));
+  for (const f of readdirSync(dir).filter((x) => x.endsWith('.xsd')).sort()) codeFiles.set(f, codeOrders(readFileSync(resolve(dir, f), 'utf8')));
+  const codes = mergeOrders(codeFiles);
+  for (const c of codes.conflicts) console.log(`conflict: ${c}`);
+  if (codes.conflicts.length) return 1;
+  writeFileSync(codeFile, orderFileText(codes.orders));
+  console.log(`code-order.tsv: ${codes.orders.size} code sets`);
   return 0;
 }
 

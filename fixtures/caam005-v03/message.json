@@ -8,14 +8,6 @@
   "definition": "The ATMDiagnosticRequest message is sent from an ATM to an acquirer to verify the availability of the acquirer. The acquirer will also validate that this ATM is a valid ATM for its particular network.",
   "blocks": [
     {
-      "name": "ATMDiagnosticRequest",
-      "isoId": "_h37q16FCEe-MRKYsaX6JDg",
-      "xmlTag": "ATMDgnstcReq",
-      "type": "ATMDiagnosticRequest3",
-      "min": 0,
-      "max": 1
-    },
-    {
       "name": "Header",
       "isoId": "_h37q06FCEe-MRKYsaX6JDg",
       "xmlTag": "Hdr",
@@ -28,6 +20,14 @@
       "isoId": "_h37q1aFCEe-MRKYsaX6JDg",
       "xmlTag": "PrtctdATMDgnstcReq",
       "type": "ContentInformationType10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ATMDiagnosticRequest",
+      "isoId": "_h37q16FCEe-MRKYsaX6JDg",
+      "xmlTag": "ATMDgnstcReq",
+      "type": "ATMDiagnosticRequest3",
       "min": 0,
       "max": 1
     },

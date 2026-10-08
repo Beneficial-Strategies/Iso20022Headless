@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { mergeOrders, orderFileText, parseOrderFile, typeOrders } from '../src/xsd-order.ts';
+import { codeOrders, mergeOrders, orderFileText, parseOrderFile, typeOrders } from '../src/xsd-order.ts';
 
 const xsd = (types: string): string => `<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"><xs:element name="Document" type="Document"/>${types}</xs:schema>`;
 
@@ -38,5 +38,11 @@ describe('member order from an XSD', () => {
     const text = orderFileText(orders);
     expect(text).toBe('type\ttags\nAlpha1\tX,Y,Z\nZed1\tB,A\n');
     expect(parseOrderFile(text)).toEqual(new Map([['Alpha1', ['X', 'Y', 'Z']], ['Zed1', ['B', 'A']]]));
+  });
+
+  it('reads the values of a code set in enumeration order, skipping simple types that are not enumerations', () => {
+    const codes = '<xs:simpleType name="PaymentMethod3Code"><xs:restriction base="xs:string"><xs:enumeration value="CHK"/><xs:enumeration value="TRF"/><xs:enumeration value="TRA"/></xs:restriction></xs:simpleType>';
+    const text = '<xs:simpleType name="Max35Text"><xs:restriction base="xs:string"><xs:minLength value="1"/><xs:maxLength value="35"/></xs:restriction></xs:simpleType>';
+    expect(codeOrders(xsd(codes + text))).toEqual([{ type: 'PaymentMethod3Code', tags: ['CHK', 'TRF', 'TRA'] }]);
   });
 });

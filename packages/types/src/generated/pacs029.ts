@@ -28,9 +28,9 @@ export interface MovementRecord2 {
 
 export interface MultilateralSettlementRequest3 {
   InstructionIdentification: string;
-  InstructionPriority?: "HIGH" | "NORM" | "URGT";
+  InstructionPriority?: "URGT" | "HIGH" | "NORM";
   SettlementTimeRequest?: SettlementTimeRequest2;
-  SettlementPriority?: "HIGH" | "NORM" | "URGT";
+  SettlementPriority?: "URGT" | "HIGH" | "NORM";
   SettlementCycle?: string;
   NumberOfMovementRecords?: string;
   MovementRecord: Array<MovementRecord2>;

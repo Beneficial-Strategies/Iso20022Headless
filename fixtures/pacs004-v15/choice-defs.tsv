@@ -3,14 +3,14 @@ ReturnReason5Choice	_TP6Pktp-Ed-ak6NoX_4Aeg_-1676326035	Code	Reason for the retu
 ReturnReason5Choice	_TP6Pk9p-Ed-ak6NoX_4Aeg_-1676325975	Proprietary	Reason for the return, in a proprietary form.
 CryptographicKey1Choice	_P_rPsD6xEe-QZYT2pcGFZw	ILPV4	Cryptographic key represented as a ILP V4 packet.
 CryptographicKey1Choice	_UbZNED6xEe-QZYT2pcGFZw	Signature	Cryptographic key represented as a signature.
-References80Choice	_gTBiJ4YdEe-Pv9KR9bv9IA	AccountServicerTransactionIdentification	Unambiguous identification of the transaction as known by the account servicer.
-References80Choice	_gTBiQYYdEe-Pv9KR9bv9IA	CommonIdentification	Unique reference agreed upon by the two trade counterparties to identify the trade.
-References80Choice	_gTBiN4YdEe-Pv9KR9bv9IA	CounterpartyMarketInfrastructureTransactionIdentification	Identification of a counterparty transaction assigned by a market infrastructure other than a central securities depository, for example, Target2-Securities.
-References80Choice	_gTBiJYYdEe-Pv9KR9bv9IA	IntraBalanceMovementIdentification	Unambiguous identification of the intra balance movement transaction as known by the account owner.
-References80Choice	_gTBiI4YdEe-Pv9KR9bv9IA	IntraPositionMovementIdentification	Unambiguous identification of the intra-position movement transaction as known by the account owner (or instructing party acting on its behalf).
-References80Choice	_gTBiL4YdEe-Pv9KR9bv9IA	MarketInfrastructureTransactionIdentification	Identification of a transaction assigned by a market infrastructure other than a central securities depository, for example, Target2-Securities.
-References80Choice	_gTBiUYYdEe-Pv9KR9bv9IA	OtherTransactionIdentification	Identification of a transaction that cannot be identified using a standard reference element present in the message.
-References80Choice	_gTBiOYYdEe-Pv9KR9bv9IA	PoolIdentification	Collective reference identifying a set of messages.
 References80Choice	_gTBiIYYdEe-Pv9KR9bv9IA	SecuritiesSettlementTransactionIdentification	Unambiguous identification of a securities settlement transaction as known by the account owner (or instructing party acting on its behalf).
+References80Choice	_gTBiI4YdEe-Pv9KR9bv9IA	IntraPositionMovementIdentification	Unambiguous identification of the intra-position movement transaction as known by the account owner (or instructing party acting on its behalf).
+References80Choice	_gTBiJYYdEe-Pv9KR9bv9IA	IntraBalanceMovementIdentification	Unambiguous identification of the intra balance movement transaction as known by the account owner.
+References80Choice	_gTBiJ4YdEe-Pv9KR9bv9IA	AccountServicerTransactionIdentification	Unambiguous identification of the transaction as known by the account servicer.
+References80Choice	_gTBiL4YdEe-Pv9KR9bv9IA	MarketInfrastructureTransactionIdentification	Identification of a transaction assigned by a market infrastructure other than a central securities depository, for example, Target2-Securities.
+References80Choice	_gTBiN4YdEe-Pv9KR9bv9IA	CounterpartyMarketInfrastructureTransactionIdentification	Identification of a counterparty transaction assigned by a market infrastructure other than a central securities depository, for example, Target2-Securities.
+References80Choice	_gTBiOYYdEe-Pv9KR9bv9IA	PoolIdentification	Collective reference identifying a set of messages.
+References80Choice	_gTBiQYYdEe-Pv9KR9bv9IA	CommonIdentification	Unique reference agreed upon by the two trade counterparties to identify the trade.
 References80Choice	_gTBiSYYdEe-Pv9KR9bv9IA	TradeIdentification	Reference assigned to the trade by the investor or the trading party. This reference will be used throughout the trade life cycle to access/update the trade details.
 References80Choice	_cbq2EYYdEe-Pv9KR9bv9IA	UniqueTransactionIdentifier	Unique Transaction Identifier (UTI) as agreed with the other counterparty.
+References80Choice	_gTBiUYYdEe-Pv9KR9bv9IA	OtherTransactionIdentification	Identification of a transaction that cannot be identified using a standard reference element present in the message.

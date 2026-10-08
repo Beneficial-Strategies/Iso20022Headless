@@ -106,8 +106,8 @@ const filesMatching = (dir: string, re: RegExp): string[] => readdirSync(resolve
 const datatypes = new Map<string, string[]>();
 const members = new Map<string, string[][]>();
 
-// The order of a type's members on the wire is the XSD's (fixtures/member-order.tsv, made by `spec-extract order` from ISO's XSDs): the
-// MCP snapshot lists members alphabetically, and an XML message in any other order is not valid.
+// The order of a type's members on the wire is the XSD's, and the data must already be in it (fixtures/member-order.tsv, made by
+// `spec-extract order` from ISO's XSDs, is the check). The MCP snapshot used to list members alphabetically; staging now gives spec order.
 const memberOrder = new Map<string, string[]>();
 {
   const file = resolve(fixturesRoot, 'member-order.tsv');
@@ -119,7 +119,23 @@ const memberOrder = new Map<string, string[]>();
   }
 }
 
-/** `items` of a type in XSD sequence. A type with two or more members and no order, or with other members than the XSD, is a problem. */
+// The codes of an enumerated code set are in the XSD's enumeration order (fixtures/code-order.tsv), which is the spec's.
+const codeOrder = new Map<string, string[]>();
+{
+  const file = resolve(fixturesRoot, 'code-order.tsv');
+  if (existsSync(file)) {
+    for (const line of readFileSync(file, 'utf8').split('\n').slice(1).filter(Boolean)) {
+      const [type, codes] = line.split('\t');
+      codeOrder.set(type!, codes!.split(','));
+    }
+  }
+}
+
+/**
+ * Checks that a type's members are in the XSD's sequence, and returns them unchanged. The snapshot used to list members alphabetically
+ * (so this used to re-sort them); staging now gives spec order, and the XSD order is the independent check that it does. A type with two or
+ * more members and no entry in member-order.tsv, or whose members differ from the XSD's, is a problem. Nothing is sorted here.
+ */
 function inSequence<T>(type: string, items: T[], tagOf: (item: T) => string): T[] {
   if (items.length < 2) return items;
   const order = memberOrder.get(type);
@@ -128,11 +144,8 @@ function inSequence<T>(type: string, items: T[], tagOf: (item: T) => string): T[
     return items;
   }
   const tags = items.map(tagOf);
-  if (tags.length !== order.length || tags.some((t) => !order.includes(t))) {
-    problems.push(`member order of ${type}: the XSD has ${order.join(',')} but the data has ${tags.join(',')}`);
-    return items;
-  }
-  return [...items].sort((a, b) => order.indexOf(tagOf(a)) - order.indexOf(tagOf(b)));
+  if (tags.join() !== order.join()) problems.push(`member order of ${type}: the XSD has ${order.join(',')} but the data has ${tags.join(',')}`);
+  return items;
 }
 const simple = new Map<string, string[]>();
 const codesets = new Map<string, string[][]>();
@@ -304,14 +317,19 @@ function codeType(name: string): IrType {
       ...(max ? { maxLength: Number(max) } : {}),
     };
   }
-  return {
-    name,
-    isoId: first[1],
-    kind: 'code',
-    options: rows
-      .map((r) => ({ value: r[3]!, name: r[4]!, ...(codeIsoIds.has(`${name}\t${r[3]}`) ? { isoId: codeIsoIds.get(`${name}\t${r[3]}`)! } : {}) }))
-      .sort((a, b) => a.value.localeCompare(b.value)),
-  };
+  const options = rows.map((r) => ({ value: r[3]!, name: r[4]!, ...(codeIsoIds.has(`${name}\t${r[3]}`) ? { isoId: codeIsoIds.get(`${name}\t${r[3]}`)! } : {}) }));
+  const order = codeOrder.get(name);
+  if (!order) {
+    if (options.length >= 2) problems.push(`no XSD code order for ${name}: run \`spec-extract order --xsd <dir with the XSD of a message that uses it>\``);
+    return { name, isoId: first[1], kind: 'code', options };
+  }
+  const have = options.map((o) => o.value);
+  if (have.length !== order.length || have.some((v) => !order.includes(v))) {
+    problems.push(`codes of ${name}: the XSD has ${order.join(',')} but the data has ${have.join(',')}`);
+    return { name, isoId: first[1], kind: 'code', options };
+  }
+  // the spec's order, not alphabetical: the rows come from several fixtures, so they are placed by the XSD's list
+  return { name, isoId: first[1], kind: 'code', options: [...options].sort((a, b) => order.indexOf(a.value) - order.indexOf(b.value)) };
 }
 
 function amountType(name: string): IrType {

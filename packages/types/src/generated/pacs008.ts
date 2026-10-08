@@ -13,14 +13,14 @@ export interface CreditTransferTransaction73 {
   PaymentTypeInformation?: PaymentTypeInformation28;
   InterbankSettlementAmount: ActiveCurrencyAndAmount;
   InterbankSettlementDate?: string;
-  SettlementPriority?: "HIGH" | "NORM" | "URGT";
+  SettlementPriority?: "URGT" | "HIGH" | "NORM";
   SettlementTimeIndication?: SettlementDateTimeIndication1;
   SettlementTimeRequest?: SettlementTimeRequest2;
   AdditionalDateTime?: AdditionalDateTime1;
   InstructedAmount?: ActiveOrHistoricCurrencyAndAmount;
   ExchangeRate?: string;
   AgreedRate?: CurrencyExchange26;
-  ChargeBearer: "CRED" | "DEBT" | "SHAR" | "SLEV";
+  ChargeBearer: "DEBT" | "CRED" | "SHAR" | "SLEV";
   ChargesInformation?: Array<Charges16>;
   MandateRelatedInformation?: CreditTransferMandateData1;
   PaymentSignature?: CryptographicKey1Choice;

@@ -193,7 +193,7 @@ export const GroupHeader114Schema = z.strictObject({
   InitiationSource: PaymentInitiationSource1Schema.optional(),
 });
 
-export const PaymentMethod3CodeSchema = z.enum(["CHK", "TRA", "TRF"]);
+export const PaymentMethod3CodeSchema = z.enum(["CHK", "TRF", "TRA"]);
 
 export const PaymentTypeInformation26Schema = z.strictObject({
   InstructionPriority: Priority2CodeSchema.optional(),
@@ -202,7 +202,7 @@ export const PaymentTypeInformation26Schema = z.strictObject({
   CategoryPurpose: CategoryPurpose1ChoiceSchema.optional(),
 });
 
-export const ExchangeRateType1CodeSchema = z.enum(["AGRD", "SALE", "SPOT"]);
+export const ExchangeRateType1CodeSchema = z.enum(["SPOT", "SALE", "AGRD"]);
 
 export const ExchangeRate1Schema = z.strictObject({
   UnitCurrency: ActiveOrHistoricCurrencyCodeSchema.optional(),
@@ -308,7 +308,7 @@ const ownTypeDescriptors: TypeDescriptors = {
     name: "PaymentMethod3Code",
     isoId: "_Z0aeYtp-Ed-ak6NoX_4Aeg_1813568342",
     kind: "code",
-    options: [{ value: "CHK", name: "Cheque", isoId: "_Z0aeY9p-Ed-ak6NoX_4Aeg_1931781357" }, { value: "TRA", name: "TransferAdvice", isoId: "_Z0kPYNp-Ed-ak6NoX_4Aeg_1931781417" }, { value: "TRF", name: "CreditTransfer", isoId: "_Z0aeZNp-Ed-ak6NoX_4Aeg_1931781374" }],
+    options: [{ value: "CHK", name: "Cheque", isoId: "_Z0aeY9p-Ed-ak6NoX_4Aeg_1931781357" }, { value: "TRF", name: "CreditTransfer", isoId: "_Z0aeZNp-Ed-ak6NoX_4Aeg_1931781374" }, { value: "TRA", name: "TransferAdvice", isoId: "_Z0kPYNp-Ed-ak6NoX_4Aeg_1931781417" }],
   },
   "PaymentTypeInformation26": {
     name: "PaymentTypeInformation26",
@@ -325,7 +325,7 @@ const ownTypeDescriptors: TypeDescriptors = {
     name: "ExchangeRateType1Code",
     isoId: "_aksr2Np-Ed-ak6NoX_4Aeg_-75535887",
     kind: "code",
-    options: [{ value: "AGRD", name: "Agreed", isoId: "_ak11wtp-Ed-ak6NoX_4Aeg_-75535484" }, { value: "SALE", name: "Sale", isoId: "_ak11wdp-Ed-ak6NoX_4Aeg_-75535501" }, { value: "SPOT", name: "Spot", isoId: "_ak11wNp-Ed-ak6NoX_4Aeg_-75535808" }],
+    options: [{ value: "SPOT", name: "Spot", isoId: "_ak11wNp-Ed-ak6NoX_4Aeg_-75535808" }, { value: "SALE", name: "Sale", isoId: "_ak11wdp-Ed-ak6NoX_4Aeg_-75535501" }, { value: "AGRD", name: "Agreed", isoId: "_ak11wtp-Ed-ak6NoX_4Aeg_-75535484" }],
   },
   "ExchangeRate1": {
     name: "ExchangeRate1",

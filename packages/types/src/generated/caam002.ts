@@ -23,14 +23,14 @@ export interface ATMConfigurationParameter2 {
 
 export type ATMCommandParameters3Choice =
   | { ATMRequiredGlobalStatus: "INSV" | "OUTS" }
-  | { ExpectedMessageFunction: "BALN" | "DSEC" | "GSTS" | "INQC" | "KEYQ" | "SSTS" }
+  | { ExpectedMessageFunction: "BALN" | "GSTS" | "DSEC" | "INQC" | "KEYQ" | "SSTS" }
   | { RequiredConfigurationParameter: ATMConfigurationParameter1 }
-  | { RequiredSecurityScheme: "APPK" | "CERT" | "DTCH" | "FRAN" | "LUXG" | "MANU" | "PKIP" | "SIGN" | "TR34" }
+  | { RequiredSecurityScheme: "APPK" | "CERT" | "FRAN" | "DTCH" | "LUXG" | "MANU" | "PKIP" | "SIGN" | "TR34" }
   | { SecurityDevice: ATMCommandParameters1 }
   | { Key: ATMConfigurationParameter2 };
 
 export interface ATMCommand14 {
-  Type: "ABAL" | "ASTS" | "CCNT" | "CFGT" | "DISC" | "HKCG" | "HKRV" | "KACT" | "KCHG" | "KDAC" | "KDWL" | "KRMV" | "RREQ" | "SCFU" | "SNDM" | "SSCU" | "SSTU";
+  Type: "ABAL" | "ASTS" | "CFGT" | "CCNT" | "DISC" | "KACT" | "KDAC" | "KDWL" | "KRMV" | "SCFU" | "SSCU" | "SSTU" | "SNDM" | "HKCG" | "HKRV" | "KCHG" | "RREQ";
   Urgency: "ASAP" | "CRIT" | "DTIM" | "ENCS";
   DateTime?: string;
   CommandIdentification?: ATMCommandIdentification1;

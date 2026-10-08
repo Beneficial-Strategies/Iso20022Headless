@@ -8,14 +8,6 @@
   "definition": "The ATMReconciliationAdvice message is sent by an ATM to an acquirer or its agent to send all the counters of the ATM. It can be sent by an operator function or as a response of a command sent by an agent or a server.",
   "blocks": [
     {
-      "name": "ATMReconciliationAdvice",
-      "isoId": "_ouWJBqFCEe-MRKYsaX6JDg",
-      "xmlTag": "ATMRcncltnAdvc",
-      "type": "ATMReconciliationAdvice3",
-      "min": 0,
-      "max": 1
-    },
-    {
       "name": "Header",
       "isoId": "_ouWJAqFCEe-MRKYsaX6JDg",
       "xmlTag": "Hdr",
@@ -28,6 +20,14 @@
       "isoId": "_ouWJBKFCEe-MRKYsaX6JDg",
       "xmlTag": "PrtctdATMRcncltnAdvc",
       "type": "ContentInformationType10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ATMReconciliationAdvice",
+      "isoId": "_ouWJBqFCEe-MRKYsaX6JDg",
+      "xmlTag": "ATMRcncltnAdvc",
+      "type": "ATMReconciliationAdvice3",
       "min": 0,
       "max": 1
     },

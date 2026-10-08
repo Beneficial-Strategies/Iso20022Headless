@@ -18,11 +18,11 @@ import {
 
 export const Max35TextSchema = textType({min: 1, max: 35});
 
-export const ATMCassetteType1CodeSchema = z.enum(["DISP", "DPST", "RCYC", "RJCT", "RPLT", "RTRC"]);
+export const ATMCassetteType1CodeSchema = z.enum(["DPST", "DISP", "RCYC", "RJCT", "RPLT", "RTRC"]);
 
 export const ATMNoteType1CodeSchema = z.enum(["ALLT", "CNTR", "IDVD", "SCNT", "UNFT"]);
 
-export const ATMMediaType4CodeSchema = z.enum(["CARD", "CHCK", "CMDT", "COIN", "CPNS", "ENVP", "MLTP", "NOTE", "STMP", "UDTM"]);
+export const ATMMediaType4CodeSchema = z.enum(["CARD", "COIN", "CMDT", "CPNS", "NOTE", "STMP", "UDTM", "CHCK", "ENVP", "MLTP"]);
 
 export const ImpliedCurrencyAndAmountSchema = decimalType({totalDigits: 18, fractionDigits: 5, minInclusive: 0});
 
@@ -32,7 +32,7 @@ export const ATMMediaType3CodeSchema = z.enum(["CNTR", "FITN", "FITU", "SPCT", "
 
 export const NumberSchema = decimalType({totalDigits: 18, fractionDigits: 0});
 
-export const ATMCounterType3CodeSchema = z.enum(["BDAY", "CTOF", "CTXN", "INQU", "OPER", "PRTN", "SLRP"]);
+export const ATMCounterType3CodeSchema = z.enum(["INQU", "CTXN", "CTOF", "BDAY", "PRTN", "OPER", "SLRP"]);
 
 export const ATMCassetteCounters5Schema = z.strictObject({
   Type: ATMCounterType3CodeSchema,
@@ -61,7 +61,7 @@ export const ATMCassetteCounters6Schema = z.strictObject({
   FlowTotals: z.array(ATMCassetteCounters5Schema).optional(),
 });
 
-export const ATMCassetteStatus1CodeSchema = z.enum(["CUFL", "CUHG", "CULW", "CUMP", "CUMS", "CUMT", "CUNA", "CUNP", "CUNR", "CUOK"]);
+export const ATMCassetteStatus1CodeSchema = z.enum(["CUOK", "CUFL", "CUHG", "CULW", "CUMT", "CUNP", "CUMS", "CUNA", "CUNR", "CUMP"]);
 
 export const ATMCassette3Schema = z.strictObject({
   PhysicalIdentification: Max35TextSchema.optional(),
@@ -74,7 +74,7 @@ export const ATMCassette3Schema = z.strictObject({
   CassetteStatus: ATMCassetteStatus1CodeSchema.optional(),
 });
 
-export const ATMCommand7CodeSchema = z.enum(["ABAL", "ASTS", "CCNT", "CFGT", "DISC", "HKCG", "HKRV", "KACT", "KCHG", "KDAC", "KDWL", "KRMV", "RREQ", "SCFU", "SNDM", "SSCU", "SSTU"]);
+export const ATMCommand7CodeSchema = z.enum(["ABAL", "ASTS", "CFGT", "CCNT", "DISC", "KACT", "KDAC", "KDWL", "KRMV", "SCFU", "SSCU", "SSTU", "SNDM", "HKCG", "HKRV", "KCHG", "RREQ"]);
 
 export const ISODateTimeSchema = isoDateTime;
 
@@ -102,15 +102,15 @@ export const ATMCommand16Schema = z.strictObject({
   CommandIdentification: ATMCommandIdentification1Schema.optional(),
 });
 
-export const ATMCommand4CodeSchema = z.enum(["ABAL", "ASTS", "CCNT", "CFGT", "DISC", "RPTC", "SNDM"]);
+export const ATMCommand4CodeSchema = z.enum(["ABAL", "ASTS", "CFGT", "CCNT", "DISC", "SNDM", "RPTC"]);
 
 export const TMSContactLevel2CodeSchema = z.enum(["ASAP", "CRIT", "DTIM", "ENCS"]);
 
 export const ATMStatus1CodeSchema = z.enum(["INSV", "OUTS"]);
 
-export const MessageFunction8CodeSchema = z.enum(["BALN", "DSEC", "GSTS", "INQC", "KEYQ", "SSTS"]);
+export const MessageFunction8CodeSchema = z.enum(["BALN", "GSTS", "DSEC", "INQC", "KEYQ", "SSTS"]);
 
-export const DataSetCategory7CodeSchema = z.enum(["AMNT", "APPR", "ATMC", "ATMP", "CPRC", "CRAP", "LOCC", "MNOC", "OEXR"]);
+export const DataSetCategory7CodeSchema = z.enum(["ATMC", "ATMP", "APPR", "CRAP", "CPRC", "OEXR", "AMNT", "LOCC", "MNOC"]);
 
 export const ATMConfigurationParameter1Schema = z.strictObject({
   Type: DataSetCategory7CodeSchema,
@@ -131,7 +131,7 @@ export const ATMCommand7Schema = z.strictObject({
   CommandParameters: ATMCommandParameters1ChoiceSchema.optional(),
 });
 
-export const ATMServiceType11CodeSchema = z.enum(["ACCD", "ASTS", "BLCQ", "CDVF", "CHSN", "CMPF", "DCCS", "DPSN", "DPSV", "EMVS", "MCHG", "MINI", "PATH", "PINC", "PINR", "PINU", "PRFL", "SPRV", "STDR", "TRFC", "TRFI", "TRFP", "XRTD", "XRTW"]);
+export const ATMServiceType11CodeSchema = z.enum(["TRFC", "TRFI", "TRFP", "ASTS", "BLCQ", "CDVF", "CHSN", "CMPF", "DCCS", "XRTD", "XRTW", "MCHG", "DPSN", "PINC", "PINR", "PINU", "PATH", "PRFL", "EMVS", "STDR", "SPRV", "DPSV", "ACCD", "MINI"]);
 
 export const ATMService27Schema = z.strictObject({
   ServiceReference: Max35TextSchema.optional(),
@@ -146,7 +146,7 @@ export const ATMContext25Schema = z.strictObject({
   Service: ATMService27Schema,
 });
 
-export const ATMDevice2CodeSchema = z.enum(["ALRM", "BRCD", "CAMR", "CDIS", "CHCK", "CRDD", "CRDR", "CSHD", "CSHI", "CSHR", "DOOR", "DPRN", "DPST", "INPM", "JPRN", "JRNL", "PINR", "PSBK", "RPRN", "RWDR", "SCAN", "SNSR"]);
+export const ATMDevice2CodeSchema = z.enum(["ALRM", "BRCD", "CAMR", "CRDD", "CRDR", "CSHD", "CSHI", "CSHR", "CHCK", "CDIS", "DPST", "DPRN", "DOOR", "INPM", "JRNL", "JPRN", "SNSR", "PSBK", "PINR", "RPRN", "SCAN", "RWDR"]);
 
 export const Acquirer7Schema = z.strictObject({
   AcquiringInstitution: Max35TextSchema.optional(),
@@ -258,9 +258,9 @@ export const ATMEnvironment9Schema = z.strictObject({
   ATM: AutomatedTellerMachine7Schema,
 });
 
-export const ContentType2CodeSchema = z.enum(["AUTH", "DATA", "DGST", "EVLP", "SIGN"]);
+export const ContentType2CodeSchema = z.enum(["DATA", "SIGN", "EVLP", "DGST", "AUTH"]);
 
-export const Algorithm11CodeSchema = z.enum(["HS01", "HS25", "HS38", "HS51"]);
+export const Algorithm11CodeSchema = z.enum(["HS25", "HS38", "HS51", "HS01"]);
 
 export const AlgorithmIdentification16Schema = z.strictObject({
   Algorithm: Algorithm11CodeSchema,
@@ -275,7 +275,7 @@ export const EncapsulatedContent3Schema = z.strictObject({
 
 export const Max5000BinarySchema = textType({max: 5000});
 
-export const AttributeType1CodeSchema = z.enum(["CATT", "CNAT", "LATT", "OATT", "OUAT"]);
+export const AttributeType1CodeSchema = z.enum(["CNAT", "LATT", "OATT", "OUAT", "CATT"]);
 
 export const RelativeDistinguishedName1Schema = z.strictObject({
   AttributeType: AttributeType1CodeSchema,
@@ -307,7 +307,7 @@ export const Recipient5ChoiceSchema = choiceOf({
   KeyIdentifier: KEKIdentifier2Schema,
 });
 
-export const Algorithm14CodeSchema = z.enum(["ERS1", "ERS2", "RPSS"]);
+export const Algorithm14CodeSchema = z.enum(["ERS2", "ERS1", "RPSS"]);
 
 export const Algorithm8CodeSchema = z.enum(["MGF1"]);
 
@@ -366,7 +366,7 @@ export const ATMEquipment3Schema = z.strictObject({
   FirmwareVersion: Max35TextSchema.optional(),
 });
 
-export const MessageFunction7CodeSchema = z.enum(["ACMD", "BALN", "CMPA", "CMPD", "CSEC", "DIAP", "DIAQ", "DSEC", "DVCC", "GSTS", "H2AP", "H2AQ", "INQC", "INQP", "INQQ", "KYAP", "KYAQ", "PINP", "PINQ", "RJAP", "RJAQ", "SKSC", "SSTS", "TMOP", "WITK", "WITP", "WITQ", "WITV"]);
+export const MessageFunction7CodeSchema = z.enum(["BALN", "CMPA", "CMPD", "ACMD", "DVCC", "DIAQ", "DIAP", "GSTS", "INQQ", "INQP", "KYAQ", "KYAP", "PINQ", "PINP", "RJAQ", "RJAP", "WITV", "WITK", "WITQ", "WITP", "INQC", "H2AP", "H2AQ", "TMOP", "CSEC", "DSEC", "SKSC", "SSTS"]);
 
 export const ATMMessageFunction1Schema = z.strictObject({
   Function: MessageFunction7CodeSchema,
@@ -374,7 +374,7 @@ export const ATMMessageFunction1Schema = z.strictObject({
   HostServiceCode: Max35TextSchema.optional(),
 });
 
-export const MessageFunction11CodeSchema = z.enum(["ACMD", "BALN", "CMPA", "CMPD", "CSEC", "DIAP", "DIAQ", "DPSK", "DPSP", "DPSQ", "DPSV", "DSEC", "DVCC", "EXPK", "EXPV", "GSTS", "H2AP", "H2AQ", "INQC", "INQP", "INQQ", "KYAP", "KYAQ", "PINP", "PINQ", "RJAP", "RJAQ", "RPTC", "SKSC", "SSTS", "TMOP", "TRFP", "TRFQ", "WITK", "WITP", "WITQ", "WITV"]);
+export const MessageFunction11CodeSchema = z.enum(["BALN", "CMPA", "CMPD", "ACMD", "DVCC", "DIAQ", "DIAP", "GSTS", "INQQ", "INQP", "KYAQ", "KYAP", "PINQ", "PINP", "RJAQ", "RJAP", "WITV", "WITK", "WITQ", "WITP", "INQC", "H2AP", "H2AQ", "TMOP", "CSEC", "DSEC", "SKSC", "SSTS", "DPSK", "DPSV", "DPSQ", "DPSP", "EXPK", "EXPV", "TRFQ", "TRFP", "RPTC"]);
 
 export const ATMMessageFunction2Schema = z.strictObject({
   Function: MessageFunction11CodeSchema,
@@ -382,7 +382,7 @@ export const ATMMessageFunction2Schema = z.strictObject({
   HostServiceCode: Max35TextSchema.optional(),
 });
 
-export const ATMOperation2CodeSchema = z.enum(["ADJU", "INSR", "LOAD", "RCUP", "REMV", "SWAP", "UNLD"]);
+export const ATMOperation2CodeSchema = z.enum(["ADJU", "INSR", "LOAD", "REMV", "UNLD", "RCUP", "SWAP"]);
 
 export const TransactionIdentifier3Schema = z.strictObject({
   TransactionDateTime: ISODateTimeSchema,
@@ -413,9 +413,9 @@ export const TrueFalseIndicatorSchema = indicator;
 
 export const Algorithm7CodeSchema = z.enum(["ERSA", "RSAO"]);
 
-export const Algorithm13CodeSchema = z.enum(["DKP9", "E3DC", "EA2C", "EA5C", "EA9C", "UKA1", "UKPT"]);
+export const Algorithm13CodeSchema = z.enum(["EA2C", "E3DC", "DKP9", "UKPT", "UKA1", "EA9C", "EA5C"]);
 
-export const Algorithm15CodeSchema = z.enum(["E3DC", "EA2C", "EA5C", "EA9C"]);
+export const Algorithm15CodeSchema = z.enum(["EA2C", "E3DC", "EA9C", "EA5C"]);
 
 export const EncryptionFormat1CodeSchema = z.enum(["TR31", "TR34"]);
 
@@ -429,7 +429,7 @@ export const ATMSecurityConfiguration3Schema = z.strictObject({
   EncryptionFormat: z.array(EncryptionFormat1CodeSchema).optional(),
 });
 
-export const Algorithm12CodeSchema = z.enum(["CMA1", "CMA5", "CMA9", "MACC", "MCC1", "MCCS"]);
+export const Algorithm12CodeSchema = z.enum(["MACC", "MCCS", "CMA1", "MCC1", "CMA9", "CMA5"]);
 
 export const ATMSecurityConfiguration4Schema = z.strictObject({
   MaximumCertificates: NumberSchema.optional(),
@@ -437,7 +437,7 @@ export const ATMSecurityConfiguration4Schema = z.strictObject({
   DigitalSignatureAlgorithm: z.array(Algorithm14CodeSchema).optional(),
 });
 
-export const PINFormat4CodeSchema = z.enum(["ANSI", "BKSY", "BNCM", "DBLC", "DBLD", "ECI2", "ECI3", "EMVS", "IBM3", "ISO0", "ISO1", "ISO2", "ISO3", "ISO4", "ISO5", "VIS2", "VIS3"]);
+export const PINFormat4CodeSchema = z.enum(["ANSI", "BNCM", "BKSY", "DBLD", "DBLC", "ECI2", "ECI3", "EMVS", "IBM3", "ISO0", "ISO1", "ISO2", "ISO3", "ISO4", "ISO5", "VIS2", "VIS3"]);
 
 export const ATMSecurityConfiguration5Schema = z.strictObject({
   PINFormat: z.array(PINFormat4CodeSchema).optional(),
@@ -454,7 +454,7 @@ export const ATMSecurityConfiguration1Schema = z.strictObject({
   MessageProtection: z.array(MessageProtection1CodeSchema).optional(),
 });
 
-export const ATMSecurityScheme3CodeSchema = z.enum(["APPK", "CERT", "DTCH", "FRAN", "LUXG", "MANU", "NONE", "PKIP", "SIGN", "TR34"]);
+export const ATMSecurityScheme3CodeSchema = z.enum(["APPK", "CERT", "FRAN", "DTCH", "LUXG", "MANU", "PKIP", "SIGN", "NONE", "TR34"]);
 
 export const ATMSecurityContext3Schema = z.strictObject({
   CurrentSecurityScheme: ATMSecurityScheme3CodeSchema,
@@ -462,7 +462,7 @@ export const ATMSecurityContext3Schema = z.strictObject({
   CurrentConfiguration: ATMSecurityConfiguration1Schema.optional(),
 });
 
-export const ATMSecurityScheme4CodeSchema = z.enum(["APPK", "CERT", "DTCH", "FRAN", "LUXG", "MANU", "PKIP", "SIGN", "TR34"]);
+export const ATMSecurityScheme4CodeSchema = z.enum(["APPK", "CERT", "FRAN", "DTCH", "LUXG", "MANU", "PKIP", "SIGN", "TR34"]);
 
 export const TR34Command1CodeSchema = z.enum(["BIND", "HILR", "HILU", "RBND", "UBND"]);
 
@@ -589,7 +589,7 @@ export const ActiveCurrencyAndAmountSchema = z.strictObject({ Ccy: textType({ pa
 
 export const ActiveOrHistoricCurrencyAnd13DecimalAmountSchema = z.strictObject({ Ccy: textType({ pattern: "[A-Z]{3,3}" }), Value: decimalType({ totalDigits: 18, fractionDigits: 13, minInclusive: 0 }) });
 
-export const AddressType2CodeSchema = z.enum(["ADDR", "BIZZ", "DLVY", "HOME", "MLTO", "PBOX"]);
+export const AddressType2CodeSchema = z.enum(["ADDR", "PBOX", "HOME", "BIZZ", "MLTO", "DLVY"]);
 
 export const Exact4AlphaNumericTextSchema = textType({pattern: "[a-zA-Z0-9]{4}"});
 
@@ -604,7 +604,7 @@ export const AddressType3ChoiceSchema = choiceOf({
   Proprietary: GenericIdentification30Schema,
 });
 
-export const AdviceType1CodeSchema = z.enum(["ADND", "ADWD"]);
+export const AdviceType1CodeSchema = z.enum(["ADWD", "ADND"]);
 
 export const AdviceType1ChoiceSchema = choiceOf({
   Code: AdviceType1CodeSchema,
@@ -735,7 +735,7 @@ export const Party52ChoiceSchema = choiceOf({
   PrivateIdentification: PersonIdentification18Schema,
 });
 
-export const NamePrefix2CodeSchema = z.enum(["DOCT", "MADM", "MIKS", "MISS", "MIST"]);
+export const NamePrefix2CodeSchema = z.enum(["DOCT", "MADM", "MISS", "MIST", "MIKS"]);
 
 export const PhoneNumberSchema = textType({pattern: "\\+[0-9]{1,3}-[0-9()+\\-]{1,30}"});
 
@@ -750,7 +750,7 @@ export const OtherContact1Schema = z.strictObject({
   Identification: Max128TextSchema.optional(),
 });
 
-export const PreferredContactMethod2CodeSchema = z.enum(["CELL", "FAXX", "LETT", "MAIL", "ONLI", "PHON"]);
+export const PreferredContactMethod2CodeSchema = z.enum(["MAIL", "FAXX", "LETT", "CELL", "ONLI", "PHON"]);
 
 export const Contact13Schema = z.strictObject({
   NamePrefix: NamePrefix2CodeSchema.optional(),
@@ -851,7 +851,7 @@ export const CashAccount40Schema = z.strictObject({
   Proxy: ProxyAccountIdentification1Schema.optional(),
 });
 
-export const Frequency6CodeSchema = z.enum(["ADHO", "DAIL", "FRTN", "INDA", "MIAN", "MNTH", "QURT", "WEEK", "YEAR"]);
+export const Frequency6CodeSchema = z.enum(["YEAR", "MNTH", "QURT", "MIAN", "WEEK", "DAIL", "ADHO", "INDA", "FRTN"]);
 
 export const DecimalNumberSchema = decimalType({totalDigits: 18, fractionDigits: 17});
 
@@ -989,9 +989,9 @@ export const AuthenticationChannel1ChoiceSchema = choiceOf({
   Proprietary: Max35TextSchema,
 });
 
-export const AuthenticationEntity1CodeSchema = z.enum(["AGNT", "ICCD", "MERC"]);
+export const AuthenticationEntity1CodeSchema = z.enum(["ICCD", "AGNT", "MERC"]);
 
-export const AuthenticationMethod1CodeSchema = z.enum(["BYPS", "CPSG", "FPIN", "MANU", "MERC", "NPIN", "PPSG", "SCNL", "SCRT", "SNCT", "UKNW"]);
+export const AuthenticationMethod1CodeSchema = z.enum(["UKNW", "BYPS", "NPIN", "FPIN", "CPSG", "PPSG", "MANU", "MERC", "SCRT", "SNCT", "SCNL"]);
 
 export const Authorisation1CodeSchema = z.enum(["AUTH", "FDET", "FSUM", "ILEV"]);
 
@@ -1057,7 +1057,7 @@ export const BatchInformation2Schema = z.strictObject({
   CreditDebitIndicator: CreditDebitCodeSchema.optional(),
 });
 
-export const CSCManagement1CodeSchema = z.enum(["BYPS", "NCSC", "PRST", "UNRD"]);
+export const CSCManagement1CodeSchema = z.enum(["PRST", "BYPS", "UNRD", "NCSC"]);
 
 export const ExternalCancellationReason1CodeSchema = textType({min: 1, max: 4});
 
@@ -1093,7 +1093,7 @@ export const CardAggregated2Schema = z.strictObject({
   TransactionDateRange: DateOrDateTimePeriod1ChoiceSchema.optional(),
 });
 
-export const CardDataReading1CodeSchema = z.enum(["BRCD", "CICC", "CTLS", "DFLE", "ECTL", "MGST", "PHYS", "TAGC"]);
+export const CardDataReading1CodeSchema = z.enum(["TAGC", "PHYS", "BRCD", "MGST", "CICC", "DFLE", "CTLS", "ECTL"]);
 
 export const Min8Max28NumericTextSchema = textType({pattern: "[0-9]{8,28}"});
 
@@ -1140,9 +1140,9 @@ export const PaymentCard4Schema = z.strictObject({
   AdditionalCardData: Max70TextSchema.optional(),
 });
 
-export const PartyType3CodeSchema = z.enum(["ACCP", "ACQR", "CISS", "DLIS", "ITAG", "MERC", "OPOI"]);
+export const PartyType3CodeSchema = z.enum(["OPOI", "MERC", "ACCP", "ITAG", "ACQR", "CISS", "DLIS"]);
 
-export const PartyType4CodeSchema = z.enum(["ACCP", "ACQR", "CISS", "ITAG", "MERC", "TAXH"]);
+export const PartyType4CodeSchema = z.enum(["MERC", "ACCP", "ITAG", "ACQR", "CISS", "TAXH"]);
 
 export const GenericIdentification32Schema = z.strictObject({
   Identification: Max35TextSchema,
@@ -1151,11 +1151,11 @@ export const GenericIdentification32Schema = z.strictObject({
   ShortName: Max35TextSchema.optional(),
 });
 
-export const CardholderVerificationCapability1CodeSchema = z.enum(["APKI", "CHDT", "FBIG", "FBIO", "FCPN", "FDSG", "FEPN", "MNSG", "MNVR", "NPIN", "PKIS", "SCEC"]);
+export const CardholderVerificationCapability1CodeSchema = z.enum(["MNSG", "NPIN", "FCPN", "FEPN", "FDSG", "FBIO", "MNVR", "FBIG", "APKI", "PKIS", "CHDT", "SCEC"]);
 
 export const OnLineCapability1CodeSchema = z.enum(["OFLN", "ONLN", "SMON"]);
 
-export const UserInterface2CodeSchema = z.enum(["CDSP", "MDSP"]);
+export const UserInterface2CodeSchema = z.enum(["MDSP", "CDSP"]);
 
 export const Max3NumericTextSchema = textType({pattern: "[0-9]{1,3}"});
 
@@ -1173,7 +1173,7 @@ export const PointOfInteractionCapabilities1Schema = z.strictObject({
   PrintLineWidth: Max3NumericTextSchema.optional(),
 });
 
-export const POIComponentType1CodeSchema = z.enum(["CHIT", "EMVK", "EMVO", "MRIT", "PEDV", "SECM", "SOFT"]);
+export const POIComponentType1CodeSchema = z.enum(["SOFT", "EMVK", "EMVO", "MRIT", "CHIT", "SECM", "PEDV"]);
 
 export const PointOfInteractionComponent1Schema = z.strictObject({
   POIComponentType: POIComponentType1CodeSchema,
@@ -1203,7 +1203,7 @@ export const Max1025TextSchema = textType({min: 1, max: 1025});
 
 export const TransactionEnvironment1CodeSchema = z.enum(["MERC", "PRIV", "PUBL"]);
 
-export const TransactionChannel1CodeSchema = z.enum(["ECOM", "MAIL", "TLPH", "TVPY"]);
+export const TransactionChannel1CodeSchema = z.enum(["MAIL", "TLPH", "ECOM", "TVPY"]);
 
 export const ISO2ALanguageCodeSchema = textType({pattern: "[a-z]{2,2}"});
 
@@ -1233,7 +1233,7 @@ export const TransactionIdentifier1Schema = z.strictObject({
   TransactionReference: Max35TextSchema,
 });
 
-export const UnitOfMeasure1CodeSchema = z.enum(["ACRE", "ARES", "CELI", "CMET", "FOOT", "GBGA", "GBOU", "GBPI", "GBQA", "GRAM", "HECT", "INCH", "KILO", "KMET", "LITR", "METR", "MILE", "MILI", "MMET", "PIEC", "PUND", "SCMT", "SMET", "SMIL", "SQFO", "SQIN", "SQKI", "SQMI", "SQYA", "TONS", "USGA", "USOU", "USPI", "USQA", "YARD"]);
+export const UnitOfMeasure1CodeSchema = z.enum(["PIEC", "TONS", "FOOT", "GBGA", "USGA", "GRAM", "INCH", "KILO", "PUND", "METR", "CMET", "MMET", "LITR", "CELI", "MILI", "GBOU", "USOU", "GBQA", "USQA", "GBPI", "USPI", "MILE", "KMET", "YARD", "SQKI", "HECT", "ARES", "SMET", "SCMT", "SMIL", "SQMI", "SQYA", "SQFO", "SQIN", "ACRE"]);
 
 export const Product2Schema = z.strictObject({
   ProductCode: Max70TextSchema,
@@ -1354,7 +1354,7 @@ export const CategoryPurpose1ChoiceSchema = choiceOf({
   Proprietary: Max35TextSchema,
 });
 
-export const ChargeBearerType1CodeSchema = z.enum(["CRED", "DEBT", "SHAR", "SLEV"]);
+export const ChargeBearerType1CodeSchema = z.enum(["DEBT", "CRED", "SHAR", "SLEV"]);
 
 export const ChargeIncludedIndicatorSchema = indicator;
 
@@ -1392,14 +1392,14 @@ export const Charges16Schema = z.strictObject({
   Type: ChargeType3ChoiceSchema.optional(),
 });
 
-export const ChequeType2CodeSchema = z.enum(["BCHQ", "CCCH", "CCHQ", "DRFT", "ELDR"]);
+export const ChequeType2CodeSchema = z.enum(["CCHQ", "CCCH", "BCHQ", "DRFT", "ELDR"]);
 
 export const NameAndAddress18Schema = z.strictObject({
   Name: Max140TextSchema,
   Address: PostalAddress27Schema,
 });
 
-export const ChequeDelivery1CodeSchema = z.enum(["CRCD", "CRDB", "CRFA", "MLCD", "MLDB", "MLFA", "PUCD", "PUDB", "PUFA", "RGCD", "RGDB", "RGFA"]);
+export const ChequeDelivery1CodeSchema = z.enum(["MLDB", "MLCD", "MLFA", "CRDB", "CRCD", "CRFA", "PUDB", "PUCD", "PUFA", "RGDB", "RGCD", "RGFA"]);
 
 export const ChequeDeliveryMethod1ChoiceSchema = choiceOf({
   Code: ChequeDelivery1CodeSchema,
@@ -1423,7 +1423,7 @@ export const Cheque19Schema = z.strictObject({
   Signature: z.array(Max70TextSchema).max(5).optional(),
 });
 
-export const ClearingChannel2CodeSchema = z.enum(["BOOK", "MPNS", "RTGS", "RTNS"]);
+export const ClearingChannel2CodeSchema = z.enum(["RTGS", "RTNS", "MPNS", "BOOK"]);
 
 export const ExternalCashClearingSystem1CodeSchema = textType({min: 1, max: 3});
 
@@ -1581,7 +1581,7 @@ export const TaxParty2Schema = z.strictObject({
 
 export const ISOYearSchema = textType({pattern: "\\d{4}"});
 
-export const TaxRecordPeriod1CodeSchema = z.enum(["HLF1", "HLF2", "MM01", "MM02", "MM03", "MM04", "MM05", "MM06", "MM07", "MM08", "MM09", "MM10", "MM11", "MM12", "QTR1", "QTR2", "QTR3", "QTR4"]);
+export const TaxRecordPeriod1CodeSchema = z.enum(["MM01", "MM02", "MM03", "MM04", "MM05", "MM06", "MM07", "MM08", "MM09", "MM10", "MM11", "MM12", "QTR1", "QTR2", "QTR3", "QTR4", "HLF1", "HLF2"]);
 
 export const TaxPeriod3Schema = z.strictObject({
   Year: ISOYearSchema.optional(),
@@ -1813,9 +1813,9 @@ export const CryptographicKey1ChoiceSchema = choiceOf({
   Signature: SHA256SignatureTextSchema,
 });
 
-export const CryptographicKeyType5CodeSchema = z.enum(["AES2", "AES5", "AES9", "DKAE", "DKP9", "ECCC", "EDE3", "EDE4", "RSAC", "UKA2", "UKA6", "UKA8"]);
+export const CryptographicKeyType5CodeSchema = z.enum(["AES2", "EDE3", "DKP9", "AES9", "AES5", "EDE4", "UKA2", "UKA6", "RSAC", "ECCC", "DKAE", "UKA8"]);
 
-export const KeyUsage1CodeSchema = z.enum(["DCPT", "DDEC", "DENC", "ENCR", "KEYD", "KEYG", "KEYI", "KEYX", "MACG", "MACV", "PIND", "PINE", "PINV", "SIGG", "SUGV", "TRNI", "TRNX"]);
+export const KeyUsage1CodeSchema = z.enum(["ENCR", "DCPT", "DENC", "DDEC", "TRNI", "TRNX", "MACG", "MACV", "SIGG", "SUGV", "PINE", "PIND", "PINV", "KEYG", "KEYI", "KEYX", "KEYD"]);
 
 export const PublicRSAKey1Schema = z.strictObject({
   Modulus: Max5000BinarySchema,
@@ -1990,7 +1990,7 @@ export const TransactionAgents6Schema = z.strictObject({
   Proprietary: z.array(ProprietaryAgent5Schema).optional(),
 });
 
-export const SequenceType3CodeSchema = z.enum(["FNAL", "FRST", "OOFF", "RCUR", "RPRE"]);
+export const SequenceType3CodeSchema = z.enum(["FRST", "RCUR", "FNAL", "OOFF", "RPRE"]);
 
 export const PaymentTypeInformation27Schema = z.strictObject({
   InstructionPriority: Priority2CodeSchema.optional(),
@@ -2001,7 +2001,7 @@ export const PaymentTypeInformation27Schema = z.strictObject({
   CategoryPurpose: CategoryPurpose1ChoiceSchema.optional(),
 });
 
-export const RemittanceLocationMethod2CodeSchema = z.enum(["EDIC", "EMAL", "FAXI", "POST", "SMSM", "URID"]);
+export const RemittanceLocationMethod2CodeSchema = z.enum(["FAXI", "EDIC", "URID", "EMAL", "POST", "SMSM"]);
 
 export const RemittanceLocationData2Schema = z.strictObject({
   Method: RemittanceLocationMethod2CodeSchema,
@@ -2030,7 +2030,7 @@ export const TransactionDates3Schema = z.strictObject({
   Proprietary: z.array(ProprietaryDate3Schema).optional(),
 });
 
-export const PriceValueType1CodeSchema = z.enum(["DISC", "PARV", "PREM"]);
+export const PriceValueType1CodeSchema = z.enum(["DISC", "PREM", "PARV"]);
 
 export const YieldedOrValueType1ChoiceSchema = choiceOf({
   Yielded: YesNoIndicatorSchema,
@@ -2223,7 +2223,7 @@ export const ExternalStatusReason1CodeSchema = textType({min: 1, max: 4});
 
 export const ExternalTechnicalInputChannel1CodeSchema = textType({min: 1, max: 4});
 
-export const Frequency10CodeSchema = z.enum(["MIAN", "NEVR", "QURT", "RATE", "YEAR"]);
+export const Frequency10CodeSchema = z.enum(["NEVR", "YEAR", "RATE", "MIAN", "QURT"]);
 
 export const Frequency37ChoiceSchema = choiceOf({
   Code: Frequency10CodeSchema,
@@ -2275,7 +2275,7 @@ export const GroupHeader116Schema = z.strictObject({
   AdditionalInformation: Max500TextSchema.optional(),
 });
 
-export const SettlementMethod1CodeSchema = z.enum(["CLRG", "COVE", "INDA", "INGA"]);
+export const SettlementMethod1CodeSchema = z.enum(["INDA", "INGA", "COVE", "CLRG"]);
 
 export const SettlementInstruction15Schema = z.strictObject({
   SettlementMethod: SettlementMethod1CodeSchema,
@@ -2355,7 +2355,7 @@ export const MandateAuthentication1Schema = z.strictObject({
   Channel: AuthenticationChannel1ChoiceSchema.optional(),
 });
 
-export const SequenceType2CodeSchema = z.enum(["OOFF", "RCUR"]);
+export const SequenceType2CodeSchema = z.enum(["RCUR", "OOFF"]);
 
 export const MandateOccurrences5Schema = z.strictObject({
   SequenceType: SequenceType2CodeSchema,
@@ -2523,7 +2523,7 @@ export const OriginalMessageInformation1Schema = z.strictObject({
   CreationDateTime: ISODateTimeSchema.optional(),
 });
 
-export const PaymentMethod4CodeSchema = z.enum(["CHK", "DD", "TRA", "TRF"]);
+export const PaymentMethod4CodeSchema = z.enum(["CHK", "TRF", "DD", "TRA"]);
 
 export const OriginalTransactionReference47Schema = z.strictObject({
   InterbankSettlementAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
@@ -2592,14 +2592,14 @@ export const PaymentTypeInformation29Schema = z.strictObject({
   CategoryPurpose: CategoryPurpose1ChoiceSchema.optional(),
 });
 
-export const Priority3CodeSchema = z.enum(["HIGH", "NORM", "URGT"]);
+export const Priority3CodeSchema = z.enum(["URGT", "HIGH", "NORM"]);
 
 export const RegulatoryAuthority2Schema = z.strictObject({
   Name: Max140TextSchema.optional(),
   Country: CountryCodeSchema.optional(),
 });
 
-export const RegulatoryReportingType1CodeSchema = z.enum(["BOTH", "CRED", "DEBT"]);
+export const RegulatoryReportingType1CodeSchema = z.enum(["CRED", "DEBT", "BOTH"]);
 
 export const RegulatoryReportingType1ChoiceSchema = choiceOf({
   Code: ExternalRegulatoryReportingType1CodeSchema,
@@ -2675,7 +2675,7 @@ export const SettlementDateTimeIndication1Schema = z.strictObject({
   CreditDateTime: ISODateTimeSchema.optional(),
 });
 
-export const SettlementMethod2CodeSchema = z.enum(["CLRG", "INDA", "INGA"]);
+export const SettlementMethod2CodeSchema = z.enum(["INDA", "INGA", "CLRG"]);
 
 export const SettlementInstruction14Schema = z.strictObject({
   SettlementMethod: SettlementMethod2CodeSchema,
@@ -2723,7 +2723,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "ATMCassetteType1Code",
     isoId: "_sGm7sIqfEeS4a4abTJTSSw",
     kind: "code",
-    options: [{ value: "DISP", name: "Out", isoId: "_8CFg8YqfEeS4a4abTJTSSw" }, { value: "DPST", name: "In", isoId: "_783pwYqfEeS4a4abTJTSSw" }, { value: "RCYC", name: "Recycling", isoId: "_8HvdAYqfEeS4a4abTJTSSw" }, { value: "RJCT", name: "Reject", isoId: "_8NQ2MYqfEeS4a4abTJTSSw" }, { value: "RPLT", name: "Replenishment", isoId: "_8Sn3UYqfEeS4a4abTJTSSw" }, { value: "RTRC", name: "Retract", isoId: "_8X_fgYqfEeS4a4abTJTSSw" }],
+    options: [{ value: "DPST", name: "In", isoId: "_783pwYqfEeS4a4abTJTSSw" }, { value: "DISP", name: "Out", isoId: "_8CFg8YqfEeS4a4abTJTSSw" }, { value: "RCYC", name: "Recycling", isoId: "_8HvdAYqfEeS4a4abTJTSSw" }, { value: "RJCT", name: "Reject", isoId: "_8NQ2MYqfEeS4a4abTJTSSw" }, { value: "RPLT", name: "Replenishment", isoId: "_8Sn3UYqfEeS4a4abTJTSSw" }, { value: "RTRC", name: "Retract", isoId: "_8X_fgYqfEeS4a4abTJTSSw" }],
   },
   "ATMNoteType1Code": {
     name: "ATMNoteType1Code",
@@ -2735,7 +2735,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "ATMMediaType4Code",
     isoId: "_gekxYZxDEe-Jl6tBAvMHqA",
     kind: "code",
-    options: [{ value: "CARD", name: "Cards", isoId: "_gftZ0ZxDEe-Jl6tBAvMHqA" }, { value: "CHCK", name: "Check", isoId: "_gftZ35xDEe-Jl6tBAvMHqA" }, { value: "CMDT", name: "Commodity", isoId: "_gftZ1ZxDEe-Jl6tBAvMHqA" }, { value: "COIN", name: "Coins", isoId: "_gftZ05xDEe-Jl6tBAvMHqA" }, { value: "CPNS", name: "Coupons", isoId: "_gftZ15xDEe-Jl6tBAvMHqA" }, { value: "ENVP", name: "Envelope", isoId: "_GknCAaDeEe-MRKYsaX6JDg" }, { value: "MLTP", name: "Multiple", isoId: "_HOGq8aDeEe-MRKYsaX6JDg" }, { value: "NOTE", name: "Notes", isoId: "_gftZ2ZxDEe-Jl6tBAvMHqA" }, { value: "STMP", name: "Stamps", isoId: "_gftZ25xDEe-Jl6tBAvMHqA" }, { value: "UDTM", name: "Undetermined", isoId: "_gftZ3ZxDEe-Jl6tBAvMHqA" }],
+    options: [{ value: "CARD", name: "Cards", isoId: "_gftZ0ZxDEe-Jl6tBAvMHqA" }, { value: "COIN", name: "Coins", isoId: "_gftZ05xDEe-Jl6tBAvMHqA" }, { value: "CMDT", name: "Commodity", isoId: "_gftZ1ZxDEe-Jl6tBAvMHqA" }, { value: "CPNS", name: "Coupons", isoId: "_gftZ15xDEe-Jl6tBAvMHqA" }, { value: "NOTE", name: "Notes", isoId: "_gftZ2ZxDEe-Jl6tBAvMHqA" }, { value: "STMP", name: "Stamps", isoId: "_gftZ25xDEe-Jl6tBAvMHqA" }, { value: "UDTM", name: "Undetermined", isoId: "_gftZ3ZxDEe-Jl6tBAvMHqA" }, { value: "CHCK", name: "Check", isoId: "_gftZ35xDEe-Jl6tBAvMHqA" }, { value: "ENVP", name: "Envelope", isoId: "_GknCAaDeEe-MRKYsaX6JDg" }, { value: "MLTP", name: "Multiple", isoId: "_HOGq8aDeEe-MRKYsaX6JDg" }],
   },
   "ImpliedCurrencyAndAmount": {
     name: "ImpliedCurrencyAndAmount",
@@ -2768,7 +2768,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "ATMCounterType3Code",
     isoId: "_A_-cgZxDEe-Jl6tBAvMHqA",
     kind: "code",
-    options: [{ value: "BDAY", name: "BusinessDay", isoId: "_dX8Td-f5Ee-WxJHuD6vKTw" }, { value: "CTOF", name: "CutOff", isoId: "_dX8Tdef5Ee-WxJHuD6vKTw" }, { value: "CTXN", name: "CustomerTransaction", isoId: "_dX8Tc-f5Ee-WxJHuD6vKTw" }, { value: "INQU", name: "CountersInquiry", isoId: "_dX8Tcef5Ee-WxJHuD6vKTw" }, { value: "OPER", name: "OperatorAdjust", isoId: "_dX8Te-f5Ee-WxJHuD6vKTw" }, { value: "PRTN", name: "Operation", isoId: "_dX8Teef5Ee-WxJHuD6vKTw" }, { value: "SLRP", name: "SinceLastReplenishmentPoint", isoId: "_dX8Tfef5Ee-WxJHuD6vKTw" }],
+    options: [{ value: "INQU", name: "CountersInquiry", isoId: "_dX8Tcef5Ee-WxJHuD6vKTw" }, { value: "CTXN", name: "CustomerTransaction", isoId: "_dX8Tc-f5Ee-WxJHuD6vKTw" }, { value: "CTOF", name: "CutOff", isoId: "_dX8Tdef5Ee-WxJHuD6vKTw" }, { value: "BDAY", name: "BusinessDay", isoId: "_dX8Td-f5Ee-WxJHuD6vKTw" }, { value: "PRTN", name: "Operation", isoId: "_dX8Teef5Ee-WxJHuD6vKTw" }, { value: "OPER", name: "OperatorAdjust", isoId: "_dX8Te-f5Ee-WxJHuD6vKTw" }, { value: "SLRP", name: "SinceLastReplenishmentPoint", isoId: "_dX8Tfef5Ee-WxJHuD6vKTw" }],
   },
   "ATMCassetteCounters5": {
     name: "ATMCassetteCounters5",
@@ -2809,7 +2809,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "ATMCassetteStatus1Code",
     isoId: "_ECkFwJwtEe-XpuX9q9xjLg",
     kind: "code",
-    options: [{ value: "CUFL", name: "Full", isoId: "_SblCQaDZEe-MRKYsaX6JDg" }, { value: "CUHG", name: "High", isoId: "_aoVoUaDZEe-MRKYsaX6JDg" }, { value: "CULW", name: "Low", isoId: "_bdXy4aDZEe-MRKYsaX6JDg" }, { value: "CUMP", name: "Manipulated", isoId: "_fIqY4aDZEe-MRKYsaX6JDg" }, { value: "CUMS", name: "Missing", isoId: "_dnYzYaDZEe-MRKYsaX6JDg" }, { value: "CUMT", name: "Empty", isoId: "_cIKcUaDZEe-MRKYsaX6JDg" }, { value: "CUNA", name: "NotAvailable", isoId: "_eHWs4aDZEe-MRKYsaX6JDg" }, { value: "CUNP", name: "Inoperative", isoId: "_dBuhkaDZEe-MRKYsaX6JDg" }, { value: "CUNR", name: "NoReference", isoId: "_e2bZYaDZEe-MRKYsaX6JDg" }, { value: "CUOK", name: "Ok", isoId: "_R7sBQaDZEe-MRKYsaX6JDg" }],
+    options: [{ value: "CUOK", name: "Ok", isoId: "_R7sBQaDZEe-MRKYsaX6JDg" }, { value: "CUFL", name: "Full", isoId: "_SblCQaDZEe-MRKYsaX6JDg" }, { value: "CUHG", name: "High", isoId: "_aoVoUaDZEe-MRKYsaX6JDg" }, { value: "CULW", name: "Low", isoId: "_bdXy4aDZEe-MRKYsaX6JDg" }, { value: "CUMT", name: "Empty", isoId: "_cIKcUaDZEe-MRKYsaX6JDg" }, { value: "CUNP", name: "Inoperative", isoId: "_dBuhkaDZEe-MRKYsaX6JDg" }, { value: "CUMS", name: "Missing", isoId: "_dnYzYaDZEe-MRKYsaX6JDg" }, { value: "CUNA", name: "NotAvailable", isoId: "_eHWs4aDZEe-MRKYsaX6JDg" }, { value: "CUNR", name: "NoReference", isoId: "_e2bZYaDZEe-MRKYsaX6JDg" }, { value: "CUMP", name: "Manipulated", isoId: "_fIqY4aDZEe-MRKYsaX6JDg" }],
   },
   "ATMCassette3": {
     name: "ATMCassette3",
@@ -2830,7 +2830,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "ATMCommand7Code",
     isoId: "_dWn-cZxCEe-Jl6tBAvMHqA",
     kind: "code",
-    options: [{ value: "ABAL", name: "ATMBalance", isoId: "_dYEI4ZxCEe-Jl6tBAvMHqA" }, { value: "ASTS", name: "ATMStatusUpdate", isoId: "_dYEI45xCEe-Jl6tBAvMHqA" }, { value: "CCNT", name: "CountersInquiry", isoId: "_dYEI55xCEe-Jl6tBAvMHqA" }, { value: "CFGT", name: "ConfigurationUpdate", isoId: "_dYEI5ZxCEe-Jl6tBAvMHqA" }, { value: "DISC", name: "Disconnect", isoId: "_dYEI6ZxCEe-Jl6tBAvMHqA" }, { value: "HKCG", name: "HLAKeyReplace", isoId: "_dYEI-5xCEe-Jl6tBAvMHqA" }, { value: "HKRV", name: "HLAKeyRemove", isoId: "_dYEI_ZxCEe-Jl6tBAvMHqA" }, { value: "KACT", name: "KeyActivation", isoId: "_dYEI65xCEe-Jl6tBAvMHqA" }, { value: "KCHG", name: "KeyReplace", isoId: "_dYEI_5xCEe-Jl6tBAvMHqA" }, { value: "KDAC", name: "KeyDeactivation", isoId: "_dYEI7ZxCEe-Jl6tBAvMHqA" }, { value: "KDWL", name: "KeyDownload", isoId: "_dYEI75xCEe-Jl6tBAvMHqA" }, { value: "KRMV", name: "KeyRemove", isoId: "_dYEI8ZxCEe-Jl6tBAvMHqA" }, { value: "RREQ", name: "ReconciliationRequest", isoId: "_VrWNEaDdEe-MRKYsaX6JDg" }, { value: "SCFU", name: "SecurityDeviceConfigurationUpdate", isoId: "_dYEI85xCEe-Jl6tBAvMHqA" }, { value: "SNDM", name: "SendMessage", isoId: "_dYEI-ZxCEe-Jl6tBAvMHqA" }, { value: "SSCU", name: "SecurityDeviceSchemeUpdate", isoId: "_dYEI9ZxCEe-Jl6tBAvMHqA" }, { value: "SSTU", name: "SecurityDeviceStatusUpdate", isoId: "_dYEI95xCEe-Jl6tBAvMHqA" }],
+    options: [{ value: "ABAL", name: "ATMBalance", isoId: "_dYEI4ZxCEe-Jl6tBAvMHqA" }, { value: "ASTS", name: "ATMStatusUpdate", isoId: "_dYEI45xCEe-Jl6tBAvMHqA" }, { value: "CFGT", name: "ConfigurationUpdate", isoId: "_dYEI5ZxCEe-Jl6tBAvMHqA" }, { value: "CCNT", name: "CountersInquiry", isoId: "_dYEI55xCEe-Jl6tBAvMHqA" }, { value: "DISC", name: "Disconnect", isoId: "_dYEI6ZxCEe-Jl6tBAvMHqA" }, { value: "KACT", name: "KeyActivation", isoId: "_dYEI65xCEe-Jl6tBAvMHqA" }, { value: "KDAC", name: "KeyDeactivation", isoId: "_dYEI7ZxCEe-Jl6tBAvMHqA" }, { value: "KDWL", name: "KeyDownload", isoId: "_dYEI75xCEe-Jl6tBAvMHqA" }, { value: "KRMV", name: "KeyRemove", isoId: "_dYEI8ZxCEe-Jl6tBAvMHqA" }, { value: "SCFU", name: "SecurityDeviceConfigurationUpdate", isoId: "_dYEI85xCEe-Jl6tBAvMHqA" }, { value: "SSCU", name: "SecurityDeviceSchemeUpdate", isoId: "_dYEI9ZxCEe-Jl6tBAvMHqA" }, { value: "SSTU", name: "SecurityDeviceStatusUpdate", isoId: "_dYEI95xCEe-Jl6tBAvMHqA" }, { value: "SNDM", name: "SendMessage", isoId: "_dYEI-ZxCEe-Jl6tBAvMHqA" }, { value: "HKCG", name: "HLAKeyReplace", isoId: "_dYEI-5xCEe-Jl6tBAvMHqA" }, { value: "HKRV", name: "HLAKeyRemove", isoId: "_dYEI_ZxCEe-Jl6tBAvMHqA" }, { value: "KCHG", name: "KeyReplace", isoId: "_dYEI_5xCEe-Jl6tBAvMHqA" }, { value: "RREQ", name: "ReconciliationRequest", isoId: "_VrWNEaDdEe-MRKYsaX6JDg" }],
   },
   "ISODateTime": {
     name: "ISODateTime",
@@ -2886,7 +2886,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "ATMCommand4Code",
     isoId: "_pcGN4a2BEeWMg5rOByfExw",
     kind: "code",
-    options: [{ value: "ABAL", name: "ATMBalance", isoId: "_pnbUIa2BEeWMg5rOByfExw" }, { value: "ASTS", name: "ATMStatusUpdate", isoId: "_pnbUI62BEeWMg5rOByfExw" }, { value: "CCNT", name: "CountersInquiry", isoId: "_pnbUJ62BEeWMg5rOByfExw" }, { value: "CFGT", name: "ConfigurationUpdate", isoId: "_pnbUJa2BEeWMg5rOByfExw" }, { value: "DISC", name: "Disconnect", isoId: "_pnbUKa2BEeWMg5rOByfExw" }, { value: "RPTC", name: "CountersReport", isoId: "_rZ0e0a2BEeWMg5rOByfExw" }, { value: "SNDM", name: "SendMessage", isoId: "_pnbUK62BEeWMg5rOByfExw" }],
+    options: [{ value: "ABAL", name: "ATMBalance", isoId: "_pnbUIa2BEeWMg5rOByfExw" }, { value: "ASTS", name: "ATMStatusUpdate", isoId: "_pnbUI62BEeWMg5rOByfExw" }, { value: "CFGT", name: "ConfigurationUpdate", isoId: "_pnbUJa2BEeWMg5rOByfExw" }, { value: "CCNT", name: "CountersInquiry", isoId: "_pnbUJ62BEeWMg5rOByfExw" }, { value: "DISC", name: "Disconnect", isoId: "_pnbUKa2BEeWMg5rOByfExw" }, { value: "SNDM", name: "SendMessage", isoId: "_pnbUK62BEeWMg5rOByfExw" }, { value: "RPTC", name: "CountersReport", isoId: "_rZ0e0a2BEeWMg5rOByfExw" }],
   },
   "TMSContactLevel2Code": {
     name: "TMSContactLevel2Code",
@@ -2904,13 +2904,13 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "MessageFunction8Code",
     isoId: "_gPu80CycEeWT0qwwEKj7sA",
     kind: "code",
-    options: [{ value: "BALN", name: "ATMBalance", isoId: "_qGK2cSycEeWT0qwwEKj7sA" }, { value: "DSEC", name: "SecurityDetails", isoId: "_uCydASycEeWT0qwwEKj7sA" }, { value: "GSTS", name: "ATMGlobalStatus", isoId: "_rsG5gSycEeWT0qwwEKj7sA" }, { value: "INQC", name: "CountersInquiry", isoId: "_vAyWUSycEeWT0qwwEKj7sA" }, { value: "KEYQ", name: "KeyExchangeRequest", isoId: "_xK0k8SycEeWT0qwwEKj7sA" }, { value: "SSTS", name: "SecurityKeyStatus", isoId: "_yriw0SycEeWT0qwwEKj7sA" }],
+    options: [{ value: "BALN", name: "ATMBalance", isoId: "_qGK2cSycEeWT0qwwEKj7sA" }, { value: "GSTS", name: "ATMGlobalStatus", isoId: "_rsG5gSycEeWT0qwwEKj7sA" }, { value: "DSEC", name: "SecurityDetails", isoId: "_uCydASycEeWT0qwwEKj7sA" }, { value: "INQC", name: "CountersInquiry", isoId: "_vAyWUSycEeWT0qwwEKj7sA" }, { value: "KEYQ", name: "KeyExchangeRequest", isoId: "_xK0k8SycEeWT0qwwEKj7sA" }, { value: "SSTS", name: "SecurityKeyStatus", isoId: "_yriw0SycEeWT0qwwEKj7sA" }],
   },
   "DataSetCategory7Code": {
     name: "DataSetCategory7Code",
     isoId: "_uif28In9EeShMpas3885ww",
     kind: "code",
-    options: [{ value: "AMNT", name: "PreDefinedAmount", isoId: "_A1wL44n-EeShMpas3885ww" }, { value: "APPR", name: "ApplicationParameters", isoId: "_6zEQs4n9EeShMpas3885ww" }, { value: "ATMC", name: "ATMConfiguration", isoId: "_2KOdUYn9EeShMpas3885ww" }, { value: "ATMP", name: "ATMProtocol", isoId: "_2RPEQ4n9EeShMpas3885ww" }, { value: "CPRC", name: "CardConfiguration", isoId: "__XsSc4n9EeShMpas3885ww" }, { value: "CRAP", name: "CardApplication", isoId: "__QYwk4n9EeShMpas3885ww" }, { value: "LOCC", name: "LocationConfiguration", isoId: "_CL-X84n-EeShMpas3885ww" }, { value: "MNOC", name: "MobileOperator", isoId: "_E8OSA4n-EeShMpas3885ww" }, { value: "OEXR", name: "OfflineExchangeRate", isoId: "_As9cQ4n-EeShMpas3885ww" }],
+    options: [{ value: "ATMC", name: "ATMConfiguration", isoId: "_2KOdUYn9EeShMpas3885ww" }, { value: "ATMP", name: "ATMProtocol", isoId: "_2RPEQ4n9EeShMpas3885ww" }, { value: "APPR", name: "ApplicationParameters", isoId: "_6zEQs4n9EeShMpas3885ww" }, { value: "CRAP", name: "CardApplication", isoId: "__QYwk4n9EeShMpas3885ww" }, { value: "CPRC", name: "CardConfiguration", isoId: "__XsSc4n9EeShMpas3885ww" }, { value: "OEXR", name: "OfflineExchangeRate", isoId: "_As9cQ4n-EeShMpas3885ww" }, { value: "AMNT", name: "PreDefinedAmount", isoId: "_A1wL44n-EeShMpas3885ww" }, { value: "LOCC", name: "LocationConfiguration", isoId: "_CL-X84n-EeShMpas3885ww" }, { value: "MNOC", name: "MobileOperator", isoId: "_E8OSA4n-EeShMpas3885ww" }],
   },
   "ATMConfigurationParameter1": {
     name: "ATMConfigurationParameter1",
@@ -2947,7 +2947,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "ATMServiceType11Code",
     isoId: "_gRYNcZxEEe-Jl6tBAvMHqA",
     kind: "code",
-    options: [{ value: "ACCD", name: "AccountDownload", isoId: "_fRf03ee6Ee-AuZFZ3aE3Cg" }, { value: "ASTS", name: "AccountStatements", isoId: "_fRf0t-e6Ee-AuZFZ3aE3Cg" }, { value: "BLCQ", name: "BalanceInquiry", isoId: "_fRf0uee6Ee-AuZFZ3aE3Cg" }, { value: "CDVF", name: "CardVerification", isoId: "_fRf0u-e6Ee-AuZFZ3aE3Cg" }, { value: "CHSN", name: "ChosenWithdrawal", isoId: "_fRf0vee6Ee-AuZFZ3aE3Cg" }, { value: "CMPF", name: "CustomerProfile", isoId: "_fRf0v-e6Ee-AuZFZ3aE3Cg" }, { value: "DCCS", name: "DynamicCurrencyConversion", isoId: "_fRf0wee6Ee-AuZFZ3aE3Cg" }, { value: "DPSN", name: "NonVerifiedDeposit", isoId: "_fRf0yee6Ee-AuZFZ3aE3Cg" }, { value: "DPSV", name: "VerifiedDeposit", isoId: "_fRf02-e6Ee-AuZFZ3aE3Cg" }, { value: "EMVS", name: "SelectEMVApplication", isoId: "_fRf01ee6Ee-AuZFZ3aE3Cg" }, { value: "MCHG", name: "MakingChange", isoId: "_fRf0x-e6Ee-AuZFZ3aE3Cg" }, { value: "MINI", name: "MiniStatement", isoId: "_fRf03-e6Ee-AuZFZ3aE3Cg" }, { value: "PATH", name: "PreAuthorisedWithdrawal", isoId: "_fRf00ee6Ee-AuZFZ3aE3Cg" }, { value: "PINC", name: "PINChange", isoId: "_fRf0y-e6Ee-AuZFZ3aE3Cg" }, { value: "PINR", name: "PINRecovery", isoId: "_fRf0zee6Ee-AuZFZ3aE3Cg" }, { value: "PINU", name: "PINUnblock", isoId: "_fRf0z-e6Ee-AuZFZ3aE3Cg" }, { value: "PRFL", name: "ProfileWithdrawal", isoId: "_fRf00-e6Ee-AuZFZ3aE3Cg" }, { value: "SPRV", name: "SupervisedWithdrawal", isoId: "_fRf02ee6Ee-AuZFZ3aE3Cg" }, { value: "STDR", name: "StandardWithdrawal", isoId: "_fRf01-e6Ee-AuZFZ3aE3Cg" }, { value: "TRFC", name: "CustomerTransfer", isoId: "_fRf0see6Ee-AuZFZ3aE3Cg" }, { value: "TRFI", name: "InterCustomerTransfer", isoId: "_fRf0s-e6Ee-AuZFZ3aE3Cg" }, { value: "TRFP", name: "Payment", isoId: "_fRf0tee6Ee-AuZFZ3aE3Cg" }, { value: "XRTD", name: "ExchangeRateDeposit", isoId: "_fRf0w-e6Ee-AuZFZ3aE3Cg" }, { value: "XRTW", name: "ExchangeRateWithdrawal", isoId: "_fRf0xee6Ee-AuZFZ3aE3Cg" }],
+    options: [{ value: "TRFC", name: "CustomerTransfer", isoId: "_fRf0see6Ee-AuZFZ3aE3Cg" }, { value: "TRFI", name: "InterCustomerTransfer", isoId: "_fRf0s-e6Ee-AuZFZ3aE3Cg" }, { value: "TRFP", name: "Payment", isoId: "_fRf0tee6Ee-AuZFZ3aE3Cg" }, { value: "ASTS", name: "AccountStatements", isoId: "_fRf0t-e6Ee-AuZFZ3aE3Cg" }, { value: "BLCQ", name: "BalanceInquiry", isoId: "_fRf0uee6Ee-AuZFZ3aE3Cg" }, { value: "CDVF", name: "CardVerification", isoId: "_fRf0u-e6Ee-AuZFZ3aE3Cg" }, { value: "CHSN", name: "ChosenWithdrawal", isoId: "_fRf0vee6Ee-AuZFZ3aE3Cg" }, { value: "CMPF", name: "CustomerProfile", isoId: "_fRf0v-e6Ee-AuZFZ3aE3Cg" }, { value: "DCCS", name: "DynamicCurrencyConversion", isoId: "_fRf0wee6Ee-AuZFZ3aE3Cg" }, { value: "XRTD", name: "ExchangeRateDeposit", isoId: "_fRf0w-e6Ee-AuZFZ3aE3Cg" }, { value: "XRTW", name: "ExchangeRateWithdrawal", isoId: "_fRf0xee6Ee-AuZFZ3aE3Cg" }, { value: "MCHG", name: "MakingChange", isoId: "_fRf0x-e6Ee-AuZFZ3aE3Cg" }, { value: "DPSN", name: "NonVerifiedDeposit", isoId: "_fRf0yee6Ee-AuZFZ3aE3Cg" }, { value: "PINC", name: "PINChange", isoId: "_fRf0y-e6Ee-AuZFZ3aE3Cg" }, { value: "PINR", name: "PINRecovery", isoId: "_fRf0zee6Ee-AuZFZ3aE3Cg" }, { value: "PINU", name: "PINUnblock", isoId: "_fRf0z-e6Ee-AuZFZ3aE3Cg" }, { value: "PATH", name: "PreAuthorisedWithdrawal", isoId: "_fRf00ee6Ee-AuZFZ3aE3Cg" }, { value: "PRFL", name: "ProfileWithdrawal", isoId: "_fRf00-e6Ee-AuZFZ3aE3Cg" }, { value: "EMVS", name: "SelectEMVApplication", isoId: "_fRf01ee6Ee-AuZFZ3aE3Cg" }, { value: "STDR", name: "StandardWithdrawal", isoId: "_fRf01-e6Ee-AuZFZ3aE3Cg" }, { value: "SPRV", name: "SupervisedWithdrawal", isoId: "_fRf02ee6Ee-AuZFZ3aE3Cg" }, { value: "DPSV", name: "VerifiedDeposit", isoId: "_fRf02-e6Ee-AuZFZ3aE3Cg" }, { value: "ACCD", name: "AccountDownload", isoId: "_fRf03ee6Ee-AuZFZ3aE3Cg" }, { value: "MINI", name: "MiniStatement", isoId: "_fRf03-e6Ee-AuZFZ3aE3Cg" }],
   },
   "ATMService27": {
     name: "ATMService27",
@@ -2974,7 +2974,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "ATMDevice2Code",
     isoId: "_1m2agIqtEeSIDtZ76p6McQ",
     kind: "code",
-    options: [{ value: "ALRM", name: "AlarmSensors", isoId: "_6MaQYYqtEeSIDtZ76p6McQ" }, { value: "BRCD", name: "BarCodeReader", isoId: "_6VDPA4qtEeSIDtZ76p6McQ" }, { value: "CAMR", name: "Camera", isoId: "_6WicwYqtEeSIDtZ76p6McQ" }, { value: "CDIS", name: "CustomerConsole", isoId: "_7Ido8YqtEeSIDtZ76p6McQ" }, { value: "CHCK", name: "CheckReader", isoId: "_7G90I4qtEeSIDtZ76p6McQ" }, { value: "CRDD", name: "CardDispenser", isoId: "_6jM_w4qtEeSIDtZ76p6McQ" }, { value: "CRDR", name: "CardUnit", isoId: "_6oH8AYqtEeSIDtZ76p6McQ" }, { value: "CSHD", name: "CashDispenser", isoId: "_6w6ro4qtEeSIDtZ76p6McQ" }, { value: "CSHI", name: "CashInModule", isoId: "_62Ii04qtEeSIDtZ76p6McQ" }, { value: "CSHR", name: "CashRecycler", isoId: "_6-LEgYqtEeSIDtZ76p6McQ" }, { value: "DOOR", name: "DoorSensors", isoId: "_7yCKYYqtEeSIDtZ76p6McQ" }, { value: "DPRN", name: "DocumentPrinter", isoId: "_7pFpwYqtEeSIDtZ76p6McQ" }, { value: "DPST", name: "Deposit", isoId: "_7hMSAYqtEeSIDtZ76p6McQ" }, { value: "INPM", name: "InputProcessingModule", isoId: "_75e2MYqtEeSIDtZ76p6McQ" }, { value: "JPRN", name: "JournalPrinter", isoId: "_8MtUMYqtEeSIDtZ76p6McQ" }, { value: "JRNL", name: "Journal", isoId: "_8BYN8YqtEeSIDtZ76p6McQ" }, { value: "PINR", name: "PINKeypad", isoId: "_8oa_0YqtEeSIDtZ76p6McQ" }, { value: "PSBK", name: "PassbookPrinter", isoId: "_8g-UAYqtEeSIDtZ76p6McQ" }, { value: "RPRN", name: "ReceiptPrinter", isoId: "_8wxDgYqtEeSIDtZ76p6McQ" }, { value: "RWDR", name: "WithdrawalReceipt", isoId: "_YA_OIY65EeSUpManOYhRpw" }, { value: "SCAN", name: "ScannerPrinter", isoId: "_840MQYqtEeSIDtZ76p6McQ" }, { value: "SNSR", name: "OtherSensor", isoId: "_8YoQUYqtEeSIDtZ76p6McQ" }],
+    options: [{ value: "ALRM", name: "AlarmSensors", isoId: "_6MaQYYqtEeSIDtZ76p6McQ" }, { value: "BRCD", name: "BarCodeReader", isoId: "_6VDPA4qtEeSIDtZ76p6McQ" }, { value: "CAMR", name: "Camera", isoId: "_6WicwYqtEeSIDtZ76p6McQ" }, { value: "CRDD", name: "CardDispenser", isoId: "_6jM_w4qtEeSIDtZ76p6McQ" }, { value: "CRDR", name: "CardUnit", isoId: "_6oH8AYqtEeSIDtZ76p6McQ" }, { value: "CSHD", name: "CashDispenser", isoId: "_6w6ro4qtEeSIDtZ76p6McQ" }, { value: "CSHI", name: "CashInModule", isoId: "_62Ii04qtEeSIDtZ76p6McQ" }, { value: "CSHR", name: "CashRecycler", isoId: "_6-LEgYqtEeSIDtZ76p6McQ" }, { value: "CHCK", name: "CheckReader", isoId: "_7G90I4qtEeSIDtZ76p6McQ" }, { value: "CDIS", name: "CustomerConsole", isoId: "_7Ido8YqtEeSIDtZ76p6McQ" }, { value: "DPST", name: "Deposit", isoId: "_7hMSAYqtEeSIDtZ76p6McQ" }, { value: "DPRN", name: "DocumentPrinter", isoId: "_7pFpwYqtEeSIDtZ76p6McQ" }, { value: "DOOR", name: "DoorSensors", isoId: "_7yCKYYqtEeSIDtZ76p6McQ" }, { value: "INPM", name: "InputProcessingModule", isoId: "_75e2MYqtEeSIDtZ76p6McQ" }, { value: "JRNL", name: "Journal", isoId: "_8BYN8YqtEeSIDtZ76p6McQ" }, { value: "JPRN", name: "JournalPrinter", isoId: "_8MtUMYqtEeSIDtZ76p6McQ" }, { value: "SNSR", name: "OtherSensor", isoId: "_8YoQUYqtEeSIDtZ76p6McQ" }, { value: "PSBK", name: "PassbookPrinter", isoId: "_8g-UAYqtEeSIDtZ76p6McQ" }, { value: "PINR", name: "PINKeypad", isoId: "_8oa_0YqtEeSIDtZ76p6McQ" }, { value: "RPRN", name: "ReceiptPrinter", isoId: "_8wxDgYqtEeSIDtZ76p6McQ" }, { value: "SCAN", name: "ScannerPrinter", isoId: "_840MQYqtEeSIDtZ76p6McQ" }, { value: "RWDR", name: "WithdrawalReceipt", isoId: "_YA_OIY65EeSUpManOYhRpw" }],
   },
   "Acquirer7": {
     name: "Acquirer7",
@@ -3172,13 +3172,13 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "ContentType2Code",
     isoId: "_gQ7oMWizEeS87LmvcA55sg",
     kind: "code",
-    options: [{ value: "AUTH", name: "AuthenticatedData", isoId: "_gd_z22izEeS87LmvcA55sg" }, { value: "DATA", name: "PlainData", isoId: "_gd_z0WizEeS87LmvcA55sg" }, { value: "DGST", name: "DigestedData", isoId: "_gd_z12izEeS87LmvcA55sg" }, { value: "EVLP", name: "EnvelopedData", isoId: "_gd_z1WizEeS87LmvcA55sg" }, { value: "SIGN", name: "SignedData", isoId: "_gd_z02izEeS87LmvcA55sg" }],
+    options: [{ value: "DATA", name: "PlainData", isoId: "_gd_z0WizEeS87LmvcA55sg" }, { value: "SIGN", name: "SignedData", isoId: "_gd_z02izEeS87LmvcA55sg" }, { value: "EVLP", name: "EnvelopedData", isoId: "_gd_z1WizEeS87LmvcA55sg" }, { value: "DGST", name: "DigestedData", isoId: "_gd_z12izEeS87LmvcA55sg" }, { value: "AUTH", name: "AuthenticatedData", isoId: "_gd_z22izEeS87LmvcA55sg" }],
   },
   "Algorithm11Code": {
     name: "Algorithm11Code",
     isoId: "_x-PlMWi4EeS87LmvcA55sg",
     kind: "code",
-    options: [{ value: "HS01", name: "SHA1", isoId: "_I6AWUWi5EeS87LmvcA55sg" }, { value: "HS25", name: "SHA256", isoId: "_yLO4UWi4EeS87LmvcA55sg" }, { value: "HS38", name: "SHA384", isoId: "_yLO4U2i4EeS87LmvcA55sg" }, { value: "HS51", name: "SHA512", isoId: "_yLO4VWi4EeS87LmvcA55sg" }],
+    options: [{ value: "HS25", name: "SHA256", isoId: "_yLO4UWi4EeS87LmvcA55sg" }, { value: "HS38", name: "SHA384", isoId: "_yLO4U2i4EeS87LmvcA55sg" }, { value: "HS51", name: "SHA512", isoId: "_yLO4VWi4EeS87LmvcA55sg" }, { value: "HS01", name: "SHA1", isoId: "_I6AWUWi5EeS87LmvcA55sg" }],
   },
   "AlgorithmIdentification16": {
     name: "AlgorithmIdentification16",
@@ -3213,7 +3213,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "AttributeType1Code",
     isoId: "_TSEShwEcEeCQm6a_G2yO_w_1647054539",
     kind: "code",
-    options: [{ value: "CATT", name: "CountryName", isoId: "_TSESjAEcEeCQm6a_G2yO_w_189442098" }, { value: "CNAT", name: "CommonName", isoId: "_TSESiAEcEeCQm6a_G2yO_w_399531534" }, { value: "LATT", name: "Locality", isoId: "_TSESiQEcEeCQm6a_G2yO_w_807359888" }, { value: "OATT", name: "OrganisationName", isoId: "_TSESigEcEeCQm6a_G2yO_w_-1550382235" }, { value: "OUAT", name: "OrganisationUnitName", isoId: "_TSESiwEcEeCQm6a_G2yO_w_-2013772510" }],
+    options: [{ value: "CNAT", name: "CommonName", isoId: "_TSESiAEcEeCQm6a_G2yO_w_399531534" }, { value: "LATT", name: "Locality", isoId: "_TSESiQEcEeCQm6a_G2yO_w_807359888" }, { value: "OATT", name: "OrganisationName", isoId: "_TSESigEcEeCQm6a_G2yO_w_-1550382235" }, { value: "OUAT", name: "OrganisationUnitName", isoId: "_TSESiwEcEeCQm6a_G2yO_w_-2013772510" }, { value: "CATT", name: "CountryName", isoId: "_TSESjAEcEeCQm6a_G2yO_w_189442098" }],
   },
   "RelativeDistinguishedName1": {
     name: "RelativeDistinguishedName1",
@@ -3277,7 +3277,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "Algorithm14Code",
     isoId: "_iygrwWjBEeSP8Z8nx8HTuQ",
     kind: "code",
-    options: [{ value: "ERS1", name: "SHA1WithRSA", isoId: "_x0rDYWjBEeSP8Z8nx8HTuQ" }, { value: "ERS2", name: "SHA256WithRSA", isoId: "_i_XcAWjBEeSP8Z8nx8HTuQ" }, { value: "RPSS", name: "RSASSA-PSS", isoId: "_2ytDoWjBEeSP8Z8nx8HTuQ" }],
+    options: [{ value: "ERS2", name: "SHA256WithRSA", isoId: "_i_XcAWjBEeSP8Z8nx8HTuQ" }, { value: "ERS1", name: "SHA1WithRSA", isoId: "_x0rDYWjBEeSP8Z8nx8HTuQ" }, { value: "RPSS", name: "RSASSA-PSS", isoId: "_2ytDoWjBEeSP8Z8nx8HTuQ" }],
   },
   "Algorithm8Code": {
     name: "Algorithm8Code",
@@ -3380,7 +3380,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "MessageFunction7Code",
     isoId: "_ha36YInyEeS9F4Qrq_eaVA",
     kind: "code",
-    options: [{ value: "ACMD", name: "ATMControl", isoId: "_nq01g4nyEeS9F4Qrq_eaVA" }, { value: "BALN", name: "ATMBalance", isoId: "_nT2f8YnyEeS9F4Qrq_eaVA" }, { value: "CMPA", name: "ATMCompletionAcknowledgement", isoId: "_neu6Q4nyEeS9F4Qrq_eaVA" }, { value: "CMPD", name: "ATMCompletionAdvice", isoId: "_nksYU4nyEeS9F4Qrq_eaVA" }, { value: "CSEC", name: "SecurityControl", isoId: "_untvI4nyEeS9F4Qrq_eaVA" }, { value: "DIAP", name: "ATMDiagnosticResponse", isoId: "_n-Csc4nyEeS9F4Qrq_eaVA" }, { value: "DIAQ", name: "ATMDiagnosticRequest", isoId: "_n4FOY4nyEeS9F4Qrq_eaVA" }, { value: "DSEC", name: "SecurityDetails", isoId: "_vaugc4nyEeS9F4Qrq_eaVA" }, { value: "DVCC", name: "ATMDeviceControl", isoId: "_nwyTk4nyEeS9F4Qrq_eaVA" }, { value: "GSTS", name: "ATMGlobalStatus", isoId: "_oEJ7g4nyEeS9F4Qrq_eaVA" }, { value: "H2AP", name: "HostToATMAcknowledgement", isoId: "_tMFeo4nyEeS9F4Qrq_eaVA" }, { value: "H2AQ", name: "HostToATMRequest", isoId: "_tSMts4nyEeS9F4Qrq_eaVA" }, { value: "INQC", name: "CountersInquiry", isoId: "_rAP5M4nyEeS9F4Qrq_eaVA" }, { value: "INQP", name: "ATMInquiryResponse", isoId: "_oQOoo4nyEeS9F4Qrq_eaVA" }, { value: "INQQ", name: "ATMInquiryRequest", isoId: "_oKHZk4nyEeS9F4Qrq_eaVA" }, { value: "KYAP", name: "ATMKeyDownloadResponse", isoId: "_ocT804nyEeS9F4Qrq_eaVA" }, { value: "KYAQ", name: "ATMKeyDownloadRequest", isoId: "_oWMGs4nyEeS9F4Qrq_eaVA" }, { value: "PINP", name: "ATMPINManagementResponse", isoId: "_okqAgYnyEeS9F4Qrq_eaVA" }, { value: "PINQ", name: "ATMPINManagementRequest", isoId: "_oibL44nyEeS9F4Qrq_eaVA" }, { value: "RJAP", name: "ATMResponseReject", isoId: "_oyqnU4nyEeS9F4Qrq_eaVA" }, { value: "RJAQ", name: "ATMRequestReject", isoId: "_osj_U4nyEeS9F4Qrq_eaVA" }, { value: "SKSC", name: "SecurityKeyCompletion", isoId: "_v9qOY4nyEeS9F4Qrq_eaVA" }, { value: "SSTS", name: "SecurityKeyStatus", isoId: "_whAMA4nyEeS9F4Qrq_eaVA" }, { value: "TMOP", name: "ATMOperation", isoId: "_uYV2Y4nyEeS9F4Qrq_eaVA" }, { value: "WITK", name: "ATMWithdrawalAknowledgement", isoId: "_o6twEYnyEeS9F4Qrq_eaVA" }, { value: "WITP", name: "ATMWithdrawalResponse", isoId: "_pLIKo4nyEeS9F4Qrq_eaVA" }, { value: "WITQ", name: "ATMWithdrawalRequest", isoId: "_pEsyg4nyEeS9F4Qrq_eaVA" }, { value: "WITV", name: "ATMWithdrawalAdvice", isoId: "_o4oFY4nyEeS9F4Qrq_eaVA" }],
+    options: [{ value: "BALN", name: "ATMBalance", isoId: "_nT2f8YnyEeS9F4Qrq_eaVA" }, { value: "CMPA", name: "ATMCompletionAcknowledgement", isoId: "_neu6Q4nyEeS9F4Qrq_eaVA" }, { value: "CMPD", name: "ATMCompletionAdvice", isoId: "_nksYU4nyEeS9F4Qrq_eaVA" }, { value: "ACMD", name: "ATMControl", isoId: "_nq01g4nyEeS9F4Qrq_eaVA" }, { value: "DVCC", name: "ATMDeviceControl", isoId: "_nwyTk4nyEeS9F4Qrq_eaVA" }, { value: "DIAQ", name: "ATMDiagnosticRequest", isoId: "_n4FOY4nyEeS9F4Qrq_eaVA" }, { value: "DIAP", name: "ATMDiagnosticResponse", isoId: "_n-Csc4nyEeS9F4Qrq_eaVA" }, { value: "GSTS", name: "ATMGlobalStatus", isoId: "_oEJ7g4nyEeS9F4Qrq_eaVA" }, { value: "INQQ", name: "ATMInquiryRequest", isoId: "_oKHZk4nyEeS9F4Qrq_eaVA" }, { value: "INQP", name: "ATMInquiryResponse", isoId: "_oQOoo4nyEeS9F4Qrq_eaVA" }, { value: "KYAQ", name: "ATMKeyDownloadRequest", isoId: "_oWMGs4nyEeS9F4Qrq_eaVA" }, { value: "KYAP", name: "ATMKeyDownloadResponse", isoId: "_ocT804nyEeS9F4Qrq_eaVA" }, { value: "PINQ", name: "ATMPINManagementRequest", isoId: "_oibL44nyEeS9F4Qrq_eaVA" }, { value: "PINP", name: "ATMPINManagementResponse", isoId: "_okqAgYnyEeS9F4Qrq_eaVA" }, { value: "RJAQ", name: "ATMRequestReject", isoId: "_osj_U4nyEeS9F4Qrq_eaVA" }, { value: "RJAP", name: "ATMResponseReject", isoId: "_oyqnU4nyEeS9F4Qrq_eaVA" }, { value: "WITV", name: "ATMWithdrawalAdvice", isoId: "_o4oFY4nyEeS9F4Qrq_eaVA" }, { value: "WITK", name: "ATMWithdrawalAknowledgement", isoId: "_o6twEYnyEeS9F4Qrq_eaVA" }, { value: "WITQ", name: "ATMWithdrawalRequest", isoId: "_pEsyg4nyEeS9F4Qrq_eaVA" }, { value: "WITP", name: "ATMWithdrawalResponse", isoId: "_pLIKo4nyEeS9F4Qrq_eaVA" }, { value: "INQC", name: "CountersInquiry", isoId: "_rAP5M4nyEeS9F4Qrq_eaVA" }, { value: "H2AP", name: "HostToATMAcknowledgement", isoId: "_tMFeo4nyEeS9F4Qrq_eaVA" }, { value: "H2AQ", name: "HostToATMRequest", isoId: "_tSMts4nyEeS9F4Qrq_eaVA" }, { value: "TMOP", name: "ATMOperation", isoId: "_uYV2Y4nyEeS9F4Qrq_eaVA" }, { value: "CSEC", name: "SecurityControl", isoId: "_untvI4nyEeS9F4Qrq_eaVA" }, { value: "DSEC", name: "SecurityDetails", isoId: "_vaugc4nyEeS9F4Qrq_eaVA" }, { value: "SKSC", name: "SecurityKeyCompletion", isoId: "_v9qOY4nyEeS9F4Qrq_eaVA" }, { value: "SSTS", name: "SecurityKeyStatus", isoId: "_whAMA4nyEeS9F4Qrq_eaVA" }],
   },
   "ATMMessageFunction1": {
     name: "ATMMessageFunction1",
@@ -3396,7 +3396,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "MessageFunction11Code",
     isoId: "_evJWQa1xEeWMg5rOByfExw",
     kind: "code",
-    options: [{ value: "ACMD", name: "ATMControl", isoId: "_e61o561xEeWMg5rOByfExw" }, { value: "BALN", name: "ATMBalance", isoId: "_e61o4a1xEeWMg5rOByfExw" }, { value: "CMPA", name: "ATMCompletionAcknowledgement", isoId: "_e61o461xEeWMg5rOByfExw" }, { value: "CMPD", name: "ATMCompletionAdvice", isoId: "_e61o5a1xEeWMg5rOByfExw" }, { value: "CSEC", name: "SecurityControl", isoId: "_e61pEa1xEeWMg5rOByfExw" }, { value: "DIAP", name: "ATMDiagnosticResponse", isoId: "_e61o7a1xEeWMg5rOByfExw" }, { value: "DIAQ", name: "ATMDiagnosticRequest", isoId: "_e61o661xEeWMg5rOByfExw" }, { value: "DPSK", name: "ATMDepositCompletionAcknowledgement", isoId: "_lLyCga1xEeWMg5rOByfExw" }, { value: "DPSP", name: "ATMDepositResponse", isoId: "_lmAgYa1xEeWMg5rOByfExw" }, { value: "DPSQ", name: "ATMDepositRequest", isoId: "_ld0Nsa1xEeWMg5rOByfExw" }, { value: "DPSV", name: "ATMDepositCompletionAdvice", isoId: "_lT-VMa1xEeWMg5rOByfExw" }, { value: "DSEC", name: "SecurityDetails", isoId: "_e61pE61xEeWMg5rOByfExw" }, { value: "DVCC", name: "ATMDeviceControl", isoId: "_e61o6a1xEeWMg5rOByfExw" }, { value: "EXPK", name: "ATMExceptionAcknowledgement", isoId: "_mGqWYa1xEeWMg5rOByfExw" }, { value: "EXPV", name: "ATMExceptionAdvice", isoId: "_mOakMa1xEeWMg5rOByfExw" }, { value: "GSTS", name: "ATMGlobalStatus", isoId: "_e61o761xEeWMg5rOByfExw" }, { value: "H2AP", name: "HostToATMAcknowledgement", isoId: "_e61pC61xEeWMg5rOByfExw" }, { value: "H2AQ", name: "HostToATMRequest", isoId: "_e61pDa1xEeWMg5rOByfExw" }, { value: "INQC", name: "CountersInquiry", isoId: "_e61pCa1xEeWMg5rOByfExw" }, { value: "INQP", name: "ATMInquiryResponse", isoId: "_e61o861xEeWMg5rOByfExw" }, { value: "INQQ", name: "ATMInquiryRequest", isoId: "_e61o8a1xEeWMg5rOByfExw" }, { value: "KYAP", name: "ATMKeyDownloadResponse", isoId: "_e61o961xEeWMg5rOByfExw" }, { value: "KYAQ", name: "ATMKeyDownloadRequest", isoId: "_e61o9a1xEeWMg5rOByfExw" }, { value: "PINP", name: "ATMPINManagementResponse", isoId: "_e61o-61xEeWMg5rOByfExw" }, { value: "PINQ", name: "ATMPINManagementRequest", isoId: "_e61o-a1xEeWMg5rOByfExw" }, { value: "RJAP", name: "ATMResponseReject", isoId: "_e61o_61xEeWMg5rOByfExw" }, { value: "RJAQ", name: "ATMRequestReject", isoId: "_e61o_a1xEeWMg5rOByfExw" }, { value: "RPTC", name: "CountersReport", isoId: "_rsA1Ua1xEeWMg5rOByfExw" }, { value: "SKSC", name: "SecurityKeyCompletion", isoId: "_e61pFa1xEeWMg5rOByfExw" }, { value: "SSTS", name: "SecurityKeyStatus", isoId: "_e61pF61xEeWMg5rOByfExw" }, { value: "TMOP", name: "ATMOperation", isoId: "_e61pD61xEeWMg5rOByfExw" }, { value: "TRFP", name: "ATMTransferResponse", isoId: "_oCFhQa1xEeWMg5rOByfExw" }, { value: "TRFQ", name: "ATMTransferRequest", isoId: "_n5vdka1xEeWMg5rOByfExw" }, { value: "WITK", name: "ATMWithdrawalAknowledgement", isoId: "_e61pA61xEeWMg5rOByfExw" }, { value: "WITP", name: "ATMWithdrawalResponse", isoId: "_e61pB61xEeWMg5rOByfExw" }, { value: "WITQ", name: "ATMWithdrawalRequest", isoId: "_e61pBa1xEeWMg5rOByfExw" }, { value: "WITV", name: "ATMWithdrawalAdvice", isoId: "_e61pAa1xEeWMg5rOByfExw" }],
+    options: [{ value: "BALN", name: "ATMBalance", isoId: "_e61o4a1xEeWMg5rOByfExw" }, { value: "CMPA", name: "ATMCompletionAcknowledgement", isoId: "_e61o461xEeWMg5rOByfExw" }, { value: "CMPD", name: "ATMCompletionAdvice", isoId: "_e61o5a1xEeWMg5rOByfExw" }, { value: "ACMD", name: "ATMControl", isoId: "_e61o561xEeWMg5rOByfExw" }, { value: "DVCC", name: "ATMDeviceControl", isoId: "_e61o6a1xEeWMg5rOByfExw" }, { value: "DIAQ", name: "ATMDiagnosticRequest", isoId: "_e61o661xEeWMg5rOByfExw" }, { value: "DIAP", name: "ATMDiagnosticResponse", isoId: "_e61o7a1xEeWMg5rOByfExw" }, { value: "GSTS", name: "ATMGlobalStatus", isoId: "_e61o761xEeWMg5rOByfExw" }, { value: "INQQ", name: "ATMInquiryRequest", isoId: "_e61o8a1xEeWMg5rOByfExw" }, { value: "INQP", name: "ATMInquiryResponse", isoId: "_e61o861xEeWMg5rOByfExw" }, { value: "KYAQ", name: "ATMKeyDownloadRequest", isoId: "_e61o9a1xEeWMg5rOByfExw" }, { value: "KYAP", name: "ATMKeyDownloadResponse", isoId: "_e61o961xEeWMg5rOByfExw" }, { value: "PINQ", name: "ATMPINManagementRequest", isoId: "_e61o-a1xEeWMg5rOByfExw" }, { value: "PINP", name: "ATMPINManagementResponse", isoId: "_e61o-61xEeWMg5rOByfExw" }, { value: "RJAQ", name: "ATMRequestReject", isoId: "_e61o_a1xEeWMg5rOByfExw" }, { value: "RJAP", name: "ATMResponseReject", isoId: "_e61o_61xEeWMg5rOByfExw" }, { value: "WITV", name: "ATMWithdrawalAdvice", isoId: "_e61pAa1xEeWMg5rOByfExw" }, { value: "WITK", name: "ATMWithdrawalAknowledgement", isoId: "_e61pA61xEeWMg5rOByfExw" }, { value: "WITQ", name: "ATMWithdrawalRequest", isoId: "_e61pBa1xEeWMg5rOByfExw" }, { value: "WITP", name: "ATMWithdrawalResponse", isoId: "_e61pB61xEeWMg5rOByfExw" }, { value: "INQC", name: "CountersInquiry", isoId: "_e61pCa1xEeWMg5rOByfExw" }, { value: "H2AP", name: "HostToATMAcknowledgement", isoId: "_e61pC61xEeWMg5rOByfExw" }, { value: "H2AQ", name: "HostToATMRequest", isoId: "_e61pDa1xEeWMg5rOByfExw" }, { value: "TMOP", name: "ATMOperation", isoId: "_e61pD61xEeWMg5rOByfExw" }, { value: "CSEC", name: "SecurityControl", isoId: "_e61pEa1xEeWMg5rOByfExw" }, { value: "DSEC", name: "SecurityDetails", isoId: "_e61pE61xEeWMg5rOByfExw" }, { value: "SKSC", name: "SecurityKeyCompletion", isoId: "_e61pFa1xEeWMg5rOByfExw" }, { value: "SSTS", name: "SecurityKeyStatus", isoId: "_e61pF61xEeWMg5rOByfExw" }, { value: "DPSK", name: "ATMDepositCompletionAcknowledgement", isoId: "_lLyCga1xEeWMg5rOByfExw" }, { value: "DPSV", name: "ATMDepositCompletionAdvice", isoId: "_lT-VMa1xEeWMg5rOByfExw" }, { value: "DPSQ", name: "ATMDepositRequest", isoId: "_ld0Nsa1xEeWMg5rOByfExw" }, { value: "DPSP", name: "ATMDepositResponse", isoId: "_lmAgYa1xEeWMg5rOByfExw" }, { value: "EXPK", name: "ATMExceptionAcknowledgement", isoId: "_mGqWYa1xEeWMg5rOByfExw" }, { value: "EXPV", name: "ATMExceptionAdvice", isoId: "_mOakMa1xEeWMg5rOByfExw" }, { value: "TRFQ", name: "ATMTransferRequest", isoId: "_n5vdka1xEeWMg5rOByfExw" }, { value: "TRFP", name: "ATMTransferResponse", isoId: "_oCFhQa1xEeWMg5rOByfExw" }, { value: "RPTC", name: "CountersReport", isoId: "_rsA1Ua1xEeWMg5rOByfExw" }],
   },
   "ATMMessageFunction2": {
     name: "ATMMessageFunction2",
@@ -3412,7 +3412,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "ATMOperation2Code",
     isoId: "_BNSDQZxEEe-Jl6tBAvMHqA",
     kind: "code",
-    options: [{ value: "ADJU", name: "Adjust", isoId: "_BOMpQZxEEe-Jl6tBAvMHqA" }, { value: "INSR", name: "InsertMedia", isoId: "_BOMpQ5xEEe-Jl6tBAvMHqA" }, { value: "LOAD", name: "Loading", isoId: "_BOMpRZxEEe-Jl6tBAvMHqA" }, { value: "RCUP", name: "RemoteCounterUpdate", isoId: "_VdwnkaDeEe-MRKYsaX6JDg" }, { value: "REMV", name: "RemoveMedia", isoId: "_BOMpR5xEEe-Jl6tBAvMHqA" }, { value: "SWAP", name: "Swap", isoId: "_7QjVwajeEe--FqfI7l8ySw" }, { value: "UNLD", name: "Unloading", isoId: "_BOMpSZxEEe-Jl6tBAvMHqA" }],
+    options: [{ value: "ADJU", name: "Adjust", isoId: "_BOMpQZxEEe-Jl6tBAvMHqA" }, { value: "INSR", name: "InsertMedia", isoId: "_BOMpQ5xEEe-Jl6tBAvMHqA" }, { value: "LOAD", name: "Loading", isoId: "_BOMpRZxEEe-Jl6tBAvMHqA" }, { value: "REMV", name: "RemoveMedia", isoId: "_BOMpR5xEEe-Jl6tBAvMHqA" }, { value: "UNLD", name: "Unloading", isoId: "_BOMpSZxEEe-Jl6tBAvMHqA" }, { value: "RCUP", name: "RemoteCounterUpdate", isoId: "_VdwnkaDeEe-MRKYsaX6JDg" }, { value: "SWAP", name: "Swap", isoId: "_7QjVwajeEe--FqfI7l8ySw" }],
   },
   "TransactionIdentifier3": {
     name: "TransactionIdentifier3",
@@ -3470,13 +3470,13 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "Algorithm13Code",
     isoId: "_lh7HEWi7EeS87LmvcA55sg",
     kind: "code",
-    options: [{ value: "DKP9", name: "DUKPT2009", isoId: "_lu-ElWi7EeS87LmvcA55sg" }, { value: "E3DC", name: "DES112CBC", isoId: "_lu-Ek2i7EeS87LmvcA55sg" }, { value: "EA2C", name: "AES128CBC", isoId: "_lu-EkWi7EeS87LmvcA55sg" }, { value: "EA5C", name: "AES256CBC", isoId: "_TfXrIWi8EeS87LmvcA55sg" }, { value: "EA9C", name: "AES192CBC", isoId: "_TZJuYWi8EeS87LmvcA55sg" }, { value: "UKA1", name: "UKPTwithAES128", isoId: "_lu-EmWi7EeS87LmvcA55sg" }, { value: "UKPT", name: "UKPT", isoId: "_lu-El2i7EeS87LmvcA55sg" }],
+    options: [{ value: "EA2C", name: "AES128CBC", isoId: "_lu-EkWi7EeS87LmvcA55sg" }, { value: "E3DC", name: "DES112CBC", isoId: "_lu-Ek2i7EeS87LmvcA55sg" }, { value: "DKP9", name: "DUKPT2009", isoId: "_lu-ElWi7EeS87LmvcA55sg" }, { value: "UKPT", name: "UKPT", isoId: "_lu-El2i7EeS87LmvcA55sg" }, { value: "UKA1", name: "UKPTwithAES128", isoId: "_lu-EmWi7EeS87LmvcA55sg" }, { value: "EA9C", name: "AES192CBC", isoId: "_TZJuYWi8EeS87LmvcA55sg" }, { value: "EA5C", name: "AES256CBC", isoId: "_TfXrIWi8EeS87LmvcA55sg" }],
   },
   "Algorithm15Code": {
     name: "Algorithm15Code",
     isoId: "_-7tyIWjBEeSP8Z8nx8HTuQ",
     kind: "code",
-    options: [{ value: "E3DC", name: "DES112CBC", isoId: "__IaKU2jBEeSP8Z8nx8HTuQ" }, { value: "EA2C", name: "AES128CBC", isoId: "__IaKUWjBEeSP8Z8nx8HTuQ" }, { value: "EA5C", name: "AES256CBC", isoId: "_DeJbgWjCEeSP8Z8nx8HTuQ" }, { value: "EA9C", name: "AES192CBC", isoId: "_DT3eIWjCEeSP8Z8nx8HTuQ" }],
+    options: [{ value: "EA2C", name: "AES128CBC", isoId: "__IaKUWjBEeSP8Z8nx8HTuQ" }, { value: "E3DC", name: "DES112CBC", isoId: "__IaKU2jBEeSP8Z8nx8HTuQ" }, { value: "EA9C", name: "AES192CBC", isoId: "_DT3eIWjCEeSP8Z8nx8HTuQ" }, { value: "EA5C", name: "AES256CBC", isoId: "_DeJbgWjCEeSP8Z8nx8HTuQ" }],
   },
   "EncryptionFormat1Code": {
     name: "EncryptionFormat1Code",
@@ -3502,7 +3502,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "Algorithm12Code",
     isoId: "_h6npMWi7EeS87LmvcA55sg",
     kind: "code",
-    options: [{ value: "CMA1", name: "SHA256CMACwithAES128", isoId: "_iHlHJWi7EeS87LmvcA55sg" }, { value: "CMA5", name: "SHA512CMACwithAES256", isoId: "_Ew-kEWi8EeS87LmvcA55sg" }, { value: "CMA9", name: "SHA384CMACwithAES192", isoId: "_DoWIEWi8EeS87LmvcA55sg" }, { value: "MACC", name: "RetailCBCMAC", isoId: "_iHlHIWi7EeS87LmvcA55sg" }, { value: "MCC1", name: "RetailSHA1MAC", isoId: "_BK51QWi8EeS87LmvcA55sg" }, { value: "MCCS", name: "RetailSHA256MAC", isoId: "_iHlHI2i7EeS87LmvcA55sg" }],
+    options: [{ value: "MACC", name: "RetailCBCMAC", isoId: "_iHlHIWi7EeS87LmvcA55sg" }, { value: "MCCS", name: "RetailSHA256MAC", isoId: "_iHlHI2i7EeS87LmvcA55sg" }, { value: "CMA1", name: "SHA256CMACwithAES128", isoId: "_iHlHJWi7EeS87LmvcA55sg" }, { value: "MCC1", name: "RetailSHA1MAC", isoId: "_BK51QWi8EeS87LmvcA55sg" }, { value: "CMA9", name: "SHA384CMACwithAES192", isoId: "_DoWIEWi8EeS87LmvcA55sg" }, { value: "CMA5", name: "SHA512CMACwithAES256", isoId: "_Ew-kEWi8EeS87LmvcA55sg" }],
   },
   "ATMSecurityConfiguration4": {
     name: "ATMSecurityConfiguration4",
@@ -3518,7 +3518,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "PINFormat4Code",
     isoId: "_XsWNgIocEeSirOZJBRz_nA",
     kind: "code",
-    options: [{ value: "ANSI", name: "ANSI0", isoId: "_cX59sYocEeSirOZJBRz_nA" }, { value: "BKSY", name: "Banksys", isoId: "_ch9RkYocEeSirOZJBRz_nA" }, { value: "BNCM", name: "Bancomat", isoId: "_cdXsgYocEeSirOZJBRz_nA" }, { value: "DBLC", name: "DieboldCO", isoId: "_csVVkYocEeSirOZJBRz_nA" }, { value: "DBLD", name: "Diebold", isoId: "_cm6qEYocEeSirOZJBRz_nA" }, { value: "ECI2", name: "ECI2", isoId: "_cxdtMYocEeSirOZJBRz_nA" }, { value: "ECI3", name: "ECI3", isoId: "_c2nS8YocEeSirOZJBRz_nA" }, { value: "EMVS", name: "EMVRSA", isoId: "_c7vqkYocEeSirOZJBRz_nA" }, { value: "IBM3", name: "IBM3624", isoId: "_dA53YYocEeSirOZJBRz_nA" }, { value: "ISO0", name: "ISO0", isoId: "_dHp_oYocEeSirOZJBRz_nA" }, { value: "ISO1", name: "ISO1", isoId: "_dNsWMYocEeSirOZJBRz_nA" }, { value: "ISO2", name: "ISO2", isoId: "_dSkPIYocEeSirOZJBRz_nA" }, { value: "ISO3", name: "ISO3", isoId: "_dYIEkYocEeSirOZJBRz_nA" }, { value: "ISO4", name: "ISO4", isoId: "_ddshEYocEeSirOZJBRz_nA" }, { value: "ISO5", name: "ISO5", isoId: "_djMFEYocEeSirOZJBRz_nA" }, { value: "VIS2", name: "VISA2", isoId: "_dqC7AYocEeSirOZJBRz_nA" }, { value: "VIS3", name: "VISA3", isoId: "_dvrB4YocEeSirOZJBRz_nA" }],
+    options: [{ value: "ANSI", name: "ANSI0", isoId: "_cX59sYocEeSirOZJBRz_nA" }, { value: "BNCM", name: "Bancomat", isoId: "_cdXsgYocEeSirOZJBRz_nA" }, { value: "BKSY", name: "Banksys", isoId: "_ch9RkYocEeSirOZJBRz_nA" }, { value: "DBLD", name: "Diebold", isoId: "_cm6qEYocEeSirOZJBRz_nA" }, { value: "DBLC", name: "DieboldCO", isoId: "_csVVkYocEeSirOZJBRz_nA" }, { value: "ECI2", name: "ECI2", isoId: "_cxdtMYocEeSirOZJBRz_nA" }, { value: "ECI3", name: "ECI3", isoId: "_c2nS8YocEeSirOZJBRz_nA" }, { value: "EMVS", name: "EMVRSA", isoId: "_c7vqkYocEeSirOZJBRz_nA" }, { value: "IBM3", name: "IBM3624", isoId: "_dA53YYocEeSirOZJBRz_nA" }, { value: "ISO0", name: "ISO0", isoId: "_dHp_oYocEeSirOZJBRz_nA" }, { value: "ISO1", name: "ISO1", isoId: "_dNsWMYocEeSirOZJBRz_nA" }, { value: "ISO2", name: "ISO2", isoId: "_dSkPIYocEeSirOZJBRz_nA" }, { value: "ISO3", name: "ISO3", isoId: "_dYIEkYocEeSirOZJBRz_nA" }, { value: "ISO4", name: "ISO4", isoId: "_ddshEYocEeSirOZJBRz_nA" }, { value: "ISO5", name: "ISO5", isoId: "_djMFEYocEeSirOZJBRz_nA" }, { value: "VIS2", name: "VISA2", isoId: "_dqC7AYocEeSirOZJBRz_nA" }, { value: "VIS3", name: "VISA3", isoId: "_dvrB4YocEeSirOZJBRz_nA" }],
   },
   "ATMSecurityConfiguration5": {
     name: "ATMSecurityConfiguration5",
@@ -3547,7 +3547,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "ATMSecurityScheme3Code",
     isoId: "_Ps-QMV2VEeekzJIz1JxYSQ",
     kind: "code",
-    options: [{ value: "APPK", name: "ApplicationRemoteKeyLoading", isoId: "_P2UZcV2VEeekzJIz1JxYSQ" }, { value: "CERT", name: "CertificateRemoteKeyLoading", isoId: "_P2UZc12VEeekzJIz1JxYSQ" }, { value: "DTCH", name: "GermanRemoteKeyLoading", isoId: "_P2UZd12VEeekzJIz1JxYSQ" }, { value: "FRAN", name: "FrenchRemoteKeyLoading", isoId: "_P2UZdV2VEeekzJIz1JxYSQ" }, { value: "LUXG", name: "LuxemburgRemoteKeyLoading", isoId: "_P2UZeV2VEeekzJIz1JxYSQ" }, { value: "MANU", name: "ManualKeyEntry", isoId: "_P2UZe12VEeekzJIz1JxYSQ" }, { value: "NONE", name: "Unitialised", isoId: "_P2UZgV2VEeekzJIz1JxYSQ" }, { value: "PKIP", name: "PKIKeyDownload", isoId: "_P2UZfV2VEeekzJIz1JxYSQ" }, { value: "SIGN", name: "SignatureRemoteKeyLoading", isoId: "_P2UZf12VEeekzJIz1JxYSQ" }, { value: "TR34", name: "TR34", isoId: "_RJAJUV2VEeekzJIz1JxYSQ" }],
+    options: [{ value: "APPK", name: "ApplicationRemoteKeyLoading", isoId: "_P2UZcV2VEeekzJIz1JxYSQ" }, { value: "CERT", name: "CertificateRemoteKeyLoading", isoId: "_P2UZc12VEeekzJIz1JxYSQ" }, { value: "FRAN", name: "FrenchRemoteKeyLoading", isoId: "_P2UZdV2VEeekzJIz1JxYSQ" }, { value: "DTCH", name: "GermanRemoteKeyLoading", isoId: "_P2UZd12VEeekzJIz1JxYSQ" }, { value: "LUXG", name: "LuxemburgRemoteKeyLoading", isoId: "_P2UZeV2VEeekzJIz1JxYSQ" }, { value: "MANU", name: "ManualKeyEntry", isoId: "_P2UZe12VEeekzJIz1JxYSQ" }, { value: "PKIP", name: "PKIKeyDownload", isoId: "_P2UZfV2VEeekzJIz1JxYSQ" }, { value: "SIGN", name: "SignatureRemoteKeyLoading", isoId: "_P2UZf12VEeekzJIz1JxYSQ" }, { value: "NONE", name: "Unitialised", isoId: "_P2UZgV2VEeekzJIz1JxYSQ" }, { value: "TR34", name: "TR34", isoId: "_RJAJUV2VEeekzJIz1JxYSQ" }],
   },
   "ATMSecurityContext3": {
     name: "ATMSecurityContext3",
@@ -3563,7 +3563,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "ATMSecurityScheme4Code",
     isoId: "_bbRtkV2ZEeekzJIz1JxYSQ",
     kind: "code",
-    options: [{ value: "APPK", name: "ApplicationRemoteKeyLoading", isoId: "_bkJVsV2ZEeekzJIz1JxYSQ" }, { value: "CERT", name: "CertificateRemoteKeyLoading", isoId: "_bkJVs12ZEeekzJIz1JxYSQ" }, { value: "DTCH", name: "GermanRemoteKeyLoading", isoId: "_bkJVt12ZEeekzJIz1JxYSQ" }, { value: "FRAN", name: "FrenchRemoteKeyLoading", isoId: "_bkJVtV2ZEeekzJIz1JxYSQ" }, { value: "LUXG", name: "LuxemburgRemoteKeyLoading", isoId: "_bkJVuV2ZEeekzJIz1JxYSQ" }, { value: "MANU", name: "ManualKeyEntry", isoId: "_bkJVu12ZEeekzJIz1JxYSQ" }, { value: "PKIP", name: "PKIKeyDownload", isoId: "_bkJVvV2ZEeekzJIz1JxYSQ" }, { value: "SIGN", name: "SignatureRemoteKeyLoading", isoId: "_bkJVv12ZEeekzJIz1JxYSQ" }, { value: "TR34", name: "TR34", isoId: "_c68wkV2ZEeekzJIz1JxYSQ" }],
+    options: [{ value: "APPK", name: "ApplicationRemoteKeyLoading", isoId: "_bkJVsV2ZEeekzJIz1JxYSQ" }, { value: "CERT", name: "CertificateRemoteKeyLoading", isoId: "_bkJVs12ZEeekzJIz1JxYSQ" }, { value: "FRAN", name: "FrenchRemoteKeyLoading", isoId: "_bkJVtV2ZEeekzJIz1JxYSQ" }, { value: "DTCH", name: "GermanRemoteKeyLoading", isoId: "_bkJVt12ZEeekzJIz1JxYSQ" }, { value: "LUXG", name: "LuxemburgRemoteKeyLoading", isoId: "_bkJVuV2ZEeekzJIz1JxYSQ" }, { value: "MANU", name: "ManualKeyEntry", isoId: "_bkJVu12ZEeekzJIz1JxYSQ" }, { value: "PKIP", name: "PKIKeyDownload", isoId: "_bkJVvV2ZEeekzJIz1JxYSQ" }, { value: "SIGN", name: "SignatureRemoteKeyLoading", isoId: "_bkJVv12ZEeekzJIz1JxYSQ" }, { value: "TR34", name: "TR34", isoId: "_c68wkV2ZEeekzJIz1JxYSQ" }],
   },
   "TR34Command1Code": {
     name: "TR34Command1Code",
@@ -3826,7 +3826,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "AddressType2Code",
     isoId: "_bm2sYNp-Ed-ak6NoX_4Aeg_595056355",
     kind: "code",
-    options: [{ value: "ADDR", name: "Postal", isoId: "_bm2sYdp-Ed-ak6NoX_4Aeg_878577717" }, { value: "BIZZ", name: "Business", isoId: "_bm2sZNp-Ed-ak6NoX_4Aeg_2106193529" }, { value: "DLVY", name: "DeliveryTo", isoId: "_bm2sZtp-Ed-ak6NoX_4Aeg_2106193624" }, { value: "HOME", name: "Residential", isoId: "_bm2sY9p-Ed-ak6NoX_4Aeg_2106193409" }, { value: "MLTO", name: "MailTo", isoId: "_bm2sZdp-Ed-ak6NoX_4Aeg_2106193606" }, { value: "PBOX", name: "POBox", isoId: "_bm2sYtp-Ed-ak6NoX_4Aeg_878578132" }],
+    options: [{ value: "ADDR", name: "Postal", isoId: "_bm2sYdp-Ed-ak6NoX_4Aeg_878577717" }, { value: "PBOX", name: "POBox", isoId: "_bm2sYtp-Ed-ak6NoX_4Aeg_878578132" }, { value: "HOME", name: "Residential", isoId: "_bm2sY9p-Ed-ak6NoX_4Aeg_2106193409" }, { value: "BIZZ", name: "Business", isoId: "_bm2sZNp-Ed-ak6NoX_4Aeg_2106193529" }, { value: "MLTO", name: "MailTo", isoId: "_bm2sZdp-Ed-ak6NoX_4Aeg_2106193606" }, { value: "DLVY", name: "DeliveryTo", isoId: "_bm2sZtp-Ed-ak6NoX_4Aeg_2106193624" }],
   },
   "Exact4AlphaNumericText": {
     name: "Exact4AlphaNumericText",
@@ -3857,7 +3857,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "AdviceType1Code",
     isoId: "_U8Z8ANomEembTrt_WixjyQ",
     kind: "code",
-    options: [{ value: "ADND", name: "AdviceWithoutDetails", isoId: "_Xz3CQe8XEemSR6j6KWQzCg" }, { value: "ADWD", name: "AdviceWithDetails", isoId: "_XiPt0e8XEemSR6j6KWQzCg" }],
+    options: [{ value: "ADWD", name: "AdviceWithDetails", isoId: "_XiPt0e8XEemSR6j6KWQzCg" }, { value: "ADND", name: "AdviceWithoutDetails", isoId: "_Xz3CQe8XEemSR6j6KWQzCg" }],
   },
   "AdviceType1Choice": {
     name: "AdviceType1Choice",
@@ -4100,7 +4100,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "NamePrefix2Code",
     isoId: "_ODhzcHRmEeiH1ZOt2UD8vQ",
     kind: "code",
-    options: [{ value: "DOCT", name: "Doctor", isoId: "_SmTbEXRmEeiH1ZOt2UD8vQ" }, { value: "MADM", name: "Madam", isoId: "_SseUgXRmEeiH1ZOt2UD8vQ" }, { value: "MIKS", name: "GenderNeutral", isoId: "_TCckgXRmEeiH1ZOt2UD8vQ" }, { value: "MISS", name: "Miss", isoId: "_SzqhoXRmEeiH1ZOt2UD8vQ" }, { value: "MIST", name: "Mister", isoId: "_S6p6cXRmEeiH1ZOt2UD8vQ" }],
+    options: [{ value: "DOCT", name: "Doctor", isoId: "_SmTbEXRmEeiH1ZOt2UD8vQ" }, { value: "MADM", name: "Madam", isoId: "_SseUgXRmEeiH1ZOt2UD8vQ" }, { value: "MISS", name: "Miss", isoId: "_SzqhoXRmEeiH1ZOt2UD8vQ" }, { value: "MIST", name: "Mister", isoId: "_S6p6cXRmEeiH1ZOt2UD8vQ" }, { value: "MIKS", name: "GenderNeutral", isoId: "_TCckgXRmEeiH1ZOt2UD8vQ" }],
   },
   "PhoneNumber": {
     name: "PhoneNumber",
@@ -4142,7 +4142,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "PreferredContactMethod2Code",
     isoId: "_OQ1V0DIDEe6mzvR3CHiUhA",
     kind: "code",
-    options: [{ value: "CELL", name: "MobileOrCellPhone", isoId: "_RyuIMTIDEe6mzvR3CHiUhA" }, { value: "FAXX", name: "Fax", isoId: "_RoX5YTIDEe6mzvR3CHiUhA" }, { value: "LETT", name: "Letter", isoId: "_RtfC4TIDEe6mzvR3CHiUhA" }, { value: "MAIL", name: "Email", isoId: "_Ri2gMTIDEe6mzvR3CHiUhA" }, { value: "ONLI", name: "Online", isoId: "_R3wZMTIDEe6mzvR3CHiUhA" }, { value: "PHON", name: "Phone", isoId: "_R8yqMTIDEe6mzvR3CHiUhA" }],
+    options: [{ value: "MAIL", name: "Email", isoId: "_Ri2gMTIDEe6mzvR3CHiUhA" }, { value: "FAXX", name: "Fax", isoId: "_RoX5YTIDEe6mzvR3CHiUhA" }, { value: "LETT", name: "Letter", isoId: "_RtfC4TIDEe6mzvR3CHiUhA" }, { value: "CELL", name: "MobileOrCellPhone", isoId: "_RyuIMTIDEe6mzvR3CHiUhA" }, { value: "ONLI", name: "Online", isoId: "_R3wZMTIDEe6mzvR3CHiUhA" }, { value: "PHON", name: "Phone", isoId: "_R8yqMTIDEe6mzvR3CHiUhA" }],
   },
   "Contact13": {
     name: "Contact13",
@@ -4331,7 +4331,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "Frequency6Code",
     isoId: "_t8BeYFkyEeGeoaLUQk__nA_1722188519",
     kind: "code",
-    options: [{ value: "ADHO", name: "Adhoc", isoId: "_t8LPY1kyEeGeoaLUQk__nA_-1804960693" }, { value: "DAIL", name: "Daily", isoId: "_t8LPYlkyEeGeoaLUQk__nA_-1041657550" }, { value: "FRTN", name: "Fortnightly", isoId: "_t8LPZVkyEeGeoaLUQk__nA_468950968" }, { value: "INDA", name: "IntraDay", isoId: "_t8LPZFkyEeGeoaLUQk__nA_-1816059470" }, { value: "MIAN", name: "SemiAnnual", isoId: "_t8LPYFkyEeGeoaLUQk__nA_1420457571" }, { value: "MNTH", name: "Monthly", isoId: "_t8BeYlkyEeGeoaLUQk__nA_380423276" }, { value: "QURT", name: "Quarterly", isoId: "_t8BeY1kyEeGeoaLUQk__nA_834510545" }, { value: "WEEK", name: "Weekly", isoId: "_t8LPYVkyEeGeoaLUQk__nA_1729241450" }, { value: "YEAR", name: "Annual", isoId: "_t8BeYVkyEeGeoaLUQk__nA_569640725" }],
+    options: [{ value: "YEAR", name: "Annual", isoId: "_t8BeYVkyEeGeoaLUQk__nA_569640725" }, { value: "MNTH", name: "Monthly", isoId: "_t8BeYlkyEeGeoaLUQk__nA_380423276" }, { value: "QURT", name: "Quarterly", isoId: "_t8BeY1kyEeGeoaLUQk__nA_834510545" }, { value: "MIAN", name: "SemiAnnual", isoId: "_t8LPYFkyEeGeoaLUQk__nA_1420457571" }, { value: "WEEK", name: "Weekly", isoId: "_t8LPYVkyEeGeoaLUQk__nA_1729241450" }, { value: "DAIL", name: "Daily", isoId: "_t8LPYlkyEeGeoaLUQk__nA_-1041657550" }, { value: "ADHO", name: "Adhoc", isoId: "_t8LPY1kyEeGeoaLUQk__nA_-1804960693" }, { value: "INDA", name: "IntraDay", isoId: "_t8LPZFkyEeGeoaLUQk__nA_-1816059470" }, { value: "FRTN", name: "Fortnightly", isoId: "_t8LPZVkyEeGeoaLUQk__nA_468950968" }],
   },
   "DecimalNumber": {
     name: "DecimalNumber",
@@ -4594,13 +4594,13 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "AuthenticationEntity1Code",
     isoId: "_TSESjQEcEeCQm6a_G2yO_w_-1884722384",
     kind: "code",
-    options: [{ value: "AGNT", name: "AuthorisedAgent", isoId: "_TSESjwEcEeCQm6a_G2yO_w_1127523315" }, { value: "ICCD", name: "ICC", isoId: "_TSESjgEcEeCQm6a_G2yO_w_2010756602" }, { value: "MERC", name: "Merchant", isoId: "_TSESkAEcEeCQm6a_G2yO_w_-1384309028" }],
+    options: [{ value: "ICCD", name: "ICC", isoId: "_TSESjgEcEeCQm6a_G2yO_w_2010756602" }, { value: "AGNT", name: "AuthorisedAgent", isoId: "_TSESjwEcEeCQm6a_G2yO_w_1127523315" }, { value: "MERC", name: "Merchant", isoId: "_TSESkAEcEeCQm6a_G2yO_w_-1384309028" }],
   },
   "AuthenticationMethod1Code": {
     name: "AuthenticationMethod1Code",
     isoId: "_TSNccAEcEeCQm6a_G2yO_w_-183697186",
     kind: "code",
-    options: [{ value: "BYPS", name: "Bypass", isoId: "_TSNccgEcEeCQm6a_G2yO_w_-487293540" }, { value: "CPSG", name: "SignatureCapture", isoId: "_TSNcdQEcEeCQm6a_G2yO_w_877858262" }, { value: "FPIN", name: "OfflinePIN", isoId: "_TSNcdAEcEeCQm6a_G2yO_w_-44305048" }, { value: "MANU", name: "ManualVerification", isoId: "_TSNcdwEcEeCQm6a_G2yO_w_-1926677610" }, { value: "MERC", name: "MerchantAuthentication", isoId: "_TSNceAEcEeCQm6a_G2yO_w_756182020" }, { value: "NPIN", name: "OnLinePIN", isoId: "_TSNccwEcEeCQm6a_G2yO_w_-33206271" }, { value: "PPSG", name: "PaperSignature", isoId: "_TSNcdgEcEeCQm6a_G2yO_w_431064513" }, { value: "SCNL", name: "SecuredChannel", isoId: "_TSNcewEcEeCQm6a_G2yO_w_1370210617" }, { value: "SCRT", name: "SecureCertificate", isoId: "_TSNceQEcEeCQm6a_G2yO_w_-1601560103" }, { value: "SNCT", name: "SecureNoCertificate", isoId: "_TSNcegEcEeCQm6a_G2yO_w_838368064" }, { value: "UKNW", name: "UnknownMethod", isoId: "_TSNccQEcEeCQm6a_G2yO_w_1383005329" }],
+    options: [{ value: "UKNW", name: "UnknownMethod", isoId: "_TSNccQEcEeCQm6a_G2yO_w_1383005329" }, { value: "BYPS", name: "Bypass", isoId: "_TSNccgEcEeCQm6a_G2yO_w_-487293540" }, { value: "NPIN", name: "OnLinePIN", isoId: "_TSNccwEcEeCQm6a_G2yO_w_-33206271" }, { value: "FPIN", name: "OfflinePIN", isoId: "_TSNcdAEcEeCQm6a_G2yO_w_-44305048" }, { value: "CPSG", name: "SignatureCapture", isoId: "_TSNcdQEcEeCQm6a_G2yO_w_877858262" }, { value: "PPSG", name: "PaperSignature", isoId: "_TSNcdgEcEeCQm6a_G2yO_w_431064513" }, { value: "MANU", name: "ManualVerification", isoId: "_TSNcdwEcEeCQm6a_G2yO_w_-1926677610" }, { value: "MERC", name: "MerchantAuthentication", isoId: "_TSNceAEcEeCQm6a_G2yO_w_756182020" }, { value: "SCRT", name: "SecureCertificate", isoId: "_TSNceQEcEeCQm6a_G2yO_w_-1601560103" }, { value: "SNCT", name: "SecureNoCertificate", isoId: "_TSNcegEcEeCQm6a_G2yO_w_838368064" }, { value: "SCNL", name: "SecuredChannel", isoId: "_TSNcewEcEeCQm6a_G2yO_w_1370210617" }],
   },
   "Authorisation1Code": {
     name: "Authorisation1Code",
@@ -4751,7 +4751,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "CSCManagement1Code",
     isoId: "_TS9qYQEcEeCQm6a_G2yO_w_-804127704",
     kind: "code",
-    options: [{ value: "BYPS", name: "CSCByPass", isoId: "_TS9qYwEcEeCQm6a_G2yO_w_-1032051106" }, { value: "NCSC", name: "NoCSC", isoId: "_TS9qZQEcEeCQm6a_G2yO_w_1419047201" }, { value: "PRST", name: "CSCPresent", isoId: "_TS9qYgEcEeCQm6a_G2yO_w_-1905065506" }, { value: "UNRD", name: "CSCUnread", isoId: "_TS9qZAEcEeCQm6a_G2yO_w_905174067" }],
+    options: [{ value: "PRST", name: "CSCPresent", isoId: "_TS9qYgEcEeCQm6a_G2yO_w_-1905065506" }, { value: "BYPS", name: "CSCByPass", isoId: "_TS9qYwEcEeCQm6a_G2yO_w_-1032051106" }, { value: "UNRD", name: "CSCUnread", isoId: "_TS9qZAEcEeCQm6a_G2yO_w_905174067" }, { value: "NCSC", name: "NoCSC", isoId: "_TS9qZQEcEeCQm6a_G2yO_w_1419047201" }],
   },
   "ExternalCancellationReason1Code": {
     name: "ExternalCancellationReason1Code",
@@ -4827,7 +4827,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "CardDataReading1Code",
     isoId: "_TSXNcQEcEeCQm6a_G2yO_w_2087394966",
     kind: "code",
-    options: [{ value: "BRCD", name: "BarCode", isoId: "_TSXNdAEcEeCQm6a_G2yO_w_1172443458" }, { value: "CICC", name: "ICC", isoId: "_TSXNdgEcEeCQm6a_G2yO_w_-1892344504" }, { value: "CTLS", name: "ProximityReader", isoId: "_TSXNeAEcEeCQm6a_G2yO_w_1689489202" }, { value: "DFLE", name: "AccountData", isoId: "_TSXNdwEcEeCQm6a_G2yO_w_44880669" }, { value: "ECTL", name: "EMVProximityReader", isoId: "_TSXNeQEcEeCQm6a_G2yO_w_-154379787" }, { value: "MGST", name: "MagneticStripe", isoId: "_TSXNdQEcEeCQm6a_G2yO_w_-439664208" }, { value: "PHYS", name: "Physical", isoId: "_TSXNcwEcEeCQm6a_G2yO_w_-764781715" }, { value: "TAGC", name: "Tag", isoId: "_TSXNcgEcEeCQm6a_G2yO_w_1877381084" }],
+    options: [{ value: "TAGC", name: "Tag", isoId: "_TSXNcgEcEeCQm6a_G2yO_w_1877381084" }, { value: "PHYS", name: "Physical", isoId: "_TSXNcwEcEeCQm6a_G2yO_w_-764781715" }, { value: "BRCD", name: "BarCode", isoId: "_TSXNdAEcEeCQm6a_G2yO_w_1172443458" }, { value: "MGST", name: "MagneticStripe", isoId: "_TSXNdQEcEeCQm6a_G2yO_w_-439664208" }, { value: "CICC", name: "ICC", isoId: "_TSXNdgEcEeCQm6a_G2yO_w_-1892344504" }, { value: "DFLE", name: "AccountData", isoId: "_TSXNdwEcEeCQm6a_G2yO_w_44880669" }, { value: "CTLS", name: "ProximityReader", isoId: "_TSXNeAEcEeCQm6a_G2yO_w_1689489202" }, { value: "ECTL", name: "EMVProximityReader", isoId: "_TSXNeQEcEeCQm6a_G2yO_w_-154379787" }],
   },
   "Min8Max28NumericText": {
     name: "Min8Max28NumericText",
@@ -4922,13 +4922,13 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "PartyType3Code",
     isoId: "_TTjgTQEcEeCQm6a_G2yO_w_-438078851",
     kind: "code",
-    options: [{ value: "ACCP", name: "Acceptor", isoId: "_TTjgUAEcEeCQm6a_G2yO_w_1684002543" }, { value: "ACQR", name: "Acquirer", isoId: "_TTjgUgEcEeCQm6a_G2yO_w_1998021273" }, { value: "CISS", name: "CardIssuer", isoId: "_TTjgUwEcEeCQm6a_G2yO_w_946955618" }, { value: "DLIS", name: "DelegateIssuer", isoId: "_TTjgVAEcEeCQm6a_G2yO_w_-560697087" }, { value: "ITAG", name: "IntermediaryAgent", isoId: "_TTjgUQEcEeCQm6a_G2yO_w_1672903766" }, { value: "MERC", name: "Merchant", isoId: "_TTjgTwEcEeCQm6a_G2yO_w_-612106672" }, { value: "OPOI", name: "OriginatingPOI", isoId: "_TTjgTgEcEeCQm6a_G2yO_w_-1194753153" }],
+    options: [{ value: "OPOI", name: "OriginatingPOI", isoId: "_TTjgTgEcEeCQm6a_G2yO_w_-1194753153" }, { value: "MERC", name: "Merchant", isoId: "_TTjgTwEcEeCQm6a_G2yO_w_-612106672" }, { value: "ACCP", name: "Acceptor", isoId: "_TTjgUAEcEeCQm6a_G2yO_w_1684002543" }, { value: "ITAG", name: "IntermediaryAgent", isoId: "_TTjgUQEcEeCQm6a_G2yO_w_1672903766" }, { value: "ACQR", name: "Acquirer", isoId: "_TTjgUgEcEeCQm6a_G2yO_w_1998021273" }, { value: "CISS", name: "CardIssuer", isoId: "_TTjgUwEcEeCQm6a_G2yO_w_946955618" }, { value: "DLIS", name: "DelegateIssuer", isoId: "_TTjgVAEcEeCQm6a_G2yO_w_-560697087" }],
   },
   "PartyType4Code": {
     name: "PartyType4Code",
     isoId: "_TTtRQAEcEeCQm6a_G2yO_w_-1492633607",
     kind: "code",
-    options: [{ value: "ACCP", name: "Acceptor", isoId: "_TTtRQgEcEeCQm6a_G2yO_w_-1002861397" }, { value: "ACQR", name: "Acquirer", isoId: "_TTtRRAEcEeCQm6a_G2yO_w_-444319167" }, { value: "CISS", name: "CardIssuer", isoId: "_TTtRRQEcEeCQm6a_G2yO_w_1902324179" }, { value: "ITAG", name: "IntermediaryAgent", isoId: "_TTtRQwEcEeCQm6a_G2yO_w_1913422956" }, { value: "MERC", name: "Merchant", isoId: "_TTtRQQEcEeCQm6a_G2yO_w_-1410689751" }, { value: "TAXH", name: "TaxAuthority", isoId: "_TTtRRgEcEeCQm6a_G2yO_w_-2067525610" }],
+    options: [{ value: "MERC", name: "Merchant", isoId: "_TTtRQQEcEeCQm6a_G2yO_w_-1410689751" }, { value: "ACCP", name: "Acceptor", isoId: "_TTtRQgEcEeCQm6a_G2yO_w_-1002861397" }, { value: "ITAG", name: "IntermediaryAgent", isoId: "_TTtRQwEcEeCQm6a_G2yO_w_1913422956" }, { value: "ACQR", name: "Acquirer", isoId: "_TTtRRAEcEeCQm6a_G2yO_w_-444319167" }, { value: "CISS", name: "CardIssuer", isoId: "_TTtRRQEcEeCQm6a_G2yO_w_1902324179" }, { value: "TAXH", name: "TaxAuthority", isoId: "_TTtRRgEcEeCQm6a_G2yO_w_-2067525610" }],
   },
   "GenericIdentification32": {
     name: "GenericIdentification32",
@@ -4945,7 +4945,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "CardholderVerificationCapability1Code",
     isoId: "_TSg-dAEcEeCQm6a_G2yO_w_-949484223",
     kind: "code",
-    options: [{ value: "APKI", name: "AccountDigitalSignature", isoId: "_TSg-fQEcEeCQm6a_G2yO_w_-141763908" }, { value: "CHDT", name: "CardholderData", isoId: "_TSg-fwEcEeCQm6a_G2yO_w_-1833944105" }, { value: "FBIG", name: "OfflineBiographics", isoId: "_TSg-fAEcEeCQm6a_G2yO_w_176012753" }, { value: "FBIO", name: "OfflineBiometrics", isoId: "_TSg-egEcEeCQm6a_G2yO_w_169997474" }, { value: "FCPN", name: "OfflinePINClear", isoId: "_TSg-dwEcEeCQm6a_G2yO_w_-870036821" }, { value: "FDSG", name: "OfflineDigitalSignature", isoId: "_TSg-eQEcEeCQm6a_G2yO_w_2145208690" }, { value: "FEPN", name: "OfflinePINEncrypted", isoId: "_TSg-eAEcEeCQm6a_G2yO_w_207983517" }, { value: "MNSG", name: "ManualSignature", isoId: "_TSg-dQEcEeCQm6a_G2yO_w_-1880835422" }, { value: "MNVR", name: "ManualVerification", isoId: "_TSg-ewEcEeCQm6a_G2yO_w_-584752400" }, { value: "NPIN", name: "OnLinePIN", isoId: "_TSg-dgEcEeCQm6a_G2yO_w_-1195154328" }, { value: "PKIS", name: "PKISignature", isoId: "_TSg-fgEcEeCQm6a_G2yO_w_1795461265" }, { value: "SCEC", name: "SecureElectronicCommerce", isoId: "_TSg-gAEcEeCQm6a_G2yO_w_2143246530" }],
+    options: [{ value: "MNSG", name: "ManualSignature", isoId: "_TSg-dQEcEeCQm6a_G2yO_w_-1880835422" }, { value: "NPIN", name: "OnLinePIN", isoId: "_TSg-dgEcEeCQm6a_G2yO_w_-1195154328" }, { value: "FCPN", name: "OfflinePINClear", isoId: "_TSg-dwEcEeCQm6a_G2yO_w_-870036821" }, { value: "FEPN", name: "OfflinePINEncrypted", isoId: "_TSg-eAEcEeCQm6a_G2yO_w_207983517" }, { value: "FDSG", name: "OfflineDigitalSignature", isoId: "_TSg-eQEcEeCQm6a_G2yO_w_2145208690" }, { value: "FBIO", name: "OfflineBiometrics", isoId: "_TSg-egEcEeCQm6a_G2yO_w_169997474" }, { value: "MNVR", name: "ManualVerification", isoId: "_TSg-ewEcEeCQm6a_G2yO_w_-584752400" }, { value: "FBIG", name: "OfflineBiographics", isoId: "_TSg-fAEcEeCQm6a_G2yO_w_176012753" }, { value: "APKI", name: "AccountDigitalSignature", isoId: "_TSg-fQEcEeCQm6a_G2yO_w_-141763908" }, { value: "PKIS", name: "PKISignature", isoId: "_TSg-fgEcEeCQm6a_G2yO_w_1795461265" }, { value: "CHDT", name: "CardholderData", isoId: "_TSg-fwEcEeCQm6a_G2yO_w_-1833944105" }, { value: "SCEC", name: "SecureElectronicCommerce", isoId: "_TSg-gAEcEeCQm6a_G2yO_w_2143246530" }],
   },
   "OnLineCapability1Code": {
     name: "OnLineCapability1Code",
@@ -4957,7 +4957,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "UserInterface2Code",
     isoId: "_TUmCEgEcEeCQm6a_G2yO_w_-457047932",
     kind: "code",
-    options: [{ value: "CDSP", name: "CardholderDisplay", isoId: "_TUmCFAEcEeCQm6a_G2yO_w_-44704637" }, { value: "MDSP", name: "MerchantDisplay", isoId: "_TUmCEwEcEeCQm6a_G2yO_w_-1877868390" }],
+    options: [{ value: "MDSP", name: "MerchantDisplay", isoId: "_TUmCEwEcEeCQm6a_G2yO_w_-1877868390" }, { value: "CDSP", name: "CardholderDisplay", isoId: "_TUmCFAEcEeCQm6a_G2yO_w_-44704637" }],
   },
   "Max3NumericText": {
     name: "Max3NumericText",
@@ -4991,7 +4991,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "POIComponentType1Code",
     isoId: "_TT2bMAEcEeCQm6a_G2yO_w_-1074872914",
     kind: "code",
-    options: [{ value: "CHIT", name: "CardholderInterface", isoId: "_TT2bNQEcEeCQm6a_G2yO_w_239772121" }, { value: "EMVK", name: "EMVKernel", isoId: "_TT2bMgEcEeCQm6a_G2yO_w_846591134" }, { value: "EMVO", name: "EMVLevel1", isoId: "_TT2bMwEcEeCQm6a_G2yO_w_-1511150989" }, { value: "MRIT", name: "MerchantInterface", isoId: "_TT2bNAEcEeCQm6a_G2yO_w_835492357" }, { value: "PEDV", name: "PINEntryDevice", isoId: "_TT2bNwEcEeCQm6a_G2yO_w_373028808" }, { value: "SECM", name: "SecureModule", isoId: "_TT2bNgEcEeCQm6a_G2yO_w_-1564196365" }, { value: "SOFT", name: "Soft", isoId: "_TT2bMQEcEeCQm6a_G2yO_w_570622537" }],
+    options: [{ value: "SOFT", name: "Soft", isoId: "_TT2bMQEcEeCQm6a_G2yO_w_570622537" }, { value: "EMVK", name: "EMVKernel", isoId: "_TT2bMgEcEeCQm6a_G2yO_w_846591134" }, { value: "EMVO", name: "EMVLevel1", isoId: "_TT2bMwEcEeCQm6a_G2yO_w_-1511150989" }, { value: "MRIT", name: "MerchantInterface", isoId: "_TT2bNAEcEeCQm6a_G2yO_w_835492357" }, { value: "CHIT", name: "CardholderInterface", isoId: "_TT2bNQEcEeCQm6a_G2yO_w_239772121" }, { value: "SECM", name: "SecureModule", isoId: "_TT2bNgEcEeCQm6a_G2yO_w_-1564196365" }, { value: "PEDV", name: "PINEntryDevice", isoId: "_TT2bNwEcEeCQm6a_G2yO_w_373028808" }],
   },
   "PointOfInteractionComponent1": {
     name: "PointOfInteractionComponent1",
@@ -5046,7 +5046,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "TransactionChannel1Code",
     isoId: "_TUAMOQEcEeCQm6a_G2yO_w_2033954837",
     kind: "code",
-    options: [{ value: "ECOM", name: "ElectronicCommerce", isoId: "_TUAMPAEcEeCQm6a_G2yO_w_-106195051" }, { value: "MAIL", name: "MailOrder", isoId: "_TUAMOgEcEeCQm6a_G2yO_w_421671046" }, { value: "TLPH", name: "TelephoneOrder", isoId: "_TUAMOwEcEeCQm6a_G2yO_w_-391479472" }, { value: "TVPY", name: "TelevisionPayment", isoId: "_TUAMPQEcEeCQm6a_G2yO_w_654570102" }],
+    options: [{ value: "MAIL", name: "MailOrder", isoId: "_TUAMOgEcEeCQm6a_G2yO_w_421671046" }, { value: "TLPH", name: "TelephoneOrder", isoId: "_TUAMOwEcEeCQm6a_G2yO_w_-391479472" }, { value: "ECOM", name: "ElectronicCommerce", isoId: "_TUAMPAEcEeCQm6a_G2yO_w_-106195051" }, { value: "TVPY", name: "TelevisionPayment", isoId: "_TUAMPQEcEeCQm6a_G2yO_w_654570102" }],
   },
   "ISO2ALanguageCode": {
     name: "ISO2ALanguageCode",
@@ -5102,7 +5102,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "UnitOfMeasure1Code",
     isoId: "_TUTHIwEcEeCQm6a_G2yO_w_859190881",
     kind: "code",
-    options: [{ value: "ACRE", name: "Acre", isoId: "_TUc4MQEcEeCQm6a_G2yO_w_558579677" }, { value: "ARES", name: "Are", isoId: "_TUc4KQEcEeCQm6a_G2yO_w_740523452" }, { value: "CELI", name: "Centilitre", isoId: "_TUTHMQEcEeCQm6a_G2yO_w_-905697209" }, { value: "CMET", name: "Centimetre", isoId: "_TUTHLgEcEeCQm6a_G2yO_w_-1348685701" }, { value: "FOOT", name: "Foot", isoId: "_TUTHJgEcEeCQm6a_G2yO_w_375986736" }, { value: "GBGA", name: "GBGallon", isoId: "_TUTHJwEcEeCQm6a_G2yO_w_-1981755387" }, { value: "GBOU", name: "GBOunce", isoId: "_TUTHMwEcEeCQm6a_G2yO_w_-660652233" }, { value: "GBPI", name: "GBPint", isoId: "_TUc4IgEcEeCQm6a_G2yO_w_1229471480" }, { value: "GBQA", name: "GBQuart", isoId: "_TUc4IAEcEeCQm6a_G2yO_w_-1557843111" }, { value: "GRAM", name: "Gram", isoId: "_TUTHKQEcEeCQm6a_G2yO_w_-1633970122" }, { value: "HECT", name: "Hectare", isoId: "_TUc4KAEcEeCQm6a_G2yO_w_-1606119894" }, { value: "INCH", name: "Inch", isoId: "_TUTHKgEcEeCQm6a_G2yO_w_303255051" }, { value: "KILO", name: "Kilogram", isoId: "_TUTHKwEcEeCQm6a_G2yO_w_-555949784" }, { value: "KMET", name: "Kilometre", isoId: "_TUc4JQEcEeCQm6a_G2yO_w_1672459972" }, { value: "LITR", name: "Litre", isoId: "_TUTHMAEcEeCQm6a_G2yO_w_-587920548" }, { value: "METR", name: "Metre", isoId: "_TUTHLQEcEeCQm6a_G2yO_w_495183288" }, { value: "MILE", name: "Mile", isoId: "_TUc4JAEcEeCQm6a_G2yO_w_-1010399658" }, { value: "MILI", name: "MilliLitre", isoId: "_TUTHMgEcEeCQm6a_G2yO_w_1697089890" }, { value: "MMET", name: "Millimetre", isoId: "_TUTHLwEcEeCQm6a_G2yO_w_588539472" }, { value: "PIEC", name: "Piece", isoId: "_TUTHJAEcEeCQm6a_G2yO_w_1207210081" }, { value: "PUND", name: "Pound", isoId: "_TUTHLAEcEeCQm6a_G2yO_w_1381275389" }, { value: "SCMT", name: "SquareCentimetre", isoId: "_TUc4KwEcEeCQm6a_G2yO_w_1482653875" }, { value: "SMET", name: "SquareMetre", isoId: "_TUc4KgEcEeCQm6a_G2yO_w_2098334408" }, { value: "SMIL", name: "SquareMillimetre", isoId: "_TUc4LAEcEeCQm6a_G2yO_w_-875088248" }, { value: "SQFO", name: "SquareFoot", isoId: "_TUc4LwEcEeCQm6a_G2yO_w_339764174" }, { value: "SQIN", name: "SquareInch", isoId: "_TUc4MAEcEeCQm6a_G2yO_w_233462170" }, { value: "SQKI", name: "SquareKilometre", isoId: "_TUc4JwEcEeCQm6a_G2yO_w_751622229" }, { value: "SQMI", name: "SquareMile", isoId: "_TUc4LQEcEeCQm6a_G2yO_w_-2051548268" }, { value: "SQYA", name: "SquareYard", isoId: "_TUc4LgEcEeCQm6a_G2yO_w_-1597460999" }, { value: "TONS", name: "Ton", isoId: "_TUTHJQEcEeCQm6a_G2yO_w_50869229" }, { value: "USGA", name: "USGallon", isoId: "_TUTHKAEcEeCQm6a_G2yO_w_-998938276" }, { value: "USOU", name: "USOunce", isoId: "_TUTHNAEcEeCQm6a_G2yO_w_1685991113" }, { value: "USPI", name: "USPint", isoId: "_TUc4IwEcEeCQm6a_G2yO_w_1347342465" }, { value: "USQA", name: "USQuart", isoId: "_TUc4IQEcEeCQm6a_G2yO_w_379382062" }, { value: "YARD", name: "Yard", isoId: "_TUc4JgEcEeCQm6a_G2yO_w_297534960" }],
+    options: [{ value: "PIEC", name: "Piece", isoId: "_TUTHJAEcEeCQm6a_G2yO_w_1207210081" }, { value: "TONS", name: "Ton", isoId: "_TUTHJQEcEeCQm6a_G2yO_w_50869229" }, { value: "FOOT", name: "Foot", isoId: "_TUTHJgEcEeCQm6a_G2yO_w_375986736" }, { value: "GBGA", name: "GBGallon", isoId: "_TUTHJwEcEeCQm6a_G2yO_w_-1981755387" }, { value: "USGA", name: "USGallon", isoId: "_TUTHKAEcEeCQm6a_G2yO_w_-998938276" }, { value: "GRAM", name: "Gram", isoId: "_TUTHKQEcEeCQm6a_G2yO_w_-1633970122" }, { value: "INCH", name: "Inch", isoId: "_TUTHKgEcEeCQm6a_G2yO_w_303255051" }, { value: "KILO", name: "Kilogram", isoId: "_TUTHKwEcEeCQm6a_G2yO_w_-555949784" }, { value: "PUND", name: "Pound", isoId: "_TUTHLAEcEeCQm6a_G2yO_w_1381275389" }, { value: "METR", name: "Metre", isoId: "_TUTHLQEcEeCQm6a_G2yO_w_495183288" }, { value: "CMET", name: "Centimetre", isoId: "_TUTHLgEcEeCQm6a_G2yO_w_-1348685701" }, { value: "MMET", name: "Millimetre", isoId: "_TUTHLwEcEeCQm6a_G2yO_w_588539472" }, { value: "LITR", name: "Litre", isoId: "_TUTHMAEcEeCQm6a_G2yO_w_-587920548" }, { value: "CELI", name: "Centilitre", isoId: "_TUTHMQEcEeCQm6a_G2yO_w_-905697209" }, { value: "MILI", name: "MilliLitre", isoId: "_TUTHMgEcEeCQm6a_G2yO_w_1697089890" }, { value: "GBOU", name: "GBOunce", isoId: "_TUTHMwEcEeCQm6a_G2yO_w_-660652233" }, { value: "USOU", name: "USOunce", isoId: "_TUTHNAEcEeCQm6a_G2yO_w_1685991113" }, { value: "GBQA", name: "GBQuart", isoId: "_TUc4IAEcEeCQm6a_G2yO_w_-1557843111" }, { value: "USQA", name: "USQuart", isoId: "_TUc4IQEcEeCQm6a_G2yO_w_379382062" }, { value: "GBPI", name: "GBPint", isoId: "_TUc4IgEcEeCQm6a_G2yO_w_1229471480" }, { value: "USPI", name: "USPint", isoId: "_TUc4IwEcEeCQm6a_G2yO_w_1347342465" }, { value: "MILE", name: "Mile", isoId: "_TUc4JAEcEeCQm6a_G2yO_w_-1010399658" }, { value: "KMET", name: "Kilometre", isoId: "_TUc4JQEcEeCQm6a_G2yO_w_1672459972" }, { value: "YARD", name: "Yard", isoId: "_TUc4JgEcEeCQm6a_G2yO_w_297534960" }, { value: "SQKI", name: "SquareKilometre", isoId: "_TUc4JwEcEeCQm6a_G2yO_w_751622229" }, { value: "HECT", name: "Hectare", isoId: "_TUc4KAEcEeCQm6a_G2yO_w_-1606119894" }, { value: "ARES", name: "Are", isoId: "_TUc4KQEcEeCQm6a_G2yO_w_740523452" }, { value: "SMET", name: "SquareMetre", isoId: "_TUc4KgEcEeCQm6a_G2yO_w_2098334408" }, { value: "SCMT", name: "SquareCentimetre", isoId: "_TUc4KwEcEeCQm6a_G2yO_w_1482653875" }, { value: "SMIL", name: "SquareMillimetre", isoId: "_TUc4LAEcEeCQm6a_G2yO_w_-875088248" }, { value: "SQMI", name: "SquareMile", isoId: "_TUc4LQEcEeCQm6a_G2yO_w_-2051548268" }, { value: "SQYA", name: "SquareYard", isoId: "_TUc4LgEcEeCQm6a_G2yO_w_-1597460999" }, { value: "SQFO", name: "SquareFoot", isoId: "_TUc4LwEcEeCQm6a_G2yO_w_339764174" }, { value: "SQIN", name: "SquareInch", isoId: "_TUc4MAEcEeCQm6a_G2yO_w_233462170" }, { value: "ACRE", name: "Acre", isoId: "_TUc4MQEcEeCQm6a_G2yO_w_558579677" }],
   },
   "Product2": {
     name: "Product2",
@@ -5314,7 +5314,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "ChargeBearerType1Code",
     isoId: "_a8PpINp-Ed-ak6NoX_4Aeg_940131843",
     kind: "code",
-    options: [{ value: "CRED", name: "BorneByCreditor", isoId: "_a8PpItp-Ed-ak6NoX_4Aeg_1019555004" }, { value: "DEBT", name: "BorneByDebtor", isoId: "_a8PpIdp-Ed-ak6NoX_4Aeg_1019554986" }, { value: "SHAR", name: "Shared", isoId: "_a8PpI9p-Ed-ak6NoX_4Aeg_1019555021" }, { value: "SLEV", name: "FollowingServiceLevel", isoId: "_a8PpJNp-Ed-ak6NoX_4Aeg_1139613709" }],
+    options: [{ value: "DEBT", name: "BorneByDebtor", isoId: "_a8PpIdp-Ed-ak6NoX_4Aeg_1019554986" }, { value: "CRED", name: "BorneByCreditor", isoId: "_a8PpItp-Ed-ak6NoX_4Aeg_1019555004" }, { value: "SHAR", name: "Shared", isoId: "_a8PpI9p-Ed-ak6NoX_4Aeg_1019555021" }, { value: "SLEV", name: "FollowingServiceLevel", isoId: "_a8PpJNp-Ed-ak6NoX_4Aeg_1139613709" }],
   },
   "ChargeIncludedIndicator": {
     name: "ChargeIncludedIndicator",
@@ -5385,7 +5385,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "ChequeType2Code",
     isoId: "_a-xYudp-Ed-ak6NoX_4Aeg_1427080756",
     kind: "code",
-    options: [{ value: "BCHQ", name: "BankCheque", isoId: "_a-7Jstp-Ed-ak6NoX_4Aeg_1485265197" }, { value: "CCCH", name: "CertifiedCustomerCheque", isoId: "_a-7Jsdp-Ed-ak6NoX_4Aeg_1485265119" }, { value: "CCHQ", name: "CustomerCheque", isoId: "_a-7JsNp-Ed-ak6NoX_4Aeg_1485265041" }, { value: "DRFT", name: "Draft", isoId: "_a-7Js9p-Ed-ak6NoX_4Aeg_1485265523" }, { value: "ELDR", name: "ElectronicDraft", isoId: "_a-7JtNp-Ed-ak6NoX_4Aeg_-1349960623" }],
+    options: [{ value: "CCHQ", name: "CustomerCheque", isoId: "_a-7JsNp-Ed-ak6NoX_4Aeg_1485265041" }, { value: "CCCH", name: "CertifiedCustomerCheque", isoId: "_a-7Jsdp-Ed-ak6NoX_4Aeg_1485265119" }, { value: "BCHQ", name: "BankCheque", isoId: "_a-7Jstp-Ed-ak6NoX_4Aeg_1485265197" }, { value: "DRFT", name: "Draft", isoId: "_a-7Js9p-Ed-ak6NoX_4Aeg_1485265523" }, { value: "ELDR", name: "ElectronicDraft", isoId: "_a-7JtNp-Ed-ak6NoX_4Aeg_-1349960623" }],
   },
   "NameAndAddress18": {
     name: "NameAndAddress18",
@@ -5400,7 +5400,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "ChequeDelivery1Code",
     isoId: "_a-Usx9p-Ed-ak6NoX_4Aeg_681596924",
     kind: "code",
-    options: [{ value: "CRCD", name: "CourierToCreditor", isoId: "_a-edw9p-Ed-ak6NoX_4Aeg_740702569" }, { value: "CRDB", name: "CourierToDebtor", isoId: "_a-edwtp-Ed-ak6NoX_4Aeg_740702267" }, { value: "CRFA", name: "CourierToFinalAgent", isoId: "_a-edxNp-Ed-ak6NoX_4Aeg_740702664" }, { value: "MLCD", name: "MailToCreditor", isoId: "_a-edwNp-Ed-ak6NoX_4Aeg_740702112" }, { value: "MLDB", name: "MailToDebtor", isoId: "_a-UsyNp-Ed-ak6NoX_4Aeg_740702059" }, { value: "MLFA", name: "MailToFinalAgent", isoId: "_a-edwdp-Ed-ak6NoX_4Aeg_740702197" }, { value: "PUCD", name: "PickUpByCreditor", isoId: "_a-edxtp-Ed-ak6NoX_4Aeg_740703067" }, { value: "PUDB", name: "PickUpByDebtor", isoId: "_a-edxdp-Ed-ak6NoX_4Aeg_740702989" }, { value: "PUFA", name: "PickUpByFinalAgent", isoId: "_a-edx9p-Ed-ak6NoX_4Aeg_740703144" }, { value: "RGCD", name: "RegisteredMailToCreditor", isoId: "_a-edydp-Ed-ak6NoX_4Aeg_740703534" }, { value: "RGDB", name: "RegisteredMailToDebtor", isoId: "_a-edyNp-Ed-ak6NoX_4Aeg_740703222" }, { value: "RGFA", name: "RegisteredMailToFinalAgent", isoId: "_a-edytp-Ed-ak6NoX_4Aeg_740703629" }],
+    options: [{ value: "MLDB", name: "MailToDebtor", isoId: "_a-UsyNp-Ed-ak6NoX_4Aeg_740702059" }, { value: "MLCD", name: "MailToCreditor", isoId: "_a-edwNp-Ed-ak6NoX_4Aeg_740702112" }, { value: "MLFA", name: "MailToFinalAgent", isoId: "_a-edwdp-Ed-ak6NoX_4Aeg_740702197" }, { value: "CRDB", name: "CourierToDebtor", isoId: "_a-edwtp-Ed-ak6NoX_4Aeg_740702267" }, { value: "CRCD", name: "CourierToCreditor", isoId: "_a-edw9p-Ed-ak6NoX_4Aeg_740702569" }, { value: "CRFA", name: "CourierToFinalAgent", isoId: "_a-edxNp-Ed-ak6NoX_4Aeg_740702664" }, { value: "PUDB", name: "PickUpByDebtor", isoId: "_a-edxdp-Ed-ak6NoX_4Aeg_740702989" }, { value: "PUCD", name: "PickUpByCreditor", isoId: "_a-edxtp-Ed-ak6NoX_4Aeg_740703067" }, { value: "PUFA", name: "PickUpByFinalAgent", isoId: "_a-edx9p-Ed-ak6NoX_4Aeg_740703144" }, { value: "RGDB", name: "RegisteredMailToDebtor", isoId: "_a-edyNp-Ed-ak6NoX_4Aeg_740703222" }, { value: "RGCD", name: "RegisteredMailToCreditor", isoId: "_a-edydp-Ed-ak6NoX_4Aeg_740703534" }, { value: "RGFA", name: "RegisteredMailToFinalAgent", isoId: "_a-edytp-Ed-ak6NoX_4Aeg_740703629" }],
   },
   "ChequeDeliveryMethod1Choice": {
     name: "ChequeDeliveryMethod1Choice",
@@ -5443,7 +5443,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "ClearingChannel2Code",
     isoId: "_a_OEo9p-Ed-ak6NoX_4Aeg_1501459302",
     kind: "code",
-    options: [{ value: "BOOK", name: "BookTransfer", isoId: "_a_OEp9p-Ed-ak6NoX_4Aeg_1524547392" }, { value: "MPNS", name: "MassPaymentNetSystem", isoId: "_a_OEptp-Ed-ak6NoX_4Aeg_1501460309" }, { value: "RTGS", name: "RealTimeGrossSettlementSystem", isoId: "_a_OEpNp-Ed-ak6NoX_4Aeg_1501459782" }, { value: "RTNS", name: "RealTimeNetSettlementSystem", isoId: "_a_OEpdp-Ed-ak6NoX_4Aeg_1501460232" }],
+    options: [{ value: "RTGS", name: "RealTimeGrossSettlementSystem", isoId: "_a_OEpNp-Ed-ak6NoX_4Aeg_1501459782" }, { value: "RTNS", name: "RealTimeNetSettlementSystem", isoId: "_a_OEpdp-Ed-ak6NoX_4Aeg_1501460232" }, { value: "MPNS", name: "MassPaymentNetSystem", isoId: "_a_OEptp-Ed-ak6NoX_4Aeg_1501460309" }, { value: "BOOK", name: "BookTransfer", isoId: "_a_OEp9p-Ed-ak6NoX_4Aeg_1524547392" }],
   },
   "ExternalCashClearingSystem1Code": {
     name: "ExternalCashClearingSystem1Code",
@@ -5759,7 +5759,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "TaxRecordPeriod1Code",
     isoId: "_YiT9VNp-Ed-ak6NoX_4Aeg_-1322025669",
     kind: "code",
-    options: [{ value: "HLF1", name: "FirstHalf", isoId: "_Yim4Qtp-Ed-ak6NoX_4Aeg_-1322024837" }, { value: "HLF2", name: "SecondHalf", isoId: "_Yim4Q9p-Ed-ak6NoX_4Aeg_-1322024806" }, { value: "MM01", name: "FirstMonth", isoId: "_YiT9Vdp-Ed-ak6NoX_4Aeg_-1322025421" }, { value: "MM02", name: "SecondMonth", isoId: "_YiT9Vtp-Ed-ak6NoX_4Aeg_-1322025391" }, { value: "MM03", name: "ThirdMonth", isoId: "_YiT9V9p-Ed-ak6NoX_4Aeg_-1322025390" }, { value: "MM04", name: "FourthMonth", isoId: "_YiT9WNp-Ed-ak6NoX_4Aeg_-1322025360" }, { value: "MM05", name: "FifthMonth", isoId: "_YiduUNp-Ed-ak6NoX_4Aeg_-1322025330" }, { value: "MM06", name: "SixthMonth", isoId: "_YiduUdp-Ed-ak6NoX_4Aeg_-1322025329" }, { value: "MM07", name: "SeventhMonth", isoId: "_YiduUtp-Ed-ak6NoX_4Aeg_-1322025299" }, { value: "MM08", name: "EighthMonth", isoId: "_YiduU9p-Ed-ak6NoX_4Aeg_-1322025268" }, { value: "MM09", name: "NinthMonth", isoId: "_YiduVNp-Ed-ak6NoX_4Aeg_-1322024990" }, { value: "MM10", name: "TenthMonth", isoId: "_YiduVdp-Ed-ak6NoX_4Aeg_-1322024989" }, { value: "MM11", name: "EleventhMonth", isoId: "_YiduVtp-Ed-ak6NoX_4Aeg_-1322024959" }, { value: "MM12", name: "TwelfthMonth", isoId: "_YiduV9p-Ed-ak6NoX_4Aeg_-1322024929" }, { value: "QTR1", name: "FirstQuarter", isoId: "_YiduWNp-Ed-ak6NoX_4Aeg_-1322024928" }, { value: "QTR2", name: "SecondQuarter", isoId: "_YiduWdp-Ed-ak6NoX_4Aeg_-1322024898" }, { value: "QTR3", name: "ThirdQuarter", isoId: "_Yim4QNp-Ed-ak6NoX_4Aeg_-1322024867" }, { value: "QTR4", name: "FourthQuarter", isoId: "_Yim4Qdp-Ed-ak6NoX_4Aeg_-1322024866" }],
+    options: [{ value: "MM01", name: "FirstMonth", isoId: "_YiT9Vdp-Ed-ak6NoX_4Aeg_-1322025421" }, { value: "MM02", name: "SecondMonth", isoId: "_YiT9Vtp-Ed-ak6NoX_4Aeg_-1322025391" }, { value: "MM03", name: "ThirdMonth", isoId: "_YiT9V9p-Ed-ak6NoX_4Aeg_-1322025390" }, { value: "MM04", name: "FourthMonth", isoId: "_YiT9WNp-Ed-ak6NoX_4Aeg_-1322025360" }, { value: "MM05", name: "FifthMonth", isoId: "_YiduUNp-Ed-ak6NoX_4Aeg_-1322025330" }, { value: "MM06", name: "SixthMonth", isoId: "_YiduUdp-Ed-ak6NoX_4Aeg_-1322025329" }, { value: "MM07", name: "SeventhMonth", isoId: "_YiduUtp-Ed-ak6NoX_4Aeg_-1322025299" }, { value: "MM08", name: "EighthMonth", isoId: "_YiduU9p-Ed-ak6NoX_4Aeg_-1322025268" }, { value: "MM09", name: "NinthMonth", isoId: "_YiduVNp-Ed-ak6NoX_4Aeg_-1322024990" }, { value: "MM10", name: "TenthMonth", isoId: "_YiduVdp-Ed-ak6NoX_4Aeg_-1322024989" }, { value: "MM11", name: "EleventhMonth", isoId: "_YiduVtp-Ed-ak6NoX_4Aeg_-1322024959" }, { value: "MM12", name: "TwelfthMonth", isoId: "_YiduV9p-Ed-ak6NoX_4Aeg_-1322024929" }, { value: "QTR1", name: "FirstQuarter", isoId: "_YiduWNp-Ed-ak6NoX_4Aeg_-1322024928" }, { value: "QTR2", name: "SecondQuarter", isoId: "_YiduWdp-Ed-ak6NoX_4Aeg_-1322024898" }, { value: "QTR3", name: "ThirdQuarter", isoId: "_Yim4QNp-Ed-ak6NoX_4Aeg_-1322024867" }, { value: "QTR4", name: "FourthQuarter", isoId: "_Yim4Qdp-Ed-ak6NoX_4Aeg_-1322024866" }, { value: "HLF1", name: "FirstHalf", isoId: "_Yim4Qtp-Ed-ak6NoX_4Aeg_-1322024837" }, { value: "HLF2", name: "SecondHalf", isoId: "_Yim4Q9p-Ed-ak6NoX_4Aeg_-1322024806" }],
   },
   "TaxPeriod3": {
     name: "TaxPeriod3",
@@ -6177,13 +6177,13 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "CryptographicKeyType5Code",
     isoId: "_jBMBwaACEfC4Q_xhaK1hdQ",
     kind: "code",
-    options: [{ value: "AES2", name: "AES128", isoId: "_jCaJxaACEfC4Q_xhaK1hdQ" }, { value: "AES5", name: "AES256", isoId: "_jCaJzaACEfC4Q_xhaK1hdQ" }, { value: "AES9", name: "AES192", isoId: "_jCaJy6ACEfC4Q_xhaK1hdQ" }, { value: "DKAE", name: "DUKPTAES", isoId: "_CGR_kaAFEfC4Q_xhaK1hdQ" }, { value: "DKP9", name: "DUKPT2009", isoId: "_jCaJyaACEfC4Q_xhaK1hdQ" }, { value: "ECCC", name: "ECC", isoId: "_BKGrMaAFEfC4Q_xhaK1hdQ" }, { value: "EDE3", name: "DES112", isoId: "_jCaJx6ACEfC4Q_xhaK1hdQ" }, { value: "EDE4", name: "DES168", isoId: "_jCaJz6ACEfC4Q_xhaK1hdQ" }, { value: "RSAC", name: "RSA", isoId: "_A4U-saAFEfC4Q_xhaK1hdQ" }, { value: "UKA2", name: "UKPTAES192", isoId: "_9sNoAaAEEfC4Q_xhaK1hdQ" }, { value: "UKA6", name: "UKPTAES256", isoId: "__5vPgaAEEfC4Q_xhaK1hdQ" }, { value: "UKA8", name: "UKPTAES128", isoId: "_GvfYMaB6EfC4Q_xhaK1hdQ" }],
+    options: [{ value: "AES2", name: "AES128", isoId: "_jCaJxaACEfC4Q_xhaK1hdQ" }, { value: "EDE3", name: "DES112", isoId: "_jCaJx6ACEfC4Q_xhaK1hdQ" }, { value: "DKP9", name: "DUKPT2009", isoId: "_jCaJyaACEfC4Q_xhaK1hdQ" }, { value: "AES9", name: "AES192", isoId: "_jCaJy6ACEfC4Q_xhaK1hdQ" }, { value: "AES5", name: "AES256", isoId: "_jCaJzaACEfC4Q_xhaK1hdQ" }, { value: "EDE4", name: "DES168", isoId: "_jCaJz6ACEfC4Q_xhaK1hdQ" }, { value: "UKA2", name: "UKPTAES192", isoId: "_9sNoAaAEEfC4Q_xhaK1hdQ" }, { value: "UKA6", name: "UKPTAES256", isoId: "__5vPgaAEEfC4Q_xhaK1hdQ" }, { value: "RSAC", name: "RSA", isoId: "_A4U-saAFEfC4Q_xhaK1hdQ" }, { value: "ECCC", name: "ECC", isoId: "_BKGrMaAFEfC4Q_xhaK1hdQ" }, { value: "DKAE", name: "DUKPTAES", isoId: "_CGR_kaAFEfC4Q_xhaK1hdQ" }, { value: "UKA8", name: "UKPTAES128", isoId: "_GvfYMaB6EfC4Q_xhaK1hdQ" }],
   },
   "KeyUsage1Code": {
     name: "KeyUsage1Code",
     isoId: "_KSJO8H1DEeCF8NjrBemJWQ_1886720027",
     kind: "code",
-    options: [{ value: "DCPT", name: "Decryption", isoId: "_KSJO8n1DEeCF8NjrBemJWQ_119194564" }, { value: "DDEC", name: "DataDecryption", isoId: "_KSJO9H1DEeCF8NjrBemJWQ_-1258974949" }, { value: "DENC", name: "DataEncryption", isoId: "_KSJO831DEeCF8NjrBemJWQ_1538814257" }, { value: "ENCR", name: "Encryption", isoId: "_KSJO8X1DEeCF8NjrBemJWQ_952269426" }, { value: "KEYD", name: "KeyDerivation", isoId: "_KSSY531DEeCF8NjrBemJWQ_1499653549" }, { value: "KEYG", name: "KeyGeneration", isoId: "_KSSY5H1DEeCF8NjrBemJWQ_1055922580" }, { value: "KEYI", name: "KeyImport", isoId: "_KSSY5X1DEeCF8NjrBemJWQ_-1633900113" }, { value: "KEYX", name: "KeyExport", isoId: "_KSSY5n1DEeCF8NjrBemJWQ_-204001317" }, { value: "MACG", name: "MessageAuthenticationCodeGeneration", isoId: "_KSJO931DEeCF8NjrBemJWQ_1560885913" }, { value: "MACV", name: "MessageAuthenticationCodeVerification", isoId: "_KSJO-H1DEeCF8NjrBemJWQ_584260954" }, { value: "PIND", name: "PINDecryption", isoId: "_KSSY4n1DEeCF8NjrBemJWQ_-108961006" }, { value: "PINE", name: "PINEncryption", isoId: "_KSSY4X1DEeCF8NjrBemJWQ_-1604204545" }, { value: "PINV", name: "PINVerification", isoId: "_KSSY431DEeCF8NjrBemJWQ_596427236" }, { value: "SIGG", name: "SignatureGeneration", isoId: "_KSJO-X1DEeCF8NjrBemJWQ_-918308253" }, { value: "SUGV", name: "SignatureVerification", isoId: "_KSSY4H1DEeCF8NjrBemJWQ_951000548" }, { value: "TRNI", name: "TranslateInput", isoId: "_KSJO9X1DEeCF8NjrBemJWQ_1013497304" }, { value: "TRNX", name: "TranslateOutput", isoId: "_KSJO9n1DEeCF8NjrBemJWQ_940936689" }],
+    options: [{ value: "ENCR", name: "Encryption", isoId: "_KSJO8X1DEeCF8NjrBemJWQ_952269426" }, { value: "DCPT", name: "Decryption", isoId: "_KSJO8n1DEeCF8NjrBemJWQ_119194564" }, { value: "DENC", name: "DataEncryption", isoId: "_KSJO831DEeCF8NjrBemJWQ_1538814257" }, { value: "DDEC", name: "DataDecryption", isoId: "_KSJO9H1DEeCF8NjrBemJWQ_-1258974949" }, { value: "TRNI", name: "TranslateInput", isoId: "_KSJO9X1DEeCF8NjrBemJWQ_1013497304" }, { value: "TRNX", name: "TranslateOutput", isoId: "_KSJO9n1DEeCF8NjrBemJWQ_940936689" }, { value: "MACG", name: "MessageAuthenticationCodeGeneration", isoId: "_KSJO931DEeCF8NjrBemJWQ_1560885913" }, { value: "MACV", name: "MessageAuthenticationCodeVerification", isoId: "_KSJO-H1DEeCF8NjrBemJWQ_584260954" }, { value: "SIGG", name: "SignatureGeneration", isoId: "_KSJO-X1DEeCF8NjrBemJWQ_-918308253" }, { value: "SUGV", name: "SignatureVerification", isoId: "_KSSY4H1DEeCF8NjrBemJWQ_951000548" }, { value: "PINE", name: "PINEncryption", isoId: "_KSSY4X1DEeCF8NjrBemJWQ_-1604204545" }, { value: "PIND", name: "PINDecryption", isoId: "_KSSY4n1DEeCF8NjrBemJWQ_-108961006" }, { value: "PINV", name: "PINVerification", isoId: "_KSSY431DEeCF8NjrBemJWQ_596427236" }, { value: "KEYG", name: "KeyGeneration", isoId: "_KSSY5H1DEeCF8NjrBemJWQ_1055922580" }, { value: "KEYI", name: "KeyImport", isoId: "_KSSY5X1DEeCF8NjrBemJWQ_-1633900113" }, { value: "KEYX", name: "KeyExport", isoId: "_KSSY5n1DEeCF8NjrBemJWQ_-204001317" }, { value: "KEYD", name: "KeyDerivation", isoId: "_KSSY531DEeCF8NjrBemJWQ_1499653549" }],
   },
   "PublicRSAKey1": {
     name: "PublicRSAKey1",
@@ -6466,7 +6466,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "SequenceType3Code",
     isoId: "_t90OI1kyEeGeoaLUQk__nA_2097556198",
     kind: "code",
-    options: [{ value: "FNAL", name: "Final", isoId: "_t99_IVkyEeGeoaLUQk__nA_-1801335368" }, { value: "FRST", name: "First", isoId: "_t90OJFkyEeGeoaLUQk__nA_908612180" }, { value: "OOFF", name: "OneOff", isoId: "_t99_IlkyEeGeoaLUQk__nA_1948646475" }, { value: "RCUR", name: "Recurring", isoId: "_t99_IFkyEeGeoaLUQk__nA_1026483165" }, { value: "RPRE", name: "Represented", isoId: "_t99_I1kyEeGeoaLUQk__nA_-1832965217" }],
+    options: [{ value: "FRST", name: "First", isoId: "_t90OJFkyEeGeoaLUQk__nA_908612180" }, { value: "RCUR", name: "Recurring", isoId: "_t99_IFkyEeGeoaLUQk__nA_1026483165" }, { value: "FNAL", name: "Final", isoId: "_t99_IVkyEeGeoaLUQk__nA_-1801335368" }, { value: "OOFF", name: "OneOff", isoId: "_t99_IlkyEeGeoaLUQk__nA_1948646475" }, { value: "RPRE", name: "Represented", isoId: "_t99_I1kyEeGeoaLUQk__nA_-1832965217" }],
   },
   "PaymentTypeInformation27": {
     name: "PaymentTypeInformation27",
@@ -6485,7 +6485,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "RemittanceLocationMethod2Code",
     isoId: "_ZsX8tNp-Ed-ak6NoX_4Aeg_-517543090",
     kind: "code",
-    options: [{ value: "EDIC", name: "ElectronicDataInterchange", isoId: "_ZsX8ttp-Ed-ak6NoX_4Aeg_-517543029" }, { value: "EMAL", name: "EMail", isoId: "_ZsX8uNp-Ed-ak6NoX_4Aeg_-517542998" }, { value: "FAXI", name: "Fax", isoId: "_ZsX8tdp-Ed-ak6NoX_4Aeg_-517543060" }, { value: "POST", name: "Post", isoId: "_ZsX8udp-Ed-ak6NoX_4Aeg_-517542968" }, { value: "SMSM", name: "SMS", isoId: "_ZshGoNp-Ed-ak6NoX_4Aeg_-333762381" }, { value: "URID", name: "UniformResourceIdentifier", isoId: "_ZsX8t9p-Ed-ak6NoX_4Aeg_-517543028" }],
+    options: [{ value: "FAXI", name: "Fax", isoId: "_ZsX8tdp-Ed-ak6NoX_4Aeg_-517543060" }, { value: "EDIC", name: "ElectronicDataInterchange", isoId: "_ZsX8ttp-Ed-ak6NoX_4Aeg_-517543029" }, { value: "URID", name: "UniformResourceIdentifier", isoId: "_ZsX8t9p-Ed-ak6NoX_4Aeg_-517543028" }, { value: "EMAL", name: "EMail", isoId: "_ZsX8uNp-Ed-ak6NoX_4Aeg_-517542998" }, { value: "POST", name: "Post", isoId: "_ZsX8udp-Ed-ak6NoX_4Aeg_-517542968" }, { value: "SMSM", name: "SMS", isoId: "_ZshGoNp-Ed-ak6NoX_4Aeg_-333762381" }],
   },
   "RemittanceLocationData2": {
     name: "RemittanceLocationData2",
@@ -6534,7 +6534,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "PriceValueType1Code",
     isoId: "_aJIKJ9p-Ed-ak6NoX_4Aeg_1793790743",
     kind: "code",
-    options: [{ value: "DISC", name: "Discount", isoId: "_aJIKKNp-Ed-ak6NoX_4Aeg_-2127153341" }, { value: "PARV", name: "Par", isoId: "_aJR7Idp-Ed-ak6NoX_4Aeg_1927701255" }, { value: "PREM", name: "Premium", isoId: "_aJR7INp-Ed-ak6NoX_4Aeg_-2125306944" }],
+    options: [{ value: "DISC", name: "Discount", isoId: "_aJIKKNp-Ed-ak6NoX_4Aeg_-2127153341" }, { value: "PREM", name: "Premium", isoId: "_aJR7INp-Ed-ak6NoX_4Aeg_-2125306944" }, { value: "PARV", name: "Par", isoId: "_aJR7Idp-Ed-ak6NoX_4Aeg_1927701255" }],
   },
   "YieldedOrValueType1Choice": {
     name: "YieldedOrValueType1Choice",
@@ -6939,7 +6939,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "Frequency10Code",
     isoId: "_iotXoGoEEearR-CA7eRZXQ",
     kind: "code",
-    options: [{ value: "MIAN", name: "SemiAnnual", isoId: "_6xlcIWoEEearR-CA7eRZXQ" }, { value: "NEVR", name: "Never", isoId: "_ns-iwWoEEearR-CA7eRZXQ" }, { value: "QURT", name: "Quarterly", isoId: "_7SZDIWoEEearR-CA7eRZXQ" }, { value: "RATE", name: "Rate", isoId: "_5MNZwWoEEearR-CA7eRZXQ" }, { value: "YEAR", name: "Annual", isoId: "_vQ94oWoEEearR-CA7eRZXQ" }],
+    options: [{ value: "NEVR", name: "Never", isoId: "_ns-iwWoEEearR-CA7eRZXQ" }, { value: "YEAR", name: "Annual", isoId: "_vQ94oWoEEearR-CA7eRZXQ" }, { value: "RATE", name: "Rate", isoId: "_5MNZwWoEEearR-CA7eRZXQ" }, { value: "MIAN", name: "SemiAnnual", isoId: "_6xlcIWoEEearR-CA7eRZXQ" }, { value: "QURT", name: "Quarterly", isoId: "_7SZDIWoEEearR-CA7eRZXQ" }],
   },
   "Frequency37Choice": {
     name: "Frequency37Choice",
@@ -7034,7 +7034,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "SettlementMethod1Code",
     isoId: "_ZMCPwdp-Ed-ak6NoX_4Aeg_-115267772",
     kind: "code",
-    options: [{ value: "CLRG", name: "ClearingSystem", isoId: "_ZMCPxdp-Ed-ak6NoX_4Aeg_569985423" }, { value: "COVE", name: "CoverMethod", isoId: "_ZMCPxNp-Ed-ak6NoX_4Aeg_546899109" }, { value: "INDA", name: "InstructedAgent", isoId: "_ZMCPwtp-Ed-ak6NoX_4Aeg_301241605" }, { value: "INGA", name: "InstructingAgent", isoId: "_ZMCPw9p-Ed-ak6NoX_4Aeg_543203158" }],
+    options: [{ value: "INDA", name: "InstructedAgent", isoId: "_ZMCPwtp-Ed-ak6NoX_4Aeg_301241605" }, { value: "INGA", name: "InstructingAgent", isoId: "_ZMCPw9p-Ed-ak6NoX_4Aeg_543203158" }, { value: "COVE", name: "CoverMethod", isoId: "_ZMCPxNp-Ed-ak6NoX_4Aeg_546899109" }, { value: "CLRG", name: "ClearingSystem", isoId: "_ZMCPxdp-Ed-ak6NoX_4Aeg_569985423" }],
   },
   "SettlementInstruction15": {
     name: "SettlementInstruction15",
@@ -7167,7 +7167,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "SequenceType2Code",
     isoId: "_ZKPgB9p-Ed-ak6NoX_4Aeg_868377274",
     kind: "code",
-    options: [{ value: "OOFF", name: "OneOff", isoId: "_ZKZRANp-Ed-ak6NoX_4Aeg_868377553" }, { value: "RCUR", name: "Recurring", isoId: "_ZKPgCNp-Ed-ak6NoX_4Aeg_868377522" }],
+    options: [{ value: "RCUR", name: "Recurring", isoId: "_ZKPgCNp-Ed-ak6NoX_4Aeg_868377522" }, { value: "OOFF", name: "OneOff", isoId: "_ZKZRANp-Ed-ak6NoX_4Aeg_868377553" }],
   },
   "MandateOccurrences5": {
     name: "MandateOccurrences5",
@@ -7466,7 +7466,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "PaymentMethod4Code",
     isoId: "_Z0kPYdp-Ed-ak6NoX_4Aeg_-2121115820",
     kind: "code",
-    options: [{ value: "CHK", name: "Cheque", isoId: "_Z0kPYtp-Ed-ak6NoX_4Aeg_-2121115778" }, { value: "DD", name: "DirectDebit", isoId: "_Z0kPZNp-Ed-ak6NoX_4Aeg_-2121115346" }, { value: "TRA", name: "TransferAdvice", isoId: "_Z0kPZdp-Ed-ak6NoX_4Aeg_-2121115311" }, { value: "TRF", name: "CreditTransfer", isoId: "_Z0kPY9p-Ed-ak6NoX_4Aeg_-2121115388" }],
+    options: [{ value: "CHK", name: "Cheque", isoId: "_Z0kPYtp-Ed-ak6NoX_4Aeg_-2121115778" }, { value: "TRF", name: "CreditTransfer", isoId: "_Z0kPY9p-Ed-ak6NoX_4Aeg_-2121115388" }, { value: "DD", name: "DirectDebit", isoId: "_Z0kPZNp-Ed-ak6NoX_4Aeg_-2121115346" }, { value: "TRA", name: "TransferAdvice", isoId: "_Z0kPZdp-Ed-ak6NoX_4Aeg_-2121115311" }],
   },
   "OriginalTransactionReference47": {
     name: "OriginalTransactionReference47",
@@ -7563,7 +7563,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "Priority3Code",
     isoId: "_aKUc8Np-Ed-ak6NoX_4Aeg_1584820248",
     kind: "code",
-    options: [{ value: "HIGH", name: "High", isoId: "_aKUc8tp-Ed-ak6NoX_4Aeg_1584820309" }, { value: "NORM", name: "Normal", isoId: "_aKUc89p-Ed-ak6NoX_4Aeg_1584820310" }, { value: "URGT", name: "Urgent", isoId: "_aKUc8dp-Ed-ak6NoX_4Aeg_1584820280" }],
+    options: [{ value: "URGT", name: "Urgent", isoId: "_aKUc8dp-Ed-ak6NoX_4Aeg_1584820280" }, { value: "HIGH", name: "High", isoId: "_aKUc8tp-Ed-ak6NoX_4Aeg_1584820309" }, { value: "NORM", name: "Normal", isoId: "_aKUc89p-Ed-ak6NoX_4Aeg_1584820310" }],
   },
   "RegulatoryAuthority2": {
     name: "RegulatoryAuthority2",
@@ -7578,7 +7578,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "RegulatoryReportingType1Code",
     isoId: "_ZbFYZtp-Ed-ak6NoX_4Aeg_-1577941174",
     kind: "code",
-    options: [{ value: "BOTH", name: "Both", isoId: "_ZbPJYdp-Ed-ak6NoX_4Aeg_-1237159367" }, { value: "CRED", name: "Credit", isoId: "_ZbFYZ9p-Ed-ak6NoX_4Aeg_-1519759906" }, { value: "DEBT", name: "Debit", isoId: "_ZbPJYNp-Ed-ak6NoX_4Aeg_-1464346584" }],
+    options: [{ value: "CRED", name: "Credit", isoId: "_ZbFYZ9p-Ed-ak6NoX_4Aeg_-1519759906" }, { value: "DEBT", name: "Debit", isoId: "_ZbPJYNp-Ed-ak6NoX_4Aeg_-1464346584" }, { value: "BOTH", name: "Both", isoId: "_ZbPJYdp-Ed-ak6NoX_4Aeg_-1237159367" }],
   },
   "RegulatoryReportingType1Choice": {
     name: "RegulatoryReportingType1Choice",
@@ -7704,7 +7704,7 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "SettlementMethod2Code",
     isoId: "_ZMCPxtp-Ed-ak6NoX_4Aeg_-673388484",
     kind: "code",
-    options: [{ value: "CLRG", name: "ClearingSystem", isoId: "_ZMMAwNp-Ed-ak6NoX_4Aeg_-673388407" }, { value: "INDA", name: "InstructedAgent", isoId: "_ZMCPx9p-Ed-ak6NoX_4Aeg_-673388466" }, { value: "INGA", name: "InstructingAgent", isoId: "_ZMCPyNp-Ed-ak6NoX_4Aeg_-673388449" }],
+    options: [{ value: "INDA", name: "InstructedAgent", isoId: "_ZMCPx9p-Ed-ak6NoX_4Aeg_-673388466" }, { value: "INGA", name: "InstructingAgent", isoId: "_ZMCPyNp-Ed-ak6NoX_4Aeg_-673388449" }, { value: "CLRG", name: "ClearingSystem", isoId: "_ZMMAwNp-Ed-ak6NoX_4Aeg_-673388407" }],
   },
   "SettlementInstruction14": {
     name: "SettlementInstruction14",

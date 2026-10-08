@@ -17,7 +17,7 @@ export interface CreditTransferTransaction74 {
   PaymentCondition?: PaymentCondition2;
   RequestedExecutionDate?: DateAndDateTime2Choice;
   Amount: AmountType4Choice;
-  ChargeBearer?: "CRED" | "DEBT" | "SHAR" | "SLEV";
+  ChargeBearer?: "DEBT" | "CRED" | "SHAR" | "SLEV";
   MandateRelatedInformation?: CreditTransferMandateData1;
   ChequeInstruction?: Cheque19;
   UltimateDebtor?: PartyIdentification272;
@@ -52,7 +52,7 @@ export interface PaymentInstruction48 {
   DebtorAgent: BranchAndFinancialInstitutionIdentification8;
   DebtorAgentAccount?: CashAccount40;
   UltimateDebtor?: PartyIdentification272;
-  ChargeBearer?: "CRED" | "DEBT" | "SHAR" | "SLEV";
+  ChargeBearer?: "DEBT" | "CRED" | "SHAR" | "SLEV";
   CreditTransferTransaction: Array<CreditTransferTransaction74>;
 }
 

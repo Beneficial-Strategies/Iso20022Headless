@@ -8,14 +8,6 @@
   "definition": "The ATMConfigurationReport is sent by an ATM to a maintenance host to report the version of the configuration which is active.",
   "blocks": [
     {
-      "name": "ATMConfigurationReport",
-      "isoId": "_3fbJ8KE9Ee-MRKYsaX6JDg",
-      "xmlTag": "ATMCfgtnRpt",
-      "type": "ATMConfigurationReportComponent1",
-      "min": 0,
-      "max": 1
-    },
-    {
       "name": "Header",
       "isoId": "_sdBMcKE9Ee-MRKYsaX6JDg",
       "xmlTag": "Hdr",
@@ -28,6 +20,14 @@
       "isoId": "_zufO8KE9Ee-MRKYsaX6JDg",
       "xmlTag": "PrtctdATMCfgtnRpt",
       "type": "ContentInformationType10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ATMConfigurationReport",
+      "isoId": "_3fbJ8KE9Ee-MRKYsaX6JDg",
+      "xmlTag": "ATMCfgtnRpt",
+      "type": "ATMConfigurationReportComponent1",
       "min": 0,
       "max": 1
     },

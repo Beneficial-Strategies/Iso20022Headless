@@ -16,22 +16,6 @@
       "max": 1
     },
     {
-      "name": "CancellationDetails",
-      "isoId": "96cfca62-8ddb-43f1-8f73-630fd5a3dfd8",
-      "xmlTag": "CxlDtls",
-      "type": "UnderlyingTransaction35",
-      "min": 0,
-      "max": null
-    },
-    {
-      "name": "ResolutionRelatedInformation",
-      "isoId": "109ccacb-46e3-42e1-823d-edf4bd14a5c0",
-      "xmlTag": "RsltnRltdInf",
-      "type": "ResolutionData5",
-      "min": 0,
-      "max": 1
-    },
-    {
       "name": "ResolvedCase",
       "isoId": "6332311f-5424-49da-b03f-b9acc37a02d8",
       "xmlTag": "RslvdCase",
@@ -45,6 +29,22 @@
       "xmlTag": "Sts",
       "type": "InvestigationStatus6Choice",
       "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CancellationDetails",
+      "isoId": "96cfca62-8ddb-43f1-8f73-630fd5a3dfd8",
+      "xmlTag": "CxlDtls",
+      "type": "UnderlyingTransaction35",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "ResolutionRelatedInformation",
+      "isoId": "109ccacb-46e3-42e1-823d-edf4bd14a5c0",
+      "xmlTag": "RsltnRltdInf",
+      "type": "ResolutionData5",
+      "min": 0,
       "max": 1
     },
     {

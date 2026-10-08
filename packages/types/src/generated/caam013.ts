@@ -4,7 +4,7 @@ import type { ATMEnvironment7, ContentInformationType10, ContentInformationType1
 
 export interface ATMVersionReport1 {
   ConfigurationVersion: string;
-  ConfigurationStatus: "FAIL" | "WACT";
+  ConfigurationStatus: "WACT" | "FAIL";
   FailReason?: string;
 }
 

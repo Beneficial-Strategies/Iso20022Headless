@@ -26,3 +26,17 @@ describe('member order follows the XSD', () => {
     expect(allTypeDescriptors.CaseAssignment6!.fields!.map((f) => f.name)).toEqual(['Identification', 'Assigner', 'Assignee', 'CreationDateTime']);
   });
 });
+
+describe('code order follows the XSD enumeration (the spec order, not alphabetical)', () => {
+  const codes = new Map(readFileSync(resolve(import.meta.dirname, '../../../fixtures/code-order.tsv'), 'utf8').split('\n').slice(1).filter(Boolean).map((l) => { const [t, c] = l.split('\t'); return [t!, c!.split(',')] as const; }));
+  const enumerated = Object.values(allTypeDescriptors).filter((t) => t.kind === 'code' && (t.options ?? []).length >= 2);
+
+  it('every enumerated code set has an XSD order, and lists exactly its codes in it', () => {
+    expect(enumerated.filter((t) => !codes.has(t.name)).map((t) => t.name)).toEqual([]);
+    expect(enumerated.filter((t) => t.options!.map((o) => o.value).join() !== codes.get(t.name)?.join()).map((t) => t.name)).toEqual([]);
+  });
+
+  it('a payment method lists CHK, TRF, TRA as the spec does (alphabetical would put TRA before TRF)', () => {
+    expect(allTypeDescriptors.PaymentMethod3Code!.options!.map((o) => o.value)).toEqual(['CHK', 'TRF', 'TRA']);
+  });
+});

@@ -5,7 +5,7 @@ import type { ATMCommandIdentification1, ATMEnvironment9, ContentInformationType
 export interface HostToATMRequest1 {
   Environment: ATMEnvironment9;
   CommandIdentification?: ATMCommandIdentification1;
-  ExpectedMessageFunction: "BALN" | "DSEC" | "GSTS" | "INQC" | "KEYQ" | "SSTS";
+  ExpectedMessageFunction: "BALN" | "GSTS" | "DSEC" | "INQC" | "KEYQ" | "SSTS";
 }
 
 export interface HostToATMRequestV01 {

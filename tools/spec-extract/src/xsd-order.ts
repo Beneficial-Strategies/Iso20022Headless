@@ -50,3 +50,13 @@ export function parseOrderFile(text: string): Map<string, string[]> {
       }),
   );
 }
+
+/** Every code set of an XSD (a simple type of enumerated values) with its values in document order. */
+export function codeOrders(xsd: string): TypeOrder[] {
+  const out: TypeOrder[] = [];
+  for (const m of xsd.matchAll(/<xs:simpleType name="(\w+)">([\s\S]*?)<\/xs:simpleType>/g)) {
+    const tags = [...m[2]!.matchAll(/<xs:enumeration value="([^"]*)"/g)].map((e) => e[1]!);
+    if (tags.length) out.push({ type: m[1]!, tags });
+  }
+  return out;
+}

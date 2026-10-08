@@ -147,7 +147,7 @@ export const ATMCommand9Schema = z.strictObject({
   CommandIdentification: ATMCommandIdentification1Schema.optional(),
 });
 
-export const ATMCounterType2CodeSchema = z.enum(["BDAY", "CTOF", "INQU", "OPER"]);
+export const ATMCounterType2CodeSchema = z.enum(["BDAY", "INQU", "CTOF", "OPER"]);
 
 export const ATMTotals3Schema = z.strictObject({
   Identification: Max70TextSchema,
@@ -158,7 +158,7 @@ export const ATMTotals3Schema = z.strictObject({
   Amount: ImpliedCurrencyAndAmountSchema.optional(),
 });
 
-export const FailureReason9CodeSchema = z.enum(["CDCL", "CDCP", "CDER", "CDFG", "CDRT", "CFGC", "CHFG", "CQFG", "CQRT", "CSRV", "CUCL", "CUDC", "CUTO", "DCFG", "DCRT", "DFGC", "FILL", "FMTE", "LATE", "MALF", "NDCL", "QFGC", "RJCT", "RSTR", "SECU", "SFRD", "TIMO", "UCMP", "UCPT", "USND", "VLTE"]);
+export const FailureReason9CodeSchema = z.enum(["CDCP", "CDCL", "CDER", "CUCL", "CUDC", "CDFG", "FILL", "MALF", "NDCL", "SECU", "SFRD", "TIMO", "LATE", "UCPT", "UCMP", "USND", "CSRV", "CDRT", "CUTO", "RJCT", "FMTE", "VLTE", "CHFG", "DCFG", "CQFG", "DFGC", "CFGC", "QFGC", "CQRT", "DCRT", "RSTR"]);
 
 export const ATMReconciliationOperation1Schema = z.strictObject({
   TypeOfOperation: ATMOperation2CodeSchema.optional(),
@@ -251,7 +251,7 @@ const ownTypeDescriptors: TypeDescriptors = {
     name: "ATMCounterType2Code",
     isoId: "_tkUcgOg5EeSbwP3G-MV9YA",
     kind: "code",
-    options: [{ value: "BDAY", name: "BusinessDay", isoId: "_1uqAseg5EeSbwP3G-MV9YA" }, { value: "CTOF", name: "CutOff", isoId: "_2Osyseg5EeSbwP3G-MV9YA" }, { value: "INQU", name: "CountersInquiry", isoId: "_14WIMeg5EeSbwP3G-MV9YA" }, { value: "OPER", name: "OperatorAdjust", isoId: "_2iEaoeg5EeSbwP3G-MV9YA" }],
+    options: [{ value: "BDAY", name: "BusinessDay", isoId: "_1uqAseg5EeSbwP3G-MV9YA" }, { value: "INQU", name: "CountersInquiry", isoId: "_14WIMeg5EeSbwP3G-MV9YA" }, { value: "CTOF", name: "CutOff", isoId: "_2Osyseg5EeSbwP3G-MV9YA" }, { value: "OPER", name: "OperatorAdjust", isoId: "_2iEaoeg5EeSbwP3G-MV9YA" }],
   },
   "ATMTotals3": {
     name: "ATMTotals3",
@@ -270,7 +270,7 @@ const ownTypeDescriptors: TypeDescriptors = {
     name: "FailureReason9Code",
     isoId: "_3AtkwZxHEe-Jl6tBAvMHqA",
     kind: "code",
-    options: [{ value: "CDCL", name: "CardDeclined", isoId: "_3BpY45xHEe-Jl6tBAvMHqA" }, { value: "CDCP", name: "CardCaptured", isoId: "_3BpY4ZxHEe-Jl6tBAvMHqA" }, { value: "CDER", name: "CardError", isoId: "_3BpY5ZxHEe-Jl6tBAvMHqA" }, { value: "CDFG", name: "ForgottenCard", isoId: "_3BpY65xHEe-Jl6tBAvMHqA" }, { value: "CDRT", name: "CardRetained", isoId: "_3BpZA5xHEe-Jl6tBAvMHqA" }, { value: "CFGC", name: "CashDispenserRetractCounted", isoId: "_7FhBIaDgEe-MRKYsaX6JDg" }, { value: "CHFG", name: "CashDispenserRetract", isoId: "_2lWooaDgEe-MRKYsaX6JDg" }, { value: "CQFG", name: "ChequeDepositRetract", isoId: "_4CqUIaDgEe-MRKYsaX6JDg" }, { value: "CQRT", name: "ChequesRetained", isoId: "_8fUssaDgEe-MRKYsaX6JDg" }, { value: "CSRV", name: "OutOfCustomerService", isoId: "_3BpZAZxHEe-Jl6tBAvMHqA" }, { value: "CUCL", name: "CustomerCancel", isoId: "_3BpY55xHEe-Jl6tBAvMHqA" }, { value: "CUDC", name: "CustomerDecline", isoId: "_3BpY6ZxHEe-Jl6tBAvMHqA" }, { value: "CUTO", name: "CustomerTimeOut", isoId: "_3BpZBZxHEe-Jl6tBAvMHqA" }, { value: "DCFG", name: "CashDepositRetract", isoId: "_3UzvoaDgEe-MRKYsaX6JDg" }, { value: "DCRT", name: "DepositsRetained", isoId: "_8yYyoaDgEe-MRKYsaX6JDg" }, { value: "DFGC", name: "CashDepositRetractCounted", isoId: "_6MfucaDgEe-MRKYsaX6JDg" }, { value: "FILL", name: "FullfilmentError", isoId: "_3BpY7ZxHEe-Jl6tBAvMHqA" }, { value: "FMTE", name: "FormatError", isoId: "_1A060aDgEe-MRKYsaX6JDg" }, { value: "LATE", name: "TooLateResponse", isoId: "_3BpY-ZxHEe-Jl6tBAvMHqA" }, { value: "MALF", name: "Malfunction", isoId: "_3BpY75xHEe-Jl6tBAvMHqA" }, { value: "NDCL", name: "OnLineDeclined", isoId: "_3BpY8ZxHEe-Jl6tBAvMHqA" }, { value: "QFGC", name: "ChequeDepositRetractCounted", isoId: "_7iOLQaDgEe-MRKYsaX6JDg" }, { value: "RJCT", name: "Reject", isoId: "_0flO8aDgEe-MRKYsaX6JDg" }, { value: "RSTR", name: "Restart", isoId: "_9x79UajyEe--FqfI7l8ySw" }, { value: "SECU", name: "SecurityError", isoId: "_3BpY85xHEe-Jl6tBAvMHqA" }, { value: "SFRD", name: "SuspectedFraud", isoId: "_3BpY9ZxHEe-Jl6tBAvMHqA" }, { value: "TIMO", name: "TimeOut", isoId: "_3BpY95xHEe-Jl6tBAvMHqA" }, { value: "UCMP", name: "UnableToComplete", isoId: "_3BpY_ZxHEe-Jl6tBAvMHqA" }, { value: "UCPT", name: "UnableToCapture", isoId: "_3BpY-5xHEe-Jl6tBAvMHqA" }, { value: "USND", name: "UnableToSend", isoId: "_3BpY_5xHEe-Jl6tBAvMHqA" }, { value: "VLTE", name: "ValidationError", isoId: "_1mvEQaDgEe-MRKYsaX6JDg" }],
+    options: [{ value: "CDCP", name: "CardCaptured", isoId: "_3BpY4ZxHEe-Jl6tBAvMHqA" }, { value: "CDCL", name: "CardDeclined", isoId: "_3BpY45xHEe-Jl6tBAvMHqA" }, { value: "CDER", name: "CardError", isoId: "_3BpY5ZxHEe-Jl6tBAvMHqA" }, { value: "CUCL", name: "CustomerCancel", isoId: "_3BpY55xHEe-Jl6tBAvMHqA" }, { value: "CUDC", name: "CustomerDecline", isoId: "_3BpY6ZxHEe-Jl6tBAvMHqA" }, { value: "CDFG", name: "ForgottenCard", isoId: "_3BpY65xHEe-Jl6tBAvMHqA" }, { value: "FILL", name: "FullfilmentError", isoId: "_3BpY7ZxHEe-Jl6tBAvMHqA" }, { value: "MALF", name: "Malfunction", isoId: "_3BpY75xHEe-Jl6tBAvMHqA" }, { value: "NDCL", name: "OnLineDeclined", isoId: "_3BpY8ZxHEe-Jl6tBAvMHqA" }, { value: "SECU", name: "SecurityError", isoId: "_3BpY85xHEe-Jl6tBAvMHqA" }, { value: "SFRD", name: "SuspectedFraud", isoId: "_3BpY9ZxHEe-Jl6tBAvMHqA" }, { value: "TIMO", name: "TimeOut", isoId: "_3BpY95xHEe-Jl6tBAvMHqA" }, { value: "LATE", name: "TooLateResponse", isoId: "_3BpY-ZxHEe-Jl6tBAvMHqA" }, { value: "UCPT", name: "UnableToCapture", isoId: "_3BpY-5xHEe-Jl6tBAvMHqA" }, { value: "UCMP", name: "UnableToComplete", isoId: "_3BpY_ZxHEe-Jl6tBAvMHqA" }, { value: "USND", name: "UnableToSend", isoId: "_3BpY_5xHEe-Jl6tBAvMHqA" }, { value: "CSRV", name: "OutOfCustomerService", isoId: "_3BpZAZxHEe-Jl6tBAvMHqA" }, { value: "CDRT", name: "CardRetained", isoId: "_3BpZA5xHEe-Jl6tBAvMHqA" }, { value: "CUTO", name: "CustomerTimeOut", isoId: "_3BpZBZxHEe-Jl6tBAvMHqA" }, { value: "RJCT", name: "Reject", isoId: "_0flO8aDgEe-MRKYsaX6JDg" }, { value: "FMTE", name: "FormatError", isoId: "_1A060aDgEe-MRKYsaX6JDg" }, { value: "VLTE", name: "ValidationError", isoId: "_1mvEQaDgEe-MRKYsaX6JDg" }, { value: "CHFG", name: "CashDispenserRetract", isoId: "_2lWooaDgEe-MRKYsaX6JDg" }, { value: "DCFG", name: "CashDepositRetract", isoId: "_3UzvoaDgEe-MRKYsaX6JDg" }, { value: "CQFG", name: "ChequeDepositRetract", isoId: "_4CqUIaDgEe-MRKYsaX6JDg" }, { value: "DFGC", name: "CashDepositRetractCounted", isoId: "_6MfucaDgEe-MRKYsaX6JDg" }, { value: "CFGC", name: "CashDispenserRetractCounted", isoId: "_7FhBIaDgEe-MRKYsaX6JDg" }, { value: "QFGC", name: "ChequeDepositRetractCounted", isoId: "_7iOLQaDgEe-MRKYsaX6JDg" }, { value: "CQRT", name: "ChequesRetained", isoId: "_8fUssaDgEe-MRKYsaX6JDg" }, { value: "DCRT", name: "DepositsRetained", isoId: "_8yYyoaDgEe-MRKYsaX6JDg" }, { value: "RSTR", name: "Restart", isoId: "_9x79UajyEe--FqfI7l8ySw" }],
   },
   "ATMReconciliationOperation1": {
     name: "ATMReconciliationOperation1",

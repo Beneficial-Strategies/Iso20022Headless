@@ -16,19 +16,19 @@
       "max": 1
     },
     {
-      "name": "SupplementaryData",
-      "isoId": "_R3P4XTEZEe6kQ-WGAhcVPQ",
-      "xmlTag": "SplmtryData",
-      "type": "SupplementaryData1",
-      "min": 0,
-      "max": null
-    },
-    {
       "name": "UnderlyingAmendmentDetails",
       "isoId": "_R3P4WzEZEe6kQ-WGAhcVPQ",
       "xmlTag": "UndrlygAmdmntDtls",
       "type": "MandateAmendment8",
       "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3P4XTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
       "max": null
     }
   ]

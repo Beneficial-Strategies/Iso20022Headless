@@ -17,7 +17,7 @@ export interface ATMSecurityDevice2 {
   CurrentConfiguration: ATMSecurityConfiguration1;
   SupportedConfiguration?: ATMSecurityConfiguration1;
   CurrentStatus: "OPER" | "OUTS";
-  Incident?: "HRDW" | "SECR";
+  Incident?: "SECR" | "HRDW";
   BindingState?: "BUND" | "UBND";
 }
 
@@ -28,8 +28,8 @@ export interface CryptographicKey20 {
   AdditionalIdentification?: string;
   Version?: string;
   SequenceCounter?: string;
-  Type: "AES2" | "AES5" | "AES9" | "DKAE" | "DKP9" | "ECCC" | "EDE3" | "EDE4" | "RSAC" | "UKA2" | "UKA6" | "UKA8";
-  Function: Array<"DCPT" | "DDEC" | "DENC" | "ENCR" | "KEYD" | "KEYG" | "KEYI" | "KEYX" | "MACG" | "MACV" | "PIND" | "PINE" | "PINV" | "SIGG" | "SUGV" | "TRNI" | "TRNX">;
+  Type: "AES2" | "EDE3" | "DKP9" | "AES9" | "AES5" | "EDE4" | "UKA2" | "UKA6" | "RSAC" | "ECCC" | "DKAE" | "UKA8";
+  Function: Array<"ENCR" | "DCPT" | "DENC" | "DDEC" | "TRNI" | "TRNX" | "MACG" | "MACV" | "SIGG" | "SUGV" | "PINE" | "PIND" | "PINV" | "KEYG" | "KEYI" | "KEYX" | "KEYD">;
   ActivationDate?: string;
   DeactivationDate?: string;
   KeyCheckValue?: string;
@@ -38,8 +38,8 @@ export interface CryptographicKey20 {
 }
 
 export interface ATMSecurityContext6 {
-  CurrentSecurityScheme: "APPK" | "CERT" | "DTCH" | "FRAN" | "LUXG" | "MANU" | "NONE" | "PKIP" | "SIGN" | "TR34";
-  SecuritySchemeCapabilities?: Array<"APPK" | "CERT" | "DTCH" | "FRAN" | "LUXG" | "MANU" | "PKIP" | "SIGN" | "TR34">;
+  CurrentSecurityScheme: "APPK" | "CERT" | "FRAN" | "DTCH" | "LUXG" | "MANU" | "PKIP" | "SIGN" | "NONE" | "TR34";
+  SecuritySchemeCapabilities?: Array<"APPK" | "CERT" | "FRAN" | "DTCH" | "LUXG" | "MANU" | "PKIP" | "SIGN" | "TR34">;
   SecurityDevice: ATMSecurityDevice2;
   Key?: Array<CryptographicKey20>;
   HostChallenge?: string;

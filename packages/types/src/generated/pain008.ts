@@ -16,7 +16,7 @@ export interface DirectDebitTransactionInformation34 {
   PaymentIdentification: PaymentIdentification6;
   PaymentTypeInformation?: PaymentTypeInformation29;
   InstructedAmount: ActiveOrHistoricCurrencyAndAmount;
-  ChargeBearer?: "CRED" | "DEBT" | "SHAR" | "SLEV";
+  ChargeBearer?: "DEBT" | "CRED" | "SHAR" | "SLEV";
   DirectDebitTransaction?: DirectDebitTransaction12;
   UltimateCreditor?: PartyIdentification272;
   DebtorAgent: BranchAndFinancialInstitutionIdentification8;
@@ -47,7 +47,7 @@ export interface PaymentInstruction50 {
   CreditorAgent: BranchAndFinancialInstitutionIdentification8;
   CreditorAgentAccount?: CashAccount40;
   UltimateCreditor?: PartyIdentification272;
-  ChargeBearer?: "CRED" | "DEBT" | "SHAR" | "SLEV";
+  ChargeBearer?: "DEBT" | "CRED" | "SHAR" | "SLEV";
   ChargesAccount?: CashAccount40;
   ChargesAccountAgent?: BranchAndFinancialInstitutionIdentification8;
   CreditorSchemeIdentification?: PartyIdentification272;

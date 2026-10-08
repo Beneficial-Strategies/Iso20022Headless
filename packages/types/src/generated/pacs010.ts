@@ -16,7 +16,7 @@ export interface DirectDebitTransactionInformation33 {
   PaymentTypeInformation?: PaymentTypeInformation28;
   InterbankSettlementAmount: ActiveCurrencyAndAmount;
   InterbankSettlementDate?: string;
-  SettlementPriority?: "HIGH" | "NORM" | "URGT";
+  SettlementPriority?: "URGT" | "HIGH" | "NORM";
   SettlementTimeIndication?: SettlementDateTimeIndication1;
   SettlementTimeRequest?: SettlementTimeRequest2;
   UltimateDebtor?: BranchAndFinancialInstitutionIdentification8;

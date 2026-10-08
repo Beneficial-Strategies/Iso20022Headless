@@ -29,7 +29,7 @@ export interface PaymentTypeInformation26 {
 export interface ExchangeRate1 {
   UnitCurrency?: string;
   ExchangeRate?: string;
-  RateType?: "AGRD" | "SALE" | "SPOT";
+  RateType?: "SPOT" | "SALE" | "AGRD";
   ContractIdentification?: string;
 }
 
@@ -43,7 +43,7 @@ export interface CreditTransferTransaction76 {
   PaymentTypeInformation?: PaymentTypeInformation26;
   Amount: AmountType4Choice;
   ExchangeRateInformation?: ExchangeRate1;
-  ChargeBearer?: "CRED" | "DEBT" | "SHAR" | "SLEV";
+  ChargeBearer?: "DEBT" | "CRED" | "SHAR" | "SLEV";
   MandateRelatedInformation?: CreditTransferMandateData1;
   ChequeInstruction?: Cheque19;
   UltimateDebtor?: PartyIdentification272;
@@ -70,7 +70,7 @@ export interface CreditTransferTransaction76 {
 
 export interface PaymentInstruction51 {
   PaymentInformationIdentification: string;
-  PaymentMethod: "CHK" | "TRA" | "TRF";
+  PaymentMethod: "CHK" | "TRF" | "TRA";
   RequestedAdviceType?: AdviceType1;
   BatchBooking?: 'true' | 'false';
   NumberOfTransactions?: string;
@@ -84,7 +84,7 @@ export interface PaymentInstruction51 {
   DebtorAgentAccount?: CashAccount40;
   InstructionForDebtorAgent?: string;
   UltimateDebtor?: PartyIdentification272;
-  ChargeBearer?: "CRED" | "DEBT" | "SHAR" | "SLEV";
+  ChargeBearer?: "DEBT" | "CRED" | "SHAR" | "SLEV";
   ChargesAccount?: CashAccount40;
   ChargesAccountAgent?: BranchAndFinancialInstitutionIdentification8;
   CreditTransferTransactionInformation: Array<CreditTransferTransaction76>;
