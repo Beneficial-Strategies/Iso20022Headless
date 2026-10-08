@@ -48,6 +48,19 @@ before relying on this; the design is a pass-through of their public files, not 
 6. Try it: `curl -I https://<your host>/iso20022-xsd/pain/schemas/pain.001.001.13.xsd` should say `200` with
    `content-type: application/xml`, and the demo's **XSD Validate** button should be enabled without any file.
 
+### Previews for pull request branches (Worker Previews)
+
+Cloudflare builds every branch. On the Worker's **Settings → Builds** there are two tabs, **Production** and **Previews Base**,
+and each has its own settings: set the **build command** and the variable `NODE_VERSION` = `24` on both (switching to Worker
+Previews drops them). **Builds for Preview branches** is on, and the **Preview command** is `npx wrangler preview`. The site
+needs no runtime variables, secrets or bindings, so there is nothing else to copy. `wrangler.jsonc` must carry a `previews` block
+(an empty one is enough) or the command stops with "missing a `previews` block".
+
+History, so the next person need not repeat it (2026-10-08): the first preview model ran `npx wrangler versions upload` against the
+Production settings and failed on every branch with "The name in your wrangler.jsonc file must match the name of your Worker",
+even though the names were identical. Cloudflare's own prompt to **Switch to Worker Previews** is the fix; it cannot be undone,
+which only affects previews. Preview addresses are public to anyone with the link.
+
 If ISO's server refuses Cloudflare's addresses, the pass-through answers `502 ISO's server answered 403.` and the button
 falls back to the right-click file loading, exactly as on GitHub Pages. Nothing breaks.
 

@@ -13,5 +13,8 @@
   // the built-in address (<name>.<account>.workers.dev) and per-branch preview addresses stay on; said here so that wrangler need not warn about defaults
   "workers_dev": true,
   "preview_urls": true,
-  "observability": { "enabled": true }
+  "observability": { "enabled": true },
+  // Worker Previews (`wrangler preview`, run by the Cloudflare build for pull request branches) needs this block, even empty:
+  // assets, compatibility settings and the rest stay at the top level
+  "previews": {}
 }
