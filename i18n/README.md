@@ -49,7 +49,7 @@ markers must survive, and glossary terms are flagged. Broken drafts are rejected
 
 ## Keeping it current
 
-`pnpm i18n check es` reports missing, stale and orphaned entries and exits 1 on stale or orphaned ones (use it in
+`pnpm i18n check <lang>` (`pnpm i18n:check` runs es, fr, de and pt) reports missing, stale and orphaned entries and exits 1 on stale or orphaned ones (use it in
 CI). When the generated English changes, re-run `extract`, then `merge` drafts for the stale units.
 
 ## Overriding at runtime, without touching the catalog

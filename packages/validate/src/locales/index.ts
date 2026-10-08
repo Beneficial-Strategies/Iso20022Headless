@@ -6,6 +6,9 @@ import type { DefinitionCatalog } from '../definitions.ts';
  */
 const loaders: Record<string, () => Promise<DefinitionCatalog>> = {
   es: () => import('./es.ts').then((m) => m.default),
+  fr: () => import('./fr.ts').then((m) => m.default),
+  de: () => import('./de.ts').then((m) => m.default),
+  pt: () => import('./pt.ts').then((m) => m.default),
 };
 
 export const shippedDefinitionLocales: readonly string[] = Object.keys(loaders);

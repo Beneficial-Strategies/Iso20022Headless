@@ -1,0 +1,138 @@
+[
+  {
+    "term": "Debtor",
+    "to": "Zahlungspflichtiger"
+  },
+  {
+    "term": "Creditor",
+    "to": "Zahlungsempfänger"
+  },
+  {
+    "term": "Ultimate Debtor",
+    "to": "Letztlich Zahlungspflichtiger"
+  },
+  {
+    "term": "Ultimate Creditor",
+    "to": "Letztlicher Zahlungsempfänger"
+  },
+  {
+    "term": "Debtor Agent",
+    "to": "Bank des Zahlungspflichtigen"
+  },
+  {
+    "term": "Creditor Agent",
+    "to": "Bank des Zahlungsempfängers"
+  },
+  {
+    "term": "Intermediary Agent",
+    "to": "zwischengeschaltete Bank"
+  },
+  {
+    "term": "Forwarding Agent",
+    "to": "weiterleitende Bank"
+  },
+  {
+    "term": "Initiating Party",
+    "to": "initiierende Partei"
+  },
+  {
+    "term": "Credit Transfer",
+    "to": "Überweisung"
+  },
+  {
+    "term": "Payment Information",
+    "to": "Zahlungsinformationen"
+  },
+  {
+    "term": "Transaction",
+    "to": "Transaktion"
+  },
+  {
+    "term": "Instruction",
+    "to": "Anweisung"
+  },
+  {
+    "term": "Remittance Information",
+    "to": "Verwendungszweck-Informationen"
+  },
+  {
+    "term": "Charge Bearer",
+    "to": "Entgelte"
+  },
+  {
+    "term": "Control Sum",
+    "to": "Kontrollsumme"
+  },
+  {
+    "term": "Number of Transactions",
+    "to": "Anzahl der Transaktionen"
+  },
+  {
+    "term": "Requested Execution Date",
+    "to": "gewünschtes Ausführungsdatum"
+  },
+  {
+    "term": "Batch Booking",
+    "to": "Sammelbuchung"
+  },
+  {
+    "term": "Account",
+    "to": "Konto"
+  },
+  {
+    "term": "Mandate",
+    "to": "Mandat"
+  },
+  {
+    "term": "Purpose",
+    "to": "Zweck"
+  },
+  {
+    "term": "Authorisation",
+    "to": "Autorisierung"
+  },
+  {
+    "term": "Supplementary Data",
+    "to": "ergänzende Daten"
+  },
+  {
+    "term": "Garnishment",
+    "to": "Pfändung"
+  },
+  {
+    "term": "Message",
+    "to": "Nachricht"
+  },
+  {
+    "term": "Payment",
+    "to": "Zahlung"
+  },
+  {
+    "term": "Party",
+    "to": "Partei"
+  },
+  {
+    "term": "Financial Institution",
+    "to": "Finanzinstitut"
+  },
+  {
+    "term": "Reference",
+    "to": "Referenz"
+  },
+  {
+    "term": "Identification",
+    "to": "Identifikation"
+  },
+  {
+    "term": "Cheque",
+    "to": "Scheck"
+  },
+  {
+    "term": "Creation Date Time",
+    "to": "Erstellungsdatum und -zeit"
+  },
+  {
+    "term": "Reversal",
+    "to": "Rückbuchung"
+  }
+]

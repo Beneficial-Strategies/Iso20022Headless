@@ -58,7 +58,7 @@ You do not write the ISO 20022 rules; they ship with the library, generated from
   violated rule is reported at the field with a clear message. This is the part that is expensive to get
   right by hand and easy to get subtly wrong.
 - **Internationalization.** Language is built in, not bolted on. Interface text, validation messages,
-  pattern hints and, for Spanish, the spec text itself (element names, definitions, code names, rules) are
+  pattern hints and the spec text itself (element names, definitions, code names, rules) are
   all included. Shipped: **ISO English, American English, Spanish, French, German and Portuguese.** ISO's own
   wording is British-style English ("Organisation", "Cheque"); American English rewrites the spelling and a
   few terms at display time and never touches what is sent. See [docs/languages.md](docs/languages.md) for
