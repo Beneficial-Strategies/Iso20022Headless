@@ -68,9 +68,55 @@ export function useHoverTip(trigger: RefObject<HTMLElement | null>, suppress = f
   };
 }
 
+/** ISO's public page for a type (a message, a component, a code set or a value type), which opens in a new window from the spec button. */
+export const isoTypeUrl = (type: string): string => `https://www.iso20022.org/standardsrepository/type/${encodeURIComponent(type)}`;
+
 /** The look of the round "i" button, for buttons a host adds beside it. */
 export const INFO_BUTTON_CLASS =
   'inline-flex h-4 w-4 items-center justify-center rounded-full border border-edge text-[10px] font-semibold leading-none text-muted hover:bg-surface-alt focus:outline-none focus-visible:ring-2 focus-visible:ring-focus';
+
+/**
+ * The small button after the "i" that opens ISO's official page for the element's type in a new window; hovering says which
+ * type. It is a real link, so it can also be opened in a new tab, copied and middle-clicked.
+ */
+function SpecButton({ spec }: { spec: { type: string; url: string } }) {
+  const trigger = useRef<HTMLAnchorElement>(null);
+  const tipId = useId();
+  const { t } = useI18n();
+  const tip = useHoverTip(trigger);
+  const text = t('specTip', { type: spec.type });
+  return (
+    <span
+      className="relative inline-flex"
+      onKeyDown={(e) => {
+        if (e.key === 'Escape') tip.hide();
+      }}
+    >
+      <a
+        ref={trigger}
+        href={spec.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={text}
+        aria-describedby={tip.show ? tipId : undefined}
+        data-spec-link={spec.type}
+        className={INFO_BUTTON_CLASS}
+        {...tip.handlers}
+        onClick={() => tip.hide()}
+      >
+        <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M3 1.5 H7 L9.5 4 V10.5 H3 Z" />
+          <path d="M7 1.5 V4 H9.5" />
+        </svg>
+      </a>
+      {tip.show ? (
+        <Popup anchor={trigger.current} role="tooltip" id={tipId} width={260} className="space-y-1 rounded border border-edge bg-surface p-2 text-left text-xs font-normal text-fg shadow-lg">
+          {text}
+        </Popup>
+      ) : null}
+    </span>
+  );
+}
 
 /**
  * Help for an element: an "i" button. Hovering it (or focusing it with the keyboard) shows the definition in a
@@ -86,6 +132,7 @@ export function Info({
   onToggle,
   noteId,
   extra,
+  spec,
 }: {
   def: Localized | undefined;
   label: string;
@@ -93,13 +140,15 @@ export function Info({
   onToggle: () => void;
   noteId: string;
   extra?: ReactNode;
+  /** The element's type and the address of its official page: a small button after the "i" opens it. */
+  spec?: { type: string; url: string } | undefined;
 }) {
   const trigger = useRef<HTMLButtonElement>(null);
   const tipId = useId();
   const { t } = useI18n();
   const tip = useHoverTip(trigger, open);
 
-  if (!def && !extra) return null;
+  if (!def && !extra && !spec) return null;
   return (
     <span className="inline-flex items-center gap-1">
       {def ? (
@@ -138,6 +187,7 @@ export function Info({
           ) : null}
         </span>
       ) : null}
+      {spec ? <SpecButton spec={spec} /> : null}
       {extra}
     </span>
   );

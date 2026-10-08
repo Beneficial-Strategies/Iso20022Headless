@@ -127,11 +127,15 @@ describe('the demo\'s zoom button, imposed beside the "i" from outside the libra
 });
 
 describe('fieldExtra: the library\'s neutral slot beside the "i"', () => {
-  it('puts nothing there by itself: without fieldExtra the library has no zoom, or anything else, beside the "i"', () => {
+  it('puts nothing of its own there: the "i" and the library\'s spec button, and no zoom or anything else', () => {
     const { container } = render(<Form />);
     expect(screen.queryAllByRole('button', { name: /zoom/i })).toHaveLength(0);
     expect(container.textContent).not.toMatch(/zoom/i);
-    for (const i of screen.getAllByRole('button', { name: /^About / })) expect(i.parentElement!.parentElement!.children).toHaveLength(1);
+    for (const i of screen.getAllByRole('button', { name: /^About / })) {
+      const kids = [...i.parentElement!.parentElement!.children];
+      expect(kids).toHaveLength(2); // the "i" and the spec button
+      expect(kids[1]!.querySelector('a[data-spec-link]')).not.toBeNull();
+    }
   });
 
   it('is called for every element that has an "i", with what the host needs to decide', () => {

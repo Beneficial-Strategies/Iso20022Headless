@@ -18,7 +18,8 @@ import { devProxyUrl } from './xsd.ts';
 import { XsdButton, XsdNotice, XsdPanel } from './XsdValidate.tsx';
 import { zoomExtra } from './ZoomButton.tsx';
 import { FieldModeSwitch } from './FieldModeSwitch.tsx';
-import { useDemoText } from './demoText.ts';
+import { HoverHelp } from './HoverHelp.tsx';
+import { demoText, useDemoText } from './demoText.ts';
 import { CopyAsMenu } from './CopyAsMenu.tsx';
 import { DEFAULT_OPTIONS, type ExportOptions } from './screenExport.ts';
 
@@ -62,8 +63,9 @@ function useMessageBundle(identifier: string): MessageBundle | undefined {
 /** The first choice: which business area (pain, pacs, ...). Names and descriptions are the repository's, translated where we have it. */
 function AreaPicker({ value, onChange }: { value: string; onChange: (code: string) => void }) {
   const { t, lang } = useI18n();
+  const dt = useDemoText();
   return (
-    <div className="w-[min(6.5rem,100%)] min-w-0 shrink-0">
+    <HoverHelp className="w-[min(6.5rem,100%)] min-w-0 shrink-0" title={dt('helpAreaTitle')} text={dt('helpArea')}>
       <DescribedSelect
         id="area-picker"
         ariaLabel={t('areaLabel')}
@@ -77,34 +79,16 @@ function AreaPicker({ value, onChange }: { value: string; onChange: (code: strin
         placeholder={t('areaLabel')}
         allowEmpty={false}
       />
-    </div>
-  );
-}
-
-/** The ISO 20022 repository page of a type (a message component or a whole message). */
-const specUrl = (type: string): string => `https://www.iso20022.org/standardsrepository/type/${encodeURIComponent(type)}`;
-
-/** Opens the published specification of the selected type in a separate window. */
-function SpecLink({ type }: { type: string }) {
-  const { t } = useI18n();
-  return (
-    <a
-      href={specUrl(type)}
-      target="_blank"
-      rel="noopener noreferrer"
-      title={t('viewSpecTitle', { type })}
-      className="shrink-0 whitespace-nowrap rounded border border-edge bg-surface px-3 py-1.5 text-sm text-fg hover:bg-surface-alt focus-visible:ring-2 focus-visible:ring-focus"
-    >
-      {t('viewSpec')}
-    </a>
+    </HoverHelp>
   );
 }
 
 /** The second choice: a message of the chosen area. */
 function MessagePicker({ area, value, onChange }: { area: string; value: string; onChange: (id: string) => void }) {
   const { t } = useI18n();
+  const dt = useDemoText();
   return (
-    <div className="w-[min(9rem,100%)] min-w-0 shrink-0">
+    <HoverHelp className="w-[min(9rem,100%)] min-w-0 shrink-0" title={dt('helpMessageTitle')} text={dt('helpMessage')}>
       <DescribedSelect
         id="message-picker"
         ariaLabel={t('messageLabel')}
@@ -114,12 +98,13 @@ function MessagePicker({ area, value, onChange }: { area: string; value: string;
         placeholder={t('messageLabel')}
         allowEmpty={false}
       />
-    </div>
+    </HoverHelp>
   );
 }
 
 function TypePicker({ bundle, value, onChange }: { bundle: MessageBundle; value: string; onChange: (t: string) => void }) {
   const { t } = useI18n();
+  const dt = useDemoText();
   const [open, setOpen] = useState(false);
   const root = useRef<HTMLDivElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
@@ -138,9 +123,10 @@ function TypePicker({ bundle, value, onChange }: { bundle: MessageBundle; value:
   }, [open]);
 
   return (
+    <HoverHelp className="w-[24rem] max-w-full min-w-0 shrink" title={dt('helpTypeTitle')} text={dt('helpType')}>
     <div
       ref={root}
-      className="relative w-[34rem] max-w-full min-w-0 shrink"
+      className="relative"
       onKeyDown={(e) => {
         if (e.key === 'Escape' && open) {
           setOpen(false);
@@ -153,14 +139,12 @@ function TypePicker({ bundle, value, onChange }: { bundle: MessageBundle; value:
         type="button"
         aria-haspopup="listbox"
         aria-expanded={open}
-        title={value}
+        aria-label={`${t('typeLabel')}${value}`}
+        data-type-picker
         className="w-full rounded border border-edge bg-surface px-3 py-1.5 text-left text-sm text-fg hover:bg-surface-alt focus-visible:ring-2 focus-visible:ring-focus"
         onClick={() => setOpen((o) => !o)}
       >
-        <span className="block truncate">
-          <span className="text-muted">{t('typeLabel')}</span>
-          <span className="font-mono">{value}</span>
-        </span>
+        <span className="block truncate font-mono">{value}</span>
       </button>
       {open ? (
         <Popup ref={popup} anchor={trigger.current} width="anchor" minWidth={448} className="rounded border border-edge bg-surface text-fg shadow-lg">
@@ -187,6 +171,7 @@ function TypePicker({ bundle, value, onChange }: { bundle: MessageBundle; value:
         </Popup>
       ) : null}
     </div>
+    </HoverHelp>
   );
 }
 
@@ -522,6 +507,7 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
   const lastInArea = useRef<Record<string, string>>({});
   lastInArea.current[area] = settings.message;
   const i18n = useCreateI18n(locale, overrides);
+  const dt = demoText(i18n.lang);
   const skin = skins.find((s) => s.id === settings.skin) ?? skins[0]!;
   return (
     <I18nProvider value={i18n}>
@@ -541,8 +527,9 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
             <AreaPicker value={area} onChange={(code) => update({ message: lastInArea.current[code] ?? messageIndex.find((m) => m.area === code)!.identifier })} />
             <MessagePicker area={area} value={settings.message} onChange={(message) => update({ message })} />
             {bundle && typeName ? <TypePicker bundle={bundle} value={typeName} onChange={(type) => setChosenType({ message: settings.message, type })} /> : null}
-            {bundle && typeName ? <SpecLink type={typeName} /> : null}
-            <SettingsPanel settings={settings} skins={skins} locales={locales} onChange={update} />
+            <HoverHelp className="shrink-0" title={dt('helpDisplayTitle')} text={dt('helpDisplay')}>
+              <SettingsPanel settings={settings} skins={skins} locales={locales} onChange={update} />
+            </HoverHelp>
           </div>
         </header>
         {aboutOpen ? <AboutDialog onClose={() => setAboutOpen(false)} /> : null}

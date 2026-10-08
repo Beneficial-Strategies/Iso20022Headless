@@ -26,8 +26,8 @@ const KEYS = [
   'loadFile', 'saveXml', 'saveJson', 'fileDone', 'fileDoneIssues', 'fileFailed', 'fileError_empty', 'fileError_not_xml_or_json', 'fileError_unreadable', 'fileError_too_large', 'stepServe', 'noteServe',
   // business areas (the first dropdown): English text is the repository's; keep it equal to the registry (a test checks)
   'areaLabel', 'areaName_pain', 'areaDesc_pain', 'areaName_pacs', 'areaDesc_pacs', 'areaName_caam', 'areaDesc_caam',
-  // link to the published specification of the selected type
-  'viewSpec', 'viewSpecTitle',
+  // the small button beside the "i" that opens a type's official page
+  'specTip',
   // help for an element
   'helpClickHint',
   // XSD validation of the XML
@@ -198,8 +198,7 @@ export const uiEn: UiMessages = {
   areaDesc_pacs: 'Messages that support the clearing and settlement processes for payment transactions between financial institutions.',
   areaName_caam: 'ATM Management',
   areaDesc_caam: 'Messages that support card related terminal management services between an Automated Teller Machine (ATM) and an Acquirer.',
-  viewSpec: 'View Specification ↗',
-  viewSpecTitle: 'Open the ISO 20022 repository page for {type} in a new window',
+  specTip: 'View ISO 20022 official documentation for {type}',
   helpClickHint: 'Click to view in form',
   xsdLabel: 'XSD Validate',
   xsdReady: 'Validate the text of the message below using {location}',
@@ -400,8 +399,7 @@ export const uiEs: UiMessages = {
   areaDesc_pacs: 'Mensajes que respaldan los procesos de compensación y liquidación de operaciones de pago entre entidades financieras.',
   areaName_caam: 'Gestión de cajeros automáticos',
   areaDesc_caam: 'Mensajes que respaldan los servicios de gestión de terminales relacionados con tarjetas entre un cajero automático (ATM) y un adquirente.',
-  viewSpec: 'Ver especificación ↗',
-  viewSpecTitle: 'Abrir la página del repositorio de ISO 20022 para {type} en una ventana nueva',
+  specTip: 'Ver la documentación oficial de ISO 20022 de {type}',
   helpClickHint: 'Haga clic para verlo en el formulario',
   xsdLabel: 'Validar XSD',
   xsdReady: 'Validar el texto del mensaje de abajo con {location}',

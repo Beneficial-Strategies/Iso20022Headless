@@ -35,7 +35,10 @@ async function clickText(page: Page, selector: string, pattern: RegExp): Promise
   await settle();
 }
 
-const openType = (page: Page) => clickText(page, 'header button', /type:|tipo:/);
+const openType = async (page: Page): Promise<void> => {
+  await page.click('[data-type-picker]');
+  await settle();
+};
 const openDisplay = (page: Page) => clickText(page, 'header button', /display|pantalla/);
 async function addPaymentAndOpenMethod(page: Page): Promise<void> {
   await clickText(page, 'button', /add payment information|añadir información del pago/);
@@ -1466,18 +1469,10 @@ function bannerScenarios(): Scenario[] {
   ];
 }
 
-// ---------------------------------------------------------------------------- the link to the published specification
-
-const specLink = (page: Page): Promise<{ href: string; target: string; rel: string; text: string } | null> =>
-  page.evaluate(() => {
-    const a = document.querySelector<HTMLAnchorElement>('header a[href*="standardsrepository"]');
-    return a ? { href: a.href, target: a.target, rel: a.rel, text: a.textContent ?? '' } : null;
-  });
-
 // ---------------------------------------------------------------------------- zoom into a component type
 
 const ZOOM = (type: string) => `button[aria-label='Zoom in to ${type}']`;
-const typeButtonText = (page: Page): Promise<string> => page.evaluate(() => document.querySelector<HTMLElement>('header button[aria-haspopup=listbox][title]')?.textContent ?? '');
+const typeButtonText = (page: Page): Promise<string> => page.evaluate(() => document.querySelector<HTMLElement>('[data-type-picker]')?.textContent ?? '');
 
 function zoomScenarios(): Scenario[] {
   const base = { app: 'demo-form' as const, viewport: { width: 1440, height: 900 } };
@@ -1491,10 +1486,13 @@ function zoomScenarios(): Scenario[] {
           const i = z?.parentElement?.parentElement?.querySelector<HTMLElement>("button[aria-label^='About']");
           const a = i?.getBoundingClientRect();
           const b = z?.getBoundingClientRect();
+          // the spec button sits between the "i" and the zoom button
+          const spec = z?.parentElement?.parentElement?.querySelector<HTMLElement>('a[data-spec-link]')?.getBoundingClientRect();
+          const left = spec ?? a;
           const title = document.querySelector('[data-schema-form] h2');
           return {
             found: !!z && !!i,
-            toTheRight: !!a && !!b && b.left >= a.right - 1 && b.left - a.right < 12,
+            toTheRight: !!left && !!b && b.left >= left.right - 1 && b.left - left.right < 12 && (!spec || !a || spec.left >= a.right - 1),
             sameRow: !!a && !!b && Math.abs(a.top + a.height / 2 - (b.top + b.height / 2)) < 2,
             sameSize: !!a && !!b && Math.abs(a.width - b.width) < 1 && Math.abs(a.height - b.height) < 1,
             titleZoom: title?.querySelector("[aria-label^='Zoom']") !== null,
@@ -1544,7 +1542,7 @@ function zoomScenarios(): Scenario[] {
       expect: async (page) => {
         const r = await page.evaluate(() => ({
           title: document.querySelector('[data-schema-form] h2')?.textContent ?? '',
-          spec: document.querySelector<HTMLAnchorElement>('header a[href*=standardsrepository]')?.href ?? '',
+          spec: document.querySelector<HTMLAnchorElement>('[data-schema-form] h2 a[data-spec-link]')?.href ?? '',
           popup: document.querySelector('[data-placement]') !== null,
         }));
         const problems: string[] = [];
@@ -1576,23 +1574,81 @@ function zoomScenarios(): Scenario[] {
   ];
 }
 
+const SPEC = 'https://www.iso20022.org/standardsrepository/type/';
+const specInfo = (page: Page, selector: string) =>
+  page.evaluate((sel) => {
+    const a = document.querySelector<HTMLAnchorElement>(sel);
+    if (!a) return null;
+    const row = a.parentElement!.parentElement!;
+    const i = row.querySelector("button[aria-label^='About'], button[aria-label^='Acerca']");
+    const zoom = row.querySelector("button[aria-label^='Zoom'], button[aria-label^='Hacer zoom']");
+    const r = a.getBoundingClientRect();
+    const ri = i?.getBoundingClientRect();
+    const rz = zoom?.getBoundingClientRect();
+    return {
+      href: a.href,
+      target: a.target,
+      rel: a.rel,
+      label: a.getAttribute('aria-label') ?? '',
+      afterInfo: !!ri && r.left >= ri.right - 1 && Math.abs(r.top - ri.top) < 2,
+      beforeZoom: !rz || r.right <= rz.left + 1,
+      sameSize: !!ri && Math.abs(r.width - ri.width) < 1 && Math.abs(r.height - ri.height) < 1,
+      header: document.querySelector('header a[href*="standardsrepository"]') !== null,
+      big: document.body.textContent?.includes('View Specification') ?? false,
+    };
+  }, selector);
+
+/** The small spec buttons beside each "i", from the library: they replace the old big button at the top. */
 function specLinkScenarios(): Scenario[] {
-  const check = (type: string, text: RegExp) => async (page: Page): Promise<string[]> => {
-    const l = await specLink(page);
-    if (!l) return ['no View Specification link in the header'];
+  const check = (selector: string, type: string, label: string) => async (page: Page): Promise<string[]> => {
+    const l = await specInfo(page, selector);
+    if (!l) return [`no spec button ${selector}`];
     const problems: string[] = [];
-    if (l.href !== `https://www.iso20022.org/standardsrepository/type/${type}`) problems.push(`href is ${l.href}`);
+    if (l.href !== `${SPEC}${type}`) problems.push(`href is ${l.href}`);
     if (l.target !== '_blank') problems.push(`target is "${l.target}", not a separate window`);
     if (!/noopener/.test(l.rel)) problems.push(`rel is "${l.rel}"`);
-    if (!text.test(l.text)) problems.push(`text is "${l.text}"`);
+    if (l.label !== label) problems.push(`label is "${l.label}"`);
+    if (!l.afterInfo) problems.push('the button is not right after the "i"');
+    if (!l.beforeZoom) problems.push('the button is after the zoom button');
+    if (!l.sameSize) problems.push('the button is not the size of the "i"');
+    if (l.header || l.big) problems.push('the old big specification button is still at the top');
     return problems;
   };
+  const title = '[data-schema-form] h2 a[data-spec-link]';
   return [
-    { name: 'spec-link', app: 'demo-form', viewport: { width: 1440, height: 900 }, expect: check('CustomerCreditTransferInitiationV13', /View Specification/) },
-    { name: 'spec-link-spanish-caam', app: 'demo-form', query: '?message=caam.001.001.05&lang=es', viewport: { width: 1440, height: 900 }, expect: check('ATMDeviceReportV05', /Ver especificación/) },
-    { name: 'spec-link-narrow', app: 'demo-form', viewport: { width: 480, height: 900 }, expect: check('CustomerCreditTransferInitiationV13', /View Specification/) },
     {
-      name: 'spec-link-follows-the-chosen-type',
+      name: 'spec-buttons',
+      app: 'demo-form',
+      viewport: { width: 1440, height: 900 },
+      expect: async (page) => [
+        ...(await check(title, 'CustomerCreditTransferInitiationV13', 'View ISO 20022 official documentation for CustomerCreditTransferInitiationV13')(page)),
+        ...(await check("a[data-spec-link='GroupHeader114']", 'GroupHeader114', 'View ISO 20022 official documentation for GroupHeader114')(page)),
+        ...(await check("a[data-spec-link='Max35Text']", 'Max35Text', 'View ISO 20022 official documentation for Max35Text')(page)),
+        // one for every element that has an "i"
+        ...(await page.evaluate(() => {
+          const infos = document.querySelectorAll("[data-schema-form] button[aria-label^='About']").length;
+          const specs = document.querySelectorAll('[data-schema-form] a[data-spec-link]').length;
+          return infos === specs ? [] : [`${infos} "i" buttons but ${specs} spec buttons`];
+        })),
+      ],
+    },
+    {
+      name: 'spec-button-hover-text',
+      app: 'demo-form',
+      viewport: { width: 1440, height: 900 },
+      steps: async (page) => {
+        await page.hover("a[data-spec-link='GroupHeader114']");
+        await settle(500);
+      },
+      expect: async (page) => {
+        const t = await popupText(page);
+        return t === 'View ISO 20022 official documentation for GroupHeader114' ? [] : [`hover text is "${t}"`];
+      },
+    },
+    { name: 'spec-buttons-spanish-caam', app: 'demo-form', query: '?message=caam.001.001.05&lang=es', viewport: { width: 1440, height: 900 }, expect: check(title, 'ATMDeviceReportV05', 'Ver la documentación oficial de ISO 20022 de ATMDeviceReportV05') },
+    { name: 'spec-buttons-narrow', app: 'demo-form', viewport: { width: 480, height: 900 }, expect: check(title, 'CustomerCreditTransferInitiationV13', 'View ISO 20022 official documentation for CustomerCreditTransferInitiationV13') },
+    {
+      name: 'spec-button-follows-the-chosen-type',
       app: 'demo-form',
       viewport: { width: 1440, height: 900 },
       steps: async (page) => {
@@ -1602,8 +1658,92 @@ function specLinkScenarios(): Scenario[] {
         await clickText(page, '[cmdk-item]', /^BranchAndFinancialInstitutionIdentification8/);
         await settle(600);
       },
-      expect: check('BranchAndFinancialInstitutionIdentification8', /View Specification/),
+      expect: check(title, 'BranchAndFinancialInstitutionIdentification8', 'View ISO 20022 official documentation for BranchAndFinancialInstitutionIdentification8'),
     },
+    {
+      name: 'spec-button-with-the-plain-skin',
+      app: 'demo-form',
+      query: '?skin=plain',
+      viewport: { width: 1440, height: 900 },
+      expect: async (page) => {
+        const r = await page.evaluate(() => {
+          const a = document.querySelector<HTMLAnchorElement>('[data-schema-form] a[href*="standardsrepository"]');
+          return { href: a?.href ?? '', target: a?.target ?? '', classes: document.querySelectorAll('[data-schema-form] [class]').length };
+        });
+        return [...(r.href.startsWith(SPEC) && r.target === '_blank' ? [] : [`the plain skin's spec link is ${JSON.stringify(r)}`]), ...(r.classes === 0 ? [] : [`${r.classes} class attributes`])];
+      },
+    },
+  ];
+}
+
+/** The pickers at the top: hover help, and a type box that is no wider than it needs to be. */
+function pickerScenarios(): Scenario[] {
+  const base = { app: 'demo-form' as const, viewport: { width: 1440, height: 900 } };
+  const help = (name: string, selector: string, title: string, includes: string, extra: Partial<Scenario> = {}): Scenario => ({
+    ...base,
+    name,
+    ...extra,
+    steps: async (page) => {
+      await page.hover(selector);
+      await settle(500);
+    },
+    expect: async (page) => {
+      const t = await popupText(page);
+      const problems: string[] = [];
+      if (!t.startsWith(title)) problems.push(`the help starts "${t.slice(0, 40)}"`);
+      if (!t.includes(includes)) problems.push(`the help lacks "${includes}": "${t}"`);
+      // pressing the control takes the help away (it must not sit over the control's own list)
+      await page.click(selector);
+      await settle(400);
+      if (await present(page, '[role=tooltip]')) problems.push('the help stays after the control is pressed');
+      await page.keyboard.press('Escape');
+      return problems;
+    },
+  });
+  return [
+    help('picker-help-area', '#area-picker', 'Business area', 'Choose an area to see its messages'),
+    help('picker-help-message', '#message-picker', 'Message', 'Choose one to see every element it can hold'),
+    help('picker-help-type', '[data-type-picker]', 'What the form shows', 'the same as the magnifier beside an element does'),
+    help('picker-help-display', 'header button[aria-haspopup=dialog]:not([aria-label])', 'Display settings', 'the style of the form'),
+    help('picker-help-type-spanish', '[data-type-picker]', 'Qué muestra el formulario', 'igual que la lupa', { query: '?lang=es' }),
+    {
+      ...base,
+      name: 'picker-type-compact',
+      steps: async (page) => {
+        await settle(300);
+      },
+      expect: async (page) => {
+        const r = await page.evaluate(() => {
+          const b = document.querySelector<HTMLElement>('[data-type-picker]')!;
+          const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
+          const w = b.getBoundingClientRect().width;
+          return { text: b.textContent, aria: b.getAttribute('aria-label'), title: b.getAttribute('title'), widthRem: w / rem, truncated: (b.firstElementChild as HTMLElement).scrollWidth > (b.firstElementChild as HTMLElement).clientWidth, prefix: (document.querySelector('header')?.textContent ?? '').includes('Type:') };
+        });
+        const problems: string[] = [];
+        if (r.text !== 'CustomerCreditTransferInitiationV13') problems.push(`the box shows "${r.text}"`);
+        if (r.prefix) problems.push('the "Type:" prefix is still shown');
+        if (r.aria !== 'Type: CustomerCreditTransferInitiationV13') problems.push(`the accessible name is "${r.aria}"`);
+        if (r.title !== null) problems.push('the box still has a browser tooltip');
+        if (r.widthRem > 24.5) problems.push(`the box is ${r.widthRem.toFixed(1)}rem wide: about 70% of the old 34rem is enough`);
+        if (r.truncated) problems.push('the type name is cut off');
+        return problems;
+      },
+    },
+    ...(['large', 'xlarge'] as const).map(
+      (size): Scenario => ({
+        ...base,
+        name: `picker-type-fits-${size}-text`,
+        query: `?size=${size}`,
+        expect: async (page) => {
+          const r = await page.evaluate(() => {
+            const b = document.querySelector<HTMLElement>('[data-type-picker]')!;
+            const inner = b.firstElementChild as HTMLElement;
+            return { truncated: inner.scrollWidth > inner.clientWidth, px: Math.round(b.getBoundingClientRect().width) };
+          });
+          return r.truncated ? [`the type name is cut off at ${size} text (${r.px}px)`] : [];
+        },
+      }),
+    ),
   ];
 }
 
@@ -1960,6 +2100,7 @@ export const scenarios: Scenario[] = [
   ...xsdScenarios(),
   ...bannerScenarios(),
   ...specLinkScenarios(),
+  ...pickerScenarios(),
   { name: 'type-picker-open-narrow', app: 'demo-form', viewport: { width: 480, height: 900 }, steps: openType },
   { name: 'display-open', app: 'demo-form', viewport: { width: 1440, height: 900 }, steps: openDisplay },
   { name: 'display-open-narrow-spanish', app: 'demo-form', query: '?lang=es', viewport: { width: 480, height: 900 }, steps: openDisplay },
