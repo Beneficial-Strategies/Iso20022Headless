@@ -156,4 +156,18 @@ export const tailwindSkin: Skin = {
   },
   Info: (p) => <Info {...p} />,
   InfoNote: (p) => <InfoNote {...p} />,
+  Value: ({ id, children }) => (
+    <p id={id} className="text-sm text-fg">
+      {children}
+    </p>
+  ),
+  // hidden: hatched and dashed, as if switched off; label: a faint tint of the accent. The attribute lets a host or a test find them.
+  ModeMark: ({ mode, children }) => (
+    <div
+      data-field-mode={mode}
+      className={`rounded px-1 py-0.5 outline-1 outline-dashed ${mode === 'hidden' ? 'bg-[repeating-linear-gradient(135deg,transparent_0,transparent_7px,var(--color-edge)_7px,var(--color-edge)_8px)] opacity-80 outline-edge' : 'bg-accent-soft/60 outline-accent'}`}
+    >
+      {children}
+    </div>
+  ),
 };

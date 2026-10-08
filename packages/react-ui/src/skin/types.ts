@@ -71,4 +71,11 @@ export interface Skin {
   Info: (p: { def: Localized | undefined; label: string; open: boolean; onToggle: () => void; noteId: string; extra?: ReactNode }) => ReactNode;
   /** The inline help text shown while the help button is toggled on. The skin places it under the label (`note` props). */
   InfoNote: (p: { def: Localized | undefined; id: string }) => ReactNode;
+  /** A value shown as text, not in a control: what an element in `label` mode holds. */
+  Value: (p: { id?: string | undefined; children: ReactNode }) => ReactNode;
+  /**
+   * Shades an element, with everything in it, that is in `label` or `hidden` mode while it is still shown for editing
+   * (`SchemaForm`'s `fieldModeView="mark"`), so a designer can see which elements will not be rendered as editable.
+   */
+  ModeMark: (p: { mode: 'label' | 'hidden'; children: ReactNode }) => ReactNode;
 }

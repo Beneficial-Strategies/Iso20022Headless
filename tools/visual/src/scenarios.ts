@@ -333,6 +333,280 @@ function fileScenarios(): Scenario[] {
 const optionsOf = (page: Page): Promise<string[]> => page.evaluate(() => [...document.querySelectorAll('[role=option]')].map((o) => o.textContent ?? ''));
 const messageIs = (page: Page, id: string): Promise<boolean> => page.evaluate((i) => (document.querySelector('#message-picker')?.textContent ?? '').includes(i), id);
 
+// ---------------------------------------------------------------------------- field mode: editable, label or hidden, per element
+
+const modeSwitch = (label: string, es = false) => `button[aria-label^='${es ? 'Modo de campo de' : 'Field mode of'} ${label}:']`;
+async function setMode(page: Page, label: string, mode: 'editable' | 'label' | 'hidden', es = false): Promise<void> {
+  await page.click(modeSwitch(label, es));
+  await page.waitForSelector('[role=menu]');
+  await settle(150);
+  await page.click(`[role=menuitemradio][data-mode=${mode}]`);
+  await settle(250);
+}
+const setPreview = async (page: Page, on: boolean): Promise<void> => {
+  const now = await page.$eval('[data-preview-as-designed]', (e) => (e as HTMLInputElement).checked);
+  if (now !== on) await page.click('[data-preview-as-designed]');
+  await settle(300);
+};
+const xmlShown = (page: Page) => page.evaluate(() => document.querySelector('.cm-content')?.textContent ?? '');
+const present = (page: Page, sel: string) => page.evaluate((x) => document.querySelector(x) !== null, sel);
+
+function fieldModeScenarios(): Scenario[] {
+  const base = { app: 'demo-form' as const, viewport: { width: 1440, height: 1000 } };
+  return [
+    {
+      ...base,
+      name: 'fieldmode-switch-menu',
+      steps: async (page) => {
+        await page.click(modeSwitch('Message Identification'));
+        await page.waitForSelector('[role=menu]');
+        await settle(300);
+      },
+      expect: async (page) => {
+        const r = await page.evaluate(() => {
+          const items = [...document.querySelectorAll('[role=menuitemradio]')].map((e) => [e.getAttribute('data-mode'), e.getAttribute('aria-checked')]);
+          const sw = document.querySelector("button[aria-label^='Field mode of Message Identification:']")!;
+          const info = sw.parentElement!.parentElement!.querySelector("button[aria-label^='About']");
+          const zoomNeighbour = sw.parentElement!.parentElement!.querySelector("button[aria-label^='Zoom']");
+          return { items, focused: document.activeElement?.getAttribute('data-mode'), besideInfo: !!info, zoomOnLeaf: !!zoomNeighbour, title: sw.getAttribute('title') };
+        });
+        const problems: string[] = [];
+        if (JSON.stringify(r.items) !== JSON.stringify([['editable', 'true'], ['label', 'false'], ['hidden', 'false']])) problems.push(`menu is ${JSON.stringify(r.items)}`);
+        if (r.focused !== 'editable') problems.push(`focus is on "${r.focused}", not the current mode`);
+        if (!r.besideInfo) problems.push('the switch is not beside the "i"');
+        if (r.title !== null) problems.push(`the button still has a browser tooltip: "${r.title}"`);
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'fieldmode-hover-help',
+      steps: async (page) => {
+        await page.hover(modeSwitch('Message Identification'));
+        await settle(500);
+      },
+      expect: async (page) => {
+        const t = await popupText(page);
+        const problems: string[] = [];
+        if (!t.startsWith('Field mode: Editable')) problems.push(`the hover help starts "${t.slice(0, 40)}"`);
+        for (const w of ['Editable: the usual control', 'Label: shown as text, not editable', 'Hidden: not shown', 'stays in the message as its default', 'Click to choose']) if (!t.includes(w)) problems.push(`the hover help lacks "${w}"`);
+        const r = await page.evaluate(() => {
+          const sw = document.querySelector("button[aria-label^='Field mode of Message Identification:']")!;
+          const tip = document.querySelector('[role=tooltip]');
+          return { described: sw.getAttribute('aria-describedby') === tip?.id, role: tip?.getAttribute('role') };
+        });
+        if (!r.described) problems.push('the button is not described by the help');
+        // opening the menu takes the help away
+        await page.click(modeSwitch('Message Identification'));
+        await page.waitForSelector('[role=menu]');
+        await settle(300);
+        if (await present(page, '[role=tooltip]')) problems.push('the help stays over the open menu');
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'fieldmode-hover-help-spanish',
+      query: '?lang=es',
+      steps: async (page) => {
+        await page.hover(modeSwitch('Identificación del mensaje', true));
+        await settle(500);
+      },
+      expect: async (page) => {
+        const t = await popupText(page);
+        return t.startsWith('Modo de campo: Editable') && t.includes('Haga clic para elegir') ? [] : [`the hover help is "${t.slice(0, 80)}"`];
+      },
+    },
+    {
+      ...base,
+      name: 'fieldmode-keyboard',
+      steps: async (page) => {
+        await page.focus(modeSwitch('Message Identification'));
+        await page.keyboard.press('Enter');
+        await page.waitForSelector('[role=menu]');
+        await settle(250);
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('ArrowDown');
+        await page.keyboard.press('Enter'); // hidden
+        await settle(400);
+      },
+      expect: async (page) => {
+        const mode = await page.$eval(modeSwitch('Message Identification').replace(':', ':'), (e) => e.getAttribute('data-field-mode-switch')).catch(() => null);
+        const marked = await present(page, '[data-field-mode=hidden] #GroupHeader-MessageIdentification');
+        return [...(marked ? [] : ['the keyboard did not set the element to hidden']), ...(mode === 'hidden' || mode === null ? [] : [`switch says ${mode}`])];
+      },
+    },
+    {
+      ...base,
+      name: 'fieldmode-hidden-is-marked-not-removed',
+      steps: async (page) => {
+        await page.locator('#GroupHeader-MessageIdentification').fill('DEFAULT-1');
+        await setMode(page, 'Message Identification', 'hidden');
+      },
+      expect: async (page) => {
+        const r = await page.evaluate(() => {
+          const input = document.querySelector<HTMLInputElement>('#GroupHeader-MessageIdentification');
+          const wrap = input?.closest('[data-field-mode]');
+          const bg = wrap ? getComputedStyle(wrap).backgroundImage : '';
+          return { value: input?.value, mode: wrap?.getAttribute('data-field-mode'), bg, dashed: wrap ? getComputedStyle(wrap).outlineStyle : '' };
+        });
+        const problems: string[] = [];
+        if (r.value !== 'DEFAULT-1') problems.push('the default value is gone from the editing screen');
+        if (r.mode !== 'hidden') problems.push('the element is not marked hidden');
+        if (!/repeating-linear-gradient/.test(r.bg)) problems.push('the hidden element is not hatched');
+        if (r.dashed !== 'dashed') problems.push('the hidden element has no dashed outline');
+        if (!(await xmlShown(page)).includes('<MsgId>DEFAULT-1</MsgId>')) problems.push('the default is not in the XML');
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'fieldmode-preview-applies-the-modes',
+      steps: async (page) => {
+        await page.locator('#GroupHeader-MessageIdentification').fill('DEFAULT-1');
+        await page.locator('#GroupHeader-NumberOfTransactions').fill('3');
+        await page.locator('#GroupHeader-InitiatingParty-Name').fill('Acme Ltd');
+        await setMode(page, 'Message Identification', 'hidden');
+        await setMode(page, 'Number Of Transactions', 'label');
+        await setMode(page, 'Initiating Party', 'label');
+        (globalThis as unknown as { __xml: string }).__xml = await xmlShown(page);
+        await setPreview(page, true);
+      },
+      expect: async (page) => {
+        const problems: string[] = [];
+        const form = await page.evaluate(() => {
+          const area = document.querySelector('[data-form-area]')!;
+          const text = area.textContent ?? '';
+          return {
+            msgId: !!area.querySelector('input#GroupHeader-MessageIdentification'),
+            msgLabel: text.includes('Message Identification'),
+            nbInput: !!area.querySelector('input#GroupHeader-NumberOfTransactions'),
+            nbText: [...area.querySelectorAll('p')].some((p) => p.textContent === '3'),
+            partyInputs: area.querySelectorAll('input[id^="GroupHeader-InitiatingParty-"], select[id^="GroupHeader-InitiatingParty-"]').length,
+            partyName: [...area.querySelectorAll('p')].some((p) => p.textContent === 'Acme Ltd'),
+            partyToggles: area.querySelectorAll('[id^="include-GroupHeader-InitiatingParty"]').length,
+            marks: area.querySelectorAll('[data-field-mode]').length,
+            creationInput: !!area.querySelector('input#GroupHeader-CreationDateTime'),
+          };
+        });
+        if (form.msgId || form.msgLabel) problems.push('the hidden element is still shown in the preview');
+        if (form.nbInput || !form.nbText) problems.push('the label element is not shown as text "3"');
+        if (form.partyInputs > 0 || !form.partyName) problems.push('the section in label mode still has inputs, or lost its value');
+        if (form.partyToggles > 0) problems.push('a label section still has boxes to tick');
+        if (form.marks > 0) problems.push('the preview still shades elements');
+        if (!form.creationInput) problems.push('an element in no mode lost its input');
+        // the message is the same, however it is shown
+        if ((await xmlShown(page)) !== (globalThis as unknown as { __xml: string }).__xml) problems.push('the preview changed the XML');
+        if (!(await xmlShown(page)).includes('<MsgId>DEFAULT-1</MsgId>')) problems.push('the hidden default is not in the XML');
+        // and back
+        await setPreview(page, false);
+        if (!(await present(page, 'input#GroupHeader-MessageIdentification'))) problems.push('turning the preview off did not bring the hidden element back');
+        if ((await page.$eval('#GroupHeader-MessageIdentification', (e) => (e as HTMLInputElement).value)) !== 'DEFAULT-1') problems.push('the default was lost');
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'fieldmode-section-and-reset',
+      steps: async (page) => {
+        await setMode(page, 'Initiating Party', 'hidden');
+        await setMode(page, 'Initiating Party', 'editable'); // back
+      },
+      expect: async (page) => ((await present(page, '[data-field-mode]')) ? ['an element set back to editable is still marked'] : []),
+    },
+    {
+      ...base,
+      name: 'fieldmode-dark-spanish',
+      query: '?theme=dark&lang=es',
+      steps: async (page) => {
+        await setMode(page, 'Identificación del mensaje', 'hidden', true);
+        await setMode(page, 'Parte iniciadora', 'label', true);
+        await page.click("button[aria-label^='Modo de campo de Número de operaciones:']");
+        await page.waitForSelector('[role=menu]');
+        await settle(300);
+      },
+      expect: async (page) => {
+        const items = await page.evaluate(() => [...document.querySelectorAll('[role=menuitemradio]')].map((e) => e.textContent ?? ''));
+        const label = await page.$eval('[data-preview-as-designed]', (e) => e.parentElement?.textContent ?? '');
+        return [
+          ...(items.join('|').includes('Etiqueta') && items.join('|').includes('Oculto') ? [] : [`the menu is not in Spanish: ${JSON.stringify(items)}`]),
+          ...(/Vista previa del diseño/.test(label) ? [] : [`the preview toggle says "${label}"`]),
+          ...((await present(page, '[data-field-mode=hidden]')) && (await present(page, '[data-field-mode=label]')) ? [] : ['the shading is missing']),
+        ];
+      },
+    },
+    {
+      ...base,
+      name: 'fieldmode-plain-skin',
+      query: '?skin=plain',
+      steps: async (page) => {
+        await page.select("select[aria-label^='Field mode of Message Identification:']", 'hidden');
+        await settle(300);
+        await setPreviewPlain(page);
+      },
+      expect: async (page) => {
+        const r = await page.evaluate(() => ({ marked: document.querySelectorAll('[data-field-mode]').length, classes: document.querySelectorAll('[data-schema-form] [class]').length }));
+        return [...(r.classes === 0 ? [] : [`the plain skin has ${r.classes} class attributes`]), ...(r.marked === 1 ? [] : [`expected one marked element, found ${r.marked}`])];
+      },
+    },
+    {
+      ...base,
+      name: 'fieldmode-copies-follow-the-modes',
+      clipboard: { access: 'granted' as const },
+      steps: async (page) => {
+        await page.locator('#GroupHeader-MessageIdentification').fill('DEFAULT-1');
+        await page.locator('#GroupHeader-NumberOfTransactions').fill('3');
+        await page.locator('#GroupHeader-InitiatingParty-Name').fill('Acme Ltd');
+        await setMode(page, 'Message Identification', 'hidden');
+        await setMode(page, 'Number Of Transactions', 'label');
+        await setMode(page, 'Initiating Party', 'label');
+        const g = globalThis as unknown as { __md: string; __tsv: string };
+        await copyAs(page, 'markdown');
+        g.__md = await clipText(page);
+        await copyAs(page, 'spreadsheet');
+        g.__tsv = await clipText(page);
+        await copyAs(page, 'figma');
+      },
+      expect: async (page) => {
+        const g = globalThis as unknown as { __md: string; __tsv: string };
+        const problems: string[] = [];
+        if (!g.__md.includes('- **Message Identification** (required, hidden): DEFAULT-1')) problems.push('Markdown does not say the hidden element and its default');
+        if (!g.__md.includes('- **Initiating Party** (required, label)')) problems.push('Markdown does not say the label section');
+        const rows = g.__tsv.replace(/\n$/, '').split('\n').map((l) => l.split('\t'));
+        if (rows[0]![8] !== 'Mode') problems.push('the spreadsheet has no Mode column');
+        const msg = rows.find((r) => r[1] === 'GroupHeader.MessageIdentification');
+        if (!msg || msg[8] !== 'Hidden' || msg[9] !== 'DEFAULT-1') problems.push(`the hidden element's row is ${JSON.stringify(msg)}`);
+        const svg = await clipText(page);
+        const r = await page.evaluate((text) => {
+          const doc = new DOMParser().parseFromString(text, 'image/svg+xml');
+          const t1 = (id: string) => doc.getElementById(id)?.textContent ?? null;
+          return {
+            hiddenDrawn: doc.getElementById('GroupHeader.MessageIdentification') !== null,
+            labelValue: t1('GroupHeader.NumberOfTransactions.value'),
+            labelBox: doc.getElementById('GroupHeader.NumberOfTransactions.input.box') !== null,
+            partyName: t1('GroupHeader.InitiatingParty.Name.value'),
+            partyBoxes: doc.querySelectorAll('[id^="GroupHeader.InitiatingParty."][id$=".box"]').length,
+            creationBox: doc.getElementById('GroupHeader.CreationDateTime.input.box') !== null,
+          };
+        }, svg);
+        if (r.hiddenDrawn) problems.push('the Figma drawing contains the hidden element');
+        if (r.labelValue !== '3' || r.labelBox) problems.push(`the label is drawn as value "${r.labelValue}", box ${r.labelBox}`);
+        if (r.partyName !== 'Acme Ltd' || r.partyBoxes > 0) problems.push('the label section is not drawn as text');
+        if (!r.creationBox) problems.push('an editable element lost its box');
+        // the drawing and the preview agree on what is shown
+        await setPreview(page, true);
+        const shown = await page.evaluate(() => ({ msg: !!document.querySelector('[data-form-area] input#GroupHeader-MessageIdentification'), nb: !!document.querySelector('[data-form-area] input#GroupHeader-NumberOfTransactions') }));
+        if (shown.msg || shown.nb) problems.push('the preview and the drawing disagree');
+        return problems;
+      },
+    },
+    { ...base, name: 'fieldmode-narrow', viewport: { width: 480, height: 900 }, steps: async (page) => { await setMode(page, 'Message Identification', 'hidden'); } },
+  ];
+}
+async function setPreviewPlain(_page: Page): Promise<void> {
+  // the preview toggle is the page's own, in every skin; this state checks the marked view, so it is left off
+}
+
 // ---------------------------------------------------------------------------- "Copy as": what the screen shows, for documents and tools
 
 const COPY_OUT = join(dirname(fileURLToPath(import.meta.url)), '../out');
@@ -1681,6 +1955,7 @@ export const scenarios: Scenario[] = [
   ...pasteScenarios(),
   ...fileScenarios(),
   ...areaScenarios(),
+  ...fieldModeScenarios(),
   ...copyAsScenarios(),
   ...xsdScenarios(),
   ...bannerScenarios(),

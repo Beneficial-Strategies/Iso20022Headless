@@ -143,6 +143,14 @@ function valuePiece(l: Layout, node: ScreenNode, x: number, y: number, w: number
   const def = definitionLines(l, id, x, cy, w, node);
   parts.push(def.svg);
   cy += def.height + 2;
+  if (node.mode === 'label') {
+    // a label: the value as text, no box
+    parts.push(text(x, cy + 13, fit(l, node.status === 'empty' ? '—' : node.value, 13, w), { id: `${id}.value` }));
+    cy += 18;
+    const lerr = errorLine(l, id, x, cy, w, node);
+    parts.push(lerr.svg);
+    return { svg: `<g id="${id}">${parts.join('')}</g>`, height: cy + lerr.height - y + 8 };
+  }
   if (node.kind === 'amount') {
     const [amount = '', ccy = ''] = node.value.split(' ');
     parts.push(inputBox(l, `${id}.currency`, x, cy, 72, ccy), inputBox(l, `${id}.amount`, x + 80, cy, w - 80, amount));
@@ -179,6 +187,8 @@ function stack(l: Layout, nodes: ScreenNode[], x: number, y: number, w: number, 
   const parts: string[] = [];
   for (const node of nodes) {
     if (!visible(node, l.opts)) continue;
+    // not drawn: what an application would not show (a hidden element, or an optional section left out that is only a label)
+    if (node.mode === 'hidden' || (node.mode === 'label' && node.status === 'excluded')) continue;
     const p = nodePiece(l, node, x, cy, w);
     parts.push(p.svg);
     cy += p.height + gap;
@@ -223,7 +233,7 @@ function listPiece(l: Layout, node: ScreenNode, x: number, y: number, w: number)
   const head = labelLine(l, id, x, y + 13, node, { bold: true, size: 13 });
   const add = `+ ${l.t('add')} ${node.label}`;
   const bw = l.measure(add, 11, false) + 20;
-  const button = `<g id="${id}.add"><rect x="${num(x + w - bw)}" y="${num(y)}" width="${num(bw)}" height="22" rx="4" fill="#e5e7eb" stroke="${LINE}"/>${text(x + w - bw / 2, y + 15, add, { size: 11, anchor: 'middle', id: `${id}.add.label` })}</g>`;
+  const button = node.mode === 'label' ? '' : `<g id="${id}.add"><rect x="${num(x + w - bw)}" y="${num(y)}" width="${num(bw)}" height="22" rx="4" fill="#e5e7eb" stroke="${LINE}"/>${text(x + w - bw / 2, y + 15, add, { size: 11, anchor: 'middle', id: `${id}.add.label` })}</g>`;
   const def = definitionLines(l, id, x, y + 20, w, node);
   const items = stack(l, node.children, x, y + 28 + def.height, w);
   const err = errorLine(l, id, x, y + 28 + def.height + items.height, w, node);
@@ -234,7 +244,7 @@ function nodePiece(l: Layout, node: ScreenNode, x: number, y: number, w: number)
   if (node.status === 'excluded') return includeRow(l, node, x, y, false);
   if (node.status === 'list') return listPiece(l, node, x, y, w);
   if (node.status === 'group') {
-    if (!node.required) {
+    if (!node.required && node.mode !== 'label') {
       // included optional section: its checked box, then the section
       const row = includeRow(l, node, x, y, true);
       const frame = framePiece(l, node, x, y + row.height + 2, w);
@@ -243,9 +253,10 @@ function nodePiece(l: Layout, node: ScreenNode, x: number, y: number, w: number)
     return framePiece(l, node, x, y, w);
   }
   if (node.kind === 'choice') {
-    const optionalOff = !node.required;
+    const optionalOff = !node.required && node.mode !== 'label';
     const selectRow = (cx: number, cy: number, cw: number): Piece => {
       const id = uid(l, `${svgId(node.path)}.choice`);
+      if (node.mode === 'label') return { svg: text(cx, cy + 13, fit(l, node.status === 'empty' ? '—' : node.value, 13, cw), { id: `${id}.value` }), height: 18 };
       return { svg: inputBox(l, id, cx, cy, cw, node.status === 'empty' ? '' : node.value, { select: true }), height: 30 };
     };
     const body = framePiece(l, node, x, y + (optionalOff ? 26 : 0), w, { dashed: true, extra: selectRow });

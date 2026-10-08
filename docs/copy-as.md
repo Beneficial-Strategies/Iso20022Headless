@@ -31,6 +31,15 @@ column headings) follow the page language; ISO names do not. Nothing leaves the 
   (each format read back from the real clipboard, the options, keyboard, Spanish, zoomed part, narrow screen). The picture the
   image check reads from the clipboard is saved as `tools/visual/out/copyas-image-clipboard.png`.
 
+## Field modes in the copies
+
+When elements have a field mode (editable, label or hidden: `docs/field-mode.md`), the copies carry it: Markdown and the outline say
+`(required, hidden)` or `(required, label)` where it is set (not again on what is inside); the spreadsheet and the Word table get a
+**Mode** column (only when some element has a mode) with each row's mode, hidden elements included with their default value; the JSON has
+`mode` on every element that is not editable. The **Figma drawing** shows what an application would show: hidden elements and
+everything inside a hidden section are left out, a label is drawn as its text with no box, a section in label mode has no boxes,
+checkboxes or add buttons, and optional sections left out are not drawn.
+
 ## For Figma
 
 `screenSvg.ts` draws the screen model as a **wireframe** in plain SVG: groups, rectangles, paths and text only (no styles, classes,

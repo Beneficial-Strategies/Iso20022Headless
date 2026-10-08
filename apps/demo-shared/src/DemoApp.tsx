@@ -1,8 +1,8 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Command } from 'cmdk';
 import type { z } from 'zod';
 import { areaIndex, evaluateRules, formatIssue, messageIndex, ruleCodeLists, type MessageBundle, type RuleResult } from '@beneficial-strategies/iso20022-validate';
-import { DescribedSelect, I18nProvider, Popup, SchemaForm, SkinProvider, skinIds, skins, supportedLocales, useCreateI18n, useI18n, type I18nOverrides, type UiKey, type UseForm } from '@beneficial-strategies/iso20022-react-ui';
+import { DescribedSelect, I18nProvider, Popup, SchemaForm, SkinProvider, skinIds, skins, supportedLocales, useCreateI18n, useI18n, type FieldExtraContext, type FieldMode, type I18nOverrides, type UiKey, type UseForm } from '@beneficial-strategies/iso20022-react-ui';
 import { serializeFragment, serializeFragmentIsoJson, serializeToIsoJson, serializeToXml } from '@beneficial-strategies/iso20022-serialize';
 import { XmlPane } from './XmlPane.tsx';
 import { SettingsPanel } from './SettingsPanel.tsx';
@@ -17,6 +17,8 @@ import { useXsd, type XsdHandle } from './useXsd.ts';
 import { devProxyUrl } from './xsd.ts';
 import { XsdButton, XsdNotice, XsdPanel } from './XsdValidate.tsx';
 import { zoomExtra } from './ZoomButton.tsx';
+import { FieldModeSwitch } from './FieldModeSwitch.tsx';
+import { useDemoText } from './demoText.ts';
 import { CopyAsMenu } from './CopyAsMenu.tsx';
 import { DEFAULT_OPTIONS, type ExportOptions } from './screenExport.ts';
 
@@ -267,6 +269,10 @@ function Editor({
   xsd,
   copyOptions,
   onCopyOptions,
+  modes,
+  onMode,
+  preview,
+  onPreview,
 }: {
   bundle: MessageBundle;
   useForm: UseForm;
@@ -283,10 +289,27 @@ function Editor({
   /** What the "Copy as" menu includes (kept when only the type changes). */
   copyOptions: ExportOptions;
   onCopyOptions: (o: ExportOptions) => void;
+  /** How each element is presented, by `<message>|<type>|<path>` (anything missing is editable). */
+  modes: Record<string, FieldMode>;
+  onMode: (scope: string, path: string, mode: FieldMode) => void;
+  /** Present elements as their mode says (labels as text, hidden ones left out); off: all editable, the others shaded. */
+  preview: boolean;
+  onPreview: (on: boolean) => void;
 }) {
   const { t, validation } = useI18n();
-  // the zoom buttons beside the "i" are the demo's own, not the form library's
-  const fieldExtra = useMemo(() => zoomExtra(onZoom), [onZoom]);
+  const demoT = useDemoText();
+  // what sits beside the "i" (a zoom button, the field-mode switch) is the demo's own, not the form library's
+  const modeScope = `${bundle.message.identifier}|${typeName}`;
+  const fieldExtra = useMemo(() => {
+    const zoom = zoomExtra(onZoom);
+    return (element: FieldExtraContext) => (
+      <>
+        {zoom(element)}
+        <FieldModeSwitch element={element} mode={modes[`${modeScope}|${element.path}`] ?? 'editable'} onChange={(m) => onMode(modeScope, element.path, m)} />
+      </>
+    );
+  }, [onZoom, modes, modeScope, onMode]);
+  const fieldMode = useMemo(() => (element: FieldExtraContext): FieldMode | undefined => modes[`${modeScope}|${element.path}`], [modes, modeScope]);
   const form = useForm({ schema: (bundle.schemas as Record<string, z.ZodType>)[typeName]!, typeDescriptors: bundle.typeDescriptors, rootType: typeName, messages: validation });
   const [submitted, setSubmitted] = useState(false);
   const [implementOpen, setImplementOpen] = useState(false);
@@ -373,17 +396,24 @@ function Editor({
     <div className="grid min-h-0 flex-1 grid-cols-1 gap-4 lg:grid-cols-2">
       <div className="flex min-h-0 flex-col">
       <div className="mb-2 shrink-0">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
         <CopyAsMenu
           form={form}
           identifier={bundle.message.identifier}
           options={copyOptions}
           onOptions={onCopyOptions}
           imageTarget={() => document.querySelector<HTMLElement>('[data-schema-form]')}
+          fieldMode={fieldMode}
           fileStem={saveFileName(bundle.message.identifier, typeName, bundle.message.rootType, 'xml').replace(/\.xml$/, '')}
         />
+        <label className="flex items-center gap-2 text-sm" title={demoT('previewTitle')}>
+          <input type="checkbox" data-preview-as-designed checked={preview} onChange={(e) => onPreview(e.target.checked)} />
+          {demoT('previewAsDesigned')}
+        </label>
+        </div>
       </div>
       <section className="min-h-0 flex-1 overflow-auto pr-2" aria-label="Form" data-form-area>
-        <SchemaForm form={form} fieldExtra={fieldExtra} />
+        <SchemaForm form={form} fieldExtra={fieldExtra} fieldMode={fieldMode} fieldModeView={preview ? 'apply' : 'mark'} />
         <RulesPanel results={ruleResults} />
         <div className="mt-4 flex items-center gap-3">
           <button
@@ -467,6 +497,17 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
   const implementationBanner = useMemo(() => (typeof window === 'undefined' ? false : wantsImplementationBanner(window.location.search)), []);
   const [aboutOpen, setAboutOpen] = useState(false);
   const [copyOptions, setCopyOptions] = useState<ExportOptions>(DEFAULT_OPTIONS);
+  // how elements are presented (field mode), and whether the form shows them that way; kept while only the type changes
+  const [modes, setModes] = useState<Record<string, FieldMode>>({});
+  const [preview, setPreview] = useState(false);
+  const setMode = useCallback((scope: string, path: string, mode: FieldMode) => {
+    setModes((cur) => {
+      const next = { ...cur };
+      if (mode === 'editable') delete next[`${scope}|${path}`];
+      else next[`${scope}|${path}`] = mode;
+      return next;
+    });
+  }, []);
   const bundle = useMessageBundle(settings.message);
   const messageInfo = messageIndex.find((m) => m.identifier === settings.message);
   // the schema belongs to the message: choosing another message (not just another type of it) starts over
@@ -525,6 +566,10 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
               xsd={xsd}
               copyOptions={copyOptions}
               onCopyOptions={setCopyOptions}
+              modes={modes}
+              onMode={setMode}
+              preview={preview}
+              onPreview={setPreview}
             />
           ) : (
             <p className="text-sm text-muted" role="status">

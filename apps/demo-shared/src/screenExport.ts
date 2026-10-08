@@ -42,8 +42,15 @@ function rows(nodes: ScreenNode[], opts: ExportOptions, depth = 0, out: Row[] = 
 function flags(node: ScreenNode, t: DemoText): string {
   const parts: string[] = [node.required ? t('required') : t('optional')];
   if (node.repeat) parts.unshift(`${t('list')} ${node.repeat.min}..${node.repeat.max ?? '∞'}`);
+  // the mode is said where it is set, not again on everything inside
+  if (node.modeSetHere === 'label') parts.push(t('modeWordLabel'));
+  else if (node.modeSetHere === 'hidden') parts.push(t('modeWordHidden'));
   return parts.join(', ');
 }
+
+/** Whether any element is a label or hidden: only then do the table formats carry a mode column. */
+const hasModes = (nodes: ScreenNode[]): boolean => nodes.some((n) => n.mode !== 'editable' || hasModes(n.children));
+const modeWord = (node: ScreenNode, t: DemoText): string => (node.mode === 'label' ? t('modeLabel') : node.mode === 'hidden' ? t('modeHidden') : t('modeEditable'));
 
 /** What the screen holds for the node, in words. */
 function valueText(node: ScreenNode, t: DemoText): string {
@@ -102,10 +109,13 @@ const cell = (s: string): string => (/[\t\n\r"]/.test(s) ? `"${s.replace(/"/g, '
 
 export function toTsv(model: ScreenModel, t: DemoText, opts: ExportOptions): string {
   const header = [t('colLevel'), t('colPath'), t('colElement'), t('colIso'), t('colType'), t('colKind'), t('colRequired'), t('colStatus'), t('colValue'), t('colError')];
+  const modes = hasModes(model.children);
+  if (modes) header.splice(8, 0, t('colMode')); // after the status, before the value
   if (opts.definitions) header.push(t('colDefinition'));
   const out = [header.map(cell).join('\t')];
   for (const { depth, node } of rows(model.children, opts)) {
     const row = [String(depth + 1), node.path, node.label, node.name, node.type, node.kind, node.required ? t('yes') : t('no'), statusWord(node, t), node.status === 'filled' || node.status === 'choice' ? node.value : '', node.error ?? ''];
+    if (modes) row.splice(8, 0, modeWord(node, t));
     if (opts.definitions) row.push(node.definition ?? '');
     out.push(row.map(cell).join('\t'));
   }
@@ -123,6 +133,7 @@ export function toJson(model: ScreenModel, opts: ExportOptions): string {
     kind: node.kind,
     required: node.required,
     status: node.status,
+    ...(node.mode !== 'editable' ? { mode: node.mode } : {}),
     ...(node.status === 'filled' || node.status === 'choice' ? { value: node.value, raw: node.raw } : {}),
     ...(node.repeat ? { repeat: node.repeat } : {}),
     ...(node.error ? { error: node.error } : {}),
@@ -151,6 +162,8 @@ export function toHtml(model: ScreenModel, t: DemoText, opts: ExportOptions): st
   const th = (s: string) => `<th align="left" style="border:1px solid #999999;background-color:#e8e8e8;padding:3px 6px;text-align:left">${esc(s)}</th>`;
   const td = (s: string, extra = '') => `<td valign="top" style="border:1px solid #999999;padding:3px 6px;${extra}">${s}</td>`;
   const head = [th(t('colElement')), th(t('colRequired')), th(t('colValue'))];
+  const modes = hasModes(model.children);
+  if (modes) head.splice(2, 0, th(t('colMode')));
   if (opts.definitions) head.push(th(t('colDefinition')));
   head.push(th(t('colPath')));
   const body = rows(model.children, opts).map(({ depth, node }) => {
@@ -160,6 +173,7 @@ export function toHtml(model: ScreenModel, t: DemoText, opts: ExportOptions): st
     const shown = node.status === 'excluded' || node.status === 'empty' || node.status === 'list' ? `<i>${esc(value)}</i>` : esc(value);
     const err = node.error ? `<br><span style="color:#b00020">${esc(t('error'))}: ${esc(node.error)}</span>` : '';
     const cells = [td(label, `padding-left:${6 + depth * 18}px`), td(esc(flags(node, t))), td(shown + err)];
+    if (modes) cells.splice(2, 0, td(esc(modeWord(node, t))));
     if (opts.definitions) cells.push(td(esc(node.definition ?? ''), 'color:#555555'));
     cells.push(td(`<span style="font-family:Consolas,monospace;font-size:9pt;color:#555555">${esc(node.path)}</span>`));
     return `<tr>${cells.join('')}</tr>`;
