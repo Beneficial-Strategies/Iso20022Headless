@@ -1,5 +1,6 @@
 import { createContext, useContext, useId, useState, type ReactNode } from 'react';
 import { isoTypeUrl } from './Info.tsx';
+import { controlChars } from './sizing.ts';
 import { displayName, type FieldDescriptor } from '@beneficial-strategies/iso20022-validate';
 import type { Localized } from '@beneficial-strategies/iso20022-validate/definitions';
 import type { FormApi } from './formApi.ts';
@@ -59,6 +60,17 @@ export interface FieldExtraContext {
   /** Where it is in the form, e.g. `GroupHeader.InitiatingParty`. */
   path: string;
 }
+
+/**
+ * `fit` (the default) sizes each control to what its type can hold, so a country code is not as wide as a name; `full` gives every
+ * control the full width of its panel. Sizes are always a little generous, so that nothing is cut off.
+ */
+export type FieldSizing = 'fit' | 'full';
+const SizingContext = createContext<FieldSizing>('fit');
+const useChars = (type: Parameters<typeof controlChars>[0], labels?: readonly string[]): number | undefined => {
+  const sizing = useContext(SizingContext);
+  return sizing === 'fit' ? controlChars(type, labels) : undefined;
+};
 
 /** Where a type's official page is: ISO's, unless the host gives another way (or `false`: no spec buttons). */
 type SpecLink = false | ((type: string) => string | undefined);
@@ -132,6 +144,9 @@ function Leaf(p: NodeProps) {
   const readOnly = useContext(ModeContext).mode === 'label';
   const type = form.typeDescriptors[field.type]!;
   const props = form.getFieldProps(path);
+  // how wide the control needs to be: from the type (its longest value, its digits) or the longest of its options
+  const optionLabels = type.kind === 'code' && type.options ? type.options.map((o) => `${o.value} — ${defs.codeName(o, o.name).text}`) : undefined;
+  const chars = useChars(type, optionLabels);
   let control;
   if (readOnly) {
     const shownOption = type.kind === 'code' ? type.options?.find((o) => o.value === props.value) : undefined;
@@ -151,6 +166,7 @@ function Leaf(p: NodeProps) {
           invalid={props['aria-invalid'] === true}
           required={props['aria-required'] === true}
           describedBy={describedBy || undefined}
+          chars={chars}
         />
         {codeDef ? <S.Hint id={`${props.id}-codedef`}>{codeDef}</S.Hint> : null}
       </>
@@ -166,18 +182,21 @@ function Leaf(p: NodeProps) {
         invalid={props['aria-invalid'] === true}
         required={props['aria-required'] === true}
         describedBy={props['aria-describedby']}
+        chars={chars}
       />
     );
   } else if (type.kind === 'any') {
     control = <S.Text field={props} multiline mono placeholder={t('rawXml')} />;
   } else {
     const hint = type.kind === 'datetime' ? '2026-10-05T09:30:00Z' : type.kind === 'time' ? '09:30:00Z' : type.kind === 'number' ? 'e.g. 1500.25' : undefined;
+    // an empty date-time has the Now button beside it: the row is as wide as the box and the button, so the box is the same either way
+    const withNow = type.kind === 'datetime' && props.value === '';
     const input = (
-      <S.Text field={props} type={type.kind === 'date' ? 'date' : 'text'} maxLength={type.maxLength} placeholder={hint} inputMode={type.kind === 'number' ? 'decimal' : undefined} />
+      <S.Text field={props} type={type.kind === 'date' ? 'date' : 'text'} maxLength={type.maxLength} placeholder={hint} inputMode={type.kind === 'number' ? 'decimal' : undefined} chars={withNow ? undefined : chars} />
     );
     control =
-      type.kind === 'datetime' && props.value === '' ? (
-        <S.Row weights={['grow', 'fixed']}>
+      withNow ? (
+        <S.Row weights={['grow', 'auto']} chars={chars ? chars + 4 : undefined}>
           {input}
           <S.Button variant="secondary" ariaLabel={t('nowAria', { label })} onClick={() => props.onChange(localIsoNow())}>
             {t('now')}
@@ -200,6 +219,7 @@ function AmountNode(p: NodeProps) {
   const { t } = useI18n();
   const { info, note } = useInfo(p);
   const readOnly = useContext(ModeContext).mode === 'label';
+  const chars = useChars(form.typeDescriptors[field.type]!);
   const ccy = form.getFieldProps(`${path}.Ccy`);
   const val = form.getFieldProps(`${path}.Value`);
   if (readOnly) {
@@ -211,7 +231,7 @@ function AmountNode(p: NodeProps) {
   }
   return (
     <S.Field label={label} required={required ?? field.required} info={info} note={note} error={<ErrorText form={form} path={path} />}>
-      <S.Row weights={['fixed', 'grow']}>
+      <S.Row weights={['fixed', 'grow']} chars={chars ? chars + 10 : undefined}>
         <div>
           <S.Text field={ccy} placeholder="EUR" ariaLabel={t('currencyOf', { label })} />
           <ErrorText form={form} path={`${path}.Ccy`} />
@@ -237,6 +257,7 @@ function ChoiceNode(p: NodeProps) {
   const option = type.choiceOptions?.find((o) => o.name === selected);
   const id = idOf(path);
   const isRequired = required ?? field.required;
+  const chars = useChars(type, (type.choiceOptions ?? []).map(labelOf));
   return (
     <S.ChoiceBox>
       <S.Field id={id} label={readOnly ? label : t('chooseOne', { label })} required={isRequired} info={info} note={note} error={<ErrorText form={form} path={path} />}>
@@ -255,6 +276,7 @@ function ChoiceNode(p: NodeProps) {
           invalid={Boolean(form.errors[path])}
           required={isRequired}
           describedBy={form.errors[path] ? `${id}-error` : undefined}
+          chars={chars}
         />
         )}
       </S.Field>
@@ -372,6 +394,9 @@ function FieldNode(p: Omit<NodeProps, 'required'>) {
  * window: by default ISO's repository page; `false` shows no such buttons; a function gives another address for a type name
  * (or nothing for it).
  *
+ * `fieldSizing` is `fit` (the default: each control is as wide as its type needs, generously) or `full` (every control as wide as
+ * its panel).
+ *
  * `fieldMode`, when given, is asked for every element and may answer `label` or `hidden` (see `FieldMode`); `fieldModeView`
  * says whether those are applied (the default) or only marked. Elements it does not mention stay editable.
  */
@@ -381,23 +406,27 @@ export function SchemaForm({
   fieldMode,
   fieldModeView = 'apply',
   specLink = isoTypeUrl,
+  fieldSizing = 'fit',
 }: {
   form: FormApi;
   fieldExtra?: (element: FieldExtraContext) => ReactNode;
   fieldMode?: (element: FieldExtraContext) => FieldMode | undefined;
   fieldModeView?: FieldModeView;
   specLink?: SpecLink;
+  fieldSizing?: FieldSizing;
 }) {
   return (
     // data-schema-form marks everything the skin renders, so page chrome around it can be told apart
     <div data-schema-form>
-      <SpecLinkContext.Provider value={specLink}>
-        <ExtraRenderer.Provider value={fieldExtra}>
-          <ModeConfigContext.Provider value={{ ...(fieldMode ? { fieldMode } : {}), view: fieldModeView }}>
-            <SchemaFormBody form={form} />
-          </ModeConfigContext.Provider>
-        </ExtraRenderer.Provider>
-      </SpecLinkContext.Provider>
+      <SizingContext.Provider value={fieldSizing}>
+        <SpecLinkContext.Provider value={specLink}>
+          <ExtraRenderer.Provider value={fieldExtra}>
+            <ModeConfigContext.Provider value={{ ...(fieldMode ? { fieldMode } : {}), view: fieldModeView }}>
+              <SchemaFormBody form={form} />
+            </ModeConfigContext.Provider>
+          </ExtraRenderer.Provider>
+        </SpecLinkContext.Provider>
+      </SizingContext.Provider>
     </div>
   );
 }

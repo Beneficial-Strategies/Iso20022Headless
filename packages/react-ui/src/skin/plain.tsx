@@ -57,6 +57,7 @@ export const plainSkin: Skin = {
     multiline ? (
       <textarea {...field} rows={2} placeholder={placeholder} aria-label={ariaLabel} />
     ) : (
+      // the plain skin leaves sizing to the browser (a box of a default width): it carries no widths of its own
       <input {...field} type={type} maxLength={maxLength} placeholder={placeholder} inputMode={inputMode} aria-label={ariaLabel} />
     ),
   Select: function Select({ id, value, options, onChange, onBlur, invalid, required, describedBy }) {

@@ -30,13 +30,15 @@ export interface Iso20022FormProps {
   fieldModeView?: FieldModeView;
   /** The small button after each "i" that opens the element's type in ISO's repository: `false` for none, or a function for another address. */
   specLink?: false | ((type: string) => string | undefined);
+  /** `fit` (default): controls are as wide as their type needs; `full`: as wide as the form. */
+  fieldSizing?: 'fit' | 'full';
 }
 
 /**
  * A ready-to-use form for one ISO 20022 type, with validation, prompts and definitions working.
  * It is a thin convenience over `useIso20022Form` + `SchemaForm`; use those directly for more control.
  */
-export function Iso20022Form({ type, schemas, typeDescriptors, onChange, skin = plainSkin, locale = 'en', overrides, fieldExtra, fieldMode, fieldModeView, specLink }: Iso20022FormProps) {
+export function Iso20022Form({ type, schemas, typeDescriptors, onChange, skin = plainSkin, locale = 'en', overrides, fieldExtra, fieldMode, fieldModeView, specLink, fieldSizing }: Iso20022FormProps) {
   const schema = schemas[type];
   if (!schema) throw new Error(`Iso20022Form: unknown type "${type}". Use a type name from the message module's \`schemas\`.`);
   const i18n = useCreateI18n(locale, overrides);
@@ -51,7 +53,7 @@ export function Iso20022Form({ type, schemas, typeDescriptors, onChange, skin = 
   return (
     <I18nProvider value={i18n}>
       <SkinProvider value={skin}>
-        <SchemaForm form={form} {...(fieldExtra ? { fieldExtra } : {})} {...(fieldMode ? { fieldMode } : {})} {...(fieldModeView ? { fieldModeView } : {})} {...(specLink !== undefined ? { specLink } : {})} />
+        <SchemaForm form={form} {...(fieldExtra ? { fieldExtra } : {})} {...(fieldMode ? { fieldMode } : {})} {...(fieldModeView ? { fieldModeView } : {})} {...(specLink !== undefined ? { specLink } : {})} {...(fieldSizing ? { fieldSizing } : {})} />
       </SkinProvider>
     </I18nProvider>
   );

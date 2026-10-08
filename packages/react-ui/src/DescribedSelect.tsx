@@ -1,4 +1,4 @@
-import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent } from 'react';
+import { useEffect, useId, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent } from 'react';
 
 import { Popup } from './Popup.tsx';
 import { useI18n } from './i18n/context.tsx';
@@ -21,6 +21,8 @@ interface Props {
   /** Accessible name when no <label> points at the control. */
   ariaLabel?: string | undefined;
   className?: string;
+  /** Style of the whole control (its outer box), for example a maximum width. */
+  style?: CSSProperties | undefined;
 }
 
 /** The MCP uses `|` for line breaks; show them as spaces inside a one-line description. */
@@ -31,7 +33,7 @@ const oneLine = (s: string): string => s.split('|').map((x) => x.trim()).filter(
  * description. A native <select> cannot render anything but plain text in its options.
  * Keyboard: Arrow Up/Down, Home/End, Enter/Space to choose, Escape to close, type to jump.
  */
-export function DescribedSelect({ id, value, options, onChange, onBlur, placeholder: placeholderProp, allowEmpty = true, invalid, required, describedBy, ariaLabel, className }: Props) {
+export function DescribedSelect({ id, value, options, onChange, onBlur, placeholder: placeholderProp, allowEmpty = true, invalid, required, describedBy, ariaLabel, className, style }: Props) {
   const { t } = useI18n();
   const placeholder = placeholderProp ?? t('select');
   const listId = useId();
@@ -128,7 +130,7 @@ export function DescribedSelect({ id, value, options, onChange, onBlur, placehol
   };
 
   return (
-    <div ref={root} className="relative">
+    <div ref={root} className="relative" style={style}>
       <button
         ref={trigger}
         type="button"

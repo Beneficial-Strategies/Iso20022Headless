@@ -1676,6 +1676,121 @@ function specLinkScenarios(): Scenario[] {
   ];
 }
 
+/** Field widths: controls are as wide as their type needs, generously, and never cut text off. */
+function fieldWidthScenarios(): Scenario[] {
+  const base = { app: 'demo-form' as const, viewport: { width: 1440, height: 1000 } };
+  const measure = (page: Page) =>
+    page.evaluate(() => {
+      const area = document.querySelector<HTMLElement>('[data-form-area]')!.getBoundingClientRect();
+      const w = (sel: string) => document.querySelector<HTMLElement>(sel)?.getBoundingClientRect().width ?? 0;
+      return {
+        panel: area.width - 8,
+        id: w('#GroupHeader-MessageIdentification'),
+        count: w('#GroupHeader-NumberOfTransactions'),
+        sum: w('#GroupHeader-ControlSum'),
+        name: w('#GroupHeader-InitiatingParty-Name'),
+        country: w('#GroupHeader-InitiatingParty-CountryOfResidence'),
+        date: w('#GroupHeader-CreationDateTime'),
+        now: (() => {
+          const b = [...document.querySelectorAll<HTMLElement>('[data-form-area] button')].find((x) => x.textContent === 'Now');
+          const d = document.querySelector<HTMLElement>('#GroupHeader-CreationDateTime')?.getBoundingClientRect();
+          const r = b?.getBoundingClientRect();
+          return r && d ? { gap: r.left - d.right, right: r.right - area.left } : null;
+        })(),
+      };
+    });
+  /** For every text box with a length limit: would that many wide capital letters fit? (An M is about as wide as text gets.) */
+  const capacity = (page: Page) =>
+    page.evaluate(() => {
+      const canvas = document.createElement('canvas').getContext('2d')!;
+      const problems: string[] = [];
+      let checked = 0;
+      for (const input of document.querySelectorAll<HTMLInputElement>('[data-form-area] input[type=text][maxlength]')) {
+        const max = Number(input.getAttribute('maxlength'));
+        if (!input.offsetParent || max > 80) continue;
+        // a box that already fills its panel cannot be made wider: only boxes the sizing narrowed are in question
+        if (input.clientWidth >= 0.9 * (input.parentElement?.clientWidth ?? Infinity)) continue;
+        const cs = getComputedStyle(input);
+        canvas.font = `${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+        const need = canvas.measureText('M'.repeat(max)).width;
+        const have = input.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+        checked++;
+        if (need > have) problems.push(`${input.id}: ${max} wide capitals need ${Math.round(need)}px, the box holds ${Math.round(have)}px`);
+      }
+      return { checked, problems };
+    });
+  return [
+    {
+      ...base,
+      name: 'fieldwidth-proportions',
+      expect: async (page) => {
+        const m = await measure(page);
+        const problems: string[] = [];
+        if (!(m.id > 200 && m.id < 0.8 * m.panel)) problems.push(`a 35-character identifier is ${Math.round(m.id)}px in a ${Math.round(m.panel)}px panel`);
+        if (!(m.count < m.id)) problems.push('a 15-digit field is not narrower than a 35-character one');
+        if (!(m.sum < m.id)) problems.push('an 18-digit amount is not narrower than a 35-character identifier');
+        if (!(m.country < 0.3 * m.panel)) problems.push(`a country code is ${Math.round(m.country)}px wide`);
+        if (!(m.name > 0.9 * m.panel)) problems.push(`a name that can be 140 characters is only ${Math.round(m.name)}px in a ${Math.round(m.panel)}px panel`);
+        if (!m.now || m.now.gap > 16 || m.now.right > 0.8 * (m.panel + 8)) problems.push(`the Now button is not next to the date-time box: ${JSON.stringify(m.now)}`);
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'fieldwidth-datetime-does-not-jump',
+      steps: async (page) => {
+        (globalThis as unknown as { __w: number }).__w = (await measure(page)).date;
+        await clickText(page, 'button', /^now$/i);
+        await settle(300);
+      },
+      expect: async (page) => {
+        const before = (globalThis as unknown as { __w: number }).__w;
+        const after = (await measure(page)).date;
+        return Math.abs(after - before) <= 14 ? [] : [`the date-time box changed from ${Math.round(before)}px to ${Math.round(after)}px when it was filled`];
+      },
+    },
+    ...(['normal', 'large', 'xlarge'] as const).flatMap((size): Scenario[] =>
+      ['PostalAddress27', 'PartyIdentification272'].map((type) => ({
+        ...base,
+        name: `fieldwidth-nothing-cut-off-${type}-${size}`,
+        query: size === 'normal' ? '' : `?size=${size}`,
+        steps: async (page: Page) => {
+          await openType(page);
+          await page.keyboard.type(type);
+          await settle();
+          await clickText(page, '[cmdk-item]', new RegExp(`^${type}`));
+          await settle(700);
+          if (type === 'PartyIdentification272') for (const id of ['include-PostalAddress', 'include-Identification', 'include-ContactDetails']) await page.click(`#${id}`).catch(() => undefined);
+          await settle(300);
+        },
+        expect: async (page: Page) => {
+          const r = await capacity(page);
+          return [...(r.checked >= (size === 'xlarge' ? 2 : 3) ? [] : [`only ${r.checked} boxes were checked`]), ...r.problems];
+        },
+      })),
+    ),
+    {
+      ...base,
+      name: 'fieldwidth-whole-message-nothing-cut-off',
+      query: '?message=pacs.008.001.14',
+      expect: async (page) => {
+        const r = await capacity(page);
+        return r.problems;
+      },
+    },
+    { ...base, name: 'fieldwidth-narrow', viewport: { width: 480, height: 900 } },
+    {
+      ...base,
+      name: 'fieldwidth-plain-skin',
+      query: '?skin=plain',
+      expect: async (page) => {
+        const r = await page.evaluate(() => ({ sized: document.querySelectorAll('[data-form-area] input[size], [data-form-area] input[style]').length }));
+        return r.sized === 0 ? [] : [`the plain skin set sizes on ${r.sized} boxes`];
+      },
+    },
+  ];
+}
+
 /** The pickers at the top: hover help, and a type box that is no wider than it needs to be. */
 function pickerScenarios(): Scenario[] {
   const base = { app: 'demo-form' as const, viewport: { width: 1440, height: 900 } };
@@ -2101,6 +2216,7 @@ export const scenarios: Scenario[] = [
   ...bannerScenarios(),
   ...specLinkScenarios(),
   ...pickerScenarios(),
+  ...fieldWidthScenarios(),
   { name: 'type-picker-open-narrow', app: 'demo-form', viewport: { width: 480, height: 900 }, steps: openType },
   { name: 'display-open', app: 'demo-form', viewport: { width: 1440, height: 900 }, steps: openDisplay },
   { name: 'display-open-narrow-spanish', app: 'demo-form', query: '?lang=es', viewport: { width: 480, height: 900 }, steps: openDisplay },
