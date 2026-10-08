@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
-import { useI18n, type UiKey } from '@beneficial-strategies/iso20022-react-ui';
+import { type UiKey } from '@beneficial-strategies/iso20022-react-ui';
+import { usePageText, type PageKey } from './text/messages.ts';
 
 const LOGO = 'https://beneficialstrategies.com/img/Beneficial%20Strategies%20Logo.svg';
 const HOME = 'https://beneficialstrategies.com';
@@ -11,7 +12,7 @@ const HOME = 'https://beneficialstrategies.com';
  * a white tile; the bar itself follows the page's light or dark theme.
  */
 export function Banner({ onAbout }: { onAbout: () => void }) {
-  const { t } = useI18n();
+  const { t } = usePageText();
   return (
     <div className="-mx-4 -mt-4 mb-3 grid grid-cols-2 items-center gap-x-4 gap-y-1 border-b border-line bg-surface px-4 py-2 shadow-sm lg:grid-cols-[1fr_auto_1fr]">
       <a
@@ -49,7 +50,7 @@ const SECTIONS = [
 
 /** What this tool is good for, in plain language: exploring comes first, building your own comes last. */
 export function AboutDialog({ onClose }: { onClose: () => void }) {
-  const { t } = useI18n();
+  const { t } = usePageText();
   const dialog = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
@@ -80,8 +81,8 @@ export function AboutDialog({ onClose }: { onClose: () => void }) {
                 {i + 1}
               </span>
               <div>
-                <h3 className="font-semibold">{t(title as UiKey)}</h3>
-                <p className="text-sm text-muted">{t(body as UiKey)}</p>
+                <h3 className="font-semibold">{t(title as PageKey)}</h3>
+                <p className="text-sm text-muted">{t(body as PageKey)}</p>
               </div>
             </li>
           ))}

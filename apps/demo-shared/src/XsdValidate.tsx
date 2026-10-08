@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useI18n } from '@beneficial-strategies/iso20022-react-ui';
 import type { XsdHandle } from './useXsd.ts';
 import { validateXsd, type ValidateXml, type XsdResult } from './xsd.ts';
+import { usePageText, type PageKey } from './text/messages.ts';
 
 const BUTTON =
   'rounded border border-fg bg-surface px-2 py-0.5 text-xs text-fg hover:bg-surface-alt focus-visible:ring-2 focus-visible:ring-focus aria-disabled:cursor-not-allowed aria-disabled:opacity-50 aria-disabled:hover:bg-surface';
@@ -12,7 +13,7 @@ const BUTTON =
  * is `aria-disabled` rather than `disabled` so that it still shows its hover text, takes focus and receives the right-click.
  */
 export function XsdButton({ xsd, xmlOutput }: { xsd: XsdHandle; xmlOutput: boolean }) {
-  const { t } = useI18n();
+  const { t } = usePageText();
   const input = useRef<HTMLInputElement>(null);
   const { state } = xsd;
   const ready = state.status === 'ready' && xmlOutput;
@@ -74,7 +75,7 @@ export interface XsdRequest {
  * errors disappear as they are corrected.
  */
 export function XsdPanel({ xsd, request, validate }: { xsd: XsdHandle; request: XsdRequest; validate?: ValidateXml }) {
-  const { t } = useI18n();
+  const { t } = usePageText();
   const input = useRef<HTMLInputElement>(null);
   const [result, setResult] = useState<XsdResult | undefined>();
   const [failure, setFailure] = useState<string | undefined>();
@@ -173,7 +174,7 @@ export function XsdPanel({ xsd, request, validate }: { xsd: XsdHandle; request: 
 
 /** A schema file that was not used, and why. Gone when a good file is loaded or another message is chosen. */
 export function XsdNotice({ xsd }: { xsd: XsdHandle }) {
-  const { t } = useI18n();
+  const { t } = usePageText();
   if (!xsd.notice) return null;
   return (
     <p role="alert" data-xsd-notice className="mt-1 text-xs text-danger">

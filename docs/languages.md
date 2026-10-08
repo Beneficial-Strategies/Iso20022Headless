@@ -7,11 +7,15 @@ Anything else a host registers (`I18nOverrides`) works the same way.
 
 | Layer | Where it lives | `en-US` | `es` | `fr`, `de`, `pt` |
 | --- | --- | --- | --- | --- |
-| Interface text (buttons, dialogs) | `packages/react-ui/src/i18n` | ISO English | translated | translated |
+| Text of the library's own controls (required, optional, Add, Remove, the help popups) | `packages/react-ui/src/i18n` | ISO English | translated | translated |
 | Validation messages and pattern hints | `packages/validate/src/messages.ts`, `patterns.ts` | ISO English | translated | translated |
 | ISO spec text: element labels, definitions, code names, rules | `packages/validate/src/locales/<lang>.catalog.json` | ISO text rewritten (below) | translated | translated |
 
 All translations are machine-drafted until a person reviews them. Spec-text entries carry that status and the interface says so. Each spec-text catalog holds the 6,309 units of all 37 messages and loads on demand, so a language costs nothing until it is used. The core payment terms (Debtor, Creditor, Agent, ...) are fixed per language in `i18n/glossary.<lang>.json`.
+
+The demos' page text (banner, dialogs, buttons, Copy as, field modes) is separate: it lives in `apps/demo-shared`
+(`src/text/` and `src/demoText.ts`) and is not part of the library. A host that embeds the controls writes its own page
+text; the library never imposes any. The demos ship the same six languages.
 
 ## Fallback
 
@@ -20,7 +24,7 @@ Text is looked up from the most specific tag to the least, and the last stop is 
     es-MX -> es -> en (ISO)          en-US -> en (ISO)          pt-BR -> pt -> en (ISO)
 
 `en` is the ISO repository's wording exactly ("Organisation", "Cheque"), so it is the right choice when quoting the standard.
-The demos keep their own text separate from the library's, so their fallback is their own English, not the ISO text.
+The demos keep their own text separate from the library's, so their fallback is the demo's own English, not the ISO text: `es-MX -> es -> demo English`. A test fails if a shipped language is missing any demo string.
 
 ## American English
 
@@ -38,10 +42,11 @@ To add another English variant, pass your own rules: `createDefinitions('en-AU',
 
 ## Adding a language
 
-1. UI text: copy `packages/react-ui/src/i18n/ui.fr.ts`, translate, and register it in `uiLocales`
+1. Control text: copy `packages/react-ui/src/i18n/ui.fr.ts` (21 short strings), translate, and register it in `uiLocales`
    (a test checks that every key and placeholder matches English).
-2. Validation messages and pattern hints: add a catalog in `messages.ts` and the pattern words in `patterns.ts`.
-3. Spec text (optional, large): `tools/i18n` extracts the units, merges drafts and tracks review; see `i18n/README.md`.
+2. Demo page text, if you use the demo shell: `apps/demo-shared/src/text/page.fr.ts` and `src/demoText.fr.ts`.
+3. Validation messages and pattern hints: add a catalog in `messages.ts` and the pattern words in `patterns.ts`.
+4. Spec text (optional, large): `tools/i18n` extracts the units, merges drafts and tracks review; see `i18n/README.md`.
 
 A host that only needs a few words changed passes `I18nOverrides` instead and ships no catalog.
 
