@@ -17,6 +17,7 @@ import { useXsd, type XsdHandle } from './useXsd.ts';
 import { devProxyUrl } from './xsd.ts';
 import { XsdButton, XsdNotice, XsdPanel } from './XsdValidate.tsx';
 import { zoomExtra } from './ZoomButton.tsx';
+import { enterZoom, leaveZoom, type EditorValues, type ZoomFrame } from './zoom.ts';
 import { FieldModeSwitch } from './FieldModeSwitch.tsx';
 import { HoverHelp } from './HoverHelp.tsx';
 import { demoText, useDemoText } from './demoText.ts';
@@ -241,7 +242,10 @@ interface Incoming {
   identifier: string;
   typeName: string;
   values: unknown;
-  report: PasteReportData;
+  /** What a paste or file load says about itself; a zoom has nothing to report. */
+  report?: PasteReportData;
+  /** Do not mark every field as touched (a zoom in or out is not a load, so no errors are shown that you have not earned). */
+  quiet?: boolean;
 }
 
 function Editor({
@@ -254,6 +258,7 @@ function Editor({
   onSwitch,
   onIncomingApplied,
   onZoom,
+  valuesRef,
   xsd,
   copyOptions,
   onCopyOptions,
@@ -270,8 +275,10 @@ function Editor({
   incoming?: Incoming | undefined;
   onSwitch: (incoming: Incoming) => void;
   onIncomingApplied: () => void;
-  /** Show a component type on its own: the same as picking it in the type list. */
-  onZoom: (type: string) => void;
+  /** Show a component type on its own, starting with the values it has here (see zoom.ts). `outer` is this editor's values now. */
+  onZoom: (type: string, path: string, outer: unknown) => void;
+  /** Where the editor leaves its values (and what it started with), for coming back out of a zoom. */
+  valuesRef: { current: EditorValues | undefined };
   /** The XSD of the chosen message (kept when only the type changes). */
   xsd: XsdHandle;
   /** What the "Copy as" menu includes (kept when only the type changes). */
@@ -289,17 +296,23 @@ function Editor({
   const demoT = useDemoText();
   // what sits beside the "i" (a zoom button, the field-mode switch) is the demo's own, not the form library's
   const modeScope = `${bundle.message.identifier}|${typeName}`;
+  // zooming hands over this editor's values as they are at the click (a ref, so the zoom button's identity does not change with every key)
+  const latest = useRef<unknown>(undefined);
+  const zoomHere = useCallback((type: string, path: string) => onZoom(type, path, latest.current), [onZoom]);
   const fieldExtra = useMemo(() => {
-    const zoom = zoomExtra(onZoom);
+    const zoom = zoomExtra(zoomHere);
     return (element: FieldExtraContext) => (
       <>
         {zoom(element)}
         <FieldModeSwitch element={element} mode={modes[`${modeScope}|${element.path}`] ?? 'editable'} onChange={(m) => onMode(modeScope, element.path, m)} />
       </>
     );
-  }, [onZoom, modes, modeScope, onMode]);
+  }, [zoomHere, modes, modeScope, onMode]);
   const fieldMode = useMemo(() => (element: FieldExtraContext): FieldMode | undefined => modes[`${modeScope}|${element.path}`], [modes, modeScope]);
   const form = useForm({ schema: (bundle.schemas as Record<string, z.ZodType>)[typeName]!, typeDescriptors: bundle.typeDescriptors, rootType: typeName, messages: validation });
+  latest.current = form.values;
+  const startedWith = useRef(form.values);
+  valuesRef.current = { current: form.values, initial: startedWith.current };
   const [submitted, setSubmitted] = useState(false);
   const [implementOpen, setImplementOpen] = useState(false);
   const clipboard = useClipboard();
@@ -309,8 +322,8 @@ function Editor({
   useEffect(() => {
     if (!incoming) return;
     form.setValues(incoming.values);
-    form.touchAll();
-    setReport(incoming.report);
+    if (!incoming.quiet) form.touchAll();
+    if (incoming.report) setReport(incoming.report);
     onIncomingApplied();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -506,6 +519,22 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
   // a type chosen for another message does not apply here: fall back to the whole message
   const typeName = bundle && chosenType?.message === settings.message && bundle.typeDescriptors[chosenType.type] ? chosenType.type : bundle?.message.rootType;
   const [incoming, setIncoming] = useState<Incoming | undefined>(undefined);
+  // where zooms came from, so that picking an outer type again brings its values back (see zoom.ts)
+  const [zoomStack, setZoomStack] = useState<ZoomFrame[]>([]);
+  const editorValues = useRef<EditorValues | undefined>(undefined);
+  const chooseType = (type: string): void => {
+    if (type === typeName) return;
+    const back = leaveZoom(zoomStack.filter((f) => f.message === settings.message), type, editorValues.current);
+    if (back) setIncoming({ identifier: settings.message, typeName: type, values: back.values, quiet: true });
+    setZoomStack(back ? back.stack : []);
+    setChosenType({ message: settings.message, type });
+  };
+  const zoomInto = (type: string, path: string, outer: unknown): void => {
+    const { frame, start } = enterZoom(settings.message, typeName!, outer, path);
+    setZoomStack((stack) => [...stack.filter((f) => f.message === settings.message), frame]);
+    if (start !== undefined) setIncoming({ identifier: settings.message, typeName: type, values: start, quiet: true });
+    setChosenType({ message: settings.message, type });
+  };
   // the area follows the message (a URL, a paste or a file can change the message); switching back to an area returns to its last message
   const area = messageIndex.find((m) => m.identifier === settings.message)?.area ?? areaIndex[0]!.code;
   const lastInArea = useRef<Record<string, string>>({});
@@ -531,7 +560,7 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
           <div className="flex min-w-0 flex-wrap items-end justify-start gap-2 sm:flex-nowrap sm:justify-end">
             <AreaPicker value={area} onChange={(code) => update({ message: lastInArea.current[code] ?? messageIndex.find((m) => m.area === code)!.identifier })} />
             <MessagePicker area={area} value={settings.message} onChange={(message) => update({ message })} />
-            {bundle && typeName ? <TypePicker bundle={bundle} value={typeName} onChange={(type) => setChosenType({ message: settings.message, type })} /> : null}
+            {bundle && typeName ? <TypePicker bundle={bundle} value={typeName} onChange={chooseType} /> : null}
             <HoverHelp className="shrink-0" title={dt('helpDisplayTitle')} text={dt('helpDisplay')}>
               <SettingsPanel settings={settings} skins={skins} locales={locales} locale={locale} onChange={update} />
             </HoverHelp>
@@ -550,11 +579,13 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
               incoming={incoming && incoming.identifier === settings.message && incoming.typeName === typeName ? incoming : undefined}
               onSwitch={(next) => {
                 setIncoming(next);
+                setZoomStack([]);
                 setChosenType({ message: next.identifier, type: next.typeName });
                 update({ message: next.identifier });
               }}
               onIncomingApplied={() => setIncoming(undefined)}
-              onZoom={(type) => setChosenType({ message: settings.message, type })}
+              onZoom={zoomInto}
+              valuesRef={editorValues}
               xsd={xsd}
               copyOptions={copyOptions}
               onCopyOptions={setCopyOptions}
