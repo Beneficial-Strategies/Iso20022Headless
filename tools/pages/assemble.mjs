@@ -26,6 +26,7 @@ rmSync(site, { recursive: true, force: true });
 mkdirSync(site, { recursive: true });
 for (const [from, to] of parts) cpSync(resolve(root, from), resolve(site, to), { recursive: true });
 cpSync(resolve(root, 'tools/pages/index.html'), resolve(site, 'index.html'));
+for (const f of ['favicon.svg', 'favicon-32.png', 'apple-touch-icon.png', 'og.png']) cpSync(resolve(root, 'tools/pages/brand', f), resolve(site, f)); // the landing page's own
 cpSync(resolve(root, 'tools/pages/_headers'), resolve(site, '_headers')); // read by Cloudflare, ignored by GitHub Pages
 writeFileSync(resolve(site, '.nojekyll'), '');
 console.log(`site assembled in ${site}: index.html, form/, zod/`);
