@@ -64,6 +64,7 @@ import {
   Max350TextSchema,
   SupplementaryDataEnvelope1Schema,
   SupplementaryData1Schema,
+  YesNoIndicatorSchema,
   Max105TextSchema,
   ExternalMandateReason1CodeSchema,
   MandateReason1ChoiceSchema,
@@ -121,8 +122,6 @@ import {
   sharedTypeDescriptors,
 } from './shared.ts';
 
-export const YesNoIndicatorSchema = indicator;
-
 export const AcceptanceResult6Schema = z.strictObject({
   Accepted: YesNoIndicatorSchema,
   AdditionalRejectReasonInformation: z.array(Max105TextSchema).optional(),
@@ -175,11 +174,6 @@ export const MandateAcceptanceReportV08Schema = z.strictObject({
 const f = (d: FieldDescriptor): FieldDescriptor => d;
 
 const ownTypeDescriptors: TypeDescriptors = {
-  "YesNoIndicator": {
-    name: "YesNoIndicator",
-    isoId: "_YXbjA9p-Ed-ak6NoX_4Aeg_-2040117978",
-    kind: "boolean",
-  },
   "AcceptanceResult6": {
     name: "AcceptanceResult6",
     isoId: "_RBvu4dp-Ed-ak6NoX_4Aeg_2046006177",
@@ -313,6 +307,7 @@ export const typeDescriptors: TypeDescriptors = {
   "Max350Text": sharedTypeDescriptors["Max350Text"]!,
   "SupplementaryDataEnvelope1": sharedTypeDescriptors["SupplementaryDataEnvelope1"]!,
   "SupplementaryData1": sharedTypeDescriptors["SupplementaryData1"]!,
+  "YesNoIndicator": sharedTypeDescriptors["YesNoIndicator"]!,
   "Max105Text": sharedTypeDescriptors["Max105Text"]!,
   "ExternalMandateReason1Code": sharedTypeDescriptors["ExternalMandateReason1Code"]!,
   "MandateReason1Choice": sharedTypeDescriptors["MandateReason1Choice"]!,

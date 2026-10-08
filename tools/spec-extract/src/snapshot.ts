@@ -17,12 +17,16 @@ export interface Spec {
   choices: Map<string, { name: string; isoId: string; status: string; checksum: string; definition: string }>;
   /** VARIANT rows by choice name. */
   variants: Map<string, string[][]>;
-  amounts: Map<string, { name: string; isoId: string; definition: string }>;
+  amounts: Map<string, { name: string; isoId: string; status: string; checksum: string; definition: string }>;
   simpleTypes: Map<string, { name: string; isoId: string; definition: string }>;
   externalSchemas: Map<string, { name: string; isoId: string; definition: string }>;
   codeSets: Map<string, { name: string; isoId: string; definition: string }>;
   /** CODE rows by code set name: codeSet, codeIsoId, code, status, removalDate, definition. */
   codes: Map<string, string[][]>;
+  /** FACET rows by type name: facet name to value (the spec's constraints, verbatim). Repeated facets are joined with ` || `. */
+  facets: Map<string, Record<string, string>>;
+  /** EXTCODE rows by external code set name: code and its definition. */
+  externalCodes: Map<string, string[][]>;
   /** Which sections/pages were loaded, e.g. `components 3/8`. */
   loaded: string[];
   /** Problems found while reading (duplicate names, etc.). */
@@ -34,7 +38,7 @@ const push = <V>(m: Map<string, V[]>, k: string, v: V): void => void (m.get(k)?.
 export function emptySpec(): Spec {
   return {
     messages: new Map(), blocks: new Map(), components: new Map(), elements: new Map(), choices: new Map(), variants: new Map(),
-    amounts: new Map(), simpleTypes: new Map(), externalSchemas: new Map(), codeSets: new Map(), codes: new Map(), loaded: [], warnings: [],
+    amounts: new Map(), simpleTypes: new Map(), externalSchemas: new Map(), codeSets: new Map(), codes: new Map(), facets: new Map(), externalCodes: new Map(), loaded: [], warnings: [],
   };
 }
 
@@ -68,7 +72,7 @@ export function addSnapshot(spec: Spec, text: string): void {
         push(spec.variants, c[1]!, c.slice(1));
         break;
       case 'AMOUNT':
-        unique(spec.amounts, { name: c[1]!, isoId: c[2]!, definition: c[6] ?? '' }, 'amount');
+        unique(spec.amounts, { name: c[1]!, isoId: c[2]!, status: c[3] ?? '', checksum: c[5] ?? '', definition: c[6] ?? '' }, 'amount');
         break;
       case 'SIMPLETYPE':
         unique(spec.simpleTypes, { name: c[1]!, isoId: c[2]!, definition: c[6] ?? '' }, 'simple type');
@@ -81,6 +85,16 @@ export function addSnapshot(spec: Spec, text: string): void {
         break;
       case 'CODE':
         push(spec.codes, c[1]!, c.slice(1));
+        break;
+      case 'FACET': {
+        const f = spec.facets.get(c[1]!) ?? {};
+        const value = c.slice(3).join('\t');
+        f[c[2]!] = c[2]! in f ? `${f[c[2]!]} || ${value}` : value;
+        spec.facets.set(c[1]!, f);
+        break;
+      }
+      case 'EXTCODE':
+        push(spec.externalCodes, c[1]!, c.slice(2));
         break;
       default:
         break;

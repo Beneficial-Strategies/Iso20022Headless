@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+CancellationReason33Choice	_wsiMM0gtEeaGKYpLDboHPQ	Code	Reason for the cancellation request, in a coded form.
+CancellationReason33Choice	_wsiMNUgtEeaGKYpLDboHPQ	Proprietary	Reason for the cancellation request, in a proprietary form.

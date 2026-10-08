@@ -1,7 +1,7 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { closureOf, messageJson, writeStructure, type Closure, type MessageSpec } from './extract.ts';
+import { simpleTypeRows, simpleTypesTsv, closureOf, messageJson, writeStructure, type Closure, type MessageSpec } from './extract.ts';
 import { loadSnapshots } from './snapshot.ts';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../../..');
@@ -72,10 +72,13 @@ function main(): number {
       writeFileSync(resolve(out, 'snapshot-raw.tsv'), w.snapshotRaw);
       writeFileSync(resolve(out, 'choice-defs.tsv'), w.choiceDefs);
       writeFileSync(resolve(out, 'codeset-defs.tsv'), w.codeSetDefs);
-      // what still needs a targeted lookup (the snapshot has no facets, code names or rules)
+      // simple types and amounts: constraints come from the snapshot's FACET rows (no universal_lookup needed)
+      const newAmounts = c.amounts.filter(fresh);
+      writeFileSync(resolve(out, 'simple-types.tsv'), simpleTypesTsv(simpleTypeRows(spec, [...newSimple, ...newAmounts, ...c.externalSchemas.filter((n) => !seen.simple.has(n))])));
+      // what still needs a targeted lookup (the snapshot has no code names or rules; facets are in the snapshot now)
       const needs = {
         message: m.identifier,
-        simpleTypes: newSimple.map((n) => ({ name: n, isoId: spec.simpleTypes.get(n)!.isoId })),
+        simpleTypesWithoutFacets: newSimple.filter((n) => !spec.facets.has(n)),
         codeSets: newCodeSets.map((n) => ({ name: n, isoId: spec.codeSets.get(n)!.isoId, codes: (spec.codes.get(n) ?? []).length })),
         components: c.components.filter(fresh).map((n) => ({ name: n, isoId: spec.components.get(n)!.isoId })),
         externalSchemas: c.externalSchemas.filter((n) => !seen.simple.has(n)),
@@ -119,7 +122,43 @@ function verify(spec: ReturnType<typeof loadSnapshots>): number {
     console.log(`${x.identifier} message.json: ${mine === theirs ? 'identical' : 'DIFFERENT'}`);
     if (mine !== theirs) bad++;
   }
+  bad += verifySimpleTypes(spec);
   return bad === 0 ? 0 : 1;
+}
+
+/**
+ * Every committed simple-types.tsv row that the snapshot describes must agree with the snapshot's FACET rows on pattern, lengths,
+ * digits and bounds. (Rows for synthetic members of amount types, which the snapshot does not list, are skipped.)
+ */
+function verifySimpleTypes(spec: ReturnType<typeof loadSnapshots>): number {
+  if (spec.facets.size === 0) {
+    console.log('simple types: the snapshot has no FACET rows (re-pull `types` from a current staging server); skipped');
+    return 0;
+  }
+  const seen = new Set<string>();
+  let compared = 0;
+  let bad = 0;
+  for (const d of readdirSync(fixtures)) {
+    const file = resolve(fixtures, d, 'simple-types.tsv');
+    if (!existsSync(file)) continue;
+    const [head, ...lines] = rows(file);
+    void head;
+    for (const committed of lines) {
+      const name = committed[0]!;
+      if (seen.has(name) || !spec.facets.has(name)) continue;
+      seen.add(name);
+      compared++;
+      const [mine] = simpleTypeRows(spec, [name]);
+      for (const [i, label] of [[2, 'type'], [3, 'pattern'], [4, 'minLength'], [5, 'maxLength'], [6, 'totalDigits'], [7, 'fractionDigits'], [8, 'minInclusive'], [9, 'maxInclusive']] as const) {
+        if ((committed[i] ?? '') !== (mine![i] ?? '')) {
+          bad++;
+          console.log(`  ${name} (${d}) ${label}: committed "${committed[i] ?? ''}", snapshot "${mine![i] ?? ''}"`);
+        }
+      }
+    }
+  }
+  console.log(`simple types: ${compared} committed rows compared with the snapshot's facets; differences: ${bad}`);
+  return bad;
 }
 
 process.exit(main());

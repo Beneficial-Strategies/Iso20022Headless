@@ -136,6 +136,8 @@ export const pageEs: PageMessages = {
   areaDesc_pacs: 'Mensajes que respaldan los procesos de compensación y liquidación de operaciones de pago entre entidades financieras.',
   areaName_caam: 'Gestión de cajeros automáticos',
   areaDesc_caam: 'Mensajes que respaldan los servicios de gestión de terminales relacionados con tarjetas entre un cajero automático (ATM) y un adquirente.',
+  areaName_camt: 'Gestión de efectivo',
+  areaDesc_camt: 'Mensajes que respaldan la comunicación y el aviso del lado de efectivo de cualquier operación financiera, incluidos los movimientos de efectivo, las operaciones y los saldos, además de cualquier excepción e investigación relacionada con operaciones de efectivo.',
   xsdLabel: 'Validar XSD',
   xsdReady: 'Validar el texto del mensaje de abajo con {location}',
   xsdReadyFile: 'Validar el texto del mensaje de abajo con {file} (cargado desde su equipo)',

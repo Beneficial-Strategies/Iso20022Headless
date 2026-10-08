@@ -136,6 +136,8 @@ export const pageFr: PageMessages = {
   areaDesc_pacs: 'Messages qui prennent en charge les processus de compensation et de règlement des opérations de paiement entre établissements financiers.',
   areaName_caam: 'Gestion des distributeurs automatiques',
   areaDesc_caam: 'Messages qui prennent en charge les services de gestion de terminaux liés aux cartes entre un distributeur automatique de billets (DAB) et un acquéreur.',
+  areaName_camt: 'Gestion de trésorerie',
+  areaDesc_camt: 'Messages qui prennent en charge le reporting et l’avis du volet trésorerie de toute opération financière, y compris les mouvements de trésorerie, les opérations et les soldes, ainsi que les exceptions et enquêtes liées aux opérations de trésorerie.',
   xsdLabel: 'Valider le XSD',
   xsdReady: 'Valider le texte du message ci-dessous avec {location}',
   xsdReadyFile: 'Valider le texte du message ci-dessous avec {file} (chargé depuis votre ordinateur)',

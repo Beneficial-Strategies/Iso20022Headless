@@ -112,7 +112,7 @@ describe('every machine-checkable rule can both pass and fail', () => {
   }
 
   it('covers every checkable rule', () => {
-    expect(all.length).toBe(232);
+    expect(all.length).toBe(270);
   });
 
   it('none is stuck always passing or always failing', () => {

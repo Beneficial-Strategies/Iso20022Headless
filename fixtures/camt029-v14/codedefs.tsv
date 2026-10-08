@@ -1,0 +1,16 @@
+codeSet	code	enumName	isoId	text
+GroupCancellationStatus1Code	ACCR	AcceptedCancellationRequest	_auruRtp-Ed-ak6NoX_4Aeg_-305868752	Cancellation is accepted.
+GroupCancellationStatus1Code	PACR	PartiallyAcceptedCancellationRequest	_auruRNp-Ed-ak6NoX_4Aeg_-305868783	Cancellation is partially accepted.
+GroupCancellationStatus1Code	PDCR	PendingCancellationRequest	_auruR9p-Ed-ak6NoX_4Aeg_-91612397	Cancellation request is pending.
+GroupCancellationStatus1Code	RJCR	RejectedCancellationRequest	_auruRdp-Ed-ak6NoX_4Aeg_-305868753	Cancellation request is rejected
+TransactionIndividualStatus1Code	ACCP	AcceptedCustomerProfile	_Yr2T0tp-Ed-ak6NoX_4Aeg_-1851701953	Preceding check of technical validation was successful. Customer profile check was also successful.
+TransactionIndividualStatus1Code	ACCR	AcceptedCancellationRequest	_Yr2T1dp-Ed-ak6NoX_4Aeg_-1478599372	Cancellation is accepted.
+TransactionIndividualStatus1Code	ACSC	AcceptedSettlementCompleted	_Yr2T1Np-Ed-ak6NoX_4Aeg_-1851701918	Settlement on the debtor's account has been completed. ||Usage : this can be used by the first agent to report to the debtor that the transaction has been completed. Warning : this status is provided for transaction status reasons, not for financial information. It can only be used after bilateral agreement
+TransactionIndividualStatus1Code	ACSP	AcceptedSettlementInProcess	_Yr2T09p-Ed-ak6NoX_4Aeg_-1851701936	All preceding checks such as technical validation and customer profile were successful and therefore the payment initiation has been accepted for execution.
+TransactionIndividualStatus1Code	ACTC	AcceptedTechnicalValidation	_Yrsi2dp-Ed-ak6NoX_4Aeg_-1851702290	Authentication and syntactical and semantical validation are successful.
+TransactionIndividualStatus1Code	ACWC	AcceptedWithChange	_Yr2T1tp-Ed-ak6NoX_4Aeg_-1456435332	Instruction is accepted but a change will be made, such as date or remittance not sent.
+TransactionIndividualStatus1Code	PDNG	Pending	_Yr2T0dp-Ed-ak6NoX_4Aeg_-1851701978	Payment initiation or individual transaction included in the payment initiation is pending.  Further checks and status update will be performed.
+TransactionIndividualStatus1Code	RJCT	Rejected	_Yr2T0Np-Ed-ak6NoX_4Aeg_-1851702013	Payment initiation or individual transaction included in the payment initiation has been rejected.
+CancellationIndividualStatus1Code	ACCR	AcceptedCancellationRequest	_bXgo0Np-Ed-ak6NoX_4Aeg_349830162	Cancellation is accepted.
+CancellationIndividualStatus1Code	PDCR	PendingCancellationRequest	_bXgo0dp-Ed-ak6NoX_4Aeg_349830163	Cancellation request is pending.
+CancellationIndividualStatus1Code	RJCR	RejectedCancellationRequest	_bXW319p-Ed-ak6NoX_4Aeg_349830132	Cancellation request is rejected

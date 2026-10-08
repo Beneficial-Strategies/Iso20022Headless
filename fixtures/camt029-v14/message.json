@@ -1,0 +1,59 @@
+{
+  "identifier": "camt.029.001.14",
+  "name": "ResolutionOfInvestigationV14",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.029.001.14",
+  "bodyTag": "RsltnOfInvstgtn",
+  "out": "camt029",
+  "isoId": "524da510-1286-4f88-89d2-962d2a425f89",
+  "definition": "Scope|The ResolutionOfInvestigation message is sent by a case assignee to a case creator/case assigner.|This message is used to inform of the resolution of a case, and optionally provides details about.|- the corrective action undertaken by the case assignee;|- information on the return where applicable.|Usage|The ResolutionOfInvestigation message is used by the case assignee to inform a case creator or case assigner about the resolution of a:|- request to cancel payment case;|The ResolutionOfInvestigation message covers one and only one case at a time. If the case assignee needs to communicate about several cases, then several Resolution Of Investigation messages must be sent.|The ResolutionOfInvestigation message provides:|- the final outcome of the case, whether positive or negative;|- optionally, the details of the corrective action undertaken by the case assignee and the information of the return.|Whenever the action of modifying or cancelling a payment results in funds being returned or reversed, an investigating agent may provide the details in the resolution related investigation component, to identify the return or reversal transaction. These details will facilitate the account reconciliations at the initiating bank and the intermediaries. It must be stressed that the return or reversal of funds is outside the scope of this Exceptions and Investigation service. The features given here is only meant to transmit the information of return or reversal when it is available through the resolution of the case.|The ResolutionOfInvestigation message must:|- be forwarded by all subsequent case assignee(s) until it reaches the case creator;|The ResolutionOfInvestigation message should be the sole message to respond to a cancellation request. Details of the underlying transactions and the related statuses for which the cancellation request has been issued may be provided in the CancellationDetails component.",
+  "blocks": [
+    {
+      "name": "Assignment",
+      "isoId": "b3f714df-09ec-4743-bbbd-4d71fda000a4",
+      "xmlTag": "Assgnmt",
+      "type": "CaseAssignment6",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CancellationDetails",
+      "isoId": "96cfca62-8ddb-43f1-8f73-630fd5a3dfd8",
+      "xmlTag": "CxlDtls",
+      "type": "UnderlyingTransaction35",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "ResolutionRelatedInformation",
+      "isoId": "109ccacb-46e3-42e1-823d-edf4bd14a5c0",
+      "xmlTag": "RsltnRltdInf",
+      "type": "ResolutionData5",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ResolvedCase",
+      "isoId": "6332311f-5424-49da-b03f-b9acc37a02d8",
+      "xmlTag": "RslvdCase",
+      "type": "Case6",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Status",
+      "isoId": "3465690a-f299-4bfa-8474-4279204ed9a1",
+      "xmlTag": "Sts",
+      "type": "InvestigationStatus6Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "7c0f70b9-cc5f-4a9b-8aac-febfe9e90833",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

@@ -36,6 +36,7 @@ import {
   FinancialInstitutionIdentification23Schema,
   BranchData5Schema,
   BranchAndFinancialInstitutionIdentification8Schema,
+  OriginalBusinessQuery1Schema,
   Max15NumericTextSchema,
   DecimalNumberSchema,
   ExternalPaymentGroupStatus1CodeSchema,
@@ -178,12 +179,6 @@ import {
   sharedTypeDescriptors,
 } from './shared.ts';
 
-export const OriginalBusinessQuery1Schema = z.strictObject({
-  CreationDateTime: ISODateTimeSchema.optional(),
-  MessageIdentification: Max35TextSchema,
-  MessageNameIdentification: Max35TextSchema.optional(),
-});
-
 export const GroupHeader120Schema = z.strictObject({
   CreationDateTime: ISODateTimeSchema,
   InstructedAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
@@ -224,16 +219,6 @@ export const FIToFIPaymentStatusReportV16Schema = z.strictObject({
 const f = (d: FieldDescriptor): FieldDescriptor => d;
 
 const ownTypeDescriptors: TypeDescriptors = {
-  "OriginalBusinessQuery1": {
-    name: "OriginalBusinessQuery1",
-    isoId: "_tsOu4FkyEeGeoaLUQk__nA_1838839671",
-    kind: "component",
-    fields: [
-      f({ name: "CreationDateTime", isoId: "_tsOu41kyEeGeoaLUQk__nA_-269144101", xmlTag: "CreDtTm", displayName: displayName("CreationDateTime"), kind: "datetime", type: "ISODateTime", required: false }),
-      f({ name: "MessageIdentification", isoId: "_tsOu4VkyEeGeoaLUQk__nA_1725000605", xmlTag: "MsgId", displayName: displayName("MessageIdentification"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "MessageNameIdentification", isoId: "_tsOu4lkyEeGeoaLUQk__nA_727928252", xmlTag: "MsgNmId", displayName: displayName("MessageNameIdentification"), kind: "text", type: "Max35Text", required: false }),
-    ],
-  },
   "GroupHeader120": {
     name: "GroupHeader120",
     isoId: "_3jwXcTEyEe6g-ffJsqGiSA",
@@ -319,6 +304,7 @@ export const typeDescriptors: TypeDescriptors = {
   "FinancialInstitutionIdentification23": sharedTypeDescriptors["FinancialInstitutionIdentification23"]!,
   "BranchData5": sharedTypeDescriptors["BranchData5"]!,
   "BranchAndFinancialInstitutionIdentification8": sharedTypeDescriptors["BranchAndFinancialInstitutionIdentification8"]!,
+  "OriginalBusinessQuery1": sharedTypeDescriptors["OriginalBusinessQuery1"]!,
   "Max15NumericText": sharedTypeDescriptors["Max15NumericText"]!,
   "DecimalNumber": sharedTypeDescriptors["DecimalNumber"]!,
   "ExternalPaymentGroupStatus1Code": sharedTypeDescriptors["ExternalPaymentGroupStatus1Code"]!,

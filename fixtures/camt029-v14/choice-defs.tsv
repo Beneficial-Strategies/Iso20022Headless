@@ -1,0 +1,11 @@
+choice	memberId	memberName	text
+CancellationStatusReason3Choice	_sx1XQ4lrEeePr-EGJjGYzQ	Code	Reason for the cancellation status, in a coded form.
+CancellationStatusReason3Choice	_sx1XRYlrEeePr-EGJjGYzQ	Proprietary	Reason for the status, in a proprietary form.
+CompensationReason1Choice	_a-QKsIjYEeeDW7_wB-eK_g	Code	Reason for the payment compensation, in a coded form.
+CompensationReason1Choice	_d3NU0IjYEeeDW7_wB-eK_g	Proprietary	Reason for the payment compensation, in a proprietary form.
+InvestigationStatus6Choice	_w_CGNzEyEe6g-ffJsqGiSA	AssignmentCancellationConfirmation	Indicates whether the cancellation of the assignment is confirmed or rejected.|Usage: If yes, the cancellation of the assignment is confirmed.|If no, the cancellation of the assignment is rejected and the investigation process will continue.
+InvestigationStatus6Choice	_w_CGMTEyEe6g-ffJsqGiSA	Confirmation	Specifies the status of the investigation, in a coded form.
+InvestigationStatus6Choice	_w_CGNTEyEe6g-ffJsqGiSA	DuplicateOf	Indicates a duplicated case. |Usage: When present, the case identified in the message must be closed. The case identified as duplicated (in this component) will be pursued.
+InvestigationStatus6Choice	_w_CGMzEyEe6g-ffJsqGiSA	RejectedModification	Reason for the rejection of a modification request, in a coded form.
+ModificationStatusReason1Choice	_MG4Hg4lsEeePr-EGJjGYzQ	Code	Reason for the modification status, in a coded form.
+ModificationStatusReason1Choice	_MG4HhYlsEeePr-EGJjGYzQ	Proprietary	Reason for the status, in a proprietary form.

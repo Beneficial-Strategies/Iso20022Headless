@@ -11,7 +11,7 @@ Anything else a host registers (`I18nOverrides`) works the same way.
 | Validation messages and pattern hints | `packages/validate/src/messages.ts`, `patterns.ts` | ISO English | translated | translated |
 | ISO spec text: element labels, definitions, code names, rules | `packages/validate/src/locales/<lang>.catalog.json` | ISO text rewritten (below) | translated | translated |
 
-All translations are machine-drafted until a person reviews them. Spec-text entries carry that status and the interface says so. Each spec-text catalog holds the 6,309 units of all 37 messages and loads on demand, so a language costs nothing until it is used. The core payment terms (Debtor, Creditor, Agent, ...) are fixed per language in `i18n/glossary.<lang>.json`.
+All translations are machine-drafted until a person reviews them. Spec-text entries carry that status and the interface says so. Each spec-text catalog holds the 7,993 units of all 43 messages and loads on demand, so a language costs nothing until it is used. The core payment terms (Debtor, Creditor, Agent, ...) are fixed per language in `i18n/glossary.<lang>.json`.
 
 The demos' page text (banner, dialogs, buttons, Copy as, field modes) is separate: it lives in `apps/demo-shared`
 (`src/text/` and `src/demoText.ts`) and is not part of the library. A host that embeds the controls writes its own page

@@ -1,0 +1,5 @@
+# Code sets referenced by camt.029 constraint expressions (WithInList) that are not types in the message closures.
+# Source: staging get_code_set_details for each, 2026-10-08.
+codeSet	code	enumName
+InvestigationExecutionConfirmation4Code	PECR	PartiallyExecutedCancellationRequest
+InvestigationExecutionConfirmation4Code	RJCR	RejectedCancellationRequest

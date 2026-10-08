@@ -92,8 +92,10 @@ function resolve(instance: unknown, segs: Seg[], binding: Map<string, number>): 
       if (i === undefined || i < 0 || !Array.isArray(cur)) return undefined;
       cur = cur[i];
     } else if (s.index !== undefined) {
-      if (!Array.isArray(cur)) return undefined;
-      cur = cur[s.index - 1];
+      // `[1]` on an element that occurs at most once (the spec writes it so, e.g. OriginalGroupInformationAndStatus[1]) is that element
+      if (!Array.isArray(cur)) {
+        if (s.index !== 1) return undefined;
+      } else cur = cur[s.index - 1];
     }
   }
   return cur;

@@ -386,13 +386,74 @@ export type AccountIdentification4Choice =
   | { IBAN: string }
   | { Other: GenericAccountIdentification1 };
 
+export interface DateTimePeriod1 {
+  FromDateTime: string;
+  ToDateTime: string;
+}
+
+export type RateType4Choice =
+  | { Other: string }
+  | { Percentage: string };
+
+export interface AmountRangeBoundary1 {
+  BoundaryAmount: string;
+  Included: 'true' | 'false';
+}
+
+export interface FromToAmountRange1 {
+  FromAmount: AmountRangeBoundary1;
+  ToAmount: AmountRangeBoundary1;
+}
+
+export type ImpliedCurrencyAmountRange1Choice =
+  | { EqualAmount: string }
+  | { FromAmount: AmountRangeBoundary1 }
+  | { FromToAmount: FromToAmountRange1 }
+  | { NotEqualAmount: string }
+  | { ToAmount: AmountRangeBoundary1 };
+
+export interface ActiveOrHistoricCurrencyAndAmountRange2 {
+  Amount: ImpliedCurrencyAmountRange1Choice;
+  CreditDebitIndicator?: "CRDT" | "DBIT";
+  Currency: string;
+}
+
+export interface Rate4 {
+  Type: RateType4Choice;
+  ValidityRange?: ActiveOrHistoricCurrencyAndAmountRange2;
+}
+
+export interface ActiveOrHistoricCurrencyAndAmount {
+  /** Currency code, serialized as the Ccy attribute. */
+  Ccy: string;
+  Value: string;
+}
+
+export interface TaxCharges2 {
+  Amount?: ActiveOrHistoricCurrencyAndAmount;
+  Identification?: string;
+  Rate?: string;
+}
+
+export type InterestType1Choice =
+  | { Code: "INDY" | "OVRN" }
+  | { Proprietary: string };
+
+export interface AccountInterest4 {
+  FromToDate?: DateTimePeriod1;
+  Rate?: Array<Rate4>;
+  Reason?: string;
+  Tax?: TaxCharges2;
+  Type?: InterestType1Choice;
+}
+
 export interface ActiveCurrencyAndAmount {
   /** Currency code, serialized as the Ccy attribute. */
   Ccy: string;
   Value: string;
 }
 
-export interface ActiveOrHistoricCurrencyAndAmount {
+export interface ActiveOrHistoricCurrencyAnd13DecimalAmount {
   /** Currency code, serialized as the Ccy attribute. */
   Ccy: string;
   Value: string;
@@ -641,6 +702,40 @@ export interface AmendmentInformationDetails15 {
   OriginalTrackingDays?: string;
 }
 
+export interface CurrencyExchange24 {
+  ContractIdentification?: string;
+  ExchangeRate: string;
+  ExchangeRateBase?: string;
+  QuotationDate?: string;
+  SourceCurrency: string;
+  TargetCurrency?: string;
+  UnitCurrency?: string;
+}
+
+export interface AmountAndCurrencyExchangeDetails5 {
+  Amount: ActiveOrHistoricCurrencyAndAmount;
+  CurrencyExchange?: CurrencyExchange24;
+}
+
+export interface AmountAndCurrencyExchangeDetails6 {
+  Amount: ActiveOrHistoricCurrencyAndAmount;
+  CurrencyExchange?: CurrencyExchange24;
+  Type: string;
+}
+
+export interface AmountAndCurrencyExchange4 {
+  AnnouncedPostingAmount?: AmountAndCurrencyExchangeDetails5;
+  CounterValueAmount?: AmountAndCurrencyExchangeDetails5;
+  InstructedAmount?: AmountAndCurrencyExchangeDetails5;
+  ProprietaryAmount?: Array<AmountAndCurrencyExchangeDetails6>;
+  TransactionAmount?: AmountAndCurrencyExchangeDetails5;
+}
+
+export interface AmountAndDirection35 {
+  Amount: string;
+  CreditDebitIndicator: "CRDT" | "DBIT";
+}
+
 export type AmountOrRate1Choice =
   | { Amount: ActiveCurrencyAndAmount }
   | { Rate: string };
@@ -689,6 +784,278 @@ export type Authorisation1Choice =
   | { Code: "AUTH" | "FDET" | "FSUM" | "ILEV" }
   | { Proprietary: string };
 
+export type BalanceSubType1Choice =
+  | { Code: string }
+  | { Proprietary: string };
+
+export type BalanceType10Choice =
+  | { Code: string }
+  | { Proprietary: string };
+
+export interface BalanceType13 {
+  CodeOrProprietary: BalanceType10Choice;
+  SubType?: BalanceSubType1Choice;
+}
+
+export interface BankTransactionCodeStructure6 {
+  Code: string;
+  SubFamilyCode: string;
+}
+
+export interface BankTransactionCodeStructure5 {
+  Code: string;
+  Family: BankTransactionCodeStructure6;
+}
+
+export interface ProprietaryBankTransactionCodeStructure1 {
+  Code: string;
+  Issuer?: string;
+}
+
+export interface BankTransactionCodeStructure4 {
+  Domain?: BankTransactionCodeStructure5;
+  Proprietary?: ProprietaryBankTransactionCodeStructure1;
+}
+
+export interface BatchInformation2 {
+  CreditDebitIndicator?: "CRDT" | "DBIT";
+  MessageIdentification?: string;
+  NumberOfTransactions?: string;
+  PaymentInformationIdentification?: string;
+  TotalAmount?: ActiveOrHistoricCurrencyAndAmount;
+}
+
+export type CancellationReason33Choice =
+  | { Code: string }
+  | { Proprietary: string };
+
+export interface CardSequenceNumberRange1 {
+  FirstTransaction?: string;
+  LastTransaction?: string;
+}
+
+export interface DatePeriod2 {
+  FromDate: string;
+  ToDate: string;
+}
+
+export type DateOrDateTimePeriod1Choice =
+  | { Date: DatePeriod2 }
+  | { DateTime: DateTimePeriod1 };
+
+export interface CardAggregated2 {
+  AdditionalService?: "AGGR" | "DCCV" | "GRTT" | "INSP" | "LOYT" | "NRES" | "PUCO" | "RECP" | "SOAF" | "UNAF" | "VCAU";
+  SaleReconciliationIdentification?: string;
+  SequenceNumberRange?: CardSequenceNumberRange1;
+  TransactionCategory?: string;
+  TransactionDateRange?: DateOrDateTimePeriod1Choice;
+}
+
+export interface GenericIdentification1 {
+  Identification: string;
+  Issuer?: string;
+  SchemeName?: string;
+}
+
+export interface CardSecurityInformation1 {
+  CSCManagement: "BYPS" | "NCSC" | "PRST" | "UNRD";
+  CSCValue?: string;
+}
+
+export interface TrackData1 {
+  TrackNumber?: string;
+  TrackValue: string;
+}
+
+export interface PlainCardData1 {
+  CardSecurityCode?: CardSecurityInformation1;
+  CardSequenceNumber?: string;
+  EffectiveDate?: string;
+  ExpiryDate: string;
+  PAN: string;
+  ServiceCode?: string;
+  TrackData?: Array<TrackData1>;
+}
+
+export interface PaymentCard4 {
+  AdditionalCardData?: string;
+  CardBrand?: GenericIdentification1;
+  CardCountryCode?: string;
+  PlainCardData?: PlainCardData1;
+}
+
+export interface DisplayCapabilities1 {
+  DisplayType: "CDSP" | "MDSP";
+  LineWidth: string;
+  NumberOfLines: string;
+}
+
+export interface PointOfInteractionCapabilities1 {
+  CardReadingCapabilities?: Array<"BRCD" | "CICC" | "CTLS" | "DFLE" | "ECTL" | "MGST" | "PHYS" | "TAGC">;
+  CardholderVerificationCapabilities?: Array<"APKI" | "CHDT" | "FBIG" | "FBIO" | "FCPN" | "FDSG" | "FEPN" | "MNSG" | "MNVR" | "NPIN" | "PKIS" | "SCEC">;
+  DisplayCapabilities?: Array<DisplayCapabilities1>;
+  OnLineCapabilities?: "OFLN" | "ONLN" | "SMON";
+  PrintLineWidth?: string;
+}
+
+export interface PointOfInteractionComponent1 {
+  ApprovalNumber?: Array<string>;
+  ManufacturerIdentification?: string;
+  Model?: string;
+  POIComponentType: "CHIT" | "EMVK" | "EMVO" | "MRIT" | "PEDV" | "SECM" | "SOFT";
+  SerialNumber?: string;
+  VersionNumber?: string;
+}
+
+export interface GenericIdentification32 {
+  Identification: string;
+  Issuer?: "ACCP" | "ACQR" | "CISS" | "ITAG" | "MERC" | "TAXH";
+  ShortName?: string;
+  Type?: "ACCP" | "ACQR" | "CISS" | "DLIS" | "ITAG" | "MERC" | "OPOI";
+}
+
+export interface PointOfInteraction1 {
+  Capabilities?: PointOfInteractionCapabilities1;
+  Component?: Array<PointOfInteractionComponent1>;
+  GroupIdentification?: string;
+  Identification: GenericIdentification32;
+  SystemName?: string;
+}
+
+export interface CardEntry5 {
+  AggregatedEntry?: CardAggregated2;
+  Card?: PaymentCard4;
+  POI?: PointOfInteraction1;
+  PrePaidAccount?: CashAccount40;
+}
+
+export interface CardholderAuthentication2 {
+  AuthenticationEntity: "AGNT" | "ICCD" | "MERC";
+  AuthenticationMethod: "BYPS" | "CPSG" | "FPIN" | "MANU" | "MERC" | "NPIN" | "PPSG" | "SCNL" | "SCRT" | "SNCT" | "UKNW";
+}
+
+export interface PaymentContext3 {
+  AttendanceContext?: "ATTD" | "SATT" | "UATT";
+  AttendantLanguage?: string;
+  AttendantMessageCapable?: 'true' | 'false';
+  AuthenticationMethod?: CardholderAuthentication2;
+  CardDataEntryMode: "BRCD" | "CICC" | "CTLS" | "DFLE" | "ECTL" | "MGST" | "PHYS" | "TAGC";
+  CardPresent?: 'true' | 'false';
+  CardholderPresent?: 'true' | 'false';
+  FallbackIndicator?: 'true' | 'false';
+  OnLineContext?: 'true' | 'false';
+  TransactionChannel?: "ECOM" | "MAIL" | "TLPH" | "TVPY";
+  TransactionEnvironment?: "MERC" | "PRIV" | "PUBL";
+}
+
+export interface Product2 {
+  AdditionalProductInformation?: string;
+  ProductAmount?: string;
+  ProductCode: string;
+  ProductQuantity?: string;
+  TaxType?: string;
+  UnitOfMeasure?: "ACRE" | "ARES" | "CELI" | "CMET" | "FOOT" | "GBGA" | "GBOU" | "GBPI" | "GBQA" | "GRAM" | "HECT" | "INCH" | "KILO" | "KMET" | "LITR" | "METR" | "MILE" | "MILI" | "MMET" | "PIEC" | "PUND" | "SCMT" | "SMET" | "SMIL" | "SQFO" | "SQIN" | "SQKI" | "SQMI" | "SQYA" | "TONS" | "USGA" | "USOU" | "USPI" | "USQA" | "YARD";
+  UnitPrice?: string;
+}
+
+export interface TransactionIdentifier1 {
+  TransactionDateTime: string;
+  TransactionReference: string;
+}
+
+export interface CardIndividualTransaction2 {
+  AdditionalService?: "AGGR" | "DCCV" | "GRTT" | "INSP" | "LOYT" | "NRES" | "PUCO" | "RECP" | "SOAF" | "UNAF" | "VCAU";
+  ICCRelatedData?: string;
+  PaymentContext?: PaymentContext3;
+  Product?: Product2;
+  RePresentmentReason?: string;
+  SaleReconciliationIdentification?: string;
+  SaleReferenceNumber?: string;
+  SequenceNumber?: string;
+  TransactionCategory?: string;
+  TransactionIdentification?: TransactionIdentifier1;
+  ValidationDate?: string;
+  ValidationSequenceNumber?: string;
+}
+
+export type CardTransaction3Choice =
+  | { Aggregated: CardAggregated2 }
+  | { Individual: CardIndividualTransaction2 };
+
+export interface CardTransaction18 {
+  Card?: PaymentCard4;
+  POI?: PointOfInteraction1;
+  PrePaidAccount?: CashAccount40;
+  Transaction?: CardTransaction3Choice;
+}
+
+export type Party50Choice =
+  | { Party: PartyIdentification272 }
+  | { Agent: BranchAndFinancialInstitutionIdentification8 };
+
+export interface Case6 {
+  Creator: Party50Choice;
+  Identification: string;
+  ReopenCaseIndication?: 'true' | 'false';
+}
+
+export interface CaseAssignment6 {
+  Assignee: Party50Choice;
+  Assigner: Party50Choice;
+  CreationDateTime: string;
+  Identification: string;
+}
+
+export interface CashAccount43 {
+  Currency?: string;
+  Identification?: AccountIdentification4Choice;
+  Name?: string;
+  Owner?: PartyIdentification272;
+  Proxy?: ProxyAccountIdentification1;
+  Servicer?: BranchAndFinancialInstitutionIdentification8;
+  Type?: CashAccountType2Choice;
+}
+
+export type CashAvailabilityDate1Choice =
+  | { ActualDate: string }
+  | { NumberOfDays: string };
+
+export interface CashAvailability1 {
+  Amount: ActiveOrHistoricCurrencyAndAmount;
+  CreditDebitIndicator: "CRDT" | "DBIT";
+  Date: CashAvailabilityDate1Choice;
+}
+
+export type DateAndDateTime2Choice =
+  | { Date: string }
+  | { DateTime: string };
+
+export type CreditLineType1Choice =
+  | { Code: string }
+  | { Proprietary: string };
+
+export interface CreditLine3 {
+  Amount?: ActiveOrHistoricCurrencyAndAmount;
+  Date?: DateAndDateTime2Choice;
+  Included: 'true' | 'false';
+  Type?: CreditLineType1Choice;
+}
+
+export interface CashBalance8 {
+  Amount: ActiveOrHistoricCurrencyAndAmount;
+  Availability?: Array<CashAvailability1>;
+  CreditDebitIndicator: "CRDT" | "DBIT";
+  CreditLine?: Array<CreditLine3>;
+  Date: DateAndDateTime2Choice;
+  Type: BalanceType13;
+}
+
+export interface CashDeposit1 {
+  Amount: ActiveCurrencyAndAmount;
+  NoteDenomination: ActiveCurrencyAndAmount;
+  NumberOfNotes: string;
+}
+
 export type CategoryPurpose1Choice =
   | { Code: string }
   | { Proprietary: string };
@@ -701,6 +1068,22 @@ export interface GenericIdentification3 {
 export type ChargeType3Choice =
   | { Code: string }
   | { Proprietary: GenericIdentification3 };
+
+export interface ChargesRecord8 {
+  Agent?: BranchAndFinancialInstitutionIdentification8;
+  Amount: ActiveOrHistoricCurrencyAndAmount;
+  Bearer?: "CRED" | "DEBT" | "SHAR" | "SLEV";
+  ChargeIncludedIndicator?: 'true' | 'false';
+  CreditDebitIndicator?: "CRDT" | "DBIT";
+  Rate?: string;
+  Tax?: TaxCharges2;
+  Type?: ChargeType3Choice;
+}
+
+export interface Charges15 {
+  Record?: Array<ChargesRecord8>;
+  TotalChargesAndTaxAmount?: ActiveOrHistoricCurrencyAndAmount;
+}
 
 export interface Charges16 {
   Amount: ActiveOrHistoricCurrencyAndAmount;
@@ -762,6 +1145,21 @@ export interface ContentInformationType13 {
 export interface ContentInformationType15 {
   AuthenticatedData: AuthenticatedData4;
   ContentType: "AUTH" | "DATA" | "DGST" | "EVLP" | "SIGN";
+}
+
+export interface ControlData1 {
+  ControlSum?: string;
+  NumberOfTransactions: string;
+}
+
+export type CorporateActionEventType104Choice =
+  | { Code: string }
+  | { Proprietary: GenericIdentification30 };
+
+export interface CorporateAction82 {
+  CorporateActionEventIdentification: string;
+  EventType: CorporateActionEventType104Choice;
+  OfficialCorporateActionEventIdentification?: string;
 }
 
 export type ServiceLevel8Choice =
@@ -922,11 +1320,6 @@ export interface TaxParty2 {
   RegistrationIdentification?: string;
   TaxType?: string;
   Authorisation?: TaxAuthorisation1;
-}
-
-export interface DatePeriod2 {
-  FromDate: string;
-  ToDate: string;
 }
 
 export interface TaxPeriod3 {
@@ -1093,10 +1486,6 @@ export interface CurrencyExchange26 {
   UnitCurrency?: string;
 }
 
-export type DateAndDateTime2Choice =
-  | { Date: string }
-  | { DateTime: string };
-
 export interface DatePeriod3 {
   FromDate: string;
   ToDate?: string;
@@ -1127,12 +1516,6 @@ export interface PartyAndSignature4 {
   Signature: string;
 }
 
-export interface GenericIdentification1 {
-  Identification: string;
-  Issuer?: string;
-  SchemeName?: string;
-}
-
 export type DocumentFormat1Choice =
   | { Code: string }
   | { Proprietary: GenericIdentification1 };
@@ -1153,6 +1536,262 @@ export interface Document15 {
   Type: DocumentType1Choice;
 }
 
+export type IdentificationSource3Choice =
+  | { Code: string }
+  | { Proprietary: string };
+
+export interface OtherIdentification1 {
+  Identification: string;
+  Suffix?: string;
+  Type: IdentificationSource3Choice;
+}
+
+export interface SecurityIdentification19 {
+  Description?: string;
+  ISIN?: string;
+  OtherIdentification?: Array<OtherIdentification1>;
+}
+
+export interface InterestRecord2 {
+  Amount: ActiveOrHistoricCurrencyAndAmount;
+  CreditDebitIndicator: "CRDT" | "DBIT";
+  FromToDate?: DateTimePeriod1;
+  Rate?: Rate4;
+  Reason?: string;
+  Tax?: TaxCharges2;
+  Type?: InterestType1Choice;
+}
+
+export interface TransactionInterest4 {
+  Record?: Array<InterestRecord2>;
+  TotalInterestAndTaxAmount?: ActiveOrHistoricCurrencyAndAmount;
+}
+
+export interface PaymentTypeInformation27 {
+  InstructionPriority?: "HIGH" | "NORM";
+  ClearingChannel?: "BOOK" | "MPNS" | "RTGS" | "RTNS";
+  ServiceLevel?: Array<ServiceLevel8Choice>;
+  LocalInstrument?: LocalInstrument2Choice;
+  SequenceType?: "FNAL" | "FRST" | "OOFF" | "RCUR" | "RPRE";
+  CategoryPurpose?: CategoryPurpose1Choice;
+}
+
+export interface ProprietaryReference1 {
+  Reference: string;
+  Type: string;
+}
+
+export interface TransactionReferences10 {
+  AccountOwnerTransactionIdentification?: string;
+  AccountServicerReference?: string;
+  AccountServicerTransactionIdentification?: string;
+  ChequeNumber?: string;
+  ClearingSystemReference?: string;
+  EndToEndIdentification?: string;
+  InstructionIdentification?: string;
+  MandateIdentification?: string;
+  MarketInfrastructureTransactionIdentification?: string;
+  MessageIdentification?: string;
+  PaymentInformationIdentification?: string;
+  ProcessingIdentification?: string;
+  Proprietary?: Array<ProprietaryReference1>;
+  ReturnIdentification?: string;
+  TransactionIdentification?: string;
+  UETR?: string;
+}
+
+export interface ProprietaryAgent5 {
+  Agent: BranchAndFinancialInstitutionIdentification8;
+  Type: string;
+}
+
+export interface TransactionAgents6 {
+  CreditorAgent?: BranchAndFinancialInstitutionIdentification8;
+  DebtorAgent?: BranchAndFinancialInstitutionIdentification8;
+  DeliveringAgent?: BranchAndFinancialInstitutionIdentification8;
+  InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
+  InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
+  IntermediaryAgent1?: BranchAndFinancialInstitutionIdentification8;
+  IntermediaryAgent2?: BranchAndFinancialInstitutionIdentification8;
+  IntermediaryAgent3?: BranchAndFinancialInstitutionIdentification8;
+  IssuingAgent?: BranchAndFinancialInstitutionIdentification8;
+  Proprietary?: Array<ProprietaryAgent5>;
+  ReceivingAgent?: BranchAndFinancialInstitutionIdentification8;
+  SettlementPlace?: BranchAndFinancialInstitutionIdentification8;
+}
+
+export interface ProprietaryDate3 {
+  Date: DateAndDateTime2Choice;
+  Type: string;
+}
+
+export interface TransactionDates3 {
+  AcceptanceDateTime?: string;
+  EndDate?: string;
+  InterbankSettlementDate?: string;
+  Proprietary?: Array<ProprietaryDate3>;
+  StartDate?: string;
+  TradeActivityContractualSettlementDate?: string;
+  TradeDate?: string;
+  TransactionDateTime?: string;
+}
+
+export interface ProprietaryParty6 {
+  Party: Party50Choice;
+  Type: string;
+}
+
+export interface TransactionParties12 {
+  Creditor?: Party50Choice;
+  CreditorAccount?: CashAccount40;
+  Debtor?: Party50Choice;
+  DebtorAccount?: CashAccount40;
+  InitiatingParty?: Party50Choice;
+  Proprietary?: Array<ProprietaryParty6>;
+  TradingParty?: Party50Choice;
+  UltimateCreditor?: Party50Choice;
+  UltimateDebtor?: Party50Choice;
+}
+
+export type YieldedOrValueType1Choice =
+  | { ValueType: "DISC" | "PARV" | "PREM" }
+  | { Yielded: 'true' | 'false' };
+
+export type PriceRateOrAmount3Choice =
+  | { Amount: ActiveOrHistoricCurrencyAnd13DecimalAmount }
+  | { Rate: string };
+
+export interface Price7 {
+  Type: YieldedOrValueType1Choice;
+  Value: PriceRateOrAmount3Choice;
+}
+
+export interface ProprietaryPrice2 {
+  Price: ActiveOrHistoricCurrencyAndAmount;
+  Type: string;
+}
+
+export type TransactionPrice4Choice =
+  | { DealPrice: Price7 }
+  | { Proprietary: ProprietaryPrice2 };
+
+export interface OriginalAndCurrentQuantities1 {
+  AmortisedValue: string;
+  FaceAmount: string;
+}
+
+export interface ProprietaryQuantity1 {
+  Quantity: string;
+  Type: string;
+}
+
+export type FinancialInstrumentQuantity33Choice =
+  | { AmortisedValue: string }
+  | { DigitalTokenUnit: string }
+  | { FaceAmount: string }
+  | { Unit: string };
+
+export type TransactionQuantities4Choice =
+  | { OriginalAndCurrentFaceAmount: OriginalAndCurrentQuantities1 }
+  | { Proprietary: ProprietaryQuantity1 }
+  | { Quantity: FinancialInstrumentQuantity33Choice };
+
+export interface RemittanceLocationData2 {
+  Method: "EDIC" | "EMAL" | "FAXI" | "POST" | "SMSM" | "URID";
+  ElectronicAddress?: string;
+  PostalAddress?: NameAndAddress18;
+}
+
+export interface RemittanceLocation8 {
+  RemittanceIdentification?: string;
+  RemittanceLocationDetails?: Array<RemittanceLocationData2>;
+}
+
+export type ReturnReason5Choice =
+  | { Code: string }
+  | { Proprietary: string };
+
+export interface PaymentReturnReason8 {
+  AdditionalInformation?: Array<string>;
+  OriginalBankTransactionCode?: BankTransactionCodeStructure4;
+  Originator?: PartyIdentification272;
+  Reason?: ReturnReason5Choice;
+}
+
+export interface SecuritiesAccount19 {
+  Identification: string;
+  Name?: string;
+  Type?: GenericIdentification30;
+}
+
+export interface SupplementaryData1 {
+  PlaceAndName?: string;
+  Envelope: string;
+}
+
+export type References80Choice =
+  | { AccountServicerTransactionIdentification: string }
+  | { CommonIdentification: string }
+  | { CounterpartyMarketInfrastructureTransactionIdentification: string }
+  | { IntraBalanceMovementIdentification: string }
+  | { IntraPositionMovementIdentification: string }
+  | { MarketInfrastructureTransactionIdentification: string }
+  | { OtherTransactionIdentification: string }
+  | { PoolIdentification: string }
+  | { SecuritiesSettlementTransactionIdentification: string }
+  | { TradeIdentification: string }
+  | { UniqueTransactionIdentifier: string };
+
+export interface TransactionAllocation2 {
+  Account: CashAccount40;
+  Amount: ActiveOrHistoricCurrencyAndAmount;
+  CreditDebitIndicator: "CRDT" | "DBIT";
+  Purpose: Purpose2Choice;
+  Reference: string;
+  RelatedReferences?: Array<References80Choice>;
+}
+
+export interface EntryTransaction16 {
+  AdditionalTransactionInformation?: string;
+  Amount?: ActiveOrHistoricCurrencyAndAmount;
+  AmountDetails?: AmountAndCurrencyExchange4;
+  Availability?: Array<CashAvailability1>;
+  BankTransactionCode?: BankTransactionCodeStructure4;
+  CardTransaction?: CardTransaction18;
+  CashDeposit?: Array<CashDeposit1>;
+  Charges?: Charges15;
+  CreditDebitIndicator?: "CRDT" | "DBIT";
+  FinancialInstrumentIdentification?: SecurityIdentification19;
+  InstructionCopy?: string;
+  Interest?: TransactionInterest4;
+  LocalInstrument?: LocalInstrument2Choice;
+  PaymentTypeInformation?: PaymentTypeInformation27;
+  Purpose?: Purpose2Choice;
+  References?: TransactionReferences10;
+  RelatedAgents?: TransactionAgents6;
+  RelatedCorporateAction?: CorporateAction82;
+  RelatedDates?: TransactionDates3;
+  RelatedParties?: TransactionParties12;
+  RelatedPrice?: TransactionPrice4Choice;
+  RelatedQuantities?: Array<TransactionQuantities4Choice>;
+  RelatedRemittanceInformation?: Array<RemittanceLocation8>;
+  RemittanceInformation?: RemittanceInformation26;
+  ReturnInformation?: PaymentReturnReason8;
+  SafekeepingAccount?: SecuritiesAccount19;
+  SupplementaryData?: Array<SupplementaryData1>;
+  Tax?: TaxData1;
+  UnderlyingAllocation?: Array<TransactionAllocation2>;
+}
+
+export interface EntryDetails16 {
+  Batch?: BatchInformation2;
+  TransactionDetails?: Array<EntryTransaction16>;
+}
+
+export type EntryStatus1Choice =
+  | { Code: string }
+  | { Proprietary: string };
+
 export type Frequency37Choice =
   | { Code: "MIAN" | "NEVR" | "QURT" | "RATE" | "YEAR" }
   | { Proprietary: string };
@@ -1172,6 +1811,26 @@ export interface GroupHeader110 {
   InstructedAgent?: BranchAndFinancialInstitutionIdentification8;
   InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
   MessageIdentification: string;
+}
+
+export interface Pagination1 {
+  LastPageIndicator: 'true' | 'false';
+  PageNumber: string;
+}
+
+export interface OriginalBusinessQuery1 {
+  CreationDateTime?: string;
+  MessageIdentification: string;
+  MessageNameIdentification?: string;
+}
+
+export interface GroupHeader116 {
+  AdditionalInformation?: string;
+  CreationDateTime: string;
+  MessageIdentification: string;
+  MessagePagination?: Pagination1;
+  MessageRecipient?: PartyIdentification272;
+  OriginalBusinessQuery?: OriginalBusinessQuery1;
 }
 
 export interface SettlementInstruction15 {
@@ -1303,6 +1962,22 @@ export type MandateRelatedData5Choice =
   | { DirectDebitMandate: MandateRelatedInformation16 }
   | { CreditTransferMandate: CreditTransferMandateData1 };
 
+export interface MessageIdentification2 {
+  MessageIdentification?: string;
+  MessageNameIdentification?: string;
+}
+
+export interface NumberAndSumOfTransactions1 {
+  NumberOfEntries?: string;
+  Sum?: string;
+}
+
+export interface NumberAndSumOfTransactions4 {
+  NumberOfEntries?: string;
+  Sum?: string;
+  TotalNetEntry?: AmountAndDirection35;
+}
+
 export interface NumberOfTransactionsPerStatus5 {
   DetailedNumberOfTransactions: string;
   DetailedStatus: string;
@@ -1324,6 +1999,24 @@ export interface OriginalGroupHeader20 {
   OriginalMessageIdentification: string;
   OriginalMessageNameIdentification: string;
   ReversalReasonInformation?: Array<PaymentReversalReason10>;
+}
+
+export interface PaymentCancellationReason6 {
+  AdditionalInformation?: Array<string>;
+  Originator?: PartyIdentification272;
+  Reason?: CancellationReason33Choice;
+}
+
+export interface OriginalGroupHeader21 {
+  CancellationReasonInformation?: Array<PaymentCancellationReason6>;
+  Case?: Case6;
+  ControlSum?: string;
+  GroupCancellation?: 'true' | 'false';
+  GroupCancellationIdentification?: string;
+  NumberOfTransactions?: string;
+  OriginalCreationDateTime?: string;
+  OriginalMessageIdentification: string;
+  OriginalMessageNameIdentification: string;
 }
 
 export type StatusReason6Choice =
@@ -1362,19 +2055,6 @@ export interface OriginalMessageInformation1 {
   MessageIdentification: string;
   MessageNameIdentification: string;
 }
-
-export interface PaymentTypeInformation27 {
-  InstructionPriority?: "HIGH" | "NORM";
-  ClearingChannel?: "BOOK" | "MPNS" | "RTGS" | "RTNS";
-  ServiceLevel?: Array<ServiceLevel8Choice>;
-  LocalInstrument?: LocalInstrument2Choice;
-  SequenceType?: "FNAL" | "FRST" | "OOFF" | "RCUR" | "RPRE";
-  CategoryPurpose?: CategoryPurpose1Choice;
-}
-
-export type Party50Choice =
-  | { Party: PartyIdentification272 }
-  | { Agent: BranchAndFinancialInstitutionIdentification8 };
 
 export interface OriginalTransactionReference47 {
   InterbankSettlementAmount?: ActiveOrHistoricCurrencyAndAmount;
@@ -1443,19 +2123,6 @@ export interface PaymentTypeInformation29 {
   ServiceLevel?: Array<ServiceLevel8Choice>;
 }
 
-export type References80Choice =
-  | { AccountServicerTransactionIdentification: string }
-  | { CommonIdentification: string }
-  | { CounterpartyMarketInfrastructureTransactionIdentification: string }
-  | { IntraBalanceMovementIdentification: string }
-  | { IntraPositionMovementIdentification: string }
-  | { MarketInfrastructureTransactionIdentification: string }
-  | { OtherTransactionIdentification: string }
-  | { PoolIdentification: string }
-  | { SecuritiesSettlementTransactionIdentification: string }
-  | { TradeIdentification: string }
-  | { UniqueTransactionIdentifier: string };
-
 export interface RegulatoryAuthority2 {
   Name?: string;
   Country?: string;
@@ -1484,16 +2151,47 @@ export interface RemittanceInformation2 {
   Unstructured?: Array<string>;
 }
 
-export interface RemittanceLocationData2 {
-  Method: "EDIC" | "EMAL" | "FAXI" | "POST" | "SMSM" | "URID";
-  ElectronicAddress?: string;
-  PostalAddress?: NameAndAddress18;
+export type TechnicalInputChannel1Choice =
+  | { Code: string }
+  | { Proprietary: string };
+
+export interface ReportEntry16 {
+  AccountServicerReference?: string;
+  AdditionalEntryInformation?: string;
+  AdditionalInformationIndicator?: MessageIdentification2;
+  Amount: ActiveOrHistoricCurrencyAndAmount;
+  AmountDetails?: AmountAndCurrencyExchange4;
+  Availability?: Array<CashAvailability1>;
+  BankTransactionCode: BankTransactionCodeStructure4;
+  BookingDate?: DateAndDateTime2Choice;
+  CardTransaction?: CardEntry5;
+  Charges?: Charges15;
+  CommissionWaiverIndicator?: 'true' | 'false';
+  CreditDebitIndicator: "CRDT" | "DBIT";
+  EntryDetails?: Array<EntryDetails16>;
+  EntryReference?: string;
+  Interest?: TransactionInterest4;
+  ReversalIndicator?: 'true' | 'false';
+  Status: EntryStatus1Choice;
+  TechnicalInputChannel?: TechnicalInputChannel1Choice;
+  ValueDate?: DateAndDateTime2Choice;
 }
 
-export interface RemittanceLocation8 {
-  RemittanceIdentification?: string;
-  RemittanceLocationDetails?: Array<RemittanceLocationData2>;
+export type ReportingSource1Choice =
+  | { Code: string }
+  | { Proprietary: string };
+
+export interface SequenceRange1 {
+  FromSequence: string;
+  ToSequence: string;
 }
+
+export type SequenceRange1Choice =
+  | { EqualSequence: string }
+  | { FromSequence: string }
+  | { FromToSequence: SequenceRange1 }
+  | { NotEqualSequence: string }
+  | { ToSequence: string };
 
 export interface SettlementDateTimeIndication1 {
   CreditDateTime?: string;
@@ -1513,17 +2211,22 @@ export interface SettlementTimeRequest2 {
   TillTime?: string;
 }
 
-export interface SupplementaryData1 {
-  PlaceAndName?: string;
-  Envelope: string;
+export interface TotalsPerBankTransactionCode5 {
+  Availability?: Array<CashAvailability1>;
+  BankTransactionCode: BankTransactionCodeStructure4;
+  CreditEntries?: NumberAndSumOfTransactions1;
+  Date?: DateAndDateTime2Choice;
+  DebitEntries?: NumberAndSumOfTransactions1;
+  ForecastIndicator?: 'true' | 'false';
+  NumberOfEntries?: string;
+  Sum?: string;
+  TotalNetEntry?: AmountAndDirection35;
 }
 
-export interface TransactionAllocation2 {
-  Account: CashAccount40;
-  Amount: ActiveOrHistoricCurrencyAndAmount;
-  CreditDebitIndicator: "CRDT" | "DBIT";
-  Purpose: Purpose2Choice;
-  Reference: string;
-  RelatedReferences?: Array<References80Choice>;
+export interface TotalTransactions6 {
+  TotalCreditEntries?: NumberAndSumOfTransactions1;
+  TotalDebitEntries?: NumberAndSumOfTransactions1;
+  TotalEntries?: NumberAndSumOfTransactions4;
+  TotalEntriesPerBankTransactionCode?: Array<TotalsPerBankTransactionCode5>;
 }
 

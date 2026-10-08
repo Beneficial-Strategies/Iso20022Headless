@@ -92,6 +92,8 @@ import {
   PreferredContactMethod2CodeSchema,
   Contact13Schema,
   PartyIdentification272Schema,
+  ExternalReturnReason1CodeSchema,
+  ReturnReason5ChoiceSchema,
   Max350TextSchema,
   SupplementaryDataEnvelope1Schema,
   SupplementaryData1Schema,
@@ -206,13 +208,6 @@ export const GroupHeader123Schema = z.strictObject({
   PaymentTypeInformation: PaymentTypeInformation28Schema.optional(),
   SettlementInformation: SettlementInstruction15Schema,
   TotalReturnedInterbankSettlementAmount: ActiveCurrencyAndAmountSchema.optional(),
-});
-
-export const ExternalReturnReason1CodeSchema = textType({min: 1, max: 4});
-
-export const ReturnReason5ChoiceSchema = choiceOf({
-  Code: ExternalReturnReason1CodeSchema,
-  Proprietary: Max35TextSchema,
 });
 
 export const PaymentReturnReason7Schema = z.strictObject({
@@ -386,23 +381,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       { name: "GroupReturnAndNumberOfTransactionsGuideline", isoId: "_5GR6ITEyEe6g-ffJsqGiSA", text: "If GroupReturn is true, then NumberOfTransactions equals the number of transactions in the original message." },
       { name: "TotalInterbankSettlementAmountAndDateRule", isoId: "_5GR6IzEyEe6g-ffJsqGiSA", text: "If TotalReturnedInterbankSettlementAmount is present, then InterbankSettlementDate must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/InterbankSettlementDate"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/TotalReturnedInterbankSettlementAmount"}]}} },
       { name: "ControlSumAndGroupReturnRule", isoId: "_5GR6JTEyEe6g-ffJsqGiSA", text: "If GroupReturn is true, then ControlSum is not allowed.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/ControlSum"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/GroupReturn"},{"op":"EqualToValue","path":"/GroupReturn","value":"true"}]}} },
-    ],
-  },
-  "ExternalReturnReason1Code": {
-    name: "ExternalReturnReason1Code",
-    isoId: "_amolg9p-Ed-ak6NoX_4Aeg_1571382159",
-    kind: "code",
-    minLength: 1,
-    maxLength: 4,
-    external: true,
-  },
-  "ReturnReason5Choice": {
-    name: "ReturnReason5Choice",
-    isoId: "_TP6Pkdp-Ed-ak6NoX_4Aeg_-1676326037",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_TP6Pktp-Ed-ak6NoX_4Aeg_-1676326035", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalReturnReason1Code", required: true }),
-      f({ name: "Proprietary", isoId: "_TP6Pk9p-Ed-ak6NoX_4Aeg_-1676325975", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
     ],
   },
   "PaymentReturnReason7": {
@@ -714,6 +692,8 @@ export const typeDescriptors: TypeDescriptors = {
   "PreferredContactMethod2Code": sharedTypeDescriptors["PreferredContactMethod2Code"]!,
   "Contact13": sharedTypeDescriptors["Contact13"]!,
   "PartyIdentification272": sharedTypeDescriptors["PartyIdentification272"]!,
+  "ExternalReturnReason1Code": sharedTypeDescriptors["ExternalReturnReason1Code"]!,
+  "ReturnReason5Choice": sharedTypeDescriptors["ReturnReason5Choice"]!,
   "Max350Text": sharedTypeDescriptors["Max350Text"]!,
   "SupplementaryDataEnvelope1": sharedTypeDescriptors["SupplementaryDataEnvelope1"]!,
   "SupplementaryData1": sharedTypeDescriptors["SupplementaryData1"]!,
