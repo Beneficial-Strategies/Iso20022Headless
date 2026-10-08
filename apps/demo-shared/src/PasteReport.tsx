@@ -1,6 +1,6 @@
 import type { ParseIssue } from '@beneficial-strategies/iso20022-serialize';
-import { useI18n, type UiKey } from '@beneficial-strategies/iso20022-react-ui';
 import type { PasteError } from './paste.ts';
+import { usePageText, type PageKey } from './text/messages.ts';
 
 /** Where the text came from: the clipboard (Paste) or a file the user chose (Load file). */
 export type TextSource = { kind: 'clipboard' } | { kind: 'file'; name: string };
@@ -10,7 +10,7 @@ export type PasteReportData =
   | { kind: 'error'; error: PasteError; source: TextSource }
   | { kind: 'done'; format: 'xml' | 'json'; issues: ParseIssue[]; source: TextSource; /** The message that was loaded instead of the selected one. */ switchedTo?: string };
 
-type T = (key: UiKey, params?: Record<string, string | number | undefined>) => string;
+type T = (key: PageKey, params?: Record<string, string | number | undefined>) => string;
 
 /** One sentence saying why nothing was pasted or loaded. */
 export function describePasteError(t: T, e: PasteError, source: TextSource = { kind: 'clipboard' }): string {
@@ -56,7 +56,7 @@ export function describePasteIssue(t: T, i: ParseIssue): string {
 const SHOWN = 6;
 
 export function PasteReport({ report, onDismiss }: { report: PasteReportData; onDismiss: () => void }) {
-  const { t } = useI18n();
+  const { t } = usePageText();
   const failed = report.kind === 'error';
   const issues = report.kind === 'done' ? report.issues : [];
   const tone = failed ? 'border-danger-line bg-danger-soft text-danger' : issues.length > 0 ? 'border-warn-line bg-warn-soft text-warn-fg' : 'border-ok bg-ok-soft text-ok-fg';

@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react';
-import { LANGUAGE_NAMES, Popup, useI18n, type Skin, type UiKey } from '@beneficial-strategies/iso20022-react-ui';
+import { LANGUAGE_NAMES, Popup, type Skin, type UiKey } from '@beneficial-strategies/iso20022-react-ui';
 import { DENSITIES, FORMATS, SIZES, THEMES, type Settings } from './settings.ts';
+import { usePageText, type PageKey } from './text/messages.ts';
 
 function Radios({ legend, name, options, value, onChange, hint }: { legend: string; name: string; options: { value: string; label: string }[]; value: string; onChange: (v: string) => void; hint?: string | undefined }) {
   return (
@@ -28,7 +29,7 @@ export function wordingIssueUrl(locale: string, pageUrl: string): string {
 
 /** The language choice is a dropdown, so adding languages never crowds the dialog. */
 function LanguageSelect({ value, locales, onChange, locale }: { value: string; locales: readonly string[]; onChange: (v: string) => void; locale: string }) {
-  const { t } = useI18n();
+  const { t } = usePageText();
   const id = useId();
   return (
     <div className="mb-3">
@@ -66,7 +67,7 @@ export function SettingsPanel({
   locale: string;
   onChange: (patch: Partial<Settings>) => void;
 }) {
-  const { t } = useI18n();
+  const { t } = usePageText();
   const [open, setOpen] = useState(false);
   const id = useId();
   const root = useRef<HTMLDivElement>(null);
@@ -84,8 +85,8 @@ export function SettingsPanel({
   }, [open]);
 
   const skin = skins.find((s) => s.id === settings.skin);
-  const skinLabel = (s: Skin) => t(`skin_${s.id}` as UiKey) || s.label;
-  const named = (k: string) => t(k as UiKey);
+  const skinLabel = (s: Skin) => t(`skin_${s.id}` as PageKey) || s.label;
+  const named = (k: string) => t(k as PageKey);
   return (
     <div
       ref={root}
@@ -121,7 +122,7 @@ export function SettingsPanel({
             value={settings.skin}
             onChange={(v) => onChange({ skin: v })}
             options={skins.map((s) => ({ value: s.id, label: skinLabel(s) }))}
-            hint={skin ? t(`skin_${skin.id}_desc` as UiKey) || skin.description : undefined}
+            hint={skin ? t(`skin_${skin.id}_desc` as PageKey) || skin.description : undefined}
           />
           <p className="text-xs text-muted">{t('settingsNote')}</p>
         </Popup>

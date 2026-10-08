@@ -22,6 +22,7 @@ import { HoverHelp } from './HoverHelp.tsx';
 import { demoText, useDemoText } from './demoText.ts';
 import { CopyAsMenu } from './CopyAsMenu.tsx';
 import { DEFAULT_OPTIONS, type ExportOptions } from './screenExport.ts';
+import { makePageText, usePageText, type PageKey } from './text/messages.ts';
 
 const messageIds = messageIndex.map((m) => m.identifier);
 const bundleCache = new Map<string, MessageBundle>();
@@ -62,7 +63,8 @@ function useMessageBundle(identifier: string): MessageBundle | undefined {
 
 /** The first choice: which business area (pain, pacs, ...). Names and descriptions are the repository's, translated where we have it. */
 function AreaPicker({ value, onChange }: { value: string; onChange: (code: string) => void }) {
-  const { t, lang } = useI18n();
+  const { lang } = useI18n();
+  const { t } = usePageText();
   const dt = useDemoText();
   return (
     <HoverHelp className="w-[min(6.5rem,100%)] min-w-0 shrink-0" title={dt('helpAreaTitle')} text={dt('helpArea')}>
@@ -73,7 +75,7 @@ function AreaPicker({ value, onChange }: { value: string; onChange: (code: strin
         options={areaIndex.map((a) => ({
           value: a.code,
           label: a.code,
-          description: lang === 'en' ? `${a.name}: ${a.definition}` : `${t(`areaName_${a.code}` as UiKey)}: ${t(`areaDesc_${a.code}` as UiKey)}`,
+          description: lang === 'en' ? `${a.name}: ${a.definition}` : `${t(`areaName_${a.code}` as PageKey)}: ${t(`areaDesc_${a.code}` as PageKey)}`,
         }))}
         onChange={(v) => v && onChange(v)}
         placeholder={t('areaLabel')}
@@ -85,7 +87,7 @@ function AreaPicker({ value, onChange }: { value: string; onChange: (code: strin
 
 /** The second choice: a message of the chosen area. */
 function MessagePicker({ area, value, onChange }: { area: string; value: string; onChange: (id: string) => void }) {
-  const { t } = useI18n();
+  const { t } = usePageText();
   const dt = useDemoText();
   return (
     <HoverHelp className="w-[min(9rem,100%)] min-w-0 shrink-0" title={dt('helpMessageTitle')} text={dt('helpMessage')}>
@@ -103,7 +105,7 @@ function MessagePicker({ area, value, onChange }: { area: string; value: string;
 }
 
 function TypePicker({ bundle, value, onChange }: { bundle: MessageBundle; value: string; onChange: (t: string) => void }) {
-  const { t } = useI18n();
+  const { t } = usePageText();
   const dt = useDemoText();
   const [open, setOpen] = useState(false);
   const root = useRef<HTMLDivElement>(null);
@@ -190,7 +192,8 @@ function RuleText({ r }: { r: RuleResult }) {
 }
 
 function RulesPanel({ results }: { results: RuleResult[] }) {
-  const { t, lang, validation, defs } = useI18n();
+  const { lang, validation, defs } = useI18n();
+  const { t } = usePageText();
   if (results.length === 0) return null;
   const forms = results.map((r) => defs.rule({ isoId: r.isoId }, r.text));
   const ruleNotes = { english: forms.some((d) => d.lang !== lang), machine: forms.some((d) => d.lang === lang && d.status === 'machine') };
@@ -215,7 +218,7 @@ function RulesPanel({ results }: { results: RuleResult[] }) {
       <ul className="mt-2 space-y-1.5">
         {results.map((r) => {
           const st = STATUS_STYLE[r.status];
-          const label = t(`status_${r.status}` as UiKey);
+          const label = t(`status_${r.status}` as PageKey);
           return (
             <li key={`${r.instancePath}:${r.rule}`} className="text-fg">
               <span className={`mr-1 font-bold ${st.cls}`} aria-hidden="true">{st.icon}</span>
@@ -281,7 +284,8 @@ function Editor({
   preview: boolean;
   onPreview: (on: boolean) => void;
 }) {
-  const { t, validation } = useI18n();
+  const { validation } = useI18n();
+  const { t } = usePageText();
   const demoT = useDemoText();
   // what sits beside the "i" (a zoom button, the field-mode switch) is the demo's own, not the form library's
   const modeScope = `${bundle.message.identifier}|${typeName}`;
@@ -507,7 +511,8 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
   const lastInArea = useRef<Record<string, string>>({});
   lastInArea.current[area] = settings.message;
   const i18n = useCreateI18n(locale, overrides);
-  const dt = demoText(i18n.lang);
+  const dt = demoText(i18n.locale);
+  const pageText = useMemo(() => makePageText(i18n), [i18n]);
   const skin = skins.find((s) => s.id === settings.skin) ?? skins[0]!;
   return (
     <I18nProvider value={i18n}>
@@ -516,8 +521,8 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
           {implementationBanner ? (
             <div className="-mx-4 -mt-4 mb-3 border-b border-bar-from bg-linear-to-r from-bar-from to-bar-to px-4 py-3 shadow-md">
               <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-                <h1 className="text-xl font-bold tracking-tight text-bar-fg">{i18n.t(`title_${variant}` as UiKey)}</h1>
-                <p className="min-w-0 max-w-2xl text-xs text-bar-muted sm:text-right">{i18n.t(`blurb_${variant}` as UiKey)}</p>
+                <h1 className="text-xl font-bold tracking-tight text-bar-fg">{pageText.t(`title_${variant}` as PageKey)}</h1>
+                <p className="min-w-0 max-w-2xl text-xs text-bar-muted sm:text-right">{pageText.t(`blurb_${variant}` as PageKey)}</p>
               </div>
             </div>
           ) : (
@@ -560,7 +565,7 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
             />
           ) : (
             <p className="text-sm text-muted" role="status">
-              {i18n.t('loading')}
+              {pageText.t('loading')}
             </p>
           )}
         </SkinProvider>

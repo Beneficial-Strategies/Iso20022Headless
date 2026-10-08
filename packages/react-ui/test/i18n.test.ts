@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { areaIndex, messageIndex } from '@beneficial-strategies/iso20022-validate';
 import { allTypeDescriptors as typeDescriptors } from '@beneficial-strategies/iso20022-validate/all';
 import { createI18n, supportedLocales } from '../src/i18n/context.tsx';
-import { UI_KEYS, uiEn, uiLocales, type UiKey } from '../src/i18n/messages.ts';
+import { UI_KEYS, uiEn, uiLocales } from '../src/i18n/messages.ts';
 
 const SHIPPED = ['es', 'fr', 'de', 'pt'] as const;
 
@@ -22,62 +22,48 @@ describe('interface catalogs', () => {
     }
   });
 
-  it('function messages in every language accept a count', () => {
-    for (const lang of SHIPPED) {
-      const i = createI18n(lang);
-      for (const k of ['draft', 'problemsRemain', 'rulesViolated'] as const) {
-        expect(i.t(k, { n: 1 }), `${lang}.${k}`).toMatch(/1/);
-        expect(i.t(k, { n: 3 }), `${lang}.${k}`).toMatch(/3/);
-      }
-    }
-  });
-
-  it('English text is the library default and plural forms read well in Spanish', () => {
+  it('English text is the library default', () => {
     const en = createI18n('en');
     const es = createI18n('es');
-    expect(en.t('doneEditing')).toBe('Done editing');
-    expect(en.t('draft', { n: 3 })).toBe('draft — 3 problem(s)');
-    expect(es.t('draft', { n: 1 })).toBe('borrador — 1 problema');
-    expect(es.t('draft', { n: 3 })).toBe('borrador — 3 problemas');
-    expect(es.t('problemsRemain', { n: 1 })).toBe('Queda 1 problema.');
-    expect(es.t('problemsRemain', { n: 2 })).toBe('Quedan 2 problemas.');
+    expect(en.t('optional')).toBe('(optional)');
+    expect(en.t('removeItem', { label: 'Payment', n: 2 })).toBe('Remove Payment 2');
     expect(es.t('add', { label: 'Pago' })).toBe('+ Añadir Pago');
   });
 
   it('French, German and Portuguese are shipped and use their own text', () => {
-    expect(createI18n('fr').t('copyXml')).toBe('Copier le XML');
-    expect(createI18n('de').t('copyXml')).toBe('XML kopieren');
-    expect(createI18n('pt-BR').t('copyXml')).toBe('Copiar XML');
+    expect(createI18n('fr').t('now')).toBe('Maintenant');
+    expect(createI18n('de').t('now')).toBe('Jetzt');
+    expect(createI18n('pt-BR').t('now')).toBe('Agora');
     expect(createI18n('fr').validation.required).toBe('Obligatoire');
   });
 
   it('American English shares the ISO interface text and rewrites the ISO spec text', () => {
-    expect(createI18n('en-US').t('doneEditing')).toBe('Done editing');
+    expect(createI18n('en-US').t('now')).toBe('Now');
     expect(createI18n('en-US').lang).toBe('en');
     expect(createI18n('en').defs.label({ isoId: undefined }, 'Organisation Identification').text).toBe('Organisation Identification');
     expect(createI18n('en-US').defs.label({ isoId: undefined }, 'Organisation Identification').text).toBe('Organization Identification');
   });
 
   it('regional tags and unknown languages fall back sensibly', () => {
-    expect(createI18n('es-MX').t('doneEditing')).toBe('Edición terminada');
-    expect(createI18n('it').t('doneEditing')).toBe('Done editing');
+    expect(createI18n('es-MX').t('now')).toBe('Ahora');
+    expect(createI18n('it').t('now')).toBe('Now');
   });
 });
 
 describe('consumer overrides', () => {
   it('override one message and keep the rest of the shipped language', () => {
-    const i = createI18n('es', { ui: { es: { doneEditing: 'Terminado' } }, validation: { es: { required: 'Campo obligatorio' } } });
-    expect(i.t('doneEditing')).toBe('Terminado');
-    expect(i.t('copyXml')).toBe('Copiar XML'); // untouched shipped Spanish
+    const i = createI18n('es', { ui: { es: { now: 'Ya' } }, validation: { es: { required: 'Campo obligatorio' } } });
+    expect(i.t('now')).toBe('Ya');
+    expect(i.t('remove')).toBe('Quitar'); // untouched shipped Spanish
     expect(i.validation.required).toBe('Campo obligatorio');
     expect(i.validation.select_one).toBe('Seleccione una opción'); // untouched shipped Spanish
   });
 
   it('add a language the library does not ship; missing keys fall back to English', () => {
-    const overrides = { ui: { it: { doneEditing: 'Terminato' } }, validation: { it: { required: 'Obbligatorio' } } };
+    const overrides = { ui: { it: { now: 'Adesso' } }, validation: { it: { required: 'Obbligatorio' } } };
     const i = createI18n('it', overrides);
-    expect(i.t('doneEditing')).toBe('Terminato');
-    expect(i.t('copyXml')).toBe('Copy XML');
+    expect(i.t('now')).toBe('Adesso');
+    expect(i.t('remove')).toBe('Remove');
     expect(i.validation.required).toBe('Obbligatorio');
     expect(supportedLocales(overrides)).toEqual(['en', 'en-US', 'es', 'fr', 'de', 'pt', 'it']);
   });
@@ -95,18 +81,6 @@ describe('consumer overrides', () => {
 });
 
 describe('business areas (the first dropdown)', () => {
-  it('every area has a name and description in every shipped language, and the English matches the registry', () => {
-    expect(areaIndex.length).toBeGreaterThan(1);
-    for (const a of areaIndex) {
-      expect(uiEn[`areaName_${a.code}` as UiKey], a.code).toBe(a.name);
-      expect(uiEn[`areaDesc_${a.code}` as UiKey], a.code).toBe(a.definition);
-      for (const lang of SHIPPED) {
-        expect(uiLocales[lang]![`areaName_${a.code}` as UiKey], `${lang} ${a.code}`).toBeTruthy();
-        expect(uiLocales[lang]![`areaDesc_${a.code}` as UiKey], `${lang} ${a.code}`).toBeTruthy();
-      }
-    }
-  });
-
   it('every message belongs to a listed area, and every listed area has a message', () => {
     const codes = new Set(areaIndex.map((a) => a.code));
     for (const m of messageIndex) expect(codes.has(m.area), m.identifier).toBe(true);

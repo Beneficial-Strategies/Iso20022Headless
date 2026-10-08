@@ -5,6 +5,7 @@ import { xml } from '@codemirror/lang-xml';
 import { json } from '@codemirror/lang-json';
 import { oneDark } from '@codemirror/theme-one-dark';
 import { useI18n } from '@beneficial-strategies/iso20022-react-ui';
+import { usePageText, type PageKey } from './text/messages.ts';
 
 /** Read-only, highlighted view of the generated XML or JSON, with a copy button. */
 export interface PasteButton {
@@ -57,7 +58,7 @@ export function XmlPane({
   const language = useRef(new Compartment());
   const [copied, setCopied] = useState(false);
   const fileInput = useRef<HTMLInputElement>(null);
-  const { t } = useI18n();
+  const { t } = usePageText();
 
   useEffect(() => {
     if (!host.current) return;

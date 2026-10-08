@@ -1,7 +1,10 @@
 import { useI18n } from '@beneficial-strategies/iso20022-react-ui';
+import { DE } from './demoText.de.ts';
+import { FR } from './demoText.fr.ts';
+import { PT } from './demoText.pt.ts';
 
 /**
- * The demo's own wording (not the form library's): the "Copy as" menu and the words in what it copies. English and Spanish.
+ * The demo's own wording (not the form library's): the "Copy as" menu and the words in what it copies. English, Spanish, French, German and Portuguese; any other language uses the English.
  * Keeping it here, not in the library's catalog, means the library stays generic and the demos' text is controlled from outside.
  */
 const EN = {
@@ -175,9 +178,12 @@ const ES: Record<DemoKey, string> = {
 
 export type DemoText = (key: DemoKey, params?: Record<string, string | number>) => string;
 
-/** The text function for a language (English for any language without a table). Plain, so exports can be built and tested without React. */
-export function demoText(lang: string): DemoText {
-  const table: Record<DemoKey, string> = lang.split('-')[0] === 'es' ? ES : EN;
+/** Tables by language. The fallback is this file's own English, not the ISO text. */
+export const demoTextTables: Record<string, Record<DemoKey, string>> = { en: EN, es: ES, fr: FR, de: DE, pt: PT };
+
+/** The text function for a locale: its language's table (`es-MX` uses `es`), else the English. Plain, so exports can be built and tested without React. */
+export function demoText(locale: string): DemoText {
+  const table = demoTextTables[locale.split('-')[0] ?? 'en'] ?? EN;
   return (key, params) => (params ? table[key].replace(/\{(\w+)\}/g, (m, k: string) => (k in params ? String(params[k]) : m)) : table[key]);
 }
 

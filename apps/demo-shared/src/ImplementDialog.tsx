@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { useI18n, type UiKey } from '@beneficial-strategies/iso20022-react-ui';
+import { type UiKey } from '@beneficial-strategies/iso20022-react-ui';
 import { buildInstructions, type PackageManager, type Snippet } from './instructions.ts';
+import { usePageText, type PageKey } from './text/messages.ts';
 
 function CopyButton({ text }: { text: string }) {
-  const { t } = useI18n();
+  const { t } = usePageText();
   const [done, setDone] = useState(false);
   return (
     <button
@@ -49,7 +50,7 @@ function Check({ checked, onChange, children }: { checked: boolean; onChange: (v
  * Instructions only (see instructions.ts); the quickstart apps prove the React ones work.
  */
 export function ImplementDialog({ type, isMessageRoot, module, onClose }: { type: string; isMessageRoot: boolean; module: string; onClose: () => void }) {
-  const { t } = useI18n();
+  const { t } = usePageText();
   const dialog = useRef<HTMLDialogElement>(null);
   const [react, setReact] = useState(true);
   const [vue, setVue] = useState(false);
@@ -128,9 +129,9 @@ export function ImplementDialog({ type, isMessageRoot, module, onClose }: { type
         <div className="mt-4 space-y-5">
           {steps.length === 0 ? <p className="text-sm text-muted">{t('pickStack')}</p> : null}
           {steps.map((s, i) => (
-            <section key={`${s.title}-${i}`} aria-label={t(s.title as UiKey)}>
-              <h3 className="font-semibold">{t(s.title as UiKey)}</h3>
-              {s.note ? <p className="text-sm text-muted">{t(s.note as UiKey)}</p> : null}
+            <section key={`${s.title}-${i}`} aria-label={t(s.title as PageKey)}>
+              <h3 className="font-semibold">{t(s.title as PageKey)}</h3>
+              {s.note ? <p className="text-sm text-muted">{t(s.note as PageKey)}</p> : null}
               {s.snippets.map((sn, j) => (
                 <CodeBlock key={j} snippet={sn} />
               ))}
