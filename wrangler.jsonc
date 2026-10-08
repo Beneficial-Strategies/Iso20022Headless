@@ -14,6 +14,9 @@
   "workers_dev": true,
   "preview_urls": true,
   "observability": { "enabled": true },
+  // wrangler runs this before it looks for the assets folder. It builds ./site only if the dashboard's build command did not
+  // (it does not run for preview builds), so production does not build twice
+  "build": { "command": "node tools/pages/ensure-site.mjs" },
   // Worker Previews (`wrangler preview`, run by the Cloudflare build for pull request branches) needs this block, even empty:
   // assets, compatibility settings and the rest stay at the top level
   "previews": {}
