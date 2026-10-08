@@ -2,21 +2,33 @@ import { describe, expect, it } from 'vitest';
 import { areaIndex, messageIndex } from '@beneficial-strategies/iso20022-validate';
 import { allTypeDescriptors as typeDescriptors } from '@beneficial-strategies/iso20022-validate/all';
 import { createI18n, supportedLocales } from '../src/i18n/context.tsx';
-import { UI_KEYS, uiEn, uiEs, type UiKey } from '../src/i18n/messages.ts';
+import { UI_KEYS, uiEn, uiLocales, type UiKey } from '../src/i18n/messages.ts';
+
+const SHIPPED = ['es', 'fr', 'de', 'pt'] as const;
 
 const method = typeDescriptors.PaymentInstruction51!.fields!.find((f) => f.name === 'PaymentMethod')!;
 
 describe('interface catalogs', () => {
-  it('Spanish has every key that English has, and nothing extra', () => {
-    expect(Object.keys(uiEs).sort()).toEqual(Object.keys(uiEn).sort());
+  it.each(SHIPPED)('%s has every key that English has, and nothing extra', (lang) => {
+    expect(Object.keys(uiLocales[lang]!).sort()).toEqual(Object.keys(uiEn).sort());
     expect(UI_KEYS.length).toBe(Object.keys(uiEn).length);
   });
 
-  it('every message has the same placeholders in both languages (plain templates)', () => {
+  it.each(SHIPPED)('every %s message has the same placeholders as English (plain templates)', (lang) => {
     const slots = (m: unknown) => (typeof m === 'string' ? [...m.matchAll(/\{(\w+)\}/g)].map((x) => x[1]).sort() : null);
     for (const k of UI_KEYS) {
-      const [e, s] = [slots(uiEn[k]), slots(uiEs[k])];
-      if (e && s) expect(s, k).toEqual(e);
+      const [e, s] = [slots(uiEn[k]), slots(uiLocales[lang]![k])];
+      if (e && s) expect(s, `${lang}.${k}`).toEqual(e);
+    }
+  });
+
+  it('function messages in every language accept a count', () => {
+    for (const lang of SHIPPED) {
+      const i = createI18n(lang);
+      for (const k of ['draft', 'problemsRemain', 'rulesViolated'] as const) {
+        expect(i.t(k, { n: 1 }), `${lang}.${k}`).toMatch(/1/);
+        expect(i.t(k, { n: 3 }), `${lang}.${k}`).toMatch(/3/);
+      }
     }
   });
 
@@ -32,9 +44,23 @@ describe('interface catalogs', () => {
     expect(es.t('add', { label: 'Pago' })).toBe('+ Añadir Pago');
   });
 
+  it('French, German and Portuguese are shipped and use their own text', () => {
+    expect(createI18n('fr').t('copyXml')).toBe('Copier le XML');
+    expect(createI18n('de').t('copyXml')).toBe('XML kopieren');
+    expect(createI18n('pt-BR').t('copyXml')).toBe('Copiar XML');
+    expect(createI18n('fr').validation.required).toBe('Obligatoire');
+  });
+
+  it('American English shares the ISO interface text and rewrites the ISO spec text', () => {
+    expect(createI18n('en-US').t('doneEditing')).toBe('Done editing');
+    expect(createI18n('en-US').lang).toBe('en');
+    expect(createI18n('en').defs.label({ isoId: undefined }, 'Organisation Identification').text).toBe('Organisation Identification');
+    expect(createI18n('en-US').defs.label({ isoId: undefined }, 'Organisation Identification').text).toBe('Organization Identification');
+  });
+
   it('regional tags and unknown languages fall back sensibly', () => {
     expect(createI18n('es-MX').t('doneEditing')).toBe('Edición terminada');
-    expect(createI18n('fr').t('doneEditing')).toBe('Done editing');
+    expect(createI18n('it').t('doneEditing')).toBe('Done editing');
   });
 });
 
@@ -48,12 +74,12 @@ describe('consumer overrides', () => {
   });
 
   it('add a language the library does not ship; missing keys fall back to English', () => {
-    const overrides = { ui: { fr: { doneEditing: 'Terminé' } }, validation: { fr: { required: 'Obligatoire' } } };
-    const i = createI18n('fr', overrides);
-    expect(i.t('doneEditing')).toBe('Terminé');
+    const overrides = { ui: { it: { doneEditing: 'Terminato' } }, validation: { it: { required: 'Obbligatorio' } } };
+    const i = createI18n('it', overrides);
+    expect(i.t('doneEditing')).toBe('Terminato');
     expect(i.t('copyXml')).toBe('Copy XML');
-    expect(i.validation.required).toBe('Obligatoire');
-    expect(supportedLocales(overrides)).toEqual(['en', 'es', 'fr']);
+    expect(i.validation.required).toBe('Obbligatorio');
+    expect(supportedLocales(overrides)).toEqual(['en', 'en-US', 'es', 'fr', 'de', 'pt', 'it']);
   });
 
   it('spec text and labels: English fallback is reported, translations win and are marked as such', () => {
@@ -69,13 +95,15 @@ describe('consumer overrides', () => {
 });
 
 describe('business areas (the first dropdown)', () => {
-  it('every area has a name and description in English and Spanish, and the English matches the registry', () => {
+  it('every area has a name and description in every shipped language, and the English matches the registry', () => {
     expect(areaIndex.length).toBeGreaterThan(1);
     for (const a of areaIndex) {
       expect(uiEn[`areaName_${a.code}` as UiKey], a.code).toBe(a.name);
       expect(uiEn[`areaDesc_${a.code}` as UiKey], a.code).toBe(a.definition);
-      expect(uiEs[`areaName_${a.code}` as UiKey], a.code).toBeTruthy();
-      expect(uiEs[`areaDesc_${a.code}` as UiKey], a.code).toBeTruthy();
+      for (const lang of SHIPPED) {
+        expect(uiLocales[lang]![`areaName_${a.code}` as UiKey], `${lang} ${a.code}`).toBeTruthy();
+        expect(uiLocales[lang]![`areaDesc_${a.code}` as UiKey], `${lang} ${a.code}`).toBeTruthy();
+      }
     }
   });
 

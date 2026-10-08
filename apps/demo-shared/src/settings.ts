@@ -26,7 +26,7 @@ export interface Settings {
 
 export const DEFAULT_SETTINGS: Settings = { theme: 'system', size: 'normal', density: 'comfortable', skin: 'tailwind', lang: 'auto', format: 'xml', message: 'pain.001.001.13' };
 
-export const DEFAULT_LOCALES: readonly string[] = ['en', 'es'];
+export const DEFAULT_LOCALES: readonly string[] = ['en', 'en-US', 'es', 'fr', 'de', 'pt'];
 
 const pick = <T extends string>(allowed: readonly T[], v: string | null, fallback: T): T =>
   (allowed as readonly string[]).includes(v ?? '') ? (v as T) : fallback;

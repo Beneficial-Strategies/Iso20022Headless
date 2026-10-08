@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { DEFAULT_SETTINGS, parseSettings, resolveLocale, resolveTheme, settingsToSearch, wantsImplementationBanner } from '../src/settings.ts';
+import { wordingIssueUrl } from '../src/SettingsPanel.tsx';
+import { DEFAULT_LOCALES, DEFAULT_SETTINGS, parseSettings, resolveLocale, resolveTheme, settingsToSearch, wantsImplementationBanner } from '../src/settings.ts';
 
 const skins = ['tailwind', 'plain'];
 
@@ -52,7 +53,7 @@ describe('settings in the URL', () => {
 
   it('a locale added by the consumer is accepted from the URL', () => {
     expect(parseSettings('?lang=fr', skins, ['en', 'es', 'fr']).lang).toBe('fr');
-    expect(parseSettings('?lang=fr', skins).lang).toBe('auto');
+    expect(parseSettings('?lang=it', skins).lang).toBe('auto');
   });
 
   it('the message comes from the URL when it is one we have; anything else falls back to the default', () => {
@@ -82,5 +83,27 @@ describe('?ImplementationBanner=true brings back the original banner', () => {
     const next = settingsToSearch({ ...DEFAULT_SETTINGS, theme: 'dark' }, '?ImplementationBanner=true');
     expect(wantsImplementationBanner(next)).toBe(true);
     expect(next).toContain('theme=dark');
+  });
+});
+
+describe('shipped languages', () => {
+  it('offers ISO English, American English, Spanish, French, German and Portuguese', () => {
+    expect(DEFAULT_LOCALES).toEqual(['en', 'en-US', 'es', 'fr', 'de', 'pt']);
+  });
+
+  it('a browser asking for a regional tag gets the matching shipped language', () => {
+    expect(resolveLocale('auto', ['en-US'], DEFAULT_LOCALES)).toBe('en-US');
+    expect(resolveLocale('auto', ['en-GB'], DEFAULT_LOCALES)).toBe('en-GB'); // no variant: the ISO text
+    expect(resolveLocale('auto', ['pt-BR', 'en'], DEFAULT_LOCALES)).toBe('pt-BR');
+    expect(resolveLocale('auto', ['ja'], DEFAULT_LOCALES)).toBe('en');
+  });
+});
+
+describe('reporting a wording problem', () => {
+  it('opens a prefilled GitHub issue that names the language', () => {
+    const url = new URL(wordingIssueUrl('fr', 'https://example.test/?lang=fr'));
+    expect(url.origin + url.pathname).toBe('https://github.com/Beneficial-Strategies/Iso20022Headless/issues/new');
+    expect(url.searchParams.get('title')).toContain('(fr)');
+    expect(url.searchParams.get('body')).toContain('Language: fr');
   });
 });
