@@ -3,8 +3,8 @@
   "message": "pain.001.001.13, pain.002.001.15, pain.007.001.13, pain.008.001.12, pain.009.001.08, pain.010.001.08, pain.011.001.08, pain.012.001.08, pain.013.001.12, pain.014.001.12, pain.017.001.04, pain.018.001.04, pacs.002.001.16, pacs.003.001.12, pacs.004.001.15, pacs.007.001.14, pacs.008.001.14, pacs.009.001.13, pacs.010.001.06, pacs.028.001.07, pacs.029.001.02, caam.001.001.05, caam.002.001.04, caam.003.001.05, caam.004.001.05, caam.005.001.03, caam.006.001.02, caam.007.001.01, caam.008.001.01, caam.009.001.03, caam.010.001.03, caam.011.001.02, caam.012.001.02, caam.013.001.01, caam.014.001.01, caam.015.001.01, caam.016.001.01",
   "entries": {
     "code:__5vPgaAEEfC4Q_xhaK1hdQ": {
-      "text": "UKPT (Unique Key Per Transaction). Clé de chiffrement utilisant l'AES (Advanced Encryption Standard) avec une clé d'une longueur de 256 bits. FIPS 197 - 6 novembre 2001).",
-      "source": "0a2ae94c0341",
+      "text": "UKPT (Unique Key Per Transaction). Clé de chiffrement utilisant l'AES (Advanced Encryption Standard) avec une clé d'une longueur de 256 bits.|FIPS 197 - 6 novembre 2001).",
+      "source": "db4bf800a570",
       "status": "machine",
       "by": "assistant",
       "date": "2026-10-08"
@@ -2243,8 +2243,8 @@
       "date": "2026-10-08"
     },
     "code:_GvfYMaB6EfC4Q_xhaK1hdQ": {
-      "text": "UKPT (Unique Key Per Transaction). Clé de chiffrement utilisant l'AES (Advanced Encryption Standard) avec une clé d'une longueur de 128 bits. FIPS 197 - 6 novembre 2001).",
-      "source": "c6d16edc2c8f",
+      "text": "UKPT (Unique Key Per Transaction). Clé de chiffrement utilisant l'AES (Advanced Encryption Standard) avec une clé d'une longueur de 128 bits.|FIPS 197 - 6 novembre 2001).",
+      "source": "31de83d2e4bc",
       "status": "machine",
       "by": "assistant",
       "date": "2026-10-08"

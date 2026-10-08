@@ -1,0 +1,50 @@
+choice	memberId	memberName	text
+CashAvailabilityDate1Choice	_VnGelTqwEeWZFYSPlduMhw	ActualDate	Identifies the actual availability date.
+CashAvailabilityDate1Choice	_VnGekzqwEeWZFYSPlduMhw	NumberOfDays	Indicates the number of float days attached to the balance.
+CreditLineType1Choice	_2T3LxYZ5Eee8r9VKRbnJSg	Code	Type of the credit line, as published in an external purpose code list.
+CreditLineType1Choice	_2T3Lx4Z5Eee8r9VKRbnJSg	Proprietary	Type of the credit line, in a proprietary form.
+BalanceType10Choice	_DOF0dYakEeeUws0ZryHQ2w	Code	Balance type, in a coded format.
+BalanceType10Choice	_DOF0dIakEeeUws0ZryHQ2w	Proprietary	Balance type, in a proprietary format.
+BalanceSubType1Choice	_SYoCRNp-Ed-ak6NoX_4Aeg_771530952	Code	Balance sub-type, as published in an external balance sub-type code list.
+BalanceSubType1Choice	_SYoCRdp-Ed-ak6NoX_4Aeg_771531004	Proprietary	Specifies a proprietary code for the balance type.
+DateOrDateTimePeriod1Choice	_RF6mMa6AEeexrtTFgmVD3Q	Date	Period expressed with dates.
+DateOrDateTimePeriod1Choice	_RF6mM66AEeexrtTFgmVD3Q	DateTime	Period expressed a dates and times.
+CardTransaction3Choice	_S-5Eka6BEeexrtTFgmVD3Q	Aggregated	Card transaction details, based on card transaction aggregated data performed by the card acquirer.
+CardTransaction3Choice	_S-5Ek66BEeexrtTFgmVD3Q	Individual	Card transaction details for the individual transaction, as recorded at the POI (point of interaction).
+IdentificationSource3Choice	_QmU-MNp-Ed-ak6NoX_4Aeg_-1238582323	Code	Unique and unambiguous identification source, as assigned via a pre-determined code list.
+IdentificationSource3Choice	_QmU-Mdp-Ed-ak6NoX_4Aeg_1058919953	Proprietary	Unique and unambiguous identification source using a proprietary identification scheme.
+RateType4Choice	_Rp-zk9p-Ed-ak6NoX_4Aeg_-171033828	Other	Rate type expressed, in an other form.
+RateType4Choice	_Rp-zktp-Ed-ak6NoX_4Aeg_-171033889	Percentage	Ratio of the amount of interest paid during a certain period of time compared to the principal amount of the interest bearing financial instrument.
+ImpliedCurrencyAmountRange1Choice	_O_mxN5lcEeeE1Ya-LgRsuQ	EqualAmount	Exact value an amount must match to be considered valid.
+ImpliedCurrencyAmountRange1Choice	_O_mxMZlcEeeE1Ya-LgRsuQ	FromAmount	Lower boundary of a range of amount values.
+ImpliedCurrencyAmountRange1Choice	_O_mxNZlcEeeE1Ya-LgRsuQ	FromToAmount	Range of valid amount values.
+ImpliedCurrencyAmountRange1Choice	_O_mxOZlcEeeE1Ya-LgRsuQ	NotEqualAmount	Value that an amount must not match to be considered valid.
+ImpliedCurrencyAmountRange1Choice	_O_mxM5lcEeeE1Ya-LgRsuQ	ToAmount	Upper boundary of a range of amount values.
+InterestType1Choice	_SRnbV9p-Ed-ak6NoX_4Aeg_-822918101	Code	Specifies the type of interest.
+InterestType1Choice	_SRnbWNp-Ed-ak6NoX_4Aeg_-822918058	Proprietary	Specifies the type of interest in uncoded form.
+CorporateActionEventType104Choice	_ZdRsQz3lEe-thIfLZ94a1w	Code	Corporate action event type, as published in an external corporate action event type code set.
+CorporateActionEventType104Choice	_ZdRsSz3lEe-thIfLZ94a1w	Proprietary	Event type expressed as a proprietary code.
+TransactionPrice4Choice	_-XasI7TUEee_k7HqaUKERA	DealPrice	Specifies the price of the traded financial instrument.|This is the deal price of the individual trade transaction. |If there is only one trade transaction for the execution of the trade, then the deal price could equal the executed trade price (unless, for example, the price includes commissions or rounding, or some other factor has been applied to the deal price or the executed trade price, or both).
+TransactionPrice4Choice	_-XasJbTUEee_k7HqaUKERA	Proprietary	Proprietary price specification related to the underlying transaction.
+YieldedOrValueType1Choice	_RdBVqNp-Ed-ak6NoX_4Aeg_599544875	ValueType	Type of value in which the price is expressed.
+YieldedOrValueType1Choice	_RdBVp9p-Ed-ak6NoX_4Aeg_599544874	Yielded	Indicates whether the price is expressed as a yield.
+PriceRateOrAmount3Choice	_d3Bg87QBEee1Ke-6rZgsrA	Amount	Price expressed as a currency and value.
+PriceRateOrAmount3Choice	_d3Bg8bQBEee1Ke-6rZgsrA	Rate	Price expressed as a rate, that is percentage.
+TransactionQuantities4Choice	_CMJ84z3qEe-thIfLZ94a1w	OriginalAndCurrentFaceAmount	Face amount and amortised value of security.
+TransactionQuantities4Choice	_CMJ85T3qEe-thIfLZ94a1w	Proprietary	Proprietary quantities specification defined in the underlying transaction.
+TransactionQuantities4Choice	_CMJ84T3qEe-thIfLZ94a1w	Quantity	Specifies the quantity (such as securities) in the underlying transaction.
+FinancialInstrumentQuantity33Choice	_HEcNuxuyEeyhRdHRjakS2w	AmortisedValue	Quantity expressed as an amount representing the current amortised face amount of a bond, for example, a periodic reduction/increase of a bond's principal amount.
+FinancialInstrumentQuantity33Choice	_5UlWABuyEeyhRdHRjakS2w	DigitalTokenUnit	Quantity of digital tokens expressed as a number, for example, a number of blockchain tokens.
+FinancialInstrumentQuantity33Choice	_HEcNuRuyEeyhRdHRjakS2w	FaceAmount	Quantity expressed as an amount representing the face amount, that is, the principal, of a debt instrument.
+FinancialInstrumentQuantity33Choice	_HEcNsRuyEeyhRdHRjakS2w	Unit	Quantity expressed as a number, for example, a number of shares.
+EntryStatus1Choice	_H_H9sIaoEeeUws0ZryHQ2w	Code	Entry status, in a coded form.
+EntryStatus1Choice	_KbxmUIaoEeeUws0ZryHQ2w	Proprietary	Entry status, in a proprietary form.
+TechnicalInputChannel1Choice	_Rpr4otp-Ed-ak6NoX_4Aeg_-968156368	Code	Technical input channel, as published in an external technical input channel code list.
+TechnicalInputChannel1Choice	_Rpr4o9p-Ed-ak6NoX_4Aeg_-450061832	Proprietary	Technical channel used to input the instruction, in a proprietary form.
+SequenceRange1Choice	_8FIqsYy3EeeGkvZr3jtnCQ	EqualSequence	Specified sequence to match.
+SequenceRange1Choice	_rsIb9Yy3EeeGkvZr3jtnCQ	FromSequence	Start sequence of the range.
+SequenceRange1Choice	_64OLoIy3EeeGkvZr3jtnCQ	FromToSequence	Particular sequence range specified between a start sequence and an end sequence.
+SequenceRange1Choice	_-oyTMYy3EeeGkvZr3jtnCQ	NotEqualSequence	Specified sequence to be excluded.
+SequenceRange1Choice	_rsIb9Iy3EeeGkvZr3jtnCQ	ToSequence	End sequence of the range.
+ReportingSource1Choice	_RqIkktp-Ed-ak6NoX_4Aeg_-1706426890	Code	Reporting source, as published in an external reporting source code list.
+ReportingSource1Choice	_RqIkk9p-Ed-ak6NoX_4Aeg_-1706426860	Proprietary	Reporting source, in a proprietary form.

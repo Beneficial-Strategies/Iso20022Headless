@@ -45,8 +45,8 @@ CryptographicKeyType5Code	EDE3	DES112	_jCaJx6ACEfC4Q_xhaK1hdQ	Data encryption st
 CryptographicKeyType5Code	EDE4	DES168	_jCaJz6ACEfC4Q_xhaK1hdQ	Data encryption standard key of 168 bits (without the parity bits).
 CryptographicKeyType5Code	RSAC	RSA	_A4U-saAFEfC4Q_xhaK1hdQ	Rivest, Shamir and Adleman.
 CryptographicKeyType5Code	UKA2	UKPTAES192	_9sNoAaAEEfC4Q_xhaK1hdQ	UKPT (Unique Key Per Transaction) or Master Session Key key encryption, using Advanced Encryption Standard with a 192 bits cryptographic key, approved by the Federal Information Processing Standards (FIPS 197 - November 6, 2001 - Advanced Encryption Standard).
-CryptographicKeyType5Code	UKA6	UKPTAES256	__5vPgaAEEfC4Q_xhaK1hdQ	UKPT (Unique Key Per Transaction). Encryption key using AES (Advanced Encryption Standard) with a  256 bits length key. FIPS 197 - 6 November 2001).
-CryptographicKeyType5Code	UKA8	UKPTAES128	_GvfYMaB6EfC4Q_xhaK1hdQ	UKPT (Unique Key Per Transaction). Encryption key using AES (Advanced Encryption Standard) with a 128 bits length key. FIPS 197 - 6 November 2001).
+CryptographicKeyType5Code	UKA6	UKPTAES256	__5vPgaAEEfC4Q_xhaK1hdQ	UKPT (Unique Key Per Transaction). Encryption key using AES (Advanced Encryption Standard) with a  256 bits length key. |FIPS 197 - 6 November 2001).
+CryptographicKeyType5Code	UKA8	UKPTAES128	_GvfYMaB6EfC4Q_xhaK1hdQ	UKPT (Unique Key Per Transaction). Encryption key using AES (Advanced Encryption Standard) with a 128 bits length key. |FIPS 197 - 6 November 2001).
 TR34Status1Code	BUND	Bound	_MpMAQbTjEeeQy4o2AayYHg	The device is bound.
 TR34Status1Code	UBND	Unbound	_MtU5YbTjEeeQy4o2AayYHg	The device is unbound.
 Algorithm11Code	HS01	SHA1	_I6AWUWi5EeS87LmvcA55sg	The DEPRECATED Message digest algorithm SHA-1 as defined in FIPS 180-1 - (ASN.1 Object Identifier: id-sha1).

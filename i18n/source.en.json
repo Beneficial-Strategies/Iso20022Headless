@@ -717,9 +717,9 @@
       "key": "code:__5vPgaAEEfC4Q_xhaK1hdQ",
       "kind": "code",
       "id": "__5vPgaAEEfC4Q_xhaK1hdQ",
-      "text": "UKPT (Unique Key Per Transaction). Encryption key using AES (Advanced Encryption Standard) with a  256 bits length key. FIPS 197 - 6 November 2001).",
+      "text": "UKPT (Unique Key Per Transaction). Encryption key using AES (Advanced Encryption Standard) with a  256 bits length key. |FIPS 197 - 6 November 2001).",
       "context": "Definition of code UKA6 (UKPTAES256) in CryptographicKeyType5Code",
-      "hash": "0a2ae94c0341"
+      "hash": "db4bf800a570"
     },
     {
       "key": "codeName:__5vPgaAEEfC4Q_xhaK1hdQ",
@@ -733,9 +733,9 @@
       "key": "code:_GvfYMaB6EfC4Q_xhaK1hdQ",
       "kind": "code",
       "id": "_GvfYMaB6EfC4Q_xhaK1hdQ",
-      "text": "UKPT (Unique Key Per Transaction). Encryption key using AES (Advanced Encryption Standard) with a 128 bits length key. FIPS 197 - 6 November 2001).",
+      "text": "UKPT (Unique Key Per Transaction). Encryption key using AES (Advanced Encryption Standard) with a 128 bits length key. |FIPS 197 - 6 November 2001).",
       "context": "Definition of code UKA8 (UKPTAES128) in CryptographicKeyType5Code",
-      "hash": "c6d16edc2c8f"
+      "hash": "31de83d2e4bc"
     },
     {
       "key": "codeName:_GvfYMaB6EfC4Q_xhaK1hdQ",

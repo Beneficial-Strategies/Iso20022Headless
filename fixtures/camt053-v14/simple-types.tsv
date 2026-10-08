@@ -1,0 +1,14 @@
+name	isoId	xsiType	pattern	minLength	maxLength	totalDigits	fractionDigits	minInclusive	maxInclusive	other
+Max5NumericText	_YYU65Np-Ed-ak6NoX_4Aeg_1112774407	Text	[0-9]{1,5}							
+Max15PlusSignedNumericText	_YY7X0dp-Ed-ak6NoX_4Aeg_1835339329	Text	[\+]{0,1}[0-9]{1,15}							
+PositiveNumber	_AlfR4c_dEeWjSMe6YTKHlQ	Quantity				18	0	1		
+Exact3NumericText	_YYxm0Np-Ed-ak6NoX_4Aeg_862142896	Text	[0-9]{3}							
+Min3Max4NumericText	_TQlEwgEcEeCQm6a_G2yO_w_461813234	Text	[0-9]{3,4}							
+ISOYearMonth	_YYU64tp-Ed-ak6NoX_4Aeg_-1824134999	YearMonth								
+Exact1NumericText	_TQbTwAEcEeCQm6a_G2yO_w_1224443793	Text	[0-9]							
+ChargeIncludedIndicator	_YXSZFdp-Ed-ak6NoX_4Aeg_536141126	Indicator								meaningWhenFalse=Pre-advised; meaningWhenTrue=Included 
+ISINOct2015Identifier	_rMvjUYIXEeWE0I8iABxEQA	IdentifierSet	[A-Z]{2,2}[A-Z0-9]{9,9}[0-9]{1,1}							identificationScheme=ANNA; ISINIdentifier
+Max20000Text	_YYxm19p-Ed-ak6NoX_4Aeg_-598584038	Text		1	20000					
+Max30DecimalNumber	_xNcaMBrKEeyhRdHRjakS2w	Quantity				30	29			
+NonNegativeDecimalNumber	_mX4tAyGwEeKjd4jizyIDGA	Quantity				18	17	0		
+ActiveOrHistoricCurrencyAnd13DecimalAmount	_YYB_9Np-Ed-ak6NoX_4Aeg_-771372619	Amount				18	13	0		currencyIdentifierSet=_bqIp6tp-Ed-ak6NoX_4Aeg_1823330336

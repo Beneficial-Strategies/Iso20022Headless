@@ -141,3 +141,32 @@ export function messageJson(spec: Spec, m: MessageSpec): MessageJson {
     })),
   };
 }
+
+const SIMPLE_COLUMNS = ['name', 'isoId', 'xsiType', 'pattern', 'minLength', 'maxLength', 'totalDigits', 'fractionDigits', 'minInclusive', 'maxInclusive', 'other'];
+
+/** Facets the generator reads as columns; the rest go to `other` as `facet=value; ...` for people. */
+const COLUMN_FACETS = new Set(['specType', 'pattern', 'minLength', 'maxLength', 'length', 'totalDigits', 'fractionDigits', 'minInclusive', 'maxInclusive']);
+
+/**
+ * One simple-types.tsv row per type, from the snapshot's FACET rows (constraints taken verbatim from the spec). An exact `length`
+ * facet is a minimum and a maximum of the same size. Types with no FACET rows (external schemas) are written with their kind.
+ */
+export function simpleTypeRows(spec: Spec, names: string[]): string[][] {
+  return names.map((name) => {
+    const t = spec.simpleTypes.get(name) ?? spec.amounts.get(name) ?? spec.externalSchemas.get(name);
+    const f = spec.facets.get(name) ?? {};
+    const exact = f.length;
+    const other = Object.entries(f)
+      .filter(([k]) => !COLUMN_FACETS.has(k))
+      .map(([k, v]) => `${k}=${v}`)
+      .join('; ');
+    return [
+      name, t?.isoId ?? '', f.specType ?? (spec.externalSchemas.has(name) ? 'ExternalSchema' : ''), f.pattern ?? '', f.minLength ?? exact ?? '', f.maxLength ?? exact ?? '',
+      f.totalDigits ?? '', f.fractionDigits ?? '', f.minInclusive ?? '', f.maxInclusive ?? '', other,
+    ];
+  });
+}
+
+export function simpleTypesTsv(rows: string[][]): string {
+  return [SIMPLE_COLUMNS, ...rows].map((r) => r.join('\t')).join('\n') + '\n';
+}

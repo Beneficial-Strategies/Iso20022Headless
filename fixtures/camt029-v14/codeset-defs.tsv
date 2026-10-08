@@ -1,0 +1,8 @@
+codeSet	isoId	text
+ExternalPaymentCancellationRejection1Code	_-LDBoIlyEeePr-EGJjGYzQ	Specifies the reason for the rejection of a cancellation, as published in an external payment cancellation rejection code set.|External code sets can be downloaded from www.iso20022.org.
+GroupCancellationStatus1Code	_auruQ9p-Ed-ak6NoX_4Aeg_-1224774658	Specifies the status of a group of cancellation requests.
+TransactionIndividualStatus1Code	_Yrsi2Np-Ed-ak6NoX_4Aeg_-1851702308	Specifies the status of a single payment transaction.
+CancellationIndividualStatus1Code	_bXW31tp-Ed-ak6NoX_4Aeg_349830100	Specifies the status of a cancellation request.
+ExternalPaymentCompensationReason1Code	_CHK8YIjYEeeDW7_wB-eK_g	Specifies the reason for compensation for the processing of a payment, as published in an external code set.|External code sets can be downloaded from www.iso20022.org.
+ExternalInvestigationExecutionConfirmation1Code	_iF0dsImxEeeKR__nUfxjwA	Specifies the result of an investigation, as published in an external investigation execution confirmation code set.|External code sets can be downloaded from www.iso20022.org.
+ExternalPaymentModificationRejection1Code	_eDCG4IlzEeePr-EGJjGYzQ	Specifies the reason for the rejection of a modification, as published in an external payment modification rejection code set.|External code sets can be downloaded from www.iso20022.org.

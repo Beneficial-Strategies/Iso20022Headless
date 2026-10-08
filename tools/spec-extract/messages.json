@@ -278,5 +278,53 @@
     "bodyTag": "ATMRcncltnRspn",
     "out": "caam016",
     "dir": "caam016-v01"
+  },
+  {
+    "name": "BankToCustomerStatementV14",
+    "id": "df0ea45a-4f50-4036-9283-70365f059c0d",
+    "identifier": "camt.053.001.14",
+    "bodyTag": "BkToCstmrStmt",
+    "out": "camt053",
+    "dir": "camt053-v14"
+  },
+  {
+    "name": "BankToCustomerAccountReportV14",
+    "id": "084fea4f-a596-4347-b2be-2ffcdfebc93d",
+    "identifier": "camt.052.001.14",
+    "bodyTag": "BkToCstmrAcctRpt",
+    "out": "camt052",
+    "dir": "camt052-v14"
+  },
+  {
+    "name": "BankToCustomerDebitCreditNotificationV14",
+    "id": "94a782ff-3748-421f-8ad1-55c3092ccb1d",
+    "identifier": "camt.054.001.14",
+    "bodyTag": "BkToCstmrDbtCdtNtfctn",
+    "out": "camt054",
+    "dir": "camt054-v14"
+  },
+  {
+    "name": "FIToFIPaymentCancellationRequestV12",
+    "id": "6ed7d708-8efb-4cb8-93c3-a89170fab8a9",
+    "identifier": "camt.056.001.12",
+    "bodyTag": "FIToFIPmtCxlReq",
+    "out": "camt056",
+    "dir": "camt056-v12"
+  },
+  {
+    "name": "ResolutionOfInvestigationV14",
+    "id": "524da510-1286-4f88-89d2-962d2a425f89",
+    "identifier": "camt.029.001.14",
+    "bodyTag": "RsltnOfInvstgtn",
+    "out": "camt029",
+    "dir": "camt029-v14"
+  },
+  {
+    "name": "CustomerPaymentCancellationRequestV13",
+    "id": "f1e9619e-523f-4042-a45d-aeaada857b2d",
+    "identifier": "camt.055.001.13",
+    "bodyTag": "CstmrPmtCxlReq",
+    "out": "camt055",
+    "dir": "camt055-v13"
   }
 ]

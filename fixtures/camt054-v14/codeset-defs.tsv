@@ -1,0 +1,29 @@
+codeSet	isoId	text
+CopyDuplicate1Code	_bCWRI9p-Ed-ak6NoX_4Aeg_-462671342	Specifies if this document is a copy, a duplicate, or a duplicate of a copy.
+ExternalBankTransactionDomain1Code	_amL5lNp-Ed-ak6NoX_4Aeg_450092509	Specifies the bank transaction code domain, as published in an external bank transaction code domain code list.|External code sets can be downloaded from www.iso20022.org.
+ExternalBankTransactionFamily1Code	_amL5ltp-Ed-ak6NoX_4Aeg_482415289	Specifies the bank transaction code family, as published in an external bank transaction code family code list.|External code sets can be downloaded from www.iso20022.org.
+ExternalBankTransactionSubFamily1Code	_amVqkNp-Ed-ak6NoX_4Aeg_512891906	Specifies the bank transaction code sub-family, as published in an external bank transaction code sub-family code list.|External code sets can be downloaded from www.iso20022.org.
+CardPaymentServiceType2Code	_TSqIbwEcEeCQm6a_G2yO_w_2042569244	Service provided by the card payment transaction, in addition to the main service.
+ExternalCardTransactionCategory1Code	_t7bogFkyEeGeoaLUQk__nA_-1719712446	Specifies the category of card transaction in the format of character string with a maximum length of 4 characters.|The list of valid codes is an external code list published separately.|External code sets can be downloaded from www.iso20022.org.
+CSCManagement1Code	_TS9qYQEcEeCQm6a_G2yO_w_-804127704	CSC (Card Security Code) management associated with the transaction.
+CardholderVerificationCapability1Code	_TSg-dAEcEeCQm6a_G2yO_w_-949484223	Cardholder verification capabilities of the POI (Personal Identification Number) performing the transaction.
+UserInterface2Code	_TUmCEgEcEeCQm6a_G2yO_w_-457047932	Type of interface to display a message.
+OnLineCapability1Code	_TTZvTgEcEeCQm6a_G2yO_w_-1858574023	On-line and off-line capabilities of the POI (Point Of Interaction).
+POIComponentType1Code	_TT2bMAEcEeCQm6a_G2yO_w_-1074872914	Generic component type belonging to a POI (Point of Interaction) Terminal.
+PartyType4Code	_TTtRQAEcEeCQm6a_G2yO_w_-1492633607	Entity assigning an identification (for example merchant, acceptor, acquirer, tax authority, etc.).
+PartyType3Code	_TTjgTQEcEeCQm6a_G2yO_w_-438078851	Identification of the type of entity involved in a transaction.
+AttendanceContext1Code	_TSESgwEcEeCQm6a_G2yO_w_-1954159559	Human attendance at the POI location during the transaction.
+ISO2ALanguageCode	_TUmCIAEcEeCQm6a_G2yO_w_637447613	Identification of the language name according to the ISO 639-1 codes. The type is validated by the list of values coded with two alphabetic characters, defined in the standard.
+AuthenticationEntity1Code	_TSESjQEcEeCQm6a_G2yO_w_-1884722384	Entity or object in charge of verifying the cardholder authenticity.
+AuthenticationMethod1Code	_TSNccAEcEeCQm6a_G2yO_w_-183697186	Method used to authenticate a cardholder.
+TransactionChannel1Code	_TUAMOQEcEeCQm6a_G2yO_w_2033954837	Identifies the type of the communication channels used by the cardholder to the acceptor system.
+TransactionEnvironment1Code	_TUAMPgEcEeCQm6a_G2yO_w_704662992	Indicates the environment of the transaction.
+UnitOfMeasure1Code	_TUTHIwEcEeCQm6a_G2yO_w_859190881	Unit of measure of the item purchased.
+ExternalRePresentmentReason1Code	_Y-8cBfwLEeGHDMP28rpT3g_-2028738047	Specifies the external representment reason code in the format of character string with a maximum length of 4 characters. The list of valid codes is an external code list published separately.
+ExternalFinancialInstrumentIdentificationType1Code	_Yajvhtp-Ed-ak6NoX_4Aeg_-705317158	Specifies the external financial instrument identification type scheme name code in the format of character string with a maximum length of 4 characters.|The list of valid codes is an external code list published separately.|External code sets can be downloaded from www.iso20022.org.
+InterestType1Code	_zdviVg93EeGeV5vP7Mvdig_45097203	Indicates which type of interest is applied to a balance left on an account.
+ExternalCorporateActionEventType1Code	_Qsi2cD3lEe-thIfLZ94a1w	Specifies the corporate action event type, as published in an external corporate action event type code set.|External code sets can be downloaded from www.iso20022.org.
+PriceValueType1Code	_aJIKJ9p-Ed-ak6NoX_4Aeg_1793790743	Specifies a type of value of the price.
+ExternalEntryStatus1Code	__lGEsK6IEeexrtTFgmVD3Q	Specifies the status of an entry on the books of the account servicer, as published in an external code set.|External code sets can be downloaded from www.iso20022.org.
+ExternalTechnicalInputChannel1Code	_amolh9p-Ed-ak6NoX_4Aeg_-614400071	Specifies the technical input channel, as published in an external technical input channel code list.|External code sets can be downloaded from www.iso20022.org.
+ExternalReportingSource1Code	_amolgtp-Ed-ak6NoX_4Aeg_-418115557	Specifies the reporting source, as published in an external reporting source code list.|External code sets can be downloaded from www.iso20022.org.

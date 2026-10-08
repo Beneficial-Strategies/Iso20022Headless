@@ -1,0 +1,35 @@
+{
+  "identifier": "camt.053.001.14",
+  "name": "BankToCustomerStatementV14",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.053.001.14",
+  "bodyTag": "BkToCstmrStmt",
+  "out": "camt053",
+  "isoId": "df0ea45a-4f50-4036-9283-70365f059c0d",
+  "definition": "Scope|The BankToCustomerStatement message is sent by the account servicer to an account owner or to a party authorised by the account owner to receive the message. It is used to inform the account owner, or authorised party, of the entries booked to the account, and to provide the owner with balance information on the account at a given point in time.|Usage|The BankToCustomerStatement message can contain reports for more than one account. It provides information for cash management and/or reconciliation.|It contains information on booked entries only.|It can include underlying details of transactions that have been included in the entry.|The message is exchanged as defined between the account servicer and the account owner. It provides information on items that have been booked to the account and also balance information. Depending on services and schedule agreed between banks and their customers, statements may be generated and exchanged accordingly, for example for intraday or prior day periods.|It is possible that the receiver of the message is not the account owner, but a party entitled through arrangement with the account owner to receive the account information (also known as recipient).",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "2c2fcfd0-633d-4284-8dd1-596a437c100e",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader116",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Statement",
+      "isoId": "c9e4a7a0-c2aa-4312-9a65-d9f422e20341",
+      "xmlTag": "Stmt",
+      "type": "AccountStatement15",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "62eb50ab-d5ee-4097-871a-045956774f3e",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

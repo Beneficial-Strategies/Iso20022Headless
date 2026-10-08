@@ -1,0 +1,2 @@
+name	isoId	xsiType	pattern	minLength	maxLength	totalDigits	fractionDigits	minInclusive	maxInclusive	other
+ActiveOrHistoricCurrencyAnd13DecimalAmount	_YYB_9Np-Ed-ak6NoX_4Aeg_-771372619	Amount				18	13	0		currencyIdentifierSet=_bqIp6tp-Ed-ak6NoX_4Aeg_1823330336

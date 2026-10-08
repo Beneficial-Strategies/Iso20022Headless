@@ -1,0 +1,35 @@
+{
+  "identifier": "camt.052.001.14",
+  "name": "BankToCustomerAccountReportV14",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.052.001.14",
+  "bodyTag": "BkToCstmrAcctRpt",
+  "out": "camt052",
+  "isoId": "084fea4f-a596-4347-b2be-2ffcdfebc93d",
+  "definition": "Scope|The BankToCustomerAccountReport message is sent by the account servicer to an account owner or to a party authorised by the account owner to receive the message. It can be used to inform the account owner, or authorised party, of the entries reported to the account, and/or to provide the owner with balance information on the account at a given point in time.|Usage|The BankToCustomerAccountReport message can contain reports for more than one account. It provides information for cash management and/or reconciliation. It can be used to:|- report pending and booked items;|- provide balance information.|It can include underlying details of transactions that have been included in the entry.|It is possible that the receiver of the message is not the account owner, but a party entitled by the account owner to receive the account information (also known as recipient).|For a statement, the Bank-to-Customer Account Statement message should be used.",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "f7a65fc7-0813-45f0-a67e-68dc776a4d0d",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader116",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Report",
+      "isoId": "c4a84b26-29eb-47de-9b82-01770a40c23c",
+      "xmlTag": "Rpt",
+      "type": "AccountReport38",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "7ffcf829-ec5f-4d7d-aae3-36ce3e0089df",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}
