@@ -65,10 +65,11 @@ export interface Skin {
   Title: (p: { children: ReactNode; info: ReactNode; note?: ReactNode }) => ReactNode;
   /**
    * The help button for an element. Hovering (or keyboard focus) shows the spec definition in a popup; clicking calls
-   * `onToggle`, which shows the same text inline, as the element's `InfoNote`, under its label. `extra` is what the host
-   * put beside it (`SchemaForm`'s `fieldExtra`): the skin shows it right after the button and adds nothing of its own.
+   * `onToggle`, which shows the same text inline, as the element's `InfoNote`, under its label. `spec` is the element's type
+   * and the address of its official page (`SchemaForm`'s `specLink`): the skin shows a small link button right after the "i".
+   * `extra` is what the host put beside it (`SchemaForm`'s `fieldExtra`): shown after that, and nothing of the skin's own.
    */
-  Info: (p: { def: Localized | undefined; label: string; open: boolean; onToggle: () => void; noteId: string; extra?: ReactNode }) => ReactNode;
+  Info: (p: { def: Localized | undefined; label: string; open: boolean; onToggle: () => void; noteId: string; extra?: ReactNode; spec?: { type: string; url: string } | undefined }) => ReactNode;
   /** The inline help text shown while the help button is toggled on. The skin places it under the label (`note` props). */
   InfoNote: (p: { def: Localized | undefined; id: string }) => ReactNode;
   /** A value shown as text, not in a control: what an element in `label` mode holds. */

@@ -5,6 +5,15 @@ import { useI18n } from '@beneficial-strategies/iso20022-react-ui';
  * Keeping it here, not in the library's catalog, means the library stays generic and the demos' text is controlled from outside.
  */
 const EN = {
+  // hover help for the controls at the top
+  helpAreaTitle: 'Business area',
+  helpArea: 'ISO 20022 groups its messages into business areas, such as payments initiation (pain), clearing and settlement (pacs) and ATM management (caam). Choose an area to see its messages.',
+  helpMessageTitle: 'Message',
+  helpMessage: 'The ISO 20022 message to explore, by its identifier (area, function, flavour and version). Choose one to see every element it can hold.',
+  helpTypeTitle: 'What the form shows',
+  helpType: 'The whole message, or just one part of it. Choose a part to work on it alone, the same as the magnifier beside an element does.',
+  helpDisplayTitle: 'Display settings',
+  helpDisplay: 'Language, light or dark theme, text size, density, whether the output is XML or JSON, and the style of the form.',
   // the menu
   copyAs: 'Copy as',
   copyAsTitle: 'Copy what the form shows now, in a format for your document or tool',
@@ -83,6 +92,14 @@ const EN = {
 export type DemoKey = keyof typeof EN;
 
 const ES: Record<DemoKey, string> = {
+  helpAreaTitle: 'Área de negocio',
+  helpArea: 'ISO 20022 agrupa sus mensajes en áreas de negocio, como iniciación de pagos (pain), compensación y liquidación (pacs) y gestión de cajeros automáticos (caam). Elija un área para ver sus mensajes.',
+  helpMessageTitle: 'Mensaje',
+  helpMessage: 'El mensaje ISO 20022 que quiere explorar, por su identificador (área, función, variante y versión). Elija uno para ver cada elemento que puede contener.',
+  helpTypeTitle: 'Qué muestra el formulario',
+  helpType: 'El mensaje completo, o solo una parte. Elija una parte para trabajar con ella sola, igual que la lupa junto a un elemento.',
+  helpDisplayTitle: 'Configuración de pantalla',
+  helpDisplay: 'Idioma, tema claro u oscuro, tamaño del texto, densidad, si la salida es XML o JSON y el estilo del formulario.',
   copyAs: 'Copiar como',
   copyAsTitle: 'Copiar lo que muestra el formulario ahora, en un formato para su documento o herramienta',
   copyAsMenu: 'Copiar la pantalla como',

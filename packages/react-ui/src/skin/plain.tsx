@@ -138,9 +138,14 @@ export const plainSkin: Skin = {
       </div>
     );
   },
-  Info: function Info({ def, label, extra }) {
+  Info: function Info({ def, label, extra, spec }) {
     const { t, lang } = useI18n();
-    if (!def) return extra ? <>{extra}</> : null;
+    const specLink = spec ? (
+      <a href={spec.url} target="_blank" rel="noopener noreferrer" aria-label={t('specTip', { type: spec.type })} title={t('specTip', { type: spec.type })}>
+        ↗
+      </a>
+    ) : null;
+    if (!def) return extra || specLink ? <>{specLink}{extra}</> : null;
     return (
       <>
       <details>
@@ -165,6 +170,7 @@ export const plainSkin: Skin = {
           </small>
         ) : null}
       </details>
+      {specLink}
       {extra}
       </>
     );

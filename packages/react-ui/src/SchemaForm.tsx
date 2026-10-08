@@ -1,4 +1,5 @@
 import { createContext, useContext, useId, useState, type ReactNode } from 'react';
+import { isoTypeUrl } from './Info.tsx';
 import { displayName, type FieldDescriptor } from '@beneficial-strategies/iso20022-validate';
 import type { Localized } from '@beneficial-strategies/iso20022-validate/definitions';
 import type { FormApi } from './formApi.ts';
@@ -59,6 +60,10 @@ export interface FieldExtraContext {
   path: string;
 }
 
+/** Where a type's official page is: ISO's, unless the host gives another way (or `false`: no spec buttons). */
+type SpecLink = false | ((type: string) => string | undefined);
+const SpecLinkContext = createContext<SpecLink>(isoTypeUrl);
+
 /** Set by `SchemaForm` when the host wants something beside the "i" of every element (`fieldExtra`). */
 const ExtraRenderer = createContext<((element: FieldExtraContext) => ReactNode) | undefined>(undefined);
 
@@ -96,15 +101,19 @@ interface ModeState {
 const ModeContext = createContext<ModeState>({ mode: 'editable', marked: 'editable' });
 
 /** The help for an element: the "i" button (hover shows a popup) and the inline note a click on it shows under the label. */
-function useHelp(def: Localized | undefined, label: string, skip?: boolean, element?: FieldExtraContext): { info: ReactNode; note: ReactNode } {
+function useHelp(def: Localized | undefined, label: string, skip?: boolean, element?: FieldExtraContext, specType?: string): { info: ReactNode; note: ReactNode } {
   const S = useSkin();
   const [open, setOpen] = useState(false);
   const noteId = useId();
   const fieldExtra = useContext(ExtraRenderer);
   const extra = element ? fieldExtra?.(element) : undefined;
-  if (skip || (!def && !extra)) return { info: null, note: null };
+  const specLink = useContext(SpecLinkContext);
+  const type = element?.type ?? specType;
+  const url = specLink && type ? specLink(type) : undefined;
+  const spec = type && url ? { type, url } : undefined;
+  if (skip || (!def && !extra && !spec)) return { info: null, note: null };
   return {
-    info: <S.Info def={def} label={label} open={open} onToggle={() => setOpen((o) => !o)} noteId={noteId} extra={extra} />,
+    info: <S.Info def={def} label={label} open={open} onToggle={() => setOpen((o) => !o)} noteId={noteId} extra={extra} spec={spec} />,
     note: open ? <S.InfoNote def={def} id={noteId} /> : null,
   };
 }
@@ -359,6 +368,10 @@ function FieldNode(p: Omit<NodeProps, 'required'>) {
  * a button, an icon, a link. The library puts nothing there itself, so what it is and what it does belongs to the host
  * (the demos use it for a "zoom" button that shows a component type on its own).
  *
+ * `specLink` decides the small button after each "i" that opens the official ISO 20022 page of the element's type in a new
+ * window: by default ISO's repository page; `false` shows no such buttons; a function gives another address for a type name
+ * (or nothing for it).
+ *
  * `fieldMode`, when given, is asked for every element and may answer `label` or `hidden` (see `FieldMode`); `fieldModeView`
  * says whether those are applied (the default) or only marked. Elements it does not mention stay editable.
  */
@@ -367,26 +380,42 @@ export function SchemaForm({
   fieldExtra,
   fieldMode,
   fieldModeView = 'apply',
+  specLink = isoTypeUrl,
 }: {
   form: FormApi;
   fieldExtra?: (element: FieldExtraContext) => ReactNode;
   fieldMode?: (element: FieldExtraContext) => FieldMode | undefined;
   fieldModeView?: FieldModeView;
+  specLink?: SpecLink;
 }) {
+  return (
+    // data-schema-form marks everything the skin renders, so page chrome around it can be told apart
+    <div data-schema-form>
+      <SpecLinkContext.Provider value={specLink}>
+        <ExtraRenderer.Provider value={fieldExtra}>
+          <ModeConfigContext.Provider value={{ ...(fieldMode ? { fieldMode } : {}), view: fieldModeView }}>
+            <SchemaFormBody form={form} />
+          </ModeConfigContext.Provider>
+        </ExtraRenderer.Provider>
+      </SpecLinkContext.Provider>
+    </div>
+  );
+}
+
+/** The title and the elements: inside the providers, so that the title's help sees the same settings as the elements'. */
+function SchemaFormBody({ form }: { form: FormApi }) {
   const S = useSkin();
   const labelOf = useLabel();
   const { defs } = useI18n();
   const root = form.typeDescriptors[form.rootType]!;
   const title = displayName(root.name);
-  const rootHelp = useHelp(defs.type(root), title);
+  const rootHelp = useHelp(defs.type(root), title, false, undefined, root.name);
   const fields = root.kind === 'choice' ? [] : (root.fields ?? []);
   return (
-    // data-schema-form marks everything the skin renders, so page chrome around it can be told apart
-    <div data-schema-form>
-    <ExtraRenderer.Provider value={fieldExtra}>
-    <ModeConfigContext.Provider value={{ ...(fieldMode ? { fieldMode } : {}), view: fieldModeView }}>
     <S.Stack>
-      <S.Title info={rootHelp.info} note={rootHelp.note}>{title}</S.Title>
+      <S.Title info={rootHelp.info} note={rootHelp.note}>
+        {title}
+      </S.Title>
       {root.kind === 'choice' ? (
         <ChoiceNode
           form={form}
@@ -399,8 +428,5 @@ export function SchemaForm({
         fields.map((f) => <FieldNode key={f.name} form={form} field={f} path={f.name} label={labelOf(f)} depth={0} />)
       )}
     </S.Stack>
-    </ModeConfigContext.Provider>
-    </ExtraRenderer.Provider>
-    </div>
   );
 }
