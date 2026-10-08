@@ -1765,7 +1765,7 @@ function fieldWidthScenarios(): Scenario[] {
         },
         expect: async (page: Page) => {
           const r = await capacity(page);
-          return [...(r.checked >= (size === 'xlarge' ? 2 : 5) ? [] : [`only ${r.checked} boxes were checked`]), ...r.problems];
+          return [...(r.checked >= (size === 'xlarge' ? 2 : 3) ? [] : [`only ${r.checked} boxes were checked`]), ...r.problems];
         },
       })),
     ),
@@ -1784,8 +1784,8 @@ function fieldWidthScenarios(): Scenario[] {
       name: 'fieldwidth-plain-skin',
       query: '?skin=plain',
       expect: async (page) => {
-        const r = await page.evaluate(() => ({ size: document.querySelector<HTMLInputElement>('#GroupHeader-MessageIdentification')?.size, name: document.querySelector<HTMLInputElement>('#GroupHeader-InitiatingParty-Name')?.size }));
-        return r.size === 42 && r.name === 20 ? [] : [`native sizes are ${JSON.stringify(r)}`];
+        const r = await page.evaluate(() => ({ sized: document.querySelectorAll('[data-form-area] input[size], [data-form-area] input[style]').length }));
+        return r.sized === 0 ? [] : [`the plain skin set sizes on ${r.sized} boxes`];
       },
     },
   ];

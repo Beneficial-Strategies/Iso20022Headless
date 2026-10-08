@@ -18,15 +18,15 @@ const box = (name: RegExp) => screen.getByRole('textbox', { name }) as HTMLInput
 const maxWidth = (e: HTMLElement) => e.style.maxWidth;
 
 describe('controls are as wide as their type needs (the default)', () => {
-  it('an identifier of at most 35 characters is capped, with room to spare: 1.4 times as many digit widths, plus the box', () => {
+  it('an identifier of at most 35 characters is capped, with room to spare: 1.55 times as many digit widths, plus the box', () => {
     render(<Form />);
-    expect(maxWidth(box(/^Message Identification/))).toBe('calc(49ch + 2rem)');
+    expect(maxWidth(box(/^Message Identification/))).toBe('calc(55ch + 2rem)');
   });
 
   it('a digits-only field is capped to its digits', () => {
     render(<Form />);
-    expect(maxWidth(box(/^Number Of Transactions/))).toBe('calc(21ch + 2rem)'); // 15 digits
-    expect(maxWidth(box(/^Control Sum/))).toBe('calc(28ch + 2rem)'); // 18 digits, a point and a sign
+    expect(maxWidth(box(/^Number Of Transactions/))).toBe('calc(24ch + 2rem)'); // 15 digits
+    expect(maxWidth(box(/^Control Sum/))).toBe('calc(31ch + 2rem)'); // 18 digits, a point and a sign
   });
 
   it('a name that can be 140 characters takes the full width: no cap', () => {
@@ -36,14 +36,14 @@ describe('controls are as wide as their type needs (the default)', () => {
 
   it('a short code is capped at a few characters', () => {
     render(<Form />);
-    expect(maxWidth(box(/^Country Of Residence/))).toBe('calc(12ch + 2rem)');
+    expect(maxWidth(box(/^Country Of Residence/))).toBe('calc(13ch + 2rem)');
   });
 
   it('an empty date-time is a row of the box and its Now button, capped as one; the box itself is not capped', () => {
     render(<Form />);
     const input = box(/^Creation Date Time/);
     expect(maxWidth(input)).toBe('');
-    expect(maxWidth(input.closest('div.flex')!)).toBe('calc(48ch + 2rem)'); // 30 characters and the button
+    expect(maxWidth(input.closest('div.flex')!)).toBe('calc(53ch + 2rem)'); // 30 characters and the button
   });
 
   it('a dropdown is capped by its longest option', () => {
@@ -70,9 +70,9 @@ describe('fieldSizing="full" keeps every control as wide as the panel', () => {
 });
 
 describe('the plain skin', () => {
-  it('uses the native size of a text box, and adds no classes or styles', () => {
+  it('leaves sizing to the browser: no sizes, widths, classes or styles of its own', () => {
     const { container } = render(<Form skin={plainSkin} />);
-    expect(box(/^Message Identification/).size).toBe(42); // 35 characters and a fifth more
+    expect(box(/^Message Identification/).hasAttribute('size')).toBe(false);
     expect(box(/^Name/).hasAttribute('size')).toBe(false);
     expect(container.querySelectorAll('[class]')).toHaveLength(0);
     expect(container.querySelectorAll('input[style], select[style]')).toHaveLength(0);

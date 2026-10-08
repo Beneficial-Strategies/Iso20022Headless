@@ -7,8 +7,8 @@ import type { Skin } from './types.ts';
 const control =
   'w-full rounded border border-edge bg-surface text-fg px-2 py-1 text-sm shadow-sm focus:border-focus focus:outline-none focus-visible:ring-2 focus-visible:ring-focus aria-[invalid=true]:border-danger-line aria-[invalid=true]:bg-danger-soft';
 
-/** The width of a control that needs about `chars` characters: a little more than that (capital letters are wider than digits, so that nothing is cut off) and room for the box itself. Never more than the panel. */
-const fit = (chars?: number): CSSProperties | undefined => (chars ? { maxWidth: `calc(${Math.ceil(chars * 1.4)}ch + 2rem)` } : undefined);
+/** The width of a control that needs about `chars` characters: a little more than that (a capital M is up to 1.5 times as wide as a digit in common fonts, so that nothing is cut off) and room for the box itself. Never more than the panel. */
+const fit = (chars?: number): CSSProperties | undefined => (chars ? { maxWidth: `calc(${Math.ceil(chars * 1.55)}ch + 2rem)` } : undefined);
 
 const btn = {
   primary: 'bg-accent text-accent-fg hover:bg-accent-hover',

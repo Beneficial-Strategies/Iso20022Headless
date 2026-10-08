@@ -53,12 +53,12 @@ export const plainSkin: Skin = {
     );
   },
   Row: ({ children }) => <span>{children}</span>,
-  Text: ({ field, type = 'text', maxLength, placeholder, inputMode, ariaLabel, multiline, chars }) =>
+  Text: ({ field, type = 'text', maxLength, placeholder, inputMode, ariaLabel, multiline }) =>
     multiline ? (
       <textarea {...field} rows={2} placeholder={placeholder} aria-label={ariaLabel} />
     ) : (
-      // the native way to size a text box to its characters (a date or a number box sizes itself)
-      <input {...field} type={type} maxLength={maxLength} placeholder={placeholder} inputMode={inputMode} aria-label={ariaLabel} {...(chars && type === 'text' ? { size: Math.ceil(chars * 1.2) } : {})} />
+      // the plain skin leaves sizing to the browser (a box of a default width): it carries no widths of its own
+      <input {...field} type={type} maxLength={maxLength} placeholder={placeholder} inputMode={inputMode} aria-label={ariaLabel} />
     ),
   Select: function Select({ id, value, options, onChange, onBlur, invalid, required, describedBy }) {
     const { t } = useI18n();
