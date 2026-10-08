@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Beneficial Strategies">
+  <title>Beneficial Strategies</title>
+  <!-- The rook from the Beneficial Strategies logo, on a white tile so that it shows on dark tabs too -->
+  <rect width="120" height="120" rx="24" fill="#ffffff"/>
+  <g transform="translate(12 12) scale(0.8)">
+    <rect transform="scale(0.6)" x="14" y="178" width="172" height="20" rx="6" fill="#1B3A5C"/>
+    <rect transform="scale(0.6)" x="26" y="154" width="148" height="24" rx="4" fill="#1B3A5C"/>
+    <rect transform="scale(0.6)" x="40" y="130" width="120" height="24" rx="3" fill="#1B3A5C"/>
+    <rect transform="scale(0.6)" x="46" y="50" width="108" height="82" rx="2" fill="#1B3A5C"/>
+    <rect transform="scale(0.6)" x="46" y="18" width="28" height="34" rx="3" fill="#2A9D8F"/>
+    <rect transform="scale(0.6)" x="86" y="18" width="28" height="34" rx="3" fill="#2A9D8F"/>
+    <rect transform="scale(0.6)" x="126" y="18" width="28" height="34" rx="3" fill="#2A9D8F"/>
+  </g>
+</svg>

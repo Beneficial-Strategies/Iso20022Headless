@@ -6,6 +6,7 @@
  *   pnpm visual check [--only name] [--out dir]    same, and fail on layout problems (exit code 1)
  *   pnpm visual selftest                           inject known defects and prove the checks catch them
  *   pnpm visual pages [--site dir] [--prefix /repo/]  smoke-test the built GitHub Pages site under its sub-path
+ *   pnpm visual brand                              remake the favicon PNGs and the link-preview card from tools/pages/brand
  *   pnpm visual list                               list the states
  */
 import { existsSync, mkdirSync } from 'node:fs';
@@ -14,9 +15,10 @@ import { fileURLToPath } from 'node:url';
 import type { Browser, Page } from 'puppeteer-core';
 import { launch } from './browser.ts';
 import { runPageChecks, type Violation } from './checks.ts';
-import { scenarios, type Scenario } from './scenarios.ts';
+import { headFacts, scenarios, type Scenario } from './scenarios.ts';
 import { startApp, type AppName, type Running } from './servers.ts';
 import { serveStatic } from './static.ts';
+import { makeBrand } from './brand.ts';
 
 const here = dirname(fileURLToPath(import.meta.url));
 
@@ -59,6 +61,15 @@ async function main(argv: string[]): Promise<number> {
     return 0;
   }
   if (cmd === 'pages') return pagesSmokeTest(argv);
+  if (cmd === 'brand') {
+    const browser = await launch();
+    try {
+      console.log(`made ${(await makeBrand(browser)).join(', ')} in tools/pages/brand`);
+    } finally {
+      await browser.close();
+    }
+    return 0;
+  }
   if (cmd !== 'shots' && cmd !== 'check' && cmd !== 'selftest') {
     console.error('usage: pnpm visual <shots|check|selftest|pages|list> [--only name] [--out dir]');
     return 2;
@@ -139,6 +150,22 @@ async function pagesSmokeTest(argv: string[]): Promise<number> {
       },
     },
     { name: 'form demo', path: 'form/', expect: async (page) => ((await page.$('#GroupHeader-MessageIdentification')) ? [] : ['the form did not render']) },
+    {
+      name: 'tab title and icons (landing page, form and zod demos)',
+      path: '',
+      expect: async (page) => {
+        const problems: string[] = [];
+        const NAME = 'Beneficial Strategies ISO 20022 Message Explorer';
+        for (const [path, title] of [['', `${NAME}: demos`], ['form/', NAME], ['zod/', `${NAME} (Zod only)`]] as const) {
+          await page.goto(served.url + path, { waitUntil: 'networkidle0' });
+          const h = await headFacts(page);
+          if (h.title !== title) problems.push(`${path || 'landing'}: the tab says "${h.title}"`);
+          if (h.loaded.length !== 3) problems.push(`${path || 'landing'}: ${h.loaded.length} icons declared`);
+          for (const i of h.loaded) if (!i.ok || i.bytes < 200) problems.push(`${path || 'landing'}: icon ${i.href} did not load (${JSON.stringify(i)})`);
+        }
+        return problems;
+      },
+    },
     {
       name: 'form demo from the landing page link (original banner)',
       path: 'form/?ImplementationBanner=true',

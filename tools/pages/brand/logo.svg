@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Beneficial Strategies — Horizontal Lockup (light backgrounds)
+  ViewBox 480×120 (4:1 ratio) — renders at ~150×37 in the site header.
+  Column/Base: Navy #1B3A5C | Battlements: Teal #2A9D8F | "STRATEGIES": Teal
+
+  Text x positions follow the rook's stepped right edge:
+    BENEFICIAL x=112 (≈20px gap from column right edge at x=92)
+    STRATEGIES x=128 (≈24px gap from middle-base right edge at x=104), creating a
+    deliberate rightward step that echoes the chess piece's staircase silhouette.
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="480" height="120"
+     viewBox="0 0 480 120"
+     role="img"
+     aria-label="Beneficial Strategies">
+  <title>Beneficial Strategies</title>
+
+  <!-- Rook icon — 200×200 base scaled 0.6× fills the 120px height exactly -->
+  <!-- Base steps (navy) -->
+  <rect transform="scale(0.6)" x="14" y="178" width="172" height="20" rx="6"  fill="#1B3A5C"/>
+  <rect transform="scale(0.6)" x="26" y="154" width="148" height="24" rx="4"  fill="#1B3A5C"/>
+  <rect transform="scale(0.6)" x="40" y="130" width="120" height="24" rx="3"  fill="#1B3A5C"/>
+  <!-- Column body (navy) -->
+  <rect transform="scale(0.6)" x="46" y="50"  width="108" height="82" rx="2"  fill="#1B3A5C"/>
+  <!-- Battlements (teal) -->
+  <rect transform="scale(0.6)" x="46"  y="18" width="28" height="34" rx="3"   fill="#2A9D8F"/>
+  <rect transform="scale(0.6)" x="86"  y="18" width="28" height="34" rx="3"   fill="#2A9D8F"/>
+  <rect transform="scale(0.6)" x="126" y="18" width="28" height="34" rx="3"   fill="#2A9D8F"/>
+
+  <!-- Wordmark -->
+  <text
+    x="112" y="66"
+    font-family="'Optima', 'Segoe UI', 'Trebuchet MS', Calibri, Arial, sans-serif"
+    font-size="62"
+    font-weight="700"
+    letter-spacing="0"
+    fill="#1B3A5C">BENEFICIAL</text>
+  <text
+    x="150" y="106"
+    font-family="'Optima', 'Segoe UI', 'Trebuchet MS', Calibri, Arial, sans-serif"
+    font-size="48"
+    font-weight="300"
+    letter-spacing="4"
+    fill="#2A9D8F">STRATEGIES</text>
+</svg>

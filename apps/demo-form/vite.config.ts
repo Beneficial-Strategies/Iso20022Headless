@@ -5,6 +5,8 @@ import tailwindcss from '@tailwindcss/vite';
 // xmllint-wasm starts a worker from a file next to itself: Vite must not pre-bundle it
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  // the favicon and the link-preview card are shared by every deployment (tools/pages/brand)
+  publicDir: '../../tools/pages/brand',
   optimizeDeps: { exclude: ['xmllint-wasm'] },
   server: {
     proxy: {

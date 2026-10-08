@@ -1676,6 +1676,34 @@ function specLinkScenarios(): Scenario[] {
   ];
 }
 
+/** What a browser tab shows: the title, and icons that really load. */
+export const headFacts = (page: Page) =>
+  page.evaluate(async () => {
+    const icons = [...document.querySelectorAll<HTMLLinkElement>('link[rel=icon], link[rel=apple-touch-icon]')].map((l) => l.href);
+    const loaded = await Promise.all(icons.map(async (href) => {
+      const r = await fetch(href);
+      const b = await r.blob();
+      return { href: href.split('/').pop(), ok: r.ok, type: r.headers.get('content-type') ?? '', bytes: b.size };
+    }));
+    return { title: document.title, loaded, ogTitle: document.querySelector<HTMLMetaElement>('meta[property="og:title"]')?.content ?? '' };
+  });
+
+function headScenarios(): Scenario[] {
+  const check = (title: string) => async (page: Page): Promise<string[]> => {
+    const h = await headFacts(page);
+    const problems: string[] = [];
+    if (h.title !== title) problems.push(`the tab says "${h.title}"`);
+    if (h.ogTitle !== title) problems.push(`the link preview says "${h.ogTitle}"`);
+    if (h.loaded.length !== 3) problems.push(`${h.loaded.length} icons are declared, expected 3`);
+    for (const i of h.loaded) if (!i.ok || i.bytes < 200 || !/image\//.test(i.type)) problems.push(`the icon ${i.href} did not load as an image: ${JSON.stringify(i)}`);
+    return problems;
+  };
+  return [
+    { name: 'head-form-demo', app: 'demo-form', viewport: { width: 1000, height: 600 }, expect: check('Beneficial Strategies ISO 20022 Message Explorer') },
+    { name: 'head-zod-demo', app: 'demo-zod', viewport: { width: 1000, height: 600 }, expect: check('Beneficial Strategies ISO 20022 Message Explorer (Zod only)') },
+  ];
+}
+
 /** Field widths: controls are as wide as their type needs, generously, and never cut text off. */
 function fieldWidthScenarios(): Scenario[] {
   const base = { app: 'demo-form' as const, viewport: { width: 1440, height: 1000 } };
@@ -2217,6 +2245,7 @@ export const scenarios: Scenario[] = [
   ...specLinkScenarios(),
   ...pickerScenarios(),
   ...fieldWidthScenarios(),
+  ...headScenarios(),
   { name: 'type-picker-open-narrow', app: 'demo-form', viewport: { width: 480, height: 900 }, steps: openType },
   { name: 'display-open', app: 'demo-form', viewport: { width: 1440, height: 900 }, steps: openDisplay },
   { name: 'display-open-narrow-spanish', app: 'demo-form', query: '?lang=es', viewport: { width: 480, height: 900 }, steps: openDisplay },
