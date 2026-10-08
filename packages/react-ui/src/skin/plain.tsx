@@ -171,4 +171,7 @@ export const plainSkin: Skin = {
   },
   // the plain skin's help is a native <details>: it already shows its text inline, so there is no separate note
   InfoNote: () => null,
+  Value: ({ id, children }) => <p id={id}>{children}</p>,
+  // no styling in the plain skin: the attribute is there for the page's own CSS
+  ModeMark: ({ mode, children }) => <div data-field-mode={mode}>{children}</div>,
 };

@@ -1,6 +1,6 @@
 import { displayName, type FieldDescriptor } from '@beneficial-strategies/iso20022-validate';
 import type { Definitions } from '@beneficial-strategies/iso20022-validate/definitions';
-import type { FormApi } from '@beneficial-strategies/iso20022-react-ui';
+import type { FieldExtraContext, FieldMode, FormApi } from '@beneficial-strategies/iso20022-react-ui';
 
 /**
  * What the form shows right now, as data: every element on screen with its path, label, ISO names, whether it is required,
@@ -44,6 +44,10 @@ export interface ScreenNode {
   error?: string;
   /** The ISO 20022 definition (in the page's language when there is one). */
   definition?: string;
+  /** How the element is presented (field mode), counting the section it is in: the stronger of the two wins. */
+  mode: FieldMode;
+  /** The mode set on this very element, when one is (`mode` also covers what it inherits). */
+  modeSetHere?: FieldMode;
   children: ScreenNode[];
 }
 
@@ -64,7 +68,10 @@ const plain = (text: string | undefined): string | undefined => (text ? text.spl
 
 const str = (v: unknown): string => (v === undefined || v === null ? '' : typeof v === 'string' ? v : String(v));
 
-export function buildScreenModel(form: FormApi, defs: Definitions, meta: { identifier: string }): ScreenModel {
+const RANK: Record<FieldMode, number> = { editable: 0, label: 1, hidden: 2 };
+const strongest = (a: FieldMode, b: FieldMode | undefined): FieldMode => (b && RANK[b] > RANK[a] ? b : a);
+
+export function buildScreenModel(form: FormApi, defs: Definitions, meta: { identifier: string }, fieldMode?: (element: FieldExtraContext) => FieldMode | undefined): ScreenModel {
   const labelOf = (f: FieldDescriptor): string => defs.label(f, f.displayName).text;
   const errorsAt = (path: string, kind: string): string | undefined => {
     const own = form.errors[path];
@@ -73,8 +80,9 @@ export function buildScreenModel(form: FormApi, defs: Definitions, meta: { ident
     return undefined;
   };
 
-  function base(field: FieldDescriptor, path: string, label: string, required: boolean): Omit<ScreenNode, 'status' | 'value' | 'raw' | 'children'> {
+  function base(field: FieldDescriptor, path: string, label: string, required: boolean, inherited: FieldMode): Omit<ScreenNode, 'status' | 'value' | 'raw' | 'children'> {
     const type = form.typeDescriptors[field.type];
+    const own = fieldMode?.({ type: field.type, kind: type?.kind ?? field.kind, name: field.name, label, path });
     const definition = plain(defs.field(field, type)?.text);
     const error = errorsAt(path, type?.kind ?? field.kind);
     return {
@@ -84,17 +92,19 @@ export function buildScreenModel(form: FormApi, defs: Definitions, meta: { ident
       type: field.type,
       kind: type?.kind ?? field.kind,
       required,
+      mode: strongest(inherited, own),
+      ...(own && own !== 'editable' ? { modeSetHere: own } : {}),
       ...(definition ? { definition } : {}),
       ...(error ? { error } : {}),
     };
   }
 
   /** An element's value or section, as `ValueNode` would render it. */
-  function valueNode(field: FieldDescriptor, path: string, label: string, required: boolean): ScreenNode {
+  function valueNode(field: FieldDescriptor, path: string, label: string, required: boolean, inherited: FieldMode, asked?: ReturnType<typeof base>): ScreenNode {
     const type = form.typeDescriptors[field.type]!;
-    const b = base(field, path, label, required);
+    const b = asked ?? base(field, path, label, required, inherited);
     if (type.kind === 'component') {
-      return { ...b, status: 'group', value: '', raw: '', children: (type.fields ?? []).map((f) => fieldNode(f, `${path}.${f.name}`, labelOf(f))) };
+      return { ...b, status: 'group', value: '', raw: '', children: (type.fields ?? []).map((f) => fieldNode(f, `${path}.${f.name}`, labelOf(f), b.mode)) };
     }
     if (type.kind === 'choice') {
       const selected = form.getChoice(path);
@@ -105,7 +115,7 @@ export function buildScreenModel(form: FormApi, defs: Definitions, meta: { ident
         status: option ? 'choice' : 'empty',
         value: chosen,
         raw: option?.name ?? '',
-        children: option ? [valueNode(option, `${path}.${option.name}`, labelOf(option), true)] : [],
+        children: option ? [valueNode(option, `${path}.${option.name}`, labelOf(option), true, b.mode)] : [],
       };
     }
     if (type.kind === 'amount') {
@@ -125,34 +135,35 @@ export function buildScreenModel(form: FormApi, defs: Definitions, meta: { ident
   }
 
   /** An element of a section, as `FieldNode` would render it: a list, an optional section that may be left out, or a plain element. */
-  function fieldNode(field: FieldDescriptor, path: string, label: string): ScreenNode {
+  function fieldNode(field: FieldDescriptor, path: string, label: string, inherited: FieldMode): ScreenNode {
     const type = form.typeDescriptors[field.type]!;
+    const own = base(field, path, label, field.required, inherited);
     if (field.repeat) {
       const items = (form.getValue(path) as unknown[] | undefined) ?? [];
       return {
-        ...base(field, path, label, field.required),
+        ...own,
         status: 'list',
         value: '',
         raw: '',
         repeat: { min: field.repeat.min, max: field.repeat.max },
-        children: items.map((_, i) => valueNode(field, `${path}[${i}]`, `${label} ${i + 1}`, true)),
+        children: items.map((_, i) => valueNode(field, `${path}[${i}]`, `${label} ${i + 1}`, true, own.mode)),
       };
     }
     const container = type.kind === 'component' || type.kind === 'choice';
     if (!field.required && container) {
-      if (!form.isPresent(path)) return { ...base(field, path, label, false), status: 'excluded', value: '', raw: '', children: [] };
+      if (!form.isPresent(path)) return { ...own, status: 'excluded', value: '', raw: '', children: [] };
       // included: the section itself, still marked optional
-      return { ...valueNode(field, path, label, true), required: false };
+      return { ...valueNode(field, path, label, true, inherited, own), required: false };
     }
-    return valueNode(field, path, label, field.required);
+    return valueNode(field, path, label, field.required, inherited, own);
   }
 
   const root = form.typeDescriptors[form.rootType]!;
   const rootField = (name: string): FieldDescriptor => ({ name, xmlTag: '', displayName: name, kind: 'choice', type: root.name, required: true }) as FieldDescriptor;
   const children =
     root.kind === 'choice'
-      ? [valueNode(rootField(root.name), '', displayName(root.name), true)]
-      : (root.fields ?? []).map((f) => fieldNode(f, f.name, labelOf(f)));
+      ? [valueNode(rootField(root.name), '', displayName(root.name), true, 'editable')]
+      : (root.fields ?? []).map((f) => fieldNode(f, f.name, labelOf(f), 'editable'));
   const definition = plain(defs.type(root)?.text);
   return { title: displayName(root.name), type: root.name, identifier: meta.identifier, ...(definition ? { definition } : {}), children };
 }

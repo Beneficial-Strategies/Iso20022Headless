@@ -62,6 +62,39 @@ export interface FieldExtraContext {
 /** Set by `SchemaForm` when the host wants something beside the "i" of every element (`fieldExtra`). */
 const ExtraRenderer = createContext<((element: FieldExtraContext) => ReactNode) | undefined>(undefined);
 
+/**
+ * How an element is presented. A host sets it per element with `SchemaForm`'s `fieldMode`:
+ *   editable  the usual control
+ *   label     the value is shown as text, not editable (a section's elements all become labels)
+ *   hidden    not shown at all (a section's elements all vanish); the value stays in the form, so a default set before
+ *             hiding is still in the message
+ * The mode of a section applies to everything inside it; the stronger of two modes (hidden over label over editable) wins.
+ */
+export type FieldMode = 'editable' | 'label' | 'hidden';
+
+/**
+ * `apply` (the default) presents elements as their mode says, as an application would. `mark` keeps every element editable
+ * and has the skin shade the ones that are not `editable`, so that whoever designs the form can still reach them and see
+ * what the others will look like.
+ */
+export type FieldModeView = 'apply' | 'mark';
+
+const RANK: Record<FieldMode, number> = { editable: 0, label: 1, hidden: 2 };
+const strongest = (a: FieldMode, b: FieldMode | undefined): FieldMode => (b && RANK[b] > RANK[a] ? b : a);
+
+interface ModeConfig {
+  fieldMode?: (element: FieldExtraContext) => FieldMode | undefined;
+  view: FieldModeView;
+}
+const ModeConfigContext = createContext<ModeConfig>({ view: 'apply' });
+
+/** The mode in force for the elements below: `mode` is what is applied (label: read-only text), `marked` what the skin has already shaded. */
+interface ModeState {
+  mode: FieldMode;
+  marked: FieldMode;
+}
+const ModeContext = createContext<ModeState>({ mode: 'editable', marked: 'editable' });
+
 /** The help for an element: the "i" button (hover shows a popup) and the inline note a click on it shows under the label. */
 function useHelp(def: Localized | undefined, label: string, skip?: boolean, element?: FieldExtraContext): { info: ReactNode; note: ReactNode } {
   const S = useSkin();
@@ -87,10 +120,14 @@ function Leaf(p: NodeProps) {
   const S = useSkin();
   const { t, defs } = useI18n();
   const { info, note } = useInfo(p);
+  const readOnly = useContext(ModeContext).mode === 'label';
   const type = form.typeDescriptors[field.type]!;
   const props = form.getFieldProps(path);
   let control;
-  if (type.kind === 'code' && type.options) {
+  if (readOnly) {
+    const shownOption = type.kind === 'code' ? type.options?.find((o) => o.value === props.value) : undefined;
+    control = <S.Value id={props.id}>{props.value === '' ? '—' : shownOption ? `${props.value} — ${defs.codeName(shownOption, shownOption.name).text}` : props.value}</S.Value>;
+  } else if (type.kind === 'code' && type.options) {
     const selected = type.options.find((o) => o.value === props.value);
     const codeDef = selected ? defs.code(selected)?.text : undefined;
     const describedBy = [props['aria-describedby'], codeDef ? `${props.id}-codedef` : ''].filter(Boolean).join(' ');
@@ -153,8 +190,16 @@ function AmountNode(p: NodeProps) {
   const S = useSkin();
   const { t } = useI18n();
   const { info, note } = useInfo(p);
+  const readOnly = useContext(ModeContext).mode === 'label';
   const ccy = form.getFieldProps(`${path}.Ccy`);
   const val = form.getFieldProps(`${path}.Value`);
+  if (readOnly) {
+    return (
+      <S.Field label={label} required={required ?? field.required} info={info} note={note} error={<ErrorText form={form} path={path} />}>
+        <S.Value>{[val.value, ccy.value].filter(Boolean).join(' ') || '—'}</S.Value>
+      </S.Field>
+    );
+  }
   return (
     <S.Field label={label} required={required ?? field.required} info={info} note={note} error={<ErrorText form={form} path={path} />}>
       <S.Row weights={['fixed', 'grow']}>
@@ -177,6 +222,7 @@ function ChoiceNode(p: NodeProps) {
   const { t, defs } = useI18n();
   const labelOf = useLabel();
   const { info, note } = useInfo(p);
+  const readOnly = useContext(ModeContext).mode === 'label';
   const type = form.typeDescriptors[field.type]!;
   const selected = form.getChoice(path);
   const option = type.choiceOptions?.find((o) => o.name === selected);
@@ -184,7 +230,10 @@ function ChoiceNode(p: NodeProps) {
   const isRequired = required ?? field.required;
   return (
     <S.ChoiceBox>
-      <S.Field id={id} label={t('chooseOne', { label })} required={isRequired} info={info} note={note} error={<ErrorText form={form} path={path} />}>
+      <S.Field id={id} label={readOnly ? label : t('chooseOne', { label })} required={isRequired} info={info} note={note} error={<ErrorText form={form} path={path} />}>
+        {readOnly ? (
+          <S.Value id={id}>{option ? labelOf(option) : '—'}</S.Value>
+        ) : (
         <S.Select
           id={id}
           value={selected ?? ''}
@@ -198,6 +247,7 @@ function ChoiceNode(p: NodeProps) {
           required={isRequired}
           describedBy={form.errors[path] ? `${id}-error` : undefined}
         />
+        )}
       </S.Field>
       {option ? <ValueNode form={form} field={option} path={`${path}.${option.name}`} label={labelOf(option)} required depth={depth + 1} /> : null}
     </S.ChoiceBox>
@@ -227,9 +277,10 @@ function ValueNode(p: NodeProps) {
   return <Leaf {...p} />;
 }
 
-function FieldNode({ form, field, path, label, depth }: Omit<NodeProps, 'required'>) {
+function FieldNodeBody({ form, field, path, label, depth }: Omit<NodeProps, 'required'>) {
   const S = useSkin();
   const { t, defs } = useI18n();
+  const readOnly = useContext(ModeContext).mode === 'label';
   const type = form.typeDescriptors[field.type]!;
   const { info, note } = useHelp(defs.field(field, type), label, false, { type: field.type, kind: type.kind, name: field.name, label, path });
   if (field.repeat) {
@@ -243,17 +294,23 @@ function FieldNode({ form, field, path, label, depth }: Omit<NodeProps, 'require
           note={note}
           caption={`${field.required ? t('listRequired') : ''}${field.repeat.min}..${max ?? '∞'}`}
           action={
-            <S.Button disabled={max !== null && items.length >= max} onClick={() => form.addListItem(path, field.type)}>
-              {t('add', { label })}
-            </S.Button>
+            readOnly ? null : (
+              <S.Button disabled={max !== null && items.length >= max} onClick={() => form.addListItem(path, field.type)}>
+                {t('add', { label })}
+              </S.Button>
+            )
           }
         />
         <S.Stack>
-          {items.map((_, i) => (
-            <S.ListItem key={i} removeLabel={t('removeItem', { label, n: i + 1 })} onRemove={() => form.removeListItem(path, i)}>
-              <ValueNode form={form} field={field} path={`${path}[${i}]`} label={`${label} ${i + 1}`} required depth={depth + 1} noInfo />
-            </S.ListItem>
-          ))}
+          {items.map((_, i) =>
+            readOnly ? (
+              <ValueNode key={i} form={form} field={field} path={`${path}[${i}]`} label={`${label} ${i + 1}`} required depth={depth + 1} noInfo />
+            ) : (
+              <S.ListItem key={i} removeLabel={t('removeItem', { label, n: i + 1 })} onRemove={() => form.removeListItem(path, i)}>
+                <ValueNode form={form} field={field} path={`${path}[${i}]`} label={`${label} ${i + 1}`} required depth={depth + 1} noInfo />
+              </S.ListItem>
+            ),
+          )}
         </S.Stack>
         <ErrorText form={form} path={path} />
       </div>
@@ -262,6 +319,8 @@ function FieldNode({ form, field, path, label, depth }: Omit<NodeProps, 'require
   const container = type.kind === 'component' || type.kind === 'choice';
   if (!field.required && container) {
     const present = form.isPresent(path);
+    // a label shows what is there: an optional section left out is simply absent, with no box to tick
+    if (readOnly) return present ? <ValueNode form={form} field={field} path={path} label={label} required depth={depth + 1} /> : null;
     return (
       <div>
         <S.Toggle id={`include-${idOf(path)}`} checked={present} onChange={(c) => form.setPresent(path, field.type, c)} label={label} info={info} note={note} />
@@ -272,13 +331,48 @@ function FieldNode({ form, field, path, label, depth }: Omit<NodeProps, 'require
   return <ValueNode form={form} field={field} path={path} label={label} depth={depth} />;
 }
 
+/** An element, presented in its mode: hidden elements are left out (their values stay in the form), labels become text, and in `mark` view the skin shades them. */
+function FieldNode(p: Omit<NodeProps, 'required'>) {
+  const { form, field, path, label } = p;
+  const S = useSkin();
+  const { fieldMode, view } = useContext(ModeConfigContext);
+  const inherited = useContext(ModeContext);
+  const type = form.typeDescriptors[field.type];
+  const own = fieldMode?.({ type: field.type, kind: type?.kind ?? field.kind, name: field.name, label, path });
+  const apply = view === 'apply';
+  const effective = strongest(apply ? inherited.mode : inherited.marked, own);
+  if (apply && effective === 'hidden') return null;
+  const state: ModeState = apply ? { mode: effective, marked: 'editable' } : { mode: 'editable', marked: effective };
+  const body = (
+    <ModeContext.Provider value={state}>
+      <FieldNodeBody {...p} />
+    </ModeContext.Provider>
+  );
+  // shade once, at the outermost element that is in the mode: what is inside shares it
+  if (!apply && effective !== 'editable' && RANK[effective] > RANK[inherited.marked]) return <S.ModeMark mode={effective as 'label' | 'hidden'}>{body}</S.ModeMark>;
+  return body;
+}
+
 /**
  * Generic recursive renderer for any generated type. Demo-only: the library itself renders nothing.
  * `fieldExtra`, when given, is called for every element that has an "i" and may return something to show right after it:
  * a button, an icon, a link. The library puts nothing there itself, so what it is and what it does belongs to the host
  * (the demos use it for a "zoom" button that shows a component type on its own).
+ *
+ * `fieldMode`, when given, is asked for every element and may answer `label` or `hidden` (see `FieldMode`); `fieldModeView`
+ * says whether those are applied (the default) or only marked. Elements it does not mention stay editable.
  */
-export function SchemaForm({ form, fieldExtra }: { form: FormApi; fieldExtra?: (element: FieldExtraContext) => ReactNode }) {
+export function SchemaForm({
+  form,
+  fieldExtra,
+  fieldMode,
+  fieldModeView = 'apply',
+}: {
+  form: FormApi;
+  fieldExtra?: (element: FieldExtraContext) => ReactNode;
+  fieldMode?: (element: FieldExtraContext) => FieldMode | undefined;
+  fieldModeView?: FieldModeView;
+}) {
   const S = useSkin();
   const labelOf = useLabel();
   const { defs } = useI18n();
@@ -290,6 +384,7 @@ export function SchemaForm({ form, fieldExtra }: { form: FormApi; fieldExtra?: (
     // data-schema-form marks everything the skin renders, so page chrome around it can be told apart
     <div data-schema-form>
     <ExtraRenderer.Provider value={fieldExtra}>
+    <ModeConfigContext.Provider value={{ ...(fieldMode ? { fieldMode } : {}), view: fieldModeView }}>
     <S.Stack>
       <S.Title info={rootHelp.info} note={rootHelp.note}>{title}</S.Title>
       {root.kind === 'choice' ? (
@@ -304,6 +399,7 @@ export function SchemaForm({ form, fieldExtra }: { form: FormApi; fieldExtra?: (
         fields.map((f) => <FieldNode key={f.name} form={form} field={f} path={f.name} label={labelOf(f)} depth={0} />)
       )}
     </S.Stack>
+    </ModeConfigContext.Provider>
     </ExtraRenderer.Provider>
     </div>
   );

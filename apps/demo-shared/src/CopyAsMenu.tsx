@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react';
-import { Popup, useI18n, type FormApi } from '@beneficial-strategies/iso20022-react-ui';
+import { Popup, useI18n, type FieldExtraContext, type FieldMode, type FormApi } from '@beneficial-strategies/iso20022-react-ui';
 import { copyPng, copyRich, copyText, downloadBlob, elementToPng, type CopyResult } from './copyOut.ts';
 import { useDemoText, type DemoKey } from './demoText.ts';
 import { toHtml, toJson, toMarkdown, toOutline, toTsv, type ExportOptions } from './screenExport.ts';
@@ -32,6 +32,7 @@ export function CopyAsMenu({
   onOptions,
   imageTarget,
   fileStem,
+  fieldMode,
 }: {
   form: FormApi;
   identifier: string;
@@ -41,6 +42,8 @@ export function CopyAsMenu({
   imageTarget: () => HTMLElement | null;
   /** The start of a file name, for the browsers that cannot copy a picture and save it instead. */
   fileStem: string;
+  /** How elements are presented (field mode); the copies carry it. */
+  fieldMode?: (element: FieldExtraContext) => FieldMode | undefined;
 }) {
   const { defs } = useI18n();
   const t = useDemoText();
@@ -84,7 +87,7 @@ export function CopyAsMenu({
     button.current?.focus();
     let result: CopyResult;
     try {
-      const model = buildScreenModel(form, defs, { identifier });
+      const model = buildScreenModel(form, defs, { identifier }, fieldMode);
       if (format === 'image') {
         const target = imageTarget();
         if (!target) throw new Error('the form is not on screen');
