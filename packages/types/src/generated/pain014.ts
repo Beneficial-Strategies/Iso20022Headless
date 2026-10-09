@@ -34,7 +34,7 @@ export interface OriginalTransactionReference46 {
   ExpiryDate?: DateAndDateTime2Choice;
   PaymentCondition?: PaymentCondition2;
   PaymentTypeInformation?: PaymentTypeInformation29;
-  PaymentMethod?: "CHK" | "DD" | "TRA" | "TRF";
+  PaymentMethod?: "CHK" | "TRF" | "DD" | "TRA";
   MandateRelatedInformation?: CreditTransferMandateData1;
   RemittanceInformation?: RemittanceInformation26;
   EnclosedFile?: Array<Document15>;

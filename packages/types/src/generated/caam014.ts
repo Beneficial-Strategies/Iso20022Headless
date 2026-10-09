@@ -4,7 +4,7 @@ import type { ATMEnvironment7, ContentInformationType10, ContentInformationType1
 
 export interface ATMPropertyComponent1 {
   PropertyName: string;
-  PropertyType?: "BOOL" | "CSVF" | "JSON" | "NMBR" | "STRG";
+  PropertyType?: "STRG" | "NMBR" | "BOOL" | "JSON" | "CSVF";
   PropertyValue: string;
 }
 

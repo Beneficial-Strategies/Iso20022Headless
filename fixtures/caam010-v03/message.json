@@ -8,14 +8,6 @@
   "definition": "The ATMReconciliationAcknowledgement message is sent by an acquirer or its agent to an ATM to acknowledge the receipt of an ATMReconciliationAdvice message.",
   "blocks": [
     {
-      "name": "ATMReconciliationAcknowledgement",
-      "isoId": "_udcZ16FCEe-MRKYsaX6JDg",
-      "xmlTag": "ATMRcncltnAck",
-      "type": "ATMReconciliationAcknowledgement3",
-      "min": 0,
-      "max": 1
-    },
-    {
       "name": "Header",
       "isoId": "_udcZ06FCEe-MRKYsaX6JDg",
       "xmlTag": "Hdr",
@@ -28,6 +20,14 @@
       "isoId": "_udcZ1aFCEe-MRKYsaX6JDg",
       "xmlTag": "PrtctdATMRcncltnAck",
       "type": "ContentInformationType10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ATMReconciliationAcknowledgement",
+      "isoId": "_udcZ16FCEe-MRKYsaX6JDg",
+      "xmlTag": "ATMRcncltnAck",
+      "type": "ATMReconciliationAcknowledgement3",
       "min": 0,
       "max": 1
     },

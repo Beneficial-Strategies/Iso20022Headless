@@ -8,14 +8,6 @@
   "definition": "The ATMDeviceReport message is sent to an acquirer by an ATM, or forwarded by an agent, to report:|- The result of maintenance commands performed by the ATM,|- The components of the ATM,|- The status of the ATM components.",
   "blocks": [
     {
-      "name": "ATMDeviceReport",
-      "isoId": "_ab22l7XuEfCUZfsQO4rYeA",
-      "xmlTag": "ATMDvcRpt",
-      "type": "ATMDeviceReport5",
-      "min": 0,
-      "max": 1
-    },
-    {
       "name": "Header",
       "isoId": "_ab22k7XuEfCUZfsQO4rYeA",
       "xmlTag": "Hdr",
@@ -28,6 +20,14 @@
       "isoId": "_ab22lbXuEfCUZfsQO4rYeA",
       "xmlTag": "PrtctdATMDvcRpt",
       "type": "ContentInformationType10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ATMDeviceReport",
+      "isoId": "_ab22l7XuEfCUZfsQO4rYeA",
+      "xmlTag": "ATMDvcRpt",
+      "type": "ATMDeviceReport5",
       "min": 0,
       "max": 1
     },

@@ -106,15 +106,15 @@ import {
   sharedTypeDescriptors,
 } from './shared.ts';
 
-export const CardDataReading4CodeSchema = z.enum(["CICC", "CTLS", "ECTL", "MGST"]);
+export const CardDataReading4CodeSchema = z.enum(["ECTL", "CICC", "MGST", "CTLS"]);
 
-export const CardholderVerificationCapability3CodeSchema = z.enum(["FBIG", "FBIO", "FCPN", "FDSG", "FEPN", "NPIN", "PCOD", "PKIS"]);
+export const CardholderVerificationCapability3CodeSchema = z.enum(["NPIN", "FCPN", "FEPN", "FDSG", "FBIO", "FBIG", "PKIS", "PCOD"]);
 
-export const ATMMediaType1CodeSchema = z.enum(["CARD", "CMDT", "COIN", "CPNS", "NOTE", "STMP", "UDTM"]);
+export const ATMMediaType1CodeSchema = z.enum(["CARD", "COIN", "CMDT", "CPNS", "NOTE", "STMP", "UDTM"]);
 
 export const UserInterface5CodeSchema = z.enum(["CDSP", "CRCP", "CRDO"]);
 
-export const OutputFormat1CodeSchema = z.enum(["HTML", "MREF", "TEXT"]);
+export const OutputFormat1CodeSchema = z.enum(["MREF", "TEXT", "HTML"]);
 
 export const DisplayCapabilities5Schema = z.strictObject({
   Destination: z.array(UserInterface5CodeSchema).min(1),
@@ -159,11 +159,11 @@ export const ATMCustomerProfile6Schema = z.strictObject({
   PreferredLanguage: LanguageCodeSchema.optional(),
 });
 
-export const AuthenticationMethod7CodeSchema = z.enum(["BIOM", "FPIN", "MOBL", "NPIN", "OTHR", "PSWD", "SCNL", "SCRT", "TOKA"]);
+export const AuthenticationMethod7CodeSchema = z.enum(["TOKA", "BIOM", "MOBL", "OTHR", "FPIN", "NPIN", "PSWD", "SCRT", "SCNL"]);
 
-export const AuthenticationEntity2CodeSchema = z.enum(["ACQR", "AGNT", "ICCD", "ISSR", "MERC", "TRML"]);
+export const AuthenticationEntity2CodeSchema = z.enum(["ICCD", "AGNT", "MERC", "ACQR", "ISSR", "TRML"]);
 
-export const Verification1CodeSchema = z.enum(["ERRR", "FAIL", "MISS", "NOVF", "PART", "SUCC"]);
+export const Verification1CodeSchema = z.enum(["FAIL", "MISS", "NOVF", "PART", "SUCC", "ERRR"]);
 
 export const TransactionVerificationResult5Schema = z.strictObject({
   Method: AuthenticationMethod7CodeSchema,
@@ -188,7 +188,7 @@ export const ATMEnvironment20Schema = z.strictObject({
   Card: PaymentCard37Schema.optional(),
 });
 
-export const FailureReason8CodeSchema = z.enum(["CDCP", "CDFG", "CDRT", "CUCL", "MALF", "SECU", "SFRD", "UCPT"]);
+export const FailureReason8CodeSchema = z.enum(["CDRT", "CDCP", "CUCL", "CDFG", "MALF", "SECU", "SFRD", "UCPT"]);
 
 export const ATMTransaction40Schema = z.strictObject({
   TransactionIdentification: TransactionIdentifier3Schema.optional(),
@@ -218,19 +218,19 @@ const ownTypeDescriptors: TypeDescriptors = {
     name: "CardDataReading4Code",
     isoId: "_CRJTMIn7EeShMpas3885ww",
     kind: "code",
-    options: [{ value: "CICC", name: "ICC", isoId: "_KP7HoYn7EeShMpas3885ww" }, { value: "CTLS", name: "ProximityReader", isoId: "_LaEmkYn7EeShMpas3885ww" }, { value: "ECTL", name: "EMVProximityReader", isoId: "_KJE4wYn7EeShMpas3885ww" }, { value: "MGST", name: "MagneticStripe", isoId: "_KX-QYYn7EeShMpas3885ww" }],
+    options: [{ value: "ECTL", name: "EMVProximityReader", isoId: "_KJE4wYn7EeShMpas3885ww" }, { value: "CICC", name: "ICC", isoId: "_KP7HoYn7EeShMpas3885ww" }, { value: "MGST", name: "MagneticStripe", isoId: "_KX-QYYn7EeShMpas3885ww" }, { value: "CTLS", name: "ProximityReader", isoId: "_LaEmkYn7EeShMpas3885ww" }],
   },
   "CardholderVerificationCapability3Code": {
     name: "CardholderVerificationCapability3Code",
     isoId: "_n75oUIn7EeShMpas3885ww",
     kind: "code",
-    options: [{ value: "FBIG", name: "OfflineBiographics", isoId: "_x6xsQYn7EeShMpas3885ww" }, { value: "FBIO", name: "OfflineBiometrics", isoId: "_x1FT8Yn7EeShMpas3885ww" }, { value: "FCPN", name: "OfflinePINClear", isoId: "_v1O8EYn7EeShMpas3885ww" }, { value: "FDSG", name: "OfflineDigitalSignature", isoId: "_xFjUcYn7EeShMpas3885ww" }, { value: "FEPN", name: "OfflinePINEncrypted", isoId: "_v7pGEYn7EeShMpas3885ww" }, { value: "NPIN", name: "OnLinePIN", isoId: "_uI4vAYn7EeShMpas3885ww" }, { value: "PCOD", name: "PersonalCode", isoId: "_zQIVoYn7EeShMpas3885ww" }, { value: "PKIS", name: "PKISignature", isoId: "_ylWTQYn7EeShMpas3885ww" }],
+    options: [{ value: "NPIN", name: "OnLinePIN", isoId: "_uI4vAYn7EeShMpas3885ww" }, { value: "FCPN", name: "OfflinePINClear", isoId: "_v1O8EYn7EeShMpas3885ww" }, { value: "FEPN", name: "OfflinePINEncrypted", isoId: "_v7pGEYn7EeShMpas3885ww" }, { value: "FDSG", name: "OfflineDigitalSignature", isoId: "_xFjUcYn7EeShMpas3885ww" }, { value: "FBIO", name: "OfflineBiometrics", isoId: "_x1FT8Yn7EeShMpas3885ww" }, { value: "FBIG", name: "OfflineBiographics", isoId: "_x6xsQYn7EeShMpas3885ww" }, { value: "PKIS", name: "PKISignature", isoId: "_ylWTQYn7EeShMpas3885ww" }, { value: "PCOD", name: "PersonalCode", isoId: "_zQIVoYn7EeShMpas3885ww" }],
   },
   "ATMMediaType1Code": {
     name: "ATMMediaType1Code",
     isoId: "_-L27wIqdEeS4a4abTJTSSw",
     kind: "code",
-    options: [{ value: "CARD", name: "Cards", isoId: "_JV2vAYqeEeS4a4abTJTSSw" }, { value: "CMDT", name: "Commodity", isoId: "_Jiqb8YqeEeS4a4abTJTSSw" }, { value: "COIN", name: "Coins", isoId: "_Jcs94YqeEeS4a4abTJTSSw" }, { value: "CPNS", name: "Coupons", isoId: "_JnvJMYqeEeS4a4abTJTSSw" }, { value: "NOTE", name: "Notes", isoId: "_J9VlwYqeEeS4a4abTJTSSw" }, { value: "STMP", name: "Stamps", isoId: "_KFrpcYqeEeS4a4abTJTSSw" }, { value: "UDTM", name: "Undetermined", isoId: "_KMFzcYqeEeS4a4abTJTSSw" }],
+    options: [{ value: "CARD", name: "Cards", isoId: "_JV2vAYqeEeS4a4abTJTSSw" }, { value: "COIN", name: "Coins", isoId: "_Jcs94YqeEeS4a4abTJTSSw" }, { value: "CMDT", name: "Commodity", isoId: "_Jiqb8YqeEeS4a4abTJTSSw" }, { value: "CPNS", name: "Coupons", isoId: "_JnvJMYqeEeS4a4abTJTSSw" }, { value: "NOTE", name: "Notes", isoId: "_J9VlwYqeEeS4a4abTJTSSw" }, { value: "STMP", name: "Stamps", isoId: "_KFrpcYqeEeS4a4abTJTSSw" }, { value: "UDTM", name: "Undetermined", isoId: "_KMFzcYqeEeS4a4abTJTSSw" }],
   },
   "UserInterface5Code": {
     name: "UserInterface5Code",
@@ -242,7 +242,7 @@ const ownTypeDescriptors: TypeDescriptors = {
     name: "OutputFormat1Code",
     isoId: "_8r6YYHr5EeSZrs_hiwNOWA",
     kind: "code",
-    options: [{ value: "HTML", name: "XHTML", isoId: "_-sGugXr5EeSZrs_hiwNOWA" }, { value: "MREF", name: "MessageReference", isoId: "_-Q8cgXr5EeSZrs_hiwNOWA" }, { value: "TEXT", name: "SimpleText", isoId: "_-m43UXr5EeSZrs_hiwNOWA" }],
+    options: [{ value: "MREF", name: "MessageReference", isoId: "_-Q8cgXr5EeSZrs_hiwNOWA" }, { value: "TEXT", name: "SimpleText", isoId: "_-m43UXr5EeSZrs_hiwNOWA" }, { value: "HTML", name: "XHTML", isoId: "_-sGugXr5EeSZrs_hiwNOWA" }],
   },
   "DisplayCapabilities5": {
     name: "DisplayCapabilities5",
@@ -311,19 +311,19 @@ const ownTypeDescriptors: TypeDescriptors = {
     name: "AuthenticationMethod7Code",
     isoId: "_8QhnAIoaEeSirOZJBRz_nA",
     kind: "code",
-    options: [{ value: "BIOM", name: "Biometry", isoId: "_CGhKAYobEeSirOZJBRz_nA" }, { value: "FPIN", name: "OfflinePIN", isoId: "_DaprYYobEeSirOZJBRz_nA" }, { value: "MOBL", name: "Mobile", isoId: "_CV8tIYobEeSirOZJBRz_nA" }, { value: "NPIN", name: "OnLinePIN", isoId: "_DgP9EYobEeSirOZJBRz_nA" }, { value: "OTHR", name: "Other", isoId: "_ChAGkYobEeSirOZJBRz_nA" }, { value: "PSWD", name: "Password", isoId: "_FZTJYYobEeSirOZJBRz_nA" }, { value: "SCNL", name: "SecuredChannel", isoId: "_G1VpkYobEeSirOZJBRz_nA" }, { value: "SCRT", name: "SecureCertificate", isoId: "_FquQkYobEeSirOZJBRz_nA" }, { value: "TOKA", name: "AuthenticationToken", isoId: "_BIbxIYobEeSirOZJBRz_nA" }],
+    options: [{ value: "TOKA", name: "AuthenticationToken", isoId: "_BIbxIYobEeSirOZJBRz_nA" }, { value: "BIOM", name: "Biometry", isoId: "_CGhKAYobEeSirOZJBRz_nA" }, { value: "MOBL", name: "Mobile", isoId: "_CV8tIYobEeSirOZJBRz_nA" }, { value: "OTHR", name: "Other", isoId: "_ChAGkYobEeSirOZJBRz_nA" }, { value: "FPIN", name: "OfflinePIN", isoId: "_DaprYYobEeSirOZJBRz_nA" }, { value: "NPIN", name: "OnLinePIN", isoId: "_DgP9EYobEeSirOZJBRz_nA" }, { value: "PSWD", name: "Password", isoId: "_FZTJYYobEeSirOZJBRz_nA" }, { value: "SCRT", name: "SecureCertificate", isoId: "_FquQkYobEeSirOZJBRz_nA" }, { value: "SCNL", name: "SecuredChannel", isoId: "_G1VpkYobEeSirOZJBRz_nA" }],
   },
   "AuthenticationEntity2Code": {
     name: "AuthenticationEntity2Code",
     isoId: "_arLtkWjoEeSDR-pyia6Xtg",
     kind: "code",
-    options: [{ value: "ACQR", name: "Acquirer", isoId: "_xWp_8WjoEeSDR-pyia6Xtg" }, { value: "AGNT", name: "AuthorisedAgent", isoId: "_a4ZqM2joEeSDR-pyia6Xtg" }, { value: "ICCD", name: "ICC", isoId: "_a4ZqMWjoEeSDR-pyia6Xtg" }, { value: "ISSR", name: "Issuer", isoId: "_xlWjQWjoEeSDR-pyia6Xtg" }, { value: "MERC", name: "Merchant", isoId: "_a4ZqNWjoEeSDR-pyia6Xtg" }, { value: "TRML", name: "Terminal", isoId: "_xytCwWjoEeSDR-pyia6Xtg" }],
+    options: [{ value: "ICCD", name: "ICC", isoId: "_a4ZqMWjoEeSDR-pyia6Xtg" }, { value: "AGNT", name: "AuthorisedAgent", isoId: "_a4ZqM2joEeSDR-pyia6Xtg" }, { value: "MERC", name: "Merchant", isoId: "_a4ZqNWjoEeSDR-pyia6Xtg" }, { value: "ACQR", name: "Acquirer", isoId: "_xWp_8WjoEeSDR-pyia6Xtg" }, { value: "ISSR", name: "Issuer", isoId: "_xlWjQWjoEeSDR-pyia6Xtg" }, { value: "TRML", name: "Terminal", isoId: "_xytCwWjoEeSDR-pyia6Xtg" }],
   },
   "Verification1Code": {
     name: "Verification1Code",
     isoId: "_uTRSAGjpEeSDR-pyia6Xtg",
     kind: "code",
-    options: [{ value: "ERRR", name: "TechnicalError", isoId: "_xwe_wWjpEeSDR-pyia6Xtg" }, { value: "FAIL", name: "Failed", isoId: "_xPkEAWjpEeSDR-pyia6Xtg" }, { value: "MISS", name: "Missing", isoId: "_xVtvUWjpEeSDR-pyia6Xtg" }, { value: "NOVF", name: "NotPerformed", isoId: "_xdGwwWjpEeSDR-pyia6Xtg" }, { value: "PART", name: "PartialMatch", isoId: "_xib8sWjpEeSDR-pyia6Xtg" }, { value: "SUCC", name: "Successful", isoId: "_xpMsAWjpEeSDR-pyia6Xtg" }],
+    options: [{ value: "FAIL", name: "Failed", isoId: "_xPkEAWjpEeSDR-pyia6Xtg" }, { value: "MISS", name: "Missing", isoId: "_xVtvUWjpEeSDR-pyia6Xtg" }, { value: "NOVF", name: "NotPerformed", isoId: "_xdGwwWjpEeSDR-pyia6Xtg" }, { value: "PART", name: "PartialMatch", isoId: "_xib8sWjpEeSDR-pyia6Xtg" }, { value: "SUCC", name: "Successful", isoId: "_xpMsAWjpEeSDR-pyia6Xtg" }, { value: "ERRR", name: "TechnicalError", isoId: "_xwe_wWjpEeSDR-pyia6Xtg" }],
   },
   "TransactionVerificationResult5": {
     name: "TransactionVerificationResult5",
@@ -364,7 +364,7 @@ const ownTypeDescriptors: TypeDescriptors = {
     name: "FailureReason8Code",
     isoId: "_oMx7AK5FEeWCgYcWSNgX5g",
     kind: "code",
-    options: [{ value: "CDCP", name: "CardCaptured", isoId: "_tV4i065FEeWCgYcWSNgX5g" }, { value: "CDFG", name: "ForgottenCard", isoId: "_uU69865FEeWCgYcWSNgX5g" }, { value: "CDRT", name: "CardRetained", isoId: "_tLl-Ya5FEeWCgYcWSNgX5g" }, { value: "CUCL", name: "CustomerCancel", isoId: "_th8o465FEeWCgYcWSNgX5g" }, { value: "MALF", name: "Malfunction", isoId: "_upyas65FEeWCgYcWSNgX5g" }, { value: "SECU", name: "SecurityError", isoId: "_vc0aI65FEeWCgYcWSNgX5g" }, { value: "SFRD", name: "SuspectedFraud", isoId: "_vomMU65FEeWCgYcWSNgX5g" }, { value: "UCPT", name: "UnableToCapture", isoId: "_wAJJo65FEeWCgYcWSNgX5g" }],
+    options: [{ value: "CDRT", name: "CardRetained", isoId: "_tLl-Ya5FEeWCgYcWSNgX5g" }, { value: "CDCP", name: "CardCaptured", isoId: "_tV4i065FEeWCgYcWSNgX5g" }, { value: "CUCL", name: "CustomerCancel", isoId: "_th8o465FEeWCgYcWSNgX5g" }, { value: "CDFG", name: "ForgottenCard", isoId: "_uU69865FEeWCgYcWSNgX5g" }, { value: "MALF", name: "Malfunction", isoId: "_upyas65FEeWCgYcWSNgX5g" }, { value: "SECU", name: "SecurityError", isoId: "_vc0aI65FEeWCgYcWSNgX5g" }, { value: "SFRD", name: "SuspectedFraud", isoId: "_vomMU65FEeWCgYcWSNgX5g" }, { value: "UCPT", name: "UnableToCapture", isoId: "_wAJJo65FEeWCgYcWSNgX5g" }],
   },
   "ATMTransaction40": {
     name: "ATMTransaction40",

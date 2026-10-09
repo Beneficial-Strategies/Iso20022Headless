@@ -3,13 +3,13 @@
 import type { ATMCassette3, ATMCommand7, ATMTotals4, AutomatedTellerMachine3, ContentInformationType10, ContentInformationType15, Header32, TransactionIdentifier3 } from './shared.ts';
 
 export interface ResponseType12 {
-  Response: "APPR" | "ASUP" | "DECL" | "PART";
-  ResponseReason?: "ACPI" | "ACQS" | "ACTC" | "ACTF" | "ACTT" | "ADCC" | "ADDI" | "AGFE" | "AMLV" | "AMMA" | "AMTA" | "AMTD" | "AMTI" | "AMTO" | "AMTW" | "AUTH" | "BALO" | "BANK" | "BRHI" | "CHDI" | "CMKY" | "CNTC" | "CRDA" | "CRDF" | "CRDI" | "CRDL" | "CRDR" | "CRDS" | "CRDT" | "CRDU" | "CRDW" | "CRDX" | "CTFV" | "CTVG" | "DATI" | "DBER" | "FDCL" | "FEEM" | "FEES" | "FMTR" | "FNDI" | "FRDS" | "ICCM" | "ISSF" | "ISSO" | "ISSP" | "ISST" | "ISSU" | "KEYS" | "LBLA" | "LBLU" | "MACK" | "MACR" | "MEDI" | "NMBD" | "NMBW" | "NPRA" | "NPRC" | "OFFL" | "ONLP" | "ORGF" | "OTHR" | "PINA" | "PINC" | "PIND" | "PINE" | "PINN" | "PINS" | "PINV" | "PINX" | "QMAX" | "RECD" | "SACT" | "SECV" | "SEQO" | "SFWE" | "SGNI" | "SPCC" | "SRCH" | "SRVI" | "SRVU" | "SVSU" | "SYSM" | "SYSP" | "TKID" | "TKKO" | "TRMI" | "TTLV" | "TXND" | "TXNG" | "TXNL" | "TXNM" | "TXNU" | "TXNV" | "UNBC" | "UNBO" | "UNBP" | "VNDF" | "VNDR";
+  Response: "APPR" | "DECL" | "PART" | "ASUP";
+  ResponseReason?: "ACTF" | "ACQS" | "AMLV" | "AMTA" | "AUTH" | "BANK" | "CRDR" | "CRDF" | "ACTC" | "CTVG" | "DBER" | "FEES" | "TXNL" | "AMTD" | "NMBD" | "CRDX" | "FDCL" | "FMTR" | "TXNG" | "FNDI" | "ACPI" | "AMTI" | "ADDI" | "BRHI" | "CHDI" | "CRDI" | "CTFV" | "AMTO" | "PINV" | "TKKO" | "SGNI" | "TKID" | "TXNV" | "DATI" | "ISSP" | "ISSF" | "ISSO" | "ISST" | "ISSU" | "KEYS" | "LBLA" | "CRDL" | "MACR" | "MACK" | "ICCM" | "PINN" | "CRDA" | "LBLU" | "PINA" | "NPRA" | "OFFL" | "ONLP" | "NPRC" | "TXNM" | "OTHR" | "BALO" | "SEQO" | "PINC" | "PIND" | "PINS" | "PINX" | "PINE" | "QMAX" | "RECD" | "CRDT" | "SECV" | "SRVU" | "SFWE" | "SPCC" | "CRDS" | "SRCH" | "CNTC" | "FRDS" | "SYSP" | "SYSM" | "TRMI" | "ACTT" | "TTLV" | "TXNU" | "TXND" | "ORGF" | "UNBO" | "UNBP" | "UNBC" | "CMKY" | "CRDU" | "SVSU" | "VNDR" | "VNDF" | "AMTW" | "NMBW" | "CRDW" | "MEDI" | "SRVI" | "AMMA" | "AGFE" | "SACT" | "ADCC" | "FEEM";
   AdditionalResponseInformation?: string;
 }
 
 export interface ATMTransaction52 {
-  TypeOfOperation?: "ADJU" | "INSR" | "LOAD" | "RCUP" | "REMV" | "SWAP" | "UNLD";
+  TypeOfOperation?: "ADJU" | "INSR" | "LOAD" | "REMV" | "UNLD" | "RCUP" | "SWAP";
   TransactionIdentification: TransactionIdentifier3;
   ReconciliationIdentification: string;
   TransactionResponse: ResponseType12;

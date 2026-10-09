@@ -62,7 +62,7 @@ export interface CreditTransferTransaction82 {
   PaymentTypeInformation?: PaymentTypeInformation28;
   InterbankSettlementAmount: ActiveCurrencyAndAmount;
   InterbankSettlementDate?: string;
-  SettlementPriority?: "HIGH" | "NORM" | "URGT";
+  SettlementPriority?: "URGT" | "HIGH" | "NORM";
   SettlementTimeIndication?: SettlementDateTimeIndication1;
   SettlementTimeRequest?: SettlementTimeRequest2;
   ExpiryDateTime?: string;
@@ -107,7 +107,7 @@ export interface OriginalTransactionReference45 {
   CreditorSchemeIdentification?: PartyIdentification272;
   SettlementInformation?: SettlementInstruction15;
   PaymentTypeInformation?: PaymentTypeInformation27;
-  PaymentMethod?: "CHK" | "DD" | "TRA" | "TRF";
+  PaymentMethod?: "CHK" | "TRF" | "DD" | "TRA";
   MandateRelatedInformation?: MandateRelatedData5Choice;
   RemittanceInformation?: RemittanceInformation26;
   UltimateDebtor?: Party50Choice;
@@ -138,14 +138,14 @@ export interface PaymentTransaction168 {
   PaymentTypeInformation?: PaymentTypeInformation28;
   ReturnedInterbankSettlementAmount: ActiveCurrencyAndAmount;
   InterbankSettlementDate?: string;
-  SettlementPriority?: "HIGH" | "NORM" | "URGT";
+  SettlementPriority?: "URGT" | "HIGH" | "NORM";
   SettlementTimeIndication?: SettlementDateTimeIndication1;
   SettlementTimeRequest?: SettlementTimeRequest2;
   ReturnedInstructedAmount?: ActiveOrHistoricCurrencyAndAmount;
   ExchangeRate?: string;
   AgreedRate?: CurrencyExchange26;
   CompensationAmount?: ActiveOrHistoricCurrencyAndAmount;
-  ChargeBearer?: "CRED" | "DEBT" | "SHAR" | "SLEV";
+  ChargeBearer?: "DEBT" | "CRED" | "SHAR" | "SLEV";
   ChargesInformation?: Array<Charges16>;
   ClearingSystemReference?: string;
   InstructingAgent?: BranchAndFinancialInstitutionIdentification8;

@@ -17,19 +17,19 @@
         "max": 1
       },
       {
-        "name": "SupplementaryData",
-        "isoId": "_R3P4XTEZEe6kQ-WGAhcVPQ",
-        "xmlTag": "SplmtryData",
-        "type": "SupplementaryData1",
-        "min": 0,
-        "max": null
-      },
-      {
         "name": "UnderlyingAmendmentDetails",
         "isoId": "_R3P4WzEZEe6kQ-WGAhcVPQ",
         "xmlTag": "UndrlygAmdmntDtls",
         "type": "MandateAmendment8",
         "min": 1,
+        "max": null
+      },
+      {
+        "name": "SupplementaryData",
+        "isoId": "_R3P4XTEZEe6kQ-WGAhcVPQ",
+        "xmlTag": "SplmtryData",
+        "type": "SupplementaryData1",
+        "min": 0,
         "max": null
       }
     ]
@@ -237,14 +237,9 @@
           "isoId": "_bm2sYdp-Ed-ak6NoX_4Aeg_878577717"
         },
         {
-          "value": "BIZZ",
-          "name": "Business",
-          "isoId": "_bm2sZNp-Ed-ak6NoX_4Aeg_2106193529"
-        },
-        {
-          "value": "DLVY",
-          "name": "DeliveryTo",
-          "isoId": "_bm2sZtp-Ed-ak6NoX_4Aeg_2106193624"
+          "value": "PBOX",
+          "name": "POBox",
+          "isoId": "_bm2sYtp-Ed-ak6NoX_4Aeg_878578132"
         },
         {
           "value": "HOME",
@@ -252,14 +247,19 @@
           "isoId": "_bm2sY9p-Ed-ak6NoX_4Aeg_2106193409"
         },
         {
+          "value": "BIZZ",
+          "name": "Business",
+          "isoId": "_bm2sZNp-Ed-ak6NoX_4Aeg_2106193529"
+        },
+        {
           "value": "MLTO",
           "name": "MailTo",
           "isoId": "_bm2sZdp-Ed-ak6NoX_4Aeg_2106193606"
         },
         {
-          "value": "PBOX",
-          "name": "POBox",
-          "isoId": "_bm2sYtp-Ed-ak6NoX_4Aeg_878578132"
+          "value": "DLVY",
+          "name": "DeliveryTo",
+          "isoId": "_bm2sZtp-Ed-ak6NoX_4Aeg_2106193624"
         }
       ]
     },
@@ -818,11 +818,6 @@
           "isoId": "_SseUgXRmEeiH1ZOt2UD8vQ"
         },
         {
-          "value": "MIKS",
-          "name": "GenderNeutral",
-          "isoId": "_TCckgXRmEeiH1ZOt2UD8vQ"
-        },
-        {
           "value": "MISS",
           "name": "Miss",
           "isoId": "_SzqhoXRmEeiH1ZOt2UD8vQ"
@@ -831,6 +826,11 @@
           "value": "MIST",
           "name": "Mister",
           "isoId": "_S6p6cXRmEeiH1ZOt2UD8vQ"
+        },
+        {
+          "value": "MIKS",
+          "name": "GenderNeutral",
+          "isoId": "_TCckgXRmEeiH1ZOt2UD8vQ"
         }
       ]
     },
@@ -885,9 +885,9 @@
       "kind": "code",
       "options": [
         {
-          "value": "CELL",
-          "name": "MobileOrCellPhone",
-          "isoId": "_RyuIMTIDEe6mzvR3CHiUhA"
+          "value": "MAIL",
+          "name": "Email",
+          "isoId": "_Ri2gMTIDEe6mzvR3CHiUhA"
         },
         {
           "value": "FAXX",
@@ -900,9 +900,9 @@
           "isoId": "_RtfC4TIDEe6mzvR3CHiUhA"
         },
         {
-          "value": "MAIL",
-          "name": "Email",
-          "isoId": "_Ri2gMTIDEe6mzvR3CHiUhA"
+          "value": "CELL",
+          "name": "MobileOrCellPhone",
+          "isoId": "_RyuIMTIDEe6mzvR3CHiUhA"
         },
         {
           "value": "ONLI",
@@ -1783,14 +1783,14 @@
       "kind": "code",
       "options": [
         {
-          "value": "OOFF",
-          "name": "OneOff",
-          "isoId": "_ZKZRANp-Ed-ak6NoX_4Aeg_868377553"
-        },
-        {
           "value": "RCUR",
           "name": "Recurring",
           "isoId": "_ZKPgCNp-Ed-ak6NoX_4Aeg_868377522"
+        },
+        {
+          "value": "OOFF",
+          "name": "OneOff",
+          "isoId": "_ZKZRANp-Ed-ak6NoX_4Aeg_868377553"
         }
       ]
     },
@@ -1800,29 +1800,9 @@
       "kind": "code",
       "options": [
         {
-          "value": "ADHO",
-          "name": "Adhoc",
-          "isoId": "_t8LPY1kyEeGeoaLUQk__nA_-1804960693"
-        },
-        {
-          "value": "DAIL",
-          "name": "Daily",
-          "isoId": "_t8LPYlkyEeGeoaLUQk__nA_-1041657550"
-        },
-        {
-          "value": "FRTN",
-          "name": "Fortnightly",
-          "isoId": "_t8LPZVkyEeGeoaLUQk__nA_468950968"
-        },
-        {
-          "value": "INDA",
-          "name": "IntraDay",
-          "isoId": "_t8LPZFkyEeGeoaLUQk__nA_-1816059470"
-        },
-        {
-          "value": "MIAN",
-          "name": "SemiAnnual",
-          "isoId": "_t8LPYFkyEeGeoaLUQk__nA_1420457571"
+          "value": "YEAR",
+          "name": "Annual",
+          "isoId": "_t8BeYVkyEeGeoaLUQk__nA_569640725"
         },
         {
           "value": "MNTH",
@@ -1835,14 +1815,34 @@
           "isoId": "_t8BeY1kyEeGeoaLUQk__nA_834510545"
         },
         {
+          "value": "MIAN",
+          "name": "SemiAnnual",
+          "isoId": "_t8LPYFkyEeGeoaLUQk__nA_1420457571"
+        },
+        {
           "value": "WEEK",
           "name": "Weekly",
           "isoId": "_t8LPYVkyEeGeoaLUQk__nA_1729241450"
         },
         {
-          "value": "YEAR",
-          "name": "Annual",
-          "isoId": "_t8BeYVkyEeGeoaLUQk__nA_569640725"
+          "value": "DAIL",
+          "name": "Daily",
+          "isoId": "_t8LPYlkyEeGeoaLUQk__nA_-1041657550"
+        },
+        {
+          "value": "ADHO",
+          "name": "Adhoc",
+          "isoId": "_t8LPY1kyEeGeoaLUQk__nA_-1804960693"
+        },
+        {
+          "value": "INDA",
+          "name": "IntraDay",
+          "isoId": "_t8LPZFkyEeGeoaLUQk__nA_-1816059470"
+        },
+        {
+          "value": "FRTN",
+          "name": "Fortnightly",
+          "isoId": "_t8LPZVkyEeGeoaLUQk__nA_468950968"
         }
       ]
     },
@@ -2040,19 +2040,14 @@
       "kind": "code",
       "options": [
         {
-          "value": "MIAN",
-          "name": "SemiAnnual",
-          "isoId": "_6xlcIWoEEearR-CA7eRZXQ"
-        },
-        {
           "value": "NEVR",
           "name": "Never",
           "isoId": "_ns-iwWoEEearR-CA7eRZXQ"
         },
         {
-          "value": "QURT",
-          "name": "Quarterly",
-          "isoId": "_7SZDIWoEEearR-CA7eRZXQ"
+          "value": "YEAR",
+          "name": "Annual",
+          "isoId": "_vQ94oWoEEearR-CA7eRZXQ"
         },
         {
           "value": "RATE",
@@ -2060,9 +2055,14 @@
           "isoId": "_5MNZwWoEEearR-CA7eRZXQ"
         },
         {
-          "value": "YEAR",
-          "name": "Annual",
-          "isoId": "_vQ94oWoEEearR-CA7eRZXQ"
+          "value": "MIAN",
+          "name": "SemiAnnual",
+          "isoId": "_6xlcIWoEEearR-CA7eRZXQ"
+        },
+        {
+          "value": "QURT",
+          "name": "Quarterly",
+          "isoId": "_7SZDIWoEEearR-CA7eRZXQ"
         }
       ]
     },

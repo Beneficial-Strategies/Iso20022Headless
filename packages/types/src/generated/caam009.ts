@@ -37,14 +37,14 @@ export interface ATMCommand9 {
 export interface ATMTotals3 {
   Identification: string;
   AdditionalIdentification?: string;
-  Period: "BDAY" | "CTOF" | "INQU" | "OPER";
+  Period: "BDAY" | "INQU" | "CTOF" | "OPER";
   Currency?: string;
   Count: string;
   Amount?: string;
 }
 
 export interface ATMReconciliationOperation1 {
-  TypeOfOperation?: "ADJU" | "INSR" | "LOAD" | "RCUP" | "REMV" | "SWAP" | "UNLD";
+  TypeOfOperation?: "ADJU" | "INSR" | "LOAD" | "REMV" | "UNLD" | "RCUP" | "SWAP";
   TransactionIdentification: TransactionIdentifier3;
   ReconciliationIdentification: string;
   ATMTotals?: Array<ATMTotals4>;
@@ -52,7 +52,7 @@ export interface ATMReconciliationOperation1 {
   TransactionTotals?: Array<ATMTotals3>;
   RetainedCard?: string;
   AdditionalTransactionInformation?: string;
-  Incident?: Array<"CDCL" | "CDCP" | "CDER" | "CDFG" | "CDRT" | "CFGC" | "CHFG" | "CQFG" | "CQRT" | "CSRV" | "CUCL" | "CUDC" | "CUTO" | "DCFG" | "DCRT" | "DFGC" | "FILL" | "FMTE" | "LATE" | "MALF" | "NDCL" | "QFGC" | "RJCT" | "RSTR" | "SECU" | "SFRD" | "TIMO" | "UCMP" | "UCPT" | "USND" | "VLTE">;
+  Incident?: Array<"CDCP" | "CDCL" | "CDER" | "CUCL" | "CUDC" | "CDFG" | "FILL" | "MALF" | "NDCL" | "SECU" | "SFRD" | "TIMO" | "LATE" | "UCPT" | "UCMP" | "USND" | "CSRV" | "CDRT" | "CUTO" | "RJCT" | "FMTE" | "VLTE" | "CHFG" | "DCFG" | "CQFG" | "DFGC" | "CFGC" | "QFGC" | "CQRT" | "DCRT" | "RSTR">;
 }
 
 export interface ATMTransaction36 {

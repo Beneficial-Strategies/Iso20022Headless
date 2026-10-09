@@ -9,7 +9,7 @@ export interface SecurityParameters19 {
 }
 
 export interface ATMCommand17 {
-  Type: "ABAL" | "ASTS" | "CCNT" | "CFGT" | "DISC" | "HKCG" | "HKRV" | "KACT" | "KCHG" | "KDAC" | "KDWL" | "KRMV" | "RREQ" | "SCFU" | "SNDM" | "SSCU" | "SSTU";
+  Type: "ABAL" | "ASTS" | "CFGT" | "CCNT" | "DISC" | "KACT" | "KDAC" | "KDWL" | "KRMV" | "SCFU" | "SSCU" | "SSTU" | "SNDM" | "HKCG" | "HKRV" | "KCHG" | "RREQ";
   Urgency: "ASAP" | "CRIT" | "DTIM" | "ENCS";
   DateTime?: string;
   CommandIdentification?: ATMCommandIdentification1;

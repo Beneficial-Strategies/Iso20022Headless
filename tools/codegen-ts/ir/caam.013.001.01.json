@@ -9,14 +9,6 @@
     "definition": "The ATMConfigurationReport is sent by an ATM to a maintenance host to report the version of the configuration which is active.",
     "blocks": [
       {
-        "name": "ATMConfigurationReport",
-        "isoId": "_3fbJ8KE9Ee-MRKYsaX6JDg",
-        "xmlTag": "ATMCfgtnRpt",
-        "type": "ATMConfigurationReportComponent1",
-        "min": 0,
-        "max": 1
-      },
-      {
         "name": "Header",
         "isoId": "_sdBMcKE9Ee-MRKYsaX6JDg",
         "xmlTag": "Hdr",
@@ -29,6 +21,14 @@
         "isoId": "_zufO8KE9Ee-MRKYsaX6JDg",
         "xmlTag": "PrtctdATMCfgtnRpt",
         "type": "ContentInformationType10",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "name": "ATMConfigurationReport",
+        "isoId": "_3fbJ8KE9Ee-MRKYsaX6JDg",
+        "xmlTag": "ATMCfgtnRpt",
+        "type": "ATMConfigurationReportComponent1",
         "min": 0,
         "max": 1
       },
@@ -121,11 +121,6 @@
       "kind": "code",
       "options": [
         {
-          "value": "ACMD",
-          "name": "ATMControl",
-          "isoId": "_e61o561xEeWMg5rOByfExw"
-        },
-        {
           "value": "BALN",
           "name": "ATMBalance",
           "isoId": "_e61o4a1xEeWMg5rOByfExw"
@@ -141,44 +136,9 @@
           "isoId": "_e61o5a1xEeWMg5rOByfExw"
         },
         {
-          "value": "CSEC",
-          "name": "SecurityControl",
-          "isoId": "_e61pEa1xEeWMg5rOByfExw"
-        },
-        {
-          "value": "DIAP",
-          "name": "ATMDiagnosticResponse",
-          "isoId": "_e61o7a1xEeWMg5rOByfExw"
-        },
-        {
-          "value": "DIAQ",
-          "name": "ATMDiagnosticRequest",
-          "isoId": "_e61o661xEeWMg5rOByfExw"
-        },
-        {
-          "value": "DPSK",
-          "name": "ATMDepositCompletionAcknowledgement",
-          "isoId": "_lLyCga1xEeWMg5rOByfExw"
-        },
-        {
-          "value": "DPSP",
-          "name": "ATMDepositResponse",
-          "isoId": "_lmAgYa1xEeWMg5rOByfExw"
-        },
-        {
-          "value": "DPSQ",
-          "name": "ATMDepositRequest",
-          "isoId": "_ld0Nsa1xEeWMg5rOByfExw"
-        },
-        {
-          "value": "DPSV",
-          "name": "ATMDepositCompletionAdvice",
-          "isoId": "_lT-VMa1xEeWMg5rOByfExw"
-        },
-        {
-          "value": "DSEC",
-          "name": "SecurityDetails",
-          "isoId": "_e61pE61xEeWMg5rOByfExw"
+          "value": "ACMD",
+          "name": "ATMControl",
+          "isoId": "_e61o561xEeWMg5rOByfExw"
         },
         {
           "value": "DVCC",
@@ -186,19 +146,84 @@
           "isoId": "_e61o6a1xEeWMg5rOByfExw"
         },
         {
-          "value": "EXPK",
-          "name": "ATMExceptionAcknowledgement",
-          "isoId": "_mGqWYa1xEeWMg5rOByfExw"
+          "value": "DIAQ",
+          "name": "ATMDiagnosticRequest",
+          "isoId": "_e61o661xEeWMg5rOByfExw"
         },
         {
-          "value": "EXPV",
-          "name": "ATMExceptionAdvice",
-          "isoId": "_mOakMa1xEeWMg5rOByfExw"
+          "value": "DIAP",
+          "name": "ATMDiagnosticResponse",
+          "isoId": "_e61o7a1xEeWMg5rOByfExw"
         },
         {
           "value": "GSTS",
           "name": "ATMGlobalStatus",
           "isoId": "_e61o761xEeWMg5rOByfExw"
+        },
+        {
+          "value": "INQQ",
+          "name": "ATMInquiryRequest",
+          "isoId": "_e61o8a1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "INQP",
+          "name": "ATMInquiryResponse",
+          "isoId": "_e61o861xEeWMg5rOByfExw"
+        },
+        {
+          "value": "KYAQ",
+          "name": "ATMKeyDownloadRequest",
+          "isoId": "_e61o9a1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "KYAP",
+          "name": "ATMKeyDownloadResponse",
+          "isoId": "_e61o961xEeWMg5rOByfExw"
+        },
+        {
+          "value": "PINQ",
+          "name": "ATMPINManagementRequest",
+          "isoId": "_e61o-a1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "PINP",
+          "name": "ATMPINManagementResponse",
+          "isoId": "_e61o-61xEeWMg5rOByfExw"
+        },
+        {
+          "value": "RJAQ",
+          "name": "ATMRequestReject",
+          "isoId": "_e61o_a1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "RJAP",
+          "name": "ATMResponseReject",
+          "isoId": "_e61o_61xEeWMg5rOByfExw"
+        },
+        {
+          "value": "WITV",
+          "name": "ATMWithdrawalAdvice",
+          "isoId": "_e61pAa1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "WITK",
+          "name": "ATMWithdrawalAknowledgement",
+          "isoId": "_e61pA61xEeWMg5rOByfExw"
+        },
+        {
+          "value": "WITQ",
+          "name": "ATMWithdrawalRequest",
+          "isoId": "_e61pBa1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "WITP",
+          "name": "ATMWithdrawalResponse",
+          "isoId": "_e61pB61xEeWMg5rOByfExw"
+        },
+        {
+          "value": "INQC",
+          "name": "CountersInquiry",
+          "isoId": "_e61pCa1xEeWMg5rOByfExw"
         },
         {
           "value": "H2AP",
@@ -211,54 +236,19 @@
           "isoId": "_e61pDa1xEeWMg5rOByfExw"
         },
         {
-          "value": "INQC",
-          "name": "CountersInquiry",
-          "isoId": "_e61pCa1xEeWMg5rOByfExw"
+          "value": "TMOP",
+          "name": "ATMOperation",
+          "isoId": "_e61pD61xEeWMg5rOByfExw"
         },
         {
-          "value": "INQP",
-          "name": "ATMInquiryResponse",
-          "isoId": "_e61o861xEeWMg5rOByfExw"
+          "value": "CSEC",
+          "name": "SecurityControl",
+          "isoId": "_e61pEa1xEeWMg5rOByfExw"
         },
         {
-          "value": "INQQ",
-          "name": "ATMInquiryRequest",
-          "isoId": "_e61o8a1xEeWMg5rOByfExw"
-        },
-        {
-          "value": "KYAP",
-          "name": "ATMKeyDownloadResponse",
-          "isoId": "_e61o961xEeWMg5rOByfExw"
-        },
-        {
-          "value": "KYAQ",
-          "name": "ATMKeyDownloadRequest",
-          "isoId": "_e61o9a1xEeWMg5rOByfExw"
-        },
-        {
-          "value": "PINP",
-          "name": "ATMPINManagementResponse",
-          "isoId": "_e61o-61xEeWMg5rOByfExw"
-        },
-        {
-          "value": "PINQ",
-          "name": "ATMPINManagementRequest",
-          "isoId": "_e61o-a1xEeWMg5rOByfExw"
-        },
-        {
-          "value": "RJAP",
-          "name": "ATMResponseReject",
-          "isoId": "_e61o_61xEeWMg5rOByfExw"
-        },
-        {
-          "value": "RJAQ",
-          "name": "ATMRequestReject",
-          "isoId": "_e61o_a1xEeWMg5rOByfExw"
-        },
-        {
-          "value": "RPTC",
-          "name": "CountersReport",
-          "isoId": "_rsA1Ua1xEeWMg5rOByfExw"
+          "value": "DSEC",
+          "name": "SecurityDetails",
+          "isoId": "_e61pE61xEeWMg5rOByfExw"
         },
         {
           "value": "SKSC",
@@ -271,14 +261,34 @@
           "isoId": "_e61pF61xEeWMg5rOByfExw"
         },
         {
-          "value": "TMOP",
-          "name": "ATMOperation",
-          "isoId": "_e61pD61xEeWMg5rOByfExw"
+          "value": "DPSK",
+          "name": "ATMDepositCompletionAcknowledgement",
+          "isoId": "_lLyCga1xEeWMg5rOByfExw"
         },
         {
-          "value": "TRFP",
-          "name": "ATMTransferResponse",
-          "isoId": "_oCFhQa1xEeWMg5rOByfExw"
+          "value": "DPSV",
+          "name": "ATMDepositCompletionAdvice",
+          "isoId": "_lT-VMa1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "DPSQ",
+          "name": "ATMDepositRequest",
+          "isoId": "_ld0Nsa1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "DPSP",
+          "name": "ATMDepositResponse",
+          "isoId": "_lmAgYa1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "EXPK",
+          "name": "ATMExceptionAcknowledgement",
+          "isoId": "_mGqWYa1xEeWMg5rOByfExw"
+        },
+        {
+          "value": "EXPV",
+          "name": "ATMExceptionAdvice",
+          "isoId": "_mOakMa1xEeWMg5rOByfExw"
         },
         {
           "value": "TRFQ",
@@ -286,24 +296,14 @@
           "isoId": "_n5vdka1xEeWMg5rOByfExw"
         },
         {
-          "value": "WITK",
-          "name": "ATMWithdrawalAknowledgement",
-          "isoId": "_e61pA61xEeWMg5rOByfExw"
+          "value": "TRFP",
+          "name": "ATMTransferResponse",
+          "isoId": "_oCFhQa1xEeWMg5rOByfExw"
         },
         {
-          "value": "WITP",
-          "name": "ATMWithdrawalResponse",
-          "isoId": "_e61pB61xEeWMg5rOByfExw"
-        },
-        {
-          "value": "WITQ",
-          "name": "ATMWithdrawalRequest",
-          "isoId": "_e61pBa1xEeWMg5rOByfExw"
-        },
-        {
-          "value": "WITV",
-          "name": "ATMWithdrawalAdvice",
-          "isoId": "_e61pAa1xEeWMg5rOByfExw"
+          "value": "RPTC",
+          "name": "CountersReport",
+          "isoId": "_rsA1Ua1xEeWMg5rOByfExw"
         }
       ]
     },
@@ -594,19 +594,14 @@
       "kind": "code",
       "options": [
         {
-          "value": "AUTH",
-          "name": "AuthenticatedData",
-          "isoId": "_gd_z22izEeS87LmvcA55sg"
-        },
-        {
           "value": "DATA",
           "name": "PlainData",
           "isoId": "_gd_z0WizEeS87LmvcA55sg"
         },
         {
-          "value": "DGST",
-          "name": "DigestedData",
-          "isoId": "_gd_z12izEeS87LmvcA55sg"
+          "value": "SIGN",
+          "name": "SignedData",
+          "isoId": "_gd_z02izEeS87LmvcA55sg"
         },
         {
           "value": "EVLP",
@@ -614,9 +609,14 @@
           "isoId": "_gd_z1WizEeS87LmvcA55sg"
         },
         {
-          "value": "SIGN",
-          "name": "SignedData",
-          "isoId": "_gd_z02izEeS87LmvcA55sg"
+          "value": "DGST",
+          "name": "DigestedData",
+          "isoId": "_gd_z12izEeS87LmvcA55sg"
+        },
+        {
+          "value": "AUTH",
+          "name": "AuthenticatedData",
+          "isoId": "_gd_z22izEeS87LmvcA55sg"
         }
       ]
     },
@@ -632,11 +632,6 @@
       "isoId": "_TSEShwEcEeCQm6a_G2yO_w_1647054539",
       "kind": "code",
       "options": [
-        {
-          "value": "CATT",
-          "name": "CountryName",
-          "isoId": "_TSESjAEcEeCQm6a_G2yO_w_189442098"
-        },
         {
           "value": "CNAT",
           "name": "CommonName",
@@ -656,6 +651,11 @@
           "value": "OUAT",
           "name": "OrganisationUnitName",
           "isoId": "_TSESiwEcEeCQm6a_G2yO_w_-2013772510"
+        },
+        {
+          "value": "CATT",
+          "name": "CountryName",
+          "isoId": "_TSESjAEcEeCQm6a_G2yO_w_189442098"
         }
       ]
     },
@@ -852,11 +852,6 @@
       "kind": "code",
       "options": [
         {
-          "value": "HS01",
-          "name": "SHA1",
-          "isoId": "_I6AWUWi5EeS87LmvcA55sg"
-        },
-        {
           "value": "HS25",
           "name": "SHA256",
           "isoId": "_yLO4UWi4EeS87LmvcA55sg"
@@ -870,6 +865,11 @@
           "value": "HS51",
           "name": "SHA512",
           "isoId": "_yLO4VWi4EeS87LmvcA55sg"
+        },
+        {
+          "value": "HS01",
+          "name": "SHA1",
+          "isoId": "_I6AWUWi5EeS87LmvcA55sg"
         }
       ]
     },
@@ -1040,9 +1040,9 @@
       "kind": "code",
       "options": [
         {
-          "value": "DKP9",
-          "name": "DUKPT2009",
-          "isoId": "_lu-ElWi7EeS87LmvcA55sg"
+          "value": "EA2C",
+          "name": "AES128CBC",
+          "isoId": "_lu-EkWi7EeS87LmvcA55sg"
         },
         {
           "value": "E3DC",
@@ -1050,19 +1050,14 @@
           "isoId": "_lu-Ek2i7EeS87LmvcA55sg"
         },
         {
-          "value": "EA2C",
-          "name": "AES128CBC",
-          "isoId": "_lu-EkWi7EeS87LmvcA55sg"
+          "value": "DKP9",
+          "name": "DUKPT2009",
+          "isoId": "_lu-ElWi7EeS87LmvcA55sg"
         },
         {
-          "value": "EA5C",
-          "name": "AES256CBC",
-          "isoId": "_TfXrIWi8EeS87LmvcA55sg"
-        },
-        {
-          "value": "EA9C",
-          "name": "AES192CBC",
-          "isoId": "_TZJuYWi8EeS87LmvcA55sg"
+          "value": "UKPT",
+          "name": "UKPT",
+          "isoId": "_lu-El2i7EeS87LmvcA55sg"
         },
         {
           "value": "UKA1",
@@ -1070,9 +1065,14 @@
           "isoId": "_lu-EmWi7EeS87LmvcA55sg"
         },
         {
-          "value": "UKPT",
-          "name": "UKPT",
-          "isoId": "_lu-El2i7EeS87LmvcA55sg"
+          "value": "EA9C",
+          "name": "AES192CBC",
+          "isoId": "_TZJuYWi8EeS87LmvcA55sg"
+        },
+        {
+          "value": "EA5C",
+          "name": "AES256CBC",
+          "isoId": "_TfXrIWi8EeS87LmvcA55sg"
         }
       ]
     },
@@ -1256,24 +1256,24 @@
       "kind": "code",
       "options": [
         {
-          "value": "E3DC",
-          "name": "DES112CBC",
-          "isoId": "__IaKU2jBEeSP8Z8nx8HTuQ"
-        },
-        {
           "value": "EA2C",
           "name": "AES128CBC",
           "isoId": "__IaKUWjBEeSP8Z8nx8HTuQ"
         },
         {
-          "value": "EA5C",
-          "name": "AES256CBC",
-          "isoId": "_DeJbgWjCEeSP8Z8nx8HTuQ"
+          "value": "E3DC",
+          "name": "DES112CBC",
+          "isoId": "__IaKU2jBEeSP8Z8nx8HTuQ"
         },
         {
           "value": "EA9C",
           "name": "AES192CBC",
           "isoId": "_DT3eIWjCEeSP8Z8nx8HTuQ"
+        },
+        {
+          "value": "EA5C",
+          "name": "AES256CBC",
+          "isoId": "_DeJbgWjCEeSP8Z8nx8HTuQ"
         }
       ]
     },
@@ -1773,14 +1773,14 @@
       "kind": "code",
       "options": [
         {
-          "value": "FAIL",
-          "name": "Fail",
-          "isoId": "_mV40I8EQEe-MiKrW3VQ1Sg"
-        },
-        {
           "value": "WACT",
           "name": "AwaitingActivation",
           "isoId": "_mV40IcEQEe-MiKrW3VQ1Sg"
+        },
+        {
+          "value": "FAIL",
+          "name": "Fail",
+          "isoId": "_mV40I8EQEe-MiKrW3VQ1Sg"
         }
       ]
     },
@@ -1858,24 +1858,19 @@
       "kind": "code",
       "options": [
         {
-          "value": "CMA1",
-          "name": "SHA256CMACwithAES128",
-          "isoId": "_iHlHJWi7EeS87LmvcA55sg"
-        },
-        {
-          "value": "CMA5",
-          "name": "SHA512CMACwithAES256",
-          "isoId": "_Ew-kEWi8EeS87LmvcA55sg"
-        },
-        {
-          "value": "CMA9",
-          "name": "SHA384CMACwithAES192",
-          "isoId": "_DoWIEWi8EeS87LmvcA55sg"
-        },
-        {
           "value": "MACC",
           "name": "RetailCBCMAC",
           "isoId": "_iHlHIWi7EeS87LmvcA55sg"
+        },
+        {
+          "value": "MCCS",
+          "name": "RetailSHA256MAC",
+          "isoId": "_iHlHI2i7EeS87LmvcA55sg"
+        },
+        {
+          "value": "CMA1",
+          "name": "SHA256CMACwithAES128",
+          "isoId": "_iHlHJWi7EeS87LmvcA55sg"
         },
         {
           "value": "MCC1",
@@ -1883,9 +1878,14 @@
           "isoId": "_BK51QWi8EeS87LmvcA55sg"
         },
         {
-          "value": "MCCS",
-          "name": "RetailSHA256MAC",
-          "isoId": "_iHlHI2i7EeS87LmvcA55sg"
+          "value": "CMA9",
+          "name": "SHA384CMACwithAES192",
+          "isoId": "_DoWIEWi8EeS87LmvcA55sg"
+        },
+        {
+          "value": "CMA5",
+          "name": "SHA512CMACwithAES256",
+          "isoId": "_Ew-kEWi8EeS87LmvcA55sg"
         }
       ]
     },

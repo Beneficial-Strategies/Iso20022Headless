@@ -24,7 +24,7 @@ export interface CancellationStatusReason5 {
 
 export interface NumberOfTransactionsPerStatus1 {
   DetailedNumberOfTransactions: string;
-  DetailedStatus: "ACCP" | "ACCR" | "ACSC" | "ACSP" | "ACTC" | "ACWC" | "PDNG" | "RJCT";
+  DetailedStatus: "ACTC" | "RJCT" | "PDNG" | "ACCP" | "ACSP" | "ACSC" | "ACCR" | "ACWC";
   DetailedControlSum?: string;
 }
 
@@ -36,14 +36,14 @@ export interface OriginalGroupHeader23 {
   OriginalCreationDateTime?: string;
   OriginalNumberOfTransactions?: string;
   OriginalControlSum?: string;
-  GroupCancellationStatus?: "ACCR" | "PACR" | "PDCR" | "RJCR";
+  GroupCancellationStatus?: "PACR" | "RJCR" | "ACCR" | "PDCR";
   CancellationStatusReasonInformation?: Array<CancellationStatusReason5>;
   NumberOfTransactionsPerCancellationStatus?: Array<NumberOfTransactionsPerStatus1>;
 }
 
 export interface NumberOfCancellationsPerStatus1 {
   DetailedNumberOfTransactions: string;
-  DetailedStatus: "ACCR" | "PDCR" | "RJCR";
+  DetailedStatus: "RJCR" | "ACCR" | "PDCR";
   DetailedControlSum?: string;
 }
 
@@ -53,7 +53,7 @@ export interface PaymentTransaction175 {
   OriginalInstructionIdentification?: string;
   OriginalEndToEndIdentification?: string;
   UETR?: string;
-  TransactionCancellationStatus?: "ACCR" | "PDCR" | "RJCR";
+  TransactionCancellationStatus?: "RJCR" | "ACCR" | "PDCR";
   CancellationStatusReasonInformation?: Array<CancellationStatusReason5>;
   OriginalInstructedAmount?: ActiveOrHistoricCurrencyAndAmount;
   OriginalRequestedExecutionDate?: DateAndDateTime2Choice;
@@ -68,7 +68,7 @@ export interface OriginalPaymentInstruction54 {
   OriginalGroupInformation?: OriginalGroupInformation33;
   OriginalNumberOfTransactions?: string;
   OriginalControlSum?: string;
-  PaymentInformationCancellationStatus?: "ACCR" | "PACR" | "PDCR" | "RJCR";
+  PaymentInformationCancellationStatus?: "PACR" | "RJCR" | "ACCR" | "PDCR";
   CancellationStatusReasonInformation?: Array<CancellationStatusReason5>;
   NumberOfTransactionsPerCancellationStatus?: Array<NumberOfCancellationsPerStatus1>;
   TransactionInformationAndStatus?: Array<PaymentTransaction175>;
@@ -100,7 +100,7 @@ export interface ResolutionData5 {
   UETR?: string;
   InterbankSettlementAmount?: ActiveOrHistoricCurrencyAndAmount;
   InterbankSettlementDate?: string;
-  ClearingChannel?: "BOOK" | "MPNS" | "RTGS" | "RTNS";
+  ClearingChannel?: "RTGS" | "RTNS" | "MPNS" | "BOOK";
   Compensation?: Compensation5;
   ChargesInformation?: Array<Charges14>;
 }
@@ -114,7 +114,7 @@ export interface PaymentTransaction170 {
   OriginalTransactionIdentification?: string;
   OriginalClearingSystemReference?: string;
   OriginalUETR?: string;
-  TransactionCancellationStatus?: "ACCR" | "PDCR" | "RJCR";
+  TransactionCancellationStatus?: "RJCR" | "ACCR" | "PDCR";
   CancellationStatusReasonInformation?: Array<CancellationStatusReason5>;
   ResolutionRelatedInformation?: ResolutionData5;
   OriginalInterbankSettlementAmount?: ActiveOrHistoricCurrencyAndAmount;

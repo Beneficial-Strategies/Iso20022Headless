@@ -28,12 +28,12 @@ export interface PaymentTransaction182 {
   OriginalInterbankSettlementAmount?: ActiveOrHistoricCurrencyAndAmount;
   ReversedInterbankSettlementAmount: ActiveCurrencyAndAmount;
   InterbankSettlementDate?: string;
-  SettlementPriority?: "HIGH" | "NORM" | "URGT";
+  SettlementPriority?: "URGT" | "HIGH" | "NORM";
   SettlementTimeIndication?: SettlementDateTimeIndication1;
   ReversedInstructedAmount?: ActiveOrHistoricCurrencyAndAmount;
   ExchangeRate?: string;
   CompensationAmount?: ActiveOrHistoricCurrencyAndAmount;
-  ChargeBearer?: "CRED" | "DEBT" | "SHAR" | "SLEV";
+  ChargeBearer?: "DEBT" | "CRED" | "SHAR" | "SLEV";
   ChargesInformation?: Array<Charges16>;
   InstructingAgent?: BranchAndFinancialInstitutionIdentification8;
   InstructedAgent?: BranchAndFinancialInstitutionIdentification8;

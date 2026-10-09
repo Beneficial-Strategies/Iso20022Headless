@@ -1,5 +1,5 @@
 choice	memberId	memberName	text
 MandateReason1Choice	_TOt8xtp-Ed-ak6NoX_4Aeg_193514894	Code	Reason, as published in an external reason code list.
 MandateReason1Choice	_TOt8x9p-Ed-ak6NoX_4Aeg_193514895	Proprietary	Reason, in a proprietary form.
-OriginalMandate10Choice	_yPqnoTEyEe6g-ffJsqGiSA	OriginalMandate	Provides the original mandate data.
 OriginalMandate10Choice	_yPqAkTEyEe6g-ffJsqGiSA	OriginalMandateIdentification	Unique identification, as assigned by the responsible party (such as the creditor) or agent (such as the debtor agent), to unambiguously identify the original mandate.
+OriginalMandate10Choice	_yPqnoTEyEe6g-ffJsqGiSA	OriginalMandate	Provides the original mandate data.

@@ -125,7 +125,7 @@ export const ATMEquipment2Schema = z.strictObject({
   FirmwareVersion: Max35TextSchema.optional(),
 });
 
-export const FailureReason5CodeSchema = z.enum(["HRDW", "SECR"]);
+export const FailureReason5CodeSchema = z.enum(["SECR", "HRDW"]);
 
 export const TR34Status1CodeSchema = z.enum(["BUND", "UBND"]);
 
@@ -202,7 +202,7 @@ const ownTypeDescriptors: TypeDescriptors = {
     name: "FailureReason5Code",
     isoId: "_zsPEIIr-EeSvuOJS0mmL0g",
     kind: "code",
-    options: [{ value: "HRDW", name: "Hardware", isoId: "_-lfssYr-EeSvuOJS0mmL0g" }, { value: "SECR", name: "Security", isoId: "_4Y2kQYr-EeSvuOJS0mmL0g" }],
+    options: [{ value: "SECR", name: "Security", isoId: "_4Y2kQYr-EeSvuOJS0mmL0g" }, { value: "HRDW", name: "Hardware", isoId: "_-lfssYr-EeSvuOJS0mmL0g" }],
   },
   "TR34Status1Code": {
     name: "TR34Status1Code",

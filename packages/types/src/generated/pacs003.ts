@@ -22,11 +22,11 @@ export interface DirectDebitTransactionInformation35 {
   PaymentTypeInformation?: PaymentTypeInformation27;
   InterbankSettlementAmount: ActiveCurrencyAndAmount;
   InterbankSettlementDate?: string;
-  SettlementPriority?: "HIGH" | "NORM" | "URGT";
+  SettlementPriority?: "URGT" | "HIGH" | "NORM";
   SettlementTimeIndication?: SettlementDateTimeIndication1;
   InstructedAmount?: ActiveOrHistoricCurrencyAndAmount;
   ExchangeRate?: string;
-  ChargeBearer: "CRED" | "DEBT" | "SHAR" | "SLEV";
+  ChargeBearer: "DEBT" | "CRED" | "SHAR" | "SLEV";
   ChargesInformation?: Array<Charges16>;
   RequestedCollectionDate?: string;
   DirectDebitTransaction?: DirectDebitTransaction12;

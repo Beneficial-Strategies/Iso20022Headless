@@ -8,14 +8,6 @@
   "definition": "The ATMReconciliationResponse is sent by a maintenance host to an ATM to identify counts that must be updated.",
   "blocks": [
     {
-      "name": "ATMReconciliationResponse",
-      "isoId": "_3g7wYKE-Ee-MRKYsaX6JDg",
-      "xmlTag": "ATMRcncltnRspn",
-      "type": "ATMReconciliationRequestComponent1",
-      "min": 0,
-      "max": 1
-    },
-    {
       "name": "Header",
       "isoId": "_25t_YKE-Ee-MRKYsaX6JDg",
       "xmlTag": "Hdr",
@@ -28,6 +20,14 @@
       "isoId": "_3NZwYKE-Ee-MRKYsaX6JDg",
       "xmlTag": "PrtctdATMRcncltnRspn",
       "type": "ContentInformationType10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ATMReconciliationResponse",
+      "isoId": "_3g7wYKE-Ee-MRKYsaX6JDg",
+      "xmlTag": "ATMRcncltnRspn",
+      "type": "ATMReconciliationRequestComponent1",
       "min": 0,
       "max": 1
     },

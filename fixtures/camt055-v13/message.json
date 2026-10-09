@@ -32,19 +32,19 @@
       "max": 1
     },
     {
-      "name": "SupplementaryData",
-      "isoId": "85a90c46-79d8-41d2-930c-a2ade03d8951",
-      "xmlTag": "SplmtryData",
-      "type": "SupplementaryData1",
-      "min": 0,
-      "max": null
-    },
-    {
       "name": "Underlying",
       "isoId": "30cdd569-c642-404b-9f0c-dc748cabd20d",
       "xmlTag": "Undrlyg",
       "type": "UnderlyingTransaction37",
       "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "85a90c46-79d8-41d2-930c-a2ade03d8951",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
       "max": null
     }
   ]

@@ -9,20 +9,20 @@
     "definition": "Scope:|The FinancialInstitutionDirectDebit message is sent by an exchange or clearing house, or a financial institution, directly or through another agent, to the DebtorAgent. It is used to instruct the DebtorAgent to move funds from one or more debtor(s) account(s) to one or more creditor(s), where both debtor and creditor are financial institutions.||Usage:|The FinancialInstitutionDirectDebit message is exchanged between agents and can contain one or more financial institution direct debit instruction(s) for one or more creditor(s). The FinancialInstitutionDirectDebit message can be used in domestic and cross-border scenarios.",
     "blocks": [
       {
-        "name": "CreditInstruction",
-        "isoId": "_R3MN3zEZEe6kQ-WGAhcVPQ",
-        "xmlTag": "CdtInstr",
-        "type": "CreditTransferTransaction66",
-        "min": 1,
-        "max": null
-      },
-      {
         "name": "GroupHeader",
         "isoId": "_R3MN3TEZEe6kQ-WGAhcVPQ",
         "xmlTag": "GrpHdr",
         "type": "GroupHeader119",
         "min": 1,
         "max": 1
+      },
+      {
+        "name": "CreditInstruction",
+        "isoId": "_R3MN3zEZEe6kQ-WGAhcVPQ",
+        "xmlTag": "CdtInstr",
+        "type": "CreditTransferTransaction66",
+        "min": 1,
+        "max": null
       },
       {
         "name": "SupplementaryData",
@@ -220,14 +220,9 @@
           "isoId": "_bm2sYdp-Ed-ak6NoX_4Aeg_878577717"
         },
         {
-          "value": "BIZZ",
-          "name": "Business",
-          "isoId": "_bm2sZNp-Ed-ak6NoX_4Aeg_2106193529"
-        },
-        {
-          "value": "DLVY",
-          "name": "DeliveryTo",
-          "isoId": "_bm2sZtp-Ed-ak6NoX_4Aeg_2106193624"
+          "value": "PBOX",
+          "name": "POBox",
+          "isoId": "_bm2sYtp-Ed-ak6NoX_4Aeg_878578132"
         },
         {
           "value": "HOME",
@@ -235,14 +230,19 @@
           "isoId": "_bm2sY9p-Ed-ak6NoX_4Aeg_2106193409"
         },
         {
+          "value": "BIZZ",
+          "name": "Business",
+          "isoId": "_bm2sZNp-Ed-ak6NoX_4Aeg_2106193529"
+        },
+        {
           "value": "MLTO",
           "name": "MailTo",
           "isoId": "_bm2sZdp-Ed-ak6NoX_4Aeg_2106193606"
         },
         {
-          "value": "PBOX",
-          "name": "POBox",
-          "isoId": "_bm2sYtp-Ed-ak6NoX_4Aeg_878578132"
+          "value": "DLVY",
+          "name": "DeliveryTo",
+          "isoId": "_bm2sZtp-Ed-ak6NoX_4Aeg_2106193624"
         }
       ]
     },
@@ -785,16 +785,6 @@
       "kind": "code",
       "options": [
         {
-          "value": "BOOK",
-          "name": "BookTransfer",
-          "isoId": "_a_OEp9p-Ed-ak6NoX_4Aeg_1524547392"
-        },
-        {
-          "value": "MPNS",
-          "name": "MassPaymentNetSystem",
-          "isoId": "_a_OEptp-Ed-ak6NoX_4Aeg_1501460309"
-        },
-        {
           "value": "RTGS",
           "name": "RealTimeGrossSettlementSystem",
           "isoId": "_a_OEpNp-Ed-ak6NoX_4Aeg_1501459782"
@@ -803,6 +793,16 @@
           "value": "RTNS",
           "name": "RealTimeNetSettlementSystem",
           "isoId": "_a_OEpdp-Ed-ak6NoX_4Aeg_1501460232"
+        },
+        {
+          "value": "MPNS",
+          "name": "MassPaymentNetSystem",
+          "isoId": "_a_OEptp-Ed-ak6NoX_4Aeg_1501460309"
+        },
+        {
+          "value": "BOOK",
+          "name": "BookTransfer",
+          "isoId": "_a_OEp9p-Ed-ak6NoX_4Aeg_1524547392"
         }
       ]
     },
@@ -1403,6 +1403,11 @@
       "kind": "code",
       "options": [
         {
+          "value": "URGT",
+          "name": "Urgent",
+          "isoId": "_aKUc8dp-Ed-ak6NoX_4Aeg_1584820280"
+        },
+        {
           "value": "HIGH",
           "name": "High",
           "isoId": "_aKUc8tp-Ed-ak6NoX_4Aeg_1584820309"
@@ -1411,11 +1416,6 @@
           "value": "NORM",
           "name": "Normal",
           "isoId": "_aKUc89p-Ed-ak6NoX_4Aeg_1584820310"
-        },
-        {
-          "value": "URGT",
-          "name": "Urgent",
-          "isoId": "_aKUc8dp-Ed-ak6NoX_4Aeg_1584820280"
         }
       ]
     },

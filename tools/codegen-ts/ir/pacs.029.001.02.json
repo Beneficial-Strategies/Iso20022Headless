@@ -136,11 +136,6 @@
       "kind": "code",
       "options": [
         {
-          "value": "CLRG",
-          "name": "ClearingSystem",
-          "isoId": "_ZMMAwNp-Ed-ak6NoX_4Aeg_-673388407"
-        },
-        {
           "value": "INDA",
           "name": "InstructedAgent",
           "isoId": "_ZMCPx9p-Ed-ak6NoX_4Aeg_-673388466"
@@ -149,6 +144,11 @@
           "value": "INGA",
           "name": "InstructingAgent",
           "isoId": "_ZMCPyNp-Ed-ak6NoX_4Aeg_-673388449"
+        },
+        {
+          "value": "CLRG",
+          "name": "ClearingSystem",
+          "isoId": "_ZMMAwNp-Ed-ak6NoX_4Aeg_-673388407"
         }
       ]
     },
@@ -635,6 +635,11 @@
       "kind": "code",
       "options": [
         {
+          "value": "URGT",
+          "name": "Urgent",
+          "isoId": "_aKUc8dp-Ed-ak6NoX_4Aeg_1584820280"
+        },
+        {
           "value": "HIGH",
           "name": "High",
           "isoId": "_aKUc8tp-Ed-ak6NoX_4Aeg_1584820309"
@@ -643,11 +648,6 @@
           "value": "NORM",
           "name": "Normal",
           "isoId": "_aKUc89p-Ed-ak6NoX_4Aeg_1584820310"
-        },
-        {
-          "value": "URGT",
-          "name": "Urgent",
-          "isoId": "_aKUc8dp-Ed-ak6NoX_4Aeg_1584820280"
         }
       ]
     },
@@ -775,14 +775,9 @@
           "isoId": "_bm2sYdp-Ed-ak6NoX_4Aeg_878577717"
         },
         {
-          "value": "BIZZ",
-          "name": "Business",
-          "isoId": "_bm2sZNp-Ed-ak6NoX_4Aeg_2106193529"
-        },
-        {
-          "value": "DLVY",
-          "name": "DeliveryTo",
-          "isoId": "_bm2sZtp-Ed-ak6NoX_4Aeg_2106193624"
+          "value": "PBOX",
+          "name": "POBox",
+          "isoId": "_bm2sYtp-Ed-ak6NoX_4Aeg_878578132"
         },
         {
           "value": "HOME",
@@ -790,14 +785,19 @@
           "isoId": "_bm2sY9p-Ed-ak6NoX_4Aeg_2106193409"
         },
         {
+          "value": "BIZZ",
+          "name": "Business",
+          "isoId": "_bm2sZNp-Ed-ak6NoX_4Aeg_2106193529"
+        },
+        {
           "value": "MLTO",
           "name": "MailTo",
           "isoId": "_bm2sZdp-Ed-ak6NoX_4Aeg_2106193606"
         },
         {
-          "value": "PBOX",
-          "name": "POBox",
-          "isoId": "_bm2sYtp-Ed-ak6NoX_4Aeg_878578132"
+          "value": "DLVY",
+          "name": "DeliveryTo",
+          "isoId": "_bm2sZtp-Ed-ak6NoX_4Aeg_2106193624"
         }
       ]
     },
@@ -1349,11 +1349,6 @@
           "isoId": "_SseUgXRmEeiH1ZOt2UD8vQ"
         },
         {
-          "value": "MIKS",
-          "name": "GenderNeutral",
-          "isoId": "_TCckgXRmEeiH1ZOt2UD8vQ"
-        },
-        {
           "value": "MISS",
           "name": "Miss",
           "isoId": "_SzqhoXRmEeiH1ZOt2UD8vQ"
@@ -1362,6 +1357,11 @@
           "value": "MIST",
           "name": "Mister",
           "isoId": "_S6p6cXRmEeiH1ZOt2UD8vQ"
+        },
+        {
+          "value": "MIKS",
+          "name": "GenderNeutral",
+          "isoId": "_TCckgXRmEeiH1ZOt2UD8vQ"
         }
       ]
     },
@@ -1416,9 +1416,9 @@
       "kind": "code",
       "options": [
         {
-          "value": "CELL",
-          "name": "MobileOrCellPhone",
-          "isoId": "_RyuIMTIDEe6mzvR3CHiUhA"
+          "value": "MAIL",
+          "name": "Email",
+          "isoId": "_Ri2gMTIDEe6mzvR3CHiUhA"
         },
         {
           "value": "FAXX",
@@ -1431,9 +1431,9 @@
           "isoId": "_RtfC4TIDEe6mzvR3CHiUhA"
         },
         {
-          "value": "MAIL",
-          "name": "Email",
-          "isoId": "_Ri2gMTIDEe6mzvR3CHiUhA"
+          "value": "CELL",
+          "name": "MobileOrCellPhone",
+          "isoId": "_RyuIMTIDEe6mzvR3CHiUhA"
         },
         {
           "value": "ONLI",

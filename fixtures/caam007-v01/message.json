@@ -16,18 +16,18 @@
       "max": 1
     },
     {
-      "name": "HostToATMRequest",
-      "isoId": "_vd4VQItqEeSDLd7nI4Quzw",
-      "xmlTag": "HstToATMReq",
-      "type": "HostToATMRequest1",
-      "min": 0,
-      "max": 1
-    },
-    {
       "name": "ProtectedHostToATMRequest",
       "isoId": "_kvOaMItqEeSDLd7nI4Quzw",
       "xmlTag": "PrtctdHstToATMReq",
       "type": "ContentInformationType10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "HostToATMRequest",
+      "isoId": "_vd4VQItqEeSDLd7nI4Quzw",
+      "xmlTag": "HstToATMReq",
+      "type": "HostToATMRequest1",
       "min": 0,
       "max": 1
     },

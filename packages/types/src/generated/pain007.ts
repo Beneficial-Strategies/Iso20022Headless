@@ -22,7 +22,7 @@ export interface PaymentTransaction174 {
   OriginalUETR?: string;
   OriginalInstructedAmount?: ActiveOrHistoricCurrencyAndAmount;
   ReversedInstructedAmount?: ActiveOrHistoricCurrencyAndAmount;
-  ChargeBearer?: "CRED" | "DEBT" | "SHAR" | "SLEV";
+  ChargeBearer?: "DEBT" | "CRED" | "SHAR" | "SLEV";
   ReversalReasonInformation?: Array<PaymentReversalReason10>;
   OriginalTransactionReference?: OriginalTransactionReference47;
   SupplementaryData?: Array<SupplementaryData1>;

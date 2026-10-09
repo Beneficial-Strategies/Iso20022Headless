@@ -5,6 +5,6 @@ MEMBER	ATMExceptionAcknowledgement2	_uYOG8aETEe-MRKYsaX6JDg	ATM	ATM	Component	Au
 MEMBER	ATMExceptionAcknowledgement2	_uYOG86ETEe-MRKYsaX6JDg	Context	Cntxt	Component	ATMContext25	1	1	Context in which the transaction is performed, if any.
 MEMBER	ATMExceptionAcknowledgement2	_uYOG9aETEe-MRKYsaX6JDg	Transaction	Tx	Component	ATMTransaction41	1	1	Acknowledgement of the exception advice.
 DATATYPE	ATMTransaction41	_T5pTMaEPEe-MRKYsaX6JDg	MessageComponent	Registered	9FBD43CA375B9D0B	Acknowledgement of the exception advice.
-MEMBER	ATMTransaction41	_T7BMNaEPEe-MRKYsaX6JDg	Command	Cmd	Component	ATMCommand7	0	*	Maintenance command to perform on the ATM.
-MEMBER	ATMTransaction41	_T7BMM6EPEe-MRKYsaX6JDg	Response	Rspn	Codeset	Response2Code	1	1	Response to the advice.
 MEMBER	ATMTransaction41	_T7BMMaEPEe-MRKYsaX6JDg	TransactionIdentification	TxId	Component	TransactionIdentifier3	0	1	Identification of the transaction assigned by the ATM.
+MEMBER	ATMTransaction41	_T7BMM6EPEe-MRKYsaX6JDg	Response	Rspn	Codeset	Response2Code	1	1	Response to the advice.
+MEMBER	ATMTransaction41	_T7BMNaEPEe-MRKYsaX6JDg	Command	Cmd	Component	ATMCommand7	0	*	Maintenance command to perform on the ATM.

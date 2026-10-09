@@ -20,7 +20,7 @@ export interface CurrencyExchange13 {
 
 export interface TrackerRecord5 {
   Agent: BranchAndFinancialInstitutionIdentification8;
-  ChargeBearer?: "CRED" | "DEBT" | "SHAR" | "SLEV";
+  ChargeBearer?: "DEBT" | "CRED" | "SHAR" | "SLEV";
   ChargesAmount?: ActiveCurrencyAndAmount;
   ExchangeRateData?: CurrencyExchange13;
 }

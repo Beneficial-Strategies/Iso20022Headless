@@ -16,19 +16,19 @@
       "max": 1
     },
     {
-      "name": "SupplementaryData",
-      "isoId": "_R3P4mzEZEe6kQ-WGAhcVPQ",
-      "xmlTag": "SplmtryData",
-      "type": "SupplementaryData1",
-      "min": 0,
-      "max": null
-    },
-    {
       "name": "UnderlyingSuspensionDetails",
       "isoId": "_R3P4mTEZEe6kQ-WGAhcVPQ",
       "xmlTag": "UndrlygSspnsnDtls",
       "type": "MandateSuspension4",
       "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3P4mzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
       "max": null
     }
   ]

@@ -8,14 +8,6 @@
   "definition": "The ATMExceptionAdvice message is sent by an ATM to an acquirer or its agent to inform of that an exception occurred outside a service.",
   "blocks": [
     {
-      "name": "ATMExceptionAdvice",
-      "isoId": "_z73KV6FCEe-MRKYsaX6JDg",
-      "xmlTag": "ATMXcptnAdvc",
-      "type": "ATMExceptionAdvice2",
-      "min": 0,
-      "max": 1
-    },
-    {
       "name": "Header",
       "isoId": "_z73KU6FCEe-MRKYsaX6JDg",
       "xmlTag": "Hdr",
@@ -28,6 +20,14 @@
       "isoId": "_z73KVaFCEe-MRKYsaX6JDg",
       "xmlTag": "PrtctdATMXcptnAdvc",
       "type": "ContentInformationType10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ATMExceptionAdvice",
+      "isoId": "_z73KV6FCEe-MRKYsaX6JDg",
+      "xmlTag": "ATMXcptnAdvc",
+      "type": "ATMExceptionAdvice2",
       "min": 0,
       "max": 1
     },

@@ -24,18 +24,18 @@
       "max": null
     },
     {
-      "name": "SupplementaryData",
-      "isoId": "5293f05c-ea9d-49ae-9f27-cbd6c4c5749b",
-      "xmlTag": "SplmtryData",
-      "type": "SupplementaryData1",
-      "min": 0,
-      "max": null
-    },
-    {
       "name": "TransactionInformation",
       "isoId": "90aac879-4ce6-47de-b1cb-733385b663e9",
       "xmlTag": "TxInf",
       "type": "PaymentTransaction171",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "5293f05c-ea9d-49ae-9f27-cbd6c4c5749b",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
       "min": 0,
       "max": null
     }

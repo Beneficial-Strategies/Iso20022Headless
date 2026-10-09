@@ -8,14 +8,6 @@
   "definition": "The ATMReconciliationRequest is sent by an ATM to a maintenance host to notify updates to the reconciliation counts.",
   "blocks": [
     {
-      "name": "ATMReconciliationRequest",
-      "isoId": "_gafZQKE-Ee-MRKYsaX6JDg",
-      "xmlTag": "ATMRcncltnReq",
-      "type": "ATMReconciliationRequestComponent1",
-      "min": 0,
-      "max": 1
-    },
-    {
       "name": "Header",
       "isoId": "_fVlmsKE-Ee-MRKYsaX6JDg",
       "xmlTag": "Hdr",
@@ -28,6 +20,14 @@
       "isoId": "_fnXTMKE-Ee-MRKYsaX6JDg",
       "xmlTag": "PrtctdATMRcncltnReq",
       "type": "ContentInformationType10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ATMReconciliationRequest",
+      "isoId": "_gafZQKE-Ee-MRKYsaX6JDg",
+      "xmlTag": "ATMRcncltnReq",
+      "type": "ATMReconciliationRequestComponent1",
       "min": 0,
       "max": 1
     },

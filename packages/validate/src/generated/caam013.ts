@@ -82,7 +82,7 @@ import {
   sharedTypeDescriptors,
 } from './shared.ts';
 
-export const ActivationStatus2CodeSchema = z.enum(["FAIL", "WACT"]);
+export const ActivationStatus2CodeSchema = z.enum(["WACT", "FAIL"]);
 
 export const ATMVersionReport1Schema = z.strictObject({
   ConfigurationVersion: Max35TextSchema,
@@ -110,7 +110,7 @@ const ownTypeDescriptors: TypeDescriptors = {
     name: "ActivationStatus2Code",
     isoId: "_Z1bfsJwuEe-XpuX9q9xjLg",
     kind: "code",
-    options: [{ value: "FAIL", name: "Fail", isoId: "_mV40I8EQEe-MiKrW3VQ1Sg" }, { value: "WACT", name: "AwaitingActivation", isoId: "_mV40IcEQEe-MiKrW3VQ1Sg" }],
+    options: [{ value: "WACT", name: "AwaitingActivation", isoId: "_mV40IcEQEe-MiKrW3VQ1Sg" }, { value: "FAIL", name: "Fail", isoId: "_mV40I8EQEe-MiKrW3VQ1Sg" }],
   },
   "ATMVersionReport1": {
     name: "ATMVersionReport1",

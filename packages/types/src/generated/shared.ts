@@ -2,7 +2,7 @@
 // Types used by more than one message. Leaf values are wire strings.
 
 export interface ATMCassetteCounters5 {
-  Type: "BDAY" | "CTOF" | "CTXN" | "INQU" | "OPER" | "PRTN" | "SLRP";
+  Type: "INQU" | "CTXN" | "CTOF" | "BDAY" | "PRTN" | "OPER" | "SLRP";
   AddedNumber?: string;
   RemovedNumber?: string;
   RemovedAmount?: string;
@@ -32,11 +32,11 @@ export interface ATMCassette3 {
   PhysicalIdentification?: string;
   LogicalIdentification: string;
   SerialNumber?: string;
-  Type: "DISP" | "DPST" | "RCYC" | "RJCT" | "RPLT" | "RTRC";
+  Type: "DPST" | "DISP" | "RCYC" | "RJCT" | "RPLT" | "RTRC";
   SubType?: Array<"ALLT" | "CNTR" | "IDVD" | "SCNT" | "UNFT">;
-  MediaType?: "CARD" | "CHCK" | "CMDT" | "COIN" | "CPNS" | "ENVP" | "MLTP" | "NOTE" | "STMP" | "UDTM";
+  MediaType?: "CARD" | "COIN" | "CMDT" | "CPNS" | "NOTE" | "STMP" | "UDTM" | "CHCK" | "ENVP" | "MLTP";
   MediaCounters?: Array<ATMCassetteCounters6>;
-  CassetteStatus?: "CUFL" | "CUHG" | "CULW" | "CUMP" | "CUMS" | "CUMT" | "CUNA" | "CUNP" | "CUNR" | "CUOK";
+  CassetteStatus?: "CUOK" | "CUFL" | "CUHG" | "CULW" | "CUMT" | "CUNP" | "CUMS" | "CUNA" | "CUNR" | "CUMP";
 }
 
 export interface ATMCommandIdentification1 {
@@ -46,7 +46,7 @@ export interface ATMCommandIdentification1 {
 }
 
 export interface ATMCommand15 {
-  Type: "ABAL" | "ASTS" | "CCNT" | "CFGT" | "DISC" | "HKCG" | "HKRV" | "KACT" | "KCHG" | "KDAC" | "KDWL" | "KRMV" | "RREQ" | "SCFU" | "SNDM" | "SSCU" | "SSTU";
+  Type: "ABAL" | "ASTS" | "CFGT" | "CCNT" | "DISC" | "KACT" | "KDAC" | "KDWL" | "KRMV" | "SCFU" | "SSCU" | "SSTU" | "SNDM" | "HKCG" | "HKRV" | "KCHG" | "RREQ";
   RequiredDateTime?: string;
   ProcessedDateTime: string;
   CommandIdentification?: ATMCommandIdentification1;
@@ -55,22 +55,22 @@ export interface ATMCommand15 {
 }
 
 export interface ATMCommand16 {
-  Type: "ABAL" | "ASTS" | "CCNT" | "CFGT" | "DISC" | "HKCG" | "HKRV" | "KACT" | "KCHG" | "KDAC" | "KDWL" | "KRMV" | "RREQ" | "SCFU" | "SNDM" | "SSCU" | "SSTU";
+  Type: "ABAL" | "ASTS" | "CFGT" | "CCNT" | "DISC" | "KACT" | "KDAC" | "KDWL" | "KRMV" | "SCFU" | "SSCU" | "SSTU" | "SNDM" | "HKCG" | "HKRV" | "KCHG" | "RREQ";
   CommandIdentification?: ATMCommandIdentification1;
 }
 
 export interface ATMConfigurationParameter1 {
-  Type: "AMNT" | "APPR" | "ATMC" | "ATMP" | "CPRC" | "CRAP" | "LOCC" | "MNOC" | "OEXR";
+  Type: "ATMC" | "ATMP" | "APPR" | "CRAP" | "CPRC" | "OEXR" | "AMNT" | "LOCC" | "MNOC";
   Version: string;
 }
 
 export type ATMCommandParameters1Choice =
   | { ATMRequiredGlobalStatus: "INSV" | "OUTS" }
-  | { ExpectedMessageFunction: "BALN" | "DSEC" | "GSTS" | "INQC" | "KEYQ" | "SSTS" }
+  | { ExpectedMessageFunction: "BALN" | "GSTS" | "DSEC" | "INQC" | "KEYQ" | "SSTS" }
   | { RequiredConfigurationParameter: ATMConfigurationParameter1 };
 
 export interface ATMCommand7 {
-  Type: "ABAL" | "ASTS" | "CCNT" | "CFGT" | "DISC" | "RPTC" | "SNDM";
+  Type: "ABAL" | "ASTS" | "CFGT" | "CCNT" | "DISC" | "SNDM" | "RPTC";
   Urgency: "ASAP" | "CRIT" | "DTIM" | "ENCS";
   DateTime?: string;
   CommandIdentification?: ATMCommandIdentification1;
@@ -81,7 +81,7 @@ export interface ATMService27 {
   ServiceReference?: string;
   ATMServiceCode?: string;
   HostServiceCode?: string;
-  ServiceType: "ACCD" | "ASTS" | "BLCQ" | "CDVF" | "CHSN" | "CMPF" | "DCCS" | "DPSN" | "DPSV" | "EMVS" | "MCHG" | "MINI" | "PATH" | "PINC" | "PINR" | "PINU" | "PRFL" | "SPRV" | "STDR" | "TRFC" | "TRFI" | "TRFP" | "XRTD" | "XRTW";
+  ServiceType: "TRFC" | "TRFI" | "TRFP" | "ASTS" | "BLCQ" | "CDVF" | "CHSN" | "CMPF" | "DCCS" | "XRTD" | "XRTW" | "MCHG" | "DPSN" | "PINC" | "PINR" | "PINU" | "PATH" | "PRFL" | "EMVS" | "STDR" | "SPRV" | "DPSV" | "ACCD" | "MINI";
   ServiceVariantIdentification?: Array<string>;
 }
 
@@ -145,7 +145,7 @@ export interface AutomatedTellerMachine5 {
   Location?: PostalAddress17;
   LocationCategory?: "PRIV" | "PUBL";
   Equipment?: ATMEquipment1;
-  OutOfServiceDevice?: Array<"ALRM" | "BRCD" | "CAMR" | "CDIS" | "CHCK" | "CRDD" | "CRDR" | "CSHD" | "CSHI" | "CSHR" | "DOOR" | "DPRN" | "DPST" | "INPM" | "JPRN" | "JRNL" | "PINR" | "PSBK" | "RPRN" | "RWDR" | "SCAN" | "SNSR">;
+  OutOfServiceDevice?: Array<"ALRM" | "BRCD" | "CAMR" | "CRDD" | "CRDR" | "CSHD" | "CSHI" | "CSHR" | "CHCK" | "CDIS" | "DPST" | "DPRN" | "DOOR" | "INPM" | "JRNL" | "JPRN" | "SNSR" | "PSBK" | "PINR" | "RPRN" | "SCAN" | "RWDR">;
   MessageProtection?: "EVLP" | "MACB" | "MACM" | "UNPR";
 }
 
@@ -188,16 +188,16 @@ export interface ATMEnvironment9 {
 }
 
 export interface AlgorithmIdentification16 {
-  Algorithm: "HS01" | "HS25" | "HS38" | "HS51";
+  Algorithm: "HS25" | "HS38" | "HS51" | "HS01";
 }
 
 export interface EncapsulatedContent3 {
-  ContentType: "AUTH" | "DATA" | "DGST" | "EVLP" | "SIGN";
+  ContentType: "DATA" | "SIGN" | "EVLP" | "DGST" | "AUTH";
   Content?: string;
 }
 
 export interface RelativeDistinguishedName1 {
-  AttributeType: "CATT" | "CNAT" | "LATT" | "OATT" | "OUAT";
+  AttributeType: "CNAT" | "LATT" | "OATT" | "OUAT" | "CATT";
   AttributeValue: string;
 }
 
@@ -222,7 +222,7 @@ export type Recipient5Choice =
   | { KeyIdentifier: KEKIdentifier2 };
 
 export interface Parameter5 {
-  DigestAlgorithm?: "HS01" | "HS25" | "HS38" | "HS51";
+  DigestAlgorithm?: "HS25" | "HS38" | "HS51" | "HS01";
 }
 
 export interface AlgorithmIdentification12 {
@@ -231,14 +231,14 @@ export interface AlgorithmIdentification12 {
 }
 
 export interface Parameter8 {
-  DigestAlgorithm: "HS01" | "HS25" | "HS38" | "HS51";
+  DigestAlgorithm: "HS25" | "HS38" | "HS51" | "HS01";
   MaskGeneratorAlgorithm: AlgorithmIdentification12;
   SaltLength: string;
   TrailerField?: string;
 }
 
 export interface AlgorithmIdentification17 {
-  Algorithm: "ERS1" | "ERS2" | "RPSS";
+  Algorithm: "ERS2" | "ERS1" | "RPSS";
   Parameter?: Parameter8;
 }
 
@@ -259,7 +259,7 @@ export interface SignedData4 {
 }
 
 export interface ContentInformationType14 {
-  ContentType: "AUTH" | "DATA" | "DGST" | "EVLP" | "SIGN";
+  ContentType: "DATA" | "SIGN" | "EVLP" | "DGST" | "AUTH";
   SignedData: SignedData4;
 }
 
@@ -275,13 +275,13 @@ export interface ATMEquipment3 {
 }
 
 export interface ATMMessageFunction1 {
-  Function: "ACMD" | "BALN" | "CMPA" | "CMPD" | "CSEC" | "DIAP" | "DIAQ" | "DSEC" | "DVCC" | "GSTS" | "H2AP" | "H2AQ" | "INQC" | "INQP" | "INQQ" | "KYAP" | "KYAQ" | "PINP" | "PINQ" | "RJAP" | "RJAQ" | "SKSC" | "SSTS" | "TMOP" | "WITK" | "WITP" | "WITQ" | "WITV";
+  Function: "BALN" | "CMPA" | "CMPD" | "ACMD" | "DVCC" | "DIAQ" | "DIAP" | "GSTS" | "INQQ" | "INQP" | "KYAQ" | "KYAP" | "PINQ" | "PINP" | "RJAQ" | "RJAP" | "WITV" | "WITK" | "WITQ" | "WITP" | "INQC" | "H2AP" | "H2AQ" | "TMOP" | "CSEC" | "DSEC" | "SKSC" | "SSTS";
   ATMServiceCode?: string;
   HostServiceCode?: string;
 }
 
 export interface ATMMessageFunction2 {
-  Function: "ACMD" | "BALN" | "CMPA" | "CMPD" | "CSEC" | "DIAP" | "DIAQ" | "DPSK" | "DPSP" | "DPSQ" | "DPSV" | "DSEC" | "DVCC" | "EXPK" | "EXPV" | "GSTS" | "H2AP" | "H2AQ" | "INQC" | "INQP" | "INQQ" | "KYAP" | "KYAQ" | "PINP" | "PINQ" | "RJAP" | "RJAQ" | "RPTC" | "SKSC" | "SSTS" | "TMOP" | "TRFP" | "TRFQ" | "WITK" | "WITP" | "WITQ" | "WITV";
+  Function: "BALN" | "CMPA" | "CMPD" | "ACMD" | "DVCC" | "DIAQ" | "DIAP" | "GSTS" | "INQQ" | "INQP" | "KYAQ" | "KYAP" | "PINQ" | "PINP" | "RJAQ" | "RJAP" | "WITV" | "WITK" | "WITQ" | "WITP" | "INQC" | "H2AP" | "H2AQ" | "TMOP" | "CSEC" | "DSEC" | "SKSC" | "SSTS" | "DPSK" | "DPSV" | "DPSQ" | "DPSP" | "EXPK" | "EXPV" | "TRFQ" | "TRFP" | "RPTC";
   ATMServiceCode?: string;
   HostServiceCode?: string;
 }
@@ -293,7 +293,7 @@ export interface TransactionIdentifier3 {
 }
 
 export interface ATMTransaction30 {
-  TypeOfOperation: "ADJU" | "INSR" | "LOAD" | "RCUP" | "REMV" | "SWAP" | "UNLD";
+  TypeOfOperation: "ADJU" | "INSR" | "LOAD" | "REMV" | "UNLD" | "RCUP" | "SWAP";
   TransactionIdentification?: TransactionIdentifier3;
   ReconciliationIdentification?: string;
   Cassette?: Array<ATMCassette3>;
@@ -316,34 +316,34 @@ export interface ATMSecurityConfiguration3 {
   AsymmetricKeyStandardIdentification?: 'true' | 'false';
   AsymmetricEncryptionAlgorithm?: Array<"ERSA" | "RSAO">;
   SymmetricTransportKey?: 'true' | 'false';
-  SymmetricTransportKeyAlgorithm?: Array<"DKP9" | "E3DC" | "EA2C" | "EA5C" | "EA9C" | "UKA1" | "UKPT">;
-  SymmetricEncryptionAlgorithm?: Array<"E3DC" | "EA2C" | "EA5C" | "EA9C">;
+  SymmetricTransportKeyAlgorithm?: Array<"EA2C" | "E3DC" | "DKP9" | "UKPT" | "UKA1" | "EA9C" | "EA5C">;
+  SymmetricEncryptionAlgorithm?: Array<"EA2C" | "E3DC" | "EA9C" | "EA5C">;
   EncryptionFormat?: Array<"TR31" | "TR34">;
 }
 
 export interface ATMSecurityConfiguration4 {
   MaximumCertificates?: string;
   MaximumSignatures?: string;
-  DigitalSignatureAlgorithm?: Array<"ERS1" | "ERS2" | "RPSS">;
+  DigitalSignatureAlgorithm?: Array<"ERS2" | "ERS1" | "RPSS">;
 }
 
 export interface ATMSecurityConfiguration5 {
-  PINFormat?: Array<"ANSI" | "BKSY" | "BNCM" | "DBLC" | "DBLD" | "ECI2" | "ECI3" | "EMVS" | "IBM3" | "ISO0" | "ISO1" | "ISO2" | "ISO3" | "ISO4" | "ISO5" | "VIS2" | "VIS3">;
+  PINFormat?: Array<"ANSI" | "BNCM" | "BKSY" | "DBLD" | "DBLC" | "ECI2" | "ECI3" | "EMVS" | "IBM3" | "ISO0" | "ISO1" | "ISO2" | "ISO3" | "ISO4" | "ISO5" | "VIS2" | "VIS3">;
   PINLengthCapabilities?: string;
 }
 
 export interface ATMSecurityConfiguration1 {
   Keys?: ATMSecurityConfiguration2;
   Encryption?: ATMSecurityConfiguration3;
-  MACAlgorithm?: Array<"CMA1" | "CMA5" | "CMA9" | "MACC" | "MCC1" | "MCCS">;
-  DigestAlgorithm?: Array<"HS01" | "HS25" | "HS38" | "HS51">;
+  MACAlgorithm?: Array<"MACC" | "MCCS" | "CMA1" | "MCC1" | "CMA9" | "CMA5">;
+  DigestAlgorithm?: Array<"HS25" | "HS38" | "HS51" | "HS01">;
   DigitalSignature?: ATMSecurityConfiguration4;
   PIN?: ATMSecurityConfiguration5;
   MessageProtection?: Array<"EVLP" | "MACB" | "MACM" | "UNPR">;
 }
 
 export interface ATMSecurityContext3 {
-  CurrentSecurityScheme: "APPK" | "CERT" | "DTCH" | "FRAN" | "LUXG" | "MANU" | "NONE" | "PKIP" | "SIGN" | "TR34";
+  CurrentSecurityScheme: "APPK" | "CERT" | "FRAN" | "DTCH" | "LUXG" | "MANU" | "PKIP" | "SIGN" | "NONE" | "TR34";
   DeviceProperty?: ATMEquipment3;
   CurrentConfiguration?: ATMSecurityConfiguration1;
 }
@@ -364,7 +364,7 @@ export interface ATMStatus2 {
 }
 
 export interface ATMTotals4 {
-  MediaType?: "CARD" | "CHCK" | "CMDT" | "COIN" | "CPNS" | "ENVP" | "MLTP" | "NOTE" | "STMP" | "UDTM";
+  MediaType?: "CARD" | "COIN" | "CMDT" | "CPNS" | "NOTE" | "STMP" | "UDTM" | "CHCK" | "ENVP" | "MLTP";
   Currency?: string;
   ATMBalance?: string;
   ATMCurrent?: string;
@@ -466,11 +466,11 @@ export interface GenericIdentification30 {
 }
 
 export type AddressType3Choice =
-  | { Code: "ADDR" | "BIZZ" | "DLVY" | "HOME" | "MLTO" | "PBOX" }
+  | { Code: "ADDR" | "PBOX" | "HOME" | "BIZZ" | "MLTO" | "DLVY" }
   | { Proprietary: GenericIdentification30 };
 
 export type AdviceType1Choice =
-  | { Code: "ADND" | "ADWD" }
+  | { Code: "ADWD" | "ADND" }
   | { Proprietary: string };
 
 export interface AdviceType1 {
@@ -480,7 +480,7 @@ export interface AdviceType1 {
 
 export interface Parameter4 {
   EncryptionFormat?: "TR31" | "TR34";
-  DigestAlgorithm?: "HS01" | "HS25" | "HS38" | "HS51";
+  DigestAlgorithm?: "HS25" | "HS38" | "HS51" | "HS01";
   MaskGeneratorAlgorithm?: AlgorithmIdentification12;
 }
 
@@ -496,12 +496,12 @@ export interface Parameter6 {
 }
 
 export interface AlgorithmIdentification13 {
-  Algorithm: "DKP9" | "E3DC" | "EA2C" | "EA5C" | "EA9C" | "UKA1" | "UKPT";
+  Algorithm: "EA2C" | "E3DC" | "DKP9" | "UKPT" | "UKA1" | "EA9C" | "EA5C";
   Parameter?: Parameter6;
 }
 
 export interface AlgorithmIdentification14 {
-  Algorithm: "E3DC" | "EA2C" | "EA5C" | "EA9C";
+  Algorithm: "EA2C" | "E3DC" | "EA9C" | "EA5C";
   Parameter?: Parameter6;
 }
 
@@ -511,7 +511,7 @@ export interface Parameter7 {
 }
 
 export interface AlgorithmIdentification15 {
-  Algorithm: "CMA1" | "CMA5" | "CMA9" | "MACC" | "MCC1" | "MCCS";
+  Algorithm: "MACC" | "MCCS" | "CMA1" | "MCC1" | "CMA9" | "CMA5";
   Parameter?: Parameter7;
 }
 
@@ -584,7 +584,7 @@ export interface OtherContact1 {
 }
 
 export interface Contact13 {
-  NamePrefix?: "DOCT" | "MADM" | "MIKS" | "MISS" | "MIST";
+  NamePrefix?: "DOCT" | "MADM" | "MISS" | "MIST" | "MIKS";
   Name?: string;
   PhoneNumber?: string;
   MobileNumber?: string;
@@ -596,7 +596,7 @@ export interface Contact13 {
   Responsibility?: string;
   Department?: string;
   Other?: Array<OtherContact1>;
-  PreferredMethod?: "CELL" | "FAXX" | "LETT" | "MAIL" | "ONLI" | "PHON";
+  PreferredMethod?: "MAIL" | "FAXX" | "LETT" | "CELL" | "ONLI" | "PHON";
 }
 
 export interface PartyIdentification272 {
@@ -669,17 +669,17 @@ export interface CashAccount40 {
 }
 
 export interface FrequencyPeriod1 {
-  Type: "ADHO" | "DAIL" | "FRTN" | "INDA" | "MIAN" | "MNTH" | "QURT" | "WEEK" | "YEAR";
+  Type: "YEAR" | "MNTH" | "QURT" | "MIAN" | "WEEK" | "DAIL" | "ADHO" | "INDA" | "FRTN";
   CountPerPeriod: string;
 }
 
 export interface FrequencyAndMoment1 {
-  Type: "ADHO" | "DAIL" | "FRTN" | "INDA" | "MIAN" | "MNTH" | "QURT" | "WEEK" | "YEAR";
+  Type: "YEAR" | "MNTH" | "QURT" | "MIAN" | "WEEK" | "DAIL" | "ADHO" | "INDA" | "FRTN";
   PointInTime: string;
 }
 
 export type Frequency36Choice =
-  | { Type: "ADHO" | "DAIL" | "FRTN" | "INDA" | "MIAN" | "MNTH" | "QURT" | "WEEK" | "YEAR" }
+  | { Type: "YEAR" | "MNTH" | "QURT" | "MIAN" | "WEEK" | "DAIL" | "ADHO" | "INDA" | "FRTN" }
   | { Period: FrequencyPeriod1 }
   | { PointInTime: FrequencyAndMoment1 };
 
@@ -857,7 +857,7 @@ export interface TrackData1 {
 }
 
 export interface CardSecurityInformation1 {
-  CSCManagement: "BYPS" | "NCSC" | "PRST" | "UNRD";
+  CSCManagement: "PRST" | "BYPS" | "UNRD" | "NCSC";
   CSCValue?: string;
 }
 
@@ -886,27 +886,27 @@ export interface PaymentCard4 {
 
 export interface GenericIdentification32 {
   Identification: string;
-  Type?: "ACCP" | "ACQR" | "CISS" | "DLIS" | "ITAG" | "MERC" | "OPOI";
-  Issuer?: "ACCP" | "ACQR" | "CISS" | "ITAG" | "MERC" | "TAXH";
+  Type?: "OPOI" | "MERC" | "ACCP" | "ITAG" | "ACQR" | "CISS" | "DLIS";
+  Issuer?: "MERC" | "ACCP" | "ITAG" | "ACQR" | "CISS" | "TAXH";
   ShortName?: string;
 }
 
 export interface DisplayCapabilities1 {
-  DisplayType: "CDSP" | "MDSP";
+  DisplayType: "MDSP" | "CDSP";
   NumberOfLines: string;
   LineWidth: string;
 }
 
 export interface PointOfInteractionCapabilities1 {
-  CardReadingCapabilities?: Array<"BRCD" | "CICC" | "CTLS" | "DFLE" | "ECTL" | "MGST" | "PHYS" | "TAGC">;
-  CardholderVerificationCapabilities?: Array<"APKI" | "CHDT" | "FBIG" | "FBIO" | "FCPN" | "FDSG" | "FEPN" | "MNSG" | "MNVR" | "NPIN" | "PKIS" | "SCEC">;
+  CardReadingCapabilities?: Array<"TAGC" | "PHYS" | "BRCD" | "MGST" | "CICC" | "DFLE" | "CTLS" | "ECTL">;
+  CardholderVerificationCapabilities?: Array<"MNSG" | "NPIN" | "FCPN" | "FEPN" | "FDSG" | "FBIO" | "MNVR" | "FBIG" | "APKI" | "PKIS" | "CHDT" | "SCEC">;
   OnLineCapabilities?: "OFLN" | "ONLN" | "SMON";
   DisplayCapabilities?: Array<DisplayCapabilities1>;
   PrintLineWidth?: string;
 }
 
 export interface PointOfInteractionComponent1 {
-  POIComponentType: "CHIT" | "EMVK" | "EMVO" | "MRIT" | "PEDV" | "SECM" | "SOFT";
+  POIComponentType: "SOFT" | "EMVK" | "EMVO" | "MRIT" | "CHIT" | "SECM" | "PEDV";
   ManufacturerIdentification?: string;
   Model?: string;
   VersionNumber?: string;
@@ -930,8 +930,8 @@ export interface CardEntry5 {
 }
 
 export interface CardholderAuthentication2 {
-  AuthenticationMethod: "BYPS" | "CPSG" | "FPIN" | "MANU" | "MERC" | "NPIN" | "PPSG" | "SCNL" | "SCRT" | "SNCT" | "UKNW";
-  AuthenticationEntity: "AGNT" | "ICCD" | "MERC";
+  AuthenticationMethod: "UKNW" | "BYPS" | "NPIN" | "FPIN" | "CPSG" | "PPSG" | "MANU" | "MERC" | "SCRT" | "SNCT" | "SCNL";
+  AuthenticationEntity: "ICCD" | "AGNT" | "MERC";
 }
 
 export interface PaymentContext3 {
@@ -940,10 +940,10 @@ export interface PaymentContext3 {
   OnLineContext?: 'true' | 'false';
   AttendanceContext?: "ATTD" | "SATT" | "UATT";
   TransactionEnvironment?: "MERC" | "PRIV" | "PUBL";
-  TransactionChannel?: "ECOM" | "MAIL" | "TLPH" | "TVPY";
+  TransactionChannel?: "MAIL" | "TLPH" | "ECOM" | "TVPY";
   AttendantMessageCapable?: 'true' | 'false';
   AttendantLanguage?: string;
-  CardDataEntryMode: "BRCD" | "CICC" | "CTLS" | "DFLE" | "ECTL" | "MGST" | "PHYS" | "TAGC";
+  CardDataEntryMode: "TAGC" | "PHYS" | "BRCD" | "MGST" | "CICC" | "DFLE" | "CTLS" | "ECTL";
   FallbackIndicator?: 'true' | 'false';
   AuthenticationMethod?: CardholderAuthentication2;
 }
@@ -955,7 +955,7 @@ export interface TransactionIdentifier1 {
 
 export interface Product2 {
   ProductCode: string;
-  UnitOfMeasure?: "ACRE" | "ARES" | "CELI" | "CMET" | "FOOT" | "GBGA" | "GBOU" | "GBPI" | "GBQA" | "GRAM" | "HECT" | "INCH" | "KILO" | "KMET" | "LITR" | "METR" | "MILE" | "MILI" | "MMET" | "PIEC" | "PUND" | "SCMT" | "SMET" | "SMIL" | "SQFO" | "SQIN" | "SQKI" | "SQMI" | "SQYA" | "TONS" | "USGA" | "USOU" | "USPI" | "USQA" | "YARD";
+  UnitOfMeasure?: "PIEC" | "TONS" | "FOOT" | "GBGA" | "USGA" | "GRAM" | "INCH" | "KILO" | "PUND" | "METR" | "CMET" | "MMET" | "LITR" | "CELI" | "MILI" | "GBOU" | "USOU" | "GBQA" | "USQA" | "GBPI" | "USPI" | "MILE" | "KMET" | "YARD" | "SQKI" | "HECT" | "ARES" | "SMET" | "SCMT" | "SMIL" | "SQMI" | "SQYA" | "SQFO" | "SQIN" | "ACRE";
   ProductQuantity?: string;
   UnitPrice?: string;
   ProductAmount?: string;
@@ -1075,7 +1075,7 @@ export interface ChargesRecord8 {
   ChargeIncludedIndicator?: 'true' | 'false';
   Type?: ChargeType3Choice;
   Rate?: string;
-  Bearer?: "CRED" | "DEBT" | "SHAR" | "SLEV";
+  Bearer?: "DEBT" | "CRED" | "SHAR" | "SLEV";
   Agent?: BranchAndFinancialInstitutionIdentification8;
   Tax?: TaxCharges2;
 }
@@ -1097,11 +1097,11 @@ export interface NameAndAddress18 {
 }
 
 export type ChequeDeliveryMethod1Choice =
-  | { Code: "CRCD" | "CRDB" | "CRFA" | "MLCD" | "MLDB" | "MLFA" | "PUCD" | "PUDB" | "PUFA" | "RGCD" | "RGDB" | "RGFA" }
+  | { Code: "MLDB" | "MLCD" | "MLFA" | "CRDB" | "CRCD" | "CRFA" | "PUDB" | "PUCD" | "PUFA" | "RGDB" | "RGCD" | "RGFA" }
   | { Proprietary: string };
 
 export interface Cheque19 {
-  ChequeType?: "BCHQ" | "CCCH" | "CCHQ" | "DRFT" | "ELDR";
+  ChequeType?: "CCHQ" | "CCCH" | "BCHQ" | "DRFT" | "ELDR";
   ChequeNumber?: string;
   ChequeFrom?: NameAndAddress18;
   DeliveryMethod?: ChequeDeliveryMethod1Choice;
@@ -1120,7 +1120,7 @@ export type ClearingSystemIdentification3Choice =
   | { Proprietary: string };
 
 export interface EncryptedContent3 {
-  ContentType: "AUTH" | "DATA" | "DGST" | "EVLP" | "SIGN";
+  ContentType: "DATA" | "SIGN" | "EVLP" | "DGST" | "AUTH";
   ContentEncryptionAlgorithm: AlgorithmIdentification14;
   EncryptedData: string;
 }
@@ -1132,18 +1132,18 @@ export interface EnvelopedData4 {
 }
 
 export interface ContentInformationType10 {
-  ContentType: "AUTH" | "DATA" | "DGST" | "EVLP" | "SIGN";
+  ContentType: "DATA" | "SIGN" | "EVLP" | "DGST" | "AUTH";
   EnvelopedData: EnvelopedData4;
 }
 
 export interface ContentInformationType13 {
-  ContentType: "AUTH" | "DATA" | "DGST" | "EVLP" | "SIGN";
+  ContentType: "DATA" | "SIGN" | "EVLP" | "DGST" | "AUTH";
   AuthenticatedData?: AuthenticatedData4;
   SignedData?: SignedData4;
 }
 
 export interface ContentInformationType15 {
-  ContentType: "AUTH" | "DATA" | "DGST" | "EVLP" | "SIGN";
+  ContentType: "DATA" | "SIGN" | "EVLP" | "DGST" | "AUTH";
   AuthenticatedData: AuthenticatedData4;
 }
 
@@ -1203,7 +1203,7 @@ export interface PaymentIdentification13 {
 
 export interface PaymentTypeInformation28 {
   InstructionPriority?: "HIGH" | "NORM";
-  ClearingChannel?: "BOOK" | "MPNS" | "RTGS" | "RTNS";
+  ClearingChannel?: "RTGS" | "RTNS" | "MPNS" | "BOOK";
   ServiceLevel?: Array<ServiceLevel8Choice>;
   LocalInstrument?: LocalInstrument2Choice;
   CategoryPurpose?: CategoryPurpose1Choice;
@@ -1243,7 +1243,7 @@ export interface TaxParty2 {
 
 export interface TaxPeriod3 {
   Year?: string;
-  Type?: "HLF1" | "HLF2" | "MM01" | "MM02" | "MM03" | "MM04" | "MM05" | "MM06" | "MM07" | "MM08" | "MM09" | "MM10" | "MM11" | "MM12" | "QTR1" | "QTR2" | "QTR3" | "QTR4";
+  Type?: "MM01" | "MM02" | "MM03" | "MM04" | "MM05" | "MM06" | "MM07" | "MM08" | "MM09" | "MM10" | "MM11" | "MM12" | "QTR1" | "QTR2" | "QTR3" | "QTR4" | "HLF1" | "HLF2";
   FromToDate?: DatePeriod2;
 }
 
@@ -1462,8 +1462,8 @@ export interface CryptographicKey21 {
   AdditionalIdentification?: string;
   Version?: string;
   SequenceCounter?: string;
-  Type?: "AES2" | "AES5" | "AES9" | "DKAE" | "DKP9" | "ECCC" | "EDE3" | "EDE4" | "RSAC" | "UKA2" | "UKA6" | "UKA8";
-  Function?: Array<"DCPT" | "DDEC" | "DENC" | "ENCR" | "KEYD" | "KEYG" | "KEYI" | "KEYX" | "MACG" | "MACV" | "PIND" | "PINE" | "PINV" | "SIGG" | "SUGV" | "TRNI" | "TRNX">;
+  Type?: "AES2" | "EDE3" | "DKP9" | "AES9" | "AES5" | "EDE4" | "UKA2" | "UKA6" | "RSAC" | "ECCC" | "DKAE" | "UKA8";
+  Function?: Array<"ENCR" | "DCPT" | "DENC" | "DDEC" | "TRNI" | "TRNX" | "MACG" | "MACV" | "SIGG" | "SUGV" | "PINE" | "PIND" | "PINV" | "KEYG" | "KEYI" | "KEYX" | "KEYD">;
   ActivationDate?: string;
   DeactivationDate?: string;
   KeyCheckValue?: string;
@@ -1614,15 +1614,15 @@ export interface TransactionAgents6 {
 
 export interface PaymentTypeInformation27 {
   InstructionPriority?: "HIGH" | "NORM";
-  ClearingChannel?: "BOOK" | "MPNS" | "RTGS" | "RTNS";
+  ClearingChannel?: "RTGS" | "RTNS" | "MPNS" | "BOOK";
   ServiceLevel?: Array<ServiceLevel8Choice>;
   LocalInstrument?: LocalInstrument2Choice;
-  SequenceType?: "FNAL" | "FRST" | "OOFF" | "RCUR" | "RPRE";
+  SequenceType?: "FRST" | "RCUR" | "FNAL" | "OOFF" | "RPRE";
   CategoryPurpose?: CategoryPurpose1Choice;
 }
 
 export interface RemittanceLocationData2 {
-  Method: "EDIC" | "EMAL" | "FAXI" | "POST" | "SMSM" | "URID";
+  Method: "FAXI" | "EDIC" | "URID" | "EMAL" | "POST" | "SMSM";
   ElectronicAddress?: string;
   PostalAddress?: NameAndAddress18;
 }
@@ -1650,7 +1650,7 @@ export interface TransactionDates3 {
 
 export type YieldedOrValueType1Choice =
   | { Yielded: 'true' | 'false' }
-  | { ValueType: "DISC" | "PARV" | "PREM" };
+  | { ValueType: "DISC" | "PREM" | "PARV" };
 
 export type PriceRateOrAmount3Choice =
   | { Rate: string }
@@ -1793,7 +1793,7 @@ export type EntryStatus1Choice =
   | { Proprietary: string };
 
 export type Frequency37Choice =
-  | { Code: "MIAN" | "NEVR" | "QURT" | "RATE" | "YEAR" }
+  | { Code: "NEVR" | "YEAR" | "RATE" | "MIAN" | "QURT" }
   | { Proprietary: string };
 
 export interface GenericIdentification77 {
@@ -1834,7 +1834,7 @@ export interface GroupHeader116 {
 }
 
 export interface SettlementInstruction15 {
-  SettlementMethod: "CLRG" | "COVE" | "INDA" | "INGA";
+  SettlementMethod: "INDA" | "INGA" | "COVE" | "CLRG";
   SettlementAccount?: CashAccount40;
   ClearingSystem?: ClearingSystemIdentification3Choice;
   InstructingReimbursementAgent?: BranchAndFinancialInstitutionIdentification8;
@@ -1908,7 +1908,7 @@ export interface MandateAuthentication1 {
 }
 
 export interface MandateOccurrences5 {
-  SequenceType: "OOFF" | "RCUR";
+  SequenceType: "RCUR" | "OOFF";
   Frequency?: Frequency36Choice;
   Duration?: DatePeriod3;
   FirstCollectionDate?: string;
@@ -2065,7 +2065,7 @@ export interface OriginalTransactionReference47 {
   CreditorSchemeIdentification?: PartyIdentification272;
   SettlementInformation?: SettlementInstruction15;
   PaymentTypeInformation?: PaymentTypeInformation27;
-  PaymentMethod?: "CHK" | "DD" | "TRA" | "TRF";
+  PaymentMethod?: "CHK" | "TRF" | "DD" | "TRA";
   MandateRelatedInformation?: MandateRelatedData5Choice;
   RemittanceInformation?: RemittanceInformation26;
   UltimateDebtor?: Party50Choice;
@@ -2092,7 +2092,7 @@ export interface PlainCardData24 {
 }
 
 export interface PaymentCard37 {
-  CardDataEntryMode: "BRCD" | "CICC" | "CTLS" | "DFLE" | "ECTL" | "MGST" | "PHYS" | "TAGC";
+  CardDataEntryMode: "TAGC" | "PHYS" | "BRCD" | "MGST" | "CICC" | "DFLE" | "CTLS" | "ECTL";
   FallbackIndicator?: 'true' | 'false';
   ProtectedCardData?: ContentInformationType10;
   PlainCardData?: PlainCardData24;
@@ -2119,7 +2119,7 @@ export interface PaymentTypeInformation29 {
   InstructionPriority?: "HIGH" | "NORM";
   ServiceLevel?: Array<ServiceLevel8Choice>;
   LocalInstrument?: LocalInstrument2Choice;
-  SequenceType?: "FNAL" | "FRST" | "OOFF" | "RCUR" | "RPRE";
+  SequenceType?: "FRST" | "RCUR" | "FNAL" | "OOFF" | "RPRE";
   CategoryPurpose?: CategoryPurpose1Choice;
 }
 
@@ -2142,7 +2142,7 @@ export interface StructuredRegulatoryReporting5 {
 }
 
 export interface RegulatoryReporting10 {
-  DebitCreditReportingIndicator: "BOTH" | "CRED" | "DEBT";
+  DebitCreditReportingIndicator: "CRED" | "DEBT" | "BOTH";
   Authority?: RegulatoryAuthority2;
   Details?: Array<StructuredRegulatoryReporting5>;
 }
@@ -2199,7 +2199,7 @@ export interface SettlementDateTimeIndication1 {
 }
 
 export interface SettlementInstruction14 {
-  SettlementMethod: "CLRG" | "INDA" | "INGA";
+  SettlementMethod: "INDA" | "INGA" | "CLRG";
   SettlementAccount?: CashAccount40;
   ClearingSystem?: ClearingSystemIdentification3Choice;
 }

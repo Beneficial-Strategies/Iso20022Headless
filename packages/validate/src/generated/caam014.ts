@@ -84,7 +84,7 @@ import {
 
 export const ATMActionType1CodeSchema = z.enum(["APLY", "NONE"]);
 
-export const ATMPropertyType1CodeSchema = z.enum(["BOOL", "CSVF", "JSON", "NMBR", "STRG"]);
+export const ATMPropertyType1CodeSchema = z.enum(["STRG", "NMBR", "BOOL", "JSON", "CSVF"]);
 
 export const Max2000TextSchema = textType({min: 1, max: 2000});
 
@@ -122,7 +122,7 @@ const ownTypeDescriptors: TypeDescriptors = {
     name: "ATMPropertyType1Code",
     isoId: "_9hM1EJwtEe-XpuX9q9xjLg",
     kind: "code",
-    options: [{ value: "BOOL", name: "Boolean", isoId: "_r1XVAaDZEe-MRKYsaX6JDg" }, { value: "CSVF", name: "CSV", isoId: "_sXE68aDZEe-MRKYsaX6JDg" }, { value: "JSON", name: "JSON", isoId: "_sJvCgaDZEe-MRKYsaX6JDg" }, { value: "NMBR", name: "Number", isoId: "_rgsFgaDZEe-MRKYsaX6JDg" }, { value: "STRG", name: "String", isoId: "_rMunsaDZEe-MRKYsaX6JDg" }],
+    options: [{ value: "STRG", name: "String", isoId: "_rMunsaDZEe-MRKYsaX6JDg" }, { value: "NMBR", name: "Number", isoId: "_rgsFgaDZEe-MRKYsaX6JDg" }, { value: "BOOL", name: "Boolean", isoId: "_r1XVAaDZEe-MRKYsaX6JDg" }, { value: "JSON", name: "JSON", isoId: "_sJvCgaDZEe-MRKYsaX6JDg" }, { value: "CSVF", name: "CSV", isoId: "_sXE68aDZEe-MRKYsaX6JDg" }],
   },
   "Max2000Text": {
     name: "Max2000Text",

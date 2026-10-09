@@ -4,14 +4,14 @@ DATATYPE	ATMReconciliationAcknowledgement3	_DTU9MaE7Ee-MRKYsaX6JDg	MessageCompon
 MEMBER	ATMReconciliationAcknowledgement3	_DUn9saE7Ee-MRKYsaX6JDg	ATM	ATM	Component	AutomatedTellerMachine3	1	1	ATM information.
 MEMBER	ATMReconciliationAcknowledgement3	_DUn9s6E7Ee-MRKYsaX6JDg	Transaction	Tx	Component	ATMTransaction52	1	1	Information about the reconciliation response.
 DATATYPE	ATMTransaction52	_kDRiAaE3Ee-MRKYsaX6JDg	MessageComponent	Registered	E8F7CE264B6D1546	Information about the reconciliation response.
+MEMBER	ATMTransaction52	_kEaKcaE3Ee-MRKYsaX6JDg	TypeOfOperation	TpOfOpr	Codeset	ATMOperation2Code	0	1	Type of logical or physical operation on the ATM for which the counters are computed.
+MEMBER	ATMTransaction52	_kEaKc6E3Ee-MRKYsaX6JDg	TransactionIdentification	TxId	Component	TransactionIdentifier3	1	1	Identification of the reconciliation transaction.
+MEMBER	ATMTransaction52	_kEaKdaE3Ee-MRKYsaX6JDg	ReconciliationIdentification	RcncltnId	Attribute	Max35Text	1	1	Identification of the reconciliation period assigned by the ATM.
+MEMBER	ATMTransaction52	_kEaKd6E3Ee-MRKYsaX6JDg	TransactionResponse	TxRspn	Component	ResponseType12	1	1	Result of the reconciliation.
 MEMBER	ATMTransaction52	_kEaKeaE3Ee-MRKYsaX6JDg	ATMTotals	ATMTtls	Component	ATMTotals4	0	*	Current totals of the ATM.
 MEMBER	ATMTransaction52	_kEaKe6E3Ee-MRKYsaX6JDg	Cassette	Csstt	Component	ATMCassette3	0	*	Information on the cassettes of the ATM.
 MEMBER	ATMTransaction52	_kEaKfaE3Ee-MRKYsaX6JDg	Command	Cmd	Component	ATMCommand7	0	*	Maintenance command to perform on the ATM.
-MEMBER	ATMTransaction52	_kEaKdaE3Ee-MRKYsaX6JDg	ReconciliationIdentification	RcncltnId	Attribute	Max35Text	1	1	Identification of the reconciliation period assigned by the ATM.
-MEMBER	ATMTransaction52	_kEaKc6E3Ee-MRKYsaX6JDg	TransactionIdentification	TxId	Component	TransactionIdentifier3	1	1	Identification of the reconciliation transaction.
-MEMBER	ATMTransaction52	_kEaKd6E3Ee-MRKYsaX6JDg	TransactionResponse	TxRspn	Component	ResponseType12	1	1	Result of the reconciliation.
-MEMBER	ATMTransaction52	_kEaKcaE3Ee-MRKYsaX6JDg	TypeOfOperation	TpOfOpr	Codeset	ATMOperation2Code	0	1	Type of logical or physical operation on the ATM for which the counters are computed.
 DATATYPE	ResponseType12	_1IgUcZ9REe-nbM0aSPcoiQ	MessageComponent	Registered	8E4596EE7198B909	Response of a requested service.
-MEMBER	ResponseType12	_1JkEZZ9REe-nbM0aSPcoiQ	AdditionalResponseInformation	AddtlRspnInf	Attribute	Max140Text	0	1	Additional information to be logged for further examination.
 MEMBER	ResponseType12	_1JkEYZ9REe-nbM0aSPcoiQ	Response	Rspn	Codeset	Response12Code	1	1	Result of the requested transaction.
 MEMBER	ResponseType12	_1JkEY59REe-nbM0aSPcoiQ	ResponseReason	RspnRsn	Codeset	ResultDetail5Code	0	1	Detail of the response.
+MEMBER	ResponseType12	_1JkEZZ9REe-nbM0aSPcoiQ	AdditionalResponseInformation	AddtlRspnInf	Attribute	Max140Text	0	1	Additional information to be logged for further examination.

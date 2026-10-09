@@ -4,22 +4,22 @@ import type { ATMContext25, ATMEquipment1, Acquirer7, ContentInformationType10, 
 
 export interface DisplayCapabilities5 {
   Destination: Array<"CDSP" | "CRCP" | "CRDO">;
-  AvailableFormat?: Array<"HTML" | "MREF" | "TEXT">;
+  AvailableFormat?: Array<"MREF" | "TEXT" | "HTML">;
   NumberOfLines?: string;
   LineWidth?: string;
   AvailableLanguage?: Array<string>;
 }
 
 export interface PointOfInteractionCapabilities10 {
-  CardReadData?: Array<"CICC" | "CTLS" | "ECTL" | "MGST">;
-  CardWriteData?: Array<"CICC" | "CTLS" | "ECTL" | "MGST">;
-  Authentication?: Array<"FBIG" | "FBIO" | "FCPN" | "FDSG" | "FEPN" | "NPIN" | "PCOD" | "PKIS">;
+  CardReadData?: Array<"ECTL" | "CICC" | "MGST" | "CTLS">;
+  CardWriteData?: Array<"ECTL" | "CICC" | "MGST" | "CTLS">;
+  Authentication?: Array<"NPIN" | "FCPN" | "FEPN" | "FDSG" | "FBIO" | "FBIG" | "PKIS" | "PCOD">;
   PINLengthCapabilities?: string;
   ApprovalCodeLength?: string;
   MaxScriptLength?: string;
   CardCaptureCapable?: 'true' | 'false';
-  WithdrawalMedia?: Array<"CARD" | "CMDT" | "COIN" | "CPNS" | "NOTE" | "STMP" | "UDTM">;
-  DepositedMedia?: Array<"CARD" | "CHCK" | "CMDT" | "COIN" | "CPNS" | "ENVP" | "MLTP" | "NOTE" | "STMP" | "UDTM">;
+  WithdrawalMedia?: Array<"CARD" | "COIN" | "CMDT" | "CPNS" | "NOTE" | "STMP" | "UDTM">;
+  DepositedMedia?: Array<"CARD" | "COIN" | "CMDT" | "CPNS" | "NOTE" | "STMP" | "UDTM" | "CHCK" | "ENVP" | "MLTP">;
   MessageCapabilities?: Array<DisplayCapabilities5>;
   InteractiveTransactions?: Array<string>;
   ReceiptPrinting?: 'true' | 'false';
@@ -44,9 +44,9 @@ export interface ATMCustomerProfile6 {
 }
 
 export interface TransactionVerificationResult5 {
-  Method: "BIOM" | "FPIN" | "MOBL" | "NPIN" | "OTHR" | "PSWD" | "SCNL" | "SCRT" | "TOKA";
-  VerificationEntity?: "ACQR" | "AGNT" | "ICCD" | "ISSR" | "MERC" | "TRML";
-  Result?: "ERRR" | "FAIL" | "MISS" | "NOVF" | "PART" | "SUCC";
+  Method: "TOKA" | "BIOM" | "MOBL" | "OTHR" | "FPIN" | "NPIN" | "PSWD" | "SCRT" | "SCNL";
+  VerificationEntity?: "ICCD" | "AGNT" | "MERC" | "ACQR" | "ISSR" | "TRML";
+  Result?: "FAIL" | "MISS" | "NOVF" | "PART" | "SUCC" | "ERRR";
   AdditionalResult?: string;
   AuthenticationToken?: string;
 }
@@ -69,7 +69,7 @@ export interface ATMEnvironment20 {
 export interface ATMTransaction40 {
   TransactionIdentification?: TransactionIdentifier3;
   ReconciliationIdentification?: string;
-  Exception: Array<"CDCP" | "CDFG" | "CDRT" | "CUCL" | "MALF" | "SECU" | "SFRD" | "UCPT">;
+  Exception: Array<"CDRT" | "CDCP" | "CUCL" | "CDFG" | "MALF" | "SECU" | "SFRD" | "UCPT">;
   ExceptionDetail?: Array<string>;
   ElectronicPurseBalance?: CurrencyAndAmount;
 }

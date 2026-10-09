@@ -188,7 +188,7 @@ export const InvestigationStatus6ChoiceSchema = choiceOf({
   AssignmentCancellationConfirmation: YesNoIndicatorSchema,
 });
 
-export const GroupCancellationStatus1CodeSchema = z.enum(["ACCR", "PACR", "PDCR", "RJCR"]);
+export const GroupCancellationStatus1CodeSchema = z.enum(["PACR", "RJCR", "ACCR", "PDCR"]);
 
 export const ExternalPaymentCancellationRejection1CodeSchema = textType({min: 1, max: 4});
 
@@ -203,7 +203,7 @@ export const CancellationStatusReason5Schema = z.strictObject({
   AdditionalInformation: z.array(Max105TextSchema).optional(),
 });
 
-export const TransactionIndividualStatus1CodeSchema = z.enum(["ACCP", "ACCR", "ACSC", "ACSP", "ACTC", "ACWC", "PDNG", "RJCT"]);
+export const TransactionIndividualStatus1CodeSchema = z.enum(["ACTC", "RJCT", "PDNG", "ACCP", "ACSP", "ACSC", "ACCR", "ACWC"]);
 
 export const NumberOfTransactionsPerStatus1Schema = z.strictObject({
   DetailedNumberOfTransactions: Max15NumericTextSchema,
@@ -224,7 +224,7 @@ export const OriginalGroupHeader23Schema = z.strictObject({
   NumberOfTransactionsPerCancellationStatus: z.array(NumberOfTransactionsPerStatus1Schema).optional(),
 });
 
-export const CancellationIndividualStatus1CodeSchema = z.enum(["ACCR", "PDCR", "RJCR"]);
+export const CancellationIndividualStatus1CodeSchema = z.enum(["RJCR", "ACCR", "PDCR"]);
 
 export const NumberOfCancellationsPerStatus1Schema = z.strictObject({
   DetailedNumberOfTransactions: Max15NumericTextSchema,
@@ -370,7 +370,7 @@ const ownTypeDescriptors: TypeDescriptors = {
     name: "GroupCancellationStatus1Code",
     isoId: "_auruQ9p-Ed-ak6NoX_4Aeg_-1224774658",
     kind: "code",
-    options: [{ value: "ACCR", name: "AcceptedCancellationRequest", isoId: "_auruRtp-Ed-ak6NoX_4Aeg_-305868752" }, { value: "PACR", name: "PartiallyAcceptedCancellationRequest", isoId: "_auruRNp-Ed-ak6NoX_4Aeg_-305868783" }, { value: "PDCR", name: "PendingCancellationRequest", isoId: "_auruR9p-Ed-ak6NoX_4Aeg_-91612397" }, { value: "RJCR", name: "RejectedCancellationRequest", isoId: "_auruRdp-Ed-ak6NoX_4Aeg_-305868753" }],
+    options: [{ value: "PACR", name: "PartiallyAcceptedCancellationRequest", isoId: "_auruRNp-Ed-ak6NoX_4Aeg_-305868783" }, { value: "RJCR", name: "RejectedCancellationRequest", isoId: "_auruRdp-Ed-ak6NoX_4Aeg_-305868753" }, { value: "ACCR", name: "AcceptedCancellationRequest", isoId: "_auruRtp-Ed-ak6NoX_4Aeg_-305868752" }, { value: "PDCR", name: "PendingCancellationRequest", isoId: "_auruR9p-Ed-ak6NoX_4Aeg_-91612397" }],
   },
   "ExternalPaymentCancellationRejection1Code": {
     name: "ExternalPaymentCancellationRejection1Code",
@@ -403,7 +403,7 @@ const ownTypeDescriptors: TypeDescriptors = {
     name: "TransactionIndividualStatus1Code",
     isoId: "_Yrsi2Np-Ed-ak6NoX_4Aeg_-1851702308",
     kind: "code",
-    options: [{ value: "ACCP", name: "AcceptedCustomerProfile", isoId: "_Yr2T0tp-Ed-ak6NoX_4Aeg_-1851701953" }, { value: "ACCR", name: "AcceptedCancellationRequest", isoId: "_Yr2T1dp-Ed-ak6NoX_4Aeg_-1478599372" }, { value: "ACSC", name: "AcceptedSettlementCompleted", isoId: "_Yr2T1Np-Ed-ak6NoX_4Aeg_-1851701918" }, { value: "ACSP", name: "AcceptedSettlementInProcess", isoId: "_Yr2T09p-Ed-ak6NoX_4Aeg_-1851701936" }, { value: "ACTC", name: "AcceptedTechnicalValidation", isoId: "_Yrsi2dp-Ed-ak6NoX_4Aeg_-1851702290" }, { value: "ACWC", name: "AcceptedWithChange", isoId: "_Yr2T1tp-Ed-ak6NoX_4Aeg_-1456435332" }, { value: "PDNG", name: "Pending", isoId: "_Yr2T0dp-Ed-ak6NoX_4Aeg_-1851701978" }, { value: "RJCT", name: "Rejected", isoId: "_Yr2T0Np-Ed-ak6NoX_4Aeg_-1851702013" }],
+    options: [{ value: "ACTC", name: "AcceptedTechnicalValidation", isoId: "_Yrsi2dp-Ed-ak6NoX_4Aeg_-1851702290" }, { value: "RJCT", name: "Rejected", isoId: "_Yr2T0Np-Ed-ak6NoX_4Aeg_-1851702013" }, { value: "PDNG", name: "Pending", isoId: "_Yr2T0dp-Ed-ak6NoX_4Aeg_-1851701978" }, { value: "ACCP", name: "AcceptedCustomerProfile", isoId: "_Yr2T0tp-Ed-ak6NoX_4Aeg_-1851701953" }, { value: "ACSP", name: "AcceptedSettlementInProcess", isoId: "_Yr2T09p-Ed-ak6NoX_4Aeg_-1851701936" }, { value: "ACSC", name: "AcceptedSettlementCompleted", isoId: "_Yr2T1Np-Ed-ak6NoX_4Aeg_-1851701918" }, { value: "ACCR", name: "AcceptedCancellationRequest", isoId: "_Yr2T1dp-Ed-ak6NoX_4Aeg_-1478599372" }, { value: "ACWC", name: "AcceptedWithChange", isoId: "_Yr2T1tp-Ed-ak6NoX_4Aeg_-1456435332" }],
   },
   "NumberOfTransactionsPerStatus1": {
     name: "NumberOfTransactionsPerStatus1",
@@ -440,7 +440,7 @@ const ownTypeDescriptors: TypeDescriptors = {
     name: "CancellationIndividualStatus1Code",
     isoId: "_bXW31tp-Ed-ak6NoX_4Aeg_349830100",
     kind: "code",
-    options: [{ value: "ACCR", name: "AcceptedCancellationRequest", isoId: "_bXgo0Np-Ed-ak6NoX_4Aeg_349830162" }, { value: "PDCR", name: "PendingCancellationRequest", isoId: "_bXgo0dp-Ed-ak6NoX_4Aeg_349830163" }, { value: "RJCR", name: "RejectedCancellationRequest", isoId: "_bXW319p-Ed-ak6NoX_4Aeg_349830132" }],
+    options: [{ value: "RJCR", name: "RejectedCancellationRequest", isoId: "_bXW319p-Ed-ak6NoX_4Aeg_349830132" }, { value: "ACCR", name: "AcceptedCancellationRequest", isoId: "_bXgo0Np-Ed-ak6NoX_4Aeg_349830162" }, { value: "PDCR", name: "PendingCancellationRequest", isoId: "_bXgo0dp-Ed-ak6NoX_4Aeg_349830163" }],
   },
   "NumberOfCancellationsPerStatus1": {
     name: "NumberOfCancellationsPerStatus1",
