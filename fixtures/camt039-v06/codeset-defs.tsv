@@ -1,0 +1,2 @@
+codeSet	isoId	text
+CaseStatus2Code	_a2lGB9p-Ed-ak6NoX_4Aeg_-286578843	Specifies the status of an investigation case.||Note: |The cases that have been rejected (not accepted) are unknown to the Party reporting the status of cases. They will be reported with the CaseStatusCode = Unknown.

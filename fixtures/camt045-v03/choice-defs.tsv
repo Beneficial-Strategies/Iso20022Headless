@@ -1,0 +1,15 @@
+choice	memberId	memberName	text
+InvestmentFundTransactionInType1Choice	_XLrt0AaxEeS3lpTattq7hg	Code	Transaction type expressed as a code.
+InvestmentFundTransactionInType1Choice	_YBPc0QaxEeS3lpTattq7hg	Proprietary	Transaction type expressed as a proprietary code.
+QuantityType1Choice	_2-19cQaxEeS3lpTattq7hg	Code	Quantity type expressed as a code.
+QuantityType1Choice	_4AwGYQaxEeS3lpTattq7hg	Proprietary	Quantity type expressed as a proprietary code.
+ChargeType4Choice	_wTqbsQatEeS3lpTattq7hg	Code	Type of charge expressed as a code.
+ChargeType4Choice	_yFj3IQatEeS3lpTattq7hg	Proprietary	Type of charge expressed as a proprietary code.
+AmountOrRate3Choice	_te5_oQauEeS3lpTattq7hg	Amount	Amount of money.
+AmountOrRate3Choice	_vHypAQauEeS3lpTattq7hg	Rate	Rate used to calculate the amount.
+CommissionType5Choice	_ssJ7k2W6EeSHcOWXSsMhqw	Code	Commission type expressed as a code.
+CommissionType5Choice	_ssJ7lWW6EeSHcOWXSsMhqw	Proprietary	Commission type expressed as a proprietary code.
+InvestmentFundTransactionOutType1Choice	_TMto8RMJEeSopak1K45eVQ	Code	Transaction type expressed as a code.
+InvestmentFundTransactionOutType1Choice	_TMto8xMJEeSopak1K45eVQ	Proprietary	Transaction type expressed as a proprietary code.
+DataFormat2Choice	_Q6vvBtp-Ed-ak6NoX_4Aeg_-2132356123	Structured	Specification of data in a structured form.
+DataFormat2Choice	_Q6vvB9p-Ed-ak6NoX_4Aeg_-2132356031	Unstructured	Specification of data for which there isn't a structured form.

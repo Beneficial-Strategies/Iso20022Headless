@@ -1,0 +1,3 @@
+codeSetName	isoId	restrictionOf	code	enumName
+ExternalPaymentControlRequestType1Code	_EJVeUJIhEeect698_YsnIA	ExternalPaymentControlRequestTypeCode	*EXTERNAL*	minLength=1 maxLength=4; ~5 codes (not enumerated)
+ExternalEnquiryRequestType1Code	_I3nyYJIhEeect698_YsnIA	ExternalEnquiryRequestTypeCode	*EXTERNAL*	minLength=1 maxLength=4; ~6 codes (not enumerated)

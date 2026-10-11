@@ -1,0 +1,25 @@
+choice	memberId	memberName	text
+PartyIdentification2Choice	_QRLNkNp-Ed-ak6NoX_4Aeg_-1721645282	BICOrBEI	Code allocated to a financial or non-financial institution by the ISO 9362 Registration Authority, as described in ISO 9362 "Banking - Banking telecommunication messages - Business identifier code (BIC)".
+PartyIdentification2Choice	_QRLNkdp-Ed-ak6NoX_4Aeg_-1721645144	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to a financial institution using a proprietary identification scheme.
+PartyIdentification2Choice	_QRLNktp-Ed-ak6NoX_4Aeg_-1721645108	NameAndAddress	Name and address of a party.
+IdentificationSource5Choice	_n7S8IV9NEeS7xuKaq75oiQ	DomesticIdentificationSource	Country of the proprietary identification scheme.
+IdentificationSource5Choice	_n7S8I19NEeS7xuKaq75oiQ	ProprietaryIdentificationSource	Entity that issues the proprietary identification.
+DateAndDateTimeChoice	_T6OX6Np-Ed-ak6NoX_4Aeg_1215657155	Date	Specified date.
+DateAndDateTimeChoice	_T6OX6dp-Ed-ak6NoX_4Aeg_1215657156	DateTime	Specified date and time.
+SecurityIdentification3Choice	_Qdr_kNp-Ed-ak6NoX_4Aeg_1064399268	ISIN	International Securities Identification Number (ISIN). A numbering system designed by the United Nation's International Organisation for Standardisation (ISO). The ISIN is composed of a 2-character prefix representing the country of issue, followed by the national security number (if one exists), and a check digit. Each country has a national numbering agency that assigns ISIN numbers for securities in that country.
+SecurityIdentification3Choice	_Qdr_kdp-Ed-ak6NoX_4Aeg_1796754500	SEDOL	Stock Exchange Daily Official List (SEDOL) number. A code used by the London Stock Exchange to identify foreign stocks, especially those that aren't actively traded in the US and don't have a CUSIP number.
+SecurityIdentification3Choice	_Qdr_ktp-Ed-ak6NoX_4Aeg_-1393682718	CUSIP	Committee on Uniform Securities and Identification Procedures (CUSIP). The standards body that created and maintains the securities classification system in the US. The CUSIP is composed of a 9-character number that uniquely identifies a particular security. Non-US securities have a similar number called the CINS number.
+SecurityIdentification3Choice	_Qdr_k9p-Ed-ak6NoX_4Aeg_1064399328	RIC	Reuters Identification Code (RIC). A numbering system used within the Reuters system to identify instruments worldwide. The RIC contains an X-character market specific code (can be the CUSIP or EPIC codes) followed by a full stop, then the two-digit ISO country code, eg, IBM in UK is IBM.UK.
+SecurityIdentification3Choice	_Qdr_lNp-Ed-ak6NoX_4Aeg_1064399370	TickerSymbol	Letters that identify a stock traded on a stock exchange. The Ticker Symbol is a short and convenient way of identifying a stock, eg, RTR.L for Reuters quoted in London.
+SecurityIdentification3Choice	_Qdr_ldp-Ed-ak6NoX_4Aeg_1064399388	Bloomberg	Identifier of a security assigned by the Bloomberg organisation.
+SecurityIdentification3Choice	_Qdr_ltp-Ed-ak6NoX_4Aeg_1064399405	CTA	Identifier of a security assigned by the Consolidated Tape Association.
+SecurityIdentification3Choice	_Qdr_l9p-Ed-ak6NoX_4Aeg_-722284921	QUICK	Identifier of a security assigned by the Japanese QUICK identification scheme for financial instruments.
+SecurityIdentification3Choice	_Qdr_mNp-Ed-ak6NoX_4Aeg_-722284886	Wertpapier	Wertpapier Kenn-nummer. A number issued in Germany by the Wertpapier Mitteilungen. The Wertpapier Kenn-nummer, sometimes called WPK, contains 6-digits, but no check digit. There are different ranges of numbers representing different classes of securities.
+SecurityIdentification3Choice	_Qd1wkNp-Ed-ak6NoX_4Aeg_-722284843	Dutch	Identifier for Dutch securities.
+SecurityIdentification3Choice	_Qd1wkdp-Ed-ak6NoX_4Aeg_-722284808	Valoren	Identifier for Swiss securities assigned by Telekurs Financial, the Swiss numbering agency.
+SecurityIdentification3Choice	_Qd1wktp-Ed-ak6NoX_4Aeg_-722284713	Sicovam	Identifier for French securities assigned by the Societe Interprofessionnelle Pour La Compensation des Valeurs Mobilieres in France. The Sicovam is composed of 5-digits.
+SecurityIdentification3Choice	_Qd1wk9p-Ed-ak6NoX_4Aeg_-722284454	Belgian	Identifier for Belgian securities.
+SecurityIdentification3Choice	_Qd1wlNp-Ed-ak6NoX_4Aeg_1064399423	Common	Identifier of securities issued in Luxembourg. The common code is a 9-digit code that replaces the CEDEL (Clearstream) and Euroclear codes.
+SecurityIdentification3Choice	_Qd1wldp-Ed-ak6NoX_4Aeg_1064399293	OtherProprietaryIdentification	Proprietary identification of a security assigned by an institution or organisation.
+UnitPriceType2Choice	_ORWfkQc_EeSyIPzOZ6VzBQ	Code	Type of price expressed as a code.
+UnitPriceType2Choice	_ORWfkwc_EeSyIPzOZ6VzBQ	Proprietary	Type of price expressed as a proprietary code.

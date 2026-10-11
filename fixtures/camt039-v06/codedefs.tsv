@@ -1,0 +1,6 @@
+codeSet	code	enumName	isoId	text
+CaseStatus2Code	CLSD	Closed	_a2lGCNp-Ed-ak6NoX_4Aeg_-286578825	Case has been closed.
+CaseStatus2Code	ASGN	Assigned	_a2uP8Np-Ed-ak6NoX_4Aeg_-286578808	Case has been assigned to another party.
+CaseStatus2Code	INVE	UnderInvestigation	_a2uP8dp-Ed-ak6NoX_4Aeg_-286578566	Case is currently under investigation.
+CaseStatus2Code	UKNW	Unknown	_a2uP8tp-Ed-ak6NoX_4Aeg_-286578549	Case has never been assigned before.
+CaseStatus2Code	ODUE	Overdue	_a2uP89p-Ed-ak6NoX_4Aeg_-286578548	Investigation is taking too long.

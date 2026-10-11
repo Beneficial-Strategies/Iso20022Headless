@@ -1,0 +1,59 @@
+{
+  "identifier": "camt.045.001.03",
+  "name": "FundDetailedConfirmedCashForecastReportCancellationV03",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.045.001.03",
+  "bodyTag": "FndDtldConfdCshFcstRptCxl",
+  "out": "camt045",
+  "isoId": "_OOHvMQasEeSrXeb3pHPmbg",
+  "definition": "Scope|A report provider, such as a transfer agent, sends the FundDetailedConfirmedCashForecastReportCancellation messages to the report user, such as an investment manager, fund accountant or any other interested party, to cancel a previously sent FundDetailedConfirmedCashForecastReport.|Usage|The FundDetailedConfirmedCashForecastReportCancellation message is used to cancel an entire FundDetailedConfirmedCashForecastReport message that was previously sent. This message must contain the reference of the message to be cancelled.|This message may also contain details of the message to be cancelled, but this is not recommended.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "_OOHvMwasEeSrXeb3pHPmbg",
+      "xmlTag": "MsgId",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "PoolReference",
+      "isoId": "_OOHvNQasEeSrXeb3pHPmbg",
+      "xmlTag": "PoolRef",
+      "type": "AdditionalReference3",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "PreviousReference",
+      "isoId": "_OOHvNwasEeSrXeb3pHPmbg",
+      "xmlTag": "PrvsRef",
+      "type": "AdditionalReference3",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "RelatedReference",
+      "isoId": "_OOHvOQasEeSrXeb3pHPmbg",
+      "xmlTag": "RltdRef",
+      "type": "AdditionalReference3",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "MessagePagination",
+      "isoId": "_OOHvOwasEeSrXeb3pHPmbg",
+      "xmlTag": "MsgPgntn",
+      "type": "Pagination",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CashForecastReportToBeCancelled",
+      "isoId": "_OOHvPQasEeSrXeb3pHPmbg",
+      "xmlTag": "CshFcstRptToBeCanc",
+      "type": "FundDetailedConfirmedCashForecastReport3",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

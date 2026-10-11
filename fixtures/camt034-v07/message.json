@@ -1,0 +1,43 @@
+{
+  "identifier": "camt.034.001.07",
+  "name": "DuplicateV07",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.034.001.07",
+  "bodyTag": "Dplct",
+  "out": "camt034",
+  "isoId": "_R3IjtTEZEe6kQ-WGAhcVPQ",
+  "definition": "Scope|The Duplicate message is used by financial institutions, with their own offices, and/or with other financial institutions with which they have established bilateral agreements. It allows to exchange duplicate payment instructions.|Usage|This message must be sent in response to a RequestForDuplicate message.|The Duplicate Data element must contain a well formed XML document. This means XML special characters such as '<' must be used in a way that is consistent with XML well-formedness criteria.",
+  "blocks": [
+    {
+      "name": "Assignment",
+      "isoId": "_R3IjvTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Assgnmt",
+      "type": "CaseAssignment6",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Case",
+      "isoId": "_R3IjvzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Case",
+      "type": "Case6",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Duplicate",
+      "isoId": "_R3IjwTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Dplct",
+      "type": "ProprietaryData7",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3IjwzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

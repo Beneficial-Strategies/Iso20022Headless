@@ -1,0 +1,35 @@
+{
+  "identifier": "camt.114.001.01",
+  "name": "CashWithdrawalRequestV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.114.001.01",
+  "bodyTag": "CshWdrwlReq",
+  "out": "camt114",
+  "isoId": "_24xMkOR7Ee-NFYIkYc90gw",
+  "definition": "The CashWithdrawalRequest message is sent by a cash receiver to a a cash sender to request that cash is withdrawn from an account.",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "_U5yJIuR8Ee-NFYIkYc90gw",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader133",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CashWithdrawalRequest",
+      "isoId": "_U5yJI-R8Ee-NFYIkYc90gw",
+      "xmlTag": "CshWdrwlReq",
+      "type": "CashWithdrawalRequest1",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_U5yJJOR8Ee-NFYIkYc90gw",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

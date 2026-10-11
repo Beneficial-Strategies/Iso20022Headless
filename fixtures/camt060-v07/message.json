@@ -1,0 +1,35 @@
+{
+  "identifier": "camt.060.001.07",
+  "name": "AccountReportingRequestV07",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.060.001.07",
+  "bodyTag": "AcctRptgReq",
+  "out": "camt060",
+  "isoId": "_R2_ZqTEZEe6kQ-WGAhcVPQ",
+  "definition": "Scope|The AccountReportingRequest message is sent by the account owner, either directly or through a forwarding agent, to one of its account servicing institutions. It is used to ask the account servicing institution to send a report on the account owner's account in a BankToCustomerAccountReport (camt.052), a BankToCustomerStatement (camt.053) or a BankToCustomerDebitCreditNotification (camt.054).",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "_R2_ZrzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader117",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ReportingRequest",
+      "isoId": "_R2_ZsTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "RptgReq",
+      "type": "ReportingRequest7",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R2_ZszEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

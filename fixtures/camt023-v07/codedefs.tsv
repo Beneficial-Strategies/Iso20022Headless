@@ -1,0 +1,25 @@
+codeSet	code	enumName	isoId	text
+PaymentType3Code	CBS	CrossBorderPayment	_Z8A7NNp-Ed-ak6NoX_4Aeg_-2009106552	Payment has an origin in one country, a destination in another, and is made in the currency of either the origin or destination country.
+PaymentType3Code	BCK	BackUp	_Z8A7Ndp-Ed-ak6NoX_4Aeg_-2009106527	Payment is made under the recovery procedure to move liquidity to/from the settlement account of a member according to the specifications of the system.
+PaymentType3Code	BAL	BalanceRetail	_Z8A7Ntp-Ed-ak6NoX_4Aeg_-2009106526	Transaction is a payment offsetting the net cash balance owed/due in a retail payment system.
+PaymentType3Code	CLS	CLSPayment	_Z8A7N9p-Ed-ak6NoX_4Aeg_-2009106510	Payment is linked to CLS activities.
+PaymentType3Code	CTR	CentralBankOperation	_Z8A7ONp-Ed-ak6NoX_4Aeg_-2009106492	Payment is made to settle an operation made with the central bank.
+PaymentType3Code	CBH	CrossBorderHighValuePayment	_Z8A7Odp-Ed-ak6NoX_4Aeg_-2009106467	Transaction is a high value payment that has an origin in one country and a destination in another country and is made in the currency of either the origin or destination country.
+PaymentType3Code	CBP	CrossBorderPriorityPayment	_Z8KsMNp-Ed-ak6NoX_4Aeg_-2009106450	Transaction is a priority payment that has an origin in one country and a destination in another and is made in the currency of either the origin or destination country.
+PaymentType3Code	DPG	DVPGross	_Z8KsMdp-Ed-ak6NoX_4Aeg_-2009106432	Gross cash payment offsetting the amount owed/due for a securities transaction settlement.
+PaymentType3Code	DPN	DVPNet	_Z8KsMtp-Ed-ak6NoX_4Aeg_-2009106415	Net payment offsetting the cash balance due/owed for a series of securities transactions settlement.
+PaymentType3Code	EXP	ExpressPayment	_Z8KsM9p-Ed-ak6NoX_4Aeg_-2009106414	Transaction is a payment that is processed whenever liquidity is available on the settlement account of a member of the RTGSPlus system.
+PaymentType3Code	TCH	ThirdCurrencyHighValuePayment	_Z8KsNNp-Ed-ak6NoX_4Aeg_-2009106397	Transaction is a high value payment that is made in a third currency to the origin and destination countries. The origin and destination countries may be one and the same country.
+PaymentType3Code	LMT	LimitPayment	_Z8KsNdp-Ed-ak6NoX_4Aeg_-2009106124	Transaction is a payment that is processed when the pool of liquidity exceeds the minimum value reserved for an express payment in the RTGSPlus system.
+PaymentType3Code	LIQ	LiquidityTransfer	_Z8KsNtp-Ed-ak6NoX_4Aeg_-2009106107	Payment is made to transfer liquidity to/from the settlement account of a member, to/from the current account held at the central institution or any other institution.
+PaymentType3Code	DPP	DomesticPriorityPayment	_Z8KsN9p-Ed-ak6NoX_4Aeg_-2009106106	Transaction is a priority payment that has an origin and a destination in the same country and is made in the currency of that country.
+PaymentType3Code	DPH	DomesticHighValuePayment	_Z8KsONp-Ed-ak6NoX_4Aeg_-2009106089	Transaction is a high value payment that has an origin and a destination in the same country and is made in the currency of that country.
+PaymentType3Code	DPS	DomesticPayment	_Z8KsOdp-Ed-ak6NoX_4Aeg_-2009106012	Payment has an origin and a destination in the same country, and is made in the currency of that country.
+PaymentType3Code	STF	StandingFacilities	_Z8T2INp-Ed-ak6NoX_4Aeg_-2009105969	Payment is linked to overnight deposits and the marginal lending facility.
+PaymentType3Code	TRP	TreasuryStatePayment	_Z8T2Idp-Ed-ak6NoX_4Aeg_-2009105952	Payment is linked to the Treasury State.
+PaymentType3Code	TCS	ThirdCurrencyPayment	_Z8T2Itp-Ed-ak6NoX_4Aeg_-2009105934	Transaction is a payment that is made in a third currency to the origin and destination countries. The origin and destination countries may be one and the same country.
+PaymentType3Code	LOA	Loan	_Z8T2I9p-Ed-ak6NoX_4Aeg_-2009105933	Transaction is the payment of a specific amount of money lent by a creditor/lender.
+PaymentType3Code	LOR	LoanRepayment	_Z8T2JNp-Ed-ak6NoX_4Aeg_-2009105909	Transaction is an amount of money transferred in repayment of loan.
+PaymentType3Code	TCP	ThirdCurrencyPriorityPayment	_Z8T2Jdp-Ed-ak6NoX_4Aeg_-2009105892	Payment is made in a third currency to the origin and destination countries. The origin and destination countries may be the same country.
+PaymentType3Code	OND	OvernightDeposit	_Z8T2Jtp-Ed-ak6NoX_4Aeg_-1235461266	Transaction is linked to an overnight deposit.
+PaymentType3Code	MGL	MarginalLending	_Z8T2J9p-Ed-ak6NoX_4Aeg_-1231765290	Transaction is linked to the marginal lending facility.

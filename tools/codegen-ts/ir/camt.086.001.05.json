@@ -1,0 +1,4228 @@
+{
+  "message": {
+    "identifier": "camt.086.001.05",
+    "name": "BankServicesBillingStatementV05",
+    "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.086.001.05",
+    "bodyTag": "BkSvcsBllgStmt",
+    "out": "camt086",
+    "isoId": "_R3BOyzEZEe6kQ-WGAhcVPQ",
+    "definition": "Scope|The BankServicesBillingStatement message is used to send from a Financial Institution (FI) to its wholesale customers (corporations, governments, institutions, etc.), information describing the FI’s billing of services rendered in the form of an electronic statement in a standardised format. The BankServicesBillingStatement is a periodic (usually end of month) recounting of all service chargeable events that occurred during a reporting cycle, typically a calendar month, along with detailed tax and currency translation information. Account balance information, although strongly recommended, is not required.|Usage|The BankServicesBillingStatement message is designed to provide details related to invoices (or an advice of debit) which a financial institution may supply to its customers. The BankServicesBillingStatement is not expressly designed to be an invoice, nor to replace invoices currently in use. The message may be used as an invoice by agreement between the sender and the receiver. No regulatory or legislative requirements were considered when creating this message standard. Users of the BankServicesBillingStatement message are cautioned to be aware of any regulatory or legal requirement for invoices before replacing existing invoices.|The BankServicesBillingStatement message can supply the detail supporting separate invoices or debits but it is not the invoice or advice of debit of record. The BankServicesBillingStatement message must accurately reflect all the charge and tax related events that occurred during the calendar month and how the FI and taxing authorities were compensated for these events. The BankServicesBillingStatement does not ask the financial institution to revise its established pricing and billing procedures. |How, when and what the customer is actually charged for remains in place. The BankServicesBillingStatement message asks the financial institution to aggregate and report what actually happened during the calendar month.|The BankServicesBillingStatement message is intended for use with the ISO 20022 Business Application Header.",
+    "blocks": [
+      {
+        "name": "ReportHeader",
+        "isoId": "_R3BO0TEZEe6kQ-WGAhcVPQ",
+        "xmlTag": "RptHdr",
+        "type": "ReportHeader6",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "BillingStatementGroup",
+        "isoId": "_R3BO0zEZEe6kQ-WGAhcVPQ",
+        "xmlTag": "BllgStmtGrp",
+        "type": "StatementGroup5",
+        "min": 1,
+        "max": null
+      }
+    ]
+  },
+  "root": "BankServicesBillingStatementV05",
+  "order": [
+    "Max35Text",
+    "Max5NumericText",
+    "YesNoIndicator",
+    "Pagination1",
+    "ReportHeader6",
+    "Max140Text",
+    "AddressType2Code",
+    "Exact4AlphaNumericText",
+    "GenericIdentification30",
+    "AddressType3Choice",
+    "Max70Text",
+    "Max16Text",
+    "CountryCode",
+    "PostalAddress27",
+    "AnyBICDec2014Identifier",
+    "LEIIdentifier",
+    "Max256Text",
+    "ExternalOrganisationIdentification1Code",
+    "OrganisationIdentificationSchemeName1Choice",
+    "GenericOrganisationIdentification3",
+    "OrganisationIdentification39",
+    "BICFIDec2014Identifier",
+    "ExternalClearingSystemIdentification1Code",
+    "ClearingSystemIdentification2Choice",
+    "ClearingSystemMemberIdentification2",
+    "ExternalFinancialInstitutionIdentification1Code",
+    "FinancialIdentificationSchemeName1Choice",
+    "GenericFinancialIdentification1",
+    "FinancialInstitutionIdentification19",
+    "Party56Choice",
+    "NamePrefix2Code",
+    "PhoneNumber",
+    "Max2048Text",
+    "Max4Text",
+    "Max128Text",
+    "OtherContact1",
+    "PreferredContactMethod2Code",
+    "Contact13",
+    "PartyIdentification273",
+    "ISODate",
+    "DatePeriod1",
+    "ISODateTime",
+    "BillingStatementStatus1Code",
+    "AccountLevel2Code",
+    "IBAN2007Identifier",
+    "Max34Text",
+    "ExternalAccountIdentification1Code",
+    "AccountSchemeName1Choice",
+    "GenericAccountIdentification1",
+    "AccountIdentification4Choice",
+    "ExternalCashAccountType1Code",
+    "CashAccountType2Choice",
+    "ActiveOrHistoricCurrencyCode",
+    "ExternalProxyAccountType1Code",
+    "ProxyAccountType1Choice",
+    "ProxyAccountIdentification1",
+    "CashAccount40",
+    "FinancialInstitutionIdentification23",
+    "BranchData5",
+    "BranchAndFinancialInstitutionIdentification8",
+    "AccountLevel1Code",
+    "ParentCashAccount5",
+    "CompensationMethod1Code",
+    "Max105Text",
+    "BillingTaxCalculationMethod1Code",
+    "Max40Text",
+    "ResidenceLocation1Choice",
+    "AccountTax1",
+    "CashAccountCharacteristics5",
+    "ExternalBillingRateIdentification1Code",
+    "BillingRateIdentification1Choice",
+    "PercentageRate",
+    "Number",
+    "BillingRate1",
+    "BaseOneRate",
+    "CurrencyExchange6",
+    "ExternalBillingBalanceType1Code",
+    "BillingBalanceType1Choice",
+    "ActiveOrHistoricCurrencyAndAmount",
+    "PlusOrMinusIndicator",
+    "AmountAndDirection34",
+    "BillingCurrencyType1Code",
+    "BillingBalance1",
+    "ExternalBillingCompensationType1Code",
+    "BillingCompensationType1Choice",
+    "BillingCurrencyType2Code",
+    "BillingCompensation1",
+    "BillingSubServiceQualifier1Code",
+    "BillingSubServiceQualifier1Choice",
+    "BillingSubServiceIdentification1",
+    "Max6Text",
+    "Max8Text",
+    "BillingServiceCommonIdentification1",
+    "ExternalBankTransactionDomain1Code",
+    "ExternalBankTransactionFamily1Code",
+    "ExternalBankTransactionSubFamily1Code",
+    "BankTransactionCodeStructure6",
+    "BankTransactionCodeStructure5",
+    "ProprietaryBankTransactionCodeStructure1",
+    "BankTransactionCodeStructure4",
+    "Max12Text",
+    "BillingServiceIdentification3",
+    "DecimalNumber",
+    "BillingServiceParameters3",
+    "BillingChargeMethod1Code",
+    "Max20Text",
+    "BillingPrice1",
+    "ServicePaymentMethod1Code",
+    "ServiceTaxDesignation1Code",
+    "Max10Text",
+    "TaxReason1",
+    "ServiceTaxDesignation1",
+    "BillingServicesAmount1",
+    "BillingServicesAmount2",
+    "BillingServicesTax1",
+    "BillingMethod1",
+    "BillingMethod2",
+    "BillingServicesTax2",
+    "BillingMethod3",
+    "BillingMethod1Choice",
+    "BillingService2",
+    "BillingTaxIdentification3",
+    "BillingServiceIdentification2",
+    "BillingServiceParameters2",
+    "BillingServicesAmount3",
+    "BillingServicesTax3",
+    "TaxCalculation1",
+    "BillingMethod4",
+    "BillingTaxRegion3",
+    "BalanceAdjustmentType1Code",
+    "BalanceAdjustment1",
+    "ServiceAdjustmentType1Code",
+    "BillingServiceAdjustment1",
+    "BillingStatement5",
+    "StatementGroup5",
+    "BankServicesBillingStatementV05"
+  ],
+  "types": {
+    "Max35Text": {
+      "name": "Max35Text",
+      "kind": "text",
+      "isoId": "_YW1tKdp-Ed-ak6NoX_4Aeg_1913463446",
+      "minLength": 1,
+      "maxLength": 35
+    },
+    "Max5NumericText": {
+      "name": "Max5NumericText",
+      "kind": "text",
+      "isoId": "_YYU65Np-Ed-ak6NoX_4Aeg_1112774407",
+      "pattern": "[0-9]{1,5}"
+    },
+    "YesNoIndicator": {
+      "name": "YesNoIndicator",
+      "kind": "boolean",
+      "isoId": "_YXbjA9p-Ed-ak6NoX_4Aeg_-2040117978"
+    },
+    "Pagination1": {
+      "name": "Pagination1",
+      "isoId": "_xhMHQa6XEees_ufOy2ci-g",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "PageNumber",
+          "isoId": "_xsy6Ua6XEees_ufOy2ci-g",
+          "xmlTag": "PgNb",
+          "type": "Max5NumericText",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "LastPageIndicator",
+          "isoId": "_xsy6U66XEees_ufOy2ci-g",
+          "xmlTag": "LastPgInd",
+          "type": "YesNoIndicator",
+          "kind": "boolean",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ReportHeader6": {
+      "name": "ReportHeader6",
+      "isoId": "_IXU44Xk4Eei6JsZKrqN0hQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "ReportIdentification",
+          "isoId": "_IijRc3k4Eei6JsZKrqN0hQ",
+          "xmlTag": "RptId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "MessagePagination",
+          "isoId": "_IijRdXk4Eei6JsZKrqN0hQ",
+          "xmlTag": "MsgPgntn",
+          "type": "Pagination1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "MessagePaginationRule",
+          "isoId": "_IijRcXk4Eei6JsZKrqN0hQ",
+          "text": "If MessagePagination is present, then ReportIdentification must be identical for all pages."
+        }
+      ]
+    },
+    "Max140Text": {
+      "name": "Max140Text",
+      "kind": "text",
+      "isoId": "_YXlUAtp-Ed-ak6NoX_4Aeg_2103068114",
+      "minLength": 1,
+      "maxLength": 140
+    },
+    "AddressType2Code": {
+      "name": "AddressType2Code",
+      "isoId": "_bm2sYNp-Ed-ak6NoX_4Aeg_595056355",
+      "kind": "code",
+      "options": [
+        {
+          "value": "ADDR",
+          "name": "Postal",
+          "isoId": "_bm2sYdp-Ed-ak6NoX_4Aeg_878577717"
+        },
+        {
+          "value": "PBOX",
+          "name": "POBox",
+          "isoId": "_bm2sYtp-Ed-ak6NoX_4Aeg_878578132"
+        },
+        {
+          "value": "HOME",
+          "name": "Residential",
+          "isoId": "_bm2sY9p-Ed-ak6NoX_4Aeg_2106193409"
+        },
+        {
+          "value": "BIZZ",
+          "name": "Business",
+          "isoId": "_bm2sZNp-Ed-ak6NoX_4Aeg_2106193529"
+        },
+        {
+          "value": "MLTO",
+          "name": "MailTo",
+          "isoId": "_bm2sZdp-Ed-ak6NoX_4Aeg_2106193606"
+        },
+        {
+          "value": "DLVY",
+          "name": "DeliveryTo",
+          "isoId": "_bm2sZtp-Ed-ak6NoX_4Aeg_2106193624"
+        }
+      ]
+    },
+    "Exact4AlphaNumericText": {
+      "name": "Exact4AlphaNumericText",
+      "kind": "text",
+      "isoId": "_YYLJ6Np-Ed-ak6NoX_4Aeg_-1265890753",
+      "pattern": "[a-zA-Z0-9]{4}"
+    },
+    "GenericIdentification30": {
+      "name": "GenericIdentification30",
+      "isoId": "_P-Pqgtp-Ed-ak6NoX_4Aeg_-1987897352",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_P-Pqg9p-Ed-ak6NoX_4Aeg_-2101736418",
+          "xmlTag": "Id",
+          "type": "Exact4AlphaNumericText",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "isoId": "_P-PqhNp-Ed-ak6NoX_4Aeg_1196158525",
+          "xmlTag": "Issr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SchemeName",
+          "isoId": "_P-Pqhdp-Ed-ak6NoX_4Aeg_491043910",
+          "xmlTag": "SchmeNm",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "AddressType3Choice": {
+      "name": "AddressType3Choice",
+      "isoId": "_CneugRb-EeiyVv5j1vf1VQ",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_C7IDQRb-EeiyVv5j1vf1VQ",
+          "xmlTag": "Cd",
+          "type": "AddressType2Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_C7IDQxb-EeiyVv5j1vf1VQ",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Max70Text": {
+      "name": "Max70Text",
+      "kind": "text",
+      "isoId": "_YX4O8Np-Ed-ak6NoX_4Aeg_-282989098",
+      "minLength": 1,
+      "maxLength": 70
+    },
+    "Max16Text": {
+      "name": "Max16Text",
+      "kind": "text",
+      "isoId": "_YW1tJ9p-Ed-ak6NoX_4Aeg_-185393449",
+      "minLength": 1,
+      "maxLength": 16
+    },
+    "CountryCode": {
+      "name": "CountryCode",
+      "isoId": "_bTfEctp-Ed-ak6NoX_4Aeg_-804722522",
+      "kind": "code",
+      "pattern": "[A-Z]{2,2}"
+    },
+    "PostalAddress27": {
+      "name": "PostalAddress27",
+      "isoId": "_vvaRYTEyEe6g-ffJsqGiSA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "AddressType",
+          "isoId": "_vxk0kTEyEe6g-ffJsqGiSA",
+          "xmlTag": "AdrTp",
+          "type": "AddressType3Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CareOf",
+          "isoId": "_5-dq0DHsEe6BxvG014AZzQ",
+          "xmlTag": "CareOf",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Department",
+          "isoId": "_vxk0kzEyEe6g-ffJsqGiSA",
+          "xmlTag": "Dept",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SubDepartment",
+          "isoId": "_vxk0lTEyEe6g-ffJsqGiSA",
+          "xmlTag": "SubDept",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "StreetName",
+          "isoId": "_vxk0lzEyEe6g-ffJsqGiSA",
+          "xmlTag": "StrtNm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "BuildingNumber",
+          "isoId": "_vxk0mTEyEe6g-ffJsqGiSA",
+          "xmlTag": "BldgNb",
+          "type": "Max16Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "BuildingName",
+          "isoId": "_vxk0mzEyEe6g-ffJsqGiSA",
+          "xmlTag": "BldgNm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Floor",
+          "isoId": "_vxk0nTEyEe6g-ffJsqGiSA",
+          "xmlTag": "Flr",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "UnitNumber",
+          "isoId": "_kWPIsDHtEe6BxvG014AZzQ",
+          "xmlTag": "UnitNb",
+          "type": "Max16Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PostBox",
+          "isoId": "_vxk0nzEyEe6g-ffJsqGiSA",
+          "xmlTag": "PstBx",
+          "type": "Max16Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Room",
+          "isoId": "_vxk0oTEyEe6g-ffJsqGiSA",
+          "xmlTag": "Room",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PostCode",
+          "isoId": "_vxk0ozEyEe6g-ffJsqGiSA",
+          "xmlTag": "PstCd",
+          "type": "Max16Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TownName",
+          "isoId": "_vxk0pTEyEe6g-ffJsqGiSA",
+          "xmlTag": "TwnNm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TownLocationName",
+          "isoId": "_vxk0pzEyEe6g-ffJsqGiSA",
+          "xmlTag": "TwnLctnNm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "DistrictName",
+          "isoId": "_vxk0qTEyEe6g-ffJsqGiSA",
+          "xmlTag": "DstrctNm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CountrySubDivision",
+          "isoId": "_vxk0qzEyEe6g-ffJsqGiSA",
+          "xmlTag": "CtrySubDvsn",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Country",
+          "isoId": "_vxlboTEyEe6g-ffJsqGiSA",
+          "xmlTag": "Ctry",
+          "type": "CountryCode",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "AddressLine",
+          "isoId": "_vxlbozEyEe6g-ffJsqGiSA",
+          "xmlTag": "AdrLine",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 0,
+          "max": 7
+        }
+      ]
+    },
+    "AnyBICDec2014Identifier": {
+      "name": "AnyBICDec2014Identifier",
+      "kind": "text",
+      "isoId": "_jp-90kI6EeirV6K70JJQ8Q",
+      "pattern": "[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}"
+    },
+    "LEIIdentifier": {
+      "name": "LEIIdentifier",
+      "kind": "text",
+      "isoId": "_h7Yn9yjAEeKnA5P_jl2DUw",
+      "pattern": "[A-Z0-9]{18,18}[0-9]{2,2}"
+    },
+    "Max256Text": {
+      "name": "Max256Text",
+      "kind": "text",
+      "isoId": "_YXvFAtp-Ed-ak6NoX_4Aeg_582144276",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "ExternalOrganisationIdentification1Code": {
+      "name": "ExternalOrganisationIdentification1Code",
+      "isoId": "_ame0hNp-Ed-ak6NoX_4Aeg_-1667686354",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "OrganisationIdentificationSchemeName1Choice": {
+      "name": "OrganisationIdentificationSchemeName1Choice",
+      "isoId": "_QACaQtp-Ed-ak6NoX_4Aeg_362604391",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_QACaQ9p-Ed-ak6NoX_4Aeg_362604423",
+          "xmlTag": "Cd",
+          "type": "ExternalOrganisationIdentification1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_QACaRNp-Ed-ak6NoX_4Aeg_362604483",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "GenericOrganisationIdentification3": {
+      "name": "GenericOrganisationIdentification3",
+      "isoId": "_bM2KRzFIEe651u5xu3f5iw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_bPnKYTFIEe651u5xu3f5iw",
+          "xmlTag": "Id",
+          "type": "Max256Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SchemeName",
+          "isoId": "_bPnKYzFIEe651u5xu3f5iw",
+          "xmlTag": "SchmeNm",
+          "type": "OrganisationIdentificationSchemeName1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "isoId": "_bPnKZTFIEe651u5xu3f5iw",
+          "xmlTag": "Issr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "OrganisationIdentification39": {
+      "name": "OrganisationIdentification39",
+      "isoId": "_bKD8BTFIEe651u5xu3f5iw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "AnyBIC",
+          "isoId": "_bM2KQTFIEe651u5xu3f5iw",
+          "xmlTag": "AnyBIC",
+          "type": "AnyBICDec2014Identifier",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "LEI",
+          "isoId": "_bM2KQzFIEe651u5xu3f5iw",
+          "xmlTag": "LEI",
+          "type": "LEIIdentifier",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Other",
+          "isoId": "_bM2KRTFIEe651u5xu3f5iw",
+          "xmlTag": "Othr",
+          "type": "GenericOrganisationIdentification3",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    },
+    "BICFIDec2014Identifier": {
+      "name": "BICFIDec2014Identifier",
+      "kind": "text",
+      "isoId": "_gnK3okI7EeirV6K70JJQ8Q",
+      "pattern": "[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}"
+    },
+    "ExternalClearingSystemIdentification1Code": {
+      "name": "ExternalClearingSystemIdentification1Code",
+      "isoId": "_amVqlNp-Ed-ak6NoX_4Aeg_319823369",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 5
+    },
+    "ClearingSystemIdentification2Choice": {
+      "name": "ClearingSystemIdentification2Choice",
+      "isoId": "_TMoSENp-Ed-ak6NoX_4Aeg_-1410917193",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_TMoSEdp-Ed-ak6NoX_4Aeg_-1410917191",
+          "xmlTag": "Cd",
+          "type": "ExternalClearingSystemIdentification1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_TMoSEtp-Ed-ak6NoX_4Aeg_-1409997159",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ClearingSystemMemberIdentification2": {
+      "name": "ClearingSystemMemberIdentification2",
+      "isoId": "_TMehHNp-Ed-ak6NoX_4Aeg_151445359",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "ClearingSystemIdentification",
+          "isoId": "_TMehHdp-Ed-ak6NoX_4Aeg_-1082144614",
+          "xmlTag": "ClrSysId",
+          "type": "ClearingSystemIdentification2Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "MemberIdentification",
+          "isoId": "_TMehHtp-Ed-ak6NoX_4Aeg_151445420",
+          "xmlTag": "MmbId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ExternalFinancialInstitutionIdentification1Code": {
+      "name": "ExternalFinancialInstitutionIdentification1Code",
+      "isoId": "_ame0gNp-Ed-ak6NoX_4Aeg_-1716707444",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "FinancialIdentificationSchemeName1Choice": {
+      "name": "FinancialIdentificationSchemeName1Choice",
+      "isoId": "_QALkMNp-Ed-ak6NoX_4Aeg_-2021925461",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_QALkMdp-Ed-ak6NoX_4Aeg_-2021925430",
+          "xmlTag": "Cd",
+          "type": "ExternalFinancialInstitutionIdentification1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_QALkMtp-Ed-ak6NoX_4Aeg_-2021925152",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "GenericFinancialIdentification1": {
+      "name": "GenericFinancialIdentification1",
+      "isoId": "_QALkM9p-Ed-ak6NoX_4Aeg_-2141717394",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_QALkNNp-Ed-ak6NoX_4Aeg_-2141717392",
+          "xmlTag": "Id",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SchemeName",
+          "isoId": "_QALkNdp-Ed-ak6NoX_4Aeg_-2141717054",
+          "xmlTag": "SchmeNm",
+          "type": "FinancialIdentificationSchemeName1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "isoId": "_QALkNtp-Ed-ak6NoX_4Aeg_-2141717116",
+          "xmlTag": "Issr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "FinancialInstitutionIdentification19": {
+      "name": "FinancialInstitutionIdentification19",
+      "isoId": "_N5WqoW5OEeiU9cctagi5ow",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "BICFI",
+          "isoId": "_ODyZAW5OEeiU9cctagi5ow",
+          "xmlTag": "BICFI",
+          "type": "BICFIDec2014Identifier",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ClearingSystemMemberIdentification",
+          "isoId": "_ODyZA25OEeiU9cctagi5ow",
+          "xmlTag": "ClrSysMmbId",
+          "type": "ClearingSystemMemberIdentification2",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "LEI",
+          "isoId": "_jnptgK9REeiTd4HhN4n9hw",
+          "xmlTag": "LEI",
+          "type": "LEIIdentifier",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Other",
+          "isoId": "_ODyZBW5OEeiU9cctagi5ow",
+          "xmlTag": "Othr",
+          "type": "GenericFinancialIdentification1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "Party56Choice": {
+      "name": "Party56Choice",
+      "isoId": "_IV3yUTFKEe651u5xu3f5iw",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "OrganisationIdentification",
+          "isoId": "_IYlvITFKEe651u5xu3f5iw",
+          "xmlTag": "OrgId",
+          "type": "OrganisationIdentification39",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "FinancialInstitutionIdentification",
+          "isoId": "_IYlvIzFKEe651u5xu3f5iw",
+          "xmlTag": "FIId",
+          "type": "FinancialInstitutionIdentification19",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "NamePrefix2Code": {
+      "name": "NamePrefix2Code",
+      "isoId": "_ODhzcHRmEeiH1ZOt2UD8vQ",
+      "kind": "code",
+      "options": [
+        {
+          "value": "DOCT",
+          "name": "Doctor",
+          "isoId": "_SmTbEXRmEeiH1ZOt2UD8vQ"
+        },
+        {
+          "value": "MADM",
+          "name": "Madam",
+          "isoId": "_SseUgXRmEeiH1ZOt2UD8vQ"
+        },
+        {
+          "value": "MISS",
+          "name": "Miss",
+          "isoId": "_SzqhoXRmEeiH1ZOt2UD8vQ"
+        },
+        {
+          "value": "MIST",
+          "name": "Mister",
+          "isoId": "_S6p6cXRmEeiH1ZOt2UD8vQ"
+        },
+        {
+          "value": "MIKS",
+          "name": "GenderNeutral",
+          "isoId": "_TCckgXRmEeiH1ZOt2UD8vQ"
+        }
+      ]
+    },
+    "PhoneNumber": {
+      "name": "PhoneNumber",
+      "kind": "text",
+      "isoId": "_YXvFB9p-Ed-ak6NoX_4Aeg_-1045927120",
+      "pattern": "\\+[0-9]{1,3}-[0-9()+\\-]{1,30}"
+    },
+    "Max2048Text": {
+      "name": "Max2048Text",
+      "kind": "text",
+      "isoId": "_YYxm1dp-Ed-ak6NoX_4Aeg_-227354214",
+      "minLength": 1,
+      "maxLength": 2048
+    },
+    "Max4Text": {
+      "name": "Max4Text",
+      "kind": "text",
+      "isoId": "_YY7X0tp-Ed-ak6NoX_4Aeg_311802837",
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "Max128Text": {
+      "name": "Max128Text",
+      "kind": "text",
+      "isoId": "_YXvFCNp-Ed-ak6NoX_4Aeg_-659703411",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "OtherContact1": {
+      "name": "OtherContact1",
+      "isoId": "_6SokSZqlEeGSON8vddiWzQ_1969673172",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "ChannelType",
+          "isoId": "_6SokSpqlEeGSON8vddiWzQ_444512870",
+          "xmlTag": "ChanlTp",
+          "type": "Max4Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Identification",
+          "isoId": "_6SokS5qlEeGSON8vddiWzQ_938910947",
+          "xmlTag": "Id",
+          "type": "Max128Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "PreferredContactMethod2Code": {
+      "name": "PreferredContactMethod2Code",
+      "isoId": "_OQ1V0DIDEe6mzvR3CHiUhA",
+      "kind": "code",
+      "options": [
+        {
+          "value": "MAIL",
+          "name": "Email",
+          "isoId": "_Ri2gMTIDEe6mzvR3CHiUhA"
+        },
+        {
+          "value": "FAXX",
+          "name": "Fax",
+          "isoId": "_RoX5YTIDEe6mzvR3CHiUhA"
+        },
+        {
+          "value": "LETT",
+          "name": "Letter",
+          "isoId": "_RtfC4TIDEe6mzvR3CHiUhA"
+        },
+        {
+          "value": "CELL",
+          "name": "MobileOrCellPhone",
+          "isoId": "_RyuIMTIDEe6mzvR3CHiUhA"
+        },
+        {
+          "value": "ONLI",
+          "name": "Online",
+          "isoId": "_R3wZMTIDEe6mzvR3CHiUhA"
+        },
+        {
+          "value": "PHON",
+          "name": "Phone",
+          "isoId": "_R8yqMTIDEe6mzvR3CHiUhA"
+        }
+      ]
+    },
+    "Contact13": {
+      "name": "Contact13",
+      "isoId": "_YinuxzE_Ee62xuUQ2zyZww",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "NamePrefix",
+          "isoId": "_YlNIsjE_Ee62xuUQ2zyZww",
+          "xmlTag": "NmPrfx",
+          "type": "NamePrefix2Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Name",
+          "isoId": "_YlNItDE_Ee62xuUQ2zyZww",
+          "xmlTag": "Nm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PhoneNumber",
+          "isoId": "_YlNItjE_Ee62xuUQ2zyZww",
+          "xmlTag": "PhneNb",
+          "type": "PhoneNumber",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "MobileNumber",
+          "isoId": "_YlNIuDE_Ee62xuUQ2zyZww",
+          "xmlTag": "MobNb",
+          "type": "PhoneNumber",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "FaxNumber",
+          "isoId": "_YlNIujE_Ee62xuUQ2zyZww",
+          "xmlTag": "FaxNb",
+          "type": "PhoneNumber",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "URLAddress",
+          "isoId": "_tZUA0THvEe6BxvG014AZzQ",
+          "xmlTag": "URLAdr",
+          "type": "Max2048Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "EmailAddress",
+          "isoId": "_YlNIvDE_Ee62xuUQ2zyZww",
+          "xmlTag": "EmailAdr",
+          "type": "Max256Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "EmailPurpose",
+          "isoId": "_YlNIvjE_Ee62xuUQ2zyZww",
+          "xmlTag": "EmailPurp",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "JobTitle",
+          "isoId": "_YlNIwDE_Ee62xuUQ2zyZww",
+          "xmlTag": "JobTitl",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Responsibility",
+          "isoId": "_YlNIwjE_Ee62xuUQ2zyZww",
+          "xmlTag": "Rspnsblty",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Department",
+          "isoId": "_YlNIxDE_Ee62xuUQ2zyZww",
+          "xmlTag": "Dept",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Other",
+          "isoId": "_YlNIxjE_Ee62xuUQ2zyZww",
+          "xmlTag": "Othr",
+          "type": "OtherContact1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "PreferredMethod",
+          "isoId": "_YlNIyDE_Ee62xuUQ2zyZww",
+          "xmlTag": "PrefrdMtd",
+          "type": "PreferredContactMethod2Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "PartyIdentification273": {
+      "name": "PartyIdentification273",
+      "isoId": "_xbbHTTEyEe6g-ffJsqGiSA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Name",
+          "isoId": "_xdotwTEyEe6g-ffJsqGiSA",
+          "xmlTag": "Nm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "LegalName",
+          "isoId": "_xdotwzEyEe6g-ffJsqGiSA",
+          "xmlTag": "LglNm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PostalAddress",
+          "isoId": "_xdotxTEyEe6g-ffJsqGiSA",
+          "xmlTag": "PstlAdr",
+          "type": "PostalAddress27",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Identification",
+          "isoId": "_xdotxzEyEe6g-ffJsqGiSA",
+          "xmlTag": "Id",
+          "type": "Party56Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CountryOfResidence",
+          "isoId": "_xdotyTEyEe6g-ffJsqGiSA",
+          "xmlTag": "CtryOfRes",
+          "type": "CountryCode",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ContactDetails",
+          "isoId": "_xdotyzEyEe6g-ffJsqGiSA",
+          "xmlTag": "CtctDtls",
+          "type": "Contact13",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "ISODate": {
+      "name": "ISODate",
+      "kind": "date",
+      "isoId": "_YXSZFtp-Ed-ak6NoX_4Aeg_2032498111"
+    },
+    "DatePeriod1": {
+      "name": "DatePeriod1",
+      "isoId": "_6T03GpqlEeGSON8vddiWzQ_1589848859",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "FromDate",
+          "isoId": "_6T03G5qlEeGSON8vddiWzQ_2053251952",
+          "xmlTag": "FrDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ToDate",
+          "isoId": "_6T03HJqlEeGSON8vddiWzQ_-1787628075",
+          "xmlTag": "ToDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ISODateTime": {
+      "name": "ISODateTime",
+      "kind": "datetime",
+      "isoId": "_YW1tKtp-Ed-ak6NoX_4Aeg_-1624336183"
+    },
+    "BillingStatementStatus1Code": {
+      "name": "BillingStatementStatus1Code",
+      "isoId": "_6VUE0pqlEeGSON8vddiWzQ_720168746",
+      "kind": "code",
+      "options": [
+        {
+          "value": "ORGN",
+          "name": "Original",
+          "isoId": "_6VUE05qlEeGSON8vddiWzQ_1712373044"
+        },
+        {
+          "value": "RPLC",
+          "name": "Replace",
+          "isoId": "_6VUE1JqlEeGSON8vddiWzQ_1116652808"
+        },
+        {
+          "value": "TEST",
+          "name": "Test",
+          "isoId": "_6VUE1ZqlEeGSON8vddiWzQ_1105554031"
+        }
+      ]
+    },
+    "AccountLevel2Code": {
+      "name": "AccountLevel2Code",
+      "isoId": "_6Uas9pqlEeGSON8vddiWzQ_-1016370047",
+      "kind": "code",
+      "options": [
+        {
+          "value": "INTM",
+          "name": "Intermediate",
+          "isoId": "_6Uas95qlEeGSON8vddiWzQ_-77486222"
+        },
+        {
+          "value": "SMRY",
+          "name": "Summary",
+          "isoId": "_6Ukd8JqlEeGSON8vddiWzQ_1446759063"
+        },
+        {
+          "value": "DETL",
+          "name": "Detail",
+          "isoId": "_6Ukd8ZqlEeGSON8vddiWzQ_-2087443080"
+        }
+      ]
+    },
+    "IBAN2007Identifier": {
+      "name": "IBAN2007Identifier",
+      "kind": "text",
+      "isoId": "_YYxm0dp-Ed-ak6NoX_4Aeg_1226525818",
+      "pattern": "[A-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}"
+    },
+    "Max34Text": {
+      "name": "Max34Text",
+      "kind": "text",
+      "isoId": "_YYn10tp-Ed-ak6NoX_4Aeg_1066097661",
+      "minLength": 1,
+      "maxLength": 34
+    },
+    "ExternalAccountIdentification1Code": {
+      "name": "ExternalAccountIdentification1Code",
+      "isoId": "_amL5ktp-Ed-ak6NoX_4Aeg_-2079691647",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "AccountSchemeName1Choice": {
+      "name": "AccountSchemeName1Choice",
+      "isoId": "_P_4pQNp-Ed-ak6NoX_4Aeg_-240227306",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_P_4pQdp-Ed-ak6NoX_4Aeg_191053818",
+          "xmlTag": "Cd",
+          "type": "ExternalAccountIdentification1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_P_4pQtp-Ed-ak6NoX_4Aeg_194748605",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "GenericAccountIdentification1": {
+      "name": "GenericAccountIdentification1",
+      "isoId": "_P_u4Rdp-Ed-ak6NoX_4Aeg_2078050796",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_P_u4Rtp-Ed-ak6NoX_4Aeg_2078970799",
+          "xmlTag": "Id",
+          "type": "Max34Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SchemeName",
+          "isoId": "_P_u4R9p-Ed-ak6NoX_4Aeg_-162653838",
+          "xmlTag": "SchmeNm",
+          "type": "AccountSchemeName1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "isoId": "_P_u4SNp-Ed-ak6NoX_4Aeg_-2119026269",
+          "xmlTag": "Issr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "AccountIdentification4Choice": {
+      "name": "AccountIdentification4Choice",
+      "isoId": "_Pdwzodp-Ed-ak6NoX_4Aeg_-1833658219",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "IBAN",
+          "isoId": "_Pdwzotp-Ed-ak6NoX_4Aeg_-1833658189",
+          "xmlTag": "IBAN",
+          "type": "IBAN2007Identifier",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Other",
+          "isoId": "_Pdwzo9p-Ed-ak6NoX_4Aeg_-1833657786",
+          "xmlTag": "Othr",
+          "type": "GenericAccountIdentification1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ExternalCashAccountType1Code": {
+      "name": "ExternalCashAccountType1Code",
+      "isoId": "_t7bogVkyEeGeoaLUQk__nA_-2034002224",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "CashAccountType2Choice": {
+      "name": "CashAccountType2Choice",
+      "isoId": "_sb6WgFkyEeGeoaLUQk__nA_1768299331",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_sb6WgVkyEeGeoaLUQk__nA_-1937269286",
+          "xmlTag": "Cd",
+          "type": "ExternalCashAccountType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_scEHgFkyEeGeoaLUQk__nA_1436723705",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ActiveOrHistoricCurrencyCode": {
+      "name": "ActiveOrHistoricCurrencyCode",
+      "isoId": "_bqIp6tp-Ed-ak6NoX_4Aeg_1823330336",
+      "kind": "code",
+      "pattern": "[A-Z]{3,3}"
+    },
+    "ExternalProxyAccountType1Code": {
+      "name": "ExternalProxyAccountType1Code",
+      "isoId": "_ioPgonh3EeidzqjNEfehPg",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "ProxyAccountType1Choice": {
+      "name": "ProxyAccountType1Choice",
+      "isoId": "_dyock3h3EeidzqjNEfehPg",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_dyoclXh3EeidzqjNEfehPg",
+          "xmlTag": "Cd",
+          "type": "ExternalProxyAccountType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_dyoclHh3EeidzqjNEfehPg",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ProxyAccountIdentification1": {
+      "name": "ProxyAccountIdentification1",
+      "isoId": "_luR59Xh2EeidzqjNEfehPg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Type",
+          "isoId": "_luR59nh2EeidzqjNEfehPg",
+          "xmlTag": "Tp",
+          "type": "ProxyAccountType1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Identification",
+          "isoId": "_luR593h2EeidzqjNEfehPg",
+          "xmlTag": "Id",
+          "type": "Max2048Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "CashAccount40": {
+      "name": "CashAccount40",
+      "isoId": "_avXPcdcZEeqRFcf2R4bPBw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_awzZ49cZEeqRFcf2R4bPBw",
+          "xmlTag": "Id",
+          "type": "AccountIdentification4Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Type",
+          "isoId": "_awzZ5dcZEeqRFcf2R4bPBw",
+          "xmlTag": "Tp",
+          "type": "CashAccountType2Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Currency",
+          "isoId": "_awzZ59cZEeqRFcf2R4bPBw",
+          "xmlTag": "Ccy",
+          "type": "ActiveOrHistoricCurrencyCode",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Name",
+          "isoId": "_awzZ6dcZEeqRFcf2R4bPBw",
+          "xmlTag": "Nm",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Proxy",
+          "isoId": "_awzZ69cZEeqRFcf2R4bPBw",
+          "xmlTag": "Prxy",
+          "type": "ProxyAccountIdentification1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "IdentificationOrProxyPresenceRule",
+          "isoId": "_gkOC0BksEeuOlLLYYxcZSA",
+          "text": "Identification must be present or Proxy must be present. Both may be present.",
+          "expression": {
+            "mustBe": {
+              "connector": "OR",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/Identification"
+                },
+                {
+                  "op": "Presence",
+                  "path": "/Proxy"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "IdentificationAndProxyGuideline",
+          "isoId": "_LS3voBktEeuOlLLYYxcZSA",
+          "text": "If the account identification is not defined through a conventional identification such as an email address or a mobile number, then the proxy element should be used for the identification of the account."
+        }
+      ]
+    },
+    "FinancialInstitutionIdentification23": {
+      "name": "FinancialInstitutionIdentification23",
+      "isoId": "_v2tzSTEyEe6g-ffJsqGiSA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "BICFI",
+          "isoId": "_v5D8oTEyEe6g-ffJsqGiSA",
+          "xmlTag": "BICFI",
+          "type": "BICFIDec2014Identifier",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ClearingSystemMemberIdentification",
+          "isoId": "_v5D8ozEyEe6g-ffJsqGiSA",
+          "xmlTag": "ClrSysMmbId",
+          "type": "ClearingSystemMemberIdentification2",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "LEI",
+          "isoId": "_v5D8pTEyEe6g-ffJsqGiSA",
+          "xmlTag": "LEI",
+          "type": "LEIIdentifier",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Name",
+          "isoId": "_v5D8pzEyEe6g-ffJsqGiSA",
+          "xmlTag": "Nm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PostalAddress",
+          "isoId": "_v5D8qTEyEe6g-ffJsqGiSA",
+          "xmlTag": "PstlAdr",
+          "type": "PostalAddress27",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Other",
+          "isoId": "_v5D8qzEyEe6g-ffJsqGiSA",
+          "xmlTag": "Othr",
+          "type": "GenericFinancialIdentification1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "BranchData5": {
+      "name": "BranchData5",
+      "isoId": "_v0bUQTEyEe6g-ffJsqGiSA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_v2tzQTEyEe6g-ffJsqGiSA",
+          "xmlTag": "Id",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "LEI",
+          "isoId": "_v2tzQzEyEe6g-ffJsqGiSA",
+          "xmlTag": "LEI",
+          "type": "LEIIdentifier",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Name",
+          "isoId": "_v2tzRTEyEe6g-ffJsqGiSA",
+          "xmlTag": "Nm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PostalAddress",
+          "isoId": "_v2tzRzEyEe6g-ffJsqGiSA",
+          "xmlTag": "PstlAdr",
+          "type": "PostalAddress27",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "BranchAndFinancialInstitutionIdentification8": {
+      "name": "BranchAndFinancialInstitutionIdentification8",
+      "isoId": "_vxnQ0TEyEe6g-ffJsqGiSA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "FinancialInstitutionIdentification",
+          "isoId": "_v0atMTEyEe6g-ffJsqGiSA",
+          "xmlTag": "FinInstnId",
+          "type": "FinancialInstitutionIdentification23",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "BranchIdentification",
+          "isoId": "_v0atMzEyEe6g-ffJsqGiSA",
+          "xmlTag": "BrnchId",
+          "type": "BranchData5",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "AccountLevel1Code": {
+      "name": "AccountLevel1Code",
+      "isoId": "_6Uas85qlEeGSON8vddiWzQ_44836722",
+      "kind": "code",
+      "options": [
+        {
+          "value": "INTM",
+          "name": "Intermediate",
+          "isoId": "_6Uas9JqlEeGSON8vddiWzQ_1340728454"
+        },
+        {
+          "value": "SMRY",
+          "name": "Summary",
+          "isoId": "_6Uas9ZqlEeGSON8vddiWzQ_1794815723"
+        }
+      ]
+    },
+    "ParentCashAccount5": {
+      "name": "ParentCashAccount5",
+      "isoId": "_xiEh6zEyEe6g-ffJsqGiSA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Level",
+          "isoId": "_xkYO8TEyEe6g-ffJsqGiSA",
+          "xmlTag": "Lvl",
+          "type": "AccountLevel1Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Identification",
+          "isoId": "_xkYO8zEyEe6g-ffJsqGiSA",
+          "xmlTag": "Id",
+          "type": "CashAccount40",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Servicer",
+          "isoId": "_xkYO9TEyEe6g-ffJsqGiSA",
+          "xmlTag": "Svcr",
+          "type": "BranchAndFinancialInstitutionIdentification8",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "CompensationMethod1Code": {
+      "name": "CompensationMethod1Code",
+      "isoId": "_6Vm_x5qlEeGSON8vddiWzQ_2080901699",
+      "kind": "code",
+      "options": [
+        {
+          "value": "NOCP",
+          "name": "No",
+          "isoId": "_6Vm_yJqlEeGSON8vddiWzQ_-1993728072"
+        },
+        {
+          "value": "DBTD",
+          "name": "Debited",
+          "isoId": "_6VwwwJqlEeGSON8vddiWzQ_-1432359176"
+        },
+        {
+          "value": "INVD",
+          "name": "Invoiced",
+          "isoId": "_6VwwwZqlEeGSON8vddiWzQ_1164179586"
+        },
+        {
+          "value": "DDBT",
+          "name": "DelayedDebit",
+          "isoId": "_6VwwwpqlEeGSON8vddiWzQ_-174770726"
+        }
+      ]
+    },
+    "Max105Text": {
+      "name": "Max105Text",
+      "kind": "text",
+      "isoId": "_YXvFBdp-Ed-ak6NoX_4Aeg_-1994317052",
+      "minLength": 1,
+      "maxLength": 105
+    },
+    "BillingTaxCalculationMethod1Code": {
+      "name": "BillingTaxCalculationMethod1Code",
+      "isoId": "_6Vd10pqlEeGSON8vddiWzQ_-401381436",
+      "kind": "code",
+      "options": [
+        {
+          "value": "NTAX",
+          "name": "NoTaxes",
+          "isoId": "_6Vd105qlEeGSON8vddiWzQ_-1535157938"
+        },
+        {
+          "value": "MTDA",
+          "name": "MethodA",
+          "isoId": "_6Vd11JqlEeGSON8vddiWzQ_1775205103"
+        },
+        {
+          "value": "MTDB",
+          "name": "MethodB",
+          "isoId": "_6Vd11ZqlEeGSON8vddiWzQ_-1052613430"
+        },
+        {
+          "value": "MTDC",
+          "name": "MethodC",
+          "isoId": "_6Vd11pqlEeGSON8vddiWzQ_1967073441"
+        },
+        {
+          "value": "MTDD",
+          "name": "MethodD",
+          "isoId": "_6Vd115qlEeGSON8vddiWzQ_-2002776348"
+        },
+        {
+          "value": "UDFD",
+          "name": "Undefined",
+          "isoId": "_6Vd12JqlEeGSON8vddiWzQ_-535627585"
+        }
+      ]
+    },
+    "Max40Text": {
+      "name": "Max40Text",
+      "kind": "text",
+      "isoId": "_TQbTxwEcEeCQm6a_G2yO_w_900701410",
+      "minLength": 1,
+      "maxLength": 40
+    },
+    "ResidenceLocation1Choice": {
+      "name": "ResidenceLocation1Choice",
+      "isoId": "_6QsqkpqlEeGSON8vddiWzQ_1947299018",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Country",
+          "isoId": "_6Qsqk5qlEeGSON8vddiWzQ_-2009722376",
+          "xmlTag": "Ctry",
+          "type": "CountryCode",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Area",
+          "isoId": "_6QsqlJqlEeGSON8vddiWzQ_218234211",
+          "xmlTag": "Area",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "AccountTax1": {
+      "name": "AccountTax1",
+      "isoId": "_6TYLKJqlEeGSON8vddiWzQ_-1311079011",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "CalculationMethod",
+          "isoId": "_6TYLKZqlEeGSON8vddiWzQ_-1424918077",
+          "xmlTag": "ClctnMtd",
+          "type": "BillingTaxCalculationMethod1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Region",
+          "isoId": "_6TYLKpqlEeGSON8vddiWzQ_1872976866",
+          "xmlTag": "Rgn",
+          "type": "Max40Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "NonResidenceCountry",
+          "isoId": "_6TYLK5qlEeGSON8vddiWzQ_-765795978",
+          "xmlTag": "NonResCtry",
+          "type": "ResidenceLocation1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "CashAccountCharacteristics5": {
+      "name": "CashAccountCharacteristics5",
+      "isoId": "_xf3iYTEyEe6g-ffJsqGiSA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "AccountLevel",
+          "isoId": "_xiEh0TEyEe6g-ffJsqGiSA",
+          "xmlTag": "AcctLvl",
+          "type": "AccountLevel2Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CashAccount",
+          "isoId": "_xiEh0zEyEe6g-ffJsqGiSA",
+          "xmlTag": "CshAcct",
+          "type": "CashAccount40",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "AccountServicer",
+          "isoId": "_xiEh1TEyEe6g-ffJsqGiSA",
+          "xmlTag": "AcctSvcr",
+          "type": "BranchAndFinancialInstitutionIdentification8",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ParentAccount",
+          "isoId": "_xiEh1zEyEe6g-ffJsqGiSA",
+          "xmlTag": "PrntAcct",
+          "type": "ParentCashAccount5",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CompensationMethod",
+          "isoId": "_xiEh2TEyEe6g-ffJsqGiSA",
+          "xmlTag": "CompstnMtd",
+          "type": "CompensationMethod1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "DebitAccount",
+          "isoId": "_xiEh2zEyEe6g-ffJsqGiSA",
+          "xmlTag": "DbtAcct",
+          "type": "AccountIdentification4Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "DelayedDebitDate",
+          "isoId": "_xiEh3TEyEe6g-ffJsqGiSA",
+          "xmlTag": "DelydDbtDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SettlementAdvice",
+          "isoId": "_xiEh3zEyEe6g-ffJsqGiSA",
+          "xmlTag": "SttlmAdvc",
+          "type": "Max105Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "AccountBalanceCurrencyCode",
+          "isoId": "_xiEh4TEyEe6g-ffJsqGiSA",
+          "xmlTag": "AcctBalCcyCd",
+          "type": "ActiveOrHistoricCurrencyCode",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SettlementCurrencyCode",
+          "isoId": "_xiEh4zEyEe6g-ffJsqGiSA",
+          "xmlTag": "SttlmCcyCd",
+          "type": "ActiveOrHistoricCurrencyCode",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "HostCurrencyCode",
+          "isoId": "_xiEh5TEyEe6g-ffJsqGiSA",
+          "xmlTag": "HstCcyCd",
+          "type": "ActiveOrHistoricCurrencyCode",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Tax",
+          "isoId": "_xiEh5zEyEe6g-ffJsqGiSA",
+          "xmlTag": "Tax",
+          "type": "AccountTax1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "AccountServicerContact",
+          "isoId": "_xiEh6TEyEe6g-ffJsqGiSA",
+          "xmlTag": "AcctSvcrCtct",
+          "type": "Contact13",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ExternalBillingRateIdentification1Code": {
+      "name": "ExternalBillingRateIdentification1Code",
+      "isoId": "_6WzSlpqlEeGSON8vddiWzQ_1145255535",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "BillingRateIdentification1Choice": {
+      "name": "BillingRateIdentification1Choice",
+      "isoId": "_6Q10hpqlEeGSON8vddiWzQ_1451899054",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_6Q10h5qlEeGSON8vddiWzQ_1326961211",
+          "xmlTag": "Cd",
+          "type": "ExternalBillingRateIdentification1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_6Q_lgJqlEeGSON8vddiWzQ_-1814132724",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "PercentageRate": {
+      "name": "PercentageRate",
+      "kind": "number",
+      "isoId": "_YW1tK9p-Ed-ak6NoX_4Aeg_1604891692",
+      "totalDigits": 11,
+      "fractionDigits": 10
+    },
+    "Number": {
+      "name": "Number",
+      "kind": "number",
+      "isoId": "_YXbjBtp-Ed-ak6NoX_4Aeg_1560899033",
+      "totalDigits": 18,
+      "fractionDigits": 0
+    },
+    "BillingRate1": {
+      "name": "BillingRate1",
+      "isoId": "_6QGNppqlEeGSON8vddiWzQ_1919554496",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_6QP-oJqlEeGSON8vddiWzQ_-585660341",
+          "xmlTag": "Id",
+          "type": "BillingRateIdentification1Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Value",
+          "isoId": "_6QP-oZqlEeGSON8vddiWzQ_-1751808782",
+          "xmlTag": "Val",
+          "type": "PercentageRate",
+          "kind": "number",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "DaysInPeriod",
+          "isoId": "_6QP-opqlEeGSON8vddiWzQ_-1641402761",
+          "xmlTag": "DaysInPrd",
+          "type": "Number",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "DaysInYear",
+          "isoId": "_6QP-o5qlEeGSON8vddiWzQ_-1276728980",
+          "xmlTag": "DaysInYr",
+          "type": "Number",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "BaseOneRate": {
+      "name": "BaseOneRate",
+      "kind": "number",
+      "isoId": "_YXbjAdp-Ed-ak6NoX_4Aeg_1236114363",
+      "totalDigits": 11,
+      "fractionDigits": 10
+    },
+    "CurrencyExchange6": {
+      "name": "CurrencyExchange6",
+      "isoId": "_6SCHWZqlEeGSON8vddiWzQ_1288197096",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "SourceCurrency",
+          "isoId": "_6SCHWpqlEeGSON8vddiWzQ_1751600189",
+          "xmlTag": "SrcCcy",
+          "type": "ActiveOrHistoricCurrencyCode",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "TargetCurrency",
+          "isoId": "_6SCHW5qlEeGSON8vddiWzQ_-1782601954",
+          "xmlTag": "TrgtCcy",
+          "type": "ActiveOrHistoricCurrencyCode",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ExchangeRate",
+          "isoId": "_6SCHXJqlEeGSON8vddiWzQ_491309707",
+          "xmlTag": "XchgRate",
+          "type": "BaseOneRate",
+          "kind": "number",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Description",
+          "isoId": "_6SL4UJqlEeGSON8vddiWzQ_1542442779",
+          "xmlTag": "Desc",
+          "type": "Max40Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "UnitCurrency",
+          "isoId": "_6SL4UZqlEeGSON8vddiWzQ_1019397656",
+          "xmlTag": "UnitCcy",
+          "type": "ActiveOrHistoricCurrencyCode",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Comments",
+          "isoId": "_6SL4UpqlEeGSON8vddiWzQ_-301426210",
+          "xmlTag": "Cmnts",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "QuotationDate",
+          "isoId": "_6SL4U5qlEeGSON8vddiWzQ_-813958820",
+          "xmlTag": "QtnDt",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "ExternalBillingBalanceType1Code": {
+      "name": "ExternalBillingBalanceType1Code",
+      "isoId": "_6W9DkJqlEeGSON8vddiWzQ_367593430",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "BillingBalanceType1Choice": {
+      "name": "BillingBalanceType1Choice",
+      "isoId": "_6Q_lhJqlEeGSON8vddiWzQ_-1443313206",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_6Q_lhZqlEeGSON8vddiWzQ_-1378614668",
+          "xmlTag": "Cd",
+          "type": "ExternalBillingBalanceType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_6Q_lhpqlEeGSON8vddiWzQ_1258331398",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ActiveOrHistoricCurrencyAndAmount": {
+      "name": "ActiveOrHistoricCurrencyAndAmount",
+      "isoId": "_YYB_9tp-Ed-ak6NoX_4Aeg_-1587763373",
+      "kind": "amount",
+      "pattern": "[A-Z]{3,3}",
+      "totalDigits": 18,
+      "fractionDigits": 5,
+      "minInclusive": 0
+    },
+    "PlusOrMinusIndicator": {
+      "name": "PlusOrMinusIndicator",
+      "kind": "boolean",
+      "isoId": "_YXvFA9p-Ed-ak6NoX_4Aeg_143431681"
+    },
+    "AmountAndDirection34": {
+      "name": "AmountAndDirection34",
+      "isoId": "_6SezSZqlEeGSON8vddiWzQ_1777176612",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Amount",
+          "isoId": "_6SezSpqlEeGSON8vddiWzQ_1620404567",
+          "xmlTag": "Amt",
+          "type": "ActiveOrHistoricCurrencyAndAmount",
+          "kind": "amount",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Sign",
+          "isoId": "_6SezS5qlEeGSON8vddiWzQ_548399508",
+          "xmlTag": "Sgn",
+          "type": "PlusOrMinusIndicator",
+          "kind": "boolean",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "BillingCurrencyType1Code": {
+      "name": "BillingCurrencyType1Code",
+      "isoId": "_6WXNs5qlEeGSON8vddiWzQ_-124984192",
+      "kind": "code",
+      "options": [
+        {
+          "value": "ACCT",
+          "name": "Account",
+          "isoId": "_6WXNtJqlEeGSON8vddiWzQ_42035703"
+        },
+        {
+          "value": "STLM",
+          "name": "Settlement",
+          "isoId": "_6WXNtZqlEeGSON8vddiWzQ_-2111377502"
+        },
+        {
+          "value": "PRCG",
+          "name": "Pricing",
+          "isoId": "_6WXNtpqlEeGSON8vddiWzQ_-644228739"
+        }
+      ]
+    },
+    "BillingBalance1": {
+      "name": "BillingBalance1",
+      "isoId": "_6SL4XZqlEeGSON8vddiWzQ_313331951",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Type",
+          "isoId": "_6SL4XpqlEeGSON8vddiWzQ_1633836895",
+          "xmlTag": "Tp",
+          "type": "BillingBalanceType1Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Value",
+          "isoId": "_6SVpUJqlEeGSON8vddiWzQ_-315097006",
+          "xmlTag": "Val",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CurrencyType",
+          "isoId": "_6SVpUZqlEeGSON8vddiWzQ_69385719",
+          "xmlTag": "CcyTp",
+          "type": "BillingCurrencyType1Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "ExternalBillingCompensationType1Code": {
+      "name": "ExternalBillingCompensationType1Code",
+      "isoId": "_6WzSl5qlEeGSON8vddiWzQ_882310239",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "BillingCompensationType1Choice": {
+      "name": "BillingCompensationType1Choice",
+      "isoId": "_6Q_lgZqlEeGSON8vddiWzQ_2012916180",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_6Q_lgpqlEeGSON8vddiWzQ_-1941802913",
+          "xmlTag": "Cd",
+          "type": "ExternalBillingCompensationType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_6Q_lg5qlEeGSON8vddiWzQ_1364627181",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "BillingCurrencyType2Code": {
+      "name": "BillingCurrencyType2Code",
+      "isoId": "_6WzSkZqlEeGSON8vddiWzQ_-1596461946",
+      "kind": "code",
+      "options": [
+        {
+          "value": "ACCT",
+          "name": "Account",
+          "isoId": "_6WzSkpqlEeGSON8vddiWzQ_-1127654531"
+        },
+        {
+          "value": "STLM",
+          "name": "Settlement",
+          "isoId": "_6WzSk5qlEeGSON8vddiWzQ_-541707505"
+        },
+        {
+          "value": "PRCG",
+          "name": "Pricing",
+          "isoId": "_6WzSlJqlEeGSON8vddiWzQ_-1424940792"
+        },
+        {
+          "value": "HOST",
+          "name": "Host",
+          "isoId": "_6WzSlZqlEeGSON8vddiWzQ_-1920390448"
+        }
+      ]
+    },
+    "BillingCompensation1": {
+      "name": "BillingCompensation1",
+      "isoId": "_6PzSsJqlEeGSON8vddiWzQ_-1213048629",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Type",
+          "isoId": "_6PzSsZqlEeGSON8vddiWzQ_-1034929957",
+          "xmlTag": "Tp",
+          "type": "BillingCompensationType1Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Value",
+          "isoId": "_6PzSspqlEeGSON8vddiWzQ_2084846314",
+          "xmlTag": "Val",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CurrencyType",
+          "isoId": "_6PzSs5qlEeGSON8vddiWzQ_-564853547",
+          "xmlTag": "CcyTp",
+          "type": "BillingCurrencyType2Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "BillingSubServiceQualifier1Code": {
+      "name": "BillingSubServiceQualifier1Code",
+      "isoId": "_6WgXpJqlEeGSON8vddiWzQ_-2011541661",
+      "kind": "code",
+      "options": [
+        {
+          "value": "LBOX",
+          "name": "Lockbox",
+          "isoId": "_6WgXpZqlEeGSON8vddiWzQ_-1508305482"
+        },
+        {
+          "value": "STOR",
+          "name": "Store",
+          "isoId": "_6WgXppqlEeGSON8vddiWzQ_-430285144"
+        },
+        {
+          "value": "BILA",
+          "name": "BilaterallyAgreed",
+          "isoId": "_6WgXp5qlEeGSON8vddiWzQ_1036863619"
+        },
+        {
+          "value": "SEQN",
+          "name": "SequenceNumber",
+          "isoId": "_6WgXqJqlEeGSON8vddiWzQ_620847928"
+        },
+        {
+          "value": "MACT",
+          "name": "MemberAccount",
+          "isoId": "_6WqIoJqlEeGSON8vddiWzQ_-1223021061"
+        }
+      ]
+    },
+    "BillingSubServiceQualifier1Choice": {
+      "name": "BillingSubServiceQualifier1Choice",
+      "isoId": "_6PphwJqlEeGSON8vddiWzQ_1042088657",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_6PphwZqlEeGSON8vddiWzQ_-1237515416",
+          "xmlTag": "Cd",
+          "type": "BillingSubServiceQualifier1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_6PphwpqlEeGSON8vddiWzQ_-1045448850",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "BillingSubServiceIdentification1": {
+      "name": "BillingSubServiceIdentification1",
+      "isoId": "_6Oww65qlEeGSON8vddiWzQ_-1562075356",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Issuer",
+          "isoId": "_6Oww7JqlEeGSON8vddiWzQ_-1383956684",
+          "xmlTag": "Issr",
+          "type": "BillingSubServiceQualifier1Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Identification",
+          "isoId": "_6Oww7ZqlEeGSON8vddiWzQ_83192079",
+          "xmlTag": "Id",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Max6Text": {
+      "name": "Max6Text",
+      "kind": "text",
+      "isoId": "_YYxm2dp-Ed-ak6NoX_4Aeg_-1496274846",
+      "minLength": 1,
+      "maxLength": 6
+    },
+    "Max8Text": {
+      "name": "Max8Text",
+      "kind": "text",
+      "isoId": "_YYU65dp-Ed-ak6NoX_4Aeg_1066600236",
+      "minLength": 1,
+      "maxLength": 8
+    },
+    "BillingServiceCommonIdentification1": {
+      "name": "BillingServiceCommonIdentification1",
+      "isoId": "_6PNc1ZqlEeGSON8vddiWzQ_-1466437811",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Issuer",
+          "isoId": "_6PNc1pqlEeGSON8vddiWzQ_-1580276877",
+          "xmlTag": "Issr",
+          "type": "Max6Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Identification",
+          "isoId": "_6PNc15qlEeGSON8vddiWzQ_1717618066",
+          "xmlTag": "Id",
+          "type": "Max8Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ExternalBankTransactionDomain1Code": {
+      "name": "ExternalBankTransactionDomain1Code",
+      "isoId": "_amL5lNp-Ed-ak6NoX_4Aeg_450092509",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "ExternalBankTransactionFamily1Code": {
+      "name": "ExternalBankTransactionFamily1Code",
+      "isoId": "_amL5ltp-Ed-ak6NoX_4Aeg_482415289",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "ExternalBankTransactionSubFamily1Code": {
+      "name": "ExternalBankTransactionSubFamily1Code",
+      "isoId": "_amVqkNp-Ed-ak6NoX_4Aeg_512891906",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "BankTransactionCodeStructure6": {
+      "name": "BankTransactionCodeStructure6",
+      "isoId": "_TVRQu9p-Ed-ak6NoX_4Aeg_1515822708",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Code",
+          "isoId": "_TVbBsNp-Ed-ak6NoX_4Aeg_1515822740",
+          "xmlTag": "Cd",
+          "type": "ExternalBankTransactionFamily1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SubFamilyCode",
+          "isoId": "_TVbBsdp-Ed-ak6NoX_4Aeg_1515822800",
+          "xmlTag": "SubFmlyCd",
+          "type": "ExternalBankTransactionSubFamily1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "BankTransactionCodeStructure5": {
+      "name": "BankTransactionCodeStructure5",
+      "isoId": "_TVbBstp-Ed-ak6NoX_4Aeg_-1809965694",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Code",
+          "isoId": "_TVbBs9p-Ed-ak6NoX_4Aeg_-1809965664",
+          "xmlTag": "Cd",
+          "type": "ExternalBankTransactionDomain1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Family",
+          "isoId": "_TVbBtNp-Ed-ak6NoX_4Aeg_-1809965570",
+          "xmlTag": "Fmly",
+          "type": "BankTransactionCodeStructure6",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ProprietaryBankTransactionCodeStructure1": {
+      "name": "ProprietaryBankTransactionCodeStructure1",
+      "isoId": "_TVRQtdp-Ed-ak6NoX_4Aeg_1519549154",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Code",
+          "isoId": "_TVRQttp-Ed-ak6NoX_4Aeg_1519549163",
+          "xmlTag": "Cd",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "isoId": "_TVRQt9p-Ed-ak6NoX_4Aeg_2005322670",
+          "xmlTag": "Issr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "BankTransactionCodeStructure4": {
+      "name": "BankTransactionCodeStructure4",
+      "isoId": "_TVbBtdp-Ed-ak6NoX_4Aeg_-549688189",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Domain",
+          "isoId": "_TVbBttp-Ed-ak6NoX_4Aeg_-549687856",
+          "xmlTag": "Domn",
+          "type": "BankTransactionCodeStructure5",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_TVbBt9p-Ed-ak6NoX_4Aeg_-549687485",
+          "xmlTag": "Prtry",
+          "type": "ProprietaryBankTransactionCodeStructure1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "DomainOrProprietaryRule",
+          "isoId": "_TVbBuNp-Ed-ak6NoX_4Aeg_-549687332",
+          "text": "Either Proprietary or Domain or both must be present.",
+          "expression": {
+            "mustBe": {
+              "connector": "OR",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/Domain"
+                },
+                {
+                  "op": "Presence",
+                  "path": "/Proprietary"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "FamilyAndSubFamilyRule",
+          "isoId": "_TVkLodp-Ed-ak6NoX_4Aeg_-549687302",
+          "text": "If a specific (non-generic) Family code is not present, then a specific (non-generic) SubFamily code is not allowed."
+        }
+      ]
+    },
+    "Max12Text": {
+      "name": "Max12Text",
+      "kind": "text",
+      "isoId": "_6WqIp5qlEeGSON8vddiWzQ_-1005771314",
+      "minLength": 1,
+      "maxLength": 12
+    },
+    "BillingServiceIdentification3": {
+      "name": "BillingServiceIdentification3",
+      "isoId": "_bBKr1Tq2EeWZFYSPlduMhw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_bICI0Tq2EeWZFYSPlduMhw",
+          "xmlTag": "Id",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SubService",
+          "isoId": "_bICI0zq2EeWZFYSPlduMhw",
+          "xmlTag": "SubSvc",
+          "type": "BillingSubServiceIdentification1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Description",
+          "isoId": "_bICI1Tq2EeWZFYSPlduMhw",
+          "xmlTag": "Desc",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CommonCode",
+          "isoId": "_bICI1zq2EeWZFYSPlduMhw",
+          "xmlTag": "CmonCd",
+          "type": "BillingServiceCommonIdentification1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "BankTransactionCode",
+          "isoId": "_if01wTq2EeWZFYSPlduMhw",
+          "xmlTag": "BkTxCd",
+          "type": "BankTransactionCodeStructure4",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ServiceType",
+          "isoId": "_bICI2Tq2EeWZFYSPlduMhw",
+          "xmlTag": "SvcTp",
+          "type": "Max12Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "DecimalNumber": {
+      "name": "DecimalNumber",
+      "kind": "number",
+      "isoId": "_YXlUA9p-Ed-ak6NoX_4Aeg_1283031972",
+      "totalDigits": 18,
+      "fractionDigits": 17
+    },
+    "BillingServiceParameters3": {
+      "name": "BillingServiceParameters3",
+      "isoId": "_a5J_YTq2EeWZFYSPlduMhw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "BankService",
+          "isoId": "_bBKr0Tq2EeWZFYSPlduMhw",
+          "xmlTag": "BkSvc",
+          "type": "BillingServiceIdentification3",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Volume",
+          "isoId": "_bBKr0zq2EeWZFYSPlduMhw",
+          "xmlTag": "Vol",
+          "type": "DecimalNumber",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "BillingChargeMethod1Code": {
+      "name": "BillingChargeMethod1Code",
+      "isoId": "_6Ukd9pqlEeGSON8vddiWzQ_1265216021",
+      "kind": "code",
+      "options": [
+        {
+          "value": "UPRC",
+          "name": "UnitPriced",
+          "isoId": "_6Ukd95qlEeGSON8vddiWzQ_-840350178"
+        },
+        {
+          "value": "STAM",
+          "name": "StampDuty",
+          "isoId": "_6Ukd-JqlEeGSON8vddiWzQ_1610748129"
+        },
+        {
+          "value": "BCHG",
+          "name": "BaseCharge",
+          "isoId": "_6UuO8JqlEeGSON8vddiWzQ_-1217070404"
+        },
+        {
+          "value": "DPRC",
+          "name": "DiscountPrice",
+          "isoId": "_6UuO8ZqlEeGSON8vddiWzQ_2064835398"
+        },
+        {
+          "value": "FCHG",
+          "name": "FlatCharge",
+          "isoId": "_6UuO8pqlEeGSON8vddiWzQ_2053736621"
+        },
+        {
+          "value": "LPRC",
+          "name": "ListPrice",
+          "isoId": "_6UuO85qlEeGSON8vddiWzQ_361556424"
+        },
+        {
+          "value": "MCHG",
+          "name": "MinimumCharge",
+          "isoId": "_6UuO9JqlEeGSON8vddiWzQ_1828705187"
+        },
+        {
+          "value": "MXRD",
+          "name": "MaximumReduction",
+          "isoId": "_6UuO9ZqlEeGSON8vddiWzQ_815643693"
+        },
+        {
+          "value": "TIR1",
+          "name": "Tier1",
+          "isoId": "_6UuO9pqlEeGSON8vddiWzQ_804544916"
+        },
+        {
+          "value": "TIR2",
+          "name": "Tier2",
+          "isoId": "_6UuO95qlEeGSON8vddiWzQ_-766551424"
+        },
+        {
+          "value": "TIR3",
+          "name": "Tier3",
+          "isoId": "_6UuO-JqlEeGSON8vddiWzQ_1601332259"
+        },
+        {
+          "value": "TIR4",
+          "name": "Tier4",
+          "isoId": "_6U3Y4JqlEeGSON8vddiWzQ_337586552"
+        },
+        {
+          "value": "TIR5",
+          "name": "Tier5",
+          "isoId": "_6U3Y4ZqlEeGSON8vddiWzQ_446377247"
+        },
+        {
+          "value": "TIR6",
+          "name": "Tier6",
+          "isoId": "_6U3Y4pqlEeGSON8vddiWzQ_-1049352499"
+        },
+        {
+          "value": "TIR7",
+          "name": "Tier7",
+          "isoId": "_6U3Y45qlEeGSON8vddiWzQ_-654755907"
+        },
+        {
+          "value": "TIR8",
+          "name": "Tier8",
+          "isoId": "_6U3Y5JqlEeGSON8vddiWzQ_897527195"
+        },
+        {
+          "value": "TIR9",
+          "name": "Tier9",
+          "isoId": "_6U3Y5ZqlEeGSON8vddiWzQ_1233780089"
+        },
+        {
+          "value": "TPRC",
+          "name": "ThresholdPrice",
+          "isoId": "_6U3Y5pqlEeGSON8vddiWzQ_1855677988"
+        },
+        {
+          "value": "ZPRC",
+          "name": "ZonePrice",
+          "isoId": "_6U3Y55qlEeGSON8vddiWzQ_-972140545"
+        },
+        {
+          "value": "BBSE",
+          "name": "BalanceBased",
+          "isoId": "_6U3Y6JqlEeGSON8vddiWzQ_11808999"
+        }
+      ]
+    },
+    "Max20Text": {
+      "name": "Max20Text",
+      "kind": "text",
+      "isoId": "_6WzSkJqlEeGSON8vddiWzQ_-2085735640",
+      "minLength": 1,
+      "maxLength": 20
+    },
+    "BillingPrice1": {
+      "name": "BillingPrice1",
+      "isoId": "_6TrGHJqlEeGSON8vddiWzQ_-1572616191",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Currency",
+          "isoId": "_6T03EJqlEeGSON8vddiWzQ_-1686455257",
+          "xmlTag": "Ccy",
+          "type": "ActiveOrHistoricCurrencyCode",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "UnitPrice",
+          "isoId": "_6T03EZqlEeGSON8vddiWzQ_1611439686",
+          "xmlTag": "UnitPric",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Method",
+          "isoId": "_6T03EpqlEeGSON8vddiWzQ_1347426093",
+          "xmlTag": "Mtd",
+          "type": "BillingChargeMethod1Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Rule",
+          "isoId": "_6T03E5qlEeGSON8vddiWzQ_-937813392",
+          "xmlTag": "Rule",
+          "type": "Max20Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "ServicePaymentMethod1Code": {
+      "name": "ServicePaymentMethod1Code",
+      "isoId": "_6V6hxZqlEeGSON8vddiWzQ_1243106424",
+      "kind": "code",
+      "options": [
+        {
+          "value": "BCMP",
+          "name": "BalanceCompensable",
+          "isoId": "_6V6hxpqlEeGSON8vddiWzQ_1103448435"
+        },
+        {
+          "value": "FLAT",
+          "name": "HardCharge",
+          "isoId": "_6V6hx5qlEeGSON8vddiWzQ_-588731762"
+        },
+        {
+          "value": "PVCH",
+          "name": "PreviouslyCharged",
+          "isoId": "_6WDrsJqlEeGSON8vddiWzQ_878417001"
+        },
+        {
+          "value": "INVS",
+          "name": "InvoicedSeparately",
+          "isoId": "_6WDrsZqlEeGSON8vddiWzQ_-599830539"
+        },
+        {
+          "value": "WVED",
+          "name": "Waived",
+          "isoId": "_6WDrspqlEeGSON8vddiWzQ_21670166"
+        },
+        {
+          "value": "FREE",
+          "name": "Free",
+          "isoId": "_6WDrs5qlEeGSON8vddiWzQ_1488818929"
+        }
+      ]
+    },
+    "ServiceTaxDesignation1Code": {
+      "name": "ServiceTaxDesignation1Code",
+      "isoId": "_6WNcspqlEeGSON8vddiWzQ_908042461",
+      "kind": "code",
+      "options": [
+        {
+          "value": "XMPT",
+          "name": "Exempt",
+          "isoId": "_6WNcs5qlEeGSON8vddiWzQ_476426734"
+        },
+        {
+          "value": "ZERO",
+          "name": "ZeroRate",
+          "isoId": "_6WNctJqlEeGSON8vddiWzQ_-303620587"
+        },
+        {
+          "value": "TAXE",
+          "name": "Taxable",
+          "isoId": "_6WNctZqlEeGSON8vddiWzQ_-314719364"
+        }
+      ]
+    },
+    "Max10Text": {
+      "name": "Max10Text",
+      "kind": "text",
+      "isoId": "_YYxm1tp-Ed-ak6NoX_4Aeg_1315190790",
+      "minLength": 1,
+      "maxLength": 10
+    },
+    "TaxReason1": {
+      "name": "TaxReason1",
+      "isoId": "_6TrGE5qlEeGSON8vddiWzQ_2115552253",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Code",
+          "isoId": "_6TrGFJqlEeGSON8vddiWzQ_-393693755",
+          "xmlTag": "Cd",
+          "type": "Max10Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Explanation",
+          "isoId": "_6TrGFZqlEeGSON8vddiWzQ_887562025",
+          "xmlTag": "Expltn",
+          "type": "Max105Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ServiceTaxDesignation1": {
+      "name": "ServiceTaxDesignation1",
+      "isoId": "_6RJWjpqlEeGSON8vddiWzQ_-263337197",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Code",
+          "isoId": "_6RJWj5qlEeGSON8vddiWzQ_1442912136",
+          "xmlTag": "Cd",
+          "type": "ServiceTaxDesignation1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Region",
+          "isoId": "_6RJWkJqlEeGSON8vddiWzQ_115283382",
+          "xmlTag": "Rgn",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TaxReason",
+          "isoId": "_6RSgcJqlEeGSON8vddiWzQ_1740386990",
+          "xmlTag": "TaxRsn",
+          "type": "TaxReason1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ],
+      "rules": [
+        {
+          "name": "RegionPresenceRule",
+          "isoId": "_6RSgcZqlEeGSON8vddiWzQ_562610602",
+          "text": "If Region is present, then Code must be equal to ZeroRate or Taxable.",
+          "expression": {
+            "mustBe": {
+              "connector": "OR",
+              "rules": [
+                {
+                  "op": "EqualToValue",
+                  "path": "/Code",
+                  "value": "ZeroRate"
+                },
+                {
+                  "op": "EqualToValue",
+                  "path": "/Code",
+                  "value": "Taxable"
+                }
+              ]
+            },
+            "onCondition": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/Region"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "BillingServicesAmount1": {
+      "name": "BillingServicesAmount1",
+      "isoId": "_6QP-pJqlEeGSON8vddiWzQ_1984361507",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "HostAmount",
+          "isoId": "_6QP-pZqlEeGSON8vddiWzQ_-123622265",
+          "xmlTag": "HstAmt",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "PricingAmount",
+          "isoId": "_6QP-ppqlEeGSON8vddiWzQ_-1662410707",
+          "xmlTag": "PricgAmt",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "BillingServicesAmount2": {
+      "name": "BillingServicesAmount2",
+      "isoId": "_6QP-p5qlEeGSON8vddiWzQ_460369359",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "HostAmount",
+          "isoId": "_6QP-qJqlEeGSON8vddiWzQ_-1570575712",
+          "xmlTag": "HstAmt",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SettlementAmount",
+          "isoId": "_6QZvoJqlEeGSON8vddiWzQ_-536702994",
+          "xmlTag": "SttlmAmt",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PricingAmount",
+          "isoId": "_6QZvoZqlEeGSON8vddiWzQ_1108564441",
+          "xmlTag": "PricgAmt",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "BillingServicesTax1": {
+      "name": "BillingServicesTax1",
+      "isoId": "_6RSgdJqlEeGSON8vddiWzQ_-1349987745",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Number",
+          "isoId": "_6RSgdZqlEeGSON8vddiWzQ_150555380",
+          "xmlTag": "Nb",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Description",
+          "isoId": "_6RSgdpqlEeGSON8vddiWzQ_-837346944",
+          "xmlTag": "Desc",
+          "type": "Max40Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Rate",
+          "isoId": "_6RSgd5qlEeGSON8vddiWzQ_972377869",
+          "xmlTag": "Rate",
+          "type": "DecimalNumber",
+          "kind": "number",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "HostAmount",
+          "isoId": "_6RSgeJqlEeGSON8vddiWzQ_-1171869073",
+          "xmlTag": "HstAmt",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "PricingAmount",
+          "isoId": "_6RSgeZqlEeGSON8vddiWzQ_1947907198",
+          "xmlTag": "PricgAmt",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "BillingMethod1": {
+      "name": "BillingMethod1",
+      "isoId": "_6PzStJqlEeGSON8vddiWzQ_1375424478",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "ServiceChargeHostAmount",
+          "isoId": "_6PzStZqlEeGSON8vddiWzQ_-378796185",
+          "xmlTag": "SvcChrgHstAmt",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ServiceTax",
+          "isoId": "_6PzStpqlEeGSON8vddiWzQ_996223479",
+          "xmlTag": "SvcTax",
+          "type": "BillingServicesAmount1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "TotalCharge",
+          "isoId": "_6PzSt5qlEeGSON8vddiWzQ_451070786",
+          "xmlTag": "TtlChrg",
+          "type": "BillingServicesAmount2",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "TaxIdentification",
+          "isoId": "_6P9DsJqlEeGSON8vddiWzQ_-1164327431",
+          "xmlTag": "TaxId",
+          "type": "BillingServicesTax1",
+          "kind": "component",
+          "min": 1,
+          "max": 3
+        }
+      ]
+    },
+    "BillingMethod2": {
+      "name": "BillingMethod2",
+      "isoId": "_6P9DtZqlEeGSON8vddiWzQ_-345491927",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "ServiceChargeHostAmount",
+          "isoId": "_6P9DtpqlEeGSON8vddiWzQ_-1342564280",
+          "xmlTag": "SvcChrgHstAmt",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ServiceTax",
+          "isoId": "_6P9Dt5qlEeGSON8vddiWzQ_1918530298",
+          "xmlTag": "SvcTax",
+          "type": "BillingServicesAmount1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "TaxIdentification",
+          "isoId": "_6P9DuJqlEeGSON8vddiWzQ_1610375494",
+          "xmlTag": "TaxId",
+          "type": "BillingServicesTax1",
+          "kind": "component",
+          "min": 1,
+          "max": 3
+        }
+      ]
+    },
+    "BillingServicesTax2": {
+      "name": "BillingServicesTax2",
+      "isoId": "_6RcRcJqlEeGSON8vddiWzQ_-480249725",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Number",
+          "isoId": "_6RcRcZqlEeGSON8vddiWzQ_-1477322078",
+          "xmlTag": "Nb",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Description",
+          "isoId": "_6RcRcpqlEeGSON8vddiWzQ_1706733799",
+          "xmlTag": "Desc",
+          "type": "Max40Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Rate",
+          "isoId": "_6RcRc5qlEeGSON8vddiWzQ_-173571841",
+          "xmlTag": "Rate",
+          "type": "DecimalNumber",
+          "kind": "number",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "PricingAmount",
+          "isoId": "_6RcRdJqlEeGSON8vddiWzQ_126308982",
+          "xmlTag": "PricgAmt",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "BillingMethod3": {
+      "name": "BillingMethod3",
+      "isoId": "_6QGNoJqlEeGSON8vddiWzQ_173630706",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "ServiceTaxPriceAmount",
+          "isoId": "_6QGNoZqlEeGSON8vddiWzQ_-823441647",
+          "xmlTag": "SvcTaxPricAmt",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "TaxIdentification",
+          "isoId": "_6QGNopqlEeGSON8vddiWzQ_480308590",
+          "xmlTag": "TaxId",
+          "type": "BillingServicesTax2",
+          "kind": "component",
+          "min": 1,
+          "max": 3
+        }
+      ]
+    },
+    "BillingMethod1Choice": {
+      "name": "BillingMethod1Choice",
+      "isoId": "_6P9DsZqlEeGSON8vddiWzQ_-904396180",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "MethodA",
+          "isoId": "_6P9DspqlEeGSON8vddiWzQ_1371622889",
+          "xmlTag": "MtdA",
+          "type": "BillingMethod1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "MethodB",
+          "isoId": "_6P9Ds5qlEeGSON8vddiWzQ_1047988105",
+          "xmlTag": "MtdB",
+          "type": "BillingMethod2",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "MethodD",
+          "isoId": "_6P9DtJqlEeGSON8vddiWzQ_1766081075",
+          "xmlTag": "MtdD",
+          "type": "BillingMethod3",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "BillingService2": {
+      "name": "BillingService2",
+      "isoId": "_aySiUDq2EeWZFYSPlduMhw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "ServiceDetail",
+          "isoId": "_a5J_UTq2EeWZFYSPlduMhw",
+          "xmlTag": "SvcDtl",
+          "type": "BillingServiceParameters3",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Price",
+          "isoId": "_a5J_Uzq2EeWZFYSPlduMhw",
+          "xmlTag": "Pric",
+          "type": "BillingPrice1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PaymentMethod",
+          "isoId": "_a5J_VTq2EeWZFYSPlduMhw",
+          "xmlTag": "PmtMtd",
+          "type": "ServicePaymentMethod1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "OriginalChargePrice",
+          "isoId": "_a5J_Vzq2EeWZFYSPlduMhw",
+          "xmlTag": "OrgnlChrgPric",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "OriginalChargeSettlementAmount",
+          "isoId": "_a5J_WTq2EeWZFYSPlduMhw",
+          "xmlTag": "OrgnlChrgSttlmAmt",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "BalanceRequiredAccountAmount",
+          "isoId": "_a5J_Wzq2EeWZFYSPlduMhw",
+          "xmlTag": "BalReqrdAcctAmt",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TaxDesignation",
+          "isoId": "_a5J_XTq2EeWZFYSPlduMhw",
+          "xmlTag": "TaxDsgnt",
+          "type": "ServiceTaxDesignation1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "TaxCalculation",
+          "isoId": "_a5J_Xzq2EeWZFYSPlduMhw",
+          "xmlTag": "TaxClctn",
+          "type": "BillingMethod1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "BillingTaxIdentification3": {
+      "name": "BillingTaxIdentification3",
+      "isoId": "_YgExIzE_Ee62xuUQ2zyZww",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "VATRegistrationNumber",
+          "isoId": "_YinuwTE_Ee62xuUQ2zyZww",
+          "xmlTag": "VATRegnNb",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TaxRegistrationNumber",
+          "isoId": "_YinuwzE_Ee62xuUQ2zyZww",
+          "xmlTag": "TaxRegnNb",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TaxContact",
+          "isoId": "_YinuxTE_Ee62xuUQ2zyZww",
+          "xmlTag": "TaxCtct",
+          "type": "Contact13",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "BillingServiceIdentification2": {
+      "name": "BillingServiceIdentification2",
+      "isoId": "_6PWmxpqlEeGSON8vddiWzQ_-1512913674",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_6PWmx5qlEeGSON8vddiWzQ_1784981269",
+          "xmlTag": "Id",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SubService",
+          "isoId": "_6PWmyJqlEeGSON8vddiWzQ_674069850",
+          "xmlTag": "SubSvc",
+          "type": "BillingSubServiceIdentification1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Description",
+          "isoId": "_6PgXwJqlEeGSON8vddiWzQ_559746653",
+          "xmlTag": "Desc",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "BillingServiceParameters2": {
+      "name": "BillingServiceParameters2",
+      "isoId": "_6PgXxJqlEeGSON8vddiWzQ_126693803",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "BankService",
+          "isoId": "_6PgXxZqlEeGSON8vddiWzQ_-1989872304",
+          "xmlTag": "BkSvc",
+          "type": "BillingServiceIdentification2",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Volume",
+          "isoId": "_6PgXxpqlEeGSON8vddiWzQ_-424116921",
+          "xmlTag": "Vol",
+          "type": "DecimalNumber",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "UnitPrice",
+          "isoId": "_6PgXx5qlEeGSON8vddiWzQ_-1110935494",
+          "xmlTag": "UnitPric",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ServiceChargeAmount",
+          "isoId": "_6PphsJqlEeGSON8vddiWzQ_534331941",
+          "xmlTag": "SvcChrgAmt",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "BillingServicesAmount3": {
+      "name": "BillingServicesAmount3",
+      "isoId": "_6QZvopqlEeGSON8vddiWzQ_-1627146001",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "SourceAmount",
+          "isoId": "_6QZvo5qlEeGSON8vddiWzQ_1670748942",
+          "xmlTag": "SrcAmt",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "HostAmount",
+          "isoId": "_6QZvpJqlEeGSON8vddiWzQ_-1449027329",
+          "xmlTag": "HstAmt",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "BillingServicesTax3": {
+      "name": "BillingServicesTax3",
+      "isoId": "_6RcRdZqlEeGSON8vddiWzQ_-658807987",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Number",
+          "isoId": "_6RcRdpqlEeGSON8vddiWzQ_-1655880340",
+          "xmlTag": "Nb",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Description",
+          "isoId": "_6RcRd5qlEeGSON8vddiWzQ_1528175537",
+          "xmlTag": "Desc",
+          "type": "Max40Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Rate",
+          "isoId": "_6RcReJqlEeGSON8vddiWzQ_-352130103",
+          "xmlTag": "Rate",
+          "type": "DecimalNumber",
+          "kind": "number",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "TotalTaxAmount",
+          "isoId": "_6RmCcJqlEeGSON8vddiWzQ_2143637300",
+          "xmlTag": "TtlTaxAmt",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "TaxCalculation1": {
+      "name": "TaxCalculation1",
+      "isoId": "_6R49apqlEeGSON8vddiWzQ_163014572",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "HostCurrency",
+          "isoId": "_6R49a5qlEeGSON8vddiWzQ_622741619",
+          "xmlTag": "HstCcy",
+          "type": "ActiveOrHistoricCurrencyCode",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "TaxableServiceChargeConversion",
+          "isoId": "_6R49bJqlEeGSON8vddiWzQ_1186516095",
+          "xmlTag": "TaxblSvcChrgConvs",
+          "type": "BillingServicesAmount3",
+          "kind": "component",
+          "min": 1,
+          "max": null
+        },
+        {
+          "name": "TotalTaxableServiceChargeHostAmount",
+          "isoId": "_6SCHUJqlEeGSON8vddiWzQ_-2016390303",
+          "xmlTag": "TtlTaxblSvcChrgHstAmt",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "TaxIdentification",
+          "isoId": "_6SCHUZqlEeGSON8vddiWzQ_603580500",
+          "xmlTag": "TaxId",
+          "type": "BillingServicesTax3",
+          "kind": "component",
+          "min": 1,
+          "max": 3
+        },
+        {
+          "name": "TotalTax",
+          "isoId": "_6SCHUpqlEeGSON8vddiWzQ_-1201503719",
+          "xmlTag": "TtlTax",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "BillingMethod4": {
+      "name": "BillingMethod4",
+      "isoId": "_6QGNo5qlEeGSON8vddiWzQ_288570123",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "ServiceDetail",
+          "isoId": "_6QGNpJqlEeGSON8vddiWzQ_-708502230",
+          "xmlTag": "SvcDtl",
+          "type": "BillingServiceParameters2",
+          "kind": "component",
+          "min": 1,
+          "max": null
+        },
+        {
+          "name": "TaxCalculation",
+          "isoId": "_6QGNpZqlEeGSON8vddiWzQ_-1819413649",
+          "xmlTag": "TaxClctn",
+          "type": "TaxCalculation1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "BillingTaxRegion3": {
+      "name": "BillingTaxRegion3",
+      "isoId": "_YdfXJTE_Ee62xuUQ2zyZww",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "RegionNumber",
+          "isoId": "_YgExETE_Ee62xuUQ2zyZww",
+          "xmlTag": "RgnNb",
+          "type": "Max40Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "RegionName",
+          "isoId": "_YgExEzE_Ee62xuUQ2zyZww",
+          "xmlTag": "RgnNm",
+          "type": "Max40Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CustomerTaxIdentification",
+          "isoId": "_YgExFTE_Ee62xuUQ2zyZww",
+          "xmlTag": "CstmrTaxId",
+          "type": "Max40Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "PointDate",
+          "isoId": "_YgExFzE_Ee62xuUQ2zyZww",
+          "xmlTag": "PtDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SendingFinancialInstitution",
+          "isoId": "_YgExGTE_Ee62xuUQ2zyZww",
+          "xmlTag": "SndgFI",
+          "type": "BillingTaxIdentification3",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "InvoiceNumber",
+          "isoId": "_YgExGzE_Ee62xuUQ2zyZww",
+          "xmlTag": "InvcNb",
+          "type": "Max40Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "MethodC",
+          "isoId": "_YgExHTE_Ee62xuUQ2zyZww",
+          "xmlTag": "MtdC",
+          "type": "BillingMethod4",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SettlementAmount",
+          "isoId": "_YgExHzE_Ee62xuUQ2zyZww",
+          "xmlTag": "SttlmAmt",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "TaxDueToRegion",
+          "isoId": "_YgExITE_Ee62xuUQ2zyZww",
+          "xmlTag": "TaxDueToRgn",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "BalanceAdjustmentType1Code": {
+      "name": "BalanceAdjustmentType1Code",
+      "isoId": "_6URjBJqlEeGSON8vddiWzQ_7389297",
+      "kind": "code",
+      "options": [
+        {
+          "value": "LDGR",
+          "name": "Ledger",
+          "isoId": "_6URjBZqlEeGSON8vddiWzQ_-1813350112"
+        },
+        {
+          "value": "FLOT",
+          "name": "Float",
+          "isoId": "_6URjBpqlEeGSON8vddiWzQ_-1052584959"
+        },
+        {
+          "value": "CLLD",
+          "name": "Collected",
+          "isoId": "_6URjB5qlEeGSON8vddiWzQ_414563804"
+        }
+      ]
+    },
+    "BalanceAdjustment1": {
+      "name": "BalanceAdjustment1",
+      "isoId": "_6SVpUpqlEeGSON8vddiWzQ_304866201",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Type",
+          "isoId": "_6SVpU5qlEeGSON8vddiWzQ_-313393721",
+          "xmlTag": "Tp",
+          "type": "BalanceAdjustmentType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Description",
+          "isoId": "_6SVpVJqlEeGSON8vddiWzQ_1088798456",
+          "xmlTag": "Desc",
+          "type": "Max105Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "BalanceAmount",
+          "isoId": "_6SVpVZqlEeGSON8vddiWzQ_939741632",
+          "xmlTag": "BalAmt",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "AverageAmount",
+          "isoId": "_6SVpVpqlEeGSON8vddiWzQ_1558874866",
+          "xmlTag": "AvrgAmt",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ErrorDate",
+          "isoId": "_6SVpV5qlEeGSON8vddiWzQ_561802513",
+          "xmlTag": "ErrDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PostingDate",
+          "isoId": "_6SezQJqlEeGSON8vddiWzQ_-435269840",
+          "xmlTag": "PstngDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Days",
+          "isoId": "_6SezQZqlEeGSON8vddiWzQ_1103518602",
+          "xmlTag": "Days",
+          "type": "DecimalNumber",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "EarningsAdjustmentAmount",
+          "isoId": "_6SezQpqlEeGSON8vddiWzQ_398403987",
+          "xmlTag": "EarngsAdjstmntAmt",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "ServiceAdjustmentType1Code": {
+      "name": "ServiceAdjustmentType1Code",
+      "isoId": "_6VwwyJqlEeGSON8vddiWzQ_96495385",
+      "kind": "code",
+      "options": [
+        {
+          "value": "COMP",
+          "name": "Compensable",
+          "isoId": "_6V6hwJqlEeGSON8vddiWzQ_1688850679"
+        },
+        {
+          "value": "NCMP",
+          "name": "NonCompensable",
+          "isoId": "_6V6hwZqlEeGSON8vddiWzQ_1677751902"
+        }
+      ]
+    },
+    "BillingServiceAdjustment1": {
+      "name": "BillingServiceAdjustment1",
+      "isoId": "_6Oww7pqlEeGSON8vddiWzQ_453454713",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Type",
+          "isoId": "_6Oww75qlEeGSON8vddiWzQ_1574741940",
+          "xmlTag": "Tp",
+          "type": "ServiceAdjustmentType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Description",
+          "isoId": "_6O560JqlEeGSON8vddiWzQ_-1074957921",
+          "xmlTag": "Desc",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Amount",
+          "isoId": "_6O560ZqlEeGSON8vddiWzQ_463830521",
+          "xmlTag": "Amt",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "BalanceRequiredAmount",
+          "isoId": "_6O560pqlEeGSON8vddiWzQ_661454739",
+          "xmlTag": "BalReqrdAmt",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ErrorDate",
+          "isoId": "_6O5605qlEeGSON8vddiWzQ_-241284094",
+          "xmlTag": "ErrDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "AdjustmentIdentification",
+          "isoId": "_6O561JqlEeGSON8vddiWzQ_-823688632",
+          "xmlTag": "AdjstmntId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SubService",
+          "isoId": "_6O561ZqlEeGSON8vddiWzQ_821578803",
+          "xmlTag": "SubSvc",
+          "type": "BillingSubServiceIdentification1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PriceChange",
+          "isoId": "_6O561pqlEeGSON8vddiWzQ_-1934600051",
+          "xmlTag": "PricChng",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "OriginalPrice",
+          "isoId": "_6O5615qlEeGSON8vddiWzQ_1655252630",
+          "xmlTag": "OrgnlPric",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "NewPrice",
+          "isoId": "_6O562JqlEeGSON8vddiWzQ_480061605",
+          "xmlTag": "NewPric",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "VolumeChange",
+          "isoId": "_6PDr0JqlEeGSON8vddiWzQ_2125329040",
+          "xmlTag": "VolChng",
+          "type": "DecimalNumber",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "OriginalVolume",
+          "isoId": "_6PDr0ZqlEeGSON8vddiWzQ_-1006641385",
+          "xmlTag": "OrgnlVol",
+          "type": "DecimalNumber",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "NewVolume",
+          "isoId": "_6PDr0pqlEeGSON8vddiWzQ_-630849814",
+          "xmlTag": "NewVol",
+          "type": "DecimalNumber",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "OriginalChargeAmount",
+          "isoId": "_6PDr05qlEeGSON8vddiWzQ_-1335964429",
+          "xmlTag": "OrgnlChrgAmt",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "NewChargeAmount",
+          "isoId": "_6PDr1JqlEeGSON8vddiWzQ_1783811842",
+          "xmlTag": "NewChrgAmt",
+          "type": "AmountAndDirection34",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "BillingStatement5": {
+      "name": "BillingStatement5",
+      "isoId": "_xdpU0TEyEe6g-ffJsqGiSA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "StatementIdentification",
+          "isoId": "_xf27UTEyEe6g-ffJsqGiSA",
+          "xmlTag": "StmtId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "FromToDate",
+          "isoId": "_xf27UzEyEe6g-ffJsqGiSA",
+          "xmlTag": "FrToDt",
+          "type": "DatePeriod1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CreationDateTime",
+          "isoId": "_xf27VTEyEe6g-ffJsqGiSA",
+          "xmlTag": "CreDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Status",
+          "isoId": "_xf27VzEyEe6g-ffJsqGiSA",
+          "xmlTag": "Sts",
+          "type": "BillingStatementStatus1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "AccountCharacteristics",
+          "isoId": "_xf27WTEyEe6g-ffJsqGiSA",
+          "xmlTag": "AcctChrtcs",
+          "type": "CashAccountCharacteristics5",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "RateData",
+          "isoId": "_xf27WzEyEe6g-ffJsqGiSA",
+          "xmlTag": "RateData",
+          "type": "BillingRate1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "CurrencyExchange",
+          "isoId": "_xf27XTEyEe6g-ffJsqGiSA",
+          "xmlTag": "CcyXchg",
+          "type": "CurrencyExchange6",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "Balance",
+          "isoId": "_xf27XzEyEe6g-ffJsqGiSA",
+          "xmlTag": "Bal",
+          "type": "BillingBalance1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "Compensation",
+          "isoId": "_xf27YTEyEe6g-ffJsqGiSA",
+          "xmlTag": "Compstn",
+          "type": "BillingCompensation1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "Service",
+          "isoId": "_xf27YzEyEe6g-ffJsqGiSA",
+          "xmlTag": "Svc",
+          "type": "BillingService2",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "TaxRegion",
+          "isoId": "_xf27ZTEyEe6g-ffJsqGiSA",
+          "xmlTag": "TaxRgn",
+          "type": "BillingTaxRegion3",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "BalanceAdjustment",
+          "isoId": "_xf27ZzEyEe6g-ffJsqGiSA",
+          "xmlTag": "BalAdjstmnt",
+          "type": "BalanceAdjustment1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "ServiceAdjustment",
+          "isoId": "_xf27aTEyEe6g-ffJsqGiSA",
+          "xmlTag": "SvcAdjstmnt",
+          "type": "BillingServiceAdjustment1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    },
+    "StatementGroup5": {
+      "name": "StatementGroup5",
+      "isoId": "_xZNgwTEyEe6g-ffJsqGiSA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "GroupIdentification",
+          "isoId": "_xbbHQTEyEe6g-ffJsqGiSA",
+          "xmlTag": "GrpId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Sender",
+          "isoId": "_xbbHQzEyEe6g-ffJsqGiSA",
+          "xmlTag": "Sndr",
+          "type": "PartyIdentification273",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SenderIndividualContact",
+          "isoId": "_xbbHRTEyEe6g-ffJsqGiSA",
+          "xmlTag": "SndrIndvCtct",
+          "type": "Contact13",
+          "kind": "component",
+          "min": 0,
+          "max": 2
+        },
+        {
+          "name": "Receiver",
+          "isoId": "_xbbHRzEyEe6g-ffJsqGiSA",
+          "xmlTag": "Rcvr",
+          "type": "PartyIdentification273",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ReceiverIndividualContact",
+          "isoId": "_xbbHSTEyEe6g-ffJsqGiSA",
+          "xmlTag": "RcvrIndvCtct",
+          "type": "Contact13",
+          "kind": "component",
+          "min": 0,
+          "max": 2
+        },
+        {
+          "name": "BillingStatement",
+          "isoId": "_xbbHSzEyEe6g-ffJsqGiSA",
+          "xmlTag": "BllgStmt",
+          "type": "BillingStatement5",
+          "kind": "component",
+          "min": 1,
+          "max": null
+        }
+      ]
+    },
+    "BankServicesBillingStatementV05": {
+      "name": "BankServicesBillingStatementV05",
+      "isoId": "_R3BOyzEZEe6kQ-WGAhcVPQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "ReportHeader",
+          "isoId": "_R3BO0TEZEe6kQ-WGAhcVPQ",
+          "xmlTag": "RptHdr",
+          "type": "ReportHeader6",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "BillingStatementGroup",
+          "isoId": "_R3BO0zEZEe6kQ-WGAhcVPQ",
+          "xmlTag": "BllgStmtGrp",
+          "type": "StatementGroup5",
+          "kind": "component",
+          "min": 1,
+          "max": null
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,4 @@
+choice	memberId	memberName	text
+Charges5Choice	_ainQoT0JEe-thIfLZ94a1w	Single	Charges related to a single payment transaction.
+Charges5Choice	_ainQoz0JEe-thIfLZ94a1w	PerTransaction	Charges broken down per payment transaction.
+Charges5Choice	_ainQpT0JEe-thIfLZ94a1w	PerType	Charges broken down per type of charges.

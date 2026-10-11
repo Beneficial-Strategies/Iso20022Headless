@@ -1,0 +1,2 @@
+name	isoId	xsiType	pattern	minLength	maxLength	totalDigits	fractionDigits	minInclusive	maxInclusive	other
+EntryTypeIdentifier	_YYn109p-Ed-ak6NoX_4Aeg_376711767	IdentifierSet	[BEOVW]{1,1}[0-9]{2,2}|DUM							identificationScheme=EntryType; EntryTypeValue

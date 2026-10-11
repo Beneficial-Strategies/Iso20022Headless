@@ -1,0 +1,43 @@
+{
+  "identifier": "camt.103.001.03",
+  "name": "CreateReservationV03",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.103.001.03",
+  "bodyTag": "CretRsvatn",
+  "out": "camt103",
+  "isoId": "_R3GuUzEZEe6kQ-WGAhcVPQ",
+  "definition": "Scope|The CreateReservation message is used to request for the creation of one particular reservation by the member and managed by the transaction administrator.|Usage|Based on the criteria defined in the CreateReservation message, the transaction administrator will execute or reject the requested creation and respond with a Receipt message as a reply to the request.",
+  "blocks": [
+    {
+      "name": "MessageHeader",
+      "isoId": "_R3GuWTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "MsgHdr",
+      "type": "MessageHeader1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ReservationIdentification",
+      "isoId": "_R3GuWzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "RsvatnId",
+      "type": "ReservationIdentification4",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ValueSet",
+      "isoId": "_R3GuXTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "ValSet",
+      "type": "Reservation4",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3GuXzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

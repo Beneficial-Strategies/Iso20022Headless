@@ -1,0 +1,35 @@
+{
+  "identifier": "camt.069.001.05",
+  "name": "GetStandingOrderV05",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.069.001.05",
+  "bodyTag": "GetStgOrdr",
+  "out": "camt069",
+  "isoId": "_R3MONzEZEe6kQ-WGAhcVPQ",
+  "definition": "Scope|The GetStandingOrder message is sent by a member to the transaction administrator.|It is used to request information on the details of one or more standing orders, based on specific request criteria, especially to query the amount of the overall liquidity available. It will allow to query both reserved liquidity and liquidity available for normal operations.|Usage|The member can request information based on the following elements: |- individual standing orders (predefined or standing liquidity transfer orders)|- amount|- account to be credited|- account to be debited|- account owner (for on behalf scenario)|- frequency of payment|- daytime or overnight processing|- dates when the standing order begins and ceases to be effective|This message will be answered by a ReturnStandingOrder message.",
+  "blocks": [
+    {
+      "name": "MessageHeader",
+      "isoId": "_R3MOPTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "MsgHdr",
+      "type": "MessageHeader4",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "StandingOrderQueryDefinition",
+      "isoId": "_R3M04TEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "StgOrdrQryDef",
+      "type": "StandingOrderQuery5",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3M04zEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

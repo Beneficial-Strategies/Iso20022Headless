@@ -1,0 +1,5 @@
+choice	memberId	memberName	text
+CancellationProcessingStatus9Choice	_BxXzkeFfEeWIA4E9cYSxxQ	Code	Provides the status of a cancellation request.
+CancellationProcessingStatus9Choice	_BxXzmeFfEeWIA4E9cYSxxQ	Proprietary	Provides the status of a cancellation request.
+DateAndDateTimeSearch5Choice	_VptEkTp9EemwKdP955WBJQ	Date	Specified date.
+DateAndDateTimeSearch5Choice	_VptEkzp9EemwKdP955WBJQ	DateTime	Specified date and time.

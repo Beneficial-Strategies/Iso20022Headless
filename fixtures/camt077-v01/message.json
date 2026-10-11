@@ -1,0 +1,35 @@
+{
+  "identifier": "camt.077.001.01",
+  "name": "BillingReportV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.077.001.01",
+  "bodyTag": "BllgRpt",
+  "out": "camt077",
+  "isoId": "_R3Cc0TEZEe6kQ-WGAhcVPQ",
+  "definition": "The BillingReport message is exchanged between the system transaction administrator and a system member. It aims at providing the invoice or invoice cancellation and informing about data providing cumulative or itemised details backing an invoice.||BillingReport is used for the following usages:|- Invoice||The Cumulative Invoice will consist of the following:|- Sum of the total number of units per service item for each CSD or CB;|- Sum of the amounts based on the total number of units per service item for each CSD or CB;|- Cancellation status of the invoice data.|- Invoice Cancellation|- Cumulative Billing Data Query Response: ||The BillingReport message is also used to inform the system member about details backing an invoice. This can be sent via cumulative billing data or itemised billing data as response to an invoice query message.|Itemised Billing Data Query Response: The BillingReport message is also used to inform the system member about details backing an invoice. This can be via cumulative billing data or itemised billing data as response to an invoice query message.",
+  "blocks": [
+    {
+      "name": "MessageHeader",
+      "isoId": "_R3Cc2TEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "MsgHdr",
+      "type": "MessageHeader11",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "BillingReportOrError",
+      "isoId": "_R3Cc2zEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "BllgRptOrErr",
+      "type": "BillingReportOrError6Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3Cc3TEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

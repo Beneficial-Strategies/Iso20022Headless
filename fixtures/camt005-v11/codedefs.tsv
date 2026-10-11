@@ -1,0 +1,36 @@
+codeSet	code	enumName	isoId	text
+PendingStatus4Code	ACPD	Accepted	_aGJupNp-Ed-ak6NoX_4Aeg_1263998562	Transaction has been accepted by the clearing agent.
+PendingStatus4Code	VALD	Validated	_aGJupdp-Ed-ak6NoX_4Aeg_1263998838	Transaction has been validated by the clearing agent.
+PendingStatus4Code	MATD	Matched	_aGJuptp-Ed-ak6NoX_4Aeg_1263998873	Transaction has been matched with a corresponding transaction by the clearing agent.
+PendingStatus4Code	AUTD	Authorised	_aGJup9p-Ed-ak6NoX_4Aeg_1263998915	Transaction has been authorised by the transaction administrator or authorised party.
+PendingStatus4Code	INVD	Invalid	_aGJuqNp-Ed-ak6NoX_4Aeg_1263998933	Transaction is invalid.
+PendingStatus4Code	UMAC	Unmatched	_aGJuqdp-Ed-ak6NoX_4Aeg_1263998968	Clearing agent attempted to match the transaction with a corresponding transaction but failed.
+PendingStatus4Code	STLE	SettlementEligible	_aGS4kNp-Ed-ak6NoX_4Aeg_1263999258	Transaction is eligible for future settlement.
+PendingStatus4Code	STLM	SettlementMature	_aGS4kdp-Ed-ak6NoX_4Aeg_1263999276	Transaction is eligible for immediate settlement.
+PendingStatus4Code	SSPD	Suspended	_aGS4ktp-Ed-ak6NoX_4Aeg_1263999318	Transaction has been suspended by the clearing agent.
+PendingStatus4Code	PCAN	PendingCancellation	_aGS4k9p-Ed-ak6NoX_4Aeg_1263999336	Clearing agent has received a cancellation request for the transaction, and needs either a matching request for cancellation from the counterparty or a confirmation from an authorised party.
+PendingStatus4Code	PSTL	PendingSettlement	_aGS4lNp-Ed-ak6NoX_4Aeg_1263999371	Transaction is eligible for settlement, but is pending.
+PendingStatus4Code	PFST	PendingFailingSettlement	_aGS4ldp-Ed-ak6NoX_4Aeg_1263999413	Transaction eligible for immediate settlement, has failed to settle.
+PendingStatus4Code	SMLR	SenderMultilateralLimitRelated	_aGS4ltp-Ed-ak6NoX_4Aeg_1263999431	Transaction causes the 'Sender multilateral limit' to be exceeded and cannot currently be processed.
+PendingStatus4Code	RMLR	ReceiverMultilateralLimitRelated	_aGS4l9p-Ed-ak6NoX_4Aeg_1263999473	Transaction causes the 'Receiver multilateral limit' to be exceeded and cannot currently be processed.
+PendingStatus4Code	SRBL	SenderReceiverBilateralLimitRelated	_aGS4mNp-Ed-ak6NoX_4Aeg_1263999508	Transaction causes the bilateral limit fixed between Sender and Receiver to be exceeded and cannot currently be processed.
+PendingStatus4Code	AVLB	HeldForServiceAvailability	_aGS4mdp-Ed-ak6NoX_4Aeg_1263999526	Specifies that the message is queued to the receiving payment system and is awaiting processing because the receiving payment system is not operational (open) at that point in time.
+PendingStatus4Code	SRML	SenderReceiverMultilateralLimitRelated	_aGcpkNp-Ed-ak6NoX_4Aeg_588640614	Transaction causes the multilateral limits fixed between Sender and Receiver to be exceeded by the total amount of submitted payments at the end of the day and cannot currently be processed.
+FinalStatusCode	STLD	Settled	_an04Vdp-Ed-ak6NoX_4Aeg_-1727527993	Transaction has been successfully processed by the clearing agent.
+FinalStatusCode	RJTD	Rejected	_an04Vtp-Ed-ak6NoX_4Aeg_-1727527992	Transaction has been rejected by the clearing agent.
+FinalStatusCode	CAND	Cancelled	_an04V9p-Ed-ak6NoX_4Aeg_-1727527991	Transaction has been cancelled.
+FinalStatusCode	FNLD	Finalised	_an04WNp-Ed-ak6NoX_4Aeg_-1727527990	Transaction has been successfully processed by the clearing agent. Settlement will take place outside of the system.
+CashPaymentStatus2Code	PDNG	Pending	_a7DWVdp-Ed-ak6NoX_4Aeg_1461915330	The payment is awaiting settlement.
+CashPaymentStatus2Code	FINL	Final	_a7DWVtp-Ed-ak6NoX_4Aeg_1461915331	The payment has been settled or stopped.
+Priority5Code	HIGH	High	_mcdxcH_QEeiik6YN_dzlEA	Priority level is high.
+Priority5Code	LOWW	Low	_mh3O0X_QEeiik6YN_dzlEA	Priority level is low.
+Priority5Code	NORM	Normal	_mpC04X_QEeiik6YN_dzlEA	Priority level is normal.
+Priority5Code	URGT	Urgent	_muQFAX_QEeiik6YN_dzlEA	Priority level is urgent (highest priority possible).
+Instruction1Code	PBEN	PayTheBeneficiary	_aW12Atp-Ed-ak6NoX_4Aeg_-499701816	(Ultimate) creditor to be paid only after verification of identity.
+Instruction1Code	TTIL	TimeTill	_aW12A9p-Ed-ak6NoX_4Aeg_-499701815	Payment instruction is valid and eligible for execution until the date and time stipulated. Otherwise, the payment instruction will be rejected.
+Instruction1Code	TFRO	TimeFrom	_aW12BNp-Ed-ak6NoX_4Aeg_-499701814	Payment instruction will be valid and eligible for execution from the date and time stipulated.
+EntryStatus1Code	BOOK	Booked	_ahauVNp-Ed-ak6NoX_4Aeg_-773188205	Booked means that the transfer of money has been completed between account servicer and account owner||Usage: |Status Booked does not necessarily imply finality of money as this depends on other factors such as the payment system used, the completion of the end-to-end transaction and the terms agreed between account servicer and owner.|Status Booked is the only status that can be reversed.
+EntryStatus1Code	PDNG	Pending	_ahauVdp-Ed-ak6NoX_4Aeg_-773188204	Booking on the account owner's account in the account servicer's ledger has not been completed.||Usage: this can be used for expected items, or for items for which some conditions still need to be fulfilled before they can be booked. If booking takes place, the entry will be included with status Booked in subsequent account report or statement. Status Pending cannot be reversed.
+EntryStatus1Code	FUTR	Future	_ahauVtp-Ed-ak6NoX_4Aeg_-773188203	Entry is on the books of the account servicer and value will be applied to the account owner at a future date and time.
+ReportIndicator1Code	STND	Standard	_ZTCPo9p-Ed-ak6NoX_4Aeg_1969382793	Requested report must contain information in the format of a statement.
+ReportIndicator1Code	PRPR	Proprietary	_ZTCPpNp-Ed-ak6NoX_4Aeg_2001706027	Requested report must contain information in a bilaterally agreed format.

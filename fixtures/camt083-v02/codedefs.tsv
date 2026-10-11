@@ -1,0 +1,47 @@
+codeSet	code	enumName	isoId	text
+EventFrequency7Code	YEAR	Annual	_VsikJf70EeCKvdA5_Kg7Aw	Event takes place every year or once a year.
+EventFrequency7Code	ADHO	Adhoc	_VsikKf70EeCKvdA5_Kg7Aw	Event takes place as necessary.
+EventFrequency7Code	MNTH	Monthly	_VsikLf70EeCKvdA5_Kg7Aw	Event takes place every month or once a month.
+EventFrequency7Code	DAIL	Daily	_VsikMf70EeCKvdA5_Kg7Aw	Event takes place every day.
+EventFrequency7Code	INDA	IntraDay	_VsikNf70EeCKvdA5_Kg7Aw	Event takes place several times a day.
+EventFrequency7Code	WEEK	Weekly	_VsikOf70EeCKvdA5_Kg7Aw	Event takes place once a week.
+EventFrequency7Code	SEMI	SemiAnnual	_Z7TqqP70EeCKvdA5_Kg7Aw	Event takes place every six months or two times a year.
+EventFrequency7Code	QUTR	Quarterly	_aZtd9v70EeCKvdA5_Kg7Aw	Event takes place every three months or four times a year.
+EventFrequency7Code	TOMN	EveryTwoMonths	_e14uSv70EeCKvdA5_Kg7Aw	Event takes place every two months.
+EventFrequency7Code	TOWK	EveryTwoWeeks	_fXj3-v70EeCKvdA5_Kg7Aw	Event takes place every two weeks.
+EventFrequency7Code	TWMN	TwiceAMonth	_gu43Sv70EeCKvdA5_Kg7Aw	Event takes place two times a month.
+EventFrequency7Code	OVNG	Overnight	_hQkA-v70EeCKvdA5_Kg7Aw	Event takes place overnight.
+EventFrequency7Code	ONDE	OnDemand	_hYAsyv70EeCKvdA5_Kg7Aw	Event takes place on demand.
+StatementUpdateType1Code	COMP	Complete	_ZQM-GNp-Ed-ak6NoX_4Aeg_1368668707	Statement is complete.
+StatementUpdateType1Code	DELT	Delta	_ZQWvENp-Ed-ak6NoX_4Aeg_1368668708	Statement contains changes only.
+NoReasonCode	NORE	NoReason	_aNmaeNp-Ed-ak6NoX_4Aeg_1957291337	No reason to report or no reason available to report.
+PendingReason9Code	ADEA	AccountServicerDeadlineMissed	_Go_6Rf41EeClUvPNHKL9Zw	Instruction was received after the account servicer's deadline. Processed on best effort basis.
+PendingReason9Code	CONF	AwaitingConfirmation	_Go_6Sf41EeClUvPNHKL9Zw	Awaiting confirmation from the counterparty.
+PendingReason9Code	OTHR	Other	_Go_6Tf41EeClUvPNHKL9Zw	Other. See Narrative.
+PendingReason9Code	CDRG	ConditionalRegistrar	_Go_6Uf41EeClUvPNHKL9Zw	Execution is conditional to the execution of a process at the registrar.
+PendingReason9Code	CDCY	ConditionalCurrency	_Go_6Vf41EeClUvPNHKL9Zw	Execution is conditional to the execution of a process linked to the currency of the transaction.
+PendingReason9Code	CDRE	ConditionalRealignement	_Go_6Wf41EeClUvPNHKL9Zw	Execution is conditional to the execution of a process of realignment at the issuer CSD.
+PendingReason9Code	CDAC	ConditionalDeliveryAwaitingCancellation	_PMeU4hqJEeG38P9Gj2JZJw	Awaiting cancellation of one of the party.
+PendingReason9Code	INBC	IncompleteNumberCount	_RjugIhqJEeG38P9Gj2JZJw	Not all the instructions part of a pool have been received.
+RejectionReason34Code	ADEA	AccountServicerDeadlineMissed	_PeLRwYkuEe64YtiuxmT1NA	Transaction/instruction received after the account servicer's specified deadline.
+RejectionReason34Code	LATE	MarketDeadlineMissed	_PeLRw4kuEe64YtiuxmT1NA	Received after market deadline.
+RejectionReason34Code	CASH	CashAccount	_PeLRxYkuEe64YtiuxmT1NA	Unrecognised or invalid cash account.
+RejectionReason34Code	NRGM	NoMatch	_PeLRx4kuEe64YtiuxmT1NA	More than one instruction match the criteria.
+RejectionReason34Code	NRGN	NotFoundRejection	_PeLRyYkuEe64YtiuxmT1NA	Instruction could not be found.
+RejectionReason34Code	OTHR	Other	_PeLRy4kuEe64YtiuxmT1NA	Other. See Narrative.
+RejectionReason34Code	REFE	ReferenceRejection	_PeLRzYkuEe64YtiuxmT1NA	Instruction has a reference identical to another previously received instruction.
+AcknowledgementReason3Code	ADEA	AccountServicerDeadlineMissed	_bpGIFtp-Ed-ak6NoX_4Aeg_-1512482082	Received after the account servicer's deadline. Processed on best effort basis.
+AcknowledgementReason3Code	SMPG	MarketPracticeRuleDiscrepency	_bpGIF9p-Ed-ak6NoX_4Aeg_318441087	Instruction is accepted but does not comply with the market practice rule published for the concerned market or process.
+AcknowledgementReason3Code	OTHR	Other	_bpGIGNp-Ed-ak6NoX_4Aeg_-1522255292	Other. See Narrative.
+DeniedReason4Code	ADEA	AccountServicerDeadlineMissed	_avRkJNp-Ed-ak6NoX_4Aeg_271179160	Received after the account servicer's deadline.
+DeniedReason4Code	DCAN	DeniedSinceAlreadyCancelled	_avRkJdp-Ed-ak6NoX_4Aeg_714167652	Cancellation request was denied since the instruction has already been cancelled.
+DeniedReason4Code	DPRG	DeniedSinceInProgress	_avRkJtp-Ed-ak6NoX_4Aeg_-1295789206	Cancellation request was denied because the process of settlement is in progress.
+DeniedReason4Code	DREP	DeniedSinceRepoEnded	_avRkJ9p-Ed-ak6NoX_4Aeg_118447416	Cancellation request was denied because the repo was cancelled.
+DeniedReason4Code	DSET	DeniedSinceAlreadySettled	_avRkKNp-Ed-ak6NoX_4Aeg_1767928195	Cancellation request was denied because the instruction was already settled.
+DeniedReason4Code	LATE	MarketDeadlineMissed	_avbVINp-Ed-ak6NoX_4Aeg_1013178321	Received after market deadline.
+DeniedReason4Code	OTHR	Other	_avbVIdp-Ed-ak6NoX_4Aeg_1002079544	Other. See Narrative.
+DeniedReason4Code	CDRG	ConditionalRegistrar	_avbVItp-Ed-ak6NoX_4Aeg_675012735	Execution is denied due to the execution of a process at the registrar.
+DeniedReason4Code	CDCY	ConditionalCurrency	_avbVI9p-Ed-ak6NoX_4Aeg_383054997	Execution is denied due to a process linked to the currency of the transaction.
+DeniedReason4Code	CDRE	ConditionalRealignement	_avbVJNp-Ed-ak6NoX_4Aeg_561173669	Execution is denied due to the execution of a process of realignment at the issuer CSD.
+CancelledStatusReason5Code	CANI	CancelledByYourself	_a08HR9p-Ed-ak6NoX_4Aeg_-2082832297	Transaction is cancelled by yourself.
+CancelledStatusReason5Code	OTHR	Other	_a08HSNp-Ed-ak6NoX_4Aeg_1266449994	Other. See Narrative.

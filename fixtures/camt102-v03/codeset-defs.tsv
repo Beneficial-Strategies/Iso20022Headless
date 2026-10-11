@@ -1,0 +1,3 @@
+codeSet	isoId	text
+ExternalSystemEventType1Code	_8OFBVqMgEeCJ6YNENx4h-w_1804878644	Specifies the type an event generated within a system, as published in an system event type code list.|External code sets can be downloaded from www.iso20022.org.
+Frequency2Code	_asJXqNp-Ed-ak6NoX_4Aeg_1505345791	Specifies the regularity of an event.

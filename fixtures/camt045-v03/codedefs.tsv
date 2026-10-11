@@ -1,0 +1,23 @@
+codeSet	code	enumName	isoId	text
+InvestmentFundTransactionInType1Code	SUBS	Subscription	_acpjGNp-Ed-ak6NoX_4Aeg_99517208	Transaction is a subscription to an investment fund.
+InvestmentFundTransactionInType1Code	SWII	SwitchIn	_acpjGdp-Ed-ak6NoX_4Aeg_99517562	Transaction is a subscription leg of a switch order execution.
+InvestmentFundTransactionInType1Code	INSP	InSpecie	_aczUENp-Ed-ak6NoX_4Aeg_100437611	Transaction is an InSpecie.
+InvestmentFundTransactionInType1Code	CROI	CrossIn	_aczUEdp-Ed-ak6NoX_4Aeg_100437629	Transaction is a cross-in.
+InvestmentFundTransactionInType1Code	RDIV	ReinvestmentOfDividend	_aczUEtp-Ed-ak6NoX_4Aeg_711808534	Transaction is a reinvestment of dividend.
+OrderQuantityType2Code	UNIT	Unit	_aRVD4dp-Ed-ak6NoX_4Aeg_-1092421681	Order is placed by unit.
+OrderQuantityType2Code	CASH	Amount	_aRVD4tp-Ed-ak6NoX_4Aeg_-1092421663	Order is placed by amount of money.
+ChargeType12Code	BEND	BackEndLoad	_a8ruB9p-Ed-ak6NoX_4Aeg_-1066086887	Sales charge paid by the investor when redeeming an investment such as an investment fund.
+ChargeType12Code	DISC	Discount	_a8ruCNp-Ed-ak6NoX_4Aeg_-1066086869	Charge that has been reduced from the standard initial charge levied by a fund, eg, during a launch period or as negotiated by a funds supermarket / discount broker.
+ChargeType12Code	FEND	FrontEndLoad	_a8ruCdp-Ed-ak6NoX_4Aeg_-1066086844	Sales charge paid immediately by the investor when subscribing to an investment such as an investment fund.
+ChargeType12Code	POST	PostageCharge	_a81fANp-Ed-ak6NoX_4Aeg_-1066086827	Charge paid for the postage.
+ChargeType12Code	REGF	RegulatoryFee	_a81fAdp-Ed-ak6NoX_4Aeg_-1066086809	Fee charged by a regulatory authority, eg, Securities and Exchange fees.
+ChargeType12Code	SHIP	ShippingCharge	_a81fAtp-Ed-ak6NoX_4Aeg_-1066086792	Charge for shipping, including the insurance of securities.
+ChargeType12Code	SPCN	SpecialConcessions	_a81fA9p-Ed-ak6NoX_4Aeg_-1066086774	Charges, drawdown, or other reduction from or in addition to the deal price.
+ChargeType12Code	TRAN	TransferFee	_a81fBNp-Ed-ak6NoX_4Aeg_-1066086749	In investment funds, a fee charged for the transfer of ownership of an investment fund.
+CommissionType6Code	FEND	FrontEndLoad	_a_9rhNp-Ed-ak6NoX_4Aeg_2072219495	Commission for subscribing to an investment, paid at the time of the subscription.
+CommissionType6Code	BEND	BackEndLoad	_a_9rhdp-Ed-ak6NoX_4Aeg_2072219512	Commission for redeeming an investment, when an investor redeems an investment fund within a certain period of time.
+CommissionType6Code	CDPL	CommissionDePlacement	_a_9rhtp-Ed-ak6NoX_4Aeg_22575918	Amount of cash due to an intermediary for selling a product, or services, to a third party.
+InvestmentFundTransactionOutType1Code	REDM	Redemption	_aczUFNp-Ed-ak6NoX_4Aeg_1717851866	Transaction is a redemption of an investment fund.
+InvestmentFundTransactionOutType1Code	SWIO	SwitchOut	_aczUFdp-Ed-ak6NoX_4Aeg_1717851883	Transaction is a subscription leg of a switch order execution.
+InvestmentFundTransactionOutType1Code	INSP	InSpecie	_aczUFtp-Ed-ak6NoX_4Aeg_1717851901	Transaction is an InSpecie.
+InvestmentFundTransactionOutType1Code	CROO	CrossOut	_aczUF9p-Ed-ak6NoX_4Aeg_1717851902	Transaction is a cross out.

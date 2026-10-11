@@ -1,0 +1,303 @@
+{
+  "message": {
+    "identifier": "camt.016.001.04",
+    "name": "GetCurrencyExchangeRateV04",
+    "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.016.001.04",
+    "bodyTag": "GetCcyXchgRate",
+    "out": "camt016",
+    "isoId": "_jwlbdxbvEeiyVv5j1vf1VQ",
+    "definition": "Scope|The GetCurrencyExchangeRate message is sent by a member to the transaction administrator.|It is used to request information on static data maintained by the transaction administrator and related to currency exchange details as maintained for the system operations by the transaction administrator.|Usage|The transaction administrator is in charge of providing the members with business information. The term business information covers all information related to the management of the system, i.e., not related to the transactions created into the system. The type of business information available can vary depending on the system.|When a system manages a pool of accounts in various currencies for a member, there is a need to maintain currency exchange details in between the various currencies and the reporting or base currency. The reporting or base currency is used to calculate the actual position of the members in terms of aggregate limits and balances and allow the system to contain risk within the defined and agreed boundaries. The currency exchange details can be fixed for the entire operational day, or regularly updated according to near real time market feeds.|At any point in time during operating hours of the system, the member can query the transaction administrator to get information about the static data related to a currency exchange details.|The member can request information based on the following elements:|- the currency to be converted (source currency)|- the currency into which the amount is converted (target currency)|This message will be replied to by a ReturnCurrencyExchangeRate message.",
+    "blocks": [
+      {
+        "name": "MessageHeader",
+        "isoId": "_jwlbeRbvEeiyVv5j1vf1VQ",
+        "xmlTag": "MsgHdr",
+        "type": "MessageHeader1",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "CurrencyQueryDefinition",
+        "isoId": "_jwlbexbvEeiyVv5j1vf1VQ",
+        "xmlTag": "CcyQryDef",
+        "type": "CurrencyQueryDefinition3",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "name": "SupplementaryData",
+        "isoId": "_jwlbfRbvEeiyVv5j1vf1VQ",
+        "xmlTag": "SplmtryData",
+        "type": "SupplementaryData1",
+        "min": 0,
+        "max": null
+      }
+    ]
+  },
+  "root": "GetCurrencyExchangeRateV04",
+  "order": [
+    "Max35Text",
+    "ISODateTime",
+    "MessageHeader1",
+    "QueryType2Code",
+    "ActiveOrHistoricCurrencyCode",
+    "CurrencyExchangeSearchCriteria1",
+    "CurrencyExchangeCriteria2",
+    "CurrencyCriteriaDefinition1Choice",
+    "CurrencyQueryDefinition3",
+    "Max350Text",
+    "SupplementaryDataEnvelope1",
+    "SupplementaryData1",
+    "GetCurrencyExchangeRateV04"
+  ],
+  "types": {
+    "Max35Text": {
+      "name": "Max35Text",
+      "kind": "text",
+      "isoId": "_YW1tKdp-Ed-ak6NoX_4Aeg_1913463446",
+      "minLength": 1,
+      "maxLength": 35
+    },
+    "ISODateTime": {
+      "name": "ISODateTime",
+      "kind": "datetime",
+      "isoId": "_YW1tKtp-Ed-ak6NoX_4Aeg_-1624336183"
+    },
+    "MessageHeader1": {
+      "name": "MessageHeader1",
+      "isoId": "_75DzkaMgEeCJ6YNENx4h-w_-613853819",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "MessageIdentification",
+          "isoId": "_75DzkqMgEeCJ6YNENx4h-w_-727692885",
+          "xmlTag": "MsgId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CreationDateTime",
+          "isoId": "_75Dzk6MgEeCJ6YNENx4h-w_-1610926172",
+          "xmlTag": "CreDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "QueryType2Code": {
+      "name": "QueryType2Code",
+      "isoId": "_ZXqQ8dp-Ed-ak6NoX_4Aeg_-1313852264",
+      "kind": "code",
+      "options": [
+        {
+          "value": "ALLL",
+          "name": "All",
+          "isoId": "_ZXqQ8tp-Ed-ak6NoX_4Aeg_-1313851984"
+        },
+        {
+          "value": "CHNG",
+          "name": "Changed",
+          "isoId": "_ZXqQ89p-Ed-ak6NoX_4Aeg_-1313851983"
+        },
+        {
+          "value": "MODF",
+          "name": "Modified",
+          "isoId": "_ZXqQ9Np-Ed-ak6NoX_4Aeg_-1313851982"
+        },
+        {
+          "value": "DELD",
+          "name": "Deleted",
+          "isoId": "_ZXqQ9dp-Ed-ak6NoX_4Aeg_-1313851954"
+        }
+      ]
+    },
+    "ActiveOrHistoricCurrencyCode": {
+      "name": "ActiveOrHistoricCurrencyCode",
+      "isoId": "_bqIp6tp-Ed-ak6NoX_4Aeg_1823330336",
+      "kind": "code",
+      "pattern": "[A-Z]{3,3}"
+    },
+    "CurrencyExchangeSearchCriteria1": {
+      "name": "CurrencyExchangeSearchCriteria1",
+      "isoId": "_IB771ZlZEeeE1Ya-LgRsuQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "SourceCurrency",
+          "isoId": "_IJ8oUZlZEeeE1Ya-LgRsuQ",
+          "xmlTag": "SrcCcy",
+          "type": "ActiveOrHistoricCurrencyCode",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "TargetCurrency",
+          "isoId": "_IJ8oU5lZEeeE1Ya-LgRsuQ",
+          "xmlTag": "TrgtCcy",
+          "type": "ActiveOrHistoricCurrencyCode",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "CurrencyExchangeCriteria2": {
+      "name": "CurrencyExchangeCriteria2",
+      "isoId": "_H5cuNZlZEeeE1Ya-LgRsuQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "NewQueryName",
+          "isoId": "_IB770ZlZEeeE1Ya-LgRsuQ",
+          "xmlTag": "NewQryNm",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SearchCriteria",
+          "isoId": "_IB7705lZEeeE1Ya-LgRsuQ",
+          "xmlTag": "SchCrit",
+          "type": "CurrencyExchangeSearchCriteria1",
+          "kind": "component",
+          "min": 1,
+          "max": null
+        }
+      ]
+    },
+    "CurrencyCriteriaDefinition1Choice": {
+      "name": "CurrencyCriteriaDefinition1Choice",
+      "isoId": "_HxiIV5lZEeeE1Ya-LgRsuQ",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "QueryName",
+          "isoId": "_H5cuMZlZEeeE1Ya-LgRsuQ",
+          "xmlTag": "QryNm",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "NewCriteria",
+          "isoId": "_H5cuM5lZEeeE1Ya-LgRsuQ",
+          "xmlTag": "NewCrit",
+          "type": "CurrencyExchangeCriteria2",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "CurrencyQueryDefinition3": {
+      "name": "CurrencyQueryDefinition3",
+      "isoId": "_Ho80EZlZEeeE1Ya-LgRsuQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "QueryType",
+          "isoId": "_HxiIU5lZEeeE1Ya-LgRsuQ",
+          "xmlTag": "QryTp",
+          "type": "QueryType2Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CurrencyCriteria",
+          "isoId": "_HxiIVZlZEeeE1Ya-LgRsuQ",
+          "xmlTag": "CcyCrit",
+          "type": "CurrencyCriteriaDefinition1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "Max350Text": {
+      "name": "Max350Text",
+      "kind": "text",
+      "isoId": "_YW1tKNp-Ed-ak6NoX_4Aeg_1778996852",
+      "minLength": 1,
+      "maxLength": 350
+    },
+    "SupplementaryDataEnvelope1": {
+      "name": "SupplementaryDataEnvelope1",
+      "kind": "any",
+      "isoId": "_Kz9KwJDrEeSLQ8ob-qtemg"
+    },
+    "SupplementaryData1": {
+      "name": "SupplementaryData1",
+      "isoId": "_Qn0zC9p-Ed-ak6NoX_4Aeg_468227563",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "PlaceAndName",
+          "isoId": "_Qn988Np-Ed-ak6NoX_4Aeg_354388497",
+          "xmlTag": "PlcAndNm",
+          "type": "Max350Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Envelope",
+          "isoId": "_Qn988dp-Ed-ak6NoX_4Aeg_-642683856",
+          "xmlTag": "Envlp",
+          "type": "SupplementaryDataEnvelope1",
+          "kind": "any",
+          "min": 1,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "SupplementaryDataRule",
+          "isoId": "_Qn988tp-Ed-ak6NoX_4Aeg_-1492355109",
+          "text": "This component may not be used without the explicit approval of a SEG and submission to the RA of ISO 20022 compliant structure(s) to be used in the Envelope element."
+        }
+      ]
+    },
+    "GetCurrencyExchangeRateV04": {
+      "name": "GetCurrencyExchangeRateV04",
+      "isoId": "_jwlbdxbvEeiyVv5j1vf1VQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "MessageHeader",
+          "isoId": "_jwlbeRbvEeiyVv5j1vf1VQ",
+          "xmlTag": "MsgHdr",
+          "type": "MessageHeader1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CurrencyQueryDefinition",
+          "isoId": "_jwlbexbvEeiyVv5j1vf1VQ",
+          "xmlTag": "CcyQryDef",
+          "type": "CurrencyQueryDefinition3",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SupplementaryData",
+          "isoId": "_jwlbfRbvEeiyVv5j1vf1VQ",
+          "xmlTag": "SplmtryData",
+          "type": "SupplementaryData1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    }
+  }
+}

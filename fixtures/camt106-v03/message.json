@@ -1,0 +1,35 @@
+{
+  "identifier": "camt.106.001.03",
+  "name": "ChargesPaymentRequestV03",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.106.001.03",
+  "bodyTag": "ChrgsPmtReq",
+  "out": "camt106",
+  "isoId": "_VJH04TrDEe-thIfLZ94a1w",
+  "definition": "The ChargesPaymentRequest message is sent by a financial institution to another financial institution to request the payment of charges, interest and/or other expenses which are previously unknown to the receiver.",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "_VJH0_TrDEe-thIfLZ94a1w",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader130",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Charges",
+      "isoId": "_VJH0_zrDEe-thIfLZ94a1w",
+      "xmlTag": "Chrgs",
+      "type": "Charges6Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_VJH1ATrDEe-thIfLZ94a1w",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

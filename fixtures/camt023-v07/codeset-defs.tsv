@@ -1,0 +1,3 @@
+codeSet	isoId	text
+PaymentType3Code	_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787	Specifies the type, or nature, of the payment.
+ExternalMarketInfrastructure1Code	_8MlMg6MgEeCJ6YNENx4h-w_-216754992	Specifies the market infrastructure identification, as published in an external market infrastructure code list.|This is a synonym of the external cash clearing system code list, extended outside the pure cash domains.|External code sets can be downloaded from www.iso20022.org.

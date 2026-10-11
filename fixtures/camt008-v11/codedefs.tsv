@@ -1,0 +1,11 @@
+codeSet	code	enumName	isoId	text
+PaymentInstrument1Code	BDT	BankDebitTransfer	_zcHKoQ93EeGeV5vP7Mvdig_1028186806	Direct debit instruction in which the debtor and the creditor are financial institutions.
+PaymentInstrument1Code	BCT	BankCreditTransfer	_zcHKog93EeGeV5vP7Mvdig_914347740	Funds transfer in which the debtor and the creditor are financial institutions.
+PaymentInstrument1Code	CDT	CustomerDebitTransfer	_zcHKow93EeGeV5vP7Mvdig_1788951959	Direct debit instruction in which the debtor or the creditor or both are non-financial institutions.
+PaymentInstrument1Code	CCT	CustomerCreditTransfer	_zcHKpA93EeGeV5vP7Mvdig_2114069466	Funds transfer in which the debtor or the creditor or both are non-financial institutions.
+PaymentInstrument1Code	CHK	Cheque	_zcHKpQ93EeGeV5vP7Mvdig_-221004899	Payment instrument is a cheque. (A written order on which instructions are given to an account holder (a financial institution) to pay a stated sum to a named recipient (the payee)).
+PaymentInstrument1Code	BKT	BookTransfer	_zcHKpg93EeGeV5vP7Mvdig_104112608	Transfer that is a movement of cash on the books of the account servicer.
+PaymentInstrument1Code	DCP	DebitCardPayment	_zcQUkA93EeGeV5vP7Mvdig_1182132946	Payment instrument is a debit card. (The payment originated using a debit card scheme.).
+PaymentInstrument1Code	CCP	CreditCardPayment	_zcQUkQ93EeGeV5vP7Mvdig_-2061701278	Payment instrument is a credit card. (The payment originated using a credit card scheme.).
+PaymentInstrument1Code	RTI	Return	_zcQUkg93EeGeV5vP7Mvdig_2119426952	Entry related to a returned or unpaid item.
+PaymentInstrument1Code	CAN	CancellationRequest	_zcQUkw93EeGeV5vP7Mvdig_389397029	Reverse entry that is the result of the cancellation of a previously booked entry.

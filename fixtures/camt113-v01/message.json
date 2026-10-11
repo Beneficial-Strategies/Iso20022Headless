@@ -1,0 +1,35 @@
+{
+  "identifier": "camt.113.001.01",
+  "name": "CashDepositRequestV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.113.001.01",
+  "bodyTag": "CshDpstReq",
+  "out": "camt113",
+  "isoId": "_NKdVwLe1Ee-Dk_aQVAan8Q",
+  "definition": "The CashDepositRequest message is sent by a cash sender to a cash receiver to request that cash can be delivered for deposit into an account.",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "_J6e18re5Ee-Dk_aQVAan8Q",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader132",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CashDepositRequest",
+      "isoId": "_P6yykre5Ee-Dk_aQVAan8Q",
+      "xmlTag": "CshDpstReq",
+      "type": "CashDepositRequest1",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_YuRj4eR7Ee-NFYIkYc90gw",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

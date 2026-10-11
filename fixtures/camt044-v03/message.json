@@ -1,0 +1,59 @@
+{
+  "identifier": "camt.044.001.03",
+  "name": "FundConfirmedCashForecastReportCancellationV03",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.044.001.03",
+  "bodyTag": "FndConfdCshFcstRptCxl",
+  "out": "camt044",
+  "isoId": "_Q7mCEQasEeSrXeb3pHPmbg",
+  "definition": "Scope|A report provider, such as a transfer agent, sends the FundConfirmedCashForecastReportCancellation message to the report user, such as an investment manager or pricing agent, to cancel a previously sent FundConfirmedCashForecastReport message.|Usage|The FundConfirmedCashForecastReportCancellation message is used to cancel an entire FundConfirmedCashForecastReport message that was previously sent by the report provider. This message must contain reference to the of the message being cancelled.|This message may also contain details of the message to be cancelled, but this is not recommended.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "_Q7mCEwasEeSrXeb3pHPmbg",
+      "xmlTag": "MsgId",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "PoolReference",
+      "isoId": "_Q7mCFQasEeSrXeb3pHPmbg",
+      "xmlTag": "PoolRef",
+      "type": "AdditionalReference3",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "PreviousReference",
+      "isoId": "_Q7mCFwasEeSrXeb3pHPmbg",
+      "xmlTag": "PrvsRef",
+      "type": "AdditionalReference3",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "RelatedReference",
+      "isoId": "_Q7mCGQasEeSrXeb3pHPmbg",
+      "xmlTag": "RltdRef",
+      "type": "AdditionalReference3",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "MessagePagination",
+      "isoId": "_Q7mCGwasEeSrXeb3pHPmbg",
+      "xmlTag": "MsgPgntn",
+      "type": "Pagination",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CashForecastReportToBeCancelled",
+      "isoId": "_Q7mCHQasEeSrXeb3pHPmbg",
+      "xmlTag": "CshFcstRptToBeCanc",
+      "type": "FundConfirmedCashForecastReport3",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

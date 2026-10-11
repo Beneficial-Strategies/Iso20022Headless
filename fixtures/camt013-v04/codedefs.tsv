@@ -1,0 +1,5 @@
+codeSet	code	enumName	isoId	text
+MemberStatus1Code	ENBL	Enabled	_zdmYZA93EeGeV5vP7Mvdig_-507442078	Member is live on the system.
+MemberStatus1Code	DSBL	Disabled	_zdmYZQ93EeGeV5vP7Mvdig_943717544	Member is temporarily not live on the system.
+MemberStatus1Code	DLTD	Deleted	_zdmYZg93EeGeV5vP7Mvdig_1865880854	Member is no longer live on the system.
+MemberStatus1Code	JOIN	Joining	_zdviUA93EeGeV5vP7Mvdig_1111130980	Member is joining and will soon be enabled on the system.

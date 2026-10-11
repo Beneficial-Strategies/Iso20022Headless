@@ -1,0 +1,20 @@
+choice	memberId	memberName	text
+AccountCriteria4Choice	_6PAcwTEyEe6g-ffJsqGiSA	QueryName	Recalls the criteria (search and return criteria) defined in a preceding query.
+AccountCriteria4Choice	_6PAcwzEyEe6g-ffJsqGiSA	NewCriteria	Explicitly defines the query criteria.
+AccountIdentificationSearchCriteria2Choice	_g7QEuWliEeGaMcKyqKNRfQ_-950111322	Equal	Search for one or more accounts based on exact identification of the account(s).
+AccountIdentificationSearchCriteria2Choice	_g7QEumliEeGaMcKyqKNRfQ_-1833344609	ContainText	Search for one or more accounts based on partial identification of the account(s).
+AccountIdentificationSearchCriteria2Choice	_g7QEu2liEeGaMcKyqKNRfQ_-1947183675	NotContainText	Search for one or more accounts based on a pattern that cannot be contained in the account identification.
+BalanceType11Choice	_YGEeA3hZEeidzqjNEfehPg	Code	Specifies the nature of a balance, in a coded form.
+BalanceType11Choice	_YGEeBXhZEeidzqjNEfehPg	Proprietary	Specifies the nature of a balance, in a proprietary form.
+DateAndDateTimeSearch4Choice	_68F8QX3sEeibM9CPDGCw0g	DateTime	Patterns to search a date time.
+DateAndDateTimeSearch4Choice	_68F8Q33sEeibM9CPDGCw0g	Date	Patterns to search a date.
+DateTimeSearch2Choice	_7Gq0kX3sEeibM9CPDGCw0g	FromDateTime	Start date of the range.
+DateTimeSearch2Choice	_7Gq0k33sEeibM9CPDGCw0g	ToDateTime	End date of the range.
+DateTimeSearch2Choice	_7Gq0lX3sEeibM9CPDGCw0g	FromToDateTime	Particular time span specified between a start date and an end date.
+DateTimeSearch2Choice	_7Gq0l33sEeibM9CPDGCw0g	EqualDateTime	Specified date to match.
+DateTimeSearch2Choice	_7Gq0mX3sEeibM9CPDGCw0g	NotEqualDateTime	Specified date to be excluded from the search.
+DatePeriodSearch1Choice	_aQotYYaAEee8r9VKRbnJSg	FromDate	Start date of the range.
+DatePeriodSearch1Choice	_aQotY4aAEee8r9VKRbnJSg	ToDate	End date of the range.
+DatePeriodSearch1Choice	_aQotZYaAEee8r9VKRbnJSg	FromToDate	Particular time span specified between a start date and an end date.
+DatePeriodSearch1Choice	_aQotZ4aAEee8r9VKRbnJSg	EqualDate	Specified date to match.
+DatePeriodSearch1Choice	_aQotaYaAEee8r9VKRbnJSg	NotEqualDate	Specified date to be excluded from the search.

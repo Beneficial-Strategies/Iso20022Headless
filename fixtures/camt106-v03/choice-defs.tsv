@@ -1,0 +1,4 @@
+choice	memberId	memberName	text
+Charges6Choice	_DuxoQT0QEe-thIfLZ94a1w	Single	Charges related to a single payment transaction.
+Charges6Choice	_DuxoQz0QEe-thIfLZ94a1w	PerTransaction	Charges broken down per payment transaction.
+Charges6Choice	_DuxoRT0QEe-thIfLZ94a1w	PerType	Charges broken down per type of charges.

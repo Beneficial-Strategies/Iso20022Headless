@@ -1,0 +1,45 @@
+choice	memberId	memberName	text
+Number3Choice	_QrP6ddp-Ed-ak6NoX_4Aeg_-969476750	Short	Number of maximum 3 numeric text.
+Number3Choice	_QrP6dtp-Ed-ak6NoX_4Aeg_1752980794	Long	Number of maximum 5 numeric text. Is only to be used in a delta statement.
+Period7Choice	_VQk9UTwGEemGDJYTly2NCA	FromDateTimeToDateTime	Time span defined by a start date and time, and an end date and time.
+Period7Choice	_VQk9WTwGEemGDJYTly2NCA	FromDateToDate	Time span defined by a start date and time, and an end date and time.
+Frequency22Choice	_Z-H2o_3-EeS5i-mwuUyZxw	Code	Frequency expressed as an ISO 20022 code.
+Frequency22Choice	_Z-H2q_3-EeS5i-mwuUyZxw	Proprietary	Frequency expressed as a proprietary code.
+UpdateType15Choice	_Xt8p0zeQEeWm5uvLSn0jEw	Code	Indicates whether the report is complete or contains changes only.
+UpdateType15Choice	_Xt8p1TeQEeWm5uvLSn0jEw	Proprietary	Indicates whether the report is complete or contains changes only.
+IntraBalanceOrOperationalError10Choice	_3fKyYTEyEe6g-ffJsqGiSA	Cancellations	Further details of the intrabalance cancellation transactions.
+IntraBalanceOrOperationalError10Choice	_3fKyYzEyEe6g-ffJsqGiSA	OperationalError	Operational error resulting from a rejection.
+ProcessingStatus69Choice	_1y2s8eF7EeWCAvUNsZ5u6g	PendingCancellation	Cancellation is pending processing.
+ProcessingStatus69Choice	_1y2s-eF7EeWCAvUNsZ5u6g	Rejected	Instruction or request has been rejected for further processing.
+ProcessingStatus69Choice	_1y2tAeF7EeWCAvUNsZ5u6g	Repair	Instruction or request is accepted but in repair.
+ProcessingStatus69Choice	_1y2tCeF7EeWCAvUNsZ5u6g	AcknowledgedAccepted	Instruction has been acknowledged by the account servicer.
+ProcessingStatus69Choice	_1y2tEeF7EeWCAvUNsZ5u6g	Proprietary	Status that cannot be reported using one of the available standard status.
+ProcessingStatus69Choice	_1y2tGeF7EeWCAvUNsZ5u6g	Denied	Instruction/Request will not be executed.
+ProcessingStatus69Choice	_1y2tIeF7EeWCAvUNsZ5u6g	Cancelled	Cancellation requested executed.
+PendingStatus39Choice	_jlj5UTq3EeWyoP0PbocV1Q	NoSpecifiedReason	Indicates that there is no reason available or to report.
+PendingStatus39Choice	_jlj5WTq3EeWyoP0PbocV1Q	Reason	Specifies the reason of the pending status.
+PendingReason30Choice	_kk8SsTq3EeWyoP0PbocV1Q	Code	Specifies the reason why the cancellation request is pending.
+PendingReason30Choice	_kk8SuTq3EeWyoP0PbocV1Q	Proprietary	Specifies the reason why the cancellation request is pending.
+RejectionOrRepairStatus39Choice	_cDbr8eF8EeWCAvUNsZ5u6g	NoSpecifiedReason	Indicates that there is no reason available or to report.
+RejectionOrRepairStatus39Choice	_cDbr-eF8EeWCAvUNsZ5u6g	Reason	Specifies the reason of the rejection or repair status.
+RejectionAndRepairReason33Choice	_cadr4eF8EeWCAvUNsZ5u6g	Code	Specifies the reason why the instruction/request has a repair or rejection status.
+RejectionAndRepairReason33Choice	_cadr6eF8EeWCAvUNsZ5u6g	Proprietary	Specifies the reason why the instruction/request has a repair or rejection status.
+AcknowledgedAcceptedStatus24Choice	_O9sLgTq5EeWyoP0PbocV1Q	NoSpecifiedReason	Indicates that there is no reason available or to report.
+AcknowledgedAcceptedStatus24Choice	_O9sLiTq5EeWyoP0PbocV1Q	Reason	Specifies the reason of the acknowledged accepted status.
+AcknowledgementReason15Choice	_P-QQoTq5EeWyoP0PbocV1Q	Code	Specifies additional information about the processed instruction.
+AcknowledgementReason15Choice	_P-QQqTq5EeWyoP0PbocV1Q	Proprietary	Specifies additional information about the processed instruction.
+DeniedStatus16Choice	_t0nF0Ts8EeWRTLSN0i0tng	NoSpecifiedReason	Indicates that there is no reason available or to report.
+DeniedStatus16Choice	_t0nF2Ts8EeWRTLSN0i0tng	Reason	Specifies the reason of the denied status.
+DeniedReason16Choice	_u4TXcTs8EeWRTLSN0i0tng	Code	Specifies the reason why the request was denied.
+DeniedReason16Choice	_u4TXeTs8EeWRTLSN0i0tng	Proprietary	Specifies the reason why the request was denied.
+CancellationStatus15Choice	_MPmooTs9EeWRTLSN0i0tng	NoSpecifiedReason	Indicates that there is no reason available or to report.
+CancellationStatus15Choice	_MPmoqTs9EeWRTLSN0i0tng	Reason	Specifies the reason of the cancellation status.
+CancellationReason21Choice	_NUMSITs9EeWRTLSN0i0tng	Code	Specifies the reason why the related instruction is cancelled, or the related cancellation request is executed.
+CancellationReason21Choice	_NUMSKTs9EeWRTLSN0i0tng	Proprietary	Specifies the reason why the related instruction is cancelled, or the related cancellation request is executed.
+CashBalanceType3Choice	_NW5nQTqFEemJ3KLLPeYl6g	Code	Cash balance expressed in a coded form.
+CashBalanceType3Choice	_NW5nSTqFEemJ3KLLPeYl6g	Proprietary	Cash balance expressed in a proprietary form.
+FinancialInstrumentQuantity1Choice	_SotssNp-Ed-ak6NoX_4Aeg_-1672157635	Unit	Quantity expressed as a number, for example, a number of shares.
+FinancialInstrumentQuantity1Choice	_Sotssdp-Ed-ak6NoX_4Aeg_-1672157618	FaceAmount	Quantity expressed as an amount representing the face amount, that is, the principal, of a debt instrument.
+FinancialInstrumentQuantity1Choice	_Sotsstp-Ed-ak6NoX_4Aeg_-1672157600	AmortisedValue	Quantity expressed as an amount representing the current amortised face amount of a bond, for example, a periodic reduction/increase of a bond's principal amount.
+PriorityNumeric4Choice	_sC_TATtDEeWRTLSN0i0tng	Numeric	Specifies the execution priority of the instruction with a number between 0001 and 9999.
+PriorityNumeric4Choice	_sC_TCTtDEeWRTLSN0i0tng	Proprietary	Specifies the execution priority of the instruction with a proprietary scheme.

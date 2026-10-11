@@ -1,0 +1,35 @@
+{
+  "identifier": "camt.108.001.02",
+  "name": "ChequeCancellationOrStopRequestV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.108.001.02",
+  "bodyTag": "ChqCxlOrStopReq",
+  "out": "camt108",
+  "isoId": "_R3E5JTEZEe6kQ-WGAhcVPQ",
+  "definition": "The ChequeCancellationOrStopRequest message is sent by a drawer bank, or a bank acting on behalf of the drawer bank, to the agent on which a cheque has been drawn (the drawee bank) to request for the cancellation of the presentment and/or stop the payment of the cheque referred to in the message.",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "_R3E5MzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader103",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Cheque",
+      "isoId": "_R3E5NTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Chq",
+      "type": "Cheque20",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3E5NzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

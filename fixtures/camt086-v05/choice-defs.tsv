@@ -1,0 +1,16 @@
+choice	memberId	memberName	text
+Party56Choice	_IYlvITFKEe651u5xu3f5iw	OrganisationIdentification	Unique and unambiguous way to identify an organisation.
+Party56Choice	_IYlvIzFKEe651u5xu3f5iw	FinancialInstitutionIdentification	Unique and unambiguous identification of a financial institution.
+ResidenceLocation1Choice	_6Qsqk5qlEeGSON8vddiWzQ_-2009722376	Country	Specifies the account owner's resident country.
+ResidenceLocation1Choice	_6QsqlJqlEeGSON8vddiWzQ_218234211	Area	Specifies the account owner's resident geographical region or area.
+BillingRateIdentification1Choice	_6Q10h5qlEeGSON8vddiWzQ_1326961211	Code	Specifies the billing rate identification code, as defined in an external code list.
+BillingRateIdentification1Choice	_6Q_lgJqlEeGSON8vddiWzQ_-1814132724	Proprietary	Specifies the billing rate identification code, as defined in a proprietary format.
+BillingBalanceType1Choice	_6Q_lhZqlEeGSON8vddiWzQ_-1378614668	Code	Defines the type of billing balance, as published in an external billing balance type code list.
+BillingBalanceType1Choice	_6Q_lhpqlEeGSON8vddiWzQ_1258331398	Proprietary	Defines the type of billing balance, in a proprietary format.
+BillingCompensationType1Choice	_6Q_lgpqlEeGSON8vddiWzQ_-1941802913	Code	Defines the type of billing compensation, as published in an external billing compensation type code list.
+BillingCompensationType1Choice	_6Q_lg5qlEeGSON8vddiWzQ_1364627181	Proprietary	Defines the type of billing compensation, as defined in a proprietary format.
+BillingSubServiceQualifier1Choice	_6PphwZqlEeGSON8vddiWzQ_-1237515416	Code	Specifies the contents of the sub service qualifier, in a coded form.
+BillingSubServiceQualifier1Choice	_6PphwpqlEeGSON8vddiWzQ_-1045448850	Proprietary	Specifies the contents of the sub service qualifier, in a free-text form.
+BillingMethod1Choice	_6P9DspqlEeGSON8vddiWzQ_1371622889	MethodA	Tax values are based on tax calculation method A.
+BillingMethod1Choice	_6P9Ds5qlEeGSON8vddiWzQ_1047988105	MethodB	Tax values are based on tax calculation method B.
+BillingMethod1Choice	_6P9DtJqlEeGSON8vddiWzQ_1766081075	MethodD	Tax values are based on tax calculation method D.

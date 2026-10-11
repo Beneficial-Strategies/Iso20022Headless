@@ -1,0 +1,3 @@
+codeSet	isoId	text
+QueryType3Code	_ZXqQ9tp-Ed-ak6NoX_4Aeg_1181990652	Specifies the nature of the request, that is whether all information be returned or only information that has changed since the last similar request was returned.
+FloorLimitType1Code	_aqzT0tp-Ed-ak6NoX_4Aeg_-1031522617	Indicates whether the floor limit applies to credit, to debit or to both credit and debit entries.

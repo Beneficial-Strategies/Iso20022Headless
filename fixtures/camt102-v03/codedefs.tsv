@@ -1,0 +1,10 @@
+codeSet	code	enumName	isoId	text
+Frequency2Code	YEAR	Annual	_asTIoNp-Ed-ak6NoX_4Aeg_1506269390	Event takes place every year or once a year.
+Frequency2Code	MNTH	Monthly	_asTIodp-Ed-ak6NoX_4Aeg_1506270304	Event takes place every month or once a month.
+Frequency2Code	QURT	Quarterly	_asTIotp-Ed-ak6NoX_4Aeg_1506270784	Event takes place every three months or four times a year.
+Frequency2Code	MIAN	SemiAnnual	_asTIo9p-Ed-ak6NoX_4Aeg_1506271251	Event takes place every six months or two times a year.
+Frequency2Code	WEEK	Weekly	_asTIpNp-Ed-ak6NoX_4Aeg_1506271732	Event takes place once a week.
+Frequency2Code	DAIL	Daily	_asTIpdp-Ed-ak6NoX_4Aeg_1506271774	Event takes place every day.
+Frequency2Code	ADHO	Adhoc	_asTIptp-Ed-ak6NoX_4Aeg_1507192308	Event takes place on request or as necessary.
+Frequency2Code	INDA	IntraDay	_asTIp9p-Ed-ak6NoX_4Aeg_1507192896	Event takes place several times a day.
+Frequency2Code	OVNG	Overnight	_asTIqNp-Ed-ak6NoX_4Aeg_-886985582	Event takes place overnight.

@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+ChequeCancellationReason1Choice	_kwwc_btvEeq_cfXrH83Rcw	Code	Reason, as published in an external code set.
+ChequeCancellationReason1Choice	_kwwc_LtvEeq_cfXrH83Rcw	Proprietary	Reason, in a proprietary form.

@@ -1,0 +1,6 @@
+codeSetName	isoId	restrictionOf	code	enumName
+ExternalSystemMemberType1Code	_7geSZnhfEeidzqjNEfehPg	ExternalSystemMemberTypeCode	*EXTERNAL*	minLength=1 maxLength=4; ~5 codes (not enumerated)
+MemberStatus1Code	_zdmYYw93EeGeV5vP7Mvdig_311511603	MemberStatusCode	ENBL	Enabled
+MemberStatus1Code	_zdmYYw93EeGeV5vP7Mvdig_311511603	MemberStatusCode	DSBL	Disabled
+MemberStatus1Code	_zdmYYw93EeGeV5vP7Mvdig_311511603	MemberStatusCode	DLTD	Deleted
+MemberStatus1Code	_zdmYYw93EeGeV5vP7Mvdig_311511603	MemberStatusCode	JOIN	Joining

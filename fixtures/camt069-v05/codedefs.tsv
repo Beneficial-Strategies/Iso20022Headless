@@ -1,0 +1,8 @@
+codeSet	code	enumName	isoId	text
+StandingOrderQueryType1Code	SLST	StandingOrderList	_8N7QV6MgEeCJ6YNENx4h-w_-544859245	Used to query the list of liquidity transfer standing orders defined in the system.
+StandingOrderQueryType1Code	SDTL	StandingOrderDetails	_8N7QWKMgEeCJ6YNENx4h-w_1890972049	Used to query a specific liquidity transfer standing order based on a set of search criteria.
+StandingOrderQueryType1Code	TAPS	TotalAmountPerStandingOrder	_8OFBUKMgEeCJ6YNENx4h-w_501190329	Used to query the total amounts of predefined and user defined liquidity transfer standing orders for both defined and not yet executed orders.
+StandingOrderQueryType1Code	SLSL	StandingOrderLinkSetList	_8OFBUaMgEeCJ6YNENx4h-w_-1508766529	Used to query the list of liquidity transfer standing orders defined in a specific link set of sequenced standing orders. The link set is a collection of standing order defined in a specific sequence.
+StandingOrderQueryType1Code	SWLS	StandingOrderDetailsWithinLinkSet	_8OFBUqMgEeCJ6YNENx4h-w_-105628684	Used to query a specific standing order within a link set of sequenced liquidity transfer standing orders. The link set is a collection of standing order defined in a specific sequence.
+StandingOrderType1Code	USTO	UserDefinedStandingOrder	_8OFBVKMgEeCJ6YNENx4h-w_1846866247	Liquidity transfer standing order type, that has been customised or defined to the specific need of the user.
+StandingOrderType1Code	PSTO	PredefinedStandingOrder	_8OFBVaMgEeCJ6YNENx4h-w_328114765	Liquidity transfer standing order type, as predefined in the system.

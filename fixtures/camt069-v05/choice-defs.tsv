@@ -1,0 +1,7 @@
+choice	memberId	memberName	text
+RequestType3Choice	_72rN9KMgEeCJ6YNENx4h-w_1386424077	Code	Liquidity transfer request type, in a coded form.
+RequestType3Choice	_72rN9aMgEeCJ6YNENx4h-w_705337914	Proprietary	Liquidity transfer request type, in a proprietary form.
+StandingOrderCriteria5Choice	_0qxYITEyEe6g-ffJsqGiSA	QueryName	Recalls the criteria (search and return criteria) defined in a preceding query.
+StandingOrderCriteria5Choice	_0qxYIzEyEe6g-ffJsqGiSA	NewCriteria	Explicitly defines the query criteria.
+StandingOrderType1Choice	_73bb4aMgEeCJ6YNENx4h-w_-1852211918	Code	Liquidity transfer standing order type, in a coded form.
+StandingOrderType1Choice	_73bb4qMgEeCJ6YNENx4h-w_-591387142	Proprietary	Liquidity transfer standing order type, in a free text form.

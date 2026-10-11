@@ -1,0 +1,12 @@
+choice	memberId	memberName	text
+PaymentType4Choice	_K7v_8RbwEeOy-PlRuFSUzQ	Code	Type, or nature, of the payment, such as express payment.|.
+PaymentType4Choice	_K7v_8xbwEeOy-PlRuFSUzQ	Proprietary	Payment type that is not included in a predefined list.
+Amount2Choice	_75DzlaMgEeCJ6YNENx4h-w_-106626338	AmountWithoutCurrency	Number of monetary units specified in a currency where the unit of currency is implied by the context.
+Amount2Choice	_75DzlqMgEeCJ6YNENx4h-w_776606949	AmountWithCurrency	Number of monetary units specified in a currency where the unit of currency is explicit.
+SystemIdentification2Choice	_8BZ3QqMgEeCJ6YNENx4h-w_-129556950	MarketInfrastructureIdentification	Clearing service selected for a transaction.
+SystemIdentification2Choice	_8BZ3Q6MgEeCJ6YNENx4h-w_-559189317	Country	Country in which the system is located.
+MarketInfrastructureIdentification1Choice	_8BQtWaMgEeCJ6YNENx4h-w_-1124219834	Code	Infrastructure through which the payment instruction is processed, as published in an external clearing system identification code list.
+MarketInfrastructureIdentification1Choice	_8BZ3QKMgEeCJ6YNENx4h-w_-1719940070	Proprietary	Clearing system identification in a proprietary form.|.
+MemberIdentification3Choice	_iR9Bg3SbEeiH1ZOt2UD8vQ	BICFI	Business identification code of the member financial institution.
+MemberIdentification3Choice	_iR9BhXSbEeiH1ZOt2UD8vQ	ClearingSystemMemberIdentification	Information used to identify a member within a clearing system.
+MemberIdentification3Choice	_iR9Bh3SbEeiH1ZOt2UD8vQ	Other	Unique identification of an agent, as assigned by an institution, using an identification scheme.

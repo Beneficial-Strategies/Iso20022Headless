@@ -72,6 +72,7 @@ import {
   Priority3CodeSchema,
   ISOTimeSchema,
   SettlementTimeRequest2Schema,
+  Max210TextSchema,
   ExternalPurpose1CodeSchema,
   Purpose2ChoiceSchema,
   RemittanceInformation2Schema,
@@ -89,8 +90,6 @@ export const GroupHeader119Schema = z.strictObject({
   InstructingAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
   InstructedAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
 });
-
-export const Max210TextSchema = textType({min: 1, max: 210});
 
 export const DirectDebitTransactionInformation33Schema = z.strictObject({
   PaymentIdentification: PaymentIdentification13Schema,
@@ -156,13 +155,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "InstructingAgent", isoId: "_2_MR2TEyEe6g-ffJsqGiSA", xmlTag: "InstgAgt", displayName: displayName("InstructingAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
       f({ name: "InstructedAgent", isoId: "_2_MR2zEyEe6g-ffJsqGiSA", xmlTag: "InstdAgt", displayName: displayName("InstructedAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
     ],
-  },
-  "Max210Text": {
-    name: "Max210Text",
-    isoId: "_YWiyNNp-Ed-ak6NoX_4Aeg_1281143207",
-    kind: "text",
-    minLength: 1,
-    maxLength: 210,
   },
   "DirectDebitTransactionInformation33": {
     name: "DirectDebitTransactionInformation33",
@@ -307,6 +299,7 @@ export const typeDescriptors: TypeDescriptors = {
   "Priority3Code": sharedTypeDescriptors["Priority3Code"]!,
   "ISOTime": sharedTypeDescriptors["ISOTime"]!,
   "SettlementTimeRequest2": sharedTypeDescriptors["SettlementTimeRequest2"]!,
+  "Max210Text": sharedTypeDescriptors["Max210Text"]!,
   "ExternalPurpose1Code": sharedTypeDescriptors["ExternalPurpose1Code"]!,
   "Purpose2Choice": sharedTypeDescriptors["Purpose2Choice"]!,
   "RemittanceInformation2": sharedTypeDescriptors["RemittanceInformation2"]!,

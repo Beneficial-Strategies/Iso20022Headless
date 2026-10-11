@@ -1,0 +1,14 @@
+choice	memberId	memberName	text
+LimitCriteria7Choice	_zV9hUTEyEe6g-ffJsqGiSA	QueryName	Recalls the criteria (search and return criteria) defined in a preceding query.
+LimitCriteria7Choice	_zV9hUzEyEe6g-ffJsqGiSA	NewCriteria	Defines the criteria based on which the information is extracted.
+ActiveAmountRange3Choice	_OvM9s5lcEeeE1Ya-LgRsuQ	ImpliedCurrencyAndAmountRange	Expresses an amount or an amount range with an explicit debit/credit indicator and where the currency is implied.
+ActiveAmountRange3Choice	_OvM9tZlcEeeE1Ya-LgRsuQ	CurrencyAndAmountRange	Expresses an amount or an amount range with the currency and where the credit/debit indicator is explicit.
+PercentageRange1Choice	_7_BRqaMgEeCJ6YNENx4h-w_-1383081859	From	Lower boundary of a range of percentage rates.
+PercentageRange1Choice	_7_BRqqMgEeCJ6YNENx4h-w_-1593914623	To	Upper boundary of a range of percentage rates.
+PercentageRange1Choice	_7_LCoKMgEeCJ6YNENx4h-w_-1139827354	FromTo	Range of valid percentage rates.
+PercentageRange1Choice	_7_LCoaMgEeCJ6YNENx4h-w_-73974136	Equal	Exact percentage rate must match to be considered valid.
+PercentageRange1Choice	_7_LCoqMgEeCJ6YNENx4h-w_-1954279776	NotEqual	Value that percentage rate must not match to be considered valid.
+DateAndPeriod2Choice	_76Z3ZqMgEeCJ6YNENx4h-w_1434508245	Date	Specific date within a period.
+DateAndPeriod2Choice	_76Z3Z6MgEeCJ6YNENx4h-w_-1822732589	Period	Time span defined by a start date and an end date.
+DateAndPeriod2Choice	_76joYKMgEeCJ6YNENx4h-w_-1958941273	FromDate	Date at which the range starts.
+DateAndPeriod2Choice	_76joYaMgEeCJ6YNENx4h-w_1338953670	ToDate	Date at which the range ends.

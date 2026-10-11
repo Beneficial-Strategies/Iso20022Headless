@@ -1,0 +1,17 @@
+codeSet	isoId	text
+BillingStatementStatus1Code	_6VUE0pqlEeGSON8vddiWzQ_720168746	Defines the status of the billing statement.
+AccountLevel2Code	_6Uas9pqlEeGSON8vddiWzQ_-1016370047	Defines the level of an account within the account hierarchy.
+AccountLevel1Code	_6Uas85qlEeGSON8vddiWzQ_44836722	Defines the level of an account within the account hierarchy.
+CompensationMethod1Code	_6Vm_x5qlEeGSON8vddiWzQ_2080901699	Defines if and how charges and taxes due are paid to the financial institution.
+BillingTaxCalculationMethod1Code	_6Vd10pqlEeGSON8vddiWzQ_-401381436	Defines the tax calculation method.
+ExternalBillingRateIdentification1Code	_6WzSlpqlEeGSON8vddiWzQ_1145255535	Specifies the type of billing rate or factor, as published in an external billing rate identification code list.|External code sets can be downloaded from www.iso20022.org.
+ExternalBillingBalanceType1Code	_6W9DkJqlEeGSON8vddiWzQ_367593430	Specifies the balance of the billing service, as published in an external billing balance code set.|External code sets can be downloaded from www.iso20022.org.
+BillingCurrencyType1Code	_6WXNs5qlEeGSON8vddiWzQ_-124984192	Defines the type of currency to be used for the billing of a service.
+ExternalBillingCompensationType1Code	_6WzSl5qlEeGSON8vddiWzQ_882310239	Specifies the type of billing compensation to be applied, as published in an external billing compensation type code set.|External code sets can be downloaded from www.iso20022.org.
+BillingCurrencyType2Code	_6WzSkZqlEeGSON8vddiWzQ_-1596461946	Defines the type of currency to be used for the billing of a service.
+BillingSubServiceQualifier1Code	_6WgXpJqlEeGSON8vddiWzQ_-2011541661	Qualifies the content of the subservice code.
+BillingChargeMethod1Code	_6Ukd9pqlEeGSON8vddiWzQ_1265216021	Defines how the billing charge is calculated.
+ServicePaymentMethod1Code	_6V6hxZqlEeGSON8vddiWzQ_1243106424	Defines the method for the payment of the services charge.
+ServiceTaxDesignation1Code	_6WNcspqlEeGSON8vddiWzQ_908042461	Defines the taxable status of the service.
+BalanceAdjustmentType1Code	_6URjBJqlEeGSON8vddiWzQ_7389297	Defines the type of allowed balance adjustment.
+ServiceAdjustmentType1Code	_6VwwyJqlEeGSON8vddiWzQ_96495385	Defines the type of allowed service adjustment.

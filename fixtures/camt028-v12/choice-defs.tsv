@@ -1,0 +1,6 @@
+choice	memberId	memberName	text
+UnderlyingTransaction8Choice	_7mJdkTEsEe6GxLzpkVnWYg	Initiation	Set of elements used to reference the details of the original payment initiation.
+UnderlyingTransaction8Choice	_7mJdkzEsEe6GxLzpkVnWYg	Interbank	Set of elements used to reference the details of the original interbank payment transaction.
+UnderlyingTransaction8Choice	_7mJdlTEsEe6GxLzpkVnWYg	StatementEntry	Reference details on the underlying statement cash entry.
+MandateRelatedData3Choice	_wJtnwTEyEe6g-ffJsqGiSA	DirectDebitMandate	Specific direct debit mandate data.
+MandateRelatedData3Choice	_wJtnwzEyEe6g-ffJsqGiSA	CreditTransferMandate	Specific credit transfer mandate data.

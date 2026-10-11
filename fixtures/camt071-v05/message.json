@@ -1,0 +1,35 @@
+{
+  "identifier": "camt.071.001.05",
+  "name": "DeleteStandingOrderV05",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.071.001.05",
+  "bodyTag": "DelStgOrdr",
+  "out": "camt071",
+  "isoId": "_R3IjfzEZEe6kQ-WGAhcVPQ",
+  "definition": "The DeleteStandingOrder message is sent by the system member to delete one or more standing orders within the static data held by the system transaction administrator.",
+  "blocks": [
+    {
+      "name": "MessageHeader",
+      "isoId": "_R3IjhzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "MsgHdr",
+      "type": "MessageHeader1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "StandingOrderDetails",
+      "isoId": "_R3IjiTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "StgOrdrDtls",
+      "type": "StandingOrderOrAll4Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3IjizEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

@@ -23,8 +23,8 @@ describe('business rule coverage', () => {
   const named = (status: string) => all.filter((r) => r.result.status === status).map((r) => `${r.type}.${r.rule}`);
 
   it('finds every rule and checks the machine-readable ones', () => {
-    expect(all.length).toBe(375);
-    expect(named('pass').length + named('fail').length).toBe(270);
+    expect(all.length).toBe(499);
+    expect(named('pass').length + named('fail').length).toBe(364);
   });
 
   it('cannot check five rules, and says why: two compare with a literal that is not a code value, three name a field that does not exist (spec typos and a copied rule)', () => {
@@ -38,7 +38,7 @@ describe('business rule coverage', () => {
     });
   });
 
-  it('has no machine form for guidelines, the supplementary-data rule, and twelve more rules that exist only as prose in the spec', () => {
+  it('has no machine form for guidelines, the supplementary-data rule, and thirty-five more rules that exist only as prose in the spec', () => {
     const odd = named('prose-only').filter((n) => !/Guideline$|SupplementaryDataRule$/.test(n));
     expect(odd.sort()).toEqual([
       'BankTransactionCodeStructure4.FamilyAndSubFamilyRule',
@@ -53,13 +53,36 @@ describe('business rule coverage', () => {
       'PaymentInstruction48.CreditorAgentRule',
       'PaymentInstruction48.CreditorAndOrCreditorAgentRule',
       'PaymentInstruction48.PaymentTypeInformationRule',
+      'BreakdownByUserDefinedParameter3.UserDefinedRule',
+      'BusinessInformationCriteria1.ReturnCriteriaAndOrSearchCriteriaRule',
+      'EstimatedFundCashForecast5.ExceptionalCashFlowIndicatorRule',
+      'EstimatedFundCashForecast6.ExceptionalCashFlowIndicatorRule',
+      'Extension1.ExtensionRule',
+      'FundCashForecast6.ExceptionalCashFlowIndicatorRule',
+      'FundCashForecast7.ExceptionalCashFlowIndicatorRule',
+      'IntraBalance5.AdditionalDetailsRule',
+      'IntraBalance5.BalanceFromToRule',
+      'IntraBalanceCancellation7.CashAccountOwnerRule',
+      'IntraBalanceCancellation7.CashAccountRule',
+      'IntraBalanceCancellation7.CashAccountServicerRule',
+      'IntraBalanceCancellation7.ProcessingStatusRule',
+      'IntraBalanceMovementCancellationReportV02.ActivityIndicatorNoRule',
+      'IntraBalanceMovementCancellationReportV02.ActivityIndicatorYesRule',
+      'IntraBalanceMovementCancellationReportV02.QueryTypeFullRule',
+      'IntraBalanceMovementCancellationReportV02.QueryTypeStatusRule',
+      'IntraBalanceReport5.ReportNumberRule',
+      'MemberCriteria4.ReturnCriteriaAndOrSearchCriteriaRule',
+      'ProprietaryReason4.AdditionalReasonInforrmationRule',
+      'ReportHeader6.MessagePaginationRule',
+      'StandingOrder10.ModifyStandingOrderValueSetRule',
+      'StructuredLongPostalAddress1.StreetNameAndOrPostOfficeBoxRule',
     ].sort());
   });
 
   it('knows every rule with a list inside a list, and each has a behavior test', () => {
     // evaluateExpression handles /A[*]/B[*] (see rules.test.ts, pain002.test.ts and rules-camt.test.ts). If another rule ever uses it,
     // this fails so that someone writes a behavior test for that rule too. rule-satisfiability.test.ts proves each of these can both
-    // pass and fail; rules-camt.test.ts tests the "a case may be given at one level only" shape by behavior, pain002.test.ts the status reasons.
+    // pass and fail; rules-camt.test.ts tests the "a case may be given at one level only" shape by behavior, pain002.test.ts the status reasons, rules-camt-batch2.test.ts the charges rules.
     const nested: string[] = [];
     for (const t of Object.values(allTypeDescriptors)) {
       for (const r of t.rules ?? []) {
@@ -80,6 +103,11 @@ describe('business rule coverage', () => {
       'UnderlyingTransaction35.GroupOrInitiationTransactionResolvedCaseRule',
       'UnderlyingTransaction37.GroupOrTransactionCaseRule',
       'ResolutionOfInvestigationV14.MessageOrInitiationTransactionResolvedCaseRule',
+      'ChargesPaymentNotificationV03.ChargesAccountHeaderOrType1Rule',
+      'ChargesPaymentNotificationV03.ChargesAccountHeaderOrType2Rule',
+      'ChargesPaymentRequestV03.ChargesAccountAgentHeaderOrType1Rule',
+      'ChargesPaymentRequestV03.ChargesAccountAgentHeaderOrType2Rule',
+      'ChargesPaymentRequestV03.ChargesRequestorGroupHeaderRule',
     ].sort());
   });
 });

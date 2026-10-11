@@ -1,0 +1,2 @@
+codeSetName	isoId	restrictionOf	code	enumName
+ExternalAgentInstruction1Code	_rLbaINA4EeeCAfThR1cp_Q	ExternalAgentInstructionCode	*EXTERNAL*	minLength=1 maxLength=4; ~10 codes (not enumerated)

@@ -1,0 +1,819 @@
+{
+  "message": {
+    "identifier": "camt.018.001.05",
+    "name": "GetBusinessDayInformationV05",
+    "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.018.001.05",
+    "bodyTag": "GetBizDayInf",
+    "out": "camt018",
+    "isoId": "_jwlbbxbvEeiyVv5j1vf1VQ",
+    "definition": "Scope|The GetBusinessDayInformation message is sent by a member to the transaction administrator.|It is used to request information on different types of administrative data linked to the system.|Usage|The transaction administrator is in charge of providing the members with business information. The term business day information covers all information related to the management of the system, not related to the transactions created in the system. The type of business day information available can vary depending on the system.|At any time during the operating hours of the system, the member can query the transaction administrator to get information about the static data of the system.|The member can request information based on the following elements:|- identification of the system|- currency within the system concerned|- status of the system|- period of availability of a given currency linked to the system concerned (in case the system handles more than one currency)|- closure information (dates when the system will be inactive and reasons for this inactivity)|- event indicator (types of event and precise timing of their occurrence within the system concerned)|This message will be replied to by a ReturnBusinessDayInformation message. Additional information on the generic design of the Get/Return messages can be found in the section How to Use the Cash Management Messages.",
+    "blocks": [
+      {
+        "name": "MessageHeader",
+        "isoId": "_jwlbcRbvEeiyVv5j1vf1VQ",
+        "xmlTag": "MsgHdr",
+        "type": "MessageHeader9",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "BusinessDayInformationQueryDefinition",
+        "isoId": "_jwlbcxbvEeiyVv5j1vf1VQ",
+        "xmlTag": "BizDayInfQryDef",
+        "type": "BusinessDayQuery2",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "name": "SupplementaryData",
+        "isoId": "_jwlbdRbvEeiyVv5j1vf1VQ",
+        "xmlTag": "SplmtryData",
+        "type": "SupplementaryData1",
+        "min": 0,
+        "max": null
+      }
+    ]
+  },
+  "root": "GetBusinessDayInformationV05",
+  "order": [
+    "Max35Text",
+    "ISODateTime",
+    "ExternalPaymentControlRequestType1Code",
+    "ExternalEnquiryRequestType1Code",
+    "GenericIdentification1",
+    "RequestType4Choice",
+    "MessageHeader9",
+    "QueryType2Code",
+    "ISODate",
+    "ExternalMarketInfrastructure1Code",
+    "MarketInfrastructureIdentification1Choice",
+    "CountryCode",
+    "SystemIdentification2Choice",
+    "ActiveCurrencyCode",
+    "SystemEventType2Code",
+    "SystemEventType2Choice",
+    "DateTimePeriod1",
+    "DateTimePeriod1Choice",
+    "BusinessDaySearchCriteria2",
+    "RequestedIndicator",
+    "BusinessDayReturnCriteria2",
+    "BusinessDayCriteria2",
+    "BusinessDayCriteria3Choice",
+    "BusinessDayQuery2",
+    "Max350Text",
+    "SupplementaryDataEnvelope1",
+    "SupplementaryData1",
+    "GetBusinessDayInformationV05"
+  ],
+  "types": {
+    "Max35Text": {
+      "name": "Max35Text",
+      "kind": "text",
+      "isoId": "_YW1tKdp-Ed-ak6NoX_4Aeg_1913463446",
+      "minLength": 1,
+      "maxLength": 35
+    },
+    "ISODateTime": {
+      "name": "ISODateTime",
+      "kind": "datetime",
+      "isoId": "_YW1tKtp-Ed-ak6NoX_4Aeg_-1624336183"
+    },
+    "ExternalPaymentControlRequestType1Code": {
+      "name": "ExternalPaymentControlRequestType1Code",
+      "isoId": "_EJVeUJIhEeect698_YsnIA",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "ExternalEnquiryRequestType1Code": {
+      "name": "ExternalEnquiryRequestType1Code",
+      "isoId": "_I3nyYJIhEeect698_YsnIA",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "GenericIdentification1": {
+      "name": "GenericIdentification1",
+      "isoId": "_QALkN9p-Ed-ak6NoX_4Aeg_-1748202225",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_QALkONp-Ed-ak6NoX_4Aeg_-1748202217",
+          "xmlTag": "Id",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SchemeName",
+          "isoId": "_QAVVMNp-Ed-ak6NoX_4Aeg_-1748202215",
+          "xmlTag": "SchmeNm",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "isoId": "_QAVVMdp-Ed-ak6NoX_4Aeg_-1748202216",
+          "xmlTag": "Issr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "RequestType4Choice": {
+      "name": "RequestType4Choice",
+      "isoId": "_ivV-XZIhEeect698_YsnIA",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "PaymentControl",
+          "isoId": "_i375oZIhEeect698_YsnIA",
+          "xmlTag": "PmtCtrl",
+          "type": "ExternalPaymentControlRequestType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Enquiry",
+          "isoId": "_i375o5IhEeect698_YsnIA",
+          "xmlTag": "Enqry",
+          "type": "ExternalEnquiryRequestType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_i375pZIhEeect698_YsnIA",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "MessageHeader9": {
+      "name": "MessageHeader9",
+      "isoId": "_jAUZkZIhEeect698_YsnIA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "MessageIdentification",
+          "isoId": "_jIyZEZIhEeect698_YsnIA",
+          "xmlTag": "MsgId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CreationDateTime",
+          "isoId": "_jIyZE5IhEeect698_YsnIA",
+          "xmlTag": "CreDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "RequestType",
+          "isoId": "_jIyZFZIhEeect698_YsnIA",
+          "xmlTag": "ReqTp",
+          "type": "RequestType4Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "QueryType2Code": {
+      "name": "QueryType2Code",
+      "isoId": "_ZXqQ8dp-Ed-ak6NoX_4Aeg_-1313852264",
+      "kind": "code",
+      "options": [
+        {
+          "value": "ALLL",
+          "name": "All",
+          "isoId": "_ZXqQ8tp-Ed-ak6NoX_4Aeg_-1313851984"
+        },
+        {
+          "value": "CHNG",
+          "name": "Changed",
+          "isoId": "_ZXqQ89p-Ed-ak6NoX_4Aeg_-1313851983"
+        },
+        {
+          "value": "MODF",
+          "name": "Modified",
+          "isoId": "_ZXqQ9Np-Ed-ak6NoX_4Aeg_-1313851982"
+        },
+        {
+          "value": "DELD",
+          "name": "Deleted",
+          "isoId": "_ZXqQ9dp-Ed-ak6NoX_4Aeg_-1313851954"
+        }
+      ]
+    },
+    "ISODate": {
+      "name": "ISODate",
+      "kind": "date",
+      "isoId": "_YXSZFtp-Ed-ak6NoX_4Aeg_2032498111"
+    },
+    "ExternalMarketInfrastructure1Code": {
+      "name": "ExternalMarketInfrastructure1Code",
+      "isoId": "_8MlMg6MgEeCJ6YNENx4h-w_-216754992",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 3
+    },
+    "MarketInfrastructureIdentification1Choice": {
+      "name": "MarketInfrastructureIdentification1Choice",
+      "isoId": "_8BQtWKMgEeCJ6YNENx4h-w_739589116",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_8BQtWaMgEeCJ6YNENx4h-w_-1124219834",
+          "xmlTag": "Cd",
+          "type": "ExternalMarketInfrastructure1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_8BZ3QKMgEeCJ6YNENx4h-w_-1719940070",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "CountryCode": {
+      "name": "CountryCode",
+      "isoId": "_bTfEctp-Ed-ak6NoX_4Aeg_-804722522",
+      "kind": "code",
+      "pattern": "[A-Z]{2,2}"
+    },
+    "SystemIdentification2Choice": {
+      "name": "SystemIdentification2Choice",
+      "isoId": "_8BZ3QaMgEeCJ6YNENx4h-w_-1347709917",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "MarketInfrastructureIdentification",
+          "isoId": "_8BZ3QqMgEeCJ6YNENx4h-w_-129556950",
+          "xmlTag": "MktInfrstrctrId",
+          "type": "MarketInfrastructureIdentification1Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Country",
+          "isoId": "_8BZ3Q6MgEeCJ6YNENx4h-w_-559189317",
+          "xmlTag": "Ctry",
+          "type": "CountryCode",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ActiveCurrencyCode": {
+      "name": "ActiveCurrencyCode",
+      "isoId": "_bqIp5tp-Ed-ak6NoX_4Aeg_-1326801359",
+      "kind": "code",
+      "pattern": "[A-Z]{3,3}"
+    },
+    "SystemEventType2Code": {
+      "name": "SystemEventType2Code",
+      "isoId": "_ZRZQ5dp-Ed-ak6NoX_4Aeg_1212494654",
+      "kind": "code",
+      "options": [
+        {
+          "value": "LVCO",
+          "name": "LVPCutOff",
+          "isoId": "_ZRZQ5tp-Ed-ak6NoX_4Aeg_1212494689"
+        },
+        {
+          "value": "LVCC",
+          "name": "LVPCancellationCutOff",
+          "isoId": "_ZRZQ59p-Ed-ak6NoX_4Aeg_1212495290"
+        },
+        {
+          "value": "LVRT",
+          "name": "LVPCutOffReportTime",
+          "isoId": "_ZRZQ6Np-Ed-ak6NoX_4Aeg_1212495602"
+        },
+        {
+          "value": "EUSU",
+          "name": "Euro1StartUp",
+          "isoId": "_ZRjB4Np-Ed-ak6NoX_4Aeg_1212495637"
+        },
+        {
+          "value": "STSU",
+          "name": "Step1StartUp",
+          "isoId": "_ZRjB4dp-Ed-ak6NoX_4Aeg_1212495662"
+        },
+        {
+          "value": "LWSU",
+          "name": "LimitWarningStartUp",
+          "isoId": "_ZRjB4tp-Ed-ak6NoX_4Aeg_1212495697"
+        },
+        {
+          "value": "EUCO",
+          "name": "Euro1CutOff",
+          "isoId": "_ZRjB49p-Ed-ak6NoX_4Aeg_1212495722"
+        },
+        {
+          "value": "FIRE",
+          "name": "FinalReporting",
+          "isoId": "_ZRjB5Np-Ed-ak6NoX_4Aeg_1213415728"
+        },
+        {
+          "value": "STDY",
+          "name": "StartOfDay",
+          "isoId": "_ZRjB5dp-Ed-ak6NoX_4Aeg_1213415771"
+        },
+        {
+          "value": "LTNC",
+          "name": "LTNCutOff",
+          "isoId": "_ZRjB5tp-Ed-ak6NoX_4Aeg_1213415806"
+        },
+        {
+          "value": "CRCO",
+          "name": "CashReservationCutOff",
+          "isoId": "_ZRjB59p-Ed-ak6NoX_4Aeg_1213415841"
+        },
+        {
+          "value": "RECC",
+          "name": "RecCutOff",
+          "isoId": "_ZRsy4Np-Ed-ak6NoX_4Aeg_1213415866"
+        },
+        {
+          "value": "LTGC",
+          "name": "LTGCutOff",
+          "isoId": "_ZRsy4dp-Ed-ak6NoX_4Aeg_1213415926"
+        },
+        {
+          "value": "LTDC",
+          "name": "LTDCutOff",
+          "isoId": "_ZRsy4tp-Ed-ak6NoX_4Aeg_1213415961"
+        },
+        {
+          "value": "CUSC",
+          "name": "CustomerCutOff",
+          "isoId": "_ZRsy49p-Ed-ak6NoX_4Aeg_1213415978"
+        },
+        {
+          "value": "IBKC",
+          "name": "InterbankCutOff",
+          "isoId": "_ZRsy5Np-Ed-ak6NoX_4Aeg_1213416239"
+        },
+        {
+          "value": "SYSC",
+          "name": "SystemCutOff",
+          "isoId": "_ZRsy5dp-Ed-ak6NoX_4Aeg_1213416274"
+        },
+        {
+          "value": "SSSC",
+          "name": "NetSSSReservationCutOff",
+          "isoId": "_ZRsy5tp-Ed-ak6NoX_4Aeg_1213416299"
+        },
+        {
+          "value": "REOP",
+          "name": "ResumeOperation",
+          "isoId": "_ZRsy59p-Ed-ak6NoX_4Aeg_1213416334"
+        },
+        {
+          "value": "PCOT",
+          "name": "ProcessingCutOffTime",
+          "isoId": "_ZRsy6Np-Ed-ak6NoX_4Aeg_1213416359"
+        },
+        {
+          "value": "NPCT",
+          "name": "NewPaymentCutOffTime",
+          "isoId": "_ZRsy6dp-Ed-ak6NoX_4Aeg_1213416394"
+        },
+        {
+          "value": "ESTF",
+          "name": "EndOfStandingFacilities",
+          "isoId": "_ZRsy6tp-Ed-ak6NoX_4Aeg_1213416677"
+        }
+      ]
+    },
+    "SystemEventType2Choice": {
+      "name": "SystemEventType2Choice",
+      "isoId": "_717nF6MgEeCJ6YNENx4h-w_-1478283975",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_72FYEKMgEeCJ6YNENx4h-w_1131843970",
+          "xmlTag": "Cd",
+          "type": "SystemEventType2Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_72FYEaMgEeCJ6YNENx4h-w_-439835553",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "DateTimePeriod1": {
+      "name": "DateTimePeriod1",
+      "isoId": "_aeAZM_hvEeSLI7Du5Hk4iw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "FromDateTime",
+          "isoId": "_aeAZNPhvEeSLI7Du5Hk4iw",
+          "xmlTag": "FrDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ToDateTime",
+          "isoId": "_aeAZNfhvEeSLI7Du5Hk4iw",
+          "xmlTag": "ToDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "DateTimePeriod1Choice": {
+      "name": "DateTimePeriod1Choice",
+      "isoId": "_xLYeBZlcEeeE1Ya-LgRsuQ",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "FromDateTime",
+          "isoId": "_xTM9QZlcEeeE1Ya-LgRsuQ",
+          "xmlTag": "FrDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ToDateTime",
+          "isoId": "_xTM9Q5lcEeeE1Ya-LgRsuQ",
+          "xmlTag": "ToDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "DateTimeRange",
+          "isoId": "_xTM9RZlcEeeE1Ya-LgRsuQ",
+          "xmlTag": "DtTmRg",
+          "type": "DateTimePeriod1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "BusinessDaySearchCriteria2": {
+      "name": "BusinessDaySearchCriteria2",
+      "isoId": "_yNYGiZlcEeeE1Ya-LgRsuQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "SystemDate",
+          "isoId": "_yVMlw5lcEeeE1Ya-LgRsuQ",
+          "xmlTag": "SysDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SystemIdentification",
+          "isoId": "_yVMlxZlcEeeE1Ya-LgRsuQ",
+          "xmlTag": "SysId",
+          "type": "SystemIdentification2Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "SystemCurrency",
+          "isoId": "_yVMlx5lcEeeE1Ya-LgRsuQ",
+          "xmlTag": "SysCcy",
+          "type": "ActiveCurrencyCode",
+          "kind": "code",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "EventType",
+          "isoId": "_yVMlyZlcEeeE1Ya-LgRsuQ",
+          "xmlTag": "EvtTp",
+          "type": "SystemEventType2Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ClosurePeriod",
+          "isoId": "_yVMly5lcEeeE1Ya-LgRsuQ",
+          "xmlTag": "ClsrPrd",
+          "type": "DateTimePeriod1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "RequestedIndicator": {
+      "name": "RequestedIndicator",
+      "kind": "boolean",
+      "isoId": "_YXlUBtp-Ed-ak6NoX_4Aeg_-2067559284"
+    },
+    "BusinessDayReturnCriteria2": {
+      "name": "BusinessDayReturnCriteria2",
+      "isoId": "_75XVlqMgEeCJ6YNENx4h-w_-59874421",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "SystemDateIndicator",
+          "isoId": "_75XVl6MgEeCJ6YNENx4h-w_-1794151342",
+          "xmlTag": "SysDtInd",
+          "type": "RequestedIndicator",
+          "kind": "boolean",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SystemStatusIndicator",
+          "isoId": "_75XVmKMgEeCJ6YNENx4h-w_-173713487",
+          "xmlTag": "SysStsInd",
+          "type": "RequestedIndicator",
+          "kind": "boolean",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SystemCurrencyIndicator",
+          "isoId": "_75XVmaMgEeCJ6YNENx4h-w_-734965435",
+          "xmlTag": "SysCcyInd",
+          "type": "RequestedIndicator",
+          "kind": "boolean",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ClosurePeriodIndicator",
+          "isoId": "_75gfgKMgEeCJ6YNENx4h-w_1130036750",
+          "xmlTag": "ClsrPrdInd",
+          "type": "RequestedIndicator",
+          "kind": "boolean",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "EventIndicator",
+          "isoId": "_75gfgaMgEeCJ6YNENx4h-w_-1170785840",
+          "xmlTag": "EvtInd",
+          "type": "RequestedIndicator",
+          "kind": "boolean",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SessionPeriodIndicator",
+          "isoId": "_75gfgqMgEeCJ6YNENx4h-w_2127109103",
+          "xmlTag": "SsnPrdInd",
+          "type": "RequestedIndicator",
+          "kind": "boolean",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "EventTypeIndicator",
+          "isoId": "_75gfg6MgEeCJ6YNENx4h-w_-1854786731",
+          "xmlTag": "EvtTpInd",
+          "type": "RequestedIndicator",
+          "kind": "boolean",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "BusinessDayCriteria2": {
+      "name": "BusinessDayCriteria2",
+      "isoId": "_yFXaB5lcEeeE1Ya-LgRsuQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "NewQueryName",
+          "isoId": "_yNYGg5lcEeeE1Ya-LgRsuQ",
+          "xmlTag": "NewQryNm",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SearchCriteria",
+          "isoId": "_yNYGhZlcEeeE1Ya-LgRsuQ",
+          "xmlTag": "SchCrit",
+          "type": "BusinessDaySearchCriteria2",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "ReturnCriteria",
+          "isoId": "_yNYGh5lcEeeE1Ya-LgRsuQ",
+          "xmlTag": "RtrCrit",
+          "type": "BusinessDayReturnCriteria2",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "ReturnCriteriaAndOrSearchCriteriaRule",
+          "isoId": "_yNYGgZlcEeeE1Ya-LgRsuQ",
+          "text": "If ReturnCriteria is not present, then at least one occurrence of SearchCriteria must be present. If ReturnCriteria is present, then any occurrence of SearchCriteria is optional.",
+          "expression": {
+            "mustBe": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/SearchCriteria[1]"
+                }
+              ]
+            },
+            "onCondition": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Absence",
+                  "path": "/ReturnCriteria"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "BusinessDayCriteria3Choice": {
+      "name": "BusinessDayCriteria3Choice",
+      "isoId": "_x84MZ5lcEeeE1Ya-LgRsuQ",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "QueryName",
+          "isoId": "_yFXaA5lcEeeE1Ya-LgRsuQ",
+          "xmlTag": "QryNm",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "NewCriteria",
+          "isoId": "_yFXaBZlcEeeE1Ya-LgRsuQ",
+          "xmlTag": "NewCrit",
+          "type": "BusinessDayCriteria2",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "BusinessDayQuery2": {
+      "name": "BusinessDayQuery2",
+      "isoId": "_x03f5ZlcEeeE1Ya-LgRsuQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "QueryType",
+          "isoId": "_x84MY5lcEeeE1Ya-LgRsuQ",
+          "xmlTag": "QryTp",
+          "type": "QueryType2Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Criteria",
+          "isoId": "_x84MZZlcEeeE1Ya-LgRsuQ",
+          "xmlTag": "Crit",
+          "type": "BusinessDayCriteria3Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "Max350Text": {
+      "name": "Max350Text",
+      "kind": "text",
+      "isoId": "_YW1tKNp-Ed-ak6NoX_4Aeg_1778996852",
+      "minLength": 1,
+      "maxLength": 350
+    },
+    "SupplementaryDataEnvelope1": {
+      "name": "SupplementaryDataEnvelope1",
+      "kind": "any",
+      "isoId": "_Kz9KwJDrEeSLQ8ob-qtemg"
+    },
+    "SupplementaryData1": {
+      "name": "SupplementaryData1",
+      "isoId": "_Qn0zC9p-Ed-ak6NoX_4Aeg_468227563",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "PlaceAndName",
+          "isoId": "_Qn988Np-Ed-ak6NoX_4Aeg_354388497",
+          "xmlTag": "PlcAndNm",
+          "type": "Max350Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Envelope",
+          "isoId": "_Qn988dp-Ed-ak6NoX_4Aeg_-642683856",
+          "xmlTag": "Envlp",
+          "type": "SupplementaryDataEnvelope1",
+          "kind": "any",
+          "min": 1,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "SupplementaryDataRule",
+          "isoId": "_Qn988tp-Ed-ak6NoX_4Aeg_-1492355109",
+          "text": "This component may not be used without the explicit approval of a SEG and submission to the RA of ISO 20022 compliant structure(s) to be used in the Envelope element."
+        }
+      ]
+    },
+    "GetBusinessDayInformationV05": {
+      "name": "GetBusinessDayInformationV05",
+      "isoId": "_jwlbbxbvEeiyVv5j1vf1VQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "MessageHeader",
+          "isoId": "_jwlbcRbvEeiyVv5j1vf1VQ",
+          "xmlTag": "MsgHdr",
+          "type": "MessageHeader9",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "BusinessDayInformationQueryDefinition",
+          "isoId": "_jwlbcxbvEeiyVv5j1vf1VQ",
+          "xmlTag": "BizDayInfQryDef",
+          "type": "BusinessDayQuery2",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SupplementaryData",
+          "isoId": "_jwlbdRbvEeiyVv5j1vf1VQ",
+          "xmlTag": "SplmtryData",
+          "type": "SupplementaryData1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    }
+  }
+}

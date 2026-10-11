@@ -1,0 +1,6 @@
+codeSetName	isoId	restrictionOf	code	enumName
+ExternalPaymentMethode1Code	_966f0NEvEfCli6pH8hj5ag	ExternalPaymentMethodeCode	*EXTERNAL*	minLength=1 maxLength=4; ~0 codes (not enumerated)
+AdjustmentDirection1Code	_bnKOYNp-Ed-ak6NoX_4Aeg_-559278803	AdjustmentDirectionCode	ADDD	Added
+AdjustmentDirection1Code	_bnKOYNp-Ed-ak6NoX_4Aeg_-559278803	AdjustmentDirectionCode	SUBS	Substracted
+ExternalServiceCategory1Code	_-3PZgJunEey__7eNd9lW5Q	ExternalServiceCategoryCode	*EXTERNAL*	minLength=1 maxLength=4; ~18 codes (not enumerated)
+ExternalSystemErrorHandling1Code	_Y2fRgnhdEeidzqjNEfehPg	ExternalSystemErrorHandlingCode	*EXTERNAL*	minLength=1 maxLength=4; ~3 codes (not enumerated)

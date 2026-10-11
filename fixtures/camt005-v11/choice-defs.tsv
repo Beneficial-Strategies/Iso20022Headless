@@ -1,0 +1,12 @@
+choice	memberId	memberName	text
+TransactionCriteria8Choice	_3K7nwTEyEe6g-ffJsqGiSA	QueryName	Recalls the criteria (search and return criteria) defined in a preceding query.
+TransactionCriteria8Choice	_3K7nwzEyEe6g-ffJsqGiSA	NewCriteria	Explicitly defines the query criteria.
+DateAndDateTimeSearch3Choice	_x03f4ZlcEeeE1Ya-LgRsuQ	DateTimeSearch	Patterns to search a date time.
+DateAndDateTimeSearch3Choice	_x03f45lcEeeE1Ya-LgRsuQ	DateSearch	Patterns to search a date.
+PaymentStatusCodeSearch2Choice	_RGEOMdp-Ed-ak6NoX_4Aeg_396814105	PendingStatus	Qualifies further the pending status.
+PaymentStatusCodeSearch2Choice	_RGEOMtp-Ed-ak6NoX_4Aeg_396814157	FinalStatus	Qualifies further the final status.
+PaymentStatusCodeSearch2Choice	_RGEOM9p-Ed-ak6NoX_4Aeg_396814260	PendingAndFinalStatus	State of a payment instruction at a specified time.
+ActiveOrHistoricAmountRange2Choice	_PPV2U5lcEeeE1Ya-LgRsuQ	ImpliedCurrencyAndAmountRange	Expresses an amount or an amount range with an explicit debit/credit indicator and where the currency is implied.
+ActiveOrHistoricAmountRange2Choice	_PPV2VZlcEeeE1Ya-LgRsuQ	CurrencyAndAmountRange	Expresses an amount or an amount range with the currency and where the credit/debit indicator is explicit.
+Priority1Choice	_SP24wX_REeiik6YN_dzlEA	Code	Priority code, in a coded form.
+Priority1Choice	_SP24w3_REeiik6YN_dzlEA	Proprietary	Priority code bilaterally agreed between parties.

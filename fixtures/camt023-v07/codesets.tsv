@@ -1,0 +1,26 @@
+codeSetName	isoId	restrictionOf	code	enumName
+PaymentType3Code	_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787	PaymentTypeCode	CBS	CrossBorderPayment
+PaymentType3Code	_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787	PaymentTypeCode	BCK	BackUp
+PaymentType3Code	_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787	PaymentTypeCode	BAL	BalanceRetail
+PaymentType3Code	_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787	PaymentTypeCode	CLS	CLSPayment
+PaymentType3Code	_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787	PaymentTypeCode	CTR	CentralBankOperation
+PaymentType3Code	_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787	PaymentTypeCode	CBH	CrossBorderHighValuePayment
+PaymentType3Code	_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787	PaymentTypeCode	CBP	CrossBorderPriorityPayment
+PaymentType3Code	_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787	PaymentTypeCode	DPG	DVPGross
+PaymentType3Code	_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787	PaymentTypeCode	DPN	DVPNet
+PaymentType3Code	_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787	PaymentTypeCode	EXP	ExpressPayment
+PaymentType3Code	_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787	PaymentTypeCode	TCH	ThirdCurrencyHighValuePayment
+PaymentType3Code	_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787	PaymentTypeCode	LMT	LimitPayment
+PaymentType3Code	_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787	PaymentTypeCode	LIQ	LiquidityTransfer
+PaymentType3Code	_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787	PaymentTypeCode	DPP	DomesticPriorityPayment
+PaymentType3Code	_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787	PaymentTypeCode	DPH	DomesticHighValuePayment
+PaymentType3Code	_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787	PaymentTypeCode	DPS	DomesticPayment
+PaymentType3Code	_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787	PaymentTypeCode	STF	StandingFacilities
+PaymentType3Code	_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787	PaymentTypeCode	TRP	TreasuryStatePayment
+PaymentType3Code	_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787	PaymentTypeCode	TCS	ThirdCurrencyPayment
+PaymentType3Code	_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787	PaymentTypeCode	LOA	Loan
+PaymentType3Code	_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787	PaymentTypeCode	LOR	LoanRepayment
+PaymentType3Code	_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787	PaymentTypeCode	TCP	ThirdCurrencyPriorityPayment
+PaymentType3Code	_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787	PaymentTypeCode	OND	OvernightDeposit
+PaymentType3Code	_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787	PaymentTypeCode	MGL	MarginalLending
+ExternalMarketInfrastructure1Code	_8MlMg6MgEeCJ6YNENx4h-w_-216754992	ExternalMarketInfrastructureCode	*EXTERNAL*	minLength=1 maxLength=3; ~98 codes (not enumerated)

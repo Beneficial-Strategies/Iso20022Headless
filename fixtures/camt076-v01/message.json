@@ -1,0 +1,35 @@
+{
+  "identifier": "camt.076.001.01",
+  "name": "BillingReportRequestV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.076.001.01",
+  "bodyTag": "BllgRptReq",
+  "out": "camt076",
+  "isoId": "_u3eqcUwoEfCw8OkvsmFlbQ",
+  "definition": "The BillingReportRequest message is sent by the system member to the system transaction administrator to request cumulative or itemised billing data. The billing data may be cumulative information or aggregated information on the level of a single securities or a dedicated cash account within a given period for each service item.",
+  "blocks": [
+    {
+      "name": "MessageHeader",
+      "isoId": "_u3eqgUwoEfCw8OkvsmFlbQ",
+      "xmlTag": "MsgHdr",
+      "type": "MessageHeader9",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SearchCriteria",
+      "isoId": "_u3eqg0woEfCw8OkvsmFlbQ",
+      "xmlTag": "SchCrit",
+      "type": "BillingSearchCriteria3",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_u3eqhUwoEfCw8OkvsmFlbQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

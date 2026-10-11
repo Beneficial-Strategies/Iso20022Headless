@@ -1,0 +1,35 @@
+{
+  "identifier": "camt.109.001.02",
+  "name": "ChequeCancellationOrStopReportV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.109.001.02",
+  "bodyTag": "ChqCxlOrStopRpt",
+  "out": "camt109",
+  "isoId": "_R3E5ETEZEe6kQ-WGAhcVPQ",
+  "definition": "The ChequeCancellationOrStopReport message is sent by the drawee agent (on which a cheque is drawn) to the drawer agent or the agent acting on behalf of the drawer agent to indicate what actions have been taken in attempting to cancel the presentment and/or stop the payment of the cheque referred to in the message.",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "_R3E5HzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader103",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Cheque",
+      "isoId": "_R3E5ITEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Chq",
+      "type": "Cheque18",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3E5IzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+StandingOrderOrAll4Choice	_6l3dkTEyEe6g-ffJsqGiSA	StandingOrder	Identification of single standing orders defined with specific characteristics.
+StandingOrderOrAll4Choice	_6l3dkzEyEe6g-ffJsqGiSA	AllStandingOrders	Identification of all standing orders defined with specific characteristics.

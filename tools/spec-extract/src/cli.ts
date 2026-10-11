@@ -3,6 +3,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { simpleTypeRows, simpleTypesTsv, closureOf, messageJson, writeStructure, type Closure, type MessageSpec } from './extract.ts';
 import { loadSnapshots } from './snapshot.ts';
+import { runResources } from './resources-write.ts';
 import { codeOrders, mergeOrders, orderFileText, parseOrderFile, typeOrders } from './xsd-order.ts';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../../..');
@@ -34,6 +35,16 @@ const arg = (name: string): string | undefined => {
 function main(): number {
   const cmd = process.argv[2];
   if (cmd === 'order') return writeOrder();
+  if (cmd === 'resources') {
+    const pages = arg('--pages');
+    const list = arg('--messages');
+    const mode = process.argv.includes('write') ? 'write' : 'analyze';
+    if (!pages || !list) {
+      console.error('usage: spec-extract resources <analyze|write> --pages <dir of saved resource pages> --messages <messages.json> [--fixtures <dir>] [--only <message name>] [--rules-tag <name>]');
+      return 2;
+    }
+    return runResources({ pages, messages: list, fixtures: arg('--fixtures') ?? fixtures, mode, ...(arg('--only') ? { only: arg('--only')! } : {}), ...(arg('--rules-tag') ? { rulesTag: arg('--rules-tag')! } : {}) });
+  }
   const dir = arg('--snapshots');
   if (!['analyze', 'write', 'verify'].includes(cmd ?? '') || !dir) {
     console.error('usage: spec-extract <analyze|write|verify> --snapshots <dir of saved get_spec_snapshot files> [--only <message name>]');
