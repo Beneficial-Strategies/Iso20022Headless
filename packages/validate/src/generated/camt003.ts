@@ -34,6 +34,7 @@ import {
   ActiveOrHistoricCurrencyCodeSchema,
   ExternalSystemBalanceType1CodeSchema,
   BalanceType11ChoiceSchema,
+  BalanceCounterparty1CodeSchema,
   BICFIDec2014IdentifierSchema,
   ExternalClearingSystemIdentification1CodeSchema,
   ClearingSystemIdentification2ChoiceSchema,
@@ -59,6 +60,8 @@ import {
   ISODateSchema,
   DatePeriod2Schema,
   DatePeriodSearch1ChoiceSchema,
+  DateAndDateTimeSearch4ChoiceSchema,
+  CashBalance14Schema,
   AnyBICDec2014IdentifierSchema,
   Max256TextSchema,
   ExternalOrganisationIdentification1CodeSchema,
@@ -86,21 +89,6 @@ import {
   SupplementaryData1Schema,
   sharedTypeDescriptors,
 } from './shared.ts';
-
-export const BalanceCounterparty1CodeSchema = z.enum(["BILA", "MULT"]);
-
-export const DateAndDateTimeSearch4ChoiceSchema = choiceOf({
-  DateTime: DateTimeSearch2ChoiceSchema,
-  Date: DatePeriodSearch1ChoiceSchema,
-});
-
-export const CashBalance14Schema = z.strictObject({
-  Type: z.array(BalanceType11ChoiceSchema).optional(),
-  CounterpartyType: BalanceCounterparty1CodeSchema,
-  CounterpartyIdentification: z.array(BranchAndFinancialInstitutionIdentification8Schema).optional(),
-  ValueDate: z.array(DateAndDateTimeSearch4ChoiceSchema).optional(),
-  ProcessingDate: DateAndDateTimeSearch4ChoiceSchema.optional(),
-});
 
 export const CashAccountSearchCriteria8Schema = z.strictObject({
   AccountIdentification: z.array(AccountIdentificationSearchCriteria2ChoiceSchema).optional(),
@@ -157,37 +145,6 @@ export const GetAccountV08Schema = z.strictObject({
 const f = (d: FieldDescriptor): FieldDescriptor => d;
 
 const ownTypeDescriptors: TypeDescriptors = {
-  "BalanceCounterparty1Code": {
-    name: "BalanceCounterparty1Code",
-    isoId: "_bkBa0tp-Ed-ak6NoX_4Aeg_678189976",
-    kind: "code",
-    options: [{ value: "BILA", name: "Bilateral", isoId: "_bkBa09p-Ed-ak6NoX_4Aeg_678189977" }, { value: "MULT", name: "Multilateral", isoId: "_bkBa1Np-Ed-ak6NoX_4Aeg_678189978" }],
-  },
-  "DateAndDateTimeSearch4Choice": {
-    name: "DateAndDateTimeSearch4Choice",
-    isoId: "_6yG5333sEeibM9CPDGCw0g",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "DateTime", isoId: "_68F8QX3sEeibM9CPDGCw0g", xmlTag: "DtTm", displayName: displayName("DateTime"), kind: "choice", type: "DateTimeSearch2Choice", required: true }),
-      f({ name: "Date", isoId: "_68F8Q33sEeibM9CPDGCw0g", xmlTag: "Dt", displayName: displayName("Date"), kind: "choice", type: "DatePeriodSearch1Choice", required: true }),
-    ],
-  },
-  "CashBalance14": {
-    name: "CashBalance14",
-    isoId: "_6TlazzEyEe6g-ffJsqGiSA",
-    kind: "component",
-    fields: [
-      f({ name: "Type", isoId: "_6V0PZTEyEe6g-ffJsqGiSA", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "BalanceType11Choice", required: false, repeat: { min: 0, max: null } }),
-      f({ name: "CounterpartyType", isoId: "_6V0PZzEyEe6g-ffJsqGiSA", xmlTag: "CtrPtyTp", displayName: displayName("CounterpartyType"), kind: "code", type: "BalanceCounterparty1Code", required: true }),
-      f({ name: "CounterpartyIdentification", isoId: "_6V0PaTEyEe6g-ffJsqGiSA", xmlTag: "CtrPtyId", displayName: displayName("CounterpartyIdentification"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false, repeat: { min: 0, max: null } }),
-      f({ name: "ValueDate", isoId: "_6V0PazEyEe6g-ffJsqGiSA", xmlTag: "ValDt", displayName: displayName("ValueDate"), kind: "choice", type: "DateAndDateTimeSearch4Choice", required: false, repeat: { min: 0, max: null } }),
-      f({ name: "ProcessingDate", isoId: "_6V0PbTEyEe6g-ffJsqGiSA", xmlTag: "PrcgDt", displayName: displayName("ProcessingDate"), kind: "choice", type: "DateAndDateTimeSearch4Choice", required: false }),
-    ],
-    rules: [
-      { name: "CounterpartyIdentification1Rule", isoId: "_6V0PYTEyEe6g-ffJsqGiSA", text: "If at least one occurrence of CounterpartyType is present and is equal to Multilateral (MULT), then no occurrence of CounterpartyIdentification is allowed.|If CounterpartyType is not present, then any occurrence of CounterpartyIdentification is optional.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/CounterpartyIdentification[1]"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/CounterpartyType"},{"op":"EqualToValue","path":"/CounterpartyType","value":"Multilateral"}]}} },
-      { name: "CounterpartyIdentification2Rule", isoId: "_6V0PYzEyEe6g-ffJsqGiSA", text: "If at least one occurrence of CounterpartyType is present and is equal to Bilateral (BILA), then at least one occurrence of CounterpartyIdentification must be present.|If CounterpartyType is not present, then any occurrence of CounterpartyIdentification is optional.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/CounterpartyIdentification[1]"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/CounterpartyType"},{"op":"EqualToValue","path":"/CounterpartyType","value":"Bilateral"}]}} },
-    ],
-  },
   "CashAccountSearchCriteria8": {
     name: "CashAccountSearchCriteria8",
     isoId: "_6RRGmTEyEe6g-ffJsqGiSA",
@@ -298,6 +255,7 @@ export const typeDescriptors: TypeDescriptors = {
   "ActiveOrHistoricCurrencyCode": sharedTypeDescriptors["ActiveOrHistoricCurrencyCode"]!,
   "ExternalSystemBalanceType1Code": sharedTypeDescriptors["ExternalSystemBalanceType1Code"]!,
   "BalanceType11Choice": sharedTypeDescriptors["BalanceType11Choice"]!,
+  "BalanceCounterparty1Code": sharedTypeDescriptors["BalanceCounterparty1Code"]!,
   "BICFIDec2014Identifier": sharedTypeDescriptors["BICFIDec2014Identifier"]!,
   "ExternalClearingSystemIdentification1Code": sharedTypeDescriptors["ExternalClearingSystemIdentification1Code"]!,
   "ClearingSystemIdentification2Choice": sharedTypeDescriptors["ClearingSystemIdentification2Choice"]!,
@@ -323,6 +281,8 @@ export const typeDescriptors: TypeDescriptors = {
   "ISODate": sharedTypeDescriptors["ISODate"]!,
   "DatePeriod2": sharedTypeDescriptors["DatePeriod2"]!,
   "DatePeriodSearch1Choice": sharedTypeDescriptors["DatePeriodSearch1Choice"]!,
+  "DateAndDateTimeSearch4Choice": sharedTypeDescriptors["DateAndDateTimeSearch4Choice"]!,
+  "CashBalance14": sharedTypeDescriptors["CashBalance14"]!,
   "AnyBICDec2014Identifier": sharedTypeDescriptors["AnyBICDec2014Identifier"]!,
   "Max256Text": sharedTypeDescriptors["Max256Text"]!,
   "ExternalOrganisationIdentification1Code": sharedTypeDescriptors["ExternalOrganisationIdentification1Code"]!,

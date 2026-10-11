@@ -148,7 +148,22 @@
     "./camt113": "./src/generated/camt113.ts",
     "./camt114": "./src/generated/camt114.ts",
     "./camt115": "./src/generated/camt115.ts",
-    "./camt116": "./src/generated/camt116.ts"
+    "./camt116": "./src/generated/camt116.ts",
+    "./admi002": "./src/generated/admi002.ts",
+    "./admi004": "./src/generated/admi004.ts",
+    "./admi005": "./src/generated/admi005.ts",
+    "./admi006": "./src/generated/admi006.ts",
+    "./admi007": "./src/generated/admi007.ts",
+    "./admi009": "./src/generated/admi009.ts",
+    "./admi010": "./src/generated/admi010.ts",
+    "./admi011": "./src/generated/admi011.ts",
+    "./admi017": "./src/generated/admi017.ts",
+    "./admi024": "./src/generated/admi024.ts",
+    "./remt001": "./src/generated/remt001.ts",
+    "./remt002": "./src/generated/remt002.ts",
+    "./trck001": "./src/generated/trck001.ts",
+    "./trck002": "./src/generated/trck002.ts",
+    "./trck004": "./src/generated/trck004.ts"
   },
   "scripts": {
     "typecheck": "tsc -p tsconfig.json",

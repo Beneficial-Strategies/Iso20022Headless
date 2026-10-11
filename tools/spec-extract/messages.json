@@ -1078,5 +1078,125 @@
     "bodyTag": "UblToApply",
     "out": "camt026",
     "dir": "camt026-v10"
+  },
+  {
+    "name": "MessageRejectV01",
+    "id": "_8LH5WNE9Ed-BzquC8wXy7w_-1942533103",
+    "identifier": "admi.002.001.01",
+    "bodyTag": "admi.002.001.01",
+    "out": "admi002",
+    "dir": "admi002-v01"
+  },
+  {
+    "name": "NotificationOfCorrespondenceV01",
+    "id": "_BKsckLknEe68nbz8Nl_hLQ",
+    "identifier": "admi.024.001.01",
+    "bodyTag": "NtfctnOfCrspdc",
+    "out": "admi024",
+    "dir": "admi024-v01"
+  },
+  {
+    "name": "ProcessingRequestV02",
+    "id": "_1MsY4QR4Ee29PP19jELcvQ",
+    "identifier": "admi.017.001.02",
+    "bodyTag": "PrcgReq",
+    "out": "admi017",
+    "dir": "admi017-v02"
+  },
+  {
+    "name": "ReceiptAcknowledgementV01",
+    "id": "_4MJ7oZb3Eee4htziCyV8eA",
+    "identifier": "admi.007.001.01",
+    "bodyTag": "RctAck",
+    "out": "admi007",
+    "dir": "admi007-v01"
+  },
+  {
+    "name": "ReportQueryRequestV02",
+    "id": "_R3SUyzEZEe6kQ-WGAhcVPQ",
+    "identifier": "admi.005.001.02",
+    "bodyTag": "RptQryReq",
+    "out": "admi005",
+    "dir": "admi005-v02"
+  },
+  {
+    "name": "ResendRequestV01",
+    "id": "_5xUioZb3Eee4htziCyV8eA",
+    "identifier": "admi.006.001.01",
+    "bodyTag": "RsndReq",
+    "out": "admi006",
+    "dir": "admi006-v01"
+  },
+  {
+    "name": "StaticDataReportV02",
+    "id": "_Zy71kRnXEeKKXqHkeUjBbw",
+    "identifier": "admi.010.001.02",
+    "bodyTag": "StatcDataRpt",
+    "out": "admi010",
+    "dir": "admi010-v02"
+  },
+  {
+    "name": "StaticDataRequestV02",
+    "id": "_XX0eARnXEeKKXqHkeUjBbw",
+    "identifier": "admi.009.001.02",
+    "bodyTag": "StatcDataReq",
+    "out": "admi009",
+    "dir": "admi009-v02"
+  },
+  {
+    "name": "SystemEventAcknowledgementV01",
+    "id": "_-4fJISzhEeKZfox_pyYpTA",
+    "identifier": "admi.011.001.01",
+    "bodyTag": "SysEvtAck",
+    "out": "admi011",
+    "dir": "admi011-v01"
+  },
+  {
+    "name": "SystemEventNotificationV02",
+    "id": "_pgC-EU7TEeSGH6dwL1uJcg",
+    "identifier": "admi.004.001.02",
+    "bodyTag": "SysEvtNtfctn",
+    "out": "admi004",
+    "dir": "admi004-v02"
+  },
+  {
+    "name": "RemittanceAdviceV07",
+    "id": "d78077f1-7096-427a-a55a-111e09368b44",
+    "identifier": "remt.001.001.07",
+    "bodyTag": "RmtAdvc",
+    "out": "remt001",
+    "dir": "remt001-v07"
+  },
+  {
+    "name": "RemittanceLocationAdviceV03",
+    "id": "_R3SUvTEZEe6kQ-WGAhcVPQ",
+    "identifier": "remt.002.001.03",
+    "bodyTag": "RmtLctnAdvc",
+    "out": "remt002",
+    "dir": "remt002-v03"
+  },
+  {
+    "name": "PaymentStatusCustomerTrackerReportV04",
+    "id": "6f6b674e-5470-4dce-b707-7e12088eaf28",
+    "identifier": "trck.004.001.04",
+    "bodyTag": "PmtStsCstmrTrckrRpt",
+    "out": "trck004",
+    "dir": "trck004-v04"
+  },
+  {
+    "name": "PaymentStatusTrackerReportV04",
+    "id": "a3a36189-234f-4ed4-9038-c5b7de971443",
+    "identifier": "trck.002.001.04",
+    "bodyTag": "PmtStsTrckrRpt",
+    "out": "trck002",
+    "dir": "trck002-v04"
+  },
+  {
+    "name": "PaymentStatusTrackerUpdateV05",
+    "id": "bfeb7dc1-7509-4665-9e03-a7726d28da33",
+    "identifier": "trck.001.001.05",
+    "bodyTag": "PmtStsTrckrUpd",
+    "out": "trck001",
+    "dir": "trck001-v05"
   }
 ]

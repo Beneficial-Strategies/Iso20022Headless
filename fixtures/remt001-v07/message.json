@@ -1,0 +1,35 @@
+{
+  "identifier": "remt.001.001.07",
+  "name": "RemittanceAdviceV07",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:remt.001.001.07",
+  "bodyTag": "RmtAdvc",
+  "out": "remt001",
+  "isoId": "d78077f1-7096-427a-a55a-111e09368b44",
+  "definition": "The RemittanceAdvice message allows the originator to provide remittance details that can be associated with a payment.",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "bd266dc2-d8c6-45e6-a081-c76f6ef9f079",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader122",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "RemittanceInformation",
+      "isoId": "b79811db-3642-40f4-8ea0-c254350adb1e",
+      "xmlTag": "RmtInf",
+      "type": "RemittanceInformation27",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "2d2b8a69-8b2a-49be-826d-baf16777ac81",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

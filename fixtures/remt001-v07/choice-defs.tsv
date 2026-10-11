@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+AmountType3Choice	_P57LMdp-Ed-ak6NoX_4Aeg_326234880	InstructedAmount	Amount of money to be moved between the debtor and creditor, before deduction of charges, expressed in the currency as ordered by the initiating party.
+AmountType3Choice	_P57LMtp-Ed-ak6NoX_4Aeg_326235198	EquivalentAmount	Amount of money to be moved between the debtor and creditor, expressed in the currency of the debtor's account, and the currency in which the amount is to be moved.

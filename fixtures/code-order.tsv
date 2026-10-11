@@ -14,6 +14,7 @@ Algorithm14Code	ERS2,ERS1,RPSS
 Algorithm15Code	EA2C,E3DC,EA9C,EA5C
 Algorithm7Code	ERSA,RSAO
 Algorithm8Code	MGF1
+AmountConsistencyType1Code	CONS,ICNS,ICGA,ICFA,IISA
 ATMActionType1Code	APLY,NONE
 ATMCassetteStatus1Code	CUOK,CUFL,CUHG,CULW,CUMT,CUNP,CUMS,CUNA,CUNR,CUMP
 ATMCassetteType1Code	DPST,DISP,RCYC,RJCT,RPLT,RTRC
@@ -129,6 +130,7 @@ MessageProtection1Code	EVLP,MACB,MACM,UNPR
 ModificationProcessingStatus1Code	PACK,REJT,MODC,DEND,MODP,REPR
 MovementResponseType1Code	FULL,STTS
 NamePrefix2Code	DOCT,MADM,MISS,MIST,MIKS
+NoReasonCode	NORE
 NotificationStatus3Code	RCBD,RCVD,NRCD
 OnLineCapability1Code	OFLN,ONLN,SMON
 OrderQuantityType2Code	UNIT,CASH

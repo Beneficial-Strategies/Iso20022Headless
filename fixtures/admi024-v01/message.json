@@ -1,0 +1,35 @@
+{
+  "identifier": "admi.024.001.01",
+  "name": "NotificationOfCorrespondenceV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:admi.024.001.01",
+  "bodyTag": "NtfctnOfCrspdc",
+  "out": "admi024",
+  "isoId": "_BKsckLknEe68nbz8Nl_hLQ",
+  "definition": "Scope|The NotificationOfCorrespondence message is sent by the sender to the receiver to notify them of an event or information that impacts both parties.||Usage|The NotificationOfCorrespondence message must only be used to communicate events or information where the sender expects no response from the receiver.",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "_3lhf0LkrEe68nbz8Nl_hLQ",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader129",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "NotificationData",
+      "isoId": "_Sz-fErk1Ee68nbz8Nl_hLQ",
+      "xmlTag": "NtfctnData",
+      "type": "CorrespondenceNotification1",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_OsUcQbksEe68nbz8Nl_hLQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

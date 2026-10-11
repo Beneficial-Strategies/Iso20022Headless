@@ -1,0 +1,43 @@
+{
+  "identifier": "admi.017.001.02",
+  "name": "ProcessingRequestV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:admi.017.001.02",
+  "bodyTag": "PrcgReq",
+  "out": "admi017",
+  "isoId": "_1MsY4QR4Ee29PP19jELcvQ",
+  "definition": "The Processing Request message is sent by a participant to a central system to request the initiation of a system process supported by a central system.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "_1Ms_8QR4Ee29PP19jELcvQ",
+      "xmlTag": "MsgId",
+      "type": "Max35Text",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SettlementSessionIdentifier",
+      "isoId": "_1Ms_8wR4Ee29PP19jELcvQ",
+      "xmlTag": "SttlmSsnIdr",
+      "type": "Exact4AlphaNumericText",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Request",
+      "isoId": "_1Ms_9QR4Ee29PP19jELcvQ",
+      "xmlTag": "Req",
+      "type": "RequestDetails30",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_36KEsQR4Ee29PP19jELcvQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

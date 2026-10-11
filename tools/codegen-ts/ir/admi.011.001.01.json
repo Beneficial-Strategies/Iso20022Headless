@@ -1,0 +1,232 @@
+{
+  "message": {
+    "identifier": "admi.011.001.01",
+    "name": "SystemEventAcknowledgementV01",
+    "namespace": "urn:iso:std:iso:20022:tech:xsd:admi.011.001.01",
+    "bodyTag": "SysEvtAck",
+    "out": "admi011",
+    "isoId": "_-4fJISzhEeKZfox_pyYpTA",
+    "definition": "The SystemEventAcknowledgement message is sent by a participant of a central system to the central system to acknowledge the notification of an occurrence of an event in a central system.",
+    "blocks": [
+      {
+        "name": "MessageIdentification",
+        "isoId": "_38ITWTp8EeKXK8qRvydwAw",
+        "xmlTag": "MsgId",
+        "type": "Max35Text",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "OriginatorReference",
+        "isoId": "_-PT44DqNEeKXK8qRvydwAw",
+        "xmlTag": "OrgtrRef",
+        "type": "Max35Text",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "name": "SettlementSessionIdentifier",
+        "isoId": "_Pq-14zqfEeKqTf3MbquCbA",
+        "xmlTag": "SttlmSsnIdr",
+        "type": "Exact4AlphaNumericText",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "name": "AcknowledgementDetails",
+        "isoId": "_-4fJJSzhEeKZfox_pyYpTA",
+        "xmlTag": "AckDtls",
+        "type": "Event1",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "name": "SupplementaryData",
+        "isoId": "_E4uhVy53EeKwTrPDLMbLxA",
+        "xmlTag": "SplmtryData",
+        "type": "SupplementaryData1",
+        "min": 0,
+        "max": null
+      }
+    ]
+  },
+  "root": "SystemEventAcknowledgementV01",
+  "order": [
+    "Max35Text",
+    "Exact4AlphaNumericText",
+    "Max4AlphaNumericText",
+    "Max350Text",
+    "ISODateTime",
+    "Event1",
+    "SupplementaryDataEnvelope1",
+    "SupplementaryData1",
+    "SystemEventAcknowledgementV01"
+  ],
+  "types": {
+    "Max35Text": {
+      "name": "Max35Text",
+      "kind": "text",
+      "isoId": "_YW1tKdp-Ed-ak6NoX_4Aeg_1913463446",
+      "minLength": 1,
+      "maxLength": 35
+    },
+    "Exact4AlphaNumericText": {
+      "name": "Exact4AlphaNumericText",
+      "kind": "text",
+      "isoId": "_YYLJ6Np-Ed-ak6NoX_4Aeg_-1265890753",
+      "pattern": "[a-zA-Z0-9]{4}"
+    },
+    "Max4AlphaNumericText": {
+      "name": "Max4AlphaNumericText",
+      "kind": "text",
+      "isoId": "_YXlUBdp-Ed-ak6NoX_4Aeg_-2067559309",
+      "pattern": "[a-zA-Z0-9]{1,4}",
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "Max350Text": {
+      "name": "Max350Text",
+      "kind": "text",
+      "isoId": "_YW1tKNp-Ed-ak6NoX_4Aeg_1778996852",
+      "minLength": 1,
+      "maxLength": 350
+    },
+    "ISODateTime": {
+      "name": "ISODateTime",
+      "kind": "datetime",
+      "isoId": "_YW1tKtp-Ed-ak6NoX_4Aeg_-1624336183"
+    },
+    "Event1": {
+      "name": "Event1",
+      "isoId": "_Uslo-dp-Ed-ak6NoX_4Aeg_376982248",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "EventCode",
+          "isoId": "_Uslo-tp-Ed-ak6NoX_4Aeg_698369494",
+          "xmlTag": "EvtCd",
+          "type": "Max4AlphaNumericText",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "EventParameter",
+          "isoId": "_Uslo-9p-Ed-ak6NoX_4Aeg_871066371",
+          "xmlTag": "EvtParam",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "EventDescription",
+          "isoId": "_Uslo_Np-Ed-ak6NoX_4Aeg_924628764",
+          "xmlTag": "EvtDesc",
+          "type": "Max350Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "EventTime",
+          "isoId": "_UsvZ8Np-Ed-ak6NoX_4Aeg_2008271246",
+          "xmlTag": "EvtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "SupplementaryDataEnvelope1": {
+      "name": "SupplementaryDataEnvelope1",
+      "kind": "any",
+      "isoId": "_Kz9KwJDrEeSLQ8ob-qtemg"
+    },
+    "SupplementaryData1": {
+      "name": "SupplementaryData1",
+      "isoId": "_Qn0zC9p-Ed-ak6NoX_4Aeg_468227563",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "PlaceAndName",
+          "isoId": "_Qn988Np-Ed-ak6NoX_4Aeg_354388497",
+          "xmlTag": "PlcAndNm",
+          "type": "Max350Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Envelope",
+          "isoId": "_Qn988dp-Ed-ak6NoX_4Aeg_-642683856",
+          "xmlTag": "Envlp",
+          "type": "SupplementaryDataEnvelope1",
+          "kind": "any",
+          "min": 1,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "SupplementaryDataRule",
+          "isoId": "_Qn988tp-Ed-ak6NoX_4Aeg_-1492355109",
+          "text": "This component may not be used without the explicit approval of a SEG and submission to the RA of ISO 20022 compliant structure(s) to be used in the Envelope element."
+        }
+      ]
+    },
+    "SystemEventAcknowledgementV01": {
+      "name": "SystemEventAcknowledgementV01",
+      "isoId": "_-4fJISzhEeKZfox_pyYpTA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "MessageIdentification",
+          "isoId": "_38ITWTp8EeKXK8qRvydwAw",
+          "xmlTag": "MsgId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "OriginatorReference",
+          "isoId": "_-PT44DqNEeKXK8qRvydwAw",
+          "xmlTag": "OrgtrRef",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SettlementSessionIdentifier",
+          "isoId": "_Pq-14zqfEeKqTf3MbquCbA",
+          "xmlTag": "SttlmSsnIdr",
+          "type": "Exact4AlphaNumericText",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "AcknowledgementDetails",
+          "isoId": "_-4fJJSzhEeKZfox_pyYpTA",
+          "xmlTag": "AckDtls",
+          "type": "Event1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SupplementaryData",
+          "isoId": "_E4uhVy53EeKwTrPDLMbLxA",
+          "xmlTag": "SplmtryData",
+          "type": "SupplementaryData1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    }
+  }
+}

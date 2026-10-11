@@ -1,0 +1,6 @@
+choice	memberId	memberName	text
+TrackerParty2Choice	_dtxow2OTEeq5Ar_w98FvsA	OrganisationIdentification	Unique and unambiguous way to identify an organisation.
+TrackerParty2Choice	_dtxoxWOTEeq5Ar_w98FvsA	PrivateIdentification	Unique and unambiguous identification of a person, for example a passport.
+TrackerParty2Choice	_5THNEWOTEeq5Ar_w98FvsA	FinancialInstitutionIdentification	Unique and unambiguous identification of a financial institution, as assigned under an internationally recognised or proprietary identification scheme.
+PaymentScenario1Choice	_VpAxcGw9Ee-t2JGPeXy0Sw	Code	Payment scenario, as published in an external payment scenario code list.
+PaymentScenario1Choice	_bZYNkGw9Ee-t2JGPeXy0Sw	Proprietary	Payment scenario, in a proprietary form.

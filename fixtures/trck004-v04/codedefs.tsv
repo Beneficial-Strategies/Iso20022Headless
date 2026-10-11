@@ -1,0 +1,6 @@
+codeSet	code	enumName	isoId	text
+AmountConsistencyType1Code	CONS	ConsistentAmount	_TnhrIQStEeusZ4O-nsxv_w	Amount information matches the reference data record.
+AmountConsistencyType1Code	ICNS	InconsistentAmount	_TtTjAQStEeusZ4O-nsxv_w	Amount information does not match the reference data record.
+AmountConsistencyType1Code	ICGA	InconsistentChargesAmount	_TxnbQQStEeusZ4O-nsxv_w	Charges amount information does not match the reference data record.
+AmountConsistencyType1Code	ICFA	InconsistentConfirmedAmount	_T26K8QStEeusZ4O-nsxv_w	Amount information confirmed to the creditor does not match the reference data record.
+AmountConsistencyType1Code	IISA	InconsistentInterbankSettlementAmount	_T8DJoQStEeusZ4O-nsxv_w	Interbank settlement amount information does not match the reference data record.

@@ -76,7 +76,10 @@ function AreaPicker({ value, onChange }: { value: string; onChange: (code: strin
         options={areaIndex.map((a) => ({
           value: a.code,
           label: a.code,
-          description: lang === 'en' ? `${a.name}: ${a.definition}` : `${t(`areaName_${a.code}` as PageKey)}: ${t(`areaDesc_${a.code}` as PageKey)}`,
+          description:
+            lang === 'en'
+              ? [a.name, a.definition].filter(Boolean).join(': ')
+              : [t(`areaName_${a.code}` as PageKey), t(`areaDesc_${a.code}` as PageKey)].filter(Boolean).join(': '),
         }))}
         onChange={(v) => v && onChange(v)}
         placeholder={t('areaLabel')}

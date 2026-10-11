@@ -26,11 +26,14 @@ import {
   PostalAddress1Schema,
   NameAndAddress8Schema,
   AnyBICDec2014IdentifierSchema,
+  PartyIdentification265Schema,
   Max34TextSchema,
   Max105TextSchema,
   ExternalClearingSystemIdentification1CodeSchema,
   ClearingSystemIdentification2ChoiceSchema,
   LEIIdentifierSchema,
+  PartyIdentification266Schema,
+  PartyIdentification242ChoiceSchema,
   Max5NumericTextSchema,
   YesNoIndicatorSchema,
   Pagination1Schema,
@@ -41,26 +44,6 @@ import {
   SupplementaryData1Schema,
   sharedTypeDescriptors,
 } from './shared.ts';
-
-export const PartyIdentification265Schema = z.strictObject({
-  AnyBIC: AnyBICDec2014IdentifierSchema,
-  AlternativeIdentifier: z.array(Max35TextSchema).max(10).optional(),
-});
-
-export const PartyIdentification266Schema = z.strictObject({
-  PartyName: Max34TextSchema.optional(),
-  AnyBIC: PartyIdentification265Schema.optional(),
-  AccountNumber: Max34TextSchema.optional(),
-  Address: Max105TextSchema.optional(),
-  ClearingSystemIdentification: ClearingSystemIdentification2ChoiceSchema.optional(),
-  LegalEntityIdentifier: LEIIdentifierSchema.optional(),
-});
-
-export const PartyIdentification242ChoiceSchema = choiceOf({
-  NameAndAddress: NameAndAddress8Schema,
-  AnyBIC: PartyIdentification265Schema,
-  PartyIdentification: PartyIdentification266Schema,
-});
 
 export const NetReportData2Schema = z.strictObject({
   MessageIdentification: Max35TextSchema,
@@ -126,41 +109,6 @@ export const NetReportV04Schema = z.strictObject({
 const f = (d: FieldDescriptor): FieldDescriptor => d;
 
 const ownTypeDescriptors: TypeDescriptors = {
-  "PartyIdentification265": {
-    name: "PartyIdentification265",
-    isoId: "_BXnRwQN1Ee2-vqzwMUAewg",
-    kind: "component",
-    fields: [
-      f({ name: "AnyBIC", isoId: "_BdWGUwN1Ee2-vqzwMUAewg", xmlTag: "AnyBIC", displayName: displayName("AnyBIC"), kind: "text", type: "AnyBICDec2014Identifier", required: true }),
-      f({ name: "AlternativeIdentifier", isoId: "_BdWGVQN1Ee2-vqzwMUAewg", xmlTag: "AltrntvIdr", displayName: displayName("AlternativeIdentifier"), kind: "text", type: "Max35Text", required: false, repeat: { min: 0, max: 10 } }),
-    ],
-  },
-  "PartyIdentification266": {
-    name: "PartyIdentification266",
-    isoId: "_BdWGVwN1Ee2-vqzwMUAewg",
-    kind: "component",
-    fields: [
-      f({ name: "PartyName", isoId: "_BjNdwwN1Ee2-vqzwMUAewg", xmlTag: "PtyNm", displayName: displayName("PartyName"), kind: "text", type: "Max34Text", required: false }),
-      f({ name: "AnyBIC", isoId: "_BjNdxQN1Ee2-vqzwMUAewg", xmlTag: "AnyBIC", displayName: displayName("AnyBIC"), kind: "component", type: "PartyIdentification265", required: false }),
-      f({ name: "AccountNumber", isoId: "_BjNdxwN1Ee2-vqzwMUAewg", xmlTag: "AcctNb", displayName: displayName("AccountNumber"), kind: "text", type: "Max34Text", required: false }),
-      f({ name: "Address", isoId: "_BjNdyQN1Ee2-vqzwMUAewg", xmlTag: "Adr", displayName: displayName("Address"), kind: "text", type: "Max105Text", required: false }),
-      f({ name: "ClearingSystemIdentification", isoId: "_BjNdywN1Ee2-vqzwMUAewg", xmlTag: "ClrSysId", displayName: displayName("ClearingSystemIdentification"), kind: "choice", type: "ClearingSystemIdentification2Choice", required: false }),
-      f({ name: "LegalEntityIdentifier", isoId: "_BjNdzQN1Ee2-vqzwMUAewg", xmlTag: "LglNttyIdr", displayName: displayName("LegalEntityIdentifier"), kind: "text", type: "LEIIdentifier", required: false }),
-    ],
-    rules: [
-      { name: "PartyNameOrLEIRule", isoId: "_BjNdwQN1Ee2-vqzwMUAewg", text: "PartyName must be present or LegalEntityIdentifier must be present.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/PartyName"},{"op":"Presence","path":"/LegalEntityIdentifier"}]}} },
-    ],
-  },
-  "PartyIdentification242Choice": {
-    name: "PartyIdentification242Choice",
-    isoId: "_BSSs4QN1Ee2-vqzwMUAewg",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "NameAndAddress", isoId: "_BXmqswN1Ee2-vqzwMUAewg", xmlTag: "NmAndAdr", displayName: displayName("NameAndAddress"), kind: "component", type: "NameAndAddress8", required: true }),
-      f({ name: "AnyBIC", isoId: "_BXmqtQN1Ee2-vqzwMUAewg", xmlTag: "AnyBIC", displayName: displayName("AnyBIC"), kind: "component", type: "PartyIdentification265", required: true }),
-      f({ name: "PartyIdentification", isoId: "_BXmqtwN1Ee2-vqzwMUAewg", xmlTag: "PtyId", displayName: displayName("PartyIdentification"), kind: "component", type: "PartyIdentification266", required: true }),
-    ],
-  },
   "NetReportData2": {
     name: "NetReportData2",
     isoId: "_CWAzsQN1Ee2-vqzwMUAewg",
@@ -284,11 +232,14 @@ export const typeDescriptors: TypeDescriptors = {
   "PostalAddress1": sharedTypeDescriptors["PostalAddress1"]!,
   "NameAndAddress8": sharedTypeDescriptors["NameAndAddress8"]!,
   "AnyBICDec2014Identifier": sharedTypeDescriptors["AnyBICDec2014Identifier"]!,
+  "PartyIdentification265": sharedTypeDescriptors["PartyIdentification265"]!,
   "Max34Text": sharedTypeDescriptors["Max34Text"]!,
   "Max105Text": sharedTypeDescriptors["Max105Text"]!,
   "ExternalClearingSystemIdentification1Code": sharedTypeDescriptors["ExternalClearingSystemIdentification1Code"]!,
   "ClearingSystemIdentification2Choice": sharedTypeDescriptors["ClearingSystemIdentification2Choice"]!,
   "LEIIdentifier": sharedTypeDescriptors["LEIIdentifier"]!,
+  "PartyIdentification266": sharedTypeDescriptors["PartyIdentification266"]!,
+  "PartyIdentification242Choice": sharedTypeDescriptors["PartyIdentification242Choice"]!,
   "Max5NumericText": sharedTypeDescriptors["Max5NumericText"]!,
   "YesNoIndicator": sharedTypeDescriptors["YesNoIndicator"]!,
   "Pagination1": sharedTypeDescriptors["Pagination1"]!,

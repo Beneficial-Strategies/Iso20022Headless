@@ -125,12 +125,20 @@ import {
   TaxParty2Schema,
   NumberSchema,
   TaxRecordPeriod1CodeSchema,
+  TaxPeriod2Schema,
+  TaxRecordDetails2Schema,
+  TaxAmount2Schema,
+  TaxRecord2Schema,
+  TaxInformation7Schema,
   ExternalGarnishmentType1CodeSchema,
   GarnishmentType1ChoiceSchema,
   GarnishmentType1Schema,
   Garnishment3Schema,
+  StructuredRemittanceInformation16Schema,
   RemittanceLocationMethod2CodeSchema,
   NameAndAddress16Schema,
+  RemittanceLocationData1Schema,
+  RemittanceLocation7Schema,
   Max500TextSchema,
   InvestigationLocationMethod1CodeSchema,
   InvestigationLocationData1Schema,
@@ -306,72 +314,6 @@ export const StatusReasonInformation12Schema = z.strictObject({
 export const PaymentTransactionStatus1Schema = z.strictObject({
   Status: TransactionStatus1ChoiceSchema,
   StatusReasonInformation: z.array(StatusReasonInformation12Schema).optional(),
-});
-
-export const TaxPeriod2Schema = z.strictObject({
-  Year: ISODateSchema.optional(),
-  Type: TaxRecordPeriod1CodeSchema.optional(),
-  FromToDate: DatePeriod2Schema.optional(),
-});
-
-export const TaxRecordDetails2Schema = z.strictObject({
-  Period: TaxPeriod2Schema.optional(),
-  Amount: ActiveOrHistoricCurrencyAndAmountSchema,
-});
-
-export const TaxAmount2Schema = z.strictObject({
-  Rate: PercentageRateSchema.optional(),
-  TaxableBaseAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
-  TotalAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
-  Details: z.array(TaxRecordDetails2Schema).optional(),
-});
-
-export const TaxRecord2Schema = z.strictObject({
-  Type: Max35TextSchema.optional(),
-  Category: Max35TextSchema.optional(),
-  CategoryDetails: Max35TextSchema.optional(),
-  DebtorStatus: Max35TextSchema.optional(),
-  CertificateIdentification: Max35TextSchema.optional(),
-  FormsCode: Max35TextSchema.optional(),
-  Period: TaxPeriod2Schema.optional(),
-  TaxAmount: TaxAmount2Schema.optional(),
-  AdditionalInformation: Max140TextSchema.optional(),
-});
-
-export const TaxInformation7Schema = z.strictObject({
-  Creditor: TaxParty1Schema.optional(),
-  Debtor: TaxParty2Schema.optional(),
-  UltimateDebtor: TaxParty2Schema.optional(),
-  AdministrationZone: Max35TextSchema.optional(),
-  ReferenceNumber: Max140TextSchema.optional(),
-  Method: Max35TextSchema.optional(),
-  TotalTaxableBaseAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
-  TotalTaxAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
-  Date: ISODateSchema.optional(),
-  SequenceNumber: NumberSchema.optional(),
-  Record: z.array(TaxRecord2Schema).optional(),
-});
-
-export const StructuredRemittanceInformation16Schema = z.strictObject({
-  ReferredDocumentInformation: z.array(ReferredDocumentInformation7Schema).optional(),
-  ReferredDocumentAmount: RemittanceAmount2Schema.optional(),
-  CreditorReferenceInformation: CreditorReferenceInformation2Schema.optional(),
-  Invoicer: PartyIdentification135Schema.optional(),
-  Invoicee: PartyIdentification135Schema.optional(),
-  TaxRemittance: TaxInformation7Schema.optional(),
-  GarnishmentRemittance: Garnishment3Schema.optional(),
-  AdditionalRemittanceInformation: z.array(Max140TextSchema).max(3).optional(),
-});
-
-export const RemittanceLocationData1Schema = z.strictObject({
-  Method: RemittanceLocationMethod2CodeSchema,
-  ElectronicAddress: Max2048TextSchema.optional(),
-  PostalAddress: NameAndAddress16Schema.optional(),
-});
-
-export const RemittanceLocation7Schema = z.strictObject({
-  RemittanceIdentification: Max35TextSchema.optional(),
-  RemittanceLocationDetails: z.array(RemittanceLocationData1Schema).optional(),
 });
 
 export const Remittance1Schema = z.strictObject({
@@ -609,104 +551,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "StatusReasonInformation", isoId: "_2CH_cfSTEe2NguPP5QspEw", xmlTag: "StsRsnInf", displayName: displayName("StatusReasonInformation"), kind: "component", type: "StatusReasonInformation12", required: false, repeat: { min: 0, max: null } }),
     ],
   },
-  "TaxPeriod2": {
-    name: "TaxPeriod2",
-    isoId: "_zCdv5a9fEeen6L7OP7lnvg",
-    kind: "component",
-    fields: [
-      f({ name: "Year", isoId: "_zSrWIa9fEeen6L7OP7lnvg", xmlTag: "Yr", displayName: displayName("Year"), kind: "date", type: "ISODate", required: false }),
-      f({ name: "Type", isoId: "_zSrWI69fEeen6L7OP7lnvg", xmlTag: "Tp", displayName: displayName("Type"), kind: "code", type: "TaxRecordPeriod1Code", required: false }),
-      f({ name: "FromToDate", isoId: "_zSrWJa9fEeen6L7OP7lnvg", xmlTag: "FrToDt", displayName: displayName("FromToDate"), kind: "component", type: "DatePeriod2", required: false }),
-    ],
-  },
-  "TaxRecordDetails2": {
-    name: "TaxRecordDetails2",
-    isoId: "_yv3kC69fEeen6L7OP7lnvg",
-    kind: "component",
-    fields: [
-      f({ name: "Period", isoId: "_zCdv4a9fEeen6L7OP7lnvg", xmlTag: "Prd", displayName: displayName("Period"), kind: "component", type: "TaxPeriod2", required: false }),
-      f({ name: "Amount", isoId: "_zCdv469fEeen6L7OP7lnvg", xmlTag: "Amt", displayName: displayName("Amount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: true }),
-    ],
-  },
-  "TaxAmount2": {
-    name: "TaxAmount2",
-    isoId: "_yeA_Fa9fEeen6L7OP7lnvg",
-    kind: "component",
-    fields: [
-      f({ name: "Rate", isoId: "_yv3kA69fEeen6L7OP7lnvg", xmlTag: "Rate", displayName: displayName("Rate"), kind: "number", type: "PercentageRate", required: false }),
-      f({ name: "TaxableBaseAmount", isoId: "_yv3kBa9fEeen6L7OP7lnvg", xmlTag: "TaxblBaseAmt", displayName: displayName("TaxableBaseAmount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: false }),
-      f({ name: "TotalAmount", isoId: "_yv3kB69fEeen6L7OP7lnvg", xmlTag: "TtlAmt", displayName: displayName("TotalAmount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: false }),
-      f({ name: "Details", isoId: "_yv3kCa9fEeen6L7OP7lnvg", xmlTag: "Dtls", displayName: displayName("Details"), kind: "component", type: "TaxRecordDetails2", required: false, repeat: { min: 0, max: null } }),
-    ],
-  },
-  "TaxRecord2": {
-    name: "TaxRecord2",
-    isoId: "_yKFWd69fEeen6L7OP7lnvg",
-    kind: "component",
-    fields: [
-      f({ name: "Type", isoId: "_yeA_A69fEeen6L7OP7lnvg", xmlTag: "Tp", displayName: displayName("Type"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "Category", isoId: "_yeA_Ba9fEeen6L7OP7lnvg", xmlTag: "Ctgy", displayName: displayName("Category"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "CategoryDetails", isoId: "_yeA_B69fEeen6L7OP7lnvg", xmlTag: "CtgyDtls", displayName: displayName("CategoryDetails"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "DebtorStatus", isoId: "_yeA_Ca9fEeen6L7OP7lnvg", xmlTag: "DbtrSts", displayName: displayName("DebtorStatus"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "CertificateIdentification", isoId: "_yeA_C69fEeen6L7OP7lnvg", xmlTag: "CertId", displayName: displayName("CertificateIdentification"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "FormsCode", isoId: "_yeA_Da9fEeen6L7OP7lnvg", xmlTag: "FrmsCd", displayName: displayName("FormsCode"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "Period", isoId: "_yeA_D69fEeen6L7OP7lnvg", xmlTag: "Prd", displayName: displayName("Period"), kind: "component", type: "TaxPeriod2", required: false }),
-      f({ name: "TaxAmount", isoId: "_yeA_Ea9fEeen6L7OP7lnvg", xmlTag: "TaxAmt", displayName: displayName("TaxAmount"), kind: "component", type: "TaxAmount2", required: false }),
-      f({ name: "AdditionalInformation", isoId: "_yeA_E69fEeen6L7OP7lnvg", xmlTag: "AddtlInf", displayName: displayName("AdditionalInformation"), kind: "text", type: "Max140Text", required: false }),
-    ],
-  },
-  "TaxInformation7": {
-    name: "TaxInformation7",
-    isoId: "_Cdax17TNEeeYQd8Z9bqFog",
-    kind: "component",
-    fields: [
-      f({ name: "Creditor", isoId: "_CmIo8bTNEeeYQd8Z9bqFog", xmlTag: "Cdtr", displayName: displayName("Creditor"), kind: "component", type: "TaxParty1", required: false }),
-      f({ name: "Debtor", isoId: "_CmIo87TNEeeYQd8Z9bqFog", xmlTag: "Dbtr", displayName: displayName("Debtor"), kind: "component", type: "TaxParty2", required: false }),
-      f({ name: "UltimateDebtor", isoId: "_CmIo9bTNEeeYQd8Z9bqFog", xmlTag: "UltmtDbtr", displayName: displayName("UltimateDebtor"), kind: "component", type: "TaxParty2", required: false }),
-      f({ name: "AdministrationZone", isoId: "_CmIo97TNEeeYQd8Z9bqFog", xmlTag: "AdmstnZone", displayName: displayName("AdministrationZone"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "ReferenceNumber", isoId: "_CmIo-bTNEeeYQd8Z9bqFog", xmlTag: "RefNb", displayName: displayName("ReferenceNumber"), kind: "text", type: "Max140Text", required: false }),
-      f({ name: "Method", isoId: "_CmIo-7TNEeeYQd8Z9bqFog", xmlTag: "Mtd", displayName: displayName("Method"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "TotalTaxableBaseAmount", isoId: "_CmIo_bTNEeeYQd8Z9bqFog", xmlTag: "TtlTaxblBaseAmt", displayName: displayName("TotalTaxableBaseAmount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: false }),
-      f({ name: "TotalTaxAmount", isoId: "_CmIo_7TNEeeYQd8Z9bqFog", xmlTag: "TtlTaxAmt", displayName: displayName("TotalTaxAmount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: false }),
-      f({ name: "Date", isoId: "_CmIpAbTNEeeYQd8Z9bqFog", xmlTag: "Dt", displayName: displayName("Date"), kind: "date", type: "ISODate", required: false }),
-      f({ name: "SequenceNumber", isoId: "_CmIpA7TNEeeYQd8Z9bqFog", xmlTag: "SeqNb", displayName: displayName("SequenceNumber"), kind: "number", type: "Number", required: false }),
-      f({ name: "Record", isoId: "_CmIpBbTNEeeYQd8Z9bqFog", xmlTag: "Rcrd", displayName: displayName("Record"), kind: "component", type: "TaxRecord2", required: false, repeat: { min: 0, max: null } }),
-    ],
-  },
-  "StructuredRemittanceInformation16": {
-    name: "StructuredRemittanceInformation16",
-    isoId: "_-5awV248EeiU9cctagi5ow",
-    kind: "component",
-    fields: [
-      f({ name: "ReferredDocumentInformation", isoId: "__Cz84248EeiU9cctagi5ow", xmlTag: "RfrdDocInf", displayName: displayName("ReferredDocumentInformation"), kind: "component", type: "ReferredDocumentInformation7", required: false, repeat: { min: 0, max: null } }),
-      f({ name: "ReferredDocumentAmount", isoId: "__Cz85W48EeiU9cctagi5ow", xmlTag: "RfrdDocAmt", displayName: displayName("ReferredDocumentAmount"), kind: "component", type: "RemittanceAmount2", required: false }),
-      f({ name: "CreditorReferenceInformation", isoId: "__Cz85248EeiU9cctagi5ow", xmlTag: "CdtrRefInf", displayName: displayName("CreditorReferenceInformation"), kind: "component", type: "CreditorReferenceInformation2", required: false }),
-      f({ name: "Invoicer", isoId: "__Cz86W48EeiU9cctagi5ow", xmlTag: "Invcr", displayName: displayName("Invoicer"), kind: "component", type: "PartyIdentification135", required: false }),
-      f({ name: "Invoicee", isoId: "__Cz86248EeiU9cctagi5ow", xmlTag: "Invcee", displayName: displayName("Invoicee"), kind: "component", type: "PartyIdentification135", required: false }),
-      f({ name: "TaxRemittance", isoId: "__Cz87W48EeiU9cctagi5ow", xmlTag: "TaxRmt", displayName: displayName("TaxRemittance"), kind: "component", type: "TaxInformation7", required: false }),
-      f({ name: "GarnishmentRemittance", isoId: "__Cz87248EeiU9cctagi5ow", xmlTag: "GrnshmtRmt", displayName: displayName("GarnishmentRemittance"), kind: "component", type: "Garnishment3", required: false }),
-      f({ name: "AdditionalRemittanceInformation", isoId: "__Cz88W48EeiU9cctagi5ow", xmlTag: "AddtlRmtInf", displayName: displayName("AdditionalRemittanceInformation"), kind: "text", type: "Max140Text", required: false, repeat: { min: 0, max: 3 } }),
-    ],
-  },
-  "RemittanceLocationData1": {
-    name: "RemittanceLocationData1",
-    isoId: "_-LRmB24-EeiU9cctagi5ow",
-    kind: "component",
-    fields: [
-      f({ name: "Method", isoId: "_-VaZcW4-EeiU9cctagi5ow", xmlTag: "Mtd", displayName: displayName("Method"), kind: "code", type: "RemittanceLocationMethod2Code", required: true }),
-      f({ name: "ElectronicAddress", isoId: "_-VaZc24-EeiU9cctagi5ow", xmlTag: "ElctrncAdr", displayName: displayName("ElectronicAddress"), kind: "text", type: "Max2048Text", required: false }),
-      f({ name: "PostalAddress", isoId: "_-VaZdW4-EeiU9cctagi5ow", xmlTag: "PstlAdr", displayName: displayName("PostalAddress"), kind: "component", type: "NameAndAddress16", required: false }),
-    ],
-  },
-  "RemittanceLocation7": {
-    name: "RemittanceLocation7",
-    isoId: "_-BcUm24-EeiU9cctagi5ow",
-    kind: "component",
-    fields: [
-      f({ name: "RemittanceIdentification", isoId: "_-LRmA24-EeiU9cctagi5ow", xmlTag: "RmtId", displayName: displayName("RemittanceIdentification"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "RemittanceLocationDetails", isoId: "_-LRmBW4-EeiU9cctagi5ow", xmlTag: "RmtLctnDtls", displayName: displayName("RemittanceLocationDetails"), kind: "component", type: "RemittanceLocationData1", required: false, repeat: { min: 0, max: null } }),
-    ],
-  },
   "Remittance1": {
     name: "Remittance1",
     isoId: "_k720LJMsEey8cNcx3imo5Q",
@@ -937,12 +781,20 @@ export const typeDescriptors: TypeDescriptors = {
   "TaxParty2": sharedTypeDescriptors["TaxParty2"]!,
   "Number": sharedTypeDescriptors["Number"]!,
   "TaxRecordPeriod1Code": sharedTypeDescriptors["TaxRecordPeriod1Code"]!,
+  "TaxPeriod2": sharedTypeDescriptors["TaxPeriod2"]!,
+  "TaxRecordDetails2": sharedTypeDescriptors["TaxRecordDetails2"]!,
+  "TaxAmount2": sharedTypeDescriptors["TaxAmount2"]!,
+  "TaxRecord2": sharedTypeDescriptors["TaxRecord2"]!,
+  "TaxInformation7": sharedTypeDescriptors["TaxInformation7"]!,
   "ExternalGarnishmentType1Code": sharedTypeDescriptors["ExternalGarnishmentType1Code"]!,
   "GarnishmentType1Choice": sharedTypeDescriptors["GarnishmentType1Choice"]!,
   "GarnishmentType1": sharedTypeDescriptors["GarnishmentType1"]!,
   "Garnishment3": sharedTypeDescriptors["Garnishment3"]!,
+  "StructuredRemittanceInformation16": sharedTypeDescriptors["StructuredRemittanceInformation16"]!,
   "RemittanceLocationMethod2Code": sharedTypeDescriptors["RemittanceLocationMethod2Code"]!,
   "NameAndAddress16": sharedTypeDescriptors["NameAndAddress16"]!,
+  "RemittanceLocationData1": sharedTypeDescriptors["RemittanceLocationData1"]!,
+  "RemittanceLocation7": sharedTypeDescriptors["RemittanceLocation7"]!,
   "Max500Text": sharedTypeDescriptors["Max500Text"]!,
   "InvestigationLocationMethod1Code": sharedTypeDescriptors["InvestigationLocationMethod1Code"]!,
   "InvestigationLocationData1": sharedTypeDescriptors["InvestigationLocationData1"]!,

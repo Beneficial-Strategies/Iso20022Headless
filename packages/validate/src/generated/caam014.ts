@@ -72,6 +72,7 @@ import {
   PostalAddress17Schema,
   AutomatedTellerMachine3Schema,
   ATMEnvironment7Schema,
+  Max2000TextSchema,
   Algorithm12CodeSchema,
   Parameter7Schema,
   AlgorithmIdentification15Schema,
@@ -85,8 +86,6 @@ import {
 export const ATMActionType1CodeSchema = z.enum(["APLY", "NONE"]);
 
 export const ATMPropertyType1CodeSchema = z.enum(["STRG", "NMBR", "BOOL", "JSON", "CSVF"]);
-
-export const Max2000TextSchema = textType({min: 1, max: 2000});
 
 export const ATMPropertyComponent1Schema = z.strictObject({
   PropertyName: Max70TextSchema,
@@ -123,13 +122,6 @@ const ownTypeDescriptors: TypeDescriptors = {
     isoId: "_9hM1EJwtEe-XpuX9q9xjLg",
     kind: "code",
     options: [{ value: "STRG", name: "String", isoId: "_rMunsaDZEe-MRKYsaX6JDg" }, { value: "NMBR", name: "Number", isoId: "_rgsFgaDZEe-MRKYsaX6JDg" }, { value: "BOOL", name: "Boolean", isoId: "_r1XVAaDZEe-MRKYsaX6JDg" }, { value: "JSON", name: "JSON", isoId: "_sJvCgaDZEe-MRKYsaX6JDg" }, { value: "CSVF", name: "CSV", isoId: "_sXE68aDZEe-MRKYsaX6JDg" }],
-  },
-  "Max2000Text": {
-    name: "Max2000Text",
-    isoId: "_YYn11dp-Ed-ak6NoX_4Aeg_2132907481",
-    kind: "text",
-    minLength: 1,
-    maxLength: 2000,
   },
   "ATMPropertyComponent1": {
     name: "ATMPropertyComponent1",
@@ -226,6 +218,7 @@ export const typeDescriptors: TypeDescriptors = {
   "PostalAddress17": sharedTypeDescriptors["PostalAddress17"]!,
   "AutomatedTellerMachine3": sharedTypeDescriptors["AutomatedTellerMachine3"]!,
   "ATMEnvironment7": sharedTypeDescriptors["ATMEnvironment7"]!,
+  "Max2000Text": sharedTypeDescriptors["Max2000Text"]!,
   "Algorithm12Code": sharedTypeDescriptors["Algorithm12Code"]!,
   "Parameter7": sharedTypeDescriptors["Parameter7"]!,
   "AlgorithmIdentification15": sharedTypeDescriptors["AlgorithmIdentification15"]!,

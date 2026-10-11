@@ -1,0 +1,3 @@
+codeSet	isoId	text
+AmountConsistencyType1Code	_QjU6UAStEeusZ4O-nsxv_w	Specifies a type of amount inconsistencies, that the amount type provided matches the reference amount or not.
+ExternalPaymentScenario1Code	_ASuJUGw9Ee-t2JGPeXy0Sw	Specifies the payment scenario, as published in an external payment scenario code set.|External code sets can be downloaded from www.iso20022.org.

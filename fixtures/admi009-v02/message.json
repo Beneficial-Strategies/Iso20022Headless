@@ -1,0 +1,43 @@
+{
+  "identifier": "admi.009.001.02",
+  "name": "StaticDataRequestV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:admi.009.001.02",
+  "bodyTag": "StatcDataReq",
+  "out": "admi009",
+  "isoId": "_XX0eARnXEeKKXqHkeUjBbw",
+  "definition": "The StaticDataRequest message is sent by a participant of a central system to the central system to request a static data report.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "_xkBhxTp8EeKXK8qRvydwAw",
+      "xmlTag": "MsgId",
+      "type": "Max35Text",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SettlementSessionIdentifier",
+      "isoId": "_u9jYIR3bEeKXIbeXfdPzuw",
+      "xmlTag": "SttlmSsnIdr",
+      "type": "Exact4AlphaNumericText",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "DataRequestDetails",
+      "isoId": "_XX0eBxnXEeKKXqHkeUjBbw",
+      "xmlTag": "DataReqDtls",
+      "type": "RequestDetails3",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_EPiaUC53EeKwTrPDLMbLxA",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}
