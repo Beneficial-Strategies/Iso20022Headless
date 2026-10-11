@@ -2021,7 +2021,7 @@ function areaScenarios(): Scenario[] {
       expect: async (page) => {
         const o = await optionsOf(page);
         const problems: string[] = [];
-        if (o.length !== 7) problems.push(`expected seven areas, found ${o.length}`);
+        if (o.length !== 8) problems.push(`expected eight areas, found ${o.length}`);
         if (!o.some((x) => /^pain.*Payments Initiation: Messages that support the initiation of a payment/.test(x))) problems.push(`pain is not described: ${JSON.stringify(o)}`);
         if (!o.some((x) => /^pacs.*Payments Clearing and Settlement: Messages that support the clearing and settlement/.test(x))) problems.push(`pacs is not described: ${JSON.stringify(o)}`);
         if (!o.some((x) => /^caam.*ATM Management: Messages that support card related terminal management/.test(x))) problems.push(`caam is not described: ${JSON.stringify(o)}`);
@@ -2029,6 +2029,7 @@ function areaScenarios(): Scenario[] {
         if (!o.some((x) => /^admi.*Administration: Generic messages/.test(x))) problems.push(`admi is not described: ${JSON.stringify(o)}`);
         if (!o.some((x) => /^remt.*Payments Remittance Advice: Messages that support communication between creditors and debtors/.test(x))) problems.push(`remt is not described: ${JSON.stringify(o)}`);
         if (!o.some((x) => /^trck.*Transaction Tracker$/.test(x.trim()))) problems.push(`trck is not shown by its name alone: ${JSON.stringify(o)}`);
+        if (!o.some((x) => /^acmt.*Account Management: Messages that support the management of account related activities/.test(x))) problems.push(`acmt is not described: ${JSON.stringify(o)}`);
         return problems;
       },
     },

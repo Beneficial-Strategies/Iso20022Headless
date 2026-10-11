@@ -1,0 +1,7 @@
+codeSet	code	enumName	isoId	text
+AccountManagementType3Code	ACCM	AccountModification	_Bak_kVSfEeatgN-VQ0eFlQ	Refers to an account modification instruction message.
+AccountManagementType3Code	ACCO	AccountOpening	_BxC-0VSfEeatgN-VQ0eFlQ	Refers to an account opening instruction message.
+AccountManagementType3Code	GACC	GetAccountDetails	_jN7kUVSqEeatgN-VQ0eFlQ	Refers to a get account details message.
+AccountManagementType3Code	ACST	AccountStatus	_w6yBQaZsEea-RdGKJ0RADA	Refers to the account status.
+GenderCode	MALE	Male	_atyWaNp-Ed-ak6NoX_4Aeg_319238514	Individual is a male.
+GenderCode	FEMA	Female	_at8HYNp-Ed-ak6NoX_4Aeg_332166896	Individual is a female.

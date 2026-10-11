@@ -1,0 +1,67 @@
+{
+  "identifier": "acmt.028.001.06",
+  "name": "AccountSwitchInformationResponseV06",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:acmt.028.001.06",
+  "bodyTag": "AcctSwtchInfRspn",
+  "out": "acmt028",
+  "isoId": "dfaaa882-a9cd-4872-b814-d50a83cf82f5",
+  "definition": "The AccountSwitchInformationResponse message is sent by the account servicer that previously held the account to the new account servicer to signal whether the account owner's account can be switched and to pass details of payment arrangements to be transferred to the new account servicer if the account may be switched. Confirmation of the balance transfer window is permitted by the old account servicer.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "85868352-3da7-458f-8fa0-e44bbdb740c5",
+      "xmlTag": "MsgId",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountSwitchDetails",
+      "isoId": "8d16a813-d6b4-4119-be29-155a7b4d2866",
+      "xmlTag": "AcctSwtchDtls",
+      "type": "AccountSwitchDetails1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "NewAccount",
+      "isoId": "fddb3603-6425-412d-8c0d-e6af61db58ae",
+      "xmlTag": "NewAcct",
+      "type": "CashAccount43",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "OldAccount",
+      "isoId": "3bdf9ea5-371e-483c-a1ac-c7b670c1bcf6",
+      "xmlTag": "OdAcct",
+      "type": "CashAccount43",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "PaymentInstruction",
+      "isoId": "420ebd63-c4bd-4115-b538-cb847fa24831",
+      "xmlTag": "PmtInstr",
+      "type": "PaymentInstruction49",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "DirectDebitInstruction",
+      "isoId": "1bedb95e-80c1-4b85-a3f7-6b4b2d80d963",
+      "xmlTag": "DrctDbtInstr",
+      "type": "DirectDebitInstructionDetails3",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "07f07c19-c424-46fb-bb0c-826c170cdaf7",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

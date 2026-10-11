@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+VerificationReason1Choice	_Qo3U1dp-Ed-ak6NoX_4Aeg_-1342337588	Code	Reason why the verified identification information is incorrect, as published in an external reason code list.
+VerificationReason1Choice	_Qo3U1tp-Ed-ak6NoX_4Aeg_722205440	Proprietary	Reason why the verified identification information is incorrect, in a proprietary form.

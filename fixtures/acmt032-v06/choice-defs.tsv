@@ -1,0 +1,5 @@
+choice	memberId	memberName	text
+SettlementMethod7Choice	_GcCY0XeKEfCdoODv2ypKfw	Credit	Specifies details of the payment to be made by the old account servicer to the new account servicer in case of a positive closing balance.
+SettlementMethod7Choice	_GcCY03eKEfCdoODv2ypKfw	Debit	Specifies details of the payment to be made by the new account servicer to the old account servicer in case of a negative closing balance.
+EndPoint2Choice	_a2rekbvGEfCYYbmqNrQFSg	NumberOfPayments	Number of the payments that will be made in completing this frequency sequence including any executed since the sequence start date.
+EndPoint2Choice	_a2rek7vGEfCYYbmqNrQFSg	LastPaymentDate	Final payment of the standing order due.

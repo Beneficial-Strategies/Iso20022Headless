@@ -1,0 +1,24 @@
+choice	memberId	memberName	text
+AccountSelection3Choice	_oQaFgZTIEemqYPWMBuVawg	AccountIdentification	Unique and unambiguous identification for the account between the account owner and the account servicer.
+AccountSelection3Choice	_oQaFg5TIEemqYPWMBuVawg	OtherAccountSelectionData	Various investment account information used to select a specific account.
+AccountOwner3Choice	_6hUREZTIEemqYPWMBuVawg	IndividualOwnerIdentification	Identification of the individual person that legally owns the account.
+AccountOwner3Choice	_6hURE5TIEemqYPWMBuVawg	OrganisationOwnerIdentification	Identification of the organisation that legally owns the account.
+IndividualPersonIdentification3Choice	_G6_50YoWEeahcZ3Nzs1Qag	IdentificationNumber	Identification of the person that owns the account.
+IndividualPersonIdentification3Choice	_G6_504oWEeahcZ3Nzs1Qag	PersonName	Name of the person that owns the account.
+PartyIdentification182Choice	_NkXrQZTJEemqYPWMBuVawg	AnyBIC	Identification of the party expressed as a BIC.
+PartyIdentification182Choice	_NkXrQ5TJEemqYPWMBuVawg	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to the party using a proprietary identification scheme.
+PartyIdentification182Choice	_NkXrRZTJEemqYPWMBuVawg	NameAndAddress	Name and address of the party.
+PartyIdentification182Choice	_NkXrR5TJEemqYPWMBuVawg	TaxIdentificationNumber	Number assigned by a tax authority to an entity.
+PartyIdentification182Choice	_NkXrSZTJEemqYPWMBuVawg	NationalRegistrationNumber	Number assigned by a national registration authority to an entity.
+AccountStatusUpdateInstruction1Choice	_xWgD8Hi5EeaRm5xIK6nGuQ	Code	Type of change to the account status expressed as a code.
+AccountStatusUpdateInstruction1Choice	_1krUkHi5EeaRm5xIK6nGuQ	Proprietary	Type of change to the account status expressed as a proprietary code.
+AccountStatusUpdateInstructionReason1Choice	_NHQjMXi8EeaRm5xIK6nGuQ	NoSpecifiedReason	There is no reason available or to report for the instruction to change the account status.
+AccountStatusUpdateInstructionReason1Choice	_NHQjM3i8EeaRm5xIK6nGuQ	Reason	Reason for the instruction to change the account status.
+AccountStatusUpdateInstructionReason2Choice	_08pj4Xi8EeaRm5xIK6nGuQ	Code	Reason for the instruction to change the account status expressed as a code.
+AccountStatusUpdateInstructionReason2Choice	_08pj43i8EeaRm5xIK6nGuQ	Proprietary	Reason for the instruction to change the account status expressed as a proprietary code.
+AccountParties13Choice	_oeSuwZQ_EemqYPWMBuVawg	PrimaryOwner	Single owner of the investment account or, when the ownership is split among several owners, the primary owner is the one giving its address and account details for the registration.
+AccountParties13Choice	_oeSuw5Q_EemqYPWMBuVawg	Trustee	Legal owners of the property. However, the beneficiary has the equitable or beneficial ownership.
+AccountParties13Choice	_oeSuxZQ_EemqYPWMBuVawg	Nominee	Entity named by the beneficial owner to act on its behalf, often to facilitate dealing, or to conceal the identity of the beneficiary.
+AccountParties13Choice	_oeSux5Q_EemqYPWMBuVawg	JointOwner	Co-owner of the investment account when the ownership is assigned to more than one party.
+Party48Choice	_nkkRcZQ_EemqYPWMBuVawg	Organisation	Organised structure that is set up for a particular purpose, for example, a business, government body, department, charity, or financial institution.
+Party48Choice	_nkkRc5Q_EemqYPWMBuVawg	IndividualPerson	Human entity, as distinguished from a corporate entity (which is sometimes referred to as an 'artificial person').

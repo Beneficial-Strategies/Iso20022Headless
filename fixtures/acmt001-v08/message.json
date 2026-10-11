@@ -1,0 +1,139 @@
+{
+  "identifier": "acmt.001.001.08",
+  "name": "AccountOpeningInstructionV08",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:acmt.001.001.08",
+  "bodyTag": "AcctOpngInstr",
+  "out": "acmt001",
+  "isoId": "_jDZTkZDiEem7fvtoGpNpow",
+  "definition": "Scope|The AccountOpeningInstruction message is sent by an account owner, for example, an investor or its designated agent to the account servicer, for example, a registrar, transfer agent, custodian or securities depository, to instruct the opening of an account or the opening of an account and the establishment of an investment plan.|Usage|The AccountOpeningInstruction is used to open an account directly or indirectly with the account servicer or an intermediary.|In some markets, for example, Australia, and for some products in the United Kingdom, a first order (also known as a deposit instruction) is placed at the same time as the account opening. To cater for this scenario, an order message can be linked (via references in the message) to the AccountOpeningInstruction message when needed.|Execution of the AccountOpeningInstruction is confirmed via an AccountDetailsConfirmation message.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "_jDZTl5DiEem7fvtoGpNpow",
+      "xmlTag": "MsgId",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "OrderReference",
+      "isoId": "_jDZTmZDiEem7fvtoGpNpow",
+      "xmlTag": "OrdrRef",
+      "type": "InvestmentFundOrder4",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "PreviousReference",
+      "isoId": "_jDZTm5DiEem7fvtoGpNpow",
+      "xmlTag": "PrvsRef",
+      "type": "AdditionalReference13",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "InstructionDetails",
+      "isoId": "_jDZTnZDiEem7fvtoGpNpow",
+      "xmlTag": "InstrDtls",
+      "type": "InvestmentAccountOpening4",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "InvestmentAccount",
+      "isoId": "_jDZTn5DiEem7fvtoGpNpow",
+      "xmlTag": "InvstmtAcct",
+      "type": "InvestmentAccount73",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountParties",
+      "isoId": "_jDZToZDiEem7fvtoGpNpow",
+      "xmlTag": "AcctPties",
+      "type": "AccountParties17",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Intermediaries",
+      "isoId": "_jDZTo5DiEem7fvtoGpNpow",
+      "xmlTag": "Intrmies",
+      "type": "Intermediary46",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "Placement",
+      "isoId": "_jDZTpZDiEem7fvtoGpNpow",
+      "xmlTag": "Plcmnt",
+      "type": "ReferredAgent3",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "NewIssueAllocation",
+      "isoId": "_jDZTp5DiEem7fvtoGpNpow",
+      "xmlTag": "NewIsseAllcn",
+      "type": "NewIssueAllocation2",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SavingsInvestmentPlan",
+      "isoId": "_jDZTqZDiEem7fvtoGpNpow",
+      "xmlTag": "SvgsInvstmtPlan",
+      "type": "InvestmentPlan17",
+      "min": 0,
+      "max": 50
+    },
+    {
+      "name": "WithdrawalInvestmentPlan",
+      "isoId": "_jDZTq5DiEem7fvtoGpNpow",
+      "xmlTag": "WdrwlInvstmtPlan",
+      "type": "InvestmentPlan17",
+      "min": 0,
+      "max": 10
+    },
+    {
+      "name": "CashSettlement",
+      "isoId": "_jDZTrZDiEem7fvtoGpNpow",
+      "xmlTag": "CshSttlm",
+      "type": "CashSettlement3",
+      "min": 0,
+      "max": 8
+    },
+    {
+      "name": "ServiceLevelAgreement",
+      "isoId": "_jDZTr5DiEem7fvtoGpNpow",
+      "xmlTag": "SvcLvlAgrmt",
+      "type": "DocumentToSend4",
+      "min": 0,
+      "max": 30
+    },
+    {
+      "name": "AdditionalInformation",
+      "isoId": "_jDZTsZDiEem7fvtoGpNpow",
+      "xmlTag": "AddtlInf",
+      "type": "AdditiononalInformation13",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "MarketPracticeVersion",
+      "isoId": "_jDZTs5DiEem7fvtoGpNpow",
+      "xmlTag": "MktPrctcVrsn",
+      "type": "MarketPracticeVersion1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Extension",
+      "isoId": "_jDZTtZDiEem7fvtoGpNpow",
+      "xmlTag": "Xtnsn",
+      "type": "Extension1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

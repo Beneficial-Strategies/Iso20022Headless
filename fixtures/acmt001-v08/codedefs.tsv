@@ -1,0 +1,3 @@
+codeSet	code	enumName	isoId	text
+AccountOpeningType1Code	NEWA	NewAccountOpening	_bq4Qwtp-Ed-ak6NoX_4Aeg_-1409903872	Account request is to open a new account.
+AccountOpeningType1Code	SUPA	SupplementaryAccountOpening	_bq4Qw9p-Ed-ak6NoX_4Aeg_-1409903871	Account request is to open a supplementary account, that is, based on an existing account.

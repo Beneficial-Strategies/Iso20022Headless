@@ -1,0 +1,9 @@
+codeSet	code	enumName	isoId	text
+AccountStatusUpdateInstruction1Code	CLOS	Close	_SuwCEXi6EeaRm5xIK6nGuQ	Account is to be closed.
+AccountStatusUpdateInstruction1Code	REAC	Reactive	_S6f_EXi6EeaRm5xIK6nGuQ	Account is to be reactivated, any previous instruction to close the account is rescinded.
+AccountStatusUpdateRequestReason1Code	CLOE	AccountClosureInstructionError	_cw_7YXjAEeaRm5xIK6nGuQ	Previous account closure instruction was sent in error.
+DataModification2Code	INSE	InsertNewDataSet	_ax9Etdp-Ed-ak6NoX_4Aeg_-1011150674	Insert a new set of data.
+DataModification2Code	DELT	DeleteDataSet	_ax9Ettp-Ed-ak6NoX_4Aeg_-1011150656	Delete an existing set of data.
+DataModification1Code	INSE	InsertNewDataSet	_ax9Esdp-Ed-ak6NoX_4Aeg_-1785750283	Insert a new set of data.
+DataModification1Code	UPDT	UpdateDataSetDetails	_ax9Estp-Ed-ak6NoX_4Aeg_-1785750265	Update the details of an existing set of data.
+DataModification1Code	DELT	DeleteDataSet	_ax9Es9p-Ed-ak6NoX_4Aeg_-1785749975	Delete an existing set of data.

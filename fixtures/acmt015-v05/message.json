@@ -1,0 +1,91 @@
+{
+  "identifier": "acmt.015.001.05",
+  "name": "AccountExcludedMandateMaintenanceRequestV05",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:acmt.015.001.05",
+  "bodyTag": "AcctExcldMndtMntncReq",
+  "out": "acmt015",
+  "isoId": "08234ebe-bb5d-487f-b042-2fe459be526e",
+  "definition": "The AccountExcludedMandateMaintenanceRequest message is sent from an organisation to a financial institution as part of the account maintenance process. It is the initial request message to update an account. Usage: this update is about account details excluding any mandate information.|If modification codes are not used: the organisation will specify under the “Account” and “Organisation” tags the complete information as it should be in the financial institution’s records after processing the update request. |If modification codes are used (in that case, they must be used everywhere): the organisation will specify under the “Account” and “Organisation” tags which elements must be added, deleted, modified, or if they are unchanged.",
+  "blocks": [
+    {
+      "name": "References",
+      "isoId": "1404b4b8-1f61-4174-a8ef-18b95acddee1",
+      "xmlTag": "Refs",
+      "type": "References4",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "From",
+      "isoId": "e3a2c5b1-59a4-43ed-93d5-a0887b6b58b5",
+      "xmlTag": "Fr",
+      "type": "OrganisationIdentification39",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ContractDates",
+      "isoId": "b85e13fc-2d4a-41ad-b372-272c4ea4e4a8",
+      "xmlTag": "CtrctDts",
+      "type": "AccountContract2",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "UnderlyingMasterAgreement",
+      "isoId": "9116ac23-ce9a-4b1b-8669-142f3ad3d602",
+      "xmlTag": "UndrlygMstrAgrmt",
+      "type": "ContractDocument1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Account",
+      "isoId": "75ff4dfb-7537-4249-8c43-60b53ebf085b",
+      "xmlTag": "Acct",
+      "type": "CustomerAccountModification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountServicerIdentification",
+      "isoId": "1c1d640e-73cd-4423-ab29-14ef1075035c",
+      "xmlTag": "AcctSvcrId",
+      "type": "BranchAndFinancialInstitutionIdentification8",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Organisation",
+      "isoId": "ceef8afc-795c-44f3-8868-9658c3acb504",
+      "xmlTag": "Org",
+      "type": "OrganisationModification3",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AdditionalMessageInformation",
+      "isoId": "8bb93d3a-79d8-4d4d-b559-ae0c6fc831f1",
+      "xmlTag": "AddtlMsgInf",
+      "type": "AdditionalInformation5",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "DigitalSignature",
+      "isoId": "c674e7aa-f412-43c5-84de-288aa1f507f6",
+      "xmlTag": "DgtlSgntr",
+      "type": "PartyAndSignature4",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "8dcfe791-fde2-425a-a149-097ba91d3e61",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

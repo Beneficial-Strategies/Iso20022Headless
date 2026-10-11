@@ -1,0 +1,77 @@
+codeSet	isoId	text
+AccountManagementType2Code	_bqvG0tp-Ed-ak6NoX_4Aeg_-845396197	Refer to an account management instruction ie, either an account opening instruction or an account modification instruction or a get account details message.
+EnabledStatusReason1Code	_LCqQYGBhEeaR1OOiVxm3Gg	Specifies the reason for an enabled status.
+DisabledReason2Code	__tcgEGBqEeaHEJD5P6-ccw	Specifies the reason an account is disabled.
+PendingStatusReason1Code	_-nYUEGBjEeaR1OOiVxm3Gg	Specifies the reason for a pending status.
+PendingOpeningStatusReason1Code	_uBUPAGCKEeabZtzjEVWYCQ	Specifies the reason for a pending account opening status.
+ProformaStatusReason1Code	_h2CSkE_vEeaB8-OWTiMVrQ	Specifies the reason for proforma status.
+ClosedStatusReason1Code	_Sx9Z8E_wEeaB8-OWTiMVrQ	Specifies the reason for the closed status.
+ClosurePendingStatusReason1Code	_eduTYGCMEeabZtzjEVWYCQ	Specifies the reason for the closure pending status.
+InvestmentFundTransactionType1Code	_nj6G8FsJEea4y99eritluQ	Specifies the type of transaction.
+BlockedReason2Code	_lXE7oFsMEeaY86V9afpFqA	Specifies the reason an account is blocked.
+FundCashAccount4Code	_nCKuwCC7EeWPMvNwVtiMsA	Specifies the account type.
+AccountOwnershipType4Code	_o23nwL-GEeWfsa741pI6WA	Specifies the type of account ownership.
+TaxExemptReason3Code	_DljS4SDAEeWPMvNwVtiMsA	Specifies the reason a specific tax has not been levied/deducted on a given transaction.
+EventFrequency9Code	_kNl8ESDAEeWPMvNwVtiMsA	Specifies the regularity of an event.
+IncomePreference2Code	_pt6LwCFJEeWgV9SQSyaAog	Specifies the options for distribution of dividend income.
+Holding1Code	_AFmrABKgEeKj15WxqwlXPw	Specifies how the holding is blocked.
+Eligible1Code	_unGN4CC9EeWPMvNwVtiMsA	Specifies whether the item is eligible or not eligible.
+Collateral1Code	_ObDuwCC-EeWPMvNwVtiMsA	Specifies whether the item is used as collateral.
+FundOwnership1Code	_j9NfQCDXEeWCLu74WLgP4w	Specifies if all the shares are owned exclusively by the fund company.
+FundIntention1Code	_WCVqYCDYEeWCLu74WLgP4w	Specifies if the fund is intended for qualified investors.
+OperationalStatus1Code	_EwU6kCDZEeWCLu74WLgP4w	Specifies the operational status.
+TaxWithholdingMethod3Code	_nyrU8L-IEeWfsa741pI6WA	Specifies the method by which the tax on the interests is to be processed i.e. either withheld at source or reported to tax authorities or a tax certificate has been provided by the beneficiary.
+PartyIdentificationType7Code	_G1XwkCCOEeWJd9HF2tO7BA	Specifies an alternative identification of a party, for example, national registration identification number, passport number, tax identification number.
+CreditDebit3Code	_s9EFxjzcEeWg1_uD_bF5Og	Specifies if an operation is an increase or a decrease.
+SettlementInstructionReason1Code	_76NdACCtEeWJd9HF2tO7BA	Specifies the type of transaction.
+CashAccountType5Code	_xujvECCyEeWJd9HF2tO7BA	Specifies the type of cash account.
+Rank1Code	_6S0e4JNgEeWSf8tCOKY7Ug	Specifies the rank of an element (party, market) in a specific environment.
+RoundingDirection1Code	_Y-Bo9dp-Ed-ak6NoX_4Aeg_2066033818	Specifies the rounding direction.
+AccountUsageType2Code	_CYsHEL-FEeWfsa741pI6WA	Specifies the type of usage of the account.
+Provided1Code	_UbfaUBKFEeKj15WxqwlXPw	Specifies whether items have been provided.
+TransactionChannel2Code	_y2ltsBRFEeOKWo1NF21OVw	Specifies the type of communication channel.
+InvestmentAccountCategory1Code	_FWTfYBRIEeOKWo1NF21OVw	Specifies the investment account category.
+LevelOfControl1Code	_kcJ1ICDDEeWPMvNwVtiMsA	Specifies the level of control.
+AccountingStatus1Code	_d8OH0CDEEeWPMvNwVtiMsA	Specifies the accounting status.
+PositionEffect3Code	_tIL3gCDLEeWPMvNwVtiMsA	Specifies the order in which events are processed.
+Liability1Code	__2hJcCDMEeWPMvNwVtiMsA	Specifies the party responsible for the liability.
+ProfileType1Code	_LGXUsCGLEeW_v8XsK-l3KA	Specifies the type of profile.
+InvestorProfileStatus1Code	_t6X6sCDREeWCLu74WLgP4w	Specifies the status of the investor profile.
+PartyRole1Code	_xiDWkCDSEeWCLu74WLgP4w	Specifies the role of the party in the transaction.
+EventFrequency10Code	_9DnqYCDUEeWCLu74WLgP4w	Specifies the regularity of an event.
+ConsolidationType1Code	_3fs5YCDVEeWCLu74WLgP4w	Specifies the consolidation type.
+OrganisationType1Code	_g0YAgCCfEeWJd9HF2tO7BA	Specifies a type of organisation.
+NamePrefix1Code	_aM_9hNp-Ed-ak6NoX_4Aeg_1660850708	Specifies the terms used to formally address a person.
+Gender1Code	_JyNe4IoTEeahcZ3Nzs1Qag	Specifies the gender of a person.
+NationalityCode	_aNJugNp-Ed-ak6NoX_4Aeg_-626382599	Specifies the country where a person was born or is naturalised.
+PoliticalExposureType2Code	_rj2EMJUgEemC09f0MxYkRg	Specifies the political exposure type.
+PoliticallyExposedPersonStatus1Code	_CDnRUJUrEemC09f0MxYkRg	Status of a politically exposed person.
+CivilStatus1Code	_vaUrUCChEeWJd9HF2tO7BA	Specifies the civil status of a person.
+GDPRDataConsent1Code	_SQd7EJTWEemC09f0MxYkRg	Consent type in the context of the General Protection Regulation (GDPR) 2016/679 regulation.
+MoneyLaunderingCheck1Code	_aMj4odp-Ed-ak6NoX_4Aeg_-1435186299	Specifies the status of money laundering identification procedures.
+CertificateType2Code	_GXDp0BODEeKjmvxNCObNeQ	Specifies the type of certificate.
+EventFrequency1Code	_ajNeF9p-Ed-ak6NoX_4Aeg_899403009	Specifies the regularity of an event.
+ConductClassification1Code	_nP6msBjoEeKxeog5DTmtgg	Specifies the classification of the conduct.
+RiskLevel1Code	_FSdaIBdxEeKYM7Bc71nDlA	Specifies the risk level.
+KnowYourCustomerCheckType1Code	_4-CwIBRxEeOKWo1NF21OVw	Specifies the type of Know Your Customer (KYC) or anti-money laundering due diligence to which the investor has been subjected.
+OrderOriginatorEligibility1Code	_aRBh5Np-Ed-ak6NoX_4Aeg_182318737	Specifies the type of the counterparties eligibility as defined by article 24 of the EU MiFID Directive applicable to transactions executed by investment firms for eligible counterparties.
+InformationDistribution2Code	_zDak0CCUEeWJd9HF2tO7BA	Specifies how information is to be distributed.
+FATCAFormType1Code	_kZxV0AjMEeS5F6qHcKOrew	Specifies the type of Foreign Account Tax Compliance Act (FATCA) form.
+FATCAStatus1Code	_VA8RAAjUEeS5F6qHcKOrew	Specifies the Foreign Account Tax Compliance Act (FATCA) status.
+FATCASourceStatus1Code	_9WkQ8AjUEeS5F6qHcKOrew	Specifies the source of Foreign Account Tax Compliance Act (FATCA) status.
+CRSFormType1Code	_TYFa4ENwEeaS-NnwLNvMPg	Specifies the type of Common Reporting Standard (CRS) form.
+CRSStatus1Code	_L4GYEENsEeaS-NnwLNvMPg	Specifies the Common Reporting Status (CRS) status.
+CRSSourceStatus1Code	_-eHCsENsEeaS-NnwLNvMPg	Specifies the source of Common Reporting Standard (CRS) status.
+MailType1Code	_gpYLECCXEeWJd9HF2tO7BA	Specifies the type of mail service.
+ResidentialStatus1Code	_ZUrOZtp-Ed-ak6NoX_4Aeg_-1428222113	Specifies the residential status of an individual.
+CompanyLink1Code	_r7rB4CCbEeWJd9HF2tO7BA	Specifies the type of links to a company.
+AddressType1Code	_bmtiddp-Ed-ak6NoX_4Aeg_1664808083	Specifies the type of address.
+RestrictionStatus1Code	_v1wYICFnEeW9XJWqfgXIIA	Specifies the status of a restriction.
+InvestmentFundRole6Code	_36RfYBUIEeOIaq8KyCdIDQ	Specifies the role of the party.
+Referred1Code	_ZaosdNp-Ed-ak6NoX_4Aeg_-241687818	Indicates if the investor was referred.
+EventFrequency8Code	_nYW2IBUREeOIaq8KyCdIDQ	Specifies the regularity of an event.
+CardType1Code	_zd5TUg93EeGeV5vP7Mvdig_-963241833	Specifies the type of payment card.
+Insurance1Code	_BURwYBQbEeKebsB9eKJSkA	Specifies the type of insurance.
+PlanStatus1Code	_QAWLUAjcEeS5F6qHcKOrew	Specifies the status of a plan.
+InvestmentFundRole7Code	_EfM6UF92EeS7xuKaq75oiQ	Specifies the role of the party.
+CommunicationMethod1Code	_bAkIdNp-Ed-ak6NoX_4Aeg_326561043	Communication method used for the transmission of documents.

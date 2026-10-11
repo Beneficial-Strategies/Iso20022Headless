@@ -1,0 +1,23 @@
+codeSet	code	enumName	isoId	text
+Modification1Code	NOCH	NoChange	_7OFh0Q4SEeKGXqvMN6jpiw	Specifies that the item is not changed.
+Modification1Code	MODI	Modification	_7V-5kQ4SEeKGXqvMN6jpiw	Specifies that the item is modified.
+Modification1Code	DELE	Deletion	_7eCCUQ4SEeKGXqvMN6jpiw	Specifies that the item is deleted.
+Modification1Code	ADDD	Addition	_7gjx4Q4SEeKGXqvMN6jpiw	Specifies that the item is added.
+AccountStatus3Code	ENAB	Enabled	_Yajvgtp-Ed-ak6NoX_4Aeg_-2072727728	Account can be used for its intended purpose.
+AccountStatus3Code	DISA	Disabled	_Yajvg9p-Ed-ak6NoX_4Aeg_-2045022067	Account cannot be used for its intended purpose, either temporarily or permanently.
+AccountStatus3Code	DELE	Deleted	_YajvhNp-Ed-ak6NoX_4Aeg_-2017316036	Account cannot be used any longer.
+AccountStatus3Code	FORM	ProForma	_Yajvhdp-Ed-ak6NoX_4Aeg_-1757807861	Account is temporary and can be partially used for its intended purpose. The account will be fully available for use when the account servicer has received all relevant documents.
+Frequency7Code	YEAR	Annual	_gqp9IQ1nEeKGXqvMN6jpiw	Event takes place every year or once a year.
+Frequency7Code	DAIL	Daily	_hLTMEQ1nEeKGXqvMN6jpiw	Event takes place every day.
+Frequency7Code	MNTH	Monthly	_he9u8Q1nEeKGXqvMN6jpiw	Event takes place every month or once a month.
+Frequency7Code	QURT	Quarterly	_iIZGcQ1nEeKGXqvMN6jpiw	Event takes place every three months or four times a year.
+Frequency7Code	MIAN	SemiAnnual	_ijz3IQ1nEeKGXqvMN6jpiw	Event takes place every six months or two times a year.
+Frequency7Code	TEND	TenDays	_i8jHQQ1nEeKGXqvMN6jpiw	Event takes place every ten business days.
+Frequency7Code	MOVE	TriggeredByMovement	_jV40UQ1nEeKGXqvMN6jpiw	Event takes place at the end of the day if there was a movement on the account, otherwise nothing is sent that day.
+Frequency7Code	WEEK	Weekly	_jfRZ0Q1nEeKGXqvMN6jpiw	Event takes place once a week.
+Frequency7Code	INDA	IntraDay	_BmNaYUqAEeKw5sECfP82rg	Event takes place several times a day.
+CommunicationMethod2Code	EMAL	Email	_mPNrgQ1fEeKGXqvMN6jpiw	Transmission by e-mail.
+CommunicationMethod2Code	FAXI	Fax	_mk0vIQ1fEeKGXqvMN6jpiw	Transmission by fax.
+CommunicationMethod2Code	FILE	File	_myYqAQ1fEeKGXqvMN6jpiw	Transmission by file transfer.
+CommunicationMethod2Code	ONLI	Online	_nNM9wQ1fEeKGXqvMN6jpiw	Transmission on line, for example, in a web portal.
+CommunicationMethod2Code	POST	PostalService	_jEZ6YUp-EeKw5sECfP82rg	Transmission by postal service.

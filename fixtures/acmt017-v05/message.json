@@ -1,0 +1,107 @@
+{
+  "identifier": "acmt.017.001.05",
+  "name": "AccountMandateMaintenanceRequestV05",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:acmt.017.001.05",
+  "bodyTag": "AcctMndtMntncReq",
+  "out": "acmt017",
+  "isoId": "36c8c351-742f-445f-bdcc-f499827a8834",
+  "definition": "The AccountMandateMaintenanceRequest message is sent from an organisation to a financial institution as part of the account maintenance process. It is the initial request message to update one or several accounts. Usage: this update is only about mandate information. |If modification codes are not used: the organisation will specify under the “Mandate” and “Group” tags the complete information as it should be in the financial institution’s records after processing the update request. |If modification codes are used (in that case, they must be used everywhere): the organisation will specify under the “Mandate” and “Group” tags which elements must be added, deleted, modified, or if they are unchanged.|It is not possible to update the account characteristics or organisation information with this message.",
+  "blocks": [
+    {
+      "name": "References",
+      "isoId": "ff34007f-aaf0-4e84-be1d-f3ead21008c7",
+      "xmlTag": "Refs",
+      "type": "References4",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "From",
+      "isoId": "c232b8fc-fd21-41ca-ac2b-0bc462cebcec",
+      "xmlTag": "Fr",
+      "type": "OrganisationIdentification39",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ContractDates",
+      "isoId": "51c038ae-b364-4bd9-ab6a-7d06962fc878",
+      "xmlTag": "CtrctDts",
+      "type": "AccountContract2",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "UnderlyingMasterAgreement",
+      "isoId": "a98108c1-7ef6-46cf-b529-cd6ada44cbe3",
+      "xmlTag": "UndrlygMstrAgrmt",
+      "type": "ContractDocument1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AccountIdentification",
+      "isoId": "92ddb696-c894-4c95-9324-3b18463cadcc",
+      "xmlTag": "AcctId",
+      "type": "AccountForAction1",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "AccountServicerIdentification",
+      "isoId": "acf7c39c-844d-47e5-87c4-d1e95340713f",
+      "xmlTag": "AcctSvcrId",
+      "type": "BranchAndFinancialInstitutionIdentification8",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "OrganisationIdentification",
+      "isoId": "3398190d-f671-4f6f-9035-7afef07008e5",
+      "xmlTag": "OrgId",
+      "type": "Organisation44",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Mandate",
+      "isoId": "604abe71-54a1-439a-909c-dfb02e71bd9f",
+      "xmlTag": "Mndt",
+      "type": "OperationMandate6",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "Group",
+      "isoId": "3987caa4-74ba-4147-8522-57863f697c9c",
+      "xmlTag": "Grp",
+      "type": "Group5",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "AdditionalMessageInformation",
+      "isoId": "78a1849e-45fc-408b-87e4-a1915d48f68b",
+      "xmlTag": "AddtlMsgInf",
+      "type": "AdditionalInformation5",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "DigitalSignature",
+      "isoId": "fbbc977c-144f-47eb-83dc-600c90fad5bc",
+      "xmlTag": "DgtlSgntr",
+      "type": "PartyAndSignature4",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "8b429b3c-1ab3-47e1-b42c-cb9beb16e6f1",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

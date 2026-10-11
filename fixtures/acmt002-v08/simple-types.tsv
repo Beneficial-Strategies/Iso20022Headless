@@ -1,0 +1,24 @@
+name	isoId	xsiType	pattern	minLength	maxLength	totalDigits	fractionDigits	minInclusive	maxInclusive	other
+Bloomberg2Identifier	_vwu6IVonEeaGcYxFfqiPNw	IdentifierSet	(BBG)[BCDFGHJKLMNPQRSTVWXYZ\d]{8}\d							identificationScheme=Bloomberg;  BloombergIdentifier
+CHIPSUniversalIdentifier	_YXIoEdp-Ed-ak6NoX_4Aeg_-870708024	IdentifierSet	CH[0-9]{6,6}							identificationScheme=American Banker's Association (ABA); CHIPS UID
+NewZealandNCCIdentifier	_YXIoENp-Ed-ak6NoX_4Aeg_-870708035	IdentifierSet	NZ[0-9]{6,6}							identificationScheme=New Zealand Bankers Association; NewZealandNCC
+IrishNSCIdentifier	_YXSZEdp-Ed-ak6NoX_4Aeg_-870707931	IdentifierSet	IE[0-9]{6,6}							identificationScheme=Irish Payment Services Organisation (IPSO); Irish National Sort Code
+UKDomesticSortCodeIdentifier	_YXIoEtp-Ed-ak6NoX_4Aeg_-870708017	IdentifierSet	SC[0-9]{6,6}							identificationScheme=Association for Payment Clearing Services (APACS); UK Sort Code
+CHIPSParticipantIdentifier	_YW-3Etp-Ed-ak6NoX_4Aeg_-870708329	IdentifierSet	CP[0-9]{4,4}							identificationScheme=American Banker's Association (ABA); CHIPS Participant Number
+SwissBCIdentifier	_YW-3E9p-Ed-ak6NoX_4Aeg_-870708087	IdentifierSet	SW[0-9]{3,5}							identificationScheme=Swiss Interbank Clearing Ltd; BC Identifier
+FedwireRoutingNumberIdentifier	_YW-3FNp-Ed-ak6NoX_4Aeg_-870708084	IdentifierSet	FW[0-9]{9,9}							identificationScheme=US Federal Reserve Bank ; FedwireRoutingNumberIdentifier
+PortugueseNCCIdentifier	_YXIoE9p-Ed-ak6NoX_4Aeg_-870707992	IdentifierSet	PT[0-9]{8,8}							identificationScheme=Banco de Portugal; PortugueseNCC
+RussianCentralBankIdentificationCodeIdentifier	_YXIoFdp-Ed-ak6NoX_4Aeg_-870707975	IdentifierSet	RU[0-9]{9,9}							identificationScheme=Central Bank of Russia; RussianCentralBankIdentificationCode
+ItalianDomesticIdentifier	_YXIoFNp-Ed-ak6NoX_4Aeg_-870707989	IdentifierSet	IT[0-9]{10,10}							identificationScheme=Associazione Bancaria Italiana; Italian Domestic Identification
+AustrianBankleitzahlIdentifier	_YW-3GNp-Ed-ak6NoX_4Aeg_-870708049	IdentifierSet	AT[0-9]{5,5}							identificationScheme=Oesterreichische NationalBank; Austrian Bankleitzahl
+CanadianPaymentsARNIdentifier	_YXIoF9p-Ed-ak6NoX_4Aeg_-870707956	IdentifierSet	CA[0-9]{9,9}							identificationScheme=Candian Payment Association; Payment Routing Number
+SwissSICIdentifier	_YXIoFtp-Ed-ak6NoX_4Aeg_-870707964	IdentifierSet	SW[0-9]{6,6}							identificationScheme=Swiss Interbank Clearing Ltd; SIC Identifier
+GermanBankleitzahlIdentifier	_YW-3Fdp-Ed-ak6NoX_4Aeg_-870708070	IdentifierSet	BL[0-9]{8,8}							identificationScheme=Deutsche Bundesbank ; German Bankleitzahl
+SpanishDomesticInterbankingIdentifier	_YW-3F9p-Ed-ak6NoX_4Aeg_-870708052	IdentifierSet	ES[0-9]{8,9}							identificationScheme=Centro de Cooperacion Interbancaria (CCI); Spanish Domestic Interbanking Identifier
+SouthAfricanNCCIdentifier	_YW-3Ftp-Ed-ak6NoX_4Aeg_-870708067	IdentifierSet	ZA[0-9]{6,6}							identificationScheme=South African Bankers Services Company Ltd (Bank Serv); South African National Clearing system Code
+HongKongBankIdentifier	_YXSZENp-Ed-ak6NoX_4Aeg_-870707946	IdentifierSet	HK[0-9]{3,3}							identificationScheme=Hong Kong Interbank Clearing Ltd (HKICL); Bank Code of Hong Kong
+ExtensiveBranchNetworkIdentifier	_YW-3ENp-Ed-ak6NoX_4Aeg_-1373497406	IdentifierSet	AU[0-9]{6,6}							identificationScheme=Australian Payments Clearing Association (APCA); Australian BSB
+SmallNetworkIdentifier	_YW-3Edp-Ed-ak6NoX_4Aeg_-1373497640	IdentifierSet	AU[0-9]{6,6}							identificationScheme=Australian Payments Clearing Association (APCA); Australian BSB
+PercentageBoundedRate	_1IHbslrKEeK6wJUEIFmn9A	Rate				11	10	0	100	baseValue=100.0
+MICIdentifier	_YXvFANp-Ed-ak6NoX_4Aeg_1224758022	IdentifierSet	[A-Z0-9]{4,4}							identificationScheme=SWIFT; MICIdentifier
+Extended350Code	_YWPQNtp-Ed-ak6NoX_4Aeg_-2084377979	Text		1	350					

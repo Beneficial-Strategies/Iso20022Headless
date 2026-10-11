@@ -1,0 +1,5 @@
+codeSetName	isoId	restrictionOf	code	enumName
+UseCases1Code	_Yatghtp-Ed-ak6NoX_4Aeg_-2122748244	UseCasesCode	OPEN	Opening
+UseCases1Code	_Yatghtp-Ed-ak6NoX_4Aeg_-2122748244	UseCasesCode	MNTN	Maintenance
+UseCases1Code	_Yatghtp-Ed-ak6NoX_4Aeg_-2122748244	UseCasesCode	CLSG	Closing
+UseCases1Code	_Yatghtp-Ed-ak6NoX_4Aeg_-2122748244	UseCasesCode	VIEW	View

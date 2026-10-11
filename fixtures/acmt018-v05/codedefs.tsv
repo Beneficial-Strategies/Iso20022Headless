@@ -1,0 +1,7 @@
+codeSet	code	enumName	isoId	text
+CommunicationMethod3Code	EMAL	Email	_tRC9kRg2EeKnW4lR85q-0A	Transmission by e-mail.
+CommunicationMethod3Code	FAXI	Fax	_tf8VMRg2EeKnW4lR85q-0A	Transmission by fax.
+CommunicationMethod3Code	POST	PostalService	_uOSo8Rg2EeKnW4lR85q-0A	Transmission by postal service.
+CommunicationMethod3Code	PHON	Phone	_uWC2wRg2EeKnW4lR85q-0A	Transmission by telephone.
+CommunicationMethod3Code	FILE	File	_xrSUQRg2EeKnW4lR85q-0A	Transmission by file transfer.
+CommunicationMethod3Code	ONLI	Online	_NfzJcUp-EeKw5sECfP82rg	Transmission on line, for example, in a web portal.

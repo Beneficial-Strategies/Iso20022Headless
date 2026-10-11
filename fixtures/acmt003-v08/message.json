@@ -1,0 +1,139 @@
+{
+  "identifier": "acmt.003.001.08",
+  "name": "AccountModificationInstructionV08",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:acmt.003.001.08",
+  "bodyTag": "AcctModInstr",
+  "out": "acmt003",
+  "isoId": "_nayxoZDiEem7fvtoGpNpow",
+  "definition": "Scope|The AccountModificationInstruction message is sent by an account owner, for example, an investor or its designated agent to the account servicer, for example, a registrar, transfer agent, custodian bank or securities depository to modify, that is, create, update or delete specific details of an existing account.|Usage|The AccountModificationInstruction message is used to modify the details of an existing account.|The AccountModificationInstruction message can be used to:|- maintain/update any of the existing account details, for example, to update the address of the beneficiary or modify the preference to income from distribution to capitalisation, or,|- add/create specific details to the existing account when these details were not yet recorded at the time of account creation, for example, to add a second address or to establish new cash settlement standing instructions, or,|- delete specific account details, for example, delete cash standing instructions, or,|- instruct a change to the status of the account, for example, instruct the closure of the account.|The usage of this message may be subject to service level agreement (SLA) between the counterparties.|Execution of the AccountModificationInstruction is confirmed via an AccountDetailsConfirmation message.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "_nayxpZDiEem7fvtoGpNpow",
+      "xmlTag": "MsgId",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "PreviousReference",
+      "isoId": "_nayxp5DiEem7fvtoGpNpow",
+      "xmlTag": "PrvsRef",
+      "type": "AdditionalReference13",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "InstructionDetails",
+      "isoId": "_nayxqZDiEem7fvtoGpNpow",
+      "xmlTag": "InstrDtls",
+      "type": "InvestmentAccountModification4",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "InvestmentAccountSelection",
+      "isoId": "_nayxq5DiEem7fvtoGpNpow",
+      "xmlTag": "InvstmtAcctSelctn",
+      "type": "AccountSelection3Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ModifiedInvestmentAccount",
+      "isoId": "_nayxrZDiEem7fvtoGpNpow",
+      "xmlTag": "ModfdInvstmtAcct",
+      "type": "InvestmentAccount75",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ModifiedAccountParties",
+      "isoId": "_nayxr5DiEem7fvtoGpNpow",
+      "xmlTag": "ModfdAcctPties",
+      "type": "AccountParties18",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "ModifiedIntermediaries",
+      "isoId": "_nayxsZDiEem7fvtoGpNpow",
+      "xmlTag": "ModfdIntrmies",
+      "type": "ModificationScope40",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "ModifiedPlacement",
+      "isoId": "_nayxs5DiEem7fvtoGpNpow",
+      "xmlTag": "ModfdPlcmnt",
+      "type": "ModificationScope43",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ModifiedIssueAllocation",
+      "isoId": "_nayxtZDiEem7fvtoGpNpow",
+      "xmlTag": "ModfdIsseAllcn",
+      "type": "ModificationScope21",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ModifiedSavingsInvestmentPlan",
+      "isoId": "_nayxt5DiEem7fvtoGpNpow",
+      "xmlTag": "ModfdSvgsInvstmtPlan",
+      "type": "ModificationScope41",
+      "min": 0,
+      "max": 50
+    },
+    {
+      "name": "ModifiedWithdrawalInvestmentPlan",
+      "isoId": "_nayxuZDiEem7fvtoGpNpow",
+      "xmlTag": "ModfdWdrwlInvstmtPlan",
+      "type": "ModificationScope41",
+      "min": 0,
+      "max": 10
+    },
+    {
+      "name": "ModifiedCashSettlement",
+      "isoId": "_nayxu5DiEem7fvtoGpNpow",
+      "xmlTag": "ModfdCshSttlm",
+      "type": "CashSettlement4",
+      "min": 0,
+      "max": 8
+    },
+    {
+      "name": "ModifiedServiceLevelAgreement",
+      "isoId": "_nayxvZDiEem7fvtoGpNpow",
+      "xmlTag": "ModfdSvcLvlAgrmt",
+      "type": "ModificationScope44",
+      "min": 0,
+      "max": 30
+    },
+    {
+      "name": "ModifiedAdditionalInformation",
+      "isoId": "_nayxv5DiEem7fvtoGpNpow",
+      "xmlTag": "ModfdAddtlInf",
+      "type": "ModificationScope45",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "MarketPracticeVersion",
+      "isoId": "_nayxwZDiEem7fvtoGpNpow",
+      "xmlTag": "MktPrctcVrsn",
+      "type": "MarketPracticeVersion1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Extension",
+      "isoId": "_nayxw5DiEem7fvtoGpNpow",
+      "xmlTag": "Xtnsn",
+      "type": "Extension1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

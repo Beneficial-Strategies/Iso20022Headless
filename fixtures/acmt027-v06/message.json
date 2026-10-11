@@ -1,0 +1,59 @@
+{
+  "identifier": "acmt.027.001.06",
+  "name": "AccountSwitchInformationRequestV06",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:acmt.027.001.06",
+  "bodyTag": "AcctSwtchInfReq",
+  "out": "acmt027",
+  "isoId": "20a60248-b1e9-4597-be26-f96ed1b9f64d",
+  "definition": "The AccountSwitchInformationRequest message is sent by the new account servicer to the account servicer which previously held the account to initiate the account switch process. It provides information sufficient for the old account servicer to identify the old account and validate the account parties. The new account servicer is able to inform the old bank of the maximum funding the new account will provide to settle a negative closing balance and the proposed balance transfer window.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "73223280-5269-43ff-9213-4b00c296a4f1",
+      "xmlTag": "MsgId",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountSwitchDetails",
+      "isoId": "503238c4-863e-44d0-b34f-0fabad0e8022",
+      "xmlTag": "AcctSwtchDtls",
+      "type": "AccountSwitchDetails1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "NewAccount",
+      "isoId": "1da6e318-2747-4d50-8e16-cce62a704978",
+      "xmlTag": "NewAcct",
+      "type": "NewAccount4",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "OldAccount",
+      "isoId": "5a72ac5f-7eed-495e-9578-c2b8b2f18fc7",
+      "xmlTag": "OdAcct",
+      "type": "CashAccount43",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "BalanceTransfer",
+      "isoId": "c772c417-0fc5-4d6c-9269-250605aad874",
+      "xmlTag": "BalTrf",
+      "type": "BalanceTransfer7",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "5b344aa8-ece9-4ee8-8f65-b3f8ad2b1b82",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

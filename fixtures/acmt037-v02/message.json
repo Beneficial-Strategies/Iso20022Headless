@@ -1,0 +1,35 @@
+{
+  "identifier": "acmt.037.001.02",
+  "name": "AccountSwitchTechnicalRejectionV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:acmt.037.001.02",
+  "bodyTag": "AcctSwtchTechRjctn",
+  "out": "acmt037",
+  "isoId": "_7HT_j242EeiU9cctagi5ow",
+  "definition": "The AccountSwitchTechnicalRejection message is sent by the account switch servicer to the new account servicer when it has not been able to validate a previously sent message.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "_7HT_kW42EeiU9cctagi5ow",
+      "xmlTag": "MsgId",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountSwitchDetails",
+      "isoId": "_7HT_k242EeiU9cctagi5ow",
+      "xmlTag": "AcctSwtchDtls",
+      "type": "AccountSwitchDetails1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_7HT_lW42EeiU9cctagi5ow",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

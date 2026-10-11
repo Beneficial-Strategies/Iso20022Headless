@@ -1,0 +1,4 @@
+codeSet	isoId	text
+AccountManagementStatus1Code	_bqbk1tp-Ed-ak6NoX_4Aeg_226141002	Specifies the status of an account management instruction.
+RejectedStatusReason6Code	_ZdnvAdp-Ed-ak6NoX_4Aeg_-517887476	Specifies the reason for a rejected status.
+AcceptedStatusReason1Code	_RiGKQGBnEeaR1OOiVxm3Gg	Specifies the reason for an accepted status.

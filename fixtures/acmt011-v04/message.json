@@ -1,0 +1,67 @@
+{
+  "identifier": "acmt.011.001.04",
+  "name": "AccountRequestRejectionV04",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:acmt.011.001.04",
+  "bodyTag": "AcctReqRjctn",
+  "out": "acmt011",
+  "isoId": "_R2_ZyTEZEe6kQ-WGAhcVPQ",
+  "definition": "The AccountRequestRejection message is sent from a financial institution to an organisation. This message is sent in response to a request message from the organisation, if the business content is not valid.",
+  "blocks": [
+    {
+      "name": "References",
+      "isoId": "_R2_ZzzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Refs",
+      "type": "References6",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "From",
+      "isoId": "_R2_Z0TEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Fr",
+      "type": "OrganisationIdentification39",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AccountServicerIdentification",
+      "isoId": "_R2_Z0zEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "AcctSvcrId",
+      "type": "BranchAndFinancialInstitutionIdentification8",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountIdentification",
+      "isoId": "_R3AAkDEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "AcctId",
+      "type": "AccountForAction1",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "OrganisationIdentification",
+      "isoId": "_R3AAkjEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "OrgId",
+      "type": "OrganisationIdentification39",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "DigitalSignature",
+      "isoId": "_R3AAlDEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "DgtlSgntr",
+      "type": "PartyAndSignature4",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3AAljEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

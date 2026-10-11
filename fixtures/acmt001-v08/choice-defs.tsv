@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+AccountOpeningType1Choice	_3Et5EUzJEeafiMTDrtSnyw	Code	Type of account opening instruction expressed as a code.
+AccountOpeningType1Choice	_5DbogUzJEeafiMTDrtSnyw	Proprietary	Type of account opening instruction expressed as a proprietary code.

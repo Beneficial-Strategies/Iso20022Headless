@@ -1,0 +1,107 @@
+{
+  "identifier": "acmt.008.001.05",
+  "name": "AccountOpeningAmendmentRequestV05",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:acmt.008.001.05",
+  "bodyTag": "AcctOpngAmdmntReq",
+  "out": "acmt008",
+  "isoId": "_R2-ycTEZEe6kQ-WGAhcVPQ",
+  "definition": "The AccountOpeningAmendmentRequest message is sent from an organisation to a financial institution as part of the account opening process. It is sent in response to a request from the financial institution to send additional information.",
+  "blocks": [
+    {
+      "name": "References",
+      "isoId": "_R2-ydzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Refs",
+      "type": "References4",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "From",
+      "isoId": "_R2-yeTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Fr",
+      "type": "OrganisationIdentification39",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ContractDates",
+      "isoId": "_R2-yezEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "CtrctDts",
+      "type": "AccountContract2",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "UnderlyingMasterAgreement",
+      "isoId": "_R2-yfTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "UndrlygMstrAgrmt",
+      "type": "ContractDocument1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Account",
+      "isoId": "_R2-yfzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Acct",
+      "type": "CustomerAccount4",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountServicerIdentification",
+      "isoId": "_R2-ygTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "AcctSvcrId",
+      "type": "BranchAndFinancialInstitutionIdentification8",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Organisation",
+      "isoId": "_R2-ygzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Org",
+      "type": "Organisation42",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Mandate",
+      "isoId": "_R2-yhTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Mndt",
+      "type": "OperationMandate7",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "Group",
+      "isoId": "_R2-yhzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Grp",
+      "type": "Group6",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "ReferenceAccount",
+      "isoId": "_R2-yiTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "RefAcct",
+      "type": "CashAccount40",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "DigitalSignature",
+      "isoId": "_R2-yizEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "DgtlSgntr",
+      "type": "PartyAndSignature4",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R2-yjTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

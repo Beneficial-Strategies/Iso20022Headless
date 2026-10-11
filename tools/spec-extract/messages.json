@@ -1198,5 +1198,277 @@
     "bodyTag": "PmtStsTrckrUpd",
     "out": "trck001",
     "dir": "trck001-v05"
+  },
+  {
+    "name": "AccountAdditionalInformationRequestV04",
+    "id": "_R27vLTEZEe6kQ-WGAhcVPQ",
+    "identifier": "acmt.012.001.04",
+    "bodyTag": "AcctAddtlInfReq",
+    "out": "acmt012",
+    "dir": "acmt012-v04"
+  },
+  {
+    "name": "AccountClosingAdditionalInformationRequestV04",
+    "id": "_R28WMTEZEe6kQ-WGAhcVPQ",
+    "identifier": "acmt.021.001.04",
+    "bodyTag": "AcctClsgAddtlInfReq",
+    "out": "acmt021",
+    "dir": "acmt021-v04"
+  },
+  {
+    "name": "AccountClosingAmendmentRequestV04",
+    "id": "_R28WSTEZEe6kQ-WGAhcVPQ",
+    "identifier": "acmt.020.001.04",
+    "bodyTag": "AcctClsgAmdmntReq",
+    "out": "acmt020",
+    "dir": "acmt020-v04"
+  },
+  {
+    "name": "AccountClosingRequestV04",
+    "id": "_R289QTEZEe6kQ-WGAhcVPQ",
+    "identifier": "acmt.019.001.04",
+    "bodyTag": "AcctClsgReq",
+    "out": "acmt019",
+    "dir": "acmt019-v04"
+  },
+  {
+    "name": "AccountDetailsConfirmationV08",
+    "id": "_lUvrIZDiEem7fvtoGpNpow",
+    "identifier": "acmt.002.001.08",
+    "bodyTag": "AcctDtlsConf",
+    "out": "acmt002",
+    "dir": "acmt002-v08"
+  },
+  {
+    "name": "AccountExcludedMandateMaintenanceAmendmentRequestV05",
+    "id": "ee9e921e-b39f-4509-9c77-e66e626c72b3",
+    "identifier": "acmt.016.001.05",
+    "bodyTag": "AcctExcldMndtMntncAmdmntReq",
+    "out": "acmt016",
+    "dir": "acmt016-v05"
+  },
+  {
+    "name": "AccountExcludedMandateMaintenanceRequestV05",
+    "id": "08234ebe-bb5d-487f-b042-2fe459be526e",
+    "identifier": "acmt.015.001.05",
+    "bodyTag": "AcctExcldMndtMntncReq",
+    "out": "acmt015",
+    "dir": "acmt015-v05"
+  },
+  {
+    "name": "AccountManagementStatusReportV07",
+    "id": "_tmYxMZDiEem7fvtoGpNpow",
+    "identifier": "acmt.006.001.07",
+    "bodyTag": "AcctMgmtStsRpt",
+    "out": "acmt006",
+    "dir": "acmt006-v07"
+  },
+  {
+    "name": "AccountMandateMaintenanceAmendmentRequestV05",
+    "id": "716f518c-8980-46f4-93fe-e228c0f74009",
+    "identifier": "acmt.018.001.05",
+    "bodyTag": "AcctMndtMntncAmdmntReq",
+    "out": "acmt018",
+    "dir": "acmt018-v05"
+  },
+  {
+    "name": "AccountMandateMaintenanceRequestV05",
+    "id": "36c8c351-742f-445f-bdcc-f499827a8834",
+    "identifier": "acmt.017.001.05",
+    "bodyTag": "AcctMndtMntncReq",
+    "out": "acmt017",
+    "dir": "acmt017-v05"
+  },
+  {
+    "name": "AccountModificationInstructionV08",
+    "id": "_nayxoZDiEem7fvtoGpNpow",
+    "identifier": "acmt.003.001.08",
+    "bodyTag": "AcctModInstr",
+    "out": "acmt003",
+    "dir": "acmt003-v08"
+  },
+  {
+    "name": "AccountOpeningAdditionalInformationRequestV04",
+    "id": "_R2-LmDEZEe6kQ-WGAhcVPQ",
+    "identifier": "acmt.009.001.04",
+    "bodyTag": "AcctOpngAddtlInfReq",
+    "out": "acmt009",
+    "dir": "acmt009-v04"
+  },
+  {
+    "name": "AccountOpeningAmendmentRequestV05",
+    "id": "_R2-ycTEZEe6kQ-WGAhcVPQ",
+    "identifier": "acmt.008.001.05",
+    "bodyTag": "AcctOpngAmdmntReq",
+    "out": "acmt008",
+    "dir": "acmt008-v05"
+  },
+  {
+    "name": "AccountOpeningInstructionV08",
+    "id": "_jDZTkZDiEem7fvtoGpNpow",
+    "identifier": "acmt.001.001.08",
+    "bodyTag": "AcctOpngInstr",
+    "out": "acmt001",
+    "dir": "acmt001-v08"
+  },
+  {
+    "name": "AccountOpeningRequestV05",
+    "id": "_R2-yjzEZEe6kQ-WGAhcVPQ",
+    "identifier": "acmt.007.001.05",
+    "bodyTag": "AcctOpngReq",
+    "out": "acmt007",
+    "dir": "acmt007-v05"
+  },
+  {
+    "name": "AccountReportRequestV04",
+    "id": "_R2_ZgTEZEe6kQ-WGAhcVPQ",
+    "identifier": "acmt.013.001.04",
+    "bodyTag": "AcctRptReq",
+    "out": "acmt013",
+    "dir": "acmt013-v04"
+  },
+  {
+    "name": "AccountReportV05",
+    "id": "_R2_ZlTEZEe6kQ-WGAhcVPQ",
+    "identifier": "acmt.014.001.05",
+    "bodyTag": "AcctRpt",
+    "out": "acmt014",
+    "dir": "acmt014-v05"
+  },
+  {
+    "name": "AccountRequestAcknowledgementV04",
+    "id": "_R2_ZtTEZEe6kQ-WGAhcVPQ",
+    "identifier": "acmt.010.001.04",
+    "bodyTag": "AcctReqAck",
+    "out": "acmt010",
+    "dir": "acmt010-v04"
+  },
+  {
+    "name": "AccountRequestRejectionV04",
+    "id": "_R2_ZyTEZEe6kQ-WGAhcVPQ",
+    "identifier": "acmt.011.001.04",
+    "bodyTag": "AcctReqRjctn",
+    "out": "acmt011",
+    "dir": "acmt011-v04"
+  },
+  {
+    "name": "AccountSwitchBalanceTransferAcknowledgementV06",
+    "id": "c78cc81b-7d75-4508-8c52-c567090d8bec",
+    "identifier": "acmt.032.001.06",
+    "bodyTag": "AcctSwtchBalTrfAck",
+    "out": "acmt032",
+    "dir": "acmt032-v06"
+  },
+  {
+    "name": "AccountSwitchCancelExistingPaymentV06",
+    "id": "aba5f794-417a-4552-8a67-ac92469f2b58",
+    "identifier": "acmt.029.001.06",
+    "bodyTag": "AcctSwtchCclExstgPmt",
+    "out": "acmt029",
+    "dir": "acmt029-v06"
+  },
+  {
+    "name": "AccountSwitchInformationRequestV06",
+    "id": "20a60248-b1e9-4597-be26-f96ed1b9f64d",
+    "identifier": "acmt.027.001.06",
+    "bodyTag": "AcctSwtchInfReq",
+    "out": "acmt027",
+    "dir": "acmt027-v06"
+  },
+  {
+    "name": "AccountSwitchInformationResponseV06",
+    "id": "dfaaa882-a9cd-4872-b814-d50a83cf82f5",
+    "identifier": "acmt.028.001.06",
+    "bodyTag": "AcctSwtchInfRspn",
+    "out": "acmt028",
+    "dir": "acmt028-v06"
+  },
+  {
+    "name": "AccountSwitchNotifyAccountSwitchCompleteV02",
+    "id": "_7HK1q242EeiU9cctagi5ow",
+    "identifier": "acmt.033.001.02",
+    "bodyTag": "AcctSwtchNtfyAcctSwtchCmplt",
+    "out": "acmt033",
+    "dir": "acmt033-v02"
+  },
+  {
+    "name": "AccountSwitchPaymentResponseV02",
+    "id": "_7HT_YW42EeiU9cctagi5ow",
+    "identifier": "acmt.035.001.02",
+    "bodyTag": "AcctSwtchPmtRspn",
+    "out": "acmt035",
+    "dir": "acmt035-v02"
+  },
+  {
+    "name": "AccountSwitchRequestBalanceTransferV06",
+    "id": "d8451445-227e-4532-9a47-c26439eb34c2",
+    "identifier": "acmt.031.001.06",
+    "bodyTag": "AcctSwtchReqBalTrf",
+    "out": "acmt031",
+    "dir": "acmt031-v06"
+  },
+  {
+    "name": "AccountSwitchRequestPaymentV06",
+    "id": "ef94de20-a1ce-4dbd-a74c-80aa25cd029c",
+    "identifier": "acmt.034.001.06",
+    "bodyTag": "AcctSwtchReqPmt",
+    "out": "acmt034",
+    "dir": "acmt034-v06"
+  },
+  {
+    "name": "AccountSwitchRequestRedirectionV04",
+    "id": "_R3AnxTEZEe6kQ-WGAhcVPQ",
+    "identifier": "acmt.030.001.04",
+    "bodyTag": "AcctSwtchReqRdrctn",
+    "out": "acmt030",
+    "dir": "acmt030-v04"
+  },
+  {
+    "name": "AccountSwitchTechnicalRejectionV02",
+    "id": "_7HT_j242EeiU9cctagi5ow",
+    "identifier": "acmt.037.001.02",
+    "bodyTag": "AcctSwtchTechRjctn",
+    "out": "acmt037",
+    "dir": "acmt037-v02"
+  },
+  {
+    "name": "AccountSwitchTerminationSwitchV01",
+    "id": "_8iy48hMMEeSTk5fcu7tr9w",
+    "identifier": "acmt.036.001.01",
+    "bodyTag": "AcctSwtchTermntnSwtch",
+    "out": "acmt036",
+    "dir": "acmt036-v01"
+  },
+  {
+    "name": "IdentificationModificationAdviceV04",
+    "id": "_R3M08zEZEe6kQ-WGAhcVPQ",
+    "identifier": "acmt.022.001.04",
+    "bodyTag": "IdModAdvc",
+    "out": "acmt022",
+    "dir": "acmt022-v04"
+  },
+  {
+    "name": "IdentificationVerificationReportV04",
+    "id": "_R3M1AzEZEe6kQ-WGAhcVPQ",
+    "identifier": "acmt.024.001.04",
+    "bodyTag": "IdVrfctnRpt",
+    "out": "acmt024",
+    "dir": "acmt024-v04"
+  },
+  {
+    "name": "IdentificationVerificationRequestV04",
+    "id": "_R3M1EzEZEe6kQ-WGAhcVPQ",
+    "identifier": "acmt.023.001.04",
+    "bodyTag": "IdVrfctnReq",
+    "out": "acmt023",
+    "dir": "acmt023-v04"
+  },
+  {
+    "name": "RequestForAccountManagementStatusReportV06",
+    "id": "_rpQ9MZDiEem7fvtoGpNpow",
+    "identifier": "acmt.005.001.06",
+    "bodyTag": "ReqForAcctMgmtStsRpt",
+    "out": "acmt005",
+    "dir": "acmt005-v06"
   }
 ]

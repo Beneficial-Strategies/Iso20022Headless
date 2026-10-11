@@ -1,0 +1,7 @@
+choice	memberId	memberName	text
+Channel2Choice	_-FRIsBg2EeKnW4lR85q-0A	Code	Specifies a channel by means of a code.
+Channel2Choice	_D4edcBg3EeKnW4lR85q-0A	Proprietary	Specifies a channel by means of a text.
+PartyOrGroup3Choice	_ydFYkTEyEe6g-ffJsqGiSA	GroupIdentification	Specifies the identification of a group of parties.
+PartyOrGroup3Choice	_ydFYkzEyEe6g-ffJsqGiSA	Party	Specifies a party.
+FixedAmountOrUnlimited1Choice	_HfJHMEqBEeKw5sECfP82rg	Amount	Fixed amount.
+FixedAmountOrUnlimited1Choice	_MA1JsEqBEeKw5sECfP82rg	NotLimited	Unlimited amount.
