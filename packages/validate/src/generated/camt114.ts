@@ -296,7 +296,7 @@ export const schemas = {
 export const camt114Message = {
   identifier: "camt.114.001.01",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.114.001.01",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "CshWdrwlReq",
   rootType: "CashWithdrawalRequestV01",
   schema: CashWithdrawalRequestV01Schema,

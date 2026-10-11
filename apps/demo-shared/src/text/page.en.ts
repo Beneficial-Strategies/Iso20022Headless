@@ -145,6 +145,8 @@ export const pageEn: PageMessages = {
   areaDesc_trck: '',
   areaName_acmt: 'Account Management',
   areaDesc_acmt: 'Messages that support the management of account related activities, such as the opening and maintenance of an account.',
+  areaName_head: 'Business Application Header',
+  areaDesc_head: 'Header that contains business information that is relevant before processing a message.',
   xsdLabel: 'XSD Validate',
   xsdReady: 'Validate the text of the message below using {location}',
   xsdReadyFile: 'Validate the text of the message below using {file} (loaded from your computer)',

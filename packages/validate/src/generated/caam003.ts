@@ -393,7 +393,7 @@ export const schemas = {
 export const caam003Message = {
   identifier: "caam.003.001.05",
   namespace: "urn:iso:std:iso:20022:tech:xsd:caam.003.001.05",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "ATMKeyDwnldReq",
   rootType: "ATMKeyDownloadRequestV05",
   schema: ATMKeyDownloadRequestV05Schema,

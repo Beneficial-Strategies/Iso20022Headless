@@ -367,7 +367,7 @@ export const schemas = {
 export const camt009Message = {
   identifier: "camt.009.001.08",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.009.001.08",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "GetLmt",
   rootType: "GetLimitV08",
   schema: GetLimitV08Schema,

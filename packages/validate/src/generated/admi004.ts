@@ -81,7 +81,7 @@ export const schemas = {
 export const admi004Message = {
   identifier: "admi.004.001.02",
   namespace: "urn:iso:std:iso:20022:tech:xsd:admi.004.001.02",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "SysEvtNtfctn",
   rootType: "SystemEventNotificationV02",
   schema: SystemEventNotificationV02Schema,

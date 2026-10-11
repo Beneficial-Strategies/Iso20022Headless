@@ -601,7 +601,7 @@ export const schemas = {
 export const pacs003Message = {
   identifier: "pacs.003.001.12",
   namespace: "urn:iso:std:iso:20022:tech:xsd:pacs.003.001.12",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "FIToFICstmrDrctDbt",
   rootType: "FIToFICustomerDirectDebitV12",
   schema: FIToFICustomerDirectDebitV12Schema,

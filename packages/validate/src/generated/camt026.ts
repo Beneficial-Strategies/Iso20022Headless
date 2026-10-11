@@ -575,7 +575,7 @@ export const schemas = {
 export const camt026Message = {
   identifier: "camt.026.001.10",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.026.001.10",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "UblToApply",
   rootType: "UnableToApplyV10",
   schema: UnableToApplyV10Schema,

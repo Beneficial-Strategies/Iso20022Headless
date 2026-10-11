@@ -281,7 +281,7 @@ export const schemas = {
 export const camt070Message = {
   identifier: "camt.070.001.06",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.070.001.06",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "RtrStgOrdr",
   rootType: "ReturnStandingOrderV06",
   schema: ReturnStandingOrderV06Schema,

@@ -272,7 +272,7 @@ export const schemas = {
 export const camt088Message = {
   identifier: "camt.088.001.04",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.088.001.04",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "NetRpt",
   rootType: "NetReportV04",
   schema: NetReportV04Schema,

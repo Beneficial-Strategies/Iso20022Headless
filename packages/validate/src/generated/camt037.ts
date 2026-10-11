@@ -474,7 +474,7 @@ export const schemas = {
 export const camt037Message = {
   identifier: "camt.037.001.10",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.037.001.10",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "DbtAuthstnReq",
   rootType: "DebitAuthorisationRequestV10",
   schema: DebitAuthorisationRequestV10Schema,

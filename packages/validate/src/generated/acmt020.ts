@@ -217,7 +217,7 @@ export const schemas = {
 export const acmt020Message = {
   identifier: "acmt.020.001.04",
   namespace: "urn:iso:std:iso:20022:tech:xsd:acmt.020.001.04",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "AcctClsgAmdmntReq",
   rootType: "AccountClosingAmendmentRequestV04",
   schema: AccountClosingAmendmentRequestV04Schema,

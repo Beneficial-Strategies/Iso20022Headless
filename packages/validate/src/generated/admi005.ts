@@ -244,7 +244,7 @@ export const schemas = {
 export const admi005Message = {
   identifier: "admi.005.001.02",
   namespace: "urn:iso:std:iso:20022:tech:xsd:admi.005.001.02",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "RptQryReq",
   rootType: "ReportQueryRequestV02",
   schema: ReportQueryRequestV02Schema,

@@ -39,6 +39,7 @@ export const areaIndex: readonly AreaInfo[] = [
   { code: "remt", name: "Payments Remittance Advice", definition: "Messages that support communication between creditors and debtors regarding remittance details associated with payments." },
   { code: "trck", name: "Transaction Tracker", definition: "" },
   { code: "acmt", name: "Account Management", definition: "Messages that support the management of account related activities, such as the opening and maintenance of an account." },
+  { code: "head", name: "Business Application Header", definition: "Header that contains business information that is relevant before processing a message." },
 ];
 
 export const messageIndex: readonly MessageInfo[] = [
@@ -1901,5 +1902,15 @@ export const messageIndex: readonly MessageInfo[] = [
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.037.001.02.xsd",
     load: () =>
       import('./acmt037.ts').then((m) => ({ message: m.acmt037Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "head.001.001.04",
+    name: "BusinessApplicationHeaderV04",
+    title: "Business Application Header",
+    area: "head",
+    module: "head001",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/head/schemas/head.001.001.04.xsd",
+    load: () =>
+      import('./head001.ts').then((m) => ({ message: m.head001Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
 ];

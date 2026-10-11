@@ -459,7 +459,7 @@ export const schemas = {
 export const caam001Message = {
   identifier: "caam.001.001.05",
   namespace: "urn:iso:std:iso:20022:tech:xsd:caam.001.001.05",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "ATMDvcRpt",
   rootType: "ATMDeviceReportV05",
   schema: ATMDeviceReportV05Schema,

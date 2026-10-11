@@ -117,7 +117,7 @@ export const schemas = {
 export const admi017Message = {
   identifier: "admi.017.001.02",
   namespace: "urn:iso:std:iso:20022:tech:xsd:admi.017.001.02",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "PrcgReq",
   rootType: "ProcessingRequestV02",
   schema: ProcessingRequestV02Schema,

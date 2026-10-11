@@ -157,7 +157,7 @@ export const schemas = {
 export const camt021Message = {
   identifier: "camt.021.001.06",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.021.001.06",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "RtrGnlBizInf",
   rootType: "ReturnGeneralBusinessInformationV06",
   schema: ReturnGeneralBusinessInformationV06Schema,

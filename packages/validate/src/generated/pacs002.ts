@@ -548,7 +548,7 @@ export const schemas = {
 export const pacs002Message = {
   identifier: "pacs.002.001.16",
   namespace: "urn:iso:std:iso:20022:tech:xsd:pacs.002.001.16",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "FIToFIPmtStsRpt",
   rootType: "FIToFIPaymentStatusReportV16",
   schema: FIToFIPaymentStatusReportV16Schema,

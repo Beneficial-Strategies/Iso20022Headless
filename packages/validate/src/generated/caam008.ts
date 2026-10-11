@@ -206,7 +206,7 @@ export const schemas = {
 export const caam008Message = {
   identifier: "caam.008.001.01",
   namespace: "urn:iso:std:iso:20022:tech:xsd:caam.008.001.01",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "HstToATMAck",
   rootType: "HostToATMAcknowledgementV01",
   schema: HostToATMAcknowledgementV01Schema,

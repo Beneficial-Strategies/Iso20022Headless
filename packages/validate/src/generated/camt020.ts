@@ -179,7 +179,7 @@ export const schemas = {
 export const camt020Message = {
   identifier: "camt.020.001.04",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.020.001.04",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "GetGnlBizInf",
   rootType: "GetGeneralBusinessInformationV04",
   schema: GetGeneralBusinessInformationV04Schema,

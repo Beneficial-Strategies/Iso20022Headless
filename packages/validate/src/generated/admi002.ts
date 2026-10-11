@@ -91,7 +91,7 @@ export const schemas = {
 export const admi002Message = {
   identifier: "admi.002.001.01",
   namespace: "urn:iso:std:iso:20022:tech:xsd:admi.002.001.01",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "admi.002.001.01",
   rootType: "MessageRejectV01",
   schema: MessageRejectV01Schema,

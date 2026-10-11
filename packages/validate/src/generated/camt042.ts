@@ -378,7 +378,7 @@ export const schemas = {
 export const camt042Message = {
   identifier: "camt.042.001.04",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.042.001.04",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "FndDtldEstmtdCshFcstRpt",
   rootType: "FundDetailedEstimatedCashForecastReportV04",
   schema: FundDetailedEstimatedCashForecastReportV04Schema,

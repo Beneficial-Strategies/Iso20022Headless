@@ -299,6 +299,8 @@ BreakdownByCountry2	Ctry,CshInFcst,CshOutFcst,NetCshFcst
 BreakdownByCurrency2	Ccy,CshOutFcst,CshInFcst,NetCshFcst
 BreakdownByParty3	Pty,AddtlParams,CshInFcst,CshOutFcst,NetCshFcst
 BreakdownByUserDefinedParameter3	Pty,Ctry,Ccy,UsrDfnd,CshInFcst,CshOutFcst,NetCshFcst
+BusinessApplicationHeader8	CharSet,Fr,To,BizMsgIdr,MsgDefIdr,BizSvc,MktPrctc,CreDt,BizPrcgDt,CpyDplct,PssblDplct,Prty,Sgntr
+BusinessApplicationHeaderV04	CharSet,Fr,To,BizMsgIdr,MsgDefIdr,BizSvc,MktPrctc,CreDt,BizPrcgDt,CpyDplct,PssblDplct,Prty,Sgntr,Rltd
 BusinessDay8	SysId,BizDayOrErr
 BusinessDay9	SysDt,SysSts,SysInfPerCcy
 BusinessDayCriteria2	NewQryNm,SchCrit,RtrCrit
@@ -772,6 +774,7 @@ IdentificationSource5Choice	DmstIdSrc,PrtryIdSrc
 IdentificationVerification5	Id,PtyAndAcctId
 IdentificationVerificationReportV04	Assgnmt,OrgnlAssgnmt,Rpt,SplmtryData
 IdentificationVerificationRequestV04	Assgnmt,Vrfctn,SplmtryData
+ImplementationSpecification1	Regy,Id
 ImpliedCurrencyAmountRange1Choice	FrAmt,ToAmt,FrToAmt,EQAmt,NEQAmt
 ImpliedCurrencyAndAmountRange1	Amt,CdtDbtInd
 IncorrectData1Choice	Cd,Prtry
@@ -1136,6 +1139,7 @@ Party40Choice	Pty,Agt
 Party47Choice	Org,IndvPrsn
 Party48Choice	Org,IndvPrsn
 Party50Choice	Pty,Agt
+Party51Choice	OrgId,FIId
 Party52Choice	OrgId,PrvtId
 Party56Choice	OrgId,FIId
 PartyAndAuthorisation6	ModCd,PtyOrGrp,SgntrOrdr,Authstn

@@ -192,7 +192,7 @@ export const schemas = {
 export const camt051Message = {
   identifier: "camt.051.001.07",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.051.001.07",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "LqdtyDbtTrf",
   rootType: "LiquidityDebitTransferV07",
   schema: LiquidityDebitTransferV07Schema,

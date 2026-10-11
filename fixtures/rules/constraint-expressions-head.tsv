@@ -1,0 +1,2 @@
+scope	id	name	expression
+BusinessApplicationHeaderV04	_R26hATEZEe6kQ-WGAhcVPQ	RelatedPresentWhenCopyDupl	<RuleDefinition><ComplexRule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ComplexRule"><mustBe><connector>AND</connector><BooleanRule xsi:type="Presence"><leftOperand>/Related[1]</leftOperand></BooleanRule></mustBe><onCondition><connector>AND</connector><BooleanRule xsi:type="Presence"><leftOperand>/CopyDuplicate</leftOperand></BooleanRule></onCondition></ComplexRule></RuleDefinition>

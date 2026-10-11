@@ -178,7 +178,7 @@ export const schemas = {
 export const camt032Message = {
   identifier: "camt.032.001.05",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.032.001.05",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "CclCaseAssgnmt",
   rootType: "CancelCaseAssignmentV05",
   schema: CancelCaseAssignmentV05Schema,

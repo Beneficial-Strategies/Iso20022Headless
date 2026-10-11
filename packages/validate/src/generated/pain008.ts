@@ -577,7 +577,7 @@ export const schemas = {
 export const pain008Message = {
   identifier: "pain.008.001.12",
   namespace: "urn:iso:std:iso:20022:tech:xsd:pain.008.001.12",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "CstmrDrctDbtInitn",
   rootType: "CustomerDirectDebitInitiationV12",
   schema: CustomerDirectDebitInitiationV12Schema,

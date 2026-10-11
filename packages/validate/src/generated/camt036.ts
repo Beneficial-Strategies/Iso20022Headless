@@ -201,7 +201,7 @@ export const schemas = {
 export const camt036Message = {
   identifier: "camt.036.001.06",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.036.001.06",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "DbtAuthstnRspn",
   rootType: "DebitAuthorisationResponseV06",
   schema: DebitAuthorisationResponseV06Schema,

@@ -1470,5 +1470,14 @@
     "bodyTag": "ReqForAcctMgmtStsRpt",
     "out": "acmt005",
     "dir": "acmt005-v06"
+  },
+  {
+    "name": "BusinessApplicationHeaderV04",
+    "id": "_R2558TEZEe6kQ-WGAhcVPQ",
+    "identifier": "head.001.001.04",
+    "bodyTag": "AppHdr",
+    "out": "head001",
+    "dir": "head001-v04",
+    "rootTag": "AppHdr"
   }
 ]

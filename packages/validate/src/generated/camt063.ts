@@ -79,7 +79,7 @@ export const schemas = {
 export const camt063Message = {
   identifier: "camt.063.001.02",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.063.001.02",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "PayInEvtAck",
   rootType: "PayInEventAcknowledgementV02",
   schema: PayInEventAcknowledgementV02Schema,

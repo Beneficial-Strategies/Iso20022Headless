@@ -79,7 +79,7 @@ export const schemas = {
 export const acmt036Message = {
   identifier: "acmt.036.001.01",
   namespace: "urn:iso:std:iso:20022:tech:xsd:acmt.036.001.01",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "AcctSwtchTermntnSwtch",
   rootType: "AccountSwitchTerminationSwitchV01",
   schema: AccountSwitchTerminationSwitchV01Schema,

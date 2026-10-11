@@ -7,10 +7,12 @@ describe.each(messageIndex.map((m) => m.identifier))('%s serialization', (identi
     const info = messageIndex.find((m) => m.identifier === identifier)!;
     const { message } = await info.load();
     const xml = serializeToXml(message, {});
-    expect(xml).toContain(`<Document xmlns="urn:iso:std:iso:20022:tech:xsd:${identifier}">`);
-    expect(xml).toContain(`<${message.bodyTag}>`);
+    const own = message.rootTag === message.bodyTag; // the Business Application Header is its own root
+    const root = own ? message.rootTag : 'Document';
+    expect(xml).toContain(`<${root} xmlns="urn:iso:std:iso:20022:tech:xsd:${identifier}">`);
+    if (!own) expect(xml).toContain(`<${message.bodyTag}>`);
     const json = JSON.parse(serializeToIsoJson(message, {}));
-    expect(Object.keys(json)).toEqual(['Document']);
-    expect(Object.keys(json.Document)).toEqual([message.bodyTag]);
+    expect(Object.keys(json)).toEqual([root]);
+    if (!own) expect(Object.keys(json.Document)).toEqual([message.bodyTag]);
   });
 });

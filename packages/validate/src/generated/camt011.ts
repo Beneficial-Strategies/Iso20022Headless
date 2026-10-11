@@ -251,7 +251,7 @@ export const schemas = {
 export const camt011Message = {
   identifier: "camt.011.001.08",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.011.001.08",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "ModfyLmt",
   rootType: "ModifyLimitV08",
   schema: ModifyLimitV08Schema,

@@ -1,0 +1,2 @@
+scope	id	name	text
+BusinessApplicationHeaderV04	_R26hATEZEe6kQ-WGAhcVPQ	RelatedPresentWhenCopyDupl	Related MUST contain the relevant BusinessMessageHeader elements of the BusinessMessage to which this BusinessMessage relates.||If CopyDuplicate is present, then Related MUST be present.

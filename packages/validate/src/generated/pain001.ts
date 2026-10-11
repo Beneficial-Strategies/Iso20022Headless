@@ -682,7 +682,7 @@ export const schemas = {
 export const pain001Message = {
   identifier: "pain.001.001.13",
   namespace: "urn:iso:std:iso:20022:tech:xsd:pain.001.001.13",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "CstmrCdtTrfInitn",
   rootType: "CustomerCreditTransferInitiationV13",
   schema: CustomerCreditTransferInitiationV13Schema,

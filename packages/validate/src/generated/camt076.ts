@@ -169,7 +169,7 @@ export const schemas = {
 export const camt076Message = {
   identifier: "camt.076.001.01",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.076.001.01",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "BllgRptReq",
   rootType: "BillingReportRequestV01",
   schema: BillingReportRequestV01Schema,

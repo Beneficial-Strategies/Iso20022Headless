@@ -164,7 +164,7 @@ export const schemas = {
 export const camt012Message = {
   identifier: "camt.012.001.08",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.012.001.08",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "DelLmt",
   rootType: "DeleteLimitV08",
   schema: DeleteLimitV08Schema,

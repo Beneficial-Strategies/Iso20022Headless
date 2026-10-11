@@ -255,7 +255,7 @@ export const schemas = {
 export const caam015Message = {
   identifier: "caam.015.001.01",
   namespace: "urn:iso:std:iso:20022:tech:xsd:caam.015.001.01",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "ATMRcncltnReq",
   rootType: "ATMReconciliationRequestV01",
   schema: ATMReconciliationRequestV01Schema,

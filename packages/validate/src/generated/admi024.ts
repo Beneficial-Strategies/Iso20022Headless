@@ -332,7 +332,7 @@ export const schemas = {
 export const admi024Message = {
   identifier: "admi.024.001.01",
   namespace: "urn:iso:std:iso:20022:tech:xsd:admi.024.001.01",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "NtfctnOfCrspdc",
   rootType: "NotificationOfCorrespondenceV01",
   schema: NotificationOfCorrespondenceV01Schema,

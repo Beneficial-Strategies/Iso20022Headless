@@ -178,7 +178,7 @@ export const schemas = {
 export const camt048Message = {
   identifier: "camt.048.001.07",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.048.001.07",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "ModfyRsvatn",
   rootType: "ModifyReservationV07",
   schema: ModifyReservationV07Schema,

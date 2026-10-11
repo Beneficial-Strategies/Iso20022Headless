@@ -136,7 +136,7 @@ export const schemas = {
 export const admi006Message = {
   identifier: "admi.006.001.01",
   namespace: "urn:iso:std:iso:20022:tech:xsd:admi.006.001.01",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "RsndReq",
   rootType: "ResendRequestV01",
   schema: ResendRequestV01Schema,

@@ -62,6 +62,17 @@ describe('a whole message with a namespace', () => {
     expect(((p as Extract<PastePlan, { ok: true }>).values as { GroupHeader: { MessageIdentification: string } }).GroupHeader.MessageIdentification).toBe('M1');
   });
 
+  it('reads a header that is its own root (AppHdr, no Document) and switches to it', async () => {
+    const head = bundles.get('head.001.001.04')!;
+    const xml = serializeToXml(head.message, { BusinessMessageIdentifier: 'BIZ-1', MessageDefinitionIdentifier: 'camt.053.001.14' });
+    expect(xml.startsWith('<?xml version="1.0" encoding="UTF-8"?>\n<AppHdr xmlns=')).toBe(true);
+    const p = await planPaste(xml, current('camt.053.001.14'), load);
+    expect(p).toMatchObject({ ok: true, switched: true, target: { identifier: 'head.001.001.04', typeName: 'BusinessApplicationHeaderV04' } });
+    expect((p as Extract<PastePlan, { ok: true }>).values).toMatchObject({ BusinessMessageIdentifier: 'BIZ-1', MessageDefinitionIdentifier: 'camt.053.001.14' });
+    const json = await planPaste(serializeToIsoJson(head.message, { BusinessMessageIdentifier: 'BIZ-1' }), current('head.001.001.04'), load);
+    expect(json).toMatchObject({ ok: true, switched: false });
+  });
+
   it('switches for every message we have', async () => {
     for (const m of messageIndex) {
       const b = bundles.get(m.identifier)!;

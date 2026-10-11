@@ -443,7 +443,7 @@ export const schemas = {
 export const acmt034Message = {
   identifier: "acmt.034.001.06",
   namespace: "urn:iso:std:iso:20022:tech:xsd:acmt.034.001.06",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "AcctSwtchReqPmt",
   rootType: "AccountSwitchRequestPaymentV06",
   schema: AccountSwitchRequestPaymentV06Schema,

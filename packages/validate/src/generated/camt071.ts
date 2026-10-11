@@ -183,7 +183,7 @@ export const schemas = {
 export const camt071Message = {
   identifier: "camt.071.001.05",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.071.001.05",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "DelStgOrdr",
   rootType: "DeleteStandingOrderV05",
   schema: DeleteStandingOrderV05Schema,

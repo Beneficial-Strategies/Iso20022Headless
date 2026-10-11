@@ -218,7 +218,7 @@ export const schemas = {
 export const camt018Message = {
   identifier: "camt.018.001.05",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.018.001.05",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "GetBizDayInf",
   rootType: "GetBusinessDayInformationV05",
   schema: GetBusinessDayInformationV05Schema,

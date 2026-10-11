@@ -379,7 +379,7 @@ export const schemas = {
 export const pain018Message = {
   identifier: "pain.018.001.04",
   namespace: "urn:iso:std:iso:20022:tech:xsd:pain.018.001.04",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "MndtSspnsnReq",
   rootType: "MandateSuspensionRequestV04",
   schema: MandateSuspensionRequestV04Schema,

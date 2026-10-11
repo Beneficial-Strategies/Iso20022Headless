@@ -339,7 +339,7 @@ export const schemas = {
 export const acmt008Message = {
   identifier: "acmt.008.001.05",
   namespace: "urn:iso:std:iso:20022:tech:xsd:acmt.008.001.05",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "AcctOpngAmdmntReq",
   rootType: "AccountOpeningAmendmentRequestV05",
   schema: AccountOpeningAmendmentRequestV05Schema,

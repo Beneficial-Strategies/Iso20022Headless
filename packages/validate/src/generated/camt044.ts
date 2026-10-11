@@ -253,7 +253,7 @@ export const schemas = {
 export const camt044Message = {
   identifier: "camt.044.001.03",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.044.001.03",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "FndConfdCshFcstRptCxl",
   rootType: "FundConfirmedCashForecastReportCancellationV03",
   schema: FundConfirmedCashForecastReportCancellationV03Schema,

@@ -146,6 +146,8 @@ export const pageFr: PageMessages = {
   areaDesc_trck: '',
   areaName_acmt: 'Gestion de comptes',
   areaDesc_acmt: 'Messages qui prennent en charge la gestion des activités liées aux comptes, telles que l\'ouverture et la tenue d\'un compte.',
+  areaName_head: 'En-tête d\'application métier',
+  areaDesc_head: 'En-tête qui contient des informations métier pertinentes avant le traitement d\'un message.',
   xsdLabel: 'Valider le XSD',
   xsdReady: 'Valider le texte du message ci-dessous avec {location}',
   xsdReadyFile: 'Valider le texte du message ci-dessous avec {file} (chargé depuis votre ordinateur)',

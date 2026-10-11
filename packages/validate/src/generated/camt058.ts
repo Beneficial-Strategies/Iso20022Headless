@@ -488,7 +488,7 @@ export const schemas = {
 export const camt058Message = {
   identifier: "camt.058.001.10",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.058.001.10",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "NtfctnToRcvCxlAdvc",
   rootType: "NotificationToReceiveCancellationAdviceV10",
   schema: NotificationToReceiveCancellationAdviceV10Schema,

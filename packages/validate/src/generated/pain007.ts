@@ -556,7 +556,7 @@ export const schemas = {
 export const pain007Message = {
   identifier: "pain.007.001.13",
   namespace: "urn:iso:std:iso:20022:tech:xsd:pain.007.001.13",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "CstmrPmtRvsl",
   rootType: "CustomerPaymentReversalV13",
   schema: CustomerPaymentReversalV13Schema,

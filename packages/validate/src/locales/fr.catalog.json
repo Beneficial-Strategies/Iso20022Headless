@@ -33273,12 +33273,26 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "codeSet:_Ybm4ZNp-Ed-ak6NoX_4Aeg_1557209084": {
+      "text": "Précise les niveaux de priorité du BusinessMessage.|Les différentes priorités dépendent généralement de l'utilisateur, du service ou de l'implémentation. La sémantique des différentes valeurs pour un message (ou ensemble de messages) doit être définie par la communauté d'utilisateurs concernée (SEG).",
+      "source": "277253c2268c",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "codeSet:_YbT9dNp-Ed-ak6NoX_4Aeg_698889928": {
       "text": "Précise la méthode de transfert qui sera utilisée pour transférer les fonds.",
       "source": "690f3600db63",
       "status": "machine",
       "by": "assistant",
       "date": "2026-10-08"
+    },
+    "codeSet:_YghNkNp-Ed-ak6NoX_4Aeg_728068642": {
+      "text": "Liste de codes contenant les noms des blocs de code UNICODE tels que spécifiés sur http://unicode.org/Public/UNIDATA/Blocks.txt.",
+      "source": "554f62d13eea",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
     },
     "codeSet:_YiT9VNp-Ed-ak6NoX_4Aeg_-1322025669": {
       "text": "Précise la période à laquelle se rapporte le paiement de l'impôt.",
@@ -37277,9 +37291,100 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "field:_2cgbgTEyEe6g-ffJsqGiSA": {
+      "text": "Contient le jeu de caractères des éléments textuels utilisés dans le message métier.",
+      "source": "f84d724ce1c6",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2cgbgzEyEe6g-ffJsqGiSA": {
+      "text": "Le MessagingEndpoint émetteur qui a créé ce message métier pour le MessagingEndpoint destinataire qui le traitera.||Notez que le MessagingEndpoint émetteur peut différer de l'adresse d'envoi éventuellement contenue dans l'en-tête de transport (tel que défini dans la couche de transport).",
+      "source": "bee533ed2b02",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2cgbhTEyEe6g-ffJsqGiSA": {
+      "text": "Le MessagingEndpoint désigné par le MessagingEndpoint émetteur comme destinataire qui traitera en dernier ressort ce message métier.||Notez que le MessagingEndpoint destinataire peut différer de l'adresse de réception éventuellement contenue dans l'en-tête de transport (tel que défini dans la couche de transport).",
+      "source": "2ea420427ea0",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2cgbhzEyEe6g-ffJsqGiSA": {
+      "text": "Identifie sans ambiguïté le message métier auprès du MessagingEndpoint qui l'a créé.",
+      "source": "c1736b6c809b",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2cgbiTEyEe6g-ffJsqGiSA": {
+      "text": "L'identifiant de définition de message de l'instance de message métier à laquelle cette instance d'en-tête d'application métier est associée.",
+      "source": "a98ff7af6e4d",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "field:_2CH_cfSTEe2NguPP5QspEw": {
       "text": "Fournit des informations détaillées sur le motif du statut.",
       "source": "6a2d6ab47b21",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2chCkTEyEe6g-ffJsqGiSA": {
+      "text": "Précise le service métier convenu entre les deux MessagingEndpoints, selon les règles duquel ce message métier est échangé.|À utiliser lorsqu'il existe un choix entre des services de traitement ou des niveaux de service de traitement.||Exemple : |« marketx.hvps.01 » et « marketx.xbdr.01 » pourraient être utilisés pour indiquer que les messages associés sont soumis à des niveaux de traitement différents pour les paiements nationaux de montant élevé et pour les paiements transfrontaliers au sein de la même pratique de marché.",
+      "source": "9f963282e17c",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2chCkzEyEe6g-ffJsqGiSA": {
+      "text": "Précise la pratique de marché à laquelle le message est conforme. Les pratiques de marché sont un ensemble de règles convenues entre les parties qui restreignent l'usage des messages afin d'obtenir de meilleurs taux de STP (Straight Through Processing).|Une spécification de pratique de marché peut aussi étendre la spécification du message sous-jacent au moyen d'extensions ou de données supplémentaires de ce message.",
+      "source": "c4d3803e3329",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2chClTEyEe6g-ffJsqGiSA": {
+      "text": "Date et heure de création de ce message métier (en-tête).|Remarque : les heures doivent être normalisées, avec la notation « Z ».",
+      "source": "d07a3c724cbc",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2chClzEyEe6g-ffJsqGiSA": {
+      "text": "Date et heure de traitement indiquées par l'expéditeur pour le destinataire du message métier. Cette date peut différer de la date et de l'heure fournies dans CreationDate.||Utilisation : la pratique de marché ou un accord bilatéral doit préciser comment cet élément doit être utilisé.",
+      "source": "e665c5d63e73",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2chCmTEyEe6g-ffJsqGiSA": {
+      "text": "Indique si le message est une copie, un doublon ou une copie d'un doublon d'un message ISO 20022 envoyé précédemment.",
+      "source": "c1956a4bb262",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2chCmzEyEe6g-ffJsqGiSA": {
+      "text": "Indicateur précisant si le message métier échangé entre les MessagingEndpoints est possiblement un doublon. |Si le MessagingEndpoint destinataire n'a pas reçu l'original, ce message métier doit être traité comme s'il s'agissait de l'original. ||Si le MessagingEndpoint destinataire a bien reçu l'original, il doit effectuer les actions nécessaires pour éviter de traiter à nouveau ce message métier.||Cela garantit un comportement idempotent au niveau métier.||NOTE : cela s'appelle « PossResend » dans FIX ; il s'agit d'un renvoi au niveau applicatif et non d'une retransmission au niveau réseau.",
+      "source": "a9e7f659d3ee",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2chCnTEyEe6g-ffJsqGiSA": {
+      "text": "Indication relative de la priorité de traitement du message par rapport à un (ensemble de) messages métier auxquels des priorités sont attribuées.",
+      "source": "a4fc8e228b6f",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2chCnzEyEe6g-ffJsqGiSA": {
+      "text": "Contient la signature numérique de l'entité métier autorisée à signer ce message métier.",
+      "source": "a3b9b0418eaa",
       "status": "machine",
       "by": "assistant",
       "date": "2026-10-11"
@@ -48911,6 +49016,13 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "field:_Dr2RoMifEei73Ywzx0CAAg": {
+      "text": "Nom du registre des spécifications d'implémentation dans lequel est tenue la spécification d'implémentation du message ISO 20022.|Par exemple, « MyStandards ».",
+      "source": "525d9b509138",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "field:_ds6esJUiEemC09f0MxYkRg": {
       "text": "Statut de la personne politiquement exposée exprimé sous forme de code.",
       "source": "c93d082ec4bd",
@@ -51770,6 +51882,13 @@
     "field:_GK8iNxQMEeKCyZtSz_i3FA": {
       "text": "Groupe d'activité économique, par exemple, un code émis par un régulateur.",
       "source": "41b5c1d306b4",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_GKeQMMifEei73Ywzx0CAAg": {
+      "text": "Identifiant qui identifie sans ambiguïté, au sein du registre des spécifications d'implémentation, la spécification d'implémentation à laquelle le message ISO 20022 est conforme. Cela peut se faire au moyen d'une URN. Il peut aussi contenir un numéro de version ou une date.|Par exemple, « 2018-01-01 – Version 2 » ou « urn:uuid:6e8bc430-9c3a-11d9-9669-0800200c9a66 ».",
+      "source": "eddf7e3c7988",
       "status": "machine",
       "by": "assistant",
       "date": "2026-10-11"
@@ -64570,6 +64689,76 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "field:_R26hAzEZEe6kQ-WGAhcVPQ": {
+      "text": "Contient le jeu de caractères des éléments textuels utilisés dans le message métier.",
+      "source": "f84d724ce1c6",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_R26hCTEZEe6kQ-WGAhcVPQ": {
+      "text": "Identifie sans ambiguïté le message métier auprès du MessagingEndpoint qui l'a créé.",
+      "source": "c1736b6c809b",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_R26hCzEZEe6kQ-WGAhcVPQ": {
+      "text": "L'identifiant de définition de message de l'instance de message métier à laquelle cette instance d'en-tête d'application métier est associée.",
+      "source": "a98ff7af6e4d",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_R26hDTEZEe6kQ-WGAhcVPQ": {
+      "text": "Précise le service métier convenu entre les deux MessagingEndpoints, selon les règles duquel ce message métier est échangé.|À utiliser lorsqu'il existe un choix entre des services de traitement ou des niveaux de service de traitement.||Exemple : |« marketx.hvps.01 » et « marketx.xbdr.01 » pourraient être utilisés pour indiquer que les messages associés sont soumis à des niveaux de traitement différents pour les paiements nationaux de montant élevé et pour les paiements transfrontaliers au sein de la même pratique de marché.",
+      "source": "9f963282e17c",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_R26hETEZEe6kQ-WGAhcVPQ": {
+      "text": "Date et heure de création de ce message métier (en-tête).",
+      "source": "a75ba5b598cb",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_R26hEzEZEe6kQ-WGAhcVPQ": {
+      "text": "Date et heure de traitement indiquées par l'expéditeur pour le destinataire du message métier. Cette date peut différer de la date et de l'heure fournies dans CreationDate.||Utilisation : la pratique de marché ou un accord bilatéral doit préciser comment cet élément doit être utilisé.",
+      "source": "e665c5d63e73",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_R26hFTEZEe6kQ-WGAhcVPQ": {
+      "text": "Indique si le message est une copie, un doublon ou une copie d'un doublon d'un message ISO 20022 envoyé précédemment.",
+      "source": "c1956a4bb262",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_R26hFzEZEe6kQ-WGAhcVPQ": {
+      "text": "Indicateur précisant si le message métier échangé entre les MessagingEndpoints est possiblement un doublon. |Si le MessagingEndpoint destinataire n'a pas reçu l'original, ce message métier doit être traité comme s'il s'agissait de l'original. ||Si le MessagingEndpoint destinataire a bien reçu l'original, il doit effectuer les actions nécessaires pour éviter de traiter à nouveau ce message métier.||Cela garantit un comportement idempotent au niveau métier.||NOTE : cela s'appelle « PossResend » dans FIX ; il s'agit d'un renvoi au niveau applicatif et non d'une retransmission au niveau réseau.",
+      "source": "a9e7f659d3ee",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_R26hGTEZEe6kQ-WGAhcVPQ": {
+      "text": "Indication relative de la priorité de traitement du message par rapport à un (ensemble de) messages métier auxquels des priorités sont attribuées.",
+      "source": "a4fc8e228b6f",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_R26hGzEZEe6kQ-WGAhcVPQ": {
+      "text": "Contient la signature numérique de l'entité métier autorisée à signer ce message métier.",
+      "source": "a3b9b0418eaa",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "field:_R2DXgCDVEeWCLu74WLgP4w": {
       "text": "Type de consolidation exprimé sous forme de code propriétaire.",
       "source": "0d0bbcd1faeb",
@@ -77247,6 +77436,20 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "field:_zKWuQTEyEe6g-ffJsqGiSA": {
+      "text": "Identification d'une personne ou d'une organisation.",
+      "source": "084d7c1b720c",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_zKWuQzEyEe6g-ffJsqGiSA": {
+      "text": "Identification d'un établissement financier.",
+      "source": "00e5d1e40126",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "field:_ZlQ600KTEeWuG5hmkcJWSQ": {
       "text": "Adresse de l'organisation.",
       "source": "0225537ca627",
@@ -87369,9 +87572,100 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "label:_2cgbgTEyEe6g-ffJsqGiSA": {
+      "text": "Jeu de caractères",
+      "source": "346e389250d5",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2cgbgzEyEe6g-ffJsqGiSA": {
+      "text": "De",
+      "source": "218197693424",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2cgbhTEyEe6g-ffJsqGiSA": {
+      "text": "À",
+      "source": "f4b06ef6d3c8",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2cgbhzEyEe6g-ffJsqGiSA": {
+      "text": "Identifiant du message métier",
+      "source": "715daddda862",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2cgbiTEyEe6g-ffJsqGiSA": {
+      "text": "Identifiant de la définition du message",
+      "source": "3a2ab707d4c5",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "label:_2CH_cfSTEe2NguPP5QspEw": {
       "text": "Informations sur le motif du statut",
       "source": "24797e30d9a8",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2chCkTEyEe6g-ffJsqGiSA": {
+      "text": "Service métier",
+      "source": "bbf2fea9f907",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2chCkzEyEe6g-ffJsqGiSA": {
+      "text": "Pratique de marché",
+      "source": "eef77b2c75c5",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2chClTEyEe6g-ffJsqGiSA": {
+      "text": "Date de création",
+      "source": "6fdde7a67c6a",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2chClzEyEe6g-ffJsqGiSA": {
+      "text": "Date de traitement métier",
+      "source": "84d567192582",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2chCmTEyEe6g-ffJsqGiSA": {
+      "text": "Copie duplicata",
+      "source": "3e113570838e",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2chCmzEyEe6g-ffJsqGiSA": {
+      "text": "Doublon possible",
+      "source": "e19361dec37c",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2chCnTEyEe6g-ffJsqGiSA": {
+      "text": "Priorité",
+      "source": "d60dbba07922",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2chCnzEyEe6g-ffJsqGiSA": {
+      "text": "Signature",
+      "source": "f1a73e2204a1",
       "status": "machine",
       "by": "assistant",
       "date": "2026-10-11"
@@ -99332,6 +99626,13 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "label:_Dr2RoMifEei73Ywzx0CAAg": {
+      "text": "Registre",
+      "source": "05c2e3277039",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "label:_ds6esJUiEemC09f0MxYkRg": {
       "text": "Code",
       "source": "340f463033e0",
@@ -102387,6 +102688,13 @@
     "label:_GK8iNxQMEeKCyZtSz_i3FA": {
       "text": "Groupe",
       "source": "34ca0e766088",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_GKeQMMifEei73Ywzx0CAAg": {
+      "text": "Identification",
+      "source": "91f606b32dfc",
       "status": "machine",
       "by": "assistant",
       "date": "2026-10-11"
@@ -116667,6 +116975,104 @@
     "label:_R2-yqzEZEe6kQ-WGAhcVPQ": {
       "text": "Données supplémentaires",
       "source": "7fc6fcfe6a59",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hAzEZEe6kQ-WGAhcVPQ": {
+      "text": "Jeu de caractères",
+      "source": "346e389250d5",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hBTEZEe6kQ-WGAhcVPQ": {
+      "text": "De",
+      "source": "218197693424",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hBzEZEe6kQ-WGAhcVPQ": {
+      "text": "À",
+      "source": "f4b06ef6d3c8",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hCTEZEe6kQ-WGAhcVPQ": {
+      "text": "Identifiant du message métier",
+      "source": "715daddda862",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hCzEZEe6kQ-WGAhcVPQ": {
+      "text": "Identifiant de la définition du message",
+      "source": "3a2ab707d4c5",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hDTEZEe6kQ-WGAhcVPQ": {
+      "text": "Service métier",
+      "source": "bbf2fea9f907",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hDzEZEe6kQ-WGAhcVPQ": {
+      "text": "Pratique de marché",
+      "source": "eef77b2c75c5",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hETEZEe6kQ-WGAhcVPQ": {
+      "text": "Date de création",
+      "source": "6fdde7a67c6a",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hEzEZEe6kQ-WGAhcVPQ": {
+      "text": "Date de traitement métier",
+      "source": "84d567192582",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hFTEZEe6kQ-WGAhcVPQ": {
+      "text": "Copie duplicata",
+      "source": "3e113570838e",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hFzEZEe6kQ-WGAhcVPQ": {
+      "text": "Doublon possible",
+      "source": "e19361dec37c",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hGTEZEe6kQ-WGAhcVPQ": {
+      "text": "Priorité",
+      "source": "d60dbba07922",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hGzEZEe6kQ-WGAhcVPQ": {
+      "text": "Signature",
+      "source": "f1a73e2204a1",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hHTEZEe6kQ-WGAhcVPQ": {
+      "text": "Associé",
+      "source": "45ca56d179d4",
       "status": "machine",
       "by": "assistant",
       "date": "2026-10-11"
@@ -131966,6 +132372,20 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "label:_zKWuQTEyEe6g-ffJsqGiSA": {
+      "text": "Identification de l'organisation",
+      "source": "1227def9c4b4",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_zKWuQzEyEe6g-ffJsqGiSA": {
+      "text": "Identification de l'établissement financier",
+      "source": "eb820a0b08c2",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "label:_ZlQ600KTEeWuG5hmkcJWSQ": {
       "text": "Adresse postale",
       "source": "3cc0461f3e0a",
@@ -141759,6 +142179,13 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "rule:_R26hATEZEe6kQ-WGAhcVPQ": {
+      "text": "Related DOIT (MUST) contenir les éléments BusinessMessageHeader pertinents du BusinessMessage auquel ce BusinessMessage se rapporte.||Si CopyDuplicate est présent, Related DOIT (MUST) être présent.",
+      "source": "ac3a0c76cda8",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "rule:_R3LnITEZEe6kQ-WGAhcVPQ": {
       "text": "Le bloc SupplementaryData au niveau du message ne doit pas être utilisé pour fournir des informations supplémentaires sur une opération. L'élément SupplementaryData au niveau de l'opération doit être utilisé à cette fin.",
       "source": "000430c8aa47",
@@ -145406,6 +145833,13 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "type:_2aMHUTEyEe6g-ffJsqGiSA": {
+      "text": "Précise l'en-tête d'application métier (Business Application Header) du message métier.|Peut être utilisé pour répondre à une requête ; peut aussi être utilisé pour annuler ou modifier.",
+      "source": "999c2f3fc2a6",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "type:_2AnwzTEyEe6g-ffJsqGiSA": {
       "text": "Identifie une instruction de paiement par un ensemble de caractéristiques qui permet de l'identifier de manière non ambiguë.",
       "source": "e5a3928b288d",
@@ -146256,6 +146690,13 @@
     "type:_6PphwJqlEeGSON8vddiWzQ_1042088657": {
       "text": "Précise le qualificatif d'un sous-service.",
       "source": "fcce522b865e",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "type:_6Pu8gMieEei73Ywzx0CAAg": {
+      "text": "Identifie la spécification d'implémentation à laquelle le message ISO 20022 est conforme.",
+      "source": "129e0e395f70",
       "status": "machine",
       "by": "assistant",
       "date": "2026-10-11"
@@ -151699,6 +152140,13 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "type:_R2558TEZEe6kQ-WGAhcVPQ": {
+      "text": "La couche métier traite les messages métier. Le comportement des messages métier est entièrement décrit par la transaction métier, et leur structure par les définitions de messages et les règles de message, règles et pratiques de marché associées, le tout enregistré dans le référentiel ISO 20022.|Pour chaque événement métier, c'est-à-dire chaque interaction d'une transaction métier, le MessagingEndpoint émetteur crée un seul nouveau message métier (avec son en-tête d'application métier). Un message métier obéit aux principes suivants :|\" Un message métier (et son en-tête d'application métier) ne doit pas contenir d'informations sur le système de transport des messages ni sur la mécanique ou le mécanisme d'envoi, de transport ou de réception des messages. |\" Un message métier doit être compréhensible en dehors du contexte du message de transport. Autrement dit, il ne doit pas nécessiter la connaissance du message de transport pour être compris.|\" Un message métier peut contenir des en-têtes, des pieds de page et des enveloppes ayant un sens métier. Lorsqu'ils sont présents, ils sont traités comme tout autre contenu du message, ce qui signifie qu'ils sont considérés comme faisant partie de la définition du message métier et, à ce titre, feront partie du référentiel ISO 20022.|\" Un message métier désigne les acteurs métier par leur nom. Chaque instance d'un acteur métier a un nom. L'acteur métier ne doit pas être désigné dans la couche de transport.|L'usage spécifique de cette BusinessMessageHeader peut être défini par le SEG concerné.",
+      "source": "0194a0dedfc7",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "type:_R27vLTEZEe6kQ-WGAhcVPQ": {
       "text": "Le message AccountAdditionalInformationRequest est envoyé par un établissement financier à une organisation dans le cadre du processus de maintenance. Ce message est envoyé en réponse à un message de demande de maintenance de l'organisation, si le contenu métier est valide mais que des informations complémentaires sont requises.",
       "source": "1c94839fc2c7",
@@ -155268,6 +155716,13 @@
       "status": "machine",
       "by": "assistant",
       "date": "2026-10-08"
+    },
+    "type:_zIGEcTEyEe6g-ffJsqGiSA": {
+      "text": "Identification d'une personne, d'une organisation ou d'un établissement financier.",
+      "source": "b97f79be5b34",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
     },
     "type:_zKj4MCCgEeWJd9HF2tO7BA": {
       "text": "Choix de formats pour l'état civil.",

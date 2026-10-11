@@ -192,7 +192,7 @@ export const schemas = {
 export const camt050Message = {
   identifier: "camt.050.001.07",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.050.001.07",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "LqdtyCdtTrf",
   rootType: "LiquidityCreditTransferV07",
   schema: LiquidityCreditTransferV07Schema,

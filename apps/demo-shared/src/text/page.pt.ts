@@ -146,6 +146,8 @@ export const pagePt: PageMessages = {
   areaDesc_trck: '',
   areaName_acmt: 'Gestão de contas',
   areaDesc_acmt: 'Mensagens que apoiam a gestão de atividades relacionadas com contas, como a abertura e a manutenção de uma conta.',
+  areaName_head: 'Cabeçalho de aplicação comercial',
+  areaDesc_head: 'Cabeçalho que contém informações comerciais relevantes antes do processamento de uma mensagem.',
   xsdLabel: 'Validar XSD',
   xsdReady: 'Validar o texto da mensagem abaixo usando {location}',
   xsdReadyFile: 'Validar o texto da mensagem abaixo usando {file} (carregado do seu computador)',

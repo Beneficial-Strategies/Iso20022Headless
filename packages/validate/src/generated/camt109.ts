@@ -291,7 +291,7 @@ export const schemas = {
 export const camt109Message = {
   identifier: "camt.109.001.02",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.109.001.02",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "ChqCxlOrStopRpt",
   rootType: "ChequeCancellationOrStopReportV02",
   schema: ChequeCancellationOrStopReportV02Schema,

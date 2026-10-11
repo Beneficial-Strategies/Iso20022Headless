@@ -663,7 +663,7 @@ export const schemas = {
 export const pacs009Message = {
   identifier: "pacs.009.001.13",
   namespace: "urn:iso:std:iso:20022:tech:xsd:pacs.009.001.13",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "FICdtTrf",
   rootType: "FinancialInstitutionCreditTransferV13",
   schema: FinancialInstitutionCreditTransferV13Schema,

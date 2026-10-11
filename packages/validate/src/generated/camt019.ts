@@ -323,7 +323,7 @@ export const schemas = {
 export const camt019Message = {
   identifier: "camt.019.001.07",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.019.001.07",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "RtrBizDayInf",
   rootType: "ReturnBusinessDayInformationV07",
   schema: ReturnBusinessDayInformationV07Schema,

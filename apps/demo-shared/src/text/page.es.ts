@@ -146,6 +146,8 @@ export const pageEs: PageMessages = {
   areaDesc_trck: '',
   areaName_acmt: 'Gestión de cuentas',
   areaDesc_acmt: 'Mensajes que respaldan la gestión de actividades relacionadas con cuentas, como la apertura y el mantenimiento de una cuenta.',
+  areaName_head: 'Cabecera de aplicación comercial',
+  areaDesc_head: 'Cabecera que contiene información comercial relevante antes de procesar un mensaje.',
   xsdLabel: 'Validar XSD',
   xsdReady: 'Validar el texto del mensaje de abajo con {location}',
   xsdReadyFile: 'Validar el texto del mensaje de abajo con {file} (cargado desde su equipo)',

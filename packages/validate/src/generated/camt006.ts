@@ -739,7 +739,7 @@ export const schemas = {
 export const camt006Message = {
   identifier: "camt.006.001.11",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.006.001.11",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "RtrTx",
   rootType: "ReturnTransactionV11",
   schema: ReturnTransactionV11Schema,
