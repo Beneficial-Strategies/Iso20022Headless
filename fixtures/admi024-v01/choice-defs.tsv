@@ -1,0 +1,5 @@
+choice	memberId	memberName	text
+NotificationType1Choice	_ZgdCULkuEe68nbz8Nl_hLQ	Code	Notification type, as published in an external notification type code set.
+NotificationType1Choice	_ic9qULkuEe68nbz8Nl_hLQ	Proprietary	Notification type, in a proprietary form.
+NotificationSubType1Choice	_wppLcLkuEe68nbz8Nl_hLQ	Code	Notification sub type, as published in an external notification sub type code set.
+NotificationSubType1Choice	_29UI8LkuEe68nbz8Nl_hLQ	Proprietary	Notification sub type, in a proprietary form.

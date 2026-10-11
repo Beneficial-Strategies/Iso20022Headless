@@ -79,6 +79,7 @@ import {
   ChargeBearerType1CodeSchema,
   ActiveCurrencyCodeSchema,
   BaseOneRateSchema,
+  CurrencyExchange13Schema,
   ActiveOrHistoricCurrencyCodeSchema,
   EquivalentAmount2Schema,
   AmountType4ChoiceSchema,
@@ -188,13 +189,6 @@ export const GroupHeader128Schema = z.strictObject({
   CreditorAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
 });
 
-export const CurrencyExchange13Schema = z.strictObject({
-  SourceCurrency: ActiveCurrencyCodeSchema,
-  TargetCurrency: ActiveCurrencyCodeSchema,
-  ExchangeRate: BaseOneRateSchema,
-  UnitCurrency: ActiveCurrencyCodeSchema.optional(),
-});
-
 export const TrackerRecord5Schema = z.strictObject({
   Agent: BranchAndFinancialInstitutionIdentification8Schema,
   ChargeBearer: ChargeBearerType1CodeSchema.optional(),
@@ -255,17 +249,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "ForwardingAgent", isoId: "_6jjJZzEyEe6g-ffJsqGiSA", xmlTag: "FwdgAgt", displayName: displayName("ForwardingAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
       f({ name: "DebtorAgent", isoId: "_6jjJaTEyEe6g-ffJsqGiSA", xmlTag: "DbtrAgt", displayName: displayName("DebtorAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
       f({ name: "CreditorAgent", isoId: "_6jjJazEyEe6g-ffJsqGiSA", xmlTag: "CdtrAgt", displayName: displayName("CreditorAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
-    ],
-  },
-  "CurrencyExchange13": {
-    name: "CurrencyExchange13",
-    isoId: "_M5wl0IW7EeiDBOVr6AJAFA",
-    kind: "component",
-    fields: [
-      f({ name: "SourceCurrency", isoId: "_NF4WQYW7EeiDBOVr6AJAFA", xmlTag: "SrcCcy", displayName: displayName("SourceCurrency"), kind: "code", type: "ActiveCurrencyCode", required: true }),
-      f({ name: "TargetCurrency", isoId: "_NF4WQ4W7EeiDBOVr6AJAFA", xmlTag: "TrgtCcy", displayName: displayName("TargetCurrency"), kind: "code", type: "ActiveCurrencyCode", required: true }),
-      f({ name: "ExchangeRate", isoId: "_NF4WRYW7EeiDBOVr6AJAFA", xmlTag: "XchgRate", displayName: displayName("ExchangeRate"), kind: "number", type: "BaseOneRate", required: true }),
-      f({ name: "UnitCurrency", isoId: "_NF4WSYW7EeiDBOVr6AJAFA", xmlTag: "UnitCcy", displayName: displayName("UnitCurrency"), kind: "code", type: "ActiveCurrencyCode", required: false }),
     ],
   },
   "TrackerRecord5": {
@@ -416,6 +399,7 @@ export const typeDescriptors: TypeDescriptors = {
   "ChargeBearerType1Code": sharedTypeDescriptors["ChargeBearerType1Code"]!,
   "ActiveCurrencyCode": sharedTypeDescriptors["ActiveCurrencyCode"]!,
   "BaseOneRate": sharedTypeDescriptors["BaseOneRate"]!,
+  "CurrencyExchange13": sharedTypeDescriptors["CurrencyExchange13"]!,
   "ActiveOrHistoricCurrencyCode": sharedTypeDescriptors["ActiveOrHistoricCurrencyCode"]!,
   "EquivalentAmount2": sharedTypeDescriptors["EquivalentAmount2"]!,
   "AmountType4Choice": sharedTypeDescriptors["AmountType4Choice"]!,

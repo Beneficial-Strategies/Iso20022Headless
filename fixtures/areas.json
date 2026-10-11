@@ -22,5 +22,23 @@
     "name": "Cash Management",
     "isoId": "_sPGdsGtdEeCY4-KZ9JEyUQ_-735475843",
     "definition": "Messages that support the reporting and advicing of the cash side of any financial transactions, including cash movements, transactions and balances, plus any exceptions and investigations related to cash transactions."
+  },
+  {
+    "code": "admi",
+    "name": "Administration",
+    "isoId": "_sOziyGtdEeCY4-KZ9JEyUQ_-735475843",
+    "definition": "Generic messages, ie, system event notifications, generic rejections, etc."
+  },
+  {
+    "code": "remt",
+    "name": "Payments Remittance Advice",
+    "isoId": "_Yq2z4KuTEeO6YrnGem_Z3g",
+    "definition": "Messages that support communication between creditors and debtors regarding remittance details associated with payments."
+  },
+  {
+    "code": "trck",
+    "name": "Transaction Tracker",
+    "isoId": "_Rt4akM7uEemEIuVuDudp4g",
+    "definition": ""
   }
 ]

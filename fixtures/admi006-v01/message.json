@@ -1,0 +1,35 @@
+{
+  "identifier": "admi.006.001.01",
+  "name": "ResendRequestV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:admi.006.001.01",
+  "bodyTag": "RsndReq",
+  "out": "admi006",
+  "isoId": "_5xUioZb3Eee4htziCyV8eA",
+  "definition": "A system member or any parties authorised by them send a ResendRequest message to the Central System (such as the T2S platform). The purpose of this request is, that the requesting party wants to receive the “original” message once again. This might be caused through technical problems on the receiving side (message could not be received or processed or is missing in the message sequencing) or for archiving purposes.",
+  "blocks": [
+    {
+      "name": "MessageHeader",
+      "isoId": "_5xUio5b3Eee4htziCyV8eA",
+      "xmlTag": "MsgHdr",
+      "type": "MessageHeader7",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ResendSearchCriteria",
+      "isoId": "_5xUipZb3Eee4htziCyV8eA",
+      "xmlTag": "RsndSchCrit",
+      "type": "ResendSearchCriteria2",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_5xUip5b3Eee4htziCyV8eA",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

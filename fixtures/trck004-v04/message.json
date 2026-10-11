@@ -1,0 +1,35 @@
+{
+  "identifier": "trck.004.001.04",
+  "name": "PaymentStatusCustomerTrackerReportV04",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:trck.004.001.04",
+  "bodyTag": "PmtStsCstmrTrckrRpt",
+  "out": "trck004",
+  "isoId": "6f6b674e-5470-4dce-b707-7e12088eaf28",
+  "definition": "The PaymentStatusCustomerTrackerReport message is sent by a tracking facility or any authorised party to relevant parties involved in the business transaction to report on the progress of one or more business transaction(s) and obtain transparency on the status.",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "05190b96-09c0-48fe-b340-b82e536b5476",
+      "xmlTag": "GrpHdr",
+      "type": "TrackerHeader5",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "TrackerStatusAndTransaction",
+      "isoId": "77d2fdf4-58b4-40b9-9441-4590b6227426",
+      "xmlTag": "TrckrStsAndTx",
+      "type": "TrackerStatusAndTransaction21",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "3dae08bc-56b0-46d1-9860-fc6ed711f5df",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

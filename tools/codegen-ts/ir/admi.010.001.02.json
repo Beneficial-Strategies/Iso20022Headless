@@ -1,0 +1,251 @@
+{
+  "message": {
+    "identifier": "admi.010.001.02",
+    "name": "StaticDataReportV02",
+    "namespace": "urn:iso:std:iso:20022:tech:xsd:admi.010.001.02",
+    "bodyTag": "StatcDataRpt",
+    "out": "admi010",
+    "isoId": "_Zy71kRnXEeKKXqHkeUjBbw",
+    "definition": "The StaticDataReport message is sent by a central system to the participant to provide static data held in the system.",
+    "blocks": [
+      {
+        "name": "MessageIdentification",
+        "isoId": "_y5aAVzp8EeKXK8qRvydwAw",
+        "xmlTag": "MsgId",
+        "type": "Max35Text",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "SettlementSessionIdentifier",
+        "isoId": "_vSr6ox3bEeKXIbeXfdPzuw",
+        "xmlTag": "SttlmSsnIdr",
+        "type": "Exact4AlphaNumericText",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "name": "ReportDetails",
+        "isoId": "_Zy71lxnXEeKKXqHkeUjBbw",
+        "xmlTag": "RptDtls",
+        "type": "RequestDetails5",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "SupplementaryData",
+        "isoId": "_Dw3hYy53EeKwTrPDLMbLxA",
+        "xmlTag": "SplmtryData",
+        "type": "SupplementaryData1",
+        "min": 0,
+        "max": null
+      }
+    ]
+  },
+  "root": "StaticDataReportV02",
+  "order": [
+    "Max35Text",
+    "Exact4AlphaNumericText",
+    "Max70Text",
+    "Max350Text",
+    "ReportParameter1",
+    "RequestDetails4",
+    "RequestDetails5",
+    "SupplementaryDataEnvelope1",
+    "SupplementaryData1",
+    "StaticDataReportV02"
+  ],
+  "types": {
+    "Max35Text": {
+      "name": "Max35Text",
+      "kind": "text",
+      "isoId": "_YW1tKdp-Ed-ak6NoX_4Aeg_1913463446",
+      "minLength": 1,
+      "maxLength": 35
+    },
+    "Exact4AlphaNumericText": {
+      "name": "Exact4AlphaNumericText",
+      "kind": "text",
+      "isoId": "_YYLJ6Np-Ed-ak6NoX_4Aeg_-1265890753",
+      "pattern": "[a-zA-Z0-9]{4}"
+    },
+    "Max70Text": {
+      "name": "Max70Text",
+      "kind": "text",
+      "isoId": "_YX4O8Np-Ed-ak6NoX_4Aeg_-282989098",
+      "minLength": 1,
+      "maxLength": 70
+    },
+    "Max350Text": {
+      "name": "Max350Text",
+      "kind": "text",
+      "isoId": "_YW1tKNp-Ed-ak6NoX_4Aeg_1778996852",
+      "minLength": 1,
+      "maxLength": 350
+    },
+    "ReportParameter1": {
+      "name": "ReportParameter1",
+      "isoId": "_SuwKEwEcEeCQm6a_G2yO_w_-358984797",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Name",
+          "isoId": "_SuwKFAEcEeCQm6a_G2yO_w_1702915618",
+          "xmlTag": "Nm",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Value",
+          "isoId": "_SuwKFQEcEeCQm6a_G2yO_w_1720011327",
+          "xmlTag": "Val",
+          "type": "Max350Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "RequestDetails4": {
+      "name": "RequestDetails4",
+      "isoId": "_SuwKFgEcEeCQm6a_G2yO_w_-1482671344",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Key",
+          "isoId": "_SuwKFwEcEeCQm6a_G2yO_w_1787384874",
+          "xmlTag": "Key",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ReportData",
+          "isoId": "_SuwKGAEcEeCQm6a_G2yO_w_-56014594",
+          "xmlTag": "RptData",
+          "type": "ReportParameter1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    },
+    "RequestDetails5": {
+      "name": "RequestDetails5",
+      "isoId": "_SumZGwEcEeCQm6a_G2yO_w_1103821784",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Type",
+          "isoId": "_SuwKEAEcEeCQm6a_G2yO_w_1937892344",
+          "xmlTag": "Tp",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "RequestReference",
+          "isoId": "_SuwKEQEcEeCQm6a_G2yO_w_-179622077",
+          "xmlTag": "ReqRef",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ReportKey",
+          "isoId": "_SuwKEgEcEeCQm6a_G2yO_w_1731831000",
+          "xmlTag": "RptKey",
+          "type": "RequestDetails4",
+          "kind": "component",
+          "min": 1,
+          "max": null
+        }
+      ]
+    },
+    "SupplementaryDataEnvelope1": {
+      "name": "SupplementaryDataEnvelope1",
+      "kind": "any",
+      "isoId": "_Kz9KwJDrEeSLQ8ob-qtemg"
+    },
+    "SupplementaryData1": {
+      "name": "SupplementaryData1",
+      "isoId": "_Qn0zC9p-Ed-ak6NoX_4Aeg_468227563",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "PlaceAndName",
+          "isoId": "_Qn988Np-Ed-ak6NoX_4Aeg_354388497",
+          "xmlTag": "PlcAndNm",
+          "type": "Max350Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Envelope",
+          "isoId": "_Qn988dp-Ed-ak6NoX_4Aeg_-642683856",
+          "xmlTag": "Envlp",
+          "type": "SupplementaryDataEnvelope1",
+          "kind": "any",
+          "min": 1,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "SupplementaryDataRule",
+          "isoId": "_Qn988tp-Ed-ak6NoX_4Aeg_-1492355109",
+          "text": "This component may not be used without the explicit approval of a SEG and submission to the RA of ISO 20022 compliant structure(s) to be used in the Envelope element."
+        }
+      ]
+    },
+    "StaticDataReportV02": {
+      "name": "StaticDataReportV02",
+      "isoId": "_Zy71kRnXEeKKXqHkeUjBbw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "MessageIdentification",
+          "isoId": "_y5aAVzp8EeKXK8qRvydwAw",
+          "xmlTag": "MsgId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SettlementSessionIdentifier",
+          "isoId": "_vSr6ox3bEeKXIbeXfdPzuw",
+          "xmlTag": "SttlmSsnIdr",
+          "type": "Exact4AlphaNumericText",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ReportDetails",
+          "isoId": "_Zy71lxnXEeKKXqHkeUjBbw",
+          "xmlTag": "RptDtls",
+          "type": "RequestDetails5",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SupplementaryData",
+          "isoId": "_Dw3hYy53EeKwTrPDLMbLxA",
+          "xmlTag": "SplmtryData",
+          "type": "SupplementaryData1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    }
+  }
+}

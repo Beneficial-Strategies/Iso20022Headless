@@ -1,0 +1,3 @@
+codeSet	isoId	text
+ExternalNotificationType1Code	_rUfhILktEe68nbz8Nl_hLQ	Specifies the notification type, as published in an external notification type code set.|External code sets can be downloaded from www.iso20022.org.
+ExternalNotificationSubType1Code	__e8BMLktEe68nbz8Nl_hLQ	Specifies the notification sub type, as published in an external notification sub type code set.|External code sets can be downloaded from www.iso20022.org.

@@ -73,6 +73,7 @@ import {
   LocalInstrument2ChoiceSchema,
   ExternalCategoryPurpose1CodeSchema,
   CategoryPurpose1ChoiceSchema,
+  PaymentTypeInformation26Schema,
   DateAndDateTime2ChoiceSchema,
   IBAN2007IdentifierSchema,
   Max34TextSchema,
@@ -94,6 +95,8 @@ import {
   EquivalentAmount2Schema,
   AmountType4ChoiceSchema,
   BaseOneRateSchema,
+  ExchangeRateType1CodeSchema,
+  ExchangeRate1Schema,
   MandateClassification1CodeSchema,
   MandateClassification1ChoiceSchema,
   MandateTypeInformation2Schema,
@@ -195,22 +198,6 @@ export const GroupHeader114Schema = z.strictObject({
 
 export const PaymentMethod3CodeSchema = z.enum(["CHK", "TRF", "TRA"]);
 
-export const PaymentTypeInformation26Schema = z.strictObject({
-  InstructionPriority: Priority2CodeSchema.optional(),
-  ServiceLevel: z.array(ServiceLevel8ChoiceSchema).optional(),
-  LocalInstrument: LocalInstrument2ChoiceSchema.optional(),
-  CategoryPurpose: CategoryPurpose1ChoiceSchema.optional(),
-});
-
-export const ExchangeRateType1CodeSchema = z.enum(["SPOT", "SALE", "AGRD"]);
-
-export const ExchangeRate1Schema = z.strictObject({
-  UnitCurrency: ActiveOrHistoricCurrencyCodeSchema.optional(),
-  ExchangeRate: BaseOneRateSchema.optional(),
-  RateType: ExchangeRateType1CodeSchema.optional(),
-  ContractIdentification: Max35TextSchema.optional(),
-});
-
 export const ExternalDebtorAgentInstruction1CodeSchema = textType({min: 1, max: 4});
 
 export const InstructionForDebtorAgent1Schema = z.strictObject({
@@ -309,34 +296,6 @@ const ownTypeDescriptors: TypeDescriptors = {
     isoId: "_Z0aeYtp-Ed-ak6NoX_4Aeg_1813568342",
     kind: "code",
     options: [{ value: "CHK", name: "Cheque", isoId: "_Z0aeY9p-Ed-ak6NoX_4Aeg_1931781357" }, { value: "TRF", name: "CreditTransfer", isoId: "_Z0aeZNp-Ed-ak6NoX_4Aeg_1931781374" }, { value: "TRA", name: "TransferAdvice", isoId: "_Z0kPYNp-Ed-ak6NoX_4Aeg_1931781417" }],
-  },
-  "PaymentTypeInformation26": {
-    name: "PaymentTypeInformation26",
-    isoId: "_YPH8YXR0EeiH1ZOt2UD8vQ",
-    kind: "component",
-    fields: [
-      f({ name: "InstructionPriority", isoId: "_YaAWs3R0EeiH1ZOt2UD8vQ", xmlTag: "InstrPrty", displayName: displayName("InstructionPriority"), kind: "code", type: "Priority2Code", required: false }),
-      f({ name: "ServiceLevel", isoId: "_YaAWtXR0EeiH1ZOt2UD8vQ", xmlTag: "SvcLvl", displayName: displayName("ServiceLevel"), kind: "choice", type: "ServiceLevel8Choice", required: false, repeat: { min: 0, max: null } }),
-      f({ name: "LocalInstrument", isoId: "_YaAWt3R0EeiH1ZOt2UD8vQ", xmlTag: "LclInstrm", displayName: displayName("LocalInstrument"), kind: "choice", type: "LocalInstrument2Choice", required: false }),
-      f({ name: "CategoryPurpose", isoId: "_YaAWuXR0EeiH1ZOt2UD8vQ", xmlTag: "CtgyPurp", displayName: displayName("CategoryPurpose"), kind: "choice", type: "CategoryPurpose1Choice", required: false }),
-    ],
-  },
-  "ExchangeRateType1Code": {
-    name: "ExchangeRateType1Code",
-    isoId: "_aksr2Np-Ed-ak6NoX_4Aeg_-75535887",
-    kind: "code",
-    options: [{ value: "SPOT", name: "Spot", isoId: "_ak11wNp-Ed-ak6NoX_4Aeg_-75535808" }, { value: "SALE", name: "Sale", isoId: "_ak11wdp-Ed-ak6NoX_4Aeg_-75535501" }, { value: "AGRD", name: "Agreed", isoId: "_ak11wtp-Ed-ak6NoX_4Aeg_-75535484" }],
-  },
-  "ExchangeRate1": {
-    name: "ExchangeRate1",
-    isoId: "_t0booVkyEeGeoaLUQk__nA_667162887",
-    kind: "component",
-    fields: [
-      f({ name: "UnitCurrency", isoId: "_t0boolkyEeGeoaLUQk__nA_-816743916", xmlTag: "UnitCcy", displayName: displayName("UnitCurrency"), kind: "code", type: "ActiveOrHistoricCurrencyCode", required: false }),
-      f({ name: "ExchangeRate", isoId: "_t0boo1kyEeGeoaLUQk__nA_2015981061", xmlTag: "XchgRate", displayName: displayName("ExchangeRate"), kind: "number", type: "BaseOneRate", required: false }),
-      f({ name: "RateType", isoId: "_t0bopFkyEeGeoaLUQk__nA_1712924546", xmlTag: "RateTp", displayName: displayName("RateType"), kind: "code", type: "ExchangeRateType1Code", required: false }),
-      f({ name: "ContractIdentification", isoId: "_t0bopVkyEeGeoaLUQk__nA_198863021", xmlTag: "CtrctId", displayName: displayName("ContractIdentification"), kind: "text", type: "Max35Text", required: false }),
-    ],
   },
   "ExternalDebtorAgentInstruction1Code": {
     name: "ExternalDebtorAgentInstruction1Code",
@@ -520,6 +479,7 @@ export const typeDescriptors: TypeDescriptors = {
   "LocalInstrument2Choice": sharedTypeDescriptors["LocalInstrument2Choice"]!,
   "ExternalCategoryPurpose1Code": sharedTypeDescriptors["ExternalCategoryPurpose1Code"]!,
   "CategoryPurpose1Choice": sharedTypeDescriptors["CategoryPurpose1Choice"]!,
+  "PaymentTypeInformation26": sharedTypeDescriptors["PaymentTypeInformation26"]!,
   "DateAndDateTime2Choice": sharedTypeDescriptors["DateAndDateTime2Choice"]!,
   "IBAN2007Identifier": sharedTypeDescriptors["IBAN2007Identifier"]!,
   "Max34Text": sharedTypeDescriptors["Max34Text"]!,
@@ -541,6 +501,8 @@ export const typeDescriptors: TypeDescriptors = {
   "EquivalentAmount2": sharedTypeDescriptors["EquivalentAmount2"]!,
   "AmountType4Choice": sharedTypeDescriptors["AmountType4Choice"]!,
   "BaseOneRate": sharedTypeDescriptors["BaseOneRate"]!,
+  "ExchangeRateType1Code": sharedTypeDescriptors["ExchangeRateType1Code"]!,
+  "ExchangeRate1": sharedTypeDescriptors["ExchangeRate1"]!,
   "MandateClassification1Code": sharedTypeDescriptors["MandateClassification1Code"]!,
   "MandateClassification1Choice": sharedTypeDescriptors["MandateClassification1Choice"]!,
   "MandateTypeInformation2": sharedTypeDescriptors["MandateTypeInformation2"]!,

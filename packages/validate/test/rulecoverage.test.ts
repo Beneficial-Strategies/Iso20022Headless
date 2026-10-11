@@ -23,8 +23,8 @@ describe('business rule coverage', () => {
   const named = (status: string) => all.filter((r) => r.result.status === status).map((r) => `${r.type}.${r.rule}`);
 
   it('finds every rule and checks the machine-readable ones', () => {
-    expect(all.length).toBe(617);
-    expect(named('pass').length + named('fail').length).toBe(432);
+    expect(all.length).toBe(645);
+    expect(named('pass').length + named('fail').length).toBe(457);
   });
 
   it('cannot check five rules, and says why: two compare with a literal that is not a code value, three name a field that does not exist (spec typos and a copied rule)', () => {
@@ -125,7 +125,7 @@ describe('business rule coverage', () => {
   it('knows every rule with a list inside a list, and each has a behavior test', () => {
     // evaluateExpression handles /A[*]/B[*] (see rules.test.ts, pain002.test.ts and rules-camt.test.ts). If another rule ever uses it,
     // this fails so that someone writes a behavior test for that rule too. rule-satisfiability.test.ts proves each of these can both
-    // pass and fail; rules-camt.test.ts tests the "a case may be given at one level only" shape by behavior, pain002.test.ts the status reasons, rules-camt-batch2.test.ts the charges and related-account rules.
+    // pass and fail; rules-camt.test.ts tests the "a case may be given at one level only" shape by behavior, pain002.test.ts the status reasons, rules-camt-batch2.test.ts the charges and related-account rules, rules-tier1.test.ts the tracker rules.
     const nested: string[] = [];
     for (const t of Object.values(allTypeDescriptors)) {
       for (const r of t.rules ?? []) {
@@ -148,9 +148,14 @@ describe('business rule coverage', () => {
       'OriginalNotificationReference15.RelatedAccountRule',
       'OriginalNotificationReference16.RelatedAccountRule',
       'OriginalPaymentInstruction54.CancellationStatusReasonInformationRule',
+      'PaymentStatusTrackerUpdateV05.TrackerInformedPartyRule',
+      'PaymentStatusTrackerUpdateV05.TrackerInformingParty2Rule',
+      'PaymentStatusTrackerUpdateV05.TrackerInformingPartyRule',
       'ResolutionOfInvestigationV14.MessageOrInitiationTransactionResolvedCaseRule',
       'ResolutionOfInvestigationV14.MessageOrInterbankTransactionResolvedCaseRule',
       'ResolutionOfInvestigationV14.MessageOrPaymentInformationResolvedCaseRule',
+      'TrackerStatusAndTransaction21.RejectReturnReasonRule',
+      'TrackerStatusAndTransaction22.RejectReturnReasonRule',
       'UnderlyingTransaction35.GroupOrInitiationTransactionResolvedCaseRule',
       'UnderlyingTransaction37.GroupOrTransactionCaseRule',
     ].sort());

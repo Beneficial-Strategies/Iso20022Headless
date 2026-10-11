@@ -1,0 +1,35 @@
+{
+  "identifier": "trck.001.001.05",
+  "name": "PaymentStatusTrackerUpdateV05",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:trck.001.001.05",
+  "bodyTag": "PmtStsTrckrUpd",
+  "out": "trck001",
+  "isoId": "bfeb7dc1-7509-4665-9e03-a7726d28da33",
+  "definition": "The PaymentStatusTrackerUpdate message is sent by an agent to a tracking facility to monitor the progress of a business transaction, and to update the status of this business transaction for obtaining tracking and transparency purpose.||Usage:|Multiple business transaction statuses may be reported in a single message, and each status may include all relevant information of a single transaction or multiple transactions of the tracked payment(s) exchanged.",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "b23dcd44-37ac-4484-89c6-9ed2ec4d68ba",
+      "xmlTag": "GrpHdr",
+      "type": "TrackerHeader6",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "TrackerStatusAndTransaction",
+      "isoId": "77bc44cc-975d-4318-b213-f3a72e738216",
+      "xmlTag": "TrckrStsAndTx",
+      "type": "TrackerStatusAndTransaction22",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "2119d1a8-3b64-4708-9c39-88dbbcc0da77",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

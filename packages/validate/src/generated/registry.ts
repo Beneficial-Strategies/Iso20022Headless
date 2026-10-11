@@ -35,6 +35,9 @@ export const areaIndex: readonly AreaInfo[] = [
   { code: "pacs", name: "Payments Clearing and Settlement", definition: "Messages that support the clearing and settlement processes for payment transactions between financial institutions." },
   { code: "caam", name: "ATM Management", definition: "Messages that support card related terminal management services between an Automated Teller Machine (ATM) and an Acquirer." },
   { code: "camt", name: "Cash Management", definition: "Messages that support the reporting and advicing of the cash side of any financial transactions, including cash movements, transactions and balances, plus any exceptions and investigations related to cash transactions." },
+  { code: "admi", name: "Administration", definition: "Generic messages, ie, system event notifications, generic rejections, etc." },
+  { code: "remt", name: "Payments Remittance Advice", definition: "Messages that support communication between creditors and debtors regarding remittance details associated with payments." },
+  { code: "trck", name: "Transaction Tracker", definition: "" },
 ];
 
 export const messageIndex: readonly MessageInfo[] = [
@@ -1407,5 +1410,155 @@ export const messageIndex: readonly MessageInfo[] = [
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.116.001.01.xsd",
     load: () =>
       import('./camt116.ts').then((m) => ({ message: m.camt116Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "admi.002.001.01",
+    name: "MessageRejectV01",
+    title: "Message Reject",
+    area: "admi",
+    module: "admi002",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/admi/schemas/admi.002.001.01.xsd",
+    load: () =>
+      import('./admi002.ts').then((m) => ({ message: m.admi002Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "admi.004.001.02",
+    name: "SystemEventNotificationV02",
+    title: "System Event Notification",
+    area: "admi",
+    module: "admi004",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/admi/schemas/admi.004.001.02.xsd",
+    load: () =>
+      import('./admi004.ts').then((m) => ({ message: m.admi004Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "admi.005.001.02",
+    name: "ReportQueryRequestV02",
+    title: "Report Query Request",
+    area: "admi",
+    module: "admi005",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/admi/schemas/admi.005.001.02.xsd",
+    load: () =>
+      import('./admi005.ts').then((m) => ({ message: m.admi005Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "admi.006.001.01",
+    name: "ResendRequestV01",
+    title: "Resend Request",
+    area: "admi",
+    module: "admi006",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/admi/schemas/admi.006.001.01.xsd",
+    load: () =>
+      import('./admi006.ts').then((m) => ({ message: m.admi006Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "admi.007.001.01",
+    name: "ReceiptAcknowledgementV01",
+    title: "Receipt Acknowledgement",
+    area: "admi",
+    module: "admi007",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/admi/schemas/admi.007.001.01.xsd",
+    load: () =>
+      import('./admi007.ts').then((m) => ({ message: m.admi007Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "admi.009.001.02",
+    name: "StaticDataRequestV02",
+    title: "Static Data Request",
+    area: "admi",
+    module: "admi009",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/admi/schemas/admi.009.001.02.xsd",
+    load: () =>
+      import('./admi009.ts').then((m) => ({ message: m.admi009Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "admi.010.001.02",
+    name: "StaticDataReportV02",
+    title: "Static Data Report",
+    area: "admi",
+    module: "admi010",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/admi/schemas/admi.010.001.02.xsd",
+    load: () =>
+      import('./admi010.ts').then((m) => ({ message: m.admi010Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "admi.011.001.01",
+    name: "SystemEventAcknowledgementV01",
+    title: "System Event Acknowledgement",
+    area: "admi",
+    module: "admi011",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/admi/schemas/admi.011.001.01.xsd",
+    load: () =>
+      import('./admi011.ts').then((m) => ({ message: m.admi011Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "admi.017.001.02",
+    name: "ProcessingRequestV02",
+    title: "Processing Request",
+    area: "admi",
+    module: "admi017",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/admi/schemas/admi.017.001.02.xsd",
+    load: () =>
+      import('./admi017.ts').then((m) => ({ message: m.admi017Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "admi.024.001.01",
+    name: "NotificationOfCorrespondenceV01",
+    title: "Notification Of Correspondence",
+    area: "admi",
+    module: "admi024",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/admi/schemas/admi.024.001.01.xsd",
+    load: () =>
+      import('./admi024.ts').then((m) => ({ message: m.admi024Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "remt.001.001.07",
+    name: "RemittanceAdviceV07",
+    title: "Remittance Advice",
+    area: "remt",
+    module: "remt001",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/remt/schemas/remt.001.001.07.xsd",
+    load: () =>
+      import('./remt001.ts').then((m) => ({ message: m.remt001Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "remt.002.001.03",
+    name: "RemittanceLocationAdviceV03",
+    title: "Remittance Location Advice",
+    area: "remt",
+    module: "remt002",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/remt/schemas/remt.002.001.03.xsd",
+    load: () =>
+      import('./remt002.ts').then((m) => ({ message: m.remt002Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "trck.001.001.05",
+    name: "PaymentStatusTrackerUpdateV05",
+    title: "Payment Status Tracker Update",
+    area: "trck",
+    module: "trck001",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/trck/schemas/trck.001.001.05.xsd",
+    load: () =>
+      import('./trck001.ts').then((m) => ({ message: m.trck001Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "trck.002.001.04",
+    name: "PaymentStatusTrackerReportV04",
+    title: "Payment Status Tracker Report",
+    area: "trck",
+    module: "trck002",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/trck/schemas/trck.002.001.04.xsd",
+    load: () =>
+      import('./trck002.ts').then((m) => ({ message: m.trck002Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "trck.004.001.04",
+    name: "PaymentStatusCustomerTrackerReportV04",
+    title: "Payment Status Customer Tracker Report",
+    area: "trck",
+    module: "trck004",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/trck/schemas/trck.004.001.04.xsd",
+    load: () =>
+      import('./trck004.ts').then((m) => ({ message: m.trck004Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
 ];

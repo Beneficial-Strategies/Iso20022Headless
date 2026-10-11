@@ -65,7 +65,8 @@ describe("the demo page's own text", () => {
       expect(pageEn[`areaDesc_${a.code}` as keyof typeof pageEn], a.code).toBe(a.definition);
       for (const lang of SHIPPED) {
         expect(pageLocales[lang]![`areaName_${a.code}` as keyof typeof pageEn], `${lang} ${a.code}`).toBeTruthy();
-        expect(pageLocales[lang]![`areaDesc_${a.code}` as keyof typeof pageEn], `${lang} ${a.code}`).toBeTruthy();
+        // the repository gives no description for some areas (trck); then there is nothing to translate
+        if (a.definition) expect(pageLocales[lang]![`areaDesc_${a.code}` as keyof typeof pageEn], `${lang} ${a.code}`).toBeTruthy();
       }
     }
   });

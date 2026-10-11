@@ -1,0 +1,118 @@
+{
+  "message": {
+    "identifier": "admi.004.001.02",
+    "name": "SystemEventNotificationV02",
+    "namespace": "urn:iso:std:iso:20022:tech:xsd:admi.004.001.02",
+    "bodyTag": "SysEvtNtfctn",
+    "out": "admi004",
+    "isoId": "_pgC-EU7TEeSGH6dwL1uJcg",
+    "definition": "Scope|The SystemEventNotification message is sent by a central system to notify the occurrence of an event in a central system.|Usage|The message can be used by a central settlement system to inform its participants of an event that is going to occur in the system, for instance that the system will be down at a certain time, etc.",
+    "blocks": [
+      {
+        "name": "EventInformation",
+        "isoId": "_pgC-E07TEeSGH6dwL1uJcg",
+        "xmlTag": "EvtInf",
+        "type": "Event2",
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  "root": "SystemEventNotificationV02",
+  "order": [
+    "Max4AlphaNumericText",
+    "Max35Text",
+    "Max1000Text",
+    "ISODateTime",
+    "Event2",
+    "SystemEventNotificationV02"
+  ],
+  "types": {
+    "Max4AlphaNumericText": {
+      "name": "Max4AlphaNumericText",
+      "kind": "text",
+      "isoId": "_YXlUBdp-Ed-ak6NoX_4Aeg_-2067559309",
+      "pattern": "[a-zA-Z0-9]{1,4}",
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "Max35Text": {
+      "name": "Max35Text",
+      "kind": "text",
+      "isoId": "_YW1tKdp-Ed-ak6NoX_4Aeg_1913463446",
+      "minLength": 1,
+      "maxLength": 35
+    },
+    "Max1000Text": {
+      "name": "Max1000Text",
+      "kind": "text",
+      "isoId": "_jazkgE7bEeSGH6dwL1uJcg",
+      "minLength": 1,
+      "maxLength": 1000
+    },
+    "ISODateTime": {
+      "name": "ISODateTime",
+      "kind": "datetime",
+      "isoId": "_YW1tKtp-Ed-ak6NoX_4Aeg_-1624336183"
+    },
+    "Event2": {
+      "name": "Event2",
+      "isoId": "_whUBYU7TEeSGH6dwL1uJcg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "EventCode",
+          "isoId": "_w2BtIU7TEeSGH6dwL1uJcg",
+          "xmlTag": "EvtCd",
+          "type": "Max4AlphaNumericText",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "EventParameter",
+          "isoId": "_w2BtI07TEeSGH6dwL1uJcg",
+          "xmlTag": "EvtParam",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "EventDescription",
+          "isoId": "_w2BtJU7TEeSGH6dwL1uJcg",
+          "xmlTag": "EvtDesc",
+          "type": "Max1000Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "EventTime",
+          "isoId": "_w2BtJ07TEeSGH6dwL1uJcg",
+          "xmlTag": "EvtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "SystemEventNotificationV02": {
+      "name": "SystemEventNotificationV02",
+      "isoId": "_pgC-EU7TEeSGH6dwL1uJcg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "EventInformation",
+          "isoId": "_pgC-E07TEeSGH6dwL1uJcg",
+          "xmlTag": "EvtInf",
+          "type": "Event2",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    }
+  }
+}

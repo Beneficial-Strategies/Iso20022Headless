@@ -1,0 +1,35 @@
+{
+  "identifier": "admi.007.001.01",
+  "name": "ReceiptAcknowledgementV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:admi.007.001.01",
+  "bodyTag": "RctAck",
+  "out": "admi007",
+  "isoId": "_4MJ7oZb3Eee4htziCyV8eA",
+  "definition": "The ReceiptAcknowledgement message is sent by the transaction administrator to a member of the system and vice versa. It is sent to acknowledge the receipt of one or multiple messages sent previously. The Acknowledgement message is 1) an application receipt acknowledgement and 2) conveys information about the processing of the original message(s). In case of 2) the ReceiptAcknowledgement can be used as a Generic error message, which provides information about the status (e.g. rejection, acceptance) of an instruction.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "_4MJ7o5b3Eee4htziCyV8eA",
+      "xmlTag": "MsgId",
+      "type": "MessageHeader10",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Report",
+      "isoId": "_4MJ7pZb3Eee4htziCyV8eA",
+      "xmlTag": "Rpt",
+      "type": "ReceiptAcknowledgementReport2",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_4MJ7p5b3Eee4htziCyV8eA",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "identifier": "admi.002.001.01",
+  "name": "MessageRejectV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:admi.002.001.01",
+  "bodyTag": "admi.002.001.01",
+  "out": "admi002",
+  "isoId": "_8LH5WNE9Ed-BzquC8wXy7w_-1942533103",
+  "definition": "Scope|The MessageReject message is sent by a central system to notify the rejection of a previously received message.|Usage|The message provides specific information about the rejection reason.",
+  "blocks": [
+    {
+      "name": "RelatedReference",
+      "isoId": "_8LH5WdE9Ed-BzquC8wXy7w_-1383804009",
+      "xmlTag": "RltdRef",
+      "type": "MessageReference",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Reason",
+      "isoId": "_8LH5WtE9Ed-BzquC8wXy7w_-223860119",
+      "xmlTag": "Rsn",
+      "type": "RejectionReason2",
+      "min": 1,
+      "max": 1
+    }
+  ]
+}

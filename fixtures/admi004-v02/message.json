@@ -1,0 +1,19 @@
+{
+  "identifier": "admi.004.001.02",
+  "name": "SystemEventNotificationV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:admi.004.001.02",
+  "bodyTag": "SysEvtNtfctn",
+  "out": "admi004",
+  "isoId": "_pgC-EU7TEeSGH6dwL1uJcg",
+  "definition": "Scope|The SystemEventNotification message is sent by a central system to notify the occurrence of an event in a central system.|Usage|The message can be used by a central settlement system to inform its participants of an event that is going to occur in the system, for instance that the system will be down at a certain time, etc.",
+  "blocks": [
+    {
+      "name": "EventInformation",
+      "isoId": "_pgC-E07TEeSGH6dwL1uJcg",
+      "xmlTag": "EvtInf",
+      "type": "Event2",
+      "min": 1,
+      "max": 1
+    }
+  ]
+}

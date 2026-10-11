@@ -16,6 +16,7 @@ import {
 import {
   Max35TextSchema,
   ISODateTimeSchema,
+  OriginalBusinessInstruction1Schema,
   Max5NumericTextSchema,
   YesNoIndicatorSchema,
   Pagination1Schema,
@@ -55,12 +56,6 @@ import {
   SupplementaryData1Schema,
   sharedTypeDescriptors,
 } from './shared.ts';
-
-export const OriginalBusinessInstruction1Schema = z.strictObject({
-  MessageIdentification: Max35TextSchema,
-  MessageNameIdentification: Max35TextSchema.optional(),
-  CreationDateTime: ISODateTimeSchema.optional(),
-});
 
 export const MessageHeader12Schema = z.strictObject({
   MessageIdentification: Max35TextSchema,
@@ -129,16 +124,6 @@ export const LimitUtilisationJournalReportV01Schema = z.strictObject({
 const f = (d: FieldDescriptor): FieldDescriptor => d;
 
 const ownTypeDescriptors: TypeDescriptors = {
-  "OriginalBusinessInstruction1": {
-    name: "OriginalBusinessInstruction1",
-    isoId: "_Au3KEK0qEeijn5WVKzFWUw",
-    kind: "component",
-    fields: [
-      f({ name: "MessageIdentification", isoId: "_Au3KFK0qEeijn5WVKzFWUw", xmlTag: "MsgId", displayName: displayName("MessageIdentification"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "MessageNameIdentification", isoId: "_Au3KE60qEeijn5WVKzFWUw", xmlTag: "MsgNmId", displayName: displayName("MessageNameIdentification"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "CreationDateTime", isoId: "_Au3KEa0qEeijn5WVKzFWUw", xmlTag: "CreDtTm", displayName: displayName("CreationDateTime"), kind: "datetime", type: "ISODateTime", required: false }),
-    ],
-  },
   "MessageHeader12": {
     name: "MessageHeader12",
     isoId: "_Hm0DQYtSEeih5rmIxWMzEw",
@@ -249,6 +234,7 @@ const ownTypeDescriptors: TypeDescriptors = {
 export const typeDescriptors: TypeDescriptors = {
   "Max35Text": sharedTypeDescriptors["Max35Text"]!,
   "ISODateTime": sharedTypeDescriptors["ISODateTime"]!,
+  "OriginalBusinessInstruction1": sharedTypeDescriptors["OriginalBusinessInstruction1"]!,
   "Max5NumericText": sharedTypeDescriptors["Max5NumericText"]!,
   "YesNoIndicator": sharedTypeDescriptors["YesNoIndicator"]!,
   "Pagination1": sharedTypeDescriptors["Pagination1"]!,

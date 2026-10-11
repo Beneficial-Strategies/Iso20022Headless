@@ -1,0 +1,35 @@
+{
+  "identifier": "remt.002.001.03",
+  "name": "RemittanceLocationAdviceV03",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:remt.002.001.03",
+  "bodyTag": "RmtLctnAdvc",
+  "out": "remt002",
+  "isoId": "_R3SUvTEZEe6kQ-WGAhcVPQ",
+  "definition": "The RemittanceLocationAdvice message allows the originator of the message to identify where the remittance advice is located for a related payment.",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "_R3SUxTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader122",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "RemittanceLocation",
+      "isoId": "_R3SUxzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "RmtLctn",
+      "type": "RemittanceLocation10",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3SUyTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

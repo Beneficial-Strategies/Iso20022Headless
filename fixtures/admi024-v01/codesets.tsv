@@ -1,0 +1,3 @@
+codeSetName	isoId	restrictionOf	code	enumName
+ExternalNotificationType1Code	_rUfhILktEe68nbz8Nl_hLQ	ExternalNotificationTypeCode	*EXTERNAL*	minLength=1 maxLength=4; ~13 codes (not enumerated)
+ExternalNotificationSubType1Code	__e8BMLktEe68nbz8Nl_hLQ	ExternalNotificationSubTypeCode	*EXTERNAL*	minLength=1 maxLength=4; ~6 codes (not enumerated)

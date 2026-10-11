@@ -1,0 +1,43 @@
+{
+  "identifier": "admi.010.001.02",
+  "name": "StaticDataReportV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:admi.010.001.02",
+  "bodyTag": "StatcDataRpt",
+  "out": "admi010",
+  "isoId": "_Zy71kRnXEeKKXqHkeUjBbw",
+  "definition": "The StaticDataReport message is sent by a central system to the participant to provide static data held in the system.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "_y5aAVzp8EeKXK8qRvydwAw",
+      "xmlTag": "MsgId",
+      "type": "Max35Text",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SettlementSessionIdentifier",
+      "isoId": "_vSr6ox3bEeKXIbeXfdPzuw",
+      "xmlTag": "SttlmSsnIdr",
+      "type": "Exact4AlphaNumericText",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ReportDetails",
+      "isoId": "_Zy71lxnXEeKKXqHkeUjBbw",
+      "xmlTag": "RptDtls",
+      "type": "RequestDetails5",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_Dw3hYy53EeKwTrPDLMbLxA",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}
