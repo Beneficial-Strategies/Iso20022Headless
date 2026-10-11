@@ -1,0 +1,35 @@
+{
+  "identifier": "camt.110.001.02",
+  "name": "InvestigationRequestV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.110.001.02",
+  "bodyTag": "InvstgtnReq",
+  "out": "camt110",
+  "isoId": "0fc7ab0e-e82d-4586-803b-9dfd21dfb139",
+  "definition": "Scope|The InvestigationRequest message is sent between agents or parties to create a payment or account related investigation or request a status update on an open payment or account related investigation.||Usage|The InvestigationRequest message can be used to create an investigation for these business scenarios -|- unable to apply;|- request for information;|- request value date adjustment;|- claim non-receipt;|- request debit authorisation;|- request use of funds;|- payment initiation not confirmed;|- miscellaenous business scenarios.|The InvestigationRequest message covers one and only one transaction or entry at a time in most business scenarios. In a request for information an agent or party may refer to more than one transaction within the Narrative element. For all other scenarios if an agent or party needs to create investigations that relate to several transactions or entries then several InvestigationRequest messages should be sent.",
+  "blocks": [
+    {
+      "name": "InvestigationRequest",
+      "isoId": "dfe9575b-add4-4303-a9ce-c5930fc34a35",
+      "xmlTag": "InvstgtnReq",
+      "type": "InvestigationRequest51",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "InvestigationData",
+      "isoId": "fdd49a43-8eae-469b-997c-b4994b46d4b7",
+      "xmlTag": "InvstgtnData",
+      "type": "InvestigationReason2",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "cb4731d1-b819-4f64-bfe5-b6fc54a17b58",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

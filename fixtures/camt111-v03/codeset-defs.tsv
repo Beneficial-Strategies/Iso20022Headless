@@ -1,0 +1,3 @@
+codeSet	isoId	text
+ExternalInvestigationStatus1Code	_w8jnQFEVEe2YkcF60skG_A	Specifies the investigation status, as published in an external investigation status code set.|External code sets can be downloaded from www.iso20022.org.
+ExternalInvestigationStatusReason1Code	_4evbwFEUEe2YkcF60skG_A	Specifies the reason for the investigation status, as published in an external investigation status reason code set.|External code sets can be downloaded from www.iso20022.org.

@@ -1,0 +1,4 @@
+codeSetName	isoId	restrictionOf	code	enumName
+NotificationStatus3Code	_aN5VYdp-Ed-ak6NoX_4Aeg_-298790564	NotificationToReceiveStatusCode	RCBD	ReceivedButDifferent
+NotificationStatus3Code	_aN5VYdp-Ed-ak6NoX_4Aeg_-298790564	NotificationToReceiveStatusCode	RCVD	Received
+NotificationStatus3Code	_aN5VYdp-Ed-ak6NoX_4Aeg_-298790564	NotificationToReceiveStatusCode	NRCD	NotReceived

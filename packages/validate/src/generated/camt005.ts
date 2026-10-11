@@ -65,6 +65,7 @@ import {
   LongPaymentIdentification4Schema,
   ShortPaymentIdentification4Schema,
   PaymentIdentification8ChoiceSchema,
+  PendingStatus4CodeSchema,
   Max4AlphaNumericTextSchema,
   YesNoIndicatorSchema,
   AmountRangeBoundary1Schema,
@@ -79,6 +80,9 @@ import {
   ActiveAmountRange3ChoiceSchema,
   PaymentType3CodeSchema,
   PaymentType4ChoiceSchema,
+  Priority5CodeSchema,
+  Priority1ChoiceSchema,
+  Instruction1CodeSchema,
   AnyBICDec2014IdentifierSchema,
   Max256TextSchema,
   ExternalOrganisationIdentification1CodeSchema,
@@ -101,7 +105,9 @@ import {
   Contact13Schema,
   PartyIdentification272Schema,
   Party50ChoiceSchema,
+  PaymentTransactionParty4Schema,
   AccountIdentificationSearchCriteria2ChoiceSchema,
+  EntryStatus1CodeSchema,
   RequestedIndicatorSchema,
   Max350TextSchema,
   SupplementaryDataEnvelope1Schema,
@@ -120,8 +126,6 @@ export const DateAndDateTimeSearch3ChoiceSchema = choiceOf({
   DateTimeSearch: DateTimePeriod1ChoiceSchema,
   DateSearch: DatePeriodSearch1ChoiceSchema,
 });
-
-export const PendingStatus4CodeSchema = z.enum(["ACPD", "VALD", "MATD", "AUTD", "INVD", "UMAC", "STLE", "STLM", "SSPD", "PCAN", "PSTL", "PFST", "SMLR", "RMLR", "SRBL", "AVLB", "SRML"]);
 
 export const FinalStatusCodeSchema = z.enum(["STLD", "RJTD", "CAND", "FNLD"]);
 
@@ -142,31 +146,6 @@ export const InstructionStatusSearch5Schema = z.strictObject({
 export const ActiveOrHistoricAmountRange2ChoiceSchema = choiceOf({
   ImpliedCurrencyAndAmountRange: ImpliedCurrencyAndAmountRange1Schema,
   CurrencyAndAmountRange: ActiveOrHistoricCurrencyAndAmountRange2Schema,
-});
-
-export const Priority5CodeSchema = z.enum(["HIGH", "LOWW", "NORM", "URGT"]);
-
-export const Priority1ChoiceSchema = choiceOf({
-  Code: Priority5CodeSchema,
-  Proprietary: Max35TextSchema,
-});
-
-export const Instruction1CodeSchema = z.enum(["PBEN", "TTIL", "TFRO"]);
-
-export const PaymentTransactionParty4Schema = z.strictObject({
-  InstructingAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
-  InstructedAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
-  UltimateDebtor: Party50ChoiceSchema.optional(),
-  Debtor: Party50ChoiceSchema.optional(),
-  DebtorAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
-  InstructingReimbursementAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
-  InstructedReimbursementAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
-  IntermediaryAgent1: BranchAndFinancialInstitutionIdentification8Schema.optional(),
-  IntermediaryAgent2: BranchAndFinancialInstitutionIdentification8Schema.optional(),
-  IntermediaryAgent3: BranchAndFinancialInstitutionIdentification8Schema.optional(),
-  CreditorAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
-  Creditor: Party50ChoiceSchema.optional(),
-  UltimateCreditor: Party50ChoiceSchema.optional(),
 });
 
 export const PaymentSearch10Schema = z.strictObject({
@@ -190,8 +169,6 @@ export const PaymentSearch10Schema = z.strictObject({
   EndToEndIdentification: z.array(Max35TextSchema).optional(),
   Parties: PaymentTransactionParty4Schema.optional(),
 });
-
-export const EntryStatus1CodeSchema = z.enum(["BOOK", "PDNG", "FUTR"]);
 
 export const CashAccountEntrySearch8Schema = z.strictObject({
   AccountIdentification: z.array(AccountIdentificationSearchCriteria2ChoiceSchema).optional(),
@@ -317,12 +294,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "DateSearch", isoId: "_x03f45lcEeeE1Ya-LgRsuQ", xmlTag: "DtSch", displayName: displayName("DateSearch"), kind: "choice", type: "DatePeriodSearch1Choice", required: true }),
     ],
   },
-  "PendingStatus4Code": {
-    name: "PendingStatus4Code",
-    isoId: "_aGJuo9p-Ed-ak6NoX_4Aeg_1263998543",
-    kind: "code",
-    options: [{ value: "ACPD", name: "Accepted", isoId: "_aGJupNp-Ed-ak6NoX_4Aeg_1263998562" }, { value: "VALD", name: "Validated", isoId: "_aGJupdp-Ed-ak6NoX_4Aeg_1263998838" }, { value: "MATD", name: "Matched", isoId: "_aGJuptp-Ed-ak6NoX_4Aeg_1263998873" }, { value: "AUTD", name: "Authorised", isoId: "_aGJup9p-Ed-ak6NoX_4Aeg_1263998915" }, { value: "INVD", name: "Invalid", isoId: "_aGJuqNp-Ed-ak6NoX_4Aeg_1263998933" }, { value: "UMAC", name: "Unmatched", isoId: "_aGJuqdp-Ed-ak6NoX_4Aeg_1263998968" }, { value: "STLE", name: "SettlementEligible", isoId: "_aGS4kNp-Ed-ak6NoX_4Aeg_1263999258" }, { value: "STLM", name: "SettlementMature", isoId: "_aGS4kdp-Ed-ak6NoX_4Aeg_1263999276" }, { value: "SSPD", name: "Suspended", isoId: "_aGS4ktp-Ed-ak6NoX_4Aeg_1263999318" }, { value: "PCAN", name: "PendingCancellation", isoId: "_aGS4k9p-Ed-ak6NoX_4Aeg_1263999336" }, { value: "PSTL", name: "PendingSettlement", isoId: "_aGS4lNp-Ed-ak6NoX_4Aeg_1263999371" }, { value: "PFST", name: "PendingFailingSettlement", isoId: "_aGS4ldp-Ed-ak6NoX_4Aeg_1263999413" }, { value: "SMLR", name: "SenderMultilateralLimitRelated", isoId: "_aGS4ltp-Ed-ak6NoX_4Aeg_1263999431" }, { value: "RMLR", name: "ReceiverMultilateralLimitRelated", isoId: "_aGS4l9p-Ed-ak6NoX_4Aeg_1263999473" }, { value: "SRBL", name: "SenderReceiverBilateralLimitRelated", isoId: "_aGS4mNp-Ed-ak6NoX_4Aeg_1263999508" }, { value: "AVLB", name: "HeldForServiceAvailability", isoId: "_aGS4mdp-Ed-ak6NoX_4Aeg_1263999526" }, { value: "SRML", name: "SenderReceiverMultilateralLimitRelated", isoId: "_aGcpkNp-Ed-ak6NoX_4Aeg_588640614" }],
-  },
   "FinalStatusCode": {
     name: "FinalStatusCode",
     isoId: "_an04VNp-Ed-ak6NoX_4Aeg_-1727527994",
@@ -364,47 +335,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "CurrencyAndAmountRange", isoId: "_PPV2VZlcEeeE1Ya-LgRsuQ", xmlTag: "CcyAndAmtRg", displayName: displayName("CurrencyAndAmountRange"), kind: "component", type: "ActiveOrHistoricCurrencyAndAmountRange2", required: true }),
     ],
   },
-  "Priority5Code": {
-    name: "Priority5Code",
-    isoId: "_kUSkAH_QEeiik6YN_dzlEA",
-    kind: "code",
-    options: [{ value: "HIGH", name: "High", isoId: "_mcdxcH_QEeiik6YN_dzlEA" }, { value: "LOWW", name: "Low", isoId: "_mh3O0X_QEeiik6YN_dzlEA" }, { value: "NORM", name: "Normal", isoId: "_mpC04X_QEeiik6YN_dzlEA" }, { value: "URGT", name: "Urgent", isoId: "_muQFAX_QEeiik6YN_dzlEA" }],
-  },
-  "Priority1Choice": {
-    name: "Priority1Choice",
-    isoId: "_SEJYAX_REeiik6YN_dzlEA",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_SP24wX_REeiik6YN_dzlEA", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "Priority5Code", required: true }),
-      f({ name: "Proprietary", isoId: "_SP24w3_REeiik6YN_dzlEA", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
-    ],
-  },
-  "Instruction1Code": {
-    name: "Instruction1Code",
-    isoId: "_aW12Adp-Ed-ak6NoX_4Aeg_-499701817",
-    kind: "code",
-    options: [{ value: "PBEN", name: "PayTheBeneficiary", isoId: "_aW12Atp-Ed-ak6NoX_4Aeg_-499701816" }, { value: "TTIL", name: "TimeTill", isoId: "_aW12A9p-Ed-ak6NoX_4Aeg_-499701815" }, { value: "TFRO", name: "TimeFrom", isoId: "_aW12BNp-Ed-ak6NoX_4Aeg_-499701814" }],
-  },
-  "PaymentTransactionParty4": {
-    name: "PaymentTransactionParty4",
-    isoId: "_15w68TEyEe6g-ffJsqGiSA",
-    kind: "component",
-    fields: [
-      f({ name: "InstructingAgent", isoId: "_18F2ETEyEe6g-ffJsqGiSA", xmlTag: "InstgAgt", displayName: displayName("InstructingAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
-      f({ name: "InstructedAgent", isoId: "_18F2EzEyEe6g-ffJsqGiSA", xmlTag: "InstdAgt", displayName: displayName("InstructedAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
-      f({ name: "UltimateDebtor", isoId: "_18F2FTEyEe6g-ffJsqGiSA", xmlTag: "UltmtDbtr", displayName: displayName("UltimateDebtor"), kind: "choice", type: "Party50Choice", required: false }),
-      f({ name: "Debtor", isoId: "_18F2FzEyEe6g-ffJsqGiSA", xmlTag: "Dbtr", displayName: displayName("Debtor"), kind: "choice", type: "Party50Choice", required: false }),
-      f({ name: "DebtorAgent", isoId: "_18F2GTEyEe6g-ffJsqGiSA", xmlTag: "DbtrAgt", displayName: displayName("DebtorAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
-      f({ name: "InstructingReimbursementAgent", isoId: "_18F2GzEyEe6g-ffJsqGiSA", xmlTag: "InstgRmbrsmntAgt", displayName: displayName("InstructingReimbursementAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
-      f({ name: "InstructedReimbursementAgent", isoId: "_18F2HTEyEe6g-ffJsqGiSA", xmlTag: "InstdRmbrsmntAgt", displayName: displayName("InstructedReimbursementAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
-      f({ name: "IntermediaryAgent1", isoId: "_18F2HzEyEe6g-ffJsqGiSA", xmlTag: "IntrmyAgt1", displayName: displayName("IntermediaryAgent1"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
-      f({ name: "IntermediaryAgent2", isoId: "_18F2ITEyEe6g-ffJsqGiSA", xmlTag: "IntrmyAgt2", displayName: displayName("IntermediaryAgent2"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
-      f({ name: "IntermediaryAgent3", isoId: "_18F2IzEyEe6g-ffJsqGiSA", xmlTag: "IntrmyAgt3", displayName: displayName("IntermediaryAgent3"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
-      f({ name: "CreditorAgent", isoId: "_18F2JTEyEe6g-ffJsqGiSA", xmlTag: "CdtrAgt", displayName: displayName("CreditorAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
-      f({ name: "Creditor", isoId: "_18F2JzEyEe6g-ffJsqGiSA", xmlTag: "Cdtr", displayName: displayName("Creditor"), kind: "choice", type: "Party50Choice", required: false }),
-      f({ name: "UltimateCreditor", isoId: "_18F2KTEyEe6g-ffJsqGiSA", xmlTag: "UltmtCdtr", displayName: displayName("UltimateCreditor"), kind: "choice", type: "Party50Choice", required: false }),
-    ],
-  },
   "PaymentSearch10": {
     name: "PaymentSearch10",
     isoId: "_3T9n8TEyEe6g-ffJsqGiSA",
@@ -438,12 +368,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       { name: "SettlementAmountCreditDebitIndicator1Rule", isoId: "_3WO42TEyEe6g-ffJsqGiSA", text: "If at least one occurrence of InterbankSettlementAmount/CurrencyAndAmountRange/CreditDebitIndicator is present, then CreditDebitIndicator is not allowed.|If InterbankSettlementAmount/CurrencyAndAmountRange/CreditDebitIndicator is not present, then CreditDebitIndicator is optional.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/CreditDebitIndicator"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/InterbankSettlementAmount[*]/CurrencyAndAmountRange/CreditDebitIndicator"}]}} },
       { name: "SettlementAmountCreditDebitIndicator2Rule", isoId: "_3WO42zEyEe6g-ffJsqGiSA", text: "If at least one occurrence of InterbankSettlementAmount/ImpliedCurrencyAndAmountRange/CreditDebitIndicator is present, then CreditDebitIndicator is not allowed.|If InterbankSettlementAmount/ImpliedCurrencyAndAmountRange/CreditDebitIndicator is not present, then CreditDebitIndicator is optional.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/CreditDebitIndicator"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/InterbankSettlementAmount[*]/ImpliedCurrencyAndAmountRange/CreditDebitIndicator"}]}} },
     ],
-  },
-  "EntryStatus1Code": {
-    name: "EntryStatus1Code",
-    isoId: "_ahauU9p-Ed-ak6NoX_4Aeg_-773188206",
-    kind: "code",
-    options: [{ value: "BOOK", name: "Booked", isoId: "_ahauVNp-Ed-ak6NoX_4Aeg_-773188205" }, { value: "PDNG", name: "Pending", isoId: "_ahauVdp-Ed-ak6NoX_4Aeg_-773188204" }, { value: "FUTR", name: "Future", isoId: "_ahauVtp-Ed-ak6NoX_4Aeg_-773188203" }],
   },
   "CashAccountEntrySearch8": {
     name: "CashAccountEntrySearch8",
@@ -656,6 +580,7 @@ export const typeDescriptors: TypeDescriptors = {
   "LongPaymentIdentification4": sharedTypeDescriptors["LongPaymentIdentification4"]!,
   "ShortPaymentIdentification4": sharedTypeDescriptors["ShortPaymentIdentification4"]!,
   "PaymentIdentification8Choice": sharedTypeDescriptors["PaymentIdentification8Choice"]!,
+  "PendingStatus4Code": sharedTypeDescriptors["PendingStatus4Code"]!,
   "Max4AlphaNumericText": sharedTypeDescriptors["Max4AlphaNumericText"]!,
   "YesNoIndicator": sharedTypeDescriptors["YesNoIndicator"]!,
   "AmountRangeBoundary1": sharedTypeDescriptors["AmountRangeBoundary1"]!,
@@ -670,6 +595,9 @@ export const typeDescriptors: TypeDescriptors = {
   "ActiveAmountRange3Choice": sharedTypeDescriptors["ActiveAmountRange3Choice"]!,
   "PaymentType3Code": sharedTypeDescriptors["PaymentType3Code"]!,
   "PaymentType4Choice": sharedTypeDescriptors["PaymentType4Choice"]!,
+  "Priority5Code": sharedTypeDescriptors["Priority5Code"]!,
+  "Priority1Choice": sharedTypeDescriptors["Priority1Choice"]!,
+  "Instruction1Code": sharedTypeDescriptors["Instruction1Code"]!,
   "AnyBICDec2014Identifier": sharedTypeDescriptors["AnyBICDec2014Identifier"]!,
   "Max256Text": sharedTypeDescriptors["Max256Text"]!,
   "ExternalOrganisationIdentification1Code": sharedTypeDescriptors["ExternalOrganisationIdentification1Code"]!,
@@ -692,7 +620,9 @@ export const typeDescriptors: TypeDescriptors = {
   "Contact13": sharedTypeDescriptors["Contact13"]!,
   "PartyIdentification272": sharedTypeDescriptors["PartyIdentification272"]!,
   "Party50Choice": sharedTypeDescriptors["Party50Choice"]!,
+  "PaymentTransactionParty4": sharedTypeDescriptors["PaymentTransactionParty4"]!,
   "AccountIdentificationSearchCriteria2Choice": sharedTypeDescriptors["AccountIdentificationSearchCriteria2Choice"]!,
+  "EntryStatus1Code": sharedTypeDescriptors["EntryStatus1Code"]!,
   "RequestedIndicator": sharedTypeDescriptors["RequestedIndicator"]!,
   "Max350Text": sharedTypeDescriptors["Max350Text"]!,
   "SupplementaryDataEnvelope1": sharedTypeDescriptors["SupplementaryDataEnvelope1"]!,

@@ -1,0 +1,43 @@
+{
+  "identifier": "camt.061.001.02",
+  "name": "PayInCallV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.061.001.02",
+  "bodyTag": "PayInCall",
+  "out": "camt061",
+  "isoId": "_FsXYwS43EeK7-OZOLIksSw",
+  "definition": "The PayInCall message is sent by a central settlement system to request additional funding from a settlement member impacted by a failure situation.",
+  "blocks": [
+    {
+      "name": "PartyIdentification",
+      "isoId": "_FsXYxS43EeK7-OZOLIksSw",
+      "xmlTag": "PtyId",
+      "type": "PartyIdentification73Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ReportData",
+      "isoId": "_FsXYyS43EeK7-OZOLIksSw",
+      "xmlTag": "RptData",
+      "type": "ReportData5",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SettlementSessionIdentifier",
+      "isoId": "_-6XNzzqdEeKqTf3MbquCbA",
+      "xmlTag": "SttlmSsnIdr",
+      "type": "Exact4AlphaNumericText",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_CGzMPS53EeKwTrPDLMbLxA",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

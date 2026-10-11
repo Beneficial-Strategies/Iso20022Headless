@@ -1,0 +1,6 @@
+codeSetName	isoId	restrictionOf	code	enumName
+ReservationStatus1Code	_8J5r8KMgEeCJ6YNENx4h-w_-308307214	ReservationStatusCode	ENAB	Enabled
+ReservationStatus1Code	_8J5r8KMgEeCJ6YNENx4h-w_-308307214	ReservationStatusCode	DISA	Disabled
+ReservationStatus1Code	_8J5r8KMgEeCJ6YNENx4h-w_-308307214	ReservationStatusCode	DELD	Deleted
+ReservationStatus1Code	_8J5r8KMgEeCJ6YNENx4h-w_-308307214	ReservationStatusCode	REQD	Requested
+ReservationStatus1Code	_8J5r8KMgEeCJ6YNENx4h-w_-308307214	ReservationStatusCode	BLKD	Blocked

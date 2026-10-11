@@ -1,0 +1,35 @@
+{
+  "identifier": "camt.025.001.09",
+  "name": "ReceiptV09",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.025.001.09",
+  "bodyTag": "Rct",
+  "out": "camt025",
+  "isoId": "_0fdSoVP-Ee-Fk_N0FBjY0Q",
+  "definition": "Scope|The Receipt message is sent by a message recipient to the message sender. It is sent to acknowledge the receipt of one or multiple messages sent previously.|The Receipt message is an application receipt acknowledgement and conveys information about the processing of the original message(s).|Usage|The Receipt message is used when the exchange of messages takes place in an asynchronous manner.|This may happen, for instance, when an action is requested from the message sender (a deletion, modification or cancellation). The message sender will first acknowledge the request (with a Receipt message) and then execute it.|The message can contain information based on the following elements: reference of the message(s) it acknowledges, the status code (optional) and further explanation:|- reference of the message it acknowledges|- potentially, a status code and status reason information.",
+  "blocks": [
+    {
+      "name": "MessageHeader",
+      "isoId": "_0fdSqVP-Ee-Fk_N0FBjY0Q",
+      "xmlTag": "MsgHdr",
+      "type": "MessageHeader9",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ReceiptDetails",
+      "isoId": "_0fdSq1P-Ee-Fk_N0FBjY0Q",
+      "xmlTag": "RctDtls",
+      "type": "Receipt7",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_0fdSrVP-Ee-Fk_N0FBjY0Q",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

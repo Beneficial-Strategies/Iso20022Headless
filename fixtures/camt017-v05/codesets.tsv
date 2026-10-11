@@ -1,0 +1,4 @@
+codeSetName	isoId	restrictionOf	code	enumName
+ErrorHandling1Code	_ah3aRNp-Ed-ak6NoX_4Aeg_-1106717300	ErrorHandlingCode	X020	DataNotYetAvailable
+ErrorHandling1Code	_ah3aRNp-Ed-ak6NoX_4Aeg_-1106717300	ErrorHandlingCode	X030	MessageSizeLimitExceeded
+ErrorHandling1Code	_ah3aRNp-Ed-ak6NoX_4Aeg_-1106717300	ErrorHandlingCode	X050	DataNotAvailable

@@ -1,0 +1,43 @@
+{
+  "identifier": "camt.031.001.07",
+  "name": "RejectInvestigationV07",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.031.001.07",
+  "bodyTag": "RjctInvstgtn",
+  "out": "camt031",
+  "isoId": "_R3SUnTEZEe6kQ-WGAhcVPQ",
+  "definition": "Scope|The RejectInvestigation message is sent by a case assignee to a case creator or case assigner to reject a case given to him.|Usage|The RejectInvestigation message is used to notify the case creator or case assigner the rejection of an assignment by the case assignee in a:|- request to cancel payment case;|- request to modify payment case;|- unable to apply case;|- claim non receipt case.|Rejecting a case assignment occurs when:|- the case assignee is unable to trace the original payment instruction;|- the case assignee is unable, or does not have authority, to process the assigned case (indicate \"You have by-passed a party\";|- the case assignee has received a non expected message, and rejects the message with a wrong message indicator;|- the case assignee has not yet received the ResolutionOfInvestigation message and the case has already been reopened;|- the case assignee has rejects an non-cash related query.|The RejectInvestigation message covers one and only one case at a time. If the case assignee needs to reject several case assignments, then multiple RejectInvestigation messages must be sent.|The RejectInvestigation message must be forwarded by all subsequent case assignee(s) until it reaches the case assigner and must not be used in place of a ResolutionOfInvestigation or CaseStatusReport message.",
+  "blocks": [
+    {
+      "name": "Assignment",
+      "isoId": "_R3SUpTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Assgnmt",
+      "type": "CaseAssignment6",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Case",
+      "isoId": "_R3SUpzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Case",
+      "type": "Case6",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Justification",
+      "isoId": "_R3SUqTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Justfn",
+      "type": "InvestigationRejectionJustification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3SUqzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

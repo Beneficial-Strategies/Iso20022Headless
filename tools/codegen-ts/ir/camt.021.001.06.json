@@ -1,0 +1,551 @@
+{
+  "message": {
+    "identifier": "camt.021.001.06",
+    "name": "ReturnGeneralBusinessInformationV06",
+    "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.021.001.06",
+    "bodyTag": "RtrGnlBizInf",
+    "out": "camt021",
+    "isoId": "_jwlcERbvEeiyVv5j1vf1VQ",
+    "definition": "Scope|The ReturnGeneralBusinessInformation message is sent by the transaction administrator to a member of the system. It is used to provide some or all of the members with information related to the processing of the system.|The Return General Business Information message can be sent as a response to a related GetGeneralBusinessInformation message (pull mode) or initiated by the transaction administrator (push mode). The push of information can take place either at prearranged times or as a warning or alarm when a problem has occurred.|Usage|The transaction administrator can send general business information messages to the members, which may request further action from them. General business information can contain either static data announcing foreseen events affecting the system operations, or dynamic data warning or notifying about unexpected events.|This type of information can be transmitted in either of the two following ways:|- non-solicited reports are pushed by the transaction administrator to the (selected) members together with a reference, a qualifier and a subject line|- upon request from the members (pull mode), the transaction administrator delivers the full text/content of the message back to the user|In either case, the message from the transaction administrator can contain information based on the following elements:|- subject of the report detailing the purpose and content of the message|- details of the report|- indication of the priority of the report and of its format. (Note that if the format is indicated, the subject refers to a set of pre-agreed texts. This enumeration has to be agreed upon by the transaction administrator and the members of the system).|Additional information on the generic design of the Get/Return messages can be found in the MDR Part 1 section How to Use the Cash Management Messages.",
+    "blocks": [
+      {
+        "name": "MessageHeader",
+        "isoId": "_jwlcExbvEeiyVv5j1vf1VQ",
+        "xmlTag": "MsgHdr",
+        "type": "MessageHeader7",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "ReportOrError",
+        "isoId": "_jwlcFRbvEeiyVv5j1vf1VQ",
+        "xmlTag": "RptOrErr",
+        "type": "GeneralBusinessOrError7Choice",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "SupplementaryData",
+        "isoId": "_jwlcFxbvEeiyVv5j1vf1VQ",
+        "xmlTag": "SplmtryData",
+        "type": "SupplementaryData1",
+        "min": 0,
+        "max": null
+      }
+    ]
+  },
+  "root": "ReturnGeneralBusinessInformationV06",
+  "order": [
+    "Max35Text",
+    "ISODateTime",
+    "ExternalPaymentControlRequestType1Code",
+    "ExternalEnquiryRequestType1Code",
+    "GenericIdentification1",
+    "RequestType4Choice",
+    "OriginalBusinessQuery1",
+    "MessageHeader7",
+    "ExternalSystemErrorHandling1Code",
+    "ErrorHandling3Choice",
+    "Max140Text",
+    "ErrorHandling5",
+    "YesNoIndicator",
+    "Priority1Code",
+    "InformationQualifierType1",
+    "Max350Text",
+    "GeneralBusinessInformation1",
+    "GeneralBusinessOrError8Choice",
+    "GeneralBusinessReport6",
+    "GeneralBusinessOrError7Choice",
+    "SupplementaryDataEnvelope1",
+    "SupplementaryData1",
+    "ReturnGeneralBusinessInformationV06"
+  ],
+  "types": {
+    "Max35Text": {
+      "name": "Max35Text",
+      "kind": "text",
+      "isoId": "_YW1tKdp-Ed-ak6NoX_4Aeg_1913463446",
+      "minLength": 1,
+      "maxLength": 35
+    },
+    "ISODateTime": {
+      "name": "ISODateTime",
+      "kind": "datetime",
+      "isoId": "_YW1tKtp-Ed-ak6NoX_4Aeg_-1624336183"
+    },
+    "ExternalPaymentControlRequestType1Code": {
+      "name": "ExternalPaymentControlRequestType1Code",
+      "isoId": "_EJVeUJIhEeect698_YsnIA",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "ExternalEnquiryRequestType1Code": {
+      "name": "ExternalEnquiryRequestType1Code",
+      "isoId": "_I3nyYJIhEeect698_YsnIA",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "GenericIdentification1": {
+      "name": "GenericIdentification1",
+      "isoId": "_QALkN9p-Ed-ak6NoX_4Aeg_-1748202225",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_QALkONp-Ed-ak6NoX_4Aeg_-1748202217",
+          "xmlTag": "Id",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SchemeName",
+          "isoId": "_QAVVMNp-Ed-ak6NoX_4Aeg_-1748202215",
+          "xmlTag": "SchmeNm",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "isoId": "_QAVVMdp-Ed-ak6NoX_4Aeg_-1748202216",
+          "xmlTag": "Issr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "RequestType4Choice": {
+      "name": "RequestType4Choice",
+      "isoId": "_ivV-XZIhEeect698_YsnIA",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "PaymentControl",
+          "isoId": "_i375oZIhEeect698_YsnIA",
+          "xmlTag": "PmtCtrl",
+          "type": "ExternalPaymentControlRequestType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Enquiry",
+          "isoId": "_i375o5IhEeect698_YsnIA",
+          "xmlTag": "Enqry",
+          "type": "ExternalEnquiryRequestType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_i375pZIhEeect698_YsnIA",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "OriginalBusinessQuery1": {
+      "name": "OriginalBusinessQuery1",
+      "isoId": "_tsOu4FkyEeGeoaLUQk__nA_1838839671",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "MessageIdentification",
+          "isoId": "_tsOu4VkyEeGeoaLUQk__nA_1725000605",
+          "xmlTag": "MsgId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "MessageNameIdentification",
+          "isoId": "_tsOu4lkyEeGeoaLUQk__nA_727928252",
+          "xmlTag": "MsgNmId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CreationDateTime",
+          "isoId": "_tsOu41kyEeGeoaLUQk__nA_-269144101",
+          "xmlTag": "CreDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "MessageHeader7": {
+      "name": "MessageHeader7",
+      "isoId": "_imfkUZIhEeect698_YsnIA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "MessageIdentification",
+          "isoId": "_ivV-U5IhEeect698_YsnIA",
+          "xmlTag": "MsgId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CreationDateTime",
+          "isoId": "_ivV-VZIhEeect698_YsnIA",
+          "xmlTag": "CreDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "RequestType",
+          "isoId": "_ivV-V5IhEeect698_YsnIA",
+          "xmlTag": "ReqTp",
+          "type": "RequestType4Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "OriginalBusinessQuery",
+          "isoId": "_ivV-WZIhEeect698_YsnIA",
+          "xmlTag": "OrgnlBizQry",
+          "type": "OriginalBusinessQuery1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "QueryName",
+          "isoId": "_ivV-W5IhEeect698_YsnIA",
+          "xmlTag": "QryNm",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "ExternalSystemErrorHandling1Code": {
+      "name": "ExternalSystemErrorHandling1Code",
+      "isoId": "_Y2fRgnhdEeidzqjNEfehPg",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "ErrorHandling3Choice": {
+      "name": "ErrorHandling3Choice",
+      "isoId": "_RA_79XhdEeidzqjNEfehPg",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_RN4hYXhdEeidzqjNEfehPg",
+          "xmlTag": "Cd",
+          "type": "ExternalSystemErrorHandling1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_RN4hY3hdEeidzqjNEfehPg",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Max140Text": {
+      "name": "Max140Text",
+      "kind": "text",
+      "isoId": "_YXlUAtp-Ed-ak6NoX_4Aeg_2103068114",
+      "minLength": 1,
+      "maxLength": 140
+    },
+    "ErrorHandling5": {
+      "name": "ErrorHandling5",
+      "isoId": "_Q2IvxXhdEeidzqjNEfehPg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Error",
+          "isoId": "_RA_78XhdEeidzqjNEfehPg",
+          "xmlTag": "Err",
+          "type": "ErrorHandling3Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Description",
+          "isoId": "_RA_783hdEeidzqjNEfehPg",
+          "xmlTag": "Desc",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "YesNoIndicator": {
+      "name": "YesNoIndicator",
+      "kind": "boolean",
+      "isoId": "_YXbjA9p-Ed-ak6NoX_4Aeg_-2040117978"
+    },
+    "Priority1Code": {
+      "name": "Priority1Code",
+      "isoId": "_aKLTANp-Ed-ak6NoX_4Aeg_-636884160",
+      "kind": "code",
+      "options": [
+        {
+          "value": "HIGH",
+          "name": "High",
+          "isoId": "_aKLTAdp-Ed-ak6NoX_4Aeg_-291486778"
+        },
+        {
+          "value": "NORM",
+          "name": "Normal",
+          "isoId": "_aKLTAtp-Ed-ak6NoX_4Aeg_-262855798"
+        },
+        {
+          "value": "LOWW",
+          "name": "Low",
+          "isoId": "_aKLTA9p-Ed-ak6NoX_4Aeg_-248081725"
+        }
+      ]
+    },
+    "InformationQualifierType1": {
+      "name": "InformationQualifierType1",
+      "isoId": "_59y2N5lZEeeE1Ya-LgRsuQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "IsFormatted",
+          "isoId": "_6FzisZlZEeeE1Ya-LgRsuQ",
+          "xmlTag": "IsFrmtd",
+          "type": "YesNoIndicator",
+          "kind": "boolean",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Priority",
+          "isoId": "_6Fzis5lZEeeE1Ya-LgRsuQ",
+          "xmlTag": "Prty",
+          "type": "Priority1Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "Max350Text": {
+      "name": "Max350Text",
+      "kind": "text",
+      "isoId": "_YW1tKNp-Ed-ak6NoX_4Aeg_1778996852",
+      "minLength": 1,
+      "maxLength": 350
+    },
+    "GeneralBusinessInformation1": {
+      "name": "GeneralBusinessInformation1",
+      "isoId": "_Mg4IJZlgEeeE1Ya-LgRsuQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Qualifier",
+          "isoId": "_MpLIgZlgEeeE1Ya-LgRsuQ",
+          "xmlTag": "Qlfr",
+          "type": "InformationQualifierType1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Subject",
+          "isoId": "_MpLIg5lgEeeE1Ya-LgRsuQ",
+          "xmlTag": "Sbjt",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SubjectDetails",
+          "isoId": "_MpLIhZlgEeeE1Ya-LgRsuQ",
+          "xmlTag": "SbjtDtls",
+          "type": "Max350Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "GeneralBusinessOrError8Choice": {
+      "name": "GeneralBusinessOrError8Choice",
+      "isoId": "_QrN5MXhdEeidzqjNEfehPg",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "BusinessError",
+          "isoId": "_Q2IvwXhdEeidzqjNEfehPg",
+          "xmlTag": "BizErr",
+          "type": "ErrorHandling5",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "GeneralBusiness",
+          "isoId": "_Q2Ivw3hdEeidzqjNEfehPg",
+          "xmlTag": "GnlBiz",
+          "type": "GeneralBusinessInformation1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "GeneralBusinessReport6": {
+      "name": "GeneralBusinessReport6",
+      "isoId": "_QdJoBXhdEeidzqjNEfehPg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "BusinessInformationReference",
+          "isoId": "_QrMrE3hdEeidzqjNEfehPg",
+          "xmlTag": "BizInfRef",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "GeneralBusinessOrError",
+          "isoId": "_QrMrFXhdEeidzqjNEfehPg",
+          "xmlTag": "GnlBizOrErr",
+          "type": "GeneralBusinessOrError8Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "GeneralBusinessOrError7Choice": {
+      "name": "GeneralBusinessOrError7Choice",
+      "isoId": "_QOIUkXhdEeidzqjNEfehPg",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "OperationalError",
+          "isoId": "_QdJoAXhdEeidzqjNEfehPg",
+          "xmlTag": "OprlErr",
+          "type": "ErrorHandling5",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "BusinessReport",
+          "isoId": "_QdJoA3hdEeidzqjNEfehPg",
+          "xmlTag": "BizRpt",
+          "type": "GeneralBusinessReport6",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "SupplementaryDataEnvelope1": {
+      "name": "SupplementaryDataEnvelope1",
+      "kind": "any",
+      "isoId": "_Kz9KwJDrEeSLQ8ob-qtemg"
+    },
+    "SupplementaryData1": {
+      "name": "SupplementaryData1",
+      "isoId": "_Qn0zC9p-Ed-ak6NoX_4Aeg_468227563",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "PlaceAndName",
+          "isoId": "_Qn988Np-Ed-ak6NoX_4Aeg_354388497",
+          "xmlTag": "PlcAndNm",
+          "type": "Max350Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Envelope",
+          "isoId": "_Qn988dp-Ed-ak6NoX_4Aeg_-642683856",
+          "xmlTag": "Envlp",
+          "type": "SupplementaryDataEnvelope1",
+          "kind": "any",
+          "min": 1,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "SupplementaryDataRule",
+          "isoId": "_Qn988tp-Ed-ak6NoX_4Aeg_-1492355109",
+          "text": "This component may not be used without the explicit approval of a SEG and submission to the RA of ISO 20022 compliant structure(s) to be used in the Envelope element."
+        }
+      ]
+    },
+    "ReturnGeneralBusinessInformationV06": {
+      "name": "ReturnGeneralBusinessInformationV06",
+      "isoId": "_jwlcERbvEeiyVv5j1vf1VQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "MessageHeader",
+          "isoId": "_jwlcExbvEeiyVv5j1vf1VQ",
+          "xmlTag": "MsgHdr",
+          "type": "MessageHeader7",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ReportOrError",
+          "isoId": "_jwlcFRbvEeiyVv5j1vf1VQ",
+          "xmlTag": "RptOrErr",
+          "type": "GeneralBusinessOrError7Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SupplementaryData",
+          "isoId": "_jwlcFxbvEeiyVv5j1vf1VQ",
+          "xmlTag": "SplmtryData",
+          "type": "SupplementaryData1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    }
+  }
+}

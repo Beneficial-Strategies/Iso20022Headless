@@ -18,20 +18,37 @@ import { typeDescriptors as caam014Descriptors } from './caam014.ts';
 import { typeDescriptors as caam015Descriptors } from './caam015.ts';
 import { typeDescriptors as caam016Descriptors } from './caam016.ts';
 import { typeDescriptors as camt003Descriptors } from './camt003.ts';
+import { typeDescriptors as camt004Descriptors } from './camt004.ts';
 import { typeDescriptors as camt005Descriptors } from './camt005.ts';
+import { typeDescriptors as camt006Descriptors } from './camt006.ts';
+import { typeDescriptors as camt007Descriptors } from './camt007.ts';
 import { typeDescriptors as camt008Descriptors } from './camt008.ts';
 import { typeDescriptors as camt009Descriptors } from './camt009.ts';
+import { typeDescriptors as camt010Descriptors } from './camt010.ts';
+import { typeDescriptors as camt011Descriptors } from './camt011.ts';
 import { typeDescriptors as camt012Descriptors } from './camt012.ts';
 import { typeDescriptors as camt013Descriptors } from './camt013.ts';
+import { typeDescriptors as camt014Descriptors } from './camt014.ts';
+import { typeDescriptors as camt015Descriptors } from './camt015.ts';
 import { typeDescriptors as camt016Descriptors } from './camt016.ts';
+import { typeDescriptors as camt017Descriptors } from './camt017.ts';
 import { typeDescriptors as camt018Descriptors } from './camt018.ts';
+import { typeDescriptors as camt019Descriptors } from './camt019.ts';
 import { typeDescriptors as camt020Descriptors } from './camt020.ts';
+import { typeDescriptors as camt021Descriptors } from './camt021.ts';
 import { typeDescriptors as camt023Descriptors } from './camt023.ts';
+import { typeDescriptors as camt024Descriptors } from './camt024.ts';
+import { typeDescriptors as camt025Descriptors } from './camt025.ts';
+import { typeDescriptors as camt026Descriptors } from './camt026.ts';
 import { typeDescriptors as camt027Descriptors } from './camt027.ts';
 import { typeDescriptors as camt028Descriptors } from './camt028.ts';
 import { typeDescriptors as camt029Descriptors } from './camt029.ts';
+import { typeDescriptors as camt030Descriptors } from './camt030.ts';
+import { typeDescriptors as camt031Descriptors } from './camt031.ts';
 import { typeDescriptors as camt032Descriptors } from './camt032.ts';
+import { typeDescriptors as camt033Descriptors } from './camt033.ts';
 import { typeDescriptors as camt034Descriptors } from './camt034.ts';
+import { typeDescriptors as camt035Descriptors } from './camt035.ts';
 import { typeDescriptors as camt036Descriptors } from './camt036.ts';
 import { typeDescriptors as camt037Descriptors } from './camt037.ts';
 import { typeDescriptors as camt038Descriptors } from './camt038.ts';
@@ -43,20 +60,48 @@ import { typeDescriptors as camt043Descriptors } from './camt043.ts';
 import { typeDescriptors as camt044Descriptors } from './camt044.ts';
 import { typeDescriptors as camt045Descriptors } from './camt045.ts';
 import { typeDescriptors as camt046Descriptors } from './camt046.ts';
+import { typeDescriptors as camt047Descriptors } from './camt047.ts';
+import { typeDescriptors as camt048Descriptors } from './camt048.ts';
 import { typeDescriptors as camt049Descriptors } from './camt049.ts';
+import { typeDescriptors as camt050Descriptors } from './camt050.ts';
+import { typeDescriptors as camt051Descriptors } from './camt051.ts';
 import { typeDescriptors as camt052Descriptors } from './camt052.ts';
 import { typeDescriptors as camt053Descriptors } from './camt053.ts';
 import { typeDescriptors as camt054Descriptors } from './camt054.ts';
 import { typeDescriptors as camt055Descriptors } from './camt055.ts';
 import { typeDescriptors as camt056Descriptors } from './camt056.ts';
+import { typeDescriptors as camt057Descriptors } from './camt057.ts';
+import { typeDescriptors as camt058Descriptors } from './camt058.ts';
+import { typeDescriptors as camt059Descriptors } from './camt059.ts';
 import { typeDescriptors as camt060Descriptors } from './camt060.ts';
+import { typeDescriptors as camt061Descriptors } from './camt061.ts';
+import { typeDescriptors as camt062Descriptors } from './camt062.ts';
+import { typeDescriptors as camt063Descriptors } from './camt063.ts';
+import { typeDescriptors as camt064Descriptors } from './camt064.ts';
+import { typeDescriptors as camt065Descriptors } from './camt065.ts';
+import { typeDescriptors as camt066Descriptors } from './camt066.ts';
+import { typeDescriptors as camt067Descriptors } from './camt067.ts';
+import { typeDescriptors as camt068Descriptors } from './camt068.ts';
 import { typeDescriptors as camt069Descriptors } from './camt069.ts';
+import { typeDescriptors as camt070Descriptors } from './camt070.ts';
 import { typeDescriptors as camt071Descriptors } from './camt071.ts';
+import { typeDescriptors as camt072Descriptors } from './camt072.ts';
+import { typeDescriptors as camt073Descriptors } from './camt073.ts';
+import { typeDescriptors as camt074Descriptors } from './camt074.ts';
+import { typeDescriptors as camt075Descriptors } from './camt075.ts';
 import { typeDescriptors as camt076Descriptors } from './camt076.ts';
 import { typeDescriptors as camt077Descriptors } from './camt077.ts';
+import { typeDescriptors as camt078Descriptors } from './camt078.ts';
+import { typeDescriptors as camt079Descriptors } from './camt079.ts';
+import { typeDescriptors as camt080Descriptors } from './camt080.ts';
+import { typeDescriptors as camt081Descriptors } from './camt081.ts';
 import { typeDescriptors as camt082Descriptors } from './camt082.ts';
 import { typeDescriptors as camt083Descriptors } from './camt083.ts';
+import { typeDescriptors as camt084Descriptors } from './camt084.ts';
+import { typeDescriptors as camt085Descriptors } from './camt085.ts';
 import { typeDescriptors as camt086Descriptors } from './camt086.ts';
+import { typeDescriptors as camt087Descriptors } from './camt087.ts';
+import { typeDescriptors as camt088Descriptors } from './camt088.ts';
 import { typeDescriptors as camt101Descriptors } from './camt101.ts';
 import { typeDescriptors as camt102Descriptors } from './camt102.ts';
 import { typeDescriptors as camt103Descriptors } from './camt103.ts';
@@ -66,6 +111,8 @@ import { typeDescriptors as camt106Descriptors } from './camt106.ts';
 import { typeDescriptors as camt107Descriptors } from './camt107.ts';
 import { typeDescriptors as camt108Descriptors } from './camt108.ts';
 import { typeDescriptors as camt109Descriptors } from './camt109.ts';
+import { typeDescriptors as camt110Descriptors } from './camt110.ts';
+import { typeDescriptors as camt111Descriptors } from './camt111.ts';
 import { typeDescriptors as camt113Descriptors } from './camt113.ts';
 import { typeDescriptors as camt114Descriptors } from './camt114.ts';
 import { typeDescriptors as camt115Descriptors } from './camt115.ts';
@@ -110,20 +157,37 @@ export const allTypeDescriptors: TypeDescriptors = {
   ...caam015Descriptors,
   ...caam016Descriptors,
   ...camt003Descriptors,
+  ...camt004Descriptors,
   ...camt005Descriptors,
+  ...camt006Descriptors,
+  ...camt007Descriptors,
   ...camt008Descriptors,
   ...camt009Descriptors,
+  ...camt010Descriptors,
+  ...camt011Descriptors,
   ...camt012Descriptors,
   ...camt013Descriptors,
+  ...camt014Descriptors,
+  ...camt015Descriptors,
   ...camt016Descriptors,
+  ...camt017Descriptors,
   ...camt018Descriptors,
+  ...camt019Descriptors,
   ...camt020Descriptors,
+  ...camt021Descriptors,
   ...camt023Descriptors,
+  ...camt024Descriptors,
+  ...camt025Descriptors,
+  ...camt026Descriptors,
   ...camt027Descriptors,
   ...camt028Descriptors,
   ...camt029Descriptors,
+  ...camt030Descriptors,
+  ...camt031Descriptors,
   ...camt032Descriptors,
+  ...camt033Descriptors,
   ...camt034Descriptors,
+  ...camt035Descriptors,
   ...camt036Descriptors,
   ...camt037Descriptors,
   ...camt038Descriptors,
@@ -135,20 +199,48 @@ export const allTypeDescriptors: TypeDescriptors = {
   ...camt044Descriptors,
   ...camt045Descriptors,
   ...camt046Descriptors,
+  ...camt047Descriptors,
+  ...camt048Descriptors,
   ...camt049Descriptors,
+  ...camt050Descriptors,
+  ...camt051Descriptors,
   ...camt052Descriptors,
   ...camt053Descriptors,
   ...camt054Descriptors,
   ...camt055Descriptors,
   ...camt056Descriptors,
+  ...camt057Descriptors,
+  ...camt058Descriptors,
+  ...camt059Descriptors,
   ...camt060Descriptors,
+  ...camt061Descriptors,
+  ...camt062Descriptors,
+  ...camt063Descriptors,
+  ...camt064Descriptors,
+  ...camt065Descriptors,
+  ...camt066Descriptors,
+  ...camt067Descriptors,
+  ...camt068Descriptors,
   ...camt069Descriptors,
+  ...camt070Descriptors,
   ...camt071Descriptors,
+  ...camt072Descriptors,
+  ...camt073Descriptors,
+  ...camt074Descriptors,
+  ...camt075Descriptors,
   ...camt076Descriptors,
   ...camt077Descriptors,
+  ...camt078Descriptors,
+  ...camt079Descriptors,
+  ...camt080Descriptors,
+  ...camt081Descriptors,
   ...camt082Descriptors,
   ...camt083Descriptors,
+  ...camt084Descriptors,
+  ...camt085Descriptors,
   ...camt086Descriptors,
+  ...camt087Descriptors,
+  ...camt088Descriptors,
   ...camt101Descriptors,
   ...camt102Descriptors,
   ...camt103Descriptors,
@@ -158,6 +250,8 @@ export const allTypeDescriptors: TypeDescriptors = {
   ...camt107Descriptors,
   ...camt108Descriptors,
   ...camt109Descriptors,
+  ...camt110Descriptors,
+  ...camt111Descriptors,
   ...camt113Descriptors,
   ...camt114Descriptors,
   ...camt115Descriptors,

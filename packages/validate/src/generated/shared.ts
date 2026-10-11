@@ -618,6 +618,44 @@ export const AccountInterest4Schema = z.strictObject({
   Tax: TaxCharges2Schema.optional(),
 });
 
+export const NoReasonCodeSchema = z.enum(["NORE"]);
+
+export const AcknowledgementReason5CodeSchema = z.enum(["ADEA", "SMPG", "OTHR", "CDCY", "CDRG", "CDRE", "NSTP", "RQWV", "LATE"]);
+
+export const AcknowledgementReason12ChoiceSchema = choiceOf({
+  Code: AcknowledgementReason5CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const Max210TextSchema = textType({min: 1, max: 210});
+
+export const AcknowledgementReason9Schema = z.strictObject({
+  Code: AcknowledgementReason12ChoiceSchema,
+  AdditionalReasonInformation: Max210TextSchema.optional(),
+});
+
+export const AcknowledgedAcceptedStatus21ChoiceSchema = choiceOf({
+  NoSpecifiedReason: NoReasonCodeSchema,
+  Reason: AcknowledgementReason9Schema,
+});
+
+export const AcknowledgementReason3CodeSchema = z.enum(["ADEA", "SMPG", "OTHR"]);
+
+export const AcknowledgementReason15ChoiceSchema = choiceOf({
+  Code: AcknowledgementReason3CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const AcknowledgementReason12Schema = z.strictObject({
+  Code: AcknowledgementReason15ChoiceSchema,
+  AdditionalReasonInformation: Max210TextSchema.optional(),
+});
+
+export const AcknowledgedAcceptedStatus24ChoiceSchema = choiceOf({
+  NoSpecifiedReason: NoReasonCodeSchema,
+  Reason: AcknowledgementReason12Schema,
+});
+
 export const ImpliedCurrencyAndAmountRange1Schema = z.strictObject({
   Amount: ImpliedCurrencyAmountRange1ChoiceSchema,
   CreditDebitIndicator: CreditDebitCodeSchema.optional(),
@@ -750,22 +788,20 @@ export const AlternateSecurityIdentification1Schema = z.strictObject({
   ProprietaryIdentificationSource: Max35TextSchema,
 });
 
-export const PostalAddress27Schema = z.strictObject({
+export const PostalAddress24Schema = z.strictObject({
   AddressType: AddressType3ChoiceSchema.optional(),
-  CareOf: Max140TextSchema.optional(),
   Department: Max70TextSchema.optional(),
   SubDepartment: Max70TextSchema.optional(),
-  StreetName: Max140TextSchema.optional(),
+  StreetName: Max70TextSchema.optional(),
   BuildingNumber: Max16TextSchema.optional(),
-  BuildingName: Max140TextSchema.optional(),
+  BuildingName: Max35TextSchema.optional(),
   Floor: Max70TextSchema.optional(),
-  UnitNumber: Max16TextSchema.optional(),
   PostBox: Max16TextSchema.optional(),
   Room: Max70TextSchema.optional(),
   PostCode: Max16TextSchema.optional(),
-  TownName: Max140TextSchema.optional(),
-  TownLocationName: Max140TextSchema.optional(),
-  DistrictName: Max140TextSchema.optional(),
+  TownName: Max35TextSchema.optional(),
+  TownLocationName: Max35TextSchema.optional(),
+  DistrictName: Max35TextSchema.optional(),
   CountrySubDivision: Max35TextSchema.optional(),
   Country: CountryCodeSchema.optional(),
   AddressLine: z.array(Max70TextSchema).max(7).optional(),
@@ -775,8 +811,6 @@ export const AnyBICDec2014IdentifierSchema = textType({pattern: "[A-Z0-9]{4,4}[A
 
 export const LEIIdentifierSchema = textType({pattern: "[A-Z0-9]{18,18}[0-9]{2,2}"});
 
-export const Max256TextSchema = textType({min: 1, max: 256});
-
 export const ExternalOrganisationIdentification1CodeSchema = textType({min: 1, max: 4});
 
 export const OrganisationIdentificationSchemeName1ChoiceSchema = choiceOf({
@@ -784,16 +818,16 @@ export const OrganisationIdentificationSchemeName1ChoiceSchema = choiceOf({
   Proprietary: Max35TextSchema,
 });
 
-export const GenericOrganisationIdentification3Schema = z.strictObject({
-  Identification: Max256TextSchema,
+export const GenericOrganisationIdentification1Schema = z.strictObject({
+  Identification: Max35TextSchema,
   SchemeName: OrganisationIdentificationSchemeName1ChoiceSchema.optional(),
   Issuer: Max35TextSchema.optional(),
 });
 
-export const OrganisationIdentification39Schema = z.strictObject({
+export const OrganisationIdentification29Schema = z.strictObject({
   AnyBIC: AnyBICDec2014IdentifierSchema.optional(),
   LEI: LEIIdentifierSchema.optional(),
-  Other: z.array(GenericOrganisationIdentification3Schema).optional(),
+  Other: z.array(GenericOrganisationIdentification1Schema).optional(),
 });
 
 export const ISODateSchema = isoDate;
@@ -812,20 +846,20 @@ export const PersonIdentificationSchemeName1ChoiceSchema = choiceOf({
   Proprietary: Max35TextSchema,
 });
 
-export const GenericPersonIdentification2Schema = z.strictObject({
-  Identification: Max256TextSchema,
+export const GenericPersonIdentification1Schema = z.strictObject({
+  Identification: Max35TextSchema,
   SchemeName: PersonIdentificationSchemeName1ChoiceSchema.optional(),
   Issuer: Max35TextSchema.optional(),
 });
 
-export const PersonIdentification18Schema = z.strictObject({
+export const PersonIdentification13Schema = z.strictObject({
   DateAndPlaceOfBirth: DateAndPlaceOfBirth1Schema.optional(),
-  Other: z.array(GenericPersonIdentification2Schema).optional(),
+  Other: z.array(GenericPersonIdentification1Schema).optional(),
 });
 
-export const Party52ChoiceSchema = choiceOf({
-  OrganisationIdentification: OrganisationIdentification39Schema,
-  PrivateIdentification: PersonIdentification18Schema,
+export const Party38ChoiceSchema = choiceOf({
+  OrganisationIdentification: OrganisationIdentification29Schema,
+  PrivateIdentification: PersonIdentification13Schema,
 });
 
 export const NamePrefix2CodeSchema = z.enum(["DOCT", "MADM", "MISS", "MIST", "MIKS"]);
@@ -843,30 +877,29 @@ export const OtherContact1Schema = z.strictObject({
   Identification: Max128TextSchema.optional(),
 });
 
-export const PreferredContactMethod2CodeSchema = z.enum(["MAIL", "FAXX", "LETT", "CELL", "ONLI", "PHON"]);
+export const PreferredContactMethod1CodeSchema = z.enum(["LETT", "MAIL", "PHON", "FAXX", "CELL"]);
 
-export const Contact13Schema = z.strictObject({
+export const Contact4Schema = z.strictObject({
   NamePrefix: NamePrefix2CodeSchema.optional(),
   Name: Max140TextSchema.optional(),
   PhoneNumber: PhoneNumberSchema.optional(),
   MobileNumber: PhoneNumberSchema.optional(),
   FaxNumber: PhoneNumberSchema.optional(),
-  URLAddress: Max2048TextSchema.optional(),
-  EmailAddress: Max256TextSchema.optional(),
+  EmailAddress: Max2048TextSchema.optional(),
   EmailPurpose: Max35TextSchema.optional(),
   JobTitle: Max35TextSchema.optional(),
   Responsibility: Max35TextSchema.optional(),
   Department: Max70TextSchema.optional(),
   Other: z.array(OtherContact1Schema).optional(),
-  PreferredMethod: PreferredContactMethod2CodeSchema.optional(),
+  PreferredMethod: PreferredContactMethod1CodeSchema.optional(),
 });
 
-export const PartyIdentification272Schema = z.strictObject({
+export const PartyIdentification135Schema = z.strictObject({
   Name: Max140TextSchema.optional(),
-  PostalAddress: PostalAddress27Schema.optional(),
-  Identification: Party52ChoiceSchema.optional(),
+  PostalAddress: PostalAddress24Schema.optional(),
+  Identification: Party38ChoiceSchema.optional(),
   CountryOfResidence: CountryCodeSchema.optional(),
-  ContactDetails: Contact13Schema.optional(),
+  ContactDetails: Contact4Schema.optional(),
 });
 
 export const BICFIDec2014IdentifierSchema = textType({pattern: "[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}"});
@@ -896,25 +929,25 @@ export const GenericFinancialIdentification1Schema = z.strictObject({
   Issuer: Max35TextSchema.optional(),
 });
 
-export const FinancialInstitutionIdentification23Schema = z.strictObject({
+export const FinancialInstitutionIdentification18Schema = z.strictObject({
   BICFI: BICFIDec2014IdentifierSchema.optional(),
   ClearingSystemMemberIdentification: ClearingSystemMemberIdentification2Schema.optional(),
   LEI: LEIIdentifierSchema.optional(),
   Name: Max140TextSchema.optional(),
-  PostalAddress: PostalAddress27Schema.optional(),
+  PostalAddress: PostalAddress24Schema.optional(),
   Other: GenericFinancialIdentification1Schema.optional(),
 });
 
-export const BranchData5Schema = z.strictObject({
+export const BranchData3Schema = z.strictObject({
   Identification: Max35TextSchema.optional(),
   LEI: LEIIdentifierSchema.optional(),
   Name: Max140TextSchema.optional(),
-  PostalAddress: PostalAddress27Schema.optional(),
+  PostalAddress: PostalAddress24Schema.optional(),
 });
 
-export const BranchAndFinancialInstitutionIdentification8Schema = z.strictObject({
-  FinancialInstitutionIdentification: FinancialInstitutionIdentification23Schema,
-  BranchIdentification: BranchData5Schema.optional(),
+export const BranchAndFinancialInstitutionIdentification6Schema = z.strictObject({
+  FinancialInstitutionIdentification: FinancialInstitutionIdentification18Schema,
+  BranchIdentification: BranchData3Schema.optional(),
 });
 
 export const ExternalCashAccountType1CodeSchema = textType({min: 1, max: 4});
@@ -971,6 +1004,119 @@ export const ExternalMandateSetupReason1CodeSchema = textType({min: 1, max: 4});
 export const MandateSetupReason1ChoiceSchema = choiceOf({
   Code: ExternalMandateSetupReason1CodeSchema,
   Proprietary: Max70TextSchema,
+});
+
+export const AmendmentInformationDetails14Schema = z.strictObject({
+  OriginalMandateIdentification: Max35TextSchema.optional(),
+  OriginalCreditorSchemeIdentification: PartyIdentification135Schema.optional(),
+  OriginalCreditorAgent: BranchAndFinancialInstitutionIdentification6Schema.optional(),
+  OriginalCreditorAgentAccount: CashAccount40Schema.optional(),
+  OriginalDebtor: PartyIdentification135Schema.optional(),
+  OriginalDebtorAccount: CashAccount40Schema.optional(),
+  OriginalDebtorAgent: BranchAndFinancialInstitutionIdentification6Schema.optional(),
+  OriginalDebtorAgentAccount: CashAccount40Schema.optional(),
+  OriginalFinalCollectionDate: ISODateSchema.optional(),
+  OriginalFrequency: Frequency36ChoiceSchema.optional(),
+  OriginalReason: MandateSetupReason1ChoiceSchema.optional(),
+  OriginalTrackingDays: Exact2NumericTextSchema.optional(),
+});
+
+export const PostalAddress27Schema = z.strictObject({
+  AddressType: AddressType3ChoiceSchema.optional(),
+  CareOf: Max140TextSchema.optional(),
+  Department: Max70TextSchema.optional(),
+  SubDepartment: Max70TextSchema.optional(),
+  StreetName: Max140TextSchema.optional(),
+  BuildingNumber: Max16TextSchema.optional(),
+  BuildingName: Max140TextSchema.optional(),
+  Floor: Max70TextSchema.optional(),
+  UnitNumber: Max16TextSchema.optional(),
+  PostBox: Max16TextSchema.optional(),
+  Room: Max70TextSchema.optional(),
+  PostCode: Max16TextSchema.optional(),
+  TownName: Max140TextSchema.optional(),
+  TownLocationName: Max140TextSchema.optional(),
+  DistrictName: Max140TextSchema.optional(),
+  CountrySubDivision: Max35TextSchema.optional(),
+  Country: CountryCodeSchema.optional(),
+  AddressLine: z.array(Max70TextSchema).max(7).optional(),
+});
+
+export const Max256TextSchema = textType({min: 1, max: 256});
+
+export const GenericOrganisationIdentification3Schema = z.strictObject({
+  Identification: Max256TextSchema,
+  SchemeName: OrganisationIdentificationSchemeName1ChoiceSchema.optional(),
+  Issuer: Max35TextSchema.optional(),
+});
+
+export const OrganisationIdentification39Schema = z.strictObject({
+  AnyBIC: AnyBICDec2014IdentifierSchema.optional(),
+  LEI: LEIIdentifierSchema.optional(),
+  Other: z.array(GenericOrganisationIdentification3Schema).optional(),
+});
+
+export const GenericPersonIdentification2Schema = z.strictObject({
+  Identification: Max256TextSchema,
+  SchemeName: PersonIdentificationSchemeName1ChoiceSchema.optional(),
+  Issuer: Max35TextSchema.optional(),
+});
+
+export const PersonIdentification18Schema = z.strictObject({
+  DateAndPlaceOfBirth: DateAndPlaceOfBirth1Schema.optional(),
+  Other: z.array(GenericPersonIdentification2Schema).optional(),
+});
+
+export const Party52ChoiceSchema = choiceOf({
+  OrganisationIdentification: OrganisationIdentification39Schema,
+  PrivateIdentification: PersonIdentification18Schema,
+});
+
+export const PreferredContactMethod2CodeSchema = z.enum(["MAIL", "FAXX", "LETT", "CELL", "ONLI", "PHON"]);
+
+export const Contact13Schema = z.strictObject({
+  NamePrefix: NamePrefix2CodeSchema.optional(),
+  Name: Max140TextSchema.optional(),
+  PhoneNumber: PhoneNumberSchema.optional(),
+  MobileNumber: PhoneNumberSchema.optional(),
+  FaxNumber: PhoneNumberSchema.optional(),
+  URLAddress: Max2048TextSchema.optional(),
+  EmailAddress: Max256TextSchema.optional(),
+  EmailPurpose: Max35TextSchema.optional(),
+  JobTitle: Max35TextSchema.optional(),
+  Responsibility: Max35TextSchema.optional(),
+  Department: Max70TextSchema.optional(),
+  Other: z.array(OtherContact1Schema).optional(),
+  PreferredMethod: PreferredContactMethod2CodeSchema.optional(),
+});
+
+export const PartyIdentification272Schema = z.strictObject({
+  Name: Max140TextSchema.optional(),
+  PostalAddress: PostalAddress27Schema.optional(),
+  Identification: Party52ChoiceSchema.optional(),
+  CountryOfResidence: CountryCodeSchema.optional(),
+  ContactDetails: Contact13Schema.optional(),
+});
+
+export const FinancialInstitutionIdentification23Schema = z.strictObject({
+  BICFI: BICFIDec2014IdentifierSchema.optional(),
+  ClearingSystemMemberIdentification: ClearingSystemMemberIdentification2Schema.optional(),
+  LEI: LEIIdentifierSchema.optional(),
+  Name: Max140TextSchema.optional(),
+  PostalAddress: PostalAddress27Schema.optional(),
+  Other: GenericFinancialIdentification1Schema.optional(),
+});
+
+export const BranchData5Schema = z.strictObject({
+  Identification: Max35TextSchema.optional(),
+  LEI: LEIIdentifierSchema.optional(),
+  Name: Max140TextSchema.optional(),
+  PostalAddress: PostalAddress27Schema.optional(),
+});
+
+export const BranchAndFinancialInstitutionIdentification8Schema = z.strictObject({
+  FinancialInstitutionIdentification: FinancialInstitutionIdentification23Schema,
+  BranchIdentification: BranchData5Schema.optional(),
 });
 
 export const AmendmentInformationDetails15Schema = z.strictObject({
@@ -1036,6 +1182,24 @@ export const AmountAndDirection35Schema = z.strictObject({
 export const AmountAndDirection5Schema = z.strictObject({
   Amount: ActiveCurrencyAndAmountSchema,
   CreditDebit: CreditDebitCodeSchema.optional(),
+});
+
+export const GenericIdentification37Schema = z.strictObject({
+  Identification: Max35TextSchema,
+  Issuer: Max35TextSchema.optional(),
+});
+
+export const FinancialInstrumentQuantity1ChoiceSchema = choiceOf({
+  Unit: DecimalNumberSchema,
+  FaceAmount: ImpliedCurrencyAndAmountSchema,
+  AmortisedValue: ImpliedCurrencyAndAmountSchema,
+});
+
+export const AmountAndQuantityBreakdown1Schema = z.strictObject({
+  LotNumber: GenericIdentification37Schema.optional(),
+  LotAmount: AmountAndDirection5Schema.optional(),
+  LotQuantity: FinancialInstrumentQuantity1ChoiceSchema.optional(),
+  CashSubBalanceType: GenericIdentification30Schema.optional(),
 });
 
 export const AmountOrRate1ChoiceSchema = choiceOf({
@@ -1119,6 +1283,13 @@ export const ExternalBalanceType1CodeSchema = textType({min: 1, max: 4});
 
 export const BalanceType10ChoiceSchema = choiceOf({
   Code: ExternalBalanceType1CodeSchema,
+  Proprietary: Max35TextSchema,
+});
+
+export const ExternalSystemBalanceType1CodeSchema = textType({min: 1, max: 4});
+
+export const BalanceType11ChoiceSchema = choiceOf({
+  Code: ExternalSystemBalanceType1CodeSchema,
   Proprietary: Max35TextSchema,
 });
 
@@ -1330,11 +1501,45 @@ export const CSCManagement1CodeSchema = z.enum(["PRST", "BYPS", "UNRD", "NCSC"])
 
 export const CUSIPIdentifierSchema = textType({});
 
+export const CancelledStatusReason5CodeSchema = z.enum(["CANI", "OTHR"]);
+
+export const CancellationReason21ChoiceSchema = choiceOf({
+  Code: CancelledStatusReason5CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const CancellationReason10Schema = z.strictObject({
+  Code: CancellationReason21ChoiceSchema,
+  AdditionalReasonInformation: Max210TextSchema.optional(),
+});
+
+export const CancelledStatusReason13CodeSchema = z.enum(["CANI", "CANS", "CSUB", "CXLR", "CANT", "CANZ", "CORP", "SCEX", "OTHR", "CTHP"]);
+
+export const CancellationReason19ChoiceSchema = choiceOf({
+  Code: CancelledStatusReason13CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
 export const ExternalCancellationReason1CodeSchema = textType({min: 1, max: 4});
 
 export const CancellationReason33ChoiceSchema = choiceOf({
   Code: ExternalCancellationReason1CodeSchema,
   Proprietary: Max35TextSchema,
+});
+
+export const CancellationReason9Schema = z.strictObject({
+  Code: CancellationReason19ChoiceSchema,
+  AdditionalReasonInformation: Max210TextSchema.optional(),
+});
+
+export const CancellationStatus14ChoiceSchema = choiceOf({
+  NoSpecifiedReason: NoReasonCodeSchema,
+  Reason: CancellationReason9Schema,
+});
+
+export const CancellationStatus15ChoiceSchema = choiceOf({
+  NoSpecifiedReason: NoReasonCodeSchema,
+  Reason: CancellationReason10Schema,
 });
 
 export const CardPaymentServiceType2CodeSchema = z.enum(["AGGR", "DCCV", "GRTT", "INSP", "LOYT", "NRES", "PUCO", "RECP", "SOAF", "UNAF", "VCAU"]);
@@ -1606,6 +1811,11 @@ export const CashBalance8Schema = z.strictObject({
   Availability: z.array(CashAvailability1Schema).optional(),
 });
 
+export const CashBalanceType3ChoiceSchema = choiceOf({
+  Code: ExternalBalanceType1CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
 export const ExternalCashType1CodeSchema = textType({min: 1, max: 4});
 
 export const CashType1ChoiceSchema = choiceOf({
@@ -1667,6 +1877,11 @@ export const CashOutForecast6Schema = z.strictObject({
   SubTotalUnitsNumber: FinancialInstrumentQuantity1Schema.optional(),
   ExceptionalCashFlowIndicator: YesNoIndicatorSchema.optional(),
   AdditionalBalance: FundBalance1Schema.optional(),
+});
+
+export const CashSubBalanceTypeAndQuantityBreakdown3Schema = z.strictObject({
+  Type: CashBalanceType3ChoiceSchema,
+  QuantityBreakdown: z.array(AmountAndQuantityBreakdown1Schema).optional(),
 });
 
 export const ExternalCategoryPurpose1CodeSchema = textType({min: 1, max: 4});
@@ -1762,7 +1977,42 @@ export const ClearingSystemIdentification3ChoiceSchema = choiceOf({
   Proprietary: Max35TextSchema,
 });
 
+export const StructuredLongPostalAddress1Schema = z.strictObject({
+  BuildingName: Max35TextSchema.optional(),
+  StreetName: Max35TextSchema.optional(),
+  StreetBuildingIdentification: Max35TextSchema.optional(),
+  Floor: Max16TextSchema.optional(),
+  TownName: Max35TextSchema,
+  DistrictName: Max35TextSchema.optional(),
+  RegionIdentification: Max35TextSchema.optional(),
+  State: Max35TextSchema.optional(),
+  CountyIdentification: Max35TextSchema.optional(),
+  Country: CountryCodeSchema,
+  PostCodeIdentification: Max16TextSchema,
+  PostOfficeBox: Max16TextSchema.optional(),
+});
+
+export const LongPostalAddress1ChoiceSchema = choiceOf({
+  Unstructured: Max140TextSchema,
+  Structured: StructuredLongPostalAddress1Schema,
+});
+
+export const CommunicationAddress8Schema = z.strictObject({
+  PostalAddress: LongPostalAddress1ChoiceSchema,
+  PhoneNumber: PhoneNumberSchema,
+  FaxNumber: PhoneNumberSchema.optional(),
+  EmailAddress: Max256TextSchema.optional(),
+});
+
 export const ConsolidatedTapeAssociationIdentifierSchema = textType({min: 1, max: 35});
+
+export const PaymentRole1CodeSchema = z.enum(["LQMG", "LMMG", "PYMG", "REDR", "BKMG", "STMG"]);
+
+export const ContactIdentificationAndAddress1Schema = z.strictObject({
+  Name: Max35TextSchema.optional(),
+  Role: PaymentRole1CodeSchema,
+  CommunicationAddress: CommunicationAddress8Schema,
+});
 
 export const EncryptedContent3Schema = z.strictObject({
   ContentType: ContentType2CodeSchema,
@@ -2136,6 +2386,23 @@ export const CreditTransferTransaction72Schema = z.strictObject({
   InstructedAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
 });
 
+export const DocumentType3CodeSchema = z.enum(["RADM", "RPIN", "FXDR", "DISP", "PUOR", "SCOR"]);
+
+export const CreditorReferenceType1ChoiceSchema = choiceOf({
+  Code: DocumentType3CodeSchema,
+  Proprietary: Max35TextSchema,
+});
+
+export const CreditorReferenceType2Schema = z.strictObject({
+  CodeOrProprietary: CreditorReferenceType1ChoiceSchema,
+  Issuer: Max35TextSchema.optional(),
+});
+
+export const CreditorReferenceInformation2Schema = z.strictObject({
+  Type: CreditorReferenceType2Schema.optional(),
+  Reference: Max35TextSchema.optional(),
+});
+
 export const HexBinaryTextSchema = textType({pattern: "[0-9a-fA-F]+"});
 
 export const SHA256SignatureTextSchema = textType({pattern: "([0-9A-F][0-9A-F]){32}"});
@@ -2199,6 +2466,27 @@ export const DateAndDateTimeChoiceSchema = choiceOf({
   DateTime: ISODateTimeSchema,
 });
 
+export const DatePeriodSearch1ChoiceSchema = choiceOf({
+  FromDate: ISODateSchema,
+  ToDate: ISODateSchema,
+  FromToDate: DatePeriod2Schema,
+  EqualDate: ISODateSchema,
+  NotEqualDate: ISODateSchema,
+});
+
+export const DateTimeSearch2ChoiceSchema = choiceOf({
+  FromDateTime: ISODateTimeSchema,
+  ToDateTime: ISODateTimeSchema,
+  FromToDateTime: DateTimePeriod1Schema,
+  EqualDateTime: ISODateTimeSchema,
+  NotEqualDateTime: ISODateTimeSchema,
+});
+
+export const DateAndDateTimeSearch5ChoiceSchema = choiceOf({
+  Date: DatePeriodSearch1ChoiceSchema,
+  DateTime: DateTimeSearch2ChoiceSchema,
+});
+
 export const DatePeriod2ChoiceSchema = choiceOf({
   FromDate: ISODateSchema,
   ToDate: ISODateSchema,
@@ -2210,12 +2498,9 @@ export const DatePeriod3Schema = z.strictObject({
   ToDate: ISODateSchema.optional(),
 });
 
-export const DatePeriodSearch1ChoiceSchema = choiceOf({
-  FromDate: ISODateSchema,
-  ToDate: ISODateSchema,
-  FromToDate: DatePeriod2Schema,
-  EqualDate: ISODateSchema,
-  NotEqualDate: ISODateSchema,
+export const DatePeriod5Schema = z.strictObject({
+  CurrentValueDate: ISODateSchema,
+  RequestedValueDate: ISODateSchema,
 });
 
 export const DateTimePeriod1ChoiceSchema = choiceOf({
@@ -2224,12 +2509,21 @@ export const DateTimePeriod1ChoiceSchema = choiceOf({
   DateTimeRange: DateTimePeriod1Schema,
 });
 
-export const DateTimeSearch2ChoiceSchema = choiceOf({
-  FromDateTime: ISODateTimeSchema,
-  ToDateTime: ISODateTimeSchema,
-  FromToDateTime: DateTimePeriod1Schema,
-  EqualDateTime: ISODateTimeSchema,
-  NotEqualDateTime: ISODateTimeSchema,
+export const DeniedReason4CodeSchema = z.enum(["ADEA", "DCAN", "DPRG", "DREP", "DSET", "LATE", "OTHR", "CDRG", "CDCY", "CDRE"]);
+
+export const DeniedReason16ChoiceSchema = choiceOf({
+  Code: DeniedReason4CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const DeniedReason11Schema = z.strictObject({
+  Code: DeniedReason16ChoiceSchema,
+  AdditionalReasonInformation: Max210TextSchema.optional(),
+});
+
+export const DeniedStatus16ChoiceSchema = choiceOf({
+  NoSpecifiedReason: NoReasonCodeSchema,
+  Reason: DeniedReason11Schema,
 });
 
 export const MandateRelatedInformation16Schema = z.strictObject({
@@ -2252,6 +2546,18 @@ export const DirectDebitTransaction12Schema = z.strictObject({
   PreNotificationDate: ISODateSchema.optional(),
 });
 
+export const ExternalDiscountAmountType1CodeSchema = textType({min: 1, max: 4});
+
+export const DiscountAmountType1ChoiceSchema = choiceOf({
+  Code: ExternalDiscountAmountType1CodeSchema,
+  Proprietary: Max35TextSchema,
+});
+
+export const DiscountAmountAndType1Schema = z.strictObject({
+  Type: DiscountAmountType1ChoiceSchema.optional(),
+  Amount: ActiveOrHistoricCurrencyAndAmountSchema,
+});
+
 export const DistributionPolicy1CodeSchema = z.enum(["DIST", "ACCU"]);
 
 export const DocumentType1ChoiceSchema = choiceOf({
@@ -2270,12 +2576,29 @@ export const DocumentFormat1ChoiceSchema = choiceOf({
 
 export const SkipPayloadSchema = anyXml;
 
-export const PartyAndSignature4Schema = z.strictObject({
-  Party: PartyIdentification272Schema,
+export const PartyAndSignature3Schema = z.strictObject({
+  Party: PartyIdentification135Schema,
   Signature: SkipPayloadSchema,
 });
 
 export const Max10MbBinarySchema = textType({max: 10485760});
+
+export const Document12Schema = z.strictObject({
+  Type: DocumentType1ChoiceSchema,
+  Identification: Max35TextSchema,
+  IssueDate: DateAndDateTime2ChoiceSchema,
+  Name: Max140TextSchema.optional(),
+  LanguageCode: LanguageCodeSchema.optional(),
+  Format: DocumentFormat1ChoiceSchema,
+  FileName: Max140TextSchema.optional(),
+  DigitalSignature: PartyAndSignature3Schema.optional(),
+  Enclosure: Max10MbBinarySchema,
+});
+
+export const PartyAndSignature4Schema = z.strictObject({
+  Party: PartyIdentification272Schema,
+  Signature: SkipPayloadSchema,
+});
 
 export const Document15Schema = z.strictObject({
   Type: DocumentType1ChoiceSchema,
@@ -2313,6 +2636,43 @@ export const DocumentIdentification51Schema = z.strictObject({
   MessageOriginator: PartyIdentification136Schema.optional(),
   MessageRecipient: PartyIdentification136Schema.optional(),
 });
+
+export const ExternalTaxAmountType1CodeSchema = textType({min: 1, max: 4});
+
+export const TaxAmountType1ChoiceSchema = choiceOf({
+  Code: ExternalTaxAmountType1CodeSchema,
+  Proprietary: Max35TextSchema,
+});
+
+export const TaxAmountAndType1Schema = z.strictObject({
+  Type: TaxAmountType1ChoiceSchema.optional(),
+  Amount: ActiveOrHistoricCurrencyAndAmountSchema,
+});
+
+export const RemittanceAmount3Schema = z.strictObject({
+  DuePayableAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
+  DiscountAppliedAmount: z.array(DiscountAmountAndType1Schema).optional(),
+  CreditNoteAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
+  TaxAmount: z.array(TaxAmountAndType1Schema).optional(),
+  AdjustmentAmountAndReason: z.array(DocumentAdjustment1Schema).optional(),
+  RemittedAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
+});
+
+export const DocumentLineInformation1Schema = z.strictObject({
+  Identification: z.array(DocumentLineIdentification1Schema).min(1),
+  Description: Max2048TextSchema.optional(),
+  Amount: RemittanceAmount3Schema.optional(),
+});
+
+export const ISO20022MessageIdentificationTextSchema = textType({pattern: "[a-z]{4}\\.[0-9]{3}\\.[0-9]{3}\\.[0-9]{2}"});
+
+export const DocumentNumber5ChoiceSchema = choiceOf({
+  ShortNumber: Exact3NumericTextSchema,
+  LongNumber: ISO20022MessageIdentificationTextSchema,
+  ProprietaryNumber: GenericIdentification36Schema,
+});
+
+export const DocumentType6CodeSchema = z.enum(["MSIN", "CNFA", "DNFA", "CINV", "CREN", "DEBN", "HIRI", "SBIN", "CMCN", "SOAC", "DISP", "BOLD", "VCHR", "AROI", "TSUT", "PUOR"]);
 
 export const DutchIdentifierSchema = textType({});
 
@@ -2599,7 +2959,21 @@ export const EntryStatus1ChoiceSchema = choiceOf({
   Proprietary: Max35TextSchema,
 });
 
+export const EntryStatus1CodeSchema = z.enum(["BOOK", "PDNG", "FUTR"]);
+
 export const EntryTypeIdentifierSchema = textType({pattern: "[BEOVW]{1,1}[0-9]{2,2}|DUM"});
+
+export const ErrorHandling1CodeSchema = z.enum(["X020", "X030", "X050"]);
+
+export const ErrorHandling1ChoiceSchema = choiceOf({
+  Code: ErrorHandling1CodeSchema,
+  Proprietary: Max4AlphaNumericTextSchema,
+});
+
+export const ErrorHandling3Schema = z.strictObject({
+  Error: ErrorHandling1ChoiceSchema,
+  Description: Max140TextSchema.optional(),
+});
 
 export const ExternalSystemErrorHandling1CodeSchema = textType({min: 1, max: 4});
 
@@ -2615,16 +2989,54 @@ export const ErrorHandling5Schema = z.strictObject({
 
 export const EuroclearClearstreamIdentifierSchema = textType({min: 1, max: 12});
 
+export const EventFrequency7CodeSchema = z.enum(["YEAR", "ADHO", "MNTH", "DAIL", "INDA", "WEEK", "SEMI", "QUTR", "TOMN", "TOWK", "TWMN", "OVNG", "ONDE"]);
+
+export const ExternalSystemEventType1CodeSchema = textType({min: 1, max: 4});
+
+export const EventType1ChoiceSchema = choiceOf({
+  Code: ExternalSystemEventType1CodeSchema,
+  Proprietary: Max35TextSchema,
+});
+
 export const Exact3AlphaNumericTextSchema = textType({pattern: "[a-zA-Z0-9]{3}"});
+
+export const Exact4NumericTextSchema = textType({pattern: "[0-9]{4}"});
+
+export const Exact5NumericTextSchema = textType({pattern: "[0-9]{5}"});
+
+export const ISOTimeSchema = isoTime;
+
+export const ExecutionType1ChoiceSchema = choiceOf({
+  Time: ISOTimeSchema,
+  Event: EventType1ChoiceSchema,
+});
 
 export const Extension1Schema = z.strictObject({
   PlaceAndName: Max350TextSchema,
   Text: Max350TextSchema,
 });
 
+export const ExternalAgentInstruction1CodeSchema = textType({min: 1, max: 4});
+
 export const ExternalEnquiryRequestType1CodeSchema = textType({min: 1, max: 4});
 
 export const ExternalInstructedAgentInstruction1CodeSchema = textType({min: 1, max: 4});
+
+export const ExternalInvestigationAction1CodeSchema = textType({min: 1, max: 4});
+
+export const ExternalInvestigationActionReason1CodeSchema = textType({min: 1, max: 4});
+
+export const ExternalInvestigationInstrument1CodeSchema = textType({min: 1, max: 4});
+
+export const ExternalInvestigationReason1CodeSchema = textType({min: 1, max: 4});
+
+export const ExternalInvestigationReasonSubType1CodeSchema = textType({min: 1, max: 4});
+
+export const ExternalInvestigationServiceLevel1CodeSchema = textType({min: 1, max: 4});
+
+export const ExternalInvestigationSubType1CodeSchema = textType({min: 1, max: 4});
+
+export const ExternalInvestigationType1CodeSchema = textType({min: 1, max: 4});
 
 export const ExternalMandateReason1CodeSchema = textType({min: 1, max: 4});
 
@@ -2640,13 +3052,44 @@ export const ExternalRegulatoryReportingType1CodeSchema = textType({min: 1, max:
 
 export const ExternalReportingSource1CodeSchema = textType({min: 1, max: 4});
 
+export const ExternalRequestStatus1CodeSchema = textType({min: 1, max: 4});
+
 export const ExternalReservationType1CodeSchema = textType({min: 1, max: 4});
 
 export const ExternalReversalReason1CodeSchema = textType({min: 1, max: 4});
 
 export const ExternalStatusReason1CodeSchema = textType({min: 1, max: 4});
 
+export const ExternalSystemMemberType1CodeSchema = textType({min: 1, max: 4});
+
 export const ExternalTechnicalInputChannel1CodeSchema = textType({min: 1, max: 4});
+
+export const FailingReason3CodeSchema = z.enum(["AWMO", "BYIY", "CLAT", "ADEA", "CANR", "CAIS", "OBJT", "AWSH", "PHSE", "STCD", "DOCY", "MLAT", "DOCC", "BLOC", "CHAS", "NEWI", "CLAC", "MUNO", "GLOB", "PREA", "PART", "NOFX", "CMON", "YCOL", "COLL", "DEPO", "FLIM", "INCA", "LINK", "LACK", "LALO", "MONY", "NCON", "REFS", "SDUT", "BATC", "CYCL", "SBLO", "CPEC", "MINO", "IAAD", "OTHR", "PHCK", "BENO", "BOTH", "CLHT", "DENO", "DISA", "DKNY", "FROZ", "LAAW", "LATE", "LIQU", "PRCY", "REGT", "SETS", "CERT", "PRSY", "INBC"]);
+
+export const FailingReason7ChoiceSchema = choiceOf({
+  Code: FailingReason3CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const FailingReason7Schema = z.strictObject({
+  Code: FailingReason7ChoiceSchema,
+  AdditionalReasonInformation: Max210TextSchema.optional(),
+});
+
+export const FailingStatus9ChoiceSchema = choiceOf({
+  NoSpecifiedReason: NoReasonCodeSchema,
+  Reason: FailingReason7Schema,
+});
+
+export const FileData1Schema = z.strictObject({
+  Type: DocumentType1ChoiceSchema.optional(),
+  Identification: Max35TextSchema,
+  IssueDate: DateAndDateTime2ChoiceSchema.optional(),
+  Format: DocumentFormat1ChoiceSchema.optional(),
+  FileName: Max140TextSchema.optional(),
+  NetworkReference: Max140TextSchema.optional(),
+  FileLocationElectronicAddress: Max2048TextSchema.optional(),
+});
 
 export const ISINIdentifierSchema = textType({pattern: "[A-Z0-9]{12,12}"});
 
@@ -2702,6 +3145,13 @@ export const ForeignExchangeTerms19Schema = z.strictObject({
 });
 
 export const Frequency10CodeSchema = z.enum(["NEVR", "YEAR", "RATE", "MIAN", "QURT"]);
+
+export const Frequency22ChoiceSchema = choiceOf({
+  Code: EventFrequency7CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const Frequency2CodeSchema = z.enum(["YEAR", "MNTH", "QURT", "MIAN", "WEEK", "DAIL", "ADHO", "INDA", "OVNG"]);
 
 export const Frequency37ChoiceSchema = choiceOf({
   Code: Frequency10CodeSchema,
@@ -2814,6 +3264,17 @@ export const FundCashForecast7Schema = z.strictObject({
   NetCashForecastDetails: z.array(NetCashForecast4Schema).optional(),
 });
 
+export const Garnishment3Schema = z.strictObject({
+  Type: GarnishmentType1Schema,
+  Garnishee: PartyIdentification135Schema.optional(),
+  GarnishmentAdministrator: PartyIdentification135Schema.optional(),
+  ReferenceNumber: Max140TextSchema.optional(),
+  Date: ISODateSchema.optional(),
+  RemittedAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
+  FamilyMedicalInsuranceIndicator: TrueFalseIndicatorSchema.optional(),
+  EmployeeTerminationIndicator: TrueFalseIndicatorSchema.optional(),
+});
+
 export const PartyType12CodeSchema = z.enum(["ACQR", "ATMG", "CISP", "DLIS", "HSTG", "ITAG", "OATM"]);
 
 export const Min2Max3AlphaTextSchema = textType({pattern: "[a-zA-Z]{2,3}"});
@@ -2864,6 +3325,12 @@ export const GroupHeader116Schema = z.strictObject({
   MessagePagination: Pagination1Schema.optional(),
   OriginalBusinessQuery: OriginalBusinessQuery1Schema.optional(),
   AdditionalInformation: Max500TextSchema.optional(),
+});
+
+export const GroupHeader117Schema = z.strictObject({
+  MessageIdentification: Max35TextSchema,
+  CreationDateTime: ISODateTimeSchema,
+  MessageSender: Party50ChoiceSchema.optional(),
 });
 
 export const SettlementMethod1CodeSchema = z.enum(["INDA", "INGA", "COVE", "CLRG"]);
@@ -2943,11 +3410,144 @@ export const Header32Schema = z.strictObject({
   Traceability: z.array(Traceability4Schema).optional(),
 });
 
-export const ISOTimeSchema = isoTime;
+export const Priority1CodeSchema = z.enum(["HIGH", "NORM", "LOWW"]);
+
+export const InformationQualifierType1Schema = z.strictObject({
+  IsFormatted: YesNoIndicatorSchema.optional(),
+  Priority: Priority1CodeSchema.optional(),
+});
+
+export const Instruction1CodeSchema = z.enum(["PBEN", "TTIL", "TFRO"]);
+
+export const InstructionForAssignee1Schema = z.strictObject({
+  Code: ExternalAgentInstruction1CodeSchema.optional(),
+  InstructionInformation: Max140TextSchema.optional(),
+});
 
 export const InstructionForInstructedAgent1Schema = z.strictObject({
   Code: ExternalInstructedAgentInstruction1CodeSchema.optional(),
   InstructionInformation: Max140TextSchema.optional(),
+});
+
+export const PriorityNumeric4ChoiceSchema = choiceOf({
+  Numeric: Exact4NumericTextSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const IntraBalance5Schema = z.strictObject({
+  SettlementAmount: Amount2ChoiceSchema,
+  SettlementDate: DateAndDateTime2ChoiceSchema,
+  BalanceFrom: CashSubBalanceTypeAndQuantityBreakdown3Schema,
+  BalanceTo: CashSubBalanceTypeAndQuantityBreakdown3Schema,
+  CashSubBalanceIdentification: GenericIdentification37Schema.optional(),
+  Priority: PriorityNumeric4ChoiceSchema.optional(),
+  InstructionProcessingAdditionalDetails: Max350TextSchema.optional(),
+});
+
+export const Number3ChoiceSchema = choiceOf({
+  Short: Exact3NumericTextSchema,
+  Long: Exact5NumericTextSchema,
+});
+
+export const Period2Schema = z.strictObject({
+  FromDate: ISODateSchema,
+  ToDate: ISODateSchema,
+});
+
+export const Period7ChoiceSchema = choiceOf({
+  FromDateTimeToDateTime: DateTimePeriod1Schema,
+  FromDateToDate: Period2Schema,
+});
+
+export const MovementResponseType1CodeSchema = z.enum(["FULL", "STTS"]);
+
+export const StatementUpdateType1CodeSchema = z.enum(["COMP", "DELT"]);
+
+export const UpdateType15ChoiceSchema = choiceOf({
+  Code: StatementUpdateType1CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const IntraBalanceReport5Schema = z.strictObject({
+  ReportNumber: Number3ChoiceSchema.optional(),
+  QueryReference: Max35TextSchema.optional(),
+  ReportIdentification: Max35TextSchema.optional(),
+  ReportDateTime: DateAndDateTime2ChoiceSchema.optional(),
+  ReportPeriod: Period7ChoiceSchema.optional(),
+  QueryType: MovementResponseType1CodeSchema.optional(),
+  Frequency: Frequency22ChoiceSchema.optional(),
+  UpdateType: UpdateType15ChoiceSchema,
+  ActivityIndicator: YesNoIndicatorSchema,
+});
+
+export const IntraBalanceReport6Schema = z.strictObject({
+  ReportNumber: Number3ChoiceSchema.optional(),
+  QueryReference: Max35TextSchema.optional(),
+  ReportIdentification: Max35TextSchema.optional(),
+  ReportDateTime: DateAndDateTime2ChoiceSchema.optional(),
+  ReportPeriod: Period7ChoiceSchema.optional(),
+  Frequency: Frequency22ChoiceSchema.optional(),
+  UpdateType: UpdateType15ChoiceSchema,
+  ActivityIndicator: YesNoIndicatorSchema,
+});
+
+export const InvestigationActionReason1ChoiceSchema = choiceOf({
+  Code: ExternalInvestigationActionReason1CodeSchema,
+  Proprietary: Max35TextSchema,
+});
+
+export const InvestigationActionReason1Schema = z.strictObject({
+  Originator: PartyIdentification135Schema.optional(),
+  Reason: InvestigationActionReason1ChoiceSchema,
+  AdditionalInformation: z.array(Max105TextSchema).optional(),
+});
+
+export const InvestigationLocationMethod1CodeSchema = z.enum(["EDIC", "EMAL", "FAXI", "POST", "SMSM", "URID"]);
+
+export const NameAndAddress16Schema = z.strictObject({
+  Name: Max140TextSchema,
+  Address: PostalAddress24Schema,
+});
+
+export const InvestigationLocationData1Schema = z.strictObject({
+  Method: InvestigationLocationMethod1CodeSchema,
+  ElectronicAddress: Max2048TextSchema.optional(),
+  PostalAddress: NameAndAddress16Schema.optional(),
+});
+
+export const InvestigationReason1ChoiceSchema = choiceOf({
+  Code: ExternalInvestigationReason1CodeSchema,
+  Proprietary: Max35TextSchema,
+});
+
+export const InvestigationReasonSubType1ChoiceSchema = choiceOf({
+  Code: ExternalInvestigationReasonSubType1CodeSchema,
+  Proprietary: Max35TextSchema,
+});
+
+export const InvestigationRequestAction1ChoiceSchema = choiceOf({
+  Code: ExternalInvestigationAction1CodeSchema,
+  Proprietary: Max35TextSchema,
+});
+
+export const InvestigationRequestAction1Schema = z.strictObject({
+  Action: InvestigationRequestAction1ChoiceSchema,
+  ActionReason: InvestigationActionReason1Schema.optional(),
+});
+
+export const InvestigationServiceLevel1ChoiceSchema = choiceOf({
+  Code: ExternalInvestigationServiceLevel1CodeSchema,
+  Proprietary: Max35TextSchema,
+});
+
+export const InvestigationSubType1ChoiceSchema = choiceOf({
+  Code: ExternalInvestigationSubType1CodeSchema,
+  Proprietary: Max35TextSchema,
+});
+
+export const InvestigationType1ChoiceSchema = choiceOf({
+  Code: ExternalInvestigationType1CodeSchema,
+  Proprietary: Max35TextSchema,
 });
 
 export const MarketInfrastructureIdentification1ChoiceSchema = choiceOf({
@@ -2973,6 +3573,51 @@ export const LimitIdentification8Schema = z.strictObject({
   Type: LimitType1ChoiceSchema,
   AccountOwner: BranchAndFinancialInstitutionIdentification8Schema.optional(),
   AccountIdentification: AccountIdentification4ChoiceSchema.optional(),
+});
+
+export const LimitIdentification9Schema = z.strictObject({
+  SystemIdentification: SystemIdentification2ChoiceSchema.optional(),
+  Type: LimitType1ChoiceSchema,
+  AccountOwner: BranchAndFinancialInstitutionIdentification8Schema.optional(),
+  AccountIdentification: AccountIdentification4ChoiceSchema.optional(),
+});
+
+export const LimitType4CodeSchema = z.enum(["EXGT", "UCDT", "ACOL"]);
+
+export const LinkageType1CodeSchema = z.enum(["LINK", "UNLK", "SOFT"]);
+
+export const LinkageType3ChoiceSchema = choiceOf({
+  Code: LinkageType1CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const ProcessingPosition3CodeSchema = z.enum(["AFTE", "WITH", "BEFO", "INFO"]);
+
+export const ProcessingPosition7ChoiceSchema = choiceOf({
+  Code: ProcessingPosition3CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const References34ChoiceSchema = choiceOf({
+  SecuritiesSettlementTransactionIdentification: Max35TextSchema,
+  IntraPositionMovementIdentification: Max35TextSchema,
+  IntraBalanceMovementIdentification: Max35TextSchema,
+  AccountServicerTransactionIdentification: Max35TextSchema,
+  MarketInfrastructureTransactionIdentification: Max35TextSchema,
+  PoolIdentification: Max35TextSchema,
+  OtherTransactionIdentification: Max35TextSchema,
+});
+
+export const PartyIdentification127ChoiceSchema = choiceOf({
+  AnyBIC: AnyBICDec2014IdentifierSchema,
+  ProprietaryIdentification: GenericIdentification36Schema,
+});
+
+export const Linkages57Schema = z.strictObject({
+  ProcessingPosition: ProcessingPosition7ChoiceSchema.optional(),
+  MessageNumber: DocumentNumber5ChoiceSchema.optional(),
+  Reference: References34ChoiceSchema,
+  ReferenceOwner: PartyIdentification127ChoiceSchema.optional(),
 });
 
 export const PaymentInstrument1CodeSchema = z.enum(["BDT", "BCT", "CDT", "CCT", "CHK", "BKT", "DCP", "CCP", "RTI", "CAN"]);
@@ -3061,6 +3706,24 @@ export const MandateRelatedData3ChoiceSchema = choiceOf({
   CreditTransferMandate: CreditTransferMandateData1Schema,
 });
 
+export const MandateRelatedInformation15Schema = z.strictObject({
+  MandateIdentification: Max35TextSchema.optional(),
+  DateOfSignature: ISODateSchema.optional(),
+  AmendmentIndicator: TrueFalseIndicatorSchema.optional(),
+  AmendmentInformationDetails: AmendmentInformationDetails14Schema.optional(),
+  ElectronicSignature: Max1025TextSchema.optional(),
+  FirstCollectionDate: ISODateSchema.optional(),
+  FinalCollectionDate: ISODateSchema.optional(),
+  Frequency: Frequency36ChoiceSchema.optional(),
+  Reason: MandateSetupReason1ChoiceSchema.optional(),
+  TrackingDays: Exact2NumericTextSchema.optional(),
+});
+
+export const MandateRelatedData4ChoiceSchema = choiceOf({
+  DirectDebitMandate: MandateRelatedInformation15Schema,
+  CreditTransferMandate: CreditTransferMandateData1Schema,
+});
+
 export const MandateRelatedData5ChoiceSchema = choiceOf({
   DirectDebitMandate: MandateRelatedInformation16Schema,
   CreditTransferMandate: CreditTransferMandateData1Schema,
@@ -3072,9 +3735,9 @@ export const Max10DateTextSchema = textType({pattern: "([0-9]{4,4}-[0-9]{2,2}-[0
 
 export const Max10TextSchema = textType({min: 1, max: 10});
 
-export const Max210TextSchema = textType({min: 1, max: 210});
-
 export const Max37TextSchema = textType({min: 1, max: 37});
+
+export const Max3NumberSchema = decimalType({totalDigits: 3, fractionDigits: 0});
 
 export const Max3TextSchema = textType({min: 1, max: 3});
 
@@ -3088,6 +3751,14 @@ export const MemberIdentification3ChoiceSchema = choiceOf({
   Other: GenericFinancialIdentification1Schema,
 });
 
+export const Member6Schema = z.strictObject({
+  MemberReturnAddress: z.array(MemberIdentification3ChoiceSchema).optional(),
+  ContactReference: z.array(ContactIdentificationAndAddress1Schema).optional(),
+  CommunicationAddress: CommunicationAddress8Schema.optional(),
+});
+
+export const MemberStatus1CodeSchema = z.enum(["ENBL", "DSBL", "DLTD", "JOIN"]);
+
 export const MessageHeader1Schema = z.strictObject({
   MessageIdentification: Max35TextSchema,
   CreationDateTime: ISODateTimeSchema.optional(),
@@ -3097,6 +3768,14 @@ export const RequestType4ChoiceSchema = choiceOf({
   PaymentControl: ExternalPaymentControlRequestType1CodeSchema,
   Enquiry: ExternalEnquiryRequestType1CodeSchema,
   Proprietary: GenericIdentification1Schema,
+});
+
+export const MessageHeader7Schema = z.strictObject({
+  MessageIdentification: Max35TextSchema,
+  CreationDateTime: ISODateTimeSchema.optional(),
+  RequestType: RequestType4ChoiceSchema.optional(),
+  OriginalBusinessQuery: OriginalBusinessQuery1Schema.optional(),
+  QueryName: Max35TextSchema.optional(),
 });
 
 export const MessageHeader9Schema = z.strictObject({
@@ -3115,7 +3794,11 @@ export const MessageIdentification2Schema = z.strictObject({
   MessageIdentification: Max35TextSchema.optional(),
 });
 
-export const MovementResponseType1CodeSchema = z.enum(["FULL", "STTS"]);
+export const NameAndAddress8Schema = z.strictObject({
+  Name: Max350TextSchema,
+  Address: PostalAddress1Schema.optional(),
+  AlternativeIdentifier: z.array(Max35TextSchema).max(10).optional(),
+});
 
 export const NetCashForecast3Schema = z.strictObject({
   NetAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
@@ -3210,6 +3893,19 @@ export const OriginalGroupInformation33Schema = z.strictObject({
   OriginalCreationDateTime: ISODateTimeSchema.optional(),
 });
 
+export const OriginalItemReference8Schema = z.strictObject({
+  Account: CashAccount40Schema.optional(),
+  AccountOwner: Party50ChoiceSchema.optional(),
+  AccountServicer: BranchAndFinancialInstitutionIdentification8Schema.optional(),
+  RelatedAccount: CashAccount40Schema.optional(),
+  Debtor: Party50ChoiceSchema.optional(),
+  DebtorAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
+  IntermediaryAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
+  Purpose: Purpose2ChoiceSchema.optional(),
+  RelatedRemittanceInformation: RemittanceLocation8Schema.optional(),
+  RemittanceInformation: RemittanceInformation26Schema.optional(),
+});
+
 export const OriginalMandate10ChoiceSchema = choiceOf({
   OriginalMandateIdentification: Max35TextSchema,
   OriginalMandate: Mandate20Schema,
@@ -3289,9 +3985,113 @@ export const OriginalTransactionReference47Schema = z.strictObject({
   Purpose: Purpose2ChoiceSchema.optional(),
 });
 
+export const SettlementInstruction11Schema = z.strictObject({
+  SettlementMethod: SettlementMethod1CodeSchema,
+  SettlementAccount: CashAccount40Schema.optional(),
+  ClearingSystem: ClearingSystemIdentification3ChoiceSchema.optional(),
+  InstructingReimbursementAgent: BranchAndFinancialInstitutionIdentification6Schema.optional(),
+  InstructingReimbursementAgentAccount: CashAccount40Schema.optional(),
+  InstructedReimbursementAgent: BranchAndFinancialInstitutionIdentification6Schema.optional(),
+  InstructedReimbursementAgentAccount: CashAccount40Schema.optional(),
+  ThirdReimbursementAgent: BranchAndFinancialInstitutionIdentification6Schema.optional(),
+  ThirdReimbursementAgentAccount: CashAccount40Schema.optional(),
+});
+
+export const ReferredDocumentType3ChoiceSchema = choiceOf({
+  Code: DocumentType6CodeSchema,
+  Proprietary: Max35TextSchema,
+});
+
+export const ReferredDocumentType4Schema = z.strictObject({
+  CodeOrProprietary: ReferredDocumentType3ChoiceSchema,
+  Issuer: Max35TextSchema.optional(),
+});
+
+export const ReferredDocumentInformation7Schema = z.strictObject({
+  Type: ReferredDocumentType4Schema.optional(),
+  Number: Max35TextSchema.optional(),
+  RelatedDate: ISODateSchema.optional(),
+  LineDetails: z.array(DocumentLineInformation1Schema).optional(),
+});
+
+export const RemittanceAmount2Schema = z.strictObject({
+  DuePayableAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
+  DiscountAppliedAmount: z.array(DiscountAmountAndType1Schema).optional(),
+  CreditNoteAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
+  TaxAmount: z.array(TaxAmountAndType1Schema).optional(),
+  AdjustmentAmountAndReason: z.array(DocumentAdjustment1Schema).optional(),
+  RemittedAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
+});
+
+export const StructuredRemittanceInformation17Schema = z.strictObject({
+  ReferredDocumentInformation: z.array(ReferredDocumentInformation7Schema).optional(),
+  ReferredDocumentAmount: RemittanceAmount2Schema.optional(),
+  CreditorReferenceInformation: CreditorReferenceInformation2Schema.optional(),
+  Invoicer: PartyIdentification135Schema.optional(),
+  Invoicee: PartyIdentification135Schema.optional(),
+  TaxRemittance: TaxData1Schema.optional(),
+  GarnishmentRemittance: Garnishment3Schema.optional(),
+  AdditionalRemittanceInformation: z.array(Max140TextSchema).max(3).optional(),
+});
+
+export const RemittanceInformation21Schema = z.strictObject({
+  Unstructured: z.array(Max140TextSchema).optional(),
+  Structured: z.array(StructuredRemittanceInformation17Schema).optional(),
+});
+
+export const Party40ChoiceSchema = choiceOf({
+  Party: PartyIdentification135Schema,
+  Agent: BranchAndFinancialInstitutionIdentification6Schema,
+});
+
+export const OriginalTransactionReference48Schema = z.strictObject({
+  InterbankSettlementAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
+  Amount: AmountType4ChoiceSchema.optional(),
+  InterbankSettlementDate: ISODateSchema.optional(),
+  RequestedCollectionDate: ISODateSchema.optional(),
+  RequestedExecutionDate: DateAndDateTime2ChoiceSchema.optional(),
+  CreditorSchemeIdentification: PartyIdentification135Schema.optional(),
+  SettlementInformation: SettlementInstruction11Schema.optional(),
+  PaymentTypeInformation: PaymentTypeInformation27Schema.optional(),
+  PaymentMethod: PaymentMethod4CodeSchema.optional(),
+  MandateRelatedInformation: MandateRelatedData4ChoiceSchema.optional(),
+  RemittanceInformation: RemittanceInformation21Schema.optional(),
+  UltimateDebtor: Party40ChoiceSchema.optional(),
+  Debtor: Party40ChoiceSchema.optional(),
+  DebtorAccount: CashAccount40Schema.optional(),
+  DebtorAgent: BranchAndFinancialInstitutionIdentification6Schema.optional(),
+  DebtorAgentAccount: CashAccount40Schema.optional(),
+  CreditorAgent: BranchAndFinancialInstitutionIdentification6Schema.optional(),
+  CreditorAgentAccount: CashAccount40Schema.optional(),
+  Creditor: Party40ChoiceSchema.optional(),
+  CreditorAccount: CashAccount40Schema.optional(),
+  UltimateCreditor: Party40ChoiceSchema.optional(),
+  Purpose: Purpose2ChoiceSchema.optional(),
+});
+
 export const PaginationSchema = z.strictObject({
   PageNumber: Max5NumericTextSchema,
   LastPageIndicator: YesNoIndicatorSchema,
+});
+
+export const PartyIdentification44Schema = z.strictObject({
+  AnyBIC: AnyBICIdentifierSchema,
+  AlternativeIdentifier: z.array(Max35TextSchema).max(10).optional(),
+});
+
+export const PartyIdentification59Schema = z.strictObject({
+  PartyName: Max34TextSchema.optional(),
+  AnyBIC: PartyIdentification44Schema.optional(),
+  AccountNumber: Max34TextSchema.optional(),
+  Address: Max105TextSchema.optional(),
+  ClearingSystemIdentification: ClearingSystemIdentification2ChoiceSchema.optional(),
+  LegalEntityIdentifier: LEIIdentifierSchema.optional(),
+});
+
+export const PartyIdentification73ChoiceSchema = choiceOf({
+  NameAndAddress: NameAndAddress8Schema,
+  AnyBIC: PartyIdentification44Schema,
+  PartyIdentification: PartyIdentification59Schema,
 });
 
 export const PlainCardData24Schema = z.strictObject({
@@ -3328,6 +4128,13 @@ export const PaymentIdentification6Schema = z.strictObject({
   UETR: UUIDv4IdentifierSchema.optional(),
 });
 
+export const PaymentIdentification8Schema = z.strictObject({
+  InstructionIdentification: Max35TextSchema.optional(),
+  EndToEndIdentification: Max35TextSchema,
+  TransactionIdentification: Max35TextSchema.optional(),
+  UETR: UUIDv4IdentifierSchema.optional(),
+});
+
 export const QueueTransactionIdentification1Schema = z.strictObject({
   QueueIdentification: Max16TextSchema,
   PositionInQueue: Max16TextSchema,
@@ -3349,6 +4156,22 @@ export const PaymentIdentification8ChoiceSchema = choiceOf({
   ProprietaryIdentification: Max70TextSchema,
 });
 
+export const PaymentTransactionParty4Schema = z.strictObject({
+  InstructingAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
+  InstructedAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
+  UltimateDebtor: Party50ChoiceSchema.optional(),
+  Debtor: Party50ChoiceSchema.optional(),
+  DebtorAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
+  InstructingReimbursementAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
+  InstructedReimbursementAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
+  IntermediaryAgent1: BranchAndFinancialInstitutionIdentification8Schema.optional(),
+  IntermediaryAgent2: BranchAndFinancialInstitutionIdentification8Schema.optional(),
+  IntermediaryAgent3: BranchAndFinancialInstitutionIdentification8Schema.optional(),
+  CreditorAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
+  Creditor: Party50ChoiceSchema.optional(),
+  UltimateCreditor: Party50ChoiceSchema.optional(),
+});
+
 export const PaymentType3CodeSchema = z.enum(["CBS", "BCK", "BAL", "CLS", "CTR", "CBH", "CBP", "DPG", "DPN", "EXP", "TCH", "LMT", "LIQ", "DPP", "DPH", "DPS", "STF", "TRP", "TCS", "LOA", "LOR", "TCP", "OND", "MGL"]);
 
 export const PaymentType4ChoiceSchema = choiceOf({
@@ -3364,14 +4187,175 @@ export const PaymentTypeInformation29Schema = z.strictObject({
   CategoryPurpose: CategoryPurpose1ChoiceSchema.optional(),
 });
 
-export const Period2Schema = z.strictObject({
-  FromDate: ISODateSchema,
-  ToDate: ISODateSchema,
+export const PendingReason10CodeSchema = z.enum(["AWMO", "ADEA", "CAIS", "REFU", "AWSH", "PHSE", "TAMM", "DOCY", "DOCC", "BLOC", "CHAS", "NEWI", "CLAC", "MUNO", "GLOB", "PREA", "PART", "NMAS", "NOFX", "CMON", "YCOL", "COLL", "DEPO", "FLIM", "INCA", "LINK", "FUTU", "LACK", "LALO", "MONY", "NCON", "REFS", "SDUT", "BATC", "CYCL", "SBLO", "CPEC", "MINO", "IAAD", "OTHR", "PHCK", "BENO", "BOTH", "CLHT", "DENO", "DISA", "DKNY", "FROZ", "LAAW", "LATE", "LIQU", "PRCY", "REGT", "SETS", "CERT", "PRSY", "INBC"]);
+
+export const PendingReason26ChoiceSchema = choiceOf({
+  Code: PendingReason10CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const PendingReason14Schema = z.strictObject({
+  Code: PendingReason26ChoiceSchema,
+  AdditionalReasonInformation: Max210TextSchema.optional(),
+});
+
+export const PendingReason6CodeSchema = z.enum(["ADEA", "CONF", "OTHR", "CDRG", "CDCY", "CDRE"]);
+
+export const PendingReason28ChoiceSchema = choiceOf({
+  Code: PendingReason6CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const PendingReason16Schema = z.strictObject({
+  Code: PendingReason28ChoiceSchema,
+  AdditionalReasonInformation: Max210TextSchema.optional(),
+});
+
+export const PendingReason9CodeSchema = z.enum(["ADEA", "CONF", "OTHR", "CDRG", "CDCY", "CDRE", "CDAC", "INBC"]);
+
+export const PendingReason30ChoiceSchema = choiceOf({
+  Code: PendingReason9CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const PendingReason17Schema = z.strictObject({
+  Code: PendingReason30ChoiceSchema,
+  AdditionalReasonInformation: Max210TextSchema.optional(),
+});
+
+export const PendingStatus36ChoiceSchema = choiceOf({
+  NoSpecifiedReason: NoReasonCodeSchema,
+  Reason: PendingReason14Schema,
+});
+
+export const PendingStatus38ChoiceSchema = choiceOf({
+  NoSpecifiedReason: NoReasonCodeSchema,
+  Reason: PendingReason16Schema,
+});
+
+export const PendingStatus39ChoiceSchema = choiceOf({
+  NoSpecifiedReason: NoReasonCodeSchema,
+  Reason: PendingReason17Schema,
+});
+
+export const PendingStatus4CodeSchema = z.enum(["ACPD", "VALD", "MATD", "AUTD", "INVD", "UMAC", "STLE", "STLM", "SSPD", "PCAN", "PSTL", "PFST", "SMLR", "RMLR", "SRBL", "AVLB", "SRML"]);
+
+export const Priority5CodeSchema = z.enum(["HIGH", "LOWW", "NORM", "URGT"]);
+
+export const Priority1ChoiceSchema = choiceOf({
+  Code: Priority5CodeSchema,
+  Proprietary: Max35TextSchema,
 });
 
 export const Priority3CodeSchema = z.enum(["URGT", "HIGH", "NORM"]);
 
+export const RejectionReason33CodeSchema = z.enum(["CASH", "ADEA", "DMON", "NCRR", "LATE", "INVL", "INVB", "INVN", "VALR", "MONY", "CAEV", "DDAT", "REFE", "OTHR", "DQUA", "DSEC", "MINO", "MUNO"]);
+
+export const RejectionAndRepairReason32ChoiceSchema = choiceOf({
+  Code: RejectionReason33CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const RejectionOrRepairReason32Schema = z.strictObject({
+  Code: z.array(RejectionAndRepairReason32ChoiceSchema).optional(),
+  AdditionalReasonInformation: Max210TextSchema.optional(),
+});
+
+export const RejectionOrRepairStatus38ChoiceSchema = choiceOf({
+  NoSpecifiedReason: NoReasonCodeSchema,
+  Reason: RejectionOrRepairReason32Schema,
+});
+
+export const ProprietaryReason4Schema = z.strictObject({
+  Reason: GenericIdentification30Schema.optional(),
+  AdditionalReasonInformation: Max210TextSchema.optional(),
+});
+
+export const ProprietaryStatusAndReason6Schema = z.strictObject({
+  ProprietaryStatus: GenericIdentification30Schema,
+  ProprietaryReason: z.array(ProprietaryReason4Schema).optional(),
+});
+
+export const ProcessingStatus67ChoiceSchema = choiceOf({
+  Rejected: RejectionOrRepairStatus38ChoiceSchema,
+  Repair: RejectionOrRepairStatus38ChoiceSchema,
+  Cancelled: CancellationStatus14ChoiceSchema,
+  AcknowledgedAccepted: AcknowledgedAcceptedStatus21ChoiceSchema,
+  Proprietary: ProprietaryStatusAndReason6Schema,
+});
+
+export const RejectionReason34CodeSchema = z.enum(["ADEA", "LATE", "CASH", "NRGM", "NRGN", "OTHR", "REFE"]);
+
+export const RejectionAndRepairReason33ChoiceSchema = choiceOf({
+  Code: RejectionReason34CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const RejectionOrRepairReason33Schema = z.strictObject({
+  Code: RejectionAndRepairReason33ChoiceSchema,
+  AdditionalReasonInformation: Max210TextSchema.optional(),
+});
+
+export const RejectionOrRepairStatus39ChoiceSchema = choiceOf({
+  NoSpecifiedReason: NoReasonCodeSchema,
+  Reason: RejectionOrRepairReason33Schema,
+});
+
+export const ProcessingStatus69ChoiceSchema = choiceOf({
+  PendingCancellation: PendingStatus39ChoiceSchema,
+  Rejected: RejectionOrRepairStatus39ChoiceSchema,
+  Repair: RejectionOrRepairStatus39ChoiceSchema,
+  AcknowledgedAccepted: AcknowledgedAcceptedStatus24ChoiceSchema,
+  Proprietary: ProprietaryStatusAndReason6Schema,
+  Denied: DeniedStatus16ChoiceSchema,
+  Cancelled: CancellationStatus15ChoiceSchema,
+});
+
+export const RejectionReason35CodeSchema = z.enum(["CASH", "ADEA", "REFE", "LATE", "DDAT", "NRGN", "OTHR", "INVM", "INVL"]);
+
+export const RejectionAndRepairReason34ChoiceSchema = choiceOf({
+  Code: RejectionReason35CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const RejectionOrRepairReason34Schema = z.strictObject({
+  Code: RejectionAndRepairReason34ChoiceSchema,
+  AdditionalReasonInformation: Max210TextSchema.optional(),
+});
+
+export const RejectionOrRepairStatus40ChoiceSchema = choiceOf({
+  NoSpecifiedReason: NoReasonCodeSchema,
+  Reason: RejectionOrRepairReason34Schema,
+});
+
+export const ProcessingStatus71ChoiceSchema = choiceOf({
+  AcknowledgedAccepted: AcknowledgedAcceptedStatus21ChoiceSchema,
+  Pending: PendingStatus38ChoiceSchema,
+  Rejected: RejectionOrRepairStatus40ChoiceSchema,
+  Repair: RejectionOrRepairStatus39ChoiceSchema,
+  Denied: DeniedStatus16ChoiceSchema,
+  Completed: ProprietaryReason4Schema,
+  Proprietary: ProprietaryStatusAndReason6Schema,
+});
+
+export const ProprietaryData6Schema = z.strictObject({
+  Any: SkipPayloadSchema,
+});
+
+export const ProprietaryData7Schema = z.strictObject({
+  Type: Max35TextSchema,
+  Data: ProprietaryData6Schema,
+});
+
 export const QueryType2CodeSchema = z.enum(["ALLL", "CHNG", "MODF", "DELD"]);
+
+export const References14Schema = z.strictObject({
+  AccountOwnerTransactionIdentification: Max35TextSchema.optional(),
+  AccountServicerTransactionIdentification: Max35TextSchema.optional(),
+  MarketInfrastructureTransactionIdentification: Max35TextSchema.optional(),
+  ProcessorTransactionIdentification: Max35TextSchema.optional(),
+  PoolIdentification: Max35TextSchema.optional(),
+});
 
 export const RegulatoryAuthority2Schema = z.strictObject({
   Name: Max140TextSchema.optional(),
@@ -3398,6 +4382,11 @@ export const RegulatoryReporting10Schema = z.strictObject({
   DebitCreditReportingIndicator: RegulatoryReportingType1CodeSchema,
   Authority: RegulatoryAuthority2Schema.optional(),
   Details: z.array(StructuredRegulatoryReporting5Schema).optional(),
+});
+
+export const RelatedInvestigationData1Schema = z.strictObject({
+  InvestigationIdentification: Max35TextSchema.optional(),
+  Location: z.array(InvestigationLocationData1Schema).optional(),
 });
 
 export const RemittanceInformation2Schema = z.strictObject({
@@ -3443,7 +4432,40 @@ export const ReportingSource1ChoiceSchema = choiceOf({
   Proprietary: Max35TextSchema,
 });
 
+export const RequestDetails22Schema = z.strictObject({
+  Reference: References14Schema,
+  Linkage: LinkageType3ChoiceSchema.optional(),
+  Priority: PriorityNumeric4ChoiceSchema.optional(),
+  OtherProcessing: z.array(GenericIdentification30Schema).optional(),
+  PartialSettlementIndicator: YesNoIndicatorSchema.optional(),
+  ClearingChannel: ClearingChannel2CodeSchema.optional(),
+  Linkages: z.array(Linkages57Schema).optional(),
+});
+
+export const RequestStatus1ChoiceSchema = choiceOf({
+  Code: ExternalRequestStatus1CodeSchema,
+  Proprietary: Max35TextSchema,
+});
+
+export const RequestHandling4Schema = z.strictObject({
+  Status: RequestStatus1ChoiceSchema,
+  StatusReason: StatusReasonInformation14Schema.optional(),
+  Description: Max140TextSchema.optional(),
+});
+
+export const StandingOrderQueryType1CodeSchema = z.enum(["SLST", "SDTL", "TAPS", "SLSL", "SWLS"]);
+
+export const RequestType3ChoiceSchema = choiceOf({
+  Code: StandingOrderQueryType1CodeSchema,
+  Proprietary: GenericIdentification1Schema,
+});
+
 export const RequestedIndicatorSchema = indicator;
+
+export const Reservation4Schema = z.strictObject({
+  StartDateTime: DateAndDateTime2ChoiceSchema.optional(),
+  Amount: Amount2ChoiceSchema,
+});
 
 export const ReservationType2ChoiceSchema = choiceOf({
   Code: ExternalReservationType1CodeSchema,
@@ -3484,11 +4506,79 @@ export const SettlementInstruction14Schema = z.strictObject({
   ClearingSystem: ClearingSystemIdentification3ChoiceSchema.optional(),
 });
 
+export const SettlementInstruction16Schema = z.strictObject({
+  InstructingReimbursementAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
+  InstructingReimbursementAgentAccount: CashAccount40Schema.optional(),
+  InstructedReimbursementAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
+  InstructedReimbursementAgentAccount: CashAccount40Schema.optional(),
+});
+
+export const SettlementStatus16ChoiceSchema = choiceOf({
+  Pending: PendingStatus36ChoiceSchema,
+  Failing: FailingStatus9ChoiceSchema,
+  Proprietary: ProprietaryStatusAndReason6Schema,
+});
+
 export const SettlementTimeRequest2Schema = z.strictObject({
   CLSTime: ISOTimeSchema.optional(),
   TillTime: ISOTimeSchema.optional(),
   FromTime: ISOTimeSchema.optional(),
   RejectTime: ISOTimeSchema.optional(),
+});
+
+export const StandingOrder10Schema = z.strictObject({
+  Amount: Amount2ChoiceSchema.optional(),
+  Creditor: BranchAndFinancialInstitutionIdentification8Schema.optional(),
+  CreditorAccount: CashAccount40Schema.optional(),
+  Debtor: BranchAndFinancialInstitutionIdentification8Schema.optional(),
+  DebtorAccount: CashAccount40Schema.optional(),
+  ExecutionType: ExecutionType1ChoiceSchema.optional(),
+  Frequency: Frequency2CodeSchema.optional(),
+  ValidityPeriod: DatePeriod2ChoiceSchema.optional(),
+  ZeroSweepIndicator: TrueFalseIndicatorSchema.optional(),
+});
+
+export const StandingOrderType1CodeSchema = z.enum(["USTO", "PSTO"]);
+
+export const StandingOrderType1ChoiceSchema = choiceOf({
+  Code: StandingOrderType1CodeSchema,
+  Proprietary: GenericIdentification1Schema,
+});
+
+export const TotalAmountAndCurrency1Schema = z.strictObject({
+  TotalAmount: ImpliedCurrencyAndAmountSchema,
+  CreditDebitIndicator: CreditDebitCodeSchema.optional(),
+  Currency: ActiveCurrencyCodeSchema.optional(),
+});
+
+export const StandingOrderTotalAmount1Schema = z.strictObject({
+  SetPredefinedOrder: TotalAmountAndCurrency1Schema,
+  PendingPredefinedOrder: TotalAmountAndCurrency1Schema,
+  SetStandingOrder: TotalAmountAndCurrency1Schema,
+  PendingStandingOrder: TotalAmountAndCurrency1Schema,
+});
+
+export const StandingOrder11Schema = z.strictObject({
+  Amount: Amount2ChoiceSchema,
+  CreditDebitIndicator: CreditDebitCodeSchema,
+  Currency: ActiveCurrencyCodeSchema.optional(),
+  Type: StandingOrderType1ChoiceSchema.optional(),
+  AssociatedPoolAccount: AccountIdentification4ChoiceSchema.optional(),
+  Reference: Max35TextSchema.optional(),
+  Frequency: Frequency2CodeSchema.optional(),
+  ValidityPeriod: DatePeriod3Schema.optional(),
+  SystemMember: BranchAndFinancialInstitutionIdentification8Schema.optional(),
+  ResponsibleParty: BranchAndFinancialInstitutionIdentification8Schema.optional(),
+  LinkSetIdentification: Max35TextSchema.optional(),
+  LinkSetOrderIdentification: Max35TextSchema.optional(),
+  LinkSetOrderSequence: NumberSchema.optional(),
+  ExecutionType: ExecutionType1ChoiceSchema.optional(),
+  Creditor: BranchAndFinancialInstitutionIdentification8Schema.optional(),
+  CreditorAccount: CashAccount40Schema.optional(),
+  Debtor: BranchAndFinancialInstitutionIdentification8Schema.optional(),
+  DebtorAccount: CashAccount40Schema.optional(),
+  TotalsPerStandingOrder: StandingOrderTotalAmount1Schema.optional(),
+  ZeroSweepIndicator: TrueFalseIndicatorSchema.optional(),
 });
 
 export const StandingOrderIdentification8Schema = z.strictObject({
@@ -3500,6 +4590,16 @@ export const StandingOrderIdentification8Schema = z.strictObject({
 export const SystemAndCurrency1Schema = z.strictObject({
   SystemIdentification: SystemIdentification2ChoiceSchema,
   SystemCurrency: ActiveCurrencyCodeSchema.optional(),
+});
+
+export const SystemMemberStatus1ChoiceSchema = choiceOf({
+  Code: MemberStatus1CodeSchema,
+  Proprietary: Max35TextSchema,
+});
+
+export const SystemMemberType1ChoiceSchema = choiceOf({
+  Code: ExternalSystemMemberType1CodeSchema,
+  Proprietary: Max35TextSchema,
 });
 
 export const SystemPartyIdentification8Schema = z.strictObject({
@@ -3564,6 +4664,54 @@ export const UnderlyingGroupInformation1Schema = z.strictObject({
   OriginalMessageNameIdentification: Max35TextSchema,
   OriginalCreationDateTime: ISODateTimeSchema.optional(),
   OriginalMessageDeliveryChannel: Max35TextSchema.optional(),
+});
+
+export const UnderlyingPaymentInstruction11Schema = z.strictObject({
+  OriginalGroupInformation: UnderlyingGroupInformation1Schema.optional(),
+  OriginalPaymentInformationIdentification: Max35TextSchema.optional(),
+  OriginalInstructionIdentification: Max35TextSchema.optional(),
+  OriginalEndToEndIdentification: Max35TextSchema.optional(),
+  OriginalUETR: UUIDv4IdentifierSchema.optional(),
+  OriginalInstructedAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
+  RequestedExecutionDate: DateAndDateTime2ChoiceSchema.optional(),
+  RequestedCollectionDate: ISODateSchema.optional(),
+  OriginalTransactionReference: OriginalTransactionReference48Schema.optional(),
+  OriginalServiceLevel: ServiceLevel8ChoiceSchema.optional(),
+});
+
+export const UnderlyingPaymentTransaction11Schema = z.strictObject({
+  OriginalGroupInformation: UnderlyingGroupInformation1Schema.optional(),
+  OriginalInstructionIdentification: Max35TextSchema.optional(),
+  OriginalEndToEndIdentification: Max35TextSchema.optional(),
+  OriginalTransactionIdentification: Max35TextSchema.optional(),
+  OriginalUETR: UUIDv4IdentifierSchema.optional(),
+  OriginalInterbankSettlementAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
+  OriginalInterbankSettlementDate: ISODateSchema.optional(),
+  OriginalTransactionReference: OriginalTransactionReference48Schema.optional(),
+  OriginalServiceLevel: ServiceLevel8ChoiceSchema.optional(),
+});
+
+export const UnderlyingStatementEntry11Schema = z.strictObject({
+  OriginalAccount: CashAccount40Schema.optional(),
+  OriginalGroupInformation: OriginalGroupInformation33Schema.optional(),
+  OriginalStatementIdentification: Max35TextSchema.optional(),
+  OriginalEntryReference: Max35TextSchema.optional(),
+  OriginalUETR: UUIDv4IdentifierSchema.optional(),
+  OriginalEntryAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
+  OriginalEntryValueDate: DateAndDateTime2ChoiceSchema.optional(),
+});
+
+export const UnderlyingData13ChoiceSchema = choiceOf({
+  Initiation: UnderlyingPaymentInstruction11Schema,
+  Interbank: UnderlyingPaymentTransaction11Schema,
+  StatementEntry: UnderlyingStatementEntry11Schema,
+  Account: CashAccount40Schema,
+  Other: GenericIdentification1Schema,
+});
+
+export const UnderlyingInvestigationInstrument1ChoiceSchema = choiceOf({
+  Code: ExternalInvestigationInstrument1CodeSchema,
+  Proprietary: Max35TextSchema,
 });
 
 export const UnderlyingPaymentInstruction9Schema = z.strictObject({
@@ -4760,6 +5908,85 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Tax", isoId: "_wL7Cq66FEeexrtTFgmVD3Q", xmlTag: "Tax", displayName: displayName("Tax"), kind: "component", type: "TaxCharges2", required: false }),
     ],
   },
+  "NoReasonCode": {
+    name: "NoReasonCode",
+    isoId: "_aNmad9p-Ed-ak6NoX_4Aeg_1937897714",
+    kind: "code",
+    options: [{ value: "NORE", name: "NoReason", isoId: "_aNmaeNp-Ed-ak6NoX_4Aeg_1957291337" }],
+  },
+  "AcknowledgementReason5Code": {
+    name: "AcknowledgementReason5Code",
+    isoId: "_bpPSBdp-Ed-ak6NoX_4Aeg_-775300363",
+    kind: "code",
+    options: [{ value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_bpPSBtp-Ed-ak6NoX_4Aeg_-27223806" }, { value: "SMPG", name: "MarketPracticeRuleDiscrepency", isoId: "_bpPSB9p-Ed-ak6NoX_4Aeg_1110394808" }, { value: "OTHR", name: "Other", isoId: "_bpPSCNp-Ed-ak6NoX_4Aeg_180042807" }, { value: "CDCY", name: "ConditionalCurrency", isoId: "_bpZDANp-Ed-ak6NoX_4Aeg_1232765698" }, { value: "CDRG", name: "ConditionalRegistrar", isoId: "_bpZDAdp-Ed-ak6NoX_4Aeg_1991941032" }, { value: "CDRE", name: "ConditionalRealignement", isoId: "_bpZDAtp-Ed-ak6NoX_4Aeg_148072043" }, { value: "NSTP", name: "NotStraightThroughProcessing", isoId: "_bpZDA9p-Ed-ak6NoX_4Aeg_-780265528" }, { value: "RQWV", name: "AcceptedWithoutVotingRights", isoId: "_bpZDBNp-Ed-ak6NoX_4Aeg_865001907" }, { value: "LATE", name: "MarketDeadlineMissed", isoId: "_bpZDBdp-Ed-ak6NoX_4Aeg_-1891176947" }],
+  },
+  "AcknowledgementReason12Choice": {
+    name: "AcknowledgementReason12Choice",
+    isoId: "_hyO3cTnvEeWfSKvvZlhRKg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_iSz04TnvEeWfSKvvZlhRKg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "AcknowledgementReason5Code", required: true }),
+      f({ name: "Proprietary", isoId: "_iSz06TnvEeWfSKvvZlhRKg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "Max210Text": {
+    name: "Max210Text",
+    isoId: "_YWiyNNp-Ed-ak6NoX_4Aeg_1281143207",
+    kind: "text",
+    minLength: 1,
+    maxLength: 210,
+  },
+  "AcknowledgementReason9": {
+    name: "AcknowledgementReason9",
+    isoId: "_hQwiETnvEeWfSKvvZlhRKg",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "_hyO3YTnvEeWfSKvvZlhRKg", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "AcknowledgementReason12Choice", required: true }),
+      f({ name: "AdditionalReasonInformation", isoId: "_hyO3aTnvEeWfSKvvZlhRKg", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
+    ],
+  },
+  "AcknowledgedAcceptedStatus21Choice": {
+    name: "AcknowledgedAcceptedStatus21Choice",
+    isoId: "_gwUucTnvEeWfSKvvZlhRKg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NoSpecifiedReason", isoId: "_hQwiATnvEeWfSKvvZlhRKg", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
+      f({ name: "Reason", isoId: "_hQwiCTnvEeWfSKvvZlhRKg", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "AcknowledgementReason9", required: true }),
+    ],
+  },
+  "AcknowledgementReason3Code": {
+    name: "AcknowledgementReason3Code",
+    isoId: "_bpGIFdp-Ed-ak6NoX_4Aeg_-1663512836",
+    kind: "code",
+    options: [{ value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_bpGIFtp-Ed-ak6NoX_4Aeg_-1512482082" }, { value: "SMPG", name: "MarketPracticeRuleDiscrepency", isoId: "_bpGIF9p-Ed-ak6NoX_4Aeg_318441087" }, { value: "OTHR", name: "Other", isoId: "_bpGIGNp-Ed-ak6NoX_4Aeg_-1522255292" }],
+  },
+  "AcknowledgementReason15Choice": {
+    name: "AcknowledgementReason15Choice",
+    isoId: "_Pea6ETq5EeWyoP0PbocV1Q",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_P-QQoTq5EeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "AcknowledgementReason3Code", required: true }),
+      f({ name: "Proprietary", isoId: "_P-QQqTq5EeWyoP0PbocV1Q", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "AcknowledgementReason12": {
+    name: "AcknowledgementReason12",
+    isoId: "_O9sLkTq5EeWyoP0PbocV1Q",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "_Pea6ATq5EeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "AcknowledgementReason15Choice", required: true }),
+      f({ name: "AdditionalReasonInformation", isoId: "_Pea6CTq5EeWyoP0PbocV1Q", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
+    ],
+  },
+  "AcknowledgedAcceptedStatus24Choice": {
+    name: "AcknowledgedAcceptedStatus24Choice",
+    isoId: "_OcXnITq5EeWyoP0PbocV1Q",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NoSpecifiedReason", isoId: "_O9sLgTq5EeWyoP0PbocV1Q", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
+      f({ name: "Reason", isoId: "_O9sLiTq5EeWyoP0PbocV1Q", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "AcknowledgementReason12", required: true }),
+    ],
+  },
   "ImpliedCurrencyAndAmountRange1": {
     name: "ImpliedCurrencyAndAmountRange1",
     isoId: "_OvM9t5lcEeeE1Ya-LgRsuQ",
@@ -5018,29 +6245,27 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "ProprietaryIdentificationSource", isoId: "_Sk_qYtp-Ed-ak6NoX_4Aeg_-815168263", xmlTag: "PrtryIdSrc", displayName: displayName("ProprietaryIdentificationSource"), kind: "text", type: "Max35Text", required: true }),
     ],
   },
-  "PostalAddress27": {
-    name: "PostalAddress27",
-    isoId: "_vvaRYTEyEe6g-ffJsqGiSA",
+  "PostalAddress24": {
+    name: "PostalAddress24",
+    isoId: "_9XYD524-EeiU9cctagi5ow",
     kind: "component",
     fields: [
-      f({ name: "AddressType", isoId: "_vxk0kTEyEe6g-ffJsqGiSA", xmlTag: "AdrTp", displayName: displayName("AddressType"), kind: "choice", type: "AddressType3Choice", required: false }),
-      f({ name: "CareOf", isoId: "_5-dq0DHsEe6BxvG014AZzQ", xmlTag: "CareOf", displayName: displayName("CareOf"), kind: "text", type: "Max140Text", required: false }),
-      f({ name: "Department", isoId: "_vxk0kzEyEe6g-ffJsqGiSA", xmlTag: "Dept", displayName: displayName("Department"), kind: "text", type: "Max70Text", required: false }),
-      f({ name: "SubDepartment", isoId: "_vxk0lTEyEe6g-ffJsqGiSA", xmlTag: "SubDept", displayName: displayName("SubDepartment"), kind: "text", type: "Max70Text", required: false }),
-      f({ name: "StreetName", isoId: "_vxk0lzEyEe6g-ffJsqGiSA", xmlTag: "StrtNm", displayName: displayName("StreetName"), kind: "text", type: "Max140Text", required: false }),
-      f({ name: "BuildingNumber", isoId: "_vxk0mTEyEe6g-ffJsqGiSA", xmlTag: "BldgNb", displayName: displayName("BuildingNumber"), kind: "text", type: "Max16Text", required: false }),
-      f({ name: "BuildingName", isoId: "_vxk0mzEyEe6g-ffJsqGiSA", xmlTag: "BldgNm", displayName: displayName("BuildingName"), kind: "text", type: "Max140Text", required: false }),
-      f({ name: "Floor", isoId: "_vxk0nTEyEe6g-ffJsqGiSA", xmlTag: "Flr", displayName: displayName("Floor"), kind: "text", type: "Max70Text", required: false }),
-      f({ name: "UnitNumber", isoId: "_kWPIsDHtEe6BxvG014AZzQ", xmlTag: "UnitNb", displayName: displayName("UnitNumber"), kind: "text", type: "Max16Text", required: false }),
-      f({ name: "PostBox", isoId: "_vxk0nzEyEe6g-ffJsqGiSA", xmlTag: "PstBx", displayName: displayName("PostBox"), kind: "text", type: "Max16Text", required: false }),
-      f({ name: "Room", isoId: "_vxk0oTEyEe6g-ffJsqGiSA", xmlTag: "Room", displayName: displayName("Room"), kind: "text", type: "Max70Text", required: false }),
-      f({ name: "PostCode", isoId: "_vxk0ozEyEe6g-ffJsqGiSA", xmlTag: "PstCd", displayName: displayName("PostCode"), kind: "text", type: "Max16Text", required: false }),
-      f({ name: "TownName", isoId: "_vxk0pTEyEe6g-ffJsqGiSA", xmlTag: "TwnNm", displayName: displayName("TownName"), kind: "text", type: "Max140Text", required: false }),
-      f({ name: "TownLocationName", isoId: "_vxk0pzEyEe6g-ffJsqGiSA", xmlTag: "TwnLctnNm", displayName: displayName("TownLocationName"), kind: "text", type: "Max140Text", required: false }),
-      f({ name: "DistrictName", isoId: "_vxk0qTEyEe6g-ffJsqGiSA", xmlTag: "DstrctNm", displayName: displayName("DistrictName"), kind: "text", type: "Max140Text", required: false }),
-      f({ name: "CountrySubDivision", isoId: "_vxk0qzEyEe6g-ffJsqGiSA", xmlTag: "CtrySubDvsn", displayName: displayName("CountrySubDivision"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "Country", isoId: "_vxlboTEyEe6g-ffJsqGiSA", xmlTag: "Ctry", displayName: displayName("Country"), kind: "code", type: "CountryCode", required: false }),
-      f({ name: "AddressLine", isoId: "_vxlbozEyEe6g-ffJsqGiSA", xmlTag: "AdrLine", displayName: displayName("AddressLine"), kind: "text", type: "Max70Text", required: false, repeat: { min: 0, max: 7 } }),
+      f({ name: "AddressType", isoId: "_9gwpY24-EeiU9cctagi5ow", xmlTag: "AdrTp", displayName: displayName("AddressType"), kind: "choice", type: "AddressType3Choice", required: false }),
+      f({ name: "Department", isoId: "_9gwpZW4-EeiU9cctagi5ow", xmlTag: "Dept", displayName: displayName("Department"), kind: "text", type: "Max70Text", required: false }),
+      f({ name: "SubDepartment", isoId: "_9gwpZ24-EeiU9cctagi5ow", xmlTag: "SubDept", displayName: displayName("SubDepartment"), kind: "text", type: "Max70Text", required: false }),
+      f({ name: "StreetName", isoId: "_9gwpaW4-EeiU9cctagi5ow", xmlTag: "StrtNm", displayName: displayName("StreetName"), kind: "text", type: "Max70Text", required: false }),
+      f({ name: "BuildingNumber", isoId: "_9gwpa24-EeiU9cctagi5ow", xmlTag: "BldgNb", displayName: displayName("BuildingNumber"), kind: "text", type: "Max16Text", required: false }),
+      f({ name: "BuildingName", isoId: "_ZOcTkG5OEeiU9cctagi5ow", xmlTag: "BldgNm", displayName: displayName("BuildingName"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "Floor", isoId: "_F1IHQ3RpEeiH1ZOt2UD8vQ", xmlTag: "Flr", displayName: displayName("Floor"), kind: "text", type: "Max70Text", required: false }),
+      f({ name: "PostBox", isoId: "_F1IHRHRpEeiH1ZOt2UD8vQ", xmlTag: "PstBx", displayName: displayName("PostBox"), kind: "text", type: "Max16Text", required: false }),
+      f({ name: "Room", isoId: "_F1IHRXRpEeiH1ZOt2UD8vQ", xmlTag: "Room", displayName: displayName("Room"), kind: "text", type: "Max70Text", required: false }),
+      f({ name: "PostCode", isoId: "_9gwpbW4-EeiU9cctagi5ow", xmlTag: "PstCd", displayName: displayName("PostCode"), kind: "text", type: "Max16Text", required: false }),
+      f({ name: "TownName", isoId: "_9gwpb24-EeiU9cctagi5ow", xmlTag: "TwnNm", displayName: displayName("TownName"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "TownLocationName", isoId: "_rvZGQ25OEeiU9cctagi5ow", xmlTag: "TwnLctnNm", displayName: displayName("TownLocationName"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "DistrictName", isoId: "_rvZGRG5OEeiU9cctagi5ow", xmlTag: "DstrctNm", displayName: displayName("DistrictName"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "CountrySubDivision", isoId: "_9gwpcW4-EeiU9cctagi5ow", xmlTag: "CtrySubDvsn", displayName: displayName("CountrySubDivision"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "Country", isoId: "_9gwpc24-EeiU9cctagi5ow", xmlTag: "Ctry", displayName: displayName("Country"), kind: "code", type: "CountryCode", required: false }),
+      f({ name: "AddressLine", isoId: "_9gwpdW4-EeiU9cctagi5ow", xmlTag: "AdrLine", displayName: displayName("AddressLine"), kind: "text", type: "Max70Text", required: false, repeat: { min: 0, max: 7 } }),
     ],
   },
   "AnyBICDec2014Identifier": {
@@ -5054,13 +6279,6 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     isoId: "_h7Yn9yjAEeKnA5P_jl2DUw",
     kind: "text",
     pattern: "[A-Z0-9]{18,18}[0-9]{2,2}",
-  },
-  "Max256Text": {
-    name: "Max256Text",
-    isoId: "_YXvFAtp-Ed-ak6NoX_4Aeg_582144276",
-    kind: "text",
-    minLength: 1,
-    maxLength: 256,
   },
   "ExternalOrganisationIdentification1Code": {
     name: "ExternalOrganisationIdentification1Code",
@@ -5079,24 +6297,24 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Proprietary", isoId: "_QACaRNp-Ed-ak6NoX_4Aeg_362604483", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
     ],
   },
-  "GenericOrganisationIdentification3": {
-    name: "GenericOrganisationIdentification3",
-    isoId: "_bM2KRzFIEe651u5xu3f5iw",
+  "GenericOrganisationIdentification1": {
+    name: "GenericOrganisationIdentification1",
+    isoId: "_QACaRdp-Ed-ak6NoX_4Aeg_-322320404",
     kind: "component",
     fields: [
-      f({ name: "Identification", isoId: "_bPnKYTFIEe651u5xu3f5iw", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max256Text", required: true }),
-      f({ name: "SchemeName", isoId: "_bPnKYzFIEe651u5xu3f5iw", xmlTag: "SchmeNm", displayName: displayName("SchemeName"), kind: "choice", type: "OrganisationIdentificationSchemeName1Choice", required: false }),
-      f({ name: "Issuer", isoId: "_bPnKZTFIEe651u5xu3f5iw", xmlTag: "Issr", displayName: displayName("Issuer"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "Identification", isoId: "_QACaRtp-Ed-ak6NoX_4Aeg_-322320394", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "SchemeName", isoId: "_QACaR9p-Ed-ak6NoX_4Aeg_324738129", xmlTag: "SchmeNm", displayName: displayName("SchemeName"), kind: "choice", type: "OrganisationIdentificationSchemeName1Choice", required: false }),
+      f({ name: "Issuer", isoId: "_QACaSNp-Ed-ak6NoX_4Aeg_-322320342", xmlTag: "Issr", displayName: displayName("Issuer"), kind: "text", type: "Max35Text", required: false }),
     ],
   },
-  "OrganisationIdentification39": {
-    name: "OrganisationIdentification39",
-    isoId: "_bKD8BTFIEe651u5xu3f5iw",
+  "OrganisationIdentification29": {
+    name: "OrganisationIdentification29",
+    isoId: "_6VggQW48EeiU9cctagi5ow",
     kind: "component",
     fields: [
-      f({ name: "AnyBIC", isoId: "_bM2KQTFIEe651u5xu3f5iw", xmlTag: "AnyBIC", displayName: displayName("AnyBIC"), kind: "text", type: "AnyBICDec2014Identifier", required: false }),
-      f({ name: "LEI", isoId: "_bM2KQzFIEe651u5xu3f5iw", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
-      f({ name: "Other", isoId: "_bM2KRTFIEe651u5xu3f5iw", xmlTag: "Othr", displayName: displayName("Other"), kind: "component", type: "GenericOrganisationIdentification3", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "AnyBIC", isoId: "_6emK0248EeiU9cctagi5ow", xmlTag: "AnyBIC", displayName: displayName("AnyBIC"), kind: "text", type: "AnyBICDec2014Identifier", required: false }),
+      f({ name: "LEI", isoId: "_XzdQ4XRwEeiH1ZOt2UD8vQ", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
+      f({ name: "Other", isoId: "_6emK1W48EeiU9cctagi5ow", xmlTag: "Othr", displayName: displayName("Other"), kind: "component", type: "GenericOrganisationIdentification1", required: false, repeat: { min: 0, max: null } }),
     ],
   },
   "ISODate": {
@@ -5132,32 +6350,32 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Proprietary", isoId: "_P_4pRdp-Ed-ak6NoX_4Aeg_2056543469", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
     ],
   },
-  "GenericPersonIdentification2": {
-    name: "GenericPersonIdentification2",
-    isoId: "__Aaz9TFLEe651u5xu3f5iw",
+  "GenericPersonIdentification1": {
+    name: "GenericPersonIdentification1",
+    isoId: "_P_4pRtp-Ed-ak6NoX_4Aeg_-893603485",
     kind: "component",
     fields: [
-      f({ name: "Identification", isoId: "__DYoYTFLEe651u5xu3f5iw", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max256Text", required: true }),
-      f({ name: "SchemeName", isoId: "__DYoYzFLEe651u5xu3f5iw", xmlTag: "SchmeNm", displayName: displayName("SchemeName"), kind: "choice", type: "PersonIdentificationSchemeName1Choice", required: false }),
-      f({ name: "Issuer", isoId: "__DYoZTFLEe651u5xu3f5iw", xmlTag: "Issr", displayName: displayName("Issuer"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "Identification", isoId: "_P_4pR9p-Ed-ak6NoX_4Aeg_-740298453", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "SchemeName", isoId: "_QACaQNp-Ed-ak6NoX_4Aeg_2131347934", xmlTag: "SchmeNm", displayName: displayName("SchemeName"), kind: "choice", type: "PersonIdentificationSchemeName1Choice", required: false }),
+      f({ name: "Issuer", isoId: "_QACaQdp-Ed-ak6NoX_4Aeg_-740298392", xmlTag: "Issr", displayName: displayName("Issuer"), kind: "text", type: "Max35Text", required: false }),
     ],
   },
-  "PersonIdentification18": {
-    name: "PersonIdentification18",
-    isoId: "_-9oltTFLEe651u5xu3f5iw",
+  "PersonIdentification13": {
+    name: "PersonIdentification13",
+    isoId: "_jJrTQa9UEeeJJK1oRb-jTw",
     kind: "component",
     fields: [
-      f({ name: "DateAndPlaceOfBirth", isoId: "__Aaz8TFLEe651u5xu3f5iw", xmlTag: "DtAndPlcOfBirth", displayName: displayName("DateAndPlaceOfBirth"), kind: "component", type: "DateAndPlaceOfBirth1", required: false }),
-      f({ name: "Other", isoId: "__Aaz8zFLEe651u5xu3f5iw", xmlTag: "Othr", displayName: displayName("Other"), kind: "component", type: "GenericPersonIdentification2", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "DateAndPlaceOfBirth", isoId: "_jU7hA69UEeeJJK1oRb-jTw", xmlTag: "DtAndPlcOfBirth", displayName: displayName("DateAndPlaceOfBirth"), kind: "component", type: "DateAndPlaceOfBirth1", required: false }),
+      f({ name: "Other", isoId: "_jU7hBa9UEeeJJK1oRb-jTw", xmlTag: "Othr", displayName: displayName("Other"), kind: "component", type: "GenericPersonIdentification1", required: false, repeat: { min: 0, max: null } }),
     ],
   },
-  "Party52Choice": {
-    name: "Party52Choice",
-    isoId: "_bHNcUTFIEe651u5xu3f5iw",
+  "Party38Choice": {
+    name: "Party38Choice",
+    isoId: "_6L-JzW48EeiU9cctagi5ow",
     kind: "choice",
     choiceOptions: [
-      f({ name: "OrganisationIdentification", isoId: "_bKD8ATFIEe651u5xu3f5iw", xmlTag: "OrgId", displayName: displayName("OrganisationIdentification"), kind: "component", type: "OrganisationIdentification39", required: true }),
-      f({ name: "PrivateIdentification", isoId: "_bKD8AzFIEe651u5xu3f5iw", xmlTag: "PrvtId", displayName: displayName("PrivateIdentification"), kind: "component", type: "PersonIdentification18", required: true }),
+      f({ name: "OrganisationIdentification", isoId: "_6VWvQ248EeiU9cctagi5ow", xmlTag: "OrgId", displayName: displayName("OrganisationIdentification"), kind: "component", type: "OrganisationIdentification29", required: true }),
+      f({ name: "PrivateIdentification", isoId: "_6VWvRW48EeiU9cctagi5ow", xmlTag: "PrvtId", displayName: displayName("PrivateIdentification"), kind: "component", type: "PersonIdentification13", required: true }),
     ],
   },
   "NamePrefix2Code": {
@@ -5202,42 +6420,41 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Identification", isoId: "_6SokS5qlEeGSON8vddiWzQ_938910947", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max128Text", required: false }),
     ],
   },
-  "PreferredContactMethod2Code": {
-    name: "PreferredContactMethod2Code",
-    isoId: "_OQ1V0DIDEe6mzvR3CHiUhA",
+  "PreferredContactMethod1Code": {
+    name: "PreferredContactMethod1Code",
+    isoId: "_6UHyApqlEeGSON8vddiWzQ_1788250895",
     kind: "code",
-    options: [{ value: "MAIL", name: "Email", isoId: "_Ri2gMTIDEe6mzvR3CHiUhA" }, { value: "FAXX", name: "Fax", isoId: "_RoX5YTIDEe6mzvR3CHiUhA" }, { value: "LETT", name: "Letter", isoId: "_RtfC4TIDEe6mzvR3CHiUhA" }, { value: "CELL", name: "MobileOrCellPhone", isoId: "_RyuIMTIDEe6mzvR3CHiUhA" }, { value: "ONLI", name: "Online", isoId: "_R3wZMTIDEe6mzvR3CHiUhA" }, { value: "PHON", name: "Phone", isoId: "_R8yqMTIDEe6mzvR3CHiUhA" }],
+    options: [{ value: "LETT", name: "Letter", isoId: "_6UHyA5qlEeGSON8vddiWzQ_-970786773" }, { value: "MAIL", name: "Email", isoId: "_6UHyBJqlEeGSON8vddiWzQ_496361990" }, { value: "PHON", name: "Phone", isoId: "_6UHyBZqlEeGSON8vddiWzQ_37862079" }, { value: "FAXX", name: "Fax", isoId: "_6UHyBpqlEeGSON8vddiWzQ_1934398803" }, { value: "CELL", name: "MobileOrCellPhone", isoId: "_6UHyB5qlEeGSON8vddiWzQ_-1355658363" }],
   },
-  "Contact13": {
-    name: "Contact13",
-    isoId: "_YinuxzE_Ee62xuUQ2zyZww",
+  "Contact4": {
+    name: "Contact4",
+    isoId: "_q1hc0W4_EeiU9cctagi5ow",
     kind: "component",
     fields: [
-      f({ name: "NamePrefix", isoId: "_YlNIsjE_Ee62xuUQ2zyZww", xmlTag: "NmPrfx", displayName: displayName("NamePrefix"), kind: "code", type: "NamePrefix2Code", required: false }),
-      f({ name: "Name", isoId: "_YlNItDE_Ee62xuUQ2zyZww", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max140Text", required: false }),
-      f({ name: "PhoneNumber", isoId: "_YlNItjE_Ee62xuUQ2zyZww", xmlTag: "PhneNb", displayName: displayName("PhoneNumber"), kind: "text", type: "PhoneNumber", required: false }),
-      f({ name: "MobileNumber", isoId: "_YlNIuDE_Ee62xuUQ2zyZww", xmlTag: "MobNb", displayName: displayName("MobileNumber"), kind: "text", type: "PhoneNumber", required: false }),
-      f({ name: "FaxNumber", isoId: "_YlNIujE_Ee62xuUQ2zyZww", xmlTag: "FaxNb", displayName: displayName("FaxNumber"), kind: "text", type: "PhoneNumber", required: false }),
-      f({ name: "URLAddress", isoId: "_tZUA0THvEe6BxvG014AZzQ", xmlTag: "URLAdr", displayName: displayName("URLAddress"), kind: "text", type: "Max2048Text", required: false }),
-      f({ name: "EmailAddress", isoId: "_YlNIvDE_Ee62xuUQ2zyZww", xmlTag: "EmailAdr", displayName: displayName("EmailAddress"), kind: "text", type: "Max256Text", required: false }),
-      f({ name: "EmailPurpose", isoId: "_YlNIvjE_Ee62xuUQ2zyZww", xmlTag: "EmailPurp", displayName: displayName("EmailPurpose"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "JobTitle", isoId: "_YlNIwDE_Ee62xuUQ2zyZww", xmlTag: "JobTitl", displayName: displayName("JobTitle"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "Responsibility", isoId: "_YlNIwjE_Ee62xuUQ2zyZww", xmlTag: "Rspnsblty", displayName: displayName("Responsibility"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "Department", isoId: "_YlNIxDE_Ee62xuUQ2zyZww", xmlTag: "Dept", displayName: displayName("Department"), kind: "text", type: "Max70Text", required: false }),
-      f({ name: "Other", isoId: "_YlNIxjE_Ee62xuUQ2zyZww", xmlTag: "Othr", displayName: displayName("Other"), kind: "component", type: "OtherContact1", required: false, repeat: { min: 0, max: null } }),
-      f({ name: "PreferredMethod", isoId: "_YlNIyDE_Ee62xuUQ2zyZww", xmlTag: "PrefrdMtd", displayName: displayName("PreferredMethod"), kind: "code", type: "PreferredContactMethod2Code", required: false }),
+      f({ name: "NamePrefix", isoId: "_q-wRU24_EeiU9cctagi5ow", xmlTag: "NmPrfx", displayName: displayName("NamePrefix"), kind: "code", type: "NamePrefix2Code", required: false }),
+      f({ name: "Name", isoId: "_q-wRVW4_EeiU9cctagi5ow", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max140Text", required: false }),
+      f({ name: "PhoneNumber", isoId: "_q-wRV24_EeiU9cctagi5ow", xmlTag: "PhneNb", displayName: displayName("PhoneNumber"), kind: "text", type: "PhoneNumber", required: false }),
+      f({ name: "MobileNumber", isoId: "_q-wRWW4_EeiU9cctagi5ow", xmlTag: "MobNb", displayName: displayName("MobileNumber"), kind: "text", type: "PhoneNumber", required: false }),
+      f({ name: "FaxNumber", isoId: "_q-wRW24_EeiU9cctagi5ow", xmlTag: "FaxNb", displayName: displayName("FaxNumber"), kind: "text", type: "PhoneNumber", required: false }),
+      f({ name: "EmailAddress", isoId: "_q-wRXW4_EeiU9cctagi5ow", xmlTag: "EmailAdr", displayName: displayName("EmailAddress"), kind: "text", type: "Max2048Text", required: false }),
+      f({ name: "EmailPurpose", isoId: "_6a6f0b18Eeiut6mmSKzDFQ", xmlTag: "EmailPurp", displayName: displayName("EmailPurpose"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "JobTitle", isoId: "_65ANYXRnEeiH1ZOt2UD8vQ", xmlTag: "JobTitl", displayName: displayName("JobTitle"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "Responsibility", isoId: "_65ANYnRnEeiH1ZOt2UD8vQ", xmlTag: "Rspnsblty", displayName: displayName("Responsibility"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "Department", isoId: "_65ANY3RnEeiH1ZOt2UD8vQ", xmlTag: "Dept", displayName: displayName("Department"), kind: "text", type: "Max70Text", required: false }),
+      f({ name: "Other", isoId: "_A96WInRoEeiH1ZOt2UD8vQ", xmlTag: "Othr", displayName: displayName("Other"), kind: "component", type: "OtherContact1", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "PreferredMethod", isoId: "_A96WI3RoEeiH1ZOt2UD8vQ", xmlTag: "PrefrdMtd", displayName: displayName("PreferredMethod"), kind: "code", type: "PreferredContactMethod1Code", required: false }),
     ],
   },
-  "PartyIdentification272": {
-    name: "PartyIdentification272",
-    isoId: "_vtFWJTEyEe6g-ffJsqGiSA",
+  "PartyIdentification135": {
+    name: "PartyIdentification135",
+    isoId: "_6ClkRW48EeiU9cctagi5ow",
     kind: "component",
     fields: [
-      f({ name: "Name", isoId: "_vvZqUzEyEe6g-ffJsqGiSA", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max140Text", required: false }),
-      f({ name: "PostalAddress", isoId: "_vvZqVTEyEe6g-ffJsqGiSA", xmlTag: "PstlAdr", displayName: displayName("PostalAddress"), kind: "component", type: "PostalAddress27", required: false }),
-      f({ name: "Identification", isoId: "_vvZqVzEyEe6g-ffJsqGiSA", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "Party52Choice", required: false }),
-      f({ name: "CountryOfResidence", isoId: "_vvZqWTEyEe6g-ffJsqGiSA", xmlTag: "CtryOfRes", displayName: displayName("CountryOfResidence"), kind: "code", type: "CountryCode", required: false }),
-      f({ name: "ContactDetails", isoId: "_vvZqWzEyEe6g-ffJsqGiSA", xmlTag: "CtctDtls", displayName: displayName("ContactDetails"), kind: "component", type: "Contact13", required: false }),
+      f({ name: "Name", isoId: "_6L-Jw248EeiU9cctagi5ow", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max140Text", required: false }),
+      f({ name: "PostalAddress", isoId: "_6L-JxW48EeiU9cctagi5ow", xmlTag: "PstlAdr", displayName: displayName("PostalAddress"), kind: "component", type: "PostalAddress24", required: false }),
+      f({ name: "Identification", isoId: "_6L-Jx248EeiU9cctagi5ow", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "Party38Choice", required: false }),
+      f({ name: "CountryOfResidence", isoId: "_6L-JyW48EeiU9cctagi5ow", xmlTag: "CtryOfRes", displayName: displayName("CountryOfResidence"), kind: "code", type: "CountryCode", required: false }),
+      f({ name: "ContactDetails", isoId: "_6L-Jy248EeiU9cctagi5ow", xmlTag: "CtctDtls", displayName: displayName("ContactDetails"), kind: "component", type: "Contact4", required: false }),
     ],
   },
   "BICFIDec2014Identifier": {
@@ -5299,37 +6516,37 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Issuer", isoId: "_QALkNtp-Ed-ak6NoX_4Aeg_-2141717116", xmlTag: "Issr", displayName: displayName("Issuer"), kind: "text", type: "Max35Text", required: false }),
     ],
   },
-  "FinancialInstitutionIdentification23": {
-    name: "FinancialInstitutionIdentification23",
-    isoId: "_v2tzSTEyEe6g-ffJsqGiSA",
+  "FinancialInstitutionIdentification18": {
+    name: "FinancialInstitutionIdentification18",
+    isoId: "_8xXCNW49EeiU9cctagi5ow",
     kind: "component",
     fields: [
-      f({ name: "BICFI", isoId: "_v5D8oTEyEe6g-ffJsqGiSA", xmlTag: "BICFI", displayName: displayName("BICFI"), kind: "text", type: "BICFIDec2014Identifier", required: false }),
-      f({ name: "ClearingSystemMemberIdentification", isoId: "_v5D8ozEyEe6g-ffJsqGiSA", xmlTag: "ClrSysMmbId", displayName: displayName("ClearingSystemMemberIdentification"), kind: "component", type: "ClearingSystemMemberIdentification2", required: false }),
-      f({ name: "LEI", isoId: "_v5D8pTEyEe6g-ffJsqGiSA", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
-      f({ name: "Name", isoId: "_v5D8pzEyEe6g-ffJsqGiSA", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max140Text", required: false }),
-      f({ name: "PostalAddress", isoId: "_v5D8qTEyEe6g-ffJsqGiSA", xmlTag: "PstlAdr", displayName: displayName("PostalAddress"), kind: "component", type: "PostalAddress27", required: false }),
-      f({ name: "Other", isoId: "_v5D8qzEyEe6g-ffJsqGiSA", xmlTag: "Othr", displayName: displayName("Other"), kind: "component", type: "GenericFinancialIdentification1", required: false }),
+      f({ name: "BICFI", isoId: "_87o_kW49EeiU9cctagi5ow", xmlTag: "BICFI", displayName: displayName("BICFI"), kind: "text", type: "BICFIDec2014Identifier", required: false }),
+      f({ name: "ClearingSystemMemberIdentification", isoId: "_87o_k249EeiU9cctagi5ow", xmlTag: "ClrSysMmbId", displayName: displayName("ClearingSystemMemberIdentification"), kind: "component", type: "ClearingSystemMemberIdentification2", required: false }),
+      f({ name: "LEI", isoId: "_b1ZcUXRwEeiH1ZOt2UD8vQ", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
+      f({ name: "Name", isoId: "_87o_lW49EeiU9cctagi5ow", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max140Text", required: false }),
+      f({ name: "PostalAddress", isoId: "_87o_l249EeiU9cctagi5ow", xmlTag: "PstlAdr", displayName: displayName("PostalAddress"), kind: "component", type: "PostalAddress24", required: false }),
+      f({ name: "Other", isoId: "_87o_mW49EeiU9cctagi5ow", xmlTag: "Othr", displayName: displayName("Other"), kind: "component", type: "GenericFinancialIdentification1", required: false }),
     ],
   },
-  "BranchData5": {
-    name: "BranchData5",
-    isoId: "_v0bUQTEyEe6g-ffJsqGiSA",
+  "BranchData3": {
+    name: "BranchData3",
+    isoId: "_-2V8QW4-EeiU9cctagi5ow",
     kind: "component",
     fields: [
-      f({ name: "Identification", isoId: "_v2tzQTEyEe6g-ffJsqGiSA", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "LEI", isoId: "_v2tzQzEyEe6g-ffJsqGiSA", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
-      f({ name: "Name", isoId: "_v2tzRTEyEe6g-ffJsqGiSA", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max140Text", required: false }),
-      f({ name: "PostalAddress", isoId: "_v2tzRzEyEe6g-ffJsqGiSA", xmlTag: "PstlAdr", displayName: displayName("PostalAddress"), kind: "component", type: "PostalAddress27", required: false }),
+      f({ name: "Identification", isoId: "__CsWM24-EeiU9cctagi5ow", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "LEI", isoId: "_mxjV8XRyEeiH1ZOt2UD8vQ", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
+      f({ name: "Name", isoId: "__CsWNW4-EeiU9cctagi5ow", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max140Text", required: false }),
+      f({ name: "PostalAddress", isoId: "__CsWN24-EeiU9cctagi5ow", xmlTag: "PstlAdr", displayName: displayName("PostalAddress"), kind: "component", type: "PostalAddress24", required: false }),
     ],
   },
-  "BranchAndFinancialInstitutionIdentification8": {
-    name: "BranchAndFinancialInstitutionIdentification8",
-    isoId: "_vxnQ0TEyEe6g-ffJsqGiSA",
+  "BranchAndFinancialInstitutionIdentification6": {
+    name: "BranchAndFinancialInstitutionIdentification6",
+    isoId: "_8nO10W49EeiU9cctagi5ow",
     kind: "component",
     fields: [
-      f({ name: "FinancialInstitutionIdentification", isoId: "_v0atMTEyEe6g-ffJsqGiSA", xmlTag: "FinInstnId", displayName: displayName("FinancialInstitutionIdentification"), kind: "component", type: "FinancialInstitutionIdentification23", required: true }),
-      f({ name: "BranchIdentification", isoId: "_v0atMzEyEe6g-ffJsqGiSA", xmlTag: "BrnchId", displayName: displayName("BranchIdentification"), kind: "component", type: "BranchData5", required: false }),
+      f({ name: "FinancialInstitutionIdentification", isoId: "_8xXCMW49EeiU9cctagi5ow", xmlTag: "FinInstnId", displayName: displayName("FinancialInstitutionIdentification"), kind: "component", type: "FinancialInstitutionIdentification18", required: true }),
+      f({ name: "BranchIdentification", isoId: "_8xXCM249EeiU9cctagi5ow", xmlTag: "BrnchId", displayName: displayName("BranchIdentification"), kind: "component", type: "BranchData3", required: false }),
     ],
   },
   "ExternalCashAccountType1Code": {
@@ -5455,6 +6672,176 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Proprietary", isoId: "_iQq8Nz2OEeS6DKIV6SF6gw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max70Text", required: true }),
     ],
   },
+  "AmendmentInformationDetails14": {
+    name: "AmendmentInformationDetails14",
+    isoId: "_a5rpG9cZEeqRFcf2R4bPBw",
+    kind: "component",
+    fields: [
+      f({ name: "OriginalMandateIdentification", isoId: "_a7EwMdcZEeqRFcf2R4bPBw", xmlTag: "OrgnlMndtId", displayName: displayName("OriginalMandateIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "OriginalCreditorSchemeIdentification", isoId: "_a7EwM9cZEeqRFcf2R4bPBw", xmlTag: "OrgnlCdtrSchmeId", displayName: displayName("OriginalCreditorSchemeIdentification"), kind: "component", type: "PartyIdentification135", required: false }),
+      f({ name: "OriginalCreditorAgent", isoId: "_a7EwNdcZEeqRFcf2R4bPBw", xmlTag: "OrgnlCdtrAgt", displayName: displayName("OriginalCreditorAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification6", required: false }),
+      f({ name: "OriginalCreditorAgentAccount", isoId: "_a7EwN9cZEeqRFcf2R4bPBw", xmlTag: "OrgnlCdtrAgtAcct", displayName: displayName("OriginalCreditorAgentAccount"), kind: "component", type: "CashAccount40", required: false }),
+      f({ name: "OriginalDebtor", isoId: "_a7EwOdcZEeqRFcf2R4bPBw", xmlTag: "OrgnlDbtr", displayName: displayName("OriginalDebtor"), kind: "component", type: "PartyIdentification135", required: false }),
+      f({ name: "OriginalDebtorAccount", isoId: "_a7EwO9cZEeqRFcf2R4bPBw", xmlTag: "OrgnlDbtrAcct", displayName: displayName("OriginalDebtorAccount"), kind: "component", type: "CashAccount40", required: false }),
+      f({ name: "OriginalDebtorAgent", isoId: "_a7EwPdcZEeqRFcf2R4bPBw", xmlTag: "OrgnlDbtrAgt", displayName: displayName("OriginalDebtorAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification6", required: false }),
+      f({ name: "OriginalDebtorAgentAccount", isoId: "_a7EwP9cZEeqRFcf2R4bPBw", xmlTag: "OrgnlDbtrAgtAcct", displayName: displayName("OriginalDebtorAgentAccount"), kind: "component", type: "CashAccount40", required: false }),
+      f({ name: "OriginalFinalCollectionDate", isoId: "_a7EwQdcZEeqRFcf2R4bPBw", xmlTag: "OrgnlFnlColltnDt", displayName: displayName("OriginalFinalCollectionDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "OriginalFrequency", isoId: "_a7EwQ9cZEeqRFcf2R4bPBw", xmlTag: "OrgnlFrqcy", displayName: displayName("OriginalFrequency"), kind: "choice", type: "Frequency36Choice", required: false }),
+      f({ name: "OriginalReason", isoId: "_a7EwRdcZEeqRFcf2R4bPBw", xmlTag: "OrgnlRsn", displayName: displayName("OriginalReason"), kind: "choice", type: "MandateSetupReason1Choice", required: false }),
+      f({ name: "OriginalTrackingDays", isoId: "_a7EwR9cZEeqRFcf2R4bPBw", xmlTag: "OrgnlTrckgDays", displayName: displayName("OriginalTrackingDays"), kind: "text", type: "Exact2NumericText", required: false }),
+    ],
+  },
+  "PostalAddress27": {
+    name: "PostalAddress27",
+    isoId: "_vvaRYTEyEe6g-ffJsqGiSA",
+    kind: "component",
+    fields: [
+      f({ name: "AddressType", isoId: "_vxk0kTEyEe6g-ffJsqGiSA", xmlTag: "AdrTp", displayName: displayName("AddressType"), kind: "choice", type: "AddressType3Choice", required: false }),
+      f({ name: "CareOf", isoId: "_5-dq0DHsEe6BxvG014AZzQ", xmlTag: "CareOf", displayName: displayName("CareOf"), kind: "text", type: "Max140Text", required: false }),
+      f({ name: "Department", isoId: "_vxk0kzEyEe6g-ffJsqGiSA", xmlTag: "Dept", displayName: displayName("Department"), kind: "text", type: "Max70Text", required: false }),
+      f({ name: "SubDepartment", isoId: "_vxk0lTEyEe6g-ffJsqGiSA", xmlTag: "SubDept", displayName: displayName("SubDepartment"), kind: "text", type: "Max70Text", required: false }),
+      f({ name: "StreetName", isoId: "_vxk0lzEyEe6g-ffJsqGiSA", xmlTag: "StrtNm", displayName: displayName("StreetName"), kind: "text", type: "Max140Text", required: false }),
+      f({ name: "BuildingNumber", isoId: "_vxk0mTEyEe6g-ffJsqGiSA", xmlTag: "BldgNb", displayName: displayName("BuildingNumber"), kind: "text", type: "Max16Text", required: false }),
+      f({ name: "BuildingName", isoId: "_vxk0mzEyEe6g-ffJsqGiSA", xmlTag: "BldgNm", displayName: displayName("BuildingName"), kind: "text", type: "Max140Text", required: false }),
+      f({ name: "Floor", isoId: "_vxk0nTEyEe6g-ffJsqGiSA", xmlTag: "Flr", displayName: displayName("Floor"), kind: "text", type: "Max70Text", required: false }),
+      f({ name: "UnitNumber", isoId: "_kWPIsDHtEe6BxvG014AZzQ", xmlTag: "UnitNb", displayName: displayName("UnitNumber"), kind: "text", type: "Max16Text", required: false }),
+      f({ name: "PostBox", isoId: "_vxk0nzEyEe6g-ffJsqGiSA", xmlTag: "PstBx", displayName: displayName("PostBox"), kind: "text", type: "Max16Text", required: false }),
+      f({ name: "Room", isoId: "_vxk0oTEyEe6g-ffJsqGiSA", xmlTag: "Room", displayName: displayName("Room"), kind: "text", type: "Max70Text", required: false }),
+      f({ name: "PostCode", isoId: "_vxk0ozEyEe6g-ffJsqGiSA", xmlTag: "PstCd", displayName: displayName("PostCode"), kind: "text", type: "Max16Text", required: false }),
+      f({ name: "TownName", isoId: "_vxk0pTEyEe6g-ffJsqGiSA", xmlTag: "TwnNm", displayName: displayName("TownName"), kind: "text", type: "Max140Text", required: false }),
+      f({ name: "TownLocationName", isoId: "_vxk0pzEyEe6g-ffJsqGiSA", xmlTag: "TwnLctnNm", displayName: displayName("TownLocationName"), kind: "text", type: "Max140Text", required: false }),
+      f({ name: "DistrictName", isoId: "_vxk0qTEyEe6g-ffJsqGiSA", xmlTag: "DstrctNm", displayName: displayName("DistrictName"), kind: "text", type: "Max140Text", required: false }),
+      f({ name: "CountrySubDivision", isoId: "_vxk0qzEyEe6g-ffJsqGiSA", xmlTag: "CtrySubDvsn", displayName: displayName("CountrySubDivision"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "Country", isoId: "_vxlboTEyEe6g-ffJsqGiSA", xmlTag: "Ctry", displayName: displayName("Country"), kind: "code", type: "CountryCode", required: false }),
+      f({ name: "AddressLine", isoId: "_vxlbozEyEe6g-ffJsqGiSA", xmlTag: "AdrLine", displayName: displayName("AddressLine"), kind: "text", type: "Max70Text", required: false, repeat: { min: 0, max: 7 } }),
+    ],
+  },
+  "Max256Text": {
+    name: "Max256Text",
+    isoId: "_YXvFAtp-Ed-ak6NoX_4Aeg_582144276",
+    kind: "text",
+    minLength: 1,
+    maxLength: 256,
+  },
+  "GenericOrganisationIdentification3": {
+    name: "GenericOrganisationIdentification3",
+    isoId: "_bM2KRzFIEe651u5xu3f5iw",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_bPnKYTFIEe651u5xu3f5iw", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max256Text", required: true }),
+      f({ name: "SchemeName", isoId: "_bPnKYzFIEe651u5xu3f5iw", xmlTag: "SchmeNm", displayName: displayName("SchemeName"), kind: "choice", type: "OrganisationIdentificationSchemeName1Choice", required: false }),
+      f({ name: "Issuer", isoId: "_bPnKZTFIEe651u5xu3f5iw", xmlTag: "Issr", displayName: displayName("Issuer"), kind: "text", type: "Max35Text", required: false }),
+    ],
+  },
+  "OrganisationIdentification39": {
+    name: "OrganisationIdentification39",
+    isoId: "_bKD8BTFIEe651u5xu3f5iw",
+    kind: "component",
+    fields: [
+      f({ name: "AnyBIC", isoId: "_bM2KQTFIEe651u5xu3f5iw", xmlTag: "AnyBIC", displayName: displayName("AnyBIC"), kind: "text", type: "AnyBICDec2014Identifier", required: false }),
+      f({ name: "LEI", isoId: "_bM2KQzFIEe651u5xu3f5iw", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
+      f({ name: "Other", isoId: "_bM2KRTFIEe651u5xu3f5iw", xmlTag: "Othr", displayName: displayName("Other"), kind: "component", type: "GenericOrganisationIdentification3", required: false, repeat: { min: 0, max: null } }),
+    ],
+  },
+  "GenericPersonIdentification2": {
+    name: "GenericPersonIdentification2",
+    isoId: "__Aaz9TFLEe651u5xu3f5iw",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "__DYoYTFLEe651u5xu3f5iw", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max256Text", required: true }),
+      f({ name: "SchemeName", isoId: "__DYoYzFLEe651u5xu3f5iw", xmlTag: "SchmeNm", displayName: displayName("SchemeName"), kind: "choice", type: "PersonIdentificationSchemeName1Choice", required: false }),
+      f({ name: "Issuer", isoId: "__DYoZTFLEe651u5xu3f5iw", xmlTag: "Issr", displayName: displayName("Issuer"), kind: "text", type: "Max35Text", required: false }),
+    ],
+  },
+  "PersonIdentification18": {
+    name: "PersonIdentification18",
+    isoId: "_-9oltTFLEe651u5xu3f5iw",
+    kind: "component",
+    fields: [
+      f({ name: "DateAndPlaceOfBirth", isoId: "__Aaz8TFLEe651u5xu3f5iw", xmlTag: "DtAndPlcOfBirth", displayName: displayName("DateAndPlaceOfBirth"), kind: "component", type: "DateAndPlaceOfBirth1", required: false }),
+      f({ name: "Other", isoId: "__Aaz8zFLEe651u5xu3f5iw", xmlTag: "Othr", displayName: displayName("Other"), kind: "component", type: "GenericPersonIdentification2", required: false, repeat: { min: 0, max: null } }),
+    ],
+  },
+  "Party52Choice": {
+    name: "Party52Choice",
+    isoId: "_bHNcUTFIEe651u5xu3f5iw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "OrganisationIdentification", isoId: "_bKD8ATFIEe651u5xu3f5iw", xmlTag: "OrgId", displayName: displayName("OrganisationIdentification"), kind: "component", type: "OrganisationIdentification39", required: true }),
+      f({ name: "PrivateIdentification", isoId: "_bKD8AzFIEe651u5xu3f5iw", xmlTag: "PrvtId", displayName: displayName("PrivateIdentification"), kind: "component", type: "PersonIdentification18", required: true }),
+    ],
+  },
+  "PreferredContactMethod2Code": {
+    name: "PreferredContactMethod2Code",
+    isoId: "_OQ1V0DIDEe6mzvR3CHiUhA",
+    kind: "code",
+    options: [{ value: "MAIL", name: "Email", isoId: "_Ri2gMTIDEe6mzvR3CHiUhA" }, { value: "FAXX", name: "Fax", isoId: "_RoX5YTIDEe6mzvR3CHiUhA" }, { value: "LETT", name: "Letter", isoId: "_RtfC4TIDEe6mzvR3CHiUhA" }, { value: "CELL", name: "MobileOrCellPhone", isoId: "_RyuIMTIDEe6mzvR3CHiUhA" }, { value: "ONLI", name: "Online", isoId: "_R3wZMTIDEe6mzvR3CHiUhA" }, { value: "PHON", name: "Phone", isoId: "_R8yqMTIDEe6mzvR3CHiUhA" }],
+  },
+  "Contact13": {
+    name: "Contact13",
+    isoId: "_YinuxzE_Ee62xuUQ2zyZww",
+    kind: "component",
+    fields: [
+      f({ name: "NamePrefix", isoId: "_YlNIsjE_Ee62xuUQ2zyZww", xmlTag: "NmPrfx", displayName: displayName("NamePrefix"), kind: "code", type: "NamePrefix2Code", required: false }),
+      f({ name: "Name", isoId: "_YlNItDE_Ee62xuUQ2zyZww", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max140Text", required: false }),
+      f({ name: "PhoneNumber", isoId: "_YlNItjE_Ee62xuUQ2zyZww", xmlTag: "PhneNb", displayName: displayName("PhoneNumber"), kind: "text", type: "PhoneNumber", required: false }),
+      f({ name: "MobileNumber", isoId: "_YlNIuDE_Ee62xuUQ2zyZww", xmlTag: "MobNb", displayName: displayName("MobileNumber"), kind: "text", type: "PhoneNumber", required: false }),
+      f({ name: "FaxNumber", isoId: "_YlNIujE_Ee62xuUQ2zyZww", xmlTag: "FaxNb", displayName: displayName("FaxNumber"), kind: "text", type: "PhoneNumber", required: false }),
+      f({ name: "URLAddress", isoId: "_tZUA0THvEe6BxvG014AZzQ", xmlTag: "URLAdr", displayName: displayName("URLAddress"), kind: "text", type: "Max2048Text", required: false }),
+      f({ name: "EmailAddress", isoId: "_YlNIvDE_Ee62xuUQ2zyZww", xmlTag: "EmailAdr", displayName: displayName("EmailAddress"), kind: "text", type: "Max256Text", required: false }),
+      f({ name: "EmailPurpose", isoId: "_YlNIvjE_Ee62xuUQ2zyZww", xmlTag: "EmailPurp", displayName: displayName("EmailPurpose"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "JobTitle", isoId: "_YlNIwDE_Ee62xuUQ2zyZww", xmlTag: "JobTitl", displayName: displayName("JobTitle"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "Responsibility", isoId: "_YlNIwjE_Ee62xuUQ2zyZww", xmlTag: "Rspnsblty", displayName: displayName("Responsibility"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "Department", isoId: "_YlNIxDE_Ee62xuUQ2zyZww", xmlTag: "Dept", displayName: displayName("Department"), kind: "text", type: "Max70Text", required: false }),
+      f({ name: "Other", isoId: "_YlNIxjE_Ee62xuUQ2zyZww", xmlTag: "Othr", displayName: displayName("Other"), kind: "component", type: "OtherContact1", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "PreferredMethod", isoId: "_YlNIyDE_Ee62xuUQ2zyZww", xmlTag: "PrefrdMtd", displayName: displayName("PreferredMethod"), kind: "code", type: "PreferredContactMethod2Code", required: false }),
+    ],
+  },
+  "PartyIdentification272": {
+    name: "PartyIdentification272",
+    isoId: "_vtFWJTEyEe6g-ffJsqGiSA",
+    kind: "component",
+    fields: [
+      f({ name: "Name", isoId: "_vvZqUzEyEe6g-ffJsqGiSA", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max140Text", required: false }),
+      f({ name: "PostalAddress", isoId: "_vvZqVTEyEe6g-ffJsqGiSA", xmlTag: "PstlAdr", displayName: displayName("PostalAddress"), kind: "component", type: "PostalAddress27", required: false }),
+      f({ name: "Identification", isoId: "_vvZqVzEyEe6g-ffJsqGiSA", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "Party52Choice", required: false }),
+      f({ name: "CountryOfResidence", isoId: "_vvZqWTEyEe6g-ffJsqGiSA", xmlTag: "CtryOfRes", displayName: displayName("CountryOfResidence"), kind: "code", type: "CountryCode", required: false }),
+      f({ name: "ContactDetails", isoId: "_vvZqWzEyEe6g-ffJsqGiSA", xmlTag: "CtctDtls", displayName: displayName("ContactDetails"), kind: "component", type: "Contact13", required: false }),
+    ],
+  },
+  "FinancialInstitutionIdentification23": {
+    name: "FinancialInstitutionIdentification23",
+    isoId: "_v2tzSTEyEe6g-ffJsqGiSA",
+    kind: "component",
+    fields: [
+      f({ name: "BICFI", isoId: "_v5D8oTEyEe6g-ffJsqGiSA", xmlTag: "BICFI", displayName: displayName("BICFI"), kind: "text", type: "BICFIDec2014Identifier", required: false }),
+      f({ name: "ClearingSystemMemberIdentification", isoId: "_v5D8ozEyEe6g-ffJsqGiSA", xmlTag: "ClrSysMmbId", displayName: displayName("ClearingSystemMemberIdentification"), kind: "component", type: "ClearingSystemMemberIdentification2", required: false }),
+      f({ name: "LEI", isoId: "_v5D8pTEyEe6g-ffJsqGiSA", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
+      f({ name: "Name", isoId: "_v5D8pzEyEe6g-ffJsqGiSA", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max140Text", required: false }),
+      f({ name: "PostalAddress", isoId: "_v5D8qTEyEe6g-ffJsqGiSA", xmlTag: "PstlAdr", displayName: displayName("PostalAddress"), kind: "component", type: "PostalAddress27", required: false }),
+      f({ name: "Other", isoId: "_v5D8qzEyEe6g-ffJsqGiSA", xmlTag: "Othr", displayName: displayName("Other"), kind: "component", type: "GenericFinancialIdentification1", required: false }),
+    ],
+  },
+  "BranchData5": {
+    name: "BranchData5",
+    isoId: "_v0bUQTEyEe6g-ffJsqGiSA",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_v2tzQTEyEe6g-ffJsqGiSA", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "LEI", isoId: "_v2tzQzEyEe6g-ffJsqGiSA", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
+      f({ name: "Name", isoId: "_v2tzRTEyEe6g-ffJsqGiSA", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max140Text", required: false }),
+      f({ name: "PostalAddress", isoId: "_v2tzRzEyEe6g-ffJsqGiSA", xmlTag: "PstlAdr", displayName: displayName("PostalAddress"), kind: "component", type: "PostalAddress27", required: false }),
+    ],
+  },
+  "BranchAndFinancialInstitutionIdentification8": {
+    name: "BranchAndFinancialInstitutionIdentification8",
+    isoId: "_vxnQ0TEyEe6g-ffJsqGiSA",
+    kind: "component",
+    fields: [
+      f({ name: "FinancialInstitutionIdentification", isoId: "_v0atMTEyEe6g-ffJsqGiSA", xmlTag: "FinInstnId", displayName: displayName("FinancialInstitutionIdentification"), kind: "component", type: "FinancialInstitutionIdentification23", required: true }),
+      f({ name: "BranchIdentification", isoId: "_v0atMzEyEe6g-ffJsqGiSA", xmlTag: "BrnchId", displayName: displayName("BranchIdentification"), kind: "component", type: "BranchData5", required: false }),
+    ],
+  },
   "AmendmentInformationDetails15": {
     name: "AmendmentInformationDetails15",
     isoId: "_wL-4oTEyEe6g-ffJsqGiSA",
@@ -5570,6 +6957,36 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     fields: [
       f({ name: "Amount", isoId: "_T2Wkhtp-Ed-ak6NoX_4Aeg_-2090791440", xmlTag: "Amt", displayName: displayName("Amount"), kind: "amount", type: "ActiveCurrencyAndAmount", required: true }),
       f({ name: "CreditDebit", isoId: "_T2Wkh9p-Ed-ak6NoX_4Aeg_-2037226790", xmlTag: "CdtDbt", displayName: displayName("CreditDebit"), kind: "code", type: "CreditDebitCode", required: false }),
+    ],
+  },
+  "GenericIdentification37": {
+    name: "GenericIdentification37",
+    isoId: "_ARqNMtokEeC60axPepSq7g_-67133832",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_ARqNM9okEeC60axPepSq7g_-180972898", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "Issuer", isoId: "_ARqNNNokEeC60axPepSq7g_-1178045251", xmlTag: "Issr", displayName: displayName("Issuer"), kind: "text", type: "Max35Text", required: false }),
+    ],
+  },
+  "FinancialInstrumentQuantity1Choice": {
+    name: "FinancialInstrumentQuantity1Choice",
+    isoId: "_SokiyNp-Ed-ak6NoX_4Aeg_-1672157653",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Unit", isoId: "_SotssNp-Ed-ak6NoX_4Aeg_-1672157635", xmlTag: "Unit", displayName: displayName("Unit"), kind: "number", type: "DecimalNumber", required: true }),
+      f({ name: "FaceAmount", isoId: "_Sotssdp-Ed-ak6NoX_4Aeg_-1672157618", xmlTag: "FaceAmt", displayName: displayName("FaceAmount"), kind: "number", type: "ImpliedCurrencyAndAmount", required: true }),
+      f({ name: "AmortisedValue", isoId: "_Sotsstp-Ed-ak6NoX_4Aeg_-1672157600", xmlTag: "AmtsdVal", displayName: displayName("AmortisedValue"), kind: "number", type: "ImpliedCurrencyAndAmount", required: true }),
+    ],
+  },
+  "AmountAndQuantityBreakdown1": {
+    name: "AmountAndQuantityBreakdown1",
+    isoId: "_qHXhcbFMEeqxQ8-YVgMtLw",
+    kind: "component",
+    fields: [
+      f({ name: "LotNumber", isoId: "_qJ54EbFMEeqxQ8-YVgMtLw", xmlTag: "LotNb", displayName: displayName("LotNumber"), kind: "component", type: "GenericIdentification37", required: false }),
+      f({ name: "LotAmount", isoId: "_zq6URLFMEeqxQ8-YVgMtLw", xmlTag: "LotAmt", displayName: displayName("LotAmount"), kind: "component", type: "AmountAndDirection5", required: false }),
+      f({ name: "LotQuantity", isoId: "_qJ54GbFMEeqxQ8-YVgMtLw", xmlTag: "LotQty", displayName: displayName("LotQuantity"), kind: "choice", type: "FinancialInstrumentQuantity1Choice", required: false }),
+      f({ name: "CashSubBalanceType", isoId: "_qJ54IbFMEeqxQ8-YVgMtLw", xmlTag: "CshSubBalTp", displayName: displayName("CashSubBalanceType"), kind: "component", type: "GenericIdentification30", required: false }),
     ],
   },
   "AmountOrRate1Choice": {
@@ -5740,6 +7157,23 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     choiceOptions: [
       f({ name: "Code", isoId: "_DOF0dYakEeeUws0ZryHQ2w", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalBalanceType1Code", required: true }),
       f({ name: "Proprietary", isoId: "_DOF0dIakEeeUws0ZryHQ2w", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
+    ],
+  },
+  "ExternalSystemBalanceType1Code": {
+    name: "ExternalSystemBalanceType1Code",
+    isoId: "_qP4YgXhYEeidzqjNEfehPg",
+    kind: "code",
+    minLength: 1,
+    maxLength: 4,
+    external: true,
+  },
+  "BalanceType11Choice": {
+    name: "BalanceType11Choice",
+    isoId: "_X7FWAXhZEeidzqjNEfehPg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_YGEeA3hZEeidzqjNEfehPg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalSystemBalanceType1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_YGEeBXhZEeidzqjNEfehPg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
     ],
   },
   "BalanceType13": {
@@ -6148,6 +7582,45 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     isoId: "_YYLJ5dp-Ed-ak6NoX_4Aeg_-1084539446",
     kind: "text",
   },
+  "CancelledStatusReason5Code": {
+    name: "CancelledStatusReason5Code",
+    isoId: "_a08HRtp-Ed-ak6NoX_4Aeg_566867564",
+    kind: "code",
+    options: [{ value: "CANI", name: "CancelledByYourself", isoId: "_a08HR9p-Ed-ak6NoX_4Aeg_-2082832297" }, { value: "OTHR", name: "Other", isoId: "_a08HSNp-Ed-ak6NoX_4Aeg_1266449994" }],
+  },
+  "CancellationReason21Choice": {
+    name: "CancellationReason21Choice",
+    isoId: "_MxX5ATs9EeWRTLSN0i0tng",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_NUMSITs9EeWRTLSN0i0tng", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "CancelledStatusReason5Code", required: true }),
+      f({ name: "Proprietary", isoId: "_NUMSKTs9EeWRTLSN0i0tng", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "CancellationReason10": {
+    name: "CancellationReason10",
+    isoId: "_MPmosTs9EeWRTLSN0i0tng",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "_MxX48Ts9EeWRTLSN0i0tng", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "CancellationReason21Choice", required: true }),
+      f({ name: "AdditionalReasonInformation", isoId: "_MxX4-Ts9EeWRTLSN0i0tng", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
+    ],
+  },
+  "CancelledStatusReason13Code": {
+    name: "CancelledStatusReason13Code",
+    isoId: "_MrDa8f5DEeClUvPNHKL9Zw",
+    kind: "code",
+    options: [{ value: "CANI", name: "CancelledByYourself", isoId: "_MrNL9f5DEeClUvPNHKL9Zw" }, { value: "CANS", name: "CancelledBySystem", isoId: "_MrNL-f5DEeClUvPNHKL9Zw" }, { value: "CSUB", name: "CancelledByAgent", isoId: "_MrNL_f5DEeClUvPNHKL9Zw" }, { value: "CXLR", name: "EndOfLife", isoId: "_MrNMAf5DEeClUvPNHKL9Zw" }, { value: "CANT", name: "CancelledDueToTransformation", isoId: "_MrNMBf5DEeClUvPNHKL9Zw" }, { value: "CANZ", name: "CancelledSplitPartialSettlement", isoId: "_MrNMCf5DEeClUvPNHKL9Zw" }, { value: "CORP", name: "CancelledDueToCorporateAction", isoId: "_MrNMDf5DEeClUvPNHKL9Zw" }, { value: "SCEX", name: "SecuritiesNoLongerEligible", isoId: "_MrNMEf5DEeClUvPNHKL9Zw" }, { value: "OTHR", name: "Other", isoId: "_MrNMFf5DEeClUvPNHKL9Zw" }, { value: "CTHP", name: "CancelledByThirdParty", isoId: "_aAG31v8EEeCQhsjxt9aFqg" }],
+  },
+  "CancellationReason19Choice": {
+    name: "CancellationReason19Choice",
+    isoId: "_ilpt4TnuEeWfSKvvZlhRKg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_jGFhYTnuEeWfSKvvZlhRKg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "CancelledStatusReason13Code", required: true }),
+      f({ name: "Proprietary", isoId: "_jGFhaTnuEeWfSKvvZlhRKg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
   "ExternalCancellationReason1Code": {
     name: "ExternalCancellationReason1Code",
     isoId: "_8DT3MUgtEeaGKYpLDboHPQ",
@@ -6163,6 +7636,33 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     choiceOptions: [
       f({ name: "Code", isoId: "_wsiMM0gtEeaGKYpLDboHPQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalCancellationReason1Code", required: true }),
       f({ name: "Proprietary", isoId: "_wsiMNUgtEeaGKYpLDboHPQ", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
+    ],
+  },
+  "CancellationReason9": {
+    name: "CancellationReason9",
+    isoId: "_iFN6QTnuEeWfSKvvZlhRKg",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "_ilpt0TnuEeWfSKvvZlhRKg", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "CancellationReason19Choice", required: true }),
+      f({ name: "AdditionalReasonInformation", isoId: "_ilpt2TnuEeWfSKvvZlhRKg", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
+    ],
+  },
+  "CancellationStatus14Choice": {
+    name: "CancellationStatus14Choice",
+    isoId: "_hlFozznuEeWfSKvvZlhRKg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NoSpecifiedReason", isoId: "_iFEwUTnuEeWfSKvvZlhRKg", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
+      f({ name: "Reason", isoId: "_iFEwWTnuEeWfSKvvZlhRKg", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "CancellationReason9", required: true }),
+    ],
+  },
+  "CancellationStatus15Choice": {
+    name: "CancellationStatus15Choice",
+    isoId: "_LuSEQTs9EeWRTLSN0i0tng",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NoSpecifiedReason", isoId: "_MPmooTs9EeWRTLSN0i0tng", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
+      f({ name: "Reason", isoId: "_MPmoqTs9EeWRTLSN0i0tng", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "CancellationReason10", required: true }),
     ],
   },
   "CardPaymentServiceType2Code": {
@@ -6668,6 +8168,15 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       { name: "ForwardBalanceAndAvailabilityRule", isoId: "_oZe7kYZ5Eee8r9VKRbnJSg", text: "If Type is equal to ForwardAvailable, Availability is not allowed." },
     ],
   },
+  "CashBalanceType3Choice": {
+    name: "CashBalanceType3Choice",
+    isoId: "_NLbXFTqFEemJ3KLLPeYl6g",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_NW5nQTqFEemJ3KLLPeYl6g", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalBalanceType1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_NW5nSTqFEemJ3KLLPeYl6g", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
   "ExternalCashType1Code": {
     name: "ExternalCashType1Code",
     isoId: "_nZGQgFEOEfCinrylqh3nLw",
@@ -6783,6 +8292,15 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     ],
     rules: [
       { name: "AdditionalBalanceRule", isoId: "_-3Z3EWaWEeSQMqOS_ceSQA", text: "If AdditionalBalance is present, then at least one or more elements in the list (AdditionalBalance/TotalUnitsFromUnitOrders, AdditionalBalance/TotalUnitsFromCashOrders, AdditionalBalance/TotalCashFromUnitOrders, AdditionalBalance/TotalCashFromCashOrders) must be present.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/AdditionalBalance/TotalUnitsFromUnitOrders"},{"op":"Presence","path":"/AdditionalBalance/TotalUnitsFromCashOrders"},{"op":"Presence","path":"/AdditionalBalance/TotalCashFromUnitOrders"},{"op":"Presence","path":"/AdditionalBalance/TotalCashFromCashOrders"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/AdditionalBalance"}]}} },
+    ],
+  },
+  "CashSubBalanceTypeAndQuantityBreakdown3": {
+    name: "CashSubBalanceTypeAndQuantityBreakdown3",
+    isoId: "_M_8f0TqFEemJ3KLLPeYl6g",
+    kind: "component",
+    fields: [
+      f({ name: "Type", isoId: "_NLbXETqFEemJ3KLLPeYl6g", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "CashBalanceType3Choice", required: true }),
+      f({ name: "QuantityBreakdown", isoId: "_NLbXEzqFEemJ3KLLPeYl6g", xmlTag: "QtyBrkdwn", displayName: displayName("QuantityBreakdown"), kind: "component", type: "AmountAndQuantityBreakdown1", required: false, repeat: { min: 0, max: null } }),
     ],
   },
   "ExternalCategoryPurpose1Code": {
@@ -6970,12 +8488,70 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Proprietary", isoId: "_TMVXJ9p-Ed-ak6NoX_4Aeg_948374951", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
     ],
   },
+  "StructuredLongPostalAddress1": {
+    name: "StructuredLongPostalAddress1",
+    isoId: "_QGckRNp-Ed-ak6NoX_4Aeg_829983721",
+    kind: "component",
+    fields: [
+      f({ name: "BuildingName", isoId: "_QGckRdp-Ed-ak6NoX_4Aeg_1005453911", xmlTag: "BldgNm", displayName: displayName("BuildingName"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "StreetName", isoId: "_QGckRtp-Ed-ak6NoX_4Aeg_1005453819", xmlTag: "StrtNm", displayName: displayName("StreetName"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "StreetBuildingIdentification", isoId: "_QGluMNp-Ed-ak6NoX_4Aeg_1005453850", xmlTag: "StrtBldgId", displayName: displayName("StreetBuildingIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "Floor", isoId: "_QGluMdp-Ed-ak6NoX_4Aeg_1005454212", xmlTag: "Flr", displayName: displayName("Floor"), kind: "text", type: "Max16Text", required: false }),
+      f({ name: "TownName", isoId: "_QGluMtp-Ed-ak6NoX_4Aeg_1005453881", xmlTag: "TwnNm", displayName: displayName("TownName"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "DistrictName", isoId: "_QGluM9p-Ed-ak6NoX_4Aeg_1005453964", xmlTag: "DstrctNm", displayName: displayName("DistrictName"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "RegionIdentification", isoId: "_QGluNNp-Ed-ak6NoX_4Aeg_1005454644", xmlTag: "RgnId", displayName: displayName("RegionIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "State", isoId: "_QGluNdp-Ed-ak6NoX_4Aeg_1005454674", xmlTag: "Stat", displayName: displayName("State"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "CountyIdentification", isoId: "_QGluNtp-Ed-ak6NoX_4Aeg_1005453942", xmlTag: "CtyId", displayName: displayName("CountyIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "Country", isoId: "_QGluN9p-Ed-ak6NoX_4Aeg_1005453697", xmlTag: "Ctry", displayName: displayName("Country"), kind: "code", type: "CountryCode", required: true }),
+      f({ name: "PostCodeIdentification", isoId: "_QGluONp-Ed-ak6NoX_4Aeg_1005453789", xmlTag: "PstCdId", displayName: displayName("PostCodeIdentification"), kind: "text", type: "Max16Text", required: true }),
+      f({ name: "PostOfficeBox", isoId: "_QGluOdp-Ed-ak6NoX_4Aeg_1005454273", xmlTag: "POB", displayName: displayName("PostOfficeBox"), kind: "text", type: "Max16Text", required: false }),
+    ],
+    rules: [
+      { name: "StreetNameAndOrPostOfficeBoxRule", isoId: "_QGluOtp-Ed-ak6NoX_4Aeg_1062711598", text: "If StreetName is not present, then PostOfficeBox is mandatory. If StreetName is present, then PostOfficeBox is optional." },
+    ],
+  },
+  "LongPostalAddress1Choice": {
+    name: "LongPostalAddress1Choice",
+    isoId: "_QG4pJdp-Ed-ak6NoX_4Aeg_-1972571676",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Unstructured", isoId: "_QG4pJtp-Ed-ak6NoX_4Aeg_-1635487920", xmlTag: "Ustrd", displayName: displayName("Unstructured"), kind: "text", type: "Max140Text", required: true }),
+      f({ name: "Structured", isoId: "_QG4pJ9p-Ed-ak6NoX_4Aeg_-1635487889", xmlTag: "Strd", displayName: displayName("Structured"), kind: "component", type: "StructuredLongPostalAddress1", required: true }),
+    ],
+  },
+  "CommunicationAddress8": {
+    name: "CommunicationAddress8",
+    isoId: "_jVS2x5lCEee-Zps0fZQaFQ",
+    kind: "component",
+    fields: [
+      f({ name: "PostalAddress", isoId: "_jdVYcZlCEee-Zps0fZQaFQ", xmlTag: "PstlAdr", displayName: displayName("PostalAddress"), kind: "choice", type: "LongPostalAddress1Choice", required: true }),
+      f({ name: "PhoneNumber", isoId: "_jdVYc5lCEee-Zps0fZQaFQ", xmlTag: "PhneNb", displayName: displayName("PhoneNumber"), kind: "text", type: "PhoneNumber", required: true }),
+      f({ name: "FaxNumber", isoId: "_jdVYdZlCEee-Zps0fZQaFQ", xmlTag: "FaxNb", displayName: displayName("FaxNumber"), kind: "text", type: "PhoneNumber", required: false }),
+      f({ name: "EmailAddress", isoId: "_jdVYd5lCEee-Zps0fZQaFQ", xmlTag: "EmailAdr", displayName: displayName("EmailAddress"), kind: "text", type: "Max256Text", required: false }),
+    ],
+  },
   "ConsolidatedTapeAssociationIdentifier": {
     name: "ConsolidatedTapeAssociationIdentifier",
     isoId: "_YYLJ5Np-Ed-ak6NoX_4Aeg_1324881707",
     kind: "text",
     minLength: 1,
     maxLength: 35,
+  },
+  "PaymentRole1Code": {
+    name: "PaymentRole1Code",
+    isoId: "_Z7RUUNp-Ed-ak6NoX_4Aeg_-925433456",
+    kind: "code",
+    options: [{ value: "LQMG", name: "LiquidityManager", isoId: "_Z7RUUdp-Ed-ak6NoX_4Aeg_-925433454" }, { value: "LMMG", name: "LimitManager", isoId: "_Z7RUUtp-Ed-ak6NoX_4Aeg_-925433453" }, { value: "PYMG", name: "PaymentManager", isoId: "_Z7RUU9p-Ed-ak6NoX_4Aeg_-925433452" }, { value: "REDR", name: "Reader", isoId: "_Z7RUVNp-Ed-ak6NoX_4Aeg_-925433443" }, { value: "BKMG", name: "BackupManager", isoId: "_Z7RUVdp-Ed-ak6NoX_4Aeg_-925433442" }, { value: "STMG", name: "SettlementManager", isoId: "_Z7RUVtp-Ed-ak6NoX_4Aeg_-925433441" }],
+  },
+  "ContactIdentificationAndAddress1": {
+    name: "ContactIdentificationAndAddress1",
+    isoId: "_jNHLL5lCEee-Zps0fZQaFQ",
+    kind: "component",
+    fields: [
+      f({ name: "Name", isoId: "_jVS2wZlCEee-Zps0fZQaFQ", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "Role", isoId: "_jVS2w5lCEee-Zps0fZQaFQ", xmlTag: "Role", displayName: displayName("Role"), kind: "code", type: "PaymentRole1Code", required: true }),
+      f({ name: "CommunicationAddress", isoId: "_jVS2xZlCEee-Zps0fZQaFQ", xmlTag: "ComAdr", displayName: displayName("CommunicationAddress"), kind: "component", type: "CommunicationAddress8", required: true }),
+    ],
   },
   "EncryptedContent3": {
     name: "EncryptedContent3",
@@ -7667,6 +9243,39 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       { name: "PreviousInstructingAgent3Rule", isoId: "38605b2b-b8a6-4f75-b4a4-bb11b6da04b8", text: "If PreviousInstructingAgent3 is present, then PreviousInstructingAgent2 must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/PreviousInstructingAgent2"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/PreviousInstructingAgent3"}]}} },
     ],
   },
+  "DocumentType3Code": {
+    name: "DocumentType3Code",
+    isoId: "_agEqidp-Ed-ak6NoX_4Aeg_665910872",
+    kind: "code",
+    options: [{ value: "RADM", name: "RemittanceAdviceMessage", isoId: "_agObgNp-Ed-ak6NoX_4Aeg_665911923" }, { value: "RPIN", name: "RelatedPaymentInstruction", isoId: "_agObgdp-Ed-ak6NoX_4Aeg_665911940" }, { value: "FXDR", name: "ForeignExchangeDealReference", isoId: "_agObgtp-Ed-ak6NoX_4Aeg_665912235" }, { value: "DISP", name: "DispatchAdvice", isoId: "_agObg9p-Ed-ak6NoX_4Aeg_665912698" }, { value: "PUOR", name: "PurchaseOrder", isoId: "_agObhNp-Ed-ak6NoX_4Aeg_906952902" }, { value: "SCOR", name: "StructuredCommunicationReference", isoId: "_agObhdp-Ed-ak6NoX_4Aeg_922649765" }],
+  },
+  "CreditorReferenceType1Choice": {
+    name: "CreditorReferenceType1Choice",
+    isoId: "_T3_jStp-Ed-ak6NoX_4Aeg_651436639",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_T4ItMNp-Ed-ak6NoX_4Aeg_651436918", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "DocumentType3Code", required: true }),
+      f({ name: "Proprietary", isoId: "_T4ItMdp-Ed-ak6NoX_4Aeg_651436979", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
+    ],
+  },
+  "CreditorReferenceType2": {
+    name: "CreditorReferenceType2",
+    isoId: "_T4ItMtp-Ed-ak6NoX_4Aeg_604337645",
+    kind: "component",
+    fields: [
+      f({ name: "CodeOrProprietary", isoId: "_T4ItM9p-Ed-ak6NoX_4Aeg_710539957", xmlTag: "CdOrPrtry", displayName: displayName("CodeOrProprietary"), kind: "choice", type: "CreditorReferenceType1Choice", required: true }),
+      f({ name: "Issuer", isoId: "_T4ItNNp-Ed-ak6NoX_4Aeg_604337984", xmlTag: "Issr", displayName: displayName("Issuer"), kind: "text", type: "Max35Text", required: false }),
+    ],
+  },
+  "CreditorReferenceInformation2": {
+    name: "CreditorReferenceInformation2",
+    isoId: "_T3_jR9p-Ed-ak6NoX_4Aeg_252475969",
+    kind: "component",
+    fields: [
+      f({ name: "Type", isoId: "_T3_jSNp-Ed-ak6NoX_4Aeg_252476093", xmlTag: "Tp", displayName: displayName("Type"), kind: "component", type: "CreditorReferenceType2", required: false }),
+      f({ name: "Reference", isoId: "_T3_jSdp-Ed-ak6NoX_4Aeg_252476000", xmlTag: "Ref", displayName: displayName("Reference"), kind: "text", type: "Max35Text", required: false }),
+    ],
+  },
   "HexBinaryText": {
     name: "HexBinaryText",
     isoId: "_fSB70eUrEe-hiLO2BySjZw",
@@ -7785,6 +9394,39 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "DateTime", isoId: "_T6OX6dp-Ed-ak6NoX_4Aeg_1215657156", xmlTag: "DtTm", displayName: displayName("DateTime"), kind: "datetime", type: "ISODateTime", required: true }),
     ],
   },
+  "DatePeriodSearch1Choice": {
+    name: "DatePeriodSearch1Choice",
+    isoId: "_aIDZIYaAEee8r9VKRbnJSg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "FromDate", isoId: "_aQotYYaAEee8r9VKRbnJSg", xmlTag: "FrDt", displayName: displayName("FromDate"), kind: "date", type: "ISODate", required: true }),
+      f({ name: "ToDate", isoId: "_aQotY4aAEee8r9VKRbnJSg", xmlTag: "ToDt", displayName: displayName("ToDate"), kind: "date", type: "ISODate", required: true }),
+      f({ name: "FromToDate", isoId: "_aQotZYaAEee8r9VKRbnJSg", xmlTag: "FrToDt", displayName: displayName("FromToDate"), kind: "component", type: "DatePeriod2", required: true }),
+      f({ name: "EqualDate", isoId: "_aQotZ4aAEee8r9VKRbnJSg", xmlTag: "EQDt", displayName: displayName("EqualDate"), kind: "date", type: "ISODate", required: true }),
+      f({ name: "NotEqualDate", isoId: "_aQotaYaAEee8r9VKRbnJSg", xmlTag: "NEQDt", displayName: displayName("NotEqualDate"), kind: "date", type: "ISODate", required: true }),
+    ],
+  },
+  "DateTimeSearch2Choice": {
+    name: "DateTimeSearch2Choice",
+    isoId: "_68F8RX3sEeibM9CPDGCw0g",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "FromDateTime", isoId: "_7Gq0kX3sEeibM9CPDGCw0g", xmlTag: "FrDtTm", displayName: displayName("FromDateTime"), kind: "datetime", type: "ISODateTime", required: true }),
+      f({ name: "ToDateTime", isoId: "_7Gq0k33sEeibM9CPDGCw0g", xmlTag: "ToDtTm", displayName: displayName("ToDateTime"), kind: "datetime", type: "ISODateTime", required: true }),
+      f({ name: "FromToDateTime", isoId: "_7Gq0lX3sEeibM9CPDGCw0g", xmlTag: "FrToDtTm", displayName: displayName("FromToDateTime"), kind: "component", type: "DateTimePeriod1", required: true }),
+      f({ name: "EqualDateTime", isoId: "_7Gq0l33sEeibM9CPDGCw0g", xmlTag: "EQDtTm", displayName: displayName("EqualDateTime"), kind: "datetime", type: "ISODateTime", required: true }),
+      f({ name: "NotEqualDateTime", isoId: "_7Gq0mX3sEeibM9CPDGCw0g", xmlTag: "NEQDtTm", displayName: displayName("NotEqualDateTime"), kind: "datetime", type: "ISODateTime", required: true }),
+    ],
+  },
+  "DateAndDateTimeSearch5Choice": {
+    name: "DateAndDateTimeSearch5Choice",
+    isoId: "_Ve-bjTp9EemwKdP955WBJQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Date", isoId: "_VptEkTp9EemwKdP955WBJQ", xmlTag: "Dt", displayName: displayName("Date"), kind: "choice", type: "DatePeriodSearch1Choice", required: true }),
+      f({ name: "DateTime", isoId: "_VptEkzp9EemwKdP955WBJQ", xmlTag: "DtTm", displayName: displayName("DateTime"), kind: "choice", type: "DateTimeSearch2Choice", required: true }),
+    ],
+  },
   "DatePeriod2Choice": {
     name: "DatePeriod2Choice",
     isoId: "_jNAKm5lPEee-Zps0fZQaFQ",
@@ -7804,16 +9446,13 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "ToDate", isoId: "_Lx7Og0avEemG5fbqCekzMw", xmlTag: "ToDt", displayName: displayName("ToDate"), kind: "date", type: "ISODate", required: false }),
     ],
   },
-  "DatePeriodSearch1Choice": {
-    name: "DatePeriodSearch1Choice",
-    isoId: "_aIDZIYaAEee8r9VKRbnJSg",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "FromDate", isoId: "_aQotYYaAEee8r9VKRbnJSg", xmlTag: "FrDt", displayName: displayName("FromDate"), kind: "date", type: "ISODate", required: true }),
-      f({ name: "ToDate", isoId: "_aQotY4aAEee8r9VKRbnJSg", xmlTag: "ToDt", displayName: displayName("ToDate"), kind: "date", type: "ISODate", required: true }),
-      f({ name: "FromToDate", isoId: "_aQotZYaAEee8r9VKRbnJSg", xmlTag: "FrToDt", displayName: displayName("FromToDate"), kind: "component", type: "DatePeriod2", required: true }),
-      f({ name: "EqualDate", isoId: "_aQotZ4aAEee8r9VKRbnJSg", xmlTag: "EQDt", displayName: displayName("EqualDate"), kind: "date", type: "ISODate", required: true }),
-      f({ name: "NotEqualDate", isoId: "_aQotaYaAEee8r9VKRbnJSg", xmlTag: "NEQDt", displayName: displayName("NotEqualDate"), kind: "date", type: "ISODate", required: true }),
+  "DatePeriod5": {
+    name: "DatePeriod5",
+    isoId: "_2XduYSVIEe6EvsLBQ6cYtA",
+    kind: "component",
+    fields: [
+      f({ name: "CurrentValueDate", isoId: "_2kEnAyVIEe6EvsLBQ6cYtA", xmlTag: "CurValDt", displayName: displayName("CurrentValueDate"), kind: "date", type: "ISODate", required: true }),
+      f({ name: "RequestedValueDate", isoId: "_2kEnBSVIEe6EvsLBQ6cYtA", xmlTag: "ReqdValDt", displayName: displayName("RequestedValueDate"), kind: "date", type: "ISODate", required: true }),
     ],
   },
   "DateTimePeriod1Choice": {
@@ -7826,16 +9465,37 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "DateTimeRange", isoId: "_xTM9RZlcEeeE1Ya-LgRsuQ", xmlTag: "DtTmRg", displayName: displayName("DateTimeRange"), kind: "component", type: "DateTimePeriod1", required: true }),
     ],
   },
-  "DateTimeSearch2Choice": {
-    name: "DateTimeSearch2Choice",
-    isoId: "_68F8RX3sEeibM9CPDGCw0g",
+  "DeniedReason4Code": {
+    name: "DeniedReason4Code",
+    isoId: "_avRkI9p-Ed-ak6NoX_4Aeg_1049194931",
+    kind: "code",
+    options: [{ value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_avRkJNp-Ed-ak6NoX_4Aeg_271179160" }, { value: "DCAN", name: "DeniedSinceAlreadyCancelled", isoId: "_avRkJdp-Ed-ak6NoX_4Aeg_714167652" }, { value: "DPRG", name: "DeniedSinceInProgress", isoId: "_avRkJtp-Ed-ak6NoX_4Aeg_-1295789206" }, { value: "DREP", name: "DeniedSinceRepoEnded", isoId: "_avRkJ9p-Ed-ak6NoX_4Aeg_118447416" }, { value: "DSET", name: "DeniedSinceAlreadySettled", isoId: "_avRkKNp-Ed-ak6NoX_4Aeg_1767928195" }, { value: "LATE", name: "MarketDeadlineMissed", isoId: "_avbVINp-Ed-ak6NoX_4Aeg_1013178321" }, { value: "OTHR", name: "Other", isoId: "_avbVIdp-Ed-ak6NoX_4Aeg_1002079544" }, { value: "CDRG", name: "ConditionalRegistrar", isoId: "_avbVItp-Ed-ak6NoX_4Aeg_675012735" }, { value: "CDCY", name: "ConditionalCurrency", isoId: "_avbVI9p-Ed-ak6NoX_4Aeg_383054997" }, { value: "CDRE", name: "ConditionalRealignement", isoId: "_avbVJNp-Ed-ak6NoX_4Aeg_561173669" }],
+  },
+  "DeniedReason16Choice": {
+    name: "DeniedReason16Choice",
+    isoId: "_uWhgITs8EeWRTLSN0i0tng",
     kind: "choice",
     choiceOptions: [
-      f({ name: "FromDateTime", isoId: "_7Gq0kX3sEeibM9CPDGCw0g", xmlTag: "FrDtTm", displayName: displayName("FromDateTime"), kind: "datetime", type: "ISODateTime", required: true }),
-      f({ name: "ToDateTime", isoId: "_7Gq0k33sEeibM9CPDGCw0g", xmlTag: "ToDtTm", displayName: displayName("ToDateTime"), kind: "datetime", type: "ISODateTime", required: true }),
-      f({ name: "FromToDateTime", isoId: "_7Gq0lX3sEeibM9CPDGCw0g", xmlTag: "FrToDtTm", displayName: displayName("FromToDateTime"), kind: "component", type: "DateTimePeriod1", required: true }),
-      f({ name: "EqualDateTime", isoId: "_7Gq0l33sEeibM9CPDGCw0g", xmlTag: "EQDtTm", displayName: displayName("EqualDateTime"), kind: "datetime", type: "ISODateTime", required: true }),
-      f({ name: "NotEqualDateTime", isoId: "_7Gq0mX3sEeibM9CPDGCw0g", xmlTag: "NEQDtTm", displayName: displayName("NotEqualDateTime"), kind: "datetime", type: "ISODateTime", required: true }),
+      f({ name: "Code", isoId: "_u4TXcTs8EeWRTLSN0i0tng", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "DeniedReason4Code", required: true }),
+      f({ name: "Proprietary", isoId: "_u4TXeTs8EeWRTLSN0i0tng", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "DeniedReason11": {
+    name: "DeniedReason11",
+    isoId: "_t0nF4Ts8EeWRTLSN0i0tng",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "_uWhgETs8EeWRTLSN0i0tng", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "DeniedReason16Choice", required: true }),
+      f({ name: "AdditionalReasonInformation", isoId: "_uWhgGTs8EeWRTLSN0i0tng", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
+    ],
+  },
+  "DeniedStatus16Choice": {
+    name: "DeniedStatus16Choice",
+    isoId: "_tSPYkTs8EeWRTLSN0i0tng",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NoSpecifiedReason", isoId: "_t0nF0Ts8EeWRTLSN0i0tng", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
+      f({ name: "Reason", isoId: "_t0nF2Ts8EeWRTLSN0i0tng", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "DeniedReason11", required: true }),
     ],
   },
   "MandateRelatedInformation16": {
@@ -7868,6 +9528,32 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "CreditorSchemeIdentification", isoId: "_wwc3ozEyEe6g-ffJsqGiSA", xmlTag: "CdtrSchmeId", displayName: displayName("CreditorSchemeIdentification"), kind: "component", type: "PartyIdentification272", required: false }),
       f({ name: "PreNotificationIdentification", isoId: "_wwc3pTEyEe6g-ffJsqGiSA", xmlTag: "PreNtfctnId", displayName: displayName("PreNotificationIdentification"), kind: "text", type: "Max35Text", required: false }),
       f({ name: "PreNotificationDate", isoId: "_wwc3pzEyEe6g-ffJsqGiSA", xmlTag: "PreNtfctnDt", displayName: displayName("PreNotificationDate"), kind: "date", type: "ISODate", required: false }),
+    ],
+  },
+  "ExternalDiscountAmountType1Code": {
+    name: "ExternalDiscountAmountType1Code",
+    isoId: "_t7boglkyEeGeoaLUQk__nA_611729510",
+    kind: "code",
+    minLength: 1,
+    maxLength: 4,
+    external: true,
+  },
+  "DiscountAmountType1Choice": {
+    name: "DiscountAmountType1Choice",
+    isoId: "_tlhp9FkyEeGeoaLUQk__nA_1969856985",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_tlra8FkyEeGeoaLUQk__nA_1847720881", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalDiscountAmountType1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_tlra8VkyEeGeoaLUQk__nA_-32058975", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
+    ],
+  },
+  "DiscountAmountAndType1": {
+    name: "DiscountAmountAndType1",
+    isoId: "_tlhp8VkyEeGeoaLUQk__nA_1198616303",
+    kind: "component",
+    fields: [
+      f({ name: "Type", isoId: "_tlhp8lkyEeGeoaLUQk__nA_-1773708415", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "DiscountAmountType1Choice", required: false }),
+      f({ name: "Amount", isoId: "_tlhp81kyEeGeoaLUQk__nA_879979740", xmlTag: "Amt", displayName: displayName("Amount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: true }),
     ],
   },
   "DistributionPolicy1Code": {
@@ -7913,6 +9599,37 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     isoId: "_co81cYKXEee7hrXqLO3yQg",
     kind: "any",
   },
+  "PartyAndSignature3": {
+    name: "PartyAndSignature3",
+    isoId: "_Q_AvW3R1EeiH1ZOt2UD8vQ",
+    kind: "component",
+    fields: [
+      f({ name: "Party", isoId: "_RJI7sXR1EeiH1ZOt2UD8vQ", xmlTag: "Pty", displayName: displayName("Party"), kind: "component", type: "PartyIdentification135", required: true }),
+      f({ name: "Signature", isoId: "_RJI7s3R1EeiH1ZOt2UD8vQ", xmlTag: "Sgntr", displayName: displayName("Signature"), kind: "any", type: "SkipPayload", required: true }),
+    ],
+  },
+  "Max10MbBinary": {
+    name: "Max10MbBinary",
+    isoId: "_-Iyy4BidEeSiHrsAOQO6aw",
+    kind: "text",
+    maxLength: 10485760,
+  },
+  "Document12": {
+    name: "Document12",
+    isoId: "_Q1Ld4XR1EeiH1ZOt2UD8vQ",
+    kind: "component",
+    fields: [
+      f({ name: "Type", isoId: "_Q_AvUXR1EeiH1ZOt2UD8vQ", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "DocumentType1Choice", required: true }),
+      f({ name: "Identification", isoId: "_Q_AvU3R1EeiH1ZOt2UD8vQ", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "IssueDate", isoId: "_3iRlYXiJEeidzqjNEfehPg", xmlTag: "IsseDt", displayName: displayName("IssueDate"), kind: "choice", type: "DateAndDateTime2Choice", required: true }),
+      f({ name: "Name", isoId: "_E_8EYniKEeidzqjNEfehPg", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max140Text", required: false }),
+      f({ name: "LanguageCode", isoId: "_E_8EY3iKEeidzqjNEfehPg", xmlTag: "LangCd", displayName: displayName("LanguageCode"), kind: "code", type: "LanguageCode", required: false }),
+      f({ name: "Format", isoId: "_Q_AvVXR1EeiH1ZOt2UD8vQ", xmlTag: "Frmt", displayName: displayName("Format"), kind: "choice", type: "DocumentFormat1Choice", required: true }),
+      f({ name: "FileName", isoId: "_ZEDS8XiKEeidzqjNEfehPg", xmlTag: "FileNm", displayName: displayName("FileName"), kind: "text", type: "Max140Text", required: false }),
+      f({ name: "DigitalSignature", isoId: "_Q_AvWXR1EeiH1ZOt2UD8vQ", xmlTag: "DgtlSgntr", displayName: displayName("DigitalSignature"), kind: "component", type: "PartyAndSignature3", required: false }),
+      f({ name: "Enclosure", isoId: "_Q_AvV3R1EeiH1ZOt2UD8vQ", xmlTag: "Nclsr", displayName: displayName("Enclosure"), kind: "text", type: "Max10MbBinary", required: true }),
+    ],
+  },
   "PartyAndSignature4": {
     name: "PartyAndSignature4",
     isoId: "_w1V-sTEyEe6g-ffJsqGiSA",
@@ -7921,12 +9638,6 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Party", isoId: "_w3tWMTEyEe6g-ffJsqGiSA", xmlTag: "Pty", displayName: displayName("Party"), kind: "component", type: "PartyIdentification272", required: true }),
       f({ name: "Signature", isoId: "_w3tWMzEyEe6g-ffJsqGiSA", xmlTag: "Sgntr", displayName: displayName("Signature"), kind: "any", type: "SkipPayload", required: true }),
     ],
-  },
-  "Max10MbBinary": {
-    name: "Max10MbBinary",
-    isoId: "_-Iyy4BidEeSiHrsAOQO6aw",
-    kind: "text",
-    maxLength: 10485760,
   },
   "Document15": {
     name: "Document15",
@@ -7984,6 +9695,80 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "MessageOriginator", isoId: "_B4MwVzp6EemwKdP955WBJQ", xmlTag: "MsgOrgtr", displayName: displayName("MessageOriginator"), kind: "component", type: "PartyIdentification136", required: false }),
       f({ name: "MessageRecipient", isoId: "_B4MwWTp6EemwKdP955WBJQ", xmlTag: "MsgRcpt", displayName: displayName("MessageRecipient"), kind: "component", type: "PartyIdentification136", required: false }),
     ],
+  },
+  "ExternalTaxAmountType1Code": {
+    name: "ExternalTaxAmountType1Code",
+    isoId: "_t99_JFkyEeGeoaLUQk__nA_700990481",
+    kind: "code",
+    minLength: 1,
+    maxLength: 4,
+    external: true,
+  },
+  "TaxAmountType1Choice": {
+    name: "TaxAmountType1Choice",
+    isoId: "_tsra0lkyEeGeoaLUQk__nA_-1905418813",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_tsra01kyEeGeoaLUQk__nA_1392476130", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalTaxAmountType1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_ts1L0FkyEeGeoaLUQk__nA_281564711", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
+    ],
+  },
+  "TaxAmountAndType1": {
+    name: "TaxAmountAndType1",
+    isoId: "_ts1L0VkyEeGeoaLUQk__nA_404730048",
+    kind: "component",
+    fields: [
+      f({ name: "Type", isoId: "_ts1L0lkyEeGeoaLUQk__nA_1414965637", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "TaxAmountType1Choice", required: false }),
+      f({ name: "Amount", isoId: "_ts1L01kyEeGeoaLUQk__nA_-2046327832", xmlTag: "Amt", displayName: displayName("Amount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: true }),
+    ],
+  },
+  "RemittanceAmount3": {
+    name: "RemittanceAmount3",
+    isoId: "_fY-TsaizEeK6T65WbewxKQ",
+    kind: "component",
+    fields: [
+      f({ name: "DuePayableAmount", isoId: "_fiNvRaizEeK6T65WbewxKQ", xmlTag: "DuePyblAmt", displayName: displayName("DuePayableAmount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: false }),
+      f({ name: "DiscountAppliedAmount", isoId: "_fiNvSaizEeK6T65WbewxKQ", xmlTag: "DscntApldAmt", displayName: displayName("DiscountAppliedAmount"), kind: "component", type: "DiscountAmountAndType1", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "CreditNoteAmount", isoId: "_fiNvTaizEeK6T65WbewxKQ", xmlTag: "CdtNoteAmt", displayName: displayName("CreditNoteAmount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: false }),
+      f({ name: "TaxAmount", isoId: "_fiNvUaizEeK6T65WbewxKQ", xmlTag: "TaxAmt", displayName: displayName("TaxAmount"), kind: "component", type: "TaxAmountAndType1", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "AdjustmentAmountAndReason", isoId: "_fiNvVaizEeK6T65WbewxKQ", xmlTag: "AdjstmntAmtAndRsn", displayName: displayName("AdjustmentAmountAndReason"), kind: "component", type: "DocumentAdjustment1", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "RemittedAmount", isoId: "_fiNvWaizEeK6T65WbewxKQ", xmlTag: "RmtdAmt", displayName: displayName("RemittedAmount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: false }),
+    ],
+  },
+  "DocumentLineInformation1": {
+    name: "DocumentLineInformation1",
+    isoId: "_Cy5dt6JpEeKmspP9k_hIRQ",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_ULe6IKJpEeKmspP9k_hIRQ", xmlTag: "Id", displayName: displayName("Identification"), kind: "component", type: "DocumentLineIdentification1", required: true, repeat: { min: 1, max: null } }),
+      f({ name: "Description", isoId: "_huX3YKJpEeKmspP9k_hIRQ", xmlTag: "Desc", displayName: displayName("Description"), kind: "text", type: "Max2048Text", required: false }),
+      f({ name: "Amount", isoId: "_oMvB8KJpEeKmspP9k_hIRQ", xmlTag: "Amt", displayName: displayName("Amount"), kind: "component", type: "RemittanceAmount3", required: false }),
+    ],
+  },
+  "ISO20022MessageIdentificationText": {
+    name: "ISO20022MessageIdentificationText",
+    isoId: "_YWr8JNp-Ed-ak6NoX_4Aeg_2141066595",
+    kind: "text",
+    pattern: "[a-z]{4}\\.[0-9]{3}\\.[0-9]{3}\\.[0-9]{2}",
+  },
+  "DocumentNumber5Choice": {
+    name: "DocumentNumber5Choice",
+    isoId: "_CkuCkTnbEeWLJsP1cO-amg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "ShortNumber", isoId: "_CxzcUznbEeWLJsP1cO-amg", xmlTag: "ShrtNb", displayName: displayName("ShortNumber"), kind: "text", type: "Exact3NumericText", required: true }),
+      f({ name: "LongNumber", isoId: "_CxzcWznbEeWLJsP1cO-amg", xmlTag: "LngNb", displayName: displayName("LongNumber"), kind: "text", type: "ISO20022MessageIdentificationText", required: true }),
+      f({ name: "ProprietaryNumber", isoId: "_CxzcYznbEeWLJsP1cO-amg", xmlTag: "PrtryNb", displayName: displayName("ProprietaryNumber"), kind: "component", type: "GenericIdentification36", required: true }),
+    ],
+    rules: [
+      { name: "ShortLongNumberRule", isoId: "_CxzcUTnbEeWLJsP1cO-amg", text: "ShortNumber must contain the FIN message type number of the linked message. LongNumber must contain the XML message identifier of the linked message." },
+    ],
+  },
+  "DocumentType6Code": {
+    name: "DocumentType6Code",
+    isoId: "_xEXUIR78EeSxevWRRWxNAg",
+    kind: "code",
+    options: [{ value: "MSIN", name: "MeteredServiceInvoice", isoId: "_xVb2AR78EeSxevWRRWxNAg" }, { value: "CNFA", name: "CreditNoteRelatedToFinancialAdjustment", isoId: "_xVb2Ax78EeSxevWRRWxNAg" }, { value: "DNFA", name: "DebitNoteRelatedToFinancialAdjustment", isoId: "_xVb2BR78EeSxevWRRWxNAg" }, { value: "CINV", name: "CommercialInvoice", isoId: "_xVb2Bx78EeSxevWRRWxNAg" }, { value: "CREN", name: "CreditNote", isoId: "_xVb2CR78EeSxevWRRWxNAg" }, { value: "DEBN", name: "DebitNote", isoId: "_xVb2Cx78EeSxevWRRWxNAg" }, { value: "HIRI", name: "HireInvoice", isoId: "_xVb2DR78EeSxevWRRWxNAg" }, { value: "SBIN", name: "SelfBilledInvoice", isoId: "_xVb2Dx78EeSxevWRRWxNAg" }, { value: "CMCN", name: "CommercialContract", isoId: "_xVb2ER78EeSxevWRRWxNAg" }, { value: "SOAC", name: "StatementOfAccount", isoId: "_xVb2Ex78EeSxevWRRWxNAg" }, { value: "DISP", name: "DispatchAdvice", isoId: "_xVb2FR78EeSxevWRRWxNAg" }, { value: "BOLD", name: "BillOfLading", isoId: "_xVb2Fx78EeSxevWRRWxNAg" }, { value: "VCHR", name: "Voucher", isoId: "_xVb2GR78EeSxevWRRWxNAg" }, { value: "AROI", name: "AccountReceivableOpenItem", isoId: "_xVb2Gx78EeSxevWRRWxNAg" }, { value: "TSUT", name: "TradeServicesUtilityTransaction", isoId: "_xVb2HR78EeSxevWRRWxNAg" }, { value: "PUOR", name: "PurchaseOrder", isoId: "_zjV4AR78EeSxevWRRWxNAg" }],
   },
   "DutchIdentifier": {
     name: "DutchIdentifier",
@@ -8484,11 +10269,41 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Proprietary", isoId: "_KbxmUIaoEeeUws0ZryHQ2w", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
     ],
   },
+  "EntryStatus1Code": {
+    name: "EntryStatus1Code",
+    isoId: "_ahauU9p-Ed-ak6NoX_4Aeg_-773188206",
+    kind: "code",
+    options: [{ value: "BOOK", name: "Booked", isoId: "_ahauVNp-Ed-ak6NoX_4Aeg_-773188205" }, { value: "PDNG", name: "Pending", isoId: "_ahauVdp-Ed-ak6NoX_4Aeg_-773188204" }, { value: "FUTR", name: "Future", isoId: "_ahauVtp-Ed-ak6NoX_4Aeg_-773188203" }],
+  },
   "EntryTypeIdentifier": {
     name: "EntryTypeIdentifier",
     isoId: "_YYn109p-Ed-ak6NoX_4Aeg_376711767",
     kind: "text",
     pattern: "[BEOVW]{1,1}[0-9]{2,2}|DUM",
+  },
+  "ErrorHandling1Code": {
+    name: "ErrorHandling1Code",
+    isoId: "_ah3aRNp-Ed-ak6NoX_4Aeg_-1106717300",
+    kind: "code",
+    options: [{ value: "X020", name: "DataNotYetAvailable", isoId: "_ah3aRdp-Ed-ak6NoX_4Aeg_-1106717261" }, { value: "X030", name: "MessageSizeLimitExceeded", isoId: "_ah3aRtp-Ed-ak6NoX_4Aeg_-1106717021" }, { value: "X050", name: "DataNotAvailable", isoId: "_ah3aR9p-Ed-ak6NoX_4Aeg_-1106717013" }],
+  },
+  "ErrorHandling1Choice": {
+    name: "ErrorHandling1Choice",
+    isoId: "_RZI7Mdp-Ed-ak6NoX_4Aeg_-632950582",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_RZI7Mtp-Ed-ak6NoX_4Aeg_-632950580", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ErrorHandling1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_RZI7M9p-Ed-ak6NoX_4Aeg_-632950304", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max4AlphaNumericText", required: true }),
+    ],
+  },
+  "ErrorHandling3": {
+    name: "ErrorHandling3",
+    isoId: "_RY_xSdp-Ed-ak6NoX_4Aeg_-917396675",
+    kind: "component",
+    fields: [
+      f({ name: "Error", isoId: "_RY_xStp-Ed-ak6NoX_4Aeg_-487033921", xmlTag: "Err", displayName: displayName("Error"), kind: "choice", type: "ErrorHandling1Choice", required: true }),
+      f({ name: "Description", isoId: "_RZI7MNp-Ed-ak6NoX_4Aeg_-917396614", xmlTag: "Desc", displayName: displayName("Description"), kind: "text", type: "Max140Text", required: false }),
+    ],
   },
   "ExternalSystemErrorHandling1Code": {
     name: "ExternalSystemErrorHandling1Code",
@@ -8523,11 +10338,60 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     minLength: 1,
     maxLength: 12,
   },
+  "EventFrequency7Code": {
+    name: "EventFrequency7Code",
+    isoId: "_VsZaMf70EeCKvdA5_Kg7Aw",
+    kind: "code",
+    options: [{ value: "YEAR", name: "Annual", isoId: "_VsikJf70EeCKvdA5_Kg7Aw" }, { value: "ADHO", name: "Adhoc", isoId: "_VsikKf70EeCKvdA5_Kg7Aw" }, { value: "MNTH", name: "Monthly", isoId: "_VsikLf70EeCKvdA5_Kg7Aw" }, { value: "DAIL", name: "Daily", isoId: "_VsikMf70EeCKvdA5_Kg7Aw" }, { value: "INDA", name: "IntraDay", isoId: "_VsikNf70EeCKvdA5_Kg7Aw" }, { value: "WEEK", name: "Weekly", isoId: "_VsikOf70EeCKvdA5_Kg7Aw" }, { value: "SEMI", name: "SemiAnnual", isoId: "_Z7TqqP70EeCKvdA5_Kg7Aw" }, { value: "QUTR", name: "Quarterly", isoId: "_aZtd9v70EeCKvdA5_Kg7Aw" }, { value: "TOMN", name: "EveryTwoMonths", isoId: "_e14uSv70EeCKvdA5_Kg7Aw" }, { value: "TOWK", name: "EveryTwoWeeks", isoId: "_fXj3-v70EeCKvdA5_Kg7Aw" }, { value: "TWMN", name: "TwiceAMonth", isoId: "_gu43Sv70EeCKvdA5_Kg7Aw" }, { value: "OVNG", name: "Overnight", isoId: "_hQkA-v70EeCKvdA5_Kg7Aw" }, { value: "ONDE", name: "OnDemand", isoId: "_hYAsyv70EeCKvdA5_Kg7Aw" }],
+  },
+  "ExternalSystemEventType1Code": {
+    name: "ExternalSystemEventType1Code",
+    isoId: "_8OFBVqMgEeCJ6YNENx4h-w_1804878644",
+    kind: "code",
+    minLength: 1,
+    maxLength: 4,
+    external: true,
+  },
+  "EventType1Choice": {
+    name: "EventType1Choice",
+    isoId: "_71C2RqMgEeCJ6YNENx4h-w_337125079",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_71C2R6MgEeCJ6YNENx4h-w_-773786340", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalSystemEventType1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_71MAMKMgEeCJ6YNENx4h-w_1849878046", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
+    ],
+  },
   "Exact3AlphaNumericText": {
     name: "Exact3AlphaNumericText",
     isoId: "_JvIpsGjIEeSHBr6v3XO0Mg",
     kind: "text",
     pattern: "[a-zA-Z0-9]{3}",
+  },
+  "Exact4NumericText": {
+    name: "Exact4NumericText",
+    isoId: "_YYLJ6dp-Ed-ak6NoX_4Aeg_89170917",
+    kind: "text",
+    pattern: "[0-9]{4}",
+  },
+  "Exact5NumericText": {
+    name: "Exact5NumericText",
+    isoId: "_YWiyMtp-Ed-ak6NoX_4Aeg_-1431118919",
+    kind: "text",
+    pattern: "[0-9]{5}",
+  },
+  "ISOTime": {
+    name: "ISOTime",
+    isoId: "_YYU64dp-Ed-ak6NoX_4Aeg_-1253016814",
+    kind: "time",
+  },
+  "ExecutionType1Choice": {
+    name: "ExecutionType1Choice",
+    isoId: "_75qQhqMgEeCJ6YNENx4h-w_354040007",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Time", isoId: "_750BgKMgEeCJ6YNENx4h-w_274414262", xmlTag: "Tm", displayName: displayName("Time"), kind: "time", type: "ISOTime", required: true }),
+      f({ name: "Event", isoId: "_750BgaMgEeCJ6YNENx4h-w_989331050", xmlTag: "Evt", displayName: displayName("Event"), kind: "choice", type: "EventType1Choice", required: true }),
+    ],
   },
   "Extension1": {
     name: "Extension1",
@@ -8541,6 +10405,14 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       { name: "ExtensionRule", isoId: "_Q65gAtp-Ed-ak6NoX_4Aeg_-944110603", text: "This component may not be used without the explicit approval of the Registration Authority and without strict usage rules published by the Registration Authority." },
     ],
   },
+  "ExternalAgentInstruction1Code": {
+    name: "ExternalAgentInstruction1Code",
+    isoId: "_rLbaINA4EeeCAfThR1cp_Q",
+    kind: "code",
+    minLength: 1,
+    maxLength: 4,
+    external: true,
+  },
   "ExternalEnquiryRequestType1Code": {
     name: "ExternalEnquiryRequestType1Code",
     isoId: "_I3nyYJIhEeect698_YsnIA",
@@ -8552,6 +10424,70 @@ export const sharedTypeDescriptors: TypeDescriptors = {
   "ExternalInstructedAgentInstruction1Code": {
     name: "ExternalInstructedAgentInstruction1Code",
     isoId: "_bEAp2bt6Eeq_cfXrH83Rcw",
+    kind: "code",
+    minLength: 1,
+    maxLength: 4,
+    external: true,
+  },
+  "ExternalInvestigationAction1Code": {
+    name: "ExternalInvestigationAction1Code",
+    isoId: "_rkVJUBZdEe6d6Ip1Ob2kaQ",
+    kind: "code",
+    minLength: 1,
+    maxLength: 4,
+    external: true,
+  },
+  "ExternalInvestigationActionReason1Code": {
+    name: "ExternalInvestigationActionReason1Code",
+    isoId: "_HV6GICVBEe6EvsLBQ6cYtA",
+    kind: "code",
+    minLength: 1,
+    maxLength: 4,
+    external: true,
+  },
+  "ExternalInvestigationInstrument1Code": {
+    name: "ExternalInvestigationInstrument1Code",
+    isoId: "_9cMNMFEUEe2YkcF60skG_A",
+    kind: "code",
+    minLength: 1,
+    maxLength: 4,
+    external: true,
+  },
+  "ExternalInvestigationReason1Code": {
+    name: "ExternalInvestigationReason1Code",
+    isoId: "_7kAjkFEUEe2YkcF60skG_A",
+    kind: "code",
+    minLength: 1,
+    maxLength: 4,
+    external: true,
+  },
+  "ExternalInvestigationReasonSubType1Code": {
+    name: "ExternalInvestigationReasonSubType1Code",
+    isoId: "__DHuwFEUEe2YkcF60skG_A",
+    kind: "code",
+    minLength: 1,
+    maxLength: 4,
+    external: true,
+  },
+  "ExternalInvestigationServiceLevel1Code": {
+    name: "ExternalInvestigationServiceLevel1Code",
+    isoId: "_3EMJUFEUEe2YkcF60skG_A",
+    kind: "code",
+    minLength: 1,
+    maxLength: 4,
+    external: true,
+  },
+  "ExternalInvestigationSubType1Code": {
+    name: "ExternalInvestigationSubType1Code",
+    isoId: "_5vuigFEUEe2YkcF60skG_A",
+    kind: "code",
+    minLength: 1,
+    maxLength: 4,
+    external: true,
+  },
+  "ExternalInvestigationType1Code": {
+    name: "ExternalInvestigationType1Code",
+    isoId: "_yrXOgFB9Ee2JFb6fZWHubw",
     kind: "code",
     minLength: 1,
     maxLength: 4,
@@ -8613,6 +10549,14 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     maxLength: 4,
     external: true,
   },
+  "ExternalRequestStatus1Code": {
+    name: "ExternalRequestStatus1Code",
+    isoId: "_gy_x0LqtEe68nbz8Nl_hLQ",
+    kind: "code",
+    minLength: 1,
+    maxLength: 4,
+    external: true,
+  },
   "ExternalReservationType1Code": {
     name: "ExternalReservationType1Code",
     isoId: "_BGpotRUOEeusI4XK3oQSyg",
@@ -8637,6 +10581,14 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     maxLength: 4,
     external: true,
   },
+  "ExternalSystemMemberType1Code": {
+    name: "ExternalSystemMemberType1Code",
+    isoId: "_7geSZnhfEeidzqjNEfehPg",
+    kind: "code",
+    minLength: 1,
+    maxLength: 4,
+    external: true,
+  },
   "ExternalTechnicalInputChannel1Code": {
     name: "ExternalTechnicalInputChannel1Code",
     isoId: "_amolh9p-Ed-ak6NoX_4Aeg_-614400071",
@@ -8644,6 +10596,53 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     minLength: 1,
     maxLength: 4,
     external: true,
+  },
+  "FailingReason3Code": {
+    name: "FailingReason3Code",
+    isoId: "_ABlNIRqLEeG38P9Gj2JZJw",
+    kind: "code",
+    options: [{ value: "AWMO", name: "AwaitingMoney", isoId: "_ABlNJxqLEeG38P9Gj2JZJw" }, { value: "BYIY", name: "BuyInProcedure", isoId: "_ABlNKxqLEeG38P9Gj2JZJw" }, { value: "CLAT", name: "CounterpartyTooLateForSettlement", isoId: "_ABlNLxqLEeG38P9Gj2JZJw" }, { value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_ABlNMxqLEeG38P9Gj2JZJw" }, { value: "CANR", name: "CancellationConfirmationRequested", isoId: "_ABlNNxqLEeG38P9Gj2JZJw" }, { value: "CAIS", name: "AwaitingSecurities", isoId: "_ABlNOxqLEeG38P9Gj2JZJw" }, { value: "OBJT", name: "UnderObjection", isoId: "_ABlNPxqLEeG38P9Gj2JZJw" }, { value: "AWSH", name: "AwaitingSecuritiesFromCounterparty", isoId: "_ABlNQxqLEeG38P9Gj2JZJw" }, { value: "PHSE", name: "PhysicalDeliveryDelay", isoId: "_ABlNRxqLEeG38P9Gj2JZJw" }, { value: "STCD", name: "ConfirmationDiscrepency", isoId: "_ABlNSxqLEeG38P9Gj2JZJw" }, { value: "DOCY", name: "AwaitingDocumentsOrEndorsementsFromYou", isoId: "_ABlNTxqLEeG38P9Gj2JZJw" }, { value: "MLAT", name: "MoneySecuritiesTooLateForSettlement", isoId: "_ABlNUxqLEeG38P9Gj2JZJw" }, { value: "DOCC", name: "AwaitingDocumentsOrEndorsementsFromCounterparty", isoId: "_ABlNVxqLEeG38P9Gj2JZJw" }, { value: "BLOC", name: "AccountBlocked", isoId: "_ABlNWxqLEeG38P9Gj2JZJw" }, { value: "CHAS", name: "EnquirySent", isoId: "_ABlNXxqLEeG38P9Gj2JZJw" }, { value: "NEWI", name: "NewIssues", isoId: "_ABlNYxqLEeG38P9Gj2JZJw" }, { value: "CLAC", name: "CounterpartyInsufficientSecurities", isoId: "_ABlNZxqLEeG38P9Gj2JZJw" }, { value: "MUNO", name: "MultipleSettlementAmount", isoId: "_ABlNaxqLEeG38P9Gj2JZJw" }, { value: "GLOB", name: "GlobalFormSecurities", isoId: "_ABlNbxqLEeG38P9Gj2JZJw" }, { value: "PREA", name: "YourInstructionOnHold", isoId: "_ABlNcxqLEeG38P9Gj2JZJw" }, { value: "PART", name: "TradeSettlesInPartials", isoId: "_ABlNdxqLEeG38P9Gj2JZJw" }, { value: "NOFX", name: "NoForeignExchangeInstruction", isoId: "_ABlNexqLEeG38P9Gj2JZJw" }, { value: "CMON", name: "CounterpartyInsufficientMoney", isoId: "_ABuXERqLEeG38P9Gj2JZJw" }, { value: "YCOL", name: "CollateralShortage", isoId: "_ABuXFRqLEeG38P9Gj2JZJw" }, { value: "COLL", name: "SecuritiesPledgedAsCollateral", isoId: "_ABuXGRqLEeG38P9Gj2JZJw" }, { value: "DEPO", name: "RefusedDepositForIssueOfDepositaryReceipts", isoId: "_ABuXHRqLEeG38P9Gj2JZJw" }, { value: "FLIM", name: "MaximumForeignLimitReached", isoId: "_ABuXIRqLEeG38P9Gj2JZJw" }, { value: "INCA", name: "IncomeAdjustementRequired", isoId: "_ABuXJRqLEeG38P9Gj2JZJw" }, { value: "LINK", name: "PendingLinkedInstruction", isoId: "_ABuXKRqLEeG38P9Gj2JZJw" }, { value: "LACK", name: "LackOfSecurities", isoId: "_ABuXLRqLEeG38P9Gj2JZJw" }, { value: "LALO", name: "SecuritiesLoanedOut", isoId: "_ABuXMRqLEeG38P9Gj2JZJw" }, { value: "MONY", name: "InsufficientMoney", isoId: "_ABuXNRqLEeG38P9Gj2JZJw" }, { value: "NCON", name: "ConfirmationNotReceived", isoId: "_ABuXORqLEeG38P9Gj2JZJw" }, { value: "REFS", name: "NotInGoodOrder", isoId: "_ABuXPRqLEeG38P9Gj2JZJw" }, { value: "SDUT", name: "LackOfStampDutyInformation", isoId: "_ABuXQRqLEeG38P9Gj2JZJw" }, { value: "BATC", name: "ProcessingBatchDifference", isoId: "_ABuXRRqLEeG38P9Gj2JZJw" }, { value: "CYCL", name: "AwaitingNextSettlementCycle", isoId: "_ABuXSRqLEeG38P9Gj2JZJw" }, { value: "SBLO", name: "SecuritiesBlocked", isoId: "_ABuXTRqLEeG38P9Gj2JZJw" }, { value: "CPEC", name: "CounterpartyInReceivership", isoId: "_ABuXURqLEeG38P9Gj2JZJw" }, { value: "MINO", name: "MinimumSettlementAmount", isoId: "_ABuXVRqLEeG38P9Gj2JZJw" }, { value: "IAAD", name: "StatusReasonInvestigation", isoId: "_ABuXWRqLEeG38P9Gj2JZJw" }, { value: "OTHR", name: "Other", isoId: "_ABuXXRqLEeG38P9Gj2JZJw" }, { value: "PHCK", name: "PhysicalSecuritiesVerification", isoId: "_ABuXYRqLEeG38P9Gj2JZJw" }, { value: "BENO", name: "BeneficialOwnershipDisagreement", isoId: "_ABuXZRqLEeG38P9Gj2JZJw" }, { value: "BOTH", name: "BothInstructionsOnHold", isoId: "_ABuXaRqLEeG38P9Gj2JZJw" }, { value: "CLHT", name: "ClearingHouseTrade", isoId: "_ABuXbRqLEeG38P9Gj2JZJw" }, { value: "DENO", name: "UnavailableDeliverableDenominatedQuantity", isoId: "_ABuXcRqLEeG38P9Gj2JZJw" }, { value: "DISA", name: "NaturalDisaster", isoId: "_ABuXdRqLEeG38P9Gj2JZJw" }, { value: "DKNY", name: "CounterpartyReturnedShares", isoId: "_ABuXeRqLEeG38P9Gj2JZJw" }, { value: "FROZ", name: "SecuritiesFrozenAtCSD", isoId: "_ABuXfRqLEeG38P9Gj2JZJw" }, { value: "LAAW", name: "AwaitingOtherTransaction", isoId: "_ABuXgRqLEeG38P9Gj2JZJw" }, { value: "LATE", name: "MarketDeadlineMissed", isoId: "_ABuXhRqLEeG38P9Gj2JZJw" }, { value: "LIQU", name: "InsufficientCentralBankLiquidity", isoId: "_ABuXiRqLEeG38P9Gj2JZJw" }, { value: "PRCY", name: "CounterpartyInstructionOnHold", isoId: "_ABuXjRqLEeG38P9Gj2JZJw" }, { value: "REGT", name: "CertificatesRejected", isoId: "_ABuXkRqLEeG38P9Gj2JZJw" }, { value: "SETS", name: "SettlementSystemMethodModified", isoId: "_ABuXlRqLEeG38P9Gj2JZJw" }, { value: "CERT", name: "WrongCertificatesNumbers", isoId: "_ABuXmRqLEeG38P9Gj2JZJw" }, { value: "PRSY", name: "SystemOnHold", isoId: "_ABuXnRqLEeG38P9Gj2JZJw" }, { value: "INBC", name: "IncompleteNumberCount", isoId: "_FVn5ohqLEeG38P9Gj2JZJw" }],
+  },
+  "FailingReason7Choice": {
+    name: "FailingReason7Choice",
+    isoId: "_26U30Tp5EeWVrPy0StzzSg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_3ZkYgTp5EeWVrPy0StzzSg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "FailingReason3Code", required: true }),
+      f({ name: "Proprietary", isoId: "_3ZkYiTp5EeWVrPy0StzzSg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "FailingReason7": {
+    name: "FailingReason7",
+    isoId: "_2a7mETp5EeWVrPy0StzzSg",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "_26U3wTp5EeWVrPy0StzzSg", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "FailingReason7Choice", required: true }),
+      f({ name: "AdditionalReasonInformation", isoId: "_26U3yTp5EeWVrPy0StzzSg", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
+    ],
+  },
+  "FailingStatus9Choice": {
+    name: "FailingStatus9Choice",
+    isoId: "_17QAYTp5EeWVrPy0StzzSg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NoSpecifiedReason", isoId: "_2a7mATp5EeWVrPy0StzzSg", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
+      f({ name: "Reason", isoId: "_2a7mCTp5EeWVrPy0StzzSg", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "FailingReason7", required: true }),
+    ],
+  },
+  "FileData1": {
+    name: "FileData1",
+    isoId: "_6csvISedEe6TQOljeYYeiQ",
+    kind: "component",
+    fields: [
+      f({ name: "Type", isoId: "_Soe9sSeeEe6TQOljeYYeiQ", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "DocumentType1Choice", required: false }),
+      f({ name: "Identification", isoId: "_MKV1kSeeEe6TQOljeYYeiQ", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "IssueDate", isoId: "_hEKkISeeEe6TQOljeYYeiQ", xmlTag: "IsseDt", displayName: displayName("IssueDate"), kind: "choice", type: "DateAndDateTime2Choice", required: false }),
+      f({ name: "Format", isoId: "_oGae4SeeEe6TQOljeYYeiQ", xmlTag: "Frmt", displayName: displayName("Format"), kind: "choice", type: "DocumentFormat1Choice", required: false }),
+      f({ name: "FileName", isoId: "_svjNMSeeEe6TQOljeYYeiQ", xmlTag: "FileNm", displayName: displayName("FileName"), kind: "text", type: "Max140Text", required: false }),
+      f({ name: "NetworkReference", isoId: "_bsCOUSq-Ee6oRLUTIVtgRA", xmlTag: "NtwkRef", displayName: displayName("NetworkReference"), kind: "text", type: "Max140Text", required: false }),
+      f({ name: "FileLocationElectronicAddress", isoId: "_ss4gMCq-Ee6oRLUTIVtgRA", xmlTag: "FileLctnElctrncAdr", displayName: displayName("FileLocationElectronicAddress"), kind: "text", type: "Max2048Text", required: false }),
+    ],
   },
   "ISINIdentifier": {
     name: "ISINIdentifier",
@@ -8751,6 +10750,21 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     isoId: "_iotXoGoEEearR-CA7eRZXQ",
     kind: "code",
     options: [{ value: "NEVR", name: "Never", isoId: "_ns-iwWoEEearR-CA7eRZXQ" }, { value: "YEAR", name: "Annual", isoId: "_vQ94oWoEEearR-CA7eRZXQ" }, { value: "RATE", name: "Rate", isoId: "_5MNZwWoEEearR-CA7eRZXQ" }, { value: "MIAN", name: "SemiAnnual", isoId: "_6xlcIWoEEearR-CA7eRZXQ" }, { value: "QURT", name: "Quarterly", isoId: "_7SZDIWoEEearR-CA7eRZXQ" }],
+  },
+  "Frequency22Choice": {
+    name: "Frequency22Choice",
+    isoId: "_Zg-Akf3-EeS5i-mwuUyZxw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_Z-H2o_3-EeS5i-mwuUyZxw", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "EventFrequency7Code", required: true }),
+      f({ name: "Proprietary", isoId: "_Z-H2q_3-EeS5i-mwuUyZxw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "Frequency2Code": {
+    name: "Frequency2Code",
+    isoId: "_asJXqNp-Ed-ak6NoX_4Aeg_1505345791",
+    kind: "code",
+    options: [{ value: "YEAR", name: "Annual", isoId: "_asTIoNp-Ed-ak6NoX_4Aeg_1506269390" }, { value: "MNTH", name: "Monthly", isoId: "_asTIodp-Ed-ak6NoX_4Aeg_1506270304" }, { value: "QURT", name: "Quarterly", isoId: "_asTIotp-Ed-ak6NoX_4Aeg_1506270784" }, { value: "MIAN", name: "SemiAnnual", isoId: "_asTIo9p-Ed-ak6NoX_4Aeg_1506271251" }, { value: "WEEK", name: "Weekly", isoId: "_asTIpNp-Ed-ak6NoX_4Aeg_1506271732" }, { value: "DAIL", name: "Daily", isoId: "_asTIpdp-Ed-ak6NoX_4Aeg_1506271774" }, { value: "ADHO", name: "Adhoc", isoId: "_asTIptp-Ed-ak6NoX_4Aeg_1507192308" }, { value: "INDA", name: "IntraDay", isoId: "_asTIp9p-Ed-ak6NoX_4Aeg_1507192896" }, { value: "OVNG", name: "Overnight", isoId: "_asTIqNp-Ed-ak6NoX_4Aeg_-886985582" }],
   },
   "Frequency37Choice": {
     name: "Frequency37Choice",
@@ -8927,6 +10941,21 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       { name: "ExceptionalCashFlowIndicatorRule", isoId: "_8NmXsQdpEeSPHJIdUs1USg", text: "If Exceptional NetCashFlow Indicator is \"true\" or \"1\" (Yes), then CashInForecastDetails/ExceptionalCashFlowIndicator and CashOutForecastDetails/ ExceptionalCashFlowIndicator must be present." },
     ],
   },
+  "Garnishment3": {
+    name: "Garnishment3",
+    isoId: "__Cz88248EeiU9cctagi5ow",
+    kind: "component",
+    fields: [
+      f({ name: "Type", isoId: "__NrwIW48EeiU9cctagi5ow", xmlTag: "Tp", displayName: displayName("Type"), kind: "component", type: "GarnishmentType1", required: true }),
+      f({ name: "Garnishee", isoId: "__NrwI248EeiU9cctagi5ow", xmlTag: "Grnshee", displayName: displayName("Garnishee"), kind: "component", type: "PartyIdentification135", required: false }),
+      f({ name: "GarnishmentAdministrator", isoId: "__NrwJW48EeiU9cctagi5ow", xmlTag: "GrnshmtAdmstr", displayName: displayName("GarnishmentAdministrator"), kind: "component", type: "PartyIdentification135", required: false }),
+      f({ name: "ReferenceNumber", isoId: "__NrwJ248EeiU9cctagi5ow", xmlTag: "RefNb", displayName: displayName("ReferenceNumber"), kind: "text", type: "Max140Text", required: false }),
+      f({ name: "Date", isoId: "__NrwKW48EeiU9cctagi5ow", xmlTag: "Dt", displayName: displayName("Date"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "RemittedAmount", isoId: "__NrwK248EeiU9cctagi5ow", xmlTag: "RmtdAmt", displayName: displayName("RemittedAmount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: false }),
+      f({ name: "FamilyMedicalInsuranceIndicator", isoId: "__NrwLW48EeiU9cctagi5ow", xmlTag: "FmlyMdclInsrncInd", displayName: displayName("FamilyMedicalInsuranceIndicator"), kind: "boolean", type: "TrueFalseIndicator", required: false }),
+      f({ name: "EmployeeTerminationIndicator", isoId: "__NrwL248EeiU9cctagi5ow", xmlTag: "MplyeeTermntnInd", displayName: displayName("EmployeeTerminationIndicator"), kind: "boolean", type: "TrueFalseIndicator", required: false }),
+    ],
+  },
   "PartyType12Code": {
     name: "PartyType12Code",
     isoId: "_oci7cIn0EeS9F4Qrq_eaVA",
@@ -9016,6 +11045,16 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "MessagePagination", isoId: "_0z-XdzEyEe6g-ffJsqGiSA", xmlTag: "MsgPgntn", displayName: displayName("MessagePagination"), kind: "component", type: "Pagination1", required: false }),
       f({ name: "OriginalBusinessQuery", isoId: "_0z-XeTEyEe6g-ffJsqGiSA", xmlTag: "OrgnlBizQry", displayName: displayName("OriginalBusinessQuery"), kind: "component", type: "OriginalBusinessQuery1", required: false }),
       f({ name: "AdditionalInformation", isoId: "_0z-XezEyEe6g-ffJsqGiSA", xmlTag: "AddtlInf", displayName: displayName("AdditionalInformation"), kind: "text", type: "Max500Text", required: false }),
+    ],
+  },
+  "GroupHeader117": {
+    name: "GroupHeader117",
+    isoId: "_04iHUTEyEe6g-ffJsqGiSA",
+    kind: "component",
+    fields: [
+      f({ name: "MessageIdentification", isoId: "_06vt0TEyEe6g-ffJsqGiSA", xmlTag: "MsgId", displayName: displayName("MessageIdentification"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "CreationDateTime", isoId: "_06vt0zEyEe6g-ffJsqGiSA", xmlTag: "CreDtTm", displayName: displayName("CreationDateTime"), kind: "datetime", type: "ISODateTime", required: true }),
+      f({ name: "MessageSender", isoId: "_06vt1TEyEe6g-ffJsqGiSA", xmlTag: "MsgSndr", displayName: displayName("MessageSender"), kind: "choice", type: "Party50Choice", required: false }),
     ],
   },
   "SettlementMethod1Code": {
@@ -9145,10 +11184,35 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Traceability", isoId: "_4iHpEa4JEeWZgJQOa6iKCQ", xmlTag: "Tracblt", displayName: displayName("Traceability"), kind: "component", type: "Traceability4", required: false, repeat: { min: 0, max: null } }),
     ],
   },
-  "ISOTime": {
-    name: "ISOTime",
-    isoId: "_YYU64dp-Ed-ak6NoX_4Aeg_-1253016814",
-    kind: "time",
+  "Priority1Code": {
+    name: "Priority1Code",
+    isoId: "_aKLTANp-Ed-ak6NoX_4Aeg_-636884160",
+    kind: "code",
+    options: [{ value: "HIGH", name: "High", isoId: "_aKLTAdp-Ed-ak6NoX_4Aeg_-291486778" }, { value: "NORM", name: "Normal", isoId: "_aKLTAtp-Ed-ak6NoX_4Aeg_-262855798" }, { value: "LOWW", name: "Low", isoId: "_aKLTA9p-Ed-ak6NoX_4Aeg_-248081725" }],
+  },
+  "InformationQualifierType1": {
+    name: "InformationQualifierType1",
+    isoId: "_59y2N5lZEeeE1Ya-LgRsuQ",
+    kind: "component",
+    fields: [
+      f({ name: "IsFormatted", isoId: "_6FzisZlZEeeE1Ya-LgRsuQ", xmlTag: "IsFrmtd", displayName: displayName("IsFormatted"), kind: "boolean", type: "YesNoIndicator", required: false }),
+      f({ name: "Priority", isoId: "_6Fzis5lZEeeE1Ya-LgRsuQ", xmlTag: "Prty", displayName: displayName("Priority"), kind: "code", type: "Priority1Code", required: false }),
+    ],
+  },
+  "Instruction1Code": {
+    name: "Instruction1Code",
+    isoId: "_aW12Adp-Ed-ak6NoX_4Aeg_-499701817",
+    kind: "code",
+    options: [{ value: "PBEN", name: "PayTheBeneficiary", isoId: "_aW12Atp-Ed-ak6NoX_4Aeg_-499701816" }, { value: "TTIL", name: "TimeTill", isoId: "_aW12A9p-Ed-ak6NoX_4Aeg_-499701815" }, { value: "TFRO", name: "TimeFrom", isoId: "_aW12BNp-Ed-ak6NoX_4Aeg_-499701814" }],
+  },
+  "InstructionForAssignee1": {
+    name: "InstructionForAssignee1",
+    isoId: "_cj1mAdA1EeeCAfThR1cp_Q",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "_czjdAdA1EeeCAfThR1cp_Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalAgentInstruction1Code", required: false }),
+      f({ name: "InstructionInformation", isoId: "_czjdA9A1EeeCAfThR1cp_Q", xmlTag: "InstrInf", displayName: displayName("InstructionInformation"), kind: "text", type: "Max140Text", required: false }),
+    ],
   },
   "InstructionForInstructedAgent1": {
     name: "InstructionForInstructedAgent1",
@@ -9157,6 +11221,232 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     fields: [
       f({ name: "Code", isoId: "_8xrTwbt5Eeq_cfXrH83Rcw", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalInstructedAgentInstruction1Code", required: false }),
       f({ name: "InstructionInformation", isoId: "_8xrTw7t5Eeq_cfXrH83Rcw", xmlTag: "InstrInf", displayName: displayName("InstructionInformation"), kind: "text", type: "Max140Text", required: false }),
+    ],
+  },
+  "PriorityNumeric4Choice": {
+    name: "PriorityNumeric4Choice",
+    isoId: "_rhERsTtDEeWRTLSN0i0tng",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Numeric", isoId: "_sC_TATtDEeWRTLSN0i0tng", xmlTag: "Nmrc", displayName: displayName("Numeric"), kind: "text", type: "Exact4NumericText", required: true }),
+      f({ name: "Proprietary", isoId: "_sC_TCTtDEeWRTLSN0i0tng", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "IntraBalance5": {
+    name: "IntraBalance5",
+    isoId: "_pqQzoTnfEem7JZMuWtwtsg",
+    kind: "component",
+    fields: [
+      f({ name: "SettlementAmount", isoId: "_p0siBTnfEem7JZMuWtwtsg", xmlTag: "SttlmAmt", displayName: displayName("SettlementAmount"), kind: "choice", type: "Amount2Choice", required: true }),
+      f({ name: "SettlementDate", isoId: "_p0siBznfEem7JZMuWtwtsg", xmlTag: "SttlmDt", displayName: displayName("SettlementDate"), kind: "choice", type: "DateAndDateTime2Choice", required: true }),
+      f({ name: "BalanceFrom", isoId: "_p0siDznfEem7JZMuWtwtsg", xmlTag: "BalFr", displayName: displayName("BalanceFrom"), kind: "component", type: "CashSubBalanceTypeAndQuantityBreakdown3", required: true }),
+      f({ name: "BalanceTo", isoId: "_p0siFznfEem7JZMuWtwtsg", xmlTag: "BalTo", displayName: displayName("BalanceTo"), kind: "component", type: "CashSubBalanceTypeAndQuantityBreakdown3", required: true }),
+      f({ name: "CashSubBalanceIdentification", isoId: "_p0siHznfEem7JZMuWtwtsg", xmlTag: "CshSubBalId", displayName: displayName("CashSubBalanceIdentification"), kind: "component", type: "GenericIdentification37", required: false }),
+      f({ name: "Priority", isoId: "_p0siITnfEem7JZMuWtwtsg", xmlTag: "Prty", displayName: displayName("Priority"), kind: "choice", type: "PriorityNumeric4Choice", required: false }),
+      f({ name: "InstructionProcessingAdditionalDetails", isoId: "_p0siKTnfEem7JZMuWtwtsg", xmlTag: "InstrPrcgAddtlDtls", displayName: displayName("InstructionProcessingAdditionalDetails"), kind: "text", type: "Max350Text", required: false }),
+    ],
+    rules: [
+      { name: "AdditionalDetailsRule", isoId: "_p0siATnfEem7JZMuWtwtsg", text: "Unless bilaterally agreed between the sender and the receiver, if InstructionProcessingAdditionalDetails is present, then it must not contain information that can be provided in a structured field." },
+      { name: "BalanceFromToRule", isoId: "_p0siAznfEem7JZMuWtwtsg", text: "The cash balance type of BalanceFrom must be different from the cash balance type of BalanceTo." },
+    ],
+  },
+  "Number3Choice": {
+    name: "Number3Choice",
+    isoId: "_QrP6dNp-Ed-ak6NoX_4Aeg_-1147595422",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Short", isoId: "_QrP6ddp-Ed-ak6NoX_4Aeg_-969476750", xmlTag: "Shrt", displayName: displayName("Short"), kind: "text", type: "Exact3NumericText", required: true }),
+      f({ name: "Long", isoId: "_QrP6dtp-Ed-ak6NoX_4Aeg_1752980794", xmlTag: "Lng", displayName: displayName("Long"), kind: "text", type: "Exact5NumericText", required: true }),
+    ],
+  },
+  "Period2": {
+    name: "Period2",
+    isoId: "_T5oiANp-Ed-ak6NoX_4Aeg_1497161223",
+    kind: "component",
+    fields: [
+      f({ name: "FromDate", isoId: "_T5oiAdp-Ed-ak6NoX_4Aeg_1497161242", xmlTag: "FrDt", displayName: displayName("FromDate"), kind: "date", type: "ISODate", required: true }),
+      f({ name: "ToDate", isoId: "_T5oiAtp-Ed-ak6NoX_4Aeg_1497161560", xmlTag: "ToDt", displayName: displayName("ToDate"), kind: "date", type: "ISODate", required: true }),
+    ],
+  },
+  "Period7Choice": {
+    name: "Period7Choice",
+    isoId: "_VEuSoTwGEemGDJYTly2NCA",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "FromDateTimeToDateTime", isoId: "_VQk9UTwGEemGDJYTly2NCA", xmlTag: "FrDtTmToDtTm", displayName: displayName("FromDateTimeToDateTime"), kind: "component", type: "DateTimePeriod1", required: true }),
+      f({ name: "FromDateToDate", isoId: "_VQk9WTwGEemGDJYTly2NCA", xmlTag: "FrDtToDt", displayName: displayName("FromDateToDate"), kind: "component", type: "Period2", required: true }),
+    ],
+  },
+  "MovementResponseType1Code": {
+    name: "MovementResponseType1Code",
+    isoId: "_jQzlhe5NEeCisYr99QEiWA_-503094567",
+    kind: "code",
+    options: [{ value: "FULL", name: "Full", isoId: "_jQ9WgO5NEeCisYr99QEiWA_-739401767" }, { value: "STTS", name: "Status", isoId: "_jQ9Wge5NEeCisYr99QEiWA_424690481" }],
+  },
+  "StatementUpdateType1Code": {
+    name: "StatementUpdateType1Code",
+    isoId: "_ZQM-F9p-Ed-ak6NoX_4Aeg_1112854815",
+    kind: "code",
+    options: [{ value: "COMP", name: "Complete", isoId: "_ZQM-GNp-Ed-ak6NoX_4Aeg_1368668707" }, { value: "DELT", name: "Delta", isoId: "_ZQWvENp-Ed-ak6NoX_4Aeg_1368668708" }],
+  },
+  "UpdateType15Choice": {
+    name: "UpdateType15Choice",
+    isoId: "_XMoFcTeQEeWm5uvLSn0jEw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_Xt8p0zeQEeWm5uvLSn0jEw", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "StatementUpdateType1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_Xt8p1TeQEeWm5uvLSn0jEw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "IntraBalanceReport5": {
+    name: "IntraBalanceReport5",
+    isoId: "_MFstETngEem7JZMuWtwtsg",
+    kind: "component",
+    fields: [
+      f({ name: "ReportNumber", isoId: "_MQuRUzngEem7JZMuWtwtsg", xmlTag: "RptNb", displayName: displayName("ReportNumber"), kind: "choice", type: "Number3Choice", required: false }),
+      f({ name: "QueryReference", isoId: "_MQuRWzngEem7JZMuWtwtsg", xmlTag: "QryRef", displayName: displayName("QueryReference"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "ReportIdentification", isoId: "_MQuRYzngEem7JZMuWtwtsg", xmlTag: "RptId", displayName: displayName("ReportIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "ReportDateTime", isoId: "_MQuRZTngEem7JZMuWtwtsg", xmlTag: "RptDtTm", displayName: displayName("ReportDateTime"), kind: "choice", type: "DateAndDateTime2Choice", required: false }),
+      f({ name: "ReportPeriod", isoId: "_MQuRbTngEem7JZMuWtwtsg", xmlTag: "RptPrd", displayName: displayName("ReportPeriod"), kind: "choice", type: "Period7Choice", required: false }),
+      f({ name: "QueryType", isoId: "_MQuRdTngEem7JZMuWtwtsg", xmlTag: "QryTp", displayName: displayName("QueryType"), kind: "code", type: "MovementResponseType1Code", required: false }),
+      f({ name: "Frequency", isoId: "_MQuRfTngEem7JZMuWtwtsg", xmlTag: "Frqcy", displayName: displayName("Frequency"), kind: "choice", type: "Frequency22Choice", required: false }),
+      f({ name: "UpdateType", isoId: "_MQuRhTngEem7JZMuWtwtsg", xmlTag: "UpdTp", displayName: displayName("UpdateType"), kind: "choice", type: "UpdateType15Choice", required: true }),
+      f({ name: "ActivityIndicator", isoId: "_MQuRjTngEem7JZMuWtwtsg", xmlTag: "ActvtyInd", displayName: displayName("ActivityIndicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+    ],
+    rules: [
+      { name: "ReportNumberRule", isoId: "_MQuRUTngEem7JZMuWtwtsg", text: "If Long number (Exact5NumericTest) is used, then the report must be a delta reports (UpdateType: DELT).|If the report has multiple pages, then the ReportNumber must remain the same through all the pages. It is a unique number to the report.|Two reports of the same type sent one after the other to the same receiver in relation to the same safekeeping account must have different ReportNumbers. For example, a daily report sent on day 1 would have ReportNumber 001, on day 2, 002, etc." },
+    ],
+  },
+  "IntraBalanceReport6": {
+    name: "IntraBalanceReport6",
+    isoId: "_h4rQ8Tp_EemwKdP955WBJQ",
+    kind: "component",
+    fields: [
+      f({ name: "ReportNumber", isoId: "_iEJhIzp_EemwKdP955WBJQ", xmlTag: "RptNb", displayName: displayName("ReportNumber"), kind: "choice", type: "Number3Choice", required: false }),
+      f({ name: "QueryReference", isoId: "_iEJhKzp_EemwKdP955WBJQ", xmlTag: "QryRef", displayName: displayName("QueryReference"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "ReportIdentification", isoId: "_iEJhMzp_EemwKdP955WBJQ", xmlTag: "RptId", displayName: displayName("ReportIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "ReportDateTime", isoId: "_iEJhNTp_EemwKdP955WBJQ", xmlTag: "RptDtTm", displayName: displayName("ReportDateTime"), kind: "choice", type: "DateAndDateTime2Choice", required: false }),
+      f({ name: "ReportPeriod", isoId: "_iEJhPTp_EemwKdP955WBJQ", xmlTag: "RptPrd", displayName: displayName("ReportPeriod"), kind: "choice", type: "Period7Choice", required: false }),
+      f({ name: "Frequency", isoId: "_iEJhRTp_EemwKdP955WBJQ", xmlTag: "Frqcy", displayName: displayName("Frequency"), kind: "choice", type: "Frequency22Choice", required: false }),
+      f({ name: "UpdateType", isoId: "_iEJhTTp_EemwKdP955WBJQ", xmlTag: "UpdTp", displayName: displayName("UpdateType"), kind: "choice", type: "UpdateType15Choice", required: true }),
+      f({ name: "ActivityIndicator", isoId: "_iEJhVTp_EemwKdP955WBJQ", xmlTag: "ActvtyInd", displayName: displayName("ActivityIndicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+    ],
+    rules: [
+      { name: "ReportNumberRule", isoId: "_iEJhITp_EemwKdP955WBJQ", text: "If Long number (Exact5NumericTest) is used, then the report must be a delta reports (UpdateType: DELT).|If the report has multiple pages, then the ReportNumber must remain the same through all the pages. It is a unique number to the report.|Two reports of the same type sent one after the other to the same receiver in relation to the same safekeeping account must have different ReportNumbers. For example, a daily report sent on day 1 would have ReportNumber 001, on day 2, 002, etc." },
+    ],
+  },
+  "InvestigationActionReason1Choice": {
+    name: "InvestigationActionReason1Choice",
+    isoId: "_ULtJUSVAEe6EvsLBQ6cYtA",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_UZixAyVAEe6EvsLBQ6cYtA", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalInvestigationActionReason1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_UZixBSVAEe6EvsLBQ6cYtA", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
+    ],
+  },
+  "InvestigationActionReason1": {
+    name: "InvestigationActionReason1",
+    isoId: "_nj6woSU_Ee6EvsLBQ6cYtA",
+    kind: "component",
+    fields: [
+      f({ name: "Originator", isoId: "_nxTFVSU_Ee6EvsLBQ6cYtA", xmlTag: "Orgtr", displayName: displayName("Originator"), kind: "component", type: "PartyIdentification135", required: false }),
+      f({ name: "Reason", isoId: "_nxTFVyU_Ee6EvsLBQ6cYtA", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "choice", type: "InvestigationActionReason1Choice", required: true }),
+      f({ name: "AdditionalInformation", isoId: "_nxTFWSU_Ee6EvsLBQ6cYtA", xmlTag: "AddtlInf", displayName: displayName("AdditionalInformation"), kind: "text", type: "Max105Text", required: false, repeat: { min: 0, max: null } }),
+    ],
+    rules: [
+      { name: "StatusReasonRule", isoId: "_nxTFUSU_Ee6EvsLBQ6cYtA", text: "If Reason/Code is equal to NARR, then AddititionalInformation must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/AdditionalInformation[1]"}]},"onCondition":{"connector":"AND","rules":[{"op":"WithInList","path":"/Reason/Code","value":"ValidationRuleNarrative1Code"},{"op":"Presence","path":"/Reason"},{"op":"Presence","path":"/Reason/Code"}]}} },
+    ],
+  },
+  "InvestigationLocationMethod1Code": {
+    name: "InvestigationLocationMethod1Code",
+    isoId: "_qpxYQFT_Ee2at7Z9GFZ2Mw",
+    kind: "code",
+    options: [{ value: "EDIC", name: "ElectronicDataInterchange", isoId: "_sKNQQVT_Ee2at7Z9GFZ2Mw" }, { value: "EMAL", name: "EMail", isoId: "_sRSIoVT_Ee2at7Z9GFZ2Mw" }, { value: "FAXI", name: "Fax", isoId: "_sXI5AVT_Ee2at7Z9GFZ2Mw" }, { value: "POST", name: "Post", isoId: "_scR3sVT_Ee2at7Z9GFZ2Mw" }, { value: "SMSM", name: "SMS", isoId: "_shYaIVT_Ee2at7Z9GFZ2Mw" }, { value: "URID", name: "UniformResourceIdentifier", isoId: "_snTb8VT_Ee2at7Z9GFZ2Mw" }],
+  },
+  "NameAndAddress16": {
+    name: "NameAndAddress16",
+    isoId: "_9MDku24-EeiU9cctagi5ow",
+    kind: "component",
+    fields: [
+      f({ name: "Name", isoId: "_9XYD424-EeiU9cctagi5ow", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max140Text", required: true }),
+      f({ name: "Address", isoId: "_9XYD5W4-EeiU9cctagi5ow", xmlTag: "Adr", displayName: displayName("Address"), kind: "component", type: "PostalAddress24", required: true }),
+    ],
+  },
+  "InvestigationLocationData1": {
+    name: "InvestigationLocationData1",
+    isoId: "_CXmpVFRtEe23M4WgERMsYw",
+    kind: "component",
+    fields: [
+      f({ name: "Method", isoId: "_CXmpVVRtEe23M4WgERMsYw", xmlTag: "Mtd", displayName: displayName("Method"), kind: "code", type: "InvestigationLocationMethod1Code", required: true }),
+      f({ name: "ElectronicAddress", isoId: "_CXmpVlRtEe23M4WgERMsYw", xmlTag: "ElctrncAdr", displayName: displayName("ElectronicAddress"), kind: "text", type: "Max2048Text", required: false }),
+      f({ name: "PostalAddress", isoId: "_CXmpV1RtEe23M4WgERMsYw", xmlTag: "PstlAdr", displayName: displayName("PostalAddress"), kind: "component", type: "NameAndAddress16", required: false }),
+    ],
+  },
+  "InvestigationReason1Choice": {
+    name: "InvestigationReason1Choice",
+    isoId: "_CXmCg1RtEe23M4WgERMsYw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_CXmChVRtEe23M4WgERMsYw", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalInvestigationReason1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_CXmChlRtEe23M4WgERMsYw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
+    ],
+  },
+  "InvestigationReasonSubType1Choice": {
+    name: "InvestigationReasonSubType1Choice",
+    isoId: "_CXmCj1RtEe23M4WgERMsYw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_CXmCkFRtEe23M4WgERMsYw", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalInvestigationReasonSubType1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_CXmCklRtEe23M4WgERMsYw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
+    ],
+  },
+  "InvestigationRequestAction1Choice": {
+    name: "InvestigationRequestAction1Choice",
+    isoId: "_RsHK8RZZEe6d6Ip1Ob2kaQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_t8NcIhZcEe6d6Ip1Ob2kaQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalInvestigationAction1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_t8NcIxZcEe6d6Ip1Ob2kaQ", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
+    ],
+  },
+  "InvestigationRequestAction1": {
+    name: "InvestigationRequestAction1",
+    isoId: "_3JlTYSU-Ee6EvsLBQ6cYtA",
+    kind: "component",
+    fields: [
+      f({ name: "Action", isoId: "_3XbiISU-Ee6EvsLBQ6cYtA", xmlTag: "Actn", displayName: displayName("Action"), kind: "choice", type: "InvestigationRequestAction1Choice", required: true }),
+      f({ name: "ActionReason", isoId: "_3XbiIyU-Ee6EvsLBQ6cYtA", xmlTag: "ActnRsn", displayName: displayName("ActionReason"), kind: "component", type: "InvestigationActionReason1", required: false }),
+    ],
+    rules: [
+      { name: "ObjectionActionReasonRule", isoId: "_gIjHECVGEe6EvsLBQ6cYtA", text: "If Action/Code is equal to RQOB for Request Objection, ActionReason must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/ActionReason"}]},"onCondition":{"connector":"AND","rules":[{"op":"WithInList","path":"/Action/Code","value":"ValidationRuleRequestObjection1Code"},{"op":"Presence","path":"/Action"},{"op":"Presence","path":"/Action/Code"}]}} },
+      { name: "ObjectionActionRule", isoId: "_C4hMQCoMEe6sabPoGi34wA", text: "External code RQOB for Request Objection can only be populated in Action/Code when Requestor has already received a response from the Responder." },
+    ],
+  },
+  "InvestigationServiceLevel1Choice": {
+    name: "InvestigationServiceLevel1Choice",
+    isoId: "_CXmpWFRtEe23M4WgERMsYw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_CXmpWlRtEe23M4WgERMsYw", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalInvestigationServiceLevel1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_CXmpWVRtEe23M4WgERMsYw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
+    ],
+  },
+  "InvestigationSubType1Choice": {
+    name: "InvestigationSubType1Choice",
+    isoId: "_CXmCnFRtEe23M4WgERMsYw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_CXmCnlRtEe23M4WgERMsYw", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalInvestigationSubType1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_CXmCnVRtEe23M4WgERMsYw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
+    ],
+  },
+  "InvestigationType1Choice": {
+    name: "InvestigationType1Choice",
+    isoId: "_CXmCoFRtEe23M4WgERMsYw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_CXmCoVRtEe23M4WgERMsYw", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalInvestigationType1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_CXmCo1RtEe23M4WgERMsYw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
     ],
   },
   "MarketInfrastructureIdentification1Choice": {
@@ -9206,6 +11496,90 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     rules: [
       { name: "BilateralLimitCounterparty1Rule", isoId: "_0YhKgTEyEe6g-ffJsqGiSA", text: "If Type is MULT, then BilateralLimitCounterpartyIdentification is not allowed.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/BilateralLimitCounterpartyIdentification"}]},"onCondition":{"connector":"AND","rules":[{"op":"EqualToValue","path":"/Type/Code","value":"Multilateral"}]}} },
       { name: "BilateralLimitCounterparty2Rule", isoId: "_0YhKgzEyEe6g-ffJsqGiSA", text: "If Type is BILI or NELI or INBI, then BilateralLimitCounterpartyIdentification must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/BilateralLimitCounterpartyIdentification"}]},"onCondition":{"connector":"OR","rules":[{"op":"EqualToValue","path":"/Type/Code","value":"Bilateral"},{"op":"EqualToValue","path":"/Type/Code","value":"NetBilateral"},{"op":"EqualToValue","path":"/Type/Code","value":"IndirectBilateral"}]}} },
+    ],
+  },
+  "LimitIdentification9": {
+    name: "LimitIdentification9",
+    isoId: "_0YhKjzEyEe6g-ffJsqGiSA",
+    kind: "component",
+    fields: [
+      f({ name: "SystemIdentification", isoId: "_0axNQTEyEe6g-ffJsqGiSA", xmlTag: "SysId", displayName: displayName("SystemIdentification"), kind: "choice", type: "SystemIdentification2Choice", required: false }),
+      f({ name: "Type", isoId: "_0axNQzEyEe6g-ffJsqGiSA", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "LimitType1Choice", required: true }),
+      f({ name: "AccountOwner", isoId: "_0axNRTEyEe6g-ffJsqGiSA", xmlTag: "AcctOwnr", displayName: displayName("AccountOwner"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
+      f({ name: "AccountIdentification", isoId: "_0axNRzEyEe6g-ffJsqGiSA", xmlTag: "AcctId", displayName: displayName("AccountIdentification"), kind: "choice", type: "AccountIdentification4Choice", required: false }),
+    ],
+  },
+  "LimitType4Code": {
+    name: "LimitType4Code",
+    isoId: "_jPdhsO5NEeCisYr99QEiWA_1476260679",
+    kind: "code",
+    options: [{ value: "EXGT", name: "ExternalGuarantee", isoId: "_jPdhse5NEeCisYr99QEiWA_-1234776902" }, { value: "UCDT", name: "UnsecuredCredit", isoId: "_jPdhsu5NEeCisYr99QEiWA_-1814191119" }, { value: "ACOL", name: "AutoCollateralisation", isoId: "_jPdhs-5NEeCisYr99QEiWA_-1669106499" }],
+  },
+  "LinkageType1Code": {
+    name: "LinkageType1Code",
+    isoId: "_ae4Xttp-Ed-ak6NoX_4Aeg_-2003821143",
+    kind: "code",
+    options: [{ value: "LINK", name: "Link", isoId: "_ae4Xt9p-Ed-ak6NoX_4Aeg_-2003821118" }, { value: "UNLK", name: "Unlink", isoId: "_ae4XuNp-Ed-ak6NoX_4Aeg_-2003821117" }, { value: "SOFT", name: "Soft", isoId: "_ae4Xudp-Ed-ak6NoX_4Aeg_-2003821101" }],
+  },
+  "LinkageType3Choice": {
+    name: "LinkageType3Choice",
+    isoId: "_LBo-4Tt4EeW638lNyHKv7A",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_LiheYTt4EeW638lNyHKv7A", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "LinkageType1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_LiheaTt4EeW638lNyHKv7A", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "ProcessingPosition3Code": {
+    name: "ProcessingPosition3Code",
+    isoId: "_aK655tp-Ed-ak6NoX_4Aeg_-1877116911",
+    kind: "code",
+    options: [{ value: "AFTE", name: "After", isoId: "_aK6559p-Ed-ak6NoX_4Aeg_-1877116893" }, { value: "WITH", name: "With", isoId: "_aK656Np-Ed-ak6NoX_4Aeg_-1877116876" }, { value: "BEFO", name: "Before", isoId: "_aLED0Np-Ed-ak6NoX_4Aeg_-1877116833" }, { value: "INFO", name: "Information", isoId: "_aLED0dp-Ed-ak6NoX_4Aeg_-1877116816" }],
+  },
+  "ProcessingPosition7Choice": {
+    name: "ProcessingPosition7Choice",
+    isoId: "_nwmKyTnYEeWLJsP1cO-amg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_n8yzoznYEeWLJsP1cO-amg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ProcessingPosition3Code", required: true }),
+      f({ name: "Proprietary", isoId: "_n8yzqznYEeWLJsP1cO-amg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+    rules: [
+      { name: "WithLinkageRule", isoId: "_n8yzoTnYEeWLJsP1cO-amg", text: "If Code WITH is used, then the one or more instruction which are linked become bound and which must be executed together. Even if one single transactions/instructions/notifications can not be executed, then all the other transactions/instructions/notifications must also be kept pending. Therefore the use of code WITH must be limited to combine up to 2 or 3 transactions/instructions/notifications." },
+    ],
+  },
+  "References34Choice": {
+    name: "References34Choice",
+    isoId: "_jvDnxu5NEeCisYr99QEiWA_1809359150",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "SecuritiesSettlementTransactionIdentification", isoId: "_jvDnx-5NEeCisYr99QEiWA_-1304332452", xmlTag: "SctiesSttlmTxId", displayName: displayName("SecuritiesSettlementTransactionIdentification"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "IntraPositionMovementIdentification", isoId: "_jvDnyO5NEeCisYr99QEiWA_1789544906", xmlTag: "IntraPosMvmntId", displayName: displayName("IntraPositionMovementIdentification"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "IntraBalanceMovementIdentification", isoId: "_jvNYwO5NEeCisYr99QEiWA_-84678421", xmlTag: "IntraBalMvmntId", displayName: displayName("IntraBalanceMovementIdentification"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "AccountServicerTransactionIdentification", isoId: "_jvNYwe5NEeCisYr99QEiWA_-1565269570", xmlTag: "AcctSvcrTxId", displayName: displayName("AccountServicerTransactionIdentification"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "MarketInfrastructureTransactionIdentification", isoId: "_jvNYwu5NEeCisYr99QEiWA_460130897", xmlTag: "MktInfrstrctrTxId", displayName: displayName("MarketInfrastructureTransactionIdentification"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "PoolIdentification", isoId: "_jvNYw-5NEeCisYr99QEiWA_1814174824", xmlTag: "PoolId", displayName: displayName("PoolIdentification"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "OtherTransactionIdentification", isoId: "_jvNYxO5NEeCisYr99QEiWA_-1943122229", xmlTag: "OthrTxId", displayName: displayName("OtherTransactionIdentification"), kind: "text", type: "Max35Text", required: true }),
+    ],
+  },
+  "PartyIdentification127Choice": {
+    name: "PartyIdentification127Choice",
+    isoId: "_Y-_MD7XDEeiTob_PrFFUxA",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "AnyBIC", isoId: "_ZQ1w87XDEeiTob_PrFFUxA", xmlTag: "AnyBIC", displayName: displayName("AnyBIC"), kind: "text", type: "AnyBICDec2014Identifier", required: true }),
+      f({ name: "ProprietaryIdentification", isoId: "_ZQ1w9bXDEeiTob_PrFFUxA", xmlTag: "PrtryId", displayName: displayName("ProprietaryIdentification"), kind: "component", type: "GenericIdentification36", required: true }),
+    ],
+  },
+  "Linkages57": {
+    name: "Linkages57",
+    isoId: "_YisEcTneEem7JZMuWtwtsg",
+    kind: "component",
+    fields: [
+      f({ name: "ProcessingPosition", isoId: "_Ys-BgTneEem7JZMuWtwtsg", xmlTag: "PrcgPos", displayName: displayName("ProcessingPosition"), kind: "choice", type: "ProcessingPosition7Choice", required: false }),
+      f({ name: "MessageNumber", isoId: "_Ys-BiTneEem7JZMuWtwtsg", xmlTag: "MsgNb", displayName: displayName("MessageNumber"), kind: "choice", type: "DocumentNumber5Choice", required: false }),
+      f({ name: "Reference", isoId: "_Ys-BkTneEem7JZMuWtwtsg", xmlTag: "Ref", displayName: displayName("Reference"), kind: "choice", type: "References34Choice", required: true }),
+      f({ name: "ReferenceOwner", isoId: "_Ys-BmTneEem7JZMuWtwtsg", xmlTag: "RefOwnr", displayName: displayName("ReferenceOwner"), kind: "choice", type: "PartyIdentification127Choice", required: false }),
     ],
   },
   "PaymentInstrument1Code": {
@@ -9345,6 +11719,36 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "CreditTransferMandate", isoId: "_wJtnwzEyEe6g-ffJsqGiSA", xmlTag: "CdtTrfMndt", displayName: displayName("CreditTransferMandate"), kind: "component", type: "CreditTransferMandateData1", required: true }),
     ],
   },
+  "MandateRelatedInformation15": {
+    name: "MandateRelatedInformation15",
+    isoId: "_a4TwFdcZEeqRFcf2R4bPBw",
+    kind: "component",
+    fields: [
+      f({ name: "MandateIdentification", isoId: "_a5rCBdcZEeqRFcf2R4bPBw", xmlTag: "MndtId", displayName: displayName("MandateIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "DateOfSignature", isoId: "_a5rCB9cZEeqRFcf2R4bPBw", xmlTag: "DtOfSgntr", displayName: displayName("DateOfSignature"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "AmendmentIndicator", isoId: "_a5rCCdcZEeqRFcf2R4bPBw", xmlTag: "AmdmntInd", displayName: displayName("AmendmentIndicator"), kind: "boolean", type: "TrueFalseIndicator", required: false }),
+      f({ name: "AmendmentInformationDetails", isoId: "_a5rCC9cZEeqRFcf2R4bPBw", xmlTag: "AmdmntInfDtls", displayName: displayName("AmendmentInformationDetails"), kind: "component", type: "AmendmentInformationDetails14", required: false }),
+      f({ name: "ElectronicSignature", isoId: "_a5rCDdcZEeqRFcf2R4bPBw", xmlTag: "ElctrncSgntr", displayName: displayName("ElectronicSignature"), kind: "text", type: "Max1025Text", required: false }),
+      f({ name: "FirstCollectionDate", isoId: "_a5rpEdcZEeqRFcf2R4bPBw", xmlTag: "FrstColltnDt", displayName: displayName("FirstCollectionDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "FinalCollectionDate", isoId: "_a5rpE9cZEeqRFcf2R4bPBw", xmlTag: "FnlColltnDt", displayName: displayName("FinalCollectionDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "Frequency", isoId: "_a5rpFdcZEeqRFcf2R4bPBw", xmlTag: "Frqcy", displayName: displayName("Frequency"), kind: "choice", type: "Frequency36Choice", required: false }),
+      f({ name: "Reason", isoId: "_a5rpF9cZEeqRFcf2R4bPBw", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "choice", type: "MandateSetupReason1Choice", required: false }),
+      f({ name: "TrackingDays", isoId: "_a5rpGdcZEeqRFcf2R4bPBw", xmlTag: "TrckgDays", displayName: displayName("TrackingDays"), kind: "text", type: "Exact2NumericText", required: false }),
+    ],
+    rules: [
+      { name: "AmendmentIndicatorTrueRule", isoId: "_a5rCAdcZEeqRFcf2R4bPBw", text: "If AmendmentIndicator is true, then AmendmentInformationDetails must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/AmendmentInformationDetails"}]},"onCondition":{"connector":"AND","rules":[{"op":"EqualToValue","path":"/AmendmentIndicator","value":"true"}]}} },
+      { name: "AmendmentIndicatorFalseRule", isoId: "_a5rCA9cZEeqRFcf2R4bPBw", text: "If AmendmentIndicator is false, then AmendmentInformationDetails is not allowed.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/AmendmentInformationDetails"}]},"onCondition":{"connector":"AND","rules":[{"op":"EqualToValue","path":"/AmendmentIndicator","value":"false"}]}} },
+    ],
+  },
+  "MandateRelatedData4Choice": {
+    name: "MandateRelatedData4Choice",
+    isoId: "_MIUXY7vHEfCYYbmqNrQFSg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "DirectDebitMandate", isoId: "_MPNCYbvHEfCYYbmqNrQFSg", xmlTag: "DrctDbtMndt", displayName: displayName("DirectDebitMandate"), kind: "component", type: "MandateRelatedInformation15", required: true }),
+      f({ name: "CreditTransferMandate", isoId: "_MPNCY7vHEfCYYbmqNrQFSg", xmlTag: "CdtTrfMndt", displayName: displayName("CreditTransferMandate"), kind: "component", type: "CreditTransferMandateData1", required: true }),
+    ],
+  },
   "MandateRelatedData5Choice": {
     name: "MandateRelatedData5Choice",
     isoId: "_RA3lIbvIEfCYYbmqNrQFSg",
@@ -9374,19 +11778,19 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     minLength: 1,
     maxLength: 10,
   },
-  "Max210Text": {
-    name: "Max210Text",
-    isoId: "_YWiyNNp-Ed-ak6NoX_4Aeg_1281143207",
-    kind: "text",
-    minLength: 1,
-    maxLength: 210,
-  },
   "Max37Text": {
     name: "Max37Text",
     isoId: "__xN7MI0TEeWRYffwL7E13A",
     kind: "text",
     minLength: 1,
     maxLength: 37,
+  },
+  "Max3Number": {
+    name: "Max3Number",
+    isoId: "_YWiyNtp-Ed-ak6NoX_4Aeg_-1077902096",
+    kind: "number",
+    totalDigits: 3,
+    fractionDigits: 0,
   },
   "Max3Text": {
     name: "Max3Text",
@@ -9419,6 +11823,22 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Other", isoId: "_iR9Bh3SbEeiH1ZOt2UD8vQ", xmlTag: "Othr", displayName: displayName("Other"), kind: "component", type: "GenericFinancialIdentification1", required: true }),
     ],
   },
+  "Member6": {
+    name: "Member6",
+    isoId: "_W1ihMXSeEeiH1ZOt2UD8vQ",
+    kind: "component",
+    fields: [
+      f({ name: "MemberReturnAddress", isoId: "_XBEbwXSeEeiH1ZOt2UD8vQ", xmlTag: "MmbRtrAdr", displayName: displayName("MemberReturnAddress"), kind: "choice", type: "MemberIdentification3Choice", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "ContactReference", isoId: "_XBEbw3SeEeiH1ZOt2UD8vQ", xmlTag: "CtctRef", displayName: displayName("ContactReference"), kind: "component", type: "ContactIdentificationAndAddress1", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "CommunicationAddress", isoId: "_XBEbxXSeEeiH1ZOt2UD8vQ", xmlTag: "ComAdr", displayName: displayName("CommunicationAddress"), kind: "component", type: "CommunicationAddress8", required: false }),
+    ],
+  },
+  "MemberStatus1Code": {
+    name: "MemberStatus1Code",
+    isoId: "_zdmYYw93EeGeV5vP7Mvdig_311511603",
+    kind: "code",
+    options: [{ value: "ENBL", name: "Enabled", isoId: "_zdmYZA93EeGeV5vP7Mvdig_-507442078" }, { value: "DSBL", name: "Disabled", isoId: "_zdmYZQ93EeGeV5vP7Mvdig_943717544" }, { value: "DLTD", name: "Deleted", isoId: "_zdmYZg93EeGeV5vP7Mvdig_1865880854" }, { value: "JOIN", name: "Joining", isoId: "_zdviUA93EeGeV5vP7Mvdig_1111130980" }],
+  },
   "MessageHeader1": {
     name: "MessageHeader1",
     isoId: "_75DzkaMgEeCJ6YNENx4h-w_-613853819",
@@ -9436,6 +11856,18 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "PaymentControl", isoId: "_i375oZIhEeect698_YsnIA", xmlTag: "PmtCtrl", displayName: displayName("PaymentControl"), kind: "code", type: "ExternalPaymentControlRequestType1Code", required: true }),
       f({ name: "Enquiry", isoId: "_i375o5IhEeect698_YsnIA", xmlTag: "Enqry", displayName: displayName("Enquiry"), kind: "code", type: "ExternalEnquiryRequestType1Code", required: true }),
       f({ name: "Proprietary", isoId: "_i375pZIhEeect698_YsnIA", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification1", required: true }),
+    ],
+  },
+  "MessageHeader7": {
+    name: "MessageHeader7",
+    isoId: "_imfkUZIhEeect698_YsnIA",
+    kind: "component",
+    fields: [
+      f({ name: "MessageIdentification", isoId: "_ivV-U5IhEeect698_YsnIA", xmlTag: "MsgId", displayName: displayName("MessageIdentification"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "CreationDateTime", isoId: "_ivV-VZIhEeect698_YsnIA", xmlTag: "CreDtTm", displayName: displayName("CreationDateTime"), kind: "datetime", type: "ISODateTime", required: false }),
+      f({ name: "RequestType", isoId: "_ivV-V5IhEeect698_YsnIA", xmlTag: "ReqTp", displayName: displayName("RequestType"), kind: "choice", type: "RequestType4Choice", required: false }),
+      f({ name: "OriginalBusinessQuery", isoId: "_ivV-WZIhEeect698_YsnIA", xmlTag: "OrgnlBizQry", displayName: displayName("OriginalBusinessQuery"), kind: "component", type: "OriginalBusinessQuery1", required: false }),
+      f({ name: "QueryName", isoId: "_ivV-W5IhEeect698_YsnIA", xmlTag: "QryNm", displayName: displayName("QueryName"), kind: "text", type: "Max35Text", required: false }),
     ],
   },
   "MessageHeader9": {
@@ -9466,11 +11898,15 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "MessageIdentification", isoId: "_RUE1B9p-Ed-ak6NoX_4Aeg_-705747860", xmlTag: "MsgId", displayName: displayName("MessageIdentification"), kind: "text", type: "Max35Text", required: false }),
     ],
   },
-  "MovementResponseType1Code": {
-    name: "MovementResponseType1Code",
-    isoId: "_jQzlhe5NEeCisYr99QEiWA_-503094567",
-    kind: "code",
-    options: [{ value: "FULL", name: "Full", isoId: "_jQ9WgO5NEeCisYr99QEiWA_-739401767" }, { value: "STTS", name: "Status", isoId: "_jQ9Wge5NEeCisYr99QEiWA_424690481" }],
+  "NameAndAddress8": {
+    name: "NameAndAddress8",
+    isoId: "_PZvPQNp-Ed-ak6NoX_4Aeg_-611452366",
+    kind: "component",
+    fields: [
+      f({ name: "Name", isoId: "_PZvPQdp-Ed-ak6NoX_4Aeg_-611452364", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max350Text", required: true }),
+      f({ name: "Address", isoId: "_PZvPQtp-Ed-ak6NoX_4Aeg_-611452322", xmlTag: "Adr", displayName: displayName("Address"), kind: "component", type: "PostalAddress1", required: false }),
+      f({ name: "AlternativeIdentifier", isoId: "_PZvPQ9p-Ed-ak6NoX_4Aeg_-106286787", xmlTag: "AltrntvIdr", displayName: displayName("AlternativeIdentifier"), kind: "text", type: "Max35Text", required: false, repeat: { min: 0, max: 10 } }),
+    ],
   },
   "NetCashForecast3": {
     name: "NetCashForecast3",
@@ -9631,6 +12067,23 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "OriginalCreationDateTime", isoId: "79f0fece-3e2c-4843-ace6-0239f629aaed", xmlTag: "OrgnlCreDtTm", displayName: displayName("OriginalCreationDateTime"), kind: "datetime", type: "ISODateTime", required: false }),
     ],
   },
+  "OriginalItemReference8": {
+    name: "OriginalItemReference8",
+    isoId: "bf45fad0-cc41-4318-897a-87fe98f683d1",
+    kind: "component",
+    fields: [
+      f({ name: "Account", isoId: "f454f512-f4de-4763-b9aa-f4a729cc5ede", xmlTag: "Acct", displayName: displayName("Account"), kind: "component", type: "CashAccount40", required: false }),
+      f({ name: "AccountOwner", isoId: "e88bc3de-09d5-41d8-b19b-3497cdf1798f", xmlTag: "AcctOwnr", displayName: displayName("AccountOwner"), kind: "choice", type: "Party50Choice", required: false }),
+      f({ name: "AccountServicer", isoId: "4bbccf60-3e00-43bd-b80d-cbeaa551d017", xmlTag: "AcctSvcr", displayName: displayName("AccountServicer"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
+      f({ name: "RelatedAccount", isoId: "cb2aae36-f567-4cac-9531-c2ce513a8f3b", xmlTag: "RltdAcct", displayName: displayName("RelatedAccount"), kind: "component", type: "CashAccount40", required: false }),
+      f({ name: "Debtor", isoId: "fae69213-7200-4fd9-ab78-2572ef52a1c6", xmlTag: "Dbtr", displayName: displayName("Debtor"), kind: "choice", type: "Party50Choice", required: false }),
+      f({ name: "DebtorAgent", isoId: "bc3084b0-fe93-4573-b174-013bda0eaaa1", xmlTag: "DbtrAgt", displayName: displayName("DebtorAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
+      f({ name: "IntermediaryAgent", isoId: "2586d1d6-8d99-4a52-9c21-784eb4e51f46", xmlTag: "IntrmyAgt", displayName: displayName("IntermediaryAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
+      f({ name: "Purpose", isoId: "44390462-63d3-447d-b9dd-4c4bd2f1cd8c", xmlTag: "Purp", displayName: displayName("Purpose"), kind: "choice", type: "Purpose2Choice", required: false }),
+      f({ name: "RelatedRemittanceInformation", isoId: "7d74aa8d-e39c-464c-a96e-3791fce3f573", xmlTag: "RltdRmtInf", displayName: displayName("RelatedRemittanceInformation"), kind: "component", type: "RemittanceLocation8", required: false }),
+      f({ name: "RemittanceInformation", isoId: "dc38241b-ff48-441e-a4a2-cdfb3d7962de", xmlTag: "RmtInf", displayName: displayName("RemittanceInformation"), kind: "component", type: "RemittanceInformation26", required: false }),
+    ],
+  },
   "OriginalMandate10Choice": {
     name: "OriginalMandate10Choice",
     isoId: "_yNcaETEyEe6g-ffJsqGiSA",
@@ -9738,6 +12191,136 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Purpose", isoId: "ac34c00d-fa60-4268-be4e-84a6abd37f5f", xmlTag: "Purp", displayName: displayName("Purpose"), kind: "choice", type: "Purpose2Choice", required: false }),
     ],
   },
+  "SettlementInstruction11": {
+    name: "SettlementInstruction11",
+    isoId: "_a1fsodcZEeqRFcf2R4bPBw",
+    kind: "component",
+    fields: [
+      f({ name: "SettlementMethod", isoId: "_a24MwdcZEeqRFcf2R4bPBw", xmlTag: "SttlmMtd", displayName: displayName("SettlementMethod"), kind: "code", type: "SettlementMethod1Code", required: true }),
+      f({ name: "SettlementAccount", isoId: "_a24Mw9cZEeqRFcf2R4bPBw", xmlTag: "SttlmAcct", displayName: displayName("SettlementAccount"), kind: "component", type: "CashAccount40", required: false }),
+      f({ name: "ClearingSystem", isoId: "_a24MxdcZEeqRFcf2R4bPBw", xmlTag: "ClrSys", displayName: displayName("ClearingSystem"), kind: "choice", type: "ClearingSystemIdentification3Choice", required: false }),
+      f({ name: "InstructingReimbursementAgent", isoId: "_a24Mx9cZEeqRFcf2R4bPBw", xmlTag: "InstgRmbrsmntAgt", displayName: displayName("InstructingReimbursementAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification6", required: false }),
+      f({ name: "InstructingReimbursementAgentAccount", isoId: "_a24MydcZEeqRFcf2R4bPBw", xmlTag: "InstgRmbrsmntAgtAcct", displayName: displayName("InstructingReimbursementAgentAccount"), kind: "component", type: "CashAccount40", required: false }),
+      f({ name: "InstructedReimbursementAgent", isoId: "_a24My9cZEeqRFcf2R4bPBw", xmlTag: "InstdRmbrsmntAgt", displayName: displayName("InstructedReimbursementAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification6", required: false }),
+      f({ name: "InstructedReimbursementAgentAccount", isoId: "_a24MzdcZEeqRFcf2R4bPBw", xmlTag: "InstdRmbrsmntAgtAcct", displayName: displayName("InstructedReimbursementAgentAccount"), kind: "component", type: "CashAccount40", required: false }),
+      f({ name: "ThirdReimbursementAgent", isoId: "_a24Mz9cZEeqRFcf2R4bPBw", xmlTag: "ThrdRmbrsmntAgt", displayName: displayName("ThirdReimbursementAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification6", required: false }),
+      f({ name: "ThirdReimbursementAgentAccount", isoId: "_a24M0dcZEeqRFcf2R4bPBw", xmlTag: "ThrdRmbrsmntAgtAcct", displayName: displayName("ThirdReimbursementAgentAccount"), kind: "component", type: "CashAccount40", required: false }),
+    ],
+    rules: [
+      { name: "ThirdReimbursementAgentRule", isoId: "_a24MsdcZEeqRFcf2R4bPBw", text: "If ThirdReimbursementAgent is present, then InstructingReimbursementAgent and InstructedReimbursementAgent must both be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/InstructingReimbursementAgent"},{"op":"Presence","path":"/InstructedReimbursementAgent"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/ThirdReimbursementAgent"}]}} },
+      { name: "SettlementMethodAgentRule", isoId: "_a24Ms9cZEeqRFcf2R4bPBw", text: "If SettlementMethod is equal to INDA or INGA, then ReimbursementAgent(s) and ClearingSystem are not allowed.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/ClearingSystem"},{"op":"Absence","path":"/InstructingReimbursementAgent"},{"op":"Absence","path":"/InstructedReimbursementAgent"},{"op":"Absence","path":"/ThirdReimbursementAgent"}]},"onCondition":{"connector":"OR","rules":[{"op":"EqualToValue","path":"/SettlementMethod","value":"InstructingAgent"},{"op":"EqualToValue","path":"/SettlementMethod","value":"InstructedAgent"}]}} },
+      { name: "SettlementMethodCoverRule", isoId: "_a24MtdcZEeqRFcf2R4bPBw", text: "If SettlementMethod is equal to COVE, then SettlementAccount and ClearingSystem are not allowed.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/SettlementAccount"},{"op":"Absence","path":"/ClearingSystem"}]},"onCondition":{"connector":"AND","rules":[{"op":"EqualToValue","path":"/SettlementMethod","value":"CoverMethod"}]}} },
+      { name: "SettlementMethodCoverAgentRule", isoId: "_a24Mt9cZEeqRFcf2R4bPBw", text: "If SettlementMethod is equal to COVE, then InstructedReimbursementAgent or InstructingReimbursementAgent must be present.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/InstructingReimbursementAgent"},{"op":"Presence","path":"/InstructedReimbursementAgent"}]},"onCondition":{"connector":"AND","rules":[{"op":"EqualToValue","path":"/SettlementMethod","value":"CoverMethod"}]}} },
+      { name: "SettlementMethodClearingRule", isoId: "_a24MudcZEeqRFcf2R4bPBw", text: "If SettlementMethod is equal to CLRG, then SettlementAccount and ReimbursementAgent(s) are not allowed.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/SettlementAccount"},{"op":"Absence","path":"/InstructingReimbursementAgent"},{"op":"Absence","path":"/InstructedReimbursementAgent"},{"op":"Absence","path":"/ThirdReimbursementAgent"}]},"onCondition":{"connector":"AND","rules":[{"op":"EqualToValue","path":"/SettlementMethod","value":"ClearingSystem"}]}} },
+      { name: "InstructingReimbursementAgentAccountRule", isoId: "_a24Mu9cZEeqRFcf2R4bPBw", text: "If InstructingReimbursementAgentAccount is present, then InstructingReimbursementAgent must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/InstructingReimbursementAgentAccount"}]},"onCondition":{"connector":"AND","rules":[{"op":"Absence","path":"/InstructingReimbursementAgent"}]}} },
+      { name: "InstructedReimbursementAgentAccountRule", isoId: "_a24MvdcZEeqRFcf2R4bPBw", text: "If InstructedReimbursementAgentAccount is present, then InstructedReimbursementAgent must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/InstructedReimbursementAgentAccount"}]},"onCondition":{"connector":"AND","rules":[{"op":"Absence","path":"/InstructedReimbursementAgent"}]}} },
+      { name: "ThirdReimbursementAgentAccountRule", isoId: "_a24Mv9cZEeqRFcf2R4bPBw", text: "If ThirdReimbursementAgentAccount is present, then ThirdReimbursementAgent must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/ThirdReimbursementAgentAccount"}]},"onCondition":{"connector":"AND","rules":[{"op":"Absence","path":"/ThirdReimbursementAgent"}]}} },
+    ],
+  },
+  "ReferredDocumentType3Choice": {
+    name: "ReferredDocumentType3Choice",
+    isoId: "_XxL1Jx77EeSxevWRRWxNAg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_YCiq4x77EeSxevWRRWxNAg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "DocumentType6Code", required: true }),
+      f({ name: "Proprietary", isoId: "_YCiq5R77EeSxevWRRWxNAg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
+    ],
+  },
+  "ReferredDocumentType4": {
+    name: "ReferredDocumentType4",
+    isoId: "_Xf7GCR77EeSxevWRRWxNAg",
+    kind: "component",
+    fields: [
+      f({ name: "CodeOrProprietary", isoId: "_XxL1Ix77EeSxevWRRWxNAg", xmlTag: "CdOrPrtry", displayName: displayName("CodeOrProprietary"), kind: "choice", type: "ReferredDocumentType3Choice", required: true }),
+      f({ name: "Issuer", isoId: "_XxL1JR77EeSxevWRRWxNAg", xmlTag: "Issr", displayName: displayName("Issuer"), kind: "text", type: "Max35Text", required: false }),
+    ],
+  },
+  "ReferredDocumentInformation7": {
+    name: "ReferredDocumentInformation7",
+    isoId: "_0X1uUzq4EeWZFYSPlduMhw",
+    kind: "component",
+    fields: [
+      f({ name: "Type", isoId: "_0feAQzq4EeWZFYSPlduMhw", xmlTag: "Tp", displayName: displayName("Type"), kind: "component", type: "ReferredDocumentType4", required: false }),
+      f({ name: "Number", isoId: "_0feARTq4EeWZFYSPlduMhw", xmlTag: "Nb", displayName: displayName("Number"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "RelatedDate", isoId: "_0feARzq4EeWZFYSPlduMhw", xmlTag: "RltdDt", displayName: displayName("RelatedDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "LineDetails", isoId: "_A4iOsTq5EeWZFYSPlduMhw", xmlTag: "LineDtls", displayName: displayName("LineDetails"), kind: "component", type: "DocumentLineInformation1", required: false, repeat: { min: 0, max: null } }),
+    ],
+  },
+  "RemittanceAmount2": {
+    name: "RemittanceAmount2",
+    isoId: "_tcu6UlkyEeGeoaLUQk__nA_1720061544",
+    kind: "component",
+    fields: [
+      f({ name: "DuePayableAmount", isoId: "_tcu6U1kyEeGeoaLUQk__nA_410413505", xmlTag: "DuePyblAmt", displayName: displayName("DuePayableAmount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: false }),
+      f({ name: "DiscountAppliedAmount", isoId: "_tc4rUFkyEeGeoaLUQk__nA_1468630199", xmlTag: "DscntApldAmt", displayName: displayName("DiscountAppliedAmount"), kind: "component", type: "DiscountAmountAndType1", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "CreditNoteAmount", isoId: "_tc4rUVkyEeGeoaLUQk__nA_-1624173271", xmlTag: "CdtNoteAmt", displayName: displayName("CreditNoteAmount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: false }),
+      f({ name: "TaxAmount", isoId: "_tc4rUlkyEeGeoaLUQk__nA_-1935934653", xmlTag: "TaxAmt", displayName: displayName("TaxAmount"), kind: "component", type: "TaxAmountAndType1", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "AdjustmentAmountAndReason", isoId: "_tc4rU1kyEeGeoaLUQk__nA_41136424", xmlTag: "AdjstmntAmtAndRsn", displayName: displayName("AdjustmentAmountAndReason"), kind: "component", type: "DocumentAdjustment1", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "RemittedAmount", isoId: "_tc4rVFkyEeGeoaLUQk__nA_802163856", xmlTag: "RmtdAmt", displayName: displayName("RemittedAmount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: false }),
+    ],
+  },
+  "StructuredRemittanceInformation17": {
+    name: "StructuredRemittanceInformation17",
+    isoId: "_n5V1sd4lEeqt1ZcLzWyWFw",
+    kind: "component",
+    fields: [
+      f({ name: "ReferredDocumentInformation", isoId: "_n7Ds8d4lEeqt1ZcLzWyWFw", xmlTag: "RfrdDocInf", displayName: displayName("ReferredDocumentInformation"), kind: "component", type: "ReferredDocumentInformation7", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "ReferredDocumentAmount", isoId: "_n7Ds894lEeqt1ZcLzWyWFw", xmlTag: "RfrdDocAmt", displayName: displayName("ReferredDocumentAmount"), kind: "component", type: "RemittanceAmount2", required: false }),
+      f({ name: "CreditorReferenceInformation", isoId: "_n7Ds9d4lEeqt1ZcLzWyWFw", xmlTag: "CdtrRefInf", displayName: displayName("CreditorReferenceInformation"), kind: "component", type: "CreditorReferenceInformation2", required: false }),
+      f({ name: "Invoicer", isoId: "_n7Ds994lEeqt1ZcLzWyWFw", xmlTag: "Invcr", displayName: displayName("Invoicer"), kind: "component", type: "PartyIdentification135", required: false }),
+      f({ name: "Invoicee", isoId: "_n7Ds-d4lEeqt1ZcLzWyWFw", xmlTag: "Invcee", displayName: displayName("Invoicee"), kind: "component", type: "PartyIdentification135", required: false }),
+      f({ name: "TaxRemittance", isoId: "_n7Ds-94lEeqt1ZcLzWyWFw", xmlTag: "TaxRmt", displayName: displayName("TaxRemittance"), kind: "component", type: "TaxData1", required: false }),
+      f({ name: "GarnishmentRemittance", isoId: "_n7Ds_d4lEeqt1ZcLzWyWFw", xmlTag: "GrnshmtRmt", displayName: displayName("GarnishmentRemittance"), kind: "component", type: "Garnishment3", required: false }),
+      f({ name: "AdditionalRemittanceInformation", isoId: "_n7Ds_94lEeqt1ZcLzWyWFw", xmlTag: "AddtlRmtInf", displayName: displayName("AdditionalRemittanceInformation"), kind: "text", type: "Max140Text", required: false, repeat: { min: 0, max: 3 } }),
+    ],
+  },
+  "RemittanceInformation21": {
+    name: "RemittanceInformation21",
+    isoId: "_n3SnQd4lEeqt1ZcLzWyWFw",
+    kind: "component",
+    fields: [
+      f({ name: "Unstructured", isoId: "_n5SyYd4lEeqt1ZcLzWyWFw", xmlTag: "Ustrd", displayName: displayName("Unstructured"), kind: "text", type: "Max140Text", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "Structured", isoId: "_n5SyY94lEeqt1ZcLzWyWFw", xmlTag: "Strd", displayName: displayName("Structured"), kind: "component", type: "StructuredRemittanceInformation17", required: false, repeat: { min: 0, max: null } }),
+    ],
+  },
+  "Party40Choice": {
+    name: "Party40Choice",
+    isoId: "_8KfE5248EeiU9cctagi5ow",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Party", isoId: "_8U6MM248EeiU9cctagi5ow", xmlTag: "Pty", displayName: displayName("Party"), kind: "component", type: "PartyIdentification135", required: true }),
+      f({ name: "Agent", isoId: "_8U6MNW48EeiU9cctagi5ow", xmlTag: "Agt", displayName: displayName("Agent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification6", required: true }),
+    ],
+  },
+  "OriginalTransactionReference48": {
+    name: "OriginalTransactionReference48",
+    isoId: "_MBR7IbvHEfCYYbmqNrQFSg",
+    kind: "component",
+    fields: [
+      f({ name: "InterbankSettlementAmount", isoId: "_MITwMbvHEfCYYbmqNrQFSg", xmlTag: "IntrBkSttlmAmt", displayName: displayName("InterbankSettlementAmount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: false }),
+      f({ name: "Amount", isoId: "_MITwM7vHEfCYYbmqNrQFSg", xmlTag: "Amt", displayName: displayName("Amount"), kind: "choice", type: "AmountType4Choice", required: false }),
+      f({ name: "InterbankSettlementDate", isoId: "_MITwNbvHEfCYYbmqNrQFSg", xmlTag: "IntrBkSttlmDt", displayName: displayName("InterbankSettlementDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "RequestedCollectionDate", isoId: "_MITwN7vHEfCYYbmqNrQFSg", xmlTag: "ReqdColltnDt", displayName: displayName("RequestedCollectionDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "RequestedExecutionDate", isoId: "_MITwObvHEfCYYbmqNrQFSg", xmlTag: "ReqdExctnDt", displayName: displayName("RequestedExecutionDate"), kind: "choice", type: "DateAndDateTime2Choice", required: false }),
+      f({ name: "CreditorSchemeIdentification", isoId: "_MIUXQbvHEfCYYbmqNrQFSg", xmlTag: "CdtrSchmeId", displayName: displayName("CreditorSchemeIdentification"), kind: "component", type: "PartyIdentification135", required: false }),
+      f({ name: "SettlementInformation", isoId: "_MIUXQ7vHEfCYYbmqNrQFSg", xmlTag: "SttlmInf", displayName: displayName("SettlementInformation"), kind: "component", type: "SettlementInstruction11", required: false }),
+      f({ name: "PaymentTypeInformation", isoId: "_MIUXRbvHEfCYYbmqNrQFSg", xmlTag: "PmtTpInf", displayName: displayName("PaymentTypeInformation"), kind: "component", type: "PaymentTypeInformation27", required: false }),
+      f({ name: "PaymentMethod", isoId: "_MIUXR7vHEfCYYbmqNrQFSg", xmlTag: "PmtMtd", displayName: displayName("PaymentMethod"), kind: "code", type: "PaymentMethod4Code", required: false }),
+      f({ name: "MandateRelatedInformation", isoId: "_MIUXSbvHEfCYYbmqNrQFSg", xmlTag: "MndtRltdInf", displayName: displayName("MandateRelatedInformation"), kind: "choice", type: "MandateRelatedData4Choice", required: false }),
+      f({ name: "RemittanceInformation", isoId: "_MIUXS7vHEfCYYbmqNrQFSg", xmlTag: "RmtInf", displayName: displayName("RemittanceInformation"), kind: "component", type: "RemittanceInformation21", required: false }),
+      f({ name: "UltimateDebtor", isoId: "_MIUXTbvHEfCYYbmqNrQFSg", xmlTag: "UltmtDbtr", displayName: displayName("UltimateDebtor"), kind: "choice", type: "Party40Choice", required: false }),
+      f({ name: "Debtor", isoId: "_MIUXT7vHEfCYYbmqNrQFSg", xmlTag: "Dbtr", displayName: displayName("Debtor"), kind: "choice", type: "Party40Choice", required: false }),
+      f({ name: "DebtorAccount", isoId: "_MIUXUbvHEfCYYbmqNrQFSg", xmlTag: "DbtrAcct", displayName: displayName("DebtorAccount"), kind: "component", type: "CashAccount40", required: false }),
+      f({ name: "DebtorAgent", isoId: "_MIUXU7vHEfCYYbmqNrQFSg", xmlTag: "DbtrAgt", displayName: displayName("DebtorAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification6", required: false }),
+      f({ name: "DebtorAgentAccount", isoId: "_MIUXVbvHEfCYYbmqNrQFSg", xmlTag: "DbtrAgtAcct", displayName: displayName("DebtorAgentAccount"), kind: "component", type: "CashAccount40", required: false }),
+      f({ name: "CreditorAgent", isoId: "_MIUXV7vHEfCYYbmqNrQFSg", xmlTag: "CdtrAgt", displayName: displayName("CreditorAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification6", required: false }),
+      f({ name: "CreditorAgentAccount", isoId: "_MIUXWbvHEfCYYbmqNrQFSg", xmlTag: "CdtrAgtAcct", displayName: displayName("CreditorAgentAccount"), kind: "component", type: "CashAccount40", required: false }),
+      f({ name: "Creditor", isoId: "_MIUXW7vHEfCYYbmqNrQFSg", xmlTag: "Cdtr", displayName: displayName("Creditor"), kind: "choice", type: "Party40Choice", required: false }),
+      f({ name: "CreditorAccount", isoId: "_MIUXXbvHEfCYYbmqNrQFSg", xmlTag: "CdtrAcct", displayName: displayName("CreditorAccount"), kind: "component", type: "CashAccount40", required: false }),
+      f({ name: "UltimateCreditor", isoId: "_MIUXX7vHEfCYYbmqNrQFSg", xmlTag: "UltmtCdtr", displayName: displayName("UltimateCreditor"), kind: "choice", type: "Party40Choice", required: false }),
+      f({ name: "Purpose", isoId: "_MIUXYbvHEfCYYbmqNrQFSg", xmlTag: "Purp", displayName: displayName("Purpose"), kind: "choice", type: "Purpose2Choice", required: false }),
+    ],
+  },
   "Pagination": {
     name: "Pagination",
     isoId: "_Q65gBdp-Ed-ak6NoX_4Aeg_-21330104",
@@ -9745,6 +12328,41 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     fields: [
       f({ name: "PageNumber", isoId: "_Q65gBtp-Ed-ak6NoX_4Aeg_653765264", xmlTag: "PgNb", displayName: displayName("PageNumber"), kind: "text", type: "Max5NumericText", required: true }),
       f({ name: "LastPageIndicator", isoId: "_Q65gB9p-Ed-ak6NoX_4Aeg_811686458", xmlTag: "LastPgInd", displayName: displayName("LastPageIndicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+    ],
+  },
+  "PartyIdentification44": {
+    name: "PartyIdentification44",
+    isoId: "_Sp1N7QEcEeCQm6a_G2yO_w_-1349782575",
+    kind: "component",
+    fields: [
+      f({ name: "AnyBIC", isoId: "_Sp1N7gEcEeCQm6a_G2yO_w_-1463621641", xmlTag: "AnyBIC", displayName: displayName("AnyBIC"), kind: "text", type: "AnyBICIdentifier", required: true }),
+      f({ name: "AlternativeIdentifier", isoId: "_Sp1N7wEcEeCQm6a_G2yO_w_1948112368", xmlTag: "AltrntvIdr", displayName: displayName("AlternativeIdentifier"), kind: "text", type: "Max35Text", required: false, repeat: { min: 0, max: 10 } }),
+    ],
+  },
+  "PartyIdentification59": {
+    name: "PartyIdentification59",
+    isoId: "_dhBo04KOEeKmtdhZXgREOQ",
+    kind: "component",
+    fields: [
+      f({ name: "PartyName", isoId: "_MtaPwIKQEeKmtdhZXgREOQ", xmlTag: "PtyNm", displayName: displayName("PartyName"), kind: "text", type: "Max34Text", required: false }),
+      f({ name: "AnyBIC", isoId: "_ocnb44YsEeKuscgzs7HVKw", xmlTag: "AnyBIC", displayName: displayName("AnyBIC"), kind: "component", type: "PartyIdentification44", required: false }),
+      f({ name: "AccountNumber", isoId: "_vbjUsIKOEeKmtdhZXgREOQ", xmlTag: "AcctNb", displayName: displayName("AccountNumber"), kind: "text", type: "Max34Text", required: false }),
+      f({ name: "Address", isoId: "_nGNk8IKPEeKmtdhZXgREOQ", xmlTag: "Adr", displayName: displayName("Address"), kind: "text", type: "Max105Text", required: false }),
+      f({ name: "ClearingSystemIdentification", isoId: "_VwsfQIoREeKINPO736UM8w", xmlTag: "ClrSysId", displayName: displayName("ClearingSystemIdentification"), kind: "choice", type: "ClearingSystemIdentification2Choice", required: false }),
+      f({ name: "LegalEntityIdentifier", isoId: "_HxyqUIKQEeKmtdhZXgREOQ", xmlTag: "LglNttyIdr", displayName: displayName("LegalEntityIdentifier"), kind: "text", type: "LEIIdentifier", required: false }),
+    ],
+    rules: [
+      { name: "PartyNameOrLEIRule", isoId: "_YUSrcJToEeKShbaq9ixROw", text: "PartyName must be present or LegalEntityIdentifier must be present.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/PartyName"},{"op":"Presence","path":"/LegalEntityIdentifier"}]}} },
+    ],
+  },
+  "PartyIdentification73Choice": {
+    name: "PartyIdentification73Choice",
+    isoId: "_JJOcQSjIEeKnA5P_jl2DUw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NameAndAddress", isoId: "_JVFG-SjIEeKnA5P_jl2DUw", xmlTag: "NmAndAdr", displayName: displayName("NameAndAddress"), kind: "component", type: "NameAndAddress8", required: true }),
+      f({ name: "AnyBIC", isoId: "_JVFG_SjIEeKnA5P_jl2DUw", xmlTag: "AnyBIC", displayName: displayName("AnyBIC"), kind: "component", type: "PartyIdentification44", required: true }),
+      f({ name: "PartyIdentification", isoId: "_XthjsIKPEeKmtdhZXgREOQ", xmlTag: "PtyId", displayName: displayName("PartyIdentification"), kind: "component", type: "PartyIdentification59", required: true }),
     ],
   },
   "PlainCardData24": {
@@ -9797,6 +12415,17 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "UETR", isoId: "_hU3t4XrgEeidVZmeoasaWQ", xmlTag: "UETR", displayName: displayName("UETR"), kind: "text", type: "UUIDv4Identifier", required: false }),
     ],
   },
+  "PaymentIdentification8": {
+    name: "PaymentIdentification8",
+    isoId: "_rf468HrhEeidVZmeoasaWQ",
+    kind: "component",
+    fields: [
+      f({ name: "InstructionIdentification", isoId: "_r0WIAXrhEeidVZmeoasaWQ", xmlTag: "InstrId", displayName: displayName("InstructionIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "EndToEndIdentification", isoId: "_r0WIA3rhEeidVZmeoasaWQ", xmlTag: "EndToEndId", displayName: displayName("EndToEndIdentification"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "TransactionIdentification", isoId: "_vLfqAXrhEeidVZmeoasaWQ", xmlTag: "TxId", displayName: displayName("TransactionIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "UETR", isoId: "_r0WIBXrhEeidVZmeoasaWQ", xmlTag: "UETR", displayName: displayName("UETR"), kind: "text", type: "UUIDv4Identifier", required: false }),
+    ],
+  },
   "QueueTransactionIdentification1": {
     name: "QueueTransactionIdentification1",
     isoId: "_X0ioAZlQEee-Zps0fZQaFQ",
@@ -9833,6 +12462,26 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "ProprietaryIdentification", isoId: "_2AnwyzEyEe6g-ffJsqGiSA", xmlTag: "PrtryId", displayName: displayName("ProprietaryIdentification"), kind: "text", type: "Max70Text", required: true }),
     ],
   },
+  "PaymentTransactionParty4": {
+    name: "PaymentTransactionParty4",
+    isoId: "_15w68TEyEe6g-ffJsqGiSA",
+    kind: "component",
+    fields: [
+      f({ name: "InstructingAgent", isoId: "_18F2ETEyEe6g-ffJsqGiSA", xmlTag: "InstgAgt", displayName: displayName("InstructingAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
+      f({ name: "InstructedAgent", isoId: "_18F2EzEyEe6g-ffJsqGiSA", xmlTag: "InstdAgt", displayName: displayName("InstructedAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
+      f({ name: "UltimateDebtor", isoId: "_18F2FTEyEe6g-ffJsqGiSA", xmlTag: "UltmtDbtr", displayName: displayName("UltimateDebtor"), kind: "choice", type: "Party50Choice", required: false }),
+      f({ name: "Debtor", isoId: "_18F2FzEyEe6g-ffJsqGiSA", xmlTag: "Dbtr", displayName: displayName("Debtor"), kind: "choice", type: "Party50Choice", required: false }),
+      f({ name: "DebtorAgent", isoId: "_18F2GTEyEe6g-ffJsqGiSA", xmlTag: "DbtrAgt", displayName: displayName("DebtorAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
+      f({ name: "InstructingReimbursementAgent", isoId: "_18F2GzEyEe6g-ffJsqGiSA", xmlTag: "InstgRmbrsmntAgt", displayName: displayName("InstructingReimbursementAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
+      f({ name: "InstructedReimbursementAgent", isoId: "_18F2HTEyEe6g-ffJsqGiSA", xmlTag: "InstdRmbrsmntAgt", displayName: displayName("InstructedReimbursementAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
+      f({ name: "IntermediaryAgent1", isoId: "_18F2HzEyEe6g-ffJsqGiSA", xmlTag: "IntrmyAgt1", displayName: displayName("IntermediaryAgent1"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
+      f({ name: "IntermediaryAgent2", isoId: "_18F2ITEyEe6g-ffJsqGiSA", xmlTag: "IntrmyAgt2", displayName: displayName("IntermediaryAgent2"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
+      f({ name: "IntermediaryAgent3", isoId: "_18F2IzEyEe6g-ffJsqGiSA", xmlTag: "IntrmyAgt3", displayName: displayName("IntermediaryAgent3"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
+      f({ name: "CreditorAgent", isoId: "_18F2JTEyEe6g-ffJsqGiSA", xmlTag: "CdtrAgt", displayName: displayName("CreditorAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
+      f({ name: "Creditor", isoId: "_18F2JzEyEe6g-ffJsqGiSA", xmlTag: "Cdtr", displayName: displayName("Creditor"), kind: "choice", type: "Party50Choice", required: false }),
+      f({ name: "UltimateCreditor", isoId: "_18F2KTEyEe6g-ffJsqGiSA", xmlTag: "UltmtCdtr", displayName: displayName("UltimateCreditor"), kind: "choice", type: "Party50Choice", required: false }),
+    ],
+  },
   "PaymentType3Code": {
     name: "PaymentType3Code",
     isoId: "_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787",
@@ -9860,13 +12509,124 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "CategoryPurpose", isoId: "_gk4C6-10Eei2O5Op8j5zpA", xmlTag: "CtgyPurp", displayName: displayName("CategoryPurpose"), kind: "choice", type: "CategoryPurpose1Choice", required: false }),
     ],
   },
-  "Period2": {
-    name: "Period2",
-    isoId: "_T5oiANp-Ed-ak6NoX_4Aeg_1497161223",
+  "PendingReason10Code": {
+    name: "PendingReason10Code",
+    isoId: "_b_fWsf41EeClUvPNHKL9Zw",
+    kind: "code",
+    options: [{ value: "AWMO", name: "AwaitingMoney", isoId: "_b_fWt_41EeClUvPNHKL9Zw" }, { value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_b_fWu_41EeClUvPNHKL9Zw" }, { value: "CAIS", name: "AwaitingSecurities", isoId: "_b_fWv_41EeClUvPNHKL9Zw" }, { value: "REFU", name: "InstructionRefusedOrNotRecognised", isoId: "_b_fWw_41EeClUvPNHKL9Zw" }, { value: "AWSH", name: "AwaitingSecuritiesFromCounterparty", isoId: "_b_fWx_41EeClUvPNHKL9Zw" }, { value: "PHSE", name: "PhysicalDeliveryDelay", isoId: "_b_fWy_41EeClUvPNHKL9Zw" }, { value: "TAMM", name: "TradeAmendedInMarket", isoId: "_b_fWz_41EeClUvPNHKL9Zw" }, { value: "DOCY", name: "AwaitingDocumentsOrEndorsementsFromYou", isoId: "_b_fW0_41EeClUvPNHKL9Zw" }, { value: "DOCC", name: "AwaitingDocumentsOrEndorsementsFromCounterparty", isoId: "_b_fW1_41EeClUvPNHKL9Zw" }, { value: "BLOC", name: "AccountBlocked", isoId: "_b_fW2_41EeClUvPNHKL9Zw" }, { value: "CHAS", name: "EnquirySent", isoId: "_b_fW3_41EeClUvPNHKL9Zw" }, { value: "NEWI", name: "NewIssues", isoId: "_b_fW4_41EeClUvPNHKL9Zw" }, { value: "CLAC", name: "CounterpartyInsufficientSecurities", isoId: "_b_fW5_41EeClUvPNHKL9Zw" }, { value: "MUNO", name: "MultipleSettlementAmount", isoId: "_b_fW6_41EeClUvPNHKL9Zw" }, { value: "GLOB", name: "GlobalFormSecurities", isoId: "_b_fW7_41EeClUvPNHKL9Zw" }, { value: "PREA", name: "YourInstructionOnHold", isoId: "_b_fW8_41EeClUvPNHKL9Zw" }, { value: "PART", name: "TradeSettlesInPartials", isoId: "_b_fW9_41EeClUvPNHKL9Zw" }, { value: "NMAS", name: "NoMatchingRequired", isoId: "_b_fW-_41EeClUvPNHKL9Zw" }, { value: "NOFX", name: "NoForeignExchangeInstruction", isoId: "_b_fW__41EeClUvPNHKL9Zw" }, { value: "CMON", name: "CounterpartyInsufficientMoney", isoId: "_b_fXA_41EeClUvPNHKL9Zw" }, { value: "YCOL", name: "CollateralShortage", isoId: "_b_fXB_41EeClUvPNHKL9Zw" }, { value: "COLL", name: "SecuritiesPledgedAsCollateral", isoId: "_b_fXC_41EeClUvPNHKL9Zw" }, { value: "DEPO", name: "RefusedDepositForIssueOfDepositaryReceipts", isoId: "_b_fXD_41EeClUvPNHKL9Zw" }, { value: "FLIM", name: "MaximumForeignLimitReached", isoId: "_b_fXE_41EeClUvPNHKL9Zw" }, { value: "INCA", name: "IncomeAdjustementRequired", isoId: "_b_fXF_41EeClUvPNHKL9Zw" }, { value: "LINK", name: "PendingLinkedInstruction", isoId: "_b_fXG_41EeClUvPNHKL9Zw" }, { value: "FUTU", name: "AwaitingSettlementDate", isoId: "_b_fXH_41EeClUvPNHKL9Zw" }, { value: "LACK", name: "LackOfSecurities", isoId: "_b_fXI_41EeClUvPNHKL9Zw" }, { value: "LALO", name: "SecuritiesLoanedOut", isoId: "_b_fXJ_41EeClUvPNHKL9Zw" }, { value: "MONY", name: "InsufficientMoney", isoId: "_b_fXK_41EeClUvPNHKL9Zw" }, { value: "NCON", name: "ConfirmationNotReceived", isoId: "_b_fXL_41EeClUvPNHKL9Zw" }, { value: "REFS", name: "NotInGoodOrder", isoId: "_b_fXM_41EeClUvPNHKL9Zw" }, { value: "SDUT", name: "LackOfStampDutyInformation", isoId: "_b_fXN_41EeClUvPNHKL9Zw" }, { value: "BATC", name: "ProcessingBatchDifference", isoId: "_b_fXO_41EeClUvPNHKL9Zw" }, { value: "CYCL", name: "AwaitingNextSettlementCycle", isoId: "_b_fXP_41EeClUvPNHKL9Zw" }, { value: "SBLO", name: "SecuritiesBlocked", isoId: "_b_fXQ_41EeClUvPNHKL9Zw" }, { value: "CPEC", name: "CounterpartyInReceivership", isoId: "_b_fXR_41EeClUvPNHKL9Zw" }, { value: "MINO", name: "MinimumSettlementAmount", isoId: "_b_fXS_41EeClUvPNHKL9Zw" }, { value: "IAAD", name: "StatusReasonInvestigation", isoId: "_b_fXT_41EeClUvPNHKL9Zw" }, { value: "OTHR", name: "Other", isoId: "_b_fXU_41EeClUvPNHKL9Zw" }, { value: "PHCK", name: "PhysicalSecuritiesVerification", isoId: "_b_fXV_41EeClUvPNHKL9Zw" }, { value: "BENO", name: "BeneficialOwnershipDisagreement", isoId: "_b_fXW_41EeClUvPNHKL9Zw" }, { value: "BOTH", name: "BothInstructionsOnHold", isoId: "_b_fXX_41EeClUvPNHKL9Zw" }, { value: "CLHT", name: "ClearingHouseTrade", isoId: "_b_fXY_41EeClUvPNHKL9Zw" }, { value: "DENO", name: "UnavailableDeliverableDenominatedQuantity", isoId: "_b_fXZ_41EeClUvPNHKL9Zw" }, { value: "DISA", name: "NaturalDisaster", isoId: "_b_fXa_41EeClUvPNHKL9Zw" }, { value: "DKNY", name: "CounterpartyReturnedShares", isoId: "_b_fXb_41EeClUvPNHKL9Zw" }, { value: "FROZ", name: "SecuritiesFrozenAtCSD", isoId: "_b_fXc_41EeClUvPNHKL9Zw" }, { value: "LAAW", name: "AwaitingOtherTransaction", isoId: "_b_fXd_41EeClUvPNHKL9Zw" }, { value: "LATE", name: "MarketDeadlineMissed", isoId: "_b_fXe_41EeClUvPNHKL9Zw" }, { value: "LIQU", name: "InsufficientCentralBankLiquidity", isoId: "_b_fXf_41EeClUvPNHKL9Zw" }, { value: "PRCY", name: "CounterpartyInstructionOnHold", isoId: "_b_fXg_41EeClUvPNHKL9Zw" }, { value: "REGT", name: "CertificatesRejected", isoId: "_b_fXh_41EeClUvPNHKL9Zw" }, { value: "SETS", name: "SettlementSystemMethodModified", isoId: "_b_fXi_41EeClUvPNHKL9Zw" }, { value: "CERT", name: "WrongCertificatesNumbers", isoId: "_b_fXj_41EeClUvPNHKL9Zw" }, { value: "PRSY", name: "SystemOnHold", isoId: "_b_fXk_41EeClUvPNHKL9Zw" }, { value: "INBC", name: "IncompleteNumberCount", isoId: "_9OTD5v8EEeC_AbvjMzzF-A" }],
+  },
+  "PendingReason26Choice": {
+    name: "PendingReason26Choice",
+    isoId: "_lJ0DkTp5EeWVrPy0StzzSg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_lo5zQTp5EeWVrPy0StzzSg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "PendingReason10Code", required: true }),
+      f({ name: "Proprietary", isoId: "_lo5zSTp5EeWVrPy0StzzSg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "PendingReason14": {
+    name: "PendingReason14",
+    isoId: "_kqRn4Tp5EeWVrPy0StzzSg",
     kind: "component",
     fields: [
-      f({ name: "FromDate", isoId: "_T5oiAdp-Ed-ak6NoX_4Aeg_1497161242", xmlTag: "FrDt", displayName: displayName("FromDate"), kind: "date", type: "ISODate", required: true }),
-      f({ name: "ToDate", isoId: "_T5oiAtp-Ed-ak6NoX_4Aeg_1497161560", xmlTag: "ToDt", displayName: displayName("ToDate"), kind: "date", type: "ISODate", required: true }),
+      f({ name: "Code", isoId: "_lJ0DgTp5EeWVrPy0StzzSg", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "PendingReason26Choice", required: true }),
+      f({ name: "AdditionalReasonInformation", isoId: "_lJ0DiTp5EeWVrPy0StzzSg", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
+    ],
+  },
+  "PendingReason6Code": {
+    name: "PendingReason6Code",
+    isoId: "_aDBiINp-Ed-ak6NoX_4Aeg_649445219",
+    kind: "code",
+    options: [{ value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_aDBiIdp-Ed-ak6NoX_4Aeg_-2000254642" }, { value: "CONF", name: "AwaitingConfirmation", isoId: "_aDBiItp-Ed-ak6NoX_4Aeg_-347627134" }, { value: "OTHR", name: "Other", isoId: "_aDBiI9p-Ed-ak6NoX_4Aeg_1188062474" }, { value: "CDRG", name: "ConditionalRegistrar", isoId: "_aDBiJNp-Ed-ak6NoX_4Aeg_-251565728" }, { value: "CDCY", name: "ConditionalCurrency", isoId: "_aDBiJdp-Ed-ak6NoX_4Aeg_-543523466" }, { value: "CDRE", name: "ConditionalRealignement", isoId: "_aDBiJtp-Ed-ak6NoX_4Aeg_-365404794" }],
+  },
+  "PendingReason28Choice": {
+    name: "PendingReason28Choice",
+    isoId: "_GnAMQTqfEeWyoP0PbocV1Q",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_HGsY4TqfEeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "PendingReason6Code", required: true }),
+      f({ name: "Proprietary", isoId: "_HGsY6TqfEeWyoP0PbocV1Q", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "PendingReason16": {
+    name: "PendingReason16",
+    isoId: "_GHwrgTqfEeWyoP0PbocV1Q",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "_GnAMMTqfEeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "PendingReason28Choice", required: true }),
+      f({ name: "AdditionalReasonInformation", isoId: "_GnAMOTqfEeWyoP0PbocV1Q", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
+    ],
+  },
+  "PendingReason9Code": {
+    name: "PendingReason9Code",
+    isoId: "_Go2JQf41EeClUvPNHKL9Zw",
+    kind: "code",
+    options: [{ value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_Go_6Rf41EeClUvPNHKL9Zw" }, { value: "CONF", name: "AwaitingConfirmation", isoId: "_Go_6Sf41EeClUvPNHKL9Zw" }, { value: "OTHR", name: "Other", isoId: "_Go_6Tf41EeClUvPNHKL9Zw" }, { value: "CDRG", name: "ConditionalRegistrar", isoId: "_Go_6Uf41EeClUvPNHKL9Zw" }, { value: "CDCY", name: "ConditionalCurrency", isoId: "_Go_6Vf41EeClUvPNHKL9Zw" }, { value: "CDRE", name: "ConditionalRealignement", isoId: "_Go_6Wf41EeClUvPNHKL9Zw" }, { value: "CDAC", name: "ConditionalDeliveryAwaitingCancellation", isoId: "_PMeU4hqJEeG38P9Gj2JZJw" }, { value: "INBC", name: "IncompleteNumberCount", isoId: "_RjugIhqJEeG38P9Gj2JZJw" }],
+  },
+  "PendingReason30Choice": {
+    name: "PendingReason30Choice",
+    isoId: "_kFQGETq3EeWyoP0PbocV1Q",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_kk8SsTq3EeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "PendingReason9Code", required: true }),
+      f({ name: "Proprietary", isoId: "_kk8SuTq3EeWyoP0PbocV1Q", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "PendingReason17": {
+    name: "PendingReason17",
+    isoId: "_jlj5YTq3EeWyoP0PbocV1Q",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "_kFQGATq3EeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "PendingReason30Choice", required: true }),
+      f({ name: "AdditionalReasonInformation", isoId: "_kFQGCTq3EeWyoP0PbocV1Q", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
+    ],
+  },
+  "PendingStatus36Choice": {
+    name: "PendingStatus36Choice",
+    isoId: "_kKulETp5EeWVrPy0StzzSg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NoSpecifiedReason", isoId: "_kqRn0Tp5EeWVrPy0StzzSg", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
+      f({ name: "Reason", isoId: "_kqRn2Tp5EeWVrPy0StzzSg", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "PendingReason14", required: true }),
+    ],
+  },
+  "PendingStatus38Choice": {
+    name: "PendingStatus38Choice",
+    isoId: "_FnU34TqfEeWyoP0PbocV1Q",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NoSpecifiedReason", isoId: "_GHwrcTqfEeWyoP0PbocV1Q", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
+      f({ name: "Reason", isoId: "_GHwreTqfEeWyoP0PbocV1Q", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "PendingReason16", required: true }),
+    ],
+  },
+  "PendingStatus39Choice": {
+    name: "PendingStatus39Choice",
+    isoId: "_jGBdoTq3EeWyoP0PbocV1Q",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NoSpecifiedReason", isoId: "_jlj5UTq3EeWyoP0PbocV1Q", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
+      f({ name: "Reason", isoId: "_jlj5WTq3EeWyoP0PbocV1Q", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "PendingReason17", required: true }),
+    ],
+  },
+  "PendingStatus4Code": {
+    name: "PendingStatus4Code",
+    isoId: "_aGJuo9p-Ed-ak6NoX_4Aeg_1263998543",
+    kind: "code",
+    options: [{ value: "ACPD", name: "Accepted", isoId: "_aGJupNp-Ed-ak6NoX_4Aeg_1263998562" }, { value: "VALD", name: "Validated", isoId: "_aGJupdp-Ed-ak6NoX_4Aeg_1263998838" }, { value: "MATD", name: "Matched", isoId: "_aGJuptp-Ed-ak6NoX_4Aeg_1263998873" }, { value: "AUTD", name: "Authorised", isoId: "_aGJup9p-Ed-ak6NoX_4Aeg_1263998915" }, { value: "INVD", name: "Invalid", isoId: "_aGJuqNp-Ed-ak6NoX_4Aeg_1263998933" }, { value: "UMAC", name: "Unmatched", isoId: "_aGJuqdp-Ed-ak6NoX_4Aeg_1263998968" }, { value: "STLE", name: "SettlementEligible", isoId: "_aGS4kNp-Ed-ak6NoX_4Aeg_1263999258" }, { value: "STLM", name: "SettlementMature", isoId: "_aGS4kdp-Ed-ak6NoX_4Aeg_1263999276" }, { value: "SSPD", name: "Suspended", isoId: "_aGS4ktp-Ed-ak6NoX_4Aeg_1263999318" }, { value: "PCAN", name: "PendingCancellation", isoId: "_aGS4k9p-Ed-ak6NoX_4Aeg_1263999336" }, { value: "PSTL", name: "PendingSettlement", isoId: "_aGS4lNp-Ed-ak6NoX_4Aeg_1263999371" }, { value: "PFST", name: "PendingFailingSettlement", isoId: "_aGS4ldp-Ed-ak6NoX_4Aeg_1263999413" }, { value: "SMLR", name: "SenderMultilateralLimitRelated", isoId: "_aGS4ltp-Ed-ak6NoX_4Aeg_1263999431" }, { value: "RMLR", name: "ReceiverMultilateralLimitRelated", isoId: "_aGS4l9p-Ed-ak6NoX_4Aeg_1263999473" }, { value: "SRBL", name: "SenderReceiverBilateralLimitRelated", isoId: "_aGS4mNp-Ed-ak6NoX_4Aeg_1263999508" }, { value: "AVLB", name: "HeldForServiceAvailability", isoId: "_aGS4mdp-Ed-ak6NoX_4Aeg_1263999526" }, { value: "SRML", name: "SenderReceiverMultilateralLimitRelated", isoId: "_aGcpkNp-Ed-ak6NoX_4Aeg_588640614" }],
+  },
+  "Priority5Code": {
+    name: "Priority5Code",
+    isoId: "_kUSkAH_QEeiik6YN_dzlEA",
+    kind: "code",
+    options: [{ value: "HIGH", name: "High", isoId: "_mcdxcH_QEeiik6YN_dzlEA" }, { value: "LOWW", name: "Low", isoId: "_mh3O0X_QEeiik6YN_dzlEA" }, { value: "NORM", name: "Normal", isoId: "_mpC04X_QEeiik6YN_dzlEA" }, { value: "URGT", name: "Urgent", isoId: "_muQFAX_QEeiik6YN_dzlEA" }],
+  },
+  "Priority1Choice": {
+    name: "Priority1Choice",
+    isoId: "_SEJYAX_REeiik6YN_dzlEA",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_SP24wX_REeiik6YN_dzlEA", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "Priority5Code", required: true }),
+      f({ name: "Proprietary", isoId: "_SP24w3_REeiik6YN_dzlEA", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
     ],
   },
   "Priority3Code": {
@@ -9875,11 +12635,200 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     kind: "code",
     options: [{ value: "URGT", name: "Urgent", isoId: "_aKUc8dp-Ed-ak6NoX_4Aeg_1584820280" }, { value: "HIGH", name: "High", isoId: "_aKUc8tp-Ed-ak6NoX_4Aeg_1584820309" }, { value: "NORM", name: "Normal", isoId: "_aKUc89p-Ed-ak6NoX_4Aeg_1584820310" }],
   },
+  "RejectionReason33Code": {
+    name: "RejectionReason33Code",
+    isoId: "_jV3rsu5NEeCisYr99QEiWA_-1746872980",
+    kind: "code",
+    options: [{ value: "CASH", name: "CashAccount", isoId: "_Mxdz4YkuEe64YtiuxmT1NA" }, { value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_Mxdz44kuEe64YtiuxmT1NA" }, { value: "DMON", name: "SettlementAmountRejection", isoId: "_Mxdz5YkuEe64YtiuxmT1NA" }, { value: "NCRR", name: "SettlementAmountCurrencyRejection", isoId: "_Mxdz54kuEe64YtiuxmT1NA" }, { value: "LATE", name: "MarketDeadlineMissed", isoId: "_Mxdz6YkuEe64YtiuxmT1NA" }, { value: "INVL", name: "InvalidLink", isoId: "_Mxdz64kuEe64YtiuxmT1NA" }, { value: "INVB", name: "InvalidBalance", isoId: "_Mxdz7YkuEe64YtiuxmT1NA" }, { value: "INVN", name: "InvalidLotNumber", isoId: "_Mxdz74kuEe64YtiuxmT1NA" }, { value: "VALR", name: "InvalidRule", isoId: "_Mxdz8YkuEe64YtiuxmT1NA" }, { value: "MONY", name: "InsufficientMoney", isoId: "_Mxdz84kuEe64YtiuxmT1NA" }, { value: "CAEV", name: "CorporateActionRejection", isoId: "_Mxdz9YkuEe64YtiuxmT1NA" }, { value: "DDAT", name: "SettlementDateRejection", isoId: "_Mxdz94kuEe64YtiuxmT1NA" }, { value: "REFE", name: "ReferenceRejection", isoId: "_Mxdz-YkuEe64YtiuxmT1NA" }, { value: "OTHR", name: "Other", isoId: "_Mxdz-4kuEe64YtiuxmT1NA" }, { value: "DQUA", name: "QuantityRejection", isoId: "_Mxdz_YkuEe64YtiuxmT1NA" }, { value: "DSEC", name: "InvalidSecurity", isoId: "_Mxdz_4kuEe64YtiuxmT1NA" }, { value: "MINO", name: "MinimumSettlementQuantity", isoId: "_Mxd0AYkuEe64YtiuxmT1NA" }, { value: "MUNO", name: "MultipleSettlementQuantity", isoId: "_Mxd0A4kuEe64YtiuxmT1NA" }],
+  },
+  "RejectionAndRepairReason32Choice": {
+    name: "RejectionAndRepairReason32Choice",
+    isoId: "_WplZoeFUEeWIA4E9cYSxxQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_WygsEeFUEeWIA4E9cYSxxQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "RejectionReason33Code", required: true }),
+      f({ name: "Proprietary", isoId: "_WygsGeFUEeWIA4E9cYSxxQ", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "RejectionOrRepairReason32": {
+    name: "RejectionOrRepairReason32",
+    isoId: "_WgqHIeFUEeWIA4E9cYSxxQ",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "_WplZkeFUEeWIA4E9cYSxxQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "RejectionAndRepairReason32Choice", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "AdditionalReasonInformation", isoId: "_WplZmeFUEeWIA4E9cYSxxQ", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
+    ],
+  },
+  "RejectionOrRepairStatus38Choice": {
+    name: "RejectionOrRepairStatus38Choice",
+    isoId: "_WXlDkeFUEeWIA4E9cYSxxQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NoSpecifiedReason", isoId: "_WgqHEeFUEeWIA4E9cYSxxQ", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
+      f({ name: "Reason", isoId: "_WgqHGeFUEeWIA4E9cYSxxQ", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "RejectionOrRepairReason32", required: true }),
+    ],
+  },
+  "ProprietaryReason4": {
+    name: "ProprietaryReason4",
+    isoId: "_QgvGsTp5EeWVrPy0StzzSg",
+    kind: "component",
+    fields: [
+      f({ name: "Reason", isoId: "_RA3_Uzp5EeWVrPy0StzzSg", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "GenericIdentification30", required: false }),
+      f({ name: "AdditionalReasonInformation", isoId: "_RA3_Wzp5EeWVrPy0StzzSg", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
+    ],
+    rules: [
+      { name: "AdditionalReasonInforrmationRule", isoId: "_RA3_UTp5EeWVrPy0StzzSg", text: "The AdditionalReasonInformation element must not contain information that can be provided in a structured field unless bilaterally agreed." },
+    ],
+  },
+  "ProprietaryStatusAndReason6": {
+    name: "ProprietaryStatusAndReason6",
+    isoId: "_yRcdkTp4EeWVrPy0StzzSg",
+    kind: "component",
+    fields: [
+      f({ name: "ProprietaryStatus", isoId: "_y0NzcTp4EeWVrPy0StzzSg", xmlTag: "PrtrySts", displayName: displayName("ProprietaryStatus"), kind: "component", type: "GenericIdentification30", required: true }),
+      f({ name: "ProprietaryReason", isoId: "_y0OagTp4EeWVrPy0StzzSg", xmlTag: "PrtryRsn", displayName: displayName("ProprietaryReason"), kind: "component", type: "ProprietaryReason4", required: false, repeat: { min: 0, max: null } }),
+    ],
+  },
+  "ProcessingStatus67Choice": {
+    name: "ProcessingStatus67Choice",
+    isoId: "_W7Icl-FUEeWIA4E9cYSxxQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Rejected", isoId: "_XD6lIeFUEeWIA4E9cYSxxQ", xmlTag: "Rjctd", displayName: displayName("Rejected"), kind: "choice", type: "RejectionOrRepairStatus38Choice", required: true }),
+      f({ name: "Repair", isoId: "_XD6lKeFUEeWIA4E9cYSxxQ", xmlTag: "Rpr", displayName: displayName("Repair"), kind: "choice", type: "RejectionOrRepairStatus38Choice", required: true }),
+      f({ name: "Cancelled", isoId: "_XD6lMeFUEeWIA4E9cYSxxQ", xmlTag: "Canc", displayName: displayName("Cancelled"), kind: "choice", type: "CancellationStatus14Choice", required: true }),
+      f({ name: "AcknowledgedAccepted", isoId: "_XD6lOeFUEeWIA4E9cYSxxQ", xmlTag: "AckdAccptd", displayName: displayName("AcknowledgedAccepted"), kind: "choice", type: "AcknowledgedAcceptedStatus21Choice", required: true }),
+      f({ name: "Proprietary", isoId: "_XD6lQeFUEeWIA4E9cYSxxQ", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "ProprietaryStatusAndReason6", required: true }),
+    ],
+  },
+  "RejectionReason34Code": {
+    name: "RejectionReason34Code",
+    isoId: "_jWLNs-5NEeCisYr99QEiWA_376105983",
+    kind: "code",
+    options: [{ value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_PeLRwYkuEe64YtiuxmT1NA" }, { value: "LATE", name: "MarketDeadlineMissed", isoId: "_PeLRw4kuEe64YtiuxmT1NA" }, { value: "CASH", name: "CashAccount", isoId: "_PeLRxYkuEe64YtiuxmT1NA" }, { value: "NRGM", name: "NoMatch", isoId: "_PeLRx4kuEe64YtiuxmT1NA" }, { value: "NRGN", name: "NotFoundRejection", isoId: "_PeLRyYkuEe64YtiuxmT1NA" }, { value: "OTHR", name: "Other", isoId: "_PeLRy4kuEe64YtiuxmT1NA" }, { value: "REFE", name: "ReferenceRejection", isoId: "_PeLRzYkuEe64YtiuxmT1NA" }],
+  },
+  "RejectionAndRepairReason33Choice": {
+    name: "RejectionAndRepairReason33Choice",
+    isoId: "_cPB4AeF8EeWCAvUNsZ5u6g",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_cadr4eF8EeWCAvUNsZ5u6g", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "RejectionReason34Code", required: true }),
+      f({ name: "Proprietary", isoId: "_cadr6eF8EeWCAvUNsZ5u6g", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "RejectionOrRepairReason33": {
+    name: "RejectionOrRepairReason33",
+    isoId: "_cDbsAeF8EeWCAvUNsZ5u6g",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "_cPB38eF8EeWCAvUNsZ5u6g", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "RejectionAndRepairReason33Choice", required: true }),
+      f({ name: "AdditionalReasonInformation", isoId: "_cPB3-eF8EeWCAvUNsZ5u6g", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
+    ],
+  },
+  "RejectionOrRepairStatus39Choice": {
+    name: "RejectionOrRepairStatus39Choice",
+    isoId: "_b4JB8eF8EeWCAvUNsZ5u6g",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NoSpecifiedReason", isoId: "_cDbr8eF8EeWCAvUNsZ5u6g", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
+      f({ name: "Reason", isoId: "_cDbr-eF8EeWCAvUNsZ5u6g", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "RejectionOrRepairReason33", required: true }),
+    ],
+  },
+  "ProcessingStatus69Choice": {
+    name: "ProcessingStatus69Choice",
+    isoId: "_1m2RQeF7EeWCAvUNsZ5u6g",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "PendingCancellation", isoId: "_1y2s8eF7EeWCAvUNsZ5u6g", xmlTag: "PdgCxl", displayName: displayName("PendingCancellation"), kind: "choice", type: "PendingStatus39Choice", required: true }),
+      f({ name: "Rejected", isoId: "_1y2s-eF7EeWCAvUNsZ5u6g", xmlTag: "Rjctd", displayName: displayName("Rejected"), kind: "choice", type: "RejectionOrRepairStatus39Choice", required: true }),
+      f({ name: "Repair", isoId: "_1y2tAeF7EeWCAvUNsZ5u6g", xmlTag: "Rpr", displayName: displayName("Repair"), kind: "choice", type: "RejectionOrRepairStatus39Choice", required: true }),
+      f({ name: "AcknowledgedAccepted", isoId: "_1y2tCeF7EeWCAvUNsZ5u6g", xmlTag: "AckdAccptd", displayName: displayName("AcknowledgedAccepted"), kind: "choice", type: "AcknowledgedAcceptedStatus24Choice", required: true }),
+      f({ name: "Proprietary", isoId: "_1y2tEeF7EeWCAvUNsZ5u6g", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "ProprietaryStatusAndReason6", required: true }),
+      f({ name: "Denied", isoId: "_1y2tGeF7EeWCAvUNsZ5u6g", xmlTag: "Dnd", displayName: displayName("Denied"), kind: "choice", type: "DeniedStatus16Choice", required: true }),
+      f({ name: "Cancelled", isoId: "_1y2tIeF7EeWCAvUNsZ5u6g", xmlTag: "Canc", displayName: displayName("Cancelled"), kind: "choice", type: "CancellationStatus15Choice", required: true }),
+    ],
+  },
+  "RejectionReason35Code": {
+    name: "RejectionReason35Code",
+    isoId: "_jWeIoe5NEeCisYr99QEiWA_668020019",
+    kind: "code",
+    options: [{ value: "CASH", name: "CashAccount", isoId: "_QVFroYkuEe64YtiuxmT1NA" }, { value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_QVFro4kuEe64YtiuxmT1NA" }, { value: "REFE", name: "ReferenceRejection", isoId: "_QVFrpYkuEe64YtiuxmT1NA" }, { value: "LATE", name: "MarketDeadlineMissed", isoId: "_QVFrp4kuEe64YtiuxmT1NA" }, { value: "DDAT", name: "SettlementDateRejection", isoId: "_QVFrqYkuEe64YtiuxmT1NA" }, { value: "NRGN", name: "NotFoundRejection", isoId: "_QVGSsYkuEe64YtiuxmT1NA" }, { value: "OTHR", name: "Other", isoId: "_QVGSs4kuEe64YtiuxmT1NA" }, { value: "INVM", name: "InvalidModificationRequest", isoId: "_QVGStYkuEe64YtiuxmT1NA" }, { value: "INVL", name: "InvalidLink", isoId: "_QVGSt4kuEe64YtiuxmT1NA" }],
+  },
+  "RejectionAndRepairReason34Choice": {
+    name: "RejectionAndRepairReason34Choice",
+    isoId: "_m8KAseGKEeWCAvUNsZ5u6g",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_nHwzseGKEeWCAvUNsZ5u6g", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "RejectionReason35Code", required: true }),
+      f({ name: "Proprietary", isoId: "_nHwzueGKEeWCAvUNsZ5u6g", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "RejectionOrRepairReason34": {
+    name: "RejectionOrRepairReason34",
+    isoId: "_mwj0seGKEeWCAvUNsZ5u6g",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "_m8KAoeGKEeWCAvUNsZ5u6g", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "RejectionAndRepairReason34Choice", required: true }),
+      f({ name: "AdditionalReasonInformation", isoId: "_m8KAqeGKEeWCAvUNsZ5u6g", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
+    ],
+  },
+  "RejectionOrRepairStatus40Choice": {
+    name: "RejectionOrRepairStatus40Choice",
+    isoId: "_mk9BveGKEeWCAvUNsZ5u6g",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NoSpecifiedReason", isoId: "_mwj0oeGKEeWCAvUNsZ5u6g", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
+      f({ name: "Reason", isoId: "_mwj0qeGKEeWCAvUNsZ5u6g", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "RejectionOrRepairReason34", required: true }),
+    ],
+  },
+  "ProcessingStatus71Choice": {
+    name: "ProcessingStatus71Choice",
+    isoId: "_mZpJceGKEeWCAvUNsZ5u6g",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "AcknowledgedAccepted", isoId: "_mk9BkeGKEeWCAvUNsZ5u6g", xmlTag: "AckdAccptd", displayName: displayName("AcknowledgedAccepted"), kind: "choice", type: "AcknowledgedAcceptedStatus21Choice", required: true }),
+      f({ name: "Pending", isoId: "_mk9BmeGKEeWCAvUNsZ5u6g", xmlTag: "Pdg", displayName: displayName("Pending"), kind: "choice", type: "PendingStatus38Choice", required: true }),
+      f({ name: "Rejected", isoId: "_mk9BoeGKEeWCAvUNsZ5u6g", xmlTag: "Rjctd", displayName: displayName("Rejected"), kind: "choice", type: "RejectionOrRepairStatus40Choice", required: true }),
+      f({ name: "Repair", isoId: "_mk9BqeGKEeWCAvUNsZ5u6g", xmlTag: "Rpr", displayName: displayName("Repair"), kind: "choice", type: "RejectionOrRepairStatus39Choice", required: true }),
+      f({ name: "Denied", isoId: "_mk9BseGKEeWCAvUNsZ5u6g", xmlTag: "Dnd", displayName: displayName("Denied"), kind: "choice", type: "DeniedStatus16Choice", required: true }),
+      f({ name: "Completed", isoId: "_mk9Bs-GKEeWCAvUNsZ5u6g", xmlTag: "Cmpltd", displayName: displayName("Completed"), kind: "component", type: "ProprietaryReason4", required: true }),
+      f({ name: "Proprietary", isoId: "_mk9BteGKEeWCAvUNsZ5u6g", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "ProprietaryStatusAndReason6", required: true }),
+    ],
+  },
+  "ProprietaryData6": {
+    name: "ProprietaryData6",
+    isoId: "_1gW-cYKYEee7hrXqLO3yQg",
+    kind: "component",
+    fields: [
+      f({ name: "Any", isoId: "_1oY5E4KYEee7hrXqLO3yQg", xmlTag: "Any", displayName: displayName("Any"), kind: "any", type: "SkipPayload", required: true }),
+    ],
+  },
+  "ProprietaryData7": {
+    name: "ProprietaryData7",
+    isoId: "_1UAkgYKYEee7hrXqLO3yQg",
+    kind: "component",
+    fields: [
+      f({ name: "Type", isoId: "_1gNNcYKYEee7hrXqLO3yQg", xmlTag: "Tp", displayName: displayName("Type"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "Data", isoId: "_1gNNc4KYEee7hrXqLO3yQg", xmlTag: "Data", displayName: displayName("Data"), kind: "component", type: "ProprietaryData6", required: true }),
+    ],
+  },
   "QueryType2Code": {
     name: "QueryType2Code",
     isoId: "_ZXqQ8dp-Ed-ak6NoX_4Aeg_-1313852264",
     kind: "code",
     options: [{ value: "ALLL", name: "All", isoId: "_ZXqQ8tp-Ed-ak6NoX_4Aeg_-1313851984" }, { value: "CHNG", name: "Changed", isoId: "_ZXqQ89p-Ed-ak6NoX_4Aeg_-1313851983" }, { value: "MODF", name: "Modified", isoId: "_ZXqQ9Np-Ed-ak6NoX_4Aeg_-1313851982" }, { value: "DELD", name: "Deleted", isoId: "_ZXqQ9dp-Ed-ak6NoX_4Aeg_-1313851954" }],
+  },
+  "References14": {
+    name: "References14",
+    isoId: "_jyL0QO5NEeCisYr99QEiWA_53798055",
+    kind: "component",
+    fields: [
+      f({ name: "AccountOwnerTransactionIdentification", isoId: "_jyL0Qe5NEeCisYr99QEiWA_-825767186", xmlTag: "AcctOwnrTxId", displayName: displayName("AccountOwnerTransactionIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "AccountServicerTransactionIdentification", isoId: "_jyL0Qu5NEeCisYr99QEiWA_-1877643182", xmlTag: "AcctSvcrTxId", displayName: displayName("AccountServicerTransactionIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "MarketInfrastructureTransactionIdentification", isoId: "_jyL0Q-5NEeCisYr99QEiWA_1711117493", xmlTag: "MktInfrstrctrTxId", displayName: displayName("MarketInfrastructureTransactionIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "ProcessorTransactionIdentification", isoId: "_jyL0RO5NEeCisYr99QEiWA_171305167", xmlTag: "PrcrTxId", displayName: displayName("ProcessorTransactionIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "PoolIdentification", isoId: "_jyVlQO5NEeCisYr99QEiWA_310609337", xmlTag: "PoolId", displayName: displayName("PoolIdentification"), kind: "text", type: "Max35Text", required: false }),
+    ],
   },
   "RegulatoryAuthority2": {
     name: "RegulatoryAuthority2",
@@ -9929,6 +12878,15 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "DebitCreditReportingIndicator", isoId: "_F6fK8XeKEfCdoODv2ypKfw", xmlTag: "DbtCdtRptgInd", displayName: displayName("DebitCreditReportingIndicator"), kind: "code", type: "RegulatoryReportingType1Code", required: true }),
       f({ name: "Authority", isoId: "_F6fK83eKEfCdoODv2ypKfw", xmlTag: "Authrty", displayName: displayName("Authority"), kind: "component", type: "RegulatoryAuthority2", required: false }),
       f({ name: "Details", isoId: "_F6fK9XeKEfCdoODv2ypKfw", xmlTag: "Dtls", displayName: displayName("Details"), kind: "component", type: "StructuredRegulatoryReporting5", required: false, repeat: { min: 0, max: null } }),
+    ],
+  },
+  "RelatedInvestigationData1": {
+    name: "RelatedInvestigationData1",
+    isoId: "_CXmpUFRtEe23M4WgERMsYw",
+    kind: "component",
+    fields: [
+      f({ name: "InvestigationIdentification", isoId: "_CXmpUlRtEe23M4WgERMsYw", xmlTag: "InvstgtnId", displayName: displayName("InvestigationIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "Location", isoId: "_CXmpU1RtEe23M4WgERMsYw", xmlTag: "Lctn", displayName: displayName("Location"), kind: "component", type: "InvestigationLocationData1", required: false, repeat: { min: 0, max: null } }),
     ],
   },
   "RemittanceInformation2": {
@@ -9997,10 +12955,74 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Proprietary", isoId: "_RqIkk9p-Ed-ak6NoX_4Aeg_-1706426860", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
     ],
   },
+  "RequestDetails22": {
+    name: "RequestDetails22",
+    isoId: "_ZCu2lzneEem7JZMuWtwtsg",
+    kind: "component",
+    fields: [
+      f({ name: "Reference", isoId: "_ZMt4lTneEem7JZMuWtwtsg", xmlTag: "Ref", displayName: displayName("Reference"), kind: "component", type: "References14", required: true }),
+      f({ name: "Linkage", isoId: "_ZMt4nTneEem7JZMuWtwtsg", xmlTag: "Lkg", displayName: displayName("Linkage"), kind: "choice", type: "LinkageType3Choice", required: false }),
+      f({ name: "Priority", isoId: "_ZMt4pTneEem7JZMuWtwtsg", xmlTag: "Prty", displayName: displayName("Priority"), kind: "choice", type: "PriorityNumeric4Choice", required: false }),
+      f({ name: "OtherProcessing", isoId: "_ZMt4rTneEem7JZMuWtwtsg", xmlTag: "OthrPrcg", displayName: displayName("OtherProcessing"), kind: "component", type: "GenericIdentification30", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "PartialSettlementIndicator", isoId: "_ZMt4tTneEem7JZMuWtwtsg", xmlTag: "PrtlSttlmInd", displayName: displayName("PartialSettlementIndicator"), kind: "boolean", type: "YesNoIndicator", required: false }),
+      f({ name: "ClearingChannel", isoId: "_ZMt4vTneEem7JZMuWtwtsg", xmlTag: "ClrChanl", displayName: displayName("ClearingChannel"), kind: "code", type: "ClearingChannel2Code", required: false }),
+      f({ name: "Linkages", isoId: "_ZMt4xTneEem7JZMuWtwtsg", xmlTag: "Lnkgs", displayName: displayName("Linkages"), kind: "component", type: "Linkages57", required: false, repeat: { min: 0, max: null } }),
+    ],
+    rules: [
+      { name: "ModificationRequestPresenceRule", isoId: "_ZMt4kTneEem7JZMuWtwtsg", text: "At least one modification request type element must be present." },
+      { name: "OtherProcessingRule", isoId: "_ZMt4kzneEem7JZMuWtwtsg", text: "If OtherProcessing is used, then its usage must be pre-agreed between the sender and the receiver." },
+    ],
+  },
+  "RequestStatus1Choice": {
+    name: "RequestStatus1Choice",
+    isoId: "_0Kkf8LqsEe68nbz8Nl_hLQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_qvkvsLqtEe68nbz8Nl_hLQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalRequestStatus1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_B6MRobqtEe68nbz8Nl_hLQ", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
+    ],
+  },
+  "RequestHandling4": {
+    name: "RequestHandling4",
+    isoId: "_4tFCR1QBEe-Fk_N0FBjY0Q",
+    kind: "component",
+    fields: [
+      f({ name: "Status", isoId: "_40OzIVQBEe-Fk_N0FBjY0Q", xmlTag: "Sts", displayName: displayName("Status"), kind: "choice", type: "RequestStatus1Choice", required: true }),
+      f({ name: "StatusReason", isoId: "_40OzI1QBEe-Fk_N0FBjY0Q", xmlTag: "StsRsn", displayName: displayName("StatusReason"), kind: "component", type: "StatusReasonInformation14", required: false }),
+      f({ name: "Description", isoId: "_MD00gVQCEe-Fk_N0FBjY0Q", xmlTag: "Desc", displayName: displayName("Description"), kind: "text", type: "Max140Text", required: false }),
+    ],
+    rules: [
+      { name: "DescriptionRule", isoId: "_ZAVuQFQCEe-Fk_N0FBjY0Q", text: "If Description is present, then Status/Code is not allowed.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/Description"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/Status/Code"}]}} },
+    ],
+  },
+  "StandingOrderQueryType1Code": {
+    name: "StandingOrderQueryType1Code",
+    isoId: "_8N7QVqMgEeCJ6YNENx4h-w_-234356258",
+    kind: "code",
+    options: [{ value: "SLST", name: "StandingOrderList", isoId: "_8N7QV6MgEeCJ6YNENx4h-w_-544859245" }, { value: "SDTL", name: "StandingOrderDetails", isoId: "_8N7QWKMgEeCJ6YNENx4h-w_1890972049" }, { value: "TAPS", name: "TotalAmountPerStandingOrder", isoId: "_8OFBUKMgEeCJ6YNENx4h-w_501190329" }, { value: "SLSL", name: "StandingOrderLinkSetList", isoId: "_8OFBUaMgEeCJ6YNENx4h-w_-1508766529" }, { value: "SWLS", name: "StandingOrderDetailsWithinLinkSet", isoId: "_8OFBUqMgEeCJ6YNENx4h-w_-105628684" }],
+  },
+  "RequestType3Choice": {
+    name: "RequestType3Choice",
+    isoId: "_72rN86MgEeCJ6YNENx4h-w_-777871353",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_72rN9KMgEeCJ6YNENx4h-w_1386424077", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "StandingOrderQueryType1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_72rN9aMgEeCJ6YNENx4h-w_705337914", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification1", required: true }),
+    ],
+  },
   "RequestedIndicator": {
     name: "RequestedIndicator",
     isoId: "_YXlUBtp-Ed-ak6NoX_4Aeg_-2067559284",
     kind: "boolean",
+  },
+  "Reservation4": {
+    name: "Reservation4",
+    isoId: "_hsth0ZliEeeE1Ya-LgRsuQ",
+    kind: "component",
+    fields: [
+      f({ name: "StartDateTime", isoId: "_h1AiM5liEeeE1Ya-LgRsuQ", xmlTag: "StartDtTm", displayName: displayName("StartDateTime"), kind: "choice", type: "DateAndDateTime2Choice", required: false }),
+      f({ name: "Amount", isoId: "_h1AiNZliEeeE1Ya-LgRsuQ", xmlTag: "Amt", displayName: displayName("Amount"), kind: "choice", type: "Amount2Choice", required: true }),
+    ],
   },
   "ReservationType2Choice": {
     name: "ReservationType2Choice",
@@ -10073,6 +13095,34 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       { name: "SettlementMethodClearingRule", isoId: "_g38-U9cZEeqRFcf2R4bPBw", text: "If SettlementMethod is equal to CLRG, then ClearingSystem must be present and SettlementAccount is not allowed.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/SettlementAccount"},{"op":"Presence","path":"/ClearingSystem"}]},"onCondition":{"connector":"AND","rules":[{"op":"EqualToValue","path":"/SettlementMethod","value":"ClearingSystem"}]}} },
     ],
   },
+  "SettlementInstruction16": {
+    name: "SettlementInstruction16",
+    isoId: "_x_3RFTEyEe6g-ffJsqGiSA",
+    kind: "component",
+    fields: [
+      f({ name: "InstructingReimbursementAgent", isoId: "_yCIh9TEyEe6g-ffJsqGiSA", xmlTag: "InstgRmbrsmntAgt", displayName: displayName("InstructingReimbursementAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
+      f({ name: "InstructingReimbursementAgentAccount", isoId: "_yCIh9zEyEe6g-ffJsqGiSA", xmlTag: "InstgRmbrsmntAgtAcct", displayName: displayName("InstructingReimbursementAgentAccount"), kind: "component", type: "CashAccount40", required: false }),
+      f({ name: "InstructedReimbursementAgent", isoId: "_yCIh-TEyEe6g-ffJsqGiSA", xmlTag: "InstdRmbrsmntAgt", displayName: displayName("InstructedReimbursementAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
+      f({ name: "InstructedReimbursementAgentAccount", isoId: "_yCIh-zEyEe6g-ffJsqGiSA", xmlTag: "InstdRmbrsmntAgtAcct", displayName: displayName("InstructedReimbursementAgentAccount"), kind: "component", type: "CashAccount40", required: false }),
+    ],
+    rules: [
+      { name: "InstructingReimbursementAgentAccountRule", isoId: "_yCIh8TEyEe6g-ffJsqGiSA", text: "If InstructingReimbursementAgentAcount is present, then InstructingReimbursementAgent must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/InstructingReimbursementAgentAccount"}]},"onCondition":{"connector":"AND","rules":[{"op":"Absence","path":"/InstructingReimbursementAgent"}]}} },
+      { name: "InstructedReimbursementAgentAccountRule", isoId: "_yCIh8zEyEe6g-ffJsqGiSA", text: "If InstructedReimbursementAgentAccount is present, then InstructedReimbursementAgent must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/InstructedReimbursementAgentAccount"}]},"onCondition":{"connector":"AND","rules":[{"op":"Absence","path":"/InstructedReimbursementAgent"}]}} },
+    ],
+  },
+  "SettlementStatus16Choice": {
+    name: "SettlementStatus16Choice",
+    isoId: "_zV8niTp4EeWVrPy0StzzSg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Pending", isoId: "_z2Uwszp4EeWVrPy0StzzSg", xmlTag: "Pdg", displayName: displayName("Pending"), kind: "choice", type: "PendingStatus36Choice", required: true }),
+      f({ name: "Failing", isoId: "_z2Uwuzp4EeWVrPy0StzzSg", xmlTag: "Flng", displayName: displayName("Failing"), kind: "choice", type: "FailingStatus9Choice", required: true }),
+      f({ name: "Proprietary", isoId: "_z2Uwwzp4EeWVrPy0StzzSg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "ProprietaryStatusAndReason6", required: true }),
+    ],
+    rules: [
+      { name: "PendingToFailingRule", isoId: "_z2UwsTp4EeWVrPy0StzzSg", text: "A pending transaction (PEND) becomes a failing transaction (PENF) on the settlement date instructed in the message, during the end of day reporting." },
+    ],
+  },
   "SettlementTimeRequest2": {
     name: "SettlementTimeRequest2",
     isoId: "_QIrY6dp-Ed-ak6NoX_4Aeg_2050617089",
@@ -10082,6 +13132,88 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "TillTime", isoId: "_QIrY69p-Ed-ak6NoX_4Aeg_2142970270", xmlTag: "TillTm", displayName: displayName("TillTime"), kind: "time", type: "ISOTime", required: false }),
       f({ name: "FromTime", isoId: "_QIrY7Np-Ed-ak6NoX_4Aeg_2123575201", xmlTag: "FrTm", displayName: displayName("FromTime"), kind: "time", type: "ISOTime", required: false }),
       f({ name: "RejectTime", isoId: "_QI1J4Np-Ed-ak6NoX_4Aeg_2138351566", xmlTag: "RjctTm", displayName: displayName("RejectTime"), kind: "time", type: "ISOTime", required: false }),
+    ],
+  },
+  "StandingOrder10": {
+    name: "StandingOrder10",
+    isoId: "_yhhMoTEyEe6g-ffJsqGiSA",
+    kind: "component",
+    fields: [
+      f({ name: "Amount", isoId: "_yjs98TEyEe6g-ffJsqGiSA", xmlTag: "Amt", displayName: displayName("Amount"), kind: "choice", type: "Amount2Choice", required: false }),
+      f({ name: "Creditor", isoId: "_yjs98zEyEe6g-ffJsqGiSA", xmlTag: "Cdtr", displayName: displayName("Creditor"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
+      f({ name: "CreditorAccount", isoId: "_yjs99TEyEe6g-ffJsqGiSA", xmlTag: "CdtrAcct", displayName: displayName("CreditorAccount"), kind: "component", type: "CashAccount40", required: false }),
+      f({ name: "Debtor", isoId: "_yjs99zEyEe6g-ffJsqGiSA", xmlTag: "Dbtr", displayName: displayName("Debtor"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
+      f({ name: "DebtorAccount", isoId: "_yjs9-TEyEe6g-ffJsqGiSA", xmlTag: "DbtrAcct", displayName: displayName("DebtorAccount"), kind: "component", type: "CashAccount40", required: false }),
+      f({ name: "ExecutionType", isoId: "_yjs9-zEyEe6g-ffJsqGiSA", xmlTag: "ExctnTp", displayName: displayName("ExecutionType"), kind: "choice", type: "ExecutionType1Choice", required: false }),
+      f({ name: "Frequency", isoId: "_yjs9_TEyEe6g-ffJsqGiSA", xmlTag: "Frqcy", displayName: displayName("Frequency"), kind: "code", type: "Frequency2Code", required: false }),
+      f({ name: "ValidityPeriod", isoId: "_yjs9_zEyEe6g-ffJsqGiSA", xmlTag: "VldtyPrd", displayName: displayName("ValidityPeriod"), kind: "choice", type: "DatePeriod2Choice", required: false }),
+      f({ name: "ZeroSweepIndicator", isoId: "_yjs-ATEyEe6g-ffJsqGiSA", xmlTag: "ZeroSweepInd", displayName: displayName("ZeroSweepIndicator"), kind: "boolean", type: "TrueFalseIndicator", required: false }),
+    ],
+    rules: [
+      { name: "ModifyStandingOrderValueSetRule", isoId: "_yjsW4TEyEe6g-ffJsqGiSA", text: "At least one element must be present." },
+    ],
+  },
+  "StandingOrderType1Code": {
+    name: "StandingOrderType1Code",
+    isoId: "_8OFBU6MgEeCJ6YNENx4h-w_-143150650",
+    kind: "code",
+    options: [{ value: "USTO", name: "UserDefinedStandingOrder", isoId: "_8OFBVKMgEeCJ6YNENx4h-w_1846866247" }, { value: "PSTO", name: "PredefinedStandingOrder", isoId: "_8OFBVaMgEeCJ6YNENx4h-w_328114765" }],
+  },
+  "StandingOrderType1Choice": {
+    name: "StandingOrderType1Choice",
+    isoId: "_73bb4KMgEeCJ6YNENx4h-w_-1191465666",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_73bb4aMgEeCJ6YNENx4h-w_-1852211918", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "StandingOrderType1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_73bb4qMgEeCJ6YNENx4h-w_-591387142", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification1", required: true }),
+    ],
+  },
+  "TotalAmountAndCurrency1": {
+    name: "TotalAmountAndCurrency1",
+    isoId: "_73bb46MgEeCJ6YNENx4h-w_2011477148",
+    kind: "component",
+    fields: [
+      f({ name: "TotalAmount", isoId: "_73bb5KMgEeCJ6YNENx4h-w_1808506706", xmlTag: "TtlAmt", displayName: displayName("TotalAmount"), kind: "number", type: "ImpliedCurrencyAndAmount", required: true }),
+      f({ name: "CreditDebitIndicator", isoId: "_73bb5aMgEeCJ6YNENx4h-w_-2016384180", xmlTag: "CdtDbtInd", displayName: displayName("CreditDebitIndicator"), kind: "code", type: "CreditDebitCode", required: false }),
+      f({ name: "Currency", isoId: "_73bb5qMgEeCJ6YNENx4h-w_1541681800", xmlTag: "Ccy", displayName: displayName("Currency"), kind: "code", type: "ActiveCurrencyCode", required: false }),
+    ],
+  },
+  "StandingOrderTotalAmount1": {
+    name: "StandingOrderTotalAmount1",
+    isoId: "_73Rq5KMgEeCJ6YNENx4h-w_-307258227",
+    kind: "component",
+    fields: [
+      f({ name: "SetPredefinedOrder", isoId: "_73Rq5aMgEeCJ6YNENx4h-w_323473670", xmlTag: "SetPrdfndOrdr", displayName: displayName("SetPredefinedOrder"), kind: "component", type: "TotalAmountAndCurrency1", required: true }),
+      f({ name: "PendingPredefinedOrder", isoId: "_73Rq5qMgEeCJ6YNENx4h-w_922243288", xmlTag: "PdgPrdfndOrdr", displayName: displayName("PendingPredefinedOrder"), kind: "component", type: "TotalAmountAndCurrency1", required: true }),
+      f({ name: "SetStandingOrder", isoId: "_73Rq56MgEeCJ6YNENx4h-w_-394534474", xmlTag: "SetStgOrdr", displayName: displayName("SetStandingOrder"), kind: "component", type: "TotalAmountAndCurrency1", required: true }),
+      f({ name: "PendingStandingOrder", isoId: "_73Rq6KMgEeCJ6YNENx4h-w_-369288428", xmlTag: "PdgStgOrdr", displayName: displayName("PendingStandingOrder"), kind: "component", type: "TotalAmountAndCurrency1", required: true }),
+    ],
+  },
+  "StandingOrder11": {
+    name: "StandingOrder11",
+    isoId: "_z6GJJTEyEe6g-ffJsqGiSA",
+    kind: "component",
+    fields: [
+      f({ name: "Amount", isoId: "_z8XaATEyEe6g-ffJsqGiSA", xmlTag: "Amt", displayName: displayName("Amount"), kind: "choice", type: "Amount2Choice", required: true }),
+      f({ name: "CreditDebitIndicator", isoId: "_z8XaAzEyEe6g-ffJsqGiSA", xmlTag: "CdtDbtInd", displayName: displayName("CreditDebitIndicator"), kind: "code", type: "CreditDebitCode", required: true }),
+      f({ name: "Currency", isoId: "_z8XaBTEyEe6g-ffJsqGiSA", xmlTag: "Ccy", displayName: displayName("Currency"), kind: "code", type: "ActiveCurrencyCode", required: false }),
+      f({ name: "Type", isoId: "_z8XaBzEyEe6g-ffJsqGiSA", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "StandingOrderType1Choice", required: false }),
+      f({ name: "AssociatedPoolAccount", isoId: "_z8XaCTEyEe6g-ffJsqGiSA", xmlTag: "AssoctdPoolAcct", displayName: displayName("AssociatedPoolAccount"), kind: "choice", type: "AccountIdentification4Choice", required: false }),
+      f({ name: "Reference", isoId: "_z8XaCzEyEe6g-ffJsqGiSA", xmlTag: "Ref", displayName: displayName("Reference"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "Frequency", isoId: "_z8XaDTEyEe6g-ffJsqGiSA", xmlTag: "Frqcy", displayName: displayName("Frequency"), kind: "code", type: "Frequency2Code", required: false }),
+      f({ name: "ValidityPeriod", isoId: "_z8XaDzEyEe6g-ffJsqGiSA", xmlTag: "VldtyPrd", displayName: displayName("ValidityPeriod"), kind: "component", type: "DatePeriod3", required: false }),
+      f({ name: "SystemMember", isoId: "_z8XaETEyEe6g-ffJsqGiSA", xmlTag: "SysMmb", displayName: displayName("SystemMember"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
+      f({ name: "ResponsibleParty", isoId: "_z8XaEzEyEe6g-ffJsqGiSA", xmlTag: "RspnsblPty", displayName: displayName("ResponsibleParty"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
+      f({ name: "LinkSetIdentification", isoId: "_z8XaFTEyEe6g-ffJsqGiSA", xmlTag: "LkSetId", displayName: displayName("LinkSetIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "LinkSetOrderIdentification", isoId: "_z8XaFzEyEe6g-ffJsqGiSA", xmlTag: "LkSetOrdrId", displayName: displayName("LinkSetOrderIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "LinkSetOrderSequence", isoId: "_z8XaGTEyEe6g-ffJsqGiSA", xmlTag: "LkSetOrdrSeq", displayName: displayName("LinkSetOrderSequence"), kind: "number", type: "Number", required: false }),
+      f({ name: "ExecutionType", isoId: "_z8XaGzEyEe6g-ffJsqGiSA", xmlTag: "ExctnTp", displayName: displayName("ExecutionType"), kind: "choice", type: "ExecutionType1Choice", required: false }),
+      f({ name: "Creditor", isoId: "_z8XaHTEyEe6g-ffJsqGiSA", xmlTag: "Cdtr", displayName: displayName("Creditor"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
+      f({ name: "CreditorAccount", isoId: "_z8XaHzEyEe6g-ffJsqGiSA", xmlTag: "CdtrAcct", displayName: displayName("CreditorAccount"), kind: "component", type: "CashAccount40", required: false }),
+      f({ name: "Debtor", isoId: "_z8XaITEyEe6g-ffJsqGiSA", xmlTag: "Dbtr", displayName: displayName("Debtor"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
+      f({ name: "DebtorAccount", isoId: "_z8XaIzEyEe6g-ffJsqGiSA", xmlTag: "DbtrAcct", displayName: displayName("DebtorAccount"), kind: "component", type: "CashAccount40", required: false }),
+      f({ name: "TotalsPerStandingOrder", isoId: "_z8XaJTEyEe6g-ffJsqGiSA", xmlTag: "TtlsPerStgOrdr", displayName: displayName("TotalsPerStandingOrder"), kind: "component", type: "StandingOrderTotalAmount1", required: false }),
+      f({ name: "ZeroSweepIndicator", isoId: "_z8XaJzEyEe6g-ffJsqGiSA", xmlTag: "ZeroSweepInd", displayName: displayName("ZeroSweepIndicator"), kind: "boolean", type: "TrueFalseIndicator", required: false }),
     ],
   },
   "StandingOrderIdentification8": {
@@ -10101,6 +13233,24 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     fields: [
       f({ name: "SystemIdentification", isoId: "_dWTB4om6Eeipw6hHPgB4Sw", xmlTag: "SysId", displayName: displayName("SystemIdentification"), kind: "choice", type: "SystemIdentification2Choice", required: true }),
       f({ name: "SystemCurrency", isoId: "_dWTB44m6Eeipw6hHPgB4Sw", xmlTag: "SysCcy", displayName: displayName("SystemCurrency"), kind: "code", type: "ActiveCurrencyCode", required: false }),
+    ],
+  },
+  "SystemMemberStatus1Choice": {
+    name: "SystemMemberStatus1Choice",
+    isoId: "_V4OMw3hhEeidzqjNEfehPg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_V4OMxXhhEeidzqjNEfehPg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "MemberStatus1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_V4OMxHhhEeidzqjNEfehPg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
+    ],
+  },
+  "SystemMemberType1Choice": {
+    name: "SystemMemberType1Choice",
+    isoId: "_Sr86gHhgEeidzqjNEfehPg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_cFGbMHhgEeidzqjNEfehPg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalSystemMemberType1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_fc3BMHhgEeidzqjNEfehPg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
     ],
   },
   "SystemPartyIdentification8": {
@@ -10193,6 +13343,84 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "OriginalMessageNameIdentification", isoId: "_RrBVZNp-Ed-ak6NoX_4Aeg_884871169", xmlTag: "OrgnlMsgNmId", displayName: displayName("OriginalMessageNameIdentification"), kind: "text", type: "Max35Text", required: true }),
       f({ name: "OriginalCreationDateTime", isoId: "_RrBVZdp-Ed-ak6NoX_4Aeg_884871199", xmlTag: "OrgnlCreDtTm", displayName: displayName("OriginalCreationDateTime"), kind: "datetime", type: "ISODateTime", required: false }),
       f({ name: "OriginalMessageDeliveryChannel", isoId: "_RrBVZtp-Ed-ak6NoX_4Aeg_1113343746", xmlTag: "OrgnlMsgDlvryChanl", displayName: displayName("OriginalMessageDeliveryChannel"), kind: "text", type: "Max35Text", required: false }),
+    ],
+  },
+  "UnderlyingPaymentInstruction11": {
+    name: "UnderlyingPaymentInstruction11",
+    isoId: "_L5M9MbvHEfCYYbmqNrQFSg",
+    kind: "component",
+    fields: [
+      f({ name: "OriginalGroupInformation", isoId: "_MBQtBbvHEfCYYbmqNrQFSg", xmlTag: "OrgnlGrpInf", displayName: displayName("OriginalGroupInformation"), kind: "component", type: "UnderlyingGroupInformation1", required: false }),
+      f({ name: "OriginalPaymentInformationIdentification", isoId: "_MBQtB7vHEfCYYbmqNrQFSg", xmlTag: "OrgnlPmtInfId", displayName: displayName("OriginalPaymentInformationIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "OriginalInstructionIdentification", isoId: "_MBQtCbvHEfCYYbmqNrQFSg", xmlTag: "OrgnlInstrId", displayName: displayName("OriginalInstructionIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "OriginalEndToEndIdentification", isoId: "_MBQtC7vHEfCYYbmqNrQFSg", xmlTag: "OrgnlEndToEndId", displayName: displayName("OriginalEndToEndIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "OriginalUETR", isoId: "_MBQtDbvHEfCYYbmqNrQFSg", xmlTag: "OrgnlUETR", displayName: displayName("OriginalUETR"), kind: "text", type: "UUIDv4Identifier", required: false }),
+      f({ name: "OriginalInstructedAmount", isoId: "_MBQtD7vHEfCYYbmqNrQFSg", xmlTag: "OrgnlInstdAmt", displayName: displayName("OriginalInstructedAmount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: false }),
+      f({ name: "RequestedExecutionDate", isoId: "_MBQtEbvHEfCYYbmqNrQFSg", xmlTag: "ReqdExctnDt", displayName: displayName("RequestedExecutionDate"), kind: "choice", type: "DateAndDateTime2Choice", required: false }),
+      f({ name: "RequestedCollectionDate", isoId: "_MBQtE7vHEfCYYbmqNrQFSg", xmlTag: "ReqdColltnDt", displayName: displayName("RequestedCollectionDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "OriginalTransactionReference", isoId: "_MBQtFbvHEfCYYbmqNrQFSg", xmlTag: "OrgnlTxRef", displayName: displayName("OriginalTransactionReference"), kind: "component", type: "OriginalTransactionReference48", required: false }),
+      f({ name: "OriginalServiceLevel", isoId: "_MBQtF7vHEfCYYbmqNrQFSg", xmlTag: "OrgnlSvcLvl", displayName: displayName("OriginalServiceLevel"), kind: "choice", type: "ServiceLevel8Choice", required: false }),
+    ],
+    rules: [
+      { name: "OriginalIdentificationRule", isoId: "_MBQtAbvHEfCYYbmqNrQFSg", text: "Either OriginalInstructionIdentification, OriginalEndToEndIdentification or OriginalUETR must be present.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/OriginalInstructionIdentification"},{"op":"Presence","path":"/OriginalEndToEndIdentification"},{"op":"Presence","path":"/OriginalUETR"}]}} },
+      { name: "OriginalRequestedDateRule", isoId: "_MBQtA7vHEfCYYbmqNrQFSg", text: "Either RequestedExecutionDate or RequestedCollectionDate must be present.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/RequestedExecutionDate"},{"op":"Presence","path":"/RequestedCollectionDate"}]}} },
+    ],
+  },
+  "UnderlyingPaymentTransaction11": {
+    name: "UnderlyingPaymentTransaction11",
+    isoId: "_MPNpcbvHEfCYYbmqNrQFSg",
+    kind: "component",
+    fields: [
+      f({ name: "OriginalGroupInformation", isoId: "_MV78g7vHEfCYYbmqNrQFSg", xmlTag: "OrgnlGrpInf", displayName: displayName("OriginalGroupInformation"), kind: "component", type: "UnderlyingGroupInformation1", required: false }),
+      f({ name: "OriginalInstructionIdentification", isoId: "_MV78hbvHEfCYYbmqNrQFSg", xmlTag: "OrgnlInstrId", displayName: displayName("OriginalInstructionIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "OriginalEndToEndIdentification", isoId: "_MV78h7vHEfCYYbmqNrQFSg", xmlTag: "OrgnlEndToEndId", displayName: displayName("OriginalEndToEndIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "OriginalTransactionIdentification", isoId: "_MV78ibvHEfCYYbmqNrQFSg", xmlTag: "OrgnlTxId", displayName: displayName("OriginalTransactionIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "OriginalUETR", isoId: "_MV78i7vHEfCYYbmqNrQFSg", xmlTag: "OrgnlUETR", displayName: displayName("OriginalUETR"), kind: "text", type: "UUIDv4Identifier", required: false }),
+      f({ name: "OriginalInterbankSettlementAmount", isoId: "_MV78jbvHEfCYYbmqNrQFSg", xmlTag: "OrgnlIntrBkSttlmAmt", displayName: displayName("OriginalInterbankSettlementAmount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: false }),
+      f({ name: "OriginalInterbankSettlementDate", isoId: "_MV78j7vHEfCYYbmqNrQFSg", xmlTag: "OrgnlIntrBkSttlmDt", displayName: displayName("OriginalInterbankSettlementDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "OriginalTransactionReference", isoId: "_MV78kbvHEfCYYbmqNrQFSg", xmlTag: "OrgnlTxRef", displayName: displayName("OriginalTransactionReference"), kind: "component", type: "OriginalTransactionReference48", required: false }),
+      f({ name: "OriginalServiceLevel", isoId: "_MV78k7vHEfCYYbmqNrQFSg", xmlTag: "OrgnlSvcLvl", displayName: displayName("OriginalServiceLevel"), kind: "choice", type: "ServiceLevel8Choice", required: false }),
+    ],
+    rules: [
+      { name: "OriginalIdentificationRule", isoId: "_MV78gbvHEfCYYbmqNrQFSg", text: "Either OriginalInstructionIdentification, OriginalEndToEndIdentification, OriginalTransactionIdentification or OriginalUETR must be present.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/OriginalInstructionIdentification"},{"op":"Presence","path":"/OriginalEndToEndIdentification"},{"op":"Presence","path":"/OriginalTransactionIdentification"},{"op":"Presence","path":"/OriginalUETR"}]}} },
+    ],
+  },
+  "UnderlyingStatementEntry11": {
+    name: "UnderlyingStatementEntry11",
+    isoId: "40cec56e-b22f-436f-9774-349b1a70a720",
+    kind: "component",
+    fields: [
+      f({ name: "OriginalAccount", isoId: "849e3cc7-0d45-46fe-b627-5a7325bd821f", xmlTag: "OrgnlAcct", displayName: displayName("OriginalAccount"), kind: "component", type: "CashAccount40", required: false }),
+      f({ name: "OriginalGroupInformation", isoId: "8a24db2a-db2b-4fe1-8d1a-f5ded1d5b238", xmlTag: "OrgnlGrpInf", displayName: displayName("OriginalGroupInformation"), kind: "component", type: "OriginalGroupInformation33", required: false }),
+      f({ name: "OriginalStatementIdentification", isoId: "a5287a7c-83c2-4568-88d4-4e74e3961f03", xmlTag: "OrgnlStmtId", displayName: displayName("OriginalStatementIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "OriginalEntryReference", isoId: "a8bef864-663e-4766-9286-8d7ee56f16d0", xmlTag: "OrgnlNtryRef", displayName: displayName("OriginalEntryReference"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "OriginalUETR", isoId: "9b4da188-0553-4e34-9c1c-b097599a0777", xmlTag: "OrgnlUETR", displayName: displayName("OriginalUETR"), kind: "text", type: "UUIDv4Identifier", required: false }),
+      f({ name: "OriginalEntryAmount", isoId: "2b2609f6-0002-49c9-8c72-708317b3410b", xmlTag: "OrgnlNtryAmt", displayName: displayName("OriginalEntryAmount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: false }),
+      f({ name: "OriginalEntryValueDate", isoId: "cc665a1b-245b-4920-aca1-8640795a8822", xmlTag: "OrgnlNtryValDt", displayName: displayName("OriginalEntryValueDate"), kind: "choice", type: "DateAndDateTime2Choice", required: false }),
+    ],
+    rules: [
+      { name: "OriginalStatementIdentificationOrEntryReferencePresenceRule", isoId: "31863ec2-24cd-4d1d-a6fa-0039a275cc4e", text: "OriginalStatementIdentification or OriginalEntryReference must be present, both may be present.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/OriginalStatementIdentification"},{"op":"Presence","path":"/OriginalEntryReference"}]}} },
+    ],
+  },
+  "UnderlyingData13Choice": {
+    name: "UnderlyingData13Choice",
+    isoId: "24af6bff-ee4a-4c33-908e-c0da6fcb6a57",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Initiation", isoId: "02510b57-5ee1-4399-929a-e9755ca10d57", xmlTag: "Initn", displayName: displayName("Initiation"), kind: "component", type: "UnderlyingPaymentInstruction11", required: true }),
+      f({ name: "Interbank", isoId: "e84dee1f-bde7-430e-aee2-8c846ea56966", xmlTag: "IntrBk", displayName: displayName("Interbank"), kind: "component", type: "UnderlyingPaymentTransaction11", required: true }),
+      f({ name: "StatementEntry", isoId: "cee69114-e6ca-4fa5-8f7d-c42aac258938", xmlTag: "StmtNtry", displayName: displayName("StatementEntry"), kind: "component", type: "UnderlyingStatementEntry11", required: true }),
+      f({ name: "Account", isoId: "4882e17b-a650-4f38-93a4-478608ff6a1e", xmlTag: "Acct", displayName: displayName("Account"), kind: "component", type: "CashAccount40", required: true }),
+      f({ name: "Other", isoId: "98ac0816-44b9-4b48-be6f-edc85ab98698", xmlTag: "Othr", displayName: displayName("Other"), kind: "component", type: "GenericIdentification1", required: true }),
+    ],
+  },
+  "UnderlyingInvestigationInstrument1Choice": {
+    name: "UnderlyingInvestigationInstrument1Choice",
+    isoId: "_CXmpW1RtEe23M4WgERMsYw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_CXmpXlRtEe23M4WgERMsYw", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalInvestigationInstrument1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_CXmpXVRtEe23M4WgERMsYw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
     ],
   },
   "UnderlyingPaymentInstruction9": {

@@ -1,0 +1,35 @@
+{
+  "identifier": "camt.057.001.09",
+  "name": "NotificationToReceiveV09",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.057.001.09",
+  "bodyTag": "NtfctnToRcv",
+  "out": "camt057",
+  "isoId": "2116c112-14a7-4da6-aaf6-1e6e51c342c8",
+  "definition": "Scope|The NotificationToReceive message is sent by an account owner or by a party acting on the account owner's behalf to one of the account owner's account servicing institutions. It is an advance notice that the account servicing institution will receive funds to be credited to the account of the account owner.|Usage|The NotificationToReceive message is used to advise the account servicing institution of funds that the account owner expects to have credited to its account. The message can be used in either a direct or a relay scenario.",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "30e77e95-bf24-46b8-843d-6c61af1a9dc4",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader117",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Notification",
+      "isoId": "07cee1b2-6228-4053-a1c3-c6d7a645fc70",
+      "xmlTag": "Ntfctn",
+      "type": "AccountNotification26",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "2f829f58-3df9-4c22-a5a7-0037df46edf1",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

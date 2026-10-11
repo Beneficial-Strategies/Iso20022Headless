@@ -59,6 +59,7 @@ import {
   BranchData5Schema,
   BranchAndFinancialInstitutionIdentification8Schema,
   Party50ChoiceSchema,
+  GroupHeader117Schema,
   IBAN2007IdentifierSchema,
   Max34TextSchema,
   ExternalAccountIdentification1CodeSchema,
@@ -90,12 +91,6 @@ import {
   SupplementaryData1Schema,
   sharedTypeDescriptors,
 } from './shared.ts';
-
-export const GroupHeader117Schema = z.strictObject({
-  MessageIdentification: Max35TextSchema,
-  CreationDateTime: ISODateTimeSchema,
-  MessageSender: Party50ChoiceSchema.optional(),
-});
 
 export const TimePeriodDetails1Schema = z.strictObject({
   FromTime: ISOTimeSchema,
@@ -144,16 +139,6 @@ export const AccountReportingRequestV07Schema = z.strictObject({
 const f = (d: FieldDescriptor): FieldDescriptor => d;
 
 const ownTypeDescriptors: TypeDescriptors = {
-  "GroupHeader117": {
-    name: "GroupHeader117",
-    isoId: "_04iHUTEyEe6g-ffJsqGiSA",
-    kind: "component",
-    fields: [
-      f({ name: "MessageIdentification", isoId: "_06vt0TEyEe6g-ffJsqGiSA", xmlTag: "MsgId", displayName: displayName("MessageIdentification"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "CreationDateTime", isoId: "_06vt0zEyEe6g-ffJsqGiSA", xmlTag: "CreDtTm", displayName: displayName("CreationDateTime"), kind: "datetime", type: "ISODateTime", required: true }),
-      f({ name: "MessageSender", isoId: "_06vt1TEyEe6g-ffJsqGiSA", xmlTag: "MsgSndr", displayName: displayName("MessageSender"), kind: "choice", type: "Party50Choice", required: false }),
-    ],
-  },
   "TimePeriodDetails1": {
     name: "TimePeriodDetails1",
     isoId: "_T-_jK9p-Ed-ak6NoX_4Aeg_808787168",
@@ -279,6 +264,7 @@ export const typeDescriptors: TypeDescriptors = {
   "BranchData5": sharedTypeDescriptors["BranchData5"]!,
   "BranchAndFinancialInstitutionIdentification8": sharedTypeDescriptors["BranchAndFinancialInstitutionIdentification8"]!,
   "Party50Choice": sharedTypeDescriptors["Party50Choice"]!,
+  "GroupHeader117": sharedTypeDescriptors["GroupHeader117"]!,
   "IBAN2007Identifier": sharedTypeDescriptors["IBAN2007Identifier"]!,
   "Max34Text": sharedTypeDescriptors["Max34Text"]!,
   "ExternalAccountIdentification1Code": sharedTypeDescriptors["ExternalAccountIdentification1Code"]!,

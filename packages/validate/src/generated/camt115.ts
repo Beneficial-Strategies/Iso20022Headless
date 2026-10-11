@@ -19,6 +19,8 @@ import {
   GroupHeader134Schema,
   OriginalGroupInformation29Schema,
   UUIDv4IdentifierSchema,
+  ExternalRequestStatus1CodeSchema,
+  RequestStatus1ChoiceSchema,
   Max140TextSchema,
   AddressType2CodeSchema,
   Exact4AlphaNumericTextSchema,
@@ -55,6 +57,7 @@ import {
   StatusReason6ChoiceSchema,
   Max105TextSchema,
   StatusReasonInformation14Schema,
+  RequestHandling4Schema,
   ExternalCashType1CodeSchema,
   CashType1ChoiceSchema,
   ActiveCurrencyAndAmountSchema,
@@ -73,19 +76,6 @@ export const RequestIdentification1Schema = z.strictObject({
   OriginalOrderReference: UUIDv4IdentifierSchema,
   OriginalCashReceiverReference: Max35TextSchema.optional(),
   OriginalCashSenderReference: Max35TextSchema.optional(),
-});
-
-export const ExternalRequestStatus1CodeSchema = textType({min: 1, max: 4});
-
-export const RequestStatus1ChoiceSchema = choiceOf({
-  Code: ExternalRequestStatus1CodeSchema,
-  Proprietary: Max35TextSchema,
-});
-
-export const RequestHandling4Schema = z.strictObject({
-  Status: RequestStatus1ChoiceSchema,
-  StatusReason: StatusReasonInformation14Schema.optional(),
-  Description: Max140TextSchema.optional(),
 });
 
 export const CashDepositConfirmation1Schema = z.strictObject({
@@ -127,36 +117,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "OriginalOrderReference", isoId: "_XEQ-klGnEfC_v5ez7RpMHw", xmlTag: "OrgnlOrdrRef", displayName: displayName("OriginalOrderReference"), kind: "text", type: "UUIDv4Identifier", required: true }),
       f({ name: "OriginalCashReceiverReference", isoId: "_XEQ-k1GnEfC_v5ez7RpMHw", xmlTag: "OrgnlCshRcvrRef", displayName: displayName("OriginalCashReceiverReference"), kind: "text", type: "Max35Text", required: false }),
       f({ name: "OriginalCashSenderReference", isoId: "_Z2K6EWiTEfC7No_UZmyDXw", xmlTag: "OrgnlCshSndrRef", displayName: displayName("OriginalCashSenderReference"), kind: "text", type: "Max35Text", required: false }),
-    ],
-  },
-  "ExternalRequestStatus1Code": {
-    name: "ExternalRequestStatus1Code",
-    isoId: "_gy_x0LqtEe68nbz8Nl_hLQ",
-    kind: "code",
-    minLength: 1,
-    maxLength: 4,
-    external: true,
-  },
-  "RequestStatus1Choice": {
-    name: "RequestStatus1Choice",
-    isoId: "_0Kkf8LqsEe68nbz8Nl_hLQ",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_qvkvsLqtEe68nbz8Nl_hLQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalRequestStatus1Code", required: true }),
-      f({ name: "Proprietary", isoId: "_B6MRobqtEe68nbz8Nl_hLQ", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
-    ],
-  },
-  "RequestHandling4": {
-    name: "RequestHandling4",
-    isoId: "_4tFCR1QBEe-Fk_N0FBjY0Q",
-    kind: "component",
-    fields: [
-      f({ name: "Status", isoId: "_40OzIVQBEe-Fk_N0FBjY0Q", xmlTag: "Sts", displayName: displayName("Status"), kind: "choice", type: "RequestStatus1Choice", required: true }),
-      f({ name: "StatusReason", isoId: "_40OzI1QBEe-Fk_N0FBjY0Q", xmlTag: "StsRsn", displayName: displayName("StatusReason"), kind: "component", type: "StatusReasonInformation14", required: false }),
-      f({ name: "Description", isoId: "_MD00gVQCEe-Fk_N0FBjY0Q", xmlTag: "Desc", displayName: displayName("Description"), kind: "text", type: "Max140Text", required: false }),
-    ],
-    rules: [
-      { name: "DescriptionRule", isoId: "_ZAVuQFQCEe-Fk_N0FBjY0Q", text: "If Description is present, then Status/Code is not allowed.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/Description"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/Status/Code"}]}} },
     ],
   },
   "CashDepositConfirmation1": {
@@ -212,6 +172,8 @@ export const typeDescriptors: TypeDescriptors = {
   "GroupHeader134": sharedTypeDescriptors["GroupHeader134"]!,
   "OriginalGroupInformation29": sharedTypeDescriptors["OriginalGroupInformation29"]!,
   "UUIDv4Identifier": sharedTypeDescriptors["UUIDv4Identifier"]!,
+  "ExternalRequestStatus1Code": sharedTypeDescriptors["ExternalRequestStatus1Code"]!,
+  "RequestStatus1Choice": sharedTypeDescriptors["RequestStatus1Choice"]!,
   "Max140Text": sharedTypeDescriptors["Max140Text"]!,
   "AddressType2Code": sharedTypeDescriptors["AddressType2Code"]!,
   "Exact4AlphaNumericText": sharedTypeDescriptors["Exact4AlphaNumericText"]!,
@@ -248,6 +210,7 @@ export const typeDescriptors: TypeDescriptors = {
   "StatusReason6Choice": sharedTypeDescriptors["StatusReason6Choice"]!,
   "Max105Text": sharedTypeDescriptors["Max105Text"]!,
   "StatusReasonInformation14": sharedTypeDescriptors["StatusReasonInformation14"]!,
+  "RequestHandling4": sharedTypeDescriptors["RequestHandling4"]!,
   "ExternalCashType1Code": sharedTypeDescriptors["ExternalCashType1Code"]!,
   "CashType1Choice": sharedTypeDescriptors["CashType1Choice"]!,
   "ActiveCurrencyAndAmount": sharedTypeDescriptors["ActiveCurrencyAndAmount"]!,

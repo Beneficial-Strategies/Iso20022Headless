@@ -1,0 +1,35 @@
+{
+  "identifier": "camt.111.001.03",
+  "name": "InvestigationResponseV03",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.111.001.03",
+  "bodyTag": "InvstgtnRspn",
+  "out": "camt111",
+  "isoId": "26a7f6ca-29df-4433-ba66-2d7decbf236d",
+  "definition": "Scope|The InvestigationResponse message is sent between agents to provide a response or status update on an investigation.|Usage|The InvestigationResponse message should be used to respond to an InvestigationRequest message. The responses cover these business scenarios -|- unable to apply;|- request for information;|- request value date adjustment;|- claim non-receipt;|- request debit authorisation;|- request use of funds;|- payment initiation not confirmed;|- miscellaenous business scenarios.|The InvestigationResponse message covers one and only one transaction or entry at a time except when responding to some requests for information.",
+  "blocks": [
+    {
+      "name": "InvestigationResponse",
+      "isoId": "a4f665b0-116d-44fb-aad9-bbc04f747c32",
+      "xmlTag": "InvstgtnRspn",
+      "type": "InvestigationResponse23",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "OriginalInvestigationRequest",
+      "isoId": "670f81e3-1eac-4e7f-95b5-5340b4f2d4b3",
+      "xmlTag": "OrgnlInvstgtnReq",
+      "type": "InvestigationRequest50",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "51ac2bb2-0be7-4917-8bdb-3b852425cb8f",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

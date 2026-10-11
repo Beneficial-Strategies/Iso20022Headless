@@ -1,0 +1,40 @@
+choice	memberId	memberName	text
+InvestigationRequestAction1Choice	_t8NcIhZcEe6d6Ip1Ob2kaQ	Code	Action requested, as published in an external investigation action code set.
+InvestigationRequestAction1Choice	_t8NcIxZcEe6d6Ip1Ob2kaQ	Proprietary	Action requested, in a proprietary form.
+Party38Choice	_6VWvQ248EeiU9cctagi5ow	OrganisationIdentification	Unique and unambiguous way to identify an organisation.
+Party38Choice	_6VWvRW48EeiU9cctagi5ow	PrivateIdentification	Unique and unambiguous identification of a person, for example a passport.
+InvestigationActionReason1Choice	_UZixAyVAEe6EvsLBQ6cYtA	Code	Reason for the action, as published in an external investigation action reason code list.
+InvestigationActionReason1Choice	_UZixBSVAEe6EvsLBQ6cYtA	Proprietary	Reason for the action, in a proprietary form.
+InvestigationType1Choice	_CXmCoVRtEe23M4WgERMsYw	Code	Investigation type, as published in an external investigation type code set.
+InvestigationType1Choice	_CXmCo1RtEe23M4WgERMsYw	Proprietary	Investigation type, in a proprietary form.
+InvestigationSubType1Choice	_CXmCnlRtEe23M4WgERMsYw	Code	Investigation sub type, as published in an external investigation sub type code set.
+InvestigationSubType1Choice	_CXmCnVRtEe23M4WgERMsYw	Proprietary	Investigation sub type, in a proprietary form.
+UnderlyingInvestigationInstrument1Choice	_CXmpXlRtEe23M4WgERMsYw	Code	Underlying instrument or product, as published in an external underlying investigation instrument code set.
+UnderlyingInvestigationInstrument1Choice	_CXmpXVRtEe23M4WgERMsYw	Proprietary	Underlying instrument or product, in a proprietary form.
+UnderlyingData13Choice	02510b57-5ee1-4399-929a-e9755ca10d57	Initiation	Reference details on the original payment initiation.
+UnderlyingData13Choice	e84dee1f-bde7-430e-aee2-8c846ea56966	Interbank	Reference details on the original interbank payment transaction.
+UnderlyingData13Choice	cee69114-e6ca-4fa5-8f7d-c42aac258938	StatementEntry	Reference details on the underlying statement cash entry.
+UnderlyingData13Choice	4882e17b-a650-4f38-93a4-478608ff6a1e	Account	Reference details on the underlying account.
+UnderlyingData13Choice	98ac0816-44b9-4b48-be6f-edc85ab98698	Other	Reference details on any other original proprietary reference.||Usage: this element can be used for an investigation on any other data, such as a cheque.
+MandateRelatedData4Choice	_MPNCYbvHEfCYYbmqNrQFSg	DirectDebitMandate	Specific direct debit mandate data.
+MandateRelatedData4Choice	_MPNCY7vHEfCYYbmqNrQFSg	CreditTransferMandate	Specific credit transfer mandate data.
+ReferredDocumentType3Choice	_YCiq4x77EeSxevWRRWxNAg	Code	Document type in a coded form.
+ReferredDocumentType3Choice	_YCiq5R77EeSxevWRRWxNAg	Proprietary	Proprietary identification of the type of the remittance document.
+DiscountAmountType1Choice	_tlra8FkyEeGeoaLUQk__nA_1847720881	Code	Specifies the amount type, in a coded form.
+DiscountAmountType1Choice	_tlra8VkyEeGeoaLUQk__nA_-32058975	Proprietary	Specifies the amount type, in a free-text form.
+TaxAmountType1Choice	_tsra01kyEeGeoaLUQk__nA_1392476130	Code	Specifies the amount type, in a coded form.
+TaxAmountType1Choice	_ts1L0FkyEeGeoaLUQk__nA_281564711	Proprietary	Specifies the amount type, in a free-text form.
+CreditorReferenceType1Choice	_T4ItMNp-Ed-ak6NoX_4Aeg_651436918	Code	Type of creditor reference, in a coded form.
+CreditorReferenceType1Choice	_T4ItMdp-Ed-ak6NoX_4Aeg_651436979	Proprietary	Creditor reference type, in a proprietary form.
+Party40Choice	_8U6MM248EeiU9cctagi5ow	Party	Identification of a person or an organisation.
+Party40Choice	_8U6MNW48EeiU9cctagi5ow	Agent	Identification of a financial institution.
+InvestigationServiceLevel1Choice	_CXmpWlRtEe23M4WgERMsYw	Code	Investigation service level, as published in an external investigation service level code set.
+InvestigationServiceLevel1Choice	_CXmpWVRtEe23M4WgERMsYw	Proprietary	Investigation service level, in a proprietary form.
+InvestigationReason1Choice	_CXmChVRtEe23M4WgERMsYw	Code	Reason for the investigation being opened, as published in the external investigation reason code set.
+InvestigationReason1Choice	_CXmChlRtEe23M4WgERMsYw	Proprietary	Reason for the investigation being opened, in a proprietary form.
+InvestigationReasonSubType1Choice	_CXmCkFRtEe23M4WgERMsYw	Code	Reason sub type, as published in the external investigation reason sub type code set.
+InvestigationReasonSubType1Choice	_CXmCklRtEe23M4WgERMsYw	Proprietary	Reason sub type, in a proprietary form.
+AdditionalRequestData1Choice	_VuaLsXSHEe2bKJC9xIuWQw	RequestedDebitAuthorisation	Detailed information about the request.
+AdditionalRequestData1Choice	_WtfqIXSHEe2bKJC9xIuWQw	RequestedCompensation	Detailed information about the request.
+AdditionalRequestData1Choice	_XIm40XSHEe2bKJC9xIuWQw	RequestedValuation	Detailed information about the request.
+AdditionalRequestData1Choice	_Q0DKiXSHEe2bKJC9xIuWQw	RequestNarrative	Provides additional information about the request in narrative form.

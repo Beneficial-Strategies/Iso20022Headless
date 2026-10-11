@@ -63,20 +63,13 @@ import {
   YesNoIndicatorSchema,
   Case6Schema,
   SkipPayloadSchema,
+  ProprietaryData6Schema,
+  ProprietaryData7Schema,
   Max350TextSchema,
   SupplementaryDataEnvelope1Schema,
   SupplementaryData1Schema,
   sharedTypeDescriptors,
 } from './shared.ts';
-
-export const ProprietaryData6Schema = z.strictObject({
-  Any: SkipPayloadSchema,
-});
-
-export const ProprietaryData7Schema = z.strictObject({
-  Type: Max35TextSchema,
-  Data: ProprietaryData6Schema,
-});
 
 export const DuplicateV07Schema = z.strictObject({
   Assignment: CaseAssignment6Schema,
@@ -88,23 +81,6 @@ export const DuplicateV07Schema = z.strictObject({
 const f = (d: FieldDescriptor): FieldDescriptor => d;
 
 const ownTypeDescriptors: TypeDescriptors = {
-  "ProprietaryData6": {
-    name: "ProprietaryData6",
-    isoId: "_1gW-cYKYEee7hrXqLO3yQg",
-    kind: "component",
-    fields: [
-      f({ name: "Any", isoId: "_1oY5E4KYEee7hrXqLO3yQg", xmlTag: "Any", displayName: displayName("Any"), kind: "any", type: "SkipPayload", required: true }),
-    ],
-  },
-  "ProprietaryData7": {
-    name: "ProprietaryData7",
-    isoId: "_1UAkgYKYEee7hrXqLO3yQg",
-    kind: "component",
-    fields: [
-      f({ name: "Type", isoId: "_1gNNcYKYEee7hrXqLO3yQg", xmlTag: "Tp", displayName: displayName("Type"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "Data", isoId: "_1gNNc4KYEee7hrXqLO3yQg", xmlTag: "Data", displayName: displayName("Data"), kind: "component", type: "ProprietaryData6", required: true }),
-    ],
-  },
   "DuplicateV07": {
     name: "DuplicateV07",
     isoId: "_R3IjtTEZEe6kQ-WGAhcVPQ",
@@ -169,6 +145,8 @@ export const typeDescriptors: TypeDescriptors = {
   "YesNoIndicator": sharedTypeDescriptors["YesNoIndicator"]!,
   "Case6": sharedTypeDescriptors["Case6"]!,
   "SkipPayload": sharedTypeDescriptors["SkipPayload"]!,
+  "ProprietaryData6": sharedTypeDescriptors["ProprietaryData6"]!,
+  "ProprietaryData7": sharedTypeDescriptors["ProprietaryData7"]!,
   "Max350Text": sharedTypeDescriptors["Max350Text"]!,
   "SupplementaryDataEnvelope1": sharedTypeDescriptors["SupplementaryDataEnvelope1"]!,
   "SupplementaryData1": sharedTypeDescriptors["SupplementaryData1"]!,

@@ -25,57 +25,22 @@ import {
   FinancialIdentificationSchemeName1ChoiceSchema,
   GenericFinancialIdentification1Schema,
   MemberIdentification3ChoiceSchema,
+  PaymentRole1CodeSchema,
   Max140TextSchema,
   Max16TextSchema,
   CountryCodeSchema,
+  StructuredLongPostalAddress1Schema,
+  LongPostalAddress1ChoiceSchema,
   PhoneNumberSchema,
   Max256TextSchema,
+  CommunicationAddress8Schema,
+  ContactIdentificationAndAddress1Schema,
+  Member6Schema,
   Max350TextSchema,
   SupplementaryDataEnvelope1Schema,
   SupplementaryData1Schema,
   sharedTypeDescriptors,
 } from './shared.ts';
-
-export const PaymentRole1CodeSchema = z.enum(["LQMG", "LMMG", "PYMG", "REDR", "BKMG", "STMG"]);
-
-export const StructuredLongPostalAddress1Schema = z.strictObject({
-  BuildingName: Max35TextSchema.optional(),
-  StreetName: Max35TextSchema.optional(),
-  StreetBuildingIdentification: Max35TextSchema.optional(),
-  Floor: Max16TextSchema.optional(),
-  TownName: Max35TextSchema,
-  DistrictName: Max35TextSchema.optional(),
-  RegionIdentification: Max35TextSchema.optional(),
-  State: Max35TextSchema.optional(),
-  CountyIdentification: Max35TextSchema.optional(),
-  Country: CountryCodeSchema,
-  PostCodeIdentification: Max16TextSchema,
-  PostOfficeBox: Max16TextSchema.optional(),
-});
-
-export const LongPostalAddress1ChoiceSchema = choiceOf({
-  Unstructured: Max140TextSchema,
-  Structured: StructuredLongPostalAddress1Schema,
-});
-
-export const CommunicationAddress8Schema = z.strictObject({
-  PostalAddress: LongPostalAddress1ChoiceSchema,
-  PhoneNumber: PhoneNumberSchema,
-  FaxNumber: PhoneNumberSchema.optional(),
-  EmailAddress: Max256TextSchema.optional(),
-});
-
-export const ContactIdentificationAndAddress1Schema = z.strictObject({
-  Name: Max35TextSchema.optional(),
-  Role: PaymentRole1CodeSchema,
-  CommunicationAddress: CommunicationAddress8Schema,
-});
-
-export const Member6Schema = z.strictObject({
-  MemberReturnAddress: z.array(MemberIdentification3ChoiceSchema).optional(),
-  ContactReference: z.array(ContactIdentificationAndAddress1Schema).optional(),
-  CommunicationAddress: CommunicationAddress8Schema.optional(),
-});
 
 export const CreateMemberV01Schema = z.strictObject({
   MessageHeader: MessageHeader1Schema,
@@ -87,74 +52,6 @@ export const CreateMemberV01Schema = z.strictObject({
 const f = (d: FieldDescriptor): FieldDescriptor => d;
 
 const ownTypeDescriptors: TypeDescriptors = {
-  "PaymentRole1Code": {
-    name: "PaymentRole1Code",
-    isoId: "_Z7RUUNp-Ed-ak6NoX_4Aeg_-925433456",
-    kind: "code",
-    options: [{ value: "LQMG", name: "LiquidityManager", isoId: "_Z7RUUdp-Ed-ak6NoX_4Aeg_-925433454" }, { value: "LMMG", name: "LimitManager", isoId: "_Z7RUUtp-Ed-ak6NoX_4Aeg_-925433453" }, { value: "PYMG", name: "PaymentManager", isoId: "_Z7RUU9p-Ed-ak6NoX_4Aeg_-925433452" }, { value: "REDR", name: "Reader", isoId: "_Z7RUVNp-Ed-ak6NoX_4Aeg_-925433443" }, { value: "BKMG", name: "BackupManager", isoId: "_Z7RUVdp-Ed-ak6NoX_4Aeg_-925433442" }, { value: "STMG", name: "SettlementManager", isoId: "_Z7RUVtp-Ed-ak6NoX_4Aeg_-925433441" }],
-  },
-  "StructuredLongPostalAddress1": {
-    name: "StructuredLongPostalAddress1",
-    isoId: "_QGckRNp-Ed-ak6NoX_4Aeg_829983721",
-    kind: "component",
-    fields: [
-      f({ name: "BuildingName", isoId: "_QGckRdp-Ed-ak6NoX_4Aeg_1005453911", xmlTag: "BldgNm", displayName: displayName("BuildingName"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "StreetName", isoId: "_QGckRtp-Ed-ak6NoX_4Aeg_1005453819", xmlTag: "StrtNm", displayName: displayName("StreetName"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "StreetBuildingIdentification", isoId: "_QGluMNp-Ed-ak6NoX_4Aeg_1005453850", xmlTag: "StrtBldgId", displayName: displayName("StreetBuildingIdentification"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "Floor", isoId: "_QGluMdp-Ed-ak6NoX_4Aeg_1005454212", xmlTag: "Flr", displayName: displayName("Floor"), kind: "text", type: "Max16Text", required: false }),
-      f({ name: "TownName", isoId: "_QGluMtp-Ed-ak6NoX_4Aeg_1005453881", xmlTag: "TwnNm", displayName: displayName("TownName"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "DistrictName", isoId: "_QGluM9p-Ed-ak6NoX_4Aeg_1005453964", xmlTag: "DstrctNm", displayName: displayName("DistrictName"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "RegionIdentification", isoId: "_QGluNNp-Ed-ak6NoX_4Aeg_1005454644", xmlTag: "RgnId", displayName: displayName("RegionIdentification"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "State", isoId: "_QGluNdp-Ed-ak6NoX_4Aeg_1005454674", xmlTag: "Stat", displayName: displayName("State"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "CountyIdentification", isoId: "_QGluNtp-Ed-ak6NoX_4Aeg_1005453942", xmlTag: "CtyId", displayName: displayName("CountyIdentification"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "Country", isoId: "_QGluN9p-Ed-ak6NoX_4Aeg_1005453697", xmlTag: "Ctry", displayName: displayName("Country"), kind: "code", type: "CountryCode", required: true }),
-      f({ name: "PostCodeIdentification", isoId: "_QGluONp-Ed-ak6NoX_4Aeg_1005453789", xmlTag: "PstCdId", displayName: displayName("PostCodeIdentification"), kind: "text", type: "Max16Text", required: true }),
-      f({ name: "PostOfficeBox", isoId: "_QGluOdp-Ed-ak6NoX_4Aeg_1005454273", xmlTag: "POB", displayName: displayName("PostOfficeBox"), kind: "text", type: "Max16Text", required: false }),
-    ],
-    rules: [
-      { name: "StreetNameAndOrPostOfficeBoxRule", isoId: "_QGluOtp-Ed-ak6NoX_4Aeg_1062711598", text: "If StreetName is not present, then PostOfficeBox is mandatory. If StreetName is present, then PostOfficeBox is optional." },
-    ],
-  },
-  "LongPostalAddress1Choice": {
-    name: "LongPostalAddress1Choice",
-    isoId: "_QG4pJdp-Ed-ak6NoX_4Aeg_-1972571676",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Unstructured", isoId: "_QG4pJtp-Ed-ak6NoX_4Aeg_-1635487920", xmlTag: "Ustrd", displayName: displayName("Unstructured"), kind: "text", type: "Max140Text", required: true }),
-      f({ name: "Structured", isoId: "_QG4pJ9p-Ed-ak6NoX_4Aeg_-1635487889", xmlTag: "Strd", displayName: displayName("Structured"), kind: "component", type: "StructuredLongPostalAddress1", required: true }),
-    ],
-  },
-  "CommunicationAddress8": {
-    name: "CommunicationAddress8",
-    isoId: "_jVS2x5lCEee-Zps0fZQaFQ",
-    kind: "component",
-    fields: [
-      f({ name: "PostalAddress", isoId: "_jdVYcZlCEee-Zps0fZQaFQ", xmlTag: "PstlAdr", displayName: displayName("PostalAddress"), kind: "choice", type: "LongPostalAddress1Choice", required: true }),
-      f({ name: "PhoneNumber", isoId: "_jdVYc5lCEee-Zps0fZQaFQ", xmlTag: "PhneNb", displayName: displayName("PhoneNumber"), kind: "text", type: "PhoneNumber", required: true }),
-      f({ name: "FaxNumber", isoId: "_jdVYdZlCEee-Zps0fZQaFQ", xmlTag: "FaxNb", displayName: displayName("FaxNumber"), kind: "text", type: "PhoneNumber", required: false }),
-      f({ name: "EmailAddress", isoId: "_jdVYd5lCEee-Zps0fZQaFQ", xmlTag: "EmailAdr", displayName: displayName("EmailAddress"), kind: "text", type: "Max256Text", required: false }),
-    ],
-  },
-  "ContactIdentificationAndAddress1": {
-    name: "ContactIdentificationAndAddress1",
-    isoId: "_jNHLL5lCEee-Zps0fZQaFQ",
-    kind: "component",
-    fields: [
-      f({ name: "Name", isoId: "_jVS2wZlCEee-Zps0fZQaFQ", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "Role", isoId: "_jVS2w5lCEee-Zps0fZQaFQ", xmlTag: "Role", displayName: displayName("Role"), kind: "code", type: "PaymentRole1Code", required: true }),
-      f({ name: "CommunicationAddress", isoId: "_jVS2xZlCEee-Zps0fZQaFQ", xmlTag: "ComAdr", displayName: displayName("CommunicationAddress"), kind: "component", type: "CommunicationAddress8", required: true }),
-    ],
-  },
-  "Member6": {
-    name: "Member6",
-    isoId: "_W1ihMXSeEeiH1ZOt2UD8vQ",
-    kind: "component",
-    fields: [
-      f({ name: "MemberReturnAddress", isoId: "_XBEbwXSeEeiH1ZOt2UD8vQ", xmlTag: "MmbRtrAdr", displayName: displayName("MemberReturnAddress"), kind: "choice", type: "MemberIdentification3Choice", required: false, repeat: { min: 0, max: null } }),
-      f({ name: "ContactReference", isoId: "_XBEbw3SeEeiH1ZOt2UD8vQ", xmlTag: "CtctRef", displayName: displayName("ContactReference"), kind: "component", type: "ContactIdentificationAndAddress1", required: false, repeat: { min: 0, max: null } }),
-      f({ name: "CommunicationAddress", isoId: "_XBEbxXSeEeiH1ZOt2UD8vQ", xmlTag: "ComAdr", displayName: displayName("CommunicationAddress"), kind: "component", type: "CommunicationAddress8", required: false }),
-    ],
-  },
   "CreateMemberV01": {
     name: "CreateMemberV01",
     isoId: "_P8togckHEem3UrxZgQhVAw",
@@ -181,11 +78,17 @@ export const typeDescriptors: TypeDescriptors = {
   "FinancialIdentificationSchemeName1Choice": sharedTypeDescriptors["FinancialIdentificationSchemeName1Choice"]!,
   "GenericFinancialIdentification1": sharedTypeDescriptors["GenericFinancialIdentification1"]!,
   "MemberIdentification3Choice": sharedTypeDescriptors["MemberIdentification3Choice"]!,
+  "PaymentRole1Code": sharedTypeDescriptors["PaymentRole1Code"]!,
   "Max140Text": sharedTypeDescriptors["Max140Text"]!,
   "Max16Text": sharedTypeDescriptors["Max16Text"]!,
   "CountryCode": sharedTypeDescriptors["CountryCode"]!,
+  "StructuredLongPostalAddress1": sharedTypeDescriptors["StructuredLongPostalAddress1"]!,
+  "LongPostalAddress1Choice": sharedTypeDescriptors["LongPostalAddress1Choice"]!,
   "PhoneNumber": sharedTypeDescriptors["PhoneNumber"]!,
   "Max256Text": sharedTypeDescriptors["Max256Text"]!,
+  "CommunicationAddress8": sharedTypeDescriptors["CommunicationAddress8"]!,
+  "ContactIdentificationAndAddress1": sharedTypeDescriptors["ContactIdentificationAndAddress1"]!,
+  "Member6": sharedTypeDescriptors["Member6"]!,
   "Max350Text": sharedTypeDescriptors["Max350Text"]!,
   "SupplementaryDataEnvelope1": sharedTypeDescriptors["SupplementaryDataEnvelope1"]!,
   "SupplementaryData1": sharedTypeDescriptors["SupplementaryData1"]!,

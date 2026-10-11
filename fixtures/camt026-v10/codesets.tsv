@@ -1,0 +1,3 @@
+codeSetName	isoId	restrictionOf	code	enumName
+ExternalUnableToApplyMissingData1Code	_p-vHsN4jEeqt1ZcLzWyWFw	ExternalUnableToApplyMissingDataCode	*EXTERNAL*	minLength=1 maxLength=4; ~19 codes (not enumerated)
+ExternalUnableToApplyIncorrectData1Code	_p-vHiN4jEeqt1ZcLzWyWFw	ExternalUnableToApplyIncorrectDataCode	*EXTERNAL*	minLength=1 maxLength=4; ~41 codes (not enumerated)

@@ -1,0 +1,2 @@
+name	isoId	xsiType	pattern	minLength	maxLength	totalDigits	fractionDigits	minInclusive	maxInclusive	other
+AMLIndicator	_YY7X09p-Ed-ak6NoX_4Aeg_1082996795	Indicator								meaningWhenTrue=Indicates that the investigation is related to an anti-money laundering investigation request.; meaningWhenFalse=Indicates that the investigation is not related to an anti-money laundering investigation request.

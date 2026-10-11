@@ -1,0 +1,8 @@
+choice	memberId	memberName	text
+IntraBalanceOrOperationalError11Choice	_3sxwkTEyEe6g-ffJsqGiSA	Movements	Identifies the transactions.
+IntraBalanceOrOperationalError11Choice	_3sxwkzEyEe6g-ffJsqGiSA	OperationalError	Operational error resulting from a rejection.
+ProcessingStatus67Choice	_XD6lIeFUEeWIA4E9cYSxxQ	Rejected	Instruction or request has been rejected for further processing.
+ProcessingStatus67Choice	_XD6lKeFUEeWIA4E9cYSxxQ	Repair	Instruction or request is accepted but in repair.
+ProcessingStatus67Choice	_XD6lMeFUEeWIA4E9cYSxxQ	Cancelled	Instruction has been cancelled. The status on the processing of a cancellation request must be provided using a cancellation request report message.
+ProcessingStatus67Choice	_XD6lOeFUEeWIA4E9cYSxxQ	AcknowledgedAccepted	Instruction has been acknowledged by the account servicer.
+ProcessingStatus67Choice	_XD6lQeFUEeWIA4E9cYSxxQ	Proprietary	Specifies a choice of status for the processing of an intra-balance movement.

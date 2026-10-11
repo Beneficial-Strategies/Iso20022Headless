@@ -55,3 +55,21 @@ describe('ChargesPaymentRequestV03: the charges account agent and the requestor 
     expect(run(T, 'ChargesRequestorGroupHeaderRule', { GroupHeader: {}, Charges: { Single: { ChargesRequestor: REQ } } })).toBe('pass');
   });
 });
+
+describe('OriginalNotificationReference15 and 16: the related account is given once, on the reference or on its items', () => {
+  const nested = (list: string) => ({ [list]: [{ OriginalItemReference: { RelatedAccount: [ACCOUNT] } }] });
+
+  it('RelatedAccountRule (15): an account on the reference and one on an item (a list inside a list) breaks the rule; either alone does not', () => {
+    const T = 'OriginalNotificationReference15';
+    expect(run(T, 'RelatedAccountRule', { RelatedAccount: ACCOUNT, ...nested('OriginalItemAndStatus') })).toBe('fail');
+    expect(run(T, 'RelatedAccountRule', { RelatedAccount: ACCOUNT })).toBe('pass');
+    expect(run(T, 'RelatedAccountRule', nested('OriginalItemAndStatus'))).toBe('pass');
+  });
+
+  it('RelatedAccountRule (16): the same for a notification whose items are listed as OriginalItem', () => {
+    const T = 'OriginalNotificationReference16';
+    expect(run(T, 'RelatedAccountRule', { RelatedAccount: ACCOUNT, ...nested('OriginalItem') })).toBe('fail');
+    expect(run(T, 'RelatedAccountRule', { RelatedAccount: ACCOUNT })).toBe('pass');
+    expect(run(T, 'RelatedAccountRule', nested('OriginalItem'))).toBe('pass');
+  });
+});

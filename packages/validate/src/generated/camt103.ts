@@ -54,16 +54,12 @@ import {
   ImpliedCurrencyAndAmountSchema,
   ActiveCurrencyAndAmountSchema,
   Amount2ChoiceSchema,
+  Reservation4Schema,
   Max350TextSchema,
   SupplementaryDataEnvelope1Schema,
   SupplementaryData1Schema,
   sharedTypeDescriptors,
 } from './shared.ts';
-
-export const Reservation4Schema = z.strictObject({
-  StartDateTime: DateAndDateTime2ChoiceSchema.optional(),
-  Amount: Amount2ChoiceSchema,
-});
 
 export const CreateReservationV03Schema = z.strictObject({
   MessageHeader: MessageHeader1Schema,
@@ -75,15 +71,6 @@ export const CreateReservationV03Schema = z.strictObject({
 const f = (d: FieldDescriptor): FieldDescriptor => d;
 
 const ownTypeDescriptors: TypeDescriptors = {
-  "Reservation4": {
-    name: "Reservation4",
-    isoId: "_hsth0ZliEeeE1Ya-LgRsuQ",
-    kind: "component",
-    fields: [
-      f({ name: "StartDateTime", isoId: "_h1AiM5liEeeE1Ya-LgRsuQ", xmlTag: "StartDtTm", displayName: displayName("StartDateTime"), kind: "choice", type: "DateAndDateTime2Choice", required: false }),
-      f({ name: "Amount", isoId: "_h1AiNZliEeeE1Ya-LgRsuQ", xmlTag: "Amt", displayName: displayName("Amount"), kind: "choice", type: "Amount2Choice", required: true }),
-    ],
-  },
   "CreateReservationV03": {
     name: "CreateReservationV03",
     isoId: "_R3GuUzEZEe6kQ-WGAhcVPQ",
@@ -139,6 +126,7 @@ export const typeDescriptors: TypeDescriptors = {
   "ImpliedCurrencyAndAmount": sharedTypeDescriptors["ImpliedCurrencyAndAmount"]!,
   "ActiveCurrencyAndAmount": sharedTypeDescriptors["ActiveCurrencyAndAmount"]!,
   "Amount2Choice": sharedTypeDescriptors["Amount2Choice"]!,
+  "Reservation4": sharedTypeDescriptors["Reservation4"]!,
   "Max350Text": sharedTypeDescriptors["Max350Text"]!,
   "SupplementaryDataEnvelope1": sharedTypeDescriptors["SupplementaryDataEnvelope1"]!,
   "SupplementaryData1": sharedTypeDescriptors["SupplementaryData1"]!,

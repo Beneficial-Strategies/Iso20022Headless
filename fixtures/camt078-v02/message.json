@@ -1,0 +1,35 @@
+{
+  "identifier": "camt.078.001.02",
+  "name": "IntraBalanceMovementQueryV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.078.001.02",
+  "bodyTag": "IntraBalMvmntQry",
+  "out": "camt078",
+  "isoId": "_R3OqUzEZEe6kQ-WGAhcVPQ",
+  "definition": "The IntraBalanceMovementQuery message is sent from an account owner/requestor to a settlement infrastructure to query intra-balance movement instructions, along with their current status, based on a set of search criteria.|The message may also be used to: |- re-send a message sent by the account owner to the account servicer (the sub-function of the message is \"Duplicate\") |- provide a third party with a copy of a message being sent by the account owner for information (the sub-function of the message is \"Copy\") |- re-send to a third party a copy of a message being sent by the account owner for information (the sub-function of the message is \"Copy Duplicate\").",
+  "blocks": [
+    {
+      "name": "Identification",
+      "isoId": "_R3OqYTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Id",
+      "type": "DocumentIdentification51",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "QueryDefinition",
+      "isoId": "_R3OqYzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "QryDef",
+      "type": "IntraBalanceQueryDefinition11",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3OqZTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

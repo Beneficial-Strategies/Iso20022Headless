@@ -1,0 +1,4 @@
+choice	memberId	memberName	text
+PartyIdentification73Choice	_JVFG-SjIEeKnA5P_jl2DUw	NameAndAddress	Identification of the party expressed as name and an optional address and an optional alternative identifier.
+PartyIdentification73Choice	_JVFG_SjIEeKnA5P_jl2DUw	AnyBIC	Identification of the party expressed as a BIC and an optional alternative identifier.
+PartyIdentification73Choice	_XthjsIKPEeKmtdhZXgREOQ	PartyIdentification	Party Identification specified as a list of values per element.

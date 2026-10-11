@@ -1,0 +1,5 @@
+codeSetName	isoId	restrictionOf	code	enumName
+PaymentReceipt1Code	_939OkA5EEeenr-7g_0TYag	PaymentReceiptCode	PAYM	Payment
+PaymentReceipt1Code	_939OkA5EEeenr-7g_0TYag	PaymentReceiptCode	RECE	Receipt
+PaymentReceipt1Code	_939OkA5EEeenr-7g_0TYag	PaymentReceiptCode	NONE	None
+ExternalObligationSettlementMethod1Code	_vyt3YIQSEfCu2585jRNU3Q	ExternalObligationSettlementMethodCode	*EXTERNAL*	minLength=1 maxLength=4; ~2 codes (not enumerated)

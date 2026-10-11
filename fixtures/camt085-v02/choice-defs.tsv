@@ -1,0 +1,24 @@
+choice	memberId	memberName	text
+ProcessingStatus66Choice	_BvN4ceFUEeWIA4E9cYSxxQ	AcknowledgedAccepted	Instruction has been acknowledged by the account servicer.
+ProcessingStatus66Choice	_BvN4eeFUEeWIA4E9cYSxxQ	Repair	Instruction or request is accepted but in repair.
+ProcessingStatus66Choice	_BvN4geFUEeWIA4E9cYSxxQ	Cancelled	Instruction has been cancelled. The status on the processing of a cancellation request must be provided using a cancellation request report message.
+ProcessingStatus66Choice	_BvN4ieFUEeWIA4E9cYSxxQ	Proprietary	Specifies a choice of status for the processing of an intra-balance movement.
+RejectionOrRepairStatus38Choice	_WgqHEeFUEeWIA4E9cYSxxQ	NoSpecifiedReason	Indicates that there is no reason available or to report.
+RejectionOrRepairStatus38Choice	_WgqHGeFUEeWIA4E9cYSxxQ	Reason	Specifies the reason of the rejection or repair status.
+RejectionAndRepairReason32Choice	_WygsEeFUEeWIA4E9cYSxxQ	Code	Specifies the reason why the instruction/request has a repair or rejection status.
+RejectionAndRepairReason32Choice	_WygsGeFUEeWIA4E9cYSxxQ	Proprietary	Specifies the reason why the instruction/request has a repair or rejection status.
+CancellationStatus14Choice	_iFEwUTnuEeWfSKvvZlhRKg	NoSpecifiedReason	Indicates that there is no reason available or to report.
+CancellationStatus14Choice	_iFEwWTnuEeWfSKvvZlhRKg	Reason	Specifies the reason of the cancellation status.
+CancellationReason19Choice	_jGFhYTnuEeWfSKvvZlhRKg	Code	Specifies the reason why the related instruction is cancelled, or the related cancellation request is executed.
+CancellationReason19Choice	_jGFhaTnuEeWfSKvvZlhRKg	Proprietary	Specifies the reason why the related instruction is cancelled, or the related cancellation request is executed.
+SettlementStatus16Choice	_z2Uwszp4EeWVrPy0StzzSg	Pending	Instruction is pending. Settlement at the instructed settlement date is still possible.
+SettlementStatus16Choice	_z2Uwuzp4EeWVrPy0StzzSg	Failing	Instruction is failing. Settlement at the instructed settlement date is no longer possible.
+SettlementStatus16Choice	_z2Uwwzp4EeWVrPy0StzzSg	Proprietary	Proprietary status.
+PendingStatus36Choice	_kqRn0Tp5EeWVrPy0StzzSg	NoSpecifiedReason	Indicates that there is no reason available or to report.
+PendingStatus36Choice	_kqRn2Tp5EeWVrPy0StzzSg	Reason	Specifies the reason of the pending status.
+PendingReason26Choice	_lo5zQTp5EeWVrPy0StzzSg	Code	Specifies the reason why the instruction has a pending status.
+PendingReason26Choice	_lo5zSTp5EeWVrPy0StzzSg	Proprietary	Specifies the reason why the instruction has a pending status.
+FailingStatus9Choice	_2a7mATp5EeWVrPy0StzzSg	NoSpecifiedReason	Indicates that there is no reason available or to report.
+FailingStatus9Choice	_2a7mCTp5EeWVrPy0StzzSg	Reason	Specifies the reason of the failing status.
+FailingReason7Choice	_3ZkYgTp5EeWVrPy0StzzSg	Code	Specifies the reason why the instruction has a failing settlement status.
+FailingReason7Choice	_3ZkYiTp5EeWVrPy0StzzSg	Proprietary	Specifies the reason why the instruction has a failing settlement status.

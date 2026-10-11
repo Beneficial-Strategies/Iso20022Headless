@@ -1,0 +1,5 @@
+choice	memberId	memberName	text
+LimitReportOrError5Choice	_5UkNwTEyEe6g-ffJsqGiSA	BusinessReport	Reports on limits.
+LimitReportOrError5Choice	_5UkNwzEyEe6g-ffJsqGiSA	OperationalError	Indicates that an operational error has been issued during the processing of the related request.
+LimitOrError4Choice	_RixMQXhdEeidzqjNEfehPg	Limit	Requested information on the limit.
+LimitOrError4Choice	_RixMQ3hdEeidzqjNEfehPg	BusinessError	Reason the requested business information is not given.

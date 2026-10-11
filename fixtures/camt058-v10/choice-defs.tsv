@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+NotificationCancellationReason1Choice	_4g3B0yv_Eey3nPxW-HgLUw	Code	Reason for the cancellation request, in a coded form.
+NotificationCancellationReason1Choice	_4g3B1Sv_Eey3nPxW-HgLUw	Proprietary	Reason for the cancellation request, in a proprietary form.

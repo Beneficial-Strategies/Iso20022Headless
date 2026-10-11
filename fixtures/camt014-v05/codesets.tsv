@@ -1,0 +1,2 @@
+codeSetName	isoId	restrictionOf	code	enumName
+ExternalPaymentRole1Code	_ONNMYnhiEeidzqjNEfehPg	ExternalPaymentRoleCode	*EXTERNAL*	minLength=1 maxLength=4; ~6 codes (not enumerated)

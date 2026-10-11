@@ -1,0 +1,35 @@
+{
+  "identifier": "camt.059.001.09",
+  "name": "NotificationToReceiveStatusReportV09",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.059.001.09",
+  "bodyTag": "NtfctnToRcvStsRpt",
+  "out": "camt059",
+  "isoId": "5eba6a48-5393-475d-832a-e14fedd4397f",
+  "definition": "Scope|The NotificationToReceiveStatusReport message is sent by an account servicing institution to an account owner or to a party acting on the account owner's behalf. It is used to notify the account owner about the status of one or more expected payments that were advised in a previous NotificationToReceive message.|Usage|The NotificationToReceiveStatusReport message is sent in response to a NotificationToReceive message and can be used in either a direct or a relay scenario. It is used to advise the account owner of receipt of the funds as expected. It is also used to notify the account owner of non-receipt of funds or of discrepancies in the funds received.",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "a82708a5-76d7-4854-934e-f27c68adf4d9",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader121",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "OriginalNotificationAndStatus",
+      "isoId": "73d9d1a0-6572-4c91-99c8-7f1eaa4cfc9f",
+      "xmlTag": "OrgnlNtfctnAndSts",
+      "type": "OriginalNotification17",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "2be535a7-80a6-46ef-b365-943cb9309c13",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "identifier": "camt.085.001.02",
+  "name": "IntraBalanceMovementPendingReportV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.085.001.02",
+  "bodyTag": "IntraBalMvmntPdgRpt",
+  "out": "camt085",
+  "isoId": "_R3ODgzEZEe6kQ-WGAhcVPQ",
+  "definition": "This IntraBalanceMovementPendingReport message is sent from a settlement infrastructure to an account owner/request to report the intra-balance movement instructions, previously sent by the account owner, that have a pending status.||The message may also be used to: |-\tre-send a message sent by the account owner to the account servicer (the sub-function of the message is \"Duplicate\") |-\tprovide a third party with a copy of a message being sent by the account owner for information (the sub-function of the message is \"Copy\") |-\t- re-send to a third party a copy of a message being sent by the account owner for information (the sub-function of the message is \"Copy Duplicate\").",
+  "blocks": [
+    {
+      "name": "Identification",
+      "isoId": "_R3ODlTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Id",
+      "type": "DocumentIdentification51",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Pagination",
+      "isoId": "_R3ODlzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ReportGeneralDetails",
+      "isoId": "_R3ODmTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "RptGnlDtls",
+      "type": "IntraBalanceReport6",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CashAccount",
+      "isoId": "_R3ODmzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "CshAcct",
+      "type": "CashAccount40",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CashAccountOwner",
+      "isoId": "_R3ODnTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "CshAcctOwnr",
+      "type": "SystemPartyIdentification8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CashAccountServicer",
+      "isoId": "_R3OqETEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "CshAcctSvcr",
+      "type": "BranchAndFinancialInstitutionIdentification8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Movements",
+      "isoId": "_R3OqEzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Mvmnts",
+      "type": "IntraBalancePending5",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

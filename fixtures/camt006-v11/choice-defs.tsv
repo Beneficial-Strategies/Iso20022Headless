@@ -1,0 +1,19 @@
+choice	memberId	memberName	text
+TransactionReportOrError7Choice	_1paKoTEyEe6g-ffJsqGiSA	BusinessReport	Reports on payment transactions.
+TransactionReportOrError7Choice	_1paxsTEyEe6g-ffJsqGiSA	OperationalError	Indicates that an operational error has been issued during the processing of the related request.
+PaymentStatusCode6Choice	_phD1AxbzEeOy-PlRuFSUzQ	Pending	Qualifies further the pending status.
+PaymentStatusCode6Choice	_phD1BRbzEeOy-PlRuFSUzQ	Final	Qualifies further the final status.
+PaymentStatusCode6Choice	_phD1BxbzEeOy-PlRuFSUzQ	RTGS	Qualifies further the RTGS status.
+PaymentStatusCode6Choice	_phD1CRbzEeOy-PlRuFSUzQ	Settlement	Qualifies further the settlement status.
+PaymentStatusCode6Choice	_phD1CxbzEeOy-PlRuFSUzQ	Proprietary	Qualifies further the proprietary status.
+PaymentStatusReason1Choice	_QWOzsdEdEei798TPbKJMuw	Unmatched	Reason why the payment status is unmatched.
+PaymentStatusReason1Choice	_QWOzs9EdEei798TPbKJMuw	Cancelled	Reason why the payment status is cancelled.
+PaymentStatusReason1Choice	_QWOztdEdEei798TPbKJMuw	Suspended	Reason why the payment status is suspended.
+PaymentStatusReason1Choice	_QWOzt9EdEei798TPbKJMuw	PendingFailingSettlement	Reason why the payment status is pending (failing settlement).
+PaymentStatusReason1Choice	_QWOzudEdEei798TPbKJMuw	PendingSettlement	Reason why the payment status is pending (settlement).
+PaymentStatusReason1Choice	_QWOzu9EdEei798TPbKJMuw	ProprietaryRejection	Defines the reason that has been used by the system to reject the transaction.
+PaymentStatusReason1Choice	_QWOzvdEdEei798TPbKJMuw	Proprietary	Defines a free text proprietary reason.
+TransactionOrError6Choice	_11F2MTEyEe6g-ffJsqGiSA	Transaction	Requested information on the payment transaction.
+TransactionOrError6Choice	_11F2MzEyEe6g-ffJsqGiSA	BusinessError	Reason why the requested business information is not given.
+Amount3Choice	_750BhqMgEeCJ6YNENx4h-w_39483864	AmountWithCurrency	Number of monetary units specified in a currency where the unit of currency is explicit.
+Amount3Choice	_750Bh6MgEeCJ6YNENx4h-w_-1970472994	AmountWithoutCurrency	Number of monetary units specified in a currency where the unit of currency is implied by the context.

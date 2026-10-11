@@ -1,0 +1,7 @@
+choice	memberId	memberName	text
+LimitIdentification3Choice	_0WRHwTEyEe6g-ffJsqGiSA	Current	Identification of the current limit.
+LimitIdentification3Choice	_0WRHwzEyEe6g-ffJsqGiSA	Default	Identification of the default limit.
+LimitIdentification3Choice	_0WRHxTEyEe6g-ffJsqGiSA	AllCurrent	Identification of all current limits.
+LimitIdentification3Choice	_0WRHxzEyEe6g-ffJsqGiSA	AllDefault	Identification of all default limits.
+Amount4Choice	_wO4M1TH8Ee6mzvR3CHiUhA	IncreaseAmount	Amount by which the limit has increased.
+Amount4Choice	_wO4M1DH8Ee6mzvR3CHiUhA	DecreaseAmount	Amount by which the limit has decreased.

@@ -1,0 +1,43 @@
+{
+  "identifier": "camt.035.001.06",
+  "name": "ProprietaryFormatInvestigationV06",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.035.001.06",
+  "bodyTag": "PrtryFrmtInvstgtn",
+  "out": "camt035",
+  "isoId": "_R3SUcTEZEe6kQ-WGAhcVPQ",
+  "definition": "Scope|The ProprietaryFormatInvestigation message type is used by financial institutions, with their own offices, and/or with other financial institutions with which they have established bilateral agreements.|Usage|The user should ensure that an existing standard message cannot be used before using the proprietary message.|As defined in the scope, this ProprietaryFormatInvestigation message may only be used when bilaterally agreed.|It is used as an envelope for a non standard message and provides means to manage an exception or investigation which falls outside the scope or capability of any other formatted message.|The ProprietaryData element must contain a well formed XML document. This means XML special characters such as '<' must be used in a way that is consistent with XML well-formedness criteria.",
+  "blocks": [
+    {
+      "name": "Assignment",
+      "isoId": "_R3SUeTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Assgnmt",
+      "type": "CaseAssignment6",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Case",
+      "isoId": "_R3SUezEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Case",
+      "type": "Case6",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ProprietaryData",
+      "isoId": "_R3SUfTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "PrtryData",
+      "type": "ProprietaryData7",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3SUfzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

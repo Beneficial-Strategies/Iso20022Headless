@@ -1,0 +1,4 @@
+codeSet	isoId	text
+BalanceStatus1Code	_bkBa2Np-Ed-ak6NoX_4Aeg_1047073628	Specifies the balance of transactions with a certain status.
+ProcessingType1Code	_8JT2IaMgEeCJ6YNENx4h-w_-880711812	Specifies the type of processing restrictions the central system must apply.
+SystemBalanceType2Code	_8OFBV6MgEeCJ6YNENx4h-w_-736903366	Specifies the nature of the balance within a system processing the transactions.

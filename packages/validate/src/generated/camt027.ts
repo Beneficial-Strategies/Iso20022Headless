@@ -163,29 +163,18 @@ import {
   OriginalGroupInformation29Schema,
   UnderlyingStatementEntry3Schema,
   UnderlyingTransaction8ChoiceSchema,
+  SettlementInstruction16Schema,
+  ExternalAgentInstruction1CodeSchema,
+  InstructionForAssignee1Schema,
   Max350TextSchema,
   SupplementaryDataEnvelope1Schema,
   SupplementaryData1Schema,
   sharedTypeDescriptors,
 } from './shared.ts';
 
-export const SettlementInstruction16Schema = z.strictObject({
-  InstructingReimbursementAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
-  InstructingReimbursementAgentAccount: CashAccount40Schema.optional(),
-  InstructedReimbursementAgent: BranchAndFinancialInstitutionIdentification8Schema.optional(),
-  InstructedReimbursementAgentAccount: CashAccount40Schema.optional(),
-});
-
 export const MissingCover6Schema = z.strictObject({
   MissingCoverIndicator: YesNoIndicatorSchema,
   CoverCorrection: SettlementInstruction16Schema.optional(),
-});
-
-export const ExternalAgentInstruction1CodeSchema = textType({min: 1, max: 4});
-
-export const InstructionForAssignee1Schema = z.strictObject({
-  Code: ExternalAgentInstruction1CodeSchema.optional(),
-  InstructionInformation: Max140TextSchema.optional(),
 });
 
 export const ClaimNonReceiptV10Schema = z.strictObject({
@@ -200,21 +189,6 @@ export const ClaimNonReceiptV10Schema = z.strictObject({
 const f = (d: FieldDescriptor): FieldDescriptor => d;
 
 const ownTypeDescriptors: TypeDescriptors = {
-  "SettlementInstruction16": {
-    name: "SettlementInstruction16",
-    isoId: "_x_3RFTEyEe6g-ffJsqGiSA",
-    kind: "component",
-    fields: [
-      f({ name: "InstructingReimbursementAgent", isoId: "_yCIh9TEyEe6g-ffJsqGiSA", xmlTag: "InstgRmbrsmntAgt", displayName: displayName("InstructingReimbursementAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
-      f({ name: "InstructingReimbursementAgentAccount", isoId: "_yCIh9zEyEe6g-ffJsqGiSA", xmlTag: "InstgRmbrsmntAgtAcct", displayName: displayName("InstructingReimbursementAgentAccount"), kind: "component", type: "CashAccount40", required: false }),
-      f({ name: "InstructedReimbursementAgent", isoId: "_yCIh-TEyEe6g-ffJsqGiSA", xmlTag: "InstdRmbrsmntAgt", displayName: displayName("InstructedReimbursementAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
-      f({ name: "InstructedReimbursementAgentAccount", isoId: "_yCIh-zEyEe6g-ffJsqGiSA", xmlTag: "InstdRmbrsmntAgtAcct", displayName: displayName("InstructedReimbursementAgentAccount"), kind: "component", type: "CashAccount40", required: false }),
-    ],
-    rules: [
-      { name: "InstructingReimbursementAgentAccountRule", isoId: "_yCIh8TEyEe6g-ffJsqGiSA", text: "If InstructingReimbursementAgentAcount is present, then InstructingReimbursementAgent must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/InstructingReimbursementAgentAccount"}]},"onCondition":{"connector":"AND","rules":[{"op":"Absence","path":"/InstructingReimbursementAgent"}]}} },
-      { name: "InstructedReimbursementAgentAccountRule", isoId: "_yCIh8zEyEe6g-ffJsqGiSA", text: "If InstructedReimbursementAgentAccount is present, then InstructedReimbursementAgent must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/InstructedReimbursementAgentAccount"}]},"onCondition":{"connector":"AND","rules":[{"op":"Absence","path":"/InstructedReimbursementAgent"}]}} },
-    ],
-  },
   "MissingCover6": {
     name: "MissingCover6",
     isoId: "_x9c2QTEyEe6g-ffJsqGiSA",
@@ -222,23 +196,6 @@ const ownTypeDescriptors: TypeDescriptors = {
     fields: [
       f({ name: "MissingCoverIndicator", isoId: "_x_3RETEyEe6g-ffJsqGiSA", xmlTag: "MssngCoverInd", displayName: displayName("MissingCoverIndicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
       f({ name: "CoverCorrection", isoId: "_x_3REzEyEe6g-ffJsqGiSA", xmlTag: "CoverCrrctn", displayName: displayName("CoverCorrection"), kind: "component", type: "SettlementInstruction16", required: false }),
-    ],
-  },
-  "ExternalAgentInstruction1Code": {
-    name: "ExternalAgentInstruction1Code",
-    isoId: "_rLbaINA4EeeCAfThR1cp_Q",
-    kind: "code",
-    minLength: 1,
-    maxLength: 4,
-    external: true,
-  },
-  "InstructionForAssignee1": {
-    name: "InstructionForAssignee1",
-    isoId: "_cj1mAdA1EeeCAfThR1cp_Q",
-    kind: "component",
-    fields: [
-      f({ name: "Code", isoId: "_czjdAdA1EeeCAfThR1cp_Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalAgentInstruction1Code", required: false }),
-      f({ name: "InstructionInformation", isoId: "_czjdA9A1EeeCAfThR1cp_Q", xmlTag: "InstrInf", displayName: displayName("InstructionInformation"), kind: "text", type: "Max140Text", required: false }),
     ],
   },
   "ClaimNonReceiptV10": {
@@ -407,6 +364,9 @@ export const typeDescriptors: TypeDescriptors = {
   "OriginalGroupInformation29": sharedTypeDescriptors["OriginalGroupInformation29"]!,
   "UnderlyingStatementEntry3": sharedTypeDescriptors["UnderlyingStatementEntry3"]!,
   "UnderlyingTransaction8Choice": sharedTypeDescriptors["UnderlyingTransaction8Choice"]!,
+  "SettlementInstruction16": sharedTypeDescriptors["SettlementInstruction16"]!,
+  "ExternalAgentInstruction1Code": sharedTypeDescriptors["ExternalAgentInstruction1Code"]!,
+  "InstructionForAssignee1": sharedTypeDescriptors["InstructionForAssignee1"]!,
   "Max350Text": sharedTypeDescriptors["Max350Text"]!,
   "SupplementaryDataEnvelope1": sharedTypeDescriptors["SupplementaryDataEnvelope1"]!,
   "SupplementaryData1": sharedTypeDescriptors["SupplementaryData1"]!,

@@ -1,0 +1,4 @@
+codeSet	code	enumName	isoId	text
+CallIn1Code	CFAV	CallForAccountValue	_bXNt6dp-Ed-ak6NoX_4Aeg_556310168	Pay-in call is for account value.
+CallIn1Code	CFST	CallForSettlement	_bXW30Np-Ed-ak6NoX_4Aeg_600636833	Pay-in call is for settlement.
+CallIn1Code	CFCC	CallForCurrencyClose	_bXW30dp-Ed-ak6NoX_4Aeg_628342105	Pay-in call is for currency close.

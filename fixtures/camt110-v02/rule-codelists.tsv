@@ -1,0 +1,5 @@
+# Code sets referenced by constraint expressions (WithInList) that are not types in the message closures.
+# Source: ISO 20022 MCP resources (dictionary CodeSet details).
+codeSet	code	enumName
+ValidationRuleNarrative1Code	NARR	Narrative
+ValidationRuleRequestObjection1Code	RQOB	RequestObjection

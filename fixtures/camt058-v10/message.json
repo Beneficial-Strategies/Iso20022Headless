@@ -1,0 +1,43 @@
+{
+  "identifier": "camt.058.001.10",
+  "name": "NotificationToReceiveCancellationAdviceV10",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.058.001.10",
+  "bodyTag": "NtfctnToRcvCxlAdvc",
+  "out": "camt058",
+  "isoId": "05d5a4c4-d86a-4d7b-9798-da6635870e38",
+  "definition": "Scope|The NotificationToReceiveCancellationAdvice message is sent by an account owner or by a party acting on the account owner's behalf to one of the account owner's account servicing institutions. It is used to advise the account servicing institution about the cancellation of one or more notifications in a previous NotificationToReceive message.|Usage|The NotificationToReceiveCancellationAdvice message is used to advise the account servicing institution that the funds are no longer expected. The message can be used in either a direct or a relay scenario.",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "5c66fae5-98cb-4491-9df1-bea257c15ca2",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader117",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "OriginalNotification",
+      "isoId": "67f0915b-293b-43e2-aa00-1a7f0fc1e0ab",
+      "xmlTag": "OrgnlNtfctn",
+      "type": "OriginalNotification18",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CancellationReason",
+      "isoId": "7a7d8095-9993-4921-98d3-30c0d403630c",
+      "xmlTag": "CxlRsn",
+      "type": "NotificationCancellationReason2",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "18d1fb9f-88b7-4341-8217-af7097693777",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

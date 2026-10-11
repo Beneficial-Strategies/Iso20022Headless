@@ -1,0 +1,1187 @@
+{
+  "message": {
+    "identifier": "camt.065.001.01",
+    "name": "LimitUtilisationJournalReportV01",
+    "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.065.001.01",
+    "bodyTag": "LmtUtlstnJrnlRpt",
+    "out": "camt065",
+    "isoId": "_oeK84SPsEe-T5ffMy2iCzg",
+    "definition": "The LimitUtilisationJournalReport message is exchanged between the central system and a central securities depository or a directly connected system party (the central securities depository participant granted direct access, like a bank or central counter party) and is used to return information about the limit. Its purpose is to report information regarding the journal of transactions impacting the utilisation of limits that have been defined by the system participant.",
+    "blocks": [
+      {
+        "name": "MessageHeader",
+        "isoId": "_oeK87yPsEe-T5ffMy2iCzg",
+        "xmlTag": "MsgHdr",
+        "type": "MessageHeader12",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "name": "Pagination",
+        "isoId": "_oeLj9SPsEe-T5ffMy2iCzg",
+        "xmlTag": "Pgntn",
+        "type": "Pagination1",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "name": "ReportOrError",
+        "isoId": "_oeLj-SPsEe-T5ffMy2iCzg",
+        "xmlTag": "RptOrErr",
+        "type": "LimitJournalReportOrError7Choice",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "SupplementaryData",
+        "isoId": "_oeLj-yPsEe-T5ffMy2iCzg",
+        "xmlTag": "SplmtryData",
+        "type": "SupplementaryData1",
+        "min": 0,
+        "max": null
+      }
+    ]
+  },
+  "root": "LimitUtilisationJournalReportV01",
+  "order": [
+    "Max35Text",
+    "ISODateTime",
+    "OriginalBusinessInstruction1",
+    "MessageHeader12",
+    "Max5NumericText",
+    "YesNoIndicator",
+    "Pagination1",
+    "IBAN2007Identifier",
+    "Max34Text",
+    "ExternalAccountIdentification1Code",
+    "AccountSchemeName1Choice",
+    "GenericAccountIdentification1",
+    "AccountIdentification4Choice",
+    "LimitType4Code",
+    "ActiveCurrencyCode",
+    "AnyBICDec2014Identifier",
+    "GenericIdentification36",
+    "Max350Text",
+    "AddressType2Code",
+    "Max70Text",
+    "Max16Text",
+    "CountryCode",
+    "PostalAddress1",
+    "NameAndAddress5",
+    "PartyIdentification120Choice",
+    "LEIIdentifier",
+    "PartyIdentification136",
+    "SystemPartyIdentification8",
+    "LimitIdentification7",
+    "ImpliedCurrencyAndAmount",
+    "ActiveCurrencyAndAmount",
+    "Amount2Choice",
+    "CreditDebitCode",
+    "CreditDebitAmount1",
+    "LimitAmount1",
+    "ISODate",
+    "DateAndDateTime2Choice",
+    "Max500Text",
+    "LimitJournalEntry3",
+    "LimitJournal3",
+    "ExternalSystemErrorHandling1Code",
+    "ErrorHandling3Choice",
+    "Max140Text",
+    "ErrorHandling5",
+    "LimitJournalReportOrError8Choice",
+    "LimitJournalReport4",
+    "LimitJournalReportOrError7Choice",
+    "SupplementaryDataEnvelope1",
+    "SupplementaryData1",
+    "LimitUtilisationJournalReportV01"
+  ],
+  "types": {
+    "Max35Text": {
+      "name": "Max35Text",
+      "kind": "text",
+      "isoId": "_YW1tKdp-Ed-ak6NoX_4Aeg_1913463446",
+      "minLength": 1,
+      "maxLength": 35
+    },
+    "ISODateTime": {
+      "name": "ISODateTime",
+      "kind": "datetime",
+      "isoId": "_YW1tKtp-Ed-ak6NoX_4Aeg_-1624336183"
+    },
+    "OriginalBusinessInstruction1": {
+      "name": "OriginalBusinessInstruction1",
+      "isoId": "_Au3KEK0qEeijn5WVKzFWUw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "MessageIdentification",
+          "isoId": "_Au3KFK0qEeijn5WVKzFWUw",
+          "xmlTag": "MsgId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "MessageNameIdentification",
+          "isoId": "_Au3KE60qEeijn5WVKzFWUw",
+          "xmlTag": "MsgNmId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CreationDateTime",
+          "isoId": "_Au3KEa0qEeijn5WVKzFWUw",
+          "xmlTag": "CreDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "MessageHeader12": {
+      "name": "MessageHeader12",
+      "isoId": "_Hm0DQYtSEeih5rmIxWMzEw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "MessageIdentification",
+          "isoId": "_H3x3c4tSEeih5rmIxWMzEw",
+          "xmlTag": "MsgId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CreationDateTime",
+          "isoId": "_H3x3dYtSEeih5rmIxWMzEw",
+          "xmlTag": "CreDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "OriginalBusinessInstruction",
+          "isoId": "_H3x3eYtSEeih5rmIxWMzEw",
+          "xmlTag": "OrgnlBizInstr",
+          "type": "OriginalBusinessInstruction1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "Max5NumericText": {
+      "name": "Max5NumericText",
+      "kind": "text",
+      "isoId": "_YYU65Np-Ed-ak6NoX_4Aeg_1112774407",
+      "pattern": "[0-9]{1,5}"
+    },
+    "YesNoIndicator": {
+      "name": "YesNoIndicator",
+      "kind": "boolean",
+      "isoId": "_YXbjA9p-Ed-ak6NoX_4Aeg_-2040117978"
+    },
+    "Pagination1": {
+      "name": "Pagination1",
+      "isoId": "_xhMHQa6XEees_ufOy2ci-g",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "PageNumber",
+          "isoId": "_xsy6Ua6XEees_ufOy2ci-g",
+          "xmlTag": "PgNb",
+          "type": "Max5NumericText",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "LastPageIndicator",
+          "isoId": "_xsy6U66XEees_ufOy2ci-g",
+          "xmlTag": "LastPgInd",
+          "type": "YesNoIndicator",
+          "kind": "boolean",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "IBAN2007Identifier": {
+      "name": "IBAN2007Identifier",
+      "kind": "text",
+      "isoId": "_YYxm0dp-Ed-ak6NoX_4Aeg_1226525818",
+      "pattern": "[A-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}"
+    },
+    "Max34Text": {
+      "name": "Max34Text",
+      "kind": "text",
+      "isoId": "_YYn10tp-Ed-ak6NoX_4Aeg_1066097661",
+      "minLength": 1,
+      "maxLength": 34
+    },
+    "ExternalAccountIdentification1Code": {
+      "name": "ExternalAccountIdentification1Code",
+      "isoId": "_amL5ktp-Ed-ak6NoX_4Aeg_-2079691647",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "AccountSchemeName1Choice": {
+      "name": "AccountSchemeName1Choice",
+      "isoId": "_P_4pQNp-Ed-ak6NoX_4Aeg_-240227306",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_P_4pQdp-Ed-ak6NoX_4Aeg_191053818",
+          "xmlTag": "Cd",
+          "type": "ExternalAccountIdentification1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_P_4pQtp-Ed-ak6NoX_4Aeg_194748605",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "GenericAccountIdentification1": {
+      "name": "GenericAccountIdentification1",
+      "isoId": "_P_u4Rdp-Ed-ak6NoX_4Aeg_2078050796",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_P_u4Rtp-Ed-ak6NoX_4Aeg_2078970799",
+          "xmlTag": "Id",
+          "type": "Max34Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SchemeName",
+          "isoId": "_P_u4R9p-Ed-ak6NoX_4Aeg_-162653838",
+          "xmlTag": "SchmeNm",
+          "type": "AccountSchemeName1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "isoId": "_P_u4SNp-Ed-ak6NoX_4Aeg_-2119026269",
+          "xmlTag": "Issr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "AccountIdentification4Choice": {
+      "name": "AccountIdentification4Choice",
+      "isoId": "_Pdwzodp-Ed-ak6NoX_4Aeg_-1833658219",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "IBAN",
+          "isoId": "_Pdwzotp-Ed-ak6NoX_4Aeg_-1833658189",
+          "xmlTag": "IBAN",
+          "type": "IBAN2007Identifier",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Other",
+          "isoId": "_Pdwzo9p-Ed-ak6NoX_4Aeg_-1833657786",
+          "xmlTag": "Othr",
+          "type": "GenericAccountIdentification1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "LimitType4Code": {
+      "name": "LimitType4Code",
+      "isoId": "_jPdhsO5NEeCisYr99QEiWA_1476260679",
+      "kind": "code",
+      "options": [
+        {
+          "value": "EXGT",
+          "name": "ExternalGuarantee",
+          "isoId": "_jPdhse5NEeCisYr99QEiWA_-1234776902"
+        },
+        {
+          "value": "UCDT",
+          "name": "UnsecuredCredit",
+          "isoId": "_jPdhsu5NEeCisYr99QEiWA_-1814191119"
+        },
+        {
+          "value": "ACOL",
+          "name": "AutoCollateralisation",
+          "isoId": "_jPdhs-5NEeCisYr99QEiWA_-1669106499"
+        }
+      ]
+    },
+    "ActiveCurrencyCode": {
+      "name": "ActiveCurrencyCode",
+      "isoId": "_bqIp5tp-Ed-ak6NoX_4Aeg_-1326801359",
+      "kind": "code",
+      "pattern": "[A-Z]{3,3}"
+    },
+    "AnyBICDec2014Identifier": {
+      "name": "AnyBICDec2014Identifier",
+      "kind": "text",
+      "isoId": "_jp-90kI6EeirV6K70JJQ8Q",
+      "pattern": "[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}"
+    },
+    "GenericIdentification36": {
+      "name": "GenericIdentification36",
+      "isoId": "_ARhDQNokEeC60axPepSq7g_-809870990",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_ARhDQdokEeC60axPepSq7g_-923710056",
+          "xmlTag": "Id",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "isoId": "_ARqNMNokEeC60axPepSq7g_-1920782409",
+          "xmlTag": "Issr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SchemeName",
+          "isoId": "_ARqNMdokEeC60axPepSq7g_1669070272",
+          "xmlTag": "SchmeNm",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "Max350Text": {
+      "name": "Max350Text",
+      "kind": "text",
+      "isoId": "_YW1tKNp-Ed-ak6NoX_4Aeg_1778996852",
+      "minLength": 1,
+      "maxLength": 350
+    },
+    "AddressType2Code": {
+      "name": "AddressType2Code",
+      "isoId": "_bm2sYNp-Ed-ak6NoX_4Aeg_595056355",
+      "kind": "code",
+      "options": [
+        {
+          "value": "ADDR",
+          "name": "Postal",
+          "isoId": "_bm2sYdp-Ed-ak6NoX_4Aeg_878577717"
+        },
+        {
+          "value": "PBOX",
+          "name": "POBox",
+          "isoId": "_bm2sYtp-Ed-ak6NoX_4Aeg_878578132"
+        },
+        {
+          "value": "HOME",
+          "name": "Residential",
+          "isoId": "_bm2sY9p-Ed-ak6NoX_4Aeg_2106193409"
+        },
+        {
+          "value": "BIZZ",
+          "name": "Business",
+          "isoId": "_bm2sZNp-Ed-ak6NoX_4Aeg_2106193529"
+        },
+        {
+          "value": "MLTO",
+          "name": "MailTo",
+          "isoId": "_bm2sZdp-Ed-ak6NoX_4Aeg_2106193606"
+        },
+        {
+          "value": "DLVY",
+          "name": "DeliveryTo",
+          "isoId": "_bm2sZtp-Ed-ak6NoX_4Aeg_2106193624"
+        }
+      ]
+    },
+    "Max70Text": {
+      "name": "Max70Text",
+      "kind": "text",
+      "isoId": "_YX4O8Np-Ed-ak6NoX_4Aeg_-282989098",
+      "minLength": 1,
+      "maxLength": 70
+    },
+    "Max16Text": {
+      "name": "Max16Text",
+      "kind": "text",
+      "isoId": "_YW1tJ9p-Ed-ak6NoX_4Aeg_-185393449",
+      "minLength": 1,
+      "maxLength": 16
+    },
+    "CountryCode": {
+      "name": "CountryCode",
+      "isoId": "_bTfEctp-Ed-ak6NoX_4Aeg_-804722522",
+      "kind": "code",
+      "pattern": "[A-Z]{2,2}"
+    },
+    "PostalAddress1": {
+      "name": "PostalAddress1",
+      "isoId": "_QG4pKNp-Ed-ak6NoX_4Aeg_-839174134",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "AddressType",
+          "isoId": "_QG4pKdp-Ed-ak6NoX_4Aeg_-293371907",
+          "xmlTag": "AdrTp",
+          "type": "AddressType2Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "AddressLine",
+          "isoId": "_QG4pKtp-Ed-ak6NoX_4Aeg_-484540115",
+          "xmlTag": "AdrLine",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 0,
+          "max": 5
+        },
+        {
+          "name": "StreetName",
+          "isoId": "_QG4pK9p-Ed-ak6NoX_4Aeg_-1702876782",
+          "xmlTag": "StrtNm",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "BuildingNumber",
+          "isoId": "_QG4pLNp-Ed-ak6NoX_4Aeg_-1628995660",
+          "xmlTag": "BldgNb",
+          "type": "Max16Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PostCode",
+          "isoId": "_QHCaINp-Ed-ak6NoX_4Aeg_-14467862",
+          "xmlTag": "PstCd",
+          "type": "Max16Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TownName",
+          "isoId": "_QHCaIdp-Ed-ak6NoX_4Aeg_15083256",
+          "xmlTag": "TwnNm",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CountrySubDivision",
+          "isoId": "_QHCaItp-Ed-ak6NoX_4Aeg_44636499",
+          "xmlTag": "CtrySubDvsn",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Country",
+          "isoId": "_QHCaI9p-Ed-ak6NoX_4Aeg_-34786848",
+          "xmlTag": "Ctry",
+          "type": "CountryCode",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "NameAndAddress5": {
+      "name": "NameAndAddress5",
+      "isoId": "_PZcUWdp-Ed-ak6NoX_4Aeg_-1177692250",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Name",
+          "isoId": "_PZcUWtp-Ed-ak6NoX_4Aeg_-1177692231",
+          "xmlTag": "Nm",
+          "type": "Max350Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Address",
+          "isoId": "_PZleQNp-Ed-ak6NoX_4Aeg_670261447",
+          "xmlTag": "Adr",
+          "type": "PostalAddress1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "PartyIdentification120Choice": {
+      "name": "PartyIdentification120Choice",
+      "isoId": "_Vul5MbpYEeifFaUMRKyMMw",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "AnyBIC",
+          "isoId": "_V5dscbpYEeifFaUMRKyMMw",
+          "xmlTag": "AnyBIC",
+          "type": "AnyBICDec2014Identifier",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ProprietaryIdentification",
+          "isoId": "_V5dsc7pYEeifFaUMRKyMMw",
+          "xmlTag": "PrtryId",
+          "type": "GenericIdentification36",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "NameAndAddress",
+          "isoId": "_V5dsdbpYEeifFaUMRKyMMw",
+          "xmlTag": "NmAndAdr",
+          "type": "NameAndAddress5",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "LEIIdentifier": {
+      "name": "LEIIdentifier",
+      "kind": "text",
+      "isoId": "_h7Yn9yjAEeKnA5P_jl2DUw",
+      "pattern": "[A-Z0-9]{18,18}[0-9]{2,2}"
+    },
+    "PartyIdentification136": {
+      "name": "PartyIdentification136",
+      "isoId": "_Vht60bpYEeifFaUMRKyMMw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_VulSIbpYEeifFaUMRKyMMw",
+          "xmlTag": "Id",
+          "type": "PartyIdentification120Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "LEI",
+          "isoId": "_VulSI7pYEeifFaUMRKyMMw",
+          "xmlTag": "LEI",
+          "type": "LEIIdentifier",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "SystemPartyIdentification8": {
+      "name": "SystemPartyIdentification8",
+      "isoId": "_7KrUEVhLEeih3fUfzR38Ig",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_7VYvQVhLEeih3fUfzR38Ig",
+          "xmlTag": "Id",
+          "type": "PartyIdentification136",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ResponsiblePartyIdentification",
+          "isoId": "_7VYvQ1hLEeih3fUfzR38Ig",
+          "xmlTag": "RspnsblPtyId",
+          "type": "PartyIdentification136",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "LimitIdentification7": {
+      "name": "LimitIdentification7",
+      "isoId": "_DuabcWdmEemMLeaDfmIfIA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "AccountIdentification",
+          "isoId": "_D71zcWdmEemMLeaDfmIfIA",
+          "xmlTag": "AcctId",
+          "type": "AccountIdentification4Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Type",
+          "isoId": "_D71zc2dmEemMLeaDfmIfIA",
+          "xmlTag": "Tp",
+          "type": "LimitType4Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "LimitCurrency",
+          "isoId": "_D71zdWdmEemMLeaDfmIfIA",
+          "xmlTag": "LmtCcy",
+          "type": "ActiveCurrencyCode",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "AccountOwner",
+          "isoId": "_D71zd2dmEemMLeaDfmIfIA",
+          "xmlTag": "AcctOwnr",
+          "type": "PartyIdentification136",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "BilateralLimitCounterpartyIdentification",
+          "isoId": "_D71zeWdmEemMLeaDfmIfIA",
+          "xmlTag": "BilLmtCtrPtyId",
+          "type": "SystemPartyIdentification8",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "ImpliedCurrencyAndAmount": {
+      "name": "ImpliedCurrencyAndAmount",
+      "isoId": "_YXbjBNp-Ed-ak6NoX_4Aeg_-1934687468",
+      "kind": "number",
+      "totalDigits": 18,
+      "fractionDigits": 5,
+      "minInclusive": 0
+    },
+    "ActiveCurrencyAndAmount": {
+      "name": "ActiveCurrencyAndAmount",
+      "isoId": "_YX4O9tp-Ed-ak6NoX_4Aeg_-836081793",
+      "kind": "amount",
+      "pattern": "[A-Z]{3,3}",
+      "totalDigits": 18,
+      "fractionDigits": 5,
+      "minInclusive": 0
+    },
+    "Amount2Choice": {
+      "name": "Amount2Choice",
+      "isoId": "_75DzlKMgEeCJ6YNENx4h-w_890446015",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "AmountWithoutCurrency",
+          "isoId": "_75DzlaMgEeCJ6YNENx4h-w_-106626338",
+          "xmlTag": "AmtWthtCcy",
+          "type": "ImpliedCurrencyAndAmount",
+          "kind": "number",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "AmountWithCurrency",
+          "isoId": "_75DzlqMgEeCJ6YNENx4h-w_776606949",
+          "xmlTag": "AmtWthCcy",
+          "type": "ActiveCurrencyAndAmount",
+          "kind": "amount",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "CreditDebitCode": {
+      "name": "CreditDebitCode",
+      "isoId": "_bTfEdtp-Ed-ak6NoX_4Aeg_826087773",
+      "kind": "code",
+      "options": [
+        {
+          "value": "CRDT",
+          "name": "Credit",
+          "isoId": "_bTfEd9p-Ed-ak6NoX_4Aeg_-635010261"
+        },
+        {
+          "value": "DBIT",
+          "name": "Debit",
+          "isoId": "_bTfEeNp-Ed-ak6NoX_4Aeg_-610075163"
+        }
+      ]
+    },
+    "CreditDebitAmount1": {
+      "name": "CreditDebitAmount1",
+      "isoId": "_jO3r0e5NEeCisYr99QEiWA_1570893165",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Amount",
+          "isoId": "_jO3r0u5NEeCisYr99QEiWA_1555748542",
+          "xmlTag": "Amt",
+          "type": "Amount2Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CreditDebitIndicator",
+          "isoId": "_jO3r0-5NEeCisYr99QEiWA_-1868915142",
+          "xmlTag": "CdtDbtInd",
+          "type": "CreditDebitCode",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "LimitAmount1": {
+      "name": "LimitAmount1",
+      "isoId": "_jORO5O5NEeCisYr99QEiWA_-1135919214",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Amount",
+          "isoId": "_jOa_4O5NEeCisYr99QEiWA_-1878638285",
+          "xmlTag": "Amt",
+          "type": "CreditDebitAmount1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "UtilisationAmount",
+          "isoId": "_jOa_4e5NEeCisYr99QEiWA_-1682012024",
+          "xmlTag": "UtlstnAmt",
+          "type": "CreditDebitAmount1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "AvailableAmount",
+          "isoId": "_jOa_4u5NEeCisYr99QEiWA_1097770186",
+          "xmlTag": "AvlblAmt",
+          "type": "CreditDebitAmount1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ISODate": {
+      "name": "ISODate",
+      "kind": "date",
+      "isoId": "_YXSZFtp-Ed-ak6NoX_4Aeg_2032498111"
+    },
+    "DateAndDateTime2Choice": {
+      "name": "DateAndDateTime2Choice",
+      "isoId": "_fGuzgZlhEeeE1Ya-LgRsuQ",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Date",
+          "isoId": "_fPH6gZlhEeeE1Ya-LgRsuQ",
+          "xmlTag": "Dt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "DateTime",
+          "isoId": "_fPH6g5lhEeeE1Ya-LgRsuQ",
+          "xmlTag": "DtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Max500Text": {
+      "name": "Max500Text",
+      "kind": "text",
+      "isoId": "_YY7X0Np-Ed-ak6NoX_4Aeg_-1502136823",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "LimitJournalEntry3": {
+      "name": "LimitJournalEntry3",
+      "isoId": "_tr-04ZEhEe-Goq1fIU72qA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "JournalDate",
+          "isoId": "_tt6HgZEhEe-Goq1fIU72qA",
+          "xmlTag": "JrnlDt",
+          "type": "DateAndDateTime2Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CreditDebitIndicator",
+          "isoId": "_tt6Hg5EhEe-Goq1fIU72qA",
+          "xmlTag": "CdtDbtInd",
+          "type": "CreditDebitCode",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Amount",
+          "isoId": "_tt6HhZEhEe-Goq1fIU72qA",
+          "xmlTag": "Amt",
+          "type": "Amount2Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "MarketInfrastructureTransactionIdentification",
+          "isoId": "_yjTwNJEhEe-Goq1fIU72qA",
+          "xmlTag": "MktInfrstrctrTxId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TransactionIdentification",
+          "isoId": "_tt6HiZEhEe-Goq1fIU72qA",
+          "xmlTag": "TxId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "AccountServicerReference",
+          "isoId": "_tt6Hi5EhEe-Goq1fIU72qA",
+          "xmlTag": "AcctSvcrRef",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ProcessorTransactionIdentification",
+          "isoId": "_tt6HjZEhEe-Goq1fIU72qA",
+          "xmlTag": "PrcrTxId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "AdditionalEntryInformation",
+          "isoId": "_tt6HlZEhEe-Goq1fIU72qA",
+          "xmlTag": "AddtlNtryInf",
+          "type": "Max500Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "LimitJournal3": {
+      "name": "LimitJournal3",
+      "isoId": "_tqQ9pZEhEe-Goq1fIU72qA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Limit",
+          "isoId": "_tr-N0ZEhEe-Goq1fIU72qA",
+          "xmlTag": "Lmt",
+          "type": "LimitAmount1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "JournalActivityDate",
+          "isoId": "_tr-N05EhEe-Goq1fIU72qA",
+          "xmlTag": "JrnlActvtyDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "JournalEntry",
+          "isoId": "_tr-N1ZEhEe-Goq1fIU72qA",
+          "xmlTag": "JrnlNtry",
+          "type": "LimitJournalEntry3",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    },
+    "ExternalSystemErrorHandling1Code": {
+      "name": "ExternalSystemErrorHandling1Code",
+      "isoId": "_Y2fRgnhdEeidzqjNEfehPg",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "ErrorHandling3Choice": {
+      "name": "ErrorHandling3Choice",
+      "isoId": "_RA_79XhdEeidzqjNEfehPg",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_RN4hYXhdEeidzqjNEfehPg",
+          "xmlTag": "Cd",
+          "type": "ExternalSystemErrorHandling1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_RN4hY3hdEeidzqjNEfehPg",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Max140Text": {
+      "name": "Max140Text",
+      "kind": "text",
+      "isoId": "_YXlUAtp-Ed-ak6NoX_4Aeg_2103068114",
+      "minLength": 1,
+      "maxLength": 140
+    },
+    "ErrorHandling5": {
+      "name": "ErrorHandling5",
+      "isoId": "_Q2IvxXhdEeidzqjNEfehPg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Error",
+          "isoId": "_RA_78XhdEeidzqjNEfehPg",
+          "xmlTag": "Err",
+          "type": "ErrorHandling3Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Description",
+          "isoId": "_RA_783hdEeidzqjNEfehPg",
+          "xmlTag": "Desc",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "LimitJournalReportOrError8Choice": {
+      "name": "LimitJournalReportOrError8Choice",
+      "isoId": "_toRZlZEhEe-Goq1fIU72qA",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "LimitJournal",
+          "isoId": "_tqQ9oZEhEe-Goq1fIU72qA",
+          "xmlTag": "LmtJrnl",
+          "type": "LimitJournal3",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "BusinessError",
+          "isoId": "_tqQ9o5EhEe-Goq1fIU72qA",
+          "xmlTag": "BizErr",
+          "type": "ErrorHandling5",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "LimitJournalReport4": {
+      "name": "LimitJournalReport4",
+      "isoId": "_tmqQAZEhEe-Goq1fIU72qA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "LimitIdentification",
+          "isoId": "_toRZkZEhEe-Goq1fIU72qA",
+          "xmlTag": "LmtId",
+          "type": "LimitIdentification7",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "LimitReport",
+          "isoId": "_toRZk5EhEe-Goq1fIU72qA",
+          "xmlTag": "LmtRpt",
+          "type": "LimitJournalReportOrError8Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "LimitJournalReportOrError7Choice": {
+      "name": "LimitJournalReportOrError7Choice",
+      "isoId": "_r1B6UZEhEe-Goq1fIU72qA",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "BusinessReport",
+          "isoId": "_tmpB4ZEhEe-Goq1fIU72qA",
+          "xmlTag": "BizRpt",
+          "type": "LimitJournalReport4",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "OperationalError",
+          "isoId": "_tmpB45EhEe-Goq1fIU72qA",
+          "xmlTag": "OprlErr",
+          "type": "ErrorHandling5",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "SupplementaryDataEnvelope1": {
+      "name": "SupplementaryDataEnvelope1",
+      "kind": "any",
+      "isoId": "_Kz9KwJDrEeSLQ8ob-qtemg"
+    },
+    "SupplementaryData1": {
+      "name": "SupplementaryData1",
+      "isoId": "_Qn0zC9p-Ed-ak6NoX_4Aeg_468227563",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "PlaceAndName",
+          "isoId": "_Qn988Np-Ed-ak6NoX_4Aeg_354388497",
+          "xmlTag": "PlcAndNm",
+          "type": "Max350Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Envelope",
+          "isoId": "_Qn988dp-Ed-ak6NoX_4Aeg_-642683856",
+          "xmlTag": "Envlp",
+          "type": "SupplementaryDataEnvelope1",
+          "kind": "any",
+          "min": 1,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "SupplementaryDataRule",
+          "isoId": "_Qn988tp-Ed-ak6NoX_4Aeg_-1492355109",
+          "text": "This component may not be used without the explicit approval of a SEG and submission to the RA of ISO 20022 compliant structure(s) to be used in the Envelope element."
+        }
+      ]
+    },
+    "LimitUtilisationJournalReportV01": {
+      "name": "LimitUtilisationJournalReportV01",
+      "isoId": "_oeK84SPsEe-T5ffMy2iCzg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "MessageHeader",
+          "isoId": "_oeK87yPsEe-T5ffMy2iCzg",
+          "xmlTag": "MsgHdr",
+          "type": "MessageHeader12",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Pagination",
+          "isoId": "_oeLj9SPsEe-T5ffMy2iCzg",
+          "xmlTag": "Pgntn",
+          "type": "Pagination1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ReportOrError",
+          "isoId": "_oeLj-SPsEe-T5ffMy2iCzg",
+          "xmlTag": "RptOrErr",
+          "type": "LimitJournalReportOrError7Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SupplementaryData",
+          "isoId": "_oeLj-yPsEe-T5ffMy2iCzg",
+          "xmlTag": "SplmtryData",
+          "type": "SupplementaryData1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    }
+  }
+}
