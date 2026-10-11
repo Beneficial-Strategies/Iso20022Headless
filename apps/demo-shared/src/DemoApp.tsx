@@ -73,7 +73,7 @@ function AreaPicker({ value, onChange }: { value: string; onChange: (code: strin
         id="area-picker"
         ariaLabel={t('areaLabel')}
         value={value}
-        options={areaIndex.map((a) => ({
+        options={[...areaIndex].sort((a, b) => a.code.localeCompare(b.code)).map((a) => ({
           value: a.code,
           label: a.code,
           description:
