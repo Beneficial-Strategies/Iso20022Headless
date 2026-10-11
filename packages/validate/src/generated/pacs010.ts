@@ -348,7 +348,7 @@ export const schemas = {
 export const pacs010Message = {
   identifier: "pacs.010.001.06",
   namespace: "urn:iso:std:iso:20022:tech:xsd:pacs.010.001.06",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "FIDrctDbt",
   rootType: "FinancialInstitutionDirectDebitV06",
   schema: FinancialInstitutionDirectDebitV06Schema,

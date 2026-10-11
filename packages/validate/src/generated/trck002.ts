@@ -506,7 +506,7 @@ export const schemas = {
 export const trck002Message = {
   identifier: "trck.002.001.04",
   namespace: "urn:iso:std:iso:20022:tech:xsd:trck.002.001.04",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "PmtStsTrckrRpt",
   rootType: "PaymentStatusTrackerReportV04",
   schema: PaymentStatusTrackerReportV04Schema,

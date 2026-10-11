@@ -555,7 +555,7 @@ export const schemas = {
 export const camt055Message = {
   identifier: "camt.055.001.13",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.055.001.13",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "CstmrPmtCxlReq",
   rootType: "CustomerPaymentCancellationRequestV13",
   schema: CustomerPaymentCancellationRequestV13Schema,

@@ -159,7 +159,7 @@ export const schemas = {
 export const admi007Message = {
   identifier: "admi.007.001.01",
   namespace: "urn:iso:std:iso:20022:tech:xsd:admi.007.001.01",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "RctAck",
   rootType: "ReceiptAcknowledgementV01",
   schema: ReceiptAcknowledgementV01Schema,

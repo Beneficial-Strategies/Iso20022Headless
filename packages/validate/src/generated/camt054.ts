@@ -810,7 +810,7 @@ export const schemas = {
 export const camt054Message = {
   identifier: "camt.054.001.14",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.054.001.14",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "BkToCstmrDbtCdtNtfctn",
   rootType: "BankToCustomerDebitCreditNotificationV14",
   schema: BankToCustomerDebitCreditNotificationV14Schema,

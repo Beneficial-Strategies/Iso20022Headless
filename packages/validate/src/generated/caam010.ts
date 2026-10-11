@@ -333,7 +333,7 @@ export const schemas = {
 export const caam010Message = {
   identifier: "caam.010.001.03",
   namespace: "urn:iso:std:iso:20022:tech:xsd:caam.010.001.03",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "ATMRcncltnAck",
   rootType: "ATMReconciliationAcknowledgementV03",
   schema: ATMReconciliationAcknowledgementV03Schema,

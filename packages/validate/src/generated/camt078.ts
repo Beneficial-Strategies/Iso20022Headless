@@ -403,7 +403,7 @@ export const schemas = {
 export const camt078Message = {
   identifier: "camt.078.001.02",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.078.001.02",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "IntraBalMvmntQry",
   rootType: "IntraBalanceMovementQueryV02",
   schema: IntraBalanceMovementQueryV02Schema,

@@ -188,7 +188,7 @@ export const schemas = {
 export const camt035Message = {
   identifier: "camt.035.001.06",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.035.001.06",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "PrtryFrmtInvstgtn",
   rootType: "ProprietaryFormatInvestigationV06",
   schema: ProprietaryFormatInvestigationV06Schema,

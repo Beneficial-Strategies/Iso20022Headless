@@ -587,7 +587,7 @@ export const schemas = {
 export const pacs007Message = {
   identifier: "pacs.007.001.14",
   namespace: "urn:iso:std:iso:20022:tech:xsd:pacs.007.001.14",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "FIToFIPmtRvsl",
   rootType: "FIToFIPaymentReversalV14",
   schema: FIToFIPaymentReversalV14Schema,

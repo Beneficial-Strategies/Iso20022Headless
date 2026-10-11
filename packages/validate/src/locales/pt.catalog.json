@@ -33273,12 +33273,26 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "codeSet:_Ybm4ZNp-Ed-ak6NoX_4Aeg_1557209084": {
+      "text": "Especifica os níveis de prioridade da BusinessMessage.|As diferentes prioridades dependem normalmente do utilizador, do serviço ou da implementação. A semântica dos diferentes valores de uma mensagem (ou conjunto de mensagens) tem de ser definida pela comunidade de utilizadores relevante (SEG).",
+      "source": "277253c2268c",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "codeSet:_YbT9dNp-Ed-ak6NoX_4Aeg_698889928": {
       "text": "Especifica o método de transferência que será utilizado para transferir os fundos.",
       "source": "690f3600db63",
       "status": "machine",
       "by": "assistant",
       "date": "2026-10-08"
+    },
+    "codeSet:_YghNkNp-Ed-ak6NoX_4Aeg_728068642": {
+      "text": "Lista de códigos com os nomes dos blocos de código UNICODE, tal como especificado em http://unicode.org/Public/UNIDATA/Blocks.txt.",
+      "source": "554f62d13eea",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
     },
     "codeSet:_YiT9VNp-Ed-ak6NoX_4Aeg_-1322025669": {
       "text": "Especifica o período relativo ao pagamento do imposto.",
@@ -37277,9 +37291,100 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "field:_2cgbgTEyEe6g-ffJsqGiSA": {
+      "text": "Contém o conjunto de carateres dos elementos de texto utilizados na mensagem comercial.",
+      "source": "f84d724ce1c6",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2cgbgzEyEe6g-ffJsqGiSA": {
+      "text": "O MessagingEndpoint emissor que criou esta mensagem comercial para o MessagingEndpoint recetor que a irá processar.||Note-se que o MessagingEndpoint emissor pode ser diferente do endereço de envio eventualmente constante do cabeçalho de transporte (tal como definido na camada de transporte).",
+      "source": "bee533ed2b02",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2cgbhTEyEe6g-ffJsqGiSA": {
+      "text": "O MessagingEndpoint designado pelo MessagingEndpoint emissor como destinatário que processará, em última instância, esta mensagem comercial.||Note-se que o MessagingEndpoint recetor pode ser diferente do endereço de receção eventualmente constante do cabeçalho de transporte (tal como definido na camada de transporte).",
+      "source": "2ea420427ea0",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2cgbhzEyEe6g-ffJsqGiSA": {
+      "text": "Identifica de forma inequívoca a mensagem comercial perante o MessagingEndpoint que a criou.",
+      "source": "c1736b6c809b",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2cgbiTEyEe6g-ffJsqGiSA": {
+      "text": "O identificador da definição de mensagem da instância de mensagem comercial a que esta instância de Business Application Header está associada.",
+      "source": "a98ff7af6e4d",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "field:_2CH_cfSTEe2NguPP5QspEw": {
       "text": "Fornece informações detalhadas sobre o motivo do estado.",
       "source": "6a2d6ab47b21",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2chCkTEyEe6g-ffJsqGiSA": {
+      "text": "Especifica o serviço comercial acordado entre os dois MessagingEndpoints, segundo cujas regras esta mensagem comercial é trocada.|A utilizar quando existe uma escolha entre serviços de processamento ou níveis de serviço de processamento.||Exemplo: |«marketx.hvps.01» e «marketx.xbdr.01» poderiam ser utilizados para indicar que as mensagens associadas estão sujeitas a diferentes níveis de processamento para pagamentos nacionais de elevado montante e para pagamentos transfronteiriços dentro da mesma prática de mercado.",
+      "source": "9f963282e17c",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2chCkzEyEe6g-ffJsqGiSA": {
+      "text": "Especifica a prática de mercado a que a mensagem está conforme. As práticas de mercado são um conjunto de regras acordadas entre as partes que restringem a utilização das mensagens para obter melhores taxas de STP (Straight Through Processing).|Uma especificação de prática de mercado pode também alargar a especificação da mensagem subjacente através de extensões ou de dados suplementares dessa mensagem.",
+      "source": "c4d3803e3329",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2chClTEyEe6g-ffJsqGiSA": {
+      "text": "Data e hora de criação desta mensagem comercial (cabeçalho).|Nota: as horas têm de ser normalizadas, com a notação «Z».",
+      "source": "d07a3c724cbc",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2chClzEyEe6g-ffJsqGiSA": {
+      "text": "Data e hora de processamento indicadas pelo emissor para o recetor da mensagem comercial. Esta data pode ser diferente da data e hora fornecidas em CreationDate.||Utilização: a prática de mercado ou um acordo bilateral devem especificar como este elemento deve ser utilizado.",
+      "source": "e665c5d63e73",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2chCmTEyEe6g-ffJsqGiSA": {
+      "text": "Indica se a mensagem é uma cópia, um duplicado ou uma cópia de um duplicado de uma mensagem ISO 20022 enviada anteriormente.",
+      "source": "c1956a4bb262",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2chCmzEyEe6g-ffJsqGiSA": {
+      "text": "Indicador de se a mensagem comercial trocada entre os MessagingEndpoints é possivelmente um duplicado. |Se o MessagingEndpoint recetor não recebeu o original, esta mensagem comercial deve ser processada como se fosse o original. ||Se o MessagingEndpoint recetor recebeu o original, deve realizar as ações necessárias para evitar processar novamente esta mensagem comercial.||Isto garante um comportamento idempotente a nível comercial.||NOTA (NOTE): no FIX designa-se «PossResend»; é um reenvio a nível aplicacional e não uma retransmissão a nível de rede.",
+      "source": "a9e7f659d3ee",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2chCnTEyEe6g-ffJsqGiSA": {
+      "text": "Indicação relativa da precedência de processamento da mensagem face a um (conjunto de) mensagens comerciais com prioridades atribuídas.",
+      "source": "a4fc8e228b6f",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2chCnzEyEe6g-ffJsqGiSA": {
+      "text": "Contém a assinatura digital da entidade comercial autorizada a assinar esta mensagem comercial.",
+      "source": "a3b9b0418eaa",
       "status": "machine",
       "by": "assistant",
       "date": "2026-10-11"
@@ -48911,6 +49016,13 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "field:_Dr2RoMifEei73Ywzx0CAAg": {
+      "text": "Nome do registo de especificações de implementação em que é mantida a especificação de implementação da mensagem ISO 20022.|Por exemplo, «MyStandards».",
+      "source": "525d9b509138",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "field:_ds6esJUiEemC09f0MxYkRg": {
       "text": "Estado da pessoa politicamente exposta expresso sob a forma de código.",
       "source": "c93d082ec4bd",
@@ -51770,6 +51882,13 @@
     "field:_GK8iNxQMEeKCyZtSz_i3FA": {
       "text": "Grupo de atividade económica, por exemplo, um código emitido por um regulador.",
       "source": "41b5c1d306b4",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_GKeQMMifEei73Ywzx0CAAg": {
+      "text": "Identificador que identifica de forma inequívoca, no registo de especificações de implementação, a especificação de implementação a que a mensagem ISO 20022 está conforme. Pode ser feito através de um URN. Pode também conter um número de versão ou uma data.|Por exemplo, «2018-01-01 – Version 2» ou «urn:uuid:6e8bc430-9c3a-11d9-9669-0800200c9a66».",
+      "source": "eddf7e3c7988",
       "status": "machine",
       "by": "assistant",
       "date": "2026-10-11"
@@ -64570,6 +64689,76 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "field:_R26hAzEZEe6kQ-WGAhcVPQ": {
+      "text": "Contém o conjunto de carateres dos elementos de texto utilizados na mensagem comercial.",
+      "source": "f84d724ce1c6",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_R26hCTEZEe6kQ-WGAhcVPQ": {
+      "text": "Identifica de forma inequívoca a mensagem comercial perante o MessagingEndpoint que a criou.",
+      "source": "c1736b6c809b",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_R26hCzEZEe6kQ-WGAhcVPQ": {
+      "text": "O identificador da definição de mensagem da instância de mensagem comercial a que esta instância de Business Application Header está associada.",
+      "source": "a98ff7af6e4d",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_R26hDTEZEe6kQ-WGAhcVPQ": {
+      "text": "Especifica o serviço comercial acordado entre os dois MessagingEndpoints, segundo cujas regras esta mensagem comercial é trocada.|A utilizar quando existe uma escolha entre serviços de processamento ou níveis de serviço de processamento.||Exemplo: |«marketx.hvps.01» e «marketx.xbdr.01» poderiam ser utilizados para indicar que as mensagens associadas estão sujeitas a diferentes níveis de processamento para pagamentos nacionais de elevado montante e para pagamentos transfronteiriços dentro da mesma prática de mercado.",
+      "source": "9f963282e17c",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_R26hETEZEe6kQ-WGAhcVPQ": {
+      "text": "Data e hora de criação desta mensagem comercial (cabeçalho).",
+      "source": "a75ba5b598cb",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_R26hEzEZEe6kQ-WGAhcVPQ": {
+      "text": "Data e hora de processamento indicadas pelo emissor para o recetor da mensagem comercial. Esta data pode ser diferente da data e hora fornecidas em CreationDate.||Utilização: a prática de mercado ou um acordo bilateral devem especificar como este elemento deve ser utilizado.",
+      "source": "e665c5d63e73",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_R26hFTEZEe6kQ-WGAhcVPQ": {
+      "text": "Indica se a mensagem é uma cópia, um duplicado ou uma cópia de um duplicado de uma mensagem ISO 20022 enviada anteriormente.",
+      "source": "c1956a4bb262",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_R26hFzEZEe6kQ-WGAhcVPQ": {
+      "text": "Indicador de se a mensagem comercial trocada entre os MessagingEndpoints é possivelmente um duplicado. |Se o MessagingEndpoint recetor não recebeu o original, esta mensagem comercial deve ser processada como se fosse o original. ||Se o MessagingEndpoint recetor recebeu o original, deve realizar as ações necessárias para evitar processar novamente esta mensagem comercial.||Isto garante um comportamento idempotente a nível comercial.||NOTA (NOTE): no FIX designa-se «PossResend»; é um reenvio a nível aplicacional e não uma retransmissão a nível de rede.",
+      "source": "a9e7f659d3ee",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_R26hGTEZEe6kQ-WGAhcVPQ": {
+      "text": "Indicação relativa da precedência de processamento da mensagem face a um (conjunto de) mensagens comerciais com prioridades atribuídas.",
+      "source": "a4fc8e228b6f",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_R26hGzEZEe6kQ-WGAhcVPQ": {
+      "text": "Contém a assinatura digital da entidade comercial autorizada a assinar esta mensagem comercial.",
+      "source": "a3b9b0418eaa",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "field:_R2DXgCDVEeWCLu74WLgP4w": {
       "text": "Tipo de consolidação expresso sob a forma de código proprietário.",
       "source": "0d0bbcd1faeb",
@@ -77247,6 +77436,20 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "field:_zKWuQTEyEe6g-ffJsqGiSA": {
+      "text": "Identificação de uma pessoa ou de uma organização.",
+      "source": "084d7c1b720c",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_zKWuQzEyEe6g-ffJsqGiSA": {
+      "text": "Identificação de uma instituição financeira.",
+      "source": "00e5d1e40126",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "field:_ZlQ600KTEeWuG5hmkcJWSQ": {
       "text": "Morada da organização.",
       "source": "0225537ca627",
@@ -87369,9 +87572,100 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "label:_2cgbgTEyEe6g-ffJsqGiSA": {
+      "text": "Conjunto de carateres",
+      "source": "346e389250d5",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2cgbgzEyEe6g-ffJsqGiSA": {
+      "text": "De",
+      "source": "218197693424",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2cgbhTEyEe6g-ffJsqGiSA": {
+      "text": "Até",
+      "source": "f4b06ef6d3c8",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2cgbhzEyEe6g-ffJsqGiSA": {
+      "text": "Identificador da mensagem comercial",
+      "source": "715daddda862",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2cgbiTEyEe6g-ffJsqGiSA": {
+      "text": "Identificador da definição da mensagem",
+      "source": "3a2ab707d4c5",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "label:_2CH_cfSTEe2NguPP5QspEw": {
       "text": "Informações do motivo do estado",
       "source": "24797e30d9a8",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2chCkTEyEe6g-ffJsqGiSA": {
+      "text": "Serviço comercial",
+      "source": "bbf2fea9f907",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2chCkzEyEe6g-ffJsqGiSA": {
+      "text": "Prática de mercado",
+      "source": "eef77b2c75c5",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2chClTEyEe6g-ffJsqGiSA": {
+      "text": "Data de criação",
+      "source": "6fdde7a67c6a",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2chClzEyEe6g-ffJsqGiSA": {
+      "text": "Data de processamento comercial",
+      "source": "84d567192582",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2chCmTEyEe6g-ffJsqGiSA": {
+      "text": "Cópia duplicada",
+      "source": "3e113570838e",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2chCmzEyEe6g-ffJsqGiSA": {
+      "text": "Possível duplicado",
+      "source": "e19361dec37c",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2chCnTEyEe6g-ffJsqGiSA": {
+      "text": "Prioridade",
+      "source": "d60dbba07922",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2chCnzEyEe6g-ffJsqGiSA": {
+      "text": "Assinatura",
+      "source": "f1a73e2204a1",
       "status": "machine",
       "by": "assistant",
       "date": "2026-10-11"
@@ -99332,6 +99626,13 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "label:_Dr2RoMifEei73Ywzx0CAAg": {
+      "text": "Registo",
+      "source": "05c2e3277039",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "label:_ds6esJUiEemC09f0MxYkRg": {
       "text": "Código",
       "source": "340f463033e0",
@@ -102387,6 +102688,13 @@
     "label:_GK8iNxQMEeKCyZtSz_i3FA": {
       "text": "Grupo",
       "source": "34ca0e766088",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_GKeQMMifEei73Ywzx0CAAg": {
+      "text": "Identificação",
+      "source": "91f606b32dfc",
       "status": "machine",
       "by": "assistant",
       "date": "2026-10-11"
@@ -116667,6 +116975,104 @@
     "label:_R2-yqzEZEe6kQ-WGAhcVPQ": {
       "text": "Dados suplementares",
       "source": "7fc6fcfe6a59",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hAzEZEe6kQ-WGAhcVPQ": {
+      "text": "Conjunto de carateres",
+      "source": "346e389250d5",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hBTEZEe6kQ-WGAhcVPQ": {
+      "text": "De",
+      "source": "218197693424",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hBzEZEe6kQ-WGAhcVPQ": {
+      "text": "Até",
+      "source": "f4b06ef6d3c8",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hCTEZEe6kQ-WGAhcVPQ": {
+      "text": "Identificador da mensagem comercial",
+      "source": "715daddda862",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hCzEZEe6kQ-WGAhcVPQ": {
+      "text": "Identificador da definição da mensagem",
+      "source": "3a2ab707d4c5",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hDTEZEe6kQ-WGAhcVPQ": {
+      "text": "Serviço comercial",
+      "source": "bbf2fea9f907",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hDzEZEe6kQ-WGAhcVPQ": {
+      "text": "Prática de mercado",
+      "source": "eef77b2c75c5",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hETEZEe6kQ-WGAhcVPQ": {
+      "text": "Data de criação",
+      "source": "6fdde7a67c6a",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hEzEZEe6kQ-WGAhcVPQ": {
+      "text": "Data de processamento comercial",
+      "source": "84d567192582",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hFTEZEe6kQ-WGAhcVPQ": {
+      "text": "Cópia duplicada",
+      "source": "3e113570838e",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hFzEZEe6kQ-WGAhcVPQ": {
+      "text": "Possível duplicado",
+      "source": "e19361dec37c",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hGTEZEe6kQ-WGAhcVPQ": {
+      "text": "Prioridade",
+      "source": "d60dbba07922",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hGzEZEe6kQ-WGAhcVPQ": {
+      "text": "Assinatura",
+      "source": "f1a73e2204a1",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hHTEZEe6kQ-WGAhcVPQ": {
+      "text": "Relacionado",
+      "source": "45ca56d179d4",
       "status": "machine",
       "by": "assistant",
       "date": "2026-10-11"
@@ -131966,6 +132372,20 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "label:_zKWuQTEyEe6g-ffJsqGiSA": {
+      "text": "Identificação da organização",
+      "source": "1227def9c4b4",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_zKWuQzEyEe6g-ffJsqGiSA": {
+      "text": "Identificação da instituição financeira",
+      "source": "eb820a0b08c2",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "label:_ZlQ600KTEeWuG5hmkcJWSQ": {
       "text": "Endereço postal",
       "source": "3cc0461f3e0a",
@@ -141759,6 +142179,13 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "rule:_R26hATEZEe6kQ-WGAhcVPQ": {
+      "text": "Related TEM DE (MUST) conter os elementos BusinessMessageHeader relevantes da BusinessMessage com a qual esta BusinessMessage se relaciona.||Se CopyDuplicate estiver presente, Related TEM DE (MUST) estar presente.",
+      "source": "ac3a0c76cda8",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "rule:_R3LnITEZEe6kQ-WGAhcVPQ": {
       "text": "O bloco SupplementaryData ao nível da mensagem não pode ser utilizado para fornecer informações adicionais sobre uma operação. O elemento SupplementaryData ao nível da operação deve ser utilizado para esse efeito.",
       "source": "000430c8aa47",
@@ -145406,6 +145833,13 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "type:_2aMHUTEyEe6g-ffJsqGiSA": {
+      "text": "Especifica o Business Application Header da mensagem comercial.|Pode ser utilizado ao responder a uma consulta; também ao cancelar ou alterar.",
+      "source": "999c2f3fc2a6",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "type:_2AnwzTEyEe6g-ffJsqGiSA": {
       "text": "Identifica uma instrução de pagamento através de um conjunto de características que permitem a sua identificação inequívoca.",
       "source": "e5a3928b288d",
@@ -146256,6 +146690,13 @@
     "type:_6PphwJqlEeGSON8vddiWzQ_1042088657": {
       "text": "Especifica o qualificador de um subserviço.",
       "source": "fcce522b865e",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "type:_6Pu8gMieEei73Ywzx0CAAg": {
+      "text": "Identifica a especificação de implementação a que a mensagem ISO 20022 está conforme.",
+      "source": "129e0e395f70",
       "status": "machine",
       "by": "assistant",
       "date": "2026-10-11"
@@ -151699,6 +152140,13 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "type:_R2558TEZEe6kQ-WGAhcVPQ": {
+      "text": "A camada comercial lida com mensagens comerciais. O comportamento das mensagens comerciais é plenamente descrito pela transação comercial, e a sua estrutura pelas definições de mensagem e pelas regras de mensagem, regras e práticas de mercado associadas, todas registadas no repositório ISO 20022.|Para cada evento comercial, isto é, cada interação de uma transação comercial, o MessagingEndpoint emissor cria uma única nova mensagem comercial (com o seu Business Application Header). Uma mensagem comercial obedece aos seguintes princípios:|\" Uma mensagem comercial (e o seu Business Application Header) não deve conter informações sobre o sistema de transporte de mensagens nem sobre a mecânica ou o mecanismo de envio, transporte ou receção de mensagens. |\" Uma mensagem comercial deve ser compreensível fora do contexto da mensagem de transporte. Ou seja, não deve exigir conhecimento da mensagem de transporte para ser entendida.|\" Uma mensagem comercial pode conter cabeçalhos, rodapés e envelopes com significado para o negócio. Quando presentes, são tratados como qualquer outro conteúdo da mensagem, o que significa que são considerados parte da definição da mensagem comercial e, como tal, farão parte do repositório ISO 20022.|\" Uma mensagem comercial refere-se aos atores comerciais pelo seu nome. Cada instância de um ator comercial tem um nome. O ator comercial não deve ser referido na camada de transporte.|A utilização específica deste BusinessMessageHeader pode ser definida pelo SEG relevante.",
+      "source": "0194a0dedfc7",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "type:_R27vLTEZEe6kQ-WGAhcVPQ": {
       "text": "A mensagem AccountAdditionalInformationRequest é enviada por uma instituição financeira a uma organização no âmbito do processo de manutenção. Esta mensagem é enviada em resposta a uma mensagem de pedido de manutenção da organização, se o conteúdo comercial for válido mas forem necessárias informações adicionais.",
       "source": "1c94839fc2c7",
@@ -155268,6 +155716,13 @@
       "status": "machine",
       "by": "assistant",
       "date": "2026-10-08"
+    },
+    "type:_zIGEcTEyEe6g-ffJsqGiSA": {
+      "text": "Identificação de uma pessoa, de uma organização ou de uma instituição financeira.",
+      "source": "b97f79be5b34",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
     },
     "type:_zKj4MCCgEeWJd9HF2tO7BA": {
       "text": "Escolha de formatos para o estado civil.",

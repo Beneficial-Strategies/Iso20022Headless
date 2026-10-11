@@ -264,7 +264,7 @@ export const schemas = {
 export const caam006Message = {
   identifier: "caam.006.001.02",
   namespace: "urn:iso:std:iso:20022:tech:xsd:caam.006.001.02",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "ATMDgnstcRspn",
   rootType: "ATMDiagnosticResponseV02",
   schema: ATMDiagnosticResponseV02Schema,

@@ -79,7 +79,7 @@ export const schemas = {
 export const admi009Message = {
   identifier: "admi.009.001.02",
   namespace: "urn:iso:std:iso:20022:tech:xsd:admi.009.001.02",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "StatcDataReq",
   rootType: "StaticDataRequestV02",
   schema: StaticDataRequestV02Schema,

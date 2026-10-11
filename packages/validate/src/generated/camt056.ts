@@ -527,7 +527,7 @@ export const schemas = {
 export const camt056Message = {
   identifier: "camt.056.001.12",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.056.001.12",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "FIToFIPmtCxlReq",
   rootType: "FIToFIPaymentCancellationRequestV12",
   schema: FIToFIPaymentCancellationRequestV12Schema,

@@ -547,7 +547,7 @@ export const schemas = {
 export const camt087Message = {
   identifier: "camt.087.001.09",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.087.001.09",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "ReqToModfyPmt",
   rootType: "RequestToModifyPaymentV09",
   schema: RequestToModifyPaymentV09Schema,

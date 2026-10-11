@@ -362,7 +362,7 @@ export const schemas = {
 export const camt003Message = {
   identifier: "camt.003.001.08",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.003.001.08",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "GetAcct",
   rootType: "GetAccountV08",
   schema: GetAccountV08Schema,

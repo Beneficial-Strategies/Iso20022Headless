@@ -159,6 +159,7 @@ export * from './generated/camt113.ts';
 export * from './generated/camt114.ts';
 export * from './generated/camt115.ts';
 export * from './generated/camt116.ts';
+export * from './generated/head001.ts';
 export * from './generated/pacs002.ts';
 export * from './generated/pacs003.ts';
 export * from './generated/pacs004.ts';

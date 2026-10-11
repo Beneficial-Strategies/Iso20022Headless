@@ -1000,7 +1000,7 @@ export const schemas = {
 export const acmt002Message = {
   identifier: "acmt.002.001.08",
   namespace: "urn:iso:std:iso:20022:tech:xsd:acmt.002.001.08",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "AcctDtlsConf",
   rootType: "AccountDetailsConfirmationV08",
   schema: AccountDetailsConfirmationV08Schema,

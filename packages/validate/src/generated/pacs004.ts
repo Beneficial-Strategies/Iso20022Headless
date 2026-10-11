@@ -908,7 +908,7 @@ export const schemas = {
 export const pacs004Message = {
   identifier: "pacs.004.001.15",
   namespace: "urn:iso:std:iso:20022:tech:xsd:pacs.004.001.15",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "PmtRtr",
   rootType: "PaymentReturnV15",
   schema: PaymentReturnV15Schema,

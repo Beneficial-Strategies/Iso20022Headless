@@ -194,7 +194,7 @@ export const schemas = {
 export const camt007Message = {
   identifier: "camt.007.001.10",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.007.001.10",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "ModfyTx",
   rootType: "ModifyTransactionV10",
   schema: ModifyTransactionV10Schema,

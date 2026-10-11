@@ -274,7 +274,7 @@ export const schemas = {
 export const camt107Message = {
   identifier: "camt.107.001.02",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.107.001.02",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "ChqPresntmntNtfctn",
   rootType: "ChequePresentmentNotificationV02",
   schema: ChequePresentmentNotificationV02Schema,

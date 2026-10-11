@@ -460,7 +460,7 @@ export const schemas = {
 export const acmt032Message = {
   identifier: "acmt.032.001.06",
   namespace: "urn:iso:std:iso:20022:tech:xsd:acmt.032.001.06",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "AcctSwtchBalTrfAck",
   rootType: "AccountSwitchBalanceTransferAcknowledgementV06",
   schema: AccountSwitchBalanceTransferAcknowledgementV06Schema,

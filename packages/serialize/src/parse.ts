@@ -44,7 +44,16 @@ export interface DocumentInfo {
   namespace?: string;
 }
 
+/**
+ * Most messages are `<Document><BodyTag>…</BodyTag></Document>`. A few are their own root: the Business Application Header is
+ * `<AppHdr>…</AppHdr>`, with its fields directly inside. The definition says so by giving the same name as root and body tag.
+ */
+export const isOwnRoot = (message: { rootTag: string; bodyTag: string }): boolean => message.rootTag === message.bodyTag;
+
 const MAX_ISSUES = 200;
+const ISO_NAMESPACE_PREFIX = 'urn:iso:std:iso:20022:tech:xsd:';
+/** Root elements of the messages that are their own root (no `Document`): ISO JSON has no namespace to tell them from a fragment by. */
+const OWN_ROOTS = ['AppHdr'];
 
 interface Ctx {
   types: TypeDescriptors;
@@ -120,10 +129,11 @@ export function parseXmlMessage(message: MessageDefinition, text: string): Parse
   const doc = readXml(text);
   if (!doc.ok) return doc;
   if (doc.root.name !== message.rootTag) return { ok: false, error: { code: 'wrong_root', path: '', detail: doc.root.name } };
-  const body = doc.root.children.find((x) => x.name === message.bodyTag);
+  const own = isOwnRoot(message);
+  const body = own ? doc.root : doc.root.children.find((x) => x.name === message.bodyTag);
   if (!body) return { ok: false, error: { code: 'wrong_body', path: '', detail: doc.root.children[0]?.name ?? '' } };
   const c: Ctx = { types: message.typeDescriptors, issues: [] };
-  for (const extra of doc.root.children.filter((x) => x !== body)) note(c, 'unknown_element', extra.name, extra.name);
+  if (!own) for (const extra of doc.root.children.filter((x) => x !== body)) note(c, 'unknown_element', extra.name, extra.name);
   const values = xmlChildren(c, c.types[message.rootType]!, body, '');
   return { ok: true, values: hydrate(c.types, message.rootType, values), issues: c.issues };
 }
@@ -147,6 +157,8 @@ export function inspectXml(text: string): { ok: true; info: DocumentInfo } | { o
     if (!body) return { ok: false, error: { code: 'wrong_body', path: '', detail: '' } };
     return { ok: true, info: { format: 'xml', kind: 'document', name: body.name, ...(doc.root.namespace !== undefined ? { namespace: doc.root.namespace } : {}) } };
   }
+  // a message that is its own root (the Business Application Header) declares its message namespace; a fragment never does
+  if (doc.root.namespace?.startsWith(ISO_NAMESPACE_PREFIX)) return { ok: true, info: { format: 'xml', kind: 'document', name: doc.root.name, namespace: doc.root.namespace } };
   return { ok: true, info: { format: 'xml', kind: 'fragment', name: doc.root.name } };
 }
 
@@ -221,10 +233,11 @@ export function parseIsoJsonMessage(message: MessageDefinition, text: string): P
   if (!j.ok) return j;
   const doc = j.value[message.rootTag];
   if (!isObj(doc)) return { ok: false, error: { code: 'wrong_root', path: '', detail: Object.keys(j.value)[0] ?? '' } };
-  const body = doc[message.bodyTag];
+  const own = isOwnRoot(message);
+  const body = own ? doc : doc[message.bodyTag];
   if (!isObj(body)) return { ok: false, error: { code: 'wrong_body', path: '', detail: Object.keys(doc)[0] ?? '' } };
   const c: Ctx = { types: message.typeDescriptors, issues: [] };
-  for (const extra of Object.keys(doc).filter((k) => k !== message.bodyTag)) note(c, 'unknown_element', extra, extra);
+  if (!own) for (const extra of Object.keys(doc).filter((k) => k !== message.bodyTag)) note(c, 'unknown_element', extra, extra);
   const values = jsonChildren(c, c.types[message.rootType]!, body, '');
   return { ok: true, values: hydrate(c.types, message.rootType, values), issues: c.issues };
 }
@@ -251,6 +264,7 @@ export function inspectJson(text: string): { ok: true; info: DocumentInfo } | { 
     if (!body) return { ok: false, error: { code: 'wrong_body', path: '', detail: '' } };
     return { ok: true, info: { format: 'json', kind: 'document', name: body } };
   }
+  if (keys.length === 1 && OWN_ROOTS.includes(keys[0]!) && isObj(j.value[keys[0]!])) return { ok: true, info: { format: 'json', kind: 'document', name: keys[0]! } };
   if (keys.length === 1 && isObj(j.value[keys[0]!])) return { ok: true, info: { format: 'json', kind: 'fragment', name: keys[0]! } };
   return { ok: false, error: { code: 'wrong_root', path: '', detail: keys[0] ?? '' } };
 }

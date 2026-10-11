@@ -33273,12 +33273,26 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "codeSet:_Ybm4ZNp-Ed-ak6NoX_4Aeg_1557209084": {
+      "text": "Legt die Prioritätsstufen für die BusinessMessage fest.|Die verschiedenen Prioritäten hängen typischerweise vom Benutzer, vom Dienst oder von der Implementierung ab. Die Semantik der verschiedenen Werte für eine Nachricht (bzw. einen Nachrichtensatz) muss von der jeweiligen Nutzergemeinschaft (SEG) festgelegt werden.",
+      "source": "277253c2268c",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "codeSet:_YbT9dNp-Ed-ak6NoX_4Aeg_698889928": {
       "text": "Gibt die Übertragungsmethode an, die zur Übertragung des Bargelds verwendet wird.",
       "source": "690f3600db63",
       "status": "machine",
       "by": "assistant",
       "date": "2026-10-08"
+    },
+    "codeSet:_YghNkNp-Ed-ak6NoX_4Aeg_728068642": {
+      "text": "Codeliste mit den Namen der UNICODE-Codeblöcke, wie unter http://unicode.org/Public/UNIDATA/Blocks.txt festgelegt.",
+      "source": "554f62d13eea",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
     },
     "codeSet:_YiT9VNp-Ed-ak6NoX_4Aeg_-1322025669": {
       "text": "Gibt den Zeitraum an, auf den sich die Steuerzahlung bezieht.",
@@ -37277,9 +37291,100 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "field:_2cgbgTEyEe6g-ffJsqGiSA": {
+      "text": "Enthält den Zeichensatz der textbasierten Elemente, die in der Geschäftsnachricht verwendet werden.",
+      "source": "f84d724ce1c6",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2cgbgzEyEe6g-ffJsqGiSA": {
+      "text": "Der sendende MessagingEndpoint, der diese Geschäftsnachricht für den empfangenden MessagingEndpoint erstellt hat, der sie verarbeiten wird.||Hinweis: Der sendende MessagingEndpoint kann sich von der im Transport-Header möglicherweise enthaltenen Absenderadresse (wie in der Transportschicht definiert) unterscheiden.",
+      "source": "bee533ed2b02",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2cgbhTEyEe6g-ffJsqGiSA": {
+      "text": "Der vom sendenden MessagingEndpoint bestimmte MessagingEndpoint, der als Empfänger diese Geschäftsnachricht letztlich verarbeiten wird.||Hinweis: Der empfangende MessagingEndpoint kann sich von der im Transport-Header möglicherweise enthaltenen Empfangsadresse (wie in der Transportschicht definiert) unterscheiden.",
+      "source": "2ea420427ea0",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2cgbhzEyEe6g-ffJsqGiSA": {
+      "text": "Identifiziert die Geschäftsnachricht gegenüber dem MessagingEndpoint, der sie erstellt hat, eindeutig.",
+      "source": "c1736b6c809b",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2cgbiTEyEe6g-ffJsqGiSA": {
+      "text": "Die Kennung der Nachrichtendefinition der Instanz der Geschäftsnachricht, der diese Instanz des Business Application Headers zugeordnet ist.",
+      "source": "a98ff7af6e4d",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "field:_2CH_cfSTEe2NguPP5QspEw": {
       "text": "Enthält detaillierte Angaben zum Statusgrund.",
       "source": "6a2d6ab47b21",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2chCkTEyEe6g-ffJsqGiSA": {
+      "text": "Legt den zwischen den beiden MessagingEndpoints vereinbarten Geschäftsdienst fest, nach dessen Regeln diese Geschäftsnachricht ausgetauscht wird.|Zu verwenden, wenn es eine Auswahl zwischen Verarbeitungsdiensten oder Verarbeitungsdienstgüten gibt.||Beispiel: |„marketx.hvps.01“ und „marketx.xbdr.01“ könnten verwendet werden, um anzuzeigen, dass die zugehörigen Nachrichten innerhalb derselben Marktpraxis unterschiedlichen Verarbeitungsstufen für inländische Großbetragszahlungen gegenüber grenzüberschreitenden Zahlungen unterliegen.",
+      "source": "9f963282e17c",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2chCkzEyEe6g-ffJsqGiSA": {
+      "text": "Legt die Marktpraxis fest, der die Nachricht entspricht. Marktpraxen sind ein zwischen den Parteien vereinbartes Regelwerk, das die Verwendung der Nachrichten einschränkt, um bessere STP-Quoten (Straight Through Processing) zu erreichen.|Eine Marktpraxis-Spezifikation kann die zugrunde liegende Nachrichtenspezifikation auch durch Erweiterungen oder ergänzende Daten dieser Nachricht erweitern.",
+      "source": "c4d3803e3329",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2chClTEyEe6g-ffJsqGiSA": {
+      "text": "Datum und Uhrzeit der Erstellung dieser Geschäftsnachricht (des Headers).|Hinweis: Zeiten müssen mit der Kennzeichnung „Z“ normalisiert werden.",
+      "source": "d07a3c724cbc",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2chClzEyEe6g-ffJsqGiSA": {
+      "text": "Vom Absender für den Empfänger der Geschäftsnachricht angegebener Verarbeitungszeitpunkt. Dieses Datum kann vom in CreationDate angegebenen Datum und der Uhrzeit abweichen.||Verwendung: Marktpraxis oder bilaterale Vereinbarung sollten festlegen, wie dieses Element zu verwenden ist.",
+      "source": "e665c5d63e73",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2chCmTEyEe6g-ffJsqGiSA": {
+      "text": "Gibt an, ob die Nachricht eine Kopie, ein Duplikat oder eine Kopie eines Duplikats einer zuvor gesendeten ISO-20022-Nachricht ist.",
+      "source": "c1956a4bb262",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2chCmzEyEe6g-ffJsqGiSA": {
+      "text": "Kennzeichen, ob die zwischen den MessagingEndpoints ausgetauschte Geschäftsnachricht möglicherweise ein Duplikat ist. |Hat der empfangende MessagingEndpoint das Original nicht erhalten, ist diese Geschäftsnachricht so zu verarbeiten, als wäre sie das Original. ||Hat der empfangende MessagingEndpoint das Original erhalten, muss er die nötigen Maßnahmen ergreifen, um diese Geschäftsnachricht nicht erneut zu verarbeiten.||Dies gewährleistet ein geschäftlich idempotentes Verhalten.||HINWEIS (NOTE): In FIX heißt dies „PossResend“; es ist eine erneute Sendung auf Anwendungsebene, keine Wiederübertragung auf Netzwerkebene.",
+      "source": "a9e7f659d3ee",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2chCnTEyEe6g-ffJsqGiSA": {
+      "text": "Relative Angabe der Verarbeitungsreihenfolge der Nachricht gegenüber einer (Menge von) Geschäftsnachricht(en) mit zugewiesenen Prioritäten.",
+      "source": "a4fc8e228b6f",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_2chCnzEyEe6g-ffJsqGiSA": {
+      "text": "Enthält die digitale Signatur der Geschäftseinheit, die zum Signieren dieser Geschäftsnachricht berechtigt ist.",
+      "source": "a3b9b0418eaa",
       "status": "machine",
       "by": "assistant",
       "date": "2026-10-11"
@@ -48911,6 +49016,13 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "field:_Dr2RoMifEei73Ywzx0CAAg": {
+      "text": "Name des Registers für Implementierungsspezifikationen, in dem die Implementierungsspezifikation der ISO-20022-Nachricht geführt wird.|Zum Beispiel „MyStandards“.",
+      "source": "525d9b509138",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "field:_ds6esJUiEemC09f0MxYkRg": {
       "text": "Als Code ausgedrückter Status der politisch exponierten Person.",
       "source": "c93d082ec4bd",
@@ -51770,6 +51882,13 @@
     "field:_GK8iNxQMEeKCyZtSz_i3FA": {
       "text": "Gruppe der Wirtschaftstätigkeit, beispielsweise ein von einer Aufsichtsbehörde vergebener Code.",
       "source": "41b5c1d306b4",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_GKeQMMifEei73Ywzx0CAAg": {
+      "text": "Kennung, die innerhalb des Registers für Implementierungsspezifikationen die Implementierungsspezifikation eindeutig identifiziert, der die ISO-20022-Nachricht entspricht. Dies kann über eine URN erfolgen. Sie kann auch eine Versionsnummer oder ein Datum enthalten.|Zum Beispiel „2018-01-01 – Version 2“ oder „urn:uuid:6e8bc430-9c3a-11d9-9669-0800200c9a66“.",
+      "source": "eddf7e3c7988",
       "status": "machine",
       "by": "assistant",
       "date": "2026-10-11"
@@ -64570,6 +64689,76 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "field:_R26hAzEZEe6kQ-WGAhcVPQ": {
+      "text": "Enthält den Zeichensatz der textbasierten Elemente, die in der Geschäftsnachricht verwendet werden.",
+      "source": "f84d724ce1c6",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_R26hCTEZEe6kQ-WGAhcVPQ": {
+      "text": "Identifiziert die Geschäftsnachricht gegenüber dem MessagingEndpoint, der sie erstellt hat, eindeutig.",
+      "source": "c1736b6c809b",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_R26hCzEZEe6kQ-WGAhcVPQ": {
+      "text": "Die Kennung der Nachrichtendefinition der Instanz der Geschäftsnachricht, der diese Instanz des Business Application Headers zugeordnet ist.",
+      "source": "a98ff7af6e4d",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_R26hDTEZEe6kQ-WGAhcVPQ": {
+      "text": "Legt den zwischen den beiden MessagingEndpoints vereinbarten Geschäftsdienst fest, nach dessen Regeln diese Geschäftsnachricht ausgetauscht wird.|Zu verwenden, wenn es eine Auswahl zwischen Verarbeitungsdiensten oder Verarbeitungsdienstgüten gibt.||Beispiel: |„marketx.hvps.01“ und „marketx.xbdr.01“ könnten verwendet werden, um anzuzeigen, dass die zugehörigen Nachrichten innerhalb derselben Marktpraxis unterschiedlichen Verarbeitungsstufen für inländische Großbetragszahlungen gegenüber grenzüberschreitenden Zahlungen unterliegen.",
+      "source": "9f963282e17c",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_R26hETEZEe6kQ-WGAhcVPQ": {
+      "text": "Datum und Uhrzeit der Erstellung dieser Geschäftsnachricht (des Headers).",
+      "source": "a75ba5b598cb",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_R26hEzEZEe6kQ-WGAhcVPQ": {
+      "text": "Vom Absender für den Empfänger der Geschäftsnachricht angegebener Verarbeitungszeitpunkt. Dieses Datum kann vom in CreationDate angegebenen Datum und der Uhrzeit abweichen.||Verwendung: Marktpraxis oder bilaterale Vereinbarung sollten festlegen, wie dieses Element zu verwenden ist.",
+      "source": "e665c5d63e73",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_R26hFTEZEe6kQ-WGAhcVPQ": {
+      "text": "Gibt an, ob die Nachricht eine Kopie, ein Duplikat oder eine Kopie eines Duplikats einer zuvor gesendeten ISO-20022-Nachricht ist.",
+      "source": "c1956a4bb262",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_R26hFzEZEe6kQ-WGAhcVPQ": {
+      "text": "Kennzeichen, ob die zwischen den MessagingEndpoints ausgetauschte Geschäftsnachricht möglicherweise ein Duplikat ist. |Hat der empfangende MessagingEndpoint das Original nicht erhalten, ist diese Geschäftsnachricht so zu verarbeiten, als wäre sie das Original. ||Hat der empfangende MessagingEndpoint das Original erhalten, muss er die nötigen Maßnahmen ergreifen, um diese Geschäftsnachricht nicht erneut zu verarbeiten.||Dies gewährleistet ein geschäftlich idempotentes Verhalten.||HINWEIS (NOTE): In FIX heißt dies „PossResend“; es ist eine erneute Sendung auf Anwendungsebene, keine Wiederübertragung auf Netzwerkebene.",
+      "source": "a9e7f659d3ee",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_R26hGTEZEe6kQ-WGAhcVPQ": {
+      "text": "Relative Angabe der Verarbeitungsreihenfolge der Nachricht gegenüber einer (Menge von) Geschäftsnachricht(en) mit zugewiesenen Prioritäten.",
+      "source": "a4fc8e228b6f",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_R26hGzEZEe6kQ-WGAhcVPQ": {
+      "text": "Enthält die digitale Signatur der Geschäftseinheit, die zum Signieren dieser Geschäftsnachricht berechtigt ist.",
+      "source": "a3b9b0418eaa",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "field:_R2DXgCDVEeWCLu74WLgP4w": {
       "text": "Als proprietärer Code ausgedrückte Konsolidierungsart.",
       "source": "0d0bbcd1faeb",
@@ -77247,6 +77436,20 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "field:_zKWuQTEyEe6g-ffJsqGiSA": {
+      "text": "Identifikation einer Person oder einer Organisation.",
+      "source": "084d7c1b720c",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "field:_zKWuQzEyEe6g-ffJsqGiSA": {
+      "text": "Identifikation eines Finanzinstituts.",
+      "source": "00e5d1e40126",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "field:_ZlQ600KTEeWuG5hmkcJWSQ": {
       "text": "Adresse der Organisation.",
       "source": "0225537ca627",
@@ -87369,9 +87572,100 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "label:_2cgbgTEyEe6g-ffJsqGiSA": {
+      "text": "Zeichensatz",
+      "source": "346e389250d5",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2cgbgzEyEe6g-ffJsqGiSA": {
+      "text": "Von",
+      "source": "218197693424",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2cgbhTEyEe6g-ffJsqGiSA": {
+      "text": "Bis",
+      "source": "f4b06ef6d3c8",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2cgbhzEyEe6g-ffJsqGiSA": {
+      "text": "Kennung der Geschäftsnachricht",
+      "source": "715daddda862",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2cgbiTEyEe6g-ffJsqGiSA": {
+      "text": "Kennung der Nachrichtendefinition",
+      "source": "3a2ab707d4c5",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "label:_2CH_cfSTEe2NguPP5QspEw": {
       "text": "Informationen zum Statusgrund",
       "source": "24797e30d9a8",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2chCkTEyEe6g-ffJsqGiSA": {
+      "text": "Geschäftsdienst",
+      "source": "bbf2fea9f907",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2chCkzEyEe6g-ffJsqGiSA": {
+      "text": "Marktpraxis",
+      "source": "eef77b2c75c5",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2chClTEyEe6g-ffJsqGiSA": {
+      "text": "Erstellungsdatum",
+      "source": "6fdde7a67c6a",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2chClzEyEe6g-ffJsqGiSA": {
+      "text": "Geschäftliches Verarbeitungsdatum",
+      "source": "84d567192582",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2chCmTEyEe6g-ffJsqGiSA": {
+      "text": "Kopie/Duplikat",
+      "source": "3e113570838e",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2chCmzEyEe6g-ffJsqGiSA": {
+      "text": "Mögliches Duplikat",
+      "source": "e19361dec37c",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2chCnTEyEe6g-ffJsqGiSA": {
+      "text": "Priorität",
+      "source": "d60dbba07922",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_2chCnzEyEe6g-ffJsqGiSA": {
+      "text": "Signatur",
+      "source": "f1a73e2204a1",
       "status": "machine",
       "by": "assistant",
       "date": "2026-10-11"
@@ -99332,6 +99626,13 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "label:_Dr2RoMifEei73Ywzx0CAAg": {
+      "text": "Register",
+      "source": "05c2e3277039",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "label:_ds6esJUiEemC09f0MxYkRg": {
       "text": "Code",
       "source": "340f463033e0",
@@ -102387,6 +102688,13 @@
     "label:_GK8iNxQMEeKCyZtSz_i3FA": {
       "text": "Gruppe",
       "source": "34ca0e766088",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_GKeQMMifEei73Ywzx0CAAg": {
+      "text": "Identifikation",
+      "source": "91f606b32dfc",
       "status": "machine",
       "by": "assistant",
       "date": "2026-10-11"
@@ -116667,6 +116975,104 @@
     "label:_R2-yqzEZEe6kQ-WGAhcVPQ": {
       "text": "Ergänzende Daten",
       "source": "7fc6fcfe6a59",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hAzEZEe6kQ-WGAhcVPQ": {
+      "text": "Zeichensatz",
+      "source": "346e389250d5",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hBTEZEe6kQ-WGAhcVPQ": {
+      "text": "Von",
+      "source": "218197693424",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hBzEZEe6kQ-WGAhcVPQ": {
+      "text": "Bis",
+      "source": "f4b06ef6d3c8",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hCTEZEe6kQ-WGAhcVPQ": {
+      "text": "Kennung der Geschäftsnachricht",
+      "source": "715daddda862",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hCzEZEe6kQ-WGAhcVPQ": {
+      "text": "Kennung der Nachrichtendefinition",
+      "source": "3a2ab707d4c5",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hDTEZEe6kQ-WGAhcVPQ": {
+      "text": "Geschäftsdienst",
+      "source": "bbf2fea9f907",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hDzEZEe6kQ-WGAhcVPQ": {
+      "text": "Marktpraxis",
+      "source": "eef77b2c75c5",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hETEZEe6kQ-WGAhcVPQ": {
+      "text": "Erstellungsdatum",
+      "source": "6fdde7a67c6a",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hEzEZEe6kQ-WGAhcVPQ": {
+      "text": "Geschäftliches Verarbeitungsdatum",
+      "source": "84d567192582",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hFTEZEe6kQ-WGAhcVPQ": {
+      "text": "Kopie/Duplikat",
+      "source": "3e113570838e",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hFzEZEe6kQ-WGAhcVPQ": {
+      "text": "Mögliches Duplikat",
+      "source": "e19361dec37c",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hGTEZEe6kQ-WGAhcVPQ": {
+      "text": "Priorität",
+      "source": "d60dbba07922",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hGzEZEe6kQ-WGAhcVPQ": {
+      "text": "Signatur",
+      "source": "f1a73e2204a1",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_R26hHTEZEe6kQ-WGAhcVPQ": {
+      "text": "Zugehörig",
+      "source": "45ca56d179d4",
       "status": "machine",
       "by": "assistant",
       "date": "2026-10-11"
@@ -131966,6 +132372,20 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "label:_zKWuQTEyEe6g-ffJsqGiSA": {
+      "text": "Organisationsidentifikation",
+      "source": "1227def9c4b4",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "label:_zKWuQzEyEe6g-ffJsqGiSA": {
+      "text": "Finanzinstitut-Identifikation",
+      "source": "eb820a0b08c2",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "label:_ZlQ600KTEeWuG5hmkcJWSQ": {
       "text": "Postanschrift",
       "source": "3cc0461f3e0a",
@@ -141759,6 +142179,13 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "rule:_R26hATEZEe6kQ-WGAhcVPQ": {
+      "text": "Related MUSS (MUST) die relevanten BusinessMessageHeader-Elemente der BusinessMessage enthalten, auf die sich diese BusinessMessage bezieht.||Ist CopyDuplicate vorhanden, MUSS Related vorhanden sein.",
+      "source": "ac3a0c76cda8",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "rule:_R3LnITEZEe6kQ-WGAhcVPQ": {
       "text": "Der Baustein SupplementaryData auf Nachrichtenebene darf nicht verwendet werden, um zusätzliche Informationen zu einer Transaktion bereitzustellen. Hierfür ist das Element SupplementaryData auf Transaktionsebene zu verwenden.",
       "source": "000430c8aa47",
@@ -145406,6 +145833,13 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "type:_2aMHUTEyEe6g-ffJsqGiSA": {
+      "text": "Legt den Business Application Header der Geschäftsnachricht fest.|Kann beim Beantworten einer Anfrage verwendet werden; ebenso beim Stornieren oder Ändern.",
+      "source": "999c2f3fc2a6",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "type:_2AnwzTEyEe6g-ffJsqGiSA": {
       "text": "Identifiziert eine Zahlungsanweisung anhand einer Reihe von Merkmalen, die eine eindeutige Identifikation der Anweisung ermöglichen.",
       "source": "e5a3928b288d",
@@ -146256,6 +146690,13 @@
     "type:_6PphwJqlEeGSON8vddiWzQ_1042088657": {
       "text": "Gibt den Qualifizierer für einen Subservice an.",
       "source": "fcce522b865e",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
+    "type:_6Pu8gMieEei73Ywzx0CAAg": {
+      "text": "Identifiziert die Implementierungsspezifikation, der die ISO-20022-Nachricht entspricht.",
+      "source": "129e0e395f70",
       "status": "machine",
       "by": "assistant",
       "date": "2026-10-11"
@@ -151699,6 +152140,13 @@
       "by": "assistant",
       "date": "2026-10-11"
     },
+    "type:_R2558TEZEe6kQ-WGAhcVPQ": {
+      "text": "Die Geschäftsschicht befasst sich mit Geschäftsnachrichten. Das Verhalten der Geschäftsnachrichten wird vollständig durch die Geschäftstransaktion beschrieben, ihre Struktur durch die Nachrichtendefinitionen und die zugehörigen Nachrichtenregeln, Regeln und Marktpraxen, die alle im ISO-20022-Repository registriert sind.|Für jedes Geschäftsereignis, also jede Interaktion einer Geschäftstransaktion, erstellt der sendende MessagingEndpoint genau eine neue Geschäftsnachricht (mit ihrem Business Application Header). Eine Geschäftsnachricht folgt diesen Grundsätzen:|\" Eine Geschäftsnachricht (und ihr Business Application Header) darf keine Informationen über das Nachrichtentransportsystem oder die Mechanik bzw. den Mechanismus des Sendens, Transportierens oder Empfangens von Nachrichten enthalten. |\" Eine Geschäftsnachricht muss außerhalb des Kontexts der Transportnachricht verständlich sein. Das heißt, sie darf keine Kenntnis der Transportnachricht zum Verständnis voraussetzen.|\" Eine Geschäftsnachricht kann Header, Footer und Umschläge enthalten, die für das Geschäft von Bedeutung sind. Sind sie vorhanden, werden sie wie jeder andere Nachrichteninhalt behandelt, das heißt, sie gelten als Teil der Nachrichtendefinition der Geschäftsnachricht und sind somit Teil des ISO-20022-Repositorys.|\" Eine Geschäftsnachricht bezieht sich auf Geschäftsakteure über deren Namen. Jede Instanz eines Geschäftsakteurs hat einen Namen. Auf den Geschäftsakteur darf in der Transportschicht nicht Bezug genommen werden.|Die spezifische Verwendung dieses BusinessMessageHeader kann von der zuständigen SEG festgelegt werden.",
+      "source": "0194a0dedfc7",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
+    },
     "type:_R27vLTEZEe6kQ-WGAhcVPQ": {
       "text": "Die Nachricht AccountAdditionalInformationRequest wird im Rahmen des Pflegeprozesses von einem Finanzinstitut an eine Organisation gesendet. Diese Nachricht wird als Antwort auf eine Pflegeanfragenachricht der Organisation gesendet, wenn der fachliche Inhalt gültig ist, jedoch zusätzliche Informationen erforderlich sind.",
       "source": "1c94839fc2c7",
@@ -155268,6 +155716,13 @@
       "status": "machine",
       "by": "assistant",
       "date": "2026-10-08"
+    },
+    "type:_zIGEcTEyEe6g-ffJsqGiSA": {
+      "text": "Identifikation einer Person, einer Organisation oder eines Finanzinstituts.",
+      "source": "b97f79be5b34",
+      "status": "machine",
+      "by": "assistant",
+      "date": "2026-10-11"
     },
     "type:_zKj4MCCgEeWJd9HF2tO7BA": {
       "text": "Auswahl von Formaten für den Familienstand.",

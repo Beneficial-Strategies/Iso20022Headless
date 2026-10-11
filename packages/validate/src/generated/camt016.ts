@@ -129,7 +129,7 @@ export const schemas = {
 export const camt016Message = {
   identifier: "camt.016.001.04",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.016.001.04",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "GetCcyXchgRate",
   rootType: "GetCurrencyExchangeRateV04",
   schema: GetCurrencyExchangeRateV04Schema,

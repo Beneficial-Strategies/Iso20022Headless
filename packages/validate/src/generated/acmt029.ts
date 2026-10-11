@@ -459,7 +459,7 @@ export const schemas = {
 export const acmt029Message = {
   identifier: "acmt.029.001.06",
   namespace: "urn:iso:std:iso:20022:tech:xsd:acmt.029.001.06",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "AcctSwtchCclExstgPmt",
   rootType: "AccountSwitchCancelExistingPaymentV06",
   schema: AccountSwitchCancelExistingPaymentV06Schema,

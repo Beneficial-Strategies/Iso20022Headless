@@ -1,0 +1,124 @@
+{
+  "identifier": "head.001.001.04",
+  "name": "BusinessApplicationHeaderV04",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:head.001.001.04",
+  "bodyTag": "AppHdr",
+  "rootTag": "AppHdr",
+  "out": "head001",
+  "isoId": "_R2558TEZEe6kQ-WGAhcVPQ",
+  "definition": "The Business Layer deals with Business Messages. The behaviour of the Business Messages is fully described by the Business Transaction and the structure of the Business Messages is fully described by the Message Definitions and related Message Rules, Rules and Market Practices. All of which are registered in the ISO 20022 Repository.|A single new Business Message (with its accompagnying business application header) is created - by the sending MessagingEndpoint - for each business event; that is each interaction in a Business Transaction. A Business Message adheres to the following principles:|\" A Business Message (and its business application header) must not contain information about the Message Transport System or the mechanics or mechanism of message sending, transportation, or receipt. |\" A Business Message must be comprehensible outside of the context of the Transport Message. That is the Business Message must not require knowledge of the Transport Message to be understood.|\" A Business Message may contain headers, footers, and envelopes that are meaningful for the business. When present, they are treated as any other message content, which means that they are considered part of the Message Definition of the Business Message and as such will be part of the ISO 20022 Repository.|\" A Business Message refers to Business Actors by their Name. Each instance of a Business Actor has one Name. The Business Actor must not be referred to in the Transport Layer.|Specific usage of this BusinessMessageHeader may be defined by the relevant SEG.",
+  "blocks": [
+    {
+      "name": "CharacterSet",
+      "isoId": "_R26hAzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "CharSet",
+      "type": "UnicodeChartsCode",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "From",
+      "isoId": "_R26hBTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Fr",
+      "type": "Party51Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "To",
+      "isoId": "_R26hBzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "To",
+      "type": "Party51Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "BusinessMessageIdentifier",
+      "isoId": "_R26hCTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "BizMsgIdr",
+      "type": "Max35Text",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "MessageDefinitionIdentifier",
+      "isoId": "_R26hCzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "MsgDefIdr",
+      "type": "Max35Text",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "BusinessService",
+      "isoId": "_R26hDTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "BizSvc",
+      "type": "Max35Text",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "MarketPractice",
+      "isoId": "_R26hDzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "MktPrctc",
+      "type": "ImplementationSpecification1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CreationDate",
+      "isoId": "_R26hETEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "CreDt",
+      "type": "ISODateTime",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "BusinessProcessingDate",
+      "isoId": "_R26hEzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "BizPrcgDt",
+      "type": "ISODateTime",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CopyDuplicate",
+      "isoId": "_R26hFTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "CpyDplct",
+      "type": "CopyDuplicate1Code",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "PossibleDuplicate",
+      "isoId": "_R26hFzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "PssblDplct",
+      "type": "YesNoIndicator",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Priority",
+      "isoId": "_R26hGTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Prty",
+      "type": "BusinessMessagePriorityCode",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Signature",
+      "isoId": "_R26hGzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Sgntr",
+      "type": "SignatureEnvelope",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Related",
+      "isoId": "_R26hHTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Rltd",
+      "type": "BusinessApplicationHeader8",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

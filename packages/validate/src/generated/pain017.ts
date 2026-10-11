@@ -358,7 +358,7 @@ export const schemas = {
 export const pain017Message = {
   identifier: "pain.017.001.04",
   namespace: "urn:iso:std:iso:20022:tech:xsd:pain.017.001.04",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "MndtCpyReq",
   rootType: "MandateCopyRequestV04",
   schema: MandateCopyRequestV04Schema,

@@ -276,7 +276,7 @@ export const schemas = {
 export const pacs029Message = {
   identifier: "pacs.029.001.02",
   namespace: "urn:iso:std:iso:20022:tech:xsd:pacs.029.001.02",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "MulSttlmReq",
   rootType: "MultilateralSettlementRequestV02",
   schema: MultilateralSettlementRequestV02Schema,

@@ -192,7 +192,7 @@ export const schemas = {
 export const camt017Message = {
   identifier: "camt.017.001.05",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.017.001.05",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "RtrCcyXchgRate",
   rootType: "ReturnCurrencyExchangeRateV05",
   schema: ReturnCurrencyExchangeRateV05Schema,

@@ -224,7 +224,7 @@ export const schemas = {
 export const acmt023Message = {
   identifier: "acmt.023.001.04",
   namespace: "urn:iso:std:iso:20022:tech:xsd:acmt.023.001.04",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "IdVrfctnReq",
   rootType: "IdentificationVerificationRequestV04",
   schema: IdentificationVerificationRequestV04Schema,

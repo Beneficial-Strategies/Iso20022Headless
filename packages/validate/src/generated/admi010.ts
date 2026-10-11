@@ -113,7 +113,7 @@ export const schemas = {
 export const admi010Message = {
   identifier: "admi.010.001.02",
   namespace: "urn:iso:std:iso:20022:tech:xsd:admi.010.001.02",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "StatcDataRpt",
   rootType: "StaticDataReportV02",
   schema: StaticDataReportV02Schema,

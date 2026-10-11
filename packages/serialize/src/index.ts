@@ -3,6 +3,7 @@ import {
   type FieldDescriptor,
   type TypeDescriptors,
 } from '@beneficial-strategies/iso20022-validate';
+import { isOwnRoot } from './parse.ts';
 
 export interface MessageDefinition {
   namespace: string;
@@ -68,13 +69,12 @@ function emitChildren(
 export function serializeToXml(message: MessageDefinition, values: unknown): string {
   const pruned = (pruneEmpty(values) ?? {}) as Record<string, unknown>;
   const root = message.typeDescriptors[message.rootType]!;
-  const out: string[] = [
-    '<?xml version="1.0" encoding="UTF-8"?>',
-    `<${message.rootTag} xmlns="${message.namespace}">`,
-    `  <${message.bodyTag}>`,
-  ];
-  emitChildren(message.typeDescriptors, root.fields ?? [], pruned, '    ', out);
-  out.push(`  </${message.bodyTag}>`, `</${message.rootTag}>`);
+  const own = isOwnRoot(message);
+  const out: string[] = ['<?xml version="1.0" encoding="UTF-8"?>', `<${message.rootTag} xmlns="${message.namespace}">`];
+  if (!own) out.push(`  <${message.bodyTag}>`);
+  emitChildren(message.typeDescriptors, root.fields ?? [], pruned, own ? '  ' : '    ', out);
+  if (!own) out.push(`  </${message.bodyTag}>`);
+  out.push(`</${message.rootTag}>`);
   return out.join('\n') + '\n';
 }
 
@@ -87,6 +87,7 @@ export function serializeToJson(values: unknown): string {
 // ISO 20022 JSON syntax: "Generation of JSON Schema Draft 2020-12 for ISO 20022:2013" (ISO 20022 TSG, June 2025),
 // section 4 (structure), 5-7 (data types) and Annex A (XML to JSON). Summary of what is implemented:
 //   * the root is { "Document": { "<message element>": { ... } } }; there are no namespaces or prefixes
+//     (a message that is its own root, the Business Application Header, is { "AppHdr": { ... } })
 //   * properties are the abbreviated XML tag names, in message order
 //   * an element that may occur more than once is an array (the schema also accepts a lone value; we always
 //     emit the array so the shape does not depend on how many items there happen to be)
@@ -142,7 +143,7 @@ export function serializeToIsoJson(message: MessageDefinition, values: unknown):
   const pruned = (pruneEmpty(values) ?? {}) as Record<string, unknown>;
   const root = message.typeDescriptors[message.rootType]!;
   const body = jsonChildren(message.typeDescriptors, root.fields ?? [], pruned);
-  return JSON.stringify({ [message.rootTag]: { [message.bodyTag]: body } }, null, 2) + '\n';
+  return JSON.stringify({ [message.rootTag]: isOwnRoot(message) ? body : { [message.bodyTag]: body } }, null, 2) + '\n';
 }
 
 /** A single component/choice as ISO JSON, wrapped in a property named after the type. */

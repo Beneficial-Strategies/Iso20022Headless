@@ -13,6 +13,9 @@ import { serializeToXml } from '@beneficial-strategies/iso20022-serialize';
  */
 const dir = process.env.XSD_DIR;
 
+/** What an xs:any field holds: the header's signature must be in the XML signature namespace, other envelopes take anything. */
+let ANY = '<Envlp/>';
+
 /** A value for every field: all fields present, two items in a list near the top, the first alternative of a choice. */
 function sample(types: TypeDescriptors, typeName: string, depth = 0): unknown {
   const t = types[typeName]!;
@@ -24,7 +27,7 @@ function sample(types: TypeDescriptors, typeName: string, depth = 0): unknown {
       case 'date': return '2026-01-02';
       case 'datetime': return '2026-01-02T03:04:05Z';
       case 'time': return '03:04:05.5+02:00';
-      case 'any': return '<Envlp/>';
+      case 'any': return ANY;
       case 'code': return lt.options?.[0]?.value ?? 'ABCD';
       case 'number': return `${n}`;
       default: return `v${n}`;
@@ -50,6 +53,7 @@ describe.skipIf(!dir)('XML structure against the published XSD', () => {
     const file = resolve(dir!, `${identifier}.xsd`);
     if (!existsSync(file)) return; // no XSD published for it
     const { message } = await messageIndex.find((m) => m.identifier === identifier)!.load();
+    ANY = identifier.startsWith('head.') ? '<Signature xmlns="http://www.w3.org/2000/09/xmldsig#"/>' : '<Envlp/>';
     const xml = serializeToXml(message, sample(message.typeDescriptors, message.rootType));
     const r = await validateXML({ xml: [{ fileName: 'm.xml', contents: xml }], schema: [{ fileName: `${identifier}.xsd`, contents: readFileSync(file, 'utf8') }], initialMemoryPages: 256 });
     const structural = r.errors.map((e) => e.message).filter((m) => STRUCTURE.test(m) && !/value|pattern|length|facet|valid/i.test(m.split(':').slice(-1)[0] ?? ''));

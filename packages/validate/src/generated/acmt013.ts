@@ -206,7 +206,7 @@ export const schemas = {
 export const acmt013Message = {
   identifier: "acmt.013.001.04",
   namespace: "urn:iso:std:iso:20022:tech:xsd:acmt.013.001.04",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "AcctRptReq",
   rootType: "AccountReportRequestV04",
   schema: AccountReportRequestV04Schema,

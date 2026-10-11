@@ -5,6 +5,8 @@ export interface MessageSpec {
   id: string;
   identifier: string;
   bodyTag: string;
+  /** The outermost element, when it is not `Document` (the Business Application Header is `AppHdr`, with its fields directly inside). */
+  rootTag?: string;
   out: string;
   dir: string;
 }
@@ -119,6 +121,7 @@ export interface MessageJson {
   name: string;
   namespace: string;
   bodyTag: string;
+  rootTag?: string;
   out: string;
   isoId: string;
   definition: string;
@@ -134,6 +137,7 @@ export function messageJson(spec: Spec, m: MessageSpec): MessageJson {
     name: m.name,
     namespace: `urn:iso:std:iso:20022:tech:xsd:${m.identifier}`,
     bodyTag: m.bodyTag,
+    ...(m.rootTag !== undefined ? { rootTag: m.rootTag } : {}),
     out: m.out,
     isoId: m.id,
     definition: msg.definition,

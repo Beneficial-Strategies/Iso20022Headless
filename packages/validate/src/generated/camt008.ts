@@ -252,7 +252,7 @@ export const schemas = {
 export const camt008Message = {
   identifier: "camt.008.001.11",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.008.001.11",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "CclTx",
   rootType: "CancelTransactionV11",
   schema: CancelTransactionV11Schema,

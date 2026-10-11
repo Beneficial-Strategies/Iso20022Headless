@@ -146,6 +146,8 @@ export const pageDe: PageMessages = {
   areaDesc_trck: '',
   areaName_acmt: 'Kontoverwaltung',
   areaDesc_acmt: 'Nachrichten, die die Verwaltung kontobezogener Tätigkeiten unterstützen, etwa die Eröffnung und Pflege eines Kontos.',
+  areaName_head: 'Business Application Header',
+  areaDesc_head: 'Header, der geschäftliche Informationen enthält, die vor der Verarbeitung einer Nachricht relevant sind.',
   xsdLabel: 'XSD prüfen',
   xsdReady: 'Den Text der Nachricht unten mit {location} prüfen',
   xsdReadyFile: 'Den Text der Nachricht unten mit {file} prüfen (von Ihrem Computer geladen)',

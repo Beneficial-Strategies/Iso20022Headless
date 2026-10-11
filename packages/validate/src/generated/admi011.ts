@@ -89,7 +89,7 @@ export const schemas = {
 export const admi011Message = {
   identifier: "admi.011.001.01",
   namespace: "urn:iso:std:iso:20022:tech:xsd:admi.011.001.01",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "SysEvtAck",
   rootType: "SystemEventAcknowledgementV01",
   schema: SystemEventAcknowledgementV01Schema,

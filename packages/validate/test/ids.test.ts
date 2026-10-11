@@ -54,9 +54,9 @@ describe('definitions are keyed by id and fully covered', () => {
     expect(missing).toEqual([]);
   });
 
-  it('counts match the captures (all 186 messages): 7151 elements, 1658 types, 2203 codes', () => {
-    expect(Object.keys(fieldDefinitions)).toHaveLength(7151);
-    expect(Object.keys(typeDefinitions)).toHaveLength(1658);
+  it('counts match the captures (all 187 messages): 7178 elements, 1662 types, 2203 codes', () => {
+    expect(Object.keys(fieldDefinitions)).toHaveLength(7178);
+    expect(Object.keys(typeDefinitions)).toHaveLength(1662);
     expect(Object.keys(codeDefinitions)).toHaveLength(2203);
   });
 });

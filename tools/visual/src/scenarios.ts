@@ -1788,6 +1788,20 @@ function languageScenarios(): Scenario[] {
         return problems;
       },
     },
+    {
+      ...base,
+      name: 'head-opens-as-its-own-root',
+      query: '?message=head.001.001.04&lang=en',
+      expect: async (page) => {
+        const facts = await page.evaluate(() => ({ text: document.body.innerText, area: document.querySelector('#area-picker')?.textContent ?? '', xml: document.querySelector('.cm-content')?.textContent ?? '' }));
+        const problems: string[] = [];
+        if (!/Business Application Header/i.test(facts.text)) problems.push('the header message is not shown');
+        if (!/head/.test(facts.area)) problems.push(`the area picker says "${facts.area}", not head`);
+        if (!/<AppHdr xmlns="urn:iso:std:iso:20022:tech:xsd:head\.001\.001\.04"/.test(facts.xml)) problems.push(`the XML does not start with AppHdr: ${facts.xml.slice(0, 120)}`);
+        if (/<Document/.test(facts.xml)) problems.push('the header XML is wrapped in Document');
+        return problems;
+      },
+    },
     { ...base, name: 'camt-053-german-spec-text', query: '?message=camt.053.001.14&lang=de', expect: shows(/Gruppenkopf/, /Nachrichtenidentifikation/) },
     { ...base, name: 'language-iso-english-keeps-iso-spelling', query: '?lang=en', expect: shows(/Authorisation/i) },
     { ...base, name: 'language-american-english-spelling', query: '?lang=en-US', expect: async (page) => [...(await shows(/Authorization/i)(page)), ...(await lacks(/Authoris|Organis/i)(page))] },
@@ -2021,7 +2035,7 @@ function areaScenarios(): Scenario[] {
       expect: async (page) => {
         const o = await optionsOf(page);
         const problems: string[] = [];
-        if (o.length !== 8) problems.push(`expected eight areas, found ${o.length}`);
+        if (o.length !== 9) problems.push(`expected nine areas, found ${o.length}`);
         if (!o.some((x) => /^pain.*Payments Initiation: Messages that support the initiation of a payment/.test(x))) problems.push(`pain is not described: ${JSON.stringify(o)}`);
         if (!o.some((x) => /^pacs.*Payments Clearing and Settlement: Messages that support the clearing and settlement/.test(x))) problems.push(`pacs is not described: ${JSON.stringify(o)}`);
         if (!o.some((x) => /^caam.*ATM Management: Messages that support card related terminal management/.test(x))) problems.push(`caam is not described: ${JSON.stringify(o)}`);
@@ -2030,6 +2044,7 @@ function areaScenarios(): Scenario[] {
         if (!o.some((x) => /^remt.*Payments Remittance Advice: Messages that support communication between creditors and debtors/.test(x))) problems.push(`remt is not described: ${JSON.stringify(o)}`);
         if (!o.some((x) => /^trck.*Transaction Tracker$/.test(x.trim()))) problems.push(`trck is not shown by its name alone: ${JSON.stringify(o)}`);
         if (!o.some((x) => /^acmt.*Account Management: Messages that support the management of account related activities/.test(x))) problems.push(`acmt is not described: ${JSON.stringify(o)}`);
+        if (!o.some((x) => /^head.*Business Application Header: Header that contains business information/.test(x))) problems.push(`head is not described: ${JSON.stringify(o)}`);
         return problems;
       },
     },

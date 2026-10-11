@@ -161,6 +161,7 @@ import { typeDescriptors as camt113Descriptors } from './camt113.ts';
 import { typeDescriptors as camt114Descriptors } from './camt114.ts';
 import { typeDescriptors as camt115Descriptors } from './camt115.ts';
 import { typeDescriptors as camt116Descriptors } from './camt116.ts';
+import { typeDescriptors as head001Descriptors } from './head001.ts';
 import { typeDescriptors as pacs002Descriptors } from './pacs002.ts';
 import { typeDescriptors as pacs003Descriptors } from './pacs003.ts';
 import { typeDescriptors as pacs004Descriptors } from './pacs004.ts';
@@ -349,6 +350,7 @@ export const allTypeDescriptors: TypeDescriptors = {
   ...camt114Descriptors,
   ...camt115Descriptors,
   ...camt116Descriptors,
+  ...head001Descriptors,
   ...pacs002Descriptors,
   ...pacs003Descriptors,
   ...pacs004Descriptors,

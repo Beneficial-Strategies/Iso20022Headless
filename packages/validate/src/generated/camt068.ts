@@ -278,7 +278,7 @@ export const schemas = {
 export const camt068Message = {
   identifier: "camt.068.001.02",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.068.001.02",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "IntraBalMvmntConf",
   rootType: "IntraBalanceMovementConfirmationV02",
   schema: IntraBalanceMovementConfirmationV02Schema,

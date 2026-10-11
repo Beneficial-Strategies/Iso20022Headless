@@ -207,7 +207,7 @@ export const schemas = {
 export const remt002Message = {
   identifier: "remt.002.001.03",
   namespace: "urn:iso:std:iso:20022:tech:xsd:remt.002.001.03",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "RmtLctnAdvc",
   rootType: "RemittanceLocationAdviceV03",
   schema: RemittanceLocationAdviceV03Schema,

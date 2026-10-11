@@ -23,8 +23,8 @@ describe('business rule coverage', () => {
   const named = (status: string) => all.filter((r) => r.result.status === status).map((r) => `${r.type}.${r.rule}`);
 
   it('finds every rule and checks the machine-readable ones', () => {
-    expect(all.length).toBe(715);
-    expect(named('pass').length + named('fail').length).toBe(492);
+    expect(all.length).toBe(716);
+    expect(named('pass').length + named('fail').length).toBe(493);
   });
 
   it('cannot check six rules, and says why: three compare with a literal that is not a code value, three name a field that does not exist (spec typos and a copied rule)', () => {

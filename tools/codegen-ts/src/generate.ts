@@ -36,6 +36,8 @@ interface MessageConfig {
   name: string;
   namespace: string;
   bodyTag: string;
+  /** Outermost element; `Document` unless the message is its own root (the Business Application Header is `AppHdr`). */
+  rootTag?: string;
   /** Output module name, e.g. pain001. */
   out: string;
   /** Repository id and spec text of the message definition itself (tooltip for the whole message). */
@@ -655,7 +657,7 @@ for (const [, cfg] of configs) {
       .filter((n) => ['component', 'choice'].includes(ir.get(n)!.kind))
       .map((n) => `  ${q(n)}: ${schemaName(n)},`)
       .join('\n')}\n} as const;\n\n` +
-    `export const ${cfg.out}Message = {\n  identifier: ${q(cfg.identifier)},\n  namespace: ${q(cfg.namespace)},\n  rootTag: 'Document',\n  bodyTag: ${q(cfg.bodyTag)},\n  rootType: ${q(cfg.name)},\n  schema: ${schemaName(cfg.name)},\n  typeDescriptors,\n} as const;\n`;
+    `export const ${cfg.out}Message = {\n  identifier: ${q(cfg.identifier)},\n  namespace: ${q(cfg.namespace)},\n  rootTag: ${q(cfg.rootTag ?? 'Document')},\n  bodyTag: ${q(cfg.bodyTag)},\n  rootType: ${q(cfg.name)},\n  schema: ${schemaName(cfg.name)},\n  typeDescriptors,\n} as const;\n`;
   writeOut(`packages/validate/src/generated/${cfg.out}.ts`, body);
 }
 

@@ -279,7 +279,7 @@ export const schemas = {
 export const camt047Message = {
   identifier: "camt.047.001.08",
   namespace: "urn:iso:std:iso:20022:tech:xsd:camt.047.001.08",
-  rootTag: 'Document',
+  rootTag: "Document",
   bodyTag: "RtrRsvatn",
   rootType: "ReturnReservationV08",
   schema: ReturnReservationV08Schema,

@@ -28,10 +28,10 @@ Pick an area and a message and the form shows every element it can hold:
   *Field mode* lets you mark which values are fixed, defaulted or left open, for design discussions.
 - **Zoom** into any part of a message, such as a single Debtor Agent, and work on just that piece.
 
-Currently covers **186 messages** across Payments Initiation (`pain`), Payments Clearing and Settlement (`pacs`),
+Currently covers **187 messages** across Payments Initiation (`pain`), Payments Clearing and Settlement (`pacs`),
 ATM Management (`caam`), Cash Management (`camt`: account reports, statements and notifications, payment
 cancellation requests and investigations, cash management and charges messages), Administration (`admi`), Payments
-Remittance Advice (`remt`), Transaction Tracker (`trck`) and Account Management (`acmt`). Spec data comes from the ISO 20022 repository.
+Remittance Advice (`remt`), Transaction Tracker (`trck`) Account Management (`acmt`) and the Business Application Header (`head`, which is its own root: `<AppHdr>`, not `<Document>`). Spec data comes from the ISO 20022 repository.
 
 ## The library
 

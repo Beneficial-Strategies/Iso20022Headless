@@ -197,7 +197,8 @@
     "./remt002": "./src/generated/remt002.ts",
     "./trck001": "./src/generated/trck001.ts",
     "./trck002": "./src/generated/trck002.ts",
-    "./trck004": "./src/generated/trck004.ts"
+    "./trck004": "./src/generated/trck004.ts",
+    "./head001": "./src/generated/head001.ts"
   },
   "scripts": {
     "typecheck": "tsc -p tsconfig.json",
