@@ -1,0 +1,4 @@
+codeSet	code	enumName	isoId	text
+ErrorHandling1Code	X020	DataNotYetAvailable	_ah3aRdp-Ed-ak6NoX_4Aeg_-1106717261	Specifies the error code when the data requested are not yet available.
+ErrorHandling1Code	X030	MessageSizeLimitExceeded	_ah3aRtp-Ed-ak6NoX_4Aeg_-1106717021	Specifies the error code when the data requested generates a message size that exceed the processing capacity.
+ErrorHandling1Code	X050	DataNotAvailable	_ah3aR9p-Ed-ak6NoX_4Aeg_-1106717013	Specifies the error code when the data requested have not been found.

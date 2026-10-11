@@ -30,26 +30,16 @@ import {
   FinancialIdentificationSchemeName1ChoiceSchema,
   GenericFinancialIdentification1Schema,
   MemberIdentification3ChoiceSchema,
+  ExternalSystemMemberType1CodeSchema,
+  SystemMemberType1ChoiceSchema,
+  MemberStatus1CodeSchema,
+  SystemMemberStatus1ChoiceSchema,
   RequestedIndicatorSchema,
   Max350TextSchema,
   SupplementaryDataEnvelope1Schema,
   SupplementaryData1Schema,
   sharedTypeDescriptors,
 } from './shared.ts';
-
-export const ExternalSystemMemberType1CodeSchema = textType({min: 1, max: 4});
-
-export const SystemMemberType1ChoiceSchema = choiceOf({
-  Code: ExternalSystemMemberType1CodeSchema,
-  Proprietary: Max35TextSchema,
-});
-
-export const MemberStatus1CodeSchema = z.enum(["ENBL", "DSBL", "DLTD", "JOIN"]);
-
-export const SystemMemberStatus1ChoiceSchema = choiceOf({
-  Code: MemberStatus1CodeSchema,
-  Proprietary: Max35TextSchema,
-});
 
 export const MemberSearchCriteria4Schema = z.strictObject({
   Identification: z.array(MemberIdentification3ChoiceSchema).optional(),
@@ -92,38 +82,6 @@ export const GetMemberV04Schema = z.strictObject({
 const f = (d: FieldDescriptor): FieldDescriptor => d;
 
 const ownTypeDescriptors: TypeDescriptors = {
-  "ExternalSystemMemberType1Code": {
-    name: "ExternalSystemMemberType1Code",
-    isoId: "_7geSZnhfEeidzqjNEfehPg",
-    kind: "code",
-    minLength: 1,
-    maxLength: 4,
-    external: true,
-  },
-  "SystemMemberType1Choice": {
-    name: "SystemMemberType1Choice",
-    isoId: "_Sr86gHhgEeidzqjNEfehPg",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_cFGbMHhgEeidzqjNEfehPg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalSystemMemberType1Code", required: true }),
-      f({ name: "Proprietary", isoId: "_fc3BMHhgEeidzqjNEfehPg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
-    ],
-  },
-  "MemberStatus1Code": {
-    name: "MemberStatus1Code",
-    isoId: "_zdmYYw93EeGeV5vP7Mvdig_311511603",
-    kind: "code",
-    options: [{ value: "ENBL", name: "Enabled", isoId: "_zdmYZA93EeGeV5vP7Mvdig_-507442078" }, { value: "DSBL", name: "Disabled", isoId: "_zdmYZQ93EeGeV5vP7Mvdig_943717544" }, { value: "DLTD", name: "Deleted", isoId: "_zdmYZg93EeGeV5vP7Mvdig_1865880854" }, { value: "JOIN", name: "Joining", isoId: "_zdviUA93EeGeV5vP7Mvdig_1111130980" }],
-  },
-  "SystemMemberStatus1Choice": {
-    name: "SystemMemberStatus1Choice",
-    isoId: "_V4OMw3hhEeidzqjNEfehPg",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_V4OMxXhhEeidzqjNEfehPg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "MemberStatus1Code", required: true }),
-      f({ name: "Proprietary", isoId: "_V4OMxHhhEeidzqjNEfehPg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
-    ],
-  },
   "MemberSearchCriteria4": {
     name: "MemberSearchCriteria4",
     isoId: "_i_EmMXSbEeiH1ZOt2UD8vQ",
@@ -209,6 +167,10 @@ export const typeDescriptors: TypeDescriptors = {
   "FinancialIdentificationSchemeName1Choice": sharedTypeDescriptors["FinancialIdentificationSchemeName1Choice"]!,
   "GenericFinancialIdentification1": sharedTypeDescriptors["GenericFinancialIdentification1"]!,
   "MemberIdentification3Choice": sharedTypeDescriptors["MemberIdentification3Choice"]!,
+  "ExternalSystemMemberType1Code": sharedTypeDescriptors["ExternalSystemMemberType1Code"]!,
+  "SystemMemberType1Choice": sharedTypeDescriptors["SystemMemberType1Choice"]!,
+  "MemberStatus1Code": sharedTypeDescriptors["MemberStatus1Code"]!,
+  "SystemMemberStatus1Choice": sharedTypeDescriptors["SystemMemberStatus1Choice"]!,
   "RequestedIndicator": sharedTypeDescriptors["RequestedIndicator"]!,
   "Max350Text": sharedTypeDescriptors["Max350Text"]!,
   "SupplementaryDataEnvelope1": sharedTypeDescriptors["SupplementaryDataEnvelope1"]!,

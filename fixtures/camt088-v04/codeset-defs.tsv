@@ -1,0 +1,3 @@
+codeSet	isoId	text
+PaymentReceipt1Code	_939OkA5EEeenr-7g_0TYag	Specifies if an operation is a payment, or a receipt or none.
+ExternalObligationSettlementMethod1Code	_vyt3YIQSEfCu2585jRNU3Q	Specifies the settlement method for the obligation.|||The list of valid codes is an external code list published separately. ||External code sets can be downloaded from www.iso20022.org.

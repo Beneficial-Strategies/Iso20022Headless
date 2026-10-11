@@ -1,0 +1,51 @@
+{
+  "identifier": "camt.081.001.02",
+  "name": "IntraBalanceMovementModificationReportV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.081.001.02",
+  "bodyTag": "IntraBalMvmntModRpt",
+  "out": "camt081",
+  "isoId": "_R3ODJzEZEe6kQ-WGAhcVPQ",
+  "definition": "The IntraBalanceMovementModificationReport message is sent from a settlement infrastructure to an account owner/requestor to provide full details or current status values of the intra-balance movement modification request(s), as defined within the query. ||The message may also be used to: |- re-send a message previously sent (the sub-function of the message is \"Duplicate\") |- provide a third party with a copy of a message for information (the sub-function of the message is \"Copy\") |- re-send to a third party a copy of a message for information (the sub-function of the message is \"Copy Duplicate\").",
+  "blocks": [
+    {
+      "name": "Identification",
+      "isoId": "_R3ODPTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Id",
+      "type": "DocumentIdentification51",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Pagination",
+      "isoId": "_R3ODPzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ReportGeneralDetails",
+      "isoId": "_R3ODQTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "RptGnlDtls",
+      "type": "IntraBalanceReport5",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ReportOrError",
+      "isoId": "_R3ODQzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "RptOrErr",
+      "type": "IntraBalanceOrOperationalError12Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3ODRTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

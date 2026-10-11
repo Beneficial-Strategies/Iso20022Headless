@@ -1,0 +1,5 @@
+codeSet	code	enumName	isoId	text
+LimitStatus1Code	ENAB	Enabled	_zdviUg93EeGeV5vP7Mvdig_372741033	Limit is currently in effect.
+LimitStatus1Code	DISA	Disabled	_zdviUw93EeGeV5vP7Mvdig_815729525	Limit is not currently in effect.
+LimitStatus1Code	DELD	Deleted	_zdviVA93EeGeV5vP7Mvdig_1401676551	Limit has been deleted or suspended.
+LimitStatus1Code	REQD	Requested	_zdviVQ93EeGeV5vP7Mvdig_348111115	Limit has been asked for and is not yet enabled.

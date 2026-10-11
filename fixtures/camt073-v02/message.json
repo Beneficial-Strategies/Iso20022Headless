@@ -1,0 +1,83 @@
+{
+  "identifier": "camt.073.001.02",
+  "name": "IntraBalanceMovementModificationRequestStatusAdviceV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.073.001.02",
+  "bodyTag": "IntraBalMvmntModReqStsAdvc",
+  "out": "camt073",
+  "isoId": "_R3ODRzEZEe6kQ-WGAhcVPQ",
+  "definition": "The IntraBalanceMovementModificationRequestStatusAdvice message is sent from a settlement infrastructure to an account owner/requestor to advise the status of an intra-balance movement modification request previously sent by the account owner/requestor.||Usage: |The message may be used to: |- re-send a message previously sent (the sub-function of the message is \"Duplicate\")|- provide a third party with a copy of a message for information (the sub-function of the message is \"Copy\")|- re-send to a third party a copy of a message for information (the sub-function of the message is \"CopyDuplicate\").",
+  "blocks": [
+    {
+      "name": "Identification",
+      "isoId": "_R3ODVTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Id",
+      "type": "DocumentIdentification51",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "RequestReference",
+      "isoId": "_R3ODVzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "ReqRef",
+      "type": "Max35Text",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CashAccount",
+      "isoId": "_R3ODWTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "CshAcct",
+      "type": "CashAccount40",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CashAccountOwner",
+      "isoId": "_R3ODWzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "CshAcctOwnr",
+      "type": "SystemPartyIdentification8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CashAccountServicer",
+      "isoId": "_R3ODXTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "CshAcctSvcr",
+      "type": "BranchAndFinancialInstitutionIdentification8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "RequestDetails",
+      "isoId": "_R3ODXzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "ReqDtls",
+      "type": "RequestDetails22",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ProcessingStatus",
+      "isoId": "_R3ODYTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "PrcgSts",
+      "type": "ProcessingStatus71Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "UnderlyingIntraBalance",
+      "isoId": "_R3ODYzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "UndrlygIntraBal",
+      "type": "IntraBalance5",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3ODZTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

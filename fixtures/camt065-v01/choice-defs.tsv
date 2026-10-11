@@ -1,0 +1,5 @@
+choice	memberId	memberName	text
+LimitJournalReportOrError7Choice	_tmpB4ZEhEe-Goq1fIU72qA	BusinessReport	Specifies the business report either as a limit utilisation journal or a business error.
+LimitJournalReportOrError7Choice	_tmpB45EhEe-Goq1fIU72qA	OperationalError	Specifies the operational error resulting from the processing of a request.
+LimitJournalReportOrError8Choice	_tqQ9oZEhEe-Goq1fIU72qA	LimitJournal	Requested information on the limit.
+LimitJournalReportOrError8Choice	_tqQ9o5EhEe-Goq1fIU72qA	BusinessError	Reason the requested business information is not given.

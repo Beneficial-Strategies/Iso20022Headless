@@ -1,0 +1,10 @@
+codeSetName	isoId	restrictionOf	code	enumName
+SystemStatus2Code	_ZSJe09p-Ed-ak6NoX_4Aeg_-619414979	SystemStatusCode	SUSP	Suspended
+SystemStatus2Code	_ZSJe09p-Ed-ak6NoX_4Aeg_-619414979	SystemStatusCode	ACTV	Active
+SystemStatus2Code	_ZSJe09p-Ed-ak6NoX_4Aeg_-619414979	SystemStatusCode	CLSD	Closed
+SystemStatus2Code	_ZSJe09p-Ed-ak6NoX_4Aeg_-619414979	SystemStatusCode	CLSG	Closing
+SystemClosureReason1Code	_ZRQG8tp-Ed-ak6NoX_4Aeg_2007403394	SystemClosureReasonCode	BHOL	BankingHoliday
+SystemClosureReason1Code	_ZRQG8tp-Ed-ak6NoX_4Aeg_2007403394	SystemClosureReasonCode	SMTN	SystemMaintenance
+SystemClosureReason1Code	_ZRQG8tp-Ed-ak6NoX_4Aeg_2007403394	SystemClosureReasonCode	NOOP	NoOperation
+SystemClosureReason1Code	_ZRQG8tp-Ed-ak6NoX_4Aeg_2007403394	SystemClosureReasonCode	RCVR	Recovery
+SystemClosureReason1Code	_ZRQG8tp-Ed-ak6NoX_4Aeg_2007403394	SystemClosureReasonCode	ADTW	AllowedDowntimeWindow

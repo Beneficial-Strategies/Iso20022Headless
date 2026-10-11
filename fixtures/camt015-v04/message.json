@@ -1,0 +1,43 @@
+{
+  "identifier": "camt.015.001.04",
+  "name": "ModifyMemberV04",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.015.001.04",
+  "bodyTag": "ModfyMmb",
+  "out": "camt015",
+  "isoId": "_jwlbxxbvEeiyVv5j1vf1VQ",
+  "definition": "Scope|The ModifyMember message is sent by a member to the transaction administrator.|It is used to request modifications to the static data related to the profile of a member that the transaction administrator maintains.|Usage|The transaction administrator is in charge of providing the members with business information. The term business information covers all information related to the management of the system, that is, not related to the transactions entered into the system. The type of business information available can vary depending on the system. Among other things, it can, refer to information about the membership of the system.|At any time during the operating hours of the system, the member can request the transaction administrator to modify the information it maintains about the member.|The member will submit a message requesting modifications in one or more of the following criteria:|- identification of the member|- contact information for the member organization: postal address, e-mail address, telephone or fax number|- identification of contact persons for the member, their role and/or details (postal address, e-mail address, telephone or fax number)|Based on the criteria received within the Modify Member message, the transaction administrator will execute or reject the requested modifications.|In principle, the transaction administrator may send a Receipt message as a reply to the ModifyMember request. To verify the outcome of the request, the member may submit a GetMember message with the appropriate search criteria.",
+  "blocks": [
+    {
+      "name": "MessageHeader",
+      "isoId": "_jwlbyxbvEeiyVv5j1vf1VQ",
+      "xmlTag": "MsgHdr",
+      "type": "MessageHeader1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "MemberIdentification",
+      "isoId": "_jwlbzRbvEeiyVv5j1vf1VQ",
+      "xmlTag": "MmbId",
+      "type": "MemberIdentification3Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "NewMemberValueSet",
+      "isoId": "_jwlbzxbvEeiyVv5j1vf1VQ",
+      "xmlTag": "NewMmbValSet",
+      "type": "Member6",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_jwlb0RbvEeiyVv5j1vf1VQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

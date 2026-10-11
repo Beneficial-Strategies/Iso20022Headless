@@ -60,6 +60,7 @@ import {
   DatePeriodSearch1ChoiceSchema,
   DateTimePeriod1Schema,
   DateTimeSearch2ChoiceSchema,
+  DateAndDateTimeSearch5ChoiceSchema,
   SupplementaryDataEnvelope1Schema,
   SupplementaryData1Schema,
   sharedTypeDescriptors,
@@ -70,11 +71,6 @@ export const CancellationProcessingStatus3CodeSchema = z.enum(["CANP", "REJT", "
 export const CancellationProcessingStatus9ChoiceSchema = choiceOf({
   Code: CancellationProcessingStatus3CodeSchema,
   Proprietary: GenericIdentification30Schema,
-});
-
-export const DateAndDateTimeSearch5ChoiceSchema = choiceOf({
-  Date: DatePeriodSearch1ChoiceSchema,
-  DateTime: DateTimeSearch2ChoiceSchema,
 });
 
 export const IntraBalanceQueryCriteria10Schema = z.strictObject({
@@ -114,15 +110,6 @@ const ownTypeDescriptors: TypeDescriptors = {
     choiceOptions: [
       f({ name: "Code", isoId: "_BxXzkeFfEeWIA4E9cYSxxQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "CancellationProcessingStatus3Code", required: true }),
       f({ name: "Proprietary", isoId: "_BxXzmeFfEeWIA4E9cYSxxQ", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
-  "DateAndDateTimeSearch5Choice": {
-    name: "DateAndDateTimeSearch5Choice",
-    isoId: "_Ve-bjTp9EemwKdP955WBJQ",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Date", isoId: "_VptEkTp9EemwKdP955WBJQ", xmlTag: "Dt", displayName: displayName("Date"), kind: "choice", type: "DatePeriodSearch1Choice", required: true }),
-      f({ name: "DateTime", isoId: "_VptEkzp9EemwKdP955WBJQ", xmlTag: "DtTm", displayName: displayName("DateTime"), kind: "choice", type: "DateTimeSearch2Choice", required: true }),
     ],
   },
   "IntraBalanceQueryCriteria10": {
@@ -208,6 +195,7 @@ export const typeDescriptors: TypeDescriptors = {
   "DatePeriodSearch1Choice": sharedTypeDescriptors["DatePeriodSearch1Choice"]!,
   "DateTimePeriod1": sharedTypeDescriptors["DateTimePeriod1"]!,
   "DateTimeSearch2Choice": sharedTypeDescriptors["DateTimeSearch2Choice"]!,
+  "DateAndDateTimeSearch5Choice": sharedTypeDescriptors["DateAndDateTimeSearch5Choice"]!,
   "SupplementaryDataEnvelope1": sharedTypeDescriptors["SupplementaryDataEnvelope1"]!,
   "SupplementaryData1": sharedTypeDescriptors["SupplementaryData1"]!,
   ...ownTypeDescriptors,

@@ -1,0 +1,8 @@
+choice	memberId	memberName	text
+UnableToApplyJustification4Choice	_7MMKYdjKEeq5MfBBxQig1Q	AnyInformation	Indicates whether or not all available information on the underlying payment instruction is requested.
+UnableToApplyJustification4Choice	_7MMKY9jKEeq5MfBBxQig1Q	MissingOrIncorrectInformation	Set of elements used to indicate which information is missing or incorrect.
+UnableToApplyJustification4Choice	_7MMKZdjKEeq5MfBBxQig1Q	PossibleDuplicateInstruction	Indicates whether or not the referred item is a possible duplicate of a previous instruction or entry.
+MissingData1Choice	_MN6wldjMEeq5MfBBxQig1Q	Code	Missing data type, in a coded form.
+MissingData1Choice	_MN6wlNjMEeq5MfBBxQig1Q	Proprietary	Missing data type, in a proprietary form.
+IncorrectData1Choice	_DfjHsNjLEeq5MfBBxQig1Q	Code	Incorrect data type, in a coded form.
+IncorrectData1Choice	_DfjHsdjLEeq5MfBBxQig1Q	Proprietary	Incorrect data type, in a proprietary form.

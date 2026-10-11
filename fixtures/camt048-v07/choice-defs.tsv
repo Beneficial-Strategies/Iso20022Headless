@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+CurrentOrDefaultReservation4Choice	_5LBQMTEyEe6g-ffJsqGiSA	Current	Identification of the current reservation.
+CurrentOrDefaultReservation4Choice	_5LBQMzEyEe6g-ffJsqGiSA	Default	Identification of the default reservation.

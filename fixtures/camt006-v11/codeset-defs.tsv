@@ -1,0 +1,7 @@
+codeSet	isoId	text
+FinalStatus1Code	_8PRUJKMgEeCJ6YNENx4h-w_881009565	Specifies the final status of a transaction.
+UnmatchedStatusReason1Code	_Y7f5Z9p-Ed-ak6NoX_4Aeg_689720409	Specifies the reason the transaction/instruction is unmatched.
+CancelledStatusReason1Code	_a0pMUtp-Ed-ak6NoX_4Aeg_689720888	Specifies the underlying reason for cancellation of the associated transaction.
+SuspendedStatusReason1Code	_ZQzbA9p-Ed-ak6NoX_4Aeg_689720893	Specifies the reason the transaction/instruction is suspended.
+PendingFailingSettlement1Code	_zcQUlA93EeGeV5vP7Mvdig_816274429	Specifies the reason the transaction/instruction is pending failing settlement, and the settlement at the instruction settlement date is no longer possible.
+PendingSettlement2Code	_aDKsE9p-Ed-ak6NoX_4Aeg_-1807424402	Specifies the reason the transaction/instruction is pending settlement, that is, pending delivery or receipt of the financial instrument. Settlement on the instructed settlement date is still possible.

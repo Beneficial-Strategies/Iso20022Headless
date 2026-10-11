@@ -1,0 +1,3 @@
+codeSet	isoId	text
+ExternalUnableToApplyMissingData1Code	_p-vHsN4jEeqt1ZcLzWyWFw	Specifies the reason of an unable to apply due to missing data, as published in an external unable to apply missing data code set.|External code sets can be downloaded from www.iso20022.org.
+ExternalUnableToApplyIncorrectData1Code	_p-vHiN4jEeqt1ZcLzWyWFw	Specifies the reason of an unable to apply due to incorrect data, as published in an external unable to apply incorrect data code set.|External code sets can be downloaded from www.iso20022.org.

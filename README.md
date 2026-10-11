@@ -28,7 +28,7 @@ Pick an area and a message and the form shows every element it can hold:
   *Field mode* lets you mark which values are fixed, defaulted or left open, for design discussions.
 - **Zoom** into any part of a message, such as a single Debtor Agent, and work on just that piece.
 
-Currently covers **90 messages** across Payments Initiation (`pain`), Payments Clearing and Settlement (`pacs`),
+Currently covers **137 messages** across Payments Initiation (`pain`), Payments Clearing and Settlement (`pacs`),
 ATM Management (`caam`) and Cash Management (`camt`: account reports, statements and notifications, payment
 cancellation requests and investigations, cash management and charges messages). Spec data comes from the ISO 20022 repository.
 

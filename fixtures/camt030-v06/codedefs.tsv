@@ -1,0 +1,7 @@
+codeSet	code	enumName	isoId	text
+CaseForwardingNotification3Code	FTHI	FurtherInvestigation	_a2bVA9p-Ed-ak6NoX_4Aeg_-1716921080	Case has been forwarded to the next party for further investigation.
+CaseForwardingNotification3Code	CANC	RequestToCancel	_a2bVBNp-Ed-ak6NoX_4Aeg_-1716921060	Case has been forwarded to the next party for cancellation.
+CaseForwardingNotification3Code	MODI	RequestToModify	_a2bVBdp-Ed-ak6NoX_4Aeg_-1716921051	Case has been forwarded to the next party for modification.
+CaseForwardingNotification3Code	DTAU	RequestDebitAuthorisation	_a2bVBtp-Ed-ak6NoX_4Aeg_-1716921029	Case has been forwarded to obtain authorisation to debit.
+CaseForwardingNotification3Code	SAIN	SentAdditionalInformation	_a2bVB9p-Ed-ak6NoX_4Aeg_-1716921020	Additional information has been forwarded to the creditor.
+CaseForwardingNotification3Code	MINE	MineInvestigationCase	_a2bVCNp-Ed-ak6NoX_4Aeg_-1716921019	Case is been handled by the assigned party.

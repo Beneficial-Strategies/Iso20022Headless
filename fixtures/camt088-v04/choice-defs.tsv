@@ -1,0 +1,6 @@
+choice	memberId	memberName	text
+PartyIdentification242Choice	_BXmqswN1Ee2-vqzwMUAewg	NameAndAddress	Identification of the party expressed as name and an optional address and an optional alternative identifier.
+PartyIdentification242Choice	_BXmqtQN1Ee2-vqzwMUAewg	AnyBIC	Identification of the party expressed as a BIC and an optional alternative identifier.
+PartyIdentification242Choice	_BXmqtwN1Ee2-vqzwMUAewg	PartyIdentification	Party Identification specified as a list of values per element.
+NettingIdentification2Choice	_CKT6AQN1Ee2-vqzwMUAewg	TradeParty	Describes the individual trading party.
+NettingIdentification2Choice	_CKT6AwN1Ee2-vqzwMUAewg	NettingGroupIdentification	Describes the netting group.

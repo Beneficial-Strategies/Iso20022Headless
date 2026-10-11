@@ -1,0 +1,7 @@
+choice	memberId	memberName	text
+MemberReportOrError7Choice	_fODoUdcZEeqRFcf2R4bPBw	Report	Provides the details on the requested member.
+MemberReportOrError7Choice	_fODoU9cZEeqRFcf2R4bPBw	OperationalError	Indicates that an operational error has been issued during the processing of the related request.
+MemberReportOrError8Choice	_fSe1UdcZEeqRFcf2R4bPBw	Member	Requested member data when found in the system.
+MemberReportOrError8Choice	_fSe1U9cZEeqRFcf2R4bPBw	BusinessError	Reason the requested business information is not given.
+PaymentRole1Choice	_b_Ox1XhiEeidzqjNEfehPg	Code	Payment party role, in a coded form.
+PaymentRole1Choice	_b_Ox1HhiEeidzqjNEfehPg	Proprietary	Payment party role, in a proprietary form.

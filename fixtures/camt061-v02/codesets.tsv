@@ -1,0 +1,4 @@
+codeSetName	isoId	restrictionOf	code	enumName
+CallIn1Code	_bXNt6Np-Ed-ak6NoX_4Aeg_-324730819	CallInCode	CFAV	CallForAccountValue
+CallIn1Code	_bXNt6Np-Ed-ak6NoX_4Aeg_-324730819	CallInCode	CFST	CallForSettlement
+CallIn1Code	_bXNt6Np-Ed-ak6NoX_4Aeg_-324730819	CallInCode	CFCC	CallForCurrencyClose

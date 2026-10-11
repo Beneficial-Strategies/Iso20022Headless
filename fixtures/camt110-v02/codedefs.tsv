@@ -1,0 +1,34 @@
+codeSet	code	enumName	isoId	text
+PreferredContactMethod1Code	LETT	Letter	_6UHyA5qlEeGSON8vddiWzQ_-970786773	Preferred method used to reach the contact is per letter.
+PreferredContactMethod1Code	MAIL	Email	_6UHyBJqlEeGSON8vddiWzQ_496361990	Preferred method used to reach the contact is per email.
+PreferredContactMethod1Code	PHON	Phone	_6UHyBZqlEeGSON8vddiWzQ_37862079	Preferred method used to reach the contact is per phone.
+PreferredContactMethod1Code	FAXX	Fax	_6UHyBpqlEeGSON8vddiWzQ_1934398803	Preferred method used to reach the contact is per fax.
+PreferredContactMethod1Code	CELL	MobileOrCellPhone	_6UHyB5qlEeGSON8vddiWzQ_-1355658363	Preferred method used to reach the contact is per mobile or cell phone.
+DocumentType6Code	MSIN	MeteredServiceInvoice	_xVb2AR78EeSxevWRRWxNAg	Document is an invoice claiming payment for the supply of metered services, for example gas or electricity supplied to a fixed meter.
+DocumentType6Code	CNFA	CreditNoteRelatedToFinancialAdjustment	_xVb2Ax78EeSxevWRRWxNAg	Document is a credit note for the final amount settled for a commercial transaction.
+DocumentType6Code	DNFA	DebitNoteRelatedToFinancialAdjustment	_xVb2BR78EeSxevWRRWxNAg	Document is a debit note for the final amount settled for a commercial transaction.
+DocumentType6Code	CINV	CommercialInvoice	_xVb2Bx78EeSxevWRRWxNAg	Document is an invoice.
+DocumentType6Code	CREN	CreditNote	_xVb2CR78EeSxevWRRWxNAg	Document is a credit note.
+DocumentType6Code	DEBN	DebitNote	_xVb2Cx78EeSxevWRRWxNAg	Document is a debit note.
+DocumentType6Code	HIRI	HireInvoice	_xVb2DR78EeSxevWRRWxNAg	Document is an invoice for the hiring of human resources or renting goods or equipment.
+DocumentType6Code	SBIN	SelfBilledInvoice	_xVb2Dx78EeSxevWRRWxNAg	Document is an invoice issued by the debtor.
+DocumentType6Code	CMCN	CommercialContract	_xVb2ER78EeSxevWRRWxNAg	Document is an agreement between the parties, stipulating the terms and conditions of the delivery of goods or services.
+DocumentType6Code	SOAC	StatementOfAccount	_xVb2Ex78EeSxevWRRWxNAg	Document is a statement of the transactions posted to the debtor's account at the supplier.
+DocumentType6Code	DISP	DispatchAdvice	_xVb2FR78EeSxevWRRWxNAg	Document is a dispatch advice.
+DocumentType6Code	BOLD	BillOfLading	_xVb2Fx78EeSxevWRRWxNAg	Document is a shipping notice.
+DocumentType6Code	VCHR	Voucher	_xVb2GR78EeSxevWRRWxNAg	Document is an electronic payment document.
+DocumentType6Code	AROI	AccountReceivableOpenItem	_xVb2Gx78EeSxevWRRWxNAg	Document is a payment that applies to a specific source document.
+DocumentType6Code	TSUT	TradeServicesUtilityTransaction	_xVb2HR78EeSxevWRRWxNAg	Document is a transaction identifier as assigned by the Trade Services Utility.
+DocumentType6Code	PUOR	PurchaseOrder	_zjV4AR78EeSxevWRRWxNAg	Document is a purchase order.
+DocumentType3Code	RADM	RemittanceAdviceMessage	_agObgNp-Ed-ak6NoX_4Aeg_665911923	Document is a remittance advice sent separately from the current transaction.
+DocumentType3Code	RPIN	RelatedPaymentInstruction	_agObgdp-Ed-ak6NoX_4Aeg_665911940	Document is a linked payment instruction to which the current payment instruction is related, for example, in a cover scenario.
+DocumentType3Code	FXDR	ForeignExchangeDealReference	_agObgtp-Ed-ak6NoX_4Aeg_665912235	Document is a pre-agreed or pre-arranged foreign exchange transaction to which the payment transaction refers.
+DocumentType3Code	DISP	DispatchAdvice	_agObg9p-Ed-ak6NoX_4Aeg_665912698	Document is a dispatch advice.
+DocumentType3Code	PUOR	PurchaseOrder	_agObhNp-Ed-ak6NoX_4Aeg_906952902	Document is a purchase order.
+DocumentType3Code	SCOR	StructuredCommunicationReference	_agObhdp-Ed-ak6NoX_4Aeg_922649765	Document is a structured communication reference provided by the creditor to identify the referred transaction.
+InvestigationLocationMethod1Code	EDIC	ElectronicDataInterchange	_sKNQQVT_Ee2at7Z9GFZ2Mw	Investigation related data must be sent through Electronic Data Interchange (EDI).
+InvestigationLocationMethod1Code	EMAL	EMail	_sRSIoVT_Ee2at7Z9GFZ2Mw	Investigation related data must be sent through e-mail.
+InvestigationLocationMethod1Code	FAXI	Fax	_sXI5AVT_Ee2at7Z9GFZ2Mw	Investigation related data must be faxed.
+InvestigationLocationMethod1Code	POST	Post	_scR3sVT_Ee2at7Z9GFZ2Mw	Investigation related data must be sent through postal services.
+InvestigationLocationMethod1Code	SMSM	SMS	_shYaIVT_Ee2at7Z9GFZ2Mw	Investigation related data must be sent through by phone as a short message service (SMS).
+InvestigationLocationMethod1Code	URID	UniformResourceIdentifier	_snTb8VT_Ee2at7Z9GFZ2Mw	Investigation related data needs to be sent to a Uniform Resource Identifier (URI). URI is a compact string of characters that uniquely identify an abstract or physical resource. URI's are the super-set of identifiers, such as URLs, email addresses, ftp sites, etc, and as such, provide the syntax for all of the identification schemes.

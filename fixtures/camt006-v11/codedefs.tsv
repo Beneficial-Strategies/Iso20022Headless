@@ -1,0 +1,131 @@
+codeSet	code	enumName	isoId	text
+FinalStatus1Code	STLD	Settled	_8PRUJaMgEeCJ6YNENx4h-w_-1768690296	Transaction has been successfully processed by the clearing agent.
+FinalStatus1Code	RJTD	Rejected	_8PRUJqMgEeCJ6YNENx4h-w_-116062788	Transaction has been rejected by the clearing agent.
+FinalStatus1Code	CAND	Cancelled	_8PRUJ6MgEeCJ6YNENx4h-w_-408020526	Transaction has been cancelled.
+FinalStatus1Code	FNLD	Finalised	_8PaeEKMgEeCJ6YNENx4h-w_-229901854	Transaction has been successfully processed by the clearing agent. Settlement will take place outside of the system.
+UnmatchedStatusReason1Code	CMIS	MatchingInstructionNotFound	_Y7f5aNp-Ed-ak6NoX_4Aeg_689720427	Matching instruction from the counterparty could not be found.
+UnmatchedStatusReason1Code	DDAT	DisagreementSettlementDate	_Y7f5adp-Ed-ak6NoX_4Aeg_689720428	Counterparty disagrees with the settlement date/time.
+UnmatchedStatusReason1Code	DELN	DisagreementDirectionOfTrade	_Y7pDUNp-Ed-ak6NoX_4Aeg_689720429	Counterparty expects a delivery not a receipt, or counterparty expects a receipt not a delivery.
+UnmatchedStatusReason1Code	DEPT	DisagreementPlaceOfSettlement	_Y7pDUdp-Ed-ak6NoX_4Aeg_689720430	Counterparty disagrees with the place of settlement.
+UnmatchedStatusReason1Code	DMON	DisagreementSettlementAmount	_Y7pDUtp-Ed-ak6NoX_4Aeg_689720431	Counterparty disagrees with the settlement amount.
+UnmatchedStatusReason1Code	DDEA	DisagreementDealPrice	_Y7pDU9p-Ed-ak6NoX_4Aeg_689720439	Counterparty disagrees with the deal price.
+UnmatchedStatusReason1Code	DQUA	DisagreementQuantity	_Y7pDVNp-Ed-ak6NoX_4Aeg_689720440	Counterparty disagrees with the quantity of the financial instrument.
+UnmatchedStatusReason1Code	CADE	DisagreementRepurchaseCallDelay	_Y7pDVdp-Ed-ak6NoX_4Aeg_689720441	Repurchase call delay does not match.
+UnmatchedStatusReason1Code	SETR	DisagreementSettlementTransaction	_Y7pDVtp-Ed-ak6NoX_4Aeg_689720442	Settlement transaction type does not match.
+UnmatchedStatusReason1Code	DSEC	DisagreementSecurity	_Y7pDV9p-Ed-ak6NoX_4Aeg_689720443	Counterparty disagrees with the security/issue, for example, ISIN or a financial instrument attribute differs.
+UnmatchedStatusReason1Code	VASU	DisagreementVariableRateSupport	_Y7pDWNp-Ed-ak6NoX_4Aeg_689720444	Variable rate support does not match.
+UnmatchedStatusReason1Code	DTRA	NotRecognised	_Y7pDWdp-Ed-ak6NoX_4Aeg_689720453	Counterparty does not recognise the transaction.
+UnmatchedStatusReason1Code	RSPR	DisagreementRepurchaseSpreadRate	_Y7y0UNp-Ed-ak6NoX_4Aeg_689720454	Repurchase spread rate does not match.
+UnmatchedStatusReason1Code	REPO	DisagreementRepurchaseRate	_Y7y0Udp-Ed-ak6NoX_4Aeg_689720455	Repurchase rate does not match.
+UnmatchedStatusReason1Code	CLAT	CounterpartyTooLateForMatching	_Y7y0Utp-Ed-ak6NoX_4Aeg_689720456	Counterparty's instruction was too late.
+UnmatchedStatusReason1Code	RERT	DisagreementRepurchaseRateType	_Y7y0U9p-Ed-ak6NoX_4Aeg_689720457	Repurchase rate type does not match.
+UnmatchedStatusReason1Code	REPA	DisagreementRepurchaseAmount	_Y7y0VNp-Ed-ak6NoX_4Aeg_689720458	Repurchase amount does not match.
+UnmatchedStatusReason1Code	REPP	DisagreementRepurchasePremiumAmount	_Y7y0Vdp-Ed-ak6NoX_4Aeg_689720459	Repurchase premium amount does not match.
+UnmatchedStatusReason1Code	PHYS	DisagreementPhysicalSettlement	_Y7y0Vtp-Ed-ak6NoX_4Aeg_689720460	Counterparty's instructions is for physical settlement, and yours is not, or vice versa.
+UnmatchedStatusReason1Code	IIND	DisagreementCommonReference	_Y7y0V9p-Ed-ak6NoX_4Aeg_689720461	Counterparty disagrees with the common reference.
+UnmatchedStatusReason1Code	FRAP	DisagreementPaymentCode	_Y7y0WNp-Ed-ak6NoX_4Aeg_689720462	Counterparty's instructions is for free settlement, and yours is for settlement against payment, or vice versa.
+UnmatchedStatusReason1Code	PLCE	DisagreementPlaceOfTrade	_Y7y0Wdp-Ed-ak6NoX_4Aeg_689720470	Place of trade does not match.
+UnmatchedStatusReason1Code	PODU	PossibleDuplicateInstruction	_Y77-QNp-Ed-ak6NoX_4Aeg_689720471	Instruction is a possible duplicate.
+UnmatchedStatusReason1Code	FORF	DisagreementForfeitRepurchaseamount	_Y77-Qdp-Ed-ak6NoX_4Aeg_689720472	Repurchase forfeit amount does not match.
+UnmatchedStatusReason1Code	REGD	DisagreementRegistrationDetails	_Y77-Qtp-Ed-ak6NoX_4Aeg_689720473	Discrepancies exist in the registration details linked to the transaction.
+UnmatchedStatusReason1Code	RTGS	DisagreementRTGSSystem	_Y77-Q9p-Ed-ak6NoX_4Aeg_689720474	Counterparty indicates a settlement via RTGS system and you indicate non-RTGS settlement, or vice versa.
+UnmatchedStatusReason1Code	ICAG	IncorrectAgent	_Y77-RNp-Ed-ak6NoX_4Aeg_689720475	Counterparty indicated an incorrect delivery or receiving agent.
+UnmatchedStatusReason1Code	CPCA	CounterpartyCancelledInstruction	_Y77-Rdp-Ed-ak6NoX_4Aeg_689720484	Counterparty has cancelled the transaction/instruction.
+UnmatchedStatusReason1Code	CHAR	DisagreementChargesAmount	_Y77-Rtp-Ed-ak6NoX_4Aeg_689720485	Counterparty disagrees on the amount of charges.
+UnmatchedStatusReason1Code	IEXE	IncorrectBuyerOrSeller	_Y77-R9p-Ed-ak6NoX_4Aeg_689720486	Instruction indicates an incorrect buyer (receiver) or seller (deliverer).
+UnmatchedStatusReason1Code	NCRR	DisagreementCurrencySettlementAmount	_Y77-SNp-Ed-ak6NoX_4Aeg_689720487	Counterparty disagrees with the currency of the settlement amount.
+UnmatchedStatusReason1Code	NMAS	NoMatchingStarted	_Y77-Sdp-Ed-ak6NoX_4Aeg_689720488	Matching process has not yet started.
+UnmatchedStatusReason1Code	SAFE	DisagreementSafekeepingAccount	_Y77-Stp-Ed-ak6NoX_4Aeg_689720489	Safekeeping account used as a matching criteria on the market concerned does not match.
+UnmatchedStatusReason1Code	DTRD	DisagreementTradeDate	_Y8FvQNp-Ed-ak6NoX_4Aeg_689720490	Counterparty disagrees with the trade date.
+UnmatchedStatusReason1Code	LATE	YourInstructionTooLateForMatching	_Y8FvQdp-Ed-ak6NoX_4Aeg_689720491	Instruction received too late for matching.
+UnmatchedStatusReason1Code	TERM	DisagreementClosingDateTime	_Y8FvQtp-Ed-ak6NoX_4Aeg_689720492	Closing date/time does not match.
+UnmatchedStatusReason1Code	ICUS	DisagreementReceivingOrDeliveringCustodian	_Y8FvQ9p-Ed-ak6NoX_4Aeg_689720493	Incorrect delivering or receiving custodian.
+CancelledStatusReason1Code	CANI	CancelledByYourself	_a0pMU9p-Ed-ak6NoX_4Aeg_689720889	Transaction is cancelled by yourself.
+CancelledStatusReason1Code	CANS	CancelledBySystem	_a0pMVNp-Ed-ak6NoX_4Aeg_689720890	Transaction is cancelled by the system.
+CancelledStatusReason1Code	CSUB	CancelledByAgent	_a0pMVdp-Ed-ak6NoX_4Aeg_689720891	Transaction is cancelled by the agent.
+SuspendedStatusReason1Code	SUBY	SuspendedByYourself	_ZQzbBNp-Ed-ak6NoX_4Aeg_689720894	Transaction/instruction is suspended following your earlier suspension instruction.
+SuspendedStatusReason1Code	SUBS	SuspendedBySystem	_ZQzbBdp-Ed-ak6NoX_4Aeg_689720895	Transaction/instruction is suspended following a system suspension instruction.
+PendingFailingSettlement1Code	AWMO	AwaitingMoney	_zcQUlQ93EeGeV5vP7Mvdig_-1625508054	Securities have been delivered, but the money is still expected from the counterparty.
+PendingFailingSettlement1Code	AWSH	AwaitingSecuritiesFromCounterparty	_zcQUlg93EeGeV5vP7Mvdig_-475206144	Securities have not yet been received from the counterparty. If the settlement instruction was a received against payment, the cash has been delivered.
+PendingFailingSettlement1Code	LAAW	AwaitingOtherTransaction	_zcaFkA93EeGeV5vP7Mvdig_-486304921	Awaiting settlement of a linked 'buy'.
+PendingFailingSettlement1Code	DOCY	AwaitingDocumentsOrEndorsementsFromYou	_zcaFkQ93EeGeV5vP7Mvdig_-600143987	Awaiting documents or endorsements from you.
+PendingFailingSettlement1Code	CLAT	CounterpartyTooLateForSettlement	_zcaFkg93EeGeV5vP7Mvdig_274460232	Counterparty's instruction was too late for settlement, (that is, received too late, matching, or settlement problems were solved too late).
+PendingFailingSettlement1Code	CERT	WrongCertificateNumbers	_zcaFkw93EeGeV5vP7Mvdig_1798705517	Certificate number error.
+PendingFailingSettlement1Code	MINO	MinimumSettlementAmount	_zcaFlA93EeGeV5vP7Mvdig_-1735496626	Securities quantity is lower than the minimum existing settlement quantity for the instructed financial instrument.
+PendingFailingSettlement1Code	PHSE	PhysicalDeliveryDelay	_zcaFlQ93EeGeV5vP7Mvdig_-684363554	Settlement is physical, and there is a delay in the delivery of the securities.
+PendingFailingSettlement1Code	SBLO	SecuritiesBlocked	_zcaFlg93EeGeV5vP7Mvdig_1766734753	Securities are blocked, for example, because of a corporate action event or re-alignment.
+PendingFailingSettlement1Code	DKNY	CounterpartyReturnedSecurities	_zcjPgA93EeGeV5vP7Mvdig_1652895687	Counterparty has returned, refused, or does not recognize the securities.
+PendingFailingSettlement1Code	STCD	ConfirmationDiscrepancy	_zcjPgQ93EeGeV5vP7Mvdig_-655709609	Discrepancy in the settlement confirmation.
+PendingFailingSettlement1Code	BENO	BeneficialOwnershipDisagreement	_zcjPgg93EeGeV5vP7Mvdig_-537838624	Disagreement over beneficial ownership.
+PendingFailingSettlement1Code	LACK	LackOfSecurities	_zcjPgw93EeGeV5vP7Mvdig_1629300829	Insufficient deliverable securities in your account.
+PendingFailingSettlement1Code	LATE	TooLateForSettlement	_zcjPhA93EeGeV5vP7Mvdig_-1587646129	Settlement instruction was too late for settlement, that is, received too late, matching, or settlement problems were solved too late.
+PendingFailingSettlement1Code	CANR	CancellationConfirmationRequest	_zctAgA93EeGeV5vP7Mvdig_-1133558860	Transaction suspended. Because the suspension period is finished, the cancellation or confirmation of instructions is required.
+PendingFailingSettlement1Code	MLAT	MoneyTooLateForSettlement	_zctAgQ93EeGeV5vP7Mvdig_-1247397926	Payment for a buy of securities was received after the cut-off time for completing the settlement on a same day basis.
+PendingFailingSettlement1Code	OBJT	UnderObjection	_zctAgg93EeGeV5vP7Mvdig_-547611834	Securities are stolen, in dispute, and under objection.
+PendingFailingSettlement1Code	DOCC	AwaitingDocumentsOrEndorsementsFromCounterparty	_zctAgw93EeGeV5vP7Mvdig_-160034632	Awaiting documents or endorsements from the counterparty.
+PendingFailingSettlement1Code	BLOC	AccountBlocked	_zctAhA93EeGeV5vP7Mvdig_-171133409	Account is blocked, so no instruction can settle.
+PendingFailingSettlement1Code	CHAS	EnquirySent	_zctAhQ93EeGeV5vP7Mvdig_589631744	Enquiry/chaser sent to the agent or depository.
+PendingFailingSettlement1Code	NEWI	NewIssues	_zctAhg93EeGeV5vP7Mvdig_278240485	Securities are new issues, and not yet available/tradeable.
+PendingFailingSettlement1Code	CLAC	CounterpartyInsufficientSecurities	_zc2xgA93EeGeV5vP7Mvdig_267141708	Insufficient deliverable securities in the counterparty's account, or counterparty does not hold the securities.
+PendingFailingSettlement1Code	PART	TradeSettlesInPartials	_zc2xgQ93EeGeV5vP7Mvdig_153302642	Trade will settle in partials.
+PendingFailingSettlement1Code	CMON	CounterpartyInsufficientMoney	_zc2xgg93EeGeV5vP7Mvdig_592259215	Insufficient money in counterparty's account.
+PendingFailingSettlement1Code	COLL	SecuritiesPledgedAsCollateral	_zc2xgw93EeGeV5vP7Mvdig_1307176003	Securities are not deliverable as they are pledged as collateral.
+PendingFailingSettlement1Code	DEPO	RefusedDepositForIssueOfDepositaryReceipts	_zc2xhA93EeGeV5vP7Mvdig_888642413	Deposit of shares for the issuance of a depositary receipt has been refused. The allotment for depositary receipts granted by the issuer would be exceeded by the transaction.
+PendingFailingSettlement1Code	FLIM	MaximumForeignLimitReached	_zc2xhQ93EeGeV5vP7Mvdig_253610567	Insufficient deliverable securities in your account, as maximum foreign limit has been reached.
+PendingFailingSettlement1Code	NOFX	NoForeignExchangeInstruction	_zc2xhg93EeGeV5vP7Mvdig_1331630905	A foreign exchange instruction from you is missing.
+PendingFailingSettlement1Code	INCA	IncomeAdjustementRequired	_zc_7cA93EeGeV5vP7Mvdig_1217791839	Securities require income adjustment, that is, dividend or interest.
+PendingFailingSettlement1Code	LINK	PendingLinkedInstruction	_zc_7cQ93EeGeV5vP7Mvdig_-1132413222	Linked instruction is pending/failing.
+PendingFailingSettlement1Code	BYIY	BuyInProcedure	_zc_7cg93EeGeV5vP7Mvdig_-678325953	A buy-in procedure has started on the market, on your behalf, if your instruction is a receipt, or on behalf of the counterparty if the instruction is a delivery.
+PendingFailingSettlement1Code	CAIS	AwaitingSecurities	_zc_7cw93EeGeV5vP7Mvdig_-92378927	Awaiting securities from a corporate action issue or other procedure(s), for example, conversion, dematerialisation, exchange, registration, stamping, and splitting.
+PendingFailingSettlement1Code	LALO	SecuritiesLoanedOut	_zc_7dA93EeGeV5vP7Mvdig_1688133855	Insufficient deliverable securities in your account as securities are loaned out.
+PendingFailingSettlement1Code	MONY	InsufficientMoney	_zc_7dQ93EeGeV5vP7Mvdig_-710296717	Insufficient money in your account.
+PendingFailingSettlement1Code	NCON	ConfirmationNotReceived	_zc_7dg93EeGeV5vP7Mvdig_-721395494	Settlement confirmation has not yet been received.
+PendingFailingSettlement1Code	YCOL	CollateralShortage	_zdJscA93EeGeV5vP7Mvdig_-835234560	Not enough collateral in your account to execute the instruction.
+PendingFailingSettlement1Code	REFS	NotInGoodOrder	_zdJscQ93EeGeV5vP7Mvdig_1574713721	Delivery/receipt is refused because the physical securities are not in good order.
+PendingFailingSettlement1Code	SDUT	LackOfStampDutyInformation	_zdJscg93EeGeV5vP7Mvdig_-2109851647	Instruction is failing since stamp duty information is missing.
+PendingFailingSettlement1Code	CYCL	AwaitingNextSettlementCycle	_zdJscw93EeGeV5vP7Mvdig_-2120950424	Your instruction is confirmed in the local market, but is ready for settlement at the next settlement cycle.
+PendingFailingSettlement1Code	BATC	ProcessingBatchDifference	_zdJsdA93EeGeV5vP7Mvdig_2060177806	Processing batch differs in the counterparty's instruction, for example, day time/real time vs overnight.
+PendingFailingSettlement1Code	GUAD	GuaranteedDeliveryIndicatorDifference	_zdJsdQ93EeGeV5vP7Mvdig_-131996815	Guaranteed delivery indicator differs in the counterparty's instruction.
+PendingFailingSettlement1Code	PREA	PreadviceInstructed	_zdJsdg93EeGeV5vP7Mvdig_-1824177012	Instruction is a preadvice, that is, matching only.
+PendingFailingSettlement1Code	GLOB	GlobalFormSecurities	_zdTdcA93EeGeV5vP7Mvdig_-2141953673	Securities are in global form.
+PendingFailingSettlement1Code	CPEC	CounterpartyInReceivership	_zdTdcQ93EeGeV5vP7Mvdig_-1381188520	Counterparty is in receivership, that is, a form of bankruptcy.
+PendingFailingSettlement1Code	MUNO	MultipleSettlementAmount	_zdTdcg93EeGeV5vP7Mvdig_-795241494	Amount is not a multiple of an existing settlement amount lot for the instructed financial instrument.
+PendingSettlement2Code	AWMO	AwaitingMoney	_aDKsFNp-Ed-ak6NoX_4Aeg_508168770	Securities have been delivered, but the settlement amount has not been received from the counterparty.
+PendingSettlement2Code	CAIS	AwaitingSecurities	_aDKsFdp-Ed-ak6NoX_4Aeg_508169110	Awaiting securities from corporate action issue or other procedures, for example, conversion, dematerialisation, exchange, registration, stamping, splitting, etc.
+PendingSettlement2Code	REFU	InstructionRefusedOrNotRecognised	_aDKsFtp-Ed-ak6NoX_4Aeg_508169480	Instruction that has been refused or not recognised, and is represented automatically.
+PendingSettlement2Code	AWSH	AwaitingSharesFromCounterparty	_aDKsF9p-Ed-ak6NoX_4Aeg_508169596	Securities have not yet been received from the counterparty.
+PendingSettlement2Code	PHSE	PhysicalDeliveryDelay	_aDKsGNp-Ed-ak6NoX_4Aeg_508169718	Settlement is physical and securities are being delivered.
+PendingSettlement2Code	TAMM	TradeAmendedInMarket	_aDKsGdp-Ed-ak6NoX_4Aeg_508170058	Trade is being amended in the market.
+PendingSettlement2Code	DOCY	AwaitingDocumentsOrEndorsementsFromYou	_aDUdENp-Ed-ak6NoX_4Aeg_508170459	Awaiting documents or endorsements from you.
+PendingSettlement2Code	DOCC	AwaitingDocumentsOrEndorsementsFromCounterparty	_aDUdEdp-Ed-ak6NoX_4Aeg_508170612	Awaiting documents or endorsements from the counterparty.
+PendingSettlement2Code	BLOC	AccountBlocked	_aDUdEtp-Ed-ak6NoX_4Aeg_508170951	Your account is blocked, no instruction can settle over the account.
+PendingSettlement2Code	CHAS	EnquirySent	_aDUdE9p-Ed-ak6NoX_4Aeg_508171096	Chaser/enquiry sent to the agent or depository.
+PendingSettlement2Code	NEWI	NewIssues	_aDUdFNp-Ed-ak6NoX_4Aeg_508171498	Securities are new issues and are not yet available/tradable.
+PendingSettlement2Code	CLAC	CounterpartyInsufficientSecurities	_aDUdFdp-Ed-ak6NoX_4Aeg_508171651	Insufficient deliverable securities in the counterparty's account, or counterparty does not hold the securities.
+PendingSettlement2Code	MUNO	MultipleSettlementAmount	_aDUdFtp-Ed-ak6NoX_4Aeg_508171983	Securities quantity is not a multiple of an existing settlement amount lot for the instructed financial instrument.
+PendingSettlement2Code	GLOB	GlobalFormSecurities	_aDUdF9p-Ed-ak6NoX_4Aeg_509092107	Settlement cannot be executed as securities are in global form.
+PendingSettlement2Code	PREA	PreadviceInstructed	_aDUdGNp-Ed-ak6NoX_4Aeg_509092260	Your instruction is a preadvice, that is, matching only.
+PendingSettlement2Code	GUAD	GuaranteedDeliveryIndicatorDifference	_aDUdGdp-Ed-ak6NoX_4Aeg_509092631	Guaranteed delivery indicator differs in the counterparty's instruction.
+PendingSettlement2Code	PART	TradeSettlesInPartials	_aDdnANp-Ed-ak6NoX_4Aeg_509093032	Trade will settle in partials.
+PendingSettlement2Code	NMAS	NoMatchingRequired	_aDdnAdp-Ed-ak6NoX_4Aeg_509093208	Instruction has not been matched because the matching process is not required.
+PendingSettlement2Code	CMON	CounterpartyInsufficientMoney	_aDdnAtp-Ed-ak6NoX_4Aeg_509093579	Insufficient money in the counterparty's account.
+PendingSettlement2Code	YCOL	CollateralShortage	_aDdnA9p-Ed-ak6NoX_4Aeg_509094010	Not enough collateral in your account to execute the transaction.
+PendingSettlement2Code	COLL	SecuritiesPledgedAsCollateral	_aDdnBNp-Ed-ak6NoX_4Aeg_509094163	Securities are not deliverable as they are pledged as collateral.
+PendingSettlement2Code	DEPO	RefusedDepositForIssueOfDepositaryReceipts	_aDdnBdp-Ed-ak6NoX_4Aeg_509095141	Deposit of shares for the issuing of depositary receipts has been refused. The allotment for depositary receipts granted by the issuer is exceeded by the transaction.
+PendingSettlement2Code	FLIM	MaximumForeignLimitReached	_aDdnBtp-Ed-ak6NoX_4Aeg_510016553	Insufficient deliverable securities in your account because the maximum foreign limit has been reached.
+PendingSettlement2Code	NOFX	NoForeignExchangeInstruction	_aDdnB9p-Ed-ak6NoX_4Aeg_510018055	Foreign exchange instruction is missing.
+PendingSettlement2Code	INCA	IncomeAdjustementRequired	_aDdnCNp-Ed-ak6NoX_4Aeg_510939611	Securities require income adjustment, for example, dividend or interest.
+PendingSettlement2Code	LINK	PendingLinkedInstruction	_aDdnCdp-Ed-ak6NoX_4Aeg_510941236	Your instruction is pending settlement because the instruction linked to it is pending.
+PendingSettlement2Code	FUTU	AwaitingSettlementDate	_aDnYANp-Ed-ak6NoX_4Aeg_511862793	Instruction is awaiting the settlement date, and no settlement problems have been reported.
+PendingSettlement2Code	LACK	LackOfSecurities	_aDnYAdp-Ed-ak6NoX_4Aeg_511864604	Insufficient deliverable securities in your account.
+PendingSettlement2Code	LALO	SecuritiesLoanedOut	_aDnYAtp-Ed-ak6NoX_4Aeg_511866044	Insufficient deliverable securities in your account because securities are loaned out.
+PendingSettlement2Code	MONY	InsufficientMoney	_aDnYA9p-Ed-ak6NoX_4Aeg_512787201	Insufficient money in your account.
+PendingSettlement2Code	NCON	ConfirmationNotReceived	_aDnYBNp-Ed-ak6NoX_4Aeg_512788618	Settlement confirmation has not been received.
+PendingSettlement2Code	REFS	NotInGoodOrder	_aDnYBdp-Ed-ak6NoX_4Aeg_513709774	Delivery/receipt has been refused because the physical securities are not in good order.
+PendingSettlement2Code	SDUT	LackOfStampDutyInformation	_aDnYBtp-Ed-ak6NoX_4Aeg_513711184	Instruction is pending as stamp duty information is missing.
+PendingSettlement2Code	BATC	ProcessingBatchDifference	_aDnYB9p-Ed-ak6NoX_4Aeg_513712624	Processing batch differs in the counterparty's instruction, for example, day time/real time versus overnight.
+PendingSettlement2Code	CYCL	AwaitingNextSettlementCycle	_aDnYCNp-Ed-ak6NoX_4Aeg_514633757	Instruction is confirmed in the local market or is ready for settlement, awaiting the next settlement cycle.
+PendingSettlement2Code	SBLO	SecuritiesBlocked	_aDnYCdp-Ed-ak6NoX_4Aeg_514635198	Settlement is pending. The securities are blocked due to, for example, a corporate action event, re-alignment.
+PendingSettlement2Code	CPEC	CounterpartyInReceivership	_aDxJANp-Ed-ak6NoX_4Aeg_514636607	Counterparty is in receivership, that is, the form of bankruptcy where a court appointed person, the receiver, manages the affairs of the business.
+PendingSettlement2Code	MINO	MinimumSettlementAmount	_aDxJAdp-Ed-ak6NoX_4Aeg_515557794	Securities amount is lower than the minimum existing settlement amount for the instructed financial instrument.
+PendingSettlement2Code	PCAP	PendingCAP	_aDxJAtp-Ed-ak6NoX_4Aeg_515559203	Payment is pending, and does not settle because the actual use of the risk management limit on the counterpart (bilateral limit) prevents settlement.

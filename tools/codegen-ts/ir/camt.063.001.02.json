@@ -1,0 +1,182 @@
+{
+  "message": {
+    "identifier": "camt.063.001.02",
+    "name": "PayInEventAcknowledgementV02",
+    "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.063.001.02",
+    "bodyTag": "PayInEvtAck",
+    "out": "camt063",
+    "isoId": "_eii_URnXEeKKXqHkeUjBbw",
+    "definition": "The PayInEventAcknowledgement message is sent by a participant of a central system to the central system to confirm a PayInSchedule or a PayInCall has been received.",
+    "blocks": [
+      {
+        "name": "MessageIdentification",
+        "isoId": "_1VTQczp7EeKXK8qRvydwAw",
+        "xmlTag": "MsgId",
+        "type": "Max35Text",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "SettlementSessionIdentifier",
+        "isoId": "_SY6S7R3bEeKXIbeXfdPzuw",
+        "xmlTag": "SttlmSsnIdr",
+        "type": "Exact4AlphaNumericText",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "name": "AcknowledgementDetails",
+        "isoId": "_eii_VxnXEeKKXqHkeUjBbw",
+        "xmlTag": "AckDtls",
+        "type": "AcknowledgementDetails1Choice",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "SupplementaryData",
+        "isoId": "_Cu8KTy53EeKwTrPDLMbLxA",
+        "xmlTag": "SplmtryData",
+        "type": "SupplementaryData1",
+        "min": 0,
+        "max": null
+      }
+    ]
+  },
+  "root": "PayInEventAcknowledgementV02",
+  "order": [
+    "Max35Text",
+    "Exact4AlphaNumericText",
+    "AcknowledgementDetails1Choice",
+    "Max350Text",
+    "SupplementaryDataEnvelope1",
+    "SupplementaryData1",
+    "PayInEventAcknowledgementV02"
+  ],
+  "types": {
+    "Max35Text": {
+      "name": "Max35Text",
+      "kind": "text",
+      "isoId": "_YW1tKdp-Ed-ak6NoX_4Aeg_1913463446",
+      "minLength": 1,
+      "maxLength": 35
+    },
+    "Exact4AlphaNumericText": {
+      "name": "Exact4AlphaNumericText",
+      "kind": "text",
+      "isoId": "_YYLJ6Np-Ed-ak6NoX_4Aeg_-1265890753",
+      "pattern": "[a-zA-Z0-9]{4}"
+    },
+    "AcknowledgementDetails1Choice": {
+      "name": "AcknowledgementDetails1Choice",
+      "isoId": "_oIaocSzSEeKZfox_pyYpTA",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "PayInScheduleReference",
+          "isoId": "_oUQsESzSEeKZfox_pyYpTA",
+          "xmlTag": "PayInSchdlRef",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "PayInCallReference",
+          "isoId": "_3SatcCzSEeKZfox_pyYpTA",
+          "xmlTag": "PayInCallRef",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Max350Text": {
+      "name": "Max350Text",
+      "kind": "text",
+      "isoId": "_YW1tKNp-Ed-ak6NoX_4Aeg_1778996852",
+      "minLength": 1,
+      "maxLength": 350
+    },
+    "SupplementaryDataEnvelope1": {
+      "name": "SupplementaryDataEnvelope1",
+      "kind": "any",
+      "isoId": "_Kz9KwJDrEeSLQ8ob-qtemg"
+    },
+    "SupplementaryData1": {
+      "name": "SupplementaryData1",
+      "isoId": "_Qn0zC9p-Ed-ak6NoX_4Aeg_468227563",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "PlaceAndName",
+          "isoId": "_Qn988Np-Ed-ak6NoX_4Aeg_354388497",
+          "xmlTag": "PlcAndNm",
+          "type": "Max350Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Envelope",
+          "isoId": "_Qn988dp-Ed-ak6NoX_4Aeg_-642683856",
+          "xmlTag": "Envlp",
+          "type": "SupplementaryDataEnvelope1",
+          "kind": "any",
+          "min": 1,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "SupplementaryDataRule",
+          "isoId": "_Qn988tp-Ed-ak6NoX_4Aeg_-1492355109",
+          "text": "This component may not be used without the explicit approval of a SEG and submission to the RA of ISO 20022 compliant structure(s) to be used in the Envelope element."
+        }
+      ]
+    },
+    "PayInEventAcknowledgementV02": {
+      "name": "PayInEventAcknowledgementV02",
+      "isoId": "_eii_URnXEeKKXqHkeUjBbw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "MessageIdentification",
+          "isoId": "_1VTQczp7EeKXK8qRvydwAw",
+          "xmlTag": "MsgId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SettlementSessionIdentifier",
+          "isoId": "_SY6S7R3bEeKXIbeXfdPzuw",
+          "xmlTag": "SttlmSsnIdr",
+          "type": "Exact4AlphaNumericText",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "AcknowledgementDetails",
+          "isoId": "_eii_VxnXEeKKXqHkeUjBbw",
+          "xmlTag": "AckDtls",
+          "type": "AcknowledgementDetails1Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SupplementaryData",
+          "isoId": "_Cu8KTy53EeKwTrPDLMbLxA",
+          "xmlTag": "SplmtryData",
+          "type": "SupplementaryData1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    }
+  }
+}

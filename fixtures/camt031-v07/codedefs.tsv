@@ -1,0 +1,8 @@
+codeSet	code	enumName	isoId	text
+InvestigationRejection1Code	NFND	UnderlyingPaymentNotFound	_abwLNNp-Ed-ak6NoX_4Aeg_-283942364	Underlying instruction can not be found.
+InvestigationRejection1Code	NAUT	NotAuthorisedToInvestigate	_abwLNdp-Ed-ak6NoX_4Aeg_-283942363	Case assignee is not allowed to investigate on this instruction or a party has been by-passed in the payment chain or no bilateral agreement has been established for this type of query.
+InvestigationRejection1Code	UKNW	UnknownCase	_abwLNtp-Ed-ak6NoX_4Aeg_-283942362	Case has never been assigned before.
+InvestigationRejection1Code	PCOR	PaymentPreviouslyCancelledOrRejected	_abwLN9p-Ed-ak6NoX_4Aeg_-283942334	Used when the payment instruction has previously been cancelled or rejected.
+InvestigationRejection1Code	WMSG	WrongMessage	_abwLONp-Ed-ak6NoX_4Aeg_-174967773	Wrong message has been used in the investigation workflow.
+InvestigationRejection1Code	RNCR	RejectNonCashRelated	_ab58MNp-Ed-ak6NoX_4Aeg_1887051953	Used to reject a non-cash related query that is not covered in the workflow.
+InvestigationRejection1Code	MROI	MissingResolutionOfInvestigation	_ab58Mdp-Ed-ak6NoX_4Aeg_-538416824	Resolution of Investigation has not been received on reopened case.

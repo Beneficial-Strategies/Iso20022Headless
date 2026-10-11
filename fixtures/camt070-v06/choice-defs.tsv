@@ -1,0 +1,5 @@
+choice	memberId	memberName	text
+StandingOrderOrError9Choice	_z1rjMTEyEe6g-ffJsqGiSA	Report	Reports either on the standing order or on a business error.
+StandingOrderOrError9Choice	_z1rjMzEyEe6g-ffJsqGiSA	OperationalError	Indicates that an operational error has been issued during the processing of the related request.
+StandingOrderOrError10Choice	_z6GJITEyEe6g-ffJsqGiSA	StandingOrder	Requested information on the account.
+StandingOrderOrError10Choice	_z6GJIzEyEe6g-ffJsqGiSA	BusinessError	Reason the requested business information is not given.

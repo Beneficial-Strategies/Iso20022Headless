@@ -32,6 +32,8 @@ import {
   ExternalCashAccountType1CodeSchema,
   CashAccountType2ChoiceSchema,
   ActiveOrHistoricCurrencyCodeSchema,
+  ExternalSystemBalanceType1CodeSchema,
+  BalanceType11ChoiceSchema,
   BICFIDec2014IdentifierSchema,
   ExternalClearingSystemIdentification1CodeSchema,
   ClearingSystemIdentification2ChoiceSchema,
@@ -84,13 +86,6 @@ import {
   SupplementaryData1Schema,
   sharedTypeDescriptors,
 } from './shared.ts';
-
-export const ExternalSystemBalanceType1CodeSchema = textType({min: 1, max: 4});
-
-export const BalanceType11ChoiceSchema = choiceOf({
-  Code: ExternalSystemBalanceType1CodeSchema,
-  Proprietary: Max35TextSchema,
-});
 
 export const BalanceCounterparty1CodeSchema = z.enum(["BILA", "MULT"]);
 
@@ -162,23 +157,6 @@ export const GetAccountV08Schema = z.strictObject({
 const f = (d: FieldDescriptor): FieldDescriptor => d;
 
 const ownTypeDescriptors: TypeDescriptors = {
-  "ExternalSystemBalanceType1Code": {
-    name: "ExternalSystemBalanceType1Code",
-    isoId: "_qP4YgXhYEeidzqjNEfehPg",
-    kind: "code",
-    minLength: 1,
-    maxLength: 4,
-    external: true,
-  },
-  "BalanceType11Choice": {
-    name: "BalanceType11Choice",
-    isoId: "_X7FWAXhZEeidzqjNEfehPg",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_YGEeA3hZEeidzqjNEfehPg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalSystemBalanceType1Code", required: true }),
-      f({ name: "Proprietary", isoId: "_YGEeBXhZEeidzqjNEfehPg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
-    ],
-  },
   "BalanceCounterparty1Code": {
     name: "BalanceCounterparty1Code",
     isoId: "_bkBa0tp-Ed-ak6NoX_4Aeg_678189976",
@@ -318,6 +296,8 @@ export const typeDescriptors: TypeDescriptors = {
   "ExternalCashAccountType1Code": sharedTypeDescriptors["ExternalCashAccountType1Code"]!,
   "CashAccountType2Choice": sharedTypeDescriptors["CashAccountType2Choice"]!,
   "ActiveOrHistoricCurrencyCode": sharedTypeDescriptors["ActiveOrHistoricCurrencyCode"]!,
+  "ExternalSystemBalanceType1Code": sharedTypeDescriptors["ExternalSystemBalanceType1Code"]!,
+  "BalanceType11Choice": sharedTypeDescriptors["BalanceType11Choice"]!,
   "BICFIDec2014Identifier": sharedTypeDescriptors["BICFIDec2014Identifier"]!,
   "ExternalClearingSystemIdentification1Code": sharedTypeDescriptors["ExternalClearingSystemIdentification1Code"]!,
   "ClearingSystemIdentification2Choice": sharedTypeDescriptors["ClearingSystemIdentification2Choice"]!,

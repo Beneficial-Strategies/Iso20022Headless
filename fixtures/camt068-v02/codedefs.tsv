@@ -1,0 +1,3 @@
+codeSet	code	enumName	isoId	text
+PartialSettlement2Code	PAIN	PartialSettlement	_POj5gUAuEeGeCKosDOIVvQ_-493303667	Confirmation is for partial settlement. Part of the transaction remains unsettled.
+PartialSettlement2Code	PARC	PartiallyConfirmed	_POtDcEAuEeGeCKosDOIVvQ_-607142733	Confirmation is for partial settlement. No additional settlement will take place.

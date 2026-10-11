@@ -1,0 +1,7 @@
+codeSet	code	enumName	isoId	text
+TransactionProcessingStatus3Code	CAND	Cancelled	_jWxDkO5NEeCisYr99QEiWA_796529657	Instruction has been cancelled.
+TransactionProcessingStatus3Code	PACK	AcknowledgedAccepted	_jWxDke5NEeCisYr99QEiWA_-200542696	Instruction has been acknowledged/accepted for further processing by the account servicer.
+TransactionProcessingStatus3Code	REJT	Rejected	_jWxDku5NEeCisYr99QEiWA_-1261894655	Instruction has been rejected for further processing.
+TransactionProcessingStatus3Code	REPR	InRepair	_jWxDk-5NEeCisYr99QEiWA_-1083775983	Instruction is accepted but in repair.
+SecuritiesSettlementStatus1Code	PEND	Pending	_ZFx2xtp-Ed-ak6NoX_4Aeg_1558336292	Instruction is pending. Settlement at the instructed settlement date is still possible.
+SecuritiesSettlementStatus1Code	PENF	Failing	_ZFx2x9p-Ed-ak6NoX_4Aeg_1570340511	Instruction is failing. Settlement at the instructed settlement date is no longer possible.

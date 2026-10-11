@@ -1,0 +1,67 @@
+{
+  "identifier": "camt.084.001.02",
+  "name": "IntraBalanceMovementPostingReportV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.084.001.02",
+  "bodyTag": "IntraBalMvmntPstngRpt",
+  "out": "camt084",
+  "isoId": "_R3OqFTEZEe6kQ-WGAhcVPQ",
+  "definition": "This IntraBalanceMovementPostingReport message is sent from a settlement infrastructure to an account owner/requestor to report the intra-balance movement instructions, previously sent by the account owner, that have a settled status.||The message may also be used to: |-\t- re-send a message sent by the account owner to the account servicer (the sub-function of the message is \"Duplicate\") |-\t- provide a third party with a copy of a message being sent by the account owner for information (the sub-function of the message is \"Copy\") |-\t- re-send to a third party a copy of a message being sent by the account owner for information (the sub-function of the message is \"Copy Duplicate\").",
+  "blocks": [
+    {
+      "name": "Identification",
+      "isoId": "_R3OqJzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Id",
+      "type": "DocumentIdentification51",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Pagination",
+      "isoId": "_R3OqKTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ReportGeneralDetails",
+      "isoId": "_R3OqKzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "RptGnlDtls",
+      "type": "IntraBalanceReport6",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CashAccount",
+      "isoId": "_R3OqLTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "CshAcct",
+      "type": "CashAccount40",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CashAccountOwner",
+      "isoId": "_R3OqLzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "CshAcctOwnr",
+      "type": "SystemPartyIdentification8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CashAccountServicer",
+      "isoId": "_R3OqMTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "CshAcctSvcr",
+      "type": "BranchAndFinancialInstitutionIdentification8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SubBalance",
+      "isoId": "_R3OqMzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SubBal",
+      "type": "IntraBalancePosting5",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

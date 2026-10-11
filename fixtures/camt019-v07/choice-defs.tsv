@@ -1,0 +1,11 @@
+choice	memberId	memberName	text
+BusinessDayReportOrError9Choice	_ODn9IXXyEei3jO6riKEVXg	BusinessReport	Reports either business day information or a business error.
+BusinessDayReportOrError9Choice	_ODn9I3XyEei3jO6riKEVXg	OperationalError	Indicates that an operational error has been issued during the processing of the related request.
+BusinessDayReportOrError10Choice	_OYVo4XXyEei3jO6riKEVXg	BusinessDayInformation	Requested system details for a specific business day.
+BusinessDayReportOrError10Choice	_OYVo43XyEei3jO6riKEVXg	BusinessError	Reason the requested business information is not given.
+SystemStatus2Choice	_ytFEMRbpEeOy-PlRuFSUzQ	Code	Status of the system, in a coded form.
+SystemStatus2Choice	_ytFEMxbpEeOy-PlRuFSUzQ	Proprietary	Status of the system, in a proprietary form.
+SystemEventType4Choice	_eFPKI3hkEeidzqjNEfehPg	Code	Type of system event that has occurred, expressed in a coded form.
+SystemEventType4Choice	_eFPKJXhkEeidzqjNEfehPg	Proprietary	Type of system event that has occurred, expressed as free text or a bilaterally agreed code.|.
+ClosureReason2Choice	_72rN8aMgEeCJ6YNENx4h-w_2072167944	Code	Reason the system is closed/not operating, in a coded form.
+ClosureReason2Choice	_72rN8qMgEeCJ6YNENx4h-w_672613014	Proprietary	Reason the system is closed/not operating, in a bilateral agreed code.

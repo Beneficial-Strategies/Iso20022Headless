@@ -1,0 +1,10 @@
+codeSet	code	enumName	isoId	text
+SystemStatus2Code	SUSP	Suspended	_ZSJe1Np-Ed-ak6NoX_4Aeg_-246312211	System is suspended, that is, not operational.
+SystemStatus2Code	ACTV	Active	_ZSJe1dp-Ed-ak6NoX_4Aeg_-237078229	System is functioning normally, that is, operational.
+SystemStatus2Code	CLSD	Closed	_ZSJe1tp-Ed-ak6NoX_4Aeg_-234308163	System is closed (eg. normal closure of an RTGS).
+SystemStatus2Code	CLSG	Closing	_ZSJe19p-Ed-ak6NoX_4Aeg_-225070272	System needs to wait for completion of intermediate internal activities before going to a status Closed.
+SystemClosureReason1Code	BHOL	BankingHoliday	_ZRQG89p-Ed-ak6NoX_4Aeg_2007403395	System is closed due to a bank holiday.
+SystemClosureReason1Code	SMTN	SystemMaintenance	_ZRQG9Np-Ed-ak6NoX_4Aeg_2007403396	System is closed for maintenance reasons.
+SystemClosureReason1Code	NOOP	NoOperation	_ZRQG9dp-Ed-ak6NoX_4Aeg_2007403397	System is not processing any operation.
+SystemClosureReason1Code	RCVR	Recovery	_ZRQG9tp-Ed-ak6NoX_4Aeg_2007403398	System is not operational during recovery operations.
+SystemClosureReason1Code	ADTW	AllowedDowntimeWindow	_ZRQG99p-Ed-ak6NoX_4Aeg_2007403406	System is not operational during allowed downtime windows.

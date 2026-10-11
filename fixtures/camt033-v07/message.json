@@ -1,0 +1,35 @@
+{
+  "identifier": "camt.033.001.07",
+  "name": "RequestForDuplicateV07",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.033.001.07",
+  "bodyTag": "ReqForDplct",
+  "out": "camt033",
+  "isoId": "_R3SU1zEZEe6kQ-WGAhcVPQ",
+  "definition": "Scope|The RequestForDuplicate message is sent by the case assignee to the case creator or case assigner.|This message is used to request a copy of the original payment instruction considered in the case.|Usage|The RequestForDuplicate message:|- must be answered with a Duplicate message;|- must be used when a case assignee requests a copy of the original payment instruction. This occurs, for example, when the case assignee cannot trace the payment instruction based on the elements mentioned in the case assignment message;|- covers one and only one instruction at a time. If several payment instruction copies are needed by the case assignee, then multiple RequestForDuplicate messages must be sent|- must be used exclusively between the case assignee and its case creator/case assigner.",
+  "blocks": [
+    {
+      "name": "Assignment",
+      "isoId": "_R3SU3zEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Assgnmt",
+      "type": "CaseAssignment6",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Case",
+      "isoId": "_R3SU4TEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Case",
+      "type": "Case6",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3SU4zEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

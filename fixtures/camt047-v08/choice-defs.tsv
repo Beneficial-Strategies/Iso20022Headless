@@ -1,0 +1,7 @@
+choice	memberId	memberName	text
+ReservationOrError11Choice	_6zqpATEyEe6g-ffJsqGiSA	BusinessReport	Reports on reservations.
+ReservationOrError11Choice	_6zqpAzEyEe6g-ffJsqGiSA	OperationalError	Indicates that an operational error has been issued during the processing of the related request.
+ReservationOrError9Choice	_RYRzgXhdEeidzqjNEfehPg	Reservation	Requested information on the limit.
+ReservationOrError9Choice	_RYRzg3hdEeidzqjNEfehPg	BusinessError	Reason the requested business information is not given.
+ReservationStatus1Choice	_8JAUFqMgEeCJ6YNENx4h-w_2012662901	Code	Liquidity transfer request type, in a coded form.
+ReservationStatus1Choice	_8JAUF6MgEeCJ6YNENx4h-w_493911419	Proprietary	Liquidity transfer request type, in a proprietary form.

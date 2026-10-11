@@ -24,6 +24,7 @@ function pages(): string {
         { id: 'R1', name: 'ThingRule', xmlElementName: 'constraint', definition: 'A must be present.', attributes: { expression: '<RuleDefinition>x</RuleDefinition>' } },
         { id: 'B1', name: 'Header', xmlElementName: 'messageBuildingBlock', xmlTag: 'Hdr', minOccurs: '1', maxOccurs: '1', references: [{ relation: 'complexType', id: 'x', name: 'Header1' }] },
         { id: 'B2', name: 'Item', xmlElementName: 'messageBuildingBlock', xmlTag: 'Itm', minOccurs: '0', references: [{ relation: 'complexType', id: 'x', name: 'Item1Choice' }] },
+        { id: 'B3', name: 'Reference', xmlElementName: 'messageBuildingBlock', xmlTag: 'Ref', minOccurs: '0', maxOccurs: '1', definition: 'The reference.', references: [{ relation: 'simpleType', id: 'T1', name: 'Max35Text' }] },
       ],
     },
   ], { name: 'Cash Management', attributes: { code: 'camt' }, definition: 'Cash.' });
@@ -52,14 +53,14 @@ describe('the resource reader', () => {
     const m = res.messages.get('M1')!;
     expect([m.identifier, m.bodyTag, m.area]).toEqual(['camt.999.001.01', 'ThngRpt', 'Cash Management']);
     expect(res.areas.get('camt')?.name).toBe('Cash Management');
-    expect(res.spec.blocks.get('ThingReportV01')!.map((b) => [b[3], b[4], b[5], b[6]])).toEqual([['Hdr', 'Header1', '1', '1'], ['Itm', 'Item1Choice', '0', '']]);
+    expect(res.spec.blocks.get('ThingReportV01')!.map((b) => [b[3], b[4], b[5], b[6]])).toEqual([['Hdr', 'Header1', '1', '1'], ['Itm', 'Item1Choice', '0', ''], ['Ref', 'Max35Text', '0', '1']]);
   });
 
   it('keeps members in the order the resources give them and records that order', () => {
     expect(res.spec.elements.get('Header1')!.map((e) => e[2])).toEqual(['Zeta', 'Alpha']);
     expect(res.memberOrder.get('Header1')).toEqual(['Zt', 'Alp']);
     expect(res.memberOrder.get('Item1Choice')).toEqual(['Cd', 'Othr']);
-    expect(res.memberOrder.get('message:M1')).toEqual(['Hdr', 'Itm']);
+    expect(res.memberOrder.get('message:M1')).toEqual(['Hdr', 'Itm', 'Ref']);
   });
 
   it('writes line breaks as the | marker and trims the edges', () => {
@@ -88,14 +89,17 @@ describe('writing fixtures from resources', () => {
     expect(runResources({ pages: pagesDir, messages: list, fixtures: out, mode: 'write', rulesTag: 'test' })).toBe(0);
     const f = (p: string): string => readFileSync(join(out, p), 'utf8');
 
-    expect(JSON.parse(f('camt999-v01/message.json')).blocks.map((b: { xmlTag: string; max: number | null }) => [b.xmlTag, b.max])).toEqual([['Hdr', 1], ['Itm', null]]);
+    expect(JSON.parse(f('camt999-v01/message.json')).blocks.map((b: { xmlTag: string; max: number | null }) => [b.xmlTag, b.max])).toEqual([['Hdr', 1], ['Itm', null], ['Ref', 1]]);
+    // a block of a simple type keeps its own definition (a block of a component takes its type's text)
+    expect(f('camt999-v01/snapshot-raw.tsv')).toContain('MEMBER\tThingReportV01\tB3\tReference\tRef\tAttribute\tMax35Text\t0\t1\tThe reference.');
+    expect(f('camt999-v01/snapshot-raw.tsv')).not.toContain('MEMBER\tThingReportV01\tB1');
     // wire values in the resources' order, with the base set; the external set and the pattern set are markers, not lists
     expect(f('camt999-v01/codesets.tsv')).toContain('Method1Code\tS1\tMethodCode\tTRF\tTransfer\nMethod1Code\tS1\tMethodCode\tCHK\tCheque');
     expect(f('camt999-v01/codesets.tsv')).toContain('ExternalThing1Code\tS2\t\t*EXTERNAL*\tminLength=1 maxLength=4; ~7 codes (not enumerated)');
     expect(f('camt999-v01/codesets.tsv')).toContain('CurrencyCode\tS3\t\t*PATTERN*\t[A-Z]{3,3}');
     expect(f('code-order.tsv')).toContain('Method1Code\tTRF,CHK');
     expect(f('member-order.tsv')).toContain('Header1\tZt,Alp');
-    expect(f('member-order.tsv')).toContain('ThingReportV01\tHdr,Itm');
+    expect(f('member-order.tsv')).toContain('ThingReportV01\tHdr,Itm,Ref');
     expect(f('rules/constraints-test.tsv')).toContain('ThingReportV01\tR1\tThingRule\tA must be present.');
     expect(f('rules/constraint-expressions-test.tsv')).toContain('<RuleDefinition>x</RuleDefinition>');
 

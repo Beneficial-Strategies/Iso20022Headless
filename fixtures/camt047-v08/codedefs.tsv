@@ -1,0 +1,6 @@
+codeSet	code	enumName	isoId	text
+ReservationStatus1Code	ENAB	Enabled	_8J5r8aMgEeCJ6YNENx4h-w_312799950	Reservation is currently in effect.
+ReservationStatus1Code	DISA	Disabled	_8J5r8qMgEeCJ6YNENx4h-w_898746976	Reservation is not currently in effect.|.
+ReservationStatus1Code	DELD	Deleted	_8J5r86MgEeCJ6YNENx4h-w_-173258083	Reservation has been deleted or suspended.
+ReservationStatus1Code	REQD	Requested	_8J5r9KMgEeCJ6YNENx4h-w_280829186	Reservation has been asked for and is not yet enabled.|.
+ReservationStatus1Code	BLKD	Blocked	_8J5r9aMgEeCJ6YNENx4h-w_-1729127672	Reservation is blocked or frozen due to external circumstances such as a court order, death of beneficiary or account owner, or bankruptcy.

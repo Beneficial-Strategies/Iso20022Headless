@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+ModificationProcessingStatus9Choice	_xFphgeF8EeWCAvUNsZ5u6g	Code	Provides the status of a modification request.
+ModificationProcessingStatus9Choice	_xFphieF8EeWCAvUNsZ5u6g	Proprietary	Provides the status of a modification request.

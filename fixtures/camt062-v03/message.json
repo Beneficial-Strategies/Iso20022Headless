@@ -1,0 +1,59 @@
+{
+  "identifier": "camt.062.001.03",
+  "name": "PayInScheduleV03",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.062.001.03",
+  "bodyTag": "PayInSchdl",
+  "out": "camt062",
+  "isoId": "_KfNcsS43EeK7-OZOLIksSw",
+  "definition": "The PayInSchedule message is sent by a central settlement system to the participant to provide notification of a series of timed payments scheduled for each currency at the time and date of the schedule generation. The central settlement system may send information about how the timed payments have been calculated.",
+  "blocks": [
+    {
+      "name": "PartyIdentification",
+      "isoId": "_KfNctS43EeK7-OZOLIksSw",
+      "xmlTag": "PtyId",
+      "type": "PartyIdentification73Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ReportData",
+      "isoId": "_KfNcuS43EeK7-OZOLIksSw",
+      "xmlTag": "RptData",
+      "type": "ReportData4",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "PayInScheduleLongBalance",
+      "isoId": "_KfNcvS43EeK7-OZOLIksSw",
+      "xmlTag": "PayInSchdlLngBal",
+      "type": "BalanceStatus2",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "PayInScheduleItem",
+      "isoId": "_KfNcwS43EeK7-OZOLIksSw",
+      "xmlTag": "PayInSchdlItm",
+      "type": "PayInScheduleItems1",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "PayInFactors",
+      "isoId": "_KfNcxS43EeK7-OZOLIksSw",
+      "xmlTag": "PayInFctrs",
+      "type": "PayInFactors1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_DTaJUS53EeKwTrPDLMbLxA",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

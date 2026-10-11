@@ -1,0 +1,35 @@
+{
+  "identifier": "camt.064.001.01",
+  "name": "LimitUtilisationJournalQueryV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.064.001.01",
+  "bodyTag": "LmtUtlstnJrnlQry",
+  "out": "camt064",
+  "isoId": "_gun3QSPsEe-T5ffMy2iCzg",
+  "definition": "The LimitUtilisationJournalQuery message is exchanged between a central securities depository or a directly connected system participant (the central securities depository participant granted direct access, like a bank or a central counter party) and the central system. Its purpose is to query information regarding the journal of transaction impacting the utilisation of limits that have been defined by the system participant.",
+  "blocks": [
+    {
+      "name": "MessageHeader",
+      "isoId": "_gun3TSPsEe-T5ffMy2iCzg",
+      "xmlTag": "MsgHdr",
+      "type": "MessageHeader1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SearchCriteria",
+      "isoId": "_gun3UyPsEe-T5ffMy2iCzg",
+      "xmlTag": "SchCrit",
+      "type": "LimitUtilisationJournalSearchCriteria2",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_gun3VSPsEe-T5ffMy2iCzg",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

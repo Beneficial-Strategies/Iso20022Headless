@@ -49,18 +49,12 @@ import {
   GenericAccountIdentification1Schema,
   AccountIdentification4ChoiceSchema,
   LimitIdentification8Schema,
+  LimitIdentification9Schema,
   Max350TextSchema,
   SupplementaryDataEnvelope1Schema,
   SupplementaryData1Schema,
   sharedTypeDescriptors,
 } from './shared.ts';
-
-export const LimitIdentification9Schema = z.strictObject({
-  SystemIdentification: SystemIdentification2ChoiceSchema.optional(),
-  Type: LimitType1ChoiceSchema,
-  AccountOwner: BranchAndFinancialInstitutionIdentification8Schema.optional(),
-  AccountIdentification: AccountIdentification4ChoiceSchema.optional(),
-});
 
 export const LimitStructure3ChoiceSchema = choiceOf({
   CurrentLimitIdentification: LimitIdentification8Schema,
@@ -76,17 +70,6 @@ export const DeleteLimitV08Schema = z.strictObject({
 const f = (d: FieldDescriptor): FieldDescriptor => d;
 
 const ownTypeDescriptors: TypeDescriptors = {
-  "LimitIdentification9": {
-    name: "LimitIdentification9",
-    isoId: "_0YhKjzEyEe6g-ffJsqGiSA",
-    kind: "component",
-    fields: [
-      f({ name: "SystemIdentification", isoId: "_0axNQTEyEe6g-ffJsqGiSA", xmlTag: "SysId", displayName: displayName("SystemIdentification"), kind: "choice", type: "SystemIdentification2Choice", required: false }),
-      f({ name: "Type", isoId: "_0axNQzEyEe6g-ffJsqGiSA", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "LimitType1Choice", required: true }),
-      f({ name: "AccountOwner", isoId: "_0axNRTEyEe6g-ffJsqGiSA", xmlTag: "AcctOwnr", displayName: displayName("AccountOwner"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
-      f({ name: "AccountIdentification", isoId: "_0axNRzEyEe6g-ffJsqGiSA", xmlTag: "AcctId", displayName: displayName("AccountIdentification"), kind: "choice", type: "AccountIdentification4Choice", required: false }),
-    ],
-  },
   "LimitStructure3Choice": {
     name: "LimitStructure3Choice",
     isoId: "_64VGkTEyEe6g-ffJsqGiSA",
@@ -145,6 +128,7 @@ export const typeDescriptors: TypeDescriptors = {
   "GenericAccountIdentification1": sharedTypeDescriptors["GenericAccountIdentification1"]!,
   "AccountIdentification4Choice": sharedTypeDescriptors["AccountIdentification4Choice"]!,
   "LimitIdentification8": sharedTypeDescriptors["LimitIdentification8"]!,
+  "LimitIdentification9": sharedTypeDescriptors["LimitIdentification9"]!,
   "Max350Text": sharedTypeDescriptors["Max350Text"]!,
   "SupplementaryDataEnvelope1": sharedTypeDescriptors["SupplementaryDataEnvelope1"]!,
   "SupplementaryData1": sharedTypeDescriptors["SupplementaryData1"]!,

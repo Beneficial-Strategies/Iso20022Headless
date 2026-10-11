@@ -1,0 +1,28 @@
+codeSet	code	enumName	isoId	text
+AcknowledgementReason5Code	ADEA	AccountServicerDeadlineMissed	_bpPSBtp-Ed-ak6NoX_4Aeg_-27223806	Received after the account servicer's deadline. Processed on best effort basis.
+AcknowledgementReason5Code	SMPG	MarketPracticeRuleDiscrepency	_bpPSB9p-Ed-ak6NoX_4Aeg_1110394808	Instruction is accepted but does not comply with the market practice rule published for the concerned market or process.
+AcknowledgementReason5Code	OTHR	Other	_bpPSCNp-Ed-ak6NoX_4Aeg_180042807	Other. See Narrative.
+AcknowledgementReason5Code	CDCY	ConditionalCurrency	_bpZDANp-Ed-ak6NoX_4Aeg_1232765698	Execution is conditional to the execution of a process linked to the currency of the transaction.
+AcknowledgementReason5Code	CDRG	ConditionalRegistrar	_bpZDAdp-Ed-ak6NoX_4Aeg_1991941032	Execution is conditional to the execution of a process at the registrar.
+AcknowledgementReason5Code	CDRE	ConditionalRealignement	_bpZDAtp-Ed-ak6NoX_4Aeg_148072043	Execution is conditional to the execution of a process of realignment at the issuer CSD.
+AcknowledgementReason5Code	NSTP	NotStraightThroughProcessing	_bpZDA9p-Ed-ak6NoX_4Aeg_-780265528	Instruction was not straight through processing and had to be processed manually.
+AcknowledgementReason5Code	RQWV	AcceptedWithoutVotingRights	_bpZDBNp-Ed-ak6NoX_4Aeg_865001907	Instruction registration is accepted but the registration is not in full, that is, not with voting rights.
+AcknowledgementReason5Code	LATE	MarketDeadlineMissed	_bpZDBdp-Ed-ak6NoX_4Aeg_-1891176947	Instruction was received after market deadline.
+PendingReason6Code	ADEA	AccountServicerDeadlineMissed	_aDBiIdp-Ed-ak6NoX_4Aeg_-2000254642	Instruction was received after the account servicer's deadline. Processed on best effort basis.
+PendingReason6Code	CONF	AwaitingConfirmation	_aDBiItp-Ed-ak6NoX_4Aeg_-347627134	Awaiting confirmation from the counterparty.
+PendingReason6Code	OTHR	Other	_aDBiI9p-Ed-ak6NoX_4Aeg_1188062474	Other. See Narrative.
+PendingReason6Code	CDRG	ConditionalRegistrar	_aDBiJNp-Ed-ak6NoX_4Aeg_-251565728	Execution is conditional to the execution of a process at the registrar.
+PendingReason6Code	CDCY	ConditionalCurrency	_aDBiJdp-Ed-ak6NoX_4Aeg_-543523466	Execution is conditional to the execution of a process linked to the currency of the transaction.
+PendingReason6Code	CDRE	ConditionalRealignement	_aDBiJtp-Ed-ak6NoX_4Aeg_-365404794	Execution is conditional to the execution of a process of realignment at the issuer CSD.
+RejectionReason35Code	CASH	CashAccount	_QVFroYkuEe64YtiuxmT1NA	Unrecognised or invalid cash account.
+RejectionReason35Code	ADEA	AccountServicerDeadlineMissed	_QVFro4kuEe64YtiuxmT1NA	Transaction/instruction received after the account servicer's specified deadline.
+RejectionReason35Code	REFE	ReferenceRejection	_QVFrpYkuEe64YtiuxmT1NA	Instruction has a reference identical to another previously received instruction.
+RejectionReason35Code	LATE	MarketDeadlineMissed	_QVFrp4kuEe64YtiuxmT1NA	Received after market deadline.
+RejectionReason35Code	DDAT	SettlementDateRejection	_QVFrqYkuEe64YtiuxmT1NA	Unrecognised or invalid settlement date.
+RejectionReason35Code	NRGN	NotFoundRejection	_QVGSsYkuEe64YtiuxmT1NA	Instruction could not be found.
+RejectionReason35Code	OTHR	Other	_QVGSs4kuEe64YtiuxmT1NA	Other. See Narrative.
+RejectionReason35Code	INVM	InvalidModificationRequest	_QVGStYkuEe64YtiuxmT1NA	Invalid or unrecognized modification request.
+RejectionReason35Code	INVL	InvalidLink	_QVGSt4kuEe64YtiuxmT1NA	Invalid or unrecognized link.
+LinkageType1Code	LINK	Link	_ae4Xt9p-Ed-ak6NoX_4Aeg_-2003821118	Request is to link the referenced transactions.
+LinkageType1Code	UNLK	Unlink	_ae4XuNp-Ed-ak6NoX_4Aeg_-2003821117	Request is to unlink the referenced transactions.
+LinkageType1Code	SOFT	Soft	_ae4Xudp-Ed-ak6NoX_4Aeg_-2003821101	Request is to soft link the referenced transactions.

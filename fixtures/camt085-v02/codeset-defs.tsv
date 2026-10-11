@@ -1,0 +1,5 @@
+codeSet	isoId	text
+RejectionReason33Code	_jV3rsu5NEeCisYr99QEiWA_-1746872980	Specifies the reason why the instruction/cancellation request has a rejected status.
+CancelledStatusReason13Code	_MrDa8f5DEeClUvPNHKL9Zw	Specifies the underlying reason for the cancellation of the associated transaction.
+PendingReason10Code	_b_fWsf41EeClUvPNHKL9Zw	Specifies the reason the transaction/instruction is pending settlement. Settlement on the instructed settlement date is still possible.
+FailingReason3Code	_ABlNIRqLEeG38P9Gj2JZJw	Specifies the reason the transaction/instruction is failing settlement. Settlement on the instructed settlement date is no longer possible.

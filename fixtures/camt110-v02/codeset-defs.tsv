@@ -1,0 +1,15 @@
+codeSet	isoId	text
+ExternalInvestigationAction1Code	_rkVJUBZdEe6d6Ip1Ob2kaQ	Specifies the requested action, as published in an external investigation action code set.|External code sets can be downloaded from www.iso20022.org.
+PreferredContactMethod1Code	_6UHyApqlEeGSON8vddiWzQ_1788250895	Preferred method used to reach the individual contact within an organisation.
+ExternalInvestigationActionReason1Code	_HV6GICVBEe6EvsLBQ6cYtA	Specifies the requested action, as published in an external investigation action code set.|External code sets can be downloaded from www.iso20022.org.
+ExternalInvestigationType1Code	_yrXOgFB9Ee2JFb6fZWHubw	Specifies the investigation type, as published in an external investigation type code set.|External code sets can be downloaded from www.iso20022.org.
+ExternalInvestigationSubType1Code	_5vuigFEUEe2YkcF60skG_A	Specifies the investigation sub type, as published in an external investigation sub type code set.|External code sets can be downloaded from www.iso20022.org.
+ExternalInvestigationInstrument1Code	_9cMNMFEUEe2YkcF60skG_A	Specifies the type of instrument or product to which the investigation refers, as published in an external investigation instrument code set.|External code sets can be downloaded from www.iso20022.org.
+DocumentType6Code	_xEXUIR78EeSxevWRRWxNAg	Specifies a type of financial or commercial document.
+ExternalDiscountAmountType1Code	_t7boglkyEeGeoaLUQk__nA_611729510	Specifies the nature, or use, of the amount in the format of character string with a maximum length of 4 characters.|The list of valid codes is an external code list published separately.|External code sets can be downloaded from www.iso20022.org.
+ExternalTaxAmountType1Code	_t99_JFkyEeGeoaLUQk__nA_700990481	Specifies the nature, or use, of the amount in the format of character string with a maximum length of 4 characters.|The list of valid codes is an external code list published separately.|External code sets can be downloaded from www.iso20022.org.
+DocumentType3Code	_agEqidp-Ed-ak6NoX_4Aeg_665910872	Specifies a type of financial or commercial document.
+ExternalInvestigationServiceLevel1Code	_3EMJUFEUEe2YkcF60skG_A	Specifies the investigation service level, as published in an external investigation service level code set.|External code sets can be downloaded from www.iso20022.org.
+ExternalInvestigationReason1Code	_7kAjkFEUEe2YkcF60skG_A	Specifies the investigation reason, as published in an external investigation reason code set.|External code sets can be downloaded from www.iso20022.org.
+ExternalInvestigationReasonSubType1Code	__DHuwFEUEe2YkcF60skG_A	Specifies the investigation reason sub type, as published in an external investigation reason code sub type set.|External code sets can be downloaded from www.iso20022.org.
+InvestigationLocationMethod1Code	_qpxYQFT_Ee2at7Z9GFZ2Mw	Specifies the method used to deliver/retrieve the investigation information.

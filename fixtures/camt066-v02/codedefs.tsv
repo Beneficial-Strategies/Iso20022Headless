@@ -1,0 +1,5 @@
+codeSet	code	enumName	isoId	text
+ProcessingPosition3Code	AFTE	After	_aK6559p-Ed-ak6NoX_4Aeg_-1877116893	Specifies that the transaction/instruction is to be executed after the linked transaction/instruction.
+ProcessingPosition3Code	WITH	With	_aK656Np-Ed-ak6NoX_4Aeg_-1877116876	Specifies that the transaction/instruction is to be executed with the linked transaction/instruction.
+ProcessingPosition3Code	BEFO	Before	_aLED0Np-Ed-ak6NoX_4Aeg_-1877116833	Specifies that the transaction/instruction is to be executed before the linked transaction/instruction.
+ProcessingPosition3Code	INFO	Information	_aLED0dp-Ed-ak6NoX_4Aeg_-1877116816	Specifies that the transactions/instructions are linked for information purposes only.

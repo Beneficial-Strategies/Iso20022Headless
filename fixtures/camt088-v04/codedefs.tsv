@@ -1,0 +1,4 @@
+codeSet	code	enumName	isoId	text
+PaymentReceipt1Code	PAYM	Payment	__uhuoQ5EEeenr-7g_0TYag	Operation is a payment.
+PaymentReceipt1Code	RECE	Receipt	__0B5sQ5EEeenr-7g_0TYag	Operation is a receipt.
+PaymentReceipt1Code	NONE	None	__51mwQ5EEeenr-7g_0TYag	Operation is null.

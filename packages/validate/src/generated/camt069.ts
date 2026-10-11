@@ -16,9 +16,13 @@ import {
 import {
   Max35TextSchema,
   ISODateTimeSchema,
+  StandingOrderQueryType1CodeSchema,
   GenericIdentification1Schema,
+  RequestType3ChoiceSchema,
   QueryType2CodeSchema,
   TrueFalseIndicatorSchema,
+  StandingOrderType1CodeSchema,
+  StandingOrderType1ChoiceSchema,
   IBAN2007IdentifierSchema,
   Max34TextSchema,
   ExternalAccountIdentification1CodeSchema,
@@ -65,24 +69,10 @@ import {
   sharedTypeDescriptors,
 } from './shared.ts';
 
-export const StandingOrderQueryType1CodeSchema = z.enum(["SLST", "SDTL", "TAPS", "SLSL", "SWLS"]);
-
-export const RequestType3ChoiceSchema = choiceOf({
-  Code: StandingOrderQueryType1CodeSchema,
-  Proprietary: GenericIdentification1Schema,
-});
-
 export const MessageHeader4Schema = z.strictObject({
   MessageIdentification: Max35TextSchema,
   CreationDateTime: ISODateTimeSchema.optional(),
   RequestType: RequestType3ChoiceSchema.optional(),
-});
-
-export const StandingOrderType1CodeSchema = z.enum(["USTO", "PSTO"]);
-
-export const StandingOrderType1ChoiceSchema = choiceOf({
-  Code: StandingOrderType1CodeSchema,
-  Proprietary: GenericIdentification1Schema,
 });
 
 export const StandingOrderSearchCriteria5Schema = z.strictObject({
@@ -146,21 +136,6 @@ export const GetStandingOrderV05Schema = z.strictObject({
 const f = (d: FieldDescriptor): FieldDescriptor => d;
 
 const ownTypeDescriptors: TypeDescriptors = {
-  "StandingOrderQueryType1Code": {
-    name: "StandingOrderQueryType1Code",
-    isoId: "_8N7QVqMgEeCJ6YNENx4h-w_-234356258",
-    kind: "code",
-    options: [{ value: "SLST", name: "StandingOrderList", isoId: "_8N7QV6MgEeCJ6YNENx4h-w_-544859245" }, { value: "SDTL", name: "StandingOrderDetails", isoId: "_8N7QWKMgEeCJ6YNENx4h-w_1890972049" }, { value: "TAPS", name: "TotalAmountPerStandingOrder", isoId: "_8OFBUKMgEeCJ6YNENx4h-w_501190329" }, { value: "SLSL", name: "StandingOrderLinkSetList", isoId: "_8OFBUaMgEeCJ6YNENx4h-w_-1508766529" }, { value: "SWLS", name: "StandingOrderDetailsWithinLinkSet", isoId: "_8OFBUqMgEeCJ6YNENx4h-w_-105628684" }],
-  },
-  "RequestType3Choice": {
-    name: "RequestType3Choice",
-    isoId: "_72rN86MgEeCJ6YNENx4h-w_-777871353",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_72rN9KMgEeCJ6YNENx4h-w_1386424077", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "StandingOrderQueryType1Code", required: true }),
-      f({ name: "Proprietary", isoId: "_72rN9aMgEeCJ6YNENx4h-w_705337914", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification1", required: true }),
-    ],
-  },
   "MessageHeader4": {
     name: "MessageHeader4",
     isoId: "_77AUVKMgEeCJ6YNENx4h-w_1376931885",
@@ -169,21 +144,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "MessageIdentification", isoId: "_77AUVaMgEeCJ6YNENx4h-w_-1074891632", xmlTag: "MsgId", displayName: displayName("MessageIdentification"), kind: "text", type: "Max35Text", required: true }),
       f({ name: "CreationDateTime", isoId: "_77AUVqMgEeCJ6YNENx4h-w_-1955418567", xmlTag: "CreDtTm", displayName: displayName("CreationDateTime"), kind: "datetime", type: "ISODateTime", required: false }),
       f({ name: "RequestType", isoId: "_77AUV6MgEeCJ6YNENx4h-w_-1966517344", xmlTag: "ReqTp", displayName: displayName("RequestType"), kind: "choice", type: "RequestType3Choice", required: false }),
-    ],
-  },
-  "StandingOrderType1Code": {
-    name: "StandingOrderType1Code",
-    isoId: "_8OFBU6MgEeCJ6YNENx4h-w_-143150650",
-    kind: "code",
-    options: [{ value: "USTO", name: "UserDefinedStandingOrder", isoId: "_8OFBVKMgEeCJ6YNENx4h-w_1846866247" }, { value: "PSTO", name: "PredefinedStandingOrder", isoId: "_8OFBVaMgEeCJ6YNENx4h-w_328114765" }],
-  },
-  "StandingOrderType1Choice": {
-    name: "StandingOrderType1Choice",
-    isoId: "_73bb4KMgEeCJ6YNENx4h-w_-1191465666",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_73bb4aMgEeCJ6YNENx4h-w_-1852211918", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "StandingOrderType1Code", required: true }),
-      f({ name: "Proprietary", isoId: "_73bb4qMgEeCJ6YNENx4h-w_-591387142", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification1", required: true }),
     ],
   },
   "StandingOrderSearchCriteria5": {
@@ -277,9 +237,13 @@ const ownTypeDescriptors: TypeDescriptors = {
 export const typeDescriptors: TypeDescriptors = {
   "Max35Text": sharedTypeDescriptors["Max35Text"]!,
   "ISODateTime": sharedTypeDescriptors["ISODateTime"]!,
+  "StandingOrderQueryType1Code": sharedTypeDescriptors["StandingOrderQueryType1Code"]!,
   "GenericIdentification1": sharedTypeDescriptors["GenericIdentification1"]!,
+  "RequestType3Choice": sharedTypeDescriptors["RequestType3Choice"]!,
   "QueryType2Code": sharedTypeDescriptors["QueryType2Code"]!,
   "TrueFalseIndicator": sharedTypeDescriptors["TrueFalseIndicator"]!,
+  "StandingOrderType1Code": sharedTypeDescriptors["StandingOrderType1Code"]!,
+  "StandingOrderType1Choice": sharedTypeDescriptors["StandingOrderType1Choice"]!,
   "IBAN2007Identifier": sharedTypeDescriptors["IBAN2007Identifier"]!,
   "Max34Text": sharedTypeDescriptors["Max34Text"]!,
   "ExternalAccountIdentification1Code": sharedTypeDescriptors["ExternalAccountIdentification1Code"]!,

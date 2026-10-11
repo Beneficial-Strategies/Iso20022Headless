@@ -1,0 +1,43 @@
+{
+  "identifier": "camt.048.001.07",
+  "name": "ModifyReservationV07",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.048.001.07",
+  "bodyTag": "ModfyRsvatn",
+  "out": "camt048",
+  "isoId": "_R3QfUTEZEe6kQ-WGAhcVPQ",
+  "definition": "Scope|The ModifyReservation message is used to request modifications in the details of one particular reservation set by the member and managed by the transaction administrator.|Usage|After the receipt of a ModifyReservation message the transaction administrator checks whether the amount of liquidity on the member account is sufficient to set the reservation.|If there is enough liquidity available, the requested amount will be reserved. In case the requested amount exceeds the available liquidity, only the available liquidity will be reserved. The difference will not be blocked at a later point, even if the account balance of the member reaches the level of the initial reservation request.|The reservation can be effected directly by the member, who has the possibility to: |- reset the reserved liquidity to zero|- change the reservation amount during the day with immediate effect|- input a default reservation amount for the following day(s); valid until a new reservation amount is requested|After the receipt of a ModifyReservation message the transaction administrator checks whether the amount of liquidity on the member account is sufficient to set the reservation.",
+  "blocks": [
+    {
+      "name": "MessageHeader",
+      "isoId": "_R3QfVzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "MsgHdr",
+      "type": "MessageHeader1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ReservationIdentification",
+      "isoId": "_R3QfWTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "RsvatnId",
+      "type": "CurrentOrDefaultReservation4Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "NewReservationValueSet",
+      "isoId": "_R3QfWzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "NewRsvatnValSet",
+      "type": "Reservation4",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3QfXTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

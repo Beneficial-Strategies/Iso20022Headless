@@ -1,0 +1,4 @@
+codeSet	code	enumName	isoId	text
+NotificationStatus3Code	RCBD	ReceivedButDifferent	_aN5VYtp-Ed-ak6NoX_4Aeg_410470248	Event(s) as described in the notification to receive occurred but details are different.
+NotificationStatus3Code	RCVD	Received	_aN5VY9p-Ed-ak6NoX_4Aeg_410470266	Event(s) as described in the notification to receive occurred.
+NotificationStatus3Code	NRCD	NotReceived	_aN5VZNp-Ed-ak6NoX_4Aeg_410470291	Event(s) as described in the notification to receive did not occur.

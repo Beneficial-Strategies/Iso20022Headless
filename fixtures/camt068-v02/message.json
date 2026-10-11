@@ -1,0 +1,67 @@
+{
+  "identifier": "camt.068.001.02",
+  "name": "IntraBalanceMovementConfirmationV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.068.001.02",
+  "bodyTag": "IntraBalMvmntConf",
+  "out": "camt068",
+  "isoId": "_R3NcXTEZEe6kQ-WGAhcVPQ",
+  "definition": "The IntraBalanceMovementConfirmation message is sent from a settlement infrastructure to an account owner/requestor to confirm the movement of an amount of money within its holdings from one sub-balance to another. ||Usage: |The message may be used to: |- re-send a message previously sent (the sub-function of the message is \"Duplicate\")|- provide a third party with a copy of a message for information (the sub-function of the message is \"Copy\")|- re-send to a third party a copy of a message for information (the sub-function of the message is \"CopyDuplicate\").",
+  "blocks": [
+    {
+      "name": "Identification",
+      "isoId": "_R3NcazEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Id",
+      "type": "DocumentIdentification51",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AdditionalParameters",
+      "isoId": "_R3NcbTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "AddtlParams",
+      "type": "AdditionalParameters16",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CashAccount",
+      "isoId": "_R3NcbzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "CshAcct",
+      "type": "CashAccount40",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CashAccountOwner",
+      "isoId": "_R3NccTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "CshAcctOwnr",
+      "type": "SystemPartyIdentification8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CashAccountServicer",
+      "isoId": "_R3NcczEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "CshAcctSvcr",
+      "type": "BranchAndFinancialInstitutionIdentification8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "IntraBalance",
+      "isoId": "_R3NcdTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "IntraBal",
+      "type": "IntraBalance6",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3NcdzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+choice	memberId	memberName	text
+NumberCount1Choice	_QrsmaNp-Ed-ak6NoX_4Aeg_1394466276	CurrentInstructionNumber	Sequential number of the instruction in a range of linked settlement instructions.
+NumberCount1Choice	_Qrsmadp-Ed-ak6NoX_4Aeg_-2040702072	TotalNumber	Total numbers of settlement transactions, receipts and deliveries, and the concerned settlement transaction number.
+ProcessingPosition7Choice	_n8yzoznYEeWLJsP1cO-amg	Code	Processing position expressed as an ISO 20022 code.
+ProcessingPosition7Choice	_n8yzqznYEeWLJsP1cO-amg	Proprietary	Processing position expressed as a proprietary code.
+DocumentNumber5Choice	_CxzcUznbEeWLJsP1cO-amg	ShortNumber	Message type number of the document referenced.
+DocumentNumber5Choice	_CxzcWznbEeWLJsP1cO-amg	LongNumber	MX Message identifier of the referenced document.
+DocumentNumber5Choice	_CxzcYznbEeWLJsP1cO-amg	ProprietaryNumber	Proprietary document identification.
+References34Choice	_jvDnx-5NEeCisYr99QEiWA_-1304332452	SecuritiesSettlementTransactionIdentification	Unambiguous identification of a securities settlement transaction as known by the account owner (or instructing party acting on its behalf).
+References34Choice	_jvDnyO5NEeCisYr99QEiWA_1789544906	IntraPositionMovementIdentification	Unambiguous identification of the intra-position movement transaction as known by the account owner (or instructing party acting on its behalf).
+References34Choice	_jvNYwO5NEeCisYr99QEiWA_-84678421	IntraBalanceMovementIdentification	Unambiguous identification of the intra-balance movement transaction as known by the account owner (or instructing party acting on its behalf).
+References34Choice	_jvNYwe5NEeCisYr99QEiWA_-1565269570	AccountServicerTransactionIdentification	Unambiguous identification of the transaction as known by the account servicer.
+References34Choice	_jvNYwu5NEeCisYr99QEiWA_460130897	MarketInfrastructureTransactionIdentification	Identification of a transaction assigned by a market infrastructure other than a central securities depository, for example, Target2-Securities.
+References34Choice	_jvNYw-5NEeCisYr99QEiWA_1814174824	PoolIdentification	Collective reference identifying a set of messages.
+References34Choice	_jvNYxO5NEeCisYr99QEiWA_-1943122229	OtherTransactionIdentification	Identification of a transaction that cannot be identified using a standard reference element present in the message.
+PartyIdentification127Choice	_ZQ1w87XDEeiTob_PrFFUxA	AnyBIC	Code allocated to a financial or non-financial institution by the ISO 9362 Registration Authority, as described in ISO 9362 "Banking - Banking telecommunication messages - Business identifier code (BIC)".
+PartyIdentification127Choice	_ZQ1w9bXDEeiTob_PrFFUxA	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to a financial institution using a proprietary identification scheme.

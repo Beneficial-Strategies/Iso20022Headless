@@ -19,6 +19,8 @@ import {
   MessageHeader1Schema,
   QueryType2CodeSchema,
   YesNoIndicatorSchema,
+  Priority1CodeSchema,
+  InformationQualifierType1Schema,
   RequestedIndicatorSchema,
   Max350TextSchema,
   SupplementaryDataEnvelope1Schema,
@@ -31,13 +33,6 @@ export const CharacterSearch1ChoiceSchema = choiceOf({
   NotEqual: Max35TextSchema,
   Contain: Max35TextSchema,
   NotContain: Max35TextSchema,
-});
-
-export const Priority1CodeSchema = z.enum(["HIGH", "NORM", "LOWW"]);
-
-export const InformationQualifierType1Schema = z.strictObject({
-  IsFormatted: YesNoIndicatorSchema.optional(),
-  Priority: Priority1CodeSchema.optional(),
 });
 
 export const GeneralBusinessInformationSearchCriteria1Schema = z.strictObject({
@@ -86,21 +81,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "NotEqual", isoId: "_GDljU5laEeeE1Ya-LgRsuQ", xmlTag: "NEQ", displayName: displayName("NotEqual"), kind: "text", type: "Max35Text", required: true }),
       f({ name: "Contain", isoId: "_GDljVZlaEeeE1Ya-LgRsuQ", xmlTag: "CT", displayName: displayName("Contain"), kind: "text", type: "Max35Text", required: true }),
       f({ name: "NotContain", isoId: "_GDljV5laEeeE1Ya-LgRsuQ", xmlTag: "NCT", displayName: displayName("NotContain"), kind: "text", type: "Max35Text", required: true }),
-    ],
-  },
-  "Priority1Code": {
-    name: "Priority1Code",
-    isoId: "_aKLTANp-Ed-ak6NoX_4Aeg_-636884160",
-    kind: "code",
-    options: [{ value: "HIGH", name: "High", isoId: "_aKLTAdp-Ed-ak6NoX_4Aeg_-291486778" }, { value: "NORM", name: "Normal", isoId: "_aKLTAtp-Ed-ak6NoX_4Aeg_-262855798" }, { value: "LOWW", name: "Low", isoId: "_aKLTA9p-Ed-ak6NoX_4Aeg_-248081725" }],
-  },
-  "InformationQualifierType1": {
-    name: "InformationQualifierType1",
-    isoId: "_59y2N5lZEeeE1Ya-LgRsuQ",
-    kind: "component",
-    fields: [
-      f({ name: "IsFormatted", isoId: "_6FzisZlZEeeE1Ya-LgRsuQ", xmlTag: "IsFrmtd", displayName: displayName("IsFormatted"), kind: "boolean", type: "YesNoIndicator", required: false }),
-      f({ name: "Priority", isoId: "_6Fzis5lZEeeE1Ya-LgRsuQ", xmlTag: "Prty", displayName: displayName("Priority"), kind: "code", type: "Priority1Code", required: false }),
     ],
   },
   "GeneralBusinessInformationSearchCriteria1": {
@@ -173,6 +153,8 @@ export const typeDescriptors: TypeDescriptors = {
   "MessageHeader1": sharedTypeDescriptors["MessageHeader1"]!,
   "QueryType2Code": sharedTypeDescriptors["QueryType2Code"]!,
   "YesNoIndicator": sharedTypeDescriptors["YesNoIndicator"]!,
+  "Priority1Code": sharedTypeDescriptors["Priority1Code"]!,
+  "InformationQualifierType1": sharedTypeDescriptors["InformationQualifierType1"]!,
   "RequestedIndicator": sharedTypeDescriptors["RequestedIndicator"]!,
   "Max350Text": sharedTypeDescriptors["Max350Text"]!,
   "SupplementaryDataEnvelope1": sharedTypeDescriptors["SupplementaryDataEnvelope1"]!,

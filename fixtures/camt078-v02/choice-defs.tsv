@@ -1,0 +1,11 @@
+choice	memberId	memberName	text
+References36Choice	_jx45WO5NEeCisYr99QEiWA_-753671308	AccountOwnerTransactionIdentification	Unambiguous identification of the transaction as known by the account owner (or the instructing party managing the account).
+References36Choice	_jyCqUO5NEeCisYr99QEiWA_1697426999	AccountServicerTransactionIdentification	Unambiguous identification of the transaction as known by the account servicer.
+References36Choice	_jyCqUe5NEeCisYr99QEiWA_-182878641	MarketInfrastructureTransactionIdentification	Identification of a transaction assigned by a market infrastructure other than a central securities depository, for example, Target2-Securities.
+References36Choice	_jyCqUu5NEeCisYr99QEiWA_-1293790060	ProcessorTransactionIdentification	Identification of the transaction as assigned by the processor.
+References36Choice	_jyCqU-5NEeCisYr99QEiWA_-1658656472	PoolIdentification	Collective reference identifying a set of messages.
+References36Choice	_jyCqVO5NEeCisYr99QEiWA_740193032	CorporateActionEventIdentification	Identification assigned by the account servicer to unambiguously identify a corporate action event.
+ProcessingStatus68Choice	_TMjAEeFWEeWIA4E9cYSxxQ	Code	Provides the status of an instruction.
+ProcessingStatus68Choice	_TMjAE-FWEeWIA4E9cYSxxQ	Proprietary	Specifies a choice of status for the processing of an intra-balance movement.
+SettlementStatus26Choice	_X06SUeFWEeWIA4E9cYSxxQ	Code	Provides the status of settlement of an instruction/financial instrument movement.
+SettlementStatus26Choice	_X06SWeFWEeWIA4E9cYSxxQ	Proprietary	Provides the status of settlement of an instruction/financial instrument movement.

@@ -1,0 +1,3 @@
+codeSetName	isoId	restrictionOf	code	enumName
+ExternalInvestigationStatus1Code	_w8jnQFEVEe2YkcF60skG_A	ExternalInvestigationStatusCode	*EXTERNAL*	minLength=1 maxLength=4; ~3 codes (not enumerated)
+ExternalInvestigationStatusReason1Code	_4evbwFEUEe2YkcF60skG_A	ExternalInvestigationStatusReasonCode	*EXTERNAL*	minLength=1 maxLength=4; ~21 codes (not enumerated)

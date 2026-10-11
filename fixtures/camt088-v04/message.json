@@ -1,0 +1,51 @@
+{
+  "identifier": "camt.088.001.04",
+  "name": "NetReportV04",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.088.001.04",
+  "bodyTag": "NetRpt",
+  "out": "camt088",
+  "isoId": "039bf4ef-c5d8-415f-9be1-e97dd49d7ccb",
+  "definition": "The Net Report message is sent to a participant by a central system to provide details of the bi-lateral payment obligations, calculated by the central system per currency.",
+  "blocks": [
+    {
+      "name": "NetReportData",
+      "isoId": "1467596d-26d6-419f-bfb2-c6490020d4a0",
+      "xmlTag": "NetRptData",
+      "type": "NetReportData2",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "NetServiceParticipantIdentification",
+      "isoId": "21c03a50-bf05-41ae-b72b-35bd256122b5",
+      "xmlTag": "NetSvcPtcptId",
+      "type": "PartyIdentification242Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "NetServiceCounterpartyIdentification",
+      "isoId": "afeb99f7-4302-495e-8bc1-9f24e5387fc1",
+      "xmlTag": "NetSvcCtrPtyId",
+      "type": "PartyIdentification242Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "NetObligation",
+      "isoId": "f725b4b8-7f11-40ea-9545-8fb1dc798f46",
+      "xmlTag": "NetOblgtn",
+      "type": "NetObligation4",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "1c266472-1c1d-4023-bf31-c8aca69c363f",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

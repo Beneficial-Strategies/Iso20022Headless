@@ -47,6 +47,9 @@ the existing lines (from the XSDs) are merged with what the resources say and a 
 - Each of the 94 messages' identifier, name and body tag in the resources matches what was captured earlier by `universal_lookup`
   (0 differences).
 
+- **One thing the first part did not need.** Six message building blocks of part B have a simple type (for example `SettlementSessionIdentifier` in `PayInCallV02`), so there is no type text to fall back on; the writer now keeps the block's own definition (a `MEMBER` row whose parent is the message in `snapshot-raw.tsv`).
+- Part B has 118 more rules (68 with expressions). Two of the machine-checked rules reach into lists inside lists (`OriginalNotificationReference15/16.RelatedAccountRule`) and have behavior tests; 45 rules exist only as prose in the repository (no expression). No new unsupported rule. The XSD of `camt.088.001.04` is not at ISO's usual address, so that one message was not checked against its XSD.
+
 ## Not generated yet
 - Rules on simple types, amounts and code sets (for example `IBAN`, `ActiveCurrency`): the resources list them as prose without
   expressions. They are read but not written to the fixtures.

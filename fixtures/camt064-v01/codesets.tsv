@@ -1,0 +1,4 @@
+codeSetName	isoId	restrictionOf	code	enumName
+LimitType4Code	_jPdhsO5NEeCisYr99QEiWA_1476260679	LimitTypeCode	EXGT	ExternalGuarantee
+LimitType4Code	_jPdhsO5NEeCisYr99QEiWA_1476260679	LimitTypeCode	UCDT	UnsecuredCredit
+LimitType4Code	_jPdhsO5NEeCisYr99QEiWA_1476260679	LimitTypeCode	ACOL	AutoCollateralisation

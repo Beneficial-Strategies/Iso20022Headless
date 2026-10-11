@@ -1,0 +1,9 @@
+choice	memberId	memberName	text
+AccountOrOperationalError6Choice	_3zeOcTEyEe6g-ffJsqGiSA	AccountReport	Reports either on the account information or on a business error.
+AccountOrOperationalError6Choice	_3zeOczEyEe6g-ffJsqGiSA	OperationalError	Indicates that an operational error has been issued during the processing of the related request.
+AccountOrBusinessError6Choice	_3340YTEyEe6g-ffJsqGiSA	Account	Requested information on the account.
+AccountOrBusinessError6Choice	_3340YzEyEe6g-ffJsqGiSA	BusinessError	Reason the requested business information is not given.
+ProcessingType1Choice	_705FQ6MgEeCJ6YNENx4h-w_-423447016	Code	Type of processing restrictions, in a coded form.
+ProcessingType1Choice	_705FRKMgEeCJ6YNENx4h-w_619782211	Proprietary	Type of processing restrictions, in a proprietary form.
+BalanceType9Choice	_77AUUqMgEeCJ6YNENx4h-w_609741360	Code	Specifies the nature of a balance, in a coded form.
+BalanceType9Choice	_77AUU6MgEeCJ6YNENx4h-w_-1585871232	Proprietary	Specifies the nature of a balance, in a proprietary form.

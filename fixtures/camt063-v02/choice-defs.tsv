@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+AcknowledgementDetails1Choice	_oUQsESzSEeKZfox_pyYpTA	PayInScheduleReference	Reference to the pay in schedule that is being acknowledged.
+AcknowledgementDetails1Choice	_3SatcCzSEeKZfox_pyYpTA	PayInCallReference	Reference to the pay in call that is being acknowledged.

@@ -1,0 +1,119 @@
+scope	id	name	text
+TotalNumber1	_Qr_hW9p-Ed-ak6NoX_4Aeg_639881202	CurrentInstructionNumberRule	If the Sender wants to indicate that this instruction is linked to one or more settlement instruction, then the CurrentInstructionNumber must be specified.
+TotalNumber1	_Qr_hXtp-Ed-ak6NoX_4Aeg_-1108200498	BlockTradeGuideline	In a block trade instruction, the total number of children must be provided using TotalOfLinkedInstructions.|The CurrentInstructionNumber of the parent must be 000. The children must have an incremental CurrentInstructionNumber from 001 to 999.|For more details, see the relevant market practice document on www.smpg.info.
+DocumentNumber5Choice	_CxzcUTnbEeWLJsP1cO-amg	ShortLongNumberRule	ShortNumber must contain the FIN message type number of the linked message. LongNumber must contain the XML message identifier of the linked message.
+NumberCount1Choice	_Qr1wUNp-Ed-ak6NoX_4Aeg_-199599330	CurrentInstructionNumberRule	If the Sender wants to indicate that this instruction is linked to one or more settlement instruction, then the CurrentInstructionNumber must be specified.
+ProcessingPosition7Choice	_n8yzoTnYEeWLJsP1cO-amg	WithLinkageRule	If Code WITH is used, then the one or more instruction which are linked become bound and which must be executed together. Even if one single transactions/instructions/notifications can not be executed, then all the other transactions/instructions/notifications must also be kept pending. Therefore the use of code WITH must be limited to combine up to 2 or 3 transactions/instructions/notifications.
+IntraBalanceModification7	_7wCKoTEyEe6g-ffJsqGiSA	CashAccountRule	CashAccount must be present or Cancellation(*)/CashAccount must be present, but not both.
+IntraBalanceModification7	_7wCKozEyEe6g-ffJsqGiSA	CashAccountOwnerRule	CashAccountOwner must be present or Cancellation(*)/AccountOwner must be present, but not both.
+IntraBalanceModification7	_7wCKpTEyEe6g-ffJsqGiSA	ProcessingStatusRule	ProcessingStatus must be present or Cancellation(*)/ProcessingStatus must be present, but not both.
+IntraBalanceModification7	_7wCKpzEyEe6g-ffJsqGiSA	CashAccountServicerRule	CashAccountServicer must be present or Cancellation(*)/AccountOwner must be present, but not both.
+RequestDetails22	_ZMt4kTneEem7JZMuWtwtsg	ModificationRequestPresenceRule	At least one modification request type element must be present.
+RequestDetails22	_ZMt4kzneEem7JZMuWtwtsg	OtherProcessingRule	If OtherProcessing is used, then its usage must be pre-agreed between the sender and the receiver.
+IntraBalanceMovementModificationReportV02	_R3ODLzEZEe6kQ-WGAhcVPQ	ActivityIndicatorYesRule	If ReportGeneralDetails/ActivityIndicator is equal to Yes (true or 1) then ReportOrError must be present.
+IntraBalanceMovementModificationReportV02	_R3ODMTEZEe6kQ-WGAhcVPQ	ActivityIndicatorNoRule	If ReportGeneralDetails/ActivityIndicator is equal to No (false or 0) then ReportOrError must be absent.
+IntraBalanceMovementModificationReportV02	_R3ODMzEZEe6kQ-WGAhcVPQ	QueryTypeStatusRule	If ReportGeneralDetails/QueryType is equal to Status, then ReportOrError/Modifications(*)/Modification/UnderlyingIntraBalance must be absent.
+IntraBalanceMovementModificationReportV02	_R3ODNTEZEe6kQ-WGAhcVPQ	QueryTypeFullRule	If ReportGeneralDetails/QueryType is equal to Full, then ReportOrError/Modifications(*)/Modification/UnderlyingIntraBalance must be present.
+IntraBalancePending5	_Y3sq0TneEem7JZMuWtwtsg	StatusAndReasonRule	StatusAndReason must be present or Movement(*)/StatusAndReason must be present, but not both.
+IntraBalancePending6	_ZCu2ITneEem7JZMuWtwtsg	NoAccountOwnerTransactionIdentificationRule	If no reference is available for the AccountOwnerTransactionIdentification, for example, the transaction was sent by fax, then the AccountOwnerTransactionIdentification must be NONREF.
+IntraBalanceReport6	_iEJhITp_EemwKdP955WBJQ	ReportNumberRule	If Long number (Exact5NumericTest) is used, then the report must be a delta reports (UpdateType: DELT).|If the report has multiple pages, then the ReportNumber must remain the same through all the pages. It is a unique number to the report.|Two reports of the same type sent one after the other to the same receiver in relation to the same safekeeping account must have different ReportNumbers. For example, a daily report sent on day 1 would have ReportNumber 001, on day 2, 002, etc.
+SettlementStatus16Choice	_z2UwsTp4EeWVrPy0StzzSg	PendingToFailingRule	A pending transaction (PEND) becomes a failing transaction (PENF) on the settlement date instructed in the message, during the end of day reporting.
+IntraBalanceMovementPendingReportV02	_R3ODizEZEe6kQ-WGAhcVPQ	ActivityIndicatorYesRule	If ReportGeneralDetails/ActivityIndicator is equal to Yes (true or 1) then Movements must be present.
+IntraBalanceMovementPendingReportV02	_R3ODjTEZEe6kQ-WGAhcVPQ	ActivityIndicatorNoRule	If ReportGeneralDetails/ActivityIndicator is equal to No (false or 0) then Movements must be absent.
+IntraBalancePosting6	_ZhRzUTneEem7JZMuWtwtsg	NoAccountOwnerTransactionIdentificationRule	If no reference is available for the AccountOwnerTransactionIdentification, for example, the transaction was sent by fax, then the AccountOwnerTransactionIdentification must be NONREF.
+IntraBalanceMovementPostingReportV02	_R3OqHTEZEe6kQ-WGAhcVPQ	ActivityIndicatorYesRule	If ActivityIndicator is equal to Yes (true or 1) then SubBalances must be present.
+IntraBalanceMovementPostingReportV02	_R3OqHzEZEe6kQ-WGAhcVPQ	ActivityIndicatorNoRule	If ActivityIndicator is equal to No (false or 0) then SubBalances must be absent.
+IntraBalanceMovement7	_3xNkoDEyEe6g-ffJsqGiSA	NoAccountOwnerTransactionIdentificationRule	If no reference is available for the AccountOwnerTransactionIdentification, for example, the transaction was sent by fax, then the AccountOwnerTransactionIdentification must be NONREF.
+IntraBalanceMovements4	_3u_-ITEyEe6g-ffJsqGiSA	CashAccountRule	CashAccount must be present or Movement(*)/CashAccount must be present, but not both.
+IntraBalanceMovements4	_3u_-IzEyEe6g-ffJsqGiSA	CashAccountOwnerRule	CashAccountOwner must be present or Movement(*)/AccountOwner must be present, but not both.
+IntraBalanceMovements4	_3u_-JTEyEe6g-ffJsqGiSA	StatusAndReasonRule	StatusAndReason must be present or Movement(*)/StatusAndReason must be present, but not both.
+IntraBalanceMovements4	_3u_-JzEyEe6g-ffJsqGiSA	CashAccountServicerRule	CashAccountServicer must be present or Movement(*)/AccountOwner must be present, but not both.
+MovementReport1	_jgAfIe5NEeCisYr99QEiWA_-1853124323	ReportIdentificationRule	If Long number (Exact5NumericText) is used, then the report must be a delta reports (UpdateType: DELT).|If the report has multiple pages, then the ReportIdentification must remain the same through all the pages. It is a unique number to the report.|Two reports of the same type sent one after the other to the same receiver in relation to the same safekeeping account must have different report identifications. For example, a daily report sent on day 1 would have ReportIdentification 001, on day 2, 002, etc.
+IntraBalanceMovementQueryResponseV02	_R3OqPTEZEe6kQ-WGAhcVPQ	ActivityIndicatorYesRule	If ReportGeneralDetails/ActivityIndicator is equal to Yes (true or 1) then ReportOrError must be present.
+IntraBalanceMovementQueryResponseV02	_R3OqPzEZEe6kQ-WGAhcVPQ	ActivityIndicatorNoRule	If ReportGeneralDetails/ActivityIndicator is equal to No (false or 0) then ReportOrError must be absent.
+IntraBalanceMovementQueryResponseV02	_R3OqQTEZEe6kQ-WGAhcVPQ	QueryTypeFullRule	If ReportGeneralDetails/QueryType is equal to Full, then ReportOrError/Movements(*)/Movement/MovementDetails must be present.
+IntraBalanceMovementQueryResponseV02	_R3OqQzEZEe6kQ-WGAhcVPQ	QueryTypeStatusRule	If ReportGeneralDetails/QueryType is equal to Status, then ReportOrError/Movements(*)/Movement/MovementDetails must be absent.
+IntraBalanceType3	_NhoQkTqFEemJ3KLLPeYl6g	BalanceFromToRule	The cash balance type of BalanceFrom must be different from the cash balance type of BalanceTo.
+TransactionIdentifications24	_jXgqce5NEeCisYr99QEiWA_1005073173	NoAccountOwnerTransactionIdentificationRule	If no reference is available for the AccountOwnerTransactionIdentification, for example, the transaction was sent by fax, then the AccountOwnerTransactionIdentification must be NONREF.
+InvestigationActionReason1	_nxTFUSU_Ee6EvsLBQ6cYtA	StatusReasonRule	If Reason/Code is equal to NARR, then AddititionalInformation must be present.
+InvestigationReason2	_1P1XQWNqEe6rDI7BtgptxA	InvestigationReasonAndAdditionalRequestDataRule	If Reason/Code is Narrative (NARR), then AdditionalRequestData must be present.
+InvestigationRequest51	aaf9ed2f-e301-49cf-80ac-5a9a51997cb1	ResponderInvestigationIdentificationGuideline	Where the ResponderInvestigationIdentification has previously been provided to the requestor as part of an earlier response the ResponderInvestigationIdentification should be present.
+InvestigationRequestAction1	_gIjHECVGEe6EvsLBQ6cYtA	ObjectionActionReasonRule	If Action/Code is equal to RQOB for Request Objection, ActionReason must be present.
+InvestigationRequestAction1	_C4hMQCoMEe6sabPoGi34wA	ObjectionActionRule	External code RQOB for Request Objection can only be populated in Action/Code when Requestor has already received a response from the Responder.
+MandateRelatedInformation15	_a5rCAdcZEeqRFcf2R4bPBw	AmendmentIndicatorTrueRule	If AmendmentIndicator is true, then AmendmentInformationDetails must be present.
+MandateRelatedInformation15	_a5rCA9cZEeqRFcf2R4bPBw	AmendmentIndicatorFalseRule	If AmendmentIndicator is false, then AmendmentInformationDetails is not allowed.
+SettlementInstruction11	_a24MsdcZEeqRFcf2R4bPBw	ThirdReimbursementAgentRule	If ThirdReimbursementAgent is present, then InstructingReimbursementAgent and InstructedReimbursementAgent must both be present.
+SettlementInstruction11	_a24Ms9cZEeqRFcf2R4bPBw	SettlementMethodAgentRule	If SettlementMethod is equal to INDA or INGA, then ReimbursementAgent(s) and ClearingSystem are not allowed.
+SettlementInstruction11	_a24MtdcZEeqRFcf2R4bPBw	SettlementMethodCoverRule	If SettlementMethod is equal to COVE, then SettlementAccount and ClearingSystem are not allowed.
+SettlementInstruction11	_a24Mt9cZEeqRFcf2R4bPBw	SettlementMethodCoverAgentRule	If SettlementMethod is equal to COVE, then InstructedReimbursementAgent or InstructingReimbursementAgent must be present.
+SettlementInstruction11	_a24MudcZEeqRFcf2R4bPBw	SettlementMethodClearingRule	If SettlementMethod is equal to CLRG, then SettlementAccount and ReimbursementAgent(s) are not allowed.
+SettlementInstruction11	_a24Mu9cZEeqRFcf2R4bPBw	InstructingReimbursementAgentAccountRule	If InstructingReimbursementAgentAccount is present, then InstructingReimbursementAgent must be present.
+SettlementInstruction11	_a24MvdcZEeqRFcf2R4bPBw	InstructedReimbursementAgentAccountRule	If InstructedReimbursementAgentAccount is present, then InstructedReimbursementAgent must be present.
+SettlementInstruction11	_a24Mv9cZEeqRFcf2R4bPBw	ThirdReimbursementAgentAccountRule	If ThirdReimbursementAgentAccount is present, then ThirdReimbursementAgent must be present.
+UnderlyingPaymentInstruction11	_MBQtAbvHEfCYYbmqNrQFSg	OriginalIdentificationRule	Either OriginalInstructionIdentification, OriginalEndToEndIdentification or OriginalUETR must be present.
+UnderlyingPaymentInstruction11	_MBQtA7vHEfCYYbmqNrQFSg	OriginalRequestedDateRule	Either RequestedExecutionDate or RequestedCollectionDate must be present.
+UnderlyingPaymentTransaction11	_MV78gbvHEfCYYbmqNrQFSg	OriginalIdentificationRule	Either OriginalInstructionIdentification, OriginalEndToEndIdentification, OriginalTransactionIdentification or OriginalUETR must be present.
+UnderlyingStatementEntry11	31863ec2-24cd-4d1d-a6fa-0039a275cc4e	OriginalStatementIdentificationOrEntryReferencePresenceRule	OriginalStatementIdentification or OriginalEntryReference must be present, both may be present.
+InvestigationData18	477efeec-9d67-438d-857a-a9d40c7e3179	InvestigationDataGuideline	InvestigationData should only be repeated when the original investigation request contained multiple occurences of the InvestigationData block.
+InvestigationRequest50	1f915b62-6d46-4fb5-a79a-0001aed99b45	ResponderInvestigationIdentificationGuideline	Where the ResponderInvestigationIdentification has previously been provided to the requestor as part of an earlier response the ResponderInvestigationIdentification should be present.
+StatusReasonInformation12	_FD25UW49EeiU9cctagi5ow	StatusReasonRule	If Reason/Code is equal to NARR, then AddititionalInformation must be present.
+LiquidityCreditTransfer4	_7BkiITEyEe6g-ffJsqGiSA	CreditAccountRule	At least CreditAccount or Creditor must be present, or both.
+LiquidityDebitTransfer4	_3qgfsTEyEe6g-ffJsqGiSA	DebtorAccountRule	At least DebitAccount or Debtor must be present, or both.
+LimitStructure5	_GCJ2cDH-Ee6mzvR3CHiUhA	OldLimitOrLimitAmendmentPresenceRule	OldLimitValueSet or LimitValueAmendment must be absent, both can be absent.
+ModifyMemberV04	_jwlbyRbvEeiyVv5j1vf1VQ	MandatoryValueRule	The NewMemberValueSet consists of a MemberReturnAddress, a CommunicationAddress or a ContactReference. At a minimum, one of these elements must be present.
+NetObligation4	559771fb-1509-4aeb-bbf6-f5e0dccdf967	CounterpartySettlementInstructionRule	The CounterpartySettlementInstructions must not be present when the obligation direction value is DBIT.
+NetObligation4	fdb21b7e-93e9-4153-9df6-d49af201ea1a	CounterpartyIdentificationRule	NetServiceCounterpartyIdentification must be present at this level in all obligations if one or more counterparties are involved in the calculation of the net report, i.e.NetServiceCounterpartyIdentification is not used in NetReport level.
+NetObligation4	_oat98H2iEfCKoOYI0vp4Dw	SplitIndicatorRule	If SplitIndicator is true, then TotalNumberOfSplits and SplitObligationData must be present.
+PartyIdentification266	_BjNdwQN1Ee2-vqzwMUAewg	PartyNameOrLEIRule	PartyName must be present or LegalEntityIdentifier must be present.
+NetReportV04	b3b5a1f4-3861-46fd-b27a-7610b2ce1c3b	CounterpartyIdentificationRule	NetServiceCounterpartyIdentification must only be used at this level if all of the underlying obligations are with a single counterparty.
+OriginalNotificationReference16	c08bce6a-c46f-4a77-9b04-1d2614ea8478	DebtorRule	Either Debtor or OriginalItem/Debtor may be present but not both.
+OriginalNotificationReference16	0537f328-d235-4a5f-90e3-5aa6a592421c	DebtorAgentRule	Either DebtorAgent or OriginalItem/DebtorAgent may be present but not both.
+OriginalNotificationReference16	13fa920f-a72a-4d5c-be5d-bddc70385419	IntermediaryAgentRule	Either IntermediaryAgent or OriginalItem/IntermediaryAgent may be present but not both.
+OriginalNotificationReference16	4c26f350-66db-4d44-8096-20c055868179	MandatoryDebtorRule	Either Debtor must be present or OriginalItem/Debtor must be present.
+OriginalNotificationReference16	1705c7c4-7a2c-426c-8bc0-0dac8bbed4c8	IntermediaryAgentAndDebtorAgentRule	If IntermediaryAgent is present then DebtorAgent must be present.
+OriginalNotificationReference16	831ae5c0-cdbc-4f71-97f9-e2b7c90f8ddc	TotalAmountAndAmount1Rule	If TotalAmount is present, then all occurrences of OriginalItem/Amount must have the same currency as the currency of TotalAmount.
+OriginalNotificationReference16	e8dfcead-b5fc-45c4-8d85-d4cdfbecfea2	AccountAndCurrencyRule	If Account is present, then all occurrences of OriginalItem/Amount must have the same currency.
+OriginalNotificationReference16	627dbb31-c1d2-4bb8-9eb8-66625f08ba0d	TotalAmountAndAmount2Rule	If TotalAmount is present, then it must equal the sum of all occurrences of OriginalItem/Amount.
+OriginalNotificationReference16	51e5afcf-39d3-4e93-aa92-d9693ec9cb88	AccountRule	Either Account or OriginalItem/Account may be present but not both.
+OriginalNotificationReference16	dc3da6b4-699a-4728-beaf-653509eb3211	AccountOwnerRule	Either AccountOwner or OriginalItem/AccountOwner may be present but not both.
+OriginalNotificationReference16	2b605504-324e-459c-943d-7c541a77fadf	AccountServicerRule	Either AccountServicer or OriginalItem/AccountServicer may be present but not both.
+OriginalNotificationReference16	51a1fe06-88ed-4546-8e9b-1cb61515e50c	ExpectedValueDateRule	Either ExpectedValueDate or OriginalItem/ExpectedValueDate may be present but not both.
+OriginalNotificationReference16	aedfa7fa-190e-4abb-8b60-c1d581996469	RelatedAccountRule	Either RelatedAccount or OriginalItem/RelatedAccount may be present but not both.
+OriginalNotificationReference15	539ead32-3d84-4a32-830b-086ac92906d5	DebtorRule	Either Debtor or OriginalItem/Debtor may be present but not both.
+OriginalNotificationReference15	021bde47-b87f-4cb8-9aa5-0b9aeb64a0d1	DebtorAgentRule	Either DebtorAgent or OriginalItem/DebtorAgent may be present but not both.
+OriginalNotificationReference15	4f03d60b-5776-4071-b250-73d6476e79ff	IntermediaryAgentRule	Either IntermediaryAgent or OriginalItem/IntermediaryAgent may be present but not both.
+OriginalNotificationReference15	8659baff-f3e8-4b26-8092-2bfc5935d782	MandatoryDebtorRule	Either Debtor must be present or OriginalItem/Debtor must be present.
+OriginalNotificationReference15	05a54ad0-22d0-409a-90cb-60e7ffe7a72a	IntermediaryAgentAndDebtorAgentRule	If IntermediaryAgent is present then DebtorAgent must be present.
+OriginalNotificationReference15	92336e06-7f1e-474a-84c2-6dbbc1dcf7f3	TotalAmountAndAmount1Rule	If TotalAmount is present, then all occurrences of OriginalItem/Amount must have the same currency as the currency of TotalAmount.
+OriginalNotificationReference15	d5fe45ea-6ab2-41b8-9713-d5fdfe83740d	AccountAndCurrencyRule	If Account is present, then all occurrences of OriginalItem/Amount must have the same currency.
+OriginalNotificationReference15	edbfbf69-167e-46d6-8be2-988e72696088	TotalAmountAndAmount2Rule	If TotalAmount is present, then it must equal the sum of all occurrences of OriginalItem/Amount.
+OriginalNotificationReference15	84647252-1ee6-40a1-8575-230bc6e53283	AccountRule	Either Account or OriginalItem/Account may be present but not both.
+OriginalNotificationReference15	56598c72-0e31-41ef-aa2c-a36fc335b3ba	AccountOwnerRule	Either AccountOwner or OriginalItem/AccountOwner may be present but not both.
+OriginalNotificationReference15	93cddc93-7a77-4d78-a9b2-5b9b3e237abf	AccountServicerRule	Either AccountServicer or OriginalItem/AccountServicer may be present but not both.
+OriginalNotificationReference15	8a84d5c2-b4bf-40bc-9677-8ce13491e89a	ExpectedValueDateRule	Either ExpectedValueDate or OriginalItem/ExpectedValueDate may be present but not both.
+OriginalNotificationReference15	a158574a-5de2-4c57-9b3b-2c0cb7652246	RelatedAccountRule	Either RelatedAccount or OriginalItem/RelatedAccount may be present but not both.
+AccountNotification26	beaa59b1-c520-4d9f-a83d-0a7985f5efc6	DebtorRule	Either Debtor or Item/Debtor may be present but not both.
+AccountNotification26	f3027ff5-a9e3-4339-9f00-a07d997b21d5	DebtorAgentRule	Either DebtorAgent or Item/DebtorAgent may be present but not both.
+AccountNotification26	b0b3726c-e145-448c-9f75-a32dfd7fb3b3	IntermediaryAgentRule	Either IntermediaryAgent or Item/IntermediaryAgent may be present but not both.
+AccountNotification26	68cbe45b-b75e-4aed-bec2-79a398f4ba55	MandatoryDebtorRule	Either Debtor must be present or Item/Debtor must be present.
+AccountNotification26	c41daba5-d671-4c19-9d73-590cbd3bd90b	IntermediaryAgentAndDebtorAgentRule	If IntermediaryAgent is present then DebtorAgent must be present.
+AccountNotification26	edd2cad9-4987-4902-a33e-5c4d8c63f90e	TotalAmountAndAmount1Rule	If TotalAmount is present, then all occurrences of Item/Amount must have the same currency as the currency of TotalAmount.
+AccountNotification26	9edad581-27dd-41d4-b159-0b44a28a126d	AccountAndCurrencyRule	If Account is present, then all occurrences of Item/Amount must have the same currency.
+AccountNotification26	39f27ed2-654c-4233-892c-96007829ddfc	TotalAmountAndAmount2Rule	If TotalAmount is present, then it must equal the sum of all occurrences of Item/Amount.
+AccountNotification26	9fb1c161-c89b-4745-874a-97fbb4c9df91	AccountRule	Either Account or Item/Account may be present but not both.
+AccountNotification26	88eaeddd-83d6-465c-961c-058cec5678e1	AccountOwnerRule	Either AccountOwner or Item/AccountOwner may be present but not both.
+AccountNotification26	4afd743d-47bc-4af1-bc2a-1812b939efc8	AccountServicerRule	Either AccountServicer or Item/AccountServicer may be present but not both.
+AccountNotification26	00900f05-4379-4e4d-991a-90a1a48b95ba	ExpectedValueDateRule	Either ExpectedValueDate or Item/ExpectedValueDate may be present but not both.
+AccountNotification26	f7d1259a-7ba3-4d4b-b48d-e9855bbb2fdf	RelatedAccountRule	Either RelatedAccount or Item/RelatedAccount may be present but not both.
+NotificationItem10	1cc20c7d-e79e-4427-9a8c-28e616a92028	IntermediaryAgentAndDebtorAgentRule	If IntermediaryAgent is present then DebtorAgent must be present.
+PartyIdentification59	_YUSrcJToEeKShbaq9ixROw	PartyNameOrLEIRule	PartyName must be present or LegalEntityIdentifier must be present.
+CashAccountData1	_36KFQTEyEe6g-ffJsqGiSA	BilateralBalanceRule	If MultilateralBalance is not present, then at least one occurrence of CurrentBilateralLimit/BilateralBalance must be present.|If MultilateralBalance is present, then any occurrence of CurrentBilateralLimit/BilateralBalance is optional.
+NumberAndSumOfTransactions2	_Q7fV5tp-Ed-ak6NoX_4Aeg_1355882735	DebitCreditIndicatorGuideline	DebitCreditIndicator should be present when TotalNetEntryAmount is present.
+Transaction159	_13cmoTEyEe6g-ffJsqGiSA	CreditDebitIndicatorGuideline	The CreditDebitIndicator may be omitted for optimisation reason if the CreditDebitIndicator is used in the search criteria of the related query.
+Transaction159	_13cmozEyEe6g-ffJsqGiSA	TransactionCreditDebitIndicatorRule	If CreditDebitIndicator is present, then AccountEntry/Entry/Amount or Payment/InstructedAmount or Payment/InterbankSettlementAmount must be present.|If CreditDebitIndicator is not present, then any Message Elements in the list (AccountEntry/Entry/Amount, Payment/InstructedAmount, Payment/InterbankSettlementAmount) is optional.
+Transactions11	_1rt3wTEyEe6g-ffJsqGiSA	PaymentInstructionStatusRule	If PaymentCommonInformation/PaymentInstructionStatus is present, then TransactionReport/Transaction/Payment/InstructionStatus/PaymentInstructionStatus is not allowed.|If PaymentCommonInformation/PaymentInstructionStatus is not present, then TransactionReport/Transaction/Payment/InstructionStatus/PaymentInstructionStatus is optional.
+Transactions11	_1rt3wzEyEe6g-ffJsqGiSA	TransferValueDateRule	If PaymentCommonInformation/RequestedExecutionDate is present, then TransactionReport/Transaction/Payment/RequestedExecutionDate is not allowed.|If PaymentCommonInformation/RequestedExecutionDate is not present, then TransactionReport/Transaction/Payment/RequestedExecutionDate is optional.
+Transactions11	_1rt3xTEyEe6g-ffJsqGiSA	CreditDebitIndicator1Rule	If PaymentCommonInformation/CreditDebitIndicator is present, then TransactionReport/Transaction/CreditDebitIndicator is not allowed.|If PaymentCommonInformation/CreditDebitIndicator is not present, then TransactionReport/Transaction/CreditDebitIndicator is optional.
+ReturnTransactionV11	_R3UJvzEZEe6kQ-WGAhcVPQ	CurrencyGuideline	The currency may be omitted in the amounts present in the message. However, this should only be done in cases of one single currency systems (for example, the euro).
+UnableToApplyIncorrect2	_-FWv4djKEeq5MfBBxQig1Q	AdditionalIncorrectInformationRule	If Code is equal to NARR (Narrative), then AdditionalIncorrectInformation must be present.
+UnableToApplyMissing2	_7RT68djKEeq5MfBBxQig1Q	AdditionalMissingInformationRule	If Code is equal to NARR (Narrative), then AdditionalMissingInformation must be present.

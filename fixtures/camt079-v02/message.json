@@ -1,0 +1,43 @@
+{
+  "identifier": "camt.079.001.02",
+  "name": "IntraBalanceMovementQueryResponseV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.079.001.02",
+  "bodyTag": "IntraBalMvmntQryRspn",
+  "out": "camt079",
+  "isoId": "_R3OqNTEZEe6kQ-WGAhcVPQ",
+  "definition": "The IntraBalanceMovementQueryResponse message is sent from a settlement infrastructure to an account owner/requestor to provide all intra-balance movement instructions satisfying the selection criteria, as defined within the query, returning current attributes and latest status.|The message may also be used to: |- re-send a message sent by the account owner to the account servicer (the sub-function of the message is \"Duplicate\") |- provide a third party with a copy of a message being sent by the account owner for information (the sub-function of the message is \"Copy\") |- re-send to a third party a copy of a message being sent by the account owner for information (the sub-function of the message is \"Copy Duplicate\").",
+  "blocks": [
+    {
+      "name": "Identification",
+      "isoId": "_R3OqSzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Id",
+      "type": "DocumentIdentification51",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Pagination",
+      "isoId": "_R3OqTTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ReportGeneralDetails",
+      "isoId": "_R3OqTzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "RptGnlDtls",
+      "type": "MovementReport1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ReportOrError",
+      "isoId": "_R3OqUTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "RptOrErr",
+      "type": "IntraBalanceOrOperationalError11Choice",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

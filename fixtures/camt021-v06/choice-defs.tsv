@@ -1,0 +1,5 @@
+choice	memberId	memberName	text
+GeneralBusinessOrError7Choice	_QdJoAXhdEeidzqjNEfehPg	OperationalError	Indicates that an operational error has been issued during the processing of the related request.
+GeneralBusinessOrError7Choice	_QdJoA3hdEeidzqjNEfehPg	BusinessReport	Reports either on the business information or on a business error.
+GeneralBusinessOrError8Choice	_Q2IvwXhdEeidzqjNEfehPg	BusinessError	Reason the requested business information is not given.
+GeneralBusinessOrError8Choice	_Q2Ivw3hdEeidzqjNEfehPg	GeneralBusiness	Requested business information.

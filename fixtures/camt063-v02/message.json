@@ -1,0 +1,43 @@
+{
+  "identifier": "camt.063.001.02",
+  "name": "PayInEventAcknowledgementV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.063.001.02",
+  "bodyTag": "PayInEvtAck",
+  "out": "camt063",
+  "isoId": "_eii_URnXEeKKXqHkeUjBbw",
+  "definition": "The PayInEventAcknowledgement message is sent by a participant of a central system to the central system to confirm a PayInSchedule or a PayInCall has been received.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "_1VTQczp7EeKXK8qRvydwAw",
+      "xmlTag": "MsgId",
+      "type": "Max35Text",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SettlementSessionIdentifier",
+      "isoId": "_SY6S7R3bEeKXIbeXfdPzuw",
+      "xmlTag": "SttlmSsnIdr",
+      "type": "Exact4AlphaNumericText",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AcknowledgementDetails",
+      "isoId": "_eii_VxnXEeKKXqHkeUjBbw",
+      "xmlTag": "AckDtls",
+      "type": "AcknowledgementDetails1Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_Cu8KTy53EeKwTrPDLMbLxA",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

@@ -56,41 +56,20 @@ import {
   ActiveCurrencyAndAmountSchema,
   Amount2ChoiceSchema,
   ISOTimeSchema,
+  ExternalSystemEventType1CodeSchema,
+  EventType1ChoiceSchema,
+  ExecutionType1ChoiceSchema,
+  Frequency2CodeSchema,
   ISODateSchema,
   DatePeriod2Schema,
   DatePeriod2ChoiceSchema,
   TrueFalseIndicatorSchema,
+  StandingOrder10Schema,
   Max350TextSchema,
   SupplementaryDataEnvelope1Schema,
   SupplementaryData1Schema,
   sharedTypeDescriptors,
 } from './shared.ts';
-
-export const ExternalSystemEventType1CodeSchema = textType({min: 1, max: 4});
-
-export const EventType1ChoiceSchema = choiceOf({
-  Code: ExternalSystemEventType1CodeSchema,
-  Proprietary: Max35TextSchema,
-});
-
-export const ExecutionType1ChoiceSchema = choiceOf({
-  Time: ISOTimeSchema,
-  Event: EventType1ChoiceSchema,
-});
-
-export const Frequency2CodeSchema = z.enum(["YEAR", "MNTH", "QURT", "MIAN", "WEEK", "DAIL", "ADHO", "INDA", "OVNG"]);
-
-export const StandingOrder10Schema = z.strictObject({
-  Amount: Amount2ChoiceSchema.optional(),
-  Creditor: BranchAndFinancialInstitutionIdentification8Schema.optional(),
-  CreditorAccount: CashAccount40Schema.optional(),
-  Debtor: BranchAndFinancialInstitutionIdentification8Schema.optional(),
-  DebtorAccount: CashAccount40Schema.optional(),
-  ExecutionType: ExecutionType1ChoiceSchema.optional(),
-  Frequency: Frequency2CodeSchema.optional(),
-  ValidityPeriod: DatePeriod2ChoiceSchema.optional(),
-  ZeroSweepIndicator: TrueFalseIndicatorSchema.optional(),
-});
 
 export const CreateStandingOrderV03Schema = z.strictObject({
   MessageHeader: MessageHeader1Schema,
@@ -102,57 +81,6 @@ export const CreateStandingOrderV03Schema = z.strictObject({
 const f = (d: FieldDescriptor): FieldDescriptor => d;
 
 const ownTypeDescriptors: TypeDescriptors = {
-  "ExternalSystemEventType1Code": {
-    name: "ExternalSystemEventType1Code",
-    isoId: "_8OFBVqMgEeCJ6YNENx4h-w_1804878644",
-    kind: "code",
-    minLength: 1,
-    maxLength: 4,
-    external: true,
-  },
-  "EventType1Choice": {
-    name: "EventType1Choice",
-    isoId: "_71C2RqMgEeCJ6YNENx4h-w_337125079",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_71C2R6MgEeCJ6YNENx4h-w_-773786340", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalSystemEventType1Code", required: true }),
-      f({ name: "Proprietary", isoId: "_71MAMKMgEeCJ6YNENx4h-w_1849878046", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
-    ],
-  },
-  "ExecutionType1Choice": {
-    name: "ExecutionType1Choice",
-    isoId: "_75qQhqMgEeCJ6YNENx4h-w_354040007",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Time", isoId: "_750BgKMgEeCJ6YNENx4h-w_274414262", xmlTag: "Tm", displayName: displayName("Time"), kind: "time", type: "ISOTime", required: true }),
-      f({ name: "Event", isoId: "_750BgaMgEeCJ6YNENx4h-w_989331050", xmlTag: "Evt", displayName: displayName("Event"), kind: "choice", type: "EventType1Choice", required: true }),
-    ],
-  },
-  "Frequency2Code": {
-    name: "Frequency2Code",
-    isoId: "_asJXqNp-Ed-ak6NoX_4Aeg_1505345791",
-    kind: "code",
-    options: [{ value: "YEAR", name: "Annual", isoId: "_asTIoNp-Ed-ak6NoX_4Aeg_1506269390" }, { value: "MNTH", name: "Monthly", isoId: "_asTIodp-Ed-ak6NoX_4Aeg_1506270304" }, { value: "QURT", name: "Quarterly", isoId: "_asTIotp-Ed-ak6NoX_4Aeg_1506270784" }, { value: "MIAN", name: "SemiAnnual", isoId: "_asTIo9p-Ed-ak6NoX_4Aeg_1506271251" }, { value: "WEEK", name: "Weekly", isoId: "_asTIpNp-Ed-ak6NoX_4Aeg_1506271732" }, { value: "DAIL", name: "Daily", isoId: "_asTIpdp-Ed-ak6NoX_4Aeg_1506271774" }, { value: "ADHO", name: "Adhoc", isoId: "_asTIptp-Ed-ak6NoX_4Aeg_1507192308" }, { value: "INDA", name: "IntraDay", isoId: "_asTIp9p-Ed-ak6NoX_4Aeg_1507192896" }, { value: "OVNG", name: "Overnight", isoId: "_asTIqNp-Ed-ak6NoX_4Aeg_-886985582" }],
-  },
-  "StandingOrder10": {
-    name: "StandingOrder10",
-    isoId: "_yhhMoTEyEe6g-ffJsqGiSA",
-    kind: "component",
-    fields: [
-      f({ name: "Amount", isoId: "_yjs98TEyEe6g-ffJsqGiSA", xmlTag: "Amt", displayName: displayName("Amount"), kind: "choice", type: "Amount2Choice", required: false }),
-      f({ name: "Creditor", isoId: "_yjs98zEyEe6g-ffJsqGiSA", xmlTag: "Cdtr", displayName: displayName("Creditor"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
-      f({ name: "CreditorAccount", isoId: "_yjs99TEyEe6g-ffJsqGiSA", xmlTag: "CdtrAcct", displayName: displayName("CreditorAccount"), kind: "component", type: "CashAccount40", required: false }),
-      f({ name: "Debtor", isoId: "_yjs99zEyEe6g-ffJsqGiSA", xmlTag: "Dbtr", displayName: displayName("Debtor"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
-      f({ name: "DebtorAccount", isoId: "_yjs9-TEyEe6g-ffJsqGiSA", xmlTag: "DbtrAcct", displayName: displayName("DebtorAccount"), kind: "component", type: "CashAccount40", required: false }),
-      f({ name: "ExecutionType", isoId: "_yjs9-zEyEe6g-ffJsqGiSA", xmlTag: "ExctnTp", displayName: displayName("ExecutionType"), kind: "choice", type: "ExecutionType1Choice", required: false }),
-      f({ name: "Frequency", isoId: "_yjs9_TEyEe6g-ffJsqGiSA", xmlTag: "Frqcy", displayName: displayName("Frequency"), kind: "code", type: "Frequency2Code", required: false }),
-      f({ name: "ValidityPeriod", isoId: "_yjs9_zEyEe6g-ffJsqGiSA", xmlTag: "VldtyPrd", displayName: displayName("ValidityPeriod"), kind: "choice", type: "DatePeriod2Choice", required: false }),
-      f({ name: "ZeroSweepIndicator", isoId: "_yjs-ATEyEe6g-ffJsqGiSA", xmlTag: "ZeroSweepInd", displayName: displayName("ZeroSweepIndicator"), kind: "boolean", type: "TrueFalseIndicator", required: false }),
-    ],
-    rules: [
-      { name: "ModifyStandingOrderValueSetRule", isoId: "_yjsW4TEyEe6g-ffJsqGiSA", text: "At least one element must be present." },
-    ],
-  },
   "CreateStandingOrderV03": {
     name: "CreateStandingOrderV03",
     isoId: "_R3GuYTEZEe6kQ-WGAhcVPQ",
@@ -210,10 +138,15 @@ export const typeDescriptors: TypeDescriptors = {
   "ActiveCurrencyAndAmount": sharedTypeDescriptors["ActiveCurrencyAndAmount"]!,
   "Amount2Choice": sharedTypeDescriptors["Amount2Choice"]!,
   "ISOTime": sharedTypeDescriptors["ISOTime"]!,
+  "ExternalSystemEventType1Code": sharedTypeDescriptors["ExternalSystemEventType1Code"]!,
+  "EventType1Choice": sharedTypeDescriptors["EventType1Choice"]!,
+  "ExecutionType1Choice": sharedTypeDescriptors["ExecutionType1Choice"]!,
+  "Frequency2Code": sharedTypeDescriptors["Frequency2Code"]!,
   "ISODate": sharedTypeDescriptors["ISODate"]!,
   "DatePeriod2": sharedTypeDescriptors["DatePeriod2"]!,
   "DatePeriod2Choice": sharedTypeDescriptors["DatePeriod2Choice"]!,
   "TrueFalseIndicator": sharedTypeDescriptors["TrueFalseIndicator"]!,
+  "StandingOrder10": sharedTypeDescriptors["StandingOrder10"]!,
   "Max350Text": sharedTypeDescriptors["Max350Text"]!,
   "SupplementaryDataEnvelope1": sharedTypeDescriptors["SupplementaryDataEnvelope1"]!,
   "SupplementaryData1": sharedTypeDescriptors["SupplementaryData1"]!,

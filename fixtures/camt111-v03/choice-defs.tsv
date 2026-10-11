@@ -1,0 +1,23 @@
+choice	memberId	memberName	text
+InvestigationStatusReason1Choice	_CXmCp1RtEe23M4WgERMsYw	Code	Status reason, as published in an external investigation status reason code set.
+InvestigationStatusReason1Choice	_CXmCpVRtEe23M4WgERMsYw	Proprietary	Status reason, in a proprietary form.
+InvestigationDataRecord12Choice	60e760ac-2333-4a1d-8ff2-a9c214d310e0	DebitAuthorisation	Indicates if the debit authorisation is granted or not.
+InvestigationDataRecord12Choice	007d9e8e-ecc4-4286-8425-524187aa22d2	Compensation	Indicates the compensation due for the request.
+InvestigationDataRecord12Choice	19eaf331-a2f8-401f-a7b5-e885c6d033d0	Valuation	Indicates the compensation due for the request.
+InvestigationDataRecord12Choice	a00d9c62-0a06-4672-a62d-0e0dc4251d11	Confirmation	Provides confirmation that a payment has debited or credited an account.
+InvestigationDataRecord12Choice	9060ef9e-db1a-4f60-aef1-9d675907c4ab	TransactionStatus	Provides the status of a payment that has not yet debited or credited an account.
+InvestigationDataRecord12Choice	6e22c992-4cdf-4949-b95c-ae20967934bb	TransactionData	Provides data related to a request.
+InvestigationDataRecord12Choice	632a9035-b94b-4fb4-95a5-b29c04b0ed30	ResponseNarrative	Provides additional information about the response in narrative form.
+TransactionStatus1Choice	_riIkMxZNEe6d6Ip1Ob2kaQ	Code	Specifies the status of a transaction, as published in an external payment transaction status code list.
+TransactionStatus1Choice	_riIkNRZNEe6d6Ip1Ob2kaQ	Proprietary	Specifies the status of a transaction, in a proprietary form.
+TransactionAmendment1Choice	_CsX6c5rOEeyo0KtkyUQoRg	Agent	Specifies the data of an agent that was requested.
+TransactionAmendment1Choice	_CsX6dJrOEeyo0KtkyUQoRg	Amount	Specifies details on an amount that was requested.
+TransactionAmendment1Choice	_CsX6eJrOEeyo0KtkyUQoRg	AnyBIC	Specifies details on a business identifier code that was requested.
+TransactionAmendment1Choice	_q7748VVEEe2bAeASA_9UKQ	BICFI	Specifies details on a financial institution business identifier code that was requested.
+TransactionAmendment1Choice	_CsX6dZrOEeyo0KtkyUQoRg	CashAccount	Specifies details on a cash account that was requested.
+TransactionAmendment1Choice	_CsX6cprOEeyo0KtkyUQoRg	Code	Specifies details on a code that was requested.
+TransactionAmendment1Choice	_CsX6dprOEeyo0KtkyUQoRg	Date	Specifies details of a date that was requested.
+TransactionAmendment1Choice	_CsX6d5rOEeyo0KtkyUQoRg	DateTime	Specifies details on a date and time that was requested.
+TransactionAmendment1Choice	_CsX6bZrOEeyo0KtkyUQoRg	Party	Specifies details on the data of a party that was requested.
+TransactionAmendment1Choice	_CsX6bprOEeyo0KtkyUQoRg	Remittance	Specifies details on the data of a remittance that was requested.
+TransactionAmendment1Choice	_CsX6b5rOEeyo0KtkyUQoRg	Other	Specifies other data related to the investigation that was requested.

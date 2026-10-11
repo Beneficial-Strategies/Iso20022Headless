@@ -1,0 +1,993 @@
+{
+  "message": {
+    "identifier": "camt.019.001.07",
+    "name": "ReturnBusinessDayInformationV07",
+    "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.019.001.07",
+    "bodyTag": "RtrBizDayInf",
+    "out": "camt019",
+    "isoId": "_jwlcARbvEeiyVv5j1vf1VQ",
+    "definition": "Scope|The ReturnBusinessDayInformation message is sent by the transaction administrator to a member of the system.|It is used to provide information on different types of administrative data linked to the system.|The ReturnBusinessDayInformation message can be sent as a response to a related GetBusines DayInformation message (pull mode), or initiated by the transaction administrator (push mode). The push of information can take place either at prearranged times or as a warning or alarm when a problem has occurred.|Usage|The transaction administrator is in charge of providing the members with business information. The term business day information covers all information related to the management of the system, that is, not related to the transactions or requests created in the system. The type of business information available can vary depending on the system.|The member can request information about the static data of the system through a series of criteria, corresponding to the known information stored within the transaction administrator. Based on the criteria received within the request, the transaction administrator will select items that match the request and report them to the requester.|The transaction administrator may also send a ReturnBusinessDayInformation message with pre-defined information at times previously agreed with the member or to warn the member about a particular problem that may have arisen and which needs attention.|The message from the transaction administrator can contain information based on the following elements:|- identification of the system|- status of the system and period in which this status is valid|- currency within the system concerned and details of the hours of availability linked to that particular currency|- events related to the functioning of the system and the timing of their occurrence|Additional information on the generic design of the Get/Return messages can be found in the MDR Part 1 section How to Use the Cash Management Messages.",
+    "blocks": [
+      {
+        "name": "MessageHeader",
+        "isoId": "_jwlcAxbvEeiyVv5j1vf1VQ",
+        "xmlTag": "MsgHdr",
+        "type": "MessageHeader7",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "ReportOrError",
+        "isoId": "_jwlcBRbvEeiyVv5j1vf1VQ",
+        "xmlTag": "RptOrErr",
+        "type": "BusinessDayReportOrError9Choice",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "SupplementaryData",
+        "isoId": "_jwlcBxbvEeiyVv5j1vf1VQ",
+        "xmlTag": "SplmtryData",
+        "type": "SupplementaryData1",
+        "min": 0,
+        "max": null
+      }
+    ]
+  },
+  "root": "ReturnBusinessDayInformationV07",
+  "order": [
+    "Max35Text",
+    "ISODateTime",
+    "ExternalPaymentControlRequestType1Code",
+    "ExternalEnquiryRequestType1Code",
+    "GenericIdentification1",
+    "RequestType4Choice",
+    "OriginalBusinessQuery1",
+    "MessageHeader7",
+    "ExternalMarketInfrastructure1Code",
+    "MarketInfrastructureIdentification1Choice",
+    "CountryCode",
+    "SystemIdentification2Choice",
+    "ISODate",
+    "DateAndDateTime2Choice",
+    "SystemStatus2Code",
+    "SystemStatus2Choice",
+    "DateTimePeriod1",
+    "DateTimePeriod1Choice",
+    "SystemStatus3",
+    "ActiveCurrencyCode",
+    "ISOTime",
+    "TimePeriod1",
+    "ExternalSystemEventType1Code",
+    "SystemEventType4Choice",
+    "SystemEvent3",
+    "SystemClosureReason1Code",
+    "ClosureReason2Choice",
+    "SystemClosure2",
+    "SystemAvailabilityAndEvents3",
+    "BusinessDay9",
+    "ExternalSystemErrorHandling1Code",
+    "ErrorHandling3Choice",
+    "Max140Text",
+    "ErrorHandling5",
+    "BusinessDayReportOrError10Choice",
+    "BusinessDay8",
+    "BusinessDayReportOrError9Choice",
+    "Max350Text",
+    "SupplementaryDataEnvelope1",
+    "SupplementaryData1",
+    "ReturnBusinessDayInformationV07"
+  ],
+  "types": {
+    "Max35Text": {
+      "name": "Max35Text",
+      "kind": "text",
+      "isoId": "_YW1tKdp-Ed-ak6NoX_4Aeg_1913463446",
+      "minLength": 1,
+      "maxLength": 35
+    },
+    "ISODateTime": {
+      "name": "ISODateTime",
+      "kind": "datetime",
+      "isoId": "_YW1tKtp-Ed-ak6NoX_4Aeg_-1624336183"
+    },
+    "ExternalPaymentControlRequestType1Code": {
+      "name": "ExternalPaymentControlRequestType1Code",
+      "isoId": "_EJVeUJIhEeect698_YsnIA",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "ExternalEnquiryRequestType1Code": {
+      "name": "ExternalEnquiryRequestType1Code",
+      "isoId": "_I3nyYJIhEeect698_YsnIA",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "GenericIdentification1": {
+      "name": "GenericIdentification1",
+      "isoId": "_QALkN9p-Ed-ak6NoX_4Aeg_-1748202225",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_QALkONp-Ed-ak6NoX_4Aeg_-1748202217",
+          "xmlTag": "Id",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SchemeName",
+          "isoId": "_QAVVMNp-Ed-ak6NoX_4Aeg_-1748202215",
+          "xmlTag": "SchmeNm",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "isoId": "_QAVVMdp-Ed-ak6NoX_4Aeg_-1748202216",
+          "xmlTag": "Issr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "RequestType4Choice": {
+      "name": "RequestType4Choice",
+      "isoId": "_ivV-XZIhEeect698_YsnIA",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "PaymentControl",
+          "isoId": "_i375oZIhEeect698_YsnIA",
+          "xmlTag": "PmtCtrl",
+          "type": "ExternalPaymentControlRequestType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Enquiry",
+          "isoId": "_i375o5IhEeect698_YsnIA",
+          "xmlTag": "Enqry",
+          "type": "ExternalEnquiryRequestType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_i375pZIhEeect698_YsnIA",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "OriginalBusinessQuery1": {
+      "name": "OriginalBusinessQuery1",
+      "isoId": "_tsOu4FkyEeGeoaLUQk__nA_1838839671",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "MessageIdentification",
+          "isoId": "_tsOu4VkyEeGeoaLUQk__nA_1725000605",
+          "xmlTag": "MsgId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "MessageNameIdentification",
+          "isoId": "_tsOu4lkyEeGeoaLUQk__nA_727928252",
+          "xmlTag": "MsgNmId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CreationDateTime",
+          "isoId": "_tsOu41kyEeGeoaLUQk__nA_-269144101",
+          "xmlTag": "CreDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "MessageHeader7": {
+      "name": "MessageHeader7",
+      "isoId": "_imfkUZIhEeect698_YsnIA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "MessageIdentification",
+          "isoId": "_ivV-U5IhEeect698_YsnIA",
+          "xmlTag": "MsgId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CreationDateTime",
+          "isoId": "_ivV-VZIhEeect698_YsnIA",
+          "xmlTag": "CreDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "RequestType",
+          "isoId": "_ivV-V5IhEeect698_YsnIA",
+          "xmlTag": "ReqTp",
+          "type": "RequestType4Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "OriginalBusinessQuery",
+          "isoId": "_ivV-WZIhEeect698_YsnIA",
+          "xmlTag": "OrgnlBizQry",
+          "type": "OriginalBusinessQuery1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "QueryName",
+          "isoId": "_ivV-W5IhEeect698_YsnIA",
+          "xmlTag": "QryNm",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "ExternalMarketInfrastructure1Code": {
+      "name": "ExternalMarketInfrastructure1Code",
+      "isoId": "_8MlMg6MgEeCJ6YNENx4h-w_-216754992",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 3
+    },
+    "MarketInfrastructureIdentification1Choice": {
+      "name": "MarketInfrastructureIdentification1Choice",
+      "isoId": "_8BQtWKMgEeCJ6YNENx4h-w_739589116",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_8BQtWaMgEeCJ6YNENx4h-w_-1124219834",
+          "xmlTag": "Cd",
+          "type": "ExternalMarketInfrastructure1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_8BZ3QKMgEeCJ6YNENx4h-w_-1719940070",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "CountryCode": {
+      "name": "CountryCode",
+      "isoId": "_bTfEctp-Ed-ak6NoX_4Aeg_-804722522",
+      "kind": "code",
+      "pattern": "[A-Z]{2,2}"
+    },
+    "SystemIdentification2Choice": {
+      "name": "SystemIdentification2Choice",
+      "isoId": "_8BZ3QaMgEeCJ6YNENx4h-w_-1347709917",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "MarketInfrastructureIdentification",
+          "isoId": "_8BZ3QqMgEeCJ6YNENx4h-w_-129556950",
+          "xmlTag": "MktInfrstrctrId",
+          "type": "MarketInfrastructureIdentification1Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Country",
+          "isoId": "_8BZ3Q6MgEeCJ6YNENx4h-w_-559189317",
+          "xmlTag": "Ctry",
+          "type": "CountryCode",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ISODate": {
+      "name": "ISODate",
+      "kind": "date",
+      "isoId": "_YXSZFtp-Ed-ak6NoX_4Aeg_2032498111"
+    },
+    "DateAndDateTime2Choice": {
+      "name": "DateAndDateTime2Choice",
+      "isoId": "_fGuzgZlhEeeE1Ya-LgRsuQ",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Date",
+          "isoId": "_fPH6gZlhEeeE1Ya-LgRsuQ",
+          "xmlTag": "Dt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "DateTime",
+          "isoId": "_fPH6g5lhEeeE1Ya-LgRsuQ",
+          "xmlTag": "DtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "SystemStatus2Code": {
+      "name": "SystemStatus2Code",
+      "isoId": "_ZSJe09p-Ed-ak6NoX_4Aeg_-619414979",
+      "kind": "code",
+      "options": [
+        {
+          "value": "SUSP",
+          "name": "Suspended",
+          "isoId": "_ZSJe1Np-Ed-ak6NoX_4Aeg_-246312211"
+        },
+        {
+          "value": "ACTV",
+          "name": "Active",
+          "isoId": "_ZSJe1dp-Ed-ak6NoX_4Aeg_-237078229"
+        },
+        {
+          "value": "CLSD",
+          "name": "Closed",
+          "isoId": "_ZSJe1tp-Ed-ak6NoX_4Aeg_-234308163"
+        },
+        {
+          "value": "CLSG",
+          "name": "Closing",
+          "isoId": "_ZSJe19p-Ed-ak6NoX_4Aeg_-225070272"
+        }
+      ]
+    },
+    "SystemStatus2Choice": {
+      "name": "SystemStatus2Choice",
+      "isoId": "_yUPGYRbpEeOy-PlRuFSUzQ",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_ytFEMRbpEeOy-PlRuFSUzQ",
+          "xmlTag": "Cd",
+          "type": "SystemStatus2Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_ytFEMxbpEeOy-PlRuFSUzQ",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "DateTimePeriod1": {
+      "name": "DateTimePeriod1",
+      "isoId": "_aeAZM_hvEeSLI7Du5Hk4iw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "FromDateTime",
+          "isoId": "_aeAZNPhvEeSLI7Du5Hk4iw",
+          "xmlTag": "FrDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ToDateTime",
+          "isoId": "_aeAZNfhvEeSLI7Du5Hk4iw",
+          "xmlTag": "ToDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "DateTimePeriod1Choice": {
+      "name": "DateTimePeriod1Choice",
+      "isoId": "_xLYeBZlcEeeE1Ya-LgRsuQ",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "FromDateTime",
+          "isoId": "_xTM9QZlcEeeE1Ya-LgRsuQ",
+          "xmlTag": "FrDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ToDateTime",
+          "isoId": "_xTM9Q5lcEeeE1Ya-LgRsuQ",
+          "xmlTag": "ToDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "DateTimeRange",
+          "isoId": "_xTM9RZlcEeeE1Ya-LgRsuQ",
+          "xmlTag": "DtTmRg",
+          "type": "DateTimePeriod1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "SystemStatus3": {
+      "name": "SystemStatus3",
+      "isoId": "_xCzJx5lcEeeE1Ya-LgRsuQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Status",
+          "isoId": "_xLYeAZlcEeeE1Ya-LgRsuQ",
+          "xmlTag": "Sts",
+          "type": "SystemStatus2Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ValidityTime",
+          "isoId": "_xLYeA5lcEeeE1Ya-LgRsuQ",
+          "xmlTag": "VldtyTm",
+          "type": "DateTimePeriod1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "ActiveCurrencyCode": {
+      "name": "ActiveCurrencyCode",
+      "isoId": "_bqIp5tp-Ed-ak6NoX_4Aeg_-1326801359",
+      "kind": "code",
+      "pattern": "[A-Z]{3,3}"
+    },
+    "ISOTime": {
+      "name": "ISOTime",
+      "kind": "time",
+      "isoId": "_YYU64dp-Ed-ak6NoX_4Aeg_-1253016814"
+    },
+    "TimePeriod1": {
+      "name": "TimePeriod1",
+      "isoId": "__QUJoZliEeeE1Ya-LgRsuQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "FromTime",
+          "isoId": "__YnKAZliEeeE1Ya-LgRsuQ",
+          "xmlTag": "FrTm",
+          "type": "ISOTime",
+          "kind": "time",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ToTime",
+          "isoId": "__YnKA5liEeeE1Ya-LgRsuQ",
+          "xmlTag": "ToTm",
+          "type": "ISOTime",
+          "kind": "time",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ExternalSystemEventType1Code": {
+      "name": "ExternalSystemEventType1Code",
+      "isoId": "_8OFBVqMgEeCJ6YNENx4h-w_1804878644",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "SystemEventType4Choice": {
+      "name": "SystemEventType4Choice",
+      "isoId": "_d7AQEXhkEeidzqjNEfehPg",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_eFPKI3hkEeidzqjNEfehPg",
+          "xmlTag": "Cd",
+          "type": "ExternalSystemEventType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_eFPKJXhkEeidzqjNEfehPg",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "SystemEvent3": {
+      "name": "SystemEvent3",
+      "isoId": "_dw2Oi3hkEeidzqjNEfehPg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Type",
+          "isoId": "_d6_pA3hkEeidzqjNEfehPg",
+          "xmlTag": "Tp",
+          "type": "SystemEventType4Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ScheduledTime",
+          "isoId": "_d6_pBXhkEeidzqjNEfehPg",
+          "xmlTag": "SchdldTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "EffectiveTime",
+          "isoId": "_d6_pB3hkEeidzqjNEfehPg",
+          "xmlTag": "FctvTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "StartTime",
+          "isoId": "_d6_pCXhkEeidzqjNEfehPg",
+          "xmlTag": "StartTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "EndTime",
+          "isoId": "_d6_pC3hkEeidzqjNEfehPg",
+          "xmlTag": "EndTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "SystemClosureReason1Code": {
+      "name": "SystemClosureReason1Code",
+      "isoId": "_ZRQG8tp-Ed-ak6NoX_4Aeg_2007403394",
+      "kind": "code",
+      "options": [
+        {
+          "value": "BHOL",
+          "name": "BankingHoliday",
+          "isoId": "_ZRQG89p-Ed-ak6NoX_4Aeg_2007403395"
+        },
+        {
+          "value": "SMTN",
+          "name": "SystemMaintenance",
+          "isoId": "_ZRQG9Np-Ed-ak6NoX_4Aeg_2007403396"
+        },
+        {
+          "value": "NOOP",
+          "name": "NoOperation",
+          "isoId": "_ZRQG9dp-Ed-ak6NoX_4Aeg_2007403397"
+        },
+        {
+          "value": "RCVR",
+          "name": "Recovery",
+          "isoId": "_ZRQG9tp-Ed-ak6NoX_4Aeg_2007403398"
+        },
+        {
+          "value": "ADTW",
+          "name": "AllowedDowntimeWindow",
+          "isoId": "_ZRQG99p-Ed-ak6NoX_4Aeg_2007403406"
+        }
+      ]
+    },
+    "ClosureReason2Choice": {
+      "name": "ClosureReason2Choice",
+      "isoId": "_72rN8KMgEeCJ6YNENx4h-w_-681649909",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_72rN8aMgEeCJ6YNENx4h-w_2072167944",
+          "xmlTag": "Cd",
+          "type": "SystemClosureReason1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_72rN8qMgEeCJ6YNENx4h-w_672613014",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "SystemClosure2": {
+      "name": "SystemClosure2",
+      "isoId": "_xkRfK5lcEeeE1Ya-LgRsuQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Period",
+          "isoId": "_xs2zY5lcEeeE1Ya-LgRsuQ",
+          "xmlTag": "Prd",
+          "type": "DateTimePeriod1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Reason",
+          "isoId": "_xs2zZZlcEeeE1Ya-LgRsuQ",
+          "xmlTag": "Rsn",
+          "type": "ClosureReason2Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "SystemAvailabilityAndEvents3": {
+      "name": "SystemAvailabilityAndEvents3",
+      "isoId": "_dk-8wXhkEeidzqjNEfehPg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "SystemCurrency",
+          "isoId": "_dw2Og3hkEeidzqjNEfehPg",
+          "xmlTag": "SysCcy",
+          "type": "ActiveCurrencyCode",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SessionPeriod",
+          "isoId": "_dw2OhXhkEeidzqjNEfehPg",
+          "xmlTag": "SsnPrd",
+          "type": "TimePeriod1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Event",
+          "isoId": "_dw2Oh3hkEeidzqjNEfehPg",
+          "xmlTag": "Evt",
+          "type": "SystemEvent3",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "ClosureInformation",
+          "isoId": "_dw2OiXhkEeidzqjNEfehPg",
+          "xmlTag": "ClsrInf",
+          "type": "SystemClosure2",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    },
+    "BusinessDay9": {
+      "name": "BusinessDay9",
+      "isoId": "_OYVo5XXyEei3jO6riKEVXg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "SystemDate",
+          "isoId": "_OinmQXXyEei3jO6riKEVXg",
+          "xmlTag": "SysDt",
+          "type": "DateAndDateTime2Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SystemStatus",
+          "isoId": "_OinmQ3XyEei3jO6riKEVXg",
+          "xmlTag": "SysSts",
+          "type": "SystemStatus3",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SystemInformationPerCurrency",
+          "isoId": "_OinmRXXyEei3jO6riKEVXg",
+          "xmlTag": "SysInfPerCcy",
+          "type": "SystemAvailabilityAndEvents3",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    },
+    "ExternalSystemErrorHandling1Code": {
+      "name": "ExternalSystemErrorHandling1Code",
+      "isoId": "_Y2fRgnhdEeidzqjNEfehPg",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "ErrorHandling3Choice": {
+      "name": "ErrorHandling3Choice",
+      "isoId": "_RA_79XhdEeidzqjNEfehPg",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_RN4hYXhdEeidzqjNEfehPg",
+          "xmlTag": "Cd",
+          "type": "ExternalSystemErrorHandling1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_RN4hY3hdEeidzqjNEfehPg",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Max140Text": {
+      "name": "Max140Text",
+      "kind": "text",
+      "isoId": "_YXlUAtp-Ed-ak6NoX_4Aeg_2103068114",
+      "minLength": 1,
+      "maxLength": 140
+    },
+    "ErrorHandling5": {
+      "name": "ErrorHandling5",
+      "isoId": "_Q2IvxXhdEeidzqjNEfehPg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Error",
+          "isoId": "_RA_78XhdEeidzqjNEfehPg",
+          "xmlTag": "Err",
+          "type": "ErrorHandling3Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Description",
+          "isoId": "_RA_783hdEeidzqjNEfehPg",
+          "xmlTag": "Desc",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "BusinessDayReportOrError10Choice": {
+      "name": "BusinessDayReportOrError10Choice",
+      "isoId": "_ONBJt3XyEei3jO6riKEVXg",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "BusinessDayInformation",
+          "isoId": "_OYVo4XXyEei3jO6riKEVXg",
+          "xmlTag": "BizDayInf",
+          "type": "BusinessDay9",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "BusinessError",
+          "isoId": "_OYVo43XyEei3jO6riKEVXg",
+          "xmlTag": "BizErr",
+          "type": "ErrorHandling5",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "BusinessDay8": {
+      "name": "BusinessDay8",
+      "isoId": "_ODn9JXXyEei3jO6riKEVXg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "SystemIdentification",
+          "isoId": "_ONBJs3XyEei3jO6riKEVXg",
+          "xmlTag": "SysId",
+          "type": "SystemIdentification2Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": null
+        },
+        {
+          "name": "BusinessDayOrError",
+          "isoId": "_ONBJtXXyEei3jO6riKEVXg",
+          "xmlTag": "BizDayOrErr",
+          "type": "BusinessDayReportOrError10Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "BusinessDayReportOrError9Choice": {
+      "name": "BusinessDayReportOrError9Choice",
+      "isoId": "_N58csXXyEei3jO6riKEVXg",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "BusinessReport",
+          "isoId": "_ODn9IXXyEei3jO6riKEVXg",
+          "xmlTag": "BizRpt",
+          "type": "BusinessDay8",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "OperationalError",
+          "isoId": "_ODn9I3XyEei3jO6riKEVXg",
+          "xmlTag": "OprlErr",
+          "type": "ErrorHandling5",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Max350Text": {
+      "name": "Max350Text",
+      "kind": "text",
+      "isoId": "_YW1tKNp-Ed-ak6NoX_4Aeg_1778996852",
+      "minLength": 1,
+      "maxLength": 350
+    },
+    "SupplementaryDataEnvelope1": {
+      "name": "SupplementaryDataEnvelope1",
+      "kind": "any",
+      "isoId": "_Kz9KwJDrEeSLQ8ob-qtemg"
+    },
+    "SupplementaryData1": {
+      "name": "SupplementaryData1",
+      "isoId": "_Qn0zC9p-Ed-ak6NoX_4Aeg_468227563",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "PlaceAndName",
+          "isoId": "_Qn988Np-Ed-ak6NoX_4Aeg_354388497",
+          "xmlTag": "PlcAndNm",
+          "type": "Max350Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Envelope",
+          "isoId": "_Qn988dp-Ed-ak6NoX_4Aeg_-642683856",
+          "xmlTag": "Envlp",
+          "type": "SupplementaryDataEnvelope1",
+          "kind": "any",
+          "min": 1,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "SupplementaryDataRule",
+          "isoId": "_Qn988tp-Ed-ak6NoX_4Aeg_-1492355109",
+          "text": "This component may not be used without the explicit approval of a SEG and submission to the RA of ISO 20022 compliant structure(s) to be used in the Envelope element."
+        }
+      ]
+    },
+    "ReturnBusinessDayInformationV07": {
+      "name": "ReturnBusinessDayInformationV07",
+      "isoId": "_jwlcARbvEeiyVv5j1vf1VQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "MessageHeader",
+          "isoId": "_jwlcAxbvEeiyVv5j1vf1VQ",
+          "xmlTag": "MsgHdr",
+          "type": "MessageHeader7",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ReportOrError",
+          "isoId": "_jwlcBRbvEeiyVv5j1vf1VQ",
+          "xmlTag": "RptOrErr",
+          "type": "BusinessDayReportOrError9Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SupplementaryData",
+          "isoId": "_jwlcBxbvEeiyVv5j1vf1VQ",
+          "xmlTag": "SplmtryData",
+          "type": "SupplementaryData1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    }
+  }
+}

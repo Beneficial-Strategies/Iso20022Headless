@@ -1,0 +1,83 @@
+{
+  "identifier": "camt.075.001.02",
+  "name": "IntraBalanceMovementCancellationRequestStatusAdviceV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.075.001.02",
+  "bodyTag": "IntraBalMvmntCxlReqStsAdvc",
+  "out": "camt075",
+  "isoId": "_R3NcITEZEe6kQ-WGAhcVPQ",
+  "definition": "The IntraBalanceMovementCancellationRequestStatusAdvice message is sent from a settlement infrastructure to an account owner/requestor to advise the status of an intra-balance movement cancellation request previously sent by the account owner/requestor.||Usage:|The message may be used to:|- re-send a message previously sent (the sub-function of the message is \"Duplicate\")|- provide a third party with a copy of a message for information (the sub-function of the message is \"Copy\")|- re-send to a third party a copy of a message for information (the sub-function of the message is \"CopyDuplicate\").",
+  "blocks": [
+    {
+      "name": "Identification",
+      "isoId": "_R3NcLzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Id",
+      "type": "DocumentIdentification51",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "RequestReference",
+      "isoId": "_R3NcMTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "ReqRef",
+      "type": "Max35Text",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "TransactionIdentification",
+      "isoId": "_R3NcMzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "TxId",
+      "type": "References14",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ProcessingStatus",
+      "isoId": "_R3NcNTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "PrcgSts",
+      "type": "ProcessingStatus69Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CashAccount",
+      "isoId": "_R3NcNzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "CshAcct",
+      "type": "CashAccount40",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CashAccountOwner",
+      "isoId": "_R3NcOTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "CshAcctOwnr",
+      "type": "SystemPartyIdentification8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CashAccountServicer",
+      "isoId": "_R3NcOzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "CshAcctSvcr",
+      "type": "BranchAndFinancialInstitutionIdentification8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "UnderlyingIntraBalance",
+      "isoId": "_R3NcPTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "UndrlygIntraBal",
+      "type": "IntraBalance5",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3NcPzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

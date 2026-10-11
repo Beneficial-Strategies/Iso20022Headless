@@ -1,0 +1,7 @@
+codeSet	code	enumName	isoId	text
+ModificationProcessingStatus1Code	PACK	Accepted	_jQgqku5NEeCisYr99QEiWA_1714788286	Modification request has been acknowledged for further processing by the account servicer.
+ModificationProcessingStatus1Code	REJT	Rejected	_jQgqk-5NEeCisYr99QEiWA_1892906958	Modification has been rejected for further processing.
+ModificationProcessingStatus1Code	MODC	Completed	_jQgqlO5NEeCisYr99QEiWA_-1404987985	Modification has been completed.
+ModificationProcessingStatus1Code	DEND	Denied	_jQp0gO5NEeCisYr99QEiWA_2006746024	Modification will not be executed.
+ModificationProcessingStatus1Code	MODP	Pending	_jQp0ge5NEeCisYr99QEiWA_1828627352	Modification is pending. It is not known at this time whether modified can be executed.
+ModificationProcessingStatus1Code	REPR	InRepair	_jQp0gu5NEeCisYr99QEiWA_831554999	Modification request is in repair.

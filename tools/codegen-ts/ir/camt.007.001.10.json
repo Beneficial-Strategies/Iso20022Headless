@@ -1,0 +1,1513 @@
+{
+  "message": {
+    "identifier": "camt.007.001.10",
+    "name": "ModifyTransactionV10",
+    "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.007.001.10",
+    "bodyTag": "ModfyTx",
+    "out": "camt007",
+    "isoId": "_R3QfbTEZEe6kQ-WGAhcVPQ",
+    "definition": "Scope|The ModifyTransaction message is sent by a member to the transaction administrator.|It is used to request one modification in one payment instruction held at the transaction administrator and sent by the member, debiting or crediting its account at the transaction administrator.|Usage|Following normal business flows, transactions registered by the transaction administrator may be queued for later settlement (because of insufficient funds available, or because of risk or liquidity limits, etc.). A transaction may have a series of statuses. These can be transient (such as pending or related types) and final (such as rejected, revoked and/or settled).|Members of a system need to have information about the payments queue(s) and must have the ability to take action (that is, to cancel or modify the transaction(s) to be settled). Note, however, that actions by a member will always concern transactions in a transient status.|For this reason, at any time during the operating hours of the system, the member can request modifications to the features of transient transactions.|The member will submit a message requesting modifications in one or more of the following criteria:|- instruction given, related to the processing of the transaction|- type of payment instructed|- priority of payment period in which the payment instruction should be processed (processing validity time)|The ModifyTransaction message will contain the new values that the member wants to see applied to the features of the transaction identified in the message.|Based on the criteria received within the ModifyTransaction message, the transaction administrator will execute or reject the requested modifications.|The transaction administrator may send a Receipt message as a reply to the ModifyTransaction request.|To verify the outcome of the request, the member may submit a GetTransaction message with the appropriate search criteria.",
+    "blocks": [
+      {
+        "name": "MessageHeader",
+        "isoId": "_R3QfczEZEe6kQ-WGAhcVPQ",
+        "xmlTag": "MsgHdr",
+        "type": "MessageHeader1",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "Modification",
+        "isoId": "_R3QfdTEZEe6kQ-WGAhcVPQ",
+        "xmlTag": "Mod",
+        "type": "TransactionModification7",
+        "min": 1,
+        "max": null
+      },
+      {
+        "name": "SupplementaryData",
+        "isoId": "_R3QfdzEZEe6kQ-WGAhcVPQ",
+        "xmlTag": "SplmtryData",
+        "type": "SupplementaryData1",
+        "min": 0,
+        "max": null
+      }
+    ]
+  },
+  "root": "ModifyTransactionV10",
+  "order": [
+    "Max35Text",
+    "ISODateTime",
+    "MessageHeader1",
+    "UUIDv4Identifier",
+    "Max16Text",
+    "QueueTransactionIdentification1",
+    "ImpliedCurrencyAndAmount",
+    "ISODate",
+    "Max3NumericText",
+    "PaymentInstrument1Code",
+    "PaymentOrigin1Choice",
+    "BICFIDec2014Identifier",
+    "ExternalClearingSystemIdentification1Code",
+    "ClearingSystemIdentification2Choice",
+    "ClearingSystemMemberIdentification2",
+    "LEIIdentifier",
+    "Max140Text",
+    "AddressType2Code",
+    "Exact4AlphaNumericText",
+    "GenericIdentification30",
+    "AddressType3Choice",
+    "Max70Text",
+    "CountryCode",
+    "PostalAddress27",
+    "ExternalFinancialInstitutionIdentification1Code",
+    "FinancialIdentificationSchemeName1Choice",
+    "GenericFinancialIdentification1",
+    "FinancialInstitutionIdentification23",
+    "BranchData5",
+    "BranchAndFinancialInstitutionIdentification8",
+    "EntryTypeIdentifier",
+    "LongPaymentIdentification4",
+    "ShortPaymentIdentification4",
+    "PaymentIdentification8Choice",
+    "Instruction1Code",
+    "PaymentType3Code",
+    "PaymentType4Choice",
+    "Priority5Code",
+    "Priority1Choice",
+    "DateTimePeriod1",
+    "DateTimePeriod1Choice",
+    "PaymentInstruction33",
+    "TransactionModification7",
+    "Max350Text",
+    "SupplementaryDataEnvelope1",
+    "SupplementaryData1",
+    "ModifyTransactionV10"
+  ],
+  "types": {
+    "Max35Text": {
+      "name": "Max35Text",
+      "kind": "text",
+      "isoId": "_YW1tKdp-Ed-ak6NoX_4Aeg_1913463446",
+      "minLength": 1,
+      "maxLength": 35
+    },
+    "ISODateTime": {
+      "name": "ISODateTime",
+      "kind": "datetime",
+      "isoId": "_YW1tKtp-Ed-ak6NoX_4Aeg_-1624336183"
+    },
+    "MessageHeader1": {
+      "name": "MessageHeader1",
+      "isoId": "_75DzkaMgEeCJ6YNENx4h-w_-613853819",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "MessageIdentification",
+          "isoId": "_75DzkqMgEeCJ6YNENx4h-w_-727692885",
+          "xmlTag": "MsgId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CreationDateTime",
+          "isoId": "_75Dzk6MgEeCJ6YNENx4h-w_-1610926172",
+          "xmlTag": "CreDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "UUIDv4Identifier": {
+      "name": "UUIDv4Identifier",
+      "kind": "text",
+      "isoId": "_TQIBwHrVEeidVZmeoasaWQ",
+      "pattern": "[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}"
+    },
+    "Max16Text": {
+      "name": "Max16Text",
+      "kind": "text",
+      "isoId": "_YW1tJ9p-Ed-ak6NoX_4Aeg_-185393449",
+      "minLength": 1,
+      "maxLength": 16
+    },
+    "QueueTransactionIdentification1": {
+      "name": "QueueTransactionIdentification1",
+      "isoId": "_X0ioAZlQEee-Zps0fZQaFQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "QueueIdentification",
+          "isoId": "_X8kioZlQEee-Zps0fZQaFQ",
+          "xmlTag": "QId",
+          "type": "Max16Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "PositionInQueue",
+          "isoId": "_X8kio5lQEee-Zps0fZQaFQ",
+          "xmlTag": "PosInQ",
+          "type": "Max16Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ImpliedCurrencyAndAmount": {
+      "name": "ImpliedCurrencyAndAmount",
+      "isoId": "_YXbjBNp-Ed-ak6NoX_4Aeg_-1934687468",
+      "kind": "number",
+      "totalDigits": 18,
+      "fractionDigits": 5,
+      "minInclusive": 0
+    },
+    "ISODate": {
+      "name": "ISODate",
+      "kind": "date",
+      "isoId": "_YXSZFtp-Ed-ak6NoX_4Aeg_2032498111"
+    },
+    "Max3NumericText": {
+      "name": "Max3NumericText",
+      "kind": "text",
+      "isoId": "_YYU649p-Ed-ak6NoX_4Aeg_-996165274",
+      "pattern": "[0-9]{1,3}"
+    },
+    "PaymentInstrument1Code": {
+      "name": "PaymentInstrument1Code",
+      "isoId": "_zcHKoA93EeGeV5vP7Mvdig_-1294352289",
+      "kind": "code",
+      "options": [
+        {
+          "value": "BDT",
+          "name": "BankDebitTransfer",
+          "isoId": "_zcHKoQ93EeGeV5vP7Mvdig_1028186806"
+        },
+        {
+          "value": "BCT",
+          "name": "BankCreditTransfer",
+          "isoId": "_zcHKog93EeGeV5vP7Mvdig_914347740"
+        },
+        {
+          "value": "CDT",
+          "name": "CustomerDebitTransfer",
+          "isoId": "_zcHKow93EeGeV5vP7Mvdig_1788951959"
+        },
+        {
+          "value": "CCT",
+          "name": "CustomerCreditTransfer",
+          "isoId": "_zcHKpA93EeGeV5vP7Mvdig_2114069466"
+        },
+        {
+          "value": "CHK",
+          "name": "Cheque",
+          "isoId": "_zcHKpQ93EeGeV5vP7Mvdig_-221004899"
+        },
+        {
+          "value": "BKT",
+          "name": "BookTransfer",
+          "isoId": "_zcHKpg93EeGeV5vP7Mvdig_104112608"
+        },
+        {
+          "value": "DCP",
+          "name": "DebitCardPayment",
+          "isoId": "_zcQUkA93EeGeV5vP7Mvdig_1182132946"
+        },
+        {
+          "value": "CCP",
+          "name": "CreditCardPayment",
+          "isoId": "_zcQUkQ93EeGeV5vP7Mvdig_-2061701278"
+        },
+        {
+          "value": "RTI",
+          "name": "Return",
+          "isoId": "_zcQUkg93EeGeV5vP7Mvdig_2119426952"
+        },
+        {
+          "value": "CAN",
+          "name": "CancellationRequest",
+          "isoId": "_zcQUkw93EeGeV5vP7Mvdig_389397029"
+        }
+      ]
+    },
+    "PaymentOrigin1Choice": {
+      "name": "PaymentOrigin1Choice",
+      "isoId": "_RIwV1Np-Ed-ak6NoX_4Aeg_1623377139",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "FINMessageType",
+          "isoId": "_RIwV1dp-Ed-ak6NoX_4Aeg_1910593546",
+          "xmlTag": "FINMT",
+          "type": "Max3NumericText",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "XMLMessageName",
+          "isoId": "_RIwV1tp-Ed-ak6NoX_4Aeg_1991862466",
+          "xmlTag": "XMLMsgNm",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_RIwV19p-Ed-ak6NoX_4Aeg_2038039429",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Instrument",
+          "isoId": "_RIwV2Np-Ed-ak6NoX_4Aeg_-1983565483",
+          "xmlTag": "Instrm",
+          "type": "PaymentInstrument1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "BICFIDec2014Identifier": {
+      "name": "BICFIDec2014Identifier",
+      "kind": "text",
+      "isoId": "_gnK3okI7EeirV6K70JJQ8Q",
+      "pattern": "[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}"
+    },
+    "ExternalClearingSystemIdentification1Code": {
+      "name": "ExternalClearingSystemIdentification1Code",
+      "isoId": "_amVqlNp-Ed-ak6NoX_4Aeg_319823369",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 5
+    },
+    "ClearingSystemIdentification2Choice": {
+      "name": "ClearingSystemIdentification2Choice",
+      "isoId": "_TMoSENp-Ed-ak6NoX_4Aeg_-1410917193",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_TMoSEdp-Ed-ak6NoX_4Aeg_-1410917191",
+          "xmlTag": "Cd",
+          "type": "ExternalClearingSystemIdentification1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_TMoSEtp-Ed-ak6NoX_4Aeg_-1409997159",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ClearingSystemMemberIdentification2": {
+      "name": "ClearingSystemMemberIdentification2",
+      "isoId": "_TMehHNp-Ed-ak6NoX_4Aeg_151445359",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "ClearingSystemIdentification",
+          "isoId": "_TMehHdp-Ed-ak6NoX_4Aeg_-1082144614",
+          "xmlTag": "ClrSysId",
+          "type": "ClearingSystemIdentification2Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "MemberIdentification",
+          "isoId": "_TMehHtp-Ed-ak6NoX_4Aeg_151445420",
+          "xmlTag": "MmbId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "LEIIdentifier": {
+      "name": "LEIIdentifier",
+      "kind": "text",
+      "isoId": "_h7Yn9yjAEeKnA5P_jl2DUw",
+      "pattern": "[A-Z0-9]{18,18}[0-9]{2,2}"
+    },
+    "Max140Text": {
+      "name": "Max140Text",
+      "kind": "text",
+      "isoId": "_YXlUAtp-Ed-ak6NoX_4Aeg_2103068114",
+      "minLength": 1,
+      "maxLength": 140
+    },
+    "AddressType2Code": {
+      "name": "AddressType2Code",
+      "isoId": "_bm2sYNp-Ed-ak6NoX_4Aeg_595056355",
+      "kind": "code",
+      "options": [
+        {
+          "value": "ADDR",
+          "name": "Postal",
+          "isoId": "_bm2sYdp-Ed-ak6NoX_4Aeg_878577717"
+        },
+        {
+          "value": "PBOX",
+          "name": "POBox",
+          "isoId": "_bm2sYtp-Ed-ak6NoX_4Aeg_878578132"
+        },
+        {
+          "value": "HOME",
+          "name": "Residential",
+          "isoId": "_bm2sY9p-Ed-ak6NoX_4Aeg_2106193409"
+        },
+        {
+          "value": "BIZZ",
+          "name": "Business",
+          "isoId": "_bm2sZNp-Ed-ak6NoX_4Aeg_2106193529"
+        },
+        {
+          "value": "MLTO",
+          "name": "MailTo",
+          "isoId": "_bm2sZdp-Ed-ak6NoX_4Aeg_2106193606"
+        },
+        {
+          "value": "DLVY",
+          "name": "DeliveryTo",
+          "isoId": "_bm2sZtp-Ed-ak6NoX_4Aeg_2106193624"
+        }
+      ]
+    },
+    "Exact4AlphaNumericText": {
+      "name": "Exact4AlphaNumericText",
+      "kind": "text",
+      "isoId": "_YYLJ6Np-Ed-ak6NoX_4Aeg_-1265890753",
+      "pattern": "[a-zA-Z0-9]{4}"
+    },
+    "GenericIdentification30": {
+      "name": "GenericIdentification30",
+      "isoId": "_P-Pqgtp-Ed-ak6NoX_4Aeg_-1987897352",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_P-Pqg9p-Ed-ak6NoX_4Aeg_-2101736418",
+          "xmlTag": "Id",
+          "type": "Exact4AlphaNumericText",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "isoId": "_P-PqhNp-Ed-ak6NoX_4Aeg_1196158525",
+          "xmlTag": "Issr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SchemeName",
+          "isoId": "_P-Pqhdp-Ed-ak6NoX_4Aeg_491043910",
+          "xmlTag": "SchmeNm",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "AddressType3Choice": {
+      "name": "AddressType3Choice",
+      "isoId": "_CneugRb-EeiyVv5j1vf1VQ",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_C7IDQRb-EeiyVv5j1vf1VQ",
+          "xmlTag": "Cd",
+          "type": "AddressType2Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_C7IDQxb-EeiyVv5j1vf1VQ",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Max70Text": {
+      "name": "Max70Text",
+      "kind": "text",
+      "isoId": "_YX4O8Np-Ed-ak6NoX_4Aeg_-282989098",
+      "minLength": 1,
+      "maxLength": 70
+    },
+    "CountryCode": {
+      "name": "CountryCode",
+      "isoId": "_bTfEctp-Ed-ak6NoX_4Aeg_-804722522",
+      "kind": "code",
+      "pattern": "[A-Z]{2,2}"
+    },
+    "PostalAddress27": {
+      "name": "PostalAddress27",
+      "isoId": "_vvaRYTEyEe6g-ffJsqGiSA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "AddressType",
+          "isoId": "_vxk0kTEyEe6g-ffJsqGiSA",
+          "xmlTag": "AdrTp",
+          "type": "AddressType3Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CareOf",
+          "isoId": "_5-dq0DHsEe6BxvG014AZzQ",
+          "xmlTag": "CareOf",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Department",
+          "isoId": "_vxk0kzEyEe6g-ffJsqGiSA",
+          "xmlTag": "Dept",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SubDepartment",
+          "isoId": "_vxk0lTEyEe6g-ffJsqGiSA",
+          "xmlTag": "SubDept",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "StreetName",
+          "isoId": "_vxk0lzEyEe6g-ffJsqGiSA",
+          "xmlTag": "StrtNm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "BuildingNumber",
+          "isoId": "_vxk0mTEyEe6g-ffJsqGiSA",
+          "xmlTag": "BldgNb",
+          "type": "Max16Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "BuildingName",
+          "isoId": "_vxk0mzEyEe6g-ffJsqGiSA",
+          "xmlTag": "BldgNm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Floor",
+          "isoId": "_vxk0nTEyEe6g-ffJsqGiSA",
+          "xmlTag": "Flr",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "UnitNumber",
+          "isoId": "_kWPIsDHtEe6BxvG014AZzQ",
+          "xmlTag": "UnitNb",
+          "type": "Max16Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PostBox",
+          "isoId": "_vxk0nzEyEe6g-ffJsqGiSA",
+          "xmlTag": "PstBx",
+          "type": "Max16Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Room",
+          "isoId": "_vxk0oTEyEe6g-ffJsqGiSA",
+          "xmlTag": "Room",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PostCode",
+          "isoId": "_vxk0ozEyEe6g-ffJsqGiSA",
+          "xmlTag": "PstCd",
+          "type": "Max16Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TownName",
+          "isoId": "_vxk0pTEyEe6g-ffJsqGiSA",
+          "xmlTag": "TwnNm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TownLocationName",
+          "isoId": "_vxk0pzEyEe6g-ffJsqGiSA",
+          "xmlTag": "TwnLctnNm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "DistrictName",
+          "isoId": "_vxk0qTEyEe6g-ffJsqGiSA",
+          "xmlTag": "DstrctNm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CountrySubDivision",
+          "isoId": "_vxk0qzEyEe6g-ffJsqGiSA",
+          "xmlTag": "CtrySubDvsn",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Country",
+          "isoId": "_vxlboTEyEe6g-ffJsqGiSA",
+          "xmlTag": "Ctry",
+          "type": "CountryCode",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "AddressLine",
+          "isoId": "_vxlbozEyEe6g-ffJsqGiSA",
+          "xmlTag": "AdrLine",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 0,
+          "max": 7
+        }
+      ]
+    },
+    "ExternalFinancialInstitutionIdentification1Code": {
+      "name": "ExternalFinancialInstitutionIdentification1Code",
+      "isoId": "_ame0gNp-Ed-ak6NoX_4Aeg_-1716707444",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "FinancialIdentificationSchemeName1Choice": {
+      "name": "FinancialIdentificationSchemeName1Choice",
+      "isoId": "_QALkMNp-Ed-ak6NoX_4Aeg_-2021925461",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_QALkMdp-Ed-ak6NoX_4Aeg_-2021925430",
+          "xmlTag": "Cd",
+          "type": "ExternalFinancialInstitutionIdentification1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_QALkMtp-Ed-ak6NoX_4Aeg_-2021925152",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "GenericFinancialIdentification1": {
+      "name": "GenericFinancialIdentification1",
+      "isoId": "_QALkM9p-Ed-ak6NoX_4Aeg_-2141717394",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_QALkNNp-Ed-ak6NoX_4Aeg_-2141717392",
+          "xmlTag": "Id",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SchemeName",
+          "isoId": "_QALkNdp-Ed-ak6NoX_4Aeg_-2141717054",
+          "xmlTag": "SchmeNm",
+          "type": "FinancialIdentificationSchemeName1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "isoId": "_QALkNtp-Ed-ak6NoX_4Aeg_-2141717116",
+          "xmlTag": "Issr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "FinancialInstitutionIdentification23": {
+      "name": "FinancialInstitutionIdentification23",
+      "isoId": "_v2tzSTEyEe6g-ffJsqGiSA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "BICFI",
+          "isoId": "_v5D8oTEyEe6g-ffJsqGiSA",
+          "xmlTag": "BICFI",
+          "type": "BICFIDec2014Identifier",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ClearingSystemMemberIdentification",
+          "isoId": "_v5D8ozEyEe6g-ffJsqGiSA",
+          "xmlTag": "ClrSysMmbId",
+          "type": "ClearingSystemMemberIdentification2",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "LEI",
+          "isoId": "_v5D8pTEyEe6g-ffJsqGiSA",
+          "xmlTag": "LEI",
+          "type": "LEIIdentifier",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Name",
+          "isoId": "_v5D8pzEyEe6g-ffJsqGiSA",
+          "xmlTag": "Nm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PostalAddress",
+          "isoId": "_v5D8qTEyEe6g-ffJsqGiSA",
+          "xmlTag": "PstlAdr",
+          "type": "PostalAddress27",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Other",
+          "isoId": "_v5D8qzEyEe6g-ffJsqGiSA",
+          "xmlTag": "Othr",
+          "type": "GenericFinancialIdentification1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "BranchData5": {
+      "name": "BranchData5",
+      "isoId": "_v0bUQTEyEe6g-ffJsqGiSA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_v2tzQTEyEe6g-ffJsqGiSA",
+          "xmlTag": "Id",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "LEI",
+          "isoId": "_v2tzQzEyEe6g-ffJsqGiSA",
+          "xmlTag": "LEI",
+          "type": "LEIIdentifier",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Name",
+          "isoId": "_v2tzRTEyEe6g-ffJsqGiSA",
+          "xmlTag": "Nm",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PostalAddress",
+          "isoId": "_v2tzRzEyEe6g-ffJsqGiSA",
+          "xmlTag": "PstlAdr",
+          "type": "PostalAddress27",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "BranchAndFinancialInstitutionIdentification8": {
+      "name": "BranchAndFinancialInstitutionIdentification8",
+      "isoId": "_vxnQ0TEyEe6g-ffJsqGiSA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "FinancialInstitutionIdentification",
+          "isoId": "_v0atMTEyEe6g-ffJsqGiSA",
+          "xmlTag": "FinInstnId",
+          "type": "FinancialInstitutionIdentification23",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "BranchIdentification",
+          "isoId": "_v0atMzEyEe6g-ffJsqGiSA",
+          "xmlTag": "BrnchId",
+          "type": "BranchData5",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "EntryTypeIdentifier": {
+      "name": "EntryTypeIdentifier",
+      "kind": "text",
+      "isoId": "_YYn109p-Ed-ak6NoX_4Aeg_376711767",
+      "pattern": "[BEOVW]{1,1}[0-9]{2,2}|DUM"
+    },
+    "LongPaymentIdentification4": {
+      "name": "LongPaymentIdentification4",
+      "isoId": "_2AnwzTEyEe6g-ffJsqGiSA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "TransactionIdentification",
+          "isoId": "_2C1-UzEyEe6g-ffJsqGiSA",
+          "xmlTag": "TxId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "UETR",
+          "isoId": "_2C1-VTEyEe6g-ffJsqGiSA",
+          "xmlTag": "UETR",
+          "type": "UUIDv4Identifier",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "InterbankSettlementAmount",
+          "isoId": "_2C1-VzEyEe6g-ffJsqGiSA",
+          "xmlTag": "IntrBkSttlmAmt",
+          "type": "ImpliedCurrencyAndAmount",
+          "kind": "number",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "InterbankSettlementDate",
+          "isoId": "_2C1-WTEyEe6g-ffJsqGiSA",
+          "xmlTag": "IntrBkSttlmDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "PaymentMethod",
+          "isoId": "_2C1-WzEyEe6g-ffJsqGiSA",
+          "xmlTag": "PmtMtd",
+          "type": "PaymentOrigin1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "InstructingAgent",
+          "isoId": "_2C1-XTEyEe6g-ffJsqGiSA",
+          "xmlTag": "InstgAgt",
+          "type": "BranchAndFinancialInstitutionIdentification8",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "InstructedAgent",
+          "isoId": "_2C1-XzEyEe6g-ffJsqGiSA",
+          "xmlTag": "InstdAgt",
+          "type": "BranchAndFinancialInstitutionIdentification8",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "EntryType",
+          "isoId": "_2C1-YTEyEe6g-ffJsqGiSA",
+          "xmlTag": "NtryTp",
+          "type": "EntryTypeIdentifier",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "EndToEndIdentification",
+          "isoId": "_2C1-YzEyEe6g-ffJsqGiSA",
+          "xmlTag": "EndToEndId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "TransactionIdentificationPresenceRule",
+          "isoId": "_2C1-UTEyEe6g-ffJsqGiSA",
+          "text": "TransactionIdentification or UETR must be present. Both may be present",
+          "expression": {
+            "mustBe": {
+              "connector": "OR",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/TransactionIdentification"
+                },
+                {
+                  "op": "Presence",
+                  "path": "/UETR"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "ShortPaymentIdentification4": {
+      "name": "ShortPaymentIdentification4",
+      "isoId": "_2C1-ZTEyEe6g-ffJsqGiSA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "TransactionIdentification",
+          "isoId": "_2FK5kzEyEe6g-ffJsqGiSA",
+          "xmlTag": "TxId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "UETR",
+          "isoId": "_2FK5lTEyEe6g-ffJsqGiSA",
+          "xmlTag": "UETR",
+          "type": "UUIDv4Identifier",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "InterbankSettlementDate",
+          "isoId": "_2FK5lzEyEe6g-ffJsqGiSA",
+          "xmlTag": "IntrBkSttlmDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "InstructingAgent",
+          "isoId": "_2FK5mTEyEe6g-ffJsqGiSA",
+          "xmlTag": "InstgAgt",
+          "type": "BranchAndFinancialInstitutionIdentification8",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "TransactionIdentificationPresenceRule",
+          "isoId": "_2FK5kTEyEe6g-ffJsqGiSA",
+          "text": "TransactionIdentification or UETR must be present. Both may be present",
+          "expression": {
+            "mustBe": {
+              "connector": "OR",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/TransactionIdentification"
+                },
+                {
+                  "op": "Presence",
+                  "path": "/UETR"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "PaymentIdentification8Choice": {
+      "name": "PaymentIdentification8Choice",
+      "isoId": "_1-XG8TEyEe6g-ffJsqGiSA",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "TransactionIdentification",
+          "isoId": "_2AnwwTEyEe6g-ffJsqGiSA",
+          "xmlTag": "TxId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "UETR",
+          "isoId": "_2AnwwzEyEe6g-ffJsqGiSA",
+          "xmlTag": "UETR",
+          "type": "UUIDv4Identifier",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "QueueIdentification",
+          "isoId": "_2AnwxTEyEe6g-ffJsqGiSA",
+          "xmlTag": "QId",
+          "type": "QueueTransactionIdentification1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "LongBusinessIdentification",
+          "isoId": "_2AnwxzEyEe6g-ffJsqGiSA",
+          "xmlTag": "LngBizId",
+          "type": "LongPaymentIdentification4",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ShortBusinessIdentification",
+          "isoId": "_2AnwyTEyEe6g-ffJsqGiSA",
+          "xmlTag": "ShrtBizId",
+          "type": "ShortPaymentIdentification4",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ProprietaryIdentification",
+          "isoId": "_2AnwyzEyEe6g-ffJsqGiSA",
+          "xmlTag": "PrtryId",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Instruction1Code": {
+      "name": "Instruction1Code",
+      "isoId": "_aW12Adp-Ed-ak6NoX_4Aeg_-499701817",
+      "kind": "code",
+      "options": [
+        {
+          "value": "PBEN",
+          "name": "PayTheBeneficiary",
+          "isoId": "_aW12Atp-Ed-ak6NoX_4Aeg_-499701816"
+        },
+        {
+          "value": "TTIL",
+          "name": "TimeTill",
+          "isoId": "_aW12A9p-Ed-ak6NoX_4Aeg_-499701815"
+        },
+        {
+          "value": "TFRO",
+          "name": "TimeFrom",
+          "isoId": "_aW12BNp-Ed-ak6NoX_4Aeg_-499701814"
+        }
+      ]
+    },
+    "PaymentType3Code": {
+      "name": "PaymentType3Code",
+      "isoId": "_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787",
+      "kind": "code",
+      "options": [
+        {
+          "value": "CBS",
+          "name": "CrossBorderPayment",
+          "isoId": "_Z8A7NNp-Ed-ak6NoX_4Aeg_-2009106552"
+        },
+        {
+          "value": "BCK",
+          "name": "BackUp",
+          "isoId": "_Z8A7Ndp-Ed-ak6NoX_4Aeg_-2009106527"
+        },
+        {
+          "value": "BAL",
+          "name": "BalanceRetail",
+          "isoId": "_Z8A7Ntp-Ed-ak6NoX_4Aeg_-2009106526"
+        },
+        {
+          "value": "CLS",
+          "name": "CLSPayment",
+          "isoId": "_Z8A7N9p-Ed-ak6NoX_4Aeg_-2009106510"
+        },
+        {
+          "value": "CTR",
+          "name": "CentralBankOperation",
+          "isoId": "_Z8A7ONp-Ed-ak6NoX_4Aeg_-2009106492"
+        },
+        {
+          "value": "CBH",
+          "name": "CrossBorderHighValuePayment",
+          "isoId": "_Z8A7Odp-Ed-ak6NoX_4Aeg_-2009106467"
+        },
+        {
+          "value": "CBP",
+          "name": "CrossBorderPriorityPayment",
+          "isoId": "_Z8KsMNp-Ed-ak6NoX_4Aeg_-2009106450"
+        },
+        {
+          "value": "DPG",
+          "name": "DVPGross",
+          "isoId": "_Z8KsMdp-Ed-ak6NoX_4Aeg_-2009106432"
+        },
+        {
+          "value": "DPN",
+          "name": "DVPNet",
+          "isoId": "_Z8KsMtp-Ed-ak6NoX_4Aeg_-2009106415"
+        },
+        {
+          "value": "EXP",
+          "name": "ExpressPayment",
+          "isoId": "_Z8KsM9p-Ed-ak6NoX_4Aeg_-2009106414"
+        },
+        {
+          "value": "TCH",
+          "name": "ThirdCurrencyHighValuePayment",
+          "isoId": "_Z8KsNNp-Ed-ak6NoX_4Aeg_-2009106397"
+        },
+        {
+          "value": "LMT",
+          "name": "LimitPayment",
+          "isoId": "_Z8KsNdp-Ed-ak6NoX_4Aeg_-2009106124"
+        },
+        {
+          "value": "LIQ",
+          "name": "LiquidityTransfer",
+          "isoId": "_Z8KsNtp-Ed-ak6NoX_4Aeg_-2009106107"
+        },
+        {
+          "value": "DPP",
+          "name": "DomesticPriorityPayment",
+          "isoId": "_Z8KsN9p-Ed-ak6NoX_4Aeg_-2009106106"
+        },
+        {
+          "value": "DPH",
+          "name": "DomesticHighValuePayment",
+          "isoId": "_Z8KsONp-Ed-ak6NoX_4Aeg_-2009106089"
+        },
+        {
+          "value": "DPS",
+          "name": "DomesticPayment",
+          "isoId": "_Z8KsOdp-Ed-ak6NoX_4Aeg_-2009106012"
+        },
+        {
+          "value": "STF",
+          "name": "StandingFacilities",
+          "isoId": "_Z8T2INp-Ed-ak6NoX_4Aeg_-2009105969"
+        },
+        {
+          "value": "TRP",
+          "name": "TreasuryStatePayment",
+          "isoId": "_Z8T2Idp-Ed-ak6NoX_4Aeg_-2009105952"
+        },
+        {
+          "value": "TCS",
+          "name": "ThirdCurrencyPayment",
+          "isoId": "_Z8T2Itp-Ed-ak6NoX_4Aeg_-2009105934"
+        },
+        {
+          "value": "LOA",
+          "name": "Loan",
+          "isoId": "_Z8T2I9p-Ed-ak6NoX_4Aeg_-2009105933"
+        },
+        {
+          "value": "LOR",
+          "name": "LoanRepayment",
+          "isoId": "_Z8T2JNp-Ed-ak6NoX_4Aeg_-2009105909"
+        },
+        {
+          "value": "TCP",
+          "name": "ThirdCurrencyPriorityPayment",
+          "isoId": "_Z8T2Jdp-Ed-ak6NoX_4Aeg_-2009105892"
+        },
+        {
+          "value": "OND",
+          "name": "OvernightDeposit",
+          "isoId": "_Z8T2Jtp-Ed-ak6NoX_4Aeg_-1235461266"
+        },
+        {
+          "value": "MGL",
+          "name": "MarginalLending",
+          "isoId": "_Z8T2J9p-Ed-ak6NoX_4Aeg_-1231765290"
+        }
+      ]
+    },
+    "PaymentType4Choice": {
+      "name": "PaymentType4Choice",
+      "isoId": "_Kjf4MxbwEeOy-PlRuFSUzQ",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_K7v_8RbwEeOy-PlRuFSUzQ",
+          "xmlTag": "Cd",
+          "type": "PaymentType3Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_K7v_8xbwEeOy-PlRuFSUzQ",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Priority5Code": {
+      "name": "Priority5Code",
+      "isoId": "_kUSkAH_QEeiik6YN_dzlEA",
+      "kind": "code",
+      "options": [
+        {
+          "value": "HIGH",
+          "name": "High",
+          "isoId": "_mcdxcH_QEeiik6YN_dzlEA"
+        },
+        {
+          "value": "LOWW",
+          "name": "Low",
+          "isoId": "_mh3O0X_QEeiik6YN_dzlEA"
+        },
+        {
+          "value": "NORM",
+          "name": "Normal",
+          "isoId": "_mpC04X_QEeiik6YN_dzlEA"
+        },
+        {
+          "value": "URGT",
+          "name": "Urgent",
+          "isoId": "_muQFAX_QEeiik6YN_dzlEA"
+        }
+      ]
+    },
+    "Priority1Choice": {
+      "name": "Priority1Choice",
+      "isoId": "_SEJYAX_REeiik6YN_dzlEA",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_SP24wX_REeiik6YN_dzlEA",
+          "xmlTag": "Cd",
+          "type": "Priority5Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_SP24w3_REeiik6YN_dzlEA",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "DateTimePeriod1": {
+      "name": "DateTimePeriod1",
+      "isoId": "_aeAZM_hvEeSLI7Du5Hk4iw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "FromDateTime",
+          "isoId": "_aeAZNPhvEeSLI7Du5Hk4iw",
+          "xmlTag": "FrDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ToDateTime",
+          "isoId": "_aeAZNfhvEeSLI7Du5Hk4iw",
+          "xmlTag": "ToDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "DateTimePeriod1Choice": {
+      "name": "DateTimePeriod1Choice",
+      "isoId": "_xLYeBZlcEeeE1Ya-LgRsuQ",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "FromDateTime",
+          "isoId": "_xTM9QZlcEeeE1Ya-LgRsuQ",
+          "xmlTag": "FrDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ToDateTime",
+          "isoId": "_xTM9Q5lcEeeE1Ya-LgRsuQ",
+          "xmlTag": "ToDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "DateTimeRange",
+          "isoId": "_xTM9RZlcEeeE1Ya-LgRsuQ",
+          "xmlTag": "DtTmRg",
+          "type": "DateTimePeriod1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "PaymentInstruction33": {
+      "name": "PaymentInstruction33",
+      "isoId": "_YfG9NXX1Eei3jO6riKEVXg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Instruction",
+          "isoId": "_YpY6k3X1Eei3jO6riKEVXg",
+          "xmlTag": "Instr",
+          "type": "Instruction1Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Type",
+          "isoId": "_YpY6lXX1Eei3jO6riKEVXg",
+          "xmlTag": "Tp",
+          "type": "PaymentType4Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Priority",
+          "isoId": "_YpY6l3X1Eei3jO6riKEVXg",
+          "xmlTag": "Prty",
+          "type": "Priority1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ProcessingValidityTime",
+          "isoId": "_YpY6mXX1Eei3jO6riKEVXg",
+          "xmlTag": "PrcgVldtyTm",
+          "type": "DateTimePeriod1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "TransactionModification7": {
+      "name": "TransactionModification7",
+      "isoId": "_6V6WATEyEe6g-ffJsqGiSA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "PaymentIdentification",
+          "isoId": "_6YJxsTEyEe6g-ffJsqGiSA",
+          "xmlTag": "PmtId",
+          "type": "PaymentIdentification8Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "NewPaymentValueSet",
+          "isoId": "_6YJxszEyEe6g-ffJsqGiSA",
+          "xmlTag": "NewPmtValSet",
+          "type": "PaymentInstruction33",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Max350Text": {
+      "name": "Max350Text",
+      "kind": "text",
+      "isoId": "_YW1tKNp-Ed-ak6NoX_4Aeg_1778996852",
+      "minLength": 1,
+      "maxLength": 350
+    },
+    "SupplementaryDataEnvelope1": {
+      "name": "SupplementaryDataEnvelope1",
+      "kind": "any",
+      "isoId": "_Kz9KwJDrEeSLQ8ob-qtemg"
+    },
+    "SupplementaryData1": {
+      "name": "SupplementaryData1",
+      "isoId": "_Qn0zC9p-Ed-ak6NoX_4Aeg_468227563",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "PlaceAndName",
+          "isoId": "_Qn988Np-Ed-ak6NoX_4Aeg_354388497",
+          "xmlTag": "PlcAndNm",
+          "type": "Max350Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Envelope",
+          "isoId": "_Qn988dp-Ed-ak6NoX_4Aeg_-642683856",
+          "xmlTag": "Envlp",
+          "type": "SupplementaryDataEnvelope1",
+          "kind": "any",
+          "min": 1,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "SupplementaryDataRule",
+          "isoId": "_Qn988tp-Ed-ak6NoX_4Aeg_-1492355109",
+          "text": "This component may not be used without the explicit approval of a SEG and submission to the RA of ISO 20022 compliant structure(s) to be used in the Envelope element."
+        }
+      ]
+    },
+    "ModifyTransactionV10": {
+      "name": "ModifyTransactionV10",
+      "isoId": "_R3QfbTEZEe6kQ-WGAhcVPQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "MessageHeader",
+          "isoId": "_R3QfczEZEe6kQ-WGAhcVPQ",
+          "xmlTag": "MsgHdr",
+          "type": "MessageHeader1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Modification",
+          "isoId": "_R3QfdTEZEe6kQ-WGAhcVPQ",
+          "xmlTag": "Mod",
+          "type": "TransactionModification7",
+          "kind": "component",
+          "min": 1,
+          "max": null
+        },
+        {
+          "name": "SupplementaryData",
+          "isoId": "_R3QfdzEZEe6kQ-WGAhcVPQ",
+          "xmlTag": "SplmtryData",
+          "type": "SupplementaryData1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    }
+  }
+}

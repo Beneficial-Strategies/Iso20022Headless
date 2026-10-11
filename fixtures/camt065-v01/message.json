@@ -1,0 +1,43 @@
+{
+  "identifier": "camt.065.001.01",
+  "name": "LimitUtilisationJournalReportV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.065.001.01",
+  "bodyTag": "LmtUtlstnJrnlRpt",
+  "out": "camt065",
+  "isoId": "_oeK84SPsEe-T5ffMy2iCzg",
+  "definition": "The LimitUtilisationJournalReport message is exchanged between the central system and a central securities depository or a directly connected system party (the central securities depository participant granted direct access, like a bank or central counter party) and is used to return information about the limit. Its purpose is to report information regarding the journal of transactions impacting the utilisation of limits that have been defined by the system participant.",
+  "blocks": [
+    {
+      "name": "MessageHeader",
+      "isoId": "_oeK87yPsEe-T5ffMy2iCzg",
+      "xmlTag": "MsgHdr",
+      "type": "MessageHeader12",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Pagination",
+      "isoId": "_oeLj9SPsEe-T5ffMy2iCzg",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ReportOrError",
+      "isoId": "_oeLj-SPsEe-T5ffMy2iCzg",
+      "xmlTag": "RptOrErr",
+      "type": "LimitJournalReportOrError7Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_oeLj-yPsEe-T5ffMy2iCzg",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

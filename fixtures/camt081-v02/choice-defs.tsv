@@ -1,0 +1,24 @@
+choice	memberId	memberName	text
+IntraBalanceOrOperationalError12Choice	_7tvroTEyEe6g-ffJsqGiSA	Modifications	Further details of the intrabalance modification transactions.
+IntraBalanceOrOperationalError12Choice	_7tvrozEyEe6g-ffJsqGiSA	OperationalError	Operational error resulting from a rejection.
+ProcessingStatus71Choice	_mk9BkeGKEeWCAvUNsZ5u6g	AcknowledgedAccepted	Request has been acknowledged by the account servicer.
+ProcessingStatus71Choice	_mk9BmeGKEeWCAvUNsZ5u6g	Pending	Modification is pending. It is not known at this time whether modification can be affected.
+ProcessingStatus71Choice	_mk9BoeGKEeWCAvUNsZ5u6g	Rejected	Modification request has been rejected for further processing.
+ProcessingStatus71Choice	_mk9BqeGKEeWCAvUNsZ5u6g	Repair	Instruction or request is accepted but in repair.
+ProcessingStatus71Choice	_mk9BseGKEeWCAvUNsZ5u6g	Denied	Modification request will not be executed.
+ProcessingStatus71Choice	_mk9Bs-GKEeWCAvUNsZ5u6g	Completed	Modification request was completed.
+ProcessingStatus71Choice	_mk9BteGKEeWCAvUNsZ5u6g	Proprietary	Status that cannot be reported using one of the available standard status.
+AcknowledgedAcceptedStatus21Choice	_hQwiATnvEeWfSKvvZlhRKg	NoSpecifiedReason	Indicates that there is no reason available or to report.
+AcknowledgedAcceptedStatus21Choice	_hQwiCTnvEeWfSKvvZlhRKg	Reason	Specifies the reason of the acknowledged accepted status.
+AcknowledgementReason12Choice	_iSz04TnvEeWfSKvvZlhRKg	Code	Specifies additional information about the processed instruction.
+AcknowledgementReason12Choice	_iSz06TnvEeWfSKvvZlhRKg	Proprietary	Specifies additional information about the processed instruction.
+PendingStatus38Choice	_GHwrcTqfEeWyoP0PbocV1Q	NoSpecifiedReason	Indicates that there is no reason available or to report.
+PendingStatus38Choice	_GHwreTqfEeWyoP0PbocV1Q	Reason	Specifies the reason of the pending status.
+PendingReason28Choice	_HGsY4TqfEeWyoP0PbocV1Q	Code	Specifies the reason code why the instruction or request is pending.
+PendingReason28Choice	_HGsY6TqfEeWyoP0PbocV1Q	Proprietary	Specifies the reason code why the instruction or request is pending, using a proprietary format.
+RejectionOrRepairStatus40Choice	_mwj0oeGKEeWCAvUNsZ5u6g	NoSpecifiedReason	Indicates that there is no reason available or to report.
+RejectionOrRepairStatus40Choice	_mwj0qeGKEeWCAvUNsZ5u6g	Reason	Specifies the reason of the rejection or repair status.
+RejectionAndRepairReason34Choice	_nHwzseGKEeWCAvUNsZ5u6g	Code	Specifies the reason why the instruction/request has a repair or rejection status.
+RejectionAndRepairReason34Choice	_nHwzueGKEeWCAvUNsZ5u6g	Proprietary	Specifies the reason why the instruction/request has a repair or rejection status.
+LinkageType3Choice	_LiheYTt4EeW638lNyHKv7A	Code	Linkage type expressed as an ISO 20022 code.
+LinkageType3Choice	_LiheaTt4EeW638lNyHKv7A	Proprietary	Linkage type expressed as a proprietary code.

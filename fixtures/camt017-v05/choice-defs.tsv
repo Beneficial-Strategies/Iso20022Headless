@@ -1,0 +1,9 @@
+choice	memberId	memberName	text
+ExchangeRateReportOrError3Choice	_MmlkkdfiEeqoweZZxm4TPQ	CurrencyExchangeReport	Reports on currency exchange information.
+ExchangeRateReportOrError3Choice	_Mmlkk9fiEeqoweZZxm4TPQ	OperationalError	Indicates that an operational error has been issued during the processing of the related request.
+ExchangeRateReportOrError4Choice	_MqM5QdfiEeqoweZZxm4TPQ	BusinessError	Reason the requested business information is not given.
+ExchangeRateReportOrError4Choice	_MqM5Q9fiEeqoweZZxm4TPQ	CurrencyExchange	Requested business information.
+ErrorHandling1Choice	_RZI7Mtp-Ed-ak6NoX_4Aeg_-632950580	Code	Specification of the error, in coded form.
+ErrorHandling1Choice	_RZI7M9p-Ed-ak6NoX_4Aeg_-632950304	Proprietary	Specification of the error, in free format.
+ExchangeRateOrPercentage1Choice	_zZKxgNfvEeqoweZZxm4TPQ	Rate	Rate is expressed an currency exchange rate.
+ExchangeRateOrPercentage1Choice	_419xYNfvEeqoweZZxm4TPQ	Percentage	Rate is expressed as a percentage relative to the reference rate.

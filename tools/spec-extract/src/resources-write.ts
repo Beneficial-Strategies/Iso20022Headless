@@ -1,6 +1,6 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { closureOf, messageJson, simpleTypeRows, simpleTypesTsv, writeStructure, type Closure, type MessageSpec } from './extract.ts';
+import { closureOf, kindOf, messageJson, simpleTypeRows, simpleTypesTsv, writeStructure, type Closure, type MessageSpec } from './extract.ts';
 import { loadResources, pageTotals, type CodeSetInfo, type Resources, SIMPLE_KINDS } from './resources.ts';
 import { orderFileText, parseOrderFile } from './xsd-order.ts';
 
@@ -137,7 +137,15 @@ export function runResources(args: { pages: string; messages: string; fixtures: 
       const w = writeStructure(res.spec, c, fresh, (n) => !seen.codeSets.has(n));
       writeFileSync(resolve(out, 'message.json'), JSON.stringify(messageJson(res.spec, m), null, 2) + '\n');
       writeFileSync(resolve(out, 'complex-types.tsv'), w.complexTypes.replace('from get_spec_snapshot (components + choices). Choice members are the snapshot\'s VARIANT rows.', 'from the ISO 20022 MCP resources (dictionary details). Choice members are the resources\' variants.'));
-      writeFileSync(resolve(out, 'snapshot-raw.tsv'), w.snapshotRaw.replace('from get_spec_snapshot', 'from the MCP resources'));
+      // A building block whose type is a simple type or a code set has no type text to fall back on, so its own definition is kept
+      // (the generator reads definitions of a message's own blocks from MEMBER rows whose parent is the message).
+      const blockDefs = (res.spec.blocks.get(m.name) ?? [])
+        .filter((b) => {
+          const k = kindOf(res.spec, b[4]!);
+          return k !== 'Component' && k !== 'Choice' && b[8];
+        })
+        .map((b) => tsv(['MEMBER', m.name, b[1], b[2], b[3], kindOf(res.spec, b[4]!), b[4], b[5] || '0', b[6] || '*', b[8]]));
+      writeFileSync(resolve(out, 'snapshot-raw.tsv'), w.snapshotRaw.replace('from get_spec_snapshot', 'from the MCP resources') + (blockDefs.length ? blockDefs.join('\n') + '\n' : ''));
       writeFileSync(resolve(out, 'choice-defs.tsv'), w.choiceDefs);
       writeFileSync(resolve(out, 'codeset-defs.tsv'), w.codeSetDefs);
       writeFileSync(resolve(out, 'simple-types.tsv'), simpleTypesTsv(simpleTypeRows(res.spec, [...newSimple, ...c.amounts.filter(fresh), ...c.externalSchemas.filter((n) => !seen.simple.has(n))])));
