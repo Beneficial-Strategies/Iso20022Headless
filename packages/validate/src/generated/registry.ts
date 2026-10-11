@@ -38,6 +38,7 @@ export const areaIndex: readonly AreaInfo[] = [
   { code: "admi", name: "Administration", definition: "Generic messages, ie, system event notifications, generic rejections, etc." },
   { code: "remt", name: "Payments Remittance Advice", definition: "Messages that support communication between creditors and debtors regarding remittance details associated with payments." },
   { code: "trck", name: "Transaction Tracker", definition: "" },
+  { code: "acmt", name: "Account Management", definition: "Messages that support the management of account related activities, such as the opening and maintenance of an account." },
 ];
 
 export const messageIndex: readonly MessageInfo[] = [
@@ -1560,5 +1561,345 @@ export const messageIndex: readonly MessageInfo[] = [
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/trck/schemas/trck.004.001.04.xsd",
     load: () =>
       import('./trck004.ts').then((m) => ({ message: m.trck004Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.001.001.08",
+    name: "AccountOpeningInstructionV08",
+    title: "Account Opening Instruction",
+    area: "acmt",
+    module: "acmt001",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.001.001.08.xsd",
+    load: () =>
+      import('./acmt001.ts').then((m) => ({ message: m.acmt001Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.002.001.08",
+    name: "AccountDetailsConfirmationV08",
+    title: "Account Details Confirmation",
+    area: "acmt",
+    module: "acmt002",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.002.001.08.xsd",
+    load: () =>
+      import('./acmt002.ts').then((m) => ({ message: m.acmt002Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.003.001.08",
+    name: "AccountModificationInstructionV08",
+    title: "Account Modification Instruction",
+    area: "acmt",
+    module: "acmt003",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.003.001.08.xsd",
+    load: () =>
+      import('./acmt003.ts').then((m) => ({ message: m.acmt003Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.005.001.06",
+    name: "RequestForAccountManagementStatusReportV06",
+    title: "Request For Account Management Status Report",
+    area: "acmt",
+    module: "acmt005",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.005.001.06.xsd",
+    load: () =>
+      import('./acmt005.ts').then((m) => ({ message: m.acmt005Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.006.001.07",
+    name: "AccountManagementStatusReportV07",
+    title: "Account Management Status Report",
+    area: "acmt",
+    module: "acmt006",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.006.001.07.xsd",
+    load: () =>
+      import('./acmt006.ts').then((m) => ({ message: m.acmt006Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.007.001.05",
+    name: "AccountOpeningRequestV05",
+    title: "Account Opening Request",
+    area: "acmt",
+    module: "acmt007",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.007.001.05.xsd",
+    load: () =>
+      import('./acmt007.ts').then((m) => ({ message: m.acmt007Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.008.001.05",
+    name: "AccountOpeningAmendmentRequestV05",
+    title: "Account Opening Amendment Request",
+    area: "acmt",
+    module: "acmt008",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.008.001.05.xsd",
+    load: () =>
+      import('./acmt008.ts').then((m) => ({ message: m.acmt008Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.009.001.04",
+    name: "AccountOpeningAdditionalInformationRequestV04",
+    title: "Account Opening Additional Information Request",
+    area: "acmt",
+    module: "acmt009",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.009.001.04.xsd",
+    load: () =>
+      import('./acmt009.ts').then((m) => ({ message: m.acmt009Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.010.001.04",
+    name: "AccountRequestAcknowledgementV04",
+    title: "Account Request Acknowledgement",
+    area: "acmt",
+    module: "acmt010",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.010.001.04.xsd",
+    load: () =>
+      import('./acmt010.ts').then((m) => ({ message: m.acmt010Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.011.001.04",
+    name: "AccountRequestRejectionV04",
+    title: "Account Request Rejection",
+    area: "acmt",
+    module: "acmt011",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.011.001.04.xsd",
+    load: () =>
+      import('./acmt011.ts').then((m) => ({ message: m.acmt011Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.012.001.04",
+    name: "AccountAdditionalInformationRequestV04",
+    title: "Account Additional Information Request",
+    area: "acmt",
+    module: "acmt012",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.012.001.04.xsd",
+    load: () =>
+      import('./acmt012.ts').then((m) => ({ message: m.acmt012Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.013.001.04",
+    name: "AccountReportRequestV04",
+    title: "Account Report Request",
+    area: "acmt",
+    module: "acmt013",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.013.001.04.xsd",
+    load: () =>
+      import('./acmt013.ts').then((m) => ({ message: m.acmt013Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.014.001.05",
+    name: "AccountReportV05",
+    title: "Account Report",
+    area: "acmt",
+    module: "acmt014",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.014.001.05.xsd",
+    load: () =>
+      import('./acmt014.ts').then((m) => ({ message: m.acmt014Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.015.001.05",
+    name: "AccountExcludedMandateMaintenanceRequestV05",
+    title: "Account Excluded Mandate Maintenance Request",
+    area: "acmt",
+    module: "acmt015",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.015.001.05.xsd",
+    load: () =>
+      import('./acmt015.ts').then((m) => ({ message: m.acmt015Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.016.001.05",
+    name: "AccountExcludedMandateMaintenanceAmendmentRequestV05",
+    title: "Account Excluded Mandate Maintenance Amendment Request",
+    area: "acmt",
+    module: "acmt016",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.016.001.05.xsd",
+    load: () =>
+      import('./acmt016.ts').then((m) => ({ message: m.acmt016Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.017.001.05",
+    name: "AccountMandateMaintenanceRequestV05",
+    title: "Account Mandate Maintenance Request",
+    area: "acmt",
+    module: "acmt017",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.017.001.05.xsd",
+    load: () =>
+      import('./acmt017.ts').then((m) => ({ message: m.acmt017Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.018.001.05",
+    name: "AccountMandateMaintenanceAmendmentRequestV05",
+    title: "Account Mandate Maintenance Amendment Request",
+    area: "acmt",
+    module: "acmt018",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.018.001.05.xsd",
+    load: () =>
+      import('./acmt018.ts').then((m) => ({ message: m.acmt018Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.019.001.04",
+    name: "AccountClosingRequestV04",
+    title: "Account Closing Request",
+    area: "acmt",
+    module: "acmt019",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.019.001.04.xsd",
+    load: () =>
+      import('./acmt019.ts').then((m) => ({ message: m.acmt019Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.020.001.04",
+    name: "AccountClosingAmendmentRequestV04",
+    title: "Account Closing Amendment Request",
+    area: "acmt",
+    module: "acmt020",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.020.001.04.xsd",
+    load: () =>
+      import('./acmt020.ts').then((m) => ({ message: m.acmt020Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.021.001.04",
+    name: "AccountClosingAdditionalInformationRequestV04",
+    title: "Account Closing Additional Information Request",
+    area: "acmt",
+    module: "acmt021",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.021.001.04.xsd",
+    load: () =>
+      import('./acmt021.ts').then((m) => ({ message: m.acmt021Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.022.001.04",
+    name: "IdentificationModificationAdviceV04",
+    title: "Identification Modification Advice",
+    area: "acmt",
+    module: "acmt022",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.022.001.04.xsd",
+    load: () =>
+      import('./acmt022.ts').then((m) => ({ message: m.acmt022Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.023.001.04",
+    name: "IdentificationVerificationRequestV04",
+    title: "Identification Verification Request",
+    area: "acmt",
+    module: "acmt023",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.023.001.04.xsd",
+    load: () =>
+      import('./acmt023.ts').then((m) => ({ message: m.acmt023Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.024.001.04",
+    name: "IdentificationVerificationReportV04",
+    title: "Identification Verification Report",
+    area: "acmt",
+    module: "acmt024",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.024.001.04.xsd",
+    load: () =>
+      import('./acmt024.ts').then((m) => ({ message: m.acmt024Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.027.001.06",
+    name: "AccountSwitchInformationRequestV06",
+    title: "Account Switch Information Request",
+    area: "acmt",
+    module: "acmt027",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.027.001.06.xsd",
+    load: () =>
+      import('./acmt027.ts').then((m) => ({ message: m.acmt027Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.028.001.06",
+    name: "AccountSwitchInformationResponseV06",
+    title: "Account Switch Information Response",
+    area: "acmt",
+    module: "acmt028",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.028.001.06.xsd",
+    load: () =>
+      import('./acmt028.ts').then((m) => ({ message: m.acmt028Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.029.001.06",
+    name: "AccountSwitchCancelExistingPaymentV06",
+    title: "Account Switch Cancel Existing Payment",
+    area: "acmt",
+    module: "acmt029",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.029.001.06.xsd",
+    load: () =>
+      import('./acmt029.ts').then((m) => ({ message: m.acmt029Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.030.001.04",
+    name: "AccountSwitchRequestRedirectionV04",
+    title: "Account Switch Request Redirection",
+    area: "acmt",
+    module: "acmt030",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.030.001.04.xsd",
+    load: () =>
+      import('./acmt030.ts').then((m) => ({ message: m.acmt030Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.031.001.06",
+    name: "AccountSwitchRequestBalanceTransferV06",
+    title: "Account Switch Request Balance Transfer",
+    area: "acmt",
+    module: "acmt031",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.031.001.06.xsd",
+    load: () =>
+      import('./acmt031.ts').then((m) => ({ message: m.acmt031Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.032.001.06",
+    name: "AccountSwitchBalanceTransferAcknowledgementV06",
+    title: "Account Switch Balance Transfer Acknowledgement",
+    area: "acmt",
+    module: "acmt032",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.032.001.06.xsd",
+    load: () =>
+      import('./acmt032.ts').then((m) => ({ message: m.acmt032Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.033.001.02",
+    name: "AccountSwitchNotifyAccountSwitchCompleteV02",
+    title: "Account Switch Notify Account Switch Complete",
+    area: "acmt",
+    module: "acmt033",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.033.001.02.xsd",
+    load: () =>
+      import('./acmt033.ts').then((m) => ({ message: m.acmt033Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.034.001.06",
+    name: "AccountSwitchRequestPaymentV06",
+    title: "Account Switch Request Payment",
+    area: "acmt",
+    module: "acmt034",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.034.001.06.xsd",
+    load: () =>
+      import('./acmt034.ts').then((m) => ({ message: m.acmt034Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.035.001.02",
+    name: "AccountSwitchPaymentResponseV02",
+    title: "Account Switch Payment Response",
+    area: "acmt",
+    module: "acmt035",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.035.001.02.xsd",
+    load: () =>
+      import('./acmt035.ts').then((m) => ({ message: m.acmt035Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.036.001.01",
+    name: "AccountSwitchTerminationSwitchV01",
+    title: "Account Switch Termination Switch",
+    area: "acmt",
+    module: "acmt036",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.036.001.01.xsd",
+    load: () =>
+      import('./acmt036.ts').then((m) => ({ message: m.acmt036Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "acmt.037.001.02",
+    name: "AccountSwitchTechnicalRejectionV02",
+    title: "Account Switch Technical Rejection",
+    area: "acmt",
+    module: "acmt037",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.037.001.02.xsd",
+    load: () =>
+      import('./acmt037.ts').then((m) => ({ message: m.acmt037Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
 ];

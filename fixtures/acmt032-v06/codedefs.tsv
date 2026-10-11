@@ -1,0 +1,23 @@
+codeSet	code	enumName	isoId	text
+SwitchType1Code	FULL	FullSwitch	_xBa00Q2YEeSNWNtJlXOAhg	Indicates a full switch for an account.
+SwitchType1Code	PART	PartSwitch	_xGBoAQ2YEeSNWNtJlXOAhg	Indicates a partial switch for an account.
+SwitchStatus1Code	ACPT	Accepted	_RnBGQX6rEeePx-IqKegQ8Q	Account switch is accepted.||Usage: Accepted status should be used when account switch service receives and validates an information response request accepting the switch.
+SwitchStatus1Code	BTRQ	BalanceTransferRequested	_RshRUX6rEeePx-IqKegQ8Q	Account balance transfer is requested.||Usage: Balance transfer requested status should be used when account switch service receives and validates a request balance transfer request.
+SwitchStatus1Code	BTRS	BalanceTransferResponse	_RyUXUX6rEeePx-IqKegQ8Q	Balance transfer responded.||Usage: Balance transfer responded staus should be used when the account switch service receives and validates an acknowledge balance transfer request.
+SwitchStatus1Code	COMP	Completed	_R3FikX6rEeePx-IqKegQ8Q	Account switch is completed.||Usage: Completed status should be used when account switch service receives and validates a notify account switch complete request.
+SwitchStatus1Code	REDT	Redirection	_SAmq8X6rEeePx-IqKegQ8Q	Request for redirection. ||Usage: Redirection status should be used when the account switch service receives and validates the first redirection request.
+SwitchStatus1Code	REDE	RedirectionEnded	_SGtS8X6rEeePx-IqKegQ8Q	Redirection ended at the end of the redirection period. ||Usage: Indicates the cessation of account redirection by a particular service.
+SwitchStatus1Code	REJT	Rejected	_SMWn8X6rEeePx-IqKegQ8Q	Account switch is rejected. ||Usage: Rejected status should be used when account switch service receives and validates an information response request rejecting the account switch.
+SwitchStatus1Code	REQU	Requested	_SVbrcX6rEeePx-IqKegQ8Q	Information is requested for the account switch. ||Usage: Requested status should be used when the account switch service receives and validates an information request.
+SwitchStatus1Code	TMTN	Termination	_SayskX6rEeePx-IqKegQ8Q	Account switch is terminated. ||Usage: Terminated status should be used when the account switch service receives and validates a terminate switch request.
+BalanceTransferWindow1Code	DAYH	InHours	_MQ4kgX6qEeePx-IqKegQ8Q	Indicates in business hours processing.
+BalanceTransferWindow1Code	EARL	OutOfHours	_MYPwwX6qEeePx-IqKegQ8Q	Indicates out of business hours processing.
+TaxRateMarker1Code	ALPR	AmountQuotedLessLifeAssurance	_z5l70Q2YEeSNWNtJlXOAhg	Specifies the amount quoted less life assurance premium rate income tax.
+TaxRateMarker1Code	ALIT	AmountQuotedLessStandardRate	_z-DlEQ2YEeSNWNtJlXOAhg	Specifies the amount quoted less standard rate income tax.
+TaxRateMarker1Code	GRSS	GrossAmount	_0Cq_UQ2YEeSNWNtJlXOAhg	Specifies an amount before the deduction of tax.
+BusinessDayConvention2Code	FWNG	Following	_DpW2gRfwEeSBdtDwJiNe1g	Date will be the first following day that is a business day.
+BusinessDayConvention2Code	FRNC	FloatingRateNoteConvention	_DySJARfwEeSBdtDwJiNe1g	Floating rate note convention.
+BusinessDayConvention2Code	MODF	ModifiedFollowing	_D09pkRfwEeSBdtDwJiNe1g	Date will be the first following day that is a business day unless that day falls in the next calendar month, in which case that date will be the first preceding day that is a business day.
+BusinessDayConvention2Code	NEAR	Nearest	_D3yUERfwEeSBdtDwJiNe1g	Date will be the first preceding day that is a business day unless that day falls on a day other than a sunday or a monday, and will be the first following day that is a business day, if the relevant date otherwise falls on a Sunday or a Monday.
+BusinessDayConvention2Code	OTHR	Other	_D7NbgRfwEeSBdtDwJiNe1g	Other business day convention.
+BusinessDayConvention2Code	PREC	Preceding	_EDi4IRfwEeSBdtDwJiNe1g	Non-business day will be adjusted to the first preceding day that is a business day.

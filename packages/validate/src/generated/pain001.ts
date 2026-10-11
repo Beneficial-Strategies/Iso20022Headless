@@ -62,6 +62,7 @@ import {
   FinancialInstitutionIdentification23Schema,
   BranchData5Schema,
   BranchAndFinancialInstitutionIdentification8Schema,
+  PaymentMethod3CodeSchema,
   AdviceType1CodeSchema,
   AdviceType1ChoiceSchema,
   AdviceType1Schema,
@@ -196,8 +197,6 @@ export const GroupHeader114Schema = z.strictObject({
   InitiationSource: PaymentInitiationSource1Schema.optional(),
 });
 
-export const PaymentMethod3CodeSchema = z.enum(["CHK", "TRF", "TRA"]);
-
 export const ExternalDebtorAgentInstruction1CodeSchema = textType({min: 1, max: 4});
 
 export const InstructionForDebtorAgent1Schema = z.strictObject({
@@ -290,12 +289,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "ForwardingAgent", isoId: "_yl9nzTEyEe6g-ffJsqGiSA", xmlTag: "FwdgAgt", displayName: displayName("ForwardingAgent"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
       f({ name: "InitiationSource", isoId: "_yl9nzzEyEe6g-ffJsqGiSA", xmlTag: "InitnSrc", displayName: displayName("InitiationSource"), kind: "component", type: "PaymentInitiationSource1", required: false }),
     ],
-  },
-  "PaymentMethod3Code": {
-    name: "PaymentMethod3Code",
-    isoId: "_Z0aeYtp-Ed-ak6NoX_4Aeg_1813568342",
-    kind: "code",
-    options: [{ value: "CHK", name: "Cheque", isoId: "_Z0aeY9p-Ed-ak6NoX_4Aeg_1931781357" }, { value: "TRF", name: "CreditTransfer", isoId: "_Z0aeZNp-Ed-ak6NoX_4Aeg_1931781374" }, { value: "TRA", name: "TransferAdvice", isoId: "_Z0kPYNp-Ed-ak6NoX_4Aeg_1931781417" }],
   },
   "ExternalDebtorAgentInstruction1Code": {
     name: "ExternalDebtorAgentInstruction1Code",
@@ -468,6 +461,7 @@ export const typeDescriptors: TypeDescriptors = {
   "FinancialInstitutionIdentification23": sharedTypeDescriptors["FinancialInstitutionIdentification23"]!,
   "BranchData5": sharedTypeDescriptors["BranchData5"]!,
   "BranchAndFinancialInstitutionIdentification8": sharedTypeDescriptors["BranchAndFinancialInstitutionIdentification8"]!,
+  "PaymentMethod3Code": sharedTypeDescriptors["PaymentMethod3Code"]!,
   "AdviceType1Code": sharedTypeDescriptors["AdviceType1Code"]!,
   "AdviceType1Choice": sharedTypeDescriptors["AdviceType1Choice"]!,
   "AdviceType1": sharedTypeDescriptors["AdviceType1"]!,

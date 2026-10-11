@@ -1,0 +1,67 @@
+{
+  "identifier": "acmt.013.001.04",
+  "name": "AccountReportRequestV04",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:acmt.013.001.04",
+  "bodyTag": "AcctRptReq",
+  "out": "acmt013",
+  "isoId": "_R2_ZgTEZEe6kQ-WGAhcVPQ",
+  "definition": "The AccountReportRequest message is sent from an organisation to a financial institution for reporting purposes. It is a request for an account report. This message can be sent at any time outside of account opening, maintenance or closing processes.",
+  "blocks": [
+    {
+      "name": "References",
+      "isoId": "_R2_ZhzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Refs",
+      "type": "References4",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "From",
+      "isoId": "_R2_ZiTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Fr",
+      "type": "OrganisationIdentification39",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AccountIdentification",
+      "isoId": "_R2_ZizEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "AcctId",
+      "type": "AccountForAction1",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "AccountServicerIdentification",
+      "isoId": "_R2_ZjTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "AcctSvcrId",
+      "type": "BranchAndFinancialInstitutionIdentification8",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "OrganisationIdentification",
+      "isoId": "_R2_ZjzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "OrgId",
+      "type": "OrganisationIdentification39",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "DigitalSignature",
+      "isoId": "_R2_ZkTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "DgtlSgntr",
+      "type": "PartyAndSignature4",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R2_ZkzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

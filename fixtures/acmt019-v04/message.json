@@ -1,0 +1,91 @@
+{
+  "identifier": "acmt.019.001.04",
+  "name": "AccountClosingRequestV04",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:acmt.019.001.04",
+  "bodyTag": "AcctClsgReq",
+  "out": "acmt019",
+  "isoId": "_R289QTEZEe6kQ-WGAhcVPQ",
+  "definition": "The AccountClosingRequest message is sent from an organisation to a financial institution as part of the account closing process. It is the initial request message to close an account.",
+  "blocks": [
+    {
+      "name": "References",
+      "isoId": "_R289RzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Refs",
+      "type": "References4",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "From",
+      "isoId": "_R289STEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Fr",
+      "type": "OrganisationIdentification39",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AccountIdentification",
+      "isoId": "_R289SzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "AcctId",
+      "type": "AccountForAction2",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountServicerIdentification",
+      "isoId": "_R289TTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "AcctSvcrId",
+      "type": "BranchAndFinancialInstitutionIdentification8",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "OrganisationIdentification",
+      "isoId": "_R289TzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "OrgId",
+      "type": "Organisation44",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ContractDates",
+      "isoId": "_R289UTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "CtrctDts",
+      "type": "AccountContract4",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "BalanceTransferAccount",
+      "isoId": "_R289UzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "BalTrfAcct",
+      "type": "AccountForAction1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "TransferAccountServicerIdentification",
+      "isoId": "_R289VTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "TrfAcctSvcrId",
+      "type": "BranchAndFinancialInstitutionIdentification8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "DigitalSignature",
+      "isoId": "_R289VzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "DgtlSgntr",
+      "type": "PartyAndSignature4",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R289WTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

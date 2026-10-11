@@ -1,0 +1,451 @@
+codeSet	code	enumName	isoId	text
+AccountManagementType2Code	ACCO	AccountOpening	_bqvG09p-Ed-ak6NoX_4Aeg_-845396171	Refers to an account opening instruction message.
+AccountManagementType2Code	ACCM	AccountModification	_bqvG1Np-Ed-ak6NoX_4Aeg_-845395920	Refers to an account modification instruction message.
+AccountManagementType2Code	GACC	GetAccountDetails	_bqvG1dp-Ed-ak6NoX_4Aeg_-784440543	Refers to a get account details message.
+EnabledStatusReason1Code	MODI	Modified	_MrP-0WBhEeaR1OOiVxm3Gg	Modification to the account data is in process.
+DisabledReason2Code	CLOS	AccountClosingInProcess	_EtddUWBrEeaHEJD5P6-ccw	Account closing is in process.
+DisabledReason2Code	BKRP	Bankruptcy	_Ex7GkWBrEeaHEJD5P6-ccw	Bankruptcy.
+DisabledReason2Code	CMMT	Commitment	_E3bRoWBrEeaHEJD5P6-ccw	Commitment.
+DisabledReason2Code	CNFS	Confiscation	_E8ySwWBrEeaHEJD5P6-ccw	Confiscation.
+DisabledReason2Code	MORT	MortisCausa	_FBi28WBrEeaHEJD5P6-ccw	Reserved in contemplation of death.
+DisabledReason2Code	PCOM	PendingComplianceVerification	_FGdMIWBrEeaHEJD5P6-ccw	Pending compliance verification.
+DisabledReason2Code	PLDG	Pledged	_FMHIMWBrEeaHEJD5P6-ccw	Pledged.
+DisabledReason2Code	TRPE	Reregistration	_FSW6IWBrEeaHEJD5P6-ccw	Reregistration.
+DisabledReason2Code	SANC	Sanctions	_FW-UYWBrEeaHEJD5P6-ccw	Sanctions are in place.
+DisabledReason2Code	TRAN	Transfer	_FbSMoWBrEeaHEJD5P6-ccw	Transfer.
+DisabledReason2Code	REJT	Rejected	_voHfoWCIEeabZtzjEVWYCQ	Account was pending opening but is now rejected.
+PendingStatusReason1Code	KYCM	KnowYourCustomerDocumentMissing	_A7j9MWBkEeaR1OOiVxm3Gg	Know Your Customer (KYC) document is missing.
+PendingStatusReason1Code	FRDM	FATCAReportingDateMissing	_BLoZgWBkEeaR1OOiVxm3Gg	FATCA reporting date is missing.
+PendingStatusReason1Code	RIGH	RightsHolderMissing	_BXiHgWBkEeaR1OOiVxm3Gg	Rights holder information is missing.
+PendingStatusReason1Code	ATHR	Authorisation	_P9cBIWCJEeabZtzjEVWYCQ	Authorisation is required.
+PendingStatusReason1Code	ATHP	AuthorisedButPending	_QHG6gWCJEeabZtzjEVWYCQ	Authorisation is provided but the account change is still pending.
+PendingStatusReason1Code	MODI	ModificationInProcess	_QVFsIWCJEeabZtzjEVWYCQ	Modification to the account data is in process.
+PendingOpeningStatusReason1Code	ATHR	Authorisation	_vgrwAWCKEeabZtzjEVWYCQ	Authorisation is required.
+PendingOpeningStatusReason1Code	ATHP	AuthorisedButPending	_vqNfcWCKEeabZtzjEVWYCQ	Authorisation is provided but account opening is still pending.
+PendingOpeningStatusReason1Code	FRDM	FATCAReportingDateMissing	_vz4Y0WCKEeabZtzjEVWYCQ	FATCA reporting date is missing.
+PendingOpeningStatusReason1Code	KYCM	KnowYourCustomerDocumentMissing	_v9PwMWCKEeabZtzjEVWYCQ	Know Your Customer (KYC) document is missing.
+PendingOpeningStatusReason1Code	NOTO	NotOpened	_wG6pkWCKEeabZtzjEVWYCQ	Account is not yet open, even for partial use.
+PendingOpeningStatusReason1Code	REST	Restrictions	_wQJeEWCKEeabZtzjEVWYCQ	Account will be opened when restrictions are addressed.
+PendingOpeningStatusReason1Code	RIGH	RightsHolderMissing	_wZ0XcWCKEeabZtzjEVWYCQ	Rights holder information is missing.
+ProformaStatusReason1Code	MODI	ModificationInProcess	_kDXs0U_vEeaB8-OWTiMVrQ	Modification to the account data is in process.
+ProformaStatusReason1Code	RIGH	Rights	_kWRasU_vEeaB8-OWTiMVrQ	Account opening is waiting for rights holder information.
+ClosedStatusReason1Code	ASIN	AccountServicerInstruction	_Vq4u4U_wEeaB8-OWTiMVrQ	Account is closed, following an instruction from the account servicer to close the account.
+ClosedStatusReason1Code	CLIN	ClientInstruction	_V0joQU_wEeaB8-OWTiMVrQ	Account is closed, following an instruction from the client, or an authorised party, to close the account.
+ClosurePendingStatusReason1Code	CLOS	AccountClosingInProcess	_gh-qIWCMEeabZtzjEVWYCQ	Account closing is in process.
+ClosurePendingStatusReason1Code	PEND	PendingConditions	_grWokWCMEeabZtzjEVWYCQ	Account will be closed when conditions are met.
+InvestmentFundTransactionType1Code	ALLL	All	_6nRqMVsJEea4y99eritluQ	All types of transactions.
+InvestmentFundTransactionType1Code	SELL	SecuritiesSale	_9GhT0VsJEea4y99eritluQ	Sale of securities.
+InvestmentFundTransactionType1Code	BUYI	SecuritiesPurchase	_9MVA4VsJEea4y99eritluQ	Purchase of securities.
+InvestmentFundTransactionType1Code	SWIO	SwitchOut	_-p81cVsJEea4y99eritluQ	Transaction is a subscription leg of a switch order execution.
+InvestmentFundTransactionType1Code	TRIN	TransferIn	_AJptoVsKEea4y99eritluQ	Transaction is an incoming credit to an account on the shareholders register, and is not linked to a shift in investment (subscription or switch), but to account management.
+InvestmentFundTransactionType1Code	TOUT	TransferOut	_APvukVsKEea4y99eritluQ	Transaction is a debit to an account on the shareholders register, and is not linked to a shift in investment (redemption or switch), but to account management.
+InvestmentFundTransactionType1Code	SUBS	Subscription	_BTnmYVsKEea4y99eritluQ	Transaction is a subscription to an investment fund.
+InvestmentFundTransactionType1Code	REDM	Redemption	_CCzAkVsKEea4y99eritluQ	Transaction is a redemption of an investment fund.
+InvestmentFundTransactionType1Code	CDEP	CashDeposit	_ngYcYVsKEea4y99eritluQ	Transaction is a cash deposit.
+InvestmentFundTransactionType1Code	CWIT	CashWithdrawal	_npTu4VsKEea4y99eritluQ	Transaction is a cash withdrawal.
+InvestmentFundTransactionType1Code	DIVP	DividendPayment	_2rbqQVsKEea4y99eritluQ	Transaction is the payment of dividends and other proceeds.
+InvestmentFundTransactionType1Code	CAEV	CorporationActionEvent	_L1LrMVsLEea4y99eritluQ	Transaction is the result of a corporate action.
+InvestmentFundTransactionType1Code	CROI	CrossIn	_L-jpoVsLEea4y99eritluQ	Transaction is a cross-in.
+InvestmentFundTransactionType1Code	CROO	CrossOut	_MEqRoVsLEea4y99eritluQ	Transaction is a cross out.
+InvestmentFundTransactionType1Code	DIVI	Dividend	_MI-J4VsLEea4y99eritluQ	Transaction is a dividend.
+InvestmentFundTransactionType1Code	INSP	InSpecie	_MQHTsVsLEea4y99eritluQ	Transaction is an InSpecie.
+InvestmentFundTransactionType1Code	OTHR	Other	_MVBo4VsLEea4y99eritluQ	Transaction is another type of transaction.
+InvestmentFundTransactionType1Code	REAA	RedemptionAssetAllocation	_MaO5AVsLEea4y99eritluQ	Transaction is a redemption in an asset allocation plan which enables investors to withdraw, by percentage a certain amount of cash from several sub-funds of a same umbrella structure.
+InvestmentFundTransactionType1Code	RWPL	RedemptionWithdrawingPlan	_Mgob8VsLEea4y99eritluQ	Transaction is a withdrawal by individuals in the framework of a structured plan for investments made in the past.
+InvestmentFundTransactionType1Code	RDIV	ReinvestmentOfDividend	_MlP2MVsLEea4y99eritluQ	Transaction is a reinvestment of dividend.
+InvestmentFundTransactionType1Code	SSPL	SubscriptionSavingsPlan	_MyV3AVsLEea4y99eritluQ	Transaction is a subscription for a savings plan, that is, money set aside by individuals in the framework of a structured plan for a special purpose, for example, retirement.
+InvestmentFundTransactionType1Code	SUAA	SubscriptionAssetAllocation	_M4I9AVsLEea4y99eritluQ	Transaction is a subscription in an asset allocation plan that enables investors to allocate, by percentage a certain amount of cash into several sub-funds of a same umbrella structure.
+BlockedReason2Code	BKRP	Bankruptcy	_pAggcFsMEeaY86V9afpFqA	Bankruptcy.
+BlockedReason2Code	CMMT	Commitment	_pFkmoVsMEeaY86V9afpFqA	Commitment.
+BlockedReason2Code	CNFS	Confiscation	_pMHTgVsMEeaY86V9afpFqA	Confiscation.
+BlockedReason2Code	MORT	MortisCausa	_pSXFcVsMEeaY86V9afpFqA	Reserved in contemplation of death.
+BlockedReason2Code	PCOM	PendingComplianceVerification	_pZNUUVsMEeaY86V9afpFqA	Pending compliance verification.
+BlockedReason2Code	PLDG	Pledged	_pfdGQVsMEeaY86V9afpFqA	Pledged.
+BlockedReason2Code	TRPE	Reregistration	_pjxlkVsMEeaY86V9afpFqA	Reregistration.
+BlockedReason2Code	SANC	Sanctions	_poiJwVsMEeaY86V9afpFqA	Sanctions are in place.
+BlockedReason2Code	TRAN	Transfer	_pvhikVsMEeaY86V9afpFqA	Transfer.
+FundCashAccount4Code	HEDG	HedgeFund	_o_Z3gSC7EeWPMvNwVtiMsA	Hedge fund account.
+FundCashAccount4Code	CPFO	PensionFundOrdinary	_pGldkSC7EeWPMvNwVtiMsA	Central Provident Fund (CPF) ordinary account.
+FundCashAccount4Code	CPFS	PensionFundSpecial	_pL-T4SC7EeWPMvNwVtiMsA	Central Provident Fund (CPF) special account.
+FundCashAccount4Code	SRSA	RetirementScheme	_pRzPESC7EeWPMvNwVtiMsA	Supplementary Retirement Scheme (SRS) account.
+FundCashAccount4Code	CSDO	CSDOmnibusAccount	_I6ZNcSC8EeWPMvNwVtiMsA	Account operated by a CSD in cross-CSD settlement context.
+FundCashAccount4Code	TOFF	TechnicalOffsetAccount	_JQ7eISC8EeWPMvNwVtiMsA	Account operated by a CSD in a direct holding market context.
+FundCashAccount4Code	ICSA	InterCSDAccount	_JWmBQSC8EeWPMvNwVtiMsA	Account operated by a CSD for settlement of securities legs for instructions involving internal CSDs.
+FundCashAccount4Code	CSDM	CSDMirrorAccount	_JeNFISC8EeWPMvNwVtiMsA	Account operated by a CSD for mirroring positions.
+FundCashAccount4Code	CSDP	CSDParticipantAccount	_JoWfoSC8EeWPMvNwVtiMsA	Account owned by a CSD participant.
+FundCashAccount4Code	PPEN	PrivatePensionScheme	_JvqokSC8EeWPMvNwVtiMsA	Private pension account.
+FundCashAccount4Code	CPEN	WorkplacePensionSchema	_J2YUkSC8EeWPMvNwVtiMsA	Workplace or company pension account.
+AccountOwnershipType4Code	UNCO	Unincorporated	_rwGesb-GEeWfsa741pI6WA	Account owner is an unincorporated partnership or is of sole proprietorship.
+AccountOwnershipType4Code	LIPA	LimitedPartnership	_sGHyAb-GEeWfsa741pI6WA	Account owner is a limited partnership or is of sole proprietorship.
+AccountOwnershipType4Code	ENTR	Entrepreneurial	_tFMpYb-GEeWfsa741pI6WA	Entrepreneurial account.
+AccountOwnershipType4Code	CORP	Corporation	_u-TgEb-GEeWfsa741pI6WA	Account owner is a corporate.
+AccountOwnershipType4Code	CUST	CustodialAccount	_vLsb0b-GEeWfsa741pI6WA	Minor's account, registered in the minor's name. Since the minor cannot legally own property, the custodian of the account maintains control of the account.
+AccountOwnershipType4Code	EURE	EUResidualEntity	_vczZ8b-GEeWfsa741pI6WA	Account owner is an entity located in the European Union which can be considered neither as a legal entity (for example, company, corporate), nor as an individual person, nor as a UCITS (Undertakings for Collective Investment of Transferable Securities) fund.
+AccountOwnershipType4Code	PART	FormalPartnership	_vrO3gb-GEeWfsa741pI6WA	Account owner is a contractual business organisation in which two or more individuals agree to pool their funds to manage and operate a business.
+AccountOwnershipType4Code	TRUS	FormalTrust	_v7dE0b-GEeWfsa741pI6WA	Account owner is an organisation which is engaged as a trustee for individuals or businesses in the administration of services such as stock transfer, registration, trust funds.
+AccountOwnershipType4Code	GOVO	GovernmentOrganisation	_wJ4iYb-GEeWfsa741pI6WA	Account owner is a government organisation.
+AccountOwnershipType4Code	JOIT	JointAccount	_wYdw8b-GEeWfsa741pI6WA	Two or more individuals of legal age own shares of the same account.
+AccountOwnershipType4Code	COMO	JointAccountInCommon	_whi0cb-GEeWfsa741pI6WA	Two or more individuals of legal age own shares of the same account. Upon the death of one of the account owners, the respective percentage of the ownership is transferred to the deceased's estate.
+AccountOwnershipType4Code	JOIN	JointAccountWithSurvivorshipRights	_w4mpkb-GEeWfsa741pI6WA	Two or more individuals own shares of the same account. Upon the death of one of the account owners, the entire account ownership is passed onto the surviving owners.
+AccountOwnershipType4Code	LLCO	LimitedLiabilityCompany	_ybsM8b-GEeWfsa741pI6WA	Account is for a limited liability company.
+AccountOwnershipType4Code	NOMI	Nominee	_yu4Osb-GEeWfsa741pI6WA	Account owner is a person or firm into whose name securities or other properties are transferred in order to facilitate transactions whilst leaving the customer as the actual owner.
+AccountOwnershipType4Code	NFPO	NonProfitOrganisation	_y7Ooob-GEeWfsa741pI6WA	Account owner is an association that is given tax-free status due to the nature of their activities such as charity organisation.
+AccountOwnershipType4Code	ONIS	OtherNonIndividual	_zUhSYb-GEeWfsa741pI6WA	Account owner is another type of non individual organisation.
+AccountOwnershipType4Code	RGIC	RegisteredInvestmentCompany	_zjjM4b-GEeWfsa741pI6WA	Account is for a registered investment company.
+AccountOwnershipType4Code	SIGL	SingleOwnerAccount	_zvv10b-GEeWfsa741pI6WA	Account has only one individual owner.
+TaxExemptReason3Code	NONE	None	_ECIhMSDAEeWPMvNwVtiMsA	Account is not tax exempt.
+TaxExemptReason3Code	MASA	MaxiISA	_ECIhMyDAEeWPMvNwVtiMsA	Maxi Individual Savings Account (ISA). Account is an ISA with a single ISA manager that may contain cash, stocks and shares, investment funds and life assurance up to the prescribed annual subscription limit (required for UK). The Maxi ISA allows an investor to save all three of the different elements of ISA investments that are allowed, with one savings institution in a single account.
+TaxExemptReason3Code	MISA	MiniCashISA	_ECIhNSDAEeWPMvNwVtiMsA	Mini Cash Individual Savings Account (ISA). Account is an ISA with a single ISA manager that may contain cash, stocks and shares, investment funds and life assurance up to the prescribed annual subscription limit (required for UK). An investor can hold more than one Mini ISA to utilise the overall Mini ISA investment limit, and can invest with more than one savings institution, however only one of the three elements of ISA investment is allowed in a single account.
+TaxExemptReason3Code	SISA	MiniStocksAndSharesISA	_ECIhNyDAEeWPMvNwVtiMsA	Mini Stocks and Shares Individual Savings Account (ISA). Account is an ISA with an ISA manager that may only contain stocks, shares and collective investments up to the prescribed annual subscription limit (required for UK).
+TaxExemptReason3Code	IISA	MiniInsuranceISA	_ECIhOSDAEeWPMvNwVtiMsA	Mini Insurance Individual Savings Account (ISA). Account is an ISA with an ISA manager that may only contain life insurance investments up to the prescribed annual subscription limit (required for UK).
+TaxExemptReason3Code	CUYP	CurrentYearPayment	_ECIhOyDAEeWPMvNwVtiMsA	Account is for current year payments into an investment retirement account (required for US).
+TaxExemptReason3Code	PRYP	PriorYearPayment	_ECIhPSDAEeWPMvNwVtiMsA	Account is for a prior year payment into an investment retirement account (required for US).
+TaxExemptReason3Code	ASTR	AssetTransfer	_ECIhPyDAEeWPMvNwVtiMsA	Account is for an asset transfer into an investment retirement account (required for US).
+TaxExemptReason3Code	EMPY	EmployeePriorYear	_ECIhQSDAEeWPMvNwVtiMsA	Account is for employee - prior year contributions into an investment retirement account (required for US).
+TaxExemptReason3Code	EMCY	EmployeeCurrentYear	_ECIhQyDAEeWPMvNwVtiMsA	Account is for employee - current year contributions into an investment retirement account (required for US).
+TaxExemptReason3Code	EPRY	EmployerPriorYear	_ECIhRSDAEeWPMvNwVtiMsA	Account is for employer - prior year contributions into an investment retirement account (required for US).
+TaxExemptReason3Code	ECYE	EmployerCurrentYear	_ECIhRyDAEeWPMvNwVtiMsA	Account is for employer - current year contributions into an investment retirement account (required for US).
+TaxExemptReason3Code	NFPI	NonFundPrototypeIRA	_ECIhSSDAEeWPMvNwVtiMsA	Account is for non-fund prototype Individual Retirement Account (IRA) into an investment retirement account (required for US).
+TaxExemptReason3Code	NFQP	NonFundQualifiedPlan	_ECIhSyDAEeWPMvNwVtiMsA	Account is for non-fund qualified plan into an investment retirement account (required for US).
+TaxExemptReason3Code	DECP	DefinedContributionPlan	_ECIhTSDAEeWPMvNwVtiMsA	Account is for a defined contribution plan (required for US).
+TaxExemptReason3Code	IRAC	IndividualRetirementAccount	_ECIhTyDAEeWPMvNwVtiMsA	Account is an Individual Retirement Account (IRA) (required for US).
+TaxExemptReason3Code	IRAR	IndividualRetirementAccountRollover	_ECIhUSDAEeWPMvNwVtiMsA	Account is for an Individual Retirement Account (IRA) - Rollover (required for US).
+TaxExemptReason3Code	KEOG	KEOGH	_ECIhUyDAEeWPMvNwVtiMsA	KEOGH. Account is a tax-deferred retirement plan designed to help self-employed workers or individuals who earn self-employed income establish a retirement savings program (required for US).
+TaxExemptReason3Code	PFSP	ProfitSharingPlan	_ECIhVSDAEeWPMvNwVtiMsA	Account is a Profit Sharing Plan (required for US).
+TaxExemptReason3Code	401K	FourHundredAndOneK	_ECIhVyDAEeWPMvNwVtiMsA	401k. Account is an optional retirement plan supported by many companies, in which income is invested before it is taxed (required for US).
+TaxExemptReason3Code	SIRA	SelfDirectedIRA	_ECIhWSDAEeWPMvNwVtiMsA	Self-Directed Individual Retirement Account (IRA) (required for US).
+TaxExemptReason3Code	403B	FourHundredAndThreeB	_ECIhWyDAEeWPMvNwVtiMsA	403(b). Account is a tax-deferred investment and savings program for employees of hospitals, educational institutions and other non-profit organisations, to save and invest in their own retirement. The name refers to the relevant section in the US Internal Revenue Code (required for US).
+TaxExemptReason3Code	457X	FourHundredFiftySeven	_ECIhXSDAEeWPMvNwVtiMsA	457. Account is a non-qualified deferred compensation program that is available to state and local governments and not-for-profit employers (required for US).
+TaxExemptReason3Code	RIRA	RothIRAFundPrototype	_ECIhXyDAEeWPMvNwVtiMsA	Roth Individual Retirement Account (IRA) Fund Prototype. Account is a tax-deferred retirement account based on the reverse principle of a traditional IRA. Retirement contributions are taxed upfront, but withdrawals may be made tax-free when a certain age is reached, provided the Roth IRA has been set up for a certain period of time (required for US).
+TaxExemptReason3Code	RIAN	RothIRANonPrototype	_ECIhYSDAEeWPMvNwVtiMsA	Roth Individual Retirement Account (IRA) Non-Prototype. Account is a tax-deferred retirement account based on the reverse principle of a traditional IRA. Retirement contributions are taxed upfront, but withdrawals may be made tax-free when a certain age is reached, provided the Roth IRA has been set up for a certain period of time (required for US).
+TaxExemptReason3Code	RCRF	RothConversionIRAFundPrototype	_ECIhYyDAEeWPMvNwVtiMsA	Roth Conversion Individual Retirement Account (IRA) Fund Prototype. Account is a retirement account established when a party switches from a regular IRA ( required for US).
+TaxExemptReason3Code	RCIP	RothConversionIRANonPrototype	_ECIhZSDAEeWPMvNwVtiMsA	Roth Conversion Individual Retirement Account (IRA) Non-Prototype. Account is a retirement account established when a party switches from a Regular IRA (required for US).
+TaxExemptReason3Code	EIFP	EducationIRAFundPrototype	_ECIhZyDAEeWPMvNwVtiMsA	Education Individual Retirement Account Fund Prototype (also known as an Education Savings Account). Account is a savings plan open to anyone under the age of 18. When the account owner withdraws money to pay for qualified higher education expenses, the withdrawals are generally tax-free (required for US).
+TaxExemptReason3Code	EIOP	EducationIRANonPrototype	_ECIhaSDAEeWPMvNwVtiMsA	Education Individual Retirement Account Non-Prototype (also known as an Education Savings Account). Account is a savings plan open to anyone under the age of 18. When the account owner withdraws money to pay for qualified higher education expenses, the withdrawals are generally tax-free (required in the US).
+TaxExemptReason3Code	FORE	Foreigner	_JPxqwSDAEeWPMvNwVtiMsA	Account is for a foreigner for which a tax exemption is permitted.
+TaxExemptReason3Code	INCA	Incapacity	_Jep0QSDAEeWPMvNwVtiMsA	Exemption due to incapacitation.
+TaxExemptReason3Code	MINO	Minor	_KChWUSDAEeWPMvNwVtiMsA	Account is for a minor for which a tax exemption is permitted.
+TaxExemptReason3Code	ASSO	Association	_YSu38TaKEeWxoIK_IhudJg	Account is for an association, for example, a sports club, for which a tax exemption is permitted.
+TaxExemptReason3Code	DIPL	Diplomat	_cHBo8TaKEeWxoIK_IhudJg	Account is for a diplomat for which a tax exemption is permitted.
+TaxExemptReason3Code	DOME	Domestic	_cNRa4TaKEeWxoIK_IhudJg	Account is for two account owners that are both domestic.
+TaxExemptReason3Code	FORP	OneOrBothForeign	_chf-cTaKEeWxoIK_IhudJg	Account is for two account owners where one or both are foreign.
+TaxExemptReason3Code	ORDR	Ordinary	_cnmmcTaKEeWxoIK_IhudJg	Ordinary reporting.
+TaxExemptReason3Code	PENF	PensionFund	_dbFR0TaKEeWxoIK_IhudJg	Account is for a pension fund for which a tax exemption is permitted.
+TaxExemptReason3Code	REFU	Refugee	_dnR6wTaKEeWxoIK_IhudJg	Account is for a refugee or person without a number assigned by a government organisation, for example, without a Danish Central Securities Number.
+TaxExemptReason3Code	RIHO	RightsHolder	_dut_gTaKEeWxoIK_IhudJg	Account is for a rights holder.
+TaxExemptReason3Code	ADMI	Administrator	_vRAkMb-HEeWfsa741pI6WA	Administrator of the account is not the owner.
+TaxExemptReason3Code	TANR	TwoNonResident	_vaug4b-HEeWfsa741pI6WA	Two or more of the account owners are foreign residents.
+TaxExemptReason3Code	OANR	OneNonResident	_vk_3Mb-HEeWfsa741pI6WA	One of the account owners is a foreign resident.
+EventFrequency9Code	YEAR	Annual	_kqAyUSDAEeWPMvNwVtiMsA	Event takes place every year or once a year.
+EventFrequency9Code	SEMI	SemiAnnual	_kqAyUyDAEeWPMvNwVtiMsA	Event takes place every six months or two times a year.
+EventFrequency9Code	QUTR	Quarterly	_kqAyVSDAEeWPMvNwVtiMsA	Event takes place every three months or four times a year.
+EventFrequency9Code	TOMN	EveryTwoMonths	_kqAyVyDAEeWPMvNwVtiMsA	Event takes place every two months.
+EventFrequency9Code	MNTH	Monthly	_kqAyWSDAEeWPMvNwVtiMsA	Event takes place every month or once a month.
+EventFrequency9Code	TWMN	TwiceAMonth	_kqAyWyDAEeWPMvNwVtiMsA	Event takes place two times a month.
+EventFrequency9Code	TOWK	EveryTwoWeeks	_kqAyXSDAEeWPMvNwVtiMsA	Event takes place every two weeks.
+EventFrequency9Code	WEEK	Weekly	_kqAyXyDAEeWPMvNwVtiMsA	Event takes place once a week.
+EventFrequency9Code	DAIL	Daily	_kqAyYSDAEeWPMvNwVtiMsA	Event takes place every day.
+EventFrequency9Code	ADHO	Adhoc	_kqAyYyDAEeWPMvNwVtiMsA	Event takes place as necessary.
+EventFrequency9Code	INDA	IntraDay	_kqAyZSDAEeWPMvNwVtiMsA	Event takes place several times a day.
+EventFrequency9Code	OVNG	Overnight	_kqAyZyDAEeWPMvNwVtiMsA	Event takes place overnight.
+EventFrequency9Code	ONDE	OnDemand	_kqAyaSDAEeWPMvNwVtiMsA	Event takes place on demand.
+EventFrequency9Code	NONE	None	_mJOiUSDAEeWPMvNwVtiMsA	Event does not take place.
+IncomePreference2Code	CASH	Cash	_ril1cSFJEeWgV9SQSyaAog	Distribution in cash.
+IncomePreference2Code	SECU	Securities	_ryQpISFJEeWgV9SQSyaAog	Distribution in securities.
+Holding1Code	CERT	Certificate	_HrQ00RKgEeKj15WxqwlXPw	Certificate.
+Holding1Code	NPRH	NonPartialHolding	_H08VQRKgEeKj15WxqwlXPw	Non partial holding.
+Holding1Code	PRTH	PartialHolding	_IBT9URKgEeKj15WxqwlXPw	Partial holding.
+Eligible1Code	ELIG	Eligible	_RBY30SC-EeWPMvNwVtiMsA	Item is eligible.
+Eligible1Code	NELI	NotEligible	_RIY3sSC-EeWPMvNwVtiMsA	Item is not eligible.
+Collateral1Code	COLL	Collateral	_QHQx4SC-EeWPMvNwVtiMsA	Item is used as collateral.
+Collateral1Code	NCOL	NotCollateral	_QPdEkSC-EeWPMvNwVtiMsA	Item is not used as collateral.
+FundOwnership1Code	YALL	AllOwned	_cYpsMSDYEeWCLu74WLgP4w	All shares owned.
+FundOwnership1Code	NALL	NotAllOwned	_cfy2ASDYEeWCLu74WLgP4w	Not all shares owned.
+FundIntention1Code	YQUA	Qualified	_YBiiASDYEeWCLu74WLgP4w	Qualified.
+FundIntention1Code	NQUA	NotQualified	_uOC44TavEeWxoIK_IhudJg	Not qualified.
+OperationalStatus1Code	ENAB	Enabled	_G4T6wSDZEeWCLu74WLgP4w	Enabled.
+OperationalStatus1Code	SPEC	SpecialCircumstances	_G_dEkSDZEeWCLu74WLgP4w	Special circumstances.
+TaxWithholdingMethod3Code	MITX	MinorityInterestTax	_rHlbQb-IEeWfsa741pI6WA	Minority interest tax is withheld.
+TaxWithholdingMethod3Code	INVE	InvestmentCompany	_sBdCgb-IEeWfsa741pI6WA	Withholding tax is applied to an investment company.
+TaxWithholdingMethod3Code	ACCT	Accountant	_shvsIb-IEeWfsa741pI6WA	Dividend tax is exempt according to the accountant.
+TaxWithholdingMethod3Code	EXMT	Exempt	_tfyBsb-IEeWfsa741pI6WA	Dividend tax is exempt.
+TaxWithholdingMethod3Code	REPT	ReportTax	_y3UHEb-IEeWfsa741pI6WA	Tax information is reported to the tax authorities and therefore not withheld at source.
+TaxWithholdingMethod3Code	CRTF	TaxCertificate	_y_WBsb-IEeWfsa741pI6WA	Tax certificate is provided by the beneficiary from its tax authority in its country of residence. Therefore, the obligation of withholding tax is waived and tax information will be reported to the tax authorities.
+TaxWithholdingMethod3Code	WHCO	WithholdingCorporateTax	_zLZgsb-IEeWfsa741pI6WA	Withholding tax is applied to a corporate.
+TaxWithholdingMethod3Code	WTHD	WithholdTax	_zSr0cb-IEeWfsa741pI6WA	Tax is withheld at source.
+TaxWithholdingMethod3Code	WTRE	WithholdTaxAndReport	_zauWIL-IEeWfsa741pI6WA	Tax is withheld at source and the tax information is also reported to the tax authorities.
+PartyIdentificationType7Code	ATIN	AdoptionTaxpayerIdentificationNumber	_VAo8cSCOEeWJd9HF2tO7BA	Temporary tax processing number (used in the domestic adoption of a child).
+PartyIdentificationType7Code	IDCD	IdentityCardNumber	_VzhK4SCOEeWJd9HF2tO7BA	Number assigned by a national authority to an identity card.
+PartyIdentificationType7Code	NRIN	NationalRegistrationIdentificationNumber	_Xuj7QSCOEeWJd9HF2tO7BA	National registration identification number. In Singapore this is known as the NRIC.
+PartyIdentificationType7Code	OTHR	Other	_YWvVkSCOEeWJd9HF2tO7BA	Another type of identification type.
+PartyIdentificationType7Code	PASS	PassportNumber	_ZAZWkSCOEeWJd9HF2tO7BA	Number assigned by a passport authority to a passport.
+PartyIdentificationType7Code	POCD	PostOfficeCardNumber	_ZQBG8SCOEeWJd9HF2tO7BA	Post office card number as assigned by a national post office.
+PartyIdentificationType7Code	SOCS	SocialSecurityNumber	_ZrsWUSCOEeWJd9HF2tO7BA	Number assigned by a social security agency.
+PartyIdentificationType7Code	SRSA	SRSAccountNumber	_Z06jwSCOEeWJd9HF2tO7BA	Supplementary retirement scheme account number.
+PartyIdentificationType7Code	GUNL	GunLicenseNumber	_aYxewSCOEeWJd9HF2tO7BA	Gun license number as assigned by a gun licensing authority.
+PartyIdentificationType7Code	GTIN	GenericTaxIdentificationNumber	_dlWIcSCOEeWJd9HF2tO7BA	Generic tax identification number.
+PartyIdentificationType7Code	ITIN	IndividualTaxpayerIdentificationNumber	_fCyW0SCOEeWJd9HF2tO7BA	Tax processing number.
+PartyIdentificationType7Code	CPFA	CPFAccountNumber	_mharkSCOEeWJd9HF2tO7BA	Account issued by the Central Provident Fund Board (Singapore).
+PartyIdentificationType7Code	AREG	AlienRegistrationNumber	_sbdoISCOEeWJd9HF2tO7BA	Number assigned by a government agency to identify foreign nationals.
+PartyIdentificationType7Code	DRLC	DriversLicenseNumber	_tIiJgSCOEeWJd9HF2tO7BA	Number assigned by a license authority to a driver's license.
+PartyIdentificationType7Code	EMID	EmployerIdentificationNumber	_uDANsSCOEeWJd9HF2tO7BA	Number assigned to an employer by a registration authority.
+PartyIdentificationType7Code	NINV	NonResidentInvestor	_hklJESDZEeWCLu74WLgP4w	Number that identifies the type of investor registered at a securities and exchange commission.
+PartyIdentificationType7Code	INCL	IndustryClassification	_tBp6ESMuEeWw25nezi_B1g	Number, typically assigned by a government to describe ownership, administrative and authoritative relations.
+PartyIdentificationType7Code	GIIN	GlobalIntermediaryIdentificationNumber	_bodkMTa3EeWxoIK_IhudJg	Global intermediary tax identification number.
+CreditDebit3Code	CRDT	Credit	_s9EFxzzcEeWg1_uD_bF5Og	Operation is an increase.
+CreditDebit3Code	DBIT	Debit	_s9EFyDzcEeWg1_uD_bF5Og	Operation is a decrease.
+SettlementInstructionReason1Code	CSHI	AllCredits	_-R0NkSCtEeWJd9HF2tO7BA	Settlement of all credit amounts.
+SettlementInstructionReason1Code	ALLL	AllCreditsAndDebits	_-ZjNQSCtEeWJd9HF2tO7BA	Settlement of all credit and debit amounts.
+SettlementInstructionReason1Code	CSHO	AllDebits	_-hlu8SCtEeWJd9HF2tO7BA	Settlement of all debit amounts.
+SettlementInstructionReason1Code	CHAR	Charges	_-pnpkSCtEeWJd9HF2tO7BA	Settlement of charges.
+SettlementInstructionReason1Code	DIVI	Dividend	_-xDuUSCtEeWJd9HF2tO7BA	Settlement of dividends.
+SettlementInstructionReason1Code	INTE	Interest	_-5PZ8SCtEeWJd9HF2tO7BA	Settlement of interest.
+SettlementInstructionReason1Code	SAVP	InvestmentSavingsPlan	__A1PsSCtEeWJd9HF2tO7BA	Settlement of investments to a savings plan.
+SettlementInstructionReason1Code	REDM	Redemption	__IaeYSCtEeWJd9HF2tO7BA	Settlement of redemptions or redemption legs of a switch transaction.
+SettlementInstructionReason1Code	SAVE	SavingsPlan	__P2jISCtEeWJd9HF2tO7BA	Settlement of investments to a savings plan and withdrawals from a savings plan.
+SettlementInstructionReason1Code	BUYI	SecuritiesPurchase	__XcY4SCtEeWJd9HF2tO7BA	Settlement of securities purchases.
+SettlementInstructionReason1Code	SELL	SecuritiesSale	__fVJkSCtEeWJd9HF2tO7BA	Settlement of securities sales.
+SettlementInstructionReason1Code	SUBS	Subscription	__mxOUSCtEeWJd9HF2tO7BA	Settlement of subscriptions or subscription legs of a switch transaction.
+SettlementInstructionReason1Code	WTHP	WithdrawalSavingsPlan	__up_ASCtEeWJd9HF2tO7BA	Settlement of withdrawals from a savings plan.
+SettlementInstructionReason1Code	CORP	CorporateAction	_AuSyMVxmEeW0RaYpOo325g	Settlement of corporate actions.
+CashAccountType5Code	LEND	Lending	_2pYDQSCyEeWJd9HF2tO7BA	Account is for the coverage of lending.
+CashAccountType5Code	COLL	Collateral	_3W53oSCyEeWJd9HF2tO7BA	Account is for collateral.
+CashAccountType5Code	SETT	FinancialSettlement	_34FSESCyEeWJd9HF2tO7BA	Account is for financial settlements.
+CashAccountType5Code	MARR	MarginReturn	__NxGMSCyEeWJd9HF2tO7BA	Account is for margin returns.
+CashAccountType5Code	SEGT	Segregated	__yXoESCyEeWJd9HF2tO7BA	Account is an segregated account.
+Rank1Code	PRIM	Primary	_8Vcd8ZNgEeWSf8tCOKY7Ug	Element is the primary one.
+Rank1Code	SECO	Secondary	_8dx6kZNgEeWSf8tCOKY7Ug	Element is the primary one.
+RoundingDirection1Code	RDUP	RoundUp	_Y-Bo9tp-Ed-ak6NoX_4Aeg_2066033827	Round up to the nearest whole number.
+RoundingDirection1Code	RDWN	RoundDown	_Y-Bo99p-Ed-ak6NoX_4Aeg_2066033828	Round down to the nearest whole number.
+RoundingDirection1Code	STAN	RoundToNearest	_Y-Bo-Np-Ed-ak6NoX_4Aeg_-1599090070	Round up or down to the nearest whole number.
+RoundingDirection1Code	DIST	IssueFraction	_Y-LZ8Np-Ed-ak6NoX_4Aeg_-1566769655	Do not round.
+AccountUsageType2Code	INVE	Investor	_FcoZMb-FEeWfsa741pI6WA	Investor.
+AccountUsageType2Code	ISSP	IssuingParticipant	_FjxjAb-FEeWfsa741pI6WA	Issuing participant.
+AccountUsageType2Code	SETP	SettlementParticipant	_Fqw70b-FEeWfsa741pI6WA	Settlement participant.
+AccountUsageType2Code	TRDP	TradingParticipant	_FyD2ob-FEeWfsa741pI6WA	Trading participant.
+Provided1Code	NPRO	NotProvided	_ba2ZIRKFEeKj15WxqwlXPw	Not provided.
+Provided1Code	PROV	Provided	_bllCcRKFEeKj15WxqwlXPw	Provided.
+TransactionChannel2Code	FIAD	FinancialAdvisor	_5TAXgRRFEeOKWo1NF21OVw	Financial advisor.
+TransactionChannel2Code	HOBA	HomeBanking	_5fNAcRRFEeOKWo1NF21OVw	Home banking.
+TransactionChannel2Code	BRAN	OfficeOrBranch	_7iH6cRRFEeOKWo1NF21OVw	Office or branch.
+InvestmentAccountCategory1Code	MAND	MandateAccount	_HQJ88RRIEeOKWo1NF21OVw	Account is fully managed by the financial institution, that is, an investor gives a 'mandate' to the financial institution to execute a mutually agreed investment strategy on its behalf.
+InvestmentAccountCategory1Code	RETA	RetailAccount	_HZh7YRRIEeOKWo1NF21OVw	Account is a standard account managed by the investor. The investor issues instructions for the account to the financial institution.
+LevelOfControl1Code	TRAN	Transactions	_mhS8sSDDEeWPMvNwVtiMsA	Transactions are permitted on the account.
+LevelOfControl1Code	VIEW	View	_mpeoUSDDEeWPMvNwVtiMsA	Account may be viewed only.
+AccountingStatus1Code	YDOM	Domestic	_gQQnASDEEeWPMvNwVtiMsA	Account or party is regarded as domestic for reporting purposes.
+AccountingStatus1Code	NDOM	NotDomestic	_gahWQSDEEeWPMvNwVtiMsA	Account or party is not regarded as domestic for reporting purposes.
+PositionEffect3Code	FIFO	Fifo	_yHm-4SDLEeWPMvNwVtiMsA	First in, first out. Results in a position obtained after having sold in priority the securities bought chronologically.
+PositionEffect3Code	LIFO	Lifo	_-qssASDLEeWPMvNwVtiMsA	Last in, last out. Results in a position obtained after having sold in priority the securities bought chronologically.
+Liability1Code	INVE	Investor	_Bm3FsSDNEeWPMvNwVtiMsA	Investor is responsible.
+Liability1Code	BROK	Broker	_D6Zo4Ta2EeWxoIK_IhudJg	Broker is responsible.
+ProfileType1Code	HEDG	Hedge	_N0lOcSGLEeW_v8XsK-l3KA	Investor shares that uses defensive operations (hedging), thus avoiding the risk of large swings.
+ProfileType1Code	HFTR	HighFrequencyTrader	_N8nJESGLEeW_v8XsK-l3KA	Investors operating through algorithms and send orders automatically according to the strategies defined by their managers. Through this access model, the participants of these servers are hosted primarily within the premises of Brazilian Market and significantly reduce the time of submission of offers to trading systems.
+ProfileType1Code	MAKE	MarketMaker	_OEpDsSGLEeW_v8XsK-l3KA	Agent liquidity, liquidity facilitator, promoter of business, specialist, market maker and liquidity provider are some designations given to those who propose to provide liquidity and minimum reference price for assets previously accredited, factors highlighted in the analysis of efficiency in capital markets.
+ProfileType1Code	TREA	Treasury	_OMrlYSGLEeW_v8XsK-l3KA	Trading system of federal securities in the retail market directly to the investor. The operation can be performed directly over the Internet.
+InvestorProfileStatus1Code	DISA	Disabled	_vl8EoSDREeWCLu74WLgP4w	Status of the investor profile is disabled.
+InvestorProfileStatus1Code	DISG	Disabling	_vt9_QSDREeWCLu74WLgP4w	Status of the investor profile is in the process of being disabled.
+InvestorProfileStatus1Code	ENAB	Enabled	_v2cl0SDREeWCLu74WLgP4w	Status of the investor profile is enabled.
+InvestorProfileStatus1Code	ENBG	Enabling	_v-yCcSDREeWCLu74WLgP4w	Status of the investor profile is in the process of being enabled.
+InvestorProfileStatus1Code	ADMI	InAdmission	_wBms8SDREeWCLu74WLgP4w	Status of the investor profile is in admission.
+InvestorProfileStatus1Code	ANLY	InAnalysis	_wJ8JkSDREeWCLu74WLgP4w	Status of the investor profile is in analysis.
+InvestorProfileStatus1Code	NAPP	NotApproved	_wTBNESDREeWCLu74WLgP4w	Status of the investor profile is not approved.
+InvestorProfileStatus1Code	PSUS	PartiallySuspended	_wV13kSDREeWCLu74WLgP4w	Status of the investor profile is partially suspended.
+InvestorProfileStatus1Code	PEND	PendingApproval	_wd3yMSDREeWCLu74WLgP4w	Status of the investor profile is pending approval.
+InvestorProfileStatus1Code	SUPS	Suspended	_wl6T4SDREeWCLu74WLgP4w	Status of the investor profile is suspended.
+PartyRole1Code	CUST	Custodian	_zsaVUSDSEeWCLu74WLgP4w	Party that safekeeps and administers assets on behalf of the owner.
+PartyRole1Code	INVS	Investor	_0PE9gSDSEeWCLu74WLgP4w	Party, either an individual or organisation, whose assets are being invested.
+EventFrequency10Code	DAIL	Daily	_ASy8ISDVEeWCLu74WLgP4w	Event takes place every day.
+EventFrequency10Code	ADHO	Adhoc	_Aryq8SDVEeWCLu74WLgP4w	Event takes place as necessary.
+ConsolidationType1Code	GENL	General	_5ZjW8SDVEeWCLu74WLgP4w	Consolidation is general.
+ConsolidationType1Code	PART	Participation	_5i6uUSDVEeWCLu74WLgP4w	Consolidation is at the level of the participant.
+OrganisationType1Code	IFUN	InvestmentFund	_jvGFMSCfEeWJd9HF2tO7BA	Organisation is an investment fund.
+OrganisationType1Code	PRIV	PrivateAssociation	_j2YY8SCfEeWJd9HF2tO7BA	Organisation is a private association.
+OrganisationType1Code	PUBL	Public	_j9rTwSCfEeWJd9HF2tO7BA	Organisation is a public company.
+OrganisationType1Code	PFUN	PublicFund	_kFHYgSCfEeWJd9HF2tO7BA	Organisation is a public fund.
+NamePrefix1Code	DOCT	Doctor	_jXsywYc0EeeO5vQpPey46w	Title of the person is Doctor or Dr.
+NamePrefix1Code	MIST	Mister	_jp59EYc0EeeO5vQpPey46w	Title of the person is Mister or Mr.
+NamePrefix1Code	MISS	Miss	_jkbAIYc0EeeO5vQpPey46w	Title of the person is Miss.
+NamePrefix1Code	MADM	Madam	_jehMcYc0EeeO5vQpPey46w	Title of the person is Madam.
+Gender1Code	FEMA	Female	_LwE5wYoTEeahcZ3Nzs1Qag	Individual is a female.
+Gender1Code	MALE	Male	_L01d8YoTEeahcZ3Nzs1Qag	Individual is a male.
+PoliticalExposureType2Code	NPEX	NoPoliticalExposure	_tm6vMZUgEemC09f0MxYkRg	No political exposure.
+PoliticalExposureType2Code	YPEX	PoliticalExposure	_tuzf4ZUgEemC09f0MxYkRg	Political exposure.
+PoliticalExposureType2Code	PEXD	PoliticalExposureDomestic	_tzkEEZUgEemC09f0MxYkRg	Political exposure type is domestic.
+PoliticalExposureType2Code	PEXF	PoliticalExposureForeign	_t5g7EZUgEemC09f0MxYkRg	Political exposure type is foreign.
+PoliticallyExposedPersonStatus1Code	PE03	CloseAssociate	_DKR-cZUrEemC09f0MxYkRg	Person known to be a close associate of the politically exposed person. A person known to be a close associate includes: |(a) a natural person who is known to have joint beneficial ownership of legal entities or legal arrangements, or any other close business relations, with the  politically exposed person,|(b) a natural person who has sole beneficial ownership of a legal entity or legal arrangement which is known to have been set up for the de facto benefit of a politically exposed person.
+PoliticallyExposedPersonStatus1Code	PE01	NaturalPersonEntrusted	_DWxiUZUrEemC09f0MxYkRg	Natural person who is or who has been entrusted with prominent public functions.
+PoliticallyExposedPersonStatus1Code	PE02	FamilyMember	_DdnxMZUrEemC09f0MxYkRg	Family member of the politically exposed person. A family member includes: |(a) the spouse, or a person considered to be equivalent to a spouse, of the politically exposed person,|(b) the children and their spouses, or persons considered to be equivalent to a spouse, of the politically exposed person,|(c) the parents of the politically exposed person.
+CivilStatus1Code	DIVO	Divorced	_xZ1E8SChEeWJd9HF2tO7BA	Person is divorced.
+CivilStatus1Code	LDIV	LegallyDivorced	_xhkEoSChEeWJd9HF2tO7BA	Person is legally divorced.
+CivilStatus1Code	MARR	Married	_xpAJYSChEeWJd9HF2tO7BA	Person is married.
+CivilStatus1Code	SEPA	Separated	_xwl_ISChEeWJd9HF2tO7BA	Person is separated.
+CivilStatus1Code	SING	Single	_x34S4SChEeWJd9HF2tO7BA	Person is single.
+CivilStatus1Code	UNIO	StableUnion	_x6tkcSChEeWJd9HF2tO7BA	Person is in a stable union.
+CivilStatus1Code	WIDO	Widow	_yBjMQSChEeWJd9HF2tO7BA	Person is a widower.
+GDPRDataConsent1Code	DP00	ConsentMarketing	_0hh6cZUsEemIb43KZS2tHA	Consent to authorise the controller of personal data processing to process personal data for marketing purposes.
+GDPRDataConsent1Code	DP03	ConsentProfilingTargeted	_0wQ6AZUsEemIb43KZS2tHA	Consent to authorise the controller of personal data processing to process personal data for profiling purposes in order to formulate customised and targeted product and service offers.
+GDPRDataConsent1Code	DP01	ConsentTransferSameMarketing	_01KoIZUsEemIb43KZS2tHA	Consent to authorise the controller of personal data processing to transfer personal data to other companies belonging to the same group for independent processing for marketing purposes.
+GDPRDataConsent1Code	DP02	ConsentTransferThirdPartyMarketing	_1E8JgZUsEemIb43KZS2tHA	Consent to authorise the controller of personal data processing to transfer personal data to third party companies for independent processing for marketing purposes.
+MoneyLaunderingCheck1Code	PASS	Passed	_aMj4otp-Ed-ak6NoX_4Aeg_-1394550883	Money laundering identification procedures have been carried out by the intermediary.
+MoneyLaunderingCheck1Code	NOTC	NotChecked	_aMj4o9p-Ed-ak6NoX_4Aeg_-1394550852	Money laundering identification procedures have not been carried out.
+MoneyLaunderingCheck1Code	EXEM	ExemptBelowLimit	_aMj4pNp-Ed-ak6NoX_4Aeg_-1394550851	Money laundering identification procedures have not been carried out because the transaction is below the prescribed limit.
+MoneyLaunderingCheck1Code	CLMO	ClientMoneyTypeExempt	_aMj4pdp-Ed-ak6NoX_4Aeg_-1394550821	Money laundering identification procedures have not been carried out because of the transaction type, for example, switch, or because the transaction is being funded from an existing investor account held by the intermediary.
+MoneyLaunderingCheck1Code	AUTH	AuthorisedCredit	_aMj4ptp-Ed-ak6NoX_4Aeg_-1394550820	Money laundering identification procedures have not been carried out because the investor is an authorised credit or financial institution.
+MoneyLaunderingCheck1Code	POEP	PostalOrElectronicPaymentExempt	_aMj4p9p-Ed-ak6NoX_4Aeg_-1394550791	Limited money laundering identification procedures have been carried out because it is a one time only transaction and the payment is being made by postal, telephone or electronic transfers from an existing account with an authorised credit or financial institution.
+CertificateType2Code	AMLC	AntiMoneyLaundering	_MX05cRODEeKjmvxNCObNeQ	Anti-money laundering certification form.
+CertificateType2Code	DVLC	DrivingLicense	_MkCwgRODEeKjmvxNCObNeQ	Government issued form of picture identification - driving license.
+CertificateType2Code	DFOR	DueFormationAndOrganisation	_MvhAsRODEeKjmvxNCObNeQ	Certification of due formation and organisation.
+CertificateType2Code	GOST	GoodStanding	_M6jMARODEeKjmvxNCObNeQ	Certificate of good standing.
+CertificateType2Code	IDEN	IdentityCard	_NHqa8RODEeKjmvxNCObNeQ	Government issued form of picture identification - identity card.
+CertificateType2Code	INCU	Incumbency	_NacNARODEeKjmvxNCObNeQ	Certification of incumbency.
+CertificateType2Code	LREF	LetterOfReference	_NpCpsRODEeKjmvxNCObNeQ	Letter of reference.
+CertificateType2Code	PASS	Passport	_N1HW0RODEeKjmvxNCObNeQ	Government issued form of picture identification - passport.
+CertificateType2Code	PRAD	ProofOfAddress	_OE6GURODEeKjmvxNCObNeQ	Proof of the address, such as a utility bill.
+CertificateType2Code	PKIC	PublicKeyInfrastructureCertificate	_OPV0sRODEeKjmvxNCObNeQ	Public key infrastructure certificate.
+EventFrequency1Code	YEAR	Annual	_ajWoANp-Ed-ak6NoX_4Aeg_959431341	Event takes place every year or once a year.
+EventFrequency1Code	SEMI	SemiAnnual	_ajWoAdp-Ed-ak6NoX_4Aeg_960353363	Event takes place every six months or two times a year.
+EventFrequency1Code	QUTR	Quarterly	_ajWoAtp-Ed-ak6NoX_4Aeg_960353346	Event takes place every three months or four times a year.
+EventFrequency1Code	TOMN	EveryTwoMonths	_ajWoA9p-Ed-ak6NoX_4Aeg_152343910	Event takes place every two months.
+EventFrequency1Code	MNTH	Monthly	_ajWoBNp-Ed-ak6NoX_4Aeg_960353268	Event takes place every month or once a month.
+EventFrequency1Code	TWMN	TwiceAMonth	_ajWoBdp-Ed-ak6NoX_4Aeg_420164021	Event takes place two times a month.
+EventFrequency1Code	TOWK	EveryTwoWeeks	_ajWoBtp-Ed-ak6NoX_4Aeg_459876051	Event takes place every two weeks.
+EventFrequency1Code	WEEK	Weekly	_ajWoB9p-Ed-ak6NoX_4Aeg_960353364	Event takes place once a week.
+EventFrequency1Code	DAIL	Daily	_ajWoCNp-Ed-ak6NoX_4Aeg_960353381	Event takes place every day.
+EventFrequency1Code	ADHO	Adhoc	_ajWoCdp-Ed-ak6NoX_4Aeg_960353466	Event takes place as necessary.
+EventFrequency1Code	INDA	IntraDay	_ajWoCtp-Ed-ak6NoX_4Aeg_960353813	Event takes place several times a day.
+EventFrequency1Code	OVNG	Overnight	_ajgZANp-Ed-ak6NoX_4Aeg_960353873	Event takes place overnight.
+EventFrequency1Code	ONDE	OnDemand	_ajgZAdp-Ed-ak6NoX_4Aeg_977902077	Event takes place on demand.
+ConductClassification1Code	NSTA	NonStandard	_rUP-0RjoEeKxeog5DTmtgg	Non standard or unusual.
+ConductClassification1Code	RCLT	Reluctant	_rfkeARjoEeKxeog5DTmtgg	Reluctant.
+ConductClassification1Code	STAN	Standard	_roqIkRjoEeKxeog5DTmtgg	Standard.
+RiskLevel1Code	HIGH	High	_Lx6w4RdxEeKYM7Bc71nDlA	High.
+RiskLevel1Code	LOWW	Low	_L595oRdxEeKYM7Bc71nDlA	Low.
+RiskLevel1Code	MEDM	Medium	_MDqBIRdxEeKYM7Bc71nDlA	Medium.
+KnowYourCustomerCheckType1Code	ENHA	Enhanced	_965EoRRxEeOKWo1NF21OVw	Enhanced check, typically carried out on accounts that are considered high risk.
+KnowYourCustomerCheckType1Code	ORDN	Ordinary	_-CrHoRRxEeOKWo1NF21OVw	Ordinary check, typically carried out on standard accounts.
+KnowYourCustomerCheckType1Code	SIMP	Simple	_-KhcERRxEeOKWo1NF21OVw	Simple check, typically carried out on accounts that have a low risk of anti-money laundering, such as an account owned by a financial institution.
+OrderOriginatorEligibility1Code	ELIG	Eligible	_aRLS4Np-Ed-ak6NoX_4Aeg_668089351	Eligible counterparty - MiFID classification of counterparty. Eligible customers are the most sophisticated level of investor, able to opt out of some the protections afforded by conduct of business rules defined under MiFID.
+OrderOriginatorEligibility1Code	RETL	Retail	_aRLS4dp-Ed-ak6NoX_4Aeg_679171670	Retail client - MiFID classification of counterparty. Retail customers are the least sophisticated level of investor.
+OrderOriginatorEligibility1Code	PROF	Professional	_aRLS4tp-Ed-ak6NoX_4Aeg_709649144	Professional client - MiFID classification of counterparty. Professional customers are, for example, investment firms, credit institutions, insurance companies.
+InformationDistribution2Code	ELEC	Electronic	_18fqwSCUEeWJd9HF2tO7BA	Electronic distribution.
+InformationDistribution2Code	NONE	NoDistribution	_2C5NsSCUEeWJd9HF2tO7BA	No distribution.
+InformationDistribution2Code	PAPR	Paper	_2Hpx4SCUEeWJd9HF2tO7BA	Paper distribution.
+FATCAFormType1Code	CER5	CertificateForeignIntermediary	_nSQl4QjMEeS5F6qHcKOrew	Certificate of foreign intermediary (also known as IRS form W-8IMY).
+FATCAFormType1Code	CER7	CertificateForeignPersonsClaim	_nc-BEQjMEeS5F6qHcKOrew	Certificate of foreign person's claim that income is effectively connected with the conduct of a trade or business in the United States (also known as IRS form W-8BEN-E).
+FATCAFormType1Code	CER1	CertificateForeignStatusBeneficialOwner	_nfphoQjMEeS5F6qHcKOrew	Certificate of foreign status of beneficial owner (also known as IRS form W-8BEN).
+FATCAFormType1Code	CER2	CertificateLossNationality	_ntVYUQjMEeS5F6qHcKOrew	Certificate of loss of nationality.
+FATCAFormType1Code	CER3	SelfCertification	_nwKC0QjMEeS5F6qHcKOrew	Self certification.
+FATCAFormType1Code	CER4	SelfCertificationLossNationality	_n4ffcQjMEeS5F6qHcKOrew	Self certificate of loss of nationality (also known as IRS form I-407).
+FATCAFormType1Code	CER6	TaxpayerIdentificationNumberRequest	_oA08EQjMEeS5F6qHcKOrew	Form is a request for taxpayer identification number and certification (also known as IRS form W9).
+FATCAStatus1Code	F101	FATCA101	_XFWYwQjUEeS5F6qHcKOrew	Account holder type is an owner-documented financial institution with specified US owner(s).
+FATCAStatus1Code	F102	FATCA102	_XN1mYQjUEeS5F6qHcKOrew	Account holder type is a passive non-financial entity with substantial US owner(s).
+FATCAStatus1Code	F103	FATCA103	_XWw44QjUEeS5F6qHcKOrew	Account holder type is a non-participating financial institution.
+FATCAStatus1Code	F104	FATCA104	_XfFucQjUEeS5F6qHcKOrew	Account holder type is a specified US person.
+FATCAStatus1Code	F105	FATCA105	_Xnk8EQjUEeS5F6qHcKOrew	Account holder type is a direct reporting non-financial foreign entity (NFFE).
+FATCAStatus1Code	F201	FATCA201	_Xv5xoQjUEeS5F6qHcKOrew	Account pool reporting type is a recalcitrant account holder with US indicia.
+FATCAStatus1Code	F202	FATCA202	_X4POQQjUEeS5F6qHcKOrew	Account pool reporting type is a recalcitrant account holder without US indicia.
+FATCAStatus1Code	F203	FATCA203	_YAt00QjUEeS5F6qHcKOrew	Account pool reporting type is a dormant account.
+FATCAStatus1Code	F204	FATCA204	_YDjGYQjUEeS5F6qHcKOrew	Account pool reporting type is a non-participating foreign financial institution.
+FATCAStatus1Code	F205	FATCA205	_YL378QjUEeS5F6qHcKOrew	Account pool reporting type is a recalcitrant account holder that is a US person.
+FATCAStatus1Code	F206	FATCA206	_YUWigQjUEeS5F6qHcKOrew	Account pool reporting type is recalcitrant account holder that is a passive non-financial foreign entity (NFFE).
+FATCASourceStatus1Code	CALC	Calculated	_QakGUQjVEeS5F6qHcKOrew	Source of the Foreign Account Tax Compliance Act (FATCA) status calculated.
+FATCASourceStatus1Code	DECL	Declared	_QjVn0QjVEeS5F6qHcKOrew	Source of the Foreign Account Tax Compliance Act (FATCA) status is as declared by the investor.
+CRSFormType1Code	CER4	CertificateIdentificationGovernment	_VuWHoUNwEeaS-NnwLNvMPg	Certificate of Identification issued by a government.
+CRSFormType1Code	CER3	CertificateOfResidence	_V4BBAUNwEeaS-NnwLNvMPg	Certificate of residence.
+CRSFormType1Code	CER5	OfficialDocumentGovernmentForEntity	_WBshcUNwEeaS-NnwLNvMPg	Official documentation issued by a government for the entity.
+CRSFormType1Code	CER6	OtherDocumentOrReport	_WE0G4UNwEeaS-NnwLNvMPg	Financial statement, third party credit report, bankruptcy filing or a securities regulator report.
+CRSFormType1Code	CER8	PublicInformationEntity	_WUloQUNwEeaS-NnwLNvMPg	Publicly available information for the entity.
+CRSFormType1Code	CER1	SelfCertificationSeparateDocument	_WeQhoUNwEeaS-NnwLNvMPg	Self certification as a separate document.
+CRSFormType1Code	CER2	SelfCertificationWithAccountOpeningContract	_WnxqAUNwEeaS-NnwLNvMPg	Self certification as a document included into contract of the account opening.
+CRSFormType1Code	CER7	Standardised	_WxTZcUNwEeaS-NnwLNvMPg	Standardised industry coding system for the entity.
+CRSStatus1Code	C101	CRS101	_N1X9EUNsEeaS-NnwLNvMPg	Account holder type is a passive non-financial entity with one or more controlling persons that are foreign persons.
+CRSStatus1Code	C102	CRS102	_N_8OUUNsEeaS-NnwLNvMPg	Account holder type is a foreign person.
+CRSStatus1Code	C103	CRS103	_ODDzwUNsEeaS-NnwLNvMPg	Account holder type is a passive foreign non-financial entity without controlling persons that are foreign persons.
+CRSStatus1Code	C104	CRS104	_ONeUAUNsEeaS-NnwLNvMPg	Account holder type is a financial institution such as a depositary, a custodial institution or a specified insurance company.
+CRSStatus1Code	C105	CRS105	_OW2ScUNsEeaS-NnwLNvMPg	Account holder type is a financial institution such as an investment entity of a non-participating jurisdiction and managed by another financial institution without one or more controlling persons that are foreign persons.
+CRSStatus1Code	C106	CRS106	_OhQysUNsEeaS-NnwLNvMPg	Account holder type is a financial institution such as an investment entity of a non-participating jurisdiction and managed by another financial institution with one or more controlling persons that are foreign persons.
+CRSStatus1Code	C107	CRS107	_OkY_MUNsEeaS-NnwLNvMPg	Account holder type is a financial institution such as another investment entity.
+CRSStatus1Code	C108	CRS108	_Ot6HkUNsEeaS-NnwLNvMPg	Account holder type is an active non-financial entity such as a corporation for which the stock is regularly traded on an established securities market.
+CRSStatus1Code	C109	CRS109	_O4Ld4UNsEeaS-NnwLNvMPg	Account holder type is an active non-financial entity such as a corporation which is a related entity of a corporation for which the stock is regularly traded on an established securities market.
+CRSStatus1Code	C110	CRS110	_PB2XQUNsEeaS-NnwLNvMPg	Account holder type is an active non-financial entity such as a government entity.
+CRSStatus1Code	C111	CRS111	_PLXfoUNsEeaS-NnwLNvMPg	Account holder type is an active non-financial entity such as a central bank.
+CRSStatus1Code	C112	CRS112	_PVoO4UNsEeaS-NnwLNvMPg	Account holder type is an active non-financial entity such as an international organisation.
+CRSStatus1Code	C113	CRS113	_PYwbYUNsEeaS-NnwLNvMPg	Account holder type is not a foreign person.
+CRSStatus1Code	C114	CRS114	_PiRjwUNsEeaS-NnwLNvMPg	Account holder type is a financial institution such as an investment entity of a participating jurisdiction and managed by another financial institution.
+CRSSourceStatus1Code	CALC	Calculated	_A1tMMUNtEeaS-NnwLNvMPg	Source of the Common Reporting Standard (CRS) status is calculated.
+CRSSourceStatus1Code	DECL	Declared	_A_-igUNtEeaS-NnwLNvMPg	Source of the Common Reporting Standard (CRS) status is as declared by the investor.
+MailType1Code	AIRM	AirMail	_jWjjASCXEeWJd9HF2tO7BA	Air mail.
+MailType1Code	ORDM	OrdinaryMail	_jdi70SCXEeWJd9HF2tO7BA	Ordinary mail.
+MailType1Code	REGM	RegisteredMail	_jkZKsSCXEeWJd9HF2tO7BA	Registered Mail.
+ResidentialStatus1Code	RESI	Resident	_ZUrOZ9p-Ed-ak6NoX_4Aeg_-1024642437	Resident.
+ResidentialStatus1Code	PRES	PermanentResident	_ZUrOaNp-Ed-ak6NoX_4Aeg_-1024642164	Permanent resident.
+ResidentialStatus1Code	NRES	NonResident	_ZU0_YNp-Ed-ak6NoX_4Aeg_-1024642147	Non-resident.
+CompanyLink1Code	AGEN	Agent	_4wnUASCbEeWJd9HF2tO7BA	Autonomous agent accredited by the broker.
+CompanyLink1Code	BROK	Broker	_43di4SCbEeWJd9HF2tO7BA	Employee, operator or agent of the broker.
+CompanyLink1Code	PART	BrokeragePartner	_4-KAwSCbEeWJd9HF2tO7BA	Brokerage partner or shareholder, individual or entity who holds a direct or an indirect control function and the holder of a management or an administration position.
+CompanyLink1Code	MEMB	MemberBroker	_5E2eoSCbEeWJd9HF2tO7BA	Member broker of a financial conglomerate (person is a board member, director, officer and employee of a member company of the conglomerate).
+CompanyLink1Code	PCOM	ParentCompany	_5NL7QSCbEeWJd9HF2tO7BA	Parent company of the broker.
+CompanyLink1Code	RELA	Relative	_5U668SCbEeWJd9HF2tO7BA	Spouse or partner and child of an employee, operator or agent of the broker; agent of the broker; brokerage partners or shareholders; individual or entity who holds a direct or an indirect control function and the holder of a management or an administration position.
+AddressType1Code	HOME	Residential	_bmtidtp-Ed-ak6NoX_4Aeg_-1758352550	Address is the home address.
+AddressType1Code	BIZZ	Business	_bmtid9p-Ed-ak6NoX_4Aeg_-1742653638	Address is the business address.
+RestrictionStatus1Code	ACTV	Active	_yA_goSFnEeW9XJWqfgXIIA	Status of the restriction is active.
+RestrictionStatus1Code	INAC	Inactive	_yH-5cSFnEeW9XJWqfgXIIA	Status of the restriction is inactive.
+InvestmentFundRole6Code	CACO	CashCorrespondent	_M4JAcRUJEeOIaq8KyCdIDQ	Financial institution that executes cash transfers on behalf of its clients.
+InvestmentFundRole6Code	CONC	Concentrator	_-VX9wRUMEeOIaq8KyCdIDQ	Party that acts as an aggregator of funds, also called a funds hub.
+InvestmentFundRole6Code	CUST	Custodian	__qU-gRUMEeOIaq8KyCdIDQ	Party that safekeeps and administers assets on behalf of the owner.
+InvestmentFundRole6Code	DATP	DataProvider	_ArfgkRUNEeOIaq8KyCdIDQ	Source of financial information. Provides financial news and data (for example, facts, statistics and analysis), for professional and individual investors through various media, for example, the Internet, magazines.
+InvestmentFundRole6Code	DIST	Distributor	_C0qzkRUNEeOIaq8KyCdIDQ	Party that act as an wholesaler of funds.
+InvestmentFundRole6Code	FACT	FundAccountant	_DdJI0RUNEeOIaq8KyCdIDQ	Party that keeps accounting records of the available assets and liabilities of the fund. This party calculates deal prices, the Net Asset Value (NAV) of the fund, and may provide fund performance and tax data.
+InvestmentFundRole6Code	FIAD	FinancialAdvisor	_GLEHoRUNEeOIaq8KyCdIDQ	Party that supplies information and advice on investment products.
+InvestmentFundRole6Code	FIAG	FinalAgent	_HQGdERUNEeOIaq8KyCdIDQ	Financial institution that receives the payment transaction on behalf of an account owner, or other nominated party, and credits the account.
+InvestmentFundRole6Code	FMCO	FundManagementCompany	_IMDvARUNEeOIaq8KyCdIDQ	Party that sets up a fund, decides upon the investment strategy, appoints agents, and is responsible for the promotion and the marketing of the fund. This party makes all the strategic decisions related to a fund.
+InvestmentFundRole6Code	FNBR	FundBroker	_Ivd-ERUNEeOIaq8KyCdIDQ	Party acting as an intermediary agent between an investor and a transfer agent for the subscription or redemption to a fund.
+InvestmentFundRole6Code	FTAG	FirstAgent	_JcHBoRUNEeOIaq8KyCdIDQ	Financial institution that receives the payment transaction from the account owner, or other authorised party, and processes the instruction.
+InvestmentFundRole6Code	INTR	Intermediary	_Kf9EQRUNEeOIaq8KyCdIDQ	Party that provides services to investors relating to financial products. These services may include some, or all of, provision of information and advice on products, placement of investment orders, transmission of payment, custody of assets, and the administration of rights and benefits. In the specific framework of investment funds industry, an intermediary may present information about funds to potential investors, and solicit orders for the fund. This intermediary may facilitate the transmission of the orders and information from/to the investors and/or other intermediaries. The intermediary receives commission from the Fund and/or fees from the investor.
+InvestmentFundRole6Code	INVE	InvestmentManager	_LC6nYRUNEeOIaq8KyCdIDQ	Party that implements the investment strategy, that is, selects portfolio investments in accordance with the objectives and strategy in the fund's prospectus, and places orders to effect or liquidate selected investments in accordance with net flow of capital into or out of the fund.
+InvestmentFundRole6Code	INVS	Investor	_M8xE8RUNEeOIaq8KyCdIDQ	Party, either an individual or organisation, whose assets are being invested.
+InvestmentFundRole6Code	PAYI	PayingAgent	_NMPEURUNEeOIaq8KyCdIDQ	Agent that executes the payment. In the context of the investment fund industry, the paying agent is the local legal representative of the fund. It may pay out dividends, and collects money for the purchase of funds when a client deals directly with the fund and/or when a client deals with bearer shares. It pays out the redemption of the fund, may distribute information about the fund, and provides legal information about the fund.
+InvestmentFundRole6Code	REGI	Registrar	_Nr7RARUNEeOIaq8KyCdIDQ	Party responsible for keeping track of the owners of securities. In the investment fund business, this party keeps the investor registry of the fund, and administers investor accounts and related records. It is appointed by the fund management company.
+InvestmentFundRole6Code	TRAG	TransferAgent	_Oja5sRUNEeOIaq8KyCdIDQ	Party appointed by the fund management company. This party updates records of investor accounts to reflect the daily investor purchases, redemptions, switches, transfers, and re-registrations. It ensures the timely settlement of transactions, and may provide tax information to the investor and/or to its intermediaries. It may calculate, collect, and rebate commissions. It prepares and distributes confirmations reflecting transactions, resulting in unit or cash account movements to the investor or the investor's intermediary. It responds to inquiries concerning account status, and processes the income distribution.
+InvestmentFundRole6Code	TRAN	TransmittingAgent	_Ow0cgRUNEeOIaq8KyCdIDQ	Party that transmits the instruction, advice, notification or report.
+Referred1Code	REFR	Referred	_Zaosddp-Ed-ak6NoX_4Aeg_59379446	The investor was referred to the fund by a placement agent.
+Referred1Code	NRFR	NotReferred	_Zaosdtp-Ed-ak6NoX_4Aeg_59379471	The investor was not referred to the fund by a placement agent.
+Referred1Code	UKNW	NotKnown	_Zaosd9p-Ed-ak6NoX_4Aeg_59379506	It is not known whether the investor was referred to the fund by a placement agent.
+EventFrequency8Code	ADHO	Adhoc	_p8wskRUREeOIaq8KyCdIDQ	Event takes place as necessary.
+EventFrequency8Code	YEAR	Annual	_qEpdQRUREeOIaq8KyCdIDQ	Event takes place every year or once a year.
+EventFrequency8Code	DAIL	Daily	_qSx_4RUREeOIaq8KyCdIDQ	Event takes place every day.
+EventFrequency8Code	FOMN	EveryFourMonths	_qaE6sRUREeOIaq8KyCdIDQ	Event takes place every four months or three times a year.
+EventFrequency8Code	TOMN	EveryTwoMonths	_qh9rYRUREeOIaq8KyCdIDQ	Event takes place every two months.
+EventFrequency8Code	TOWK	EveryTwoWeeks	_qrxusRUREeOIaq8KyCdIDQ	Event takes place every two weeks.
+EventFrequency8Code	TYEA	EveryTwoYears	_q1mZERUREeOIaq8KyCdIDQ	Event takes place every two years.
+EventFrequency8Code	INDA	IntraDay	_rBp4ERUREeOIaq8KyCdIDQ	Event takes place several times a day.
+EventFrequency8Code	MNTH	Monthly	_rJY3wRUREeOIaq8KyCdIDQ	Event takes place every month or once a month.
+EventFrequency8Code	ONDE	OnDemand	_rSw2MRUREeOIaq8KyCdIDQ	Event takes place on demand.
+EventFrequency8Code	OVNG	Overnight	_rZTjERUREeOIaq8KyCdIDQ	Event takes place overnight.
+EventFrequency8Code	QUTR	Quarterly	_rhyJoRUREeOIaq8KyCdIDQ	Event takes place every three months or four times a year.
+EventFrequency8Code	SEMI	SemiAnnual	_rpOOYRUREeOIaq8KyCdIDQ	Event takes place every six months or two times a year.
+EventFrequency8Code	TWMN	TwiceAMonth	_rwOOQRUREeOIaq8KyCdIDQ	Event takes place two times a month.
+EventFrequency8Code	WEEK	Weekly	_r2nxMRUREeOIaq8KyCdIDQ	Event takes place once a week.
+CardType1Code	CRDT	CreditCard	_zd5TUw93EeGeV5vP7Mvdig_-1511071309	Card where the holder has been granted a line of credit. The card enables the holder to make purchases and withdraw cash up to a pre-arranged ceiling.
+CardType1Code	DBIT	DebitCard	_zd5TVA93EeGeV5vP7Mvdig_-502422457	Card enabling the holder to have its purchases directly charged to its account. The card may also combine other functions, for example, cash card or cheque guaranteed card.
+Insurance1Code	LIFE	LifeInsurance	_OdMHYRQbEeKebsB9eKJSkA	Life insurance.
+Insurance1Code	PDIS	PermanentDisabilityInsurance	_Ombi8RQbEeKebsB9eKJSkA	Permanent disability insurance.
+PlanStatus1Code	ACTV	Active	_RvyIoQjcEeS5F6qHcKOrew	Plan is active.
+PlanStatus1Code	CLOS	Closed	_R4tbIQjcEeS5F6qHcKOrew	Plan is closed.
+PlanStatus1Code	SUSP	Suspended	_SBC3wQjcEeS5F6qHcKOrew	Plan is suspended.
+InvestmentFundRole7Code	CONC	Concentrator	_KLQeMV92EeS7xuKaq75oiQ	Party that acts as an aggregator of funds, also called a funds hub.
+InvestmentFundRole7Code	DIST	Distributor	_KxfXwV92EeS7xuKaq75oiQ	Party that act as an wholesaler of funds.
+InvestmentFundRole7Code	FMCO	FundManagementCompany	_La2d0V92EeS7xuKaq75oiQ	Party that sets up a fund, decides upon the investment strategy, appoints agents, and is responsible for the promotion and the marketing of the fund. This party makes all the strategic decisions related to a fund.
+InvestmentFundRole7Code	INTR	Intermediary	_MBiDUV92EeS7xuKaq75oiQ	Party that provides services to investors relating to financial products. These services may include some, or all of, provision of information and advice on products, placement of investment orders, transmission of payment, custody of assets, and the administration of rights and benefits. In the specific framework of investment funds industry, an intermediary may present information about funds to potential investors, and solicit orders for the fund. This intermediary may facilitate the transmission of the orders and information from/to the investors and/or other intermediaries. The intermediary receives commission from the Fund and/or fees from the investor.
+InvestmentFundRole7Code	PAYI	PayingAgent	_NkBJwV92EeS7xuKaq75oiQ	Agent that executes the payment. In the context of the investment fund industry, the paying agent is the local legal representative of the fund. It may pay out dividends, and collects money for the purchase of funds when a client deals directly with the fund and/or when a client deals with bearer shares. It pays out the redemption of the fund, may distribute information about the fund, and provides legal information about the fund.
+InvestmentFundRole7Code	TRAG	TransferAgent	_OiXBUV92EeS7xuKaq75oiQ	Party appointed by the fund management company. This party updates records of investor accounts to reflect the daily investor purchases, redemptions, switches, transfers, and re-registrations. It ensures the timely settlement of transactions, and may provide tax information to the investor and/or to its intermediaries. It may calculate, collect, and rebate commissions. It prepares and distributes confirmations reflecting transactions, resulting in unit or cash account movements to the investor or the investor's intermediary. It responds to inquiries concerning account status, and processes the income distribution.
+InvestmentFundRole7Code	CUST	Custodian	_9R7KwZy_EeSfkt2rmMY-dQ	Party that safekeeps and administers assets on behalf of the owner.
+InvestmentFundRole7Code	CACO	CashCorrespondent	_-GJdAZy_EeSfkt2rmMY-dQ	Financial institution that executes cash transfers on behalf of its clients.
+InvestmentFundRole7Code	FACT	FundAccountant	_-0HWQZy_EeSfkt2rmMY-dQ	Party that keeps accounting records of the available assets and liabilities of the fund. This party calculates deal prices, the Net Asset Value (NAV) of the fund, and may provide fund performance and tax data.
+InvestmentFundRole7Code	INVE	InvestmentManager	__cb6gZy_EeSfkt2rmMY-dQ	Party that implements the investment strategy, that is, selects portfolio investments in accordance with the objectives and strategy in the fund's prospectus, and places orders to effect or liquidate selected investments in accordance with net flow of capital into or out of the fund.
+InvestmentFundRole7Code	INVS	Investor	__7OvUZy_EeSfkt2rmMY-dQ	Party, either an individual or organisation, whose assets are being invested.
+CommunicationMethod1Code	SWMT	SWIFTMT	_bAkIddp-Ed-ak6NoX_4Aeg_591608994	Transmission by Swift (FIN).
+CommunicationMethod1Code	SWMX	SWIFTMX	_bAkIdtp-Ed-ak6NoX_4Aeg_309468232	Transmission by SWIFTNET.
+CommunicationMethod1Code	FAXI	Fax	_bAkId9p-Ed-ak6NoX_4Aeg_603616409	Transmission by fax.
+CommunicationMethod1Code	EMAL	Email	_bAkIeNp-Ed-ak6NoX_4Aeg_617470095	Transmission by e-mail.
+CommunicationMethod1Code	PROP	Proprietary	_bAtSYNp-Ed-ak6NoX_4Aeg_631321016	Transmission by proprietary method.

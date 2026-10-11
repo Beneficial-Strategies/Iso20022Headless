@@ -1,0 +1,5 @@
+codeSet	isoId	text
+AccountStatusUpdateInstruction1Code	_PFBiUHi6EeaRm5xIK6nGuQ	Specifies the type of account status update instructed.
+AccountStatusUpdateRequestReason1Code	_OJzv4Hi9EeaRm5xIK6nGuQ	Sepcifes the reason for a request for a change to an account status.
+DataModification2Code	_ax9EtNp-Ed-ak6NoX_4Aeg_-1133981230	Specified the type of modification to be applied on a data set.
+DataModification1Code	_ax9EsNp-Ed-ak6NoX_4Aeg_-457133032	Specified the type of modification to be applied on a data set.

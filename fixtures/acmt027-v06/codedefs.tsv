@@ -1,0 +1,26 @@
+codeSet	code	enumName	isoId	text
+PersonIdentificationType5Code	AREG	AlienRegistrationNumber	_tjOMQRQQEeKCyZtSz_i3FA	Number assigned by a government agency to identify foreign nationals.
+PersonIdentificationType5Code	CPFA	CPFAccountNumber	_tybF4RQQEeKCyZtSz_i3FA	Account issued by the Central Provident Fund Board (Singapore).
+PersonIdentificationType5Code	DRLC	DriversLicenseNumber	_uRtp8RQQEeKCyZtSz_i3FA	Number assigned by a license authority to a driver's license.
+PersonIdentificationType5Code	EMID	EmployerIdentificationNumber	_uzjLsRQQEeKCyZtSz_i3FA	Number assigned to an employer by a registration authority.
+PersonIdentificationType5Code	IDCD	IdentityCardNumber	_vd3UARQQEeKCyZtSz_i3FA	Number assigned by a national authority to an identity card.
+PersonIdentificationType5Code	NRIN	NationalRegistrationIdentificationNumber	_wAI6oRQQEeKCyZtSz_i3FA	National registration identification number. In Singapore this is known as the NRIC.
+PersonIdentificationType5Code	OTHR	Other	_wNs1gRQQEeKCyZtSz_i3FA	Another type of identification type.
+PersonIdentificationType5Code	PASS	PassportNumber	_z-XqwRQQEeKCyZtSz_i3FA	Number assigned by a passport authority to a passport.
+PersonIdentificationType5Code	POCD	PostOfficeCardNumber	_1Dgt4RQQEeKCyZtSz_i3FA	Post office card number as assigned by a national post office.
+PersonIdentificationType5Code	SOCS	SocialSecurityNumber	_1Oi5MRQQEeKCyZtSz_i3FA	Number assigned by a social security agency.
+PersonIdentificationType5Code	SRSA	SRSAccountNumber	_1qGz0RQQEeKCyZtSz_i3FA	Supplementary retirement scheme account number.
+PersonIdentificationType5Code	GUNL	GunLicenseNumber	_4Hn_IRQQEeKCyZtSz_i3FA	Gun license number as assigned by a gun licensing authority.
+OrganisationLegalStatus1Code	CIOC	CharitableIncorporatedOrganisation	_TbNnwX6rEeePx-IqKegQ8Q	Charitable incorporated organisation (CIO)
+OrganisationLegalStatus1Code	CHAR	Charity	_Ti8ncX6rEeePx-IqKegQ8Q	Charity
+OrganisationLegalStatus1Code	CICC	CommunityInterestCompany	_To5ecX6rEeePx-IqKegQ8Q	Community Interest Company (CIC)
+OrganisationLegalStatus1Code	GENP	GeneralPartnership	_T0zMcX6rEeePx-IqKegQ8Q	General partnership
+OrganisationLegalStatus1Code	IAPS	IndustrialAndProvidentSociety	_T7fqUX6rEeePx-IqKegQ8Q	For example a co-operative, which does include Ltd. or charity.
+OrganisationLegalStatus1Code	LLPP	LimitedLiabilityPartnership	_UDE5AX6rEeePx-IqKegQ8Q	Limited liability partnership (LLP)
+OrganisationLegalStatus1Code	PCLG	PrivateCompanyLimitedByGuarantee	_UI4mEX6rEeePx-IqKegQ8Q	Private company limited by guarantee (Ltd.)
+OrganisationLegalStatus1Code	LIMP	LimitedPartnership	_UUCtMX6rEeePx-IqKegQ8Q	Limited partnership (LP)
+OrganisationLegalStatus1Code	PCLS	PrivateCompanyLimitedByShares	_UkQTcX6rEeePx-IqKegQ8Q	Private company limited by shares (Ltd.)
+OrganisationLegalStatus1Code	PCLC	PublicLimitedCompany	_UqW7cX6rEeePx-IqKegQ8Q	Public limited company (Plc.)
+OrganisationLegalStatus1Code	SOLE	SoleProprietorship	_UxWUQX6rEeePx-IqKegQ8Q	Sole proprietorship/Sole trader
+OrganisationLegalStatus1Code	UNLC	UnlimitedCompany	_U3JaQX6rEeePx-IqKegQ8Q	Unlimited company
+OrganisationLegalStatus1Code	UNLT	UnlimitedTrust	_U89HUX6rEeePx-IqKegQ8Q	Unlimited trust

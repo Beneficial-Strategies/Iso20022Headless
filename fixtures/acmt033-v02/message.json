@@ -1,0 +1,35 @@
+{
+  "identifier": "acmt.033.001.02",
+  "name": "AccountSwitchNotifyAccountSwitchCompleteV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:acmt.033.001.02",
+  "bodyTag": "AcctSwtchNtfyAcctSwtchCmplt",
+  "out": "acmt033",
+  "isoId": "_7HK1q242EeiU9cctagi5ow",
+  "definition": "The AccountSwitchNotifyAccountSwitchComplete message is sent by the new account servicer to a central account switch servicer to signal that it has completed the account switch.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "_7HK1rW42EeiU9cctagi5ow",
+      "xmlTag": "MsgId",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountSwitchDetails",
+      "isoId": "_7HK1r242EeiU9cctagi5ow",
+      "xmlTag": "AcctSwtchDtls",
+      "type": "AccountSwitchDetails1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_7HK1sW42EeiU9cctagi5ow",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

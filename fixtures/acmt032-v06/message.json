@@ -1,0 +1,59 @@
+{
+  "identifier": "acmt.032.001.06",
+  "name": "AccountSwitchBalanceTransferAcknowledgementV06",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:acmt.032.001.06",
+  "bodyTag": "AcctSwtchBalTrfAck",
+  "out": "acmt032",
+  "isoId": "c78cc81b-7d75-4508-8c52-c567090d8bec",
+  "definition": "The AccountSwitchBalanceTransferAcknowledgement message is sent by the previous account servicer to the new account servicer in response to the AccountSwitchRequestBalanceTransfer message. It confirms the status of the old account and the balance of the account on closure. In the case of a negative closing balance, the old account servicer provides details of the nominated account to which payment should be made from the new account servicer.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "dd49b3d5-8aa2-4eb4-a937-40e3335566b4",
+      "xmlTag": "MsgId",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountSwitchDetails",
+      "isoId": "d24fb3ab-1236-4275-bb4d-8d5868b286b9",
+      "xmlTag": "AcctSwtchDtls",
+      "type": "AccountSwitchDetails1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "OldAccount",
+      "isoId": "2c0d1e03-ebbe-4218-94b5-e362c83914f1",
+      "xmlTag": "OdAcct",
+      "type": "CashAccount43",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "OldAccountBalance",
+      "isoId": "2485f779-fb33-4111-9e44-a24d7e2c1b11",
+      "xmlTag": "OdAcctBal",
+      "type": "AmountAndDirection5",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "BalanceTransfer",
+      "isoId": "a84e3da4-b487-431f-8f6d-9bd2640ff055",
+      "xmlTag": "BalTrf",
+      "type": "BalanceTransfer7",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "9dc12831-8642-4bf8-a21b-89ddc36f56ec",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

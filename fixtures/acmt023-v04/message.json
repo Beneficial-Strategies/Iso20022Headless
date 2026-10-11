@@ -1,0 +1,35 @@
+{
+  "identifier": "acmt.023.001.04",
+  "name": "IdentificationVerificationRequestV04",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:acmt.023.001.04",
+  "bodyTag": "IdVrfctnReq",
+  "out": "acmt023",
+  "isoId": "_R3M1EzEZEe6kQ-WGAhcVPQ",
+  "definition": "Scope|The IdentificationVerificationRequest message is sent by an assigner to an assignee. It is used to request the verification of party and/or account identification information.|Usage|The IdentificationVerificationRequest message is sent before the sending of one or several transactions messages.|The IdentificationVerificationRequest message can contain one or more verification requests.",
+  "blocks": [
+    {
+      "name": "Assignment",
+      "isoId": "_R3M1GTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Assgnmt",
+      "type": "IdentificationAssignment4",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Verification",
+      "isoId": "_R3M1GzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Vrfctn",
+      "type": "IdentificationVerification5",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3M1HTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

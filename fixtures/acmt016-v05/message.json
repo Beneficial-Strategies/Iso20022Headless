@@ -1,0 +1,83 @@
+{
+  "identifier": "acmt.016.001.05",
+  "name": "AccountExcludedMandateMaintenanceAmendmentRequestV05",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:acmt.016.001.05",
+  "bodyTag": "AcctExcldMndtMntncAmdmntReq",
+  "out": "acmt016",
+  "isoId": "ee9e921e-b39f-4509-9c77-e66e626c72b3",
+  "definition": "The AccountExcludedMandateMaintenanceAmendmentRequest message is sent from an organisation to a financial institution as part of the account maintenance process. It is sent in response to a request from the financial institution to send additional information. Usage: this update is about account details excluding any mandate information. |If modification codes are not used: the organisation will specify under the “Account” and “Organisation” tags the complete information as it should be in the financial institution’s records after processing the update request. |If modification codes are used (in that case, they must be used everywhere): the organisation will specify under the “Account” and “Organisation” tags which elements must be added, deleted, modified, or if they are unchanged.",
+  "blocks": [
+    {
+      "name": "References",
+      "isoId": "3d1476d3-36be-46f8-8d2c-00c2e77c8ab8",
+      "xmlTag": "Refs",
+      "type": "References4",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "From",
+      "isoId": "30620407-64a1-4e72-833f-52863749850e",
+      "xmlTag": "Fr",
+      "type": "OrganisationIdentification39",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ContractDates",
+      "isoId": "da0e4624-3433-4dde-b14f-0f0058380f42",
+      "xmlTag": "CtrctDts",
+      "type": "AccountContract2",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "UnderlyingMasterAgreement",
+      "isoId": "cf1600c3-2489-4a76-b149-cebab6a0ccd0",
+      "xmlTag": "UndrlygMstrAgrmt",
+      "type": "ContractDocument1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Account",
+      "isoId": "66815f63-9c90-4690-b728-5c79b80562b0",
+      "xmlTag": "Acct",
+      "type": "CustomerAccountModification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountServicerIdentification",
+      "isoId": "e429aa9d-5882-42c9-8d74-e3639c90b5f1",
+      "xmlTag": "AcctSvcrId",
+      "type": "BranchAndFinancialInstitutionIdentification8",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Organisation",
+      "isoId": "e0810a2a-c112-4929-b75f-a12a3ab05060",
+      "xmlTag": "Org",
+      "type": "OrganisationModification3",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "DigitalSignature",
+      "isoId": "928ab594-52f0-466f-a9c7-cb4a93d774e0",
+      "xmlTag": "DgtlSgntr",
+      "type": "PartyAndSignature4",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "9210a503-cba5-403b-b4a3-a2eb53b7916e",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

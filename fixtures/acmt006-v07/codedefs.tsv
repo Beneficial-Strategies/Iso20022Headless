@@ -1,0 +1,9 @@
+codeSet	code	enumName	isoId	text
+AccountManagementStatus1Code	RECE	Received	_bqbk19p-Ed-ak6NoX_4Aeg_1951278736	The account management instruction has been received and is acknowledged.
+AccountManagementStatus1Code	ACCP	Accepted	_bqlV0Np-Ed-ak6NoX_4Aeg_1951279701	The account management instruction has been validated and accepted.
+AccountManagementStatus1Code	EXEC	ProcessingOngoing	_bqlV0dp-Ed-ak6NoX_4Aeg_1958664380	The account management instruction is being processed and the confirmation will follow.
+AccountManagementStatus1Code	STNP	SentToNextParty	_bqlV0tp-Ed-ak6NoX_4Aeg_1958664440	The account management instruction has been sent to the next party, for example, the next intermediary.
+RejectedStatusReason6Code	SAFE	InvestmentAccount	_ZdnvAtp-Ed-ak6NoX_4Aeg_281881272	Investment account identification is not recognised or is invalid.
+RejectedStatusReason6Code	NSLA	NotCompliantWithSLA	_ZdnvA9p-Ed-ak6NoX_4Aeg_598649737	Instruction is not compliant with the service level agreement.
+AcceptedStatusReason1Code	PLAC	PlaceNotAllowed	_T391cWBnEeaR1OOiVxm3Gg	Status of the account modification instruction is accepted but modification of the account data will not be carried out for the place.
+AcceptedStatusReason1Code	SECT	SectorNotAllowed	_UBVz4WBnEeaR1OOiVxm3Gg	Status of the account modification instruction is accepted but modification of the account data will not be carried out for the sector code.

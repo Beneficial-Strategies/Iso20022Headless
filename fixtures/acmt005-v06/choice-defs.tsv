@@ -1,0 +1,7 @@
+choice	memberId	memberName	text
+LinkedMessage5Choice	_rY0jxZTPEemqYPWMBuVawg	PreviousReference	Reference to a linked message that was previously sent.
+LinkedMessage5Choice	_rY0jx5TPEemqYPWMBuVawg	OtherReference	Reference to a linked message sent in a proprietary way or reference of a system.
+OwnerIdentification3Choice	_CKjZsZTREemC09f0MxYkRg	IndividualOwnerIdentification	Identification of the individual person.
+OwnerIdentification3Choice	_CKjZs5TREemC09f0MxYkRg	OrganisationOwnerIdentification	Identification of an organisation.
+IndividualPersonIdentification2Choice	_6KMwsSGZEeWKAaDJcYGKLw	IdentificationNumber	Identification of a party, such as a tax or social security identifier.
+IndividualPersonIdentification2Choice	_6KMwsyGZEeWKAaDJcYGKLw	PersonName	Human entity, as distinguished from a corporate entity (which is sometimes referred to as an 'artificial person').

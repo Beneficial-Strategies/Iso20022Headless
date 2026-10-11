@@ -1,0 +1,7 @@
+choice	memberId	memberName	text
+CommunicationMethod2Choice	_29oJkA1fEeKGXqvMN6jpiw	Code	Unique and unambiguous identification of communication method using a code list.
+CommunicationMethod2Choice	_41lwwA1fEeKGXqvMN6jpiw	Proprietary	Unique and unambiguous identification of communication method using a bilaterally or multilaterally agreed description.
+CommunicationFormat1Choice	_icpOQA1eEeKGXqvMN6jpiw	Code	Unique and unambiguous identification of communication format using a code list.
+CommunicationFormat1Choice	_nBnOQA1eEeKGXqvMN6jpiw	Proprietary	Unique and unambiguous identification of communication format using a proprietary identification scheme.
+CodeOrProprietary1Choice	_Qotj19p-Ed-ak6NoX_4Aeg_-1924456739	Code	Element expressed as an ISO 20022 code from an external list.
+CodeOrProprietary1Choice	_Qotj2Np-Ed-ak6NoX_4Aeg_1373438204	Proprietary	Element expressed as a proprietary code.

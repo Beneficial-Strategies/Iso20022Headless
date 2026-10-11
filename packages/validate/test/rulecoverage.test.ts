@@ -23,24 +23,45 @@ describe('business rule coverage', () => {
   const named = (status: string) => all.filter((r) => r.result.status === status).map((r) => `${r.type}.${r.rule}`);
 
   it('finds every rule and checks the machine-readable ones', () => {
-    expect(all.length).toBe(645);
-    expect(named('pass').length + named('fail').length).toBe(457);
+    expect(all.length).toBe(715);
+    expect(named('pass').length + named('fail').length).toBe(492);
   });
 
-  it('cannot check five rules, and says why: two compare with a literal that is not a code value, three name a field that does not exist (spec typos and a copied rule)', () => {
+  it('cannot check six rules, and says why: three compare with a literal that is not a code value, three name a field that does not exist (spec typos and a copied rule)', () => {
     const reasons = Object.fromEntries(all.filter((x) => x.result.status === 'unsupported').map((x) => [`${x.type}.${x.rule}`, x.result.reason?.code]));
     expect(reasons).toEqual({
       'FIToFIPaymentReversalV14.TotalReversedInterbankSettlementAmountAndSumRule': 'rule_path_unknown',
       'PaymentInstruction50.ChargesAccountAgentRule': 'rule_literal_not_code_value',
+      'PaymentInstruction49.ChargesAccountAgentRule': 'rule_literal_not_code_value',
       'PaymentInstruction51.ChargesAccountAgentRule': 'rule_literal_not_code_value',
       'PaymentReturnV15.TotalReturnedInterbankSettlementAmountAndSumRule': 'rule_path_unknown',
       'UnderlyingTransaction37.GroupCancellationAndNumberOfTransactionsRule': 'rule_path_unknown', // counts TransactionInformation, which this type lacks (copied from UnderlyingTransaction36)
     });
   });
 
-  it('has no machine form for guidelines, the supplementary-data rule, and seventy-eight more rules that exist only as prose in the spec', () => {
+  it('has no machine form for guidelines, the supplementary-data rule, and ninety-eight more rules that exist only as prose in the spec', () => {
     const odd = named('prose-only').filter((n) => !/Guideline$|SupplementaryDataRule$/.test(n));
     expect(odd.sort()).toEqual([
+      'AccountDetailsConfirmationV08.InvestmentAccountRule',
+      'AccountManagementMessageReference5.LinkedReferenceOrAccountApplicationIdentificationRule',
+      'AccountOpeningInstructionV08.InvestmentAccountIdentificationRule',
+      'AccountParties18.AddressRule',
+      'AccountReport36.ContractDates1Rule',
+      'AccountReport36.ContractDates2Rule',
+      'AccountStatus2.StatusElementRule',
+      'AccountStatusUpdateInstructionReason1.ReasonElementRule',
+      'InvestmentAccount73.ReinvestmentPercentage1Rule',
+      'InvestmentAccount74.ReinvestmentPercentage1Rule',
+      'InvestmentAccount75.AccountElementRule',
+      'InvestmentAccount75.ReinvestmentPercentageRule',
+      'InvestmentAccount76.AccountDataElementRule',
+      'InvestmentAccountModification4.InstructionDetailsElementRule',
+      'Organisation39.OrganisationElementRule',
+      'Organisation40.OrganisationElementRule',
+      'Organisation44.OrganisationIdentificationRule',
+      'OwnershipBeneficiaryRate1.OwnershipBeneficiaryRateRule',
+      'PostalAddress21.MailingIndicatorRule',
+      'ReferredAgent3.ReferredPlacementAgentRule',
       'AccountNotification26.TotalAmountAndAmount2Rule',
       'BankTransactionCodeStructure4.FamilyAndSubFamilyRule',
       'BreakdownByUserDefinedParameter3.UserDefinedRule',

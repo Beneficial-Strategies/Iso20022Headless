@@ -1,0 +1,51 @@
+{
+  "identifier": "acmt.030.001.04",
+  "name": "AccountSwitchRequestRedirectionV04",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:acmt.030.001.04",
+  "bodyTag": "AcctSwtchReqRdrctn",
+  "out": "acmt030",
+  "isoId": "_R3AnxTEZEe6kQ-WGAhcVPQ",
+  "definition": "The AccountSwitchRequestRedirection message is sent by the new account servicer to a central account switch servicer to set up the redirection of payment and collection transactions that are processed after completion of the account switch.  It is routed to the previous account servicer to signal that it should schedule the cancellation of all payment arrangements on the old account. This message may also be used by the new bank to amend the new account details, if the details previously provided were incorrect.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "_R3AnxzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "MsgId",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountSwitchDetails",
+      "isoId": "_R3AnyTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "AcctSwtchDtls",
+      "type": "AccountSwitchDetails1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "NewAccount",
+      "isoId": "_R3AnyzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "NewAcct",
+      "type": "CashAccount43",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "OldAccount",
+      "isoId": "_R3AnzTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "OdAcct",
+      "type": "CashAccount43",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3AnzzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

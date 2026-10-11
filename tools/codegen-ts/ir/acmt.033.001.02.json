@@ -1,0 +1,365 @@
+{
+  "message": {
+    "identifier": "acmt.033.001.02",
+    "name": "AccountSwitchNotifyAccountSwitchCompleteV02",
+    "namespace": "urn:iso:std:iso:20022:tech:xsd:acmt.033.001.02",
+    "bodyTag": "AcctSwtchNtfyAcctSwtchCmplt",
+    "out": "acmt033",
+    "isoId": "_7HK1q242EeiU9cctagi5ow",
+    "definition": "The AccountSwitchNotifyAccountSwitchComplete message is sent by the new account servicer to a central account switch servicer to signal that it has completed the account switch.",
+    "blocks": [
+      {
+        "name": "MessageIdentification",
+        "isoId": "_7HK1rW42EeiU9cctagi5ow",
+        "xmlTag": "MsgId",
+        "type": "MessageIdentification1",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "AccountSwitchDetails",
+        "isoId": "_7HK1r242EeiU9cctagi5ow",
+        "xmlTag": "AcctSwtchDtls",
+        "type": "AccountSwitchDetails1",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "SupplementaryData",
+        "isoId": "_7HK1sW42EeiU9cctagi5ow",
+        "xmlTag": "SplmtryData",
+        "type": "SupplementaryData1",
+        "min": 0,
+        "max": null
+      }
+    ]
+  },
+  "root": "AccountSwitchNotifyAccountSwitchCompleteV02",
+  "order": [
+    "Max35Text",
+    "ISODateTime",
+    "MessageIdentification1",
+    "ISODate",
+    "SwitchType1Code",
+    "SwitchStatus1Code",
+    "BalanceTransferWindow1Code",
+    "Max350Text",
+    "ResponseDetails1",
+    "AccountSwitchDetails1",
+    "SupplementaryDataEnvelope1",
+    "SupplementaryData1",
+    "AccountSwitchNotifyAccountSwitchCompleteV02"
+  ],
+  "types": {
+    "Max35Text": {
+      "name": "Max35Text",
+      "kind": "text",
+      "isoId": "_YW1tKdp-Ed-ak6NoX_4Aeg_1913463446",
+      "minLength": 1,
+      "maxLength": 35
+    },
+    "ISODateTime": {
+      "name": "ISODateTime",
+      "kind": "datetime",
+      "isoId": "_YW1tKtp-Ed-ak6NoX_4Aeg_-1624336183"
+    },
+    "MessageIdentification1": {
+      "name": "MessageIdentification1",
+      "isoId": "_Q7pG5Np-Ed-ak6NoX_4Aeg_-967008570",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_Q7pG5dp-Ed-ak6NoX_4Aeg_-936532675",
+          "xmlTag": "Id",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CreationDateTime",
+          "isoId": "_Q7pG5tp-Ed-ak6NoX_4Aeg_761825361",
+          "xmlTag": "CreDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ISODate": {
+      "name": "ISODate",
+      "kind": "date",
+      "isoId": "_YXSZFtp-Ed-ak6NoX_4Aeg_2032498111"
+    },
+    "SwitchType1Code": {
+      "name": "SwitchType1Code",
+      "isoId": "_wQUvEA2YEeSNWNtJlXOAhg",
+      "kind": "code",
+      "options": [
+        {
+          "value": "FULL",
+          "name": "FullSwitch",
+          "isoId": "_xBa00Q2YEeSNWNtJlXOAhg"
+        },
+        {
+          "value": "PART",
+          "name": "PartSwitch",
+          "isoId": "_xGBoAQ2YEeSNWNtJlXOAhg"
+        }
+      ]
+    },
+    "SwitchStatus1Code": {
+      "name": "SwitchStatus1Code",
+      "isoId": "_QKe20H6rEeePx-IqKegQ8Q",
+      "kind": "code",
+      "options": [
+        {
+          "value": "ACPT",
+          "name": "Accepted",
+          "isoId": "_RnBGQX6rEeePx-IqKegQ8Q"
+        },
+        {
+          "value": "BTRQ",
+          "name": "BalanceTransferRequested",
+          "isoId": "_RshRUX6rEeePx-IqKegQ8Q"
+        },
+        {
+          "value": "BTRS",
+          "name": "BalanceTransferResponse",
+          "isoId": "_RyUXUX6rEeePx-IqKegQ8Q"
+        },
+        {
+          "value": "COMP",
+          "name": "Completed",
+          "isoId": "_R3FikX6rEeePx-IqKegQ8Q"
+        },
+        {
+          "value": "REDT",
+          "name": "Redirection",
+          "isoId": "_SAmq8X6rEeePx-IqKegQ8Q"
+        },
+        {
+          "value": "REDE",
+          "name": "RedirectionEnded",
+          "isoId": "_SGtS8X6rEeePx-IqKegQ8Q"
+        },
+        {
+          "value": "REJT",
+          "name": "Rejected",
+          "isoId": "_SMWn8X6rEeePx-IqKegQ8Q"
+        },
+        {
+          "value": "REQU",
+          "name": "Requested",
+          "isoId": "_SVbrcX6rEeePx-IqKegQ8Q"
+        },
+        {
+          "value": "TMTN",
+          "name": "Termination",
+          "isoId": "_SayskX6rEeePx-IqKegQ8Q"
+        }
+      ]
+    },
+    "BalanceTransferWindow1Code": {
+      "name": "BalanceTransferWindow1Code",
+      "isoId": "_K2bYsH6qEeePx-IqKegQ8Q",
+      "kind": "code",
+      "options": [
+        {
+          "value": "DAYH",
+          "name": "InHours",
+          "isoId": "_MQ4kgX6qEeePx-IqKegQ8Q"
+        },
+        {
+          "value": "EARL",
+          "name": "OutOfHours",
+          "isoId": "_MYPwwX6qEeePx-IqKegQ8Q"
+        }
+      ]
+    },
+    "Max350Text": {
+      "name": "Max350Text",
+      "kind": "text",
+      "isoId": "_YW1tKNp-Ed-ak6NoX_4Aeg_1778996852",
+      "minLength": 1,
+      "maxLength": 350
+    },
+    "ResponseDetails1": {
+      "name": "ResponseDetails1",
+      "isoId": "_W-pnUBE7EeafpqhYGpTDnw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "ResponseCode",
+          "isoId": "_kLn-8BE7EeafpqhYGpTDnw",
+          "xmlTag": "RspnCd",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "AdditionalDetails",
+          "isoId": "_n4DNYBE7EeafpqhYGpTDnw",
+          "xmlTag": "AddtlDtls",
+          "type": "Max350Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "AccountSwitchDetails1": {
+      "name": "AccountSwitchDetails1",
+      "isoId": "_8m2xcQ2ZEeSNWNtJlXOAhg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "UniqueReferenceNumber",
+          "isoId": "_vm6TwA2aEeSNWNtJlXOAhg",
+          "xmlTag": "UnqRefNb",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "RoutingUniqueReferenceNumber",
+          "isoId": "_cbscEA2aEeSNWNtJlXOAhg",
+          "xmlTag": "RtgUnqRefNb",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SwitchReceivedDateTime",
+          "isoId": "_f7vbYA2aEeSNWNtJlXOAhg",
+          "xmlTag": "SwtchRcvdDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SwitchDate",
+          "isoId": "_o9RtUA2aEeSNWNtJlXOAhg",
+          "xmlTag": "SwtchDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SwitchType",
+          "isoId": "_jB57EA2aEeSNWNtJlXOAhg",
+          "xmlTag": "SwtchTp",
+          "type": "SwitchType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SwitchStatus",
+          "isoId": "_mPEaoA2aEeSNWNtJlXOAhg",
+          "xmlTag": "SwtchSts",
+          "type": "SwitchStatus1Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "BalanceTransferWindow",
+          "isoId": "_s39aMA2aEeSNWNtJlXOAhg",
+          "xmlTag": "BalTrfWndw",
+          "type": "BalanceTransferWindow1Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Response",
+          "isoId": "_wTtyIBE7EeafpqhYGpTDnw",
+          "xmlTag": "Rspn",
+          "type": "ResponseDetails1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    },
+    "SupplementaryDataEnvelope1": {
+      "name": "SupplementaryDataEnvelope1",
+      "kind": "any",
+      "isoId": "_Kz9KwJDrEeSLQ8ob-qtemg"
+    },
+    "SupplementaryData1": {
+      "name": "SupplementaryData1",
+      "isoId": "_Qn0zC9p-Ed-ak6NoX_4Aeg_468227563",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "PlaceAndName",
+          "isoId": "_Qn988Np-Ed-ak6NoX_4Aeg_354388497",
+          "xmlTag": "PlcAndNm",
+          "type": "Max350Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Envelope",
+          "isoId": "_Qn988dp-Ed-ak6NoX_4Aeg_-642683856",
+          "xmlTag": "Envlp",
+          "type": "SupplementaryDataEnvelope1",
+          "kind": "any",
+          "min": 1,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "SupplementaryDataRule",
+          "isoId": "_Qn988tp-Ed-ak6NoX_4Aeg_-1492355109",
+          "text": "This component may not be used without the explicit approval of a SEG and submission to the RA of ISO 20022 compliant structure(s) to be used in the Envelope element."
+        }
+      ]
+    },
+    "AccountSwitchNotifyAccountSwitchCompleteV02": {
+      "name": "AccountSwitchNotifyAccountSwitchCompleteV02",
+      "isoId": "_7HK1q242EeiU9cctagi5ow",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "MessageIdentification",
+          "isoId": "_7HK1rW42EeiU9cctagi5ow",
+          "xmlTag": "MsgId",
+          "type": "MessageIdentification1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "AccountSwitchDetails",
+          "isoId": "_7HK1r242EeiU9cctagi5ow",
+          "xmlTag": "AcctSwtchDtls",
+          "type": "AccountSwitchDetails1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SupplementaryData",
+          "isoId": "_7HK1sW42EeiU9cctagi5ow",
+          "xmlTag": "SplmtryData",
+          "type": "SupplementaryData1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    }
+  }
+}

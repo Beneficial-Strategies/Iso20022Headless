@@ -1,0 +1,7 @@
+choice	memberId	memberName	text
+Status25Choice	_E09yoUQTEealVdmlTDXWkw	Status	Status code.
+Status25Choice	_E09yo0QTEealVdmlTDXWkw	Rejected	Status of the account management instruction is rejected.
+RejectedReason16Choice	_vYYwwWOAEeWwOJYz8znDIw	Code	Rejected reason expressed as a code.
+RejectedReason16Choice	_vYYww2OAEeWwOJYz8znDIw	Proprietary	Rejected reason expressed as a proprietary code.
+AcceptedStatusReason1Choice	_wdDRcWBlEeaR1OOiVxm3Gg	Code	Reason for the status expressed as a code.
+AcceptedStatusReason1Choice	_wdDRc2BlEeaR1OOiVxm3Gg	Proprietary	Reason for the status expressed as a proprietary code.

@@ -1,0 +1,43 @@
+{
+  "identifier": "acmt.022.001.04",
+  "name": "IdentificationModificationAdviceV04",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:acmt.022.001.04",
+  "bodyTag": "IdModAdvc",
+  "out": "acmt022",
+  "isoId": "_R3M08zEZEe6kQ-WGAhcVPQ",
+  "definition": "Scope|The IdentificationModificationAdvice message is sent by an assigner to an assignee. The message is used to advice on the correct party and/or account identification information.|Usage|The IdentificationModificationAdvice message is sent after the receipt of one or several transaction messages that included no longer valid party and/or account identification information.|The IdentificationModificationAdvice message is exchanged between financial institutions and between financial institutions and non financial institutions and can contain one or more modification advises.|There is no time limit on the time between the sending of an IdentificationModificationAdvice message and the receipt of the transaction messages that the IdentificationModificationAdvice refers to.|The IdentificationModificationAdvice includes the correct party and/or account identification information, the IdentificationModificationAdvice or the included information may be forwarded to the initiating party of the transaction messages.",
+  "blocks": [
+    {
+      "name": "Assignment",
+      "isoId": "_R3M0-zEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Assgnmt",
+      "type": "IdentificationAssignment4",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "OriginalTransactionReference",
+      "isoId": "_R3M0_TEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "OrgnlTxRef",
+      "type": "OriginalTransactionReference43",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Modification",
+      "isoId": "_R3M0_zEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Mod",
+      "type": "IdentificationModification5",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3M1ATEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

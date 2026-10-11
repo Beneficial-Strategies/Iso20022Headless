@@ -1,0 +1,67 @@
+{
+  "identifier": "acmt.012.001.04",
+  "name": "AccountAdditionalInformationRequestV04",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:acmt.012.001.04",
+  "bodyTag": "AcctAddtlInfReq",
+  "out": "acmt012",
+  "isoId": "_R27vLTEZEe6kQ-WGAhcVPQ",
+  "definition": "The AccountAdditionalInformationRequest message is sent from a financial institution to an organisation as part of maintenance process. This message is sent in response to a maintenance request message from the organisation, if the business content is valid, but additional information is required.",
+  "blocks": [
+    {
+      "name": "References",
+      "isoId": "_R27vMzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Refs",
+      "type": "References3",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "From",
+      "isoId": "_R27vNTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Fr",
+      "type": "OrganisationIdentification39",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "OrganisationIdentification",
+      "isoId": "_R27vNzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "OrgId",
+      "type": "OrganisationIdentification39",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountServicerIdentification",
+      "isoId": "_R27vOTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "AcctSvcrId",
+      "type": "BranchAndFinancialInstitutionIdentification8",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountIdentification",
+      "isoId": "_R27vOzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "AcctId",
+      "type": "AccountForAction1",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "DigitalSignature",
+      "isoId": "_R27vPTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "DgtlSgntr",
+      "type": "PartyAndSignature4",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R27vPzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

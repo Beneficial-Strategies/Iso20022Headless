@@ -1,0 +1,51 @@
+{
+  "identifier": "acmt.034.001.06",
+  "name": "AccountSwitchRequestPaymentV06",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:acmt.034.001.06",
+  "bodyTag": "AcctSwtchReqPmt",
+  "out": "acmt034",
+  "isoId": "ef94de20-a1ce-4dbd-a74c-80aa25cd029c",
+  "definition": "The AccountSwitchRequestPayment message is sent by the old account servicer to the new account servicer after the completion of the account switch to request the transfer of funds for a payment that the previous account servicer has had to make from the old account (for example: the settlement of a card transaction that was authorised offline).",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "659ea311-2557-4384-8e72-8772f28ce24c",
+      "xmlTag": "MsgId",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountSwitchDetails",
+      "isoId": "ecb4e159-12f5-4a17-a78d-a4a44cf97c8f",
+      "xmlTag": "AcctSwtchDtls",
+      "type": "AccountSwitchDetails1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "OldAccount",
+      "isoId": "13a80ae2-1233-4c6d-8b51-ca41d000e3d8",
+      "xmlTag": "OdAcct",
+      "type": "CashAccount43",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CreditInstruction",
+      "isoId": "ee40509b-f8b3-4ca2-a261-60eb0d926f2b",
+      "xmlTag": "CdtInstr",
+      "type": "CreditTransferTransaction78",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "7b59665d-80e4-4944-844b-8db438a72aae",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

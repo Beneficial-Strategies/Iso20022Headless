@@ -1,0 +1,7 @@
+codeSetName	isoId	restrictionOf	code	enumName
+CommunicationMethod3Code	_r1Pt8Bg2EeKnW4lR85q-0A	CommunicationMethodCode	EMAL	Email
+CommunicationMethod3Code	_r1Pt8Bg2EeKnW4lR85q-0A	CommunicationMethodCode	FAXI	Fax
+CommunicationMethod3Code	_r1Pt8Bg2EeKnW4lR85q-0A	CommunicationMethodCode	POST	PostalService
+CommunicationMethod3Code	_r1Pt8Bg2EeKnW4lR85q-0A	CommunicationMethodCode	PHON	Phone
+CommunicationMethod3Code	_r1Pt8Bg2EeKnW4lR85q-0A	CommunicationMethodCode	FILE	File
+CommunicationMethod3Code	_r1Pt8Bg2EeKnW4lR85q-0A	CommunicationMethodCode	ONLI	Online

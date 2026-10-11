@@ -1,0 +1,6 @@
+# Code sets referenced by constraint expressions (WithInList) that are not types in the message closures.
+# Source: ISO 20022 MCP resources (dictionary CodeSet details).
+codeSet	code	enumName
+PartialInstruction3Code	HOLD	HoldCashForCreditor
+PartialInstruction3Code	PHOB	PhoneBeneficiary
+PartialInstruction3Code	TELB	Telecom

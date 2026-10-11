@@ -1,0 +1,205 @@
+choice	memberId	memberName	text
+PartyIdentification125Choice	_e8twA2pTEeipaMTLlhaKMQ	AnyBIC	Identification of the party expressed as a BIC.
+PartyIdentification125Choice	_e8twBWpTEeipaMTLlhaKMQ	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to the party using a proprietary identification scheme.
+PartyIdentification125Choice	_e8twB2pTEeipaMTLlhaKMQ	NameAndAddress	Name and address of the party.
+ConfirmationType1Choice	_tv-sYUzLEeafiMTDrtSnyw	Code	Confirmation type expressed as a code.
+ConfirmationType1Choice	_vmGggUzLEeafiMTDrtSnyw	Proprietary	Confirmation type expressed as a proprietary code.
+EnabledStatusReason1Choice	_4hBVcEy9EeafiMTDrtSnyw	NoSpecifiedReason	There is no reason available or to report for the enabled account status.
+EnabledStatusReason1Choice	_5-mGsEy9EeafiMTDrtSnyw	Reason	Reason for the enabled account status.
+EnabledStatusReason2Choice	_ScfY8Ey-EeafiMTDrtSnyw	Code	Reason for the enabled account status expressed as a code.
+EnabledStatusReason2Choice	_WdIj4Ey-EeafiMTDrtSnyw	Proprietary	Reason for the enabled account status expressed as a proprietary code.
+DisabledStatusReason1Choice	_R5FfAUzAEeafiMTDrtSnyw	NoSpecifiedReason	There is no reason available or to report for the disabled account status.
+DisabledStatusReason1Choice	_R5FfA0zAEeafiMTDrtSnyw	Reason	Reason for the disabled account status.
+DisabledStatusReason2Choice	_hnIFMUzAEeafiMTDrtSnyw	Code	Reason for the disabled account status expressed as a code.
+DisabledStatusReason2Choice	_hnIFM0zAEeafiMTDrtSnyw	Proprietary	Reason for the disabled account status expressed as a proprietary code.
+PendingStatusReason1Choice	_xwsJwUzAEeafiMTDrtSnyw	NoSpecifiedReason	There is no reason available or to report for the pending account status.
+PendingStatusReason1Choice	_xwsJw0zAEeafiMTDrtSnyw	Reason	Reason for the pending account status.
+PendingStatusReason2Choice	_uHaggUzBEeafiMTDrtSnyw	Code	Reason for the pending account status expressed as a code.
+PendingStatusReason2Choice	_uHagg0zBEeafiMTDrtSnyw	Proprietary	Reason for the pending account status expressed as a proprietary code.
+PendingOpeningStatusReason1Choice	_g7MiwWCJEeabZtzjEVWYCQ	NoSpecifiedReason	There is no reason available or to report for the pending account opening status.
+PendingOpeningStatusReason1Choice	_g7Miw2CJEeabZtzjEVWYCQ	Reason	Reason for the pending account opening status.
+PendingOpeningStatusReason2Choice	_xb8YQWCJEeabZtzjEVWYCQ	Code	Reason for the pending account opening status expressed as a code.
+PendingOpeningStatusReason2Choice	_xb8YQ2CJEeabZtzjEVWYCQ	Proprietary	Reason for the pending account opening status expressed as a proprietary code.
+ProformaStatusReason1Choice	_5BVa8UzCEeafiMTDrtSnyw	NoSpecifiedReason	There is no reason available or to report for the proforma account status.
+ProformaStatusReason1Choice	_5BVa80zCEeafiMTDrtSnyw	Reason	Reason for the proforma account status.
+ProformaStatusReason2Choice	_MfWS0UzDEeafiMTDrtSnyw	Code	Reason for the enabled account status expressed as a code.
+ProformaStatusReason2Choice	_MfWS00zDEeafiMTDrtSnyw	Proprietary	Reason for the enabled account status expressed as a proprietary code.
+ClosedStatusReason1Choice	_U2WaAUzDEeafiMTDrtSnyw	NoSpecifiedReason	There is no reason available or to report for the closed account status.
+ClosedStatusReason1Choice	_U2WaA0zDEeafiMTDrtSnyw	Reason	Reason for the closed account status.
+ClosedStatusReason2Choice	_lSNvgUzDEeafiMTDrtSnyw	Code	Reason for the closed account status expressed as a code.
+ClosedStatusReason2Choice	_lSNvg0zDEeafiMTDrtSnyw	Proprietary	Reason for the closed account status expressed as a proprietary code.
+ClosurePendingStatusReason1Choice	_UwXSsWCLEeabZtzjEVWYCQ	NoSpecifiedReason	There is no reason available or to report for the closure pending status.
+ClosurePendingStatusReason1Choice	_UwXSs2CLEeabZtzjEVWYCQ	Reason	Reason for the closure pending status.
+ClosurePendingStatusReason2Choice	_9J7XcWCLEeabZtzjEVWYCQ	Code	Reason for the closure pending status expressed as a code.
+ClosurePendingStatusReason2Choice	_9J7Xc2CLEeabZtzjEVWYCQ	Proprietary	Reason for the closure pending status expressed as a proprietary code.
+BlockedStatusReason2Choice	_8t7ZAV1LEeagR5I1rq5oaw	NoSpecifiedReason	There is no reason available or to report for the closed account status.
+BlockedStatusReason2Choice	_8t7ZA11LEeagR5I1rq5oaw	Reason	Transaction type for which the account is blocked and the underlying reason.
+TransactionType5Choice	_yS8cgVsJEea4y99eritluQ	Code	Transaction type expressed as a code.
+TransactionType5Choice	_yS8cg1sJEea4y99eritluQ	Proprietary	Transaction type expressed as a proprietary code.
+BlockedReason2Choice	_P2OO0Vr3Eea4y99eritluQ	Code	Reason expressed as a code.
+BlockedReason2Choice	_P2OO01r3Eea4y99eritluQ	Proprietary	Reason expressed as a proprietary code.
+DateAndDateTime1Choice	_Axs_MdokEeC60axPepSq7g_-1702730755	Date	Numeric representation of the day of the month and year.
+DateAndDateTime1Choice	_Axs_MtokEeC60axPepSq7g_1709003254	DateTime	Numeric representation of time of the day and the day of the month and year.
+AccountType2Choice	_dPO1ESC7EeWPMvNwVtiMsA	Code	Type of account expressed as a code.
+AccountType2Choice	_dPO1EyC7EeWPMvNwVtiMsA	Proprietary	Type of account expressed as a proprietary code.
+OwnershipType2Choice	_9esAUb-GEeWfsa741pI6WA	Code	Ownership type expressed as a code.
+OwnershipType2Choice	_9esAU7-GEeWfsa741pI6WA	Proprietary	Ownership type expressed as a proprietary code.
+TaxExemptionReason2Choice	_PE3O0SDAEeWPMvNwVtiMsA	Code	Tax exemption reason expressed as a code.
+TaxExemptionReason2Choice	_PE3O0yDAEeWPMvNwVtiMsA	Proprietary	Tax exemption reason expressed as a proprietary code.
+StatementFrequencyReason2Choice	_sGXPISDAEeWPMvNwVtiMsA	Code	Statement frequency expressed as a code.
+StatementFrequencyReason2Choice	_sGXPIyDAEeWPMvNwVtiMsA	Proprietary	Statement frequency expressed as a proprietary code.
+SecurityIdentification25Choice	_cH1L4znxEeabspMEjqY5TQ	ISIN	International Securities Identification Number (ISIN). A numbering system designed by the United Nation's International Organisation for Standardisation (ISO). The ISIN is composed of a 2-character prefix representing the country of issue, followed by the national security number (if one exists), and a check digit. Each country has a national numbering agency that assigns ISIN numbers for securities in that country.
+SecurityIdentification25Choice	_cH1L5TnxEeabspMEjqY5TQ	SEDOL	Stock Exchange Daily Official List (SEDOL) number. A code used by the London Stock Exchange to identify foreign stocks, especially those that aren't actively traded in the US and don't have a CUSIP number.
+SecurityIdentification25Choice	_cH1L5znxEeabspMEjqY5TQ	CUSIP	Committee on Uniform Securities and Identification Procedures (CUSIP). The standards body that created and maintains the securities classification system in the US. The CUSIP is composed of a 9-character number that uniquely identifies a particular security. Non-US securities have a similar number called the CINS number.
+SecurityIdentification25Choice	_cH1L6TnxEeabspMEjqY5TQ	RIC	Reuters Identification Code (RIC). A numbering system used within the Reuters system to identify instruments worldwide. The RIC contains an X-character market specific code (can be the CUSIP or EPIC codes) followed by a full stop, then the two-digit ISO country code, for example, IBM in UK is IBM.UK.
+SecurityIdentification25Choice	_cH1L6znxEeabspMEjqY5TQ	TickerSymbol	Letters that identify a stock traded on a stock exchange. The Ticker Symbol is a short and convenient way of identifying a stock, for example, RTR.L for Reuters quoted in London.
+SecurityIdentification25Choice	_cH1L7TnxEeabspMEjqY5TQ	Bloomberg	Identifier of a security assigned by the Bloomberg organisation.
+SecurityIdentification25Choice	_cH1L7znxEeabspMEjqY5TQ	CTA	Identifier of a security assigned by the Consolidated Tape Association.
+SecurityIdentification25Choice	_cH1L8TnxEeabspMEjqY5TQ	QUICK	Identifier of a security assigned by the Japanese QUICK identification scheme for financial instruments.
+SecurityIdentification25Choice	_cH1L8znxEeabspMEjqY5TQ	Wertpapier	Wertpapier Kenn-nummer. A number issued in Germany by the Wertpapier Mitteilungen. The Wertpapier Kenn-nummer, sometimes called WPK, contains 6-digits, but no check digit. There are different ranges of numbers representing different classes of securities.
+SecurityIdentification25Choice	_cH1L9TnxEeabspMEjqY5TQ	Dutch	Identifier for Dutch securities.
+SecurityIdentification25Choice	_cH-V0TnxEeabspMEjqY5TQ	Valoren	Identifier for Swiss securities assigned by Telekurs Financial, the Swiss numbering agency.
+SecurityIdentification25Choice	_cH-V0znxEeabspMEjqY5TQ	Sicovam	Identifier for French securities assigned by the Societe Interprofessionnelle Pour La Compensation des Valeurs Mobilieres in France. The Sicovam is composed of 5-digits.
+SecurityIdentification25Choice	_cH-V1TnxEeabspMEjqY5TQ	Belgian	Identifier for Belgian securities.
+SecurityIdentification25Choice	_cH-V1znxEeabspMEjqY5TQ	Common	Identifier of securities issued in Luxembourg. The common code is a 9-digit code that replaces the CEDEL (Clearstream) and Euroclear codes.
+SecurityIdentification25Choice	_cH-V2TnxEeabspMEjqY5TQ	OtherProprietaryIdentification	Proprietary identification of the security assigned by an institution or organisation.
+IdentificationSource1Choice	_RCMa1dp-Ed-ak6NoX_4Aeg_-1064528879	Domestic	Country of the proprietary identification scheme.
+IdentificationSource1Choice	_RCMa1tp-Ed-ak6NoX_4Aeg_-1064528849	Proprietary	Entity that issues the proprietary identification.
+FinancialInstitutionIdentification11Choice	_RU--gZS7EemqYPWMBuVawg	NameAndAddress	Identifies the name and (long) postal address of a financial institution.
+FinancialInstitutionIdentification11Choice	_RU--g5S7EemqYPWMBuVawg	BICFI	Identification of the financial institution expressed as a BIC.
+FinancialInstitutionIdentification11Choice	_RU--hZS7EemqYPWMBuVawg	ClearingSystemMemberIdentification	Choice of identifier for a clearing system member, as assigned by the clearing system. In some clearing systems, the accounts of the clearing system members are also assigned an identifier.
+FinancialInstitutionIdentification11Choice	_RU--h5S7EemqYPWMBuVawg	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to a financial institution using a proprietary identification scheme.
+ClearingSystemMemberIdentification4Choice	_VwSCYbNIEeejueAciesPMA	CHIPSUniversalIdentification	(United States) Clearing House Interbank Payments System (CHIPS) Universal Identification (UID) - identifies entities that own accounts at CHIPS participating financial institutions, through which CHIPS payments are effected. The CHIPS UID is assigned by the New York Clearing House.
+ClearingSystemMemberIdentification4Choice	_VwSCY7NIEeejueAciesPMA	NewZealandNCCIdentification	New Zealand Bank/Branch Code - identifies New Zealand institutions on the New Zealand national clearing system. The code is assigned by the New Zealand Bankers' Association (NZBA).
+ClearingSystemMemberIdentification4Choice	_VwSCZbNIEeejueAciesPMA	IrishNSCIdentification	Irish National Sorting Code - identifies Irish financial institutions on the Irish national clearing system. The code is assigned by the Irish Payments Services Organisation (IPSO).
+ClearingSystemMemberIdentification4Choice	_VwSCZ7NIEeejueAciesPMA	UKDomesticSortCode	United Kingdom (UK) Sort Code - identifies British financial institutions on the British national clearing systems. The sort code is assigned by the Association for Payments and Clearing Services (APACS).
+ClearingSystemMemberIdentification4Choice	_VwSCabNIEeejueAciesPMA	CHIPSParticipantIdentification	(United States) Clearing House Interbank Payment System (CHIPS) Participant Identifier (ID) - identifies financial institutions participating on CHIPS. The CHIPS Participant ID is assigned by the New York Clearing House.
+ClearingSystemMemberIdentification4Choice	_VwSCa7NIEeejueAciesPMA	SwissBCIdentification	Swiss Bank Code - identifies Swiss institutions on the Swiss national clearing system.
+ClearingSystemMemberIdentification4Choice	_VwSCbbNIEeejueAciesPMA	FedwireRoutingNumberIdentification	Fedwire Routing Number - identifies financial institutions, in the US, on the FedWire system. The routing number is assigned by the American Bankers Association (ABA).
+ClearingSystemMemberIdentification4Choice	_VwSCb7NIEeejueAciesPMA	PortugueseNCCIdentification	Portuguese National Clearing Code - identifies Portuguese financial institutions on the Portuguese national clearing system.
+ClearingSystemMemberIdentification4Choice	_VwSCcbNIEeejueAciesPMA	RussianCentralBankIdentificationCode	Russian Central Bank Identification Code - identifies Russian financial institutions on the Russian national clearing system.
+ClearingSystemMemberIdentification4Choice	_VwSCc7NIEeejueAciesPMA	ItalianDomesticIdentificationCode	Italian Domestic Identification Code - identifies Italian financial institutions on the Italian national clearing system. The code is assigned by the Associazione Bancaria Italiana (ABI).
+ClearingSystemMemberIdentification4Choice	_VwSCdbNIEeejueAciesPMA	AustrianBankleitzahlIdentification	Austrian Bankleitzahl - identifies Austrian financial institutions on the Austrian national clearing system.
+ClearingSystemMemberIdentification4Choice	_VwSCd7NIEeejueAciesPMA	CanadianPaymentsAssociationRoutingNumberIdentification	Canadian Payments Association Routing Number - identifies Canadian financial institutions on the Canadian national clearing system.
+ClearingSystemMemberIdentification4Choice	_VwSCebNIEeejueAciesPMA	SwissSICIdentification	Swiss Interbank Clearing (SIC) Code - identifies Swiss financial institutions domestically, on the Swiss national clearing system.
+ClearingSystemMemberIdentification4Choice	_VwSCe7NIEeejueAciesPMA	GermanBankleitzahlIdentification	German Bankleitzahl - identifies German financial institutions on the German national clearing systems.
+ClearingSystemMemberIdentification4Choice	_VwSCfbNIEeejueAciesPMA	SpanishDomesticInterbankingIdentification	Spanish Domestic Interbanking Code - identifies Spanish financial institutions on the Spanish national clearing system. The code is assigned by the Centro de Cooperacion Interbancaria (CCI).
+ClearingSystemMemberIdentification4Choice	_VwSCf7NIEeejueAciesPMA	SouthAfricanNCCIdentification	South African National Clearing Code (NCC) - identifies South African financial institutions on the South African national clearing system. The code is assigned by the South African Bankers Services Company Ltd. (BankServ).
+ClearingSystemMemberIdentification4Choice	_VwSCgbNIEeejueAciesPMA	HongKongBankCode	Hong Kong Bank Code - identifies Hong Kong financial institutions on the Hong Kong local clearing system.
+ClearingSystemMemberIdentification4Choice	_VwSCg7NIEeejueAciesPMA	AustralianExtensiveBranchNetworkIdentification	Extensive branch network list of the Australian Bank State Branch (BSB) Code. The codes are used for identifying Australian financial institutions, as assigned by the Australian Payments Clearing Association (APCA).
+ClearingSystemMemberIdentification4Choice	_VwSChbNIEeejueAciesPMA	AustralianSmallNetworkIdentification	Small network list of the Australian Bank State Branch (BSB) Code. The codes are used for identifying Australian financial institutions, as assigned by the Australian Payments Clearing Association (APCA).
+OtherIdentification3Choice	_1U8xUSCOEeWJd9HF2tO7BA	Code	Type of identification expressed as a code.
+OtherIdentification3Choice	_1U8xUyCOEeWJd9HF2tO7BA	Proprietary	Type of identification expressed as a proprietary code.
+SettlementInstructionReason1Choice	_cw2NwCCsEeWJd9HF2tO7BA	Code	Settlement instruction reason expressed as a code.
+SettlementInstructionReason1Choice	_fF7OwCCsEeWJd9HF2tO7BA	Proprietary	Settlement instruction reason expressed as a proprietary code.
+CashAccountType3Choice	_Kvt74CCyEeWJd9HF2tO7BA	Code	Type of cash account expressed as a code.
+CashAccountType3Choice	_NjlxsCCyEeWJd9HF2tO7BA	Proprietary	Type of cash account expressed as a proprietary code.
+AccountDesignation1Choice	_l6enkCCzEeWJd9HF2tO7BA	Code	Account designation expressed as a code.
+AccountDesignation1Choice	_oebyECCzEeWJd9HF2tO7BA	Proprietary	Account designation expressed as a proprietary code.
+AccountUsageType2Choice	_LXRysb-FEeWfsa741pI6WA	Code	Type of account usage expressed as a code.
+AccountUsageType2Choice	_LXRys7-FEeWfsa741pI6WA	Proprietary	Type of account usage expressed as a proprietary code.
+TransactionChannelType1Choice	_aT1UIBRGEeOKWo1NF21OVw	Code	Type of transaction channel expressed as a code.
+TransactionChannelType1Choice	_hrW7UBRGEeOKWo1NF21OVw	Proprietary	Type of transaction channel expressed as a proprietary code.
+InvestmentAccountCategory1Choice	_gXhC8BRIEeOKWo1NF21OVw	Code	Category of investment account expressed as a code.
+InvestmentAccountCategory1Choice	_oidrIBRIEeOKWo1NF21OVw	Proprietary	Category of investment account expressed as a proprietary code.
+LevelOfControl1Choice	_RhNOECDDEeWPMvNwVtiMsA	Code	Level of control expressed as a code.
+LevelOfControl1Choice	_SlfVkCDDEeWPMvNwVtiMsA	Proprietary	Level of control expressed as a proprietary code.
+AccountingStatus1Choice	_CuqKUCDEEeWPMvNwVtiMsA	Code	Accounting status expressed as a code.
+AccountingStatus1Choice	_DqxNQCDEEeWPMvNwVtiMsA	Proprietary	Accounting status expressed as a proprietary code.
+Liability1Choice	_gHJNoCDMEeWPMvNwVtiMsA	Code	Liability expressed as a code.
+Liability1Choice	_hdANUCDMEeWPMvNwVtiMsA	Proprietary	Liability expressed as a proprietary code.
+ProfileType1Choice	_wl30cCDNEeWPMvNwVtiMsA	Code	Type of profile expressed as a code.
+ProfileType1Choice	_xfwCwCDNEeWPMvNwVtiMsA	Proprietary	Type of profile expressed as a proprietary code.
+InvestorProfileStatus1Choice	_u1EvwCDOEeWPMvNwVtiMsA	Code	Investor profile status expressed as a code.
+InvestorProfileStatus1Choice	_vo_gACDOEeWPMvNwVtiMsA	Proprietary	Investor profile status expressed as a proprietary code.
+PartyRole5Choice	_pvNFUSDSEeWCLu74WLgP4w	Code	Role expressed as a code.
+PartyRole5Choice	_pvNFUyDSEeWCLu74WLgP4w	Proprietary	Role expressed as a proprietary code.
+SettlementFrequency1Choice	_nkfPUCDUEeWCLu74WLgP4w	Code	Settlement frequency expressed as a code.
+SettlementFrequency1Choice	_pqiV0CDUEeWCLu74WLgP4w	Proprietary	Settlement frequency expressed as a proprietary code.
+ConsolidationType1Choice	_QFc8kCDVEeWCLu74WLgP4w	Code	Consolidation type expressed as a code.
+ConsolidationType1Choice	_R2DXgCDVEeWCLu74WLgP4w	Proprietary	Consolidation type expressed as a proprietary code.
+FiscalYear1Choice	_HwOT8FxSEeW8MLuBzR10cg	StartDate	Start date of the fiscal year.
+FiscalYear1Choice	_IcaEgFxSEeW8MLuBzR10cg	EndDate	End date of the fiscal year.
+AccountParties12Choice	_mp9DUZQ_EemqYPWMBuVawg	PrimaryOwner	Single owner of the account or, when the ownership is split among several owners, the primary owner is the one giving its address and account details for the registration.
+AccountParties12Choice	_mp9DU5Q_EemqYPWMBuVawg	Trustee	Legal owners of the property. However, the beneficiary has the equitable or beneficial ownership.
+AccountParties12Choice	_mp9DVZQ_EemqYPWMBuVawg	Nominee	Entity named by the beneficial owner to act on its behalf, often to facilitate dealing, or to conceal the identity of the beneficiary.
+AccountParties12Choice	_mp9DV5Q_EemqYPWMBuVawg	JointOwner	Co-owner of the investment account when the ownership is assigned to more than one party.
+Party47Choice	_mDHs0ZQ_EemqYPWMBuVawg	Organisation	Organised structure that is set up for a particular purpose, for example, a business, government body, department, charity, or financial institution.
+Party47Choice	_mDHs05Q_EemqYPWMBuVawg	IndividualPerson	Human entity, as distinguished from a corporate entity (which is sometimes referred to as an 'artificial person').
+PartyIdentification177Choice	_7jKogdgvEeipBO1pkKK6zg	AnyBIC	Code allocated to a financial or non-financial institution by the ISO 9362 Registration Authority, as described in ISO 9362 "Banking - Banking telecommunication messages - Business identifier code (BIC)".
+PartyIdentification177Choice	_7jKog9gvEeipBO1pkKK6zg	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to a financial institution using a proprietary identification scheme.
+AddressType2Choice	_MZfdYCFzEeW9XJWqfgXIIA	Code	Type of address expressed as a code.
+AddressType2Choice	_RSX34CFzEeW9XJWqfgXIIA	Proprietary	Type of address expressed as a proprietary code.
+OrganisationType1Choice	_4Ght0CCeEeWJd9HF2tO7BA	Code	Type of organisation expressed as a code.
+OrganisationType1Choice	_6ArGUCCeEeWJd9HF2tO7BA	Proprietary	Type of organisation expressed as a proprietary code.
+NamePrefix1Choice	_5MAtECiEEeKVDZ5HKjI6bg	Code	Name prefix expressed as a code.
+NamePrefix1Choice	_BUFAYCiFEeKVDZ5HKjI6bg	Proprietary	Name prefix expressed as a proprietary code.
+PoliticalExposureType2Choice	_wk5jQZUgEemC09f0MxYkRg	Code	Type of political exposure expressed as a code.
+PoliticalExposureType2Choice	_wk5jQ5UgEemC09f0MxYkRg	Proprietary	Type of political exposure expressed as a proprietary code.
+PoliticallyExposedPersonStatus1Choice	_ds6esJUiEemC09f0MxYkRg	Code	Status of the politically exposed person expressed as a code.
+PoliticallyExposedPersonStatus1Choice	_fsaRQJUiEemC09f0MxYkRg	Proprietary	Status of the politically exposed person expressed as a proprietary code.
+CivilStatus1Choice	_8saB4CCgEeWJd9HF2tO7BA	Code	Civil status expressed as a code.
+CivilStatus1Choice	_AvbycCChEeWJd9HF2tO7BA	Proprietary	Civil status expressed as a proprietary code.
+GDPRDataConsent1Choice	_LyNlkJTTEemC09f0MxYkRg	Code	Consent type expressed as a code.
+GDPRDataConsent1Choice	_OVaiIJTTEemC09f0MxYkRg	Proprietary	Consent type expressed as a proprietary code.
+MoneyLaunderingCheck1Choice	_PZS2KBdDEeK5g-3oYI0_9Q	Code	Money laundering status expressed as a code.
+MoneyLaunderingCheck1Choice	_PZS2LRdDEeK5g-3oYI0_9Q	Proprietary	Money laundering status expressed as a proprietary code.
+CertificationType1Choice	_r9G_cBdEEeK5g-3oYI0_9Q	Code	Certificate type expressed as a code.
+CertificationType1Choice	_y4So4BdEEeK5g-3oYI0_9Q	Proprietary	Certificate type expressed as a proprietary code.
+CustomerConductClassification1Choice	_XdT2cBdwEeKYM7Bc71nDlA	Code	Conduct type expressed as a code.
+CustomerConductClassification1Choice	_gifSQBdwEeKYM7Bc71nDlA	Proprietary	Conduct type expressed as a proprietary code.
+RiskLevel2Choice	_BtuioSGREeWO8_xZKx-MFg	Code	Risk level expressed as code.
+RiskLevel2Choice	_BtuioyGREeWO8_xZKx-MFg	Proprietary	Risk level expressed as a proprietary code.
+KYCCheckType1Choice	_CsmgIBRyEeOKWo1NF21OVw	Code	Type of Know Your Customer (KYC) check type expressed as a code.
+KYCCheckType1Choice	_GvML0BRyEeOKWo1NF21OVw	Proprietary	Type of Know Your Customer (KYC) check type expressed as a proprietary code.
+InformationDistribution1Choice	_HJm3ACCVEeWJd9HF2tO7BA	Code	Information distribution expressed as a code.
+InformationDistribution1Choice	_IAzkwCCVEeWJd9HF2tO7BA	Proprietary	Information distribution expressed as a code.
+FATCAForm1Choice	_gPPrkAjLEeS5F6qHcKOrew	Code	Type of Foreign Account Tax Compliance Act (FATCA) form expressed as a code.
+FATCAForm1Choice	_m_vvAAjLEeS5F6qHcKOrew	Proprietary	Type of Foreign Account Tax Compliance Act (FATCA) form expressed as a proprietary code.
+FATCAStatus2Choice	_wTJnMSCVEeWJd9HF2tO7BA	Code	Foreign Account Tax Compliance Act (FATCA) status expressed as a code.
+FATCAStatus2Choice	_wTJnMyCVEeWJd9HF2tO7BA	Proprietary	Foreign Account Tax Compliance Act (FATCA) status expressed as a proprietary code.
+FATCASource1Choice	_pdKdkAjUEeS5F6qHcKOrew	Code	Source of the Foreign Account Tax Compliance Act (FATCA) status expressed as a code.
+FATCASource1Choice	_vvA2IAjUEeS5F6qHcKOrew	Proprietary	Source of Foreign Account Tax Compliance Act (FATCA) status expressed as a proprietary code.
+CRSForm1Choice	_gFvEIUNuEeaS-NnwLNvMPg	Code	Type of Foreign Account Tax Compliance Act (FATCA) form expressed as a code.
+CRSForm1Choice	_gFvEI0NuEeaS-NnwLNvMPg	Proprietary	Type of Foreign Account Tax Compliance Act (FATCA) form expressed as a proprietary code.
+CRSStatus3Choice	__Xcm0UNeEeamLdeYEZm56w	Code	Common Reporting Standard (CRS) status expressed as a code.
+CRSStatus3Choice	__Xcm00NeEeamLdeYEZm56w	Proprietary	Common Reporting Standard (CRS) status expressed as a proprietary code.
+CRSSource1Choice	_J3oBAUNfEeamLdeYEZm56w	Code	Source of the Common Reporting Standard (CRS) status expressed as a code.
+CRSSource1Choice	_J3oBA0NfEeamLdeYEZm56w	Proprietary	Source of Common Reporting Standard (CRS) status expressed as a proprietary code.
+MailType1Choice	_zx9lgCCXEeWJd9HF2tO7BA	Code	Mail type expressed as a code.
+MailType1Choice	_2nnkACCXEeWJd9HF2tO7BA	Proprietary	Mail type expressed as a proprietary code.
+CompanyLink1Choice	_6ha1MCCZEeWJd9HF2tO7BA	Code	Company link expressed as a code.
+CompanyLink1Choice	_8_uDoCCZEeWJd9HF2tO7BA	Proprietary	Company link expressed as a proprietary code.
+AddressType1Choice	_NFIbQCCKEeWJd9HF2tO7BA	Code	Type expressed as a code.
+AddressType1Choice	_RSyHcCCKEeWJd9HF2tO7BA	Proprietary	Type expressed as a proprietary code.
+RestrictionStatus1Choice	_cMXWsCFnEeW9XJWqfgXIIA	Code	Status of the restriction expressed as a code.
+RestrictionStatus1Choice	_gR620CFnEeW9XJWqfgXIIA	Proprietary	Status of the restriction expressed as a proprietary code.
+RegisteredShareholderName1Choice	_w5-30FxYEeWvPv3PXpS3fw	IndividualPerson	Human entity, as distinguished from a corporate entity (which is sometimes referred to as an 'artificial person').
+RegisteredShareholderName1Choice	_yANgEFxYEeWvPv3PXpS3fw	Organisation	Organised structure that is set up for a particular purpose, for example, a business, government body, department, charity, or financial institution.
+PartyRole2Choice	_8mWashUNEeOIaq8KyCdIDQ	Code	Role expressed as a code.
+PartyRole2Choice	_8mWasxUNEeOIaq8KyCdIDQ	Proprietary	Role expressed as a proprietary code.
+DeMinimus1Choice	_CgNiAggqEeSUG-8hqXsVMQ	DeMinimusApplicable	Conditions applicable when the investor is covered by the "de minimis" exemption.
+DeMinimus1Choice	_CgNiAwgqEeSUG-8hqXsVMQ	DeMinimusNotApplicable	Conditions applicable when the investor is not covered by the "de minimis" exemption.
+Frequency20Choice	_Ch1k4RUSEeOIaq8KyCdIDQ	Code	Frequency expressed as a code.
+Frequency20Choice	_Ch1k4xUSEeOIaq8KyCdIDQ	Proprietary	Frequency expressed as a proprietary code.
+UnitsOrAmount1Choice	_l0iy4BQcEeKebsB9eKJSkA	Amount	Currency and amount of the periodical payments.
+UnitsOrAmount1Choice	_xG-wcBQcEeKebsB9eKJSkA	Unit	Number of units to be subscribed or withdrawn.
+InitialAmount1Choice	_XuNrcSDaEeWCLu74WLgP4w	InitialNumberOfInstalments	Number of pre-paid instalment periods at the time the investment plan is created.
+InitialAmount1Choice	_bXzBQCDaEeWCLu74WLgP4w	Amount	Amount to be paid or redeemed at the time the investment plan is created.
+UnitsOrAmountOrPercentage1Choice	_TcJuYgjdEeS5F6qHcKOrew	Amount	Cash amount.
+UnitsOrAmountOrPercentage1Choice	_TcJuYwjdEeS5F6qHcKOrew	Unit	Number of units.
+UnitsOrAmountOrPercentage1Choice	_B1SlYQjdEeS5F6qHcKOrew	Percentage	Percentage of cash amount.
+PaymentInstrument24Choice	_Jmv4wZTBEemqYPWMBuVawg	PaymentCardDetails	Settlement instructions for a payment by card.
+PaymentInstrument24Choice	_Jmv4w5TBEemqYPWMBuVawg	DirectDebitDetails	Settlement instructions for a payment by direct debit.
+PaymentInstrument24Choice	_Jmv4xZTBEemqYPWMBuVawg	Cheque	Indicates whether the payment is done via cheque.
+PaymentInstrument24Choice	_Jmv4x5TBEemqYPWMBuVawg	BankersDraft	Indicates whether the payment is done via draft.
+PaymentInstrument19Choice	_-mXAkyC1EeWJd9HF2tO7BA	ChequeDetails	Settlement instructions for a payment by cheque.
+PaymentInstrument19Choice	_-mXAlSC1EeWJd9HF2tO7BA	BankersDraftDetails	Settlement instructions for a payment by draft.
+InsuranceType2Choice	_7-ZWYSGSEeWKAaDJcYGKLw	Code	Type of insurance contract expressed as a code.
+InsuranceType2Choice	_7-ZWYyGSEeWKAaDJcYGKLw	Proprietary	Type of insurance contract expressed as a proprietary code.
+PlanStatus2Choice	_ZRAiMSFOEeWgV9SQSyaAog	Code	Status of the plan expressed as a code.
+PlanStatus2Choice	_ZRAiMyFOEeWgV9SQSyaAog	Proprietary	Status of the plan expressed as a proprietary code.
+PartyRole4Choice	_XzOvwV92EeS7xuKaq75oiQ	Code	Role expressed as a code.
+PartyRole4Choice	_XzOvw192EeS7xuKaq75oiQ	Proprietary	Role expressed as a proprietary code.
+CommunicationMethod3Choice	_a0TYAggqEeSUG-8hqXsVMQ	Code	Method of transmission expressed as a code.
+CommunicationMethod3Choice	_a0TYAwgqEeSUG-8hqXsVMQ	Proprietary	Method of transmission expressed as a proprietary code.

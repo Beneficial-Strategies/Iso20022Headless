@@ -1,0 +1,5 @@
+codeSet	code	enumName	isoId	text
+UseCases1Code	OPEN	Opening	_Yatgh9p-Ed-ak6NoX_4Aeg_-2048866565	Code indicating the opening of an account.
+UseCases1Code	MNTN	Maintenance	_YatgiNp-Ed-ak6NoX_4Aeg_-2048866534	Code indicating the maintenance of an account.
+UseCases1Code	CLSG	Closing	_Yatgidp-Ed-ak6NoX_4Aeg_-2048866503	Code indicating the closing of an account.
+UseCases1Code	VIEW	View	_Ya3RgNp-Ed-ak6NoX_4Aeg_-2048866473	Code indicating the view of an account.

@@ -1,0 +1,59 @@
+{
+  "identifier": "acmt.031.001.06",
+  "name": "AccountSwitchRequestBalanceTransferV06",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:acmt.031.001.06",
+  "bodyTag": "AcctSwtchReqBalTrf",
+  "out": "acmt031",
+  "isoId": "d8451445-227e-4532-9a47-c26439eb34c2",
+  "definition": "The AccountSwitchRequestBalanceTransfer message is sent by the new account servicer to the account servicer which previously held the account to request the transfer of the closing balance. This may be addressed to the new account or an alternate account nominated by the new account servicer.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "55a73488-b613-40f4-a3db-4719487e6223",
+      "xmlTag": "MsgId",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountSwitchDetails",
+      "isoId": "6816285c-c3a9-4adc-af3a-1908293cb864",
+      "xmlTag": "AcctSwtchDtls",
+      "type": "AccountSwitchDetails1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "NewAccount",
+      "isoId": "e0cd23c4-1f6e-47d4-a188-6119ae7eb66d",
+      "xmlTag": "NewAcct",
+      "type": "CashAccount43",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "NominatedAccount",
+      "isoId": "7a2ffd1b-9174-4617-b9ed-79dec86f5ec9",
+      "xmlTag": "NmntdAcct",
+      "type": "CashAccount43",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "BalanceTransfer",
+      "isoId": "be1b5233-1e25-480f-9ee5-e14732f97d41",
+      "xmlTag": "BalTrf",
+      "type": "BalanceTransfer7",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "e18e8147-b2e1-4072-a7d2-692d4916fd8c",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

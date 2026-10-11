@@ -1,0 +1,7 @@
+codeSetName	isoId	restrictionOf	code	enumName
+AccountManagementType3Code	_5-DjoFSeEeatgN-VQ0eFlQ	AccountManagementTypeCode	ACCM	AccountModification
+AccountManagementType3Code	_5-DjoFSeEeatgN-VQ0eFlQ	AccountManagementTypeCode	ACCO	AccountOpening
+AccountManagementType3Code	_5-DjoFSeEeatgN-VQ0eFlQ	AccountManagementTypeCode	GACC	GetAccountDetails
+AccountManagementType3Code	_5-DjoFSeEeatgN-VQ0eFlQ	AccountManagementTypeCode	ACST	AccountStatus
+GenderCode	_atyWZ9p-Ed-ak6NoX_4Aeg_275832843		MALE	Male
+GenderCode	_atyWZ9p-Ed-ak6NoX_4Aeg_275832843		FEMA	Female

@@ -1,0 +1,59 @@
+{
+  "identifier": "acmt.029.001.06",
+  "name": "AccountSwitchCancelExistingPaymentV06",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:acmt.029.001.06",
+  "bodyTag": "AcctSwtchCclExstgPmt",
+  "out": "acmt029",
+  "isoId": "aba5f794-417a-4552-8a67-ac92469f2b58",
+  "definition": "The AccountSwitchCancelExistingPayment message is sent by the new account servicer to the previous account servicer to identify which payment arrangements are to be cancelled on the account owner's account and when they are to be cancelled. This message is used during a partial switch of the account and may be sent multiple times to allow for the account parties to transfer different payment arrangements at different times during the switch.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "c3cdb2fe-2d94-420c-a208-c3031bff3639",
+      "xmlTag": "MsgId",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountSwitchDetails",
+      "isoId": "7968e725-e8ab-4a58-a158-2f253ff433cd",
+      "xmlTag": "AcctSwtchDtls",
+      "type": "AccountSwitchDetails1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "OldAccount",
+      "isoId": "98304add-22de-472f-bc87-ccbe81cc4c20",
+      "xmlTag": "OdAcct",
+      "type": "CashAccount43",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "PaymentInstruction",
+      "isoId": "2b0b05af-ae81-4b5e-87a2-4dc6a3ab3944",
+      "xmlTag": "PmtInstr",
+      "type": "PaymentInstruction49",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "DirectDebitInstruction",
+      "isoId": "28203959-0df7-48c2-bd79-b0d1e733357d",
+      "xmlTag": "DrctDbtInstr",
+      "type": "DirectDebitInstructionDetails3",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "d5166376-02f2-4cfe-82b1-e54eb057cacb",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

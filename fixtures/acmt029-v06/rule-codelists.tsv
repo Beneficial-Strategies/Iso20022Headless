@@ -1,0 +1,7 @@
+# Code sets referenced by constraint expressions (WithInList) that are not types in the message closures.
+# Source: ISO 20022 MCP resources (dictionary CodeSet details).
+codeSet	code	enumName
+ChequeDelivery2Code	MLFA	MailToFinalAgent
+ChequeDelivery2Code	CRFA	CourierToFinalAgent
+ChequeDelivery2Code	PUFA	PickUpByFinalAgent
+ChequeDelivery2Code	RGFA	RegisteredMailToFinalAgent

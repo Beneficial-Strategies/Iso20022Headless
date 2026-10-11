@@ -1,0 +1,6 @@
+codeSet	isoId	text
+SwitchType1Code	_wQUvEA2YEeSNWNtJlXOAhg	Specifies the status of the switch either full or part for a given account.
+SwitchStatus1Code	_QKe20H6rEeePx-IqKegQ8Q	Specifies the status of a given account switch.
+BalanceTransferWindow1Code	_K2bYsH6qEeePx-IqKegQ8Q	Specifies the processing window in which the balance transfer will be processed on the switch date.
+TaxRateMarker1Code	_zFFVsA2YEeSNWNtJlXOAhg	Specifies the rate of tax levied.
+BusinessDayConvention2Code	_7SEbcBfvEeSBdtDwJiNe1g	Specifies how a date is adjusted when it falls on a non-business day.
