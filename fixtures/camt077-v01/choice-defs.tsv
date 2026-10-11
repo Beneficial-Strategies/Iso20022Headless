@@ -1,0 +1,12 @@
+choice	memberId	memberName	text
+BillingReportOrError6Choice	_2jks0TEyEe6g-ffJsqGiSA	BillingReport	Report on billing data.
+BillingReportOrError6Choice	_2jks0zEyEe6g-ffJsqGiSA	CancellationReport	Report on cancelled billing data.
+BillingReportOrError6Choice	_2jks1TEyEe6g-ffJsqGiSA	OperationalError	Indicates that an operational error has been issued during the processing of the related request.
+PaymentMethod3Choice	_63GwkdEvEfCli6pH8hj5ag	Code	Method of payment for the remittance of the CSD or NCB to the invoicing party, in a coded form.
+PaymentMethod3Choice	_63Gwk9EvEfCli6pH8hj5ag	Proprietary	Method of payment for the remittance of the CSD or the NCB to the invoicing party, in a proprietary free text format.
+ServiceCategory1Choice	_iY6jQJudEey__7eNd9lW5Q	Code	Service category, as published in an external reason code list.
+ServiceCategory1Choice	_kjVzcJudEey__7eNd9lW5Q	Proprietary	Service category, in a proprietary form.
+CancellationReason16Choice	_jG-UEO5NEeCisYr99QEiWA_-1774194697	Code	Reason for the cancellation request, in a coded form.
+CancellationReason16Choice	_jG-UEe5NEeCisYr99QEiWA_-734160402	Proprietary	Reason for the cancellation request, in a proprietary form.
+ErrorHandling3Choice	_RN4hYXhdEeidzqjNEfehPg	Code	Specification of the error, in coded form.
+ErrorHandling3Choice	_RN4hY3hdEeidzqjNEfehPg	Proprietary	Specification of the error, in free format.

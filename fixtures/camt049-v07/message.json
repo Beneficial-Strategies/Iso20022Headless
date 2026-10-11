@@ -1,0 +1,35 @@
+{
+  "identifier": "camt.049.001.07",
+  "name": "DeleteReservationV07",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.049.001.07",
+  "bodyTag": "DelRsvatn",
+  "out": "camt049",
+  "isoId": "_R3IjczEZEe6kQ-WGAhcVPQ",
+  "definition": "Scope|The DeleteReservation message is used to request the deletion of one particular reservation by the member and managed by the transaction administrator.|Usage|The deletion of a reservation in the system, will not only reset the reserved liquidity to zero, but also delete the reservation itself from the system: only the default reservation for the current business day remains in the system.",
+  "blocks": [
+    {
+      "name": "MessageHeader",
+      "isoId": "_R3IjeTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "MsgHdr",
+      "type": "MessageHeader1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CurrentReservation",
+      "isoId": "_R3IjezEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "CurRsvatn",
+      "type": "ReservationIdentification4",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3IjfTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

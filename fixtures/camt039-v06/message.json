@@ -1,0 +1,51 @@
+{
+  "identifier": "camt.039.001.06",
+  "name": "CaseStatusReportV06",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.039.001.06",
+  "bodyTag": "CaseStsRpt",
+  "out": "camt039",
+  "isoId": "_R3CdHTEZEe6kQ-WGAhcVPQ",
+  "definition": "Scope|The CaseStatusReport message is sent by a case assignee to a case creator or case assigner.|This message is used to report on the status of a case.|Usage|A CaseStatusReport message is sent in reply to a CaseStatusReportRequest message. This message|- covers one and only one case at a time. (If a case assignee needs to report on several cases, then multiple CaseStatusReport messages must be sent);|- may be forwarded to subsequent case assigner(s) until it reaches the end point;|- is able to indicate the fact that a case has been assigned to a party downstream in the payment processing chain;|- may not be used in place of a ResolutionOfInvestigation (except for the condition given in the next bullet point) or NotificationOfCaseAssignment message;|- may be skipped and replaced by a ResolutionOfInvestigation message when the request for a investigation status is received at the time the assigner has resolved the case. (In this case a ResolutionOfInvestigation message can be sent instead of a CaseStatusReport and the case may be closed).",
+  "blocks": [
+    {
+      "name": "Header",
+      "isoId": "_R3CdJTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Hdr",
+      "type": "ReportHeader7",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Case",
+      "isoId": "_R3CdJzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Case",
+      "type": "Case6",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Status",
+      "isoId": "_R3CdKTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "Sts",
+      "type": "CaseStatus2",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "NewAssignment",
+      "isoId": "_R3CdKzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "NewAssgnmt",
+      "type": "CaseAssignment6",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3CdLTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

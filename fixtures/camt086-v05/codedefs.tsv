@@ -1,0 +1,65 @@
+codeSet	code	enumName	isoId	text
+BillingStatementStatus1Code	ORGN	Original	_6VUE05qlEeGSON8vddiWzQ_1712373044	Statement is the original statement.
+BillingStatementStatus1Code	RPLC	Replace	_6VUE1JqlEeGSON8vddiWzQ_1116652808	Statement replaces the original statement.
+BillingStatementStatus1Code	TEST	Test	_6VUE1ZqlEeGSON8vddiWzQ_1105554031	Statement is a test statement.
+AccountLevel2Code	INTM	Intermediate	_6Uas95qlEeGSON8vddiWzQ_-77486222	Intermediate level within an account hierarchy.
+AccountLevel2Code	SMRY	Summary	_6Ukd8JqlEeGSON8vddiWzQ_1446759063	Highest level within an account hierarchy.
+AccountLevel2Code	DETL	Detail	_6Ukd8ZqlEeGSON8vddiWzQ_-2087443080	Account is a real deposit/current account.
+AccountLevel1Code	INTM	Intermediate	_6Uas9JqlEeGSON8vddiWzQ_1340728454	Intermediate level within an account hierarchy.
+AccountLevel1Code	SMRY	Summary	_6Uas9ZqlEeGSON8vddiWzQ_1794815723	Highest level within an account hierarchy.
+CompensationMethod1Code	NOCP	No	_6Vm_yJqlEeGSON8vddiWzQ_-1993728072	Account does not pay and charges or taxes due.
+CompensationMethod1Code	DBTD	Debited	_6VwwwJqlEeGSON8vddiWzQ_-1432359176	Account is debited for any charges or taxes due.
+CompensationMethod1Code	INVD	Invoiced	_6VwwwZqlEeGSON8vddiWzQ_1164179586	Account or summary account is invoiced for any charges or taxes due.
+CompensationMethod1Code	DDBT	DelayedDebit	_6VwwwpqlEeGSON8vddiWzQ_-174770726	Account is automatically debited on a future date.
+BillingTaxCalculationMethod1Code	NTAX	NoTaxes	_6Vd105qlEeGSON8vddiWzQ_-1535157938	No taxes are calculated or due on this account.
+BillingTaxCalculationMethod1Code	MTDA	MethodA	_6Vd11JqlEeGSON8vddiWzQ_1775205103	Line-by-line per service calculation and settlement currency translation.
+BillingTaxCalculationMethod1Code	MTDB	MethodB	_6Vd11ZqlEeGSON8vddiWzQ_-1052613430	Line-by-line per service calculation with settlement currency translation performed on the statement tax total.
+BillingTaxCalculationMethod1Code	MTDC	MethodC	_6Vd11pqlEeGSON8vddiWzQ_1967073441	Group tax calculation with group settlement currency translation.
+BillingTaxCalculationMethod1Code	MTDD	MethodD	_6Vd115qlEeGSON8vddiWzQ_-2002776348	Line-by-line per service calculation with all charges and taxes due in the pricing currency.
+BillingTaxCalculationMethod1Code	UDFD	Undefined	_6Vd12JqlEeGSON8vddiWzQ_-535627585	Tax calculation method is not defined or unknown.
+BillingCurrencyType1Code	ACCT	Account	_6WXNtJqlEeGSON8vddiWzQ_42035703	Currency type used for the billing is the account currency.
+BillingCurrencyType1Code	STLM	Settlement	_6WXNtZqlEeGSON8vddiWzQ_-2111377502	Currency type used for the billing is the settlement currency.
+BillingCurrencyType1Code	PRCG	Pricing	_6WXNtpqlEeGSON8vddiWzQ_-644228739	Currency type used for the billing is the pricing currency.
+BillingCurrencyType2Code	ACCT	Account	_6WzSkpqlEeGSON8vddiWzQ_-1127654531	Currency type used for the billing is the account currency.
+BillingCurrencyType2Code	STLM	Settlement	_6WzSk5qlEeGSON8vddiWzQ_-541707505	Currency type used for the billing is the settlement currency.
+BillingCurrencyType2Code	PRCG	Pricing	_6WzSlJqlEeGSON8vddiWzQ_-1424940792	Currency type used for the billing is the pricing currency.
+BillingCurrencyType2Code	HOST	Host	_6WzSlZqlEeGSON8vddiWzQ_-1920390448	Currency type used for the billing is the host currency.
+BillingSubServiceQualifier1Code	LBOX	Lockbox	_6WgXpZqlEeGSON8vddiWzQ_-1508305482	Subservice code contains a lockbox number which identifies the lockbox using the service.
+BillingSubServiceQualifier1Code	STOR	Store	_6WgXppqlEeGSON8vddiWzQ_-430285144	Subservice code contains a store number which identifies the store using the service.
+BillingSubServiceQualifier1Code	BILA	BilaterallyAgreed	_6WgXp5qlEeGSON8vddiWzQ_1036863619	Meaning of the subservice code is established by the trading partners.
+BillingSubServiceQualifier1Code	SEQN	SequenceNumber	_6WgXqJqlEeGSON8vddiWzQ_620847928	Subservice code is an arbitrary sequence number used to uniquely identify this Service and prevent duplicate services within this statement.
+BillingSubServiceQualifier1Code	MACT	MemberAccount	_6WqIoJqlEeGSON8vddiWzQ_-1223021061	Subservice code is the account number of a member of a relationship structure. This allows a parent statement to include the same service as rolled up from its member accounts and still avoid duplicate service identification within the statement.
+BillingChargeMethod1Code	UPRC	UnitPriced	_6Ukd95qlEeGSON8vddiWzQ_-840350178	Charge is calculated as the product of volume times unit price. This is the default value.
+BillingChargeMethod1Code	STAM	StampDuty	_6Ukd-JqlEeGSON8vddiWzQ_1610748129	Service is specifically identified as a stamp duty for accounting purposes. The charge is calculated as the product of volume times unit price.
+BillingChargeMethod1Code	BCHG	BaseCharge	_6UuO8JqlEeGSON8vddiWzQ_-1217070404	Fee charged in addition to the volume times unit price when one or more units of the service are provided.
+BillingChargeMethod1Code	DPRC	DiscountPrice	_6UuO8ZqlEeGSON8vddiWzQ_2064835398	Charge is calculated using a price which is lower than the quoted bank price.
+BillingChargeMethod1Code	FCHG	FlatCharge	_6UuO8pqlEeGSON8vddiWzQ_2053736621	Fixed charge not tied to volume or unit price. Flat Charge fees do not require a volume or Unit Price.
+BillingChargeMethod1Code	LPRC	ListPrice	_6UuO85qlEeGSON8vddiWzQ_361556424	A single service where the volume, original charge and balance required are the totals of two or more pricing tiers.
+BillingChargeMethod1Code	MCHG	MinimumCharge	_6UuO9JqlEeGSON8vddiWzQ_1828705187	Lowest charge possible for the service.
+BillingChargeMethod1Code	MXRD	MaximumReduction	_6UuO9ZqlEeGSON8vddiWzQ_815643693	Maximum charge possible for the service even though volume times unit price exceeds the maximum reduction value.
+BillingChargeMethod1Code	TIR1	Tier1	_6UuO9pqlEeGSON8vddiWzQ_804544916	Line item represents a charge for tier 1 in a multi tier, volume discount charging structure. Designates the tier 1 used to charge out the volume that falls in that tier.
+BillingChargeMethod1Code	TIR2	Tier2	_6UuO95qlEeGSON8vddiWzQ_-766551424	Line item represents a charge for tier 2 in a multi tier, volume discount charging structure. Designates the tier 2 used to charge out the volume that falls in that tier.
+BillingChargeMethod1Code	TIR3	Tier3	_6UuO-JqlEeGSON8vddiWzQ_1601332259	Line item represents a charge for tier 3 in a multi tier, volume discount charging structure. Designates the tier 3 used to charge out the volume that falls in that tier.
+BillingChargeMethod1Code	TIR4	Tier4	_6U3Y4JqlEeGSON8vddiWzQ_337586552	Line item represents a charge for tier 4 in a multi tier, volume discount charging structure. Designates the tier 4 used to charge out the volume that falls in that tier.
+BillingChargeMethod1Code	TIR5	Tier5	_6U3Y4ZqlEeGSON8vddiWzQ_446377247	Line item represents a charge for tier 5 in a multi tier, volume discount charging structure. Designates the tier 5 used to charge out the volume that falls in that tier.
+BillingChargeMethod1Code	TIR6	Tier6	_6U3Y4pqlEeGSON8vddiWzQ_-1049352499	Line item represents a charge for tier 6 in a multi tier, volume discount charging structure. Designates the tier 6 used to charge out the volume that falls in that tier.
+BillingChargeMethod1Code	TIR7	Tier7	_6U3Y45qlEeGSON8vddiWzQ_-654755907	Line item represents a charge for tier 7 in a multi tier, volume discount charging structure. Designates the tier 7 used to charge out the volume that falls in that tier.
+BillingChargeMethod1Code	TIR8	Tier8	_6U3Y5JqlEeGSON8vddiWzQ_897527195	Line item represents a charge for tier 8 in a multi tier, volume discount charging structure. Designates the tier 8 used to charge out the volume that falls in that tier.
+BillingChargeMethod1Code	TIR9	Tier9	_6U3Y5ZqlEeGSON8vddiWzQ_1233780089	Line item represents a charge for tier 9 in a multi tier, volume discount charging structure. Designates the tier 9 used to charge out the volume that falls in that tier.
+BillingChargeMethod1Code	TPRC	ThresholdPrice	_6U3Y5pqlEeGSON8vddiWzQ_1855677988	Unit price is determined by the total volume.
+BillingChargeMethod1Code	ZPRC	ZonePrice	_6U3Y55qlEeGSON8vddiWzQ_-972140545	Indicates different prices for the same service. Typically used in a relationship summary statement where the same service has a different price for different accounts in the relationship.
+BillingChargeMethod1Code	BBSE	BalanceBased	_6U3Y6JqlEeGSON8vddiWzQ_11808999	Charge is calculated as a balance times a per-annum rate multiplied by a time factor.
+ServicePaymentMethod1Code	BCMP	BalanceCompensable	_6V6hxpqlEeGSON8vddiWzQ_1103448435	Allows the bank to offset a service charge with interest earned on the deposit account balance. The actual charges arising from balance compensable services are always calculated and charged at month end. Used in the USA.
+ServicePaymentMethod1Code	FLAT	HardCharge	_6V6hx5qlEeGSON8vddiWzQ_-588731762	Charge is not balance compensable and is due. In the absence of balance compensable charges in Europe, this would be the most commonly used code for services that are billed at month end.
+ServicePaymentMethod1Code	PVCH	PreviouslyCharged	_6WDrsJqlEeGSON8vddiWzQ_878417001	Charge was previously assessed and is not part of the amount due as of this statement. This code is used for charges that were debited as the chargeable event took place.
+ServicePaymentMethod1Code	INVS	InvoicedSeparately	_6WDrsZqlEeGSON8vddiWzQ_-599830539	Charge was previously invoiced and is not part of the amount due as of this statement. This code is used for charges that were invoiced as the chargeable event took place.
+ServicePaymentMethod1Code	WVED	Waived	_6WDrspqlEeGSON8vddiWzQ_21670166	Charge is waived and not due. The waived amount must be placed in original charge amount.
+ServicePaymentMethod1Code	FREE	Free	_6WDrs5qlEeGSON8vddiWzQ_1488818929	Service is free, no charge, to the customer.
+ServiceTaxDesignation1Code	XMPT	Exempt	_6WNcs5qlEeGSON8vddiWzQ_476426734	No taxes are due.
+ServiceTaxDesignation1Code	ZERO	ZeroRate	_6WNctJqlEeGSON8vddiWzQ_-303620587	Tax is due but at zero percent and a zero charge.
+ServiceTaxDesignation1Code	TAXE	Taxable	_6WNctZqlEeGSON8vddiWzQ_-314719364	One or more taxes are due on this service.
+BalanceAdjustmentType1Code	LDGR	Ledger	_6URjBZqlEeGSON8vddiWzQ_-1813350112	Adjustment applies to the average ledger (book) balance.
+BalanceAdjustmentType1Code	FLOT	Float	_6URjBpqlEeGSON8vddiWzQ_-1052584959	Adjustment applies to the average float (unavailable) balance.
+BalanceAdjustmentType1Code	CLLD	Collected	_6URjB5qlEeGSON8vddiWzQ_414563804	Adjustment applies to the average collected (book less float) balance.
+ServiceAdjustmentType1Code	COMP	Compensable	_6V6hwJqlEeGSON8vddiWzQ_1688850679	Adjustment applies to a service which is balance compensable. Earnings credits based on average balances maintained in the account can be used to offset the service charge.
+ServiceAdjustmentType1Code	NCMP	NonCompensable	_6V6hwZqlEeGSON8vddiWzQ_1677751902	Adjustment applies to a service which is not balance compensable. Balance based credits cannot be used to offset the service charge.

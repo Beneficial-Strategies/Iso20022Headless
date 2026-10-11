@@ -1,0 +1,3 @@
+codeSet	isoId	text
+ExternalSystemMemberType1Code	_7geSZnhfEeidzqjNEfehPg	Specifies the nature of the membership of a party in a system, as published in an external system member type code set.|External code sets can be downloaded from www.iso20022.org.
+MemberStatus1Code	_zdmYYw93EeGeV5vP7Mvdig_311511603	Specifies the live status of a member of a system.

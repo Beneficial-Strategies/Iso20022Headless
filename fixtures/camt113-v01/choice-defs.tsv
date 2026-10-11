@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+CashDeliveryMethod1Choice	_7w1L8OOwEe-NFYIkYc90gw	Code	Cash delivery method as published in an external delivery method code set.
+CashDeliveryMethod1Choice	_ETdUUOOxEe-NFYIkYc90gw	Proprietary	Cash delivery method, in a proprietary form.

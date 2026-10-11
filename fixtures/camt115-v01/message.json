@@ -1,0 +1,35 @@
+{
+  "identifier": "camt.115.001.01",
+  "name": "CashDepositOrWithdrawalStatusUpdateV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.115.001.01",
+  "bodyTag": "CshDpstOrWdrwlStsUpd",
+  "out": "camt115",
+  "isoId": "_hb3y8FGkEfC_v5ez7RpMHw",
+  "definition": "The CashDepositOrWithdrawalStatusUpdate message reports the status of a cash deposit request or cash withdrawal request.|Where reporting on the status of a cash deposit request, it is sent by a cash receiver to a cash sender.|Where reporting on the status of a cash withdrawal request, it is sent by a cash sender to a cash receiver.",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "_kDRoIFGmEfC_v5ez7RpMHw",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader134",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "RequestInformationAndStatus",
+      "isoId": "_pJHOoFGoEfC_v5ez7RpMHw",
+      "xmlTag": "ReqInfAndSts",
+      "type": "RequestIdentificationAndStatus1",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_cq-9catiEfC6tbn8zOl_iw",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

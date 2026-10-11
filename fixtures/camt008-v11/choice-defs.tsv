@@ -1,0 +1,11 @@
+choice	memberId	memberName	text
+PaymentIdentification8Choice	_2AnwwTEyEe6g-ffJsqGiSA	TransactionIdentification	Unique identification, as assigned by the first instructing agent, to unambiguously identify the transaction that is passed on, unchanged, throughout the entire interbank chain.|Usage: The transaction identification can be used for reconciliation, tracking or to link tasks relating to the transaction on the interbank level. The instructing agent has to make sure that the transaction identification is unique for a pre-agreed period.|Usage: this is the former PaymentInstructionReference element.
+PaymentIdentification8Choice	_2AnwwzEyEe6g-ffJsqGiSA	UETR	Universally unique identifier to provide an end-to-end reference of a payment transaction.
+PaymentIdentification8Choice	_2AnwxTEyEe6g-ffJsqGiSA	QueueIdentification	Identification of the payment instruction by its position in a queue managed by the clearing agent.
+PaymentIdentification8Choice	_2AnwxzEyEe6g-ffJsqGiSA	LongBusinessIdentification	Business identification of the payment instruction given by the clearing agent.
+PaymentIdentification8Choice	_2AnwyTEyEe6g-ffJsqGiSA	ShortBusinessIdentification	Business identification of the payment instruction given by the clearing agent.
+PaymentIdentification8Choice	_2AnwyzEyEe6g-ffJsqGiSA	ProprietaryIdentification	Unique proprietary reference of the underlying payment instruction assigned by the system.
+PaymentOrigin1Choice	_RIwV1dp-Ed-ak6NoX_4Aeg_1910593546	FINMessageType	Specifies that the payment was included in a SWIFT FIN format message, for example, MT 103.
+PaymentOrigin1Choice	_RIwV1tp-Ed-ak6NoX_4Aeg_1991862466	XMLMessageName	Specifies that the payment was included in a SWIFT XML message.
+PaymentOrigin1Choice	_RIwV19p-Ed-ak6NoX_4Aeg_2038039429	Proprietary	Specifies that the payment was included in a proprietary format message.
+PaymentOrigin1Choice	_RIwV2Np-Ed-ak6NoX_4Aeg_-1983565483	Instrument	Specifies the type of payment when not included in a SWIFT or proprietary format.

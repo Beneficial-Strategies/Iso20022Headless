@@ -1,0 +1,9 @@
+choice	memberId	memberName	text
+RequestType4Choice	_i375oZIhEeect698_YsnIA	PaymentControl	Request type is a control command on a set of transactions.
+RequestType4Choice	_i375o5IhEeect698_YsnIA	Enquiry	Request type is an enquiry on a position or a transaction.
+RequestType4Choice	_i375pZIhEeect698_YsnIA	Proprietary	Request type is in proprietary format.
+PartyIdentification120Choice	_V5dscbpYEeifFaUMRKyMMw	AnyBIC	Code allocated to a financial or non-financial institution by the ISO 9362 Registration Authority, as described in ISO 9362 "Banking - Banking telecommunication messages - Business identifier code (BIC)".
+PartyIdentification120Choice	_V5dsc7pYEeifFaUMRKyMMw	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to a financial institution using a proprietary identification scheme.
+PartyIdentification120Choice	_V5dsdbpYEeifFaUMRKyMMw	NameAndAddress	Name and address of a party.
+AccountIdentification38Choice	_mmlMgeF6EeWCAvUNsZ5u6g	SecuritiesAccountIdentification	Unique identification of the securities account as assigned by the account servicer.
+AccountIdentification38Choice	_mmlMg-F6EeWCAvUNsZ5u6g	CashAccountIdentification	Unique identification of the cash account, as assigned by the account servicer.

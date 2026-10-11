@@ -1,0 +1,35 @@
+{
+  "identifier": "camt.105.001.03",
+  "name": "ChargesPaymentNotificationV03",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.105.001.03",
+  "bodyTag": "ChrgsPmtNtfctn",
+  "out": "camt105",
+  "isoId": "_UY1ncTrDEe-thIfLZ94a1w",
+  "definition": "The ChargesPaymentNotification message is sent by the account servicing institution to the account owner to advise charges, interest or other adjustments to the owner's account.  It provides details of charges which were previously unknown to the Receiver.",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "_UY1njTrDEe-thIfLZ94a1w",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader126",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Charges",
+      "isoId": "_UY1njzrDEe-thIfLZ94a1w",
+      "xmlTag": "Chrgs",
+      "type": "Charges5Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_UY1nkTrDEe-thIfLZ94a1w",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

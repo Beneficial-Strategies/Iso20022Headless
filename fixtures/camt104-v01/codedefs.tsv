@@ -1,0 +1,7 @@
+codeSet	code	enumName	isoId	text
+PaymentRole1Code	LQMG	LiquidityManager	_Z7RUUdp-Ed-ak6NoX_4Aeg_-925433454	Party in a financial institution responsible for the management of liquidity for the financial institution. This party has access to some functions available on the system, such as the liquidity transfers ormanagement of standing instructions for liquidity control.
+PaymentRole1Code	LMMG	LimitManager	_Z7RUUtp-Ed-ak6NoX_4Aeg_-925433453	Party in a financial institution responsible for the management of the limits. This party is responsible for fixing, modifying, or suspending limits as relevant for the management of counterpart risk or systemic risk containment.
+PaymentRole1Code	PYMG	PaymentManager	_Z7RUU9p-Ed-ak6NoX_4Aeg_-925433452	Party in a financial institution responsible for the management of payment processing for the financial institution. This includes authorising, recycling, and modification of payment transactions.
+PaymentRole1Code	REDR	Reader	_Z7RUVNp-Ed-ak6NoX_4Aeg_-925433443	Party in a financial institution entitled to obtain information from the system, but not act upon/alter this information.
+PaymentRole1Code	BKMG	BackupManager	_Z7RUVdp-Ed-ak6NoX_4Aeg_-925433442	Party responsible for managing the recovery functions related to a system.
+PaymentRole1Code	STMG	SettlementManager	_Z7RUVtp-Ed-ak6NoX_4Aeg_-925433441	Party in a financial institution responsible for the management of settlement processing.

@@ -1,0 +1,5 @@
+codeSet	code	enumName	isoId	text
+ChequePartyRole1Code	DWEA	DraweeAgent	_aLmLwSmyEeutWNGMV2XKIQ	Specifies the agent on which a cheque is drawn, that is the financial institution that services the account of the payee that issued the cheque.
+ChequePartyRole1Code	DWRA	DrawerAgent	_aQkLUSmyEeutWNGMV2XKIQ	Specifies the agent servicing the account of the cheque payer.
+ChequePartyRole1Code	PAYE	Payee	_aVo4kSmyEeutWNGMV2XKIQ	Party that receives an amount of money as specified in the cheque.
+ChequePartyRole1Code	PAYR	Payer	_aeLwkSmyEeutWNGMV2XKIQ	Party that issues a cheque ordering the drawee agent to pay a specific amount, upon demand, to the payee.

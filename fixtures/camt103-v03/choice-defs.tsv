@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+ReservationType2Choice	_5xhOIRUNEeusI4XK3oQSyg	Code	Liquidity transfer request type, in a coded form.
+ReservationType2Choice	_5xhOIxUNEeusI4XK3oQSyg	Proprietary	Liquidity transfer request type, in a proprietary form.

@@ -1,0 +1,7 @@
+choice	memberId	memberName	text
+GeneralBusinessInformationCriteriaDefinition1Choice	_1dxAkZlZEeeE1Ya-LgRsuQ	QueryName	Recalls the criteria (search and return criteria) defined in a preceding query.
+GeneralBusinessInformationCriteriaDefinition1Choice	_1dxAk5lZEeeE1Ya-LgRsuQ	NewCriteria	Defines the criteria based on which the information is extracted.
+CharacterSearch1Choice	_GDljUZlaEeeE1Ya-LgRsuQ	Equal	Exact set of characters to be matched to be considered valid.
+CharacterSearch1Choice	_GDljU5laEeeE1Ya-LgRsuQ	NotEqual	Exact set of characters that cannot match to be considered valid.
+CharacterSearch1Choice	_GDljVZlaEeeE1Ya-LgRsuQ	Contain	Set of characters to be matched to be considered valid.
+CharacterSearch1Choice	_GDljV5laEeeE1Ya-LgRsuQ	NotContain	Set of characters that cannot match to be considered valid.

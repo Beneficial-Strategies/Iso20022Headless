@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+ChequeCancellationStatus1Choice	_PJJT_LtyEeq_cfXrH83Rcw	Code	Status, in a coded form, as published in an external code set.
+ChequeCancellationStatus1Choice	_PJJT_btyEeq_cfXrH83Rcw	Proprietary	Status, in a proprietary form.

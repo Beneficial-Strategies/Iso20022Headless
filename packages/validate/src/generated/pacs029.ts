@@ -43,6 +43,7 @@ import {
   NumberSchema,
   ActiveCurrencyAndAmountSchema,
   CreditDebitCodeSchema,
+  AmountAndDirection5Schema,
   Max140TextSchema,
   AddressType2CodeSchema,
   Exact4AlphaNumericTextSchema,
@@ -87,11 +88,6 @@ export const GroupHeader104Schema = z.strictObject({
   SettlementInformation: SettlementInstruction14Schema.optional(),
 });
 
-export const AmountAndDirection5Schema = z.strictObject({
-  Amount: ActiveCurrencyAndAmountSchema,
-  CreditDebit: CreditDebitCodeSchema.optional(),
-});
-
 export const MovementRecord2Schema = z.strictObject({
   Identification: Max35TextSchema,
   SequenceNumber: NumberSchema.optional(),
@@ -132,15 +128,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "NumberOfSettlementRequests", isoId: "_7ua3twcYEeyTDbUIoCmuCw", xmlTag: "NbOfSttlmReqs", displayName: displayName("NumberOfSettlementRequests"), kind: "text", type: "Max15NumericText", required: true }),
       f({ name: "ControlSum", isoId: "_7ua3uQcYEeyTDbUIoCmuCw", xmlTag: "CtrlSum", displayName: displayName("ControlSum"), kind: "number", type: "DecimalNumber", required: false }),
       f({ name: "SettlementInformation", isoId: "_7ua3vQcYEeyTDbUIoCmuCw", xmlTag: "SttlmInf", displayName: displayName("SettlementInformation"), kind: "component", type: "SettlementInstruction14", required: false }),
-    ],
-  },
-  "AmountAndDirection5": {
-    name: "AmountAndDirection5",
-    isoId: "_T2Wkhdp-Ed-ak6NoX_4Aeg_-2124038249",
-    kind: "component",
-    fields: [
-      f({ name: "Amount", isoId: "_T2Wkhtp-Ed-ak6NoX_4Aeg_-2090791440", xmlTag: "Amt", displayName: displayName("Amount"), kind: "amount", type: "ActiveCurrencyAndAmount", required: true }),
-      f({ name: "CreditDebit", isoId: "_T2Wkh9p-Ed-ak6NoX_4Aeg_-2037226790", xmlTag: "CdtDbt", displayName: displayName("CreditDebit"), kind: "code", type: "CreditDebitCode", required: false }),
     ],
   },
   "MovementRecord2": {
@@ -215,6 +202,7 @@ export const typeDescriptors: TypeDescriptors = {
   "Number": sharedTypeDescriptors["Number"]!,
   "ActiveCurrencyAndAmount": sharedTypeDescriptors["ActiveCurrencyAndAmount"]!,
   "CreditDebitCode": sharedTypeDescriptors["CreditDebitCode"]!,
+  "AmountAndDirection5": sharedTypeDescriptors["AmountAndDirection5"]!,
   "Max140Text": sharedTypeDescriptors["Max140Text"]!,
   "AddressType2Code": sharedTypeDescriptors["AddressType2Code"]!,
   "Exact4AlphaNumericText": sharedTypeDescriptors["Exact4AlphaNumericText"]!,

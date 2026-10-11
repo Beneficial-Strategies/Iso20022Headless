@@ -1,0 +1,6 @@
+name	isoId	xsiType	pattern	minLength	maxLength	totalDigits	fractionDigits	minInclusive	maxInclusive	other
+Max40Text	_TQbTxwEcEeCQm6a_G2yO_w_900701410	Text		1	40					
+PlusOrMinusIndicator	_YXvFA9p-Ed-ak6NoX_4Aeg_143431681	Indicator								meaningWhenTrue=Plus; meaningWhenFalse=Minus
+Max8Text	_YYU65dp-Ed-ak6NoX_4Aeg_1066600236	Text		1	8					
+Max12Text	_6WqIp5qlEeGSON8vddiWzQ_-1005771314	Text		1	12					
+Max20Text	_6WzSkJqlEeGSON8vddiWzQ_-2085735640	Text		1	20					

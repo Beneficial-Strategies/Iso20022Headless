@@ -1,0 +1,35 @@
+{
+  "identifier": "camt.116.001.01",
+  "name": "CashDepositOrWithdrawalCancellationRequestV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.116.001.01",
+  "bodyTag": "CshDpstOrWdrwlCxlReq",
+  "out": "camt116",
+  "isoId": "_Zbk1oHgyEfCdoODv2ypKfw",
+  "definition": "The CashDepositOrWithdrawalCancellationRequest message requests the cancellation of a cash deposit request or cash withdrawal request.|Where requesting cancellation of a cash deposit request, it is sent by a cash receiver to a cash sender.|Where requesting cancellation of a cash withdrawal request, it is sent by a cash sender to a cash receiver.",
+  "blocks": [
+    {
+      "name": "GroupHeader",
+      "isoId": "_yguVIXgyEfCdoODv2ypKfw",
+      "xmlTag": "GrpHdr",
+      "type": "GroupHeader134",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "UnderlyingTransaction",
+      "isoId": "_CUHVYHgzEfCdoODv2ypKfw",
+      "xmlTag": "UndrlygTx",
+      "type": "UnderlyingTransaction38",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_dJ5uEatiEfC6tbn8zOl_iw",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

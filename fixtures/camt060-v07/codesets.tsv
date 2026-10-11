@@ -1,0 +1,7 @@
+codeSetName	isoId	restrictionOf	code	enumName
+QueryType3Code	_ZXqQ9tp-Ed-ak6NoX_4Aeg_1181990652	QueryTypeCode	ALLL	All
+QueryType3Code	_ZXqQ9tp-Ed-ak6NoX_4Aeg_1181990652	QueryTypeCode	CHNG	Changed
+QueryType3Code	_ZXqQ9tp-Ed-ak6NoX_4Aeg_1181990652	QueryTypeCode	MODF	Modified
+FloorLimitType1Code	_aqzT0tp-Ed-ak6NoX_4Aeg_-1031522617	FloorLimitTypeCode	CRED	Credit
+FloorLimitType1Code	_aqzT0tp-Ed-ak6NoX_4Aeg_-1031522617	FloorLimitTypeCode	DEBT	Debit
+FloorLimitType1Code	_aqzT0tp-Ed-ak6NoX_4Aeg_-1031522617	FloorLimitTypeCode	BOTH	Both

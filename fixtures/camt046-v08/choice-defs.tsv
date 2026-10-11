@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+ReservationCriteria6Choice	_zu8pETEyEe6g-ffJsqGiSA	QueryName	Recalls the criteria (search and return criteria) defined in a preceding query.
+ReservationCriteria6Choice	_zu8pEzEyEe6g-ffJsqGiSA	NewCriteria	Defines the criteria based on which the information is extracted.

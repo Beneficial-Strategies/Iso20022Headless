@@ -1,0 +1,6 @@
+codeSet	isoId	text
+InvestmentFundTransactionInType1Code	_acpjF9p-Ed-ak6NoX_4Aeg_-159991838	Specifies the type of investment fund transaction that results in a cash movement into a fund.
+OrderQuantityType2Code	_aRVD4Np-Ed-ak6NoX_4Aeg_-1133979180	Specifies how the order is placed, eg by quantity of units or by amount of money.
+ChargeType12Code	_a8ruBtp-Ed-ak6NoX_4Aeg_-1448425004	Type of service for which a charge is asked or paid.
+CommissionType6Code	_a_9rg9p-Ed-ak6NoX_4Aeg_2025119069	Specifies the type of investment fund commission.
+InvestmentFundTransactionOutType1Code	_aczUE9p-Ed-ak6NoX_4Aeg_1672602191	Specifies the type of investment fund transaction that results in a cash movement out of a fund.

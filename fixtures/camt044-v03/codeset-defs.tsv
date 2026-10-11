@@ -1,0 +1,6 @@
+codeSet	isoId	text
+FlowDirectionType1Code	_aq9E0tp-Ed-ak6NoX_4Aeg_124504901	Specifies the direction of a cash flow.
+FormOfSecurity1Code	_arP_wdp-Ed-ak6NoX_4Aeg_1608809377	Form of a financial instrument.
+DistributionPolicy1Code	_awwx4tp-Ed-ak6NoX_4Aeg_-433302197	Specifies if income is to be paid out (distributed) or retained (accumulated).
+CurrencyDesignation1Code	_Bru94Ad2EeSPHJIdUs1USg	Specifies whether a currency is settled offshore or onshore.
+TypeOfPrice10Code	_Yw6aBNp-Ed-ak6NoX_4Aeg_1125062082	Specifies the type of price.

@@ -1,0 +1,3 @@
+codeSetName	isoId	restrictionOf	code	enumName
+ExternalRequestStatus1Code	_gy_x0LqtEe68nbz8Nl_hLQ	ExternalRequestStatusCode	*EXTERNAL*	minLength=1 maxLength=4; ~5 codes (not enumerated)
+ExternalCashType1Code	_nZGQgFEOEfCinrylqh3nLw	ExternalCashTypeCode	*EXTERNAL*	minLength=1 maxLength=4; ~9 codes (not enumerated)

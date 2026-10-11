@@ -1,0 +1,741 @@
+{
+  "message": {
+    "identifier": "camt.023.001.07",
+    "name": "BackupPaymentV07",
+    "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.023.001.07",
+    "bodyTag": "BckpPmt",
+    "out": "camt023",
+    "isoId": "_jwlbMRbvEeiyVv5j1vf1VQ",
+    "definition": "Scope|The BackupPayment message is sent by a member to the transaction administrator.|It is used to request a liquidity transfer from the member to another participant in the system when the user is in recovery mode.|Usage|Under very specific circumstances, the transaction administrator can accept direct input of transactions as part of its cash management functionalities. This possibility is available only when a declared incident has been reported to the transaction administrator This could be the case, for example, when the internal systems of the member are having problems sending out payments or when the continuity of the whole system is put at risk.|The purpose of the BackupPayment message is to prevent the consequences of a specific failure affecting not only the member experiencing problems but also its counterparties. Members can therefore input transactions directly in order to ensure the stability of the system and smooth exchanges.|At any time during the operating hours of the system, and under the agreed circumstances, the member can request a backup payment to be effected.|The member can request the transfer by identifying the following elements:|- party (account owner) that will receive the funds|- the financial institution that will receive the funds on behalf of the account owner|Based on the criteria received within the BackupPayment message, the transaction administrator will execute or reject the requested funds transfer.|The transaction administrator may send a Receipt message as a reply to the BackupPayment request.|To verify the outcome of the request, the member may submit a GetTransaction or GetAccount message with the appropriate search criteria.",
+    "blocks": [
+      {
+        "name": "MessageHeader",
+        "isoId": "_jwlbMxbvEeiyVv5j1vf1VQ",
+        "xmlTag": "MsgHdr",
+        "type": "MessageHeader1",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "OriginalMessageIdentification",
+        "isoId": "_jwlbNRbvEeiyVv5j1vf1VQ",
+        "xmlTag": "OrgnlMsgId",
+        "type": "MessageHeader1",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "name": "InstructionInformation",
+        "isoId": "_jwlbNxbvEeiyVv5j1vf1VQ",
+        "xmlTag": "InstrInf",
+        "type": "PaymentInstruction13",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "name": "TransferredAmount",
+        "isoId": "_jwlbORbvEeiyVv5j1vf1VQ",
+        "xmlTag": "TrfdAmt",
+        "type": "Amount2Choice",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "Creditor",
+        "isoId": "_jwlbOxbvEeiyVv5j1vf1VQ",
+        "xmlTag": "Cdtr",
+        "type": "SystemMember3",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "CreditorAgent",
+        "isoId": "_jwlbPRbvEeiyVv5j1vf1VQ",
+        "xmlTag": "CdtrAgt",
+        "type": "SystemMember3",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "name": "DebtorAgent",
+        "isoId": "_jwlbPxbvEeiyVv5j1vf1VQ",
+        "xmlTag": "DbtrAgt",
+        "type": "SystemMember3",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "name": "SupplementaryData",
+        "isoId": "_jwlbQRbvEeiyVv5j1vf1VQ",
+        "xmlTag": "SplmtryData",
+        "type": "SupplementaryData1",
+        "min": 0,
+        "max": null
+      }
+    ]
+  },
+  "root": "BackupPaymentV07",
+  "order": [
+    "Max35Text",
+    "ISODateTime",
+    "MessageHeader1",
+    "PaymentType3Code",
+    "PaymentType4Choice",
+    "PaymentInstruction13",
+    "ImpliedCurrencyAndAmount",
+    "ActiveCurrencyAndAmount",
+    "Amount2Choice",
+    "ExternalMarketInfrastructure1Code",
+    "MarketInfrastructureIdentification1Choice",
+    "CountryCode",
+    "SystemIdentification2Choice",
+    "BICFIDec2014Identifier",
+    "ExternalClearingSystemIdentification1Code",
+    "ClearingSystemIdentification2Choice",
+    "ClearingSystemMemberIdentification2",
+    "ExternalFinancialInstitutionIdentification1Code",
+    "FinancialIdentificationSchemeName1Choice",
+    "GenericFinancialIdentification1",
+    "MemberIdentification3Choice",
+    "SystemMember3",
+    "Max350Text",
+    "SupplementaryDataEnvelope1",
+    "SupplementaryData1",
+    "BackupPaymentV07"
+  ],
+  "types": {
+    "Max35Text": {
+      "name": "Max35Text",
+      "kind": "text",
+      "isoId": "_YW1tKdp-Ed-ak6NoX_4Aeg_1913463446",
+      "minLength": 1,
+      "maxLength": 35
+    },
+    "ISODateTime": {
+      "name": "ISODateTime",
+      "kind": "datetime",
+      "isoId": "_YW1tKtp-Ed-ak6NoX_4Aeg_-1624336183"
+    },
+    "MessageHeader1": {
+      "name": "MessageHeader1",
+      "isoId": "_75DzkaMgEeCJ6YNENx4h-w_-613853819",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "MessageIdentification",
+          "isoId": "_75DzkqMgEeCJ6YNENx4h-w_-727692885",
+          "xmlTag": "MsgId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CreationDateTime",
+          "isoId": "_75Dzk6MgEeCJ6YNENx4h-w_-1610926172",
+          "xmlTag": "CreDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "PaymentType3Code": {
+      "name": "PaymentType3Code",
+      "isoId": "_Z8A7M9p-Ed-ak6NoX_4Aeg_-2009106787",
+      "kind": "code",
+      "options": [
+        {
+          "value": "CBS",
+          "name": "CrossBorderPayment",
+          "isoId": "_Z8A7NNp-Ed-ak6NoX_4Aeg_-2009106552"
+        },
+        {
+          "value": "BCK",
+          "name": "BackUp",
+          "isoId": "_Z8A7Ndp-Ed-ak6NoX_4Aeg_-2009106527"
+        },
+        {
+          "value": "BAL",
+          "name": "BalanceRetail",
+          "isoId": "_Z8A7Ntp-Ed-ak6NoX_4Aeg_-2009106526"
+        },
+        {
+          "value": "CLS",
+          "name": "CLSPayment",
+          "isoId": "_Z8A7N9p-Ed-ak6NoX_4Aeg_-2009106510"
+        },
+        {
+          "value": "CTR",
+          "name": "CentralBankOperation",
+          "isoId": "_Z8A7ONp-Ed-ak6NoX_4Aeg_-2009106492"
+        },
+        {
+          "value": "CBH",
+          "name": "CrossBorderHighValuePayment",
+          "isoId": "_Z8A7Odp-Ed-ak6NoX_4Aeg_-2009106467"
+        },
+        {
+          "value": "CBP",
+          "name": "CrossBorderPriorityPayment",
+          "isoId": "_Z8KsMNp-Ed-ak6NoX_4Aeg_-2009106450"
+        },
+        {
+          "value": "DPG",
+          "name": "DVPGross",
+          "isoId": "_Z8KsMdp-Ed-ak6NoX_4Aeg_-2009106432"
+        },
+        {
+          "value": "DPN",
+          "name": "DVPNet",
+          "isoId": "_Z8KsMtp-Ed-ak6NoX_4Aeg_-2009106415"
+        },
+        {
+          "value": "EXP",
+          "name": "ExpressPayment",
+          "isoId": "_Z8KsM9p-Ed-ak6NoX_4Aeg_-2009106414"
+        },
+        {
+          "value": "TCH",
+          "name": "ThirdCurrencyHighValuePayment",
+          "isoId": "_Z8KsNNp-Ed-ak6NoX_4Aeg_-2009106397"
+        },
+        {
+          "value": "LMT",
+          "name": "LimitPayment",
+          "isoId": "_Z8KsNdp-Ed-ak6NoX_4Aeg_-2009106124"
+        },
+        {
+          "value": "LIQ",
+          "name": "LiquidityTransfer",
+          "isoId": "_Z8KsNtp-Ed-ak6NoX_4Aeg_-2009106107"
+        },
+        {
+          "value": "DPP",
+          "name": "DomesticPriorityPayment",
+          "isoId": "_Z8KsN9p-Ed-ak6NoX_4Aeg_-2009106106"
+        },
+        {
+          "value": "DPH",
+          "name": "DomesticHighValuePayment",
+          "isoId": "_Z8KsONp-Ed-ak6NoX_4Aeg_-2009106089"
+        },
+        {
+          "value": "DPS",
+          "name": "DomesticPayment",
+          "isoId": "_Z8KsOdp-Ed-ak6NoX_4Aeg_-2009106012"
+        },
+        {
+          "value": "STF",
+          "name": "StandingFacilities",
+          "isoId": "_Z8T2INp-Ed-ak6NoX_4Aeg_-2009105969"
+        },
+        {
+          "value": "TRP",
+          "name": "TreasuryStatePayment",
+          "isoId": "_Z8T2Idp-Ed-ak6NoX_4Aeg_-2009105952"
+        },
+        {
+          "value": "TCS",
+          "name": "ThirdCurrencyPayment",
+          "isoId": "_Z8T2Itp-Ed-ak6NoX_4Aeg_-2009105934"
+        },
+        {
+          "value": "LOA",
+          "name": "Loan",
+          "isoId": "_Z8T2I9p-Ed-ak6NoX_4Aeg_-2009105933"
+        },
+        {
+          "value": "LOR",
+          "name": "LoanRepayment",
+          "isoId": "_Z8T2JNp-Ed-ak6NoX_4Aeg_-2009105909"
+        },
+        {
+          "value": "TCP",
+          "name": "ThirdCurrencyPriorityPayment",
+          "isoId": "_Z8T2Jdp-Ed-ak6NoX_4Aeg_-2009105892"
+        },
+        {
+          "value": "OND",
+          "name": "OvernightDeposit",
+          "isoId": "_Z8T2Jtp-Ed-ak6NoX_4Aeg_-1235461266"
+        },
+        {
+          "value": "MGL",
+          "name": "MarginalLending",
+          "isoId": "_Z8T2J9p-Ed-ak6NoX_4Aeg_-1231765290"
+        }
+      ]
+    },
+    "PaymentType4Choice": {
+      "name": "PaymentType4Choice",
+      "isoId": "_Kjf4MxbwEeOy-PlRuFSUzQ",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_K7v_8RbwEeOy-PlRuFSUzQ",
+          "xmlTag": "Cd",
+          "type": "PaymentType3Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_K7v_8xbwEeOy-PlRuFSUzQ",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "PaymentInstruction13": {
+      "name": "PaymentInstruction13",
+      "isoId": "_Lss7yxbwEeOy-PlRuFSUzQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "RequestedExecutionDateTime",
+          "isoId": "_MFP-oxbwEeOy-PlRuFSUzQ",
+          "xmlTag": "ReqdExctnDtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PaymentType",
+          "isoId": "_MFP-pRbwEeOy-PlRuFSUzQ",
+          "xmlTag": "PmtTp",
+          "type": "PaymentType4Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "ImpliedCurrencyAndAmount": {
+      "name": "ImpliedCurrencyAndAmount",
+      "isoId": "_YXbjBNp-Ed-ak6NoX_4Aeg_-1934687468",
+      "kind": "number",
+      "totalDigits": 18,
+      "fractionDigits": 5,
+      "minInclusive": 0
+    },
+    "ActiveCurrencyAndAmount": {
+      "name": "ActiveCurrencyAndAmount",
+      "isoId": "_YX4O9tp-Ed-ak6NoX_4Aeg_-836081793",
+      "kind": "amount",
+      "pattern": "[A-Z]{3,3}",
+      "totalDigits": 18,
+      "fractionDigits": 5,
+      "minInclusive": 0
+    },
+    "Amount2Choice": {
+      "name": "Amount2Choice",
+      "isoId": "_75DzlKMgEeCJ6YNENx4h-w_890446015",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "AmountWithoutCurrency",
+          "isoId": "_75DzlaMgEeCJ6YNENx4h-w_-106626338",
+          "xmlTag": "AmtWthtCcy",
+          "type": "ImpliedCurrencyAndAmount",
+          "kind": "number",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "AmountWithCurrency",
+          "isoId": "_75DzlqMgEeCJ6YNENx4h-w_776606949",
+          "xmlTag": "AmtWthCcy",
+          "type": "ActiveCurrencyAndAmount",
+          "kind": "amount",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ExternalMarketInfrastructure1Code": {
+      "name": "ExternalMarketInfrastructure1Code",
+      "isoId": "_8MlMg6MgEeCJ6YNENx4h-w_-216754992",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 3
+    },
+    "MarketInfrastructureIdentification1Choice": {
+      "name": "MarketInfrastructureIdentification1Choice",
+      "isoId": "_8BQtWKMgEeCJ6YNENx4h-w_739589116",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_8BQtWaMgEeCJ6YNENx4h-w_-1124219834",
+          "xmlTag": "Cd",
+          "type": "ExternalMarketInfrastructure1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_8BZ3QKMgEeCJ6YNENx4h-w_-1719940070",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "CountryCode": {
+      "name": "CountryCode",
+      "isoId": "_bTfEctp-Ed-ak6NoX_4Aeg_-804722522",
+      "kind": "code",
+      "pattern": "[A-Z]{2,2}"
+    },
+    "SystemIdentification2Choice": {
+      "name": "SystemIdentification2Choice",
+      "isoId": "_8BZ3QaMgEeCJ6YNENx4h-w_-1347709917",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "MarketInfrastructureIdentification",
+          "isoId": "_8BZ3QqMgEeCJ6YNENx4h-w_-129556950",
+          "xmlTag": "MktInfrstrctrId",
+          "type": "MarketInfrastructureIdentification1Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Country",
+          "isoId": "_8BZ3Q6MgEeCJ6YNENx4h-w_-559189317",
+          "xmlTag": "Ctry",
+          "type": "CountryCode",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "BICFIDec2014Identifier": {
+      "name": "BICFIDec2014Identifier",
+      "kind": "text",
+      "isoId": "_gnK3okI7EeirV6K70JJQ8Q",
+      "pattern": "[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}"
+    },
+    "ExternalClearingSystemIdentification1Code": {
+      "name": "ExternalClearingSystemIdentification1Code",
+      "isoId": "_amVqlNp-Ed-ak6NoX_4Aeg_319823369",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 5
+    },
+    "ClearingSystemIdentification2Choice": {
+      "name": "ClearingSystemIdentification2Choice",
+      "isoId": "_TMoSENp-Ed-ak6NoX_4Aeg_-1410917193",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_TMoSEdp-Ed-ak6NoX_4Aeg_-1410917191",
+          "xmlTag": "Cd",
+          "type": "ExternalClearingSystemIdentification1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_TMoSEtp-Ed-ak6NoX_4Aeg_-1409997159",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ClearingSystemMemberIdentification2": {
+      "name": "ClearingSystemMemberIdentification2",
+      "isoId": "_TMehHNp-Ed-ak6NoX_4Aeg_151445359",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "ClearingSystemIdentification",
+          "isoId": "_TMehHdp-Ed-ak6NoX_4Aeg_-1082144614",
+          "xmlTag": "ClrSysId",
+          "type": "ClearingSystemIdentification2Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "MemberIdentification",
+          "isoId": "_TMehHtp-Ed-ak6NoX_4Aeg_151445420",
+          "xmlTag": "MmbId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ExternalFinancialInstitutionIdentification1Code": {
+      "name": "ExternalFinancialInstitutionIdentification1Code",
+      "isoId": "_ame0gNp-Ed-ak6NoX_4Aeg_-1716707444",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "FinancialIdentificationSchemeName1Choice": {
+      "name": "FinancialIdentificationSchemeName1Choice",
+      "isoId": "_QALkMNp-Ed-ak6NoX_4Aeg_-2021925461",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_QALkMdp-Ed-ak6NoX_4Aeg_-2021925430",
+          "xmlTag": "Cd",
+          "type": "ExternalFinancialInstitutionIdentification1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_QALkMtp-Ed-ak6NoX_4Aeg_-2021925152",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "GenericFinancialIdentification1": {
+      "name": "GenericFinancialIdentification1",
+      "isoId": "_QALkM9p-Ed-ak6NoX_4Aeg_-2141717394",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_QALkNNp-Ed-ak6NoX_4Aeg_-2141717392",
+          "xmlTag": "Id",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SchemeName",
+          "isoId": "_QALkNdp-Ed-ak6NoX_4Aeg_-2141717054",
+          "xmlTag": "SchmeNm",
+          "type": "FinancialIdentificationSchemeName1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "isoId": "_QALkNtp-Ed-ak6NoX_4Aeg_-2141717116",
+          "xmlTag": "Issr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "MemberIdentification3Choice": {
+      "name": "MemberIdentification3Choice",
+      "isoId": "_h_8rhXSbEeiH1ZOt2UD8vQ",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "BICFI",
+          "isoId": "_iR9Bg3SbEeiH1ZOt2UD8vQ",
+          "xmlTag": "BICFI",
+          "type": "BICFIDec2014Identifier",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ClearingSystemMemberIdentification",
+          "isoId": "_iR9BhXSbEeiH1ZOt2UD8vQ",
+          "xmlTag": "ClrSysMmbId",
+          "type": "ClearingSystemMemberIdentification2",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Other",
+          "isoId": "_iR9Bh3SbEeiH1ZOt2UD8vQ",
+          "xmlTag": "Othr",
+          "type": "GenericFinancialIdentification1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "SystemMember3": {
+      "name": "SystemMember3",
+      "isoId": "_htb_MXSbEeiH1ZOt2UD8vQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "SystemIdentification",
+          "isoId": "_h_8rgXSbEeiH1ZOt2UD8vQ",
+          "xmlTag": "SysId",
+          "type": "SystemIdentification2Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "MemberIdentification",
+          "isoId": "_h_8rg3SbEeiH1ZOt2UD8vQ",
+          "xmlTag": "MmbId",
+          "type": "MemberIdentification3Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Max350Text": {
+      "name": "Max350Text",
+      "kind": "text",
+      "isoId": "_YW1tKNp-Ed-ak6NoX_4Aeg_1778996852",
+      "minLength": 1,
+      "maxLength": 350
+    },
+    "SupplementaryDataEnvelope1": {
+      "name": "SupplementaryDataEnvelope1",
+      "kind": "any",
+      "isoId": "_Kz9KwJDrEeSLQ8ob-qtemg"
+    },
+    "SupplementaryData1": {
+      "name": "SupplementaryData1",
+      "isoId": "_Qn0zC9p-Ed-ak6NoX_4Aeg_468227563",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "PlaceAndName",
+          "isoId": "_Qn988Np-Ed-ak6NoX_4Aeg_354388497",
+          "xmlTag": "PlcAndNm",
+          "type": "Max350Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Envelope",
+          "isoId": "_Qn988dp-Ed-ak6NoX_4Aeg_-642683856",
+          "xmlTag": "Envlp",
+          "type": "SupplementaryDataEnvelope1",
+          "kind": "any",
+          "min": 1,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "SupplementaryDataRule",
+          "isoId": "_Qn988tp-Ed-ak6NoX_4Aeg_-1492355109",
+          "text": "This component may not be used without the explicit approval of a SEG and submission to the RA of ISO 20022 compliant structure(s) to be used in the Envelope element."
+        }
+      ]
+    },
+    "BackupPaymentV07": {
+      "name": "BackupPaymentV07",
+      "isoId": "_jwlbMRbvEeiyVv5j1vf1VQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "MessageHeader",
+          "isoId": "_jwlbMxbvEeiyVv5j1vf1VQ",
+          "xmlTag": "MsgHdr",
+          "type": "MessageHeader1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "OriginalMessageIdentification",
+          "isoId": "_jwlbNRbvEeiyVv5j1vf1VQ",
+          "xmlTag": "OrgnlMsgId",
+          "type": "MessageHeader1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "InstructionInformation",
+          "isoId": "_jwlbNxbvEeiyVv5j1vf1VQ",
+          "xmlTag": "InstrInf",
+          "type": "PaymentInstruction13",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TransferredAmount",
+          "isoId": "_jwlbORbvEeiyVv5j1vf1VQ",
+          "xmlTag": "TrfdAmt",
+          "type": "Amount2Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Creditor",
+          "isoId": "_jwlbOxbvEeiyVv5j1vf1VQ",
+          "xmlTag": "Cdtr",
+          "type": "SystemMember3",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CreditorAgent",
+          "isoId": "_jwlbPRbvEeiyVv5j1vf1VQ",
+          "xmlTag": "CdtrAgt",
+          "type": "SystemMember3",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "DebtorAgent",
+          "isoId": "_jwlbPxbvEeiyVv5j1vf1VQ",
+          "xmlTag": "DbtrAgt",
+          "type": "SystemMember3",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SupplementaryData",
+          "isoId": "_jwlbQRbvEeiyVv5j1vf1VQ",
+          "xmlTag": "SplmtryData",
+          "type": "SupplementaryData1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    }
+  }
+}

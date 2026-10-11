@@ -1,0 +1,8 @@
+choice	memberId	memberName	text
+BusinessDayCriteria3Choice	_yFXaA5lcEeeE1Ya-LgRsuQ	QueryName	Recalls the criteria (search and return criteria) defined in a preceding query.
+BusinessDayCriteria3Choice	_yFXaBZlcEeeE1Ya-LgRsuQ	NewCriteria	Explicitly defines the query criteria.
+SystemEventType2Choice	_72FYEKMgEeCJ6YNENx4h-w_1131843970	Code	Type of system event that has occurred, expressed in a coded form.
+SystemEventType2Choice	_72FYEaMgEeCJ6YNENx4h-w_-439835553	Proprietary	Type of system event that has occurred, expressed as free text or a bilaterally agreed code.|.
+DateTimePeriod1Choice	_xTM9QZlcEeeE1Ya-LgRsuQ	FromDateTime	Date and time at which the range starts.
+DateTimePeriod1Choice	_xTM9Q5lcEeeE1Ya-LgRsuQ	ToDateTime	Date and time at which the range ends.
+DateTimePeriod1Choice	_xTM9RZlcEeeE1Ya-LgRsuQ	DateTimeRange	Range of time between a start date and time and an end date and time.

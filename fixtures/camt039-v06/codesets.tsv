@@ -1,0 +1,6 @@
+codeSetName	isoId	restrictionOf	code	enumName
+CaseStatus2Code	_a2lGB9p-Ed-ak6NoX_4Aeg_-286578843	CaseStatusCode	CLSD	Closed
+CaseStatus2Code	_a2lGB9p-Ed-ak6NoX_4Aeg_-286578843	CaseStatusCode	ASGN	Assigned
+CaseStatus2Code	_a2lGB9p-Ed-ak6NoX_4Aeg_-286578843	CaseStatusCode	INVE	UnderInvestigation
+CaseStatus2Code	_a2lGB9p-Ed-ak6NoX_4Aeg_-286578843	CaseStatusCode	UKNW	Unknown
+CaseStatus2Code	_a2lGB9p-Ed-ak6NoX_4Aeg_-286578843	CaseStatusCode	ODUE	Overdue

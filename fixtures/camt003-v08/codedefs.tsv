@@ -1,0 +1,7 @@
+codeSet	code	enumName	isoId	text
+QueryType2Code	ALLL	All	_ZXqQ8tp-Ed-ak6NoX_4Aeg_-1313851984	Specifies that the query requests that all matching items be returned.
+QueryType2Code	CHNG	Changed	_ZXqQ89p-Ed-ak6NoX_4Aeg_-1313851983	Specifies that the query requests that only new matching items since the last similar query be returned.
+QueryType2Code	MODF	Modified	_ZXqQ9Np-Ed-ak6NoX_4Aeg_-1313851982	Specifies that the query requests that only items that have changed since the last query be returned.
+QueryType2Code	DELD	Deleted	_ZXqQ9dp-Ed-ak6NoX_4Aeg_-1313851954	Specifies that the query requests that items that have been deleted since the last query be returned.
+BalanceCounterparty1Code	BILA	Bilateral	_bkBa09p-Ed-ak6NoX_4Aeg_678189977	Balance calculated regarding one member in the system.
+BalanceCounterparty1Code	MULT	Multilateral	_bkBa1Np-Ed-ak6NoX_4Aeg_678189978	Balance calculated regarding all members in the system.

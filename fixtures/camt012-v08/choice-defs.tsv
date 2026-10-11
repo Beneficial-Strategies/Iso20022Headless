@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+LimitStructure3Choice	_66nlkTEyEe6g-ffJsqGiSA	CurrentLimitIdentification	Identification of the current limit.
+LimitStructure3Choice	_66nlkzEyEe6g-ffJsqGiSA	AllCurrentLimits	Identification of the current limit.

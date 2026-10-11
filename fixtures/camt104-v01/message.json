@@ -1,0 +1,43 @@
+{
+  "identifier": "camt.104.001.01",
+  "name": "CreateMemberV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.104.001.01",
+  "bodyTag": "CretMmb",
+  "out": "camt104",
+  "isoId": "_P8togckHEem3UrxZgQhVAw",
+  "definition": "Scope|The ModifyMember message is sent by a member to the transaction administrator.|It is used to create the profile of a member that the transaction administrator maintains.|Usage|Based on the criteria defined in the CreateLimit message, the transaction administrator will execute or reject the requested creation and respond with a Receipt message as a reply to the request.",
+  "blocks": [
+    {
+      "name": "MessageHeader",
+      "isoId": "_P8toickHEem3UrxZgQhVAw",
+      "xmlTag": "MsgHdr",
+      "type": "MessageHeader1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "MemberIdentification",
+      "isoId": "_P8toi8kHEem3UrxZgQhVAw",
+      "xmlTag": "MmbId",
+      "type": "MemberIdentification3Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ValueSet",
+      "isoId": "_P8tojckHEem3UrxZgQhVAw",
+      "xmlTag": "ValSet",
+      "type": "Member6",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_P8toj8kHEem3UrxZgQhVAw",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+codeSetName	isoId	restrictionOf	code	enumName
+ExternalDeliveryMethod1Code	_lYkl8OOvEe-NFYIkYc90gw	ExternalDeliveryMethodCode	*EXTERNAL*	minLength=1 maxLength=4; ~2 codes (not enumerated)

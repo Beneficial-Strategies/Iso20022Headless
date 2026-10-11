@@ -1,0 +1,21 @@
+codeSet	code	enumName	isoId	text
+FlowDirectionType1Code	INCG	Incoming	_aq9E09p-Ed-ak6NoX_4Aeg_124504902	Amount of money received.
+FlowDirectionType1Code	OUTG	Outgoing	_aq9E1Np-Ed-ak6NoX_4Aeg_124504903	Amount of money paid out.
+FormOfSecurity1Code	BEAR	Bearer	_1Gk9wN1OEeGAp99n2TKigg_1287612204	The financial instrument does not specify any registration of ownership, and is payable to whomever possesses the certificate.
+FormOfSecurity1Code	REGD	Registered	_3TsVkN1OEeGAp99n2TKigg_1858924413	Shareholder name of the financial instrument appears in the corporation/funds books.
+DistributionPolicy1Code	DIST	Distribution	_awwx49p-Ed-ak6NoX_4Aeg_-433302196	Income is distributed to the investors in the fund.
+DistributionPolicy1Code	ACCU	Accumulation	_awwx5Np-Ed-ak6NoX_4Aeg_-433302187	Income is added to the capital of the fund.
+CurrencyDesignation1Code	ONSH	Onshore	_D0dk8Qd2EeSPHJIdUs1USg	Onshore.
+CurrencyDesignation1Code	OFFS	Offshore	_D8gGoQd2EeSPHJIdUs1USg	Offshore.
+TypeOfPrice10Code	BIDE	Bid	_Yw6aBdp-Ed-ak6NoX_4Aeg_1125062318	Price is the calculated bid price of a dual-priced fund (offer-bid prices), that is, the selling price of the units for the investor.
+TypeOfPrice10Code	OFFR	Offer	_Yw6aBtp-Ed-ak6NoX_4Aeg_1125062342	Price is the calculated offer price of a dual-priced investment fund (offer-bid prices), that is, the buying price of the units for an investor.
+TypeOfPrice10Code	NAVL	NetAssetValue	_YxELANp-Ed-ak6NoX_4Aeg_1125062359	Price is the net asset value per unit that is used either as a transacting price for a single-priced investment fund class, or as a notional price for the calculation of other prices.
+TypeOfPrice10Code	CREA	Creation	_YxELAdp-Ed-ak6NoX_4Aeg_1125062377	Price is the calculated creation price of a dual-priced investment fund (creation-cancellation prices) and the highest possible buying price of the units before the initial charge. The actual buying or offer price, which includes charges, will be higher.
+TypeOfPrice10Code	CANC	Cancellation	_YxELAtp-Ed-ak6NoX_4Aeg_1125062378	Price is the calculated cancellation price of a dual-priced investment fund (creation-cancellation price), and the lowest possible valuation of the units on any one-day. The actual selling or bid price is usually higher.
+TypeOfPrice10Code	INTE	Interim	_YxELA9p-Ed-ak6NoX_4Aeg_1125062402	Price is the non-official interim price given to an investor before the executed price.
+TypeOfPrice10Code	SWNG	Swing	_YxELBNp-Ed-ak6NoX_4Aeg_1125062419	Price is the calculated net asset value price of a single-priced investment fund. The price is adjusted to take into account the dealing costs due to individual large deals, or due to a significant imbalance in volumes of subscriptions vs redemptions, as an alternative to dilution levy.
+TypeOfPrice10Code	MIDD	Mid	_YxELBdp-Ed-ak6NoX_4Aeg_1125062437	Price is the average price between the bid and offer prices.
+TypeOfPrice10Code	RINV	Reinvestment	_YxELBtp-Ed-ak6NoX_4Aeg_1125062454	Price is the price used when reinvesting units after distribution.
+TypeOfPrice10Code	SWIC	Switch	_YxELB9p-Ed-ak6NoX_4Aeg_1125062472	Price is the price used when transferring units between products.
+TypeOfPrice10Code	DDVR	DailyDividendRate	_YxELCNp-Ed-ak6NoX_4Aeg_1125062473	Price is the net income of a financial instrument, calculated on each dealing day, and divided by all the units outstanding on that day.
+TypeOfPrice10Code	ACTU	Actual	_YxELCdp-Ed-ak6NoX_4Aeg_1125062745	True offer price.

@@ -1,0 +1,2 @@
+name	isoId	xsiType	pattern	minLength	maxLength	totalDigits	fractionDigits	minInclusive	maxInclusive	other
+RequestedIndicator	_YXlUBtp-Ed-ak6NoX_4Aeg_-2067559284	Indicator								meaningWhenTrue=Requested; meaningWhenFalse=Not Requested

@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+LimitType1Choice	_79FX8aMgEeCJ6YNENx4h-w_418078119	Code	Type of the limit, in a coded form.
+LimitType1Choice	_79FX8qMgEeCJ6YNENx4h-w_872165388	Proprietary	Type of the limit, in a proprietary form.

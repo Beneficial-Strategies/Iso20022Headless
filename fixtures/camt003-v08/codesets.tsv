@@ -1,0 +1,8 @@
+codeSetName	isoId	restrictionOf	code	enumName
+QueryType2Code	_ZXqQ8dp-Ed-ak6NoX_4Aeg_-1313852264	QueryTypeCode	ALLL	All
+QueryType2Code	_ZXqQ8dp-Ed-ak6NoX_4Aeg_-1313852264	QueryTypeCode	CHNG	Changed
+QueryType2Code	_ZXqQ8dp-Ed-ak6NoX_4Aeg_-1313852264	QueryTypeCode	MODF	Modified
+QueryType2Code	_ZXqQ8dp-Ed-ak6NoX_4Aeg_-1313852264	QueryTypeCode	DELD	Deleted
+ExternalSystemBalanceType1Code	_qP4YgXhYEeidzqjNEfehPg	ExternalSystemBalanceTypeCode	*EXTERNAL*	minLength=1 maxLength=4; ~70 codes (not enumerated)
+BalanceCounterparty1Code	_bkBa0tp-Ed-ak6NoX_4Aeg_678189976	BalanceCounterpartyCode	BILA	Bilateral
+BalanceCounterparty1Code	_bkBa0tp-Ed-ak6NoX_4Aeg_678189976	BalanceCounterpartyCode	MULT	Multilateral

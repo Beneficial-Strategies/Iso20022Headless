@@ -1,0 +1,35 @@
+{
+  "identifier": "camt.013.001.04",
+  "name": "GetMemberV04",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.013.001.04",
+  "bodyTag": "GetMmb",
+  "out": "camt013",
+  "isoId": "_jwlbjxbvEeiyVv5j1vf1VQ",
+  "definition": "Scope|The GetMember message is sent by a member to the transaction administrator.|It is used to request information on static data maintained by the transaction administrator and related to the participants in the system and their membership status vis-a-vis this system.|Usage|The transaction administrator is in charge of providing the members with business information. The term business information covers all information related to the management of the system, that is, not related to the transactions entered into the system. The type of business information available can vary depending on the system. Among other things, it can refer to information about the membership of the system.|At any time during the operating hours of the system, the member can query the transaction administrator to get information about the static data related to the members of the system.|The member can request information based on the following elements:|- identification of the member within the system|- membership status|- type of member|- contact details for the member: name, address|- account number of the member|- identification of contact persons for the member|This message will be replied to by a ReturnMember message.|Additional information on the generic design of the Get/Return messages can be found in the MDR Part 1 section How to Use the Cash Management Messages.",
+  "blocks": [
+    {
+      "name": "MessageHeader",
+      "isoId": "_jwlbkRbvEeiyVv5j1vf1VQ",
+      "xmlTag": "MsgHdr",
+      "type": "MessageHeader9",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "MemberQueryDefinition",
+      "isoId": "_jwlbkxbvEeiyVv5j1vf1VQ",
+      "xmlTag": "MmbQryDef",
+      "type": "MemberQueryDefinition4",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_jwlblRbvEeiyVv5j1vf1VQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

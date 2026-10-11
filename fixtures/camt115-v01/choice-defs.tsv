@@ -1,0 +1,5 @@
+choice	memberId	memberName	text
+RequestStatus1Choice	_qvkvsLqtEe68nbz8Nl_hLQ	Code	Request status, as published in an external request status code set.
+RequestStatus1Choice	_B6MRobqtEe68nbz8Nl_hLQ	Proprietary	Request status, in a proprietary form.
+CashType1Choice	_R9pcZVDeEfCRhs5qxCujTw	Code	Cash type as published in an external cash type code set.
+CashType1Choice	_R9pcZFDeEfCRhs5qxCujTw	Proprietary	Cash type, in a proprietary form.

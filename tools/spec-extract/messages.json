@@ -326,5 +326,757 @@
     "bodyTag": "CstmrPmtCxlReq",
     "out": "camt055",
     "dir": "camt055-v13"
+  },
+  {
+    "name": "AccountReportingRequestV07",
+    "id": "_R2_ZqTEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.060.001.07",
+    "bodyTag": "AcctRptgReq",
+    "out": "camt060",
+    "dir": "camt060-v07"
+  },
+  {
+    "name": "AdditionalPaymentInformationV12",
+    "id": "_R3An4TEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.028.001.12",
+    "bodyTag": "AddtlPmtInf",
+    "out": "camt028",
+    "dir": "camt028-v12"
+  },
+  {
+    "name": "BackupPaymentV07",
+    "id": "_jwlbMRbvEeiyVv5j1vf1VQ",
+    "identifier": "camt.023.001.07",
+    "bodyTag": "BckpPmt",
+    "out": "camt023",
+    "dir": "camt023-v07"
+  },
+  {
+    "name": "BankServicesBillingStatementV05",
+    "id": "_R3BOyzEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.086.001.05",
+    "bodyTag": "BkSvcsBllgStmt",
+    "out": "camt086",
+    "dir": "camt086-v05"
+  },
+  {
+    "name": "BillingReportRequestV01",
+    "id": "_u3eqcUwoEfCw8OkvsmFlbQ",
+    "identifier": "camt.076.001.01",
+    "bodyTag": "BllgRptReq",
+    "out": "camt076",
+    "dir": "camt076-v01"
+  },
+  {
+    "name": "BillingReportV01",
+    "id": "_R3Cc0TEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.077.001.01",
+    "bodyTag": "BllgRpt",
+    "out": "camt077",
+    "dir": "camt077-v01"
+  },
+  {
+    "name": "CancelCaseAssignmentV05",
+    "id": "_R3Cc7zEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.032.001.05",
+    "bodyTag": "CclCaseAssgnmt",
+    "out": "camt032",
+    "dir": "camt032-v05"
+  },
+  {
+    "name": "CancelTransactionV11",
+    "id": "_R3Cc_TEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.008.001.11",
+    "bodyTag": "CclTx",
+    "out": "camt008",
+    "dir": "camt008-v11"
+  },
+  {
+    "name": "CaseStatusReportRequestV05",
+    "id": "_R3CdDzEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.038.001.05",
+    "bodyTag": "CaseStsRptReq",
+    "out": "camt038",
+    "dir": "camt038-v05"
+  },
+  {
+    "name": "CaseStatusReportV06",
+    "id": "_R3CdHTEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.039.001.06",
+    "bodyTag": "CaseStsRpt",
+    "out": "camt039",
+    "dir": "camt039-v06"
+  },
+  {
+    "name": "CashDepositOrWithdrawalCancellationRequestV01",
+    "id": "_Zbk1oHgyEfCdoODv2ypKfw",
+    "identifier": "camt.116.001.01",
+    "bodyTag": "CshDpstOrWdrwlCxlReq",
+    "out": "camt116",
+    "dir": "camt116-v01"
+  },
+  {
+    "name": "CashDepositOrWithdrawalStatusUpdateV01",
+    "id": "_hb3y8FGkEfC_v5ez7RpMHw",
+    "identifier": "camt.115.001.01",
+    "bodyTag": "CshDpstOrWdrwlStsUpd",
+    "out": "camt115",
+    "dir": "camt115-v01"
+  },
+  {
+    "name": "CashDepositRequestV01",
+    "id": "_NKdVwLe1Ee-Dk_aQVAan8Q",
+    "identifier": "camt.113.001.01",
+    "bodyTag": "CshDpstReq",
+    "out": "camt113",
+    "dir": "camt113-v01"
+  },
+  {
+    "name": "CashWithdrawalRequestV01",
+    "id": "_24xMkOR7Ee-NFYIkYc90gw",
+    "identifier": "camt.114.001.01",
+    "bodyTag": "CshWdrwlReq",
+    "out": "camt114",
+    "dir": "camt114-v01"
+  },
+  {
+    "name": "ChargesPaymentNotificationV03",
+    "id": "_UY1ncTrDEe-thIfLZ94a1w",
+    "identifier": "camt.105.001.03",
+    "bodyTag": "ChrgsPmtNtfctn",
+    "out": "camt105",
+    "dir": "camt105-v03"
+  },
+  {
+    "name": "ChargesPaymentRequestV03",
+    "id": "_VJH04TrDEe-thIfLZ94a1w",
+    "identifier": "camt.106.001.03",
+    "bodyTag": "ChrgsPmtReq",
+    "out": "camt106",
+    "dir": "camt106-v03"
+  },
+  {
+    "name": "ChequeCancellationOrStopReportV02",
+    "id": "_R3E5ETEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.109.001.02",
+    "bodyTag": "ChqCxlOrStopRpt",
+    "out": "camt109",
+    "dir": "camt109-v02"
+  },
+  {
+    "name": "ChequeCancellationOrStopRequestV02",
+    "id": "_R3E5JTEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.108.001.02",
+    "bodyTag": "ChqCxlOrStopReq",
+    "out": "camt108",
+    "dir": "camt108-v02"
+  },
+  {
+    "name": "ChequePresentmentNotificationV02",
+    "id": "_R3E5OTEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.107.001.02",
+    "bodyTag": "ChqPresntmntNtfctn",
+    "out": "camt107",
+    "dir": "camt107-v02"
+  },
+  {
+    "name": "ClaimNonReceiptV10",
+    "id": "_R3FgITEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.027.001.10",
+    "bodyTag": "ClmNonRct",
+    "out": "camt027",
+    "dir": "camt027-v10"
+  },
+  {
+    "name": "CreateLimitV02",
+    "id": "_R3GHiTEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.101.001.02",
+    "bodyTag": "CretLmt",
+    "out": "camt101",
+    "dir": "camt101-v02"
+  },
+  {
+    "name": "CreateMemberV01",
+    "id": "_P8togckHEem3UrxZgQhVAw",
+    "identifier": "camt.104.001.01",
+    "bodyTag": "CretMmb",
+    "out": "camt104",
+    "dir": "camt104-v01"
+  },
+  {
+    "name": "CreateReservationV03",
+    "id": "_R3GuUzEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.103.001.03",
+    "bodyTag": "CretRsvatn",
+    "out": "camt103",
+    "dir": "camt103-v03"
+  },
+  {
+    "name": "CreateStandingOrderV03",
+    "id": "_R3GuYTEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.102.001.03",
+    "bodyTag": "CretStgOrdr",
+    "out": "camt102",
+    "dir": "camt102-v03"
+  },
+  {
+    "name": "DebitAuthorisationRequestV10",
+    "id": "_R3H8mTEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.037.001.10",
+    "bodyTag": "DbtAuthstnReq",
+    "out": "camt037",
+    "dir": "camt037-v10"
+  },
+  {
+    "name": "DebitAuthorisationResponseV06",
+    "id": "_R3H8pzEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.036.001.06",
+    "bodyTag": "DbtAuthstnRspn",
+    "out": "camt036",
+    "dir": "camt036-v06"
+  },
+  {
+    "name": "DeleteLimitV08",
+    "id": "_R3H8tzEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.012.001.08",
+    "bodyTag": "DelLmt",
+    "out": "camt012",
+    "dir": "camt012-v08"
+  },
+  {
+    "name": "DeleteReservationV07",
+    "id": "_R3IjczEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.049.001.07",
+    "bodyTag": "DelRsvatn",
+    "out": "camt049",
+    "dir": "camt049-v07"
+  },
+  {
+    "name": "DeleteStandingOrderV05",
+    "id": "_R3IjfzEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.071.001.05",
+    "bodyTag": "DelStgOrdr",
+    "out": "camt071",
+    "dir": "camt071-v05"
+  },
+  {
+    "name": "DuplicateV07",
+    "id": "_R3IjtTEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.034.001.07",
+    "bodyTag": "Dplct",
+    "out": "camt034",
+    "dir": "camt034-v07"
+  },
+  {
+    "name": "FundConfirmedCashForecastReportCancellationV03",
+    "id": "_Q7mCEQasEeSrXeb3pHPmbg",
+    "identifier": "camt.044.001.03",
+    "bodyTag": "FndConfdCshFcstRptCxl",
+    "out": "camt044",
+    "dir": "camt044-v03"
+  },
+  {
+    "name": "FundConfirmedCashForecastReportV04",
+    "id": "_GJQg4QasEeSrXeb3pHPmbg",
+    "identifier": "camt.041.001.04",
+    "bodyTag": "FndConfdCshFcstRpt",
+    "out": "camt041",
+    "dir": "camt041-v04"
+  },
+  {
+    "name": "FundDetailedConfirmedCashForecastReportCancellationV03",
+    "id": "_OOHvMQasEeSrXeb3pHPmbg",
+    "identifier": "camt.045.001.03",
+    "bodyTag": "FndDtldConfdCshFcstRptCxl",
+    "out": "camt045",
+    "dir": "camt045-v03"
+  },
+  {
+    "name": "FundDetailedConfirmedCashForecastReportV04",
+    "id": "_LgMJUQasEeSrXeb3pHPmbg",
+    "identifier": "camt.043.001.04",
+    "bodyTag": "FndDtldConfdCshFcstRpt",
+    "out": "camt043",
+    "dir": "camt043-v04"
+  },
+  {
+    "name": "FundDetailedEstimatedCashForecastReportV04",
+    "id": "_IaBCkQasEeSrXeb3pHPmbg",
+    "identifier": "camt.042.001.04",
+    "bodyTag": "FndDtldEstmtdCshFcstRpt",
+    "out": "camt042",
+    "dir": "camt042-v04"
+  },
+  {
+    "name": "FundEstimatedCashForecastReportV04",
+    "id": "_DQeV4QasEeSrXeb3pHPmbg",
+    "identifier": "camt.040.001.04",
+    "bodyTag": "FndEstmtdCshFcstRpt",
+    "out": "camt040",
+    "dir": "camt040-v04"
+  },
+  {
+    "name": "GetAccountV08",
+    "id": "_R3MN4zEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.003.001.08",
+    "bodyTag": "GetAcct",
+    "out": "camt003",
+    "dir": "camt003-v08"
+  },
+  {
+    "name": "GetBusinessDayInformationV05",
+    "id": "_jwlbbxbvEeiyVv5j1vf1VQ",
+    "identifier": "camt.018.001.05",
+    "bodyTag": "GetBizDayInf",
+    "out": "camt018",
+    "dir": "camt018-v05"
+  },
+  {
+    "name": "GetCurrencyExchangeRateV04",
+    "id": "_jwlbdxbvEeiyVv5j1vf1VQ",
+    "identifier": "camt.016.001.04",
+    "bodyTag": "GetCcyXchgRate",
+    "out": "camt016",
+    "dir": "camt016-v04"
+  },
+  {
+    "name": "GetGeneralBusinessInformationV04",
+    "id": "_jwlbfxbvEeiyVv5j1vf1VQ",
+    "identifier": "camt.020.001.04",
+    "bodyTag": "GetGnlBizInf",
+    "out": "camt020",
+    "dir": "camt020-v04"
+  },
+  {
+    "name": "GetLimitV08",
+    "id": "_R3MOEzEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.009.001.08",
+    "bodyTag": "GetLmt",
+    "out": "camt009",
+    "dir": "camt009-v08"
+  },
+  {
+    "name": "GetMemberV04",
+    "id": "_jwlbjxbvEeiyVv5j1vf1VQ",
+    "identifier": "camt.013.001.04",
+    "bodyTag": "GetMmb",
+    "out": "camt013",
+    "dir": "camt013-v04"
+  },
+  {
+    "name": "GetReservationV08",
+    "id": "_R3MOKzEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.046.001.08",
+    "bodyTag": "GetRsvatn",
+    "out": "camt046",
+    "dir": "camt046-v08"
+  },
+  {
+    "name": "GetStandingOrderV05",
+    "id": "_R3MONzEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.069.001.05",
+    "bodyTag": "GetStgOrdr",
+    "out": "camt069",
+    "dir": "camt069-v05"
+  },
+  {
+    "name": "GetTransactionV11",
+    "id": "_R3M05TEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.005.001.11",
+    "bodyTag": "GetTx",
+    "out": "camt005",
+    "dir": "camt005-v11"
+  },
+  {
+    "name": "IntraBalanceMovementCancellationQueryV02",
+    "id": "_R3M1RTEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.082.001.02",
+    "bodyTag": "IntraBalMvmntCxlQry",
+    "out": "camt082",
+    "dir": "camt082-v02"
+  },
+  {
+    "name": "IntraBalanceMovementCancellationReportV02",
+    "id": "_R3NcATEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.083.001.02",
+    "bodyTag": "IntraBalMvmntCxlRpt",
+    "out": "camt083",
+    "dir": "camt083-v02"
+  },
+  {
+    "name": "IntraBalanceMovementCancellationRequestStatusAdviceV02",
+    "id": "_R3NcITEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.075.001.02",
+    "bodyTag": "IntraBalMvmntCxlReqStsAdvc",
+    "out": "camt075",
+    "dir": "camt075-v02"
+  },
+  {
+    "name": "IntraBalanceMovementCancellationRequestV02",
+    "id": "_R3NcQTEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.074.001.02",
+    "bodyTag": "IntraBalMvmntCxlReq",
+    "out": "camt074",
+    "dir": "camt074-v02"
+  },
+  {
+    "name": "IntraBalanceMovementConfirmationV02",
+    "id": "_R3NcXTEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.068.001.02",
+    "bodyTag": "IntraBalMvmntConf",
+    "out": "camt068",
+    "dir": "camt068-v02"
+  },
+  {
+    "name": "IntraBalanceMovementInstructionV02",
+    "id": "_R3NceTEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.066.001.02",
+    "bodyTag": "IntraBalMvmntInstr",
+    "out": "camt066",
+    "dir": "camt066-v02"
+  },
+  {
+    "name": "IntraBalanceMovementModificationQueryV02",
+    "id": "_R3ODEzEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.080.001.02",
+    "bodyTag": "IntraBalMvmntModQry",
+    "out": "camt080",
+    "dir": "camt080-v02"
+  },
+  {
+    "name": "IntraBalanceMovementModificationReportV02",
+    "id": "_R3ODJzEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.081.001.02",
+    "bodyTag": "IntraBalMvmntModRpt",
+    "out": "camt081",
+    "dir": "camt081-v02"
+  },
+  {
+    "name": "IntraBalanceMovementModificationRequestStatusAdviceV02",
+    "id": "_R3ODRzEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.073.001.02",
+    "bodyTag": "IntraBalMvmntModReqStsAdvc",
+    "out": "camt073",
+    "dir": "camt073-v02"
+  },
+  {
+    "name": "IntraBalanceMovementModificationRequestV02",
+    "id": "_R3ODZzEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.072.001.02",
+    "bodyTag": "IntraBalMvmntModReq",
+    "out": "camt072",
+    "dir": "camt072-v02"
+  },
+  {
+    "name": "IntraBalanceMovementPendingReportV02",
+    "id": "_R3ODgzEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.085.001.02",
+    "bodyTag": "IntraBalMvmntPdgRpt",
+    "out": "camt085",
+    "dir": "camt085-v02"
+  },
+  {
+    "name": "IntraBalanceMovementPostingReportV02",
+    "id": "_R3OqFTEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.084.001.02",
+    "bodyTag": "IntraBalMvmntPstngRpt",
+    "out": "camt084",
+    "dir": "camt084-v02"
+  },
+  {
+    "name": "IntraBalanceMovementQueryResponseV02",
+    "id": "_R3OqNTEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.079.001.02",
+    "bodyTag": "IntraBalMvmntQryRspn",
+    "out": "camt079",
+    "dir": "camt079-v02"
+  },
+  {
+    "name": "IntraBalanceMovementQueryV02",
+    "id": "_R3OqUzEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.078.001.02",
+    "bodyTag": "IntraBalMvmntQry",
+    "out": "camt078",
+    "dir": "camt078-v02"
+  },
+  {
+    "name": "IntraBalanceMovementStatusAdviceV02",
+    "id": "_R3OqZzEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.067.001.02",
+    "bodyTag": "IntraBalMvmntStsAdvc",
+    "out": "camt067",
+    "dir": "camt067-v02"
+  },
+  {
+    "name": "InvestigationRequestV02",
+    "id": "0fc7ab0e-e82d-4586-803b-9dfd21dfb139",
+    "identifier": "camt.110.001.02",
+    "bodyTag": "InvstgtnReq",
+    "out": "camt110",
+    "dir": "camt110-v02"
+  },
+  {
+    "name": "InvestigationResponseV03",
+    "id": "26a7f6ca-29df-4433-ba66-2d7decbf236d",
+    "identifier": "camt.111.001.03",
+    "bodyTag": "InvstgtnRspn",
+    "out": "camt111",
+    "dir": "camt111-v03"
+  },
+  {
+    "name": "LimitUtilisationJournalQueryV01",
+    "id": "_gun3QSPsEe-T5ffMy2iCzg",
+    "identifier": "camt.064.001.01",
+    "bodyTag": "LmtUtlstnJrnlQry",
+    "out": "camt064",
+    "dir": "camt064-v01"
+  },
+  {
+    "name": "LimitUtilisationJournalReportV01",
+    "id": "_oeK84SPsEe-T5ffMy2iCzg",
+    "identifier": "camt.065.001.01",
+    "bodyTag": "LmtUtlstnJrnlRpt",
+    "out": "camt065",
+    "dir": "camt065-v01"
+  },
+  {
+    "name": "LiquidityCreditTransferV07",
+    "id": "_R3PRnTEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.050.001.07",
+    "bodyTag": "LqdtyCdtTrf",
+    "out": "camt050",
+    "dir": "camt050-v07"
+  },
+  {
+    "name": "LiquidityDebitTransferV07",
+    "id": "_R3PRqzEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.051.001.07",
+    "bodyTag": "LqdtyDbtTrf",
+    "out": "camt051",
+    "dir": "camt051-v07"
+  },
+  {
+    "name": "ModifyLimitV08",
+    "id": "_R3P4nTEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.011.001.08",
+    "bodyTag": "ModfyLmt",
+    "out": "camt011",
+    "dir": "camt011-v08"
+  },
+  {
+    "name": "ModifyMemberV04",
+    "id": "_jwlbxxbvEeiyVv5j1vf1VQ",
+    "identifier": "camt.015.001.04",
+    "bodyTag": "ModfyMmb",
+    "out": "camt015",
+    "dir": "camt015-v04"
+  },
+  {
+    "name": "ModifyReservationV07",
+    "id": "_R3QfUTEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.048.001.07",
+    "bodyTag": "ModfyRsvatn",
+    "out": "camt048",
+    "dir": "camt048-v07"
+  },
+  {
+    "name": "ModifyStandingOrderV08",
+    "id": "_R3QfXzEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.024.001.08",
+    "bodyTag": "ModfyStgOrdr",
+    "out": "camt024",
+    "dir": "camt024-v08"
+  },
+  {
+    "name": "ModifyTransactionV10",
+    "id": "_R3QfbTEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.007.001.10",
+    "bodyTag": "ModfyTx",
+    "out": "camt007",
+    "dir": "camt007-v10"
+  },
+  {
+    "name": "NetReportV04",
+    "id": "039bf4ef-c5d8-415f-9be1-e97dd49d7ccb",
+    "identifier": "camt.088.001.04",
+    "bodyTag": "NetRpt",
+    "out": "camt088",
+    "dir": "camt088-v04"
+  },
+  {
+    "name": "NotificationOfCaseAssignmentV06",
+    "id": "_R3QfgTEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.030.001.06",
+    "bodyTag": "NtfctnOfCaseAssgnmt",
+    "out": "camt030",
+    "dir": "camt030-v06"
+  },
+  {
+    "name": "NotificationToReceiveCancellationAdviceV10",
+    "id": "05d5a4c4-d86a-4d7b-9798-da6635870e38",
+    "identifier": "camt.058.001.10",
+    "bodyTag": "NtfctnToRcvCxlAdvc",
+    "out": "camt058",
+    "dir": "camt058-v10"
+  },
+  {
+    "name": "NotificationToReceiveStatusReportV09",
+    "id": "5eba6a48-5393-475d-832a-e14fedd4397f",
+    "identifier": "camt.059.001.09",
+    "bodyTag": "NtfctnToRcvStsRpt",
+    "out": "camt059",
+    "dir": "camt059-v09"
+  },
+  {
+    "name": "NotificationToReceiveV09",
+    "id": "2116c112-14a7-4da6-aaf6-1e6e51c342c8",
+    "identifier": "camt.057.001.09",
+    "bodyTag": "NtfctnToRcv",
+    "out": "camt057",
+    "dir": "camt057-v09"
+  },
+  {
+    "name": "PayInCallV02",
+    "id": "_FsXYwS43EeK7-OZOLIksSw",
+    "identifier": "camt.061.001.02",
+    "bodyTag": "PayInCall",
+    "out": "camt061",
+    "dir": "camt061-v02"
+  },
+  {
+    "name": "PayInEventAcknowledgementV02",
+    "id": "_eii_URnXEeKKXqHkeUjBbw",
+    "identifier": "camt.063.001.02",
+    "bodyTag": "PayInEvtAck",
+    "out": "camt063",
+    "dir": "camt063-v02"
+  },
+  {
+    "name": "PayInScheduleV03",
+    "id": "_KfNcsS43EeK7-OZOLIksSw",
+    "identifier": "camt.062.001.03",
+    "bodyTag": "PayInSchdl",
+    "out": "camt062",
+    "dir": "camt062-v03"
+  },
+  {
+    "name": "ProprietaryFormatInvestigationV06",
+    "id": "_R3SUcTEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.035.001.06",
+    "bodyTag": "PrtryFrmtInvstgtn",
+    "out": "camt035",
+    "dir": "camt035-v06"
+  },
+  {
+    "name": "ReceiptV09",
+    "id": "_0fdSoVP-Ee-Fk_N0FBjY0Q",
+    "identifier": "camt.025.001.09",
+    "bodyTag": "Rct",
+    "out": "camt025",
+    "dir": "camt025-v09"
+  },
+  {
+    "name": "RejectInvestigationV07",
+    "id": "_R3SUnTEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.031.001.07",
+    "bodyTag": "RjctInvstgtn",
+    "out": "camt031",
+    "dir": "camt031-v07"
+  },
+  {
+    "name": "RequestForDuplicateV07",
+    "id": "_R3SU1zEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.033.001.07",
+    "bodyTag": "ReqForDplct",
+    "out": "camt033",
+    "dir": "camt033-v07"
+  },
+  {
+    "name": "RequestToModifyPaymentV09",
+    "id": "_R3SU5TEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.087.001.09",
+    "bodyTag": "ReqToModfyPmt",
+    "out": "camt087",
+    "dir": "camt087-v09"
+  },
+  {
+    "name": "ReturnAccountV10",
+    "id": "_R3TiozEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.004.001.10",
+    "bodyTag": "RtrAcct",
+    "out": "camt004",
+    "dir": "camt004-v10"
+  },
+  {
+    "name": "ReturnBusinessDayInformationV07",
+    "id": "_jwlcARbvEeiyVv5j1vf1VQ",
+    "identifier": "camt.019.001.07",
+    "bodyTag": "RtrBizDayInf",
+    "out": "camt019",
+    "dir": "camt019-v07"
+  },
+  {
+    "name": "ReturnCurrencyExchangeRateV05",
+    "id": "_ThV6p9b6Eeq_l4BJLVUF2Q",
+    "identifier": "camt.017.001.05",
+    "bodyTag": "RtrCcyXchgRate",
+    "out": "camt017",
+    "dir": "camt017-v05"
+  },
+  {
+    "name": "ReturnGeneralBusinessInformationV06",
+    "id": "_jwlcERbvEeiyVv5j1vf1VQ",
+    "identifier": "camt.021.001.06",
+    "bodyTag": "RtrGnlBizInf",
+    "out": "camt021",
+    "dir": "camt021-v06"
+  },
+  {
+    "name": "ReturnLimitV09",
+    "id": "_R3Ti2zEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.010.001.09",
+    "bodyTag": "RtrLmt",
+    "out": "camt010",
+    "dir": "camt010-v09"
+  },
+  {
+    "name": "ReturnMemberV05",
+    "id": "_ThV60db6Eeq_l4BJLVUF2Q",
+    "identifier": "camt.014.001.05",
+    "bodyTag": "RtrMmb",
+    "out": "camt014",
+    "dir": "camt014-v05"
+  },
+  {
+    "name": "ReturnReservationV08",
+    "id": "_R3UJoTEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.047.001.08",
+    "bodyTag": "RtrRsvatn",
+    "out": "camt047",
+    "dir": "camt047-v08"
+  },
+  {
+    "name": "ReturnStandingOrderV06",
+    "id": "_R3UJrzEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.070.001.06",
+    "bodyTag": "RtrStgOrdr",
+    "out": "camt070",
+    "dir": "camt070-v06"
+  },
+  {
+    "name": "ReturnTransactionV11",
+    "id": "_R3UJvTEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.006.001.11",
+    "bodyTag": "RtrTx",
+    "out": "camt006",
+    "dir": "camt006-v11"
+  },
+  {
+    "name": "UnableToApplyV10",
+    "id": "_R3XNIzEZEe6kQ-WGAhcVPQ",
+    "identifier": "camt.026.001.10",
+    "bodyTag": "UblToApply",
+    "out": "camt026",
+    "dir": "camt026-v10"
   }
 ]

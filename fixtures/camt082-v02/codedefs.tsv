@@ -1,0 +1,9 @@
+codeSet	code	enumName	isoId	text
+MovementResponseType1Code	FULL	Full	_jQ9WgO5NEeCisYr99QEiWA_-739401767	Response will include full details on the movements reported.
+MovementResponseType1Code	STTS	Status	_jQ9Wge5NEeCisYr99QEiWA_424690481	Response will include limited details including the status on the movements reported.
+CancellationProcessingStatus3Code	CANP	PendingCancellation	_jQW5kO5NEeCisYr99QEiWA_1377677964	Cancellation is pending. It is not known at this time whether cancellation can be affected.
+CancellationProcessingStatus3Code	REJT	Rejected	_jQW5ke5NEeCisYr99QEiWA_1441957570	Cancellation has been rejected for further processing.
+CancellationProcessingStatus3Code	REPR	InRepair	_jQW5ku5NEeCisYr99QEiWA_-653311621	Cancellation request is in repair.
+CancellationProcessingStatus3Code	PACK	Accepted	_jQW5k-5NEeCisYr99QEiWA_1263838898	Cancellation request has been acknowledged for further processing by the account servicer.
+CancellationProcessingStatus3Code	DEND	Denied	_jQW5lO5NEeCisYr99QEiWA_1555796636	Cancellation will not be executed.
+CancellationProcessingStatus3Code	CAND	CancellationCompleted	_jQgqkO5NEeCisYr99QEiWA_-1855937373	Cancellation has been completed.

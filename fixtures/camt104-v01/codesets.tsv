@@ -1,0 +1,7 @@
+codeSetName	isoId	restrictionOf	code	enumName
+PaymentRole1Code	_Z7RUUNp-Ed-ak6NoX_4Aeg_-925433456	PartyRoleCode	LQMG	LiquidityManager
+PaymentRole1Code	_Z7RUUNp-Ed-ak6NoX_4Aeg_-925433456	PartyRoleCode	LMMG	LimitManager
+PaymentRole1Code	_Z7RUUNp-Ed-ak6NoX_4Aeg_-925433456	PartyRoleCode	PYMG	PaymentManager
+PaymentRole1Code	_Z7RUUNp-Ed-ak6NoX_4Aeg_-925433456	PartyRoleCode	REDR	Reader
+PaymentRole1Code	_Z7RUUNp-Ed-ak6NoX_4Aeg_-925433456	PartyRoleCode	BKMG	BackupManager
+PaymentRole1Code	_Z7RUUNp-Ed-ak6NoX_4Aeg_-925433456	PartyRoleCode	STMG	SettlementManager

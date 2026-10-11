@@ -1,0 +1,17 @@
+name	isoId	xsiType	pattern	minLength	maxLength	totalDigits	fractionDigits	minInclusive	maxInclusive	other
+AnyBICIdentifier	_YYB_-9p-Ed-ak6NoX_4Aeg_1297781972	IdentifierSet	[A-Z]{6,6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3,3}){0,1}							identificationScheme=SWIFT; AnyBICIdentifier
+ISINIdentifier	_YYU64Np-Ed-ak6NoX_4Aeg_-1113170580	IdentifierSet	[A-Z0-9]{12,12}							identificationScheme=ANNA; ISINIdentifier
+SEDOLIdentifier	_YYer4Np-Ed-ak6NoX_4Aeg_1975412972	IdentifierSet								identificationScheme=London Stock Exchange; SEDOLIdentifier
+CUSIPIdentifier	_YYLJ5dp-Ed-ak6NoX_4Aeg_-1084539446	IdentifierSet								identificationScheme=Standards and Poor's CUSIP Service Bureau; CUSIPIdentifier
+RICIdentifier	_YYU659p-Ed-ak6NoX_4Aeg_-1817156023	IdentifierSet		1	35					identificationScheme=REUTERS ; REUTERSIdentifier
+TickerIdentifier	_YYer4tp-Ed-ak6NoX_4Aeg_1324881819	IdentifierSet		1	35					identificationScheme=Bloomberg;  BloombergIdentifier
+BloombergIdentifier	_YYLJ49p-Ed-ak6NoX_4Aeg_1324881682	IdentifierSet		1	35					identificationScheme=Bloomberg;  BloombergIdentifier
+ConsolidatedTapeAssociationIdentifier	_YYLJ5Np-Ed-ak6NoX_4Aeg_1324881707	IdentifierSet		1	35					identificationScheme=CTAIdentifier; CTAIdentifier
+QUICKIdentifier	_YYU65tp-Ed-ak6NoX_4Aeg_1324881777	IdentifierSet								identificationScheme=QUICK;  QUICKIdentifier
+WertpapierIdentifier	_YYer5Np-Ed-ak6NoX_4Aeg_1324882096	IdentifierSet								identificationScheme=Wertpapier;  WertpapierIdentifier
+DutchIdentifier	_YYLJ5tp-Ed-ak6NoX_4Aeg_1324881724	IdentifierSet								identificationScheme=Dutch agency; DutchIdentifier
+ValorenIdentifier	_YYer49p-Ed-ak6NoX_4Aeg_1324882079	IdentifierSet								identificationScheme=Valoren; ValorenIdentifier
+SicovamIdentifier	_YYer4dp-Ed-ak6NoX_4Aeg_1324881802	IdentifierSet								identificationScheme=Sicovam; SicovamIdentifier
+BelgianIdentifier	_YYLJ4tp-Ed-ak6NoX_4Aeg_1324881647	IdentifierSet								identificationScheme=The Belgian identifier for securities. 
+EuroclearClearstreamIdentifier	_YYLJ59p-Ed-ak6NoX_4Aeg_1324881759	IdentifierSet		1	12					identificationScheme=Clearstream; EuroclearClearstreamIdentifier
+ActiveCurrencyAnd13DecimalAmount	_YX4O9Np-Ed-ak6NoX_4Aeg_-184934550	Amount				18	13	0		currencyIdentifierSet=ActiveCurrencyCode (_bqIp5tp-Ed-ak6NoX_4Aeg_-1326801359)

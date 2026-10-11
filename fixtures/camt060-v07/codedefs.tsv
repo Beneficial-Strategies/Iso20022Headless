@@ -1,0 +1,7 @@
+codeSet	code	enumName	isoId	text
+QueryType3Code	ALLL	All	_ZXqQ99p-Ed-ak6NoX_4Aeg_1181990669	Specifies that the query requests that all matching items be returned.
+QueryType3Code	CHNG	Changed	_ZXqQ-Np-Ed-ak6NoX_4Aeg_1181990712	Specifies that the query requests that only new matching items since the last similar query be returned.
+QueryType3Code	MODF	Modified	_ZXza4Np-Ed-ak6NoX_4Aeg_1181990713	Specifies that the query requests that only items that have changed since the last query be returned.
+FloorLimitType1Code	CRED	Credit	_aqzT09p-Ed-ak6NoX_4Aeg_-430226238	Floor limit applies to credit entries.
+FloorLimitType1Code	DEBT	Debit	_aqzT1Np-Ed-ak6NoX_4Aeg_-371121394	Floor limit applies to debit entries.
+FloorLimitType1Code	BOTH	Both	_aqzT1dp-Ed-ak6NoX_4Aeg_-344337748	Floor limit applies to both credit and debit entries.

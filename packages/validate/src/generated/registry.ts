@@ -409,6 +409,126 @@ export const messageIndex: readonly MessageInfo[] = [
       import('./caam016.ts').then((m) => ({ message: m.caam016Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
+    identifier: "camt.003.001.08",
+    name: "GetAccountV08",
+    title: "Get Account",
+    area: "camt",
+    module: "camt003",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.003.001.08.xsd",
+    load: () =>
+      import('./camt003.ts').then((m) => ({ message: m.camt003Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.005.001.11",
+    name: "GetTransactionV11",
+    title: "Get Transaction",
+    area: "camt",
+    module: "camt005",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.005.001.11.xsd",
+    load: () =>
+      import('./camt005.ts').then((m) => ({ message: m.camt005Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.008.001.11",
+    name: "CancelTransactionV11",
+    title: "Cancel Transaction",
+    area: "camt",
+    module: "camt008",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.008.001.11.xsd",
+    load: () =>
+      import('./camt008.ts').then((m) => ({ message: m.camt008Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.009.001.08",
+    name: "GetLimitV08",
+    title: "Get Limit",
+    area: "camt",
+    module: "camt009",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.009.001.08.xsd",
+    load: () =>
+      import('./camt009.ts').then((m) => ({ message: m.camt009Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.012.001.08",
+    name: "DeleteLimitV08",
+    title: "Delete Limit",
+    area: "camt",
+    module: "camt012",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.012.001.08.xsd",
+    load: () =>
+      import('./camt012.ts').then((m) => ({ message: m.camt012Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.013.001.04",
+    name: "GetMemberV04",
+    title: "Get Member",
+    area: "camt",
+    module: "camt013",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.013.001.04.xsd",
+    load: () =>
+      import('./camt013.ts').then((m) => ({ message: m.camt013Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.016.001.04",
+    name: "GetCurrencyExchangeRateV04",
+    title: "Get Currency Exchange Rate",
+    area: "camt",
+    module: "camt016",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.016.001.04.xsd",
+    load: () =>
+      import('./camt016.ts').then((m) => ({ message: m.camt016Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.018.001.05",
+    name: "GetBusinessDayInformationV05",
+    title: "Get Business Day Information",
+    area: "camt",
+    module: "camt018",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.018.001.05.xsd",
+    load: () =>
+      import('./camt018.ts').then((m) => ({ message: m.camt018Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.020.001.04",
+    name: "GetGeneralBusinessInformationV04",
+    title: "Get General Business Information",
+    area: "camt",
+    module: "camt020",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.020.001.04.xsd",
+    load: () =>
+      import('./camt020.ts').then((m) => ({ message: m.camt020Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.023.001.07",
+    name: "BackupPaymentV07",
+    title: "Backup Payment",
+    area: "camt",
+    module: "camt023",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.023.001.07.xsd",
+    load: () =>
+      import('./camt023.ts').then((m) => ({ message: m.camt023Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.027.001.10",
+    name: "ClaimNonReceiptV10",
+    title: "Claim Non Receipt",
+    area: "camt",
+    module: "camt027",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.027.001.10.xsd",
+    load: () =>
+      import('./camt027.ts').then((m) => ({ message: m.camt027Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.028.001.12",
+    name: "AdditionalPaymentInformationV12",
+    title: "Additional Payment Information",
+    area: "camt",
+    module: "camt028",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.028.001.12.xsd",
+    load: () =>
+      import('./camt028.ts').then((m) => ({ message: m.camt028Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
     identifier: "camt.029.001.14",
     name: "ResolutionOfInvestigationV14",
     title: "Resolution Of Investigation",
@@ -417,6 +537,146 @@ export const messageIndex: readonly MessageInfo[] = [
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.029.001.14.xsd",
     load: () =>
       import('./camt029.ts').then((m) => ({ message: m.camt029Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.032.001.05",
+    name: "CancelCaseAssignmentV05",
+    title: "Cancel Case Assignment",
+    area: "camt",
+    module: "camt032",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.032.001.05.xsd",
+    load: () =>
+      import('./camt032.ts').then((m) => ({ message: m.camt032Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.034.001.07",
+    name: "DuplicateV07",
+    title: "Duplicate",
+    area: "camt",
+    module: "camt034",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.034.001.07.xsd",
+    load: () =>
+      import('./camt034.ts').then((m) => ({ message: m.camt034Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.036.001.06",
+    name: "DebitAuthorisationResponseV06",
+    title: "Debit Authorisation Response",
+    area: "camt",
+    module: "camt036",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.036.001.06.xsd",
+    load: () =>
+      import('./camt036.ts').then((m) => ({ message: m.camt036Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.037.001.10",
+    name: "DebitAuthorisationRequestV10",
+    title: "Debit Authorisation Request",
+    area: "camt",
+    module: "camt037",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.037.001.10.xsd",
+    load: () =>
+      import('./camt037.ts').then((m) => ({ message: m.camt037Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.038.001.05",
+    name: "CaseStatusReportRequestV05",
+    title: "Case Status Report Request",
+    area: "camt",
+    module: "camt038",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.038.001.05.xsd",
+    load: () =>
+      import('./camt038.ts').then((m) => ({ message: m.camt038Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.039.001.06",
+    name: "CaseStatusReportV06",
+    title: "Case Status Report",
+    area: "camt",
+    module: "camt039",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.039.001.06.xsd",
+    load: () =>
+      import('./camt039.ts').then((m) => ({ message: m.camt039Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.040.001.04",
+    name: "FundEstimatedCashForecastReportV04",
+    title: "Fund Estimated Cash Forecast Report",
+    area: "camt",
+    module: "camt040",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.040.001.04.xsd",
+    load: () =>
+      import('./camt040.ts').then((m) => ({ message: m.camt040Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.041.001.04",
+    name: "FundConfirmedCashForecastReportV04",
+    title: "Fund Confirmed Cash Forecast Report",
+    area: "camt",
+    module: "camt041",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.041.001.04.xsd",
+    load: () =>
+      import('./camt041.ts').then((m) => ({ message: m.camt041Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.042.001.04",
+    name: "FundDetailedEstimatedCashForecastReportV04",
+    title: "Fund Detailed Estimated Cash Forecast Report",
+    area: "camt",
+    module: "camt042",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.042.001.04.xsd",
+    load: () =>
+      import('./camt042.ts').then((m) => ({ message: m.camt042Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.043.001.04",
+    name: "FundDetailedConfirmedCashForecastReportV04",
+    title: "Fund Detailed Confirmed Cash Forecast Report",
+    area: "camt",
+    module: "camt043",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.043.001.04.xsd",
+    load: () =>
+      import('./camt043.ts').then((m) => ({ message: m.camt043Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.044.001.03",
+    name: "FundConfirmedCashForecastReportCancellationV03",
+    title: "Fund Confirmed Cash Forecast Report Cancellation",
+    area: "camt",
+    module: "camt044",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.044.001.03.xsd",
+    load: () =>
+      import('./camt044.ts').then((m) => ({ message: m.camt044Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.045.001.03",
+    name: "FundDetailedConfirmedCashForecastReportCancellationV03",
+    title: "Fund Detailed Confirmed Cash Forecast Report Cancellation",
+    area: "camt",
+    module: "camt045",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.045.001.03.xsd",
+    load: () =>
+      import('./camt045.ts').then((m) => ({ message: m.camt045Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.046.001.08",
+    name: "GetReservationV08",
+    title: "Get Reservation",
+    area: "camt",
+    module: "camt046",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.046.001.08.xsd",
+    load: () =>
+      import('./camt046.ts').then((m) => ({ message: m.camt046Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.049.001.07",
+    name: "DeleteReservationV07",
+    title: "Delete Reservation",
+    area: "camt",
+    module: "camt049",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.049.001.07.xsd",
+    load: () =>
+      import('./camt049.ts').then((m) => ({ message: m.camt049Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.052.001.14",
@@ -467,5 +727,215 @@ export const messageIndex: readonly MessageInfo[] = [
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.056.001.12.xsd",
     load: () =>
       import('./camt056.ts').then((m) => ({ message: m.camt056Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.060.001.07",
+    name: "AccountReportingRequestV07",
+    title: "Account Reporting Request",
+    area: "camt",
+    module: "camt060",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.060.001.07.xsd",
+    load: () =>
+      import('./camt060.ts').then((m) => ({ message: m.camt060Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.069.001.05",
+    name: "GetStandingOrderV05",
+    title: "Get Standing Order",
+    area: "camt",
+    module: "camt069",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.069.001.05.xsd",
+    load: () =>
+      import('./camt069.ts').then((m) => ({ message: m.camt069Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.071.001.05",
+    name: "DeleteStandingOrderV05",
+    title: "Delete Standing Order",
+    area: "camt",
+    module: "camt071",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.071.001.05.xsd",
+    load: () =>
+      import('./camt071.ts').then((m) => ({ message: m.camt071Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.076.001.01",
+    name: "BillingReportRequestV01",
+    title: "Billing Report Request",
+    area: "camt",
+    module: "camt076",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.076.001.01.xsd",
+    load: () =>
+      import('./camt076.ts').then((m) => ({ message: m.camt076Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.077.001.01",
+    name: "BillingReportV01",
+    title: "Billing Report",
+    area: "camt",
+    module: "camt077",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.077.001.01.xsd",
+    load: () =>
+      import('./camt077.ts').then((m) => ({ message: m.camt077Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.082.001.02",
+    name: "IntraBalanceMovementCancellationQueryV02",
+    title: "Intra Balance Movement Cancellation Query",
+    area: "camt",
+    module: "camt082",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.082.001.02.xsd",
+    load: () =>
+      import('./camt082.ts').then((m) => ({ message: m.camt082Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.083.001.02",
+    name: "IntraBalanceMovementCancellationReportV02",
+    title: "Intra Balance Movement Cancellation Report",
+    area: "camt",
+    module: "camt083",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.083.001.02.xsd",
+    load: () =>
+      import('./camt083.ts').then((m) => ({ message: m.camt083Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.086.001.05",
+    name: "BankServicesBillingStatementV05",
+    title: "Bank Services Billing Statement",
+    area: "camt",
+    module: "camt086",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.086.001.05.xsd",
+    load: () =>
+      import('./camt086.ts').then((m) => ({ message: m.camt086Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.101.001.02",
+    name: "CreateLimitV02",
+    title: "Create Limit",
+    area: "camt",
+    module: "camt101",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.101.001.02.xsd",
+    load: () =>
+      import('./camt101.ts').then((m) => ({ message: m.camt101Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.102.001.03",
+    name: "CreateStandingOrderV03",
+    title: "Create Standing Order",
+    area: "camt",
+    module: "camt102",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.102.001.03.xsd",
+    load: () =>
+      import('./camt102.ts').then((m) => ({ message: m.camt102Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.103.001.03",
+    name: "CreateReservationV03",
+    title: "Create Reservation",
+    area: "camt",
+    module: "camt103",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.103.001.03.xsd",
+    load: () =>
+      import('./camt103.ts').then((m) => ({ message: m.camt103Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.104.001.01",
+    name: "CreateMemberV01",
+    title: "Create Member",
+    area: "camt",
+    module: "camt104",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.104.001.01.xsd",
+    load: () =>
+      import('./camt104.ts').then((m) => ({ message: m.camt104Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.105.001.03",
+    name: "ChargesPaymentNotificationV03",
+    title: "Charges Payment Notification",
+    area: "camt",
+    module: "camt105",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.105.001.03.xsd",
+    load: () =>
+      import('./camt105.ts').then((m) => ({ message: m.camt105Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.106.001.03",
+    name: "ChargesPaymentRequestV03",
+    title: "Charges Payment Request",
+    area: "camt",
+    module: "camt106",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.106.001.03.xsd",
+    load: () =>
+      import('./camt106.ts').then((m) => ({ message: m.camt106Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.107.001.02",
+    name: "ChequePresentmentNotificationV02",
+    title: "Cheque Presentment Notification",
+    area: "camt",
+    module: "camt107",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.107.001.02.xsd",
+    load: () =>
+      import('./camt107.ts').then((m) => ({ message: m.camt107Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.108.001.02",
+    name: "ChequeCancellationOrStopRequestV02",
+    title: "Cheque Cancellation Or Stop Request",
+    area: "camt",
+    module: "camt108",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.108.001.02.xsd",
+    load: () =>
+      import('./camt108.ts').then((m) => ({ message: m.camt108Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.109.001.02",
+    name: "ChequeCancellationOrStopReportV02",
+    title: "Cheque Cancellation Or Stop Report",
+    area: "camt",
+    module: "camt109",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.109.001.02.xsd",
+    load: () =>
+      import('./camt109.ts').then((m) => ({ message: m.camt109Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.113.001.01",
+    name: "CashDepositRequestV01",
+    title: "Cash Deposit Request",
+    area: "camt",
+    module: "camt113",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.113.001.01.xsd",
+    load: () =>
+      import('./camt113.ts').then((m) => ({ message: m.camt113Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.114.001.01",
+    name: "CashWithdrawalRequestV01",
+    title: "Cash Withdrawal Request",
+    area: "camt",
+    module: "camt114",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.114.001.01.xsd",
+    load: () =>
+      import('./camt114.ts').then((m) => ({ message: m.camt114Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.115.001.01",
+    name: "CashDepositOrWithdrawalStatusUpdateV01",
+    title: "Cash Deposit Or Withdrawal Status Update",
+    area: "camt",
+    module: "camt115",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.115.001.01.xsd",
+    load: () =>
+      import('./camt115.ts').then((m) => ({ message: m.camt115Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "camt.116.001.01",
+    name: "CashDepositOrWithdrawalCancellationRequestV01",
+    title: "Cash Deposit Or Withdrawal Cancellation Request",
+    area: "camt",
+    module: "camt116",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.116.001.01.xsd",
+    load: () =>
+      import('./camt116.ts').then((m) => ({ message: m.camt116Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
 ];

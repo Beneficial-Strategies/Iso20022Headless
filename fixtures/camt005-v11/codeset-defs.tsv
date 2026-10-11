@@ -1,0 +1,8 @@
+codeSet	isoId	text
+PendingStatus4Code	_aGJuo9p-Ed-ak6NoX_4Aeg_1263998543	Indicates that the state of a payment at the clearing agent side is pending.
+FinalStatusCode	_an04VNp-Ed-ak6NoX_4Aeg_-1727527994	Specifies the final status of a transaction.
+CashPaymentStatus2Code	_a7DWVNp-Ed-ak6NoX_4Aeg_1461915328	Specifies the state of a payment instruction at a specified time.
+Priority5Code	_kUSkAH_QEeiik6YN_dzlEA	Specifies the priority level of an event.
+Instruction1Code	_aW12Adp-Ed-ak6NoX_4Aeg_-499701817	Specifies further instructions concerning the processing of a payment instruction, provided by the sending clearing agent to the next agent(s).
+EntryStatus1Code	_ahauU9p-Ed-ak6NoX_4Aeg_-773188206	Specifies the status of an entry.
+ReportIndicator1Code	_ZTCPotp-Ed-ak6NoX_4Aeg_1670165238	Specifies the nature of the report, that is, standard or proprietary.

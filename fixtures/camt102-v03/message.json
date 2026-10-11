@@ -1,0 +1,43 @@
+{
+  "identifier": "camt.102.001.03",
+  "name": "CreateStandingOrderV03",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:camt.102.001.03",
+  "bodyTag": "CretStgOrdr",
+  "out": "camt102",
+  "isoId": "_R3GuYTEZEe6kQ-WGAhcVPQ",
+  "definition": "Scope|The CreateStandingOrder message is sent by a member to the transaction administrator.|It is used to create a permanent order for the transfer of funds between two accounts belonging to the same member and being held at the transaction administrator.|Usage|Based on the criteria defined in the CreateStandingOrder message, the transaction administrator will execute or reject the requested creation and respond with a Receipt message as a reply to the request.",
+  "blocks": [
+    {
+      "name": "MessageHeader",
+      "isoId": "_R3GuZzEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "MsgHdr",
+      "type": "MessageHeader1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "StandingOrderIdentification",
+      "isoId": "_R3GuaTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "StgOrdrId",
+      "type": "StandingOrderIdentification8",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ValueSet",
+      "isoId": "_R3GuazEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "ValSet",
+      "type": "StandingOrder10",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_R3GubTEZEe6kQ-WGAhcVPQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

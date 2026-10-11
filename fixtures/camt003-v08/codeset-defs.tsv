@@ -1,0 +1,4 @@
+codeSet	isoId	text
+QueryType2Code	_ZXqQ8dp-Ed-ak6NoX_4Aeg_-1313852264	Specifies the nature of the query, i.e. whether the query requests that all matching items be returned or only new matching items since the last similar query be returned.
+ExternalSystemBalanceType1Code	_qP4YgXhYEeidzqjNEfehPg	Specifies the system balance type, as published in an external system balance type code set.|External code sets can be downloaded from www.iso20022.org.
+BalanceCounterparty1Code	_bkBa0tp-Ed-ak6NoX_4Aeg_678189976	Specifies the type of counterparty to be taken into account for calculation of the balance.

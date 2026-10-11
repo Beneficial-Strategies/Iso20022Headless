@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+LongPostalAddress1Choice	_QG4pJtp-Ed-ak6NoX_4Aeg_-1635487920	Unstructured	Information that locates and identifies a specific address, as defined by postal services, that is presented in free format text.
+LongPostalAddress1Choice	_QG4pJ9p-Ed-ak6NoX_4Aeg_-1635487889	Structured	Information that locates and identifies a specific address, as defined by postal services, that is presented in a formal structure.

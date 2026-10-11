@@ -1,0 +1,8 @@
+choice	memberId	memberName	text
+ExecutionType1Choice	_750BgKMgEeCJ6YNENx4h-w_274414262	Time	Execution type is executed based on a time trigger.
+ExecutionType1Choice	_750BgaMgEeCJ6YNENx4h-w_989331050	Event	Execution type is executed based on an event driven trigger.
+EventType1Choice	_71C2R6MgEeCJ6YNENx4h-w_-773786340	Code	Type of the event, in a coded form as published in an external list.
+EventType1Choice	_71MAMKMgEeCJ6YNENx4h-w_1849878046	Proprietary	Type of the event, in a free text form.
+DatePeriod2Choice	_jVCsMZlPEee-Zps0fZQaFQ	FromDate	Start date of the range.
+DatePeriod2Choice	_jVCsM5lPEee-Zps0fZQaFQ	ToDate	End date of the range.
+DatePeriod2Choice	_jVCsNZlPEee-Zps0fZQaFQ	FromToDate	Range of time between a start date and an end date.

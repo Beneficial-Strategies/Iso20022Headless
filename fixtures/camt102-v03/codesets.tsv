@@ -1,0 +1,11 @@
+codeSetName	isoId	restrictionOf	code	enumName
+ExternalSystemEventType1Code	_8OFBVqMgEeCJ6YNENx4h-w_1804878644	ExternalSystemEventTypeCode	*EXTERNAL*	minLength=1 maxLength=4; ~22 codes (not enumerated)
+Frequency2Code	_asJXqNp-Ed-ak6NoX_4Aeg_1505345791	FrequencyCode	YEAR	Annual
+Frequency2Code	_asJXqNp-Ed-ak6NoX_4Aeg_1505345791	FrequencyCode	MNTH	Monthly
+Frequency2Code	_asJXqNp-Ed-ak6NoX_4Aeg_1505345791	FrequencyCode	QURT	Quarterly
+Frequency2Code	_asJXqNp-Ed-ak6NoX_4Aeg_1505345791	FrequencyCode	MIAN	SemiAnnual
+Frequency2Code	_asJXqNp-Ed-ak6NoX_4Aeg_1505345791	FrequencyCode	WEEK	Weekly
+Frequency2Code	_asJXqNp-Ed-ak6NoX_4Aeg_1505345791	FrequencyCode	DAIL	Daily
+Frequency2Code	_asJXqNp-Ed-ak6NoX_4Aeg_1505345791	FrequencyCode	ADHO	Adhoc
+Frequency2Code	_asJXqNp-Ed-ak6NoX_4Aeg_1505345791	FrequencyCode	INDA	IntraDay
+Frequency2Code	_asJXqNp-Ed-ak6NoX_4Aeg_1505345791	FrequencyCode	OVNG	Overnight
