@@ -31,7 +31,7 @@ Pick an area and a message and the form shows every element it can hold:
 Currently covers **187 messages** across Payments Initiation (`pain`), Payments Clearing and Settlement (`pacs`),
 ATM Management (`caam`), Cash Management (`camt`: account reports, statements and notifications, payment
 cancellation requests and investigations, cash management and charges messages), Administration (`admi`), Payments
-Remittance Advice (`remt`), Transaction Tracker (`trck`) Account Management (`acmt`) and the Business Application Header (`head`, which is its own root: `<AppHdr>`, not `<Document>`). Spec data comes from the ISO 20022 repository.
+Remittance Advice (`remt`), Transaction Tracker (`trck`), Account Management (`acmt`) and the Business Application Header (`head`, which is its own root: `<AppHdr>`, not `<Document>`). Spec data comes from the ISO 20022 repository.
 
 ## The library
 
