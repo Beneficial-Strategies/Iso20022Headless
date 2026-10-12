@@ -1,0 +1,29 @@
+choice	memberId	memberName	text
+DateFormat3Choice	_RVtzwNp-Ed-ak6NoX_4Aeg_1324481719	Date	Date expressed as a calendar date.
+DateFormat3Choice	_RVtzwdp-Ed-ak6NoX_4Aeg_1324481735	DateCode	Indicates that date is unknown.
+PartyIdentification264Choice	_Qj1QEa5wEfCUHaCK5HWOhg	LegalPerson	Legal entity.
+PartyIdentification264Choice	_Qj13Ia5wEfCUHaCK5HWOhg	NaturalPerson	Private person.
+LongPostalAddress2Choice	_RVRH2Np-Ed-ak6NoX_4Aeg_-1296060100	Unstructured	Information that locates and identifies a specific address, as defined by postal services, that is presented in free format text.
+LongPostalAddress2Choice	_RVRH2dp-Ed-ak6NoX_4Aeg_-1296060083	Structured	Information that locates and identifies a specific address, as defined by postal services, that is presented in a formal structure.
+Vote17Choice	_xFjywajGEfCzuLlmLrhIvA	VotePerAgendaResolution	Vote instruction is provided individually for each agenda resolution.
+Vote17Choice	_xFjyw6jGEfCzuLlmLrhIvA	VoteForAllAgendaResolutions	One single vote instruction is provided to cover all agenda resolutions.
+Vote18Choice	_xMNNU6jGEfCzuLlmLrhIvA	VoteInstruction	Instruction specifying the instructed quantity of voting rights per resolution.
+Vote18Choice	_xMNNVajGEfCzuLlmLrhIvA	GlobalVoteInstruction	Instruction specifying a vote instruction per resolution for the entire entitlement.
+QuantityOrCode1Choice	_M2xt0K-WEemJ1NnLPsTFaw	Quantity	Quantity expressed as a number.
+QuantityOrCode1Choice	_Q7368K-WEemJ1NnLPsTFaw	Code	Quantity expressed as a code.
+VoteInstructionType2Choice	_YC3j8fNoEeqRfth943bvEA	Type	Vote option expressed as a code.
+VoteInstructionType2Choice	_YC3j8_NoEeqRfth943bvEA	Proprietary	Vote option expressed as a proprietary code.
+VoteInstructionType3Choice	_r1A-wa5vEfCUHaCK5HWOhg	Type	Vote option expressed as a code.
+VoteInstructionType3Choice	_r1A-w65vEfCUHaCK5HWOhg	Proprietary	Vote option expressed as a proprietary code.
+VoteInstructionForMeetingResolution3Choice	_n0rhA64dEemG7MmivSuE5g	VoteIndication	Vote recommendation for resolutions added during the meeting.
+VoteInstructionForMeetingResolution3Choice	_n0rhBa4dEemG7MmivSuE5g	Shareholder	Name and address of the shareholder to whom the rights to vote are transferred for resolutions added during the meeting.
+VoteInstructionType1Choice	_U7ERUK4KEemG7MmivSuE5g	Type	Vote option expressed as a code.
+VoteInstructionType1Choice	_fOSNkK4KEemG7MmivSuE5g	Proprietary	Vote option expressed as a proprietary code.
+ParticipationMethod3Choice	_XuYKkRrlEeyhRdHRjakS2w	Code	Method of participation in the general meeting vote expressed as a code.
+ParticipationMethod3Choice	_XuYKkxrlEeyhRdHRjakS2w	Proprietary	Method of participation in the general meeting vote expressed as a proprietary code.
+PartyIdentification335Choice	_KfJRganVEfC5VNwixU6YfQ	Account	Identification of the account.
+PartyIdentification335Choice	_YdfbsanVEfC5VNwixU6YfQ	Party	Identification of the party.
+AccountIdentification84Choice	_z4SBEKnOEfC5VNwixU6YfQ	Identification	Additional disclosure account identification.
+AccountIdentification84Choice	_lWvqQKnOEfC5VNwixU6YfQ	Name	Additional disclosure account name.
+PartyIdentification336Choice	_1fJ0EanVEfC5VNwixU6YfQ	AnyBIC	Code allocated to a financial or non-financial institution by the ISO 9362 Registration Authority, as described in ISO 9362 "Banking - Banking telecommunication messages - Business identifier code (BIC)".
+PartyIdentification336Choice	_1fJ0EKnVEfC5VNwixU6YfQ	LEI	Legal entity identifier of the party.

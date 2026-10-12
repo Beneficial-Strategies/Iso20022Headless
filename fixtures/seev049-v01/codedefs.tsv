@@ -1,0 +1,4 @@
+codeSet	code	enumName	isoId	text
+RejectionReason52Code	IDRI	InvalidDisclosureRequestIdentification	_v9mNMcAWEembi_x1QDJfxw	Disclosure request identification is invalid or unknown.
+RejectionReason52Code	IDRJ	InvalidDisclosureResponseIdentification	_wFLb4cAWEembi_x1QDJfxw	Disclosure response identification is invalid or unknown.
+RejectionReason52Code	SVNO	ServiceNotOffered	_2dH1YcAWEembi_x1QDJfxw	Service for which the information was sent is not offered.

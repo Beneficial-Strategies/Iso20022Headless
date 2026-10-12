@@ -112,11 +112,14 @@ describe('every machine-checkable rule can both pass and fail', () => {
   }
 
   it('covers every checkable rule', () => {
-    expect(all.length).toBe(703);
+    expect(all.length).toBe(1041);
   });
 
   it('none is stuck always passing or always failing', () => {
-    const stuck = all.filter((r) => !(r.pass && r.fail)).map((r) => `${r.type}.${r.rule.name}: ${r.pass ? 'never fails' : 'never passes'} (${r.tried} tried)`);
+    // The search builds one-item lists. "If one OfferType is DISS, no OfferType may be NDIS" needs two items to fail:
+    // rules-seev.test.ts shows by behavior that the dissenter rights rules do fail.
+    const needsTwoItems = /\.DissenterRights[12]Rule$/;
+    const stuck = all.filter((r) => !(r.pass && r.fail) && !needsTwoItems.test(`${r.type}.${r.rule.name}`)).map((r) => `${r.type}.${r.rule.name}: ${r.pass ? 'never fails' : 'never passes'} (${r.tried} tried)`);
     expect(stuck).toEqual([]);
   });
 });

@@ -1,0 +1,59 @@
+{
+  "identifier": "seev.027.001.01",
+  "name": "AgentCAStandingInstructionStatusAdviceV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.027.001.01",
+  "bodyTag": "AgtCAStgInstrStsAdvc",
+  "out": "seev027",
+  "isoId": "_TSEvKdEwEd-BzquC8wXy7w_486290785",
+  "definition": "Scope|This message is sent by an issuer (or its agent) to the CSD to report the status, or a change in status, of a standing instruction request or the status of a standing instruction cancellation request.|Usage|When this message is used to report the status of a standing instruction request, the building block Standing Instruction Request Identification must be present.|When this message is used to report the status of a standing instruction cancellation request, the building block Standing Instruction Cancellation Request Identification must be present.",
+  "blocks": [
+    {
+      "name": "Identification",
+      "isoId": "_TSEvKtEwEd-BzquC8wXy7w_4729651",
+      "xmlTag": "Id",
+      "type": "DocumentIdentification8",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AgentCAStandingInstructionRequestIdentification",
+      "isoId": "_TSEvK9EwEd-BzquC8wXy7w_45366871",
+      "xmlTag": "AgtCAStgInstrReqId",
+      "type": "DocumentIdentification8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AgentCAStandingInstructionCancellationRequestIdentification",
+      "isoId": "_TSEvLNEwEd-BzquC8wXy7w_146031516",
+      "xmlTag": "AgtCAStgInstrCxlReqId",
+      "type": "DocumentIdentification8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "StandingInstructionGeneralInformation",
+      "isoId": "_TSN5ENEwEd-BzquC8wXy7w_-1087118100",
+      "xmlTag": "StgInstrGnlInf",
+      "type": "CorporateActionStandingInstructionGeneralInformation1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "StandingInstructionRequestStatus",
+      "isoId": "_TSN5EdEwEd-BzquC8wXy7w_-1705435837",
+      "xmlTag": "StgInstrReqSts",
+      "type": "StandingInstructionStatus1Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "StandingInstructionCancellationRequestStatus",
+      "isoId": "_TSN5EtEwEd-BzquC8wXy7w_-1517034703",
+      "xmlTag": "StgInstrCxlReqSts",
+      "type": "StandingInstructionCancellationStatus1Choice",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

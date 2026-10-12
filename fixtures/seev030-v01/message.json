@@ -1,0 +1,59 @@
+{
+  "identifier": "seev.030.001.01",
+  "name": "AgentCADeactivationStatusAdviceV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.030.001.01",
+  "bodyTag": "AgtCADeactvtnStsAdvc",
+  "out": "seev030",
+  "isoId": "_TMQbDNEwEd-BzquC8wXy7w_622567227",
+  "definition": "Scope|This message is sent by a CSD to an issuer (or its agent) to report the status, or a change in status, of a corporate action deactivation instruction or the status of a deactivation cancellation request.|Usage|This message is used to provide a status on the deactivation instruction, especially to confirm the deactivation of a Corporate Action event or option.",
+  "blocks": [
+    {
+      "name": "Identification",
+      "isoId": "_TMQbDdEwEd-BzquC8wXy7w_-540475327",
+      "xmlTag": "Id",
+      "type": "DocumentIdentification8",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AgentCADeactivationInstructionIdentification",
+      "isoId": "_TMaMANEwEd-BzquC8wXy7w_-214470974",
+      "xmlTag": "AgtCADeactvtnInstrId",
+      "type": "DocumentIdentification8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AgentCADeactivationCancellationRequestIdentification",
+      "isoId": "_TMaMAdEwEd-BzquC8wXy7w_965193756",
+      "xmlTag": "AgtCADeactvtnCxlReqId",
+      "type": "DocumentIdentification8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionGeneralInformation",
+      "isoId": "_TMaMAtEwEd-BzquC8wXy7w_-1294066154",
+      "xmlTag": "CorpActnGnlInf",
+      "type": "CorporateActionInformation1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "DeactivationInstructionStatus",
+      "isoId": "_TMaMA9EwEd-BzquC8wXy7w_861232790",
+      "xmlTag": "DeactvtnInstrSts",
+      "type": "CorporateActionDeactivationInstructionStatus1",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "DeactivationCancellationRequestStatus",
+      "isoId": "_TMaMBNEwEd-BzquC8wXy7w_1319300008",
+      "xmlTag": "DeactvtnCxlReqSts",
+      "type": "CorporateActionDeactivationCancellationStatus1Choice",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

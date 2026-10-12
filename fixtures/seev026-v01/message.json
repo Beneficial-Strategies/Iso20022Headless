@@ -1,0 +1,43 @@
+{
+  "identifier": "seev.026.001.01",
+  "name": "AgentCAStandingInstructionCancellationRequestV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.026.001.01",
+  "bodyTag": "AgtCAStgInstrCxlReq",
+  "out": "seev026",
+  "isoId": "_TRx0NdEwEd-BzquC8wXy7w_608970881",
+  "definition": "Scope|This message is sent by a CSD to the issuer agent to request the cancellation of a previously sent Agent Corporate Action Standing Instruction.|Usage|This message is used to request the cancellation of a standing instruction.|This message must contain the identification of the standing instruction to be cancelled. It may also contain details of the standing instruction to be cancelled, but this is not recommended.",
+  "blocks": [
+    {
+      "name": "Identification",
+      "isoId": "_TRx0NtEwEd-BzquC8wXy7w_-454258628",
+      "xmlTag": "Id",
+      "type": "DocumentIdentification8",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AgentCAStandingInstructionRequestIdentification",
+      "isoId": "_TRx0N9EwEd-BzquC8wXy7w_-424704764",
+      "xmlTag": "AgtCAStgInstrReqId",
+      "type": "DocumentIdentification8",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "StandingInstructionGeneralInformation",
+      "isoId": "_TRx0ONEwEd-BzquC8wXy7w_813068966",
+      "xmlTag": "StgInstrGnlInf",
+      "type": "CorporateActionStandingInstructionGeneralInformation1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "StandingInstructionDetails",
+      "isoId": "_TRx0OdEwEd-BzquC8wXy7w_881408508",
+      "xmlTag": "StgInstrDtls",
+      "type": "CorporateActionStandingInstruction1",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

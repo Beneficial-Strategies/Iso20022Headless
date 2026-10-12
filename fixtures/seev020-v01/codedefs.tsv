@@ -1,0 +1,15 @@
+codeSet	code	enumName	isoId	text
+DistributionInstructionType1Code	GDEB	GlobalDebitOrder	_awnn8Np-Ed-ak6NoX_4Aeg_-1264498767	Instruction to debit the positions held under all clients accounts in the underlying resouces of the given event and option. This order applies to all clients who are eligible to participate to the CA event.
+DistributionInstructionType1Code	IDEB	IndividualOrder	_awnn8dp-Ed-ak6NoX_4Aeg_-1264498766	An instruction, on a per client basis, to debit the position held in the underlying resources (securities and/or cash) and/or the credit of the proceeds (securities and/or cash).
+DistributionInstructionType1Code	GRET	GlobalReturnOrder	_awnn8tp-Ed-ak6NoX_4Aeg_-1264498737	Instruction to transfer securities from the clients sequestered balances back to the respective available balances.
+DistributionInstructionType1Code	CHAN	OptionChangeOrder	_awnn89p-Ed-ak6NoX_4Aeg_-1264498736	Instruction to transfer the position from one sequestered balance (related to a CA option) to another sequestered balalnce (related to another CA option).
+DistributionInstructionType1Code	IRET	IndividualReturnOrder	_awnn9Np-Ed-ak6NoX_4Aeg_1772889529	Instruction to transfer securities from a client sequestered balance back to its available balance.
+StampDutyType1Code	SDRU	OutsideCSD	_ZPdXM9p-Ed-ak6NoX_4Aeg_497267445	SDRT paid outside of CSD on corporate action.
+StampDutyType1Code	SDRT	Paid	_ZPdXNNp-Ed-ak6NoX_4Aeg_514814980	SDRT paid on another transaction.
+StampDutyType1Code	SDRN	NotApplicable	_ZPdXNdp-Ed-ak6NoX_4Aeg_775244648	Stamp duty not applicable.
+StampDutyType1Code	SDRQ	Exemption	_ZPdXNtp-Ed-ak6NoX_4Aeg_814957832	Exempt, for any other reason.
+SecuritiesBalanceType9Code	AVLB	Available	_ZC8lONp-Ed-ak6NoX_4Aeg_-1937993977	Balance of money or securities that is at the disposal of the account owner on the date specified.
+SecuritiesBalanceType9Code	ELEC	Elected	_ZC8lOdp-Ed-ak6NoX_4Aeg_-1937993976	Balance of instructed position.
+SecuritiesBalanceType9Code	UNEL	Unelected	_ZDFvINp-Ed-ak6NoX_4Aeg_-1937993948	Balance of uninstructed position.
+SecuritiesBalanceType9Code	RDIS	ReservedForDistribution	_ZDFvIdp-Ed-ak6NoX_4Aeg_-1937993947	Balance of financial instruments that are reserved for the distribution of the proceeds.
+SecuritiesBalanceType9Code	RREM	ReservedForRemoval	_ZDFvItp-Ed-ak6NoX_4Aeg_-1937993918	Balance of securities which are reserved temporarily in the SPA account before they will effectively be exchanged.

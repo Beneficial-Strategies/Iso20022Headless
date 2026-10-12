@@ -1,0 +1,8 @@
+codeSet	isoId	text
+Status11Code	_9FiLwYY_Ee-5eN4DwJpixA	Specifies the status of an instruction.
+RejectionReason91Code	_cN7z4KjXEfCzuLlmLrhIvA	Specifies a reason why the instruction has a rejected status.
+PendingReason41Code	_pME6ULMUEfCEXew4g5B5oA	Specifies a reason why the instruction is pending.
+CancellationStatus6Code	_Q7yCAbLQEemDyeh7tbvg1w	Specifies the cancellation status.
+RejectionReason51Code	_U-MrYLLMEemDyeh7tbvg1w	Specifies a reason why the instruction/cancellation request has a rejected status.
+PendingCancellationReason6Code	_vhob4bLOEemDyeh7tbvg1w	Specifies a reason why the cancellation request has a pending status.
+SecuritiesEntryType3Code	_AJfyYDUFEe2tRf29bleifQ	Specifies the type of securities entry on an account.

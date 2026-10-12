@@ -1,0 +1,39 @@
+choice	memberId	memberName	text
+Quantity49Choice	_K-7tURuyEeyhRdHRjakS2w	QuantityChoice	Choice between different quantity of security formats.
+Quantity49Choice	_K-7tUxuyEeyhRdHRjakS2w	ProprietaryQuantity	Proprietary quantity of security format.
+Quantity50Choice	_LU1r4RuyEeyhRdHRjakS2w	OriginalAndCurrentFaceAmount	Signed face amount and amortised value of security.
+Quantity50Choice	_LU1r4xuyEeyhRdHRjakS2w	SignedQuantity	Signed quantity of security.
+BalanceFormat11Choice	_JWK_wRuyEeyhRdHRjakS2w	Balance	Provides information about balance related to a corporate action.
+BalanceFormat11Choice	_JWK_yRuyEeyhRdHRjakS2w	EligibleBalance	Provide eligible balance information in different formats.
+BalanceFormat11Choice	_JWK_0RuyEeyhRdHRjakS2w	NotEligibleBalance	Provide not eligible balance information in different formats.
+CorporateActionOption30Choice	_xGCuUeaqEemtTOaHuc_63w	Code	Standard code to specify the type of corporate action options.
+CorporateActionOption30Choice	_xGCuWeaqEemtTOaHuc_63w	Proprietary	Proprietary identification of the type of corporate action options.
+InstructionProcessingStatus62Choice	_H9heUa8wEfCx2aBifPEdRg	Accepted	Instruction is accepted.
+InstructionProcessingStatus62Choice	_H9heU68wEfCx2aBifPEdRg	Cancelled	Instruction cancelled by client cancellation instruction.
+InstructionProcessingStatus62Choice	_H9heW68wEfCx2aBifPEdRg	AcceptedForFurtherProcessing	Provides status information related to an instruction request that is accepted. This means that the instruction has been received, is processable and has been validated for further processing.
+InstructionProcessingStatus62Choice	_H9heY68wEfCx2aBifPEdRg	Rejected	Instruction rejected by the receiver.
+InstructionProcessingStatus62Choice	_H9hea68wEfCx2aBifPEdRg	Pending	Instruction has not been completed.
+InstructionProcessingStatus62Choice	_H9hec68wEfCx2aBifPEdRg	PendingCancellation	Cancellation instruction is pending.
+InstructionProcessingStatus62Choice	_H9heda8wEfCx2aBifPEdRg	Covered	Protect Instruction has been full covered.
+InstructionProcessingStatus62Choice	_H9hed68wEfCx2aBifPEdRg	Uncovered	Cover protect instruction accepted but it has not fully covered the protect instruction.
+InstructionProcessingStatus62Choice	_H9heea8wEfCx2aBifPEdRg	Returned	Instructed units are returned or partially returned to the instructing party.
+CancelledStatus12Choice	_w-u9gUGUEeWqy4niLuXETA	NoSpecifiedReason	Reason not specified.
+CancelledStatus12Choice	_w-u9iUGUEeWqy4niLuXETA	Reason	Reason for the cancelled status.
+CancelledReason8Choice	_xZ9g8UGUEeWqy4niLuXETA	Code	Standard code to specify the reason why the instruction is cancelled.
+CancelledReason8Choice	_xZ9g-UGUEeWqy4niLuXETA	Proprietary	Proprietary identification specifying the reason why the instruction is cancelled.
+RejectedStatus58Choice	_xWrPsW5zEe6a272CIEgzKw	NoSpecifiedReason	Reason not specified.
+RejectedStatus58Choice	_xWrPuW5zEe6a272CIEgzKw	Reason	Reason why the meeting instruction message or the individual meeting instruction is rejected.
+RejectedReason58Choice	_JqYgqmwCEe6-uamPcUrBKg	Code	Rejection reason specified as a code.
+RejectedReason58Choice	_JqYgq2wCEe6-uamPcUrBKg	Proprietary	Rejection reason specified as a proprietary code.
+PendingStatus85Choice	_iigMAbMZEfCEXew4g5B5oA	NoSpecifiedReason	Reason not specified.
+PendingStatus85Choice	_iigMCbMZEfCEXew4g5B5oA	Reason	Reason for the pending status.
+PendingReason82Choice	_jGVR0bMZEfCEXew4g5B5oA	Code	Pending reason specified as a code.
+PendingReason82Choice	_jGVR2bMZEfCEXew4g5B5oA	Proprietary	Pending reason specified as a proprietary code.
+PendingCancellationStatus21Choice	_IEVQ8a8wEfCx2aBifPEdRg	NoSpecifiedReason	Reason not specified.
+PendingCancellationStatus21Choice	_IEVQ-a8wEfCx2aBifPEdRg	Reason	Reason for the pending cancellation status.
+PendingCancellationReason5Choice	_2t4r4YluEeavwKddCbm3hg	Code	Standard code to specify the reason why a cancellation request sent for the related instruction is pending.
+PendingCancellationReason5Choice	_2t4r6YluEeavwKddCbm3hg	Proprietary	Proprietary identification of the reason why a cancellation request sent for the related instruction is pending.
+ReturnedStatus2Choice	_wYfEaqGpEe-4O7NbwmwJkQ	NoSpecifiedReason	Reason not specified.
+ReturnedStatus2Choice	_wYfEa6GpEe-4O7NbwmwJkQ	Reason	Reason why the meeting instruction message or the individual meeting instruction is returned.
+ReturnedReason2Choice	_ohK2UYS_Ee-1WeOqsw_6eA	Code	Returned reason specified as a code.
+ReturnedReason2Choice	_ohK2UoS_Ee-1WeOqsw_6eA	Proprietary	Returned reason specified as a proprietary code.

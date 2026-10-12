@@ -1,0 +1,10 @@
+codeSet	isoId	text
+DateMode1Code	_f_Z6kFuSEeSmO6RkXg92Lg	Specifies, for a date, when the event or operation is to take place, for example at the beginning or end of the day.
+PartyRole3Code	_xqjtwPRCEeqAradXpAelDQ	Specifies the role of the party in the transaction.
+ProxyType3Code	_X2Qi8BrfEeyhRdHRjakS2w	Specifies the type of proxy person.
+DeliveryPlace3Code	_L915cA1fEeu_4e16J8D_UA	Specifies the place of delivery.
+VoteInstruction7Code	_JCPdYfNoEeqRfth943bvEA	Specifies a type of voting instructions.
+VoteInstruction6Code	_wxlXIK4IEemG7MmivSuE5g	Specifies a type of voting instructions.
+InvestorClassificationType1Code	_EHUJMK5pEfCUHaCK5HWOhg	Classification of an investor in relation to a corporate action.
+VotingParticipationMethod2Code	_Blwy0PNqEeqRfth943bvEA	Specifies the different methods allowed for participating to the vote of agenda resolutions in a general meeting.
+VotingParticipationMethod3Code	_eR8asBrkEeyhRdHRjakS2w	Specifies the different methods allowed for participating to the vote of agenda resolutions in a general meeting.

@@ -1,0 +1,59 @@
+{
+  "identifier": "seev.062.001.01",
+  "name": "BuyerProtectionInstructionCancellationRequestV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.062.001.01",
+  "bodyTag": "BuyrPrtcnInstrCxlReq",
+  "out": "seev062",
+  "isoId": "_xodUALbdEe-NMoTZ6Byg6A",
+  "definition": "Scope|The BuyerProtectionInstructionCancellationRequest message is sent by an account owner to an account servicer to request cancellation of a previously sent Buyer Protection Instruction.||Usage|The message may also be used to:|- re-send a message previously sent (the sub-function of the message is Duplicate),|- provide a third party with a copy of a message for information (the sub-function of the message is Copy),|- re-send to a third party a copy of a message for information (the sub-function of the message is Copy Duplicate), using the relevant elements in the business application header (BAH).",
+  "blocks": [
+    {
+      "name": "BuyerProtectionInstructionIdentification",
+      "isoId": "_Kbbtcd72Ee-NrtAAlrBEgQ",
+      "xmlTag": "BuyrPrtcnInstrId",
+      "type": "DocumentIdentification57",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionGeneralInformation",
+      "isoId": "_j-784d72Ee-NrtAAlrBEgQ",
+      "xmlTag": "CorpActnGnlInf",
+      "type": "CorporateActionGeneralInformation195",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "RelatedSettlementInstruction",
+      "isoId": "_stoyYt72Ee-NrtAAlrBEgQ",
+      "xmlTag": "RltdSttlmInstr",
+      "type": "RelatedSettlementInstruction4",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AccountIdentification",
+      "isoId": "_br-nEcYHEfCAUuDfE8yRnw",
+      "xmlTag": "AcctId",
+      "type": "SecuritiesAccountIdentification1Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionElection",
+      "isoId": "_stoyY972Ee-NrtAAlrBEgQ",
+      "xmlTag": "CorpActnElctn",
+      "type": "CorporateActionElection4",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_MkpnQd73Ee-NrtAAlrBEgQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

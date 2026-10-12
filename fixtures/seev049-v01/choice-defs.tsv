@@ -1,0 +1,7 @@
+choice	memberId	memberName	text
+ResponseProcessingStatus1Choice	_lOZu8IeUEemJ1cSJJmVYRQ	Accepted	The received message or the multipart received report (sent with pagination in multiple messages) is accepted.
+ResponseProcessingStatus1Choice	_mjD0wIeUEemJ1cSJJmVYRQ	Rejected	The received message or the multipart received report (sent with pagination in multiple messages) is rejected.
+RejectedStatus29Choice	_fh9eq4eWEemJ1cSJJmVYRQ	NoSpecifiedReason	Reason not specified.
+RejectedStatus29Choice	_fh9eqoeWEemJ1cSJJmVYRQ	Reason	Reason for the rejected status.
+RejectedReason30Choice	_eKVR2sAUEembi_x1QDJfxw	Code	Standard code to specify the reason why the instruction/cancellation request has a rejected status.
+RejectedReason30Choice	_eKVR28AUEembi_x1QDJfxw	Proprietary	Proprietary identification of the reason why the instruction/cancellation request has a rejected status.

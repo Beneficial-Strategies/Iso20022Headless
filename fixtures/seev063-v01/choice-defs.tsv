@@ -1,0 +1,13 @@
+choice	memberId	memberName	text
+InstructionCancellationRequestStatus20Choice	_s9Gd6N8OEe-NrtAAlrBEgQ	CancellationCompleted	Provides status information related to an instruction cancellation request completed.
+InstructionCancellationRequestStatus20Choice	_s9Gd6d8OEe-NrtAAlrBEgQ	Rejected	Provides status information related to a cancellation request rejected for further processing due to system (data) reasons.
+InstructionCancellationRequestStatus20Choice	_s9Gd598OEe-NrtAAlrBEgQ	PendingCancellation	Provides status information related to a pending cancellation request.
+InstructionCancellationRequestStatus20Choice	_s9Gd5t8OEe-NrtAAlrBEgQ	ProprietaryStatus	Proprietary status related to an instruction cancellation request.
+RejectedStatus62Choice	_j2C9Qd8PEe-NrtAAlrBEgQ	NoSpecifiedReason	Reason not specified.
+RejectedStatus62Choice	_j2C9Sd8PEe-NrtAAlrBEgQ	Reason	Reason for the rejected status.
+RejectedReason64Choice	_j-z3sd8PEe-NrtAAlrBEgQ	Code	Standard code to specify the reason why the instruction/cancellation request has a rejected status.
+RejectedReason64Choice	_j-z3ud8PEe-NrtAAlrBEgQ	Proprietary	Proprietary identification of the reason why the instruction/cancellation request has a rejected status.
+PendingCancellationStatus17Choice	_dZcQwd8QEe-NrtAAlrBEgQ	NotSpecifiedReason	Reason not specified.
+PendingCancellationStatus17Choice	_dZcQyd8QEe-NrtAAlrBEgQ	Reason	Reason for the pending cancellation status.
+PendingCancellationReason9Choice	_dh_Iwd8QEe-NrtAAlrBEgQ	Code	Standard code to specify the reason why a cancellation request sent for the related instruction is pending.
+PendingCancellationReason9Choice	_dh_Iyd8QEe-NrtAAlrBEgQ	Proprietary	Proprietary identification of the reason why a cancellation request sent for the related instruction is pending.

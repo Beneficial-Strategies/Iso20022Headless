@@ -1,0 +1,13 @@
+choice	memberId	memberName	text
+InstructionProcessingStatus59Choice	_j-yrmd75Ee-NrtAAlrBEgQ	AcceptedAndConfirmed	Provides status information related to a buyer instruction request that is accepted and confirmed (matched by the counterparty).
+InstructionProcessingStatus59Choice	_j-yrod75Ee-NrtAAlrBEgQ	Rejected	Provides status information related to an instruction request rejected for further processing due to system reasons.
+InstructionProcessingStatus59Choice	_j-yrqd75Ee-NrtAAlrBEgQ	Pending	Provides status information related to a pending instruction.
+InstructionProcessingStatus59Choice	_j-yrwd75Ee-NrtAAlrBEgQ	ProprietaryStatus	Proprietary status related to an instruction.
+RejectedStatus63Choice	_0EVEYd78Ee-NrtAAlrBEgQ	NoSpecifiedReason	Reason not specified.
+RejectedStatus63Choice	_0EZ85d78Ee-NrtAAlrBEgQ	Reason	Reason why the buyer protection instruction is rejected.
+RejectedReason65Choice	_Crapkd79Ee-NrtAAlrBEgQ	Code	Rejection reason specified as a code.
+RejectedReason65Choice	_Crapmd79Ee-NrtAAlrBEgQ	Proprietary	Rejection reason specified as a proprietary code.
+PendingStatus78Choice	_5ABosd8EEe-NrtAAlrBEgQ	NoSpecifiedReason	Reason not specified.
+PendingStatus78Choice	_5ABoud8EEe-NrtAAlrBEgQ	Reason	Reason for the pending status.
+PendingReason74Choice	_FPP-od8FEe-NrtAAlrBEgQ	Code	Pending reason specified as a code.
+PendingReason74Choice	_FPP-qd8FEe-NrtAAlrBEgQ	Proprietary	Pending reason specified as a proprietary code.

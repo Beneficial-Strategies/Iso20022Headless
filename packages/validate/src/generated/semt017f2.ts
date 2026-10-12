@@ -98,6 +98,7 @@ import {
   BalanceQuantity17ChoiceSchema,
   RestrictedFINXMax52TextSchema,
   GenericIdentification18Schema,
+  RestrictedFINMax35TextSchema,
   TransactionActivity1CodeSchema,
   TransactionActivity4ChoiceSchema,
   SecuritiesTransactionType27CodeSchema,
@@ -240,8 +241,6 @@ export const ClosingBalance6Schema = z.strictObject({
   ShortLongIndicator: ShortLong1CodeSchema,
   ClosingBalance: ClosingBalance7ChoiceSchema,
 });
-
-export const RestrictedFINMax35TextSchema = textType({min: 1, max: 35, pattern: "([^/]+/)+([^/]+)|([^/]*)"});
 
 export const RestrictedFINMax23TextSchema = textType({min: 1, max: 23, pattern: "([^/]+/)+([^/]+)|([^/]*)"});
 
@@ -524,14 +523,6 @@ const ownTypeDescriptors: TypeDescriptors = {
     rules: [
       { name: "ShortLongDefaultRule", isoId: "_gJxadTi8Eeydid5dcNPKvg", text: "If Shortlong is absent, then the default is long, that is, balance is positive." },
     ],
-  },
-  "RestrictedFINMax35Text": {
-    name: "RestrictedFINMax35Text",
-    isoId: "_WOpRldp-Ed-ak6NoX_4Aeg_560295221",
-    kind: "text",
-    minLength: 1,
-    maxLength: 35,
-    pattern: "([^/]+/)+([^/]+)|([^/]*)",
   },
   "RestrictedFINMax23Text": {
     name: "RestrictedFINMax23Text",
@@ -851,6 +842,7 @@ export const typeDescriptors: TypeDescriptors = {
   "BalanceQuantity17Choice": sharedTypeDescriptors["BalanceQuantity17Choice"]!,
   "RestrictedFINXMax52Text": sharedTypeDescriptors["RestrictedFINXMax52Text"]!,
   "GenericIdentification18": sharedTypeDescriptors["GenericIdentification18"]!,
+  "RestrictedFINMax35Text": sharedTypeDescriptors["RestrictedFINMax35Text"]!,
   "TransactionActivity1Code": sharedTypeDescriptors["TransactionActivity1Code"]!,
   "TransactionActivity4Choice": sharedTypeDescriptors["TransactionActivity4Choice"]!,
   "SecuritiesTransactionType27Code": sharedTypeDescriptors["SecuritiesTransactionType27Code"]!,

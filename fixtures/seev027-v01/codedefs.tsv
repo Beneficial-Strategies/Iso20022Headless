@@ -1,0 +1,10 @@
+codeSet	code	enumName	isoId	text
+RejectionReason20Code	FAIL	FailedValidation	_Zi-wKNp-Ed-ak6NoX_4Aeg_-482612999	The validation of the advice/instruction/request failed.
+RejectionReason20Code	CASA	NotIdentifiedCashAccount	_ZjIhINp-Ed-ak6NoX_4Aeg_-482612969	Unable to identify cash account.
+RejectionReason20Code	CORR	NotIdentifiedCorrespondentBank	_ZjIhIdp-Ed-ak6NoX_4Aeg_-482612938	Unable to identify correspondent bank.
+RejectionReason20Code	STAN	InvalidStandingInstructionType	_ZjIhItp-Ed-ak6NoX_4Aeg_-482612937	Invalid standing instruction type for the specified underlying security.
+RejectionReason20Code	NOHO	NoHolding	_ZjIhI9p-Ed-ak6NoX_4Aeg_-482612907	No holding for the specified underlying security.
+ProcessedStatus4Code	RECE	Received	_aKnX5Np-Ed-ak6NoX_4Aeg_-879600124	The instruction/request has been received.
+ProcessedStatus4Code	COMP	Completed	_aKnX5dp-Ed-ak6NoX_4Aeg_-879600094	The request has been completed.
+ProcessedStatus4Code	PEND	Pending	_aKnX5tp-Ed-ak6NoX_4Aeg_-879600093	The processing of the request is pending.
+RejectionReason10Code	FAIL	FailedValidation	_ZgdAldp-Ed-ak6NoX_4Aeg_-611576163	The validation of the advice/instruction/request failed.

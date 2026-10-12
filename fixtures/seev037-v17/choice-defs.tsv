@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+AdditionalBusinessProcessFormat11Choice	_ZfuusUGPEeWqy4niLuXETA	Code	Standard code to specify the additional business process "tax refund" linked to a corporate action event.
+AdditionalBusinessProcessFormat11Choice	_ZfuuuUGPEeWqy4niLuXETA	Proprietary	Proprietary identification of the additional business process "tax refund" linked to a corporate action event.

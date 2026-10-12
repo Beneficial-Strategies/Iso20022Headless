@@ -1,0 +1,6 @@
+choice	memberId	memberName	text
+CorporateActionOption40Choice	_FF1NQe35Eeqc-LCjwLsUVg	Code	Specifies the corporate action options available to the account owner.
+CorporateActionOption40Choice	_FF1NSe35Eeqc-LCjwLsUVg	Proprietary	Proprietary identification of the type of corporate action option.
+Quantity52Choice	_OovFkRuyEeyhRdHRjakS2w	Code	Standard code to specify quantity of a financial instrument.
+Quantity52Choice	_OovFmRuyEeyhRdHRjakS2w	OriginalAndCurrentFaceAmount	Face amount and amortised value of security.
+Quantity52Choice	_OovFmxuyEeyhRdHRjakS2w	Quantity	Quantity of financial instrument in units, original face amount or current face amount.

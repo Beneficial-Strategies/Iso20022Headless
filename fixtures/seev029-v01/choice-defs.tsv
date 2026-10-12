@@ -1,0 +1,9 @@
+choice	memberId	memberName	text
+CorporateActionEventType2FormatChoice	_RjRupNp-Ed-ak6NoX_4Aeg_-1455569753	Code	Event types expressed as a code.
+CorporateActionEventType2FormatChoice	_RjRupdp-Ed-ak6NoX_4Aeg_-1421399537	Proprietary	Event types expressed as a proprietary code.
+CorporateActionMandatoryVoluntary1FormatChoice	_RmZ7I9p-Ed-ak6NoX_4Aeg_-1747006967	Code	Standard code to specify whether the event is mandatory, mandatory with options or voluntary.
+CorporateActionMandatoryVoluntary1FormatChoice	_RmZ7JNp-Ed-ak6NoX_4Aeg_-1747006998	Proprietary	Proprietary code to express whether the event is mandatory, mandatory with options or voluntary.
+CorporateActionEventProcessingType1FormatChoice	_RmHAMtp-Ed-ak6NoX_4Aeg_-1265853518	Code	Standard code to specify the type of event processing.
+CorporateActionEventProcessingType1FormatChoice	_RmHAM9p-Ed-ak6NoX_4Aeg_-1265853549	Proprietary	Proprietary code to express the type of event processing.
+CorporateActionOption1FormatChoice	_RlgjQdp-Ed-ak6NoX_4Aeg_-1093032102	Code	Option type expressed as a code.
+CorporateActionOption1FormatChoice	_RlgjQtp-Ed-ak6NoX_4Aeg_-1058861936	Proprietary	Option type expressed as a prorprietary code.

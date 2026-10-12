@@ -1,0 +1,8 @@
+choice	memberId	memberName	text
+CorporateActionEventType116Choice	_jub50pt3Ee-wQIOX0djF2w	Code	Event types expressed as a code.
+CorporateActionEventType116Choice	_jub52pt3Ee-wQIOX0djF2w	Proprietary	Event types expressed as a proprietary code.
+SafekeepingPlaceFormat45Choice	_jucghpt3Ee-wQIOX0djF2w	Identification	Place of safekeeping expressed as a code and a narrative description.
+SafekeepingPlaceFormat45Choice	_jucgjpt3Ee-wQIOX0djF2w	Country	Place of safekeeping expressed with a country code.
+SafekeepingPlaceFormat45Choice	_jucglpt3Ee-wQIOX0djF2w	DigitalLedgerIdentification	Place of settlement expressed with a Digital Ledger Identifier. It identifies a digital ledger or distributed ledger system (for example, blockchain or similar platforms).
+SafekeepingPlaceFormat45Choice	_jucgmJt3Ee-wQIOX0djF2w	TypeAndIdentification	Place of safekeeping expressed with a type and identification.
+SafekeepingPlaceFormat45Choice	_jucgoJt3Ee-wQIOX0djF2w	Proprietary	Place of safekeeping expressed with a propriety identification scheme.

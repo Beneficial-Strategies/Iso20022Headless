@@ -1,0 +1,7 @@
+codeSet	isoId	text
+ProcessedStatus7Code	_81_WIFuwEe6gDOpEK7Q4ig	Processing status of the corporate action notification advice coming from the issuer agent.
+IssuerAgentRejection1Code	_Qrn9YLAhEfCVt6rBUi-YSg	
+CorporateActionPendingStatus1Code	_pRKX8KUZEfCIzrotrg4VRw	Pending status of the corporate action notification advice coming from the issuer agent.
+CorporateActionAcceptedWithWarningStatus1Code	_Yl-FoKUcEfCnE_wCEfCqTA	Accepted with warning status of the corporate action notification advice coming from the issuer agent.
+RejectionReason81Code	_x-wWwFvEEe6gDOpEK7Q4ig	Specifies the reason why the corporate action notification cancellation request has a rejected status.
+SafekeepingPlace2Code	_Y-oF5Np-Ed-ak6NoX_4Aeg_1138474587	Specifies the type of place of safekeeping.

@@ -34,7 +34,7 @@ const KEYS = [
   'pasteIssue_duplicate_element', 'pasteIssue_multiple_choices', 'pasteIssue_unexpected_text', 'pasteIssue_unexpected_element', 'loadFile', 'saveXml',
   'saveJson', 'fileDone', 'fileDoneIssues', 'fileFailed', 'fileError_empty', 'fileError_not_xml_or_json',
   'fileError_unreadable', 'fileError_too_large', 'stepServe', 'noteServe', 'areaLabel', 'areaName_pain',
-  'areaDesc_pain', 'areaName_pacs', 'areaDesc_pacs', 'areaName_caam', 'areaDesc_caam', 'areaName_camt', 'areaDesc_camt', 'areaName_admi', 'areaDesc_admi', 'areaName_remt', 'areaDesc_remt', 'areaName_trck', 'areaDesc_trck', 'areaName_acmt', 'areaDesc_acmt', 'areaName_head', 'areaDesc_head', 'areaName_semt', 'areaDesc_semt', 'xsdLabel',
+  'areaDesc_pain', 'areaName_pacs', 'areaDesc_pacs', 'areaName_caam', 'areaDesc_caam', 'areaName_camt', 'areaDesc_camt', 'areaName_admi', 'areaDesc_admi', 'areaName_remt', 'areaDesc_remt', 'areaName_trck', 'areaDesc_trck', 'areaName_acmt', 'areaDesc_acmt', 'areaName_head', 'areaDesc_head', 'areaName_semt', 'areaDesc_semt', 'areaName_seev', 'areaDesc_seev', 'xsdLabel',
   'xsdReady', 'xsdReadyFile', 'xsdLoading', 'xsdUnavailable', 'xsdNeedsXml', 'xsdNotSchema',
   'xsdWrongSchema', 'xsdReadFailed', 'xsdPanelTitle', 'xsdValid', 'xsdOneError', 'xsdErrors',
   'xsdChecking', 'xsdEngineFailed', 'xsdClose', 'xsdLine', 'xsdHeaderNotChecked', 'xsdLoadOther', 'xsdSchemaFrom',

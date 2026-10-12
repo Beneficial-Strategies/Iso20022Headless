@@ -113,6 +113,8 @@ import {
   TypeOfPrice32ChoiceSchema,
   RestrictedFINXMax210TextSchema,
   IBAN2007IdentifierSchema,
+  RestrictedFINX2Max34TextSchema,
+  CashAccountIdentification6ChoiceSchema,
   SafekeepingPlace3CodeSchema,
   SafekeepingPlaceTypeAndText15Schema,
   CountryCodeSchema,
@@ -143,6 +145,8 @@ import {
   NameAndAddress12Schema,
   PartyIdentification145ChoiceSchema,
   TypeOfIdentification1CodeSchema,
+  IdentificationType44ChoiceSchema,
+  AlternatePartyIdentification9Schema,
   PartyIdentification137ChoiceSchema,
   RestrictedFINActiveCurrencyAndAmountSchema,
   ActiveCurrencyCodeSchema,
@@ -176,13 +180,6 @@ export const Price11Schema = z.strictObject({
 export const TradeTransactionCondition6ChoiceSchema = choiceOf({
   Code: TradeTransactionCondition4CodeSchema,
   Proprietary: GenericIdentification47Schema,
-});
-
-export const RestrictedFINX2Max34TextSchema = textType({min: 1, max: 34, pattern: "[0-9a-zA-Z/\\-\\?:\\(\\)\\.,'\\+ ]{1,34}"});
-
-export const CashAccountIdentification6ChoiceSchema = choiceOf({
-  IBAN: IBAN2007IdentifierSchema,
-  Proprietary: RestrictedFINX2Max34TextSchema,
 });
 
 export const QuantityBreakdown69Schema = z.strictObject({
@@ -275,17 +272,6 @@ export const SettlementDetails174Schema = z.strictObject({
   RepurchaseType: RepurchaseType17ChoiceSchema.optional(),
   SecuritiesRTGS: SecuritiesRTGS5ChoiceSchema.optional(),
   StampDutyTaxBasis: GenericIdentification47Schema.optional(),
-});
-
-export const IdentificationType44ChoiceSchema = choiceOf({
-  Code: TypeOfIdentification1CodeSchema,
-  Proprietary: GenericIdentification47Schema,
-});
-
-export const AlternatePartyIdentification9Schema = z.strictObject({
-  IdentificationType: IdentificationType44ChoiceSchema,
-  Country: CountryCodeSchema,
-  AlternateIdentification: RestrictedFINXMax30TextSchema,
 });
 
 export const PartyTextInformation3Schema = z.strictObject({
@@ -468,23 +454,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "Proprietary", isoId: "_5mslv5NLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
     ],
   },
-  "RestrictedFINX2Max34Text": {
-    name: "RestrictedFINX2Max34Text",
-    isoId: "_XZJV1tp-Ed-ak6NoX_4Aeg_-1792709131",
-    kind: "text",
-    minLength: 1,
-    maxLength: 34,
-    pattern: "[0-9a-zA-Z/\\-\\?:\\(\\)\\.,'\\+ ]{1,34}",
-  },
-  "CashAccountIdentification6Choice": {
-    name: "CashAccountIdentification6Choice",
-    isoId: "_WO8Mitp-Ed-ak6NoX_4Aeg_-720963071",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "IBAN", isoId: "_WO8Mi9p-Ed-ak6NoX_4Aeg_-1012920809", xmlTag: "IBAN", displayName: displayName("IBAN"), kind: "text", type: "IBAN2007Identifier", required: true }),
-      f({ name: "Proprietary", isoId: "_WO8MjNp-Ed-ak6NoX_4Aeg_-834802137", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "RestrictedFINX2Max34Text", required: true }),
-    ],
-  },
   "QuantityBreakdown69": {
     name: "QuantityBreakdown69",
     isoId: "_cefbPzi8Eeydid5dcNPKvg",
@@ -647,25 +616,6 @@ const ownTypeDescriptors: TypeDescriptors = {
     rules: [
       { name: "SettlementDetailsRule", isoId: "_ZdqQYffXEeiNZp_PtLohLw", text: "If SettlementDetails elements are used, then their conditions of use must be pre-agreed between account owner and account servicer." },
       { name: "CashClearingSystemRule", isoId: "_ZdqQY_fXEeiNZp_PtLohLw", text: "The CashSettlementSystem codes are to be used only by agents directly involved in the settlement process, such as local settlement agents, CSD's and central banks." },
-    ],
-  },
-  "IdentificationType44Choice": {
-    name: "IdentificationType44Choice",
-    isoId: "_chc_CZKQEeWHWpTQn1FFVg",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_chc_C5KQEeWHWpTQn1FFVg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "TypeOfIdentification1Code", required: true }),
-      f({ name: "Proprietary", isoId: "_chdlcZKQEeWHWpTQn1FFVg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
-    ],
-  },
-  "AlternatePartyIdentification9": {
-    name: "AlternatePartyIdentification9",
-    isoId: "_chc-7ZKQEeWHWpTQn1FFVg",
-    kind: "component",
-    fields: [
-      f({ name: "IdentificationType", isoId: "_chc-75KQEeWHWpTQn1FFVg", xmlTag: "IdTp", displayName: displayName("IdentificationType"), kind: "choice", type: "IdentificationType44Choice", required: true }),
-      f({ name: "Country", isoId: "_chc-95KQEeWHWpTQn1FFVg", xmlTag: "Ctry", displayName: displayName("Country"), kind: "code", type: "CountryCode", required: true }),
-      f({ name: "AlternateIdentification", isoId: "_chc-_5KQEeWHWpTQn1FFVg", xmlTag: "AltrnId", displayName: displayName("AlternateIdentification"), kind: "text", type: "RestrictedFINXMax30Text", required: true }),
     ],
   },
   "PartyTextInformation3": {
@@ -992,6 +942,8 @@ export const typeDescriptors: TypeDescriptors = {
   "TypeOfPrice32Choice": sharedTypeDescriptors["TypeOfPrice32Choice"]!,
   "RestrictedFINXMax210Text": sharedTypeDescriptors["RestrictedFINXMax210Text"]!,
   "IBAN2007Identifier": sharedTypeDescriptors["IBAN2007Identifier"]!,
+  "RestrictedFINX2Max34Text": sharedTypeDescriptors["RestrictedFINX2Max34Text"]!,
+  "CashAccountIdentification6Choice": sharedTypeDescriptors["CashAccountIdentification6Choice"]!,
   "SafekeepingPlace3Code": sharedTypeDescriptors["SafekeepingPlace3Code"]!,
   "SafekeepingPlaceTypeAndText15": sharedTypeDescriptors["SafekeepingPlaceTypeAndText15"]!,
   "CountryCode": sharedTypeDescriptors["CountryCode"]!,
@@ -1022,6 +974,8 @@ export const typeDescriptors: TypeDescriptors = {
   "NameAndAddress12": sharedTypeDescriptors["NameAndAddress12"]!,
   "PartyIdentification145Choice": sharedTypeDescriptors["PartyIdentification145Choice"]!,
   "TypeOfIdentification1Code": sharedTypeDescriptors["TypeOfIdentification1Code"]!,
+  "IdentificationType44Choice": sharedTypeDescriptors["IdentificationType44Choice"]!,
+  "AlternatePartyIdentification9": sharedTypeDescriptors["AlternatePartyIdentification9"]!,
   "PartyIdentification137Choice": sharedTypeDescriptors["PartyIdentification137Choice"]!,
   "RestrictedFINActiveCurrencyAndAmount": sharedTypeDescriptors["RestrictedFINActiveCurrencyAndAmount"]!,
   "ActiveCurrencyCode": sharedTypeDescriptors["ActiveCurrencyCode"]!,

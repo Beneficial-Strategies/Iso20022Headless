@@ -1,0 +1,12 @@
+codeSet	code	enumName	isoId	text
+RejectionReason88Code	ULNK	InvalidReference	_qs0Axd8PEe-NrtAAlrBEgQ	Linked reference is unknown.
+RejectionReason88Code	LATE	MarketDeadlineMissed	_qs0Ax98PEe-NrtAAlrBEgQ	Received after market deadline.
+RejectionReason88Code	OTHR	Other	_qs0Ayd8PEe-NrtAAlrBEgQ	Other. See Narrative.
+RejectionReason88Code	DCAN	RejectedSinceAlreadyCancelled	_qs0Ay98PEe-NrtAAlrBEgQ	Cancellation request was rejected since the instruction has already been cancelled.
+RejectionReason88Code	DPRG	RejectedSinceInProgress	_qs0Azd8PEe-NrtAAlrBEgQ	Cancellation request has been rejected because the instruction process is in progress or has been processed.
+RejectionReason88Code	DUPL	DuplicateInstruction	_qs0A398PEe-NrtAAlrBEgQ	Instruction is rejected due to duplicate business message identifier.
+RejectionReason88Code	ECMD	ElectionToCounterpartyMarketDeadlineMissed	_csW9ADPuEfCIZLORDJsr-g	Received after the election to counterparty market deadline.
+RejectionReason88Code	ECRD	ElectionToCounterpartyResponseDeadlineMissed	_czPoITPuEfCIZLORDJsr-g	Received after the election to counterparty response market deadline.
+PendingCancellationReason8Code	OTHR	Other	_f7NC6d8QEe-NrtAAlrBEgQ	Other. See Narrative.
+PendingCancellationReason8Code	PCAT	PendingCounterpartyAcceptance	_0rs4gd8fEe-NrtAAlrBEgQ	Pending acceptance from the counterparty.
+PendingCancellationReason8Code	ECRD	ElectionToCounterpartyResponseDeadlineMissed	_mYhgUTPuEfCIZLORDJsr-g	Received after the election to counterparty response market deadline.

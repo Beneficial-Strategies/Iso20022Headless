@@ -1,0 +1,4 @@
+codeSet	isoId	text
+RejectionReason59Code	_MXmv0RHqEeuE0Pnt-OcNOA	Specifies the reason why the instruction request has a rejected status.
+PendingReason39Code	_2TaxwLMZEfCEXew4g5B5oA	Specifies the reason why the instruction has a pending status.
+UnmatchedReason16Code	_AUY3gBUJEeuZw7VHHgrHLg	Specifies the reason the transaction, transfer or settlement instruction is unmatched.

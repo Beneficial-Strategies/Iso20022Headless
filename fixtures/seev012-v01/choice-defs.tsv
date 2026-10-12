@@ -1,0 +1,13 @@
+choice	memberId	memberName	text
+AccountIdentification2Choice	_RjkpmNp-Ed-ak6NoX_4Aeg_108237032	CashAccountIdentification	Identification of a cash account.
+AccountIdentification2Choice	_Rjkpmdp-Ed-ak6NoX_4Aeg_136863972	SecuritiesAccountIdentification	Identification of a securities account.
+SecuritiesBalanceType10FormatChoice	_RoygxNp-Ed-ak6NoX_4Aeg_-1171470357	Code	Standard code to specify the type of securities balance.
+SecuritiesBalanceType10FormatChoice	_Roygxdp-Ed-ak6NoX_4Aeg_-1171470418	Proprietary	Proprietary code to express the type of securities balance.
+PersonIdentificationType3Choice	_Ri-zutp-Ed-ak6NoX_4Aeg_-142125379	Code	Person identification expressed as a code.
+PersonIdentificationType3Choice	_RjH9oNp-Ed-ak6NoX_4Aeg_-142125348	Proprietary	Person identification expressed as a proprietary code.
+BeneficiaryCertificationType1FormatChoice	_RlqUSNp-Ed-ak6NoX_4Aeg_1012264214	Code	Standard code to specify the type of beneficiary's certification.
+BeneficiaryCertificationType1FormatChoice	_Rl0FQNp-Ed-ak6NoX_4Aeg_1012264183	Proprietary	Proprietary code to express the type of beneficiary's certification.
+CashAccountIdentification1Choice	_Pdwzpdp-Ed-ak6NoX_4Aeg_2060838797	IBAN	International Bank Account Number (IBAN) - identifier used internationally by financial institutions to uniquely identify the account of a customer. Further specifications of the format and content of the IBAN can be found in the standard ISO 13616 "Banking and related financial services - International Bank Account Number (IBAN)" version 1997-10-01, or later revisions.
+CashAccountIdentification1Choice	_Pdwzptp-Ed-ak6NoX_4Aeg_2060839091	BBAN	Basic Bank Account Number (BBAN) - identifier used nationally by financial institutions, ie, in individual countries, generally as part of a National Account Numbering Scheme(s), to uniquely identify the account of a customer.
+CashAccountIdentification1Choice	_Pdwzp9p-Ed-ak6NoX_4Aeg_2060839151	UPIC	Universal Payment Identification Code (UPIC) - identifier used by the New York Clearing House to mask confidential data, such as bank accounts and bank routing numbers. UPIC numbers remain with business customers, regardless of banking relationship changes.
+CashAccountIdentification1Choice	_PdwzqNp-Ed-ak6NoX_4Aeg_2060839228	DomesticAccount	Account number used by financial institutions in individual countries to identify an account of a customer, but not necessarily the bank and branch of the financial institution in which the account is held.

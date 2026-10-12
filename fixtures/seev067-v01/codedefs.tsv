@@ -1,0 +1,26 @@
+codeSet	code	enumName	isoId	text
+RejectionReason87Code	OPTY	InvalidOptionType	_o6Ic1978Ee-NrtAAlrBEgQ	Invalid option type.
+RejectionReason87Code	ULNK	InvalidReference	_o6Ic2d78Ee-NrtAAlrBEgQ	Linked reference is unknown.
+RejectionReason87Code	DSEC	InvalidSecurity	_o6Ic2978Ee-NrtAAlrBEgQ	Unrecognised or invalid financial instrument identification.
+RejectionReason87Code	LATE	MarketDeadlineMissed	_o6Ic3978Ee-NrtAAlrBEgQ	Received after market deadline.
+RejectionReason87Code	NMTY	Mismatch	_o6Ic4d78Ee-NrtAAlrBEgQ	Mismatch between option number and option type.
+RejectionReason87Code	CANC	OptionCancelled	_o6Ic5d78Ee-NrtAAlrBEgQ	Option is not valid; it has been cancelled by the market or service provider, and cannot be responded to. Any responses already processed against this option are considered void and new responses will be required.
+RejectionReason87Code	INTV	OptionInactive	_o6Ic5978Ee-NrtAAlrBEgQ	Option is not active and can no longer be responded to. Any responses already processed against this option will remain valid, for example, expired option.
+RejectionReason87Code	OPNM	OptionNumberRejection	_o6Ic6d78Ee-NrtAAlrBEgQ	Unrecognised option number.
+RejectionReason87Code	OTHR	Other	_o6Ic6978Ee-NrtAAlrBEgQ	Other. See Narrative.
+RejectionReason87Code	EVNM	UnrecognisedIdentification	_o6Ic8978Ee-NrtAAlrBEgQ	Unrecognised event number.
+RejectionReason87Code	DQCC	CurrencyRejection	_o6Ic9978Ee-NrtAAlrBEgQ	Invalid instructed currency.
+RejectionReason87Code	DUPL	DuplicateInstruction	_o6IdD978Ee-NrtAAlrBEgQ	Instruction is rejected due to duplicate business message identifier.
+RejectionReason87Code	DSET	DeniedSinceAlreadySettled	_Nuefod8DEe-NrtAAlrBEgQ	Cancellation request was denied because the instruction was already settled.
+RejectionReason87Code	DCAN	RejectedSinceAlreadyCancelled	_3UIkEd8DEe-NrtAAlrBEgQ	Cancellation request was rejected since the instruction has already been cancelled.
+RejectionReason87Code	TRTY	IncorrectTransactionType	_gVS0Ud8EEe-NrtAAlrBEgQ	Transaction type is incorrect.
+RejectionReason87Code	BUMM	BuyerProtectionMismatch	_TsIawd8MEe-NrtAAlrBEgQ	Counterparty disagreement on the chosen corporate action outturn.
+RejectionReason87Code	ECMD	ElectionToCounterpartyMarketDeadlineMissed	_7GGaURXsEfCxL6UOgkdrJg	Received after the election to counterparty market deadline.
+RejectionReason87Code	ECRD	ElectionToCounterpartyResponseDeadlineMissed	_7MpuQRXsEfCxL6UOgkdrJg	Received after the election to counterparty response market deadline.
+RejectionReason87Code	DUCK	UnderlyingTransactionCancelled	_uLVnQTPsEfCIZLORDJsr-g	Buyer Protection instruction rejected since underlying settlement transaction has been cancelled.
+RejectionReason87Code	DUST	UnderlyingTransactionAlreadySettled	_uTKGgTPsEfCIZLORDJsr-g	Buyer Protection instruction was rejected, because the underlying settlement transaction has already been settled.
+RejectionReason87Code	DSNA	NoBuyerProtectionAllowed	_vrP60TPsEfCIZLORDJsr-g	Underlying transaction type/status does not allow for a buyer protection.
+PendingReason30Code	OTHR	Other	_JFt5498FEe-NrtAAlrBEgQ	Other. See Narrative.
+PendingReason30Code	BUMM	BuyerProtectionMismatch	_csN7Md8MEe-NrtAAlrBEgQ	Counterparty disagreement on the chosen corporate action outturn.
+PendingReason30Code	ECRD	ElectionToCounterpartyResponseDeadlineMissed	_hoJ-ETPtEfCIZLORDJsr-g	Received after the election to counterparty response market deadline.
+PendingReason30Code	WCTF	AwaitingCounterpartyResponse	_m3aRMTPtEfCIZLORDJsr-g	Allegement has been sent out to counterparty. Waiting for the response.

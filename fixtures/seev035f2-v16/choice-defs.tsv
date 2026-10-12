@@ -1,0 +1,118 @@
+choice	memberId	memberName	text
+CorporateActionReversalReason11Choice	_l6NNlZt3Ee-wQIOX0djF2w	Code	Standard code to specify the reason for the reversal.
+CorporateActionReversalReason11Choice	_l6NNl5t3Ee-wQIOX0djF2w	Proprietary	Proprietary identification for the reason of the reversal.
+CorporateActionEventProcessingType3Choice	_ctOws5KQEeWHWpTQn1FFVg	Code	Standard code to specify the processing type of a corporate action event.
+CorporateActionEventProcessingType3Choice	_ctOwu5KQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the processing type of a corporate action event.
+CorporateActionEventType122Choice	_l6NOCZt3Ee-wQIOX0djF2w	Code	Event type expressed as a code.
+CorporateActionEventType122Choice	_l6NOEZt3Ee-wQIOX0djF2w	Proprietary	Event type expressed as a proprietary code.
+AccountIdentification76Choice	_l6N0l5t3Ee-wQIOX0djF2w	ForAllAccounts	All safekeeping accounts that own an underlying financial instrument.
+AccountIdentification76Choice	_l6N0n5t3Ee-wQIOX0djF2w	AccountsListAndBalanceDetails	Selected safekeeping accounts list (and optionally balance information) to which the corporate action event applies.
+SafekeepingPlaceFormat52Choice	_l6N07Zt3Ee-wQIOX0djF2w	Identification	Place of safekeeping expressed as a code and a narrative description.
+SafekeepingPlaceFormat52Choice	_l6N09Zt3Ee-wQIOX0djF2w	Country	Place of safekeeping expressed with a country code.
+SafekeepingPlaceFormat52Choice	_l6N0_Zt3Ee-wQIOX0djF2w	DigitalLedgerIdentification	Place of settlement expressed with a Digital Ledger Identifier. It identifies a digital ledger or distributed ledger system (for example, blockchain or similar platforms).
+SafekeepingPlaceFormat52Choice	_l6N0_5t3Ee-wQIOX0djF2w	TypeAndIdentification	Place of safekeeping expressed with a type and identification.
+SafekeepingPlaceFormat52Choice	_l6N1B5t3Ee-wQIOX0djF2w	Proprietary	Place of safekeeping expressed with a propriety identification scheme.
+FinancialInstrumentQuantity43Choice	_ptGAhTi7Eeydid5dcNPKvg	Unit	Quantity expressed as a number, for example, a number of shares.
+FinancialInstrumentQuantity43Choice	_ptGAjTi7Eeydid5dcNPKvg	FaceAmount	Quantity expressed as an amount representing the face amount, that is, the principal, of a debt instrument.
+FinancialInstrumentQuantity43Choice	_ptGAlTi7Eeydid5dcNPKvg	AmortisedValue	Quantity expressed as an amount representing the current amortised face amount of a bond, for example, a periodic reduction/increase of a bond's principal amount.
+FinancialInstrumentQuantity43Choice	_ptGAnTi7Eeydid5dcNPKvg	Code	Quantity expressed as a code.
+FinancialInstrumentQuantity43Choice	_ptGApTi7Eeydid5dcNPKvg	DigitalTokenUnit	Quantity of digital tokens expressed as a number, for example, a number of blockchain tokens.
+AdditionalBusinessProcessFormat21Choice	_ptGmmTi7Eeydid5dcNPKvg	Code	Standard code to specify the additional business process "tax refund" linked to a corporate action event.
+AdditionalBusinessProcessFormat21Choice	_ptGmoTi7Eeydid5dcNPKvg	Proprietary	Proprietary identification of the additional business process "tax refund" linked to a corporate action event.
+CorporateActionOption46Choice	_ZHezAR9REeuFz_FaCzCLgQ	Code	Standard code to specify the type of corporate action options.
+CorporateActionOption46Choice	_ZHezCR9REeuFz_FaCzCLgQ	Proprietary	Proprietary identification of the type of corporate action options.
+FractionDispositionType31Choice	_ctaYCZKQEeWHWpTQn1FFVg	Code	Standard code to specify how fractions resulting from derived securities will be processed or how prorated decisions will be rounding, if provided with a pro ration rate.
+FractionDispositionType31Choice	_ctaYC5KQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the type of fraction disposition.
+OfferTypeFormat15Choice	_l6TUvZt3Ee-wQIOX0djF2w	Code	Standard code to specify the conditions that apply to the offer.
+OfferTypeFormat15Choice	_l6TUv5t3Ee-wQIOX0djF2w	Proprietary	Proprietary identification of the conditions that apply to the offer.
+OptionFeaturesFormat31Choice	_U1QSf3SdEe6VWZz2tTgENw	Code	Standard code to specify the features that may apply to a corporate action option.
+OptionFeaturesFormat31Choice	_U1QSgXSdEe6VWZz2tTgENw	Proprietary	Proprietary identification of the features that may apply to a corporate action option.
+OptionAvailabilityStatus4Choice	_cta-LZKQEeWHWpTQn1FFVg	Code	Standard code to specify the status of the option availability.
+OptionAvailabilityStatus4Choice	_cta-L5KQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the status of the option availability.
+BeneficiaryCertificationType14Choice	_l6TU-Zt3Ee-wQIOX0djF2w	Code	Beneficial owner certification type expressed in a coded form.
+BeneficiaryCertificationType14Choice	_l6TU_Zt3Ee-wQIOX0djF2w	Proprietary	Beneficial owner certification type expressed in a proprietary form.
+RateAndAmountFormat69Choice	_l6T84Zt3Ee-wQIOX0djF2w	Rate	Value expressed as a rate.
+RateAndAmountFormat69Choice	_l6T86Zt3Ee-wQIOX0djF2w	NotSpecifiedRate	Value of the rate not specified.
+RateAndAmountFormat69Choice	_l6T88Zt3Ee-wQIOX0djF2w	Amount	Value is expressed as a currency and amount.
+GrossDividendRateFormat41Choice	_bZ6BGwVTEeqjd8n6wD9JVw	Amount	Number of monetary units specified in a currency.
+GrossDividendRateFormat41Choice	_bZ6BIwVTEeqjd8n6wD9JVw	AmountAndRateStatus	Specifies an amount and a rate status.
+GrossDividendRateFormat41Choice	_bZ6BJQVTEeqjd8n6wD9JVw	RateTypeAndAmountAndRateStatus	Specifies different formats for the gross dividend rate.
+GrossDividendRateFormat41Choice	_bZ6BLQVTEeqjd8n6wD9JVw	NotSpecifiedRate	Value of the rate not specified.
+NetDividendRateFormat43Choice	_bZ6BjwVTEeqjd8n6wD9JVw	Amount	Number of monetary units specified in a currency.
+NetDividendRateFormat43Choice	_bZ6BkQVTEeqjd8n6wD9JVw	AmountAndRateStatus	Specifies an amount and a rate status.
+NetDividendRateFormat43Choice	_bZ6BkwVTEeqjd8n6wD9JVw	RateTypeAndAmountAndRateStatus	Specifies different formats for the net dividend rate.
+NetDividendRateFormat43Choice	_bZ6BmwVTEeqjd8n6wD9JVw	NotSpecifiedRate	Value of the rate not specified.
+InterestRateUsedForPaymentFormat18Choice	_e2cX8aEPEe-4O7NbwmwJkQ	Rate	Value is expressed as a rate.
+InterestRateUsedForPaymentFormat18Choice	_e2cX-aEPEe-4O7NbwmwJkQ	Amount	Number of monetary units specified in a currency.
+InterestRateUsedForPaymentFormat18Choice	_e2cYAaEPEe-4O7NbwmwJkQ	RateTypeAndAmountAndRateStatus	Specifies different formats for interest rate used for payment.
+InterestRateUsedForPaymentFormat18Choice	_e2cYCaEPEe-4O7NbwmwJkQ	NotSpecifiedRate	Value of the rate not specified.
+RateAndAmountFormat70Choice	_l6T9C5t3Ee-wQIOX0djF2w	Rate	Value expressed as a rate.
+RateAndAmountFormat70Choice	_l6T9E5t3Ee-wQIOX0djF2w	NotSpecifiedRate	Value of the rate not specified.
+RateAndAmountFormat70Choice	_l6T9G5t3Ee-wQIOX0djF2w	Amount	Value is expressed as a currency and amount.
+RateAndAmountFormat70Choice	_l6T9I5t3Ee-wQIOX0djF2w	RateTypeAndRate	Value is expressed as a rate type and a percentage rate.
+PriceFormat88Choice	_l6Ui0Zt3Ee-wQIOX0djF2w	PercentagePrice	Price expressed as a percentage.
+PriceFormat88Choice	_l6Ui2Zt3Ee-wQIOX0djF2w	AmountPrice	Price expressed as a currency and amount.
+PriceFormat88Choice	_l6Ui4Zt3Ee-wQIOX0djF2w	NotSpecifiedPrice	Value of the price not specified.
+PriceFormat62Choice	_5M7N49BXEee0mNiKMkpGNQ	AmountPrice	Price expressed as a currency and amount.
+PriceFormat62Choice	_5M7N69BXEee0mNiKMkpGNQ	NotSpecifiedPrice	Value of the price not specified.
+FinancialInstrumentQuantity44Choice	_ptJrQTi7Eeydid5dcNPKvg	Unit	Quantity expressed as a number, for example, a number of shares.
+FinancialInstrumentQuantity44Choice	_ptJrSTi7Eeydid5dcNPKvg	FaceAmount	Quantity expressed as an amount representing the face amount, that is, the principal, of a debt instrument.
+FinancialInstrumentQuantity44Choice	_ptJrUTi7Eeydid5dcNPKvg	AmortisedValue	Quantity expressed as an amount representing the current amortised face amount of a bond, for example, a periodic reduction/increase of a bond's principal amount.
+FinancialInstrumentQuantity44Choice	_ptJrWTi7Eeydid5dcNPKvg	Code	Quantity expressed as a code.
+FinancialInstrumentQuantity44Choice	_ptJrYTi7Eeydid5dcNPKvg	DigitalTokenUnit	Quantity of digital tokens expressed as a number, for example, a number of blockchain tokens.
+NonEligibleProceedsIndicator6Choice	_U1VORXSdEe6VWZz2tTgENw	Code	Standard code to specify information regarding the non eligibility of the outturn resources.
+NonEligibleProceedsIndicator6Choice	_U1VOR3SdEe6VWZz2tTgENw	Proprietary	Proprietary identification to specify information regarding the non eligibility of the outturn resources.
+SafekeepingPlaceFormat53Choice	_l6VxP5t3Ee-wQIOX0djF2w	Identification	Place of safekeeping expressed as a code and a narrative description.
+SafekeepingPlaceFormat53Choice	_l6VxR5t3Ee-wQIOX0djF2w	Country	Place of safekeeping expressed with a country code.
+SafekeepingPlaceFormat53Choice	_l6VxT5t3Ee-wQIOX0djF2w	DigitalLedgerIdentification	Place of settlement expressed with a Digital Ledger Identifier. It identifies a digital ledger or distributed ledger system (for example, blockchain or similar platforms).
+SafekeepingPlaceFormat53Choice	_l6VxUZt3Ee-wQIOX0djF2w	TypeAndIdentification	Place of safekeeping expressed with a type and identification.
+SafekeepingPlaceFormat53Choice	_l6VxWZt3Ee-wQIOX0djF2w	Proprietary	Place of safekeeping expressed with a propriety identification scheme.
+RatioFormat23Choice	_cti6GJKQEeWHWpTQn1FFVg	QuantityToQuantity	Ratio expressed as a quotient of quantities.
+RatioFormat23Choice	_cti6IJKQEeWHWpTQn1FFVg	NotSpecifiedRate	Value of the ratio not specified.
+RatioFormat23Choice	_cti6KJKQEeWHWpTQn1FFVg	AmountToAmount	Ratio expressed as a quotient of amounts.
+RatioFormat24Choice	_cti6fJKQEeWHWpTQn1FFVg	QuantityToQuantity	Ratio expressed as a quotient of quantities.
+RatioFormat24Choice	_cti6hJKQEeWHWpTQn1FFVg	NotSpecifiedRate	Value of the ratio not specified.
+RatioFormat24Choice	_cti6jJKQEeWHWpTQn1FFVg	AmountToAmount	Ratio expressed as a quotient of amounts.
+RatioFormat24Choice	_ctjgt5KQEeWHWpTQn1FFVg	AmountToQuantity	Ratio expressed as an amount to quantity ratio.
+RatioFormat24Choice	_ctjgv5KQEeWHWpTQn1FFVg	QuantityToAmount	Ratio expressed as a quantity to amount ratio.
+RateFormat29Choice	_l6W_S5t3Ee-wQIOX0djF2w	Rate	Value is expressed as a rate.
+RateFormat29Choice	_l6W_U5t3Ee-wQIOX0djF2w	Amount	Cash amount.
+RateFormat29Choice	_l6W_VZt3Ee-wQIOX0djF2w	NotSpecifiedRate	Value of the rate not specified.
+IndicativeOrMarketPrice17Choice	_l6XlpJt3Ee-wQIOX0djF2w	IndicativePrice	Estimated price, for example, for valuation purposes.
+IndicativeOrMarketPrice17Choice	_l6XlrJt3Ee-wQIOX0djF2w	MarketPrice	Last reported/known price of a financial instrument in a market.
+PriceFormat58Choice	_ctku1ZKQEeWHWpTQn1FFVg	AmountPrice	Price expressed as a currency and amount.
+PriceFormat58Choice	_ctku3ZKQEeWHWpTQn1FFVg	NotSpecifiedPrice	Value of the price not specified.
+PriceFormat89Choice	_l6Xmjpt3Ee-wQIOX0djF2w	PercentagePrice	Price expressed as a percentage.
+PriceFormat89Choice	_l6Xmlpt3Ee-wQIOX0djF2w	AmountPrice	Price expressed as a currency and amount.
+PriceFormat89Choice	_l6Xmnpt3Ee-wQIOX0djF2w	NotSpecifiedPrice	Value of the price not specified.
+PriceFormat89Choice	_l6Xmppt3Ee-wQIOX0djF2w	IndexPoints	Price expressed as an index points.
+PriceFormat90Choice	_l6Xmzpt3Ee-wQIOX0djF2w	PercentagePrice	Price expressed as a percentage.
+PriceFormat90Choice	_l6Xm1pt3Ee-wQIOX0djF2w	AmountPrice	Price expressed as a currency and amount.
+PriceFormat90Choice	_l6Xm3pt3Ee-wQIOX0djF2w	NotSpecifiedPrice	Value of the price not specified.
+PriceFormat90Choice	_l6Xm5pt3Ee-wQIOX0djF2w	AmountPricePerFinancialInstrumentQuantity	Price expressed as a ratio: amount price per financial instrument quantity.
+PriceFormat90Choice	_l6YMdZt3Ee-wQIOX0djF2w	AmountPricePerAmount	Price expressed as a ratio: amount price per amount.
+PriceFormat90Choice	_l6YMfZt3Ee-wQIOX0djF2w	IndexPoints	Price expressed in index points.
+NonEligibleProceedsIndicator4Choice	_cthE9ZKQEeWHWpTQn1FFVg	Code	Standard code to specify information regarding the non eligibility of the outturn resources.
+NonEligibleProceedsIndicator4Choice	_cthE95KQEeWHWpTQn1FFVg	Proprietary	Proprietary identification to specify information regarding the non eligibility of the outturn resources.
+CashAccountIdentification13Choice	_l6YNn5t3Ee-wQIOX0djF2w	IBAN	International Bank Account Number (IBAN) - identifier used internationally by financial institutions to uniquely identify the account of a customer. Further specifications of the format and content of the IBAN can be found in the standard ISO 13616 "Banking and related financial services - International Bank Account Number (IBAN)" version 1997-10-01, or later revisions.
+CashAccountIdentification13Choice	_l6YNp5t3Ee-wQIOX0djF2w	BlockChainCashWallet	Block Chain Wallet where digital currencies are maintained. This is the equivalent of cash account for digital currencies.
+CashAccountIdentification13Choice	_l6YNqZt3Ee-wQIOX0djF2w	Proprietary	Unique identifier for an account. It is assigned by the account servicer using a proprietary identification scheme.
+DateFormat64Choice	_TtBUjV99Ee262vCSVgjImg	Date	Date expressed as a calendar date.
+DateFormat64Choice	_TtBUj199Ee262vCSVgjImg	DateCode	Date is expressed using a code.
+DateCode27Choice	_ctmkP5KQEeWHWpTQn1FFVg	Code	Standard code to indicate the date is unknown.
+DateCode27Choice	_ctmkR5KQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the type of date.
+SolicitationFeeRateFormat14Choice	_l6ZcOpt3Ee-wQIOX0djF2w	Rate	Value is expressed as a rate.
+SolicitationFeeRateFormat14Choice	_l6ZcQpt3Ee-wQIOX0djF2w	AmountToQuantity	Ratio expressed as an amount to quantity ratio.
+SolicitationFeeRateFormat14Choice	_l6ZcSpt3Ee-wQIOX0djF2w	Amount	Cash amount.
+SolicitationFeeRateFormat14Choice	_l6ZcTJt3Ee-wQIOX0djF2w	NotSpecifiedRate	Value of the rate not specified.
+RateAndAmountFormat48Choice	_ctpnXZKQEeWHWpTQn1FFVg	Amount	Number of monetary units specified in a currency.
+RateAndAmountFormat48Choice	_ctpnZZKQEeWHWpTQn1FFVg	NotSpecifiedRate	Value of the rate not specified.
+RateAndAmountFormat71Choice	_l6aCN5t3Ee-wQIOX0djF2w	Rate	Value expressed as a rate.
+RateAndAmountFormat71Choice	_l6aCP5t3Ee-wQIOX0djF2w	Amount	Value is expressed as a currency and amount.
+RateAndAmountFormat71Choice	_l6aCR5t3Ee-wQIOX0djF2w	NotSpecifiedRate	Value of the rate not specified.
+RateAndAmountFormat71Choice	_l6aCT5t3Ee-wQIOX0djF2w	RateTypeAndAmountAndRateStatus	Value is expressed as a rate type and an amount.
+RateAndAmountFormat71Choice	_l6aCUZt3Ee-wQIOX0djF2w	RateTypeAndRate	Value is expressed as a rate type and a percentage rate.
+PartyIdentification151Choice	_ctD2XffSEeiNZp_PtLohLw	AnyBIC	Code allocated to a financial or non-financial institution by the ISO 9362 Registration Authority, as described in ISO 9362 "Banking - Banking telecommunication messages - Business identifier code (BIC)".
+PartyIdentification151Choice	_ctD2X_fSEeiNZp_PtLohLw	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to a financial institution using a proprietary identification scheme.
+PartyIdentification151Choice	_ctD2YffSEeiNZp_PtLohLw	NameAndAddress	Name and address of a party.
+PartyIdentification151Choice	_ctD2Y_fSEeiNZp_PtLohLw	LEI	Legal entity identification of the party.

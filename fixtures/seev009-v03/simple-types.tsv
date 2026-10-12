@@ -1,0 +1,6 @@
+name	isoId	xsiType	pattern	minLength	maxLength	totalDigits	fractionDigits	minInclusive	maxInclusive	other
+Percentage14Rate	_KBTGYIV2Ee-oeNhl-Tk6YQ	Rate				14	13			baseValue=100.0
+BaseOne14Rate	_k8XskCqhEeObprHJy8Zrxg	Rate				14	13			baseValue=1.0
+Exact3UpperCaseAlphaNumericText	_YWr8I9p-Ed-ak6NoX_4Aeg_-581282758	Text	[A-Z0-9]{3}							
+Max15AlphaNumericText	_7kfm4Z2MEeW-bsa36JFb9A	Text	[a-zA-Z0-9]{1,15}	1	15					
+Max2NumericText	_TQbTwwEcEeCQm6a_G2yO_w_-424989273	Text	[0-9]{1,2}							

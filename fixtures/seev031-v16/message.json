@@ -1,0 +1,211 @@
+{
+  "identifier": "seev.031.001.16",
+  "name": "CorporateActionNotificationV16",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.031.001.16",
+  "bodyTag": "CorpActnNtfctn",
+  "out": "seev031",
+  "isoId": "702428b0-0cfa-48c6-ade5-3e4a4cf035d9",
+  "definition": "Scope|The CorporateActionNotification message is sent by an account servicer to an account owner or its designated agent to notify details of a corporate action event and optionally account information and preliminary information about eligible balance and entitlements.||It may also include possible elections or choices available to the account owner. The account servicer can initially send the CorporateActionNotification message as a preliminary advice, subsequently replaced by another CorporateActionNotification message with complete or confirmed information.||It may also be sent to an account owner or its designated agent, to remind of event details and/or of missing or incomplete instructions for a corporate action event.|Usage|The message may also be used to:|- re-send a message previously sent (the sub-function of the message is Duplicate),|- provide a third party with a copy of a message for information (the sub-function of the message is Copy),|- re-send to a third party a copy of a message for information (the sub-function of the message is Copy Duplicate), using the relevant elements in the business application header (BAH).",
+  "blocks": [
+    {
+      "name": "Pagination",
+      "isoId": "fde3901e-d7d5-48b4-8b35-2f076be4ce1d",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "NotificationGeneralInformation",
+      "isoId": "dbb9f7bd-d4f7-44b3-8b23-9ecb4ed71fc7",
+      "xmlTag": "NtfctnGnlInf",
+      "type": "CorporateActionNotification9",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "PreviousNotificationIdentification",
+      "isoId": "2f516bfa-8cf7-4174-8256-56423bdebbf6",
+      "xmlTag": "PrvsNtfctnId",
+      "type": "DocumentIdentification31",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "InstructionIdentification",
+      "isoId": "6d98e58b-2c3a-4121-a420-e98d556b72cf",
+      "xmlTag": "InstrId",
+      "type": "DocumentIdentification9",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "OtherDocumentIdentification",
+      "isoId": "7a8a1ce5-92e4-422d-a4c1-79aa9936506c",
+      "xmlTag": "OthrDocId",
+      "type": "DocumentIdentification32",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "EventsLinkage",
+      "isoId": "d590b038-715a-42f3-aa3a-7f210408347c",
+      "xmlTag": "EvtsLkg",
+      "type": "CorporateActionEventReference3",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "CorporateActionGeneralInformation",
+      "isoId": "42335998-61a7-4db3-aac9-b0afdb5a3733",
+      "xmlTag": "CorpActnGnlInf",
+      "type": "CorporateActionGeneralInformation176",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountDetails",
+      "isoId": "dcf676ba-c26a-4bfc-89a1-53755f64d7cd",
+      "xmlTag": "AcctDtls",
+      "type": "AccountIdentification71Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "IntermediateSecurity",
+      "isoId": "a05769b8-11c4-4af0-baff-d5306c04bd1a",
+      "xmlTag": "IntrmdtScty",
+      "type": "FinancialInstrumentAttributes139",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionDetails",
+      "isoId": "ebc59150-09a2-4fed-856a-64cf92bb4bfa",
+      "xmlTag": "CorpActnDtls",
+      "type": "CorporateAction94",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionOptionDetails",
+      "isoId": "e3f99d4f-ddb4-4bcb-b744-06e0e9982819",
+      "xmlTag": "CorpActnOptnDtls",
+      "type": "CorporateActionOption251",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "AdditionalInformation",
+      "isoId": "55e3a499-5691-4d3c-a3b6-cc437f0b220b",
+      "xmlTag": "AddtlInf",
+      "type": "CorporateActionNarrative60",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "IssuerAgent",
+      "isoId": "3cec9ed4-ecd6-4066-824e-a1f123d08768",
+      "xmlTag": "IssrAgt",
+      "type": "PartyIdentification129Choice",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "PayingAgent",
+      "isoId": "f548ff43-6f14-4c93-b5f0-cb2265a0bb0a",
+      "xmlTag": "PngAgt",
+      "type": "PartyIdentification120Choice",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SubPayingAgent",
+      "isoId": "125f25a7-d9eb-4be2-ace5-7e88bf315ea1",
+      "xmlTag": "SubPngAgt",
+      "type": "PartyIdentification120Choice",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "Registrar",
+      "isoId": "fa0e0baa-ac25-4072-b5a4-d9c797013329",
+      "xmlTag": "Regar",
+      "type": "PartyIdentification120Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ResellingAgent",
+      "isoId": "d5ff8b03-e636-4d3e-9025-e108e4eb9265",
+      "xmlTag": "RsellngAgt",
+      "type": "PartyIdentification120Choice",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "PhysicalSecuritiesAgent",
+      "isoId": "ac3078d2-dc7d-4c07-91ba-3e66770ab8e1",
+      "xmlTag": "PhysSctiesAgt",
+      "type": "PartyIdentification120Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "DropAgent",
+      "isoId": "8eddd5e6-3397-4910-bbdf-e0b243f6d738",
+      "xmlTag": "DrpAgt",
+      "type": "PartyIdentification120Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SolicitationAgent",
+      "isoId": "f4bfe9e0-f383-4b64-b95e-b405dcd99823",
+      "xmlTag": "SlctnAgt",
+      "type": "PartyIdentification120Choice",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "InformationAgent",
+      "isoId": "7226cc2d-aeba-466c-8557-394a1b053170",
+      "xmlTag": "InfAgt",
+      "type": "PartyIdentification120Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Issuer",
+      "isoId": "74defbea-6875-411c-beaa-dd8737e4a0a5",
+      "xmlTag": "Issr",
+      "type": "PartyIdentification129Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Offeror",
+      "isoId": "19843f55-15c4-4e7c-85cd-276f1b1c67c8",
+      "xmlTag": "Offerr",
+      "type": "PartyIdentification129Choice",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "TransferAgent",
+      "isoId": "42d3a116-19fa-4f0e-9750-4d22466c8d14",
+      "xmlTag": "TrfAgt",
+      "type": "PartyIdentification129Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "d9ccdc25-e6c9-437a-a19e-f024f573c6db",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

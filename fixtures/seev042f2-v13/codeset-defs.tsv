@@ -1,0 +1,8 @@
+codeSet	isoId	text
+CorporateActionStatementType2Code	_0mALAbtEEeilsanBGAzy4A	Indicates whether the statement contains missing instructions only or all instructions.
+CorporateActionStatementReportingType1Code	_bTCYhdp-Ed-ak6NoX_4Aeg_2055089309	Type of statement reporting on account holdings for corporate action events for example. reporting on multiple accounts or multiple events.
+CorporateActionOption11Code	_S8I7muaqEemtTOaHuc_63w	Specifies the type of corporate action options.
+CancelledStatusReason6Code	_a1F4QNp-Ed-ak6NoX_4Aeg_-1154713525	Specifies the underlying reason for the cancellation of the associated transaction.
+RejectionReason86Code	_RbBeUW5mEe6a272CIEgzKw	Specifies the reason why the instruction request has a rejected status.
+PendingReason27Code	_sWTVoWIIEe6Vre0WuwPTOg	Specifies the reason why the instruction has a pending status.
+ReturnedStatus1Code	_Bq1lIIZPEe-4Qrkp6i5eWQ	Specifies the reason why the instruction/cancellation request has a returned status.

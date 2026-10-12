@@ -1,0 +1,75 @@
+{
+  "identifier": "seev.063.001.01",
+  "name": "BuyerProtectionInstructionCancellationRequestStatusAdviceV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.063.001.01",
+  "bodyTag": "BuyrPrtcnInstrCxlReqStsAdvc",
+  "out": "seev063",
+  "isoId": "_6g6F8LbeEe-NMoTZ6Byg6A",
+  "definition": "Scope|The BuyerProtectionInstructionCancellationRequestStatusAdvice message is sent by an account servicer to an account owner or its designated agent to report the status of a previously received BuyerProtectionInstructionCancellationRequest message sent by the account owner. This will include the acknowledgement/rejection of a request to cancel an outstanding instruction. ||Usage|The message may also be used to:|- re-send a message previously sent (the sub-function of the message is Duplicate),|- provide a third party with a copy of a message for information (the sub-function of the message is Copy),|- re-send to a third party a copy of a message for information (the sub-function of the message is Copy Duplicate), using the relevant elements in the business application header (BAH).",
+  "blocks": [
+    {
+      "name": "BuyerProtectionInstructionIdentification",
+      "isoId": "_kN5Hdt8NEe-NrtAAlrBEgQ",
+      "xmlTag": "BuyrPrtcnInstrId",
+      "type": "DocumentIdentification57",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ProcessorTransactionIdentification",
+      "isoId": "_kN5Hd98NEe-NrtAAlrBEgQ",
+      "xmlTag": "PrcrTxId",
+      "type": "Max35Text",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionGeneralInformation",
+      "isoId": "_kN5HeN8NEe-NrtAAlrBEgQ",
+      "xmlTag": "CorpActnGnlInf",
+      "type": "CorporateActionGeneralInformation195",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "InstructionCancellationRequestStatus",
+      "isoId": "_sh3Iwd8NEe-NrtAAlrBEgQ",
+      "xmlTag": "InstrCxlReqSts",
+      "type": "InstructionCancellationRequestStatus20Choice",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "RelatedSettlementInstruction",
+      "isoId": "_kN5Hed8NEe-NrtAAlrBEgQ",
+      "xmlTag": "RltdSttlmInstr",
+      "type": "RelatedSettlementInstruction4",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AccountIdentification",
+      "isoId": "_En4j4cYIEfCAUuDfE8yRnw",
+      "xmlTag": "AcctId",
+      "type": "SecuritiesAccountIdentification1Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionElection",
+      "isoId": "_kN5Het8NEe-NrtAAlrBEgQ",
+      "xmlTag": "CorpActnElctn",
+      "type": "CorporateActionElection4",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_kN5He98NEe-NrtAAlrBEgQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

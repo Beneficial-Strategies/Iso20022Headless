@@ -1,0 +1,2 @@
+name	isoId	xsiType	pattern	minLength	maxLength	totalDigits	fractionDigits	minInclusive	maxInclusive	other
+BICIdentifier	_YWr8K9p-Ed-ak6NoX_4Aeg_1527093628	IdentifierSet	[A-Z]{6,6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3,3}){0,1}							identificationScheme=SWIFT; BICIdentifier

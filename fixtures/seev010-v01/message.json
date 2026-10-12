@@ -1,0 +1,43 @@
+{
+  "identifier": "seev.010.001.01",
+  "name": "AgentCANotificationCancellationRequestV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.010.001.01",
+  "bodyTag": "AgtCANtfctnCxlReq",
+  "out": "seev010",
+  "isoId": "_TRVISdEwEd-BzquC8wXy7w_1381384285",
+  "definition": "Scope|This message is sent by an issuer (or its agent) to a CSD to request the cancellation of a notification advice message.|Usage|When this message is used to request the cancellation of a notification advice message, the function of the message must be cancellation.|When this message is used to request the withdrawal of a Corporate Action event or option, then the function of the message must be withdrawal.|In both cases, the building block notification advice identification must be present to link this cancellation request to the notification advice that was previously sent.",
+  "blocks": [
+    {
+      "name": "Identification",
+      "isoId": "_TRVIStEwEd-BzquC8wXy7w_-958501125",
+      "xmlTag": "Id",
+      "type": "DocumentIdentification8",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "NotificationCancellationTypeAndLinkage",
+      "isoId": "_TRVIS9EwEd-BzquC8wXy7w_604000016",
+      "xmlTag": "NtfctnCxlTpAndLkg",
+      "type": "NotificationCancellation1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionGeneralInformation",
+      "isoId": "_TRVITNEwEd-BzquC8wXy7w_-624173928",
+      "xmlTag": "CorpActnGnlInf",
+      "type": "CorporateActionInformation2",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionNotificationDetails",
+      "isoId": "_TRVITdEwEd-BzquC8wXy7w_807888623",
+      "xmlTag": "CorpActnNtfctnDtls",
+      "type": "CorporateActionNotificationAdvice1",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

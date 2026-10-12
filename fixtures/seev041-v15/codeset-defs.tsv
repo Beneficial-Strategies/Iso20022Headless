@@ -1,0 +1,3 @@
+codeSet	isoId	text
+RejectionReason90Code	_B51IEaKvEfCHi7w3_0pcpw	Specifies the reason why the instruction/cancellation request has a rejected status.
+PendingCancellationReason9Code	_OmH_EaKwEfCHi7w3_0pcpw	Specifies the reason why the cancellation request has a pending status.

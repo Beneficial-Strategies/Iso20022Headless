@@ -1,0 +1,51 @@
+{
+  "identifier": "seev.060.001.01",
+  "name": "BuyerProtectionInstructionV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.060.001.01",
+  "bodyTag": "BuyrPrtcnInstr",
+  "out": "seev060",
+  "isoId": "_PRLXQLbcEe-NMoTZ6Byg6A",
+  "definition": "Scope|The BuyeProtectionInstruction message is sent by an account owner to an account servicer to instruct a buyer protection on a pending settlement instruction.|||Usage|The message may also be used to:|- re-send a message previously sent (the sub-function of the message is Duplicate),|- provide a third party with a copy of a message for information (the sub-function of the message is Copy),|- re-send to a third party a copy of a message for information (the sub-function of the message is Copy Duplicate), using the relevant elements in the business application header (BAH).",
+  "blocks": [
+    {
+      "name": "CorporateActionGeneralInformation",
+      "isoId": "_PdOc8bbhEe-NMoTZ6Byg6A",
+      "xmlTag": "CorpActnGnlInf",
+      "type": "CorporateActionGeneralInformation195",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "RelatedSettlementInstruction",
+      "isoId": "_dxN1ELbjEe-NMoTZ6Byg6A",
+      "xmlTag": "RltdSttlmInstr",
+      "type": "RelatedSettlementInstruction3",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountIdentification",
+      "isoId": "_5mWlkMYGEfCAUuDfE8yRnw",
+      "xmlTag": "AcctId",
+      "type": "SecuritiesAccountIdentification1Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionElection",
+      "isoId": "_1VurcLbnEe-NMoTZ6Byg6A",
+      "xmlTag": "CorpActnElctn",
+      "type": "CorporateActionElection4",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_QpZDMbbjEe-NMoTZ6Byg6A",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

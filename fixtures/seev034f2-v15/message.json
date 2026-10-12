@@ -1,0 +1,75 @@
+{
+  "identifier": "seev.034.002.15",
+  "name": "CorporateActionInstructionStatusAdvice002V15",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.034.002.15",
+  "bodyTag": "CorpActnInstrStsAdvc",
+  "out": "seev034f2",
+  "isoId": "_kLoys5t3Ee-wQIOX0djF2w",
+  "definition": "Scope|The CorporateActionInstructionStatusAdvice message is sent by an account servicer to an account owner or its designated agent, to report the status of a received corporate action election instruction.||This message is used to advise the status, or a change in status, of a corporate action-related transaction previously instructed by, or executed on behalf of, the account owner. This will include the acknowledgement/rejection of a corporate action instruction.|Usage|The message may also be used to:|- re-send a message previously sent (the sub-function of the message is Duplicate),|- provide a third party with a copy of a message for information (the sub-function of the message is Copy),|- re-send to a third party a copy of a message for information (the sub-function of the message is Copy Duplicate), using the relevant elements in the business application header (BAH).",
+  "blocks": [
+    {
+      "name": "InstructionIdentification",
+      "isoId": "_kLoywpt3Ee-wQIOX0djF2w",
+      "xmlTag": "InstrId",
+      "type": "DocumentIdentification17",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "OtherDocumentIdentification",
+      "isoId": "_kLoyxJt3Ee-wQIOX0djF2w",
+      "xmlTag": "OthrDocId",
+      "type": "DocumentIdentification34",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "CorporateActionGeneralInformation",
+      "isoId": "_kLoyxpt3Ee-wQIOX0djF2w",
+      "xmlTag": "CorpActnGnlInf",
+      "type": "CorporateActionGeneralInformation188",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "InstructionProcessingStatus",
+      "isoId": "_kLoyyJt3Ee-wQIOX0djF2w",
+      "xmlTag": "InstrPrcgSts",
+      "type": "InstructionProcessingStatus58Choice",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "CorporateActionInstruction",
+      "isoId": "_kLoyypt3Ee-wQIOX0djF2w",
+      "xmlTag": "CorpActnInstr",
+      "type": "CorporateActionOption242",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ProtectInstruction",
+      "isoId": "_kLoyzJt3Ee-wQIOX0djF2w",
+      "xmlTag": "PrtctInstr",
+      "type": "ProtectInstruction6",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AdditionalInformation",
+      "isoId": "_kLoyzpt3Ee-wQIOX0djF2w",
+      "xmlTag": "AddtlInf",
+      "type": "CorporateActionNarrative19",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_kLoy0Jt3Ee-wQIOX0djF2w",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

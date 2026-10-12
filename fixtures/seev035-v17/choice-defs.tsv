@@ -1,0 +1,17 @@
+choice	memberId	memberName	text
+CorporateActionReversalReason10Choice	_eM2BkYCzEe-3UrLQHGsjgQ	Code	Standard code to specify the reason for the reversal.
+CorporateActionReversalReason10Choice	_eM2Bk4CzEe-3UrLQHGsjgQ	Proprietary	Proprietary identification for the reason of the reversal.
+CorporateActionEventProcessingType2Choice	_RYH6kTndEeWLJsP1cO-amg	Code	Standard code to specify the processing type of a corporate action event.
+CorporateActionEventProcessingType2Choice	_RYH6mTndEeWLJsP1cO-amg	Proprietary	Proprietary identification of the processing type of a corporate action event.
+AccountIdentification70Choice	_5XB8gY-9Ee-COKgew96POA	ForAllAccounts	All safekeeping accounts that own an underlying financial instrument.
+AccountIdentification70Choice	_5XB8iY-9Ee-COKgew96POA	AccountsListAndBalanceDetails	Selected safekeeping accounts list (and optionally balance information) to which the corporate action event applies.
+AdditionalBusinessProcessFormat18Choice	_BLfzkRewEeyroI8qKgB7Mg	Code	Standard code to specify the additional business process "tax refund" linked to a corporate action event.
+AdditionalBusinessProcessFormat18Choice	_BLfzmRewEeyroI8qKgB7Mg	Proprietary	Proprietary identification of the additional business process "tax refund" linked to a corporate action event.
+OfferTypeFormat17Choice	52aeca94-561d-4e8f-aac0-1bb077d6977f	Code	Standard code to specify the conditions that apply to the offer.
+OfferTypeFormat17Choice	29abb297-522a-49f1-89d8-2d751f284906	Proprietary	Proprietary identification of the conditions that apply to the offer.
+GrossDividendRateFormat36Choice	_DVZBc-XsEemEj48jhmlA0Q	Amount	Number of monetary units specified in a currency.
+GrossDividendRateFormat36Choice	_DVZBe-XsEemEj48jhmlA0Q	AmountAndRateStatus	Specifies an amount and a rate status.
+GrossDividendRateFormat36Choice	_DVZBfeXsEemEj48jhmlA0Q	RateTypeAndAmountAndRateStatus	Specifies different formats for the gross dividend rate.
+GrossDividendRateFormat36Choice	_DVZBheXsEemEj48jhmlA0Q	NotSpecifiedRate	Value of the rate not specified.
+NonEligibleProceedsIndicator3Choice	_M7XQoUEKEeWVgfuHGaKtRQ	Code	Standard code to specify information regarding the non eligibility of the outturn resources.
+NonEligibleProceedsIndicator3Choice	_M7XQo0EKEeWVgfuHGaKtRQ	Proprietary	Proprietary identification to specify information regarding the non eligibility of the outturn resources.

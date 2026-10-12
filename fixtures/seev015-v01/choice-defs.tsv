@@ -1,0 +1,17 @@
+choice	memberId	memberName	text
+ElectionAdviceStatus1Choice	_RiiHwNp-Ed-ak6NoX_4Aeg_-202517044	ProcessedStatus	Provides information about the processing status of advice.
+ElectionAdviceStatus1Choice	_RiiHwdp-Ed-ak6NoX_4Aeg_-1292537504	RejectedStatus	Provides information about the rejection status.
+ProcessedStatus3FormatChoice	_RnTTBdp-Ed-ak6NoX_4Aeg_-735203961	Code	Standard code to specify the processing status of an advice, a request or a movement.
+ProcessedStatus3FormatChoice	_RnTTBtp-Ed-ak6NoX_4Aeg_-735203960	Proprietary	Proprietary code to express the processing status of an advice, a request or a movement.
+RejectionReason18FormatChoice	_RoV01Np-Ed-ak6NoX_4Aeg_202927158	Code	Standard code to specify the reason of a rejection of an election advice.
+RejectionReason18FormatChoice	_RoV01dp-Ed-ak6NoX_4Aeg_202927097	Proprietary	Proprietary code to express the reason of a rejection of an election advice.
+ElectionCancellationStatus1Choice	_RiiHw9p-Ed-ak6NoX_4Aeg_1800632270	ProcessedStatus	Provides information about the processing status of the request.
+ElectionCancellationStatus1Choice	_RiiHxNp-Ed-ak6NoX_4Aeg_1829260914	RejectedStatus	Provides information about the rejection status.
+ProcessedStatus5FormatChoice	_RnmN89p-Ed-ak6NoX_4Aeg_-2007876597	Code	Standard code to specify the processing status of a request.
+ProcessedStatus5FormatChoice	_RnmN9Np-Ed-ak6NoX_4Aeg_-1894283607	Proprietary	Proprietary code to express the processing status of a request.
+RejectionReason9FormatChoice	_Roovxtp-Ed-ak6NoX_4Aeg_287891087	Code	Standard code to specify the reason of a rejection of an election cancellation request.
+RejectionReason9FormatChoice	_Roovx9p-Ed-ak6NoX_4Aeg_287891056	Proprietary	Proprietary code to express the reason of a rejection of an election cancellation request.
+ElectionAmendmentStatus1Choice	_RiiHxtp-Ed-ak6NoX_4Aeg_-1968652783	ProcessedStatus	Provides information about the processing status of the request.
+ElectionAmendmentStatus1Choice	_RiiHx9p-Ed-ak6NoX_4Aeg_-1936329849	RejectedStatus	Provides information about the rejection status.
+RejectionReason8FormatChoice	_Roovw9p-Ed-ak6NoX_4Aeg_274039681	Code	Standard code to specify the reason of a rejection of an election amendment request.
+RejectionReason8FormatChoice	_RoovxNp-Ed-ak6NoX_4Aeg_274039650	Proprietary	Proprietary code to express the reason of a rejection of an election amendment request.

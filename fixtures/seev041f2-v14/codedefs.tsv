@@ -1,0 +1,48 @@
+codeSet	code	enumName	isoId	text
+RejectionReason79Code	ADEA	AccountServicerDeadlineMissed	__tK04TQWEe2o-K1dwNg8Gg	Transaction/instruction received after the account servicer's specified deadline.
+RejectionReason79Code	INIR	InstructionIrrevocable	__tK04zQWEe2o-K1dwNg8Gg	Instruction is irrevocable.
+RejectionReason79Code	ULNK	InvalidReference	__tK05TQWEe2o-K1dwNg8Gg	Linked reference is unknown.
+RejectionReason79Code	LATE	MarketDeadlineMissed	__tK05zQWEe2o-K1dwNg8Gg	Received after market deadline.
+RejectionReason79Code	OTHR	Other	__tK06TQWEe2o-K1dwNg8Gg	Other. See Narrative.
+RejectionReason79Code	DCAN	RejectedSinceAlreadyCancelled	__tK06zQWEe2o-K1dwNg8Gg	Cancellation request was rejected since the instruction has already been cancelled.
+RejectionReason79Code	DPRG	RejectedSinceInProgress	__tK07TQWEe2o-K1dwNg8Gg	Cancellation request has been rejected because the instruction process is in progress or has been processed.
+RejectionReason79Code	REJA	RejectedByIssuerAgent	__tK07zQWEe2o-K1dwNg8Gg	Instruction rejected by the issuer agent.
+RejectionReason79Code	CTCT	MissingContact	_Jk02gTQXEe2o-K1dwNg8Gg	Contact information is missing.
+RejectionReason79Code	DSEC	InvalidSecurity	_K1S_4jQXEe2o-K1dwNg8Gg	Unrecognised or invalid financial instrument identification.
+RejectionReason79Code	DQUA	QuantityRejection	_MmQAIjQXEe2o-K1dwNg8Gg	Unrecognised or invalid instructed quantity.
+RejectionReason79Code	PROT	MissingProtectDate	_OG894jQXEe2o-K1dwNg8Gg	Protect date is required for cover protect instructions.
+RejectionReason79Code	SAFE	SafekeepingAccountRejection	_S6EHkTQXEe2o-K1dwNg8Gg	Unrecognised or invalid message sender's safekeeping account.
+RejectionReason79Code	PROI	MissingProtectIdentification	_UX8a0jQXEe2o-K1dwNg8Gg	Protect identification is required for cover protect instructions.
+RejectionReason79Code	TRTI	MissingTransactionType	_V1YCIjQXEe2o-K1dwNg8Gg	Transaction type is missing or invalid for protect or cover protect instructions.
+RejectionReason79Code	DUPL	DuplicateInstruction	_XcDFAjQXEe2o-K1dwNg8Gg	Instruction is rejected due to duplicate business message identifier.
+PendingCancellationReason5Code	ADEA	AccountServicerDeadlineMissed	_amb5AYluEeavwKddCbm3hg	Transaction/instruction received after the account servicer's specified deadline.
+PendingCancellationReason5Code	DQUA	QuantityRejection	_dkbUIYluEeavwKddCbm3hg	Unrecognised or invalid instructed quantity.
+PendingCancellationReason5Code	DQCS	AmountRejection	_jurP4YluEeavwKddCbm3hg	Unrecognised or invalid instructed cash amount.
+PendingCancellationReason5Code	LATE	MarketDeadlineMissed	_lj66QYluEeavwKddCbm3hg	Received after market deadline.
+PendingCancellationReason5Code	OTHR	Other	_sLLiIYluEeavwKddCbm3hg	Other. See Narrative.
+CorporateActionOption17Code	ABST	Abstain	_qBF_Ie35Eeqc-LCjwLsUVg	Vote expressed as abstain. In this case, the issuing company will add the number of shares to the quorum of the meeting.|If the voting right is not executed, it will not be added to the quorum. In this case, code NOAC should be used.
+CorporateActionOption17Code	BSPL	BonusSharePlan	_qBF_I-35Eeqc-LCjwLsUVg	Receive equities from the share premium reserve of the company and considered as a capital distribution rather than a disbursement of income with different tax implications (typically found in Australia).
+CorporateActionOption17Code	BUYA	BuyUp	_qBF_Je35Eeqc-LCjwLsUVg	Buy additional securities to round up position.
+CorporateActionOption17Code	CASE	CashAndSecurity	_qBF_J-35Eeqc-LCjwLsUVg	Option to choose between different security and cash options.
+CorporateActionOption17Code	CASH	Cash	_qBF_Ke35Eeqc-LCjwLsUVg	Option to choose cash.
+CorporateActionOption17Code	CEXC	ConsentAndExchange	_qBF_K-35Eeqc-LCjwLsUVg	Vote to consent to change the terms of the securities agreement and to exchange securities.
+CorporateActionOption17Code	CONN	ConsentDenied	_qBF_Le35Eeqc-LCjwLsUVg	Vote not to approve the event or proposal.
+CorporateActionOption17Code	CONY	ConsentGranted	_qBF_L-35Eeqc-LCjwLsUVg	Vote to approve the event or proposal.
+CorporateActionOption17Code	CTEN	ConsentAndTender	_qBF_Me35Eeqc-LCjwLsUVg	Vote to consent to change the terms of the securities agreement and to tender securities for cash.
+CorporateActionOption17Code	EXER	Exercise	_qBF_M-35Eeqc-LCjwLsUVg	Exercise intermediate securities or warrants.
+CorporateActionOption17Code	LAPS	Lapse	_qBF_Ne35Eeqc-LCjwLsUVg	Allow event or entitled security to expire.
+CorporateActionOption17Code	MKDW	MarkDown	_qBF_N-35Eeqc-LCjwLsUVg	Mark down the global certificate as a result of a corporate action (instruction from International Central Securities Depositories (ICSDs) to common depositories who are holding the global certificate on behalf of the International Central Securities Depositories (ICSDs)).
+CorporateActionOption17Code	MKUP	MarkUp	_qBF_Oe35Eeqc-LCjwLsUVg	Mark up the global certificate as a result of a corporate action (instruction from International Central Securities Depositories (ICSDs) to common depositories who are holding the global certificate on behalf of the International Central Securities Depositories (ICSDs)).
+CorporateActionOption17Code	MPUT	Retain	_qBF_O-35Eeqc-LCjwLsUVg	Option that allows a holder to elect to retain their holding, for example, a putable bond.
+CorporateActionOption17Code	NOAC	NoAction	_qBF_Pe35Eeqc-LCjwLsUVg	Option for the account owner not to take part in the event. This would include opt-out for class actions and lodging of dissenters' rights.
+CorporateActionOption17Code	NOQU	NonQualifiedInvestor	_qBF_P-35Eeqc-LCjwLsUVg	Account owner is a non-qualified investor.
+CorporateActionOption17Code	OFFR	ProposedRate	_qBF_Qe35Eeqc-LCjwLsUVg	In a remarketing of variable notes, the margin that shareholders can propose in respect of the next interest period.
+CorporateActionOption17Code	OTHR	Other	_qBF_Q-35Eeqc-LCjwLsUVg	Generic corporate action option to be used in case that no other specific code is appropriate.
+CorporateActionOption17Code	OVER	Oversubscribe	_qBF_Re35Eeqc-LCjwLsUVg	Subscribe to more equities than underlying securities position allows.
+CorporateActionOption17Code	QINV	QualifiedInvestor	_qBF_R-35Eeqc-LCjwLsUVg	Account owner is a qualified investor.
+CorporateActionOption17Code	SECU	Security	_qBF_Se35Eeqc-LCjwLsUVg	Distribution of securities to holders.
+CorporateActionOption17Code	SLLE	SellEntitlement	_qBF_S-35Eeqc-LCjwLsUVg	Sell the intermediate securities.
+CorporateActionOption17Code	TAXI	TaxInstruction	_qBF_Te35Eeqc-LCjwLsUVg	Tax instruction.
+CorporateActionOption17Code	PRUN	UnknownProceeds	_qBF_T-35Eeqc-LCjwLsUVg	Proceeds not known during election period. The option can result in cash and/or securities.
+CorporateActionOption17Code	BOBD	BeneficialOwnerBreakdownRequest	_riPo0e35Eeqc-LCjwLsUVg	Breakdown of beneficial ownership required for withholding tax reclaim event.
+ProtectInstructionStatus4Code	OPEN	Open	_BshVMbpcEeilsanBGAzy4A	Protect instruction which has not been fully covered. Will include partial covers.

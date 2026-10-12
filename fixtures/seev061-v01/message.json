@@ -1,0 +1,67 @@
+{
+  "identifier": "seev.061.001.01",
+  "name": "BuyerProtectionInstructionStatusAdviceV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.061.001.01",
+  "bodyTag": "BuyrPrtcnInstrStsAdvc",
+  "out": "seev061",
+  "isoId": "_DFckwLbdEe-NMoTZ6Byg6A",
+  "definition": "Scope|The BuyerProtectionInstructionStatusAdvice message is sent by an account servicer to an account owner or its designated agent, to report the status of a received Buyer Protection Instruction.||This message is used to advise the status, or a change in status, of a Buyer Protection Instruction previously instructed by, or processed on behalf of, the account owner. This will include the acknowledgement/rejection of a Buyer Protection Instruction.||Usage|The message may also be used to:|- re-send a message previously sent (the sub-function of the message is Duplicate),|- provide a third party with a copy of a message for information (the sub-function of the message is Copy),|- re-send to a third party a copy of a message for information (the sub-function of the message is Copy Duplicate), using the relevant elements in the business application header (BAH).",
+  "blocks": [
+    {
+      "name": "BuyerProtectionInstruction",
+      "isoId": "_2Wj_Ad73Ee-NrtAAlrBEgQ",
+      "xmlTag": "BuyrPrtcnInstr",
+      "type": "DocumentIdentification57",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionGeneralInformation",
+      "isoId": "_HRrcUd74Ee-NrtAAlrBEgQ",
+      "xmlTag": "CorpActnGnlInf",
+      "type": "CorporateActionGeneralInformation195",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "InstructionProcessingStatus",
+      "isoId": "_fVFVgd75Ee-NrtAAlrBEgQ",
+      "xmlTag": "InstrPrcgSts",
+      "type": "InstructionProcessingStatus59Choice",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "RelatedSettlementInstruction",
+      "isoId": "_XuA2c975Ee-NrtAAlrBEgQ",
+      "xmlTag": "RltdSttlmInstr",
+      "type": "RelatedSettlementInstruction4",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AccountIdentification",
+      "isoId": "_JhoWgcYHEfCAUuDfE8yRnw",
+      "xmlTag": "AcctId",
+      "type": "SecuritiesAccountIdentification1Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionElection",
+      "isoId": "_XuA2dN75Ee-NrtAAlrBEgQ",
+      "xmlTag": "CorpActnElctn",
+      "type": "CorporateActionElection4",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_XuA2dd75Ee-NrtAAlrBEgQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

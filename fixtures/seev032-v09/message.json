@@ -1,0 +1,59 @@
+{
+  "identifier": "seev.032.001.09",
+  "name": "CorporateActionEventProcessingStatusAdviceV09",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.032.001.09",
+  "bodyTag": "CorpActnEvtPrcgStsAdvc",
+  "out": "seev032",
+  "isoId": "_4baRtX_4Ee-h086v0qPiyQ",
+  "definition": "Scope|An account servicer sends the CorporateActionEventProcessingStatusAdvice message to an account owner or its designated agent to report processing status of a corporate action event.||The account servicer uses this message to provide a reason as to why a corporate action event has not been completed by the announced payment dates.|Usage|The message may also be used to:|- re-send a message previously sent (the sub-function of the message is Duplicate),|- provide a third party with a copy of a message for information (the sub-function of the message is Copy),|- re-send to a third party a copy of a message for information (the sub-function of the message is Copy Duplicate), |using the relevant elements in the business application header (BAH).",
+  "blocks": [
+    {
+      "name": "NotificationIdentification",
+      "isoId": "_4baRvX_4Ee-h086v0qPiyQ",
+      "xmlTag": "NtfctnId",
+      "type": "DocumentIdentification9",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "OtherDocumentIdentification",
+      "isoId": "_4baRv3_4Ee-h086v0qPiyQ",
+      "xmlTag": "OthrDocId",
+      "type": "DocumentIdentification33",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "CorporateActionGeneralInformation",
+      "isoId": "_4baRwX_4Ee-h086v0qPiyQ",
+      "xmlTag": "CorpActnGnlInf",
+      "type": "CorporateActionGeneralInformation182",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "EventProcessingStatus",
+      "isoId": "_4baRw3_4Ee-h086v0qPiyQ",
+      "xmlTag": "EvtPrcgSts",
+      "type": "EventProcessingStatus7Choice",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "AdditionalInformation",
+      "isoId": "_4baRxX_4Ee-h086v0qPiyQ",
+      "xmlTag": "AddtlInf",
+      "type": "CorporateActionNarrative10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_4baRx3_4Ee-h086v0qPiyQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

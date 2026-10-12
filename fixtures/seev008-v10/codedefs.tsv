@@ -1,0 +1,6 @@
+codeSet	code	enumName	isoId	text
+ResolutionStatus2Code	ACPT	Accepted	_S5RIgV64EeSjaerr_EM7AQ	Meeting resolution has been accepted.
+ResolutionStatus2Code	REJT	Rejected	_TCMbAV64EeSjaerr_EM7AQ	Meeting resolution has been rejected.
+ResolutionStatus2Code	WDRA	Withdrawn	_TK-jkV64EeSjaerr_EM7AQ	Meeting resolution has been withdrawn.
+ResolutionSubStatus1Code	AMDR	AmendedResolution	_Zd6yETUHEe2tRf29bleifQ	Resolution voted at the meeting was amended.
+ResolutionSubStatus1Code	NEWR	NewResolution	_ZkxoATUHEe2tRf29bleifQ	Resolution voted at the meeting is new.

@@ -1,0 +1,43 @@
+{
+  "identifier": "seev.048.001.01",
+  "name": "ShareholderIdentificationDisclosureResponseCancellationAdviceV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.048.001.01",
+  "bodyTag": "ShrhldrIdDsclsrRspnCxlAdvc",
+  "out": "seev048",
+  "isoId": "_mi0doEV8EemRx7jyevcLwg",
+  "definition": "The ShareholdersIdentificationDisclosureResponseCancellationAdvice message is sent by any intermediaries to the recipient designated by the issuer (such as an issuer's agent) in the disclosure request message in order to cancel the shareholder identification disclosure response whether previously sent in a single message or in a set of multipart/paginated response messages.",
+  "blocks": [
+    {
+      "name": "DisclosureResponseIdentification",
+      "isoId": "_1ZW-okV9EemRx7jyevcLwg",
+      "xmlTag": "DsclsrRspnId",
+      "type": "Max35Text",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "IssuerDisclosureRequestReference",
+      "isoId": "_s9Y_YbRAEem2T48lBgJbww",
+      "xmlTag": "IssrDsclsrReqRef",
+      "type": "DisclosureRequestIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "RespondingIntermediary",
+      "isoId": "_1ZW-o0V9EemRx7jyevcLwg",
+      "xmlTag": "RspndgIntrmy",
+      "type": "PartyIdentification215",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_1__BQbRAEem2T48lBgJbww",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

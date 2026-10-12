@@ -1,0 +1,22 @@
+choice	memberId	memberName	text
+CorporateActionEventType113Choice	_jKs6fZt3Ee-wQIOX0djF2w	Code	Event type expressed as a code.
+CorporateActionEventType113Choice	_jKs6hZt3Ee-wQIOX0djF2w	Proprietary	Event type expressed as a proprietary code.
+CorporateActionMandatoryVoluntary4Choice	_cdRCGZKQEeWHWpTQn1FFVg	Code	Standard code to specify whether the event is mandatory, mandatory with options or voluntary.
+CorporateActionMandatoryVoluntary4Choice	_cdRCIZKQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of an event.
+AccountIdentification74Choice	_jKthiZt3Ee-wQIOX0djF2w	ForAllAccounts	All safekeeping accounts that own underlying financial instrument.
+AccountIdentification74Choice	_jKthkZt3Ee-wQIOX0djF2w	AccountsList	Selected safekeeping accounts list to which the corporate action event applies.
+SafekeepingPlaceFormat57Choice	_jKuIRZt3Ee-wQIOX0djF2w	Identification	Place of safekeeping expressed as a code and a narrative description.
+SafekeepingPlaceFormat57Choice	_jKuITZt3Ee-wQIOX0djF2w	Country	Place of safekeeping expressed with a country code.
+SafekeepingPlaceFormat57Choice	_jKuIVZt3Ee-wQIOX0djF2w	DigitalLedgerIdentification	Place of settlement expressed with a Digital Ledger Identifier. It identifies a digital ledger or distributed ledger system (for example, blockchain or similar platforms).
+SafekeepingPlaceFormat57Choice	_jKuIV5t3Ee-wQIOX0djF2w	TypeAndIdentification	Place of safekeeping expressed with a type and identification.
+SafekeepingPlaceFormat57Choice	_jKuIX5t3Ee-wQIOX0djF2w	Proprietary	Place of safekeeping expressed with a propriety identification scheme.
+DateFormat41Choice	_c5LiNZKQEeWHWpTQn1FFVg	Date	Date expressed as a calendar date.
+DateFormat41Choice	_c5LiPZKQEeWHWpTQn1FFVg	DateCode	Specifies the type of date.
+DateCode22Choice	_cdSQeZKQEeWHWpTQn1FFVg	Code	Standard code to specify the type of date.
+DateCode22Choice	_cdSQgZKQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the type of date.
+CorporateActionEventStageFormat15Choice	_cdS3X5KQEeWHWpTQn1FFVg	Code	Standard code to specify the stage of the corporate action event.
+CorporateActionEventStageFormat15Choice	_cdS3Z5KQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the stage of the corporate action event.
+AdditionalBusinessProcessFormat16Choice	_M4dnUdD7Eeetfps_dpxRmg	Code	Standard code to specify the additional business process linked to a corporate action event.
+AdditionalBusinessProcessFormat16Choice	_M4dnWdD7Eeetfps_dpxRmg	Proprietary	Proprietary identification of the additional business process linked to a corporate action event.
+LotteryTypeFormat5Choice	_cdS3g5KQEeWHWpTQn1FFVg	Code	Standard code to specify the type of lottery announced.
+LotteryTypeFormat5Choice	_cdS3hZKQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the type of lottery announced.

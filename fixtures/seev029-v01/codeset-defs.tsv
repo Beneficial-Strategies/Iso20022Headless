@@ -1,0 +1,5 @@
+codeSet	isoId	text
+CorporateActionEventType2Code	_bEu2xNp-Ed-ak6NoX_4Aeg_-976076267	Specifies the status of the CA event.
+CorporateActionMandatoryVoluntary1Code	_bKsU0dp-Ed-ak6NoX_4Aeg_-2134886943	Specifies whether the event is mandatory, mandatory with options or voluntary.
+CorporateActionEventProcessingType1Code	_bDij8dp-Ed-ak6NoX_4Aeg_-1578927288	Specifies the type of event processing.
+CorporateActionOptionType1Code	_bQ8t09p-Ed-ak6NoX_4Aeg_1430508802	Specifies the type of CA options.

@@ -1,0 +1,67 @@
+{
+  "identifier": "seev.052.001.04",
+  "name": "MarketClaimStatusAdviceV04",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.052.001.04",
+  "bodyTag": "MktClmStsAdvc",
+  "out": "seev052",
+  "isoId": "_yIku0a8wEfCx2aBifPEdRg",
+  "definition": "Scope and Usage|The MarketClaimStatusAdvice message is sent by an account servicer to an account holder to provide the status of a market claim transaction.|This message definition is intended for use with the Business Application Header (BAH).",
+  "blocks": [
+    {
+      "name": "MarketClaimCreationIdentification",
+      "isoId": "_yIku2a8wEfCx2aBifPEdRg",
+      "xmlTag": "MktClmCreId",
+      "type": "DocumentIdentification9",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "TransactionReference",
+      "isoId": "_yIku268wEfCx2aBifPEdRg",
+      "xmlTag": "TxRef",
+      "type": "References26",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionGeneralInformation",
+      "isoId": "_yIku368wEfCx2aBifPEdRg",
+      "xmlTag": "CorpActnGnlInf",
+      "type": "CorporateActionGeneralInformation181",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountDetails",
+      "isoId": "_yIku4a8wEfCx2aBifPEdRg",
+      "xmlTag": "AcctDtls",
+      "type": "AccountIdentification70",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "MarketClaimProcessingStatus",
+      "isoId": "_yIku468wEfCx2aBifPEdRg",
+      "xmlTag": "MktClmPrcgSts",
+      "type": "MarketClaimProcessingStatus2Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "MarketClaimDetails",
+      "isoId": "_yIku5a8wEfCx2aBifPEdRg",
+      "xmlTag": "MktClmDtls",
+      "type": "CorporateActionOption234",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_yIku568wEfCx2aBifPEdRg",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

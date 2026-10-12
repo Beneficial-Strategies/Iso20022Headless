@@ -1,0 +1,51 @@
+{
+  "identifier": "seev.038.002.09",
+  "name": "CorporateActionNarrative002V09",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.038.002.09",
+  "bodyTag": "CorpActnNrrtv",
+  "out": "seev038f2",
+  "isoId": "_nF16A5t3Ee-wQIOX0djF2w",
+  "definition": "Scope|The CorporateActionNarrative message is sent between an account servicer and an account owner or its designated agent to cater for such processes that cannot be handled using messages such as the CorporateActionNotification. It is not to be used for event narrative as that should be included in the CorporateActionNotification. Examples of when the CorporateActionNarrative message may be used include tax reclaims, restrictions, documentation requirements. This message should only be used when bilaterally agreed. This message is bi-directional.|Usage|The message may also be used to:|- re-send a message previously sent (the sub-function of the message is Duplicate),|- provide a third party with a copy of a message for information (the sub-function of the message is Copy),|- re-send to a third party a copy of a message for information (the sub-function of the message is Copy Duplicate), using the relevant elements in the business application header (BAH).",
+  "blocks": [
+    {
+      "name": "AccountDetails",
+      "isoId": "_nF16B5t3Ee-wQIOX0djF2w",
+      "xmlTag": "AcctDtls",
+      "type": "AccountIdentification77Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "UnderlyingSecurity",
+      "isoId": "_nF16CZt3Ee-wQIOX0djF2w",
+      "xmlTag": "UndrlygScty",
+      "type": "SecurityIdentification20",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionGeneralInformation",
+      "isoId": "_nF16C5t3Ee-wQIOX0djF2w",
+      "xmlTag": "CorpActnGnlInf",
+      "type": "CorporateActionGeneralInformation102",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AdditionalInformation",
+      "isoId": "_nF16DZt3Ee-wQIOX0djF2w",
+      "xmlTag": "AddtlInf",
+      "type": "RestrictedFINZMax8000Text",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_nF16D5t3Ee-wQIOX0djF2w",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

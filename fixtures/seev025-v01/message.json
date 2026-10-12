@@ -1,0 +1,43 @@
+{
+  "identifier": "seev.025.001.01",
+  "name": "AgentCAStandingInstructionRequestV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.025.001.01",
+  "bodyTag": "AgtCAStgInstrReq",
+  "out": "seev025",
+  "isoId": "_TR6-KdEwEd-BzquC8wXy7w_1831735017",
+  "definition": "Scope|This message is sent by a CSD to the issuer (or its agent) to provide the issuer (or its agent) with the CSD's client details for the distribution of the proceeds of a corporate action event:|- Gross or net payments.|- Delivery details for securities that have to be delivered outside of the CSD.|- Delivery details for cash amounts that have to be delivered outside of the CSD.|Usage|This message is used to request the issuer (or its agent) to put a standing instruction in place for proceeds.|The amendment of a standing instruction is done through a cancel-and-replace mechanism. First a standing instruction cancellation request is sent followed by a new standing instruction request.",
+  "blocks": [
+    {
+      "name": "Identification",
+      "isoId": "_TR6-KtEwEd-BzquC8wXy7w_-325890589",
+      "xmlTag": "Id",
+      "type": "DocumentIdentification8",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "StandingInstructionGeneralInformation",
+      "isoId": "_TR6-K9EwEd-BzquC8wXy7w_199276822",
+      "xmlTag": "StgInstrGnlInf",
+      "type": "CorporateActionStandingInstructionGeneralInformation1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "StandingInstructionDetails",
+      "isoId": "_TR6-LNEwEd-BzquC8wXy7w_1084668578",
+      "xmlTag": "StgInstrDtls",
+      "type": "CorporateActionStandingInstruction1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ContactDetails",
+      "isoId": "_TR6-LdEwEd-BzquC8wXy7w_1089871682",
+      "xmlTag": "CtctDtls",
+      "type": "ContactPerson1",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

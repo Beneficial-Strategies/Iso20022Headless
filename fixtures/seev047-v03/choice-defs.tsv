@@ -1,0 +1,13 @@
+choice	memberId	memberName	text
+Disclosure3Choice	_wukNEVx7Ee6fgZt44_IqFA	NoDisclosure	Shareholding information is not disclosed.
+Disclosure3Choice	_wukNE1x7Ee6fgZt44_IqFA	SafekeepingAccountAndHoldings	Details of the account, account sub-levels and holdings.
+ActivityIndicator1Choice	_Lg8f5Vx7Ee6fgZt44_IqFA	ISICIdentifier	Activity indicator expressed as an ISIC identifier code.
+ActivityIndicator1Choice	_Lg8f5Fx7Ee6fgZt44_IqFA	ProprietaryIndicator	Activity indicator expressed as a proprietary indicator code.
+InvestorType1Choice	_ITHZAIzyEemXJvzC2Wyt1g	Code	Investor type expressed as an ISO 20022 code.
+InvestorType1Choice	_O9p-YIzyEemXJvzC2Wyt1g	Proprietary	Investor type expressed as a proprietary code.
+OwnershipType3Choice	_pl-wkIzhEemXJvzC2Wyt1g	Code	Owner type expressed as an ISO 20022 code.
+OwnershipType3Choice	_shvXEIzhEemXJvzC2Wyt1g	Proprietary	Owner type expressed as a proprietary code.
+PartyRole6Choice	_Ny0LtI6OEemzmeK8_tPygg	Code	Role expressed as a code.
+PartyRole6Choice	_Ny0LtY6OEemzmeK8_tPygg	Proprietary	Role expressed as a proprietary code.
+PartyIdentification205Choice	_osYgEo6XEemzmeK8_tPygg	LegalPerson	Legal entity.
+PartyIdentification205Choice	_osYgE46XEemzmeK8_tPygg	NaturalPerson	Private person.

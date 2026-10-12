@@ -1,0 +1,75 @@
+{
+  "identifier": "seev.022.001.01",
+  "name": "AgentCAMovementStatusAdviceV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.022.001.01",
+  "bodyTag": "AgtCAMvmntStsAdvc",
+  "out": "seev022",
+  "isoId": "_TQurWdEwEd-BzquC8wXy7w_-1045499600",
+  "definition": "Scope|This message is sent by a CSD to an issuer (or its agent) to report the status, or a change in status, of|- a global distribution status advice released by an issuer (or its agent);|- a movement instruction released by an issuer (or its agent);|- a movement cancellation request sent by the issuer (or its agent); and|- the non-settlement of the movements at the CSD.|Usage|This message is used to report the status of:|- the movements resulting from a movement instruction message, in which case, the Agent Corporate Action Movement Instruction Identification must be present;|- the movements resulting from a global distribution status advice message (with the status, authorised), in which case, the Agent Corporate Action Global Distribution Status Advice Identification must be present;|- the movement cancellation request, in which case, the Agent Corporate Action Movement Cancellation Request Identification must be present; and|- the movements resulting from an election status advice (if the status of the election advice is rejected or if the status of the election cancellation request or amendment request is accepted) in case there is a settlement problem. The Election Status Advice Identification must be present.|In the case of a failed settlement, the message contains details of the movement, such as account details, securities or cash information and the reason of the failure.|This message should not be used to provide the confirmation of the settlement; the Agent Corporate Action Movement Confirmation message should be used instead.",
+  "blocks": [
+    {
+      "name": "Identification",
+      "isoId": "_TQurWtEwEd-BzquC8wXy7w_-1742571317",
+      "xmlTag": "Id",
+      "type": "DocumentIdentification8",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AgentCAElectionStatusAdviceIdentification",
+      "isoId": "_TQurW9EwEd-BzquC8wXy7w_-1429169217",
+      "xmlTag": "AgtCAElctnStsAdvcId",
+      "type": "DocumentIdentification8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AgentCAGlobalDistributionStatusAdviceIdentification",
+      "isoId": "_TQurXNEwEd-BzquC8wXy7w_-1486425039",
+      "xmlTag": "AgtCAGblDstrbtnStsAdvcId",
+      "type": "DocumentIdentification8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AgentCAMovementInstructionIdentification",
+      "isoId": "_TQ4cUNEwEd-BzquC8wXy7w_-1745342942",
+      "xmlTag": "AgtCAMvmntInstrId",
+      "type": "DocumentIdentification8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AgentCAMovementCancellationRequestIdentification",
+      "isoId": "_TQ4cUdEwEd-BzquC8wXy7w_-1588344197",
+      "xmlTag": "AgtCAMvmntCxlReqId",
+      "type": "DocumentIdentification8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionGeneralInformation",
+      "isoId": "_TQ4cUtEwEd-BzquC8wXy7w_529102850",
+      "xmlTag": "CorpActnGnlInf",
+      "type": "CorporateActionInformation1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "MovementStatusDetails",
+      "isoId": "_TQ4cU9EwEd-BzquC8wXy7w_-2031490064",
+      "xmlTag": "MvmntStsDtls",
+      "type": "CorporateActionMovementStatus1Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "MovementCancellationStatusDetails",
+      "isoId": "_TQ4cVNEwEd-BzquC8wXy7w_1041846719",
+      "xmlTag": "MvmntCxlStsDtls",
+      "type": "CorporateMovementStatus2",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

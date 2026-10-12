@@ -1,0 +1,5 @@
+choice	memberId	memberName	text
+FinancialInstrumentQuantity46Choice	_DcYV6TT5Ee2j2eQlcOSMKg	Unit	Quantity expressed as a number, for example, a number of shares.
+FinancialInstrumentQuantity46Choice	_DcYV6zT5Ee2j2eQlcOSMKg	FaceAmount	Quantity expressed as an amount representing the face amount, that is, the principal, of a debt instrument.
+FinancialInstrumentQuantity46Choice	_DcYV6jT5Ee2j2eQlcOSMKg	DigitalTokenUnit	Quantity of digital tokens expressed as a number, for example, a number of blockchain tokens.
+FinancialInstrumentQuantity46Choice	_P3hA4TT5Ee2j2eQlcOSMKg	Code	Quantity expressed as a code.

@@ -1,0 +1,43 @@
+{
+  "identifier": "seev.042.001.14",
+  "name": "CorporateActionInstructionStatementReportV14",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.042.001.14",
+  "bodyTag": "CorpActnInstrStmtRpt",
+  "out": "seev042",
+  "isoId": "_47-Ksa8vEfCx2aBifPEdRg",
+  "definition": "Scope|The CorporateActionInstructionStatementReport message is sent by an account servicer to an account owner or its designated agent to report balances at the safekeeping account level for one or more corporate action events or at the corporate action event level for one or more safekeeping accounts.|Usage|The message may also be used to:|- re-send a message previously sent (the sub-function of the message is Duplicate),|- provide a third party with a copy of a message for information (the sub-function of the message is Copy),|- re-send to a third party a copy of a message for information (the sub-function of the message is Copy Duplicate), using the relevant elements in the business application header (BAH).",
+  "blocks": [
+    {
+      "name": "Pagination",
+      "isoId": "_47-Kva8vEfCx2aBifPEdRg",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "StatementGeneralDetails",
+      "isoId": "_47-Kv68vEfCx2aBifPEdRg",
+      "xmlTag": "StmtGnlDtls",
+      "type": "Statement72",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountAndStatementDetails",
+      "isoId": "_47-Kwa8vEfCx2aBifPEdRg",
+      "xmlTag": "AcctAndStmtDtls",
+      "type": "AccountIdentification77",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_47-Kw68vEfCx2aBifPEdRg",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

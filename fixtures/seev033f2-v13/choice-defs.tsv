@@ -1,0 +1,62 @@
+choice	memberId	memberName	text
+CorporateActionEventReference4Choice	_chUcW5KQEeWHWpTQn1FFVg	LinkedOfficialCorporateActionEventIdentification	Official and unique reference assigned by the official central body/ entity within each market at the beginning of a corporate action event.
+CorporateActionEventReference4Choice	_chUcY5KQEeWHWpTQn1FFVg	LinkedCorporateActionIdentification	Reference assigned by the account servicer to unambiguously identify a related corporate action event.
+CorporateActionEventType119Choice	_kV146Zt3Ee-wQIOX0djF2w	Code	Event types expressed as a code.
+CorporateActionEventType119Choice	_kV148Zt3Ee-wQIOX0djF2w	Proprietary	Event types expressed as a proprietary code.
+SafekeepingPlaceFormat48Choice	_kV2fT5t3Ee-wQIOX0djF2w	Identification	Place of safekeeping expressed as a code and a narrative description.
+SafekeepingPlaceFormat48Choice	_kV2fV5t3Ee-wQIOX0djF2w	Country	Place of safekeeping expressed with a country code.
+SafekeepingPlaceFormat48Choice	_kV2fX5t3Ee-wQIOX0djF2w	DigitalLedgerIdentification	Place of settlement expressed with a Digital Ledger Identifier. It identifies a digital ledger or distributed ledger system (for example, blockchain or similar platforms).
+SafekeepingPlaceFormat48Choice	_kV2fYZt3Ee-wQIOX0djF2w	TypeAndIdentification	Place of safekeeping expressed with a type and identification.
+SafekeepingPlaceFormat48Choice	_kV2faZt3Ee-wQIOX0djF2w	Proprietary	Place of safekeeping expressed with a propriety identification scheme.
+Quantity80Choice	_pf0Yuzi7Eeydid5dcNPKvg	QuantityChoice	Choice between different quantity of security formats.
+Quantity80Choice	_pf0YvTi7Eeydid5dcNPKvg	ProprietaryQuantity	Proprietary quantity of security format.
+Quantity57Choice	_pf0Ywzi7Eeydid5dcNPKvg	OriginalAndCurrentFaceAmount	Signed face amount and amortised value of security.
+Quantity57Choice	_pf0YxTi7Eeydid5dcNPKvg	SignedQuantity	Signed quantity of security.
+BalanceFormat14Choice	_piui4Ti7Eeydid5dcNPKvg	Balance	Provides information about balance related to a corporate action.
+BalanceFormat14Choice	_piui6Ti7Eeydid5dcNPKvg	EligibleBalance	Provide eligible balance information in different formats.
+BalanceFormat14Choice	_piui8Ti7Eeydid5dcNPKvg	NotEligibleBalance	Provide not eligible balance information in different formats.
+Quantity53Choice	_peY01zi7Eeydid5dcNPKvg	Quantity	Quantity of security.
+Quantity53Choice	_peY02Ti7Eeydid5dcNPKvg	ProprietaryQuantity	Proprietary quantity of security format.
+PartyIdentification259Choice	_g5Bb4aDcEe-CRv8HNM1RKw	AnyBIC	Code allocated to a financial or non-financial institution by the ISO 9362 Registration Authority, as described in ISO 9362 "Banking - Banking telecommunication messages - Business identifier code (BIC)".
+PartyIdentification259Choice	_g5Bb46DcEe-CRv8HNM1RKw	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to a financial institution using a proprietary identification scheme.
+PartyIdentification259Choice	_g5Bb5aDcEe-CRv8HNM1RKw	NameAndAddress	Name and address of a party.
+PartyIdentification259Choice	_g5Bb56DcEe-CRv8HNM1RKw	IndividualOwnerIdentification	Individual local country specific identification of the owner agreed between the account servicer and account owner.
+IdentificationType46Choice	_hGR0waDcEe-CRv8HNM1RKw	Code	Type of identification is defined using a code.
+IdentificationType46Choice	_hGR0w6DcEe-CRv8HNM1RKw	Proprietary	Type of identification is defined using a data source scheme.
+BeneficiaryCertificationType11Choice	_chdlnZKQEeWHWpTQn1FFVg	Code	Standard code to specify the type of certification required.
+BeneficiaryCertificationType11Choice	_chdlpZKQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the type of certification required.
+RateAndAmountFormat63Choice	_kV6JhZt3Ee-wQIOX0djF2w	Rate	Value expressed as a rate.
+RateAndAmountFormat63Choice	_kV6JjZt3Ee-wQIOX0djF2w	NotSpecifiedRate	Value of the rate not specified.
+RateAndAmountFormat63Choice	_kV6JlZt3Ee-wQIOX0djF2w	Amount	Value is expressed as a currency and amount.
+OptionNumber1Choice	_Q1O84tp-Ed-ak6NoX_4Aeg_2144641695	Number	Number identifying the available corporate action options.
+OptionNumber1Choice	_Q1O849p-Ed-ak6NoX_4Aeg_474199627	Code	Code identifying special corporate action option numbers.
+CorporateActionOption43Choice	_eTv3_x9QEeuFz_FaCzCLgQ	Code	Specifies the corporate action options available to the account owner.
+CorporateActionOption43Choice	_eTv4Bx9QEeuFz_FaCzCLgQ	Proprietary	Proprietary identification of the type of corporate action option.
+OptionFeaturesFormat27Choice	_8hN0s_yYEeiKOe8GCUL1Lg	Code	Standard code to specify the features that may apply to a corporate action option.
+OptionFeaturesFormat27Choice	_8hN0tfyYEeiKOe8GCUL1Lg	Proprietary	Proprietary identification of the features that may apply to a corporate action option.
+FractionDispositionType29Choice	_chdmYZKQEeWHWpTQn1FFVg	Code	Specifies how fractions resulting from derived securities will be processed or how prorated decisions will be rounding, if provided with a pro ration rate.
+FractionDispositionType29Choice	_chdmY5KQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the type of fraction disposition.
+CorporateActionChangeTypeFormat7Choice	_cheMlZKQEeWHWpTQn1FFVg	Code	Standard code to specify the type of changes.
+CorporateActionChangeTypeFormat7Choice	_cheMnZKQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the type of changes.
+SecuritiesQuantityOrAmount7Choice	_pizbYTi7Eeydid5dcNPKvg	SecuritiesQuantity	Provides information about securities quantity linked to a corporate action option.
+SecuritiesQuantityOrAmount7Choice	_pizbYzi7Eeydid5dcNPKvg	InstructedAmount	Cash amount to be instructed.
+Quantity55Choice	_pfIcZTi7Eeydid5dcNPKvg	Code	Standard code to specify quantity of a financial instrument.
+Quantity55Choice	_pfJCxzi7Eeydid5dcNPKvg	OriginalAndCurrentFaceAmount	Face amount and amortised value of security.
+Quantity55Choice	_pfJCyTi7Eeydid5dcNPKvg	Quantity	Quantity of financial instrument in units, original face amount or current face amount.
+RateAndAmountFormat64Choice	_kV6wr5t3Ee-wQIOX0djF2w	Rate	Value is expressed as a rate.
+RateAndAmountFormat64Choice	_kV6wt5t3Ee-wQIOX0djF2w	Amount	Value is expressed as a currency and amount.
+RateAndAmountFormat65Choice	_kV6wxZt3Ee-wQIOX0djF2w	Rate	Value expressed as a rate.
+RateAndAmountFormat65Choice	_kV6wzZt3Ee-wQIOX0djF2w	Amount	Value is expressed as a currency and amount.
+RateAndAmountFormat65Choice	_kV6w1Zt3Ee-wQIOX0djF2w	RateTypeAndRate	Value is expressed as a rate type and a percentage rate.
+RateType46Choice	_cj-t_5KQEeWHWpTQn1FFVg	Code	Standard code to specify the type of withholding tax rate.
+RateType46Choice	_cj-uAZKQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the type of withholding tax rate.
+IndicativeOrMarketPrice15Choice	_kV6xU5t3Ee-wQIOX0djF2w	IndicativePrice	Estimated price, for example, for valuation purposes.
+IndicativeOrMarketPrice15Choice	_kV6xW5t3Ee-wQIOX0djF2w	MarketPrice	Last reported/known price of a financial instrument in a market.
+PriceFormat83Choice	_kV6xZ5t3Ee-wQIOX0djF2w	PercentagePrice	Price expressed as a percentage.
+PriceFormat83Choice	_kV6xb5t3Ee-wQIOX0djF2w	AmountPrice	Price expressed as a currency and amount.
+PriceFormat84Choice	_kV6x8Zt3Ee-wQIOX0djF2w	PercentagePrice	Price expressed as a percentage.
+PriceFormat84Choice	_kV6x-Zt3Ee-wQIOX0djF2w	AmountPrice	Price expressed as a currency and amount.
+PriceFormat84Choice	_kV6yAZt3Ee-wQIOX0djF2w	NotSpecifiedPrice	Value of the price not specified.
+PriceFormat84Choice	_kV6yCZt3Ee-wQIOX0djF2w	AmountPricePerFinancialInstrumentQuantity	Price expressed as a ratio: amount price per financial instrument quantity.
+PriceFormat84Choice	_kV6yEZt3Ee-wQIOX0djF2w	AmountPricePerAmount	Price expressed as a ratio: amount price per amount.
+PriceFormat84Choice	_kV6yGZt3Ee-wQIOX0djF2w	IndexPoints	Price expressed in index points.

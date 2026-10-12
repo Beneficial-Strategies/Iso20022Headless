@@ -1,0 +1,25 @@
+codeSet	code	enumName	isoId	text
+FailedSettlementReason1Code	CANE	CreditAccountNotEligible	_amyWgNp-Ed-ak6NoX_4Aeg_-641474163	Credit account is not eligible.
+FailedSettlementReason1Code	CADI	CreditAccountDisabled	_amyWgdp-Ed-ak6NoX_4Aeg_-641474133	Credit account is disabled.
+FailedSettlementReason1Code	DANE	DebitAccountNotEligible	_amyWgtp-Ed-ak6NoX_4Aeg_-641474102	Debit account is not eligible.
+FailedSettlementReason1Code	AADI	DebitAccountDisabled	_amyWg9p-Ed-ak6NoX_4Aeg_-641474101	Debit account is disabled.
+FailedSettlementReason1Code	INSE	InsufficientSecurities	_amyWhNp-Ed-ak6NoX_4Aeg_-641474072	Insufficient securities on the account to settle.
+FailedSettlementReason1Code	INDI	IncompleteDistribution	_amyWhdp-Ed-ak6NoX_4Aeg_-641473762	The distribution is incomplete.
+FailedSettlementReason1Code	INCA	InsufficientCash	_amyWhtp-Ed-ak6NoX_4Aeg_-641473739	Insufficient cash on the account to settle.
+RejectionReason13Code	FAIL	FailedValidation	_Zg5FcNp-Ed-ak6NoX_4Aeg_-1186004164	The validation of the advice/instruction/request failed.
+RejectionReason13Code	SAID	SameIdentification	_Zg5Fcdp-Ed-ak6NoX_4Aeg_-1186004134	Several message with the same identification.
+RejectionReason13Code	INID	InvalidIdentification	_Zg5Fctp-Ed-ak6NoX_4Aeg_-1186004103	Instruction contains an invalid message identification, identification is unknown.
+RejectionReason13Code	REFI	InvalidCAIdentification	_Zg5Fc9p-Ed-ak6NoX_4Aeg_-1186004102	Invalid corporate action identification supplied.
+RejectionReason13Code	MICA	MismatchedCAIdentification	_Zg5FdNp-Ed-ak6NoX_4Aeg_-1186004072	Issuer CA Identification does not correspond with the Corporate Action Identification supplied.
+RejectionReason14Code	FAIL	FailedValidation	_Zg5Fdtp-Ed-ak6NoX_4Aeg_-1511085978	The validation of the advice/instruction/request failed.
+RejectionReason14Code	LATT	Late	_Zg5Fd9p-Ed-ak6NoX_4Aeg_-1511085947	Instruction/Request arrives too late.
+RejectionReason14Code	INET	InvalidEventType	_Zg5FeNp-Ed-ak6NoX_4Aeg_-1511085917	CA Event Type does not correspond with the relating Corporate Action.
+RejectionReason14Code	INUS	InvalidUnderlyingSecurity	_Zg5Fedp-Ed-ak6NoX_4Aeg_-1511085608	Underlying Security Identification does not correspond with the Corporate Action Reference supplied.
+RejectionReason14Code	INPT	InvalidEventProcessingType	_ZhC2cNp-Ed-ak6NoX_4Aeg_-1511085577	Event Processing Type does not correspond with the relating Corporate Action.
+RejectionReason14Code	INMV	InvalidMandatoryVoluntaryEventType	_ZhC2cdp-Ed-ak6NoX_4Aeg_-1511085546	Mandatory/Voluntary Event Type does not correspond with the relating Corporate Action.
+RejectionReason14Code	INDE	InvalidCorporateActionInformation	_ZhC2ctp-Ed-ak6NoX_4Aeg_-1511085524	Details specified in the Corporate Action General Information block are inconsistent with those that were specified in the relating original message.
+RejectionReason14Code	AGIN	InvalidAgent	_ZhC2c9p-Ed-ak6NoX_4Aeg_-1511085493	Invalid agent identification supplied.
+RejectionReason14Code	INMO	InvalidMovementInformation	_ZhC2dNp-Ed-ak6NoX_4Aeg_-1511085462	Details specified in the MOVEMENT GENERAL INFORMATION block are inconsistent with those that were specified in the relating original message.
+RejectionReason14Code	SAID	SameIdentification	_ZhC2ddp-Ed-ak6NoX_4Aeg_-1511085432	Several message with the same identification.
+RejectionReason14Code	INID	InvalidIdentification	_ZhMncNp-Ed-ak6NoX_4Aeg_-1511085370	Instruction contains an invalid message identification, identification is unknown.
+RejectionReason14Code	MOSE	MovementAlreadySettled	_ZhMncdp-Ed-ak6NoX_4Aeg_-1511085340	One or more of the underlying movements have already settled.

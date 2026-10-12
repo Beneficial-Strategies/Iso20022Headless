@@ -1,0 +1,51 @@
+{
+  "identifier": "seev.005.001.10",
+  "name": "MeetingInstructionCancellationRequestV10",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.005.001.10",
+  "bodyTag": "MtgInstrCxlReq",
+  "out": "seev005",
+  "isoId": "_UbvI2X_5Ee-h086v0qPiyQ",
+  "definition": "Scope|The MeetingInstructionCancellationRequest message is sent by the same party that sent the|MeetingInstruction message. It is sent to request the cancellation of one, some, or all of the instructions included in the original MeetingInstruction message.|Usage|This message must be answered by a MeetingInstructionStatus message. |This message definition is intended for use with the Business Application Header (BAH).",
+  "blocks": [
+    {
+      "name": "MeetingInstructionIdentification",
+      "isoId": "_UbvI43_5Ee-h086v0qPiyQ",
+      "xmlTag": "MtgInstrId",
+      "type": "Max35Text",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "MeetingReference",
+      "isoId": "_UbvI5X_5Ee-h086v0qPiyQ",
+      "xmlTag": "MtgRef",
+      "type": "MeetingReference10",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "FinancialInstrumentIdentification",
+      "isoId": "_UbvI53_5Ee-h086v0qPiyQ",
+      "xmlTag": "FinInstrmId",
+      "type": "SecurityIdentification19",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ToBeCancelledInstruction",
+      "isoId": "_UbvI6X_5Ee-h086v0qPiyQ",
+      "xmlTag": "ToBeCancInstr",
+      "type": "CancelInstruction5",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_UbvI63_5Ee-h086v0qPiyQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

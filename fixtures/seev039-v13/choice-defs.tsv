@@ -1,0 +1,7 @@
+choice	memberId	memberName	text
+AccountIdentification73Choice	_6bbYwY-9Ee-COKgew96POA	ForAllAccounts	All safekeeping accounts that own underlying financial instrument.
+AccountIdentification73Choice	_6bbYyY-9Ee-COKgew96POA	AccountsList	Selected safekeeping accounts list to which the corporate action event applies.
+CorporateActionEventStageFormat14Choice	_ydC6I0GKEeWqy4niLuXETA	Code	Standard code to specify the stage of the corporate action event.
+CorporateActionEventStageFormat14Choice	_ydC6K0GKEeWqy4niLuXETA	Proprietary	Proprietary identification of the stage of the corporate action event.
+AdditionalBusinessProcessFormat15Choice	_0qhVAZcEEee8S7xwGG7Veg	Code	Standard code to specify the additional business process linked to a corporate action event.
+AdditionalBusinessProcessFormat15Choice	_0qhVCZcEEee8S7xwGG7Veg	Proprietary	Proprietary identification of the additional business process linked to a corporate action event.

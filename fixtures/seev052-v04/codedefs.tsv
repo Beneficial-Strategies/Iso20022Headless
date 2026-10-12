@@ -1,0 +1,39 @@
+codeSet	code	enumName	isoId	text
+RejectionReason59Code	ADEA	AccountServicerDeadlineMissed	_MsI1YRHqEeuE0Pnt-OcNOA	Transaction/instruction received after the account servicer's specified deadline.
+RejectionReason59Code	OPTY	InvalidOptionType	_MsI1ZxHqEeuE0Pnt-OcNOA	Invalid option type.
+RejectionReason59Code	ULNK	InvalidReference	_MsI1aRHqEeuE0Pnt-OcNOA	Linked reference is unknown.
+RejectionReason59Code	DSEC	InvalidSecurity	_MsI1axHqEeuE0Pnt-OcNOA	Unrecognised or invalid financial instrument identification.
+RejectionReason59Code	LATE	MarketDeadlineMissed	_MsI1bxHqEeuE0Pnt-OcNOA	Received after market deadline.
+RejectionReason59Code	NMTY	Mismatch	_MsI1cRHqEeuE0Pnt-OcNOA	Mismatch between option number and option type.
+RejectionReason59Code	OPNM	OptionNumberRejection	_MsI1eRHqEeuE0Pnt-OcNOA	Unrecognised option number.
+RejectionReason59Code	OTHR	Other	_MsI1exHqEeuE0Pnt-OcNOA	Other. See Narrative.
+RejectionReason59Code	DQUA	QuantityRejection	_MsI1fRHqEeuE0Pnt-OcNOA	Unrecognised or invalid instructed quantity.
+RejectionReason59Code	SAFE	SafekeepingAccountRejection	_MsI1gRHqEeuE0Pnt-OcNOA	Unrecognised or invalid message sender's safekeeping account.
+RejectionReason59Code	EVNM	UnrecognisedIdentification	_MsI1gxHqEeuE0Pnt-OcNOA	Unrecognised event number.
+RejectionReason59Code	DQCS	AmountRejection	_MsI1hRHqEeuE0Pnt-OcNOA	Unrecognised or invalid instructed cash amount.
+RejectionReason59Code	DQCC	CurrencyRejection	_MsI1hxHqEeuE0Pnt-OcNOA	Invalid instructed currency.
+PendingReason39Code	ADEA	AccountServicerDeadlineMissed	bf74c5b0-e5ab-4bb3-a465-815eb082a9db	Instruction was received after the account servicer's deadline. It will be managed as per the bilateral service agreement between the account servicer and account owner.
+PendingReason39Code	CYCL	AwaitingNextSettlementCycle	0343659f-7a67-4bf1-ace2-014febd6f2fa	Your instruction is confirmed in the local market or is ready for settlement, awaiting next settlement cycle.
+PendingReason39Code	FUTU	AwaitingSettlementDate	1d6fda34-dc82-408b-981d-2f88af78b8d2	Awaiting settlement date. No settlement problems to be reported.
+PendingReason39Code	BOTH	BothInstructionsOnHold	791d32d3-c70c-4dc3-aa0b-4fe6fa455ebd	Counterparty's instruction and your instruction are on hold/frozen/ in a preadvice mode.
+PendingReason39Code	PRCY	CounterpartyInstructionOnHold	950fb58a-9f9d-4a5f-92ad-8bdaf0424baf	Counterparty's instruction is a preadvice, that is, for matching only.
+PendingReason39Code	CMON	CounterpartyInsufficientMoney	bc322686-3b2b-4ffe-9957-b8e487ffa6ef	Insufficient money in counterparty's account.
+PendingReason39Code	CLAC	CounterpartyInsufficientSecurities	4d7bf533-714b-4506-9bcf-03fbf04c0bea	Insufficient deliverable financial instruments in counterparty's account or counterparty does not hold financial instruments.
+PendingReason39Code	MONY	InsufficientMoney	826761a0-1a42-4ed3-b841-0669904bd76d	Insufficient money in your account.
+PendingReason39Code	LACK	LackOfSecurities	5c6304fc-5359-4778-a071-a33a5dc32341	Insufficient financial instruments in your account.
+PendingReason39Code	LATE	MarketDeadlineMissed	ca3e1ca7-003f-4e10-86f6-7d4b070cfb9f	Instruction was received after market deadline.
+PendingReason39Code	OTHR	Other	e25e2cf5-f842-47f5-b390-48c6b59a12af	Other. See Narrative.
+PendingReason39Code	LINK	PendingLinkedInstruction	98fcfd09-f90f-42ea-86a6-a319ecf1d24f	Your instruction is pending settlement because the instruction linked to it is pending.
+PendingReason39Code	PREA	YourInstructionOnHold	5cb5b25a-a729-41ee-bdcc-60fb1faac685	Your instruction is a preadvice, that is, for matching only.
+UnmatchedReason16Code	NCRR	CurrencySettlementAmount	_ETr-oRUJEeuZw7VHHgrHLg	Settlement amount currency does not match.
+UnmatchedReason16Code	DSEC	FinancialInstrument	_F67pQRUJEeuZw7VHHgrHLg	Financial instrument identification does not match, for example, ISIN, financial instrument attributes differs.
+UnmatchedReason16Code	DQUA	FinancialInstrumentQuantity	_GVkW0RUJEeuZw7VHHgrHLg	Quantity of financial instruments does not match.
+UnmatchedReason16Code	CMIS	NoMatch	_HMdikRUJEeuZw7VHHgrHLg	A matching instruction from your counterparty could not be found.
+UnmatchedReason16Code	DEPT	ReceivingDeliveringDepository	_Kpr3YRUJEeuZw7VHHgrHLg	Depository does not match.
+UnmatchedReason16Code	ICAG	ReceivingDeliveringParty1	_MYOc0RUJEeuZw7VHHgrHLg	Participant of delivering or receiving depository does not match.
+UnmatchedReason16Code	ICUS	ReceivingDeliveringParty2	_Mdbs8RUJEeuZw7VHHgrHLg	Client of delivering or receiving party 1 does not match.
+UnmatchedReason16Code	IEXE	ReceivingDeliveringParty3	_NCoEsRUJEeuZw7VHHgrHLg	Client of delivering or receiving party 2 does not match.
+UnmatchedReason16Code	DMON	SettlementAmount	_OjL4gRUJEeuZw7VHHgrHLg	Settlement amount does not match.
+UnmatchedReason16Code	DDAT	SettlementDate	_OnfwwRUJEeuZw7VHHgrHLg	Settlement date/time does not match.
+UnmatchedReason16Code	DTRD	TradeDate	_QPpaURUJEeuZw7VHHgrHLg	Trade date does not match.
+UnmatchedReason16Code	DELN	TransactionDirection	_Q2LO0RUJEeuZw7VHHgrHLg	Direction of the trade does not match. Counterparty expects a delivery from you, not a receipt or vice versa.

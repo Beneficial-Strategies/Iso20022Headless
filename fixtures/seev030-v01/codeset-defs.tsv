@@ -1,0 +1,5 @@
+codeSet	isoId	text
+ProcessedStatus6Code	_aKxI4tp-Ed-ak6NoX_4Aeg_983077435	Specifies the processing status of a deactivation instruction.
+RejectionReason12Code	_ZgmKgdp-Ed-ak6NoX_4Aeg_1795040901	Specifies the reason of a rejection of a deactivation instruction.
+ProcessedStatus2Code	_aKeN9dp-Ed-ak6NoX_4Aeg_966452193	Specifies the processing status of a cancellation request.
+RejectionReason7Code	_Zl0BuNp-Ed-ak6NoX_4Aeg_1693452570	Specifies the reason of a rejection cancellation request.

@@ -1,0 +1,10 @@
+codeSet	isoId	text
+CorporateActionEventType37Code	_G9brwYCfEe-3UrLQHGsjgQ	Specifies the corporate action event type.
+AdditionalBusinessProcess12Code	_9CxS0IYXEe-haozGYc1X7Q	Specifies the additional business process linked to a corporate action event such as an automatic market claim.
+IntermediateSecurityDistributionType5Code	_-q_4AQCcEeGiE5oKUBl5wQ	Specifies the type of intermediate security distribution.
+CorporateActionOption12Code	_mc56nOasEemtTOaHuc_63w	Specifies the type of corporate action options.
+OptionFeatures14Code	_JKoQoWKNEe6iKbrXdnOlfA	Specifies the feature of an option.
+FractionDispositionType11Code	_dafmQGSCEeKFfdK0gKYFLQ	Indicates that fractional value should be retained; no rounding.
+NewSecuritiesIssuanceType6Code	_PLMMMWKeEeWR9ZSfjmHwUA	Specifies the type of securities proceeds; whether they are defeased or non-defeased.
+IssuerTaxability2Code	_0EPMQIlyEeavwKddCbm3hg	Specifies whether the corporate action proceeds are taxable at issuer level.
+Payment1Code	_Zy7Qptp-Ed-ak6NoX_4Aeg_1133077707	Specifies the type of payment.

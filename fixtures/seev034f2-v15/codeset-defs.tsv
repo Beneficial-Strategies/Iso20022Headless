@@ -1,0 +1,4 @@
+codeSet	isoId	text
+AcknowledgementReason7Code	__pV98Cp_EeO3oOoGGWHH4A	Specifies additional information about the processed instruction.
+RejectionReason85Code	_NByw4WIIEe6Vre0WuwPTOg	Specifies the reason why the instruction request has a rejected status.
+ProtectInstructionStatus3Code	_fzjwULpTEeilsanBGAzy4A	Specifies the status of the protect transaction.

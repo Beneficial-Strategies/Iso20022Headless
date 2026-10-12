@@ -1,0 +1,16 @@
+codeSet	isoId	text
+NotificationType3Code	_u-L_cK7PEemG7MmivSuE5g	Specifies a type of notification.
+AttendanceAdmissionConditions2Code	_Vuhm8PNhEeqRfth943bvEA	Specifies the conditions for physical admittance to a general meeting.
+AdditionalRight1Code	_bmjxdtp-Ed-ak6NoX_4Aeg_1174072380	Define specific rights that the shareholder has (for example, the right to ask questions, the right to add items to the agenda or table draft resolutions).
+ProxyNotAllowed1Code	_hlcnIMjCEem7mOT-LZ2mYQ	Indicates that the assignment of a proxy is not allowed for the meeting.
+DateType10Code	_sW5NwDUIEe2tRf29bleifQ	Date is specified as a fixed code value.
+MeetingDateStatus2Code	_LBwHMK4oEemG7MmivSuE5g	Specifies a status for a meeting date.
+PlaceType1Code	_aHWBcdp-Ed-ak6NoX_4Aeg_-1566893898	Type of date.
+AgentRole1Code	_bnmTRtp-Ed-ak6NoX_4Aeg_1217480497	Specifies the role of the Issuer agent.
+ResolutionType2Code	_7A9vUFuFEeSmO6RkXg92Lg	Specifies the type of resolution.
+VoteType1Code	_yDgk8K37EemG7MmivSuE5g	Specifies the impact of a vote on an agenda resolution in general meetings.
+ResolutionStatus1Code	_ZU0_Zdp-Ed-ak6NoX_4Aeg_188066871	Specifies whether a resolution in an agenda is still active or has been deleted.
+VoteInstruction5Code	_6Q1QEK4ZEemG7MmivSuE5g	Specifies a type of voting instruction that can be part of a recommendation to vote.
+ThresholdBasis1Code	_IRxt4BuOEeyhRdHRjakS2w	Nature of the quantity used as a basis to set a threshold for voting on resolutions at general meetings.
+VoteChannel1Code	_dQw9IDT9Ee2tRf29bleifQ	Specifies the network channel through which the vote should be sent.
+PowerOfAttorneyLegalisation1Code	_aHo8Y9p-Ed-ak6NoX_4Aeg_-563663528	Indicates the legal constraint on the Power of Attorney.

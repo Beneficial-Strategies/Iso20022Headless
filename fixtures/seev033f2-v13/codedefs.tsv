@@ -1,0 +1,49 @@
+codeSet	code	enumName	isoId	text
+BeneficiaryCertificationType5Code	ACCI	AccreditedInvestor	_zJKBtQE6EeG43uL-ROUO3A	The holder of the security has to irrevocably certify that it is an Accredited Investor as defined in US Securities and Exchange Commission Regulation D.
+BeneficiaryCertificationType5Code	NCOM	NonCompany	_zJKBuQE6EeG43uL-ROUO3A	The holder of the security has to certify he is an Non-Company related person.
+BeneficiaryCertificationType5Code	QIBB	QIBCertification	_zJKBvQE6EeG43uL-ROUO3A	The holder of the security has to irrevocably certify that it is a Qualified Institutional Buyer as defined in US Securities and Exchange Commission Rule 144A.
+OptionNumber1Code	UNSO	Unsolicited	_aP1PGdp-Ed-ak6NoX_4Aeg_6858494	The corporate action instruction is unsolicited, that is, the instruction has not been preceded by a corporate action notification.
+CorporateActionOption16Code	ABST	Abstain	_zLiK4e34Eeqc-LCjwLsUVg	Vote expressed as abstain. In this case, the issuing company will add the number of shares to the quorum of the meeting.|If the voting right is not executed, it will not be added to the quorum. In this case, code NOAC should be used.
+CorporateActionOption16Code	BSPL	BonusSharePlan	_zLiK4-34Eeqc-LCjwLsUVg	Receive equities from the share premium reserve of the company and considered as a capital distribution rather than a disbursement of income with different tax implications (typically found in Australia).
+CorporateActionOption16Code	BUYA	BuyUp	_zLiK5e34Eeqc-LCjwLsUVg	Buy additional securities to round up position.
+CorporateActionOption16Code	CASE	CashAndSecurity	_zLiK5-34Eeqc-LCjwLsUVg	Option to choose between different security and cash options.
+CorporateActionOption16Code	CASH	Cash	_zLiK6e34Eeqc-LCjwLsUVg	Option to choose cash.
+CorporateActionOption16Code	CERT	Certification	_zLiK6-34Eeqc-LCjwLsUVg	Certification is provided.
+CorporateActionOption16Code	CEXC	ConsentAndExchange	_zLiK7e34Eeqc-LCjwLsUVg	Vote to consent to change the terms of the securities agreement and to exchange securities.
+CorporateActionOption16Code	CONN	ConsentDenied	_zLiK7-34Eeqc-LCjwLsUVg	Vote not to approve the event or proposal.
+CorporateActionOption16Code	CONY	ConsentGranted	_zLiK8e34Eeqc-LCjwLsUVg	Vote to approve the event or proposal.
+CorporateActionOption16Code	CTEN	ConsentAndTender	_zLiK8-34Eeqc-LCjwLsUVg	Vote to consent to change the terms of the securities agreement and to tender securities for cash.
+CorporateActionOption16Code	EXER	Exercise	_zLiK9e34Eeqc-LCjwLsUVg	Exercise intermediate securities or warrants.
+CorporateActionOption16Code	LAPS	Lapse	_zLiK9-34Eeqc-LCjwLsUVg	Allow event or entitled security to expire.
+CorporateActionOption16Code	MKDW	MarkDown	_zLiK-e34Eeqc-LCjwLsUVg	Mark down the global certificate as a result of a corporate action (instruction from International Central Securities Depositories (ICSDs) to common depositories who are holding the global certificate on behalf of the International Central Securities Depositories (ICSDs)).
+CorporateActionOption16Code	MKUP	MarkUp	_zLiK--34Eeqc-LCjwLsUVg	Mark up the global certificate as a result of a corporate action (instruction from International Central Securities Depositories (ICSDs) to common depositories who are holding the global certificate on behalf of the International Central Securities Depositories (ICSDs)).
+CorporateActionOption16Code	MPUT	Retain	_zLiK_e34Eeqc-LCjwLsUVg	Option that allows a holder to elect to retain their holding, for example, a putable bond.
+CorporateActionOption16Code	NOAC	NoAction	_zLiK_-34Eeqc-LCjwLsUVg	Option for the account owner not to take part in the event. This would include opt-out for class actions and lodging of dissenters' rights.
+CorporateActionOption16Code	NOQU	NonQualifiedInvestor	_zLiLAe34Eeqc-LCjwLsUVg	Account owner is a non-qualified investor.
+CorporateActionOption16Code	OFFR	ProposedRate	_zLiLA-34Eeqc-LCjwLsUVg	In a remarketing of variable notes, the margin that shareholders can propose in respect of the next interest period.
+CorporateActionOption16Code	OTHR	Other	_zLiLBe34Eeqc-LCjwLsUVg	Generic corporate action option to be used in case that no other specific code is appropriate.
+CorporateActionOption16Code	OVER	Oversubscribe	_zLiLB-34Eeqc-LCjwLsUVg	Subscribe to more equities than underlying securities position allows.
+CorporateActionOption16Code	QINV	QualifiedInvestor	_zLiLCe34Eeqc-LCjwLsUVg	Account owner is a qualified investor.
+CorporateActionOption16Code	SECU	Security	_zLiLC-34Eeqc-LCjwLsUVg	Distribution of securities to holders.
+CorporateActionOption16Code	SLLE	SellEntitlement	_zLiLDe34Eeqc-LCjwLsUVg	Sell the intermediate securities.
+CorporateActionOption16Code	TAXI	TaxInstruction	_zLiLD-34Eeqc-LCjwLsUVg	Tax instruction.
+CorporateActionOption16Code	PRUN	UnknownProceeds	_zLiLEe34Eeqc-LCjwLsUVg	Proceeds not known during election period. The option can result in cash and/or securities.
+CorporateActionOption16Code	BOBD	BeneficialOwnerBreakdownRequest	_1Jsgse34Eeqc-LCjwLsUVg	Breakdown of beneficial ownership required for withholding tax reclaim event.
+OptionFeatures12Code	OPLF	OddLotPreference	_m4sssbaSEeiN--kDwanlkA	Tender or exchange with the odd lot preference.
+FractionDispositionType10Code	BUYU	BuyUp	_XLY_sWSCEeKFfdK0gKYFLQ	Buy securities up to next whole number.
+FractionDispositionType10Code	CINL	CashInLieuOfFraction	_XVO4MWSCEeKFfdK0gKYFLQ	Fractional part of cash. Take cash in lieu of fractions.
+FractionDispositionType10Code	EXPI	Expire	_XtEwcWSCEeKFfdK0gKYFLQ	Let fractions expire worthless.
+FractionDispositionType10Code	DIST	IssueFraction	_YNHicWSCEeKFfdK0gKYFLQ	Take distribution of fractions in the form of securities.
+CorporateActionChangeType2Code	BERE	BearToRegistered	_bC8uFdp-Ed-ak6NoX_4Aeg_-1895645691	Change from bearer into registered form.
+CorporateActionChangeType2Code	CERT	Certificates	_bC8uFtp-Ed-ak6NoX_4Aeg_-1895645690	Change of all instruments into certificates.
+CorporateActionChangeType2Code	DEPH	DematerialisedToPhysical	_bC8uF9p-Ed-ak6NoX_4Aeg_-1895645689	Change from dematerialised into physical form.
+CorporateActionChangeType2Code	GPPH	GlobalPermanentToPhysical	_bC8uGNp-Ed-ak6NoX_4Aeg_-1895645674	Change from global permanent to physical form.
+CorporateActionChangeType2Code	GTGP	GlobalTemporaryToGlobalPermanent	_bC8uGdp-Ed-ak6NoX_4Aeg_-1895645673	Change from global temporary to global permanent form.
+CorporateActionChangeType2Code	GTPH	GlobalTemporaryToPhysical	_bDF4ANp-Ed-ak6NoX_4Aeg_-1895645656	Change from global temporary to physical form.
+CorporateActionChangeType2Code	NAME	Name	_bDF4Adp-Ed-ak6NoX_4Aeg_-1895645655	The issuing company changes its name. CA event shows the change from old name to new name and may involve surrendering physical shares with the old name to the registrar.
+CorporateActionChangeType2Code	PHDE	PhysicalToDematerialised	_bDF4Atp-Ed-ak6NoX_4Aeg_-1895645639	Change from physical into dematerialised form.
+CorporateActionChangeType2Code	REBE	RegisteredToBearer	_bDF4A9p-Ed-ak6NoX_4Aeg_-1895645621	Change from registered into bearer form.
+CorporateActionChangeType2Code	TERM	Terms	_bDF4BNp-Ed-ak6NoX_4Aeg_-1895645613	Change in the terms of the security.
+ProtectTransactionType2Code	PROT	ProtectTransaction	_KQ81YbpREeilsanBGAzy4A	Reorganisation is a protect transaction type.
+ProtectTransactionType2Code	COVP	CoverOnBehalfOfAnotherParticipantTransaction	_OAUqIrpREeilsanBGAzy4A	Reorganisation is a cover on behalf of another participant transaction type.
+ProtectTransactionType2Code	COVR	CoverProtectTransaction	_ZfkUobpREeilsanBGAzy4A	Reorganisation is a cover protect transaction type.

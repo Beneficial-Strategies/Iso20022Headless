@@ -1,0 +1,93 @@
+choice	memberId	memberName	text
+CorporateActionEventStage1FormatChoice	_RmHANdp-Ed-ak6NoX_4Aeg_1604374052	Code	Standard code to specify the stage of the CA event.
+CorporateActionEventStage1FormatChoice	_RmHANtp-Ed-ak6NoX_4Aeg_1604373991	Proprietary	Proprietary code to express the stage of the CA event.
+CorporateActionCalculationMethod1FormatChoice	_Rl9PNNp-Ed-ak6NoX_4Aeg_-550005822	Code	Standard code to specify the calculation method for drawings.
+CorporateActionCalculationMethod1FormatChoice	_Rl9PNdp-Ed-ak6NoX_4Aeg_-550005883	Proprietary	Proprietary code to express the calculation method for drawings.
+UnitOrFaceAmountOrCode1Choice	_SoH219p-Ed-ak6NoX_4Aeg_361302789	Unit	Quantity expressed as a number, eg, a number of shares.
+UnitOrFaceAmountOrCode1Choice	_SoH22Np-Ed-ak6NoX_4Aeg_361302819	FaceAmount	Quantity expressed as an amount representing the face amount, ie, the principal, of a debt instrument.
+UnitOrFaceAmountOrCode1Choice	_SoRAwNp-Ed-ak6NoX_4Aeg_361303128	Code	Quantity expressed as a code.
+CorporateActionChangeType1FormatChoice	_Rl9PN9p-Ed-ak6NoX_4Aeg_1068945859	Code	Standard code to specify the type of changes.
+CorporateActionChangeType1FormatChoice	_RmHAMNp-Ed-ak6NoX_4Aeg_1068945798	Proprietary	Proprietary code to express the type of changes.
+OfferType1FormatChoice	_Rm2nE9p-Ed-ak6NoX_4Aeg_-312003599	Code	Standard code to specify the conditions that apply to the offer.
+OfferType1FormatChoice	_Rm2nFNp-Ed-ak6NoX_4Aeg_-312003661	Proprietary	Proprietary code to express the conditions that apply to the offer.
+ElectionMovementType1FormatChoice	_RmjsINp-Ed-ak6NoX_4Aeg_2024835239	Code	Standard code to specify the effect on the holdings of electing a Corporate Action option.
+ElectionMovementType1FormatChoice	_RmjsIdp-Ed-ak6NoX_4Aeg_2024835178	Proprietary	Proprietary code to express the effect on the holdings of electing a Corporate Action option.
+LotteryType1FormatChoice	_Rms2Ftp-Ed-ak6NoX_4Aeg_-924254404	Code	Standard code to specify the lottery type.
+LotteryType1FormatChoice	_Rms2F9p-Ed-ak6NoX_4Aeg_-924254405	Proprietary	Proprietary code to express the lottery type.
+CorporateActionFrequencyType1FormatChoice	_RmZ7INp-Ed-ak6NoX_4Aeg_1510389883	Code	Standard code to specify the frequency of a CA event.
+CorporateActionFrequencyType1FormatChoice	_RmZ7Idp-Ed-ak6NoX_4Aeg_1510389852	Proprietary	Proprietary code to express the frequency of a CA event.
+IntermediateSecurityDistributionType1FormatChoice	_Rms2E9p-Ed-ak6NoX_4Aeg_1911197381	Code	Standard code to specify the type of intermediate security distribution.
+IntermediateSecurityDistributionType1FormatChoice	_Rms2FNp-Ed-ak6NoX_4Aeg_1911197103	Proprietary	Proprietary code to express the type of intermediate security distribution.
+PriceFormat3Choice	_Qa2uA9p-Ed-ak6NoX_4Aeg_-696146039	Amount	Price expressed as a currency and amount.
+PriceFormat3Choice	_Qa2uBNp-Ed-ak6NoX_4Aeg_-696145792	Rate	Price expressed as a rate, ie, percentage.
+AmountPriceType1FormatChoice	_RlqUQtp-Ed-ak6NoX_4Aeg_221154567	Code	Standard code to specify the amount price type.
+AmountPriceType1FormatChoice	_RlqUQ9p-Ed-ak6NoX_4Aeg_221154536	Proprietary	Proprietary code to express the amount price type.
+PriceRateType3FormatChoice	_RnAYFNp-Ed-ak6NoX_4Aeg_-1976498594	Code	Standard code to specify the type of price rate.
+PriceRateType3FormatChoice	_RnAYFdp-Ed-ak6NoX_4Aeg_-1977418657	Proprietary	Proprietary code to express the type of price rate.
+RateAndAmountFormat1Choice	_UPrqhNp-Ed-ak6NoX_4Aeg_307786256	Rate	The value is expressed as a rate.
+RateAndAmountFormat1Choice	_UPrqhdp-Ed-ak6NoX_4Aeg_-301462326	Amount	The value is expressed as a currency and amount.
+RateAndAmountFormat1Choice	_UPrqhtp-Ed-ak6NoX_4Aeg_307786287	NotSpecifiedRate	No value is specified.
+RateType12FormatChoice	_RnTTAtp-Ed-ak6NoX_4Aeg_-1511308649	Code	Standard code to specify the type of rate.
+RateType12FormatChoice	_RnTTA9p-Ed-ak6NoX_4Aeg_-1511308711	Proprietary	Proprietary code to express the type of rate.
+RateFormat1Choice	_UPh5h9p-Ed-ak6NoX_4Aeg_-1534892501	Rate	Value is expressed as a rate.
+RateFormat1Choice	_UPh5iNp-Ed-ak6NoX_4Aeg_-1534892500	NotSpecifiedRate	Value is not specified.
+AmountAndRateFormat3Choice	_UIFNtNp-Ed-ak6NoX_4Aeg_896081910	Amount	Number of monetary units specified in a currency.
+AmountAndRateFormat3Choice	_UIFNtdp-Ed-ak6NoX_4Aeg_896081941	NotSpecifiedRate	The rate is not specified.
+RateValueType6FormatChoice	_Rn5I6Np-Ed-ak6NoX_4Aeg_-1089918465	Code	Standard code to specify the value of a rate.
+RateValueType6FormatChoice	_RoC54Np-Ed-ak6NoX_4Aeg_-1089918487	Proprietary	Proprietary code to express the value of a rate.
+RenounceableStatus1FormatChoice	_Roygwdp-Ed-ak6NoX_4Aeg_-576437300	Code	Standard code to specify the renounceable status.
+RenounceableStatus1FormatChoice	_Roygwtp-Ed-ak6NoX_4Aeg_-576437361	Proprietary	Proprietary code to express the renounceable status.
+ConversionType1FormatChoice	_Rl9PMdp-Ed-ak6NoX_4Aeg_-346025186	Code	Standard code to specify the type of conversion.
+ConversionType1FormatChoice	_Rl9PMtp-Ed-ak6NoX_4Aeg_-346025187	Proprietary	Proprietary code to express the type of conversion.
+DistributionType1FormatChoice	_RmZ7Jtp-Ed-ak6NoX_4Aeg_-1257954049	Code	Standard code to specify the distribution type.
+DistributionType1FormatChoice	_RmZ7J9p-Ed-ak6NoX_4Aeg_-1257954327	Proprietary	Proprietary code to express the distribution type.
+CorporateActionEventStatus2FormatChoice	_RmQKItp-Ed-ak6NoX_4Aeg_-1374576221	Code	Standard code to specify the status of the CA option.
+CorporateActionEventStatus2FormatChoice	_RmQKI9p-Ed-ak6NoX_4Aeg_-1374576252	Proprietary	Proprietary code to express the status of the CA option.
+RatioFormat2Choice	_Rj3khNp-Ed-ak6NoX_4Aeg_1125895682	QuantityToQuantity	The ratio is expressed as a quantity per another quantity.
+RatioFormat2Choice	_Rj3khdp-Ed-ak6NoX_4Aeg_1125895712	AmountToAmount	The ratio is expressed as an amount per another amount.
+RatioFormat2Choice	_Rj3khtp-Ed-ak6NoX_4Aeg_1444513832	AmountToQuantity	The ratio is expressed as an amount per quantity.
+RatioFormat2Choice	_Rj3kh9p-Ed-ak6NoX_4Aeg_1484223303	QuantityToAmount	Ratio is expressed as a quantity per an amount.
+RatioFormat2Choice	_Rj3kiNp-Ed-ak6NoX_4Aeg_1125895713	NotSpecifiedRate	The value of the ratio is not specified.
+RatioFormat1Choice	_Rj3kgNp-Ed-ak6NoX_4Aeg_-278779346	QuantityToQuantity	The ratio is expressed as a quantity per another quantity.
+RatioFormat1Choice	_Rj3kgdp-Ed-ak6NoX_4Aeg_-251071667	AmountToAmount	The ratio is expressed as an amount per another amount.
+RatioFormat1Choice	_Rj3kgtp-Ed-ak6NoX_4Aeg_-161489605	NotSpecifiedRate	The value of the ratio is not specified.
+TaxType3FormatChoice	_RpFbstp-Ed-ak6NoX_4Aeg_1866583881	Code	Standard code to specify the type of taxes.
+TaxType3FormatChoice	_RpFbs9p-Ed-ak6NoX_4Aeg_1866583819	Proprietary	Proprietary code to express the type of taxes.
+GrossDividendRate1Choice	_UPO-mtp-Ed-ak6NoX_4Aeg_1430735244	NotSpecifiedRate	The value of the rate is not specified, eg, the rate is unknown.
+GrossDividendRate1Choice	_UPYvkNp-Ed-ak6NoX_4Aeg_1430735245	Amount	Value expressed as an amount.
+GrossDividendRate1Choice	_UPYvkdp-Ed-ak6NoX_4Aeg_1388251896	RateTypeAmount	Value is expressed as an amount related to an underlying securities, eg, underlying security for which an interest is paid.
+RateValueType2FormatChoice	_Rn5I5dp-Ed-ak6NoX_4Aeg_-895977923	Code	Standard code to specify the value of a rate.
+RateValueType2FormatChoice	_Rn5I5tp-Ed-ak6NoX_4Aeg_-895977984	Proprietary	Proprietary code to express the value of a rate.
+GrossDividendRateType1FormatChoice	_Rms2ENp-Ed-ak6NoX_4Aeg_-8475313	Code	Standard code to specify the type of gross dividend rate.
+GrossDividendRateType1FormatChoice	_Rms2Edp-Ed-ak6NoX_4Aeg_-8475343	Proprietary	Proprietary code to express the type of gross dividend rate.
+NetDividendRate1Choice	_UPh5gNp-Ed-ak6NoX_4Aeg_2035314621	NotSpecifiedRate	The value of the rate is not specified, eg, the rate is unknown.
+NetDividendRate1Choice	_UPh5gdp-Ed-ak6NoX_4Aeg_2035314622	Amount	Value expressed as an amount.
+NetDividendRate1Choice	_UPh5gtp-Ed-ak6NoX_4Aeg_-398759257	RateTypeAmount	Value is expressed as an amount related to an underlying securities, eg, underlying security for which an interest is paid.
+NetDividendRateType1FormatChoice	_Rm2nENp-Ed-ak6NoX_4Aeg_342462790	Code	Standard code to specify the type of net dividend rate.
+NetDividendRateType1FormatChoice	_Rm2nEdp-Ed-ak6NoX_4Aeg_342462729	Proprietary	Proprietary code to express the type of net dividend rate.
+AmountAndRateFormat2Choice	_UH8Dytp-Ed-ak6NoX_4Aeg_872458980	Amount	Number of monetary units specified in a currency.
+AmountAndRateFormat2Choice	_UH8Dy9p-Ed-ak6NoX_4Aeg_872458979	NotSpecifiedRate	The rate is not specified.
+PriceFormat4Choice	_QbJo89p-Ed-ak6NoX_4Aeg_-893638730	Amount	Price expressed as a currency and amount.
+PriceFormat4Choice	_QbJo9Np-Ed-ak6NoX_4Aeg_-893638729	Rate	Price expressed as a rate, ie, percentage.
+PriceFormat4Choice	_QbJo9dp-Ed-ak6NoX_4Aeg_-893638699	NotSpecified	The value of the price is not specified.
+PriceFormat4Choice	_QbJo9tp-Ed-ak6NoX_4Aeg_-883480030	IndexPoints	Price expressed as index points.
+PriceValueType5FormatChoice	_RnAYF9p-Ed-ak6NoX_4Aeg_-121428172	Code	Standard code to specify the value of a price.
+PriceValueType5FormatChoice	_RnAYGNp-Ed-ak6NoX_4Aeg_-121428450	Proprietary	Proprietary code to express the value of a price.
+PriceFormat2Choice	_QatkHNp-Ed-ak6NoX_4Aeg_-488465027	Amount	Price expressed as a currency and amount.
+PriceFormat2Choice	_Qa2uANp-Ed-ak6NoX_4Aeg_-488464996	Rate	Price expressed as a rate, ie, percentage.
+PriceFormat2Choice	_Qa2uAdp-Ed-ak6NoX_4Aeg_-425491165	NotSpecified	The value of the price is not specified.
+PriceFormat1Choice	_QatkFtp-Ed-ak6NoX_4Aeg_-935448733	Amount	Price expressed as a currency and amount.
+PriceFormat1Choice	_QatkF9p-Ed-ak6NoX_4Aeg_-935448732	Rate	Price expressed as a rate, ie, percentage.
+PriceFormat1Choice	_QatkGNp-Ed-ak6NoX_4Aeg_-935448703	AmountPricePerFinancialInstrumentQuantity	Price expressed as an amount per a quantity of financial instruments.
+PriceFormat1Choice	_QatkGdp-Ed-ak6NoX_4Aeg_-935448702	AmountPricePerAmount	Price expressed as an amount per another amount.
+PriceFormat1Choice	_QatkGtp-Ed-ak6NoX_4Aeg_-1046180910	NotSpecified	The value of the price is not specified.
+PriceValueType6FormatChoice	_RnJiAdp-Ed-ak6NoX_4Aeg_124226664	Code	Standard code to specify the value of a price.
+PriceValueType6FormatChoice	_RnJiAtp-Ed-ak6NoX_4Aeg_124226634	Proprietary	Proprietary code to express the value of a price.
+ShareRanking1FormatChoice	_Ro8RxNp-Ed-ak6NoX_4Aeg_1569147900	Code	Standard code to specify the share ranking.
+ShareRanking1FormatChoice	_Ro8Rxdp-Ed-ak6NoX_4Aeg_1569147870	Proprietary	Proprietary code to express the share ranking.
+FractionDispositionType1FormatChoice	_RmjsJtp-Ed-ak6NoX_4Aeg_-1753886350	Code	Standard code to specify how fractions resulting from derived securities will be processed or how prorated decisions will be rounding, if provided with a pro ration rate.
+FractionDispositionType1FormatChoice	_RmjsJ9p-Ed-ak6NoX_4Aeg_-1753886297	Proprietary	Proprietary code to express how fractions resulting from derived securities will be processed or how prorated decisions will be rounding, if provided with a pro ration rate.
+AgentRole1FormatChoice	_RlgjSNp-Ed-ak6NoX_4Aeg_349250144	Code	Standard code to specify the role of the agent.
+AgentRole1FormatChoice	_RlqUQNp-Ed-ak6NoX_4Aeg_338165020	Proprietary	Proprietary code to express the role of the agent.
+OptionFeatures1FormatChoice	_Rm2nFtp-Ed-ak6NoX_4Aeg_1295909960	Code	Standard code to specify the feature of an option.
+OptionFeatures1FormatChoice	_Rm2nF9p-Ed-ak6NoX_4Aeg_1295909868	Proprietary	Proprietary code to express the feature of an option.

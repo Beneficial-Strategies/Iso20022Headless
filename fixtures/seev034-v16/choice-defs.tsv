@@ -1,0 +1,23 @@
+choice	memberId	memberName	text
+InstructionProcessingStatus60Choice	_rt3LEY74EfCbNJ3GwkFTcw	Cancelled	Status and quantity information related to a cancelled instruction request.
+InstructionProcessingStatus60Choice	_rt3LGY74EfCbNJ3GwkFTcw	AcceptedForFurtherProcessing	Status information related to an instruction request that is accepted. This means that the instruction has been received, is processable and has been validated for further processing.
+InstructionProcessingStatus60Choice	_rt3LIY74EfCbNJ3GwkFTcw	Forwarded	Instruction has been accepted and forwarded to the next intermediary in the chain.
+InstructionProcessingStatus60Choice	_rt3LI474EfCbNJ3GwkFTcw	Rejected	Status information related to an instruction request rejected for further processing due to system reasons.
+InstructionProcessingStatus60Choice	_rt3LK474EfCbNJ3GwkFTcw	Pending	Status information related to a pending instruction.
+InstructionProcessingStatus60Choice	_rt3LM474EfCbNJ3GwkFTcw	Returned	Instructed units are returned or partially returned to the instructing party.
+InstructionProcessingStatus60Choice	_rt3LNY74EfCbNJ3GwkFTcw	DefaultAction	Default action is taken.
+InstructionProcessingStatus60Choice	_rt3LPY74EfCbNJ3GwkFTcw	StandingInstruction	Standing instruction has been applied.
+InstructionProcessingStatus60Choice	_rt3LRY74EfCbNJ3GwkFTcw	ReceivedByIssuerOrOfferor	Instruction has been received and accepted by the issuer or offeror.
+InstructionProcessingStatus60Choice	_rt3LR474EfCbNJ3GwkFTcw	ProprietaryStatus	Proprietary status related to an instruction.
+AcceptedStatus8Choice	_4nT4cUGUEeWqy4niLuXETA	NoSpecifiedReason	Reason not specified.
+AcceptedStatus8Choice	_4nT4eUGUEeWqy4niLuXETA	Reason	Reason for the accepted status.
+AcceptedReason10Choice	_5CPg8UGUEeWqy4niLuXETA	Code	Standard code to specify additional information about the processed instruction.
+AcceptedReason10Choice	_5CPg-UGUEeWqy4niLuXETA	Proprietary	Proprietary identification of additional information about the processed instruction.
+RejectedStatus64Choice	_5CDhAaKsEfCHi7w3_0pcpw	NoSpecifiedReason	Reason not specified.
+RejectedStatus64Choice	_5CDhCaKsEfCHi7w3_0pcpw	Reason	Reason why the meeting instruction message or the individual meeting instruction is rejected.
+RejectedReason68Choice	_pS4SYaKsEfCHi7w3_0pcpw	Code	Rejection reason specified as a code.
+RejectedReason68Choice	_pS4SaaKsEfCHi7w3_0pcpw	Proprietary	Rejection reason specified as a proprietary code.
+PendingStatus80Choice	_Cbb1waKuEfCHi7w3_0pcpw	NoSpecifiedReason	Reason not specified.
+PendingStatus80Choice	_Cbb1yaKuEfCHi7w3_0pcpw	Reason	Reason for the pending status.
+PendingReason76Choice	_2k33caKtEfCHi7w3_0pcpw	Code	Pending reason specified as a code.
+PendingReason76Choice	_2k33eaKtEfCHi7w3_0pcpw	Proprietary	Pending reason specified as a proprietary code.

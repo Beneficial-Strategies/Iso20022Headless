@@ -287,10 +287,24 @@ export function evaluateExpression(ctx: RuleContext, owner: string, e: RuleExpre
       return idx.map((k) => new Map(b).set(prefix, k));
     });
   }
+  // "If one occurrence of A/Code is X, no occurrence of A/Code may be Y": condition and consequence test the same list element, which
+  // can only mean across the occurrences (on one occurrence it is always true). The condition holds when some occurrence meets it;
+  // the consequence must then hold for every occurrence.
+  if (e.onCondition && testsSameListElement(e)) {
+    if (!bindings.some((b) => evalGroup(ctx, owner, e.onCondition!, instance, b))) return true;
+    return bindings.every((b) => evalGroup(ctx, owner, e.mustBe, instance, b));
+  }
   return bindings.every((b) => {
     if (e.onCondition && !evalGroup(ctx, owner, e.onCondition, instance, b)) return true;
     return evalGroup(ctx, owner, e.mustBe, instance, b);
   });
+}
+
+/** A path under a list (`[*]`) that the condition and the consequence of a rule both test. */
+function testsSameListElement(e: RuleExpression): boolean {
+  const listPaths = (g: RuleGroup | undefined): Set<string> => new Set((g?.rules ?? []).map((r) => r.path).filter((p) => p.includes('[*]')));
+  const condition = listPaths(e.onCondition);
+  return [...listPaths(e.mustBe)].some((p) => condition.has(p));
 }
 
 /** Find every instance of component type `target` inside `values`, with its path. */

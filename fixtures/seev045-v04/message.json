@@ -1,0 +1,147 @@
+{
+  "identifier": "seev.045.001.04",
+  "name": "ShareholdersIdentificationDisclosureRequestV04",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.045.001.04",
+  "bodyTag": "ShrhldrsIdDsclsrReq",
+  "out": "seev045",
+  "isoId": "_n1QvATWfEe2OzdGcZrUAEQ",
+  "definition": "The ShareholdersIdentificationDisclosureRequest message is sent by an issuer or by a third party nominated by the issuer (such as an issuer's agent) to the first intermediaries in a custody chain or is sent by any intermediaries in a custody chain to the next intermediary down the chain of intermediaries (towards the investor side of the chain) in order to request the disclosure of shareholders identity and provides information on the receiving party to whom responses must be sent, on the financial instrument concerned and on the deadline to respond.",
+  "blocks": [
+    {
+      "name": "IssuerDisclosureRequestIdentification",
+      "isoId": "_n1QvCzWfEe2OzdGcZrUAEQ",
+      "xmlTag": "IssrDsclsrReqId",
+      "type": "Max35Text",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "DisclosureRequestType",
+      "isoId": "_n1QvDTWfEe2OzdGcZrUAEQ",
+      "xmlTag": "DsclsrReqTp",
+      "type": "DisclosureRequestType1Code",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "PreviousDisclosureRequestIdentification",
+      "isoId": "_n1QvDzWfEe2OzdGcZrUAEQ",
+      "xmlTag": "PrvsDsclsrReqId",
+      "type": "Max35Text",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ForwardRequestIndicator",
+      "isoId": "_n1QvETWfEe2OzdGcZrUAEQ",
+      "xmlTag": "FwdReqInd",
+      "type": "YesNoIndicator",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ResponseThroughChainIndicator",
+      "isoId": "_n1QvEzWfEe2OzdGcZrUAEQ",
+      "xmlTag": "RspnThrghChainInd",
+      "type": "YesNoIndicator",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ShareholderRightsDirectiveIndicator",
+      "isoId": "_n1QvFTWfEe2OzdGcZrUAEQ",
+      "xmlTag": "ShrhldrRghtsDrctvInd",
+      "type": "YesNoIndicator",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "PlaceOfJurisdiction",
+      "isoId": "_GcnS0DWgEe2OzdGcZrUAEQ",
+      "xmlTag": "PlcOfJursdctn",
+      "type": "CountryCode",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ApplicableLaw",
+      "isoId": "_qJ2yYDWgEe2OzdGcZrUAEQ",
+      "xmlTag": "AplblLaw",
+      "type": "Max140Text",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "FinancialInstrumentIdentification",
+      "isoId": "_n1QvFzWfEe2OzdGcZrUAEQ",
+      "xmlTag": "FinInstrmId",
+      "type": "SecurityIdentification19",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ShareholdersDisclosureRecordDate",
+      "isoId": "_n1QvGTWfEe2OzdGcZrUAEQ",
+      "xmlTag": "ShrhldrsDsclsrRcrdDt",
+      "type": "DateFormat46Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SharesQuantityThreshold",
+      "isoId": "_n1QvGzWfEe2OzdGcZrUAEQ",
+      "xmlTag": "ShrsQtyThrshld",
+      "type": "DecimalNumber",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "RequestShareHeldDate",
+      "isoId": "_n1QvHTWfEe2OzdGcZrUAEQ",
+      "xmlTag": "ReqShrHeldDt",
+      "type": "RequestShareHeldDate1Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "DisclosureResponseRecipient",
+      "isoId": "_n1QvHzWfEe2OzdGcZrUAEQ",
+      "xmlTag": "DsclsrRspnRcpt",
+      "type": "PartyIdentification214",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "IssuerDisclosureDeadline",
+      "isoId": "_n1QvITWfEe2OzdGcZrUAEQ",
+      "xmlTag": "IssrDsclsrDdln",
+      "type": "DateFormat46Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "DisclosureResponseDeadline",
+      "isoId": "_n1QvIzWfEe2OzdGcZrUAEQ",
+      "xmlTag": "DsclsrRspnDdln",
+      "type": "DateFormat46Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Issuer",
+      "isoId": "_n1QvJTWfEe2OzdGcZrUAEQ",
+      "xmlTag": "Issr",
+      "type": "PartyIdentification129Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_n1QvJzWfEe2OzdGcZrUAEQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

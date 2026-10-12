@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+RejectionReason19FormatChoice	_Rofl0Np-Ed-ak6NoX_4Aeg_216780374	Code	Standard code to specify the reason of a rejection of a global movement authorisation request.
+RejectionReason19FormatChoice	_Rofl0dp-Ed-ak6NoX_4Aeg_216780373	Proprietary	Proprietary code to express the reason of a rejection of a global movement authorisation request.

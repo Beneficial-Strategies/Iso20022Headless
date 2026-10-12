@@ -1,0 +1,8 @@
+codeSet	isoId	text
+BeneficiaryCertificationType5Code	_zJAQsQE6EeG43uL-ROUO3A	Specifies the type of certification required.
+OptionNumber1Code	_aP1PGNp-Ed-ak6NoX_4Aeg_1091552149	Code identifying special corporate action option numbers.
+CorporateActionOption16Code	_y3TnUe34Eeqc-LCjwLsUVg	Specifies the type of corporate action options.
+OptionFeatures12Code	_j1UbQLaSEeiN--kDwanlkA	Specifies the features that may apply to a corporate action option.
+FractionDispositionType10Code	_UkVd4GSCEeKFfdK0gKYFLQ	Indicates that fractional value should be retained; no rounding.
+CorporateActionChangeType2Code	_bC8uFNp-Ed-ak6NoX_4Aeg_-1895645716	Specifies the type of changes.
+ProtectTransactionType2Code	_ARYN4LpREeilsanBGAzy4A	Specifies the type of protect instruction.

@@ -1,0 +1,6 @@
+choice	memberId	memberName	text
+DateFormat4Choice	_RlgjRNp-Ed-ak6NoX_4Aeg_-1279748183	Date	Date expressed as an ISO Date.
+DateFormat4Choice	_RlgjRdp-Ed-ak6NoX_4Aeg_-1279748182	NotSpecifiedDate	The date is not specified, eg, the date is unknown.
+DateFormat4Choice	_RlgjRtp-Ed-ak6NoX_4Aeg_-1422001384	Proprietary	Proprietary scheme to specify a date.
+UnitOrFaceAmount1Choice	_SoRAwtp-Ed-ak6NoX_4Aeg_-514701326	Unit	Quantity expressed as a number, eg, a number of shares.
+UnitOrFaceAmount1Choice	_SoRAw9p-Ed-ak6NoX_4Aeg_-514701267	FaceAmount	Quantity expressed as an amount representing the face amount, ie, the principal, of a debt instrument.

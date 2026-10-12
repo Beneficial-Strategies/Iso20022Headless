@@ -1,0 +1,6 @@
+codeSet	code	enumName	isoId	text
+StandingInstructionType1Code	CASH	CashDistribution	_ZPw5Ndp-Ed-ak6NoX_4Aeg_-438291265	Standing instruction for a cash distribution.
+StandingInstructionType1Code	PAYM	GrossNet	_ZPw5Ntp-Ed-ak6NoX_4Aeg_-200022240	Standing instruction for the payment modality, gross or net.
+StandingInstructionType1Code	SECU	SecuritiesDistribution	_ZPw5N9p-Ed-ak6NoX_4Aeg_1211066353	Standing instruction for a securities distribution.
+StandingInstructionGrossNet1Code	GROS	Gross	_ZPnIONp-Ed-ak6NoX_4Aeg_1018738724	Gross payment.
+StandingInstructionGrossNet1Code	NETT	Net	_ZPw5MNp-Ed-ak6NoX_4Aeg_1053834510	Net payment.

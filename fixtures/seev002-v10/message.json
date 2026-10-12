@@ -1,0 +1,43 @@
+{
+  "identifier": "seev.002.001.10",
+  "name": "MeetingCancellationV10",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.002.001.10",
+  "bodyTag": "MtgCxl",
+  "out": "seev002",
+  "isoId": "_UbvIj3_5Ee-h086v0qPiyQ",
+  "definition": "Scope|The MeetingCancellation message is sent by the party that sent the MeetingNotification message to the original receiver. It is sent to cancel a previously announced meeting or to advise the withdrawal of a meeting.|Usage|The MeetingCancellation message is used to advise that the meeting has been cancelled by the account servicer or withdrawn by the issuer. |This message definition is intended for use with the Business Application Header (BAH).",
+  "blocks": [
+    {
+      "name": "MeetingReference",
+      "isoId": "_UbvIl3_5Ee-h086v0qPiyQ",
+      "xmlTag": "MtgRef",
+      "type": "MeetingReference10",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Security",
+      "isoId": "_UbvImX_5Ee-h086v0qPiyQ",
+      "xmlTag": "Scty",
+      "type": "SecurityPosition23",
+      "min": 1,
+      "max": 200
+    },
+    {
+      "name": "Reason",
+      "isoId": "_UbvIm3_5Ee-h086v0qPiyQ",
+      "xmlTag": "Rsn",
+      "type": "MeetingCancellationReason2",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_UbvInX_5Ee-h086v0qPiyQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

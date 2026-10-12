@@ -1,0 +1,11 @@
+choice	memberId	memberName	text
+StandingInstructionStatus1Choice	_RirRsNp-Ed-ak6NoX_4Aeg_5921182	ProcessedStatus	Provides information about the processing status of the request.
+StandingInstructionStatus1Choice	_RirRsdp-Ed-ak6NoX_4Aeg_15156423	RejectedStatus	Provides information about the rejection status.
+RejectionReason20FormatChoice	_Rofl09p-Ed-ak6NoX_4Aeg_227864528	Code	Standard code to specify the reason of a rejection of the standing instruction request.
+RejectionReason20FormatChoice	_Rofl1Np-Ed-ak6NoX_4Aeg_227864520	Proprietary	Proprietary code to express the reason of a rejection of the standing instruction request.
+StandingInstructionCancellationStatus1Choice	_RirRs9p-Ed-ak6NoX_4Aeg_1145802950	ProcessedStatus	Provides information about the processing status of the cancellation request.
+StandingInstructionCancellationStatus1Choice	_RirRtNp-Ed-ak6NoX_4Aeg_1204907770	RejectedStatus	Provides information about the rejection status.
+ProcessedStatus4FormatChoice	_RnmN8Np-Ed-ak6NoX_4Aeg_-863903245	Code	Standard code to specify the processing status of the standing instruction cancellation request.
+ProcessedStatus4FormatChoice	_RnmN8dp-Ed-ak6NoX_4Aeg_-863903214	Proprietary	Proprietary code to express the processing status of the standing instruction cancellation request.
+RejectionReason10FormatChoice	_RoC54tp-Ed-ak6NoX_4Aeg_299898878	Code	Standard code to specify the reason of a rejection of a standing instruction cancellation request.
+RejectionReason10FormatChoice	_RoC549p-Ed-ak6NoX_4Aeg_299898877	Proprietary	Proprietary code to express the reason of a rejection of a standing instruction cancellation request.

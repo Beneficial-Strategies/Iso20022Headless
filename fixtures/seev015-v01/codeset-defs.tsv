@@ -1,0 +1,6 @@
+codeSet	isoId	text
+ProcessedStatus3Code	_aKeN-Np-Ed-ak6NoX_4Aeg_969222817	Specifies the processing status of an advice, a request or a movement.
+RejectionReason18Code	_Zir1Ndp-Ed-ak6NoX_4Aeg_1336974420	Specifies the reason of a rejection of an election advice.
+ProcessedStatus5Code	_aKnX59p-Ed-ak6NoX_4Aeg_980305985	Specifies the processing status of a request.
+RejectionReason9Code	_ZmQtotp-Ed-ak6NoX_4Aeg_1266787897	Specifies the reason of a rejection of an election cancellation request.
+RejectionReason8Code	_ZmG8pNp-Ed-ak6NoX_4Aeg_1306497191	Specifies the reason of a rejection of an election amendment request.

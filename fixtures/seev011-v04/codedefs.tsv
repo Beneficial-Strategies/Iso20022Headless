@@ -1,0 +1,104 @@
+codeSet	code	enumName	isoId	text
+ProcessedStatus7Code	RECE	Received	_J295IVuxEe6gDOpEK7Q4ig	The instruction/request has been received.
+ProcessedStatus7Code	SENT	SentToMarket	_KFkV0luxEe6gDOpEK7Q4ig	The advice has been sent to the market.
+ProcessedStatus7Code	SNAV	SystemNotAvailable	_KQ5cEluxEe6gDOpEK7Q4ig	System is not available. Instruction is sent outside of business hours.
+ProcessedStatus7Code	WARN	AcceptedWithWarning	_LEKFAluxEe6gDOpEK7Q4ig	The announcement has been accepted but another source has provided different information.
+ProcessedStatus7Code	PACK	Accepted	_ORVysluxEe6gDOpEK7Q4ig	The request is accepted.
+ProcessedStatus7Code	PEND	Pending	_PwRO0luxEe6gDOpEK7Q4ig	The processing of the request is pending.
+IssuerAgentRejection1Code	NMOD	CancelledEvent	_SIKM0bAhEfCVt6rBUi-YSg	Cancelled event cannot be modified.
+IssuerAgentRejection1Code	PR1K	CashRateLessThanThousand	_SMc28bAhEfCVt6rBUi-YSg	Zero Coupon Bond, Principal / Cash rate must be less than USD 1,000.00.
+IssuerAgentRejection1Code	CER0	CertificateAmountGreaterZero	_SR1GMbAhEfCVt6rBUi-YSg	Certificate Amount must be greater than zero.
+IssuerAgentRejection1Code	NCON	ConvertibleSecurityNotSupported	_SVrrcbAhEfCVt6rBUi-YSg	Convertible Security Not Supported.
+IssuerAgentRejection1Code	DEPO	DepositoryCalledAmountEqualSecurityCalledAmount	_SaMYAbAhEfCVt6rBUi-YSg	Depository Called Amount must be greater than zero and must be equal to Security Called Amount.
+IssuerAgentRejection1Code	FAS0	DepositoryCalledAmountGreaterZero	_SeBIEbAhEfCVt6rBUi-YSg	Depository Called Amount must be greater than zero.
+IssuerAgentRejection1Code	DUPL	DuplicateEvent	_ShjkQbAhEfCVt6rBUi-YSg	Duplicate event exists.
+IssuerAgentRejection1Code	PDAY	EffectiveDayAfterPaymentDate	_Sk0TobAhEfCVt6rBUi-YSg	Effective date is after the payment date.
+IssuerAgentRejection1Code	FAIL	FailedValidation	_Ss1nMbAhEfCVt6rBUi-YSg	Validation of the advice/instruction/request failed.
+IssuerAgentRejection1Code	LOCK	GlobalLock	_Swf_MbAhEfCVt6rBUi-YSg	Underlying Security has a global lock.
+IssuerAgentRejection1Code	GAMN	GrossAmountLessThanNetAmount	_S2TsQbAhEfCVt6rBUi-YSg	Gross amount is less than net amount.
+IssuerAgentRejection1Code	UNDI	InactiveUnderlyingSecurity	_S6BHkbAhEfCVt6rBUi-YSg	Inactive Underlying Security.
+IssuerAgentRejection1Code	DEFE	InvalidDefeasedSecurityIdentifier	_S97XMbAhEfCVt6rBUi-YSg	Invalid Defeased Security Identifier.
+IssuerAgentRejection1Code	IDIS	InvalidDisbursedSecurityIdentification	_TC0eQbAhEfCVt6rBUi-YSg	Disbursed security identification is missing.
+IssuerAgentRejection1Code	SEEQ	InvalidEquitySecurityType	_TJYZQbAhEfCVt6rBUi-YSg	Invalid Equity Security Type.
+IssuerAgentRejection1Code	EVNT	InvalidEventType	_TNGbobAhEfCVt6rBUi-YSg	Invalid Event Type.
+IssuerAgentRejection1Code	NDEF	InvalidNonDefeasedSecurityIdentifier	_TTCEgbAhEfCVt6rBUi-YSg	Invalid Non-Defeased Security Identifier.
+IssuerAgentRejection1Code	NREF	InvalidNonRefundedSecurityIdentifier	_TXXx8bAhEfCVt6rBUi-YSg	Invalid Non-Refunded Security Identifier
+IssuerAgentRejection1Code	REFR	InvalidNotificationIdentification	_Tc4kEbAhEfCVt6rBUi-YSg	Invalid Notification Identification.
+IssuerAgentRejection1Code	ISSC	InvalidOrMissingIssuerAgentContactInformation	_ToglQbAhEfCVt6rBUi-YSg	Issuer agent contact information is invalid or missing.
+IssuerAgentRejection1Code	PRIN	InvalidPrincipalCashRate	_TuHeAbAhEfCVt6rBUi-YSg	Invalid Principal Cash Rate.
+IssuerAgentRejection1Code	REDT	InvalidRedemptionDate	_TxVKEbAhEfCVt6rBUi-YSg	Invalid Redemption Date.
+IssuerAgentRejection1Code	REFU	InvalidRefundedSecurityIdentifier	_T0snIbAhEfCVt6rBUi-YSg	Invalid Refunded Security Identifier.
+IssuerAgentRejection1Code	CERT	InvalidTotalCertificateAmount	_UER7QbAhEfCVt6rBUi-YSg	Invalid Amount Total Certificate Amount must be greater than zero and equal to Security Called Amount.
+IssuerAgentRejection1Code	UNDV	InvalidUnderlyingSecurity	_UHY5obAhEfCVt6rBUi-YSg	Invalid Underlying Security.
+IssuerAgentRejection1Code	BACK	MissingBackEndOddLotQuantity	_UK6HsbAhEfCVt6rBUi-YSg	Back end odd lot quantity is missing.
+IssuerAgentRejection1Code	BIDI	MissingBidInterval	_UOTZ8bAhEfCVt6rBUi-YSg	Bid interval is missing.
+IssuerAgentRejection1Code	CINL	MissingCashInLieuPrice	_URQAQbAhEfCVt6rBUi-YSg	Cash in lieu price is missing.
+IssuerAgentRejection1Code	MCER	MissingCertification	_UbMmcbAhEfCVt6rBUi-YSg	Certification has not been filled in.
+IssuerAgentRejection1Code	CSRT	MissingCashRate	_UgLNEbAhEfCVt6rBUi-YSg	Cash rate is missing.
+IssuerAgentRejection1Code	COND	MissingConditionalTendersAcceptedFlag	_UlTksbAhEfCVt6rBUi-YSg	Conditional tenders accepted flag is missing.
+IssuerAgentRejection1Code	DFLT	MissingDefaultOption	_UpC1MbAhEfCVt6rBUi-YSg	One option must be marked as the default.
+IssuerAgentRejection1Code	MDIS	MissingDisbursedSecurityIdentification	_U20ygbAhEfCVt6rBUi-YSg	Disbursed security identification is missing.
+IssuerAgentRejection1Code	XRAT	MissingExchangeRate	_U7SbwbAhEfCVt6rBUi-YSg	Resulting amount is not allowed without an exchange rate.
+IssuerAgentRejection1Code	FIRS	MissingFirstBidIncrement	_U_3ZwbAhEfCVt6rBUi-YSg	First bid increment is missing.
+IssuerAgentRejection1Code	FRAC	MissingFractionalDisposition	_VGC6QbAhEfCVt6rBUi-YSg	Fractional Underlying Security cannot be announced.
+IssuerAgentRejection1Code	MFCF	MissingFullConditionalFlag	_VJblcbAhEfCVt6rBUi-YSg	Full conditional flag is missing.
+IssuerAgentRejection1Code	ISSR	MissingIssuerAgent	_VNAd4bAhEfCVt6rBUi-YSg	Issuer agent is missing.
+IssuerAgentRejection1Code	LAST	MissingLastBidIncrement	_VQ9w0bAhEfCVt6rBUi-YSg	Last bid increment is missing.
+IssuerAgentRejection1Code	MAXP	MissingMaximumPrice	_Ve5fIbAhEfCVt6rBUi-YSg	Maximum price is missing.
+IssuerAgentRejection1Code	MINP	MissingMinimumPrice	_VozpEbAhEfCVt6rBUi-YSg	Minimum price is missing.
+IssuerAgentRejection1Code	ODLT	MissingOddLotPriorityFlag	_Vtzd0bAhEfCVt6rBUi-YSg	Odd lot priority flag is missing.
+IssuerAgentRejection1Code	SECO	MissingOption	_VxLh8bAhEfCVt6rBUi-YSg	Second option is mandatory.
+IssuerAgentRejection1Code	OVCH	MissingOversubscriptionChargeFlag	_V18GIbAhEfCVt6rBUi-YSg	Oversubscription charge flag is missing.
+IssuerAgentRejection1Code	OVFL	MissingOversubscriptionFlag	_V6yw8bAhEfCVt6rBUi-YSg	Oversubscription flag is missing.
+IssuerAgentRejection1Code	OVPR	MissingOversubscriptionPrice	_V-_7gbAhEfCVt6rBUi-YSg	Oversubscription price is missing.
+IssuerAgentRejection1Code	PTYP	MissingPayoutType	_WDFKQbAhEfCVt6rBUi-YSg	Payout type is missing.
+IssuerAgentRejection1Code	ENDP	MissingPeriodEndDate	_WN0aobAhEfCVt6rBUi-YSg	Period ending date or code is missing.
+IssuerAgentRejection1Code	STAR	MissingPeriodStartDate	_WRdkgbAhEfCVt6rBUi-YSg	Period starting date or code is missing.
+IssuerAgentRejection1Code	PBAS	MissingPriceBasis	_WW6sQbAhEfCVt6rBUi-YSg	Price basis is missing.
+IssuerAgentRejection1Code	PROR	MissingProrationRate	_WaEt8bAhEfCVt6rBUi-YSg	Proration rate is missing.
+IssuerAgentRejection1Code	MPRI	MissingProrationRoundingIndicator	_WeZNQbAhEfCVt6rBUi-YSg	Proration rounding indicator is missing.
+IssuerAgentRejection1Code	PRCH	MissingProtectChargeIndicator	_WigRMbAhEfCVt6rBUi-YSg	Protect charge indicator is missing.
+IssuerAgentRejection1Code	RESU	MissingResultingAmount	_WuAWkbAhEfCVt6rBUi-YSg	Resulting amount must be filled in as exchange rate is present.
+IssuerAgentRejection1Code	RITR	MissingRightsTransferrableFlag	_WxdTMbAhEfCVt6rBUi-YSg	Rights transferrable flag is missing.
+IssuerAgentRejection1Code	ROUN	MissingRoudingFactor	_W0sNYbAhEfCVt6rBUi-YSg	Rounding factor is missing.
+IssuerAgentRejection1Code	SERT	MissingSecuritiesRate	_W3ozsbAhEfCVt6rBUi-YSg	Securities rate is missing.
+IssuerAgentRejection1Code	SFEE	MissingSolicitationDealerFeeFlag	_W-Y78bAhEfCVt6rBUi-YSg	Solicitation dealer fee flag is missing.
+IssuerAgentRejection1Code	SUCH	MissingSubscriptionChargeFlag	_XC2lMbAhEfCVt6rBUi-YSg	Subscription charge flag is missing.
+IssuerAgentRejection1Code	SUPR	MissingSubscriptionPrice	_XOt28bAhEfCVt6rBUi-YSg	Subscription price is missing.
+IssuerAgentRejection1Code	UNSP	MissingUnspecifiedPriceAllowed	_XS_S8bAhEfCVt6rBUi-YSg	Unspecified price allowed is missing.
+IssuerAgentRejection1Code	NOAC	NoAccessToService	_XWghAbAhEfCVt6rBUi-YSg	Agent has no access to the service.
+IssuerAgentRejection1Code	NPAT	NonActiveParty	_XaFZcbAhEfCVt6rBUi-YSg	Party is not active.
+IssuerAgentRejection1Code	ELIG	NonEligibleSecurity	_Xe0IcbAhEfCVt6rBUi-YSg	Security is not eligible.
+IssuerAgentRejection1Code	BDAY	NotBusinessDay	_Xi1FwbAhEfCVt6rBUi-YSg	Date is not a business day for the security market.
+IssuerAgentRejection1Code	AGID	NotDefinedAgent	_XsRVobAhEfCVt6rBUi-YSg	Party is not defined as an agent.
+IssuerAgentRejection1Code	DISP	NotEligibleDisperseSecurity	_XwOokbAhEfCVt6rBUi-YSg	Disperse security is not eligible in the (ICSD) service provider owner.
+IssuerAgentRejection1Code	ONCV	OngoingConversionEventExists	_Xzk3gbAhEfCVt6rBUi-YSg	Ongoing Conversion Event Exists
+IssuerAgentRejection1Code	PERI	PeriodEndDateBeforeStartDate	_X4M40bAhEfCVt6rBUi-YSg	Period ending date is before period starting date.
+IssuerAgentRejection1Code	PUBD	PublicationDate	_YC_zkbAhEfCVt6rBUi-YSg	Publication date must be earlier than payable date.
+IssuerAgentRejection1Code	RDTE	RecordDateAfterPaymentDate	_YIFH4bAhEfCVt6rBUi-YSg	Record date is after payment date.
+IssuerAgentRejection1Code	UNDM	UnderlyingSecurityNotEligible	_YLCVQbAhEfCVt6rBUi-YSg	Underlying Security is not eligible at Depository.
+IssuerAgentRejection1Code	ACRU	UnexpectedAccruedInterest	_YPD5obAhEfCVt6rBUi-YSg	Accrued interest is not applicable for this type of security.
+IssuerAgentRejection1Code	VALU	ValueDateBeforePaymentDate	_YSF_gbAhEfCVt6rBUi-YSg	Value date is before payment date.
+IssuerAgentRejection1Code	SECT	WrongSecurityType	_YVvwcbAhEfCVt6rBUi-YSg	Security type does not match with the type of corporate action.
+CorporateActionPendingStatus1Code	CNFC	ConcurrentFullCall	_yXId8aUZEfCIzrotrg4VRw	Concurrent full call event exists.
+CorporateActionPendingStatus1Code	PUBF	FuturePublicationDate	_ysDlEaUZEfCIzrotrg4VRw	Pending due to future publication date.
+CorporateActionPendingStatus1Code	REOR	ConcurrentReorganisation	_G7bocaUaEfCIzrotrg4VRw	Concurrent reorganisation announcement exists.
+CorporateActionPendingStatus1Code	ACCR	IncalculableInterest	_HAnqcaUaEfCIzrotrg4VRw	Unable to calculate accrued interest. Missing payment details.
+CorporateActionPendingStatus1Code	SCAL	InvalidSecurityCalledAmount	_HHWkkaUaEfCIzrotrg4VRw	Invalid Security Called Amount.
+CorporateActionPendingStatus1Code	LATE	LateAnnouncement	_HLKGgaUaEfCIzrotrg4VRw	Late announcement. The declared payment date is outside of acceptable range in the past.
+CorporateActionPendingStatus1Code	MATU	MaturingIssue	_HOvmAaUaEfCIzrotrg4VRw	Maturing issue. Redemption date is greater than or equal to maturity date.
+CorporateActionPendingStatus1Code	PAYD	PayableDateOutsideRange	_HSVskaUaEfCIzrotrg4VRw	Payable date outside of applicable date range.
+CorporateActionPendingStatus1Code	POSD	PositionDiscrepancy	_HXddIaUaEfCIzrotrg4VRw	Position discrepancy. Potential partial call.
+CorporateActionPendingStatus1Code	CNPC	PotentialPartialCall	_HcIhwaUaEfCIzrotrg4VRw	Verify event. Potential conflicting partial call exists.
+CorporateActionPendingStatus1Code	CNRD	VerifyConcurrentRedemption	_HgEmkaUaEfCIzrotrg4VRw	Verify event. Concurrent redemption event exists.
+CorporateActionPendingStatus1Code	CNRE	VerifyConcurrentReorganisation	_HkLDcaUaEfCIzrotrg4VRw	Verify event. Concurrent reorganisation event exists.
+CorporateActionPendingStatus1Code	VRON	VerifyRateRedemption	_Hpav0aUaEfCIzrotrg4VRw	Verify rate. On-cycle redemption.
+CorporateActionPendingStatus1Code	VRZC	VerifyRateZeroBond	_Hsi8UaUaEfCIzrotrg4VRw	Verify rate. Zero coupon bond.
+CorporateActionAcceptedWithWarningStatus1Code	SCAL	InvalidSecurityCalledAmount	_OyvmIaUeEfCnE_wCEfCqTA	Invalid Security Called Amount.
+CorporateActionAcceptedWithWarningStatus1Code	PAYD	PayableDateOutsideRange	_O3ZcoaUeEfCnE_wCEfCqTA	Payable Date outside of applicable date range.
+RejectionReason81Code	FAIL	FailedValidation	_7KnCUVvEEe6gDOpEK7Q4ig	Validation of the advice/instruction/request failed.
+RejectionReason81Code	REFI	InvalidCAIdentification	_8IKPslvEEe6gDOpEK7Q4ig	Invalid corporate action identification supplied.
+RejectionReason81Code	DCAN	RejectedSinceAlreadyCancelled	__XlZElvEEe6gDOpEK7Q4ig	Cancellation request was rejected since the instruction has already been cancelled.
+RejectionReason81Code	DPRG	RejectedSinceInProgress	_Ar3rclvFEe6gDOpEK7Q4ig	Cancellation request has been rejected because the instruction process is in progress or has been processed.
+SafekeepingPlace2Code	SHHE	SharesHeldElsewhere	_Y-oF5dp-Ed-ak6NoX_4Aeg_1256685256	Used for certain financial instruments, for example, US mutual funds, where settlement is internal only, that is, there is no external movement of securities.
+SafekeepingPlace2Code	ALLP	AllPlaces	_Y-oF5tp-Ed-ak6NoX_4Aeg_1256685274	All places of safekeeping where the financial instrument is held.

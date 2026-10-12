@@ -1,0 +1,51 @@
+{
+  "identifier": "seev.067.001.01",
+  "name": "BuyerProtectionInstructionReportV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.067.001.01",
+  "bodyTag": "BuyrPrtcnInstrRpt",
+  "out": "seev067",
+  "isoId": "_cscswLbgEe-NMoTZ6Byg6A",
+  "definition": "Scope|The BuyerProtectionInstructionReport message is sent by an account servicer to an account owner or its designated agent to report the status of all Buyer Protection Instructions in response to a Buyer Protection Instruction Report Request.||Usage|The message may also be used to:|- re-send a message previously sent (the sub-function of the message is Duplicate),|- provide a third party with a copy of a message for information (the sub-function of the message is Copy),|- re-send to a third party a copy of a message for information (the sub-function of the message is Copy Duplicate), using the relevant elements in the business application header (BAH).",
+  "blocks": [
+    {
+      "name": "Pagination",
+      "isoId": "_sVR8sd-6Ee-Ned3-G07x_A",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "StatementGeneralDetails",
+      "isoId": "_8snlQd-_Ee-Ned3-G07x_A",
+      "xmlTag": "StmtGnlDtls",
+      "type": "Statement87",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "FinancialInstitutionIdentification",
+      "isoId": "_DSkllN_AEe-Ned3-G07x_A",
+      "xmlTag": "FIId",
+      "type": "FinancialInstitutionIdentification28",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionDetails",
+      "isoId": "_FIX3UN_FEe-Ned3-G07x_A",
+      "xmlTag": "CorpActnDtls",
+      "type": "CorporateActionDetails1",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_whrrsd-6Ee-Ned3-G07x_A",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

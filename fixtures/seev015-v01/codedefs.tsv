@@ -1,0 +1,17 @@
+codeSet	code	enumName	isoId	text
+ProcessedStatus3Code	RECE	Received	_aKnX4Np-Ed-ak6NoX_4Aeg_-807236817	The instruction/request has been received.
+ProcessedStatus3Code	PEND	Pending	_aKnX4dp-Ed-ak6NoX_4Aeg_-807236816	The processing of the request is pending.
+ProcessedStatus3Code	PACK	Accepted	_aKnX4tp-Ed-ak6NoX_4Aeg_-807236786	The request is accepted.
+RejectionReason18Code	FAIL	FailedValidation	_Zir1Ntp-Ed-ak6NoX_4Aeg_-940679430	The validation of the advice/instruction/request failed.
+RejectionReason18Code	INHO	InsufficientBalance	_Zir1N9p-Ed-ak6NoX_4Aeg_-940679369	Insufficient balance.
+RejectionReason18Code	LATT	Late	_Zir1ONp-Ed-ak6NoX_4Aeg_-940679338	Instruction/Request arrives too late.
+ProcessedStatus5Code	RECE	Received	_aKxI4Np-Ed-ak6NoX_4Aeg_-1913679382	The instruction/request has been received.
+ProcessedStatus5Code	PACK	Accepted	_aKxI4dp-Ed-ak6NoX_4Aeg_-1913679351	The request is accepted.
+RejectionReason9Code	NCAN	CancellationNotAllowed	_ZmQto9p-Ed-ak6NoX_4Aeg_920218233	Cancellation is not allowed.
+RejectionReason9Code	LATT	Late	_ZmQtpNp-Ed-ak6NoX_4Aeg_920218264	Instruction/Request arrives too late.
+RejectionReason9Code	ELEC	ElectionAlreadyCancelled	_ZmQtpdp-Ed-ak6NoX_4Aeg_920218294	The election advice is already cancelled.
+RejectionReason9Code	FAIL	FailedValidation	_ZmQtptp-Ed-ak6NoX_4Aeg_920218325	The validation of the advice/instruction/request failed.
+RejectionReason8Code	NAMD	AmendmentNotAllowed	_ZmG8pdp-Ed-ak6NoX_4Aeg_792769687	Amendment is not allowed.
+RejectionReason8Code	LATT	Late	_ZmG8ptp-Ed-ak6NoX_4Aeg_792769717	Instruction/Request arrives too late.
+RejectionReason8Code	ELEC	ElectionAlreadyCancelled	_ZmQtoNp-Ed-ak6NoX_4Aeg_792769718	The election advice is already cancelled.
+RejectionReason8Code	FAIL	FailedValidation	_ZmQtodp-Ed-ak6NoX_4Aeg_792769965	The validation of the advice/instruction/request failed.

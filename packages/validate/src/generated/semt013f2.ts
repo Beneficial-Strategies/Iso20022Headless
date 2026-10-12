@@ -22,6 +22,7 @@ import {
   Exact4AlphaNumericTextSchema,
   Max4AlphaNumericTextSchema,
   GenericIdentification47Schema,
+  ProcessingPosition10ChoiceSchema,
   ISO20022MessageIdentificationTextSchema,
   RestrictedFINXMax30TextSchema,
   GenericIdentification86Schema,
@@ -107,11 +108,6 @@ import {
   sharedTypeDescriptors,
 } from './shared.ts';
 
-export const ProcessingPosition10ChoiceSchema = choiceOf({
-  Code: ProcessingPosition3CodeSchema,
-  Proprietary: GenericIdentification47Schema,
-});
-
 export const References50ChoiceSchema = choiceOf({
   SecuritiesSettlementTransactionIdentification: RestrictedFINXMax16TextSchema,
   IntraPositionMovementIdentification: RestrictedFINXMax16TextSchema,
@@ -162,18 +158,6 @@ export const IntraPositionMovementInstruction002V06Schema = z.strictObject({
 const f = (d: FieldDescriptor): FieldDescriptor => d;
 
 const ownTypeDescriptors: TypeDescriptors = {
-  "ProcessingPosition10Choice": {
-    name: "ProcessingPosition10Choice",
-    isoId: "_chT0q5KQEeWHWpTQn1FFVg",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_chT0r5KQEeWHWpTQn1FFVg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ProcessingPosition3Code", required: true }),
-      f({ name: "Proprietary", isoId: "_chT0t5KQEeWHWpTQn1FFVg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
-    ],
-    rules: [
-      { name: "WithLinkageRule", isoId: "_chT0rZKQEeWHWpTQn1FFVg", text: "If Code WITH is used, then the one or more instruction which are linked become bound and which must be executed together. Even if one single transactions/instructions/notifications can not be executed, then all the other transactions/instructions/notifications must also be kept pending. Therefore the use of code WITH must be limited to combine up to 2 or 3 transactions/instructions/notifications." },
-    ],
-  },
   "References50Choice": {
     name: "References50Choice",
     isoId: "_5Pat3ZNLEeWGlc8L7oPDIg",
@@ -262,6 +246,7 @@ export const typeDescriptors: TypeDescriptors = {
   "Exact4AlphaNumericText": sharedTypeDescriptors["Exact4AlphaNumericText"]!,
   "Max4AlphaNumericText": sharedTypeDescriptors["Max4AlphaNumericText"]!,
   "GenericIdentification47": sharedTypeDescriptors["GenericIdentification47"]!,
+  "ProcessingPosition10Choice": sharedTypeDescriptors["ProcessingPosition10Choice"]!,
   "ISO20022MessageIdentificationText": sharedTypeDescriptors["ISO20022MessageIdentificationText"]!,
   "RestrictedFINXMax30Text": sharedTypeDescriptors["RestrictedFINXMax30Text"]!,
   "GenericIdentification86": sharedTypeDescriptors["GenericIdentification86"]!,

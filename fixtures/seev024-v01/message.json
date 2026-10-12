@@ -1,0 +1,43 @@
+{
+  "identifier": "seev.024.001.01",
+  "name": "AgentCAInformationStatusAdviceV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.024.001.01",
+  "bodyTag": "AgtCAInfStsAdvc",
+  "out": "seev024",
+  "isoId": "_TOM7y9EwEd-BzquC8wXy7w_11240695",
+  "definition": "Scope|This message is sent by an issuer (or its agent) to a CSD to report the status, or change in status, of an information advice.|Usage|This message must be used in response to an Agent Corporate Action Information Advice in the case of a rejection. However, it may also be used to report other statuses.|The information advice identification must be present to link this message to the information advice for which the status is provided.",
+  "blocks": [
+    {
+      "name": "Identification",
+      "isoId": "_TOM7zNEwEd-BzquC8wXy7w_1654735985",
+      "xmlTag": "Id",
+      "type": "DocumentIdentification8",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AgentCAInformationAdviceIdentification",
+      "isoId": "_TOWFsNEwEd-BzquC8wXy7w_1665816866",
+      "xmlTag": "AgtCAInfAdvcId",
+      "type": "DocumentIdentification8",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionAdditionalInformation",
+      "isoId": "_TOWFsdEwEd-BzquC8wXy7w_693722719",
+      "xmlTag": "CorpActnAddtlInf",
+      "type": "CorporateActionAdditionalInformation1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "InformationStatusDetails",
+      "isoId": "_TOWFstEwEd-BzquC8wXy7w_-904563755",
+      "xmlTag": "InfStsDtls",
+      "type": "CorporateActionInformationStatus1Choice",
+      "min": 1,
+      "max": 1
+    }
+  ]
+}

@@ -1,0 +1,205 @@
+choice	memberId	memberName	text
+CorporateActionProcessingStatus7Choice	_g2-TkEmfEe-NocYul3BKXQ	ForInformationOnly	Indicates whether the corporate event information is provided for information only.
+CorporateActionProcessingStatus7Choice	_mhXqkEmfEe-NocYul3BKXQ	EventInformationStatus	Status of the information provided on the corporate action event.
+CorporateActionProcessingStatus5Choice	_JoF7gTnXEeWLJsP1cO-amg	Code	Specifies the status of the details of the corporate action event.
+CorporateActionProcessingStatus5Choice	_JoF7gznXEeWLJsP1cO-amg	Proprietary	Information related to an identification, for example, party identification or account identification.
+PartyIdentification129Choice	_CaOE4bXLEeiTob_PrFFUxA	AnyBIC	Code allocated to a financial or non-financial institution by the ISO 9362 Registration Authority, as described in ISO 9362 "Banking - Banking telecommunication messages - Business identifier code (BIC)".
+PartyIdentification129Choice	_CaOE47XLEeiTob_PrFFUxA	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to a financial institution using a proprietary identification scheme.
+PartyIdentification129Choice	_CaOE5bXLEeiTob_PrFFUxA	NameAndAddress	Name and address of a party.
+PartyIdentification129Choice	_TRuNgLXLEeiTob_PrFFUxA	LEI	Legal entity identification of the party.
+CorporateActionEventType127Choice	_z49Xo6NZEfC9id413JK-Ig	Code	Event type expressed as a code.
+CorporateActionEventType127Choice	_z49Xq6NZEfC9id413JK-Ig	Proprietary	Event type expressed as a proprietary code.
+CorporateActionEventType126Choice	_txvhwaNZEfC9id413JK-Ig	PlainCorporateEventType	Type of corporate action event.
+CorporateActionEventType126Choice	_txvhw6NZEfC9id413JK-Ig	ExtendedCorporateEventType	Extended list of corporate action event types.
+CorporateActionMandatoryVoluntary3Choice	_fJ6PcTndEeWLJsP1cO-amg	Code	Standard code to specify whether the event is mandatory, mandatory with options or voluntary.
+CorporateActionMandatoryVoluntary3Choice	_fJ6PeTndEeWLJsP1cO-amg	Proprietary	Proprietary identification of an event.
+RateFormat24Choice	_oHucgYV4Ee-oeNhl-Tk6YQ	Rate	Value is expressed as a rate.
+RateFormat24Choice	_oHuciYV4Ee-oeNhl-Tk6YQ	NotSpecifiedRate	Value of the rate not specified.
+RateFormat12Choice	_uT61USqiEeObprHJy8Zrxg	Rate	Value is expressed as a rate.
+RateFormat12Choice	_uT61WSqiEeObprHJy8Zrxg	NotSpecifiedRate	Value of the rate not specified.
+DateFormat43Choice	_dCdOc7QXEeeKRKrD60ELBQ	Date	Date expressed as a calendar date.
+DateFormat43Choice	_dCdOe7QXEeeKRKrD60ELBQ	DateCode	Specifies the type of date.
+DateCode19Choice	_KQ3A80EEEeWVgfuHGaKtRQ	Code	Standard code to specify the type of date.
+DateCode19Choice	_KQ3A-0EEEeWVgfuHGaKtRQ	Proprietary	Proprietary identification of the type of date.
+DateFormat30Choice	_YCM700ECEeWVgfuHGaKtRQ	Date	Date expressed as a calendar date.
+DateFormat30Choice	_YCM720ECEeWVgfuHGaKtRQ	DateCode	Specifies the type of date.
+Period12Choice	_qUrwhatmEfCqjuqNaaNXgw	Period	Time span defined by a start date and time, and an end date and time.
+Period12Choice	_qUrwi6tmEfCqjuqNaaNXgw	PeriodCode	Standard code to specify the type of period.
+DateFormat73Choice	_GUHFRatmEfCqjuqNaaNXgw	Date	Date expressed as an ISO Date.
+DateFormat73Choice	_GUHFUatmEfCqjuqNaaNXgw	NotSpecifiedDate	Date not specified, for example, the date is unknown.
+RateAndAmountFormat57Choice	_gKUroYV5Ee-oeNhl-Tk6YQ	Rate	Value expressed as a rate.
+RateAndAmountFormat57Choice	_gKVSsYV5Ee-oeNhl-Tk6YQ	NotSpecifiedRate	Value of the rate not specified.
+RateAndAmountFormat57Choice	_gKVSuYV5Ee-oeNhl-Tk6YQ	Amount	Value is expressed as a currency and amount.
+RateFormat25Choice	_qgU2IYV5Ee-oeNhl-Tk6YQ	Rate	Value is expressed as a rate.
+RateFormat25Choice	_qgU2KYV5Ee-oeNhl-Tk6YQ	NotSpecifiedRate	Value of the rate not specified.
+RateAndAmountFormat58Choice	_wV7-oYV5Ee-oeNhl-Tk6YQ	Rate	Value expressed as a rate.
+RateAndAmountFormat58Choice	_wV7-qYV5Ee-oeNhl-Tk6YQ	NotSpecifiedRate	Value of the rate not specified.
+RateAndAmountFormat58Choice	_wV7-sYV5Ee-oeNhl-Tk6YQ	Amount	Value is expressed as a currency and amount.
+RateAndAmountFormat58Choice	_wV7-uYV5Ee-oeNhl-Tk6YQ	IndexPoints	Price expressed in index points.
+RateAndAmountFormat59Choice	_3bTe0YV5Ee-oeNhl-Tk6YQ	Rate	Value is expressed as a rate.
+RateAndAmountFormat59Choice	_3bTe2YV5Ee-oeNhl-Tk6YQ	Amount	Value is expressed as a currency and amount.
+PriceFormat73Choice	_Cv1HEYV6Ee-oeNhl-Tk6YQ	PercentagePrice	Price expressed as a percentage.
+PriceFormat73Choice	_Cv1HGYV6Ee-oeNhl-Tk6YQ	AmountPrice	Price expressed as a currency and amount.
+PriceFormat73Choice	_Cv1HIYV6Ee-oeNhl-Tk6YQ	NotSpecifiedPrice	Value of the price not specified.
+PriceFormat73Choice	_Cv1HKYV6Ee-oeNhl-Tk6YQ	IndexPoints	Price expressed as an index points.
+FinancialInstrumentQuantity34Choice	_lhWKIxu0EeyhRdHRjakS2w	Unit	Quantity expressed as a number, for example, a number of shares.
+FinancialInstrumentQuantity34Choice	_lhWKKxu0EeyhRdHRjakS2w	FaceAmount	Quantity expressed as an amount representing the face amount, that is, the principal, of a debt instrument.
+FinancialInstrumentQuantity34Choice	_lhWKMxu0EeyhRdHRjakS2w	AmortisedValue	Quantity expressed as an amount representing the current amortised face amount of a bond, for example, a periodic reduction/increase of a bond's principal amount.
+FinancialInstrumentQuantity34Choice	_lhWKOxu0EeyhRdHRjakS2w	Code	Quantity expressed as a code.
+FinancialInstrumentQuantity34Choice	_cb9dgRu1EeyhRdHRjakS2w	DigitalTokenUnit	Quantity of digital tokens expressed as a number, for example, a number of blockchain tokens.
+FinancialInstrumentQuantity35Choice	_mG9jMxu1EeyhRdHRjakS2w	Unit	Quantity expressed as a number, for example, a number of shares.
+FinancialInstrumentQuantity35Choice	_mG9jOxu1EeyhRdHRjakS2w	FaceAmount	Quantity expressed as an amount representing the face amount, that is, the principal, of a debt instrument.
+FinancialInstrumentQuantity35Choice	_mG9jQxu1EeyhRdHRjakS2w	AmortisedValue	Quantity expressed as an amount representing the current amortised face amount of a bond, for example, a periodic reduction/increase of a bond's principal amount.
+FinancialInstrumentQuantity35Choice	_mG9jSxu1EeyhRdHRjakS2w	Code	Quantity expressed as a code.
+FinancialInstrumentQuantity35Choice	_vfexwRu1EeyhRdHRjakS2w	DigitalTokenUnit	Quantity of digital tokens expressed as a number, for example, a number of blockchain tokens.
+DividendTypeFormat9Choice	_yEjjE0EFEeWVgfuHGaKtRQ	Code	Standard code to specify the frequency of the corporate action event.
+DividendTypeFormat9Choice	_yEjjFUEFEeWVgfuHGaKtRQ	Proprietary	Proprietary identification of the frequency of the corporate action event.
+DistributionTypeFormat7Choice	_4xLzIUEFEeWVgfuHGaKtRQ	Code	Standard code to specify whether the proceeds of the event will be distributed on a rolling basis rather than on a specific date.
+DistributionTypeFormat7Choice	_4xLzI0EFEeWVgfuHGaKtRQ	Proprietary	Proprietary identification of the type of distribution.
+OfferTypeFormat18Choice	_h_uUsfIHEfCS-OXqezZQmw	Code	Standard code to specify the conditions that apply to the offer.
+OfferTypeFormat18Choice	_h_uUs_IHEfCS-OXqezZQmw	Proprietary	Proprietary identification of the conditions that apply to the offer.
+RenounceableEntitlementStatusTypeFormat3Choice	_7EiSoUEBEeWVgfuHGaKtRQ	Code	Standard code to specify the renounceable status.
+RenounceableEntitlementStatusTypeFormat3Choice	_7EiSo0EBEeWVgfuHGaKtRQ	Proprietary	Proprietary identification of the renounceable status.
+CorporateActionEventStageFormat13Choice	_ARbRc0EGEeWVgfuHGaKtRQ	Code	Standard code to specify the stage of the corporate action event.
+CorporateActionEventStageFormat13Choice	_ARbRe0EGEeWVgfuHGaKtRQ	Proprietary	Proprietary identification of the stage of the corporate action event.
+AdditionalBusinessProcessFormat25Choice	_beEykaNYEfC9id413JK-Ig	Code	Standard code to specify the additional business process linked to a corporate action event.
+AdditionalBusinessProcessFormat25Choice	_beEymaNYEfC9id413JK-Ig	Proprietary	Proprietary identification of the additional business process linked to a corporate action event.
+CorporateActionChangeTypeFormat5Choice	_HY0x8UEGEeWVgfuHGaKtRQ	Code	Standard code to specify the type of changes.
+CorporateActionChangeTypeFormat5Choice	_HY0x-UEGEeWVgfuHGaKtRQ	Proprietary	Proprietary identification of the type of changes.
+IntermediateSecuritiesDistributionTypeFormat19Choice	_qdHOxaRKEfC9EJoPPbbyNQ	Code	Standard code to specify the type of intermediate security distribution.
+IntermediateSecuritiesDistributionTypeFormat19Choice	_qdHOy6RKEfC9EJoPPbbyNQ	Proprietary	Proprietary identification of the type of intermediate security distribution.
+CapitalGainFormat3Choice	_MkciQUEGEeWVgfuHGaKtRQ	Code	Specifies whether capital gain is in the scope of the European directive on taxation of savings income in the form of interest payments (Council Directive 2003/48/EC 3 June) for an income realised upon sale, a refund or redemption of shares and units etc.
+CapitalGainFormat3Choice	_MkciSUEGEeWVgfuHGaKtRQ	Proprietary	Proprietary identification of the type of capital gain.
+TaxableIncomePerShareCalculatedFormat3Choice	_RmsUIUEGEeWVgfuHGaKtRQ	Code	Standard code to specify whether the fund calculates the taxable income per dividend/taxable income per share (TID/TIS).
+TaxableIncomePerShareCalculatedFormat3Choice	_RmsUI0EGEeWVgfuHGaKtRQ	Proprietary	Proprietary identification to specify whether the fund calculates the taxable income per dividend/taxable income per share (TID/TIS).
+LotteryTypeFormat4Choice	_Yew_MUEGEeWVgfuHGaKtRQ	Code	Standard code to specify the type of lottery announced.
+LotteryTypeFormat4Choice	_Yew_M0EGEeWVgfuHGaKtRQ	Proprietary	Proprietary identification of the type of lottery announced.
+CertificationTypeFormat3Choice	_bmuOoUEGEeWVgfuHGaKtRQ	Code	Standard code to specify the certification format required, that is, physical or electronic format.
+CertificationTypeFormat3Choice	_bmuOqUEGEeWVgfuHGaKtRQ	Proprietary	Proprietary identification of the certification format.
+ConsentTypeFormat4Choice	_d-eJIUEGEeWVgfuHGaKtRQ	Code	Standard code to specify the consent type required.
+ConsentTypeFormat4Choice	_d-eJI0EGEeWVgfuHGaKtRQ	Proprietary	Proprietary identification of the consent type.
+InformationTypeFormat4Choice	_gr8cAUEGEeWVgfuHGaKtRQ	Code	Standard code to specify the information type required.
+InformationTypeFormat4Choice	_gr8cA0EGEeWVgfuHGaKtRQ	Proprietary	Proprietary identification of the information type.
+DutchAuctionTypeFormat1Choice	_czBloIAIEe-DNerJibcigw	Code	Standard code to specify the Dutch auction type required.
+DutchAuctionTypeFormat1Choice	_l0tokYAIEe-DNerJibcigw	Proprietary	Proprietary identification of the Dutch auction type.
+CorporateActionOption37Choice	_5ih0G-32Eeqc-LCjwLsUVg	Code	Standard code to specify the type of corporate action options.
+CorporateActionOption37Choice	_5ih0Gu32Eeqc-LCjwLsUVg	Proprietary	Proprietary identification of the type of corporate action options.
+FractionDispositionType26Choice	_l5IdIUEHEeWVgfuHGaKtRQ	Code	Standard code to specify how fractions resulting from derived securities will be processed or how prorated decisions will be rounding, if provided with a pro ration rate.
+FractionDispositionType26Choice	_l5IdI0EHEeWVgfuHGaKtRQ	Proprietary	Proprietary identification of the type of fraction disposition.
+OptionFeaturesFormat32Choice	60111b9d-7b5e-4d0c-95f4-aa7b383ad3ab	Code	Standard code to specify the features that may apply to a corporate action option.
+OptionFeaturesFormat32Choice	6815f721-35ee-4796-9ec2-efe38e5c96eb	Proprietary	Proprietary identification of the features that may apply to a corporate action option.
+OptionAvailabilityStatus3Choice	_tBuQcUEHEeWVgfuHGaKtRQ	Code	Standard code to specify the status of the option availability.
+OptionAvailabilityStatus3Choice	_tBuQc0EHEeWVgfuHGaKtRQ	Proprietary	Proprietary identification of the status of the option availability.
+BeneficiaryCertificationType13Choice	_HZtQoYFmEe-L4fccMJVoAw	Code	Beneficial owner certification type expressed in a coded form.
+BeneficiaryCertificationType13Choice	_HZtQpYFmEe-L4fccMJVoAw	Proprietary	Beneficial owner certification type expressed in a proprietary form.
+DateFormat44Choice	_QRUo07QYEeeKRKrD60ELBQ	Date	Date expressed as a calendar date.
+DateFormat44Choice	_QRUo27QYEeeKRKrD60ELBQ	DateCodeAndTime	Specifies a date code and a time.
+DateFormat44Choice	_QRUo3bQYEeeKRKrD60ELBQ	DateCode	Specifies the type of date.
+DateCode21Choice	_b52h0UENEeWVgfuHGaKtRQ	Code	Standard code to specify the type of date.
+DateCode21Choice	_b52h2UENEeWVgfuHGaKtRQ	Proprietary	Proprietary identification of the type of date.
+DateFormat59Choice	_8YeEHe3CEeqc-LCjwLsUVg	Date	Date expressed as a calendar date.
+DateFormat59Choice	_8YeEHO3CEeqc-LCjwLsUVg	DateCode	Specifies the type of date.
+DateCode33Choice	_d3GXAe3DEeqc-LCjwLsUVg	Code	Standard code to specify the type of date.
+DateCode33Choice	_d3GXAO3DEeqc-LCjwLsUVg	Proprietary	Proprietary identification of the type of date.
+DateFormat46Choice	_5RkTEbQYEeeKRKrD60ELBQ	Date	Date expressed as a calendar date.
+DateFormat46Choice	_5RkTGbQYEeeKRKrD60ELBQ	DateCode	Specifies the type of date.
+DateCode20Choice	_T9Q7MUEMEeWVgfuHGaKtRQ	Code	Standard code to indicate the date is unknown.
+DateCode20Choice	_T9Q7OUEMEeWVgfuHGaKtRQ	Proprietary	Proprietary identification of the type of date.
+Period6Choice	_joeDs7QYEeeKRKrD60ELBQ	Period	Time span defined by a start date and time, and an end date and time.
+Period6Choice	_joeDtbQYEeeKRKrD60ELBQ	PeriodCode	Standard code to specify the type of period.
+DateFormat45Choice	_kGhRo7QYEeeKRKrD60ELBQ	Date	Date expressed as an ISO Date.
+DateFormat45Choice	_kGhRq7QYEeeKRKrD60ELBQ	NotSpecifiedDate	Date not specified, for example, the date is unknown.
+GrossDividendRateFormat43Choice	_EuDjkYVUEe-oeNhl-Tk6YQ	Amount	Number of monetary units specified in a currency.
+GrossDividendRateFormat43Choice	_EuDjmYVUEe-oeNhl-Tk6YQ	AmountAndRateStatus	Specifies an amount and a rate status.
+GrossDividendRateFormat43Choice	_EuDjm4VUEe-oeNhl-Tk6YQ	RateTypeAndAmountAndRateStatus	Specifies different formats for the gross dividend rate.
+GrossDividendRateFormat43Choice	_EuDjo4VUEe-oeNhl-Tk6YQ	NotSpecifiedRate	Value of the rate not specified.
+RateType76Choice	_CjjU0eXsEemEj48jhmlA0Q	Code	Standard code to specify the type of gross dividend rate.
+RateType76Choice	_CjjU0-XsEemEj48jhmlA0Q	Proprietary	Proprietary identification of the type of gross dividend rate.
+RateStatus3Choice	_VJurI0EIEeWVgfuHGaKtRQ	Code	Standard code to specify the status of the rate.
+RateStatus3Choice	_VJurJUEIEeWVgfuHGaKtRQ	Proprietary	Proprietary identification of the status of the rate.
+NetDividendRateFormat38Choice	_PVD4c-XsEemEj48jhmlA0Q	Amount	Number of monetary units specified in a currency.
+NetDividendRateFormat38Choice	_PVD4deXsEemEj48jhmlA0Q	AmountAndRateStatus	Specifies an amount and a rate status.
+NetDividendRateFormat38Choice	_PVD4d-XsEemEj48jhmlA0Q	RateTypeAndAmountAndRateStatus	Specifies different formats for the net dividend rate.
+NetDividendRateFormat38Choice	_PVD4f-XsEemEj48jhmlA0Q	NotSpecifiedRate	Value of the rate not specified.
+RateType77Choice	_PDp_YeXsEemEj48jhmlA0Q	Code	Standard code to specify the type of net dividend rate.
+RateType77Choice	_PDp_Y-XsEemEj48jhmlA0Q	Proprietary	Proprietary identification of the type of net dividend rate.
+InterestRateUsedForPaymentFormat11Choice	_ODmhYYV6Ee-oeNhl-Tk6YQ	Rate	Value is expressed as a rate.
+InterestRateUsedForPaymentFormat11Choice	_ODmhaYV6Ee-oeNhl-Tk6YQ	Amount	Number of monetary units specified in a currency.
+InterestRateUsedForPaymentFormat11Choice	_ODmhcYV6Ee-oeNhl-Tk6YQ	RateTypeAndAmountAndRateStatus	Specifies different formats for interest rate used for payment.
+InterestRateUsedForPaymentFormat11Choice	_ODmheYV6Ee-oeNhl-Tk6YQ	NotSpecifiedRate	Value of the rate not specified.
+RateType33Choice	_0Qo4wEEIEeWVgfuHGaKtRQ	Code	Standard code to specify the type of rate.
+RateType33Choice	_0Qo4wkEIEeWVgfuHGaKtRQ	Proprietary	Proprietary identification of the type of rate.
+RateFormat32Choice	_k8O_8akHEfCG_LQaXOxwew	Rate	Value is expressed as a rate.
+RateFormat32Choice	_k8PnBqkHEfCG_LQaXOxwew	NotSpecifiedRate	Value of the rate not specified.
+RateAndAmountFormat56Choice	_2z9AYYV4Ee-oeNhl-Tk6YQ	Rate	Value expressed as a rate.
+RateAndAmountFormat56Choice	_2z9AaYV4Ee-oeNhl-Tk6YQ	NotSpecifiedRate	Value of the rate not specified.
+RateAndAmountFormat56Choice	_2z9AcYV4Ee-oeNhl-Tk6YQ	Amount	Value is expressed as a currency and amount.
+RateAndAmountFormat56Choice	_2z9AeYV4Ee-oeNhl-Tk6YQ	RateTypeAndRate	Value is expressed as a rate type and a percentage rate.
+RateType42Choice	__pfAUUEIEeWVgfuHGaKtRQ	Code	Standard code to specify the type of withholding tax rate.
+RateType42Choice	__pfAU0EIEeWVgfuHGaKtRQ	Proprietary	Proprietary identification of the type of withholding tax rate.
+RateType36Choice	_O2CDA0EJEeWVgfuHGaKtRQ	Code	Standard code to specify the type of tax rate.
+RateType36Choice	_O2CDBUEJEeWVgfuHGaKtRQ	Proprietary	Proprietary identification of the type of tax rate.
+PriceFormat74Choice	_C7KNUYV6Ee-oeNhl-Tk6YQ	PercentagePrice	Price expressed as a percentage.
+PriceFormat74Choice	_C7K0YYV6Ee-oeNhl-Tk6YQ	AmountPrice	Price expressed as a currency and amount.
+PriceFormat74Choice	_C7K0aYV6Ee-oeNhl-Tk6YQ	NotSpecifiedPrice	Value of the price not specified.
+PriceFormat61Choice	_4doie5bREee8S7xwGG7Veg	AmountPrice	Price expressed as a currency and amount.
+PriceFormat61Choice	_4doifJbREee8S7xwGG7Veg	NotSpecifiedPrice	Value of the price not specified.
+ProrationBelowMinimumQuantity3Choice	_NpRYIaj5EfCG_LQaXOxwew	Code	Standard code to specify the type of proration below minimum quantity.
+ProrationBelowMinimumQuantity3Choice	_NpRYI6j5EfCG_LQaXOxwew	Proprietary	Proprietary identification of the proration below minimum quantity type.
+TemporaryFinancialInstrumentIndicator3Choice	_KWEpYUEKEeWVgfuHGaKtRQ	TemporaryIndicator	Temporary financial instrument identification used for processing reasons.
+TemporaryFinancialInstrumentIndicator3Choice	_KWEpaUEKEeWVgfuHGaKtRQ	Proprietary	Proprietary code to specify whether the security is a temporary security.
+NonEligibleProceedsIndicator5Choice	_VDL_0WHZEe6yt_d72zQZeQ	Code	Standard code to specify information regarding the non eligibility of the outturn resources.
+NonEligibleProceedsIndicator5Choice	_VDL_02HZEe6yt_d72zQZeQ	Proprietary	Proprietary identification to specify information regarding the non eligibility of the outturn resources.
+RatioFormat17Choice	_vc05l0EKEeWVgfuHGaKtRQ	QuantityToQuantity	Ratio expressed as a quotient of quantities.
+RatioFormat17Choice	_vc05n0EKEeWVgfuHGaKtRQ	NotSpecifiedRate	Value of the ratio not specified.
+RatioFormat17Choice	_vc05p0EKEeWVgfuHGaKtRQ	AmountToAmount	Ratio expressed as a quotient of amounts.
+RatioFormat18Choice	_7mLRB0EKEeWVgfuHGaKtRQ	QuantityToQuantity	Ratio expressed as a quotient of quantities.
+RatioFormat18Choice	_7mLRD0EKEeWVgfuHGaKtRQ	NotSpecifiedRate	Value of the ratio not specified.
+RatioFormat18Choice	_7mLRF0EKEeWVgfuHGaKtRQ	AmountToAmount	Ratio expressed as a quotient of amounts.
+RatioFormat18Choice	_7mLRH0EKEeWVgfuHGaKtRQ	AmountToQuantity	Ratio expressed as an amount to quantity ratio.
+RatioFormat18Choice	_7mLRJ0EKEeWVgfuHGaKtRQ	QuantityToAmount	Ratio expressed as a quantity to amount ratio.
+RateFormat26Choice	_v_BeAYV6Ee-oeNhl-Tk6YQ	Rate	Value is expressed as a rate.
+RateFormat26Choice	_v_BeCYV6Ee-oeNhl-Tk6YQ	Amount	Cash amount.
+RateFormat26Choice	_v_BeC4V6Ee-oeNhl-Tk6YQ	NotSpecifiedRate	Value of the rate not specified.
+IndicativeOrMarketPrice12Choice	_C1fDIYV6Ee-oeNhl-Tk6YQ	IndicativePrice	Estimated price, for example, for valuation purposes.
+IndicativeOrMarketPrice12Choice	_C1fDKYV6Ee-oeNhl-Tk6YQ	MarketPrice	Last reported/known price of a financial instrument in a market.
+PriceFormat46Choice	_b3eOJUELEeWVgfuHGaKtRQ	AmountPrice	Price expressed as a currency and amount.
+PriceFormat46Choice	_b3eOLUELEeWVgfuHGaKtRQ	NotSpecifiedPrice	Value of the price not specified.
+PriceFormat72Choice	_CkPiIYV6Ee-oeNhl-Tk6YQ	PercentagePrice	Price expressed as a percentage.
+PriceFormat72Choice	_CkPiKYV6Ee-oeNhl-Tk6YQ	AmountPrice	Price expressed as a currency and amount.
+PriceFormat72Choice	_CkPiMYV6Ee-oeNhl-Tk6YQ	NotSpecifiedPrice	Value of the price not specified.
+PriceFormat72Choice	_CkPiOYV6Ee-oeNhl-Tk6YQ	AmountPricePerFinancialInstrumentQuantity	Price expressed as a ratio: amount price per financial instrument quantity.
+PriceFormat72Choice	_CkPiQYV6Ee-oeNhl-Tk6YQ	AmountPricePerAmount	Price expressed as a ratio: amount price per amount.
+PriceFormat72Choice	_CkPiSYV6Ee-oeNhl-Tk6YQ	IndexPoints	Price expressed in index points.
+PriceCalculationMethod2Choice	_HlKRRaGoEe-4O7NbwmwJkQ	Code	Standard code to specify the method applied for the calculation of the price.
+PriceCalculationMethod2Choice	_HlKRRKGoEe-4O7NbwmwJkQ	Proprietary	Proprietary identification to specify the method applied for the calculation of the price.
+DateFormat57Choice	_zBT-BT5-EemPvNTzinB5Vw	Date	Date expressed as a calendar date.
+DateFormat57Choice	_zBT-BD5-EemPvNTzinB5Vw	DateCode	Date is expressed using a code.
+GrossDividendRateFormat38Choice	_ahHhM-XsEemEj48jhmlA0Q	Amount	Number of monetary units specified in a currency.
+GrossDividendRateFormat38Choice	_ahHhO-XsEemEj48jhmlA0Q	AmountAndRateStatus	Specifies an amount and a rate status.
+GrossDividendRateFormat38Choice	_ahHhPeXsEemEj48jhmlA0Q	RateTypeAndAmountAndRateStatus	Specifies different formats for the gross dividend rate.
+GrossDividendRateFormat38Choice	_ahHhReXsEemEj48jhmlA0Q	NotSpecifiedRate	Value of the rate not specified.
+RateType78Choice	_ZvuggeXsEemEj48jhmlA0Q	Code	Standard code to specify the type of gross dividend rate.
+RateType78Choice	_Zvugg-XsEemEj48jhmlA0Q	Proprietary	Proprietary identification of the type of gross dividend rate.
+SolicitationFeeRateFormat11Choice	_DPSNwYV7Ee-oeNhl-Tk6YQ	Rate	Value is expressed as a rate.
+SolicitationFeeRateFormat11Choice	_DPSNyYV7Ee-oeNhl-Tk6YQ	AmountToQuantity	Ratio expressed as an amount to quantity ratio.
+SolicitationFeeRateFormat11Choice	_DPSN0YV7Ee-oeNhl-Tk6YQ	Amount	Cash amount.
+SolicitationFeeRateFormat11Choice	_DPSN04V7Ee-oeNhl-Tk6YQ	NotSpecifiedRate	Value of the rate not specified.
+NetDividendRateFormat39Choice	_iPVxI-XsEemEj48jhmlA0Q	Amount	Number of monetary units specified in a currency.
+NetDividendRateFormat39Choice	_iPVxJeXsEemEj48jhmlA0Q	AmountAndRateStatus	Specifies an amount and a rate status.
+NetDividendRateFormat39Choice	_iPVxJ-XsEemEj48jhmlA0Q	RateTypeAndAmountAndRateStatus	Specifies different formats for the net dividend rate.
+NetDividendRateFormat39Choice	_iPVxL-XsEemEj48jhmlA0Q	NotSpecifiedRate	Value of the rate not specified.
+RateType79Choice	_iwEfoeXsEemEj48jhmlA0Q	Code	Standard code to specify the type of net dividend rate.
+RateType79Choice	_iwEfo-XsEemEj48jhmlA0Q	Proprietary	Proprietary identification of the type of net dividend rate.
+RateFormat31Choice	__Ha5QajtEfCG_LQaXOxwew	Rate	Value is expressed as a rate.
+RateFormat31Choice	__Ha5SajtEfCG_LQaXOxwew	NotSpecifiedRate	Value of the rate not specified.
+RateFormat31Choice	_IJ18AKjuEfCG_LQaXOxwew	Amount	Value is expressed as an amount.
+RateAndAmountFormat42Choice	_9Mrp5UEMEeWVgfuHGaKtRQ	Amount	Number of monetary units specified in a currency.
+RateAndAmountFormat42Choice	_9Mrp7UEMEeWVgfuHGaKtRQ	NotSpecifiedRate	Value of the rate not specified.
+RateAndAmountFormat61Choice	_JY4pQYV7Ee-oeNhl-Tk6YQ	Rate	Value expressed as a rate.
+RateAndAmountFormat61Choice	_JY4pSYV7Ee-oeNhl-Tk6YQ	Amount	Value is expressed as a currency and amount.
+RateAndAmountFormat61Choice	_JY4pUYV7Ee-oeNhl-Tk6YQ	NotSpecifiedRate	Value of the rate not specified.
+RateAndAmountFormat61Choice	_JY4pWYV7Ee-oeNhl-Tk6YQ	RateTypeAndAmountAndRateStatus	Value is expressed as a rate type and an amount.
+RateAndAmountFormat61Choice	_JY4pW4V7Ee-oeNhl-Tk6YQ	RateTypeAndRate	Value is expressed as a rate type and a percentage rate.
+DeemedRateType1Choice	_D-CdNZSmEeeh5JjedkaA_g	Code	Standard code to specify the type of deemed rate.
+DeemedRateType1Choice	_D-CdNJSmEeeh5JjedkaA_g	Proprietary	Proprietary identification of the type of deemed rate.

@@ -1,0 +1,10 @@
+choice	memberId	memberName	text
+AccountIdentification77Choice	_nF16FZt3Ee-wQIOX0djF2w	ForAllAccounts	All safekeeping accounts that own underlying financial instrument.
+AccountIdentification77Choice	_nF16HZt3Ee-wQIOX0djF2w	AccountsListAndBalanceDetails	Selected safekeeping accounts list (and optionally balance information) to which the corporate action event applies.
+SafekeepingPlaceFormat54Choice	_nF16a5t3Ee-wQIOX0djF2w	Identification	Place of safekeeping expressed as a code and a narrative description.
+SafekeepingPlaceFormat54Choice	_nF16c5t3Ee-wQIOX0djF2w	Country	Place of safekeeping expressed with a country code.
+SafekeepingPlaceFormat54Choice	_nF16e5t3Ee-wQIOX0djF2w	DigitalLedgerIdentification	Place of settlement expressed with a Digital Ledger Identifier. It identifies a digital ledger or distributed ledger system (for example, blockchain or similar platforms).
+SafekeepingPlaceFormat54Choice	_nF16fZt3Ee-wQIOX0djF2w	TypeAndIdentification	Place of safekeeping expressed with a type and identification.
+SafekeepingPlaceFormat54Choice	_nF16hZt3Ee-wQIOX0djF2w	Proprietary	Place of safekeeping expressed with a propriety identification scheme.
+CorporateActionNarrative4Choice	_c4ciiZKQEeWHWpTQn1FFVg	Code	Standard code to specify the narrative type of the message.
+CorporateActionNarrative4Choice	_c4cikZKQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the narrative type of the message.

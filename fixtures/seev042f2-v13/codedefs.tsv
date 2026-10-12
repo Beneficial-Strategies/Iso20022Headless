@@ -1,0 +1,91 @@
+codeSet	code	enumName	isoId	text
+CorporateActionStatementType2Code	MISS	Missing	_03aEEbtEEeilsanBGAzy4A	Statement contains missing instructions.
+CorporateActionStatementType2Code	ALLL	All	_03aEE7tEEeilsanBGAzy4A	Statement contains all instructions.
+CorporateActionStatementType2Code	BALO	BalanceOnlyNotification	_WIwwAbtFEeilsanBGAzy4A	Balance information with no instruction details provided.
+CorporateActionStatementType2Code	BALI	BalanceInformation	_WSKjortFEeilsanBGAzy4A	Balance information with instruction details.
+CorporateActionStatementReportingType1Code	MASE	MultipleAccounts	_bTCYhtp-Ed-ak6NoX_4Aeg_-1322387625	The reporting is for a single event and for multiple accounts.
+CorporateActionStatementReportingType1Code	SAME	MultipleEvents	_bTCYh9p-Ed-ak6NoX_4Aeg_144761138	The reporting is for multiple events for a single account.
+CorporateActionOption11Code	ABST	Abstain	_S8I7peaqEemtTOaHuc_63w	Vote expressed as abstain. In this case, the issuing company will add the number of shares to the quorum of the meeting.|If the voting right is not executed, it will not be added to the quorum. In this case, code NOAC should be used.
+CorporateActionOption11Code	BSPL	BonusSharePlan	_S8I7n-aqEemtTOaHuc_63w	Receive equities from the share premium reserve of the company and considered as a capital distribution rather than a disbursement of income with different tax implications (typically found in Australia).
+CorporateActionOption11Code	BUYA	BuyUp	_S8I7ouaqEemtTOaHuc_63w	Buy additional securities to round up position.
+CorporateActionOption11Code	CASE	CashAndSecurity	_S8I7oeaqEemtTOaHuc_63w	Option to choose between different security and cash options.
+CorporateActionOption11Code	CASH	Cash	_S8I7qOaqEemtTOaHuc_63w	Option to choose cash.
+CorporateActionOption11Code	CEXC	ConsentAndExchange	_S8I7m-aqEemtTOaHuc_63w	Vote to consent to change the terms of the securities agreement and to exchange securities.
+CorporateActionOption11Code	CONN	ConsentDenied	_S8I7sOaqEemtTOaHuc_63w	Vote not to approve the event or proposal.
+CorporateActionOption11Code	CONY	ConsentGranted	_S8I7puaqEemtTOaHuc_63w	Vote to approve the event or proposal.
+CorporateActionOption11Code	CTEN	ConsentAndTender	_S8I7pOaqEemtTOaHuc_63w	Vote to consent to change the terms of the securities agreement and to tender securities for cash.
+CorporateActionOption11Code	EXER	Exercise	_S8I7q-aqEemtTOaHuc_63w	Exercise intermediate securities or warrants.
+CorporateActionOption11Code	LAPS	Lapse	_S8I7rOaqEemtTOaHuc_63w	Allow event or entitled security to expire.
+CorporateActionOption11Code	MPUT	Retain	_S8I7seaqEemtTOaHuc_63w	Option that allows a holder to elect to retain their holding, for example, a putable bond.
+CorporateActionOption11Code	NOAC	NoAction	_S8I7o-aqEemtTOaHuc_63w	Option for the account owner not to take part in the event. This would include opt-out for class actions and lodging of dissenters' rights.
+CorporateActionOption11Code	NOQU	NonQualifiedInvestor	_S8I7qeaqEemtTOaHuc_63w	Account owner is a non-qualified investor.
+CorporateActionOption11Code	OFFR	ProposedRate	_S8I7reaqEemtTOaHuc_63w	In a remarketing of variable notes, the margin that shareholders can propose in respect of the next interest period.
+CorporateActionOption11Code	OTHR	Other	_S8I7ruaqEemtTOaHuc_63w	Generic corporate action option to be used in case that no other specific code is appropriate.
+CorporateActionOption11Code	OVER	Oversubscribe	_S8I7nOaqEemtTOaHuc_63w	Subscribe to more equities than underlying securities position allows.
+CorporateActionOption11Code	QINV	QualifiedInvestor	_S8I7quaqEemtTOaHuc_63w	Account owner is a qualified investor.
+CorporateActionOption11Code	SECU	Security	_S8I7suaqEemtTOaHuc_63w	Distribution of securities to holders.
+CorporateActionOption11Code	SLLE	SellEntitlement	_S8I7p-aqEemtTOaHuc_63w	Sell the intermediate securities.
+CorporateActionOption11Code	PRUN	UnknownProceeds	_S8I7s-aqEemtTOaHuc_63w	Proceeds not known during election period. The option can result in cash and/or securities.
+CancelledStatusReason6Code	CANI	CancelledByYourself	_a1F4Qdp-Ed-ak6NoX_4Aeg_1095310605	Transaction is cancelled by yourself.
+CancelledStatusReason6Code	CANO	CancelledByOther	_a1F4Qtp-Ed-ak6NoX_4Aeg_1161803601	Transaction is cancelled by a party other than the instructing party, for example, a market infrastructure such as a stock exchange.
+CancelledStatusReason6Code	CANS	CancelledBySystem	_a1F4Q9p-Ed-ak6NoX_4Aeg_1193205425	Transaction is cancelled by the system.
+CancelledStatusReason6Code	CSUB	CancelledByAgent	_a1F4RNp-Ed-ak6NoX_4Aeg_1225528362	Instruction has been cancelled by the agent due to an event deadline extension.
+CancelledStatusReason6Code	OTHR	Other	_a1F4Rdp-Ed-ak6NoX_4Aeg_1272087253	Other. See Narrative.
+RejectionReason86Code	ADEA	AccountServicerDeadlineMissed	_RkaD0W5mEe6a272CIEgzKw	Transaction/instruction received after the account servicer's specified deadline.
+RejectionReason86Code	CERT	IncorrectCertification	_RkaD025mEe6a272CIEgzKw	Instruction is rejected since the provided certification is incorrect or incomplete.
+RejectionReason86Code	INVA	InvalidForTaxAuthorities	_RkaD1W5mEe6a272CIEgzKw	For tax reclaim, the reclaim is invalid for the tax authorities.
+RejectionReason86Code	OPTY	InvalidOptionType	_RkaD125mEe6a272CIEgzKw	Invalid option type.
+RejectionReason86Code	ULNK	InvalidReference	_RkaD2W5mEe6a272CIEgzKw	Linked reference is unknown.
+RejectionReason86Code	DSEC	InvalidSecurity	_RkaD225mEe6a272CIEgzKw	Unrecognised or invalid financial instrument identification.
+RejectionReason86Code	LACK	LackofSecurities	_RkaD3W5mEe6a272CIEgzKw	Instructed position exceeds the eligible balance.
+RejectionReason86Code	LATE	MarketDeadlineMissed	_RkaD325mEe6a272CIEgzKw	Received after market deadline.
+RejectionReason86Code	NMTY	Mismatch	_RkaD4W5mEe6a272CIEgzKw	Mismatch between option number and option type.
+RejectionReason86Code	FULL	MissingBeneficiaryOwnerDetails	_RkaD425mEe6a272CIEgzKw	Rejected due to missing beneficiary owner details.
+RejectionReason86Code	CANC	OptionCancelled	_RkaD5W5mEe6a272CIEgzKw	Option is not valid; it has been cancelled by the market or service provider, and cannot be responded to. Any responses already processed against this option are considered void and new responses will be required.
+RejectionReason86Code	INTV	OptionInactive	_RkaD525mEe6a272CIEgzKw	Option is not active and can no longer be responded to. Any responses already processed against this option will remain valid, for example, expired option.
+RejectionReason86Code	OPNM	OptionNumberRejection	_RkaD6W5mEe6a272CIEgzKw	Unrecognised option number.
+RejectionReason86Code	OTHR	Other	_RkaD625mEe6a272CIEgzKw	Other. See Narrative.
+RejectionReason86Code	DQUA	QuantityRejection	_RkaD7W5mEe6a272CIEgzKw	Unrecognised or invalid instructed quantity.
+RejectionReason86Code	REFT	RefusedByTaxAuthorities	_RkaD725mEe6a272CIEgzKw	Reclaim is refused by the tax authorities.
+RejectionReason86Code	SAFE	SafekeepingAccountRejection	_RkaD8W5mEe6a272CIEgzKw	Unrecognised or invalid message sender's safekeeping account.
+RejectionReason86Code	EVNM	UnrecognisedIdentification	_RkaD825mEe6a272CIEgzKw	Unrecognised event number.
+RejectionReason86Code	DQCS	AmountRejection	_RkaD9W5mEe6a272CIEgzKw	Unrecognised or invalid instructed cash amount.
+RejectionReason86Code	DQCC	CurrencyRejection	_RkaD925mEe6a272CIEgzKw	Invalid instructed currency.
+RejectionReason86Code	DQAM	InstructionTypeRejection	_RkaD-W5mEe6a272CIEgzKw	Invalid use of instructed amount (QCAS) or of instructed quantity (QINS) qualifiers.
+RejectionReason86Code	IRDQ	InvalidUseRoundUpQuantity	_RkaD-25mEe6a272CIEgzKw	Instruction is rejected due to invalid use of the additional round up quantity.
+RejectionReason86Code	DQBV	InvalidBidValue	_RkaD_W5mEe6a272CIEgzKw	Bid price / basis points / percentage falls outside of bid range for the event (generally used in Dutch Auctions or Bid Tenders).
+RejectionReason86Code	DQBI	InvalidBidIncrement	_RkaD_25mEe6a272CIEgzKw	Bid price / basis points / percentage increments rejected due to invalid bid increment for the event (generally used in Dutch Auctions or Bid Tenders).
+RejectionReason86Code	DCAN	RejectedSinceAlreadyCancelled	_RkaEAW5mEe6a272CIEgzKw	Cancellation request was rejected since the instruction has already been cancelled.
+RejectionReason86Code	DPRG	RejectedSinceInProgress	_RkaEA25mEe6a272CIEgzKw	Cancellation request has been rejected because the instruction process is in progress or has been processed.
+RejectionReason86Code	INIR	InstructionIrrevocable	_RkaEBW5mEe6a272CIEgzKw	Instruction is irrevocable.
+RejectionReason86Code	SHAR	ShareholderNumberRejection	_RkaEB25mEe6a272CIEgzKw	Unrecognised, missing or invalid shareholder number.
+RejectionReason86Code	BSTR	BeforeInstructionPeriod	_RkaECW5mEe6a272CIEgzKw	Instruction is submitted before instruction start date.
+RejectionReason86Code	CTCT	MissingContact	_RkaEC25mEe6a272CIEgzKw	Contact information is missing.
+RejectionReason86Code	DUPL	DuplicateInstruction	_RkaEDW5mEe6a272CIEgzKw	Instruction is rejected due to duplicate business message identifier.
+RejectionReason86Code	PROI	MissingProtectIdentification	_RkaED25mEe6a272CIEgzKw	Protect identification is required for cover protect instructions.
+RejectionReason86Code	PROT	MissingProtectDate	_RkaEEW5mEe6a272CIEgzKw	Protect date is required for cover protect instructions.
+RejectionReason86Code	PRON	NoProtectPrivilege	_RkaEE25mEe6a272CIEgzKw	No protect privilege for this event.
+RejectionReason86Code	TRTI	MissingTransactionType	_RkaEFW5mEe6a272CIEgzKw	Transaction type is missing or invalid for protect or cover protect instructions.
+RejectionReason86Code	REJA	RejectedByIssuerAgent	_RkaEF25mEe6a272CIEgzKw	Instruction rejected by the issuer agent.
+RejectionReason86Code	IPAW	InvalidPaperwork	_RkaEGW5mEe6a272CIEgzKw	Required paperwork is invalid, incomplete or missing.
+RejectionReason86Code	IPED	InstructionPriorToEntitlementDate	_ZHW34W5mEe6a272CIEgzKw	Instruction was received prior to entitlement date.
+PendingReason27Code	ADEA	AccountServicerDeadlineMissed	_sepZUWIIEe6Vre0WuwPTOg	Instruction was received after the account servicer's deadline. Processed on best effort basis.
+PendingReason27Code	OTHR	Other	_sepZU2IIEe6Vre0WuwPTOg	Other. See Narrative.
+PendingReason27Code	FULL	PendingBeneficiaryOwnerDetails	_sepZVWIIEe6Vre0WuwPTOg	Pending receipt of beneficiary owner details.
+PendingReason27Code	MCER	MissingCertification	_sepZV2IIEe6Vre0WuwPTOg	Awaiting receipt of adequate certification.
+PendingReason27Code	MONY	InsufficientMoney	_sepZWWIIEe6Vre0WuwPTOg	Insufficient money in your account.
+PendingReason27Code	LACK	LackOfSecurities	_sepZW2IIEe6Vre0WuwPTOg	Insufficient financial instruments in your account.
+PendingReason27Code	LATE	MarketDeadlineMissed	_sepZXWIIEe6Vre0WuwPTOg	Instruction was received after market deadline.
+PendingReason27Code	DQUA	QuantityDisagreement	_sepZX2IIEe6Vre0WuwPTOg	Quantity of financial instruments does not match.
+PendingReason27Code	PENR	PendingReceipt	_sepZYWIIEe6Vre0WuwPTOg	The instruction is pending receipt of securities, for example, from a purchase or loan.
+PendingReason27Code	CERT	WrongCertificatesNumbers	_sepZY2IIEe6Vre0WuwPTOg	Certificate number error.
+PendingReason27Code	DQCS	DisagreementOnCashAmount	_sepZZWIIEe6Vre0WuwPTOg	Unrecognised or invalid instructed cash amount.
+PendingReason27Code	ITAX	IncorrectTaxRate	_sepZZ2IIEe6Vre0WuwPTOg	Tax rate provided is incorrect. It falls outside the acceptable values for that investment country.
+PendingReason27Code	NTAX	InconsistentTaxRate	_sepZaWIIEe6Vre0WuwPTOg	Tax rate is not consistent with the documentation in place.
+PendingReason27Code	MTAX	MissingTaxRate	_sepZa2IIEe6Vre0WuwPTOg	Tax rate is missing.
+PendingReason27Code	SNAV	SystemNotAvailable	_sepZbWIIEe6Vre0WuwPTOg	System is not available. Instruction is sent outside of business hours.
+PendingReason27Code	BSTR	BeforeInstructionPeriod	_sepZb2IIEe6Vre0WuwPTOg	Instruction is submitted before instruction start date.
+PendingReason27Code	IPAW	InvalidPaperwork	_sepZcWIIEe6Vre0WuwPTOg	Required paperwork is invalid, incomplete or missing.
+PendingReason27Code	IPED	InstructionPriorToEntitlementDate	_vtes0WIIEe6Vre0WuwPTOg	Instruction was received prior to entitlement date.
+ReturnedStatus1Code	NARR	NarrativeReason	_CqcA8YZPEe-4Qrkp6i5eWQ	See narrative field for reason.
+ReturnedStatus1Code	PROR	Prorated	_CvQPgoZPEe-4Qrkp6i5eWQ	Shares returned due to prorated acceptance.

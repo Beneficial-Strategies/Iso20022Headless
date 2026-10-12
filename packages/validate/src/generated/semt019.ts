@@ -105,6 +105,7 @@ import {
   Max210TextSchema,
   IBAN2007IdentifierSchema,
   Max34TextSchema,
+  CashAccountIdentification9ChoiceSchema,
   SafekeepingPlace3CodeSchema,
   SafekeepingPlaceTypeAndText8Schema,
   CountryCodeSchema,
@@ -171,12 +172,6 @@ export const AllegementStatus3ChoiceSchema = choiceOf({
 export const Price10Schema = z.strictObject({
   Type: YieldedOrValueType2ChoiceSchema,
   Value: PriceRateOrAmount3ChoiceSchema,
-});
-
-export const CashAccountIdentification9ChoiceSchema = choiceOf({
-  IBAN: IBAN2007IdentifierSchema,
-  BlockChainCashWallet: BlockChainAddressWallet3Schema,
-  Proprietary: Max34TextSchema,
 });
 
 export const QuantityBreakdown62Schema = z.strictObject({
@@ -437,16 +432,6 @@ const ownTypeDescriptors: TypeDescriptors = {
     fields: [
       f({ name: "Type", isoId: "_UyctQQycEeuG8M5giQ2e0w", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "YieldedOrValueType2Choice", required: true }),
       f({ name: "Value", isoId: "_UyctQwycEeuG8M5giQ2e0w", xmlTag: "Val", displayName: displayName("Value"), kind: "choice", type: "PriceRateOrAmount3Choice", required: true }),
-    ],
-  },
-  "CashAccountIdentification9Choice": {
-    name: "CashAccountIdentification9Choice",
-    isoId: "_lf5ssZBPEe-COKgew96POA",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "IBAN", isoId: "_oA-iUZBPEe-COKgew96POA", xmlTag: "IBAN", displayName: displayName("IBAN"), kind: "text", type: "IBAN2007Identifier", required: true }),
-      f({ name: "BlockChainCashWallet", isoId: "_VBinYJBQEe-COKgew96POA", xmlTag: "BlckChainCshWllt", displayName: displayName("BlockChainCashWallet"), kind: "component", type: "BlockChainAddressWallet3", required: true }),
-      f({ name: "Proprietary", isoId: "_oA-iWZBPEe-COKgew96POA", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max34Text", required: true }),
     ],
   },
   "QuantityBreakdown62": {
@@ -911,6 +896,7 @@ export const typeDescriptors: TypeDescriptors = {
   "Max210Text": sharedTypeDescriptors["Max210Text"]!,
   "IBAN2007Identifier": sharedTypeDescriptors["IBAN2007Identifier"]!,
   "Max34Text": sharedTypeDescriptors["Max34Text"]!,
+  "CashAccountIdentification9Choice": sharedTypeDescriptors["CashAccountIdentification9Choice"]!,
   "SafekeepingPlace3Code": sharedTypeDescriptors["SafekeepingPlace3Code"]!,
   "SafekeepingPlaceTypeAndText8": sharedTypeDescriptors["SafekeepingPlaceTypeAndText8"]!,
   "CountryCode": sharedTypeDescriptors["CountryCode"]!,

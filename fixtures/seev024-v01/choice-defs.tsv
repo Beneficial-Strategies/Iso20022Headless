@@ -1,0 +1,5 @@
+choice	memberId	memberName	text
+CorporateActionInformationStatus1Choice	_RiPM09p-Ed-ak6NoX_4Aeg_-880551807	ProcessedStatus	Provides information about the processing status of the advice.
+CorporateActionInformationStatus1Choice	_RiPM1Np-Ed-ak6NoX_4Aeg_-878703757	RejectedStatus	Provides information about the rejection status.
+RejectionReason15FormatChoice	_RoV00dp-Ed-ak6NoX_4Aeg_356231670	Code	Standard code to specify the reason of a rejection of an information advice.
+RejectionReason15FormatChoice	_RoV00tp-Ed-ak6NoX_4Aeg_356231669	Proprietary	Proprietary code to express the reason of a rejection of an information advice.

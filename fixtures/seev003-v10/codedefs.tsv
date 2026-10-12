@@ -1,0 +1,3 @@
+codeSet	code	enumName	isoId	text
+NotificationType2Code	NEWM	New	_sC4o8a7wEemG7MmivSuE5g	New notification.
+NotificationType2Code	REPL	Replacement	_sP-pwq7wEemG7MmivSuE5g	Notification replacing a previously sent notification.

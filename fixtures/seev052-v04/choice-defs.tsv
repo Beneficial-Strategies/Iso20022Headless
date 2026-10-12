@@ -1,0 +1,22 @@
+choice	memberId	memberName	text
+MarketClaimProcessingStatus2Choice	_G1D_IbMaEfCEXew4g5B5oA	Cancelled	Provides status information related to an instruction request cancelled.
+MarketClaimProcessingStatus2Choice	_G1D_KbMaEfCEXew4g5B5oA	AcceptedForFurtherProcessing	Provides status information related to an instruction request that is accepted. This means that the instruction has been received, is processable and has been validated for further processing.
+MarketClaimProcessingStatus2Choice	_G1D_MbMaEfCEXew4g5B5oA	Rejected	Provides status information related to an instruction request rejected for further processing due to system reasons.
+MarketClaimProcessingStatus2Choice	_G1D_ObMaEfCEXew4g5B5oA	Pending	Provides status information related to a pending instruction.
+MarketClaimProcessingStatus2Choice	_G1D_QbMaEfCEXew4g5B5oA	MatchingStatus	Provides the matching status of the instruction.
+MarketClaimProcessingStatus2Choice	_G1D_Q7MaEfCEXew4g5B5oA	ProprietaryStatus	Proprietary status related to an instruction.
+RejectedStatus37Choice	_GRg7URHqEeuE0Pnt-OcNOA	NoSpecifiedReason	Reason not specified.
+RejectedStatus37Choice	_GRg7WRHqEeuE0Pnt-OcNOA	Reason	Reason for the rejected status.
+RejectedReason37Choice	_G6lGcRHqEeuE0Pnt-OcNOA	Code	Standard code to specify the reason why the instruction/cancellation request has a rejected status.
+RejectedReason37Choice	_G6lGeRHqEeuE0Pnt-OcNOA	Proprietary	Proprietary identification of the reason why the instruction/cancellation request has a rejected status.
+PendingStatus86Choice	_G8NwAbMaEfCEXew4g5B5oA	NoSpecifiedReason	Reason not specified.
+PendingStatus86Choice	_G8NwCbMaEfCEXew4g5B5oA	Reason	Reason for the pending status.
+PendingReason83Choice	_Herj4bMaEfCEXew4g5B5oA	Code	Standard code to specify the reason why the instruction/event has a pending status.
+PendingReason83Choice	_Herj6bMaEfCEXew4g5B5oA	Proprietary	Proprietary identification of the reason why the instruction/event has a pending status.
+MatchingStatus34Choice	_yaCR8RUHEeuZw7VHHgrHLg	Matched	Status is matched.
+MatchingStatus34Choice	_yZ5ICBUHEeuZw7VHHgrHLg	Unmatched	Status is unmatched.
+MatchingStatus34Choice	_yaCR8BUHEeuZw7VHHgrHLg	Proprietary	Proprietary status.
+UnmatchedStatus23Choice	_l9RZ0RUIEeuZw7VHHgrHLg	NoSpecifiedReason	Indicates that there is no reason available or to report.
+UnmatchedStatus23Choice	_l9bK0xUIEeuZw7VHHgrHLg	Reason	Specifies the reason of the unmatched status.
+UnmatchedReason31Choice	_m1D9cRUIEeuZw7VHHgrHLg	Code	Specifies the reason why the instruction has an unmatched status.
+UnmatchedReason31Choice	_m1D9dRUIEeuZw7VHHgrHLg	Proprietary	Specifies the reason why the instruction has an unmatched status.

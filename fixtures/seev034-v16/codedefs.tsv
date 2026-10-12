@@ -1,0 +1,69 @@
+codeSet	code	enumName	isoId	text
+RejectionReason89Code	ADEA	AccountServicerDeadlineMissed	_SIOwsaKsEfCHi7w3_0pcpw	Transaction/instruction received after the account servicer's specified deadline.
+RejectionReason89Code	CERT	IncorrectCertification	_SIOws6KsEfCHi7w3_0pcpw	Instruction is rejected since the provided certification is incorrect or incomplete.
+RejectionReason89Code	INVA	InvalidForTaxAuthorities	_SIOwtaKsEfCHi7w3_0pcpw	For tax reclaim, the reclaim is invalid for the tax authorities.
+RejectionReason89Code	OPTY	InvalidOptionType	_SIOwt6KsEfCHi7w3_0pcpw	Invalid option type.
+RejectionReason89Code	ULNK	InvalidReference	_SIOwuaKsEfCHi7w3_0pcpw	Linked reference is unknown.
+RejectionReason89Code	LACK	LackofSecurities	_SIOwvaKsEfCHi7w3_0pcpw	Instructed position exceeds the eligible balance.
+RejectionReason89Code	LATE	MarketDeadlineMissed	_SIOwv6KsEfCHi7w3_0pcpw	Received after market deadline.
+RejectionReason89Code	NMTY	Mismatch	_SIOwwaKsEfCHi7w3_0pcpw	Mismatch between option number and option type.
+RejectionReason89Code	FULL	MissingBeneficiaryOwnerDetails	_SIOww6KsEfCHi7w3_0pcpw	Rejected due to missing beneficiary owner details.
+RejectionReason89Code	CANC	OptionCancelled	_SIOwxaKsEfCHi7w3_0pcpw	Option is not valid; it has been cancelled by the market or service provider, and cannot be responded to. Any responses already processed against this option are considered void and new responses will be required.
+RejectionReason89Code	INTV	OptionInactive	_SIOwx6KsEfCHi7w3_0pcpw	Option is not active and can no longer be responded to. Any responses already processed against this option will remain valid, for example, expired option.
+RejectionReason89Code	OPNM	OptionNumberRejection	_SIOwyaKsEfCHi7w3_0pcpw	Unrecognised option number.
+RejectionReason89Code	OTHR	Other	_SIOwy6KsEfCHi7w3_0pcpw	Other. See Narrative.
+RejectionReason89Code	DQUA	QuantityRejection	_SIOwzaKsEfCHi7w3_0pcpw	Unrecognised or invalid instructed quantity.
+RejectionReason89Code	REFT	RefusedByTaxAuthorities	_SIOwz6KsEfCHi7w3_0pcpw	Reclaim is refused by the tax authorities.
+RejectionReason89Code	SAFE	SafekeepingAccountRejection	_SIOw0aKsEfCHi7w3_0pcpw	Unrecognised or invalid message sender's safekeeping account.
+RejectionReason89Code	EVNM	UnrecognisedIdentification	_SIOw06KsEfCHi7w3_0pcpw	Unrecognised event number.
+RejectionReason89Code	DQCS	AmountRejection	_SIOw1aKsEfCHi7w3_0pcpw	Unrecognised or invalid instructed cash amount.
+RejectionReason89Code	DQCC	CurrencyRejection	_SIOw16KsEfCHi7w3_0pcpw	Invalid instructed currency.
+RejectionReason89Code	DQAM	InstructionTypeRejection	_SIOw2aKsEfCHi7w3_0pcpw	Invalid use of instructed amount (QCAS) or of instructed quantity (QINS) qualifiers.
+RejectionReason89Code	IRDQ	InvalidUseRoundUpQuantity	_SIOw26KsEfCHi7w3_0pcpw	Instruction is rejected due to invalid use of the additional round up quantity.
+RejectionReason89Code	DQBV	InvalidBidValue	_SIOw3aKsEfCHi7w3_0pcpw	Bid price / basis points / percentage falls outside of bid range for the event (generally used in Dutch Auctions or Bid Tenders).
+RejectionReason89Code	DQBI	InvalidBidIncrement	_SIOw36KsEfCHi7w3_0pcpw	Bid price / basis points / percentage increments rejected due to invalid bid increment for the event (generally used in Dutch Auctions or Bid Tenders).
+RejectionReason89Code	SHAR	ShareholderNumberRejection	_SIOw4aKsEfCHi7w3_0pcpw	Unrecognised, missing or invalid shareholder number.
+RejectionReason89Code	ITAX	IncorrectTaxRate	_SIOw46KsEfCHi7w3_0pcpw	Tax rate provided is incorrect. It falls outside the acceptable values for that investment country.
+RejectionReason89Code	NTAX	InconsistentTaxRate	_SIOw5aKsEfCHi7w3_0pcpw	Tax rate is not consistent with the documentation in place.
+RejectionReason89Code	MTAX	MissingTaxRate	_SIOw56KsEfCHi7w3_0pcpw	Tax rate is missing.
+RejectionReason89Code	ISOL	InvalidSolicitationDealerFeeUse	_SIOw6aKsEfCHi7w3_0pcpw	Invalid use of solicitation dealer fee indicator.
+RejectionReason89Code	BSTR	BeforeInstructionPeriod	_SIOw66KsEfCHi7w3_0pcpw	Instruction is submitted before instruction start date.
+RejectionReason89Code	CTCT	MissingContact	_SIOw7aKsEfCHi7w3_0pcpw	Contact information is missing.
+RejectionReason89Code	DUPL	DuplicateInstruction	_SIOw76KsEfCHi7w3_0pcpw	Instruction is rejected due to duplicate business message identifier.
+RejectionReason89Code	PROI	MissingProtectIdentification	_SIOw8aKsEfCHi7w3_0pcpw	Protect identification is required for cover protect instructions.
+RejectionReason89Code	PRON	NoProtectPrivilege	_SIOw86KsEfCHi7w3_0pcpw	No protect privilege for this event.
+RejectionReason89Code	PROT	MissingProtectDate	_SIOw9aKsEfCHi7w3_0pcpw	Protect date is required for cover protect instructions.
+RejectionReason89Code	TRTI	MissingTransactionType	_SIOw96KsEfCHi7w3_0pcpw	Transaction type is missing or invalid for protect or cover protect instructions.
+RejectionReason89Code	IPAW	InvalidPaperwork	_SIOw-aKsEfCHi7w3_0pcpw	Required paperwork is invalid, incomplete or missing.
+RejectionReason89Code	REJA	RejectedByIssuerAgent	_SIOw-6KsEfCHi7w3_0pcpw	Instruction rejected by the issuer agent.
+RejectionReason89Code	IPED	InstructionPriorToEntitlementDate	_SIOw_aKsEfCHi7w3_0pcpw	Instruction was received prior to entitlement date.
+RejectionReason89Code	BUMM	BuyerProtectionMismatch	_ez2uwaKsEfCHi7w3_0pcpw	Counterparty disagreement on the chosen corporate action outturn.
+RejectionReason89Code	TRTY	IncorrectTransactionType	_hi_OgaKsEfCHi7w3_0pcpw	Transaction type is incorrect.
+RejectionReason89Code	DSNA	NoBuyerProtectionAllowed	_jR0H0aKsEfCHi7w3_0pcpw	Underlying transaction type/status does not allow for a buyer protection.
+RejectionReason89Code	DUCK	UnderlyingTransactionCancelled	_kW_nMaKsEfCHi7w3_0pcpw	Buyer Protection instruction rejected since underlying settlement transaction has been cancelled.
+RejectionReason89Code	DUST	UnderlyingTransactionAlreadySettled	_ketYwaKsEfCHi7w3_0pcpw	Buyer Protection instruction was rejected, because the underlying settlement transaction has already been settled.
+RejectionReason89Code	ECMD	ElectionToCounterpartyMarketDeadlineMissed	_mi3B0aKsEfCHi7w3_0pcpw	Received after the election to counterparty market deadline.
+RejectionReason89Code	ECRD	ElectionToCounterpartyResponseDeadlineMissed	_mnmX4aKsEfCHi7w3_0pcpw	Received after the election to counterparty response market deadline.
+RejectionReason89Code	INSA	InstructionNotSupportedOrAllowed	_lNHK0a24EfCN-rGCydxGUA	Instruction is not supported or allowed.
+RejectionReason89Code	DSEC	InvalidSecurity	_B1cu4bM4EfCBi5X7hHnGKA	Unrecognised or invalid financial instrument identification.
+PendingReason37Code	ADEA	AccountServicerDeadlineMissed	_6H668bMVEfCEXew4g5B5oA	Instruction was received after the account servicer's deadline. It will be managed as per the bilateral service agreement between the account servicer and account owner.
+PendingReason37Code	WCTF	AwaitingCounterpartyResponse	_7ijs8bMVEfCEXew4g5B5oA	Allegement has been sent out to counterparty. Waiting for their response.
+PendingReason37Code	BSTR	BeforeInstructionPeriod	_87Dw8bMVEfCEXew4g5B5oA	Instruction is submitted before instruction start date.
+PendingReason37Code	BUMM	BuyerProtectionMismatch	_9C43QbMVEfCEXew4g5B5oA	Counterparty disagreement on the chosen corporate action outturn.
+PendingReason37Code	DQCS	DisagreementOnCashAmount	_AnsawbMWEfCEXew4g5B5oA	Unrecognised or invalid instructed cash amount.
+PendingReason37Code	ECRD	ElectionToCounterpartyResponseDeadlineMissed	_AxXUIbMWEfCEXew4g5B5oA	Received after the election to counterparty response deadline.
+PendingReason37Code	NTAX	InconsistentTaxRate	_DIQTAbMWEfCEXew4g5B5oA	Tax rate is not consistent with the documentation in place.
+PendingReason37Code	ITAX	IncorrectTaxRate	_DNbt8bMWEfCEXew4g5B5oA	Tax rate provided is incorrect. It falls outside the acceptable values for that investment country.
+PendingReason37Code	IPED	InstructionPriorToEntitlementDate	_DS_jYbMWEfCEXew4g5B5oA	Instruction was received prior to entitlement date.
+PendingReason37Code	MONY	InsufficientMoney	_FIXJkbMWEfCEXew4g5B5oA	Insufficient money in your account.
+PendingReason37Code	IPAW	InvalidPaperwork	_FSpG8bMWEfCEXew4g5B5oA	Required paperwork is invalid, incomplete or missing.
+PendingReason37Code	LACK	LackOfSecurities	_FXdVgbMWEfCEXew4g5B5oA	Insufficient financial instruments in your account.
+PendingReason37Code	LATE	MarketDeadlineMissed	_HCIuobMWEfCEXew4g5B5oA	Instruction was received after market deadline.
+PendingReason37Code	MCER	MissingCertification	_HKD7kbMWEfCEXew4g5B5oA	Awaiting receipt of adequate certification.
+PendingReason37Code	MTAX	MissingTaxRate	_Ijw5cbMWEfCEXew4g5B5oA	Tax rate is missing.
+PendingReason37Code	OTHR	Other	_I3GFIbMWEfCEXew4g5B5oA	Other. See Narrative.
+PendingReason37Code	FULL	PendingBeneficiaryOwnerDetails	_KPmJIbMWEfCEXew4g5B5oA	Pending receipt of beneficiary owner details.
+PendingReason37Code	PENR	PendingReceipt	_KVYBAbMWEfCEXew4g5B5oA	Instruction is pending receipt of securities, for example, from a purchase or loan.
+PendingReason37Code	DQUA	QuantityDisagreement	_L1V-8bMWEfCEXew4g5B5oA	Quantity of financial instruments does not match.
+PendingReason37Code	SNAV	SystemNotAvailable	_MOhT8bMWEfCEXew4g5B5oA	System is not available. Instruction is sent outside of business hours.
+PendingReason37Code	CERT	WrongCertificatesNumbers	_NRz88bMWEfCEXew4g5B5oA	Certificate number error.

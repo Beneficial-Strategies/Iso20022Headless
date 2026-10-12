@@ -1,0 +1,75 @@
+{
+  "identifier": "seev.040.002.13",
+  "name": "CorporateActionInstructionCancellationRequest002V13",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.040.002.13",
+  "bodyTag": "CorpActnInstrCxlReq",
+  "out": "seev040f2",
+  "isoId": "_jub5U5t3Ee-wQIOX0djF2w",
+  "definition": "Scope|The CorporateActionInstructionCancellationRequest message is sent by an account owner to an account servicer to request cancellation of a previously sent corporate action election instruction.|Usage|The message may also be used to:|- re-send a message previously sent (the sub-function of the message is Duplicate),|- provide a third party with a copy of a message for information (the sub-function of the message is Copy),|- re-send to a third party a copy of a message for information (the sub-function of the message is Copy Duplicate), using the relevant elements in the business application header (BAH).",
+  "blocks": [
+    {
+      "name": "ChangeInstructionIndicator",
+      "isoId": "_jub5Xpt3Ee-wQIOX0djF2w",
+      "xmlTag": "ChngInstrInd",
+      "type": "YesNoIndicator",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "InstructionIdentification",
+      "isoId": "_jub5YJt3Ee-wQIOX0djF2w",
+      "xmlTag": "InstrId",
+      "type": "DocumentIdentification37",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionGeneralInformation",
+      "isoId": "_jub5Ypt3Ee-wQIOX0djF2w",
+      "xmlTag": "CorpActnGnlInf",
+      "type": "CorporateActionGeneralInformation187",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountDetails",
+      "isoId": "_jub5ZJt3Ee-wQIOX0djF2w",
+      "xmlTag": "AcctDtls",
+      "type": "AccountIdentification73",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionInstruction",
+      "isoId": "_jub5Zpt3Ee-wQIOX0djF2w",
+      "xmlTag": "CorpActnInstr",
+      "type": "CorporateActionOption202",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ProtectInstruction",
+      "isoId": "_jub5aJt3Ee-wQIOX0djF2w",
+      "xmlTag": "PrtctInstr",
+      "type": "ProtectInstruction7",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AdditionalInformation",
+      "isoId": "_jub5apt3Ee-wQIOX0djF2w",
+      "xmlTag": "AddtlInf",
+      "type": "CorporateActionNarrative19",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_jub5bJt3Ee-wQIOX0djF2w",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}
