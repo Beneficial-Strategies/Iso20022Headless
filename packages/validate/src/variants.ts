@@ -20,9 +20,18 @@ const keepCase = (from: string, to: string): string => {
 
 /** Split a run of letters into its camel-case humps, so `ChequeNumber` is two words. */
 const TOKEN = /[A-Z]+(?![a-z])|[A-Z]?[a-z]+/g;
+/** A CamelCase name: two or more capitalised parts joined. */
+const CAMEL_NAME = /\b[A-Z][a-z0-9]+(?:[A-Z][a-z0-9]+)+\b/g;
 
 /** Apply a variant to a piece of ISO text. Pure and idempotent. */
-export function applyVariant(text: string, v: TextVariant): string {
+export function applyVariant(text: string, v: TextVariant, keepCamelCase = false): string {
+  // Element and message names (`ChequeInstruction`, `DebitAuthorisationRequest`) inside prose are names in the XML, not words: leave them.
+  // A code name is itself camel case and is the one thing that is rewritten (`GovernmentOrganisation`).
+  if (keepCamelCase) {
+    const kept: string[] = [];
+    const masked = text.replace(CAMEL_NAME, (m) => `\u0000${kept.push(m) - 1}\u0000`);
+    return applyVariant(masked, v).replace(/\u0000(\d+)\u0000/g, (_, i: string) => kept[Number(i)]!);
+  }
   let out = text;
   for (const [phrase, replacement] of v.phrases ?? []) {
     const re = new RegExp(`(?<![A-Za-z])${phrase.replace(/ /g, '\\s+')}(?![a-z])`, 'gi');

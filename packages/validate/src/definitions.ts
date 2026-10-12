@@ -71,7 +71,7 @@ export function createDefinitions(
   const lang = locale.split('-')[0] ?? 'en';
   // A regional English (`en-US`) is the ISO English with rewrite rules; text a catalog wrote for that tag itself is left alone.
   const variant = lang === 'en' ? variants[locale] : undefined;
-  const iso = (l: Localized): Localized => (variant && l.lang === 'en' ? { ...l, text: applyVariant(l.text, variant) } : l);
+  const iso = (l: Localized, camelIsWords = false): Localized => (variant && l.lang === 'en' ? { ...l, text: applyVariant(l.text, variant, !camelIsWords) } : l);
   const layers: Layer[] = [];
   const add = (l: string, catalog: DefinitionCatalog | undefined) => catalog && layers.push({ lang: l, catalog });
   add(locale, overrides);
@@ -79,11 +79,11 @@ export function createDefinitions(
   if (lang !== locale) add(lang, locales[lang]);
   if (lang !== 'en') add('en', locales.en);
 
-  const find = (pick: (c: DefinitionCatalog) => Record<string, CatalogEntry> | undefined, id: string | undefined): Localized | undefined => {
+  const find = (pick: (c: DefinitionCatalog) => Record<string, CatalogEntry> | undefined, id: string | undefined, camelIsWords = false): Localized | undefined => {
     if (!id) return undefined;
     for (const { lang: l, catalog } of layers) {
       const e = pick(catalog)?.[id];
-      if (e) return iso(asLocalized(e, l));
+      if (e) return iso(asLocalized(e, l), camelIsWords);
     }
     return undefined;
   };
@@ -95,7 +95,7 @@ export function createDefinitions(
     type: (type) => find((c) => c.types, type?.isoId),
     code: (option) => find((c) => c.codes, option.isoId),
     label: (field, fallback) => find((c) => c.labels, field.isoId) ?? iso({ text: fallback, lang: 'en' }),
-    codeName: (option, fallback) => find((c) => c.codeNames, option.isoId) ?? iso({ text: fallback, lang: 'en' }),
+    codeName: (option, fallback) => find((c) => c.codeNames, option.isoId, true) ?? iso({ text: fallback, lang: 'en' }, true),
     rule: (rule, fallback) => find((c) => c.rules, rule.isoId) ?? iso({ text: fallback, lang: 'en' }),
   };
 }

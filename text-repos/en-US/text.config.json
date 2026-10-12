@@ -1,0 +1,7 @@
+{
+ "lang": "en-US",
+ "base": "ISO English",
+ "schema": 1,
+ "library": "proof of concept",
+ "seededFrom": "the en-US rewrite rules of packages/validate/src/variants.ts"
+}

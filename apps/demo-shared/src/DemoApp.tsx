@@ -605,7 +605,13 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
   const area = messageIndex.find((m) => m.identifier === settings.message)?.area ?? areaIndex[0]!.code;
   const lastInArea = useRef<Record<string, string>>({});
   lastInArea.current[area] = settings.message;
-  const i18n = useCreateI18n(locale, overrides);
+  // `?textHost=<address>`: the spec text of the language comes from a text host (static files) instead of the catalogs in the bundle
+  const textHost = useMemo(() => new URLSearchParams(window.location.search).get('textHost') ?? undefined, []);
+  const textSource = useMemo(
+    () => (textHost && bundle ? { baseUrl: textHost, messages: [settings.message, ...(settings.message === HEADER_IDENTIFIER ? [] : [HEADER_IDENTIFIER])], typeDescriptors: bundle.typeDescriptors } : undefined),
+    [textHost, bundle, settings.message],
+  );
+  const i18n = useCreateI18n(locale, overrides, textSource);
   const dt = demoText(i18n.locale);
   const pageText = useMemo(() => makePageText(i18n), [i18n]);
   const skin = skins.find((s) => s.id === settings.skin) ?? skins[0]!;

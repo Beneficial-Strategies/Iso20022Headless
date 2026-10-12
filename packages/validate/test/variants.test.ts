@@ -49,17 +49,31 @@ describe('en-US definitions', () => {
   it('after rewriting, no British spelling the rules know is left anywhere in the labels, code names, definitions or rules', () => {
     const left = /authoris|organis|initialis|synchronis|recognis|motoris|digitis|\bcheque|cypher|acknowledgement|cancelled|fulfil\b|enquir|storey/i;
     const found: string[] = [];
-    const check = (where: string, text: string | undefined) => text && left.test(text) && found.push(`${where}: ${text.slice(0, 60)}`);
+    // a CamelCase name in prose is an element or message name in the XML, not a word (`ChequeInstruction`): it stays as it is
+    const prose = (text: string) => text.replace(/\b[A-Z][a-z0-9]+(?:[A-Z][a-z0-9]+)+\b/g, '');
+    const check = (where: string, text: string | undefined, isProse = true) => {
+      const t = text && (isProse ? prose(text) : text);
+      if (t && left.test(t)) found.push(`${where}: ${text!.slice(0, 60)}`);
+    };
     for (const f of fields) {
-      check(`label ${f.name}`, enUs.label(f, displayName(f.name)).text);
+      check(`label ${f.name}`, enUs.label(f, displayName(f.name)).text, false);
       check(`field ${f.name}`, enUs.field(f, typeDescriptors[f.type])?.text);
     }
     for (const o of options) {
       check(`code ${o.value}`, enUs.code(o)?.text);
-      check(`codeName ${o.value}`, enUs.codeName(o, o.name).text);
+      check(`codeName ${o.value}`, enUs.codeName(o, o.name).text, false);
     }
     for (const r of rules) check(`rule ${r.name}`, enUs.rule(r, r.text).text);
     expect(found).toEqual([]);
+  });
+
+  it('leaves the element and message names inside a rule or definition as they are, and still rewrites a code name', () => {
+    const rule = rules.find((r) => r.name === 'ChequeInstructionRule' && /ChequeInstruction/.test(r.text))!;
+    expect(rule).toBeTruthy();
+    const text = enUs.rule(rule, rule.text).text;
+    expect(text).toMatch(/\(Check\)/); // the word is American
+    expect(text).toMatch(/CreditTransferTransactionInformation\/ChequeInstruction/); // the element is the XML's
+    expect(enUs.codeName({ isoId: undefined }, 'GovernmentOrganisation').text).toBe('GovernmentOrganization');
   });
 
   it('never changes what is sent: code values and element names are untouched', () => {

@@ -374,7 +374,8 @@
     "./sese040f2": "./src/generated/sese040f2.ts",
     "./sese041": "./src/generated/sese041.ts",
     "./sese042": "./src/generated/sese042.ts",
-    "./sese043": "./src/generated/sese043.ts"
+    "./sese043": "./src/generated/sese043.ts",
+    "./text-pack": "./src/text-pack.ts"
   },
   "scripts": {
     "typecheck": "tsc -p tsconfig.json",

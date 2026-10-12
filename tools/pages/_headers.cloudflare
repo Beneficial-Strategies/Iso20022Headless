@@ -5,3 +5,7 @@
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
+# The text packs (proof of concept): the same file names after a redeploy, so a short cache; any site may read them
+/text/*
+  Cache-Control: public, max-age=300, stale-while-revalidate=86400
+  Access-Control-Allow-Origin: *
