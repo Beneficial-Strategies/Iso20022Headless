@@ -81,7 +81,30 @@ async function pasteButton(page: Page, wantLabel?: RegExp): Promise<{ label: str
   });
 }
 const reportText = (page: Page): Promise<string> => page.evaluate(() => document.querySelector('[data-paste-report]')?.textContent ?? '');
-const fieldValue = (page: Page, id: string): Promise<string> => page.evaluate((i) => (document.getElementById(i) as HTMLInputElement | null)?.value ?? 'NO FIELD', id);
+/** What a field holds. An external code (a group status, say) is a dropdown, whose button shows `RJCT — Rejected`: its value is the code. */
+const fieldValue = (page: Page, id: string): Promise<string> =>
+  page.evaluate((i) => {
+    const el = document.getElementById(i) as HTMLInputElement | HTMLButtonElement | null;
+    if (!el) return 'NO FIELD';
+    if (el.tagName !== 'BUTTON') return (el as HTMLInputElement).value;
+    const shown = (el.textContent ?? '').replace('▾', '').trim();
+    return /^—.*—$/.test(shown) ? '' : (shown.split(' — ')[0] ?? '');
+  }, id);
+
+/** Set a field that is a text box or, for a code with a list of values, a dropdown: open it, jump to the code by typing it, choose. */
+async function setCode(page: Page, id: string, value: string): Promise<void> {
+  const tag = await page.evaluate((i) => document.getElementById(i)?.tagName ?? 'NONE', id);
+  if (tag === 'INPUT') {
+    await page.locator('#' + id).fill(value);
+    return;
+  }
+  if (tag === 'NONE') throw new Error(`no field #${id}`);
+  await page.click('#' + id);
+  await settle(300);
+  await page.keyboard.type(value);
+  await page.keyboard.press('Enter');
+  await settle(300);
+}
 
 function pasteScenarios(): Scenario[] {
   const base = { app: 'demo-form' as const, viewport: { width: 1440, height: 1000 } };
@@ -263,7 +286,7 @@ function fileScenarios(): Scenario[] {
       steps: async (page) => {
         const dir = await downloadsTo(page);
         await page.locator('#GroupHeader-MessageIdentification').fill('SAVED-1');
-        await page.locator('#OriginalGroupInformationAndStatus-GroupStatus').fill('RJCT');
+        await setCode(page, 'OriginalGroupInformationAndStatus-GroupStatus', 'RJCT');
         await settle(400);
         await saveButton(page, /^Save XML$/);
         trip.saved = await savedFile(dir, 'pain.002.001.15.xml');
@@ -2427,10 +2450,10 @@ export const scenarios: Scenario[] = [
       query: '?message=pain.002.001.15',
       viewport: { width: 1440, height: 1200 },
       steps: async (page) => {
-        await page.locator('#OriginalGroupInformationAndStatus-GroupStatus').fill(c.group);
+        await setCode(page, 'OriginalGroupInformationAndStatus-GroupStatus', c.group);
         await clickText(page, 'button', /add original payment information and status/i);
         await settle(400);
-        await page.locator('#OriginalPaymentInformationAndStatus-0-PaymentInformationStatus').fill(c.payment);
+        await setCode(page, 'OriginalPaymentInformationAndStatus-0-PaymentInformationStatus', c.payment);
         await settle(600);
       },
       expect: async (page) => {
@@ -2444,13 +2467,13 @@ export const scenarios: Scenario[] = [
     }),
   ),
   {
-    // reported by a user: status ABCD (not RJCT/PDNG) with additional information must violate StatusReasonInformationRule
+    // reported by a user: a status other than RJCT/PDNG with additional information must violate StatusReasonInformationRule
     name: 'rules-pain002-StatusReasonInformationRule',
     app: 'demo-form',
     query: '?message=pain.002.001.15',
     viewport: { width: 1440, height: 1200 },
     steps: async (page) => {
-      await page.locator('#OriginalGroupInformationAndStatus-GroupStatus').fill('ABCD');
+      await setCode(page, 'OriginalGroupInformationAndStatus-GroupStatus', 'ACCP'); // ACCP: not RJCT or PDNG, like the ABCD the user pasted (paste-user-message loads that one)
       await clickText(page, 'button', /^\+ add status reason information$/i);
       await settle(300);
       await clickText(page, 'button', /^\+ add additional information$/i);
