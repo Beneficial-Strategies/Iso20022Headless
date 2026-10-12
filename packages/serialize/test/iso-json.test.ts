@@ -93,10 +93,10 @@ describe('ISO 20022 JSON output', () => {
     expect(Object.keys(b.DbtrAcct.Id)).toEqual(['Othr']);
   });
 
-  it('absent and empty elements are omitted', () => {
+  it('absent and empty elements are omitted, except a required group, which stays as an empty object', () => {
     const j = JSON.parse(serializeToIsoJson(pain001Message, { GroupHeader: { MessageIdentification: 'M', Authorisation: [], ControlSum: '' } }));
-    expect(j.Document.CstmrCdtTrfInitn.GrpHdr).toEqual({ MsgId: 'M' });
-    expect(JSON.parse(serializeToIsoJson(pain001Message, {})).Document.CstmrCdtTrfInitn).toEqual({});
+    expect(j.Document.CstmrCdtTrfInitn.GrpHdr).toEqual({ MsgId: 'M', InitgPty: {} }); // InitgPty is required, ControlSum and Authorisation are not
+    expect(Object.keys(JSON.parse(serializeToIsoJson(pain001Message, {})).Document.CstmrCdtTrfInitn)).toEqual(['GrpHdr', 'PmtInf']); // the required blocks only
   });
 
   it('an xs:any envelope embeds valid JSON as JSON, anything else as a string', () => {
@@ -131,8 +131,10 @@ describe('agrees with ISO Annex A applied to our XML', () => {
     for (const [k, v] of Object.entries(o)) if (!k.startsWith('@_')) out[k] = annexA(v); // prefixes/attributes (xmlns) dropped
     return out;
   }
+  // an empty group is an empty object here and an empty element (read as '') in the XML
   const collapse = (v: unknown): unknown => {
     if (Array.isArray(v)) return v.length === 1 ? collapse(v[0]) : v.map(collapse);
+    if (v && typeof v === 'object' && Object.keys(v).length === 0) return '';
     if (v && typeof v === 'object') return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, collapse(x)]));
     return v;
   };

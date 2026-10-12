@@ -175,3 +175,49 @@ export function pruneEmpty<T>(value: T): T | undefined {
   }
   return value;
 }
+
+const isRecord = (v: unknown): v is Record<string, unknown> => v !== null && typeof v === 'object' && !Array.isArray(v);
+
+function outputOne(types: TypeDescriptors, f: FieldDescriptor, value: unknown, keepIfAbsent: boolean): unknown {
+  const t = types[f.type]!;
+  if (t.kind === 'component' || t.kind === 'choice') {
+    if (value === undefined || value === null) return keepIfAbsent ? outputOf(types, t, {}) : undefined;
+    return outputOf(types, t, value); // present, even if nothing is filled in below it
+  }
+  return pruneEmpty(value); // a leaf or an amount: only what was entered
+}
+
+function outputField(types: TypeDescriptors, f: FieldDescriptor, value: unknown, optionOfChoice: boolean): unknown {
+  const container = types[f.type]!.kind === 'component' || types[f.type]!.kind === 'choice';
+  if (f.repeat) {
+    const items = (Array.isArray(value) ? value : value === undefined || value === null ? [] : [value])
+      .map((v) => outputOne(types, f, v, false))
+      .filter((v) => v !== undefined);
+    if (items.length === 0) return f.required && container && !optionOfChoice ? [outputOne(types, f, undefined, true)] : undefined;
+    return items;
+  }
+  return outputOne(types, f, value, f.required && !optionOfChoice);
+}
+
+function outputOf(types: TypeDescriptors, t: TypeDescriptor, value: unknown): Record<string, unknown> {
+  const src = isRecord(value) ? value : {};
+  const choice = t.kind === 'choice';
+  const out: Record<string, unknown> = {};
+  for (const f of (choice ? t.choiceOptions : t.fields) ?? []) {
+    const v = outputField(types, f, src[f.name], choice);
+    if (v !== undefined) out[f.name] = v;
+  }
+  return out;
+}
+
+/**
+ * The values of a component or choice type as they are written out (XML, ISO JSON). Like `pruneEmpty` for everything that was left
+ * empty (an empty text, a list with nothing in it), but a group that is required, or that is there although nothing is filled in below
+ * it (an optional group that was included), stays as an empty object: its element is written, empty. That is what lets a schema say
+ * what is missing inside it, and an optional group that is not included leaves no trace. Never undefined.
+ */
+export function pruneForOutput(types: TypeDescriptors, typeName: string, value: unknown): Record<string, unknown> {
+  const t = types[typeName];
+  if (!t) throw new Error(`unknown type ${typeName}`);
+  return outputOf(types, t, value);
+}

@@ -183,7 +183,7 @@ async function pagesSmokeTest(argv: string[]): Promise<number> {
         await page.evaluate(() => [...document.querySelectorAll('button')].find((b) => b.textContent === 'XSD Validate')?.click());
         for (let i = 0; i < 40; i++) {
           const text = await page.evaluate(() => document.querySelector('[data-xsd-panel]')?.textContent ?? '');
-          if (/Missing child/.test(text)) return [];
+          if (/Missing child|Expected is \( MsgId \)/.test(text)) return []; // an empty message names what its required group lacks
           if (/could not run/i.test(text)) return [`the validator did not run: ${text.slice(0, 200)}`];
           await new Promise((r) => setTimeout(r, 250));
         }
