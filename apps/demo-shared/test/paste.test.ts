@@ -1,6 +1,6 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 import { messageIndex, type MessageBundle } from '@beneficial-strategies/iso20022-validate';
-import { serializeFragment, serializeFragmentIsoJson, serializeToIsoJson, serializeToXml } from '@beneficial-strategies/iso20022-serialize';
+import { serializeEnvelopeToIsoJson, serializeEnvelopeToXml, serializeFragment, serializeFragmentIsoJson, serializeToIsoJson, serializeToXml } from '@beneficial-strategies/iso20022-serialize';
 import { namespaceOf, planPaste, type PastePlan } from '../src/paste.ts';
 
 const bundles = new Map<string, MessageBundle>();
@@ -71,6 +71,23 @@ describe('a whole message with a namespace', () => {
     expect((p as Extract<PastePlan, { ok: true }>).values).toMatchObject({ BusinessMessageIdentifier: 'BIZ-1', MessageDefinitionIdentifier: 'camt.053.001.14' });
     const json = await planPaste(serializeToIsoJson(head.message, { BusinessMessageIdentifier: 'BIZ-1' }), current('head.001.001.04'), load);
     expect(json).toMatchObject({ ok: true, switched: false });
+  });
+
+  it('reads an envelope (header and message side by side), puts the header under ApplicationHeader and switches to the message', async () => {
+    const head = bundles.get('head.001.001.04')!;
+    const pain = bundles.get('pain.001.001.13')!;
+    const header = { BusinessMessageIdentifier: 'BIZ-9', MessageDefinitionIdentifier: 'pain.001.001.13' };
+    const body = { GroupHeader: { MessageIdentification: 'M1' } };
+    const xml = serializeEnvelopeToXml({ message: head.message, values: header }, pain.message, body);
+    const p = await planPaste(xml, current('pain.002.001.15'), load);
+    expect(p).toMatchObject({ ok: true, switched: true, target: { identifier: 'pain.001.001.13', typeName: 'CustomerCreditTransferInitiationV13' } });
+    const values = (p as Extract<PastePlan, { ok: true }>).values as { ApplicationHeader: { BusinessMessageIdentifier: string }; GroupHeader: { MessageIdentification: string } };
+    expect(values.ApplicationHeader.BusinessMessageIdentifier).toBe('BIZ-9');
+    expect(values.GroupHeader.MessageIdentification).toBe('M1');
+    // JSON names no message: it goes into the selected one
+    const json = await planPaste(serializeEnvelopeToIsoJson({ message: head.message, values: header }, pain.message, body), current('pain.001.001.13'), load);
+    expect(json).toMatchObject({ ok: true, switched: false, target: { identifier: 'pain.001.001.13' } });
+    expect(((json as Extract<PastePlan, { ok: true }>).values as { ApplicationHeader: unknown }).ApplicationHeader).toMatchObject(header);
   });
 
   it('switches for every message we have', async () => {

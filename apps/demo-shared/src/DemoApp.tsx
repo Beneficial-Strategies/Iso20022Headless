@@ -1,20 +1,20 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Command } from 'cmdk';
 import type { z } from 'zod';
-import { areaIndex, evaluateRules, formatIssue, messageIndex, ruleCodeLists, type MessageBundle, type RuleResult } from '@beneficial-strategies/iso20022-validate';
+import { APPLICATION_HEADER, areaIndex, evaluateRules, formatIssue, messageIndex, pruneEmpty, ruleCodeLists, withApplicationHeader, type MessageBundle, type RuleResult } from '@beneficial-strategies/iso20022-validate';
 import { DescribedSelect, I18nProvider, Popup, SchemaForm, SkinProvider, skinIds, skins, supportedLocales, useCreateI18n, useI18n, type FieldExtraContext, type FieldMode, type I18nOverrides, type UiKey, type UseForm } from '@beneficial-strategies/iso20022-react-ui';
-import { serializeFragment, serializeFragmentIsoJson, serializeToIsoJson, serializeToXml } from '@beneficial-strategies/iso20022-serialize';
+import { serializeEnvelopeToIsoJson, serializeEnvelopeToXml, serializeFragment, serializeFragmentIsoJson, serializeToIsoJson, serializeToXml } from '@beneficial-strategies/iso20022-serialize';
 import { XmlPane } from './XmlPane.tsx';
 import { SettingsPanel } from './SettingsPanel.tsx';
 import { useClipboard } from './clipboard.ts';
 import { downloadText, readTextFile, saveFileName } from './files.ts';
 import { AboutDialog, Banner } from './Banner.tsx';
 import { ImplementDialog } from './ImplementDialog.tsx';
-import { planPaste } from './paste.ts';
+import { HEADER_IDENTIFIER, planPaste } from './paste.ts';
 import { PasteReport, type PasteReportData, type TextSource } from './PasteReport.tsx';
 import { useSettings, wantsImplementationBanner, type Format } from './settings.ts';
 import { useXsd, type XsdHandle } from './useXsd.ts';
-import { devProxyUrl } from './xsd.ts';
+import { devProxyUrl, documentLineOffset, HEADER_LINE_OFFSET } from './xsd.ts';
 import { XsdButton, XsdNotice, XsdPanel } from './XsdValidate.tsx';
 import { zoomExtra } from './ZoomButton.tsx';
 import { enterZoom, leaveZoom, type EditorValues, type ZoomFrame } from './zoom.ts';
@@ -263,6 +263,8 @@ function Editor({
   onZoom,
   valuesRef,
   xsd,
+  headerBundle,
+  headerXsd,
   copyOptions,
   onCopyOptions,
   modes,
@@ -284,6 +286,10 @@ function Editor({
   valuesRef: { current: EditorValues | undefined };
   /** The XSD of the chosen message (kept when only the type changes). */
   xsd: XsdHandle;
+  /** The Business Application Header, offered as an optional group above the message's own (undefined while it loads). */
+  headerBundle: MessageBundle | undefined;
+  /** The header's own schema (checked beside the message's when the header is included). */
+  headerXsd: XsdHandle;
   /** What the "Copy as" menu includes (kept when only the type changes). */
   copyOptions: ExportOptions;
   onCopyOptions: (o: ExportOptions) => void;
@@ -353,6 +359,7 @@ function Editor({
       return;
     }
     form.setValues(plan.values);
+    lastHeader.current = undefined; // what the header held before is not what comes back after a load
     form.touchAll(); // show what is wrong with the loaded values right away
     setReport(done);
   };
@@ -383,13 +390,47 @@ function Editor({
   const doSave = (): void => downloadText(saveFileName(bundle.message.identifier, typeName, bundle.message.rootType, format), output, format);
   const pasteLabel = clipboard.kind === 'xml' ? t('pasteXml') : clipboard.kind === 'json' ? t('pasteJson') : t('paste');
   const pasteTitle = clipboard.kind === 'none' ? t('pasteNoData') : clipboard.kind === 'blocked' ? t('pasteBlocked') : clipboard.kind === 'unknown' ? t('pasteUnknown') : undefined;
+  // the header group (ticked) turns the output into an envelope holding the header and the message side by side
+  const whole = typeName === bundle.message.rootType;
+  const headerValues = whole && headerBundle ? (form.values as Record<string, unknown> | undefined)?.[APPLICATION_HEADER] : undefined;
+  const withHeader = headerBundle !== undefined && headerValues !== undefined;
+  // the header group remembers what it held while it is unticked, so that ticking it again brings that back; ticked fresh and still
+  // empty, it gets what the message already says
+  const headerSeen = useRef(false);
+  const lastHeader = useRef<unknown>(undefined);
+  if (headerValues !== undefined && headerSeen.current) lastHeader.current = headerValues;
+  useEffect(() => {
+    if (headerValues === undefined) {
+      headerSeen.current = false;
+      return;
+    }
+    if (headerSeen.current) return;
+    headerSeen.current = true;
+    if (pruneEmpty(headerValues) !== undefined) return;
+    if (pruneEmpty(lastHeader.current) !== undefined) {
+      form.setValues({ ...(form.values as Record<string, unknown>), [APPLICATION_HEADER]: lastHeader.current });
+      return;
+    }
+    form.setValues({
+      ...(form.values as Record<string, unknown>),
+      [APPLICATION_HEADER]: { ...(headerValues as Record<string, unknown>), MessageDefinitionIdentifier: bundle.message.identifier, CreationDate: new Date().toISOString().replace(/\.\d{3}Z$/, 'Z') },
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [headerValues === undefined]);
   const output = useMemo(() => {
-    const whole = typeName === bundle.message.rootType;
     if (format === 'json') {
+      if (withHeader) return serializeEnvelopeToIsoJson({ message: headerBundle!.message, values: headerValues }, bundle.message, form.values);
       return whole ? serializeToIsoJson(bundle.message, form.values) : serializeFragmentIsoJson(bundle.typeDescriptors, typeName, form.values);
     }
+    if (withHeader) return serializeEnvelopeToXml({ message: headerBundle!.message, values: headerValues }, bundle.message, form.values);
     return whole ? serializeToXml(bundle.message, form.values) : serializeFragment(bundle.typeDescriptors, typeName, form.values);
-  }, [bundle, form.values, typeName, format]);
+  }, [bundle, headerBundle, withHeader, headerValues, whole, form.values, typeName, format]);
+  // XSD validation takes the message and the header as documents of their own; their lines are shifted to where the pane shows them
+  const xsdParts = useMemo(() => {
+    if (!withHeader) return undefined;
+    const headerXml = serializeToXml(headerBundle!.message, headerValues);
+    return { headerXml, documentXml: serializeToXml(bundle.message, form.values), documentOffset: documentLineOffset(headerXml) };
+  }, [withHeader, headerBundle, headerValues, bundle, form.values]);
   const ruleResults = useMemo(
     () => evaluateRules({ types: bundle.typeDescriptors, codeLists: ruleCodeLists }, typeName, form.values),
     [bundle, form.values, typeName],
@@ -471,7 +512,21 @@ function Editor({
             below={
               <>
                 <XsdNotice xsd={xsd} />
-                <XsdPanel xsd={xsd} request={{ xml: output, namespace: bundle.message.namespace, type: typeName, isMessage: typeName === bundle.message.rootType }} />
+                <XsdPanel
+                  xsd={xsd}
+                  request={{
+                    xml: xsdParts ? xsdParts.documentXml : output,
+                    namespace: bundle.message.namespace,
+                    type: typeName,
+                    isMessage: typeName === bundle.message.rootType,
+                    ...(xsdParts && headerBundle
+                      ? {
+                          lineOffset: xsdParts.documentOffset,
+                          header: { xml: xsdParts.headerXml, namespace: headerBundle.message.namespace, schema: headerXsd.state.status === 'ready' ? headerXsd.state.text : undefined, lineOffset: HEADER_LINE_OFFSET },
+                        }
+                      : {}),
+                  }}
+                />
               </>
             }
             load={{ label: t('loadFile'), onFile: (f) => void doLoadFile(f) }}
@@ -513,11 +568,19 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
       return next;
     });
   }, []);
-  const bundle = useMessageBundle(settings.message);
+  const plainBundle = useMessageBundle(settings.message);
+  const headerBundle = useMessageBundle(HEADER_IDENTIFIER);
+  // every message but the header itself offers the header as an optional group above its own
+  const bundle = useMemo(
+    () => (plainBundle && headerBundle && plainBundle.message.identifier !== HEADER_IDENTIFIER ? withApplicationHeader(plainBundle, headerBundle) : plainBundle),
+    [plainBundle, headerBundle],
+  );
   const messageInfo = messageIndex.find((m) => m.identifier === settings.message);
   // the schema belongs to the message: choosing another message (not just another type of it) starts over
   const proxyUrl = DEV_XSD_PROXY ? devProxyUrl(messageInfo?.xsdUrl ?? '') : undefined;
   const xsd = useXsd(messageInfo && bundle && bundle.message.identifier === messageInfo.identifier ? { identifier: messageInfo.identifier, xsdUrl: messageInfo.xsdUrl, namespace: bundle.message.namespace, proxyUrl } : undefined);
+  const headerInfo = messageIndex.find((m) => m.identifier === HEADER_IDENTIFIER);
+  const headerXsd = useXsd(headerInfo && headerBundle ? { identifier: headerInfo.identifier, xsdUrl: headerInfo.xsdUrl, namespace: headerBundle.message.namespace, proxyUrl: DEV_XSD_PROXY ? devProxyUrl(headerInfo.xsdUrl) : undefined } : undefined);
   const [chosenType, setChosenType] = useState<{ message: string; type: string } | undefined>();
   // a type chosen for another message does not apply here: fall back to the whole message
   const typeName = bundle && chosenType?.message === settings.message && bundle.typeDescriptors[chosenType.type] ? chosenType.type : bundle?.message.rootType;
@@ -571,7 +634,7 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
         </header>
         {aboutOpen ? <AboutDialog onClose={() => setAboutOpen(false)} /> : null}
         <SkinProvider value={skin}>
-          {bundle && typeName ? (
+          {bundle && headerBundle && typeName ? (
             <Editor
               key={`${settings.message}/${typeName}`}
               bundle={bundle}
@@ -590,6 +653,8 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
               onZoom={zoomInto}
               valuesRef={editorValues}
               xsd={xsd}
+              headerBundle={plainBundle?.message.identifier === HEADER_IDENTIFIER ? undefined : headerBundle}
+              headerXsd={headerXsd}
               copyOptions={copyOptions}
               onCopyOptions={setCopyOptions}
               modes={modes}

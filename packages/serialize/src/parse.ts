@@ -1,4 +1,4 @@
-import { hydrate, type FieldDescriptor, type TypeDescriptor, type TypeDescriptors } from '@beneficial-strategies/iso20022-validate';
+import { APPLICATION_HEADER, hydrate, type FieldDescriptor, type TypeDescriptor, type TypeDescriptors } from '@beneficial-strategies/iso20022-validate';
 import type { MessageDefinition } from './index.ts';
 import { parseXmlDocument, XmlError, type XmlNode } from './xml.ts';
 
@@ -36,8 +36,8 @@ export type ParseResult = { ok: true; values: unknown; issues: ParseIssue[] } | 
 /** What a piece of text is, without loading it: used to decide where it belongs. */
 export interface DocumentInfo {
   format: 'xml' | 'json';
-  /** `document`: a whole message inside `Document`. `fragment`: a single component named after its type. */
-  kind: 'document' | 'fragment';
+  /** `document`: a whole message inside `Document`. `fragment`: a single component named after its type. `envelope`: a message with its Business Application Header in an `Envelope`. */
+  kind: 'document' | 'fragment' | 'envelope';
   /** document: the message element (for example `CstmrPmtStsRpt`); fragment: the type name. */
   name: string;
   /** XML only: the namespace the `Document` element declares. */
@@ -49,6 +49,12 @@ export interface DocumentInfo {
  * `<AppHdr>…</AppHdr>`, with its fields directly inside. The definition says so by giving the same name as root and body tag.
  */
 export const isOwnRoot = (message: { rootTag: string; bodyTag: string }): boolean => message.rootTag === message.bodyTag;
+
+/**
+ * ISO defines no element that holds a Business Application Header and its message: the two are siblings, and each network wraps them
+ * its own way. This library uses an `Envelope` with the header first, then the message, and says so wherever it is shown.
+ */
+export const ENVELOPE_TAG = 'Envelope';
 
 const MAX_ISSUES = 200;
 const ISO_NAMESPACE_PREFIX = 'urn:iso:std:iso:20022:tech:xsd:';
@@ -128,14 +134,47 @@ function readXml(text: string): { ok: true; root: XmlNode } | { ok: false; error
 export function parseXmlMessage(message: MessageDefinition, text: string): ParseResult {
   const doc = readXml(text);
   if (!doc.ok) return doc;
-  if (doc.root.name !== message.rootTag) return { ok: false, error: { code: 'wrong_root', path: '', detail: doc.root.name } };
+  return xmlMessageOf(message, doc.root);
+}
+
+/** A message from its root element (`Document`, or an own-root message such as `AppHdr`). */
+function xmlMessageOf(message: MessageDefinition, root: XmlNode): ParseResult {
+  if (root.name !== message.rootTag) return { ok: false, error: { code: 'wrong_root', path: '', detail: root.name } };
   const own = isOwnRoot(message);
-  const body = own ? doc.root : doc.root.children.find((x) => x.name === message.bodyTag);
-  if (!body) return { ok: false, error: { code: 'wrong_body', path: '', detail: doc.root.children[0]?.name ?? '' } };
+  const body = own ? root : root.children.find((x) => x.name === message.bodyTag);
+  if (!body) return { ok: false, error: { code: 'wrong_body', path: '', detail: root.children[0]?.name ?? '' } };
   const c: Ctx = { types: message.typeDescriptors, issues: [] };
-  if (!own) for (const extra of doc.root.children.filter((x) => x !== body)) note(c, 'unknown_element', extra.name, extra.name);
+  if (!own) for (const extra of root.children.filter((x) => x !== body)) note(c, 'unknown_element', extra.name, extra.name);
   const values = xmlChildren(c, c.types[message.rootType]!, body, '');
   return { ok: true, values: hydrate(c.types, message.rootType, values), issues: c.issues };
+}
+
+/** The header's and the message's parts together: the message's values with the header's under `ApplicationHeader`, issues of the header prefixed. */
+function withHeaderValues(header: ParseResult | undefined, doc: ParseResult): ParseResult {
+  if (!doc.ok) return doc;
+  if (!header) return doc;
+  if (!header.ok) return { ok: false, error: { ...header.error, path: join(APPLICATION_HEADER, header.error.path) } };
+  return {
+    ok: true,
+    values: { ...(doc.values as Record<string, unknown>), [APPLICATION_HEADER]: header.values },
+    issues: [...header.issues.map((i) => ({ ...i, path: join(APPLICATION_HEADER, i.path) })), ...doc.issues],
+  };
+}
+
+/**
+ * Read a message with its Business Application Header: `<Envelope><AppHdr>…</AppHdr><Document>…</Document></Envelope>`. The values are
+ * the message's, plus the header's under `ApplicationHeader` (absent when the envelope has no header).
+ */
+export function parseXmlEnvelope(header: MessageDefinition, message: MessageDefinition, text: string): ParseResult {
+  const doc = readXml(text);
+  if (!doc.ok) return doc;
+  if (doc.root.name !== ENVELOPE_TAG) return { ok: false, error: { code: 'wrong_root', path: '', detail: doc.root.name } };
+  const hdr = doc.root.children.find((x) => x.name === header.rootTag);
+  const body = doc.root.children.find((x) => x.name === message.rootTag);
+  if (!body) return { ok: false, error: { code: 'wrong_body', path: '', detail: doc.root.children[0]?.name ?? '' } };
+  const result = withHeaderValues(hdr ? xmlMessageOf(header, hdr) : undefined, xmlMessageOf(message, body));
+  if (result.ok) for (const extra of doc.root.children.filter((x) => x !== hdr && x !== body)) result.issues.push({ code: 'unknown_element', path: extra.name, detail: extra.name });
+  return result;
 }
 
 /** Read a single component or choice written as `<TypeName>…</TypeName>`, the way `serializeFragment` does. */
@@ -156,6 +195,12 @@ export function inspectXml(text: string): { ok: true; info: DocumentInfo } | { o
     const body = doc.root.children[0];
     if (!body) return { ok: false, error: { code: 'wrong_body', path: '', detail: '' } };
     return { ok: true, info: { format: 'xml', kind: 'document', name: body.name, ...(doc.root.namespace !== undefined ? { namespace: doc.root.namespace } : {}) } };
+  }
+  if (doc.root.name === ENVELOPE_TAG) {
+    const body = doc.root.children.find((x) => x.name === 'Document');
+    const name = body?.children[0]?.name;
+    if (!body || !name) return { ok: false, error: { code: 'wrong_body', path: '', detail: doc.root.children[0]?.name ?? '' } };
+    return { ok: true, info: { format: 'xml', kind: 'envelope', name, ...(body.namespace !== undefined ? { namespace: body.namespace } : {}) } };
   }
   // a message that is its own root (the Business Application Header) declares its message namespace; a fragment never does
   if (doc.root.namespace?.startsWith(ISO_NAMESPACE_PREFIX)) return { ok: true, info: { format: 'xml', kind: 'document', name: doc.root.name, namespace: doc.root.namespace } };
@@ -231,8 +276,13 @@ function readJson(text: string): { ok: true; value: Obj } | { ok: false; error: 
 export function parseIsoJsonMessage(message: MessageDefinition, text: string): ParseResult {
   const j = readJson(text);
   if (!j.ok) return j;
-  const doc = j.value[message.rootTag];
-  if (!isObj(doc)) return { ok: false, error: { code: 'wrong_root', path: '', detail: Object.keys(j.value)[0] ?? '' } };
+  return jsonMessageOf(message, j.value);
+}
+
+/** A message from an object holding it under its root tag (`{ "Document": … }`, or `{ "AppHdr": … }` for an own-root message). */
+function jsonMessageOf(message: MessageDefinition, holder: Obj): ParseResult {
+  const doc = holder[message.rootTag];
+  if (!isObj(doc)) return { ok: false, error: { code: 'wrong_root', path: '', detail: Object.keys(holder)[0] ?? '' } };
   const own = isOwnRoot(message);
   const body = own ? doc : doc[message.bodyTag];
   if (!isObj(body)) return { ok: false, error: { code: 'wrong_body', path: '', detail: Object.keys(doc)[0] ?? '' } };
@@ -240,6 +290,19 @@ export function parseIsoJsonMessage(message: MessageDefinition, text: string): P
   if (!own) for (const extra of Object.keys(doc).filter((k) => k !== message.bodyTag)) note(c, 'unknown_element', extra, extra);
   const values = jsonChildren(c, c.types[message.rootType]!, body, '');
   return { ok: true, values: hydrate(c.types, message.rootType, values), issues: c.issues };
+}
+
+/** Read a message with its Business Application Header from `{ "Envelope": { "AppHdr": …, "Document": … } }` (see `parseXmlEnvelope`). */
+export function parseIsoJsonEnvelope(header: MessageDefinition, message: MessageDefinition, text: string): ParseResult {
+  const j = readJson(text);
+  if (!j.ok) return j;
+  const env = j.value[ENVELOPE_TAG];
+  if (!isObj(env)) return { ok: false, error: { code: 'wrong_root', path: '', detail: Object.keys(j.value)[0] ?? '' } };
+  if (!isObj(env[message.rootTag])) return { ok: false, error: { code: 'wrong_body', path: '', detail: Object.keys(env)[0] ?? '' } };
+  const hdr = env[header.rootTag];
+  const result = withHeaderValues(isObj(hdr) ? jsonMessageOf(header, { [header.rootTag]: hdr }) : undefined, jsonMessageOf(message, { [message.rootTag]: env[message.rootTag] }));
+  if (result.ok) for (const extra of Object.keys(env).filter((k) => k !== header.rootTag && k !== message.rootTag)) result.issues.push({ code: 'unknown_element', path: extra, detail: extra });
+  return result;
 }
 
 /** Read a single component or choice from ISO JSON written as `{ "<TypeName>": { … } }`, like `serializeFragmentIsoJson`. */
@@ -263,6 +326,13 @@ export function inspectJson(text: string): { ok: true; info: DocumentInfo } | { 
     const body = Object.keys(j.value.Document)[0];
     if (!body) return { ok: false, error: { code: 'wrong_body', path: '', detail: '' } };
     return { ok: true, info: { format: 'json', kind: 'document', name: body } };
+  }
+  if (keys.length === 1 && keys[0] === ENVELOPE_TAG && isObj(j.value[ENVELOPE_TAG])) {
+    const env = j.value[ENVELOPE_TAG] as Obj;
+    const doc = env.Document;
+    const name = isObj(doc) ? Object.keys(doc)[0] : undefined;
+    if (!name) return { ok: false, error: { code: 'wrong_body', path: '', detail: Object.keys(env)[0] ?? '' } };
+    return { ok: true, info: { format: 'json', kind: 'envelope', name } };
   }
   if (keys.length === 1 && OWN_ROOTS.includes(keys[0]!) && isObj(j.value[keys[0]!])) return { ok: true, info: { format: 'json', kind: 'document', name: keys[0]! } };
   if (keys.length === 1 && isObj(j.value[keys[0]!])) return { ok: true, info: { format: 'json', kind: 'fragment', name: keys[0]! } };

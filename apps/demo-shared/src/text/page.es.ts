@@ -165,6 +165,7 @@ export const pageEs: PageMessages = {
   xsdEngineFailed: 'No se pudo ejecutar el validador: {why}',
   xsdClose: 'Cerrar los errores de validación',
   xsdLine: 'Línea {n}',
+  xsdHeaderNotChecked: 'No se pudo cargar el esquema de la cabecera (head.001.001.04); solo se comprobó el mensaje.',
   xsdLoadOther: 'Cargar otro archivo de esquema…',
   xsdSchemaFrom: 'Esquema: {source}',
   bannerTitle: 'Explorador de mensajes ISO 20022',

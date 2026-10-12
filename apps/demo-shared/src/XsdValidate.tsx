@@ -64,10 +64,15 @@ export function XsdButton({ xsd, xmlOutput }: { xsd: XsdHandle; xmlOutput: boole
 
 /** What the message of a validation looks like to the person. */
 export interface XsdRequest {
+  /** The XML to check: the message alone (the pane's XML), or, with a header, the message's part of the envelope as a document of its own. */
   xml: string;
   namespace: string;
   type: string;
   isMessage: boolean;
+  /** Added to the validator's line numbers, so that they match the pane (the message starts later in an envelope). */
+  lineOffset?: number;
+  /** The Business Application Header of an envelope: checked against its own schema, if that was loaded (otherwise only the message is checked). */
+  header?: { xml: string; namespace: string; schema: string | undefined; lineOffset: number };
 }
 
 /**
@@ -80,8 +85,14 @@ export function XsdPanel({ xsd, request, validate }: { xsd: XsdHandle; request: 
   const [result, setResult] = useState<XsdResult | undefined>();
   const [failure, setFailure] = useState<string | undefined>();
   const [checking, setChecking] = useState(false);
+  const [headerSkipped, setHeaderSkipped] = useState(false);
   const schema = xsd.state.status === 'ready' ? xsd.state : undefined;
-  const { xml, namespace, type, isMessage } = request;
+  const { xml, namespace, type, isMessage, lineOffset = 0, header } = request;
+  const headerXml = header?.xml;
+  const headerNamespace = header?.namespace;
+  const headerSchema = header?.schema;
+  const headerOffset = header?.lineOffset ?? 0;
+  const hasHeader = header !== undefined;
 
   useEffect(() => {
     if (!xsd.open || !schema) return;
@@ -89,10 +100,21 @@ export function XsdPanel({ xsd, request, validate }: { xsd: XsdHandle; request: 
     setChecking(true);
     // a short pause, so that typing does not start a check per key
     const timer = setTimeout(() => {
-      validateXsd({ xml, schema: schema.text, namespace, type, isMessage }, validate)
-        .then((r) => {
+      const shift = (r: XsdResult, by: number, header?: true): XsdResult => ({
+        valid: r.valid,
+        issues: r.issues.map((i) => ({ ...i, ...(i.line !== undefined ? { line: i.line + by } : {}), ...(header ? { header } : {}) })),
+      });
+      const messageResult = validateXsd({ xml, schema: schema.text, namespace, type, isMessage }, validate).then((r) => shift(r, lineOffset));
+      // the header is checked on its own against its own schema; without that schema only the message is checked
+      const headerResult =
+        hasHeader && headerSchema !== undefined && headerXml !== undefined && headerNamespace !== undefined
+          ? validateXsd({ xml: headerXml, schema: headerSchema, namespace: headerNamespace, type: 'AppHdr', isMessage: true }, validate).then((r) => shift(r, headerOffset, true))
+          : undefined;
+      Promise.all([headerResult ?? Promise.resolve(undefined), messageResult])
+        .then(([h, m]) => {
           if (stale) return;
-          setResult(r);
+          setHeaderSkipped(hasHeader && h === undefined);
+          setResult(h ? { valid: h.valid && m.valid, issues: [...h.issues, ...m.issues] } : m);
           setFailure(undefined);
         })
         .catch((e: unknown) => {
@@ -106,7 +128,7 @@ export function XsdPanel({ xsd, request, validate }: { xsd: XsdHandle; request: 
       stale = true;
       clearTimeout(timer);
     };
-  }, [xsd.open, schema, xml, namespace, type, isMessage, validate]);
+  }, [xsd.open, schema, xml, namespace, type, isMessage, lineOffset, hasHeader, headerXml, headerNamespace, headerSchema, headerOffset, validate]);
 
   if (!xsd.open || !schema) return null;
   const source = schema.source === 'file' ? (schema.fileName ?? '') : schema.url;
@@ -156,11 +178,13 @@ export function XsdPanel({ xsd, request, validate }: { xsd: XsdHandle; request: 
           {t('xsdSchemaFrom', { source })}
         </p>
         {failure ? <p role="alert" className="text-danger">{t('xsdEngineFailed', { why: failure })}</p> : null}
+        {!failure && headerSkipped ? <p className="text-muted">{t('xsdHeaderNotChecked')}</p> : null}
         {!failure && result?.valid ? <p className="text-ok-fg">{t('xsdValid')}</p> : null}
         {!failure && result && !result.valid ? (
           <ul className="mt-1 space-y-1" role="list">
             {result.issues.map((issue, i) => (
               <li key={`${i}-${issue.line ?? ''}-${issue.message}`} className="flex gap-2">
+                {issue.header ? <span className="shrink-0 font-mono text-muted">AppHdr</span> : null}
                 {issue.line ? <span className="shrink-0 font-mono text-muted">{t('xsdLine', { n: issue.line })}</span> : null}
                 <span className="min-w-0 break-words text-danger">{issue.message}</span>
               </li>
