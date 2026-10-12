@@ -1,0 +1,51 @@
+{
+  "identifier": "semt.014.002.07",
+  "name": "IntraPositionMovementStatusAdvice002V07",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:semt.014.002.07",
+  "bodyTag": "IntraPosMvmntStsAdvc",
+  "out": "semt014f2",
+  "isoId": "_cdkNYzi8Eeydid5dcNPKvg",
+  "definition": "Scope|An account servicer sends a IntraPositionMovementStatusAdvice to an account owner to advise the status of an intra-position movement instruction previously sent by the account owner.|The account servicer/owner relationship may be:|- a central securities depository or another settlement market infrastructure acting on behalf of their participants|- an agent (sub-custodian) acting on behalf of their global custodian customer, or|- a custodian acting on behalf of an investment management institution or a broker/dealer.||Usage|The message may also be used to:|- re-send a message previously sent,|- provide a third party with a copy of a message for information,|- re-send to a third party a copy of a message for information using the relevant elements in the Business Application Header.",
+  "blocks": [
+    {
+      "name": "TransactionIdentification",
+      "isoId": "_cdk0czi8Eeydid5dcNPKvg",
+      "xmlTag": "TxId",
+      "type": "TransactionIdentifications34",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ProcessingStatus",
+      "isoId": "_cdk0dTi8Eeydid5dcNPKvg",
+      "xmlTag": "PrcgSts",
+      "type": "IntraPositionProcessingStatus10Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SettlementStatus",
+      "isoId": "_cdk0dzi8Eeydid5dcNPKvg",
+      "xmlTag": "SttlmSts",
+      "type": "SettlementStatus20Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "TransactionDetails",
+      "isoId": "_cdk0eTi8Eeydid5dcNPKvg",
+      "xmlTag": "TxDtls",
+      "type": "IntraPositionDetails64",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_cdk0ezi8Eeydid5dcNPKvg",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

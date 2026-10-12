@@ -1479,5 +1479,357 @@
     "out": "head001",
     "dir": "head001-v04",
     "rootTag": "AppHdr"
+  },
+  {
+    "name": "AccountingStatementOfHoldingsCancellationV02",
+    "id": "_McJgvtFSEd-BzquC8wXy7w_-1129601452",
+    "identifier": "semt.005.001.02",
+    "bodyTag": "AcctgStmtOfHldgsCxlV02",
+    "out": "semt005",
+    "dir": "semt005-v02"
+  },
+  {
+    "name": "CustodyStatementOfHoldingsCancellationV02",
+    "id": "_Mb_vvNFSEd-BzquC8wXy7w_-145472728",
+    "identifier": "semt.004.001.02",
+    "bodyTag": "CtdyStmtOfHldgsCxlV02",
+    "out": "semt004",
+    "dir": "semt004-v02"
+  },
+  {
+    "name": "IntraPositionMovementConfirmation002V09",
+    "id": "_caYWgzi8Eeydid5dcNPKvg",
+    "identifier": "semt.015.002.09",
+    "bodyTag": "IntraPosMvmntConf",
+    "out": "semt015f2",
+    "dir": "semt015f2-v09"
+  },
+  {
+    "name": "IntraPositionMovementConfirmationV10",
+    "id": "_9ZK4MYbpEe-6cOl7zMpJaA",
+    "identifier": "semt.015.001.10",
+    "bodyTag": "IntraPosMvmntConf",
+    "out": "semt015",
+    "dir": "semt015-v10"
+  },
+  {
+    "name": "IntraPositionMovementInstruction002V06",
+    "id": "_cboTszi8Eeydid5dcNPKvg",
+    "identifier": "semt.013.002.06",
+    "bodyTag": "IntraPosMvmntInstr",
+    "out": "semt013f2",
+    "dir": "semt013f2-v06"
+  },
+  {
+    "name": "IntraPositionMovementInstructionV07",
+    "id": "_768hcYowEe-efPejSUAtLw",
+    "identifier": "semt.013.001.07",
+    "bodyTag": "IntraPosMvmntInstr",
+    "out": "semt013",
+    "dir": "semt013-v07"
+  },
+  {
+    "name": "IntraPositionMovementPendingReportV01",
+    "id": "_iPiCceShEe-qVZLXW4RRBw",
+    "identifier": "semt.034.001.01",
+    "bodyTag": "IntraPosMvmntPdgRpt",
+    "out": "semt034",
+    "dir": "semt034-v01"
+  },
+  {
+    "name": "IntraPositionMovementPostingReport002V09",
+    "id": "_ccnLIzi8Eeydid5dcNPKvg",
+    "identifier": "semt.016.002.09",
+    "bodyTag": "IntraPosMvmntPstngRpt",
+    "out": "semt016f2",
+    "dir": "semt016f2-v09"
+  },
+  {
+    "name": "IntraPositionMovementPostingReportV10",
+    "id": "_W67wQYySEe-Pd_QEDR8xHw",
+    "identifier": "semt.016.001.10",
+    "bodyTag": "IntraPosMvmntPstngRpt",
+    "out": "semt016",
+    "dir": "semt016-v10"
+  },
+  {
+    "name": "IntraPositionMovementQueryResponseV01",
+    "id": "_iPjQkeShEe-qVZLXW4RRBw",
+    "identifier": "semt.029.001.01",
+    "bodyTag": "IntraPosMvmntQryRspn",
+    "out": "semt029",
+    "dir": "semt029-v01"
+  },
+  {
+    "name": "IntraPositionMovementQueryV01",
+    "id": "_iPjQreShEe-qVZLXW4RRBw",
+    "identifier": "semt.028.001.01",
+    "bodyTag": "IntraPosMvmntQry",
+    "out": "semt028",
+    "dir": "semt028-v01"
+  },
+  {
+    "name": "IntraPositionMovementStatusAdvice002V07",
+    "id": "_cdkNYzi8Eeydid5dcNPKvg",
+    "identifier": "semt.014.002.07",
+    "bodyTag": "IntraPosMvmntStsAdvc",
+    "out": "semt014f2",
+    "dir": "semt014f2-v07"
+  },
+  {
+    "name": "IntraPositionMovementStatusAdviceV09",
+    "id": "226879b2-0028-4b62-8394-d2e515de0ef7",
+    "identifier": "semt.014.001.09",
+    "bodyTag": "IntraPosMvmntStsAdvc",
+    "out": "semt014",
+    "dir": "semt014-v09"
+  },
+  {
+    "name": "SecuritiesAccountPositionQueryV01",
+    "id": "_OieywQJ3EfGAP_FOfstLIw",
+    "identifier": "semt.025.001.01",
+    "bodyTag": "SctiesAcctPosQry",
+    "out": "semt025",
+    "dir": "semt025-v01"
+  },
+  {
+    "name": "SecuritiesAccountPositionResponseV01",
+    "id": "_Oign8QJ3EfGAP_FOfstLIw",
+    "identifier": "semt.040.001.01",
+    "bodyTag": "SctiesAcctPosRspn",
+    "out": "semt040",
+    "dir": "semt040-v01"
+  },
+  {
+    "name": "SecuritiesBalanceAccountingReport002V11",
+    "id": "_ch560zi8Eeydid5dcNPKvg",
+    "identifier": "semt.003.002.11",
+    "bodyTag": "SctiesBalAcctgRpt",
+    "out": "semt003f2",
+    "dir": "semt003f2-v11"
+  },
+  {
+    "name": "SecuritiesBalanceAccountingReportV12",
+    "id": "__PoMa4S0Ee-Pv9KR9bv9IA",
+    "identifier": "semt.003.001.12",
+    "bodyTag": "SctiesBalAcctgRpt",
+    "out": "semt003",
+    "dir": "semt003-v12"
+  },
+  {
+    "name": "SecuritiesBalanceCustodyReport002V11",
+    "id": "_csT0Azi8Eeydid5dcNPKvg",
+    "identifier": "semt.002.002.11",
+    "bodyTag": "SctiesBalCtdyRpt",
+    "out": "semt002f2",
+    "dir": "semt002f2-v11"
+  },
+  {
+    "name": "SecuritiesBalanceCustodyReportV12",
+    "id": "__PoMQYS0Ee-Pv9KR9bv9IA",
+    "identifier": "semt.002.001.12",
+    "bodyTag": "SctiesBalCtdyRpt",
+    "out": "semt002",
+    "dir": "semt002-v12"
+  },
+  {
+    "name": "SecuritiesBalanceTransparencyReportStatusAdviceV01",
+    "id": "_yMxXsbvVEeOgOuxYpBEzKg",
+    "identifier": "semt.042.001.01",
+    "bodyTag": "SctiesBalTrnsprncyRptStsAdvc",
+    "out": "semt042",
+    "dir": "semt042-v01"
+  },
+  {
+    "name": "SecuritiesBalanceTransparencyReportV02",
+    "id": "_LMa20VTQEeatgN-VQ0eFlQ",
+    "identifier": "semt.041.001.02",
+    "bodyTag": "SctiesBalTrnsprncyRpt",
+    "out": "semt041",
+    "dir": "semt041-v02"
+  },
+  {
+    "name": "SecuritiesEndOfProcessReportV02",
+    "id": "_j5E4gQNmEe2P7e2qGFFOGg",
+    "identifier": "semt.023.001.02",
+    "bodyTag": "SctiesEndOfPrcRpt",
+    "out": "semt023",
+    "dir": "semt023-v02"
+  },
+  {
+    "name": "SecuritiesMessageCancellationAdvice002V07",
+    "id": "_dgY8Uzi8Eeydid5dcNPKvg",
+    "identifier": "semt.020.002.07",
+    "bodyTag": "SctiesMsgCxlAdvc",
+    "out": "semt020f2",
+    "dir": "semt020f2-v07"
+  },
+  {
+    "name": "SecuritiesMessageCancellationAdviceV07",
+    "id": "_MFKhUSpzEeyR9JrVGfaMKw",
+    "identifier": "semt.020.001.07",
+    "bodyTag": "SctiesMsgCxlAdvc",
+    "out": "semt020",
+    "dir": "semt020-v07"
+  },
+  {
+    "name": "SecuritiesMessageRejectionV04",
+    "id": "_wsZu0TWfEe2OzdGcZrUAEQ",
+    "identifier": "semt.001.001.04",
+    "bodyTag": "SctiesMsgRjctn",
+    "out": "semt001",
+    "dir": "semt001-v04"
+  },
+  {
+    "name": "SecuritiesSettlementConditionsModificationRequestQueryV01",
+    "id": "_iPj3reShEe-qVZLXW4RRBw",
+    "identifier": "semt.030.001.01",
+    "bodyTag": "SctiesSttlmCondsModReqQry",
+    "out": "semt030",
+    "dir": "semt030-v01"
+  },
+  {
+    "name": "SecuritiesSettlementConditionsModificationRequestReportV01",
+    "id": "_iPj3v-ShEe-qVZLXW4RRBw",
+    "identifier": "semt.031.001.01",
+    "bodyTag": "SctiesSttlmCondsModReqRpt",
+    "out": "semt031",
+    "dir": "semt031-v01"
+  },
+  {
+    "name": "SecuritiesSettlementTransactionAllegementReport002V10",
+    "id": "_dpGMYzi8Eeydid5dcNPKvg",
+    "identifier": "semt.019.002.10",
+    "bodyTag": "SctiesSttlmTxAllgmtRpt",
+    "out": "semt019f2",
+    "dir": "semt019f2-v10"
+  },
+  {
+    "name": "SecuritiesSettlementTransactionAllegementReportV12",
+    "id": "0b6c5aa3-9112-4b8b-9574-594e0ce1c123",
+    "identifier": "semt.019.001.12",
+    "bodyTag": "SctiesSttlmTxAllgmtRpt",
+    "out": "semt019",
+    "dir": "semt019-v12"
+  },
+  {
+    "name": "SecuritiesSettlementTransactionAuditTrailReport002V05",
+    "id": "_dsxygzi8Eeydid5dcNPKvg",
+    "identifier": "semt.022.002.05",
+    "bodyTag": "SctiesSttlmTxAudtTrlRpt",
+    "out": "semt022f2",
+    "dir": "semt022f2-v05"
+  },
+  {
+    "name": "SecuritiesSettlementTransactionAuditTrailReportV07",
+    "id": "3d00e962-9dfa-4555-bacc-0c222257447e",
+    "identifier": "semt.022.001.07",
+    "bodyTag": "SctiesSttlmTxAudtTrlRpt",
+    "out": "semt022",
+    "dir": "semt022-v07"
+  },
+  {
+    "name": "SecuritiesSettlementTransactionQueryResponseV01",
+    "id": "_SUpXkQNNEfGuSZHb7MrJ_A",
+    "identifier": "semt.027.001.01",
+    "bodyTag": "SctiesSttlmTxQryRspn",
+    "out": "semt027",
+    "dir": "semt027-v01"
+  },
+  {
+    "name": "SecuritiesSettlementTransactionQueryV01",
+    "id": "_uNylragwEfCXwLUUylXgrQ",
+    "identifier": "semt.026.001.01",
+    "bodyTag": "SctiesSttlmTxQry",
+    "out": "semt026",
+    "dir": "semt026-v01"
+  },
+  {
+    "name": "SecuritiesStatementQuery002V08",
+    "id": "_gAPp8zi8Eeydid5dcNPKvg",
+    "identifier": "semt.021.002.08",
+    "bodyTag": "SctiesStmtQry",
+    "out": "semt021f2",
+    "dir": "semt021f2-v08"
+  },
+  {
+    "name": "SecuritiesStatementQueryV09",
+    "id": "71d95517-43ac-4b82-a35c-1cf6d29f7688",
+    "identifier": "semt.021.001.09",
+    "bodyTag": "SctiesStmtQry",
+    "out": "semt021",
+    "dir": "semt021-v09"
+  },
+  {
+    "name": "SecuritiesTransactionCancellationRequestQueryV01",
+    "id": "_iPlFweShEe-qVZLXW4RRBw",
+    "identifier": "semt.032.001.01",
+    "bodyTag": "SctiesTxCxlReqQry",
+    "out": "semt032",
+    "dir": "semt032-v01"
+  },
+  {
+    "name": "SecuritiesTransactionCancellationRequestReportV01",
+    "id": "_iPlF0-ShEe-qVZLXW4RRBw",
+    "identifier": "semt.033.001.01",
+    "bodyTag": "SctiesTxCxlReqRpt",
+    "out": "semt033",
+    "dir": "semt033-v01"
+  },
+  {
+    "name": "SecuritiesTransactionPenaltiesReportV01",
+    "id": "_uNylw6gwEfCXwLUUylXgrQ",
+    "identifier": "semt.044.001.01",
+    "bodyTag": "SctiesTxPnltiesRpt",
+    "out": "semt044",
+    "dir": "semt044-v01"
+  },
+  {
+    "name": "SecuritiesTransactionPendingReport002V13",
+    "id": "_gEHdUzi8Eeydid5dcNPKvg",
+    "identifier": "semt.018.002.13",
+    "bodyTag": "SctiesTxPdgRpt",
+    "out": "semt018f2",
+    "dir": "semt018f2-v13"
+  },
+  {
+    "name": "SecuritiesTransactionPendingReportV15",
+    "id": "1805316d-164b-4aa1-806a-24ca06896315",
+    "identifier": "semt.018.001.15",
+    "bodyTag": "SctiesTxPdgRpt",
+    "out": "semt018",
+    "dir": "semt018-v15"
+  },
+  {
+    "name": "SecuritiesTransactionPostingReport002V12",
+    "id": "_gJwLQzi8Eeydid5dcNPKvg",
+    "identifier": "semt.017.002.12",
+    "bodyTag": "SctiesTxPstngRpt",
+    "out": "semt017f2",
+    "dir": "semt017f2-v12"
+  },
+  {
+    "name": "SecuritiesTransactionPostingReportV14",
+    "id": "3541e895-efb3-4eb5-88c5-bfe44a99cdbb",
+    "identifier": "semt.017.001.14",
+    "bodyTag": "SctiesTxPstngRpt",
+    "out": "semt017",
+    "dir": "semt017-v14"
+  },
+  {
+    "name": "StatementOfInvestmentFundTransactionsCancellationV02",
+    "id": "_McvWkNFSEd-BzquC8wXy7w_476717601",
+    "identifier": "semt.007.001.02",
+    "bodyTag": "StmtOfInvstmtFndTxsCxlV02",
+    "out": "semt007",
+    "dir": "semt007-v02"
+  },
+  {
+    "name": "StatementOfInvestmentFundTransactionsV02",
+    "id": "_MccbotFSEd-BzquC8wXy7w_1866614208",
+    "identifier": "semt.006.001.02",
+    "bodyTag": "StmtOfInvstmtFndTxsV02",
+    "out": "semt006",
+    "dir": "semt006-v02"
   }
 ]

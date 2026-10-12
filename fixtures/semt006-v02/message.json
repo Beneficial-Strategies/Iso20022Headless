@@ -1,0 +1,83 @@
+{
+  "identifier": "semt.006.001.02",
+  "name": "StatementOfInvestmentFundTransactionsV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:semt.006.001.02",
+  "bodyTag": "StmtOfInvstmtFndTxsV02",
+  "out": "semt006",
+  "isoId": "_MccbotFSEd-BzquC8wXy7w_1866614208",
+  "definition": "Scope|An account servicer, for example, a transfer agent sends the StatementOfInvestmentFundTransactions message to the account owner, for example, an investment manager or its authorised representative to provide detailed transactions (increases and decreases) of holdings which occurred during a specified period of time.|Usage|The StatementOfInvestmentFundTransactions message is used to list the holdings transactions of a single (master) account or several sub-accounts.|This message should be used at a frequency agreed bi-laterally between the account servicer and the account owner.|This message must not be used in place of confirmation messages.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "_Mccbo9FSEd-BzquC8wXy7w_-1980444025",
+      "xmlTag": "MsgId",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "PreviousReference",
+      "isoId": "_MccbpNFSEd-BzquC8wXy7w_1866614228",
+      "xmlTag": "PrvsRef",
+      "type": "AdditionalReference2",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "RelatedReference",
+      "isoId": "_MccbpdFSEd-BzquC8wXy7w_1866614269",
+      "xmlTag": "RltdRef",
+      "type": "AdditionalReference2",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "MessagePagination",
+      "isoId": "_MccbptFSEd-BzquC8wXy7w_1866614630",
+      "xmlTag": "MsgPgntn",
+      "type": "Pagination",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "StatementGeneralDetails",
+      "isoId": "_Mccbp9FSEd-BzquC8wXy7w_1866614287",
+      "xmlTag": "StmtGnlDtls",
+      "type": "Statement8",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "InvestmentAccountDetails",
+      "isoId": "_MccbqNFSEd-BzquC8wXy7w_1866614322",
+      "xmlTag": "InvstmtAcctDtls",
+      "type": "InvestmentAccount25",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "TransactionOnAccount",
+      "isoId": "_McllkNFSEd-BzquC8wXy7w_1866614707",
+      "xmlTag": "TxOnAcct",
+      "type": "InvestmentFundTransactionsByFund2",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SubAccountDetails",
+      "isoId": "_McllkdFSEd-BzquC8wXy7w_1866614364",
+      "xmlTag": "SubAcctDtls",
+      "type": "SubAccountIdentification6",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "Extension",
+      "isoId": "_McllktFSEd-BzquC8wXy7w_1866614672",
+      "xmlTag": "Xtnsn",
+      "type": "Extension1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

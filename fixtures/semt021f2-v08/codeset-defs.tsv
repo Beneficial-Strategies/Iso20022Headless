@@ -1,0 +1,24 @@
+codeSet	isoId	text
+SecuritiesStatementType1Code	_ZF7Astp-Ed-ak6NoX_4Aeg_-1354761740	Specifies whether the statement is an accounting or a custody statement.
+AffirmationStatus1Code	_bnTYWNp-Ed-ak6NoX_4Aeg_519503215	Specifies the affirmation status of a trade.
+AllocationStatus1Code	_bopcJ9p-Ed-ak6NoX_4Aeg_1464332533	Specifies the status of allocation of collateral to cover the instruction.
+RepoCallRequestStatus1Code	_ZS5Ftdp-Ed-ak6NoX_4Aeg_-1000214572	Specifies additional information about the status of the repurchase agreement call processed instruction.
+CorporateActionEventProcessingStatus1Code	_bDZaAtp-Ed-ak6NoX_4Aeg_771492585	Specifies the stage in the corporate action event life cycle.
+CorporateActionEventStage2Code	_bD1e4tp-Ed-ak6NoX_4Aeg_1234993213	Specifies the stage of the corporate action event.
+InstructionProcessingStatus1Code	_aXlc6dp-Ed-ak6NoX_4Aeg_486709953	Specifies the status of an instruction.
+RegistrationProcessingStatus1Code	_ZbFYYNp-Ed-ak6NoX_4Aeg_-586829209	Specifies the status of the registration processing.
+ResponseStatus1Code	_Y9uuBdp-Ed-ak6NoX_4Aeg_-788093726	Specifies the status of the received collateral message (collateral claim, a collateral proposal or a proposal/request for collateral substitution) from a collateral management perspective.
+ReplacementProcessingStatus1Code	_ZwPwF9p-Ed-ak6NoX_4Aeg_-1450819640	Specifies the processing status of the replacement request.
+CancellationProcessingStatus1Code	_bXgo0tp-Ed-ak6NoX_4Aeg_2094579534	Specifies the status of a cancellation request.
+SecuritiesSettlementStatus2Code	_JhIYoUABEeCaq78Ig8ATcA	Provides the status of settlement of an instruction.
+SettlementConditionModificationStatus1Code	_ZK1889p-Ed-ak6NoX_4Aeg_1791512487	Specifies the status of a securities settlement condition modification request.
+RepoCallAcknowledgementReason2Code	_ZSvUtNp-Ed-ak6NoX_4Aeg_632190422	Specifies additional information about the repurchase agreement call processed instruction.
+CancelledStatusReason12Code	_1MLxoT9kEeCuVfEpWlZb5g	Specifies the underlying reason for the cancellation of the associated transaction.
+PendingReason7Code	_aDBiJ9p-Ed-ak6NoX_4Aeg_1672936619	Specifies the reason why a cancellation request sent for the related instruction is pending.
+DeniedReason7Code	_28LGcFhfEeS8HfHHd4stCA	Specifies the denied reason.
+PendingReason8Code	_FLIS4T9rEeCY7potQsO_IA	Specifies the reason the transaction/instruction is pending or failing settlement. Settlement on the instructed settlement date is still possible, status is pending. Settlement on the instructed settlement date is no longer possible, status is failing.
+FailingReason1Code	_am7gdtp-Ed-ak6NoX_4Aeg_1744847021	Specifies the reason the transaction/instruction is failing settlement. Settlement on the instructed settlement date is no longer possible.
+PendingProcessingReason1Code	_aAfLhNp-Ed-ak6NoX_4Aeg_1265761391	Specifies the reason the transaction/instruction is failing settlement. Settlement on the instructed settlement date is no longer possible.
+RejectionReason76Code	_ydlncCtXEeyhipY4f42fZQ	Specifies the reason why the instruction/cancellation request has a rejected status.
+RepairReason6Code	_ixP4oT9qEeCY7potQsO_IA	Specifies the reason why the securities financing instruction has a repair status.
+UnmatchedReason14Code	_xtpD0GXkEeWsrOWU209RUg	Specifies the reason the transaction, transfer or settlement instruction is unmatched.

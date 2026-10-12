@@ -1,0 +1,45 @@
+choice	memberId	memberName	text
+AllegementStatus3Choice	_UHLhwTqhEeWyoP0PbocV1Q	Code	Status of the allegement reported.
+AllegementStatus3Choice	_UHLhyTqhEeWyoP0PbocV1Q	Proprietary	Status of the allegement reported.
+MarketType8Choice	_Ql4SQ9p-Ed-ak6NoX_4Aeg_931715496	Code	Market type expressed as an ISO 20022 code.
+MarketType8Choice	_Ql4SRNp-Ed-ak6NoX_4Aeg_-65356857	Proprietary	Market type expressed as a proprietary code.
+TradeTransactionCondition5Choice	_2wIA0TqjEeWyoP0PbocV1Q	Code	Trade conditions expressed as an ISO 20022 code.
+TradeTransactionCondition5Choice	_2wIA2TqjEeWyoP0PbocV1Q	Proprietary	Trade conditions expressed as a proprietary code.
+CashAccountIdentification9Choice	_oA-iUZBPEe-COKgew96POA	IBAN	International Bank Account Number (IBAN) - identifier used internationally by financial institutions to uniquely identify the account of a customer. Further specifications of the format and content of the IBAN can be found in the standard ISO 13616 "Banking and related financial services - International Bank Account Number (IBAN)" version 1997-10-01, or later revisions.
+CashAccountIdentification9Choice	_VBinYJBQEe-COKgew96POA	BlockChainCashWallet	Block Chain Wallet where digital currencies are maintained. This is the equivalent of cash account for digital currencies.
+CashAccountIdentification9Choice	_oA-iWZBPEe-COKgew96POA	Proprietary	Unique identifier for an account. It is assigned by the account servicer using a proprietary identification scheme.
+TerminationDate6Choice	_hUd9YbPvEeelzbgsFa3sqQ	Date	Date in ISO format.
+TerminationDate6Choice	_hUd9b7PvEeelzbgsFa3sqQ	Code	Closing date/time or maturity date/time of the transaction expressed as an ISO 20022 code.
+DateCode18Choice	_aM8ewTqkEeWyoP0PbocV1Q	Code	Date expressed as an ISO 20022 code.
+DateCode18Choice	_aM8eyTqkEeWyoP0PbocV1Q	Proprietary	Date expressed as a proprietary code.
+RateType35Choice	_43lAEzqkEeWyoP0PbocV1Q	Code	Rate expressed as an ISO 20022 code.
+RateType35Choice	_43lAFTqkEeWyoP0PbocV1Q	Proprietary	Rate expressed as a proprietary code.
+LegalFramework3Choice	__YvnATqkEeWyoP0PbocV1Q	Code	Legal framework expressed as an ISO 20022 code.
+LegalFramework3Choice	__YvnCTqkEeWyoP0PbocV1Q	Proprietary	Legal framework expressed as a proprietary code.
+SecuritiesTransactionType45Choice	_nIy1c9ExEeiO-eodGv5iKQ	Code	Securities transaction type expressed as an ISO 20022 code.
+SecuritiesTransactionType45Choice	_nIy1e9ExEeiO-eodGv5iKQ	Proprietary	Securities transaction type expressed as a proprietary code.
+SettlementTransactionCondition46Choice	_mnUdpfHVEfChCaiL9q1LKg	Code	Settlement conditions expressed as an ISO 20022 code.
+SettlementTransactionCondition46Choice	_mnUdsfHVEfChCaiL9q1LKg	Proprietary	Settlement conditions expressed as a proprietary code.
+BeneficialOwnership4Choice	_T5OZkTqGEeWVrPy0StzzSg	Indicator	Specifies whether there is change of beneficial ownership.
+BeneficialOwnership4Choice	_T5OZmTqGEeWVrPy0StzzSg	Proprietary	Beneficial ownership information expressed a proprietary code.
+CashSettlementSystem6Choice	_evTQ1ZZ1EfC2_67yGLymgA	Code	Cash settlement system expressed as an ISO 20022 code.
+CashSettlementSystem6Choice	_evTQ4ZZ1EfC2_67yGLymgA	Proprietary	Cash settlement system expressed as a proprietary code.
+MarketClientSide6Choice	_-_M6sa3KEeey8N0JWnVPUw	Code	Market side or a client side information expressed as an ISO 20022 code.
+MarketClientSide6Choice	_-_M6ua3KEeey8N0JWnVPUw	Proprietary	Market side or a client side information expressed as a proprietary code.
+Registration9Choice	_DgFA4TqGEeWVrPy0StzzSg	Code	Registration information expressed as an ISO 20022 code.
+Registration9Choice	_DgFA6TqGEeWVrPy0StzzSg	Proprietary	Registration information expressed as a proprietary code.
+RepurchaseType13Choice	_m0My0zqnEeWyoP0PbocV1Q	Code	Type of securities financing transaction process expressed as an ISO 20022 code.
+RepurchaseType13Choice	_m0My2zqnEeWyoP0PbocV1Q	Proprietary	Type of securities financing transaction process expressed as a proprietary code.
+PartyIdentification257Choice	_PgHdgZajEe-Rg9SagunFVg	AnyBIC	Unique and unambiguous way to identify an organisation.
+PartyIdentification257Choice	_PgHdg5ajEe-Rg9SagunFVg	NameAndAddress	Unique and unambiguous way to identify an organisation.
+PartyIdentification257Choice	_PgHdhZajEe-Rg9SagunFVg	Country	Unique and unambiguous way to identify an organisation.
+PartyIdentification257Choice	_SaFUQZajEe-Rg9SagunFVg	DigitalLedgerIdentification	Place of settlement expressed with a Digital Ledger Identifier. It identifies a digital ledger or distributed ledger system (for example, blockchain or similar platforms).
+Quantity83Choice	_YOu-QZZeEfCShM_qO0U4ig	ElectronicMoneyTokenSettlementQuantity	Quantity of E-money token for the settlement payment.
+Quantity83Choice	_aUJLkZZeEfCShM_qO0U4ig	NetworkFeeQuantity	Quantity of digital assets for network fee assigned to a transaction on a DLT network.
+CashSettlementSystemPlace1Choice	_g5qmsZZhEfCShM_qO0U4ig	DigitalLedgerIdentification	Place of safekeeping expressed with a Digital Ledger Identifier. It identifies a digital ledger or distributed ledger system (for example, blockchain or similar platforms).
+CashSettlementSystemPlace1Choice	_vRpY45ZhEfCShM_qO0U4ig	AnyBIC	Unique and unambiguous way to identify an organisation.
+CashSettlementSystemPlace1Choice	_YKiTY5ZhEfCShM_qO0U4ig	LEI	Legal entity identification as an alternate identification for a place of safekeeping.
+PartyIdentification134Choice	_JXJ-A9XZEeiN28wlpBQScw	AnyBIC	Code allocated to a financial or non-financial institution by the ISO 9362 Registration Authority, as described in ISO 9362 "Banking - Banking telecommunication messages - Business identifier code (BIC)".
+PartyIdentification134Choice	_JXJ-BdXZEeiN28wlpBQScw	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to a financial institution using a proprietary identification scheme.
+PartyIdentification134Choice	_JXJ-DdXZEeiN28wlpBQScw	NameAndAddress	Name and address of a party.
+PartyIdentification134Choice	_JXJ-FdXZEeiN28wlpBQScw	Country	Country in which a person resides (the place of a person's home). In the case of a company, it is the country from which the affairs of that company are directed.

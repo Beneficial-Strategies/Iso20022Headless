@@ -1,0 +1,19 @@
+choice	memberId	memberName	text
+StatementBasis7Choice	_dUsaczeREeWm5uvLSn0jEw	Code	Statement basis expressed as an ISO 20022 code.
+StatementBasis7Choice	_dUsaezeREeWm5uvLSn0jEw	Proprietary	Statement basis expressed as a proprietary code.
+PurposeCode7Choice	_vCc80znaEeWV5sr121Fc8A	Code	Securities account purpose as an ISO 20022 code.
+PurposeCode7Choice	_vCc82znaEeWV5sr121Fc8A	Proprietary	Securities account purpose as a proprietary code.
+Role6Choice	_exy38Tm9EeWV5sr121Fc8A	Code	Role of the party in the activity expressed as an ISO 20022 code.
+Role6Choice	_exy38zm9EeWV5sr121Fc8A	Proprietary	Role of the party in the activity expressed as a proprietary code.
+Role6Choice	_exy39Tm9EeWV5sr121Fc8A	Text	Role of the party in the activity.
+BalanceQuantity13Choice	_i1n9MSp6EeyR9JrVGfaMKw	Quantity	Total quantity of financial instruments of the balance.
+BalanceQuantity13Choice	_i1n9OSp6EeyR9JrVGfaMKw	Proprietary	Total quantity of financial instruments of the balance.
+Quantity51Choice	_Lql5cRuyEeyhRdHRjakS2w	Quantity	Quantity of financial instrument in units, original face amount or current face amount.
+Quantity51Choice	_Lql5cxuyEeyhRdHRjakS2w	OriginalAndCurrentFace	Original and current value of an asset-back instrument.
+MarketIdentification5Choice	_-t4XkYVYEe-Pv9KR9bv9IA	MarketIdentifierCode	ISO 10383 Market Identification Code.
+MarketIdentification5Choice	_-t4Xk4VYEe-Pv9KR9bv9IA	Description	Description of the market when no Market Identifier Code is available.
+MarketType19Choice	_XnX2IYVYEe-Pv9KR9bv9IA	Code	Market type expressed as an ISO 20022 code.
+MarketType19Choice	_XnX2KYVYEe-Pv9KR9bv9IA	Proprietary	Market type expressed as a proprietary code.
+SubBalanceQuantity8Choice	_k0vqYSp8EeyR9JrVGfaMKw	Quantity	Quantity of securities in the sub-balance.
+SubBalanceQuantity8Choice	_k0vqaSp8EeyR9JrVGfaMKw	Proprietary	Quantity of securities in the sub-balance.
+SubBalanceQuantity8Choice	_k0vqcSp8EeyR9JrVGfaMKw	QuantityAndAvailability	Quantity of securities in the sub-balance and whether the balance is available.

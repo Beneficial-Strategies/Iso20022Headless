@@ -1,0 +1,12 @@
+codeSet	code	enumName	isoId	text
+SettlementTransactionCondition22Code	CLEN	Clean	_1i9CwfISEfCMaqDZ_tShqQ	Tax-exempt financial instruments are to be settled.
+SettlementTransactionCondition22Code	DLWM	DeliveryWithoutMatching	_1oPLYfISEfCMaqDZ_tShqQ	Matching receipt instruction not required (only for concerned international or national central securities depositories).
+SettlementTransactionCondition22Code	DIRT	Dirty	_1tnaofISEfCMaqDZ_tShqQ	Taxable financial instruments are to be settled.
+SettlementTransactionCondition22Code	GATE	GatingEventParticipation	_165BofISEfCMaqDZ_tShqQ	Gating event participation. Hold until event start time.
+SettlementTransactionCondition22Code	NOMC	NoAutomaticMarketClaim	_3gwMMfISEfCMaqDZ_tShqQ	No market claim should be automatically generated.
+SettlementTransactionCondition22Code	PHYS	Physical	_4y-pEfISEfCMaqDZ_tShqQ	Securities are to be physically settled.
+SettlementTransactionCondition22Code	SPDL	SpecialDelivery	_5G1ZMfISEfCMaqDZ_tShqQ	Settlement transactions to be settled with special delivery.
+SettlementTransactionCondition22Code	SPST	SplitSettlement	_6Ql2kfISEfCMaqDZ_tShqQ	Money and financial instruments settle in different locations.
+CashSettlementSystem3Code	DCSS	DigitalCashSettlementSystem	_AS2qgSm3EfGfZ9PfK70MMg	Digital cash settlement system used for the payment.
+CashSettlementSystem3Code	GROS	GrossSettlementSystem	_AS2qgym3EfGfZ9PfK70MMg	Settle money through gross settlement system.
+CashSettlementSystem3Code	NETS	NetSettlementSystem	_AS2qhSm3EfGfZ9PfK70MMg	Settle money through net settlement system.

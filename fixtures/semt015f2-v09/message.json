@@ -1,0 +1,83 @@
+{
+  "identifier": "semt.015.002.09",
+  "name": "IntraPositionMovementConfirmation002V09",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:semt.015.002.09",
+  "bodyTag": "IntraPosMvmntConf",
+  "out": "semt015f2",
+  "isoId": "_caYWgzi8Eeydid5dcNPKvg",
+  "definition": "Scope|The IntraPositionMovementConfirmation is sent by an account servicer to an account owner to confirm the movement of securities within its holding from one sub-balance to another, for example, blocking of securities. |The account servicer/owner relationship may be:|- a central securities depository or another settlement market infrastructure acting on behalf of its participant|- an agent (sub-custodian) acting on behalf of  its global custodian customer, or |- a custodian acting on behalf of an investment management institution or a broker/dealer.||Usage|The message may also be used to:|- re-send a message previously sent,|- provide a third party with a copy of a message for information,|- re-send to a third party a copy of a message for information|using the relevant elements in the Business Application Header.",
+  "blocks": [
+    {
+      "name": "AdditionalParameters",
+      "isoId": "_caY9mji8Eeydid5dcNPKvg",
+      "xmlTag": "AddtlParams",
+      "type": "AdditionalParameters34",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AccountOwner",
+      "isoId": "_caY9nDi8Eeydid5dcNPKvg",
+      "xmlTag": "AcctOwnr",
+      "type": "PartyIdentification136Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SafekeepingAccount",
+      "isoId": "_caY9nji8Eeydid5dcNPKvg",
+      "xmlTag": "SfkpgAcct",
+      "type": "SecuritiesAccount30",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "BlockChainAddressOrWallet",
+      "isoId": "_caY9oDi8Eeydid5dcNPKvg",
+      "xmlTag": "BlckChainAdrOrWllt",
+      "type": "BlockChainAddressWallet7",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SafekeepingPlace",
+      "isoId": "_caY9oji8Eeydid5dcNPKvg",
+      "xmlTag": "SfkpgPlc",
+      "type": "SafekeepingPlaceFormat39Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "FinancialInstrumentIdentification",
+      "isoId": "_caY9pDi8Eeydid5dcNPKvg",
+      "xmlTag": "FinInstrmId",
+      "type": "SecurityIdentification20",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "FinancialInstrumentAttributes",
+      "isoId": "_caY9pji8Eeydid5dcNPKvg",
+      "xmlTag": "FinInstrmAttrbts",
+      "type": "FinancialInstrumentAttributes119",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "IntraPositionDetails",
+      "isoId": "_caY9qDi8Eeydid5dcNPKvg",
+      "xmlTag": "IntraPosDtls",
+      "type": "IntraPositionDetails61",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_caY9qji8Eeydid5dcNPKvg",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

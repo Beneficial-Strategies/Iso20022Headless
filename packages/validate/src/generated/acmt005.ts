@@ -37,6 +37,7 @@ import {
   GenericIdentification81Schema,
   ISODateSchema,
   LEIIdentifierSchema,
+  PartyIdentification139Schema,
   sharedTypeDescriptors,
 } from './shared.ts';
 
@@ -60,11 +61,6 @@ export const IndividualPerson30Schema = z.strictObject({
 export const IndividualPersonIdentification2ChoiceSchema = choiceOf({
   IdentificationNumber: GenericIdentification81Schema,
   PersonName: IndividualPerson30Schema,
-});
-
-export const PartyIdentification139Schema = z.strictObject({
-  Party: PartyIdentification125ChoiceSchema,
-  LEI: LEIIdentifierSchema.optional(),
 });
 
 export const OwnerIdentification3ChoiceSchema = choiceOf({
@@ -142,15 +138,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "PersonName", isoId: "_6KMwsyGZEeWKAaDJcYGKLw", xmlTag: "PrsnNm", displayName: displayName("PersonName"), kind: "component", type: "IndividualPerson30", required: true }),
     ],
   },
-  "PartyIdentification139": {
-    name: "PartyIdentification139",
-    isoId: "_cOgdUWpTEeipaMTLlhaKMQ",
-    kind: "component",
-    fields: [
-      f({ name: "Party", isoId: "_ceRXo2pTEeipaMTLlhaKMQ", xmlTag: "Pty", displayName: displayName("Party"), kind: "choice", type: "PartyIdentification125Choice", required: true }),
-      f({ name: "LEI", isoId: "_ceRXpWpTEeipaMTLlhaKMQ", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
-    ],
-  },
   "OwnerIdentification3Choice": {
     name: "OwnerIdentification3Choice",
     isoId: "_B1IjUZTREemC09f0MxYkRg",
@@ -223,6 +210,7 @@ export const typeDescriptors: TypeDescriptors = {
   "GenericIdentification81": sharedTypeDescriptors["GenericIdentification81"]!,
   "ISODate": sharedTypeDescriptors["ISODate"]!,
   "LEIIdentifier": sharedTypeDescriptors["LEIIdentifier"]!,
+  "PartyIdentification139": sharedTypeDescriptors["PartyIdentification139"]!,
   ...ownTypeDescriptors,
 };
 

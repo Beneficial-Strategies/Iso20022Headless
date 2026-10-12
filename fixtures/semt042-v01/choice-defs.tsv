@@ -1,0 +1,9 @@
+choice	memberId	memberName	text
+PartyIdentification71Choice	_jLJCYu5NEeCisYr99QEiWA_-1990935349	AnyBIC	Code allocated to a financial or non-financial institution by the ISO 9362 Registration Authority, as described in ISO 9362 "Banking - Banking telecommunication messages - Business identifier code (BIC)".
+PartyIdentification71Choice	_jLJCY-5NEeCisYr99QEiWA_-1075902987	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to a financial institution using a proprietary identification scheme.
+PartyIdentification71Choice	_jLJCZO5NEeCisYr99QEiWA_2117351	NameAndAddress	Name and address of a party.
+ReportItemStatus1Choice	_08aRY73QEeO2FLWuu_JIqg	Accepted	Statement is accepted.
+ReportItemStatus1Choice	_TKSsQkitEeSlHoYg_EudVQ	AcceptedWithException	Statement is accepted with an exception/s.
+ReportItemStatus1Choice	_08aRa73QEeO2FLWuu_JIqg	Rejected	Statement is rejected.
+ReportItemRejectionReason1Choice	_hlx-c73REeO2FLWuu_JIqg	Code	Status reason expressed as a code.
+ReportItemRejectionReason1Choice	_hlx-e73REeO2FLWuu_JIqg	Proprietary	Status reason expressed as a proprietary code.

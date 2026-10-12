@@ -52,5 +52,11 @@
     "name": "Business Application Header",
     "isoId": "_qwPV8ORREemE5LyhzjFiwg",
     "definition": "Header that contains business information that is relevant before processing a message."
+  },
+  {
+    "code": "semt",
+    "name": "Securities Management",
+    "isoId": "_sQSwgGtdEeCY4-KZ9JEyUQ_-735475843",
+    "definition": "Messages that support post-settlement processes for securities (including reporting on securities movements, trades and balances), the processes required to protect beneficial owner's rights throughout settlement, plus any exceptions and investigations related to securities transactions."
   }
 ]

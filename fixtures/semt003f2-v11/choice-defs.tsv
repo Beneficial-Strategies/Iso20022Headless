@@ -1,0 +1,38 @@
+choice	memberId	memberName	text
+StatementBasis9Choice	_5Wx6MJNLEeWGlc8L7oPDIg	Code	Statement basis expressed as an ISO 20022 code.
+StatementBasis9Choice	_5Wx6OJNLEeWGlc8L7oPDIg	Proprietary	Statement basis expressed as a proprietary code.
+PartyIdentification137Choice	__2ajLffDEeiNZp_PtLohLw	AnyBIC	Code allocated to a financial or non-financial institution by the ISO 9362 Registration Authority, as described in ISO 9362 "Banking - Banking telecommunication messages - Business identifier code (BIC)".
+PartyIdentification137Choice	__2ajL_fDEeiNZp_PtLohLw	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to a financial institution using a proprietary identification scheme.
+PartyIdentification137Choice	__2ajMffDEeiNZp_PtLohLw	NameAndAddress	Name and address of a party.
+PurposeCode8Choice	_5Wx6ZJNLEeWGlc8L7oPDIg	Code	Securities account purpose as an ISO 20022 code.
+PurposeCode8Choice	_5Wx6bJNLEeWGlc8L7oPDIg	Proprietary	Securities account purpose as a proprietary code.
+Role7Choice	_5WyhA5NLEeWGlc8L7oPDIg	Code	Role of the party in the activity expressed as an ISO 20022 code.
+Role7Choice	_5WyhBZNLEeWGlc8L7oPDIg	Proprietary	Role of the party in the activity expressed as a proprietary code.
+Role7Choice	_5WyhB5NLEeWGlc8L7oPDIg	Text	Role of the party in the activity.
+BalanceQuantity15Choice	_ch-MQTi8Eeydid5dcNPKvg	Quantity	Total quantity of financial instruments of the balance.
+BalanceQuantity15Choice	_ch-MSTi8Eeydid5dcNPKvg	Proprietary	Total quantity of financial instruments of the balance.
+Quantity54Choice	_peZb-Ti7Eeydid5dcNPKvg	Quantity	Quantity of financial instrument in units, original face amount or current face amount.
+Quantity54Choice	_peZb-zi7Eeydid5dcNPKvg	OriginalAndCurrentFace	Original and current value of an asset-back instrument.
+TypeOfPrice33Choice	_5W2yvZNLEeWGlc8L7oPDIg	Code	Type of price expressed as an ISO 20022 code.
+TypeOfPrice33Choice	_5W2yxZNLEeWGlc8L7oPDIg	Proprietary	Type of price expressed as a proprietary code.
+PriceRateOrAmountOrUnknown3Choice	_gdOxmc33Eee5nJBZsW8MFQ	Rate	Price expressed as a rate, that is, percentage.
+PriceRateOrAmountOrUnknown3Choice	_gdOxm833Eee5nJBZsW8MFQ	Amount	Price expressed as a currency and value.
+PriceRateOrAmountOrUnknown3Choice	_gdOxnc33Eee5nJBZsW8MFQ	UnknownIndicator	Indicates whether the market price is unknown.
+MarketIdentification2Choice	_XK10Edp-Ed-ak6NoX_4Aeg_-1291614933	MarketIdentifierCode	ISO 10383 Market Identification Code.
+MarketIdentification2Choice	_XK10Etp-Ed-ak6NoX_4Aeg_1009207657	Description	Description of the market when no Market Identifier Code is available.
+MarketType17Choice	_5W2zC5NLEeWGlc8L7oPDIg	Code	Market type expressed as an ISO 20022 code.
+MarketType17Choice	_5W2zE5NLEeWGlc8L7oPDIg	Proprietary	Market type expressed as a proprietary code.
+TypeOfPrice32Choice	_5TJ-NZNLEeWGlc8L7oPDIg	Code	Type of price expressed as an ISO 20022 code.
+TypeOfPrice32Choice	_5TJ-PZNLEeWGlc8L7oPDIg	Proprietary	Type of price expressed as a proprietary code.
+SubBalanceType13Choice	_5W51-ZNLEeWGlc8L7oPDIg	Code	Reason a security is not available or additional information about the financial instrument for which the balance is given, for example, unregistered, registered in nominee name.
+SubBalanceType13Choice	_5W52AZNLEeWGlc8L7oPDIg	Proprietary	Reason a security is not available or additional information about the financial instrument for which the balance is given, for example, unregistered, registered in nominee name.
+SubBalanceQuantity9Choice	_ciAo3zi8Eeydid5dcNPKvg	Quantity	Quantity of securities in the sub-balance.
+SubBalanceQuantity9Choice	_ciAo5zi8Eeydid5dcNPKvg	Proprietary	Quantity of securities in the sub-balance.
+SubBalanceQuantity9Choice	_ciAo7zi8Eeydid5dcNPKvg	QuantityAndAvailability	Quantity of securities in the sub-balance and whether the balance is available.
+SubBalanceType14Choice	_5W6c65NLEeWGlc8L7oPDIg	Code	Reason a security is not available or additional information about the financial instrument for which the balance is given, for example, unregistered, registered in nominee name.
+SubBalanceType14Choice	_5W6c85NLEeWGlc8L7oPDIg	Proprietary	Reason a security is not available or additional information about the financial instrument for which the balance is given, for example, unregistered, registered in nominee name.
+PledgeeFormat6Choice	_Z07sm_fVEeiNZp_PtLohLw	TypeAndIdentification	Identification of the entity to which the financial instruments are pledged expressed as a code and a BIC.
+PledgeeFormat6Choice	_Z07snffVEeiNZp_PtLohLw	Identification	Identification of the entity to which the financial instruments are pledged, expressed as a code and a narrative description.
+PledgeeFormat6Choice	_Z07sn_fVEeiNZp_PtLohLw	Proprietary	Identification of the entity to which the financial instruments are pledged expressed as a proprietary type and narrative description.
+ExposureType24Choice	_ciETAzi8Eeydid5dcNPKvg	Code	Collateral movement exposure type expressed as an ISO 20022 code.
+ExposureType24Choice	_ciETBzi8Eeydid5dcNPKvg	Proprietary	Collateral movement exposure type expressed as a proprietary code.

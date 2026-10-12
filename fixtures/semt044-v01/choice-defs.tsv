@@ -1,0 +1,17 @@
+choice	memberId	memberName	text
+PenaltyListType1Choice	_-p6qk9fNEeiJ1vId85LeLw	Code	Specifies the penalty list reported, in a coded format.
+PenaltyListType1Choice	_-p6qldfNEeiJ1vId85LeLw	Proprietary	Specifies the penalty list reported, in a proprietary format.
+PenaltyPartyType2Choice	_-JKIAQAUEeqOHNEXayM0Mg	Code	Penalty party type, in a coded form.
+PenaltyPartyType2Choice	_-JKIAwAUEeqOHNEXayM0Mg	Proprietary	Penalty party type, in a proprietary form.
+PenaltyStatus2Choice	_-L6hUR-LEeuwwezkzufkMw	Code	Penalty status, , in a coded form.
+PenaltyStatus2Choice	_-L6hUx-LEeuwwezkzufkMw	Proprietary	Penalty status, in a proprietary form.
+PenaltyStatusReason2Choice	_vUsvER-DEeuwwezkzufkMw	Code	Penalty status reason, in a coded form.
+PenaltyStatusReason2Choice	_vUsvEx-DEeuwwezkzufkMw	Proprietary	Penalty status reason, in a proprietary form.
+ClassificationType1Choice	_RdUQlNp-Ed-ak6NoX_4Aeg_-454510314	ClassificationFinancialInstrument	ISO 10962 Classification of Financial Instrument (CFI).
+ClassificationType1Choice	_RdUQldp-Ed-ak6NoX_4Aeg_-111885370	AlternateClassification	Proprietary classification of financial instrument.
+PriceRateOrAmount4Choice	_JFkB4TmpEemla4muNfgRrg	Rate	Price expressed as a rate, that is, percentage.
+PriceRateOrAmount4Choice	_JFkB4zmpEemla4muNfgRrg	Amount	Price expressed as a currency and value.
+SettlementOrCorporateActionEvent27Choice	_VHZGgdEmEeiO-eodGv5iKQ	SecuritiesTransactionType	Identifies the type of securities transaction.
+SettlementOrCorporateActionEvent27Choice	_VHZGidEmEeiO-eodGv5iKQ	CorporateActionEventType	Specifies the type of corporate event.
+SecuritiesTransactionType44Choice	_VZPrgdEmEeiO-eodGv5iKQ	Code	Securities transaction type expressed as an ISO 20022 code.
+SecuritiesTransactionType44Choice	_VZPridEmEeiO-eodGv5iKQ	Proprietary	Securities transaction type expressed as a proprietary code.

@@ -1,0 +1,9 @@
+choice	memberId	memberName	text
+Frequency25Choice	_cJERozeNEeWm5uvLSn0jEw	Code	Frequency expressed as an ISO 20022 code.
+Frequency25Choice	_cJERqzeNEeWm5uvLSn0jEw	Proprietary	Frequency expressed as a proprietary code.
+References72Choice	_7VjBASgPEeym1_Zp1BTvEw	AccountOwnerTransactionIdentification	Unambiguous identification of the transaction as known by the account owner (or the instructing party managing the account).
+References72Choice	_7VjBAygPEeym1_Zp1BTvEw	AccountServicerTransactionIdentification	Unambiguous identification of the transaction as known by the account servicer.
+References72Choice	_7VjBBSgPEeym1_Zp1BTvEw	PoolIdentification	Collective reference identifying a set of messages.
+References72Choice	_7VjBBygPEeym1_Zp1BTvEw	MarketInfrastructureTransactionIdentification	Identification of a transaction assigned by a market infrastructure other than a central securities depository, for example, Target2-Securities.
+References72Choice	__b9cwSgPEeym1_Zp1BTvEw	CounterpartyMarketInfrastructureTransactionIdentification	Identification of a counterparty transaction assigned by a market infrastructure other than a central securities depository, for example, Target2-Securities.
+References72Choice	_7VjBCSgPEeym1_Zp1BTvEw	ProcessorTransactionIdentification	Identification of the transaction assigned by the processor of the instruction other than the account owner, the account servicer and the market infrastructure.

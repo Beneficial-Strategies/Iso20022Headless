@@ -1,0 +1,78 @@
+choice	memberId	memberName	text
+StatementType6Choice	_8Qbnr5NLEeWGlc8L7oPDIg	Code	Statement type expressed as an ISO 20022 code.
+StatementType6Choice	_8Qbnt5NLEeWGlc8L7oPDIg	Proprietary	Statement type expressed as a proprietary code.
+Status22Choice	_8QboI5NLEeWGlc8L7oPDIg	AffirmationStatus	Status of affirmation of a trade.
+Status22Choice	_8QboJZNLEeWGlc8L7oPDIg	AllocationStatus	Provides the status of allocation of collateral to cover the instruction.
+Status22Choice	_8QboJ5NLEeWGlc8L7oPDIg	RepoCallRequestStatus	Provides the status of the repurchase agreement call request.
+Status22Choice	_8QboKZNLEeWGlc8L7oPDIg	CorporateActionEventProcessingStatus	Provides the status of a corporate action or the status of a payment.
+Status22Choice	_8QboK5NLEeWGlc8L7oPDIg	CorporateActionEventStage	Stage in the corporate action event life cycle.
+Status22Choice	_8QboLZNLEeWGlc8L7oPDIg	InferredMatchingStatus	Provides the matching status of an instruction as known by the account servicer based on an allegement. At this time no matching took place on the market (at the CSD/ICSD).
+Status22Choice	_8QboL5NLEeWGlc8L7oPDIg	InstructionProcessingStatus	Provides the status of an instruction.
+Status22Choice	_8QboMZNLEeWGlc8L7oPDIg	MatchingStatus	Provides the matching status of the instruction.
+Status22Choice	_8QboM5NLEeWGlc8L7oPDIg	RegistrationProcessingStatus	Provides the status of the registration processing.
+Status22Choice	_8QboNZNLEeWGlc8L7oPDIg	ResponseStatus	Provides the status of the received collateral message (collateral claim, a collateral proposal or a proposal/request for collateral substitution) from a collateral management perspective.
+Status22Choice	_8QboN5NLEeWGlc8L7oPDIg	ReplacementProcessingStatus	Provides the processing status of the replacement request.
+Status22Choice	_8QboOZNLEeWGlc8L7oPDIg	CancellationProcessingStatus	Provides the status of a cancellation request.
+Status22Choice	_8QboO5NLEeWGlc8L7oPDIg	SettlementStatus	Provides the status of settlement of a transaction.
+Status22Choice	_8QboPZNLEeWGlc8L7oPDIg	SettlementConditionModificationStatus	Provides the status of a securities settlement condition modification request.
+AffirmationStatus9Choice	_5xm1D5NLEeWGlc8L7oPDIg	Code	Provides the status of the trade at confirmation level at the time the settlement instruction was sent.
+AffirmationStatus9Choice	_5xm1F5NLEeWGlc8L7oPDIg	Proprietary	Provides the status of the trade at confirmation level at the time the settlement instruction was sent.
+AllocationSatus4Choice	_8QboZ5NLEeWGlc8L7oPDIg	Code	Provides the status of allocation of collateral to cover the instruction.
+AllocationSatus4Choice	_8Qbob5NLEeWGlc8L7oPDIg	Proprietary	Provides the status of allocation of collateral to cover the instruction.
+RepoCallRequestStatus10Choice	_8Qboi5NLEeWGlc8L7oPDIg	Code	Provides the status of the repurchase agreement call request.
+RepoCallRequestStatus10Choice	_8Qbok5NLEeWGlc8L7oPDIg	Proprietary	Provides the status of the repurchase agreement call request.
+CorporateActionEventProcessingStatus4Choice	_8Qbor5NLEeWGlc8L7oPDIg	Code	Status of a corporate action or the status of a payment expressed as an ISO 20022 code.
+CorporateActionEventProcessingStatus4Choice	_8Qbot5NLEeWGlc8L7oPDIg	Proprietary	Status of a corporate action or the status of a payment expressed as a proprietary code.
+CorporateActionEventStage4Choice	_8Qbo05NLEeWGlc8L7oPDIg	Code	Corporate action event stage expressed as an ISO 20022 code.
+CorporateActionEventStage4Choice	_8Qbo25NLEeWGlc8L7oPDIg	Proprietary	Corporate action event stage expressed as a proprietary code.
+MatchingStatus28Choice	_5xm1M5NLEeWGlc8L7oPDIg	Code	Provides the matching status of the instruction.
+MatchingStatus28Choice	_5xm1O5NLEeWGlc8L7oPDIg	Proprietary	Provides the matching status of the instruction.
+InstructionProcessingStatus26Choice	_8QcO25NLEeWGlc8L7oPDIg	Code	Provides the status of an instruction.
+InstructionProcessingStatus26Choice	_8QcO45NLEeWGlc8L7oPDIg	Proprietary	Provides the status of an instruction.
+RegistrationProcessingStatus4Choice	_8QcPI5NLEeWGlc8L7oPDIg	Code	Provides the status of the registration processing.
+RegistrationProcessingStatus4Choice	_8QcPK5NLEeWGlc8L7oPDIg	Proprietary	Provides the status of the registration processing.
+ResponseStatus7Choice	_8QcPR5NLEeWGlc8L7oPDIg	Code	Provides the status of the received collateral message (collateral claim, a collateral proposal or a proposal/request for collateral substitution) from a collateral management perspective.
+ResponseStatus7Choice	_8QcPT5NLEeWGlc8L7oPDIg	Proprietary	Provides the status of the received collateral message (collateral claim, a collateral proposal or a proposal/request for collateral substitution) from a collateral management perspective.
+ReplacementProcessingStatus9Choice	_8QcPa5NLEeWGlc8L7oPDIg	Code	Provides the processing status of the replacement request.
+ReplacementProcessingStatus9Choice	_8QcPc5NLEeWGlc8L7oPDIg	Proprietary	Provides the processing status of the replacement request.
+CancellationProcessingStatus8Choice	_8QcPj5NLEeWGlc8L7oPDIg	Code	Provides the status of a cancellation request.
+CancellationProcessingStatus8Choice	_8QcPl5NLEeWGlc8L7oPDIg	Proprietary	Provides the status of a cancellation request.
+SettlementStatus25Choice	_8QcPs5NLEeWGlc8L7oPDIg	Code	Provides the status of settlement of an instruction/financial instrument movement.
+SettlementStatus25Choice	_8QcPtZNLEeWGlc8L7oPDIg	Proprietary	Provides the status of settlement of an instruction/financial instrument movement.
+SettlementConditionModificationStatus4Choice	_8QcPy5NLEeWGlc8L7oPDIg	Code	Provides the status of the securities settlement condition modification request.
+SettlementConditionModificationStatus4Choice	_8QcP05NLEeWGlc8L7oPDIg	Proprietary	Provides the status of the securities settlement condition modification request.
+Reason20Choice	_gAQ5gTi8Eeydid5dcNPKvg	RepoCallAcknowledgementReason	Specifies additional information on the repurchase agreement call request acknowledgement.
+Reason20Choice	_gAQ5gzi8Eeydid5dcNPKvg	CancellationReason	Specifies the reason why the related instruction is cancelled, or the related cancellation request is executed.
+Reason20Choice	_gAQ5hTi8Eeydid5dcNPKvg	PendingCancellationReason	Specifies the reason why the cancellation request is pending.
+Reason20Choice	_gAQ5hzi8Eeydid5dcNPKvg	GeneratedReason	Specifies the reason why the transaction was generated.
+Reason20Choice	_gAQ5iTi8Eeydid5dcNPKvg	DeniedReason	Specifies the reason why the request was denied.
+Reason20Choice	_gAQ5izi8Eeydid5dcNPKvg	AcknowledgedAcceptedReason	Specifies additional information about the processed instruction.
+Reason20Choice	_gAQ5jTi8Eeydid5dcNPKvg	PendingReason	Specifies the reason why the instruction has a pending status.
+Reason20Choice	_gAQ5jzi8Eeydid5dcNPKvg	FailingReason	Specifies the reason why the instruction has a failing settlement status.
+Reason20Choice	_gAQ5kTi8Eeydid5dcNPKvg	PendingProcessingReason	Specifies the reason why the instruction has a pending processing status.
+Reason20Choice	_gAQ5kzi8Eeydid5dcNPKvg	RejectionReason	Specifies the reason why the instruction/request has a rejected status.
+Reason20Choice	_gAQ5lTi8Eeydid5dcNPKvg	RepairReason	Specifies the reason why the instruction is in repair.
+Reason20Choice	_gAQ5lzi8Eeydid5dcNPKvg	PendingModificationReason	Specifies the reason why the modification request is pending.
+Reason20Choice	_gAQ5mTi8Eeydid5dcNPKvg	UnmatchedReason	Specifies the reason why the instruction has an unmatched status.
+AcknowledgementReason18Choice	_6BLh45NLEeWGlc8L7oPDIg	Code	Specifies additional information about the processed instruction.
+AcknowledgementReason18Choice	_6BLh65NLEeWGlc8L7oPDIg	Proprietary	Specifies additional information about the processed instruction.
+CancellationReason30Choice	_8Qc2FZNLEeWGlc8L7oPDIg	Code	Specifies the reason why the related instruction is cancelled, or the related cancellation request is executed.
+CancellationReason30Choice	_8Qc2F5NLEeWGlc8L7oPDIg	Proprietary	Specifies the reason why the related instruction is cancelled, or the related cancellation request is executed.
+PendingCancellationReasons5Choice	_8Qc2LZNLEeWGlc8L7oPDIg	Code	Specifies the reason why the cancellation request is pending.
+PendingCancellationReasons5Choice	_8Qc2NZNLEeWGlc8L7oPDIg	Proprietary	Specifies the reason why the cancellation request is pending.
+GeneratedReasons6Choice	_6d7vV5NLEeWGlc8L7oPDIg	Code	Specifies the reason why the transaction was generated.
+GeneratedReasons6Choice	_6d7vW5NLEeWGlc8L7oPDIg	Proprietary	Specifies the reason why the transaction was generated.
+DeniedReason23Choice	_8Qc2bZNLEeWGlc8L7oPDIg	Code	Specifies the reason why the request was denied.
+DeniedReason23Choice	_8Qc2dZNLEeWGlc8L7oPDIg	Proprietary	Specifies the reason why the request was denied.
+PendingReason47Choice	_8Qc2tZNLEeWGlc8L7oPDIg	Code	Specifies the reason why the instruction has a pending status.
+PendingReason47Choice	_8Qc2t5NLEeWGlc8L7oPDIg	Proprietary	Specifies the reason why the instruction has a pending status.
+FailingReason15Choice	_8Qdc2ZNLEeWGlc8L7oPDIg	Code	Specifies the reason why the instruction has a failing settlement status.
+FailingReason15Choice	_8Qdc4ZNLEeWGlc8L7oPDIg	Proprietary	Specifies the reason why the instruction has a failing settlement status.
+PendingProcessingReason13Choice	_6BFbu5NLEeWGlc8L7oPDIg	Code	Specifies the reason why the instruction has a pending processing status.
+PendingProcessingReason13Choice	_6BFbw5NLEeWGlc8L7oPDIg	Proprietary	Specifies the reason why the instruction has a pending processing status.
+RejectionReason51Choice	_gARf6zi8Eeydid5dcNPKvg	Code	Specifies the reason why the instruction/request has a repair or rejection status.
+RejectionReason51Choice	_gARf7zi8Eeydid5dcNPKvg	Proprietary	Specifies the reason why the instruction/request has a repair or rejection status.
+RepairReason18Choice	_8QddPZNLEeWGlc8L7oPDIg	Code	Specifies the reason why the instruction/request has a repair or rejection status.
+RepairReason18Choice	_8QddP5NLEeWGlc8L7oPDIg	Proprietary	Specifies the reason why the instruction/request has a repair or rejection status.
+UnmatchedReason29Choice	_8QddeZNLEeWGlc8L7oPDIg	Code	Specifies the reason why the instruction has an unmatched status.
+UnmatchedReason29Choice	_8QddfZNLEeWGlc8L7oPDIg	Proprietary	Specifies the reason why the instruction has an unmatched status.

@@ -33,6 +33,8 @@ import {
   ActiveCurrencyCodeSchema,
   ISOTimeSchema,
   ExternalSystemEventType1CodeSchema,
+  SystemEventType4ChoiceSchema,
+  SystemEvent3Schema,
   ExternalSystemErrorHandling1CodeSchema,
   ErrorHandling3ChoiceSchema,
   Max140TextSchema,
@@ -58,19 +60,6 @@ export const SystemStatus3Schema = z.strictObject({
 export const TimePeriod1Schema = z.strictObject({
   FromTime: ISOTimeSchema,
   ToTime: ISOTimeSchema,
-});
-
-export const SystemEventType4ChoiceSchema = choiceOf({
-  Code: ExternalSystemEventType1CodeSchema,
-  Proprietary: GenericIdentification1Schema,
-});
-
-export const SystemEvent3Schema = z.strictObject({
-  Type: SystemEventType4ChoiceSchema,
-  ScheduledTime: ISODateTimeSchema,
-  EffectiveTime: ISODateTimeSchema.optional(),
-  StartTime: ISODateTimeSchema.optional(),
-  EndTime: ISODateTimeSchema.optional(),
 });
 
 export const SystemClosureReason1CodeSchema = z.enum(["BHOL", "SMTN", "NOOP", "RCVR", "ADTW"]);
@@ -153,27 +142,6 @@ const ownTypeDescriptors: TypeDescriptors = {
     fields: [
       f({ name: "FromTime", isoId: "__YnKAZliEeeE1Ya-LgRsuQ", xmlTag: "FrTm", displayName: displayName("FromTime"), kind: "time", type: "ISOTime", required: true }),
       f({ name: "ToTime", isoId: "__YnKA5liEeeE1Ya-LgRsuQ", xmlTag: "ToTm", displayName: displayName("ToTime"), kind: "time", type: "ISOTime", required: true }),
-    ],
-  },
-  "SystemEventType4Choice": {
-    name: "SystemEventType4Choice",
-    isoId: "_d7AQEXhkEeidzqjNEfehPg",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_eFPKI3hkEeidzqjNEfehPg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalSystemEventType1Code", required: true }),
-      f({ name: "Proprietary", isoId: "_eFPKJXhkEeidzqjNEfehPg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification1", required: true }),
-    ],
-  },
-  "SystemEvent3": {
-    name: "SystemEvent3",
-    isoId: "_dw2Oi3hkEeidzqjNEfehPg",
-    kind: "component",
-    fields: [
-      f({ name: "Type", isoId: "_d6_pA3hkEeidzqjNEfehPg", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "SystemEventType4Choice", required: true }),
-      f({ name: "ScheduledTime", isoId: "_d6_pBXhkEeidzqjNEfehPg", xmlTag: "SchdldTm", displayName: displayName("ScheduledTime"), kind: "datetime", type: "ISODateTime", required: true }),
-      f({ name: "EffectiveTime", isoId: "_d6_pB3hkEeidzqjNEfehPg", xmlTag: "FctvTm", displayName: displayName("EffectiveTime"), kind: "datetime", type: "ISODateTime", required: false }),
-      f({ name: "StartTime", isoId: "_d6_pCXhkEeidzqjNEfehPg", xmlTag: "StartTm", displayName: displayName("StartTime"), kind: "datetime", type: "ISODateTime", required: false }),
-      f({ name: "EndTime", isoId: "_d6_pC3hkEeidzqjNEfehPg", xmlTag: "EndTm", displayName: displayName("EndTime"), kind: "datetime", type: "ISODateTime", required: false }),
     ],
   },
   "SystemClosureReason1Code": {
@@ -281,6 +249,8 @@ export const typeDescriptors: TypeDescriptors = {
   "ActiveCurrencyCode": sharedTypeDescriptors["ActiveCurrencyCode"]!,
   "ISOTime": sharedTypeDescriptors["ISOTime"]!,
   "ExternalSystemEventType1Code": sharedTypeDescriptors["ExternalSystemEventType1Code"]!,
+  "SystemEventType4Choice": sharedTypeDescriptors["SystemEventType4Choice"]!,
+  "SystemEvent3": sharedTypeDescriptors["SystemEvent3"]!,
   "ExternalSystemErrorHandling1Code": sharedTypeDescriptors["ExternalSystemErrorHandling1Code"]!,
   "ErrorHandling3Choice": sharedTypeDescriptors["ErrorHandling3Choice"]!,
   "Max140Text": sharedTypeDescriptors["Max140Text"]!,

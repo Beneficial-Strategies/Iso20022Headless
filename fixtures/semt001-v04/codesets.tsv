@@ -1,0 +1,3 @@
+codeSetName	isoId	restrictionOf	code	enumName
+MessageRejectedReason2Code	_e6CmIEpIEe2Kv_AXFg3f7A	RejectedStatusReasonV2Code	NALO	NotAllowedRequest
+MessageRejectedReason2Code	_e6CmIEpIEe2Kv_AXFg3f7A	RejectedStatusReasonV2Code	REFE	InvalidOrUnrecognisedReference

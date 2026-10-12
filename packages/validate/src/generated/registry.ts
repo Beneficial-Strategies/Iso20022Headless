@@ -40,6 +40,7 @@ export const areaIndex: readonly AreaInfo[] = [
   { code: "trck", name: "Transaction Tracker", definition: "" },
   { code: "acmt", name: "Account Management", definition: "Messages that support the management of account related activities, such as the opening and maintenance of an account." },
   { code: "head", name: "Business Application Header", definition: "Header that contains business information that is relevant before processing a message." },
+  { code: "semt", name: "Securities Management", definition: "Messages that support post-settlement processes for securities (including reporting on securities movements, trades and balances), the processes required to protect beneficial owner's rights throughout settlement, plus any exceptions and investigations related to securities transactions." },
 ];
 
 export const messageIndex: readonly MessageInfo[] = [
@@ -51,7 +52,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "pain001",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pain/schemas/pain.001.001.13.xsd",
     load: () =>
-      import('./pain001.ts').then((m) => ({ message: m.pain001Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./pain001.ts').then((m) => ({ message: m.pain001Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "pain.002.001.15",
@@ -61,7 +62,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "pain002",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pain/schemas/pain.002.001.15.xsd",
     load: () =>
-      import('./pain002.ts').then((m) => ({ message: m.pain002Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./pain002.ts').then((m) => ({ message: m.pain002Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "pain.007.001.13",
@@ -71,7 +72,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "pain007",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pain/schemas/pain.007.001.13.xsd",
     load: () =>
-      import('./pain007.ts').then((m) => ({ message: m.pain007Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./pain007.ts').then((m) => ({ message: m.pain007Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "pain.008.001.12",
@@ -81,7 +82,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "pain008",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pain/schemas/pain.008.001.12.xsd",
     load: () =>
-      import('./pain008.ts').then((m) => ({ message: m.pain008Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./pain008.ts').then((m) => ({ message: m.pain008Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "pain.009.001.08",
@@ -91,7 +92,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "pain009",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pain/schemas/pain.009.001.08.xsd",
     load: () =>
-      import('./pain009.ts').then((m) => ({ message: m.pain009Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./pain009.ts').then((m) => ({ message: m.pain009Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "pain.010.001.08",
@@ -101,7 +102,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "pain010",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pain/schemas/pain.010.001.08.xsd",
     load: () =>
-      import('./pain010.ts').then((m) => ({ message: m.pain010Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./pain010.ts').then((m) => ({ message: m.pain010Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "pain.011.001.08",
@@ -111,7 +112,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "pain011",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pain/schemas/pain.011.001.08.xsd",
     load: () =>
-      import('./pain011.ts').then((m) => ({ message: m.pain011Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./pain011.ts').then((m) => ({ message: m.pain011Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "pain.012.001.08",
@@ -121,7 +122,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "pain012",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pain/schemas/pain.012.001.08.xsd",
     load: () =>
-      import('./pain012.ts').then((m) => ({ message: m.pain012Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./pain012.ts').then((m) => ({ message: m.pain012Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "pain.013.001.12",
@@ -131,7 +132,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "pain013",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pain/schemas/pain.013.001.12.xsd",
     load: () =>
-      import('./pain013.ts').then((m) => ({ message: m.pain013Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./pain013.ts').then((m) => ({ message: m.pain013Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "pain.014.001.12",
@@ -141,7 +142,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "pain014",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pain/schemas/pain.014.001.12.xsd",
     load: () =>
-      import('./pain014.ts').then((m) => ({ message: m.pain014Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./pain014.ts').then((m) => ({ message: m.pain014Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "pain.017.001.04",
@@ -151,7 +152,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "pain017",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pain/schemas/pain.017.001.04.xsd",
     load: () =>
-      import('./pain017.ts').then((m) => ({ message: m.pain017Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./pain017.ts').then((m) => ({ message: m.pain017Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "pain.018.001.04",
@@ -161,7 +162,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "pain018",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pain/schemas/pain.018.001.04.xsd",
     load: () =>
-      import('./pain018.ts').then((m) => ({ message: m.pain018Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./pain018.ts').then((m) => ({ message: m.pain018Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "pacs.002.001.16",
@@ -171,7 +172,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "pacs002",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pacs/schemas/pacs.002.001.16.xsd",
     load: () =>
-      import('./pacs002.ts').then((m) => ({ message: m.pacs002Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./pacs002.ts').then((m) => ({ message: m.pacs002Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "pacs.003.001.12",
@@ -181,7 +182,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "pacs003",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pacs/schemas/pacs.003.001.12.xsd",
     load: () =>
-      import('./pacs003.ts').then((m) => ({ message: m.pacs003Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./pacs003.ts').then((m) => ({ message: m.pacs003Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "pacs.004.001.15",
@@ -191,7 +192,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "pacs004",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pacs/schemas/pacs.004.001.15.xsd",
     load: () =>
-      import('./pacs004.ts').then((m) => ({ message: m.pacs004Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./pacs004.ts').then((m) => ({ message: m.pacs004Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "pacs.007.001.14",
@@ -201,7 +202,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "pacs007",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pacs/schemas/pacs.007.001.14.xsd",
     load: () =>
-      import('./pacs007.ts').then((m) => ({ message: m.pacs007Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./pacs007.ts').then((m) => ({ message: m.pacs007Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "pacs.008.001.14",
@@ -211,7 +212,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "pacs008",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pacs/schemas/pacs.008.001.14.xsd",
     load: () =>
-      import('./pacs008.ts').then((m) => ({ message: m.pacs008Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./pacs008.ts').then((m) => ({ message: m.pacs008Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "pacs.009.001.13",
@@ -221,7 +222,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "pacs009",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pacs/schemas/pacs.009.001.13.xsd",
     load: () =>
-      import('./pacs009.ts').then((m) => ({ message: m.pacs009Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./pacs009.ts').then((m) => ({ message: m.pacs009Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "pacs.010.001.06",
@@ -231,7 +232,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "pacs010",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pacs/schemas/pacs.010.001.06.xsd",
     load: () =>
-      import('./pacs010.ts').then((m) => ({ message: m.pacs010Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./pacs010.ts').then((m) => ({ message: m.pacs010Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "pacs.028.001.07",
@@ -241,7 +242,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "pacs028",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pacs/schemas/pacs.028.001.07.xsd",
     load: () =>
-      import('./pacs028.ts').then((m) => ({ message: m.pacs028Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./pacs028.ts').then((m) => ({ message: m.pacs028Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "pacs.029.001.02",
@@ -251,7 +252,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "pacs029",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/pacs/schemas/pacs.029.001.02.xsd",
     load: () =>
-      import('./pacs029.ts').then((m) => ({ message: m.pacs029Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./pacs029.ts').then((m) => ({ message: m.pacs029Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "caam.001.001.05",
@@ -261,7 +262,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "caam001",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.001.001.05.xsd",
     load: () =>
-      import('./caam001.ts').then((m) => ({ message: m.caam001Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./caam001.ts').then((m) => ({ message: m.caam001Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "caam.002.001.04",
@@ -271,7 +272,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "caam002",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.002.001.04.xsd",
     load: () =>
-      import('./caam002.ts').then((m) => ({ message: m.caam002Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./caam002.ts').then((m) => ({ message: m.caam002Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "caam.003.001.05",
@@ -281,7 +282,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "caam003",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.003.001.05.xsd",
     load: () =>
-      import('./caam003.ts').then((m) => ({ message: m.caam003Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./caam003.ts').then((m) => ({ message: m.caam003Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "caam.004.001.05",
@@ -291,7 +292,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "caam004",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.004.001.05.xsd",
     load: () =>
-      import('./caam004.ts').then((m) => ({ message: m.caam004Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./caam004.ts').then((m) => ({ message: m.caam004Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "caam.005.001.03",
@@ -301,7 +302,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "caam005",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.005.001.03.xsd",
     load: () =>
-      import('./caam005.ts').then((m) => ({ message: m.caam005Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./caam005.ts').then((m) => ({ message: m.caam005Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "caam.006.001.02",
@@ -311,7 +312,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "caam006",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.006.001.02.xsd",
     load: () =>
-      import('./caam006.ts').then((m) => ({ message: m.caam006Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./caam006.ts').then((m) => ({ message: m.caam006Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "caam.007.001.01",
@@ -321,7 +322,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "caam007",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.007.001.01.xsd",
     load: () =>
-      import('./caam007.ts').then((m) => ({ message: m.caam007Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./caam007.ts').then((m) => ({ message: m.caam007Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "caam.008.001.01",
@@ -331,7 +332,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "caam008",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.008.001.01.xsd",
     load: () =>
-      import('./caam008.ts').then((m) => ({ message: m.caam008Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./caam008.ts').then((m) => ({ message: m.caam008Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "caam.009.001.03",
@@ -341,7 +342,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "caam009",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.009.001.03.xsd",
     load: () =>
-      import('./caam009.ts').then((m) => ({ message: m.caam009Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./caam009.ts').then((m) => ({ message: m.caam009Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "caam.010.001.03",
@@ -351,7 +352,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "caam010",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.010.001.03.xsd",
     load: () =>
-      import('./caam010.ts').then((m) => ({ message: m.caam010Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./caam010.ts').then((m) => ({ message: m.caam010Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "caam.011.001.02",
@@ -361,7 +362,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "caam011",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.011.001.02.xsd",
     load: () =>
-      import('./caam011.ts').then((m) => ({ message: m.caam011Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./caam011.ts').then((m) => ({ message: m.caam011Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "caam.012.001.02",
@@ -371,7 +372,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "caam012",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.012.001.02.xsd",
     load: () =>
-      import('./caam012.ts').then((m) => ({ message: m.caam012Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./caam012.ts').then((m) => ({ message: m.caam012Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "caam.013.001.01",
@@ -381,7 +382,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "caam013",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.013.001.01.xsd",
     load: () =>
-      import('./caam013.ts').then((m) => ({ message: m.caam013Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./caam013.ts').then((m) => ({ message: m.caam013Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "caam.014.001.01",
@@ -391,7 +392,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "caam014",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.014.001.01.xsd",
     load: () =>
-      import('./caam014.ts').then((m) => ({ message: m.caam014Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./caam014.ts').then((m) => ({ message: m.caam014Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "caam.015.001.01",
@@ -401,7 +402,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "caam015",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.015.001.01.xsd",
     load: () =>
-      import('./caam015.ts').then((m) => ({ message: m.caam015Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./caam015.ts').then((m) => ({ message: m.caam015Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "caam.016.001.01",
@@ -411,7 +412,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "caam016",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/caam/schemas/caam.016.001.01.xsd",
     load: () =>
-      import('./caam016.ts').then((m) => ({ message: m.caam016Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./caam016.ts').then((m) => ({ message: m.caam016Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.003.001.08",
@@ -421,7 +422,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt003",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.003.001.08.xsd",
     load: () =>
-      import('./camt003.ts').then((m) => ({ message: m.camt003Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt003.ts').then((m) => ({ message: m.camt003Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.004.001.10",
@@ -431,7 +432,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt004",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.004.001.10.xsd",
     load: () =>
-      import('./camt004.ts').then((m) => ({ message: m.camt004Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt004.ts').then((m) => ({ message: m.camt004Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.005.001.11",
@@ -441,7 +442,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt005",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.005.001.11.xsd",
     load: () =>
-      import('./camt005.ts').then((m) => ({ message: m.camt005Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt005.ts').then((m) => ({ message: m.camt005Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.006.001.11",
@@ -451,7 +452,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt006",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.006.001.11.xsd",
     load: () =>
-      import('./camt006.ts').then((m) => ({ message: m.camt006Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt006.ts').then((m) => ({ message: m.camt006Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.007.001.10",
@@ -461,7 +462,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt007",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.007.001.10.xsd",
     load: () =>
-      import('./camt007.ts').then((m) => ({ message: m.camt007Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt007.ts').then((m) => ({ message: m.camt007Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.008.001.11",
@@ -471,7 +472,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt008",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.008.001.11.xsd",
     load: () =>
-      import('./camt008.ts').then((m) => ({ message: m.camt008Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt008.ts').then((m) => ({ message: m.camt008Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.009.001.08",
@@ -481,7 +482,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt009",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.009.001.08.xsd",
     load: () =>
-      import('./camt009.ts').then((m) => ({ message: m.camt009Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt009.ts').then((m) => ({ message: m.camt009Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.010.001.09",
@@ -491,7 +492,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt010",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.010.001.09.xsd",
     load: () =>
-      import('./camt010.ts').then((m) => ({ message: m.camt010Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt010.ts').then((m) => ({ message: m.camt010Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.011.001.08",
@@ -501,7 +502,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt011",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.011.001.08.xsd",
     load: () =>
-      import('./camt011.ts').then((m) => ({ message: m.camt011Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt011.ts').then((m) => ({ message: m.camt011Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.012.001.08",
@@ -511,7 +512,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt012",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.012.001.08.xsd",
     load: () =>
-      import('./camt012.ts').then((m) => ({ message: m.camt012Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt012.ts').then((m) => ({ message: m.camt012Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.013.001.04",
@@ -521,7 +522,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt013",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.013.001.04.xsd",
     load: () =>
-      import('./camt013.ts').then((m) => ({ message: m.camt013Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt013.ts').then((m) => ({ message: m.camt013Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.014.001.05",
@@ -531,7 +532,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt014",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.014.001.05.xsd",
     load: () =>
-      import('./camt014.ts').then((m) => ({ message: m.camt014Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt014.ts').then((m) => ({ message: m.camt014Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.015.001.04",
@@ -541,7 +542,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt015",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.015.001.04.xsd",
     load: () =>
-      import('./camt015.ts').then((m) => ({ message: m.camt015Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt015.ts').then((m) => ({ message: m.camt015Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.016.001.04",
@@ -551,7 +552,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt016",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.016.001.04.xsd",
     load: () =>
-      import('./camt016.ts').then((m) => ({ message: m.camt016Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt016.ts').then((m) => ({ message: m.camt016Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.017.001.05",
@@ -561,7 +562,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt017",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.017.001.05.xsd",
     load: () =>
-      import('./camt017.ts').then((m) => ({ message: m.camt017Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt017.ts').then((m) => ({ message: m.camt017Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.018.001.05",
@@ -571,7 +572,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt018",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.018.001.05.xsd",
     load: () =>
-      import('./camt018.ts').then((m) => ({ message: m.camt018Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt018.ts').then((m) => ({ message: m.camt018Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.019.001.07",
@@ -581,7 +582,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt019",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.019.001.07.xsd",
     load: () =>
-      import('./camt019.ts').then((m) => ({ message: m.camt019Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt019.ts').then((m) => ({ message: m.camt019Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.020.001.04",
@@ -591,7 +592,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt020",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.020.001.04.xsd",
     load: () =>
-      import('./camt020.ts').then((m) => ({ message: m.camt020Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt020.ts').then((m) => ({ message: m.camt020Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.021.001.06",
@@ -601,7 +602,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt021",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.021.001.06.xsd",
     load: () =>
-      import('./camt021.ts').then((m) => ({ message: m.camt021Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt021.ts').then((m) => ({ message: m.camt021Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.023.001.07",
@@ -611,7 +612,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt023",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.023.001.07.xsd",
     load: () =>
-      import('./camt023.ts').then((m) => ({ message: m.camt023Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt023.ts').then((m) => ({ message: m.camt023Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.024.001.08",
@@ -621,7 +622,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt024",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.024.001.08.xsd",
     load: () =>
-      import('./camt024.ts').then((m) => ({ message: m.camt024Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt024.ts').then((m) => ({ message: m.camt024Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.025.001.09",
@@ -631,7 +632,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt025",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.025.001.09.xsd",
     load: () =>
-      import('./camt025.ts').then((m) => ({ message: m.camt025Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt025.ts').then((m) => ({ message: m.camt025Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.026.001.10",
@@ -641,7 +642,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt026",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.026.001.10.xsd",
     load: () =>
-      import('./camt026.ts').then((m) => ({ message: m.camt026Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt026.ts').then((m) => ({ message: m.camt026Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.027.001.10",
@@ -651,7 +652,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt027",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.027.001.10.xsd",
     load: () =>
-      import('./camt027.ts').then((m) => ({ message: m.camt027Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt027.ts').then((m) => ({ message: m.camt027Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.028.001.12",
@@ -661,7 +662,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt028",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.028.001.12.xsd",
     load: () =>
-      import('./camt028.ts').then((m) => ({ message: m.camt028Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt028.ts').then((m) => ({ message: m.camt028Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.029.001.14",
@@ -671,7 +672,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt029",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.029.001.14.xsd",
     load: () =>
-      import('./camt029.ts').then((m) => ({ message: m.camt029Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt029.ts').then((m) => ({ message: m.camt029Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.030.001.06",
@@ -681,7 +682,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt030",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.030.001.06.xsd",
     load: () =>
-      import('./camt030.ts').then((m) => ({ message: m.camt030Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt030.ts').then((m) => ({ message: m.camt030Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.031.001.07",
@@ -691,7 +692,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt031",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.031.001.07.xsd",
     load: () =>
-      import('./camt031.ts').then((m) => ({ message: m.camt031Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt031.ts').then((m) => ({ message: m.camt031Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.032.001.05",
@@ -701,7 +702,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt032",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.032.001.05.xsd",
     load: () =>
-      import('./camt032.ts').then((m) => ({ message: m.camt032Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt032.ts').then((m) => ({ message: m.camt032Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.033.001.07",
@@ -711,7 +712,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt033",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.033.001.07.xsd",
     load: () =>
-      import('./camt033.ts').then((m) => ({ message: m.camt033Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt033.ts').then((m) => ({ message: m.camt033Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.034.001.07",
@@ -721,7 +722,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt034",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.034.001.07.xsd",
     load: () =>
-      import('./camt034.ts').then((m) => ({ message: m.camt034Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt034.ts').then((m) => ({ message: m.camt034Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.035.001.06",
@@ -731,7 +732,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt035",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.035.001.06.xsd",
     load: () =>
-      import('./camt035.ts').then((m) => ({ message: m.camt035Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt035.ts').then((m) => ({ message: m.camt035Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.036.001.06",
@@ -741,7 +742,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt036",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.036.001.06.xsd",
     load: () =>
-      import('./camt036.ts').then((m) => ({ message: m.camt036Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt036.ts').then((m) => ({ message: m.camt036Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.037.001.10",
@@ -751,7 +752,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt037",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.037.001.10.xsd",
     load: () =>
-      import('./camt037.ts').then((m) => ({ message: m.camt037Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt037.ts').then((m) => ({ message: m.camt037Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.038.001.05",
@@ -761,7 +762,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt038",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.038.001.05.xsd",
     load: () =>
-      import('./camt038.ts').then((m) => ({ message: m.camt038Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt038.ts').then((m) => ({ message: m.camt038Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.039.001.06",
@@ -771,7 +772,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt039",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.039.001.06.xsd",
     load: () =>
-      import('./camt039.ts').then((m) => ({ message: m.camt039Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt039.ts').then((m) => ({ message: m.camt039Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.040.001.04",
@@ -781,7 +782,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt040",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.040.001.04.xsd",
     load: () =>
-      import('./camt040.ts').then((m) => ({ message: m.camt040Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt040.ts').then((m) => ({ message: m.camt040Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.041.001.04",
@@ -791,7 +792,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt041",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.041.001.04.xsd",
     load: () =>
-      import('./camt041.ts').then((m) => ({ message: m.camt041Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt041.ts').then((m) => ({ message: m.camt041Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.042.001.04",
@@ -801,7 +802,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt042",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.042.001.04.xsd",
     load: () =>
-      import('./camt042.ts').then((m) => ({ message: m.camt042Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt042.ts').then((m) => ({ message: m.camt042Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.043.001.04",
@@ -811,7 +812,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt043",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.043.001.04.xsd",
     load: () =>
-      import('./camt043.ts').then((m) => ({ message: m.camt043Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt043.ts').then((m) => ({ message: m.camt043Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.044.001.03",
@@ -821,7 +822,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt044",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.044.001.03.xsd",
     load: () =>
-      import('./camt044.ts').then((m) => ({ message: m.camt044Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt044.ts').then((m) => ({ message: m.camt044Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.045.001.03",
@@ -831,7 +832,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt045",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.045.001.03.xsd",
     load: () =>
-      import('./camt045.ts').then((m) => ({ message: m.camt045Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt045.ts').then((m) => ({ message: m.camt045Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.046.001.08",
@@ -841,7 +842,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt046",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.046.001.08.xsd",
     load: () =>
-      import('./camt046.ts').then((m) => ({ message: m.camt046Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt046.ts').then((m) => ({ message: m.camt046Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.047.001.08",
@@ -851,7 +852,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt047",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.047.001.08.xsd",
     load: () =>
-      import('./camt047.ts').then((m) => ({ message: m.camt047Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt047.ts').then((m) => ({ message: m.camt047Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.048.001.07",
@@ -861,7 +862,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt048",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.048.001.07.xsd",
     load: () =>
-      import('./camt048.ts').then((m) => ({ message: m.camt048Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt048.ts').then((m) => ({ message: m.camt048Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.049.001.07",
@@ -871,7 +872,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt049",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.049.001.07.xsd",
     load: () =>
-      import('./camt049.ts').then((m) => ({ message: m.camt049Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt049.ts').then((m) => ({ message: m.camt049Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.050.001.07",
@@ -881,7 +882,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt050",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.050.001.07.xsd",
     load: () =>
-      import('./camt050.ts').then((m) => ({ message: m.camt050Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt050.ts').then((m) => ({ message: m.camt050Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.051.001.07",
@@ -891,7 +892,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt051",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.051.001.07.xsd",
     load: () =>
-      import('./camt051.ts').then((m) => ({ message: m.camt051Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt051.ts').then((m) => ({ message: m.camt051Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.052.001.14",
@@ -901,7 +902,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt052",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.052.001.14.xsd",
     load: () =>
-      import('./camt052.ts').then((m) => ({ message: m.camt052Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt052.ts').then((m) => ({ message: m.camt052Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.053.001.14",
@@ -911,7 +912,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt053",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.053.001.14.xsd",
     load: () =>
-      import('./camt053.ts').then((m) => ({ message: m.camt053Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt053.ts').then((m) => ({ message: m.camt053Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.054.001.14",
@@ -921,7 +922,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt054",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.054.001.14.xsd",
     load: () =>
-      import('./camt054.ts').then((m) => ({ message: m.camt054Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt054.ts').then((m) => ({ message: m.camt054Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.055.001.13",
@@ -931,7 +932,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt055",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.055.001.13.xsd",
     load: () =>
-      import('./camt055.ts').then((m) => ({ message: m.camt055Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt055.ts').then((m) => ({ message: m.camt055Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.056.001.12",
@@ -941,7 +942,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt056",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.056.001.12.xsd",
     load: () =>
-      import('./camt056.ts').then((m) => ({ message: m.camt056Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt056.ts').then((m) => ({ message: m.camt056Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.057.001.09",
@@ -951,7 +952,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt057",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.057.001.09.xsd",
     load: () =>
-      import('./camt057.ts').then((m) => ({ message: m.camt057Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt057.ts').then((m) => ({ message: m.camt057Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.058.001.10",
@@ -961,7 +962,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt058",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.058.001.10.xsd",
     load: () =>
-      import('./camt058.ts').then((m) => ({ message: m.camt058Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt058.ts').then((m) => ({ message: m.camt058Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.059.001.09",
@@ -971,7 +972,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt059",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.059.001.09.xsd",
     load: () =>
-      import('./camt059.ts').then((m) => ({ message: m.camt059Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt059.ts').then((m) => ({ message: m.camt059Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.060.001.07",
@@ -981,7 +982,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt060",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.060.001.07.xsd",
     load: () =>
-      import('./camt060.ts').then((m) => ({ message: m.camt060Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt060.ts').then((m) => ({ message: m.camt060Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.061.001.02",
@@ -991,7 +992,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt061",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.061.001.02.xsd",
     load: () =>
-      import('./camt061.ts').then((m) => ({ message: m.camt061Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt061.ts').then((m) => ({ message: m.camt061Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.062.001.03",
@@ -1001,7 +1002,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt062",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.062.001.03.xsd",
     load: () =>
-      import('./camt062.ts').then((m) => ({ message: m.camt062Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt062.ts').then((m) => ({ message: m.camt062Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.063.001.02",
@@ -1011,7 +1012,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt063",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.063.001.02.xsd",
     load: () =>
-      import('./camt063.ts').then((m) => ({ message: m.camt063Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt063.ts').then((m) => ({ message: m.camt063Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.064.001.01",
@@ -1021,7 +1022,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt064",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.064.001.01.xsd",
     load: () =>
-      import('./camt064.ts').then((m) => ({ message: m.camt064Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt064.ts').then((m) => ({ message: m.camt064Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.065.001.01",
@@ -1031,7 +1032,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt065",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.065.001.01.xsd",
     load: () =>
-      import('./camt065.ts').then((m) => ({ message: m.camt065Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt065.ts').then((m) => ({ message: m.camt065Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.066.001.02",
@@ -1041,7 +1042,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt066",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.066.001.02.xsd",
     load: () =>
-      import('./camt066.ts').then((m) => ({ message: m.camt066Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt066.ts').then((m) => ({ message: m.camt066Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.067.001.02",
@@ -1051,7 +1052,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt067",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.067.001.02.xsd",
     load: () =>
-      import('./camt067.ts').then((m) => ({ message: m.camt067Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt067.ts').then((m) => ({ message: m.camt067Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.068.001.02",
@@ -1061,7 +1062,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt068",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.068.001.02.xsd",
     load: () =>
-      import('./camt068.ts').then((m) => ({ message: m.camt068Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt068.ts').then((m) => ({ message: m.camt068Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.069.001.05",
@@ -1071,7 +1072,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt069",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.069.001.05.xsd",
     load: () =>
-      import('./camt069.ts').then((m) => ({ message: m.camt069Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt069.ts').then((m) => ({ message: m.camt069Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.070.001.06",
@@ -1081,7 +1082,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt070",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.070.001.06.xsd",
     load: () =>
-      import('./camt070.ts').then((m) => ({ message: m.camt070Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt070.ts').then((m) => ({ message: m.camt070Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.071.001.05",
@@ -1091,7 +1092,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt071",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.071.001.05.xsd",
     load: () =>
-      import('./camt071.ts').then((m) => ({ message: m.camt071Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt071.ts').then((m) => ({ message: m.camt071Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.072.001.02",
@@ -1101,7 +1102,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt072",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.072.001.02.xsd",
     load: () =>
-      import('./camt072.ts').then((m) => ({ message: m.camt072Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt072.ts').then((m) => ({ message: m.camt072Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.073.001.02",
@@ -1111,7 +1112,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt073",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.073.001.02.xsd",
     load: () =>
-      import('./camt073.ts').then((m) => ({ message: m.camt073Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt073.ts').then((m) => ({ message: m.camt073Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.074.001.02",
@@ -1121,7 +1122,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt074",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.074.001.02.xsd",
     load: () =>
-      import('./camt074.ts').then((m) => ({ message: m.camt074Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt074.ts').then((m) => ({ message: m.camt074Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.075.001.02",
@@ -1131,7 +1132,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt075",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.075.001.02.xsd",
     load: () =>
-      import('./camt075.ts').then((m) => ({ message: m.camt075Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt075.ts').then((m) => ({ message: m.camt075Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.076.001.01",
@@ -1141,7 +1142,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt076",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.076.001.01.xsd",
     load: () =>
-      import('./camt076.ts').then((m) => ({ message: m.camt076Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt076.ts').then((m) => ({ message: m.camt076Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.077.001.01",
@@ -1151,7 +1152,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt077",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.077.001.01.xsd",
     load: () =>
-      import('./camt077.ts').then((m) => ({ message: m.camt077Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt077.ts').then((m) => ({ message: m.camt077Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.078.001.02",
@@ -1161,7 +1162,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt078",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.078.001.02.xsd",
     load: () =>
-      import('./camt078.ts').then((m) => ({ message: m.camt078Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt078.ts').then((m) => ({ message: m.camt078Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.079.001.02",
@@ -1171,7 +1172,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt079",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.079.001.02.xsd",
     load: () =>
-      import('./camt079.ts').then((m) => ({ message: m.camt079Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt079.ts').then((m) => ({ message: m.camt079Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.080.001.02",
@@ -1181,7 +1182,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt080",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.080.001.02.xsd",
     load: () =>
-      import('./camt080.ts').then((m) => ({ message: m.camt080Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt080.ts').then((m) => ({ message: m.camt080Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.081.001.02",
@@ -1191,7 +1192,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt081",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.081.001.02.xsd",
     load: () =>
-      import('./camt081.ts').then((m) => ({ message: m.camt081Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt081.ts').then((m) => ({ message: m.camt081Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.082.001.02",
@@ -1201,7 +1202,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt082",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.082.001.02.xsd",
     load: () =>
-      import('./camt082.ts').then((m) => ({ message: m.camt082Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt082.ts').then((m) => ({ message: m.camt082Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.083.001.02",
@@ -1211,7 +1212,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt083",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.083.001.02.xsd",
     load: () =>
-      import('./camt083.ts').then((m) => ({ message: m.camt083Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt083.ts').then((m) => ({ message: m.camt083Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.084.001.02",
@@ -1221,7 +1222,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt084",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.084.001.02.xsd",
     load: () =>
-      import('./camt084.ts').then((m) => ({ message: m.camt084Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt084.ts').then((m) => ({ message: m.camt084Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.085.001.02",
@@ -1231,7 +1232,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt085",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.085.001.02.xsd",
     load: () =>
-      import('./camt085.ts').then((m) => ({ message: m.camt085Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt085.ts').then((m) => ({ message: m.camt085Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.086.001.05",
@@ -1241,7 +1242,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt086",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.086.001.05.xsd",
     load: () =>
-      import('./camt086.ts').then((m) => ({ message: m.camt086Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt086.ts').then((m) => ({ message: m.camt086Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.087.001.09",
@@ -1251,7 +1252,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt087",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.087.001.09.xsd",
     load: () =>
-      import('./camt087.ts').then((m) => ({ message: m.camt087Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt087.ts').then((m) => ({ message: m.camt087Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.088.001.04",
@@ -1261,7 +1262,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt088",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.088.001.04.xsd",
     load: () =>
-      import('./camt088.ts').then((m) => ({ message: m.camt088Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt088.ts').then((m) => ({ message: m.camt088Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.101.001.02",
@@ -1271,7 +1272,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt101",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.101.001.02.xsd",
     load: () =>
-      import('./camt101.ts').then((m) => ({ message: m.camt101Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt101.ts').then((m) => ({ message: m.camt101Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.102.001.03",
@@ -1281,7 +1282,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt102",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.102.001.03.xsd",
     load: () =>
-      import('./camt102.ts').then((m) => ({ message: m.camt102Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt102.ts').then((m) => ({ message: m.camt102Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.103.001.03",
@@ -1291,7 +1292,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt103",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.103.001.03.xsd",
     load: () =>
-      import('./camt103.ts').then((m) => ({ message: m.camt103Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt103.ts').then((m) => ({ message: m.camt103Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.104.001.01",
@@ -1301,7 +1302,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt104",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.104.001.01.xsd",
     load: () =>
-      import('./camt104.ts').then((m) => ({ message: m.camt104Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt104.ts').then((m) => ({ message: m.camt104Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.105.001.03",
@@ -1311,7 +1312,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt105",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.105.001.03.xsd",
     load: () =>
-      import('./camt105.ts').then((m) => ({ message: m.camt105Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt105.ts').then((m) => ({ message: m.camt105Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.106.001.03",
@@ -1321,7 +1322,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt106",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.106.001.03.xsd",
     load: () =>
-      import('./camt106.ts').then((m) => ({ message: m.camt106Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt106.ts').then((m) => ({ message: m.camt106Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.107.001.02",
@@ -1331,7 +1332,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt107",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.107.001.02.xsd",
     load: () =>
-      import('./camt107.ts').then((m) => ({ message: m.camt107Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt107.ts').then((m) => ({ message: m.camt107Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.108.001.02",
@@ -1341,7 +1342,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt108",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.108.001.02.xsd",
     load: () =>
-      import('./camt108.ts').then((m) => ({ message: m.camt108Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt108.ts').then((m) => ({ message: m.camt108Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.109.001.02",
@@ -1351,7 +1352,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt109",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.109.001.02.xsd",
     load: () =>
-      import('./camt109.ts').then((m) => ({ message: m.camt109Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt109.ts').then((m) => ({ message: m.camt109Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.110.001.02",
@@ -1361,7 +1362,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt110",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.110.001.02.xsd",
     load: () =>
-      import('./camt110.ts').then((m) => ({ message: m.camt110Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt110.ts').then((m) => ({ message: m.camt110Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.111.001.03",
@@ -1371,7 +1372,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt111",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.111.001.03.xsd",
     load: () =>
-      import('./camt111.ts').then((m) => ({ message: m.camt111Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt111.ts').then((m) => ({ message: m.camt111Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.113.001.01",
@@ -1381,7 +1382,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt113",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.113.001.01.xsd",
     load: () =>
-      import('./camt113.ts').then((m) => ({ message: m.camt113Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt113.ts').then((m) => ({ message: m.camt113Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.114.001.01",
@@ -1391,7 +1392,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt114",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.114.001.01.xsd",
     load: () =>
-      import('./camt114.ts').then((m) => ({ message: m.camt114Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt114.ts').then((m) => ({ message: m.camt114Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.115.001.01",
@@ -1401,7 +1402,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt115",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.115.001.01.xsd",
     load: () =>
-      import('./camt115.ts').then((m) => ({ message: m.camt115Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt115.ts').then((m) => ({ message: m.camt115Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "camt.116.001.01",
@@ -1411,7 +1412,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "camt116",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/camt/schemas/camt.116.001.01.xsd",
     load: () =>
-      import('./camt116.ts').then((m) => ({ message: m.camt116Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./camt116.ts').then((m) => ({ message: m.camt116Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "admi.002.001.01",
@@ -1421,7 +1422,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "admi002",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/admi/schemas/admi.002.001.01.xsd",
     load: () =>
-      import('./admi002.ts').then((m) => ({ message: m.admi002Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./admi002.ts').then((m) => ({ message: m.admi002Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "admi.004.001.02",
@@ -1431,7 +1432,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "admi004",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/admi/schemas/admi.004.001.02.xsd",
     load: () =>
-      import('./admi004.ts').then((m) => ({ message: m.admi004Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./admi004.ts').then((m) => ({ message: m.admi004Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "admi.005.001.02",
@@ -1441,7 +1442,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "admi005",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/admi/schemas/admi.005.001.02.xsd",
     load: () =>
-      import('./admi005.ts').then((m) => ({ message: m.admi005Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./admi005.ts').then((m) => ({ message: m.admi005Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "admi.006.001.01",
@@ -1451,7 +1452,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "admi006",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/admi/schemas/admi.006.001.01.xsd",
     load: () =>
-      import('./admi006.ts').then((m) => ({ message: m.admi006Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./admi006.ts').then((m) => ({ message: m.admi006Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "admi.007.001.01",
@@ -1461,7 +1462,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "admi007",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/admi/schemas/admi.007.001.01.xsd",
     load: () =>
-      import('./admi007.ts').then((m) => ({ message: m.admi007Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./admi007.ts').then((m) => ({ message: m.admi007Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "admi.009.001.02",
@@ -1471,7 +1472,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "admi009",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/admi/schemas/admi.009.001.02.xsd",
     load: () =>
-      import('./admi009.ts').then((m) => ({ message: m.admi009Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./admi009.ts').then((m) => ({ message: m.admi009Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "admi.010.001.02",
@@ -1481,7 +1482,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "admi010",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/admi/schemas/admi.010.001.02.xsd",
     load: () =>
-      import('./admi010.ts').then((m) => ({ message: m.admi010Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./admi010.ts').then((m) => ({ message: m.admi010Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "admi.011.001.01",
@@ -1491,7 +1492,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "admi011",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/admi/schemas/admi.011.001.01.xsd",
     load: () =>
-      import('./admi011.ts').then((m) => ({ message: m.admi011Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./admi011.ts').then((m) => ({ message: m.admi011Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "admi.017.001.02",
@@ -1501,7 +1502,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "admi017",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/admi/schemas/admi.017.001.02.xsd",
     load: () =>
-      import('./admi017.ts').then((m) => ({ message: m.admi017Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./admi017.ts').then((m) => ({ message: m.admi017Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "admi.024.001.01",
@@ -1511,7 +1512,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "admi024",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/admi/schemas/admi.024.001.01.xsd",
     load: () =>
-      import('./admi024.ts').then((m) => ({ message: m.admi024Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./admi024.ts').then((m) => ({ message: m.admi024Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "remt.001.001.07",
@@ -1521,7 +1522,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "remt001",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/remt/schemas/remt.001.001.07.xsd",
     load: () =>
-      import('./remt001.ts').then((m) => ({ message: m.remt001Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./remt001.ts').then((m) => ({ message: m.remt001Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "remt.002.001.03",
@@ -1531,7 +1532,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "remt002",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/remt/schemas/remt.002.001.03.xsd",
     load: () =>
-      import('./remt002.ts').then((m) => ({ message: m.remt002Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./remt002.ts').then((m) => ({ message: m.remt002Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "trck.001.001.05",
@@ -1541,7 +1542,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "trck001",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/trck/schemas/trck.001.001.05.xsd",
     load: () =>
-      import('./trck001.ts').then((m) => ({ message: m.trck001Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./trck001.ts').then((m) => ({ message: m.trck001Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "trck.002.001.04",
@@ -1551,7 +1552,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "trck002",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/trck/schemas/trck.002.001.04.xsd",
     load: () =>
-      import('./trck002.ts').then((m) => ({ message: m.trck002Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./trck002.ts').then((m) => ({ message: m.trck002Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "trck.004.001.04",
@@ -1561,7 +1562,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "trck004",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/trck/schemas/trck.004.001.04.xsd",
     load: () =>
-      import('./trck004.ts').then((m) => ({ message: m.trck004Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./trck004.ts').then((m) => ({ message: m.trck004Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.001.001.08",
@@ -1571,7 +1572,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt001",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.001.001.08.xsd",
     load: () =>
-      import('./acmt001.ts').then((m) => ({ message: m.acmt001Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt001.ts').then((m) => ({ message: m.acmt001Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.002.001.08",
@@ -1581,7 +1582,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt002",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.002.001.08.xsd",
     load: () =>
-      import('./acmt002.ts').then((m) => ({ message: m.acmt002Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt002.ts').then((m) => ({ message: m.acmt002Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.003.001.08",
@@ -1591,7 +1592,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt003",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.003.001.08.xsd",
     load: () =>
-      import('./acmt003.ts').then((m) => ({ message: m.acmt003Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt003.ts').then((m) => ({ message: m.acmt003Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.005.001.06",
@@ -1601,7 +1602,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt005",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.005.001.06.xsd",
     load: () =>
-      import('./acmt005.ts').then((m) => ({ message: m.acmt005Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt005.ts').then((m) => ({ message: m.acmt005Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.006.001.07",
@@ -1611,7 +1612,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt006",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.006.001.07.xsd",
     load: () =>
-      import('./acmt006.ts').then((m) => ({ message: m.acmt006Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt006.ts').then((m) => ({ message: m.acmt006Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.007.001.05",
@@ -1621,7 +1622,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt007",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.007.001.05.xsd",
     load: () =>
-      import('./acmt007.ts').then((m) => ({ message: m.acmt007Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt007.ts').then((m) => ({ message: m.acmt007Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.008.001.05",
@@ -1631,7 +1632,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt008",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.008.001.05.xsd",
     load: () =>
-      import('./acmt008.ts').then((m) => ({ message: m.acmt008Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt008.ts').then((m) => ({ message: m.acmt008Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.009.001.04",
@@ -1641,7 +1642,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt009",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.009.001.04.xsd",
     load: () =>
-      import('./acmt009.ts').then((m) => ({ message: m.acmt009Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt009.ts').then((m) => ({ message: m.acmt009Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.010.001.04",
@@ -1651,7 +1652,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt010",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.010.001.04.xsd",
     load: () =>
-      import('./acmt010.ts').then((m) => ({ message: m.acmt010Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt010.ts').then((m) => ({ message: m.acmt010Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.011.001.04",
@@ -1661,7 +1662,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt011",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.011.001.04.xsd",
     load: () =>
-      import('./acmt011.ts').then((m) => ({ message: m.acmt011Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt011.ts').then((m) => ({ message: m.acmt011Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.012.001.04",
@@ -1671,7 +1672,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt012",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.012.001.04.xsd",
     load: () =>
-      import('./acmt012.ts').then((m) => ({ message: m.acmt012Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt012.ts').then((m) => ({ message: m.acmt012Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.013.001.04",
@@ -1681,7 +1682,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt013",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.013.001.04.xsd",
     load: () =>
-      import('./acmt013.ts').then((m) => ({ message: m.acmt013Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt013.ts').then((m) => ({ message: m.acmt013Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.014.001.05",
@@ -1691,7 +1692,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt014",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.014.001.05.xsd",
     load: () =>
-      import('./acmt014.ts').then((m) => ({ message: m.acmt014Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt014.ts').then((m) => ({ message: m.acmt014Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.015.001.05",
@@ -1701,7 +1702,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt015",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.015.001.05.xsd",
     load: () =>
-      import('./acmt015.ts').then((m) => ({ message: m.acmt015Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt015.ts').then((m) => ({ message: m.acmt015Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.016.001.05",
@@ -1711,7 +1712,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt016",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.016.001.05.xsd",
     load: () =>
-      import('./acmt016.ts').then((m) => ({ message: m.acmt016Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt016.ts').then((m) => ({ message: m.acmt016Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.017.001.05",
@@ -1721,7 +1722,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt017",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.017.001.05.xsd",
     load: () =>
-      import('./acmt017.ts').then((m) => ({ message: m.acmt017Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt017.ts').then((m) => ({ message: m.acmt017Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.018.001.05",
@@ -1731,7 +1732,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt018",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.018.001.05.xsd",
     load: () =>
-      import('./acmt018.ts').then((m) => ({ message: m.acmt018Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt018.ts').then((m) => ({ message: m.acmt018Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.019.001.04",
@@ -1741,7 +1742,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt019",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.019.001.04.xsd",
     load: () =>
-      import('./acmt019.ts').then((m) => ({ message: m.acmt019Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt019.ts').then((m) => ({ message: m.acmt019Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.020.001.04",
@@ -1751,7 +1752,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt020",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.020.001.04.xsd",
     load: () =>
-      import('./acmt020.ts').then((m) => ({ message: m.acmt020Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt020.ts').then((m) => ({ message: m.acmt020Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.021.001.04",
@@ -1761,7 +1762,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt021",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.021.001.04.xsd",
     load: () =>
-      import('./acmt021.ts').then((m) => ({ message: m.acmt021Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt021.ts').then((m) => ({ message: m.acmt021Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.022.001.04",
@@ -1771,7 +1772,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt022",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.022.001.04.xsd",
     load: () =>
-      import('./acmt022.ts').then((m) => ({ message: m.acmt022Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt022.ts').then((m) => ({ message: m.acmt022Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.023.001.04",
@@ -1781,7 +1782,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt023",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.023.001.04.xsd",
     load: () =>
-      import('./acmt023.ts').then((m) => ({ message: m.acmt023Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt023.ts').then((m) => ({ message: m.acmt023Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.024.001.04",
@@ -1791,7 +1792,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt024",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.024.001.04.xsd",
     load: () =>
-      import('./acmt024.ts').then((m) => ({ message: m.acmt024Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt024.ts').then((m) => ({ message: m.acmt024Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.027.001.06",
@@ -1801,7 +1802,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt027",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.027.001.06.xsd",
     load: () =>
-      import('./acmt027.ts').then((m) => ({ message: m.acmt027Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt027.ts').then((m) => ({ message: m.acmt027Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.028.001.06",
@@ -1811,7 +1812,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt028",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.028.001.06.xsd",
     load: () =>
-      import('./acmt028.ts').then((m) => ({ message: m.acmt028Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt028.ts').then((m) => ({ message: m.acmt028Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.029.001.06",
@@ -1821,7 +1822,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt029",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.029.001.06.xsd",
     load: () =>
-      import('./acmt029.ts').then((m) => ({ message: m.acmt029Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt029.ts').then((m) => ({ message: m.acmt029Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.030.001.04",
@@ -1831,7 +1832,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt030",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.030.001.04.xsd",
     load: () =>
-      import('./acmt030.ts').then((m) => ({ message: m.acmt030Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt030.ts').then((m) => ({ message: m.acmt030Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.031.001.06",
@@ -1841,7 +1842,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt031",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.031.001.06.xsd",
     load: () =>
-      import('./acmt031.ts').then((m) => ({ message: m.acmt031Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt031.ts').then((m) => ({ message: m.acmt031Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.032.001.06",
@@ -1851,7 +1852,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt032",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.032.001.06.xsd",
     load: () =>
-      import('./acmt032.ts').then((m) => ({ message: m.acmt032Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt032.ts').then((m) => ({ message: m.acmt032Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.033.001.02",
@@ -1861,7 +1862,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt033",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.033.001.02.xsd",
     load: () =>
-      import('./acmt033.ts').then((m) => ({ message: m.acmt033Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt033.ts').then((m) => ({ message: m.acmt033Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.034.001.06",
@@ -1871,7 +1872,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt034",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.034.001.06.xsd",
     load: () =>
-      import('./acmt034.ts').then((m) => ({ message: m.acmt034Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt034.ts').then((m) => ({ message: m.acmt034Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.035.001.02",
@@ -1881,7 +1882,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt035",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.035.001.02.xsd",
     load: () =>
-      import('./acmt035.ts').then((m) => ({ message: m.acmt035Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt035.ts').then((m) => ({ message: m.acmt035Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.036.001.01",
@@ -1891,7 +1892,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt036",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.036.001.01.xsd",
     load: () =>
-      import('./acmt036.ts').then((m) => ({ message: m.acmt036Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt036.ts').then((m) => ({ message: m.acmt036Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "acmt.037.001.02",
@@ -1901,7 +1902,7 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "acmt037",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/acmt/schemas/acmt.037.001.02.xsd",
     load: () =>
-      import('./acmt037.ts').then((m) => ({ message: m.acmt037Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./acmt037.ts').then((m) => ({ message: m.acmt037Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
   {
     identifier: "head.001.001.04",
@@ -1911,6 +1912,446 @@ export const messageIndex: readonly MessageInfo[] = [
     module: "head001",
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/head/schemas/head.001.001.04.xsd",
     load: () =>
-      import('./head001.ts').then((m) => ({ message: m.head001Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+      import('./head001.ts').then((m) => ({ message: m.head001Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.001.001.04",
+    name: "SecuritiesMessageRejectionV04",
+    title: "Securities Message Rejection",
+    area: "semt",
+    module: "semt001",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.001.001.04.xsd",
+    load: () =>
+      import('./semt001.ts').then((m) => ({ message: m.semt001Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.002.001.12",
+    name: "SecuritiesBalanceCustodyReportV12",
+    title: "Securities Balance Custody Report",
+    area: "semt",
+    module: "semt002",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.002.001.12.xsd",
+    load: () =>
+      import('./semt002.ts').then((m) => ({ message: m.semt002Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.002.002.11",
+    name: "SecuritiesBalanceCustodyReport002V11",
+    title: "Securities Balance Custody Report002",
+    area: "semt",
+    module: "semt002f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.002.002.11.xsd",
+    load: () =>
+      import('./semt002f2.ts').then((m) => ({ message: m.semt002f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.003.001.12",
+    name: "SecuritiesBalanceAccountingReportV12",
+    title: "Securities Balance Accounting Report",
+    area: "semt",
+    module: "semt003",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.003.001.12.xsd",
+    load: () =>
+      import('./semt003.ts').then((m) => ({ message: m.semt003Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.003.002.11",
+    name: "SecuritiesBalanceAccountingReport002V11",
+    title: "Securities Balance Accounting Report002",
+    area: "semt",
+    module: "semt003f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.003.002.11.xsd",
+    load: () =>
+      import('./semt003f2.ts').then((m) => ({ message: m.semt003f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.004.001.02",
+    name: "CustodyStatementOfHoldingsCancellationV02",
+    title: "Custody Statement Of Holdings Cancellation",
+    area: "semt",
+    module: "semt004",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.004.001.02.xsd",
+    load: () =>
+      import('./semt004.ts').then((m) => ({ message: m.semt004Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.005.001.02",
+    name: "AccountingStatementOfHoldingsCancellationV02",
+    title: "Accounting Statement Of Holdings Cancellation",
+    area: "semt",
+    module: "semt005",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.005.001.02.xsd",
+    load: () =>
+      import('./semt005.ts').then((m) => ({ message: m.semt005Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.006.001.02",
+    name: "StatementOfInvestmentFundTransactionsV02",
+    title: "Statement Of Investment Fund Transactions",
+    area: "semt",
+    module: "semt006",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.006.001.02.xsd",
+    load: () =>
+      import('./semt006.ts').then((m) => ({ message: m.semt006Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.007.001.02",
+    name: "StatementOfInvestmentFundTransactionsCancellationV02",
+    title: "Statement Of Investment Fund Transactions Cancellation",
+    area: "semt",
+    module: "semt007",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.007.001.02.xsd",
+    load: () =>
+      import('./semt007.ts').then((m) => ({ message: m.semt007Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.013.001.07",
+    name: "IntraPositionMovementInstructionV07",
+    title: "Intra Position Movement Instruction",
+    area: "semt",
+    module: "semt013",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.013.001.07.xsd",
+    load: () =>
+      import('./semt013.ts').then((m) => ({ message: m.semt013Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.013.002.06",
+    name: "IntraPositionMovementInstruction002V06",
+    title: "Intra Position Movement Instruction002",
+    area: "semt",
+    module: "semt013f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.013.002.06.xsd",
+    load: () =>
+      import('./semt013f2.ts').then((m) => ({ message: m.semt013f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.014.001.09",
+    name: "IntraPositionMovementStatusAdviceV09",
+    title: "Intra Position Movement Status Advice",
+    area: "semt",
+    module: "semt014",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.014.001.09.xsd",
+    load: () =>
+      import('./semt014.ts').then((m) => ({ message: m.semt014Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.014.002.07",
+    name: "IntraPositionMovementStatusAdvice002V07",
+    title: "Intra Position Movement Status Advice002",
+    area: "semt",
+    module: "semt014f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.014.002.07.xsd",
+    load: () =>
+      import('./semt014f2.ts').then((m) => ({ message: m.semt014f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.015.001.10",
+    name: "IntraPositionMovementConfirmationV10",
+    title: "Intra Position Movement Confirmation",
+    area: "semt",
+    module: "semt015",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.015.001.10.xsd",
+    load: () =>
+      import('./semt015.ts').then((m) => ({ message: m.semt015Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.015.002.09",
+    name: "IntraPositionMovementConfirmation002V09",
+    title: "Intra Position Movement Confirmation002",
+    area: "semt",
+    module: "semt015f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.015.002.09.xsd",
+    load: () =>
+      import('./semt015f2.ts').then((m) => ({ message: m.semt015f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.016.001.10",
+    name: "IntraPositionMovementPostingReportV10",
+    title: "Intra Position Movement Posting Report",
+    area: "semt",
+    module: "semt016",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.016.001.10.xsd",
+    load: () =>
+      import('./semt016.ts').then((m) => ({ message: m.semt016Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.016.002.09",
+    name: "IntraPositionMovementPostingReport002V09",
+    title: "Intra Position Movement Posting Report002",
+    area: "semt",
+    module: "semt016f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.016.002.09.xsd",
+    load: () =>
+      import('./semt016f2.ts').then((m) => ({ message: m.semt016f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.017.001.14",
+    name: "SecuritiesTransactionPostingReportV14",
+    title: "Securities Transaction Posting Report",
+    area: "semt",
+    module: "semt017",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.017.001.14.xsd",
+    load: () =>
+      import('./semt017.ts').then((m) => ({ message: m.semt017Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.017.002.12",
+    name: "SecuritiesTransactionPostingReport002V12",
+    title: "Securities Transaction Posting Report002",
+    area: "semt",
+    module: "semt017f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.017.002.12.xsd",
+    load: () =>
+      import('./semt017f2.ts').then((m) => ({ message: m.semt017f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.018.001.15",
+    name: "SecuritiesTransactionPendingReportV15",
+    title: "Securities Transaction Pending Report",
+    area: "semt",
+    module: "semt018",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.018.001.15.xsd",
+    load: () =>
+      import('./semt018.ts').then((m) => ({ message: m.semt018Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.018.002.13",
+    name: "SecuritiesTransactionPendingReport002V13",
+    title: "Securities Transaction Pending Report002",
+    area: "semt",
+    module: "semt018f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.018.002.13.xsd",
+    load: () =>
+      import('./semt018f2.ts').then((m) => ({ message: m.semt018f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.019.001.12",
+    name: "SecuritiesSettlementTransactionAllegementReportV12",
+    title: "Securities Settlement Transaction Allegement Report",
+    area: "semt",
+    module: "semt019",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.019.001.12.xsd",
+    load: () =>
+      import('./semt019.ts').then((m) => ({ message: m.semt019Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.019.002.10",
+    name: "SecuritiesSettlementTransactionAllegementReport002V10",
+    title: "Securities Settlement Transaction Allegement Report002",
+    area: "semt",
+    module: "semt019f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.019.002.10.xsd",
+    load: () =>
+      import('./semt019f2.ts').then((m) => ({ message: m.semt019f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.020.001.07",
+    name: "SecuritiesMessageCancellationAdviceV07",
+    title: "Securities Message Cancellation Advice",
+    area: "semt",
+    module: "semt020",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.020.001.07.xsd",
+    load: () =>
+      import('./semt020.ts').then((m) => ({ message: m.semt020Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.020.002.07",
+    name: "SecuritiesMessageCancellationAdvice002V07",
+    title: "Securities Message Cancellation Advice002",
+    area: "semt",
+    module: "semt020f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.020.002.07.xsd",
+    load: () =>
+      import('./semt020f2.ts').then((m) => ({ message: m.semt020f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.021.001.09",
+    name: "SecuritiesStatementQueryV09",
+    title: "Securities Statement Query",
+    area: "semt",
+    module: "semt021",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.021.001.09.xsd",
+    load: () =>
+      import('./semt021.ts').then((m) => ({ message: m.semt021Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.021.002.08",
+    name: "SecuritiesStatementQuery002V08",
+    title: "Securities Statement Query002",
+    area: "semt",
+    module: "semt021f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.021.002.08.xsd",
+    load: () =>
+      import('./semt021f2.ts').then((m) => ({ message: m.semt021f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.022.001.07",
+    name: "SecuritiesSettlementTransactionAuditTrailReportV07",
+    title: "Securities Settlement Transaction Audit Trail Report",
+    area: "semt",
+    module: "semt022",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.022.001.07.xsd",
+    load: () =>
+      import('./semt022.ts').then((m) => ({ message: m.semt022Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.022.002.05",
+    name: "SecuritiesSettlementTransactionAuditTrailReport002V05",
+    title: "Securities Settlement Transaction Audit Trail Report002",
+    area: "semt",
+    module: "semt022f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.022.002.05.xsd",
+    load: () =>
+      import('./semt022f2.ts').then((m) => ({ message: m.semt022f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.023.001.02",
+    name: "SecuritiesEndOfProcessReportV02",
+    title: "Securities End Of Process Report",
+    area: "semt",
+    module: "semt023",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.023.001.02.xsd",
+    load: () =>
+      import('./semt023.ts').then((m) => ({ message: m.semt023Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.025.001.01",
+    name: "SecuritiesAccountPositionQueryV01",
+    title: "Securities Account Position Query",
+    area: "semt",
+    module: "semt025",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.025.001.01.xsd",
+    load: () =>
+      import('./semt025.ts').then((m) => ({ message: m.semt025Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.026.001.01",
+    name: "SecuritiesSettlementTransactionQueryV01",
+    title: "Securities Settlement Transaction Query",
+    area: "semt",
+    module: "semt026",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.026.001.01.xsd",
+    load: () =>
+      import('./semt026.ts').then((m) => ({ message: m.semt026Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.027.001.01",
+    name: "SecuritiesSettlementTransactionQueryResponseV01",
+    title: "Securities Settlement Transaction Query Response",
+    area: "semt",
+    module: "semt027",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.027.001.01.xsd",
+    load: () =>
+      import('./semt027.ts').then((m) => ({ message: m.semt027Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.028.001.01",
+    name: "IntraPositionMovementQueryV01",
+    title: "Intra Position Movement Query",
+    area: "semt",
+    module: "semt028",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.028.001.01.xsd",
+    load: () =>
+      import('./semt028.ts').then((m) => ({ message: m.semt028Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.029.001.01",
+    name: "IntraPositionMovementQueryResponseV01",
+    title: "Intra Position Movement Query Response",
+    area: "semt",
+    module: "semt029",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.029.001.01.xsd",
+    load: () =>
+      import('./semt029.ts').then((m) => ({ message: m.semt029Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.030.001.01",
+    name: "SecuritiesSettlementConditionsModificationRequestQueryV01",
+    title: "Securities Settlement Conditions Modification Request Query",
+    area: "semt",
+    module: "semt030",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.030.001.01.xsd",
+    load: () =>
+      import('./semt030.ts').then((m) => ({ message: m.semt030Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.031.001.01",
+    name: "SecuritiesSettlementConditionsModificationRequestReportV01",
+    title: "Securities Settlement Conditions Modification Request Report",
+    area: "semt",
+    module: "semt031",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.031.001.01.xsd",
+    load: () =>
+      import('./semt031.ts').then((m) => ({ message: m.semt031Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.032.001.01",
+    name: "SecuritiesTransactionCancellationRequestQueryV01",
+    title: "Securities Transaction Cancellation Request Query",
+    area: "semt",
+    module: "semt032",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.032.001.01.xsd",
+    load: () =>
+      import('./semt032.ts').then((m) => ({ message: m.semt032Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.033.001.01",
+    name: "SecuritiesTransactionCancellationRequestReportV01",
+    title: "Securities Transaction Cancellation Request Report",
+    area: "semt",
+    module: "semt033",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.033.001.01.xsd",
+    load: () =>
+      import('./semt033.ts').then((m) => ({ message: m.semt033Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.034.001.01",
+    name: "IntraPositionMovementPendingReportV01",
+    title: "Intra Position Movement Pending Report",
+    area: "semt",
+    module: "semt034",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.034.001.01.xsd",
+    load: () =>
+      import('./semt034.ts').then((m) => ({ message: m.semt034Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.040.001.01",
+    name: "SecuritiesAccountPositionResponseV01",
+    title: "Securities Account Position Response",
+    area: "semt",
+    module: "semt040",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.040.001.01.xsd",
+    load: () =>
+      import('./semt040.ts').then((m) => ({ message: m.semt040Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.041.001.02",
+    name: "SecuritiesBalanceTransparencyReportV02",
+    title: "Securities Balance Transparency Report",
+    area: "semt",
+    module: "semt041",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.041.001.02.xsd",
+    load: () =>
+      import('./semt041.ts').then((m) => ({ message: m.semt041Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.042.001.01",
+    name: "SecuritiesBalanceTransparencyReportStatusAdviceV01",
+    title: "Securities Balance Transparency Report Status Advice",
+    area: "semt",
+    module: "semt042",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.042.001.01.xsd",
+    load: () =>
+      import('./semt042.ts').then((m) => ({ message: m.semt042Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "semt.044.001.01",
+    name: "SecuritiesTransactionPenaltiesReportV01",
+    title: "Securities Transaction Penalties Report",
+    area: "semt",
+    module: "semt044",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.044.001.01.xsd",
+    load: () =>
+      import('./semt044.ts').then((m) => ({ message: m.semt044Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
 ];

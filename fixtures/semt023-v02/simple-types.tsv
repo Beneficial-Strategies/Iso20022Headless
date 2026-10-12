@@ -1,0 +1,3 @@
+name	isoId	xsiType	pattern	minLength	maxLength	totalDigits	fractionDigits	minInclusive	maxInclusive	other
+BBANIdentifier	_YWr8Jtp-Ed-ak6NoX_4Aeg_-1329929778	IdentifierSet	[a-zA-Z0-9]{1,30}							identificationScheme=National Banking Association; Basic Bank Account Number
+UPICIdentifier	_YXlUAdp-Ed-ak6NoX_4Aeg_-1872488862	IdentifierSet	[0-9]{8,17}							identificationScheme=The Clearing House (formerly The New York Clearing House); Universal Payment Identification Code

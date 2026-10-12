@@ -1,0 +1,6 @@
+codeSet	isoId	text
+TransactionType2Code	_Yuh0Zdp-Ed-ak6NoX_4Aeg_-872010891	Specifies the type of transaction.
+CorporateActionEventType1Code	_bEb709p-Ed-ak6NoX_4Aeg_-1007587502	Specifies the type of corporate action event.
+TransactionStatus1Code	_zdcnZQ93EeGeV5vP7Mvdig_-110011060	Specifies the processing status of an investment fund transaction.
+ReversalCode	_Y-Bo8tp-Ed-ak6NoX_4Aeg_450609101	Specifies if an operation is the result of a reversal operation.
+PriceMethod1Code	_aIreMNp-Ed-ak6NoX_4Aeg_-1724055266	Specifies the type of pricing calculation method.

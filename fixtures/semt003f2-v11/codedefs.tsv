@@ -1,0 +1,34 @@
+codeSet	code	enumName	isoId	text
+ExposureType12Code	BFWD	BondForward	_07NG4SgnEeyxa-IROls2IA	Any securities traded out beyond 3 days which include treasury notes, Japanese Governement Bonds (JGBs) and Gilts.
+ExposureType12Code	PAYM	CashSettlement	_07NG4ygnEeyxa-IROls2IA	In support of any type of cash settlement.
+ExposureType12Code	CCPC	CCPCollateral	_07NG5SgnEeyxa-IROls2IA	Collateral covering the initial margin requirements for OTC trades cleared through a CCP.
+ExposureType12Code	COMM	Commodities	_07NG5ygnEeyxa-IROls2IA	Any good exchanged during commerce, which includes goods traded on a commodity exchange.
+ExposureType12Code	CRDS	CreditDefaultSwap	_07NG6SgnEeyxa-IROls2IA	Swap designed to transfer the credit exposure of fixed income products between parties.
+ExposureType12Code	CRTL	CreditLine	_07NG6ygnEeyxa-IROls2IA	Opening of a credit line before trading.
+ExposureType12Code	CRSP	CreditSupport	_07NG7SgnEeyxa-IROls2IA	Cash lending/borrowing; letter of credit; signing of master agreement.
+ExposureType12Code	CCIR	CrossCurrencyIRS	_07NG7ygnEeyxa-IROls2IA	Cross currency agreement between two parties (known as counterparties) where one stream of future interest payments is exchanged for another based on a specified principal amount.
+ExposureType12Code	CRPR	CrossProduct	_07NG8SgnEeyxa-IROls2IA	Combination of various types of trades.
+ExposureType12Code	EQPT	EquityOption	_07NG8ygnEeyxa-IROls2IA	Trading of equity option (also known as stock options).
+ExposureType12Code	EXTD	ExchangeTradedDerivatives	_07NG9SgnEeyxa-IROls2IA	Trading of exchanged traded derivatives in general.
+ExposureType12Code	EQUS	EquitySwap	_07NG9ygnEeyxa-IROls2IA	Equity swap trades where the return of an equity is exchanged for either a fixed or a floating rate of interest.
+ExposureType12Code	EXPT	ExoticOption	_07NG-SgnEeyxa-IROls2IA	Trading of exotic option, for example, a non standard option.
+ExposureType12Code	FIXI	FixedIncome	_07NG-ygnEeyxa-IROls2IA	Trading of fixed income instruments.
+ExposureType12Code	FORX	ForeignExchange	_07NG_SgnEeyxa-IROls2IA	FX trades in general.
+ExposureType12Code	FORW	ForwardForeignExchange	_07NG_ygnEeyxa-IROls2IA	Forward FX trades.
+ExposureType12Code	FUTR	Futures	_07NHASgnEeyxa-IROls2IA	Agreement to buy or sell a specific amount of a commodity or financial instrument at a particular price on a stipulated future date.
+ExposureType12Code	OPTN	FXOption	_07NHAygnEeyxa-IROls2IA	A contract that grants the holder the right, but not the obligation, to buy or sell currency at a specified exchange rate during a specified period of time.
+ExposureType12Code	LIQU	Liquidity	_07NHBSgnEeyxa-IROls2IA	In support of settlement via an RTGS or other clearing system.
+ExposureType12Code	OTCD	OTCDerivatives	_07NHBygnEeyxa-IROls2IA	OTC derivatives trading.
+ExposureType12Code	REPO	RepurchaseAgreement	_07NHCSgnEeyxa-IROls2IA	Relates to repurchase agreement trading.
+ExposureType12Code	RVPO	ReverseRepurchaseAgreement	_07NHCygnEeyxa-IROls2IA	In support of a reverse repurchase agreement transaction.
+ExposureType12Code	SLOA	SecuredLoan	_07NHDSgnEeyxa-IROls2IA	Exposure is linked to a secured loan.
+ExposureType12Code	SBSC	SecuritiesBuySellSellBuyBack	_07NHDygnEeyxa-IROls2IA	Securities buy sell back.
+ExposureType12Code	SCRP	SecuritiesCrossProducts	_07NHESgnEeyxa-IROls2IA	Combination of securities related exposure types.
+ExposureType12Code	SLEB	SecuritiesLendingAndBorrowing	_07NHEygnEeyxa-IROls2IA	Exposure is linked to a securities lending or borrowing activity.
+ExposureType12Code	SHSL	ShortSell	_07NHFSgnEeyxa-IROls2IA	Short sell exposure.
+ExposureType12Code	SCIR	SingleCurrencyIRS	_07NHFygnEeyxa-IROls2IA	Single currency interest rate swap.
+ExposureType12Code	SCIE	SingleCurrencyIRSExotic	_07NHGSgnEeyxa-IROls2IA	Exotic single currency interest rate swap.
+ExposureType12Code	SWPT	Swaption	_07NHGygnEeyxa-IROls2IA	Option on interest rate swap.
+ExposureType12Code	TBAS	ToBeAnnounced	_07NHHSgnEeyxa-IROls2IA	To be announced (TBA) related collateral.
+ExposureType12Code	UDMS	UnclearedDerivativeMarginSegregation	_1-QfUSgnEeyxa-IROls2IA	Relates to uncleared derivative margin segregation. This could be for variation or initial margin.
+ExposureType12Code	TRCP	TreasuryCrossProduct	_5bdwkSgoEeyB747fKu7_rw	Combination of treasury related exposure types.

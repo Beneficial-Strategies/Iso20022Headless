@@ -1,0 +1,51 @@
+{
+  "identifier": "semt.034.001.01",
+  "name": "IntraPositionMovementPendingReportV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:semt.034.001.01",
+  "bodyTag": "IntraPosMvmntPdgRpt",
+  "out": "semt034",
+  "isoId": "_iPiCceShEe-qVZLXW4RRBw",
+  "definition": "This IntraPositionMovementPendingReport message is sent from a settlement infrastructure to an account owner/request to report the intra-position movement instructions, previously sent by the account owner, that have a pending status.||The message may also be used to: |- re-send a message sent by the account owner to the account servicer (the sub-function of the message is \"Duplicate\") |- provide a third party with a copy of a message being sent by the account owner for information (the sub-function of the message is \"Copy\") |- re-send to a third party a copy of a message being sent by the account owner for information (the sub-function of the message is \"Copy Duplicate\").",
+  "blocks": [
+    {
+      "name": "Pagination",
+      "isoId": "_iPiCg-ShEe-qVZLXW4RRBw",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ReportGeneralDetails",
+      "isoId": "_iPiCheShEe-qVZLXW4RRBw",
+      "xmlTag": "RptGnlDtls",
+      "type": "IntraPositionReport7",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountOwner",
+      "isoId": "_iPiCh-ShEe-qVZLXW4RRBw",
+      "xmlTag": "AcctOwnr",
+      "type": "SystemPartyIdentification8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SafekeepingAccount",
+      "isoId": "_iPiCieShEe-qVZLXW4RRBw",
+      "xmlTag": "SfkpgAcct",
+      "type": "SecuritiesAccount19",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Movements",
+      "isoId": "_iPiCi-ShEe-qVZLXW4RRBw",
+      "xmlTag": "Mvmnts",
+      "type": "IntraPositionPending11",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

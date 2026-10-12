@@ -1,0 +1,67 @@
+{
+  "identifier": "semt.044.001.01",
+  "name": "SecuritiesTransactionPenaltiesReportV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:semt.044.001.01",
+  "bodyTag": "SctiesTxPnltiesRpt",
+  "out": "semt044",
+  "isoId": "_uNylw6gwEfCXwLUUylXgrQ",
+  "definition": "The SecuritiesTransactionPenaltiesReport V01 message is sent by the Executing/Servicing Party to the instructing party to inform about the cash penalties: |- Newly computed cash penalties. For example, in case of a CSD, the information shall include the cash penalties that are either imposed or credited to all of its participants and the CSD itself; in case of a CSD participant, the information shall include the cash penalties that are either imposed or credited to the CSD participant itself.|- Modified penalties: to inform about the modifications occurred in existing cash penalties since the previous reporting.|- Aggregated amounts of cash penalties: to inform about the aggregated amounts of the cash penalties computed for the business days of a given period, for example the previous month.",
+  "blocks": [
+    {
+      "name": "ReportPagination",
+      "isoId": "_uNyl06gwEfCXwLUUylXgrQ",
+      "xmlTag": "RptPgntn",
+      "type": "Pagination1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ReportGeneralDetails",
+      "isoId": "_uNyl1agwEfCXwLUUylXgrQ",
+      "xmlTag": "RptGnlDtls",
+      "type": "PenaltyReport1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SafekeepingAccount",
+      "isoId": "_uNyl16gwEfCXwLUUylXgrQ",
+      "xmlTag": "SfkpgAcct",
+      "type": "SecuritiesAccount19",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AccountOwner",
+      "isoId": "_uNyl2agwEfCXwLUUylXgrQ",
+      "xmlTag": "AcctOwnr",
+      "type": "PartyIdentification136",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AccountServicer",
+      "isoId": "_uNyl26gwEfCXwLUUylXgrQ",
+      "xmlTag": "AcctSvcr",
+      "type": "PartyIdentification136",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Penalty",
+      "isoId": "_uNyl3agwEfCXwLUUylXgrQ",
+      "xmlTag": "Pnlty",
+      "type": "Penalty4",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_uNyl36gwEfCXwLUUylXgrQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

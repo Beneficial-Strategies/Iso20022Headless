@@ -1,0 +1,18 @@
+codeSet	isoId	text
+SettlementQueryType1Code	_j4AIYO5NEeCisYr99QEiWA_-671204936	Specifies the type of settlement instruction query to be executed.
+UnmatchedReason11Code	_ODo3wGXfEeWsrOWU209RUg	Specifies the reason the transaction, transfer or settlement instruction is unmatched.
+PendingProcessingReason5Code	5c3971c2-65c3-4358-81f5-c57788b09352	Specifies the reason the transaction/instruction is pending or failing settlement. Settlement on the instructed settlement date is still possible, status is pending. Settlement on the instructed settlement date is no longer possible, status is failing.
+GeneratedReason3Code	_OAFTICRjEeOCueHDQ36sww	Specifies the reason why the transaction was generated.
+TransactionActivity1Code	_YrP24Np-Ed-ak6NoX_4Aeg_166271008	Specifies the type of activity to which this transaction relates.
+SecuritiesTransactionType27Code	_qkAOMddqEeispNOuywCdbA	Specifies underlying information regarding the type of settlement transaction.
+CorporateActionEventType28Code	_kmQwwZSfEeeh5JjedkaA_g	Specifies the corporate action event type.
+SettlementTransactionCondition12Code	_2qssKQllEeuQ1MenzX1l-g	Specifies the conditions under which the order/trade is to be settled.
+BlockTrade1Code	_begotNp-Ed-ak6NoX_4Aeg_450632861	Specifies whether the instruction is the parent or a children of a block trade.
+DeliveryReturn1Code	_azTIg9p-Ed-ak6NoX_4Aeg_-1245884336	Specifies the type of delivery return.
+RepurchaseType10Code	_4b9vEI-UEeaVK-2bgpxeYw	Specifies the type of repurchase transaction.
+OwnershipLegalRestrictions1Code	_ZxJH9Np-Ed-ak6NoX_4Aeg_1692772034	Specifies the regulatory restrictions applicable to a financial instrument.
+SettlingCapacity2Code	_4R0NYCW2EeOslcz0TJwprQ	Specifies the role of the party in the settlement of the transaction.
+SettlementSystemMethod1Code	_ZMoFqdp-Ed-ak6NoX_4Aeg_-1301881011	Specifies whether the settlement instruction is to be settled through the default or the alternate settlement system.
+TaxLiability1Code	_YiBCYdp-Ed-ak6NoX_4Aeg_230817252	Specifies the tax role capacity of the instructing party.
+AutoBorrowing1Code	_bjlV9dp-Ed-ak6NoX_4Aeg_-1856844468	Specifies the condition under which automatic borrowing is allowed.
+DateType4Code	_ayZwpNp-Ed-ak6NoX_4Aeg_-1040840411	Specifies a type of date.

@@ -1,0 +1,59 @@
+{
+  "identifier": "semt.014.001.09",
+  "name": "IntraPositionMovementStatusAdviceV09",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:semt.014.001.09",
+  "bodyTag": "IntraPosMvmntStsAdvc",
+  "out": "semt014",
+  "isoId": "226879b2-0028-4b62-8394-d2e515de0ef7",
+  "definition": "Scope|An account servicer sends a IntraPositionMovementStatusAdvice to an account owner to advise the status of an intra-position movement instruction previously sent by the account owner.|The account servicer/owner relationship may be:|- a central securities depository or another settlement market infrastructure acting on behalf of their participants|- an agent (sub-custodian) acting on behalf of their global custodian customer, or|- a custodian acting on behalf of an investment management institution or a broker/dealer.||Usage|The message may also be used to:|- re-send a message previously sent,|- provide a third party with a copy of a message for information,|- re-send to a third party a copy of a message for information using the relevant elements in the Business Application Header.",
+  "blocks": [
+    {
+      "name": "TransactionIdentification",
+      "isoId": "17d25c63-c5fd-464c-8499-a55b1d70d9dd",
+      "xmlTag": "TxId",
+      "type": "TransactionIdentifications29",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Linkage",
+      "isoId": "45def7db-7473-401d-9d71-7f5d12ee83ad",
+      "xmlTag": "Lkg",
+      "type": "Linkages75",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ProcessingStatus",
+      "isoId": "51fc5ff6-cbc5-489e-a1fd-f1fdfae192f3",
+      "xmlTag": "PrcgSts",
+      "type": "IntraPositionProcessingStatus11Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SettlementStatus",
+      "isoId": "_gFKhY6N3EfCW17awTQ5T6A",
+      "xmlTag": "SttlmSts",
+      "type": "SettlementStatus34Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "TransactionDetails",
+      "isoId": "b5bb5d96-deca-450c-93e9-3214d9524016",
+      "xmlTag": "TxDtls",
+      "type": "IntraPositionDetails60",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "085d3ea6-861b-4298-a9e7-42dbda41e6d0",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

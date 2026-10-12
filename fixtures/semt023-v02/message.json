@@ -1,0 +1,51 @@
+{
+  "identifier": "semt.023.001.02",
+  "name": "SecuritiesEndOfProcessReportV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:semt.023.001.02",
+  "bodyTag": "SctiesEndOfPrcRpt",
+  "out": "semt023",
+  "isoId": "_j5E4gQNmEe2P7e2qGFFOGg",
+  "definition": "Scope|Sent by an executing party or an instructing party to the custodian or an affirming party to notify that all the necessary SecuritiesTradeConfirmation message or any other notification of the process have been sent.|It may also be sent through Central Matching Utility (CMU).|The instructing party is typically the investment manager or an intermediary system/vendor communicating on behalf of the investment manager.|The executing party is typically the broker/dealer or an intermediary system/vendor communicating on behalf of the broker/dealer.|The custodian or an affirming party is typically the custodian, trustee, financial institution, intermediary system/vendor communicating on behalf of them, or their agent.|The ISO 20022 Business Application Header must be used|Usage|Initiator: Executing Party, CMU or Instructing Party|Respondent: Custodian or an affirming party does not need to respond.",
+  "blocks": [
+    {
+      "name": "Pagination",
+      "isoId": "_j5E4hwNmEe2P7e2qGFFOGg",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "ReportGeneralDetails",
+      "isoId": "_j5E4iQNmEe2P7e2qGFFOGg",
+      "xmlTag": "RptGnlDtls",
+      "type": "Report6",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ConfirmationParties",
+      "isoId": "_j5E4iwNmEe2P7e2qGFFOGg",
+      "xmlTag": "ConfPties",
+      "type": "ConfirmationParties7",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "Investor",
+      "isoId": "_j5E4jQNmEe2P7e2qGFFOGg",
+      "xmlTag": "Invstr",
+      "type": "PartyIdentificationAndAccount220",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_j5E4jwNmEe2P7e2qGFFOGg",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

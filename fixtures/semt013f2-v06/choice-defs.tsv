@@ -1,0 +1,15 @@
+choice	memberId	memberName	text
+ProcessingPosition10Choice	_chT0r5KQEeWHWpTQn1FFVg	Code	Processing position expressed as an ISO 20022 code.
+ProcessingPosition10Choice	_chT0t5KQEeWHWpTQn1FFVg	Proprietary	Processing position expressed as a proprietary code.
+DocumentNumber6Choice	_celQ1ZKQEeWHWpTQn1FFVg	ShortNumber	Message type number of the document referenced.
+DocumentNumber6Choice	_celQ3ZKQEeWHWpTQn1FFVg	LongNumber	MX Message identifier of the referenced document.
+DocumentNumber6Choice	_celQ5ZKQEeWHWpTQn1FFVg	ProprietaryNumber	Proprietary document identification.
+References50Choice	_5Pat35NLEeWGlc8L7oPDIg	SecuritiesSettlementTransactionIdentification	Unambiguous identification of a securities settlement transaction as known by the account owner (or instructing party acting on its behalf).
+References50Choice	_5Pat55NLEeWGlc8L7oPDIg	IntraPositionMovementIdentification	Unambiguous identification of the intra-position movement transaction as known by the account owner (or instructing party acting on its behalf).
+References50Choice	_5Pat75NLEeWGlc8L7oPDIg	IntraBalanceMovementIdentification	Unambiguous identification of the intra balance movement transaction as known by the account owner.
+References50Choice	_5Pat8ZNLEeWGlc8L7oPDIg	AccountServicerTransactionIdentification	Unambiguous identification of the transaction as known by the account servicer.
+References50Choice	_5Pat-ZNLEeWGlc8L7oPDIg	MarketInfrastructureTransactionIdentification	Identification of a transaction assigned by a market infrastructure other than a central securities depository, for example, Target2-Securities.
+References50Choice	_5Pat-5NLEeWGlc8L7oPDIg	PoolIdentification	Collective reference identifying a set of messages.
+References50Choice	_5PauA5NLEeWGlc8L7oPDIg	OtherTransactionIdentification	Identification of a transaction that cannot be identified using a standard reference element present in the message.
+PriorityNumeric5Choice	_5Pg0WpNLEeWGlc8L7oPDIg	Numeric	Specifies the execution priority of the instruction with a number between 0001 and 9999.
+PriorityNumeric5Choice	_5Pg0YpNLEeWGlc8L7oPDIg	Proprietary	Specifies the execution priority of the instruction with a proprietary scheme.

@@ -1,0 +1,92 @@
+codeSet	code	enumName	isoId	text
+AllegementStatus1Code	CANC	Cancelled	_bopcIdp-Ed-ak6NoX_4Aeg_611999120	Allegement has been cancelled since the previous delta statement. The allegement was cancelled because of a mistake by the sender or because the alleging party cancelled its instruction.
+AllegementStatus1Code	REMO	Removed	_bopcItp-Ed-ak6NoX_4Aeg_611999162	Allegement has been removed since the previous delta statement. The allegement was removed because the alleged party sent its instruction.
+MarketType2Code	PRIM	PrimaryMarket	_aUdQYtp-Ed-ak6NoX_4Aeg_-922054296	The place is a primary market.
+MarketType2Code	SECM	SecondaryMarket	_aUdQY9p-Ed-ak6NoX_4Aeg_-922054280	The place is a secondary market.
+MarketType2Code	OTCO	OverTheCounter	_aUdQZNp-Ed-ak6NoX_4Aeg_-922054262	The place is over the counter.
+MarketType2Code	VARI	Various	_aUdQZdp-Ed-ak6NoX_4Aeg_-922054261	Various places.
+MarketType2Code	EXCH	StockExchange	_aUdQZtp-Ed-ak6NoX_4Aeg_127744806	The place is a stock exchange.
+PriceValueType12Code	DISC	Discount	_HwDYgQydEeuG8M5giQ2e0w	Price expressed as a number of percentage points below par, for example, a discount price of 2.0% equals a price of 98 when par is 100.
+PriceValueType12Code	PARV	Par	_H7XQoQydEeuG8M5giQ2e0w	Price is the face amount.
+PriceValueType12Code	PREM	Premium	_I1Yo4QydEeuG8M5giQ2e0w	Price expressed as a number of percentage points above par, for example, a premium price of 2.0% equals a price of 102 when par is 100.
+PriceValueType12Code	NEGA	NegativeActualAmount	_JUe_sQydEeuG8M5giQ2e0w	Price must be interpreted as a negative amount of currency per unit or per share.
+TradeTransactionCondition4Code	CBNS	CumBonus	_YpBCQNp-Ed-ak6NoX_4Aeg_-166151120	Indicates whether the trade is executed cum bonus.
+TradeTransactionCondition4Code	XBNS	ExBonus	_YpBCQdp-Ed-ak6NoX_4Aeg_-1227503079	Indicates whether the trade is executed ex bonus.
+TradeTransactionCondition4Code	CCPN	CumCoupon	_YpBCQtp-Ed-ak6NoX_4Aeg_-1049384407	Indicates whether the trade is executed cum coupon.
+TradeTransactionCondition4Code	XCPN	ExCoupon	_YpBCQ9p-Ed-ak6NoX_4Aeg_-1341342145	Indicates whether the trade is executed ex coupon.
+TradeTransactionCondition4Code	CDIV	CumDividend	_YpBCRNp-Ed-ak6NoX_4Aeg_-1163223473	Indicates whether the trade is executed cum dividend.
+TradeTransactionCondition4Code	XDIV	ExDividend	_YpBCRdp-Ed-ak6NoX_4Aeg_2070391864	Indicates whether the trade is executed ex dividend.
+TradeTransactionCondition4Code	CRTS	CumRights	_YpBCRtp-Ed-ak6NoX_4Aeg_-2046456760	Indicates whether the trade is executed cum rights.
+TradeTransactionCondition4Code	XRTS	ExRights	_YpBCR9p-Ed-ak6NoX_4Aeg_1956552798	Indicates whether the trade is executed ex rights.
+TradeTransactionCondition4Code	CWAR	CumWarrant	_YpBCSNp-Ed-ak6NoX_4Aeg_2134671470	Indicates whether the trade is executed cum warrant.
+TradeTransactionCondition4Code	XWAR	ExWarrant	_YpBCSdp-Ed-ak6NoX_4Aeg_1073319511	Indicates whether the trade is executed ex warrant.
+TradeTransactionCondition4Code	SPCU	SpecialCumDividend	_YpKzQNp-Ed-ak6NoX_4Aeg_1251438183	Indicates whether the trade is executed with a special cum |dividend, that is, buying after the ex date and getting the dividend.
+TradeTransactionCondition4Code	SPEX	SpecialExDividend	_YpKzQdp-Ed-ak6NoX_4Aeg_959480445	Indicates whether the trade is executed with a special ex |dividend, that is, selling before the ex date without the coupon.
+TradeTransactionCondition4Code	GTDL	GuaranteedDelivery	_YpKzQtp-Ed-ak6NoX_4Aeg_-920825195	Indicates whether the delivery of the financial instrument on settlement date |is guaranteed.
+TradeTransactionCondition4Code	BCRO	ResultOption	_YpKzQ9p-Ed-ak6NoX_4Aeg_1444277001	Result of option when set. (UK specific).
+TradeTransactionCondition4Code	BCRP	ResultRepo	_YpKzRNp-Ed-ak6NoX_4Aeg_382925042	Result of repo when set (UK specific).
+TradeTransactionCondition4Code	BCFD	DeliveryForm	_YpKzRdp-Ed-ak6NoX_4Aeg_269085976	Form of delivery, not for foreign registration when unset (UK specific).
+TradeTransactionCondition4Code	BCBL	BoardLot	_YpKzRtp-Ed-ak6NoX_4Aeg_447204648	Board lots, not set for odd lots (UK specific).
+TradeTransactionCondition4Code	BCBN	BadName	_YpKzR9p-Ed-ak6NoX_4Aeg_-614147311	Bad names, not set for good names (UK specific).
+TradeTransactionCondition4Code	MAPR	MarketPrice	_YpKzSNp-Ed-ak6NoX_4Aeg_-436028639	Trade was executed at market price.
+TradeTransactionCondition4Code	NEGO	NegotiatedTrade	_YpKzSdp-Ed-ak6NoX_4Aeg_-727986377	Trade for which the price is not the one quoted but an improved one, that is, the negotiated price.
+TradeTransactionCondition4Code	NMPR	NonMarketPrice	_YpT9MNp-Ed-ak6NoX_4Aeg_-549867705	Trade was executed outside of normal market conditions, for example, in the case of an iceberg order.
+TradeTransactionCondition4Code	BCPD	DeliverCountryIncorporation	_YpT9Mdp-Ed-ak6NoX_4Aeg_-427588864	Place of delivery, in country of incorporation when unset (UK specific).
+DateType5Code	OPEN	Open	_ayjhoNp-Ed-ak6NoX_4Aeg_957934914	Open-dated, which indicates that the date has not been established.
+RateType1Code	FIXE	Fixed	_ZZJetdp-Ed-ak6NoX_4Aeg_570159113	Rate is fixed.
+RateType1Code	FORF	Forfeit	_ZZJettp-Ed-ak6NoX_4Aeg_570159130	No specific repurchase rate applies to the transaction Repo, only a forfeit.
+RateType1Code	VARI	Variable	_ZZJet9p-Ed-ak6NoX_4Aeg_570159131	Rate is variable.
+LegalFramework1Code	FRAN	PensionLivree	_ad115Np-Ed-ak6NoX_4Aeg_-1247950171	Relates to the French legal framework for repos, that is, relates to a "Pension Livrée".
+SecuritiesTransactionType24Code	AUTO	AutoCollateralisation	_kjxwcdEwEeiO-eodGv5iKQ	Relates to an auto-collateralisation movement.
+SecuritiesTransactionType24Code	BYIY	BuyIn	_mprF8dEwEeiO-eodGv5iKQ	Relates to a buy-in by the market following a delivery transaction failure.
+SecuritiesTransactionType24Code	BSBK	BuySellBack	_yb9BMdEwEeiO-eodGv5iKQ	Relates to a buy sell back transaction.
+SecuritiesTransactionType24Code	CNCB	CentralBankCollateralOperation	_y7WS8dEwEeiO-eodGv5iKQ	Relates to a collateral delivery/receipt to a national central bank for central bank credit operations.
+SecuritiesTransactionType24Code	COLI	CollateralIn	_zYp6AdEwEeiO-eodGv5iKQ	Relates to a collateral transaction, from the point of view of the collateral taker or its agent.
+SecuritiesTransactionType24Code	COLO	CollateralOut	_zgsbsdEwEeiO-eodGv5iKQ	Relates to a collateral transaction, from the point of view of the collateral giver or its agent.
+SecuritiesTransactionType24Code	CORP	CorporateAction	_0ArjUdEwEeiO-eodGv5iKQ	Relates to a corporate action.
+SecuritiesTransactionType24Code	CONV	DepositoryReceiptConversion	_0bJ40dEwEeiO-eodGv5iKQ	Relates to a depository receipt conversion.
+SecuritiesTransactionType24Code	RELE	DepositoryReceiptReleaseCancellation	_0wugMdEwEeiO-eodGv5iKQ	Relates to a release (into/from local) of depository receipt operation.
+SecuritiesTransactionType24Code	ETFT	ExchangeTradedFunds	_1m4sIdEwEeiO-eodGv5iKQ	Relates to an ETF creation or redemption.
+SecuritiesTransactionType24Code	OWNE	ExternalAccountTransfer	_2CHPkdEwEeiO-eodGv5iKQ	Relates to an account transfer involving more than one instructing party (message sender) and/or account servicer (messages receiver).
+SecuritiesTransactionType24Code	OWNI	InternalAccountTransfer	_2uJPIdEwEeiO-eodGv5iKQ	Relates to an account transfer involving one instructing party (message sender) at one account servicer (messages receiver).
+SecuritiesTransactionType24Code	ISSU	Issuance	_3Lc2MdEwEeiO-eodGv5iKQ	Relates to the issuance of a security such as an equity or a depositary receipt.
+SecuritiesTransactionType24Code	MKDW	MarkDown	__jxzEdEwEeiO-eodGv5iKQ	Relates to the decrease of positions held by an International Central Securities Depository (ICSD) at the common depository due to custody operations (repurchase, pre-release, proceeds of corporate event realigned).
+SecuritiesTransactionType24Code	CLAI	MarketClaim	__61oMdEwEeiO-eodGv5iKQ	Relates to a market claim.
+SecuritiesTransactionType24Code	MKUP	MarkUp	_AI1A4dExEeiO-eodGv5iKQ	Relates to the increase of positions held by an International Central Securities Depository (ICSD) at the common depository due to custody operations (repurchase, pre-release, proceeds of corporate event realigned).
+SecuritiesTransactionType24Code	NETT	Netting	_AkWfQdExEeiO-eodGv5iKQ	Relates to the netting of settlement instructions.
+SecuritiesTransactionType24Code	NSYN	NonSyndicated	_BPV9AdExEeiO-eodGv5iKQ	Relates to the issue of medium and short term paper (CP, CD, MTN, notes) under a program and without syndication arrangement.
+SecuritiesTransactionType24Code	PAIR	PairOff	_BoCw4dExEeiO-eodGv5iKQ	Relates to a pair-off: the transaction is paired off and netted against one or more previous transactions.
+SecuritiesTransactionType24Code	PLAC	Placement	_CBekkdExEeiO-eodGv5iKQ	Relates to the placement/new issue of a financial instrument.
+SecuritiesTransactionType24Code	PORT	PortfolioMove	_CWnHEdExEeiO-eodGv5iKQ	Relates to a portfolio move from one investment manager to another and/or from an account servicer to another. It is generally charged differently than another account transfer, hence the need to identify this type of transfer as such.
+SecuritiesTransactionType24Code	REAL	Realignment	_DBwV0dExEeiO-eodGv5iKQ	Relates to a realignment of positions.
+SecuritiesTransactionType24Code	REDM	Redemption	_DXeHIdExEeiO-eodGv5iKQ	Relates to a redemption of funds (funds industry only).
+SecuritiesTransactionType24Code	REPU	Repo	_DzcRcdExEeiO-eodGv5iKQ	Relates to a repurchase agreement transaction.
+SecuritiesTransactionType24Code	RVPO	ReverseRepurchaseAgreement	_Eaki4dExEeiO-eodGv5iKQ	Relates to a reverse repurchase agreement transaction.
+SecuritiesTransactionType24Code	SECB	SecuritiesBorrowing	_FDe9AdExEeiO-eodGv5iKQ	Relates to a securities borrowing operation.
+SecuritiesTransactionType24Code	SECL	SecuritiesLending	_FW0vwdExEeiO-eodGv5iKQ	Relates to a securities lending operation.
+SecuritiesTransactionType24Code	SBBK	SellBuyBack	_Lqvk4dExEeiO-eodGv5iKQ	Relates to a sell buy back transaction.
+SecuritiesTransactionType24Code	SUBS	Subscription	_MUiv0dExEeiO-eodGv5iKQ	Relates to a subscription to funds (funds industry only).
+SecuritiesTransactionType24Code	SWIF	SwitchFrom	_NDti8dExEeiO-eodGv5iKQ	Transaction is a change of an investment from one sub-fund to another sub-fund (redemption-leg).
+SecuritiesTransactionType24Code	SWIT	SwitchTo	_NPwa4dExEeiO-eodGv5iKQ	Transaction is a change of an investment from one sub-fund to another sub-fund (subscription-leg).
+SecuritiesTransactionType24Code	SYND	SyndicateUnderwriters	_Nm0QAdExEeiO-eodGv5iKQ	Relates to the issue of financial instruments through a syndicate of underwriters and a lead manager.
+SecuritiesTransactionType24Code	TRAD	Trade	_N7zBgdExEeiO-eodGv5iKQ	Relates to the settlement of a trade.
+SecuritiesTransactionType24Code	TRPO	TripartyRepo	_Ox8mYdExEeiO-eodGv5iKQ	Relates to a triparty repurchase agreement.
+SecuritiesTransactionType24Code	TRVO	TripartyReverseRepo	_POEhsdExEeiO-eodGv5iKQ	Relates to a triparty reverse repurchase agreement.
+SecuritiesTransactionType24Code	TURN	Turnaround	_QDoQsdExEeiO-eodGv5iKQ	Relates to a turnaround: the same security is bought and sold to settle the same day, to or from different brokers.
+SecuritiesTransactionType24Code	REDI	Withdrawal	_Qe_-EdExEeiO-eodGv5iKQ	Relates to the withdrawal of specified amounts from specified subaccounts.
+SettlementTransactionCondition4Code	CLEN	Clean	_q6UcFWtdEeCY4-KZ9JEyUQ_-1025495293	Tax-exempt financial instruments are to be settled.
+SettlementTransactionCondition4Code	DIRT	Dirty	_q6UcFmtdEeCY4-KZ9JEyUQ_-2022567646	Taxable financial instruments are to be settled.
+SettlementTransactionCondition4Code	DLWM	DeliveryWithoutMatching	_q6dmAGtdEeCY4-KZ9JEyUQ_25637779	Matching receipt instruction not required (only for concerned international or national central securities depositories).
+SettlementTransactionCondition4Code	PHYS	Physical	_q6dmAWtdEeCY4-KZ9JEyUQ_-971434574	Securities are to be physically settled.
+SettlementTransactionCondition4Code	SPDL	SpecialDelivery	_q6dmAmtdEeCY4-KZ9JEyUQ_-2110188948	Settlement transactions to be settled with special delivery.
+SettlementTransactionCondition4Code	SPST	SplitSettlement	_q6dmA2tdEeCY4-KZ9JEyUQ_-403994588	Money and financial instruments settle in different locations.
+SettlementTransactionCondition4Code	NOMC	NoAutomaticMarketClaim	_q6dmBGtdEeCY4-KZ9JEyUQ_763183726	No market claim should be automatically generated.
+CashSettlementSystem2Code	GROS	GrossSettlementSystem	_a7WRRNp-Ed-ak6NoX_4Aeg_-702652999	Settle money through gross settlement system.
+CashSettlementSystem2Code	NETS	NetSettlementSystem	_a7WRRdp-Ed-ak6NoX_4Aeg_1056453502	Settle money through net settlement system.
+MarketClientSide1Code	CLNT	ClientSide	_ZWTI0Z05Eeet_4BCDEBLdQ	Instruction is for a client side transaction.
+MarketClientSide1Code	MAKT	MarketSide	_ZbqJ8Z05Eeet_4BCDEBLdQ	Instruction is for a market side transaction.
+Registration1Code	NREG	StreetName	_Za7nZNp-Ed-ak6NoX_4Aeg_-365554140	Hold the securities in street name. If there is a standing instruction in place to register on receipt, then this standing instruction is to be ignored.
+Registration1Code	YREG	Registered	_Za7nZdp-Ed-ak6NoX_4Aeg_-165149890	Register on receipt. If there is a standing instruction in place to hold the securities in street name, then this standing instruction is to be ignored.
+RepurchaseType6Code	CADJ	Swap	_q5t_JWtdEeCY4-KZ9JEyUQ_1110886064	Relates to a Swap/Substitution.
+RepurchaseType6Code	TOPU	TopUp	_q53wIGtdEeCY4-KZ9JEyUQ_-1569933634	Relates to a repo rollover of a position extending the closing or maturity date.
+RepurchaseType6Code	WTHD	Withdrawal	_q53wIWtdEeCY4-KZ9JEyUQ_1727961309	Relates to a repo rollover of a position extending the closing or maturity date.

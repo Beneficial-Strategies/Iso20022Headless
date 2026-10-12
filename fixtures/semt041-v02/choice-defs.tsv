@@ -1,0 +1,20 @@
+choice	memberId	memberName	text
+DatePeriod1Choice	_kaGgVJ79EeOieb-y7x0pFg	Date	Time span defined by a specific date.
+DatePeriod1Choice	_kaGgVZ79EeOieb-y7x0pFg	DateMonth	Time span defined by a month and a year.
+DatePeriod1Choice	_-m9OxJ79EeOieb-y7x0pFg	FromDateToDate	Time span defined by a start date and an end date.
+UpdateType4Choice	_m_7dc_NBEeCuA5Tr22BnwA_238148282	Code	Update type expressed in coded form.
+UpdateType4Choice	_m_7ddPNBEeCuA5Tr22BnwA_778307461	Proprietary	Update type expressed as a proprietary code.
+OtherIdentification4Choice	_TF0IAUHLEeWeNKJ6kJGSFw	Code	Type of identification expressed as a code.
+OtherIdentification4Choice	_TF0IA0HLEeWeNKJ6kJGSFw	Proprietary	Type of identification expressed as a proprietary code.
+BeneficiaryCertificationType9Choice	_UQaTEfiyEeSjz7lzcp5lWQ	Code	Beneficial owner certification type expressed in a coded form.
+BeneficiaryCertificationType9Choice	_UQaTGfiyEeSjz7lzcp5lWQ	Proprietary	Beneficial owner certification type expressed in a proprietary form.
+FinancialInstrumentAggregateBalance1Choice	_nlciMKCCEeOEyO7fCl8lLA	HoldingsIndicator	Indicates whether holdings are present.
+FinancialInstrumentAggregateBalance1Choice	_oI2KMaCCEeOEyO7fCl8lLA	HoldingBalance	Balance of holdings.
+SubBalanceType9Choice	_YekH-IjvEeONZKAAW4pOaQ	Code	Reason a financial instrument is not available or additional information about the financial instrument for which the balance is given, for example, unregistered, registered in nominee name.
+SubBalanceType9Choice	_YekH_IjvEeONZKAAW4pOaQ	Proprietary	Reason a financial instrument is not available or additional information about the financial instrument for which the balance is given, for example, unregistered, registered in nominee name.
+SubBalanceQuantity5Choice	_1BQsY4jvEeONZKAAW4pOaQ	Quantity	Quantity of financial instrument in the sub-balance.
+SubBalanceQuantity5Choice	_1BQsa4jvEeONZKAAW4pOaQ	Proprietary	Quantity of financial instrument in the sub-balance expressed in a proprietary format.
+PriceRateOrAmountChoice	_QajzENp-Ed-ak6NoX_4Aeg_-1700140458	Rate	Price expressed as a rate, that is percentage.
+PriceRateOrAmountChoice	_QajzEdp-Ed-ak6NoX_4Aeg_-1688135558	Amount	Price expressed as a currency and value.
+Role5Choice	_WRnD8Z-zEeO1d8sv7xazyA	Code	Role expressed in as a code.
+Role5Choice	_WRnD85-zEeO1d8sv7xazyA	Proprietary	Role expressed as a proprietary code.

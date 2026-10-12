@@ -1,0 +1,17 @@
+name	isoId	xsiType	pattern	minLength	maxLength	totalDigits	fractionDigits	minInclusive	maxInclusive	other
+RestrictedFINXMax16Text	_XZJV2Np-Ed-ak6NoX_4Aeg_-1555155859	Text	([0-9a-zA-Z\-\?:\(\)\.,'\+ ]([0-9a-zA-Z\-\?:\(\)\.,'\+ ]*(/[0-9a-zA-Z\-\?:\(\)\.,'\+ ])?)*)	1	16					
+RestrictedFINXMax34Text	_XZTG1Np-Ed-ak6NoX_4Aeg_-2016982080	Text	([0-9a-zA-Z\-\?:\(\)\.,'\+ ]([0-9a-zA-Z\-\?:\(\)\.,'\+ ]*(/[0-9a-zA-Z\-\?:\(\)\.,'\+ ])?)*)	1	34					
+RestrictedFINXMax35Text	_XZTG1tp-Ed-ak6NoX_4Aeg_552913938	Text	[0-9a-zA-Z/\-\?:\(\)\.,'\+ ]{1,35}	1	35					
+RestrictedFINXMax140Text	_XZJV19p-Ed-ak6NoX_4Aeg_-1471472211	Text	[0-9a-zA-Z/\-\?:\(\)\.\n\r,'\+ ]{1,140}	1	140					
+RestrictedFINXMax70Text	_XZTG19p-Ed-ak6NoX_4Aeg_621110266	Text	[0-9a-zA-Z/\-\?:\(\)\.\n\r,'\+ ]{1,70}	1	70					
+RestrictedFINXMax30Text	_XZTG0tp-Ed-ak6NoX_4Aeg_-485490601	Text	([0-9a-zA-Z\-\?:\(\)\.,'\+ ]([0-9a-zA-Z\-\?:\(\)\.,'\+ ]*(/[0-9a-zA-Z\-\?:\(\)\.,'\+ ])?)*)	1	30					
+RestrictedFINXMax31Text	_XZTG09p-Ed-ak6NoX_4Aeg_-1903970910	Text	[0-9a-zA-Z/\-\?:\(\)\.,'\+ ]{1,31}	1	31					
+RestrictedFINExact2Text	_WOybhdp-Ed-ak6NoX_4Aeg_1837848735	Text	XX|TS	2	2					
+CFIOct2015Identifier	_7njI4YIXEeWE0I8iABxEQA	IdentifierSet	[A-Z]{6,6}							identificationScheme=ANNA; CFIIdentifier
+RestrictedFINMax30Text	_WN5Dpdp-Ed-ak6NoX_4Aeg_1878653686	Text	([^/]+/)+([^/]+)|([^/]*)	1	30					
+RestrictedFINMax8Text	_WOpRlNp-Ed-ak6NoX_4Aeg_49586571	Text	([^/]+/)+([^/]+)|([^/]*)	1	8					
+RestrictedFINDecimalNumber	_WN5Dqdp-Ed-ak6NoX_4Aeg_-1355299695	Quantity				14	14			
+RestrictedFINXMax350Text	_XZTG1dp-Ed-ak6NoX_4Aeg_-2121830698	Text	[0-9a-zA-Z/\-\?:\(\)\.\n\r,'\+ ]{1,350}	1	350					
+RestrictedFINImpliedCurrencyAndAmount	_XZJV1Np-Ed-ak6NoX_4Aeg_681057429	Amount				14	5	0		
+RestrictedFINActiveOrHistoricCurrencyAnd13DecimalAmount	_WOMlp9p-Ed-ak6NoX_4Aeg_-1678737059	Amount				14	13	0		currencyIdentifierSet=ActiveOrHistoricCurrencyCode (_bqIp6tp-Ed-ak6NoX_4Aeg_1823330336)
+RestrictedFINActiveOrHistoricCurrencyAndAmount	_XY_k3tp-Ed-ak6NoX_4Aeg_1054967173	Amount				14	5	0		currencyIdentifierSet=ActiveOrHistoricCurrencyCode (_bqIp6tp-Ed-ak6NoX_4Aeg_1823330336)

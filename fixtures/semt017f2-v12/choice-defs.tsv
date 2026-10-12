@@ -1,0 +1,18 @@
+choice	memberId	memberName	text
+StatementBasis12Choice	_8bgPeZNLEeWGlc8L7oPDIg	Code	Statement basis expressed as an ISO 20022 code.
+StatementBasis12Choice	_8bgPgZNLEeWGlc8L7oPDIg	Proprietary	Statement basis expressed as a proprietary code.
+SecurityClassificationType3Choice	_SimIQf35EeimOuZbLgw0bg	CFI	Classification type of the financial instrument, as per the ISO 10962 Classification of Financial Instrument (CFI) codification.
+SecurityClassificationType3Choice	_SimIQ_35EeimOuZbLgw0bg	AlternateClassification	Other type of classification of the financial instrument.
+TypeOfPrice49Choice	_sanRS_fZEeiNZp_PtLohLw	Code	Type of price expressed as an ISO 20022 code.
+TypeOfPrice49Choice	_sanRU_fZEeiNZp_PtLohLw	Proprietary	Type of price expressed as a proprietary code.
+OpeningBalance7Choice	_gJxZ9Ti8Eeydid5dcNPKvg	First	Opening balance for the statement period. It always equals the closing balance of the previous statement.
+OpeningBalance7Choice	_gJxZ_Ti8Eeydid5dcNPKvg	Intermediary	Opening balance of this page only. This balance must be the intermediary closing balance of the previous page of the same statement.
+ClosingBalance7Choice	_gJxajTi8Eeydid5dcNPKvg	Final	Sum of the opening balance and all entries booked to the account at the close of the statement period.
+ClosingBalance7Choice	_gJxalTi8Eeydid5dcNPKvg	Intermediary	Closing balance of this page only. This balance must be the intermediary opening balance of the next page of the same statement.
+PartyIdentification152Choice	_3YMtY_1REeixXcHVEYIW2g	AnyBIC	Identification of the party expressed as a BIC.
+PartyIdentification152Choice	_3YMtZf1REeixXcHVEYIW2g	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to the party using a proprietary identification scheme.
+PartyIdentification152Choice	_3YMtZ_1REeixXcHVEYIW2g	NameAndAddress	Name and address of the party.
+SettlementOrCorporateActionEvent33Choice	_s9qhPgVVEeqjd8n6wD9JVw	SecuritiesTransactionType	Identifies the type of securities transaction.
+SettlementOrCorporateActionEvent33Choice	_s9qhRgVVEeqjd8n6wD9JVw	CorporateActionEventType	Specifies the type of corporate event.
+SecuritiesTransactionType58Choice	_sanUCffZEeiNZp_PtLohLw	Code	Securities transaction type expressed as an ISO 20022 code.
+SecuritiesTransactionType58Choice	_sanUEffZEeiNZp_PtLohLw	Proprietary	Securities transaction type expressed as a proprietary code.

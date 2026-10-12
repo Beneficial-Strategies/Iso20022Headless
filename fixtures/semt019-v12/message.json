@@ -1,0 +1,59 @@
+{
+  "identifier": "semt.019.001.12",
+  "name": "SecuritiesSettlementTransactionAllegementReportV12",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:semt.019.001.12",
+  "bodyTag": "SctiesSttlmTxAllgmtRpt",
+  "out": "semt019",
+  "isoId": "0b6c5aa3-9112-4b8b-9574-594e0ce1c123",
+  "definition": "Scope|An account servicer sends a SecuritiesSettlementTransactionAllegementReport to an account owner to provide, at a specified time, the status and details of pending settlement allegements, for all or selected securities in a specified safekeeping account.|The account servicer/owner relationship may be:|- a central securities depository or another settlement market infrastructure acting on behalf of their participants|- an agent (sub-custodian) acting on behalf of their global custodian customer, or|- a custodian acting on behalf of an investment management institution or a broker/dealer.||Usage|The message may also be used to:|- re-send a message previously sent,|- provide a third party with a copy of a message for information,|- re-send to a third party a copy of a message for information using the relevant elements in the Business Application Header.",
+  "blocks": [
+    {
+      "name": "Pagination",
+      "isoId": "47e6c97a-f908-4948-829a-771bb96ebf16",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "StatementGeneralDetails",
+      "isoId": "dffa6d4b-b17f-4fe2-b811-76702005f0a6",
+      "xmlTag": "StmtGnlDtls",
+      "type": "Statement63",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountOwner",
+      "isoId": "1f3aa25e-ffdb-4032-ade9-63879e91f7ae",
+      "xmlTag": "AcctOwnr",
+      "type": "PartyIdentification144",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SafekeepingAccount",
+      "isoId": "98f1d7fd-c498-4b16-b533-106f731297ac",
+      "xmlTag": "SfkpgAcct",
+      "type": "SecuritiesAccount19",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "BlockChainAddressOrWallet",
+      "isoId": "4f2cb946-318d-4abf-a062-5a33f4fc28d0",
+      "xmlTag": "BlckChainAdrOrWllt",
+      "type": "BlockChainAddressWallet3",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AllegementDetails",
+      "isoId": "cac7346a-0cce-4ea3-8d6d-e4fa5ff49022",
+      "xmlTag": "AllgmtDtls",
+      "type": "SecuritiesTradeDetails152",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

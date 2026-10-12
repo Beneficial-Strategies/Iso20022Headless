@@ -148,6 +148,8 @@ export const pagePt: PageMessages = {
   areaDesc_acmt: 'Mensagens que apoiam a gestão de atividades relacionadas com contas, como a abertura e a manutenção de uma conta.',
   areaName_head: 'Cabeçalho de aplicação comercial',
   areaDesc_head: 'Cabeçalho que contém informações comerciais relevantes antes do processamento de uma mensagem.',
+  areaName_semt: 'Gestão de valores mobiliários',
+  areaDesc_semt: 'Mensagens que apoiam os processos pós-liquidação de valores mobiliários (incluindo a informação sobre movimentos, transações e saldos de valores mobiliários), os processos necessários para proteger os direitos do beneficiário efetivo ao longo da liquidação, bem como as exceções e investigações relacionadas com transações de valores mobiliários.',
   xsdLabel: 'Validar XSD',
   xsdReady: 'Validar o texto da mensagem abaixo usando {location}',
   xsdReadyFile: 'Validar o texto da mensagem abaixo usando {file} (carregado do seu computador)',

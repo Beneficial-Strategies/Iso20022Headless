@@ -1,0 +1,9 @@
+codeSet	isoId	text
+RestrictionReference1Code	_Q1UTcNavEei60tlze8Pqbw	Specifies the restriction references to be applied to a transaction.
+AutoBorrowing2Code	_bjuf4Np-Ed-ak6NoX_4Aeg_-875280899	Specifies the condition under which automatic borrowing is allowed.
+SettlementTransactionCondition5Code	_Ku3YgeBFEd-D2OAFXdoRmA	Specifies the conditions under which the order/trade is to be settled.
+Registration2Code	_l3X10fIrEd-dOvqmSLSz5g	Specifies whether registration should occur upon receipt.
+MatchingProcess1Code	_aU58Vtp-Ed-ak6NoX_4Aeg_36425374	Specifies the action to be performed on the matching process.
+SecuritiesTransactionType5Code	_ZIwSQNp-Ed-ak6NoX_4Aeg_1800982665	Specifies underlying information regarding the type of transaction.
+DateType3Code	_ayZwotp-Ed-ak6NoX_4Aeg_-1375472823	Specifies a type of date.
+SettlementDate4Code	_ZLby1dp-Ed-ak6NoX_4Aeg_1690826366	Specifies the date of settlement, in coded form.

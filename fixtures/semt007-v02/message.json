@@ -1,0 +1,51 @@
+{
+  "identifier": "semt.007.001.02",
+  "name": "StatementOfInvestmentFundTransactionsCancellationV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:semt.007.001.02",
+  "bodyTag": "StmtOfInvstmtFndTxsCxlV02",
+  "out": "semt007",
+  "isoId": "_McvWkNFSEd-BzquC8wXy7w_476717601",
+  "definition": "Scope|An account servicer, for example, a transfer agent sends the StatementOfInvestmentFundTransactionsCancellation message to the account owner, for example, an investment manager or its authorised representative to cancel a previously sent StatementOfInvestmentFundTransactions message.|Usage|The StatementOfInvestmentFundTransactionsCancellation message is used to cancel a previously sent StatementOfInvestmentFundTransactions message. This message must contain the reference of the message to be cancelled.|This message may also contain all the details of the message to be cancelled, but this is not recommended.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "_McvWkdFSEd-BzquC8wXy7w_1370683946",
+      "xmlTag": "MsgId",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "PreviousReference",
+      "isoId": "_McvWktFSEd-BzquC8wXy7w_476717626",
+      "xmlTag": "PrvsRef",
+      "type": "AdditionalReference2",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "RelatedReference",
+      "isoId": "_McvWk9FSEd-BzquC8wXy7w_476717644",
+      "xmlTag": "RltdRef",
+      "type": "AdditionalReference2",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "MessagePagination",
+      "isoId": "_McvWlNFSEd-BzquC8wXy7w_476717722",
+      "xmlTag": "MsgPgntn",
+      "type": "Pagination",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "StatementToBeCancelled",
+      "isoId": "_McvWldFSEd-BzquC8wXy7w_476717679",
+      "xmlTag": "StmtToBeCanc",
+      "type": "StatementOfInvestmentFundTransactions2",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

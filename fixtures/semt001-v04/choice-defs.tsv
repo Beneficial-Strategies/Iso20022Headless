@@ -1,0 +1,7 @@
+choice	memberId	memberName	text
+PartyIdentification247Choice	_Hm14AzWlEe2OzdGcZrUAEQ	AnyBIC	Code allocated to a financial or non-financial institution by the ISO 9362 Registration Authority, as described in ISO 9362 "Banking - Banking telecommunication messages - Business identifier code (BIC)".
+PartyIdentification247Choice	_Hm14BTWlEe2OzdGcZrUAEQ	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to a financial institution using a proprietary identification scheme.
+PartyIdentification247Choice	_Hm14BzWlEe2OzdGcZrUAEQ	NameAndAddress	Name and address of a party.
+LinkedMessage6Choice	_2-DoMTWhEe2OzdGcZrUAEQ	PreviousReference	Linked previous reference.
+LinkedMessage6Choice	_2-DoMzWhEe2OzdGcZrUAEQ	OtherReference	Linked other reference.
+LinkedMessage6Choice	_2-DoNTWhEe2OzdGcZrUAEQ	RelatedReference	Linked related reference.

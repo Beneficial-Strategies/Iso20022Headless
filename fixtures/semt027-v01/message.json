@@ -1,0 +1,35 @@
+{
+  "identifier": "semt.027.001.01",
+  "name": "SecuritiesSettlementTransactionQueryResponseV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:semt.027.001.01",
+  "bodyTag": "SctiesSttlmTxQryRspn",
+  "out": "semt027",
+  "isoId": "_SUpXkQNNEfGuSZHb7MrJ_A",
+  "definition": "The SecuritiesSettlementResponse message is sent from a settlement infrastructure to an account owner/requestor to provide the details of the securities settlement instructions, as selected in the search criteria defined in the request.",
+  "blocks": [
+    {
+      "name": "Pagination",
+      "isoId": "_SUpXqQNNEfGuSZHb7MrJ_A",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ReportGeneralDetails",
+      "isoId": "_SUpXqwNNEfGuSZHb7MrJ_A",
+      "xmlTag": "RptGnlDtls",
+      "type": "SecuritiesReport2",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Transactions",
+      "isoId": "_SUpXrQNNEfGuSZHb7MrJ_A",
+      "xmlTag": "Txs",
+      "type": "SecuritiesSettlementTransactions6",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

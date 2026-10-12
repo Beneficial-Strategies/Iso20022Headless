@@ -120,6 +120,50 @@ const clean = (s: string | undefined): string => (s ?? '').replace(/\r\n|\r|\n/g
 const id = (n: Node): string => n.id ?? '';
 const status = (n: Node): string => n.registrationStatus ?? '';
 
+/** A set of members of which at most one (or, when each is mandatory on its own, exactly one) may be present: the repository's `xors` constraint. */
+interface ExclusiveGroup {
+  id: string;
+  name: string;
+  text: string;
+  /** Member names, in the order the component lists them. */
+  members: string[];
+  /** Exactly one must be present (each member is mandatory in the repository, and in ISO's schema they form a choice). */
+  required: boolean;
+}
+
+function exclusiveGroups(component: Node, members: Node[]): ExclusiveGroup[] {
+  const out: ExclusiveGroup[] = [];
+  for (const x of component.children ?? []) {
+    if (x.xmlElementName !== 'xors') continue;
+    const named = new Set((x.references ?? []).filter((r) => r.relation === 'impactedElements').map((r) => r.name));
+    const group = members.filter((m) => named.has(m.name ?? ''));
+    if (group.length < 2) continue;
+    out.push({ id: id(x), name: x.name ?? '', text: clean(x.definition), members: group.map((m) => m.name!), required: group.every((m) => (m.minOccurs ?? '1') !== '0') });
+  }
+  return out;
+}
+
+const XSI = 'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"';
+const operand = (op: 'Presence' | 'Absence', member: string): string => `<BooleanRule xsi:type="${op}"><leftOperand>/${member}</leftOperand></BooleanRule>`;
+
+/**
+ * The rules of one exclusive group, in the rule language of the specification: one that at least one is present when exactly one must be,
+ * and for every member but the last "if it is present, the later ones are not". All carry the repository's own text.
+ */
+function exclusiveRules(scope: string, g: ExclusiveGroup): RuleRow[] {
+  const rows: RuleRow[] = [];
+  const row = (suffix: string, expression: string): void => void rows.push({ scope, scopeId: '', id: suffix ? `${g.id}~${suffix}` : g.id, name: `${g.name}${suffix}`, text: g.text, expression });
+  if (g.required) {
+    row('', `<RuleDefinition><SimpleRule ${XSI} xsi:type="SimpleRule"><mustBe><connector>OR</connector>${g.members.map((m) => operand('Presence', m)).join('')}</mustBe></SimpleRule></RuleDefinition>`);
+  }
+  g.members.slice(0, -1).forEach((m, i) => {
+    const later = g.members.slice(i + 1);
+    const suffix = g.required ? `NotBoth${i === 0 ? '' : i + 1}` : i === 0 ? '' : String(i + 1);
+    row(suffix, `<RuleDefinition><ComplexRule ${XSI} xsi:type="ComplexRule"><mustBe><connector>AND</connector>${later.map((l) => operand('Absence', l)).join('')}</mustBe><onCondition><connector>AND</connector>${operand('Presence', m)}</onCondition></ComplexRule></RuleDefinition>`);
+  });
+  return rows;
+}
+
 export function loadResources(dir: string, areaKinds: string[] = []): Resources {
   const spec = emptySpec();
   const rules: RuleRow[] = [];
@@ -145,10 +189,14 @@ export function loadResources(dir: string, areaKinds: string[] = []): Resources 
     }
     spec.components.set(name, { name, isoId: id(e), status: status(e), checksum: '', definition: clean(e.definition) });
     const members = (e.children ?? []).filter((c) => c.xmlElementName === 'messageElement');
+    const groups = exclusiveGroups(e, members);
+    // a member of a group of which exactly one must be present is optional on its own: the group's rules say "one of them"
+    const required = new Set(groups.filter((g) => g.required).flatMap((g) => g.members));
     // MSGELEMENT: parentName memberId memberName xmlTag typeName minOccurs maxOccurs status definition
-    spec.elements.set(name, members.map((m) => [name, id(m), m.name!, m.xmlTag ?? '', typeRef(m) ?? '', m.minOccurs ?? '', m.maxOccurs ?? '', status(m), clean(m.definition)]));
+    spec.elements.set(name, members.map((m) => [name, id(m), m.name!, m.xmlTag ?? '', typeRef(m) ?? '', required.has(m.name!) ? '0' : (m.minOccurs ?? ''), m.maxOccurs ?? '', status(m), clean(m.definition)]));
     memberOrder.set(name, members.map((m) => m.xmlTag ?? ''));
     addRules(name, id(e), e);
+    for (const g of groups) rules.push(...exclusiveRules(name, g));
   }
 
   for (const e of pagesOf(dir, 'ChoiceComponent').flat()) {

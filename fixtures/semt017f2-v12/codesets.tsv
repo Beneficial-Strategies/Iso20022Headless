@@ -1,0 +1,17 @@
+codeSetName	isoId	restrictionOf	code	enumName
+StatementBasis2Code	_ZP6DKNp-Ed-ak6NoX_4Aeg_-1755152860	StatementBasisCode	SETT	Settled
+StatementBasis2Code	_ZP6DKNp-Ed-ak6NoX_4Aeg_-1755152860	StatementBasisCode	TRAD	Traded
+TypeOfPrice17Code	_k-8xkddnEeispNOuywCdbA	TypeOfPriceCode	BIDE	Bid
+TypeOfPrice17Code	_k-8xkddnEeispNOuywCdbA	TypeOfPriceCode	OFFR	Offer
+TypeOfPrice17Code	_k-8xkddnEeispNOuywCdbA	TypeOfPriceCode	NAVL	NetAssetValue
+TypeOfPrice17Code	_k-8xkddnEeispNOuywCdbA	TypeOfPriceCode	CREA	Creation
+TypeOfPrice17Code	_k-8xkddnEeispNOuywCdbA	TypeOfPriceCode	CANC	Cancellation
+TypeOfPrice17Code	_k-8xkddnEeispNOuywCdbA	TypeOfPriceCode	INTE	Interim
+TypeOfPrice17Code	_k-8xkddnEeispNOuywCdbA	TypeOfPriceCode	SWNG	Swing
+TypeOfPrice17Code	_k-8xkddnEeispNOuywCdbA	TypeOfPriceCode	MIDD	Mid
+TypeOfPrice17Code	_k-8xkddnEeispNOuywCdbA	TypeOfPriceCode	RINV	Reinvestment
+TypeOfPrice17Code	_k-8xkddnEeispNOuywCdbA	TypeOfPriceCode	SWIC	Switch
+TypeOfPrice17Code	_k-8xkddnEeispNOuywCdbA	TypeOfPriceCode	MRKT	Market
+TypeOfPrice17Code	_k-8xkddnEeispNOuywCdbA	TypeOfPriceCode	INDC	Indicative
+TypeOfPrice17Code	_k-8xkddnEeispNOuywCdbA	TypeOfPriceCode	DDVR	DailyDividendRate
+TypeOfPrice17Code	_k-8xkddnEeispNOuywCdbA	TypeOfPriceCode	ACTU	Actual

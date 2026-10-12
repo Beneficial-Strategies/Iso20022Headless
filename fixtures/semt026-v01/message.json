@@ -1,0 +1,27 @@
+{
+  "identifier": "semt.026.001.01",
+  "name": "SecuritiesSettlementTransactionQueryV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:semt.026.001.01",
+  "bodyTag": "SctiesSttlmTxQry",
+  "out": "semt026",
+  "isoId": "_uNylragwEfCXwLUUylXgrQ",
+  "definition": "The SecuritiesSettlementInstructionQuery message is sent from an account owner/requestor to a settlement infrastructure.|The message is used to query information on the securities settlement instructions, that satisfy the defined selection criteria.",
+  "blocks": [
+    {
+      "name": "QueryDefinition",
+      "isoId": "_uNylv6gwEfCXwLUUylXgrQ",
+      "xmlTag": "QryDef",
+      "type": "SettlementInstructionQueryDefinition4",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_uNylwagwEfCXwLUUylXgrQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

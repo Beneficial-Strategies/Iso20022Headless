@@ -118,3 +118,36 @@ describe('writing fixtures from resources', () => {
     expect(runResources({ pages: pagesDir, messages: list, fixtures: out, mode: 'write' })).toBe(1);
   });
 });
+
+describe('exclusive groups (the repository\'s xors constraints)', () => {
+  const member = (id: string, name: string, tag: string, min: string) => ({ id, name, xmlElementName: 'messageElement', xmlTag: tag, minOccurs: min, references: [{ relation: 'type', id: 'T', name: 'Max35Text' }] });
+  const xors = (id: string, name: string, text: string, names: string[]) => ({ id, name, xmlElementName: 'xors', definition: text, references: names.map((n) => ({ relation: 'impactedElements', id: n, name: n })) });
+  const dir = mkdtempSync(join(tmpdir(), 'xors-'));
+  mkdirSync(join(dir, 'MessageComponent'), { recursive: true });
+  const children = [
+    { id: 'C1', name: 'Priced1', xmlElementName: 'topLevelDictionaryEntry', registrationStatus: 'Registered', children: [member('a', 'Type', 'Tp', '1'), member('b', 'ExtendedType', 'Xtnd', '1'), member('c', 'Other', 'Oth', '1'), xors('X1', 'TypeOrExtendedTypeRule', 'Either Type or ExtendedType must be present, but not both.', ['Type', 'ExtendedType'])] },
+    { id: 'C2', name: 'Owner1', xmlElementName: 'topLevelDictionaryEntry', registrationStatus: 'Registered', children: [member('d', 'Primary', 'Prim', '0'), member('e', 'Trustee', 'Trst', '0'), member('f', 'Nominee', 'Nom', '0'), xors('X2', 'OwnerRule', 'Only one owner may be present.', ['Primary', 'Trustee', 'Nominee'])] },
+  ];
+  writeFileSync(join(dir, 'MessageComponent', '001.json'), JSON.stringify({ data: { children }, page: { total: 2, returned: 2, complete: true } }));
+  const res = loadResources(dir);
+
+  it('makes the members of a group of which one must be present optional on their own, and leaves the others alone', () => {
+    expect(res.spec.elements.get('Priced1')!.map((e) => [e[2], e[5]])).toEqual([['Type', '0'], ['ExtendedType', '0'], ['Other', '1']]);
+    expect(res.spec.elements.get('Owner1')!.map((e) => [e[2], e[5]])).toEqual([['Primary', '0'], ['Trustee', '0'], ['Nominee', '0']]);
+  });
+
+  it('says in rules that one must be present, and that not more than one may be', () => {
+    const rules = res.rules.filter((r) => r.scope === 'Priced1');
+    expect(rules.map((r) => r.name)).toEqual(['TypeOrExtendedTypeRule', 'TypeOrExtendedTypeRuleNotBoth']);
+    expect(rules[0]!.expression).toContain('<connector>OR</connector><BooleanRule xsi:type="Presence"><leftOperand>/Type</leftOperand></BooleanRule><BooleanRule xsi:type="Presence"><leftOperand>/ExtendedType</leftOperand></BooleanRule>');
+    expect(rules[1]!.expression).toContain('<mustBe><connector>AND</connector><BooleanRule xsi:type="Absence"><leftOperand>/ExtendedType</leftOperand></BooleanRule></mustBe><onCondition><connector>AND</connector><BooleanRule xsi:type="Presence"><leftOperand>/Type</leftOperand></BooleanRule></onCondition>');
+    expect(new Set(rules.map((r) => r.text))).toEqual(new Set(['Either Type or ExtendedType must be present, but not both.']));
+  });
+
+  it('a group of optional members gets only the "not more than one" rules, one per member but the last, the first under the repository\'s own name', () => {
+    const rules = res.rules.filter((r) => r.scope === 'Owner1');
+    expect(rules.map((r) => r.name)).toEqual(['OwnerRule', 'OwnerRule2']);
+    expect(rules[0]!.expression).toContain('<leftOperand>/Trustee</leftOperand></BooleanRule><BooleanRule xsi:type="Absence"><leftOperand>/Nominee</leftOperand>');
+    expect(rules[1]!.expression).toContain('<mustBe><connector>AND</connector><BooleanRule xsi:type="Absence"><leftOperand>/Nominee</leftOperand></BooleanRule></mustBe><onCondition><connector>AND</connector><BooleanRule xsi:type="Presence"><leftOperand>/Trustee</leftOperand>');
+  });
+});

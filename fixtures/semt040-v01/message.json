@@ -1,0 +1,67 @@
+{
+  "identifier": "semt.040.001.01",
+  "name": "SecuritiesAccountPositionResponseV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:semt.040.001.01",
+  "bodyTag": "SctiesAcctPosRspn",
+  "out": "semt040",
+  "isoId": "_Oign8QJ3EfGAP_FOfstLIw",
+  "definition": "SCOPE|The SecuritiesAccountPositionResponse message is sent by a market infrastructure to an instructing party to report the securities positions for the given date period as requested in the query, for all securities across all accounts satisfying the query criteria.||USAGE|The message SecuritiesAccountPositionResponse will provide CSDs and T2S participants with a report corresponding to the SecuritiesAccountPositionQuery returning balances held in the list of specified securities accounts within the specified period satisfying the defined selection criteria. The Securities Account Position Response will provide the following business attributes:|-\tCSD |-\tAccount owner|-\tSecurities Account Number|-\tSecurities Identifier (e.g. ISIN)|-\tDate|-\tThe total position|-\tThe blocked position|-\tThe free position ||Unless otherwise specified by the sender in the Securities Balance Query, T2S will only return non-zero securities positions in the accounts.||The message may also be used to: ||- re-send a message previously sent (the sub-function of the message is Duplicate) ||- provide a third party with a copy of a message for information (the sub-function of the message is Copy) ||- re-send to a third party a copy of a message for information (the sub-function of the message is Copy Duplicate).",
+  "blocks": [
+    {
+      "name": "Pagination",
+      "isoId": "_OihPFwJ3EfGAP_FOfstLIw",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ReportGeneralDetails",
+      "isoId": "_OihPGQJ3EfGAP_FOfstLIw",
+      "xmlTag": "RptGnlDtls",
+      "type": "Statement58",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountOwner",
+      "isoId": "_OihPGwJ3EfGAP_FOfstLIw",
+      "xmlTag": "AcctOwnr",
+      "type": "PartyIdentification136",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AccountServicer",
+      "isoId": "_OihPHQJ3EfGAP_FOfstLIw",
+      "xmlTag": "AcctSvcr",
+      "type": "PartyIdentification136",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Balances",
+      "isoId": "_OihPIQJ3EfGAP_FOfstLIw",
+      "xmlTag": "Bals",
+      "type": "Balance30",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "PartyBaseCurrencyTotalAmounts",
+      "isoId": "_OihPIwJ3EfGAP_FOfstLIw",
+      "xmlTag": "PtyBaseCcyTtlAmts",
+      "type": "TotalValueInPageAndStatement1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "OtherBusinessParties",
+      "isoId": "_vhPsUQKXEfGAP_FOfstLIw",
+      "xmlTag": "OthrBizPties",
+      "type": "OtherParties46",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

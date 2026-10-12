@@ -1,0 +1,6 @@
+codeSetName	isoId	restrictionOf	code	enumName
+MarketType9Code	_Ny1Z8YVYEe-Pv9KR9bv9IA	MarketTypeCode	FUND	Fund
+MarketType9Code	_Ny1Z8YVYEe-Pv9KR9bv9IA	MarketTypeCode	LMAR	LocalMarket
+MarketType9Code	_Ny1Z8YVYEe-Pv9KR9bv9IA	MarketTypeCode	THEO	Theoretical
+MarketType9Code	_Ny1Z8YVYEe-Pv9KR9bv9IA	MarketTypeCode	VEND	Vendor
+MarketType9Code	_Ny1Z8YVYEe-Pv9KR9bv9IA	MarketTypeCode	SCAS	SmartContractAutomatedPricingSystem

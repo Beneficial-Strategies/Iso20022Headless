@@ -1,0 +1,4 @@
+codeSet	code	enumName	isoId	text
+InstructionQueryType1Code	SETT	SettlementInstruction	_jjvIlu5NEeCisYr99QEiWA_351623035	Query is performed on settlement transactions.
+InstructionQueryType1Code	IPOS	IntraPositionMovement	_jj4SgO5NEeCisYr99QEiWA_1818771798	Query is performed on intra-position movements.
+InstructionQueryType1Code	BOTH	SettlementAndIntraPosition	_jj4Sge5NEeCisYr99QEiWA_-645449318	Query is performed on both settlement transactions and intra-position movements.

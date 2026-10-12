@@ -1,0 +1,6 @@
+codeSet	code	enumName	isoId	text
+MarketType9Code	FUND	Fund	_N8OmgYVYEe-Pv9KR9bv9IA	The place is a fund (transfer agent, fund itself, etc.).
+MarketType9Code	LMAR	LocalMarket	_N8Omg4VYEe-Pv9KR9bv9IA	The place is a local market.
+MarketType9Code	THEO	Theoretical	_N8OmhYVYEe-Pv9KR9bv9IA	The place is theoretical.
+MarketType9Code	VEND	Vendor	_N8Omh4VYEe-Pv9KR9bv9IA	The place is a vendor.
+MarketType9Code	SCAS	SmartContractAutomatedPricingSystem	_QXyqAYVYEe-Pv9KR9bv9IA	Source of price quotation is a smart contract automated pricing system.

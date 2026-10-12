@@ -1,0 +1,5 @@
+codeSet	isoId	text
+TypeOfIdentification2Code	__ztF49ojEeC60axPepSq7g_97735513	Specifies the type of alternate identification which can be used to give an alternate identification of the party identified.
+Eligibility1Code	_ahHzZNp-Ed-ak6NoX_4Aeg_-1375297258	Identifies the type of investor. The rules that apply to each type of client are different.
+TradingCapacity4Code	__zHQANojEeC60axPepSq7g_1923931952	Specifies the role of a trading party in a transaction.
+TradingCapacity6Code	__zaK9NojEeC60axPepSq7g_276330764	Specifies the role of a trading party in a transaction.

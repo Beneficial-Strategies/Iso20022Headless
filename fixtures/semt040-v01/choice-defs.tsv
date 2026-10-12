@@ -1,0 +1,37 @@
+choice	memberId	memberName	text
+BalanceQuantity9Choice	_P_d9AznGEeWV5sr121Fc8A	Quantity	Total quantity of financial instruments of the balance.
+BalanceQuantity9Choice	_P_d9CznGEeWV5sr121Fc8A	Proprietary	Total quantity of financial instruments of the balance.
+Quantity6Choice	_SotstNp-Ed-ak6NoX_4Aeg_1481584878	Quantity	Quantity of financial instrument in units, original face amount or current face amount.
+Quantity6Choice	_Sotstdp-Ed-ak6NoX_4Aeg_1621426385	OriginalAndCurrentFace	Original and current value of an asset-back instrument.
+BalanceQuantity8Choice	_KuWBoznGEeWV5sr121Fc8A	Quantity	Total quantity of financial instruments of the balance.
+BalanceQuantity8Choice	_KuWBqznGEeWV5sr121Fc8A	Proprietary	Total quantity of financial instruments of the balance.
+SafekeepingPlaceFormat29Choice	_XqXF4bXEEeiTob_PrFFUxA	Identification	Place of safekeeping expressed as a code and a narrative description.
+SafekeepingPlaceFormat29Choice	_XqXF6bXEEeiTob_PrFFUxA	Country	Place of safekeeping expressed with a country code.
+SafekeepingPlaceFormat29Choice	_XqXF8bXEEeiTob_PrFFUxA	TypeAndIdentification	Place of safekeeping expressed with a type and identification.
+SafekeepingPlaceFormat29Choice	_XqXF-bXEEeiTob_PrFFUxA	Proprietary	Place of safekeeping expressed with a propriety identification scheme.
+TypeOfPrice28Choice	_jxibgznVEeWV5sr121Fc8A	Code	Type of price expressed as an ISO 20022 code.
+TypeOfPrice28Choice	_jxibiznVEeWV5sr121Fc8A	Proprietary	Type of price expressed as a proprietary code.
+PriceRateOrAmountOrUnknown2Choice	_LlJ2obQCEee1Ke-6rZgsrA	Rate	Price expressed as a rate, that is, percentage.
+PriceRateOrAmountOrUnknown2Choice	_LlJ2o7QCEee1Ke-6rZgsrA	Amount	Price expressed as a currency and value.
+PriceRateOrAmountOrUnknown2Choice	_LlJ2pbQCEee1Ke-6rZgsrA	UnknownIndicator	Indicates whether the market price is unknown.
+MarketIdentification1Choice	_Rctzp9p-Ed-ak6NoX_4Aeg_63402571	MarketIdentifierCode	ISO 10383 Market Identification Code.
+MarketIdentification1Choice	_RctzqNp-Ed-ak6NoX_4Aeg_82794538	Description	Description of the market when no Market Identifier Code is available.
+MarketType15Choice	_JjHxYTnWEeWV5sr121Fc8A	Code	Market type expressed as an ISO 20022 code.
+MarketType15Choice	_JjHxaTnWEeWV5sr121Fc8A	Proprietary	Market type expressed as a proprietary code.
+TypeOfPrice29Choice	_RBB38znXEeWV5sr121Fc8A	Code	Type of price expressed as an ISO 20022 code.
+TypeOfPrice29Choice	_RBB3-znXEeWV5sr121Fc8A	Proprietary	Type of price expressed as a proprietary code.
+SubBalanceType11Choice	_kv090znXEeWV5sr121Fc8A	Code	Reason a security is not available or additional information about the financial instrument for which the balance is given, for example, unregistered, registered in nominee name.
+SubBalanceType11Choice	_kv092znXEeWV5sr121Fc8A	Proprietary	Reason a security is not available or additional information about the financial instrument for which the balance is given, for example, unregistered, registered in nominee name.
+SubBalanceQuantity6Choice	_Mp-n4znGEeWV5sr121Fc8A	Quantity	Quantity of securities in the sub-balance.
+SubBalanceQuantity6Choice	_Mp-n6znGEeWV5sr121Fc8A	Proprietary	Quantity of securities in the sub-balance.
+SubBalanceQuantity6Choice	_Mp-n8znGEeWV5sr121Fc8A	QuantityAndAvailability	Quantity of securities in the sub-balance and whether the balance is available.
+SubBalanceType12Choice	_-w56EznXEeWV5sr121Fc8A	Code	Reason a security is not available or additional information about the financial instrument for which the balance is given, for example, unregistered, registered in nominee name.
+SubBalanceType12Choice	_-w56GznXEeWV5sr121Fc8A	Proprietary	Reason a security is not available or additional information about the financial instrument for which the balance is given, for example, unregistered, registered in nominee name.
+PledgeeFormat5Choice	_YxN_4dLGEeiN28wlpBQScw	TypeAndIdentification	Identification of the entity to which the financial instruments are pledged expressed as a code and a BIC.
+PledgeeFormat5Choice	_YxN_49LGEeiN28wlpBQScw	Identification	Identification of the entity to which the financial instruments are pledged, expressed as a code and a narrative description.
+PledgeeFormat5Choice	_YxN_5dLGEeiN28wlpBQScw	Proprietary	Identification of the entity to which the financial instruments are pledged expressed as a proprietary type and narrative description.
+ExposureType25Choice	_VyjxMYS2Ee-Pv9KR9bv9IA	Code	Collateral movement exposure type expressed as an ISO 20022 code.
+ExposureType25Choice	_VyjxNYS2Ee-Pv9KR9bv9IA	Proprietary	Collateral movement exposure type expressed as a proprietary code.
+PartyIdentification122Choice	_bsKd42pWEeipaMTLlhaKMQ	AnyBIC	Unique and unambiguous way to identify an organisation.
+PartyIdentification122Choice	_bsKd5WpWEeipaMTLlhaKMQ	NameAndAddress	Unique and unambiguous way to identify an organisation.
+PartyIdentification122Choice	_bsKd52pWEeipaMTLlhaKMQ	Country	Unique and unambiguous way to identify an organisation.

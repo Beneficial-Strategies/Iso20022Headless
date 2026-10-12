@@ -1,0 +1,35 @@
+{
+  "identifier": "semt.029.001.01",
+  "name": "IntraPositionMovementQueryResponseV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:semt.029.001.01",
+  "bodyTag": "IntraPosMvmntQryRspn",
+  "out": "semt029",
+  "isoId": "_iPjQkeShEe-qVZLXW4RRBw",
+  "definition": "The IntraPositionMovementQueryResponse message is sent from a settlement infrastructure to an account owner/requestor to provide all intra-position movement instructions satisfying the selection criteria, as defined within the query, returning current attributes and latest status.|The message may also be used to: |- re-send a message sent by the account owner to the account servicer (the sub-function of the message is \"Duplicate\") |- provide a third party with a copy of a message being sent by the account owner for information (the sub-function of the message is \"Copy\") |- re-send to a third party a copy of a message being sent by the account owner for information (the sub-function of the message is \"Copy Duplicate\").",
+  "blocks": [
+    {
+      "name": "Pagination",
+      "isoId": "_iPjQp-ShEe-qVZLXW4RRBw",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ReportGeneralDetails",
+      "isoId": "_iPjQqeShEe-qVZLXW4RRBw",
+      "xmlTag": "RptGnlDtls",
+      "type": "IntraPositionReport4",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Movements",
+      "isoId": "_iPjQq-ShEe-qVZLXW4RRBw",
+      "xmlTag": "Mvmnts",
+      "type": "IntraPositionMovements6",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "identifier": "semt.002.001.12",
+  "name": "SecuritiesBalanceCustodyReportV12",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:semt.002.001.12",
+  "bodyTag": "SctiesBalCtdyRpt",
+  "out": "semt002",
+  "isoId": "__PoMQYS0Ee-Pv9KR9bv9IA",
+  "definition": "Scope|An account servicer sends a SecuritiesBalanceCustodyReport to an account owner to provide, at a moment in time, the quantity and identification of the financial instruments that the account servicer holds for the account owner.||The account servicer/owner relationship may be:|- a central securities depository or another settlement market infrastructure acting on behalf of their participants, or|- an agent (sub-custodian) acting on behalf of their global custodian customer, or |- a custodian acting on behalf of an investment management institution or a broker/dealer, or|- a transfer agent acting on behalf of a fund manager or an account owner's designated agent.||Usage|The message can also include availability and the location of holdings to facilitate trading and minimise settlement issues. The message reports all information per financial instrument, that is, when a financial instrument is held at multiple places of safekeeping, the total holdings for all locations can be provided. |The message should be sent at a frequency agreed bi-laterally between the account servicer and the account owner. The message may be provided on a trade date, contractual or settlement date basis. |There may be one or more intermediary parties, for example, an intermediary or a concentrator between the account owner and account servicer.||The message may also be used to:|- re-send a message previously sent,|- provide a third party with a copy of a message for information,|- re-send to a third party a copy of a message for information using the relevant elements in the Business Application Header.",
+  "blocks": [
+    {
+      "name": "Pagination",
+      "isoId": "__PoMV4S0Ee-Pv9KR9bv9IA",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "StatementGeneralDetails",
+      "isoId": "__PoMWYS0Ee-Pv9KR9bv9IA",
+      "xmlTag": "StmtGnlDtls",
+      "type": "Statement73",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountOwner",
+      "isoId": "__PoMW4S0Ee-Pv9KR9bv9IA",
+      "xmlTag": "AcctOwnr",
+      "type": "PartyIdentification144",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AccountServicer",
+      "isoId": "__PoMXYS0Ee-Pv9KR9bv9IA",
+      "xmlTag": "AcctSvcr",
+      "type": "PartyIdentification136",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SafekeepingAccount",
+      "isoId": "__PoMX4S0Ee-Pv9KR9bv9IA",
+      "xmlTag": "SfkpgAcct",
+      "type": "SecuritiesAccount26",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "BlockChainAddressOrWallet",
+      "isoId": "__PoMYYS0Ee-Pv9KR9bv9IA",
+      "xmlTag": "BlckChainAdrOrWllt",
+      "type": "BlockChainAddressWallet1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "IntermediaryInformation",
+      "isoId": "__PoMY4S0Ee-Pv9KR9bv9IA",
+      "xmlTag": "IntrmyInf",
+      "type": "Intermediary44",
+      "min": 0,
+      "max": 10
+    },
+    {
+      "name": "BalanceForAccount",
+      "isoId": "__PoMZYS0Ee-Pv9KR9bv9IA",
+      "xmlTag": "BalForAcct",
+      "type": "AggregateBalanceInformation46",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SubAccountDetails",
+      "isoId": "__PoMZ4S0Ee-Pv9KR9bv9IA",
+      "xmlTag": "SubAcctDtls",
+      "type": "SubAccountIdentification71",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "AccountBaseCurrencyTotalAmounts",
+      "isoId": "__PoMaYS0Ee-Pv9KR9bv9IA",
+      "xmlTag": "AcctBaseCcyTtlAmts",
+      "type": "TotalValueInPageAndStatement1",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

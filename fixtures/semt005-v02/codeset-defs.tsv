@@ -1,0 +1,11 @@
+codeSet	isoId	text
+StatementUpdateTypeCode	_ZQWvEdp-Ed-ak6NoX_4Aeg_-1582551543	Specifies the nature of a statement update, eg, it is a complete statement.
+StatementBasis1Code	_ZP6DJNp-Ed-ak6NoX_4Aeg_-957087736	Specifies the type of balances on which the statement is prepared.
+SecuritiesAccountPurposeType1Code	_Y-7A1Np-Ed-ak6NoX_4Aeg_-1554401814	Specifies the purpose of the securities account.
+InvestmentFundRole2Code	_acDtMNp-Ed-ak6NoX_4Aeg_1035600722	Specifies the role played by an actor in an investment fund transaction.
+SafekeepingPlace1Code	_Y-eU59p-Ed-ak6NoX_4Aeg_1551577154	Specifies the type of place of safekeeping.
+PriceValueType2Code	_aJR7Itp-Ed-ak6NoX_4Aeg_-228971923	Specifies a type of value of the price.
+TypeOfPrice11Code	_YxNU8Np-Ed-ak6NoX_4Aeg_468430010	Specifies the type of price and information about the price.
+PriceSource1Code	_aI_AONp-Ed-ak6NoX_4Aeg_-1214303822	Indicates the source of a price quotation.
+SecuritiesBalanceType1Code	_ZAREp9p-Ed-ak6NoX_4Aeg_1941736953	Specifies the nature of the securities or investment fund balance.
+SecuritiesBalanceType2Code	_ZBdXcdp-Ed-ak6NoX_4Aeg_1919950094	Specifies the nature of the securities or investment fund balance.

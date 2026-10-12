@@ -1,0 +1,4 @@
+codeSet	isoId	text
+TransactionProcessingStatus4Code	_j3smZe5NEeCisYr99QEiWA_1984710351	Specifies the status of an instruction.
+MatchingStatus1Code	_aVDGQ9p-Ed-ak6NoX_4Aeg_132545126	Provides the matching status of the instruction at the time the settlement instruction was sent.
+TradeTransactionCondition1Code	_YnO5ltp-Ed-ak6NoX_4Aeg_-1817676119	Indicates the conditions under which the order/trade is to be/was executed.

@@ -1,0 +1,9 @@
+choice	memberId	memberName	text
+DateAndPeriod3Choice	_x7SLMQzJEeuTPv2wqaotHg	StatementDate	Date of the statement.
+DateAndPeriod3Choice	_x7SLOQzJEeuTPv2wqaotHg	StatementPeriod	Period for the statement.
+StatementType7Choice	_wH_JxQJ3EfGAP_FOfstLIw	Code	Statement type expressed as an ISO 20022 code.
+StatementType7Choice	_wH_J0QJ3EfGAP_FOfstLIw	Proprietary	Statement type expressed as a proprietary code.
+SecuritiesAccount2Choice	_4H1_oeGBEeWCAvUNsZ5u6g	Range	Range of identifications of the securities accounts.
+SecuritiesAccount2Choice	_4H1_o-GBEeWCAvUNsZ5u6g	Account	Unique identification of the securities account.
+IdentificationType42Choice	_nacp4x5gEeWE3PufGMdJ3w	Code	Type of identification is defined using a code.
+IdentificationType42Choice	_nalz0R5gEeWE3PufGMdJ3w	Proprietary	Type of identification is defined using a data source scheme.

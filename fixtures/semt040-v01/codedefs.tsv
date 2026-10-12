@@ -1,0 +1,81 @@
+codeSet	code	enumName	isoId	text
+ShortLong1Code	SHOR	Short	_ZOtwU9p-Ed-ak6NoX_4Aeg_179013074	Position is short, that is, the balance is negative.
+ShortLong1Code	LONG	Long	_ZOtwVNp-Ed-ak6NoX_4Aeg_1366496716	Position is long, that is, the balance is positive.
+CorporateActionOption5Code	CASH	Cash	_bMfEk9p-Ed-ak6NoX_4Aeg_160952572	Option to choose cash.
+CorporateActionOption5Code	SECU	Security	_bMfElNp-Ed-ak6NoX_4Aeg_720605213	Distribution of securities to holders.
+MarketType4Code	FUND	Fund	_aUmaVdp-Ed-ak6NoX_4Aeg_-1841693350	The place is a fund (transfer agent, fund itself, etc.).
+MarketType4Code	LMAR	LocalMarket	_aUmaVtp-Ed-ak6NoX_4Aeg_-790560278	The place is a local market.
+MarketType4Code	THEO	Theoretical	_aUmaV9p-Ed-ak6NoX_4Aeg_1996754313	The place is theoretical.
+MarketType4Code	VEND	Vendor	_aUmaWNp-Ed-ak6NoX_4Aeg_-831064220	The place is a vendor.
+TypeOfPrice14Code	AVER	Average	_Yx9i4dp-Ed-ak6NoX_4Aeg_-1357807596	Price is an average execution price.
+SecuritiesBalanceType12Code	BLOK	Blocked	_Y_qnt9p-Ed-ak6NoX_4Aeg_5623331	Balance of financial instruments that are blocked.
+SecuritiesBalanceType12Code	AWAS	AvailableWithNoAdditionalStatus	_Y_qnuNp-Ed-ak6NoX_4Aeg_1658250839	Balance of financial instruments that are freely available with no specific additional status.
+SecuritiesBalanceType12Code	BLCA	BlockedCorporateAction	_Y_0YsNp-Ed-ak6NoX_4Aeg_1366293101	Balance of financial instrument blocked following a corporate action, including proxy activities.
+SecuritiesBalanceType12Code	BLOT	BlockedTrading	_Y_0Ysdp-Ed-ak6NoX_4Aeg_1544411773	Balance of financial instruments that are blocked for trading.
+SecuritiesBalanceType12Code	BLOV	BlockedAuthenticity	_Y_0Ystp-Ed-ak6NoX_4Aeg_-991449022	Balance of financial instruments that are blocked for verification of authenticity.
+SecuritiesBalanceType12Code	BORR	Borrowed	_Y_0Ys9p-Ed-ak6NoX_4Aeg_661178486	Balance of financial instruments that have been borrowed from another party.
+SecuritiesBalanceType12Code	BODE	PendingBorrowedDelivery	_Y_0YtNp-Ed-ak6NoX_4Aeg_369220748	Balance of financial instruments that are pending delivery in relation to a borrow transaction.
+SecuritiesBalanceType12Code	BORE	PendingBorrowedReceipt	_Y_0Ytdp-Ed-ak6NoX_4Aeg_547339420	Balance of financial instruments that are pending receipt in relation to a borrow transaction.
+SecuritiesBalanceType12Code	COLI	CollateralIn	_Y_0Yttp-Ed-ak6NoX_4Aeg_-1988521375	Balance of securities that belong to a third party and that are held for the purpose of collateralisation.
+SecuritiesBalanceType12Code	COLO	CollateralOut	_Y_0Yt9p-Ed-ak6NoX_4Aeg_-335893867	Balance of securities that belong to the safekeeping account indicated within this message, and are deposited with a third party for the purpose of collateralisation.
+SecuritiesBalanceType12Code	LOAN	OnLoan	_Y_0YuNp-Ed-ak6NoX_4Aeg_-627851605	Loan for consumption.
+SecuritiesBalanceType12Code	LODE	PendingOnLoanDelivery	_Y_0Yudp-Ed-ak6NoX_4Aeg_-449732933	Balance of financial instruments that are pending delivery in relation to a lending transaction.
+SecuritiesBalanceType12Code	LORE	PendingOnLoanReceipt	_Y_0Yutp-Ed-ak6NoX_4Aeg_1309373568	Balance of financial instruments that are pending receipt in relation to a lending transaction.
+SecuritiesBalanceType12Code	MARG	DerivativesMargin	_Y_9ioNp-Ed-ak6NoX_4Aeg_-1332966220	Account is used when financing is by the broker/dealer.
+SecuritiesBalanceType12Code	PECA	PendingCorporateActionReceipt	_Y_9iodp-Ed-ak6NoX_4Aeg_1672970985	Balance of financial instrument pending receipt following a corporate action.
+SecuritiesBalanceType12Code	PEDA	PendingCorporateActionDelivery	_Y_9iotp-Ed-ak6NoX_4Aeg_1851089657	Balance of financial instrument pending delivery following a corporate action.
+SecuritiesBalanceType12Code	PEND	PendingDelivery	_Y_9io9p-Ed-ak6NoX_4Aeg_-684771138	Processing has not been completed.
+SecuritiesBalanceType12Code	PENR	PendingReceipt	_Y_9ipNp-Ed-ak6NoX_4Aeg_967856370	The instruction is pending receipt of securities, for example, from a purchase, loan etc.
+SecuritiesBalanceType12Code	PLED	Pledged	_Y_9ipdp-Ed-ak6NoX_4Aeg_675898632	Balance of securities that belong to and is kept in the safekeeping account indicated within this message, and that are pledged.
+SecuritiesBalanceType12Code	REGO	OutForRegistration	_Y_9iptp-Ed-ak6NoX_4Aeg_854017304	Balance of financial instruments currently being processed by the institution responsible for registering the new beneficial owner (or nominee).
+SecuritiesBalanceType12Code	RSTR	Restricted	_Y_9ip9p-Ed-ak6NoX_4Aeg_-1681843491	Balance of financial instruments that may only be sold under certain conditions or require legal documents.
+SecuritiesBalanceType12Code	OTHR	Unclassified	_Y_9iqNp-Ed-ak6NoX_4Aeg_-29215983	Other. See Narrative.
+SecuritiesBalanceType12Code	TRAN	InTransshipment	_Y_9iqdp-Ed-ak6NoX_4Aeg_-321173721	Transaction has been generated due to transformation following a corporate action.
+SecuritiesBalanceType12Code	DRAW	Drawn	_ZAHToNp-Ed-ak6NoX_4Aeg_-143055049	Settlement transactions relates to drawn securities.
+SecuritiesBalanceType12Code	WDOC	WaitingDocumentation	_ZAHTodp-Ed-ak6NoX_4Aeg_1616051452	Financial instrument is unavailable due to missing or incomplete documentation pertaining to the account, or due to a missing or incomplete order.
+SecuritiesBalanceType12Code	BTRA	BeingTransferred	_ZAHTotp-Ed-ak6NoX_4Aeg_-1026288336	Financial instrument is unavailable as a result of a transfer order, pending movement in the shareholders' register.
+SecuritiesBalanceType7Code	COLA	EligibleForCollateralPurposes	_ZCpqQdp-Ed-ak6NoX_4Aeg_1990825070	Balance of securities that are eligible for use for collateral purposes.
+SecuritiesBalanceType7Code	OTHR	Unclassified	_ZCpqQtp-Ed-ak6NoX_4Aeg_1990825425	Other. See Narrative.
+SecuritiesBalanceType7Code	CLEN	TaxExempt	_ZCpqQ9p-Ed-ak6NoX_4Aeg_1990825442	Tax-exempt financial instruments are to be settled.
+SecuritiesBalanceType7Code	DIRT	NonTaxExempt	_ZCpqRNp-Ed-ak6NoX_4Aeg_1990825476	Taxable financial instruments are to be settled.
+SecuritiesBalanceType7Code	NOMI	Registered	_ZCpqRdp-Ed-ak6NoX_4Aeg_1990825477	Balance of financial instruments that are registered (in nominee name or in the name of the beneficial owner).
+SecuritiesBalanceType7Code	SPOS	StreetPosition	_ZCpqRtp-Ed-ak6NoX_4Aeg_1990825494	Balance of financial instruments that remain registered in the name of the prior beneficial owner.
+SecuritiesBalanceType7Code	UNRG	Unregistered	_ZCpqR9p-Ed-ak6NoX_4Aeg_1990825495	Balance of securities that could not be registered due to foreign ownership limitation.
+SecuritiesBalanceType7Code	ISSU	Issued	_ZCpqSNp-Ed-ak6NoX_4Aeg_-740716487	In issuer agent / depository communication, balance of issued financial instruments for which legal documentation has been received.
+SecuritiesBalanceType7Code	QUAS	QuasiIssued	_ZCpqSdp-Ed-ak6NoX_4Aeg_-740716214	In issuer agent / depository communication, balance of issued financial instruments for which legal documentation has not yet been received.
+PledgeeType1Code	CPTY	Counterparty	_o56mAVj2EeSYweXGddZAOA	Financial instruments are pledged to a counterparty.
+PledgeeType1Code	REGB	RegulatoryBody	_pCsHgVj2EeSYweXGddZAOA	Financial instruments are pledged to a regulatory body.
+ExposureType15Code	BFWD	BondForward	_jgaBQYS2Ee-Pv9KR9bv9IA	Any securities traded out beyond 3 days which include treasury notes, Japanese Governement Bonds (JGBs) and Gilts.
+ExposureType15Code	PAYM	CashSettlement	_jgaBQ4S2Ee-Pv9KR9bv9IA	In support of any type of cash settlement.
+ExposureType15Code	CCPC	CCPCollateral	_jgaBRYS2Ee-Pv9KR9bv9IA	Collateral covering the initial margin requirements for OTC trades cleared through a CCP.
+ExposureType15Code	COMM	Commodities	_jgaBR4S2Ee-Pv9KR9bv9IA	Any good exchanged during commerce, which includes goods traded on a commodity exchange.
+ExposureType15Code	CRDS	CreditDefaultSwap	_jgaBSYS2Ee-Pv9KR9bv9IA	Swap designed to transfer the credit exposure of fixed income products between parties.
+ExposureType15Code	CRTL	CreditLine	_jgaBS4S2Ee-Pv9KR9bv9IA	Opening of a credit line before trading.
+ExposureType15Code	CRSP	CreditSupport	_jgaBTYS2Ee-Pv9KR9bv9IA	Cash lending/borrowing; letter of credit; signing of master agreement.
+ExposureType15Code	CCIR	CrossCurrencyIRS	_jgaBT4S2Ee-Pv9KR9bv9IA	Cross currency agreement between two parties (known as counterparties) where one stream of future interest payments is exchanged for another based on a specified principal amount.
+ExposureType15Code	CRPR	CrossProduct	_jgaBUYS2Ee-Pv9KR9bv9IA	Combination of various types of trades.
+ExposureType15Code	EQPT	EquityOption	_jgaBU4S2Ee-Pv9KR9bv9IA	Trading of equity option (also known as stock options).
+ExposureType15Code	EXTD	ExchangeTradedDerivatives	_jgaBVYS2Ee-Pv9KR9bv9IA	Trading of exchanged traded derivatives in general.
+ExposureType15Code	EQUS	EquitySwap	_jgaBV4S2Ee-Pv9KR9bv9IA	Equity swap trades where the return of an equity is exchanged for either a fixed or a floating rate of interest.
+ExposureType15Code	EXPT	ExoticOption	_jgaBWYS2Ee-Pv9KR9bv9IA	Trading of exotic option, for example, a non standard option.
+ExposureType15Code	FIXI	FixedIncome	_jgaBW4S2Ee-Pv9KR9bv9IA	Trading of fixed income instruments.
+ExposureType15Code	FORX	ForeignExchange	_jgaBXYS2Ee-Pv9KR9bv9IA	FX trades in general.
+ExposureType15Code	FORW	ForwardForeignExchange	_jgaBX4S2Ee-Pv9KR9bv9IA	Forward FX trades.
+ExposureType15Code	FUTR	Futures	_jgaBYYS2Ee-Pv9KR9bv9IA	Agreement to buy or sell a specific amount of a commodity or financial instrument at a particular price on a stipulated future date.
+ExposureType15Code	OPTN	FXOption	_jgaBY4S2Ee-Pv9KR9bv9IA	A contract that grants the holder the right, but not the obligation, to buy or sell currency at a specified exchange rate during a specified period of time.
+ExposureType15Code	LIQU	Liquidity	_jgaBZYS2Ee-Pv9KR9bv9IA	In support of settlement via an RTGS or other clearing system.
+ExposureType15Code	OTCD	OTCDerivatives	_jgaBZ4S2Ee-Pv9KR9bv9IA	OTC derivatives trading.
+ExposureType15Code	REPO	RepurchaseAgreement	_jgaBaYS2Ee-Pv9KR9bv9IA	Relates to repurchase agreement trading.
+ExposureType15Code	RVPO	ReverseRepurchaseAgreement	_jgaBa4S2Ee-Pv9KR9bv9IA	In support of a reverse repurchase agreement transaction.
+ExposureType15Code	SLOA	SecuredLoan	_jgaBbYS2Ee-Pv9KR9bv9IA	Exposure is linked to a secured loan.
+ExposureType15Code	SBSC	SecuritiesBuySellSellBuyBack	_jgaBb4S2Ee-Pv9KR9bv9IA	Securities buy sell back.
+ExposureType15Code	SCRP	SecuritiesCrossProducts	_jgaBcYS2Ee-Pv9KR9bv9IA	Combination of securities related exposure types.
+ExposureType15Code	SLEB	SecuritiesLendingAndBorrowing	_jgaBc4S2Ee-Pv9KR9bv9IA	Exposure is linked to a securities lending or borrowing activity.
+ExposureType15Code	SHSL	ShortSell	_jgaBdYS2Ee-Pv9KR9bv9IA	Short sell exposure.
+ExposureType15Code	SCIR	SingleCurrencyIRS	_jgaBd4S2Ee-Pv9KR9bv9IA	Single currency interest rate swap.
+ExposureType15Code	SCIE	SingleCurrencyIRSExotic	_jgaBeYS2Ee-Pv9KR9bv9IA	Exotic single currency interest rate swap.
+ExposureType15Code	SWPT	Swaption	_jgaBe4S2Ee-Pv9KR9bv9IA	Option on interest rate swap.
+ExposureType15Code	TBAS	ToBeAnnounced	_jgaBfYS2Ee-Pv9KR9bv9IA	To be announced (TBA) related collateral.
+ExposureType15Code	UDMS	UnclearedDerivativeMarginSegregation	_jgaBf4S2Ee-Pv9KR9bv9IA	Relates to uncleared derivative margin segregation. This could be for variation or initial margin.
+ExposureType15Code	TRCP	TreasuryCrossProduct	_jgaBgYS2Ee-Pv9KR9bv9IA	Combination of treasury related exposure types.
+ExposureType15Code	CBCO	CentralBankCreditOperations	_osGDAYS2Ee-Pv9KR9bv9IA	Exposures related to activity with central banks.

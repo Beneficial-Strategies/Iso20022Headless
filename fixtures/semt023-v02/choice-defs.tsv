@@ -1,0 +1,22 @@
+choice	memberId	memberName	text
+StatementUpdateTypeCodeAndDSSCode1Choice	_sXPbwQaUEe2-DuDrUXkg2w	StatementUpdateTypeAsCode	Update type expressed as a code.
+StatementUpdateTypeCodeAndDSSCode1Choice	_sXPbwwaUEe2-DuDrUXkg2w	StatementUpdateTypeAsDSS	Update type expressed as a data source scheme and a code used within the data source scheme.
+PartyIdentification240Choice	_meMv4ytKEeyOa655cLd-DQ	BIC	Code allocated to a financial or non-financial institution by the ISO 9362 Registration Authority, as described in ISO 9362 "Banking - Banking telecommunication messages - Business identifier code (BIC)".
+PartyIdentification240Choice	_meMv6ytKEeyOa655cLd-DQ	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to a financial institution using a proprietary identification scheme.
+PartyIdentification240Choice	_meMv8ytKEeyOa655cLd-DQ	NameAndAddress	Identification of a party with its name and address in free text.
+IdentificationType43Choice	_gsSfpYMEEeWhGPRU7TIQwQ	Code	Type of identification is defined using a code.
+IdentificationType43Choice	_gsSfp4MEEeWhGPRU7TIQwQ	Proprietary	Type of identification is defined using a data source scheme.
+InvestorCapacity4Choice	_0p2QkTtCEeWRTLSN0i0tng	Code	Investor capacity expressed as an ISO 20022 code.
+InvestorCapacity4Choice	_0p2QmTtCEeWRTLSN0i0tng	Proprietary	Investor capacity expressed as a proprietary code.
+TradingPartyCapacity4Choice	_HrWewZBjEeakHoV5BVecAQ	Code	Trading capacity expressed as an ISO 20022 code.
+TradingPartyCapacity4Choice	_HrWeyZBjEeakHoV5BVecAQ	Proprietary	Trading capacity expressed as a proprietary code.
+PurposeCode9Choice	_V1rwU5CAEeakHoV5BVecAQ	Code	Specifies the type of securities account.
+PurposeCode9Choice	_V1rwVZCAEeakHoV5BVecAQ	Proprietary	Specifies the execution priority of the instruction with a proprietary scheme.
+AccountIdentification55Choice	_e6Hl8QatEe2phaVG0lYKTw	IBAN	International Bank Account Number (IBAN) - identifier used internationally by financial institutions to uniquely identify the account of a customer. Further specifications of the format and content of the IBAN can be found in the standard ISO 13616 "Banking and related financial services - International Bank Account Number (IBAN)" version 1997-10-01, or later revisions.
+AccountIdentification55Choice	_e6Hl8watEe2phaVG0lYKTw	BBAN	Basic Bank Account Number (BBAN) - identifier used nationally by financial institutions, ie, in individual countries, generally as part of a National Account Numbering Scheme(s), to uniquely identify the account of a customer.
+AccountIdentification55Choice	_e6Hl9QatEe2phaVG0lYKTw	UPIC	Universal Payment Identification Code (UPIC) - identifier used by the New York Clearing House to mask confidential data, such as bank accounts and bank routing numbers. UPIC numbers remain with business customers, regardless of banking relationship changes.
+AccountIdentification55Choice	_e6Hl9watEe2phaVG0lYKTw	ProprietaryAccount	Account number used by financial institutions in individual countries to identify an account of a customer, but not necessarily the bank and branch of the financial institution in which the account is held.
+TradingPartyCapacity3Choice	_YaVioY-1Eeaoj_JbcpWKgg	Code	Trading capacity expressed as an ISO 20022 code.
+TradingPartyCapacity3Choice	_YaViqY-1Eeaoj_JbcpWKgg	Proprietary	Trading capacity expressed as a proprietary code.
+CashAccountIdentification5Choice	_Pdd4sNp-Ed-ak6NoX_4Aeg_-912371557	IBAN	International Bank Account Number (IBAN) - identifier used internationally by financial institutions to uniquely identify the account of a customer. Further specifications of the format and content of the IBAN can be found in the standard ISO 13616 "Banking and related financial services - International Bank Account Number (IBAN)" version 1997-10-01, or later revisions.
+CashAccountIdentification5Choice	_Pdd4sdp-Ed-ak6NoX_4Aeg_-912371522	Proprietary	Unique identifier for an account. It is assigned by the account servicer using a proprietary identification scheme.

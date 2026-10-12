@@ -696,7 +696,7 @@ writeOut(
     `export const messageIndex: readonly MessageInfo[] = [\n${listed
       .map(
         (c) =>
-          `  {\n    identifier: ${q(c.identifier)},\n    name: ${q(c.name)},\n    title: ${q(title(c.name))},\n    area: ${q(areaOf(c.identifier))},\n    module: ${q(c.out)},\n    xsdUrl: ${q(xsdUrl(c.identifier))},\n    load: () =>\n      import('./${c.out}.ts').then((m) => ({ message: m.${c.out}Message, schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),\n  },`,
+          `  {\n    identifier: ${q(c.identifier)},\n    name: ${q(c.name)},\n    title: ${q(title(c.name))},\n    area: ${q(areaOf(c.identifier))},\n    module: ${q(c.out)},\n    xsdUrl: ${q(xsdUrl(c.identifier))},\n    load: () =>\n      import('./${c.out}.ts').then((m) => ({ message: m.${c.out}Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),\n  },`,
       )
       .join('\n')}\n];\n`,
 );
