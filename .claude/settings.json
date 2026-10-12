@@ -1,0 +1,5 @@
+{
+  "enabledPlugins": {
+    "iso20022-staging@beneficial-strategies-private": true
+  }
+}

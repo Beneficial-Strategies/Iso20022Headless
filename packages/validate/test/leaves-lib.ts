@@ -2,8 +2,6 @@ import { describe, expect, it } from 'vitest';
 import type { FieldDescriptor, TypeDescriptor, TypeDescriptors } from '../src/index.ts';
 import { messageIndex } from '../src/index.ts';
 
-const bundles = await Promise.all(messageIndex.map((m) => m.load()));
-
 /**
  * Does validation reach every leaf of the hierarchy? For every leaf field, at every place it can occur
  * (a shared type is visited once per use), plant an invalid value at just that spot and require the
@@ -72,42 +70,51 @@ const reported = (schema: { safeParse(v: unknown): any }, value: unknown): strin
   return r.success ? [] : allIssues(r.error.issues);
 };
 
-describe.each(bundles.map((b) => b.message))('every leaf is validated in $identifier', (message) => {
-  const types = message.typeDescriptors as TypeDescriptors;
-  const leaves = collectLeaves(types, message.rootType);
+/**
+ * The leaf tests of the messages of one business area. They are split by area, one test file each (leaves-<area>.test.ts), so that they
+ * run side by side and no file runs for long: a test file that never gives the worker's event loop a turn for 60 seconds fails the whole run
+ * with `[vitest-worker]: Timeout calling "onTaskUpdate"` (see setup-yield.ts), and this one took more than that on a small CI machine.
+ * leaves-areas.test.ts requires a file for every area.
+ */
+export async function registerLeafTests(area: string): Promise<void> {
+  const bundles = await Promise.all(messageIndex.filter((m) => m.area === area).map((m) => m.load()));
+  describe.each(bundles.map((b) => b.message))('every leaf is validated in $identifier', (message) => {
+    const types = message.typeDescriptors as TypeDescriptors;
+    const leaves = collectLeaves(types, message.rootType);
 
-  it('covers a substantial number of leaf positions', () => {
-    expect(leaves.length).toBeGreaterThan(3);
-  });
+    it('covers a substantial number of leaf positions', () => {
+      expect(leaves.length).toBeGreaterThan(3);
+    });
 
-  it('rejects a wrong JSON type at every leaf position', () => {
-    const misses = leaves
-      .filter((l) => !reported(message.schema, nest(l.path, 123)).includes(l.path.join('.')))
-      .map((l) => l.path.join('.'));
-    expect(misses).toEqual([]);
-  });
+    it('rejects a wrong JSON type at every leaf position', () => {
+      const misses = leaves
+        .filter((l) => !reported(message.schema, nest(l.path, 123)).includes(l.path.join('.')))
+        .map((l) => l.path.join('.'));
+      expect(misses).toEqual([]);
+    });
 
-  it('rejects every kind of constraint violation the descriptor states, at every leaf position', () => {
-    const misses: string[] = [];
-    let checks = 0;
-    for (const l of leaves) {
-      for (const bad of invalidValues(l.type)) {
-        checks++;
-        if (!reported(message.schema, nest(l.path, bad)).includes(l.path.join('.'))) {
-          misses.push(`${l.path.join('.')} = ${JSON.stringify(bad).slice(0, 40)} (${l.type.name})`);
+    it('rejects every kind of constraint violation the descriptor states, at every leaf position', () => {
+      const misses: string[] = [];
+      let checks = 0;
+      for (const l of leaves) {
+        for (const bad of invalidValues(l.type)) {
+          checks++;
+          if (!reported(message.schema, nest(l.path, bad)).includes(l.path.join('.'))) {
+            misses.push(`${l.path.join('.')} = ${JSON.stringify(bad).slice(0, 40)} (${l.type.name})`);
+          }
         }
       }
-    }
-    expect(checks).toBeGreaterThan(leaves.length);
-    expect(misses).toEqual([]);
-  });
+      expect(checks).toBeGreaterThan(leaves.length);
+      expect(misses).toEqual([]);
+    });
 
-  it('checks both parts of every amount', () => {
-    const amounts = leaves.filter((l) => l.type.kind === 'amount');
-    // most ATM messages carry no currency amount, so there may be none to check
-    for (const a of amounts) {
-      expect(reported(message.schema, nest(a.path, { Ccy: 'eur', Value: '1' }))).toContain([...a.path, 'Ccy'].join('.'));
-      expect(reported(message.schema, nest(a.path, { Ccy: 'EUR', Value: 'abc' }))).toContain([...a.path, 'Value'].join('.'));
-    }
+    it('checks both parts of every amount', () => {
+      const amounts = leaves.filter((l) => l.type.kind === 'amount');
+      // most ATM messages carry no currency amount, so there may be none to check
+      for (const a of amounts) {
+        expect(reported(message.schema, nest(a.path, { Ccy: 'eur', Value: '1' }))).toContain([...a.path, 'Ccy'].join('.'));
+        expect(reported(message.schema, nest(a.path, { Ccy: 'EUR', Value: 'abc' }))).toContain([...a.path, 'Value'].join('.'));
+      }
+    });
   });
-});
+}
