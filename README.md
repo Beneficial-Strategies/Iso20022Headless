@@ -116,6 +116,17 @@ Requires Node 24. More detail in [docs/](docs/): [languages](docs/languages.md),
 This is a free tool. If a label reads wrongly in your language, a rule misfires, or you want something it does
 not do, open a GitHub issue. The language menu has a *Report a wording problem* link that prefills one.
 
-## License
+## Status, license and warranty
 
-MIT. See [LICENSE](LICENSE).
+This library, the demos and the text they show are provided **free of charge and as is**, under the MIT license (see [LICENSE](LICENSE)),
+without warranty of any kind. We make our best-faith effort toward faithful conformance with ISO 20022, and toward accurate translation, but
+the checks are incomplete (some business rules exist only as prose, and the rules documentation says which), and the translations are machine
+drafts until an entry is marked reviewed. **Do not rely on it for legal, financial or compliance decisions**: validate against ISO's own
+schemas and your counterparty's rules.
+
+**The controls here are lax at present**: there is no formal review process, release gating or ownership policy beyond what you can see in this
+repository. We intend to improve them over time (named maintainers, required reviews, release checks) should the libraries gain adoption and
+sponsorship. Taking over the care of a part of it, a language for example, is welcome.
+
+ISO 20022 and its text and schemas belong to ISO, and ISO's own terms apply to them. The license above covers what is written in this
+repository, not ISO's material. This is not legal advice.
