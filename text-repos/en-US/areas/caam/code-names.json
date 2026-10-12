@@ -1,0 +1,17 @@
+{
+ "ATMCommandReason1Code/SYNC": "Synchronization",
+ "ATMMediaType3Code/UNRG": "Unrecognized",
+ "ATMServiceType11Code/PATH": "PreAuthorizedWithdrawal",
+ "AttributeType1Code/OATT": "OrganizationName",
+ "AttributeType1Code/OUAT": "OrganizationUnitName",
+ "AuthenticationEntity2Code/AGNT": "AuthorizedAgent",
+ "FailureReason9Code/CQFG": "CheckDepositRetract",
+ "FailureReason9Code/CQRT": "ChecksRetained",
+ "FailureReason9Code/QFGC": "CheckDepositRetractCounted",
+ "MessageFunction11Code/CMPA": "ATMCompletionAcknowledgment",
+ "MessageFunction11Code/DPSK": "ATMDepositCompletionAcknowledgment",
+ "MessageFunction11Code/EXPK": "ATMExceptionAcknowledgment",
+ "MessageFunction11Code/H2AP": "HostToATMAcknowledgment",
+ "MessageFunction7Code/CMPA": "ATMCompletionAcknowledgment",
+ "MessageFunction7Code/H2AP": "HostToATMAcknowledgment"
+}

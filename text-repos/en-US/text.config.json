@@ -2,6 +2,13 @@
  "lang": "en-US",
  "base": "ISO English",
  "schema": 1,
- "library": "proof of concept",
- "seededFrom": "the en-US rewrite rules of packages/validate/src/variants.ts"
+ "seededFrom": "the en-US rewrite rules of the library (variants.ts)",
+ "source": {
+  "sourceHash": "937c28b5dc3fa90462237edb944b782aba66bc467f71ae742ea060855a500c9e",
+  "core": {
+   "name": "@beneficial-strategies/iso20022-validate",
+   "version": "0.0.0",
+   "commit": "dd45dca"
+  }
+ }
 }

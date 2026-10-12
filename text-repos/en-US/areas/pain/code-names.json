@@ -1,0 +1,11 @@
+{
+ "ExternalDebtorAgentInstruction1Code/CHQB": "PayCreditorByCheck",
+ "ExternalMandateReason1Code/BE05": "UnrecognizedInitiatingParty",
+ "ExternalMandateReason1Code/MD11": "UnrecognizedAgent",
+ "ExternalMandateReason1Code/MD19": "MandateCanceledDueToEarlySettlement",
+ "ExternalMandateReason1Code/MD21": "MandateCanceledDueToFraud",
+ "ExternalMandateReason1Code/MD22": "MandateInitiationCanceled",
+ "ExternalMandateReason1Code/MD23": "MandateAmendmentCanceled",
+ "ExternalMandateStatus1Code/CANC": "Canceled",
+ "PaymentMethod7Code/CHK": "Check"
+}

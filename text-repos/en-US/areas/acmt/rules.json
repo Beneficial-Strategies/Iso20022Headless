@@ -1,0 +1,9 @@
+{
+ "Organisation44/OrganisationIdentificationRule": "In case of conflict between the Organization Identification and the Full Legal Name, it is recommended that the account servicer ask for clarification by means of an AdditionalInformationRequest message.",
+ "PaymentInstruction49/ChequeAndCreditorAccountRule": "If PaymentMethod is CHK (Check), then CreditTransferTransactionInformation/CreditorAccount is not allowed.",
+ "PaymentInstruction49/ChequeDeliveryAndCreditorAgentRule": "If PaymentMethod is CHK (Check) and CreditTransferTransactionInformation/ChequeInstruction/DeliveryMethod/Code is present and is equal to MLFA (MailToFinalAgent), CRFA (CourierToFinalAgent), RGFA (RegisteredMailToFinalAgent) or PUFA (PickUpByFinalAgent), then CreditTransferTransactionInformation/CreditorAgent must be present.",
+ "PaymentInstruction49/ChequeDeliveryAndNoCreditorAgentRule": "If PaymentMethod is CHK (Check) and CreditTransferTransactionInformation/ChequeInstruction/DeliveryMethod/Code is present and different from MLFA (MailToFinalAgent), CRFA (CourierToFinalAgent), RGFA (RegisteredMailToFinalAgent) or PUFA (PickUpByFinalAgent), then CreditTransferTransactionInformation/CreditorAgent is not allowed.",
+ "PaymentInstruction49/ChequeInstructionRule": "If PaymentMethod is different from CHK (Check), then CreditTransferTransactionInformation/ChequeInstruction is not allowed.",
+ "PaymentInstruction49/ChequeNoDeliveryAndNoCreditorAgentRule": "If PaymentMethod is CHK (Check) and CreditTransferTransactionInformation/ChequeInstruction/DeliveryMethod is not present, then CreditTransferTransactionInformation/CreditorAgent is not allowed.",
+ "PaymentInstruction49/NonChequePaymentMethodRule": "If PaymentMethod is different from CHK (Check) and CreditTransferTransactionInformation/Creditor is not present, then CreditTransferTransactionInformation/CreditorAccount must be present."
+}

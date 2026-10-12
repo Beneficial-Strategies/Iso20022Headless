@@ -8,7 +8,9 @@
     "typecheck": "tsc -p tsconfig.json",
     "test": "vitest run",
     "packs": "node src/packs.ts",
-    "text": "node src/textrepo.ts"
+    "text": "node src/textrepo.ts",
+    "text-source": "node src/sourceArtifact.ts",
+    "text-seed": "node src/textseed.ts"
   },
   "dependencies": {
     "fast-xml-parser": "^5.2.0"

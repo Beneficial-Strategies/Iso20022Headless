@@ -1,78 +1,140 @@
-import { mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
-import { describe, expect, it } from 'vitest';
-import { KINDS, buildSource } from '../src/textrepo.ts';
+import { beforeAll, describe, expect, it } from 'vitest';
+import { writeSourceArtifact } from '../src/sourceArtifact.ts';
+import { readArtifact, type Artifact } from '../src/textrepoLib.ts';
 
 /**
- * The text repository of a language (proof of concept; en-US first): its source view, its seed, and the tools that keep it. The tools
- * run as the people who own the language run them, as commands on a directory.
+ * The source artifact the library publishes, and the language repository tools that read only it. The tools run as the people who own a
+ * language run them: commands on a directory.
  */
-const run = (repo: string, ...args: string[]): { out: string; code: number } => {
+const run = (script: string, ...args: string[]): { out: string; code: number } => {
   try {
-    const out = execFileSync('node', ['--experimental-transform-types', 'src/textrepo.ts', ...args, '--repo', repo], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
-    return { out, code: 0 };
+    return { out: execFileSync('node', ['--experimental-transform-types', '--no-warnings', `src/${script}.ts`, ...args], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }), code: 0 };
   } catch (e) {
     const err = e as { stdout?: string; status?: number };
     return { out: err.stdout ?? '', code: err.status ?? 1 };
   }
 };
+const json = <T,>(file: string): T => JSON.parse(readFileSync(file, 'utf8')) as T;
 
-describe('the source view', () => {
-  const source = buildSource();
-  it('gives every text a note saying what it is, and one label per element name', () => {
-    for (const k of KINDS) for (const [key, e] of Object.entries(source[k]).slice(0, 200)) expect(e.note, `${k}/${key}`).toMatch(/\w/);
-    expect(Object.keys(source.labels)).toHaveLength(4107);
-    expect(source.labels.GroupHeader).toMatchObject({ text: 'Group Header' });
-    expect(source.labels.GroupHeader!.note).toMatch(/XML tag GrpHdr.*used in \d+ types/);
-    expect(source.members['PostalAddress27/PostCode']!.note).toMatch(/PostCode.*PostalAddress27/);
+const work = mkdtempSync(join(tmpdir(), 'text-tools-'));
+const artifactDir = join(work, 'source-artifact');
+const repo = join(work, 'text-en-US');
+let art: Artifact;
+
+beforeAll(async () => {
+  await writeSourceArtifact(artifactDir);
+  art = readArtifact(artifactDir);
+}, 120_000);
+
+describe('the source artifact', () => {
+  it('says where each type belongs, which types each message uses, and gives every text a note', () => {
+    expect(art.manifest.areas).toContain('shared');
+    expect(art.manifest.sourceHash).toMatch(/^[0-9a-f]{64}$/);
+    expect(art.placement.PostalAddress27).toBe('shared'); // used by pain, pacs and camt
+    expect(art.placement.CustomerCreditTransferInitiationV13).toBe('pain');
+    expect(Object.keys(art.messages)).toHaveLength(363);
+    expect(art.messages['pain.001.001.13']).toMatchObject({ area: 'pain' });
+    expect(art.messages['pain.001.001.13']!.types).toContain('PostalAddress27');
+    expect(Object.keys(art.source.labels)).toHaveLength(4107);
+    expect(art.source.labels.GroupHeader!.note).toMatch(/XML tag GrpHdr.*used in \d+ types/);
+    expect(art.source.members['PostalAddress27/PostCode']!.note).toMatch(/PostCode.*PostalAddress27/);
+    for (const k of ['types', 'members', 'codes', 'rules'] as const) for (const [key, e] of Object.entries(art.source[k]).slice(0, 300)) expect(e.note, `${k}/${key}`).toMatch(/\w/);
+  });
+
+  it('is deterministic: the same library gives the same hash', async () => {
+    const again = join(work, 'again');
+    await writeSourceArtifact(again);
+    expect(readArtifact(again).manifest.sourceHash).toBe(art.manifest.sourceHash);
+  }, 120_000);
+});
+
+describe('the language tools use only the artifact', () => {
+  it('import nothing from the library', () => {
+    const seen = new Set<string>();
+    const walk = (file: string): void => {
+      if (seen.has(file)) return;
+      seen.add(file);
+      for (const m of readFileSync(join(import.meta.dirname, '../src', file), 'utf8').matchAll(/from '(\.[^']+)'/g)) {
+        expect(m[1], `${file} imports ${m[1]}`).not.toMatch(/packages\/|generated/);
+        walk(m[1]!.replace(/^\.\//, ''));
+      }
+    };
+    walk('textrepo.ts');
+    expect([...seen].sort()).toEqual(['catalog.ts', 'packFormat.ts', 'textrepo.ts', 'textrepoLib.ts', 'validate.ts']);
   });
 });
 
 describe('an en-US repository', () => {
-  const repo = mkdtempSync(join(tmpdir(), 'text-en-US-'));
-  it('is seeded with what the library does today, only where US differs, and element names inside prose are left alone', () => {
-    expect(run(repo, 'init', '--lang', 'en-US').code).toBe(0);
-    const labels = JSON.parse(readFileSync(join(repo, 'labels.json'), 'utf8')) as Record<string, string>;
-    expect(labels.PostCode).toBe('Postal Code');
-    expect(labels.GroupHeader).toBeUndefined(); // the same as the English: not written
-    const rules = JSON.parse(readFileSync(join(repo, 'rules.json'), 'utf8')) as Record<string, string>;
+  it('is seeded only where US differs, in area folders, with element names inside prose left alone', () => {
+    expect(run('textseed', '--lang', 'en-US', '--source', artifactDir, '--repo', repo).code).toBe(0);
+    expect(json<Record<string, string>>(join(repo, 'labels.json')).PostCode).toBe('Postal Code');
+    expect(json<Record<string, string>>(join(repo, 'labels.json')).GroupHeader).toBeUndefined();
+    const rules = json<Record<string, string>>(join(repo, 'areas/pain/rules.json'));
     expect(rules['PaymentInstruction51/ChequeInstructionRule']).toMatch(/\(Check\).*CreditTransferTransactionInformation\/ChequeInstruction/);
-    const status = run(repo, 'status');
-    expect(status.out).toMatch(/\d+ entries, 0 reviewed, 0 stale, 0 orphaned, 0 identical/);
-    expect(run(repo, 'check').code).toBe(0);
+    expect(existsSync(join(repo, 'areas/shared/members.json'))).toBe(true);
   }, 120_000);
 
-  it('add copies the English in to edit, and records the English it was written against', () => {
-    const r = run(repo, 'add', '--kind', 'labels', '--key', 'GroupHeader');
-    expect(r.out).toMatch(/English: Group Header[\s\S]*GrpHdr/);
-    const labels = JSON.parse(readFileSync(join(repo, 'labels.json'), 'utf8')) as Record<string, string>;
-    expect(labels.GroupHeader).toBe('Group Header');
-    expect(run(repo, 'status').out).toMatch(/1 identical to the English/);
+  it('works from a copy of the artifact in source/: status and check', () => {
+    expect(run('textrepo', 'sync', '--repo', repo, '--from', artifactDir).code).toBe(0);
+    expect(existsSync(join(repo, 'source/manifest.json'))).toBe(true);
+    expect(run('textrepo', 'status', '--repo', repo).out).toMatch(/\d+ entries, 0 reviewed, 0 stale, 0 orphaned, 0 misplaced, 0 identical/);
+    expect(run('textrepo', 'check', '--repo', repo).code).toBe(0);
+  }, 120_000);
+
+  it('add puts the English in the area the placement table names, and records the English it was written against', () => {
+    const r = run('textrepo', 'add', '--repo', repo, '--kind', 'members', '--key', 'PaymentTypeInformation28/ServiceLevel');
+    expect(r.out).toMatch(/added to areas\/shared\/members\.json/);
+    expect(json<Record<string, string>>(join(repo, 'areas/shared/members.json'))['PaymentTypeInformation28/ServiceLevel']).toMatch(/Agreement under which/);
+    expect(json<Record<string, string>>(join(repo, 'text.lock.json'))['members/PaymentTypeInformation28/ServiceLevel']).toMatch(/\w/);
+    const label = run('textrepo', 'add', '--repo', repo, '--kind', 'labels', '--key', 'GroupHeader');
+    expect(label.out).toMatch(/added to labels\.json/);
   }, 60_000);
 
-  it('check refuses a key that is not in the English and an entry that loses an element name; status says what is stale', () => {
-    const file = join(repo, 'labels.json');
-    const labels = JSON.parse(readFileSync(file, 'utf8')) as Record<string, string>;
-    labels.NoSuchElement = 'Nothing';
-    writeFileSync(file, JSON.stringify(labels, null, 1));
-    const orphan = run(repo, 'check');
-    expect(orphan.code).toBe(1);
-    expect(orphan.out).toMatch(/labels\/NoSuchElement: not in the English source/);
-    delete labels.NoSuchElement;
-    writeFileSync(file, JSON.stringify(labels, null, 1));
+  it('check refuses an orphan, a misplaced entry and an entry that loses an element name; status says what is stale', () => {
+    const labelsFile = join(repo, 'labels.json');
+    const labels = json<Record<string, string>>(labelsFile);
+    writeFileSync(labelsFile, JSON.stringify({ ...labels, NoSuchElement: 'Nothing' }));
+    expect(run('textrepo', 'check', '--repo', repo)).toMatchObject({ code: 1 });
+    expect(run('textrepo', 'check', '--repo', repo).out).toMatch(/labels\/NoSuchElement: not in the English source/);
+    writeFileSync(labelsFile, JSON.stringify(labels));
 
-    const rulesFile = join(repo, 'rules.json');
-    const rules = JSON.parse(readFileSync(rulesFile, 'utf8')) as Record<string, string>;
+    // a pain entry written in the camt folder
+    const camtFile = join(repo, 'areas/camt/members.json');
+    const painFile = join(repo, 'areas/pain/members.json');
+    const pain = json<Record<string, string>>(painFile);
+    const key = Object.keys(pain)[0]!;
+    // twice (a copy left behind) is an error of its own
+    writeFileSync(camtFile, JSON.stringify({ ...(existsSync(camtFile) ? json<Record<string, string>>(camtFile) : {}), [key]: pain[key] }));
+    expect(run('textrepo', 'check', '--repo', repo).out).toMatch(/is in both camt and pain/);
+    const moved = { ...pain };
+    delete moved[key];
+    writeFileSync(painFile, JSON.stringify(moved));
+    expect(run('textrepo', 'check', '--repo', repo).out).toMatch(new RegExp(`error: members/${key.replace('/', '\\/')} is in camt but belongs in pain`));
+    run('textrepo', 'sync', '--repo', repo, '--from', artifactDir); // sync puts it where it belongs
+    expect(run('textrepo', 'check', '--repo', repo).code).toBe(0);
+
+    const rulesFile = join(repo, 'areas/pain/rules.json');
+    const rules = json<Record<string, string>>(rulesFile);
     rules['PaymentInstruction51/ChequeInstructionRule'] = rules['PaymentInstruction51/ChequeInstructionRule']!.replace('ChequeInstruction', 'CheckInstruction');
-    writeFileSync(rulesFile, JSON.stringify(rules, null, 1));
-    expect(run(repo, 'check').out).toMatch(/error: rules\/PaymentInstruction51\/ChequeInstructionRule: not preserved: ChequeInstruction/);
+    writeFileSync(rulesFile, JSON.stringify(rules));
+    expect(run('textrepo', 'check', '--repo', repo).out).toMatch(/error: rules\/PaymentInstruction51\/ChequeInstructionRule: not preserved: ChequeInstruction/);
 
     const lockFile = join(repo, 'text.lock.json');
-    const lock = JSON.parse(readFileSync(lockFile, 'utf8')) as Record<string, string>;
-    lock['labels/PostCode'] = 'old-english';
-    writeFileSync(lockFile, JSON.stringify(lock));
-    expect(run(repo, 'status').out).toMatch(/stale[\s\S]*labels\/PostCode/);
+    writeFileSync(lockFile, JSON.stringify({ ...json<Record<string, string>>(lockFile), 'labels/PostCode': 'old-english' }));
+    expect(run('textrepo', 'status', '--repo', repo).out).toMatch(/stale[\s\S]*labels\/PostCode/);
   }, 120_000);
+
+  it('build writes the files a host serves: the labels, and for a message the entries of the types it uses', () => {
+    const out = join(work, 'host');
+    expect(run('textrepo', 'build', '--repo', repo, '--out', out, '--messages', 'pain.001.001.13').code).toBe(0);
+    expect(json<{ labels: Record<string, string> }>(join(out, 'v1/en-US/labels.json')).labels.PostCode).toBe('Postal Code');
+    const m = json<{ members: Record<string, string>; codeNames: Record<string, string> }>(join(out, 'v1/en-US/messages/pain.001.001.13.json'));
+    expect(m.members['CreditTransferTransaction76/ChequeInstruction']).toMatch(/check/);
+    expect(Object.keys(m.members).length).toBeGreaterThan(10);
+    expect(m.codeNames['AddressType2Code/BIZZ'] ?? Object.values(m.codeNames)[0]).toBeTruthy();
+  }, 60_000);
 });

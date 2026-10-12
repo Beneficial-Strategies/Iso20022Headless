@@ -45,22 +45,33 @@ caching headers on a real host, and `en-US`.
 
 ## The language repository (en-US first)
 
-What the people who own a language edit. `tools/i18n/src/textrepo.ts`:
+What the people who own a language edit. Three pieces, kept apart on purpose:
+
+| Piece | Needs the library? | Where |
+|---|---|---|
+| **Source artifact**: the English of every text with a note, which area each type belongs to, which types each message uses | yes (it is built from the library) | `tools/i18n/src/sourceArtifact.ts` |
+| **Seed**: a one-time migration that fills a repository from what the library does today (en-US rules) | yes | `tools/i18n/src/textseed.ts` |
+| **Language tools**: `sync`, `status`, `check`, `add`, `build` | **no**: they read only the artifact (a test checks their imports) | `tools/i18n/src/textrepo.ts`, `textrepoLib.ts`, `packFormat.ts` |
 
 ```sh
-pnpm --filter ./tools/i18n text init   --repo ../iso-20022-text-en-US --lang en-US   # seed from what the library does today
-pnpm --filter ./tools/i18n text status --repo ../iso-20022-text-en-US                # overridden, reviewed, stale, orphaned
-pnpm --filter ./tools/i18n text add    --repo ../iso-20022-text-en-US --kind labels --key PostCode   # copy the English in, ready to edit
-pnpm --filter ./tools/i18n text check  --repo ../iso-20022-text-en-US                # lint (exit 1 on errors)
-pnpm --filter ./tools/i18n text build  --repo ../iso-20022-text-en-US --out /tmp/text-host   # the files the host serves
+cd tools/i18n
+pnpm text-source build --out /tmp/text-source                                             # publish the English (the library's release does this)
+pnpm text-seed --lang en-US --source /tmp/text-source --repo ../../text-repos/en-US       # once
+pnpm text sync   --repo ../../text-repos/en-US --from /tmp/text-source                    # take a version of the artifact into source/
+pnpm text status --repo ../../text-repos/en-US                                            # overridden, reviewed, stale, orphaned, misplaced
+pnpm text add    --repo ../../text-repos/en-US --kind labels --key PostCode               # copy the English in, ready to edit
+pnpm text check  --repo ../../text-repos/en-US                                            # lint (exit 1 on errors)
+pnpm text build  --repo ../../text-repos/en-US --out /tmp/text-host                       # the files the host serves
 ```
 
 A repository holds only what differs from the ISO English (en-US: 1,824 entries of 72,890 texts); the rest falls back to English.
-`labels.json`, `members.json`, `types.json`, `codes.json`, `code-names.json`, `code-sets.json`, `rules.json` are one entry per line,
-sorted, keyed by name (`PostCode`, `PostalAddress27/PostCode`). `source/*.en.json` is generated and read-only: the English of every
-text with a note on what it is and where it appears (JSON cannot hold comments, so the notes live beside the files).
-`text.lock.json` records the English each entry was written against, so `status` can say when the English moved; `reviewed.json`
-lists approved entries. The README of each repository explains this to its editors.
+`labels.json` has one label per element name. Everything else is under `areas/<area>/` (`pain`, `camt`, `seev`, ... or `shared`, for types
+that messages of two or more areas use): `members.json`, `types.json`, `codes.json`, `code-names.json`, `code-sets.json`, `rules.json`, one
+entry per line, sorted, keyed by name (`PostalAddress27/PostCode`). The artifact's placement table says which area a key belongs to; `add`
+writes there, `check` complains about an entry in the wrong place or in two places, and `sync` moves entries when the placement changes.
+`source/` (the artifact) is not committed. `text.lock.json` records the English each entry was written against, so `status` can say when
+the English moved; `reviewed.json` lists approved entries. Who changed what and when is the repository's history, not stored per entry.
+The README of each repository explains this to its editors.
 
 Finding from building it: the en-US spelling rules were also rewriting element and message names inside rule and definition text
 (`CreditTransferTransactionInformation/CheckInstruction` for the real `ChequeInstruction`). `check` caught it; element names in prose

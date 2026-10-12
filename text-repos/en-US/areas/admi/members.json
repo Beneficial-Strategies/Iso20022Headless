@@ -1,0 +1,3 @@
+{
+ "SystemEventAcknowledgementV01/OriginatorReference": "Represents the original reference of the system event notification for which the acknowledgment is given, as assigned by the central system."
+}

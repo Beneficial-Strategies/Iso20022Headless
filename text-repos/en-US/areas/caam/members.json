@@ -1,0 +1,9 @@
+{
+ "ATMExceptionAcknowledgement2/Transaction": "Acknowledgment of the exception advice.",
+ "ATMReconciliationAdvice3/CommandResult": "Command result for reinitialization of the transaction counters.",
+ "ATMReconciliationOperation1/TransactionTotals": "Transaction counters that are set to zero after a reconciliation with counter reinitialization command.",
+ "Parameter6/BytePadding": "Byte padding for a cipher block chaining mode encryption, if the padding is not implicit.",
+ "Parameter6/InitialisationVector": "Initialization vector of a cipher block chaining (CBC) mode encryption.",
+ "Parameter7/BytePadding": "Byte padding for a cipher block chaining mode encryption, if the padding is not implicit.",
+ "Parameter7/InitialisationVector": "Initialization vector of a cipher block chaining (CBC) mode encryption."
+}

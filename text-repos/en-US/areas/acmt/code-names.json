@@ -1,0 +1,11 @@
+{
+ "AccountOwnershipType4Code/GOVO": "GovernmentOrganization",
+ "AccountOwnershipType4Code/NFPO": "NonProfitOrganization",
+ "CertificateType2Code/DFOR": "DueFormationAndOrganization",
+ "MoneyLaunderingCheck1Code/AUTH": "AuthorizedCredit",
+ "OrganisationLegalStatus1Code/CIOC": "CharitableIncorporatedOrganization",
+ "PendingOpeningStatusReason1Code/ATHP": "AuthorizedButPending",
+ "PendingOpeningStatusReason1Code/ATHR": "Authorization",
+ "PendingStatusReason1Code/ATHP": "AuthorizedButPending",
+ "PendingStatusReason1Code/ATHR": "Authorization"
+}

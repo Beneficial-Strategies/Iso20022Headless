@@ -1,0 +1,20 @@
+{
+ "AccountOwnershipType6Code/GOVO": "GovernmentOrganization",
+ "AccountOwnershipType6Code/NFPO": "NonProfitOrganization",
+ "CancelledStatusReason3Code/CNCL": "CanceledByClient",
+ "CancelledStatusReason3Code/CNIN": "CanceledByIntermediary",
+ "CancelledStatusReason3Code/CNTA": "CanceledByTransferAgent",
+ "CancelledStatusReason9Code/CANI": "CanceledByYourself",
+ "CancelledStatusReason9Code/CANS": "CanceledBySystem",
+ "CancelledStatusReason9Code/CANT": "CanceledDueToTransformation",
+ "CancelledStatusReason9Code/CANZ": "CanceledSplitPartialSettlement",
+ "CancelledStatusReason9Code/CORP": "CanceledDueToCorporateAction",
+ "CancelledStatusReason9Code/CSUB": "CanceledByAgent",
+ "PendingReason1Code/CHAS": "InquirySent",
+ "PendingReason1Code/REFU": "InstructionRefusedOrNotRecognized",
+ "Reporting1Code/REGU": "RegulatoryOrganization",
+ "Reporting2Code/REGU": "RegulatoryOrganization",
+ "TransferUnmatchedReason3Code/CPCA": "CounterpartyCanceled",
+ "UnmatchedReason13Code/CPCA": "CounterpartyCanceled",
+ "UnmatchedReason13Code/DTRA": "NotRecognized"
+}

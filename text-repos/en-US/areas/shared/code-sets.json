@@ -1,0 +1,8 @@
+{
+ "ChequeDelivery1Code": "Specifies the method to be used in delivering a check to a party.",
+ "ChequeType2Code": "Specifies the type of check.",
+ "ExternalEnquiryRequestType1Code": "Specifies the external request type code for the inquiry on a position in the format of character string with a maximum length of 4 characters.|The list of valid codes is an external code set published separately.|External code sets can be downloaded from www.iso20022.org.",
+ "PreferredContactMethod1Code": "Preferred method used to reach the individual contact within an organization.",
+ "PreferredContactMethod2Code": "Preferred method used to reach the individual contact within an organization.",
+ "RejectionReason74Code": "Unrecognized or invalid depository."
+}

@@ -1,0 +1,4 @@
+{
+ "PaymentStatusCustomerTrackerReportV04": "The PaymentStatusCustomerTrackerReport message is sent by a tracking facility or any authorized party to relevant parties involved in the business transaction to report on the progress of one or more business transaction(s) and obtain transparency on the status.",
+ "TrackerPartyIdentification2": "Specifies the identification of a person or an organization or a financial institution in the tracker."
+}

@@ -1,0 +1,3 @@
+{
+ "BytePadding1Code": "Byte padding for a cipher block chaining mode encryption, if the padding is not implicit."
+}

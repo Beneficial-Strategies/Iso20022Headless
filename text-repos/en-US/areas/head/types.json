@@ -1,0 +1,4 @@
+{
+ "BusinessApplicationHeader8": "Specifies the Business Application Header of the Business Message.|Can be used when replying to a query; can also be used when canceling or amending.",
+ "Party51Choice": "Identification of a person, an organization or a financial institution."
+}

@@ -1,0 +1,9 @@
+{
+ "ATMExceptionAcknowledgement2": "Information related to the acknowledgment of an ATM exception.",
+ "ATMExceptionAcknowledgementV02": "The ATMExceptionAcknowledgment message is sent by an acquirer or its agent to an ATM to acknowledge the receipt of an ATMExceptionAdvice message.",
+ "ATMReconciliationAcknowledgement3": "Information related to the acknowledgment of an ATM reconciliation from the ATM. manager.",
+ "ATMReconciliationAcknowledgementV03": "The ATMReconciliationAcknowledgment message is sent by an acquirer or its agent to an ATM to acknowledge the receipt of an ATMReconciliationAdvice message.",
+ "ATMTransaction41": "Acknowledgment of the exception advice.",
+ "HostToATMAcknowledgement1": "Information related to the acknowledgment from an ATM to contact the ATM manager.",
+ "HostToATMAcknowledgementV01": "The HostToATMAcknowledgment message is sent by an ATM to a host to acknowledge the receipt of a HostToATMRequest message."
+}

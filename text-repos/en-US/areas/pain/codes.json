@@ -1,0 +1,7 @@
+{
+ "ExternalDebtorAgentInstruction1Code/CHQB": "(Ultimate) creditor must be paid by check.",
+ "ExternalMandateReason1Code/BE05": "Party who initiated the message is not recognized by the end customer",
+ "ExternalMandateStatus1Code/CANC": "The mandate is canceled.",
+ "SequenceType2Code/OOFF": "Direct debit instruction where the debtor's authorization is used to initiate one single direct debit transaction.",
+ "SequenceType2Code/RCUR": "Direct debit instruction where the debtor's authorization is used for regular direct debit transactions initiated by the creditor."
+}
