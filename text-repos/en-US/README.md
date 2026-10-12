@@ -18,17 +18,25 @@ more areas use. In each area folder:
 Each file is one entry per line, sorted. Keep placeholders, element names, acronyms (IBAN, BIC, ...) and `|` (a line break) as they are in the English.
 You do not decide which area folder an entry goes in: `add` puts it in the right one, and `check` says if one is in the wrong place.
 
-## Finding what to change
+## Finding what to change, and checking your work
 
-* `source/` is the English of every text with a note on where it appears (the *source artifact* of the library's release; `sync --from <folder>`
-  fetches it; it is not committed). Search it, then `add --kind members --key PostalAddress27/PostCode` copies that entry in, ready to edit.
-* `status` lists what is overridden, reviewed, stale (the English changed after the entry was written) and orphaned (no longer in the English).
-* `check` lints the files; it runs on every pull request.
+The language tools live in the [Iso20022Headless](https://github.com/Beneficial-Strategies/Iso20022Headless) repository, in `tools/i18n`
+(currently on the `poc/text-packs` branch, until it is merged into `main`). Clone it, run `pnpm install`, and from `tools/i18n`:
+
+```sh
+pnpm text-source build --out /tmp/text-source                          # the English of that version of the library
+pnpm text sync   --repo <this repository> --from /tmp/text-source      # puts it in source/ here (not committed)
+pnpm text status --repo <this repository>                              # overridden, reviewed, stale, orphaned, misplaced
+pnpm text add    --repo <this repository> --kind members --key PostalAddress27/PostCode   # copy an entry in, ready to edit
+pnpm text check  --repo <this repository>                              # lint (exit code 1 on errors)
+```
+
+* `source/` is the English of every text with a note on where it appears. Search it, then `add` copies the entry in.
+* `check`: run it before you open a pull request. There is no automatic check on pull requests yet.
 * `reviewed.json` lists the entries a person has approved. Anything else is a machine draft and is shown as such.
 * `text.lock.json` (and `areas/<area>/text.lock.json`) records the English each entry was written against; the tools keep them. Who changed what and when is the repository's history.
 * `glossary.json` lists terms that must be translated one way; `check` warns when an entry does not use them.
 * `review/label-conflicts.json` (when present) lists the element names the old catalog had translated more than one way, with the choice made. Settle them, then delete the file.
-
 
 ## Status, license and warranty
 
