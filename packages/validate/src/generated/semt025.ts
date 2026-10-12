@@ -107,6 +107,7 @@ const ownTypeDescriptors: TypeDescriptors = {
     minLength: 1,
     maxLength: 4,
     external: true,
+    options: [{ value: "RGAD", name: "RegisteredHolderNamesAndAddress", isoId: "_pqqrkQJ4EfGAP_FOfstLIw" }, { value: "SRNR", name: "SecurityHolderReferenceNumberAndRegistration", isoId: "_pzG14QJ4EfGAP_FOfstLIw" }],
   },
   "StatementType7Choice": {
     name: "StatementType7Choice",

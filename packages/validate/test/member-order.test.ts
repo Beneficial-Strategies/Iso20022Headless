@@ -29,7 +29,7 @@ describe('member order follows the XSD', () => {
 
 describe('code order follows the XSD enumeration (the spec order, not alphabetical)', () => {
   const codes = new Map(readFileSync(resolve(import.meta.dirname, '../../../fixtures/code-order.tsv'), 'utf8').split('\n').slice(1).filter(Boolean).map((l) => { const [t, c] = l.split('\t'); return [t!, c!.split(',')] as const; }));
-  const enumerated = Object.values(allTypeDescriptors).filter((t) => t.kind === 'code' && (t.options ?? []).length >= 2);
+  const enumerated = Object.values(allTypeDescriptors).filter((t) => t.kind === 'code' && !t.external && (t.options ?? []).length >= 2);
 
   it('every enumerated code set has an XSD order, and lists exactly its codes in it', () => {
     expect(enumerated.filter((t) => !codes.has(t.name)).map((t) => t.name)).toEqual([]);

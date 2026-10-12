@@ -41,7 +41,8 @@ const nest = (path: (string | number)[], value: unknown): unknown =>
 /** Invalid values for a leaf: a wrong JSON type always, plus one breaking each constraint the descriptor states. */
 function invalidValues(t: TypeDescriptor): unknown[] {
   const bad: unknown[] = [123];
-  if (t.kind === 'code' && t.options) bad.push('NOT_A_CODE');
+  // an external code set lists values but accepts any value of the right length
+  if (t.kind === 'code' && t.options && !t.external) bad.push('NOT_A_CODE');
   if (t.kind === 'date' || t.kind === 'datetime' || t.kind === 'time') bad.push('nope');
   if (t.kind === 'boolean') bad.push('maybe');
   if (t.kind === 'number') bad.push('abc');

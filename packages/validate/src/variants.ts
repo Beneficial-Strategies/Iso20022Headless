@@ -46,6 +46,7 @@ export function applyVariant(text: string, v: TextVariant): string {
 export const enUS: TextVariant = {
   stems: [
     { from: 'authoris', to: 'authoriz', suffixes: 'ation|ations|e|ed|es|ing' },
+    { from: 'preauthoris', to: 'preauthoriz', suffixes: 'ation|ations|e|ed|es|ing' },
     { from: 'organis', to: 'organiz', suffixes: 'ational|ation|ations|e|ed|es|ing' },
     { from: 'reorganis', to: 'reorganiz', suffixes: 'ation|ations|e|ed|es|ing' },
     { from: 'initialis', to: 'initializ', suffixes: 'ation|ations|e|ed|es|ing' },

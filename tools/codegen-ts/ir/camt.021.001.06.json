@@ -79,7 +79,34 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "RT01",
+          "name": "ReleasePending",
+          "isoId": "_udl9-PRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RT02",
+          "name": "HoldNormal",
+          "isoId": "_udl9-_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RT03",
+          "name": "Cancellation",
+          "isoId": "_udl9_vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RT04",
+          "name": "ReSequence",
+          "isoId": "_udvH4vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RT05",
+          "name": "ReleaseSuspicious",
+          "isoId": "_udvH5fRYEeuLhpyIdtJzwg"
+        }
+      ]
     },
     "ExternalEnquiryRequestType1Code": {
       "name": "ExternalEnquiryRequestType1Code",
@@ -87,7 +114,39 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "RT11",
+          "name": "BankPositionEnquiry",
+          "isoId": "_ud444vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RT12",
+          "name": "SpecificTransactionEnquiry",
+          "isoId": "_ud445fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RT13",
+          "name": "QueuedTransactionEnquiry",
+          "isoId": "_ueCp4vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RT14",
+          "name": "SuspiciousTransactionEnquiry",
+          "isoId": "_ueCp5fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RT16",
+          "name": "SytemTimeEnquiry",
+          "isoId": "_ueCp6PRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RT15",
+          "name": "PendingInwardCreditsEnquiry",
+          "isoId": "_ueCp6_RYEeuLhpyIdtJzwg"
+        }
+      ]
     },
     "GenericIdentification1": {
       "name": "GenericIdentification1",
@@ -249,7 +308,24 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "X020",
+          "name": "DataNotYetAvailable",
+          "isoId": "_uhBFZfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "X030",
+          "name": "MessageSizeLimitExceeded",
+          "isoId": "_uhBFaPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "X050",
+          "name": "DataNotAvailable",
+          "isoId": "_uhK2YvRYEeuLhpyIdtJzwg"
+        }
+      ]
     },
     "ErrorHandling3Choice": {
       "name": "ErrorHandling3Choice",

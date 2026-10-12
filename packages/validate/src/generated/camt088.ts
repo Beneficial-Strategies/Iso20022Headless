@@ -158,6 +158,7 @@ const ownTypeDescriptors: TypeDescriptors = {
     minLength: 1,
     maxLength: 4,
     external: true,
+    options: [{ value: "BILA", name: "Bilateral", isoId: "_3aI7wYQSEfCu2585jRNU3Q" }, { value: "MULT", name: "Multilateral", isoId: "_bHESQoQTEfCu2585jRNU3Q" }],
   },
   "Max10NumericText": {
     name: "Max10NumericText",

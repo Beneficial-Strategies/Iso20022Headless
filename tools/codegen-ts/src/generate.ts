@@ -184,6 +184,15 @@ for (const d of dirs) {
   }
 }
 
+// The values of external code sets (an outside body maintains them; the repository lists them in the publisher's order) are in one
+// shared directory, not in any message's: they follow the set's marker row, so the set offers them while still accepting any value.
+const EXTERNAL_CODES_DIR = 'external-codes';
+for (const r of rowsOf(EXTERNAL_CODES_DIR, 'codesets.tsv', true)) {
+  const have = codesets.get(r[0]!);
+  if (have && have[0]![3] === '*EXTERNAL*' && have[0]![1] === r[1]) have.push(r);
+}
+for (const r of rowsOf(EXTERNAL_CODES_DIR, 'codedefs.tsv', true)) codeIsoIds.set(`${r[0]}\t${r[1]}`, r[3]!);
+
 // ---------------------------------------------------------------- business rules (constraints)
 /** Parse the spec's RuleDefinition XML. The format is regular (mustBe / onCondition groups of BooleanRule). */
 function parseExpression(xml: string, name: string): RuleExprIr {
@@ -310,6 +319,8 @@ function codeType(name: string): IrType {
   if (marker === '*EXTERNAL*') {
     const min = /minLength=(\d+)/.exec(first[4]!)?.[1];
     const max = /maxLength=(\d+)/.exec(first[4]!)?.[1];
+    // the values the repository lists, in the publisher's order; any other value of the right length is still valid
+    const values = rows.slice(1).map((r) => ({ value: r[3]!, name: r[4]!, ...(codeIsoIds.has(`${name}\t${r[3]}`) ? { isoId: codeIsoIds.get(`${name}\t${r[3]}`)! } : {}) }));
     return {
       name,
       isoId: first[1],
@@ -317,6 +328,7 @@ function codeType(name: string): IrType {
       external: true,
       ...(min ? { minLength: Number(min) } : {}),
       ...(max ? { maxLength: Number(max) } : {}),
+      ...(values.length > 0 ? { options: values } : {}),
     };
   }
   const options = rows.map((r) => ({ value: r[3]!, name: r[4]!, ...(codeIsoIds.has(`${name}\t${r[3]}`) ? { isoId: codeIsoIds.get(`${name}\t${r[3]}`)! } : {}) }));
@@ -461,7 +473,7 @@ function tsLeaf(t: IrType): string {
     case 'boolean':
       return "'true' | 'false'";
     case 'code':
-      return t.options ? t.options.map((o) => q(o.value)).join(' | ') : 'string';
+      return t.options && !t.external ? t.options.map((o) => q(o.value)).join(' | ') : 'string';
     default:
       return 'string';
   }
@@ -518,7 +530,7 @@ function zodExpr(t: IrType): string {
     case 'any':
       return 'anyXml';
     case 'code':
-      return t.options ? `z.enum([${t.options.map((o) => q(o.value)).join(', ')}])` : `textType({${textArgs}})`;
+      return t.options && !t.external ? `z.enum([${t.options.map((o) => q(o.value)).join(', ')}])` : `textType({${textArgs}})`;
     case 'amount':
       return `z.strictObject({ Ccy: textType({ pattern: ${q(t.pattern!)} }), Value: decimalType({ totalDigits: ${t.totalDigits}, fractionDigits: ${t.fractionDigits}, minInclusive: ${t.minInclusive} }) })`;
     default:
@@ -716,7 +728,7 @@ const typeDefs: Record<string, string> = {};
 const fieldDefs: Record<string, string> = {};
 const codeDefs: Record<string, string> = {};
 const codeSetDefs: Record<string, string> = {};
-for (const d of dirs) {
+for (const d of [...dirs, ...(existsSync(resolve(fixturesRoot, EXTERNAL_CODES_DIR)) ? [EXTERNAL_CODES_DIR] : [])]) {
   for (const c of rowsOf(d, 'snapshot-raw.tsv')) {
     if (c[0] === 'DATATYPE' && ir.has(c[1]!)) typeDefs[c[2]!] = c[c.length - 1]!.trim();
     else if (c[0] === 'MEMBER' && ir.has(c[1]!)) fieldDefs[c[2]!] = c[c.length - 1]!.trim();

@@ -97,7 +97,34 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "RT01",
+          "name": "ReleasePending",
+          "isoId": "_udl9-PRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RT02",
+          "name": "HoldNormal",
+          "isoId": "_udl9-_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RT03",
+          "name": "Cancellation",
+          "isoId": "_udl9_vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RT04",
+          "name": "ReSequence",
+          "isoId": "_udvH4vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RT05",
+          "name": "ReleaseSuspicious",
+          "isoId": "_udvH5fRYEeuLhpyIdtJzwg"
+        }
+      ]
     },
     "ExternalEnquiryRequestType1Code": {
       "name": "ExternalEnquiryRequestType1Code",
@@ -105,7 +132,39 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "RT11",
+          "name": "BankPositionEnquiry",
+          "isoId": "_ud444vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RT12",
+          "name": "SpecificTransactionEnquiry",
+          "isoId": "_ud445fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RT13",
+          "name": "QueuedTransactionEnquiry",
+          "isoId": "_ueCp4vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RT14",
+          "name": "SuspiciousTransactionEnquiry",
+          "isoId": "_ueCp5fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RT16",
+          "name": "SytemTimeEnquiry",
+          "isoId": "_ueCp6PRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RT15",
+          "name": "PendingInwardCreditsEnquiry",
+          "isoId": "_ueCp6_RYEeuLhpyIdtJzwg"
+        }
+      ]
     },
     "GenericIdentification1": {
       "name": "GenericIdentification1",
@@ -267,7 +326,499 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 3
+      "maxLength": 3,
+      "options": [
+        {
+          "value": "ABE",
+          "name": "EBAEuro1Step1",
+          "isoId": "_xHx7kc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "ACH",
+          "name": "ACH",
+          "isoId": "_xH-v4c9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "ACS",
+          "name": "CanadaACSS",
+          "isoId": "_xILkMc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "AIP",
+          "name": "Albania",
+          "isoId": "_xIXxcc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "ART",
+          "name": "Austrian",
+          "isoId": "_xIj-sc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "AVP",
+          "name": "NewZealand",
+          "isoId": "_xIwL8c9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "AZM",
+          "name": "Azerbaijan",
+          "isoId": "_xI8ZMc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "BAP",
+          "name": "BosniaHerzegovina",
+          "isoId": "_xJImcc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "BCC",
+          "name": "SwedenBGC",
+          "isoId": "_xJUzsc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "BCE",
+          "name": "Ecuador",
+          "isoId": "_xJgZ4c9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "BDS",
+          "name": "Barbados",
+          "isoId": "_xJtOMc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "BEL",
+          "name": "Belgium",
+          "isoId": "_xJ40Yc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "BGN",
+          "name": "Bulgaria",
+          "isoId": "_xKFBoc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "BHS",
+          "name": "Bahamas",
+          "isoId": "_xKQn0c9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "BIS",
+          "name": "Botswana",
+          "isoId": "_xKbm8c9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "BOF",
+          "name": "Finland",
+          "isoId": "_xKobQc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "BOJ",
+          "name": "BankOfJapanNet",
+          "isoId": "_xK0Bcc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "BRL",
+          "name": "Italy",
+          "isoId": "_xLAOsc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "BSP",
+          "name": "Philippines",
+          "isoId": "_xLL04c9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "CAD",
+          "name": "CanadaCAD",
+          "isoId": "_xLYCIc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "CAM",
+          "name": "SpainCAM",
+          "isoId": "_xLkPYc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "CBA",
+          "name": "CentralBankOfArubaCSM",
+          "isoId": "_xLvOgc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "CBJ",
+          "name": "Ireland",
+          "isoId": "_xL7bwc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "CHI",
+          "name": "USTCHChips",
+          "isoId": "_xMGa4c9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "CHP",
+          "name": "UnitedKingdom",
+          "isoId": "_xMSBEc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "CIS",
+          "name": "CentralInteroperabilityService",
+          "isoId": "_xMe1Yc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "CLM",
+          "name": "CentralLiquidityManagement",
+          "isoId": "_xMrCoc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "COE",
+          "name": "ColumbiaCEDEC",
+          "isoId": "_xM3P4c9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "COI",
+          "name": "ColumbiaCENIT",
+          "isoId": "_xNErQc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "COU",
+          "name": "ColumbiaRTGS",
+          "isoId": "_xNQRcc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "DDK",
+          "name": "DenmarkDDK",
+          "isoId": "_xNcesc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "DKC",
+          "name": "Denmark",
+          "isoId": "_xNor8c9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "EBA",
+          "name": "EBAEuro1",
+          "isoId": "_xN0SIc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "ELS",
+          "name": "GermanyELS",
+          "isoId": "_xN_4Uc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "EMZ",
+          "name": "Germany",
+          "isoId": "_xOMFkc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "EPM",
+          "name": "ECB",
+          "isoId": "_xOfAgc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "EPN",
+          "name": "USTCHEPN",
+          "isoId": "_xOrNwc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "ERP",
+          "name": "EBAStep1",
+          "isoId": "_xO2z8c9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "FDA",
+          "name": "USFedACH",
+          "isoId": "_xPCaIc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "FDN",
+          "name": "FedNet",
+          "isoId": "_xPOAUc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "FDW",
+          "name": "USFedwire",
+          "isoId": "_xPY_cc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "FEY",
+          "name": "ForeignExchangeYenClearing",
+          "isoId": "_xPkloc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "GIS",
+          "name": "Ghana",
+          "isoId": "_xPxZ8c9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "HRK",
+          "name": "Croatia",
+          "isoId": "_xP-OQc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "HRM",
+          "name": "Greece",
+          "isoId": "_xQJ0cc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "HUF",
+          "name": "Hungary",
+          "isoId": "_xQWBsc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "INC",
+          "name": "DEandNLEquens",
+          "isoId": "_xQjdEc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "JOD",
+          "name": "Jordan",
+          "isoId": "_xQvDQc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "KPS",
+          "name": "Kenya",
+          "isoId": "_xQ6CYc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "LGS",
+          "name": "Luxemburg",
+          "isoId": "_xRFokc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "LKB",
+          "name": "SriLanka",
+          "isoId": "_xRROwc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "LVL",
+          "name": "Latvia",
+          "isoId": "_xRc08c9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "LVT",
+          "name": "CanadaLVTS",
+          "isoId": "_xRobIc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "MEP",
+          "name": "Singapore",
+          "isoId": "_xR0oYc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "MOS",
+          "name": "SouthAfrica",
+          "isoId": "_xSBcsc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "MRS",
+          "name": "Malta",
+          "isoId": "_xSO4Ec9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "MUP",
+          "name": "Mauritius",
+          "isoId": "_xSbFUc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "NAM",
+          "name": "Namibia",
+          "isoId": "_xSmrgc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "NOC",
+          "name": "Norway",
+          "isoId": "_xS0t8c9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "NPP",
+          "name": "AustraliaNPP",
+          "isoId": "_xTAUIc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "PCH",
+          "name": "Switzerland",
+          "isoId": "_xTNvgc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "PDS",
+          "name": "AustraliaPDS",
+          "isoId": "_xTaj0c9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "PEG",
+          "name": "Egypt",
+          "isoId": "_xTmKAc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "PNS",
+          "name": "FrancePNS",
+          "isoId": "_xTyXQc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "PTR",
+          "name": "Angola",
+          "isoId": "_xT-kgc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "PVE",
+          "name": "Venezuela",
+          "isoId": "_xUKxwc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "ROL",
+          "name": "RomaniaEPO",
+          "isoId": "_xUWX8c9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "ROS",
+          "name": "RomaniaGSRS",
+          "isoId": "_xUilMc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "RTG",
+          "name": "RTGS",
+          "isoId": "_xUvZgc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "RTP",
+          "name": "GermanyRTGSPlus",
+          "isoId": "_xU7mwc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "SCL",
+          "name": "RPSAndSEPAClearer",
+          "isoId": "_xVJCIc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "SCP",
+          "name": "Chili",
+          "isoId": "_xVWdgc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "SEC",
+          "name": "SwedenSEC",
+          "isoId": "_xVjR0c9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "SEU",
+          "name": "euroSIC",
+          "isoId": "_xVvfEc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "SIC",
+          "name": "SIC",
+          "isoId": "_xV9hgc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "SIP",
+          "name": "SICIP",
+          "isoId": "_xWK84c9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "SIT",
+          "name": "Slovania",
+          "isoId": "_xWYYQc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "SLB",
+          "name": "SpainES",
+          "isoId": "_xWklgc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "SPG",
+          "name": "Portugal",
+          "isoId": "_xWwLsc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "SSK",
+          "name": "SwedenSSK",
+          "isoId": "_xW7x4c9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "ST2",
+          "name": "EBAClearingStep2",
+          "isoId": "_xXH_Ic9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "STG",
+          "name": "UnitedKingdomGBP",
+          "isoId": "_xXUzcc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "T2S",
+          "name": "T2S",
+          "isoId": "_xXhnwc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "TBF",
+          "name": "FranceFR",
+          "isoId": "_xXt1Ac9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "TCH",
+          "name": "USTCHRealTime",
+          "isoId": "_xX6pUc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "TGT",
+          "name": "Target",
+          "isoId": "_xYG2kc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "THB",
+          "name": "Thailand",
+          "isoId": "_xYTD0c9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "THN",
+          "name": "ThailandNITMX",
+          "isoId": "_xYfREc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "TIS",
+          "name": "Tanzania",
+          "isoId": "_xYsFYc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "TOP",
+          "name": "Netherlands",
+          "isoId": "_xY45sc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "TTD",
+          "name": "TrinidadAndTobago",
+          "isoId": "_xZFuAc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "UBE",
+          "name": "CanadaUSDUSBE",
+          "isoId": "_xZSiUc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "UIS",
+          "name": "Uganda",
+          "isoId": "_xZevkc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "VCS",
+          "name": "VocaLink",
+          "isoId": "_xZq80c9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "XCT",
+          "name": "EBAStep2XCT",
+          "isoId": "_xZ3KEc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "ZEN",
+          "name": "Zengin",
+          "isoId": "_xaCwQc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "ZET",
+          "name": "Zimbabwe",
+          "isoId": "_xaOWcc9uEfCm-Oo4j3_IUw"
+        },
+        {
+          "value": "ZIS",
+          "name": "Zambia",
+          "isoId": "_xaajsc9uEfCm-Oo4j3_IUw"
+        }
+      ]
     },
     "MarketInfrastructureIdentification1Choice": {
       "name": "MarketInfrastructureIdentification1Choice",
@@ -533,7 +1084,119 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "CRCO",
+          "name": "CashReservationCutOff",
+          "isoId": "_uhK2ZfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CUSC",
+          "name": "CustomerCutOff",
+          "isoId": "_uhUAUvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ESTF",
+          "name": "EndOfStandingFacilities",
+          "isoId": "_uhUAVfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "EUCO",
+          "name": "Euro1CutOff",
+          "isoId": "_uhUAWPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "EUSU",
+          "name": "Euro1StartUp",
+          "isoId": "_uhdxUvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FIRE",
+          "name": "FinalReporting",
+          "isoId": "_uhdxVfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "IBKC",
+          "name": "InterbankCutOff",
+          "isoId": "_uhdxWPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LTDC",
+          "name": "LTDCutOff",
+          "isoId": "_uhniUvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LTGC",
+          "name": "LTGCutOff",
+          "isoId": "_uhniVfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LTNC",
+          "name": "LTNCutOff",
+          "isoId": "_uhniWPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LVCC",
+          "name": "LVPCancellationCutOff",
+          "isoId": "_uhniW_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LVCO",
+          "name": "LVPCutOff",
+          "isoId": "_uhwsQvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LVRT",
+          "name": "LVPCutOffReportTime",
+          "isoId": "_uhwsRfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LWSU",
+          "name": "LimitWarningStartUp",
+          "isoId": "_uhwsSPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "NPCT",
+          "name": "NewPaymentCutOffTime",
+          "isoId": "_uhwsS_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "PCOT",
+          "name": "ProcessingCutOffTime",
+          "isoId": "_uhwsTvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RECC",
+          "name": "RecCutOff",
+          "isoId": "_uh6dQvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "REOP",
+          "name": "ResumeOperation",
+          "isoId": "_uh6dRfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SSSC",
+          "name": "NetSSSReservationCutOff",
+          "isoId": "_uh6dSPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "STDY",
+          "name": "StartOfDay",
+          "isoId": "_uh6dS_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "STSU",
+          "name": "Step1StartUp",
+          "isoId": "_uh6dTvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SYSC",
+          "name": "SystemCutOff",
+          "isoId": "_uiDnMvRYEeuLhpyIdtJzwg"
+        }
+      ]
     },
     "SystemEventType4Choice": {
       "name": "SystemEventType4Choice",
@@ -777,7 +1440,24 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "X020",
+          "name": "DataNotYetAvailable",
+          "isoId": "_uhBFZfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "X030",
+          "name": "MessageSizeLimitExceeded",
+          "isoId": "_uhBFaPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "X050",
+          "name": "DataNotAvailable",
+          "isoId": "_uhK2YvRYEeuLhpyIdtJzwg"
+        }
+      ]
     },
     "ErrorHandling3Choice": {
       "name": "ErrorHandling3Choice",
