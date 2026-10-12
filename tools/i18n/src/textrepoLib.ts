@@ -164,7 +164,20 @@ You do not decide which area folder an entry goes in: \`add\` puts it in the rig
 * \`text.lock.json\` (and \`areas/<area>/text.lock.json\`) records the English each entry was written against; the tools keep them. Who changed what and when is the repository's history.
 * \`glossary.json\` lists terms that must be translated one way; \`check\` warns when an entry does not use them.
 * \`review/label-conflicts.json\` (when present) lists the element names the old catalog had translated more than one way, with the choice made. Settle them, then delete the file.
-`;
+
+
+## Status, license and warranty
+
+This text is provided **free of charge and as is**, under the MIT license (see \`LICENSE\`), without warranty of any kind. We make our best-faith
+effort toward an accurate text, but it is not verified by a professional translator, and until an entry is marked reviewed it is a machine draft.
+**Do not rely on it for legal, financial or compliance decisions**: the authoritative text is ISO's English.
+
+**The controls here are lax at present**: there is no formal review process, release gating or ownership policy beyond what you can see in this
+repository. We intend to improve them over time (named maintainers per area, required reviews, release checks) should the libraries gain adoption
+and sponsorship. Taking over the care of a language, or of an area of one, is welcome.
+
+The English text this repository translates or adapts is ISO's, and ISO's own terms apply to it. The license above covers what is written
+in this repository, not ISO's text. This is not legal advice.`;
 
 export interface Report {
   overrides: number;
@@ -294,3 +307,36 @@ export function build(repo: string, art: Artifact, out: string, messages: string
 }
 
 export { codeKey, memberKey, ruleKey };
+
+/** The license of a language repository: the same MIT license as the library. */
+export const LICENSE = `MIT License
+
+Copyright (c) 2026 Beneficial Strategies
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+`;
+
+/** (Re)write the README and the license of a repository from the templates, by the language and kind in its text.config.json. */
+export function docs(repo: string): void {
+  const config = readJson<{ lang?: string; kind?: string }>(join(repo, 'text.config.json'), {});
+  if (!config.lang) throw new Error(`${repo} has no text.config.json`);
+  writeFileSync(join(repo, 'README.md'), README(config.lang, config.kind === 'translation' ? 'translation' : 'regional'));
+  writeFileSync(join(repo, 'LICENSE'), LICENSE);
+  console.log(`README.md and LICENSE written in ${repo}`);
+}

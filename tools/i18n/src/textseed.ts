@@ -14,7 +14,7 @@ import { join, resolve } from 'node:path';
 import { allTypeDescriptors } from '../../../packages/validate/src/generated/all.ts';
 import { applyVariant, enUS } from '../../../packages/validate/src/variants.ts';
 import { hashOf } from './catalog.ts';
-import { KINDS, README, readArtifact, writeLock, writeOverrides, writeSorted, type Artifact, type Overrides, type RepoKind } from './textrepoLib.ts';
+import { KINDS, LICENSE, README, readArtifact, writeLock, writeOverrides, writeSorted, type Artifact, type Overrides, type RepoKind } from './textrepoLib.ts';
 
 const UNIT_KIND = { labels: 'label', types: 'type', members: 'field', codeSets: 'codeSet', codes: 'code', codeNames: 'codeName', rules: 'rule' } as const;
 type CatalogEntry = { text: string; source?: string; status: 'machine' | 'reviewed' };
@@ -26,6 +26,7 @@ function finish(repo: string, lang: string, art: Artifact, ov: Overrides, lock: 
   writeFileSync(join(repo, 'reviewed.json'), JSON.stringify(reviewed.sort(), null, 1) + '\n');
   writeFileSync(join(repo, 'text.config.json'), JSON.stringify({ lang, kind: mode, base: 'ISO English', schema: 1, ...config, source: { sourceHash: art.manifest.sourceHash, core: art.manifest.core } }, null, 1) + '\n');
   writeFileSync(join(repo, 'README.md'), README(lang, mode));
+  writeFileSync(join(repo, 'LICENSE'), LICENSE);
   writeFileSync(join(repo, '.gitignore'), 'source/\n');
   console.log(`${repo}: ${KINDS.map((k) => `${k} ${Object.keys(ov[k]).length}`).join(', ')}`);
 }

@@ -76,6 +76,9 @@ describe('an en-US repository', () => {
     const rules = json<Record<string, string>>(join(repo, 'areas/pain/rules.json'));
     expect(rules['PaymentInstruction51/ChequeInstructionRule']).toMatch(/\(Check\).*CreditTransferTransactionInformation\/ChequeInstruction/);
     expect(existsSync(join(repo, 'areas/shared/members.json'))).toBe(true);
+    // a repository says what it is: free, as is, MIT, with the controls lax for now
+    expect(readFileSync(join(repo, 'LICENSE'), 'utf8')).toMatch(/THE SOFTWARE IS PROVIDED "AS IS"/);
+    expect(readFileSync(join(repo, 'README.md'), 'utf8')).toMatch(/free of charge and as is[\s\S]*controls here are lax at present[\s\S]*adoption\s+and sponsorship/);
   }, 120_000);
 
   it('works from a copy of the artifact in source/: status and check', () => {
