@@ -1,5 +1,9 @@
+import { existsSync, readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { checkSchemaFile, devProxyUrl, inspectSchema, tidyMessage, validateXsd, withDefaultNamespace, wrapperSchema, type ValidateXml } from '../src/xsd.ts';
+import { messageIndex } from '@beneficial-strategies/iso20022-validate';
+import { serializeEnvelopeToXml, serializeToXml } from '@beneficial-strategies/iso20022-serialize';
+import { checkSchemaFile, devProxyUrl, documentLineOffset, HEADER_LINE_OFFSET, inspectSchema, tidyMessage, validateXsd, withDefaultNamespace, wrapperSchema, type ValidateXml } from '../src/xsd.ts';
 
 const NS = 'urn:iso:std:iso:20022:tech:xsd:pain.001.001.13';
 
@@ -126,4 +130,42 @@ describe('devProxyUrl', () => {
     expect(devProxyUrl('https://example.test/pain.001.001.13.xsd')).toBeUndefined();
     expect(devProxyUrl('')).toBeUndefined();
   });
+});
+
+describe('line numbers of an envelope', () => {
+  it('map a line of the header and a line of the message to where the envelope shows it', async () => {
+    const head = await messageIndex.find((m) => m.identifier === 'head.001.001.04')!.load();
+    const pain = await messageIndex.find((m) => m.identifier === 'pain.002.001.15')!.load();
+    const header = { BusinessMessageIdentifier: 'BIZ-1', MessageDefinitionIdentifier: 'pain.002.001.15', CreationDate: '2026-01-02T03:04:05Z' };
+    const body = { GroupHeader: { MessageIdentification: 'M1' } };
+    const envelope = serializeEnvelopeToXml({ message: head.message, values: header }, pain.message, body).split('\n');
+    const headerXml = serializeToXml(head.message, header);
+    const documentXml = serializeToXml(pain.message, body).split('\n');
+    const lineOf = (lines: string[], text: string): number => lines.findIndex((l) => l.includes(text)) + 1;
+    const headerLines = headerXml.split('\n');
+    expect(lineOf(headerLines, '<BizMsgIdr>') + HEADER_LINE_OFFSET).toBe(lineOf(envelope, '<BizMsgIdr>'));
+    expect(lineOf(documentXml, '<MsgId>') + documentLineOffset(headerXml)).toBe(lineOf(envelope, '<MsgId>'));
+    expect(lineOf(documentXml, '</Document>') + documentLineOffset(headerXml)).toBe(lineOf(envelope, '</Document>'));
+  });
+});
+
+/** Opt-in (needs ISO's XSDs: `XSD_DIR=<folder with head.001.001.04.xsd and pain.002.001.15.xsd>`): both parts of an envelope against their own schemas. */
+describe.skipIf(!process.env.XSD_DIR || !existsSync(resolve(process.env.XSD_DIR, 'head.001.001.04.xsd')))('the header and the message of an envelope, each against its own schema', () => {
+  it('a good header passes, a bad one is reported on its own line', async () => {
+    const dir = process.env.XSD_DIR!;
+    const head = await messageIndex.find((m) => m.identifier === 'head.001.001.04')!.load();
+    const schema = readFileSync(resolve(dir, 'head.001.001.04.xsd'), 'utf8');
+    const good = {
+      From: { FinancialInstitutionIdentification: { FinancialInstitutionIdentification: { BICFI: 'AAAAUS33' } } },
+      To: { FinancialInstitutionIdentification: { FinancialInstitutionIdentification: { BICFI: 'BBBBDEFF' } } },
+      BusinessMessageIdentifier: 'BIZ-1',
+      MessageDefinitionIdentifier: 'pain.002.001.15',
+      CreationDate: '2026-01-02T03:04:05Z',
+    };
+    const request = (values: unknown) => ({ xml: serializeToXml(head.message, values), schema, namespace: head.message.namespace, type: 'AppHdr', isMessage: true });
+    expect(await validateXsd(request(good))).toEqual({ valid: true, issues: [] });
+    const bad = await validateXsd(request({ ...good, CreationDate: 'yesterday' }));
+    expect(bad.valid).toBe(false);
+    expect(bad.issues.some((i) => /CreDt|dateTime|pattern/i.test(i.message) && typeof i.line === 'number')).toBe(true);
+  }, 120000);
 });

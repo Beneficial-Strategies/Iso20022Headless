@@ -164,6 +164,7 @@ export const pageEn: PageMessages = {
   xsdEngineFailed: 'The validator could not run: {why}',
   xsdClose: 'Close validation errors',
   xsdLine: 'Line {n}',
+  xsdHeaderNotChecked: 'The header\'s schema (head.001.001.04) could not be loaded, so only the message was checked.',
   xsdLoadOther: 'Load a different schema file…',
   xsdSchemaFrom: 'Schema: {source}',
   bannerTitle: 'ISO 20022 Message Explorer',

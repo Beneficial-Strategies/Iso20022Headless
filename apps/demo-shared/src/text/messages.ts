@@ -37,7 +37,7 @@ const KEYS = [
   'areaDesc_pain', 'areaName_pacs', 'areaDesc_pacs', 'areaName_caam', 'areaDesc_caam', 'areaName_camt', 'areaDesc_camt', 'areaName_admi', 'areaDesc_admi', 'areaName_remt', 'areaDesc_remt', 'areaName_trck', 'areaDesc_trck', 'areaName_acmt', 'areaDesc_acmt', 'areaName_head', 'areaDesc_head', 'xsdLabel',
   'xsdReady', 'xsdReadyFile', 'xsdLoading', 'xsdUnavailable', 'xsdNeedsXml', 'xsdNotSchema',
   'xsdWrongSchema', 'xsdReadFailed', 'xsdPanelTitle', 'xsdValid', 'xsdOneError', 'xsdErrors',
-  'xsdChecking', 'xsdEngineFailed', 'xsdClose', 'xsdLine', 'xsdLoadOther', 'xsdSchemaFrom',
+  'xsdChecking', 'xsdEngineFailed', 'xsdClose', 'xsdLine', 'xsdHeaderNotChecked', 'xsdLoadOther', 'xsdSchemaFrom',
   'bannerTitle', 'logoAlt', 'logoLink', 'aboutOpen', 'aboutTitle', 'aboutIntro',
   'aboutClose', 'aboutStart', 'aboutExploreTitle', 'aboutExploreBody', 'aboutCreateTitle', 'aboutCreateBody',
   'aboutSaveTitle', 'aboutSaveBody', 'aboutIllustrateTitle', 'aboutIllustrateBody', 'aboutBuildTitle', 'aboutBuildBody',

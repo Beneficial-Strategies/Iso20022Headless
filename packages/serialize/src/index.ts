@@ -3,7 +3,7 @@ import {
   type FieldDescriptor,
   type TypeDescriptors,
 } from '@beneficial-strategies/iso20022-validate';
-import { isOwnRoot } from './parse.ts';
+import { ENVELOPE_TAG, isOwnRoot } from './parse.ts';
 
 export interface MessageDefinition {
   namespace: string;
@@ -65,17 +65,29 @@ function emitChildren(
   for (const f of fields) emitField(types, f, value?.[f.name], indent, out);
 }
 
-/** Serialize message-body form values (e.g. { GroupHeader, PaymentInformation }) to ISO 20022 XML. */
-export function serializeToXml(message: MessageDefinition, values: unknown): string {
+/** The lines of one message (`<Document …>` with its body, or an own-root message such as `<AppHdr …>`), indented. */
+function xmlMessageLines(message: MessageDefinition, values: unknown, indent: string): string[] {
   const pruned = (pruneEmpty(values) ?? {}) as Record<string, unknown>;
   const root = message.typeDescriptors[message.rootType]!;
   const own = isOwnRoot(message);
-  const out: string[] = ['<?xml version="1.0" encoding="UTF-8"?>', `<${message.rootTag} xmlns="${message.namespace}">`];
-  if (!own) out.push(`  <${message.bodyTag}>`);
-  emitChildren(message.typeDescriptors, root.fields ?? [], pruned, own ? '  ' : '    ', out);
-  if (!own) out.push(`  </${message.bodyTag}>`);
-  out.push(`</${message.rootTag}>`);
-  return out.join('\n') + '\n';
+  const out: string[] = [`${indent}<${message.rootTag} xmlns="${message.namespace}">`];
+  if (!own) out.push(`${indent}  <${message.bodyTag}>`);
+  emitChildren(message.typeDescriptors, root.fields ?? [], pruned, own ? `${indent}  ` : `${indent}    `, out);
+  if (!own) out.push(`${indent}  </${message.bodyTag}>`);
+  out.push(`${indent}</${message.rootTag}>`);
+  return out;
+}
+
+const XML_DECLARATION = '<?xml version="1.0" encoding="UTF-8"?>';
+
+/** Serialize message-body form values (e.g. { GroupHeader, PaymentInformation }) to ISO 20022 XML. */
+export function serializeToXml(message: MessageDefinition, values: unknown): string {
+  return [XML_DECLARATION, ...xmlMessageLines(message, values, '')].join('\n') + '\n';
+}
+
+/** A message with the Business Application Header that goes with it, as siblings in an `Envelope`. */
+export function serializeEnvelopeToXml(header: { message: MessageDefinition; values: unknown }, message: MessageDefinition, values: unknown): string {
+  return [XML_DECLARATION, `<${ENVELOPE_TAG}>`, ...xmlMessageLines(header.message, header.values, '  '), ...xmlMessageLines(message, values, '  '), `</${ENVELOPE_TAG}>`].join('\n') + '\n';
 }
 
 /** The form's own value model as JSON (element names as keys). Not the ISO 20022 JSON syntax: see `serializeToIsoJson`. */
@@ -138,12 +150,23 @@ function jsonOne(types: TypeDescriptors, f: FieldDescriptor, value: unknown): Js
   }
 }
 
-/** Serialize message-body form values to ISO 20022 JSON (see the notes above). */
-export function serializeToIsoJson(message: MessageDefinition, values: unknown): string {
+function isoJsonRoot(message: MessageDefinition, values: unknown): Json {
   const pruned = (pruneEmpty(values) ?? {}) as Record<string, unknown>;
   const root = message.typeDescriptors[message.rootType]!;
   const body = jsonChildren(message.typeDescriptors, root.fields ?? [], pruned);
-  return JSON.stringify({ [message.rootTag]: isOwnRoot(message) ? body : { [message.bodyTag]: body } }, null, 2) + '\n';
+  return isOwnRoot(message) ? body : { [message.bodyTag]: body };
+}
+
+/** Serialize message-body form values to ISO 20022 JSON (see the notes above). */
+export function serializeToIsoJson(message: MessageDefinition, values: unknown): string {
+  return JSON.stringify({ [message.rootTag]: isoJsonRoot(message, values) }, null, 2) + '\n';
+}
+
+/** The envelope as JSON: `{ "Envelope": { "AppHdr": { … }, "Document": { … } } }` (ISO's JSON rules define no envelope; see `ENVELOPE_TAG`). */
+export function serializeEnvelopeToIsoJson(header: { message: MessageDefinition; values: unknown }, message: MessageDefinition, values: unknown): string {
+  return (
+    JSON.stringify({ [ENVELOPE_TAG]: { [header.message.rootTag]: isoJsonRoot(header.message, header.values), [message.rootTag]: isoJsonRoot(message, values) } }, null, 2) + '\n'
+  );
 }
 
 /** A single component/choice as ISO JSON, wrapped in a property named after the type. */

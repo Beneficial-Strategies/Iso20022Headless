@@ -10,6 +10,8 @@ export interface XsdIssue {
   message: string;
   /** Line in the validated XML (the same line as in the XML pane), when the validator gave one. */
   line?: number;
+  /** The issue is in the Business Application Header of an envelope, not in the message. */
+  header?: true;
 }
 
 export interface XsdResult {
@@ -154,6 +156,14 @@ export async function validateXsd(req: ValidateRequest, validate?: ValidateXml):
     .filter((e) => e.message && !/^input\.xml (validates|fails to validate)$/.test(e.message));
   return { valid: result.valid && issues.length === 0, issues };
 }
+
+/**
+ * Line numbers for an envelope. Header and message are validated as documents of their own (XML declaration on line 1, the element from
+ * line 2) but shown in the envelope: declaration, `<Envelope>`, the header's lines, then the message's. So a line of the header is shown
+ * `HEADER_LINE_OFFSET` lines further down, and a line of the message `documentLineOffset(headerXml)` lines further down.
+ */
+export const documentLineOffset = (headerXml: string): number => headerXml.split('\n').length - 1;
+export const HEADER_LINE_OFFSET = 1;
 
 const ISO_XSD_BASE = 'https://www.iso20022.org/sites/default/files/documents/messages/';
 

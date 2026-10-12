@@ -3,8 +3,10 @@ import {
   detectFormat,
   inspectJson,
   inspectXml,
+  parseIsoJsonEnvelope,
   parseIsoJsonFragment,
   parseIsoJsonMessage,
+  parseXmlEnvelope,
   parseXmlFragment,
   parseXmlMessage,
   type DocumentInfo,
@@ -57,6 +59,9 @@ export type PastePlan =
     }
   | { ok: false; error: PasteError };
 
+/** The Business Application Header: offered with every other message as an optional group (see `withApplicationHeader`). */
+export const HEADER_IDENTIFIER = 'head.001.001.04';
+
 /** The XML namespace a message of this library uses. */
 export const namespaceOf = (identifier: string): string => `urn:iso:std:iso:20022:tech:xsd:${identifier}`;
 
@@ -102,7 +107,15 @@ export async function planPaste(text: string, current: PasteCurrent, loadBundle:
   }
 
   const bundle = identifier === current.identifier ? current.bundle : await loadBundle(identifier);
-  const r = format === 'xml' ? parseXmlMessage(bundle.message, trimmed) : parseIsoJsonMessage(bundle.message, trimmed);
+  // a message with its header in an Envelope: the header's values come along under `ApplicationHeader`
+  const header = info.kind === 'envelope' ? (await loadBundle(HEADER_IDENTIFIER)).message : undefined;
+  const r = header
+    ? format === 'xml'
+      ? parseXmlEnvelope(header, bundle.message, trimmed)
+      : parseIsoJsonEnvelope(header, bundle.message, trimmed)
+    : format === 'xml'
+      ? parseXmlMessage(bundle.message, trimmed)
+      : parseIsoJsonMessage(bundle.message, trimmed);
   if (!r.ok) {
     const expected = r.error.code === 'wrong_body' ? bundle.message.bodyTag : r.error.code === 'wrong_root' ? bundle.message.rootTag : undefined;
     return fail({ code: 'parse', issue: r.error, ...(expected !== undefined ? { expected } : {}) });

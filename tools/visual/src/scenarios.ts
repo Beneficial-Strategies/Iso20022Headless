@@ -822,8 +822,11 @@ function copyAsScenarios(): Scenario[] {
         if (new Set(rows.map((r) => r.length)).size !== 1) problems.push('the spreadsheet rows differ in width');
         if (!g.__outline.includes('    Message Identification (required): MSG-1')) problems.push('the outline is wrong');
         const json = JSON.parse(await clipText(page));
-        if (json.identifier !== 'pain.001.001.13' || json.elements[0].name !== 'GroupHeader') problems.push('the JSON is wrong');
-        if (json.elements[0].children?.[0]?.value !== 'MSG-1') problems.push('the JSON lacks the value');
+        // the form lists what it shows: the header group (not included) comes first, then the message's own groups
+        const group = json.elements.find((e: { name: string }) => e.name === 'GroupHeader');
+        if (json.identifier !== 'pain.001.001.13' || !group) problems.push('the JSON is wrong');
+        if (json.elements[0].name !== 'ApplicationHeader' || json.elements[0].status !== 'excluded') problems.push('the JSON does not list the header group as not included');
+        if (group?.children?.[0]?.value !== 'MSG-1') problems.push('the JSON lacks the value');
         return problems;
       },
     },
@@ -1146,6 +1149,24 @@ function xsdScenarios(): Scenario[] {
         if (!/NbOfTxs/.test(p.text) || !/pattern/.test(p.text)) problems.push(`the bad number of transactions is not reported: ${JSON.stringify(p.lines)}`);
         if (p.count !== '1 error') problems.push(`expected exactly "1 error", got "${p.count}"`);
         if (/\{urn:/.test(p.text)) problems.push('the message still carries the namespace noise');
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'xsd-header-is-skipped-without-its-schema',
+      steps: async (page) => {
+        await waitForXsd(page, 'unavailable');
+        await loadSchemaFile(page, TEST_XSD);
+        await page.evaluate(() => (document.querySelector('#include-ApplicationHeader') as HTMLInputElement).click());
+        await settle(500);
+        await clickXsd(page);
+        await waitForPanel(page, (p) => /error|✓/.test(p.count));
+      },
+      expect: async (page) => {
+        const p = await panel(page);
+        const problems: string[] = [];
+        if (!/head\.001\.001\.04/.test(p.text) || !/only the message was checked/.test(p.text)) problems.push(`the panel does not say the header was not checked: ${JSON.stringify(p.text.slice(0, 200))}`);
         return problems;
       },
     },
@@ -1799,6 +1820,76 @@ function languageScenarios(): Scenario[] {
         if (!/head/.test(facts.area)) problems.push(`the area picker says "${facts.area}", not head`);
         if (!/<AppHdr xmlns="urn:iso:std:iso:20022:tech:xsd:head\.001\.001\.04"/.test(facts.xml)) problems.push(`the XML does not start with AppHdr: ${facts.xml.slice(0, 120)}`);
         if (/<Document/.test(facts.xml)) problems.push('the header XML is wrapped in Document');
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'header-group-is-offered-above-the-message',
+      query: '?message=pain.002.001.15&lang=en',
+      expect: async (page) => {
+        const facts = await page.evaluate(() => ({
+          toggle: !!document.querySelector('#include-ApplicationHeader'),
+          checked: (document.querySelector('#include-ApplicationHeader') as HTMLInputElement | null)?.checked ?? false,
+          text: document.querySelector('[data-schema-form]')?.textContent ?? '',
+          xml: document.querySelector('.cm-content')?.textContent ?? '',
+        }));
+        const problems: string[] = [];
+        if (!facts.toggle) problems.push('there is no "Include Business Application Header" switch');
+        if (facts.checked) problems.push('the header group starts ticked');
+        if (!/Include Business Application Header/.test(facts.text)) problems.push('the switch has the wrong wording');
+        if (facts.text.indexOf('Business Application Header') > facts.text.indexOf('Group Header') && facts.text.includes('Group Header')) problems.push('the header group is not above the group header');
+        if (!/<Document/.test(facts.xml) || /<Envelope/.test(facts.xml)) problems.push('the XML is not the plain message while the header group is off');
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'header-group-ticked-makes-an-envelope',
+      query: '?message=pain.002.001.15&lang=en',
+      steps: async (page) => {
+        await page.evaluate(() => (document.querySelector('#include-ApplicationHeader') as HTMLInputElement).click());
+        await settle(700);
+      },
+      expect: async (page) => {
+        const facts = await page.evaluate(() => ({
+          xml: document.querySelector('.cm-content')?.textContent ?? '',
+          text: document.querySelector('[data-schema-form]')?.textContent ?? '',
+        }));
+        const problems: string[] = [];
+        if (!/<Envelope>/.test(facts.xml)) problems.push(`the XML is not in an envelope: ${facts.xml.slice(0, 100)}`);
+        if (!/<AppHdr xmlns="urn:iso:std:iso:20022:tech:xsd:head\.001\.001\.04">/.test(facts.xml)) problems.push('the AppHdr is missing');
+        if (!/<Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain\.002\.001\.15">/.test(facts.xml)) problems.push('the Document is missing');
+        if (!/<MsgDefIdr>pain\.002\.001\.15<\/MsgDefIdr>/.test(facts.xml)) problems.push('the message definition identifier was not filled in');
+        if (!/<CreDt>\d{4}-\d\d-\d\dT/.test(facts.xml)) problems.push('the creation date was not filled in');
+        if (facts.xml.indexOf('</AppHdr>') > facts.xml.indexOf('<Document')) problems.push('the header and the message are nested, not side by side');
+        if (!/Business Message Identifier/.test(facts.text)) problems.push('the header fields are not shown');
+        return problems;
+      },
+    },
+    {
+      ...base,
+      name: 'header-group-keeps-its-values-when-unticked-and-ticked-again',
+      query: '?message=pain.002.001.15&lang=en',
+      steps: async (page) => {
+        const toggle = () => page.evaluate(() => (document.querySelector('#include-ApplicationHeader') as HTMLInputElement).click());
+        await toggle();
+        await settle(500);
+        await page.locator('#ApplicationHeader-BusinessMessageIdentifier').fill('BIZ-KEEP');
+        await settle(300);
+        await toggle(); // off: the envelope goes away
+        await settle(400);
+        await toggle(); // on again
+        await settle(700);
+      },
+      expect: async (page) => {
+        const facts = await page.evaluate(() => ({
+          value: (document.querySelector('#ApplicationHeader-BusinessMessageIdentifier') as HTMLInputElement | null)?.value ?? '',
+          xml: document.querySelector('.cm-content')?.textContent ?? '',
+        }));
+        const problems: string[] = [];
+        if (facts.value !== 'BIZ-KEEP') problems.push(`the header lost its value: "${facts.value}"`);
+        if (!/<BizMsgIdr>BIZ-KEEP<\/BizMsgIdr>/.test(facts.xml)) problems.push('the XML does not hold the kept value');
         return problems;
       },
     },

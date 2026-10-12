@@ -165,6 +165,7 @@ export const pageFr: PageMessages = {
   xsdEngineFailed: 'Le validateur n’a pas pu s’exécuter : {why}',
   xsdClose: 'Fermer les erreurs de validation',
   xsdLine: 'Ligne {n}',
+  xsdHeaderNotChecked: 'Le schéma de l\'en-tête (head.001.001.04) n\'a pas pu être chargé ; seul le message a été vérifié.',
   xsdLoadOther: 'Charger un autre fichier de schéma…',
   xsdSchemaFrom: 'Schéma : {source}',
   bannerTitle: 'Explorateur de messages ISO 20022',

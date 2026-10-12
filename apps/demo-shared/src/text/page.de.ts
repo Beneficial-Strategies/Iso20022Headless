@@ -165,6 +165,7 @@ export const pageDe: PageMessages = {
   xsdEngineFailed: 'Der Validator konnte nicht ausgeführt werden: {why}',
   xsdClose: 'Validierungsfehler schließen',
   xsdLine: 'Zeile {n}',
+  xsdHeaderNotChecked: 'Das Schema des Headers (head.001.001.04) konnte nicht geladen werden; geprüft wurde nur die Nachricht.',
   xsdLoadOther: 'Eine andere Schemadatei laden…',
   xsdSchemaFrom: 'Schema: {source}',
   bannerTitle: 'ISO 20022 Message Explorer',
