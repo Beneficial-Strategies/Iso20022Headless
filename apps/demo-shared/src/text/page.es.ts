@@ -148,6 +148,8 @@ export const pageEs: PageMessages = {
   areaDesc_acmt: 'Mensajes que respaldan la gestión de actividades relacionadas con cuentas, como la apertura y el mantenimiento de una cuenta.',
   areaName_head: 'Cabecera de aplicación comercial',
   areaDesc_head: 'Cabecera que contiene información comercial relevante antes de procesar un mensaje.',
+  areaName_semt: 'Gestión de valores',
+  areaDesc_semt: 'Mensajes que respaldan los procesos posteriores a la liquidación de valores (incluida la información sobre movimientos, operaciones y saldos de valores), los procesos necesarios para proteger los derechos del beneficiario final durante la liquidación, así como las excepciones e investigaciones relacionadas con operaciones con valores.',
   xsdLabel: 'Validar XSD',
   xsdReady: 'Validar el texto del mensaje de abajo con {location}',
   xsdReadyFile: 'Validar el texto del mensaje de abajo con {file} (cargado desde su equipo)',

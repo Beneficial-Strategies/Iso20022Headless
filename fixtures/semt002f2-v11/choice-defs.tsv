@@ -1,0 +1,5 @@
+choice	memberId	memberName	text
+Frequency34Choice	_5ePNQZNLEeWGlc8L7oPDIg	Code	Frequency expressed as an ISO 20022 code.
+Frequency34Choice	_5ePNRZNLEeWGlc8L7oPDIg	Proprietary	Frequency expressed as a proprietary code.
+BalanceQuantity17Choice	_csW4BTi8Eeydid5dcNPKvg	Quantity	Total quantity of financial instruments of the balance.
+BalanceQuantity17Choice	_csW4DTi8Eeydid5dcNPKvg	Proprietary	Total quantity of financial instruments of the balance.

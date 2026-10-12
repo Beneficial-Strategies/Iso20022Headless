@@ -147,6 +147,8 @@ export const pageEn: PageMessages = {
   areaDesc_acmt: 'Messages that support the management of account related activities, such as the opening and maintenance of an account.',
   areaName_head: 'Business Application Header',
   areaDesc_head: 'Header that contains business information that is relevant before processing a message.',
+  areaName_semt: 'Securities Management',
+  areaDesc_semt: 'Messages that support post-settlement processes for securities (including reporting on securities movements, trades and balances), the processes required to protect beneficial owner\'s rights throughout settlement, plus any exceptions and investigations related to securities transactions.',
   xsdLabel: 'XSD Validate',
   xsdReady: 'Validate the text of the message below using {location}',
   xsdReadyFile: 'Validate the text of the message below using {file} (loaded from your computer)',

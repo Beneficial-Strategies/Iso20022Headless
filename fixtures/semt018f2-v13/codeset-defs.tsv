@@ -1,0 +1,6 @@
+codeSet	isoId	text
+StatementStructure1Code	_ZQD0Jtp-Ed-ak6NoX_4Aeg_-1907403556	Specifies the type of balances on which the statement is prepared.
+PendingReason24Code	_NklMbCW-EeygjNFjAlVoPA	Specifies the reason the transaction/instruction is pending settlement. Settlement on the instructed settlement date is still possible.
+FailingReason4Code	_u0BzoSW-EeygjNFjAlVoPA	Specifies the reason the transaction/instruction is failing settlement. Settlement on the instructed settlement date is no longer possible.
+PendingProcessingReason4Code	_BYbMigpKEeup4r-PFG2T5Q	Specifies the reason the transaction/instruction is failing settlement. Settlement on the instructed settlement date is no longer possible.
+RepurchaseType9Code	_e06jwI-REeaVK-2bgpxeYw	Specifies the type of repurchase transaction.

@@ -73,7 +73,9 @@ import {
   NumberSchema,
   BaseOneRateSchema,
   ActiveOrHistoricCurrencyAndAmountSchema,
+  PlusOrMinusIndicatorSchema,
   Max6TextSchema,
+  Max8TextSchema,
   ExternalBankTransactionDomain1CodeSchema,
   ExternalBankTransactionFamily1CodeSchema,
   ExternalBankTransactionSubFamily1CodeSchema,
@@ -191,8 +193,6 @@ export const BillingBalanceType1ChoiceSchema = choiceOf({
   Proprietary: Max35TextSchema,
 });
 
-export const PlusOrMinusIndicatorSchema = indicator;
-
 export const AmountAndDirection34Schema = z.strictObject({
   Amount: ActiveOrHistoricCurrencyAndAmountSchema,
   Sign: PlusOrMinusIndicatorSchema,
@@ -232,8 +232,6 @@ export const BillingSubServiceIdentification1Schema = z.strictObject({
   Issuer: BillingSubServiceQualifier1ChoiceSchema,
   Identification: Max35TextSchema,
 });
-
-export const Max8TextSchema = textType({min: 1, max: 8});
 
 export const BillingServiceCommonIdentification1Schema = z.strictObject({
   Issuer: Max6TextSchema,
@@ -657,11 +655,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "Proprietary", isoId: "_6Q_lhpqlEeGSON8vddiWzQ_1258331398", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
     ],
   },
-  "PlusOrMinusIndicator": {
-    name: "PlusOrMinusIndicator",
-    isoId: "_YXvFA9p-Ed-ak6NoX_4Aeg_143431681",
-    kind: "boolean",
-  },
   "AmountAndDirection34": {
     name: "AmountAndDirection34",
     isoId: "_6SezSZqlEeGSON8vddiWzQ_1777176612",
@@ -743,13 +736,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "Issuer", isoId: "_6Oww7JqlEeGSON8vddiWzQ_-1383956684", xmlTag: "Issr", displayName: displayName("Issuer"), kind: "choice", type: "BillingSubServiceQualifier1Choice", required: true }),
       f({ name: "Identification", isoId: "_6Oww7ZqlEeGSON8vddiWzQ_83192079", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: true }),
     ],
-  },
-  "Max8Text": {
-    name: "Max8Text",
-    isoId: "_YYU65dp-Ed-ak6NoX_4Aeg_1066600236",
-    kind: "text",
-    minLength: 1,
-    maxLength: 8,
   },
   "BillingServiceCommonIdentification1": {
     name: "BillingServiceCommonIdentification1",
@@ -1186,7 +1172,9 @@ export const typeDescriptors: TypeDescriptors = {
   "Number": sharedTypeDescriptors["Number"]!,
   "BaseOneRate": sharedTypeDescriptors["BaseOneRate"]!,
   "ActiveOrHistoricCurrencyAndAmount": sharedTypeDescriptors["ActiveOrHistoricCurrencyAndAmount"]!,
+  "PlusOrMinusIndicator": sharedTypeDescriptors["PlusOrMinusIndicator"]!,
   "Max6Text": sharedTypeDescriptors["Max6Text"]!,
+  "Max8Text": sharedTypeDescriptors["Max8Text"]!,
   "ExternalBankTransactionDomain1Code": sharedTypeDescriptors["ExternalBankTransactionDomain1Code"]!,
   "ExternalBankTransactionFamily1Code": sharedTypeDescriptors["ExternalBankTransactionFamily1Code"]!,
   "ExternalBankTransactionSubFamily1Code": sharedTypeDescriptors["ExternalBankTransactionSubFamily1Code"]!,

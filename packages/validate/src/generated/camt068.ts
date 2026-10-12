@@ -32,6 +32,7 @@ import {
   LEIIdentifierSchema,
   PartyIdentification136Schema,
   DocumentIdentification51Schema,
+  PartialSettlement2CodeSchema,
   IBAN2007IdentifierSchema,
   Max34TextSchema,
   ExternalAccountIdentification1CodeSchema,
@@ -79,8 +80,6 @@ import {
   sharedTypeDescriptors,
 } from './shared.ts';
 
-export const PartialSettlement2CodeSchema = z.enum(["PAIN", "PARC"]);
-
 export const AdditionalParameters16Schema = z.strictObject({
   PartialSettlement: PartialSettlement2CodeSchema.optional(),
   PreviousPartialConfirmationIdentification: Max35TextSchema.optional(),
@@ -116,12 +115,6 @@ export const IntraBalanceMovementConfirmationV02Schema = z.strictObject({
 const f = (d: FieldDescriptor): FieldDescriptor => d;
 
 const ownTypeDescriptors: TypeDescriptors = {
-  "PartialSettlement2Code": {
-    name: "PartialSettlement2Code",
-    isoId: "_POj5gEAuEeGeCKosDOIVvQ_1172446650",
-    kind: "code",
-    options: [{ value: "PAIN", name: "PartialSettlement", isoId: "_POj5gUAuEeGeCKosDOIVvQ_-493303667" }, { value: "PARC", name: "PartiallyConfirmed", isoId: "_POtDcEAuEeGeCKosDOIVvQ_-607142733" }],
-  },
   "AdditionalParameters16": {
     name: "AdditionalParameters16",
     isoId: "_jY2uRe5NEeCisYr99QEiWA_-1035594150",
@@ -188,6 +181,7 @@ export const typeDescriptors: TypeDescriptors = {
   "LEIIdentifier": sharedTypeDescriptors["LEIIdentifier"]!,
   "PartyIdentification136": sharedTypeDescriptors["PartyIdentification136"]!,
   "DocumentIdentification51": sharedTypeDescriptors["DocumentIdentification51"]!,
+  "PartialSettlement2Code": sharedTypeDescriptors["PartialSettlement2Code"]!,
   "IBAN2007Identifier": sharedTypeDescriptors["IBAN2007Identifier"]!,
   "Max34Text": sharedTypeDescriptors["Max34Text"]!,
   "ExternalAccountIdentification1Code": sharedTypeDescriptors["ExternalAccountIdentification1Code"]!,

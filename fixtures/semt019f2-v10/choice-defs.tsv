@@ -1,0 +1,52 @@
+choice	memberId	memberName	text
+AllegementStatus4Choice	_6MjsL5NLEeWGlc8L7oPDIg	Code	Status of the allegement reported.
+AllegementStatus4Choice	_6MjsN5NLEeWGlc8L7oPDIg	Proprietary	Status of the allegement reported.
+MarketType16Choice	_cj_VXZKQEeWHWpTQn1FFVg	Code	Market type expressed as an ISO 20022 code.
+MarketType16Choice	_cj_VZZKQEeWHWpTQn1FFVg	Proprietary	Market type expressed as a proprietary code.
+TradeDate9Choice	_qImeC83yEee5nJBZsW8MFQ	Date	Date expressed as an ISO date.
+TradeDate9Choice	_qImeGc3yEee5nJBZsW8MFQ	DateCode	Date expressed as a code.
+TradeDateCode4Choice	_5TGUfZNLEeWGlc8L7oPDIg	Code	Trade date expressed as an ISO 20022 code.
+TradeDateCode4Choice	_5TGUhZNLEeWGlc8L7oPDIg	Proprietary	Trade date expressed as a proprietary code.
+SettlementDate20Choice	_qImeUc3yEee5nJBZsW8MFQ	Date	Date in ISO format.
+SettlementDate20Choice	_qImeX83yEee5nJBZsW8MFQ	DateCode	Date and time at which the securities are to be delivered or received.
+SettlementDateCode9Choice	_5TGUvZNLEeWGlc8L7oPDIg	Code	Settlement date expressed as an ISO 20022 code.
+SettlementDateCode9Choice	_5TGUxZNLEeWGlc8L7oPDIg	Proprietary	Settlement date expressed as a proprietary code.
+YieldedOrValueType2Choice	_VBLs0QycEeuG8M5giQ2e0w	Yielded	Indicates whether the price is expressed as a yield.
+YieldedOrValueType2Choice	_VBLs0wycEeuG8M5giQ2e0w	ValueType	Type of value in which the price is expressed.
+TradeTransactionCondition6Choice	_5mslt5NLEeWGlc8L7oPDIg	Code	Trade conditions expressed as an ISO 20022 code.
+TradeTransactionCondition6Choice	_5mslv5NLEeWGlc8L7oPDIg	Proprietary	Trade conditions expressed as a proprietary code.
+CashAccountIdentification6Choice	_WO8Mi9p-Ed-ak6NoX_4Aeg_-1012920809	IBAN	International Bank Account Number (IBAN) - identifier used internationally by financial institutions to uniquely identify the account of a customer. Further specifications of the format and content of the IBAN can be found in the standard ISO 13616 "Banking and related financial services - International Bank Account Number (IBAN)" version 1997-10-01, or later revisions.
+CashAccountIdentification6Choice	_WO8MjNp-Ed-ak6NoX_4Aeg_-834802137	Proprietary	Unique identifier for an account. It is assigned by the account servicer using a proprietary identification scheme.
+TerminationDate7Choice	_5TocZc3yEee5nJBZsW8MFQ	Date	Date in ISO format.
+TerminationDate7Choice	_5Tocc83yEee5nJBZsW8MFQ	Code	Closing date/time or maturity date/time of the transaction expressed as an ISO 20022 code.
+DateCode32Choice	_5mw3vZNLEeWGlc8L7oPDIg	Code	Date expressed as an ISO 20022 code.
+DateCode32Choice	_5mw3xZNLEeWGlc8L7oPDIg	Proprietary	Date expressed as a proprietary code.
+RateType67Choice	_5mw355NLEeWGlc8L7oPDIg	Code	Rate expressed as an ISO 20022 code.
+RateType67Choice	_5mw36ZNLEeWGlc8L7oPDIg	Proprietary	Rate expressed as an a proprietary code.
+LegalFramework4Choice	_5mxdwJNLEeWGlc8L7oPDIg	Code	Legal framework expressed as an ISO 20022 code.
+LegalFramework4Choice	_5mxdyJNLEeWGlc8L7oPDIg	Proprietary	Legal framework expressed as a proprietary code.
+SecuritiesTransactionType49Choice	_ZdqQxffXEeiNZp_PtLohLw	Code	Securities transaction type expressed as an ISO 20022 code.
+SecuritiesTransactionType49Choice	_ZdqQzffXEeiNZp_PtLohLw	Proprietary	Securities transaction type expressed as a proprietary code.
+SettlementTransactionCondition26Choice	_6IdOqZNLEeWGlc8L7oPDIg	Code	Settlement conditions expressed as an ISO 20022 code.
+SettlementTransactionCondition26Choice	_6IdOsZNLEeWGlc8L7oPDIg	Proprietary	Settlement conditions expressed as a proprietary code.
+BeneficialOwnership5Choice	_5m6A5ZNLEeWGlc8L7oPDIg	Indicator	Specifies whether there is change of beneficial ownership.
+BeneficialOwnership5Choice	_5m6A7ZNLEeWGlc8L7oPDIg	Proprietary	Beneficial ownership information expressed a proprietary code.
+CashSettlementSystem5Choice	_5m6BB5NLEeWGlc8L7oPDIg	Code	Cash settlement system expressed as an ISO 20022 code.
+CashSettlementSystem5Choice	_5m6BD5NLEeWGlc8L7oPDIg	Proprietary	Cash settlement system expressed as a proprietary code.
+MarketClientSide7Choice	_5TtVX83yEee5nJBZsW8MFQ	Code	Market side or a client side information expressed as an ISO 20022 code.
+MarketClientSide7Choice	_5TtVZ83yEee5nJBZsW8MFQ	Proprietary	Market side or a client side information expressed as a proprietary code.
+Registration11Choice	_5TJ-u5NLEeWGlc8L7oPDIg	Code	Registration information expressed as an ISO 20022 code.
+Registration11Choice	_5TJ-w5NLEeWGlc8L7oPDIg	Proprietary	Registration information expressed as a proprietary code.
+RepurchaseType17Choice	_6Id1lZNLEeWGlc8L7oPDIg	Code	Type of securities financing transaction process expressed as an ISO 20022 code.
+RepurchaseType17Choice	_6Id1nZNLEeWGlc8L7oPDIg	Proprietary	Type of securities financing transaction process expressed as a proprietary code.
+SecuritiesRTGS5Choice	_5TJ_A5NLEeWGlc8L7oPDIg	Indicator	Specifies whether the settlement transaction is to be settled through an RTGS or a non RTGS system.
+SecuritiesRTGS5Choice	_5TJ_C5NLEeWGlc8L7oPDIg	Proprietary	Securities RTGS information expressed as a proprietary code.
+PartyIdentification145Choice	_6slov_fVEeiNZp_PtLohLw	AnyBIC	Unique and unambiguous way to identify an organisation.
+PartyIdentification145Choice	_6slowffVEeiNZp_PtLohLw	NameAndAddress	Unique and unambiguous way to identify an organisation.
+PartyIdentification145Choice	_6slow_fVEeiNZp_PtLohLw	Country	Unique and unambiguous way to identify an organisation.
+IdentificationType44Choice	_chc_C5KQEeWHWpTQn1FFVg	Code	Type of identification is defined using a code.
+IdentificationType44Choice	_chdlcZKQEeWHWpTQn1FFVg	Proprietary	Type of identification is defined using a data source scheme.
+PartyIdentification176Choice	_43Snq_fWEeiNZp_PtLohLw	AnyBIC	Code allocated to a financial or non-financial institution by the ISO 9362 Registration Authority, as described in ISO 9362 "Banking - Banking telecommunication messages - Business identifier code (BIC)".
+PartyIdentification176Choice	_43SnrffWEeiNZp_PtLohLw	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to a financial institution using a proprietary identification scheme.
+PartyIdentification176Choice	_43SntffWEeiNZp_PtLohLw	NameAndAddress	Name and address of a party.
+PartyIdentification176Choice	_43SnvffWEeiNZp_PtLohLw	Country	Country in which a person resides (the place of a person's home). In the case of a company, it is the country from which the affairs of that company are directed.

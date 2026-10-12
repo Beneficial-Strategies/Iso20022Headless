@@ -1,0 +1,67 @@
+{
+  "identifier": "semt.018.001.15",
+  "name": "SecuritiesTransactionPendingReportV15",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:semt.018.001.15",
+  "bodyTag": "SctiesTxPdgRpt",
+  "out": "semt018",
+  "isoId": "1805316d-164b-4aa1-806a-24ca06896315",
+  "definition": "Scope|SecuritiesTransactionPendingReport  is sent by an account servicer to an account owner to provide, as at a specified time, the details of pending increases and decreases of holdings, for all or selected securities in a specified safekeeping account, for all or selected reasons why the transaction is pending. |The account servicer/owner relationship may be:|- a central securities depository or another settlement market infrastructure acting on behalf of its participants|- an agent (sub-custodian) acting on behalf of its global custodian customer, or |- a custodian acting on behalf of an investment management institution or a broker/dealer.||Usage|The statement may also include future settlement or forward transactions which have become binding on the account owner.|The message may also be used to:|- re-send a message previously sent,|- provide a third party with a copy of a message for information,|- re-send to a third party a copy of a message for information using the relevant elements in the Business Application Header.",
+  "blocks": [
+    {
+      "name": "Pagination",
+      "isoId": "3d18f027-f8cf-4b99-830f-e09724b88778",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "StatementGeneralDetails",
+      "isoId": "f3728b03-fe9a-418c-b86e-4a4cbe7dd499",
+      "xmlTag": "StmtGnlDtls",
+      "type": "Statement64",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountOwner",
+      "isoId": "61b555cb-caf6-4e68-bfff-6df7dbb7f6ca",
+      "xmlTag": "AcctOwnr",
+      "type": "PartyIdentification144",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SafekeepingAccount",
+      "isoId": "6036ba55-cae8-40e3-8c32-e5c39ca8a8d8",
+      "xmlTag": "SfkpgAcct",
+      "type": "SecuritiesAccount19",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "BlockChainAddressOrWallet",
+      "isoId": "76f98af3-384b-48fd-b25c-c6f0e1026c95",
+      "xmlTag": "BlckChainAdrOrWllt",
+      "type": "BlockChainAddressWallet3",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Status",
+      "isoId": "ef4c2eb0-78c1-4c32-be73-47ae0483f508",
+      "xmlTag": "Sts",
+      "type": "StatusAndReason49",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "Transactions",
+      "isoId": "11e8b348-3913-490e-b207-c3a2c1560370",
+      "xmlTag": "Txs",
+      "type": "Transaction164",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

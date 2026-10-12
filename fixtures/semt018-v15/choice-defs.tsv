@@ -1,0 +1,31 @@
+choice	memberId	memberName	text
+Status43Choice	c16daf04-aac4-41ec-b817-edbf8fbf9f81	Proprietary	Proprietary status.
+Status43Choice	41fb6c32-f077-44f8-bfcc-f14f3124314c	MatchingStatus	Provides the matching status of the instruction.
+Status43Choice	b8b4b0f9-0bda-4676-84c5-fb4dc8ce97e4	InferredMatchingStatus	Provides the matching status of an instruction as known by the account servicer based on an allegement. At this time no matching took place on the market (at the CSD/ICSD).
+Status43Choice	d5d33296-f90a-4cd0-89d9-fc603ec9d6a3	SettlementStatus	Provides the status of settlement of a transaction.
+Status43Choice	bf16ee75-eda8-48a4-a680-402b4d75dedd	InstructionProcessingStatus	Provides the status of an instruction.
+SettlementStatus30Choice	_dCK7kyW-EeygjNFjAlVoPA	Pending	Instruction is pending. Settlement at the instructed settlement date is still possible.
+SettlementStatus30Choice	_dCK7myW-EeygjNFjAlVoPA	Failing	Instruction is failing. Settlement at the instructed settlement date is no longer possible.
+SettlementStatus30Choice	_dCK7oyW-EeygjNFjAlVoPA	Proprietary	Proprietary status.
+PendingStatus67Choice	_dbWQkSW-EeygjNFjAlVoPA	NoSpecifiedReason	Indicates that there is no reason available or to report.
+PendingStatus67Choice	_dbWQmSW-EeygjNFjAlVoPA	Reason	Specifies the reason of the pending status.
+PendingReason63Choice	_eOBDoSW-EeygjNFjAlVoPA	Code	Specifies the reason why the instruction has a pending status.
+PendingReason63Choice	_eOBDqSW-EeygjNFjAlVoPA	Proprietary	Specifies the reason why the instruction has a pending status.
+FailingStatus13Choice	_-H8CkSW-EeygjNFjAlVoPA	NoSpecifiedReason	Indicates that there is no reason available or to report.
+FailingStatus13Choice	_-H8CmSW-EeygjNFjAlVoPA	Reason	Specifies the reason of the failing status.
+FailingReason16Choice	_-11qYSW-EeygjNFjAlVoPA	Code	Specifies the reason why the instruction has a failing settlement status.
+FailingReason16Choice	_-11qaSW-EeygjNFjAlVoPA	Proprietary	Specifies the reason why the instruction has a failing settlement status.
+InstructionProcessingStatus61Choice	24bec065-9f87-42df-a966-ae9acc877bad	PendingProcessing	Instruction has been acknowledged by the account servicer, but processing of the instruction is pending.
+InstructionProcessingStatus61Choice	73165cd2-1dbc-4629-8cd7-6758336cf8a7	CancellationRequested	Cancellation request from your counterparty for this transaction is pending waiting for your cancellation request.
+InstructionProcessingStatus61Choice	91d2a333-957b-4d80-82e2-019ccc46a80e	AcknowledgedAccepted	Instruction has been acknowledged by the account servicer.
+InstructionProcessingStatus61Choice	1e0fe18d-1387-466a-a93d-564c334bf651	Cancelled	Instruction has been cancelled.
+InstructionProcessingStatus61Choice	35559f13-aca3-4e14-a005-c4137068db20	Generated	Transaction was created by the account servicer or a third party. It was not instructed directly by the account owner.
+InstructionProcessingStatus61Choice	218d8bf7-90e8-49bc-982a-3e0949e4d7a6	Repair	Instruction has been acknowledged by the account servicer but is in repair.
+InstructionProcessingStatus61Choice	fe32299c-8490-4c66-96a7-e62f9c8eb479	PendingCancellation	Cancellation request from yourself for this instruction is pending waiting for further processing.
+InstructionProcessingStatus61Choice	f298bf94-acbb-45b5-a64e-2521801d5eda	ModificationRequested	Modification request from your counterparty for this transaction is pending waiting for your cancellation request or your consent.
+SettlementOrCorporateActionEvent34Choice	_mmvLsYybEe-PVZsedaAGaA	SecuritiesTransactionType	Identifies the type of securities transaction.
+SettlementOrCorporateActionEvent34Choice	_mmvLuYybEe-PVZsedaAGaA	CorporateActionEventType	Specifies the type of corporate event.
+SettlementTransactionCondition41Choice	_KWsIUfHPEfChCaiL9q1LKg	Code	Settlement conditions expressed as an ISO 20022 code.
+SettlementTransactionCondition41Choice	_KWsIWfHPEfChCaiL9q1LKg	Proprietary	Settlement conditions expressed as a proprietary code.
+RepurchaseType22Choice	_xJQd0Y-REeaVK-2bgpxeYw	Code	Type of securities financing transaction process expressed as an ISO 20022 code.
+RepurchaseType22Choice	_xJQd2Y-REeaVK-2bgpxeYw	Proprietary	Type of securities financing transaction process expressed as a proprietary code.

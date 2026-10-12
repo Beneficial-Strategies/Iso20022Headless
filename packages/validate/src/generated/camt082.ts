@@ -33,8 +33,10 @@ import {
   PartyIdentification136Schema,
   DocumentIdentification51Schema,
   MovementResponseType1CodeSchema,
+  CancellationProcessingStatus3CodeSchema,
   Exact4AlphaNumericTextSchema,
   GenericIdentification30Schema,
+  CancellationProcessingStatus9ChoiceSchema,
   IBAN2007IdentifierSchema,
   Max34TextSchema,
   ExternalAccountIdentification1CodeSchema,
@@ -66,13 +68,6 @@ import {
   sharedTypeDescriptors,
 } from './shared.ts';
 
-export const CancellationProcessingStatus3CodeSchema = z.enum(["CANP", "REJT", "REPR", "PACK", "DEND", "CAND"]);
-
-export const CancellationProcessingStatus9ChoiceSchema = choiceOf({
-  Code: CancellationProcessingStatus3CodeSchema,
-  Proprietary: GenericIdentification30Schema,
-});
-
 export const IntraBalanceQueryCriteria10Schema = z.strictObject({
   CancellationRequestIdentification: z.array(Max35TextSchema).optional(),
   ProcessingStatus: z.array(CancellationProcessingStatus9ChoiceSchema).optional(),
@@ -97,21 +92,6 @@ export const IntraBalanceMovementCancellationQueryV02Schema = z.strictObject({
 const f = (d: FieldDescriptor): FieldDescriptor => d;
 
 const ownTypeDescriptors: TypeDescriptors = {
-  "CancellationProcessingStatus3Code": {
-    name: "CancellationProcessingStatus3Code",
-    isoId: "_jQNIme5NEeCisYr99QEiWA_-1920216979",
-    kind: "code",
-    options: [{ value: "CANP", name: "PendingCancellation", isoId: "_jQW5kO5NEeCisYr99QEiWA_1377677964" }, { value: "REJT", name: "Rejected", isoId: "_jQW5ke5NEeCisYr99QEiWA_1441957570" }, { value: "REPR", name: "InRepair", isoId: "_jQW5ku5NEeCisYr99QEiWA_-653311621" }, { value: "PACK", name: "Accepted", isoId: "_jQW5k-5NEeCisYr99QEiWA_1263838898" }, { value: "DEND", name: "Denied", isoId: "_jQW5lO5NEeCisYr99QEiWA_1555796636" }, { value: "CAND", name: "CancellationCompleted", isoId: "_jQgqkO5NEeCisYr99QEiWA_-1855937373" }],
-  },
-  "CancellationProcessingStatus9Choice": {
-    name: "CancellationProcessingStatus9Choice",
-    isoId: "_BlUUkeFfEeWIA4E9cYSxxQ",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_BxXzkeFfEeWIA4E9cYSxxQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "CancellationProcessingStatus3Code", required: true }),
-      f({ name: "Proprietary", isoId: "_BxXzmeFfEeWIA4E9cYSxxQ", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
   "IntraBalanceQueryCriteria10": {
     name: "IntraBalanceQueryCriteria10",
     isoId: "_5NYApTEyEe6g-ffJsqGiSA",
@@ -168,8 +148,10 @@ export const typeDescriptors: TypeDescriptors = {
   "PartyIdentification136": sharedTypeDescriptors["PartyIdentification136"]!,
   "DocumentIdentification51": sharedTypeDescriptors["DocumentIdentification51"]!,
   "MovementResponseType1Code": sharedTypeDescriptors["MovementResponseType1Code"]!,
+  "CancellationProcessingStatus3Code": sharedTypeDescriptors["CancellationProcessingStatus3Code"]!,
   "Exact4AlphaNumericText": sharedTypeDescriptors["Exact4AlphaNumericText"]!,
   "GenericIdentification30": sharedTypeDescriptors["GenericIdentification30"]!,
+  "CancellationProcessingStatus9Choice": sharedTypeDescriptors["CancellationProcessingStatus9Choice"]!,
   "IBAN2007Identifier": sharedTypeDescriptors["IBAN2007Identifier"]!,
   "Max34Text": sharedTypeDescriptors["Max34Text"]!,
   "ExternalAccountIdentification1Code": sharedTypeDescriptors["ExternalAccountIdentification1Code"]!,

@@ -1,0 +1,4 @@
+codeSet	isoId	text
+HoldingRejectionReason41Code	_0vNGYL3REeO2FLWuu_JIqg	Specifies the reason the report item is rejected.
+HoldingAccountLevel1Code	_VKUfkE1pEeSvz4A_x0ui8g	Specifies the level at which the safekeeping holding account has been defined.
+ReportItemStatus1Code	_NSTaoEisEeSlHoYg_EudVQ	Specifies the status of an entry in a report.

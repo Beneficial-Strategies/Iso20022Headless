@@ -1,0 +1,30 @@
+choice	memberId	memberName	text
+PartyIdentification1Choice	_QQR1wNp-Ed-ak6NoX_4Aeg_-1748201286	BICOrBEI	Unique and unambiguous identifier for an organisation that is allocated by an institution.
+PartyIdentification1Choice	_QQa_oNp-Ed-ak6NoX_4Aeg_-1748201284	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to a financial institution using a proprietary identification scheme.
+PartyIdentification1Choice	_QQa_odp-Ed-ak6NoX_4Aeg_-395733973	NameAndAddress	Name by which a party is known and which is usually used to identify that party.
+FrequencyCodeAndDSSCode1Choice	_Q7Vk5tp-Ed-ak6NoX_4Aeg_1533373116	FrequencyAsCode	Frequency expressed as a code.
+FrequencyCodeAndDSSCode1Choice	_Q7Vk59p-Ed-ak6NoX_4Aeg_1533373125	FrequencyAsDSS	Frequency expressed as a data source scheme and a code used within the data source scheme.
+StatementUpdateTypeCodeAndDSSCodeChoice	_Q7Cp9Np-Ed-ak6NoX_4Aeg_-2092497455	StatementUpdateTypeAsCode	Update type expressed as a code.
+StatementUpdateTypeCodeAndDSSCodeChoice	_Q7Cp9dp-Ed-ak6NoX_4Aeg_-2045399501	StatementUpdateTypeAsDSS	Update type expressed as a data source scheme and a code used within the data source scheme.
+StatementBasisCodeAndDSSCodeChoice	_Q7Cp8dp-Ed-ak6NoX_4Aeg_-1663061250	StatementBasisAsCode	Statement basis expressed as a code.
+StatementBasisCodeAndDSSCodeChoice	_Q7Cp8tp-Ed-ak6NoX_4Aeg_-1630736025	StatementBasisAsDSS	Statement basis expressed as a data source scheme and a code used within the data source scheme.
+AccountIdentificationFormatChoice	_RBvu5tp-Ed-ak6NoX_4Aeg_1757395821	SimpleIdentification	Unique and unambiguous identification for the account between the account owner and the account servicer.
+AccountIdentificationFormatChoice	_RB5f4Np-Ed-ak6NoX_4Aeg_842152344	IdentificationAndPurpose	Identification of the account expressed with an account number and a code.
+AccountIdentificationFormatChoice	_RB5f4dp-Ed-ak6NoX_4Aeg_1770326434	IdentificationAsDSS	Identification of the account expressed with a data source scheme, a code used within the data source scheme and the account identification.
+BalanceQuantity1Choice	_RCDQ6Np-Ed-ak6NoX_4Aeg_1736172221	Quantity	Total quantity of financial instruments of the balance.
+BalanceQuantity1Choice	_RCMa0Np-Ed-ak6NoX_4Aeg_1824828268	QuantityAsDSS	Total quantity of financial instruments of the balance.
+FinancialInstrumentQuantityChoice	_Sn-F2dp-Ed-ak6NoX_4Aeg_1327975958	Unit	Quantity expressed as a number, eg, a number of shares.
+FinancialInstrumentQuantityChoice	_Sn-F2tp-Ed-ak6NoX_4Aeg_1583790387	FaceAmount	Quantity expressed as an amount representing the face amount, ie, the principal, of a debt instrument.
+FinancialInstrumentQuantityChoice	_SoH20Np-Ed-ak6NoX_4Aeg_1583790695	AmortisedValue	Quantity expressed as an amount representing the current amortised face amount of a bond, eg, a periodic reduction of a bond's principal amount.
+SafekeepingPlaceFormatChoice	_RB5f5dp-Ed-ak6NoX_4Aeg_-334909529	Identification	Place of safekeeping expressed as a code and BIC.
+SafekeepingPlaceFormatChoice	_RB5f5tp-Ed-ak6NoX_4Aeg_-292430851	IdentificationAsDSS	Place of safekeeping expressed with a propriety identification scheme.
+SafekeepingPlaceFormatChoice	_RB5f59p-Ed-ak6NoX_4Aeg_-308128679	IdentificationAsCountry	Place of safekeeping expressed with a country code.
+PriceRateOrAmountOrUnknownChoice	_QaaCFdp-Ed-ak6NoX_4Aeg_1030711693	Rate	Price expressed as a rate, ie, percentage.
+PriceRateOrAmountOrUnknownChoice	_QaaCFtp-Ed-ak6NoX_4Aeg_1030711746	Amount	Price expressed as a currency and value.
+PriceRateOrAmountOrUnknownChoice	_QaaCF9p-Ed-ak6NoX_4Aeg_-1972249999	UnknownIndicator	Indicates whether the market price is unknown.
+PriceSourceFormatChoice	_RCDQ5Np-Ed-ak6NoX_4Aeg_863703704	LocalMarketPlace	Source of price quotation is the market, expressed as a Market Identifier Code (MIC).
+PriceSourceFormatChoice	_RCDQ5dp-Ed-ak6NoX_4Aeg_1149070716	NonLocalMarketPlace	Source of a price quotation when it is not the local market.
+PriceSourceFormatChoice	_RCDQ5tp-Ed-ak6NoX_4Aeg_1174932111	PlaceAsDSS	Source of a price quotation expressed with a propriety identification scheme.
+SubBalanceQuantity1Choice	_QYn5adp-Ed-ak6NoX_4Aeg_-1820449767	Quantity	Quantity of securities in the sub-balance.
+SubBalanceQuantity1Choice	_QYn5atp-Ed-ak6NoX_4Aeg_-1819529328	QuantityAsDSS	Quantity of securities in the sub-balance.
+SubBalanceQuantity1Choice	_QYn5a9p-Ed-ak6NoX_4Aeg_-1813987615	QuantityAndAvailability	Quantity of securities in the sub-balance and whether the balance is available.

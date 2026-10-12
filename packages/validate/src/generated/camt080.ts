@@ -33,8 +33,10 @@ import {
   PartyIdentification136Schema,
   DocumentIdentification51Schema,
   MovementResponseType1CodeSchema,
+  ModificationProcessingStatus1CodeSchema,
   Exact4AlphaNumericTextSchema,
   GenericIdentification30Schema,
+  ModificationProcessingStatus9ChoiceSchema,
   IBAN2007IdentifierSchema,
   Max34TextSchema,
   ExternalAccountIdentification1CodeSchema,
@@ -66,13 +68,6 @@ import {
   sharedTypeDescriptors,
 } from './shared.ts';
 
-export const ModificationProcessingStatus1CodeSchema = z.enum(["PACK", "REJT", "MODC", "DEND", "MODP", "REPR"]);
-
-export const ModificationProcessingStatus9ChoiceSchema = choiceOf({
-  Code: ModificationProcessingStatus1CodeSchema,
-  Proprietary: GenericIdentification30Schema,
-});
-
 export const IntraBalanceQueryCriteria12Schema = z.strictObject({
   ModificationRequestIdentification: z.array(Max35TextSchema).optional(),
   ProcessingStatus: z.array(ModificationProcessingStatus9ChoiceSchema).optional(),
@@ -97,21 +92,6 @@ export const IntraBalanceMovementModificationQueryV02Schema = z.strictObject({
 const f = (d: FieldDescriptor): FieldDescriptor => d;
 
 const ownTypeDescriptors: TypeDescriptors = {
-  "ModificationProcessingStatus1Code": {
-    name: "ModificationProcessingStatus1Code",
-    isoId: "_jQgqke5NEeCisYr99QEiWA_-1469267591",
-    kind: "code",
-    options: [{ value: "PACK", name: "Accepted", isoId: "_jQgqku5NEeCisYr99QEiWA_1714788286" }, { value: "REJT", name: "Rejected", isoId: "_jQgqk-5NEeCisYr99QEiWA_1892906958" }, { value: "MODC", name: "Completed", isoId: "_jQgqlO5NEeCisYr99QEiWA_-1404987985" }, { value: "DEND", name: "Denied", isoId: "_jQp0gO5NEeCisYr99QEiWA_2006746024" }, { value: "MODP", name: "Pending", isoId: "_jQp0ge5NEeCisYr99QEiWA_1828627352" }, { value: "REPR", name: "InRepair", isoId: "_jQp0gu5NEeCisYr99QEiWA_831554999" }],
-  },
-  "ModificationProcessingStatus9Choice": {
-    name: "ModificationProcessingStatus9Choice",
-    isoId: "_w6pyceF8EeWCAvUNsZ5u6g",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_xFphgeF8EeWCAvUNsZ5u6g", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ModificationProcessingStatus1Code", required: true }),
-      f({ name: "Proprietary", isoId: "_xFphieF8EeWCAvUNsZ5u6g", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
   "IntraBalanceQueryCriteria12": {
     name: "IntraBalanceQueryCriteria12",
     isoId: "_70w5pTEyEe6g-ffJsqGiSA",
@@ -168,8 +148,10 @@ export const typeDescriptors: TypeDescriptors = {
   "PartyIdentification136": sharedTypeDescriptors["PartyIdentification136"]!,
   "DocumentIdentification51": sharedTypeDescriptors["DocumentIdentification51"]!,
   "MovementResponseType1Code": sharedTypeDescriptors["MovementResponseType1Code"]!,
+  "ModificationProcessingStatus1Code": sharedTypeDescriptors["ModificationProcessingStatus1Code"]!,
   "Exact4AlphaNumericText": sharedTypeDescriptors["Exact4AlphaNumericText"]!,
   "GenericIdentification30": sharedTypeDescriptors["GenericIdentification30"]!,
+  "ModificationProcessingStatus9Choice": sharedTypeDescriptors["ModificationProcessingStatus9Choice"]!,
   "IBAN2007Identifier": sharedTypeDescriptors["IBAN2007Identifier"]!,
   "Max34Text": sharedTypeDescriptors["Max34Text"]!,
   "ExternalAccountIdentification1Code": sharedTypeDescriptors["ExternalAccountIdentification1Code"]!,

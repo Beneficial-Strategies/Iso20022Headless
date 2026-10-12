@@ -1,0 +1,158 @@
+codeSet	code	enumName	isoId	text
+PendingProcessingReason7Code	BLOC	AccountBlocked	_0w5YUSm4EfGfZ9PfK70MMg	Your account is blocked, no instruction can settle over the account.
+PendingProcessingReason7Code	ADEA	AccountServicerDeadlineMissed	_0w5YUym4EfGfZ9PfK70MMg	Instruction was received after the account servicer's deadline. It will be managed as per the bilateral service agreement between the account servicer and account owner.
+PendingProcessingReason7Code	DOCY	AwaitingDocumentsOrEndorsementsFromYou	_0w5YVSm4EfGfZ9PfK70MMg	Awaiting documents or endorsements from you.
+PendingProcessingReason7Code	CAIS	AwaitingSecurities	_0w5YVym4EfGfZ9PfK70MMg	Awaiting financial instruments from a corporate action or other procedure, for example, conversion, dematerialisation, exchange, registration, stamping, splitting.
+PendingProcessingReason7Code	YCOL	CollateralShortage	_0w5YWSm4EfGfZ9PfK70MMg	Insufficient collateral in your account to execute the instruction.
+PendingProcessingReason7Code	CDEL	ConditionalDelivery	_0w5YWym4EfGfZ9PfK70MMg	Instruction is in a hold/frozen/preadvice mode as it fulfils predefined conditional delivery rules in the market infrastructure platform for conditional delivery.
+PendingProcessingReason7Code	CDAC	ConditionalDeliveryAwaitingCancellation	_0w5YXSm4EfGfZ9PfK70MMg	Awaiting cancellation of one of the party.
+PendingProcessingReason7Code	CDLR	ConditionalDeliveryAwaitingRelease	_0w5YXym4EfGfZ9PfK70MMg	Instruction is in a hold/frozen/preadvice mode. Market infrastructure platform is awaiting release.
+PendingProcessingReason7Code	CSDH	CSDHold	_0w5YYSm4EfGfZ9PfK70MMg	Central securities depository sets the instruction in a hold/frozen/preadvice mode.
+PendingProcessingReason7Code	CVAL	CSDValidation	_0w5YYym4EfGfZ9PfK70MMg	Instruction is in a hold/frozen/preadvice mode as it fulfils predefined conditions of a restriction processing type in the market infrastructure platform.
+PendingProcessingReason7Code	GLOB	GlobalFormSecurities	_0w5YZSm4EfGfZ9PfK70MMg	Settlement cannot be executed; financial instruments are in global form.
+PendingProcessingReason7Code	INBC	IncompleteNumberCount	_0w5YZym4EfGfZ9PfK70MMg	Not all the instructions part of a pool have been received.
+PendingProcessingReason7Code	LIQU	InsufficientCentralBankLiquidity	_0w5YaSm4EfGfZ9PfK70MMg	Central bank liquidity is insufficient.
+PendingProcessingReason7Code	MONY	InsufficientMoney	_0w5Yaym4EfGfZ9PfK70MMg	Insufficient money in your account.
+PendingProcessingReason7Code	LACK	LackOfSecurities	_0w5YbSm4EfGfZ9PfK70MMg	Insufficient financial instruments in your account.
+PendingProcessingReason7Code	FLIM	MaximumForeignLimitReached	_0w5Ybym4EfGfZ9PfK70MMg	Insufficient deliverable financial instruments in your account as maximum foreign limit has been reached.
+PendingProcessingReason7Code	MINO	MinimumSettlementAmount	_0w5YcSm4EfGfZ9PfK70MMg	Quantity instructed is lower than the minimum existing settlement quantity for the financial instrument.
+PendingProcessingReason7Code	MUNO	MultipleSettlementAmount	_0w5Ycym4EfGfZ9PfK70MMg	Quantity instructed is not a multiple of an existing settlement quantity lot for the financial instrument.
+PendingProcessingReason7Code	NEXT	NextProcess	_0w5YdSm4EfGfZ9PfK70MMg	Next process is launched. No processing pending problems to be reported.
+PendingProcessingReason7Code	NOFX	NoForeignExchangeInstruction	_0w5Ydym4EfGfZ9PfK70MMg	A foreign exchange instruction from you is missing.
+PendingProcessingReason7Code	LALO	SecuritiesLoanedOut	_0w5YeSm4EfGfZ9PfK70MMg	Financial instruments are out on loan.
+PendingProcessingReason7Code	COLL	SecuritiesPledgedAsCollateral	_0w5Yeym4EfGfZ9PfK70MMg	Financial instruments are not deliverable as they are pledged as collateral.
+PendingProcessingReason7Code	OTHR	Other	_0w5YfSm4EfGfZ9PfK70MMg	Other. See Narrative.
+PendingProcessingReason7Code	CERT	WrongCertificatesNumbers	_0w5Yfym4EfGfZ9PfK70MMg	Certificate number error.
+PendingProcessingReason7Code	DENO	UnavailableDeliverableDenominatedQuantity	_0w5YgSm4EfGfZ9PfK70MMg	Quantity instructed does not match the denomination available/deliverable. Physical securities need to be obtained in deliverable denominated quantities.
+PendingReason32Code	ADEA	AccountServicerDeadlineMissed	_9D-o0Sm4EfGfZ9PfK70MMg	Instruction was received after the account servicer's deadline. It will be managed as per the bilateral service agreement between the account servicer and account owner.
+PendingReason32Code	CONF	AwaitingConfirmation	_9D-o0ym4EfGfZ9PfK70MMg	Awaiting confirmation from the counterparty.
+PendingReason32Code	CDCY	ConditionalCurrency	_9D-o1Sm4EfGfZ9PfK70MMg	Execution is conditional to the execution of a process linked to the currency of the transaction.
+PendingReason32Code	CDRE	ConditionalRealignement	_9D-o1ym4EfGfZ9PfK70MMg	Execution is conditional to the execution of a process of realignment at the issuer CSD.
+PendingReason32Code	CDRG	ConditionalRegistrar	_9D-o2Sm4EfGfZ9PfK70MMg	Execution is conditional to the execution of a process at the registrar.
+PendingReason32Code	OTHR	Other	_9D-o2ym4EfGfZ9PfK70MMg	Other. See Narrative.
+PendingReason28Code	AWMO	AwaitingMoney	_c39FYYcNEe-_P9B6abNOwg	Financial instruments are delivered, but still awaiting money from counterparty.
+PendingReason28Code	ADEA	AccountServicerDeadlineMissed	_c39FY4cNEe-_P9B6abNOwg	Instruction was received after the account servicer's deadline. Processed on best effort basis.
+PendingReason28Code	CAIS	AwaitingSecurities	_c39FZYcNEe-_P9B6abNOwg	Awaiting financial instruments from a corporate action or other procedure, for example, conversion, dematerialisation, exchange, registration, stamping, splitting.
+PendingReason28Code	REFU	InstructionRefusedOrNotRecognised	_c39FZ4cNEe-_P9B6abNOwg	Instruction has been refused or not recognised and is represented automatically.
+PendingReason28Code	AWSH	AwaitingSecuritiesFromCounterparty	_c39FaYcNEe-_P9B6abNOwg	Financial instruments have not yet been received from the counterparty (if receive against payment trade), the money has been delivered.
+PendingReason28Code	PHSE	PhysicalDeliveryDelay	_c39Fa4cNEe-_P9B6abNOwg	Settlement is physical. Financial instruments are being delivered.
+PendingReason28Code	TAMM	TradeAmendedInMarket	_c39FbYcNEe-_P9B6abNOwg	Trade is being amended in the market.
+PendingReason28Code	DOCY	AwaitingDocumentsOrEndorsementsFromYou	_c39Fb4cNEe-_P9B6abNOwg	Awaiting documents or endorsements from you.
+PendingReason28Code	DOCC	AwaitingDocumentsOrEndorsementsFromCounterparty	_c39FcYcNEe-_P9B6abNOwg	Awaiting documents or endorsements from counterparty.
+PendingReason28Code	BLOC	AccountBlocked	_c39Fc4cNEe-_P9B6abNOwg	Your account is blocked, no instruction can settle over the account.
+PendingReason28Code	CHAS	EnquirySent	_c39FdYcNEe-_P9B6abNOwg	A chaser/enquiry has been sent.
+PendingReason28Code	NEWI	NewIssues	_c39Fd4cNEe-_P9B6abNOwg	Financial instrument is a new issue and not yet available/tradable.
+PendingReason28Code	CLAC	CounterpartyInsufficientSecurities	_c39FeYcNEe-_P9B6abNOwg	Insufficient deliverable financial instruments in counterparty's account or counterparty does not hold financial instruments.
+PendingReason28Code	MUNO	MultipleSettlementAmount	_c39Fe4cNEe-_P9B6abNOwg	Quantity instructed is not a multiple of an existing settlement quantity lot for the financial instrument.
+PendingReason28Code	GLOB	GlobalFormSecurities	_c39FfYcNEe-_P9B6abNOwg	Settlement cannot be executed; financial instruments are in global form.
+PendingReason28Code	PREA	YourInstructionOnHold	_c39Ff4cNEe-_P9B6abNOwg	Your instruction is a preadvice, that is, for matching only.
+PendingReason28Code	PART	TradeSettlesInPartials	_c39FgYcNEe-_P9B6abNOwg	Trade will settle in partials.
+PendingReason28Code	NMAS	NoMatchingRequired	_c39Fg4cNEe-_P9B6abNOwg	Instruction has not been matched; matching process is not required.
+PendingReason28Code	NOFX	NoForeignExchangeInstruction	_c39FhYcNEe-_P9B6abNOwg	A foreign exchange instruction from you is missing.
+PendingReason28Code	CMON	CounterpartyInsufficientMoney	_c39Fh4cNEe-_P9B6abNOwg	Insufficient money in counterparty's account.
+PendingReason28Code	YCOL	CollateralShortage	_c39FiYcNEe-_P9B6abNOwg	Insufficient collateral in your account to execute the instruction.
+PendingReason28Code	COLL	SecuritiesPledgedAsCollateral	_c39Fi4cNEe-_P9B6abNOwg	Financial instruments are not deliverable as they are pledged as collateral.
+PendingReason28Code	DEPO	RefusedDepositForIssueOfDepositaryReceipts	_c39FjYcNEe-_P9B6abNOwg	Deposit of shares for the issuing of depositary receipts has been refused. The allotment granted by the issuer is exceeded by your transaction.
+PendingReason28Code	FLIM	MaximumForeignLimitReached	_c39Fj4cNEe-_P9B6abNOwg	Insufficient deliverable financial instruments in your account as maximum foreign limit has been reached.
+PendingReason28Code	INCA	IncomeAdjustementRequired	_c39FkYcNEe-_P9B6abNOwg	Financial instruments require income adjustment, for example, dividend or interest.
+PendingReason28Code	LINK	PendingLinkedInstruction	_c39Fk4cNEe-_P9B6abNOwg	Your instruction is pending settlement because the instruction linked to it is pending.
+PendingReason28Code	FUTU	AwaitingSettlementDate	_c39FlYcNEe-_P9B6abNOwg	Awaiting settlement date. No settlement problems to be reported.
+PendingReason28Code	LACK	LackOfSecurities	_c39Fl4cNEe-_P9B6abNOwg	Insufficient financial instruments in your account.
+PendingReason28Code	LALO	SecuritiesLoanedOut	_c39FmYcNEe-_P9B6abNOwg	Financial instruments are out on loan.
+PendingReason28Code	MONY	InsufficientMoney	_c39Fm4cNEe-_P9B6abNOwg	Insufficient money in your account.
+PendingReason28Code	NCON	ConfirmationNotReceived	_c39FnYcNEe-_P9B6abNOwg	Confirmation of settlement has not yet been received.
+PendingReason28Code	REFS	NotInGoodOrder	_c39Fn4cNEe-_P9B6abNOwg	Delivery/receipt was refused because physical financial instruments are not in good order.
+PendingReason28Code	SDUT	LackOfStampDutyInformation	_c39FoYcNEe-_P9B6abNOwg	Stamp duty information is missing.
+PendingReason28Code	BATC	ProcessingBatchDifference	_c39Fo4cNEe-_P9B6abNOwg	Processing batch differs in the counterparty's instruction, for example, daytime/real-time versus overnight.
+PendingReason28Code	CYCL	AwaitingNextSettlementCycle	_c39FpYcNEe-_P9B6abNOwg	Your instruction is confirmed in the local market or is ready for settlement, awaiting next settlement cycle.
+PendingReason28Code	SBLO	SecuritiesBlocked	_c39Fp4cNEe-_P9B6abNOwg	Financial instruments are blocked due to a corporate action event, realignment, etc.
+PendingReason28Code	CPEC	CounterpartyInReceivership	_c39FqYcNEe-_P9B6abNOwg	Counterparty is in receivership (form of bankruptcy where a court appointed person - the receiver - manages the affairs of the business).
+PendingReason28Code	MINO	MinimumSettlementAmount	_c39Fq4cNEe-_P9B6abNOwg	Quantity instructed is lower than the minimum existing settlement quantity for the financial instrument.
+PendingReason28Code	IAAD	StatusReasonInvestigation	_c39FrYcNEe-_P9B6abNOwg	Pending reason being investigated.
+PendingReason28Code	OTHR	Other	_c39Fr4cNEe-_P9B6abNOwg	Other. See Narrative.
+PendingReason28Code	PHCK	PhysicalSecuritiesVerification	_c39FsYcNEe-_P9B6abNOwg	Physical financial instruments have been received and are being checked for authenticity.
+PendingReason28Code	BENO	BeneficialOwnershipDisagreement	_c39Fs4cNEe-_P9B6abNOwg	Disagreement in beneficial ownership.
+PendingReason28Code	BOTH	BothInstructionsOnHold	_c39FtYcNEe-_P9B6abNOwg	Counterparty's instruction and your instruction are on hold/frozen/ in a preadvice mode.
+PendingReason28Code	CLHT	ClearingHouseTrade	_c39Ft4cNEe-_P9B6abNOwg	Instructed settlement date does not agree with the settlement date on the clearing house trade, that is, a specific type of trade in India.
+PendingReason28Code	DENO	UnavailableDeliverableDenominatedQuantity	_c39FuYcNEe-_P9B6abNOwg	Quantity instructed does not match the denomination available/deliverable. Physical securities need to be obtained in deliverable denominated quantities.
+PendingReason28Code	DISA	NaturalDisaster	_c39Fu4cNEe-_P9B6abNOwg	Exceptional closing of all financial institutions due to natural disaster, for example, earthquake.
+PendingReason28Code	DKNY	CounterpartyReturnedShares	_c39FvYcNEe-_P9B6abNOwg	Counterparty has returned or refuses the securities.
+PendingReason28Code	FROZ	SecuritiesFrozenAtCSD	_c39Fv4cNEe-_P9B6abNOwg	Financial instruments are blocked at the Central Security Depository (CSD) following a corporate event.
+PendingReason28Code	LAAW	AwaitingOtherTransaction	_c39FwYcNEe-_P9B6abNOwg	Awaiting settlement of a purchase to cover failing positions.
+PendingReason28Code	LATE	MarketDeadlineMissed	_c39Fw4cNEe-_P9B6abNOwg	Instruction was received after market deadline.
+PendingReason28Code	LIQU	InsufficientCentralBankLiquidity	_c39FxYcNEe-_P9B6abNOwg	Central bank liquidity is insufficient.
+PendingReason28Code	PRCY	CounterpartyInstructionOnHold	_c39Fx4cNEe-_P9B6abNOwg	Counterparty's instruction is a preadvice, that is, for matching only.
+PendingReason28Code	REGT	CertificatesRejected	_c39FyYcNEe-_P9B6abNOwg	Certificates have been lodged with the registrar but rejected due to incomplete documentation or foreign ownership limitation reached.
+PendingReason28Code	SETS	SettlementSystemMethodModified	_c39Fy4cNEe-_P9B6abNOwg	Settlement system/method has been modified at central securities depository to allow settlement.
+PendingReason28Code	CERT	WrongCertificatesNumbers	_c39FzYcNEe-_P9B6abNOwg	Certificate number error.
+PendingReason28Code	PRSY	SystemOnHold	_c39Fz4cNEe-_P9B6abNOwg	Transaction was put on hold/frozen by the system.
+PendingReason28Code	CSDH	CSDHold	_c39F0YcNEe-_P9B6abNOwg	Central securities depository sets the instruction in a hold/frozen/preadvice mode.
+PendingReason28Code	CVAL	CSDValidation	_c39F04cNEe-_P9B6abNOwg	Instruction is in a hold/frozen/preadvice mode as it fulfils predefined conditions of a restriction processing type in the market infrastructure platform.
+PendingReason28Code	CDLR	ConditionalDeliveryAwaitingRelease	_c39F1YcNEe-_P9B6abNOwg	Instruction is in a hold/frozen/preadvice mode. Market infrastructure platform is awaiting release.
+PendingReason28Code	INBC	IncompleteNumberCount	_c39F14cNEe-_P9B6abNOwg	Not all the instructions part of a pool have been received.
+PendingReason28Code	PATD	PartialDiffer	_gK9HMYcNEe-_P9B6abNOwg	Disagreement on partial indicator preventing partial settlement.
+PendingReason28Code	PREL	PartiallyReleased	_gUy_sYcNEe-_P9B6abNOwg	Transaction has been partially released.
+FailingReason5Code	AWMO	AwaitingMoney	_a7ZqYYcTEe-F6Jd8tTRGHA	Financial instruments are delivered, but still awaiting money from counterparty.
+FailingReason5Code	BYIY	BuyInProcedure	_a7ZqY4cTEe-F6Jd8tTRGHA	Buy-in procedure has started on the market (on your behalf if your instruction is a receipt, by the counterparty if your instruction is a delivery).
+FailingReason5Code	CLAT	CounterpartyTooLateForSettlement	_a7ZqZYcTEe-F6Jd8tTRGHA	Counterparty's instruction was too late for settlement, that is the matching or settlement problems was solved too late.
+FailingReason5Code	ADEA	AccountServicerDeadlineMissed	_a7ZqZ4cTEe-F6Jd8tTRGHA	Instruction was received after the account servicer's deadline. Processed on best effort basis.
+FailingReason5Code	CANR	CancellationConfirmationRequested	_a7ZqaYcTEe-F6Jd8tTRGHA	Instruction was in suspense. Suspense period is finished so your cancellation or confirmation of instruction is required.
+FailingReason5Code	CAIS	AwaitingSecurities	_a7Zqa4cTEe-F6Jd8tTRGHA	Awaiting financial instruments from a corporate action or other procedure, for example, conversion, dematerialisation, exchange, registration, stamping, splitting.
+FailingReason5Code	OBJT	UnderObjection	_a7ZqbYcTEe-F6Jd8tTRGHA	Financial instruments are stolen, in dispute, under objection etc.
+FailingReason5Code	AWSH	AwaitingSecuritiesFromCounterparty	_a7Zqb4cTEe-F6Jd8tTRGHA	Financial instruments have not yet been received from the counterparty (if receive against payment trade), the money has been delivered.
+FailingReason5Code	PHSE	PhysicalDeliveryDelay	_a7ZqcYcTEe-F6Jd8tTRGHA	Settlement is physical. Financial instruments are being delivered.
+FailingReason5Code	STCD	ConfirmationDiscrepency	_a7Zqc4cTEe-F6Jd8tTRGHA	Discrepancy in the settlement confirmation.
+FailingReason5Code	DOCY	AwaitingDocumentsOrEndorsementsFromYou	_a7ZqdYcTEe-F6Jd8tTRGHA	Awaiting documents or endorsements from you.
+FailingReason5Code	MLAT	MoneySecuritiesTooLateForSettlement	_a7Zqd4cTEe-F6Jd8tTRGHA	Covering money/financial instruments were received too late for completing settlement on a same day basis.
+FailingReason5Code	DOCC	AwaitingDocumentsOrEndorsementsFromCounterparty	_a7ZqeYcTEe-F6Jd8tTRGHA	Awaiting documents or endorsements from counterparty.
+FailingReason5Code	BLOC	AccountBlocked	_a7Zqe4cTEe-F6Jd8tTRGHA	Your account is blocked, no instruction can settle over the account.
+FailingReason5Code	CHAS	EnquirySent	_a7ZqfYcTEe-F6Jd8tTRGHA	A chaser/enquiry has been sent.
+FailingReason5Code	NEWI	NewIssues	_a7Zqf4cTEe-F6Jd8tTRGHA	Financial instrument is a new issue and not yet available/tradable.
+FailingReason5Code	CLAC	CounterpartyInsufficientSecurities	_a7ZqgYcTEe-F6Jd8tTRGHA	Insufficient deliverable financial instruments in counterparty's account or counterparty does not hold financial instruments.
+FailingReason5Code	MUNO	MultipleSettlementAmount	_a7Zqg4cTEe-F6Jd8tTRGHA	Quantity instructed is not a multiple of an existing settlement quantity lot for the financial instrument.
+FailingReason5Code	GLOB	GlobalFormSecurities	_a7ZqhYcTEe-F6Jd8tTRGHA	Settlement cannot be executed; financial instruments are in global form.
+FailingReason5Code	PREA	YourInstructionOnHold	_a7Zqh4cTEe-F6Jd8tTRGHA	Your instruction is a preadvice, that is, for matching only.
+FailingReason5Code	PART	TradeSettlesInPartials	_a7ZqiYcTEe-F6Jd8tTRGHA	Trade will settle in partials.
+FailingReason5Code	NOFX	NoForeignExchangeInstruction	_a7Zqi4cTEe-F6Jd8tTRGHA	A foreign exchange instruction from you is missing.
+FailingReason5Code	CMON	CounterpartyInsufficientMoney	_a7ZqjYcTEe-F6Jd8tTRGHA	Insufficient money in counterparty's account.
+FailingReason5Code	YCOL	CollateralShortage	_a7Zqj4cTEe-F6Jd8tTRGHA	Insufficient collateral in your account to execute the instruction.
+FailingReason5Code	COLL	SecuritiesPledgedAsCollateral	_a7ZqkYcTEe-F6Jd8tTRGHA	Financial instruments are not deliverable as they are pledged as collateral.
+FailingReason5Code	DEPO	RefusedDepositForIssueOfDepositaryReceipts	_a7Zqk4cTEe-F6Jd8tTRGHA	Deposit of shares for the issuing of depositary receipts has been refused. The allotment granted by the issuer is exceeded by your transaction.
+FailingReason5Code	FLIM	MaximumForeignLimitReached	_a7ZqlYcTEe-F6Jd8tTRGHA	Insufficient deliverable financial instruments in your account as maximum foreign limit has been reached.
+FailingReason5Code	INCA	IncomeAdjustementRequired	_a7Zql4cTEe-F6Jd8tTRGHA	Financial instruments require income adjustment, for example, dividend or interest.
+FailingReason5Code	LINK	PendingLinkedInstruction	_a7ZqmYcTEe-F6Jd8tTRGHA	Your instruction is pending settlement because the instruction linked to it is pending.
+FailingReason5Code	LACK	LackOfSecurities	_a7Zqm4cTEe-F6Jd8tTRGHA	Insufficient financial instruments in your account.
+FailingReason5Code	LALO	SecuritiesLoanedOut	_a7ZqnYcTEe-F6Jd8tTRGHA	Financial instruments are out on loan.
+FailingReason5Code	MONY	InsufficientMoney	_a7Zqn4cTEe-F6Jd8tTRGHA	Insufficient money in your account.
+FailingReason5Code	NCON	ConfirmationNotReceived	_a7ZqoYcTEe-F6Jd8tTRGHA	Confirmation of settlement has not yet been received.
+FailingReason5Code	REFS	NotInGoodOrder	_a7Zqo4cTEe-F6Jd8tTRGHA	Delivery/receipt was refused because physical financial instruments are not in good order.
+FailingReason5Code	SDUT	LackOfStampDutyInformation	_a7ZqpYcTEe-F6Jd8tTRGHA	Stamp duty information is missing.
+FailingReason5Code	BATC	ProcessingBatchDifference	_a7Zqp4cTEe-F6Jd8tTRGHA	Processing batch differs in the counterparty's instruction, for example, daytime/real-time versus overnight.
+FailingReason5Code	CYCL	AwaitingNextSettlementCycle	_a7ZqqYcTEe-F6Jd8tTRGHA	Your instruction is confirmed in the local market or is ready for settlement, awaiting next settlement cycle.
+FailingReason5Code	SBLO	SecuritiesBlocked	_a7Zqq4cTEe-F6Jd8tTRGHA	Financial instruments are blocked due to a corporate action event, realignment, etc.
+FailingReason5Code	CPEC	CounterpartyInReceivership	_a7ZqrYcTEe-F6Jd8tTRGHA	Counterparty is in receivership (form of bankruptcy where a court appointed person - the receiver - manages the affairs of the business).
+FailingReason5Code	MINO	MinimumSettlementAmount	_a7Zqr4cTEe-F6Jd8tTRGHA	Quantity instructed is lower than the minimum existing settlement quantity for the financial instrument.
+FailingReason5Code	IAAD	StatusReasonInvestigation	_a7ZqsYcTEe-F6Jd8tTRGHA	Pending reason being investigated.
+FailingReason5Code	OTHR	Other	_a7Zqs4cTEe-F6Jd8tTRGHA	Other. See Narrative.
+FailingReason5Code	PHCK	PhysicalSecuritiesVerification	_a7ZqtYcTEe-F6Jd8tTRGHA	Physical financial instruments have been received and are being checked for authenticity.
+FailingReason5Code	BENO	BeneficialOwnershipDisagreement	_a7Zqt4cTEe-F6Jd8tTRGHA	Disagreement in beneficial ownership.
+FailingReason5Code	BOTH	BothInstructionsOnHold	_a7ZquYcTEe-F6Jd8tTRGHA	Counterparty's instruction and your instruction are on hold/frozen/ in a preadvice mode.
+FailingReason5Code	CLHT	ClearingHouseTrade	_a7Zqu4cTEe-F6Jd8tTRGHA	Instructed settlement date does not agree with the settlement date on the clearing house trade, that is, a specific type of trade in India.
+FailingReason5Code	DENO	UnavailableDeliverableDenominatedQuantity	_a7ZqvYcTEe-F6Jd8tTRGHA	Quantity instructed does not match the denomination available/deliverable. Physical securities need to be obtained in deliverable denominated quantities.
+FailingReason5Code	DISA	NaturalDisaster	_a7Zqv4cTEe-F6Jd8tTRGHA	Exceptional closing of all financial institutions due to natural disaster, for example, earthquake.
+FailingReason5Code	DKNY	CounterpartyReturnedShares	_a7ZqwYcTEe-F6Jd8tTRGHA	Counterparty has returned or refuses the securities.
+FailingReason5Code	FROZ	SecuritiesFrozenAtCSD	_a7Zqw4cTEe-F6Jd8tTRGHA	Financial instruments are blocked at the Central Security Depository (CSD) following a corporate event.
+FailingReason5Code	LAAW	AwaitingOtherTransaction	_a7ZqxYcTEe-F6Jd8tTRGHA	Awaiting settlement of a purchase to cover failing positions.
+FailingReason5Code	LATE	MarketDeadlineMissed	_a7Zqx4cTEe-F6Jd8tTRGHA	Instruction was received after market deadline.
+FailingReason5Code	LIQU	InsufficientCentralBankLiquidity	_a7ZqyYcTEe-F6Jd8tTRGHA	Central bank liquidity is insufficient.
+FailingReason5Code	PRCY	CounterpartyInstructionOnHold	_a7Zqy4cTEe-F6Jd8tTRGHA	Counterparty's instruction is a preadvice, that is, for matching only.
+FailingReason5Code	REGT	CertificatesRejected	_a7ZqzYcTEe-F6Jd8tTRGHA	Certificates have been lodged with the registrar but rejected due to incomplete documentation or foreign ownership limitation reached.
+FailingReason5Code	SETS	SettlementSystemMethodModified	_a7Zqz4cTEe-F6Jd8tTRGHA	Settlement system/method has been modified at central securities depository to allow settlement.
+FailingReason5Code	CERT	WrongCertificatesNumbers	_a7Zq0YcTEe-F6Jd8tTRGHA	Certificate number error.
+FailingReason5Code	PRSY	SystemOnHold	_a7Zq04cTEe-F6Jd8tTRGHA	Transaction was put on hold/frozen by the system.
+FailingReason5Code	CDLR	ConditionalDeliveryAwaitingRelease	_a7Zq1YcTEe-F6Jd8tTRGHA	Instruction is in a hold/frozen/preadvice mode. Market infrastructure platform is awaiting release.
+FailingReason5Code	CSDH	CSDHold	_a7Zq14cTEe-F6Jd8tTRGHA	Central securities depository sets the instruction in a hold/frozen/preadvice mode.
+FailingReason5Code	CVAL	CSDValidation	_a7Zq2YcTEe-F6Jd8tTRGHA	Instruction is in a hold/frozen/preadvice mode as it fulfils predefined conditions of a restriction processing type in the market infrastructure platform.
+FailingReason5Code	INBC	IncompleteNumberCount	_a7Zq24cTEe-F6Jd8tTRGHA	Not all the instructions part of a pool have been received.
+FailingReason5Code	PATD	PartialDiffer	_dI0kMYcTEe-F6Jd8tTRGHA	Disagreement on partial indicator preventing partial settlement.
+FailingReason5Code	PREL	PartiallyReleased	_dOegQYcTEe-F6Jd8tTRGHA	Transaction has been partially released.

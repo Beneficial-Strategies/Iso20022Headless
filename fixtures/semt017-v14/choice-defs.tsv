@@ -1,0 +1,13 @@
+choice	memberId	memberName	text
+StatementBasis8Choice	_bZQ9MTp-EeWVrPy0StzzSg	Code	Statement basis expressed as an ISO 20022 code.
+StatementBasis8Choice	_bZQ9OTp-EeWVrPy0StzzSg	Proprietary	Statement basis expressed as a proprietary code.
+SecurityClassificationType2Choice	_T81ZQW1MEeiqaPNRWUnGNA	CFI	Classification type of the financial instrument, as per the ISO 10962 Classification of Financial Instrument (CFI) codification.
+SecurityClassificationType2Choice	_T81ZQ21MEeiqaPNRWUnGNA	AlternateClassification	Other type of classification of the financial instrument.
+TypeOfPrice48Choice	_fEBrQddnEeispNOuywCdbA	Code	Type of price expressed as an ISO 20022 code.
+TypeOfPrice48Choice	_fEBrSddnEeispNOuywCdbA	Proprietary	Type of price expressed as a proprietary code.
+OpeningBalance6Choice	_AJCXcSp8EeyR9JrVGfaMKw	First	Opening balance for the statement period. It always equals the closing balance of the previous statement.
+OpeningBalance6Choice	_AJCXeSp8EeyR9JrVGfaMKw	Intermediary	Opening balance of this page only. This balance must be the intermediary closing balance of the previous page of the same statement.
+ClosingBalance6Choice	_CBS5kSp8EeyR9JrVGfaMKw	Final	Sum of the opening balance and all entries booked to the account at the close of the statement period.
+ClosingBalance6Choice	_CBS5mSp8EeyR9JrVGfaMKw	Intermediary	Closing balance of this page only. This balance must be the intermediary opening balance of the next page of the same statement.
+SettlementOrCorporateActionEvent35Choice	_m1CtcYybEe-PVZsedaAGaA	SecuritiesTransactionType	Identifies the type of securities transaction.
+SettlementOrCorporateActionEvent35Choice	_m1CteYybEe-PVZsedaAGaA	CorporateActionEventType	Specifies the type of corporate event.

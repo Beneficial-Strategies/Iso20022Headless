@@ -1,0 +1,16 @@
+choice	memberId	memberName	text
+IntraPositionProcessingStatus11Choice	309dbc58-f163-40b1-8f52-ca4e46953c1b	Rejected	Instruction/Request has been rejected for further processing.
+IntraPositionProcessingStatus11Choice	0b5d2d78-6645-4b7a-98ab-650f83dd5797	Repair	Instruction/Request is accepted but in repair.
+IntraPositionProcessingStatus11Choice	247206ce-1281-402e-b82d-e82b0e394179	Cancelled	Instruction has been cancelled.
+IntraPositionProcessingStatus11Choice	6e7836d7-4a5d-4abc-b810-e1598cb8ea1b	AcknowledgedAccepted	Instruction has been acknowledged by the account servicer.
+IntraPositionProcessingStatus11Choice	8f055fd3-1d3a-40d3-8ddb-516a3a87752a	Proprietary	Specifies a choice of status for the processing of an intra-position movement.
+RejectionOrRepairStatus41Choice	_Z9O-IStUEeyhipY4f42fZQ	NoSpecifiedReason	Indicates that there is no reason available or to report.
+RejectionOrRepairStatus41Choice	_Z9O-KStUEeyhipY4f42fZQ	Reason	Specifies the reason of the rejection or repair status.
+RejectionAndRepairReason36Choice	_avdFQStUEeyhipY4f42fZQ	Code	Specifies the reason why the instruction/request has a repair or rejection status.
+RejectionAndRepairReason36Choice	_avdFSStUEeyhipY4f42fZQ	Proprietary	Specifies the reason why the instruction/request has a repair or rejection status.
+CancellationStatus24Choice	_HTiLwdB7EeihG9bKfarOOA	NoSpecifiedReason	Indicates that there is no reason available or to report.
+CancellationStatus24Choice	_HTiLydB7EeihG9bKfarOOA	Reason	Specifies the reason of the cancellation status.
+CancellationReason36Choice	_IYQ_MdB7EeihG9bKfarOOA	Code	Specifies the reason why the related instruction is cancelled, or the related cancellation request is executed.
+CancellationReason36Choice	_IYQ_OdB7EeihG9bKfarOOA	Proprietary	Specifies the reason why the related instruction is cancelled, or the related cancellation request is executed.
+SecuritiesBalanceType7Choice	_zxa7MTp7EeWVrPy0StzzSg	Code	Sub-balance expressed as an ISO 20022 code.
+SecuritiesBalanceType7Choice	_zxa7OTp7EeWVrPy0StzzSg	Proprietary	Sub-balance expressed as a proprietary code.

@@ -1,0 +1,9 @@
+codeSet	isoId	text
+SafekeepingPlace3Code	_Y-oF59p-Ed-ak6NoX_4Aeg_-597967030	Specifies the type of place of safekeeping.
+InterestComputationMethod2Code	_aZhWkNp-Ed-ak6NoX_4Aeg_163960764	Specifies the method used to compute accruing interest of a financial instrument.
+EventFrequency3Code	_ajpi8dp-Ed-ak6NoX_4Aeg_1482517785	Specifies the regularity of an event.
+SecuritiesPaymentStatus1Code	_ZFoFxtp-Ed-ak6NoX_4Aeg_-1237282418	Specifies the state of payment of a security at a particular time.
+OptionStyle2Code	_aQIxFtp-Ed-ak6NoX_4Aeg_-1177091144	Defines how an option can be exercised.
+OptionType1Code	_aQbsAdp-Ed-ak6NoX_4Aeg_-835357153	Indicates whether it is a Call option (right to purchase a specific underlying asset) or a Put option (right to sell a specific underlying asset).
+CorporateActionEventType33Code	_CJ1P8emfEemm4qhb2yFPOw	Specifies the corporate action event type.
+SecuritiesBalanceType11Code	_Y_N7xtp-Ed-ak6NoX_4Aeg_1932339266	Specifies the nature of the securities or investment fund balance.

@@ -1,0 +1,72 @@
+codeSet	code	enumName	isoId	text
+PenaltyListType1Code	CURR	Current	_YuzTUdfPEeiJ1vId85LeLw	To report the new penalties and the modified penalties in one single message /report.
+PenaltyListType1Code	FWAM	ForwardAmend	_Y4Vp0tfPEeiJ1vId85LeLw	To report a penalty list that has been amended (that is the penalty list contains only updated and/or removed penalties that have already been previously reported in a FWIS Penalty List).
+PenaltyListType1Code	FWIS	ForwardInitialSubmission	_Y9HcIdfPEeiJ1vId85LeLw	To report a daily penalty list created for the first time (that is the penalty list contains only newly computed penalties)
+PenaltyType1Code	LMFP	LateMatchingFailedPenalty	_52vf0TkPEem897H7zB2RJg	Applies from the intended settlement date until the matching date.|The penalty is charged to the participant who was last to enter or modify the relevant settlement instruction (for example, "accepted timestamp" is later than the one of the counterparty's instruction) for the periods between the intended settlement date and the day of matching of the instruction.
+PenaltyType1Code	SEFP	SettlementFailedPenalty	_582u4TkPEem897H7zB2RJg	Penalties apply to instructions that fail to settle on the intended settlement date. A settlement instruction that "fails to settle on that business day" must be understood as a settlement instruction that is not cancelled and remaining to be settled, fully or partially, by the time of|the end of processing of the relevant cut-off.
+PenaltyStatus2Code	ACTV	Active	_ZE4kUR-LEeuwwezkzufkMw	Penalty is active for the party.
+PenaltyStatus2Code	NCOM	NotComputed	_ZJyScR-LEeuwwezkzufkMw	Penalty could not be computed.
+PenaltyStatus2Code	REMO	Removed	_ZenS8R-LEeuwwezkzufkMw	Removal of a cash penalty where settlement cannot be performed for reasons that are independent from any of the CSD participants or the CSD.
+PenaltyStatusReason2Code	UPDT	Updated	_UJrggR-JEeuwwezkzufkMw	Penalty has been updated.
+PenaltyStatusReason2Code	SUSP	TradingSuspended	_UPxhcR-JEeuwwezkzufkMw	Penalty was removed becuase of ISIN suspension from trading.
+PenaltyStatusReason2Code	TECH	TechnicalImpossibilities	_UVuYcR-JEeuwwezkzufkMw	Penalty was removed becuase there were thecnical imposssibilities at the CSD level that prevent settlement, such as: a failure of the infrastructure components, a cyber-attack, network problems.
+PenaltyStatusReason2Code	SWIC	Switched	_UbOjgR-JEeuwwezkzufkMw	Penalty has been switched between the failing and non-failing party.
+PenaltyStatusReason2Code	SESU	SettlementSuspended	_UgbzoR-JEeuwwezkzufkMw	Penalty was removed becuase of ISIN suspension from settlement due to a reconciliation issue under Article 65 (2) and (6) of the RTS on CSD Requirements.
+PenaltyStatusReason2Code	SEMP	SettlementOnMultiplePlatforms	_UmFvsR-JEeuwwezkzufkMw	Settlement on multiple platforms where one of the platforms is closed for settlement (either cash or securities).
+PenaltyStatusReason2Code	RALO	Reallocated	_U8Z98R-JEeuwwezkzufkMw	Re-allocation of a late matching fail penalty from the instructing party to the delivering/receiving party.
+PenaltyStatusReason2Code	OTHR	Other	_VBnOER-JEeuwwezkzufkMw	See narrative.
+PenaltyStatusReason2Code	NEWP	NewPenalty	_VHRKIR-JEeuwwezkzufkMw	Penalty is new.
+PenaltyStatusReason2Code	INTS	InternalisedSettlement	_VMoLQR-JEeuwwezkzufkMw	Penalty is not computed because the settlement has been internalised.
+PenaltyStatusReason2Code	INSO	Insolvency	_VSIWUR-JEeuwwezkzufkMw	Penalty was removed becuase insolvency proceedings are opened against the failing participant.
+PenaltyStatusReason2Code	CORP	CorporateAction	_VYrDMR-JEeuwwezkzufkMw	Specifies that due to a specific corporate action, the security does no longer exists.
+PenaltyStatusReason2Code	NOSU	NotSubject	_b1LLkR-UEeuwwezkzufkMw	Penalty is not computed or removed because the security is not subject to penalties.
+PenaltyCalculationMethod1Code	BOTH	Both	_deUfcTkUEem897H7zB2RJg	Sum of the penalty based on the quantity of securities|failed to be delivered and penalty rate of the securities and the penalty based on the amount of cash failed to be delivered and the discount rate of the currency.
+PenaltyCalculationMethod1Code	CASH	Cash	_dmXoMjkUEem897H7zB2RJg	Penalty is based on the amount of cash failed to be delivered and the penalty rate is the discount rate of the relevant currency.
+PenaltyCalculationMethod1Code	MIXE	Mixed	_drlfYTkUEem897H7zB2RJg	Penalty is based on the quantity of securities failed to be delivered and penalty rate is the discount rate of the relevant currency.
+PenaltyCalculationMethod1Code	SECU	Securities	_d3WqgjkUEem897H7zB2RJg	Penalty is based on the quantity of securities failed to be delivered and penalty rate of the securities.
+PenaltyAmountType1Code	CASH	Cash	_n1H3ATkbEem897H7zB2RJg	Penalty is based on the amount of cash failed to be delivered and the penalty rate is the discount rate of the relevant currency.
+PenaltyAmountType1Code	SECU	Securities	_oCrx4jkbEem897H7zB2RJg	Penalty is based on the quantity of securities failed to be delivered and penalty rate of the securities.
+SecuritiesTransactionType26Code	BSBK	BuySellBack	_fOzoIdYYEeiHVOfMzoKxnA	Relates to a buy sell back transaction.
+SecuritiesTransactionType26Code	COLI	CollateralIn	_fOzoI9YYEeiHVOfMzoKxnA	Relates to a collateral transaction, from the point of view of the collateral taker or its agent.
+SecuritiesTransactionType26Code	COLO	CollateralOut	_fOzoJdYYEeiHVOfMzoKxnA	Relates to a collateral transaction, from the point of view of the collateral giver or its agent.
+SecuritiesTransactionType26Code	MKDW	MarkDown	_fOzoJ9YYEeiHVOfMzoKxnA	Relates to the decrease of positions held by an International Central Securities Depository (ICSD) at the common depository due to custody operations (repurchase, pre-release, proceeds of corporate event realigned).
+SecuritiesTransactionType26Code	MKUP	MarkUp	_fOzoKdYYEeiHVOfMzoKxnA	Relates to the increase of positions held by an International Central Securities Depository (ICSD) at the common depository due to custody operations (repurchase, pre-release, proceeds of corporate event realigned).
+SecuritiesTransactionType26Code	NETT	Netting	_fOzoK9YYEeiHVOfMzoKxnA	Relates to the netting of settlement instructions.
+SecuritiesTransactionType26Code	NSYN	NonSyndicated	_fOzoLdYYEeiHVOfMzoKxnA	Relates to the issue of medium and short term paper (CP, CD, MTN, notes) under a program and without syndication arrangement.
+SecuritiesTransactionType26Code	PAIR	PairOff	_fOzoL9YYEeiHVOfMzoKxnA	Relates to a pair-off: the transaction is paired off and netted against one or more previous transactions.
+SecuritiesTransactionType26Code	PLAC	Placement	_fOzoMdYYEeiHVOfMzoKxnA	Relates to the placement/new issue of a financial instrument.
+SecuritiesTransactionType26Code	PORT	PortfolioMove	_fOzoM9YYEeiHVOfMzoKxnA	Relates to a portfolio move from one investment manager to another and/or from an account servicer to another. It is generally charged differently than another account transfer, hence the need to identify this type of transfer as such.
+SecuritiesTransactionType26Code	REAL	Realignment	_fOzoNdYYEeiHVOfMzoKxnA	Relates to a realignment of positions.
+SecuritiesTransactionType26Code	REDM	Redemption	_fOzoN9YYEeiHVOfMzoKxnA	Relates to a redemption of funds (funds industry only).
+SecuritiesTransactionType26Code	REPU	Repo	_fOzoOdYYEeiHVOfMzoKxnA	Relates to a repurchase agreement transaction.
+SecuritiesTransactionType26Code	RODE	ReturnDeliveryWithoutMatching	_fOzoO9YYEeiHVOfMzoKxnA	Relates to the return of financial instruments resulting from a rejected delivery without a matching operation.
+SecuritiesTransactionType26Code	RVPO	ReverseRepurchaseAgreement	_fOzoPdYYEeiHVOfMzoKxnA	Relates to a reverse repurchase agreement transaction.
+SecuritiesTransactionType26Code	SECB	SecuritiesBorrowing	_fOzoP9YYEeiHVOfMzoKxnA	Relates to a securities borrowing operation.
+SecuritiesTransactionType26Code	SECL	SecuritiesLending	_fOzoQdYYEeiHVOfMzoKxnA	Relates to a securities lending operation.
+SecuritiesTransactionType26Code	SUBS	Subscription	_fOzoQ9YYEeiHVOfMzoKxnA	Relates to a subscription to funds (funds industry only).
+SecuritiesTransactionType26Code	SYND	SyndicateUnderwriters	_fOzoRdYYEeiHVOfMzoKxnA	Relates to the issue of financial instruments through a syndicate of underwriters and a lead manager.
+SecuritiesTransactionType26Code	TBAC	TBAClosing	_fOzoR9YYEeiHVOfMzoKxnA	Relates to a To Be Announced (TBA) closing trade.
+SecuritiesTransactionType26Code	TRAD	Trade	_fOzoSdYYEeiHVOfMzoKxnA	Relates to the settlement of a trade.
+SecuritiesTransactionType26Code	TRPO	TripartyRepo	_fOzoS9YYEeiHVOfMzoKxnA	Relates to a triparty repurchase agreement.
+SecuritiesTransactionType26Code	TRVO	TripartyReverseRepo	_fOzoTdYYEeiHVOfMzoKxnA	Relates to a triparty reverse repurchase agreement.
+SecuritiesTransactionType26Code	TURN	Turnaround	_fOzoT9YYEeiHVOfMzoKxnA	Relates to a turnaround: the same security is bought and sold to settle the same day, to or from different brokers.
+SecuritiesTransactionType26Code	BYIY	BuyIn	_fOzoUdYYEeiHVOfMzoKxnA	Relates to a buy-in by the market following a delivery transaction failure.
+SecuritiesTransactionType26Code	CNCB	CentralBankCollateralOperation	_fOzoU9YYEeiHVOfMzoKxnA	Relates to a collateral delivery/receipt to a national central bank for central bank credit operations.
+SecuritiesTransactionType26Code	OWNE	ExternalAccountTransfer	_fOzoVdYYEeiHVOfMzoKxnA	Relates to an account transfer involving more than one instructing party (message sender) and/or account servicer (messages receiver).
+SecuritiesTransactionType26Code	FCTA	FactorUpdate	_fOzoV9YYEeiHVOfMzoKxnA	Relates to a factor update.
+SecuritiesTransactionType26Code	OWNI	InternalAccountTransfer	_fOzoWdYYEeiHVOfMzoKxnA	Relates to an account transfer involving one instructing party (message sender) at one account servicer (messages receiver).
+SecuritiesTransactionType26Code	RELE	DepositoryReceiptReleaseCancellation	_fOzoW9YYEeiHVOfMzoKxnA	Relates to a release (into/from local) of depository receipt operation.
+SecuritiesTransactionType26Code	SBRE	BorrowingReallocation	_fOzoXdYYEeiHVOfMzoKxnA	Internal reallocation of a borrowed holding from one safekeeping account to another.
+SecuritiesTransactionType26Code	CORP	CorporateAction	_fOzoX9YYEeiHVOfMzoKxnA	Relates to a corporate action.
+SecuritiesTransactionType26Code	CLAI	MarketClaim	_fOzoYdYYEeiHVOfMzoKxnA	Relates to a market claim.
+SecuritiesTransactionType26Code	AUTO	AutoCollateralisation	_fOzoY9YYEeiHVOfMzoKxnA	Relates to an auto-collateralisation movement.
+SecuritiesTransactionType26Code	SWIF	SwitchFrom	_fOzoZdYYEeiHVOfMzoKxnA	Transaction is a change of an investment from one sub-fund to another sub-fund (redemption-leg).
+SecuritiesTransactionType26Code	SWIT	SwitchTo	_fOzoZ9YYEeiHVOfMzoKxnA	Transaction is a change of an investment from one sub-fund to another sub-fund (subscription-leg).
+SecuritiesTransactionType26Code	CONV	DepositoryReceiptConversion	_fOzoadYYEeiHVOfMzoKxnA	Relates to a depository receipt conversion.
+SecuritiesTransactionType26Code	ETFT	ExchangeTradedFunds	_fOzoa9YYEeiHVOfMzoKxnA	Relates to an ETF creation or redemption.
+SecuritiesTransactionType26Code	ISSU	Issuance	_fOzobdYYEeiHVOfMzoKxnA	Relates to the issuance of a security such as an equity or a depositary receipt.
+SecuritiesTransactionType26Code	SLRE	LendingReallocation	_fOzob9YYEeiHVOfMzoKxnA	Internal reallocation of a holding on loan from one safekeeping account to another.
+SecuritiesTransactionType26Code	INSP	MoveOfStock	_fOzocdYYEeiHVOfMzoKxnA	Relates to a movement of shares into or out of a pooled account.
+SecuritiesTransactionType26Code	SBBK	SellBuyBack	_fOzoc9YYEeiHVOfMzoKxnA	Relates to a sell buy back transaction.
+SecuritiesTransactionType26Code	REDI	Withdrawal	_fOzoddYYEeiHVOfMzoKxnA	Relates to the withdrawal of specified amounts from specified subaccounts.
+SecuritiesTransactionType26Code	REBL	Rebalancing	_Qb7NMdYZEeiHVOfMzoKxnA	Relates to a rebalanced transaction.

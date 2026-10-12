@@ -1,0 +1,6 @@
+choice	memberId	memberName	text
+ProcessingStatus99Choice	_XHwYKY5bEfC_4ZEXsY0Xyg	AcknowledgedAccepted	Instruction has been acknowledged by the account servicer.
+ProcessingStatus99Choice	_XHwYEY5bEfC_4ZEXsY0Xyg	Rejected	Instruction or request has been rejected for further processing.
+ProcessingStatus99Choice	_XHwYGY5bEfC_4ZEXsY0Xyg	Repair	Instruction or request is accepted but in repair.
+ProcessingStatus99Choice	_XHwYIY5bEfC_4ZEXsY0Xyg	Cancelled	Instruction has been cancelled. The status on the processing of a cancellation request must be provided using a cancellation request report message.
+ProcessingStatus99Choice	_XHwYMY5bEfC_4ZEXsY0Xyg	Proprietary	Specifies a choice of status for the processing of an intra-balance movement.

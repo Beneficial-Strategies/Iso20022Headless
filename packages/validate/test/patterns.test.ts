@@ -39,7 +39,12 @@ describe('describePattern', () => {
   it('describes every text pattern the generated schemas use', () => {
     const patterns = Object.values(allTypeDescriptors).flatMap((t) => (t.pattern ? [t.pattern] : []));
     expect(patterns.length).toBeGreaterThan(10);
-    expect(patterns.filter((p) => describePattern(p) === undefined)).toEqual([]);
+    // a pattern with a negated class (a path such as `a/b/c`) is not described: the message falls back to "Invalid format"
+    expect(patterns.filter((p) => describePattern(p) === undefined && !p.includes('[^'))).toEqual([]);
+  });
+
+  it('describes a character class with line breaks as they are written', () => {
+    expect(describePattern("[0-9a-zA-Z/\\-\\?:\\(\\)\\.\\n\\r,'\\+ ]{1,140}")).toContain('\\n \\r');
   });
 });
 

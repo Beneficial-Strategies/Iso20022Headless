@@ -26,7 +26,7 @@ describe('ISO ids on descriptors', () => {
 
   it('enumerated code options carry ids', () => {
     const options = types.flatMap((t) => t.options ?? []);
-    expect(options.length).toBe(2203); // enumerated codes across all messages
+    expect(options.length).toBe(4697); // enumerated codes across all messages
     expect(options.every((o) => o.isoId)).toBe(true);
   });
 });
@@ -54,10 +54,10 @@ describe('definitions are keyed by id and fully covered', () => {
     expect(missing).toEqual([]);
   });
 
-  it('counts match the captures (all 187 messages): 7178 elements, 1662 types, 2203 codes', () => {
-    expect(Object.keys(fieldDefinitions)).toHaveLength(7178);
-    expect(Object.keys(typeDefinitions)).toHaveLength(1662);
-    expect(Object.keys(codeDefinitions)).toHaveLength(2203);
+  it('counts match the captures (all 231 messages): 11149 elements, 2637 types, 4697 codes', () => {
+    expect(Object.keys(fieldDefinitions)).toHaveLength(11149);
+    expect(Object.keys(typeDefinitions)).toHaveLength(2637);
+    expect(Object.keys(codeDefinitions)).toHaveLength(4697);
   });
 });
 

@@ -1,0 +1,51 @@
+{
+  "identifier": "semt.004.001.02",
+  "name": "CustodyStatementOfHoldingsCancellationV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:semt.004.001.02",
+  "bodyTag": "CtdyStmtOfHldgsCxlV02",
+  "out": "semt004",
+  "isoId": "_Mb_vvNFSEd-BzquC8wXy7w_-145472728",
+  "definition": "Scope|An account servicer, for example, a transfer agent, sends the CustodyStatementOfHoldingsCancellation message to the account owner, for example, an investment manager or its authorised representative to cancel a previously sent CustodyStatementOfHoldings message.|Usage|The CustodyStatementOfHoldingsCancellation message is used to cancel a previously sent CustodyStatementOfHoldings message. This message must contain the reference of the message to be cancelled.|This message may also contain details of the message to be cancelled, but this is not recommended.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "_Mb_vvdFSEd-BzquC8wXy7w_682925728",
+      "xmlTag": "MsgId",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "PreviousReference",
+      "isoId": "_Mb_vvtFSEd-BzquC8wXy7w_-145472685",
+      "xmlTag": "PrvsRef",
+      "type": "AdditionalReference2",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "RelatedReference",
+      "isoId": "_Mb_vv9FSEd-BzquC8wXy7w_-145472650",
+      "xmlTag": "RltdRef",
+      "type": "AdditionalReference2",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "MessagePagination",
+      "isoId": "_McJgsNFSEd-BzquC8wXy7w_-145472572",
+      "xmlTag": "MsgPgntn",
+      "type": "Pagination",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "StatementToBeCancelled",
+      "isoId": "_McJgsdFSEd-BzquC8wXy7w_-145472607",
+      "xmlTag": "StmtToBeCanc",
+      "type": "CustodyStatementOfHoldings2",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

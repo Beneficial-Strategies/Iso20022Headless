@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+BalanceQuantity14Choice	__ZNdASp7EeyR9JrVGfaMKw	Quantity	Total quantity of financial instruments of the balance.
+BalanceQuantity14Choice	__ZNdCSp7EeyR9JrVGfaMKw	Proprietary	Total quantity of financial instruments of the balance.

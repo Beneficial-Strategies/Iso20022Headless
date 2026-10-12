@@ -1,0 +1,5 @@
+codeSet	isoId	text
+PendingProcessingReason7Code	_tdvxgKoZEfCG2_q2WT-90w	Specifies the reason the transaction/instruction is failing settlement. Settlement on the instructed settlement date is no longer possible.
+PendingReason32Code	_FfqNAaoHEfCG2_q2WT-90w	Specifies the reason why a cancellation request sent for the related instruction is pending.
+PendingReason28Code	_DeMAwYcNEe-6cOl7zMpJaA	Specifies the reason the transaction/instruction is pending settlement. Settlement on the instructed settlement date is still possible.
+FailingReason5Code	_SxGicYcTEe-F6Jd8tTRGHA	Specifies the reason the transaction/instruction is failing settlement. Settlement on the instructed settlement date is no longer possible.

@@ -1,0 +1,22 @@
+choice	memberId	memberName	text
+ProcessingStatus100Choice	_XXEmcY5bEfC_4ZEXsY0Xyg	AcknowledgedAccepted	Instruction has been acknowledged by the account servicer.
+ProcessingStatus100Choice	_XXEmeY5bEfC_4ZEXsY0Xyg	Repair	Instruction or request is accepted but in repair.
+ProcessingStatus100Choice	_XXEmgY5bEfC_4ZEXsY0Xyg	Cancelled	Instruction has been cancelled. The status on the processing of a cancellation request must be provided using a cancellation request report message.
+ProcessingStatus100Choice	_XXEmiY5bEfC_4ZEXsY0Xyg	Proprietary	Specifies a choice of status for the processing of an intra-balance movement.
+AcknowledgedAcceptedStatus34Choice	_XJtf5Y5bEfC_4ZEXsY0Xyg	NoSpecifiedReason	Indicates that there is no reason available or to report.
+AcknowledgedAcceptedStatus34Choice	_XJtf8Y5bEfC_4ZEXsY0Xyg	Reason	Specifies the reason of the acknowledged accepted status.
+AcknowledgementReason25Choice	_XNInUY5bEfC_4ZEXsY0Xyg	Code	Specifies additional information about the processed instruction.
+AcknowledgementReason25Choice	_XNInWY5bEfC_4ZEXsY0Xyg	Proprietary	Specifies additional information about the processed instruction.
+SettlementStatus34Choice	_XtOZ8-SkEe-qVZLXW4RRBw	Pending	Instruction is pending. Settlement at the instructed settlement date is still possible.
+SettlementStatus34Choice	_XtOZ--SkEe-qVZLXW4RRBw	Failing	Instruction is failing. Settlement at the instructed settlement date is no longer possible.
+SettlementStatus34Choice	_XtOaA-SkEe-qVZLXW4RRBw	Proprietary	Proprietary status.
+PendingStatus79Choice	_X5NngeSkEe-qVZLXW4RRBw	NoSpecifiedReason	Indicates that there is no reason available or to report.
+PendingStatus79Choice	_X5NnieSkEe-qVZLXW4RRBw	Reason	Specifies the reason of the pending status.
+PendingReason75Choice	_YQ2EYeSkEe-qVZLXW4RRBw	Code	Specifies the reason why the instruction has a pending status.
+PendingReason75Choice	_YQ2EaeSkEe-qVZLXW4RRBw	Proprietary	Specifies the reason why the instruction has a pending status.
+FailingStatus17Choice	_0o3p4eSkEe-qVZLXW4RRBw	NoSpecifiedReason	Indicates that there is no reason available or to report.
+FailingStatus17Choice	_0o3p6eSkEe-qVZLXW4RRBw	Reason	Specifies the reason of the failing status.
+FailingReason20Choice	_05m0keSkEe-qVZLXW4RRBw	Code	Specifies the reason why the instruction has a failing settlement status.
+FailingReason20Choice	_05m0meSkEe-qVZLXW4RRBw	Proprietary	Specifies the reason why the instruction has a failing settlement status.
+CorporateActionEventType56Choice	_bTHoA5eUEeac76MbGuhitQ	Code	Corporate action event type expressed as an ISO 20022 code.
+CorporateActionEventType56Choice	_bTHoC5eUEeac76MbGuhitQ	Proprietary	Corporate action event type expressed as a proprietary code.

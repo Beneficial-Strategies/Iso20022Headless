@@ -1,0 +1,21 @@
+choice	memberId	memberName	text
+AutomaticBorrowing7Choice	_GoKdMTt4EeW638lNyHKv7A	Code	Condition for automatic borrowing expressed as an ISO 20022 code.
+AutomaticBorrowing7Choice	_GoKdOTt4EeW638lNyHKv7A	Proprietary	Condition for automatic borrowing expressed as a proprietary code.
+SecuritiesRTGS4Choice	_-T2CATqEEeWVrPy0StzzSg	Indicator	Specifies whether the settlement transaction is to be settled through an RTGS or a non RTGS system.
+SecuritiesRTGS4Choice	_-T2CCTqEEeWVrPy0StzzSg	Proprietary	Securities RTGS information expressed as a proprietary code.
+Registration10Choice	_z2Jf0TqfEeWyoP0PbocV1Q	Code	Registration information expressed as an ISO 20022 code.
+Registration10Choice	_z2Jf0zqfEeWyoP0PbocV1Q	Proprietary	Registration information expressed as a proprietary code.
+MatchingDenied3Choice	_Z5MpATt4EeW638lNyHKv7A	Code	Specifies the execution of a matching denial process.
+MatchingDenied3Choice	_Z5MpCTt4EeW638lNyHKv7A	Proprietary	Specifies the execution of a matching denial process.
+UnilateralSplit3Choice	_e2Y7wTt4EeW638lNyHKv7A	Code	Unilateral split expressed as an ISO 20022 code.
+UnilateralSplit3Choice	_e2Y7yTt4EeW638lNyHKv7A	Proprietary	Unilateral split expressed as a proprietary code.
+SettlementOrIntraPosition3Choice	_TgJxcWp9EemmaZLSPtWX5A	IntraPositionMovement	Specifies the requested intra-position movement details.
+SettlementOrIntraPosition3Choice	_TgJxc2p9EemmaZLSPtWX5A	SettlementTransaction	Specifies the requested settlement transaction details.
+TradeDate8Choice	_vt4vcbPuEeelzbgsFa3sqQ	Date	Date expressed as an ISO date.
+TradeDate8Choice	_vuB5bLPuEeelzbgsFa3sqQ	DateCode	Date expressed as a code.
+TradeDateCode3Choice	_Hx_vwTqLEeWVrPy0StzzSg	Code	Trade date expressed as an ISO 20022 code.
+TradeDateCode3Choice	_Hx_vyTqLEeWVrPy0StzzSg	Proprietary	Trade date expressed as a proprietary code.
+SettlementDate17Choice	__G7WAbPuEeelzbgsFa3sqQ	Date	Date in ISO format.
+SettlementDate17Choice	__G7WD7PuEeelzbgsFa3sqQ	DateCode	Date and time at which the securities are to be delivered or received.
+SettlementDateCode7Choice	_cU5zITqLEeWVrPy0StzzSg	Code	Settlement date expressed as an ISO 20022 code.
+SettlementDateCode7Choice	_cU5zKTqLEeWVrPy0StzzSg	Proprietary	Settlement date expressed as a proprietary code.

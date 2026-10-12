@@ -1,0 +1,62 @@
+codeSet	code	enumName	isoId	text
+TransactionProcessingStatus4Code	PACK	AcknowledgedAccepted	_j3smZu5NEeCisYr99QEiWA_1509485244	Instruction has been acknowledged/accepted for further processing by the account servicer.
+TransactionProcessingStatus4Code	PPRC	PendingProcessing	_j3smZ-5NEeCisYr99QEiWA_405378159	Processing of the instruction is pending.
+TransactionProcessingStatus4Code	REJT	Rejected	_j32XYO5NEeCisYr99QEiWA_87601498	Instruction has been rejected for further processing.
+TransactionProcessingStatus4Code	REPR	InRepair	_j32XYe5NEeCisYr99QEiWA_-398456535	Instruction is accepted but in repair.
+TransactionProcessingStatus4Code	CAND	Cancelled	_j32XYu5NEeCisYr99QEiWA_563889893	Instruction has been cancelled.
+TransactionProcessingStatus4Code	CANP	PendingCancellation	_j32XY-5NEeCisYr99QEiWA_826912670	Cancellation request from yourself for this instruction is pending waiting for further processing.
+TransactionProcessingStatus4Code	CPRC	CancellationRequested	_j32XZO5NEeCisYr99QEiWA_1615433270	Cancellation request from the counterparty is awaiting for your cancellation request or your consent.
+TransactionProcessingStatus4Code	MPRC	ModificationRequested	_j32XZe5NEeCisYr99QEiWA_1449930477	Modification request from the counterparty is awaiting for your modification request or your consent.
+MatchingStatus1Code	MACH	Matched	_aVDGRNp-Ed-ak6NoX_4Aeg_189804200	Instruction has been matched.
+MatchingStatus1Code	NMAT	Unmatched	_aVDGRdp-Ed-ak6NoX_4Aeg_234135671	Instruction has not been matched.
+TradeTransactionCondition1Code	CBNS	CumBonus	_YnO5l9p-Ed-ak6NoX_4Aeg_-704549493	Indicates whether the trade is executed cum bonus.
+TradeTransactionCondition1Code	XBNS	ExBonus	_YnYDgNp-Ed-ak6NoX_4Aeg_2141408482	Indicates whether the trade is executed ex bonus.
+TradeTransactionCondition1Code	CCPN	CumCoupon	_YnYDgdp-Ed-ak6NoX_4Aeg_-158749591	Indicates whether the trade is executed cum coupon.
+TradeTransactionCondition1Code	XCPN	ExCoupon	_YnYDgtp-Ed-ak6NoX_4Aeg_-733180804	Indicates whether the trade is executed ex coupon.
+TradeTransactionCondition1Code	CDIV	CumDividend	_YnYDg9p-Ed-ak6NoX_4Aeg_-131045922	Indicates whether the trade is executed cum dividend.
+TradeTransactionCondition1Code	XDIV	ExDividend	_YnYDhNp-Ed-ak6NoX_4Aeg_-206775274	Indicates whether the trade is executed ex dividend.
+TradeTransactionCondition1Code	CRTS	CumRights	_YnYDhdp-Ed-ak6NoX_4Aeg_-117190100	Indicates whether the trade is executed cum rights.
+TradeTransactionCondition1Code	XRTS	ExRights	_YnYDhtp-Ed-ak6NoX_4Aeg_724133070	Indicates whether the trade is executed ex rights.
+TradeTransactionCondition1Code	CWAR	CumWarrant	_YnYDh9p-Ed-ak6NoX_4Aeg_1245924860	Indicates whether the trade is executed cum warrant.
+TradeTransactionCondition1Code	XWAR	ExWarrant	_YnYDiNp-Ed-ak6NoX_4Aeg_1573774329	Indicates whether the trade is executed ex warrant.
+TradeTransactionCondition1Code	SPCU	SpecialCumDividend	_YnYDidp-Ed-ak6NoX_4Aeg_197729967	Indicates whether the trade is executed with a special cum |dividend, that is, buying after the ex date and getting the dividend.
+TradeTransactionCondition1Code	SPEX	SpecialExDividend	_Ynh0gNp-Ed-ak6NoX_4Aeg_2002285748	Indicates whether the trade is executed with a special ex |dividend, that is, selling before the ex date without the coupon.
+TradeTransactionCondition1Code	DUEB	BrokerDueBill	_Ynh0gdp-Ed-ak6NoX_4Aeg_1202519061	Indicates that the trade is executed cum-dividend or cum-coupon and a due bill is required. |A due bill is a contractual agreement to pay the dividend along with the delivery of |the financial instrument.
+TradeTransactionCondition1Code	SSTI	SoldShort	_Ynh0gtp-Ed-ak6NoX_4Aeg_215276027	Indicates whether the trade is sold short. When the seller does not have the |financial instrument, the delivery is effected by borrowing the financial instrument by or |for the account of the seller.
+TradeTransactionCondition1Code	DIRT	Dirty	_Ynh0g9p-Ed-ak6NoX_4Aeg_259605997	Indicates that the trade is executed dirty, ie government tax must be paid on the accrued interest on the bond.
+TradeTransactionCondition1Code	CLEN	Clean	_Ynh0hNp-Ed-ak6NoX_4Aeg_-946185711	Indicates that the trade is executed clean, ie government tax must not be paid on the accrued interest on the bond.
+TradeTransactionCondition1Code	BLKO	Block	_Ynh0hdp-Ed-ak6NoX_4Aeg_341444021	Indicates whether the trade is a block trade or not, ie, whether allocation instruction will follow or not.
+TradeTransactionCondition1Code	GTDL	GuaranteedDelivery	_Ynh0htp-Ed-ak6NoX_4Aeg_340874857	Indicates whether the delivery of the financial instrument on settlement date |is guaranteed.
+TradeTransactionCondition1Code	FRAC	Fractions	_Ynh0h9p-Ed-ak6NoX_4Aeg_1506931675	Indicates whether fractional parts are allowed.
+TradeTransactionCondition1Code	CRST	CrossTrade	_Ynh0iNp-Ed-ak6NoX_4Aeg_1513399286	Indicates that cross trades are allowed whereby buy and sell orders are offset without recording the trade on the exchange.
+TradeTransactionCondition1Code	NCRS	NoCrossTrade	_Ynh0idp-Ed-ak6NoX_4Aeg_-1286814700	Indicates that cross trades, whereby buy and sell orders are offset without recording the trade on the exchange, are not allowed.
+TradeTransactionCondition1Code	DORD	DirectOrder	_Ynh0itp-Ed-ak6NoX_4Aeg_1854178870	Indicates that the order is to be executed by a trading party other than the trading party to which the |order is sent. In this case, the instructing party has traded with another broker which will |subsequently send an advice of execution to the executing party who received the order |and which is acting as clearing broker.
+TradeTransactionCondition1Code	DIOR	DirectedOrder	_Ynq-cNp-Ed-ak6NoX_4Aeg_1879112901	Indicates that the order must be executed with a specific trading party.
+TradeTransactionCondition1Code	WARE	WarehouseTrade	_Ynq-cdp-Ed-ak6NoX_4Aeg_1273630984	Warehouse Trade.
+TradeTransactionCondition1Code	DNIN	NotIncrease	_Ynq-ctp-Ed-ak6NoX_4Aeg_1048705364	A limit order to buy or a stop order to sell or a stop limit order which is not to be increased in shares on the ex-dividend date as a result of a stock dividend or distribution.
+TradeTransactionCondition1Code	DNRE	NotReduce	_Ynq-c9p-Ed-ak6NoX_4Aeg_1075487335	A limit order to buy or a stop order to sell, or a stop-limit order to sell which is not to be reduced in price by the amount of an ordinary cash dividend. Only applies to ordinary stock dividends; it should be reduced for other distributions. e.g. when a stock goes 'ex' stock dividend or rights.
+TradeTransactionCondition1Code	FORW	ForwardPriceTrade	_Yn0vcNp-Ed-ak6NoX_4Aeg_-1385270994	Indicates that the order is based on a forward price.
+TradeTransactionCondition1Code	HIST	HistoricPriceTrade	_Yn0vcdp-Ed-ak6NoX_4Aeg_-1198720742	Indicates that the order is based on a historic price.
+TradeTransactionCondition1Code	BCRO	ResultOption	_Yn0vctp-Ed-ak6NoX_4Aeg_-954962851	Result of option when set. (UK specific).
+TradeTransactionCondition1Code	BCRP	ResultRepo	_Yn0vc9p-Ed-ak6NoX_4Aeg_-695452037	Result of repo when set (UK specific).
+TradeTransactionCondition1Code	BCPD	DeliverCountryIncorporation	_Yn0vdNp-Ed-ak6NoX_4Aeg_-666825366	Place of delivery, in country of incorporation when unset (UK specific).
+TradeTransactionCondition1Code	BCFD	DeliveryForm	_Yn0vddp-Ed-ak6NoX_4Aeg_-608641063	Form of delivery, not for foreign registration when unset (UK specific).
+TradeTransactionCondition1Code	BCBL	BoardLot	_Yn0vdtp-Ed-ak6NoX_4Aeg_-580937096	Board lots, not set for odd lots (UK specific).
+TradeTransactionCondition1Code	BCBN	BadName	_Yn0vd9p-Ed-ak6NoX_4Aeg_-324196110	Bad names, not set for good names (UK specific).
+TradeTransactionCondition1Code	BTEX	BestExecution	_Yn0veNp-Ed-ak6NoX_4Aeg_-1830642528	Trade to be executed done at best execution.
+TradeTransactionCondition1Code	CALL	Call	_Yn0vedp-Ed-ak6NoX_4Aeg_-1500947484	Trade to be executed following the exercise of a call option on the security.
+TradeTransactionCondition1Code	CLBR	ClosureBeforeRollOver	_Yn-gcNp-Ed-ak6NoX_4Aeg_-1445535231	Trade to be executed for closure of a previous position before the rollover of a position (Deferred Settlement Service).
+TradeTransactionCondition1Code	MONT	Monthly	_Yn-gcdp-Ed-ak6NoX_4Aeg_-1282071931	Trade to be executed for month-end settlement (Deferred Settlement Service).
+TradeTransactionCondition1Code	NBFR	NewTradeFollowingRollover	_Yn-gctp-Ed-ak6NoX_4Aeg_-1042879916	Trade to be executed for a new trade position on the next month following the roll-over of a position (Deferred Settlement Service).
+TradeTransactionCondition1Code	TRFR	TradeFollowingRollover	_Yn-gc9p-Ed-ak6NoX_4Aeg_-1025330865	Trade to be executed on the next month following the roll-over of positions.
+TradeTransactionCondition1Code	PUTT	Putt	_Yn-gdNp-Ed-ak6NoX_4Aeg_-946834322	Trade to be executed following the exercise of a put option on the security.
+TradeTransactionCondition1Code	SPCC	SpecialCumCoupon	_Yn-gddp-Ed-ak6NoX_4Aeg_-929287064	Indicates whether the trade is executed with a special cum coupon.
+TradeTransactionCondition1Code	SECN	SpecialExCoupon	_Yn-gdtp-Ed-ak6NoX_4Aeg_-169229268	Indicates whether the trade is executed with a special ex coupon.
+TradeTransactionCondition1Code	SEBN	SpecialExBonus	_Yn-gd9p-Ed-ak6NoX_4Aeg_-169229130	Indicates whether the trade is executed special ex bonus.
+TradeTransactionCondition1Code	SCBN	SpecialCumBonus	_Yn-geNp-Ed-ak6NoX_4Aeg_-169228793	Indicates whether the trade is executed special cum bonus.
+TradeTransactionCondition1Code	SCRT	SpecialCumRights	_Yn-gedp-Ed-ak6NoX_4Aeg_-169228663	Indicates whether the trade is executed special cum rights.
+TradeTransactionCondition1Code	SERT	SpecialExRights	_YoHqYNp-Ed-ak6NoX_4Aeg_-169228373	Indicates whether the trade is executed special ex rights.
+TradeTransactionCondition1Code	SCCR	SpecialCumCapitalRepayments	_YoHqYdp-Ed-ak6NoX_4Aeg_-169228320	Indicates whether the trade is executed special cum capital repayments.
+TradeTransactionCondition1Code	SECR	SpecialExCapitalRepayments	_YoHqYtp-Ed-ak6NoX_4Aeg_-169228278	Indicates whether the trade is executed special ex capital repayments.
+TradeTransactionCondition1Code	CAST	CashSettlement	_YoHqY9p-Ed-ak6NoX_4Aeg_-169228218	Indicates whether the trade is executed with a cash settlement.
+TradeTransactionCondition1Code	SPPR	SpecialPrice	_YoHqZNp-Ed-ak6NoX_4Aeg_-169228165	Indicates whether the trade is executed with a special price.

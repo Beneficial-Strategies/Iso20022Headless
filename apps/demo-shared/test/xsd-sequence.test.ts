@@ -43,6 +43,12 @@ function sample(types: TypeDescriptors, typeName: string, depth = 0): unknown {
   }
   const out: Record<string, unknown> = {};
   for (const f of t.fields ?? []) out[f.name] = f.repeat ? Array.from({ length: depth < 2 ? 2 : 1 }, (_, i) => one(f, i + 1)) : one(f, 1);
+  // members of which only one may be present (the repository's exclusive groups, ISO's xs:choice in a sequence): the first one stays
+  for (const r of t.rules ?? []) {
+    const cond = r.expression?.onCondition?.rules;
+    if (cond?.length !== 1 || cond[0]!.op !== 'Presence' || r.expression!.mustBe.connector !== 'AND' || !r.expression!.mustBe.rules.every((x) => x.op === 'Absence')) continue;
+    if (cond[0]!.path.slice(1) in out) for (const x of r.expression!.mustBe.rules) delete out[x.path.slice(1)];
+  }
   return out;
 }
 

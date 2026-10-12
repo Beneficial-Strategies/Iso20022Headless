@@ -77,6 +77,7 @@ import {
   ProxyAccountType1ChoiceSchema,
   ProxyAccountIdentification1Schema,
   CashAccount40Schema,
+  Max52TextSchema,
   DatePeriod2Schema,
   PercentageRateSchema,
   DatePeriod5Schema,
@@ -238,8 +239,6 @@ export const InvestigationStatus2Schema = z.strictObject({
   Status: ExternalInvestigationStatus1CodeSchema,
   StatusReason: InvestigationStatusReason1ChoiceSchema.optional(),
 });
-
-export const Max52TextSchema = textType({min: 1, max: 52});
 
 export const DebitAuthorisationConfirmation3Schema = z.strictObject({
   DebitAuthorisation: TrueFalseIndicatorSchema,
@@ -429,13 +428,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "Status", isoId: "_CXmCmVRtEe23M4WgERMsYw", xmlTag: "Sts", displayName: displayName("Status"), kind: "code", type: "ExternalInvestigationStatus1Code", required: true }),
       f({ name: "StatusReason", isoId: "_CXmCm1RtEe23M4WgERMsYw", xmlTag: "StsRsn", displayName: displayName("StatusReason"), kind: "choice", type: "InvestigationStatusReason1Choice", required: false }),
     ],
-  },
-  "Max52Text": {
-    name: "Max52Text",
-    isoId: "_or1cAdBlEeOpqfceNuZcvQ",
-    kind: "text",
-    minLength: 1,
-    maxLength: 52,
   },
   "DebitAuthorisationConfirmation3": {
     name: "DebitAuthorisationConfirmation3",
@@ -733,6 +725,7 @@ export const typeDescriptors: TypeDescriptors = {
   "ProxyAccountType1Choice": sharedTypeDescriptors["ProxyAccountType1Choice"]!,
   "ProxyAccountIdentification1": sharedTypeDescriptors["ProxyAccountIdentification1"]!,
   "CashAccount40": sharedTypeDescriptors["CashAccount40"]!,
+  "Max52Text": sharedTypeDescriptors["Max52Text"]!,
   "DatePeriod2": sharedTypeDescriptors["DatePeriod2"]!,
   "PercentageRate": sharedTypeDescriptors["PercentageRate"]!,
   "DatePeriod5": sharedTypeDescriptors["DatePeriod5"]!,

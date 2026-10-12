@@ -1,0 +1,40 @@
+codeSet	code	enumName	isoId	text
+RejectionReason69Code	SAFE	SafekeepingAccountRejection	_F9JsQStaEeyF-PUIGuhxvA	Unrecognised or invalid message sender's safekeeping account.
+RejectionReason69Code	ADEA	AccountServicerDeadlineMissed	_F9JsQytaEeyF-PUIGuhxvA	Transaction/instruction received after the account servicer's specified deadline.
+RejectionReason69Code	LATE	MarketDeadlineMissed	_F9JsRStaEeyF-PUIGuhxvA	Received after market deadline.
+RejectionReason69Code	CAEV	CorporateActionRejection	_F9JsRytaEeyF-PUIGuhxvA	Corporate action pending on the financial instrument instructed.
+RejectionReason69Code	DDAT	SettlementDateRejection	_F9JsSStaEeyF-PUIGuhxvA	Unrecognised or invalid settlement date.
+RejectionReason69Code	REFE	ReferenceRejection	_F9JsSytaEeyF-PUIGuhxvA	Instruction has a reference identical to another previously received instruction.
+RejectionReason69Code	OTHR	Other	_F9JsTStaEeyF-PUIGuhxvA	Other. See Narrative.
+RejectionReason69Code	DQUA	QuantityRejection	_F9JsTytaEeyF-PUIGuhxvA	Unrecognised or invalid instructed quantity.
+RejectionReason69Code	DSEC	InvalidSecurity	_F9JsUStaEeyF-PUIGuhxvA	Unrecognised or invalid financial instrument identification.
+RejectionReason69Code	INVB	InvalidBalance	_F9JsUytaEeyF-PUIGuhxvA	Instruction aims at using an invalid balance.
+RejectionReason69Code	INVL	InvalidLink	_F9JsVStaEeyF-PUIGuhxvA	Invalid or unrecognized link.
+RejectionReason69Code	INVN	InvalidLotNumber	_F9JsVytaEeyF-PUIGuhxvA	Invalid or unrecognized lot number.
+RejectionReason69Code	MINO	MinimumSettlementQuantity	_F9JsWStaEeyF-PUIGuhxvA	Quantity instructed is lower than the minimum existing settlement quantity for the financial instrument.
+RejectionReason69Code	MUNO	MultipleSettlementQuantity	_F9JsWytaEeyF-PUIGuhxvA	Quantity instructed is not a multiple of an existing settlement quantity lot for the financial instrument.
+RejectionReason69Code	VALR	InvalidRule	_F9JsXStaEeyF-PUIGuhxvA	Account servicer validation rule rejection.
+CancelledStatusReason16Code	SCEX	SecuritiesNoLongerEligible	_Nxq3oeNlEeifxbo8DBFfuw	Transaction has been cancelled; the security no longer exists or is no longer eligible on the market instructed. For corporate action related cancellation, CORP should be used.
+CancelledStatusReason16Code	OTHR	Other	_N1-v4eNlEeifxbo8DBFfuw	Other. See Narrative.
+CancelledStatusReason16Code	CXLR	EndOfLife	_OEaNceNlEeifxbo8DBFfuw	Transaction is rejected by the executing party, the rejection is final therefore the order is cancelled in the system.
+CancelledStatusReason16Code	BYIY	CancelledDueToBuyIn	_O0UAYeNlEeifxbo8DBFfuw	Instruction has been cancelled because a buy-in has been initiated.
+CancelledStatusReason16Code	CTHP	CancelledByThirdParty	_Ry5RYeNlEeifxbo8DBFfuw	Instruction is cancelled by a Third party.
+CancelledStatusReason16Code	CANZ	CancelledSplitPartialSettlement	_Zpc98eNlEeifxbo8DBFfuw	Original transaction has been cancelled and replaced to allow a partial or split settlement.
+CancelledStatusReason16Code	CANT	CancelledDueToTransformation	_aNv90eNlEeifxbo8DBFfuw	Original transaction has been cancelled and replaced due to a corporate action.
+CancelledStatusReason16Code	CSUB	CancelledByAgent	_bURhAeNlEeifxbo8DBFfuw	Instruction has been cancelled by the agent due to an event deadline extension.
+CancelledStatusReason16Code	CANS	CancelledBySystem	_b8IyQeNlEeifxbo8DBFfuw	Transaction is cancelled by the system.
+CancelledStatusReason16Code	CANI	CancelledByYourself	_c5ImAeNlEeifxbo8DBFfuw	Transaction is cancelled by yourself.
+CancelledStatusReason16Code	CORP	CancelledDueToCorporateAction	_owhK0eQBEeifxbo8DBFfuw	Transaction has been cancelled due to a corporate action.
+SecuritiesBalanceType13Code	BLOK	Blocked	_ZAHTpNp-Ed-ak6NoX_4Aeg_1235423103	Balance of financial instruments that are blocked.
+SecuritiesBalanceType13Code	AWAS	AvailableWithNoAdditionalStatus	_ZAHTpdp-Ed-ak6NoX_4Aeg_-1406916685	Balance of financial instruments that are freely available with no specific additional status.
+SecuritiesBalanceType13Code	AVAI	Available	_ZAHTptp-Ed-ak6NoX_4Aeg_-1698874423	Balance of financial instruments that are available.
+SecuritiesBalanceType13Code	NOMI	Registered	_ZAHTp9p-Ed-ak6NoX_4Aeg_-1520755751	Balance of financial instruments that are registered (in nominee name or in the name of the beneficial owner).
+SecuritiesBalanceType13Code	PLED	Pledged	_ZAHTqNp-Ed-ak6NoX_4Aeg_238350750	Balance of securities that belong to and is kept in the safekeeping account indicated within this message, and that are pledged.
+SecuritiesBalanceType13Code	REGO	OutForRegistration	_ZAHTqdp-Ed-ak6NoX_4Aeg_203511436	Balance of financial instruments currently being processed by the institution responsible for registering the new beneficial owner (or nominee).
+SecuritiesBalanceType13Code	RSTR	Restricted	_ZAREoNp-Ed-ak6NoX_4Aeg_-88446302	Balance of financial instruments that may only be sold under certain conditions or require legal documents.
+SecuritiesBalanceType13Code	OTHR	Unclassified	_ZAREodp-Ed-ak6NoX_4Aeg_89672370	Other. See Narrative.
+SecuritiesBalanceType13Code	SPOS	StreetPosition	_ZAREotp-Ed-ak6NoX_4Aeg_851706518	Balance of financial instruments that remain registered in the name of the prior beneficial owner.
+SecuritiesBalanceType13Code	UNRG	Unregistered	_ZAREo9p-Ed-ak6NoX_4Aeg_-1790633270	Balance of securities that could not be registered due to foreign ownership limitation.
+SecuritiesBalanceType13Code	ISSU	Issued	_ZAREpNp-Ed-ak6NoX_4Aeg_-2082591008	In issuer agent / depository communication, balance of issued financial instruments for which legal documentation has been received.
+SecuritiesBalanceType13Code	QUAS	QuasiIssued	_ZAREpdp-Ed-ak6NoX_4Aeg_-1904472336	In issuer agent / depository communication, balance of issued financial instruments for which legal documentation has not yet been received.
+SecuritiesBalanceType13Code	COLA	EligibleForCollateralPurposes	_ZAREptp-Ed-ak6NoX_4Aeg_875091232	Balance of securities that are eligible for use for collateral purposes.

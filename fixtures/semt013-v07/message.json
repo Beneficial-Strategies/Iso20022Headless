@@ -1,0 +1,107 @@
+{
+  "identifier": "semt.013.001.07",
+  "name": "IntraPositionMovementInstructionV07",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:semt.013.001.07",
+  "bodyTag": "IntraPosMvmntInstr",
+  "out": "semt013",
+  "isoId": "_768hcYowEe-efPejSUAtLw",
+  "definition": "Scope|An account owner sends a IntraPositionMovementInstruction to an account servicer to instruct the movement of securities within its holding from one sub-balance to another, for example, blocking of securities.||The account owner/servicer relationship may be:|- a global custodian which has an account with its local agent (sub-custodian), or|- an investment management institution which manage a fund account opened at a custodian, or|- a broker which has an account with a custodian, or|- a central securities depository participant which has an account with a central securities depository, or|- a central securities depository which has an account with a custodian, another central securities depository or another settlement market infrastructure.||Usage|The message may also be used to:|- re-send a message previously sent,|- provide a third party with a copy of a message for information,|- re-send to a third party a copy of a message for information.|using the relevant elements in the Business Application Header.",
+  "blocks": [
+    {
+      "name": "TransactionIdentification",
+      "isoId": "_768hgYowEe-efPejSUAtLw",
+      "xmlTag": "TxId",
+      "type": "Max35Text",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionEventIdentification",
+      "isoId": "_768hg4owEe-efPejSUAtLw",
+      "xmlTag": "CorpActnEvtId",
+      "type": "Max35Text",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "NumberCounts",
+      "isoId": "_768hhYowEe-efPejSUAtLw",
+      "xmlTag": "NbCounts",
+      "type": "NumberCount1Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Linkages",
+      "isoId": "_768hh4owEe-efPejSUAtLw",
+      "xmlTag": "Lnkgs",
+      "type": "Linkages59",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "AccountOwner",
+      "isoId": "_768hiYowEe-efPejSUAtLw",
+      "xmlTag": "AcctOwnr",
+      "type": "PartyIdentification127Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SafekeepingAccount",
+      "isoId": "_768hi4owEe-efPejSUAtLw",
+      "xmlTag": "SfkpgAcct",
+      "type": "SecuritiesAccount19",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "BlockChainAddressOrWallet",
+      "isoId": "_768hjYowEe-efPejSUAtLw",
+      "xmlTag": "BlckChainAdrOrWllt",
+      "type": "BlockChainAddressWallet3",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SafekeepingPlace",
+      "isoId": "_768hj4owEe-efPejSUAtLw",
+      "xmlTag": "SfkpgPlc",
+      "type": "SafekeepingPlaceFormat41Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "FinancialInstrumentIdentification",
+      "isoId": "_768hkYowEe-efPejSUAtLw",
+      "xmlTag": "FinInstrmId",
+      "type": "SecurityIdentification19",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "FinancialInstrumentAttributes",
+      "isoId": "_768hk4owEe-efPejSUAtLw",
+      "xmlTag": "FinInstrmAttrbts",
+      "type": "FinancialInstrumentAttributes112",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "IntraPositionDetails",
+      "isoId": "_768hlYowEe-efPejSUAtLw",
+      "xmlTag": "IntraPosDtls",
+      "type": "IntraPositionDetails58",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_768hl4owEe-efPejSUAtLw",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

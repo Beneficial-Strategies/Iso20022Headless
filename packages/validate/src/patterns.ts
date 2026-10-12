@@ -105,8 +105,9 @@ function parse(src: string): Node[] {
               set.digit = true;
               continue;
             }
-            if (/[a-zA-Z0-9]/.test(next)) throw new Unsupported();
-            ch = next;
+            if (next === 'n' || next === 'r' || next === 't') ch = `\\${next}`; // a line break or tab, shown as written (`\\n`)
+            else if (/[a-zA-Z0-9]/.test(next)) throw new Unsupported();
+            else ch = next;
           } else i++;
           if (src[i] === '-' && src[i + 1] !== ']' && i + 1 < src.length) {
             const to = src[i + 1]!;

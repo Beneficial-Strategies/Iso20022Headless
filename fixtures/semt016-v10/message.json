@@ -1,0 +1,59 @@
+{
+  "identifier": "semt.016.001.10",
+  "name": "IntraPositionMovementPostingReportV10",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:semt.016.001.10",
+  "bodyTag": "IntraPosMvmntPstngRpt",
+  "out": "semt016",
+  "isoId": "_W67wQYySEe-Pd_QEDR8xHw",
+  "definition": "Scope|The IntraPositionMovementPostingReport is sent by an account servicer to an account owner to provide the details of increases and decreases in securities with a given status within a holding, that is, intra-position transfers, which occurred during a specified period, for all or selected securities in a specified safekeeping account which the account servicer holds for the account owner. |||The account servicer/owner relationship may be:|- a central securities depository or another settlement market infrastructure acting on behalf of its participant|- an agent (sub-custodian) acting on behalf of its global custodian customer, or |- a custodian acting on behalf of an investment management institution or a broker/dealer.||Usage|:|The message may also be used to:|- re-send a message previously sent,|- provide a third party with a copy of a message for information,|- re-send to a third party a copy of a message for information |using the relevant elements in the Business Application Header.",
+  "blocks": [
+    {
+      "name": "Pagination",
+      "isoId": "_W67wT4ySEe-Pd_QEDR8xHw",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "StatementGeneralDetails",
+      "isoId": "_W67wUYySEe-Pd_QEDR8xHw",
+      "xmlTag": "StmtGnlDtls",
+      "type": "Statement80",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountOwner",
+      "isoId": "_W67wU4ySEe-Pd_QEDR8xHw",
+      "xmlTag": "AcctOwnr",
+      "type": "PartyIdentification127Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SafekeepingAccount",
+      "isoId": "_W67wVYySEe-Pd_QEDR8xHw",
+      "xmlTag": "SfkpgAcct",
+      "type": "SecuritiesAccount19",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "BlockChainAddressOrWallet",
+      "isoId": "_W67wV4ySEe-Pd_QEDR8xHw",
+      "xmlTag": "BlckChainAdrOrWllt",
+      "type": "BlockChainAddressWallet3",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "FinancialInstrument",
+      "isoId": "_W67wWYySEe-Pd_QEDR8xHw",
+      "xmlTag": "FinInstrm",
+      "type": "FinancialInstrumentDetails47",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

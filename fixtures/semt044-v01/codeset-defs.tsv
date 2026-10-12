@@ -1,0 +1,9 @@
+codeSet	isoId	text
+PenaltyListType1Code	_ALeugNfPEeiJ1vId85LeLw	Specifies the type of report for the penalties.
+ExternalPenaltyPartyType1Code	_SDl_AjkIEem897H7zB2RJg	Specifies the system party type, as published in an external penalty party type code set.|External code sets can be downloaded from www.iso20022.org.
+PenaltyType1Code	_4qTh4DkPEem897H7zB2RJg	Specifies the type of penalty.
+PenaltyStatus2Code	_UQ6fAB-LEeuwwezkzufkMw	Specifies the status of the penalty.
+PenaltyStatusReason2Code	_I6DmYB-JEeuwwezkzufkMw	Specifies the reason for the status of the penalty.
+PenaltyCalculationMethod1Code	_cThgQDkUEem897H7zB2RJg	Specifies the calculation method for the penalty.
+PenaltyAmountType1Code	_Pffv8DkbEem897H7zB2RJg	Specifies the type of the penalty amount.
+SecuritiesTransactionType26Code	_e8phIdYYEeiHVOfMzoKxnA	Specifies underlying information regarding the type of settlement transaction.

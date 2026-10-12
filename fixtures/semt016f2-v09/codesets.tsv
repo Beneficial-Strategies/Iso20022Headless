@@ -1,0 +1,7 @@
+codeSetName	isoId	restrictionOf	code	enumName
+EventFrequency4Code	_ajzT8dp-Ed-ak6NoX_4Aeg_-2118703833	EventFrequencyCode	YEAR	Annual
+EventFrequency4Code	_ajzT8dp-Ed-ak6NoX_4Aeg_-2118703833	EventFrequencyCode	ADHO	Adhoc
+EventFrequency4Code	_ajzT8dp-Ed-ak6NoX_4Aeg_-2118703833	EventFrequencyCode	MNTH	Monthly
+EventFrequency4Code	_ajzT8dp-Ed-ak6NoX_4Aeg_-2118703833	EventFrequencyCode	DAIL	Daily
+EventFrequency4Code	_ajzT8dp-Ed-ak6NoX_4Aeg_-2118703833	EventFrequencyCode	INDA	IntraDay
+EventFrequency4Code	_ajzT8dp-Ed-ak6NoX_4Aeg_-2118703833	EventFrequencyCode	WEEK	Weekly

@@ -1,0 +1,67 @@
+{
+  "identifier": "semt.021.001.09",
+  "name": "SecuritiesStatementQueryV09",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:semt.021.001.09",
+  "bodyTag": "SctiesStmtQry",
+  "out": "semt021",
+  "isoId": "71d95517-43ac-4b82-a35c-1cf6d29f7688",
+  "definition": "Scope|An account owner sends a SecuritiesStatementQuery to an account servicer to request any existing securities statement.|The account owner/servicer relationship may be:|- a global custodian which has an account with a local custodian, or|- an investment management institution which manage a fund account opened at a custodian, or|- a broker which has an account with a custodian, or|- a central securities depository participant which has an account with a central securities depository, or|- a central securities depository which has an account with a custodian, another central securities depository or another settlement market infrastructure, or|- a central counterparty or a stock exchange or a trade matching utility which need to instruct to a central securities depository or another settlement market infrastructure.||Usage|The message may also be used to:|- re-send a message previously sent,|- provide a third party with a copy of a message for information,|- re-send to a third party a copy of a message for information|using the relevant elements in the Business Application Header.",
+  "blocks": [
+    {
+      "name": "StatementRequested",
+      "isoId": "d6b39b8f-db55-4f60-b548-8c49a7e1e7c5",
+      "xmlTag": "StmtReqd",
+      "type": "DocumentNumber13",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "StatementGeneralDetails",
+      "isoId": "85065c3f-bb88-4514-96dd-569526896d2d",
+      "xmlTag": "StmtGnlDtls",
+      "type": "Statement83",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AccountOwner",
+      "isoId": "53cf1f9b-d69d-4306-935f-5b01abb7dba5",
+      "xmlTag": "AcctOwnr",
+      "type": "PartyIdentification144",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SafekeepingAccount",
+      "isoId": "42a44a0c-b906-4054-a53d-98033448dfac",
+      "xmlTag": "SfkpgAcct",
+      "type": "SecuritiesAccount19",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "BlockChainAddressOrWallet",
+      "isoId": "ea7e22dd-56fa-4624-827f-30beaf684cd0",
+      "xmlTag": "BlckChainAdrOrWllt",
+      "type": "BlockChainAddressWallet3",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AdditionalQueryParameters",
+      "isoId": "a2dc1856-e96d-478b-85cd-d9a9537edebe",
+      "xmlTag": "AddtlQryParams",
+      "type": "AdditionalQueryParameters15",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "03c66e5f-c09b-49c4-b965-bf95da43d808",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "identifier": "semt.005.001.02",
+  "name": "AccountingStatementOfHoldingsCancellationV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:semt.005.001.02",
+  "bodyTag": "AcctgStmtOfHldgsCxlV02",
+  "out": "semt005",
+  "isoId": "_McJgvtFSEd-BzquC8wXy7w_-1129601452",
+  "definition": "Scope|An account servicer, for example, a transfer agent, sends the AccountingStatementofHoldingsCancellation message to the account owner, for example, a fund manager or an account owner's designated agent, to notify the cancellation of a previously sent AccountingStatementOfHoldings message.|Usage|The AccountingStatementOfHoldingsCancellation message is used to cancel a previously sent AccountingStatementOfHoldings message. This message must contain the reference of the message to be cancelled.|This message may also contain all the details of the message to be cancelled, but this is not recommended.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "_McSqoNFSEd-BzquC8wXy7w_-312284977",
+      "xmlTag": "MsgId",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "PreviousReference",
+      "isoId": "_McSqodFSEd-BzquC8wXy7w_-1129601449",
+      "xmlTag": "PrvsRef",
+      "type": "AdditionalReference2",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "RelatedReference",
+      "isoId": "_McSqotFSEd-BzquC8wXy7w_-1129601408",
+      "xmlTag": "RltdRef",
+      "type": "AdditionalReference2",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "MessagePagination",
+      "isoId": "_McSqo9FSEd-BzquC8wXy7w_-1129601090",
+      "xmlTag": "MsgPgntn",
+      "type": "Pagination",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "StatementToBeCancelled",
+      "isoId": "_McSqpNFSEd-BzquC8wXy7w_-1129601373",
+      "xmlTag": "StmtToBeCanc",
+      "type": "AccountingStatementOfHoldings2",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

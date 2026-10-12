@@ -1,0 +1,91 @@
+codeSet	code	enumName	isoId	text
+PendingReason34Code	ADEA	AccountServicerDeadlineMissed	_HLVTUSm5EfGfZ9PfK70MMg	Instruction was received after the account servicer's deadline. It will be managed as per the bilateral service agreement between the account servicer and account owner.
+PendingReason34Code	CONF	AwaitingConfirmation	_HLVTUym5EfGfZ9PfK70MMg	Awaiting confirmation from the counterparty.
+PendingReason34Code	OTHR	Other	_HLVTVSm5EfGfZ9PfK70MMg	Other. See Narrative.
+PendingReason34Code	DQUA	QuantityDisagreement	_HLVTVym5EfGfZ9PfK70MMg	Quantity of financial instruments does not match.
+PendingReason33Code	BLOC	AccountBlocked	_71mCwSm7EfGfZ9PfK70MMg	Your account is blocked, no instruction can settle over the account.
+PendingReason33Code	ADEA	AccountServicerDeadlineMissed	_71mCwym7EfGfZ9PfK70MMg	Instruction was received after the account servicer's deadline. It will be managed as per the bilateral service agreement between the account servicer and account owner.
+PendingReason33Code	CONF	AwaitingConfirmation	_71mCxSm7EfGfZ9PfK70MMg	Awaiting confirmation from the counterparty.
+PendingReason33Code	DOCC	AwaitingDocumentsOrEndorsementsFromCounterparty	_71mCxym7EfGfZ9PfK70MMg	Awaiting documents or endorsements from counterparty.
+PendingReason33Code	DOCY	AwaitingDocumentsOrEndorsementsFromYou	_71mCySm7EfGfZ9PfK70MMg	Awaiting documents or endorsements from you.
+PendingReason33Code	AWMO	AwaitingMoney	_71mCyym7EfGfZ9PfK70MMg	Financial instruments are delivered, but still awaiting money from counterparty.
+PendingReason33Code	CYCL	AwaitingNextSettlementCycle	_71mCzSm7EfGfZ9PfK70MMg	Your instruction is confirmed in the local market or is ready for settlement, awaiting next settlement cycle.
+PendingReason33Code	LAAW	AwaitingOtherTransaction	_71mCzym7EfGfZ9PfK70MMg	Awaiting settlement of a purchase to cover failing positions.
+PendingReason33Code	CAIS	AwaitingSecurities	_71mC0Sm7EfGfZ9PfK70MMg	Awaiting financial instruments from a corporate action or other procedure, for example, conversion, dematerialisation, exchange, registration, stamping, splitting.
+PendingReason33Code	AWSH	AwaitingSecuritiesFromCounterparty	_71mC0ym7EfGfZ9PfK70MMg	Financial instruments have not yet been received from the counterparty (if receive against payment trade), the money has been delivered.
+PendingReason33Code	FUTU	AwaitingSettlementDate	_71mC1Sm7EfGfZ9PfK70MMg	Awaiting settlement date. No settlement problems to be reported.
+PendingReason33Code	BENO	BeneficialOwnershipDisagreement	_71mC1ym7EfGfZ9PfK70MMg	Disagreement in beneficial ownership.
+PendingReason33Code	BOTH	BothInstructionsOnHold	_71mC2Sm7EfGfZ9PfK70MMg	Counterparty's instruction and your instruction are on hold/frozen/ in a preadvice mode.
+PendingReason33Code	IPNC	CancelNotPossible	_71mC2ym7EfGfZ9PfK70MMg	Instruction has been processed and cannot be cancelled.
+PendingReason33Code	CDCY	ConditionalCurrency	_71mC3Sm7EfGfZ9PfK70MMg	Execution is conditional to the execution of a process linked to the currency of the transaction.
+PendingReason33Code	YCOL	CollateralShortage	_71mC3ym7EfGfZ9PfK70MMg	Insufficient collateral in your account to execute the instruction.
+PendingReason33Code	CLHT	ClearingHouseTrade	_71mC4Sm7EfGfZ9PfK70MMg	Instructed settlement date does not agree with the settlement date on the clearing house trade, that is, a specific type of trade in India.
+PendingReason33Code	REGT	CertificatesRejected	_71mC4ym7EfGfZ9PfK70MMg	Certificates have been lodged with the registrar but rejected due to incomplete documentation or foreign ownership limitation reached.
+PendingReason33Code	CDRE	ConditionalRealignement	_71mC5Sm7EfGfZ9PfK70MMg	Execution is conditional to the execution of a process of realignment at the issuer CSD.
+PendingReason33Code	CDRG	ConditionalRegistrar	_71mC5ym7EfGfZ9PfK70MMg	Execution is conditional to the execution of a process at the registrar.
+PendingReason33Code	NCON	ConfirmationNotReceived	_71mC6Sm7EfGfZ9PfK70MMg	Confirmation of settlement has not yet been received.
+PendingReason33Code	CPEC	CounterpartyInReceivership	_71mC6ym7EfGfZ9PfK70MMg	Counterparty is in receivership (form of bankruptcy where a court appointed person - the receiver - manages the affairs of the business).
+PendingReason33Code	PRCY	CounterpartyInstructionOnHold	_71mC7Sm7EfGfZ9PfK70MMg	Counterparty's instruction is a preadvice, that is, for matching only.
+PendingReason33Code	CMON	CounterpartyInsufficientMoney	_71mC7ym7EfGfZ9PfK70MMg	Insufficient money in counterparty's account.
+PendingReason33Code	CLAC	CounterpartyInsufficientSecurities	_71mC8Sm7EfGfZ9PfK70MMg	Insufficient deliverable financial instruments in counterparty's account or counterparty does not hold financial instruments.
+PendingReason33Code	DKNY	CounterpartyReturnedShares	_71mC8ym7EfGfZ9PfK70MMg	Counterparty has returned or refuses the securities.
+PendingReason33Code	CHAS	EnquirySent	_71mC9Sm7EfGfZ9PfK70MMg	A chaser/enquiry has been sent.
+PendingReason33Code	GLOB	GlobalFormSecurities	_71mC9ym7EfGfZ9PfK70MMg	Settlement cannot be executed; financial instruments are in global form.
+PendingReason33Code	INCA	IncomeAdjustementRequired	_71mC-Sm7EfGfZ9PfK70MMg	Financial instruments require income adjustment, for example, dividend or interest.
+PendingReason33Code	REFU	InstructionRefusedOrNotRecognised	_71mC-ym7EfGfZ9PfK70MMg	Instruction has been refused or not recognised and is represented automatically.
+PendingReason33Code	LIQU	InsufficientCentralBankLiquidity	_71mC_Sm7EfGfZ9PfK70MMg	Central bank liquidity is insufficient.
+PendingReason33Code	MONY	InsufficientMoney	_71mC_ym7EfGfZ9PfK70MMg	Insufficient money in your account.
+PendingReason33Code	LACK	LackOfSecurities	_71mDASm7EfGfZ9PfK70MMg	Insufficient financial instruments in your account.
+PendingReason33Code	SDUT	LackOfStampDutyInformation	_71mDAym7EfGfZ9PfK70MMg	Stamp duty information is missing.
+PendingReason33Code	LATE	MarketDeadlineMissed	_71mDBSm7EfGfZ9PfK70MMg	Instruction was received after market deadline.
+PendingReason33Code	FLIM	MaximumForeignLimitReached	_71mDBym7EfGfZ9PfK70MMg	Insufficient deliverable financial instruments in your account as maximum foreign limit has been reached.
+PendingReason33Code	MINO	MinimumSettlementAmount	_71mDCSm7EfGfZ9PfK70MMg	Quantity instructed is lower than the minimum existing settlement quantity for the financial instrument.
+PendingReason33Code	MCER	MissingCertification	_71mDCym7EfGfZ9PfK70MMg	Awaiting receipt of adequate certification.
+PendingReason33Code	MUNO	MultipleSettlementAmount	_71mDDSm7EfGfZ9PfK70MMg	Quantity instructed is not a multiple of an existing settlement quantity lot for the financial instrument.
+PendingReason33Code	DISA	NaturalDisaster	_71mDDym7EfGfZ9PfK70MMg	Exceptional closing of all financial institutions due to natural disaster, for example, earthquake.
+PendingReason33Code	NEWI	NewIssues	_71mDESm7EfGfZ9PfK70MMg	Financial instrument is a new issue and not yet available/tradable.
+PendingReason33Code	NOFX	NoForeignExchangeInstruction	_71mDEym7EfGfZ9PfK70MMg	A foreign exchange instruction from you is missing.
+PendingReason33Code	NMAS	NoMatchingRequired	_71mDFSm7EfGfZ9PfK70MMg	Instruction has not been matched; matching process is not required.
+PendingReason33Code	NPAY	NoPayment	_71mDFym7EfGfZ9PfK70MMg	Payment has not been made by issuer.
+PendingReason33Code	NSEC	NotDelivered	_71mDGSm7EfGfZ9PfK70MMg	Financial instruments have not been delivered by the issuer.
+PendingReason33Code	REFS	NotInGoodOrder	_71mDGym7EfGfZ9PfK70MMg	Delivery/receipt was refused because physical financial instruments are not in good order.
+PendingReason33Code	OTHR	Other	_71mDHSm7EfGfZ9PfK70MMg	Other. See Narrative.
+PendingReason33Code	LINK	PendingLinkedInstruction	_71mDHym7EfGfZ9PfK70MMg	Your instruction is pending settlement because the instruction linked to it is pending.
+PendingReason33Code	PENR	PendingReceipt	_71mDISm7EfGfZ9PfK70MMg	The instruction is pending receipt of securities, for example, from a purchase, loan etc.
+PendingReason33Code	PHSE	PhysicalDeliveryDelay	_71mDIym7EfGfZ9PfK70MMg	Settlement is physical. Financial instruments are being delivered.
+PendingReason33Code	PHCK	PhysicalSecuritiesVerification	_71mDJSm7EfGfZ9PfK70MMg	Physical financial instruments have been received and are being checked for authenticity.
+PendingReason33Code	BATC	ProcessingBatchDifference	_71mDJym7EfGfZ9PfK70MMg	Processing batch differs in the counterparty's instruction, for example, daytime/real-time versus overnight.
+PendingReason33Code	DQUA	QuantityDisagreement	_71mDKSm7EfGfZ9PfK70MMg	Quantity of financial instruments does not match.
+PendingReason33Code	DEPO	RefusedDepositForIssueOfDepositaryReceipts	_71mDKym7EfGfZ9PfK70MMg	Deposit of shares for the issuing of depositary receipts has been refused. The allotment granted by the issuer is exceeded by your transaction.
+PendingReason33Code	SBLO	SecuritiesBlocked	_71mDLSm7EfGfZ9PfK70MMg	Financial instruments are blocked due to, for example, a corporate action event, realignment.
+PendingReason33Code	FROZ	SecuritiesFrozenAtCSD	_71mDLym7EfGfZ9PfK70MMg	Financial instruments are blocked at the Central Security Depository (CSD) following a corporate event.
+PendingReason33Code	LALO	SecuritiesLoanedOut	_71mDMSm7EfGfZ9PfK70MMg	Financial instruments are out on loan.
+PendingReason33Code	COLL	SecuritiesPledgedAsCollateral	_71mDMym7EfGfZ9PfK70MMg	Financial instruments are not deliverable as they are pledged as collateral.
+PendingReason33Code	AUTH	SentToTaxAuthorities	_71mDNSm7EfGfZ9PfK70MMg	Tax reclaim has been sent to the tax authorities.
+PendingReason33Code	SETS	SettlementSystemMethodModified	_71mDNym7EfGfZ9PfK70MMg	Settlement system/method has been modified at central securities depository to allow settlement.
+PendingReason33Code	IAAD	StatusReasonInvestigation	_71mDOSm7EfGfZ9PfK70MMg	Pending reason being investigated.
+PendingReason33Code	PRSY	SystemOnHold	_71mDOym7EfGfZ9PfK70MMg	Transaction was put on hold/frozen by the system.
+PendingReason33Code	TAMM	TradeAmendedInMarket	_71mDPSm7EfGfZ9PfK70MMg	Trade is being amended in the market.
+PendingReason33Code	PART	TradeSettlesInPartials	_71mDPym7EfGfZ9PfK70MMg	Trade will settle in partials.
+PendingReason33Code	DENO	UnavailableDeliverableDenominatedQuantity	_71mDQSm7EfGfZ9PfK70MMg	Quantity instructed does not match the denomination available/deliverable. Physical securities need to be obtained in deliverable denominated quantities.
+PendingReason33Code	VLDA	ValidForTaxAuthorities	_71mDQym7EfGfZ9PfK70MMg	For tax reclaim, the event is pending, the tax reclaim is valid for the tax authorities.
+PendingReason33Code	PREA	YourInstructionOnHold	_71mDRSm7EfGfZ9PfK70MMg	Your instruction is a preadvice, that is, for matching only.
+PendingProcessingReason6Code	BLOC	AccountBlocked	_zE4icSm4EfGfZ9PfK70MMg	Your account is blocked, no instruction can settle over the account.
+PendingProcessingReason6Code	ADEA	AccountServicerDeadlineMissed	_zE4icym4EfGfZ9PfK70MMg	Instruction was received after the account servicer's deadline. It will be managed as per the bilateral service agreement between the account servicer and account owner.
+PendingProcessingReason6Code	DOCY	AwaitingDocumentsOrEndorsementsFromYou	_zE4idSm4EfGfZ9PfK70MMg	Awaiting documents or endorsements from you.
+PendingProcessingReason6Code	CAIS	AwaitingSecurities	_zE4idym4EfGfZ9PfK70MMg	Awaiting financial instruments from a corporate action or other procedure, for example, conversion, dematerialisation, exchange, registration, stamping, splitting.
+PendingProcessingReason6Code	YCOL	CollateralShortage	_zE4ieSm4EfGfZ9PfK70MMg	Insufficient collateral in your account to execute the instruction.
+PendingProcessingReason6Code	GLOB	GlobalFormSecurities	_zE4ieym4EfGfZ9PfK70MMg	Settlement cannot be executed; financial instruments are in global form.
+PendingProcessingReason6Code	LIQU	InsufficientCentralBankLiquidity	_zE4ifSm4EfGfZ9PfK70MMg	Central bank liquidity is insufficient.
+PendingProcessingReason6Code	MONY	InsufficientMoney	_zE4ifym4EfGfZ9PfK70MMg	Insufficient money in your account.
+PendingProcessingReason6Code	LACK	LackOfSecurities	_zE4igSm4EfGfZ9PfK70MMg	Insufficient financial instruments in your account.
+PendingProcessingReason6Code	FLIM	MaximumForeignLimitReached	_zE4igym4EfGfZ9PfK70MMg	Insufficient deliverable financial instruments in your account as maximum foreign limit has been reached.
+PendingProcessingReason6Code	MINO	MinimumSettlementAmount	_zE4ihSm4EfGfZ9PfK70MMg	Quantity instructed is lower than the minimum existing settlement quantity for the financial instrument.
+PendingProcessingReason6Code	MUNO	MultipleSettlementAmount	_zE4ihym4EfGfZ9PfK70MMg	Quantity instructed is not a multiple of an existing settlement quantity lot for the financial instrument.
+PendingProcessingReason6Code	NEXT	NextProcess	_zE4iiSm4EfGfZ9PfK70MMg	Next process is launched. No processing pending problems to be reported.
+PendingProcessingReason6Code	NOFX	NoForeignExchangeInstruction	_zE4iiym4EfGfZ9PfK70MMg	A foreign exchange instruction from you is missing.
+PendingProcessingReason6Code	OTHR	Other	_zE4ijSm4EfGfZ9PfK70MMg	Other. See Narrative.
+PendingProcessingReason6Code	LALO	SecuritiesLoanedOut	_zE4ijym4EfGfZ9PfK70MMg	Financial instruments are out on loan.
+PendingProcessingReason6Code	COLL	SecuritiesPledgedAsCollateral	_zE4ikSm4EfGfZ9PfK70MMg	Financial instruments are not deliverable as they are pledged as collateral.
+PendingProcessingReason6Code	DENO	UnavailableDeliverableDenominatedQuantity	_zE5JgSm4EfGfZ9PfK70MMg	Quantity instructed does not match the denomination available/deliverable. Physical securities need to be obtained in deliverable denominated quantities.
+PendingProcessingReason6Code	CERT	WrongCertificatesNumbers	_zE5Jgym4EfGfZ9PfK70MMg	Certificate number error.

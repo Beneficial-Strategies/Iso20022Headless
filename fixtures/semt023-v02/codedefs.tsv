@@ -1,0 +1,31 @@
+codeSet	code	enumName	isoId	text
+TypeOfIdentification2Code	ARNU	AlienRegistrationNumber	__ztF5NojEeC60axPepSq7g_1743002948	Number assigned by a government agency to identify foreign nationals.
+TypeOfIdentification2Code	CHTY	TaxExemptIdentificationNumber	__ztF5dojEeC60axPepSq7g_-721218168	Number assigned to a tax exempt entity.
+TypeOfIdentification2Code	CORP	CorporateIdentification	__z224NojEeC60axPepSq7g_-1013175906	Number assigned to a corporate entity.
+TypeOfIdentification2Code	FIIN	ForeignInvestmentIdentityNumber	__z224dojEeC60axPepSq7g_-1896409193	Number assigned to a foreign investor (other than the alien number).
+TypeOfIdentification2Code	TXID	TaxIdentificationNumber	__z224tojEeC60axPepSq7g_-1718290521	Number assigned by a tax authority to an entity.
+Eligibility1Code	ELIG	EligibleCounterparty	_ahHzZdp-Ed-ak6NoX_4Aeg_-1307879388	Eligible customers are the most sophisticated level of investor, able to opt out of some the protections afforded by conduct of business rules.
+Eligibility1Code	RETL	RetailClient	_ahHzZtp-Ed-ak6NoX_4Aeg_-1307879371	Retail customers are the least sophisticated level of investor.
+Eligibility1Code	PROF	ProfessionalClient	_ahHzZ9p-Ed-ak6NoX_4Aeg_-1307879327	Professional customers are, for example, investment firms, credit institutions, insurance companies.
+TradingCapacity4Code	PRIN	Principal	__zHQAdojEeC60axPepSq7g_-86024906	Trading as Principal.
+TradingCapacity4Code	CPRN	CrossingPrincipal	__zHQAtojEeC60axPepSq7g_-199863972	Crossing as a principal.
+TradingCapacity4Code	RISP	RisklessPrincipal	__zHQA9ojEeC60axPepSq7g_-52865137	Trading as a riskless principal, ie, the order to buy(sell) has been simultaneously offset by an order to sell (buy) with another party.
+TradingCapacity4Code	PROP	Proprietary	__zHQBNojEeC60axPepSq7g_1471203159	Trading for its firm. The transaction affects the firm's own account, not that of its customers.
+TradingCapacity4Code	AGEN	Agent	__zHQBdojEeC60axPepSq7g_1622201004	Trading as Agent on behalf of a customer.
+TradingCapacity4Code	CAGN	CrossingAgent	__zHQBtojEeC60axPepSq7g_-1148697996	Crossing as an agent.
+TradingCapacity4Code	OAGN	OtherAgent	__zRBANojEeC60axPepSq7g_-845601054	Acting as an agent for a party other than a customer.
+TradingCapacity4Code	PRAG	PrincipalAgent	__zRBAdojEeC60axPepSq7g_678467242	Acting as an agent for some executions and principal for others in the same transaction.
+TradingCapacity4Code	BAGN	ActingAgent	__zRBAtojEeC60axPepSq7g_232419284	Party acting as an agent for both customer and another person.
+TradingCapacity4Code	INFI	InvestmentFirm	__zRBA9ojEeC60axPepSq7g_1756487580	Any legal person whose regular occupation or business is the provision of one or more investment services to third parties and/or the performance of one or more investment activities on a professional basis.
+TradingCapacity4Code	MKTM	MarketMaker	__zRBBNojEeC60axPepSq7g_686506553	Dealer or specialist that is trading for their own account in the OTC market. Market makers are expected to maintain an orderly market by being available to buy or sell.
+TradingCapacity4Code	MLTF	MultilateralTradingFacility	__zaK8NojEeC60axPepSq7g_-2084392447	Multilateral Trading Facility (MTF) is a multilateral system which brings together multiple third-party buying and selling interests in financial instruments in a way that results in a contract.
+TradingCapacity4Code	RMKT	RegulatedMarket	__zaK8dojEeC60axPepSq7g_-1777537574	Regulated market on which financial instruments can be traded according to rules defined by the stock exchange.
+TradingCapacity4Code	SINT	SystematicInternaliser	__zaK8tojEeC60axPepSq7g_-253469278	Firms which, on an organised, frequent and systematic basis, deal on their own account by executing client orders outside a regulated market or an MTF. SIs have the obligation to provide, and make public, a definite bid and offer quote for liquid securities.
+TradingCapacity4Code	TAGT	TransferAgent	__zaK89ojEeC60axPepSq7g_-1016772421	Party appointed by the Fund Management Company. It updates records of investor accounts to reflect the daily investor purchases, redemptions, switches, transfers, and re-registrations. It ensures the timely settlement of transactions, and may provide tax information to the investor and/or to its intermediaries. It may calculate, collect, and rebate commissions. It prepares and distributes confirmations reflecting transactions, resulting in unit or cash account movements to the investor or the investor's intermediary. It responds to inquiries concerning account status, and processes the income distribution.
+TradingCapacity6Code	AGEN	Agent	__zaK9dojEeC60axPepSq7g_946389513	Trading as Agent on behalf of a customer.
+TradingCapacity6Code	BAGN	ActingAgent	__zaK9tojEeC60axPepSq7g_-729579691	Party acting as an agent for both customer and another person.
+TradingCapacity6Code	CAGN	CrossingAgent	__zj78NojEeC60axPepSq7g_-1990766827	Crossing as an agent.
+TradingCapacity6Code	CPRN	CrossingPrincipal	__zj78dojEeC60axPepSq7g_1386150177	Crossing as a principal.
+TradingCapacity6Code	OAGN	OtherAgent	__zj78tojEeC60axPepSq7g_1420967182	Acting as an agent for a party other than a customer.
+TradingCapacity6Code	PRAG	PrincipalAgent	__zj789ojEeC60axPepSq7g_153653596	Acting as an agent for some executions and principal for others in the same transaction.
+TradingCapacity6Code	PRIN	Principal	__zj79NojEeC60axPepSq7g_-2025583832	Trading as Principal.

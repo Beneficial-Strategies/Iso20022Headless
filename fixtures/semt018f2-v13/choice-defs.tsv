@@ -1,0 +1,70 @@
+choice	memberId	memberName	text
+Status39Choice	_gEIFcDi8Eeydid5dcNPKvg	Proprietary	Proprietary status.
+Status39Choice	_gEIFdDi8Eeydid5dcNPKvg	MatchingStatus	Provides the matching status of the instruction.
+Status39Choice	_gEIFeDi8Eeydid5dcNPKvg	InferredMatchingStatus	Provides the matching status of an instruction as known by the account servicer based on an allegement. At this time no matching took place on the market (at the CSD/ICSD).
+Status39Choice	_gEIFfDi8Eeydid5dcNPKvg	SettlementStatus	Provides the status of settlement of a transaction.
+Status39Choice	_gEIFgDi8Eeydid5dcNPKvg	InstructionProcessingStatus	Provides the status of an instruction.
+MatchingStatus32Choice	_6d8XTZNLEeWGlc8L7oPDIg	Matched	Status is matched.
+MatchingStatus32Choice	_6d8XUZNLEeWGlc8L7oPDIg	Unmatched	Status is unmatched.
+MatchingStatus32Choice	_6d8XVZNLEeWGlc8L7oPDIg	Proprietary	Proprietary status.
+UnmatchedStatus21Choice	_6d89d5NLEeWGlc8L7oPDIg	NoSpecifiedReason	Indicates that there is no reason available or to report.
+UnmatchedStatus21Choice	_6d89e5NLEeWGlc8L7oPDIg	Reason	Specifies the reason of the unmatched status.
+UnmatchedReason27Choice	_6d89kZNLEeWGlc8L7oPDIg	Code	Specifies the reason why the instruction has an unmatched status.
+UnmatchedReason27Choice	_6d89lZNLEeWGlc8L7oPDIg	Proprietary	Specifies the reason why the instruction has an unmatched status.
+SettlementStatus31Choice	_f99L-Ti8Eeydid5dcNPKvg	Pending	Instruction is pending. Settlement at the instructed settlement date is still possible.
+SettlementStatus31Choice	_f99MATi8Eeydid5dcNPKvg	Failing	Instruction is failing. Settlement at the instructed settlement date is no longer possible.
+SettlementStatus31Choice	_f99MCTi8Eeydid5dcNPKvg	Proprietary	Proprietary status.
+PendingStatus69Choice	_f99MFTi8Eeydid5dcNPKvg	NoSpecifiedReason	Indicates that there is no reason available or to report.
+PendingStatus69Choice	_f99MHTi8Eeydid5dcNPKvg	Reason	Specifies the reason of the pending status.
+PendingReason65Choice	_f99MPzi8Eeydid5dcNPKvg	Code	Specifies the reason why the instruction has a pending status.
+PendingReason65Choice	_f99MRzi8Eeydid5dcNPKvg	Proprietary	Specifies the reason why the instruction has a pending status.
+FailingStatus14Choice	_f99yBTi8Eeydid5dcNPKvg	NoSpecifiedReason	Indicates that there is no reason available or to report.
+FailingStatus14Choice	_f99yDTi8Eeydid5dcNPKvg	Reason	Specifies the reason of the failing status.
+FailingReason17Choice	_f99yLzi8Eeydid5dcNPKvg	Code	Specifies the reason why the instruction has a failing settlement status.
+FailingReason17Choice	_f99yNzi8Eeydid5dcNPKvg	Proprietary	Specifies the reason why the instruction has a failing settlement status.
+InstructionProcessingStatus45Choice	_waWtlyAeEeuyDZ-ukt4YRg	PendingProcessing	Processing of the instruction/request is pending.
+InstructionProcessingStatus45Choice	_waWtmyAeEeuyDZ-ukt4YRg	CancellationRequested	Cancellation request from your counterparty for this transaction is pending waiting for your cancellation request.
+InstructionProcessingStatus45Choice	_waWtnyAeEeuyDZ-ukt4YRg	AcknowledgedAccepted	Instruction has been acknowledged by the account servicer.
+InstructionProcessingStatus45Choice	_waWtoyAeEeuyDZ-ukt4YRg	Cancelled	Instruction has been cancelled.
+InstructionProcessingStatus45Choice	_waWtpyAeEeuyDZ-ukt4YRg	Generated	Transaction was created by the account servicer or a third party. It was not instructed directly by the account owner.
+InstructionProcessingStatus45Choice	_waWtqyAeEeuyDZ-ukt4YRg	Repair	Instruction/request is accepted but in repair.
+InstructionProcessingStatus45Choice	_waWtryAeEeuyDZ-ukt4YRg	PendingCancellation	Cancellation request from yourself for this instruction is pending waiting for further processing.
+InstructionProcessingStatus45Choice	_waWtsyAeEeuyDZ-ukt4YRg	ModificationRequested	Modification request from your counterparty for this transaction is pending waiting for your cancellation request or your consent.
+PendingProcessingStatus19Choice	_qTGQYSAdEeuyDZ-ukt4YRg	NoSpecifiedReason	Indicates that there is no reason available or to report.
+PendingProcessingStatus19Choice	_qTGQaSAdEeuyDZ-ukt4YRg	Reason	Specifies the reason of the pending processing status.
+PendingProcessingReason18Choice	_qTGQiyAdEeuyDZ-ukt4YRg	Code	Specifies the reason why the instruction has a pending processing status.
+PendingProcessingReason18Choice	_qTGQkyAdEeuyDZ-ukt4YRg	Proprietary	Specifies the reason why the instruction has a pending processing status.
+GeneratedStatus8Choice	_8VJvz5NLEeWGlc8L7oPDIg	NoSpecifiedReason	Indicates that there is no reason available or to report.
+GeneratedStatus8Choice	_8VJv05NLEeWGlc8L7oPDIg	Reason	Specifies the reason of the generated status.
+TransactionActivity4Choice	_8VKXS5NLEeWGlc8L7oPDIg	Code	Transaction type expressed as an ISO 20022 code.
+TransactionActivity4Choice	_8VKXU5NLEeWGlc8L7oPDIg	Proprietary	Transaction type expressed as a proprietary code.
+SettlementOrCorporateActionEvent32Choice	_ipRlwgVVEeqjd8n6wD9JVw	SecuritiesTransactionType	Identifies the type of securities transaction.
+SettlementOrCorporateActionEvent32Choice	_ipRlygVVEeqjd8n6wD9JVw	CorporateActionEventType	Specifies the type of corporate event.
+SecuritiesTransactionType52Choice	_J4CyzffYEeiNZp_PtLohLw	Code	Securities transaction type expressed as an ISO 20022 code.
+SecuritiesTransactionType52Choice	_J4Cy1ffYEeiNZp_PtLohLw	Proprietary	Securities transaction type expressed as a proprietary code.
+Registration12Choice	_6GWV95NLEeWGlc8L7oPDIg	Code	Registration information expressed as an ISO 20022 code.
+Registration12Choice	_6GWV-ZNLEeWGlc8L7oPDIg	Proprietary	Registration information expressed as a proprietary code.
+SettlementTransactionCondition37Choice	_38PHkyAaEeu4a6pNulzZ4Q	Code	Settlement conditions expressed as an ISO 20022 code.
+SettlementTransactionCondition37Choice	_38PHmyAaEeu4a6pNulzZ4Q	Proprietary	Settlement conditions expressed as a proprietary code.
+SettlingCapacity8Choice	_5m5ai5NLEeWGlc8L7oPDIg	Code	Settlement capacity expressed as an ISO 20022 code.
+SettlingCapacity8Choice	_5m5aj5NLEeWGlc8L7oPDIg	Proprietary	Settlement capacity expressed as a proprietary code.
+TaxCapacityParty5Choice	_5TKlaZNLEeWGlc8L7oPDIg	Code	Party tax capacity expressed as an ISO 20022 code.
+TaxCapacityParty5Choice	_5TKlcZNLEeWGlc8L7oPDIg	Proprietary	Party tax capacity expressed as a proprietary code.
+RepurchaseType24Choice	_pAgRUZwxEeazcsnODTksnQ	Code	Type of securities financing transaction process expressed as an ISO 20022 code.
+RepurchaseType24Choice	_pAgRWZwxEeazcsnODTksnQ	Proprietary	Type of securities financing transaction process expressed as a proprietary code.
+BlockTrade5Choice	_5m6Bc5NLEeWGlc8L7oPDIg	Code	Block parent or child information expressed as an ISO 20022 code.
+BlockTrade5Choice	_5m6Be5NLEeWGlc8L7oPDIg	Proprietary	Block parent or child information expressed as a proprietary code.
+Restriction6Choice	_5TJ-35NLEeWGlc8L7oPDIg	Code	Restrictions expressed as an ISO 20022 code.
+Restriction6Choice	_5TJ-55NLEeWGlc8L7oPDIg	Proprietary	Restrictions expressed as a proprietary code.
+SettlementSystemMethod5Choice	_5TKlRZNLEeWGlc8L7oPDIg	Code	Settlement system expressed as an ISO 20022 code.
+SettlementSystemMethod5Choice	_5TKlTZNLEeWGlc8L7oPDIg	Proprietary	Settlement system expressed as a proprietary code.
+NettingEligibility5Choice	_5m6oE5NLEeWGlc8L7oPDIg	Indicator	Specifies whether the settlement transaction is eligible for netting.
+NettingEligibility5Choice	_5m6oG5NLEeWGlc8L7oPDIg	Proprietary	Netting eligibility expressed as a proprietary code.
+CentralCounterPartyEligibility5Choice	_5m6oNZNLEeWGlc8L7oPDIg	Indicator	Specifies whether the settlement transaction is CCP (Central Counterparty) eligible.
+CentralCounterPartyEligibility5Choice	_5m6oPZNLEeWGlc8L7oPDIg	Proprietary	Central counterparty eligibility information expressed as a proprietary code.
+LetterOfGuarantee5Choice	_6ScRh5NLEeWGlc8L7oPDIg	Indicator	Specifies whether physical settlement may be executed using a letter of guarantee or if the physical certificates should be used.
+LetterOfGuarantee5Choice	_6ScRj5NLEeWGlc8L7oPDIg	Proprietary	Letter of guarantee information expressed as a proprietary code.
+SettlementDate32Choice	_vE8fbc32Eee5nJBZsW8MFQ	Date	Date in ISO format.
+SettlementDate32Choice	_vE8fe832Eee5nJBZsW8MFQ	DateCode	Date and time at which the securities are to be delivered or received.
+SettlementDateCode11Choice	_6BMwhZNLEeWGlc8L7oPDIg	Code	Settlement date expressed as an ISO 20022 code.
+SettlementDateCode11Choice	_6BMwjZNLEeWGlc8L7oPDIg	Proprietary	Settlement date expressed as a proprietary code.

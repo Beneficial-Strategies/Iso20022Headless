@@ -1,0 +1,30 @@
+choice	memberId	memberName	text
+SafekeepingPlaceFormat41Choice	_PERTwY-4Ee-nyIlugK8fOQ	Identification	Place of safekeeping expressed as a code and a narrative description.
+SafekeepingPlaceFormat41Choice	_PERTyY-4Ee-nyIlugK8fOQ	Country	Place of safekeeping expressed with a country code.
+SafekeepingPlaceFormat41Choice	_UZ8_AY-4Ee-nyIlugK8fOQ	DigitalLedgerIdentification	Place of safekeeping expressed with a Digital Ledger Identifier. It identifies a digital ledger or distributed ledger system (for example, blockchain or similar platforms).
+SafekeepingPlaceFormat41Choice	_PERT0Y-4Ee-nyIlugK8fOQ	TypeAndIdentification	Place of safekeeping expressed with a type and identification.
+SafekeepingPlaceFormat41Choice	_PERT2Y-4Ee-nyIlugK8fOQ	Proprietary	Place of safekeeping expressed with a propriety identification scheme.
+MarketIdentification3Choice	_Acing9okEeC60axPepSq7g_164820185	MarketIdentifierCode	Market Identifier Code. Identification of a financial market, as stipulated in the norm ISO 10383 "Codes for exchanges and market identifications".
+MarketIdentification3Choice	_AcinhNokEeC60axPepSq7g_-718413102	Description	Description of the market when no Market Identifier Code is available.
+InterestComputationMethodFormat4Choice	_bMY-4Tm6EeWV5sr121Fc8A	Code	Standard code to specify the method used to compute accruing interest of a financial instrument.
+InterestComputationMethodFormat4Choice	_bMY-4zm6EeWV5sr121Fc8A	Proprietary	Proprietary identification of the format of interest computation method.
+FormOfSecurity6Choice	_MhX_Izm-EeWV5sr121Fc8A	Code	Form of the security expressed as an ISO 20022 code.
+FormOfSecurity6Choice	_MhX_Kzm-EeWV5sr121Fc8A	Proprietary	Form of the security expressed as a proprietary code.
+Frequency23Choice	_YIsyIzm_EeWV5sr121Fc8A	Code	Frequency expressed as an ISO 20022 code.
+Frequency23Choice	_YIsyKzm_EeWV5sr121Fc8A	Proprietary	Frequency expressed as a proprietary code.
+SecuritiesPaymentStatus5Choice	_cgvT8znAEeWV5sr121Fc8A	Code	Securities payment status expressed as an ISO 20022 code.
+SecuritiesPaymentStatus5Choice	_cgvT-znAEeWV5sr121Fc8A	Proprietary	Securities payment status expressed as a proprietary code.
+ClassificationType32Choice	_IyRYZYlYEeWPSZi0kAOXhg	ClassificationFinancialInstrument	ISO 10962 Classification of Financial Instrument (CFI).
+ClassificationType32Choice	_IyRYbYlYEeWPSZi0kAOXhg	AlternateClassification	Proprietary classification of financial instrument.
+OptionStyle8Choice	_hDvSQTq2EeWQ1Y7f8kds2A	Code	Option style expressed as an ISO 20022 code.
+OptionStyle8Choice	_hDvSSTq2EeWQ1Y7f8kds2A	Proprietary	Option style expressed as a proprietary code.
+OptionType6Choice	_uAXhoznCEeWV5sr121Fc8A	Code	Option type expressed as an ISO 20022 code.
+OptionType6Choice	_uAXhqznCEeWV5sr121Fc8A	Proprietary	Option type expressed as a proprietary code.
+Number22Choice	_HAL_wznEEeWV5sr121Fc8A	Short	Number of maximum 3 numeric text.
+Number22Choice	_HAL_yznEEeWV5sr121Fc8A	Long	Number of maximum 35 text, with the possibility to provide an issuer for the number identification.
+PriceType4Choice	_y7YrkbQBEee1Ke-6rZgsrA	Market	Last reported price of a financial instrument in a market, determined by supply and demand.
+PriceType4Choice	_y7Yrk7QBEee1Ke-6rZgsrA	Indicative	Estimated price, for valuation purposes.
+CorporateActionEventType110Choice	_muCGg4ybEe-PVZsedaAGaA	Code	Corporate action event type expressed as an ISO 20022 code.
+CorporateActionEventType110Choice	_muCGi4ybEe-PVZsedaAGaA	Proprietary	Corporate action event type expressed as a proprietary code.
+SecuritiesBalanceType6Choice	_q5Z-oTnsEeWfSKvvZlhRKg	Code	Sub-balance expressed as an ISO 20022 code.
+SecuritiesBalanceType6Choice	_q5Z-qTnsEeWfSKvvZlhRKg	Proprietary	Sub-balance expressed as a proprietary code.

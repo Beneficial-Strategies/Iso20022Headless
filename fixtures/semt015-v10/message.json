@@ -1,0 +1,91 @@
+{
+  "identifier": "semt.015.001.10",
+  "name": "IntraPositionMovementConfirmationV10",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:semt.015.001.10",
+  "bodyTag": "IntraPosMvmntConf",
+  "out": "semt015",
+  "isoId": "_9ZK4MYbpEe-6cOl7zMpJaA",
+  "definition": "Scope|The IntraPositionMovementConfirmation is sent by an account servicer to an account owner to confirm the movement of securities within its holding from one sub-balance to another, for example, blocking of securities. |The account servicer/owner relationship may be:|- a central securities depository or another settlement market infrastructure acting on behalf of its participant|- an agent (sub-custodian) acting on behalf of  its global custodian customer, or |- a custodian acting on behalf of an investment management institution or a broker/dealer.||Usage|The message may also be used to:|- re-send a message previously sent,|- provide a third party with a copy of a message for information,|- re-send to a third party a copy of a message for information|using the relevant elements in the Business Application Header.",
+  "blocks": [
+    {
+      "name": "AdditionalParameters",
+      "isoId": "_9ZK4P4bpEe-6cOl7zMpJaA",
+      "xmlTag": "AddtlParams",
+      "type": "AdditionalParameters33",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Linkage",
+      "isoId": "_SBntcYbrEe-6cOl7zMpJaA",
+      "xmlTag": "Lkg",
+      "type": "Linkages75",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AccountOwner",
+      "isoId": "_9ZK4QYbpEe-6cOl7zMpJaA",
+      "xmlTag": "AcctOwnr",
+      "type": "PartyIdentification127Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SafekeepingAccount",
+      "isoId": "_9ZK4Q4bpEe-6cOl7zMpJaA",
+      "xmlTag": "SfkpgAcct",
+      "type": "SecuritiesAccount19",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "BlockChainAddressOrWallet",
+      "isoId": "_9ZK4RYbpEe-6cOl7zMpJaA",
+      "xmlTag": "BlckChainAdrOrWllt",
+      "type": "BlockChainAddressWallet3",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SafekeepingPlace",
+      "isoId": "_9ZK4R4bpEe-6cOl7zMpJaA",
+      "xmlTag": "SfkpgPlc",
+      "type": "SafekeepingPlaceFormat41Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "FinancialInstrumentIdentification",
+      "isoId": "_9ZK4SYbpEe-6cOl7zMpJaA",
+      "xmlTag": "FinInstrmId",
+      "type": "SecurityIdentification19",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "FinancialInstrumentAttributes",
+      "isoId": "_9ZK4S4bpEe-6cOl7zMpJaA",
+      "xmlTag": "FinInstrmAttrbts",
+      "type": "FinancialInstrumentAttributes112",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "IntraPositionDetails",
+      "isoId": "_9ZK4TYbpEe-6cOl7zMpJaA",
+      "xmlTag": "IntraPosDtls",
+      "type": "IntraPositionDetails65",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_9ZK4T4bpEe-6cOl7zMpJaA",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

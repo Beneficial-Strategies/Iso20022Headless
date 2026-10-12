@@ -1,0 +1,3 @@
+codeSet	code	enumName	isoId	text
+MessageRejectedReason2Code	NALO	NotAllowedRequest	_QFfXQUpJEe2Kv_AXFg3f7A	Sending party is not allowed to send this request.
+MessageRejectedReason2Code	REFE	InvalidOrUnrecognisedReference	_Tb6ggUpJEe2Kv_AXFg3f7A	Request contains an invalid or unrecognised business reference.

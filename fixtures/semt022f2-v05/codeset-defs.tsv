@@ -1,0 +1,14 @@
+codeSet	isoId	text
+PendingProcessingReason2Code	_Ln0Pkf4zEeClUvPNHKL9Zw	Specifies the reason the transaction/instruction is failing settlement. Settlement on the instructed settlement date is no longer possible.
+RejectionReason73Code	_gtthpCtWEeyhipY4f42fZQ	Specifies the reason why the settlement instruction has a rejected status.
+RepairReason4Code	_ZuAUYNp-Ed-ak6NoX_4Aeg_964099822	Specifies the reason why the settlement instruction has a repair status.
+UnmatchedReason12Code	_X58joGXhEeWsrOWU209RUg	Specifies the reason the transaction, transfer or settlement instruction is unmatched.
+PendingReason2Code	_eGdfsf40EeClUvPNHKL9Zw	Specifies the reason the transaction/instruction is pending settlement. Settlement on the instructed settlement date is still possible.
+FailingReason2Code	_FkKJERqEEeG38P9Gj2JZJw	Specifies the reason the transaction/instruction is failing settlement. Settlement on the instructed settlement date is no longer possible.
+AcknowledgementReason6Code	_0mppcAlIEeGATtfOBToyew_753988061	Specifies additional information about the processed instruction.
+PendingProcessingReason3Code	_0mzacAlIEeGATtfOBToyew_-1857836071	Specifies the reason the transaction/instruction is failing settlement. Settlement on the instructed settlement date is no longer possible.
+DeniedReason6Code	_-_kAAFhdEeS8HfHHd4stCA	Specifies the denied reason.
+RejectionReason72Code	_FT0YVCtWEeyhipY4f42fZQ	Specifies the reason why the settlement instruction has a rejected status.
+ModifiedStatusReason1Code	_0mgfgglIEeGATtfOBToyew_-1343301078	Specifies that the transaction has been modified.
+RejectionReason74Code	_5KNFmCtWEeyhipY4f42fZQ	Unrecognised or invalid depository.
+RejectionReason71Code	_dEaVCitVEeyhipY4f42fZQ	Specifies the reason why the instruction/cancellation request has a rejected status.

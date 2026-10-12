@@ -32,6 +32,8 @@ import {
   LEIIdentifierSchema,
   PartyIdentification136Schema,
   Exact3NumericTextSchema,
+  TotalNumber1Schema,
+  NumberCount1ChoiceSchema,
   ProcessingPosition3CodeSchema,
   Exact4AlphaNumericTextSchema,
   GenericIdentification30Schema,
@@ -98,16 +100,6 @@ export const TransactionAndDocumentIdentification6Schema = z.strictObject({
   MessageRecipient: PartyIdentification136Schema.optional(),
 });
 
-export const TotalNumber1Schema = z.strictObject({
-  CurrentInstructionNumber: Exact3NumericTextSchema,
-  TotalOfLinkedInstructions: Exact3NumericTextSchema,
-});
-
-export const NumberCount1ChoiceSchema = choiceOf({
-  CurrentInstructionNumber: Exact3NumericTextSchema,
-  TotalNumber: TotalNumber1Schema,
-});
-
 export const IntraBalanceMovementInstructionV02Schema = z.strictObject({
   Identification: TransactionAndDocumentIdentification6Schema.optional(),
   CorporateActionEventIdentification: Max35TextSchema.optional(),
@@ -134,31 +126,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "CopyDuplicate", isoId: "_qGtmQzp7EemwKdP955WBJQ", xmlTag: "CpyDplct", displayName: displayName("CopyDuplicate"), kind: "code", type: "CopyDuplicate1Code", required: false }),
       f({ name: "MessageOriginator", isoId: "_qGtmSzp7EemwKdP955WBJQ", xmlTag: "MsgOrgtr", displayName: displayName("MessageOriginator"), kind: "component", type: "PartyIdentification136", required: false }),
       f({ name: "MessageRecipient", isoId: "_qGtmTTp7EemwKdP955WBJQ", xmlTag: "MsgRcpt", displayName: displayName("MessageRecipient"), kind: "component", type: "PartyIdentification136", required: false }),
-    ],
-  },
-  "TotalNumber1": {
-    name: "TotalNumber1",
-    isoId: "_Qr_hWNp-Ed-ak6NoX_4Aeg_-606322098",
-    kind: "component",
-    fields: [
-      f({ name: "CurrentInstructionNumber", isoId: "_Qr_hWdp-Ed-ak6NoX_4Aeg_-2082263388", xmlTag: "CurInstrNb", displayName: displayName("CurrentInstructionNumber"), kind: "text", type: "Exact3NumericText", required: true }),
-      f({ name: "TotalOfLinkedInstructions", isoId: "_Qr_hWtp-Ed-ak6NoX_4Aeg_-1935589206", xmlTag: "TtlOfLkdInstrs", displayName: displayName("TotalOfLinkedInstructions"), kind: "text", type: "Exact3NumericText", required: true }),
-    ],
-    rules: [
-      { name: "CurrentInstructionNumberRule", isoId: "_Qr_hW9p-Ed-ak6NoX_4Aeg_639881202", text: "If the Sender wants to indicate that this instruction is linked to one or more settlement instruction, then the CurrentInstructionNumber must be specified." },
-      { name: "BlockTradeGuideline", isoId: "_Qr_hXtp-Ed-ak6NoX_4Aeg_-1108200498", text: "In a block trade instruction, the total number of children must be provided using TotalOfLinkedInstructions.|The CurrentInstructionNumber of the parent must be 000. The children must have an incremental CurrentInstructionNumber from 001 to 999.|For more details, see the relevant market practice document on www.smpg.info." },
-    ],
-  },
-  "NumberCount1Choice": {
-    name: "NumberCount1Choice",
-    isoId: "_QrsmZ9p-Ed-ak6NoX_4Aeg_994582654",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "CurrentInstructionNumber", isoId: "_QrsmaNp-Ed-ak6NoX_4Aeg_1394466276", xmlTag: "CurInstrNb", displayName: displayName("CurrentInstructionNumber"), kind: "text", type: "Exact3NumericText", required: true }),
-      f({ name: "TotalNumber", isoId: "_Qrsmadp-Ed-ak6NoX_4Aeg_-2040702072", xmlTag: "TtlNb", displayName: displayName("TotalNumber"), kind: "component", type: "TotalNumber1", required: true }),
-    ],
-    rules: [
-      { name: "CurrentInstructionNumberRule", isoId: "_Qr1wUNp-Ed-ak6NoX_4Aeg_-199599330", text: "If the Sender wants to indicate that this instruction is linked to one or more settlement instruction, then the CurrentInstructionNumber must be specified." },
     ],
   },
   "IntraBalanceMovementInstructionV02": {
@@ -199,6 +166,8 @@ export const typeDescriptors: TypeDescriptors = {
   "LEIIdentifier": sharedTypeDescriptors["LEIIdentifier"]!,
   "PartyIdentification136": sharedTypeDescriptors["PartyIdentification136"]!,
   "Exact3NumericText": sharedTypeDescriptors["Exact3NumericText"]!,
+  "TotalNumber1": sharedTypeDescriptors["TotalNumber1"]!,
+  "NumberCount1Choice": sharedTypeDescriptors["NumberCount1Choice"]!,
   "ProcessingPosition3Code": sharedTypeDescriptors["ProcessingPosition3Code"]!,
   "Exact4AlphaNumericText": sharedTypeDescriptors["Exact4AlphaNumericText"]!,
   "GenericIdentification30": sharedTypeDescriptors["GenericIdentification30"]!,

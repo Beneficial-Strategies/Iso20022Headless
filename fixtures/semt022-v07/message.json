@@ -1,0 +1,67 @@
+{
+  "identifier": "semt.022.001.07",
+  "name": "SecuritiesSettlementTransactionAuditTrailReportV07",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:semt.022.001.07",
+  "bodyTag": "SctiesSttlmTxAudtTrlRpt",
+  "out": "semt022",
+  "isoId": "3d00e962-9dfa-4555-bacc-0c222257447e",
+  "definition": "Scope|This message is sent by the Market Infrastructure to the CSD to advise of the history of all the statuses, modifications, replacement and cancellation of a specific transaction during its whole life cycle when the instructing party is a direct participant to the Settlement Infrastructure.||Usage|The message may also be used to: |- re-send a message sent by the market infrastructure to the direct participant,|- provide a third party with a copy of a message being sent by the market infrastructure for information,|- re-send to a third party a copy of a message being sent by the market infrastructure for information using the relevant elements in the Business Application Header.",
+  "blocks": [
+    {
+      "name": "Pagination",
+      "isoId": "9d3d249d-96db-4e99-8489-255e5c3287ff",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "QueryReference",
+      "isoId": "e1f22758-a801-400e-9d65-2387f781488c",
+      "xmlTag": "QryRef",
+      "type": "Max35Text",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "TransactionIdentification",
+      "isoId": "42cb231c-f357-470d-93f4-93ff61f55d2b",
+      "xmlTag": "TxId",
+      "type": "TransactionIdentifications56",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SafekeepingAccount",
+      "isoId": "1637233c-3072-4b1d-b946-e11870aaec29",
+      "xmlTag": "SfkpgAcct",
+      "type": "SecuritiesAccount22",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "BlockChainAddressOrWallet",
+      "isoId": "e22b11e2-df36-4c2a-8981-e6fa4f407f54",
+      "xmlTag": "BlckChainAdrOrWllt",
+      "type": "BlockChainAddressWallet3",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AccountOwner",
+      "isoId": "d2700377-bd4c-4f8d-a1d6-eddc1fa9266f",
+      "xmlTag": "AcctOwnr",
+      "type": "PartyIdentification144",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "StatusTrail",
+      "isoId": "05ae6dfd-c617-48ec-981f-4f94d4c698f6",
+      "xmlTag": "StsTrl",
+      "type": "StatusTrail13",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

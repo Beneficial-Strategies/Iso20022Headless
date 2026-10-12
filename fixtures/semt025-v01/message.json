@@ -1,0 +1,35 @@
+{
+  "identifier": "semt.025.001.01",
+  "name": "SecuritiesAccountPositionQueryV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:semt.025.001.01",
+  "bodyTag": "SctiesAcctPosQry",
+  "out": "semt025",
+  "isoId": "_OieywQJ3EfGAP_FOfstLIw",
+  "definition": "The SecuritiesAccountPositionQuery message is sent by an account owner to an account servicer or servicing party to request an account view on the position at a particular point in time period, or during a particular time period, where all positions are summarised in the account structure that is compatible with the query.||Usage: |The message may also be used to:| -re-send a message previously sent (the sub-function of the message is Duplicate),|- provide a third party with a copy of a message for information (the sub-function of the message is Copy),|-re-send to a third party a copy of a message for information (the sub-function of the message is CopyDuplicate).",
+  "blocks": [
+    {
+      "name": "Statement",
+      "isoId": "_OifZ4QJ3EfGAP_FOfstLIw",
+      "xmlTag": "Stmt",
+      "type": "Statement89",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SearchCriteria",
+      "isoId": "_OifZ4wJ3EfGAP_FOfstLIw",
+      "xmlTag": "SchCrit",
+      "type": "PositionSearchCriteria4",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_OifZ5QJ3EfGAP_FOfstLIw",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

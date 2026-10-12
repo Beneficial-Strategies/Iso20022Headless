@@ -1,0 +1,8 @@
+codeSet	code	enumName	isoId	text
+TypeOfIdentification1Code	ARNU	AlienRegistrationNumber	_YwnfFtp-Ed-ak6NoX_4Aeg_-632668460	Number assigned by a government agency to identify foreign nationals.
+TypeOfIdentification1Code	CCPT	PassportNumber	_YwnfF9p-Ed-ak6NoX_4Aeg_-334369828	Number assigned by a passport authority.
+TypeOfIdentification1Code	CHTY	TaxExemptIdentificationNumber	_YwxQENp-Ed-ak6NoX_4Aeg_-332526291	Number assigned to a tax exempt entity.
+TypeOfIdentification1Code	CORP	CorporateIdentification	_YwxQEdp-Ed-ak6NoX_4Aeg_-332522818	Number assigned to a corporate entity.
+TypeOfIdentification1Code	DRLC	DriverLicenseNumber	_YwxQEtp-Ed-ak6NoX_4Aeg_-331599633	Number assigned to a driver's license.
+TypeOfIdentification1Code	FIIN	ForeignInvestmentIdentityNumber	_YwxQE9p-Ed-ak6NoX_4Aeg_-330676223	Number assigned to a foreign investor (other than the alien number).
+TypeOfIdentification1Code	TXID	TaxIdentificationNumber	_YwxQFNp-Ed-ak6NoX_4Aeg_-329752873	Number assigned by a tax authority to an entity.

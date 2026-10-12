@@ -148,6 +148,8 @@ export const pageFr: PageMessages = {
   areaDesc_acmt: 'Messages qui prennent en charge la gestion des activités liées aux comptes, telles que l\'ouverture et la tenue d\'un compte.',
   areaName_head: 'En-tête d\'application métier',
   areaDesc_head: 'En-tête qui contient des informations métier pertinentes avant le traitement d\'un message.',
+  areaName_semt: 'Gestion de titres',
+  areaDesc_semt: 'Messages qui prennent en charge les processus post-règlement pour les titres (y compris l\'information sur les mouvements, les opérations et les positions en titres), les processus nécessaires à la protection des droits du bénéficiaire effectif tout au long du règlement, ainsi que les exceptions et enquêtes liées aux opérations sur titres.',
   xsdLabel: 'Valider le XSD',
   xsdReady: 'Valider le texte du message ci-dessous avec {location}',
   xsdReadyFile: 'Valider le texte du message ci-dessous avec {file} (chargé depuis votre ordinateur)',

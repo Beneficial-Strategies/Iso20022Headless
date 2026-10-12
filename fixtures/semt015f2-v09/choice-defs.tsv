@@ -1,0 +1,39 @@
+choice	memberId	memberName	text
+PartyIdentification136Choice	__2Yt-ffDEeiNZp_PtLohLw	AnyBIC	Code allocated to a financial or non-financial institution by the ISO 9362 Registration Authority, as described in ISO 9362 "Banking - Banking telecommunication messages - Business identifier code (BIC)".
+PartyIdentification136Choice	__2Yt-_fDEeiNZp_PtLohLw	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to a financial institution using a proprietary identification scheme.
+SafekeepingPlaceFormat39Choice	_8GiP__fREeiNZp_PtLohLw	Identification	Place of safekeeping expressed as a code and a narrative description.
+SafekeepingPlaceFormat39Choice	_8GiQB_fREeiNZp_PtLohLw	Country	Place of safekeeping expressed with a country code.
+SafekeepingPlaceFormat39Choice	_8GiQD_fREeiNZp_PtLohLw	TypeAndIdentification	Place of safekeeping expressed with a type and identification.
+SafekeepingPlaceFormat39Choice	_8GiQF_fREeiNZp_PtLohLw	Proprietary	Place of safekeeping expressed with a propriety identification scheme.
+IdentificationSource4Choice	_uPv-YggWEeCVlvYcV4HKqQ	Code	Unique and unambiguous identification source, as assigned via a pre-determined code list.
+IdentificationSource4Choice	_uPv-aggWEeCVlvYcV4HKqQ	Proprietary	Unique and unambiguous identification source using a proprietary identification scheme.
+MarketIdentification4Choice	_04BcZwk_EeGQpPnjvNlciw	MarketIdentifierCode	Market Identifier Code. Identification of a financial market, as stipulated in the norm ISO 10383 "Codes for exchanges and market identifications".
+MarketIdentification4Choice	_04Bcawk_EeGQpPnjvNlciw	Description	Description of the market when no Market Identifier Code is available.
+InterestComputationMethodFormat5Choice	_chVprZKQEeWHWpTQn1FFVg	Code	Standard code to specify the method used to compute accruing interest of a financial instrument.
+InterestComputationMethodFormat5Choice	_chVpr5KQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the format of interest computation method.
+FormOfSecurity7Choice	_5NZU0JNLEeWGlc8L7oPDIg	Code	Form of the security expressed as an ISO 20022 code.
+FormOfSecurity7Choice	_5NZU2JNLEeWGlc8L7oPDIg	Proprietary	Form of the security expressed as a proprietary code.
+Frequency27Choice	_5NZ7hZNLEeWGlc8L7oPDIg	Code	Frequency expressed as an ISO 20022 code.
+Frequency27Choice	_5NZ7jZNLEeWGlc8L7oPDIg	Proprietary	Frequency expressed as a proprietary code.
+SecuritiesPaymentStatus6Choice	_5NZ7qZNLEeWGlc8L7oPDIg	Code	Securities payment status expressed as an ISO 20022 code.
+SecuritiesPaymentStatus6Choice	_5NZ7sZNLEeWGlc8L7oPDIg	Proprietary	Securities payment status expressed as a proprietary code.
+ClassificationType33Choice	_chVpxZKQEeWHWpTQn1FFVg	ClassificationFinancialInstrument	ISO 10962 Classification of Financial Instrument (CFI).
+ClassificationType33Choice	_chVpzZKQEeWHWpTQn1FFVg	AlternateClassification	Proprietary classification of financial instrument.
+OptionStyle9Choice	_ctPX-ZKQEeWHWpTQn1FFVg	Code	Option style expressed as an ISO 20022 code.
+OptionStyle9Choice	_ctPYAZKQEeWHWpTQn1FFVg	Proprietary	Option style expressed as a proprietary code.
+OptionType7Choice	_5Naiz5NLEeWGlc8L7oPDIg	Code	Option type expressed as an ISO 20022 code.
+OptionType7Choice	_5Nai15NLEeWGlc8L7oPDIg	Proprietary	Option type expressed as a proprietary code.
+Number23Choice	_5NbJpZNLEeWGlc8L7oPDIg	Short	Number of maximum 3 numeric text.
+Number23Choice	_5NbJrZNLEeWGlc8L7oPDIg	Long	Number of maximum 35 text, with the possibility to provide an issuer for the number identification.
+FinancialInstrumentQuantity36Choice	_peY04Ti7Eeydid5dcNPKvg	Unit	Quantity expressed as a number, for example, a number of shares.
+FinancialInstrumentQuantity36Choice	_peY06Ti7Eeydid5dcNPKvg	FaceAmount	Quantity expressed as an amount representing the face amount, that is, the principal of a debt instrument.
+FinancialInstrumentQuantity36Choice	_peY06zi7Eeydid5dcNPKvg	AmortisedValue	Quantity expressed as an amount representing the current amortised face amount of a bond, for example, a periodic reduction/increase of a bond's principal amount.
+FinancialInstrumentQuantity36Choice	_peY07Ti7Eeydid5dcNPKvg	DigitalTokenUnit	Quantity of digital tokens expressed as a number, for example, a number of blockchain tokens.
+PriceType5Choice	_SKL8Dc3yEee5nJBZsW8MFQ	Market	Last reported price of a financial instrument in a market, determined by supply and demand.
+PriceType5Choice	_SKL8D83yEee5nJBZsW8MFQ	Indicative	Estimated price, for valuation purposes.
+PriceRateOrAmount1Choice	_Wi6RY9p-Ed-ak6NoX_4Aeg_756785354	Rate	Price expressed as a rate, that is, percentage.
+PriceRateOrAmount1Choice	_Wi6RZNp-Ed-ak6NoX_4Aeg_-1237359352	Amount	Price expressed as a currency and value.
+CorporateActionEventType101Choice	__66qZQVUEeqjd8n6wD9JVw	Code	Corporate action event type expressed as an ISO 20022 code.
+CorporateActionEventType101Choice	__66qbQVUEeqjd8n6wD9JVw	Proprietary	Corporate action event type expressed as a proprietary code.
+SecuritiesBalanceType8Choice	_5NeNFZNLEeWGlc8L7oPDIg	Code	Sub-balance expressed as an ISO 20022 code.
+SecuritiesBalanceType8Choice	_5NeNHZNLEeWGlc8L7oPDIg	Proprietary	Sub-balance expressed as a proprietary code.

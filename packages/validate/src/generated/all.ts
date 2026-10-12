@@ -185,6 +185,50 @@ import { typeDescriptors as pain017Descriptors } from './pain017.ts';
 import { typeDescriptors as pain018Descriptors } from './pain018.ts';
 import { typeDescriptors as remt001Descriptors } from './remt001.ts';
 import { typeDescriptors as remt002Descriptors } from './remt002.ts';
+import { typeDescriptors as semt001Descriptors } from './semt001.ts';
+import { typeDescriptors as semt002Descriptors } from './semt002.ts';
+import { typeDescriptors as semt002f2Descriptors } from './semt002f2.ts';
+import { typeDescriptors as semt003Descriptors } from './semt003.ts';
+import { typeDescriptors as semt003f2Descriptors } from './semt003f2.ts';
+import { typeDescriptors as semt004Descriptors } from './semt004.ts';
+import { typeDescriptors as semt005Descriptors } from './semt005.ts';
+import { typeDescriptors as semt006Descriptors } from './semt006.ts';
+import { typeDescriptors as semt007Descriptors } from './semt007.ts';
+import { typeDescriptors as semt013Descriptors } from './semt013.ts';
+import { typeDescriptors as semt013f2Descriptors } from './semt013f2.ts';
+import { typeDescriptors as semt014Descriptors } from './semt014.ts';
+import { typeDescriptors as semt014f2Descriptors } from './semt014f2.ts';
+import { typeDescriptors as semt015Descriptors } from './semt015.ts';
+import { typeDescriptors as semt015f2Descriptors } from './semt015f2.ts';
+import { typeDescriptors as semt016Descriptors } from './semt016.ts';
+import { typeDescriptors as semt016f2Descriptors } from './semt016f2.ts';
+import { typeDescriptors as semt017Descriptors } from './semt017.ts';
+import { typeDescriptors as semt017f2Descriptors } from './semt017f2.ts';
+import { typeDescriptors as semt018Descriptors } from './semt018.ts';
+import { typeDescriptors as semt018f2Descriptors } from './semt018f2.ts';
+import { typeDescriptors as semt019Descriptors } from './semt019.ts';
+import { typeDescriptors as semt019f2Descriptors } from './semt019f2.ts';
+import { typeDescriptors as semt020Descriptors } from './semt020.ts';
+import { typeDescriptors as semt020f2Descriptors } from './semt020f2.ts';
+import { typeDescriptors as semt021Descriptors } from './semt021.ts';
+import { typeDescriptors as semt021f2Descriptors } from './semt021f2.ts';
+import { typeDescriptors as semt022Descriptors } from './semt022.ts';
+import { typeDescriptors as semt022f2Descriptors } from './semt022f2.ts';
+import { typeDescriptors as semt023Descriptors } from './semt023.ts';
+import { typeDescriptors as semt025Descriptors } from './semt025.ts';
+import { typeDescriptors as semt026Descriptors } from './semt026.ts';
+import { typeDescriptors as semt027Descriptors } from './semt027.ts';
+import { typeDescriptors as semt028Descriptors } from './semt028.ts';
+import { typeDescriptors as semt029Descriptors } from './semt029.ts';
+import { typeDescriptors as semt030Descriptors } from './semt030.ts';
+import { typeDescriptors as semt031Descriptors } from './semt031.ts';
+import { typeDescriptors as semt032Descriptors } from './semt032.ts';
+import { typeDescriptors as semt033Descriptors } from './semt033.ts';
+import { typeDescriptors as semt034Descriptors } from './semt034.ts';
+import { typeDescriptors as semt040Descriptors } from './semt040.ts';
+import { typeDescriptors as semt041Descriptors } from './semt041.ts';
+import { typeDescriptors as semt042Descriptors } from './semt042.ts';
+import { typeDescriptors as semt044Descriptors } from './semt044.ts';
 import { typeDescriptors as trck001Descriptors } from './trck001.ts';
 import { typeDescriptors as trck002Descriptors } from './trck002.ts';
 import { typeDescriptors as trck004Descriptors } from './trck004.ts';
@@ -374,6 +418,50 @@ export const allTypeDescriptors: TypeDescriptors = {
   ...pain018Descriptors,
   ...remt001Descriptors,
   ...remt002Descriptors,
+  ...semt001Descriptors,
+  ...semt002Descriptors,
+  ...semt002f2Descriptors,
+  ...semt003Descriptors,
+  ...semt003f2Descriptors,
+  ...semt004Descriptors,
+  ...semt005Descriptors,
+  ...semt006Descriptors,
+  ...semt007Descriptors,
+  ...semt013Descriptors,
+  ...semt013f2Descriptors,
+  ...semt014Descriptors,
+  ...semt014f2Descriptors,
+  ...semt015Descriptors,
+  ...semt015f2Descriptors,
+  ...semt016Descriptors,
+  ...semt016f2Descriptors,
+  ...semt017Descriptors,
+  ...semt017f2Descriptors,
+  ...semt018Descriptors,
+  ...semt018f2Descriptors,
+  ...semt019Descriptors,
+  ...semt019f2Descriptors,
+  ...semt020Descriptors,
+  ...semt020f2Descriptors,
+  ...semt021Descriptors,
+  ...semt021f2Descriptors,
+  ...semt022Descriptors,
+  ...semt022f2Descriptors,
+  ...semt023Descriptors,
+  ...semt025Descriptors,
+  ...semt026Descriptors,
+  ...semt027Descriptors,
+  ...semt028Descriptors,
+  ...semt029Descriptors,
+  ...semt030Descriptors,
+  ...semt031Descriptors,
+  ...semt032Descriptors,
+  ...semt033Descriptors,
+  ...semt034Descriptors,
+  ...semt040Descriptors,
+  ...semt041Descriptors,
+  ...semt042Descriptors,
+  ...semt044Descriptors,
   ...trck001Descriptors,
   ...trck002Descriptors,
   ...trck004Descriptors,

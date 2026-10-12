@@ -1,0 +1,9 @@
+codeSet	isoId	text
+SenderBusinessRole1Code	_p7dkgFV0Eea1MPROA61PoQ	Specifies whether an account owner or account servicer sends the message.
+FrequencyGranularityType1Code	__1CBwDy5EeS4E7Ac8_OV3g	Defines the granularity of the frequency used for the reporting.
+PersonIdentificationType6Code	_QTJ5MQhFEeSUPbC7DbLJpQ	Specifies an alternative identification of an individual person, for example, national registration identification number, passport number.
+BeneficiaryCertificationType4Code	_GBdPUQE5EeG7DvnR_BzVoA	Specifies the type of certification required.
+PhysicalTransferType1Code	_sXY0QPrqEeCJc7cZxzE2fg	Specifies whether the financial instrument is to be physically delivered or is a dematerialised transfer.
+SecuritiesBalanceType14Code	_UNiCgIjtEeONZKAAW4pOaQ	Specifies the type of the securities or investment fund balance.
+TypeOfPrice13Code	_YxqA4tp-Ed-ak6NoX_4Aeg_1257927270	Specifies the type of price and information about the price.
+PriceSource2Code	_l1ruYaB6EeOEyO7fCl8lLA	Specifies the source of a price quotation.

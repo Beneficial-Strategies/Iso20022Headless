@@ -1,0 +1,9 @@
+codeSet	isoId	text
+ShortLong1Code	_ZOtwUtp-Ed-ak6NoX_4Aeg_136531631	Specifies whether the securities position is short or long, that is, whether the balance is a negative or positive balance.
+CorporateActionOption5Code	_bMfEktp-Ed-ak6NoX_4Aeg_73217179	Specifies the corporate action options available to the account owner.
+MarketType4Code	_aUmaVNp-Ed-ak6NoX_4Aeg_-863621443	Specifies the type of place where a trade was executed, a price was sourced from, an instrument is listed.
+TypeOfPrice14Code	_Yx9i4Np-Ed-ak6NoX_4Aeg_-1404906082	Specifies the type of transaction price.
+SecuritiesBalanceType12Code	_Y_qnttp-Ed-ak6NoX_4Aeg_-1639644104	Specifies the nature of the securities or investment fund balance.
+SecuritiesBalanceType7Code	_ZCpqQNp-Ed-ak6NoX_4Aeg_1990824949	Specifies the nature of the securities or investment fund balance.
+PledgeeType1Code	_Ryn6UFj2EeSYweXGddZAOA	Specifies the type of pledgee.
+ExposureType15Code	_jWaXwYS2Ee-Pv9KR9bv9IA	Specifies the underlying business area/type of trade causing the collateral movement.

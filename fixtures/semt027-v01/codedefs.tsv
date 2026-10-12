@@ -1,0 +1,256 @@
+codeSet	code	enumName	isoId	text
+SettlementQueryType1Code	INST	Instruction	_j4AIYe5NEeCisYr99QEiWA_-1731179192	Queries settlement instructions based on criteria excluding statuses.
+SettlementQueryType1Code	STTS	Status	_j4AIYu5NEeCisYr99QEiWA_-1742277969	Queries settlement instructions based on criteria that includes statuses.
+SettlementQueryType1Code	STPD	StatusPeriod	_j4AIY-5NEeCisYr99QEiWA_-820114659	Queries settlement instructions based on criteria that includes statuses during a period.
+UnmatchedReason11Code	ADEA	AccountServicerDeadlineMissed	_TRMhwWXfEeWsrOWU209RUg	Received after the account servicer's deadline. Processed on best effort basis.
+UnmatchedReason11Code	ACRU	AccruedInterestAmount1	_TV9F8WXfEeWsrOWU209RUg	Accrued interest amount does not match.
+UnmatchedReason11Code	IIND	CommonReference	_WNPcIWXfEeWsrOWU209RUg	Common reference does not match.
+UnmatchedReason11Code	CPCA	CounterpartyCancelled	_WwWwQWXfEeWsrOWU209RUg	Counterparty cancelled their instruction.
+UnmatchedReason11Code	CLAT	CounterpartyTooLateForMatching	_XzJqAWXfEeWsrOWU209RUg	Counterparty's instruction was too late for matching.
+UnmatchedReason11Code	NCRR	CurrencySettlementAmount	_YHPDoWXfEeWsrOWU209RUg	Settlement amount currency does not match.
+UnmatchedReason11Code	DDEA	DealPrice	_aPOD0WXfEeWsrOWU209RUg	Deal price does not match.
+UnmatchedReason11Code	DMCT	AutomaticGeneration	_a1v4UWXfEeWsrOWU209RUg	Disagreement on automatic generation of market claim or transformation.
+UnmatchedReason11Code	DCMX	CumEx	_a6z-gWXfEeWsrOWU209RUg	Disagreement if trade was executed cum or ex.
+UnmatchedReason11Code	DSEC	FinancialInstrument	_cBn1kWXfEeWsrOWU209RUg	Financial instrument identification does not match, for example, ISIN, financial instrument attributes differs.
+UnmatchedReason11Code	DQUA	FinancialInstrumentQuantity	_dNM34WXfEeWsrOWU209RUg	Quantity of financial instruments does not match.
+UnmatchedReason11Code	INVE	InvestorParty	_dqNkAWXfEeWsrOWU209RUg	Investor party does not match.
+UnmatchedReason11Code	LEOG	LetterOfGuarantee	_fcUa0mXfEeWsrOWU209RUg	Counterparty is for settlement through letter of guarantee, your instruction is not, or vice versa.
+UnmatchedReason11Code	LATE	MarketDeadlineMissed	_gZd_kWXfEeWsrOWU209RUg	Your instruction was too late for matching.
+UnmatchedReason11Code	MIME	MissingMarketSide	_g3q-gWXfEeWsrOWU209RUg	Missing market execution details.
+UnmatchedReason11Code	CMIS	NoMatch	_jk_gYWXfEeWsrOWU209RUg	A matching instruction from your counterparty could not be found.
+UnmatchedReason11Code	NMAS	NoMatchingStarted	_j_Ur8WXfEeWsrOWU209RUg	Matching process has not yet started.
+UnmatchedReason11Code	DTRA	NotRecognised	_kPPXQWXfEeWsrOWU209RUg	Counterparty has been contacted or contacted us, and does not recognise the transaction.
+UnmatchedReason11Code	OTHR	Other	_kmmuYWXfEeWsrOWU209RUg	Proprietary unmatched reason code described in a narrative field.
+UnmatchedReason11Code	FRAP	PaymentCode	_k2OewWXfEeWsrOWU209RUg	Payment type does not match: your instruction is free of payment, your counterparty's instruction is against payment or vice versa.
+UnmatchedReason11Code	PHYS	PhysicalSettlement	_m5ldomXfEeWsrOWU209RUg	Counterparty's instruction is physical settlement, your instruction is not, or vice versa.
+UnmatchedReason11Code	PLIS	PlaceOfListing	_m9wL8WXfEeWsrOWU209RUg	Place of listing does not match.
+UnmatchedReason11Code	INPS	PlaceOfSafekeeping	_nSu9cWXfEeWsrOWU209RUg	Place of safekeeping information does not allow matching to take place.
+UnmatchedReason11Code	PLCE	PlaceOfTrade	_nv5akWXfEeWsrOWU209RUg	Place of trade does not match.
+UnmatchedReason11Code	PODU	PossibleDuplicate	_oMdawWXfEeWsrOWU209RUg	Instruction has not been matched. It is a possible duplicate instruction.
+UnmatchedReason11Code	DEPT	ReceivingDeliveringDepository	_qkNVQmXfEeWsrOWU209RUg	Depository does not match.
+UnmatchedReason11Code	ICAG	ReceivingDeliveringParty1	_qwjvMWXfEeWsrOWU209RUg	Participant of delivering or receiving depository does not match.
+UnmatchedReason11Code	ICUS	ReceivingDeliveringParty2	_q7aUUWXfEeWsrOWU209RUg	Client of delivering or receiving party 1 does not match.
+UnmatchedReason11Code	IEXE	ReceivingDeliveringParty3	_rKSd0WXfEeWsrOWU209RUg	Client of delivering or receiving party 2 does not match.
+UnmatchedReason11Code	REGD	RegistrationDetails	_rY3sYWXfEeWsrOWU209RUg	Registration details linked to the transaction are incorrect.
+UnmatchedReason11Code	RTGS	RTGSSystem	_tx9qsWXfEeWsrOWU209RUg	Counterparty is for Real Time Gross Settlement (RTGS) system, you are for non-RTGS or vice versa.
+UnmatchedReason11Code	SAFE	SafekeepingAccount	_uCCHAWXfEeWsrOWU209RUg	Safekeeping account used as matching criteria on the market concerned does not match. This includes Buyer/seller's account, direct client's account at the receiving/delivering agent, or receiving/delivering agent's account at the CSD.
+UnmatchedReason11Code	DMON	SettlementAmount	_uULm8WXfEeWsrOWU209RUg	Settlement amount does not match.
+UnmatchedReason11Code	DDAT	SettlementDate	_uk_qIWXfEeWsrOWU209RUg	Settlement date/time does not match.
+UnmatchedReason11Code	SETS	SettlementSystemMethod	_u4Lr4WXfEeWsrOWU209RUg	Settlement system/method does not match (for example, instruction is to settle using settlement system/method A. Counterparty expects settlement to occur using settlement system/method B).
+UnmatchedReason11Code	SETR	SettlementTransaction	_vH9NQWXfEeWsrOWU209RUg	Settlement transaction type does not match (relates to the settlement transaction type codes available for field: 22F:: SETR.).
+UnmatchedReason11Code	TXST	TaxStatus	_yRZDYWXfEeWsrOWU209RUg	Disagreement on the tax status of the financial instruments to be settled.
+UnmatchedReason11Code	DTRD	TradeDate	_ycaAkWXfEeWsrOWU209RUg	Trade date does not match.
+UnmatchedReason11Code	DELN	TransactionDirection	_0ArPsWXfEeWsrOWU209RUg	Direction of the trade does not match. Counterparty expects a delivery from you, not a receipt or vice versa.
+UnmatchedReason11Code	UNBR	UnmatchedMarketSide	_02FNsWXfEeWsrOWU209RUg	Market side trade is unmatched.
+PendingProcessingReason5Code	ADEA	AccountServicerDeadlineMissed	_scw-8Sm4EfGfZ9PfK70MMg	Instruction was received after the account servicer's deadline. It will be managed as per the bilateral service agreement between the account servicer and account owner.
+PendingProcessingReason5Code	CAIS	AwaitingSecurities	_scxmASm4EfGfZ9PfK70MMg	Awaiting financial instruments from a corporate action or other procedure, for example, conversion, dematerialisation, exchange, registration, stamping, splitting.
+PendingProcessingReason5Code	DOCY	AwaitingDocumentsOrEndorsementsFromYou	_scxmAym4EfGfZ9PfK70MMg	Awaiting documents or endorsements from you.
+PendingProcessingReason5Code	BLOC	AccountBlocked	_scxmBSm4EfGfZ9PfK70MMg	Your account is blocked, no instruction can settle over the account.
+PendingProcessingReason5Code	MUNO	MultipleSettlementAmount	_scxmBym4EfGfZ9PfK70MMg	Quantity instructed is not a multiple of an existing settlement quantity lot for the financial instrument.
+PendingProcessingReason5Code	GLOB	GlobalFormSecurities	_scxmCSm4EfGfZ9PfK70MMg	Settlement cannot be executed; financial instruments are in global form.
+PendingProcessingReason5Code	PREA	YourInstructionOnHold	_scxmCym4EfGfZ9PfK70MMg	Your instruction is a preadvice, that is, for matching only.
+PendingProcessingReason5Code	YCOL	CollateralShortage	_scxmDSm4EfGfZ9PfK70MMg	Insufficient collateral in your account to execute the instruction.
+PendingProcessingReason5Code	COLL	SecuritiesPledgedAsCollateral	_scxmDym4EfGfZ9PfK70MMg	Financial instruments are not deliverable as they are pledged as collateral.
+PendingProcessingReason5Code	FLIM	MaximumForeignLimitReached	_scxmESm4EfGfZ9PfK70MMg	Insufficient deliverable financial instruments in your account as maximum foreign limit has been reached.
+PendingProcessingReason5Code	NOFX	NoForeignExchangeInstruction	_scxmEym4EfGfZ9PfK70MMg	A foreign exchange instruction from you is missing.
+PendingProcessingReason5Code	LACK	LackOfSecurities	_scxmFSm4EfGfZ9PfK70MMg	Insufficient financial instruments in your account.
+PendingProcessingReason5Code	LALO	SecuritiesLoanedOut	_scxmFym4EfGfZ9PfK70MMg	Financial instruments are out on loan.
+PendingProcessingReason5Code	MONY	InsufficientMoney	_scxmGSm4EfGfZ9PfK70MMg	Insufficient money in your account.
+PendingProcessingReason5Code	MINO	MinimumSettlementAmount	_scxmGym4EfGfZ9PfK70MMg	Quantity instructed is lower than the minimum existing settlement quantity for the financial instrument.
+PendingProcessingReason5Code	OTHR	Other	_scxmHSm4EfGfZ9PfK70MMg	Other. See Narrative.
+PendingProcessingReason5Code	DENO	UnavailableDeliverableDenominatedQuantity	_scxmHym4EfGfZ9PfK70MMg	Quantity instructed does not match the denomination available/deliverable. Physical securities need to be obtained in deliverable denominated quantities.
+PendingProcessingReason5Code	LIQU	InsufficientCentralBankLiquidity	_scxmISm4EfGfZ9PfK70MMg	Central bank liquidity is insufficient.
+PendingProcessingReason5Code	CERT	WrongCertificatesNumbers	_scxmIym4EfGfZ9PfK70MMg	Certificate number error.
+PendingProcessingReason5Code	NEXT	NextProcess	_scxmJSm4EfGfZ9PfK70MMg	Next process is launched. No processing pending problems to be reported.
+PendingProcessingReason5Code	PRSY	SystemOnHold	_scxmJym4EfGfZ9PfK70MMg	Transaction was put on hold/frozen by the system.
+PendingProcessingReason5Code	CSDH	CSDHold	_scxmKSm4EfGfZ9PfK70MMg	Central securities depository sets the instruction in a hold/frozen/preadvice mode.
+PendingProcessingReason5Code	CDEL	ConditionalDelivery	_scxmKym4EfGfZ9PfK70MMg	Instruction is in a hold/frozen/preadvice mode as it fulfils predefined conditional delivery rules in the market infrastructure platform for conditional delivery.
+PendingProcessingReason5Code	CVAL	CSDValidation	_scxmLSm4EfGfZ9PfK70MMg	Instruction is in a hold/frozen/preadvice mode as it fulfils predefined conditions of a restriction processing type in the market infrastructure platform.
+PendingProcessingReason5Code	CDLR	ConditionalDeliveryAwaitingRelease	_scxmLym4EfGfZ9PfK70MMg	Instruction is in a hold/frozen/preadvice mode. Market infrastructure platform is awaiting release.
+PendingProcessingReason5Code	INBC	IncompleteNumberCount	_scxmMSm4EfGfZ9PfK70MMg	Not all the instructions part of a pool have been received.
+PendingProcessingReason5Code	CDAC	ConditionalDeliveryAwaitingCancellation	_scxmMym4EfGfZ9PfK70MMg	Awaiting cancellation of one of the party.
+GeneratedReason3Code	COLL	CollateralManagement	_PyMxASRjEeOCueHDQ36sww	Transaction has been generated for collateral management purposes.
+GeneratedReason3Code	CLAI	MarketClaim	_P2zkMSRjEeOCueHDQ36sww	Transaction resulting from a market claim.
+GeneratedReason3Code	OTHR	Other	_P7kvcSRjEeOCueHDQ36sww	Other. See Narrative.
+GeneratedReason3Code	RODE	ReturnRefusedDumps	_QACYsSRjEeOCueHDQ36sww	Relates to the return of financial instruments resulting from a rejected delivery without matching operation.
+GeneratedReason3Code	SPLI	SplitShaping	_QEgB8SRjEeOCueHDQ36sww	Transaction has been generated to enable settlement following a shortage of position.
+GeneratedReason3Code	THRD	ThirdParty	_QIz6MSRjEeOCueHDQ36sww	Transaction has been generated by a third party, for example, a central counterparty.
+GeneratedReason3Code	TRAN	Transformation	_QNkeYSRjEeOCueHDQ36sww	Transaction has been generated due to transformation following a corporate action.
+TransactionActivity1Code	BOLE	BorrowingLendingActivity	_YrP24dp-Ed-ak6NoX_4Aeg_166271038	Transaction relates to lending/borrowing.
+TransactionActivity1Code	CLAI	MarketClaim	_YrP24tp-Ed-ak6NoX_4Aeg_166271039	Transaction relates to a market claim following a corporate action.
+TransactionActivity1Code	COLL	CollateralActivity	_YrP249p-Ed-ak6NoX_4Aeg_166271040	Transaction relates to collateral.
+TransactionActivity1Code	CORP	CorporateActionActivity	_YrP25Np-Ed-ak6NoX_4Aeg_166271069	Transaction relates to corporate action.
+TransactionActivity1Code	SETT	SettlementandClearingActivity	_YrP25dp-Ed-ak6NoX_4Aeg_166271070	Transaction relates to settlement and clearing.
+SecuritiesTransactionType27Code	BSBK	BuySellBack	_q1tCMddqEeispNOuywCdbA	Relates to a buy sell back transaction.
+SecuritiesTransactionType27Code	BYIY	BuyIn	_q1tCM9dqEeispNOuywCdbA	Relates to a buy-in by the market following a delivery transaction failure.
+SecuritiesTransactionType27Code	CNCB	CentralBankCollateralOperation	_q1tCNddqEeispNOuywCdbA	Relates to a collateral delivery/receipt to a national central bank for central bank credit operations.
+SecuritiesTransactionType27Code	COLI	CollateralIn	_q1tCN9dqEeispNOuywCdbA	Relates to a collateral transaction, from the point of view of the collateral taker or its agent.
+SecuritiesTransactionType27Code	COLO	CollateralOut	_q1tCOddqEeispNOuywCdbA	Relates to a collateral transaction, from the point of view of the collateral giver or its agent.
+SecuritiesTransactionType27Code	CONV	DepositoryReceiptConversion	_q1tCO9dqEeispNOuywCdbA	Relates to a depository receipt conversion.
+SecuritiesTransactionType27Code	FCTA	FactorUpdate	_q1tCPddqEeispNOuywCdbA	Relates to a factor update.
+SecuritiesTransactionType27Code	INSP	MoveOfStock	_q1tCP9dqEeispNOuywCdbA	Relates to a movement of shares into or out of a pooled account.
+SecuritiesTransactionType27Code	ISSU	Issuance	_q1tCQddqEeispNOuywCdbA	Relates to the issuance of a security such as an equity or a depositary receipt.
+SecuritiesTransactionType27Code	MKDW	MarkDown	_q1tCQ9dqEeispNOuywCdbA	Relates to the decrease of positions held by an International Central Securities Depository (ICSD) at the common depository due to custody operations (repurchase, pre-release, proceeds of corporate event realigned).
+SecuritiesTransactionType27Code	MKUP	MarkUp	_q1tCRddqEeispNOuywCdbA	Relates to the increase of positions held by an International Central Securities Depository (ICSD) at the common depository due to custody operations (repurchase, pre-release, proceeds of corporate event realigned).
+SecuritiesTransactionType27Code	NETT	Netting	_q1tCR9dqEeispNOuywCdbA	Relates to the netting of settlement instructions.
+SecuritiesTransactionType27Code	NSYN	NonSyndicated	_q1tCSddqEeispNOuywCdbA	Relates to the issue of medium and short term paper (CP, CD, MTN, notes) under a program and without syndication arrangement.
+SecuritiesTransactionType27Code	OWNE	ExternalAccountTransfer	_q1tCS9dqEeispNOuywCdbA	Relates to an account transfer involving more than one instructing party (message sender) and/or account servicer (messages receiver).
+SecuritiesTransactionType27Code	OWNI	InternalAccountTransfer	_q1tCTddqEeispNOuywCdbA	Relates to an account transfer involving one instructing party (message sender) at one account servicer (messages receiver).
+SecuritiesTransactionType27Code	PAIR	PairOff	_q1tCT9dqEeispNOuywCdbA	Relates to a pair-off: the transaction is paired off and netted against one or more previous transactions.
+SecuritiesTransactionType27Code	PLAC	Placement	_q1tCUddqEeispNOuywCdbA	Relates to the placement/new issue of a financial instrument.
+SecuritiesTransactionType27Code	PORT	PortfolioMove	_q1tCU9dqEeispNOuywCdbA	Relates to a portfolio move from one investment manager to another and/or from an account servicer to another. It is generally charged differently than another account transfer, hence the need to identify this type of transfer as such.
+SecuritiesTransactionType27Code	REAL	Realignment	_q1tCVddqEeispNOuywCdbA	Relates to a realignment of positions.
+SecuritiesTransactionType27Code	REDI	Withdrawal	_q1tCV9dqEeispNOuywCdbA	Relates to the withdrawal of specified amounts from specified subaccounts.
+SecuritiesTransactionType27Code	REDM	Redemption	_q1tCWddqEeispNOuywCdbA	Relates to a redemption of funds (funds industry only).
+SecuritiesTransactionType27Code	RELE	DepositoryReceiptReleaseCancellation	_q1tCW9dqEeispNOuywCdbA	Relates to a release (into/from local) of depository receipt operation.
+SecuritiesTransactionType27Code	REPU	Repo	_q1tCXddqEeispNOuywCdbA	Relates to a repurchase agreement transaction.
+SecuritiesTransactionType27Code	RODE	ReturnDeliveryWithoutMatching	_q1tCX9dqEeispNOuywCdbA	Relates to the return of financial instruments resulting from a rejected delivery without a matching operation.
+SecuritiesTransactionType27Code	RVPO	ReverseRepurchaseAgreement	_q1tCYddqEeispNOuywCdbA	Relates to a reverse repurchase agreement transaction.
+SecuritiesTransactionType27Code	SBBK	SellBuyBack	_q1tCY9dqEeispNOuywCdbA	Relates to a sell buy back transaction.
+SecuritiesTransactionType27Code	SBRE	BorrowingReallocation	_q1tCZddqEeispNOuywCdbA	Internal reallocation of a borrowed holding from one safekeeping account to another.
+SecuritiesTransactionType27Code	SECB	SecuritiesBorrowing	_q1tCZ9dqEeispNOuywCdbA	Relates to a securities borrowing operation.
+SecuritiesTransactionType27Code	SECL	SecuritiesLending	_q1tCaddqEeispNOuywCdbA	Relates to a securities lending operation.
+SecuritiesTransactionType27Code	SLRE	LendingReallocation	_q1tCa9dqEeispNOuywCdbA	Internal reallocation of a holding on loan from one safekeeping account to another.
+SecuritiesTransactionType27Code	SUBS	Subscription	_q1tCbddqEeispNOuywCdbA	Relates to a subscription to funds (funds industry only).
+SecuritiesTransactionType27Code	SYND	SyndicateUnderwriters	_q1tCb9dqEeispNOuywCdbA	Relates to the issue of financial instruments through a syndicate of underwriters and a lead manager.
+SecuritiesTransactionType27Code	TBAC	TBAClosing	_q1tCcddqEeispNOuywCdbA	Relates to a To Be Announced (TBA) closing trade.
+SecuritiesTransactionType27Code	TRAD	Trade	_q1tCc9dqEeispNOuywCdbA	Relates to the settlement of a trade.
+SecuritiesTransactionType27Code	TRPO	TripartyRepo	_q1tCdddqEeispNOuywCdbA	Relates to a triparty repurchase agreement.
+SecuritiesTransactionType27Code	TRVO	TripartyReverseRepo	_q1tCd9dqEeispNOuywCdbA	Relates to a triparty reverse repurchase agreement.
+SecuritiesTransactionType27Code	TURN	Turnaround	_q1tCeddqEeispNOuywCdbA	Relates to a turnaround: the same security is bought and sold to settle the same day, to or from different brokers.
+SecuritiesTransactionType27Code	CLAI	MarketClaim	_q1tCe9dqEeispNOuywCdbA	Relates to a market claim.
+SecuritiesTransactionType27Code	CORP	CorporateAction	_q1tCfddqEeispNOuywCdbA	Relates to a corporate action.
+SecuritiesTransactionType27Code	AUTO	AutoCollateralisation	_q1tCf9dqEeispNOuywCdbA	Relates to an auto-collateralisation movement.
+SecuritiesTransactionType27Code	SWIF	SwitchFrom	_q1tCgddqEeispNOuywCdbA	Transaction is a change of an investment from one sub-fund to another sub-fund (redemption-leg).
+SecuritiesTransactionType27Code	SWIT	SwitchTo	_q1tCg9dqEeispNOuywCdbA	Transaction is a change of an investment from one sub-fund to another sub-fund (subscription-leg).
+SecuritiesTransactionType27Code	ETFT	ExchangeTradedFunds	_q1tChddqEeispNOuywCdbA	Relates to an ETF creation or redemption.
+SecuritiesTransactionType27Code	REBL	Rebalancing	_q1tCh9dqEeispNOuywCdbA	Relates to a rebalanced transaction.
+SecuritiesTransactionType27Code	TRIN	TransferIn	_UQXXkddrEeispNOuywCdbA	Transaction is an incoming credit to an account on the shareholders register, and is not linked to a shift in investment (subscription or switch), but to account management.
+SecuritiesTransactionType27Code	TOUT	TransferOut	_UagyEddrEeispNOuywCdbA	Transaction is a debit to an account on the shareholders register, and is not linked to a shift in investment (redemption or switch), but to account management.
+CorporateActionEventType28Code	ACTV	ActiveTradingStatus	_k3qp0ZSfEeeh5JjedkaA_g	Trading in the security has commenced or security has been re-activated after a suspension in trading.
+CorporateActionEventType28Code	ATTI	Attachment	_k30a0ZSfEeeh5JjedkaA_g	Combination of different security types to create a unit. Units are usually comprised of warrants and bonds or warrants and equities. Securities may be combined at the request of the security holder or based on market convention.
+CorporateActionEventType28Code	BRUP	Bankruptcy	_k30a05SfEeeh5JjedkaA_g	Legal status of a company unable to pay creditors. Bankruptcy usually involves a formal court ruling. Securities may become valueless.
+CorporateActionEventType28Code	DFLT	BondDefault	_k30a1ZSfEeeh5JjedkaA_g	Failure by the company to perform obligations defined as default events under the bond agreement and that have not been remedied.
+CorporateActionEventType28Code	BONU	BonusIssue	_k30a15SfEeeh5JjedkaA_g	Bonus or capitalisation issue. Security holders receive additional assets free of payment from the issuer, in proportion to their holding.
+CorporateActionEventType28Code	EXRI	CallOnIntermediateSecurities	_k30a2ZSfEeeh5JjedkaA_g	Call or exercise on nil paid securities or intermediate securities resulting from an intermediate securities distribution (RHDI). This code is used for the second event, when an intermediate securities' issue (rights/coupons) is composed of two events, the first event being the distribution of intermediate securities.
+CorporateActionEventType28Code	CAPD	CapitalDistribution	_k30a25SfEeeh5JjedkaA_g	Corporate event pays shareholders an amount in cash issued from the capital account. There is no reduction to the face value of a single share (or the share has no par value). The number of circulating shares remains unchanged.
+CorporateActionEventType28Code	CAPG	CapitalGainsDistribution	_k30a3ZSfEeeh5JjedkaA_g	Event is the distribution of profits resulting from the sale of securities. Shareholders of mutual funds, unit trusts, or SICAVs are recipients of capital gains distributions and are often reinvested in additional shares of the fund.
+CorporateActionEventType28Code	CAPI	Capitalisation	_k30a35SfEeeh5JjedkaA_g	Increase of the current principal of a debt instrument without increasing the nominal value. It normally arises from the incorporation of due but unpaid interest into the principal. This is commonly done by increasing the pool factor value, for example, capitalisation, and negative amortisation.
+CorporateActionEventType28Code	DRCA	CashDistributionFromNonEligibleSecuritiesSales	_k30a4ZSfEeeh5JjedkaA_g	Distribution to shareholders of cash resulting from the selling of non-eligible securities, for example, in the frame of a depositary receipt program.
+CorporateActionEventType28Code	DVCA	CashDividend	_k30a45SfEeeh5JjedkaA_g	Distribution of cash to shareholders, in proportion to their equity holding. Ordinary dividends are recurring and regular. Shareholder must take cash and may be offered a choice of currency.
+CorporateActionEventType28Code	CHAN	Change	_k30a5ZSfEeeh5JjedkaA_g	Information regarding a change further described in the corporate action details.
+CorporateActionEventType28Code	COOP	CompanyOption	_k30a55SfEeeh5JjedkaA_g	Company option may be granted by the company, allowing the holder to take up shares at some future date(s) at a pre arranged price in the company. A company may not grant options which enable the holder to take up unissued shares at a time which is five or more years from the date of the grant. Option holders are not members of a company. They are contingent creditors of a company and hence may, in some instances, be entitled to vote on and be bound by a scheme of arrangement between the creditors and the company. As many options have multiple exercise periods a company option will either lapse or carry on to the next expiry date.
+CorporateActionEventType28Code	CLSA	ClassActionProposedSettlement	_k30a6ZSfEeeh5JjedkaA_g	Situation where interested parties seek restitution for financial loss. The security holder may be offered the opportunity to join a class action proceeding and would need to respond with an instruction.
+CorporateActionEventType28Code	CONS	Consent	_k30a65SfEeeh5JjedkaA_g	Procedure that aims to obtain consent of holder to a proposal by the issuer or a third party without convening a meeting. For example, consent to change the terms of a bond.
+CorporateActionEventType28Code	CONV	Conversion	_k30a7ZSfEeeh5JjedkaA_g	Conversion of securities (generally convertible bonds or preferred shares) into another form of securities (usually common shares) at a pre-stated price/ratio.
+CorporateActionEventType28Code	CREV	CreditEvent	_k30a75SfEeeh5JjedkaA_g	Occurrence of credit derivative for which the issuer of one or several underlying securities is unable to fulfill its financial obligations (as defined in terms and conditions).
+CorporateActionEventType28Code	DECR	DecreaseInValue	_k30a8ZSfEeeh5JjedkaA_g	Reduction of face value of a single share or the value of fund assets. The number of circulating shares/units remains unchanged. This event may include a cash payout to holders.
+CorporateActionEventType28Code	DETI	Detachment	_k30a85SfEeeh5JjedkaA_g	Separation of components that comprise a security, for example, usually units comprised of warrants and bond or warrants and equity. Units may be broken up at the request of the security holder or based on market convention.
+CorporateActionEventType28Code	DSCL	Disclosure	_k30a9ZSfEeeh5JjedkaA_g	Requirement for holders or beneficial owners to disclose their name, location and holdings of any issue to the issuer.
+CorporateActionEventType28Code	DVOP	DividendOption	_k30a95SfEeeh5JjedkaA_g	Distribution of a dividend to shareholders with a choice of benefit to receive. Shareholders may choose to receive shares or cash. To be distinguished from DRIP as the company creates new share capital in exchange for the dividend rather than investing the dividend in the market.
+CorporateActionEventType28Code	DRIP	DividendReinvestment	_k30a-ZSfEeeh5JjedkaA_g	Dividend payment where holders can keep cash or have the cash reinvested in the market by the issuer into additional shares in the issuing company. To be distinguished from DVOP as the company invests the dividend in the market rather than creating new share capital in exchange for the dividend.
+CorporateActionEventType28Code	DRAW	Drawing	_k30a-5SfEeeh5JjedkaA_g	Securities are redeemed in part before the scheduled final maturity date. It is done without any pool factor reduction. The redemption is reflected in a debit of the face amount (FAMT). Drawing is distinct from partial call since drawn bonds are chosen by lottery. Therefore, not every holder is affected in the same way.
+CorporateActionEventType28Code	DTCH	DutchAuction	_k30a_ZSfEeeh5JjedkaA_g	Action by a party wishing to acquire a security. Holders of the security are invited to make an offer to sell, within a specific price range. The acquiring party will buy from the holder with lowest offer.
+CorporateActionEventType28Code	EXOF	Exchange	_k30a_5SfEeeh5JjedkaA_g	Exchange of holdings for other securities and/or cash. The exchange can be either mandatory or voluntary involving the exchange of outstanding securities for different securities and/or cash. For example "exchange offer", "capital reorganisation" or "funds separation".
+CorporateActionEventType28Code	REDM	FinalMaturity	_k30bAZSfEeeh5JjedkaA_g	Redemption of an entire issue outstanding of securities, for example, bonds, preferred equity, funds, by the issuer or its agent, for example, asset manager, at final maturity.
+CorporateActionEventType28Code	MCAL	FullCall	_k30bA5SfEeeh5JjedkaA_g	Redemption of an entire issue outstanding of securities, for example, bonds, preferred equity, funds, by the issuer or its agent, for example, asset manager, before final maturity.
+CorporateActionEventType28Code	INCR	IncreaseInValue	_k30bBZSfEeeh5JjedkaA_g	Increase in the face value of a single security. The number of circulating securities remains unchanged.
+CorporateActionEventType28Code	PPMT	InstalmentCall	_k30bB5SfEeeh5JjedkaA_g	Instalment towards the purchase of equity capital, subject to an agreement between an issuer and a purchaser.
+CorporateActionEventType28Code	INTR	InterestPayment	_k30bCZSfEeeh5JjedkaA_g	Interest payment distributed to holders of an interest bearing asset.
+CorporateActionEventType28Code	PRII	InterestPaymentWithPrincipal	_k30bC5SfEeeh5JjedkaA_g	Event which consists of two components, the decrease of the amortized value of a pool factor security and an interest payment.
+CorporateActionEventType28Code	RHDI	IntermediateSecuritiesDistribution	_k30bDZSfEeeh5JjedkaA_g	Distribution of intermediate securities that gives the holder the right to take part in a future event.
+CorporateActionEventType28Code	LIQU	LiquidationDividend	_k30bD5SfEeeh5JjedkaA_g	Distribution of cash, assets or both. Debt may be paid in order of priority based on preferred claims to assets specified by the security.
+CorporateActionEventType28Code	EXTM	MaturityExtension	_k30bEZSfEeeh5JjedkaA_g	As stipulated in the security's Terms and Conditions, the issuer or the holder may prolong the maturity date of a security. After extension, the security details may differ from the original issue. An issuer initiated extension may be subject to holder's approval.
+CorporateActionEventType28Code	MRGR	Merger	_k30bE5SfEeeh5JjedkaA_g	Exchange of outstanding securities, initiated by the issuer which may include options, as the result of two or more companies combining assets, that is, an external, third party company. Cash payments may accompany share exchange.
+CorporateActionEventType28Code	NOOF	NonOfficialOffer	_k30bFZSfEeeh5JjedkaA_g	Offers that are not supervised or regulated by an official entity and being offered by a party, for example a broker, usually at a discount price, for example broker offer, mini-tender, mini odd lot offer or third party offer.
+CorporateActionEventType28Code	CERT	NonUSTEFRADCertification	_k30bF5SfEeeh5JjedkaA_g	Non-US beneficial owner certification requirement for exchange of temporary to permanent notes.
+CorporateActionEventType28Code	ODLT	OddLotSalePurchase	_k30bGZSfEeeh5JjedkaA_g	Sale or purchase of odd-lots to/from the issuing company, initiated either by the holder of the security or through an offer made by the issuer.
+CorporateActionEventType28Code	OTHR	OtherEvent	_k30bG5SfEeeh5JjedkaA_g	Other event, use only when no other event type applies, for example, a new event type.
+CorporateActionEventType28Code	PARI	PariPassu	_k30bHZSfEeeh5JjedkaA_g	Occurs when securities with different characteristics, for example, shares with different entitlements to dividend or voting rights, become identical in all respects, for example, pari-passu or assimilation. May be scheduled in advance, for example, shares resulting from a bonus may become fungible after a pre-set period of time, or may result from outside events, for example, merger, reorganisation, issue of supplementary tranches.
+CorporateActionEventType28Code	PCAL	PartialRedemptionWithoutPoolFactorReduction	_k30bH5SfEeeh5JjedkaA_g	Securities are redeemed in part before their scheduled final maturity date. It is done without any pool factor reduction. The redemption is reflected in a debit of the face amount (FAMT).
+CorporateActionEventType28Code	PRED	PartialRedemptionWithPoolFactorReduction	_k30bIZSfEeeh5JjedkaA_g	Securities are redeemed in part before their scheduled final maturity date. The redemption is reflected in a pool factor reduction. No movement of securities occurs.
+CorporateActionEventType28Code	PINK	PayInKind	_k30bI5SfEeeh5JjedkaA_g	Interest payment, in any kind except cash, distributed to holders of an interest bearing asset.
+CorporateActionEventType28Code	PLAC	PlaceOfIncorporation	_k30bJZSfEeeh5JjedkaA_g	Changes in the state of incorporation for US companies and changes in the place of incorporation for foreign companies. Where shares need to be registered following the incorporation change, the holder(s) may have to elect the registrar.
+CorporateActionEventType28Code	PDEF	Prefunding	_k30bJ5SfEeeh5JjedkaA_g	Also called partial defeasance. Issuer has money set aside to redeem a portion of an issue and the indenture states that the securities could be called earlier than the stated maturity.
+CorporateActionEventType28Code	PRIO	PriorityIssue	_k30bKZSfEeeh5JjedkaA_g	Form of open or public offer where, due to a limited amount of securities available, priority is given to existing shareholders.
+CorporateActionEventType28Code	BPUT	PutRedemption	_k30bK5SfEeeh5JjedkaA_g	Early redemption of a security at the election of the holder subject to the terms and condition of the issue with no reduction in nominal value.
+CorporateActionEventType28Code	REDO	Redenomination	_k30bLZSfEeeh5JjedkaA_g	Event by which the unit (currency and/or nominal) of a security is restated, for example, nominal/par value of security in a national currency is restated in another currency.
+CorporateActionEventType28Code	REMK	RemarketingAgreement	_k30bL5SfEeeh5JjedkaA_g	Purchase and sale of remarketed preferred equities/bonds through the negotiation of interest rate between the issuers and the holders.
+CorporateActionEventType28Code	BIDS	RepurchaseOffer	_k30bMZSfEeeh5JjedkaA_g	Repurchase offer / issuer bid / reverse rights. Offer to existing holders by the issuing company to repurchase its own securities. The objective of the offer is to reduce the number of outstanding securities.
+CorporateActionEventType28Code	SPLR	ReverseStockSplit	_k30bM5SfEeeh5JjedkaA_g	Decrease in a company's number of outstanding equities without any change in the shareholder's equity or the aggregate market value at the time of the split. Equity price and nominal value are increased accordingly.
+CorporateActionEventType28Code	RHTS	RightsIssue	_k30bNZSfEeeh5JjedkaA_g	Offer to holders of a security to subscribe for additional securities via the distribution of an intermediate security. Both processes are included in the same event.
+CorporateActionEventType28Code	DVSC	ScripDividend	_k30bN5SfEeeh5JjedkaA_g	Dividend or interest paid in the form of scrip.
+CorporateActionEventType28Code	SHPR	SharesPremiumDividend	_k30bOZSfEeeh5JjedkaA_g	Corporate event pays shareholders an amount in cash issued from the shares premium reserve. It is similar to a dividend but with different tax implications.
+CorporateActionEventType28Code	SMAL	SmallestNegotiableUnit	_k30bO5SfEeeh5JjedkaA_g	Modification of the smallest negotiable unit of shares in order to obtain a new negotiable unit.
+CorporateActionEventType28Code	SOFF	SpinOff	_k30bPZSfEeeh5JjedkaA_g	Distribution of securities issued by another company. The distributed securities may either be of a newly created or of an existing company. For example, spin-off, demerger, unbundling, divestment.
+CorporateActionEventType28Code	DVSE	StockDividend	_k30bP5SfEeeh5JjedkaA_g	Dividend paid to shareholders in the form of equities of the issuing corporation.
+CorporateActionEventType28Code	SPLF	StockSplit	_k30bQZSfEeeh5JjedkaA_g	Increase in a corporation's number of outstanding equities without any change in the shareholder's equity or the aggregate market value at the time of the split. Equity price and nominal value are reduced accordingly.
+CorporateActionEventType28Code	TREC	TaxReclaim	_k30bQ5SfEeeh5JjedkaA_g	Event related to tax reclaim activities.
+CorporateActionEventType28Code	TEND	Tender	_k30bRZSfEeeh5JjedkaA_g	Offer made to holders by a third party, requesting them to sell (tender) or exchange their securities.
+CorporateActionEventType28Code	DLST	TradingStatusDelisted	_k30bR5SfEeeh5JjedkaA_g	Security is no longer able to comply with the listing requirements of a stock exchange and is removed from official board quotation.
+CorporateActionEventType28Code	SUSP	TradingStatusSuspended	_k30bSZSfEeeh5JjedkaA_g	Trading in the security has been suspended.
+CorporateActionEventType28Code	EXWA	WarrantExercise	_k30bS5SfEeeh5JjedkaA_g	Option offered to holders to buy (call warrant) or to sell (put warrant) a specific amount of stock, cash, or commodity, at a predetermined price, during a predetermined period of time (which usually corresponds to the life of the issue).
+CorporateActionEventType28Code	WTRC	WithholdingTaxReliefCertification	_k30bTZSfEeeh5JjedkaA_g	Certification process for withholding tax reduction or exemption based on the tax status of the holder.
+CorporateActionEventType28Code	WRTH	Worthless	_k30bT5SfEeeh5JjedkaA_g	Booking out of valueless securities.
+CorporateActionEventType28Code	ACCU	Accumulation	_k30bUZSfEeeh5JjedkaA_g	Funds related event in which the income (for example accumulation units) that accrues during an accounting period is retained within the fund instead of being paid away to investors. The retained income is nonetheless deemed to have been distributed to investors for tax purposes.
+CorporateActionEventType28Code	MTNG	SecuritiesHoldersMeeting	_k30bU5SfEeeh5JjedkaA_g	Ordinary or annual or extraordinary or special general meeting.
+CorporateActionEventType28Code	INFO	Information	_k30bVZSfEeeh5JjedkaA_g	Information provided by the issuer having no accounting/financial impact on the holder.
+CorporateActionEventType28Code	TNDP	TaxOnNonDistributedProceeds	_m2bckZSfEeeh5JjedkaA_g	Taxable component on non-distributed proceeds, for example, Australian deemed income or US 871m income regulation.
+SettlementTransactionCondition12Code	ADEA	AcceptAfterRegularSettlementDeadline	_2qssMQllEeuQ1MenzX1l-g	Settlement is on a bilaterally accepted transaction that is to be accepted beyond the regular settlement deadline.
+SettlementTransactionCondition12Code	ASGN	Assignement	_2qssPgllEeuQ1MenzX1l-g	Transfer of ownership of the asset to another party during the closing of an option.
+SettlementTransactionCondition12Code	BUTC	BuytoCover	_2qssLAllEeuQ1MenzX1l-g	Transaction is a buy to cover.
+SettlementTransactionCondition12Code	CLEN	Clean	_2qssQAllEeuQ1MenzX1l-g	Tax-exempt financial instruments are to be settled.
+SettlementTransactionCondition12Code	DLWM	DeliveryWithoutMatching	_2qssOwllEeuQ1MenzX1l-g	Matching receipt instruction not required (only for concerned international or national central securities depositories).
+SettlementTransactionCondition12Code	DIRT	Dirty	_2qssNwllEeuQ1MenzX1l-g	Taxable financial instruments are to be settled.
+SettlementTransactionCondition12Code	DRAW	Drawn	_2qssMwllEeuQ1MenzX1l-g	Settlement transactions relates to drawn securities.
+SettlementTransactionCondition12Code	EXER	Exercised	_2qssPQllEeuQ1MenzX1l-g	Settlement transaction relates to options, futures or derivatives that are exercised.
+SettlementTransactionCondition12Code	EXPI	Expired	_2qssOgllEeuQ1MenzX1l-g	Settlement transaction relates to options, futures or derivatives that have expired.
+SettlementTransactionCondition12Code	FRCL	FreeCleanSettlement	_2qssNgllEeuQ1MenzX1l-g	Delivery will be made free of payment but a clean payment order will be sent.
+SettlementTransactionCondition12Code	KNOC	KnockedOut	_2qssPwllEeuQ1MenzX1l-g	Settlement transaction relates to options, futures or derivatives that are expired worthless.
+SettlementTransactionCondition12Code	NOMC	NoAutomaticMarketClaim	_2qssLgllEeuQ1MenzX1l-g	No market claim should be automatically generated.
+SettlementTransactionCondition12Code	NACT	NotAccountingRelated	_2qssKwllEeuQ1MenzX1l-g	Security transaction is not for accounting.
+SettlementTransactionCondition12Code	PENS	PendingSale	_2qssMgllEeuQ1MenzX1l-g	Position to cover the pending sale will be available by contractual settlement date (accounting information).
+SettlementTransactionCondition12Code	PHYS	Physical	_2qssKgllEeuQ1MenzX1l-g	Securities are to be physically settled.
+SettlementTransactionCondition12Code	RHYP	Rehypothecation	_2qssLQllEeuQ1MenzX1l-g	Collateral position is available for other purposes (for example, onwards delivery).
+SettlementTransactionCondition12Code	RPTO	Reporting	_2qssPAllEeuQ1MenzX1l-g	Relates to a transaction that is for reporting purposes only.
+SettlementTransactionCondition12Code	RESI	Residual	_2qssNQllEeuQ1MenzX1l-g	Relates to transaction on a security that is not eligible at the Central Security Depository (CSD) but for which the payment will be enacted by the central securities depository.
+SettlementTransactionCondition12Code	SHOR	ShortSell	_2qssMAllEeuQ1MenzX1l-g	Account is used for short sale orders.
+SettlementTransactionCondition12Code	SPDL	SpecialDelivery	_2qssLwllEeuQ1MenzX1l-g	Settlement transactions to be settled with special delivery.
+SettlementTransactionCondition12Code	SPST	SplitSettlement	_2qssOAllEeuQ1MenzX1l-g	Money and financial instruments settle in different locations.
+SettlementTransactionCondition12Code	TRAN	Transformation	_2qssQQllEeuQ1MenzX1l-g	Transaction resulting from a transformation.
+SettlementTransactionCondition12Code	TRIP	TripartySegregation	_2qssNAllEeuQ1MenzX1l-g	Securities are not be delivered but segregated following triparty collateral transaction.
+SettlementTransactionCondition12Code	UNEX	Unexposed	_2qssOQllEeuQ1MenzX1l-g	Delivery cannot be performed until money is received.
+SettlementTransactionCondition12Code	INTS	InternalisedSettlement	_7kKVYQllEeuQ1MenzX1l-g	The instruction was settled by the settlement internaliser/account servicer (eg custodian) in its own books and not through a securities settlement system (e.g. CSD system).
+SettlementTransactionCondition12Code	BPSS	PartialSuccessfulBuyIn	_zia1MQzWEeuUZuaHWzkTew	Identification of settlement instructions created as a result of a partial successful buy-in.
+BlockTrade1Code	BLPA	Parent	_begotdp-Ed-ak6NoX_4Aeg_489423628	Transaction is a block trade parent.
+BlockTrade1Code	BLCH	Child	_begottp-Ed-ak6NoX_4Aeg_535598920	Transaction is a block trade child.
+DeliveryReturn1Code	UNRE	UnrecognisedDelivery	_azTIhNp-Ed-ak6NoX_4Aeg_-959595290	Original delivery is not recognized.
+DeliveryReturn1Code	DQUA	WrongQuantity	_azTIhdp-Ed-ak6NoX_4Aeg_-917110811	Wrong quantity delivered in the original instruction.
+DeliveryReturn1Code	DMON	WrongSettlementAmount	_azTIhtp-Ed-ak6NoX_4Aeg_-872782203	Wrong settlement amount settled in the original delivery.
+DeliveryReturn1Code	PART	PartialDelivery	_azTIh9p-Ed-ak6NoX_4Aeg_-845078527	Only a portion of the original transaction quantity was delivered by the Central Securities Depository (CSD).
+DeliveryReturn1Code	SAFE	AccountMissing	_azc5gNp-Ed-ak6NoX_4Aeg_-829378346	Account information is missing in the original delivery.
+DeliveryReturn1Code	DUEB	DueBiillMissing	_azc5gdp-Ed-ak6NoX_4Aeg_-573562488	Due bill information missing in the original delivery.
+DeliveryReturn1Code	PARD	PartialReturn	_azc5gtp-Ed-ak6NoX_4Aeg_-502450366	Portion of the original transaction quantity was returned by the receiver.
+RepurchaseType10Code	PAIR	Pairoff	_62sFEY-UEeaVK-2bgpxeYw	Relates to a transaction that is paired off and netted against one or more previous transactions. A paired off transaction is a buyback to offset and effectively liquidate a prior sale of securities or a sellback to offset and effectively liquidate a prior buy of securities.
+RepurchaseType10Code	ROLP	RepoContractRollover	_691O4Y-UEeaVK-2bgpxeYw	Relates to a repo rollover of a contract extending the closing or maturity date without the underlying collateral impacted.
+RepurchaseType10Code	RATE	RepoRate	_7E0nsY-UEeaVK-2bgpxeYw	Is part of a pair-off.
+RepurchaseType10Code	CALL	RepurchaseCall	_7Prz4Y-UEeaVK-2bgpxeYw	Relates to the early closing/maturity date for a term repo or a termination date of an open repo with the underlying collateral.
+RepurchaseType10Code	CADJ	Swap	_7WhbsY-UEeaVK-2bgpxeYw	Relates to a swap/substitution.
+RepurchaseType10Code	TOPU	TopUp	_7b4c0Y-UEeaVK-2bgpxeYw	Relates to a repo rollover of a position extending the closing or maturity date.
+RepurchaseType10Code	WTHD	Withdrawal	_7gyyAY-UEeaVK-2bgpxeYw	Relates to a repo rollover of a position extending the closing or maturity date.
+OwnershipLegalRestrictions1Code	A144	USLegal144A	_ZxJH9dp-Ed-ak6NoX_4Aeg_1752799563	Ownership or transfer of an unregistered security issued, pursuant to US legal restrictions 144A.
+OwnershipLegalRestrictions1Code	NRST	NoRestrictions	_ZxJH9tp-Ed-ak6NoX_4Aeg_1767574892	Ownership or transfer of a security that is not subject to restrictions.
+OwnershipLegalRestrictions1Code	RSTR	Restrictions	_ZxJH99p-Ed-ak6NoX_4Aeg_1780503706	Ownership or transfer of a security that is subject to restrictions, and not pursuant to 144A.
+SettlingCapacity2Code	SAGE	SettlingAgent	_7ZoS4SW2EeOslcz0TJwprQ	Settlement party is trading and settling transactions in financial instruments on behalf of its client(s).
+SettlingCapacity2Code	CUST	SettlingCustodian	_9j2HsSW2EeOslcz0TJwprQ	Settlement party is a custodian. It receives/delivers the securities and carries out custodial duties.
+SettlingCapacity2Code	SPRI	SettlingPrincipal	_9rSMcSW2EeOslcz0TJwprQ	Settlement party is settling its own trades.
+SettlingCapacity2Code	RISP	SettlingRisklessPrincipal	_9wCwoSW2EeOslcz0TJwprQ	Party settles trades that were simultaneously offset.
+SettlementSystemMethod1Code	NSET	Default	_ZMx2oNp-Ed-ak6NoX_4Aeg_-1225226401	Settle through the default settlement system/method. If there is a standing instruction in place for settlement through the alternate settlement system/method, then this standing instruction is to be ignored.
+SettlementSystemMethod1Code	YSET	Alternative	_ZMx2odp-Ed-ak6NoX_4Aeg_-1170737712	Settle through the alternate settlement system/method. If there is a standing instruction in place for settlement through the default settlement system/method, then this standing instruction is to be ignored.
+TaxLiability1Code	PRIN	TaxPrincipal	_YiBCYtp-Ed-ak6NoX_4Aeg_-1137204905	Settlement party is acting as a principal for tax liability.
+TaxLiability1Code	AGEN	TaxAgent	_YiBCY9p-Ed-ak6NoX_4Aeg_1016400725	Settlement party is acting as an agent for tax liability.
+AutoBorrowing1Code	LAMI	LastResort	_bjlV9tp-Ed-ak6NoX_4Aeg_-1856844449	Only last resort borrowing should be considered to make settlement occur.
+AutoBorrowing1Code	NBOR	NoAutomatic	_bjlV99p-Ed-ak6NoX_4Aeg_-1856844448	No automatic borrowing should take place.
+AutoBorrowing1Code	YBOR	Automatic	_bjlV-Np-Ed-ak6NoX_4Aeg_-1856844433	Automatic borrowing should take place.
+DateType4Code	OPEN	Open	_ayZwpdp-Ed-ak6NoX_4Aeg_-753628532	Open-dated, which indicates that the date has not been established.
+DateType4Code	UKWN	Unknown	_ayZwptp-Ed-ak6NoX_4Aeg_-739775519	Date is unknown by the sender or has not been established.

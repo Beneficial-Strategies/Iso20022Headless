@@ -1,0 +1,87 @@
+codeSet	code	enumName	isoId	text
+HoldingRejectionReason41Code	INPR	InvalidPrice	_-tIIEb3REeO2FLWuu_JIqg	Price does not comply with the financial instrument's characteristics.
+HoldingRejectionReason41Code	INID	InvalidIdentification	__3QY4b3REeO2FLWuu_JIqg	Instruction contains an invalid message identification, identification is unknown.
+HoldingRejectionReason41Code	AGIN	InvalidAgent	_Agvawb3SEeO2FLWuu_JIqg	Invalid agent identification supplied.
+HoldingRejectionReason41Code	INTE	Intermediary	_Apz3Mb3SEeO2FLWuu_JIqg	Intermediary is not recognised or is invalid.
+HoldingRejectionReason41Code	CERT	IncorrectCertification	_C0-HMb3SEeO2FLWuu_JIqg	Instruction is rejected since the provided certification is incorrect or incomplete.
+HoldingRejectionReason41Code	BPAR	BusinessPartnerNumberRejection	_GT99ob3SEeO2FLWuu_JIqg	Unrecognised or invalid business partner number.
+HoldingRejectionReason41Code	BREF	BankReferenceNumberRejection	_GcLecb3SEeO2FLWuu_JIqg	Unrecognised or invalid bank reference number.
+HoldingRejectionReason41Code	DADR	AddressDetailsRejection	_HW7Pcb3SEeO2FLWuu_JIqg	Address details are incorrect or cannot be recognised.
+HoldingRejectionReason41Code	DCUS	DeliveringCustodian	_JggyIb3SEeO2FLWuu_JIqg	Unrecognised or invalid delivering custodian.
+HoldingRejectionReason41Code	IACT	IncorrectActivityType	_MSB3gb3SEeO2FLWuu_JIqg	Incorrect activity type specified, for example, pre-release conversion.
+HoldingRejectionReason41Code	INVA	InvalidForTaxAuthorities	_NrMC0b3SEeO2FLWuu_JIqg	For tax reclaim, the reclaim is invalid for the tax authorities.
+HoldingRejectionReason41Code	INDT	InvalidDetails	_OBV5Ab3SEeO2FLWuu_JIqg	Message details specified in the instruction/request are inconsistent with those that were specified in the relating original message.
+HoldingRejectionReason41Code	OPTI	InvalidOption	_PLzhAb3SEeO2FLWuu_JIqg	Invalid combination of corporate action option code and corporate action option number.
+HoldingRejectionReason41Code	OPTY	InvalidOptionType	_PUDeEb3SEeO2FLWuu_JIqg	Invalid option type.
+HoldingRejectionReason41Code	INMO	InvalidMovementInformation	_Pm7Wwb3SEeO2FLWuu_JIqg	Details specified in the movement general information block are inconsistent with those that were specified in the relating original message.
+HoldingRejectionReason41Code	INVM	InvalidModificationRequest	_QhoEcb3SEeO2FLWuu_JIqg	Invalid or unrecognized modification request.
+HoldingRejectionReason41Code	INUS	InvalidUnderlyingSecurity	_RYkTgb3SEeO2FLWuu_JIqg	Underlying security identification does not correspond with the corporate action reference supplied.
+HoldingRejectionReason41Code	DSEC	InvalidSecurity	_SZUl4b3SEeO2FLWuu_JIqg	Unrecognised or invalid financial instrument identification.
+HoldingRejectionReason41Code	ENDP	MissingPeriodEndDate	_UJ8O8b3SEeO2FLWuu_JIqg	Period ending date or code is missing.
+HoldingRejectionReason41Code	STAR	MissingPeriodStartDate	_UREKob3SEeO2FLWuu_JIqg	Period starting date or code is missing.
+HoldingRejectionReason41Code	SECO	MissingOption	_UtH0gb3SEeO2FLWuu_JIqg	Second option is mandatory.
+HoldingRejectionReason41Code	NOHO	NoHolding	_WYejEb3SEeO2FLWuu_JIqg	No holding for the specified underlying security.
+HoldingRejectionReason41Code	NINS	NoInstrumentMarket	_XEXYsb3SEeO2FLWuu_JIqg	Referred instrument does not exist in combination with the mentioned market.
+HoldingRejectionReason41Code	NOAP	NotApplicable	_X5PyQb3SEeO2FLWuu_JIqg	Instruction type is not applicable for mandatory events.
+HoldingRejectionReason41Code	NAUT	NotAuthorised	_YCOIEb3SEeO2FLWuu_JIqg	Permission to be processed is not granted.
+HoldingRejectionReason41Code	AGID	NotDefinedAgent	_YcozMb3SEeO2FLWuu_JIqg	Party is not defined as an agent.
+HoldingRejectionReason41Code	DISP	NotEligibleDisperseSecurity	_ZjjX8b3SEeO2FLWuu_JIqg	Disperse security is not eligible in the (ICSD) service provider owner.
+HoldingRejectionReason41Code	CORR	NotIdentifiedCorrespondentBank	_aa4Bgb3SEeO2FLWuu_JIqg	Unable to identify correspondent bank.
+HoldingRejectionReason41Code	INPS	PlaceOfSafekeeping	_cO3usb3SEeO2FLWuu_JIqg	Unrecognised, invalid or missing place of safekeeping.
+HoldingRejectionReason41Code	PLCE	PlaceOfTrade	_ca9C4b3SEeO2FLWuu_JIqg	Unrecognised or invalid place of trade.
+HoldingRejectionReason41Code	PRIC	PriceExceeds	_c4fTcb3SEeO2FLWuu_JIqg	Price in the execution exceeds the order price.
+HoldingRejectionReason41Code	IVAG	ReceivingAgent	_e0fGEb3SEeO2FLWuu_JIqg	Receiving agent is not recognised or is invalid.
+HoldingRejectionReason41Code	QUNP	QuantityUnitType	_fA3VMb3SEeO2FLWuu_JIqg	Quantity unit type is not provided.
+HoldingRejectionReason41Code	DQUA	QuantityRejection	_fSR1Ub3SEeO2FLWuu_JIqg	Unrecognised or invalid instructed quantity.
+HoldingRejectionReason41Code	EQTY	QuantityExceeds	_fdpX0b3SEeO2FLWuu_JIqg	Quantity in the execution exceeds the ordered quantity.
+HoldingRejectionReason41Code	DEPT	ReceivingDeliveringDepository	_gtVeEb3SEeO2FLWuu_JIqg	Unrecognised or invalid depository.
+HoldingRejectionReason41Code	RCUS	ReceivingCustodian	_g_2KYb3SEeO2FLWuu_JIqg	Unrecognised or invalid receiving agent.
+HoldingRejectionReason41Code	SAFE	SafekeepingAccountRejection	_iSqdIb3SEeO2FLWuu_JIqg	Unrecognised or invalid message sender's safekeeping account.
+HoldingRejectionReason41Code	DMON	SettlementAmountRejection	_kPevIb3SEeO2FLWuu_JIqg	Unrecognised or invalid settlement amount.
+HoldingRejectionReason41Code	NCRR	SettlementAmountCurrencyRejection	_kX9Vsb3SEeO2FLWuu_JIqg	Unrecognised or invalid settlement amount currency.
+HoldingRejectionReason41Code	TQNP	TradedSecuritiesQuantity	_m9_j0b3SEeO2FLWuu_JIqg	Traded securities quantity not provided.
+HoldingRejectionReason41Code	SETR	SettlementTransactionRejection	_pKFn8b3SEeO2FLWuu_JIqg	Unrecognised or invalid settlement transaction type.
+HoldingRejectionReason41Code	UKWN	UnknownSymbol	_rGPyob3SEeO2FLWuu_JIqg	Financial instrument's symbol has not been recognized.
+HoldingRejectionReason41Code	DDEA	DealPrice	_t1Sy0b3SEeO2FLWuu_JIqg	Unrecognised or invalid deal price.
+HoldingRejectionReason41Code	TERM	ClosingDateTimeRejection	_vEOEEb3SEeO2FLWuu_JIqg	Unrecognised or invalid closing date/time.
+HoldingRejectionReason41Code	ULNK	InvalidReference	_AMmhUb3TEeO2FLWuu_JIqg	Linked reference is unknown.
+HoldingRejectionReason41Code	NARR	NarrativeReason	_GgCOQb3TEeO2FLWuu_JIqg	See narrative field for reason.
+HoldingRejectionReason41Code	NRGN	NotFoundRejection	_JdT3sb3TEeO2FLWuu_JIqg	Instruction could not be found.
+HoldingRejectionReason41Code	INVB	InvalidBalance	_ftvpsUlFEeSxKv6IjBzDlA	Instruction aims at using an invalid balance.
+HoldingRejectionReason41Code	ADEA	AccountServicerDeadlineMissed	_-6ckEUr3EeSHP9pzU4nIpA	Transaction/instruction received after the account servicer's specified deadline.
+HoldingRejectionReason41Code	CASH	CashAccount	_IQqskUr4EeSHP9pzU4nIpA	Unrecognised or invalid cash account.
+HoldingRejectionReason41Code	COMC	CommercializationContractRejection	_TDt_cUr4EeSHP9pzU4nIpA	Unrecognised or invalid commercialisation contract.
+HoldingRejectionReason41Code	CONL	ConcentrationLimitExceeded	_mhjRIUr4EeSHP9pzU4nIpA	Concentration limit was exceeded.
+HoldingRejectionReason41Code	INHO	InsufficientBalance	_C7apsUr5EeSHP9pzU4nIpA	Insufficient balance.
+HoldingRejectionReason41Code	ICOL	InsufficientCollateral	_GKgb4Ur5EeSHP9pzU4nIpA	Insufficient collateral proposed.
+HoldingRejectionReason41Code	INVE	InvalidInvestorParty	_bIJTcUr5EeSHP9pzU4nIpA	Unrecognised or invalid investor party. May be used by an executing party to reject an instruction for an investor (or portfolio) for which it is not authorised to act.
+HoldingRejectionReason41Code	INVN	InvalidLotNumber	_izP98Ur5EeSHP9pzU4nIpA	Invalid or unrecognized lot number.
+HoldingRejectionReason41Code	INVL	InvalidLink	_jXZM0Ur5EeSHP9pzU4nIpA	Invalid or unrecognized link.
+HoldingRejectionReason41Code	VALR	InvalidRule	_52CkIUr5EeSHP9pzU4nIpA	Account servicer validation rule rejection.
+HoldingRejectionReason41Code	INUK	InvestorNameAddressUnknown	_E7iR4Ur6EeSHP9pzU4nIpA	Investor name and address is not recognised.
+HoldingRejectionReason41Code	LATT	Late	_Oa020Ur6EeSHP9pzU4nIpA	Instruction/Request arrives too late.
+HoldingRejectionReason41Code	MINO	MinimumSettlementQuantity	_gV4HIUr6EeSHP9pzU4nIpA	Quantity instructed is lower than the minimum existing settlement quantity for the financial instrument.
+HoldingRejectionReason41Code	BOIS	MissingBeneficiaryOwnerDetails	_jPGXAUr6EeSHP9pzU4nIpA	Rejected due to missing beneficiary owner details.
+HoldingRejectionReason41Code	MCER	MissingCertification	_kd8vwUr6EeSHP9pzU4nIpA	Certification has not been filled in.
+HoldingRejectionReason41Code	IPOA	MissingOrInvalidPOA	_qjcHUUr6EeSHP9pzU4nIpA	Missing or invalid power of attorney.
+HoldingRejectionReason41Code	MUNO	MultipleSettlementQuantity	_zPQA4Ur6EeSHP9pzU4nIpA	Quantity instructed is not a multiple of an existing settlement quantity lot for the financial instrument.
+HoldingRejectionReason41Code	INNA	NarrativeInformationRejection	_3uiPoUr6EeSHP9pzU4nIpA	Unrecognised or invalid service level agreement pre-agreed narrative information.
+HoldingRejectionReason41Code	NINV	NoInventory	_8njNAUr6EeSHP9pzU4nIpA	Requested financial instrument is not available.
+HoldingRejectionReason41Code	ELIG	NonEligibleSecurity	_BRi28Ur7EeSHP9pzU4nIpA	Security is not eligible.
+HoldingRejectionReason41Code	PERI	PeriodEndDateBeforeStartDate	_gD5w4Ur7EeSHP9pzU4nIpA	Period ending date is before period starting date.
+HoldingRejectionReason41Code	REFE	ReferenceRejection	_AoqckUr8EeSHP9pzU4nIpA	Instruction has a reference identical to another previously received instruction.
+HoldingRejectionReason41Code	SAID	SameIdentification	_fUxkkUr8EeSHP9pzU4nIpA	Several messages with the same identification.
+HoldingRejectionReason41Code	OWNT	TypeOfOwnershipRejection	_47XkQUr8EeSHP9pzU4nIpA	Type of ownership indicated is not correct.
+HoldingRejectionReason41Code	NTAV	NotAvailable	_y7FrwSlGEeWwYv6HydV_vw	Reason is not available or unknown.
+HoldingAccountLevel1Code	SAFE	SafekeepingAccount	_cNACsU1qEeSvz4A_x0ui8g	Holding account is defined as the safekeeping account (Level 0).
+HoldingAccountLevel1Code	LVL1	Level1	_cUJMgU1qEeSvz4A_x0ui8g	Holding account is defined as the sub-level 1 account.
+HoldingAccountLevel1Code	LVL2	Level2	_cbIlUU1qEeSvz4A_x0ui8g	Holding account is defined as the sub-level 2 account.
+HoldingAccountLevel1Code	LVL3	Level3	_cdq78U1qEeSvz4A_x0ui8g	Holding account is defined as the sub-level 3 account.
+HoldingAccountLevel1Code	LVL4	Level4	_coYXIU1qEeSvz4A_x0ui8g	Holding account is defined as the sub-level 4 account.
+HoldingAccountLevel1Code	LVL5	Level5	_cvhg8U1qEeSvz4A_x0ui8g	Holding account is defined as the sub-level 5 account.
+HoldingAccountLevel1Code	LVL6	Level6	_c1nh4U1qEeSvz4A_x0ui8g	Holding account is defined as the sub-level 6 account.
+HoldingAccountLevel1Code	LVL7	Level7	_c8T_wU1qEeSvz4A_x0ui8g	Holding account is defined as the sub-level 7 account.
+HoldingAccountLevel1Code	LVL8	Level8	_dBrA4U1qEeSvz4A_x0ui8g	Holding account is defined as the sub-level 8 account.
+HoldingAccountLevel1Code	LVL9	Level9	_dHU88U1qEeSvz4A_x0ui8g	Holding account is defined as the sub-level 9 account.
+ReportItemStatus1Code	ACPD	Accepted	_VMcTwUi5EeSlHoYg_EudVQ	Entry has been accepted by the receiver of the report.
+ReportItemStatus1Code	REJT	Rejected	_VbdnMUi5EeSlHoYg_EudVQ	Entry has been rejected by the receiver of the report.

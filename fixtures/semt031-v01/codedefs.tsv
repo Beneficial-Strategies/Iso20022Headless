@@ -1,0 +1,22 @@
+codeSet	code	enumName	isoId	text
+RestrictionReference1Code	ADDC	AddCashRestrictionReference	_jGoHcdj7EeiHnvcp3FV_5w	Addition of a cash restriction reference representing a cash sub-balance to be utilised within the settlement instruction for the debiting or crediting of cash.
+RestrictionReference1Code	ADDS	AddSecuritiesRestrictionReference	_jNngQdj7EeiHnvcp3FV_5w	Addition of a securities restriction reference representing a securities sub-position to be utilised within the settlement instruction for the delivery or receipt of securities.
+RestrictionReference1Code	REMC	RemoveCashRestrictionReference	_jTuIQdj7EeiHnvcp3FV_5w	Removal of a cash restriction reference, already present within the settlement instruction, representing a cash sub-balance to be utilised within the settlement instruction for the debiting or crediting of cash.
+RestrictionReference1Code	REMS	RemoveSecuritiesRestrictionReference	_jdPQodj7EeiHnvcp3FV_5w	Removal of a securities restriction reference, already present within the settlement instruction, representing a securities sub-position to be utilised within the settlement instruction for the delivery or receipt of securities.
+AutoBorrowing2Code	LAMI	LastResort	_bjuf4dp-Ed-ak6NoX_4Aeg_-875280874	Only last resort borrowing should be considered to make settlement occur.
+AutoBorrowing2Code	NBOR	NoAutomatic	_bjuf4tp-Ed-ak6NoX_4Aeg_-875280873	No automatic borrowing should take place.
+AutoBorrowing2Code	YBOR	Automatic	_bjuf49p-Ed-ak6NoX_4Aeg_-875280857	Automatic borrowing should take place.
+AutoBorrowing2Code	RTRN	Return	_bjuf5Np-Ed-ak6NoX_4Aeg_-871586494	Return of stocks should take place.
+SettlementTransactionCondition5Code	PART	PartialAllowed	_q6dmBWtdEeCY4-KZ9JEyUQ_-817672077	Partial settlement is allowed.
+SettlementTransactionCondition5Code	NPAR	PartialNotAllowed	_q6dmBmtdEeCY4-KZ9JEyUQ_-1814744430	Partial settlement is not allowed.
+SettlementTransactionCondition5Code	PARC	PartialSettlementCashThresholdAllowed	_q6nXAGtdEeCY4-KZ9JEyUQ_374187327	Partial settlement is allowed but must satisfy a cash value minimum (value defined in static data).
+SettlementTransactionCondition5Code	PARQ	PartialSettlementQuantityThresholdAllowed	_q6nXAWtdEeCY4-KZ9JEyUQ_1425320399	Partial settlement is allowed but must satisfy a minimum quantity of securities (quantity defined in static data).
+Registration2Code	PTYH	PartyHold	_q5kOJGtdEeCY4-KZ9JEyUQ_105432583	You or your party set the instruction in a hold/frozen/preadvice mode.
+Registration2Code	CSDH	CSDHold	_q5kOJWtdEeCY4-KZ9JEyUQ_-891639770	Central securities depository sets the instruction in a hold/frozen/preadvice mode.
+Registration2Code	CDEL	ConditionalDelivery	_q5kOJmtdEeCY4-KZ9JEyUQ_-914504853	Instruction is in a hold/frozen/preadvice mode as it fulfils predefined conditional delivery rules in the market infrastructure platform for conditional delivery.
+Registration2Code	CVAL	CSDValidation	_q5t_IGtdEeCY4-KZ9JEyUQ_7658457	Instruction is in a hold/frozen/preadvice mode as it fulfils predefined conditions of a restriction processing type in the market infrastructure platform.
+MatchingProcess1Code	UNMT	Unmatch	_aU58V9p-Ed-ak6NoX_4Aeg_65054355	The referenced transaction is requested to be unmatched.
+MatchingProcess1Code	MTRE	ResumeMatching	_aU58WNp-Ed-ak6NoX_4Aeg_65054356	Matching process is to be resumed for the referenced transaction.
+SecuritiesTransactionType5Code	TRAD	Trade	_ZIwSQdp-Ed-ak6NoX_4Aeg_2040871426	Relates to the settlement of a trade.
+DateType3Code	VARI	Various	_ayZwo9p-Ed-ak6NoX_4Aeg_-1348690126	Partial trades have occurred over a period of two or more days.
+SettlementDate4Code	WISS	WhenIssued	_kgJqIUWrEe6RZYUnHXjemQ	Settlement is to be done when the security is issued.

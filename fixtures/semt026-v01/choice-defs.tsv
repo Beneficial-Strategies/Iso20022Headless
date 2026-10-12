@@ -1,0 +1,14 @@
+choice	memberId	memberName	text
+References83Choice	_WtzlsagzEfCXwLUUylXgrQ	AccountOwnerTransactionIdentification	Unambiguous identification of the transaction as known by the account owner (or the instructing party managing the account).
+References83Choice	_Wt0MxqgzEfCXwLUUylXgrQ	AccountServicerTransactionIdentification	Unambiguous identification of the transaction as known by the account servicer.
+References83Choice	_Wt0MzqgzEfCXwLUUylXgrQ	MarketInfrastructureTransactionIdentification	Identification of a transaction assigned by a market infrastructure other than a central securities depository, for example, Target2-Securities.
+References83Choice	_btDt8KgzEfCXwLUUylXgrQ	CounterpartyMarketInfrastructureTransactionIdentification	Identification of a counterparty transaction assigned by a market infrastructure other than a central securities depository, for example, Target2-Securities.
+References83Choice	_Wt0M1qgzEfCXwLUUylXgrQ	ProcessorTransactionIdentification	Identification of the transaction as assigned by the processor.
+References83Choice	_Wt0M2KgzEfCXwLUUylXgrQ	PoolIdentification	Collective reference identifying a set of messages.
+References83Choice	_Wt0M4KgzEfCXwLUUylXgrQ	CommonIdentification	Unique reference agreed upon by the two trade counterparties to identify the trade.
+References83Choice	_Wt0M6KgzEfCXwLUUylXgrQ	TradeIdentification	Reference assigned to the trade by the investor or the trading party. This reference will be used throughout the trade life cycle to access/update the trade details.
+References83Choice	_Wt0M8KgzEfCXwLUUylXgrQ	CorporateActionEventIdentification	Identification assigned by the account servicer to unambiguously identify a corporate action event.
+ProcessingStatus70Choice	_mXWx0eGHEeWCAvUNsZ5u6g	Code	Specifies the processing status of the instruction in a coded format.
+ProcessingStatus70Choice	_mXWx0-GHEeWCAvUNsZ5u6g	Proprietary	Specifies the processing status of the instruction in a proprietary format.
+MatchingStatus27Choice	_Y5m_4TqqEeWyoP0PbocV1Q	Code	Provides the matching status of the instruction.
+MatchingStatus27Choice	_Y5m_6TqqEeWyoP0PbocV1Q	Proprietary	Provides the matching status of the instruction.

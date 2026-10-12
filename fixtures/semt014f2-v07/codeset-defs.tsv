@@ -1,0 +1,4 @@
+codeSet	isoId	text
+RejectionReason69Code	_K_rZwCtUEeyhipY4f42fZQ	Specifies the reason why the instruction/cancellation request has a rejected status.
+CancelledStatusReason16Code	_YsVgENB6EeihG9bKfarOOA	Specifies the reason for the cancellation status.
+SecuritiesBalanceType13Code	_ZAHTo9p-Ed-ak6NoX_4Aeg_-409844332	Specifies the nature of the securities or investment fund balance.

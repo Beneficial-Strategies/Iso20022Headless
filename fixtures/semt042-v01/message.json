@@ -1,0 +1,67 @@
+{
+  "identifier": "semt.042.001.01",
+  "name": "SecuritiesBalanceTransparencyReportStatusAdviceV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:semt.042.001.01",
+  "bodyTag": "SctiesBalTrnsprncyRptStsAdvc",
+  "out": "semt042",
+  "isoId": "_yMxXsbvVEeOgOuxYpBEzKg",
+  "definition": "SCOPE||An account owner, such as a custodian, central securities depository, international securities depository or transfer agent, sends the SecuritiesBalanceTransparencyReportStatusAdvice message in response to a SecuritiesBalanceTransparencyReport, to accept or reject the statement of holdings as sent in a SecuritiesBalanceTransparencyReport.||USAGE|The SecuritiesBalanceTransparencyReportStatusAdvice is used to accept (Accepted), partially accept (Accepted With Exception) or reject (Rejected) a previously received SecuritiesBalanceTransparencyReport.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "_mBk7IU1qEeSvz4A_x0ui8g",
+      "xmlTag": "MsgId",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SenderIdentification",
+      "isoId": "_pGGcEk1qEeSvz4A_x0ui8g",
+      "xmlTag": "SndrId",
+      "type": "PartyIdentification100",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ReceiverIdentification",
+      "isoId": "_pGGcE01qEeSvz4A_x0ui8g",
+      "xmlTag": "RcvrId",
+      "type": "PartyIdentification100",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "RelatedStatement",
+      "isoId": "_x8GCwk4iEeSGlfauTkCKIA",
+      "xmlTag": "RltdStmt",
+      "type": "StatementReference1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Status",
+      "isoId": "_SOA1Ir3PEeO2FLWuu_JIqg",
+      "xmlTag": "Sts",
+      "type": "ReportItemStatus1Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "NumberOfItemsPerStatus",
+      "isoId": "_2EcUQUioEeSlHoYg_EudVQ",
+      "xmlTag": "NbOfItmsPerSts",
+      "type": "NumberOfItemsPerStatus1",
+      "min": 0,
+      "max": 2
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_SOA1I73PEeO2FLWuu_JIqg",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

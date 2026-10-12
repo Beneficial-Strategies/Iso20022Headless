@@ -1,0 +1,5 @@
+codeSetName	isoId	restrictionOf	code	enumName
+ReceiveDelivery1Code	_ZafihNp-Ed-ak6NoX_4Aeg_-212858839	ReceiveDeliveryCode	DELI	Delivery
+ReceiveDelivery1Code	_ZafihNp-Ed-ak6NoX_4Aeg_-212858839	ReceiveDeliveryCode	RECE	Receive
+DeliveryReceiptType2Code	_azJXhdp-Ed-ak6NoX_4Aeg_11908462	DeliveryReceiptTypeCode	FREE	SeparateSettlement
+DeliveryReceiptType2Code	_azJXhdp-Ed-ak6NoX_4Aeg_11908462	DeliveryReceiptTypeCode	APMT	AgainstPaymentSettlement

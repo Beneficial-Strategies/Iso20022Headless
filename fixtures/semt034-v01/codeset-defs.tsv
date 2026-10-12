@@ -1,0 +1,5 @@
+codeSet	isoId	text
+AcknowledgementReason11Code	_k9YrIY5bEfC_4ZEXsY0Xyg	Specifies additional information about the processed instruction.
+PendingReason31Code	_I3LY8Y5cEfC_4ZEXsY0Xyg	Specifies the reason the transaction/instruction is pending settlement. Settlement on the instructed settlement date is still possible.
+FailingReason6Code	_-vjzQY5cEfC_4ZEXsY0Xyg	Specifies the reason the transaction/instruction is failing settlement. Settlement on the instructed settlement date is no longer possible.
+CorporateActionEventType24Code	_ELXgpIr-EeaNFeVGetd6Xw	Specifies the corporate action event type.

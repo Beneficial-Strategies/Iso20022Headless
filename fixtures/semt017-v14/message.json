@@ -1,0 +1,75 @@
+{
+  "identifier": "semt.017.001.14",
+  "name": "SecuritiesTransactionPostingReportV14",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:semt.017.001.14",
+  "bodyTag": "SctiesTxPstngRpt",
+  "out": "semt017",
+  "isoId": "3541e895-efb3-4eb5-88c5-bfe44a99cdbb",
+  "definition": "Scope|SecuritiesTransactionPostingReport is sent by an account servicer to an account owner to provide the details of increases and decreases of holdings which occurred during a specified period, for all or selected securities in the specified safekeeping account or sub-safekeeping account which the account servicer holds for the account owner. |The account servicer/owner relationship may be:|- a central securities depository or another settlement market infrastructure acting on behalf of its participants|- an agent (sub-custodian) acting on behalf of its global custodian customer, or |- a custodian acting on behalf of an investment management institution or a broker/dealer.||Usage|This message may be used as a trade date based or a settlement date based statement.|The message may also be used to: |- re-send a message previously sent,|- provide a third party with a copy of a message for information,|- re-send to a third party a copy of a message for information using the relevant elements in the Business Application Header.",
+  "blocks": [
+    {
+      "name": "Pagination",
+      "isoId": "cefb3d4e-10e7-41b4-8b9b-ee308a754392",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "StatementGeneralDetails",
+      "isoId": "66b05559-67f5-46b3-943e-8a09b132d2b5",
+      "xmlTag": "StmtGnlDtls",
+      "type": "Statement79",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountOwner",
+      "isoId": "36e2b740-00ce-4c01-afd2-882b94d07c90",
+      "xmlTag": "AcctOwnr",
+      "type": "PartyIdentification144",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SafekeepingAccount",
+      "isoId": "babb5b5c-548e-4ef8-874d-71db690c17d8",
+      "xmlTag": "SfkpgAcct",
+      "type": "SecuritiesAccount36",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "BlockChainAddressOrWallet",
+      "isoId": "9982301f-6daa-421d-8123-5e851f53314c",
+      "xmlTag": "BlckChainAdrOrWllt",
+      "type": "BlockChainAddressWallet4",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "IntermediaryInformation",
+      "isoId": "ab18e3a1-05d7-451b-9db8-9cb66c015101",
+      "xmlTag": "IntrmyInf",
+      "type": "Intermediary44",
+      "min": 0,
+      "max": 10
+    },
+    {
+      "name": "FinancialInstrumentDetails",
+      "isoId": "7809172b-ac2d-4438-8685-c77aab16564c",
+      "xmlTag": "FinInstrmDtls",
+      "type": "FinancialInstrumentDetails48",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SubAccountDetails",
+      "isoId": "a8eed6f9-9fe9-4a34-827d-0fa3f7d3a97f",
+      "xmlTag": "SubAcctDtls",
+      "type": "SubAccountIdentification74",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

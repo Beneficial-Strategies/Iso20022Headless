@@ -504,7 +504,21 @@ export const Account23Schema = z.strictObject({
   RelatedAccountDetails: GenericIdentification1Schema.optional(),
 });
 
+export const SimpleIdentificationInformation4Schema = z.strictObject({
+  Identification: Max35TextSchema,
+});
+
+export const AccountIdentification26Schema = z.strictObject({
+  Proprietary: SimpleIdentificationInformation4Schema,
+});
+
 export const AnyBICDec2014IdentifierSchema = textType({pattern: "[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}"});
+
+export const GenericIdentification36Schema = z.strictObject({
+  Identification: Max35TextSchema,
+  Issuer: Max35TextSchema,
+  SchemeName: Max35TextSchema.optional(),
+});
 
 export const Max350TextSchema = textType({min: 1, max: 350});
 
@@ -526,6 +540,54 @@ export const NameAndAddress5Schema = z.strictObject({
   Address: PostalAddress1Schema.optional(),
 });
 
+export const PartyIdentification120ChoiceSchema = choiceOf({
+  AnyBIC: AnyBICDec2014IdentifierSchema,
+  ProprietaryIdentification: GenericIdentification36Schema,
+  NameAndAddress: NameAndAddress5Schema,
+});
+
+export const Account29Schema = z.strictObject({
+  Identification: AccountIdentification26Schema,
+  AccountServicer: PartyIdentification120ChoiceSchema.optional(),
+});
+
+export const RestrictedFINXMax35TextSchema = textType({min: 1, max: 35, pattern: "[0-9a-zA-Z/\\-\\?:\\(\\)\\.,'\\+ ]{1,35}"});
+
+export const SimpleIdentificationInformation1Schema = z.strictObject({
+  Identification: RestrictedFINXMax35TextSchema,
+});
+
+export const AccountIdentification4Schema = z.strictObject({
+  Proprietary: SimpleIdentificationInformation1Schema,
+});
+
+export const RestrictedFINXMax34TextSchema = textType({min: 1, max: 34, pattern: "([0-9a-zA-Z\\-\\?:\\(\\)\\.,'\\+ ]([0-9a-zA-Z\\-\\?:\\(\\)\\.,'\\+ ]*(/[0-9a-zA-Z\\-\\?:\\(\\)\\.,'\\+ ])?)*)"});
+
+export const Max4AlphaNumericTextSchema = textType({min: 1, max: 4, pattern: "[a-zA-Z0-9]{1,4}"});
+
+export const GenericIdentification84Schema = z.strictObject({
+  Identification: RestrictedFINXMax34TextSchema,
+  Issuer: Max4AlphaNumericTextSchema,
+  SchemeName: Max4AlphaNumericTextSchema.optional(),
+});
+
+export const RestrictedFINXMax140TextSchema = textType({min: 1, max: 140, pattern: "[0-9a-zA-Z/\\-\\?:\\(\\)\\.\\n\\r,'\\+ ]{1,140}"});
+
+export const NameAndAddress12Schema = z.strictObject({
+  Name: RestrictedFINXMax140TextSchema,
+});
+
+export const PartyIdentification137ChoiceSchema = choiceOf({
+  AnyBIC: AnyBICDec2014IdentifierSchema,
+  ProprietaryIdentification: GenericIdentification84Schema,
+  NameAndAddress: NameAndAddress12Schema,
+});
+
+export const Account30Schema = z.strictObject({
+  Identification: AccountIdentification4Schema,
+  AccountServicer: PartyIdentification137ChoiceSchema.optional(),
+});
+
 export const PartyIdentification125ChoiceSchema = choiceOf({
   AnyBIC: AnyBICDec2014IdentifierSchema,
   ProprietaryIdentification: GenericIdentification1Schema,
@@ -535,6 +597,27 @@ export const PartyIdentification125ChoiceSchema = choiceOf({
 export const Account32Schema = z.strictObject({
   Identification: Max35TextSchema.optional(),
   AccountServicer: PartyIdentification125ChoiceSchema,
+});
+
+export const SimpleIdentificationInformationSchema = z.strictObject({
+  Identification: Max35TextSchema,
+});
+
+export const AccountIdentification1Schema = z.strictObject({
+  Proprietary: SimpleIdentificationInformationSchema,
+});
+
+export const AnyBICIdentifierSchema = textType({pattern: "[A-Z]{6,6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3,3}){0,1}"});
+
+export const PartyIdentification2ChoiceSchema = choiceOf({
+  BICOrBEI: AnyBICIdentifierSchema,
+  ProprietaryIdentification: GenericIdentification1Schema,
+  NameAndAddress: NameAndAddress5Schema,
+});
+
+export const Account7Schema = z.strictObject({
+  Identification: AccountIdentification1Schema,
+  AccountServicer: PartyIdentification2ChoiceSchema.optional(),
 });
 
 export const ISODateSchema = isoDate;
@@ -556,8 +639,6 @@ export const AccountContract4Schema = z.strictObject({
 export const Rank1CodeSchema = z.enum(["PRIM", "SECO"]);
 
 export const Exact4AlphaNumericTextSchema = textType({pattern: "[a-zA-Z0-9]{4}"});
-
-export const Max4AlphaNumericTextSchema = textType({min: 1, max: 4, pattern: "[a-zA-Z0-9]{1,4}"});
 
 export const GenericIdentification47Schema = z.strictObject({
   Identification: Exact4AlphaNumericTextSchema,
@@ -597,12 +678,12 @@ export const AccountForAction1Schema = z.strictObject({
   Currency: ActiveCurrencyCodeSchema,
 });
 
-export const SimpleIdentificationInformationSchema = z.strictObject({
-  Identification: Max35TextSchema,
-});
+export const Max8TextSchema = textType({min: 1, max: 8});
 
-export const AccountIdentification1Schema = z.strictObject({
-  Proprietary: SimpleIdentificationInformationSchema,
+export const AccountIdentification3Schema = z.strictObject({
+  Identification: AccountIdentification1Schema,
+  Issuer: Max8TextSchema,
+  Information: Exact4AlphaNumericTextSchema,
 });
 
 export const GenericIdentification30Schema = z.strictObject({
@@ -625,6 +706,19 @@ export const AccountIdentification38ChoiceSchema = choiceOf({
 export const AccountIdentificationAndName5Schema = z.strictObject({
   Identification: AccountIdentification4ChoiceSchema,
   Name: Max35TextSchema.optional(),
+});
+
+export const SecuritiesAccountPurposeType1CodeSchema = z.enum(["MARG", "SHOR", "ABRD", "CEND", "DVPA", "PHYS"]);
+
+export const AccountIdentificationAndPurposeSchema = z.strictObject({
+  Identification: AccountIdentification1Schema,
+  Purpose: SecuritiesAccountPurposeType1CodeSchema,
+});
+
+export const AccountIdentificationFormatChoiceSchema = choiceOf({
+  SimpleIdentification: AccountIdentification1Schema,
+  IdentificationAndPurpose: AccountIdentificationAndPurposeSchema,
+  IdentificationAsDSS: AccountIdentification3Schema,
 });
 
 export const AccountIdentificationSearchCriteria2ChoiceSchema = choiceOf({
@@ -1073,10 +1167,6 @@ export const ClearingSystemMemberIdentification4ChoiceSchema = choiceOf({
   AustralianSmallNetworkIdentification: SmallNetworkIdentifierSchema,
 });
 
-export const SimpleIdentificationInformation4Schema = z.strictObject({
-  Identification: Max35TextSchema,
-});
-
 export const FinancialInstitutionIdentification11ChoiceSchema = choiceOf({
   NameAndAddress: NameAndAddress5Schema,
   BICFI: BICFIDec2014IdentifierSchema,
@@ -1315,12 +1405,6 @@ export const NoReasonCodeSchema = z.enum(["NORE"]);
 
 export const EnabledStatusReason1CodeSchema = z.enum(["MODI"]);
 
-export const GenericIdentification36Schema = z.strictObject({
-  Identification: Max35TextSchema,
-  Issuer: Max35TextSchema,
-  SchemeName: Max35TextSchema.optional(),
-});
-
 export const EnabledStatusReason2ChoiceSchema = choiceOf({
   Code: EnabledStatusReason1CodeSchema,
   Proprietary: GenericIdentification36Schema,
@@ -1528,6 +1612,42 @@ export const AcknowledgedAcceptedStatus24ChoiceSchema = choiceOf({
   Reason: AcknowledgementReason12Schema,
 });
 
+export const AcknowledgementReason16ChoiceSchema = choiceOf({
+  Code: AcknowledgementReason5CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const RestrictedFINXMax210TextSchema = textType({min: 1, max: 210, pattern: "[0-9a-zA-Z/\\-\\?:\\(\\)\\.\\n\\r,'\\+ ]{1,210}"});
+
+export const AcknowledgementReason13Schema = z.strictObject({
+  Code: AcknowledgementReason16ChoiceSchema,
+  AdditionalReasonInformation: RestrictedFINXMax210TextSchema.optional(),
+});
+
+export const AcknowledgedAcceptedStatus25ChoiceSchema = choiceOf({
+  NoSpecifiedReason: NoReasonCodeSchema,
+  Reason: AcknowledgementReason13Schema,
+});
+
+export const AcknowledgementReason11CodeSchema = z.enum(["ADEA", "OTHR", "SMPG"]);
+
+export const AcknowledgementReason25ChoiceSchema = choiceOf({
+  Code: AcknowledgementReason11CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const AcknowledgementReason22Schema = z.strictObject({
+  Code: AcknowledgementReason25ChoiceSchema,
+  AdditionalReasonInformation: Max210TextSchema.optional(),
+});
+
+export const AcknowledgedAcceptedStatus34ChoiceSchema = choiceOf({
+  NoSpecifiedReason: NoReasonCodeSchema,
+  Reason: AcknowledgementReason22Schema,
+});
+
+export const AcknowledgementReason6CodeSchema = z.enum(["ADEA", "SMPG", "OTHR", "NSTP", "LATE"]);
+
 export const ImpliedCurrencyAndAmountRange1Schema = z.strictObject({
   Amount: ImpliedCurrencyAmountRange1ChoiceSchema,
   CreditDebitIndicator: CreditDebitCodeSchema.optional(),
@@ -1548,6 +1668,39 @@ export const ActiveCurrencyAnd13DecimalAmountSchema = z.strictObject({ Ccy: text
 
 export const ActiveOrHistoricCurrencyAnd13DecimalAmountSchema = z.strictObject({ Ccy: textType({ pattern: "[A-Z]{3,3}" }), Value: decimalType({ totalDigits: 18, fractionDigits: 13, minInclusive: 0 }) });
 
+export const DecimalNumberSchema = decimalType({totalDigits: 18, fractionDigits: 17});
+
+export const FinancialInstrumentQuantityChoiceSchema = choiceOf({
+  Unit: DecimalNumberSchema,
+  FaceAmount: ImpliedCurrencyAndAmountSchema,
+  AmortisedValue: ImpliedCurrencyAndAmountSchema,
+});
+
+export const GenericIdentification6Schema = z.strictObject({
+  Issuer: Max8TextSchema,
+  Information: Exact4AlphaNumericTextSchema,
+  Balance: NumberSchema,
+});
+
+export const QuantityAndAvailabilitySchema = z.strictObject({
+  Quantity: FinancialInstrumentQuantityChoiceSchema,
+  AvailabilityIndicator: YesNoIndicatorSchema,
+});
+
+export const SubBalanceQuantity1ChoiceSchema = choiceOf({
+  Quantity: FinancialInstrumentQuantityChoiceSchema,
+  QuantityAsDSS: GenericIdentification6Schema,
+  QuantityAndAvailability: QuantityAndAvailabilitySchema,
+});
+
+export const SecuritiesBalanceType2CodeSchema = z.enum(["CLEN", "DIRT", "NOMI", "OTHR", "SPOS", "UNRG"]);
+
+export const AdditionalBalanceInformation2Schema = z.strictObject({
+  Quantity: SubBalanceQuantity1ChoiceSchema,
+  SubBalanceType: SecuritiesBalanceType2CodeSchema.optional(),
+  ExtendedSubBalanceType: Extended350CodeSchema.optional(),
+});
+
 export const AdditionalInformation5Schema = z.strictObject({
   Information: z.array(Max256TextSchema).min(1),
 });
@@ -1564,12 +1717,41 @@ export const AdditionalReference13Schema = z.strictObject({
   MessageName: Max35TextSchema.optional(),
 });
 
-export const AnyBICIdentifierSchema = textType({pattern: "[A-Z]{6,6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3,3}){0,1}"});
+export const StructuredLongPostalAddress1Schema = z.strictObject({
+  BuildingName: Max35TextSchema.optional(),
+  StreetName: Max35TextSchema.optional(),
+  StreetBuildingIdentification: Max35TextSchema.optional(),
+  Floor: Max16TextSchema.optional(),
+  TownName: Max35TextSchema,
+  DistrictName: Max35TextSchema.optional(),
+  RegionIdentification: Max35TextSchema.optional(),
+  State: Max35TextSchema.optional(),
+  CountyIdentification: Max35TextSchema.optional(),
+  Country: CountryCodeSchema,
+  PostCodeIdentification: Max16TextSchema,
+  PostOfficeBox: Max16TextSchema.optional(),
+});
 
-export const PartyIdentification2ChoiceSchema = choiceOf({
+export const LongPostalAddress1ChoiceSchema = choiceOf({
+  Unstructured: Max140TextSchema,
+  Structured: StructuredLongPostalAddress1Schema,
+});
+
+export const NameAndAddress2Schema = z.strictObject({
+  Name: Max35TextSchema,
+  Address: LongPostalAddress1ChoiceSchema.optional(),
+});
+
+export const PartyIdentification1ChoiceSchema = choiceOf({
   BICOrBEI: AnyBICIdentifierSchema,
   ProprietaryIdentification: GenericIdentification1Schema,
-  NameAndAddress: NameAndAddress5Schema,
+  NameAndAddress: NameAndAddress2Schema,
+});
+
+export const AdditionalReference2Schema = z.strictObject({
+  Reference: Max35TextSchema,
+  ReferenceIssuer: PartyIdentification1ChoiceSchema.optional(),
+  MessageName: Max35TextSchema.optional(),
 });
 
 export const AdditionalReference3Schema = z.strictObject({
@@ -1621,6 +1803,8 @@ export const AdviceType1Schema = z.strictObject({
   DebitAdvice: AdviceType1ChoiceSchema.optional(),
 });
 
+export const AffirmationStatus1CodeSchema = z.enum(["AFFI", "NAFI"]);
+
 export const Parameter4Schema = z.strictObject({
   EncryptionFormat: EncryptionFormat1CodeSchema.optional(),
   DigestAlgorithm: Algorithm11CodeSchema.optional(),
@@ -1660,6 +1844,23 @@ export const Parameter7Schema = z.strictObject({
 export const AlgorithmIdentification15Schema = z.strictObject({
   Algorithm: Algorithm12CodeSchema,
   Parameter: Parameter7Schema.optional(),
+});
+
+export const AllegementStatus1CodeSchema = z.enum(["CANC", "REMO"]);
+
+export const AllocationStatus1CodeSchema = z.enum(["AOLF", "AOLP"]);
+
+export const TypeOfIdentification1CodeSchema = z.enum(["ARNU", "CCPT", "CHTY", "CORP", "DRLC", "FIIN", "TXID"]);
+
+export const IdentificationType42ChoiceSchema = choiceOf({
+  Code: TypeOfIdentification1CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const AlternatePartyIdentification7Schema = z.strictObject({
+  IdentificationType: IdentificationType42ChoiceSchema,
+  Country: CountryCodeSchema,
+  AlternateIdentification: Max35TextSchema,
 });
 
 export const AlternateSecurityIdentification1Schema = z.strictObject({
@@ -1859,8 +2060,6 @@ export const CashAccount40Schema = z.strictObject({
 
 export const Frequency6CodeSchema = z.enum(["YEAR", "MNTH", "QURT", "MIAN", "WEEK", "DAIL", "ADHO", "INDA", "FRTN"]);
 
-export const DecimalNumberSchema = decimalType({totalDigits: 18, fractionDigits: 17});
-
 export const FrequencyPeriod1Schema = z.strictObject({
   Type: Frequency6CodeSchema,
   CountPerPeriod: DecimalNumberSchema,
@@ -2029,6 +2228,20 @@ export const AmountAndCurrencyExchange4Schema = z.strictObject({
   ProprietaryAmount: z.array(AmountAndCurrencyExchangeDetails6Schema).optional(),
 });
 
+export const RestrictedFINActiveOrHistoricCurrencyAndAmountSchema = z.strictObject({ Ccy: textType({ pattern: "[A-Z]{3,3}" }), Value: decimalType({ totalDigits: 14, fractionDigits: 5, minInclusive: 0 }) });
+
+export const PlusOrMinusIndicatorSchema = indicator;
+
+export const AmountAndDirection14Schema = z.strictObject({
+  Amount: RestrictedFINActiveOrHistoricCurrencyAndAmountSchema,
+  Sign: PlusOrMinusIndicatorSchema,
+});
+
+export const AmountAndDirection21Schema = z.strictObject({
+  Amount: ActiveOrHistoricCurrencyAndAmountSchema,
+  CreditDebitIndicator: CreditDebitCodeSchema.optional(),
+});
+
 export const NonNegativeDecimalNumberSchema = decimalType({totalDigits: 18, fractionDigits: 17, minInclusive: 0});
 
 export const AmountAndDirection35Schema = z.strictObject({
@@ -2036,9 +2249,46 @@ export const AmountAndDirection35Schema = z.strictObject({
   CreditDebitIndicator: CreditDebitCodeSchema,
 });
 
+export const ForeignExchangeTerms23Schema = z.strictObject({
+  UnitCurrency: ActiveCurrencyCodeSchema,
+  QuotedCurrency: ActiveCurrencyCodeSchema,
+  ExchangeRate: BaseOneRateSchema,
+  ResultingAmount: ActiveCurrencyAndAmountSchema,
+});
+
+export const AmountAndDirection44Schema = z.strictObject({
+  Amount: ActiveOrHistoricCurrencyAndAmountSchema,
+  CreditDebitIndicator: CreditDebitCodeSchema.optional(),
+  OriginalCurrencyAndOrderedAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
+  ForeignExchangeDetails: ForeignExchangeTerms23Schema.optional(),
+});
+
 export const AmountAndDirection5Schema = z.strictObject({
   Amount: ActiveCurrencyAndAmountSchema,
   CreditDebit: CreditDebitCodeSchema.optional(),
+});
+
+export const AmountAndDirection51Schema = z.strictObject({
+  Amount: ActiveCurrencyAndAmountSchema,
+  CreditDebitIndicator: CreditDebitCodeSchema,
+  OriginalCurrencyAndOrderedAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
+});
+
+export const AmountAndDirection55Schema = z.strictObject({
+  Amount: RestrictedFINActiveOrHistoricCurrencyAndAmountSchema,
+  CreditDebitIndicator: CreditDebitCodeSchema.optional(),
+  OriginalCurrencyAndOrderedAmount: RestrictedFINActiveOrHistoricCurrencyAndAmountSchema.optional(),
+  ForeignExchangeDetails: ForeignExchangeTerms23Schema.optional(),
+});
+
+export const AmountAndDirection59Schema = z.strictObject({
+  Amount: RestrictedFINActiveOrHistoricCurrencyAndAmountSchema,
+  CreditDebitIndicator: CreditDebitCodeSchema.optional(),
+});
+
+export const AmountAndDirection6Schema = z.strictObject({
+  Amount: ActiveOrHistoricCurrencyAndAmountSchema,
+  Sign: PlusOrMinusIndicatorSchema,
 });
 
 export const GenericIdentification37Schema = z.strictObject({
@@ -2156,7 +2406,116 @@ export const Authorisation2Schema = z.strictObject({
   MaximumAmountByBulkSubmission: FixedAmountOrUnlimited1ChoiceSchema.optional(),
 });
 
+export const ShortLong1CodeSchema = z.enum(["SHOR", "LONG"]);
+
+export const Max30DecimalNumberSchema = decimalType({totalDigits: 30, fractionDigits: 29});
+
+export const FinancialInstrumentQuantity33ChoiceSchema = choiceOf({
+  Unit: DecimalNumberSchema,
+  FaceAmount: ImpliedCurrencyAndAmountSchema,
+  AmortisedValue: ImpliedCurrencyAndAmountSchema,
+  DigitalTokenUnit: Max30DecimalNumberSchema,
+});
+
+export const OriginalAndCurrentQuantities1Schema = z.strictObject({
+  FaceAmount: ImpliedCurrencyAndAmountSchema,
+  AmortisedValue: ImpliedCurrencyAndAmountSchema,
+});
+
+export const Quantity51ChoiceSchema = choiceOf({
+  Quantity: FinancialInstrumentQuantity33ChoiceSchema,
+  OriginalAndCurrentFace: OriginalAndCurrentQuantities1Schema,
+});
+
+export const GenericIdentification56Schema = z.strictObject({
+  Identification: Exact4AlphaNumericTextSchema,
+  Issuer: Max35TextSchema,
+  SchemeName: Max35TextSchema.optional(),
+  Balance: DecimalNumberSchema,
+});
+
+export const BalanceQuantity13ChoiceSchema = choiceOf({
+  Quantity: Quantity51ChoiceSchema,
+  Proprietary: GenericIdentification56Schema,
+});
+
+export const Balance16Schema = z.strictObject({
+  ShortLongIndicator: ShortLong1CodeSchema.optional(),
+  Quantity: BalanceQuantity13ChoiceSchema,
+});
+
+export const Balance17Schema = z.strictObject({
+  ShortLongIndicator: ShortLong1CodeSchema,
+  Quantity: BalanceQuantity13ChoiceSchema,
+});
+
+export const RestrictedFINDecimalNumberSchema = decimalType({totalDigits: 14, fractionDigits: 14});
+
+export const RestrictedFINImpliedCurrencyAndAmountSchema = decimalType({totalDigits: 14, fractionDigits: 5, minInclusive: 0});
+
+export const FinancialInstrumentQuantity36ChoiceSchema = choiceOf({
+  Unit: RestrictedFINDecimalNumberSchema,
+  FaceAmount: RestrictedFINImpliedCurrencyAndAmountSchema,
+  AmortisedValue: RestrictedFINImpliedCurrencyAndAmountSchema,
+  DigitalTokenUnit: Max30DecimalNumberSchema,
+});
+
+export const OriginalAndCurrentQuantities4Schema = z.strictObject({
+  FaceAmount: RestrictedFINImpliedCurrencyAndAmountSchema,
+  AmortisedValue: RestrictedFINImpliedCurrencyAndAmountSchema,
+});
+
+export const Quantity54ChoiceSchema = choiceOf({
+  Quantity: FinancialInstrumentQuantity36ChoiceSchema,
+  OriginalAndCurrentFace: OriginalAndCurrentQuantities4Schema,
+});
+
+export const GenericIdentification144Schema = z.strictObject({
+  Identification: Exact4AlphaNumericTextSchema,
+  Issuer: Max4AlphaNumericTextSchema,
+  SchemeName: Max4AlphaNumericTextSchema.optional(),
+  Balance: RestrictedFINDecimalNumberSchema,
+});
+
+export const BalanceQuantity15ChoiceSchema = choiceOf({
+  Quantity: Quantity54ChoiceSchema,
+  Proprietary: GenericIdentification144Schema,
+});
+
+export const Balance22Schema = z.strictObject({
+  ShortLongIndicator: ShortLong1CodeSchema,
+  Quantity: BalanceQuantity15ChoiceSchema,
+});
+
+export const Balance23Schema = z.strictObject({
+  ShortLongIndicator: ShortLong1CodeSchema.optional(),
+  Quantity: BalanceQuantity15ChoiceSchema,
+});
+
+export const BalanceAmounts3Schema = z.strictObject({
+  HoldingValue: AmountAndDirection6Schema.optional(),
+  PreviousHoldingValue: AmountAndDirection6Schema.optional(),
+  BookValue: AmountAndDirection6Schema.optional(),
+  EligibleCollateralValue: AmountAndDirection6Schema.optional(),
+  AccruedInterestAmount: AmountAndDirection6Schema.optional(),
+});
+
 export const BalanceCounterparty1CodeSchema = z.enum(["BILA", "MULT"]);
+
+export const BalanceQuantity14ChoiceSchema = choiceOf({
+  Quantity: FinancialInstrumentQuantity33ChoiceSchema,
+  Proprietary: GenericIdentification56Schema,
+});
+
+export const BalanceQuantity17ChoiceSchema = choiceOf({
+  Quantity: FinancialInstrumentQuantity36ChoiceSchema,
+  Proprietary: GenericIdentification144Schema,
+});
+
+export const BalanceQuantity1ChoiceSchema = choiceOf({
+  Quantity: FinancialInstrumentQuantityChoiceSchema,
+  QuantityAsDSS: GenericIdentification6Schema,
+});
 
 export const ExternalBalanceSubType1CodeSchema = textType({min: 1, max: 4});
 
@@ -2622,6 +2981,16 @@ export const BankTransactionCodeStructure4Schema = z.strictObject({
   Proprietary: ProprietaryBankTransactionCodeStructure1Schema.optional(),
 });
 
+export const PartyIdentification15Schema = z.strictObject({
+  Country: CountryCodeSchema.optional(),
+  Identification: Max35TextSchema,
+});
+
+export const BasicCollateralValuation1DetailsSchema = z.strictObject({
+  ValuationHaircut: PercentageRateSchema,
+  HaircutSource: PartyIdentification15Schema.optional(),
+});
+
 export const BatchBookingIndicatorSchema = indicator;
 
 export const Max15NumericTextSchema = textType({pattern: "[0-9]{1,15}"});
@@ -2635,6 +3004,78 @@ export const BatchInformation2Schema = z.strictObject({
 });
 
 export const BelgianIdentifierSchema = textType({});
+
+export const BeneficialOwnership4ChoiceSchema = choiceOf({
+  Indicator: YesNoIndicatorSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const BeneficialOwnership5ChoiceSchema = choiceOf({
+  Indicator: YesNoIndicatorSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const PurposeCode7ChoiceSchema = choiceOf({
+  Code: SecuritiesAccountPurposeType1CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const BlockChainAddressWallet1Schema = z.strictObject({
+  Identification: Max140TextSchema,
+  Type: PurposeCode7ChoiceSchema.optional(),
+  Name: Max70TextSchema.optional(),
+  Designation: Max35TextSchema.optional(),
+});
+
+export const PurposeCode8ChoiceSchema = choiceOf({
+  Code: SecuritiesAccountPurposeType1CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const RestrictedFINXMax70TextSchema = textType({min: 1, max: 70, pattern: "[0-9a-zA-Z/\\-\\?:\\(\\)\\.\\n\\r,'\\+ ]{1,70}"});
+
+export const BlockChainAddressWallet10Schema = z.strictObject({
+  Identification: RestrictedFINXMax140TextSchema,
+  Type: PurposeCode8ChoiceSchema.optional(),
+  Name: RestrictedFINXMax70TextSchema.optional(),
+  Designation: RestrictedFINXMax35TextSchema.optional(),
+});
+
+export const BlockChainAddressWallet2Schema = z.strictObject({
+  Identification: Max140TextSchema,
+  Type: PurposeCode7ChoiceSchema.optional(),
+  Name: Max70TextSchema.optional(),
+});
+
+export const BlockChainAddressWallet3Schema = z.strictObject({
+  Identification: Max140TextSchema,
+  Type: GenericIdentification30Schema.optional(),
+  Name: Max70TextSchema.optional(),
+});
+
+export const BlockChainAddressWallet7Schema = z.strictObject({
+  Identification: RestrictedFINXMax140TextSchema,
+  Type: GenericIdentification47Schema.optional(),
+  Name: RestrictedFINXMax70TextSchema.optional(),
+});
+
+export const BlockChainAddressWallet9Schema = z.strictObject({
+  Identification: RestrictedFINXMax140TextSchema,
+  Type: PurposeCode8ChoiceSchema.optional(),
+  Name: RestrictedFINXMax70TextSchema.optional(),
+});
+
+export const BlockTrade1CodeSchema = z.enum(["BLPA", "BLCH"]);
+
+export const BlockTrade4ChoiceSchema = choiceOf({
+  Code: BlockTrade1CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const BlockTrade5ChoiceSchema = choiceOf({
+  Code: BlockTrade1CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
 
 export const Holding1CodeSchema = z.enum(["CERT", "NPRH", "PRTH"]);
 
@@ -2823,9 +3264,20 @@ export const BreakdownByUserDefinedParameter3Schema = z.strictObject({
   NetCashForecast: z.array(NetCashForecast4Schema).optional(),
 });
 
+export const CFIOct2015IdentifierSchema = textType({pattern: "[A-Z]{6,6}"});
+
 export const CSCManagement1CodeSchema = z.enum(["PRST", "BYPS", "UNRD", "NCSC"]);
 
 export const CUSIPIdentifierSchema = textType({});
+
+export const CancellationProcessingStatus1CodeSchema = z.enum(["CAND", "CANP", "DEND", "EXCH", "INTE", "PACK", "PARF", "REJT", "REPR"]);
+
+export const CancellationProcessingStatus3CodeSchema = z.enum(["CANP", "REJT", "REPR", "PACK", "DEND", "CAND"]);
+
+export const CancellationProcessingStatus9ChoiceSchema = choiceOf({
+  Code: CancellationProcessingStatus3CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
 
 export const CancelledStatusReason5CodeSchema = z.enum(["CANI", "OTHR"]);
 
@@ -2844,6 +3296,28 @@ export const CancelledStatusReason13CodeSchema = z.enum(["CANI", "CANS", "CSUB",
 export const CancellationReason19ChoiceSchema = choiceOf({
   Code: CancelledStatusReason13CodeSchema,
   Proprietary: GenericIdentification30Schema,
+});
+
+export const CancelledStatusReason16CodeSchema = z.enum(["SCEX", "OTHR", "CXLR", "BYIY", "CTHP", "CANZ", "CANT", "CSUB", "CANS", "CANI", "CORP"]);
+
+export const CancellationReason36ChoiceSchema = choiceOf({
+  Code: CancelledStatusReason16CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const CancellationReason22Schema = z.strictObject({
+  Code: CancellationReason36ChoiceSchema,
+  AdditionalReasonInformation: Max210TextSchema.optional(),
+});
+
+export const CancellationReason37ChoiceSchema = choiceOf({
+  Code: CancelledStatusReason16CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const CancellationReason24Schema = z.strictObject({
+  Code: CancellationReason37ChoiceSchema,
+  AdditionalReasonInformation: RestrictedFINXMax210TextSchema.optional(),
 });
 
 export const ExternalCancellationReason1CodeSchema = textType({min: 1, max: 4});
@@ -2867,6 +3341,18 @@ export const CancellationStatus15ChoiceSchema = choiceOf({
   NoSpecifiedReason: NoReasonCodeSchema,
   Reason: CancellationReason10Schema,
 });
+
+export const CancellationStatus24ChoiceSchema = choiceOf({
+  NoSpecifiedReason: NoReasonCodeSchema,
+  Reason: CancellationReason22Schema,
+});
+
+export const CancellationStatus25ChoiceSchema = choiceOf({
+  NoSpecifiedReason: NoReasonCodeSchema,
+  Reason: CancellationReason24Schema,
+});
+
+export const CancelledStatusReason12CodeSchema = z.enum(["CANI", "CANS", "CSUB", "CXLR", "CANT", "CANZ", "CORP", "SCEX", "OTHR", "CANO", "CREG"]);
 
 export const CardPaymentServiceType2CodeSchema = z.enum(["AGGR", "DCCV", "GRTT", "INSP", "LOYT", "NRES", "PUCO", "RECP", "SOAF", "UNAF", "VCAU"]);
 
@@ -3099,6 +3585,11 @@ export const CashAccount43Schema = z.strictObject({
   Servicer: BranchAndFinancialInstitutionIdentification8Schema.optional(),
 });
 
+export const CashAccountIdentification5ChoiceSchema = choiceOf({
+  IBAN: IBAN2007IdentifierSchema,
+  Proprietary: Max34TextSchema,
+});
+
 export const Max15PlusSignedNumericTextSchema = textType({pattern: "[\\+]{0,1}[0-9]{1,15}"});
 
 export const CashAvailabilityDate1ChoiceSchema = choiceOf({
@@ -3296,9 +3787,41 @@ export const CashSettlement3Schema = z.strictObject({
   OtherCashSettlementDetails: z.array(PaymentInstrument17Schema).optional(),
 });
 
+export const CashSettlementSystem2CodeSchema = z.enum(["GROS", "NETS"]);
+
+export const CashSettlementSystem3CodeSchema = z.enum(["DCSS", "GROS", "NETS"]);
+
+export const CashSettlementSystem5ChoiceSchema = choiceOf({
+  Code: CashSettlementSystem2CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const CashSettlementSystem6ChoiceSchema = choiceOf({
+  Code: CashSettlementSystem3CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const DTI2024IdentifierSchema = textType({pattern: "[1-9B-DF-HJ-NP-TV-XZ][0-9B-DF-HJ-NP-TV-XZ]{8,8}"});
+
+export const CashSettlementSystemPlace1ChoiceSchema = choiceOf({
+  DigitalLedgerIdentification: DTI2024IdentifierSchema,
+  AnyBIC: AnyBICDec2014IdentifierSchema,
+  LEI: LEIIdentifierSchema,
+});
+
 export const CashSubBalanceTypeAndQuantityBreakdown3Schema = z.strictObject({
   Type: CashBalanceType3ChoiceSchema,
   QuantityBreakdown: z.array(AmountAndQuantityBreakdown1Schema).optional(),
+});
+
+export const CentralCounterPartyEligibility4ChoiceSchema = choiceOf({
+  Indicator: YesNoIndicatorSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const CentralCounterPartyEligibility5ChoiceSchema = choiceOf({
+  Indicator: YesNoIndicatorSchema,
+  Proprietary: GenericIdentification47Schema,
 });
 
 export const CommunicationMethod3CodeSchema = z.enum(["EMAL", "FAXI", "POST", "PHON", "FILE", "ONLI"]);
@@ -3357,6 +3880,24 @@ export const ChargesBreakdown1Schema = z.strictObject({
 
 export const ChequePartyRole1CodeSchema = z.enum(["DWEA", "DWRA", "PAYE", "PAYR"]);
 
+export const ClassificationType32ChoiceSchema = choiceOf({
+  ClassificationFinancialInstrument: CFIOct2015IdentifierSchema,
+  AlternateClassification: GenericIdentification36Schema,
+});
+
+export const RestrictedFINXMax30TextSchema = textType({min: 1, max: 30, pattern: "([0-9a-zA-Z\\-\\?:\\(\\)\\.,'\\+ ]([0-9a-zA-Z\\-\\?:\\(\\)\\.,'\\+ ]*(/[0-9a-zA-Z\\-\\?:\\(\\)\\.,'\\+ ])?)*)"});
+
+export const GenericIdentification86Schema = z.strictObject({
+  Identification: RestrictedFINXMax30TextSchema,
+  Issuer: Max4AlphaNumericTextSchema,
+  SchemeName: Max4AlphaNumericTextSchema.optional(),
+});
+
+export const ClassificationType33ChoiceSchema = choiceOf({
+  ClassificationFinancialInstrument: CFIOct2015IdentifierSchema,
+  AlternateClassification: GenericIdentification86Schema,
+});
+
 export const ClearingChannel2CodeSchema = z.enum(["RTGS", "RTNS", "MPNS", "BOOK"]);
 
 export const ExternalCashClearingSystem1CodeSchema = textType({min: 1, max: 3});
@@ -3378,26 +3919,6 @@ export const CodeOrProprietary1ChoiceSchema = choiceOf({
 });
 
 export const Collateral1CodeSchema = z.enum(["COLL", "NCOL"]);
-
-export const StructuredLongPostalAddress1Schema = z.strictObject({
-  BuildingName: Max35TextSchema.optional(),
-  StreetName: Max35TextSchema.optional(),
-  StreetBuildingIdentification: Max35TextSchema.optional(),
-  Floor: Max16TextSchema.optional(),
-  TownName: Max35TextSchema,
-  DistrictName: Max35TextSchema.optional(),
-  RegionIdentification: Max35TextSchema.optional(),
-  State: Max35TextSchema.optional(),
-  CountyIdentification: Max35TextSchema.optional(),
-  Country: CountryCodeSchema,
-  PostCodeIdentification: Max16TextSchema,
-  PostOfficeBox: Max16TextSchema.optional(),
-});
-
-export const LongPostalAddress1ChoiceSchema = choiceOf({
-  Unstructured: Max140TextSchema,
-  Structured: StructuredLongPostalAddress1Schema,
-});
 
 export const CommunicationAddress8Schema = z.strictObject({
   PostalAddress: LongPostalAddress1ChoiceSchema,
@@ -3499,6 +4020,42 @@ export const CorporateAction82Schema = z.strictObject({
   CorporateActionEventIdentification: Max35TextSchema,
   OfficialCorporateActionEventIdentification: Max35TextSchema.optional(),
 });
+
+export const CorporateActionEventProcessingStatus1CodeSchema = z.enum(["COMP", "PEND", "RECD"]);
+
+export const CorporateActionEventStage2CodeSchema = z.enum(["PWAL", "SUAP", "APPD", "UNAC", "WHOU", "CLDE", "LAPS"]);
+
+export const CorporateActionEventType33CodeSchema = z.enum(["ACTV", "ATTI", "BRUP", "DFLT", "BONU", "EXRI", "CAPD", "CAPG", "CAPI", "DRCA", "DVCA", "CHAN", "COOP", "CLSA", "CONS", "CONV", "CREV", "DECR", "DETI", "DSCL", "DVOP", "DRIP", "DRAW", "DTCH", "EXOF", "REDM", "MCAL", "INCR", "PPMT", "INTR", "RHDI", "LIQU", "EXTM", "MRGR", "NOOF", "CERT", "ODLT", "OTHR", "PARI", "PCAL", "PRED", "PINK", "PLAC", "PDEF", "PRIO", "BPUT", "REDO", "REMK", "BIDS", "SPLR", "RHTS", "DVSC", "SHPR", "SMAL", "SOFF", "DVSE", "SPLF", "TREC", "TEND", "DLST", "SUSP", "EXWA", "WTRC", "WRTH", "ACCU", "MTNG", "INFO", "TNDP"]);
+
+export const CorporateActionEventType101ChoiceSchema = choiceOf({
+  Code: CorporateActionEventType33CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const CorporateActionEventType38CodeSchema = z.enum(["ACTV", "ATTI", "BRUP", "DFLT", "BONU", "EXRI", "CAPD", "CAPG", "CAPI", "DRCA", "DVCA", "CHAN", "COOP", "CLSA", "CONS", "CONV", "CREV", "DECR", "DETI", "DSCL", "DVOP", "DRIP", "DRAW", "DTCH", "EXOF", "REDM", "MCAL", "INCR", "PPMT", "INTR", "RHDI", "LIQU", "EXTM", "MRGR", "NOOF", "CERT", "ODLT", "OTHR", "PARI", "PCAL", "PRED", "PINK", "PLAC", "PDEF", "PRIO", "BPUT", "REDO", "REMK", "BIDS", "SPLR", "RHTS", "DVSC", "SHPR", "SMAL", "SOFF", "DVSE", "SPLF", "TREC", "TEND", "DLST", "SUSP", "EXWA", "WTRC", "WRTH", "ACCU", "MTNG", "INFO", "TNDP", "RCLA"]);
+
+export const CorporateActionEventType110ChoiceSchema = choiceOf({
+  Code: CorporateActionEventType38CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const CorporateActionEventType1CodeSchema = z.enum(["DRIP", "CAPG", "DVCA", "DVOP", "DVSE", "LIQU", "MRGR", "NAME", "SOFF", "SPLF", "SPLR", "TEND", "BONU", "RHDI", "EXRI", "CHAN", "REDO", "EXOP", "EXOF", "DECR"]);
+
+export const CorporateActionEventType24CodeSchema = z.enum(["ACTV", "ATTI", "BRUP", "DFLT", "BONU", "EXRI", "CAPD", "CAPG", "CAPI", "DRCA", "DVCA", "CHAN", "COOP", "CLSA", "CONS", "CONV", "CREV", "DECR", "DETI", "DSCL", "DVOP", "DRIP", "DRAW", "DTCH", "EXOF", "REDM", "MCAL", "INCR", "PPMT", "INTR", "PRII", "RHDI", "LIQU", "EXTM", "MRGR", "NOOF", "CERT", "ODLT", "OTHR", "PARI", "PCAL", "PRED", "PINK", "PLAC", "PDEF", "PRIO", "BPUT", "REDO", "REMK", "BIDS", "SPLR", "RHTS", "DVSC", "SHPR", "SMAL", "SOFF", "DVSE", "SPLF", "TREC", "TEND", "DLST", "SUSP", "EXWA", "WTRC", "WRTH", "ACCU", "MTNG", "INFO"]);
+
+export const CorporateActionEventType28CodeSchema = z.enum(["ACTV", "ATTI", "BRUP", "DFLT", "BONU", "EXRI", "CAPD", "CAPG", "CAPI", "DRCA", "DVCA", "CHAN", "COOP", "CLSA", "CONS", "CONV", "CREV", "DECR", "DETI", "DSCL", "DVOP", "DRIP", "DRAW", "DTCH", "EXOF", "REDM", "MCAL", "INCR", "PPMT", "INTR", "PRII", "RHDI", "LIQU", "EXTM", "MRGR", "NOOF", "CERT", "ODLT", "OTHR", "PARI", "PCAL", "PRED", "PINK", "PLAC", "PDEF", "PRIO", "BPUT", "REDO", "REMK", "BIDS", "SPLR", "RHTS", "DVSC", "SHPR", "SMAL", "SOFF", "DVSE", "SPLF", "TREC", "TEND", "DLST", "SUSP", "EXWA", "WTRC", "WRTH", "ACCU", "MTNG", "INFO", "TNDP"]);
+
+export const CorporateActionEventType56ChoiceSchema = choiceOf({
+  Code: CorporateActionEventType24CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const CorporateActionEventType73ChoiceSchema = choiceOf({
+  Code: CorporateActionEventType28CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const CorporateActionOption5CodeSchema = z.enum(["CASH", "SECU"]);
 
 export const MandateClassification1CodeSchema = z.enum(["FIXE", "USGB", "VARI"]);
 
@@ -3959,6 +4516,27 @@ export const DateAndDateTimeSearch5ChoiceSchema = choiceOf({
   DateTime: DateTimeSearch2ChoiceSchema,
 });
 
+export const Period2Schema = z.strictObject({
+  FromDate: ISODateSchema,
+  ToDate: ISODateSchema,
+});
+
+export const Period7ChoiceSchema = choiceOf({
+  FromDateTimeToDateTime: DateTimePeriod1Schema,
+  FromDateToDate: Period2Schema,
+});
+
+export const DateAndPeriod3ChoiceSchema = choiceOf({
+  StatementDate: DateAndDateTime2ChoiceSchema,
+  StatementPeriod: Period7ChoiceSchema,
+});
+
+export const DatePeriod1ChoiceSchema = choiceOf({
+  Date: ISODateSchema,
+  DateMonth: ISOYearMonthSchema,
+  FromDateToDate: Period2Schema,
+});
+
 export const DatePeriod2ChoiceSchema = choiceOf({
   FromDate: ISODateSchema,
   ToDate: ISODateSchema,
@@ -3975,11 +4553,22 @@ export const DatePeriod5Schema = z.strictObject({
   RequestedValueDate: ISODateSchema,
 });
 
+export const DatePeriodDetailsSchema = z.strictObject({
+  FromDate: ISODateSchema,
+  ToDate: ISODateSchema,
+});
+
 export const DateTimePeriod1ChoiceSchema = choiceOf({
   FromDateTime: ISODateTimeSchema,
   ToDateTime: ISODateTimeSchema,
   DateTimeRange: DateTimePeriod1Schema,
 });
+
+export const DateType3CodeSchema = z.enum(["VARI"]);
+
+export const DateType4CodeSchema = z.enum(["OPEN", "UKWN"]);
+
+export const DateType5CodeSchema = z.enum(["OPEN"]);
 
 export const DeMinimusApplicable1Schema = z.strictObject({
   NewIssuePermission: YesNoIndicatorSchema,
@@ -3995,6 +4584,8 @@ export const DeMinimus1ChoiceSchema = choiceOf({
   DeMinimusNotApplicable: DeMinimusNotApplicable1Schema,
 });
 
+export const DeliveryReceiptType2CodeSchema = z.enum(["FREE", "APMT"]);
+
 export const DeniedReason4CodeSchema = z.enum(["ADEA", "DCAN", "DPRG", "DREP", "DSET", "LATE", "OTHR", "CDRG", "CDCY", "CDRE"]);
 
 export const DeniedReason16ChoiceSchema = choiceOf({
@@ -4007,9 +4598,40 @@ export const DeniedReason11Schema = z.strictObject({
   AdditionalReasonInformation: Max210TextSchema.optional(),
 });
 
+export const DeniedReason6CodeSchema = z.enum(["ADEA", "CDCY", "CDRE", "DCAN", "DSET", "DPRG", "DREP", "LATE", "OTHR", "CDRG"]);
+
+export const DeniedReason7CodeSchema = z.enum(["ADEA", "DCAL", "CDCY", "CDRE", "CDRG", "DCAN", "DPRG", "DFOR", "DREP", "DSET", "IPNC", "LATE", "OTHR"]);
+
 export const DeniedStatus16ChoiceSchema = choiceOf({
   NoSpecifiedReason: NoReasonCodeSchema,
   Reason: DeniedReason11Schema,
+});
+
+export const ISINOct2015IdentifierSchema = textType({pattern: "[A-Z]{2,2}[A-Z0-9]{9,9}[0-9]{1,1}"});
+
+export const ExternalFinancialInstrumentIdentificationType1CodeSchema = textType({min: 1, max: 4});
+
+export const IdentificationSource3ChoiceSchema = choiceOf({
+  Code: ExternalFinancialInstrumentIdentificationType1CodeSchema,
+  Proprietary: Max35TextSchema,
+});
+
+export const OtherIdentification1Schema = z.strictObject({
+  Identification: Max35TextSchema,
+  Suffix: Max16TextSchema.optional(),
+  Type: IdentificationSource3ChoiceSchema,
+});
+
+export const SecurityIdentification19Schema = z.strictObject({
+  ISIN: ISINOct2015IdentifierSchema.optional(),
+  OtherIdentification: z.array(OtherIdentification1Schema).optional(),
+  Description: Max140TextSchema.optional(),
+});
+
+export const DigitalPaymentSettlement2Schema = z.strictObject({
+  FinancialInstrumentIdentification: SecurityIdentification19Schema,
+  ElectronicMoneyTokenSettlementQuantity: Max30DecimalNumberSchema,
+  CashSettlementSystemPlace: CashSettlementSystemPlace1ChoiceSchema.optional(),
 });
 
 export const DirectDebitInstructionDetails3Schema = z.strictObject({
@@ -4094,12 +4716,6 @@ export const Document15Schema = z.strictObject({
   Enclosure: Max10MbBinarySchema,
 });
 
-export const PartyIdentification120ChoiceSchema = choiceOf({
-  AnyBIC: AnyBICDec2014IdentifierSchema,
-  ProprietaryIdentification: GenericIdentification36Schema,
-  NameAndAddress: NameAndAddress5Schema,
-});
-
 export const PartyIdentification136Schema = z.strictObject({
   Identification: PartyIdentification120ChoiceSchema,
   LEI: LEIIdentifierSchema.optional(),
@@ -4119,6 +4735,12 @@ export const DocumentNumber5ChoiceSchema = choiceOf({
   ShortNumber: Exact3NumericTextSchema,
   LongNumber: ISO20022MessageIdentificationTextSchema,
   ProprietaryNumber: GenericIdentification36Schema,
+});
+
+export const DocumentNumber6ChoiceSchema = choiceOf({
+  ShortNumber: Exact3NumericTextSchema,
+  LongNumber: ISO20022MessageIdentificationTextSchema,
+  ProprietaryNumber: GenericIdentification86Schema,
 });
 
 export const DocumentToSend4Schema = z.strictObject({
@@ -4272,20 +4894,6 @@ export const TransactionPrice4ChoiceSchema = choiceOf({
   Proprietary: ProprietaryPrice2Schema,
 });
 
-export const Max30DecimalNumberSchema = decimalType({totalDigits: 30, fractionDigits: 29});
-
-export const FinancialInstrumentQuantity33ChoiceSchema = choiceOf({
-  Unit: DecimalNumberSchema,
-  FaceAmount: ImpliedCurrencyAndAmountSchema,
-  AmortisedValue: ImpliedCurrencyAndAmountSchema,
-  DigitalTokenUnit: Max30DecimalNumberSchema,
-});
-
-export const OriginalAndCurrentQuantities1Schema = z.strictObject({
-  FaceAmount: ImpliedCurrencyAndAmountSchema,
-  AmortisedValue: ImpliedCurrencyAndAmountSchema,
-});
-
 export const ProprietaryQuantity1Schema = z.strictObject({
   Type: Max35TextSchema,
   Quantity: Max35TextSchema,
@@ -4295,27 +4903,6 @@ export const TransactionQuantities4ChoiceSchema = choiceOf({
   Quantity: FinancialInstrumentQuantity33ChoiceSchema,
   OriginalAndCurrentFaceAmount: OriginalAndCurrentQuantities1Schema,
   Proprietary: ProprietaryQuantity1Schema,
-});
-
-export const ISINOct2015IdentifierSchema = textType({pattern: "[A-Z]{2,2}[A-Z0-9]{9,9}[0-9]{1,1}"});
-
-export const ExternalFinancialInstrumentIdentificationType1CodeSchema = textType({min: 1, max: 4});
-
-export const IdentificationSource3ChoiceSchema = choiceOf({
-  Code: ExternalFinancialInstrumentIdentificationType1CodeSchema,
-  Proprietary: Max35TextSchema,
-});
-
-export const OtherIdentification1Schema = z.strictObject({
-  Identification: Max35TextSchema,
-  Suffix: Max16TextSchema.optional(),
-  Type: IdentificationSource3ChoiceSchema,
-});
-
-export const SecurityIdentification19Schema = z.strictObject({
-  ISIN: ISINOct2015IdentifierSchema.optional(),
-  OtherIdentification: z.array(OtherIdentification1Schema).optional(),
-  Description: Max140TextSchema.optional(),
 });
 
 export const ExternalReturnReason1CodeSchema = textType({min: 1, max: 4});
@@ -4444,6 +5031,10 @@ export const EuroclearClearstreamIdentifierSchema = textType({min: 1, max: 12});
 
 export const EventFrequency10CodeSchema = z.enum(["DAIL", "ADHO"]);
 
+export const EventFrequency3CodeSchema = z.enum(["YEAR", "MNTH", "QUTR", "SEMI", "WEEK"]);
+
+export const EventFrequency4CodeSchema = z.enum(["YEAR", "ADHO", "MNTH", "DAIL", "INDA", "WEEK"]);
+
 export const EventFrequency7CodeSchema = z.enum(["YEAR", "ADHO", "MNTH", "DAIL", "INDA", "WEEK", "SEMI", "QUTR", "TOMN", "TOWK", "TWMN", "OVNG", "ONDE"]);
 
 export const EventFrequency8CodeSchema = z.enum(["ADHO", "YEAR", "DAIL", "FOMN", "TOMN", "TOWK", "TYEA", "INDA", "MNTH", "ONDE", "OVNG", "QUTR", "SEMI", "TWMN", "WEEK"]);
@@ -4477,6 +5068,20 @@ export const ISOTimeSchema = isoTime;
 export const ExecutionType1ChoiceSchema = choiceOf({
   Time: ISOTimeSchema,
   Event: EventType1ChoiceSchema,
+});
+
+export const ExposureType12CodeSchema = z.enum(["BFWD", "PAYM", "CCPC", "COMM", "CRDS", "CRTL", "CRSP", "CCIR", "CRPR", "EQPT", "EXTD", "EQUS", "EXPT", "FIXI", "FORX", "FORW", "FUTR", "OPTN", "LIQU", "OTCD", "REPO", "RVPO", "SLOA", "SBSC", "SCRP", "SLEB", "SHSL", "SCIR", "SCIE", "SWPT", "TBAS", "UDMS", "TRCP"]);
+
+export const ExposureType15CodeSchema = z.enum(["BFWD", "PAYM", "CCPC", "COMM", "CRDS", "CRTL", "CRSP", "CCIR", "CRPR", "EQPT", "EXTD", "EQUS", "EXPT", "FIXI", "FORX", "FORW", "FUTR", "OPTN", "LIQU", "OTCD", "REPO", "RVPO", "SLOA", "SBSC", "SCRP", "SLEB", "SHSL", "SCIR", "SCIE", "SWPT", "TBAS", "UDMS", "TRCP", "CBCO"]);
+
+export const ExposureType24ChoiceSchema = choiceOf({
+  Code: ExposureType12CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const ExposureType25ChoiceSchema = choiceOf({
+  Code: ExposureType15CodeSchema,
+  Proprietary: GenericIdentification30Schema,
 });
 
 export const Extension1Schema = z.strictObject({
@@ -4532,7 +5137,35 @@ export const ExternalSystemMemberType1CodeSchema = textType({min: 1, max: 4});
 
 export const ExternalTechnicalInputChannel1CodeSchema = textType({min: 1, max: 4});
 
+export const FailingReason5CodeSchema = z.enum(["AWMO", "BYIY", "CLAT", "ADEA", "CANR", "CAIS", "OBJT", "AWSH", "PHSE", "STCD", "DOCY", "MLAT", "DOCC", "BLOC", "CHAS", "NEWI", "CLAC", "MUNO", "GLOB", "PREA", "PART", "NOFX", "CMON", "YCOL", "COLL", "DEPO", "FLIM", "INCA", "LINK", "LACK", "LALO", "MONY", "NCON", "REFS", "SDUT", "BATC", "CYCL", "SBLO", "CPEC", "MINO", "IAAD", "OTHR", "PHCK", "BENO", "BOTH", "CLHT", "DENO", "DISA", "DKNY", "FROZ", "LAAW", "LATE", "LIQU", "PRCY", "REGT", "SETS", "CERT", "PRSY", "CDLR", "CSDH", "CVAL", "INBC", "PATD", "PREL"]);
+
+export const FailingReason18ChoiceSchema = choiceOf({
+  Code: FailingReason5CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const FailingReason13Schema = z.strictObject({
+  Code: FailingReason18ChoiceSchema,
+  AdditionalReasonInformation: Max210TextSchema.optional(),
+});
+
+export const FailingReason6CodeSchema = z.enum(["BLOC", "PART", "LINK", "LACK", "CYCL", "SBLO", "OTHR", "LATE", "CERT", "PRSY", "INBC"]);
+
+export const FailingReason20ChoiceSchema = choiceOf({
+  Code: FailingReason6CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const FailingReason15Schema = z.strictObject({
+  Code: FailingReason20ChoiceSchema,
+  AdditionalReasonInformation: Max210TextSchema.optional(),
+});
+
+export const FailingReason1CodeSchema = z.enum(["AWMO", "BYIY", "CLAT", "ADEA", "CANR", "CAIS", "OBJT", "AWSH", "PHSE", "STCD", "DOCY", "MLAT", "DOCC", "BLOC", "CHAS", "NEWI", "CLAC", "MUNO", "GLOB", "PREA", "PART", "NOFX", "CMON", "YCOL", "COLL", "DEPO", "FLIM", "INCA", "LINK", "LACK", "LALO", "MONY", "NCON", "REFS", "SDUT", "BATC", "CYCL", "SBLO", "CPEC", "MINO", "IAAD", "OTHR", "PHCK", "BENO", "BOTH", "CLHT", "DENO", "DISA", "DKNY", "FROZ", "LAAW", "LATE", "LIQU", "PRCY", "REGT", "SETS", "CERT", "PRSY"]);
+
 export const FailingReason3CodeSchema = z.enum(["AWMO", "BYIY", "CLAT", "ADEA", "CANR", "CAIS", "OBJT", "AWSH", "PHSE", "STCD", "DOCY", "MLAT", "DOCC", "BLOC", "CHAS", "NEWI", "CLAC", "MUNO", "GLOB", "PREA", "PART", "NOFX", "CMON", "YCOL", "COLL", "DEPO", "FLIM", "INCA", "LINK", "LACK", "LALO", "MONY", "NCON", "REFS", "SDUT", "BATC", "CYCL", "SBLO", "CPEC", "MINO", "IAAD", "OTHR", "PHCK", "BENO", "BOTH", "CLHT", "DENO", "DISA", "DKNY", "FROZ", "LAAW", "LATE", "LIQU", "PRCY", "REGT", "SETS", "CERT", "PRSY", "INBC"]);
+
+export const FailingReason4CodeSchema = z.enum(["AWMO", "BYIY", "CLAT", "ADEA", "CANR", "CAIS", "OBJT", "AWSH", "PHSE", "STCD", "DOCY", "MLAT", "DOCC", "BLOC", "CHAS", "NEWI", "CLAC", "MUNO", "GLOB", "PREA", "PART", "NOFX", "CMON", "YCOL", "COLL", "DEPO", "FLIM", "INCA", "LINK", "LACK", "LALO", "MONY", "NCON", "REFS", "SDUT", "BATC", "CYCL", "SBLO", "CPEC", "MINO", "IAAD", "OTHR", "PHCK", "BENO", "BOTH", "CLHT", "DENO", "DISA", "DKNY", "FROZ", "LAAW", "LATE", "LIQU", "PRCY", "REGT", "SETS", "CERT", "PRSY", "CDLR", "CSDH", "CVAL", "INBC", "PREL", "PATD"]);
 
 export const FailingReason7ChoiceSchema = choiceOf({
   Code: FailingReason3CodeSchema,
@@ -4542,6 +5175,16 @@ export const FailingReason7ChoiceSchema = choiceOf({
 export const FailingReason7Schema = z.strictObject({
   Code: FailingReason7ChoiceSchema,
   AdditionalReasonInformation: Max210TextSchema.optional(),
+});
+
+export const FailingStatus15ChoiceSchema = choiceOf({
+  NoSpecifiedReason: NoReasonCodeSchema,
+  Reason: FailingReason13Schema,
+});
+
+export const FailingStatus17ChoiceSchema = choiceOf({
+  NoSpecifiedReason: NoReasonCodeSchema,
+  Reason: FailingReason15Schema,
 });
 
 export const FailingStatus9ChoiceSchema = choiceOf({
@@ -4566,6 +5209,8 @@ export const FinancialInstitutionIdentification21Schema = z.strictObject({
   Other: GenericFinancialIdentification1Schema.optional(),
 });
 
+export const ISINIdentifierSchema = textType({pattern: "[A-Z0-9]{12,12}"});
+
 export const SEDOLIdentifierSchema = textType({});
 
 export const RICIdentifierSchema = textType({min: 1, max: 35});
@@ -4579,6 +5224,63 @@ export const WertpapierIdentifierSchema = textType({});
 export const ValorenIdentifierSchema = textType({});
 
 export const SicovamIdentifierSchema = textType({});
+
+export const SecurityIdentification3ChoiceSchema = choiceOf({
+  ISIN: ISINIdentifierSchema,
+  SEDOL: SEDOLIdentifierSchema,
+  CUSIP: CUSIPIdentifierSchema,
+  RIC: RICIdentifierSchema,
+  TickerSymbol: TickerIdentifierSchema,
+  Bloomberg: BloombergIdentifierSchema,
+  CTA: ConsolidatedTapeAssociationIdentifierSchema,
+  QUICK: QUICKIdentifierSchema,
+  Wertpapier: WertpapierIdentifierSchema,
+  Dutch: DutchIdentifierSchema,
+  Valoren: ValorenIdentifierSchema,
+  Sicovam: SicovamIdentifierSchema,
+  Belgian: BelgianIdentifierSchema,
+  Common: EuroclearClearstreamIdentifierSchema,
+  OtherProprietaryIdentification: AlternateSecurityIdentification1Schema,
+});
+
+export const FormOfSecurity1CodeSchema = z.enum(["BEAR", "REGD"]);
+
+export const FinancialInstrument13Schema = z.strictObject({
+  Identification: SecurityIdentification3ChoiceSchema,
+  Name: Max350TextSchema.optional(),
+  SupplementaryIdentification: Max35TextSchema.optional(),
+  ClassType: Max35TextSchema.optional(),
+  SecuritiesForm: FormOfSecurity1CodeSchema.optional(),
+  DistributionPolicy: DistributionPolicy1CodeSchema.optional(),
+});
+
+export const FinancialInstrument21Schema = z.strictObject({
+  ClassType: Max35TextSchema.optional(),
+  SecuritiesForm: FormOfSecurity1CodeSchema.optional(),
+  DistributionPolicy: DistributionPolicy1CodeSchema.optional(),
+  ProductGroup: Max140TextSchema.optional(),
+  UmbrellaName: Max35TextSchema.optional(),
+  BaseCurrency: ActiveCurrencyCodeSchema.optional(),
+  DenominationCurrency: ActiveCurrencyCodeSchema.optional(),
+  RequestedNAVCurrency: ActiveOrHistoricCurrencyCodeSchema.optional(),
+  DualFundIndicator: YesNoIndicatorSchema.optional(),
+  CountryOfDomicile: CountryCodeSchema.optional(),
+  RegisteredDistributionCountry: z.array(CountryCodeSchema).optional(),
+});
+
+export const FinancialInstrument22Schema = z.strictObject({
+  ClassType: Max35TextSchema.optional(),
+  SecuritiesForm: FormOfSecurity1CodeSchema.optional(),
+  DistributionPolicy: DistributionPolicy1CodeSchema.optional(),
+  ProductGroup: RestrictedFINXMax140TextSchema.optional(),
+  UmbrellaName: Max35TextSchema.optional(),
+  BaseCurrency: ActiveCurrencyCodeSchema.optional(),
+  DenominationCurrency: ActiveCurrencyCodeSchema.optional(),
+  RequestedNAVCurrency: ActiveOrHistoricCurrencyCodeSchema.optional(),
+  DualFundIndicator: YesNoIndicatorSchema.optional(),
+  CountryOfDomicile: CountryCodeSchema.optional(),
+  RegisteredDistributionCountry: z.array(CountryCodeSchema).optional(),
+});
 
 export const SecurityIdentification25ChoiceSchema = choiceOf({
   ISIN: ISINOct2015IdentifierSchema,
@@ -4597,8 +5299,6 @@ export const SecurityIdentification25ChoiceSchema = choiceOf({
   Common: EuroclearClearstreamIdentifierSchema,
   OtherProprietaryIdentification: AlternateSecurityIdentification7Schema,
 });
-
-export const FormOfSecurity1CodeSchema = z.enum(["BEAR", "REGD"]);
 
 export const ThirdPartyRights2Schema = z.strictObject({
   Type: Max35TextSchema,
@@ -4633,26 +5333,6 @@ export const FinancialInstrument87Schema = z.strictObject({
   OperationalStatus: OperationalStatus1CodeSchema.optional(),
 });
 
-export const ISINIdentifierSchema = textType({pattern: "[A-Z0-9]{12,12}"});
-
-export const SecurityIdentification3ChoiceSchema = choiceOf({
-  ISIN: ISINIdentifierSchema,
-  SEDOL: SEDOLIdentifierSchema,
-  CUSIP: CUSIPIdentifierSchema,
-  RIC: RICIdentifierSchema,
-  TickerSymbol: TickerIdentifierSchema,
-  Bloomberg: BloombergIdentifierSchema,
-  CTA: ConsolidatedTapeAssociationIdentifierSchema,
-  QUICK: QUICKIdentifierSchema,
-  Wertpapier: WertpapierIdentifierSchema,
-  Dutch: DutchIdentifierSchema,
-  Valoren: ValorenIdentifierSchema,
-  Sicovam: SicovamIdentifierSchema,
-  Belgian: BelgianIdentifierSchema,
-  Common: EuroclearClearstreamIdentifierSchema,
-  OtherProprietaryIdentification: AlternateSecurityIdentification1Schema,
-});
-
 export const FinancialInstrument9Schema = z.strictObject({
   Identification: SecurityIdentification3ChoiceSchema,
   Name: Max350TextSchema.optional(),
@@ -4662,6 +5342,428 @@ export const FinancialInstrument9Schema = z.strictObject({
   SecuritiesForm: FormOfSecurity1CodeSchema.optional(),
   DistributionPolicy: DistributionPolicy1CodeSchema.optional(),
   DualFundIndicator: YesNoIndicatorSchema,
+});
+
+export const MarketIdentification3ChoiceSchema = choiceOf({
+  MarketIdentifierCode: MICIdentifierSchema,
+  Description: Max35TextSchema,
+});
+
+export const InterestComputationMethod2CodeSchema = z.enum(["A001", "A002", "A003", "A004", "A005", "A006", "A007", "A008", "A009", "A010", "A011", "A012", "A013", "A014", "NARR"]);
+
+export const InterestComputationMethodFormat4ChoiceSchema = choiceOf({
+  Code: InterestComputationMethod2CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const FormOfSecurity6ChoiceSchema = choiceOf({
+  Code: FormOfSecurity1CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const Frequency23ChoiceSchema = choiceOf({
+  Code: EventFrequency3CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const SecuritiesPaymentStatus1CodeSchema = z.enum(["FULL", "NILL", "PART"]);
+
+export const SecuritiesPaymentStatus5ChoiceSchema = choiceOf({
+  Code: SecuritiesPaymentStatus1CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const OptionStyle2CodeSchema = z.enum(["AMER", "EURO"]);
+
+export const OptionStyle8ChoiceSchema = choiceOf({
+  Code: OptionStyle2CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const OptionType1CodeSchema = z.enum(["CALL", "PUTO"]);
+
+export const OptionType6ChoiceSchema = choiceOf({
+  Code: OptionType1CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const Number22ChoiceSchema = choiceOf({
+  Short: Exact3NumericTextSchema,
+  Long: GenericIdentification1Schema,
+});
+
+export const PriceType4ChoiceSchema = choiceOf({
+  Market: Price7Schema,
+  Indicative: Price7Schema,
+});
+
+export const FinancialInstrumentAttributes111Schema = z.strictObject({
+  PlaceOfListing: MarketIdentification3ChoiceSchema.optional(),
+  DayCountBasis: InterestComputationMethodFormat4ChoiceSchema.optional(),
+  RegistrationForm: FormOfSecurity6ChoiceSchema.optional(),
+  PaymentFrequency: Frequency23ChoiceSchema.optional(),
+  PaymentStatus: SecuritiesPaymentStatus5ChoiceSchema.optional(),
+  VariableRateChangeFrequency: Frequency23ChoiceSchema.optional(),
+  ClassificationType: ClassificationType32ChoiceSchema.optional(),
+  OptionStyle: OptionStyle8ChoiceSchema.optional(),
+  OptionType: OptionType6ChoiceSchema.optional(),
+  DenominationCurrency: ActiveOrHistoricCurrencyCodeSchema.optional(),
+  CouponDate: ISODateSchema.optional(),
+  ExpiryDate: ISODateSchema.optional(),
+  FloatingRateFixingDate: ISODateSchema.optional(),
+  MaturityDate: ISODateSchema.optional(),
+  IssueDate: ISODateSchema.optional(),
+  NextCallableDate: ISODateSchema.optional(),
+  PutableDate: ISODateSchema.optional(),
+  DatedDate: ISODateSchema.optional(),
+  FirstPaymentDate: ISODateSchema.optional(),
+  PreviousFactor: BaseOneRateSchema.optional(),
+  CurrentFactor: BaseOneRateSchema.optional(),
+  NextFactor: BaseOneRateSchema.optional(),
+  InterestRate: PercentageRateSchema.optional(),
+  YieldToMaturityRate: PercentageRateSchema.optional(),
+  NextInterestRate: PercentageRateSchema.optional(),
+  IndexRateBasis: PercentageRateSchema.optional(),
+  CouponAttachedNumber: Number22ChoiceSchema.optional(),
+  PoolNumber: GenericIdentification37Schema.optional(),
+  VariableRateIndicator: YesNoIndicatorSchema.optional(),
+  CallableIndicator: YesNoIndicatorSchema.optional(),
+  PutableIndicator: YesNoIndicatorSchema.optional(),
+  MarketOrIndicativePrice: PriceType4ChoiceSchema.optional(),
+  ExercisePrice: Price7Schema.optional(),
+  SubscriptionPrice: Price7Schema.optional(),
+  ConversionPrice: Price7Schema.optional(),
+  StrikePrice: Price7Schema.optional(),
+  MinimumNominalQuantity: FinancialInstrumentQuantity33ChoiceSchema.optional(),
+  ContractSize: FinancialInstrumentQuantity33ChoiceSchema.optional(),
+  UnderlyingFinancialInstrumentIdentification: z.array(SecurityIdentification19Schema).optional(),
+  FinancialInstrumentAttributeAdditionalDetails: Max350TextSchema.optional(),
+});
+
+export const QuantityBreakdown60Schema = z.strictObject({
+  LotNumber: GenericIdentification37Schema,
+  LotQuantity: FinancialInstrumentQuantity33ChoiceSchema.optional(),
+});
+
+export const FinancialInstrumentAttributes112Schema = z.strictObject({
+  PlaceOfListing: MarketIdentification3ChoiceSchema.optional(),
+  DayCountBasis: InterestComputationMethodFormat4ChoiceSchema.optional(),
+  RegistrationForm: FormOfSecurity6ChoiceSchema.optional(),
+  PaymentFrequency: Frequency23ChoiceSchema.optional(),
+  PaymentStatus: SecuritiesPaymentStatus5ChoiceSchema.optional(),
+  VariableRateChangeFrequency: Frequency23ChoiceSchema.optional(),
+  ClassificationType: ClassificationType32ChoiceSchema.optional(),
+  OptionStyle: OptionStyle8ChoiceSchema.optional(),
+  OptionType: OptionType6ChoiceSchema.optional(),
+  DenominationCurrency: ActiveOrHistoricCurrencyCodeSchema.optional(),
+  CouponDate: ISODateSchema.optional(),
+  ExpiryDate: ISODateSchema.optional(),
+  FloatingRateFixingDate: ISODateSchema.optional(),
+  MaturityDate: ISODateSchema.optional(),
+  IssueDate: ISODateSchema.optional(),
+  NextCallableDate: ISODateSchema.optional(),
+  PutableDate: ISODateSchema.optional(),
+  DatedDate: ISODateSchema.optional(),
+  FirstPaymentDate: ISODateSchema.optional(),
+  PreviousFactor: BaseOneRateSchema.optional(),
+  CurrentFactor: BaseOneRateSchema.optional(),
+  NextFactor: BaseOneRateSchema.optional(),
+  InterestRate: PercentageRateSchema.optional(),
+  YieldToMaturityRate: PercentageRateSchema.optional(),
+  NextInterestRate: PercentageRateSchema.optional(),
+  IndexRateBasis: PercentageRateSchema.optional(),
+  CouponAttachedNumber: Number22ChoiceSchema.optional(),
+  PoolNumber: GenericIdentification37Schema.optional(),
+  QuantityBreakdown: z.array(QuantityBreakdown60Schema).optional(),
+  VariableRateIndicator: YesNoIndicatorSchema.optional(),
+  CallableIndicator: YesNoIndicatorSchema.optional(),
+  PutableIndicator: YesNoIndicatorSchema.optional(),
+  MarketOrIndicativePrice: PriceType4ChoiceSchema.optional(),
+  ExercisePrice: Price7Schema.optional(),
+  SubscriptionPrice: Price7Schema.optional(),
+  ConversionPrice: Price7Schema.optional(),
+  StrikePrice: Price7Schema.optional(),
+  MinimumNominalQuantity: FinancialInstrumentQuantity33ChoiceSchema.optional(),
+  ContractSize: FinancialInstrumentQuantity33ChoiceSchema.optional(),
+  UnderlyingFinancialInstrumentIdentification: z.array(SecurityIdentification19Schema).optional(),
+  FinancialInstrumentAttributeAdditionalDetails: Max350TextSchema.optional(),
+});
+
+export const MarketIdentification4ChoiceSchema = choiceOf({
+  MarketIdentifierCode: MICIdentifierSchema,
+  Description: RestrictedFINXMax30TextSchema,
+});
+
+export const InterestComputationMethodFormat5ChoiceSchema = choiceOf({
+  Code: InterestComputationMethod2CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const FormOfSecurity7ChoiceSchema = choiceOf({
+  Code: FormOfSecurity1CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const Frequency27ChoiceSchema = choiceOf({
+  Code: EventFrequency3CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const SecuritiesPaymentStatus6ChoiceSchema = choiceOf({
+  Code: SecuritiesPaymentStatus1CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const OptionStyle9ChoiceSchema = choiceOf({
+  Code: OptionStyle2CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const OptionType7ChoiceSchema = choiceOf({
+  Code: OptionType1CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const GenericIdentification18Schema = z.strictObject({
+  Identification: RestrictedFINXMax30TextSchema,
+  SchemeName: Max4AlphaNumericTextSchema.optional(),
+  Issuer: Max4AlphaNumericTextSchema.optional(),
+});
+
+export const Number23ChoiceSchema = choiceOf({
+  Short: Exact3NumericTextSchema,
+  Long: GenericIdentification18Schema,
+});
+
+export const RestrictedFINMax30TextSchema = textType({min: 1, max: 30, pattern: "([^/]+/)+([^/]+)|([^/]*)"});
+
+export const RestrictedFINMax8TextSchema = textType({min: 1, max: 8, pattern: "([^/]+/)+([^/]+)|([^/]*)"});
+
+export const GenericIdentification39Schema = z.strictObject({
+  Identification: RestrictedFINMax30TextSchema,
+  Issuer: RestrictedFINMax8TextSchema.optional(),
+});
+
+export const QuantityBreakdown64Schema = z.strictObject({
+  LotNumber: GenericIdentification39Schema,
+  LotQuantity: FinancialInstrumentQuantity36ChoiceSchema.optional(),
+});
+
+export const RestrictedFINActiveOrHistoricCurrencyAnd13DecimalAmountSchema = z.strictObject({ Ccy: textType({ pattern: "[A-Z]{3,3}" }), Value: decimalType({ totalDigits: 14, fractionDigits: 13, minInclusive: 0 }) });
+
+export const PriceRateOrAmount1ChoiceSchema = choiceOf({
+  Rate: PercentageRateSchema,
+  Amount: RestrictedFINActiveOrHistoricCurrencyAnd13DecimalAmountSchema,
+});
+
+export const Price3Schema = z.strictObject({
+  Type: YieldedOrValueType1ChoiceSchema,
+  Value: PriceRateOrAmount1ChoiceSchema,
+});
+
+export const PriceType5ChoiceSchema = choiceOf({
+  Market: Price3Schema,
+  Indicative: Price3Schema,
+});
+
+export const RestrictedFINXMax31TextSchema = textType({min: 1, max: 31, pattern: "[0-9a-zA-Z/\\-\\?:\\(\\)\\.,'\\+ ]{1,31}"});
+
+export const OtherIdentification3Schema = z.strictObject({
+  Identification: RestrictedFINXMax31TextSchema,
+  Suffix: Max16TextSchema.optional(),
+  Type: IdentificationSource3ChoiceSchema,
+});
+
+export const SecurityIdentification32Schema = z.strictObject({
+  ISIN: ISINOct2015IdentifierSchema.optional(),
+  OtherIdentification: z.array(OtherIdentification3Schema).optional(),
+  Description: RestrictedFINXMax140TextSchema.optional(),
+});
+
+export const RestrictedFINXMax350TextSchema = textType({min: 1, max: 350, pattern: "[0-9a-zA-Z/\\-\\?:\\(\\)\\.\\n\\r,'\\+ ]{1,350}"});
+
+export const FinancialInstrumentAttributes119Schema = z.strictObject({
+  PlaceOfListing: MarketIdentification4ChoiceSchema.optional(),
+  DayCountBasis: InterestComputationMethodFormat5ChoiceSchema.optional(),
+  RegistrationForm: FormOfSecurity7ChoiceSchema.optional(),
+  PaymentFrequency: Frequency27ChoiceSchema.optional(),
+  PaymentStatus: SecuritiesPaymentStatus6ChoiceSchema.optional(),
+  VariableRateChangeFrequency: Frequency27ChoiceSchema.optional(),
+  ClassificationType: ClassificationType33ChoiceSchema.optional(),
+  OptionStyle: OptionStyle9ChoiceSchema.optional(),
+  OptionType: OptionType7ChoiceSchema.optional(),
+  DenominationCurrency: ActiveOrHistoricCurrencyCodeSchema.optional(),
+  CouponDate: ISODateSchema.optional(),
+  ExpiryDate: ISODateSchema.optional(),
+  FloatingRateFixingDate: ISODateSchema.optional(),
+  MaturityDate: ISODateSchema.optional(),
+  IssueDate: ISODateSchema.optional(),
+  NextCallableDate: ISODateSchema.optional(),
+  PutableDate: ISODateSchema.optional(),
+  DatedDate: ISODateSchema.optional(),
+  FirstPaymentDate: ISODateSchema.optional(),
+  PreviousFactor: BaseOneRateSchema.optional(),
+  CurrentFactor: BaseOneRateSchema.optional(),
+  NextFactor: BaseOneRateSchema.optional(),
+  InterestRate: PercentageRateSchema.optional(),
+  YieldToMaturityRate: PercentageRateSchema.optional(),
+  NextInterestRate: PercentageRateSchema.optional(),
+  IndexRateBasis: PercentageRateSchema.optional(),
+  CouponAttachedNumber: Number23ChoiceSchema.optional(),
+  PoolNumber: GenericIdentification39Schema.optional(),
+  QuantityBreakdown: z.array(QuantityBreakdown64Schema).optional(),
+  VariableRateIndicator: YesNoIndicatorSchema.optional(),
+  CallableIndicator: YesNoIndicatorSchema.optional(),
+  PutableIndicator: YesNoIndicatorSchema.optional(),
+  MarketOrIndicativePrice: PriceType5ChoiceSchema.optional(),
+  ExercisePrice: Price3Schema.optional(),
+  SubscriptionPrice: Price3Schema.optional(),
+  ConversionPrice: Price3Schema.optional(),
+  StrikePrice: Price3Schema.optional(),
+  MinimumNominalQuantity: FinancialInstrumentQuantity36ChoiceSchema.optional(),
+  ContractSize: FinancialInstrumentQuantity36ChoiceSchema.optional(),
+  UnderlyingFinancialInstrumentIdentification: z.array(SecurityIdentification32Schema).optional(),
+  FinancialInstrumentAttributeAdditionalDetails: RestrictedFINXMax350TextSchema.optional(),
+});
+
+export const RestrictedFINExact2TextSchema = textType({min: 2, max: 2, pattern: "XX|TS"});
+
+export const IdentificationSource4ChoiceSchema = choiceOf({
+  Code: ExternalFinancialInstrumentIdentificationType1CodeSchema,
+  Proprietary: RestrictedFINExact2TextSchema,
+});
+
+export const OtherIdentification2Schema = z.strictObject({
+  Identification: RestrictedFINXMax31TextSchema,
+  Suffix: Max16TextSchema.optional(),
+  Type: IdentificationSource4ChoiceSchema,
+});
+
+export const SecurityIdentification20Schema = z.strictObject({
+  ISIN: ISINOct2015IdentifierSchema.optional(),
+  OtherIdentification: z.array(OtherIdentification2Schema).optional(),
+  Description: RestrictedFINXMax140TextSchema.optional(),
+});
+
+export const FinancialInstrumentAttributes122Schema = z.strictObject({
+  PlaceOfListing: MarketIdentification4ChoiceSchema.optional(),
+  DayCountBasis: InterestComputationMethodFormat5ChoiceSchema.optional(),
+  RegistrationForm: FormOfSecurity7ChoiceSchema.optional(),
+  PaymentFrequency: Frequency27ChoiceSchema.optional(),
+  PaymentStatus: SecuritiesPaymentStatus6ChoiceSchema.optional(),
+  VariableRateChangeFrequency: Frequency27ChoiceSchema.optional(),
+  ClassificationType: ClassificationType33ChoiceSchema.optional(),
+  OptionStyle: OptionStyle9ChoiceSchema.optional(),
+  OptionType: OptionType7ChoiceSchema.optional(),
+  DenominationCurrency: ActiveOrHistoricCurrencyCodeSchema.optional(),
+  CouponDate: ISODateSchema.optional(),
+  ExpiryDate: ISODateSchema.optional(),
+  FloatingRateFixingDate: ISODateSchema.optional(),
+  MaturityDate: ISODateSchema.optional(),
+  IssueDate: ISODateSchema.optional(),
+  NextCallableDate: ISODateSchema.optional(),
+  PutableDate: ISODateSchema.optional(),
+  DatedDate: ISODateSchema.optional(),
+  FirstPaymentDate: ISODateSchema.optional(),
+  PreviousFactor: BaseOneRateSchema.optional(),
+  CurrentFactor: BaseOneRateSchema.optional(),
+  NextFactor: BaseOneRateSchema.optional(),
+  InterestRate: PercentageRateSchema.optional(),
+  YieldToMaturityRate: PercentageRateSchema.optional(),
+  NextInterestRate: PercentageRateSchema.optional(),
+  IndexRateBasis: PercentageRateSchema.optional(),
+  CouponAttachedNumber: Number23ChoiceSchema.optional(),
+  PoolNumber: GenericIdentification39Schema.optional(),
+  VariableRateIndicator: YesNoIndicatorSchema.optional(),
+  CallableIndicator: YesNoIndicatorSchema.optional(),
+  PutableIndicator: YesNoIndicatorSchema.optional(),
+  MarketOrIndicativePrice: PriceType5ChoiceSchema.optional(),
+  ExercisePrice: Price3Schema.optional(),
+  SubscriptionPrice: Price3Schema.optional(),
+  ConversionPrice: Price3Schema.optional(),
+  StrikePrice: Price3Schema.optional(),
+  MinimumNominalQuantity: FinancialInstrumentQuantity36ChoiceSchema.optional(),
+  ContractSize: FinancialInstrumentQuantity36ChoiceSchema.optional(),
+  UnderlyingFinancialInstrumentIdentification: z.array(SecurityIdentification20Schema).optional(),
+  FinancialInstrumentAttributeAdditionalDetails: RestrictedFINXMax350TextSchema.optional(),
+});
+
+export const QuantityBreakdown31Schema = z.strictObject({
+  LotNumber: GenericIdentification37Schema,
+  LotQuantity: FinancialInstrumentQuantity1ChoiceSchema.optional(),
+});
+
+export const FinancialInstrumentAttributes92Schema = z.strictObject({
+  PlaceOfListing: MarketIdentification3ChoiceSchema.optional(),
+  DayCountBasis: InterestComputationMethodFormat4ChoiceSchema.optional(),
+  RegistrationForm: FormOfSecurity6ChoiceSchema.optional(),
+  PaymentFrequency: Frequency23ChoiceSchema.optional(),
+  PaymentStatus: SecuritiesPaymentStatus5ChoiceSchema.optional(),
+  VariableRateChangeFrequency: Frequency23ChoiceSchema.optional(),
+  ClassificationType: ClassificationType32ChoiceSchema.optional(),
+  OptionStyle: OptionStyle8ChoiceSchema.optional(),
+  OptionType: OptionType6ChoiceSchema.optional(),
+  DenominationCurrency: ActiveOrHistoricCurrencyCodeSchema.optional(),
+  CouponDate: ISODateSchema.optional(),
+  ExpiryDate: ISODateSchema.optional(),
+  FloatingRateFixingDate: ISODateSchema.optional(),
+  MaturityDate: ISODateSchema.optional(),
+  IssueDate: ISODateSchema.optional(),
+  NextCallableDate: ISODateSchema.optional(),
+  PutableDate: ISODateSchema.optional(),
+  DatedDate: ISODateSchema.optional(),
+  FirstPaymentDate: ISODateSchema.optional(),
+  PreviousFactor: BaseOneRateSchema.optional(),
+  CurrentFactor: BaseOneRateSchema.optional(),
+  NextFactor: BaseOneRateSchema.optional(),
+  InterestRate: PercentageRateSchema.optional(),
+  YieldToMaturityRate: PercentageRateSchema.optional(),
+  NextInterestRate: PercentageRateSchema.optional(),
+  IndexRateBasis: PercentageRateSchema.optional(),
+  CouponAttachedNumber: Number22ChoiceSchema.optional(),
+  PoolNumber: GenericIdentification37Schema.optional(),
+  QuantityBreakdown: z.array(QuantityBreakdown31Schema).optional(),
+  VariableRateIndicator: YesNoIndicatorSchema.optional(),
+  CallableIndicator: YesNoIndicatorSchema.optional(),
+  PutableIndicator: YesNoIndicatorSchema.optional(),
+  MarketOrIndicativePrice: PriceType4ChoiceSchema.optional(),
+  ExercisePrice: Price7Schema.optional(),
+  SubscriptionPrice: Price7Schema.optional(),
+  ConversionPrice: Price7Schema.optional(),
+  StrikePrice: Price7Schema.optional(),
+  MinimumNominalQuantity: FinancialInstrumentQuantity1ChoiceSchema.optional(),
+  ContractSize: FinancialInstrumentQuantity1ChoiceSchema.optional(),
+  UnderlyingFinancialInstrumentIdentification: z.array(SecurityIdentification19Schema).optional(),
+  FinancialInstrumentAttributeAdditionalDetails: Max350TextSchema.optional(),
+});
+
+export const FinancialInstrumentQuantitySearch2Schema = z.strictObject({
+  FaceAmount: ImpliedCurrencyAmountRange1ChoiceSchema,
+  AmortisedValue: ImpliedCurrencyAmountRange1ChoiceSchema,
+});
+
+export const QuantityRangeBoundary1Schema = z.strictObject({
+  Boundary: DecimalNumberSchema,
+  Included: YesNoIndicatorSchema,
+});
+
+export const FromToQuantityRange1Schema = z.strictObject({
+  FromQuantity: QuantityRangeBoundary1Schema,
+  ToQuantity: QuantityRangeBoundary1Schema,
+});
+
+export const QuantityRange1ChoiceSchema = choiceOf({
+  FromQuantity: QuantityRangeBoundary1Schema,
+  ToQuantity: QuantityRangeBoundary1Schema,
+  FromToQuantity: FromToQuantityRange1Schema,
+  EqualQuantity: DecimalNumberSchema,
+  NotEqualQuantity: DecimalNumberSchema,
+});
+
+export const FinancialInstrumentQuantitySearch2ChoiceSchema = choiceOf({
+  Unit: QuantityRange1ChoiceSchema,
+  FaceAmount: ImpliedCurrencyAmountRange1ChoiceSchema,
+  AmortisedValue: ImpliedCurrencyAmountRange1ChoiceSchema,
 });
 
 export const FiscalYear1ChoiceSchema = choiceOf({
@@ -4675,6 +5777,30 @@ export const ForeignExchangeTerms19Schema = z.strictObject({
   ExchangeRate: BaseOneRateSchema,
 });
 
+export const ForeignExchangeTerms34Schema = z.strictObject({
+  UnitCurrency: ActiveOrHistoricCurrencyCodeSchema,
+  QuotedCurrency: ActiveOrHistoricCurrencyCodeSchema,
+  ExchangeRate: BaseOneRateSchema,
+  QuotationDate: ISODateTimeSchema.optional(),
+  QuotingInstitution: PartyIdentification120ChoiceSchema.optional(),
+});
+
+export const ForeignExchangeTerms35Schema = z.strictObject({
+  UnitCurrency: ActiveOrHistoricCurrencyCodeSchema,
+  QuotedCurrency: ActiveOrHistoricCurrencyCodeSchema,
+  ExchangeRate: BaseOneRateSchema,
+  QuotationDate: ISODateTimeSchema.optional(),
+  QuotingInstitution: PartyIdentification137ChoiceSchema.optional(),
+});
+
+export const ForeignExchangeTerms6Schema = z.strictObject({
+  UnitCurrency: ActiveOrHistoricCurrencyCodeSchema,
+  QuotedCurrency: ActiveOrHistoricCurrencyCodeSchema,
+  ExchangeRate: BaseOneRateSchema,
+  QuotationDate: ISODateTimeSchema.optional(),
+  QuotingInstitution: PartyIdentification2ChoiceSchema.optional(),
+});
+
 export const Frequency20ChoiceSchema = choiceOf({
   Code: EventFrequency8CodeSchema,
   Proprietary: GenericIdentification47Schema,
@@ -4685,7 +5811,27 @@ export const Frequency22ChoiceSchema = choiceOf({
   Proprietary: GenericIdentification30Schema,
 });
 
+export const Frequency25ChoiceSchema = choiceOf({
+  Code: EventFrequency4CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const Frequency26ChoiceSchema = choiceOf({
+  Code: EventFrequency4CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
 export const Frequency2CodeSchema = z.enum(["YEAR", "MNTH", "QURT", "MIAN", "WEEK", "DAIL", "ADHO", "INDA", "OVNG"]);
+
+export const GenericIdentification7Schema = z.strictObject({
+  Issuer: Max8TextSchema,
+  Information: Max35TextSchema,
+});
+
+export const FrequencyCodeAndDSSCode1ChoiceSchema = choiceOf({
+  FrequencyAsCode: EventFrequency1CodeSchema,
+  FrequencyAsDSS: GenericIdentification7Schema,
+});
 
 export const FullLegalNameModification1Schema = z.strictObject({
   ModificationCode: Modification1CodeSchema.optional(),
@@ -4798,6 +5944,34 @@ export const FundCashForecast7Schema = z.strictObject({
   NetCashForecastDetails: z.array(NetCashForecast4Schema).optional(),
 });
 
+export const GeneratedReason3CodeSchema = z.enum(["COLL", "CLAI", "OTHR", "RODE", "SPLI", "THRD", "TRAN"]);
+
+export const GeneratedReasons5ChoiceSchema = choiceOf({
+  Code: GeneratedReason3CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const GeneratedReason5Schema = z.strictObject({
+  Code: GeneratedReasons5ChoiceSchema,
+  AdditionalReasonInformation: Max210TextSchema.optional(),
+});
+
+export const GeneratedReasons6ChoiceSchema = choiceOf({
+  Code: GeneratedReason3CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const GeneratedStatus7ChoiceSchema = choiceOf({
+  NoSpecifiedReason: NoReasonCodeSchema,
+  Reason: GeneratedReason5Schema,
+});
+
+export const GenericIdentification5Schema = z.strictObject({
+  Issuer: Max8TextSchema,
+  Information: Exact4AlphaNumericTextSchema,
+  Narrative: Max35TextSchema.optional(),
+});
+
 export const PartyType12CodeSchema = z.enum(["ACQR", "ATMG", "CISP", "DLIS", "HSTG", "ITAG", "OATM"]);
 
 export const Min2Max3AlphaTextSchema = textType({pattern: "[a-zA-Z]{2,3}"});
@@ -4810,9 +5984,24 @@ export const GenericIdentification77Schema = z.strictObject({
   ShortName: Max35TextSchema.optional(),
 });
 
+export const GenericIdentification78Schema = z.strictObject({
+  Type: GenericIdentification30Schema,
+  Identification: Max35TextSchema.optional(),
+});
+
+export const GenericIdentification80Schema = z.strictObject({
+  Type: GenericIdentification30Schema,
+  Identification: Max35TextSchema.optional(),
+});
+
 export const GenericIdentification81Schema = z.strictObject({
   Identification: Max35TextSchema,
   IdentificationType: OtherIdentification3ChoiceSchema,
+});
+
+export const GenericIdentification85Schema = z.strictObject({
+  Type: GenericIdentification47Schema,
+  Identification: RestrictedFINXMax30TextSchema.optional(),
 });
 
 export const PartyAndCertificate7Schema = z.strictObject({
@@ -4977,6 +6166,23 @@ export const HighFrequencyTradingProfile1Schema = z.strictObject({
   ConsolidationType: ConsolidationType1ChoiceSchema.optional(),
 });
 
+export const Registration2CodeSchema = z.enum(["PTYH", "CSDH", "CDEL", "CVAL"]);
+
+export const Registration10ChoiceSchema = choiceOf({
+  Code: Registration2CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const RegistrationReason5Schema = z.strictObject({
+  Code: Registration10ChoiceSchema,
+  AdditionalInformation: Max210TextSchema.optional(),
+});
+
+export const HoldIndicator6Schema = z.strictObject({
+  Indicator: YesNoIndicatorSchema,
+  Reason: z.array(RegistrationReason5Schema).optional(),
+});
+
 export const IdentificationAssignment4Schema = z.strictObject({
   MessageIdentification: Max35TextSchema,
   CreationDateTime: ISODateTimeSchema,
@@ -5018,11 +6224,53 @@ export const InstructionForInstructedAgent1Schema = z.strictObject({
   InstructionInformation: Max140TextSchema.optional(),
 });
 
+export const InstructionProcessingStatus1CodeSchema = z.enum(["CAN1", "CAN2", "CAN3", "CAND", "CANO", "CANP", "CGEN", "COSE", "CPRC", "DFLA", "DONE", "DONF", "EXCH", "EXSE", "FORC", "FUTU", "INTE", "NOTC", "OPOD", "OVER", "PACK", "PAFI", "PART", "PPRC", "REJT", "REPR", "SESE", "STIN", "SUSP", "TREA", "UNDE", "MPRC"]);
+
+export const InstructionQueryType1CodeSchema = z.enum(["SETT", "IPOS", "BOTH"]);
+
 export const Insurance1CodeSchema = z.enum(["LIFE", "PDIS"]);
 
 export const InsuranceType2ChoiceSchema = choiceOf({
   Code: Insurance1CodeSchema,
   Proprietary: GenericIdentification47Schema,
+});
+
+export const InvestmentFundRole2CodeSchema = z.enum(["FMCO", "REGI", "TRAG", "INTR", "DIST", "CONC", "UCL1", "UCL2", "TRAN"]);
+
+export const Intermediary11Schema = z.strictObject({
+  Identification: PartyIdentification2ChoiceSchema,
+  Account: Account7Schema.optional(),
+  Role: InvestmentFundRole2CodeSchema.optional(),
+  ExtendedRole: Extended350CodeSchema.optional(),
+});
+
+export const Role6ChoiceSchema = choiceOf({
+  Code: InvestmentFundRole2CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+  Text: Max350TextSchema,
+});
+
+export const Intermediary44Schema = z.strictObject({
+  Identification: PartyIdentification136Schema,
+  Role: Role6ChoiceSchema.optional(),
+  Account: Account29Schema.optional(),
+});
+
+export const PartyIdentification157Schema = z.strictObject({
+  Identification: PartyIdentification137ChoiceSchema,
+  LEI: LEIIdentifierSchema.optional(),
+});
+
+export const Role7ChoiceSchema = choiceOf({
+  Code: InvestmentFundRole2CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+  Text: RestrictedFINXMax350TextSchema,
+});
+
+export const Intermediary45Schema = z.strictObject({
+  Identification: PartyIdentification157Schema,
+  Role: Role7ChoiceSchema.optional(),
+  Account: Account30Schema.optional(),
 });
 
 export const InvestmentFundRole6CodeSchema = z.enum(["CACO", "CONC", "CUST", "DATP", "DIST", "FACT", "FIAD", "FIAG", "FMCO", "FNBR", "FTAG", "INTR", "INVE", "INVS", "PAYI", "REGI", "TRAG", "TRAN"]);
@@ -5068,16 +6316,6 @@ export const Number3ChoiceSchema = choiceOf({
   Long: Exact5NumericTextSchema,
 });
 
-export const Period2Schema = z.strictObject({
-  FromDate: ISODateSchema,
-  ToDate: ISODateSchema,
-});
-
-export const Period7ChoiceSchema = choiceOf({
-  FromDateTimeToDateTime: DateTimePeriod1Schema,
-  FromDateToDate: Period2Schema,
-});
-
 export const MovementResponseType1CodeSchema = z.enum(["FULL", "STTS"]);
 
 export const StatementUpdateType1CodeSchema = z.enum(["COMP", "DELT"]);
@@ -5108,6 +6346,34 @@ export const IntraBalanceReport6Schema = z.strictObject({
   Frequency: Frequency22ChoiceSchema.optional(),
   UpdateType: UpdateType15ChoiceSchema,
   ActivityIndicator: YesNoIndicatorSchema,
+});
+
+export const SecuritiesBalanceType11CodeSchema = z.enum(["BLOK", "AWAS", "AVAI", "BLCA", "BLOT", "BLOV", "BORR", "COLI", "COLO", "COLA", "LOAN", "MARG", "PECA", "PEDA", "PLED", "REGO", "RSTR", "OTHR", "TRAN", "DRAW", "CLEN", "DIRT", "NOMI", "SPOS", "UNRG", "ISSU", "QUAS", "LODE"]);
+
+export const SecuritiesBalanceType6ChoiceSchema = choiceOf({
+  Code: SecuritiesBalanceType11CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const QuantityBreakdown32Schema = z.strictObject({
+  LotNumber: GenericIdentification37Schema.optional(),
+  LotQuantity: FinancialInstrumentQuantity1ChoiceSchema.optional(),
+  SecuritiesSubBalanceType: GenericIdentification30Schema.optional(),
+});
+
+export const SecuritiesSubBalanceTypeAndQuantityBreakdown3Schema = z.strictObject({
+  Type: SecuritiesBalanceType6ChoiceSchema,
+  QuantityBreakdown: z.array(QuantityBreakdown32Schema).optional(),
+});
+
+export const IntraPosition6Schema = z.strictObject({
+  FinancialInstrumentIdentification: SecurityIdentification19Schema,
+  SettlementQuantity: FinancialInstrumentQuantity1ChoiceSchema,
+  SettlementDate: DateAndDateTime2ChoiceSchema,
+  BalanceFrom: SecuritiesSubBalanceTypeAndQuantityBreakdown3Schema.optional(),
+  BalanceTo: SecuritiesSubBalanceTypeAndQuantityBreakdown3Schema.optional(),
+  SecuritiesSubBalanceIdentification: GenericIdentification37Schema.optional(),
+  Priority: PriorityNumeric4ChoiceSchema.optional(),
 });
 
 export const InvestigationActionReason1ChoiceSchema = choiceOf({
@@ -5169,6 +6435,14 @@ export const InvestigationType1ChoiceSchema = choiceOf({
   Proprietary: Max35TextSchema,
 });
 
+export const InvestmentAccount25Schema = z.strictObject({
+  Identification: AccountIdentification1Schema,
+  Name: Max35TextSchema.optional(),
+  Designation: Max35TextSchema.optional(),
+  IntermediaryInformation: z.array(Intermediary11Schema).max(10).optional(),
+  AccountServicer: PartyIdentification2ChoiceSchema.optional(),
+});
+
 export const InvestmentAccountCategory1CodeSchema = z.enum(["MAND", "RETA"]);
 
 export const InvestmentAccountCategory1ChoiceSchema = choiceOf({
@@ -5182,6 +6456,65 @@ export const InvestmentFundOrder4Schema = z.strictObject({
 });
 
 export const InvestmentFundRole7CodeSchema = z.enum(["CONC", "DIST", "FMCO", "INTR", "PAYI", "TRAG", "CUST", "CACO", "FACT", "INVE", "INVS"]);
+
+export const TransactionType2CodeSchema = z.enum(["REDM", "SUBS", "SSPL", "RWPL", "TRIN", "TOUT", "SWII", "SWIO", "SUAA", "REAA"]);
+
+export const TransactionStatus1CodeSchema = z.enum(["RVSL", "REBO", "CANC"]);
+
+export const ReversalCodeSchema = z.enum(["RVCD", "RVDB"]);
+
+export const PriceMethod1CodeSchema = z.enum(["FORW", "HIST"]);
+
+export const UnitPrice11Schema = z.strictObject({
+  Type: TypeOfPrice10CodeSchema.optional(),
+  ExtendedType: Extended350CodeSchema.optional(),
+  Value: PriceValue1Schema,
+  PriceMethod: PriceMethod1CodeSchema.optional(),
+});
+
+export const InvestmentFundTransaction3Schema = z.strictObject({
+  TransactionType: TransactionType2CodeSchema.optional(),
+  ExtendedTransactionType: Extended350CodeSchema.optional(),
+  CorporateActionEventType: CorporateActionEventType1CodeSchema.optional(),
+  ExtendedCorporateActionEventType: Extended350CodeSchema.optional(),
+  BookingStatus: TransactionStatus1CodeSchema.optional(),
+  MasterReference: Max35TextSchema.optional(),
+  OrderReference: Max35TextSchema.optional(),
+  ClientReference: Max35TextSchema.optional(),
+  DealReference: Max35TextSchema.optional(),
+  LegIdentification: Max35TextSchema.optional(),
+  LegExecutionIdentification: Max35TextSchema.optional(),
+  OrderDateTime: ISODateTimeSchema.optional(),
+  SettledTransactionIndicator: YesNoIndicatorSchema,
+  RegisteredTransactionIndicator: YesNoIndicatorSchema,
+  UnitsQuantity: FinancialInstrumentQuantity1Schema,
+  CreditDebit: CreditDebitCodeSchema,
+  Reversal: ReversalCodeSchema.optional(),
+  SettlementAmount: ActiveCurrencyAndAmountSchema.optional(),
+  SettlementDate: ISODateSchema.optional(),
+  TradeDateTime: DateAndDateTimeChoiceSchema,
+  CumDividendIndicator: YesNoIndicatorSchema,
+  PartiallyExecutedIndicator: YesNoIndicatorSchema,
+  PriceDetails: UnitPrice11Schema.optional(),
+});
+
+export const PaginationBalance1Schema = z.strictObject({
+  FirstOpeningBalance: FinancialInstrumentQuantity1Schema.optional(),
+  IntermediaryOpeningBalance: FinancialInstrumentQuantity1Schema.optional(),
+  FinalClosingBalance: FinancialInstrumentQuantity1Schema.optional(),
+  IntermediaryClosingBalance: FinancialInstrumentQuantity1Schema.optional(),
+});
+
+export const InvestmentFundTransactionsByFund2Schema = z.strictObject({
+  Identification: SecurityIdentification3ChoiceSchema,
+  Name: Max350TextSchema.optional(),
+  SupplementaryIdentification: Max35TextSchema.optional(),
+  SecuritiesForm: FormOfSecurity1CodeSchema.optional(),
+  ClassType: Max35TextSchema.optional(),
+  DistributionPolicy: DistributionPolicy1CodeSchema.optional(),
+  TransactionDetails: z.array(InvestmentFundTransaction3Schema).min(1),
+  BalanceByPage: PaginationBalance1Schema.optional(),
+});
 
 export const UnitsOrAmount1ChoiceSchema = choiceOf({
   Amount: ActiveCurrencyAndAmountSchema,
@@ -5277,11 +6610,23 @@ export const InvestorProfile2Schema = z.strictObject({
   MarketMaker: MarketMakerProfile2Schema.optional(),
 });
 
+export const LegalFramework1CodeSchema = z.enum(["FRAN"]);
+
 export const LetterIntent1Schema = z.strictObject({
   LetterIntentReference: Max35TextSchema,
   Amount: ActiveCurrencyAnd13DecimalAmountSchema.optional(),
   StartDate: ISODateSchema.optional(),
   EndDate: ISODateSchema.optional(),
+});
+
+export const LetterOfGuarantee4ChoiceSchema = choiceOf({
+  Indicator: YesNoIndicatorSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const LetterOfGuarantee5ChoiceSchema = choiceOf({
+  Indicator: YesNoIndicatorSchema,
+  Proprietary: GenericIdentification47Schema,
 });
 
 export const LevelOfControl1CodeSchema = z.enum(["TRAN", "VIEW"]);
@@ -5366,6 +6711,10 @@ export const Linkages57Schema = z.strictObject({
   MessageNumber: DocumentNumber5ChoiceSchema.optional(),
   Reference: References34ChoiceSchema,
   ReferenceOwner: PartyIdentification127ChoiceSchema.optional(),
+});
+
+export const Linkages75Schema = z.strictObject({
+  SecuritiesSettlementTransactionIdentification: Max35TextSchema,
 });
 
 export const PaymentInstrument1CodeSchema = z.enum(["BDT", "BCT", "CDT", "CCT", "CHK", "BKT", "DCP", "CCP", "RTI", "CAN"]);
@@ -5477,10 +6826,133 @@ export const MandateRelatedData5ChoiceSchema = choiceOf({
   CreditTransferMandate: CreditTransferMandateData1Schema,
 });
 
+export const MarketClientSide1CodeSchema = z.enum(["CLNT", "MAKT"]);
+
+export const MarketClientSide6ChoiceSchema = choiceOf({
+  Code: MarketClientSide1CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const MarketClientSide7ChoiceSchema = choiceOf({
+  Code: MarketClientSide1CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const MarketIdentification1ChoiceSchema = choiceOf({
+  MarketIdentifierCode: MICIdentifierSchema,
+  Description: Max35TextSchema,
+});
+
+export const MarketIdentification2ChoiceSchema = choiceOf({
+  MarketIdentifierCode: MICIdentifierSchema,
+  Description: RestrictedFINXMax30TextSchema,
+});
+
+export const MarketIdentification5ChoiceSchema = choiceOf({
+  MarketIdentifierCode: MICIdentifierSchema,
+  Description: Max140TextSchema,
+});
+
+export const MarketType2CodeSchema = z.enum(["PRIM", "SECM", "OTCO", "VARI", "EXCH"]);
+
+export const MarketType8ChoiceSchema = choiceOf({
+  Code: MarketType2CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const MarketIdentification84Schema = z.strictObject({
+  Identification: MarketIdentification1ChoiceSchema.optional(),
+  Type: MarketType8ChoiceSchema,
+});
+
+export const MarketType4CodeSchema = z.enum(["FUND", "LMAR", "THEO", "VEND"]);
+
+export const MarketType15ChoiceSchema = choiceOf({
+  Code: MarketType4CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const MarketIdentification89Schema = z.strictObject({
+  Identification: MarketIdentification1ChoiceSchema.optional(),
+  Type: MarketType15ChoiceSchema,
+});
+
+export const MarketType16ChoiceSchema = choiceOf({
+  Code: MarketType2CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const MarketIdentification90Schema = z.strictObject({
+  Identification: MarketIdentification2ChoiceSchema.optional(),
+  Type: MarketType16ChoiceSchema,
+});
+
+export const MarketType17ChoiceSchema = choiceOf({
+  Code: MarketType4CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const MarketIdentification91Schema = z.strictObject({
+  Identification: MarketIdentification2ChoiceSchema.optional(),
+  Type: MarketType17ChoiceSchema,
+});
+
+export const MarketType9CodeSchema = z.enum(["FUND", "LMAR", "THEO", "VEND", "SCAS"]);
+
+export const MarketType19ChoiceSchema = choiceOf({
+  Code: MarketType9CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const MarketIdentification98Schema = z.strictObject({
+  Identification: MarketIdentification5ChoiceSchema.optional(),
+  Type: MarketType19ChoiceSchema,
+});
+
 export const MarketPracticeVersion1Schema = z.strictObject({
   Name: Max35TextSchema,
   Date: ISOYearMonthSchema.optional(),
   Number: Max35TextSchema.optional(),
+});
+
+export const MatchingStatus1CodeSchema = z.enum(["MACH", "NMAT"]);
+
+export const ProprietaryReason4Schema = z.strictObject({
+  Reason: GenericIdentification30Schema.optional(),
+  AdditionalReasonInformation: Max210TextSchema.optional(),
+});
+
+export const UnmatchedReason11CodeSchema = z.enum(["ADEA", "ACRU", "IIND", "CPCA", "CLAT", "NCRR", "DDEA", "DMCT", "DCMX", "DSEC", "DQUA", "INVE", "LEOG", "LATE", "MIME", "CMIS", "NMAS", "DTRA", "OTHR", "FRAP", "PHYS", "PLIS", "INPS", "PLCE", "PODU", "DEPT", "ICAG", "ICUS", "IEXE", "REGD", "RTGS", "SAFE", "DMON", "DDAT", "SETS", "SETR", "TXST", "DTRD", "DELN", "UNBR"]);
+
+export const UnmatchedReason21ChoiceSchema = choiceOf({
+  Code: UnmatchedReason11CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const UnmatchedReason15Schema = z.strictObject({
+  Code: UnmatchedReason21ChoiceSchema,
+  AdditionalReasonInformation: Max210TextSchema.optional(),
+});
+
+export const UnmatchedStatus16ChoiceSchema = choiceOf({
+  NoSpecifiedReason: NoReasonCodeSchema,
+  Reason: UnmatchedReason15Schema,
+});
+
+export const ProprietaryStatusAndReason6Schema = z.strictObject({
+  ProprietaryStatus: GenericIdentification30Schema,
+  ProprietaryReason: z.array(ProprietaryReason4Schema).optional(),
+});
+
+export const MatchingStatus24ChoiceSchema = choiceOf({
+  Matched: ProprietaryReason4Schema,
+  Unmatched: UnmatchedStatus16ChoiceSchema,
+  Proprietary: ProprietaryStatusAndReason6Schema,
+});
+
+export const MatchingStatus27ChoiceSchema = choiceOf({
+  Code: MatchingStatus1CodeSchema,
+  Proprietary: GenericIdentification30Schema,
 });
 
 export const Max104TextSchema = textType({min: 1, max: 104});
@@ -5494,6 +6966,8 @@ export const Max37TextSchema = textType({min: 1, max: 37});
 export const Max3NumberSchema = decimalType({totalDigits: 3, fractionDigits: 0});
 
 export const Max40TextSchema = textType({min: 1, max: 40});
+
+export const Max52TextSchema = textType({min: 1, max: 52});
 
 export const Max76TextSchema = textType({min: 1, max: 76});
 
@@ -5546,6 +7020,15 @@ export const MessageIdentification2Schema = z.strictObject({
   MessageIdentification: Max35TextSchema.optional(),
 });
 
+export const ModificationProcessingStatus1CodeSchema = z.enum(["PACK", "REJT", "MODC", "DEND", "MODP", "REPR"]);
+
+export const ModificationProcessingStatus9ChoiceSchema = choiceOf({
+  Code: ModificationProcessingStatus1CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const ModifiedStatusReason1CodeSchema = z.enum(["MDBY", "OTHR"]);
+
 export const NameAndAddress8Schema = z.strictObject({
   Name: Max350TextSchema,
   Address: PostalAddress1Schema.optional(),
@@ -5556,6 +7039,16 @@ export const NetCashForecast3Schema = z.strictObject({
   NetAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
   NetUnitsNumber: FinancialInstrumentQuantity1Schema.optional(),
   FlowDirection: FlowDirectionType1CodeSchema,
+});
+
+export const NettingEligibility4ChoiceSchema = choiceOf({
+  Indicator: YesNoIndicatorSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const NettingEligibility5ChoiceSchema = choiceOf({
+  Indicator: YesNoIndicatorSchema,
+  Proprietary: GenericIdentification47Schema,
 });
 
 export const NewIssueAllocation2Schema = z.strictObject({
@@ -5573,6 +7066,16 @@ export const NumberAndSumOfTransactions4Schema = z.strictObject({
   NumberOfEntries: Max15NumericTextSchema.optional(),
   Sum: DecimalNumberSchema.optional(),
   TotalNetEntry: AmountAndDirection35Schema.optional(),
+});
+
+export const TotalNumber1Schema = z.strictObject({
+  CurrentInstructionNumber: Exact3NumericTextSchema,
+  TotalOfLinkedInstructions: Exact3NumericTextSchema,
+});
+
+export const NumberCount1ChoiceSchema = choiceOf({
+  CurrentInstructionNumber: Exact3NumericTextSchema,
+  TotalNumber: TotalNumber1Schema,
 });
 
 export const NumberOfTransactionsPerStatus5Schema = z.strictObject({
@@ -5911,6 +7414,29 @@ export const OriginalTransactionReference48Schema = z.strictObject({
   Purpose: Purpose2ChoiceSchema.optional(),
 });
 
+export const PartyTextInformation1Schema = z.strictObject({
+  DeclarationDetails: Max350TextSchema.optional(),
+  PartyContactDetails: Max140TextSchema.optional(),
+  RegistrationDetails: Max350TextSchema.optional(),
+});
+
+export const PartyIdentificationAndAccount197Schema = z.strictObject({
+  Identification: PartyIdentification120ChoiceSchema.optional(),
+  LEI: LEIIdentifierSchema.optional(),
+  AlternateIdentification: AlternatePartyIdentification7Schema.optional(),
+  Nationality: CountryCodeSchema.optional(),
+  SafekeepingAccount: Max35TextSchema.optional(),
+  BlockChainAddressOrWallet: Max140TextSchema.optional(),
+  ProcessingIdentification: Max35TextSchema.optional(),
+  AdditionalInformation: PartyTextInformation1Schema.optional(),
+});
+
+export const OtherParties46Schema = z.strictObject({
+  Investor: z.array(PartyIdentificationAndAccount197Schema).optional(),
+});
+
+export const OwnershipLegalRestrictions1CodeSchema = z.enum(["A144", "NRST", "RSTR"]);
+
 export const OwnershipType2ChoiceSchema = choiceOf({
   Code: AccountOwnershipType4CodeSchema,
   Proprietary: GenericIdentification47Schema,
@@ -5919,6 +7445,65 @@ export const OwnershipType2ChoiceSchema = choiceOf({
 export const PaginationSchema = z.strictObject({
   PageNumber: Max5NumericTextSchema,
   LastPageIndicator: YesNoIndicatorSchema,
+});
+
+export const PartialSettlement2CodeSchema = z.enum(["PAIN", "PARC"]);
+
+export const PartyIdentification71ChoiceSchema = choiceOf({
+  AnyBIC: AnyBICIdentifierSchema,
+  ProprietaryIdentification: GenericIdentification36Schema,
+  NameAndAddress: NameAndAddress5Schema,
+});
+
+export const PartyIdentification100Schema = z.strictObject({
+  Identification: PartyIdentification71ChoiceSchema,
+  LEI: LEIIdentifierSchema.optional(),
+});
+
+export const PartyIdentification122ChoiceSchema = choiceOf({
+  AnyBIC: AnyBICDec2014IdentifierSchema,
+  NameAndAddress: NameAndAddress5Schema,
+  Country: CountryCodeSchema,
+});
+
+export const PartyIdentification136ChoiceSchema = choiceOf({
+  AnyBIC: AnyBICDec2014IdentifierSchema,
+  ProprietaryIdentification: GenericIdentification84Schema,
+});
+
+export const PartyIdentification139Schema = z.strictObject({
+  Party: PartyIdentification125ChoiceSchema,
+  LEI: LEIIdentifierSchema.optional(),
+});
+
+export const PartyIdentification144Schema = z.strictObject({
+  Identification: PartyIdentification127ChoiceSchema,
+  LEI: LEIIdentifierSchema.optional(),
+});
+
+export const PartyIdentification145ChoiceSchema = choiceOf({
+  AnyBIC: AnyBICDec2014IdentifierSchema,
+  NameAndAddress: NameAndAddress12Schema,
+  Country: CountryCodeSchema,
+});
+
+export const PartyIdentification148Schema = z.strictObject({
+  Identification: PartyIdentification122ChoiceSchema,
+  LEI: LEIIdentifierSchema.optional(),
+  ProcessingIdentification: Max35TextSchema.optional(),
+});
+
+export const PartyIdentification156Schema = z.strictObject({
+  Identification: PartyIdentification136ChoiceSchema,
+  LEI: LEIIdentifierSchema.optional(),
+});
+
+export const RestrictedFINXMax16TextSchema = textType({min: 1, max: 16, pattern: "([0-9a-zA-Z\\-\\?:\\(\\)\\.,'\\+ ]([0-9a-zA-Z\\-\\?:\\(\\)\\.,'\\+ ]*(/[0-9a-zA-Z\\-\\?:\\(\\)\\.,'\\+ ])?)*)"});
+
+export const PartyIdentification191Schema = z.strictObject({
+  Identification: PartyIdentification145ChoiceSchema,
+  LEI: LEIIdentifierSchema.optional(),
+  ProcessingIdentification: RestrictedFINXMax16TextSchema.optional(),
 });
 
 export const PartyIdentification265Schema = z.strictObject({
@@ -5941,6 +7526,23 @@ export const PartyIdentification242ChoiceSchema = choiceOf({
   PartyIdentification: PartyIdentification266Schema,
 });
 
+export const PartyIdentification257ChoiceSchema = choiceOf({
+  AnyBIC: AnyBICDec2014IdentifierSchema,
+  NameAndAddress: NameAndAddress5Schema,
+  Country: CountryCodeSchema,
+  DigitalLedgerIdentification: DTI2024IdentifierSchema,
+});
+
+export const PartyIdentification3Schema = z.strictObject({
+  BICOrBEI: AnyBICIdentifierSchema,
+});
+
+export const PartyIdentification314Schema = z.strictObject({
+  Identification: PartyIdentification257ChoiceSchema,
+  LEI: LEIIdentifierSchema.optional(),
+  ProcessingIdentification: Max35TextSchema.optional(),
+});
+
 export const PartyIdentification44Schema = z.strictObject({
   AnyBIC: AnyBICIdentifierSchema,
   AlternativeIdentifier: z.array(Max35TextSchema).max(10).optional(),
@@ -5959,6 +7561,35 @@ export const PartyIdentification73ChoiceSchema = choiceOf({
   NameAndAddress: NameAndAddress8Schema,
   AnyBIC: PartyIdentification44Schema,
   PartyIdentification: PartyIdentification59Schema,
+});
+
+export const PartyIdentificationAndAccount170Schema = z.strictObject({
+  Identification: PartyIdentification120ChoiceSchema,
+  LEI: LEIIdentifierSchema.optional(),
+  SafekeepingAccount: SecuritiesAccount19Schema.optional(),
+  ProcessingIdentification: Max35TextSchema.optional(),
+});
+
+export const PartyIdentificationAndAccount195Schema = z.strictObject({
+  Identification: PartyIdentification120ChoiceSchema,
+  LEI: LEIIdentifierSchema.optional(),
+  SafekeepingAccount: SecuritiesAccount19Schema.optional(),
+  BlockChainAddressOrWallet: BlockChainAddressWallet3Schema.optional(),
+  ProcessingIdentification: Max35TextSchema.optional(),
+});
+
+export const SecuritiesAccount30Schema = z.strictObject({
+  Identification: RestrictedFINXMax35TextSchema,
+  Type: GenericIdentification47Schema.optional(),
+  Name: Max70TextSchema.optional(),
+});
+
+export const PartyIdentificationAndAccount215Schema = z.strictObject({
+  Identification: PartyIdentification137ChoiceSchema,
+  LEI: LEIIdentifierSchema.optional(),
+  SafekeepingAccount: SecuritiesAccount30Schema.optional(),
+  BlockChainAddressOrWallet: BlockChainAddressWallet7Schema.optional(),
+  ProcessingIdentification: RestrictedFINXMax16TextSchema.optional(),
 });
 
 export const PlainCardData24Schema = z.strictObject({
@@ -6094,6 +7725,25 @@ export const PaymentTypeInformation29Schema = z.strictObject({
   CategoryPurpose: CategoryPurpose1ChoiceSchema.optional(),
 });
 
+export const PendingProcessingReason5CodeSchema = z.enum(["ADEA", "CAIS", "DOCY", "BLOC", "MUNO", "GLOB", "PREA", "YCOL", "COLL", "FLIM", "NOFX", "LACK", "LALO", "MONY", "MINO", "OTHR", "DENO", "LIQU", "CERT", "NEXT", "PRSY", "CSDH", "CDEL", "CVAL", "CDLR", "INBC", "CDAC"]);
+
+export const PendingProcessingReason19ChoiceSchema = choiceOf({
+  Code: PendingProcessingReason5CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const PendingProcessingReason17Schema = z.strictObject({
+  Code: PendingProcessingReason19ChoiceSchema,
+  AdditionalReasonInformation: Max210TextSchema.optional(),
+});
+
+export const PendingProcessingReason3CodeSchema = z.enum(["ADEA", "BLOC", "MUNO", "NEXT", "MINO", "OTHR", "DENO", "CERT"]);
+
+export const PendingProcessingStatus20ChoiceSchema = choiceOf({
+  NoSpecifiedReason: NoReasonCodeSchema,
+  Reason: PendingProcessingReason17Schema,
+});
+
 export const PendingReason10CodeSchema = z.enum(["AWMO", "ADEA", "CAIS", "REFU", "AWSH", "PHSE", "TAMM", "DOCY", "DOCC", "BLOC", "CHAS", "NEWI", "CLAC", "MUNO", "GLOB", "PREA", "PART", "NMAS", "NOFX", "CMON", "YCOL", "COLL", "DEPO", "FLIM", "INCA", "LINK", "FUTU", "LACK", "LALO", "MONY", "NCON", "REFS", "SDUT", "BATC", "CYCL", "SBLO", "CPEC", "MINO", "IAAD", "OTHR", "PHCK", "BENO", "BOTH", "CLHT", "DENO", "DISA", "DKNY", "FROZ", "LAAW", "LATE", "LIQU", "PRCY", "REGT", "SETS", "CERT", "PRSY", "INBC"]);
 
 export const PendingReason26ChoiceSchema = choiceOf({
@@ -6130,6 +7780,54 @@ export const PendingReason17Schema = z.strictObject({
   AdditionalReasonInformation: Max210TextSchema.optional(),
 });
 
+export const PendingReason37ChoiceSchema = choiceOf({
+  Code: PendingReason6CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const PendingReason20Schema = z.strictObject({
+  Code: PendingReason37ChoiceSchema,
+  AdditionalReasonInformation: RestrictedFINXMax210TextSchema.optional(),
+});
+
+export const PendingReason24CodeSchema = z.enum(["AWMO", "ADEA", "CAIS", "REFU", "AWSH", "PHSE", "TAMM", "DOCY", "DOCC", "BLOC", "CHAS", "NEWI", "CLAC", "MUNO", "GLOB", "PREA", "PART", "NMAS", "NOFX", "CMON", "YCOL", "COLL", "DEPO", "FLIM", "INCA", "LINK", "FUTU", "LACK", "LALO", "MONY", "NCON", "REFS", "SDUT", "BATC", "SBLO", "CPEC", "MINO", "IAAD", "OTHR", "PHCK", "BENO", "BOTH", "CLHT", "DENO", "DISA", "DKNY", "FROZ", "LAAW", "LATE", "LIQU", "PRCY", "REGT", "SETS", "CERT", "PRSY", "CSDH", "CVAL", "CDLR", "INBC", "PREL", "PATD"]);
+
+export const PendingReason28CodeSchema = z.enum(["AWMO", "ADEA", "CAIS", "REFU", "AWSH", "PHSE", "TAMM", "DOCY", "DOCC", "BLOC", "CHAS", "NEWI", "CLAC", "MUNO", "GLOB", "PREA", "PART", "NMAS", "NOFX", "CMON", "YCOL", "COLL", "DEPO", "FLIM", "INCA", "LINK", "FUTU", "LACK", "LALO", "MONY", "NCON", "REFS", "SDUT", "BATC", "CYCL", "SBLO", "CPEC", "MINO", "IAAD", "OTHR", "PHCK", "BENO", "BOTH", "CLHT", "DENO", "DISA", "DKNY", "FROZ", "LAAW", "LATE", "LIQU", "PRCY", "REGT", "SETS", "CERT", "PRSY", "CSDH", "CVAL", "CDLR", "INBC", "PATD", "PREL"]);
+
+export const PendingReason31CodeSchema = z.enum(["BLOC", "PART", "COLL", "LINK", "FUTU", "LACK", "SBLO", "OTHR", "PRSY", "INBC"]);
+
+export const PendingReason69ChoiceSchema = choiceOf({
+  Code: PendingReason28CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const PendingReason32Schema = z.strictObject({
+  Code: PendingReason69ChoiceSchema,
+  AdditionalReasonInformation: Max210TextSchema.optional(),
+});
+
+export const PendingReason32CodeSchema = z.enum(["ADEA", "CONF", "CDCY", "CDRE", "CDRG", "OTHR"]);
+
+export const PendingReason75ChoiceSchema = choiceOf({
+  Code: PendingReason31CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const PendingReason34Schema = z.strictObject({
+  Code: PendingReason75ChoiceSchema,
+  AdditionalReasonInformation: Max210TextSchema.optional(),
+});
+
+export const PendingReason77ChoiceSchema = choiceOf({
+  Code: PendingReason32CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const PendingReason35Schema = z.strictObject({
+  Code: PendingReason77ChoiceSchema,
+  AdditionalReasonInformation: Max210TextSchema.optional(),
+});
+
 export const PendingStatus36ChoiceSchema = choiceOf({
   NoSpecifiedReason: NoReasonCodeSchema,
   Reason: PendingReason14Schema,
@@ -6145,9 +7843,156 @@ export const PendingStatus39ChoiceSchema = choiceOf({
   Reason: PendingReason17Schema,
 });
 
+export const PendingStatus46ChoiceSchema = choiceOf({
+  NoSpecifiedReason: NoReasonCodeSchema,
+  Reason: PendingReason20Schema,
+});
+
 export const PendingStatus4CodeSchema = z.enum(["ACPD", "VALD", "MATD", "AUTD", "INVD", "UMAC", "STLE", "STLM", "SSPD", "PCAN", "PSTL", "PFST", "SMLR", "RMLR", "SRBL", "AVLB", "SRML"]);
 
+export const PendingStatus73ChoiceSchema = choiceOf({
+  NoSpecifiedReason: NoReasonCodeSchema,
+  Reason: PendingReason32Schema,
+});
+
+export const PendingStatus79ChoiceSchema = choiceOf({
+  NoSpecifiedReason: NoReasonCodeSchema,
+  Reason: PendingReason34Schema,
+});
+
+export const PendingStatus81ChoiceSchema = choiceOf({
+  NoSpecifiedReason: NoReasonCodeSchema,
+  Reason: PendingReason35Schema,
+});
+
+export const PlaceOfClearingIdentification2Schema = z.strictObject({
+  Identification: AnyBICDec2014IdentifierSchema.optional(),
+  LEI: LEIIdentifierSchema.optional(),
+});
+
+export const PlaceOfTradeIdentification1Schema = z.strictObject({
+  MarketTypeAndIdentification: MarketIdentification84Schema.optional(),
+  LEI: LEIIdentifierSchema.optional(),
+});
+
+export const PlaceOfTradeIdentification2Schema = z.strictObject({
+  MarketTypeAndIdentification: MarketIdentification90Schema.optional(),
+  LEI: LEIIdentifierSchema.optional(),
+});
+
+export const PledgeeType1CodeSchema = z.enum(["CPTY", "REGB"]);
+
+export const PledgeeTypeAndAnyBICIdentifier2Schema = z.strictObject({
+  Identification: AnyBICDec2014IdentifierSchema,
+  PledgeeType: PledgeeType1CodeSchema,
+});
+
+export const PledgeeTypeAndText1Schema = z.strictObject({
+  Identification: Max35TextSchema.optional(),
+  PledgeeType: PledgeeType1CodeSchema,
+});
+
+export const PledgeeFormat5ChoiceSchema = choiceOf({
+  TypeAndIdentification: PledgeeTypeAndAnyBICIdentifier2Schema,
+  Identification: PledgeeTypeAndText1Schema,
+  Proprietary: GenericIdentification80Schema,
+});
+
+export const Pledgee3Schema = z.strictObject({
+  PledgeeTypeAndIdentification: PledgeeFormat5ChoiceSchema.optional(),
+  LEI: LEIIdentifierSchema.optional(),
+});
+
+export const PledgeeTypeAndText2Schema = z.strictObject({
+  Identification: RestrictedFINMax30TextSchema.optional(),
+  PledgeeType: PledgeeType1CodeSchema,
+});
+
+export const PledgeeFormat6ChoiceSchema = choiceOf({
+  TypeAndIdentification: PledgeeTypeAndAnyBICIdentifier2Schema,
+  Identification: PledgeeTypeAndText2Schema,
+  Proprietary: GenericIdentification85Schema,
+});
+
+export const Pledgee4Schema = z.strictObject({
+  PledgeeTypeAndIdentification: PledgeeFormat6ChoiceSchema.optional(),
+  LEI: LEIIdentifierSchema.optional(),
+});
+
 export const PositionEffect3CodeSchema = z.enum(["FIFO", "LIFO"]);
+
+export const PriceRateOrAmountOrUnknownChoiceSchema = choiceOf({
+  Rate: PercentageRateSchema,
+  Amount: ActiveOrHistoricCurrencyAnd13DecimalAmountSchema,
+  UnknownIndicator: YesNoIndicatorSchema,
+});
+
+export const PriceValueType2CodeSchema = z.enum(["DISC", "PREM"]);
+
+export const TypeOfPrice11CodeSchema = z.enum(["BIDE", "OFFR", "NAVL", "CREA", "CANC", "INTE", "SWNG", "MIDD", "RINV", "SWIC", "MRKT", "INDC"]);
+
+export const PriceSource1CodeSchema = z.enum(["FUND", "THEO", "VEND"]);
+
+export const PriceSourceSchema = z.strictObject({
+  PriceSource: PriceSource1CodeSchema,
+  Narrative: Max35TextSchema.optional(),
+});
+
+export const PriceSourceFormatChoiceSchema = choiceOf({
+  LocalMarketPlace: MICIdentifierSchema,
+  NonLocalMarketPlace: PriceSourceSchema,
+  PlaceAsDSS: GenericIdentification5Schema,
+});
+
+export const PriceInformation2Schema = z.strictObject({
+  Value: PriceRateOrAmountOrUnknownChoiceSchema,
+  ValueType: PriceValueType2CodeSchema.optional(),
+  Type: TypeOfPrice11CodeSchema.optional(),
+  ExtendedType: Extended350CodeSchema.optional(),
+  SourceOfPrice: PriceSourceFormatChoiceSchema.optional(),
+  QuotationDate: DateAndDateTimeChoiceSchema.optional(),
+  Yielded: YesNoIndicatorSchema.optional(),
+});
+
+export const TypeOfPrice33ChoiceSchema = choiceOf({
+  Code: TypeOfPrice11CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const PriceRateOrAmountOrUnknown3ChoiceSchema = choiceOf({
+  Rate: PercentageRateSchema,
+  Amount: RestrictedFINActiveOrHistoricCurrencyAnd13DecimalAmountSchema,
+  UnknownIndicator: YesNoIndicatorSchema,
+});
+
+export const PriceInformation22Schema = z.strictObject({
+  Type: TypeOfPrice33ChoiceSchema,
+  Value: PriceRateOrAmountOrUnknown3ChoiceSchema,
+  ValueType: YieldedOrValueType1ChoiceSchema,
+  SourceOfPrice: MarketIdentification91Schema.optional(),
+  QuotationDate: DateAndDateTime2ChoiceSchema.optional(),
+});
+
+export const TypeOfPrice28ChoiceSchema = choiceOf({
+  Code: TypeOfPrice11CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const PriceRateOrAmountOrUnknown2ChoiceSchema = choiceOf({
+  Rate: PercentageRateSchema,
+  Amount: ActiveOrHistoricCurrencyAnd13DecimalAmountSchema,
+  UnknownIndicator: YesNoIndicatorSchema,
+});
+
+export const PriceInformation29Schema = z.strictObject({
+  Type: TypeOfPrice28ChoiceSchema,
+  Value: PriceRateOrAmountOrUnknown2ChoiceSchema,
+  ValueType: YieldedOrValueType1ChoiceSchema,
+  SourceOfPrice: MarketIdentification98Schema.optional(),
+  QuotationDate: DateAndDateTime2ChoiceSchema.optional(),
+});
+
+export const PriceValueType12CodeSchema = z.enum(["DISC", "PARV", "PREM", "NEGA"]);
 
 export const Priority5CodeSchema = z.enum(["HIGH", "LOWW", "NORM", "URGT"]);
 
@@ -6175,22 +8020,19 @@ export const RejectionOrRepairStatus38ChoiceSchema = choiceOf({
   Reason: RejectionOrRepairReason32Schema,
 });
 
-export const ProprietaryReason4Schema = z.strictObject({
-  Reason: GenericIdentification30Schema.optional(),
-  AdditionalReasonInformation: Max210TextSchema.optional(),
-});
-
-export const ProprietaryStatusAndReason6Schema = z.strictObject({
-  ProprietaryStatus: GenericIdentification30Schema,
-  ProprietaryReason: z.array(ProprietaryReason4Schema).optional(),
-});
-
 export const ProcessingStatus67ChoiceSchema = choiceOf({
   Rejected: RejectionOrRepairStatus38ChoiceSchema,
   Repair: RejectionOrRepairStatus38ChoiceSchema,
   Cancelled: CancellationStatus14ChoiceSchema,
   AcknowledgedAccepted: AcknowledgedAcceptedStatus21ChoiceSchema,
   Proprietary: ProprietaryStatusAndReason6Schema,
+});
+
+export const TransactionProcessingStatus3CodeSchema = z.enum(["CAND", "PACK", "REJT", "REPR"]);
+
+export const ProcessingStatus68ChoiceSchema = choiceOf({
+  Code: TransactionProcessingStatus3CodeSchema,
+  Proprietary: GenericIdentification30Schema,
 });
 
 export const RejectionReason34CodeSchema = z.enum(["ADEA", "LATE", "CASH", "NRGM", "NRGN", "OTHR", "REFE"]);
@@ -6256,9 +8098,60 @@ export const ProprietaryData7Schema = z.strictObject({
   Data: ProprietaryData6Schema,
 });
 
+export const ProprietaryReason5Schema = z.strictObject({
+  Reason: GenericIdentification47Schema.optional(),
+  AdditionalReasonInformation: RestrictedFINXMax210TextSchema.optional(),
+});
+
+export const ProprietaryStatusAndReason7Schema = z.strictObject({
+  ProprietaryStatus: GenericIdentification47Schema,
+  ProprietaryReason: z.array(ProprietaryReason5Schema).optional(),
+});
+
 export const Provided1CodeSchema = z.enum(["NPRO", "PROV"]);
 
+export const Quantity6ChoiceSchema = choiceOf({
+  Quantity: FinancialInstrumentQuantity1ChoiceSchema,
+  OriginalAndCurrentFace: OriginalAndCurrentQuantities1Schema,
+});
+
+export const QuantityAndAvailability3Schema = z.strictObject({
+  Quantity: FinancialInstrumentQuantity33ChoiceSchema,
+  AvailabilityIndicator: YesNoIndicatorSchema,
+});
+
+export const QuantityAndAvailability4Schema = z.strictObject({
+  Quantity: FinancialInstrumentQuantity36ChoiceSchema,
+  AvailabilityIndicator: YesNoIndicatorSchema,
+});
+
+export const QuantityBreakdown61Schema = z.strictObject({
+  LotNumber: GenericIdentification37Schema.optional(),
+  LotQuantity: FinancialInstrumentQuantity33ChoiceSchema.optional(),
+  SecuritiesSubBalanceType: GenericIdentification30Schema.optional(),
+});
+
+export const QuantityBreakdown65Schema = z.strictObject({
+  LotNumber: GenericIdentification39Schema.optional(),
+  LotQuantity: FinancialInstrumentQuantity36ChoiceSchema.optional(),
+  SecuritiesSubBalanceType: GenericIdentification47Schema.optional(),
+});
+
+export const QuantitySearch2ChoiceSchema = choiceOf({
+  Quantity: FinancialInstrumentQuantitySearch2ChoiceSchema,
+  OriginalAndCurrentFace: FinancialInstrumentQuantitySearch2Schema,
+});
+
 export const QueryType2CodeSchema = z.enum(["ALLL", "CHNG", "MODF", "DELD"]);
+
+export const Rate2Schema = z.strictObject({
+  Sign: PlusOrMinusIndicatorSchema.optional(),
+  Rate: PercentageRateSchema,
+});
+
+export const RateType1CodeSchema = z.enum(["FIXE", "FORF", "VARI"]);
+
+export const ReceiveDelivery1CodeSchema = z.enum(["DELI", "RECE"]);
 
 export const References14Schema = z.strictObject({
   AccountOwnerTransactionIdentification: Max35TextSchema.optional(),
@@ -6300,11 +8193,37 @@ export const ReferredAgent3Schema = z.strictObject({
   ReferredPlacementAgent: PartyIdentification125ChoiceSchema.optional(),
 });
 
+export const Registration1CodeSchema = z.enum(["NREG", "YREG"]);
+
+export const Registration11ChoiceSchema = choiceOf({
+  Code: Registration1CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const Registration9ChoiceSchema = choiceOf({
+  Code: Registration1CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const RegistrationProcessingStatus1CodeSchema = z.enum(["PACK", "REJT"]);
+
 export const Reinvestment4Schema = z.strictObject({
   FinancialInstrumentDetails: FinancialInstrument87Schema,
   RequestedNAVCurrency: ActiveCurrencyCodeSchema.optional(),
   ReinvestmentPercentage: PercentageRateSchema,
 });
+
+export const RejectionReason69CodeSchema = z.enum(["SAFE", "ADEA", "LATE", "CAEV", "DDAT", "REFE", "OTHR", "DQUA", "DSEC", "INVB", "INVL", "INVN", "MINO", "MUNO", "VALR"]);
+
+export const RejectionReason71CodeSchema = z.enum(["ADEA", "LATE", "SAFE", "NRGM", "NRGN", "OTHR", "REFE", "INVM", "INVL"]);
+
+export const RejectionReason72CodeSchema = z.enum(["SAFE", "DQUA", "ADEA", "DSEC", "LATE", "CASH", "DDEA", "DTRD", "PLCE", "RTGS", "NCRR", "PHYS", "REFE", "DMON", "MINO", "BATC", "MUNO", "TXST", "SETS", "IIND", "CAEV", "CASY", "DDAT", "SETR", "SDUT", "INPS", "OTHR", "ICUS", "ICAG", "DEPT", "IEXE", "INVL", "INVB", "INVN", "VALR"]);
+
+export const RejectionReason73CodeSchema = z.enum(["SAFE", "DQUA", "ADEA", "DSEC", "LATE", "CASH", "DDEA", "DTRD", "PLCE", "RTGS", "NCRR", "PHYS", "REFE", "DMON", "MINO", "BATC", "MUNO", "TXST", "SETS", "IIND", "CAEV", "CASY", "DDAT", "SETR", "SDUT", "INPS", "OTHR", "ICUS", "ICAG", "DEPT", "IEXE", "INVB", "INVL", "INVN", "VALR"]);
+
+export const RejectionReason74CodeSchema = z.enum(["SAFE", "ADEA", "LATE", "NRGN", "REFE", "NRGM", "OTHR"]);
+
+export const RejectionReason76CodeSchema = z.enum(["ULNK", "SAFE", "DQUA", "ADEA", "RTGS", "NCRR", "DSEC", "DADR", "INIR", "CANC", "INTV", "INVA", "REFT", "PHYS", "REFE", "LACK", "LATE", "NMTY", "OPNM", "DMON", "OPTY", "DCAN", "DPRG", "EVNM", "STAT", "STAM", "SIGN", "SHAR", "MINO", "NRGM", "MLEG", "BATC", "CADE", "CASH", "DDEA", "OWNT", "NRGN", "MUNO", "REQW", "TXST", "REPA", "REPO", "REPP", "RREA", "REQM", "RERT", "RSPR", "SETS", "DTRD", "IIND", "PLCE", "INNA", "ICOL", "BPAR", "BREF", "BUSE", "CAEV", "CASY", "COMC", "CONL", "CPTY", "DDAT", "DISC", "DISE", "DORD", "FEEE", "SETR", "TERM", "VASU", "INPS", "SDUT", "FORF", "ICUS", "ICAG", "DEPT", "OTHR", "IEXE", "INVE", "PLIS"]);
 
 export const RelatedInvestigationData1Schema = z.strictObject({
   InvestigationIdentification: Max35TextSchema.optional(),
@@ -6330,6 +8249,46 @@ export const RemittanceLocation7Schema = z.strictObject({
   RemittanceIdentification: Max35TextSchema.optional(),
   RemittanceLocationDetails: z.array(RemittanceLocationData1Schema).optional(),
 });
+
+export const RepairReason4CodeSchema = z.enum(["BATC", "CAEV", "CASH", "CASY", "DDAT", "DDEA", "DMON", "DQUA", "DSEC", "DTRD", "IIND", "MINO", "MUNO", "NCRR", "PHYS", "PLCE", "REFE", "RTGS", "SAFE", "SETR", "SETS", "TXST", "INPS", "SDUT", "OTHR", "IEXE", "ICAG", "DEPT", "ICUS"]);
+
+export const RepairReason10ChoiceSchema = choiceOf({
+  Code: RepairReason4CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const RepairReason14ChoiceSchema = choiceOf({
+  Code: RepairReason4CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const RepairReason12Schema = z.strictObject({
+  Code: RepairReason14ChoiceSchema,
+  AdditionalReasonInformation: RestrictedFINXMax210TextSchema.optional(),
+});
+
+export const RepairReason6CodeSchema = z.enum(["BATC", "CAEV", "CASH", "CASY", "DDAT", "DDEA", "DMON", "DQUA", "DSEC", "DTRD", "IIND", "MINO", "MUNO", "NCRR", "PHYS", "PLCE", "REFE", "RTGS", "SAFE", "SETR", "SETS", "TXST", "INPS", "SDUT", "OTHR", "IEXE", "ICAG", "DEPT", "ICUS", "REPA", "CADE", "RERT", "RSPR", "VASU", "REPO", "REPP", "TERM", "FORF", "ADEA", "BUSE", "COMC", "FEEE", "INNA", "NRGM", "NRGN", "ULNK"]);
+
+export const RepairReason8Schema = z.strictObject({
+  Code: RepairReason10ChoiceSchema,
+  AdditionalReasonInformation: Max210TextSchema.optional(),
+});
+
+export const RepairStatus12ChoiceSchema = choiceOf({
+  NoSpecifiedReason: NoReasonCodeSchema,
+  Reason: RepairReason8Schema,
+});
+
+export const RepairStatus16ChoiceSchema = choiceOf({
+  NoSpecifiedReason: NoReasonCodeSchema,
+  Reason: RepairReason12Schema,
+});
+
+export const ReplacementProcessingStatus1CodeSchema = z.enum(["DEND", "EXCH", "INTE", "PACK", "PART", "PEND", "REJT", "REPL", "REPR"]);
+
+export const RepoCallAcknowledgementReason2CodeSchema = z.enum(["CALD", "CALP", "ADEA"]);
+
+export const RepoCallRequestStatus1CodeSchema = z.enum(["CACK", "DEND"]);
 
 export const TechnicalInputChannel1ChoiceSchema = choiceOf({
   Code: ExternalTechnicalInputChannel1CodeSchema,
@@ -6369,6 +8328,20 @@ export const ReportingSource1ChoiceSchema = choiceOf({
   Code: ExternalReportingSource1CodeSchema,
   Proprietary: Max35TextSchema,
 });
+
+export const RepurchaseType9CodeSchema = z.enum(["PAIR", "PADJ", "RATE", "CALL", "ROLP", "CADJ", "TOPU", "WTHD"]);
+
+export const RepurchaseType22ChoiceSchema = choiceOf({
+  Code: RepurchaseType9CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const RepurchaseType24ChoiceSchema = choiceOf({
+  Code: RepurchaseType9CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const RepurchaseType6CodeSchema = z.enum(["CADJ", "TOPU", "WTHD"]);
 
 export const RequestDetails22Schema = z.strictObject({
   Reference: References14Schema,
@@ -6418,9 +8391,201 @@ export const ReservationIdentification4Schema = z.strictObject({
   AccountIdentification: AccountIdentification4ChoiceSchema.optional(),
 });
 
+export const ResponseStatus1CodeSchema = z.enum(["ACCP", "ACCT", "REJT", "SUBR"]);
+
+export const RestrictedFINActiveCurrencyAndAmountSchema = z.strictObject({ Ccy: textType({ pattern: "[A-Z]{3,3}" }), Value: decimalType({ totalDigits: 14, fractionDigits: 5, minInclusive: 0 }) });
+
+export const RestrictedFINXMax52TextSchema = textType({min: 1, max: 52, pattern: "[0-9a-zA-Z/\\-\\?:\\(\\)\\.,'\\+ ]{1,52}"});
+
+export const Restriction5ChoiceSchema = choiceOf({
+  Code: OwnershipLegalRestrictions1CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const Restriction6ChoiceSchema = choiceOf({
+  Code: OwnershipLegalRestrictions1CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
 export const RoundingParameters1Schema = z.strictObject({
   RoundingModulus: DecimalNumberSchema.optional(),
   RoundingDirection: RoundingDirection1CodeSchema,
+});
+
+export const SafekeepingPlace3CodeSchema = z.enum(["SHHE"]);
+
+export const SafekeepingPlaceTypeAndText8Schema = z.strictObject({
+  SafekeepingPlaceType: SafekeepingPlace3CodeSchema,
+  Identification: Max35TextSchema.optional(),
+});
+
+export const SafekeepingPlace1CodeSchema = z.enum(["CUST", "ICSD", "NCSD", "SHHE"]);
+
+export const SafekeepingPlaceTypeAndIdentification1Schema = z.strictObject({
+  SafekeepingPlaceType: SafekeepingPlace1CodeSchema,
+  Identification: AnyBICDec2014IdentifierSchema,
+});
+
+export const SafekeepingPlaceFormat29ChoiceSchema = choiceOf({
+  Identification: SafekeepingPlaceTypeAndText8Schema,
+  Country: CountryCodeSchema,
+  TypeAndIdentification: SafekeepingPlaceTypeAndIdentification1Schema,
+  Proprietary: GenericIdentification78Schema,
+});
+
+export const SafeKeepingPlace3Schema = z.strictObject({
+  SafekeepingPlaceFormat: SafekeepingPlaceFormat29ChoiceSchema.optional(),
+  LEI: LEIIdentifierSchema.optional(),
+});
+
+export const SafekeepingPlaceTypeAndText15Schema = z.strictObject({
+  SafekeepingPlaceType: SafekeepingPlace3CodeSchema,
+  Identification: RestrictedFINXMax30TextSchema.optional(),
+});
+
+export const SafekeepingPlaceFormat39ChoiceSchema = choiceOf({
+  Identification: SafekeepingPlaceTypeAndText15Schema,
+  Country: CountryCodeSchema,
+  TypeAndIdentification: SafekeepingPlaceTypeAndIdentification1Schema,
+  Proprietary: GenericIdentification85Schema,
+});
+
+export const SafeKeepingPlace4Schema = z.strictObject({
+  SafekeepingPlaceFormat: SafekeepingPlaceFormat39ChoiceSchema.optional(),
+  LEI: LEIIdentifierSchema.optional(),
+});
+
+export const SafekeepingPlaceFormat41ChoiceSchema = choiceOf({
+  Identification: SafekeepingPlaceTypeAndText8Schema,
+  Country: CountryCodeSchema,
+  DigitalLedgerIdentification: DTI2024IdentifierSchema,
+  TypeAndIdentification: SafekeepingPlaceTypeAndIdentification1Schema,
+  Proprietary: GenericIdentification78Schema,
+});
+
+export const SafeKeepingPlace5Schema = z.strictObject({
+  SafekeepingPlaceFormat: SafekeepingPlaceFormat41ChoiceSchema.optional(),
+  LEI: LEIIdentifierSchema.optional(),
+});
+
+export const SafekeepingAccount2Schema = z.strictObject({
+  Identification: AccountIdentificationFormatChoiceSchema,
+  FungibleIndicator: YesNoIndicatorSchema,
+  Name: Max35TextSchema.optional(),
+  Designation: Max35TextSchema.optional(),
+  IntermediaryInformation: z.array(Intermediary11Schema).max(10).optional(),
+  AccountOwner: PartyIdentification2ChoiceSchema.optional(),
+  AccountServicer: PartyIdentification2ChoiceSchema.optional(),
+});
+
+export const SafekeepingPlaceAsCodeAndPartyIdentificationSchema = z.strictObject({
+  PlaceSafekeeping: SafekeepingPlace1CodeSchema,
+  Narrative: Max35TextSchema.optional(),
+  Party: PartyIdentification3Schema.optional(),
+});
+
+export const SafekeepingPlaceFormatChoiceSchema = choiceOf({
+  Identification: SafekeepingPlaceAsCodeAndPartyIdentificationSchema,
+  IdentificationAsDSS: GenericIdentification5Schema,
+  IdentificationAsCountry: CountryCodeSchema,
+});
+
+export const SecuritiesAccount25Schema = z.strictObject({
+  Identification: Max35TextSchema,
+  Type: PurposeCode7ChoiceSchema.optional(),
+  Name: Max70TextSchema.optional(),
+});
+
+export const SecuritiesAccount26Schema = z.strictObject({
+  Identification: Max35TextSchema,
+  Type: PurposeCode7ChoiceSchema.optional(),
+  Name: Max70TextSchema.optional(),
+  Designation: Max35TextSchema.optional(),
+});
+
+export const SecuritiesAccount34Schema = z.strictObject({
+  Identification: RestrictedFINXMax35TextSchema,
+  Type: PurposeCode8ChoiceSchema.optional(),
+  Name: Max70TextSchema.optional(),
+});
+
+export const SecuritiesAccount42Schema = z.strictObject({
+  Identification: RestrictedFINXMax35TextSchema,
+  Type: PurposeCode8ChoiceSchema.optional(),
+  Name: Max70TextSchema.optional(),
+  Designation: RestrictedFINXMax35TextSchema.optional(),
+});
+
+export const SecuritiesBalanceType12CodeSchema = z.enum(["BLOK", "AWAS", "BLCA", "BLOT", "BLOV", "BORR", "BODE", "BORE", "COLI", "COLO", "LOAN", "LODE", "LORE", "MARG", "PECA", "PEDA", "PEND", "PENR", "PLED", "REGO", "RSTR", "OTHR", "TRAN", "DRAW", "WDOC", "BTRA"]);
+
+export const SecuritiesBalanceType13CodeSchema = z.enum(["BLOK", "AWAS", "AVAI", "NOMI", "PLED", "REGO", "RSTR", "OTHR", "SPOS", "UNRG", "ISSU", "QUAS", "COLA"]);
+
+export const SecuritiesBalanceType1CodeSchema = z.enum(["BLOK", "BORR", "COLI", "COLO", "LOAN", "MARG", "PDMT", "PRMT", "PRUM", "PECA", "PEND", "PENR", "PLED", "PDUM", "REGO", "RSTR", "OTHR", "TRAN", "DRAW", "WDOC", "BTRA"]);
+
+export const SecuritiesBalanceType7ChoiceSchema = choiceOf({
+  Code: SecuritiesBalanceType13CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const SecuritiesBalanceType7CodeSchema = z.enum(["COLA", "OTHR", "CLEN", "DIRT", "NOMI", "SPOS", "UNRG", "ISSU", "QUAS"]);
+
+export const SecuritiesBalanceType8ChoiceSchema = choiceOf({
+  Code: SecuritiesBalanceType11CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const SecuritiesRTGS4ChoiceSchema = choiceOf({
+  Indicator: YesNoIndicatorSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const SecuritiesRTGS5ChoiceSchema = choiceOf({
+  Indicator: YesNoIndicatorSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const SecuritiesSettlementStatus1CodeSchema = z.enum(["PEND", "PENF"]);
+
+export const SecuritiesSettlementStatus2CodeSchema = z.enum(["PEND", "PENF", "USET", "SETT", "PAIN"]);
+
+export const SecuritiesStatementType1CodeSchema = z.enum(["CUST", "ACCT"]);
+
+export const SecuritiesSubBalanceTypeAndQuantityBreakdown5Schema = z.strictObject({
+  Type: SecuritiesBalanceType6ChoiceSchema,
+  QuantityBreakdown: z.array(QuantityBreakdown61Schema).optional(),
+});
+
+export const SecuritiesSubBalanceTypeAndQuantityBreakdown6Schema = z.strictObject({
+  Type: SecuritiesBalanceType8ChoiceSchema,
+  QuantityBreakdown: z.array(QuantityBreakdown65Schema).optional(),
+});
+
+export const SecuritiesTransactionReport5Schema = z.strictObject({
+  ReportNumber: Number3ChoiceSchema.optional(),
+  QueryReference: Max35TextSchema.optional(),
+  ReportIdentification: Max35TextSchema.optional(),
+  ReportDateTime: DateAndDateTime2ChoiceSchema.optional(),
+  ReportPeriod: Period7ChoiceSchema.optional(),
+  QueryType: MovementResponseType1CodeSchema.optional(),
+  Frequency: Frequency22ChoiceSchema.optional(),
+  UpdateType: UpdateType15ChoiceSchema,
+  ActivityIndicator: YesNoIndicatorSchema,
+});
+
+export const SecuritiesTransactionType24CodeSchema = z.enum(["AUTO", "BYIY", "BSBK", "CNCB", "COLI", "COLO", "CORP", "CONV", "RELE", "ETFT", "OWNE", "OWNI", "ISSU", "MKDW", "CLAI", "MKUP", "NETT", "NSYN", "PAIR", "PLAC", "PORT", "REAL", "REDM", "REPU", "RVPO", "SECB", "SECL", "SBBK", "SUBS", "SWIF", "SWIT", "SYND", "TRAD", "TRPO", "TRVO", "TURN", "REDI"]);
+
+export const SecuritiesTransactionType26CodeSchema = z.enum(["BSBK", "COLI", "COLO", "MKDW", "MKUP", "NETT", "NSYN", "PAIR", "PLAC", "PORT", "REAL", "REDM", "REPU", "RODE", "RVPO", "SECB", "SECL", "SUBS", "SYND", "TBAC", "TRAD", "TRPO", "TRVO", "TURN", "BYIY", "CNCB", "OWNE", "FCTA", "OWNI", "RELE", "SBRE", "CORP", "CLAI", "AUTO", "SWIF", "SWIT", "CONV", "ETFT", "ISSU", "SLRE", "INSP", "SBBK", "REDI", "REBL"]);
+
+export const SecuritiesTransactionType27CodeSchema = z.enum(["BSBK", "BYIY", "CNCB", "COLI", "COLO", "CONV", "FCTA", "INSP", "ISSU", "MKDW", "MKUP", "NETT", "NSYN", "OWNE", "OWNI", "PAIR", "PLAC", "PORT", "REAL", "REDI", "REDM", "RELE", "REPU", "RODE", "RVPO", "SBBK", "SBRE", "SECB", "SECL", "SLRE", "SUBS", "SYND", "TBAC", "TRAD", "TRPO", "TRVO", "TURN", "CLAI", "CORP", "AUTO", "SWIF", "SWIT", "ETFT", "REBL", "TRIN", "TOUT"]);
+
+export const SecuritiesTransactionType44ChoiceSchema = choiceOf({
+  Code: SecuritiesTransactionType26CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const SecuritiesTransactionType48ChoiceSchema = choiceOf({
+  Code: SecuritiesTransactionType27CodeSchema,
+  Proprietary: GenericIdentification30Schema,
 });
 
 export const SequenceRange1Schema = z.strictObject({
@@ -6434,6 +8599,40 @@ export const SequenceRange1ChoiceSchema = choiceOf({
   FromToSequence: SequenceRange1Schema,
   EqualSequence: Max35TextSchema,
   NotEqualSequence: Max35TextSchema,
+});
+
+export const SettlementConditionModificationStatus1CodeSchema = z.enum(["PACK", "REJT", "MODP", "DEND", "MODC"]);
+
+export const SettlementDate4CodeSchema = z.enum(["WISS"]);
+
+export const SettlementDateCode7ChoiceSchema = choiceOf({
+  Code: SettlementDate4CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const SettlementDate17ChoiceSchema = choiceOf({
+  Date: DateAndDateTime2ChoiceSchema,
+  DateCode: SettlementDateCode7ChoiceSchema,
+});
+
+export const SettlementDateCode8ChoiceSchema = choiceOf({
+  Code: DateType4CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const SettlementDate19ChoiceSchema = choiceOf({
+  Date: DateAndDateTime2ChoiceSchema,
+  DateCode: SettlementDateCode8ChoiceSchema,
+});
+
+export const SettlementDateCode9ChoiceSchema = choiceOf({
+  Code: SettlementDate4CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const SettlementDate20ChoiceSchema = choiceOf({
+  Date: DateAndDateTime2ChoiceSchema,
+  DateCode: SettlementDateCode9ChoiceSchema,
 });
 
 export const SettlementDateTimeIndication1Schema = z.strictObject({
@@ -6468,10 +8667,93 @@ export const SettlementInstruction9Schema = z.strictObject({
   ThirdReimbursementAgentAccount: CashAccount38Schema.optional(),
 });
 
+export const TradeDateCode3ChoiceSchema = choiceOf({
+  Code: DateType3CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const TradeDate8ChoiceSchema = choiceOf({
+  Date: DateAndDateTime2ChoiceSchema,
+  DateCode: TradeDateCode3ChoiceSchema,
+});
+
+export const SettlementParties78Schema = z.strictObject({
+  Depository: PartyIdentification148Schema.optional(),
+  Party1: PartyIdentificationAndAccount170Schema.optional(),
+  Party2: PartyIdentificationAndAccount170Schema.optional(),
+  Party3: PartyIdentificationAndAccount170Schema.optional(),
+  Party4: PartyIdentificationAndAccount170Schema.optional(),
+  Party5: PartyIdentificationAndAccount170Schema.optional(),
+});
+
+export const TransactionDetails126Schema = z.strictObject({
+  FinancialInstrumentIdentification: SecurityIdentification19Schema,
+  SettlementQuantity: Quantity6ChoiceSchema,
+  SettlementAmount: AmountAndDirection51Schema.optional(),
+  TradeDate: TradeDate8ChoiceSchema.optional(),
+  SettlementDate: SettlementDate17ChoiceSchema,
+  DeliveringSettlementParties: SettlementParties78Schema.optional(),
+  ReceivingSettlementParties: SettlementParties78Schema.optional(),
+});
+
+export const SettlementOrIntraPosition3ChoiceSchema = choiceOf({
+  IntraPositionMovement: IntraPosition6Schema,
+  SettlementTransaction: TransactionDetails126Schema,
+});
+
+export const SettlementParties109Schema = z.strictObject({
+  Depository: PartyIdentification191Schema.optional(),
+  Party1: PartyIdentificationAndAccount215Schema.optional(),
+  Party2: PartyIdentificationAndAccount215Schema.optional(),
+  Party3: PartyIdentificationAndAccount215Schema.optional(),
+  Party4: PartyIdentificationAndAccount215Schema.optional(),
+  Party5: PartyIdentificationAndAccount215Schema.optional(),
+});
+
+export const SettlementParties125Schema = z.strictObject({
+  Depository: PartyIdentification314Schema.optional(),
+  Party1: PartyIdentificationAndAccount195Schema.optional(),
+  Party2: PartyIdentificationAndAccount195Schema.optional(),
+  Party3: PartyIdentificationAndAccount195Schema.optional(),
+  Party4: PartyIdentificationAndAccount195Schema.optional(),
+  Party5: PartyIdentificationAndAccount195Schema.optional(),
+});
+
+export const SettlementQueryType1CodeSchema = z.enum(["INST", "STTS", "STPD"]);
+
 export const SettlementStatus16ChoiceSchema = choiceOf({
   Pending: PendingStatus36ChoiceSchema,
   Failing: FailingStatus9ChoiceSchema,
   Proprietary: ProprietaryStatusAndReason6Schema,
+});
+
+export const SettlementStatus26ChoiceSchema = choiceOf({
+  Code: SecuritiesSettlementStatus1CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const SettlementStatus32ChoiceSchema = choiceOf({
+  Pending: PendingStatus73ChoiceSchema,
+  Failing: FailingStatus15ChoiceSchema,
+  Proprietary: ProprietaryStatusAndReason6Schema,
+});
+
+export const SettlementStatus34ChoiceSchema = choiceOf({
+  Pending: PendingStatus79ChoiceSchema,
+  Failing: FailingStatus17ChoiceSchema,
+  Proprietary: ProprietaryStatusAndReason6Schema,
+});
+
+export const SettlementSystemMethod1CodeSchema = z.enum(["NSET", "YSET"]);
+
+export const SettlementSystemMethod4ChoiceSchema = choiceOf({
+  Code: SettlementSystemMethod1CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const SettlementSystemMethod5ChoiceSchema = choiceOf({
+  Code: SettlementSystemMethod1CodeSchema,
+  Proprietary: GenericIdentification47Schema,
 });
 
 export const SettlementTimeRequest2Schema = z.strictObject({
@@ -6479,6 +8761,39 @@ export const SettlementTimeRequest2Schema = z.strictObject({
   TillTime: ISOTimeSchema.optional(),
   FromTime: ISOTimeSchema.optional(),
   RejectTime: ISOTimeSchema.optional(),
+});
+
+export const SettlementTransactionCondition12CodeSchema = z.enum(["ADEA", "ASGN", "BUTC", "CLEN", "DLWM", "DIRT", "DRAW", "EXER", "EXPI", "FRCL", "KNOC", "NOMC", "NACT", "PENS", "PHYS", "RHYP", "RPTO", "RESI", "SHOR", "SPDL", "SPST", "TRAN", "TRIP", "UNEX", "INTS", "BPSS"]);
+
+export const SettlementTransactionCondition16CodeSchema = z.enum(["ADEA", "ASGN", "BUTC", "CLEN", "DLWM", "DIRT", "DRAW", "EXER", "EXPI", "FRCL", "GATE", "INTS", "KNOC", "NOMC", "NACT", "BPSS", "PENS", "PHYS", "RHYP", "RPTO", "RESI", "SHOR", "SPDL", "SPST", "TRAN", "TRIP", "UNEX"]);
+
+export const SettlementTransactionCondition34ChoiceSchema = choiceOf({
+  Code: SettlementTransactionCondition12CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const SettlementTransactionCondition37ChoiceSchema = choiceOf({
+  Code: SettlementTransactionCondition12CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const SettlementTransactionCondition41ChoiceSchema = choiceOf({
+  Code: SettlementTransactionCondition16CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const SettlementTransactionCondition5CodeSchema = z.enum(["PART", "NPAR", "PARC", "PARQ"]);
+
+export const SettlingCapacity2CodeSchema = z.enum(["SAGE", "CUST", "SPRI", "RISP"]);
+
+export const SettlingCapacity7ChoiceSchema = choiceOf({
+  Code: SettlingCapacity2CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const SettlingCapacity8ChoiceSchema = choiceOf({
+  Code: SettlingCapacity2CodeSchema,
+  Proprietary: GenericIdentification47Schema,
 });
 
 export const StandingOrder10Schema = z.strictObject({
@@ -6542,14 +8857,110 @@ export const StandingOrderIdentification8Schema = z.strictObject({
   AccountOwner: BranchAndFinancialInstitutionIdentification8Schema.optional(),
 });
 
+export const StatementUpdateTypeCodeSchema = z.enum(["COMP", "DELT"]);
+
+export const Statement8Schema = z.strictObject({
+  Reference: Max35TextSchema,
+  StatementPeriod: DatePeriodDetailsSchema,
+  CreationDateTime: DateAndDateTimeChoiceSchema.optional(),
+  Frequency: EventFrequency1CodeSchema.optional(),
+  UpdateType: StatementUpdateTypeCodeSchema,
+  ActivityIndicator: YesNoIndicatorSchema,
+  ReportNumber: Max5NumericTextSchema.optional(),
+});
+
+export const StatementBasis1CodeSchema = z.enum(["CONT", "SETT", "TRAD"]);
+
+export const StatementBasis2CodeSchema = z.enum(["SETT", "TRAD"]);
+
+export const StatementBasis7ChoiceSchema = choiceOf({
+  Code: StatementBasis1CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const StatementBasis9ChoiceSchema = choiceOf({
+  Code: StatementBasis1CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const StatementBasisCodeAndDSSCodeChoiceSchema = choiceOf({
+  StatementBasisAsCode: StatementBasis1CodeSchema,
+  StatementBasisAsDSS: GenericIdentification7Schema,
+});
+
 export const StatementFrequencyReason2ChoiceSchema = choiceOf({
   Code: EventFrequency9CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const StatementStructure1CodeSchema = z.enum(["STAT", "TRAN"]);
+
+export const StatementUpdateTypeCodeAndDSSCodeChoiceSchema = choiceOf({
+  StatementUpdateTypeAsCode: StatementUpdateTypeCodeSchema,
+  StatementUpdateTypeAsDSS: GenericIdentification7Schema,
+});
+
+export const SubAccountIdentification6Schema = z.strictObject({
+  Identification: AccountIdentificationFormatChoiceSchema,
+  ActivityIndicator: YesNoIndicatorSchema,
+  TransactionOnSubAccount: z.array(InvestmentFundTransactionsByFund2Schema).optional(),
+});
+
+export const SubBalanceInformation2Schema = z.strictObject({
+  Quantity: SubBalanceQuantity1ChoiceSchema,
+  SubBalanceType: SecuritiesBalanceType1CodeSchema.optional(),
+  ExtendedSubBalanceType: Extended350CodeSchema.optional(),
+  AdditionalBalanceBreakdownDetails: z.array(AdditionalBalanceInformation2Schema).optional(),
+});
+
+export const SubBalanceQuantity8ChoiceSchema = choiceOf({
+  Quantity: FinancialInstrumentQuantity33ChoiceSchema,
+  Proprietary: GenericIdentification56Schema,
+  QuantityAndAvailability: QuantityAndAvailability3Schema,
+});
+
+export const SubBalanceQuantity9ChoiceSchema = choiceOf({
+  Quantity: FinancialInstrumentQuantity36ChoiceSchema,
+  Proprietary: GenericIdentification144Schema,
+  QuantityAndAvailability: QuantityAndAvailability4Schema,
+});
+
+export const SubBalanceType11ChoiceSchema = choiceOf({
+  Code: SecuritiesBalanceType12CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const SubBalanceType12ChoiceSchema = choiceOf({
+  Code: SecuritiesBalanceType7CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const SubBalanceType13ChoiceSchema = choiceOf({
+  Code: SecuritiesBalanceType12CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const SubBalanceType14ChoiceSchema = choiceOf({
+  Code: SecuritiesBalanceType7CodeSchema,
   Proprietary: GenericIdentification47Schema,
 });
 
 export const SystemAndCurrency1Schema = z.strictObject({
   SystemIdentification: SystemIdentification2ChoiceSchema,
   SystemCurrency: ActiveCurrencyCodeSchema.optional(),
+});
+
+export const SystemEventType4ChoiceSchema = choiceOf({
+  Code: ExternalSystemEventType1CodeSchema,
+  Proprietary: GenericIdentification1Schema,
+});
+
+export const SystemEvent3Schema = z.strictObject({
+  Type: SystemEventType4ChoiceSchema,
+  ScheduledTime: ISODateTimeSchema,
+  EffectiveTime: ISODateTimeSchema.optional(),
+  StartTime: ISODateTimeSchema.optional(),
+  EndTime: ISODateTimeSchema.optional(),
 });
 
 export const SystemMemberStatus1ChoiceSchema = choiceOf({
@@ -6565,6 +8976,18 @@ export const SystemMemberType1ChoiceSchema = choiceOf({
 export const SystemPartyIdentification8Schema = z.strictObject({
   Identification: PartyIdentification136Schema,
   ResponsiblePartyIdentification: PartyIdentification136Schema.optional(),
+});
+
+export const TaxLiability1CodeSchema = z.enum(["PRIN", "AGEN"]);
+
+export const TaxCapacityParty4ChoiceSchema = choiceOf({
+  Code: TaxLiability1CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const TaxCapacityParty5ChoiceSchema = choiceOf({
+  Code: TaxLiability1CodeSchema,
+  Proprietary: GenericIdentification47Schema,
 });
 
 export const TaxWithholdingMethod3CodeSchema = z.enum(["MITX", "INVE", "ACCT", "EXMT", "REPT", "CRTF", "WHCO", "WTHD", "WTRE"]);
@@ -6600,6 +9023,18 @@ export const TotalTransactions6Schema = z.strictObject({
   TotalCreditEntries: NumberAndSumOfTransactions1Schema.optional(),
   TotalDebitEntries: NumberAndSumOfTransactions1Schema.optional(),
   TotalEntriesPerBankTransactionCode: z.array(TotalsPerBankTransactionCode5Schema).optional(),
+});
+
+export const TotalValueInPageAndStatementSchema = z.strictObject({
+  TotalHoldingsValueOfPage: ActiveCurrencyAndAmountSchema.optional(),
+  TotalHoldingsValueOfStatement: ActiveCurrencyAndAmountSchema,
+});
+
+export const TotalValueInPageAndStatement1Schema = z.strictObject({
+  TotalHoldingsValueOfPage: AmountAndDirection6Schema.optional(),
+  TotalHoldingsValueOfStatement: AmountAndDirection6Schema,
+  TotalBookValueOfStatement: AmountAndDirection6Schema.optional(),
+  TotalEligibleCollateralValue: AmountAndDirection6Schema.optional(),
 });
 
 export const TrackerData8Schema = z.strictObject({
@@ -6751,11 +9186,47 @@ export const TrackerStatusAndTransaction21Schema = z.strictObject({
   Transaction: z.array(TrackerPaymentTransaction15Schema).min(1),
 });
 
+export const TradeDateCode4ChoiceSchema = choiceOf({
+  Code: DateType3CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const TradeDate9ChoiceSchema = choiceOf({
+  Date: DateAndDateTime2ChoiceSchema,
+  DateCode: TradeDateCode4ChoiceSchema,
+});
+
+export const TradeTransactionCondition4CodeSchema = z.enum(["CBNS", "XBNS", "CCPN", "XCPN", "CDIV", "XDIV", "CRTS", "XRTS", "CWAR", "XWAR", "SPCU", "SPEX", "GTDL", "BCRO", "BCRP", "BCFD", "BCBL", "BCBN", "MAPR", "NEGO", "NMPR", "BCPD"]);
+
+export const TradeTransactionCondition5ChoiceSchema = choiceOf({
+  Code: TradeTransactionCondition4CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const TransactionActivity1CodeSchema = z.enum(["BOLE", "CLAI", "COLL", "CORP", "SETT"]);
+
+export const TransactionActivity3ChoiceSchema = choiceOf({
+  Code: TransactionActivity1CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const TransactionActivity4ChoiceSchema = choiceOf({
+  Code: TransactionActivity1CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
 export const TransactionChannel2CodeSchema = z.enum(["FIAD", "HOBA", "BRAN"]);
 
 export const TransactionChannelType1ChoiceSchema = choiceOf({
   Code: TransactionChannel2CodeSchema,
   Proprietary: GenericIdentification47Schema,
+});
+
+export const TransactionIdentifications34Schema = z.strictObject({
+  AccountOwnerTransactionIdentification: RestrictedFINXMax16TextSchema,
+  AccountServicerTransactionIdentification: RestrictedFINXMax16TextSchema.optional(),
+  MarketInfrastructureTransactionIdentification: RestrictedFINXMax16TextSchema.optional(),
+  ProcessorTransactionIdentification: RestrictedFINXMax16TextSchema.optional(),
 });
 
 export const TransactionReferences7Schema = z.strictObject({
@@ -6785,6 +9256,20 @@ export const TransactionReferences8Schema = z.strictObject({
   UETR: UUIDv4IdentifierSchema.optional(),
   MandateIdentification: Max35TextSchema.optional(),
   CreditorSchemeIdentification: PartyIdentification272Schema.optional(),
+});
+
+export const TypeOfPrice14CodeSchema = z.enum(["AVER"]);
+
+export const TypeOfPrice17CodeSchema = z.enum(["BIDE", "OFFR", "NAVL", "CREA", "CANC", "INTE", "SWNG", "MIDD", "RINV", "SWIC", "MRKT", "INDC", "DDVR", "ACTU"]);
+
+export const TypeOfPrice29ChoiceSchema = choiceOf({
+  Code: TypeOfPrice14CodeSchema,
+  Proprietary: GenericIdentification30Schema,
+});
+
+export const TypeOfPrice32ChoiceSchema = choiceOf({
+  Code: TypeOfPrice14CodeSchema,
+  Proprietary: GenericIdentification47Schema,
 });
 
 export const UnderlyingGroupInformation1Schema = z.strictObject({
@@ -6878,6 +9363,20 @@ export const UnderlyingTransaction8ChoiceSchema = choiceOf({
   Initiation: UnderlyingPaymentInstruction9Schema,
   Interbank: UnderlyingPaymentTransaction8Schema,
   StatementEntry: UnderlyingStatementEntry3Schema,
+});
+
+export const UnmatchedReason12CodeSchema = z.enum(["ADEA", "ACRU", "IIND", "CPCA", "CLAT", "NCRR", "DDEA", "DSEC", "DQUA", "LEOG", "LATE", "MIME", "CMIS", "NMAS", "DTRA", "OTHR", "FRAP", "PHYS", "INPS", "PLCE", "PODU", "DEPT", "ICAG", "ICUS", "IEXE", "REGD", "RTGS", "SAFE", "DMON", "SETS", "SETR", "TXST", "DTRD", "DELN", "UNBR", "DDAT", "DMCT", "DCMX"]);
+
+export const UnmatchedReason14CodeSchema = z.enum(["ADEA", "ACRU", "CHAR", "TERM", "IIND", "CPCA", "CLAT", "NCRR", "DDEA", "EXEC", "DSEC", "DQUA", "FORF", "LEOG", "INVE", "LATE", "MCAN", "MIME", "CMIS", "NMAS", "DTRA", "OTHR", "FRAP", "PHYS", "PLIS", "INPS", "PLCE", "PODU", "DEPT", "ICAG", "ICUS", "IEXE", "REGD", "REPA", "CADE", "REPP", "REPO", "RERT", "RSPR", "RTGS", "SAFE", "DMON", "DDAT", "SETS", "SETR", "TXST", "DTRD", "DEAL", "DELN", "UNBR", "VASU", "DCMX", "DMCT"]);
+
+export const UpdateType16ChoiceSchema = choiceOf({
+  Code: StatementUpdateType1CodeSchema,
+  Proprietary: GenericIdentification47Schema,
+});
+
+export const YieldedOrValueType2ChoiceSchema = choiceOf({
+  Yielded: YesNoIndicatorSchema,
+  ValueType: PriceValueType12CodeSchema,
 });
 
 const f = (d: FieldDescriptor): FieldDescriptor => d;
@@ -7808,11 +10307,37 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "RelatedAccountDetails", isoId: "_UF7QkGB1EeaHEJD5P6-ccw", xmlTag: "RltdAcctDtls", displayName: displayName("RelatedAccountDetails"), kind: "component", type: "GenericIdentification1", required: false }),
     ],
   },
+  "SimpleIdentificationInformation4": {
+    name: "SimpleIdentificationInformation4",
+    isoId: "_nhqokSxxEeKgiYs1KJCQUg",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_n2FZYSxxEeKgiYs1KJCQUg", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: true }),
+    ],
+  },
+  "AccountIdentification26": {
+    name: "AccountIdentification26",
+    isoId: "_ku_soSxxEeKgiYs1KJCQUg",
+    kind: "component",
+    fields: [
+      f({ name: "Proprietary", isoId: "_lDQscSxxEeKgiYs1KJCQUg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "SimpleIdentificationInformation4", required: true }),
+    ],
+  },
   "AnyBICDec2014Identifier": {
     name: "AnyBICDec2014Identifier",
     isoId: "_jp-90kI6EeirV6K70JJQ8Q",
     kind: "text",
     pattern: "[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}",
+  },
+  "GenericIdentification36": {
+    name: "GenericIdentification36",
+    isoId: "_ARhDQNokEeC60axPepSq7g_-809870990",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_ARhDQdokEeC60axPepSq7g_-923710056", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "Issuer", isoId: "_ARqNMNokEeC60axPepSq7g_-1920782409", xmlTag: "Issr", displayName: displayName("Issuer"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "SchemeName", isoId: "_ARqNMdokEeC60axPepSq7g_1669070272", xmlTag: "SchmeNm", displayName: displayName("SchemeName"), kind: "text", type: "Max35Text", required: false }),
+    ],
   },
   "Max350Text": {
     name: "Max350Text",
@@ -7851,6 +10376,110 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Address", isoId: "_PZleQNp-Ed-ak6NoX_4Aeg_670261447", xmlTag: "Adr", displayName: displayName("Address"), kind: "component", type: "PostalAddress1", required: false }),
     ],
   },
+  "PartyIdentification120Choice": {
+    name: "PartyIdentification120Choice",
+    isoId: "_Vul5MbpYEeifFaUMRKyMMw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "AnyBIC", isoId: "_V5dscbpYEeifFaUMRKyMMw", xmlTag: "AnyBIC", displayName: displayName("AnyBIC"), kind: "text", type: "AnyBICDec2014Identifier", required: true }),
+      f({ name: "ProprietaryIdentification", isoId: "_V5dsc7pYEeifFaUMRKyMMw", xmlTag: "PrtryId", displayName: displayName("ProprietaryIdentification"), kind: "component", type: "GenericIdentification36", required: true }),
+      f({ name: "NameAndAddress", isoId: "_V5dsdbpYEeifFaUMRKyMMw", xmlTag: "NmAndAdr", displayName: displayName("NameAndAddress"), kind: "component", type: "NameAndAddress5", required: true }),
+    ],
+  },
+  "Account29": {
+    name: "Account29",
+    isoId: "_AoInb9LDEeiN28wlpBQScw",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_A5igc9LDEeiN28wlpBQScw", xmlTag: "Id", displayName: displayName("Identification"), kind: "component", type: "AccountIdentification26", required: true }),
+      f({ name: "AccountServicer", isoId: "_A5ige9LDEeiN28wlpBQScw", xmlTag: "AcctSvcr", displayName: displayName("AccountServicer"), kind: "choice", type: "PartyIdentification120Choice", required: false }),
+    ],
+  },
+  "RestrictedFINXMax35Text": {
+    name: "RestrictedFINXMax35Text",
+    isoId: "_XZTG1tp-Ed-ak6NoX_4Aeg_552913938",
+    kind: "text",
+    minLength: 1,
+    maxLength: 35,
+    pattern: "[0-9a-zA-Z/\\-\\?:\\(\\)\\.,'\\+ ]{1,35}",
+  },
+  "SimpleIdentificationInformation1": {
+    name: "SimpleIdentificationInformation1",
+    isoId: "_WelLCdp-Ed-ak6NoX_4Aeg_187646079",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_WelLCtp-Ed-ak6NoX_4Aeg_-1806498627", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "RestrictedFINXMax35Text", required: true }),
+    ],
+  },
+  "AccountIdentification4": {
+    name: "AccountIdentification4",
+    isoId: "_WO8MiNp-Ed-ak6NoX_4Aeg_672442635",
+    kind: "component",
+    fields: [
+      f({ name: "Proprietary", isoId: "_WO8Midp-Ed-ak6NoX_4Aeg_-1613659809", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "SimpleIdentificationInformation1", required: true }),
+    ],
+  },
+  "RestrictedFINXMax34Text": {
+    name: "RestrictedFINXMax34Text",
+    isoId: "_XZTG1Np-Ed-ak6NoX_4Aeg_-2016982080",
+    kind: "text",
+    minLength: 1,
+    maxLength: 34,
+    pattern: "([0-9a-zA-Z\\-\\?:\\(\\)\\.,'\\+ ]([0-9a-zA-Z\\-\\?:\\(\\)\\.,'\\+ ]*(/[0-9a-zA-Z\\-\\?:\\(\\)\\.,'\\+ ])?)*)",
+  },
+  "Max4AlphaNumericText": {
+    name: "Max4AlphaNumericText",
+    isoId: "_YXlUBdp-Ed-ak6NoX_4Aeg_-2067559309",
+    kind: "text",
+    minLength: 1,
+    maxLength: 4,
+    pattern: "[a-zA-Z0-9]{1,4}",
+  },
+  "GenericIdentification84": {
+    name: "GenericIdentification84",
+    isoId: "_cdRpTZKQEeWHWpTQn1FFVg",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_cdRpUZKQEeWHWpTQn1FFVg", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "RestrictedFINXMax34Text", required: true }),
+      f({ name: "Issuer", isoId: "_cdRpU5KQEeWHWpTQn1FFVg", xmlTag: "Issr", displayName: displayName("Issuer"), kind: "text", type: "Max4AlphaNumericText", required: true }),
+      f({ name: "SchemeName", isoId: "_cdRpVZKQEeWHWpTQn1FFVg", xmlTag: "SchmeNm", displayName: displayName("SchemeName"), kind: "text", type: "Max4AlphaNumericText", required: false }),
+    ],
+  },
+  "RestrictedFINXMax140Text": {
+    name: "RestrictedFINXMax140Text",
+    isoId: "_XZJV19p-Ed-ak6NoX_4Aeg_-1471472211",
+    kind: "text",
+    minLength: 1,
+    maxLength: 140,
+    pattern: "[0-9a-zA-Z/\\-\\?:\\(\\)\\.\\n\\r,'\\+ ]{1,140}",
+  },
+  "NameAndAddress12": {
+    name: "NameAndAddress12",
+    isoId: "_Wg9wpdp-Ed-ak6NoX_4Aeg_1745760096",
+    kind: "component",
+    fields: [
+      f({ name: "Name", isoId: "_Wg9wptp-Ed-ak6NoX_4Aeg_-248384610", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "RestrictedFINXMax140Text", required: true }),
+    ],
+  },
+  "PartyIdentification137Choice": {
+    name: "PartyIdentification137Choice",
+    isoId: "__2ajK_fDEeiNZp_PtLohLw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "AnyBIC", isoId: "__2ajLffDEeiNZp_PtLohLw", xmlTag: "AnyBIC", displayName: displayName("AnyBIC"), kind: "text", type: "AnyBICDec2014Identifier", required: true }),
+      f({ name: "ProprietaryIdentification", isoId: "__2ajL_fDEeiNZp_PtLohLw", xmlTag: "PrtryId", displayName: displayName("ProprietaryIdentification"), kind: "component", type: "GenericIdentification84", required: true }),
+      f({ name: "NameAndAddress", isoId: "__2ajMffDEeiNZp_PtLohLw", xmlTag: "NmAndAdr", displayName: displayName("NameAndAddress"), kind: "component", type: "NameAndAddress12", required: true }),
+    ],
+  },
+  "Account30": {
+    name: "Account30",
+    isoId: "_Z0x7c_fVEeiNZp_PtLohLw",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_Z0x7d_fVEeiNZp_PtLohLw", xmlTag: "Id", displayName: displayName("Identification"), kind: "component", type: "AccountIdentification4", required: true }),
+      f({ name: "AccountServicer", isoId: "_Z0x7f_fVEeiNZp_PtLohLw", xmlTag: "AcctSvcr", displayName: displayName("AccountServicer"), kind: "choice", type: "PartyIdentification137Choice", required: false }),
+    ],
+  },
   "PartyIdentification125Choice": {
     name: "PartyIdentification125Choice",
     isoId: "_esNO0WpTEeipaMTLlhaKMQ",
@@ -7868,6 +10497,47 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     fields: [
       f({ name: "Identification", isoId: "_rm9gs5S_EemqYPWMBuVawg", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: false }),
       f({ name: "AccountServicer", isoId: "_rm9gtZS_EemqYPWMBuVawg", xmlTag: "AcctSvcr", displayName: displayName("AccountServicer"), kind: "choice", type: "PartyIdentification125Choice", required: true }),
+    ],
+  },
+  "SimpleIdentificationInformation": {
+    name: "SimpleIdentificationInformation",
+    isoId: "_P-ile9p-Ed-ak6NoX_4Aeg_745508310",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_P-sWcNp-Ed-ak6NoX_4Aeg_836935724", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: true }),
+    ],
+  },
+  "AccountIdentification1": {
+    name: "AccountIdentification1",
+    isoId: "_PdnCo9p-Ed-ak6NoX_4Aeg_-1749118143",
+    kind: "component",
+    fields: [
+      f({ name: "Proprietary", isoId: "_PdnCpNp-Ed-ak6NoX_4Aeg_-1749118142", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "SimpleIdentificationInformation", required: true }),
+    ],
+  },
+  "AnyBICIdentifier": {
+    name: "AnyBICIdentifier",
+    isoId: "_YYB_-9p-Ed-ak6NoX_4Aeg_1297781972",
+    kind: "text",
+    pattern: "[A-Z]{6,6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3,3}){0,1}",
+  },
+  "PartyIdentification2Choice": {
+    name: "PartyIdentification2Choice",
+    isoId: "_QRBcl9p-Ed-ak6NoX_4Aeg_-1721645359",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "BICOrBEI", isoId: "_QRLNkNp-Ed-ak6NoX_4Aeg_-1721645282", xmlTag: "BICOrBEI", displayName: displayName("BICOrBEI"), kind: "text", type: "AnyBICIdentifier", required: true }),
+      f({ name: "ProprietaryIdentification", isoId: "_QRLNkdp-Ed-ak6NoX_4Aeg_-1721645144", xmlTag: "PrtryId", displayName: displayName("ProprietaryIdentification"), kind: "component", type: "GenericIdentification1", required: true }),
+      f({ name: "NameAndAddress", isoId: "_QRLNktp-Ed-ak6NoX_4Aeg_-1721645108", xmlTag: "NmAndAdr", displayName: displayName("NameAndAddress"), kind: "component", type: "NameAndAddress5", required: true }),
+    ],
+  },
+  "Account7": {
+    name: "Account7",
+    isoId: "_Pofc8Np-Ed-ak6NoX_4Aeg_-955384190",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_Pofc8dp-Ed-ak6NoX_4Aeg_-955383852", xmlTag: "Id", displayName: displayName("Identification"), kind: "component", type: "AccountIdentification1", required: true }),
+      f({ name: "AccountServicer", isoId: "_Pofc8tp-Ed-ak6NoX_4Aeg_-955383783", xmlTag: "AcctSvcr", displayName: displayName("AccountServicer"), kind: "choice", type: "PartyIdentification2Choice", required: false }),
     ],
   },
   "ISODate": {
@@ -7911,14 +10581,6 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     isoId: "_YYLJ6Np-Ed-ak6NoX_4Aeg_-1265890753",
     kind: "text",
     pattern: "[a-zA-Z0-9]{4}",
-  },
-  "Max4AlphaNumericText": {
-    name: "Max4AlphaNumericText",
-    isoId: "_YXlUBdp-Ed-ak6NoX_4Aeg_-2067559309",
-    kind: "text",
-    minLength: 1,
-    maxLength: 4,
-    pattern: "[a-zA-Z0-9]{1,4}",
   },
   "GenericIdentification47": {
     name: "GenericIdentification47",
@@ -7997,20 +10659,21 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Currency", isoId: "_SN5Y9tp-Ed-ak6NoX_4Aeg_-2095161485", xmlTag: "Ccy", displayName: displayName("Currency"), kind: "code", type: "ActiveCurrencyCode", required: true }),
     ],
   },
-  "SimpleIdentificationInformation": {
-    name: "SimpleIdentificationInformation",
-    isoId: "_P-ile9p-Ed-ak6NoX_4Aeg_745508310",
-    kind: "component",
-    fields: [
-      f({ name: "Identification", isoId: "_P-sWcNp-Ed-ak6NoX_4Aeg_836935724", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: true }),
-    ],
+  "Max8Text": {
+    name: "Max8Text",
+    isoId: "_YYU65dp-Ed-ak6NoX_4Aeg_1066600236",
+    kind: "text",
+    minLength: 1,
+    maxLength: 8,
   },
-  "AccountIdentification1": {
-    name: "AccountIdentification1",
-    isoId: "_PdnCo9p-Ed-ak6NoX_4Aeg_-1749118143",
+  "AccountIdentification3": {
+    name: "AccountIdentification3",
+    isoId: "_PoVr8tp-Ed-ak6NoX_4Aeg_2048303446",
     kind: "component",
     fields: [
-      f({ name: "Proprietary", isoId: "_PdnCpNp-Ed-ak6NoX_4Aeg_-1749118142", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "SimpleIdentificationInformation", required: true }),
+      f({ name: "Identification", isoId: "_PoVr89p-Ed-ak6NoX_4Aeg_1372251027", xmlTag: "Id", displayName: displayName("Identification"), kind: "component", type: "AccountIdentification1", required: true }),
+      f({ name: "Issuer", isoId: "_PoVr9Np-Ed-ak6NoX_4Aeg_2100019973", xmlTag: "Issr", displayName: displayName("Issuer"), kind: "text", type: "Max8Text", required: true }),
+      f({ name: "Information", isoId: "_PoVr9dp-Ed-ak6NoX_4Aeg_2100019938", xmlTag: "Inf", displayName: displayName("Information"), kind: "text", type: "Exact4AlphaNumericText", required: true }),
     ],
   },
   "GenericIdentification30": {
@@ -8049,6 +10712,31 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     fields: [
       f({ name: "Identification", isoId: "_wUtNwSCSEeWJd9HF2tO7BA", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "AccountIdentification4Choice", required: true }),
       f({ name: "Name", isoId: "_wUtNwyCSEeWJd9HF2tO7BA", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max35Text", required: false }),
+    ],
+  },
+  "SecuritiesAccountPurposeType1Code": {
+    name: "SecuritiesAccountPurposeType1Code",
+    isoId: "_Y-7A1Np-Ed-ak6NoX_4Aeg_-1554401814",
+    kind: "code",
+    options: [{ value: "MARG", name: "Margin", isoId: "_Y-7A1dp-Ed-ak6NoX_4Aeg_-1554401442" }, { value: "SHOR", name: "ShortSale", isoId: "_Y-7A1tp-Ed-ak6NoX_4Aeg_-1554401407" }, { value: "ABRD", name: "Abroad", isoId: "_Y-7A19p-Ed-ak6NoX_4Aeg_-1554401365" }, { value: "CEND", name: "Centralised", isoId: "_Y-7A2Np-Ed-ak6NoX_4Aeg_-1554401347" }, { value: "DVPA", name: "CashDVP", isoId: "_Y-7A2dp-Ed-ak6NoX_4Aeg_-1554401304" }, { value: "PHYS", name: "Physical", isoId: "_Y_Ex0Np-Ed-ak6NoX_4Aeg_-1554401286" }],
+  },
+  "AccountIdentificationAndPurpose": {
+    name: "AccountIdentificationAndPurpose",
+    isoId: "_PoVr9tp-Ed-ak6NoX_4Aeg_1399035911",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_PoVr99p-Ed-ak6NoX_4Aeg_1457217360", xmlTag: "Id", displayName: displayName("Identification"), kind: "component", type: "AccountIdentification1", required: true }),
+      f({ name: "Purpose", isoId: "_PoVr-Np-Ed-ak6NoX_4Aeg_1496004828", xmlTag: "Purp", displayName: displayName("Purpose"), kind: "code", type: "SecuritiesAccountPurposeType1Code", required: true }),
+    ],
+  },
+  "AccountIdentificationFormatChoice": {
+    name: "AccountIdentificationFormatChoice",
+    isoId: "_RBvu5dp-Ed-ak6NoX_4Aeg_1713990380",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "SimpleIdentification", isoId: "_RBvu5tp-Ed-ak6NoX_4Aeg_1757395821", xmlTag: "SmplId", displayName: displayName("SimpleIdentification"), kind: "component", type: "AccountIdentification1", required: true }),
+      f({ name: "IdentificationAndPurpose", isoId: "_RB5f4Np-Ed-ak6NoX_4Aeg_842152344", xmlTag: "IdAndPurp", displayName: displayName("IdentificationAndPurpose"), kind: "component", type: "AccountIdentificationAndPurpose", required: true }),
+      f({ name: "IdentificationAsDSS", isoId: "_RB5f4dp-Ed-ak6NoX_4Aeg_1770326434", xmlTag: "IdAsDSS", displayName: displayName("IdentificationAsDSS"), kind: "component", type: "AccountIdentification3", required: true }),
     ],
   },
   "AccountIdentificationSearchCriteria2Choice": {
@@ -8926,14 +11614,6 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "AustralianSmallNetworkIdentification", isoId: "_VwSChbNIEeejueAciesPMA", xmlTag: "AUBSBs", displayName: displayName("AustralianSmallNetworkIdentification"), kind: "text", type: "SmallNetworkIdentifier", required: true }),
     ],
   },
-  "SimpleIdentificationInformation4": {
-    name: "SimpleIdentificationInformation4",
-    isoId: "_nhqokSxxEeKgiYs1KJCQUg",
-    kind: "component",
-    fields: [
-      f({ name: "Identification", isoId: "_n2FZYSxxEeKgiYs1KJCQUg", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: true }),
-    ],
-  },
   "FinancialInstitutionIdentification11Choice": {
     name: "FinancialInstitutionIdentification11Choice",
     isoId: "_RBDV4ZS7EemqYPWMBuVawg",
@@ -9351,16 +12031,6 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     kind: "code",
     options: [{ value: "MODI", name: "Modified", isoId: "_MrP-0WBhEeaR1OOiVxm3Gg" }],
   },
-  "GenericIdentification36": {
-    name: "GenericIdentification36",
-    isoId: "_ARhDQNokEeC60axPepSq7g_-809870990",
-    kind: "component",
-    fields: [
-      f({ name: "Identification", isoId: "_ARhDQdokEeC60axPepSq7g_-923710056", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "Issuer", isoId: "_ARqNMNokEeC60axPepSq7g_-1920782409", xmlTag: "Issr", displayName: displayName("Issuer"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "SchemeName", isoId: "_ARqNMdokEeC60axPepSq7g_1669070272", xmlTag: "SchmeNm", displayName: displayName("SchemeName"), kind: "text", type: "Max35Text", required: false }),
-    ],
-  },
   "EnabledStatusReason2Choice": {
     name: "EnabledStatusReason2Choice",
     isoId: "_PtrCQEy-EeafiMTDrtSnyw",
@@ -9772,6 +12442,80 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Reason", isoId: "_O9sLiTq5EeWyoP0PbocV1Q", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "AcknowledgementReason12", required: true }),
     ],
   },
+  "AcknowledgementReason16Choice": {
+    name: "AcknowledgementReason16Choice",
+    isoId: "_5SFnq5NLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_5SFnrZNLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "AcknowledgementReason5Code", required: true }),
+      f({ name: "Proprietary", isoId: "_5SFntZNLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "RestrictedFINXMax210Text": {
+    name: "RestrictedFINXMax210Text",
+    isoId: "_XZJV2dp-Ed-ak6NoX_4Aeg_280121033",
+    kind: "text",
+    minLength: 1,
+    maxLength: 210,
+    pattern: "[0-9a-zA-Z/\\-\\?:\\(\\)\\.\\n\\r,'\\+ ]{1,210}",
+  },
+  "AcknowledgementReason13": {
+    name: "AcknowledgementReason13",
+    isoId: "_5SFnl5NLEeWGlc8L7oPDIg",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "_5SFnmZNLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "AcknowledgementReason16Choice", required: true }),
+      f({ name: "AdditionalReasonInformation", isoId: "_5SFnoZNLEeWGlc8L7oPDIg", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "RestrictedFINXMax210Text", required: false }),
+    ],
+  },
+  "AcknowledgedAcceptedStatus25Choice": {
+    name: "AcknowledgedAcceptedStatus25Choice",
+    isoId: "_5SFngZNLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NoSpecifiedReason", isoId: "_5SFng5NLEeWGlc8L7oPDIg", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
+      f({ name: "Reason", isoId: "_5SFni5NLEeWGlc8L7oPDIg", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "AcknowledgementReason13", required: true }),
+    ],
+  },
+  "AcknowledgementReason11Code": {
+    name: "AcknowledgementReason11Code",
+    isoId: "_k9YrIY5bEfC_4ZEXsY0Xyg",
+    kind: "code",
+    options: [{ value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_k_NQEY5bEfC_4ZEXsY0Xyg" }, { value: "OTHR", name: "Other", isoId: "_k_NQFY5bEfC_4ZEXsY0Xyg" }, { value: "SMPG", name: "MarketPracticeRuleDiscrepency", isoId: "_xuOgYI5bEfC_4ZEXsY0Xyg" }],
+  },
+  "AcknowledgementReason25Choice": {
+    name: "AcknowledgementReason25Choice",
+    isoId: "_XLTbXo5bEfC_4ZEXsY0Xyg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_XNInUY5bEfC_4ZEXsY0Xyg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "AcknowledgementReason11Code", required: true }),
+      f({ name: "Proprietary", isoId: "_XNInWY5bEfC_4ZEXsY0Xyg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "AcknowledgementReason22": {
+    name: "AcknowledgementReason22",
+    isoId: "_XJuG8Y5bEfC_4ZEXsY0Xyg",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "_XLS0QY5bEfC_4ZEXsY0Xyg", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "AcknowledgementReason25Choice", required: true }),
+      f({ name: "AdditionalReasonInformation", isoId: "_XLTbVo5bEfC_4ZEXsY0Xyg", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
+    ],
+  },
+  "AcknowledgedAcceptedStatus34Choice": {
+    name: "AcknowledgedAcceptedStatus34Choice",
+    isoId: "_XHw_IY5bEfC_4ZEXsY0Xyg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NoSpecifiedReason", isoId: "_XJtf5Y5bEfC_4ZEXsY0Xyg", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
+      f({ name: "Reason", isoId: "_XJtf8Y5bEfC_4ZEXsY0Xyg", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "AcknowledgementReason22", required: true }),
+    ],
+  },
+  "AcknowledgementReason6Code": {
+    name: "AcknowledgementReason6Code",
+    isoId: "_0mppcAlIEeGATtfOBToyew_753988061",
+    kind: "code",
+    options: [{ value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_0mppcQlIEeGATtfOBToyew_818267667" }, { value: "SMPG", name: "MarketPracticeRuleDiscrepency", isoId: "_0mppcglIEeGATtfOBToyew_-243084292" }, { value: "OTHR", name: "Other", isoId: "_0mppcwlIEeGATtfOBToyew_-64965620" }, { value: "NSTP", name: "NotStraightThroughProcessing", isoId: "_0mppdAlIEeGATtfOBToyew_-1062037973" }, { value: "LATE", name: "MarketDeadlineMissed", isoId: "_0mppdQlIEeGATtfOBToyew_-1175877039" }],
+  },
   "ImpliedCurrencyAndAmountRange1": {
     name: "ImpliedCurrencyAndAmountRange1",
     isoId: "_OvM9t5lcEeeE1Ya-LgRsuQ",
@@ -9818,6 +12562,72 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     minInclusive: 0,
     pattern: "[A-Z]{3,3}",
   },
+  "DecimalNumber": {
+    name: "DecimalNumber",
+    isoId: "_YXlUA9p-Ed-ak6NoX_4Aeg_1283031972",
+    kind: "number",
+    totalDigits: 18,
+    fractionDigits: 17,
+  },
+  "FinancialInstrumentQuantityChoice": {
+    name: "FinancialInstrumentQuantityChoice",
+    isoId: "_Sn-F2Np-Ed-ak6NoX_4Aeg_1265174989",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Unit", isoId: "_Sn-F2dp-Ed-ak6NoX_4Aeg_1327975958", xmlTag: "Unit", displayName: displayName("Unit"), kind: "number", type: "DecimalNumber", required: true }),
+      f({ name: "FaceAmount", isoId: "_Sn-F2tp-Ed-ak6NoX_4Aeg_1583790387", xmlTag: "FaceAmt", displayName: displayName("FaceAmount"), kind: "number", type: "ImpliedCurrencyAndAmount", required: true }),
+      f({ name: "AmortisedValue", isoId: "_SoH20Np-Ed-ak6NoX_4Aeg_1583790695", xmlTag: "AmtsdVal", displayName: displayName("AmortisedValue"), kind: "number", type: "ImpliedCurrencyAndAmount", required: true }),
+    ],
+  },
+  "GenericIdentification6": {
+    name: "GenericIdentification6",
+    isoId: "_P_luUdp-Ed-ak6NoX_4Aeg_2128666136",
+    kind: "component",
+    fields: [
+      f({ name: "Issuer", isoId: "_P_luUtp-Ed-ak6NoX_4Aeg_-1713450015", xmlTag: "Issr", displayName: displayName("Issuer"), kind: "text", type: "Max8Text", required: true }),
+      f({ name: "Information", isoId: "_P_luU9p-Ed-ak6NoX_4Aeg_-1801508836", xmlTag: "Inf", displayName: displayName("Information"), kind: "text", type: "Exact4AlphaNumericText", required: true }),
+      f({ name: "Balance", isoId: "_P_luVNp-Ed-ak6NoX_4Aeg_-1695902189", xmlTag: "Bal", displayName: displayName("Balance"), kind: "number", type: "Number", required: true }),
+    ],
+  },
+  "QuantityAndAvailability": {
+    name: "QuantityAndAvailability",
+    isoId: "_QYxDUNp-Ed-ak6NoX_4Aeg_-1731794786",
+    kind: "component",
+    fields: [
+      f({ name: "Quantity", isoId: "_QYxDUdp-Ed-ak6NoX_4Aeg_-1703164106", xmlTag: "Qty", displayName: displayName("Quantity"), kind: "choice", type: "FinancialInstrumentQuantityChoice", required: true }),
+      f({ name: "AvailabilityIndicator", isoId: "_QYxDUtp-Ed-ak6NoX_4Aeg_-1460279725", xmlTag: "AvlbtyInd", displayName: displayName("AvailabilityIndicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+    ],
+  },
+  "SubBalanceQuantity1Choice": {
+    name: "SubBalanceQuantity1Choice",
+    isoId: "_QYn5aNp-Ed-ak6NoX_4Aeg_-1945125702",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Quantity", isoId: "_QYn5adp-Ed-ak6NoX_4Aeg_-1820449767", xmlTag: "Qty", displayName: displayName("Quantity"), kind: "choice", type: "FinancialInstrumentQuantityChoice", required: true }),
+      f({ name: "QuantityAsDSS", isoId: "_QYn5atp-Ed-ak6NoX_4Aeg_-1819529328", xmlTag: "QtyAsDSS", displayName: displayName("QuantityAsDSS"), kind: "component", type: "GenericIdentification6", required: true }),
+      f({ name: "QuantityAndAvailability", isoId: "_QYn5a9p-Ed-ak6NoX_4Aeg_-1813987615", xmlTag: "QtyAndAvlbty", displayName: displayName("QuantityAndAvailability"), kind: "component", type: "QuantityAndAvailability", required: true }),
+    ],
+  },
+  "SecuritiesBalanceType2Code": {
+    name: "SecuritiesBalanceType2Code",
+    isoId: "_ZBdXcdp-Ed-ak6NoX_4Aeg_1919950094",
+    kind: "code",
+    options: [{ value: "CLEN", name: "TaxExempt", isoId: "_ZBdXctp-Ed-ak6NoX_4Aeg_-1506908875" }, { value: "DIRT", name: "NonTaxExempt", isoId: "_ZBdXc9p-Ed-ak6NoX_4Aeg_-1263096881" }, { value: "NOMI", name: "Registered", isoId: "_ZBdXdNp-Ed-ak6NoX_4Aeg_-1164280659" }, { value: "OTHR", name: "Unclassified", isoId: "_ZBdXddp-Ed-ak6NoX_4Aeg_-829968446" }, { value: "SPOS", name: "StreetPosition", isoId: "_ZBdXdtp-Ed-ak6NoX_4Aeg_1361939833" }, { value: "UNRG", name: "Unregistered", isoId: "_ZBdXd9p-Ed-ak6NoX_4Aeg_1680553649" }],
+  },
+  "AdditionalBalanceInformation2": {
+    name: "AdditionalBalanceInformation2",
+    isoId: "_QY60W9p-Ed-ak6NoX_4Aeg_-2085094481",
+    kind: "component",
+    fields: [
+      f({ name: "Quantity", isoId: "_QZElUNp-Ed-ak6NoX_4Aeg_-2085094479", xmlTag: "Qty", displayName: displayName("Quantity"), kind: "choice", type: "SubBalanceQuantity1Choice", required: true }),
+      f({ name: "SubBalanceType", isoId: "_QZElUdp-Ed-ak6NoX_4Aeg_-2085094464", xmlTag: "SubBalTp", displayName: displayName("SubBalanceType"), kind: "code", type: "SecuritiesBalanceType2Code", required: false }),
+      f({ name: "ExtendedSubBalanceType", isoId: "_QZElUtp-Ed-ak6NoX_4Aeg_2062170744", xmlTag: "XtndedSubBalTp", displayName: displayName("ExtendedSubBalanceType"), kind: "text", type: "Extended350Code", required: false }),
+    ],
+    rules: [
+      { name: "SubBalanceTypeOrExtendedSubBalanceTypeRule", isoId: "_QZElU9p-Ed-ak6NoX_4Aeg_2067713782", text: "Either SubBalanceType or ExtendedSubBalanceType must be present, but not both.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/SubBalanceType"},{"op":"Presence","path":"/ExtendedSubBalanceType"}]}} },
+      { name: "SubBalanceTypeOrExtendedSubBalanceTypeRuleNotBoth", isoId: "_QZElU9p-Ed-ak6NoX_4Aeg_2067713782~NotBoth", text: "Either SubBalanceType or ExtendedSubBalanceType must be present, but not both.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/ExtendedSubBalanceType"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/SubBalanceType"}]}} },
+    ],
+  },
   "AdditionalInformation5": {
     name: "AdditionalInformation5",
     isoId: "_Qoao5dp-Ed-ak6NoX_4Aeg_478592239",
@@ -9846,20 +12656,64 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "MessageName", isoId: "_IOb-1ZS9EemqYPWMBuVawg", xmlTag: "MsgNm", displayName: displayName("MessageName"), kind: "text", type: "Max35Text", required: false }),
     ],
   },
-  "AnyBICIdentifier": {
-    name: "AnyBICIdentifier",
-    isoId: "_YYB_-9p-Ed-ak6NoX_4Aeg_1297781972",
-    kind: "text",
-    pattern: "[A-Z]{6,6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3,3}){0,1}",
+  "StructuredLongPostalAddress1": {
+    name: "StructuredLongPostalAddress1",
+    isoId: "_QGckRNp-Ed-ak6NoX_4Aeg_829983721",
+    kind: "component",
+    fields: [
+      f({ name: "BuildingName", isoId: "_QGckRdp-Ed-ak6NoX_4Aeg_1005453911", xmlTag: "BldgNm", displayName: displayName("BuildingName"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "StreetName", isoId: "_QGckRtp-Ed-ak6NoX_4Aeg_1005453819", xmlTag: "StrtNm", displayName: displayName("StreetName"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "StreetBuildingIdentification", isoId: "_QGluMNp-Ed-ak6NoX_4Aeg_1005453850", xmlTag: "StrtBldgId", displayName: displayName("StreetBuildingIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "Floor", isoId: "_QGluMdp-Ed-ak6NoX_4Aeg_1005454212", xmlTag: "Flr", displayName: displayName("Floor"), kind: "text", type: "Max16Text", required: false }),
+      f({ name: "TownName", isoId: "_QGluMtp-Ed-ak6NoX_4Aeg_1005453881", xmlTag: "TwnNm", displayName: displayName("TownName"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "DistrictName", isoId: "_QGluM9p-Ed-ak6NoX_4Aeg_1005453964", xmlTag: "DstrctNm", displayName: displayName("DistrictName"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "RegionIdentification", isoId: "_QGluNNp-Ed-ak6NoX_4Aeg_1005454644", xmlTag: "RgnId", displayName: displayName("RegionIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "State", isoId: "_QGluNdp-Ed-ak6NoX_4Aeg_1005454674", xmlTag: "Stat", displayName: displayName("State"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "CountyIdentification", isoId: "_QGluNtp-Ed-ak6NoX_4Aeg_1005453942", xmlTag: "CtyId", displayName: displayName("CountyIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "Country", isoId: "_QGluN9p-Ed-ak6NoX_4Aeg_1005453697", xmlTag: "Ctry", displayName: displayName("Country"), kind: "code", type: "CountryCode", required: true }),
+      f({ name: "PostCodeIdentification", isoId: "_QGluONp-Ed-ak6NoX_4Aeg_1005453789", xmlTag: "PstCdId", displayName: displayName("PostCodeIdentification"), kind: "text", type: "Max16Text", required: true }),
+      f({ name: "PostOfficeBox", isoId: "_QGluOdp-Ed-ak6NoX_4Aeg_1005454273", xmlTag: "POB", displayName: displayName("PostOfficeBox"), kind: "text", type: "Max16Text", required: false }),
+    ],
+    rules: [
+      { name: "StreetNameAndOrPostOfficeBoxRule", isoId: "_QGluOtp-Ed-ak6NoX_4Aeg_1062711598", text: "If StreetName is not present, then PostOfficeBox is mandatory. If StreetName is present, then PostOfficeBox is optional." },
+    ],
   },
-  "PartyIdentification2Choice": {
-    name: "PartyIdentification2Choice",
-    isoId: "_QRBcl9p-Ed-ak6NoX_4Aeg_-1721645359",
+  "LongPostalAddress1Choice": {
+    name: "LongPostalAddress1Choice",
+    isoId: "_QG4pJdp-Ed-ak6NoX_4Aeg_-1972571676",
     kind: "choice",
     choiceOptions: [
-      f({ name: "BICOrBEI", isoId: "_QRLNkNp-Ed-ak6NoX_4Aeg_-1721645282", xmlTag: "BICOrBEI", displayName: displayName("BICOrBEI"), kind: "text", type: "AnyBICIdentifier", required: true }),
-      f({ name: "ProprietaryIdentification", isoId: "_QRLNkdp-Ed-ak6NoX_4Aeg_-1721645144", xmlTag: "PrtryId", displayName: displayName("ProprietaryIdentification"), kind: "component", type: "GenericIdentification1", required: true }),
-      f({ name: "NameAndAddress", isoId: "_QRLNktp-Ed-ak6NoX_4Aeg_-1721645108", xmlTag: "NmAndAdr", displayName: displayName("NameAndAddress"), kind: "component", type: "NameAndAddress5", required: true }),
+      f({ name: "Unstructured", isoId: "_QG4pJtp-Ed-ak6NoX_4Aeg_-1635487920", xmlTag: "Ustrd", displayName: displayName("Unstructured"), kind: "text", type: "Max140Text", required: true }),
+      f({ name: "Structured", isoId: "_QG4pJ9p-Ed-ak6NoX_4Aeg_-1635487889", xmlTag: "Strd", displayName: displayName("Structured"), kind: "component", type: "StructuredLongPostalAddress1", required: true }),
+    ],
+  },
+  "NameAndAddress2": {
+    name: "NameAndAddress2",
+    isoId: "_PZcUVtp-Ed-ak6NoX_4Aeg_-712889948",
+    kind: "component",
+    fields: [
+      f({ name: "Name", isoId: "_PZcUV9p-Ed-ak6NoX_4Aeg_-618689920", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "Address", isoId: "_PZcUWNp-Ed-ak6NoX_4Aeg_-331477617", xmlTag: "Adr", displayName: displayName("Address"), kind: "choice", type: "LongPostalAddress1Choice", required: false }),
+    ],
+  },
+  "PartyIdentification1Choice": {
+    name: "PartyIdentification1Choice",
+    isoId: "_QQR1v9p-Ed-ak6NoX_4Aeg_-1748201287",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "BICOrBEI", isoId: "_QQR1wNp-Ed-ak6NoX_4Aeg_-1748201286", xmlTag: "BICOrBEI", displayName: displayName("BICOrBEI"), kind: "text", type: "AnyBICIdentifier", required: true }),
+      f({ name: "ProprietaryIdentification", isoId: "_QQa_oNp-Ed-ak6NoX_4Aeg_-1748201284", xmlTag: "PrtryId", displayName: displayName("ProprietaryIdentification"), kind: "component", type: "GenericIdentification1", required: true }),
+      f({ name: "NameAndAddress", isoId: "_QQa_odp-Ed-ak6NoX_4Aeg_-395733973", xmlTag: "NmAndAdr", displayName: displayName("NameAndAddress"), kind: "component", type: "NameAndAddress2", required: true }),
+    ],
+  },
+  "AdditionalReference2": {
+    name: "AdditionalReference2",
+    isoId: "_RNE1Kdp-Ed-ak6NoX_4Aeg_-577369889",
+    kind: "component",
+    fields: [
+      f({ name: "Reference", isoId: "_RNE1Ktp-Ed-ak6NoX_4Aeg_-248596875", xmlTag: "Ref", displayName: displayName("Reference"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "ReferenceIssuer", isoId: "_RNE1K9p-Ed-ak6NoX_4Aeg_-248596413", xmlTag: "RefIssr", displayName: displayName("ReferenceIssuer"), kind: "choice", type: "PartyIdentification1Choice", required: false }),
+      f({ name: "MessageName", isoId: "_RNE1LNp-Ed-ak6NoX_4Aeg_-248596012", xmlTag: "MsgNm", displayName: displayName("MessageName"), kind: "text", type: "Max35Text", required: false }),
     ],
   },
   "AdditionalReference3": {
@@ -9939,6 +12793,12 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "DebitAdvice", isoId: "_fU3koNomEembTrt_WixjyQ", xmlTag: "DbtAdvc", displayName: displayName("DebitAdvice"), kind: "choice", type: "AdviceType1Choice", required: false }),
     ],
   },
+  "AffirmationStatus1Code": {
+    name: "AffirmationStatus1Code",
+    isoId: "_bnTYWNp-Ed-ak6NoX_4Aeg_519503215",
+    kind: "code",
+    options: [{ value: "AFFI", name: "Affirmed", isoId: "_bndJUNp-Ed-ak6NoX_4Aeg_589689024" }, { value: "NAFI", name: "Unaffirmed", isoId: "_bndJUdp-Ed-ak6NoX_4Aeg_618318083" }],
+  },
   "Parameter4": {
     name: "Parameter4",
     isoId: "_T2MB8Wi3EeS87LmvcA55sg",
@@ -10014,6 +12874,43 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     fields: [
       f({ name: "Algorithm", isoId: "__ll9UWkIEeS7zPBpvm732w", xmlTag: "Algo", displayName: displayName("Algorithm"), kind: "code", type: "Algorithm12Code", required: true }),
       f({ name: "Parameter", isoId: "__ll9U2kIEeS7zPBpvm732w", xmlTag: "Param", displayName: displayName("Parameter"), kind: "component", type: "Parameter7", required: false }),
+    ],
+  },
+  "AllegementStatus1Code": {
+    name: "AllegementStatus1Code",
+    isoId: "_bopcINp-Ed-ak6NoX_4Aeg_611998730",
+    kind: "code",
+    options: [{ value: "CANC", name: "Cancelled", isoId: "_bopcIdp-Ed-ak6NoX_4Aeg_611999120" }, { value: "REMO", name: "Removed", isoId: "_bopcItp-Ed-ak6NoX_4Aeg_611999162" }],
+  },
+  "AllocationStatus1Code": {
+    name: "AllocationStatus1Code",
+    isoId: "_bopcJ9p-Ed-ak6NoX_4Aeg_1464332533",
+    kind: "code",
+    options: [{ value: "AOLF", name: "FullyAllocated", isoId: "_boymENp-Ed-ak6NoX_4Aeg_1464332565" }, { value: "AOLP", name: "PartiallyAllocated", isoId: "_boymEdp-Ed-ak6NoX_4Aeg_1464332594" }],
+  },
+  "TypeOfIdentification1Code": {
+    name: "TypeOfIdentification1Code",
+    isoId: "_YwnfFdp-Ed-ak6NoX_4Aeg_-1079654789",
+    kind: "code",
+    options: [{ value: "ARNU", name: "AlienRegistrationNumber", isoId: "_YwnfFtp-Ed-ak6NoX_4Aeg_-632668460" }, { value: "CCPT", name: "PassportNumber", isoId: "_YwnfF9p-Ed-ak6NoX_4Aeg_-334369828" }, { value: "CHTY", name: "TaxExemptIdentificationNumber", isoId: "_YwxQENp-Ed-ak6NoX_4Aeg_-332526291" }, { value: "CORP", name: "CorporateIdentification", isoId: "_YwxQEdp-Ed-ak6NoX_4Aeg_-332522818" }, { value: "DRLC", name: "DriverLicenseNumber", isoId: "_YwxQEtp-Ed-ak6NoX_4Aeg_-331599633" }, { value: "FIIN", name: "ForeignInvestmentIdentityNumber", isoId: "_YwxQE9p-Ed-ak6NoX_4Aeg_-330676223" }, { value: "TXID", name: "TaxIdentificationNumber", isoId: "_YwxQFNp-Ed-ak6NoX_4Aeg_-329752873" }],
+  },
+  "IdentificationType42Choice": {
+    name: "IdentificationType42Choice",
+    isoId: "_m6TxQR5gEeWE3PufGMdJ3w",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_nacp4x5gEeWE3PufGMdJ3w", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "TypeOfIdentification1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_nalz0R5gEeWE3PufGMdJ3w", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "AlternatePartyIdentification7": {
+    name: "AlternatePartyIdentification7",
+    isoId: "_A7zZ3R5gEeWE3PufGMdJ3w",
+    kind: "component",
+    fields: [
+      f({ name: "IdentificationType", isoId: "_BbMrdR5gEeWE3PufGMdJ3w", xmlTag: "IdTp", displayName: displayName("IdentificationType"), kind: "choice", type: "IdentificationType42Choice", required: true }),
+      f({ name: "Country", isoId: "_BbMrfR5gEeWE3PufGMdJ3w", xmlTag: "Ctry", displayName: displayName("Country"), kind: "code", type: "CountryCode", required: true }),
+      f({ name: "AlternateIdentification", isoId: "_BbMrhR5gEeWE3PufGMdJ3w", xmlTag: "AltrnId", displayName: displayName("AlternateIdentification"), kind: "text", type: "Max35Text", required: true }),
     ],
   },
   "AlternateSecurityIdentification1": {
@@ -10384,13 +13281,6 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     kind: "code",
     options: [{ value: "YEAR", name: "Annual", isoId: "_t8BeYVkyEeGeoaLUQk__nA_569640725" }, { value: "MNTH", name: "Monthly", isoId: "_t8BeYlkyEeGeoaLUQk__nA_380423276" }, { value: "QURT", name: "Quarterly", isoId: "_t8BeY1kyEeGeoaLUQk__nA_834510545" }, { value: "MIAN", name: "SemiAnnual", isoId: "_t8LPYFkyEeGeoaLUQk__nA_1420457571" }, { value: "WEEK", name: "Weekly", isoId: "_t8LPYVkyEeGeoaLUQk__nA_1729241450" }, { value: "DAIL", name: "Daily", isoId: "_t8LPYlkyEeGeoaLUQk__nA_-1041657550" }, { value: "ADHO", name: "Adhoc", isoId: "_t8LPY1kyEeGeoaLUQk__nA_-1804960693" }, { value: "INDA", name: "IntraDay", isoId: "_t8LPZFkyEeGeoaLUQk__nA_-1816059470" }, { value: "FRTN", name: "Fortnightly", isoId: "_t8LPZVkyEeGeoaLUQk__nA_468950968" }],
   },
-  "DecimalNumber": {
-    name: "DecimalNumber",
-    isoId: "_YXlUA9p-Ed-ak6NoX_4Aeg_1283031972",
-    kind: "number",
-    totalDigits: 18,
-    fractionDigits: 17,
-  },
   "FrequencyPeriod1": {
     name: "FrequencyPeriod1",
     isoId: "_B0q0IR7zEeSxevWRRWxNAg",
@@ -10671,6 +13561,38 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "ProprietaryAmount", isoId: "_mEI6Cw5rEe2xs7BqO31w6w", xmlTag: "PrtryAmt", displayName: displayName("ProprietaryAmount"), kind: "component", type: "AmountAndCurrencyExchangeDetails6", required: false, repeat: { min: 0, max: null } }),
     ],
   },
+  "RestrictedFINActiveOrHistoricCurrencyAndAmount": {
+    name: "RestrictedFINActiveOrHistoricCurrencyAndAmount",
+    isoId: "_XY_k3tp-Ed-ak6NoX_4Aeg_1054967173",
+    kind: "amount",
+    totalDigits: 14,
+    fractionDigits: 5,
+    minInclusive: 0,
+    pattern: "[A-Z]{3,3}",
+  },
+  "PlusOrMinusIndicator": {
+    name: "PlusOrMinusIndicator",
+    isoId: "_YXvFA9p-Ed-ak6NoX_4Aeg_143431681",
+    kind: "boolean",
+  },
+  "AmountAndDirection14": {
+    name: "AmountAndDirection14",
+    isoId: "_WQIfXNp-Ed-ak6NoX_4Aeg_457061647",
+    kind: "component",
+    fields: [
+      f({ name: "Amount", isoId: "_WQRpQNp-Ed-ak6NoX_4Aeg_-1537083059", xmlTag: "Amt", displayName: displayName("Amount"), kind: "amount", type: "RestrictedFINActiveOrHistoricCurrencyAndAmount", required: true }),
+      f({ name: "Sign", isoId: "_WQRpQdp-Ed-ak6NoX_4Aeg_-1765245322", xmlTag: "Sgn", displayName: displayName("Sign"), kind: "boolean", type: "PlusOrMinusIndicator", required: true }),
+    ],
+  },
+  "AmountAndDirection21": {
+    name: "AmountAndDirection21",
+    isoId: "_STHQKNp-Ed-ak6NoX_4Aeg_1039656981",
+    kind: "component",
+    fields: [
+      f({ name: "Amount", isoId: "_STHQKdp-Ed-ak6NoX_4Aeg_925817915", xmlTag: "Amt", displayName: displayName("Amount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: true }),
+      f({ name: "CreditDebitIndicator", isoId: "_STHQKtp-Ed-ak6NoX_4Aeg_-71254438", xmlTag: "CdtDbtInd", displayName: displayName("CreditDebitIndicator"), kind: "code", type: "CreditDebitCode", required: false }),
+    ],
+  },
   "NonNegativeDecimalNumber": {
     name: "NonNegativeDecimalNumber",
     isoId: "_mX4tAyGwEeKjd4jizyIDGA",
@@ -10688,6 +13610,28 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "CreditDebitIndicator", isoId: "_mgrm9SmjEeKdFJmzhTDOvQ", xmlTag: "CdtDbtInd", displayName: displayName("CreditDebitIndicator"), kind: "code", type: "CreditDebitCode", required: true }),
     ],
   },
+  "ForeignExchangeTerms23": {
+    name: "ForeignExchangeTerms23",
+    isoId: "_96UogTp8EeWVrPy0StzzSg",
+    kind: "component",
+    fields: [
+      f({ name: "UnitCurrency", isoId: "_-ZtTEzp8EeWVrPy0StzzSg", xmlTag: "UnitCcy", displayName: displayName("UnitCurrency"), kind: "code", type: "ActiveCurrencyCode", required: true }),
+      f({ name: "QuotedCurrency", isoId: "_-ZtTGzp8EeWVrPy0StzzSg", xmlTag: "QtdCcy", displayName: displayName("QuotedCurrency"), kind: "code", type: "ActiveCurrencyCode", required: true }),
+      f({ name: "ExchangeRate", isoId: "_-ZtTIzp8EeWVrPy0StzzSg", xmlTag: "XchgRate", displayName: displayName("ExchangeRate"), kind: "number", type: "BaseOneRate", required: true }),
+      f({ name: "ResultingAmount", isoId: "_-ZtTKzp8EeWVrPy0StzzSg", xmlTag: "RsltgAmt", displayName: displayName("ResultingAmount"), kind: "amount", type: "ActiveCurrencyAndAmount", required: true }),
+    ],
+  },
+  "AmountAndDirection44": {
+    name: "AmountAndDirection44",
+    isoId: "_tCgW4zp8EeWVrPy0StzzSg",
+    kind: "component",
+    fields: [
+      f({ name: "Amount", isoId: "_tiCyYzp8EeWVrPy0StzzSg", xmlTag: "Amt", displayName: displayName("Amount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: true }),
+      f({ name: "CreditDebitIndicator", isoId: "_tiCyazp8EeWVrPy0StzzSg", xmlTag: "CdtDbtInd", displayName: displayName("CreditDebitIndicator"), kind: "code", type: "CreditDebitCode", required: false }),
+      f({ name: "OriginalCurrencyAndOrderedAmount", isoId: "_tiCyczp8EeWVrPy0StzzSg", xmlTag: "OrgnlCcyAndOrdrdAmt", displayName: displayName("OriginalCurrencyAndOrderedAmount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: false }),
+      f({ name: "ForeignExchangeDetails", isoId: "_tiCyezp8EeWVrPy0StzzSg", xmlTag: "FXDtls", displayName: displayName("ForeignExchangeDetails"), kind: "component", type: "ForeignExchangeTerms23", required: false }),
+    ],
+  },
   "AmountAndDirection5": {
     name: "AmountAndDirection5",
     isoId: "_T2Wkhdp-Ed-ak6NoX_4Aeg_-2124038249",
@@ -10695,6 +13639,45 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     fields: [
       f({ name: "Amount", isoId: "_T2Wkhtp-Ed-ak6NoX_4Aeg_-2090791440", xmlTag: "Amt", displayName: displayName("Amount"), kind: "amount", type: "ActiveCurrencyAndAmount", required: true }),
       f({ name: "CreditDebit", isoId: "_T2Wkh9p-Ed-ak6NoX_4Aeg_-2037226790", xmlTag: "CdtDbt", displayName: displayName("CreditDebit"), kind: "code", type: "CreditDebitCode", required: false }),
+    ],
+  },
+  "AmountAndDirection51": {
+    name: "AmountAndDirection51",
+    isoId: "_gp7GETqgEeWyoP0PbocV1Q",
+    kind: "component",
+    fields: [
+      f({ name: "Amount", isoId: "_hLF5czqgEeWyoP0PbocV1Q", xmlTag: "Amt", displayName: displayName("Amount"), kind: "amount", type: "ActiveCurrencyAndAmount", required: true }),
+      f({ name: "CreditDebitIndicator", isoId: "_hLF5ezqgEeWyoP0PbocV1Q", xmlTag: "CdtDbtInd", displayName: displayName("CreditDebitIndicator"), kind: "code", type: "CreditDebitCode", required: true }),
+      f({ name: "OriginalCurrencyAndOrderedAmount", isoId: "_hLF5gzqgEeWyoP0PbocV1Q", xmlTag: "OrgnlCcyAndOrdrdAmt", displayName: displayName("OriginalCurrencyAndOrderedAmount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: false }),
+    ],
+  },
+  "AmountAndDirection55": {
+    name: "AmountAndDirection55",
+    isoId: "_5Ndl-5NLEeWGlc8L7oPDIg",
+    kind: "component",
+    fields: [
+      f({ name: "Amount", isoId: "_5Ndl_ZNLEeWGlc8L7oPDIg", xmlTag: "Amt", displayName: displayName("Amount"), kind: "amount", type: "RestrictedFINActiveOrHistoricCurrencyAndAmount", required: true }),
+      f({ name: "CreditDebitIndicator", isoId: "_5NdmBZNLEeWGlc8L7oPDIg", xmlTag: "CdtDbtInd", displayName: displayName("CreditDebitIndicator"), kind: "code", type: "CreditDebitCode", required: false }),
+      f({ name: "OriginalCurrencyAndOrderedAmount", isoId: "_5NdmDZNLEeWGlc8L7oPDIg", xmlTag: "OrgnlCcyAndOrdrdAmt", displayName: displayName("OriginalCurrencyAndOrderedAmount"), kind: "amount", type: "RestrictedFINActiveOrHistoricCurrencyAndAmount", required: false }),
+      f({ name: "ForeignExchangeDetails", isoId: "_5NdmFZNLEeWGlc8L7oPDIg", xmlTag: "FXDtls", displayName: displayName("ForeignExchangeDetails"), kind: "component", type: "ForeignExchangeTerms23", required: false }),
+    ],
+  },
+  "AmountAndDirection59": {
+    name: "AmountAndDirection59",
+    isoId: "_5mxeHpNLEeWGlc8L7oPDIg",
+    kind: "component",
+    fields: [
+      f({ name: "Amount", isoId: "_5mxeIJNLEeWGlc8L7oPDIg", xmlTag: "Amt", displayName: displayName("Amount"), kind: "amount", type: "RestrictedFINActiveOrHistoricCurrencyAndAmount", required: true }),
+      f({ name: "CreditDebitIndicator", isoId: "_5mxeKJNLEeWGlc8L7oPDIg", xmlTag: "CdtDbtInd", displayName: displayName("CreditDebitIndicator"), kind: "code", type: "CreditDebitCode", required: false }),
+    ],
+  },
+  "AmountAndDirection6": {
+    name: "AmountAndDirection6",
+    isoId: "_SV76pdp-Ed-ak6NoX_4Aeg_-1438259650",
+    kind: "component",
+    fields: [
+      f({ name: "Amount", isoId: "_SV76ptp-Ed-ak6NoX_4Aeg_-1438258832", xmlTag: "Amt", displayName: displayName("Amount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: true }),
+      f({ name: "Sign", isoId: "_SV76p9p-Ed-ak6NoX_4Aeg_-1437336265", xmlTag: "Sgn", displayName: displayName("Sign"), kind: "boolean", type: "PlusOrMinusIndicator", required: true }),
     ],
   },
   "GenericIdentification37": {
@@ -10920,11 +13903,221 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "MaximumAmountByBulkSubmission", isoId: "_RK4zUA3yEeKGXqvMN6jpiw", xmlTag: "MaxAmtByBlkSubmissn", displayName: displayName("MaximumAmountByBulkSubmission"), kind: "choice", type: "FixedAmountOrUnlimited1Choice", required: false }),
     ],
   },
+  "ShortLong1Code": {
+    name: "ShortLong1Code",
+    isoId: "_ZOtwUtp-Ed-ak6NoX_4Aeg_136531631",
+    kind: "code",
+    options: [{ value: "SHOR", name: "Short", isoId: "_ZOtwU9p-Ed-ak6NoX_4Aeg_179013074" }, { value: "LONG", name: "Long", isoId: "_ZOtwVNp-Ed-ak6NoX_4Aeg_1366496716" }],
+  },
+  "Max30DecimalNumber": {
+    name: "Max30DecimalNumber",
+    isoId: "_xNcaMBrKEeyhRdHRjakS2w",
+    kind: "number",
+    totalDigits: 30,
+    fractionDigits: 29,
+  },
+  "FinancialInstrumentQuantity33Choice": {
+    name: "FinancialInstrumentQuantity33Choice",
+    isoId: "_Gu-7FRuyEeyhRdHRjakS2w",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Unit", isoId: "_HEcNsRuyEeyhRdHRjakS2w", xmlTag: "Unit", displayName: displayName("Unit"), kind: "number", type: "DecimalNumber", required: true }),
+      f({ name: "FaceAmount", isoId: "_HEcNuRuyEeyhRdHRjakS2w", xmlTag: "FaceAmt", displayName: displayName("FaceAmount"), kind: "number", type: "ImpliedCurrencyAndAmount", required: true }),
+      f({ name: "AmortisedValue", isoId: "_HEcNuxuyEeyhRdHRjakS2w", xmlTag: "AmtsdVal", displayName: displayName("AmortisedValue"), kind: "number", type: "ImpliedCurrencyAndAmount", required: true }),
+      f({ name: "DigitalTokenUnit", isoId: "_5UlWABuyEeyhRdHRjakS2w", xmlTag: "DgtlTknUnit", displayName: displayName("DigitalTokenUnit"), kind: "number", type: "Max30DecimalNumber", required: true }),
+    ],
+    rules: [
+      { name: "DigitalTokenUnitUsageRule", isoId: "_ldGFESTwEeyFBYL3tbKzsg", text: "DigitalTokenUnit format may only be used for instruments identified with a digital token identifier." },
+    ],
+  },
+  "OriginalAndCurrentQuantities1": {
+    name: "OriginalAndCurrentQuantities1",
+    isoId: "_Sotsttp-Ed-ak6NoX_4Aeg_975131994",
+    kind: "component",
+    fields: [
+      f({ name: "FaceAmount", isoId: "_Sotst9p-Ed-ak6NoX_4Aeg_1262349956", xmlTag: "FaceAmt", displayName: displayName("FaceAmount"), kind: "number", type: "ImpliedCurrencyAndAmount", required: true }),
+      f({ name: "AmortisedValue", isoId: "_So3dsNp-Ed-ak6NoX_4Aeg_1277126235", xmlTag: "AmtsdVal", displayName: displayName("AmortisedValue"), kind: "number", type: "ImpliedCurrencyAndAmount", required: true }),
+    ],
+  },
+  "Quantity51Choice": {
+    name: "Quantity51Choice",
+    isoId: "_LU-10RuyEeyhRdHRjakS2w",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Quantity", isoId: "_Lql5cRuyEeyhRdHRjakS2w", xmlTag: "Qty", displayName: displayName("Quantity"), kind: "choice", type: "FinancialInstrumentQuantity33Choice", required: true }),
+      f({ name: "OriginalAndCurrentFace", isoId: "_Lql5cxuyEeyhRdHRjakS2w", xmlTag: "OrgnlAndCurFace", displayName: displayName("OriginalAndCurrentFace"), kind: "component", type: "OriginalAndCurrentQuantities1", required: true }),
+    ],
+  },
+  "GenericIdentification56": {
+    name: "GenericIdentification56",
+    isoId: "_I1JtoYjwEeONZKAAW4pOaQ",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_JAok44jwEeONZKAAW4pOaQ", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Exact4AlphaNumericText", required: true }),
+      f({ name: "Issuer", isoId: "_JAok5YjwEeONZKAAW4pOaQ", xmlTag: "Issr", displayName: displayName("Issuer"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "SchemeName", isoId: "_JAok54jwEeONZKAAW4pOaQ", xmlTag: "SchmeNm", displayName: displayName("SchemeName"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "Balance", isoId: "_JAok6YjwEeONZKAAW4pOaQ", xmlTag: "Bal", displayName: displayName("Balance"), kind: "number", type: "DecimalNumber", required: true }),
+    ],
+  },
+  "BalanceQuantity13Choice": {
+    name: "BalanceQuantity13Choice",
+    isoId: "_ieYh8Sp6EeyR9JrVGfaMKw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Quantity", isoId: "_i1n9MSp6EeyR9JrVGfaMKw", xmlTag: "Qty", displayName: displayName("Quantity"), kind: "choice", type: "Quantity51Choice", required: true }),
+      f({ name: "Proprietary", isoId: "_i1n9OSp6EeyR9JrVGfaMKw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification56", required: true }),
+    ],
+  },
+  "Balance16": {
+    name: "Balance16",
+    isoId: "_iHbamSp6EeyR9JrVGfaMKw",
+    kind: "component",
+    fields: [
+      f({ name: "ShortLongIndicator", isoId: "_ieYh4Sp6EeyR9JrVGfaMKw", xmlTag: "ShrtLngInd", displayName: displayName("ShortLongIndicator"), kind: "code", type: "ShortLong1Code", required: false }),
+      f({ name: "Quantity", isoId: "_ieYh6Sp6EeyR9JrVGfaMKw", xmlTag: "Qty", displayName: displayName("Quantity"), kind: "choice", type: "BalanceQuantity13Choice", required: true }),
+    ],
+  },
+  "Balance17": {
+    name: "Balance17",
+    isoId: "_j66xdSp6EeyR9JrVGfaMKw",
+    kind: "component",
+    fields: [
+      f({ name: "ShortLongIndicator", isoId: "_kST9oSp6EeyR9JrVGfaMKw", xmlTag: "ShrtLngInd", displayName: displayName("ShortLongIndicator"), kind: "code", type: "ShortLong1Code", required: true }),
+      f({ name: "Quantity", isoId: "_kST9qSp6EeyR9JrVGfaMKw", xmlTag: "Qty", displayName: displayName("Quantity"), kind: "choice", type: "BalanceQuantity13Choice", required: true }),
+    ],
+  },
+  "RestrictedFINDecimalNumber": {
+    name: "RestrictedFINDecimalNumber",
+    isoId: "_WN5Dqdp-Ed-ak6NoX_4Aeg_-1355299695",
+    kind: "number",
+    totalDigits: 14,
+    fractionDigits: 14,
+  },
+  "RestrictedFINImpliedCurrencyAndAmount": {
+    name: "RestrictedFINImpliedCurrencyAndAmount",
+    isoId: "_XZJV1Np-Ed-ak6NoX_4Aeg_681057429",
+    kind: "number",
+    totalDigits: 14,
+    fractionDigits: 5,
+    minInclusive: 0,
+  },
+  "FinancialInstrumentQuantity36Choice": {
+    name: "FinancialInstrumentQuantity36Choice",
+    isoId: "_peY03Ti7Eeydid5dcNPKvg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Unit", isoId: "_peY04Ti7Eeydid5dcNPKvg", xmlTag: "Unit", displayName: displayName("Unit"), kind: "number", type: "RestrictedFINDecimalNumber", required: true }),
+      f({ name: "FaceAmount", isoId: "_peY06Ti7Eeydid5dcNPKvg", xmlTag: "FaceAmt", displayName: displayName("FaceAmount"), kind: "number", type: "RestrictedFINImpliedCurrencyAndAmount", required: true }),
+      f({ name: "AmortisedValue", isoId: "_peY06zi7Eeydid5dcNPKvg", xmlTag: "AmtsdVal", displayName: displayName("AmortisedValue"), kind: "number", type: "RestrictedFINImpliedCurrencyAndAmount", required: true }),
+      f({ name: "DigitalTokenUnit", isoId: "_peY07Ti7Eeydid5dcNPKvg", xmlTag: "DgtlTknUnit", displayName: displayName("DigitalTokenUnit"), kind: "number", type: "Max30DecimalNumber", required: true }),
+    ],
+    rules: [
+      { name: "DigitalTokenUnitUsageRule", isoId: "_peY03zi7Eeydid5dcNPKvg", text: "DigitalTokenUnit format may only be used for instruments identified with a digital token identifier." },
+    ],
+  },
+  "OriginalAndCurrentQuantities4": {
+    name: "OriginalAndCurrentQuantities4",
+    isoId: "_WsJF4Np-Ed-ak6NoX_4Aeg_1963555936",
+    kind: "component",
+    fields: [
+      f({ name: "FaceAmount", isoId: "_WsJF4dp-Ed-ak6NoX_4Aeg_-30588770", xmlTag: "FaceAmt", displayName: displayName("FaceAmount"), kind: "number", type: "RestrictedFINImpliedCurrencyAndAmount", required: true }),
+      f({ name: "AmortisedValue", isoId: "_WsJF4tp-Ed-ak6NoX_4Aeg_1660909971", xmlTag: "AmtsdVal", displayName: displayName("AmortisedValue"), kind: "number", type: "RestrictedFINImpliedCurrencyAndAmount", required: true }),
+    ],
+  },
+  "Quantity54Choice": {
+    name: "Quantity54Choice",
+    isoId: "_peZb9zi7Eeydid5dcNPKvg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Quantity", isoId: "_peZb-Ti7Eeydid5dcNPKvg", xmlTag: "Qty", displayName: displayName("Quantity"), kind: "choice", type: "FinancialInstrumentQuantity36Choice", required: true }),
+      f({ name: "OriginalAndCurrentFace", isoId: "_peZb-zi7Eeydid5dcNPKvg", xmlTag: "OrgnlAndCurFace", displayName: displayName("OriginalAndCurrentFace"), kind: "component", type: "OriginalAndCurrentQuantities4", required: true }),
+    ],
+  },
+  "GenericIdentification144": {
+    name: "GenericIdentification144",
+    isoId: "_5W2ye5NLEeWGlc8L7oPDIg",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_5W2yfZNLEeWGlc8L7oPDIg", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Exact4AlphaNumericText", required: true }),
+      f({ name: "Issuer", isoId: "_5W2yf5NLEeWGlc8L7oPDIg", xmlTag: "Issr", displayName: displayName("Issuer"), kind: "text", type: "Max4AlphaNumericText", required: true }),
+      f({ name: "SchemeName", isoId: "_5W2ygZNLEeWGlc8L7oPDIg", xmlTag: "SchmeNm", displayName: displayName("SchemeName"), kind: "text", type: "Max4AlphaNumericText", required: false }),
+      f({ name: "Balance", isoId: "_5W2yg5NLEeWGlc8L7oPDIg", xmlTag: "Bal", displayName: displayName("Balance"), kind: "number", type: "RestrictedFINDecimalNumber", required: true }),
+    ],
+  },
+  "BalanceQuantity15Choice": {
+    name: "BalanceQuantity15Choice",
+    isoId: "_ch9l1Ti8Eeydid5dcNPKvg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Quantity", isoId: "_ch-MQTi8Eeydid5dcNPKvg", xmlTag: "Qty", displayName: displayName("Quantity"), kind: "choice", type: "Quantity54Choice", required: true }),
+      f({ name: "Proprietary", isoId: "_ch-MSTi8Eeydid5dcNPKvg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification144", required: true }),
+    ],
+  },
+  "Balance22": {
+    name: "Balance22",
+    isoId: "_ch9lvzi8Eeydid5dcNPKvg",
+    kind: "component",
+    fields: [
+      f({ name: "ShortLongIndicator", isoId: "_ch9lwTi8Eeydid5dcNPKvg", xmlTag: "ShrtLngInd", displayName: displayName("ShortLongIndicator"), kind: "code", type: "ShortLong1Code", required: true }),
+      f({ name: "Quantity", isoId: "_ch9lyTi8Eeydid5dcNPKvg", xmlTag: "Qty", displayName: displayName("Quantity"), kind: "choice", type: "BalanceQuantity15Choice", required: true }),
+    ],
+  },
+  "Balance23": {
+    name: "Balance23",
+    isoId: "_ch_bITi8Eeydid5dcNPKvg",
+    kind: "component",
+    fields: [
+      f({ name: "ShortLongIndicator", isoId: "_ch_bIzi8Eeydid5dcNPKvg", xmlTag: "ShrtLngInd", displayName: displayName("ShortLongIndicator"), kind: "code", type: "ShortLong1Code", required: false }),
+      f({ name: "Quantity", isoId: "_ch_bKzi8Eeydid5dcNPKvg", xmlTag: "Qty", displayName: displayName("Quantity"), kind: "choice", type: "BalanceQuantity15Choice", required: true }),
+    ],
+  },
+  "BalanceAmounts3": {
+    name: "BalanceAmounts3",
+    isoId: "_SVywtdp-Ed-ak6NoX_4Aeg_-1500373473",
+    kind: "component",
+    fields: [
+      f({ name: "HoldingValue", isoId: "_SVywttp-Ed-ak6NoX_4Aeg_1018333172", xmlTag: "HldgVal", displayName: displayName("HoldingValue"), kind: "component", type: "AmountAndDirection6", required: false }),
+      f({ name: "PreviousHoldingValue", isoId: "_SVywt9p-Ed-ak6NoX_4Aeg_-1905008584", xmlTag: "PrvsHldgVal", displayName: displayName("PreviousHoldingValue"), kind: "component", type: "AmountAndDirection6", required: false }),
+      f({ name: "BookValue", isoId: "_SVywuNp-Ed-ak6NoX_4Aeg_1019253264", xmlTag: "BookVal", displayName: displayName("BookValue"), kind: "component", type: "AmountAndDirection6", required: false }),
+      f({ name: "EligibleCollateralValue", isoId: "_SV76oNp-Ed-ak6NoX_4Aeg_1019253419", xmlTag: "ElgblCollVal", displayName: displayName("EligibleCollateralValue"), kind: "component", type: "AmountAndDirection6", required: false }),
+      f({ name: "AccruedInterestAmount", isoId: "_SV76odp-Ed-ak6NoX_4Aeg_-611160519", xmlTag: "AcrdIntrstAmt", displayName: displayName("AccruedInterestAmount"), kind: "component", type: "AmountAndDirection6", required: false }),
+    ],
+    rules: [
+      { name: "EligibleCollateralValueRule", isoId: "_SV76otp-Ed-ak6NoX_4Aeg_1979851562", text: "EligibleCollateralValue is only to be used in (I)CSD-participant communication or if bilaterally agreed between the sender and receiver." },
+    ],
+  },
   "BalanceCounterparty1Code": {
     name: "BalanceCounterparty1Code",
     isoId: "_bkBa0tp-Ed-ak6NoX_4Aeg_678189976",
     kind: "code",
     options: [{ value: "BILA", name: "Bilateral", isoId: "_bkBa09p-Ed-ak6NoX_4Aeg_678189977" }, { value: "MULT", name: "Multilateral", isoId: "_bkBa1Np-Ed-ak6NoX_4Aeg_678189978" }],
+  },
+  "BalanceQuantity14Choice": {
+    name: "BalanceQuantity14Choice",
+    isoId: "__AeM4Sp7EeyR9JrVGfaMKw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Quantity", isoId: "__ZNdASp7EeyR9JrVGfaMKw", xmlTag: "Qty", displayName: displayName("Quantity"), kind: "choice", type: "FinancialInstrumentQuantity33Choice", required: true }),
+      f({ name: "Proprietary", isoId: "__ZNdCSp7EeyR9JrVGfaMKw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification56", required: true }),
+    ],
+  },
+  "BalanceQuantity17Choice": {
+    name: "BalanceQuantity17Choice",
+    isoId: "_csW4Azi8Eeydid5dcNPKvg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Quantity", isoId: "_csW4BTi8Eeydid5dcNPKvg", xmlTag: "Qty", displayName: displayName("Quantity"), kind: "choice", type: "FinancialInstrumentQuantity36Choice", required: true }),
+      f({ name: "Proprietary", isoId: "_csW4DTi8Eeydid5dcNPKvg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification144", required: true }),
+    ],
+  },
+  "BalanceQuantity1Choice": {
+    name: "BalanceQuantity1Choice",
+    isoId: "_RCDQ59p-Ed-ak6NoX_4Aeg_695361822",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Quantity", isoId: "_RCDQ6Np-Ed-ak6NoX_4Aeg_1736172221", xmlTag: "Qty", displayName: displayName("Quantity"), kind: "choice", type: "FinancialInstrumentQuantityChoice", required: true }),
+      f({ name: "QuantityAsDSS", isoId: "_RCMa0Np-Ed-ak6NoX_4Aeg_1824828268", xmlTag: "QtyAsDSS", displayName: displayName("QuantityAsDSS"), kind: "component", type: "GenericIdentification6", required: true }),
+    ],
   },
   "ExternalBalanceSubType1Code": {
     name: "ExternalBalanceSubType1Code",
@@ -11822,6 +15015,24 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       { name: "FamilyAndSubFamilyRule", isoId: "_TVkLodp-Ed-ak6NoX_4Aeg_-549687302", text: "If a specific (non-generic) Family code is not present, then a specific (non-generic) SubFamily code is not allowed." },
     ],
   },
+  "PartyIdentification15": {
+    name: "PartyIdentification15",
+    isoId: "_QO7x6tp-Ed-ak6NoX_4Aeg_-789866808",
+    kind: "component",
+    fields: [
+      f({ name: "Country", isoId: "_QO7x69p-Ed-ak6NoX_4Aeg_-479565158", xmlTag: "Ctry", displayName: displayName("Country"), kind: "code", type: "CountryCode", required: false }),
+      f({ name: "Identification", isoId: "_QO7x7Np-Ed-ak6NoX_4Aeg_-447243502", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: true }),
+    ],
+  },
+  "BasicCollateralValuation1Details": {
+    name: "BasicCollateralValuation1Details",
+    isoId: "_UAL1-dp-Ed-ak6NoX_4Aeg_-606746879",
+    kind: "component",
+    fields: [
+      f({ name: "ValuationHaircut", isoId: "_UAL1-tp-Ed-ak6NoX_4Aeg_-606746854", xmlTag: "ValtnHrcut", displayName: displayName("ValuationHaircut"), kind: "number", type: "PercentageRate", required: true }),
+      f({ name: "HaircutSource", isoId: "_UAVm8Np-Ed-ak6NoX_4Aeg_-606746837", xmlTag: "HrcutSrc", displayName: displayName("HaircutSource"), kind: "component", type: "PartyIdentification15", required: false }),
+    ],
+  },
   "BatchBookingIndicator": {
     name: "BatchBookingIndicator",
     isoId: "_YXvFBtp-Ed-ak6NoX_4Aeg_205529668",
@@ -11849,6 +15060,136 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "BelgianIdentifier",
     isoId: "_YYLJ4tp-Ed-ak6NoX_4Aeg_1324881647",
     kind: "text",
+  },
+  "BeneficialOwnership4Choice": {
+    name: "BeneficialOwnership4Choice",
+    isoId: "_TaICwTqGEeWVrPy0StzzSg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Indicator", isoId: "_T5OZkTqGEeWVrPy0StzzSg", xmlTag: "Ind", displayName: displayName("Indicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+      f({ name: "Proprietary", isoId: "_T5OZmTqGEeWVrPy0StzzSg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "BeneficialOwnership5Choice": {
+    name: "BeneficialOwnership5Choice",
+    isoId: "_5m6A45NLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Indicator", isoId: "_5m6A5ZNLEeWGlc8L7oPDIg", xmlTag: "Ind", displayName: displayName("Indicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+      f({ name: "Proprietary", isoId: "_5m6A7ZNLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "PurposeCode7Choice": {
+    name: "PurposeCode7Choice",
+    isoId: "_uim_UznaEeWV5sr121Fc8A",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_vCc80znaEeWV5sr121Fc8A", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "SecuritiesAccountPurposeType1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_vCc82znaEeWV5sr121Fc8A", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "BlockChainAddressWallet1": {
+    name: "BlockChainAddressWallet1",
+    isoId: "_Cmz-QSp4EeyR9JrVGfaMKw",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_C-W7kSp4EeyR9JrVGfaMKw", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max140Text", required: true }),
+      f({ name: "Type", isoId: "_C-W7kyp4EeyR9JrVGfaMKw", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "PurposeCode7Choice", required: false }),
+      f({ name: "Name", isoId: "_C-W7lSp4EeyR9JrVGfaMKw", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max70Text", required: false }),
+      f({ name: "Designation", isoId: "_C-W7lyp4EeyR9JrVGfaMKw", xmlTag: "Dsgnt", displayName: displayName("Designation"), kind: "text", type: "Max35Text", required: false }),
+    ],
+  },
+  "PurposeCode8Choice": {
+    name: "PurposeCode8Choice",
+    isoId: "_5Wx6YpNLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_5Wx6ZJNLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "SecuritiesAccountPurposeType1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_5Wx6bJNLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "RestrictedFINXMax70Text": {
+    name: "RestrictedFINXMax70Text",
+    isoId: "_XZTG19p-Ed-ak6NoX_4Aeg_621110266",
+    kind: "text",
+    minLength: 1,
+    maxLength: 70,
+    pattern: "[0-9a-zA-Z/\\-\\?:\\(\\)\\.\\n\\r,'\\+ ]{1,70}",
+  },
+  "BlockChainAddressWallet10": {
+    name: "BlockChainAddressWallet10",
+    isoId: "_uCBjIUYkEeyIDL5Gtobnyw",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_uTAlcUYkEeyIDL5Gtobnyw", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "RestrictedFINXMax140Text", required: true }),
+      f({ name: "Type", isoId: "_uTAlc0YkEeyIDL5Gtobnyw", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "PurposeCode8Choice", required: false }),
+      f({ name: "Name", isoId: "_uTAldUYkEeyIDL5Gtobnyw", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "RestrictedFINXMax70Text", required: false }),
+      f({ name: "Designation", isoId: "_uTAld0YkEeyIDL5Gtobnyw", xmlTag: "Dsgnt", displayName: displayName("Designation"), kind: "text", type: "RestrictedFINXMax35Text", required: false }),
+    ],
+  },
+  "BlockChainAddressWallet2": {
+    name: "BlockChainAddressWallet2",
+    isoId: "_5KWOYSp4EeyR9JrVGfaMKw",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_5h5Lsyp4EeyR9JrVGfaMKw", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max140Text", required: true }),
+      f({ name: "Type", isoId: "_5h5Lxyp4EeyR9JrVGfaMKw", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "PurposeCode7Choice", required: false }),
+      f({ name: "Name", isoId: "_5h5L2yp4EeyR9JrVGfaMKw", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max70Text", required: false }),
+    ],
+  },
+  "BlockChainAddressWallet3": {
+    name: "BlockChainAddressWallet3",
+    isoId: "_l7F8gSp-EeyR9JrVGfaMKw",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_mTrboSp-EeyR9JrVGfaMKw", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max140Text", required: true }),
+      f({ name: "Type", isoId: "_mTrbtSp-EeyR9JrVGfaMKw", xmlTag: "Tp", displayName: displayName("Type"), kind: "component", type: "GenericIdentification30", required: false }),
+      f({ name: "Name", isoId: "_mTrbySp-EeyR9JrVGfaMKw", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max70Text", required: false }),
+    ],
+  },
+  "BlockChainAddressWallet7": {
+    name: "BlockChainAddressWallet7",
+    isoId: "_nL5-4UYvEeyIDL5Gtobnyw",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_ncJaUUYvEeyIDL5Gtobnyw", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "RestrictedFINXMax140Text", required: true }),
+      f({ name: "Type", isoId: "_ncJaZUYvEeyIDL5Gtobnyw", xmlTag: "Tp", displayName: displayName("Type"), kind: "component", type: "GenericIdentification47", required: false }),
+      f({ name: "Name", isoId: "_ncJaeUYvEeyIDL5Gtobnyw", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "RestrictedFINXMax70Text", required: false }),
+    ],
+  },
+  "BlockChainAddressWallet9": {
+    name: "BlockChainAddressWallet9",
+    isoId: "_HdKMsUfFEey6Is2iMqV8fg",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_HszLM0fFEey6Is2iMqV8fg", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "RestrictedFINXMax140Text", required: true }),
+      f({ name: "Type", isoId: "_HszLR0fFEey6Is2iMqV8fg", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "PurposeCode8Choice", required: false }),
+      f({ name: "Name", isoId: "_HszLW0fFEey6Is2iMqV8fg", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "RestrictedFINXMax70Text", required: false }),
+    ],
+  },
+  "BlockTrade1Code": {
+    name: "BlockTrade1Code",
+    isoId: "_begotNp-Ed-ak6NoX_4Aeg_450632861",
+    kind: "code",
+    options: [{ value: "BLPA", name: "Parent", isoId: "_begotdp-Ed-ak6NoX_4Aeg_489423628" }, { value: "BLCH", name: "Child", isoId: "_begottp-Ed-ak6NoX_4Aeg_535598920" }],
+  },
+  "BlockTrade4Choice": {
+    name: "BlockTrade4Choice",
+    isoId: "_1_5ugTqHEeWVrPy0StzzSg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_2e1tQTqHEeWVrPy0StzzSg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "BlockTrade1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_2e1tSTqHEeWVrPy0StzzSg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "BlockTrade5Choice": {
+    name: "BlockTrade5Choice",
+    isoId: "_5m6BcZNLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_5m6Bc5NLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "BlockTrade1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_5m6Be5NLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
   },
   "Holding1Code": {
     name: "Holding1Code",
@@ -12204,6 +15545,12 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       { name: "UserDefinedRule", isoId: "_K78-YQatEeS3lpTattq7hg", text: "At least one message element in the list (Party, Country, Currency, UserDefined) must be present. More than one element in the list (Party, Country, Currency, UserDefined) may be present." },
     ],
   },
+  "CFIOct2015Identifier": {
+    name: "CFIOct2015Identifier",
+    isoId: "_7njI4YIXEeWE0I8iABxEQA",
+    kind: "text",
+    pattern: "[A-Z]{6,6}",
+  },
   "CSCManagement1Code": {
     name: "CSCManagement1Code",
     isoId: "_TS9qYQEcEeCQm6a_G2yO_w_-804127704",
@@ -12214,6 +15561,27 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     name: "CUSIPIdentifier",
     isoId: "_YYLJ5dp-Ed-ak6NoX_4Aeg_-1084539446",
     kind: "text",
+  },
+  "CancellationProcessingStatus1Code": {
+    name: "CancellationProcessingStatus1Code",
+    isoId: "_bXgo0tp-Ed-ak6NoX_4Aeg_2094579534",
+    kind: "code",
+    options: [{ value: "CAND", name: "CancellationCompleted", isoId: "_bXgo09p-Ed-ak6NoX_4Aeg_2094579543" }, { value: "CANP", name: "PendingCancellation", isoId: "_bXgo1Np-Ed-ak6NoX_4Aeg_2094579544" }, { value: "DEND", name: "Denied", isoId: "_bXgo1dp-Ed-ak6NoX_4Aeg_2094579564" }, { value: "EXCH", name: "ReceivedAtStockExchange", isoId: "_bXgo1tp-Ed-ak6NoX_4Aeg_2094579565" }, { value: "INTE", name: "ReceivedAtIntermediary", isoId: "_bXgo19p-Ed-ak6NoX_4Aeg_2094579595" }, { value: "PACK", name: "Accepted", isoId: "_bXqZ0Np-Ed-ak6NoX_4Aeg_2094579596" }, { value: "PARF", name: "PartiallyFilled", isoId: "_bXqZ0dp-Ed-ak6NoX_4Aeg_2094579626" }, { value: "REJT", name: "Rejected", isoId: "_bXqZ0tp-Ed-ak6NoX_4Aeg_2094579627" }, { value: "REPR", name: "InRepair", isoId: "_bXqZ09p-Ed-ak6NoX_4Aeg_2094579656" }],
+  },
+  "CancellationProcessingStatus3Code": {
+    name: "CancellationProcessingStatus3Code",
+    isoId: "_jQNIme5NEeCisYr99QEiWA_-1920216979",
+    kind: "code",
+    options: [{ value: "CANP", name: "PendingCancellation", isoId: "_jQW5kO5NEeCisYr99QEiWA_1377677964" }, { value: "REJT", name: "Rejected", isoId: "_jQW5ke5NEeCisYr99QEiWA_1441957570" }, { value: "REPR", name: "InRepair", isoId: "_jQW5ku5NEeCisYr99QEiWA_-653311621" }, { value: "PACK", name: "Accepted", isoId: "_jQW5k-5NEeCisYr99QEiWA_1263838898" }, { value: "DEND", name: "Denied", isoId: "_jQW5lO5NEeCisYr99QEiWA_1555796636" }, { value: "CAND", name: "CancellationCompleted", isoId: "_jQgqkO5NEeCisYr99QEiWA_-1855937373" }],
+  },
+  "CancellationProcessingStatus9Choice": {
+    name: "CancellationProcessingStatus9Choice",
+    isoId: "_BlUUkeFfEeWIA4E9cYSxxQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_BxXzkeFfEeWIA4E9cYSxxQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "CancellationProcessingStatus3Code", required: true }),
+      f({ name: "Proprietary", isoId: "_BxXzmeFfEeWIA4E9cYSxxQ", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
   },
   "CancelledStatusReason5Code": {
     name: "CancelledStatusReason5Code",
@@ -12252,6 +15620,48 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     choiceOptions: [
       f({ name: "Code", isoId: "_jGFhYTnuEeWfSKvvZlhRKg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "CancelledStatusReason13Code", required: true }),
       f({ name: "Proprietary", isoId: "_jGFhaTnuEeWfSKvvZlhRKg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "CancelledStatusReason16Code": {
+    name: "CancelledStatusReason16Code",
+    isoId: "_YsVgENB6EeihG9bKfarOOA",
+    kind: "code",
+    options: [{ value: "SCEX", name: "SecuritiesNoLongerEligible", isoId: "_Nxq3oeNlEeifxbo8DBFfuw" }, { value: "OTHR", name: "Other", isoId: "_N1-v4eNlEeifxbo8DBFfuw" }, { value: "CXLR", name: "EndOfLife", isoId: "_OEaNceNlEeifxbo8DBFfuw" }, { value: "BYIY", name: "CancelledDueToBuyIn", isoId: "_O0UAYeNlEeifxbo8DBFfuw" }, { value: "CTHP", name: "CancelledByThirdParty", isoId: "_Ry5RYeNlEeifxbo8DBFfuw" }, { value: "CANZ", name: "CancelledSplitPartialSettlement", isoId: "_Zpc98eNlEeifxbo8DBFfuw" }, { value: "CANT", name: "CancelledDueToTransformation", isoId: "_aNv90eNlEeifxbo8DBFfuw" }, { value: "CSUB", name: "CancelledByAgent", isoId: "_bURhAeNlEeifxbo8DBFfuw" }, { value: "CANS", name: "CancelledBySystem", isoId: "_b8IyQeNlEeifxbo8DBFfuw" }, { value: "CANI", name: "CancelledByYourself", isoId: "_c5ImAeNlEeifxbo8DBFfuw" }, { value: "CORP", name: "CancelledDueToCorporateAction", isoId: "_owhK0eQBEeifxbo8DBFfuw" }],
+  },
+  "CancellationReason36Choice": {
+    name: "CancellationReason36Choice",
+    isoId: "_HkfY8dB7EeihG9bKfarOOA",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_IYQ_MdB7EeihG9bKfarOOA", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "CancelledStatusReason16Code", required: true }),
+      f({ name: "Proprietary", isoId: "_IYQ_OdB7EeihG9bKfarOOA", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "CancellationReason22": {
+    name: "CancellationReason22",
+    isoId: "_HTr8wdB7EeihG9bKfarOOA",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "_HkfY4dB7EeihG9bKfarOOA", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "CancellationReason36Choice", required: true }),
+      f({ name: "AdditionalReasonInformation", isoId: "_HkfY6dB7EeihG9bKfarOOA", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
+    ],
+  },
+  "CancellationReason37Choice": {
+    name: "CancellationReason37Choice",
+    isoId: "_65NbEffUEeiNZp_PtLohLw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_65NbE_fUEeiNZp_PtLohLw", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "CancelledStatusReason16Code", required: true }),
+      f({ name: "Proprietary", isoId: "_65NbG_fUEeiNZp_PtLohLw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "CancellationReason24": {
+    name: "CancellationReason24",
+    isoId: "_65Na_ffUEeiNZp_PtLohLw",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "_65Na__fUEeiNZp_PtLohLw", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "CancellationReason37Choice", required: true }),
+      f({ name: "AdditionalReasonInformation", isoId: "_65NbB_fUEeiNZp_PtLohLw", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "RestrictedFINXMax210Text", required: false }),
     ],
   },
   "ExternalCancellationReason1Code": {
@@ -12297,6 +15707,30 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "NoSpecifiedReason", isoId: "_MPmooTs9EeWRTLSN0i0tng", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
       f({ name: "Reason", isoId: "_MPmoqTs9EeWRTLSN0i0tng", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "CancellationReason10", required: true }),
     ],
+  },
+  "CancellationStatus24Choice": {
+    name: "CancellationStatus24Choice",
+    isoId: "_GcCjM9B7EeihG9bKfarOOA",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NoSpecifiedReason", isoId: "_HTiLwdB7EeihG9bKfarOOA", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
+      f({ name: "Reason", isoId: "_HTiLydB7EeihG9bKfarOOA", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "CancellationReason22", required: true }),
+    ],
+  },
+  "CancellationStatus25Choice": {
+    name: "CancellationStatus25Choice",
+    isoId: "_65Na5_fUEeiNZp_PtLohLw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NoSpecifiedReason", isoId: "_65Na6ffUEeiNZp_PtLohLw", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
+      f({ name: "Reason", isoId: "_65Na8ffUEeiNZp_PtLohLw", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "CancellationReason24", required: true }),
+    ],
+  },
+  "CancelledStatusReason12Code": {
+    name: "CancelledStatusReason12Code",
+    isoId: "_1MLxoT9kEeCuVfEpWlZb5g",
+    kind: "code",
+    options: [{ value: "CANI", name: "CancelledByYourself", isoId: "_1MLxpz9kEeCuVfEpWlZb5g" }, { value: "CANS", name: "CancelledBySystem", isoId: "_1MLxqz9kEeCuVfEpWlZb5g" }, { value: "CSUB", name: "CancelledByAgent", isoId: "_1MLxrz9kEeCuVfEpWlZb5g" }, { value: "CXLR", name: "EndOfLife", isoId: "_1MLxsz9kEeCuVfEpWlZb5g" }, { value: "CANT", name: "CancelledDueToTransformation", isoId: "_1MLxtz9kEeCuVfEpWlZb5g" }, { value: "CANZ", name: "CancelledSplitPartialSettlement", isoId: "_1MLxuz9kEeCuVfEpWlZb5g" }, { value: "CORP", name: "CancelledDueToCorporateAction", isoId: "_1MLxvz9kEeCuVfEpWlZb5g" }, { value: "SCEX", name: "SecuritiesNoLongerEligible", isoId: "_1MLxwz9kEeCuVfEpWlZb5g" }, { value: "OTHR", name: "Other", isoId: "_1MLxxz9kEeCuVfEpWlZb5g" }, { value: "CANO", name: "CancelledByOther", isoId: "_1MLxyz9kEeCuVfEpWlZb5g" }, { value: "CREG", name: "CancelledByIssuerRegistrar", isoId: "_q12LwGtdEeCY4-KZ9JEyUQ_324041150" }],
   },
   "CardPaymentServiceType2Code": {
     name: "CardPaymentServiceType2Code",
@@ -12726,6 +16160,15 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       { name: "IdentificationAndProxyGuideline", isoId: "_w5_OJTEyEe6g-ffJsqGiSA", text: "If the account identification is not defined through a conventional identification such as an email address or a mobile number, then the proxy element should be used for the identification of the account." },
     ],
   },
+  "CashAccountIdentification5Choice": {
+    name: "CashAccountIdentification5Choice",
+    isoId: "_PdUHwtp-Ed-ak6NoX_4Aeg_-912371635",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "IBAN", isoId: "_Pdd4sNp-Ed-ak6NoX_4Aeg_-912371557", xmlTag: "IBAN", displayName: displayName("IBAN"), kind: "text", type: "IBAN2007Identifier", required: true }),
+      f({ name: "Proprietary", isoId: "_Pdd4sdp-Ed-ak6NoX_4Aeg_-912371522", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max34Text", required: true }),
+    ],
+  },
   "Max15PlusSignedNumericText": {
     name: "Max15PlusSignedNumericText",
     isoId: "_YY7X0dp-Ed-ak6NoX_4Aeg_1835339329",
@@ -13071,6 +16514,52 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "OtherCashSettlementDetails", isoId: "_JRwVo5TAEemqYPWMBuVawg", xmlTag: "OthrCshSttlmDtls", displayName: displayName("OtherCashSettlementDetails"), kind: "component", type: "PaymentInstrument17", required: false, repeat: { min: 0, max: null } }),
     ],
   },
+  "CashSettlementSystem2Code": {
+    name: "CashSettlementSystem2Code",
+    isoId: "_a7WRQ9p-Ed-ak6NoX_4Aeg_408258420",
+    kind: "code",
+    options: [{ value: "GROS", name: "GrossSettlementSystem", isoId: "_a7WRRNp-Ed-ak6NoX_4Aeg_-702652999" }, { value: "NETS", name: "NetSettlementSystem", isoId: "_a7WRRdp-Ed-ak6NoX_4Aeg_1056453502" }],
+  },
+  "CashSettlementSystem3Code": {
+    name: "CashSettlementSystem3Code",
+    isoId: "_IY8aMJZyEfC2_67yGLymgA",
+    kind: "code",
+    options: [{ value: "DCSS", name: "DigitalCashSettlementSystem", isoId: "_AS2qgSm3EfGfZ9PfK70MMg" }, { value: "GROS", name: "GrossSettlementSystem", isoId: "_AS2qgym3EfGfZ9PfK70MMg" }, { value: "NETS", name: "NetSettlementSystem", isoId: "_AS2qhSm3EfGfZ9PfK70MMg" }],
+  },
+  "CashSettlementSystem5Choice": {
+    name: "CashSettlementSystem5Choice",
+    isoId: "_5m6BBZNLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_5m6BB5NLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "CashSettlementSystem2Code", required: true }),
+      f({ name: "Proprietary", isoId: "_5m6BD5NLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "CashSettlementSystem6Choice": {
+    name: "CashSettlementSystem6Choice",
+    isoId: "_etEcMZZ1EfC2_67yGLymgA",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_evTQ1ZZ1EfC2_67yGLymgA", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "CashSettlementSystem3Code", required: true }),
+      f({ name: "Proprietary", isoId: "_evTQ4ZZ1EfC2_67yGLymgA", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "DTI2024Identifier": {
+    name: "DTI2024Identifier",
+    isoId: "_W1-MobBoEe6MwO7YY4latA",
+    kind: "text",
+    pattern: "[1-9B-DF-HJ-NP-TV-XZ][0-9B-DF-HJ-NP-TV-XZ]{8,8}",
+  },
+  "CashSettlementSystemPlace1Choice": {
+    name: "CashSettlementSystemPlace1Choice",
+    isoId: "_57FSMJZgEfCShM_qO0U4ig",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "DigitalLedgerIdentification", isoId: "_g5qmsZZhEfCShM_qO0U4ig", xmlTag: "DgtlLdgrId", displayName: displayName("DigitalLedgerIdentification"), kind: "text", type: "DTI2024Identifier", required: true }),
+      f({ name: "AnyBIC", isoId: "_vRpY45ZhEfCShM_qO0U4ig", xmlTag: "AnyBIC", displayName: displayName("AnyBIC"), kind: "text", type: "AnyBICDec2014Identifier", required: true }),
+      f({ name: "LEI", isoId: "_YKiTY5ZhEfCShM_qO0U4ig", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: true }),
+    ],
+  },
   "CashSubBalanceTypeAndQuantityBreakdown3": {
     name: "CashSubBalanceTypeAndQuantityBreakdown3",
     isoId: "_M_8f0TqFEemJ3KLLPeYl6g",
@@ -13078,6 +16567,24 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     fields: [
       f({ name: "Type", isoId: "_NLbXETqFEemJ3KLLPeYl6g", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "CashBalanceType3Choice", required: true }),
       f({ name: "QuantityBreakdown", isoId: "_NLbXEzqFEemJ3KLLPeYl6g", xmlTag: "QtyBrkdwn", displayName: displayName("QuantityBreakdown"), kind: "component", type: "AmountAndQuantityBreakdown1", required: false, repeat: { min: 0, max: null } }),
+    ],
+  },
+  "CentralCounterPartyEligibility4Choice": {
+    name: "CentralCounterPartyEligibility4Choice",
+    isoId: "__-aJkTqIEeWVrPy0StzzSg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Indicator", isoId: "_Adf5UTqJEeWVrPy0StzzSg", xmlTag: "Ind", displayName: displayName("Indicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+      f({ name: "Proprietary", isoId: "_Adf5WTqJEeWVrPy0StzzSg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "CentralCounterPartyEligibility5Choice": {
+    name: "CentralCounterPartyEligibility5Choice",
+    isoId: "_5m6oM5NLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Indicator", isoId: "_5m6oNZNLEeWGlc8L7oPDIg", xmlTag: "Ind", displayName: displayName("Indicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+      f({ name: "Proprietary", isoId: "_5m6oPZNLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
     ],
   },
   "CommunicationMethod3Code": {
@@ -13185,6 +16692,42 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     kind: "code",
     options: [{ value: "DWEA", name: "DraweeAgent", isoId: "_aLmLwSmyEeutWNGMV2XKIQ" }, { value: "DWRA", name: "DrawerAgent", isoId: "_aQkLUSmyEeutWNGMV2XKIQ" }, { value: "PAYE", name: "Payee", isoId: "_aVo4kSmyEeutWNGMV2XKIQ" }, { value: "PAYR", name: "Payer", isoId: "_aeLwkSmyEeutWNGMV2XKIQ" }],
   },
+  "ClassificationType32Choice": {
+    name: "ClassificationType32Choice",
+    isoId: "_IbgeMYlYEeWPSZi0kAOXhg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "ClassificationFinancialInstrument", isoId: "_IyRYZYlYEeWPSZi0kAOXhg", xmlTag: "ClssfctnFinInstrm", displayName: displayName("ClassificationFinancialInstrument"), kind: "text", type: "CFIOct2015Identifier", required: true }),
+      f({ name: "AlternateClassification", isoId: "_IyRYbYlYEeWPSZi0kAOXhg", xmlTag: "AltrnClssfctn", displayName: displayName("AlternateClassification"), kind: "component", type: "GenericIdentification36", required: true }),
+    ],
+  },
+  "RestrictedFINXMax30Text": {
+    name: "RestrictedFINXMax30Text",
+    isoId: "_XZTG0tp-Ed-ak6NoX_4Aeg_-485490601",
+    kind: "text",
+    minLength: 1,
+    maxLength: 30,
+    pattern: "([0-9a-zA-Z\\-\\?:\\(\\)\\.,'\\+ ]([0-9a-zA-Z\\-\\?:\\(\\)\\.,'\\+ ]*(/[0-9a-zA-Z\\-\\?:\\(\\)\\.,'\\+ ])?)*)",
+  },
+  "GenericIdentification86": {
+    name: "GenericIdentification86",
+    isoId: "_celQ75KQEeWHWpTQn1FFVg",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_cel3oZKQEeWHWpTQn1FFVg", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "RestrictedFINXMax30Text", required: true }),
+      f({ name: "Issuer", isoId: "_cel3o5KQEeWHWpTQn1FFVg", xmlTag: "Issr", displayName: displayName("Issuer"), kind: "text", type: "Max4AlphaNumericText", required: true }),
+      f({ name: "SchemeName", isoId: "_cel3pZKQEeWHWpTQn1FFVg", xmlTag: "SchmeNm", displayName: displayName("SchemeName"), kind: "text", type: "Max4AlphaNumericText", required: false }),
+    ],
+  },
+  "ClassificationType33Choice": {
+    name: "ClassificationType33Choice",
+    isoId: "_chVpw5KQEeWHWpTQn1FFVg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "ClassificationFinancialInstrument", isoId: "_chVpxZKQEeWHWpTQn1FFVg", xmlTag: "ClssfctnFinInstrm", displayName: displayName("ClassificationFinancialInstrument"), kind: "text", type: "CFIOct2015Identifier", required: true }),
+      f({ name: "AlternateClassification", isoId: "_chVpzZKQEeWHWpTQn1FFVg", xmlTag: "AltrnClssfctn", displayName: displayName("AlternateClassification"), kind: "component", type: "GenericIdentification86", required: true }),
+    ],
+  },
   "ClearingChannel2Code": {
     name: "ClearingChannel2Code",
     isoId: "_a_OEo9p-Ed-ak6NoX_4Aeg_1501459302",
@@ -13232,37 +16775,6 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     isoId: "_ObDuwCC-EeWPMvNwVtiMsA",
     kind: "code",
     options: [{ value: "COLL", name: "Collateral", isoId: "_QHQx4SC-EeWPMvNwVtiMsA" }, { value: "NCOL", name: "NotCollateral", isoId: "_QPdEkSC-EeWPMvNwVtiMsA" }],
-  },
-  "StructuredLongPostalAddress1": {
-    name: "StructuredLongPostalAddress1",
-    isoId: "_QGckRNp-Ed-ak6NoX_4Aeg_829983721",
-    kind: "component",
-    fields: [
-      f({ name: "BuildingName", isoId: "_QGckRdp-Ed-ak6NoX_4Aeg_1005453911", xmlTag: "BldgNm", displayName: displayName("BuildingName"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "StreetName", isoId: "_QGckRtp-Ed-ak6NoX_4Aeg_1005453819", xmlTag: "StrtNm", displayName: displayName("StreetName"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "StreetBuildingIdentification", isoId: "_QGluMNp-Ed-ak6NoX_4Aeg_1005453850", xmlTag: "StrtBldgId", displayName: displayName("StreetBuildingIdentification"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "Floor", isoId: "_QGluMdp-Ed-ak6NoX_4Aeg_1005454212", xmlTag: "Flr", displayName: displayName("Floor"), kind: "text", type: "Max16Text", required: false }),
-      f({ name: "TownName", isoId: "_QGluMtp-Ed-ak6NoX_4Aeg_1005453881", xmlTag: "TwnNm", displayName: displayName("TownName"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "DistrictName", isoId: "_QGluM9p-Ed-ak6NoX_4Aeg_1005453964", xmlTag: "DstrctNm", displayName: displayName("DistrictName"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "RegionIdentification", isoId: "_QGluNNp-Ed-ak6NoX_4Aeg_1005454644", xmlTag: "RgnId", displayName: displayName("RegionIdentification"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "State", isoId: "_QGluNdp-Ed-ak6NoX_4Aeg_1005454674", xmlTag: "Stat", displayName: displayName("State"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "CountyIdentification", isoId: "_QGluNtp-Ed-ak6NoX_4Aeg_1005453942", xmlTag: "CtyId", displayName: displayName("CountyIdentification"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "Country", isoId: "_QGluN9p-Ed-ak6NoX_4Aeg_1005453697", xmlTag: "Ctry", displayName: displayName("Country"), kind: "code", type: "CountryCode", required: true }),
-      f({ name: "PostCodeIdentification", isoId: "_QGluONp-Ed-ak6NoX_4Aeg_1005453789", xmlTag: "PstCdId", displayName: displayName("PostCodeIdentification"), kind: "text", type: "Max16Text", required: true }),
-      f({ name: "PostOfficeBox", isoId: "_QGluOdp-Ed-ak6NoX_4Aeg_1005454273", xmlTag: "POB", displayName: displayName("PostOfficeBox"), kind: "text", type: "Max16Text", required: false }),
-    ],
-    rules: [
-      { name: "StreetNameAndOrPostOfficeBoxRule", isoId: "_QGluOtp-Ed-ak6NoX_4Aeg_1062711598", text: "If StreetName is not present, then PostOfficeBox is mandatory. If StreetName is present, then PostOfficeBox is optional." },
-    ],
-  },
-  "LongPostalAddress1Choice": {
-    name: "LongPostalAddress1Choice",
-    isoId: "_QG4pJdp-Ed-ak6NoX_4Aeg_-1972571676",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Unstructured", isoId: "_QG4pJtp-Ed-ak6NoX_4Aeg_-1635487920", xmlTag: "Ustrd", displayName: displayName("Unstructured"), kind: "text", type: "Max140Text", required: true }),
-      f({ name: "Structured", isoId: "_QG4pJ9p-Ed-ak6NoX_4Aeg_-1635487889", xmlTag: "Strd", displayName: displayName("Structured"), kind: "component", type: "StructuredLongPostalAddress1", required: true }),
-    ],
   },
   "CommunicationAddress8": {
     name: "CommunicationAddress8",
@@ -13469,6 +16981,102 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "CorporateActionEventIdentification", isoId: "_i4FkaD3mEe-thIfLZ94a1w", xmlTag: "CorpActnEvtId", displayName: displayName("CorporateActionEventIdentification"), kind: "text", type: "Max35Text", required: true }),
       f({ name: "OfficialCorporateActionEventIdentification", isoId: "_i4FkaT3mEe-thIfLZ94a1w", xmlTag: "OffclCorpActnEvtId", displayName: displayName("OfficialCorporateActionEventIdentification"), kind: "text", type: "Max35Text", required: false }),
     ],
+  },
+  "CorporateActionEventProcessingStatus1Code": {
+    name: "CorporateActionEventProcessingStatus1Code",
+    isoId: "_bDZaAtp-Ed-ak6NoX_4Aeg_771492585",
+    kind: "code",
+    options: [{ value: "COMP", name: "Complete", isoId: "_bDZaA9p-Ed-ak6NoX_4Aeg_772412579" }, { value: "PEND", name: "Pending", isoId: "_bDZaBNp-Ed-ak6NoX_4Aeg_772412580" }, { value: "RECD", name: "Reconciled", isoId: "_bDZaBdp-Ed-ak6NoX_4Aeg_772412610" }],
+  },
+  "CorporateActionEventStage2Code": {
+    name: "CorporateActionEventStage2Code",
+    isoId: "_bD1e4tp-Ed-ak6NoX_4Aeg_1234993213",
+    kind: "code",
+    options: [{ value: "PWAL", name: "ActionPeriod", isoId: "_bD1e49p-Ed-ak6NoX_4Aeg_1234993231" }, { value: "SUAP", name: "SubjectToApproval", isoId: "_bD1e5Np-Ed-ak6NoX_4Aeg_1234993256" }, { value: "APPD", name: "Approved", isoId: "_bD1e5dp-Ed-ak6NoX_4Aeg_1234993257" }, { value: "UNAC", name: "UnconditionalAsToAcceptance", isoId: "_bD1e5tp-Ed-ak6NoX_4Aeg_1234993273" }, { value: "WHOU", name: "WhollyUnconditional", isoId: "_bD1e59p-Ed-ak6NoX_4Aeg_1234993291" }, { value: "CLDE", name: "Deactivated", isoId: "_bD1e6Np-Ed-ak6NoX_4Aeg_1234993308" }, { value: "LAPS", name: "Lapsed", isoId: "_bD1e6dp-Ed-ak6NoX_4Aeg_1234993326" }],
+  },
+  "CorporateActionEventType33Code": {
+    name: "CorporateActionEventType33Code",
+    isoId: "_CJ1P8emfEemm4qhb2yFPOw",
+    kind: "code",
+    options: [{ value: "ACTV", name: "ActiveTradingStatus", isoId: "_C5Il8emfEemm4qhb2yFPOw" }, { value: "ATTI", name: "Attachment", isoId: "_C5Il8-mfEemm4qhb2yFPOw" }, { value: "BRUP", name: "Bankruptcy", isoId: "_C5Il9emfEemm4qhb2yFPOw" }, { value: "DFLT", name: "BondDefault", isoId: "_C5Il9-mfEemm4qhb2yFPOw" }, { value: "BONU", name: "BonusIssue", isoId: "_C5Il-emfEemm4qhb2yFPOw" }, { value: "EXRI", name: "CallOnIntermediateSecurities", isoId: "_C5Il--mfEemm4qhb2yFPOw" }, { value: "CAPD", name: "CapitalDistribution", isoId: "_C5Il_emfEemm4qhb2yFPOw" }, { value: "CAPG", name: "CapitalGainsDistribution", isoId: "_C5Il_-mfEemm4qhb2yFPOw" }, { value: "CAPI", name: "Capitalisation", isoId: "_C5ImAemfEemm4qhb2yFPOw" }, { value: "DRCA", name: "CashDistributionFromNonEligibleSecuritiesSales", isoId: "_C5ImA-mfEemm4qhb2yFPOw" }, { value: "DVCA", name: "CashDividend", isoId: "_C5ImBemfEemm4qhb2yFPOw" }, { value: "CHAN", name: "Change", isoId: "_C5ImB-mfEemm4qhb2yFPOw" }, { value: "COOP", name: "CompanyOption", isoId: "_C5ImCemfEemm4qhb2yFPOw" }, { value: "CLSA", name: "ClassActionProposedSettlement", isoId: "_C5ImC-mfEemm4qhb2yFPOw" }, { value: "CONS", name: "Consent", isoId: "_C5ImDemfEemm4qhb2yFPOw" }, { value: "CONV", name: "Conversion", isoId: "_C5ImD-mfEemm4qhb2yFPOw" }, { value: "CREV", name: "CreditEvent", isoId: "_C5ImEemfEemm4qhb2yFPOw" }, { value: "DECR", name: "DecreaseInValue", isoId: "_C5ImE-mfEemm4qhb2yFPOw" }, { value: "DETI", name: "Detachment", isoId: "_C5ImFemfEemm4qhb2yFPOw" }, { value: "DSCL", name: "Disclosure", isoId: "_C5ImF-mfEemm4qhb2yFPOw" }, { value: "DVOP", name: "DividendOption", isoId: "_C5ImGemfEemm4qhb2yFPOw" }, { value: "DRIP", name: "DividendReinvestment", isoId: "_C5ImG-mfEemm4qhb2yFPOw" }, { value: "DRAW", name: "Drawing", isoId: "_C5ImHemfEemm4qhb2yFPOw" }, { value: "DTCH", name: "DutchAuction", isoId: "_C5ImH-mfEemm4qhb2yFPOw" }, { value: "EXOF", name: "Exchange", isoId: "_C5ImIemfEemm4qhb2yFPOw" }, { value: "REDM", name: "FinalMaturity", isoId: "_C5ImI-mfEemm4qhb2yFPOw" }, { value: "MCAL", name: "FullCall", isoId: "_C5ImJemfEemm4qhb2yFPOw" }, { value: "INCR", name: "IncreaseInValue", isoId: "_C5ImJ-mfEemm4qhb2yFPOw" }, { value: "PPMT", name: "InstalmentCall", isoId: "_C5ImKemfEemm4qhb2yFPOw" }, { value: "INTR", name: "InterestPayment", isoId: "_C5ImK-mfEemm4qhb2yFPOw" }, { value: "RHDI", name: "IntermediateSecuritiesDistribution", isoId: "_C5ImL-mfEemm4qhb2yFPOw" }, { value: "LIQU", name: "LiquidationDividend", isoId: "_C5ImMemfEemm4qhb2yFPOw" }, { value: "EXTM", name: "MaturityExtension", isoId: "_C5ImM-mfEemm4qhb2yFPOw" }, { value: "MRGR", name: "Merger", isoId: "_C5ImNemfEemm4qhb2yFPOw" }, { value: "NOOF", name: "NonOfficialOffer", isoId: "_C5ImN-mfEemm4qhb2yFPOw" }, { value: "CERT", name: "NonUSTEFRADCertification", isoId: "_C5ImOemfEemm4qhb2yFPOw" }, { value: "ODLT", name: "OddLotSalePurchase", isoId: "_C5ImO-mfEemm4qhb2yFPOw" }, { value: "OTHR", name: "OtherEvent", isoId: "_C5ImPemfEemm4qhb2yFPOw" }, { value: "PARI", name: "PariPassu", isoId: "_C5ImP-mfEemm4qhb2yFPOw" }, { value: "PCAL", name: "PartialRedemptionWithoutPoolFactorReduction", isoId: "_C5ImQemfEemm4qhb2yFPOw" }, { value: "PRED", name: "PartialRedemptionWithPoolFactorReduction", isoId: "_C5ImQ-mfEemm4qhb2yFPOw" }, { value: "PINK", name: "PayInKind", isoId: "_C5ImRemfEemm4qhb2yFPOw" }, { value: "PLAC", name: "PlaceOfIncorporation", isoId: "_C5ImR-mfEemm4qhb2yFPOw" }, { value: "PDEF", name: "Prefunding", isoId: "_C5ImSemfEemm4qhb2yFPOw" }, { value: "PRIO", name: "PriorityIssue", isoId: "_C5ImS-mfEemm4qhb2yFPOw" }, { value: "BPUT", name: "PutRedemption", isoId: "_C5ImTemfEemm4qhb2yFPOw" }, { value: "REDO", name: "Redenomination", isoId: "_C5ImT-mfEemm4qhb2yFPOw" }, { value: "REMK", name: "RemarketingAgreement", isoId: "_C5ImUemfEemm4qhb2yFPOw" }, { value: "BIDS", name: "RepurchaseOffer", isoId: "_C5ImU-mfEemm4qhb2yFPOw" }, { value: "SPLR", name: "ReverseStockSplit", isoId: "_C5ImVemfEemm4qhb2yFPOw" }, { value: "RHTS", name: "RightsIssue", isoId: "_C5ImV-mfEemm4qhb2yFPOw" }, { value: "DVSC", name: "ScripDividend", isoId: "_C5ImWemfEemm4qhb2yFPOw" }, { value: "SHPR", name: "SharesPremiumDividend", isoId: "_C5ImW-mfEemm4qhb2yFPOw" }, { value: "SMAL", name: "SmallestNegotiableUnit", isoId: "_C5ImXemfEemm4qhb2yFPOw" }, { value: "SOFF", name: "SpinOff", isoId: "_C5ImX-mfEemm4qhb2yFPOw" }, { value: "DVSE", name: "StockDividend", isoId: "_C5ImYemfEemm4qhb2yFPOw" }, { value: "SPLF", name: "StockSplit", isoId: "_C5ImY-mfEemm4qhb2yFPOw" }, { value: "TREC", name: "TaxReclaim", isoId: "_C5ImZemfEemm4qhb2yFPOw" }, { value: "TEND", name: "Tender", isoId: "_C5ImZ-mfEemm4qhb2yFPOw" }, { value: "DLST", name: "TradingStatusDelisted", isoId: "_C5ImaemfEemm4qhb2yFPOw" }, { value: "SUSP", name: "TradingStatusSuspended", isoId: "_C5Ima-mfEemm4qhb2yFPOw" }, { value: "EXWA", name: "WarrantExercise", isoId: "_C5ImbemfEemm4qhb2yFPOw" }, { value: "WTRC", name: "WithholdingTaxReliefCertification", isoId: "_C5Imb-mfEemm4qhb2yFPOw" }, { value: "WRTH", name: "Worthless", isoId: "_C5ImcemfEemm4qhb2yFPOw" }, { value: "ACCU", name: "Accumulation", isoId: "_C5Imc-mfEemm4qhb2yFPOw" }, { value: "MTNG", name: "SecuritiesHoldersMeeting", isoId: "_C5ImdemfEemm4qhb2yFPOw" }, { value: "INFO", name: "Information", isoId: "_C5Imd-mfEemm4qhb2yFPOw" }, { value: "TNDP", name: "TaxOnNonDistributedProceeds", isoId: "_C5ImeemfEemm4qhb2yFPOw" }],
+  },
+  "CorporateActionEventType101Choice": {
+    name: "CorporateActionEventType101Choice",
+    isoId: "__66qYQVUEeqjd8n6wD9JVw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "__66qZQVUEeqjd8n6wD9JVw", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "CorporateActionEventType33Code", required: true }),
+      f({ name: "Proprietary", isoId: "__66qbQVUEeqjd8n6wD9JVw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+    rules: [
+      { name: "EventTypeRule", isoId: "__66qYwVUEeqjd8n6wD9JVw", text: "The use of a specific corporate action event type code is allowed only if this specific event triggers a securities movement as per the Event Interpretation Grid published by the Securities Market Practice Group (SMPG).||The corporate action event indicator code OTHR must only be used in case no other corporate action event code is appropriate.||The corporate action event indicator code CHAN must only be used in case no other corporate action event code is appropriate and only for an event which relates to a change.||The corporate action event indicator code REDM must only be used when the redemption is decided by the issuer and not by the holders." },
+    ],
+  },
+  "CorporateActionEventType38Code": {
+    name: "CorporateActionEventType38Code",
+    isoId: "_wAqYkYCfEe-3UrLQHGsjgQ",
+    kind: "code",
+    options: [{ value: "ACTV", name: "ActiveTradingStatus", isoId: "_dxMj0YyaEe-JbfQhweKSKQ" }, { value: "ATTI", name: "Attachment", isoId: "_dxMj04yaEe-JbfQhweKSKQ" }, { value: "BRUP", name: "Bankruptcy", isoId: "_dxMj1YyaEe-JbfQhweKSKQ" }, { value: "DFLT", name: "BondDefault", isoId: "_dxMj14yaEe-JbfQhweKSKQ" }, { value: "BONU", name: "BonusIssue", isoId: "_dxMj2YyaEe-JbfQhweKSKQ" }, { value: "EXRI", name: "CallOnIntermediateSecurities", isoId: "_dxMj24yaEe-JbfQhweKSKQ" }, { value: "CAPD", name: "CapitalDistribution", isoId: "_dxMj3YyaEe-JbfQhweKSKQ" }, { value: "CAPG", name: "CapitalGainsDistribution", isoId: "_dxMj34yaEe-JbfQhweKSKQ" }, { value: "CAPI", name: "Capitalisation", isoId: "_dxMj4YyaEe-JbfQhweKSKQ" }, { value: "DRCA", name: "CashDistributionFromNonEligibleSecuritiesSales", isoId: "_dxMj44yaEe-JbfQhweKSKQ" }, { value: "DVCA", name: "CashDividend", isoId: "_dxMj5YyaEe-JbfQhweKSKQ" }, { value: "CHAN", name: "Change", isoId: "_dxMj54yaEe-JbfQhweKSKQ" }, { value: "COOP", name: "CompanyOption", isoId: "_dxMj6YyaEe-JbfQhweKSKQ" }, { value: "CLSA", name: "ClassActionProposedSettlement", isoId: "_dxMj64yaEe-JbfQhweKSKQ" }, { value: "CONS", name: "Consent", isoId: "_dxMj7YyaEe-JbfQhweKSKQ" }, { value: "CONV", name: "Conversion", isoId: "_dxMj74yaEe-JbfQhweKSKQ" }, { value: "CREV", name: "CreditEvent", isoId: "_dxMj8YyaEe-JbfQhweKSKQ" }, { value: "DECR", name: "DecreaseInValue", isoId: "_dxMj84yaEe-JbfQhweKSKQ" }, { value: "DETI", name: "Detachment", isoId: "_dxMj9YyaEe-JbfQhweKSKQ" }, { value: "DSCL", name: "Disclosure", isoId: "_dxMj94yaEe-JbfQhweKSKQ" }, { value: "DVOP", name: "DividendOption", isoId: "_dxMj-YyaEe-JbfQhweKSKQ" }, { value: "DRIP", name: "DividendReinvestment", isoId: "_dxMj-4yaEe-JbfQhweKSKQ" }, { value: "DRAW", name: "Drawing", isoId: "_dxMj_YyaEe-JbfQhweKSKQ" }, { value: "DTCH", name: "DutchAuction", isoId: "_dxMj_4yaEe-JbfQhweKSKQ" }, { value: "EXOF", name: "Exchange", isoId: "_dxMkAYyaEe-JbfQhweKSKQ" }, { value: "REDM", name: "FinalMaturity", isoId: "_dxMkA4yaEe-JbfQhweKSKQ" }, { value: "MCAL", name: "FullCall", isoId: "_dxMkBYyaEe-JbfQhweKSKQ" }, { value: "INCR", name: "IncreaseInValue", isoId: "_dxMkB4yaEe-JbfQhweKSKQ" }, { value: "PPMT", name: "InstalmentCall", isoId: "_dxMkCYyaEe-JbfQhweKSKQ" }, { value: "INTR", name: "InterestPayment", isoId: "_dxMkC4yaEe-JbfQhweKSKQ" }, { value: "RHDI", name: "IntermediateSecuritiesDistribution", isoId: "_dxMkDYyaEe-JbfQhweKSKQ" }, { value: "LIQU", name: "LiquidationDividend", isoId: "_dxMkD4yaEe-JbfQhweKSKQ" }, { value: "EXTM", name: "MaturityExtension", isoId: "_dxMkEYyaEe-JbfQhweKSKQ" }, { value: "MRGR", name: "Merger", isoId: "_dxMkE4yaEe-JbfQhweKSKQ" }, { value: "NOOF", name: "NonOfficialOffer", isoId: "_dxMkFYyaEe-JbfQhweKSKQ" }, { value: "CERT", name: "NonUSTEFRADCertification", isoId: "_dxMkF4yaEe-JbfQhweKSKQ" }, { value: "ODLT", name: "OddLotSalePurchase", isoId: "_dxMkGYyaEe-JbfQhweKSKQ" }, { value: "OTHR", name: "OtherEvent", isoId: "_dxMkG4yaEe-JbfQhweKSKQ" }, { value: "PARI", name: "PariPassu", isoId: "_dxMkHYyaEe-JbfQhweKSKQ" }, { value: "PCAL", name: "PartialRedemptionWithoutPoolFactorReduction", isoId: "_dxMkH4yaEe-JbfQhweKSKQ" }, { value: "PRED", name: "PartialRedemptionWithPoolFactorReduction", isoId: "_dxMkIYyaEe-JbfQhweKSKQ" }, { value: "PINK", name: "PayInKind", isoId: "_dxMkI4yaEe-JbfQhweKSKQ" }, { value: "PLAC", name: "PlaceOfIncorporation", isoId: "_dxMkJYyaEe-JbfQhweKSKQ" }, { value: "PDEF", name: "Prefunding", isoId: "_dxMkJ4yaEe-JbfQhweKSKQ" }, { value: "PRIO", name: "PriorityIssue", isoId: "_dxMkKYyaEe-JbfQhweKSKQ" }, { value: "BPUT", name: "PutRedemption", isoId: "_dxMkK4yaEe-JbfQhweKSKQ" }, { value: "REDO", name: "Redenomination", isoId: "_dxMkLYyaEe-JbfQhweKSKQ" }, { value: "REMK", name: "RemarketingAgreement", isoId: "_dxMkL4yaEe-JbfQhweKSKQ" }, { value: "BIDS", name: "RepurchaseOffer", isoId: "_dxMkMYyaEe-JbfQhweKSKQ" }, { value: "SPLR", name: "ReverseStockSplit", isoId: "_dxMkM4yaEe-JbfQhweKSKQ" }, { value: "RHTS", name: "RightsIssue", isoId: "_dxMkNYyaEe-JbfQhweKSKQ" }, { value: "DVSC", name: "ScripDividend", isoId: "_dxMkN4yaEe-JbfQhweKSKQ" }, { value: "SHPR", name: "SharesPremiumDividend", isoId: "_dxMkOYyaEe-JbfQhweKSKQ" }, { value: "SMAL", name: "SmallestNegotiableUnit", isoId: "_dxMkO4yaEe-JbfQhweKSKQ" }, { value: "SOFF", name: "SpinOff", isoId: "_dxMkPYyaEe-JbfQhweKSKQ" }, { value: "DVSE", name: "StockDividend", isoId: "_dxMkP4yaEe-JbfQhweKSKQ" }, { value: "SPLF", name: "StockSplit", isoId: "_dxMkQYyaEe-JbfQhweKSKQ" }, { value: "TREC", name: "TaxReclaim", isoId: "_dxMkQ4yaEe-JbfQhweKSKQ" }, { value: "TEND", name: "Tender", isoId: "_dxMkRYyaEe-JbfQhweKSKQ" }, { value: "DLST", name: "TradingStatusDelisted", isoId: "_dxMkR4yaEe-JbfQhweKSKQ" }, { value: "SUSP", name: "TradingStatusSuspended", isoId: "_dxMkSYyaEe-JbfQhweKSKQ" }, { value: "EXWA", name: "WarrantExercise", isoId: "_dxMkS4yaEe-JbfQhweKSKQ" }, { value: "WTRC", name: "WithholdingTaxReliefCertification", isoId: "_dxMkTYyaEe-JbfQhweKSKQ" }, { value: "WRTH", name: "Worthless", isoId: "_dxMkT4yaEe-JbfQhweKSKQ" }, { value: "ACCU", name: "Accumulation", isoId: "_dxMkUYyaEe-JbfQhweKSKQ" }, { value: "MTNG", name: "SecuritiesHoldersMeeting", isoId: "_dxMkU4yaEe-JbfQhweKSKQ" }, { value: "INFO", name: "Information", isoId: "_dxMkVYyaEe-JbfQhweKSKQ" }, { value: "TNDP", name: "TaxOnNonDistributedProceeds", isoId: "_dxMkV4yaEe-JbfQhweKSKQ" }, { value: "RCLA", name: "Reclassification", isoId: "_dxMkWYyaEe-JbfQhweKSKQ" }],
+  },
+  "CorporateActionEventType110Choice": {
+    name: "CorporateActionEventType110Choice",
+    isoId: "_mmvLwYybEe-PVZsedaAGaA",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_muCGg4ybEe-PVZsedaAGaA", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "CorporateActionEventType38Code", required: true }),
+      f({ name: "Proprietary", isoId: "_muCGi4ybEe-PVZsedaAGaA", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+    rules: [
+      { name: "EventTypeRule", isoId: "_muCGgYybEe-PVZsedaAGaA", text: "The use of a specific corporate action event type code is allowed only if this specific event triggers a securities movement as per the Event Interpretation Grid published by the Securities Market Practice Group (SMPG).|The corporate action event indicator code OTHR must only be used in case no other corporate action event code is appropriate.|The corporate action event indicator code CHAN must only be used in case no other corporate action event code is appropriate and only for an event which relates to a change.|The corporate action event indicator code REDM must only be used when the redemption is decided by the issuer and not by the holders." },
+    ],
+  },
+  "CorporateActionEventType1Code": {
+    name: "CorporateActionEventType1Code",
+    isoId: "_bEb709p-Ed-ak6NoX_4Aeg_-1007587502",
+    kind: "code",
+    options: [{ value: "DRIP", name: "DividendReinvestment", isoId: "_bEb71Np-Ed-ak6NoX_4Aeg_-949359166" }, { value: "CAPG", name: "CapitalGainsDistribution", isoId: "_bEb71dp-Ed-ak6NoX_4Aeg_220697386" }, { value: "DVCA", name: "CashDividend", isoId: "_bEb71tp-Ed-ak6NoX_4Aeg_-949358829" }, { value: "DVOP", name: "DividendOption", isoId: "_bEb719p-Ed-ak6NoX_4Aeg_-948438720" }, { value: "DVSE", name: "StockDividend", isoId: "_bEb72Np-Ed-ak6NoX_4Aeg_-948438590" }, { value: "LIQU", name: "Liquidation", isoId: "_bEb72dp-Ed-ak6NoX_4Aeg_-948438253" }, { value: "MRGR", name: "Merger", isoId: "_bEls0Np-Ed-ak6NoX_4Aeg_-948437849" }, { value: "NAME", name: "NameChange", isoId: "_bEls0dp-Ed-ak6NoX_4Aeg_-948437712" }, { value: "SOFF", name: "SpinOff", isoId: "_bEls0tp-Ed-ak6NoX_4Aeg_-948437557" }, { value: "SPLF", name: "StockSplit", isoId: "_bEls09p-Ed-ak6NoX_4Aeg_252095194" }, { value: "SPLR", name: "ReverseStockSplit", isoId: "_bEls1Np-Ed-ak6NoX_4Aeg_252095349" }, { value: "TEND", name: "Tender", isoId: "_bEls1dp-Ed-ak6NoX_4Aeg_-948437202" }, { value: "BONU", name: "BonusIssue", isoId: "_bEls1tp-Ed-ak6NoX_4Aeg_-969437653" }, { value: "RHDI", name: "RightsDistribution", isoId: "_bEls19p-Ed-ak6NoX_4Aeg_-969437285" }, { value: "EXRI", name: "CallOnRights", isoId: "_bEls2Np-Ed-ak6NoX_4Aeg_-969437268" }, { value: "CHAN", name: "Change", isoId: "_bEls2dp-Ed-ak6NoX_4Aeg_-969437190" }, { value: "REDO", name: "Redenomination", isoId: "_bEu2wNp-Ed-ak6NoX_4Aeg_-969437165" }, { value: "EXOP", name: "ExchangeOption", isoId: "_bEu2wdp-Ed-ak6NoX_4Aeg_-969437130" }, { value: "EXOF", name: "ExchangeOffer", isoId: "_bEu2wtp-Ed-ak6NoX_4Aeg_-969437095" }, { value: "DECR", name: "DecreaseInValue", isoId: "_bEu2w9p-Ed-ak6NoX_4Aeg_-969437053" }],
+  },
+  "CorporateActionEventType24Code": {
+    name: "CorporateActionEventType24Code",
+    isoId: "_ELXgpIr-EeaNFeVGetd6Xw",
+    kind: "code",
+    options: [{ value: "ACTV", name: "ActiveTradingStatus", isoId: "_ELXg2Ir-EeaNFeVGetd6Xw" }, { value: "ATTI", name: "Attachment", isoId: "_ELXg4or-EeaNFeVGetd6Xw" }, { value: "BRUP", name: "Bankruptcy", isoId: "_ELXgw4r-EeaNFeVGetd6Xw" }, { value: "DFLT", name: "BondDefault", isoId: "_ELXguor-EeaNFeVGetd6Xw" }, { value: "BONU", name: "BonusIssue", isoId: "_ELXgz4r-EeaNFeVGetd6Xw" }, { value: "EXRI", name: "CallOnIntermediateSecurities", isoId: "_ELXgt4r-EeaNFeVGetd6Xw" }, { value: "CAPD", name: "CapitalDistribution", isoId: "_ELXg24r-EeaNFeVGetd6Xw" }, { value: "CAPG", name: "CapitalGainsDistribution", isoId: "_ELXgwIr-EeaNFeVGetd6Xw" }, { value: "CAPI", name: "Capitalisation", isoId: "_ELXgyYr-EeaNFeVGetd6Xw" }, { value: "DRCA", name: "CashDistributionFromNonEligibleSecuritiesSales", isoId: "_ELXg1or-EeaNFeVGetd6Xw" }, { value: "DVCA", name: "CashDividend", isoId: "_ELXgsor-EeaNFeVGetd6Xw" }, { value: "CHAN", name: "Change", isoId: "_ELXgvIr-EeaNFeVGetd6Xw" }, { value: "COOP", name: "CompanyOption", isoId: "_ELXguYr-EeaNFeVGetd6Xw" }, { value: "CLSA", name: "ClassActionProposedSettlement", isoId: "_ELXgqIr-EeaNFeVGetd6Xw" }, { value: "CONS", name: "Consent", isoId: "_ELXgsYr-EeaNFeVGetd6Xw" }, { value: "CONV", name: "Conversion", isoId: "_ELXg04r-EeaNFeVGetd6Xw" }, { value: "CREV", name: "CreditEvent", isoId: "_ELXg2or-EeaNFeVGetd6Xw" }, { value: "DECR", name: "DecreaseInValue", isoId: "_ELXgr4r-EeaNFeVGetd6Xw" }, { value: "DETI", name: "Detachment", isoId: "_ELXgp4r-EeaNFeVGetd6Xw" }, { value: "DSCL", name: "Disclosure", isoId: "_ELXg4Ir-EeaNFeVGetd6Xw" }, { value: "DVOP", name: "DividendOption", isoId: "_ELXg5Yr-EeaNFeVGetd6Xw" }, { value: "DRIP", name: "DividendReinvestment", isoId: "_ELXg54r-EeaNFeVGetd6Xw" }, { value: "DRAW", name: "Drawing", isoId: "_ELXg4Yr-EeaNFeVGetd6Xw" }, { value: "DTCH", name: "DutchAuction", isoId: "_ELXg2Yr-EeaNFeVGetd6Xw" }, { value: "EXOF", name: "Exchange", isoId: "_ELXg3or-EeaNFeVGetd6Xw" }, { value: "REDM", name: "FinalMaturity", isoId: "_ELXgyIr-EeaNFeVGetd6Xw" }, { value: "MCAL", name: "FullCall", isoId: "_ELXgpYr-EeaNFeVGetd6Xw" }, { value: "INCR", name: "IncreaseInValue", isoId: "_ELXg14r-EeaNFeVGetd6Xw" }, { value: "PPMT", name: "InstalmentCall", isoId: "_ELXgzIr-EeaNFeVGetd6Xw" }, { value: "INTR", name: "InterestPayment", isoId: "_ELXg0Yr-EeaNFeVGetd6Xw" }, { value: "PRII", name: "InterestPaymentWithPrincipal", isoId: "_ELXgtYr-EeaNFeVGetd6Xw" }, { value: "RHDI", name: "IntermediateSecuritiesDistribution", isoId: "_ELXgtor-EeaNFeVGetd6Xw" }, { value: "LIQU", name: "LiquidationDividend", isoId: "_ELXg3Yr-EeaNFeVGetd6Xw" }, { value: "EXTM", name: "MaturityExtension", isoId: "_ELXgx4r-EeaNFeVGetd6Xw" }, { value: "MRGR", name: "Merger", isoId: "_ELXgpor-EeaNFeVGetd6Xw" }, { value: "NOOF", name: "NonOfficialOffer", isoId: "_ELXg0Ir-EeaNFeVGetd6Xw" }, { value: "CERT", name: "NonUSTEFRADCertification", isoId: "_ELXg5Ir-EeaNFeVGetd6Xw" }, { value: "ODLT", name: "OddLotSalePurchase", isoId: "_ELXgtIr-EeaNFeVGetd6Xw" }, { value: "OTHR", name: "OtherEvent", isoId: "_ELXgrIr-EeaNFeVGetd6Xw" }, { value: "PARI", name: "PariPassu", isoId: "_ELXgzor-EeaNFeVGetd6Xw" }, { value: "PCAL", name: "PartialRedemptionWithoutPoolFactorReduction", isoId: "_ELXg1Yr-EeaNFeVGetd6Xw" }, { value: "PRED", name: "PartialRedemptionWithPoolFactorReduction", isoId: "_ELXg5or-EeaNFeVGetd6Xw" }, { value: "PINK", name: "PayInKind", isoId: "_ELXgxIr-EeaNFeVGetd6Xw" }, { value: "PLAC", name: "PlaceOfIncorporation", isoId: "_ELXg44r-EeaNFeVGetd6Xw" }, { value: "PDEF", name: "Prefunding", isoId: "_ELXg0or-EeaNFeVGetd6Xw" }, { value: "PRIO", name: "PriorityIssue", isoId: "_ELXgs4r-EeaNFeVGetd6Xw" }, { value: "BPUT", name: "PutRedemption", isoId: "_ELXgror-EeaNFeVGetd6Xw" }, { value: "REDO", name: "Redenomination", isoId: "_ELXg1Ir-EeaNFeVGetd6Xw" }, { value: "REMK", name: "RemarketingAgreement", isoId: "_ELXgu4r-EeaNFeVGetd6Xw" }, { value: "BIDS", name: "RepurchaseOffer", isoId: "_ELXgwYr-EeaNFeVGetd6Xw" }, { value: "SPLR", name: "ReverseStockSplit", isoId: "_ELXgxor-EeaNFeVGetd6Xw" }, { value: "RHTS", name: "RightsIssue", isoId: "_ELXgv4r-EeaNFeVGetd6Xw" }, { value: "DVSC", name: "ScripDividend", isoId: "_ELXgxYr-EeaNFeVGetd6Xw" }, { value: "SHPR", name: "SharesPremiumDividend", isoId: "_ELXgrYr-EeaNFeVGetd6Xw" }, { value: "SMAL", name: "SmallestNegotiableUnit", isoId: "_ELXg34r-EeaNFeVGetd6Xw" }, { value: "SOFF", name: "SpinOff", isoId: "_ELXgq4r-EeaNFeVGetd6Xw" }, { value: "DVSE", name: "StockDividend", isoId: "_ELXgqor-EeaNFeVGetd6Xw" }, { value: "SPLF", name: "StockSplit", isoId: "_ELXguIr-EeaNFeVGetd6Xw" }, { value: "TREC", name: "TaxReclaim", isoId: "_ELXgwor-EeaNFeVGetd6Xw" }, { value: "TEND", name: "Tender", isoId: "_ELXgvYr-EeaNFeVGetd6Xw" }, { value: "DLST", name: "TradingStatusDelisted", isoId: "_ELXgy4r-EeaNFeVGetd6Xw" }, { value: "SUSP", name: "TradingStatusSuspended", isoId: "_ELXgyor-EeaNFeVGetd6Xw" }, { value: "EXWA", name: "WarrantExercise", isoId: "_ELXgqYr-EeaNFeVGetd6Xw" }, { value: "WTRC", name: "WithholdingTaxReliefCertification", isoId: "_ELXg3Ir-EeaNFeVGetd6Xw" }, { value: "WRTH", name: "Worthless", isoId: "_ELXgsIr-EeaNFeVGetd6Xw" }, { value: "ACCU", name: "Accumulation", isoId: "_ELXgzYr-EeaNFeVGetd6Xw" }, { value: "MTNG", name: "SecuritiesHoldersMeeting", isoId: "_ELXgvor-EeaNFeVGetd6Xw" }, { value: "INFO", name: "Information", isoId: "_JP2t8Yr-EeaNFeVGetd6Xw" }],
+  },
+  "CorporateActionEventType28Code": {
+    name: "CorporateActionEventType28Code",
+    isoId: "_kmQwwZSfEeeh5JjedkaA_g",
+    kind: "code",
+    options: [{ value: "ACTV", name: "ActiveTradingStatus", isoId: "_k3qp0ZSfEeeh5JjedkaA_g" }, { value: "ATTI", name: "Attachment", isoId: "_k30a0ZSfEeeh5JjedkaA_g" }, { value: "BRUP", name: "Bankruptcy", isoId: "_k30a05SfEeeh5JjedkaA_g" }, { value: "DFLT", name: "BondDefault", isoId: "_k30a1ZSfEeeh5JjedkaA_g" }, { value: "BONU", name: "BonusIssue", isoId: "_k30a15SfEeeh5JjedkaA_g" }, { value: "EXRI", name: "CallOnIntermediateSecurities", isoId: "_k30a2ZSfEeeh5JjedkaA_g" }, { value: "CAPD", name: "CapitalDistribution", isoId: "_k30a25SfEeeh5JjedkaA_g" }, { value: "CAPG", name: "CapitalGainsDistribution", isoId: "_k30a3ZSfEeeh5JjedkaA_g" }, { value: "CAPI", name: "Capitalisation", isoId: "_k30a35SfEeeh5JjedkaA_g" }, { value: "DRCA", name: "CashDistributionFromNonEligibleSecuritiesSales", isoId: "_k30a4ZSfEeeh5JjedkaA_g" }, { value: "DVCA", name: "CashDividend", isoId: "_k30a45SfEeeh5JjedkaA_g" }, { value: "CHAN", name: "Change", isoId: "_k30a5ZSfEeeh5JjedkaA_g" }, { value: "COOP", name: "CompanyOption", isoId: "_k30a55SfEeeh5JjedkaA_g" }, { value: "CLSA", name: "ClassActionProposedSettlement", isoId: "_k30a6ZSfEeeh5JjedkaA_g" }, { value: "CONS", name: "Consent", isoId: "_k30a65SfEeeh5JjedkaA_g" }, { value: "CONV", name: "Conversion", isoId: "_k30a7ZSfEeeh5JjedkaA_g" }, { value: "CREV", name: "CreditEvent", isoId: "_k30a75SfEeeh5JjedkaA_g" }, { value: "DECR", name: "DecreaseInValue", isoId: "_k30a8ZSfEeeh5JjedkaA_g" }, { value: "DETI", name: "Detachment", isoId: "_k30a85SfEeeh5JjedkaA_g" }, { value: "DSCL", name: "Disclosure", isoId: "_k30a9ZSfEeeh5JjedkaA_g" }, { value: "DVOP", name: "DividendOption", isoId: "_k30a95SfEeeh5JjedkaA_g" }, { value: "DRIP", name: "DividendReinvestment", isoId: "_k30a-ZSfEeeh5JjedkaA_g" }, { value: "DRAW", name: "Drawing", isoId: "_k30a-5SfEeeh5JjedkaA_g" }, { value: "DTCH", name: "DutchAuction", isoId: "_k30a_ZSfEeeh5JjedkaA_g" }, { value: "EXOF", name: "Exchange", isoId: "_k30a_5SfEeeh5JjedkaA_g" }, { value: "REDM", name: "FinalMaturity", isoId: "_k30bAZSfEeeh5JjedkaA_g" }, { value: "MCAL", name: "FullCall", isoId: "_k30bA5SfEeeh5JjedkaA_g" }, { value: "INCR", name: "IncreaseInValue", isoId: "_k30bBZSfEeeh5JjedkaA_g" }, { value: "PPMT", name: "InstalmentCall", isoId: "_k30bB5SfEeeh5JjedkaA_g" }, { value: "INTR", name: "InterestPayment", isoId: "_k30bCZSfEeeh5JjedkaA_g" }, { value: "PRII", name: "InterestPaymentWithPrincipal", isoId: "_k30bC5SfEeeh5JjedkaA_g" }, { value: "RHDI", name: "IntermediateSecuritiesDistribution", isoId: "_k30bDZSfEeeh5JjedkaA_g" }, { value: "LIQU", name: "LiquidationDividend", isoId: "_k30bD5SfEeeh5JjedkaA_g" }, { value: "EXTM", name: "MaturityExtension", isoId: "_k30bEZSfEeeh5JjedkaA_g" }, { value: "MRGR", name: "Merger", isoId: "_k30bE5SfEeeh5JjedkaA_g" }, { value: "NOOF", name: "NonOfficialOffer", isoId: "_k30bFZSfEeeh5JjedkaA_g" }, { value: "CERT", name: "NonUSTEFRADCertification", isoId: "_k30bF5SfEeeh5JjedkaA_g" }, { value: "ODLT", name: "OddLotSalePurchase", isoId: "_k30bGZSfEeeh5JjedkaA_g" }, { value: "OTHR", name: "OtherEvent", isoId: "_k30bG5SfEeeh5JjedkaA_g" }, { value: "PARI", name: "PariPassu", isoId: "_k30bHZSfEeeh5JjedkaA_g" }, { value: "PCAL", name: "PartialRedemptionWithoutPoolFactorReduction", isoId: "_k30bH5SfEeeh5JjedkaA_g" }, { value: "PRED", name: "PartialRedemptionWithPoolFactorReduction", isoId: "_k30bIZSfEeeh5JjedkaA_g" }, { value: "PINK", name: "PayInKind", isoId: "_k30bI5SfEeeh5JjedkaA_g" }, { value: "PLAC", name: "PlaceOfIncorporation", isoId: "_k30bJZSfEeeh5JjedkaA_g" }, { value: "PDEF", name: "Prefunding", isoId: "_k30bJ5SfEeeh5JjedkaA_g" }, { value: "PRIO", name: "PriorityIssue", isoId: "_k30bKZSfEeeh5JjedkaA_g" }, { value: "BPUT", name: "PutRedemption", isoId: "_k30bK5SfEeeh5JjedkaA_g" }, { value: "REDO", name: "Redenomination", isoId: "_k30bLZSfEeeh5JjedkaA_g" }, { value: "REMK", name: "RemarketingAgreement", isoId: "_k30bL5SfEeeh5JjedkaA_g" }, { value: "BIDS", name: "RepurchaseOffer", isoId: "_k30bMZSfEeeh5JjedkaA_g" }, { value: "SPLR", name: "ReverseStockSplit", isoId: "_k30bM5SfEeeh5JjedkaA_g" }, { value: "RHTS", name: "RightsIssue", isoId: "_k30bNZSfEeeh5JjedkaA_g" }, { value: "DVSC", name: "ScripDividend", isoId: "_k30bN5SfEeeh5JjedkaA_g" }, { value: "SHPR", name: "SharesPremiumDividend", isoId: "_k30bOZSfEeeh5JjedkaA_g" }, { value: "SMAL", name: "SmallestNegotiableUnit", isoId: "_k30bO5SfEeeh5JjedkaA_g" }, { value: "SOFF", name: "SpinOff", isoId: "_k30bPZSfEeeh5JjedkaA_g" }, { value: "DVSE", name: "StockDividend", isoId: "_k30bP5SfEeeh5JjedkaA_g" }, { value: "SPLF", name: "StockSplit", isoId: "_k30bQZSfEeeh5JjedkaA_g" }, { value: "TREC", name: "TaxReclaim", isoId: "_k30bQ5SfEeeh5JjedkaA_g" }, { value: "TEND", name: "Tender", isoId: "_k30bRZSfEeeh5JjedkaA_g" }, { value: "DLST", name: "TradingStatusDelisted", isoId: "_k30bR5SfEeeh5JjedkaA_g" }, { value: "SUSP", name: "TradingStatusSuspended", isoId: "_k30bSZSfEeeh5JjedkaA_g" }, { value: "EXWA", name: "WarrantExercise", isoId: "_k30bS5SfEeeh5JjedkaA_g" }, { value: "WTRC", name: "WithholdingTaxReliefCertification", isoId: "_k30bTZSfEeeh5JjedkaA_g" }, { value: "WRTH", name: "Worthless", isoId: "_k30bT5SfEeeh5JjedkaA_g" }, { value: "ACCU", name: "Accumulation", isoId: "_k30bUZSfEeeh5JjedkaA_g" }, { value: "MTNG", name: "SecuritiesHoldersMeeting", isoId: "_k30bU5SfEeeh5JjedkaA_g" }, { value: "INFO", name: "Information", isoId: "_k30bVZSfEeeh5JjedkaA_g" }, { value: "TNDP", name: "TaxOnNonDistributedProceeds", isoId: "_m2bckZSfEeeh5JjedkaA_g" }],
+  },
+  "CorporateActionEventType56Choice": {
+    name: "CorporateActionEventType56Choice",
+    isoId: "_bDWGoZeUEeac76MbGuhitQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_bTHoA5eUEeac76MbGuhitQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "CorporateActionEventType24Code", required: true }),
+      f({ name: "Proprietary", isoId: "_bTHoC5eUEeac76MbGuhitQ", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+    rules: [
+      { name: "EventTypeRule", isoId: "_bTHoAZeUEeac76MbGuhitQ", text: "The use of a specific corporate action event type code is allowed only if this specific event triggers a securities movement as per the Event Interpretation Grid published by the Securities Market Practice Group (SMPG).|The corporate action event indicator code OTHR must only be used in case no other corporate action event code is appropriate.|The corporate action event indicator code CHAN must only be used in case no other corporate action event code is appropriate and only for an event which relates to a change.|The corporate action event indicator code REDM must only be used when the redemption is decided by the issuer and not by the holders." },
+    ],
+  },
+  "CorporateActionEventType73Choice": {
+    name: "CorporateActionEventType73Choice",
+    isoId: "_w71kkaOAEeeDTpy0mhI4TQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_xLnF46OAEeeDTpy0mhI4TQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "CorporateActionEventType28Code", required: true }),
+      f({ name: "Proprietary", isoId: "_xLnF66OAEeeDTpy0mhI4TQ", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+    rules: [
+      { name: "EventTypeRule", isoId: "_xLnF4aOAEeeDTpy0mhI4TQ", text: "The use of a specific corporate action event type code is allowed only if this specific event triggers a securities movement as per the Event Interpretation Grid published by the Securities Market Practice Group (SMPG).|The corporate action event indicator code OTHR must only be used in case no other corporate action event code is appropriate.|The corporate action event indicator code CHAN must only be used in case no other corporate action event code is appropriate and only for an event which relates to a change.|The corporate action event indicator code REDM must only be used when the redemption is decided by the issuer and not by the holders." },
+    ],
+  },
+  "CorporateActionOption5Code": {
+    name: "CorporateActionOption5Code",
+    isoId: "_bMfEktp-Ed-ak6NoX_4Aeg_73217179",
+    kind: "code",
+    options: [{ value: "CASH", name: "Cash", isoId: "_bMfEk9p-Ed-ak6NoX_4Aeg_160952572" }, { value: "SECU", name: "Security", isoId: "_bMfElNp-Ed-ak6NoX_4Aeg_720605213" }],
   },
   "MandateClassification1Code": {
     name: "MandateClassification1Code",
@@ -14237,6 +17845,43 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "DateTime", isoId: "_VptEkzp9EemwKdP955WBJQ", xmlTag: "DtTm", displayName: displayName("DateTime"), kind: "choice", type: "DateTimeSearch2Choice", required: true }),
     ],
   },
+  "Period2": {
+    name: "Period2",
+    isoId: "_T5oiANp-Ed-ak6NoX_4Aeg_1497161223",
+    kind: "component",
+    fields: [
+      f({ name: "FromDate", isoId: "_T5oiAdp-Ed-ak6NoX_4Aeg_1497161242", xmlTag: "FrDt", displayName: displayName("FromDate"), kind: "date", type: "ISODate", required: true }),
+      f({ name: "ToDate", isoId: "_T5oiAtp-Ed-ak6NoX_4Aeg_1497161560", xmlTag: "ToDt", displayName: displayName("ToDate"), kind: "date", type: "ISODate", required: true }),
+    ],
+  },
+  "Period7Choice": {
+    name: "Period7Choice",
+    isoId: "_VEuSoTwGEemGDJYTly2NCA",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "FromDateTimeToDateTime", isoId: "_VQk9UTwGEemGDJYTly2NCA", xmlTag: "FrDtTmToDtTm", displayName: displayName("FromDateTimeToDateTime"), kind: "component", type: "DateTimePeriod1", required: true }),
+      f({ name: "FromDateToDate", isoId: "_VQk9WTwGEemGDJYTly2NCA", xmlTag: "FrDtToDt", displayName: displayName("FromDateToDate"), kind: "component", type: "Period2", required: true }),
+    ],
+  },
+  "DateAndPeriod3Choice": {
+    name: "DateAndPeriod3Choice",
+    isoId: "_xstj3QzJEeuTPv2wqaotHg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "StatementDate", isoId: "_x7SLMQzJEeuTPv2wqaotHg", xmlTag: "StmtDt", displayName: displayName("StatementDate"), kind: "choice", type: "DateAndDateTime2Choice", required: true }),
+      f({ name: "StatementPeriod", isoId: "_x7SLOQzJEeuTPv2wqaotHg", xmlTag: "StmtPrd", displayName: displayName("StatementPeriod"), kind: "choice", type: "Period7Choice", required: true }),
+    ],
+  },
+  "DatePeriod1Choice": {
+    name: "DatePeriod1Choice",
+    isoId: "_kaGgU579EeOieb-y7x0pFg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Date", isoId: "_kaGgVJ79EeOieb-y7x0pFg", xmlTag: "Dt", displayName: displayName("Date"), kind: "date", type: "ISODate", required: true }),
+      f({ name: "DateMonth", isoId: "_kaGgVZ79EeOieb-y7x0pFg", xmlTag: "DtMnth", displayName: displayName("DateMonth"), kind: "text", type: "ISOYearMonth", required: true }),
+      f({ name: "FromDateToDate", isoId: "_-m9OxJ79EeOieb-y7x0pFg", xmlTag: "FrDtToDt", displayName: displayName("FromDateToDate"), kind: "component", type: "Period2", required: true }),
+    ],
+  },
   "DatePeriod2Choice": {
     name: "DatePeriod2Choice",
     isoId: "_jNAKm5lPEee-Zps0fZQaFQ",
@@ -14265,6 +17910,15 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "RequestedValueDate", isoId: "_2kEnBSVIEe6EvsLBQ6cYtA", xmlTag: "ReqdValDt", displayName: displayName("RequestedValueDate"), kind: "date", type: "ISODate", required: true }),
     ],
   },
+  "DatePeriodDetails": {
+    name: "DatePeriodDetails",
+    isoId: "_T-soNtp-Ed-ak6NoX_4Aeg_330596074",
+    kind: "component",
+    fields: [
+      f({ name: "FromDate", isoId: "_T-soN9p-Ed-ak6NoX_4Aeg_330596075", xmlTag: "FrDt", displayName: displayName("FromDate"), kind: "date", type: "ISODate", required: true }),
+      f({ name: "ToDate", isoId: "_T-soONp-Ed-ak6NoX_4Aeg_330596076", xmlTag: "ToDt", displayName: displayName("ToDate"), kind: "date", type: "ISODate", required: true }),
+    ],
+  },
   "DateTimePeriod1Choice": {
     name: "DateTimePeriod1Choice",
     isoId: "_xLYeBZlcEeeE1Ya-LgRsuQ",
@@ -14274,6 +17928,24 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "ToDateTime", isoId: "_xTM9Q5lcEeeE1Ya-LgRsuQ", xmlTag: "ToDtTm", displayName: displayName("ToDateTime"), kind: "datetime", type: "ISODateTime", required: true }),
       f({ name: "DateTimeRange", isoId: "_xTM9RZlcEeeE1Ya-LgRsuQ", xmlTag: "DtTmRg", displayName: displayName("DateTimeRange"), kind: "component", type: "DateTimePeriod1", required: true }),
     ],
+  },
+  "DateType3Code": {
+    name: "DateType3Code",
+    isoId: "_ayZwotp-Ed-ak6NoX_4Aeg_-1375472823",
+    kind: "code",
+    options: [{ value: "VARI", name: "Various", isoId: "_ayZwo9p-Ed-ak6NoX_4Aeg_-1348690126" }],
+  },
+  "DateType4Code": {
+    name: "DateType4Code",
+    isoId: "_ayZwpNp-Ed-ak6NoX_4Aeg_-1040840411",
+    kind: "code",
+    options: [{ value: "OPEN", name: "Open", isoId: "_ayZwpdp-Ed-ak6NoX_4Aeg_-753628532" }, { value: "UKWN", name: "Unknown", isoId: "_ayZwptp-Ed-ak6NoX_4Aeg_-739775519" }],
+  },
+  "DateType5Code": {
+    name: "DateType5Code",
+    isoId: "_ayZwp9p-Ed-ak6NoX_4Aeg_609768006",
+    kind: "code",
+    options: [{ value: "OPEN", name: "Open", isoId: "_ayjhoNp-Ed-ak6NoX_4Aeg_957934914" }],
   },
   "DeMinimusApplicable1": {
     name: "DeMinimusApplicable1",
@@ -14301,6 +17973,12 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "DeMinimusNotApplicable", isoId: "_CgNiAwgqEeSUG-8hqXsVMQ", xmlTag: "DeMnmsNotAplbl", displayName: displayName("DeMinimusNotApplicable"), kind: "component", type: "DeMinimusNotApplicable1", required: true }),
     ],
   },
+  "DeliveryReceiptType2Code": {
+    name: "DeliveryReceiptType2Code",
+    isoId: "_azJXhdp-Ed-ak6NoX_4Aeg_11908462",
+    kind: "code",
+    options: [{ value: "FREE", name: "SeparateSettlement", isoId: "_azJXhtp-Ed-ak6NoX_4Aeg_-2033362077" }, { value: "APMT", name: "AgainstPaymentSettlement", isoId: "_azJXh9p-Ed-ak6NoX_4Aeg_-2033361692" }],
+  },
   "DeniedReason4Code": {
     name: "DeniedReason4Code",
     isoId: "_avRkI9p-Ed-ak6NoX_4Aeg_1049194931",
@@ -14325,6 +18003,18 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "AdditionalReasonInformation", isoId: "_uWhgGTs8EeWRTLSN0i0tng", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
     ],
   },
+  "DeniedReason6Code": {
+    name: "DeniedReason6Code",
+    isoId: "_-_kAAFhdEeS8HfHHd4stCA",
+    kind: "code",
+    options: [{ value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_p17eYVheEeS8HfHHd4stCA" }, { value: "CDCY", name: "ConditionalCurrency", isoId: "_qVxcEVheEeS8HfHHd4stCA" }, { value: "CDRE", name: "ConditionalRealignement", isoId: "_qrDIgVheEeS8HfHHd4stCA" }, { value: "DCAN", name: "DeniedSinceCancelled", isoId: "_2nJuIVheEeS8HfHHd4stCA" }, { value: "DSET", name: "DeniedSinceSettled", isoId: "_3B7loVheEeS8HfHHd4stCA" }, { value: "DPRG", name: "DeniedSinceInProgress", isoId: "_3iXZMVheEeS8HfHHd4stCA" }, { value: "DREP", name: "DeniedSinceRepoEnded", isoId: "_3_0xQVheEeS8HfHHd4stCA" }, { value: "LATE", name: "MarketDeadlineMissed", isoId: "_4Y-REVheEeS8HfHHd4stCA" }, { value: "OTHR", name: "Other", isoId: "_4mzRsVheEeS8HfHHd4stCA" }, { value: "CDRG", name: "ConditionalRegistrar", isoId: "_AENlYV24EeS_LPIA7qJ58w" }],
+  },
+  "DeniedReason7Code": {
+    name: "DeniedReason7Code",
+    isoId: "_28LGcFhfEeS8HfHHd4stCA",
+    kind: "code",
+    options: [{ value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_89fvsVhfEeS8HfHHd4stCA" }, { value: "DCAL", name: "CallDeniedSinceAlreadyApplied", isoId: "_9KvhgVhfEeS8HfHHd4stCA" }, { value: "CDCY", name: "ConditionalCurrency", isoId: "_-CYUIVhfEeS8HfHHd4stCA" }, { value: "CDRE", name: "ConditionalRealignement", isoId: "_-lV3QVhfEeS8HfHHd4stCA" }, { value: "CDRG", name: "ConditionalRegistrar", isoId: "_-zoK4VhfEeS8HfHHd4stCA" }, { value: "DCAN", name: "DeniedSinceCancelled", isoId: "__DGKQVhfEeS8HfHHd4stCA" }, { value: "DPRG", name: "DeniedSinceInProgress", isoId: "__iyW8VhfEeS8HfHHd4stCA" }, { value: "DFOR", name: "DeniedSinceNotAllowed", isoId: "__0WBAVhfEeS8HfHHd4stCA" }, { value: "DREP", name: "DeniedSinceRepoEnded", isoId: "_AH-usVhgEeS8HfHHd4stCA" }, { value: "DSET", name: "DeniedSinceSettled", isoId: "_Atw8UVhgEeS8HfHHd4stCA" }, { value: "IPNC", name: "InstructionProcessed", isoId: "_BRxoUVhgEeS8HfHHd4stCA" }, { value: "LATE", name: "MarketDeadlineMissed", isoId: "_BblroVhgEeS8HfHHd4stCA" }, { value: "OTHR", name: "Other", isoId: "_Bj7IQVhgEeS8HfHHd4stCA" }],
+  },
   "DeniedStatus16Choice": {
     name: "DeniedStatus16Choice",
     isoId: "_tSPYkTs8EeWRTLSN0i0tng",
@@ -14332,6 +18022,66 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     choiceOptions: [
       f({ name: "NoSpecifiedReason", isoId: "_t0nF0Ts8EeWRTLSN0i0tng", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
       f({ name: "Reason", isoId: "_t0nF2Ts8EeWRTLSN0i0tng", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "DeniedReason11", required: true }),
+    ],
+  },
+  "ISINOct2015Identifier": {
+    name: "ISINOct2015Identifier",
+    isoId: "_rMvjUYIXEeWE0I8iABxEQA",
+    kind: "text",
+    pattern: "[A-Z]{2,2}[A-Z0-9]{9,9}[0-9]{1,1}",
+  },
+  "ExternalFinancialInstrumentIdentificationType1Code": {
+    name: "ExternalFinancialInstrumentIdentificationType1Code",
+    isoId: "_Yajvhtp-Ed-ak6NoX_4Aeg_-705317158",
+    kind: "code",
+    minLength: 1,
+    maxLength: 4,
+    external: true,
+  },
+  "IdentificationSource3Choice": {
+    name: "IdentificationSource3Choice",
+    isoId: "_QmL0Sdp-Ed-ak6NoX_4Aeg_12523031",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_QmU-MNp-Ed-ak6NoX_4Aeg_-1238582323", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalFinancialInstrumentIdentificationType1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_QmU-Mdp-Ed-ak6NoX_4Aeg_1058919953", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
+    ],
+  },
+  "OtherIdentification1": {
+    name: "OtherIdentification1",
+    isoId: "_UokEk9p-Ed-ak6NoX_4Aeg_462750527",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_UokElNp-Ed-ak6NoX_4Aeg_-843603921", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "Suffix", isoId: "_UokEldp-Ed-ak6NoX_4Aeg_-130667248", xmlTag: "Sfx", displayName: displayName("Suffix"), kind: "text", type: "Max16Text", required: false }),
+      f({ name: "Type", isoId: "_UokEltp-Ed-ak6NoX_4Aeg_1403030983", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "IdentificationSource3Choice", required: true }),
+    ],
+  },
+  "SecurityIdentification19": {
+    name: "SecurityIdentification19",
+    isoId: "_ho6XQYlXEeWPSZi0kAOXhg",
+    kind: "component",
+    fields: [
+      f({ name: "ISIN", isoId: "_iDjE24lXEeWPSZi0kAOXhg", xmlTag: "ISIN", displayName: displayName("ISIN"), kind: "text", type: "ISINOct2015Identifier", required: false }),
+      f({ name: "OtherIdentification", isoId: "_iDjE3YlXEeWPSZi0kAOXhg", xmlTag: "OthrId", displayName: displayName("OtherIdentification"), kind: "component", type: "OtherIdentification1", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "Description", isoId: "_iDjE34lXEeWPSZi0kAOXhg", xmlTag: "Desc", displayName: displayName("Description"), kind: "text", type: "Max140Text", required: false }),
+    ],
+    rules: [
+      { name: "DescriptionPresenceRule", isoId: "_iDjE0YlXEeWPSZi0kAOXhg", text: "If Description is not present then either ISIN or at least one occurrence of OtherIdentification must be present.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/ISIN"},{"op":"Presence","path":"/OtherIdentification[*]"}]},"onCondition":{"connector":"AND","rules":[{"op":"Absence","path":"/Description"}]}} },
+      { name: "OtherIdentificationPresenceRule", isoId: "_iDjE04lXEeWPSZi0kAOXhg", text: "If OtherIdentification is not present then either ISIN or Description must be present.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/ISIN"},{"op":"Presence","path":"/Description"}]},"onCondition":{"connector":"AND","rules":[{"op":"Absence","path":"/OtherIdentification[*]"}]}} },
+      { name: "ISINPresenceRule", isoId: "_iDjE1YlXEeWPSZi0kAOXhg", text: "If ISIN is not present then either Description or at least one occurrence of OtherIdentification must be present.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/OtherIdentification[*]"},{"op":"Presence","path":"/Description"}]},"onCondition":{"connector":"AND","rules":[{"op":"Absence","path":"/ISIN"}]}} },
+      { name: "DescriptionUsageRule", isoId: "_iDjE14lXEeWPSZi0kAOXhg", text: "Description must be used alone as the last resort." },
+      { name: "ISINGuideline", isoId: "_iDjE2YlXEeWPSZi0kAOXhg", text: "When an ISIN code exists, it is strongly recommended that the ISIN be used." },
+    ],
+  },
+  "DigitalPaymentSettlement2": {
+    name: "DigitalPaymentSettlement2",
+    isoId: "_7BQRQZZ6EfC2_67yGLymgA",
+    kind: "component",
+    fields: [
+      f({ name: "FinancialInstrumentIdentification", isoId: "_7DmaoZZ6EfC2_67yGLymgA", xmlTag: "FinInstrmId", displayName: displayName("FinancialInstrumentIdentification"), kind: "component", type: "SecurityIdentification19", required: true }),
+      f({ name: "ElectronicMoneyTokenSettlementQuantity", isoId: "_vOYOMZZ8EfC2_67yGLymgA", xmlTag: "ElctrncMnyTknSttlmQty", displayName: displayName("ElectronicMoneyTokenSettlementQuantity"), kind: "number", type: "Max30DecimalNumber", required: true }),
+      f({ name: "CashSettlementSystemPlace", isoId: "_7DmapZZ6EfC2_67yGLymgA", xmlTag: "CshSttlmSysPlc", displayName: displayName("CashSettlementSystemPlace"), kind: "choice", type: "CashSettlementSystemPlace1Choice", required: false }),
     ],
   },
   "DirectDebitInstructionDetails3": {
@@ -14473,16 +18223,6 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Enclosure", isoId: "_w1VXsTEyEe6g-ffJsqGiSA", xmlTag: "Nclsr", displayName: displayName("Enclosure"), kind: "text", type: "Max10MbBinary", required: true }),
     ],
   },
-  "PartyIdentification120Choice": {
-    name: "PartyIdentification120Choice",
-    isoId: "_Vul5MbpYEeifFaUMRKyMMw",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "AnyBIC", isoId: "_V5dscbpYEeifFaUMRKyMMw", xmlTag: "AnyBIC", displayName: displayName("AnyBIC"), kind: "text", type: "AnyBICDec2014Identifier", required: true }),
-      f({ name: "ProprietaryIdentification", isoId: "_V5dsc7pYEeifFaUMRKyMMw", xmlTag: "PrtryId", displayName: displayName("ProprietaryIdentification"), kind: "component", type: "GenericIdentification36", required: true }),
-      f({ name: "NameAndAddress", isoId: "_V5dsdbpYEeifFaUMRKyMMw", xmlTag: "NmAndAdr", displayName: displayName("NameAndAddress"), kind: "component", type: "NameAndAddress5", required: true }),
-    ],
-  },
   "PartyIdentification136": {
     name: "PartyIdentification136",
     isoId: "_Vht60bpYEeifFaUMRKyMMw",
@@ -14521,6 +18261,19 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     ],
     rules: [
       { name: "ShortLongNumberRule", isoId: "_CxzcUTnbEeWLJsP1cO-amg", text: "ShortNumber must contain the FIN message type number of the linked message. LongNumber must contain the XML message identifier of the linked message." },
+    ],
+  },
+  "DocumentNumber6Choice": {
+    name: "DocumentNumber6Choice",
+    isoId: "_celQ0ZKQEeWHWpTQn1FFVg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "ShortNumber", isoId: "_celQ1ZKQEeWHWpTQn1FFVg", xmlTag: "ShrtNb", displayName: displayName("ShortNumber"), kind: "text", type: "Exact3NumericText", required: true }),
+      f({ name: "LongNumber", isoId: "_celQ3ZKQEeWHWpTQn1FFVg", xmlTag: "LngNb", displayName: displayName("LongNumber"), kind: "text", type: "ISO20022MessageIdentificationText", required: true }),
+      f({ name: "ProprietaryNumber", isoId: "_celQ5ZKQEeWHWpTQn1FFVg", xmlTag: "PrtryNb", displayName: displayName("ProprietaryNumber"), kind: "component", type: "GenericIdentification86", required: true }),
+    ],
+    rules: [
+      { name: "ShortLongNumberRule", isoId: "_celQ05KQEeWHWpTQn1FFVg", text: "ShortNumber must contain the FIN message type number of the linked message. LongNumber must contain the XML message identifier of the linked message." },
     ],
   },
   "DocumentToSend4": {
@@ -14765,36 +18518,6 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Proprietary", isoId: "_-XasJbTUEee_k7HqaUKERA", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "ProprietaryPrice2", required: true }),
     ],
   },
-  "Max30DecimalNumber": {
-    name: "Max30DecimalNumber",
-    isoId: "_xNcaMBrKEeyhRdHRjakS2w",
-    kind: "number",
-    totalDigits: 30,
-    fractionDigits: 29,
-  },
-  "FinancialInstrumentQuantity33Choice": {
-    name: "FinancialInstrumentQuantity33Choice",
-    isoId: "_Gu-7FRuyEeyhRdHRjakS2w",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Unit", isoId: "_HEcNsRuyEeyhRdHRjakS2w", xmlTag: "Unit", displayName: displayName("Unit"), kind: "number", type: "DecimalNumber", required: true }),
-      f({ name: "FaceAmount", isoId: "_HEcNuRuyEeyhRdHRjakS2w", xmlTag: "FaceAmt", displayName: displayName("FaceAmount"), kind: "number", type: "ImpliedCurrencyAndAmount", required: true }),
-      f({ name: "AmortisedValue", isoId: "_HEcNuxuyEeyhRdHRjakS2w", xmlTag: "AmtsdVal", displayName: displayName("AmortisedValue"), kind: "number", type: "ImpliedCurrencyAndAmount", required: true }),
-      f({ name: "DigitalTokenUnit", isoId: "_5UlWABuyEeyhRdHRjakS2w", xmlTag: "DgtlTknUnit", displayName: displayName("DigitalTokenUnit"), kind: "number", type: "Max30DecimalNumber", required: true }),
-    ],
-    rules: [
-      { name: "DigitalTokenUnitUsageRule", isoId: "_ldGFESTwEeyFBYL3tbKzsg", text: "DigitalTokenUnit format may only be used for instruments identified with a digital token identifier." },
-    ],
-  },
-  "OriginalAndCurrentQuantities1": {
-    name: "OriginalAndCurrentQuantities1",
-    isoId: "_Sotsttp-Ed-ak6NoX_4Aeg_975131994",
-    kind: "component",
-    fields: [
-      f({ name: "FaceAmount", isoId: "_Sotst9p-Ed-ak6NoX_4Aeg_1262349956", xmlTag: "FaceAmt", displayName: displayName("FaceAmount"), kind: "number", type: "ImpliedCurrencyAndAmount", required: true }),
-      f({ name: "AmortisedValue", isoId: "_So3dsNp-Ed-ak6NoX_4Aeg_1277126235", xmlTag: "AmtsdVal", displayName: displayName("AmortisedValue"), kind: "number", type: "ImpliedCurrencyAndAmount", required: true }),
-    ],
-  },
   "ProprietaryQuantity1": {
     name: "ProprietaryQuantity1",
     isoId: "_RUhg9tp-Ed-ak6NoX_4Aeg_-1425714284",
@@ -14812,56 +18535,6 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Quantity", isoId: "_CMJ84T3qEe-thIfLZ94a1w", xmlTag: "Qty", displayName: displayName("Quantity"), kind: "choice", type: "FinancialInstrumentQuantity33Choice", required: true }),
       f({ name: "OriginalAndCurrentFaceAmount", isoId: "_CMJ84z3qEe-thIfLZ94a1w", xmlTag: "OrgnlAndCurFaceAmt", displayName: displayName("OriginalAndCurrentFaceAmount"), kind: "component", type: "OriginalAndCurrentQuantities1", required: true }),
       f({ name: "Proprietary", isoId: "_CMJ85T3qEe-thIfLZ94a1w", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "ProprietaryQuantity1", required: true }),
-    ],
-  },
-  "ISINOct2015Identifier": {
-    name: "ISINOct2015Identifier",
-    isoId: "_rMvjUYIXEeWE0I8iABxEQA",
-    kind: "text",
-    pattern: "[A-Z]{2,2}[A-Z0-9]{9,9}[0-9]{1,1}",
-  },
-  "ExternalFinancialInstrumentIdentificationType1Code": {
-    name: "ExternalFinancialInstrumentIdentificationType1Code",
-    isoId: "_Yajvhtp-Ed-ak6NoX_4Aeg_-705317158",
-    kind: "code",
-    minLength: 1,
-    maxLength: 4,
-    external: true,
-  },
-  "IdentificationSource3Choice": {
-    name: "IdentificationSource3Choice",
-    isoId: "_QmL0Sdp-Ed-ak6NoX_4Aeg_12523031",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_QmU-MNp-Ed-ak6NoX_4Aeg_-1238582323", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalFinancialInstrumentIdentificationType1Code", required: true }),
-      f({ name: "Proprietary", isoId: "_QmU-Mdp-Ed-ak6NoX_4Aeg_1058919953", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
-    ],
-  },
-  "OtherIdentification1": {
-    name: "OtherIdentification1",
-    isoId: "_UokEk9p-Ed-ak6NoX_4Aeg_462750527",
-    kind: "component",
-    fields: [
-      f({ name: "Identification", isoId: "_UokElNp-Ed-ak6NoX_4Aeg_-843603921", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "Suffix", isoId: "_UokEldp-Ed-ak6NoX_4Aeg_-130667248", xmlTag: "Sfx", displayName: displayName("Suffix"), kind: "text", type: "Max16Text", required: false }),
-      f({ name: "Type", isoId: "_UokEltp-Ed-ak6NoX_4Aeg_1403030983", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "IdentificationSource3Choice", required: true }),
-    ],
-  },
-  "SecurityIdentification19": {
-    name: "SecurityIdentification19",
-    isoId: "_ho6XQYlXEeWPSZi0kAOXhg",
-    kind: "component",
-    fields: [
-      f({ name: "ISIN", isoId: "_iDjE24lXEeWPSZi0kAOXhg", xmlTag: "ISIN", displayName: displayName("ISIN"), kind: "text", type: "ISINOct2015Identifier", required: false }),
-      f({ name: "OtherIdentification", isoId: "_iDjE3YlXEeWPSZi0kAOXhg", xmlTag: "OthrId", displayName: displayName("OtherIdentification"), kind: "component", type: "OtherIdentification1", required: false, repeat: { min: 0, max: null } }),
-      f({ name: "Description", isoId: "_iDjE34lXEeWPSZi0kAOXhg", xmlTag: "Desc", displayName: displayName("Description"), kind: "text", type: "Max140Text", required: false }),
-    ],
-    rules: [
-      { name: "DescriptionPresenceRule", isoId: "_iDjE0YlXEeWPSZi0kAOXhg", text: "If Description is not present then either ISIN or at least one occurrence of OtherIdentification must be present.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/ISIN"},{"op":"Presence","path":"/OtherIdentification[*]"}]},"onCondition":{"connector":"AND","rules":[{"op":"Absence","path":"/Description"}]}} },
-      { name: "OtherIdentificationPresenceRule", isoId: "_iDjE04lXEeWPSZi0kAOXhg", text: "If OtherIdentification is not present then either ISIN or Description must be present.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/ISIN"},{"op":"Presence","path":"/Description"}]},"onCondition":{"connector":"AND","rules":[{"op":"Absence","path":"/OtherIdentification[*]"}]}} },
-      { name: "ISINPresenceRule", isoId: "_iDjE1YlXEeWPSZi0kAOXhg", text: "If ISIN is not present then either Description or at least one occurrence of OtherIdentification must be present.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/OtherIdentification[*]"},{"op":"Presence","path":"/Description"}]},"onCondition":{"connector":"AND","rules":[{"op":"Absence","path":"/ISIN"}]}} },
-      { name: "DescriptionUsageRule", isoId: "_iDjE14lXEeWPSZi0kAOXhg", text: "Description must be used alone as the last resort." },
-      { name: "ISINGuideline", isoId: "_iDjE2YlXEeWPSZi0kAOXhg", text: "When an ISIN code exists, it is strongly recommended that the ISIN be used." },
     ],
   },
   "ExternalReturnReason1Code": {
@@ -15107,6 +18780,18 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     kind: "code",
     options: [{ value: "DAIL", name: "Daily", isoId: "_ASy8ISDVEeWCLu74WLgP4w" }, { value: "ADHO", name: "Adhoc", isoId: "_Aryq8SDVEeWCLu74WLgP4w" }],
   },
+  "EventFrequency3Code": {
+    name: "EventFrequency3Code",
+    isoId: "_ajpi8dp-Ed-ak6NoX_4Aeg_1482517785",
+    kind: "code",
+    options: [{ value: "YEAR", name: "Annual", isoId: "_ajpi8tp-Ed-ak6NoX_4Aeg_1482517787" }, { value: "MNTH", name: "Monthly", isoId: "_ajpi89p-Ed-ak6NoX_4Aeg_1482517810" }, { value: "QUTR", name: "Quarterly", isoId: "_ajpi9Np-Ed-ak6NoX_4Aeg_1482517811" }, { value: "SEMI", name: "SemiAnnual", isoId: "_ajpi9dp-Ed-ak6NoX_4Aeg_1482517827" }, { value: "WEEK", name: "Weekly", isoId: "_ajzT8Np-Ed-ak6NoX_4Aeg_1482517828" }],
+  },
+  "EventFrequency4Code": {
+    name: "EventFrequency4Code",
+    isoId: "_ajzT8dp-Ed-ak6NoX_4Aeg_-2118703833",
+    kind: "code",
+    options: [{ value: "YEAR", name: "Annual", isoId: "_ajzT8tp-Ed-ak6NoX_4Aeg_-2118703816" }, { value: "ADHO", name: "Adhoc", isoId: "_ajzT89p-Ed-ak6NoX_4Aeg_-2090075609" }, { value: "MNTH", name: "Monthly", isoId: "_ajzT9Np-Ed-ak6NoX_4Aeg_-2118703815" }, { value: "DAIL", name: "Daily", isoId: "_ajzT9dp-Ed-ak6NoX_4Aeg_-2118703814" }, { value: "INDA", name: "IntraDay", isoId: "_ajzT9tp-Ed-ak6NoX_4Aeg_-2118703798" }, { value: "WEEK", name: "Weekly", isoId: "_ajzT99p-Ed-ak6NoX_4Aeg_-2118703797" }],
+  },
   "EventFrequency7Code": {
     name: "EventFrequency7Code",
     isoId: "_VsZaMf70EeCKvdA5_Kg7Aw",
@@ -15189,6 +18874,36 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     choiceOptions: [
       f({ name: "Time", isoId: "_750BgKMgEeCJ6YNENx4h-w_274414262", xmlTag: "Tm", displayName: displayName("Time"), kind: "time", type: "ISOTime", required: true }),
       f({ name: "Event", isoId: "_750BgaMgEeCJ6YNENx4h-w_989331050", xmlTag: "Evt", displayName: displayName("Event"), kind: "choice", type: "EventType1Choice", required: true }),
+    ],
+  },
+  "ExposureType12Code": {
+    name: "ExposureType12Code",
+    isoId: "__WpdESglEey2k_sfZmJz4g",
+    kind: "code",
+    options: [{ value: "BFWD", name: "BondForward", isoId: "_07NG4SgnEeyxa-IROls2IA" }, { value: "PAYM", name: "CashSettlement", isoId: "_07NG4ygnEeyxa-IROls2IA" }, { value: "CCPC", name: "CCPCollateral", isoId: "_07NG5SgnEeyxa-IROls2IA" }, { value: "COMM", name: "Commodities", isoId: "_07NG5ygnEeyxa-IROls2IA" }, { value: "CRDS", name: "CreditDefaultSwap", isoId: "_07NG6SgnEeyxa-IROls2IA" }, { value: "CRTL", name: "CreditLine", isoId: "_07NG6ygnEeyxa-IROls2IA" }, { value: "CRSP", name: "CreditSupport", isoId: "_07NG7SgnEeyxa-IROls2IA" }, { value: "CCIR", name: "CrossCurrencyIRS", isoId: "_07NG7ygnEeyxa-IROls2IA" }, { value: "CRPR", name: "CrossProduct", isoId: "_07NG8SgnEeyxa-IROls2IA" }, { value: "EQPT", name: "EquityOption", isoId: "_07NG8ygnEeyxa-IROls2IA" }, { value: "EXTD", name: "ExchangeTradedDerivatives", isoId: "_07NG9SgnEeyxa-IROls2IA" }, { value: "EQUS", name: "EquitySwap", isoId: "_07NG9ygnEeyxa-IROls2IA" }, { value: "EXPT", name: "ExoticOption", isoId: "_07NG-SgnEeyxa-IROls2IA" }, { value: "FIXI", name: "FixedIncome", isoId: "_07NG-ygnEeyxa-IROls2IA" }, { value: "FORX", name: "ForeignExchange", isoId: "_07NG_SgnEeyxa-IROls2IA" }, { value: "FORW", name: "ForwardForeignExchange", isoId: "_07NG_ygnEeyxa-IROls2IA" }, { value: "FUTR", name: "Futures", isoId: "_07NHASgnEeyxa-IROls2IA" }, { value: "OPTN", name: "FXOption", isoId: "_07NHAygnEeyxa-IROls2IA" }, { value: "LIQU", name: "Liquidity", isoId: "_07NHBSgnEeyxa-IROls2IA" }, { value: "OTCD", name: "OTCDerivatives", isoId: "_07NHBygnEeyxa-IROls2IA" }, { value: "REPO", name: "RepurchaseAgreement", isoId: "_07NHCSgnEeyxa-IROls2IA" }, { value: "RVPO", name: "ReverseRepurchaseAgreement", isoId: "_07NHCygnEeyxa-IROls2IA" }, { value: "SLOA", name: "SecuredLoan", isoId: "_07NHDSgnEeyxa-IROls2IA" }, { value: "SBSC", name: "SecuritiesBuySellSellBuyBack", isoId: "_07NHDygnEeyxa-IROls2IA" }, { value: "SCRP", name: "SecuritiesCrossProducts", isoId: "_07NHESgnEeyxa-IROls2IA" }, { value: "SLEB", name: "SecuritiesLendingAndBorrowing", isoId: "_07NHEygnEeyxa-IROls2IA" }, { value: "SHSL", name: "ShortSell", isoId: "_07NHFSgnEeyxa-IROls2IA" }, { value: "SCIR", name: "SingleCurrencyIRS", isoId: "_07NHFygnEeyxa-IROls2IA" }, { value: "SCIE", name: "SingleCurrencyIRSExotic", isoId: "_07NHGSgnEeyxa-IROls2IA" }, { value: "SWPT", name: "Swaption", isoId: "_07NHGygnEeyxa-IROls2IA" }, { value: "TBAS", name: "ToBeAnnounced", isoId: "_07NHHSgnEeyxa-IROls2IA" }, { value: "UDMS", name: "UnclearedDerivativeMarginSegregation", isoId: "_1-QfUSgnEeyxa-IROls2IA" }, { value: "TRCP", name: "TreasuryCrossProduct", isoId: "_5bdwkSgoEeyB747fKu7_rw" }],
+  },
+  "ExposureType15Code": {
+    name: "ExposureType15Code",
+    isoId: "_jWaXwYS2Ee-Pv9KR9bv9IA",
+    kind: "code",
+    options: [{ value: "BFWD", name: "BondForward", isoId: "_jgaBQYS2Ee-Pv9KR9bv9IA" }, { value: "PAYM", name: "CashSettlement", isoId: "_jgaBQ4S2Ee-Pv9KR9bv9IA" }, { value: "CCPC", name: "CCPCollateral", isoId: "_jgaBRYS2Ee-Pv9KR9bv9IA" }, { value: "COMM", name: "Commodities", isoId: "_jgaBR4S2Ee-Pv9KR9bv9IA" }, { value: "CRDS", name: "CreditDefaultSwap", isoId: "_jgaBSYS2Ee-Pv9KR9bv9IA" }, { value: "CRTL", name: "CreditLine", isoId: "_jgaBS4S2Ee-Pv9KR9bv9IA" }, { value: "CRSP", name: "CreditSupport", isoId: "_jgaBTYS2Ee-Pv9KR9bv9IA" }, { value: "CCIR", name: "CrossCurrencyIRS", isoId: "_jgaBT4S2Ee-Pv9KR9bv9IA" }, { value: "CRPR", name: "CrossProduct", isoId: "_jgaBUYS2Ee-Pv9KR9bv9IA" }, { value: "EQPT", name: "EquityOption", isoId: "_jgaBU4S2Ee-Pv9KR9bv9IA" }, { value: "EXTD", name: "ExchangeTradedDerivatives", isoId: "_jgaBVYS2Ee-Pv9KR9bv9IA" }, { value: "EQUS", name: "EquitySwap", isoId: "_jgaBV4S2Ee-Pv9KR9bv9IA" }, { value: "EXPT", name: "ExoticOption", isoId: "_jgaBWYS2Ee-Pv9KR9bv9IA" }, { value: "FIXI", name: "FixedIncome", isoId: "_jgaBW4S2Ee-Pv9KR9bv9IA" }, { value: "FORX", name: "ForeignExchange", isoId: "_jgaBXYS2Ee-Pv9KR9bv9IA" }, { value: "FORW", name: "ForwardForeignExchange", isoId: "_jgaBX4S2Ee-Pv9KR9bv9IA" }, { value: "FUTR", name: "Futures", isoId: "_jgaBYYS2Ee-Pv9KR9bv9IA" }, { value: "OPTN", name: "FXOption", isoId: "_jgaBY4S2Ee-Pv9KR9bv9IA" }, { value: "LIQU", name: "Liquidity", isoId: "_jgaBZYS2Ee-Pv9KR9bv9IA" }, { value: "OTCD", name: "OTCDerivatives", isoId: "_jgaBZ4S2Ee-Pv9KR9bv9IA" }, { value: "REPO", name: "RepurchaseAgreement", isoId: "_jgaBaYS2Ee-Pv9KR9bv9IA" }, { value: "RVPO", name: "ReverseRepurchaseAgreement", isoId: "_jgaBa4S2Ee-Pv9KR9bv9IA" }, { value: "SLOA", name: "SecuredLoan", isoId: "_jgaBbYS2Ee-Pv9KR9bv9IA" }, { value: "SBSC", name: "SecuritiesBuySellSellBuyBack", isoId: "_jgaBb4S2Ee-Pv9KR9bv9IA" }, { value: "SCRP", name: "SecuritiesCrossProducts", isoId: "_jgaBcYS2Ee-Pv9KR9bv9IA" }, { value: "SLEB", name: "SecuritiesLendingAndBorrowing", isoId: "_jgaBc4S2Ee-Pv9KR9bv9IA" }, { value: "SHSL", name: "ShortSell", isoId: "_jgaBdYS2Ee-Pv9KR9bv9IA" }, { value: "SCIR", name: "SingleCurrencyIRS", isoId: "_jgaBd4S2Ee-Pv9KR9bv9IA" }, { value: "SCIE", name: "SingleCurrencyIRSExotic", isoId: "_jgaBeYS2Ee-Pv9KR9bv9IA" }, { value: "SWPT", name: "Swaption", isoId: "_jgaBe4S2Ee-Pv9KR9bv9IA" }, { value: "TBAS", name: "ToBeAnnounced", isoId: "_jgaBfYS2Ee-Pv9KR9bv9IA" }, { value: "UDMS", name: "UnclearedDerivativeMarginSegregation", isoId: "_jgaBf4S2Ee-Pv9KR9bv9IA" }, { value: "TRCP", name: "TreasuryCrossProduct", isoId: "_jgaBgYS2Ee-Pv9KR9bv9IA" }, { value: "CBCO", name: "CentralBankCreditOperations", isoId: "_osGDAYS2Ee-Pv9KR9bv9IA" }],
+  },
+  "ExposureType24Choice": {
+    name: "ExposureType24Choice",
+    isoId: "_ciETATi8Eeydid5dcNPKvg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_ciETAzi8Eeydid5dcNPKvg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExposureType12Code", required: true }),
+      f({ name: "Proprietary", isoId: "_ciETBzi8Eeydid5dcNPKvg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "ExposureType25Choice": {
+    name: "ExposureType25Choice",
+    isoId: "_Vobk0YS2Ee-Pv9KR9bv9IA",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_VyjxMYS2Ee-Pv9KR9bv9IA", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExposureType15Code", required: true }),
+      f({ name: "Proprietary", isoId: "_VyjxNYS2Ee-Pv9KR9bv9IA", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
     ],
   },
   "Extension1": {
@@ -15395,11 +19110,71 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     maxLength: 4,
     external: true,
   },
+  "FailingReason5Code": {
+    name: "FailingReason5Code",
+    isoId: "_SxGicYcTEe-F6Jd8tTRGHA",
+    kind: "code",
+    options: [{ value: "AWMO", name: "AwaitingMoney", isoId: "_a7ZqYYcTEe-F6Jd8tTRGHA" }, { value: "BYIY", name: "BuyInProcedure", isoId: "_a7ZqY4cTEe-F6Jd8tTRGHA" }, { value: "CLAT", name: "CounterpartyTooLateForSettlement", isoId: "_a7ZqZYcTEe-F6Jd8tTRGHA" }, { value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_a7ZqZ4cTEe-F6Jd8tTRGHA" }, { value: "CANR", name: "CancellationConfirmationRequested", isoId: "_a7ZqaYcTEe-F6Jd8tTRGHA" }, { value: "CAIS", name: "AwaitingSecurities", isoId: "_a7Zqa4cTEe-F6Jd8tTRGHA" }, { value: "OBJT", name: "UnderObjection", isoId: "_a7ZqbYcTEe-F6Jd8tTRGHA" }, { value: "AWSH", name: "AwaitingSecuritiesFromCounterparty", isoId: "_a7Zqb4cTEe-F6Jd8tTRGHA" }, { value: "PHSE", name: "PhysicalDeliveryDelay", isoId: "_a7ZqcYcTEe-F6Jd8tTRGHA" }, { value: "STCD", name: "ConfirmationDiscrepency", isoId: "_a7Zqc4cTEe-F6Jd8tTRGHA" }, { value: "DOCY", name: "AwaitingDocumentsOrEndorsementsFromYou", isoId: "_a7ZqdYcTEe-F6Jd8tTRGHA" }, { value: "MLAT", name: "MoneySecuritiesTooLateForSettlement", isoId: "_a7Zqd4cTEe-F6Jd8tTRGHA" }, { value: "DOCC", name: "AwaitingDocumentsOrEndorsementsFromCounterparty", isoId: "_a7ZqeYcTEe-F6Jd8tTRGHA" }, { value: "BLOC", name: "AccountBlocked", isoId: "_a7Zqe4cTEe-F6Jd8tTRGHA" }, { value: "CHAS", name: "EnquirySent", isoId: "_a7ZqfYcTEe-F6Jd8tTRGHA" }, { value: "NEWI", name: "NewIssues", isoId: "_a7Zqf4cTEe-F6Jd8tTRGHA" }, { value: "CLAC", name: "CounterpartyInsufficientSecurities", isoId: "_a7ZqgYcTEe-F6Jd8tTRGHA" }, { value: "MUNO", name: "MultipleSettlementAmount", isoId: "_a7Zqg4cTEe-F6Jd8tTRGHA" }, { value: "GLOB", name: "GlobalFormSecurities", isoId: "_a7ZqhYcTEe-F6Jd8tTRGHA" }, { value: "PREA", name: "YourInstructionOnHold", isoId: "_a7Zqh4cTEe-F6Jd8tTRGHA" }, { value: "PART", name: "TradeSettlesInPartials", isoId: "_a7ZqiYcTEe-F6Jd8tTRGHA" }, { value: "NOFX", name: "NoForeignExchangeInstruction", isoId: "_a7Zqi4cTEe-F6Jd8tTRGHA" }, { value: "CMON", name: "CounterpartyInsufficientMoney", isoId: "_a7ZqjYcTEe-F6Jd8tTRGHA" }, { value: "YCOL", name: "CollateralShortage", isoId: "_a7Zqj4cTEe-F6Jd8tTRGHA" }, { value: "COLL", name: "SecuritiesPledgedAsCollateral", isoId: "_a7ZqkYcTEe-F6Jd8tTRGHA" }, { value: "DEPO", name: "RefusedDepositForIssueOfDepositaryReceipts", isoId: "_a7Zqk4cTEe-F6Jd8tTRGHA" }, { value: "FLIM", name: "MaximumForeignLimitReached", isoId: "_a7ZqlYcTEe-F6Jd8tTRGHA" }, { value: "INCA", name: "IncomeAdjustementRequired", isoId: "_a7Zql4cTEe-F6Jd8tTRGHA" }, { value: "LINK", name: "PendingLinkedInstruction", isoId: "_a7ZqmYcTEe-F6Jd8tTRGHA" }, { value: "LACK", name: "LackOfSecurities", isoId: "_a7Zqm4cTEe-F6Jd8tTRGHA" }, { value: "LALO", name: "SecuritiesLoanedOut", isoId: "_a7ZqnYcTEe-F6Jd8tTRGHA" }, { value: "MONY", name: "InsufficientMoney", isoId: "_a7Zqn4cTEe-F6Jd8tTRGHA" }, { value: "NCON", name: "ConfirmationNotReceived", isoId: "_a7ZqoYcTEe-F6Jd8tTRGHA" }, { value: "REFS", name: "NotInGoodOrder", isoId: "_a7Zqo4cTEe-F6Jd8tTRGHA" }, { value: "SDUT", name: "LackOfStampDutyInformation", isoId: "_a7ZqpYcTEe-F6Jd8tTRGHA" }, { value: "BATC", name: "ProcessingBatchDifference", isoId: "_a7Zqp4cTEe-F6Jd8tTRGHA" }, { value: "CYCL", name: "AwaitingNextSettlementCycle", isoId: "_a7ZqqYcTEe-F6Jd8tTRGHA" }, { value: "SBLO", name: "SecuritiesBlocked", isoId: "_a7Zqq4cTEe-F6Jd8tTRGHA" }, { value: "CPEC", name: "CounterpartyInReceivership", isoId: "_a7ZqrYcTEe-F6Jd8tTRGHA" }, { value: "MINO", name: "MinimumSettlementAmount", isoId: "_a7Zqr4cTEe-F6Jd8tTRGHA" }, { value: "IAAD", name: "StatusReasonInvestigation", isoId: "_a7ZqsYcTEe-F6Jd8tTRGHA" }, { value: "OTHR", name: "Other", isoId: "_a7Zqs4cTEe-F6Jd8tTRGHA" }, { value: "PHCK", name: "PhysicalSecuritiesVerification", isoId: "_a7ZqtYcTEe-F6Jd8tTRGHA" }, { value: "BENO", name: "BeneficialOwnershipDisagreement", isoId: "_a7Zqt4cTEe-F6Jd8tTRGHA" }, { value: "BOTH", name: "BothInstructionsOnHold", isoId: "_a7ZquYcTEe-F6Jd8tTRGHA" }, { value: "CLHT", name: "ClearingHouseTrade", isoId: "_a7Zqu4cTEe-F6Jd8tTRGHA" }, { value: "DENO", name: "UnavailableDeliverableDenominatedQuantity", isoId: "_a7ZqvYcTEe-F6Jd8tTRGHA" }, { value: "DISA", name: "NaturalDisaster", isoId: "_a7Zqv4cTEe-F6Jd8tTRGHA" }, { value: "DKNY", name: "CounterpartyReturnedShares", isoId: "_a7ZqwYcTEe-F6Jd8tTRGHA" }, { value: "FROZ", name: "SecuritiesFrozenAtCSD", isoId: "_a7Zqw4cTEe-F6Jd8tTRGHA" }, { value: "LAAW", name: "AwaitingOtherTransaction", isoId: "_a7ZqxYcTEe-F6Jd8tTRGHA" }, { value: "LATE", name: "MarketDeadlineMissed", isoId: "_a7Zqx4cTEe-F6Jd8tTRGHA" }, { value: "LIQU", name: "InsufficientCentralBankLiquidity", isoId: "_a7ZqyYcTEe-F6Jd8tTRGHA" }, { value: "PRCY", name: "CounterpartyInstructionOnHold", isoId: "_a7Zqy4cTEe-F6Jd8tTRGHA" }, { value: "REGT", name: "CertificatesRejected", isoId: "_a7ZqzYcTEe-F6Jd8tTRGHA" }, { value: "SETS", name: "SettlementSystemMethodModified", isoId: "_a7Zqz4cTEe-F6Jd8tTRGHA" }, { value: "CERT", name: "WrongCertificatesNumbers", isoId: "_a7Zq0YcTEe-F6Jd8tTRGHA" }, { value: "PRSY", name: "SystemOnHold", isoId: "_a7Zq04cTEe-F6Jd8tTRGHA" }, { value: "CDLR", name: "ConditionalDeliveryAwaitingRelease", isoId: "_a7Zq1YcTEe-F6Jd8tTRGHA" }, { value: "CSDH", name: "CSDHold", isoId: "_a7Zq14cTEe-F6Jd8tTRGHA" }, { value: "CVAL", name: "CSDValidation", isoId: "_a7Zq2YcTEe-F6Jd8tTRGHA" }, { value: "INBC", name: "IncompleteNumberCount", isoId: "_a7Zq24cTEe-F6Jd8tTRGHA" }, { value: "PATD", name: "PartialDiffer", isoId: "_dI0kMYcTEe-F6Jd8tTRGHA" }, { value: "PREL", name: "PartiallyReleased", isoId: "_dOegQYcTEe-F6Jd8tTRGHA" }],
+  },
+  "FailingReason18Choice": {
+    name: "FailingReason18Choice",
+    isoId: "_84ez8YcTEe-FecylWsA1vA",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_8_fa0YcTEe-FecylWsA1vA", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "FailingReason5Code", required: true }),
+      f({ name: "Proprietary", isoId: "_8_fa2YcTEe-FecylWsA1vA", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "FailingReason13": {
+    name: "FailingReason13",
+    isoId: "_8xVDEYcTEe-FecylWsA1vA",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "_84ez4YcTEe-FecylWsA1vA", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "FailingReason18Choice", required: true }),
+      f({ name: "AdditionalReasonInformation", isoId: "_84ez6YcTEe-FecylWsA1vA", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
+    ],
+  },
+  "FailingReason6Code": {
+    name: "FailingReason6Code",
+    isoId: "_-vjzQY5cEfC_4ZEXsY0Xyg",
+    kind: "code",
+    options: [{ value: "BLOC", name: "AccountBlocked", isoId: "_-xH5m45cEfC_4ZEXsY0Xyg" }, { value: "PART", name: "TradeSettlesInPartials", isoId: "_Kf3YkY5dEfC_4ZEXsY0Xyg" }, { value: "LINK", name: "PendingLinkedInstruction", isoId: "_Lh1y8Y5dEfC_4ZEXsY0Xyg" }, { value: "LACK", name: "LackOfSecurities", isoId: "_Mg-UsY5dEfC_4ZEXsY0Xyg" }, { value: "CYCL", name: "AwaitingNextSettlementCycle", isoId: "_Nz58MY5dEfC_4ZEXsY0Xyg" }, { value: "SBLO", name: "SecuritiesBlocked", isoId: "_QO0fcY5dEfC_4ZEXsY0Xyg" }, { value: "OTHR", name: "Other", isoId: "_Q7szkY5dEfC_4ZEXsY0Xyg" }, { value: "LATE", name: "MarketDeadlineMissed", isoId: "_SHBXMY5dEfC_4ZEXsY0Xyg" }, { value: "CERT", name: "WrongCertificatesNumbers", isoId: "_TkOVAY5dEfC_4ZEXsY0Xyg" }, { value: "PRSY", name: "SystemOnHold", isoId: "_VzIckY5dEfC_4ZEXsY0Xyg" }, { value: "INBC", name: "IncompleteNumberCount", isoId: "_XTFzcY5dEfC_4ZEXsY0Xyg" }],
+  },
+  "FailingReason20Choice": {
+    name: "FailingReason20Choice",
+    isoId: "_0w8A0eSkEe-qVZLXW4RRBw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_05m0keSkEe-qVZLXW4RRBw", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "FailingReason6Code", required: true }),
+      f({ name: "Proprietary", isoId: "_05m0meSkEe-qVZLXW4RRBw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "FailingReason15": {
+    name: "FailingReason15",
+    isoId: "_0o3p8eSkEe-qVZLXW4RRBw",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "_0w8AweSkEe-qVZLXW4RRBw", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "FailingReason20Choice", required: true }),
+      f({ name: "AdditionalReasonInformation", isoId: "_0w8AyeSkEe-qVZLXW4RRBw", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
+    ],
+  },
+  "FailingReason1Code": {
+    name: "FailingReason1Code",
+    isoId: "_am7gdtp-Ed-ak6NoX_4Aeg_1744847021",
+    kind: "code",
+    options: [{ value: "AWMO", name: "AwaitingMoney", isoId: "_am7gd9p-Ed-ak6NoX_4Aeg_-904852840" }, { value: "BYIY", name: "BuyInProcedure", isoId: "_am7geNp-Ed-ak6NoX_4Aeg_747774668" }, { value: "CLAT", name: "CounterpartyTooLateForSettlement", isoId: "_anFRcNp-Ed-ak6NoX_4Aeg_455816930" }, { value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_anFRcdp-Ed-ak6NoX_4Aeg_633935602" }, { value: "CANR", name: "CancellationConfirmationRequested", isoId: "_anFRctp-Ed-ak6NoX_4Aeg_-1901925193" }, { value: "CAIS", name: "AwaitingSecurities", isoId: "_anFRc9p-Ed-ak6NoX_4Aeg_-249297685" }, { value: "OBJT", name: "UnderObjection", isoId: "_anFRdNp-Ed-ak6NoX_4Aeg_-541255423" }, { value: "AWSH", name: "AwaitingSecuritiesFromCounterparty", isoId: "_anFRddp-Ed-ak6NoX_4Aeg_-363136751" }, { value: "PHSE", name: "PhysicalDeliveryDelay", isoId: "_anFRdtp-Ed-ak6NoX_4Aeg_1395969750" }, { value: "STCD", name: "ConfirmationDiscrepency", isoId: "_anFRd9p-Ed-ak6NoX_4Aeg_-1246370038" }, { value: "DOCY", name: "AwaitingDocumentsOrEndorsementsFromYou", isoId: "_anFReNp-Ed-ak6NoX_4Aeg_-1538327776" }, { value: "MLAT", name: "MoneySecuritiesTooLateForSettlement", isoId: "_anFRedp-Ed-ak6NoX_4Aeg_-1360209104" }, { value: "DOCC", name: "AwaitingDocumentsOrEndorsementsFromCounterparty", isoId: "_anFRetp-Ed-ak6NoX_4Aeg_398897397" }, { value: "BLOC", name: "AccountBlocked", isoId: "_anObYNp-Ed-ak6NoX_4Aeg_2051524905" }, { value: "CHAS", name: "EnquirySent", isoId: "_anObYdp-Ed-ak6NoX_4Aeg_1759567167" }, { value: "NEWI", name: "NewIssues", isoId: "_anObYtp-Ed-ak6NoX_4Aeg_1937685839" }, { value: "CLAC", name: "CounterpartyInsufficientSecurities", isoId: "_anObY9p-Ed-ak6NoX_4Aeg_-598174956" }, { value: "MUNO", name: "MultipleSettlementAmount", isoId: "_anObZNp-Ed-ak6NoX_4Aeg_1054452552" }, { value: "GLOB", name: "GlobalFormSecurities", isoId: "_anObZdp-Ed-ak6NoX_4Aeg_762494814" }, { value: "PREA", name: "YourInstructionOnHold", isoId: "_anObZtp-Ed-ak6NoX_4Aeg_940613486" }, { value: "PART", name: "TradeSettlesInPartials", isoId: "_anObZ9p-Ed-ak6NoX_4Aeg_57380199" }, { value: "NOFX", name: "NoForeignExchangeInstruction", isoId: "_anObaNp-Ed-ak6NoX_4Aeg_-234577539" }, { value: "CMON", name: "CounterpartyInsufficientMoney", isoId: "_anObadp-Ed-ak6NoX_4Aeg_-56458867" }, { value: "YCOL", name: "CollateralShortage", isoId: "_anYMYNp-Ed-ak6NoX_4Aeg_1702647634" }, { value: "COLL", name: "SecuritiesPledgedAsCollateral", isoId: "_anYMYdp-Ed-ak6NoX_4Aeg_-939692154" }, { value: "DEPO", name: "RefusedDepositForIssueOfDepositaryReceipts", isoId: "_anYMYtp-Ed-ak6NoX_4Aeg_-1231649892" }, { value: "FLIM", name: "MaximumForeignLimitReached", isoId: "_anYMY9p-Ed-ak6NoX_4Aeg_-1053531220" }, { value: "INCA", name: "IncomeAdjustementRequired", isoId: "_anYMZNp-Ed-ak6NoX_4Aeg_705575281" }, { value: "LINK", name: "PendingLinkedInstruction", isoId: "_anYMZdp-Ed-ak6NoX_4Aeg_-1936764507" }, { value: "LACK", name: "LackOfSecurities", isoId: "_anYMZtp-Ed-ak6NoX_4Aeg_2066245051" }, { value: "LALO", name: "SecuritiesLoanedOut", isoId: "_anYMZ9p-Ed-ak6NoX_4Aeg_-2050603573" }, { value: "MONY", name: "InsufficientMoney", isoId: "_anYMaNp-Ed-ak6NoX_4Aeg_-291497072" }, { value: "NCON", name: "ConfirmationNotReceived", isoId: "_anYMadp-Ed-ak6NoX_4Aeg_1361130436" }, { value: "REFS", name: "NotInGoodOrder", isoId: "_anh9YNp-Ed-ak6NoX_4Aeg_1069172698" }, { value: "SDUT", name: "LackOfStampDutyInformation", isoId: "_anh9Ydp-Ed-ak6NoX_4Aeg_1247291370" }, { value: "BATC", name: "ProcessingBatchDifference", isoId: "_anh9Ytp-Ed-ak6NoX_4Aeg_-1288569425" }, { value: "CYCL", name: "AwaitingNextSettlementCycle", isoId: "_anh9Y9p-Ed-ak6NoX_4Aeg_-1323408739" }, { value: "SBLO", name: "SecuritiesBlocked", isoId: "_anh9ZNp-Ed-ak6NoX_4Aeg_-1615366477" }, { value: "CPEC", name: "CounterpartyInReceivership", isoId: "_anh9Zdp-Ed-ak6NoX_4Aeg_-1437247805" }, { value: "MINO", name: "MinimumSettlementAmount", isoId: "_anh9Ztp-Ed-ak6NoX_4Aeg_321858696" }, { value: "IAAD", name: "StatusReasonInvestigation", isoId: "_anh9Z9p-Ed-ak6NoX_4Aeg_1974486204" }, { value: "OTHR", name: "Other", isoId: "_anh9aNp-Ed-ak6NoX_4Aeg_1682528466" }, { value: "PHCK", name: "PhysicalSecuritiesVerification", isoId: "_anh9adp-Ed-ak6NoX_4Aeg_1860647138" }, { value: "BENO", name: "BeneficialOwnershipDisagreement", isoId: "_anh9atp-Ed-ak6NoX_4Aeg_-675213657" }, { value: "BOTH", name: "BothInstructionsOnHold", isoId: "_anrHUNp-Ed-ak6NoX_4Aeg_977413851" }, { value: "CLHT", name: "ClearingHouseTrade", isoId: "_anrHUdp-Ed-ak6NoX_4Aeg_685456113" }, { value: "DENO", name: "UnavailableDeliverableDenominatedQuantity", isoId: "_anrHUtp-Ed-ak6NoX_4Aeg_863574785" }, { value: "DISA", name: "NaturalDisaster", isoId: "_anrHU9p-Ed-ak6NoX_4Aeg_-1672286010" }, { value: "DKNY", name: "CounterpartyReturnedShares", isoId: "_anrHVNp-Ed-ak6NoX_4Aeg_-19658502" }, { value: "FROZ", name: "SecuritiesFrozenAtCSD", isoId: "_anrHVdp-Ed-ak6NoX_4Aeg_-311616240" }, { value: "LAAW", name: "AwaitingOtherTransaction", isoId: "_anrHVtp-Ed-ak6NoX_4Aeg_-133497568" }, { value: "LATE", name: "MarketDeadlineMissed", isoId: "_anrHV9p-Ed-ak6NoX_4Aeg_1625608933" }, { value: "LIQU", name: "InsufficientCentralBankLiquidity", isoId: "_anrHWNp-Ed-ak6NoX_4Aeg_-1016730855" }, { value: "PRCY", name: "CounterpartyInstructionOnHold", isoId: "_anrHWdp-Ed-ak6NoX_4Aeg_-1308688593" }, { value: "REGT", name: "CertificatesRejected", isoId: "_an04UNp-Ed-ak6NoX_4Aeg_-1130569921" }, { value: "SETS", name: "SettlementSystemMethodModified", isoId: "_an04Udp-Ed-ak6NoX_4Aeg_628536580" }, { value: "CERT", name: "WrongCertificatesNumbers", isoId: "_an04Utp-Ed-ak6NoX_4Aeg_-2013803208" }, { value: "PRSY", name: "SystemOnHold", isoId: "_an04U9p-Ed-ak6NoX_4Aeg_-1746851229" }],
+  },
   "FailingReason3Code": {
     name: "FailingReason3Code",
     isoId: "_ABlNIRqLEeG38P9Gj2JZJw",
     kind: "code",
     options: [{ value: "AWMO", name: "AwaitingMoney", isoId: "_ABlNJxqLEeG38P9Gj2JZJw" }, { value: "BYIY", name: "BuyInProcedure", isoId: "_ABlNKxqLEeG38P9Gj2JZJw" }, { value: "CLAT", name: "CounterpartyTooLateForSettlement", isoId: "_ABlNLxqLEeG38P9Gj2JZJw" }, { value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_ABlNMxqLEeG38P9Gj2JZJw" }, { value: "CANR", name: "CancellationConfirmationRequested", isoId: "_ABlNNxqLEeG38P9Gj2JZJw" }, { value: "CAIS", name: "AwaitingSecurities", isoId: "_ABlNOxqLEeG38P9Gj2JZJw" }, { value: "OBJT", name: "UnderObjection", isoId: "_ABlNPxqLEeG38P9Gj2JZJw" }, { value: "AWSH", name: "AwaitingSecuritiesFromCounterparty", isoId: "_ABlNQxqLEeG38P9Gj2JZJw" }, { value: "PHSE", name: "PhysicalDeliveryDelay", isoId: "_ABlNRxqLEeG38P9Gj2JZJw" }, { value: "STCD", name: "ConfirmationDiscrepency", isoId: "_ABlNSxqLEeG38P9Gj2JZJw" }, { value: "DOCY", name: "AwaitingDocumentsOrEndorsementsFromYou", isoId: "_ABlNTxqLEeG38P9Gj2JZJw" }, { value: "MLAT", name: "MoneySecuritiesTooLateForSettlement", isoId: "_ABlNUxqLEeG38P9Gj2JZJw" }, { value: "DOCC", name: "AwaitingDocumentsOrEndorsementsFromCounterparty", isoId: "_ABlNVxqLEeG38P9Gj2JZJw" }, { value: "BLOC", name: "AccountBlocked", isoId: "_ABlNWxqLEeG38P9Gj2JZJw" }, { value: "CHAS", name: "EnquirySent", isoId: "_ABlNXxqLEeG38P9Gj2JZJw" }, { value: "NEWI", name: "NewIssues", isoId: "_ABlNYxqLEeG38P9Gj2JZJw" }, { value: "CLAC", name: "CounterpartyInsufficientSecurities", isoId: "_ABlNZxqLEeG38P9Gj2JZJw" }, { value: "MUNO", name: "MultipleSettlementAmount", isoId: "_ABlNaxqLEeG38P9Gj2JZJw" }, { value: "GLOB", name: "GlobalFormSecurities", isoId: "_ABlNbxqLEeG38P9Gj2JZJw" }, { value: "PREA", name: "YourInstructionOnHold", isoId: "_ABlNcxqLEeG38P9Gj2JZJw" }, { value: "PART", name: "TradeSettlesInPartials", isoId: "_ABlNdxqLEeG38P9Gj2JZJw" }, { value: "NOFX", name: "NoForeignExchangeInstruction", isoId: "_ABlNexqLEeG38P9Gj2JZJw" }, { value: "CMON", name: "CounterpartyInsufficientMoney", isoId: "_ABuXERqLEeG38P9Gj2JZJw" }, { value: "YCOL", name: "CollateralShortage", isoId: "_ABuXFRqLEeG38P9Gj2JZJw" }, { value: "COLL", name: "SecuritiesPledgedAsCollateral", isoId: "_ABuXGRqLEeG38P9Gj2JZJw" }, { value: "DEPO", name: "RefusedDepositForIssueOfDepositaryReceipts", isoId: "_ABuXHRqLEeG38P9Gj2JZJw" }, { value: "FLIM", name: "MaximumForeignLimitReached", isoId: "_ABuXIRqLEeG38P9Gj2JZJw" }, { value: "INCA", name: "IncomeAdjustementRequired", isoId: "_ABuXJRqLEeG38P9Gj2JZJw" }, { value: "LINK", name: "PendingLinkedInstruction", isoId: "_ABuXKRqLEeG38P9Gj2JZJw" }, { value: "LACK", name: "LackOfSecurities", isoId: "_ABuXLRqLEeG38P9Gj2JZJw" }, { value: "LALO", name: "SecuritiesLoanedOut", isoId: "_ABuXMRqLEeG38P9Gj2JZJw" }, { value: "MONY", name: "InsufficientMoney", isoId: "_ABuXNRqLEeG38P9Gj2JZJw" }, { value: "NCON", name: "ConfirmationNotReceived", isoId: "_ABuXORqLEeG38P9Gj2JZJw" }, { value: "REFS", name: "NotInGoodOrder", isoId: "_ABuXPRqLEeG38P9Gj2JZJw" }, { value: "SDUT", name: "LackOfStampDutyInformation", isoId: "_ABuXQRqLEeG38P9Gj2JZJw" }, { value: "BATC", name: "ProcessingBatchDifference", isoId: "_ABuXRRqLEeG38P9Gj2JZJw" }, { value: "CYCL", name: "AwaitingNextSettlementCycle", isoId: "_ABuXSRqLEeG38P9Gj2JZJw" }, { value: "SBLO", name: "SecuritiesBlocked", isoId: "_ABuXTRqLEeG38P9Gj2JZJw" }, { value: "CPEC", name: "CounterpartyInReceivership", isoId: "_ABuXURqLEeG38P9Gj2JZJw" }, { value: "MINO", name: "MinimumSettlementAmount", isoId: "_ABuXVRqLEeG38P9Gj2JZJw" }, { value: "IAAD", name: "StatusReasonInvestigation", isoId: "_ABuXWRqLEeG38P9Gj2JZJw" }, { value: "OTHR", name: "Other", isoId: "_ABuXXRqLEeG38P9Gj2JZJw" }, { value: "PHCK", name: "PhysicalSecuritiesVerification", isoId: "_ABuXYRqLEeG38P9Gj2JZJw" }, { value: "BENO", name: "BeneficialOwnershipDisagreement", isoId: "_ABuXZRqLEeG38P9Gj2JZJw" }, { value: "BOTH", name: "BothInstructionsOnHold", isoId: "_ABuXaRqLEeG38P9Gj2JZJw" }, { value: "CLHT", name: "ClearingHouseTrade", isoId: "_ABuXbRqLEeG38P9Gj2JZJw" }, { value: "DENO", name: "UnavailableDeliverableDenominatedQuantity", isoId: "_ABuXcRqLEeG38P9Gj2JZJw" }, { value: "DISA", name: "NaturalDisaster", isoId: "_ABuXdRqLEeG38P9Gj2JZJw" }, { value: "DKNY", name: "CounterpartyReturnedShares", isoId: "_ABuXeRqLEeG38P9Gj2JZJw" }, { value: "FROZ", name: "SecuritiesFrozenAtCSD", isoId: "_ABuXfRqLEeG38P9Gj2JZJw" }, { value: "LAAW", name: "AwaitingOtherTransaction", isoId: "_ABuXgRqLEeG38P9Gj2JZJw" }, { value: "LATE", name: "MarketDeadlineMissed", isoId: "_ABuXhRqLEeG38P9Gj2JZJw" }, { value: "LIQU", name: "InsufficientCentralBankLiquidity", isoId: "_ABuXiRqLEeG38P9Gj2JZJw" }, { value: "PRCY", name: "CounterpartyInstructionOnHold", isoId: "_ABuXjRqLEeG38P9Gj2JZJw" }, { value: "REGT", name: "CertificatesRejected", isoId: "_ABuXkRqLEeG38P9Gj2JZJw" }, { value: "SETS", name: "SettlementSystemMethodModified", isoId: "_ABuXlRqLEeG38P9Gj2JZJw" }, { value: "CERT", name: "WrongCertificatesNumbers", isoId: "_ABuXmRqLEeG38P9Gj2JZJw" }, { value: "PRSY", name: "SystemOnHold", isoId: "_ABuXnRqLEeG38P9Gj2JZJw" }, { value: "INBC", name: "IncompleteNumberCount", isoId: "_FVn5ohqLEeG38P9Gj2JZJw" }],
+  },
+  "FailingReason4Code": {
+    name: "FailingReason4Code",
+    isoId: "_u0BzoSW-EeygjNFjAlVoPA",
+    kind: "code",
+    options: [{ value: "AWMO", name: "AwaitingMoney", isoId: "_QUsRcSXAEeyr3ZXX_BfH2g" }, { value: "BYIY", name: "BuyInProcedure", isoId: "_QUsRcyXAEeyr3ZXX_BfH2g" }, { value: "CLAT", name: "CounterpartyTooLateForSettlement", isoId: "_QUsRdSXAEeyr3ZXX_BfH2g" }, { value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_QUsRdyXAEeyr3ZXX_BfH2g" }, { value: "CANR", name: "CancellationConfirmationRequested", isoId: "_QUsReSXAEeyr3ZXX_BfH2g" }, { value: "CAIS", name: "AwaitingSecurities", isoId: "_QUsReyXAEeyr3ZXX_BfH2g" }, { value: "OBJT", name: "UnderObjection", isoId: "_QUsRfSXAEeyr3ZXX_BfH2g" }, { value: "AWSH", name: "AwaitingSecuritiesFromCounterparty", isoId: "_QUsRfyXAEeyr3ZXX_BfH2g" }, { value: "PHSE", name: "PhysicalDeliveryDelay", isoId: "_QUsRgSXAEeyr3ZXX_BfH2g" }, { value: "STCD", name: "ConfirmationDiscrepency", isoId: "_QUsRgyXAEeyr3ZXX_BfH2g" }, { value: "DOCY", name: "AwaitingDocumentsOrEndorsementsFromYou", isoId: "_QUsRhSXAEeyr3ZXX_BfH2g" }, { value: "MLAT", name: "MoneySecuritiesTooLateForSettlement", isoId: "_QUsRhyXAEeyr3ZXX_BfH2g" }, { value: "DOCC", name: "AwaitingDocumentsOrEndorsementsFromCounterparty", isoId: "_QUsRiSXAEeyr3ZXX_BfH2g" }, { value: "BLOC", name: "AccountBlocked", isoId: "_QUsRiyXAEeyr3ZXX_BfH2g" }, { value: "CHAS", name: "EnquirySent", isoId: "_QUsRjSXAEeyr3ZXX_BfH2g" }, { value: "NEWI", name: "NewIssues", isoId: "_QUsRjyXAEeyr3ZXX_BfH2g" }, { value: "CLAC", name: "CounterpartyInsufficientSecurities", isoId: "_QUsRkSXAEeyr3ZXX_BfH2g" }, { value: "MUNO", name: "MultipleSettlementAmount", isoId: "_QUsRkyXAEeyr3ZXX_BfH2g" }, { value: "GLOB", name: "GlobalFormSecurities", isoId: "_QUsRlSXAEeyr3ZXX_BfH2g" }, { value: "PREA", name: "YourInstructionOnHold", isoId: "_QUsRlyXAEeyr3ZXX_BfH2g" }, { value: "PART", name: "TradeSettlesInPartials", isoId: "_QUsRmSXAEeyr3ZXX_BfH2g" }, { value: "NOFX", name: "NoForeignExchangeInstruction", isoId: "_QUsRmyXAEeyr3ZXX_BfH2g" }, { value: "CMON", name: "CounterpartyInsufficientMoney", isoId: "_QUsRnSXAEeyr3ZXX_BfH2g" }, { value: "YCOL", name: "CollateralShortage", isoId: "_QUsRnyXAEeyr3ZXX_BfH2g" }, { value: "COLL", name: "SecuritiesPledgedAsCollateral", isoId: "_QUsRoSXAEeyr3ZXX_BfH2g" }, { value: "DEPO", name: "RefusedDepositForIssueOfDepositaryReceipts", isoId: "_QUsRoyXAEeyr3ZXX_BfH2g" }, { value: "FLIM", name: "MaximumForeignLimitReached", isoId: "_QUsRpSXAEeyr3ZXX_BfH2g" }, { value: "INCA", name: "IncomeAdjustementRequired", isoId: "_QUsRpyXAEeyr3ZXX_BfH2g" }, { value: "LINK", name: "PendingLinkedInstruction", isoId: "_QUsRqSXAEeyr3ZXX_BfH2g" }, { value: "LACK", name: "LackOfSecurities", isoId: "_QUsRqyXAEeyr3ZXX_BfH2g" }, { value: "LALO", name: "SecuritiesLoanedOut", isoId: "_QUsRrSXAEeyr3ZXX_BfH2g" }, { value: "MONY", name: "InsufficientMoney", isoId: "_QUsRryXAEeyr3ZXX_BfH2g" }, { value: "NCON", name: "ConfirmationNotReceived", isoId: "_QUsRsSXAEeyr3ZXX_BfH2g" }, { value: "REFS", name: "NotInGoodOrder", isoId: "_QUsRsyXAEeyr3ZXX_BfH2g" }, { value: "SDUT", name: "LackOfStampDutyInformation", isoId: "_QUsRtSXAEeyr3ZXX_BfH2g" }, { value: "BATC", name: "ProcessingBatchDifference", isoId: "_QUsRtyXAEeyr3ZXX_BfH2g" }, { value: "CYCL", name: "AwaitingNextSettlementCycle", isoId: "_QUsRuSXAEeyr3ZXX_BfH2g" }, { value: "SBLO", name: "SecuritiesBlocked", isoId: "_QUsRuyXAEeyr3ZXX_BfH2g" }, { value: "CPEC", name: "CounterpartyInReceivership", isoId: "_QUsRvSXAEeyr3ZXX_BfH2g" }, { value: "MINO", name: "MinimumSettlementAmount", isoId: "_QUsRvyXAEeyr3ZXX_BfH2g" }, { value: "IAAD", name: "StatusReasonInvestigation", isoId: "_QUsRwSXAEeyr3ZXX_BfH2g" }, { value: "OTHR", name: "Other", isoId: "_QUsRwyXAEeyr3ZXX_BfH2g" }, { value: "PHCK", name: "PhysicalSecuritiesVerification", isoId: "_QUsRxSXAEeyr3ZXX_BfH2g" }, { value: "BENO", name: "BeneficialOwnershipDisagreement", isoId: "_QUsRxyXAEeyr3ZXX_BfH2g" }, { value: "BOTH", name: "BothInstructionsOnHold", isoId: "_QUsRySXAEeyr3ZXX_BfH2g" }, { value: "CLHT", name: "ClearingHouseTrade", isoId: "_QUsRyyXAEeyr3ZXX_BfH2g" }, { value: "DENO", name: "UnavailableDeliverableDenominatedQuantity", isoId: "_QUsRzSXAEeyr3ZXX_BfH2g" }, { value: "DISA", name: "NaturalDisaster", isoId: "_QUsRzyXAEeyr3ZXX_BfH2g" }, { value: "DKNY", name: "CounterpartyReturnedShares", isoId: "_QUsR0SXAEeyr3ZXX_BfH2g" }, { value: "FROZ", name: "SecuritiesFrozenAtCSD", isoId: "_QUsR0yXAEeyr3ZXX_BfH2g" }, { value: "LAAW", name: "AwaitingOtherTransaction", isoId: "_QUsR1SXAEeyr3ZXX_BfH2g" }, { value: "LATE", name: "MarketDeadlineMissed", isoId: "_QUsR1yXAEeyr3ZXX_BfH2g" }, { value: "LIQU", name: "InsufficientCentralBankLiquidity", isoId: "_QUsR2SXAEeyr3ZXX_BfH2g" }, { value: "PRCY", name: "CounterpartyInstructionOnHold", isoId: "_QUsR2yXAEeyr3ZXX_BfH2g" }, { value: "REGT", name: "CertificatesRejected", isoId: "_QUsR3SXAEeyr3ZXX_BfH2g" }, { value: "SETS", name: "SettlementSystemMethodModified", isoId: "_QUsR3yXAEeyr3ZXX_BfH2g" }, { value: "CERT", name: "WrongCertificatesNumbers", isoId: "_QUsR4SXAEeyr3ZXX_BfH2g" }, { value: "PRSY", name: "SystemOnHold", isoId: "_QUsR4yXAEeyr3ZXX_BfH2g" }, { value: "CDLR", name: "ConditionalDeliveryAwaitingRelease", isoId: "_QUsR5SXAEeyr3ZXX_BfH2g" }, { value: "CSDH", name: "CSDHold", isoId: "_QUsR5yXAEeyr3ZXX_BfH2g" }, { value: "CVAL", name: "CSDValidation", isoId: "_QUsR6SXAEeyr3ZXX_BfH2g" }, { value: "INBC", name: "IncompleteNumberCount", isoId: "_QUsR6yXAEeyr3ZXX_BfH2g" }, { value: "PREL", name: "PartiallyReleased", isoId: "_UGiLYSXAEeyr3ZXX_BfH2g" }, { value: "PATD", name: "PartialDiffer", isoId: "_B3NwgSgLEeym1_Zp1BTvEw" }],
   },
   "FailingReason7Choice": {
     name: "FailingReason7Choice",
@@ -15417,6 +19192,24 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     fields: [
       f({ name: "Code", isoId: "_26U3wTp5EeWVrPy0StzzSg", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "FailingReason7Choice", required: true }),
       f({ name: "AdditionalReasonInformation", isoId: "_26U3yTp5EeWVrPy0StzzSg", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
+    ],
+  },
+  "FailingStatus15Choice": {
+    name: "FailingStatus15Choice",
+    isoId: "_8p4XMYcTEe-FecylWsA1vA",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NoSpecifiedReason", isoId: "_8xVDAYcTEe-FecylWsA1vA", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
+      f({ name: "Reason", isoId: "_8xVDCYcTEe-FecylWsA1vA", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "FailingReason13", required: true }),
+    ],
+  },
+  "FailingStatus17Choice": {
+    name: "FailingStatus17Choice",
+    isoId: "_0gHWgeSkEe-qVZLXW4RRBw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NoSpecifiedReason", isoId: "_0o3p4eSkEe-qVZLXW4RRBw", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
+      f({ name: "Reason", isoId: "_0o3p6eSkEe-qVZLXW4RRBw", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "FailingReason15", required: true }),
     ],
   },
   "FailingStatus9Choice": {
@@ -15452,6 +19245,12 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "LEI", isoId: "_R1aeNWOUEeq5Ar_w98FvsA", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
       f({ name: "Other", isoId: "_R1aeO2OUEeq5Ar_w98FvsA", xmlTag: "Othr", displayName: displayName("Other"), kind: "component", type: "GenericFinancialIdentification1", required: false }),
     ],
+  },
+  "ISINIdentifier": {
+    name: "ISINIdentifier",
+    isoId: "_YYU64Np-Ed-ak6NoX_4Aeg_-1113170580",
+    kind: "text",
+    pattern: "[A-Z0-9]{12,12}",
   },
   "SEDOLIdentifier": {
     name: "SEDOLIdentifier",
@@ -15492,6 +19291,86 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     isoId: "_YYer4dp-Ed-ak6NoX_4Aeg_1324881802",
     kind: "text",
   },
+  "SecurityIdentification3Choice": {
+    name: "SecurityIdentification3Choice",
+    isoId: "_QdiOmtp-Ed-ak6NoX_4Aeg_1063479184",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "ISIN", isoId: "_Qdr_kNp-Ed-ak6NoX_4Aeg_1064399268", xmlTag: "ISIN", displayName: displayName("ISIN"), kind: "text", type: "ISINIdentifier", required: true }),
+      f({ name: "SEDOL", isoId: "_Qdr_kdp-Ed-ak6NoX_4Aeg_1796754500", xmlTag: "SEDOL", displayName: displayName("SEDOL"), kind: "text", type: "SEDOLIdentifier", required: true }),
+      f({ name: "CUSIP", isoId: "_Qdr_ktp-Ed-ak6NoX_4Aeg_-1393682718", xmlTag: "CUSIP", displayName: displayName("CUSIP"), kind: "text", type: "CUSIPIdentifier", required: true }),
+      f({ name: "RIC", isoId: "_Qdr_k9p-Ed-ak6NoX_4Aeg_1064399328", xmlTag: "RIC", displayName: displayName("RIC"), kind: "text", type: "RICIdentifier", required: true }),
+      f({ name: "TickerSymbol", isoId: "_Qdr_lNp-Ed-ak6NoX_4Aeg_1064399370", xmlTag: "TckrSymb", displayName: displayName("TickerSymbol"), kind: "text", type: "TickerIdentifier", required: true }),
+      f({ name: "Bloomberg", isoId: "_Qdr_ldp-Ed-ak6NoX_4Aeg_1064399388", xmlTag: "Blmbrg", displayName: displayName("Bloomberg"), kind: "text", type: "BloombergIdentifier", required: true }),
+      f({ name: "CTA", isoId: "_Qdr_ltp-Ed-ak6NoX_4Aeg_1064399405", xmlTag: "CTA", displayName: displayName("CTA"), kind: "text", type: "ConsolidatedTapeAssociationIdentifier", required: true }),
+      f({ name: "QUICK", isoId: "_Qdr_l9p-Ed-ak6NoX_4Aeg_-722284921", xmlTag: "QUICK", displayName: displayName("QUICK"), kind: "text", type: "QUICKIdentifier", required: true }),
+      f({ name: "Wertpapier", isoId: "_Qdr_mNp-Ed-ak6NoX_4Aeg_-722284886", xmlTag: "Wrtppr", displayName: displayName("Wertpapier"), kind: "text", type: "WertpapierIdentifier", required: true }),
+      f({ name: "Dutch", isoId: "_Qd1wkNp-Ed-ak6NoX_4Aeg_-722284843", xmlTag: "Dtch", displayName: displayName("Dutch"), kind: "text", type: "DutchIdentifier", required: true }),
+      f({ name: "Valoren", isoId: "_Qd1wkdp-Ed-ak6NoX_4Aeg_-722284808", xmlTag: "Vlrn", displayName: displayName("Valoren"), kind: "text", type: "ValorenIdentifier", required: true }),
+      f({ name: "Sicovam", isoId: "_Qd1wktp-Ed-ak6NoX_4Aeg_-722284713", xmlTag: "SCVM", displayName: displayName("Sicovam"), kind: "text", type: "SicovamIdentifier", required: true }),
+      f({ name: "Belgian", isoId: "_Qd1wk9p-Ed-ak6NoX_4Aeg_-722284454", xmlTag: "Belgn", displayName: displayName("Belgian"), kind: "text", type: "BelgianIdentifier", required: true }),
+      f({ name: "Common", isoId: "_Qd1wlNp-Ed-ak6NoX_4Aeg_1064399423", xmlTag: "Cmon", displayName: displayName("Common"), kind: "text", type: "EuroclearClearstreamIdentifier", required: true }),
+      f({ name: "OtherProprietaryIdentification", isoId: "_Qd1wldp-Ed-ak6NoX_4Aeg_1064399293", xmlTag: "OthrPrtryId", displayName: displayName("OtherProprietaryIdentification"), kind: "component", type: "AlternateSecurityIdentification1", required: true }),
+    ],
+  },
+  "FormOfSecurity1Code": {
+    name: "FormOfSecurity1Code",
+    isoId: "_arP_wdp-Ed-ak6NoX_4Aeg_1608809377",
+    kind: "code",
+    options: [{ value: "BEAR", name: "Bearer", isoId: "_1Gk9wN1OEeGAp99n2TKigg_1287612204" }, { value: "REGD", name: "Registered", isoId: "_3TsVkN1OEeGAp99n2TKigg_1858924413" }],
+  },
+  "FinancialInstrument13": {
+    name: "FinancialInstrument13",
+    isoId: "_SdFrh9p-Ed-ak6NoX_4Aeg_2092063055",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_SdFriNp-Ed-ak6NoX_4Aeg_2092063073", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "SecurityIdentification3Choice", required: true }),
+      f({ name: "Name", isoId: "_SdFridp-Ed-ak6NoX_4Aeg_2092063090", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max350Text", required: false }),
+      f({ name: "SupplementaryIdentification", isoId: "_SdFritp-Ed-ak6NoX_4Aeg_2092063125", xmlTag: "SplmtryId", displayName: displayName("SupplementaryIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "ClassType", isoId: "_SdFri9p-Ed-ak6NoX_4Aeg_2092063167", xmlTag: "ClssTp", displayName: displayName("ClassType"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "SecuritiesForm", isoId: "_SdPcgNp-Ed-ak6NoX_4Aeg_2092063427", xmlTag: "SctiesForm", displayName: displayName("SecuritiesForm"), kind: "code", type: "FormOfSecurity1Code", required: false }),
+      f({ name: "DistributionPolicy", isoId: "_SdPcgdp-Ed-ak6NoX_4Aeg_2092063444", xmlTag: "DstrbtnPlcy", displayName: displayName("DistributionPolicy"), kind: "code", type: "DistributionPolicy1Code", required: false }),
+    ],
+    rules: [
+      { name: "FinancialInstrumentIdentificationGuideline", isoId: "_SdPcgtp-Ed-ak6NoX_4Aeg_2092063557", text: "It is recommended that ISIN be used in Identification\\SecurityIdentification3Choice." },
+    ],
+  },
+  "FinancialInstrument21": {
+    name: "FinancialInstrument21",
+    isoId: "_SbwOyNp-Ed-ak6NoX_4Aeg_-1299179113",
+    kind: "component",
+    fields: [
+      f({ name: "ClassType", isoId: "_SbwOydp-Ed-ak6NoX_4Aeg_1884876764", xmlTag: "ClssTp", displayName: displayName("ClassType"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "SecuritiesForm", isoId: "_SbwOytp-Ed-ak6NoX_4Aeg_311249008", xmlTag: "SctiesForm", displayName: displayName("SecuritiesForm"), kind: "code", type: "FormOfSecurity1Code", required: false }),
+      f({ name: "DistributionPolicy", isoId: "_Sb5YsNp-Ed-ak6NoX_4Aeg_-2103412648", xmlTag: "DstrbtnPlcy", displayName: displayName("DistributionPolicy"), kind: "code", type: "DistributionPolicy1Code", required: false }),
+      f({ name: "ProductGroup", isoId: "_Sb5Ysdp-Ed-ak6NoX_4Aeg_-1351365069", xmlTag: "PdctGrp", displayName: displayName("ProductGroup"), kind: "text", type: "Max140Text", required: false }),
+      f({ name: "UmbrellaName", isoId: "_Sb5Ystp-Ed-ak6NoX_4Aeg_887804411", xmlTag: "UmbrllNm", displayName: displayName("UmbrellaName"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "BaseCurrency", isoId: "_Sb5Ys9p-Ed-ak6NoX_4Aeg_838976476", xmlTag: "BaseCcy", displayName: displayName("BaseCurrency"), kind: "code", type: "ActiveCurrencyCode", required: false }),
+      f({ name: "DenominationCurrency", isoId: "_Sb5YtNp-Ed-ak6NoX_4Aeg_-1989573582", xmlTag: "DnmtnCcy", displayName: displayName("DenominationCurrency"), kind: "code", type: "ActiveCurrencyCode", required: false }),
+      f({ name: "RequestedNAVCurrency", isoId: "_Sb5Ytdp-Ed-ak6NoX_4Aeg_-244352835", xmlTag: "ReqdNAVCcy", displayName: displayName("RequestedNAVCurrency"), kind: "code", type: "ActiveOrHistoricCurrencyCode", required: false }),
+      f({ name: "DualFundIndicator", isoId: "_Sb5Yttp-Ed-ak6NoX_4Aeg_2138421400", xmlTag: "DualFndInd", displayName: displayName("DualFundIndicator"), kind: "boolean", type: "YesNoIndicator", required: false }),
+      f({ name: "CountryOfDomicile", isoId: "_Sb5Yt9p-Ed-ak6NoX_4Aeg_-109267942", xmlTag: "CtryOfDmcl", displayName: displayName("CountryOfDomicile"), kind: "code", type: "CountryCode", required: false }),
+      f({ name: "RegisteredDistributionCountry", isoId: "_Sb5YuNp-Ed-ak6NoX_4Aeg_-992501229", xmlTag: "RegdDstrbtnCtry", displayName: displayName("RegisteredDistributionCountry"), kind: "code", type: "CountryCode", required: false, repeat: { min: 0, max: null } }),
+    ],
+  },
+  "FinancialInstrument22": {
+    name: "FinancialInstrument22",
+    isoId: "_Weu8C9p-Ed-ak6NoX_4Aeg_-1232539888",
+    kind: "component",
+    fields: [
+      f({ name: "ClassType", isoId: "_Weu8DNp-Ed-ak6NoX_4Aeg_1861417460", xmlTag: "ClssTp", displayName: displayName("ClassType"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "SecuritiesForm", isoId: "_We4tANp-Ed-ak6NoX_4Aeg_-132727246", xmlTag: "SctiesForm", displayName: displayName("SecuritiesForm"), kind: "code", type: "FormOfSecurity1Code", required: false }),
+      f({ name: "DistributionPolicy", isoId: "_We4tAdp-Ed-ak6NoX_4Aeg_-2126871952", xmlTag: "DstrbtnPlcy", displayName: displayName("DistributionPolicy"), kind: "code", type: "DistributionPolicy1Code", required: false }),
+      f({ name: "ProductGroup", isoId: "_We4tAtp-Ed-ak6NoX_4Aeg_173950638", xmlTag: "PdctGrp", displayName: displayName("ProductGroup"), kind: "text", type: "RestrictedFINXMax140Text", required: false }),
+      f({ name: "UmbrellaName", isoId: "_We4tA9p-Ed-ak6NoX_4Aeg_-1820194068", xmlTag: "UmbrllNm", displayName: displayName("UmbrellaName"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "BaseCurrency", isoId: "_We4tBNp-Ed-ak6NoX_4Aeg_480628522", xmlTag: "BaseCcy", displayName: displayName("BaseCurrency"), kind: "code", type: "ActiveCurrencyCode", required: false }),
+      f({ name: "DenominationCurrency", isoId: "_We4tBdp-Ed-ak6NoX_4Aeg_-1513516184", xmlTag: "DnmtnCcy", displayName: displayName("DenominationCurrency"), kind: "code", type: "ActiveCurrencyCode", required: false }),
+      f({ name: "RequestedNAVCurrency", isoId: "_We4tBtp-Ed-ak6NoX_4Aeg_-900160416", xmlTag: "ReqdNAVCcy", displayName: displayName("RequestedNAVCurrency"), kind: "code", type: "ActiveOrHistoricCurrencyCode", required: false }),
+      f({ name: "DualFundIndicator", isoId: "_We4tB9p-Ed-ak6NoX_4Aeg_1400662174", xmlTag: "DualFndInd", displayName: displayName("DualFundIndicator"), kind: "boolean", type: "YesNoIndicator", required: false }),
+      f({ name: "CountryOfDomicile", isoId: "_We4tCNp-Ed-ak6NoX_4Aeg_1625110260", xmlTag: "CtryOfDmcl", displayName: displayName("CountryOfDomicile"), kind: "code", type: "CountryCode", required: false }),
+      f({ name: "RegisteredDistributionCountry", isoId: "_We4tCdp-Ed-ak6NoX_4Aeg_-369034446", xmlTag: "RegdDstrbtnCtry", displayName: displayName("RegisteredDistributionCountry"), kind: "code", type: "CountryCode", required: false, repeat: { min: 0, max: null } }),
+    ],
+  },
   "SecurityIdentification25Choice": {
     name: "SecurityIdentification25Choice",
     isoId: "_buiiIDnxEeabspMEjqY5TQ",
@@ -15513,12 +19392,6 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Common", isoId: "_cH-V1znxEeabspMEjqY5TQ", xmlTag: "Cmon", displayName: displayName("Common"), kind: "text", type: "EuroclearClearstreamIdentifier", required: true }),
       f({ name: "OtherProprietaryIdentification", isoId: "_cH-V2TnxEeabspMEjqY5TQ", xmlTag: "OthrPrtryId", displayName: displayName("OtherProprietaryIdentification"), kind: "component", type: "AlternateSecurityIdentification7", required: true }),
     ],
-  },
-  "FormOfSecurity1Code": {
-    name: "FormOfSecurity1Code",
-    isoId: "_arP_wdp-Ed-ak6NoX_4Aeg_1608809377",
-    kind: "code",
-    options: [{ value: "BEAR", name: "Bearer", isoId: "_1Gk9wN1OEeGAp99n2TKigg_1287612204" }, { value: "REGD", name: "Registered", isoId: "_3TsVkN1OEeGAp99n2TKigg_1858924413" }],
   },
   "ThirdPartyRights2": {
     name: "ThirdPartyRights2",
@@ -15576,34 +19449,6 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       { name: "IdentificationGuideline", isoId: "_PI3PwZS8EemqYPWMBuVawg", text: "It is recommended that ISIN is used in Identification.|When an ISIN code exists, it is strongly recommended that the ISIN be used." },
     ],
   },
-  "ISINIdentifier": {
-    name: "ISINIdentifier",
-    isoId: "_YYU64Np-Ed-ak6NoX_4Aeg_-1113170580",
-    kind: "text",
-    pattern: "[A-Z0-9]{12,12}",
-  },
-  "SecurityIdentification3Choice": {
-    name: "SecurityIdentification3Choice",
-    isoId: "_QdiOmtp-Ed-ak6NoX_4Aeg_1063479184",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "ISIN", isoId: "_Qdr_kNp-Ed-ak6NoX_4Aeg_1064399268", xmlTag: "ISIN", displayName: displayName("ISIN"), kind: "text", type: "ISINIdentifier", required: true }),
-      f({ name: "SEDOL", isoId: "_Qdr_kdp-Ed-ak6NoX_4Aeg_1796754500", xmlTag: "SEDOL", displayName: displayName("SEDOL"), kind: "text", type: "SEDOLIdentifier", required: true }),
-      f({ name: "CUSIP", isoId: "_Qdr_ktp-Ed-ak6NoX_4Aeg_-1393682718", xmlTag: "CUSIP", displayName: displayName("CUSIP"), kind: "text", type: "CUSIPIdentifier", required: true }),
-      f({ name: "RIC", isoId: "_Qdr_k9p-Ed-ak6NoX_4Aeg_1064399328", xmlTag: "RIC", displayName: displayName("RIC"), kind: "text", type: "RICIdentifier", required: true }),
-      f({ name: "TickerSymbol", isoId: "_Qdr_lNp-Ed-ak6NoX_4Aeg_1064399370", xmlTag: "TckrSymb", displayName: displayName("TickerSymbol"), kind: "text", type: "TickerIdentifier", required: true }),
-      f({ name: "Bloomberg", isoId: "_Qdr_ldp-Ed-ak6NoX_4Aeg_1064399388", xmlTag: "Blmbrg", displayName: displayName("Bloomberg"), kind: "text", type: "BloombergIdentifier", required: true }),
-      f({ name: "CTA", isoId: "_Qdr_ltp-Ed-ak6NoX_4Aeg_1064399405", xmlTag: "CTA", displayName: displayName("CTA"), kind: "text", type: "ConsolidatedTapeAssociationIdentifier", required: true }),
-      f({ name: "QUICK", isoId: "_Qdr_l9p-Ed-ak6NoX_4Aeg_-722284921", xmlTag: "QUICK", displayName: displayName("QUICK"), kind: "text", type: "QUICKIdentifier", required: true }),
-      f({ name: "Wertpapier", isoId: "_Qdr_mNp-Ed-ak6NoX_4Aeg_-722284886", xmlTag: "Wrtppr", displayName: displayName("Wertpapier"), kind: "text", type: "WertpapierIdentifier", required: true }),
-      f({ name: "Dutch", isoId: "_Qd1wkNp-Ed-ak6NoX_4Aeg_-722284843", xmlTag: "Dtch", displayName: displayName("Dutch"), kind: "text", type: "DutchIdentifier", required: true }),
-      f({ name: "Valoren", isoId: "_Qd1wkdp-Ed-ak6NoX_4Aeg_-722284808", xmlTag: "Vlrn", displayName: displayName("Valoren"), kind: "text", type: "ValorenIdentifier", required: true }),
-      f({ name: "Sicovam", isoId: "_Qd1wktp-Ed-ak6NoX_4Aeg_-722284713", xmlTag: "SCVM", displayName: displayName("Sicovam"), kind: "text", type: "SicovamIdentifier", required: true }),
-      f({ name: "Belgian", isoId: "_Qd1wk9p-Ed-ak6NoX_4Aeg_-722284454", xmlTag: "Belgn", displayName: displayName("Belgian"), kind: "text", type: "BelgianIdentifier", required: true }),
-      f({ name: "Common", isoId: "_Qd1wlNp-Ed-ak6NoX_4Aeg_1064399423", xmlTag: "Cmon", displayName: displayName("Common"), kind: "text", type: "EuroclearClearstreamIdentifier", required: true }),
-      f({ name: "OtherProprietaryIdentification", isoId: "_Qd1wldp-Ed-ak6NoX_4Aeg_1064399293", xmlTag: "OthrPrtryId", displayName: displayName("OtherProprietaryIdentification"), kind: "component", type: "AlternateSecurityIdentification1", required: true }),
-    ],
-  },
   "FinancialInstrument9": {
     name: "FinancialInstrument9",
     isoId: "_ScpmqNp-Ed-ak6NoX_4Aeg_-1986780037",
@@ -15620,6 +19465,675 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     ],
     rules: [
       { name: "FinancialInstrumentIdentificationGuideline", isoId: "_ScywmNp-Ed-ak6NoX_4Aeg_-1986779200", text: "It is recommended that ISIN be used in Identification\\SecurityIdentification3Choice." },
+    ],
+  },
+  "MarketIdentification3Choice": {
+    name: "MarketIdentification3Choice",
+    isoId: "_AcingtokEeC60axPepSq7g_278659251",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "MarketIdentifierCode", isoId: "_Acing9okEeC60axPepSq7g_164820185", xmlTag: "MktIdrCd", displayName: displayName("MarketIdentifierCode"), kind: "text", type: "MICIdentifier", required: true }),
+      f({ name: "Description", isoId: "_AcinhNokEeC60axPepSq7g_-718413102", xmlTag: "Desc", displayName: displayName("Description"), kind: "text", type: "Max35Text", required: true }),
+    ],
+  },
+  "InterestComputationMethod2Code": {
+    name: "InterestComputationMethod2Code",
+    isoId: "_aZhWkNp-Ed-ak6NoX_4Aeg_163960764",
+    kind: "code",
+    options: [{ value: "A001", name: "IC30360ISDAor30360AmericanBasicRule", isoId: "_aZhWkdp-Ed-ak6NoX_4Aeg_1728403415" }, { value: "A002", name: "IC30365", isoId: "_aZhWktp-Ed-ak6NoX_4Aeg_1728403804" }, { value: "A003", name: "IC30Actual", isoId: "_aZhWk9p-Ed-ak6NoX_4Aeg_1728404207" }, { value: "A004", name: "Actual360", isoId: "_aZhWlNp-Ed-ak6NoX_4Aeg_1728404362" }, { value: "A005", name: "Actual365Fixed", isoId: "_aZhWldp-Ed-ak6NoX_4Aeg_1728404752" }, { value: "A006", name: "ActualActualICMA", isoId: "_aZhWltp-Ed-ak6NoX_4Aeg_1728405190" }, { value: "A007", name: "IC30E360orEuroBondBasismodel1", isoId: "_aZhWl9p-Ed-ak6NoX_4Aeg_1728405353" }, { value: "A008", name: "ActualActualISDA", isoId: "_aZhWmNp-Ed-ak6NoX_4Aeg_1728405743" }, { value: "A009", name: "Actual365LorActuActubasisRule", isoId: "_aZhWmdp-Ed-ak6NoX_4Aeg_1728406163" }, { value: "A010", name: "ActualActualAFB", isoId: "_aZrHkNp-Ed-ak6NoX_4Aeg_1728406336" }, { value: "A011", name: "IC30360ICMAor30360basicrule", isoId: "_aZrHkdp-Ed-ak6NoX_4Aeg_1728406708" }, { value: "A012", name: "IC30E2360orEurobondbasismodel2", isoId: "_aZrHktp-Ed-ak6NoX_4Aeg_1729326859" }, { value: "A013", name: "IC30E3360orEurobondbasismodel3", isoId: "_aZrHk9p-Ed-ak6NoX_4Aeg_1729327284" }, { value: "A014", name: "Actual365NL", isoId: "_aZrHlNp-Ed-ak6NoX_4Aeg_1729327843" }, { value: "NARR", name: "Narrative", isoId: "_aZrHldp-Ed-ak6NoX_4Aeg_1729328300" }],
+  },
+  "InterestComputationMethodFormat4Choice": {
+    name: "InterestComputationMethodFormat4Choice",
+    isoId: "_atvUATm6EeWV5sr121Fc8A",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_bMY-4Tm6EeWV5sr121Fc8A", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "InterestComputationMethod2Code", required: true }),
+      f({ name: "Proprietary", isoId: "_bMY-4zm6EeWV5sr121Fc8A", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "FormOfSecurity6Choice": {
+    name: "FormOfSecurity6Choice",
+    isoId: "_MBPGgTm-EeWV5sr121Fc8A",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_MhX_Izm-EeWV5sr121Fc8A", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "FormOfSecurity1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_MhX_Kzm-EeWV5sr121Fc8A", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "Frequency23Choice": {
+    name: "Frequency23Choice",
+    isoId: "_XpKWcTm_EeWV5sr121Fc8A",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_YIsyIzm_EeWV5sr121Fc8A", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "EventFrequency3Code", required: true }),
+      f({ name: "Proprietary", isoId: "_YIsyKzm_EeWV5sr121Fc8A", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "SecuritiesPaymentStatus1Code": {
+    name: "SecuritiesPaymentStatus1Code",
+    isoId: "_ZFoFxtp-Ed-ak6NoX_4Aeg_-1237282418",
+    kind: "code",
+    options: [{ value: "FULL", name: "FullyPaid", isoId: "_ZFoFx9p-Ed-ak6NoX_4Aeg_-1185567647" }, { value: "NILL", name: "NillPaid", isoId: "_ZFoFyNp-Ed-ak6NoX_4Aeg_-899273641" }, { value: "PART", name: "PartiallyPaid", isoId: "_ZFx2wNp-Ed-ak6NoX_4Aeg_-862334871" }],
+  },
+  "SecuritiesPaymentStatus5Choice": {
+    name: "SecuritiesPaymentStatus5Choice",
+    isoId: "_cBDuUTnAEeWV5sr121Fc8A",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_cgvT8znAEeWV5sr121Fc8A", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "SecuritiesPaymentStatus1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_cgvT-znAEeWV5sr121Fc8A", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "OptionStyle2Code": {
+    name: "OptionStyle2Code",
+    isoId: "_aQIxFtp-Ed-ak6NoX_4Aeg_-1177091144",
+    kind: "code",
+    options: [{ value: "AMER", name: "American", isoId: "_aQIxF9p-Ed-ak6NoX_4Aeg_-1107826186" }, { value: "EURO", name: "European", isoId: "_aQIxGNp-Ed-ak6NoX_4Aeg_-1107826168" }],
+  },
+  "OptionStyle8Choice": {
+    name: "OptionStyle8Choice",
+    isoId: "_g3ipUTq2EeWQ1Y7f8kds2A",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_hDvSQTq2EeWQ1Y7f8kds2A", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "OptionStyle2Code", required: true }),
+      f({ name: "Proprietary", isoId: "_hDvSSTq2EeWQ1Y7f8kds2A", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "OptionType1Code": {
+    name: "OptionType1Code",
+    isoId: "_aQbsAdp-Ed-ak6NoX_4Aeg_-835357153",
+    kind: "code",
+    options: [{ value: "CALL", name: "Call", isoId: "_aQbsAtp-Ed-ak6NoX_4Aeg_-539829511" }, { value: "PUTO", name: "Put", isoId: "_aQbsA9p-Ed-ak6NoX_4Aeg_-539829469" }],
+  },
+  "OptionType6Choice": {
+    name: "OptionType6Choice",
+    isoId: "_tfykITnCEeWV5sr121Fc8A",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_uAXhoznCEeWV5sr121Fc8A", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "OptionType1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_uAXhqznCEeWV5sr121Fc8A", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "Number22Choice": {
+    name: "Number22Choice",
+    isoId: "_GgDHITnEEeWV5sr121Fc8A",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Short", isoId: "_HAL_wznEEeWV5sr121Fc8A", xmlTag: "Shrt", displayName: displayName("Short"), kind: "text", type: "Exact3NumericText", required: true }),
+      f({ name: "Long", isoId: "_HAL_yznEEeWV5sr121Fc8A", xmlTag: "Lng", displayName: displayName("Long"), kind: "component", type: "GenericIdentification1", required: true }),
+    ],
+  },
+  "PriceType4Choice": {
+    name: "PriceType4Choice",
+    isoId: "_ys8oMbQBEee1Ke-6rZgsrA",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Market", isoId: "_y7YrkbQBEee1Ke-6rZgsrA", xmlTag: "Mkt", displayName: displayName("Market"), kind: "component", type: "Price7", required: true }),
+      f({ name: "Indicative", isoId: "_y7Yrk7QBEee1Ke-6rZgsrA", xmlTag: "Indctv", displayName: displayName("Indicative"), kind: "component", type: "Price7", required: true }),
+    ],
+  },
+  "FinancialInstrumentAttributes111": {
+    name: "FinancialInstrumentAttributes111",
+    isoId: "_0OOdMSp5EeyR9JrVGfaMKw",
+    kind: "component",
+    fields: [
+      f({ name: "PlaceOfListing", isoId: "_0mz8Vyp5EeyR9JrVGfaMKw", xmlTag: "PlcOfListg", displayName: displayName("PlaceOfListing"), kind: "choice", type: "MarketIdentification3Choice", required: false }),
+      f({ name: "DayCountBasis", isoId: "_0mz8Xyp5EeyR9JrVGfaMKw", xmlTag: "DayCntBsis", displayName: displayName("DayCountBasis"), kind: "choice", type: "InterestComputationMethodFormat4Choice", required: false }),
+      f({ name: "RegistrationForm", isoId: "_0mz8Zyp5EeyR9JrVGfaMKw", xmlTag: "RegnForm", displayName: displayName("RegistrationForm"), kind: "choice", type: "FormOfSecurity6Choice", required: false }),
+      f({ name: "PaymentFrequency", isoId: "_0mz8byp5EeyR9JrVGfaMKw", xmlTag: "PmtFrqcy", displayName: displayName("PaymentFrequency"), kind: "choice", type: "Frequency23Choice", required: false }),
+      f({ name: "PaymentStatus", isoId: "_0mz8dyp5EeyR9JrVGfaMKw", xmlTag: "PmtSts", displayName: displayName("PaymentStatus"), kind: "choice", type: "SecuritiesPaymentStatus5Choice", required: false }),
+      f({ name: "VariableRateChangeFrequency", isoId: "_0mz8fyp5EeyR9JrVGfaMKw", xmlTag: "VarblRateChngFrqcy", displayName: displayName("VariableRateChangeFrequency"), kind: "choice", type: "Frequency23Choice", required: false }),
+      f({ name: "ClassificationType", isoId: "_0mz8hyp5EeyR9JrVGfaMKw", xmlTag: "ClssfctnTp", displayName: displayName("ClassificationType"), kind: "choice", type: "ClassificationType32Choice", required: false }),
+      f({ name: "OptionStyle", isoId: "_0mz8jyp5EeyR9JrVGfaMKw", xmlTag: "OptnStyle", displayName: displayName("OptionStyle"), kind: "choice", type: "OptionStyle8Choice", required: false }),
+      f({ name: "OptionType", isoId: "_0mz8lyp5EeyR9JrVGfaMKw", xmlTag: "OptnTp", displayName: displayName("OptionType"), kind: "choice", type: "OptionType6Choice", required: false }),
+      f({ name: "DenominationCurrency", isoId: "_0mz8nyp5EeyR9JrVGfaMKw", xmlTag: "DnmtnCcy", displayName: displayName("DenominationCurrency"), kind: "code", type: "ActiveOrHistoricCurrencyCode", required: false }),
+      f({ name: "CouponDate", isoId: "_0mz8pyp5EeyR9JrVGfaMKw", xmlTag: "CpnDt", displayName: displayName("CouponDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "ExpiryDate", isoId: "_0mz8ryp5EeyR9JrVGfaMKw", xmlTag: "XpryDt", displayName: displayName("ExpiryDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "FloatingRateFixingDate", isoId: "_0mz8typ5EeyR9JrVGfaMKw", xmlTag: "FltgRateFxgDt", displayName: displayName("FloatingRateFixingDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "MaturityDate", isoId: "_0mz8vyp5EeyR9JrVGfaMKw", xmlTag: "MtrtyDt", displayName: displayName("MaturityDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "IssueDate", isoId: "_0mz8xyp5EeyR9JrVGfaMKw", xmlTag: "IsseDt", displayName: displayName("IssueDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "NextCallableDate", isoId: "_0mz8zyp5EeyR9JrVGfaMKw", xmlTag: "NxtCllblDt", displayName: displayName("NextCallableDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "PutableDate", isoId: "_0mz81yp5EeyR9JrVGfaMKw", xmlTag: "PutblDt", displayName: displayName("PutableDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "DatedDate", isoId: "_0mz83yp5EeyR9JrVGfaMKw", xmlTag: "DtdDt", displayName: displayName("DatedDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "FirstPaymentDate", isoId: "_0mz85yp5EeyR9JrVGfaMKw", xmlTag: "FrstPmtDt", displayName: displayName("FirstPaymentDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "PreviousFactor", isoId: "_0mz87yp5EeyR9JrVGfaMKw", xmlTag: "PrvsFctr", displayName: displayName("PreviousFactor"), kind: "number", type: "BaseOneRate", required: false }),
+      f({ name: "CurrentFactor", isoId: "_0mz89yp5EeyR9JrVGfaMKw", xmlTag: "CurFctr", displayName: displayName("CurrentFactor"), kind: "number", type: "BaseOneRate", required: false }),
+      f({ name: "NextFactor", isoId: "_0mz8_yp5EeyR9JrVGfaMKw", xmlTag: "NxtFctr", displayName: displayName("NextFactor"), kind: "number", type: "BaseOneRate", required: false }),
+      f({ name: "InterestRate", isoId: "_0mz9Byp5EeyR9JrVGfaMKw", xmlTag: "IntrstRate", displayName: displayName("InterestRate"), kind: "number", type: "PercentageRate", required: false }),
+      f({ name: "YieldToMaturityRate", isoId: "_0mz9Dyp5EeyR9JrVGfaMKw", xmlTag: "YldToMtrtyRate", displayName: displayName("YieldToMaturityRate"), kind: "number", type: "PercentageRate", required: false }),
+      f({ name: "NextInterestRate", isoId: "_0mz9ESp5EeyR9JrVGfaMKw", xmlTag: "NxtIntrstRate", displayName: displayName("NextInterestRate"), kind: "number", type: "PercentageRate", required: false }),
+      f({ name: "IndexRateBasis", isoId: "_0mz9GSp5EeyR9JrVGfaMKw", xmlTag: "IndxRateBsis", displayName: displayName("IndexRateBasis"), kind: "number", type: "PercentageRate", required: false }),
+      f({ name: "CouponAttachedNumber", isoId: "_0mz9ISp5EeyR9JrVGfaMKw", xmlTag: "CpnAttchdNb", displayName: displayName("CouponAttachedNumber"), kind: "choice", type: "Number22Choice", required: false }),
+      f({ name: "PoolNumber", isoId: "_0mz9KSp5EeyR9JrVGfaMKw", xmlTag: "PoolNb", displayName: displayName("PoolNumber"), kind: "component", type: "GenericIdentification37", required: false }),
+      f({ name: "VariableRateIndicator", isoId: "_0mz9MSp5EeyR9JrVGfaMKw", xmlTag: "VarblRateInd", displayName: displayName("VariableRateIndicator"), kind: "boolean", type: "YesNoIndicator", required: false }),
+      f({ name: "CallableIndicator", isoId: "_0mz9OSp5EeyR9JrVGfaMKw", xmlTag: "CllblInd", displayName: displayName("CallableIndicator"), kind: "boolean", type: "YesNoIndicator", required: false }),
+      f({ name: "PutableIndicator", isoId: "_0mz9QSp5EeyR9JrVGfaMKw", xmlTag: "PutblInd", displayName: displayName("PutableIndicator"), kind: "boolean", type: "YesNoIndicator", required: false }),
+      f({ name: "MarketOrIndicativePrice", isoId: "_0mz9SSp5EeyR9JrVGfaMKw", xmlTag: "MktOrIndctvPric", displayName: displayName("MarketOrIndicativePrice"), kind: "choice", type: "PriceType4Choice", required: false }),
+      f({ name: "ExercisePrice", isoId: "_0mz9USp5EeyR9JrVGfaMKw", xmlTag: "ExrcPric", displayName: displayName("ExercisePrice"), kind: "component", type: "Price7", required: false }),
+      f({ name: "SubscriptionPrice", isoId: "_0mz9WSp5EeyR9JrVGfaMKw", xmlTag: "SbcptPric", displayName: displayName("SubscriptionPrice"), kind: "component", type: "Price7", required: false }),
+      f({ name: "ConversionPrice", isoId: "_0mz9YSp5EeyR9JrVGfaMKw", xmlTag: "ConvsPric", displayName: displayName("ConversionPrice"), kind: "component", type: "Price7", required: false }),
+      f({ name: "StrikePrice", isoId: "_0mz9aSp5EeyR9JrVGfaMKw", xmlTag: "StrkPric", displayName: displayName("StrikePrice"), kind: "component", type: "Price7", required: false }),
+      f({ name: "MinimumNominalQuantity", isoId: "_0mz9cSp5EeyR9JrVGfaMKw", xmlTag: "MinNmnlQty", displayName: displayName("MinimumNominalQuantity"), kind: "choice", type: "FinancialInstrumentQuantity33Choice", required: false }),
+      f({ name: "ContractSize", isoId: "_0mz9eSp5EeyR9JrVGfaMKw", xmlTag: "CtrctSz", displayName: displayName("ContractSize"), kind: "choice", type: "FinancialInstrumentQuantity33Choice", required: false }),
+      f({ name: "UnderlyingFinancialInstrumentIdentification", isoId: "_0mz9gSp5EeyR9JrVGfaMKw", xmlTag: "UndrlygFinInstrmId", displayName: displayName("UnderlyingFinancialInstrumentIdentification"), kind: "component", type: "SecurityIdentification19", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "FinancialInstrumentAttributeAdditionalDetails", isoId: "_0mz9iSp5EeyR9JrVGfaMKw", xmlTag: "FinInstrmAttrAddtlDtls", displayName: displayName("FinancialInstrumentAttributeAdditionalDetails"), kind: "text", type: "Max350Text", required: false }),
+    ],
+    rules: [
+      { name: "PlaceOfListingRule", isoId: "_0mz8USp5EeyR9JrVGfaMKw", text: "If PlaceOfListing is used and an ISO 10383 MIC exists for the market to be identified, the ISO 10383 Market Identifier Code (MIC) must be used." },
+      { name: "AdditionalDetailsRule", isoId: "_0mz8Uyp5EeyR9JrVGfaMKw", text: "Unless bilaterally agreed between the Sender and Receiver, if FinancialInstrumentAttributeAdditionalDetails is present, then it must not contain information that can be provided in a structured field." },
+    ],
+  },
+  "QuantityBreakdown60": {
+    name: "QuantityBreakdown60",
+    isoId: "_VR4TUyp_EeyR9JrVGfaMKw",
+    kind: "component",
+    fields: [
+      f({ name: "LotNumber", isoId: "_Vp3UQSp_EeyR9JrVGfaMKw", xmlTag: "LotNb", displayName: displayName("LotNumber"), kind: "component", type: "GenericIdentification37", required: true }),
+      f({ name: "LotQuantity", isoId: "_Vp3USSp_EeyR9JrVGfaMKw", xmlTag: "LotQty", displayName: displayName("LotQuantity"), kind: "choice", type: "FinancialInstrumentQuantity33Choice", required: false }),
+    ],
+  },
+  "FinancialInstrumentAttributes112": {
+    name: "FinancialInstrumentAttributes112",
+    isoId: "_U4ZbESp_EeyR9JrVGfaMKw",
+    kind: "component",
+    fields: [
+      f({ name: "PlaceOfListing", isoId: "_VR4SFyp_EeyR9JrVGfaMKw", xmlTag: "PlcOfListg", displayName: displayName("PlaceOfListing"), kind: "choice", type: "MarketIdentification3Choice", required: false }),
+      f({ name: "DayCountBasis", isoId: "_VR4SHyp_EeyR9JrVGfaMKw", xmlTag: "DayCntBsis", displayName: displayName("DayCountBasis"), kind: "choice", type: "InterestComputationMethodFormat4Choice", required: false }),
+      f({ name: "RegistrationForm", isoId: "_VR4SJyp_EeyR9JrVGfaMKw", xmlTag: "RegnForm", displayName: displayName("RegistrationForm"), kind: "choice", type: "FormOfSecurity6Choice", required: false }),
+      f({ name: "PaymentFrequency", isoId: "_VR4SLyp_EeyR9JrVGfaMKw", xmlTag: "PmtFrqcy", displayName: displayName("PaymentFrequency"), kind: "choice", type: "Frequency23Choice", required: false }),
+      f({ name: "PaymentStatus", isoId: "_VR4SNyp_EeyR9JrVGfaMKw", xmlTag: "PmtSts", displayName: displayName("PaymentStatus"), kind: "choice", type: "SecuritiesPaymentStatus5Choice", required: false }),
+      f({ name: "VariableRateChangeFrequency", isoId: "_VR4SPyp_EeyR9JrVGfaMKw", xmlTag: "VarblRateChngFrqcy", displayName: displayName("VariableRateChangeFrequency"), kind: "choice", type: "Frequency23Choice", required: false }),
+      f({ name: "ClassificationType", isoId: "_VR4SRyp_EeyR9JrVGfaMKw", xmlTag: "ClssfctnTp", displayName: displayName("ClassificationType"), kind: "choice", type: "ClassificationType32Choice", required: false }),
+      f({ name: "OptionStyle", isoId: "_VR4STyp_EeyR9JrVGfaMKw", xmlTag: "OptnStyle", displayName: displayName("OptionStyle"), kind: "choice", type: "OptionStyle8Choice", required: false }),
+      f({ name: "OptionType", isoId: "_VR4SVyp_EeyR9JrVGfaMKw", xmlTag: "OptnTp", displayName: displayName("OptionType"), kind: "choice", type: "OptionType6Choice", required: false }),
+      f({ name: "DenominationCurrency", isoId: "_VR4SXyp_EeyR9JrVGfaMKw", xmlTag: "DnmtnCcy", displayName: displayName("DenominationCurrency"), kind: "code", type: "ActiveOrHistoricCurrencyCode", required: false }),
+      f({ name: "CouponDate", isoId: "_VR4SZyp_EeyR9JrVGfaMKw", xmlTag: "CpnDt", displayName: displayName("CouponDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "ExpiryDate", isoId: "_VR4Sbyp_EeyR9JrVGfaMKw", xmlTag: "XpryDt", displayName: displayName("ExpiryDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "FloatingRateFixingDate", isoId: "_VR4Sdyp_EeyR9JrVGfaMKw", xmlTag: "FltgRateFxgDt", displayName: displayName("FloatingRateFixingDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "MaturityDate", isoId: "_VR4Sfyp_EeyR9JrVGfaMKw", xmlTag: "MtrtyDt", displayName: displayName("MaturityDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "IssueDate", isoId: "_VR4Shyp_EeyR9JrVGfaMKw", xmlTag: "IsseDt", displayName: displayName("IssueDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "NextCallableDate", isoId: "_VR4Sjyp_EeyR9JrVGfaMKw", xmlTag: "NxtCllblDt", displayName: displayName("NextCallableDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "PutableDate", isoId: "_VR4Slyp_EeyR9JrVGfaMKw", xmlTag: "PutblDt", displayName: displayName("PutableDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "DatedDate", isoId: "_VR4Snyp_EeyR9JrVGfaMKw", xmlTag: "DtdDt", displayName: displayName("DatedDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "FirstPaymentDate", isoId: "_VR4Spyp_EeyR9JrVGfaMKw", xmlTag: "FrstPmtDt", displayName: displayName("FirstPaymentDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "PreviousFactor", isoId: "_VR4Sryp_EeyR9JrVGfaMKw", xmlTag: "PrvsFctr", displayName: displayName("PreviousFactor"), kind: "number", type: "BaseOneRate", required: false }),
+      f({ name: "CurrentFactor", isoId: "_VR4Styp_EeyR9JrVGfaMKw", xmlTag: "CurFctr", displayName: displayName("CurrentFactor"), kind: "number", type: "BaseOneRate", required: false }),
+      f({ name: "NextFactor", isoId: "_VR4Svyp_EeyR9JrVGfaMKw", xmlTag: "NxtFctr", displayName: displayName("NextFactor"), kind: "number", type: "BaseOneRate", required: false }),
+      f({ name: "InterestRate", isoId: "_VR4Sxyp_EeyR9JrVGfaMKw", xmlTag: "IntrstRate", displayName: displayName("InterestRate"), kind: "number", type: "PercentageRate", required: false }),
+      f({ name: "YieldToMaturityRate", isoId: "_VR4Szyp_EeyR9JrVGfaMKw", xmlTag: "YldToMtrtyRate", displayName: displayName("YieldToMaturityRate"), kind: "number", type: "PercentageRate", required: false }),
+      f({ name: "NextInterestRate", isoId: "_VR4S0Sp_EeyR9JrVGfaMKw", xmlTag: "NxtIntrstRate", displayName: displayName("NextInterestRate"), kind: "number", type: "PercentageRate", required: false }),
+      f({ name: "IndexRateBasis", isoId: "_VR4S2Sp_EeyR9JrVGfaMKw", xmlTag: "IndxRateBsis", displayName: displayName("IndexRateBasis"), kind: "number", type: "PercentageRate", required: false }),
+      f({ name: "CouponAttachedNumber", isoId: "_VR4S4Sp_EeyR9JrVGfaMKw", xmlTag: "CpnAttchdNb", displayName: displayName("CouponAttachedNumber"), kind: "choice", type: "Number22Choice", required: false }),
+      f({ name: "PoolNumber", isoId: "_VR4S6Sp_EeyR9JrVGfaMKw", xmlTag: "PoolNb", displayName: displayName("PoolNumber"), kind: "component", type: "GenericIdentification37", required: false }),
+      f({ name: "QuantityBreakdown", isoId: "_VR4S8Sp_EeyR9JrVGfaMKw", xmlTag: "QtyBrkdwn", displayName: displayName("QuantityBreakdown"), kind: "component", type: "QuantityBreakdown60", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "VariableRateIndicator", isoId: "_VR4S8yp_EeyR9JrVGfaMKw", xmlTag: "VarblRateInd", displayName: displayName("VariableRateIndicator"), kind: "boolean", type: "YesNoIndicator", required: false }),
+      f({ name: "CallableIndicator", isoId: "_VR4S-yp_EeyR9JrVGfaMKw", xmlTag: "CllblInd", displayName: displayName("CallableIndicator"), kind: "boolean", type: "YesNoIndicator", required: false }),
+      f({ name: "PutableIndicator", isoId: "_VR4TAyp_EeyR9JrVGfaMKw", xmlTag: "PutblInd", displayName: displayName("PutableIndicator"), kind: "boolean", type: "YesNoIndicator", required: false }),
+      f({ name: "MarketOrIndicativePrice", isoId: "_VR4TCyp_EeyR9JrVGfaMKw", xmlTag: "MktOrIndctvPric", displayName: displayName("MarketOrIndicativePrice"), kind: "choice", type: "PriceType4Choice", required: false }),
+      f({ name: "ExercisePrice", isoId: "_VR4TEyp_EeyR9JrVGfaMKw", xmlTag: "ExrcPric", displayName: displayName("ExercisePrice"), kind: "component", type: "Price7", required: false }),
+      f({ name: "SubscriptionPrice", isoId: "_VR4TGyp_EeyR9JrVGfaMKw", xmlTag: "SbcptPric", displayName: displayName("SubscriptionPrice"), kind: "component", type: "Price7", required: false }),
+      f({ name: "ConversionPrice", isoId: "_VR4TIyp_EeyR9JrVGfaMKw", xmlTag: "ConvsPric", displayName: displayName("ConversionPrice"), kind: "component", type: "Price7", required: false }),
+      f({ name: "StrikePrice", isoId: "_VR4TKyp_EeyR9JrVGfaMKw", xmlTag: "StrkPric", displayName: displayName("StrikePrice"), kind: "component", type: "Price7", required: false }),
+      f({ name: "MinimumNominalQuantity", isoId: "_VR4TMyp_EeyR9JrVGfaMKw", xmlTag: "MinNmnlQty", displayName: displayName("MinimumNominalQuantity"), kind: "choice", type: "FinancialInstrumentQuantity33Choice", required: false }),
+      f({ name: "ContractSize", isoId: "_VR4TOyp_EeyR9JrVGfaMKw", xmlTag: "CtrctSz", displayName: displayName("ContractSize"), kind: "choice", type: "FinancialInstrumentQuantity33Choice", required: false }),
+      f({ name: "UnderlyingFinancialInstrumentIdentification", isoId: "_VR4TQyp_EeyR9JrVGfaMKw", xmlTag: "UndrlygFinInstrmId", displayName: displayName("UnderlyingFinancialInstrumentIdentification"), kind: "component", type: "SecurityIdentification19", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "FinancialInstrumentAttributeAdditionalDetails", isoId: "_VR4TSyp_EeyR9JrVGfaMKw", xmlTag: "FinInstrmAttrAddtlDtls", displayName: displayName("FinancialInstrumentAttributeAdditionalDetails"), kind: "text", type: "Max350Text", required: false }),
+    ],
+    rules: [
+      { name: "PlaceOfListingRule", isoId: "_VR4SESp_EeyR9JrVGfaMKw", text: "If PlaceOfListing is used and an ISO 10383 MIC exists for the market to be identified, the ISO 10383 Market Identifier Code (MIC) must be used." },
+      { name: "AdditionalDetailsRule", isoId: "_VR4SEyp_EeyR9JrVGfaMKw", text: "Unless bilaterally agreed between the Sender and Receiver, if FinancialInstrumentAttributeAdditionalDetails is present, then it must not contain information that can be provided in a structured field." },
+    ],
+  },
+  "MarketIdentification4Choice": {
+    name: "MarketIdentification4Choice",
+    isoId: "_04BcYQk_EeGQpPnjvNlciw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "MarketIdentifierCode", isoId: "_04BcZwk_EeGQpPnjvNlciw", xmlTag: "MktIdrCd", displayName: displayName("MarketIdentifierCode"), kind: "text", type: "MICIdentifier", required: true }),
+      f({ name: "Description", isoId: "_04Bcawk_EeGQpPnjvNlciw", xmlTag: "Desc", displayName: displayName("Description"), kind: "text", type: "RestrictedFINXMax30Text", required: true }),
+    ],
+  },
+  "InterestComputationMethodFormat5Choice": {
+    name: "InterestComputationMethodFormat5Choice",
+    isoId: "_chVpq5KQEeWHWpTQn1FFVg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_chVprZKQEeWHWpTQn1FFVg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "InterestComputationMethod2Code", required: true }),
+      f({ name: "Proprietary", isoId: "_chVpr5KQEeWHWpTQn1FFVg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "FormOfSecurity7Choice": {
+    name: "FormOfSecurity7Choice",
+    isoId: "_5NZUzpNLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_5NZU0JNLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "FormOfSecurity1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_5NZU2JNLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "Frequency27Choice": {
+    name: "Frequency27Choice",
+    isoId: "_5NZ7g5NLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_5NZ7hZNLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "EventFrequency3Code", required: true }),
+      f({ name: "Proprietary", isoId: "_5NZ7jZNLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "SecuritiesPaymentStatus6Choice": {
+    name: "SecuritiesPaymentStatus6Choice",
+    isoId: "_5NZ7p5NLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_5NZ7qZNLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "SecuritiesPaymentStatus1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_5NZ7sZNLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "OptionStyle9Choice": {
+    name: "OptionStyle9Choice",
+    isoId: "_ctPX95KQEeWHWpTQn1FFVg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_ctPX-ZKQEeWHWpTQn1FFVg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "OptionStyle2Code", required: true }),
+      f({ name: "Proprietary", isoId: "_ctPYAZKQEeWHWpTQn1FFVg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "OptionType7Choice": {
+    name: "OptionType7Choice",
+    isoId: "_5NaizZNLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_5Naiz5NLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "OptionType1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_5Nai15NLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "GenericIdentification18": {
+    name: "GenericIdentification18",
+    isoId: "_WeJGK9p-Ed-ak6NoX_4Aeg_-458352417",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_WeJGLNp-Ed-ak6NoX_4Aeg_1842470173", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "RestrictedFINXMax30Text", required: true }),
+      f({ name: "SchemeName", isoId: "_WeSQENp-Ed-ak6NoX_4Aeg_-151674533", xmlTag: "SchmeNm", displayName: displayName("SchemeName"), kind: "text", type: "Max4AlphaNumericText", required: false }),
+      f({ name: "Issuer", isoId: "_WeSQEdp-Ed-ak6NoX_4Aeg_-2145819239", xmlTag: "Issr", displayName: displayName("Issuer"), kind: "text", type: "Max4AlphaNumericText", required: false }),
+    ],
+  },
+  "Number23Choice": {
+    name: "Number23Choice",
+    isoId: "_5NbJo5NLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Short", isoId: "_5NbJpZNLEeWGlc8L7oPDIg", xmlTag: "Shrt", displayName: displayName("Short"), kind: "text", type: "Exact3NumericText", required: true }),
+      f({ name: "Long", isoId: "_5NbJrZNLEeWGlc8L7oPDIg", xmlTag: "Lng", displayName: displayName("Long"), kind: "component", type: "GenericIdentification18", required: true }),
+    ],
+  },
+  "RestrictedFINMax30Text": {
+    name: "RestrictedFINMax30Text",
+    isoId: "_WN5Dpdp-Ed-ak6NoX_4Aeg_1878653686",
+    kind: "text",
+    minLength: 1,
+    maxLength: 30,
+    pattern: "([^/]+/)+([^/]+)|([^/]*)",
+  },
+  "RestrictedFINMax8Text": {
+    name: "RestrictedFINMax8Text",
+    isoId: "_WOpRlNp-Ed-ak6NoX_4Aeg_49586571",
+    kind: "text",
+    minLength: 1,
+    maxLength: 8,
+    pattern: "([^/]+/)+([^/]+)|([^/]*)",
+  },
+  "GenericIdentification39": {
+    name: "GenericIdentification39",
+    isoId: "_7MgaQRHnEeG9eo4v8X6Ubw",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_7MqLRRHnEeG9eo4v8X6Ubw", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "RestrictedFINMax30Text", required: true }),
+      f({ name: "Issuer", isoId: "_7MqLSRHnEeG9eo4v8X6Ubw", xmlTag: "Issr", displayName: displayName("Issuer"), kind: "text", type: "RestrictedFINMax8Text", required: false }),
+    ],
+  },
+  "QuantityBreakdown64": {
+    name: "QuantityBreakdown64",
+    isoId: "_cabaPzi8Eeydid5dcNPKvg",
+    kind: "component",
+    fields: [
+      f({ name: "LotNumber", isoId: "_cabaQTi8Eeydid5dcNPKvg", xmlTag: "LotNb", displayName: displayName("LotNumber"), kind: "component", type: "GenericIdentification39", required: true }),
+      f({ name: "LotQuantity", isoId: "_cabaSTi8Eeydid5dcNPKvg", xmlTag: "LotQty", displayName: displayName("LotQuantity"), kind: "choice", type: "FinancialInstrumentQuantity36Choice", required: false }),
+    ],
+  },
+  "RestrictedFINActiveOrHistoricCurrencyAnd13DecimalAmount": {
+    name: "RestrictedFINActiveOrHistoricCurrencyAnd13DecimalAmount",
+    isoId: "_WOMlp9p-Ed-ak6NoX_4Aeg_-1678737059",
+    kind: "amount",
+    totalDigits: 14,
+    fractionDigits: 13,
+    minInclusive: 0,
+    pattern: "[A-Z]{3,3}",
+  },
+  "PriceRateOrAmount1Choice": {
+    name: "PriceRateOrAmount1Choice",
+    isoId: "_Wi6RYtp-Ed-ak6NoX_4Aeg_143429586",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Rate", isoId: "_Wi6RY9p-Ed-ak6NoX_4Aeg_756785354", xmlTag: "Rate", displayName: displayName("Rate"), kind: "number", type: "PercentageRate", required: true }),
+      f({ name: "Amount", isoId: "_Wi6RZNp-Ed-ak6NoX_4Aeg_-1237359352", xmlTag: "Amt", displayName: displayName("Amount"), kind: "amount", type: "RestrictedFINActiveOrHistoricCurrencyAnd13DecimalAmount", required: true }),
+    ],
+  },
+  "Price3": {
+    name: "Price3",
+    isoId: "_WimvZNp-Ed-ak6NoX_4Aeg_1241581910",
+    kind: "component",
+    fields: [
+      f({ name: "Type", isoId: "_WimvZdp-Ed-ak6NoX_4Aeg_-1813914755", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "YieldedOrValueType1Choice", required: true }),
+      f({ name: "Value", isoId: "_WimvZtp-Ed-ak6NoX_4Aeg_373068769", xmlTag: "Val", displayName: displayName("Value"), kind: "choice", type: "PriceRateOrAmount1Choice", required: true }),
+    ],
+  },
+  "PriceType5Choice": {
+    name: "PriceType5Choice",
+    isoId: "_SKL8C83yEee5nJBZsW8MFQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Market", isoId: "_SKL8Dc3yEee5nJBZsW8MFQ", xmlTag: "Mkt", displayName: displayName("Market"), kind: "component", type: "Price3", required: true }),
+      f({ name: "Indicative", isoId: "_SKL8D83yEee5nJBZsW8MFQ", xmlTag: "Indctv", displayName: displayName("Indicative"), kind: "component", type: "Price3", required: true }),
+    ],
+  },
+  "RestrictedFINXMax31Text": {
+    name: "RestrictedFINXMax31Text",
+    isoId: "_XZTG09p-Ed-ak6NoX_4Aeg_-1903970910",
+    kind: "text",
+    minLength: 1,
+    maxLength: 31,
+    pattern: "[0-9a-zA-Z/\\-\\?:\\(\\)\\.,'\\+ ]{1,31}",
+  },
+  "OtherIdentification3": {
+    name: "OtherIdentification3",
+    isoId: "_XqYXMAgaEeCVlvYcV4HKqQ",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_XqYXOAgaEeCVlvYcV4HKqQ", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "RestrictedFINXMax31Text", required: true }),
+      f({ name: "Suffix", isoId: "_XqYXQAgaEeCVlvYcV4HKqQ", xmlTag: "Sfx", displayName: displayName("Suffix"), kind: "text", type: "Max16Text", required: false }),
+      f({ name: "Type", isoId: "_XqYXSQgaEeCVlvYcV4HKqQ", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "IdentificationSource3Choice", required: true }),
+    ],
+  },
+  "SecurityIdentification32": {
+    name: "SecurityIdentification32",
+    isoId: "_5Nc-45NLEeWGlc8L7oPDIg",
+    kind: "component",
+    fields: [
+      f({ name: "ISIN", isoId: "_5Nc-75NLEeWGlc8L7oPDIg", xmlTag: "ISIN", displayName: displayName("ISIN"), kind: "text", type: "ISINOct2015Identifier", required: false }),
+      f({ name: "OtherIdentification", isoId: "_5Nc-8ZNLEeWGlc8L7oPDIg", xmlTag: "OthrId", displayName: displayName("OtherIdentification"), kind: "component", type: "OtherIdentification3", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "Description", isoId: "_5Nc-85NLEeWGlc8L7oPDIg", xmlTag: "Desc", displayName: displayName("Description"), kind: "text", type: "RestrictedFINXMax140Text", required: false }),
+    ],
+    rules: [
+      { name: "DescriptionPresenceRule", isoId: "_5Nc-5ZNLEeWGlc8L7oPDIg", text: "If Description is not present then either ISIN or at least one occurrence of OtherIdentification must be present.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/ISIN"},{"op":"Presence","path":"/OtherIdentification[*]"}]},"onCondition":{"connector":"AND","rules":[{"op":"Absence","path":"/Description"}]}} },
+      { name: "OtherIdentificationPresenceRule", isoId: "_5Nc-55NLEeWGlc8L7oPDIg", text: "If OtherIdentification is not present then either ISIN or Description must be present.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/ISIN"},{"op":"Presence","path":"/Description"}]},"onCondition":{"connector":"AND","rules":[{"op":"Absence","path":"/OtherIdentification[*]"}]}} },
+      { name: "ISINPresenceRule", isoId: "_5Nc-6ZNLEeWGlc8L7oPDIg", text: "If ISIN is not present then either Description or at least one occurrence of OtherIdentification must be present.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/OtherIdentification[*]"},{"op":"Presence","path":"/Description"}]},"onCondition":{"connector":"AND","rules":[{"op":"Absence","path":"/ISIN"}]}} },
+      { name: "DescriptionUsageRule", isoId: "_5Nc-65NLEeWGlc8L7oPDIg", text: "Description must be used alone as the last resort." },
+      { name: "ISINGuideline", isoId: "_5Nc-7ZNLEeWGlc8L7oPDIg", text: "When a ISIN code exist. It is strongly recommended that the ISIN be used." },
+    ],
+  },
+  "RestrictedFINXMax350Text": {
+    name: "RestrictedFINXMax350Text",
+    isoId: "_XZTG1dp-Ed-ak6NoX_4Aeg_-2121830698",
+    kind: "text",
+    minLength: 1,
+    maxLength: 350,
+    pattern: "[0-9a-zA-Z/\\-\\?:\\(\\)\\.\\n\\r,'\\+ ]{1,350}",
+  },
+  "FinancialInstrumentAttributes119": {
+    name: "FinancialInstrumentAttributes119",
+    isoId: "_caaLszi8Eeydid5dcNPKvg",
+    kind: "component",
+    fields: [
+      f({ name: "PlaceOfListing", isoId: "_caaLuzi8Eeydid5dcNPKvg", xmlTag: "PlcOfListg", displayName: displayName("PlaceOfListing"), kind: "choice", type: "MarketIdentification4Choice", required: false }),
+      f({ name: "DayCountBasis", isoId: "_caaLwzi8Eeydid5dcNPKvg", xmlTag: "DayCntBsis", displayName: displayName("DayCountBasis"), kind: "choice", type: "InterestComputationMethodFormat5Choice", required: false }),
+      f({ name: "RegistrationForm", isoId: "_caaLyzi8Eeydid5dcNPKvg", xmlTag: "RegnForm", displayName: displayName("RegistrationForm"), kind: "choice", type: "FormOfSecurity7Choice", required: false }),
+      f({ name: "PaymentFrequency", isoId: "_caaL0zi8Eeydid5dcNPKvg", xmlTag: "PmtFrqcy", displayName: displayName("PaymentFrequency"), kind: "choice", type: "Frequency27Choice", required: false }),
+      f({ name: "PaymentStatus", isoId: "_caaL2zi8Eeydid5dcNPKvg", xmlTag: "PmtSts", displayName: displayName("PaymentStatus"), kind: "choice", type: "SecuritiesPaymentStatus6Choice", required: false }),
+      f({ name: "VariableRateChangeFrequency", isoId: "_caaL4zi8Eeydid5dcNPKvg", xmlTag: "VarblRateChngFrqcy", displayName: displayName("VariableRateChangeFrequency"), kind: "choice", type: "Frequency27Choice", required: false }),
+      f({ name: "ClassificationType", isoId: "_caaL6zi8Eeydid5dcNPKvg", xmlTag: "ClssfctnTp", displayName: displayName("ClassificationType"), kind: "choice", type: "ClassificationType33Choice", required: false }),
+      f({ name: "OptionStyle", isoId: "_caaL8zi8Eeydid5dcNPKvg", xmlTag: "OptnStyle", displayName: displayName("OptionStyle"), kind: "choice", type: "OptionStyle9Choice", required: false }),
+      f({ name: "OptionType", isoId: "_caaL-zi8Eeydid5dcNPKvg", xmlTag: "OptnTp", displayName: displayName("OptionType"), kind: "choice", type: "OptionType7Choice", required: false }),
+      f({ name: "DenominationCurrency", isoId: "_caaMAzi8Eeydid5dcNPKvg", xmlTag: "DnmtnCcy", displayName: displayName("DenominationCurrency"), kind: "code", type: "ActiveOrHistoricCurrencyCode", required: false }),
+      f({ name: "CouponDate", isoId: "_caaMCzi8Eeydid5dcNPKvg", xmlTag: "CpnDt", displayName: displayName("CouponDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "ExpiryDate", isoId: "_caaMEzi8Eeydid5dcNPKvg", xmlTag: "XpryDt", displayName: displayName("ExpiryDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "FloatingRateFixingDate", isoId: "_caaMGzi8Eeydid5dcNPKvg", xmlTag: "FltgRateFxgDt", displayName: displayName("FloatingRateFixingDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "MaturityDate", isoId: "_caaMIzi8Eeydid5dcNPKvg", xmlTag: "MtrtyDt", displayName: displayName("MaturityDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "IssueDate", isoId: "_caaMKzi8Eeydid5dcNPKvg", xmlTag: "IsseDt", displayName: displayName("IssueDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "NextCallableDate", isoId: "_caaMMzi8Eeydid5dcNPKvg", xmlTag: "NxtCllblDt", displayName: displayName("NextCallableDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "PutableDate", isoId: "_caaMOzi8Eeydid5dcNPKvg", xmlTag: "PutblDt", displayName: displayName("PutableDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "DatedDate", isoId: "_caaMQzi8Eeydid5dcNPKvg", xmlTag: "DtdDt", displayName: displayName("DatedDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "FirstPaymentDate", isoId: "_caaMSzi8Eeydid5dcNPKvg", xmlTag: "FrstPmtDt", displayName: displayName("FirstPaymentDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "PreviousFactor", isoId: "_caaMUzi8Eeydid5dcNPKvg", xmlTag: "PrvsFctr", displayName: displayName("PreviousFactor"), kind: "number", type: "BaseOneRate", required: false }),
+      f({ name: "CurrentFactor", isoId: "_caaMWzi8Eeydid5dcNPKvg", xmlTag: "CurFctr", displayName: displayName("CurrentFactor"), kind: "number", type: "BaseOneRate", required: false }),
+      f({ name: "NextFactor", isoId: "_caaMYzi8Eeydid5dcNPKvg", xmlTag: "NxtFctr", displayName: displayName("NextFactor"), kind: "number", type: "BaseOneRate", required: false }),
+      f({ name: "InterestRate", isoId: "_caaMazi8Eeydid5dcNPKvg", xmlTag: "IntrstRate", displayName: displayName("InterestRate"), kind: "number", type: "PercentageRate", required: false }),
+      f({ name: "YieldToMaturityRate", isoId: "_caaMczi8Eeydid5dcNPKvg", xmlTag: "YldToMtrtyRate", displayName: displayName("YieldToMaturityRate"), kind: "number", type: "PercentageRate", required: false }),
+      f({ name: "NextInterestRate", isoId: "_caaMdTi8Eeydid5dcNPKvg", xmlTag: "NxtIntrstRate", displayName: displayName("NextInterestRate"), kind: "number", type: "PercentageRate", required: false }),
+      f({ name: "IndexRateBasis", isoId: "_caaMfTi8Eeydid5dcNPKvg", xmlTag: "IndxRateBsis", displayName: displayName("IndexRateBasis"), kind: "number", type: "PercentageRate", required: false }),
+      f({ name: "CouponAttachedNumber", isoId: "_caaMhTi8Eeydid5dcNPKvg", xmlTag: "CpnAttchdNb", displayName: displayName("CouponAttachedNumber"), kind: "choice", type: "Number23Choice", required: false }),
+      f({ name: "PoolNumber", isoId: "_caaMjTi8Eeydid5dcNPKvg", xmlTag: "PoolNb", displayName: displayName("PoolNumber"), kind: "component", type: "GenericIdentification39", required: false }),
+      f({ name: "QuantityBreakdown", isoId: "_caaMlTi8Eeydid5dcNPKvg", xmlTag: "QtyBrkdwn", displayName: displayName("QuantityBreakdown"), kind: "component", type: "QuantityBreakdown64", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "VariableRateIndicator", isoId: "_caaMlzi8Eeydid5dcNPKvg", xmlTag: "VarblRateInd", displayName: displayName("VariableRateIndicator"), kind: "boolean", type: "YesNoIndicator", required: false }),
+      f({ name: "CallableIndicator", isoId: "_caaMnzi8Eeydid5dcNPKvg", xmlTag: "CllblInd", displayName: displayName("CallableIndicator"), kind: "boolean", type: "YesNoIndicator", required: false }),
+      f({ name: "PutableIndicator", isoId: "_caaMpzi8Eeydid5dcNPKvg", xmlTag: "PutblInd", displayName: displayName("PutableIndicator"), kind: "boolean", type: "YesNoIndicator", required: false }),
+      f({ name: "MarketOrIndicativePrice", isoId: "_caaMrzi8Eeydid5dcNPKvg", xmlTag: "MktOrIndctvPric", displayName: displayName("MarketOrIndicativePrice"), kind: "choice", type: "PriceType5Choice", required: false }),
+      f({ name: "ExercisePrice", isoId: "_caaMtzi8Eeydid5dcNPKvg", xmlTag: "ExrcPric", displayName: displayName("ExercisePrice"), kind: "component", type: "Price3", required: false }),
+      f({ name: "SubscriptionPrice", isoId: "_caaMvzi8Eeydid5dcNPKvg", xmlTag: "SbcptPric", displayName: displayName("SubscriptionPrice"), kind: "component", type: "Price3", required: false }),
+      f({ name: "ConversionPrice", isoId: "_caaMxzi8Eeydid5dcNPKvg", xmlTag: "ConvsPric", displayName: displayName("ConversionPrice"), kind: "component", type: "Price3", required: false }),
+      f({ name: "StrikePrice", isoId: "_caaMzzi8Eeydid5dcNPKvg", xmlTag: "StrkPric", displayName: displayName("StrikePrice"), kind: "component", type: "Price3", required: false }),
+      f({ name: "MinimumNominalQuantity", isoId: "_caaM1zi8Eeydid5dcNPKvg", xmlTag: "MinNmnlQty", displayName: displayName("MinimumNominalQuantity"), kind: "choice", type: "FinancialInstrumentQuantity36Choice", required: false }),
+      f({ name: "ContractSize", isoId: "_caaM3zi8Eeydid5dcNPKvg", xmlTag: "CtrctSz", displayName: displayName("ContractSize"), kind: "choice", type: "FinancialInstrumentQuantity36Choice", required: false }),
+      f({ name: "UnderlyingFinancialInstrumentIdentification", isoId: "_caaM5zi8Eeydid5dcNPKvg", xmlTag: "UndrlygFinInstrmId", displayName: displayName("UnderlyingFinancialInstrumentIdentification"), kind: "component", type: "SecurityIdentification32", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "FinancialInstrumentAttributeAdditionalDetails", isoId: "_caaM7zi8Eeydid5dcNPKvg", xmlTag: "FinInstrmAttrAddtlDtls", displayName: displayName("FinancialInstrumentAttributeAdditionalDetails"), kind: "text", type: "RestrictedFINXMax350Text", required: false }),
+    ],
+    rules: [
+      { name: "PlaceOfListingRule", isoId: "_caaLtTi8Eeydid5dcNPKvg", text: "If PlaceOfListing is used and an ISO 10383 MIC exists for the market to be identified, the ISO 10383 Market Identifier Code (MIC) must be used." },
+      { name: "AdditionalDetailsRule", isoId: "_caaLtzi8Eeydid5dcNPKvg", text: "Unless bilaterally agreed between the Sender and Receiver, if FinancialInstrumentAttributeAdditionalDetails is present, then it must not contain information that can be provided in a structured field." },
+    ],
+  },
+  "RestrictedFINExact2Text": {
+    name: "RestrictedFINExact2Text",
+    isoId: "_WOybhdp-Ed-ak6NoX_4Aeg_1837848735",
+    kind: "text",
+    minLength: 2,
+    maxLength: 2,
+    pattern: "XX|TS",
+  },
+  "IdentificationSource4Choice": {
+    name: "IdentificationSource4Choice",
+    isoId: "_uPmNYAgWEeCVlvYcV4HKqQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_uPv-YggWEeCVlvYcV4HKqQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalFinancialInstrumentIdentificationType1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_uPv-aggWEeCVlvYcV4HKqQ", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "RestrictedFINExact2Text", required: true }),
+    ],
+  },
+  "OtherIdentification2": {
+    name: "OtherIdentification2",
+    isoId: "_uP5vYwgWEeCVlvYcV4HKqQ",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_uP5vawgWEeCVlvYcV4HKqQ", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "RestrictedFINXMax31Text", required: true }),
+      f({ name: "Suffix", isoId: "_uP5vcwgWEeCVlvYcV4HKqQ", xmlTag: "Sfx", displayName: displayName("Suffix"), kind: "text", type: "Max16Text", required: false }),
+      f({ name: "Type", isoId: "_uP5vfAgWEeCVlvYcV4HKqQ", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "IdentificationSource4Choice", required: true }),
+    ],
+  },
+  "SecurityIdentification20": {
+    name: "SecurityIdentification20",
+    isoId: "_cdRCO5KQEeWHWpTQn1FFVg",
+    kind: "component",
+    fields: [
+      f({ name: "ISIN", isoId: "_cdRCR5KQEeWHWpTQn1FFVg", xmlTag: "ISIN", displayName: displayName("ISIN"), kind: "text", type: "ISINOct2015Identifier", required: false }),
+      f({ name: "OtherIdentification", isoId: "_cdRCSZKQEeWHWpTQn1FFVg", xmlTag: "OthrId", displayName: displayName("OtherIdentification"), kind: "component", type: "OtherIdentification2", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "Description", isoId: "_cdRCS5KQEeWHWpTQn1FFVg", xmlTag: "Desc", displayName: displayName("Description"), kind: "text", type: "RestrictedFINXMax140Text", required: false }),
+    ],
+    rules: [
+      { name: "DescriptionPresenceRule", isoId: "_cdRCPZKQEeWHWpTQn1FFVg", text: "If Description is not present then either ISIN or at least one occurrence of OtherIdentification must be present.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/ISIN"},{"op":"Presence","path":"/OtherIdentification[*]"}]},"onCondition":{"connector":"AND","rules":[{"op":"Absence","path":"/Description"}]}} },
+      { name: "OtherIdentificationPresenceRule", isoId: "_cdRCP5KQEeWHWpTQn1FFVg", text: "If OtherIdentification is not present then either ISIN or Description must be present.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/ISIN"},{"op":"Presence","path":"/Description"}]},"onCondition":{"connector":"AND","rules":[{"op":"Absence","path":"/OtherIdentification[*]"}]}} },
+      { name: "ISINPresenceRule", isoId: "_cdRCQZKQEeWHWpTQn1FFVg", text: "If ISIN is not present then either Description or at least one occurrence of OtherIdentification must be present.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/OtherIdentification[*]"},{"op":"Presence","path":"/Description"}]},"onCondition":{"connector":"AND","rules":[{"op":"Absence","path":"/ISIN"}]}} },
+      { name: "DescriptionUsageRule", isoId: "_cdRCQ5KQEeWHWpTQn1FFVg", text: "Description must be used alone as the last resort." },
+      { name: "ISINGuideline", isoId: "_cdRCRZKQEeWHWpTQn1FFVg", text: "When a ISIN code exist. It is strongly recommended that the ISIN be used." },
+    ],
+  },
+  "FinancialInstrumentAttributes122": {
+    name: "FinancialInstrumentAttributes122",
+    isoId: "_ceeMZzi8Eeydid5dcNPKvg",
+    kind: "component",
+    fields: [
+      f({ name: "PlaceOfListing", isoId: "_ceeMbzi8Eeydid5dcNPKvg", xmlTag: "PlcOfListg", displayName: displayName("PlaceOfListing"), kind: "choice", type: "MarketIdentification4Choice", required: false }),
+      f({ name: "DayCountBasis", isoId: "_ceeMdzi8Eeydid5dcNPKvg", xmlTag: "DayCntBsis", displayName: displayName("DayCountBasis"), kind: "choice", type: "InterestComputationMethodFormat5Choice", required: false }),
+      f({ name: "RegistrationForm", isoId: "_ceeMfzi8Eeydid5dcNPKvg", xmlTag: "RegnForm", displayName: displayName("RegistrationForm"), kind: "choice", type: "FormOfSecurity7Choice", required: false }),
+      f({ name: "PaymentFrequency", isoId: "_ceeMhzi8Eeydid5dcNPKvg", xmlTag: "PmtFrqcy", displayName: displayName("PaymentFrequency"), kind: "choice", type: "Frequency27Choice", required: false }),
+      f({ name: "PaymentStatus", isoId: "_ceeMjzi8Eeydid5dcNPKvg", xmlTag: "PmtSts", displayName: displayName("PaymentStatus"), kind: "choice", type: "SecuritiesPaymentStatus6Choice", required: false }),
+      f({ name: "VariableRateChangeFrequency", isoId: "_ceeMlzi8Eeydid5dcNPKvg", xmlTag: "VarblRateChngFrqcy", displayName: displayName("VariableRateChangeFrequency"), kind: "choice", type: "Frequency27Choice", required: false }),
+      f({ name: "ClassificationType", isoId: "_ceeMnzi8Eeydid5dcNPKvg", xmlTag: "ClssfctnTp", displayName: displayName("ClassificationType"), kind: "choice", type: "ClassificationType33Choice", required: false }),
+      f({ name: "OptionStyle", isoId: "_ceeMpzi8Eeydid5dcNPKvg", xmlTag: "OptnStyle", displayName: displayName("OptionStyle"), kind: "choice", type: "OptionStyle9Choice", required: false }),
+      f({ name: "OptionType", isoId: "_ceeMrzi8Eeydid5dcNPKvg", xmlTag: "OptnTp", displayName: displayName("OptionType"), kind: "choice", type: "OptionType7Choice", required: false }),
+      f({ name: "DenominationCurrency", isoId: "_ceeMtzi8Eeydid5dcNPKvg", xmlTag: "DnmtnCcy", displayName: displayName("DenominationCurrency"), kind: "code", type: "ActiveOrHistoricCurrencyCode", required: false }),
+      f({ name: "CouponDate", isoId: "_ceeMvzi8Eeydid5dcNPKvg", xmlTag: "CpnDt", displayName: displayName("CouponDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "ExpiryDate", isoId: "_ceeMxzi8Eeydid5dcNPKvg", xmlTag: "XpryDt", displayName: displayName("ExpiryDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "FloatingRateFixingDate", isoId: "_ceeMzzi8Eeydid5dcNPKvg", xmlTag: "FltgRateFxgDt", displayName: displayName("FloatingRateFixingDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "MaturityDate", isoId: "_ceeM1zi8Eeydid5dcNPKvg", xmlTag: "MtrtyDt", displayName: displayName("MaturityDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "IssueDate", isoId: "_ceeM3zi8Eeydid5dcNPKvg", xmlTag: "IsseDt", displayName: displayName("IssueDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "NextCallableDate", isoId: "_ceeM5zi8Eeydid5dcNPKvg", xmlTag: "NxtCllblDt", displayName: displayName("NextCallableDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "PutableDate", isoId: "_ceeM7zi8Eeydid5dcNPKvg", xmlTag: "PutblDt", displayName: displayName("PutableDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "DatedDate", isoId: "_ceeM9zi8Eeydid5dcNPKvg", xmlTag: "DtdDt", displayName: displayName("DatedDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "FirstPaymentDate", isoId: "_ceeM_zi8Eeydid5dcNPKvg", xmlTag: "FrstPmtDt", displayName: displayName("FirstPaymentDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "PreviousFactor", isoId: "_ceeNBzi8Eeydid5dcNPKvg", xmlTag: "PrvsFctr", displayName: displayName("PreviousFactor"), kind: "number", type: "BaseOneRate", required: false }),
+      f({ name: "CurrentFactor", isoId: "_ceeNDzi8Eeydid5dcNPKvg", xmlTag: "CurFctr", displayName: displayName("CurrentFactor"), kind: "number", type: "BaseOneRate", required: false }),
+      f({ name: "NextFactor", isoId: "_ceeNFzi8Eeydid5dcNPKvg", xmlTag: "NxtFctr", displayName: displayName("NextFactor"), kind: "number", type: "BaseOneRate", required: false }),
+      f({ name: "InterestRate", isoId: "_ceeNHzi8Eeydid5dcNPKvg", xmlTag: "IntrstRate", displayName: displayName("InterestRate"), kind: "number", type: "PercentageRate", required: false }),
+      f({ name: "YieldToMaturityRate", isoId: "_ceeNJzi8Eeydid5dcNPKvg", xmlTag: "YldToMtrtyRate", displayName: displayName("YieldToMaturityRate"), kind: "number", type: "PercentageRate", required: false }),
+      f({ name: "NextInterestRate", isoId: "_ceeNKTi8Eeydid5dcNPKvg", xmlTag: "NxtIntrstRate", displayName: displayName("NextInterestRate"), kind: "number", type: "PercentageRate", required: false }),
+      f({ name: "IndexRateBasis", isoId: "_ceeNMTi8Eeydid5dcNPKvg", xmlTag: "IndxRateBsis", displayName: displayName("IndexRateBasis"), kind: "number", type: "PercentageRate", required: false }),
+      f({ name: "CouponAttachedNumber", isoId: "_ceeNOTi8Eeydid5dcNPKvg", xmlTag: "CpnAttchdNb", displayName: displayName("CouponAttachedNumber"), kind: "choice", type: "Number23Choice", required: false }),
+      f({ name: "PoolNumber", isoId: "_ceeNQTi8Eeydid5dcNPKvg", xmlTag: "PoolNb", displayName: displayName("PoolNumber"), kind: "component", type: "GenericIdentification39", required: false }),
+      f({ name: "VariableRateIndicator", isoId: "_ceeNSTi8Eeydid5dcNPKvg", xmlTag: "VarblRateInd", displayName: displayName("VariableRateIndicator"), kind: "boolean", type: "YesNoIndicator", required: false }),
+      f({ name: "CallableIndicator", isoId: "_ceeNUTi8Eeydid5dcNPKvg", xmlTag: "CllblInd", displayName: displayName("CallableIndicator"), kind: "boolean", type: "YesNoIndicator", required: false }),
+      f({ name: "PutableIndicator", isoId: "_ceeNWTi8Eeydid5dcNPKvg", xmlTag: "PutblInd", displayName: displayName("PutableIndicator"), kind: "boolean", type: "YesNoIndicator", required: false }),
+      f({ name: "MarketOrIndicativePrice", isoId: "_ceeNYTi8Eeydid5dcNPKvg", xmlTag: "MktOrIndctvPric", displayName: displayName("MarketOrIndicativePrice"), kind: "choice", type: "PriceType5Choice", required: false }),
+      f({ name: "ExercisePrice", isoId: "_ceeNaTi8Eeydid5dcNPKvg", xmlTag: "ExrcPric", displayName: displayName("ExercisePrice"), kind: "component", type: "Price3", required: false }),
+      f({ name: "SubscriptionPrice", isoId: "_ceeNcTi8Eeydid5dcNPKvg", xmlTag: "SbcptPric", displayName: displayName("SubscriptionPrice"), kind: "component", type: "Price3", required: false }),
+      f({ name: "ConversionPrice", isoId: "_ceeNeTi8Eeydid5dcNPKvg", xmlTag: "ConvsPric", displayName: displayName("ConversionPrice"), kind: "component", type: "Price3", required: false }),
+      f({ name: "StrikePrice", isoId: "_ceeNgTi8Eeydid5dcNPKvg", xmlTag: "StrkPric", displayName: displayName("StrikePrice"), kind: "component", type: "Price3", required: false }),
+      f({ name: "MinimumNominalQuantity", isoId: "_ceeNiTi8Eeydid5dcNPKvg", xmlTag: "MinNmnlQty", displayName: displayName("MinimumNominalQuantity"), kind: "choice", type: "FinancialInstrumentQuantity36Choice", required: false }),
+      f({ name: "ContractSize", isoId: "_ceeNkTi8Eeydid5dcNPKvg", xmlTag: "CtrctSz", displayName: displayName("ContractSize"), kind: "choice", type: "FinancialInstrumentQuantity36Choice", required: false }),
+      f({ name: "UnderlyingFinancialInstrumentIdentification", isoId: "_ceeNmTi8Eeydid5dcNPKvg", xmlTag: "UndrlygFinInstrmId", displayName: displayName("UnderlyingFinancialInstrumentIdentification"), kind: "component", type: "SecurityIdentification20", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "FinancialInstrumentAttributeAdditionalDetails", isoId: "_ceeNoTi8Eeydid5dcNPKvg", xmlTag: "FinInstrmAttrAddtlDtls", displayName: displayName("FinancialInstrumentAttributeAdditionalDetails"), kind: "text", type: "RestrictedFINXMax350Text", required: false }),
+    ],
+    rules: [
+      { name: "PlaceOfListingRule", isoId: "_ceeMaTi8Eeydid5dcNPKvg", text: "If PlaceOfListing is used and an ISO 10383 MIC exists for the market to be identified, the ISO 10383 Market Identifier Code (MIC) must be used." },
+      { name: "AdditionalDetailsRule", isoId: "_ceeMazi8Eeydid5dcNPKvg", text: "Unless bilaterally agreed between the Sender and Receiver, if FinancialInstrumentAttributeAdditionalDetails is present, then it must not contain information that can be provided in a structured field." },
+    ],
+  },
+  "QuantityBreakdown31": {
+    name: "QuantityBreakdown31",
+    isoId: "_7nor8TnrEeWfSKvvZlhRKg",
+    kind: "component",
+    fields: [
+      f({ name: "LotNumber", isoId: "_8IEfgznrEeWfSKvvZlhRKg", xmlTag: "LotNb", displayName: displayName("LotNumber"), kind: "component", type: "GenericIdentification37", required: true }),
+      f({ name: "LotQuantity", isoId: "_8IEfiznrEeWfSKvvZlhRKg", xmlTag: "LotQty", displayName: displayName("LotQuantity"), kind: "choice", type: "FinancialInstrumentQuantity1Choice", required: false }),
+    ],
+  },
+  "FinancialInstrumentAttributes92": {
+    name: "FinancialInstrumentAttributes92",
+    isoId: "_y7YrlbQBEee1Ke-6rZgsrA",
+    kind: "component",
+    fields: [
+      f({ name: "PlaceOfListing", isoId: "_zKjwB7QBEee1Ke-6rZgsrA", xmlTag: "PlcOfListg", displayName: displayName("PlaceOfListing"), kind: "choice", type: "MarketIdentification3Choice", required: false }),
+      f({ name: "DayCountBasis", isoId: "_zKjwD7QBEee1Ke-6rZgsrA", xmlTag: "DayCntBsis", displayName: displayName("DayCountBasis"), kind: "choice", type: "InterestComputationMethodFormat4Choice", required: false }),
+      f({ name: "RegistrationForm", isoId: "_zKjwF7QBEee1Ke-6rZgsrA", xmlTag: "RegnForm", displayName: displayName("RegistrationForm"), kind: "choice", type: "FormOfSecurity6Choice", required: false }),
+      f({ name: "PaymentFrequency", isoId: "_zKjwH7QBEee1Ke-6rZgsrA", xmlTag: "PmtFrqcy", displayName: displayName("PaymentFrequency"), kind: "choice", type: "Frequency23Choice", required: false }),
+      f({ name: "PaymentStatus", isoId: "_zKjwJ7QBEee1Ke-6rZgsrA", xmlTag: "PmtSts", displayName: displayName("PaymentStatus"), kind: "choice", type: "SecuritiesPaymentStatus5Choice", required: false }),
+      f({ name: "VariableRateChangeFrequency", isoId: "_zKjwL7QBEee1Ke-6rZgsrA", xmlTag: "VarblRateChngFrqcy", displayName: displayName("VariableRateChangeFrequency"), kind: "choice", type: "Frequency23Choice", required: false }),
+      f({ name: "ClassificationType", isoId: "_zKjwN7QBEee1Ke-6rZgsrA", xmlTag: "ClssfctnTp", displayName: displayName("ClassificationType"), kind: "choice", type: "ClassificationType32Choice", required: false }),
+      f({ name: "OptionStyle", isoId: "_zKjwP7QBEee1Ke-6rZgsrA", xmlTag: "OptnStyle", displayName: displayName("OptionStyle"), kind: "choice", type: "OptionStyle8Choice", required: false }),
+      f({ name: "OptionType", isoId: "_zKjwR7QBEee1Ke-6rZgsrA", xmlTag: "OptnTp", displayName: displayName("OptionType"), kind: "choice", type: "OptionType6Choice", required: false }),
+      f({ name: "DenominationCurrency", isoId: "_zKjwT7QBEee1Ke-6rZgsrA", xmlTag: "DnmtnCcy", displayName: displayName("DenominationCurrency"), kind: "code", type: "ActiveOrHistoricCurrencyCode", required: false }),
+      f({ name: "CouponDate", isoId: "_zKjwV7QBEee1Ke-6rZgsrA", xmlTag: "CpnDt", displayName: displayName("CouponDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "ExpiryDate", isoId: "_zKjwX7QBEee1Ke-6rZgsrA", xmlTag: "XpryDt", displayName: displayName("ExpiryDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "FloatingRateFixingDate", isoId: "_zKjwZ7QBEee1Ke-6rZgsrA", xmlTag: "FltgRateFxgDt", displayName: displayName("FloatingRateFixingDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "MaturityDate", isoId: "_zKjwb7QBEee1Ke-6rZgsrA", xmlTag: "MtrtyDt", displayName: displayName("MaturityDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "IssueDate", isoId: "_zKjwd7QBEee1Ke-6rZgsrA", xmlTag: "IsseDt", displayName: displayName("IssueDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "NextCallableDate", isoId: "_zKjwf7QBEee1Ke-6rZgsrA", xmlTag: "NxtCllblDt", displayName: displayName("NextCallableDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "PutableDate", isoId: "_zKjwh7QBEee1Ke-6rZgsrA", xmlTag: "PutblDt", displayName: displayName("PutableDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "DatedDate", isoId: "_zKjwj7QBEee1Ke-6rZgsrA", xmlTag: "DtdDt", displayName: displayName("DatedDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "FirstPaymentDate", isoId: "_zKjwl7QBEee1Ke-6rZgsrA", xmlTag: "FrstPmtDt", displayName: displayName("FirstPaymentDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "PreviousFactor", isoId: "_zKjwn7QBEee1Ke-6rZgsrA", xmlTag: "PrvsFctr", displayName: displayName("PreviousFactor"), kind: "number", type: "BaseOneRate", required: false }),
+      f({ name: "CurrentFactor", isoId: "_zKjwp7QBEee1Ke-6rZgsrA", xmlTag: "CurFctr", displayName: displayName("CurrentFactor"), kind: "number", type: "BaseOneRate", required: false }),
+      f({ name: "NextFactor", isoId: "_zKjwr7QBEee1Ke-6rZgsrA", xmlTag: "NxtFctr", displayName: displayName("NextFactor"), kind: "number", type: "BaseOneRate", required: false }),
+      f({ name: "InterestRate", isoId: "_zKjwt7QBEee1Ke-6rZgsrA", xmlTag: "IntrstRate", displayName: displayName("InterestRate"), kind: "number", type: "PercentageRate", required: false }),
+      f({ name: "YieldToMaturityRate", isoId: "_zKjwv7QBEee1Ke-6rZgsrA", xmlTag: "YldToMtrtyRate", displayName: displayName("YieldToMaturityRate"), kind: "number", type: "PercentageRate", required: false }),
+      f({ name: "NextInterestRate", isoId: "_zKjwwbQBEee1Ke-6rZgsrA", xmlTag: "NxtIntrstRate", displayName: displayName("NextInterestRate"), kind: "number", type: "PercentageRate", required: false }),
+      f({ name: "IndexRateBasis", isoId: "_zKjwybQBEee1Ke-6rZgsrA", xmlTag: "IndxRateBsis", displayName: displayName("IndexRateBasis"), kind: "number", type: "PercentageRate", required: false }),
+      f({ name: "CouponAttachedNumber", isoId: "_zKjw0bQBEee1Ke-6rZgsrA", xmlTag: "CpnAttchdNb", displayName: displayName("CouponAttachedNumber"), kind: "choice", type: "Number22Choice", required: false }),
+      f({ name: "PoolNumber", isoId: "_zKjw2bQBEee1Ke-6rZgsrA", xmlTag: "PoolNb", displayName: displayName("PoolNumber"), kind: "component", type: "GenericIdentification37", required: false }),
+      f({ name: "QuantityBreakdown", isoId: "_zKjw4bQBEee1Ke-6rZgsrA", xmlTag: "QtyBrkdwn", displayName: displayName("QuantityBreakdown"), kind: "component", type: "QuantityBreakdown31", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "VariableRateIndicator", isoId: "_zKjw47QBEee1Ke-6rZgsrA", xmlTag: "VarblRateInd", displayName: displayName("VariableRateIndicator"), kind: "boolean", type: "YesNoIndicator", required: false }),
+      f({ name: "CallableIndicator", isoId: "_zKjw67QBEee1Ke-6rZgsrA", xmlTag: "CllblInd", displayName: displayName("CallableIndicator"), kind: "boolean", type: "YesNoIndicator", required: false }),
+      f({ name: "PutableIndicator", isoId: "_zKjw87QBEee1Ke-6rZgsrA", xmlTag: "PutblInd", displayName: displayName("PutableIndicator"), kind: "boolean", type: "YesNoIndicator", required: false }),
+      f({ name: "MarketOrIndicativePrice", isoId: "_zKjw-7QBEee1Ke-6rZgsrA", xmlTag: "MktOrIndctvPric", displayName: displayName("MarketOrIndicativePrice"), kind: "choice", type: "PriceType4Choice", required: false }),
+      f({ name: "ExercisePrice", isoId: "_zKjxA7QBEee1Ke-6rZgsrA", xmlTag: "ExrcPric", displayName: displayName("ExercisePrice"), kind: "component", type: "Price7", required: false }),
+      f({ name: "SubscriptionPrice", isoId: "_zKjxC7QBEee1Ke-6rZgsrA", xmlTag: "SbcptPric", displayName: displayName("SubscriptionPrice"), kind: "component", type: "Price7", required: false }),
+      f({ name: "ConversionPrice", isoId: "_zKjxE7QBEee1Ke-6rZgsrA", xmlTag: "ConvsPric", displayName: displayName("ConversionPrice"), kind: "component", type: "Price7", required: false }),
+      f({ name: "StrikePrice", isoId: "_zKjxG7QBEee1Ke-6rZgsrA", xmlTag: "StrkPric", displayName: displayName("StrikePrice"), kind: "component", type: "Price7", required: false }),
+      f({ name: "MinimumNominalQuantity", isoId: "_zKjxI7QBEee1Ke-6rZgsrA", xmlTag: "MinNmnlQty", displayName: displayName("MinimumNominalQuantity"), kind: "choice", type: "FinancialInstrumentQuantity1Choice", required: false }),
+      f({ name: "ContractSize", isoId: "_zKjxK7QBEee1Ke-6rZgsrA", xmlTag: "CtrctSz", displayName: displayName("ContractSize"), kind: "choice", type: "FinancialInstrumentQuantity1Choice", required: false }),
+      f({ name: "UnderlyingFinancialInstrumentIdentification", isoId: "_zKjxM7QBEee1Ke-6rZgsrA", xmlTag: "UndrlygFinInstrmId", displayName: displayName("UnderlyingFinancialInstrumentIdentification"), kind: "component", type: "SecurityIdentification19", required: false, repeat: { min: 0, max: null } }),
+      f({ name: "FinancialInstrumentAttributeAdditionalDetails", isoId: "_zKjxO7QBEee1Ke-6rZgsrA", xmlTag: "FinInstrmAttrAddtlDtls", displayName: displayName("FinancialInstrumentAttributeAdditionalDetails"), kind: "text", type: "Max350Text", required: false }),
+    ],
+    rules: [
+      { name: "PlaceOfListingRule", isoId: "_zKjwAbQBEee1Ke-6rZgsrA", text: "If PlaceOfListing is used and an ISO 10383 MIC exists for the market to be identified, the ISO 10383 Market Identifier Code (MIC) must be used." },
+      { name: "AdditionalDetailsRule", isoId: "_zKjwA7QBEee1Ke-6rZgsrA", text: "Unless bilaterally agreed between the Sender and Receiver, if FinancialInstrumentAttributeAdditionalDetails is present, then it must not contain information that can be provided in a structured field." },
+    ],
+  },
+  "FinancialInstrumentQuantitySearch2": {
+    name: "FinancialInstrumentQuantitySearch2",
+    isoId: "_m1LjEWqWEemz04WrKJaMEA",
+    kind: "component",
+    fields: [
+      f({ name: "FaceAmount", isoId: "_nBVvwWqWEemz04WrKJaMEA", xmlTag: "FaceAmt", displayName: displayName("FaceAmount"), kind: "choice", type: "ImpliedCurrencyAmountRange1Choice", required: true }),
+      f({ name: "AmortisedValue", isoId: "_nBVvw2qWEemz04WrKJaMEA", xmlTag: "AmtsdVal", displayName: displayName("AmortisedValue"), kind: "choice", type: "ImpliedCurrencyAmountRange1Choice", required: true }),
+    ],
+  },
+  "QuantityRangeBoundary1": {
+    name: "QuantityRangeBoundary1",
+    isoId: "_jtRfFe5NEeCisYr99QEiWA_-1438940377",
+    kind: "component",
+    fields: [
+      f({ name: "Boundary", isoId: "_jtapAO5NEeCisYr99QEiWA_-330775982", xmlTag: "Bdry", displayName: displayName("Boundary"), kind: "number", type: "DecimalNumber", required: true }),
+      f({ name: "Included", isoId: "_jtapAe5NEeCisYr99QEiWA_279625946", xmlTag: "Incl", displayName: displayName("Included"), kind: "boolean", type: "YesNoIndicator", required: true }),
+    ],
+  },
+  "FromToQuantityRange1": {
+    name: "FromToQuantityRange1",
+    isoId: "_jtHuEe5NEeCisYr99QEiWA_674630365",
+    kind: "component",
+    fields: [
+      f({ name: "FromQuantity", isoId: "_jtHuEu5NEeCisYr99QEiWA_-621671182", xmlTag: "FrQty", displayName: displayName("FromQuantity"), kind: "component", type: "QuantityRangeBoundary1", required: true }),
+      f({ name: "ToQuantity", isoId: "_jtHuE-5NEeCisYr99QEiWA_788676247", xmlTag: "ToQty", displayName: displayName("ToQuantity"), kind: "component", type: "QuantityRangeBoundary1", required: true }),
+    ],
+  },
+  "QuantityRange1Choice": {
+    name: "QuantityRange1Choice",
+    isoId: "_jtHuFO5NEeCisYr99QEiWA_-1373711231",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "FromQuantity", isoId: "_jtRfEO5NEeCisYr99QEiWA_-377163681", xmlTag: "FrQty", displayName: displayName("FromQuantity"), kind: "component", type: "QuantityRangeBoundary1", required: true }),
+      f({ name: "ToQuantity", isoId: "_jtRfEe5NEeCisYr99QEiWA_44952824", xmlTag: "ToQty", displayName: displayName("ToQuantity"), kind: "component", type: "QuantityRangeBoundary1", required: true }),
+      f({ name: "FromToQuantity", isoId: "_jtRfEu5NEeCisYr99QEiWA_-1639886527", xmlTag: "FrToQty", displayName: displayName("FromToQuantity"), kind: "component", type: "FromToQuantityRange1", required: true }),
+      f({ name: "EqualQuantity", isoId: "_jtRfE-5NEeCisYr99QEiWA_-675705255", xmlTag: "EQQty", displayName: displayName("EqualQuantity"), kind: "number", type: "DecimalNumber", required: true }),
+      f({ name: "NotEqualQuantity", isoId: "_jtRfFO5NEeCisYr99QEiWA_-267876901", xmlTag: "NEQQty", displayName: displayName("NotEqualQuantity"), kind: "number", type: "DecimalNumber", required: true }),
+    ],
+  },
+  "FinancialInstrumentQuantitySearch2Choice": {
+    name: "FinancialInstrumentQuantitySearch2Choice",
+    isoId: "_eayJoWqWEemz04WrKJaMEA",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Unit", isoId: "_emN9kWqWEemz04WrKJaMEA", xmlTag: "Unit", displayName: displayName("Unit"), kind: "choice", type: "QuantityRange1Choice", required: true }),
+      f({ name: "FaceAmount", isoId: "_emN9mWqWEemz04WrKJaMEA", xmlTag: "FaceAmt", displayName: displayName("FaceAmount"), kind: "choice", type: "ImpliedCurrencyAmountRange1Choice", required: true }),
+      f({ name: "AmortisedValue", isoId: "_emN9m2qWEemz04WrKJaMEA", xmlTag: "AmtsdVal", displayName: displayName("AmortisedValue"), kind: "choice", type: "ImpliedCurrencyAmountRange1Choice", required: true }),
     ],
   },
   "FiscalYear1Choice": {
@@ -15641,6 +20155,42 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "ExchangeRate", isoId: "_PBVvARK-EeKJ5uSjVyVvug", xmlTag: "XchgRate", displayName: displayName("ExchangeRate"), kind: "number", type: "BaseOneRate", required: true }),
     ],
   },
+  "ForeignExchangeTerms34": {
+    name: "ForeignExchangeTerms34",
+    isoId: "_8d-7m9LCEeiN28wlpBQScw",
+    kind: "component",
+    fields: [
+      f({ name: "UnitCurrency", isoId: "_8vPDM9LCEeiN28wlpBQScw", xmlTag: "UnitCcy", displayName: displayName("UnitCurrency"), kind: "code", type: "ActiveOrHistoricCurrencyCode", required: true }),
+      f({ name: "QuotedCurrency", isoId: "_8vPDNdLCEeiN28wlpBQScw", xmlTag: "QtdCcy", displayName: displayName("QuotedCurrency"), kind: "code", type: "ActiveOrHistoricCurrencyCode", required: true }),
+      f({ name: "ExchangeRate", isoId: "_8vPDN9LCEeiN28wlpBQScw", xmlTag: "XchgRate", displayName: displayName("ExchangeRate"), kind: "number", type: "BaseOneRate", required: true }),
+      f({ name: "QuotationDate", isoId: "_8vPDP9LCEeiN28wlpBQScw", xmlTag: "QtnDt", displayName: displayName("QuotationDate"), kind: "datetime", type: "ISODateTime", required: false }),
+      f({ name: "QuotingInstitution", isoId: "_8vPDR9LCEeiN28wlpBQScw", xmlTag: "QtgInstn", displayName: displayName("QuotingInstitution"), kind: "choice", type: "PartyIdentification120Choice", required: false }),
+    ],
+  },
+  "ForeignExchangeTerms35": {
+    name: "ForeignExchangeTerms35",
+    isoId: "_Z0yBPffVEeiNZp_PtLohLw",
+    kind: "component",
+    fields: [
+      f({ name: "UnitCurrency", isoId: "_Z0yBQffVEeiNZp_PtLohLw", xmlTag: "UnitCcy", displayName: displayName("UnitCurrency"), kind: "code", type: "ActiveOrHistoricCurrencyCode", required: true }),
+      f({ name: "QuotedCurrency", isoId: "_Z0yBQ_fVEeiNZp_PtLohLw", xmlTag: "QtdCcy", displayName: displayName("QuotedCurrency"), kind: "code", type: "ActiveOrHistoricCurrencyCode", required: true }),
+      f({ name: "ExchangeRate", isoId: "_Z0yBRffVEeiNZp_PtLohLw", xmlTag: "XchgRate", displayName: displayName("ExchangeRate"), kind: "number", type: "BaseOneRate", required: true }),
+      f({ name: "QuotationDate", isoId: "_Z0yBTffVEeiNZp_PtLohLw", xmlTag: "QtnDt", displayName: displayName("QuotationDate"), kind: "datetime", type: "ISODateTime", required: false }),
+      f({ name: "QuotingInstitution", isoId: "_Z0yBVffVEeiNZp_PtLohLw", xmlTag: "QtgInstn", displayName: displayName("QuotingInstitution"), kind: "choice", type: "PartyIdentification137Choice", required: false }),
+    ],
+  },
+  "ForeignExchangeTerms6": {
+    name: "ForeignExchangeTerms6",
+    isoId: "_QLNvhdp-Ed-ak6NoX_4Aeg_264761253",
+    kind: "component",
+    fields: [
+      f({ name: "UnitCurrency", isoId: "_QLNvhtp-Ed-ak6NoX_4Aeg_265683750", xmlTag: "UnitCcy", displayName: displayName("UnitCurrency"), kind: "code", type: "ActiveOrHistoricCurrencyCode", required: true }),
+      f({ name: "QuotedCurrency", isoId: "_QLNvh9p-Ed-ak6NoX_4Aeg_265684295", xmlTag: "QtdCcy", displayName: displayName("QuotedCurrency"), kind: "code", type: "ActiveOrHistoricCurrencyCode", required: true }),
+      f({ name: "ExchangeRate", isoId: "_QLNviNp-Ed-ak6NoX_4Aeg_265685226", xmlTag: "XchgRate", displayName: displayName("ExchangeRate"), kind: "number", type: "BaseOneRate", required: true }),
+      f({ name: "QuotationDate", isoId: "_QLW5cNp-Ed-ak6NoX_4Aeg_265686619", xmlTag: "QtnDt", displayName: displayName("QuotationDate"), kind: "datetime", type: "ISODateTime", required: false }),
+      f({ name: "QuotingInstitution", isoId: "_QLW5cdp-Ed-ak6NoX_4Aeg_266607351", xmlTag: "QtgInstn", displayName: displayName("QuotingInstitution"), kind: "choice", type: "PartyIdentification2Choice", required: false }),
+    ],
+  },
   "Frequency20Choice": {
     name: "Frequency20Choice",
     isoId: "_B_wykRUSEeOIaq8KyCdIDQ",
@@ -15659,11 +20209,47 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Proprietary", isoId: "_Z-H2q_3-EeS5i-mwuUyZxw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
     ],
   },
+  "Frequency25Choice": {
+    name: "Frequency25Choice",
+    isoId: "_bo7ZATeNEeWm5uvLSn0jEw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_cJERozeNEeWm5uvLSn0jEw", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "EventFrequency4Code", required: true }),
+      f({ name: "Proprietary", isoId: "_cJERqzeNEeWm5uvLSn0jEw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "Frequency26Choice": {
+    name: "Frequency26Choice",
+    isoId: "_cfq1s5KQEeWHWpTQn1FFVg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_cfq1tZKQEeWHWpTQn1FFVg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "EventFrequency4Code", required: true }),
+      f({ name: "Proprietary", isoId: "_cfq1vZKQEeWHWpTQn1FFVg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
   "Frequency2Code": {
     name: "Frequency2Code",
     isoId: "_asJXqNp-Ed-ak6NoX_4Aeg_1505345791",
     kind: "code",
     options: [{ value: "YEAR", name: "Annual", isoId: "_asTIoNp-Ed-ak6NoX_4Aeg_1506269390" }, { value: "MNTH", name: "Monthly", isoId: "_asTIodp-Ed-ak6NoX_4Aeg_1506270304" }, { value: "QURT", name: "Quarterly", isoId: "_asTIotp-Ed-ak6NoX_4Aeg_1506270784" }, { value: "MIAN", name: "SemiAnnual", isoId: "_asTIo9p-Ed-ak6NoX_4Aeg_1506271251" }, { value: "WEEK", name: "Weekly", isoId: "_asTIpNp-Ed-ak6NoX_4Aeg_1506271732" }, { value: "DAIL", name: "Daily", isoId: "_asTIpdp-Ed-ak6NoX_4Aeg_1506271774" }, { value: "ADHO", name: "Adhoc", isoId: "_asTIptp-Ed-ak6NoX_4Aeg_1507192308" }, { value: "INDA", name: "IntraDay", isoId: "_asTIp9p-Ed-ak6NoX_4Aeg_1507192896" }, { value: "OVNG", name: "Overnight", isoId: "_asTIqNp-Ed-ak6NoX_4Aeg_-886985582" }],
+  },
+  "GenericIdentification7": {
+    name: "GenericIdentification7",
+    isoId: "_P_luVdp-Ed-ak6NoX_4Aeg_811645724",
+    kind: "component",
+    fields: [
+      f({ name: "Issuer", isoId: "_P_luVtp-Ed-ak6NoX_4Aeg_858746211", xmlTag: "Issr", displayName: displayName("Issuer"), kind: "text", type: "Max8Text", required: true }),
+      f({ name: "Information", isoId: "_P_luV9p-Ed-ak6NoX_4Aeg_858746099", xmlTag: "Inf", displayName: displayName("Information"), kind: "text", type: "Max35Text", required: true }),
+    ],
+  },
+  "FrequencyCodeAndDSSCode1Choice": {
+    name: "FrequencyCodeAndDSSCode1Choice",
+    isoId: "_Q7Vk5dp-Ed-ak6NoX_4Aeg_1533373090",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "FrequencyAsCode", isoId: "_Q7Vk5tp-Ed-ak6NoX_4Aeg_1533373116", xmlTag: "FrqcyAsCd", displayName: displayName("FrequencyAsCode"), kind: "code", type: "EventFrequency1Code", required: true }),
+      f({ name: "FrequencyAsDSS", isoId: "_Q7Vk59p-Ed-ak6NoX_4Aeg_1533373125", xmlTag: "FrqcyAsDSS", displayName: displayName("FrequencyAsDSS"), kind: "component", type: "GenericIdentification7", required: true }),
+    ],
   },
   "FullLegalNameModification1": {
     name: "FullLegalNameModification1",
@@ -15840,6 +20426,58 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       { name: "ExceptionalCashFlowIndicatorRule", isoId: "_8NmXsQdpEeSPHJIdUs1USg", text: "If Exceptional NetCashFlow Indicator is \"true\" or \"1\" (Yes), then CashInForecastDetails/ExceptionalCashFlowIndicator and CashOutForecastDetails/ ExceptionalCashFlowIndicator must be present." },
     ],
   },
+  "GeneratedReason3Code": {
+    name: "GeneratedReason3Code",
+    isoId: "_OAFTICRjEeOCueHDQ36sww",
+    kind: "code",
+    options: [{ value: "COLL", name: "CollateralManagement", isoId: "_PyMxASRjEeOCueHDQ36sww" }, { value: "CLAI", name: "MarketClaim", isoId: "_P2zkMSRjEeOCueHDQ36sww" }, { value: "OTHR", name: "Other", isoId: "_P7kvcSRjEeOCueHDQ36sww" }, { value: "RODE", name: "ReturnRefusedDumps", isoId: "_QACYsSRjEeOCueHDQ36sww" }, { value: "SPLI", name: "SplitShaping", isoId: "_QEgB8SRjEeOCueHDQ36sww" }, { value: "THRD", name: "ThirdParty", isoId: "_QIz6MSRjEeOCueHDQ36sww" }, { value: "TRAN", name: "Transformation", isoId: "_QNkeYSRjEeOCueHDQ36sww" }],
+  },
+  "GeneratedReasons5Choice": {
+    name: "GeneratedReasons5Choice",
+    isoId: "_N9GsgTqeEeWyoP0PbocV1Q",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_OcpIMTqeEeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "GeneratedReason3Code", required: true }),
+      f({ name: "Proprietary", isoId: "_OcpINTqeEeWyoP0PbocV1Q", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "GeneratedReason5": {
+    name: "GeneratedReason5",
+    isoId: "_OcpIOTqeEeWyoP0PbocV1Q",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "_O8oP0TqeEeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "GeneratedReasons5Choice", required: true }),
+      f({ name: "AdditionalReasonInformation", isoId: "_O8oP1TqeEeWyoP0PbocV1Q", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
+    ],
+  },
+  "GeneratedReasons6Choice": {
+    name: "GeneratedReasons6Choice",
+    isoId: "_6d7vVZNLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_6d7vV5NLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "GeneratedReason3Code", required: true }),
+      f({ name: "Proprietary", isoId: "_6d7vW5NLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "GeneratedStatus7Choice": {
+    name: "GeneratedStatus7Choice",
+    isoId: "_O8oP2TqeEeWyoP0PbocV1Q",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NoSpecifiedReason", isoId: "_PceNgTqeEeWyoP0PbocV1Q", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
+      f({ name: "Reason", isoId: "_PceNhTqeEeWyoP0PbocV1Q", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "GeneratedReason5", required: true }),
+    ],
+  },
+  "GenericIdentification5": {
+    name: "GenericIdentification5",
+    isoId: "_P_b9Wdp-Ed-ak6NoX_4Aeg_652282211",
+    kind: "component",
+    fields: [
+      f({ name: "Issuer", isoId: "_P_b9Wtp-Ed-ak6NoX_4Aeg_691069232", xmlTag: "Issr", displayName: displayName("Issuer"), kind: "text", type: "Max8Text", required: true }),
+      f({ name: "Information", isoId: "_P_b9W9p-Ed-ak6NoX_4Aeg_691068172", xmlTag: "Inf", displayName: displayName("Information"), kind: "text", type: "Exact4AlphaNumericText", required: true }),
+      f({ name: "Narrative", isoId: "_P_luUNp-Ed-ak6NoX_4Aeg_691069664", xmlTag: "Nrrtv", displayName: displayName("Narrative"), kind: "text", type: "Max35Text", required: false }),
+    ],
+  },
   "PartyType12Code": {
     name: "PartyType12Code",
     isoId: "_oci7cIn0EeS9F4Qrq_eaVA",
@@ -15864,6 +20502,24 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "ShortName", isoId: "_wh5ueYnzEeS9F4Qrq_eaVA", xmlTag: "ShrtNm", displayName: displayName("ShortName"), kind: "text", type: "Max35Text", required: false }),
     ],
   },
+  "GenericIdentification78": {
+    name: "GenericIdentification78",
+    isoId: "_Gb99wR78EeWW2ZT-VTzGvw",
+    kind: "component",
+    fields: [
+      f({ name: "Type", isoId: "_G3fcIx78EeWW2ZT-VTzGvw", xmlTag: "Tp", displayName: displayName("Type"), kind: "component", type: "GenericIdentification30", required: true }),
+      f({ name: "Identification", isoId: "_G3fcJR78EeWW2ZT-VTzGvw", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: false }),
+    ],
+  },
+  "GenericIdentification80": {
+    name: "GenericIdentification80",
+    isoId: "_9NxohznZEeWV5sr121Fc8A",
+    kind: "component",
+    fields: [
+      f({ name: "Type", isoId: "_9s3YRTnZEeWV5sr121Fc8A", xmlTag: "Tp", displayName: displayName("Type"), kind: "component", type: "GenericIdentification30", required: true }),
+      f({ name: "Identification", isoId: "_9s3YQznZEeWV5sr121Fc8A", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: false }),
+    ],
+  },
   "GenericIdentification81": {
     name: "GenericIdentification81",
     isoId: "_TukJISFVEeWgV9SQSyaAog",
@@ -15871,6 +20527,15 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     fields: [
       f({ name: "Identification", isoId: "_ULIwYyFVEeWgV9SQSyaAog", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: true }),
       f({ name: "IdentificationType", isoId: "_hjcOQCFVEeWgV9SQSyaAog", xmlTag: "IdTp", displayName: displayName("IdentificationType"), kind: "choice", type: "OtherIdentification3Choice", required: true }),
+    ],
+  },
+  "GenericIdentification85": {
+    name: "GenericIdentification85",
+    isoId: "_cdSQJ5KQEeWHWpTQn1FFVg",
+    kind: "component",
+    fields: [
+      f({ name: "Type", isoId: "_cdSQKZKQEeWHWpTQn1FFVg", xmlTag: "Tp", displayName: displayName("Type"), kind: "component", type: "GenericIdentification47", required: true }),
+      f({ name: "Identification", isoId: "_cdSQK5KQEeWHWpTQn1FFVg", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "RestrictedFINXMax30Text", required: false }),
     ],
   },
   "PartyAndCertificate7": {
@@ -16135,6 +20800,39 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "ConsolidationType", isoId: "_KtmHECDVEeWCLu74WLgP4w", xmlTag: "CnsldtnTp", displayName: displayName("ConsolidationType"), kind: "choice", type: "ConsolidationType1Choice", required: false }),
     ],
   },
+  "Registration2Code": {
+    name: "Registration2Code",
+    isoId: "_l3X10fIrEd-dOvqmSLSz5g",
+    kind: "code",
+    options: [{ value: "PTYH", name: "PartyHold", isoId: "_q5kOJGtdEeCY4-KZ9JEyUQ_105432583" }, { value: "CSDH", name: "CSDHold", isoId: "_q5kOJWtdEeCY4-KZ9JEyUQ_-891639770" }, { value: "CDEL", name: "ConditionalDelivery", isoId: "_q5kOJmtdEeCY4-KZ9JEyUQ_-914504853" }, { value: "CVAL", name: "CSDValidation", isoId: "_q5t_IGtdEeCY4-KZ9JEyUQ_7658457" }],
+  },
+  "Registration10Choice": {
+    name: "Registration10Choice",
+    isoId: "_zWwOFTqfEeWyoP0PbocV1Q",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_z2Jf0TqfEeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "Registration2Code", required: true }),
+      f({ name: "Proprietary", isoId: "_z2Jf0zqfEeWyoP0PbocV1Q", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "RegistrationReason5": {
+    name: "RegistrationReason5",
+    isoId: "_y3EodTqfEeWyoP0PbocV1Q",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "_zWwOETqfEeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "Registration10Choice", required: true }),
+      f({ name: "AdditionalInformation", isoId: "_zWwOEzqfEeWyoP0PbocV1Q", xmlTag: "AddtlInf", displayName: displayName("AdditionalInformation"), kind: "text", type: "Max210Text", required: false }),
+    ],
+  },
+  "HoldIndicator6": {
+    name: "HoldIndicator6",
+    isoId: "_yW7v0TqfEeWyoP0PbocV1Q",
+    kind: "component",
+    fields: [
+      f({ name: "Indicator", isoId: "_y3EocTqfEeWyoP0PbocV1Q", xmlTag: "Ind", displayName: displayName("Indicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+      f({ name: "Reason", isoId: "_y3EoczqfEeWyoP0PbocV1Q", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "RegistrationReason5", required: false, repeat: { min: 0, max: null } }),
+    ],
+  },
   "IdentificationAssignment4": {
     name: "IdentificationAssignment4",
     isoId: "_0_d1wTEyEe6g-ffJsqGiSA",
@@ -16212,6 +20910,18 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "InstructionInformation", isoId: "_8xrTw7t5Eeq_cfXrH83Rcw", xmlTag: "InstrInf", displayName: displayName("InstructionInformation"), kind: "text", type: "Max140Text", required: false }),
     ],
   },
+  "InstructionProcessingStatus1Code": {
+    name: "InstructionProcessingStatus1Code",
+    isoId: "_aXlc6dp-Ed-ak6NoX_4Aeg_486709953",
+    kind: "code",
+    options: [{ value: "CAN1", name: "Cancellation1", isoId: "_aXum0Np-Ed-ak6NoX_4Aeg_2131977388" }, { value: "CAN2", name: "Cancellation2", isoId: "_aXum0dp-Ed-ak6NoX_4Aeg_-510362400" }, { value: "CAN3", name: "Cancellation3", isoId: "_aXum0tp-Ed-ak6NoX_4Aeg_-802320138" }, { value: "CAND", name: "Cancelled", isoId: "_aXum09p-Ed-ak6NoX_4Aeg_-624201466" }, { value: "CANO", name: "CancelledByAnotherParty", isoId: "_aXum1Np-Ed-ak6NoX_4Aeg_1134905035" }, { value: "CANP", name: "PendingCancellation", isoId: "_aXum1dp-Ed-ak6NoX_4Aeg_-1507434753" }, { value: "CGEN", name: "Generated", isoId: "_aXum1tp-Ed-ak6NoX_4Aeg_-1799392491" }, { value: "COSE", name: "FullyExecutedConfirmationSent", isoId: "_aXum19p-Ed-ak6NoX_4Aeg_-1621273819" }, { value: "CPRC", name: "CancellationRequested", isoId: "_aXum2Np-Ed-ak6NoX_4Aeg_137832682" }, { value: "DFLA", name: "DefaultAction", isoId: "_aXum2dp-Ed-ak6NoX_4Aeg_1790460190" }, { value: "DONE", name: "Done", isoId: "_aX4X0Np-Ed-ak6NoX_4Aeg_1498502452" }, { value: "DONF", name: "PartiallyFilledOrder", isoId: "_aX4X0dp-Ed-ak6NoX_4Aeg_1676621124" }, { value: "EXCH", name: "ReceivedAtStockExchange", isoId: "_aX4X0tp-Ed-ak6NoX_4Aeg_-859239671" }, { value: "EXSE", name: "FullyExecutedExecutionSent", isoId: "_aX4X09p-Ed-ak6NoX_4Aeg_793387837" }, { value: "FORC", name: "ForcedRejection", isoId: "_aX4X1Np-Ed-ak6NoX_4Aeg_501430099" }, { value: "FUTU", name: "Future", isoId: "_aX4X1dp-Ed-ak6NoX_4Aeg_679548771" }, { value: "INTE", name: "ReceivedAtIntermediary", isoId: "_aX4X1tp-Ed-ak6NoX_4Aeg_-1856312024" }, { value: "NOTC", name: "AlreadyMatchedAndAffirmed", isoId: "_aX4X19p-Ed-ak6NoX_4Aeg_-495642254" }, { value: "OPOD", name: "OpenOrder", isoId: "_aX4X2Np-Ed-ak6NoX_4Aeg_-317523582" }, { value: "OVER", name: "OverAllocated", isoId: "_aX4X2dp-Ed-ak6NoX_4Aeg_1441582919" }, { value: "PACK", name: "AcknowledgedAccepted", isoId: "_aX4X2tp-Ed-ak6NoX_4Aeg_-1200756869" }, { value: "PAFI", name: "PartialFill", isoId: "_aYCI0Np-Ed-ak6NoX_4Aeg_-1492714607" }, { value: "PART", name: "PartialCancel", isoId: "_aYCI0dp-Ed-ak6NoX_4Aeg_-1314595935" }, { value: "PPRC", name: "PendingProcessing", isoId: "_aYCI0tp-Ed-ak6NoX_4Aeg_444510566" }, { value: "REJT", name: "Rejected", isoId: "_aYCI09p-Ed-ak6NoX_4Aeg_2097138074" }, { value: "REPR", name: "InRepair", isoId: "_aYCI1Np-Ed-ak6NoX_4Aeg_1805180336" }, { value: "SESE", name: "SettlementInstructionSent", isoId: "_aYCI1dp-Ed-ak6NoX_4Aeg_1983299008" }, { value: "STIN", name: "StandingInstruction", isoId: "_aYCI1tp-Ed-ak6NoX_4Aeg_-552561787" }, { value: "SUSP", name: "TradingSuspendedByStockExchange", isoId: "_aYCI19p-Ed-ak6NoX_4Aeg_1100065721" }, { value: "TREA", name: "Treated", isoId: "_aYCI2Np-Ed-ak6NoX_4Aeg_808107983" }, { value: "UNDE", name: "UnderAllocated", isoId: "_aYCI2dp-Ed-ak6NoX_4Aeg_986226655" }, { value: "MPRC", name: "ModificationRequested", isoId: "_aYLSwNp-Ed-ak6NoX_4Aeg_138473753" }],
+  },
+  "InstructionQueryType1Code": {
+    name: "InstructionQueryType1Code",
+    isoId: "_jjvIle5NEeCisYr99QEiWA_173504363",
+    kind: "code",
+    options: [{ value: "SETT", name: "SettlementInstruction", isoId: "_jjvIlu5NEeCisYr99QEiWA_351623035" }, { value: "IPOS", name: "IntraPositionMovement", isoId: "_jj4SgO5NEeCisYr99QEiWA_1818771798" }, { value: "BOTH", name: "SettlementAndIntraPosition", isoId: "_jj4Sge5NEeCisYr99QEiWA_-645449318" }],
+  },
   "Insurance1Code": {
     name: "Insurance1Code",
     isoId: "_BURwYBQbEeKebsB9eKJSkA",
@@ -16225,6 +20935,75 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     choiceOptions: [
       f({ name: "Code", isoId: "_7-ZWYSGSEeWKAaDJcYGKLw", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "Insurance1Code", required: true }),
       f({ name: "Proprietary", isoId: "_7-ZWYyGSEeWKAaDJcYGKLw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "InvestmentFundRole2Code": {
+    name: "InvestmentFundRole2Code",
+    isoId: "_acDtMNp-Ed-ak6NoX_4Aeg_1035600722",
+    kind: "code",
+    options: [{ value: "FMCO", name: "FundManagementCompany", isoId: "_acDtMdp-Ed-ak6NoX_4Aeg_-1672757374" }, { value: "REGI", name: "Registrar", isoId: "_acDtMtp-Ed-ak6NoX_4Aeg_-1672756984" }, { value: "TRAG", name: "TransferAgent", isoId: "_acDtM9p-Ed-ak6NoX_4Aeg_-1672756949" }, { value: "INTR", name: "Intermediary", isoId: "_acDtNNp-Ed-ak6NoX_4Aeg_-1672756931" }, { value: "DIST", name: "Distributor", isoId: "_acDtNdp-Ed-ak6NoX_4Aeg_-1672756906" }, { value: "CONC", name: "Concentrator", isoId: "_acDtNtp-Ed-ak6NoX_4Aeg_-1672756846" }, { value: "UCL1", name: "UnderlyingClient1", isoId: "_acDtN9p-Ed-ak6NoX_4Aeg_-712294595" }, { value: "UCL2", name: "UnderlyingClient2", isoId: "_acDtONp-Ed-ak6NoX_4Aeg_-712294458" }, { value: "TRAN", name: "TransmittingAgent", isoId: "_acDtOdp-Ed-ak6NoX_4Aeg_-712294198" }],
+  },
+  "Intermediary11": {
+    name: "Intermediary11",
+    isoId: "_QOMLCdp-Ed-ak6NoX_4Aeg_-1686201292",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_QOMLCtp-Ed-ak6NoX_4Aeg_-1686201162", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "PartyIdentification2Choice", required: true }),
+      f({ name: "Account", isoId: "_QOMLC9p-Ed-ak6NoX_4Aeg_-1685280716", xmlTag: "Acct", displayName: displayName("Account"), kind: "component", type: "Account7", required: false }),
+      f({ name: "Role", isoId: "_QOV8ANp-Ed-ak6NoX_4Aeg_-1686201085", xmlTag: "Role", displayName: displayName("Role"), kind: "code", type: "InvestmentFundRole2Code", required: false }),
+      f({ name: "ExtendedRole", isoId: "_QOV8Adp-Ed-ak6NoX_4Aeg_-1686201067", xmlTag: "XtndedRole", displayName: displayName("ExtendedRole"), kind: "text", type: "Extended350Code", required: false }),
+    ],
+    rules: [
+      { name: "RoleOrExtendedRoleRule", isoId: "_QOV8Atp-Ed-ak6NoX_4Aeg_-1685280646", text: "Either Role or ExtendedRole may be present, but not both.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/ExtendedRole"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/Role"}]}} },
+    ],
+  },
+  "Role6Choice": {
+    name: "Role6Choice",
+    isoId: "_eSQcQTm9EeWV5sr121Fc8A",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_exy38Tm9EeWV5sr121Fc8A", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "InvestmentFundRole2Code", required: true }),
+      f({ name: "Proprietary", isoId: "_exy38zm9EeWV5sr121Fc8A", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+      f({ name: "Text", isoId: "_exy39Tm9EeWV5sr121Fc8A", xmlTag: "Txt", displayName: displayName("Text"), kind: "text", type: "Max350Text", required: true }),
+    ],
+  },
+  "Intermediary44": {
+    name: "Intermediary44",
+    isoId: "_AXBpQdLDEeiN28wlpBQScw",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_AoInY9LDEeiN28wlpBQScw", xmlTag: "Id", displayName: displayName("Identification"), kind: "component", type: "PartyIdentification136", required: true }),
+      f({ name: "Role", isoId: "_AoInZdLDEeiN28wlpBQScw", xmlTag: "Role", displayName: displayName("Role"), kind: "choice", type: "Role6Choice", required: false }),
+      f({ name: "Account", isoId: "_AoInZ9LDEeiN28wlpBQScw", xmlTag: "Acct", displayName: displayName("Account"), kind: "component", type: "Account29", required: false }),
+    ],
+  },
+  "PartyIdentification157": {
+    name: "PartyIdentification157",
+    isoId: "_Z0x6xffVEeiNZp_PtLohLw",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_Z0x6x_fVEeiNZp_PtLohLw", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "PartyIdentification137Choice", required: true }),
+      f({ name: "LEI", isoId: "_Z0x6yffVEeiNZp_PtLohLw", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
+    ],
+  },
+  "Role7Choice": {
+    name: "Role7Choice",
+    isoId: "_5WyhAZNLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_5WyhA5NLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "InvestmentFundRole2Code", required: true }),
+      f({ name: "Proprietary", isoId: "_5WyhBZNLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+      f({ name: "Text", isoId: "_5WyhB5NLEeWGlc8L7oPDIg", xmlTag: "Txt", displayName: displayName("Text"), kind: "text", type: "RestrictedFINXMax350Text", required: true }),
+    ],
+  },
+  "Intermediary45": {
+    name: "Intermediary45",
+    isoId: "_Z0x7H_fVEeiNZp_PtLohLw",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_Z0x7I_fVEeiNZp_PtLohLw", xmlTag: "Id", displayName: displayName("Identification"), kind: "component", type: "PartyIdentification157", required: true }),
+      f({ name: "Role", isoId: "_Z0x7JffVEeiNZp_PtLohLw", xmlTag: "Role", displayName: displayName("Role"), kind: "choice", type: "Role7Choice", required: false }),
+      f({ name: "Account", isoId: "_Z0x7J_fVEeiNZp_PtLohLw", xmlTag: "Acct", displayName: displayName("Account"), kind: "component", type: "Account30", required: false }),
     ],
   },
   "InvestmentFundRole6Code": {
@@ -16302,24 +21081,6 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Long", isoId: "_QrP6dtp-Ed-ak6NoX_4Aeg_1752980794", xmlTag: "Lng", displayName: displayName("Long"), kind: "text", type: "Exact5NumericText", required: true }),
     ],
   },
-  "Period2": {
-    name: "Period2",
-    isoId: "_T5oiANp-Ed-ak6NoX_4Aeg_1497161223",
-    kind: "component",
-    fields: [
-      f({ name: "FromDate", isoId: "_T5oiAdp-Ed-ak6NoX_4Aeg_1497161242", xmlTag: "FrDt", displayName: displayName("FromDate"), kind: "date", type: "ISODate", required: true }),
-      f({ name: "ToDate", isoId: "_T5oiAtp-Ed-ak6NoX_4Aeg_1497161560", xmlTag: "ToDt", displayName: displayName("ToDate"), kind: "date", type: "ISODate", required: true }),
-    ],
-  },
-  "Period7Choice": {
-    name: "Period7Choice",
-    isoId: "_VEuSoTwGEemGDJYTly2NCA",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "FromDateTimeToDateTime", isoId: "_VQk9UTwGEemGDJYTly2NCA", xmlTag: "FrDtTmToDtTm", displayName: displayName("FromDateTimeToDateTime"), kind: "component", type: "DateTimePeriod1", required: true }),
-      f({ name: "FromDateToDate", isoId: "_VQk9WTwGEemGDJYTly2NCA", xmlTag: "FrDtToDt", displayName: displayName("FromDateToDate"), kind: "component", type: "Period2", required: true }),
-    ],
-  },
   "MovementResponseType1Code": {
     name: "MovementResponseType1Code",
     isoId: "_jQzlhe5NEeCisYr99QEiWA_-503094567",
@@ -16376,6 +21137,54 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     ],
     rules: [
       { name: "ReportNumberRule", isoId: "_iEJhITp_EemwKdP955WBJQ", text: "If Long number (Exact5NumericTest) is used, then the report must be a delta reports (UpdateType: DELT).|If the report has multiple pages, then the ReportNumber must remain the same through all the pages. It is a unique number to the report.|Two reports of the same type sent one after the other to the same receiver in relation to the same safekeeping account must have different ReportNumbers. For example, a daily report sent on day 1 would have ReportNumber 001, on day 2, 002, etc." },
+    ],
+  },
+  "SecuritiesBalanceType11Code": {
+    name: "SecuritiesBalanceType11Code",
+    isoId: "_Y_N7xtp-Ed-ak6NoX_4Aeg_1932339266",
+    kind: "code",
+    options: [{ value: "BLOK", name: "Blocked", isoId: "_Y_N7x9p-Ed-ak6NoX_4Aeg_-1131601960" }, { value: "AWAS", name: "AvailableWithNoAdditionalStatus", isoId: "_Y_N7yNp-Ed-ak6NoX_4Aeg_-1045306225" }, { value: "AVAI", name: "Available", isoId: "_Y_XswNp-Ed-ak6NoX_4Aeg_-720188718" }, { value: "BLCA", name: "BlockedCorporateAction", isoId: "_Y_Xswdp-Ed-ak6NoX_4Aeg_-2095113730" }, { value: "BLOT", name: "BlockedTrading", isoId: "_Y_Xswtp-Ed-ak6NoX_4Aeg_-1641026461" }, { value: "BLOV", name: "BlockedAuthenticity", isoId: "_Y_Xsw9p-Ed-ak6NoX_4Aeg_-1754865527" }, { value: "BORR", name: "Borrowed", isoId: "_Y_XsxNp-Ed-ak6NoX_4Aeg_-1652125238" }, { value: "COLI", name: "CollateralIn", isoId: "_Y_Xsxdp-Ed-ak6NoX_4Aeg_1736267075" }, { value: "COLO", name: "CollateralOut", isoId: "_Y_Xsxtp-Ed-ak6NoX_4Aeg_1211316364" }, { value: "COLA", name: "EligibleForCollateralPurposes", isoId: "_Y_Xsx9p-Ed-ak6NoX_4Aeg_1097477298" }, { value: "LOAN", name: "OnLoan", isoId: "_Y_XsyNp-Ed-ak6NoX_4Aeg_1665403633" }, { value: "MARG", name: "DerivativesMargin", isoId: "_Y_Xsydp-Ed-ak6NoX_4Aeg_1229074531" }, { value: "PECA", name: "PendingCorporateActionReceipt", isoId: "_Y_Xsytp-Ed-ak6NoX_4Aeg_-1265093317" }, { value: "PEDA", name: "PendingCorporateActionDelivery", isoId: "_Y_g2sNp-Ed-ak6NoX_4Aeg_1299844056" }, { value: "PLED", name: "Pledged", isoId: "_Y_g2sdp-Ed-ak6NoX_4Aeg_1511122497" }, { value: "REGO", name: "OutForRegistration", isoId: "_Y_g2stp-Ed-ak6NoX_4Aeg_-710112802" }, { value: "RSTR", name: "Restricted", isoId: "_Y_g2s9p-Ed-ak6NoX_4Aeg_-823951868" }, { value: "OTHR", name: "Unclassified", isoId: "_Y_g2tNp-Ed-ak6NoX_4Aeg_704123820" }, { value: "TRAN", name: "InTransshipment", isoId: "_Y_g2tdp-Ed-ak6NoX_4Aeg_590284754" }, { value: "DRAW", name: "Drawn", isoId: "_Y_g2ttp-Ed-ak6NoX_4Aeg_69091974" }, { value: "CLEN", name: "TaxExempt", isoId: "_Y_g2t9p-Ed-ak6NoX_4Aeg_-44747092" }, { value: "DIRT", name: "NonTaxExempt", isoId: "_Y_g2uNp-Ed-ak6NoX_4Aeg_1744158115" }, { value: "NOMI", name: "Registered", isoId: "_Y_qnsNp-Ed-ak6NoX_4Aeg_1630319049" }, { value: "SPOS", name: "StreetPosition", isoId: "_Y_qnsdp-Ed-ak6NoX_4Aeg_1228839835" }, { value: "UNRG", name: "Unregistered", isoId: "_Y_qnstp-Ed-ak6NoX_4Aeg_1115000769" }, { value: "ISSU", name: "Issued", isoId: "_Y_qns9p-Ed-ak6NoX_4Aeg_1671828327" }, { value: "QUAS", name: "QuasiIssued", isoId: "_Y_qntNp-Ed-ak6NoX_4Aeg_1557989261" }, { value: "LODE", name: "PendingOnLoanDelivery", isoId: "_Y_qntdp-Ed-ak6NoX_4Aeg_2091002022" }],
+  },
+  "SecuritiesBalanceType6Choice": {
+    name: "SecuritiesBalanceType6Choice",
+    isoId: "_qYOkNTnsEeWfSKvvZlhRKg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_q5Z-oTnsEeWfSKvvZlhRKg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "SecuritiesBalanceType11Code", required: true }),
+      f({ name: "Proprietary", isoId: "_q5Z-qTnsEeWfSKvvZlhRKg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "QuantityBreakdown32": {
+    name: "QuantityBreakdown32",
+    isoId: "_4zEdITnsEeWfSKvvZlhRKg",
+    kind: "component",
+    fields: [
+      f({ name: "LotNumber", isoId: "_5TWftTnsEeWfSKvvZlhRKg", xmlTag: "LotNb", displayName: displayName("LotNumber"), kind: "component", type: "GenericIdentification37", required: false }),
+      f({ name: "LotQuantity", isoId: "_5TWfvTnsEeWfSKvvZlhRKg", xmlTag: "LotQty", displayName: displayName("LotQuantity"), kind: "choice", type: "FinancialInstrumentQuantity1Choice", required: false }),
+      f({ name: "SecuritiesSubBalanceType", isoId: "_5TWfxTnsEeWfSKvvZlhRKg", xmlTag: "SctiesSubBalTp", displayName: displayName("SecuritiesSubBalanceType"), kind: "component", type: "GenericIdentification30", required: false }),
+    ],
+  },
+  "SecuritiesSubBalanceTypeAndQuantityBreakdown3": {
+    name: "SecuritiesSubBalanceTypeAndQuantityBreakdown3",
+    isoId: "_p3f1sTnsEeWfSKvvZlhRKg",
+    kind: "component",
+    fields: [
+      f({ name: "Type", isoId: "_qYOkMTnsEeWfSKvvZlhRKg", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "SecuritiesBalanceType6Choice", required: true }),
+      f({ name: "QuantityBreakdown", isoId: "_qYOkMznsEeWfSKvvZlhRKg", xmlTag: "QtyBrkdwn", displayName: displayName("QuantityBreakdown"), kind: "component", type: "QuantityBreakdown32", required: false, repeat: { min: 0, max: null } }),
+    ],
+  },
+  "IntraPosition6": {
+    name: "IntraPosition6",
+    isoId: "_TgKYgWp9EemmaZLSPtWX5A",
+    kind: "component",
+    fields: [
+      f({ name: "FinancialInstrumentIdentification", isoId: "_TryZsWp9EemmaZLSPtWX5A", xmlTag: "FinInstrmId", displayName: displayName("FinancialInstrumentIdentification"), kind: "component", type: "SecurityIdentification19", required: true }),
+      f({ name: "SettlementQuantity", isoId: "_TryZuWp9EemmaZLSPtWX5A", xmlTag: "SttlmQty", displayName: displayName("SettlementQuantity"), kind: "choice", type: "FinancialInstrumentQuantity1Choice", required: true }),
+      f({ name: "SettlementDate", isoId: "_TryZu2p9EemmaZLSPtWX5A", xmlTag: "SttlmDt", displayName: displayName("SettlementDate"), kind: "choice", type: "DateAndDateTime2Choice", required: true }),
+      f({ name: "BalanceFrom", isoId: "_TryZw2p9EemmaZLSPtWX5A", xmlTag: "BalFr", displayName: displayName("BalanceFrom"), kind: "component", type: "SecuritiesSubBalanceTypeAndQuantityBreakdown3", required: false }),
+      f({ name: "BalanceTo", isoId: "_TryZy2p9EemmaZLSPtWX5A", xmlTag: "BalTo", displayName: displayName("BalanceTo"), kind: "component", type: "SecuritiesSubBalanceTypeAndQuantityBreakdown3", required: false }),
+      f({ name: "SecuritiesSubBalanceIdentification", isoId: "_TryZ02p9EemmaZLSPtWX5A", xmlTag: "SctiesSubBalId", displayName: displayName("SecuritiesSubBalanceIdentification"), kind: "component", type: "GenericIdentification37", required: false }),
+      f({ name: "Priority", isoId: "_TryZ1Wp9EemmaZLSPtWX5A", xmlTag: "Prty", displayName: displayName("Priority"), kind: "choice", type: "PriorityNumeric4Choice", required: false }),
     ],
   },
   "InvestigationActionReason1Choice": {
@@ -16492,6 +21301,18 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Proprietary", isoId: "_CXmCo1RtEe23M4WgERMsYw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
     ],
   },
+  "InvestmentAccount25": {
+    name: "InvestmentAccount25",
+    isoId: "_Rw1pgdp-Ed-ak6NoX_4Aeg_-1767174220",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_Rw1pgtp-Ed-ak6NoX_4Aeg_-1767174201", xmlTag: "Id", displayName: displayName("Identification"), kind: "component", type: "AccountIdentification1", required: true }),
+      f({ name: "Name", isoId: "_Rw1pg9p-Ed-ak6NoX_4Aeg_-1767174185", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "Designation", isoId: "_Rw1phNp-Ed-ak6NoX_4Aeg_-1767174167", xmlTag: "Dsgnt", displayName: displayName("Designation"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "IntermediaryInformation", isoId: "_Rw1phdp-Ed-ak6NoX_4Aeg_-996150055", xmlTag: "IntrmyInf", displayName: displayName("IntermediaryInformation"), kind: "component", type: "Intermediary11", required: false, repeat: { min: 0, max: 10 } }),
+      f({ name: "AccountServicer", isoId: "_Rw1phtp-Ed-ak6NoX_4Aeg_-1767174107", xmlTag: "AcctSvcr", displayName: displayName("AccountServicer"), kind: "choice", type: "PartyIdentification2Choice", required: false }),
+    ],
+  },
   "InvestmentAccountCategory1Code": {
     name: "InvestmentAccountCategory1Code",
     isoId: "_FWTfYBRIEeOKWo1NF21OVw",
@@ -16521,6 +21342,113 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     isoId: "_EfM6UF92EeS7xuKaq75oiQ",
     kind: "code",
     options: [{ value: "CONC", name: "Concentrator", isoId: "_KLQeMV92EeS7xuKaq75oiQ" }, { value: "DIST", name: "Distributor", isoId: "_KxfXwV92EeS7xuKaq75oiQ" }, { value: "FMCO", name: "FundManagementCompany", isoId: "_La2d0V92EeS7xuKaq75oiQ" }, { value: "INTR", name: "Intermediary", isoId: "_MBiDUV92EeS7xuKaq75oiQ" }, { value: "PAYI", name: "PayingAgent", isoId: "_NkBJwV92EeS7xuKaq75oiQ" }, { value: "TRAG", name: "TransferAgent", isoId: "_OiXBUV92EeS7xuKaq75oiQ" }, { value: "CUST", name: "Custodian", isoId: "_9R7KwZy_EeSfkt2rmMY-dQ" }, { value: "CACO", name: "CashCorrespondent", isoId: "_-GJdAZy_EeSfkt2rmMY-dQ" }, { value: "FACT", name: "FundAccountant", isoId: "_-0HWQZy_EeSfkt2rmMY-dQ" }, { value: "INVE", name: "InvestmentManager", isoId: "__cb6gZy_EeSfkt2rmMY-dQ" }, { value: "INVS", name: "Investor", isoId: "__7OvUZy_EeSfkt2rmMY-dQ" }],
+  },
+  "TransactionType2Code": {
+    name: "TransactionType2Code",
+    isoId: "_Yuh0Zdp-Ed-ak6NoX_4Aeg_-872010891",
+    kind: "code",
+    options: [{ value: "REDM", name: "Redemption", isoId: "_Yuh0Ztp-Ed-ak6NoX_4Aeg_-756571607" }, { value: "SUBS", name: "Subscription", isoId: "_Yuh0Z9p-Ed-ak6NoX_4Aeg_-754722916" }, { value: "SSPL", name: "SubscriptionSavingsPlan", isoId: "_Yuh0aNp-Ed-ak6NoX_4Aeg_-746412148" }, { value: "RWPL", name: "RedemptionWithdrawingPlan", isoId: "_YurlYNp-Ed-ak6NoX_4Aeg_-745487445" }, { value: "TRIN", name: "TransferIn", isoId: "_YurlYdp-Ed-ak6NoX_4Aeg_-732559796" }, { value: "TOUT", name: "TransferOut", isoId: "_YurlYtp-Ed-ak6NoX_4Aeg_-731634274" }, { value: "SWII", name: "SwitchIn", isoId: "_YurlY9p-Ed-ak6NoX_4Aeg_-384390981" }, { value: "SWIO", name: "SwitchOut", isoId: "_YurlZNp-Ed-ak6NoX_4Aeg_-372387112" }, { value: "SUAA", name: "SubscriptionAssetAllocation", isoId: "_YurlZdp-Ed-ak6NoX_4Aeg_-690818303" }, { value: "REAA", name: "RedemptionAssetAllocation", isoId: "_YurlZtp-Ed-ak6NoX_4Aeg_-690817720" }],
+  },
+  "TransactionStatus1Code": {
+    name: "TransactionStatus1Code",
+    isoId: "_zdcnZQ93EeGeV5vP7Mvdig_-110011060",
+    kind: "code",
+    options: [{ value: "RVSL", name: "Reversal", isoId: "_zdmYYA93EeGeV5vP7Mvdig_-1941849246" }, { value: "REBO", name: "Rebooked", isoId: "_zdmYYQ93EeGeV5vP7Mvdig_-595137067" }, { value: "CANC", name: "Cancelled", isoId: "_zdmYYg93EeGeV5vP7Mvdig_880282350" }],
+  },
+  "ReversalCode": {
+    name: "ReversalCode",
+    isoId: "_Y-Bo8tp-Ed-ak6NoX_4Aeg_450609101",
+    kind: "code",
+    options: [{ value: "RVCD", name: "ReversalCredit", isoId: "_Y-Bo89p-Ed-ak6NoX_4Aeg_499553797" }, { value: "RVDB", name: "ReversalDebit", isoId: "_Y-Bo9Np-Ed-ak6NoX_4Aeg_499553857" }],
+  },
+  "PriceMethod1Code": {
+    name: "PriceMethod1Code",
+    isoId: "_aIreMNp-Ed-ak6NoX_4Aeg_-1724055266",
+    kind: "code",
+    options: [{ value: "FORW", name: "ForwardPrice", isoId: "_aIreMdp-Ed-ak6NoX_4Aeg_-1724055265" }, { value: "HIST", name: "HistoricalPrice", isoId: "_aIreMtp-Ed-ak6NoX_4Aeg_-1724055264" }],
+  },
+  "UnitPrice11": {
+    name: "UnitPrice11",
+    isoId: "_QfLNU9p-Ed-ak6NoX_4Aeg_1382237696",
+    kind: "component",
+    fields: [
+      f({ name: "Type", isoId: "_QfLNVNp-Ed-ak6NoX_4Aeg_1382237940", xmlTag: "Tp", displayName: displayName("Type"), kind: "code", type: "TypeOfPrice10Code", required: false }),
+      f({ name: "ExtendedType", isoId: "_QfLNVdp-Ed-ak6NoX_4Aeg_-1892239581", xmlTag: "XtndedTp", displayName: displayName("ExtendedType"), kind: "text", type: "Extended350Code", required: false }),
+      f({ name: "Value", isoId: "_QfLNVtp-Ed-ak6NoX_4Aeg_1382237957", xmlTag: "Val", displayName: displayName("Value"), kind: "component", type: "PriceValue1", required: true }),
+      f({ name: "PriceMethod", isoId: "_QfLNV9p-Ed-ak6NoX_4Aeg_1382237974", xmlTag: "PricMtd", displayName: displayName("PriceMethod"), kind: "code", type: "PriceMethod1Code", required: false }),
+    ],
+    rules: [
+      { name: "TypeOrExtendedTypeRule", isoId: "_QfLNWNp-Ed-ak6NoX_4Aeg_-1834058329", text: "Either Type or ExtendedType must be present, but not both.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/Type"},{"op":"Presence","path":"/ExtendedType"}]}} },
+      { name: "TypeOrExtendedTypeRuleNotBoth", isoId: "_QfLNWNp-Ed-ak6NoX_4Aeg_-1834058329~NotBoth", text: "Either Type or ExtendedType must be present, but not both.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/ExtendedType"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/Type"}]}} },
+    ],
+  },
+  "InvestmentFundTransaction3": {
+    name: "InvestmentFundTransaction3",
+    isoId: "_R6YAANp-Ed-ak6NoX_4Aeg_-1110016344",
+    kind: "component",
+    fields: [
+      f({ name: "TransactionType", isoId: "_R6YAAdp-Ed-ak6NoX_4Aeg_-1110016318", xmlTag: "TxTp", displayName: displayName("TransactionType"), kind: "code", type: "TransactionType2Code", required: false }),
+      f({ name: "ExtendedTransactionType", isoId: "_R6YAAtp-Ed-ak6NoX_4Aeg_-1995999534", xmlTag: "XtndedTxTp", displayName: displayName("ExtendedTransactionType"), kind: "text", type: "Extended350Code", required: false }),
+      f({ name: "CorporateActionEventType", isoId: "_R6YAA9p-Ed-ak6NoX_4Aeg_-1110016302", xmlTag: "CorpActnEvtTp", displayName: displayName("CorporateActionEventType"), kind: "code", type: "CorporateActionEventType1Code", required: false }),
+      f({ name: "ExtendedCorporateActionEventType", isoId: "_R6YABNp-Ed-ak6NoX_4Aeg_-2098509833", xmlTag: "XtndedCorpActnEvtTp", displayName: displayName("ExtendedCorporateActionEventType"), kind: "text", type: "Extended350Code", required: false }),
+      f({ name: "BookingStatus", isoId: "_R6YABdp-Ed-ak6NoX_4Aeg_-1110016284", xmlTag: "BookgSts", displayName: displayName("BookingStatus"), kind: "code", type: "TransactionStatus1Code", required: false }),
+      f({ name: "MasterReference", isoId: "_R6YABtp-Ed-ak6NoX_4Aeg_-1109096270", xmlTag: "MstrRef", displayName: displayName("MasterReference"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "OrderReference", isoId: "_R6hJ8Np-Ed-ak6NoX_4Aeg_-1109096218", xmlTag: "OrdrRef", displayName: displayName("OrderReference"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "ClientReference", isoId: "_R6hJ8dp-Ed-ak6NoX_4Aeg_1168308444", xmlTag: "ClntRef", displayName: displayName("ClientReference"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "DealReference", isoId: "_R6hJ8tp-Ed-ak6NoX_4Aeg_-1109096140", xmlTag: "DealRef", displayName: displayName("DealReference"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "LegIdentification", isoId: "_R6hJ89p-Ed-ak6NoX_4Aeg_-1109096098", xmlTag: "LegId", displayName: displayName("LegIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "LegExecutionIdentification", isoId: "_R6hJ9Np-Ed-ak6NoX_4Aeg_-1109095588", xmlTag: "LegExctnId", displayName: displayName("LegExecutionIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "OrderDateTime", isoId: "_R6hJ9dp-Ed-ak6NoX_4Aeg_-1109096080", xmlTag: "OrdrDtTm", displayName: displayName("OrderDateTime"), kind: "datetime", type: "ISODateTime", required: false }),
+      f({ name: "SettledTransactionIndicator", isoId: "_R6hJ9tp-Ed-ak6NoX_4Aeg_-1109096045", xmlTag: "SttldTxInd", displayName: displayName("SettledTransactionIndicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+      f({ name: "RegisteredTransactionIndicator", isoId: "_R6hJ99p-Ed-ak6NoX_4Aeg_-1109096020", xmlTag: "RegdTxInd", displayName: displayName("RegisteredTransactionIndicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+      f({ name: "UnitsQuantity", isoId: "_R6hJ-Np-Ed-ak6NoX_4Aeg_-1109096003", xmlTag: "UnitsQty", displayName: displayName("UnitsQuantity"), kind: "component", type: "FinancialInstrumentQuantity1", required: true }),
+      f({ name: "CreditDebit", isoId: "_R6hJ-dp-Ed-ak6NoX_4Aeg_-1109095985", xmlTag: "CdtDbt", displayName: displayName("CreditDebit"), kind: "code", type: "CreditDebitCode", required: true }),
+      f({ name: "Reversal", isoId: "_R6q68Np-Ed-ak6NoX_4Aeg_-1109095743", xmlTag: "Rvsl", displayName: displayName("Reversal"), kind: "code", type: "ReversalCode", required: false }),
+      f({ name: "SettlementAmount", isoId: "_R6q68dp-Ed-ak6NoX_4Aeg_-1109095726", xmlTag: "SttlmAmt", displayName: displayName("SettlementAmount"), kind: "amount", type: "ActiveCurrencyAndAmount", required: false }),
+      f({ name: "SettlementDate", isoId: "_R6q68tp-Ed-ak6NoX_4Aeg_-1109095691", xmlTag: "SttlmDt", displayName: displayName("SettlementDate"), kind: "date", type: "ISODate", required: false }),
+      f({ name: "TradeDateTime", isoId: "_R6q689p-Ed-ak6NoX_4Aeg_-1109095673", xmlTag: "TradDtTm", displayName: displayName("TradeDateTime"), kind: "choice", type: "DateAndDateTimeChoice", required: true }),
+      f({ name: "CumDividendIndicator", isoId: "_R6q69Np-Ed-ak6NoX_4Aeg_-1109095631", xmlTag: "CumDvddInd", displayName: displayName("CumDividendIndicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+      f({ name: "PartiallyExecutedIndicator", isoId: "_R6q69dp-Ed-ak6NoX_4Aeg_-1109095613", xmlTag: "PrtlyExctdInd", displayName: displayName("PartiallyExecutedIndicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+      f({ name: "PriceDetails", isoId: "_R6q69tp-Ed-ak6NoX_4Aeg_-1109095303", xmlTag: "PricDtls", displayName: displayName("PriceDetails"), kind: "component", type: "UnitPrice11", required: false }),
+    ],
+    rules: [
+      { name: "TransactionTypeLegIdentificationRule", isoId: "_R6q699p-Ed-ak6NoX_4Aeg_-1109095270", text: "If TransactionType is SWII or SWIO, then LegIdentification is optional. If TransactionType is neither SWII nor SWIO, then LegIdentification is not allowed." },
+      { name: "TransactionTypeLegExecutionIdentificationRule", isoId: "_R6q6_dp-Ed-ak6NoX_4Aeg_-1109095228", text: "If TransactionType is SWII or SWIO, then LegExecutionIdentification is optional. If TransactionType is neither SWII nor SWIO, then LegExecutionIdentification is not allowed." },
+      { name: "TransactionTypeOrCorporateActionEventTypeRule", isoId: "_R6q6-tp-Ed-ak6NoX_4Aeg_-1109095245", text: "Either TransactionType or ExtendedTransactionType or CorporateActionEventType or ExtendedCorporateActionEventType must be present but not more than one.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/TransactionType"},{"op":"Presence","path":"/ExtendedTransactionType"},{"op":"Presence","path":"/CorporateActionEventType"},{"op":"Presence","path":"/ExtendedCorporateActionEventType"}]}} },
+      { name: "TransactionTypeOrCorporateActionEventTypeRuleNotBoth", isoId: "_R6q6-tp-Ed-ak6NoX_4Aeg_-1109095245~NotBoth", text: "Either TransactionType or ExtendedTransactionType or CorporateActionEventType or ExtendedCorporateActionEventType must be present but not more than one.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/ExtendedTransactionType"},{"op":"Absence","path":"/CorporateActionEventType"},{"op":"Absence","path":"/ExtendedCorporateActionEventType"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/TransactionType"}]}} },
+      { name: "TransactionTypeOrCorporateActionEventTypeRuleNotBoth2", isoId: "_R6q6-tp-Ed-ak6NoX_4Aeg_-1109095245~NotBoth2", text: "Either TransactionType or ExtendedTransactionType or CorporateActionEventType or ExtendedCorporateActionEventType must be present but not more than one.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/CorporateActionEventType"},{"op":"Absence","path":"/ExtendedCorporateActionEventType"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/ExtendedTransactionType"}]}} },
+      { name: "TransactionTypeOrCorporateActionEventTypeRuleNotBoth3", isoId: "_R6q6-tp-Ed-ak6NoX_4Aeg_-1109095245~NotBoth3", text: "Either TransactionType or ExtendedTransactionType or CorporateActionEventType or ExtendedCorporateActionEventType must be present but not more than one.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/ExtendedCorporateActionEventType"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/CorporateActionEventType"}]}} },
+    ],
+  },
+  "PaginationBalance1": {
+    name: "PaginationBalance1",
+    isoId: "_RFBsYNp-Ed-ak6NoX_4Aeg_389014624",
+    kind: "component",
+    fields: [
+      f({ name: "FirstOpeningBalance", isoId: "_RFBsYdp-Ed-ak6NoX_4Aeg_777817466", xmlTag: "FrstOpngBal", displayName: displayName("FirstOpeningBalance"), kind: "component", type: "FinancialInstrumentQuantity1", required: false }),
+      f({ name: "IntermediaryOpeningBalance", isoId: "_RFBsYtp-Ed-ak6NoX_4Aeg_777817508", xmlTag: "IntrmyOpngBal", displayName: displayName("IntermediaryOpeningBalance"), kind: "component", type: "FinancialInstrumentQuantity1", required: false }),
+      f({ name: "FinalClosingBalance", isoId: "_RFBsY9p-Ed-ak6NoX_4Aeg_777817561", xmlTag: "FnlClsgBal", displayName: displayName("FinalClosingBalance"), kind: "component", type: "FinancialInstrumentQuantity1", required: false }),
+      f({ name: "IntermediaryClosingBalance", isoId: "_RFBsZNp-Ed-ak6NoX_4Aeg_777817933", xmlTag: "IntrmyClsgBal", displayName: displayName("IntermediaryClosingBalance"), kind: "component", type: "FinancialInstrumentQuantity1", required: false }),
+    ],
+    rules: [
+      { name: "FirstOpeningBalanceOrIntermediaryOpeningBalanceRule", isoId: "_RFBsZdp-Ed-ak6NoX_4Aeg_1070903377", text: "Either FirstOpeningBalance or IntermediaryOpeningBalance may be present, but not both.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/IntermediaryOpeningBalance"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/FirstOpeningBalance"}]}} },
+      { name: "FinalClosingBalanceOrIntermediaryClosingBalanceRule", isoId: "_RFBsaNp-Ed-ak6NoX_4Aeg_1070903430", text: "Either FinalClosingBalance or IntermediaryClosingBalance may be present, but not both.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/IntermediaryClosingBalance"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/FinalClosingBalance"}]}} },
+    ],
+  },
+  "InvestmentFundTransactionsByFund2": {
+    name: "InvestmentFundTransactionsByFund2",
+    isoId: "_Scf1qNp-Ed-ak6NoX_4Aeg_-1907610515",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_ScpmoNp-Ed-ak6NoX_4Aeg_-1907610498", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "SecurityIdentification3Choice", required: true }),
+      f({ name: "Name", isoId: "_Scpmodp-Ed-ak6NoX_4Aeg_-1907610480", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max350Text", required: false }),
+      f({ name: "SupplementaryIdentification", isoId: "_Scpmotp-Ed-ak6NoX_4Aeg_-1907610455", xmlTag: "SplmtryId", displayName: displayName("SupplementaryIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "SecuritiesForm", isoId: "_Scpmo9p-Ed-ak6NoX_4Aeg_-1907610438", xmlTag: "SctiesForm", displayName: displayName("SecuritiesForm"), kind: "code", type: "FormOfSecurity1Code", required: false }),
+      f({ name: "ClassType", isoId: "_ScpmpNp-Ed-ak6NoX_4Aeg_-1907610172", xmlTag: "ClssTp", displayName: displayName("ClassType"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "DistributionPolicy", isoId: "_Scpmpdp-Ed-ak6NoX_4Aeg_-1907610147", xmlTag: "DstrbtnPlcy", displayName: displayName("DistributionPolicy"), kind: "code", type: "DistributionPolicy1Code", required: false }),
+      f({ name: "TransactionDetails", isoId: "_Scpmptp-Ed-ak6NoX_4Aeg_-1907610094", xmlTag: "TxDtls", displayName: displayName("TransactionDetails"), kind: "component", type: "InvestmentFundTransaction3", required: true, repeat: { min: 1, max: null } }),
+      f({ name: "BalanceByPage", isoId: "_Scpmp9p-Ed-ak6NoX_4Aeg_-1907610129", xmlTag: "BalByPg", displayName: displayName("BalanceByPage"), kind: "component", type: "PaginationBalance1", required: false }),
+    ],
   },
   "UnitsOrAmount1Choice": {
     name: "UnitsOrAmount1Choice",
@@ -16687,6 +21615,12 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "MarketMaker", isoId: "_TXAd6e6SEemVDc1WJaqofw", xmlTag: "MktMakr", displayName: displayName("MarketMaker"), kind: "component", type: "MarketMakerProfile2", required: false }),
     ],
   },
+  "LegalFramework1Code": {
+    name: "LegalFramework1Code",
+    isoId: "_ad1149p-Ed-ak6NoX_4Aeg_-712964613",
+    kind: "code",
+    options: [{ value: "FRAN", name: "PensionLivree", isoId: "_ad115Np-Ed-ak6NoX_4Aeg_-1247950171" }],
+  },
   "LetterIntent1": {
     name: "LetterIntent1",
     isoId: "_QXVWcxKHEeKj15WxqwlXPw",
@@ -16696,6 +21630,24 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Amount", isoId: "_vuVOgBKHEeKj15WxqwlXPw", xmlTag: "Amt", displayName: displayName("Amount"), kind: "amount", type: "ActiveCurrencyAnd13DecimalAmount", required: false }),
       f({ name: "StartDate", isoId: "_3Jsz4BKHEeKj15WxqwlXPw", xmlTag: "StartDt", displayName: displayName("StartDate"), kind: "date", type: "ISODate", required: false }),
       f({ name: "EndDate", isoId: "_-X9KUBKHEeKj15WxqwlXPw", xmlTag: "EndDt", displayName: displayName("EndDate"), kind: "date", type: "ISODate", required: false }),
+    ],
+  },
+  "LetterOfGuarantee4Choice": {
+    name: "LetterOfGuarantee4Choice",
+    isoId: "_H0FFUTqJEeWVrPy0StzzSg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Indicator", isoId: "_IUqC0TqJEeWVrPy0StzzSg", xmlTag: "Ind", displayName: displayName("Indicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+      f({ name: "Proprietary", isoId: "_IUqC2TqJEeWVrPy0StzzSg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "LetterOfGuarantee5Choice": {
+    name: "LetterOfGuarantee5Choice",
+    isoId: "_6ScRhZNLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Indicator", isoId: "_6ScRh5NLEeWGlc8L7oPDIg", xmlTag: "Ind", displayName: displayName("Indicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+      f({ name: "Proprietary", isoId: "_6ScRj5NLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
     ],
   },
   "LevelOfControl1Code": {
@@ -16859,6 +21811,14 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "MessageNumber", isoId: "_Ys-BiTneEem7JZMuWtwtsg", xmlTag: "MsgNb", displayName: displayName("MessageNumber"), kind: "choice", type: "DocumentNumber5Choice", required: false }),
       f({ name: "Reference", isoId: "_Ys-BkTneEem7JZMuWtwtsg", xmlTag: "Ref", displayName: displayName("Reference"), kind: "choice", type: "References34Choice", required: true }),
       f({ name: "ReferenceOwner", isoId: "_Ys-BmTneEem7JZMuWtwtsg", xmlTag: "RefOwnr", displayName: displayName("ReferenceOwner"), kind: "choice", type: "PartyIdentification127Choice", required: false }),
+    ],
+  },
+  "Linkages75": {
+    name: "Linkages75",
+    isoId: "_r4RdNYb9Ee-6cOl7zMpJaA",
+    kind: "component",
+    fields: [
+      f({ name: "SecuritiesSettlementTransactionIdentification", isoId: "_Xps1oIb-Ee-6cOl7zMpJaA", xmlTag: "SctiesSttlmTxId", displayName: displayName("SecuritiesSettlementTransactionIdentification"), kind: "text", type: "Max35Text", required: true }),
     ],
   },
   "PaymentInstrument1Code": {
@@ -17037,6 +21997,174 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "CreditTransferMandate", isoId: "_RH9Ek7vIEfCYYbmqNrQFSg", xmlTag: "CdtTrfMndt", displayName: displayName("CreditTransferMandate"), kind: "component", type: "CreditTransferMandateData1", required: true }),
     ],
   },
+  "MarketClientSide1Code": {
+    name: "MarketClientSide1Code",
+    isoId: "_YJO4wJ05Eeet_4BCDEBLdQ",
+    kind: "code",
+    options: [{ value: "CLNT", name: "ClientSide", isoId: "_ZWTI0Z05Eeet_4BCDEBLdQ" }, { value: "MAKT", name: "MarketSide", isoId: "_ZbqJ8Z05Eeet_4BCDEBLdQ" }],
+  },
+  "MarketClientSide6Choice": {
+    name: "MarketClientSide6Choice",
+    isoId: "_-0vXIa3KEeey8N0JWnVPUw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_-_M6sa3KEeey8N0JWnVPUw", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "MarketClientSide1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_-_M6ua3KEeey8N0JWnVPUw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "MarketClientSide7Choice": {
+    name: "MarketClientSide7Choice",
+    isoId: "_5TtVXc3yEee5nJBZsW8MFQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_5TtVX83yEee5nJBZsW8MFQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "MarketClientSide1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_5TtVZ83yEee5nJBZsW8MFQ", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "MarketIdentification1Choice": {
+    name: "MarketIdentification1Choice",
+    isoId: "_Rctzptp-Ed-ak6NoX_4Aeg_-309699993",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "MarketIdentifierCode", isoId: "_Rctzp9p-Ed-ak6NoX_4Aeg_63402571", xmlTag: "MktIdrCd", displayName: displayName("MarketIdentifierCode"), kind: "text", type: "MICIdentifier", required: true }),
+      f({ name: "Description", isoId: "_RctzqNp-Ed-ak6NoX_4Aeg_82794538", xmlTag: "Desc", displayName: displayName("Description"), kind: "text", type: "Max35Text", required: true }),
+    ],
+  },
+  "MarketIdentification2Choice": {
+    name: "MarketIdentification2Choice",
+    isoId: "_XK10ENp-Ed-ak6NoX_4Aeg_-180703514",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "MarketIdentifierCode", isoId: "_XK10Edp-Ed-ak6NoX_4Aeg_-1291614933", xmlTag: "MktIdrCd", displayName: displayName("MarketIdentifierCode"), kind: "text", type: "MICIdentifier", required: true }),
+      f({ name: "Description", isoId: "_XK10Etp-Ed-ak6NoX_4Aeg_1009207657", xmlTag: "Desc", displayName: displayName("Description"), kind: "text", type: "RestrictedFINXMax30Text", required: true }),
+    ],
+  },
+  "MarketIdentification5Choice": {
+    name: "MarketIdentification5Choice",
+    isoId: "_-k8eE4VYEe-Pv9KR9bv9IA",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "MarketIdentifierCode", isoId: "_-t4XkYVYEe-Pv9KR9bv9IA", xmlTag: "MktIdrCd", displayName: displayName("MarketIdentifierCode"), kind: "text", type: "MICIdentifier", required: true }),
+      f({ name: "Description", isoId: "_-t4Xk4VYEe-Pv9KR9bv9IA", xmlTag: "Desc", displayName: displayName("Description"), kind: "text", type: "Max140Text", required: true }),
+    ],
+  },
+  "MarketType2Code": {
+    name: "MarketType2Code",
+    isoId: "_aUdQYdp-Ed-ak6NoX_4Aeg_-922054322",
+    kind: "code",
+    options: [{ value: "PRIM", name: "PrimaryMarket", isoId: "_aUdQYtp-Ed-ak6NoX_4Aeg_-922054296" }, { value: "SECM", name: "SecondaryMarket", isoId: "_aUdQY9p-Ed-ak6NoX_4Aeg_-922054280" }, { value: "OTCO", name: "OverTheCounter", isoId: "_aUdQZNp-Ed-ak6NoX_4Aeg_-922054262" }, { value: "VARI", name: "Various", isoId: "_aUdQZdp-Ed-ak6NoX_4Aeg_-922054261" }, { value: "EXCH", name: "StockExchange", isoId: "_aUdQZtp-Ed-ak6NoX_4Aeg_127744806" }],
+  },
+  "MarketType8Choice": {
+    name: "MarketType8Choice",
+    isoId: "_Ql4SQtp-Ed-ak6NoX_4Aeg_1045554562",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_Ql4SQ9p-Ed-ak6NoX_4Aeg_931715496", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "MarketType2Code", required: true }),
+      f({ name: "Proprietary", isoId: "_Ql4SRNp-Ed-ak6NoX_4Aeg_-65356857", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "MarketIdentification84": {
+    name: "MarketIdentification84",
+    isoId: "_r1VU0S0xEeSRe9rElPHBfg",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_sIEqpS0xEeSRe9rElPHBfg", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "MarketIdentification1Choice", required: false }),
+      f({ name: "Type", isoId: "_sIEqrS0xEeSRe9rElPHBfg", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "MarketType8Choice", required: true }),
+    ],
+    rules: [
+      { name: "MarketTypeAndIdentificationRule", isoId: "_sIEqoS0xEeSRe9rElPHBfg", text: "If Type/Code is OverTheCounter (OTCO) and if Identification is present, then Identification/Description must specify a system.|If Type/Code is Exchange (EXCH) and if Identification is present, then Identification/MarketIdentifierCode must be present." },
+    ],
+  },
+  "MarketType4Code": {
+    name: "MarketType4Code",
+    isoId: "_aUmaVNp-Ed-ak6NoX_4Aeg_-863621443",
+    kind: "code",
+    options: [{ value: "FUND", name: "Fund", isoId: "_aUmaVdp-Ed-ak6NoX_4Aeg_-1841693350" }, { value: "LMAR", name: "LocalMarket", isoId: "_aUmaVtp-Ed-ak6NoX_4Aeg_-790560278" }, { value: "THEO", name: "Theoretical", isoId: "_aUmaV9p-Ed-ak6NoX_4Aeg_1996754313" }, { value: "VEND", name: "Vendor", isoId: "_aUmaWNp-Ed-ak6NoX_4Aeg_-831064220" }],
+  },
+  "MarketType15Choice": {
+    name: "MarketType15Choice",
+    isoId: "_JEeGkznWEeWV5sr121Fc8A",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_JjHxYTnWEeWV5sr121Fc8A", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "MarketType4Code", required: true }),
+      f({ name: "Proprietary", isoId: "_JjHxaTnWEeWV5sr121Fc8A", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "MarketIdentification89": {
+    name: "MarketIdentification89",
+    isoId: "_Ikx50TnWEeWV5sr121Fc8A",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_JEeGgznWEeWV5sr121Fc8A", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "MarketIdentification1Choice", required: false }),
+      f({ name: "Type", isoId: "_JEeGiznWEeWV5sr121Fc8A", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "MarketType15Choice", required: true }),
+    ],
+  },
+  "MarketType16Choice": {
+    name: "MarketType16Choice",
+    isoId: "_cj_VWZKQEeWHWpTQn1FFVg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_cj_VXZKQEeWHWpTQn1FFVg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "MarketType2Code", required: true }),
+      f({ name: "Proprietary", isoId: "_cj_VZZKQEeWHWpTQn1FFVg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "MarketIdentification90": {
+    name: "MarketIdentification90",
+    isoId: "_cj_VOZKQEeWHWpTQn1FFVg",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_cj_VP5KQEeWHWpTQn1FFVg", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "MarketIdentification2Choice", required: false }),
+      f({ name: "Type", isoId: "_cj_VR5KQEeWHWpTQn1FFVg", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "MarketType16Choice", required: true }),
+    ],
+    rules: [
+      { name: "MarketTypeAndIdentificationRule", isoId: "_cj_VO5KQEeWHWpTQn1FFVg", text: "If Type/Code is OverTheCounter (OTCO) and if Identification is present, then Identification/Description must specify a system.|If Type/Code is Exchange (EXCH) and if Identification is present, then Identification/MarketIdentifierCode must be present." },
+    ],
+  },
+  "MarketType17Choice": {
+    name: "MarketType17Choice",
+    isoId: "_5W2zCZNLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_5W2zC5NLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "MarketType4Code", required: true }),
+      f({ name: "Proprietary", isoId: "_5W2zE5NLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "MarketIdentification91": {
+    name: "MarketIdentification91",
+    isoId: "_5W2y7ZNLEeWGlc8L7oPDIg",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_5W2y75NLEeWGlc8L7oPDIg", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "MarketIdentification2Choice", required: false }),
+      f({ name: "Type", isoId: "_5W2y95NLEeWGlc8L7oPDIg", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "MarketType17Choice", required: true }),
+    ],
+  },
+  "MarketType9Code": {
+    name: "MarketType9Code",
+    isoId: "_Ny1Z8YVYEe-Pv9KR9bv9IA",
+    kind: "code",
+    options: [{ value: "FUND", name: "Fund", isoId: "_N8OmgYVYEe-Pv9KR9bv9IA" }, { value: "LMAR", name: "LocalMarket", isoId: "_N8Omg4VYEe-Pv9KR9bv9IA" }, { value: "THEO", name: "Theoretical", isoId: "_N8OmhYVYEe-Pv9KR9bv9IA" }, { value: "VEND", name: "Vendor", isoId: "_N8Omh4VYEe-Pv9KR9bv9IA" }, { value: "SCAS", name: "SmartContractAutomatedPricingSystem", isoId: "_QXyqAYVYEe-Pv9KR9bv9IA" }],
+  },
+  "MarketType19Choice": {
+    name: "MarketType19Choice",
+    isoId: "_Xeb8oYVYEe-Pv9KR9bv9IA",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_XnX2IYVYEe-Pv9KR9bv9IA", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "MarketType9Code", required: true }),
+      f({ name: "Proprietary", isoId: "_XnX2KYVYEe-Pv9KR9bv9IA", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "MarketIdentification98": {
+    name: "MarketIdentification98",
+    isoId: "_XVVrG4VYEe-Pv9KR9bv9IA",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_Xeb8kYVYEe-Pv9KR9bv9IA", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "MarketIdentification5Choice", required: false }),
+      f({ name: "Type", isoId: "_Xeb8mYVYEe-Pv9KR9bv9IA", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "MarketType19Choice", required: true }),
+    ],
+    rules: [
+      { name: "SmartContractAutomatedPricingRule", isoId: "_-f7R8KymEe-6avPKoEhDbA", text: "When Type/Code does not equal SmartContractAutomatedPricingSystem (SCAS) then Identification/Description length must be maximum 35 characters." },
+    ],
+  },
   "MarketPracticeVersion1": {
     name: "MarketPracticeVersion1",
     isoId: "_FaNY0RUVEeOIaq8KyCdIDQ",
@@ -17045,6 +22173,85 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Name", isoId: "_W9gQcBUVEeOIaq8KyCdIDQ", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max35Text", required: true }),
       f({ name: "Date", isoId: "_hDqoIBUVEeOIaq8KyCdIDQ", xmlTag: "Dt", displayName: displayName("Date"), kind: "text", type: "ISOYearMonth", required: false }),
       f({ name: "Number", isoId: "_mP4OUBUVEeOIaq8KyCdIDQ", xmlTag: "Nb", displayName: displayName("Number"), kind: "text", type: "Max35Text", required: false }),
+    ],
+  },
+  "MatchingStatus1Code": {
+    name: "MatchingStatus1Code",
+    isoId: "_aVDGQ9p-Ed-ak6NoX_4Aeg_132545126",
+    kind: "code",
+    options: [{ value: "MACH", name: "Matched", isoId: "_aVDGRNp-Ed-ak6NoX_4Aeg_189804200" }, { value: "NMAT", name: "Unmatched", isoId: "_aVDGRdp-Ed-ak6NoX_4Aeg_234135671" }],
+  },
+  "ProprietaryReason4": {
+    name: "ProprietaryReason4",
+    isoId: "_QgvGsTp5EeWVrPy0StzzSg",
+    kind: "component",
+    fields: [
+      f({ name: "Reason", isoId: "_RA3_Uzp5EeWVrPy0StzzSg", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "GenericIdentification30", required: false }),
+      f({ name: "AdditionalReasonInformation", isoId: "_RA3_Wzp5EeWVrPy0StzzSg", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
+    ],
+    rules: [
+      { name: "AdditionalReasonInforrmationRule", isoId: "_RA3_UTp5EeWVrPy0StzzSg", text: "The AdditionalReasonInformation element must not contain information that can be provided in a structured field unless bilaterally agreed." },
+    ],
+  },
+  "UnmatchedReason11Code": {
+    name: "UnmatchedReason11Code",
+    isoId: "_ODo3wGXfEeWsrOWU209RUg",
+    kind: "code",
+    options: [{ value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_TRMhwWXfEeWsrOWU209RUg" }, { value: "ACRU", name: "AccruedInterestAmount1", isoId: "_TV9F8WXfEeWsrOWU209RUg" }, { value: "IIND", name: "CommonReference", isoId: "_WNPcIWXfEeWsrOWU209RUg" }, { value: "CPCA", name: "CounterpartyCancelled", isoId: "_WwWwQWXfEeWsrOWU209RUg" }, { value: "CLAT", name: "CounterpartyTooLateForMatching", isoId: "_XzJqAWXfEeWsrOWU209RUg" }, { value: "NCRR", name: "CurrencySettlementAmount", isoId: "_YHPDoWXfEeWsrOWU209RUg" }, { value: "DDEA", name: "DealPrice", isoId: "_aPOD0WXfEeWsrOWU209RUg" }, { value: "DMCT", name: "AutomaticGeneration", isoId: "_a1v4UWXfEeWsrOWU209RUg" }, { value: "DCMX", name: "CumEx", isoId: "_a6z-gWXfEeWsrOWU209RUg" }, { value: "DSEC", name: "FinancialInstrument", isoId: "_cBn1kWXfEeWsrOWU209RUg" }, { value: "DQUA", name: "FinancialInstrumentQuantity", isoId: "_dNM34WXfEeWsrOWU209RUg" }, { value: "INVE", name: "InvestorParty", isoId: "_dqNkAWXfEeWsrOWU209RUg" }, { value: "LEOG", name: "LetterOfGuarantee", isoId: "_fcUa0mXfEeWsrOWU209RUg" }, { value: "LATE", name: "MarketDeadlineMissed", isoId: "_gZd_kWXfEeWsrOWU209RUg" }, { value: "MIME", name: "MissingMarketSide", isoId: "_g3q-gWXfEeWsrOWU209RUg" }, { value: "CMIS", name: "NoMatch", isoId: "_jk_gYWXfEeWsrOWU209RUg" }, { value: "NMAS", name: "NoMatchingStarted", isoId: "_j_Ur8WXfEeWsrOWU209RUg" }, { value: "DTRA", name: "NotRecognised", isoId: "_kPPXQWXfEeWsrOWU209RUg" }, { value: "OTHR", name: "Other", isoId: "_kmmuYWXfEeWsrOWU209RUg" }, { value: "FRAP", name: "PaymentCode", isoId: "_k2OewWXfEeWsrOWU209RUg" }, { value: "PHYS", name: "PhysicalSettlement", isoId: "_m5ldomXfEeWsrOWU209RUg" }, { value: "PLIS", name: "PlaceOfListing", isoId: "_m9wL8WXfEeWsrOWU209RUg" }, { value: "INPS", name: "PlaceOfSafekeeping", isoId: "_nSu9cWXfEeWsrOWU209RUg" }, { value: "PLCE", name: "PlaceOfTrade", isoId: "_nv5akWXfEeWsrOWU209RUg" }, { value: "PODU", name: "PossibleDuplicate", isoId: "_oMdawWXfEeWsrOWU209RUg" }, { value: "DEPT", name: "ReceivingDeliveringDepository", isoId: "_qkNVQmXfEeWsrOWU209RUg" }, { value: "ICAG", name: "ReceivingDeliveringParty1", isoId: "_qwjvMWXfEeWsrOWU209RUg" }, { value: "ICUS", name: "ReceivingDeliveringParty2", isoId: "_q7aUUWXfEeWsrOWU209RUg" }, { value: "IEXE", name: "ReceivingDeliveringParty3", isoId: "_rKSd0WXfEeWsrOWU209RUg" }, { value: "REGD", name: "RegistrationDetails", isoId: "_rY3sYWXfEeWsrOWU209RUg" }, { value: "RTGS", name: "RTGSSystem", isoId: "_tx9qsWXfEeWsrOWU209RUg" }, { value: "SAFE", name: "SafekeepingAccount", isoId: "_uCCHAWXfEeWsrOWU209RUg" }, { value: "DMON", name: "SettlementAmount", isoId: "_uULm8WXfEeWsrOWU209RUg" }, { value: "DDAT", name: "SettlementDate", isoId: "_uk_qIWXfEeWsrOWU209RUg" }, { value: "SETS", name: "SettlementSystemMethod", isoId: "_u4Lr4WXfEeWsrOWU209RUg" }, { value: "SETR", name: "SettlementTransaction", isoId: "_vH9NQWXfEeWsrOWU209RUg" }, { value: "TXST", name: "TaxStatus", isoId: "_yRZDYWXfEeWsrOWU209RUg" }, { value: "DTRD", name: "TradeDate", isoId: "_ycaAkWXfEeWsrOWU209RUg" }, { value: "DELN", name: "TransactionDirection", isoId: "_0ArPsWXfEeWsrOWU209RUg" }, { value: "UNBR", name: "UnmatchedMarketSide", isoId: "_02FNsWXfEeWsrOWU209RUg" }],
+  },
+  "UnmatchedReason21Choice": {
+    name: "UnmatchedReason21Choice",
+    isoId: "_ItrNiTqOEeWyoP0PbocV1Q",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_JNzfETqOEeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "UnmatchedReason11Code", required: true }),
+      f({ name: "Proprietary", isoId: "_JNzfFTqOEeWyoP0PbocV1Q", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "UnmatchedReason15": {
+    name: "UnmatchedReason15",
+    isoId: "_IMDHKTqOEeWyoP0PbocV1Q",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "_ItrNgTqOEeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "UnmatchedReason21Choice", required: true }),
+      f({ name: "AdditionalReasonInformation", isoId: "_ItrNhTqOEeWyoP0PbocV1Q", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
+    ],
+  },
+  "UnmatchedStatus16Choice": {
+    name: "UnmatchedStatus16Choice",
+    isoId: "_Hq3ssTqOEeWyoP0PbocV1Q",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NoSpecifiedReason", isoId: "_IMDHITqOEeWyoP0PbocV1Q", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
+      f({ name: "Reason", isoId: "_IMDHJTqOEeWyoP0PbocV1Q", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "UnmatchedReason15", required: true }),
+    ],
+  },
+  "ProprietaryStatusAndReason6": {
+    name: "ProprietaryStatusAndReason6",
+    isoId: "_yRcdkTp4EeWVrPy0StzzSg",
+    kind: "component",
+    fields: [
+      f({ name: "ProprietaryStatus", isoId: "_y0NzcTp4EeWVrPy0StzzSg", xmlTag: "PrtrySts", displayName: displayName("ProprietaryStatus"), kind: "component", type: "GenericIdentification30", required: true }),
+      f({ name: "ProprietaryReason", isoId: "_y0OagTp4EeWVrPy0StzzSg", xmlTag: "PrtryRsn", displayName: displayName("ProprietaryReason"), kind: "component", type: "ProprietaryReason4", required: false, repeat: { min: 0, max: null } }),
+    ],
+  },
+  "MatchingStatus24Choice": {
+    name: "MatchingStatus24Choice",
+    isoId: "_y0Sr8Tp4EeWVrPy0StzzSg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Matched", isoId: "_zV8AcTp4EeWVrPy0StzzSg", xmlTag: "Mtchd", displayName: displayName("Matched"), kind: "component", type: "ProprietaryReason4", required: true }),
+      f({ name: "Unmatched", isoId: "_zV8ngTp4EeWVrPy0StzzSg", xmlTag: "Umtchd", displayName: displayName("Unmatched"), kind: "choice", type: "UnmatchedStatus16Choice", required: true }),
+      f({ name: "Proprietary", isoId: "_zV8nhTp4EeWVrPy0StzzSg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "ProprietaryStatusAndReason6", required: true }),
+    ],
+  },
+  "MatchingStatus27Choice": {
+    name: "MatchingStatus27Choice",
+    isoId: "_YZLzYTqqEeWyoP0PbocV1Q",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_Y5m_4TqqEeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "MatchingStatus1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_Y5m_6TqqEeWyoP0PbocV1Q", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
     ],
   },
   "Max104Text": {
@@ -17087,6 +22294,13 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     kind: "text",
     minLength: 1,
     maxLength: 40,
+  },
+  "Max52Text": {
+    name: "Max52Text",
+    isoId: "_or1cAdBlEeOpqfceNuZcvQ",
+    kind: "text",
+    minLength: 1,
+    maxLength: 52,
   },
   "Max76Text": {
     name: "Max76Text",
@@ -17180,6 +22394,27 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "MessageIdentification", isoId: "_RUE1B9p-Ed-ak6NoX_4Aeg_-705747860", xmlTag: "MsgId", displayName: displayName("MessageIdentification"), kind: "text", type: "Max35Text", required: false }),
     ],
   },
+  "ModificationProcessingStatus1Code": {
+    name: "ModificationProcessingStatus1Code",
+    isoId: "_jQgqke5NEeCisYr99QEiWA_-1469267591",
+    kind: "code",
+    options: [{ value: "PACK", name: "Accepted", isoId: "_jQgqku5NEeCisYr99QEiWA_1714788286" }, { value: "REJT", name: "Rejected", isoId: "_jQgqk-5NEeCisYr99QEiWA_1892906958" }, { value: "MODC", name: "Completed", isoId: "_jQgqlO5NEeCisYr99QEiWA_-1404987985" }, { value: "DEND", name: "Denied", isoId: "_jQp0gO5NEeCisYr99QEiWA_2006746024" }, { value: "MODP", name: "Pending", isoId: "_jQp0ge5NEeCisYr99QEiWA_1828627352" }, { value: "REPR", name: "InRepair", isoId: "_jQp0gu5NEeCisYr99QEiWA_831554999" }],
+  },
+  "ModificationProcessingStatus9Choice": {
+    name: "ModificationProcessingStatus9Choice",
+    isoId: "_w6pyceF8EeWCAvUNsZ5u6g",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_xFphgeF8EeWCAvUNsZ5u6g", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ModificationProcessingStatus1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_xFphieF8EeWCAvUNsZ5u6g", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "ModifiedStatusReason1Code": {
+    name: "ModifiedStatusReason1Code",
+    isoId: "_0mgfgglIEeGATtfOBToyew_-1343301078",
+    kind: "code",
+    options: [{ value: "MDBY", name: "ModifiedByYourself", isoId: "_0mgfgwlIEeGATtfOBToyew_1659777313" }, { value: "OTHR", name: "Other", isoId: "_0mgfhAlIEeGATtfOBToyew_-1957918323" }],
+  },
   "NameAndAddress8": {
     name: "NameAndAddress8",
     isoId: "_PZvPQNp-Ed-ak6NoX_4Aeg_-611452366",
@@ -17198,6 +22433,24 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "NetAmount", isoId: "_Si5_ptp-Ed-ak6NoX_4Aeg_1538517912", xmlTag: "NetAmt", displayName: displayName("NetAmount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: false }),
       f({ name: "NetUnitsNumber", isoId: "_Si5_p9p-Ed-ak6NoX_4Aeg_1538517937", xmlTag: "NetUnitsNb", displayName: displayName("NetUnitsNumber"), kind: "component", type: "FinancialInstrumentQuantity1", required: false }),
       f({ name: "FlowDirection", isoId: "_Si5_qNp-Ed-ak6NoX_4Aeg_1538517972", xmlTag: "FlowDrctn", displayName: displayName("FlowDirection"), kind: "code", type: "FlowDirectionType1Code", required: true }),
+    ],
+  },
+  "NettingEligibility4Choice": {
+    name: "NettingEligibility4Choice",
+    isoId: "_0h_JkTqIEeWVrPy0StzzSg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Indicator", isoId: "_1CkuITqIEeWVrPy0StzzSg", xmlTag: "Ind", displayName: displayName("Indicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+      f({ name: "Proprietary", isoId: "_1CkuKTqIEeWVrPy0StzzSg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "NettingEligibility5Choice": {
+    name: "NettingEligibility5Choice",
+    isoId: "_5m6oEZNLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Indicator", isoId: "_5m6oE5NLEeWGlc8L7oPDIg", xmlTag: "Ind", displayName: displayName("Indicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+      f({ name: "Proprietary", isoId: "_5m6oG5NLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
     ],
   },
   "NewIssueAllocation2": {
@@ -17227,6 +22480,31 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "NumberOfEntries", isoId: "_lc6dGSGxEeKjd4jizyIDGA", xmlTag: "NbOfNtries", displayName: displayName("NumberOfEntries"), kind: "text", type: "Max15NumericText", required: false }),
       f({ name: "Sum", isoId: "_lc6dHSGxEeKjd4jizyIDGA", xmlTag: "Sum", displayName: displayName("Sum"), kind: "number", type: "DecimalNumber", required: false }),
       f({ name: "TotalNetEntry", isoId: "_TjTFBimlEeKdFJmzhTDOvQ", xmlTag: "TtlNetNtry", displayName: displayName("TotalNetEntry"), kind: "component", type: "AmountAndDirection35", required: false }),
+    ],
+  },
+  "TotalNumber1": {
+    name: "TotalNumber1",
+    isoId: "_Qr_hWNp-Ed-ak6NoX_4Aeg_-606322098",
+    kind: "component",
+    fields: [
+      f({ name: "CurrentInstructionNumber", isoId: "_Qr_hWdp-Ed-ak6NoX_4Aeg_-2082263388", xmlTag: "CurInstrNb", displayName: displayName("CurrentInstructionNumber"), kind: "text", type: "Exact3NumericText", required: true }),
+      f({ name: "TotalOfLinkedInstructions", isoId: "_Qr_hWtp-Ed-ak6NoX_4Aeg_-1935589206", xmlTag: "TtlOfLkdInstrs", displayName: displayName("TotalOfLinkedInstructions"), kind: "text", type: "Exact3NumericText", required: true }),
+    ],
+    rules: [
+      { name: "CurrentInstructionNumberRule", isoId: "_Qr_hW9p-Ed-ak6NoX_4Aeg_639881202", text: "If the Sender wants to indicate that this instruction is linked to one or more settlement instruction, then the CurrentInstructionNumber must be specified." },
+      { name: "BlockTradeGuideline", isoId: "_Qr_hXtp-Ed-ak6NoX_4Aeg_-1108200498", text: "In a block trade instruction, the total number of children must be provided using TotalOfLinkedInstructions.|The CurrentInstructionNumber of the parent must be 000. The children must have an incremental CurrentInstructionNumber from 001 to 999.|For more details, see the relevant market practice document on www.smpg.info." },
+    ],
+  },
+  "NumberCount1Choice": {
+    name: "NumberCount1Choice",
+    isoId: "_QrsmZ9p-Ed-ak6NoX_4Aeg_994582654",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "CurrentInstructionNumber", isoId: "_QrsmaNp-Ed-ak6NoX_4Aeg_1394466276", xmlTag: "CurInstrNb", displayName: displayName("CurrentInstructionNumber"), kind: "text", type: "Exact3NumericText", required: true }),
+      f({ name: "TotalNumber", isoId: "_Qrsmadp-Ed-ak6NoX_4Aeg_-2040702072", xmlTag: "TtlNb", displayName: displayName("TotalNumber"), kind: "component", type: "TotalNumber1", required: true }),
+    ],
+    rules: [
+      { name: "CurrentInstructionNumberRule", isoId: "_Qr1wUNp-Ed-ak6NoX_4Aeg_-199599330", text: "If the Sender wants to indicate that this instruction is linked to one or more settlement instruction, then the CurrentInstructionNumber must be specified." },
     ],
   },
   "NumberOfTransactionsPerStatus5": {
@@ -17736,6 +23014,53 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Purpose", isoId: "_MIUXYbvHEfCYYbmqNrQFSg", xmlTag: "Purp", displayName: displayName("Purpose"), kind: "choice", type: "Purpose2Choice", required: false }),
     ],
   },
+  "PartyTextInformation1": {
+    name: "PartyTextInformation1",
+    isoId: "_RAQhItp-Ed-ak6NoX_4Aeg_1770128629",
+    kind: "component",
+    fields: [
+      f({ name: "DeclarationDetails", isoId: "_RAQhI9p-Ed-ak6NoX_4Aeg_1822769662", xmlTag: "DclrtnDtls", displayName: displayName("DeclarationDetails"), kind: "text", type: "Max350Text", required: false }),
+      f({ name: "PartyContactDetails", isoId: "_RAQhJNp-Ed-ak6NoX_4Aeg_1835700869", xmlTag: "PtyCtctDtls", displayName: displayName("PartyContactDetails"), kind: "text", type: "Max140Text", required: false }),
+      f({ name: "RegistrationDetails", isoId: "_RAQhJdp-Ed-ak6NoX_4Aeg_1825541125", xmlTag: "RegnDtls", displayName: displayName("RegistrationDetails"), kind: "text", type: "Max350Text", required: false }),
+    ],
+    rules: [
+      { name: "AdditonalDetailsGuideline", isoId: "_RAQhJtp-Ed-ak6NoX_4Aeg_-1058129563", text: "Unless bilaterally agreed between the Sender and Receiver, DeclarationlDetails, RegistrationDetails and PartyContactDetails must not contain information that can be provided in a structured field." },
+    ],
+  },
+  "PartyIdentificationAndAccount197": {
+    name: "PartyIdentificationAndAccount197",
+    isoId: "_hk6F8SqGEeyR9JrVGfaMKw",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_h9fk5SqGEeyR9JrVGfaMKw", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "PartyIdentification120Choice", required: false }),
+      f({ name: "LEI", isoId: "_h9fk7SqGEeyR9JrVGfaMKw", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
+      f({ name: "AlternateIdentification", isoId: "_h9fk7yqGEeyR9JrVGfaMKw", xmlTag: "AltrnId", displayName: displayName("AlternateIdentification"), kind: "component", type: "AlternatePartyIdentification7", required: false }),
+      f({ name: "Nationality", isoId: "_h9fk9yqGEeyR9JrVGfaMKw", xmlTag: "Ntlty", displayName: displayName("Nationality"), kind: "code", type: "CountryCode", required: false }),
+      f({ name: "SafekeepingAccount", isoId: "_h9fk_yqGEeyR9JrVGfaMKw", xmlTag: "SfkpgAcct", displayName: displayName("SafekeepingAccount"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "BlockChainAddressOrWallet", isoId: "_eLpq8SqGEeyR9JrVGfaMKw", xmlTag: "BlckChainAdrOrWllt", displayName: displayName("BlockChainAddressOrWallet"), kind: "text", type: "Max140Text", required: false }),
+      f({ name: "ProcessingIdentification", isoId: "_h9flByqGEeyR9JrVGfaMKw", xmlTag: "PrcgId", displayName: displayName("ProcessingIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "AdditionalInformation", isoId: "_h9flDyqGEeyR9JrVGfaMKw", xmlTag: "AddtlInf", displayName: displayName("AdditionalInformation"), kind: "component", type: "PartyTextInformation1", required: false }),
+    ],
+    rules: [
+      { name: "IdentificationNationalityOfInvestorRule", isoId: "_h9fk4SqGEeyR9JrVGfaMKw", text: "Identification and/or Nationality must be present." },
+      { name: "SafekeepingAccountOrBlockChainAddress1Rule", isoId: "_k9H-wiqGEeyR9JrVGfaMKw", text: "If SafekeepingAccount is present, BlockChainAddressOrWallet must be absent.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/BlockChainAddressOrWallet"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/SafekeepingAccount"}]}} },
+      { name: "SafekeepingAccountOrBlockChainAddress2Rule", isoId: "_k9H-wyqGEeyR9JrVGfaMKw", text: "If BlockChainAddressOrWallet is present, SafekeepingAccount must be absent.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/SafekeepingAccount"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/BlockChainAddressOrWallet"}]}} },
+    ],
+  },
+  "OtherParties46": {
+    name: "OtherParties46",
+    isoId: "_7HbsUQKXEfGAP_FOfstLIw",
+    kind: "component",
+    fields: [
+      f({ name: "Investor", isoId: "_7LmaoQKXEfGAP_FOfstLIw", xmlTag: "Invstr", displayName: displayName("Investor"), kind: "component", type: "PartyIdentificationAndAccount197", required: false, repeat: { min: 0, max: null } }),
+    ],
+  },
+  "OwnershipLegalRestrictions1Code": {
+    name: "OwnershipLegalRestrictions1Code",
+    isoId: "_ZxJH9Np-Ed-ak6NoX_4Aeg_1692772034",
+    kind: "code",
+    options: [{ value: "A144", name: "USLegal144A", isoId: "_ZxJH9dp-Ed-ak6NoX_4Aeg_1752799563" }, { value: "NRST", name: "NoRestrictions", isoId: "_ZxJH9tp-Ed-ak6NoX_4Aeg_1767574892" }, { value: "RSTR", name: "Restrictions", isoId: "_ZxJH99p-Ed-ak6NoX_4Aeg_1780503706" }],
+  },
   "OwnershipType2Choice": {
     name: "OwnershipType2Choice",
     isoId: "_9FsRgb-GEeWfsa741pI6WA",
@@ -17752,6 +23077,115 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     fields: [
       f({ name: "PageNumber", isoId: "_Q65gBtp-Ed-ak6NoX_4Aeg_653765264", xmlTag: "PgNb", displayName: displayName("PageNumber"), kind: "text", type: "Max5NumericText", required: true }),
       f({ name: "LastPageIndicator", isoId: "_Q65gB9p-Ed-ak6NoX_4Aeg_811686458", xmlTag: "LastPgInd", displayName: displayName("LastPageIndicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+    ],
+  },
+  "PartialSettlement2Code": {
+    name: "PartialSettlement2Code",
+    isoId: "_POj5gEAuEeGeCKosDOIVvQ_1172446650",
+    kind: "code",
+    options: [{ value: "PAIN", name: "PartialSettlement", isoId: "_POj5gUAuEeGeCKosDOIVvQ_-493303667" }, { value: "PARC", name: "PartiallyConfirmed", isoId: "_POtDcEAuEeGeCKosDOIVvQ_-607142733" }],
+  },
+  "PartyIdentification71Choice": {
+    name: "PartyIdentification71Choice",
+    isoId: "_jLJCYe5NEeCisYr99QEiWA_-835354834",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "AnyBIC", isoId: "_jLJCYu5NEeCisYr99QEiWA_-1990935349", xmlTag: "AnyBIC", displayName: displayName("AnyBIC"), kind: "text", type: "AnyBICIdentifier", required: true }),
+      f({ name: "ProprietaryIdentification", isoId: "_jLJCY-5NEeCisYr99QEiWA_-1075902987", xmlTag: "PrtryId", displayName: displayName("ProprietaryIdentification"), kind: "component", type: "GenericIdentification36", required: true }),
+      f({ name: "NameAndAddress", isoId: "_jLJCZO5NEeCisYr99QEiWA_2117351", xmlTag: "NmAndAdr", displayName: displayName("NameAndAddress"), kind: "component", type: "NameAndAddress5", required: true }),
+    ],
+  },
+  "PartyIdentification100": {
+    name: "PartyIdentification100",
+    isoId: "_QgqFw2wfEeWLq_lbZ2Mhyw",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_QgqFxGwfEeWLq_lbZ2Mhyw", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "PartyIdentification71Choice", required: true }),
+      f({ name: "LEI", isoId: "_QgqFxWwfEeWLq_lbZ2Mhyw", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
+    ],
+  },
+  "PartyIdentification122Choice": {
+    name: "PartyIdentification122Choice",
+    isoId: "_bbDfwWpWEeipaMTLlhaKMQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "AnyBIC", isoId: "_bsKd42pWEeipaMTLlhaKMQ", xmlTag: "AnyBIC", displayName: displayName("AnyBIC"), kind: "text", type: "AnyBICDec2014Identifier", required: true }),
+      f({ name: "NameAndAddress", isoId: "_bsKd5WpWEeipaMTLlhaKMQ", xmlTag: "NmAndAdr", displayName: displayName("NameAndAddress"), kind: "component", type: "NameAndAddress5", required: true }),
+      f({ name: "Country", isoId: "_bsKd52pWEeipaMTLlhaKMQ", xmlTag: "Ctry", displayName: displayName("Country"), kind: "code", type: "CountryCode", required: true }),
+    ],
+  },
+  "PartyIdentification136Choice": {
+    name: "PartyIdentification136Choice",
+    isoId: "__2Yt9ffDEeiNZp_PtLohLw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "AnyBIC", isoId: "__2Yt-ffDEeiNZp_PtLohLw", xmlTag: "AnyBIC", displayName: displayName("AnyBIC"), kind: "text", type: "AnyBICDec2014Identifier", required: true }),
+      f({ name: "ProprietaryIdentification", isoId: "__2Yt-_fDEeiNZp_PtLohLw", xmlTag: "PrtryId", displayName: displayName("ProprietaryIdentification"), kind: "component", type: "GenericIdentification84", required: true }),
+    ],
+  },
+  "PartyIdentification139": {
+    name: "PartyIdentification139",
+    isoId: "_cOgdUWpTEeipaMTLlhaKMQ",
+    kind: "component",
+    fields: [
+      f({ name: "Party", isoId: "_ceRXo2pTEeipaMTLlhaKMQ", xmlTag: "Pty", displayName: displayName("Party"), kind: "choice", type: "PartyIdentification125Choice", required: true }),
+      f({ name: "LEI", isoId: "_ceRXpWpTEeipaMTLlhaKMQ", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
+    ],
+  },
+  "PartyIdentification144": {
+    name: "PartyIdentification144",
+    isoId: "_XnxoYdLCEeiN28wlpBQScw",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_X6X0QdLCEeiN28wlpBQScw", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "PartyIdentification127Choice", required: true }),
+      f({ name: "LEI", isoId: "_X6X0Q9LCEeiN28wlpBQScw", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
+    ],
+  },
+  "PartyIdentification145Choice": {
+    name: "PartyIdentification145Choice",
+    isoId: "_6slou_fVEeiNZp_PtLohLw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "AnyBIC", isoId: "_6slov_fVEeiNZp_PtLohLw", xmlTag: "AnyBIC", displayName: displayName("AnyBIC"), kind: "text", type: "AnyBICDec2014Identifier", required: true }),
+      f({ name: "NameAndAddress", isoId: "_6slowffVEeiNZp_PtLohLw", xmlTag: "NmAndAdr", displayName: displayName("NameAndAddress"), kind: "component", type: "NameAndAddress12", required: true }),
+      f({ name: "Country", isoId: "_6slow_fVEeiNZp_PtLohLw", xmlTag: "Ctry", displayName: displayName("Country"), kind: "code", type: "CountryCode", required: true }),
+    ],
+  },
+  "PartyIdentification148": {
+    name: "PartyIdentification148",
+    isoId: "_fH_mjdXUEeiN28wlpBQScw",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_fZtBc9XUEeiN28wlpBQScw", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "PartyIdentification122Choice", required: true }),
+      f({ name: "LEI", isoId: "_fZtBe9XUEeiN28wlpBQScw", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
+      f({ name: "ProcessingIdentification", isoId: "_fZtBfdXUEeiN28wlpBQScw", xmlTag: "PrcgId", displayName: displayName("ProcessingIdentification"), kind: "text", type: "Max35Text", required: false }),
+    ],
+  },
+  "PartyIdentification156": {
+    name: "PartyIdentification156",
+    isoId: "_Z0x6o_fVEeiNZp_PtLohLw",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_Z0x6pffVEeiNZp_PtLohLw", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "PartyIdentification136Choice", required: true }),
+      f({ name: "LEI", isoId: "_Z0x6p_fVEeiNZp_PtLohLw", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
+    ],
+  },
+  "RestrictedFINXMax16Text": {
+    name: "RestrictedFINXMax16Text",
+    isoId: "_XZJV2Np-Ed-ak6NoX_4Aeg_-1555155859",
+    kind: "text",
+    minLength: 1,
+    maxLength: 16,
+    pattern: "([0-9a-zA-Z\\-\\?:\\(\\)\\.,'\\+ ]([0-9a-zA-Z\\-\\?:\\(\\)\\.,'\\+ ]*(/[0-9a-zA-Z\\-\\?:\\(\\)\\.,'\\+ ])?)*)",
+  },
+  "PartyIdentification191": {
+    name: "PartyIdentification191",
+    isoId: "_fpPGh_fYEeiNZp_PtLohLw",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_fpPGi_fYEeiNZp_PtLohLw", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "PartyIdentification145Choice", required: true }),
+      f({ name: "LEI", isoId: "_fpPGk_fYEeiNZp_PtLohLw", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
+      f({ name: "ProcessingIdentification", isoId: "_fpPGlffYEeiNZp_PtLohLw", xmlTag: "PrcgId", displayName: displayName("ProcessingIdentification"), kind: "text", type: "RestrictedFINXMax16Text", required: false }),
     ],
   },
   "PartyIdentification265": {
@@ -17789,6 +23223,35 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "PartyIdentification", isoId: "_BXmqtwN1Ee2-vqzwMUAewg", xmlTag: "PtyId", displayName: displayName("PartyIdentification"), kind: "component", type: "PartyIdentification266", required: true }),
     ],
   },
+  "PartyIdentification257Choice": {
+    name: "PartyIdentification257Choice",
+    isoId: "_PXUt4ZajEe-Rg9SagunFVg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "AnyBIC", isoId: "_PgHdgZajEe-Rg9SagunFVg", xmlTag: "AnyBIC", displayName: displayName("AnyBIC"), kind: "text", type: "AnyBICDec2014Identifier", required: true }),
+      f({ name: "NameAndAddress", isoId: "_PgHdg5ajEe-Rg9SagunFVg", xmlTag: "NmAndAdr", displayName: displayName("NameAndAddress"), kind: "component", type: "NameAndAddress5", required: true }),
+      f({ name: "Country", isoId: "_PgHdhZajEe-Rg9SagunFVg", xmlTag: "Ctry", displayName: displayName("Country"), kind: "code", type: "CountryCode", required: true }),
+      f({ name: "DigitalLedgerIdentification", isoId: "_SaFUQZajEe-Rg9SagunFVg", xmlTag: "DgtlLdgrId", displayName: displayName("DigitalLedgerIdentification"), kind: "text", type: "DTI2024Identifier", required: true }),
+    ],
+  },
+  "PartyIdentification3": {
+    name: "PartyIdentification3",
+    isoId: "_QQa_otp-Ed-ak6NoX_4Aeg_51184003",
+    kind: "component",
+    fields: [
+      f({ name: "BICOrBEI", isoId: "_QQa_o9p-Ed-ak6NoX_4Aeg_120447237", xmlTag: "BICOrBEI", displayName: displayName("BICOrBEI"), kind: "text", type: "AnyBICIdentifier", required: true }),
+    ],
+  },
+  "PartyIdentification314": {
+    name: "PartyIdentification314",
+    isoId: "_Nwuw4YopEe-efPejSUAtLw",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_N6RHYYopEe-efPejSUAtLw", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "PartyIdentification257Choice", required: true }),
+      f({ name: "LEI", isoId: "_N6RHaYopEe-efPejSUAtLw", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
+      f({ name: "ProcessingIdentification", isoId: "_N6RHa4opEe-efPejSUAtLw", xmlTag: "PrcgId", displayName: displayName("ProcessingIdentification"), kind: "text", type: "Max35Text", required: false }),
+    ],
+  },
   "PartyIdentification44": {
     name: "PartyIdentification44",
     isoId: "_Sp1N7QEcEeCQm6a_G2yO_w_-1349782575",
@@ -17822,6 +23285,59 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "NameAndAddress", isoId: "_JVFG-SjIEeKnA5P_jl2DUw", xmlTag: "NmAndAdr", displayName: displayName("NameAndAddress"), kind: "component", type: "NameAndAddress8", required: true }),
       f({ name: "AnyBIC", isoId: "_JVFG_SjIEeKnA5P_jl2DUw", xmlTag: "AnyBIC", displayName: displayName("AnyBIC"), kind: "component", type: "PartyIdentification44", required: true }),
       f({ name: "PartyIdentification", isoId: "_XthjsIKPEeKmtdhZXgREOQ", xmlTag: "PtyId", displayName: displayName("PartyIdentification"), kind: "component", type: "PartyIdentification59", required: true }),
+    ],
+  },
+  "PartyIdentificationAndAccount170": {
+    name: "PartyIdentificationAndAccount170",
+    isoId: "_-ofEL9LCEeiN28wlpBQScw",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_-6Ct49LCEeiN28wlpBQScw", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "PartyIdentification120Choice", required: true }),
+      f({ name: "LEI", isoId: "_-6Ct69LCEeiN28wlpBQScw", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
+      f({ name: "SafekeepingAccount", isoId: "_-6Ct7dLCEeiN28wlpBQScw", xmlTag: "SfkpgAcct", displayName: displayName("SafekeepingAccount"), kind: "component", type: "SecuritiesAccount19", required: false }),
+      f({ name: "ProcessingIdentification", isoId: "_-6Ct9dLCEeiN28wlpBQScw", xmlTag: "PrcgId", displayName: displayName("ProcessingIdentification"), kind: "text", type: "Max35Text", required: false }),
+    ],
+  },
+  "PartyIdentificationAndAccount195": {
+    name: "PartyIdentificationAndAccount195",
+    isoId: "_R2UDHyqCEeyR9JrVGfaMKw",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_SOAxEyqCEeyR9JrVGfaMKw", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "PartyIdentification120Choice", required: true }),
+      f({ name: "LEI", isoId: "_SOAxGyqCEeyR9JrVGfaMKw", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
+      f({ name: "SafekeepingAccount", isoId: "_SOAxHSqCEeyR9JrVGfaMKw", xmlTag: "SfkpgAcct", displayName: displayName("SafekeepingAccount"), kind: "component", type: "SecuritiesAccount19", required: false }),
+      f({ name: "BlockChainAddressOrWallet", isoId: "_V0iL0yqCEeyR9JrVGfaMKw", xmlTag: "BlckChainAdrOrWllt", displayName: displayName("BlockChainAddressOrWallet"), kind: "component", type: "BlockChainAddressWallet3", required: false }),
+      f({ name: "ProcessingIdentification", isoId: "_SOAxJSqCEeyR9JrVGfaMKw", xmlTag: "PrcgId", displayName: displayName("ProcessingIdentification"), kind: "text", type: "Max35Text", required: false }),
+    ],
+    rules: [
+      { name: "SafekeepingAccountOrBlockChainAddress1Rule", isoId: "_V0iL1CqCEeyR9JrVGfaMKw", text: "If SafekeepingAccount is present, BlockChainAddressOrWallet must be absent.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/BlockChainAddressOrWallet"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/SafekeepingAccount"}]}} },
+      { name: "SafekeepingAccountOrBlockChainAddress2Rule", isoId: "_V0iL1SqCEeyR9JrVGfaMKw", text: "If BlockChainAddressOrWallet is present, SafekeepingAccount must be absent.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/SafekeepingAccount"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/BlockChainAddressOrWallet"}]}} },
+    ],
+  },
+  "SecuritiesAccount30": {
+    name: "SecuritiesAccount30",
+    isoId: "_5SG1s5NLEeWGlc8L7oPDIg",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_5SG1tZNLEeWGlc8L7oPDIg", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "RestrictedFINXMax35Text", required: true }),
+      f({ name: "Type", isoId: "_5SG1yZNLEeWGlc8L7oPDIg", xmlTag: "Tp", displayName: displayName("Type"), kind: "component", type: "GenericIdentification47", required: false }),
+      f({ name: "Name", isoId: "_5SG13ZNLEeWGlc8L7oPDIg", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max70Text", required: false }),
+    ],
+  },
+  "PartyIdentificationAndAccount215": {
+    name: "PartyIdentificationAndAccount215",
+    isoId: "_dhJLQzi8Eeydid5dcNPKvg",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_dhJLSzi8Eeydid5dcNPKvg", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "PartyIdentification137Choice", required: true }),
+      f({ name: "LEI", isoId: "_dhJLUzi8Eeydid5dcNPKvg", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
+      f({ name: "SafekeepingAccount", isoId: "_dhJLVTi8Eeydid5dcNPKvg", xmlTag: "SfkpgAcct", displayName: displayName("SafekeepingAccount"), kind: "component", type: "SecuritiesAccount30", required: false }),
+      f({ name: "BlockChainAddressOrWallet", isoId: "_dhJLXTi8Eeydid5dcNPKvg", xmlTag: "BlckChainAdrOrWllt", displayName: displayName("BlockChainAddressOrWallet"), kind: "component", type: "BlockChainAddressWallet7", required: false }),
+      f({ name: "ProcessingIdentification", isoId: "_dhJLXzi8Eeydid5dcNPKvg", xmlTag: "PrcgId", displayName: displayName("ProcessingIdentification"), kind: "text", type: "RestrictedFINXMax16Text", required: false }),
+    ],
+    rules: [
+      { name: "SafekeepingAccountOrBlockChainAddress1Rule", isoId: "_dhJLRTi8Eeydid5dcNPKvg", text: "If SafekeepingAccount is present, BlockChainAddressOrWallet must be absent.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/BlockChainAddressOrWallet"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/SafekeepingAccount"}]}} },
+      { name: "SafekeepingAccountOrBlockChainAddress2Rule", isoId: "_dhJLRzi8Eeydid5dcNPKvg", text: "If BlockChainAddressOrWallet is present, SafekeepingAccount must be absent.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/SafekeepingAccount"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/BlockChainAddressOrWallet"}]}} },
     ],
   },
   "PlainCardData24": {
@@ -18055,6 +23571,45 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "CategoryPurpose", isoId: "_gk4C6-10Eei2O5Op8j5zpA", xmlTag: "CtgyPurp", displayName: displayName("CategoryPurpose"), kind: "choice", type: "CategoryPurpose1Choice", required: false }),
     ],
   },
+  "PendingProcessingReason5Code": {
+    name: "PendingProcessingReason5Code",
+    isoId: "5c3971c2-65c3-4358-81f5-c57788b09352",
+    kind: "code",
+    options: [{ value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_scw-8Sm4EfGfZ9PfK70MMg" }, { value: "CAIS", name: "AwaitingSecurities", isoId: "_scxmASm4EfGfZ9PfK70MMg" }, { value: "DOCY", name: "AwaitingDocumentsOrEndorsementsFromYou", isoId: "_scxmAym4EfGfZ9PfK70MMg" }, { value: "BLOC", name: "AccountBlocked", isoId: "_scxmBSm4EfGfZ9PfK70MMg" }, { value: "MUNO", name: "MultipleSettlementAmount", isoId: "_scxmBym4EfGfZ9PfK70MMg" }, { value: "GLOB", name: "GlobalFormSecurities", isoId: "_scxmCSm4EfGfZ9PfK70MMg" }, { value: "PREA", name: "YourInstructionOnHold", isoId: "_scxmCym4EfGfZ9PfK70MMg" }, { value: "YCOL", name: "CollateralShortage", isoId: "_scxmDSm4EfGfZ9PfK70MMg" }, { value: "COLL", name: "SecuritiesPledgedAsCollateral", isoId: "_scxmDym4EfGfZ9PfK70MMg" }, { value: "FLIM", name: "MaximumForeignLimitReached", isoId: "_scxmESm4EfGfZ9PfK70MMg" }, { value: "NOFX", name: "NoForeignExchangeInstruction", isoId: "_scxmEym4EfGfZ9PfK70MMg" }, { value: "LACK", name: "LackOfSecurities", isoId: "_scxmFSm4EfGfZ9PfK70MMg" }, { value: "LALO", name: "SecuritiesLoanedOut", isoId: "_scxmFym4EfGfZ9PfK70MMg" }, { value: "MONY", name: "InsufficientMoney", isoId: "_scxmGSm4EfGfZ9PfK70MMg" }, { value: "MINO", name: "MinimumSettlementAmount", isoId: "_scxmGym4EfGfZ9PfK70MMg" }, { value: "OTHR", name: "Other", isoId: "_scxmHSm4EfGfZ9PfK70MMg" }, { value: "DENO", name: "UnavailableDeliverableDenominatedQuantity", isoId: "_scxmHym4EfGfZ9PfK70MMg" }, { value: "LIQU", name: "InsufficientCentralBankLiquidity", isoId: "_scxmISm4EfGfZ9PfK70MMg" }, { value: "CERT", name: "WrongCertificatesNumbers", isoId: "_scxmIym4EfGfZ9PfK70MMg" }, { value: "NEXT", name: "NextProcess", isoId: "_scxmJSm4EfGfZ9PfK70MMg" }, { value: "PRSY", name: "SystemOnHold", isoId: "_scxmJym4EfGfZ9PfK70MMg" }, { value: "CSDH", name: "CSDHold", isoId: "_scxmKSm4EfGfZ9PfK70MMg" }, { value: "CDEL", name: "ConditionalDelivery", isoId: "_scxmKym4EfGfZ9PfK70MMg" }, { value: "CVAL", name: "CSDValidation", isoId: "_scxmLSm4EfGfZ9PfK70MMg" }, { value: "CDLR", name: "ConditionalDeliveryAwaitingRelease", isoId: "_scxmLym4EfGfZ9PfK70MMg" }, { value: "INBC", name: "IncompleteNumberCount", isoId: "_scxmMSm4EfGfZ9PfK70MMg" }, { value: "CDAC", name: "ConditionalDeliveryAwaitingCancellation", isoId: "_scxmMym4EfGfZ9PfK70MMg" }],
+  },
+  "PendingProcessingReason19Choice": {
+    name: "PendingProcessingReason19Choice",
+    isoId: "69c17811-c430-4554-9762-9ded102d00bb",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "483be376-4a3d-44e6-9d9c-cb33173cf871", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "PendingProcessingReason5Code", required: true }),
+      f({ name: "Proprietary", isoId: "e318786c-e60c-4b1d-9be0-1ccaafb819c9", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "PendingProcessingReason17": {
+    name: "PendingProcessingReason17",
+    isoId: "296c1e65-fb98-48aa-8d98-df9eb0687407",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "83817613-2602-4b64-a849-f8eac75f6f5d", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "PendingProcessingReason19Choice", required: true }),
+      f({ name: "AdditionalReasonInformation", isoId: "da809ece-55c4-463e-a5b8-e98b5d3be26d", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
+    ],
+  },
+  "PendingProcessingReason3Code": {
+    name: "PendingProcessingReason3Code",
+    isoId: "_0mzacAlIEeGATtfOBToyew_-1857836071",
+    kind: "code",
+    options: [{ value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_0mzacQlIEeGATtfOBToyew_-1793556465" }, { value: "BLOC", name: "AccountBlocked", isoId: "_0mzacglIEeGATtfOBToyew_1504338478" }, { value: "MUNO", name: "MultipleSettlementAmount", isoId: "_0mzacwlIEeGATtfOBToyew_442986519" }, { value: "NEXT", name: "NextProcess", isoId: "_0mzadAlIEeGATtfOBToyew_-375967162" }, { value: "MINO", name: "MinimumSettlementAmount", isoId: "_0mzadQlIEeGATtfOBToyew_-1373039515" }, { value: "OTHR", name: "Other", isoId: "_0m9LcAlIEeGATtfOBToyew_-1664997253" }, { value: "DENO", name: "UnavailableDeliverableDenominatedQuantity", isoId: "_0m9LcQlIEeGATtfOBToyew_-1486878581" }, { value: "CERT", name: "WrongCertificatesNumbers", isoId: "_0m9LcglIEeGATtfOBToyew_1924855428" }],
+  },
+  "PendingProcessingStatus20Choice": {
+    name: "PendingProcessingStatus20Choice",
+    isoId: "2435a58f-30dc-48b1-9e7e-d107a5562ea7",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NoSpecifiedReason", isoId: "68155581-860d-4b51-93a0-20bdcc62f634", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
+      f({ name: "Reason", isoId: "5cfb8695-a489-4e2f-bf7b-133b187e4d8d", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "PendingProcessingReason17", required: true }),
+    ],
+  },
   "PendingReason10Code": {
     name: "PendingReason10Code",
     isoId: "_b_fWsf41EeClUvPNHKL9Zw",
@@ -18127,6 +23682,102 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "AdditionalReasonInformation", isoId: "_kFQGCTq3EeWyoP0PbocV1Q", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
     ],
   },
+  "PendingReason37Choice": {
+    name: "PendingReason37Choice",
+    isoId: "_6BE0p5NLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_6BE0qZNLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "PendingReason6Code", required: true }),
+      f({ name: "Proprietary", isoId: "_6BE0sZNLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "PendingReason20": {
+    name: "PendingReason20",
+    isoId: "_6BE0k5NLEeWGlc8L7oPDIg",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "_6BE0lZNLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "PendingReason37Choice", required: true }),
+      f({ name: "AdditionalReasonInformation", isoId: "_6BE0nZNLEeWGlc8L7oPDIg", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "RestrictedFINXMax210Text", required: false }),
+    ],
+  },
+  "PendingReason24Code": {
+    name: "PendingReason24Code",
+    isoId: "_NklMbCW-EeygjNFjAlVoPA",
+    kind: "code",
+    options: [{ value: "AWMO", name: "AwaitingMoney", isoId: "_4Bl58SW_Eeyr3ZXX_BfH2g" }, { value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_4Bl58yW_Eeyr3ZXX_BfH2g" }, { value: "CAIS", name: "AwaitingSecurities", isoId: "_4Bl59SW_Eeyr3ZXX_BfH2g" }, { value: "REFU", name: "InstructionRefusedOrNotRecognised", isoId: "_4Bl59yW_Eeyr3ZXX_BfH2g" }, { value: "AWSH", name: "AwaitingSecuritiesFromCounterparty", isoId: "_4Bl5-SW_Eeyr3ZXX_BfH2g" }, { value: "PHSE", name: "PhysicalDeliveryDelay", isoId: "_4Bl5-yW_Eeyr3ZXX_BfH2g" }, { value: "TAMM", name: "TradeAmendedInMarket", isoId: "_4Bl5_SW_Eeyr3ZXX_BfH2g" }, { value: "DOCY", name: "AwaitingDocumentsOrEndorsementsFromYou", isoId: "_4Bl5_yW_Eeyr3ZXX_BfH2g" }, { value: "DOCC", name: "AwaitingDocumentsOrEndorsementsFromCounterparty", isoId: "_4Bl6ASW_Eeyr3ZXX_BfH2g" }, { value: "BLOC", name: "AccountBlocked", isoId: "_4Bl6AyW_Eeyr3ZXX_BfH2g" }, { value: "CHAS", name: "EnquirySent", isoId: "_4Bl6BSW_Eeyr3ZXX_BfH2g" }, { value: "NEWI", name: "NewIssues", isoId: "_4Bl6ByW_Eeyr3ZXX_BfH2g" }, { value: "CLAC", name: "CounterpartyInsufficientSecurities", isoId: "_4Bl6CSW_Eeyr3ZXX_BfH2g" }, { value: "MUNO", name: "MultipleSettlementAmount", isoId: "_4Bl6CyW_Eeyr3ZXX_BfH2g" }, { value: "GLOB", name: "GlobalFormSecurities", isoId: "_4Bl6DSW_Eeyr3ZXX_BfH2g" }, { value: "PREA", name: "YourInstructionOnHold", isoId: "_4Bl6DyW_Eeyr3ZXX_BfH2g" }, { value: "PART", name: "TradeSettlesInPartials", isoId: "_4Bl6ESW_Eeyr3ZXX_BfH2g" }, { value: "NMAS", name: "NoMatchingRequired", isoId: "_4Bl6EyW_Eeyr3ZXX_BfH2g" }, { value: "NOFX", name: "NoForeignExchangeInstruction", isoId: "_4Bl6FSW_Eeyr3ZXX_BfH2g" }, { value: "CMON", name: "CounterpartyInsufficientMoney", isoId: "_4Bl6FyW_Eeyr3ZXX_BfH2g" }, { value: "YCOL", name: "CollateralShortage", isoId: "_4Bl6GSW_Eeyr3ZXX_BfH2g" }, { value: "COLL", name: "SecuritiesPledgedAsCollateral", isoId: "_4Bl6GyW_Eeyr3ZXX_BfH2g" }, { value: "DEPO", name: "RefusedDepositForIssueOfDepositaryReceipts", isoId: "_4Bl6HSW_Eeyr3ZXX_BfH2g" }, { value: "FLIM", name: "MaximumForeignLimitReached", isoId: "_4Bl6HyW_Eeyr3ZXX_BfH2g" }, { value: "INCA", name: "IncomeAdjustementRequired", isoId: "_4Bl6ISW_Eeyr3ZXX_BfH2g" }, { value: "LINK", name: "PendingLinkedInstruction", isoId: "_4Bl6IyW_Eeyr3ZXX_BfH2g" }, { value: "FUTU", name: "AwaitingSettlementDate", isoId: "_4Bl6JSW_Eeyr3ZXX_BfH2g" }, { value: "LACK", name: "LackOfSecurities", isoId: "_4Bl6JyW_Eeyr3ZXX_BfH2g" }, { value: "LALO", name: "SecuritiesLoanedOut", isoId: "_4Bl6KSW_Eeyr3ZXX_BfH2g" }, { value: "MONY", name: "InsufficientMoney", isoId: "_4Bl6KyW_Eeyr3ZXX_BfH2g" }, { value: "NCON", name: "ConfirmationNotReceived", isoId: "_4Bl6LSW_Eeyr3ZXX_BfH2g" }, { value: "REFS", name: "NotInGoodOrder", isoId: "_4Bl6LyW_Eeyr3ZXX_BfH2g" }, { value: "SDUT", name: "LackOfStampDutyInformation", isoId: "_4Bl6MSW_Eeyr3ZXX_BfH2g" }, { value: "BATC", name: "ProcessingBatchDifference", isoId: "_4Bl6MyW_Eeyr3ZXX_BfH2g" }, { value: "SBLO", name: "SecuritiesBlocked", isoId: "_4Bl6NSW_Eeyr3ZXX_BfH2g" }, { value: "CPEC", name: "CounterpartyInReceivership", isoId: "_4Bl6NyW_Eeyr3ZXX_BfH2g" }, { value: "MINO", name: "MinimumSettlementAmount", isoId: "_4Bl6OSW_Eeyr3ZXX_BfH2g" }, { value: "IAAD", name: "StatusReasonInvestigation", isoId: "_4Bl6OyW_Eeyr3ZXX_BfH2g" }, { value: "OTHR", name: "Other", isoId: "_4Bl6PSW_Eeyr3ZXX_BfH2g" }, { value: "PHCK", name: "PhysicalSecuritiesVerification", isoId: "_4Bl6PyW_Eeyr3ZXX_BfH2g" }, { value: "BENO", name: "BeneficialOwnershipDisagreement", isoId: "_4Bl6QSW_Eeyr3ZXX_BfH2g" }, { value: "BOTH", name: "BothInstructionsOnHold", isoId: "_4Bl6QyW_Eeyr3ZXX_BfH2g" }, { value: "CLHT", name: "ClearingHouseTrade", isoId: "_4Bl6RSW_Eeyr3ZXX_BfH2g" }, { value: "DENO", name: "UnavailableDeliverableDenominatedQuantity", isoId: "_4Bl6RyW_Eeyr3ZXX_BfH2g" }, { value: "DISA", name: "NaturalDisaster", isoId: "_4Bl6SSW_Eeyr3ZXX_BfH2g" }, { value: "DKNY", name: "CounterpartyReturnedShares", isoId: "_4Bl6SyW_Eeyr3ZXX_BfH2g" }, { value: "FROZ", name: "SecuritiesFrozenAtCSD", isoId: "_4Bl6TSW_Eeyr3ZXX_BfH2g" }, { value: "LAAW", name: "AwaitingOtherTransaction", isoId: "_4Bl6TyW_Eeyr3ZXX_BfH2g" }, { value: "LATE", name: "MarketDeadlineMissed", isoId: "_4Bl6USW_Eeyr3ZXX_BfH2g" }, { value: "LIQU", name: "InsufficientCentralBankLiquidity", isoId: "_4Bl6UyW_Eeyr3ZXX_BfH2g" }, { value: "PRCY", name: "CounterpartyInstructionOnHold", isoId: "_4Bl6VSW_Eeyr3ZXX_BfH2g" }, { value: "REGT", name: "CertificatesRejected", isoId: "_4Bl6VyW_Eeyr3ZXX_BfH2g" }, { value: "SETS", name: "SettlementSystemMethodModified", isoId: "_4Bl6WSW_Eeyr3ZXX_BfH2g" }, { value: "CERT", name: "WrongCertificatesNumbers", isoId: "_4Bl6WyW_Eeyr3ZXX_BfH2g" }, { value: "PRSY", name: "SystemOnHold", isoId: "_4Bl6XSW_Eeyr3ZXX_BfH2g" }, { value: "CSDH", name: "CSDHold", isoId: "_4Bl6XyW_Eeyr3ZXX_BfH2g" }, { value: "CVAL", name: "CSDValidation", isoId: "_4Bl6YSW_Eeyr3ZXX_BfH2g" }, { value: "CDLR", name: "ConditionalDeliveryAwaitingRelease", isoId: "_4Bl6YyW_Eeyr3ZXX_BfH2g" }, { value: "INBC", name: "IncompleteNumberCount", isoId: "_4Bl6ZSW_Eeyr3ZXX_BfH2g" }, { value: "PREL", name: "PartiallyReleased", isoId: "_6CVpsSW_Eeyr3ZXX_BfH2g" }, { value: "PATD", name: "PartialDiffer", isoId: "_7O1HQSgKEeym1_Zp1BTvEw" }],
+  },
+  "PendingReason28Code": {
+    name: "PendingReason28Code",
+    isoId: "_DeMAwYcNEe-6cOl7zMpJaA",
+    kind: "code",
+    options: [{ value: "AWMO", name: "AwaitingMoney", isoId: "_c39FYYcNEe-_P9B6abNOwg" }, { value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_c39FY4cNEe-_P9B6abNOwg" }, { value: "CAIS", name: "AwaitingSecurities", isoId: "_c39FZYcNEe-_P9B6abNOwg" }, { value: "REFU", name: "InstructionRefusedOrNotRecognised", isoId: "_c39FZ4cNEe-_P9B6abNOwg" }, { value: "AWSH", name: "AwaitingSecuritiesFromCounterparty", isoId: "_c39FaYcNEe-_P9B6abNOwg" }, { value: "PHSE", name: "PhysicalDeliveryDelay", isoId: "_c39Fa4cNEe-_P9B6abNOwg" }, { value: "TAMM", name: "TradeAmendedInMarket", isoId: "_c39FbYcNEe-_P9B6abNOwg" }, { value: "DOCY", name: "AwaitingDocumentsOrEndorsementsFromYou", isoId: "_c39Fb4cNEe-_P9B6abNOwg" }, { value: "DOCC", name: "AwaitingDocumentsOrEndorsementsFromCounterparty", isoId: "_c39FcYcNEe-_P9B6abNOwg" }, { value: "BLOC", name: "AccountBlocked", isoId: "_c39Fc4cNEe-_P9B6abNOwg" }, { value: "CHAS", name: "EnquirySent", isoId: "_c39FdYcNEe-_P9B6abNOwg" }, { value: "NEWI", name: "NewIssues", isoId: "_c39Fd4cNEe-_P9B6abNOwg" }, { value: "CLAC", name: "CounterpartyInsufficientSecurities", isoId: "_c39FeYcNEe-_P9B6abNOwg" }, { value: "MUNO", name: "MultipleSettlementAmount", isoId: "_c39Fe4cNEe-_P9B6abNOwg" }, { value: "GLOB", name: "GlobalFormSecurities", isoId: "_c39FfYcNEe-_P9B6abNOwg" }, { value: "PREA", name: "YourInstructionOnHold", isoId: "_c39Ff4cNEe-_P9B6abNOwg" }, { value: "PART", name: "TradeSettlesInPartials", isoId: "_c39FgYcNEe-_P9B6abNOwg" }, { value: "NMAS", name: "NoMatchingRequired", isoId: "_c39Fg4cNEe-_P9B6abNOwg" }, { value: "NOFX", name: "NoForeignExchangeInstruction", isoId: "_c39FhYcNEe-_P9B6abNOwg" }, { value: "CMON", name: "CounterpartyInsufficientMoney", isoId: "_c39Fh4cNEe-_P9B6abNOwg" }, { value: "YCOL", name: "CollateralShortage", isoId: "_c39FiYcNEe-_P9B6abNOwg" }, { value: "COLL", name: "SecuritiesPledgedAsCollateral", isoId: "_c39Fi4cNEe-_P9B6abNOwg" }, { value: "DEPO", name: "RefusedDepositForIssueOfDepositaryReceipts", isoId: "_c39FjYcNEe-_P9B6abNOwg" }, { value: "FLIM", name: "MaximumForeignLimitReached", isoId: "_c39Fj4cNEe-_P9B6abNOwg" }, { value: "INCA", name: "IncomeAdjustementRequired", isoId: "_c39FkYcNEe-_P9B6abNOwg" }, { value: "LINK", name: "PendingLinkedInstruction", isoId: "_c39Fk4cNEe-_P9B6abNOwg" }, { value: "FUTU", name: "AwaitingSettlementDate", isoId: "_c39FlYcNEe-_P9B6abNOwg" }, { value: "LACK", name: "LackOfSecurities", isoId: "_c39Fl4cNEe-_P9B6abNOwg" }, { value: "LALO", name: "SecuritiesLoanedOut", isoId: "_c39FmYcNEe-_P9B6abNOwg" }, { value: "MONY", name: "InsufficientMoney", isoId: "_c39Fm4cNEe-_P9B6abNOwg" }, { value: "NCON", name: "ConfirmationNotReceived", isoId: "_c39FnYcNEe-_P9B6abNOwg" }, { value: "REFS", name: "NotInGoodOrder", isoId: "_c39Fn4cNEe-_P9B6abNOwg" }, { value: "SDUT", name: "LackOfStampDutyInformation", isoId: "_c39FoYcNEe-_P9B6abNOwg" }, { value: "BATC", name: "ProcessingBatchDifference", isoId: "_c39Fo4cNEe-_P9B6abNOwg" }, { value: "CYCL", name: "AwaitingNextSettlementCycle", isoId: "_c39FpYcNEe-_P9B6abNOwg" }, { value: "SBLO", name: "SecuritiesBlocked", isoId: "_c39Fp4cNEe-_P9B6abNOwg" }, { value: "CPEC", name: "CounterpartyInReceivership", isoId: "_c39FqYcNEe-_P9B6abNOwg" }, { value: "MINO", name: "MinimumSettlementAmount", isoId: "_c39Fq4cNEe-_P9B6abNOwg" }, { value: "IAAD", name: "StatusReasonInvestigation", isoId: "_c39FrYcNEe-_P9B6abNOwg" }, { value: "OTHR", name: "Other", isoId: "_c39Fr4cNEe-_P9B6abNOwg" }, { value: "PHCK", name: "PhysicalSecuritiesVerification", isoId: "_c39FsYcNEe-_P9B6abNOwg" }, { value: "BENO", name: "BeneficialOwnershipDisagreement", isoId: "_c39Fs4cNEe-_P9B6abNOwg" }, { value: "BOTH", name: "BothInstructionsOnHold", isoId: "_c39FtYcNEe-_P9B6abNOwg" }, { value: "CLHT", name: "ClearingHouseTrade", isoId: "_c39Ft4cNEe-_P9B6abNOwg" }, { value: "DENO", name: "UnavailableDeliverableDenominatedQuantity", isoId: "_c39FuYcNEe-_P9B6abNOwg" }, { value: "DISA", name: "NaturalDisaster", isoId: "_c39Fu4cNEe-_P9B6abNOwg" }, { value: "DKNY", name: "CounterpartyReturnedShares", isoId: "_c39FvYcNEe-_P9B6abNOwg" }, { value: "FROZ", name: "SecuritiesFrozenAtCSD", isoId: "_c39Fv4cNEe-_P9B6abNOwg" }, { value: "LAAW", name: "AwaitingOtherTransaction", isoId: "_c39FwYcNEe-_P9B6abNOwg" }, { value: "LATE", name: "MarketDeadlineMissed", isoId: "_c39Fw4cNEe-_P9B6abNOwg" }, { value: "LIQU", name: "InsufficientCentralBankLiquidity", isoId: "_c39FxYcNEe-_P9B6abNOwg" }, { value: "PRCY", name: "CounterpartyInstructionOnHold", isoId: "_c39Fx4cNEe-_P9B6abNOwg" }, { value: "REGT", name: "CertificatesRejected", isoId: "_c39FyYcNEe-_P9B6abNOwg" }, { value: "SETS", name: "SettlementSystemMethodModified", isoId: "_c39Fy4cNEe-_P9B6abNOwg" }, { value: "CERT", name: "WrongCertificatesNumbers", isoId: "_c39FzYcNEe-_P9B6abNOwg" }, { value: "PRSY", name: "SystemOnHold", isoId: "_c39Fz4cNEe-_P9B6abNOwg" }, { value: "CSDH", name: "CSDHold", isoId: "_c39F0YcNEe-_P9B6abNOwg" }, { value: "CVAL", name: "CSDValidation", isoId: "_c39F04cNEe-_P9B6abNOwg" }, { value: "CDLR", name: "ConditionalDeliveryAwaitingRelease", isoId: "_c39F1YcNEe-_P9B6abNOwg" }, { value: "INBC", name: "IncompleteNumberCount", isoId: "_c39F14cNEe-_P9B6abNOwg" }, { value: "PATD", name: "PartialDiffer", isoId: "_gK9HMYcNEe-_P9B6abNOwg" }, { value: "PREL", name: "PartiallyReleased", isoId: "_gUy_sYcNEe-_P9B6abNOwg" }],
+  },
+  "PendingReason31Code": {
+    name: "PendingReason31Code",
+    isoId: "_I3LY8Y5cEfC_4ZEXsY0Xyg",
+    kind: "code",
+    options: [{ value: "BLOC", name: "AccountBlocked", isoId: "_USCSsY5cEfC_4ZEXsY0Xyg" }, { value: "PART", name: "TradeSettlesInPartials", isoId: "_WJj1AY5cEfC_4ZEXsY0Xyg" }, { value: "COLL", name: "SecuritiesPledgedAsCollateral", isoId: "_XO-k8Y5cEfC_4ZEXsY0Xyg" }, { value: "LINK", name: "PendingLinkedInstruction", isoId: "_YeY-YY5cEfC_4ZEXsY0Xyg" }, { value: "FUTU", name: "AwaitingSettlementDate", isoId: "_ZoUa4Y5cEfC_4ZEXsY0Xyg" }, { value: "LACK", name: "LackOfSecurities", isoId: "_a2h6cY5cEfC_4ZEXsY0Xyg" }, { value: "SBLO", name: "SecuritiesBlocked", isoId: "_b-N7QY5cEfC_4ZEXsY0Xyg" }, { value: "OTHR", name: "Other", isoId: "_d1xSwY5cEfC_4ZEXsY0Xyg" }, { value: "PRSY", name: "SystemOnHold", isoId: "_fCs_8Y5cEfC_4ZEXsY0Xyg" }, { value: "INBC", name: "IncompleteNumberCount", isoId: "_gnwSMY5cEfC_4ZEXsY0Xyg" }],
+  },
+  "PendingReason69Choice": {
+    name: "PendingReason69Choice",
+    isoId: "_x2VKkYcSEe-U27oWwgmhCQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_x9e7YYcSEe-U27oWwgmhCQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "PendingReason28Code", required: true }),
+      f({ name: "Proprietary", isoId: "_x9e7aYcSEe-U27oWwgmhCQ", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "PendingReason32": {
+    name: "PendingReason32",
+    isoId: "_xvVKsYcSEe-U27oWwgmhCQ",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "_x2VKgYcSEe-U27oWwgmhCQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "PendingReason69Choice", required: true }),
+      f({ name: "AdditionalReasonInformation", isoId: "_x2VKiYcSEe-U27oWwgmhCQ", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
+    ],
+  },
+  "PendingReason32Code": {
+    name: "PendingReason32Code",
+    isoId: "_FfqNAaoHEfCG2_q2WT-90w",
+    kind: "code",
+    options: [{ value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_9D-o0Sm4EfGfZ9PfK70MMg" }, { value: "CONF", name: "AwaitingConfirmation", isoId: "_9D-o0ym4EfGfZ9PfK70MMg" }, { value: "CDCY", name: "ConditionalCurrency", isoId: "_9D-o1Sm4EfGfZ9PfK70MMg" }, { value: "CDRE", name: "ConditionalRealignement", isoId: "_9D-o1ym4EfGfZ9PfK70MMg" }, { value: "CDRG", name: "ConditionalRegistrar", isoId: "_9D-o2Sm4EfGfZ9PfK70MMg" }, { value: "OTHR", name: "Other", isoId: "_9D-o2ym4EfGfZ9PfK70MMg" }],
+  },
+  "PendingReason75Choice": {
+    name: "PendingReason75Choice",
+    isoId: "_YE220eSkEe-qVZLXW4RRBw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_YQ2EYeSkEe-qVZLXW4RRBw", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "PendingReason31Code", required: true }),
+      f({ name: "Proprietary", isoId: "_YQ2EaeSkEe-qVZLXW4RRBw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "PendingReason34": {
+    name: "PendingReason34",
+    isoId: "_X5OOkeSkEe-qVZLXW4RRBw",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "_YE2PweSkEe-qVZLXW4RRBw", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "PendingReason75Choice", required: true }),
+      f({ name: "AdditionalReasonInformation", isoId: "_YE2PyeSkEe-qVZLXW4RRBw", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
+    ],
+  },
+  "PendingReason77Choice": {
+    name: "PendingReason77Choice",
+    isoId: "daf78ecf-aee5-4815-94bc-383784d69cde",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_DQbLxqn7EfCG2_q2WT-90w", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "PendingReason32Code", required: true }),
+      f({ name: "Proprietary", isoId: "30a69507-11bf-4e1b-b005-1ef4e1315c81", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "PendingReason35": {
+    name: "PendingReason35",
+    isoId: "9d9ca1e5-462c-43d1-be7e-59689275c827",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "d3baf44f-7b23-43fa-bdb7-abd5ff30bd2c", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "PendingReason77Choice", required: true }),
+      f({ name: "AdditionalReasonInformation", isoId: "956cfbec-b427-4dfa-8a02-97f48ee680b2", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
+    ],
+  },
   "PendingStatus36Choice": {
     name: "PendingStatus36Choice",
     isoId: "_kKulETp5EeWVrPy0StzzSg",
@@ -18154,17 +23805,297 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Reason", isoId: "_jlj5WTq3EeWyoP0PbocV1Q", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "PendingReason17", required: true }),
     ],
   },
+  "PendingStatus46Choice": {
+    name: "PendingStatus46Choice",
+    isoId: "_6BE0fZNLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NoSpecifiedReason", isoId: "_6BE0f5NLEeWGlc8L7oPDIg", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
+      f({ name: "Reason", isoId: "_6BE0h5NLEeWGlc8L7oPDIg", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "PendingReason20", required: true }),
+    ],
+  },
   "PendingStatus4Code": {
     name: "PendingStatus4Code",
     isoId: "_aGJuo9p-Ed-ak6NoX_4Aeg_1263998543",
     kind: "code",
     options: [{ value: "ACPD", name: "Accepted", isoId: "_aGJupNp-Ed-ak6NoX_4Aeg_1263998562" }, { value: "VALD", name: "Validated", isoId: "_aGJupdp-Ed-ak6NoX_4Aeg_1263998838" }, { value: "MATD", name: "Matched", isoId: "_aGJuptp-Ed-ak6NoX_4Aeg_1263998873" }, { value: "AUTD", name: "Authorised", isoId: "_aGJup9p-Ed-ak6NoX_4Aeg_1263998915" }, { value: "INVD", name: "Invalid", isoId: "_aGJuqNp-Ed-ak6NoX_4Aeg_1263998933" }, { value: "UMAC", name: "Unmatched", isoId: "_aGJuqdp-Ed-ak6NoX_4Aeg_1263998968" }, { value: "STLE", name: "SettlementEligible", isoId: "_aGS4kNp-Ed-ak6NoX_4Aeg_1263999258" }, { value: "STLM", name: "SettlementMature", isoId: "_aGS4kdp-Ed-ak6NoX_4Aeg_1263999276" }, { value: "SSPD", name: "Suspended", isoId: "_aGS4ktp-Ed-ak6NoX_4Aeg_1263999318" }, { value: "PCAN", name: "PendingCancellation", isoId: "_aGS4k9p-Ed-ak6NoX_4Aeg_1263999336" }, { value: "PSTL", name: "PendingSettlement", isoId: "_aGS4lNp-Ed-ak6NoX_4Aeg_1263999371" }, { value: "PFST", name: "PendingFailingSettlement", isoId: "_aGS4ldp-Ed-ak6NoX_4Aeg_1263999413" }, { value: "SMLR", name: "SenderMultilateralLimitRelated", isoId: "_aGS4ltp-Ed-ak6NoX_4Aeg_1263999431" }, { value: "RMLR", name: "ReceiverMultilateralLimitRelated", isoId: "_aGS4l9p-Ed-ak6NoX_4Aeg_1263999473" }, { value: "SRBL", name: "SenderReceiverBilateralLimitRelated", isoId: "_aGS4mNp-Ed-ak6NoX_4Aeg_1263999508" }, { value: "AVLB", name: "HeldForServiceAvailability", isoId: "_aGS4mdp-Ed-ak6NoX_4Aeg_1263999526" }, { value: "SRML", name: "SenderReceiverMultilateralLimitRelated", isoId: "_aGcpkNp-Ed-ak6NoX_4Aeg_588640614" }],
   },
+  "PendingStatus73Choice": {
+    name: "PendingStatus73Choice",
+    isoId: "_xoLZ24cSEe-U27oWwgmhCQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NoSpecifiedReason", isoId: "_xvVKoYcSEe-U27oWwgmhCQ", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
+      f({ name: "Reason", isoId: "_xvVKqYcSEe-U27oWwgmhCQ", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "PendingReason32", required: true }),
+    ],
+  },
+  "PendingStatus79Choice": {
+    name: "PendingStatus79Choice",
+    isoId: "_XtPBAeSkEe-qVZLXW4RRBw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NoSpecifiedReason", isoId: "_X5NngeSkEe-qVZLXW4RRBw", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
+      f({ name: "Reason", isoId: "_X5NnieSkEe-qVZLXW4RRBw", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "PendingReason34", required: true }),
+    ],
+  },
+  "PendingStatus81Choice": {
+    name: "PendingStatus81Choice",
+    isoId: "b9005a97-e5d0-49c4-9ac3-3ebff8d20b2c",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NoSpecifiedReason", isoId: "c4b34a87-11e0-4095-a373-be28bbcee8ff", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
+      f({ name: "Reason", isoId: "8ce0de1f-65d9-46a1-ab5e-955414a1e858", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "PendingReason35", required: true }),
+    ],
+  },
+  "PlaceOfClearingIdentification2": {
+    name: "PlaceOfClearingIdentification2",
+    isoId: "_FkYpQdXUEeiN28wlpBQScw",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_F1pYYdXUEeiN28wlpBQScw", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "AnyBICDec2014Identifier", required: false }),
+      f({ name: "LEI", isoId: "_F1pYY9XUEeiN28wlpBQScw", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
+    ],
+  },
+  "PlaceOfTradeIdentification1": {
+    name: "PlaceOfTradeIdentification1",
+    isoId: "_xU1ak2wsEeWLq_lbZ2Mhyw",
+    kind: "component",
+    fields: [
+      f({ name: "MarketTypeAndIdentification", isoId: "_xU1alGwsEeWLq_lbZ2Mhyw", xmlTag: "MktTpAndId", displayName: displayName("MarketTypeAndIdentification"), kind: "component", type: "MarketIdentification84", required: false }),
+      f({ name: "LEI", isoId: "_xU1alWwsEeWLq_lbZ2Mhyw", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
+    ],
+  },
+  "PlaceOfTradeIdentification2": {
+    name: "PlaceOfTradeIdentification2",
+    isoId: "_UzQfUZkBEeWn2ur3BXxtdg",
+    kind: "component",
+    fields: [
+      f({ name: "MarketTypeAndIdentification", isoId: "_VClUwZkBEeWn2ur3BXxtdg", xmlTag: "MktTpAndId", displayName: displayName("MarketTypeAndIdentification"), kind: "component", type: "MarketIdentification90", required: false }),
+      f({ name: "LEI", isoId: "_VClUw5kBEeWn2ur3BXxtdg", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
+    ],
+  },
+  "PledgeeType1Code": {
+    name: "PledgeeType1Code",
+    isoId: "_Ryn6UFj2EeSYweXGddZAOA",
+    kind: "code",
+    options: [{ value: "CPTY", name: "Counterparty", isoId: "_o56mAVj2EeSYweXGddZAOA" }, { value: "REGB", name: "RegulatoryBody", isoId: "_pCsHgVj2EeSYweXGddZAOA" }],
+  },
+  "PledgeeTypeAndAnyBICIdentifier2": {
+    name: "PledgeeTypeAndAnyBICIdentifier2",
+    isoId: "_YxXJ0dLGEeiN28wlpBQScw",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_ZF5PYdLGEeiN28wlpBQScw", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "AnyBICDec2014Identifier", required: true }),
+      f({ name: "PledgeeType", isoId: "_ZF5PY9LGEeiN28wlpBQScw", xmlTag: "PldgeeTp", displayName: displayName("PledgeeType"), kind: "code", type: "PledgeeType1Code", required: true }),
+    ],
+  },
+  "PledgeeTypeAndText1": {
+    name: "PledgeeTypeAndText1",
+    isoId: "_bBLbIE9fEeSn2-3swbRbzg",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_LkM6UE9gEeSn2-3swbRbzg", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "PledgeeType", isoId: "_iSB9IE9gEeSn2-3swbRbzg", xmlTag: "PldgeeTp", displayName: displayName("PledgeeType"), kind: "code", type: "PledgeeType1Code", required: true }),
+    ],
+  },
+  "PledgeeFormat5Choice": {
+    name: "PledgeeFormat5Choice",
+    isoId: "_YdRwN9LGEeiN28wlpBQScw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "TypeAndIdentification", isoId: "_YxN_4dLGEeiN28wlpBQScw", xmlTag: "TpAndId", displayName: displayName("TypeAndIdentification"), kind: "component", type: "PledgeeTypeAndAnyBICIdentifier2", required: true }),
+      f({ name: "Identification", isoId: "_YxN_49LGEeiN28wlpBQScw", xmlTag: "Id", displayName: displayName("Identification"), kind: "component", type: "PledgeeTypeAndText1", required: true }),
+      f({ name: "Proprietary", isoId: "_YxN_5dLGEeiN28wlpBQScw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification80", required: true }),
+    ],
+  },
+  "Pledgee3": {
+    name: "Pledgee3",
+    isoId: "_X818odLGEeiN28wlpBQScw",
+    kind: "component",
+    fields: [
+      f({ name: "PledgeeTypeAndIdentification", isoId: "_YdRwM9LGEeiN28wlpBQScw", xmlTag: "PldgeeTpAndId", displayName: displayName("PledgeeTypeAndIdentification"), kind: "choice", type: "PledgeeFormat5Choice", required: false }),
+      f({ name: "LEI", isoId: "_YdRwNdLGEeiN28wlpBQScw", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
+    ],
+    rules: [
+      { name: "PledgeeTypeAndIdentificationOrLEIRule", isoId: "_YdRwMdLGEeiN28wlpBQScw", text: "PledgeeTypeAndIdentification must be present or LEI must be present.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/PledgeeTypeAndIdentification"},{"op":"Presence","path":"/LEI"}]}} },
+    ],
+  },
+  "PledgeeTypeAndText2": {
+    name: "PledgeeTypeAndText2",
+    isoId: "_Sg8bNW_nEeSNvKTulh2IuA",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_Sg8bN2_nEeSNvKTulh2IuA", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "RestrictedFINMax30Text", required: false }),
+      f({ name: "PledgeeType", isoId: "_Sg8bOW_nEeSNvKTulh2IuA", xmlTag: "PldgeeTp", displayName: displayName("PledgeeType"), kind: "code", type: "PledgeeType1Code", required: true }),
+    ],
+  },
+  "PledgeeFormat6Choice": {
+    name: "PledgeeFormat6Choice",
+    isoId: "_Z07smffVEeiNZp_PtLohLw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "TypeAndIdentification", isoId: "_Z07sm_fVEeiNZp_PtLohLw", xmlTag: "TpAndId", displayName: displayName("TypeAndIdentification"), kind: "component", type: "PledgeeTypeAndAnyBICIdentifier2", required: true }),
+      f({ name: "Identification", isoId: "_Z07snffVEeiNZp_PtLohLw", xmlTag: "Id", displayName: displayName("Identification"), kind: "component", type: "PledgeeTypeAndText2", required: true }),
+      f({ name: "Proprietary", isoId: "_Z07sn_fVEeiNZp_PtLohLw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification85", required: true }),
+    ],
+  },
+  "Pledgee4": {
+    name: "Pledgee4",
+    isoId: "_Z07sj_fVEeiNZp_PtLohLw",
+    kind: "component",
+    fields: [
+      f({ name: "PledgeeTypeAndIdentification", isoId: "_Z07sk_fVEeiNZp_PtLohLw", xmlTag: "PldgeeTpAndId", displayName: displayName("PledgeeTypeAndIdentification"), kind: "choice", type: "PledgeeFormat6Choice", required: false }),
+      f({ name: "LEI", isoId: "_Z07slffVEeiNZp_PtLohLw", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
+    ],
+    rules: [
+      { name: "PledgeeTypeAndIdentificationOrLEIRule", isoId: "_Z07skffVEeiNZp_PtLohLw", text: "PledgeeTypeAndIdentification must be present or LEI must be present.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/PledgeeTypeAndIdentification"},{"op":"Presence","path":"/LEI"}]}} },
+    ],
+  },
   "PositionEffect3Code": {
     name: "PositionEffect3Code",
     isoId: "_tIL3gCDLEeWPMvNwVtiMsA",
     kind: "code",
     options: [{ value: "FIFO", name: "Fifo", isoId: "_yHm-4SDLEeWPMvNwVtiMsA" }, { value: "LIFO", name: "Lifo", isoId: "_-qssASDLEeWPMvNwVtiMsA" }],
+  },
+  "PriceRateOrAmountOrUnknownChoice": {
+    name: "PriceRateOrAmountOrUnknownChoice",
+    isoId: "_QaaCFNp-Ed-ak6NoX_4Aeg_974375674",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Rate", isoId: "_QaaCFdp-Ed-ak6NoX_4Aeg_1030711693", xmlTag: "Rate", displayName: displayName("Rate"), kind: "number", type: "PercentageRate", required: true }),
+      f({ name: "Amount", isoId: "_QaaCFtp-Ed-ak6NoX_4Aeg_1030711746", xmlTag: "Amt", displayName: displayName("Amount"), kind: "amount", type: "ActiveOrHistoricCurrencyAnd13DecimalAmount", required: true }),
+      f({ name: "UnknownIndicator", isoId: "_QaaCF9p-Ed-ak6NoX_4Aeg_-1972249999", xmlTag: "UknwnInd", displayName: displayName("UnknownIndicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+    ],
+  },
+  "PriceValueType2Code": {
+    name: "PriceValueType2Code",
+    isoId: "_aJR7Itp-Ed-ak6NoX_4Aeg_-228971923",
+    kind: "code",
+    options: [{ value: "DISC", name: "Discount", isoId: "_aJR7I9p-Ed-ak6NoX_4Aeg_61936866" }, { value: "PREM", name: "Premium", isoId: "_aJR7JNp-Ed-ak6NoX_4Aeg_91492479" }],
+  },
+  "TypeOfPrice11Code": {
+    name: "TypeOfPrice11Code",
+    isoId: "_YxNU8Np-Ed-ak6NoX_4Aeg_468430010",
+    kind: "code",
+    options: [{ value: "BIDE", name: "Bid", isoId: "_YxNU8dp-Ed-ak6NoX_4Aeg_468430052" }, { value: "OFFR", name: "Offer", isoId: "_YxNU8tp-Ed-ak6NoX_4Aeg_468430070" }, { value: "NAVL", name: "NetAssetValue", isoId: "_YxNU89p-Ed-ak6NoX_4Aeg_468430130" }, { value: "CREA", name: "Creation", isoId: "_YxXF8Np-Ed-ak6NoX_4Aeg_468430147" }, { value: "CANC", name: "Cancellation", isoId: "_YxXF8dp-Ed-ak6NoX_4Aeg_468430190" }, { value: "INTE", name: "Interim", isoId: "_YxXF8tp-Ed-ak6NoX_4Aeg_468430191" }, { value: "SWNG", name: "Swing", isoId: "_YxXF89p-Ed-ak6NoX_4Aeg_468430207" }, { value: "MIDD", name: "Mid", isoId: "_YxXF9Np-Ed-ak6NoX_4Aeg_468430467" }, { value: "RINV", name: "Reinvestment", isoId: "_YxXF9dp-Ed-ak6NoX_4Aeg_468430468" }, { value: "SWIC", name: "Switch", isoId: "_YxXF9tp-Ed-ak6NoX_4Aeg_468430484" }, { value: "MRKT", name: "Market", isoId: "_YxXF99p-Ed-ak6NoX_4Aeg_468430502" }, { value: "INDC", name: "Indicative", isoId: "_YxXF-Np-Ed-ak6NoX_4Aeg_468430520" }],
+  },
+  "PriceSource1Code": {
+    name: "PriceSource1Code",
+    isoId: "_aI_AONp-Ed-ak6NoX_4Aeg_-1214303822",
+    kind: "code",
+    options: [{ value: "FUND", name: "Fund", isoId: "_aJIKINp-Ed-ak6NoX_4Aeg_-1087782704" }, { value: "THEO", name: "Theoretical", isoId: "_aJIKIdp-Ed-ak6NoX_4Aeg_-1073007545" }, { value: "VEND", name: "Vendor", isoId: "_aJIKItp-Ed-ak6NoX_4Aeg_-1060076665" }],
+  },
+  "PriceSource": {
+    name: "PriceSource",
+    isoId: "_Qebmfdp-Ed-ak6NoX_4Aeg_-24723485",
+    kind: "component",
+    fields: [
+      f({ name: "PriceSource", isoId: "_QelXcNp-Ed-ak6NoX_4Aeg_403789854", xmlTag: "PricSrc", displayName: displayName("PriceSource"), kind: "code", type: "PriceSource1Code", required: true }),
+      f({ name: "Narrative", isoId: "_QelXcdp-Ed-ak6NoX_4Aeg_404714109", xmlTag: "Nrrtv", displayName: displayName("Narrative"), kind: "text", type: "Max35Text", required: false }),
+    ],
+  },
+  "PriceSourceFormatChoice": {
+    name: "PriceSourceFormatChoice",
+    isoId: "_RCDQ49p-Ed-ak6NoX_4Aeg_2134054867",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "LocalMarketPlace", isoId: "_RCDQ5Np-Ed-ak6NoX_4Aeg_863703704", xmlTag: "LclMktPlc", displayName: displayName("LocalMarketPlace"), kind: "text", type: "MICIdentifier", required: true }),
+      f({ name: "NonLocalMarketPlace", isoId: "_RCDQ5dp-Ed-ak6NoX_4Aeg_1149070716", xmlTag: "NonLclMktPlc", displayName: displayName("NonLocalMarketPlace"), kind: "component", type: "PriceSource", required: true }),
+      f({ name: "PlaceAsDSS", isoId: "_RCDQ5tp-Ed-ak6NoX_4Aeg_1174932111", xmlTag: "PlcAsDSS", displayName: displayName("PlaceAsDSS"), kind: "component", type: "GenericIdentification5", required: true }),
+    ],
+  },
+  "PriceInformation2": {
+    name: "PriceInformation2",
+    isoId: "_QfevUNp-Ed-ak6NoX_4Aeg_-1767416196",
+    kind: "component",
+    fields: [
+      f({ name: "Value", isoId: "_QfevUdp-Ed-ak6NoX_4Aeg_-1767416178", xmlTag: "Val", displayName: displayName("Value"), kind: "choice", type: "PriceRateOrAmountOrUnknownChoice", required: true }),
+      f({ name: "ValueType", isoId: "_QfevUtp-Ed-ak6NoX_4Aeg_-1767416161", xmlTag: "ValTp", displayName: displayName("ValueType"), kind: "code", type: "PriceValueType2Code", required: false }),
+      f({ name: "Type", isoId: "_QfevU9p-Ed-ak6NoX_4Aeg_-1767416136", xmlTag: "Tp", displayName: displayName("Type"), kind: "code", type: "TypeOfPrice11Code", required: false }),
+      f({ name: "ExtendedType", isoId: "_QfevVNp-Ed-ak6NoX_4Aeg_1045631543", xmlTag: "XtndedTp", displayName: displayName("ExtendedType"), kind: "text", type: "Extended350Code", required: false }),
+      f({ name: "SourceOfPrice", isoId: "_QfevVdp-Ed-ak6NoX_4Aeg_-1767416101", xmlTag: "SrcOfPric", displayName: displayName("SourceOfPrice"), kind: "choice", type: "PriceSourceFormatChoice", required: false }),
+      f({ name: "QuotationDate", isoId: "_QfevVtp-Ed-ak6NoX_4Aeg_-1767416075", xmlTag: "QtnDt", displayName: displayName("QuotationDate"), kind: "choice", type: "DateAndDateTimeChoice", required: false }),
+      f({ name: "Yielded", isoId: "_QfevV9p-Ed-ak6NoX_4Aeg_-1767415823", xmlTag: "Yldd", displayName: displayName("Yielded"), kind: "boolean", type: "YesNoIndicator", required: false }),
+    ],
+    rules: [
+      { name: "ValueRule", isoId: "_QfevWNp-Ed-ak6NoX_4Aeg_-1767415763", text: "If Type is not MRKT, then Value may not be expressed with UnknownIndicator." },
+      { name: "TypeOrExtendedTypeRule", isoId: "_QfevW9p-Ed-ak6NoX_4Aeg_1801071723", text: "Either Type or ExtendedType must be present, but not both.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/Type"},{"op":"Presence","path":"/ExtendedType"}]}} },
+      { name: "TypeOrExtendedTypeRuleNotBoth", isoId: "_QfevW9p-Ed-ak6NoX_4Aeg_1801071723~NotBoth", text: "Either Type or ExtendedType must be present, but not both.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/ExtendedType"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/Type"}]}} },
+    ],
+  },
+  "TypeOfPrice33Choice": {
+    name: "TypeOfPrice33Choice",
+    isoId: "_5W2yu5NLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_5W2yvZNLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "TypeOfPrice11Code", required: true }),
+      f({ name: "Proprietary", isoId: "_5W2yxZNLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "PriceRateOrAmountOrUnknown3Choice": {
+    name: "PriceRateOrAmountOrUnknown3Choice",
+    isoId: "_gdOxl833Eee5nJBZsW8MFQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Rate", isoId: "_gdOxmc33Eee5nJBZsW8MFQ", xmlTag: "Rate", displayName: displayName("Rate"), kind: "number", type: "PercentageRate", required: true }),
+      f({ name: "Amount", isoId: "_gdOxm833Eee5nJBZsW8MFQ", xmlTag: "Amt", displayName: displayName("Amount"), kind: "amount", type: "RestrictedFINActiveOrHistoricCurrencyAnd13DecimalAmount", required: true }),
+      f({ name: "UnknownIndicator", isoId: "_gdOxnc33Eee5nJBZsW8MFQ", xmlTag: "UknwnInd", displayName: displayName("UnknownIndicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+    ],
+  },
+  "PriceInformation22": {
+    name: "PriceInformation22",
+    isoId: "_Z0yAm_fVEeiNZp_PtLohLw",
+    kind: "component",
+    fields: [
+      f({ name: "Type", isoId: "_Z0yAn_fVEeiNZp_PtLohLw", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "TypeOfPrice33Choice", required: true }),
+      f({ name: "Value", isoId: "_Z0yAp_fVEeiNZp_PtLohLw", xmlTag: "Val", displayName: displayName("Value"), kind: "choice", type: "PriceRateOrAmountOrUnknown3Choice", required: true }),
+      f({ name: "ValueType", isoId: "_Z0yAr_fVEeiNZp_PtLohLw", xmlTag: "ValTp", displayName: displayName("ValueType"), kind: "choice", type: "YieldedOrValueType1Choice", required: true }),
+      f({ name: "SourceOfPrice", isoId: "_Z0yAt_fVEeiNZp_PtLohLw", xmlTag: "SrcOfPric", displayName: displayName("SourceOfPrice"), kind: "component", type: "MarketIdentification91", required: false }),
+      f({ name: "QuotationDate", isoId: "_Z0yAv_fVEeiNZp_PtLohLw", xmlTag: "QtnDt", displayName: displayName("QuotationDate"), kind: "choice", type: "DateAndDateTime2Choice", required: false }),
+    ],
+    rules: [
+      { name: "ValueRule", isoId: "_Z0yAnffVEeiNZp_PtLohLw", text: "If TypeOfPriceCode is not MRKT, then Value  may not be expressed with UnknownIndicator." },
+    ],
+  },
+  "TypeOfPrice28Choice": {
+    name: "TypeOfPrice28Choice",
+    isoId: "_jSvm2znVEeWV5sr121Fc8A",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_jxibgznVEeWV5sr121Fc8A", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "TypeOfPrice11Code", required: true }),
+      f({ name: "Proprietary", isoId: "_jxibiznVEeWV5sr121Fc8A", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "PriceRateOrAmountOrUnknown2Choice": {
+    name: "PriceRateOrAmountOrUnknown2Choice",
+    isoId: "_LWuZEbQCEee1Ke-6rZgsrA",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Rate", isoId: "_LlJ2obQCEee1Ke-6rZgsrA", xmlTag: "Rate", displayName: displayName("Rate"), kind: "number", type: "PercentageRate", required: true }),
+      f({ name: "Amount", isoId: "_LlJ2o7QCEee1Ke-6rZgsrA", xmlTag: "Amt", displayName: displayName("Amount"), kind: "amount", type: "ActiveOrHistoricCurrencyAnd13DecimalAmount", required: true }),
+      f({ name: "UnknownIndicator", isoId: "_LlJ2pbQCEee1Ke-6rZgsrA", xmlTag: "UknwnInd", displayName: displayName("UnknownIndicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+    ],
+  },
+  "PriceInformation29": {
+    name: "PriceInformation29",
+    isoId: "_XMZxYYVYEe-Pv9KR9bv9IA",
+    kind: "component",
+    fields: [
+      f({ name: "Type", isoId: "_XVVq84VYEe-Pv9KR9bv9IA", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "TypeOfPrice28Choice", required: true }),
+      f({ name: "Value", isoId: "_XVVq-4VYEe-Pv9KR9bv9IA", xmlTag: "Val", displayName: displayName("Value"), kind: "choice", type: "PriceRateOrAmountOrUnknown2Choice", required: true }),
+      f({ name: "ValueType", isoId: "_XVVrA4VYEe-Pv9KR9bv9IA", xmlTag: "ValTp", displayName: displayName("ValueType"), kind: "choice", type: "YieldedOrValueType1Choice", required: true }),
+      f({ name: "SourceOfPrice", isoId: "_XVVrC4VYEe-Pv9KR9bv9IA", xmlTag: "SrcOfPric", displayName: displayName("SourceOfPrice"), kind: "component", type: "MarketIdentification98", required: false }),
+      f({ name: "QuotationDate", isoId: "_XVVrE4VYEe-Pv9KR9bv9IA", xmlTag: "QtnDt", displayName: displayName("QuotationDate"), kind: "choice", type: "DateAndDateTime2Choice", required: false }),
+    ],
+    rules: [
+      { name: "ValueRule", isoId: "_XVVq8YVYEe-Pv9KR9bv9IA", text: "If TypeOfPriceCode is not MRKT, then Value  may not be expressed with UnknownIndicator." },
+    ],
+  },
+  "PriceValueType12Code": {
+    name: "PriceValueType12Code",
+    isoId: "_ETkqkAydEeuG8M5giQ2e0w",
+    kind: "code",
+    options: [{ value: "DISC", name: "Discount", isoId: "_HwDYgQydEeuG8M5giQ2e0w" }, { value: "PARV", name: "Par", isoId: "_H7XQoQydEeuG8M5giQ2e0w" }, { value: "PREM", name: "Premium", isoId: "_I1Yo4QydEeuG8M5giQ2e0w" }, { value: "NEGA", name: "NegativeActualAmount", isoId: "_JUe_sQydEeuG8M5giQ2e0w" }],
   },
   "Priority5Code": {
     name: "Priority5Code",
@@ -18220,27 +24151,6 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Reason", isoId: "_WgqHGeFUEeWIA4E9cYSxxQ", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "RejectionOrRepairReason32", required: true }),
     ],
   },
-  "ProprietaryReason4": {
-    name: "ProprietaryReason4",
-    isoId: "_QgvGsTp5EeWVrPy0StzzSg",
-    kind: "component",
-    fields: [
-      f({ name: "Reason", isoId: "_RA3_Uzp5EeWVrPy0StzzSg", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "GenericIdentification30", required: false }),
-      f({ name: "AdditionalReasonInformation", isoId: "_RA3_Wzp5EeWVrPy0StzzSg", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
-    ],
-    rules: [
-      { name: "AdditionalReasonInforrmationRule", isoId: "_RA3_UTp5EeWVrPy0StzzSg", text: "The AdditionalReasonInformation element must not contain information that can be provided in a structured field unless bilaterally agreed." },
-    ],
-  },
-  "ProprietaryStatusAndReason6": {
-    name: "ProprietaryStatusAndReason6",
-    isoId: "_yRcdkTp4EeWVrPy0StzzSg",
-    kind: "component",
-    fields: [
-      f({ name: "ProprietaryStatus", isoId: "_y0NzcTp4EeWVrPy0StzzSg", xmlTag: "PrtrySts", displayName: displayName("ProprietaryStatus"), kind: "component", type: "GenericIdentification30", required: true }),
-      f({ name: "ProprietaryReason", isoId: "_y0OagTp4EeWVrPy0StzzSg", xmlTag: "PrtryRsn", displayName: displayName("ProprietaryReason"), kind: "component", type: "ProprietaryReason4", required: false, repeat: { min: 0, max: null } }),
-    ],
-  },
   "ProcessingStatus67Choice": {
     name: "ProcessingStatus67Choice",
     isoId: "_W7Icl-FUEeWIA4E9cYSxxQ",
@@ -18251,6 +24161,21 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Cancelled", isoId: "_XD6lMeFUEeWIA4E9cYSxxQ", xmlTag: "Canc", displayName: displayName("Cancelled"), kind: "choice", type: "CancellationStatus14Choice", required: true }),
       f({ name: "AcknowledgedAccepted", isoId: "_XD6lOeFUEeWIA4E9cYSxxQ", xmlTag: "AckdAccptd", displayName: displayName("AcknowledgedAccepted"), kind: "choice", type: "AcknowledgedAcceptedStatus21Choice", required: true }),
       f({ name: "Proprietary", isoId: "_XD6lQeFUEeWIA4E9cYSxxQ", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "ProprietaryStatusAndReason6", required: true }),
+    ],
+  },
+  "TransactionProcessingStatus3Code": {
+    name: "TransactionProcessingStatus3Code",
+    isoId: "_jWnSlO5NEeCisYr99QEiWA_732250051",
+    kind: "code",
+    options: [{ value: "CAND", name: "Cancelled", isoId: "_jWxDkO5NEeCisYr99QEiWA_796529657" }, { value: "PACK", name: "AcknowledgedAccepted", isoId: "_jWxDke5NEeCisYr99QEiWA_-200542696" }, { value: "REJT", name: "Rejected", isoId: "_jWxDku5NEeCisYr99QEiWA_-1261894655" }, { value: "REPR", name: "InRepair", isoId: "_jWxDk-5NEeCisYr99QEiWA_-1083775983" }],
+  },
+  "ProcessingStatus68Choice": {
+    name: "ProcessingStatus68Choice",
+    isoId: "_TDntl-FWEeWIA4E9cYSxxQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_TMjAEeFWEeWIA4E9cYSxxQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "TransactionProcessingStatus3Code", required: true }),
+      f({ name: "Proprietary", isoId: "_TMjAE-FWEeWIA4E9cYSxxQ", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
     ],
   },
   "RejectionReason34Code": {
@@ -18364,17 +24289,118 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Data", isoId: "_1gNNc4KYEee7hrXqLO3yQg", xmlTag: "Data", displayName: displayName("Data"), kind: "component", type: "ProprietaryData6", required: true }),
     ],
   },
+  "ProprietaryReason5": {
+    name: "ProprietaryReason5",
+    isoId: "_ceme2ZKQEeWHWpTQn1FFVg",
+    kind: "component",
+    fields: [
+      f({ name: "Reason", isoId: "_ceme3ZKQEeWHWpTQn1FFVg", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "GenericIdentification47", required: false }),
+      f({ name: "AdditionalReasonInformation", isoId: "_ceme5ZKQEeWHWpTQn1FFVg", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "RestrictedFINXMax210Text", required: false }),
+    ],
+    rules: [
+      { name: "AdditionalReasonInforrmationRule", isoId: "_ceme25KQEeWHWpTQn1FFVg", text: "The AdditionalReasonInformation element must not contain information that can be provided in a structured field unless bilaterally agreed." },
+    ],
+  },
+  "ProprietaryStatusAndReason7": {
+    name: "ProprietaryStatusAndReason7",
+    isoId: "_cemew5KQEeWHWpTQn1FFVg",
+    kind: "component",
+    fields: [
+      f({ name: "ProprietaryStatus", isoId: "_cemexZKQEeWHWpTQn1FFVg", xmlTag: "PrtrySts", displayName: displayName("ProprietaryStatus"), kind: "component", type: "GenericIdentification47", required: true }),
+      f({ name: "ProprietaryReason", isoId: "_cemex5KQEeWHWpTQn1FFVg", xmlTag: "PrtryRsn", displayName: displayName("ProprietaryReason"), kind: "component", type: "ProprietaryReason5", required: false, repeat: { min: 0, max: null } }),
+    ],
+  },
   "Provided1Code": {
     name: "Provided1Code",
     isoId: "_UbfaUBKFEeKj15WxqwlXPw",
     kind: "code",
     options: [{ value: "NPRO", name: "NotProvided", isoId: "_ba2ZIRKFEeKj15WxqwlXPw" }, { value: "PROV", name: "Provided", isoId: "_bllCcRKFEeKj15WxqwlXPw" }],
   },
+  "Quantity6Choice": {
+    name: "Quantity6Choice",
+    isoId: "_Sotss9p-Ed-ak6NoX_4Aeg_502290625",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Quantity", isoId: "_SotstNp-Ed-ak6NoX_4Aeg_1481584878", xmlTag: "Qty", displayName: displayName("Quantity"), kind: "choice", type: "FinancialInstrumentQuantity1Choice", required: true }),
+      f({ name: "OriginalAndCurrentFace", isoId: "_Sotstdp-Ed-ak6NoX_4Aeg_1621426385", xmlTag: "OrgnlAndCurFace", displayName: displayName("OriginalAndCurrentFace"), kind: "component", type: "OriginalAndCurrentQuantities1", required: true }),
+    ],
+  },
+  "QuantityAndAvailability3": {
+    name: "QuantityAndAvailability3",
+    isoId: "_ulaTMSp8EeyR9JrVGfaMKw",
+    kind: "component",
+    fields: [
+      f({ name: "Quantity", isoId: "_u9HBgSp8EeyR9JrVGfaMKw", xmlTag: "Qty", displayName: displayName("Quantity"), kind: "choice", type: "FinancialInstrumentQuantity33Choice", required: true }),
+      f({ name: "AvailabilityIndicator", isoId: "_u9HBgyp8EeyR9JrVGfaMKw", xmlTag: "AvlbtyInd", displayName: displayName("AvailabilityIndicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+    ],
+  },
+  "QuantityAndAvailability4": {
+    name: "QuantityAndAvailability4",
+    isoId: "_ciApGzi8Eeydid5dcNPKvg",
+    kind: "component",
+    fields: [
+      f({ name: "Quantity", isoId: "_ciApHTi8Eeydid5dcNPKvg", xmlTag: "Qty", displayName: displayName("Quantity"), kind: "choice", type: "FinancialInstrumentQuantity36Choice", required: true }),
+      f({ name: "AvailabilityIndicator", isoId: "_ciApHzi8Eeydid5dcNPKvg", xmlTag: "AvlbtyInd", displayName: displayName("AvailabilityIndicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+    ],
+  },
+  "QuantityBreakdown61": {
+    name: "QuantityBreakdown61",
+    isoId: "_miqdZSp_EeyR9JrVGfaMKw",
+    kind: "component",
+    fields: [
+      f({ name: "LotNumber", isoId: "_m7P8gyp_EeyR9JrVGfaMKw", xmlTag: "LotNb", displayName: displayName("LotNumber"), kind: "component", type: "GenericIdentification37", required: false }),
+      f({ name: "LotQuantity", isoId: "_m7P8iyp_EeyR9JrVGfaMKw", xmlTag: "LotQty", displayName: displayName("LotQuantity"), kind: "choice", type: "FinancialInstrumentQuantity33Choice", required: false }),
+      f({ name: "SecuritiesSubBalanceType", isoId: "_m7P8kyp_EeyR9JrVGfaMKw", xmlTag: "SctiesSubBalTp", displayName: displayName("SecuritiesSubBalanceType"), kind: "component", type: "GenericIdentification30", required: false }),
+    ],
+  },
+  "QuantityBreakdown65": {
+    name: "QuantityBreakdown65",
+    isoId: "_cadPfTi8Eeydid5dcNPKvg",
+    kind: "component",
+    fields: [
+      f({ name: "LotNumber", isoId: "_cadPgTi8Eeydid5dcNPKvg", xmlTag: "LotNb", displayName: displayName("LotNumber"), kind: "component", type: "GenericIdentification39", required: false }),
+      f({ name: "LotQuantity", isoId: "_cadPiTi8Eeydid5dcNPKvg", xmlTag: "LotQty", displayName: displayName("LotQuantity"), kind: "choice", type: "FinancialInstrumentQuantity36Choice", required: false }),
+      f({ name: "SecuritiesSubBalanceType", isoId: "_cadPkTi8Eeydid5dcNPKvg", xmlTag: "SctiesSubBalTp", displayName: displayName("SecuritiesSubBalanceType"), kind: "component", type: "GenericIdentification47", required: false }),
+    ],
+  },
+  "QuantitySearch2Choice": {
+    name: "QuantitySearch2Choice",
+    isoId: "_eMzYAWqWEemz04WrKJaMEA",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Quantity", isoId: "_eaw7gWqWEemz04WrKJaMEA", xmlTag: "Qty", displayName: displayName("Quantity"), kind: "choice", type: "FinancialInstrumentQuantitySearch2Choice", required: true }),
+      f({ name: "OriginalAndCurrentFace", isoId: "_eaw7g2qWEemz04WrKJaMEA", xmlTag: "OrgnlAndCurFace", displayName: displayName("OriginalAndCurrentFace"), kind: "component", type: "FinancialInstrumentQuantitySearch2", required: true }),
+    ],
+  },
   "QueryType2Code": {
     name: "QueryType2Code",
     isoId: "_ZXqQ8dp-Ed-ak6NoX_4Aeg_-1313852264",
     kind: "code",
     options: [{ value: "ALLL", name: "All", isoId: "_ZXqQ8tp-Ed-ak6NoX_4Aeg_-1313851984" }, { value: "CHNG", name: "Changed", isoId: "_ZXqQ89p-Ed-ak6NoX_4Aeg_-1313851983" }, { value: "MODF", name: "Modified", isoId: "_ZXqQ9Np-Ed-ak6NoX_4Aeg_-1313851982" }, { value: "DELD", name: "Deleted", isoId: "_ZXqQ9dp-Ed-ak6NoX_4Aeg_-1313851954" }],
+  },
+  "Rate2": {
+    name: "Rate2",
+    isoId: "_Q-niaNp-Ed-ak6NoX_4Aeg_-1215412850",
+    kind: "component",
+    fields: [
+      f({ name: "Sign", isoId: "_Q-xTYNp-Ed-ak6NoX_4Aeg_-1215412849", xmlTag: "Sgn", displayName: displayName("Sign"), kind: "boolean", type: "PlusOrMinusIndicator", required: false }),
+      f({ name: "Rate", isoId: "_Q-xTYdp-Ed-ak6NoX_4Aeg_-1215412848", xmlTag: "Rate", displayName: displayName("Rate"), kind: "number", type: "PercentageRate", required: true }),
+    ],
+    rules: [
+      { name: "SignRule", isoId: "_Q-xTYtp-Ed-ak6NoX_4Aeg_1715614263", text: "When Sign is present, rate must not be zero." },
+    ],
+  },
+  "RateType1Code": {
+    name: "RateType1Code",
+    isoId: "_ZZJetNp-Ed-ak6NoX_4Aeg_528600131",
+    kind: "code",
+    options: [{ value: "FIXE", name: "Fixed", isoId: "_ZZJetdp-Ed-ak6NoX_4Aeg_570159113" }, { value: "FORF", name: "Forfeit", isoId: "_ZZJettp-Ed-ak6NoX_4Aeg_570159130" }, { value: "VARI", name: "Variable", isoId: "_ZZJet9p-Ed-ak6NoX_4Aeg_570159131" }],
+  },
+  "ReceiveDelivery1Code": {
+    name: "ReceiveDelivery1Code",
+    isoId: "_ZafihNp-Ed-ak6NoX_4Aeg_-212858839",
+    kind: "code",
+    options: [{ value: "DELI", name: "Delivery", isoId: "_Zafihdp-Ed-ak6NoX_4Aeg_-99264763" }, { value: "RECE", name: "Receive", isoId: "_Zafihtp-Ed-ak6NoX_4Aeg_-69712465" }],
   },
   "References14": {
     name: "References14",
@@ -18447,6 +24473,36 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       { name: "ReferredPlacementAgentRule", isoId: "_iGjesZRBEemqYPWMBuVawg", text: "ReferredPlacementAgent may only be present if Referred is REFR (Referred)." },
     ],
   },
+  "Registration1Code": {
+    name: "Registration1Code",
+    isoId: "_Za7nY9p-Ed-ak6NoX_4Aeg_-423738675",
+    kind: "code",
+    options: [{ value: "NREG", name: "StreetName", isoId: "_Za7nZNp-Ed-ak6NoX_4Aeg_-365554140" }, { value: "YREG", name: "Registered", isoId: "_Za7nZdp-Ed-ak6NoX_4Aeg_-165149890" }],
+  },
+  "Registration11Choice": {
+    name: "Registration11Choice",
+    isoId: "_5TJ-uZNLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_5TJ-u5NLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "Registration1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_5TJ-w5NLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "Registration9Choice": {
+    name: "Registration9Choice",
+    isoId: "_C_MhYTqGEeWVrPy0StzzSg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_DgFA4TqGEeWVrPy0StzzSg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "Registration1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_DgFA6TqGEeWVrPy0StzzSg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "RegistrationProcessingStatus1Code": {
+    name: "RegistrationProcessingStatus1Code",
+    isoId: "_ZbFYYNp-Ed-ak6NoX_4Aeg_-586829209",
+    kind: "code",
+    options: [{ value: "PACK", name: "AcknowledgedAccepted", isoId: "_ZbFYYdp-Ed-ak6NoX_4Aeg_-586829178" }, { value: "REJT", name: "Rejected", isoId: "_ZbFYYtp-Ed-ak6NoX_4Aeg_-586829177" }],
+  },
   "Reinvestment4": {
     name: "Reinvestment4",
     isoId: "_QD7KJZS8EemqYPWMBuVawg",
@@ -18456,6 +24512,42 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "RequestedNAVCurrency", isoId: "_QXj3g5S8EemqYPWMBuVawg", xmlTag: "ReqdNAVCcy", displayName: displayName("RequestedNAVCurrency"), kind: "code", type: "ActiveCurrencyCode", required: false }),
       f({ name: "ReinvestmentPercentage", isoId: "_QXj3hZS8EemqYPWMBuVawg", xmlTag: "RinvstmtPctg", displayName: displayName("ReinvestmentPercentage"), kind: "number", type: "PercentageRate", required: true }),
     ],
+  },
+  "RejectionReason69Code": {
+    name: "RejectionReason69Code",
+    isoId: "_K_rZwCtUEeyhipY4f42fZQ",
+    kind: "code",
+    options: [{ value: "SAFE", name: "SafekeepingAccountRejection", isoId: "_F9JsQStaEeyF-PUIGuhxvA" }, { value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_F9JsQytaEeyF-PUIGuhxvA" }, { value: "LATE", name: "MarketDeadlineMissed", isoId: "_F9JsRStaEeyF-PUIGuhxvA" }, { value: "CAEV", name: "CorporateActionRejection", isoId: "_F9JsRytaEeyF-PUIGuhxvA" }, { value: "DDAT", name: "SettlementDateRejection", isoId: "_F9JsSStaEeyF-PUIGuhxvA" }, { value: "REFE", name: "ReferenceRejection", isoId: "_F9JsSytaEeyF-PUIGuhxvA" }, { value: "OTHR", name: "Other", isoId: "_F9JsTStaEeyF-PUIGuhxvA" }, { value: "DQUA", name: "QuantityRejection", isoId: "_F9JsTytaEeyF-PUIGuhxvA" }, { value: "DSEC", name: "InvalidSecurity", isoId: "_F9JsUStaEeyF-PUIGuhxvA" }, { value: "INVB", name: "InvalidBalance", isoId: "_F9JsUytaEeyF-PUIGuhxvA" }, { value: "INVL", name: "InvalidLink", isoId: "_F9JsVStaEeyF-PUIGuhxvA" }, { value: "INVN", name: "InvalidLotNumber", isoId: "_F9JsVytaEeyF-PUIGuhxvA" }, { value: "MINO", name: "MinimumSettlementQuantity", isoId: "_F9JsWStaEeyF-PUIGuhxvA" }, { value: "MUNO", name: "MultipleSettlementQuantity", isoId: "_F9JsWytaEeyF-PUIGuhxvA" }, { value: "VALR", name: "InvalidRule", isoId: "_F9JsXStaEeyF-PUIGuhxvA" }],
+  },
+  "RejectionReason71Code": {
+    name: "RejectionReason71Code",
+    isoId: "_dEaVCitVEeyhipY4f42fZQ",
+    kind: "code",
+    options: [{ value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_98T3wStYEeyF-PUIGuhxvA" }, { value: "LATE", name: "MarketDeadlineMissed", isoId: "_98T3wytYEeyF-PUIGuhxvA" }, { value: "SAFE", name: "SafekeepingAccountRejection", isoId: "_98T3xStYEeyF-PUIGuhxvA" }, { value: "NRGM", name: "NoMatch", isoId: "_98T3xytYEeyF-PUIGuhxvA" }, { value: "NRGN", name: "NotFoundRejection", isoId: "_98T3yStYEeyF-PUIGuhxvA" }, { value: "OTHR", name: "Other", isoId: "_98T3yytYEeyF-PUIGuhxvA" }, { value: "REFE", name: "ReferenceRejection", isoId: "_98T3zStYEeyF-PUIGuhxvA" }, { value: "INVM", name: "InvalidModificationRequest", isoId: "_98T3zytYEeyF-PUIGuhxvA" }, { value: "INVL", name: "InvalidLink", isoId: "_98T30StYEeyF-PUIGuhxvA" }],
+  },
+  "RejectionReason72Code": {
+    name: "RejectionReason72Code",
+    isoId: "_FT0YVCtWEeyhipY4f42fZQ",
+    kind: "code",
+    options: [{ value: "SAFE", name: "SafekeepingAccountRejection", isoId: "_9G0aMStYEeyF-PUIGuhxvA" }, { value: "DQUA", name: "QuantityRejection", isoId: "_9G0aMytYEeyF-PUIGuhxvA" }, { value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_9G0aNStYEeyF-PUIGuhxvA" }, { value: "DSEC", name: "InvalidSecurity", isoId: "_9G0aNytYEeyF-PUIGuhxvA" }, { value: "LATE", name: "MarketDeadlineMissed", isoId: "_9G0aOStYEeyF-PUIGuhxvA" }, { value: "CASH", name: "CashAccount", isoId: "_9G0aOytYEeyF-PUIGuhxvA" }, { value: "DDEA", name: "DealPrice", isoId: "_9G0aPStYEeyF-PUIGuhxvA" }, { value: "DTRD", name: "TradeDate", isoId: "_9G0aPytYEeyF-PUIGuhxvA" }, { value: "PLCE", name: "PlaceOfTrade", isoId: "_9G0aQStYEeyF-PUIGuhxvA" }, { value: "RTGS", name: "ImpossibleToUseTheRTGSSystemInstructed", isoId: "_9G0aQytYEeyF-PUIGuhxvA" }, { value: "NCRR", name: "SettlementAmountCurrencyRejection", isoId: "_9G0aRStYEeyF-PUIGuhxvA" }, { value: "PHYS", name: "PhysicalSettlementImpossible", isoId: "_9G0aRytYEeyF-PUIGuhxvA" }, { value: "REFE", name: "ReferenceRejection", isoId: "_9G0aSStYEeyF-PUIGuhxvA" }, { value: "DMON", name: "SettlementAmountRejection", isoId: "_9G0aSytYEeyF-PUIGuhxvA" }, { value: "MINO", name: "MinimumSettlementQuantity", isoId: "_9G0aTStYEeyF-PUIGuhxvA" }, { value: "BATC", name: "ProcessingBatchRejection", isoId: "_9G0aTytYEeyF-PUIGuhxvA" }, { value: "MUNO", name: "MultipleSettlementQuantity", isoId: "_9G0aUStYEeyF-PUIGuhxvA" }, { value: "TXST", name: "TaxStatusRejection", isoId: "_9G0aUytYEeyF-PUIGuhxvA" }, { value: "SETS", name: "SettlementSystemMethodRejection", isoId: "_9G0aVStYEeyF-PUIGuhxvA" }, { value: "IIND", name: "CommonReferenceRejection", isoId: "_9G0aVytYEeyF-PUIGuhxvA" }, { value: "CAEV", name: "CorporateActionRejection", isoId: "_9G0aWStYEeyF-PUIGuhxvA" }, { value: "CASY", name: "ImpossibleCashSettlementSystem", isoId: "_9G0aWytYEeyF-PUIGuhxvA" }, { value: "DDAT", name: "SettlementDateRejection", isoId: "_9G0aXStYEeyF-PUIGuhxvA" }, { value: "SETR", name: "SettlementTransactionRejection", isoId: "_9G0aXytYEeyF-PUIGuhxvA" }, { value: "SDUT", name: "LackOfStampDuty", isoId: "_9G0aYStYEeyF-PUIGuhxvA" }, { value: "INPS", name: "PlaceOfSafekeeping", isoId: "_9G0aYytYEeyF-PUIGuhxvA" }, { value: "OTHR", name: "Other", isoId: "_9G0aZStYEeyF-PUIGuhxvA" }, { value: "ICUS", name: "ReceivingDeliveringParty2", isoId: "_9G0aZytYEeyF-PUIGuhxvA" }, { value: "ICAG", name: "ReceivingDeliveringParty1", isoId: "_9G0aaStYEeyF-PUIGuhxvA" }, { value: "DEPT", name: "ReceivingDeliveringDepository", isoId: "_9G0aaytYEeyF-PUIGuhxvA" }, { value: "IEXE", name: "ReceivingDeliveringParty3", isoId: "_9G0abStYEeyF-PUIGuhxvA" }, { value: "INVL", name: "InvalidLink", isoId: "_9G0abytYEeyF-PUIGuhxvA" }, { value: "INVB", name: "InvalidBalance", isoId: "_9G0acStYEeyF-PUIGuhxvA" }, { value: "INVN", name: "InvalidLotNumber", isoId: "_9G0acytYEeyF-PUIGuhxvA" }, { value: "VALR", name: "InvalidRule", isoId: "_9G0adStYEeyF-PUIGuhxvA" }],
+  },
+  "RejectionReason73Code": {
+    name: "RejectionReason73Code",
+    isoId: "_gtthpCtWEeyhipY4f42fZQ",
+    kind: "code",
+    options: [{ value: "SAFE", name: "SafekeepingAccountRejection", isoId: "_8Z9UMStYEeyF-PUIGuhxvA" }, { value: "DQUA", name: "QuantityRejection", isoId: "_8Z9UMytYEeyF-PUIGuhxvA" }, { value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_8Z9UNStYEeyF-PUIGuhxvA" }, { value: "DSEC", name: "InvalidSecurity", isoId: "_8Z9UNytYEeyF-PUIGuhxvA" }, { value: "LATE", name: "MarketDeadlineMissed", isoId: "_8Z9UOStYEeyF-PUIGuhxvA" }, { value: "CASH", name: "CashAccount", isoId: "_8Z9UOytYEeyF-PUIGuhxvA" }, { value: "DDEA", name: "DealPrice", isoId: "_8Z9UPStYEeyF-PUIGuhxvA" }, { value: "DTRD", name: "TradeDate", isoId: "_8Z9UPytYEeyF-PUIGuhxvA" }, { value: "PLCE", name: "PlaceOfTrade", isoId: "_8Z9UQStYEeyF-PUIGuhxvA" }, { value: "RTGS", name: "ImpossibleToUseTheRTGSSystemInstructed", isoId: "_8Z9UQytYEeyF-PUIGuhxvA" }, { value: "NCRR", name: "SettlementAmountCurrencyRejection", isoId: "_8Z9URStYEeyF-PUIGuhxvA" }, { value: "PHYS", name: "PhysicalSettlementImpossible", isoId: "_8Z9URytYEeyF-PUIGuhxvA" }, { value: "REFE", name: "ReferenceRejection", isoId: "_8Z9USStYEeyF-PUIGuhxvA" }, { value: "DMON", name: "SettlementAmountRejection", isoId: "_8Z9USytYEeyF-PUIGuhxvA" }, { value: "MINO", name: "MinimumSettlementQuantity", isoId: "_8Z9UTStYEeyF-PUIGuhxvA" }, { value: "BATC", name: "ProcessingBatchRejection", isoId: "_8Z9UTytYEeyF-PUIGuhxvA" }, { value: "MUNO", name: "MultipleSettlementQuantity", isoId: "_8Z9UUStYEeyF-PUIGuhxvA" }, { value: "TXST", name: "TaxStatusRejection", isoId: "_8Z9UUytYEeyF-PUIGuhxvA" }, { value: "SETS", name: "SettlementSystemMethodRejection", isoId: "_8Z9UVStYEeyF-PUIGuhxvA" }, { value: "IIND", name: "CommonReferenceRejection", isoId: "_8Z9UVytYEeyF-PUIGuhxvA" }, { value: "CAEV", name: "CorporateActionRejection", isoId: "_8Z9UWStYEeyF-PUIGuhxvA" }, { value: "CASY", name: "ImpossibleCashSettlementSystem", isoId: "_8Z9UWytYEeyF-PUIGuhxvA" }, { value: "DDAT", name: "SettlementDateRejection", isoId: "_8Z9UXStYEeyF-PUIGuhxvA" }, { value: "SETR", name: "SettlementTransactionRejection", isoId: "_8Z9UXytYEeyF-PUIGuhxvA" }, { value: "SDUT", name: "LackOfStampDuty", isoId: "_8Z9UYStYEeyF-PUIGuhxvA" }, { value: "INPS", name: "PlaceOfSafekeeping", isoId: "_8Z9UYytYEeyF-PUIGuhxvA" }, { value: "OTHR", name: "Other", isoId: "_8Z9UZStYEeyF-PUIGuhxvA" }, { value: "ICUS", name: "ReceivingDeliveringParty2", isoId: "_8Z9UZytYEeyF-PUIGuhxvA" }, { value: "ICAG", name: "ReceivingDeliveringParty1", isoId: "_8Z9UaStYEeyF-PUIGuhxvA" }, { value: "DEPT", name: "ReceivingDeliveringDepository", isoId: "_8Z9UaytYEeyF-PUIGuhxvA" }, { value: "IEXE", name: "ReceivingDeliveringParty3", isoId: "_8Z9UbStYEeyF-PUIGuhxvA" }, { value: "INVB", name: "InvalidBalance", isoId: "_8Z9UbytYEeyF-PUIGuhxvA" }, { value: "INVL", name: "InvalidLink", isoId: "_8Z9UcStYEeyF-PUIGuhxvA" }, { value: "INVN", name: "InvalidLotNumber", isoId: "_8Z9UcytYEeyF-PUIGuhxvA" }, { value: "VALR", name: "InvalidRule", isoId: "_8Z9UdStYEeyF-PUIGuhxvA" }],
+  },
+  "RejectionReason74Code": {
+    name: "RejectionReason74Code",
+    isoId: "_5KNFmCtWEeyhipY4f42fZQ",
+    kind: "code",
+    options: [{ value: "SAFE", name: "SafekeepingAccountRejection", isoId: "_7t3DMStYEeyF-PUIGuhxvA" }, { value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_7t3DMytYEeyF-PUIGuhxvA" }, { value: "LATE", name: "MarketDeadlineMissed", isoId: "_7t3DNStYEeyF-PUIGuhxvA" }, { value: "NRGN", name: "NotFoundRejection", isoId: "_7t3DNytYEeyF-PUIGuhxvA" }, { value: "REFE", name: "ReferenceRejection", isoId: "_7t3DOStYEeyF-PUIGuhxvA" }, { value: "NRGM", name: "NoMatch", isoId: "_7t3DOytYEeyF-PUIGuhxvA" }, { value: "OTHR", name: "Other", isoId: "_7t3DPStYEeyF-PUIGuhxvA" }],
+  },
+  "RejectionReason76Code": {
+    name: "RejectionReason76Code",
+    isoId: "_ydlncCtXEeyhipY4f42fZQ",
+    kind: "code",
+    options: [{ value: "ULNK", name: "InvalidReference", isoId: "_6JH6AStYEeyF-PUIGuhxvA" }, { value: "SAFE", name: "SafekeepingAccountRejection", isoId: "_6JH6AytYEeyF-PUIGuhxvA" }, { value: "DQUA", name: "QuantityRejection", isoId: "_6JH6BStYEeyF-PUIGuhxvA" }, { value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_6JH6BytYEeyF-PUIGuhxvA" }, { value: "RTGS", name: "ImpossibleToUseTheRTGSSystemInstructed", isoId: "_6JH6CStYEeyF-PUIGuhxvA" }, { value: "NCRR", name: "SettlementAmountCurrencyRejection", isoId: "_6JH6CytYEeyF-PUIGuhxvA" }, { value: "DSEC", name: "InvalidSecurity", isoId: "_6JH6DStYEeyF-PUIGuhxvA" }, { value: "DADR", name: "AddressDetailsRejection", isoId: "_6JH6DytYEeyF-PUIGuhxvA" }, { value: "INIR", name: "InstructionIrrevocable", isoId: "_6JH6EStYEeyF-PUIGuhxvA" }, { value: "CANC", name: "OptionCancelled", isoId: "_6JH6EytYEeyF-PUIGuhxvA" }, { value: "INTV", name: "OptionInactive", isoId: "_6JH6FStYEeyF-PUIGuhxvA" }, { value: "INVA", name: "InvalidForTaxAuthorities", isoId: "_6JH6FytYEeyF-PUIGuhxvA" }, { value: "REFT", name: "RefusedByTaxAuthorities", isoId: "_6JH6GStYEeyF-PUIGuhxvA" }, { value: "PHYS", name: "PhysicalSettlementImpossible", isoId: "_6JH6GytYEeyF-PUIGuhxvA" }, { value: "REFE", name: "ReferenceRejection", isoId: "_6JH6HStYEeyF-PUIGuhxvA" }, { value: "LACK", name: "LackofSecurities", isoId: "_6JH6HytYEeyF-PUIGuhxvA" }, { value: "LATE", name: "MarketDeadlineMissed", isoId: "_6JH6IStYEeyF-PUIGuhxvA" }, { value: "NMTY", name: "Mismatch", isoId: "_6JH6IytYEeyF-PUIGuhxvA" }, { value: "OPNM", name: "OptionNumberRejection", isoId: "_6JH6JStYEeyF-PUIGuhxvA" }, { value: "DMON", name: "SettlementAmountRejection", isoId: "_6JH6JytYEeyF-PUIGuhxvA" }, { value: "OPTY", name: "InvalidOptionType", isoId: "_6JH6KStYEeyF-PUIGuhxvA" }, { value: "DCAN", name: "RejectedSinceAlreadyCancelled", isoId: "_6JH6KytYEeyF-PUIGuhxvA" }, { value: "DPRG", name: "RejectedSinceInProgress", isoId: "_6JH6LStYEeyF-PUIGuhxvA" }, { value: "EVNM", name: "UnrecognisedIdentification", isoId: "_6JH6LytYEeyF-PUIGuhxvA" }, { value: "STAT", name: "MissingStatutes", isoId: "_6JH6MStYEeyF-PUIGuhxvA" }, { value: "STAM", name: "NotStampedOrSigned", isoId: "_6JH6MytYEeyF-PUIGuhxvA" }, { value: "SIGN", name: "InvalidSignature", isoId: "_6JH6NStYEeyF-PUIGuhxvA" }, { value: "SHAR", name: "ShareholderNumberRejection", isoId: "_6JH6NytYEeyF-PUIGuhxvA" }, { value: "MINO", name: "MinimumSettlementQuantity", isoId: "_6JH6OStYEeyF-PUIGuhxvA" }, { value: "NRGM", name: "NoMatch", isoId: "_6JH6OytYEeyF-PUIGuhxvA" }, { value: "MLEG", name: "MissingLegalPower", isoId: "_6JH6PStYEeyF-PUIGuhxvA" }, { value: "BATC", name: "ProcessingBatchRejection", isoId: "_6JH6PytYEeyF-PUIGuhxvA" }, { value: "CADE", name: "TransactionCallDelay", isoId: "_6JH6QStYEeyF-PUIGuhxvA" }, { value: "CASH", name: "CashAccount", isoId: "_6JH6QytYEeyF-PUIGuhxvA" }, { value: "DDEA", name: "DealPrice", isoId: "_6JH6RStYEeyF-PUIGuhxvA" }, { value: "OWNT", name: "TypeOfOwnershipRejection", isoId: "_6JH6RytYEeyF-PUIGuhxvA" }, { value: "NRGN", name: "NotFoundRejection", isoId: "_6JH6SStYEeyF-PUIGuhxvA" }, { value: "MUNO", name: "MultipleSettlementQuantity", isoId: "_6JH6SytYEeyF-PUIGuhxvA" }, { value: "REQW", name: "WrongRegistrationRequest", isoId: "_6JH6TStYEeyF-PUIGuhxvA" }, { value: "TXST", name: "TaxStatusRejection", isoId: "_6JH6TytYEeyF-PUIGuhxvA" }, { value: "REPA", name: "TerminationTransactionAmount", isoId: "_6JH6UStYEeyF-PUIGuhxvA" }, { value: "REPO", name: "RepurchaseRate", isoId: "_6JH6UytYEeyF-PUIGuhxvA" }, { value: "REPP", name: "PremiumAmount", isoId: "_6JH6VStYEeyF-PUIGuhxvA" }, { value: "RREA", name: "DisagreementInRegistrationReason", isoId: "_6JH6VytYEeyF-PUIGuhxvA" }, { value: "REQM", name: "MissingRegistrationRequest", isoId: "_6JH6WStYEeyF-PUIGuhxvA" }, { value: "RERT", name: "RepurchaseRateType", isoId: "_6JH6WytYEeyF-PUIGuhxvA" }, { value: "RSPR", name: "SpreadRate", isoId: "_6JH6XStYEeyF-PUIGuhxvA" }, { value: "SETS", name: "SettlementSystemMethodRejection", isoId: "_6JH6XytYEeyF-PUIGuhxvA" }, { value: "DTRD", name: "TradeDate", isoId: "_6JH6YStYEeyF-PUIGuhxvA" }, { value: "IIND", name: "CommonReferenceRejection", isoId: "_6JH6YytYEeyF-PUIGuhxvA" }, { value: "PLCE", name: "PlaceOfTrade", isoId: "_6JH6ZStYEeyF-PUIGuhxvA" }, { value: "INNA", name: "NarrativeInformationRejection", isoId: "_6JH6ZytYEeyF-PUIGuhxvA" }, { value: "ICOL", name: "InsufficientCollateral", isoId: "_6JH6aStYEeyF-PUIGuhxvA" }, { value: "BPAR", name: "BusinessPartnerNumberRejection", isoId: "_6JH6aytYEeyF-PUIGuhxvA" }, { value: "BREF", name: "BankReferenceNumberRejection", isoId: "_6JH6bStYEeyF-PUIGuhxvA" }, { value: "BUSE", name: "TypeOfOrderRejection", isoId: "_6JH6bytYEeyF-PUIGuhxvA" }, { value: "CAEV", name: "CorporateActionRejection", isoId: "_6JH6cStYEeyF-PUIGuhxvA" }, { value: "CASY", name: "ImpossibleCashSettlementSystem", isoId: "_6JH6cytYEeyF-PUIGuhxvA" }, { value: "COMC", name: "CommercializationContractRejection", isoId: "_6JH6dStYEeyF-PUIGuhxvA" }, { value: "CONL", name: "ConcentrationLimitExceeded", isoId: "_6JH6dytYEeyF-PUIGuhxvA" }, { value: "CPTY", name: "UnknownDealExposure", isoId: "_6JH6eStYEeyF-PUIGuhxvA" }, { value: "DDAT", name: "SettlementDateRejection", isoId: "_6JH6eytYEeyF-PUIGuhxvA" }, { value: "DISC", name: "DisagreeWithCallAmount", isoId: "_6JH6fStYEeyF-PUIGuhxvA" }, { value: "DISE", name: "DisagreeWithExposureAmount", isoId: "_6JH6fytYEeyF-PUIGuhxvA" }, { value: "DORD", name: "RegistrationRequestDataAndOrderRejection", isoId: "_6JH6gStYEeyF-PUIGuhxvA" }, { value: "FEEE", name: "FeeCommissionRejection", isoId: "_6JH6gytYEeyF-PUIGuhxvA" }, { value: "SETR", name: "SettlementTransactionRejection", isoId: "_6JH6hStYEeyF-PUIGuhxvA" }, { value: "TERM", name: "ClosingDateTimeRejection", isoId: "_6JH6hytYEeyF-PUIGuhxvA" }, { value: "VASU", name: "VariableRateSupportRejection", isoId: "_6JH6iStYEeyF-PUIGuhxvA" }, { value: "INPS", name: "PlaceOfSafekeeping", isoId: "_6JH6iytYEeyF-PUIGuhxvA" }, { value: "SDUT", name: "LackOfStampDuty", isoId: "_6JH6jStYEeyF-PUIGuhxvA" }, { value: "FORF", name: "ForfeitAmount", isoId: "_6JH6jytYEeyF-PUIGuhxvA" }, { value: "ICUS", name: "ReceivingDeliveringParty2", isoId: "_6JH6kStYEeyF-PUIGuhxvA" }, { value: "ICAG", name: "ReceivingDeliveringParty1", isoId: "_6JH6kytYEeyF-PUIGuhxvA" }, { value: "DEPT", name: "ReceivingDeliveringDepository", isoId: "_6JH6lStYEeyF-PUIGuhxvA" }, { value: "OTHR", name: "Other", isoId: "_6JH6lytYEeyF-PUIGuhxvA" }, { value: "IEXE", name: "ReceivingDeliveringParty3", isoId: "_6JH6mStYEeyF-PUIGuhxvA" }, { value: "INVE", name: "InvalidInvestorParty", isoId: "_6JH6mytYEeyF-PUIGuhxvA" }, { value: "PLIS", name: "PlaceOfListing", isoId: "_6JH6nStYEeyF-PUIGuhxvA" }],
   },
   "RelatedInvestigationData1": {
     name: "RelatedInvestigationData1",
@@ -18501,6 +24593,90 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "RemittanceIdentification", isoId: "_-LRmA24-EeiU9cctagi5ow", xmlTag: "RmtId", displayName: displayName("RemittanceIdentification"), kind: "text", type: "Max35Text", required: false }),
       f({ name: "RemittanceLocationDetails", isoId: "_-LRmBW4-EeiU9cctagi5ow", xmlTag: "RmtLctnDtls", displayName: displayName("RemittanceLocationDetails"), kind: "component", type: "RemittanceLocationData1", required: false, repeat: { min: 0, max: null } }),
     ],
+  },
+  "RepairReason4Code": {
+    name: "RepairReason4Code",
+    isoId: "_ZuAUYNp-Ed-ak6NoX_4Aeg_964099822",
+    kind: "code",
+    options: [{ value: "BATC", name: "ProcessingBatch", isoId: "_ZuAUYdp-Ed-ak6NoX_4Aeg_-1466784536" }, { value: "CAEV", name: "CorporateAction", isoId: "_ZuAUYtp-Ed-ak6NoX_4Aeg_65323071" }, { value: "CASH", name: "CashAccount", isoId: "_ZuAUY9p-Ed-ak6NoX_4Aeg_27337028" }, { value: "CASY", name: "ImpossibleCashSettlementSystem", isoId: "_ZuAUZNp-Ed-ak6NoX_4Aeg_-727412846" }, { value: "DDAT", name: "SettlementDate", isoId: "_ZuAUZdp-Ed-ak6NoX_4Aeg_1209812327" }, { value: "DDEA", name: "DealPrice", isoId: "_ZuAUZtp-Ed-ak6NoX_4Aeg_-738511623" }, { value: "DMON", name: "SettlementAmount", isoId: "_ZuAUZ9p-Ed-ak6NoX_4Aeg_-1976604551" }, { value: "DQUA", name: "Quantity", isoId: "_ZuAUaNp-Ed-ak6NoX_4Aeg_-1987703328" }, { value: "DSEC", name: "Security", isoId: "_ZuAUadp-Ed-ak6NoX_4Aeg_-50478155" }, { value: "DTRD", name: "TradeDate", isoId: "_ZuAUatp-Ed-ak6NoX_4Aeg_598296084" }, { value: "IIND", name: "CommonReference", isoId: "_ZuKFYNp-Ed-ak6NoX_4Aeg_-466368129" }, { value: "MINO", name: "MinimumSettlementQuantity", isoId: "_ZuKFYdp-Ed-ak6NoX_4Aeg_-1841293141" }, { value: "MUNO", name: "MultipleSettlementQuantity", isoId: "_ZuKFYtp-Ed-ak6NoX_4Aeg_95932032" }, { value: "NCRR", name: "SettlementAmountCurrency", isoId: "_ZuKFY9p-Ed-ak6NoX_4Aeg_1818642309" }, { value: "PHYS", name: "PhysicalSettlementImpossible", isoId: "_ZuKFZNp-Ed-ak6NoX_4Aeg_-539099814" }, { value: "PLCE", name: "PlaceOfTrade", isoId: "_ZuKFZdp-Ed-ak6NoX_4Aeg_-1398304649" }, { value: "REFE", name: "Reference", isoId: "_ZuKFZtp-Ed-ak6NoX_4Aeg_538920524" }, { value: "RTGS", name: "ImpossibleToUseTheRTGSSystemInstructed", isoId: "_ZuKFZ9p-Ed-ak6NoX_4Aeg_-1259032683" }, { value: "SAFE", name: "SafekeepingAccount", isoId: "_ZuKFaNp-Ed-ak6NoX_4Aeg_780932779" }, { value: "SETR", name: "SettlementTransaction", isoId: "_ZuKFadp-Ed-ak6NoX_4Aeg_-911247418" }, { value: "SETS", name: "SettlementSystemMethod", isoId: "_ZuT2YNp-Ed-ak6NoX_4Aeg_1025977755" }, { value: "TXST", name: "TaxStatus", isoId: "_ZuT2Ydp-Ed-ak6NoX_4Aeg_1014878978" }, { value: "INPS", name: "PlaceOfSafekeeping", isoId: "_ZuT2Ytp-Ed-ak6NoX_4Aeg_-668193694" }, { value: "SDUT", name: "StampDuty", isoId: "_ZuT2Y9p-Ed-ak6NoX_4Aeg_-309309652" }, { value: "OTHR", name: "Other", isoId: "_ZuT2ZNp-Ed-ak6NoX_4Aeg_1435630589" }, { value: "IEXE", name: "ReceivingDeliveringParty3", isoId: "_ZuT2Zdp-Ed-ak6NoX_4Aeg_1392220821" }, { value: "ICAG", name: "ReceivingDeliveringParty1", isoId: "_ZuT2Ztp-Ed-ak6NoX_4Aeg_103190730" }, { value: "DEPT", name: "ReceivingDeliveringDepository", isoId: "_ZuT2Z9p-Ed-ak6NoX_4Aeg_-715762951" }, { value: "ICUS", name: "ReceivingDeliveringParty2", isoId: "_ZuT2aNp-Ed-ak6NoX_4Aeg_46271197" }],
+  },
+  "RepairReason10Choice": {
+    name: "RepairReason10Choice",
+    isoId: "_z7vnATqeEeWyoP0PbocV1Q",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_0bSpsTqeEeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "RepairReason4Code", required: true }),
+      f({ name: "Proprietary", isoId: "_0bSpuTqeEeWyoP0PbocV1Q", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "RepairReason14Choice": {
+    name: "RepairReason14Choice",
+    isoId: "_6P_aDZNLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_6P_aD5NLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "RepairReason4Code", required: true }),
+      f({ name: "Proprietary", isoId: "_6P_aF5NLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "RepairReason12": {
+    name: "RepairReason12",
+    isoId: "_6P_Z-ZNLEeWGlc8L7oPDIg",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "_6P_Z-5NLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "RepairReason14Choice", required: true }),
+      f({ name: "AdditionalReasonInformation", isoId: "_6P_aA5NLEeWGlc8L7oPDIg", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "RestrictedFINXMax210Text", required: false }),
+    ],
+  },
+  "RepairReason6Code": {
+    name: "RepairReason6Code",
+    isoId: "_ixP4oT9qEeCY7potQsO_IA",
+    kind: "code",
+    options: [{ value: "BATC", name: "ProcessingBatch", isoId: "_ixZClT9qEeCY7potQsO_IA" }, { value: "CAEV", name: "CorporateAction", isoId: "_ixZCmT9qEeCY7potQsO_IA" }, { value: "CASH", name: "CashAccount", isoId: "_ixZCnT9qEeCY7potQsO_IA" }, { value: "CASY", name: "ImpossibleCashSettlementSystem", isoId: "_ixZCoT9qEeCY7potQsO_IA" }, { value: "DDAT", name: "SettlementDate", isoId: "_ixZCpT9qEeCY7potQsO_IA" }, { value: "DDEA", name: "DealPrice", isoId: "_ixZCqT9qEeCY7potQsO_IA" }, { value: "DMON", name: "SettlementAmount", isoId: "_ixZCrT9qEeCY7potQsO_IA" }, { value: "DQUA", name: "Quantity", isoId: "_ixZCsT9qEeCY7potQsO_IA" }, { value: "DSEC", name: "Security", isoId: "_ixZCtT9qEeCY7potQsO_IA" }, { value: "DTRD", name: "TradeDate", isoId: "_ixZCuT9qEeCY7potQsO_IA" }, { value: "IIND", name: "CommonReference", isoId: "_ixZCvT9qEeCY7potQsO_IA" }, { value: "MINO", name: "MinimumSettlementQuantity", isoId: "_ixZCwT9qEeCY7potQsO_IA" }, { value: "MUNO", name: "MultipleSettlementQuantity", isoId: "_ixZCxT9qEeCY7potQsO_IA" }, { value: "NCRR", name: "SettlementAmountCurrency", isoId: "_ixZCyT9qEeCY7potQsO_IA" }, { value: "PHYS", name: "PhysicalSettlementImpossible", isoId: "_ixZCzT9qEeCY7potQsO_IA" }, { value: "PLCE", name: "PlaceOfTrade", isoId: "_ixZC0T9qEeCY7potQsO_IA" }, { value: "REFE", name: "Reference", isoId: "_ixZC1T9qEeCY7potQsO_IA" }, { value: "RTGS", name: "ImpossibleToUseTheRTGSSystemInstructed", isoId: "_ixZC2T9qEeCY7potQsO_IA" }, { value: "SAFE", name: "SafekeepingAccount", isoId: "_ixZC3T9qEeCY7potQsO_IA" }, { value: "SETR", name: "SettlementTransaction", isoId: "_ixZC4T9qEeCY7potQsO_IA" }, { value: "SETS", name: "SettlementSystemMethod", isoId: "_ixZC5T9qEeCY7potQsO_IA" }, { value: "TXST", name: "TaxStatus", isoId: "_ixZC6T9qEeCY7potQsO_IA" }, { value: "INPS", name: "PlaceOfSafekeeping", isoId: "_ixZC7T9qEeCY7potQsO_IA" }, { value: "SDUT", name: "StampDuty", isoId: "_ixZC8T9qEeCY7potQsO_IA" }, { value: "OTHR", name: "Other", isoId: "_ixZC9T9qEeCY7potQsO_IA" }, { value: "IEXE", name: "ReceivingDeliveringParty3", isoId: "_ixZC-T9qEeCY7potQsO_IA" }, { value: "ICAG", name: "ReceivingDeliveringParty1", isoId: "_ixZC_T9qEeCY7potQsO_IA" }, { value: "DEPT", name: "ReceivingDeliveringDepository", isoId: "_ixZDAT9qEeCY7potQsO_IA" }, { value: "ICUS", name: "ReceivingDeliveringParty2", isoId: "_ixZDBT9qEeCY7potQsO_IA" }, { value: "REPA", name: "TerminationTransactionAmount", isoId: "_ixZDCT9qEeCY7potQsO_IA" }, { value: "CADE", name: "TransactionCallDelay", isoId: "_ixZDDT9qEeCY7potQsO_IA" }, { value: "RERT", name: "RepurchaseRateType", isoId: "_ixZDET9qEeCY7potQsO_IA" }, { value: "RSPR", name: "SpreadRate", isoId: "_ixZDFT9qEeCY7potQsO_IA" }, { value: "VASU", name: "VariableRateSupport", isoId: "_ixZDGT9qEeCY7potQsO_IA" }, { value: "REPO", name: "RepurchaseRate", isoId: "_ixZDHT9qEeCY7potQsO_IA" }, { value: "REPP", name: "PremiumAmount", isoId: "_ixZDIT9qEeCY7potQsO_IA" }, { value: "TERM", name: "ClosingDateTime", isoId: "_ixZDJT9qEeCY7potQsO_IA" }, { value: "FORF", name: "ForfeitAmount", isoId: "_ixZDKT9qEeCY7potQsO_IA" }, { value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_q1_VsWtdEeCY4-KZ9JEyUQ_92472732" }, { value: "BUSE", name: "TypeOfOrderRepair", isoId: "_q1_VsmtdEeCY4-KZ9JEyUQ_1934269726" }, { value: "COMC", name: "CommercializationContractRepair", isoId: "_q1_Vs2tdEeCY4-KZ9JEyUQ_753035981" }, { value: "FEEE", name: "FeeCommissionRepair", isoId: "_q1_VtGtdEeCY4-KZ9JEyUQ_1766970131" }, { value: "INNA", name: "NarrativeInformationRepair", isoId: "_q1_VtWtdEeCY4-KZ9JEyUQ_838136585" }, { value: "NRGM", name: "NoMatch", isoId: "_q2JGsGtdEeCY4-KZ9JEyUQ_1412835247" }, { value: "NRGN", name: "NotFound", isoId: "_q2JGsWtdEeCY4-KZ9JEyUQ_892857611" }, { value: "ULNK", name: "Unknown", isoId: "_q2JGsmtdEeCY4-KZ9JEyUQ_-1505593503" }],
+  },
+  "RepairReason8": {
+    name: "RepairReason8",
+    isoId: "_zbnVcTqeEeWyoP0PbocV1Q",
+    kind: "component",
+    fields: [
+      f({ name: "Code", isoId: "_z7vm8TqeEeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "RepairReason10Choice", required: true }),
+      f({ name: "AdditionalReasonInformation", isoId: "_z7vm-TqeEeWyoP0PbocV1Q", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
+    ],
+  },
+  "RepairStatus12Choice": {
+    name: "RepairStatus12Choice",
+    isoId: "_y8E5sTqeEeWyoP0PbocV1Q",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NoSpecifiedReason", isoId: "_zbnVYTqeEeWyoP0PbocV1Q", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
+      f({ name: "Reason", isoId: "_zbnVaTqeEeWyoP0PbocV1Q", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "RepairReason8", required: true }),
+    ],
+  },
+  "RepairStatus16Choice": {
+    name: "RepairStatus16Choice",
+    isoId: "_6P_Z45NLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "NoSpecifiedReason", isoId: "_6P_Z5ZNLEeWGlc8L7oPDIg", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
+      f({ name: "Reason", isoId: "_6P_Z7ZNLEeWGlc8L7oPDIg", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "RepairReason12", required: true }),
+    ],
+  },
+  "ReplacementProcessingStatus1Code": {
+    name: "ReplacementProcessingStatus1Code",
+    isoId: "_ZwPwF9p-Ed-ak6NoX_4Aeg_-1450819640",
+    kind: "code",
+    options: [{ value: "DEND", name: "Denied", isoId: "_ZwPwGNp-Ed-ak6NoX_4Aeg_-1450819609" }, { value: "EXCH", name: "ReceivedAtStockExchange", isoId: "_ZwPwGdp-Ed-ak6NoX_4Aeg_-1450819608" }, { value: "INTE", name: "ReceivedAtIntermediary", isoId: "_ZwY6ANp-Ed-ak6NoX_4Aeg_-1450819607" }, { value: "PACK", name: "Accepted", isoId: "_ZwY6Adp-Ed-ak6NoX_4Aeg_-1450819587" }, { value: "PART", name: "PartialReplacementAccepted", isoId: "_ZwY6Atp-Ed-ak6NoX_4Aeg_-1450819578" }, { value: "PEND", name: "Pending", isoId: "_ZwY6A9p-Ed-ak6NoX_4Aeg_-1450819556" }, { value: "REJT", name: "Rejected", isoId: "_ZwY6BNp-Ed-ak6NoX_4Aeg_-1450819547" }, { value: "REPL", name: "Completed", isoId: "_ZwY6Bdp-Ed-ak6NoX_4Aeg_-1450819525" }, { value: "REPR", name: "InRepair", isoId: "_ZwY6Btp-Ed-ak6NoX_4Aeg_-1450819516" }],
+  },
+  "RepoCallAcknowledgementReason2Code": {
+    name: "RepoCallAcknowledgementReason2Code",
+    isoId: "_ZSvUtNp-Ed-ak6NoX_4Aeg_632190422",
+    kind: "code",
+    options: [{ value: "CALD", name: "InProcess", isoId: "_ZSvUtdp-Ed-ak6NoX_4Aeg_-364881931" }, { value: "CALP", name: "Processed", isoId: "_ZSvUttp-Ed-ak6NoX_4Aeg_-478720997" }, { value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_ZSvUt9p-Ed-ak6NoX_4Aeg_1840624684" }],
+  },
+  "RepoCallRequestStatus1Code": {
+    name: "RepoCallRequestStatus1Code",
+    isoId: "_ZS5Ftdp-Ed-ak6NoX_4Aeg_-1000214572",
+    kind: "code",
+    options: [{ value: "CACK", name: "AcknowledgedAccepted", isoId: "_ZS5Fttp-Ed-ak6NoX_4Aeg_-1000214541" }, { value: "DEND", name: "Denied", isoId: "_ZS5Ft9p-Ed-ak6NoX_4Aeg_-1000214284" }],
   },
   "TechnicalInputChannel1Choice": {
     name: "TechnicalInputChannel1Choice",
@@ -18559,6 +24735,36 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Code", isoId: "_RqIkktp-Ed-ak6NoX_4Aeg_-1706426890", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalReportingSource1Code", required: true }),
       f({ name: "Proprietary", isoId: "_RqIkk9p-Ed-ak6NoX_4Aeg_-1706426860", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "text", type: "Max35Text", required: true }),
     ],
+  },
+  "RepurchaseType9Code": {
+    name: "RepurchaseType9Code",
+    isoId: "_e06jwI-REeaVK-2bgpxeYw",
+    kind: "code",
+    options: [{ value: "PAIR", name: "Pairoff", isoId: "_hiF7sY-REeaVK-2bgpxeYw" }, { value: "PADJ", name: "PrincipalExposureAdjustment", isoId: "_h9wkAY-REeaVK-2bgpxeYw" }, { value: "RATE", name: "RepoRate", isoId: "_iiqA0Y-REeaVK-2bgpxeYw" }, { value: "CALL", name: "RepurchaseCall", isoId: "_i4-PEY-REeaVK-2bgpxeYw" }, { value: "ROLP", name: "RepoContractRollover", isoId: "_jNNZsY-REeaVK-2bgpxeYw" }, { value: "CADJ", name: "Swap", isoId: "_jkRO0Y-REeaVK-2bgpxeYw" }, { value: "TOPU", name: "TopUp", isoId: "_j_fyQY-REeaVK-2bgpxeYw" }, { value: "WTHD", name: "Withdrawal", isoId: "_kH0n0Y-REeaVK-2bgpxeYw" }],
+  },
+  "RepurchaseType22Choice": {
+    name: "RepurchaseType22Choice",
+    isoId: "_w61AQY-REeaVK-2bgpxeYw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_xJQd0Y-REeaVK-2bgpxeYw", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "RepurchaseType9Code", required: true }),
+      f({ name: "Proprietary", isoId: "_xJQd2Y-REeaVK-2bgpxeYw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "RepurchaseType24Choice": {
+    name: "RepurchaseType24Choice",
+    isoId: "_pAgRT5wxEeazcsnODTksnQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_pAgRUZwxEeazcsnODTksnQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "RepurchaseType9Code", required: true }),
+      f({ name: "Proprietary", isoId: "_pAgRWZwxEeazcsnODTksnQ", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "RepurchaseType6Code": {
+    name: "RepurchaseType6Code",
+    isoId: "_8xAOMd0dEd-Cb-IGbQ4hBQ",
+    kind: "code",
+    options: [{ value: "CADJ", name: "Swap", isoId: "_q5t_JWtdEeCY4-KZ9JEyUQ_1110886064" }, { value: "TOPU", name: "TopUp", isoId: "_q53wIGtdEeCY4-KZ9JEyUQ_-1569933634" }, { value: "WTHD", name: "Withdrawal", isoId: "_q53wIWtdEeCY4-KZ9JEyUQ_1727961309" }],
   },
   "RequestDetails22": {
     name: "RequestDetails22",
@@ -18650,6 +24856,47 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "AccountIdentification", isoId: "_0xkjuTEyEe6g-ffJsqGiSA", xmlTag: "AcctId", displayName: displayName("AccountIdentification"), kind: "choice", type: "AccountIdentification4Choice", required: false }),
     ],
   },
+  "ResponseStatus1Code": {
+    name: "ResponseStatus1Code",
+    isoId: "_Y9uuBdp-Ed-ak6NoX_4Aeg_-788093726",
+    kind: "code",
+    options: [{ value: "ACCP", name: "PartlyAccepted", isoId: "_Y9uuBtp-Ed-ak6NoX_4Aeg_-788093724" }, { value: "ACCT", name: "Accepted", isoId: "_Y9uuB9p-Ed-ak6NoX_4Aeg_-788093696" }, { value: "REJT", name: "Rejected", isoId: "_Y9uuCNp-Ed-ak6NoX_4Aeg_-788093695" }, { value: "SUBR", name: "SubstitutionAccepted", isoId: "_Y9uuCdp-Ed-ak6NoX_4Aeg_-788093665" }],
+  },
+  "RestrictedFINActiveCurrencyAndAmount": {
+    name: "RestrictedFINActiveCurrencyAndAmount",
+    isoId: "_WOVvkNp-Ed-ak6NoX_4Aeg_-1267706960",
+    kind: "amount",
+    totalDigits: 14,
+    fractionDigits: 5,
+    minInclusive: 0,
+    pattern: "[A-Z]{3,3}",
+  },
+  "RestrictedFINXMax52Text": {
+    name: "RestrictedFINXMax52Text",
+    isoId: "_7XZMQfygEeiM0vtizCHcoA",
+    kind: "text",
+    minLength: 1,
+    maxLength: 52,
+    pattern: "[0-9a-zA-Z/\\-\\?:\\(\\)\\.,'\\+ ]{1,52}",
+  },
+  "Restriction5Choice": {
+    name: "Restriction5Choice",
+    isoId: "_EFd7ATqIEeWVrPy0StzzSg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_ElAWsTqIEeWVrPy0StzzSg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "OwnershipLegalRestrictions1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_ElAWuTqIEeWVrPy0StzzSg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "Restriction6Choice": {
+    name: "Restriction6Choice",
+    isoId: "_5TJ-3ZNLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_5TJ-35NLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "OwnershipLegalRestrictions1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_5TJ-55NLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
   "RoundingParameters1": {
     name: "RoundingParameters1",
     isoId: "_QRxDcNp-Ed-ak6NoX_4Aeg_-1749123923",
@@ -18657,6 +24904,345 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     fields: [
       f({ name: "RoundingModulus", isoId: "_QRxDcdp-Ed-ak6NoX_4Aeg_-1749123921", xmlTag: "RndgMdlus", displayName: displayName("RoundingModulus"), kind: "number", type: "DecimalNumber", required: false }),
       f({ name: "RoundingDirection", isoId: "_QRxDctp-Ed-ak6NoX_4Aeg_-1749123920", xmlTag: "RndgDrctn", displayName: displayName("RoundingDirection"), kind: "code", type: "RoundingDirection1Code", required: true }),
+    ],
+  },
+  "SafekeepingPlace3Code": {
+    name: "SafekeepingPlace3Code",
+    isoId: "_Y-oF59p-Ed-ak6NoX_4Aeg_-597967030",
+    kind: "code",
+    options: [{ value: "SHHE", name: "SharesHeldElsewhere", isoId: "_Y-oF6Np-Ed-ak6NoX_4Aeg_-505614155" }],
+  },
+  "SafekeepingPlaceTypeAndText8": {
+    name: "SafekeepingPlaceTypeAndText8",
+    isoId: "_5V6N6znTEeWV5sr121Fc8A",
+    kind: "component",
+    fields: [
+      f({ name: "SafekeepingPlaceType", isoId: "_51magznTEeWV5sr121Fc8A", xmlTag: "SfkpgPlcTp", displayName: displayName("SafekeepingPlaceType"), kind: "code", type: "SafekeepingPlace3Code", required: true }),
+      f({ name: "Identification", isoId: "_51maiznTEeWV5sr121Fc8A", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: false }),
+    ],
+  },
+  "SafekeepingPlace1Code": {
+    name: "SafekeepingPlace1Code",
+    isoId: "_Y-eU59p-Ed-ak6NoX_4Aeg_1551577154",
+    kind: "code",
+    options: [{ value: "CUST", name: "SharesHeldAtLocalCustodian", isoId: "_Y-oF4Np-Ed-ak6NoX_4Aeg_-532747937" }, { value: "ICSD", name: "SharesHeldAtICSD", isoId: "_Y-oF4dp-Ed-ak6NoX_4Aeg_-495806728" }, { value: "NCSD", name: "SharesHeldAtNCSD", isoId: "_Y-oF4tp-Ed-ak6NoX_4Aeg_279949982" }, { value: "SHHE", name: "SharesHeldElsewhere", isoId: "_Y-oF49p-Ed-ak6NoX_4Aeg_-1284489900" }],
+  },
+  "SafekeepingPlaceTypeAndIdentification1": {
+    name: "SafekeepingPlaceTypeAndIdentification1",
+    isoId: "_Wjinw7XEEeiTob_PrFFUxA",
+    kind: "component",
+    fields: [
+      f({ name: "SafekeepingPlaceType", isoId: "_W1QC0bXEEeiTob_PrFFUxA", xmlTag: "SfkpgPlcTp", displayName: displayName("SafekeepingPlaceType"), kind: "code", type: "SafekeepingPlace1Code", required: true }),
+      f({ name: "Identification", isoId: "_W1QC07XEEeiTob_PrFFUxA", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "AnyBICDec2014Identifier", required: true }),
+    ],
+  },
+  "SafekeepingPlaceFormat29Choice": {
+    name: "SafekeepingPlaceFormat29Choice",
+    isoId: "_XZQIObXEEeiTob_PrFFUxA",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Identification", isoId: "_XqXF4bXEEeiTob_PrFFUxA", xmlTag: "Id", displayName: displayName("Identification"), kind: "component", type: "SafekeepingPlaceTypeAndText8", required: true }),
+      f({ name: "Country", isoId: "_XqXF6bXEEeiTob_PrFFUxA", xmlTag: "Ctry", displayName: displayName("Country"), kind: "code", type: "CountryCode", required: true }),
+      f({ name: "TypeAndIdentification", isoId: "_XqXF8bXEEeiTob_PrFFUxA", xmlTag: "TpAndId", displayName: displayName("TypeAndIdentification"), kind: "component", type: "SafekeepingPlaceTypeAndIdentification1", required: true }),
+      f({ name: "Proprietary", isoId: "_XqXF-bXEEeiTob_PrFFUxA", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification78", required: true }),
+    ],
+  },
+  "SafeKeepingPlace3": {
+    name: "SafeKeepingPlace3",
+    isoId: "_puMT0dLFEeiN28wlpBQScw",
+    kind: "component",
+    fields: [
+      f({ name: "SafekeepingPlaceFormat", isoId: "_qVK0Q9LFEeiN28wlpBQScw", xmlTag: "SfkpgPlcFrmt", displayName: displayName("SafekeepingPlaceFormat"), kind: "choice", type: "SafekeepingPlaceFormat29Choice", required: false }),
+      f({ name: "LEI", isoId: "_qVK0RdLFEeiN28wlpBQScw", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
+    ],
+    rules: [
+      { name: "SafekeepingPlaceFormatOrLEIRule", isoId: "_qVK0QdLFEeiN28wlpBQScw", text: "SafekeepingPlaceFormat must be present or LEI must be present.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/SafekeepingPlaceFormat"},{"op":"Presence","path":"/LEI"}]}} },
+    ],
+  },
+  "SafekeepingPlaceTypeAndText15": {
+    name: "SafekeepingPlaceTypeAndText15",
+    isoId: "_cj_8n5KQEeWHWpTQn1FFVg",
+    kind: "component",
+    fields: [
+      f({ name: "SafekeepingPlaceType", isoId: "_cj_8oZKQEeWHWpTQn1FFVg", xmlTag: "SfkpgPlcTp", displayName: displayName("SafekeepingPlaceType"), kind: "code", type: "SafekeepingPlace3Code", required: true }),
+      f({ name: "Identification", isoId: "_cj_8qZKQEeWHWpTQn1FFVg", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "RestrictedFINXMax30Text", required: false }),
+    ],
+  },
+  "SafekeepingPlaceFormat39Choice": {
+    name: "SafekeepingPlaceFormat39Choice",
+    isoId: "_8GiP_ffREeiNZp_PtLohLw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Identification", isoId: "_8GiP__fREeiNZp_PtLohLw", xmlTag: "Id", displayName: displayName("Identification"), kind: "component", type: "SafekeepingPlaceTypeAndText15", required: true }),
+      f({ name: "Country", isoId: "_8GiQB_fREeiNZp_PtLohLw", xmlTag: "Ctry", displayName: displayName("Country"), kind: "code", type: "CountryCode", required: true }),
+      f({ name: "TypeAndIdentification", isoId: "_8GiQD_fREeiNZp_PtLohLw", xmlTag: "TpAndId", displayName: displayName("TypeAndIdentification"), kind: "component", type: "SafekeepingPlaceTypeAndIdentification1", required: true }),
+      f({ name: "Proprietary", isoId: "_8GiQF_fREeiNZp_PtLohLw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification85", required: true }),
+    ],
+  },
+  "SafeKeepingPlace4": {
+    name: "SafeKeepingPlace4",
+    isoId: "_Z0yAR_fVEeiNZp_PtLohLw",
+    kind: "component",
+    fields: [
+      f({ name: "SafekeepingPlaceFormat", isoId: "_Z0yAS_fVEeiNZp_PtLohLw", xmlTag: "SfkpgPlcFrmt", displayName: displayName("SafekeepingPlaceFormat"), kind: "choice", type: "SafekeepingPlaceFormat39Choice", required: false }),
+      f({ name: "LEI", isoId: "_Z0yATffVEeiNZp_PtLohLw", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
+    ],
+    rules: [
+      { name: "SafekeepingPlaceFormatOrLEIRule", isoId: "_Z0yASffVEeiNZp_PtLohLw", text: "SafekeepingPlaceFormat must be present or LEI must be present.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/SafekeepingPlaceFormat"},{"op":"Presence","path":"/LEI"}]}} },
+    ],
+  },
+  "SafekeepingPlaceFormat41Choice": {
+    name: "SafekeepingPlaceFormat41Choice",
+    isoId: "_O8q28Y-4Ee-nyIlugK8fOQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Identification", isoId: "_PERTwY-4Ee-nyIlugK8fOQ", xmlTag: "Id", displayName: displayName("Identification"), kind: "component", type: "SafekeepingPlaceTypeAndText8", required: true }),
+      f({ name: "Country", isoId: "_PERTyY-4Ee-nyIlugK8fOQ", xmlTag: "Ctry", displayName: displayName("Country"), kind: "code", type: "CountryCode", required: true }),
+      f({ name: "DigitalLedgerIdentification", isoId: "_UZ8_AY-4Ee-nyIlugK8fOQ", xmlTag: "DgtlLdgrId", displayName: displayName("DigitalLedgerIdentification"), kind: "text", type: "DTI2024Identifier", required: true }),
+      f({ name: "TypeAndIdentification", isoId: "_PERT0Y-4Ee-nyIlugK8fOQ", xmlTag: "TpAndId", displayName: displayName("TypeAndIdentification"), kind: "component", type: "SafekeepingPlaceTypeAndIdentification1", required: true }),
+      f({ name: "Proprietary", isoId: "_PERT2Y-4Ee-nyIlugK8fOQ", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification78", required: true }),
+    ],
+  },
+  "SafeKeepingPlace5": {
+    name: "SafeKeepingPlace5",
+    isoId: "_PERT24-4Ee-nyIlugK8fOQ",
+    kind: "component",
+    fields: [
+      f({ name: "SafekeepingPlaceFormat", isoId: "_PLRTo4-4Ee-nyIlugK8fOQ", xmlTag: "SfkpgPlcFrmt", displayName: displayName("SafekeepingPlaceFormat"), kind: "choice", type: "SafekeepingPlaceFormat41Choice", required: false }),
+      f({ name: "LEI", isoId: "_PLRTpY-4Ee-nyIlugK8fOQ", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
+    ],
+    rules: [
+      { name: "SafekeepingPlaceFormatOrLEIRule", isoId: "_PLRToY-4Ee-nyIlugK8fOQ", text: "SafekeepingPlaceFormat must be present or LEI must be present.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/SafekeepingPlaceFormat"},{"op":"Presence","path":"/LEI"}]}} },
+    ],
+  },
+  "SafekeepingAccount2": {
+    name: "SafekeepingAccount2",
+    isoId: "_QTs9I9p-Ed-ak6NoX_4Aeg_-569609182",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_QTs9JNp-Ed-ak6NoX_4Aeg_-569609180", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "AccountIdentificationFormatChoice", required: true }),
+      f({ name: "FungibleIndicator", isoId: "_QTs9Jdp-Ed-ak6NoX_4Aeg_-569609165", xmlTag: "FngbInd", displayName: displayName("FungibleIndicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+      f({ name: "Name", isoId: "_QTs9Jtp-Ed-ak6NoX_4Aeg_-569609130", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "Designation", isoId: "_QTs9J9p-Ed-ak6NoX_4Aeg_-569608895", xmlTag: "Dsgnt", displayName: displayName("Designation"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "IntermediaryInformation", isoId: "_QTs9KNp-Ed-ak6NoX_4Aeg_691657560", xmlTag: "IntrmyInf", displayName: displayName("IntermediaryInformation"), kind: "component", type: "Intermediary11", required: false, repeat: { min: 0, max: 10 } }),
+      f({ name: "AccountOwner", isoId: "_QTs9Kdp-Ed-ak6NoX_4Aeg_-569608853", xmlTag: "AcctOwnr", displayName: displayName("AccountOwner"), kind: "choice", type: "PartyIdentification2Choice", required: false }),
+      f({ name: "AccountServicer", isoId: "_QT2uINp-Ed-ak6NoX_4Aeg_-569608835", xmlTag: "AcctSvcr", displayName: displayName("AccountServicer"), kind: "choice", type: "PartyIdentification2Choice", required: false }),
+    ],
+  },
+  "SafekeepingPlaceAsCodeAndPartyIdentification": {
+    name: "SafekeepingPlaceAsCodeAndPartyIdentification",
+    isoId: "_SfoCI9p-Ed-ak6NoX_4Aeg_1628228050",
+    kind: "component",
+    fields: [
+      f({ name: "PlaceSafekeeping", isoId: "_SfoCJNp-Ed-ak6NoX_4Aeg_-1275917504", xmlTag: "PlcSfkpg", displayName: displayName("PlaceSafekeeping"), kind: "code", type: "SafekeepingPlace1Code", required: true }),
+      f({ name: "Narrative", isoId: "_SfoCJdp-Ed-ak6NoX_4Aeg_-379437396", xmlTag: "Nrrtv", displayName: displayName("Narrative"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "Party", isoId: "_SfoCJtp-Ed-ak6NoX_4Aeg_-405959313", xmlTag: "Pty", displayName: displayName("Party"), kind: "component", type: "PartyIdentification3", required: false }),
+    ],
+    rules: [
+      { name: "Party1Rule", isoId: "_SfoCJ9p-Ed-ak6NoX_4Aeg_752151179", text: "If PlaceSafekeeping is not SHHE, then Party is mandatory. If PlaceSafekeeping is SHHE, then Party is optional." },
+    ],
+  },
+  "SafekeepingPlaceFormatChoice": {
+    name: "SafekeepingPlaceFormatChoice",
+    isoId: "_RB5f5Np-Ed-ak6NoX_4Aeg_-418949931",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Identification", isoId: "_RB5f5dp-Ed-ak6NoX_4Aeg_-334909529", xmlTag: "Id", displayName: displayName("Identification"), kind: "component", type: "SafekeepingPlaceAsCodeAndPartyIdentification", required: true }),
+      f({ name: "IdentificationAsDSS", isoId: "_RB5f5tp-Ed-ak6NoX_4Aeg_-292430851", xmlTag: "IdAsDSS", displayName: displayName("IdentificationAsDSS"), kind: "component", type: "GenericIdentification5", required: true }),
+      f({ name: "IdentificationAsCountry", isoId: "_RB5f59p-Ed-ak6NoX_4Aeg_-308128679", xmlTag: "IdAsCtry", displayName: displayName("IdentificationAsCountry"), kind: "code", type: "CountryCode", required: true }),
+    ],
+  },
+  "SecuritiesAccount25": {
+    name: "SecuritiesAccount25",
+    isoId: "_uEHFQTnaEeWV5sr121Fc8A",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_uim_IznaEeWV5sr121Fc8A", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "Type", isoId: "_uim_NznaEeWV5sr121Fc8A", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "PurposeCode7Choice", required: false }),
+      f({ name: "Name", isoId: "_uim_SznaEeWV5sr121Fc8A", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max70Text", required: false }),
+    ],
+  },
+  "SecuritiesAccount26": {
+    name: "SecuritiesAccount26",
+    isoId: "_vMYT4TnlEeWV5sr121Fc8A",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_vrB-wTnlEeWV5sr121Fc8A", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "Type", isoId: "_vrB-wznlEeWV5sr121Fc8A", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "PurposeCode7Choice", required: false }),
+      f({ name: "Name", isoId: "_vrB-xTnlEeWV5sr121Fc8A", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max70Text", required: false }),
+      f({ name: "Designation", isoId: "_vrB-xznlEeWV5sr121Fc8A", xmlTag: "Dsgnt", displayName: displayName("Designation"), kind: "text", type: "Max35Text", required: false }),
+    ],
+  },
+  "SecuritiesAccount34": {
+    name: "SecuritiesAccount34",
+    isoId: "_5XBKg5NLEeWGlc8L7oPDIg",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_5XBKhZNLEeWGlc8L7oPDIg", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "RestrictedFINXMax35Text", required: true }),
+      f({ name: "Type", isoId: "_5XBKmZNLEeWGlc8L7oPDIg", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "PurposeCode8Choice", required: false }),
+      f({ name: "Name", isoId: "_5XBKrZNLEeWGlc8L7oPDIg", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max70Text", required: false }),
+    ],
+  },
+  "SecuritiesAccount42": {
+    name: "SecuritiesAccount42",
+    isoId: "_8FX1EUfEEey6Is2iMqV8fg",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_8bufkUfEEey6Is2iMqV8fg", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "RestrictedFINXMax35Text", required: true }),
+      f({ name: "Type", isoId: "_8bufk0fEEey6Is2iMqV8fg", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "PurposeCode8Choice", required: false }),
+      f({ name: "Name", isoId: "_8buflUfEEey6Is2iMqV8fg", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max70Text", required: false }),
+      f({ name: "Designation", isoId: "_8bufl0fEEey6Is2iMqV8fg", xmlTag: "Dsgnt", displayName: displayName("Designation"), kind: "text", type: "RestrictedFINXMax35Text", required: false }),
+    ],
+  },
+  "SecuritiesBalanceType12Code": {
+    name: "SecuritiesBalanceType12Code",
+    isoId: "_Y_qnttp-Ed-ak6NoX_4Aeg_-1639644104",
+    kind: "code",
+    options: [{ value: "BLOK", name: "Blocked", isoId: "_Y_qnt9p-Ed-ak6NoX_4Aeg_5623331" }, { value: "AWAS", name: "AvailableWithNoAdditionalStatus", isoId: "_Y_qnuNp-Ed-ak6NoX_4Aeg_1658250839" }, { value: "BLCA", name: "BlockedCorporateAction", isoId: "_Y_0YsNp-Ed-ak6NoX_4Aeg_1366293101" }, { value: "BLOT", name: "BlockedTrading", isoId: "_Y_0Ysdp-Ed-ak6NoX_4Aeg_1544411773" }, { value: "BLOV", name: "BlockedAuthenticity", isoId: "_Y_0Ystp-Ed-ak6NoX_4Aeg_-991449022" }, { value: "BORR", name: "Borrowed", isoId: "_Y_0Ys9p-Ed-ak6NoX_4Aeg_661178486" }, { value: "BODE", name: "PendingBorrowedDelivery", isoId: "_Y_0YtNp-Ed-ak6NoX_4Aeg_369220748" }, { value: "BORE", name: "PendingBorrowedReceipt", isoId: "_Y_0Ytdp-Ed-ak6NoX_4Aeg_547339420" }, { value: "COLI", name: "CollateralIn", isoId: "_Y_0Yttp-Ed-ak6NoX_4Aeg_-1988521375" }, { value: "COLO", name: "CollateralOut", isoId: "_Y_0Yt9p-Ed-ak6NoX_4Aeg_-335893867" }, { value: "LOAN", name: "OnLoan", isoId: "_Y_0YuNp-Ed-ak6NoX_4Aeg_-627851605" }, { value: "LODE", name: "PendingOnLoanDelivery", isoId: "_Y_0Yudp-Ed-ak6NoX_4Aeg_-449732933" }, { value: "LORE", name: "PendingOnLoanReceipt", isoId: "_Y_0Yutp-Ed-ak6NoX_4Aeg_1309373568" }, { value: "MARG", name: "DerivativesMargin", isoId: "_Y_9ioNp-Ed-ak6NoX_4Aeg_-1332966220" }, { value: "PECA", name: "PendingCorporateActionReceipt", isoId: "_Y_9iodp-Ed-ak6NoX_4Aeg_1672970985" }, { value: "PEDA", name: "PendingCorporateActionDelivery", isoId: "_Y_9iotp-Ed-ak6NoX_4Aeg_1851089657" }, { value: "PEND", name: "PendingDelivery", isoId: "_Y_9io9p-Ed-ak6NoX_4Aeg_-684771138" }, { value: "PENR", name: "PendingReceipt", isoId: "_Y_9ipNp-Ed-ak6NoX_4Aeg_967856370" }, { value: "PLED", name: "Pledged", isoId: "_Y_9ipdp-Ed-ak6NoX_4Aeg_675898632" }, { value: "REGO", name: "OutForRegistration", isoId: "_Y_9iptp-Ed-ak6NoX_4Aeg_854017304" }, { value: "RSTR", name: "Restricted", isoId: "_Y_9ip9p-Ed-ak6NoX_4Aeg_-1681843491" }, { value: "OTHR", name: "Unclassified", isoId: "_Y_9iqNp-Ed-ak6NoX_4Aeg_-29215983" }, { value: "TRAN", name: "InTransshipment", isoId: "_Y_9iqdp-Ed-ak6NoX_4Aeg_-321173721" }, { value: "DRAW", name: "Drawn", isoId: "_ZAHToNp-Ed-ak6NoX_4Aeg_-143055049" }, { value: "WDOC", name: "WaitingDocumentation", isoId: "_ZAHTodp-Ed-ak6NoX_4Aeg_1616051452" }, { value: "BTRA", name: "BeingTransferred", isoId: "_ZAHTotp-Ed-ak6NoX_4Aeg_-1026288336" }],
+  },
+  "SecuritiesBalanceType13Code": {
+    name: "SecuritiesBalanceType13Code",
+    isoId: "_ZAHTo9p-Ed-ak6NoX_4Aeg_-409844332",
+    kind: "code",
+    options: [{ value: "BLOK", name: "Blocked", isoId: "_ZAHTpNp-Ed-ak6NoX_4Aeg_1235423103" }, { value: "AWAS", name: "AvailableWithNoAdditionalStatus", isoId: "_ZAHTpdp-Ed-ak6NoX_4Aeg_-1406916685" }, { value: "AVAI", name: "Available", isoId: "_ZAHTptp-Ed-ak6NoX_4Aeg_-1698874423" }, { value: "NOMI", name: "Registered", isoId: "_ZAHTp9p-Ed-ak6NoX_4Aeg_-1520755751" }, { value: "PLED", name: "Pledged", isoId: "_ZAHTqNp-Ed-ak6NoX_4Aeg_238350750" }, { value: "REGO", name: "OutForRegistration", isoId: "_ZAHTqdp-Ed-ak6NoX_4Aeg_203511436" }, { value: "RSTR", name: "Restricted", isoId: "_ZAREoNp-Ed-ak6NoX_4Aeg_-88446302" }, { value: "OTHR", name: "Unclassified", isoId: "_ZAREodp-Ed-ak6NoX_4Aeg_89672370" }, { value: "SPOS", name: "StreetPosition", isoId: "_ZAREotp-Ed-ak6NoX_4Aeg_851706518" }, { value: "UNRG", name: "Unregistered", isoId: "_ZAREo9p-Ed-ak6NoX_4Aeg_-1790633270" }, { value: "ISSU", name: "Issued", isoId: "_ZAREpNp-Ed-ak6NoX_4Aeg_-2082591008" }, { value: "QUAS", name: "QuasiIssued", isoId: "_ZAREpdp-Ed-ak6NoX_4Aeg_-1904472336" }, { value: "COLA", name: "EligibleForCollateralPurposes", isoId: "_ZAREptp-Ed-ak6NoX_4Aeg_875091232" }],
+  },
+  "SecuritiesBalanceType1Code": {
+    name: "SecuritiesBalanceType1Code",
+    isoId: "_ZAREp9p-Ed-ak6NoX_4Aeg_1941736953",
+    kind: "code",
+    options: [{ value: "BLOK", name: "Blocked", isoId: "_ZAREqNp-Ed-ak6NoX_4Aeg_1326405229" }, { value: "BORR", name: "Borrowed", isoId: "_ZAREqdp-Ed-ak6NoX_4Aeg_-461203135" }, { value: "COLI", name: "CollateralIn", isoId: "_ZAaOkNp-Ed-ak6NoX_4Aeg_-410410414" }, { value: "COLO", name: "CollateralOut", isoId: "_ZAaOkdp-Ed-ak6NoX_4Aeg_-320828289" }, { value: "LOAN", name: "OnLoan", isoId: "_ZAaOktp-Ed-ak6NoX_4Aeg_454930653" }, { value: "MARG", name: "DerivativesMargin", isoId: "_ZAaOk9p-Ed-ak6NoX_4Aeg_579604564" }, { value: "PDMT", name: "PendingDeliveryMatchedBalance", isoId: "_ZAaOlNp-Ed-ak6NoX_4Aeg_623932577" }, { value: "PRMT", name: "PendingReceiptMatchedBalance", isoId: "_ZAaOldp-Ed-ak6NoX_4Aeg_-61582826" }, { value: "PRUM", name: "PendingReceiptUnmatchedBalance", isoId: "_ZAaOltp-Ed-ak6NoX_4Aeg_409411469" }, { value: "PECA", name: "PendingCorporateAction", isoId: "_ZAaOl9p-Ed-ak6NoX_4Aeg_824997858" }, { value: "PEND", name: "PendingDelivery", isoId: "_ZAaOmNp-Ed-ak6NoX_4Aeg_-1671875543" }, { value: "PENR", name: "PendingReceipt", isoId: "_ZAaOmdp-Ed-ak6NoX_4Aeg_-1606305086" }, { value: "PLED", name: "Pledged", isoId: "_ZBTmcNp-Ed-ak6NoX_4Aeg_1435834862" }, { value: "PDUM", name: "PendingDeliveryUnmatchedBalance", isoId: "_ZBTmcdp-Ed-ak6NoX_4Aeg_1036746499" }, { value: "REGO", name: "OutForRegistration", isoId: "_ZBTmctp-Ed-ak6NoX_4Aeg_-2112928348" }, { value: "RSTR", name: "Restricted", isoId: "_ZBTmc9p-Ed-ak6NoX_4Aeg_-1666867904" }, { value: "OTHR", name: "Unclassified", isoId: "_ZBTmdNp-Ed-ak6NoX_4Aeg_1289904351" }, { value: "TRAN", name: "InTransshipment", isoId: "_ZBTmddp-Ed-ak6NoX_4Aeg_1421045203" }, { value: "DRAW", name: "Drawn", isoId: "_ZBTmdtp-Ed-ak6NoX_4Aeg_-1229850220" }, { value: "WDOC", name: "WaitingDocumentation", isoId: "_ZBTmd9p-Ed-ak6NoX_4Aeg_-804389963" }, { value: "BTRA", name: "BeingTransferred", isoId: "_ZBdXcNp-Ed-ak6NoX_4Aeg_-2019462974" }],
+  },
+  "SecuritiesBalanceType7Choice": {
+    name: "SecuritiesBalanceType7Choice",
+    isoId: "_zRSCkTp7EeWVrPy0StzzSg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_zxa7MTp7EeWVrPy0StzzSg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "SecuritiesBalanceType13Code", required: true }),
+      f({ name: "Proprietary", isoId: "_zxa7OTp7EeWVrPy0StzzSg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "SecuritiesBalanceType7Code": {
+    name: "SecuritiesBalanceType7Code",
+    isoId: "_ZCpqQNp-Ed-ak6NoX_4Aeg_1990824949",
+    kind: "code",
+    options: [{ value: "COLA", name: "EligibleForCollateralPurposes", isoId: "_ZCpqQdp-Ed-ak6NoX_4Aeg_1990825070" }, { value: "OTHR", name: "Unclassified", isoId: "_ZCpqQtp-Ed-ak6NoX_4Aeg_1990825425" }, { value: "CLEN", name: "TaxExempt", isoId: "_ZCpqQ9p-Ed-ak6NoX_4Aeg_1990825442" }, { value: "DIRT", name: "NonTaxExempt", isoId: "_ZCpqRNp-Ed-ak6NoX_4Aeg_1990825476" }, { value: "NOMI", name: "Registered", isoId: "_ZCpqRdp-Ed-ak6NoX_4Aeg_1990825477" }, { value: "SPOS", name: "StreetPosition", isoId: "_ZCpqRtp-Ed-ak6NoX_4Aeg_1990825494" }, { value: "UNRG", name: "Unregistered", isoId: "_ZCpqR9p-Ed-ak6NoX_4Aeg_1990825495" }, { value: "ISSU", name: "Issued", isoId: "_ZCpqSNp-Ed-ak6NoX_4Aeg_-740716487" }, { value: "QUAS", name: "QuasiIssued", isoId: "_ZCpqSdp-Ed-ak6NoX_4Aeg_-740716214" }],
+  },
+  "SecuritiesBalanceType8Choice": {
+    name: "SecuritiesBalanceType8Choice",
+    isoId: "_5NeNE5NLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_5NeNFZNLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "SecuritiesBalanceType11Code", required: true }),
+      f({ name: "Proprietary", isoId: "_5NeNHZNLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "SecuritiesRTGS4Choice": {
+    name: "SecuritiesRTGS4Choice",
+    isoId: "_90cwnzqEEeWVrPy0StzzSg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Indicator", isoId: "_-T2CATqEEeWVrPy0StzzSg", xmlTag: "Ind", displayName: displayName("Indicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+      f({ name: "Proprietary", isoId: "_-T2CCTqEEeWVrPy0StzzSg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "SecuritiesRTGS5Choice": {
+    name: "SecuritiesRTGS5Choice",
+    isoId: "_5TJ_AZNLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Indicator", isoId: "_5TJ_A5NLEeWGlc8L7oPDIg", xmlTag: "Ind", displayName: displayName("Indicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+      f({ name: "Proprietary", isoId: "_5TJ_C5NLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "SecuritiesSettlementStatus1Code": {
+    name: "SecuritiesSettlementStatus1Code",
+    isoId: "_ZFx2xdp-Ed-ak6NoX_4Aeg_1485379028",
+    kind: "code",
+    options: [{ value: "PEND", name: "Pending", isoId: "_ZFx2xtp-Ed-ak6NoX_4Aeg_1558336292" }, { value: "PENF", name: "Failing", isoId: "_ZFx2x9p-Ed-ak6NoX_4Aeg_1570340511" }],
+  },
+  "SecuritiesSettlementStatus2Code": {
+    name: "SecuritiesSettlementStatus2Code",
+    isoId: "_JhIYoUABEeCaq78Ig8ATcA",
+    kind: "code",
+    options: [{ value: "PEND", name: "Pending", isoId: "_JhIYp0ABEeCaq78Ig8ATcA" }, { value: "PENF", name: "Failing", isoId: "_JhIYq0ABEeCaq78Ig8ATcA" }, { value: "USET", name: "Unsettled", isoId: "_q2JGs2tdEeCY4-KZ9JEyUQ_1848862818" }, { value: "SETT", name: "Settled", isoId: "_q2JGtGtdEeCY4-KZ9JEyUQ_371262845" }, { value: "PAIN", name: "PartialSettlement", isoId: "_q2JGtWtdEeCY4-KZ9JEyUQ_-263558716" }],
+  },
+  "SecuritiesStatementType1Code": {
+    name: "SecuritiesStatementType1Code",
+    isoId: "_ZF7Astp-Ed-ak6NoX_4Aeg_-1354761740",
+    kind: "code",
+    options: [{ value: "CUST", name: "Custody", isoId: "_ZF7As9p-Ed-ak6NoX_4Aeg_-1354761291" }, { value: "ACCT", name: "Accounting", isoId: "_ZF7AtNp-Ed-ak6NoX_4Aeg_-1354760395" }],
+  },
+  "SecuritiesSubBalanceTypeAndQuantityBreakdown5": {
+    name: "SecuritiesSubBalanceTypeAndQuantityBreakdown5",
+    isoId: "_mKE-kyp_EeyR9JrVGfaMKw",
+    kind: "component",
+    fields: [
+      f({ name: "Type", isoId: "_miqdYSp_EeyR9JrVGfaMKw", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "SecuritiesBalanceType6Choice", required: true }),
+      f({ name: "QuantityBreakdown", isoId: "_miqdYyp_EeyR9JrVGfaMKw", xmlTag: "QtyBrkdwn", displayName: displayName("QuantityBreakdown"), kind: "component", type: "QuantityBreakdown61", required: false, repeat: { min: 0, max: null } }),
+    ],
+  },
+  "SecuritiesSubBalanceTypeAndQuantityBreakdown6": {
+    name: "SecuritiesSubBalanceTypeAndQuantityBreakdown6",
+    isoId: "_cadPUTi8Eeydid5dcNPKvg",
+    kind: "component",
+    fields: [
+      f({ name: "Type", isoId: "_cadPUzi8Eeydid5dcNPKvg", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "SecuritiesBalanceType8Choice", required: true }),
+      f({ name: "QuantityBreakdown", isoId: "_cadPVTi8Eeydid5dcNPKvg", xmlTag: "QtyBrkdwn", displayName: displayName("QuantityBreakdown"), kind: "component", type: "QuantityBreakdown65", required: false, repeat: { min: 0, max: null } }),
+    ],
+  },
+  "SecuritiesTransactionReport5": {
+    name: "SecuritiesTransactionReport5",
+    isoId: "_MxUsgWp-EemmaZLSPtWX5A",
+    kind: "component",
+    fields: [
+      f({ name: "ReportNumber", isoId: "_M8_xA2p-EemmaZLSPtWX5A", xmlTag: "RptNb", displayName: displayName("ReportNumber"), kind: "choice", type: "Number3Choice", required: false }),
+      f({ name: "QueryReference", isoId: "_M8_xC2p-EemmaZLSPtWX5A", xmlTag: "QryRef", displayName: displayName("QueryReference"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "ReportIdentification", isoId: "_M8_xE2p-EemmaZLSPtWX5A", xmlTag: "RptId", displayName: displayName("ReportIdentification"), kind: "text", type: "Max35Text", required: false }),
+      f({ name: "ReportDateTime", isoId: "_M8_xFWp-EemmaZLSPtWX5A", xmlTag: "RptDtTm", displayName: displayName("ReportDateTime"), kind: "choice", type: "DateAndDateTime2Choice", required: false }),
+      f({ name: "ReportPeriod", isoId: "_M8_xHWp-EemmaZLSPtWX5A", xmlTag: "RptPrd", displayName: displayName("ReportPeriod"), kind: "choice", type: "Period7Choice", required: false }),
+      f({ name: "QueryType", isoId: "_M8_xJWp-EemmaZLSPtWX5A", xmlTag: "QryTp", displayName: displayName("QueryType"), kind: "code", type: "MovementResponseType1Code", required: false }),
+      f({ name: "Frequency", isoId: "_M8_xLWp-EemmaZLSPtWX5A", xmlTag: "Frqcy", displayName: displayName("Frequency"), kind: "choice", type: "Frequency22Choice", required: false }),
+      f({ name: "UpdateType", isoId: "_M8_xNWp-EemmaZLSPtWX5A", xmlTag: "UpdTp", displayName: displayName("UpdateType"), kind: "choice", type: "UpdateType15Choice", required: true }),
+      f({ name: "ActivityIndicator", isoId: "_M8_xPWp-EemmaZLSPtWX5A", xmlTag: "ActvtyInd", displayName: displayName("ActivityIndicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+    ],
+    rules: [
+      { name: "ReportNumberRule", isoId: "_M8_xAWp-EemmaZLSPtWX5A", text: "If Long number (Exact5NumericTest) is used, then the report must be a delta reports (UpdateType: DELT).|If the report has multiple pages, then the ReportNumber must remain the same through all the pages. It is a unique number to the report.|Two reports of the same type sent one after the other to the same receiver in relation to the same safekeeping account must have different ReportNumbers. For example, a daily report sent on day 1 would have ReportNumber 001, on day 2, 002, etc." },
+    ],
+  },
+  "SecuritiesTransactionType24Code": {
+    name: "SecuritiesTransactionType24Code",
+    isoId: "_etVX8NEkEeiO-eodGv5iKQ",
+    kind: "code",
+    options: [{ value: "AUTO", name: "AutoCollateralisation", isoId: "_kjxwcdEwEeiO-eodGv5iKQ" }, { value: "BYIY", name: "BuyIn", isoId: "_mprF8dEwEeiO-eodGv5iKQ" }, { value: "BSBK", name: "BuySellBack", isoId: "_yb9BMdEwEeiO-eodGv5iKQ" }, { value: "CNCB", name: "CentralBankCollateralOperation", isoId: "_y7WS8dEwEeiO-eodGv5iKQ" }, { value: "COLI", name: "CollateralIn", isoId: "_zYp6AdEwEeiO-eodGv5iKQ" }, { value: "COLO", name: "CollateralOut", isoId: "_zgsbsdEwEeiO-eodGv5iKQ" }, { value: "CORP", name: "CorporateAction", isoId: "_0ArjUdEwEeiO-eodGv5iKQ" }, { value: "CONV", name: "DepositoryReceiptConversion", isoId: "_0bJ40dEwEeiO-eodGv5iKQ" }, { value: "RELE", name: "DepositoryReceiptReleaseCancellation", isoId: "_0wugMdEwEeiO-eodGv5iKQ" }, { value: "ETFT", name: "ExchangeTradedFunds", isoId: "_1m4sIdEwEeiO-eodGv5iKQ" }, { value: "OWNE", name: "ExternalAccountTransfer", isoId: "_2CHPkdEwEeiO-eodGv5iKQ" }, { value: "OWNI", name: "InternalAccountTransfer", isoId: "_2uJPIdEwEeiO-eodGv5iKQ" }, { value: "ISSU", name: "Issuance", isoId: "_3Lc2MdEwEeiO-eodGv5iKQ" }, { value: "MKDW", name: "MarkDown", isoId: "__jxzEdEwEeiO-eodGv5iKQ" }, { value: "CLAI", name: "MarketClaim", isoId: "__61oMdEwEeiO-eodGv5iKQ" }, { value: "MKUP", name: "MarkUp", isoId: "_AI1A4dExEeiO-eodGv5iKQ" }, { value: "NETT", name: "Netting", isoId: "_AkWfQdExEeiO-eodGv5iKQ" }, { value: "NSYN", name: "NonSyndicated", isoId: "_BPV9AdExEeiO-eodGv5iKQ" }, { value: "PAIR", name: "PairOff", isoId: "_BoCw4dExEeiO-eodGv5iKQ" }, { value: "PLAC", name: "Placement", isoId: "_CBekkdExEeiO-eodGv5iKQ" }, { value: "PORT", name: "PortfolioMove", isoId: "_CWnHEdExEeiO-eodGv5iKQ" }, { value: "REAL", name: "Realignment", isoId: "_DBwV0dExEeiO-eodGv5iKQ" }, { value: "REDM", name: "Redemption", isoId: "_DXeHIdExEeiO-eodGv5iKQ" }, { value: "REPU", name: "Repo", isoId: "_DzcRcdExEeiO-eodGv5iKQ" }, { value: "RVPO", name: "ReverseRepurchaseAgreement", isoId: "_Eaki4dExEeiO-eodGv5iKQ" }, { value: "SECB", name: "SecuritiesBorrowing", isoId: "_FDe9AdExEeiO-eodGv5iKQ" }, { value: "SECL", name: "SecuritiesLending", isoId: "_FW0vwdExEeiO-eodGv5iKQ" }, { value: "SBBK", name: "SellBuyBack", isoId: "_Lqvk4dExEeiO-eodGv5iKQ" }, { value: "SUBS", name: "Subscription", isoId: "_MUiv0dExEeiO-eodGv5iKQ" }, { value: "SWIF", name: "SwitchFrom", isoId: "_NDti8dExEeiO-eodGv5iKQ" }, { value: "SWIT", name: "SwitchTo", isoId: "_NPwa4dExEeiO-eodGv5iKQ" }, { value: "SYND", name: "SyndicateUnderwriters", isoId: "_Nm0QAdExEeiO-eodGv5iKQ" }, { value: "TRAD", name: "Trade", isoId: "_N7zBgdExEeiO-eodGv5iKQ" }, { value: "TRPO", name: "TripartyRepo", isoId: "_Ox8mYdExEeiO-eodGv5iKQ" }, { value: "TRVO", name: "TripartyReverseRepo", isoId: "_POEhsdExEeiO-eodGv5iKQ" }, { value: "TURN", name: "Turnaround", isoId: "_QDoQsdExEeiO-eodGv5iKQ" }, { value: "REDI", name: "Withdrawal", isoId: "_Qe_-EdExEeiO-eodGv5iKQ" }],
+  },
+  "SecuritiesTransactionType26Code": {
+    name: "SecuritiesTransactionType26Code",
+    isoId: "_e8phIdYYEeiHVOfMzoKxnA",
+    kind: "code",
+    options: [{ value: "BSBK", name: "BuySellBack", isoId: "_fOzoIdYYEeiHVOfMzoKxnA" }, { value: "COLI", name: "CollateralIn", isoId: "_fOzoI9YYEeiHVOfMzoKxnA" }, { value: "COLO", name: "CollateralOut", isoId: "_fOzoJdYYEeiHVOfMzoKxnA" }, { value: "MKDW", name: "MarkDown", isoId: "_fOzoJ9YYEeiHVOfMzoKxnA" }, { value: "MKUP", name: "MarkUp", isoId: "_fOzoKdYYEeiHVOfMzoKxnA" }, { value: "NETT", name: "Netting", isoId: "_fOzoK9YYEeiHVOfMzoKxnA" }, { value: "NSYN", name: "NonSyndicated", isoId: "_fOzoLdYYEeiHVOfMzoKxnA" }, { value: "PAIR", name: "PairOff", isoId: "_fOzoL9YYEeiHVOfMzoKxnA" }, { value: "PLAC", name: "Placement", isoId: "_fOzoMdYYEeiHVOfMzoKxnA" }, { value: "PORT", name: "PortfolioMove", isoId: "_fOzoM9YYEeiHVOfMzoKxnA" }, { value: "REAL", name: "Realignment", isoId: "_fOzoNdYYEeiHVOfMzoKxnA" }, { value: "REDM", name: "Redemption", isoId: "_fOzoN9YYEeiHVOfMzoKxnA" }, { value: "REPU", name: "Repo", isoId: "_fOzoOdYYEeiHVOfMzoKxnA" }, { value: "RODE", name: "ReturnDeliveryWithoutMatching", isoId: "_fOzoO9YYEeiHVOfMzoKxnA" }, { value: "RVPO", name: "ReverseRepurchaseAgreement", isoId: "_fOzoPdYYEeiHVOfMzoKxnA" }, { value: "SECB", name: "SecuritiesBorrowing", isoId: "_fOzoP9YYEeiHVOfMzoKxnA" }, { value: "SECL", name: "SecuritiesLending", isoId: "_fOzoQdYYEeiHVOfMzoKxnA" }, { value: "SUBS", name: "Subscription", isoId: "_fOzoQ9YYEeiHVOfMzoKxnA" }, { value: "SYND", name: "SyndicateUnderwriters", isoId: "_fOzoRdYYEeiHVOfMzoKxnA" }, { value: "TBAC", name: "TBAClosing", isoId: "_fOzoR9YYEeiHVOfMzoKxnA" }, { value: "TRAD", name: "Trade", isoId: "_fOzoSdYYEeiHVOfMzoKxnA" }, { value: "TRPO", name: "TripartyRepo", isoId: "_fOzoS9YYEeiHVOfMzoKxnA" }, { value: "TRVO", name: "TripartyReverseRepo", isoId: "_fOzoTdYYEeiHVOfMzoKxnA" }, { value: "TURN", name: "Turnaround", isoId: "_fOzoT9YYEeiHVOfMzoKxnA" }, { value: "BYIY", name: "BuyIn", isoId: "_fOzoUdYYEeiHVOfMzoKxnA" }, { value: "CNCB", name: "CentralBankCollateralOperation", isoId: "_fOzoU9YYEeiHVOfMzoKxnA" }, { value: "OWNE", name: "ExternalAccountTransfer", isoId: "_fOzoVdYYEeiHVOfMzoKxnA" }, { value: "FCTA", name: "FactorUpdate", isoId: "_fOzoV9YYEeiHVOfMzoKxnA" }, { value: "OWNI", name: "InternalAccountTransfer", isoId: "_fOzoWdYYEeiHVOfMzoKxnA" }, { value: "RELE", name: "DepositoryReceiptReleaseCancellation", isoId: "_fOzoW9YYEeiHVOfMzoKxnA" }, { value: "SBRE", name: "BorrowingReallocation", isoId: "_fOzoXdYYEeiHVOfMzoKxnA" }, { value: "CORP", name: "CorporateAction", isoId: "_fOzoX9YYEeiHVOfMzoKxnA" }, { value: "CLAI", name: "MarketClaim", isoId: "_fOzoYdYYEeiHVOfMzoKxnA" }, { value: "AUTO", name: "AutoCollateralisation", isoId: "_fOzoY9YYEeiHVOfMzoKxnA" }, { value: "SWIF", name: "SwitchFrom", isoId: "_fOzoZdYYEeiHVOfMzoKxnA" }, { value: "SWIT", name: "SwitchTo", isoId: "_fOzoZ9YYEeiHVOfMzoKxnA" }, { value: "CONV", name: "DepositoryReceiptConversion", isoId: "_fOzoadYYEeiHVOfMzoKxnA" }, { value: "ETFT", name: "ExchangeTradedFunds", isoId: "_fOzoa9YYEeiHVOfMzoKxnA" }, { value: "ISSU", name: "Issuance", isoId: "_fOzobdYYEeiHVOfMzoKxnA" }, { value: "SLRE", name: "LendingReallocation", isoId: "_fOzob9YYEeiHVOfMzoKxnA" }, { value: "INSP", name: "MoveOfStock", isoId: "_fOzocdYYEeiHVOfMzoKxnA" }, { value: "SBBK", name: "SellBuyBack", isoId: "_fOzoc9YYEeiHVOfMzoKxnA" }, { value: "REDI", name: "Withdrawal", isoId: "_fOzoddYYEeiHVOfMzoKxnA" }, { value: "REBL", name: "Rebalancing", isoId: "_Qb7NMdYZEeiHVOfMzoKxnA" }],
+  },
+  "SecuritiesTransactionType27Code": {
+    name: "SecuritiesTransactionType27Code",
+    isoId: "_qkAOMddqEeispNOuywCdbA",
+    kind: "code",
+    options: [{ value: "BSBK", name: "BuySellBack", isoId: "_q1tCMddqEeispNOuywCdbA" }, { value: "BYIY", name: "BuyIn", isoId: "_q1tCM9dqEeispNOuywCdbA" }, { value: "CNCB", name: "CentralBankCollateralOperation", isoId: "_q1tCNddqEeispNOuywCdbA" }, { value: "COLI", name: "CollateralIn", isoId: "_q1tCN9dqEeispNOuywCdbA" }, { value: "COLO", name: "CollateralOut", isoId: "_q1tCOddqEeispNOuywCdbA" }, { value: "CONV", name: "DepositoryReceiptConversion", isoId: "_q1tCO9dqEeispNOuywCdbA" }, { value: "FCTA", name: "FactorUpdate", isoId: "_q1tCPddqEeispNOuywCdbA" }, { value: "INSP", name: "MoveOfStock", isoId: "_q1tCP9dqEeispNOuywCdbA" }, { value: "ISSU", name: "Issuance", isoId: "_q1tCQddqEeispNOuywCdbA" }, { value: "MKDW", name: "MarkDown", isoId: "_q1tCQ9dqEeispNOuywCdbA" }, { value: "MKUP", name: "MarkUp", isoId: "_q1tCRddqEeispNOuywCdbA" }, { value: "NETT", name: "Netting", isoId: "_q1tCR9dqEeispNOuywCdbA" }, { value: "NSYN", name: "NonSyndicated", isoId: "_q1tCSddqEeispNOuywCdbA" }, { value: "OWNE", name: "ExternalAccountTransfer", isoId: "_q1tCS9dqEeispNOuywCdbA" }, { value: "OWNI", name: "InternalAccountTransfer", isoId: "_q1tCTddqEeispNOuywCdbA" }, { value: "PAIR", name: "PairOff", isoId: "_q1tCT9dqEeispNOuywCdbA" }, { value: "PLAC", name: "Placement", isoId: "_q1tCUddqEeispNOuywCdbA" }, { value: "PORT", name: "PortfolioMove", isoId: "_q1tCU9dqEeispNOuywCdbA" }, { value: "REAL", name: "Realignment", isoId: "_q1tCVddqEeispNOuywCdbA" }, { value: "REDI", name: "Withdrawal", isoId: "_q1tCV9dqEeispNOuywCdbA" }, { value: "REDM", name: "Redemption", isoId: "_q1tCWddqEeispNOuywCdbA" }, { value: "RELE", name: "DepositoryReceiptReleaseCancellation", isoId: "_q1tCW9dqEeispNOuywCdbA" }, { value: "REPU", name: "Repo", isoId: "_q1tCXddqEeispNOuywCdbA" }, { value: "RODE", name: "ReturnDeliveryWithoutMatching", isoId: "_q1tCX9dqEeispNOuywCdbA" }, { value: "RVPO", name: "ReverseRepurchaseAgreement", isoId: "_q1tCYddqEeispNOuywCdbA" }, { value: "SBBK", name: "SellBuyBack", isoId: "_q1tCY9dqEeispNOuywCdbA" }, { value: "SBRE", name: "BorrowingReallocation", isoId: "_q1tCZddqEeispNOuywCdbA" }, { value: "SECB", name: "SecuritiesBorrowing", isoId: "_q1tCZ9dqEeispNOuywCdbA" }, { value: "SECL", name: "SecuritiesLending", isoId: "_q1tCaddqEeispNOuywCdbA" }, { value: "SLRE", name: "LendingReallocation", isoId: "_q1tCa9dqEeispNOuywCdbA" }, { value: "SUBS", name: "Subscription", isoId: "_q1tCbddqEeispNOuywCdbA" }, { value: "SYND", name: "SyndicateUnderwriters", isoId: "_q1tCb9dqEeispNOuywCdbA" }, { value: "TBAC", name: "TBAClosing", isoId: "_q1tCcddqEeispNOuywCdbA" }, { value: "TRAD", name: "Trade", isoId: "_q1tCc9dqEeispNOuywCdbA" }, { value: "TRPO", name: "TripartyRepo", isoId: "_q1tCdddqEeispNOuywCdbA" }, { value: "TRVO", name: "TripartyReverseRepo", isoId: "_q1tCd9dqEeispNOuywCdbA" }, { value: "TURN", name: "Turnaround", isoId: "_q1tCeddqEeispNOuywCdbA" }, { value: "CLAI", name: "MarketClaim", isoId: "_q1tCe9dqEeispNOuywCdbA" }, { value: "CORP", name: "CorporateAction", isoId: "_q1tCfddqEeispNOuywCdbA" }, { value: "AUTO", name: "AutoCollateralisation", isoId: "_q1tCf9dqEeispNOuywCdbA" }, { value: "SWIF", name: "SwitchFrom", isoId: "_q1tCgddqEeispNOuywCdbA" }, { value: "SWIT", name: "SwitchTo", isoId: "_q1tCg9dqEeispNOuywCdbA" }, { value: "ETFT", name: "ExchangeTradedFunds", isoId: "_q1tChddqEeispNOuywCdbA" }, { value: "REBL", name: "Rebalancing", isoId: "_q1tCh9dqEeispNOuywCdbA" }, { value: "TRIN", name: "TransferIn", isoId: "_UQXXkddrEeispNOuywCdbA" }, { value: "TOUT", name: "TransferOut", isoId: "_UagyEddrEeispNOuywCdbA" }],
+  },
+  "SecuritiesTransactionType44Choice": {
+    name: "SecuritiesTransactionType44Choice",
+    isoId: "_VHZGkdEmEeiO-eodGv5iKQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_VZPrgdEmEeiO-eodGv5iKQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "SecuritiesTransactionType26Code", required: true }),
+      f({ name: "Proprietary", isoId: "_VZPridEmEeiO-eodGv5iKQ", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "SecuritiesTransactionType48Choice": {
+    name: "SecuritiesTransactionType48Choice",
+    isoId: "_vIV8EddqEeispNOuywCdbA",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_vZ5mIddqEeispNOuywCdbA", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "SecuritiesTransactionType27Code", required: true }),
+      f({ name: "Proprietary", isoId: "_vZ5mKddqEeispNOuywCdbA", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
     ],
   },
   "SequenceRange1": {
@@ -18678,6 +25264,72 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "FromToSequence", isoId: "_64OLoIy3EeeGkvZr3jtnCQ", xmlTag: "FrToSeq", displayName: displayName("FromToSequence"), kind: "component", type: "SequenceRange1", required: true }),
       f({ name: "EqualSequence", isoId: "_8FIqsYy3EeeGkvZr3jtnCQ", xmlTag: "EQSeq", displayName: displayName("EqualSequence"), kind: "text", type: "Max35Text", required: true }),
       f({ name: "NotEqualSequence", isoId: "_-oyTMYy3EeeGkvZr3jtnCQ", xmlTag: "NEQSeq", displayName: displayName("NotEqualSequence"), kind: "text", type: "Max35Text", required: true }),
+    ],
+  },
+  "SettlementConditionModificationStatus1Code": {
+    name: "SettlementConditionModificationStatus1Code",
+    isoId: "_ZK1889p-Ed-ak6NoX_4Aeg_1791512487",
+    kind: "code",
+    options: [{ value: "PACK", name: "AcknowledgedAccepted", isoId: "_ZK189Np-Ed-ak6NoX_4Aeg_-858187374" }, { value: "REJT", name: "Rejected", isoId: "_ZK189dp-Ed-ak6NoX_4Aeg_794440134" }, { value: "MODP", name: "Pending", isoId: "_ZK189tp-Ed-ak6NoX_4Aeg_1133726791" }, { value: "DEND", name: "Denied", isoId: "_ZK1899p-Ed-ak6NoX_4Aeg_-155303300" }, { value: "MODC", name: "Completed", isoId: "_ZK18-Np-Ed-ak6NoX_4Aeg_-974256981" }],
+  },
+  "SettlementDate4Code": {
+    name: "SettlementDate4Code",
+    isoId: "_ZLby1dp-Ed-ak6NoX_4Aeg_1690826366",
+    kind: "code",
+    options: [{ value: "WISS", name: "WhenIssued", isoId: "_kgJqIUWrEe6RZYUnHXjemQ" }],
+  },
+  "SettlementDateCode7Choice": {
+    name: "SettlementDateCode7Choice",
+    isoId: "_b0UOpzqLEeWVrPy0StzzSg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_cU5zITqLEeWVrPy0StzzSg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "SettlementDate4Code", required: true }),
+      f({ name: "Proprietary", isoId: "_cU5zKTqLEeWVrPy0StzzSg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "SettlementDate17Choice": {
+    name: "SettlementDate17Choice",
+    isoId: "_-3KbsbPuEeelzbgsFa3sqQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Date", isoId: "__G7WAbPuEeelzbgsFa3sqQ", xmlTag: "Dt", displayName: displayName("Date"), kind: "choice", type: "DateAndDateTime2Choice", required: true }),
+      f({ name: "DateCode", isoId: "__G7WD7PuEeelzbgsFa3sqQ", xmlTag: "DtCd", displayName: displayName("DateCode"), kind: "choice", type: "SettlementDateCode7Choice", required: true }),
+    ],
+  },
+  "SettlementDateCode8Choice": {
+    name: "SettlementDateCode8Choice",
+    isoId: "_4U7hpztKEeWRTLSN0i0tng",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_42QF8TtKEeWRTLSN0i0tng", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "DateType4Code", required: true }),
+      f({ name: "Proprietary", isoId: "_42QF-TtKEeWRTLSN0i0tng", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "SettlementDate19Choice": {
+    name: "SettlementDate19Choice",
+    isoId: "_qq8vIbPwEeelzbgsFa3sqQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Date", isoId: "_q6augbPwEeelzbgsFa3sqQ", xmlTag: "Dt", displayName: displayName("Date"), kind: "choice", type: "DateAndDateTime2Choice", required: true }),
+      f({ name: "DateCode", isoId: "_q6auj7PwEeelzbgsFa3sqQ", xmlTag: "DtCd", displayName: displayName("DateCode"), kind: "choice", type: "SettlementDateCode8Choice", required: true }),
+    ],
+  },
+  "SettlementDateCode9Choice": {
+    name: "SettlementDateCode9Choice",
+    isoId: "_5TGUu5NLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_5TGUvZNLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "SettlementDate4Code", required: true }),
+      f({ name: "Proprietary", isoId: "_5TGUxZNLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "SettlementDate20Choice": {
+    name: "SettlementDate20Choice",
+    isoId: "_qImeT83yEee5nJBZsW8MFQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Date", isoId: "_qImeUc3yEee5nJBZsW8MFQ", xmlTag: "Dt", displayName: displayName("Date"), kind: "choice", type: "DateAndDateTime2Choice", required: true }),
+      f({ name: "DateCode", isoId: "_qImeX83yEee5nJBZsW8MFQ", xmlTag: "DtCd", displayName: displayName("DateCode"), kind: "choice", type: "SettlementDateCode9Choice", required: true }),
     ],
   },
   "SettlementDateTimeIndication1": {
@@ -18740,6 +25392,110 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "ThirdReimbursementAgentAccount", isoId: "_B8P24fWbEemtd4wHZYvFUQ", xmlTag: "ThrdRmbrsmntAgtAcct", displayName: displayName("ThirdReimbursementAgentAccount"), kind: "component", type: "CashAccount38", required: false }),
     ],
   },
+  "TradeDateCode3Choice": {
+    name: "TradeDateCode3Choice",
+    isoId: "_HSmeHTqLEeWVrPy0StzzSg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_Hx_vwTqLEeWVrPy0StzzSg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "DateType3Code", required: true }),
+      f({ name: "Proprietary", isoId: "_Hx_vyTqLEeWVrPy0StzzSg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "TradeDate8Choice": {
+    name: "TradeDate8Choice",
+    isoId: "_vej6AbPuEeelzbgsFa3sqQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Date", isoId: "_vt4vcbPuEeelzbgsFa3sqQ", xmlTag: "Dt", displayName: displayName("Date"), kind: "choice", type: "DateAndDateTime2Choice", required: true }),
+      f({ name: "DateCode", isoId: "_vuB5bLPuEeelzbgsFa3sqQ", xmlTag: "DtCd", displayName: displayName("DateCode"), kind: "choice", type: "TradeDateCode3Choice", required: true }),
+    ],
+  },
+  "SettlementParties78": {
+    name: "SettlementParties78",
+    isoId: "_-XYFwdLCEeiN28wlpBQScw",
+    kind: "component",
+    fields: [
+      f({ name: "Depository", isoId: "_-ofD29LCEeiN28wlpBQScw", xmlTag: "Dpstry", displayName: displayName("Depository"), kind: "component", type: "PartyIdentification148", required: false }),
+      f({ name: "Party1", isoId: "_-ofD49LCEeiN28wlpBQScw", xmlTag: "Pty1", displayName: displayName("Party1"), kind: "component", type: "PartyIdentificationAndAccount170", required: false }),
+      f({ name: "Party2", isoId: "_-ofD69LCEeiN28wlpBQScw", xmlTag: "Pty2", displayName: displayName("Party2"), kind: "component", type: "PartyIdentificationAndAccount170", required: false }),
+      f({ name: "Party3", isoId: "_-ofEBdLCEeiN28wlpBQScw", xmlTag: "Pty3", displayName: displayName("Party3"), kind: "component", type: "PartyIdentificationAndAccount170", required: false }),
+      f({ name: "Party4", isoId: "_-ofEGdLCEeiN28wlpBQScw", xmlTag: "Pty4", displayName: displayName("Party4"), kind: "component", type: "PartyIdentificationAndAccount170", required: false }),
+      f({ name: "Party5", isoId: "_-ofEJ9LCEeiN28wlpBQScw", xmlTag: "Pty5", displayName: displayName("Party5"), kind: "component", type: "PartyIdentificationAndAccount170", required: false }),
+    ],
+    rules: [
+      { name: "Party2PresenceRule", isoId: "_-ofD0dLCEeiN28wlpBQScw", text: "If Party2 is present, then Party1 must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/Party1"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/Party2"}]}} },
+      { name: "Party3PresenceRule", isoId: "_-ofD09LCEeiN28wlpBQScw", text: "If Party3 is present, then Party2 must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/Party2"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/Party3"}]}} },
+      { name: "Party4PresenceRule", isoId: "_-ofD1dLCEeiN28wlpBQScw", text: "If Party4 is present, then Party3 must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/Party3"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/Party4"}]}} },
+      { name: "Party5PresenceRule", isoId: "_-ofD19LCEeiN28wlpBQScw", text: "If Party5 is present, then Party4 must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/Party4"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/Party5"}]}} },
+    ],
+  },
+  "TransactionDetails126": {
+    name: "TransactionDetails126",
+    isoId: "_kj0GwWp9EemmaZLSPtWX5A",
+    kind: "component",
+    fields: [
+      f({ name: "FinancialInstrumentIdentification", isoId: "_k0tpgWp9EemmaZLSPtWX5A", xmlTag: "FinInstrmId", displayName: displayName("FinancialInstrumentIdentification"), kind: "component", type: "SecurityIdentification19", required: true }),
+      f({ name: "SettlementQuantity", isoId: "_k0tpg2p9EemmaZLSPtWX5A", xmlTag: "SttlmQty", displayName: displayName("SettlementQuantity"), kind: "choice", type: "Quantity6Choice", required: true }),
+      f({ name: "SettlementAmount", isoId: "_k0tphWp9EemmaZLSPtWX5A", xmlTag: "SttlmAmt", displayName: displayName("SettlementAmount"), kind: "component", type: "AmountAndDirection51", required: false }),
+      f({ name: "TradeDate", isoId: "_k0tph2p9EemmaZLSPtWX5A", xmlTag: "TradDt", displayName: displayName("TradeDate"), kind: "choice", type: "TradeDate8Choice", required: false }),
+      f({ name: "SettlementDate", isoId: "_k0tpiWp9EemmaZLSPtWX5A", xmlTag: "SttlmDt", displayName: displayName("SettlementDate"), kind: "choice", type: "SettlementDate17Choice", required: true }),
+      f({ name: "DeliveringSettlementParties", isoId: "_k0tpi2p9EemmaZLSPtWX5A", xmlTag: "DlvrgSttlmPties", displayName: displayName("DeliveringSettlementParties"), kind: "component", type: "SettlementParties78", required: false }),
+      f({ name: "ReceivingSettlementParties", isoId: "_k0tpjWp9EemmaZLSPtWX5A", xmlTag: "RcvgSttlmPties", displayName: displayName("ReceivingSettlementParties"), kind: "component", type: "SettlementParties78", required: false }),
+    ],
+  },
+  "SettlementOrIntraPosition3Choice": {
+    name: "SettlementOrIntraPosition3Choice",
+    isoId: "_TUEdQWp9EemmaZLSPtWX5A",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "IntraPositionMovement", isoId: "_TgJxcWp9EemmaZLSPtWX5A", xmlTag: "IntraPosMvmnt", displayName: displayName("IntraPositionMovement"), kind: "component", type: "IntraPosition6", required: true }),
+      f({ name: "SettlementTransaction", isoId: "_TgJxc2p9EemmaZLSPtWX5A", xmlTag: "SttlmTx", displayName: displayName("SettlementTransaction"), kind: "component", type: "TransactionDetails126", required: true }),
+    ],
+  },
+  "SettlementParties109": {
+    name: "SettlementParties109",
+    isoId: "_dhJKrzi8Eeydid5dcNPKvg",
+    kind: "component",
+    fields: [
+      f({ name: "Depository", isoId: "_dhJKuzi8Eeydid5dcNPKvg", xmlTag: "Dpstry", displayName: displayName("Depository"), kind: "component", type: "PartyIdentification191", required: false }),
+      f({ name: "Party1", isoId: "_dhJKwzi8Eeydid5dcNPKvg", xmlTag: "Pty1", displayName: displayName("Party1"), kind: "component", type: "PartyIdentificationAndAccount215", required: false }),
+      f({ name: "Party2", isoId: "_dhJKyzi8Eeydid5dcNPKvg", xmlTag: "Pty2", displayName: displayName("Party2"), kind: "component", type: "PartyIdentificationAndAccount215", required: false }),
+      f({ name: "Party3", isoId: "_dhJK5Ti8Eeydid5dcNPKvg", xmlTag: "Pty3", displayName: displayName("Party3"), kind: "component", type: "PartyIdentificationAndAccount215", required: false }),
+      f({ name: "Party4", isoId: "_dhJK-Ti8Eeydid5dcNPKvg", xmlTag: "Pty4", displayName: displayName("Party4"), kind: "component", type: "PartyIdentificationAndAccount215", required: false }),
+      f({ name: "Party5", isoId: "_dhJLBzi8Eeydid5dcNPKvg", xmlTag: "Pty5", displayName: displayName("Party5"), kind: "component", type: "PartyIdentificationAndAccount215", required: false }),
+    ],
+    rules: [
+      { name: "Party2PresenceRule", isoId: "_dhJKsTi8Eeydid5dcNPKvg", text: "If Party2 is present, then Party1 must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/Party1"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/Party2"}]}} },
+      { name: "Party3PresenceRule", isoId: "_dhJKszi8Eeydid5dcNPKvg", text: "If Party3 is present, then Party2 must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/Party2"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/Party3"}]}} },
+      { name: "Party4PresenceRule", isoId: "_dhJKtTi8Eeydid5dcNPKvg", text: "If Party4 is present, then Party3 must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/Party3"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/Party4"}]}} },
+      { name: "Party5PresenceRule", isoId: "_dhJKtzi8Eeydid5dcNPKvg", text: "If Party5 is present, then Party4 must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/Party4"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/Party5"}]}} },
+    ],
+  },
+  "SettlementParties125": {
+    name: "SettlementParties125",
+    isoId: "_IQeNUYopEe-efPejSUAtLw",
+    kind: "component",
+    fields: [
+      f({ name: "Depository", isoId: "_IamZuYopEe-efPejSUAtLw", xmlTag: "Dpstry", displayName: displayName("Depository"), kind: "component", type: "PartyIdentification314", required: false }),
+      f({ name: "Party1", isoId: "_IamZwYopEe-efPejSUAtLw", xmlTag: "Pty1", displayName: displayName("Party1"), kind: "component", type: "PartyIdentificationAndAccount195", required: false }),
+      f({ name: "Party2", isoId: "_IamZyYopEe-efPejSUAtLw", xmlTag: "Pty2", displayName: displayName("Party2"), kind: "component", type: "PartyIdentificationAndAccount195", required: false }),
+      f({ name: "Party3", isoId: "_IamZ44opEe-efPejSUAtLw", xmlTag: "Pty3", displayName: displayName("Party3"), kind: "component", type: "PartyIdentificationAndAccount195", required: false }),
+      f({ name: "Party4", isoId: "_IamZ94opEe-efPejSUAtLw", xmlTag: "Pty4", displayName: displayName("Party4"), kind: "component", type: "PartyIdentificationAndAccount195", required: false }),
+      f({ name: "Party5", isoId: "_IamaBYopEe-efPejSUAtLw", xmlTag: "Pty5", displayName: displayName("Party5"), kind: "component", type: "PartyIdentificationAndAccount195", required: false }),
+    ],
+    rules: [
+      { name: "Party2PresenceRule", isoId: "_IamZsYopEe-efPejSUAtLw", text: "If Party2 is present, then Party1 must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/Party1"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/Party2"}]}} },
+      { name: "Party3PresenceRule", isoId: "_IamZs4opEe-efPejSUAtLw", text: "If Party3 is present, then Party2 must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/Party2"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/Party3"}]}} },
+      { name: "Party4PresenceRule", isoId: "_IamZtYopEe-efPejSUAtLw", text: "If Party4 is present, then Party3 must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/Party3"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/Party4"}]}} },
+      { name: "Party5PresenceRule", isoId: "_IamZt4opEe-efPejSUAtLw", text: "If Party5 is present, then Party4 must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/Party4"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/Party5"}]}} },
+    ],
+  },
+  "SettlementQueryType1Code": {
+    name: "SettlementQueryType1Code",
+    isoId: "_j4AIYO5NEeCisYr99QEiWA_-671204936",
+    kind: "code",
+    options: [{ value: "INST", name: "Instruction", isoId: "_j4AIYe5NEeCisYr99QEiWA_-1731179192" }, { value: "STTS", name: "Status", isoId: "_j4AIYu5NEeCisYr99QEiWA_-1742277969" }, { value: "STPD", name: "StatusPeriod", isoId: "_j4AIY-5NEeCisYr99QEiWA_-820114659" }],
+  },
   "SettlementStatus16Choice": {
     name: "SettlementStatus16Choice",
     isoId: "_zV8niTp4EeWVrPy0StzzSg",
@@ -18753,6 +25509,65 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       { name: "PendingToFailingRule", isoId: "_z2UwsTp4EeWVrPy0StzzSg", text: "A pending transaction (PEND) becomes a failing transaction (PENF) on the settlement date instructed in the message, during the end of day reporting." },
     ],
   },
+  "SettlementStatus26Choice": {
+    name: "SettlementStatus26Choice",
+    isoId: "_Xr1O0eFWEeWIA4E9cYSxxQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_X06SUeFWEeWIA4E9cYSxxQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "SecuritiesSettlementStatus1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_X06SWeFWEeWIA4E9cYSxxQ", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "SettlementStatus32Choice": {
+    name: "SettlementStatus32Choice",
+    isoId: "_xhBo94cSEe-U27oWwgmhCQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Pending", isoId: "_xoLZw4cSEe-U27oWwgmhCQ", xmlTag: "Pdg", displayName: displayName("Pending"), kind: "choice", type: "PendingStatus73Choice", required: true }),
+      f({ name: "Failing", isoId: "_xoLZy4cSEe-U27oWwgmhCQ", xmlTag: "Flng", displayName: displayName("Failing"), kind: "choice", type: "FailingStatus15Choice", required: true }),
+      f({ name: "Proprietary", isoId: "_xoLZ04cSEe-U27oWwgmhCQ", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "ProprietaryStatusAndReason6", required: true }),
+    ],
+    rules: [
+      { name: "PendingToFailingRule", isoId: "_xoLZwYcSEe-U27oWwgmhCQ", text: "A pending transaction (PEND) becomes a failing transaction (PENF) on the settlement date instructed in the message, during the end of day reporting." },
+    ],
+  },
+  "SettlementStatus34Choice": {
+    name: "SettlementStatus34Choice",
+    isoId: "_Xhm_1-SkEe-qVZLXW4RRBw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Pending", isoId: "_XtOZ8-SkEe-qVZLXW4RRBw", xmlTag: "Pdg", displayName: displayName("Pending"), kind: "choice", type: "PendingStatus79Choice", required: true }),
+      f({ name: "Failing", isoId: "_XtOZ--SkEe-qVZLXW4RRBw", xmlTag: "Flng", displayName: displayName("Failing"), kind: "choice", type: "FailingStatus17Choice", required: true }),
+      f({ name: "Proprietary", isoId: "_XtOaA-SkEe-qVZLXW4RRBw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "ProprietaryStatusAndReason6", required: true }),
+    ],
+    rules: [
+      { name: "PendingToFailingRule", isoId: "_XtOZ8eSkEe-qVZLXW4RRBw", text: "A pending transaction (PEND) becomes a failing transaction (PENF) on the settlement date instructed in the message, during the end of day reporting." },
+    ],
+  },
+  "SettlementSystemMethod1Code": {
+    name: "SettlementSystemMethod1Code",
+    isoId: "_ZMoFqdp-Ed-ak6NoX_4Aeg_-1301881011",
+    kind: "code",
+    options: [{ value: "NSET", name: "Default", isoId: "_ZMx2oNp-Ed-ak6NoX_4Aeg_-1225226401" }, { value: "YSET", name: "Alternative", isoId: "_ZMx2odp-Ed-ak6NoX_4Aeg_-1170737712" }],
+  },
+  "SettlementSystemMethod4Choice": {
+    name: "SettlementSystemMethod4Choice",
+    isoId: "_R9Xe8TqIEeWVrPy0StzzSg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_Scm_sTqIEeWVrPy0StzzSg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "SettlementSystemMethod1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_Scm_uTqIEeWVrPy0StzzSg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "SettlementSystemMethod5Choice": {
+    name: "SettlementSystemMethod5Choice",
+    isoId: "_5TKlQ5NLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_5TKlRZNLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "SettlementSystemMethod1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_5TKlTZNLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
   "SettlementTimeRequest2": {
     name: "SettlementTimeRequest2",
     isoId: "_QIrY6dp-Ed-ak6NoX_4Aeg_2050617089",
@@ -18762,6 +25577,75 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "TillTime", isoId: "_QIrY69p-Ed-ak6NoX_4Aeg_2142970270", xmlTag: "TillTm", displayName: displayName("TillTime"), kind: "time", type: "ISOTime", required: false }),
       f({ name: "FromTime", isoId: "_QIrY7Np-Ed-ak6NoX_4Aeg_2123575201", xmlTag: "FrTm", displayName: displayName("FromTime"), kind: "time", type: "ISOTime", required: false }),
       f({ name: "RejectTime", isoId: "_QI1J4Np-Ed-ak6NoX_4Aeg_2138351566", xmlTag: "RjctTm", displayName: displayName("RejectTime"), kind: "time", type: "ISOTime", required: false }),
+    ],
+  },
+  "SettlementTransactionCondition12Code": {
+    name: "SettlementTransactionCondition12Code",
+    isoId: "_2qssKQllEeuQ1MenzX1l-g",
+    kind: "code",
+    options: [{ value: "ADEA", name: "AcceptAfterRegularSettlementDeadline", isoId: "_2qssMQllEeuQ1MenzX1l-g" }, { value: "ASGN", name: "Assignement", isoId: "_2qssPgllEeuQ1MenzX1l-g" }, { value: "BUTC", name: "BuytoCover", isoId: "_2qssLAllEeuQ1MenzX1l-g" }, { value: "CLEN", name: "Clean", isoId: "_2qssQAllEeuQ1MenzX1l-g" }, { value: "DLWM", name: "DeliveryWithoutMatching", isoId: "_2qssOwllEeuQ1MenzX1l-g" }, { value: "DIRT", name: "Dirty", isoId: "_2qssNwllEeuQ1MenzX1l-g" }, { value: "DRAW", name: "Drawn", isoId: "_2qssMwllEeuQ1MenzX1l-g" }, { value: "EXER", name: "Exercised", isoId: "_2qssPQllEeuQ1MenzX1l-g" }, { value: "EXPI", name: "Expired", isoId: "_2qssOgllEeuQ1MenzX1l-g" }, { value: "FRCL", name: "FreeCleanSettlement", isoId: "_2qssNgllEeuQ1MenzX1l-g" }, { value: "KNOC", name: "KnockedOut", isoId: "_2qssPwllEeuQ1MenzX1l-g" }, { value: "NOMC", name: "NoAutomaticMarketClaim", isoId: "_2qssLgllEeuQ1MenzX1l-g" }, { value: "NACT", name: "NotAccountingRelated", isoId: "_2qssKwllEeuQ1MenzX1l-g" }, { value: "PENS", name: "PendingSale", isoId: "_2qssMgllEeuQ1MenzX1l-g" }, { value: "PHYS", name: "Physical", isoId: "_2qssKgllEeuQ1MenzX1l-g" }, { value: "RHYP", name: "Rehypothecation", isoId: "_2qssLQllEeuQ1MenzX1l-g" }, { value: "RPTO", name: "Reporting", isoId: "_2qssPAllEeuQ1MenzX1l-g" }, { value: "RESI", name: "Residual", isoId: "_2qssNQllEeuQ1MenzX1l-g" }, { value: "SHOR", name: "ShortSell", isoId: "_2qssMAllEeuQ1MenzX1l-g" }, { value: "SPDL", name: "SpecialDelivery", isoId: "_2qssLwllEeuQ1MenzX1l-g" }, { value: "SPST", name: "SplitSettlement", isoId: "_2qssOAllEeuQ1MenzX1l-g" }, { value: "TRAN", name: "Transformation", isoId: "_2qssQQllEeuQ1MenzX1l-g" }, { value: "TRIP", name: "TripartySegregation", isoId: "_2qssNAllEeuQ1MenzX1l-g" }, { value: "UNEX", name: "Unexposed", isoId: "_2qssOQllEeuQ1MenzX1l-g" }, { value: "INTS", name: "InternalisedSettlement", isoId: "_7kKVYQllEeuQ1MenzX1l-g" }, { value: "BPSS", name: "PartialSuccessfulBuyIn", isoId: "_zia1MQzWEeuUZuaHWzkTew" }],
+  },
+  "SettlementTransactionCondition16Code": {
+    name: "SettlementTransactionCondition16Code",
+    isoId: "_wXxJkPINEfCMaqDZ_tShqQ",
+    kind: "code",
+    options: [{ value: "ADEA", name: "AcceptAfterRegularSettlementDeadline", isoId: "_GUNywfIOEfCMaqDZ_tShqQ" }, { value: "ASGN", name: "Assignement", isoId: "_GcEuQfIOEfCMaqDZ_tShqQ" }, { value: "BUTC", name: "BuytoCover", isoId: "_GfcLUfIOEfCMaqDZ_tShqQ" }, { value: "CLEN", name: "Clean", isoId: "_GjSJgfIOEfCMaqDZ_tShqQ" }, { value: "DLWM", name: "DeliveryWithoutMatching", isoId: "_GnNAMfIOEfCMaqDZ_tShqQ" }, { value: "DIRT", name: "Dirty", isoId: "_GrtFsfIOEfCMaqDZ_tShqQ" }, { value: "DRAW", name: "Drawn", isoId: "_Gv30APIOEfCMaqDZ_tShqQ" }, { value: "EXER", name: "Exercised", isoId: "_G06FAfIOEfCMaqDZ_tShqQ" }, { value: "EXPI", name: "Expired", isoId: "_G5fDAfIOEfCMaqDZ_tShqQ" }, { value: "FRCL", name: "FreeCleanSettlement", isoId: "_HEFJcfIOEfCMaqDZ_tShqQ" }, { value: "GATE", name: "GatingEventParticipation", isoId: "_HLpKAfIOEfCMaqDZ_tShqQ" }, { value: "INTS", name: "InternalisedSettlement", isoId: "_HaXigfIOEfCMaqDZ_tShqQ" }, { value: "KNOC", name: "KnockedOut", isoId: "_HhxLAfIOEfCMaqDZ_tShqQ" }, { value: "NOMC", name: "NoAutomaticMarketClaim", isoId: "_HmKi0fIOEfCMaqDZ_tShqQ" }, { value: "NACT", name: "NotAccountingRelated", isoId: "_HwEswfIOEfCMaqDZ_tShqQ" }, { value: "BPSS", name: "PartialSuccessfulBuyIn", isoId: "_J5TDEfIOEfCMaqDZ_tShqQ" }, { value: "PENS", name: "PendingSale", isoId: "_J_GJEfIOEfCMaqDZ_tShqQ" }, { value: "PHYS", name: "Physical", isoId: "_KDGfUfIOEfCMaqDZ_tShqQ" }, { value: "RHYP", name: "Rehypothecation", isoId: "_KHcz0fIOEfCMaqDZ_tShqQ" }, { value: "RPTO", name: "Reporting", isoId: "_KLdxIfIOEfCMaqDZ_tShqQ" }, { value: "RESI", name: "Residual", isoId: "_KPjm8fIOEfCMaqDZ_tShqQ" }, { value: "SHOR", name: "ShortSell", isoId: "_KUWnYfIOEfCMaqDZ_tShqQ" }, { value: "SPDL", name: "SpecialDelivery", isoId: "_KjIDMfIOEfCMaqDZ_tShqQ" }, { value: "SPST", name: "SplitSettlement", isoId: "_Kor4ofIOEfCMaqDZ_tShqQ" }, { value: "TRAN", name: "Transformation", isoId: "_KuC5wfIOEfCMaqDZ_tShqQ" }, { value: "TRIP", name: "TripartySegregation", isoId: "_K02FUfIOEfCMaqDZ_tShqQ" }, { value: "UNEX", name: "Unexposed", isoId: "_K5XY8fIOEfCMaqDZ_tShqQ" }],
+  },
+  "SettlementTransactionCondition34Choice": {
+    name: "SettlementTransactionCondition34Choice",
+    isoId: "_U3q2uQllEeuQ1MenzX1l-g",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_VFDyMwllEeuQ1MenzX1l-g", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "SettlementTransactionCondition12Code", required: true }),
+      f({ name: "Proprietary", isoId: "_VFDyOwllEeuQ1MenzX1l-g", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "SettlementTransactionCondition37Choice": {
+    name: "SettlementTransactionCondition37Choice",
+    isoId: "_38PHjyAaEeu4a6pNulzZ4Q",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_38PHkyAaEeu4a6pNulzZ4Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "SettlementTransactionCondition12Code", required: true }),
+      f({ name: "Proprietary", isoId: "_38PHmyAaEeu4a6pNulzZ4Q", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "SettlementTransactionCondition41Choice": {
+    name: "SettlementTransactionCondition41Choice",
+    isoId: "_KTpbYfHPEfChCaiL9q1LKg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_KWsIUfHPEfChCaiL9q1LKg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "SettlementTransactionCondition16Code", required: true }),
+      f({ name: "Proprietary", isoId: "_KWsIWfHPEfChCaiL9q1LKg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "SettlementTransactionCondition5Code": {
+    name: "SettlementTransactionCondition5Code",
+    isoId: "_Ku3YgeBFEd-D2OAFXdoRmA",
+    kind: "code",
+    options: [{ value: "PART", name: "PartialAllowed", isoId: "_q6dmBWtdEeCY4-KZ9JEyUQ_-817672077" }, { value: "NPAR", name: "PartialNotAllowed", isoId: "_q6dmBmtdEeCY4-KZ9JEyUQ_-1814744430" }, { value: "PARC", name: "PartialSettlementCashThresholdAllowed", isoId: "_q6nXAGtdEeCY4-KZ9JEyUQ_374187327" }, { value: "PARQ", name: "PartialSettlementQuantityThresholdAllowed", isoId: "_q6nXAWtdEeCY4-KZ9JEyUQ_1425320399" }],
+  },
+  "SettlingCapacity2Code": {
+    name: "SettlingCapacity2Code",
+    isoId: "_4R0NYCW2EeOslcz0TJwprQ",
+    kind: "code",
+    options: [{ value: "SAGE", name: "SettlingAgent", isoId: "_7ZoS4SW2EeOslcz0TJwprQ" }, { value: "CUST", name: "SettlingCustodian", isoId: "_9j2HsSW2EeOslcz0TJwprQ" }, { value: "SPRI", name: "SettlingPrincipal", isoId: "_9rSMcSW2EeOslcz0TJwprQ" }, { value: "RISP", name: "SettlingRisklessPrincipal", isoId: "_9wCwoSW2EeOslcz0TJwprQ" }],
+  },
+  "SettlingCapacity7Choice": {
+    name: "SettlingCapacity7Choice",
+    isoId: "_cRf-ATqEEeWVrPy0StzzSg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_czIEYTqEEeWVrPy0StzzSg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "SettlingCapacity2Code", required: true }),
+      f({ name: "Proprietary", isoId: "_czIEZTqEEeWVrPy0StzzSg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "SettlingCapacity8Choice": {
+    name: "SettlingCapacity8Choice",
+    isoId: "_5m5aiZNLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_5m5ai5NLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "SettlingCapacity2Code", required: true }),
+      f({ name: "Proprietary", isoId: "_5m5aj5NLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
     ],
   },
   "StandingOrder10": {
@@ -18856,6 +25740,65 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "AccountOwner", isoId: "_z-0REzEyEe6g-ffJsqGiSA", xmlTag: "AcctOwnr", displayName: displayName("AccountOwner"), kind: "component", type: "BranchAndFinancialInstitutionIdentification8", required: false }),
     ],
   },
+  "StatementUpdateTypeCode": {
+    name: "StatementUpdateTypeCode",
+    isoId: "_ZQWvEdp-Ed-ak6NoX_4Aeg_-1582551543",
+    kind: "code",
+    options: [{ value: "COMP", name: "Complete", isoId: "_ZQWvEtp-Ed-ak6NoX_4Aeg_-1582551317" }, { value: "DELT", name: "Delta", isoId: "_ZQWvE9p-Ed-ak6NoX_4Aeg_-1582551316" }],
+  },
+  "Statement8": {
+    name: "Statement8",
+    isoId: "_RORH9tp-Ed-ak6NoX_4Aeg_1205526240",
+    kind: "component",
+    fields: [
+      f({ name: "Reference", isoId: "_RORH99p-Ed-ak6NoX_4Aeg_1205526258", xmlTag: "Ref", displayName: displayName("Reference"), kind: "text", type: "Max35Text", required: true }),
+      f({ name: "StatementPeriod", isoId: "_RORH-Np-Ed-ak6NoX_4Aeg_1205526283", xmlTag: "StmtPrd", displayName: displayName("StatementPeriod"), kind: "component", type: "DatePeriodDetails", required: true }),
+      f({ name: "CreationDateTime", isoId: "_RORH-dp-Ed-ak6NoX_4Aeg_1206446349", xmlTag: "CreDtTm", displayName: displayName("CreationDateTime"), kind: "choice", type: "DateAndDateTimeChoice", required: false }),
+      f({ name: "Frequency", isoId: "_RORH-tp-Ed-ak6NoX_4Aeg_1205526300", xmlTag: "Frqcy", displayName: displayName("Frequency"), kind: "code", type: "EventFrequency1Code", required: false }),
+      f({ name: "UpdateType", isoId: "_RORH-9p-Ed-ak6NoX_4Aeg_1205526318", xmlTag: "UpdTp", displayName: displayName("UpdateType"), kind: "code", type: "StatementUpdateTypeCode", required: true }),
+      f({ name: "ActivityIndicator", isoId: "_ROaR4Np-Ed-ak6NoX_4Aeg_1205526335", xmlTag: "ActvtyInd", displayName: displayName("ActivityIndicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+      f({ name: "ReportNumber", isoId: "_ROaR4dp-Ed-ak6NoX_4Aeg_1206446332", xmlTag: "RptNb", displayName: displayName("ReportNumber"), kind: "text", type: "Max5NumericText", required: false }),
+    ],
+  },
+  "StatementBasis1Code": {
+    name: "StatementBasis1Code",
+    isoId: "_ZP6DJNp-Ed-ak6NoX_4Aeg_-957087736",
+    kind: "code",
+    options: [{ value: "CONT", name: "Contractual", isoId: "_ZP6DJdp-Ed-ak6NoX_4Aeg_-926610659" }, { value: "SETT", name: "Settled", isoId: "_ZP6DJtp-Ed-ak6NoX_4Aeg_-2028635093" }, { value: "TRAD", name: "Traded", isoId: "_ZP6DJ9p-Ed-ak6NoX_4Aeg_-2014783388" }],
+  },
+  "StatementBasis2Code": {
+    name: "StatementBasis2Code",
+    isoId: "_ZP6DKNp-Ed-ak6NoX_4Aeg_-1755152860",
+    kind: "code",
+    options: [{ value: "SETT", name: "Settled", isoId: "_ZQD0INp-Ed-ak6NoX_4Aeg_-1755151069" }, { value: "TRAD", name: "Traded", isoId: "_ZQD0Idp-Ed-ak6NoX_4Aeg_-1755150482" }],
+  },
+  "StatementBasis7Choice": {
+    name: "StatementBasis7Choice",
+    isoId: "_czz68TeREeWm5uvLSn0jEw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_dUsaczeREeWm5uvLSn0jEw", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "StatementBasis1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_dUsaezeREeWm5uvLSn0jEw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "StatementBasis9Choice": {
+    name: "StatementBasis9Choice",
+    isoId: "_5Wx6LpNLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_5Wx6MJNLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "StatementBasis1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_5Wx6OJNLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "StatementBasisCodeAndDSSCodeChoice": {
+    name: "StatementBasisCodeAndDSSCodeChoice",
+    isoId: "_Q7Cp8Np-Ed-ak6NoX_4Aeg_-1357896034",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "StatementBasisAsCode", isoId: "_Q7Cp8dp-Ed-ak6NoX_4Aeg_-1663061250", xmlTag: "StmtBsisAsCd", displayName: displayName("StatementBasisAsCode"), kind: "code", type: "StatementBasis1Code", required: true }),
+      f({ name: "StatementBasisAsDSS", isoId: "_Q7Cp8tp-Ed-ak6NoX_4Aeg_-1630736025", xmlTag: "StmtBsisAsDSS", displayName: displayName("StatementBasisAsDSS"), kind: "component", type: "GenericIdentification7", required: true }),
+    ],
+  },
   "StatementFrequencyReason2Choice": {
     name: "StatementFrequencyReason2Choice",
     isoId: "_rq-6sSDAEeWPMvNwVtiMsA",
@@ -18865,6 +25808,105 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Proprietary", isoId: "_sGXPIyDAEeWPMvNwVtiMsA", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
     ],
   },
+  "StatementStructure1Code": {
+    name: "StatementStructure1Code",
+    isoId: "_ZQD0Jtp-Ed-ak6NoX_4Aeg_-1907403556",
+    kind: "code",
+    options: [{ value: "STAT", name: "Statuses", isoId: "_ZQD0J9p-Ed-ak6NoX_4Aeg_-1906483117" }, { value: "TRAN", name: "Transactions", isoId: "_ZQD0KNp-Ed-ak6NoX_4Aeg_-1906483092" }],
+  },
+  "StatementUpdateTypeCodeAndDSSCodeChoice": {
+    name: "StatementUpdateTypeCodeAndDSSCodeChoice",
+    isoId: "_Q7Cp89p-Ed-ak6NoX_4Aeg_2025558930",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "StatementUpdateTypeAsCode", isoId: "_Q7Cp9Np-Ed-ak6NoX_4Aeg_-2092497455", xmlTag: "StmtUpdTpAsCd", displayName: displayName("StatementUpdateTypeAsCode"), kind: "code", type: "StatementUpdateTypeCode", required: true }),
+      f({ name: "StatementUpdateTypeAsDSS", isoId: "_Q7Cp9dp-Ed-ak6NoX_4Aeg_-2045399501", xmlTag: "StmtUpdTpAsDSS", displayName: displayName("StatementUpdateTypeAsDSS"), kind: "component", type: "GenericIdentification7", required: true }),
+    ],
+  },
+  "SubAccountIdentification6": {
+    name: "SubAccountIdentification6",
+    isoId: "_QTaCONp-Ed-ak6NoX_4Aeg_-1893102243",
+    kind: "component",
+    fields: [
+      f({ name: "Identification", isoId: "_QTaCOdp-Ed-ak6NoX_4Aeg_-1893102217", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "AccountIdentificationFormatChoice", required: true }),
+      f({ name: "ActivityIndicator", isoId: "_QTaCOtp-Ed-ak6NoX_4Aeg_-1893102208", xmlTag: "ActvtyInd", displayName: displayName("ActivityIndicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
+      f({ name: "TransactionOnSubAccount", isoId: "_QTjzMNp-Ed-ak6NoX_4Aeg_-1893101931", xmlTag: "TxOnSubAcct", displayName: displayName("TransactionOnSubAccount"), kind: "component", type: "InvestmentFundTransactionsByFund2", required: false, repeat: { min: 0, max: null } }),
+    ],
+    rules: [
+      { name: "TransactionOnSubAccountRule", isoId: "_QTjzMdp-Ed-ak6NoX_4Aeg_-1893101906", text: "If ActivityIndicator is \"true\" or \"1\" (Yes), then TransactionOnSubAccount must be present. If ActivityIndicator is \"false\" or \"0\" (No), then TransactionOnSubAccount is not allowed." },
+    ],
+  },
+  "SubBalanceInformation2": {
+    name: "SubBalanceInformation2",
+    isoId: "_QY60U9p-Ed-ak6NoX_4Aeg_-1856391421",
+    kind: "component",
+    fields: [
+      f({ name: "Quantity", isoId: "_QY60VNp-Ed-ak6NoX_4Aeg_-1856391403", xmlTag: "Qty", displayName: displayName("Quantity"), kind: "choice", type: "SubBalanceQuantity1Choice", required: true }),
+      f({ name: "SubBalanceType", isoId: "_QY60Vdp-Ed-ak6NoX_4Aeg_-1856391386", xmlTag: "SubBalTp", displayName: displayName("SubBalanceType"), kind: "code", type: "SecuritiesBalanceType1Code", required: false }),
+      f({ name: "ExtendedSubBalanceType", isoId: "_QY60Vtp-Ed-ak6NoX_4Aeg_-1044552916", xmlTag: "XtndedSubBalTp", displayName: displayName("ExtendedSubBalanceType"), kind: "text", type: "Extended350Code", required: false }),
+      f({ name: "AdditionalBalanceBreakdownDetails", isoId: "_QY60V9p-Ed-ak6NoX_4Aeg_-1856391341", xmlTag: "AddtlBalBrkdwnDtls", displayName: displayName("AdditionalBalanceBreakdownDetails"), kind: "component", type: "AdditionalBalanceInformation2", required: false, repeat: { min: 0, max: null } }),
+    ],
+    rules: [
+      { name: "SubBalanceTypeOrExtendedSubBalanceTypeRule", isoId: "_QY60WNp-Ed-ak6NoX_4Aeg_-593876103", text: "Either SubBalanceType or ExtendedSubBalanceType must be present, but not both.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/SubBalanceType"},{"op":"Presence","path":"/ExtendedSubBalanceType"}]}} },
+      { name: "SubBalanceTypeOrExtendedSubBalanceTypeRuleNotBoth", isoId: "_QY60WNp-Ed-ak6NoX_4Aeg_-593876103~NotBoth", text: "Either SubBalanceType or ExtendedSubBalanceType must be present, but not both.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/ExtendedSubBalanceType"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/SubBalanceType"}]}} },
+    ],
+  },
+  "SubBalanceQuantity8Choice": {
+    name: "SubBalanceQuantity8Choice",
+    isoId: "_kcwoQSp8EeyR9JrVGfaMKw",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Quantity", isoId: "_k0vqYSp8EeyR9JrVGfaMKw", xmlTag: "Qty", displayName: displayName("Quantity"), kind: "choice", type: "FinancialInstrumentQuantity33Choice", required: true }),
+      f({ name: "Proprietary", isoId: "_k0vqaSp8EeyR9JrVGfaMKw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification56", required: true }),
+      f({ name: "QuantityAndAvailability", isoId: "_k0vqcSp8EeyR9JrVGfaMKw", xmlTag: "QtyAndAvlbty", displayName: displayName("QuantityAndAvailability"), kind: "component", type: "QuantityAndAvailability3", required: true }),
+    ],
+  },
+  "SubBalanceQuantity9Choice": {
+    name: "SubBalanceQuantity9Choice",
+    isoId: "_ciAo3Ti8Eeydid5dcNPKvg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Quantity", isoId: "_ciAo3zi8Eeydid5dcNPKvg", xmlTag: "Qty", displayName: displayName("Quantity"), kind: "choice", type: "FinancialInstrumentQuantity36Choice", required: true }),
+      f({ name: "Proprietary", isoId: "_ciAo5zi8Eeydid5dcNPKvg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification144", required: true }),
+      f({ name: "QuantityAndAvailability", isoId: "_ciAo7zi8Eeydid5dcNPKvg", xmlTag: "QtyAndAvlbty", displayName: displayName("QuantityAndAvailability"), kind: "component", type: "QuantityAndAvailability4", required: true }),
+    ],
+  },
+  "SubBalanceType11Choice": {
+    name: "SubBalanceType11Choice",
+    isoId: "_kRCJATnXEeWV5sr121Fc8A",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_kv090znXEeWV5sr121Fc8A", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "SecuritiesBalanceType12Code", required: true }),
+      f({ name: "Proprietary", isoId: "_kv092znXEeWV5sr121Fc8A", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "SubBalanceType12Choice": {
+    name: "SubBalanceType12Choice",
+    isoId: "_-SHFQTnXEeWV5sr121Fc8A",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_-w56EznXEeWV5sr121Fc8A", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "SecuritiesBalanceType7Code", required: true }),
+      f({ name: "Proprietary", isoId: "_-w56GznXEeWV5sr121Fc8A", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "SubBalanceType13Choice": {
+    name: "SubBalanceType13Choice",
+    isoId: "_5W5195NLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_5W51-ZNLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "SecuritiesBalanceType12Code", required: true }),
+      f({ name: "Proprietary", isoId: "_5W52AZNLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "SubBalanceType14Choice": {
+    name: "SubBalanceType14Choice",
+    isoId: "_5W6c6ZNLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_5W6c65NLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "SecuritiesBalanceType7Code", required: true }),
+      f({ name: "Proprietary", isoId: "_5W6c85NLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
   "SystemAndCurrency1": {
     name: "SystemAndCurrency1",
     isoId: "_HcKF0Im6Eeipw6hHPgB4Sw",
@@ -18872,6 +25914,27 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     fields: [
       f({ name: "SystemIdentification", isoId: "_dWTB4om6Eeipw6hHPgB4Sw", xmlTag: "SysId", displayName: displayName("SystemIdentification"), kind: "choice", type: "SystemIdentification2Choice", required: true }),
       f({ name: "SystemCurrency", isoId: "_dWTB44m6Eeipw6hHPgB4Sw", xmlTag: "SysCcy", displayName: displayName("SystemCurrency"), kind: "code", type: "ActiveCurrencyCode", required: false }),
+    ],
+  },
+  "SystemEventType4Choice": {
+    name: "SystemEventType4Choice",
+    isoId: "_d7AQEXhkEeidzqjNEfehPg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_eFPKI3hkEeidzqjNEfehPg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ExternalSystemEventType1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_eFPKJXhkEeidzqjNEfehPg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification1", required: true }),
+    ],
+  },
+  "SystemEvent3": {
+    name: "SystemEvent3",
+    isoId: "_dw2Oi3hkEeidzqjNEfehPg",
+    kind: "component",
+    fields: [
+      f({ name: "Type", isoId: "_d6_pA3hkEeidzqjNEfehPg", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "SystemEventType4Choice", required: true }),
+      f({ name: "ScheduledTime", isoId: "_d6_pBXhkEeidzqjNEfehPg", xmlTag: "SchdldTm", displayName: displayName("ScheduledTime"), kind: "datetime", type: "ISODateTime", required: true }),
+      f({ name: "EffectiveTime", isoId: "_d6_pB3hkEeidzqjNEfehPg", xmlTag: "FctvTm", displayName: displayName("EffectiveTime"), kind: "datetime", type: "ISODateTime", required: false }),
+      f({ name: "StartTime", isoId: "_d6_pCXhkEeidzqjNEfehPg", xmlTag: "StartTm", displayName: displayName("StartTime"), kind: "datetime", type: "ISODateTime", required: false }),
+      f({ name: "EndTime", isoId: "_d6_pC3hkEeidzqjNEfehPg", xmlTag: "EndTm", displayName: displayName("EndTime"), kind: "datetime", type: "ISODateTime", required: false }),
     ],
   },
   "SystemMemberStatus1Choice": {
@@ -18899,6 +25962,30 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     fields: [
       f({ name: "Identification", isoId: "_7VYvQVhLEeih3fUfzR38Ig", xmlTag: "Id", displayName: displayName("Identification"), kind: "component", type: "PartyIdentification136", required: true }),
       f({ name: "ResponsiblePartyIdentification", isoId: "_7VYvQ1hLEeih3fUfzR38Ig", xmlTag: "RspnsblPtyId", displayName: displayName("ResponsiblePartyIdentification"), kind: "component", type: "PartyIdentification136", required: false }),
+    ],
+  },
+  "TaxLiability1Code": {
+    name: "TaxLiability1Code",
+    isoId: "_YiBCYdp-Ed-ak6NoX_4Aeg_230817252",
+    kind: "code",
+    options: [{ value: "PRIN", name: "TaxPrincipal", isoId: "_YiBCYtp-Ed-ak6NoX_4Aeg_-1137204905" }, { value: "AGEN", name: "TaxAgent", isoId: "_YiBCY9p-Ed-ak6NoX_4Aeg_1016400725" }],
+  },
+  "TaxCapacityParty4Choice": {
+    name: "TaxCapacityParty4Choice",
+    isoId: "_PeuuwTqHEeWVrPy0StzzSg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_P9-PgTqHEeWVrPy0StzzSg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "TaxLiability1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_P9-PiTqHEeWVrPy0StzzSg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "TaxCapacityParty5Choice": {
+    name: "TaxCapacityParty5Choice",
+    isoId: "_5TKlZ5NLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_5TKlaZNLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "TaxLiability1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_5TKlcZNLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
     ],
   },
   "TaxWithholdingMethod3Code": {
@@ -18954,6 +26041,29 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "TotalCreditEntries", isoId: "_yVb7c4aGEee8r9VKRbnJSg", xmlTag: "TtlCdtNtries", displayName: displayName("TotalCreditEntries"), kind: "component", type: "NumberAndSumOfTransactions1", required: false }),
       f({ name: "TotalDebitEntries", isoId: "_yVb7dYaGEee8r9VKRbnJSg", xmlTag: "TtlDbtNtries", displayName: displayName("TotalDebitEntries"), kind: "component", type: "NumberAndSumOfTransactions1", required: false }),
       f({ name: "TotalEntriesPerBankTransactionCode", isoId: "_yVb7d4aGEee8r9VKRbnJSg", xmlTag: "TtlNtriesPerBkTxCd", displayName: displayName("TotalEntriesPerBankTransactionCode"), kind: "component", type: "TotalsPerBankTransactionCode5", required: false, repeat: { min: 0, max: null } }),
+    ],
+  },
+  "TotalValueInPageAndStatement": {
+    name: "TotalValueInPageAndStatement",
+    isoId: "_Q7Cp9tp-Ed-ak6NoX_4Aeg_-277574684",
+    kind: "component",
+    fields: [
+      f({ name: "TotalHoldingsValueOfPage", isoId: "_Q7Cp99p-Ed-ak6NoX_4Aeg_-1277686772", xmlTag: "TtlHldgsValOfPg", displayName: displayName("TotalHoldingsValueOfPage"), kind: "amount", type: "ActiveCurrencyAndAmount", required: false }),
+      f({ name: "TotalHoldingsValueOfStatement", isoId: "_Q7Ma8Np-Ed-ak6NoX_4Aeg_-1254598967", xmlTag: "TtlHldgsValOfStmt", displayName: displayName("TotalHoldingsValueOfStatement"), kind: "amount", type: "ActiveCurrencyAndAmount", required: true }),
+    ],
+  },
+  "TotalValueInPageAndStatement1": {
+    name: "TotalValueInPageAndStatement1",
+    isoId: "_ReNoe9p-Ed-ak6NoX_4Aeg_939590328",
+    kind: "component",
+    fields: [
+      f({ name: "TotalHoldingsValueOfPage", isoId: "_ReNofNp-Ed-ak6NoX_4Aeg_939590346", xmlTag: "TtlHldgsValOfPg", displayName: displayName("TotalHoldingsValueOfPage"), kind: "component", type: "AmountAndDirection6", required: false }),
+      f({ name: "TotalHoldingsValueOfStatement", isoId: "_ReNofdp-Ed-ak6NoX_4Aeg_939590371", xmlTag: "TtlHldgsValOfStmt", displayName: displayName("TotalHoldingsValueOfStatement"), kind: "component", type: "AmountAndDirection6", required: true }),
+      f({ name: "TotalBookValueOfStatement", isoId: "_ReWyYNp-Ed-ak6NoX_4Aeg_-210339509", xmlTag: "TtlBookValOfStmt", displayName: displayName("TotalBookValueOfStatement"), kind: "component", type: "AmountAndDirection6", required: false }),
+      f({ name: "TotalEligibleCollateralValue", isoId: "_ReWyYdp-Ed-ak6NoX_4Aeg_969143960", xmlTag: "TtlElgblCollVal", displayName: displayName("TotalEligibleCollateralValue"), kind: "component", type: "AmountAndDirection6", required: false }),
+    ],
+    rules: [
+      { name: "TotalEligibleCollateralValueRule", isoId: "_ReWyYtp-Ed-ak6NoX_4Aeg_-1149631213", text: "Total eligible collateral value is only to be used in (I)CSD-participant communication or if bilaterally agreed between the sender and receiver." },
     ],
   },
   "TrackerData8": {
@@ -19152,6 +26262,63 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       { name: "RejectReturnReasonRule", isoId: "_FpeTcXeKEfCdoODv2ypKfw", text: "TransactionStatus/RejectReturnReason must be absent or Transaction/RejectReturnReason must be absent.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Absence","path":"/TransactionStatus/RejectReturnReason[*]"},{"op":"Absence","path":"/Transaction[*]/RejectReturnReason[*]"}]}} },
     ],
   },
+  "TradeDateCode4Choice": {
+    name: "TradeDateCode4Choice",
+    isoId: "_5TGUe5NLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_5TGUfZNLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "DateType3Code", required: true }),
+      f({ name: "Proprietary", isoId: "_5TGUhZNLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "TradeDate9Choice": {
+    name: "TradeDate9Choice",
+    isoId: "_qImeCc3yEee5nJBZsW8MFQ",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Date", isoId: "_qImeC83yEee5nJBZsW8MFQ", xmlTag: "Dt", displayName: displayName("Date"), kind: "choice", type: "DateAndDateTime2Choice", required: true }),
+      f({ name: "DateCode", isoId: "_qImeGc3yEee5nJBZsW8MFQ", xmlTag: "DtCd", displayName: displayName("DateCode"), kind: "choice", type: "TradeDateCode4Choice", required: true }),
+    ],
+  },
+  "TradeTransactionCondition4Code": {
+    name: "TradeTransactionCondition4Code",
+    isoId: "_Yo3RSdp-Ed-ak6NoX_4Aeg_-230430726",
+    kind: "code",
+    options: [{ value: "CBNS", name: "CumBonus", isoId: "_YpBCQNp-Ed-ak6NoX_4Aeg_-166151120" }, { value: "XBNS", name: "ExBonus", isoId: "_YpBCQdp-Ed-ak6NoX_4Aeg_-1227503079" }, { value: "CCPN", name: "CumCoupon", isoId: "_YpBCQtp-Ed-ak6NoX_4Aeg_-1049384407" }, { value: "XCPN", name: "ExCoupon", isoId: "_YpBCQ9p-Ed-ak6NoX_4Aeg_-1341342145" }, { value: "CDIV", name: "CumDividend", isoId: "_YpBCRNp-Ed-ak6NoX_4Aeg_-1163223473" }, { value: "XDIV", name: "ExDividend", isoId: "_YpBCRdp-Ed-ak6NoX_4Aeg_2070391864" }, { value: "CRTS", name: "CumRights", isoId: "_YpBCRtp-Ed-ak6NoX_4Aeg_-2046456760" }, { value: "XRTS", name: "ExRights", isoId: "_YpBCR9p-Ed-ak6NoX_4Aeg_1956552798" }, { value: "CWAR", name: "CumWarrant", isoId: "_YpBCSNp-Ed-ak6NoX_4Aeg_2134671470" }, { value: "XWAR", name: "ExWarrant", isoId: "_YpBCSdp-Ed-ak6NoX_4Aeg_1073319511" }, { value: "SPCU", name: "SpecialCumDividend", isoId: "_YpKzQNp-Ed-ak6NoX_4Aeg_1251438183" }, { value: "SPEX", name: "SpecialExDividend", isoId: "_YpKzQdp-Ed-ak6NoX_4Aeg_959480445" }, { value: "GTDL", name: "GuaranteedDelivery", isoId: "_YpKzQtp-Ed-ak6NoX_4Aeg_-920825195" }, { value: "BCRO", name: "ResultOption", isoId: "_YpKzQ9p-Ed-ak6NoX_4Aeg_1444277001" }, { value: "BCRP", name: "ResultRepo", isoId: "_YpKzRNp-Ed-ak6NoX_4Aeg_382925042" }, { value: "BCFD", name: "DeliveryForm", isoId: "_YpKzRdp-Ed-ak6NoX_4Aeg_269085976" }, { value: "BCBL", name: "BoardLot", isoId: "_YpKzRtp-Ed-ak6NoX_4Aeg_447204648" }, { value: "BCBN", name: "BadName", isoId: "_YpKzR9p-Ed-ak6NoX_4Aeg_-614147311" }, { value: "MAPR", name: "MarketPrice", isoId: "_YpKzSNp-Ed-ak6NoX_4Aeg_-436028639" }, { value: "NEGO", name: "NegotiatedTrade", isoId: "_YpKzSdp-Ed-ak6NoX_4Aeg_-727986377" }, { value: "NMPR", name: "NonMarketPrice", isoId: "_YpT9MNp-Ed-ak6NoX_4Aeg_-549867705" }, { value: "BCPD", name: "DeliverCountryIncorporation", isoId: "_YpT9Mdp-Ed-ak6NoX_4Aeg_-427588864" }],
+  },
+  "TradeTransactionCondition5Choice": {
+    name: "TradeTransactionCondition5Choice",
+    isoId: "_2O8mYTqjEeWyoP0PbocV1Q",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_2wIA0TqjEeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "TradeTransactionCondition4Code", required: true }),
+      f({ name: "Proprietary", isoId: "_2wIA2TqjEeWyoP0PbocV1Q", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "TransactionActivity1Code": {
+    name: "TransactionActivity1Code",
+    isoId: "_YrP24Np-Ed-ak6NoX_4Aeg_166271008",
+    kind: "code",
+    options: [{ value: "BOLE", name: "BorrowingLendingActivity", isoId: "_YrP24dp-Ed-ak6NoX_4Aeg_166271038" }, { value: "CLAI", name: "MarketClaim", isoId: "_YrP24tp-Ed-ak6NoX_4Aeg_166271039" }, { value: "COLL", name: "CollateralActivity", isoId: "_YrP249p-Ed-ak6NoX_4Aeg_166271040" }, { value: "CORP", name: "CorporateActionActivity", isoId: "_YrP25Np-Ed-ak6NoX_4Aeg_166271069" }, { value: "SETT", name: "SettlementandClearingActivity", isoId: "_YrP25dp-Ed-ak6NoX_4Aeg_166271070" }],
+  },
+  "TransactionActivity3Choice": {
+    name: "TransactionActivity3Choice",
+    isoId: "_iF2-wTqDEeWVrPy0StzzSg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_ilsVYTqDEeWVrPy0StzzSg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "TransactionActivity1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_ilsVaTqDEeWVrPy0StzzSg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "TransactionActivity4Choice": {
+    name: "TransactionActivity4Choice",
+    isoId: "_8VKXSZNLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_8VKXS5NLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "TransactionActivity1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_8VKXU5NLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
   "TransactionChannel2Code": {
     name: "TransactionChannel2Code",
     isoId: "_y2ltsBRFEeOKWo1NF21OVw",
@@ -19165,6 +26332,20 @@ export const sharedTypeDescriptors: TypeDescriptors = {
     choiceOptions: [
       f({ name: "Code", isoId: "_aT1UIBRGEeOKWo1NF21OVw", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "TransactionChannel2Code", required: true }),
       f({ name: "Proprietary", isoId: "_hrW7UBRGEeOKWo1NF21OVw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "TransactionIdentifications34": {
+    name: "TransactionIdentifications34",
+    isoId: "_5SFAI5NLEeWGlc8L7oPDIg",
+    kind: "component",
+    fields: [
+      f({ name: "AccountOwnerTransactionIdentification", isoId: "_5SFAJ5NLEeWGlc8L7oPDIg", xmlTag: "AcctOwnrTxId", displayName: displayName("AccountOwnerTransactionIdentification"), kind: "text", type: "RestrictedFINXMax16Text", required: true }),
+      f({ name: "AccountServicerTransactionIdentification", isoId: "_5SFAL5NLEeWGlc8L7oPDIg", xmlTag: "AcctSvcrTxId", displayName: displayName("AccountServicerTransactionIdentification"), kind: "text", type: "RestrictedFINXMax16Text", required: false }),
+      f({ name: "MarketInfrastructureTransactionIdentification", isoId: "_5SFAN5NLEeWGlc8L7oPDIg", xmlTag: "MktInfrstrctrTxId", displayName: displayName("MarketInfrastructureTransactionIdentification"), kind: "text", type: "RestrictedFINXMax16Text", required: false }),
+      f({ name: "ProcessorTransactionIdentification", isoId: "_5SFAP5NLEeWGlc8L7oPDIg", xmlTag: "PrcrTxId", displayName: displayName("ProcessorTransactionIdentification"), kind: "text", type: "RestrictedFINXMax16Text", required: false }),
+    ],
+    rules: [
+      { name: "NoAccountOwnerTransactionIdentificationRule", isoId: "_5SFAJZNLEeWGlc8L7oPDIg", text: "If no reference is available for the AccountOwnerTransactionIdentification, for example, the transaction was sent by fax, then the AccountOwnerTransactionIdentification must be NONREF." },
     ],
   },
   "TransactionReferences7": {
@@ -19202,6 +26383,36 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "UETR", isoId: "_26h0STEyEe6g-ffJsqGiSA", xmlTag: "UETR", displayName: displayName("UETR"), kind: "text", type: "UUIDv4Identifier", required: false }),
       f({ name: "MandateIdentification", isoId: "_26h0SzEyEe6g-ffJsqGiSA", xmlTag: "MndtId", displayName: displayName("MandateIdentification"), kind: "text", type: "Max35Text", required: false }),
       f({ name: "CreditorSchemeIdentification", isoId: "_26h0TTEyEe6g-ffJsqGiSA", xmlTag: "CdtrSchmeId", displayName: displayName("CreditorSchemeIdentification"), kind: "component", type: "PartyIdentification272", required: false }),
+    ],
+  },
+  "TypeOfPrice14Code": {
+    name: "TypeOfPrice14Code",
+    isoId: "_Yx9i4Np-Ed-ak6NoX_4Aeg_-1404906082",
+    kind: "code",
+    options: [{ value: "AVER", name: "Average", isoId: "_Yx9i4dp-Ed-ak6NoX_4Aeg_-1357807596" }],
+  },
+  "TypeOfPrice17Code": {
+    name: "TypeOfPrice17Code",
+    isoId: "_k-8xkddnEeispNOuywCdbA",
+    kind: "code",
+    options: [{ value: "BIDE", name: "Bid", isoId: "_lQ9HkddnEeispNOuywCdbA" }, { value: "OFFR", name: "Offer", isoId: "_lQ9Hk9dnEeispNOuywCdbA" }, { value: "NAVL", name: "NetAssetValue", isoId: "_lQ9HlddnEeispNOuywCdbA" }, { value: "CREA", name: "Creation", isoId: "_lQ9Hl9dnEeispNOuywCdbA" }, { value: "CANC", name: "Cancellation", isoId: "_lQ9HmddnEeispNOuywCdbA" }, { value: "INTE", name: "Interim", isoId: "_lQ9Hm9dnEeispNOuywCdbA" }, { value: "SWNG", name: "Swing", isoId: "_lQ9HnddnEeispNOuywCdbA" }, { value: "MIDD", name: "Mid", isoId: "_lQ9Hn9dnEeispNOuywCdbA" }, { value: "RINV", name: "Reinvestment", isoId: "_lQ9HoddnEeispNOuywCdbA" }, { value: "SWIC", name: "Switch", isoId: "_lQ9Ho9dnEeispNOuywCdbA" }, { value: "MRKT", name: "Market", isoId: "_lQ9HpddnEeispNOuywCdbA" }, { value: "INDC", name: "Indicative", isoId: "_lQ9Hp9dnEeispNOuywCdbA" }, { value: "DDVR", name: "DailyDividendRate", isoId: "_tBj9IddnEeispNOuywCdbA" }, { value: "ACTU", name: "Actual", isoId: "_t-s60ddnEeispNOuywCdbA" }],
+  },
+  "TypeOfPrice29Choice": {
+    name: "TypeOfPrice29Choice",
+    isoId: "_Qih-PznXEeWV5sr121Fc8A",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_RBB38znXEeWV5sr121Fc8A", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "TypeOfPrice14Code", required: true }),
+      f({ name: "Proprietary", isoId: "_RBB3-znXEeWV5sr121Fc8A", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
+    ],
+  },
+  "TypeOfPrice32Choice": {
+    name: "TypeOfPrice32Choice",
+    isoId: "_5TJ-M5NLEeWGlc8L7oPDIg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_5TJ-NZNLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "TypeOfPrice14Code", required: true }),
+      f({ name: "Proprietary", isoId: "_5TJ-PZNLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
     ],
   },
   "UnderlyingGroupInformation1": {
@@ -19352,6 +26563,36 @@ export const sharedTypeDescriptors: TypeDescriptors = {
       f({ name: "Initiation", isoId: "_7mJdkTEsEe6GxLzpkVnWYg", xmlTag: "Initn", displayName: displayName("Initiation"), kind: "component", type: "UnderlyingPaymentInstruction9", required: true }),
       f({ name: "Interbank", isoId: "_7mJdkzEsEe6GxLzpkVnWYg", xmlTag: "IntrBk", displayName: displayName("Interbank"), kind: "component", type: "UnderlyingPaymentTransaction8", required: true }),
       f({ name: "StatementEntry", isoId: "_7mJdlTEsEe6GxLzpkVnWYg", xmlTag: "StmtNtry", displayName: displayName("StatementEntry"), kind: "component", type: "UnderlyingStatementEntry3", required: true }),
+    ],
+  },
+  "UnmatchedReason12Code": {
+    name: "UnmatchedReason12Code",
+    isoId: "_X58joGXhEeWsrOWU209RUg",
+    kind: "code",
+    options: [{ value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_pXFv8WXhEeWsrOWU209RUg" }, { value: "ACRU", name: "AccruedInterestAmount1", isoId: "_peYqwWXhEeWsrOWU209RUg" }, { value: "IIND", name: "CommonReference", isoId: "_q3Wo0WXhEeWsrOWU209RUg" }, { value: "CPCA", name: "CounterpartyCancelled", isoId: "_rmzv0WXhEeWsrOWU209RUg" }, { value: "CLAT", name: "CounterpartyTooLateForMatching", isoId: "_0OUYMWXhEeWsrOWU209RUg" }, { value: "NCRR", name: "CurrencySettlementAmount", isoId: "_0ZBzYWXhEeWsrOWU209RUg" }, { value: "DDEA", name: "DealPrice", isoId: "_0rBiUWXhEeWsrOWU209RUg" }, { value: "DSEC", name: "FinancialInstrument", isoId: "_3NffEWXhEeWsrOWU209RUg" }, { value: "DQUA", name: "FinancialInstrumentQuantity", isoId: "_4MRbgWXhEeWsrOWU209RUg" }, { value: "LEOG", name: "LetterOfGuarantee", isoId: "_5E9XAWXhEeWsrOWU209RUg" }, { value: "LATE", name: "MarketDeadlineMissed", isoId: "_5Y4_oWXhEeWsrOWU209RUg" }, { value: "MIME", name: "MissingMarketSide", isoId: "_-EhoUmXhEeWsrOWU209RUg" }, { value: "CMIS", name: "NoMatch", isoId: "_-a_AgWXhEeWsrOWU209RUg" }, { value: "NMAS", name: "NoMatchingStarted", isoId: "_-oq3MWXhEeWsrOWU209RUg" }, { value: "DTRA", name: "NotRecognised", isoId: "_-6rNMWXhEeWsrOWU209RUg" }, { value: "OTHR", name: "Other", isoId: "__SB9QWXhEeWsrOWU209RUg" }, { value: "FRAP", name: "PaymentCode", isoId: "__rnh8WXhEeWsrOWU209RUg" }, { value: "PHYS", name: "PhysicalSettlement", isoId: "__8ugEWXhEeWsrOWU209RUg" }, { value: "INPS", name: "PlaceOfSafekeeping", isoId: "_EPOQAWXiEeWsrOWU209RUg" }, { value: "PLCE", name: "PlaceOfTrade", isoId: "_Eg7EAWXiEeWsrOWU209RUg" }, { value: "PODU", name: "PossibleDuplicate", isoId: "_FN2bcWXiEeWsrOWU209RUg" }, { value: "DEPT", name: "ReceivingDeliveringDepository", isoId: "_Fb10IWXiEeWsrOWU209RUg" }, { value: "ICAG", name: "ReceivingDeliveringParty1", isoId: "_FpE-4WXiEeWsrOWU209RUg" }, { value: "ICUS", name: "ReceivingDeliveringParty2", isoId: "_FvLm4WXiEeWsrOWU209RUg" }, { value: "IEXE", name: "ReceivingDeliveringParty3", isoId: "_F7rKwWXiEeWsrOWU209RUg" }, { value: "REGD", name: "RegistrationDetails", isoId: "_GXMpIWXiEeWsrOWU209RUg" }, { value: "RTGS", name: "RTGSSystem", isoId: "_JE928WXiEeWsrOWU209RUg" }, { value: "SAFE", name: "SafekeepingAccount", isoId: "_JVCTQWXiEeWsrOWU209RUg" }, { value: "DMON", name: "SettlementAmount", isoId: "_JptiwWXiEeWsrOWU209RUg" }, { value: "SETS", name: "SettlementSystemMethod", isoId: "_ShusUWXiEeWsrOWU209RUg" }, { value: "SETR", name: "SettlementTransaction", isoId: "_SrQbwWXiEeWsrOWU209RUg" }, { value: "TXST", name: "TaxStatus", isoId: "_WNPUwmXiEeWsrOWU209RUg" }, { value: "DTRD", name: "TradeDate", isoId: "_WUPUoWXiEeWsrOWU209RUg" }, { value: "DELN", name: "TransactionDirection", isoId: "_WsyXgWXiEeWsrOWU209RUg" }, { value: "UNBR", name: "UnmatchedMarketSide", isoId: "_XGX8MWXiEeWsrOWU209RUg" }, { value: "DDAT", name: "SettlementDate", isoId: "_j9_H0WXiEeWsrOWU209RUg" }, { value: "DMCT", name: "AutomaticGeneration", isoId: "_lIOGUWXiEeWsrOWU209RUg" }, { value: "DCMX", name: "CumEx", isoId: "_lOxaQWXiEeWsrOWU209RUg" }],
+  },
+  "UnmatchedReason14Code": {
+    name: "UnmatchedReason14Code",
+    isoId: "_xtpD0GXkEeWsrOWU209RUg",
+    kind: "code",
+    options: [{ value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_OnzGAWXlEeWsrOWU209RUg" }, { value: "ACRU", name: "AccruedInterestAmount1", isoId: "_OuMB4WXlEeWsrOWU209RUg" }, { value: "CHAR", name: "ChargesAmount", isoId: "_PrCrsWXlEeWsrOWU209RUg" }, { value: "TERM", name: "ClosingDateTime", isoId: "_RYr5QWXlEeWsrOWU209RUg" }, { value: "IIND", name: "CommonReference", isoId: "_RuQgoWXlEeWsrOWU209RUg" }, { value: "CPCA", name: "CounterpartyCancelled", isoId: "_VkekQWXlEeWsrOWU209RUg" }, { value: "CLAT", name: "CounterpartyTooLateForMatching", isoId: "_V1liYWXlEeWsrOWU209RUg" }, { value: "NCRR", name: "CurrencySettlementAmount", isoId: "_WKRY8WXlEeWsrOWU209RUg" }, { value: "DDEA", name: "DealPrice", isoId: "_WnuxAWXlEeWsrOWU209RUg" }, { value: "EXEC", name: "ExecutionBrokerCommission", isoId: "_Z7bWYmXlEeWsrOWU209RUg" }, { value: "DSEC", name: "FinancialInstrument", isoId: "_aGSikWXlEeWsrOWU209RUg" }, { value: "DQUA", name: "FinancialInstrumentQuantity", isoId: "_aQ2z0WXlEeWsrOWU209RUg" }, { value: "FORF", name: "ForfeitRepurchaseAmount", isoId: "_amRqMWXlEeWsrOWU209RUg" }, { value: "LEOG", name: "LetterOfGuarantee", isoId: "_bHT6sWXlEeWsrOWU209RUg" }, { value: "INVE", name: "InvestorParty", isoId: "_beXv0WXlEeWsrOWU209RUg" }, { value: "LATE", name: "MarketDeadlineMissed", isoId: "_d6RxkWXlEeWsrOWU209RUg" }, { value: "MCAN", name: "MatchingRecordCancelled", isoId: "_eQTE4WXlEeWsrOWU209RUg" }, { value: "MIME", name: "MissingMarketSide", isoId: "_enNwEWXlEeWsrOWU209RUg" }, { value: "CMIS", name: "NoMatch", isoId: "_e8L6gWXlEeWsrOWU209RUg" }, { value: "NMAS", name: "NoMatchingStarted", isoId: "_fXHjAWXlEeWsrOWU209RUg" }, { value: "DTRA", name: "NotRecognised", isoId: "_fx5agWXlEeWsrOWU209RUg" }, { value: "OTHR", name: "Other", isoId: "_gVJ4kWXlEeWsrOWU209RUg" }, { value: "FRAP", name: "PaymentCode", isoId: "_ipyNomXlEeWsrOWU209RUg" }, { value: "PHYS", name: "PhysicalSettlement", isoId: "_jBuzkWXlEeWsrOWU209RUg" }, { value: "PLIS", name: "PlaceOfListing", isoId: "_jQwuEWXlEeWsrOWU209RUg" }, { value: "INPS", name: "PlaceOfSafekeeping", isoId: "_jsbWYWXlEeWsrOWU209RUg" }, { value: "PLCE", name: "PlaceOfTrade", isoId: "_j7wL0WXlEeWsrOWU209RUg" }, { value: "PODU", name: "PossibleDuplicate", isoId: "_kX4HIWXlEeWsrOWU209RUg" }, { value: "DEPT", name: "ReceivingDeliveringDepository", isoId: "_n7pI0WXlEeWsrOWU209RUg" }, { value: "ICAG", name: "ReceivingDeliveringParty1", isoId: "_oCySoWXlEeWsrOWU209RUg" }, { value: "ICUS", name: "ReceivingDeliveringParty2", isoId: "_oLaqMWXlEeWsrOWU209RUg" }, { value: "IEXE", name: "ReceivingDeliveringParty3", isoId: "_oTJp4WXlEeWsrOWU209RUg" }, { value: "REGD", name: "RegistrationDetails", isoId: "_ooIbYWXlEeWsrOWU209RUg" }, { value: "REPA", name: "RepurchaseAmount", isoId: "_o4M3sWXlEeWsrOWU209RUg" }, { value: "CADE", name: "RepurchaseCallDelay", isoId: "_pMSRUWXlEeWsrOWU209RUg" }, { value: "REPP", name: "RepurchasePremiumAmount", isoId: "_paaz8WXlEeWsrOWU209RUg" }, { value: "REPO", name: "RepurchaseRate", isoId: "_pnp-sWXlEeWsrOWU209RUg" }, { value: "RERT", name: "RepurchaseRateType", isoId: "_p21DIWXlEeWsrOWU209RUg" }, { value: "RSPR", name: "RepurchaseSpreadRate", isoId: "_widYMWXmEeWsrOWU209RUg" }, { value: "RTGS", name: "RTGSSystem", isoId: "_w0m4IWXmEeWsrOWU209RUg" }, { value: "SAFE", name: "SafekeepingAccount", isoId: "_xBHDEWXmEeWsrOWU209RUg" }, { value: "DMON", name: "SettlementAmount", isoId: "_xZWj8WXmEeWsrOWU209RUg" }, { value: "DDAT", name: "SettlementDate", isoId: "_x2qyEWXmEeWsrOWU209RUg" }, { value: "SETS", name: "SettlementSystemMethod", isoId: "_yZUzMWXmEeWsrOWU209RUg" }, { value: "SETR", name: "SettlementTransaction", isoId: "_yzg00WXmEeWsrOWU209RUg" }, { value: "TXST", name: "TaxStatus", isoId: "_1YD1MWXmEeWsrOWU209RUg" }, { value: "DTRD", name: "TradeDate", isoId: "_1yPPwWXmEeWsrOWU209RUg" }, { value: "DEAL", name: "TransactionDealAmount", isoId: "_2kOtYWXmEeWsrOWU209RUg" }, { value: "DELN", name: "TransactionDirection", isoId: "_21yXcWXmEeWsrOWU209RUg" }, { value: "UNBR", name: "UnmatchedMarketSide", isoId: "_3LNN0WXmEeWsrOWU209RUg" }, { value: "VASU", name: "VariableRateSupport", isoId: "_3WEaAWXmEeWsrOWU209RUg" }, { value: "DCMX", name: "CumEx", isoId: "_6wLJYWXmEeWsrOWU209RUg" }, { value: "DMCT", name: "AutomaticGeneration", isoId: "_7T4TYWXmEeWsrOWU209RUg" }],
+  },
+  "UpdateType16Choice": {
+    name: "UpdateType16Choice",
+    isoId: "_cfq115KQEeWHWpTQn1FFVg",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Code", isoId: "_cfq12ZKQEeWHWpTQn1FFVg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "StatementUpdateType1Code", required: true }),
+      f({ name: "Proprietary", isoId: "_cfq125KQEeWHWpTQn1FFVg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
+    ],
+  },
+  "YieldedOrValueType2Choice": {
+    name: "YieldedOrValueType2Choice",
+    isoId: "_UyctRQycEeuG8M5giQ2e0w",
+    kind: "choice",
+    choiceOptions: [
+      f({ name: "Yielded", isoId: "_VBLs0QycEeuG8M5giQ2e0w", xmlTag: "Yldd", displayName: displayName("Yielded"), kind: "boolean", type: "YesNoIndicator", required: true }),
+      f({ name: "ValueType", isoId: "_VBLs0wycEeuG8M5giQ2e0w", xmlTag: "ValTp", displayName: displayName("ValueType"), kind: "code", type: "PriceValueType12Code", required: true }),
     ],
   },
 };

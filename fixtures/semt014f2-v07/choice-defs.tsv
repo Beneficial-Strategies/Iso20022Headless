@@ -1,0 +1,31 @@
+choice	memberId	memberName	text
+IntraPositionProcessingStatus10Choice	_cdk0ozi8Eeydid5dcNPKvg	Rejected	Instruction/Request has been rejected for further processing.
+IntraPositionProcessingStatus10Choice	_cdk0qzi8Eeydid5dcNPKvg	Repair	Instruction/Request is accepted but in repair.
+IntraPositionProcessingStatus10Choice	_cdk0szi8Eeydid5dcNPKvg	Cancelled	Instruction has been cancelled.
+IntraPositionProcessingStatus10Choice	_cdk0uzi8Eeydid5dcNPKvg	AcknowledgedAccepted	Instruction has been acknowledged by the account servicer.
+IntraPositionProcessingStatus10Choice	_cdk0wzi8Eeydid5dcNPKvg	Proprietary	Specifies a choice of status for the processing of an intra-position movement.
+RejectionOrRepairStatus45Choice	_cdk0zzi8Eeydid5dcNPKvg	NoSpecifiedReason	Indicates that there is no reason available or to report.
+RejectionOrRepairStatus45Choice	_cdk01zi8Eeydid5dcNPKvg	Reason	Specifies the reason of the rejection or repair status.
+RejectionAndRepairReason40Choice	_cdk0-Ti8Eeydid5dcNPKvg	Code	Specifies the reason why the instruction/request has a repair or rejection status.
+RejectionAndRepairReason40Choice	_cdk1ATi8Eeydid5dcNPKvg	Proprietary	Specifies the reason why the instruction/request has a repair or rejection status.
+CancellationStatus25Choice	_65Na6ffUEeiNZp_PtLohLw	NoSpecifiedReason	Indicates that there is no reason available or to report.
+CancellationStatus25Choice	_65Na8ffUEeiNZp_PtLohLw	Reason	Specifies the reason of the cancellation status.
+CancellationReason37Choice	_65NbE_fUEeiNZp_PtLohLw	Code	Specifies the reason why the related instruction is cancelled, or the related cancellation request is executed.
+CancellationReason37Choice	_65NbG_fUEeiNZp_PtLohLw	Proprietary	Specifies the reason why the related instruction is cancelled, or the related cancellation request is executed.
+AcknowledgedAcceptedStatus25Choice	_5SFng5NLEeWGlc8L7oPDIg	NoSpecifiedReason	Indicates that there is no reason available or to report.
+AcknowledgedAcceptedStatus25Choice	_5SFni5NLEeWGlc8L7oPDIg	Reason	Specifies the reason of the acknowledged accepted status.
+AcknowledgementReason16Choice	_5SFnrZNLEeWGlc8L7oPDIg	Code	Specifies additional information about the processed instruction.
+AcknowledgementReason16Choice	_5SFntZNLEeWGlc8L7oPDIg	Proprietary	Specifies additional information about the processed instruction.
+SettlementStatus20Choice	_5SGOR5NLEeWGlc8L7oPDIg	Pending	Instruction is pending. Settlement at the instructed settlement date is still possible.
+SettlementStatus20Choice	_5SGOT5NLEeWGlc8L7oPDIg	Failing	Instruction is failing. Settlement at the instructed settlement date is no longer possible.
+SettlementStatus20Choice	_5SGOV5NLEeWGlc8L7oPDIg	Proprietary	Proprietary status.
+PendingStatus45Choice	_5SGOY5NLEeWGlc8L7oPDIg	NoSpecifiedReason	Indicates that there is no reason available or to report.
+PendingStatus45Choice	_5SGOa5NLEeWGlc8L7oPDIg	Reason	Specifies the reason of the pending status.
+PendingReason36Choice	_5SGOjZNLEeWGlc8L7oPDIg	Code	Specifies the reason why the instruction has a pending status.
+PendingReason36Choice	_5SGOlZNLEeWGlc8L7oPDIg	Proprietary	Specifies the reason why the instruction has a pending status.
+FailingStatus11Choice	_5SGOsZNLEeWGlc8L7oPDIg	NoSpecifiedReason	Indicates that there is no reason available or to report.
+FailingStatus11Choice	_5SGOuZNLEeWGlc8L7oPDIg	Reason	Specifies the reason of the failing status.
+FailingReason10Choice	_5SGO25NLEeWGlc8L7oPDIg	Code	Specifies the reason why the instruction has a failing settlement status.
+FailingReason10Choice	_5SGO45NLEeWGlc8L7oPDIg	Proprietary	Specifies the reason why the instruction has a failing settlement status.
+SecuritiesBalanceType11Choice	_5SHcaZNLEeWGlc8L7oPDIg	Code	Sub-balance expressed as an ISO 20022 code.
+SecuritiesBalanceType11Choice	_5SHccZNLEeWGlc8L7oPDIg	Proprietary	Sub-balance expressed as a proprietary code.

@@ -1,0 +1,28 @@
+codeSet	code	enumName	isoId	text
+SettlementTransactionCondition16Code	ADEA	AcceptAfterRegularSettlementDeadline	_GUNywfIOEfCMaqDZ_tShqQ	Settlement is on a bilaterally accepted transaction that is to be accepted beyond the regular settlement deadline.
+SettlementTransactionCondition16Code	ASGN	Assignement	_GcEuQfIOEfCMaqDZ_tShqQ	Transfer of ownership of the asset to another party during the closing of an option.
+SettlementTransactionCondition16Code	BUTC	BuytoCover	_GfcLUfIOEfCMaqDZ_tShqQ	Transaction is a buy to cover.
+SettlementTransactionCondition16Code	CLEN	Clean	_GjSJgfIOEfCMaqDZ_tShqQ	Tax-exempt financial instruments are to be settled.
+SettlementTransactionCondition16Code	DLWM	DeliveryWithoutMatching	_GnNAMfIOEfCMaqDZ_tShqQ	Matching receipt instruction not required (only for concerned international or national central securities depositories).
+SettlementTransactionCondition16Code	DIRT	Dirty	_GrtFsfIOEfCMaqDZ_tShqQ	Taxable financial instruments are to be settled.
+SettlementTransactionCondition16Code	DRAW	Drawn	_Gv30APIOEfCMaqDZ_tShqQ	Settlement transactions relates to drawn securities.
+SettlementTransactionCondition16Code	EXER	Exercised	_G06FAfIOEfCMaqDZ_tShqQ	Settlement transaction relates to options, futures or derivatives that are exercised.
+SettlementTransactionCondition16Code	EXPI	Expired	_G5fDAfIOEfCMaqDZ_tShqQ	Settlement transaction relates to options, futures or derivatives that have expired.
+SettlementTransactionCondition16Code	FRCL	FreeCleanSettlement	_HEFJcfIOEfCMaqDZ_tShqQ	Delivery will be made free of payment but a clean payment order will be sent.
+SettlementTransactionCondition16Code	GATE	GatingEventParticipation	_HLpKAfIOEfCMaqDZ_tShqQ	Gating event participation. Hold until event start time.
+SettlementTransactionCondition16Code	INTS	InternalisedSettlement	_HaXigfIOEfCMaqDZ_tShqQ	The instruction was settled by the settlement internaliser/account servicer (eg custodian) in its own books and not through a securities settlement system (e.g. CSD system).
+SettlementTransactionCondition16Code	KNOC	KnockedOut	_HhxLAfIOEfCMaqDZ_tShqQ	Settlement transaction relates to options, futures or derivatives that are expired worthless.
+SettlementTransactionCondition16Code	NOMC	NoAutomaticMarketClaim	_HmKi0fIOEfCMaqDZ_tShqQ	No market claim should be automatically generated.
+SettlementTransactionCondition16Code	NACT	NotAccountingRelated	_HwEswfIOEfCMaqDZ_tShqQ	Security transaction is not for accounting.
+SettlementTransactionCondition16Code	BPSS	PartialSuccessfulBuyIn	_J5TDEfIOEfCMaqDZ_tShqQ	Identification of settlement instructions created as a result of a partial successful buy-in.
+SettlementTransactionCondition16Code	PENS	PendingSale	_J_GJEfIOEfCMaqDZ_tShqQ	Position to cover the pending sale will be available by contractual settlement date (accounting information).
+SettlementTransactionCondition16Code	PHYS	Physical	_KDGfUfIOEfCMaqDZ_tShqQ	Securities are to be physically settled.
+SettlementTransactionCondition16Code	RHYP	Rehypothecation	_KHcz0fIOEfCMaqDZ_tShqQ	Collateral position is available for other purposes (for example, onwards delivery).
+SettlementTransactionCondition16Code	RPTO	Reporting	_KLdxIfIOEfCMaqDZ_tShqQ	Relates to a transaction that is for reporting purposes only.
+SettlementTransactionCondition16Code	RESI	Residual	_KPjm8fIOEfCMaqDZ_tShqQ	Relates to transaction on a security that is not eligible at the Central Security Depository (CSD) but for which the payment will be enacted by the central securities depository.
+SettlementTransactionCondition16Code	SHOR	ShortSell	_KUWnYfIOEfCMaqDZ_tShqQ	Account is used for short sale orders.
+SettlementTransactionCondition16Code	SPDL	SpecialDelivery	_KjIDMfIOEfCMaqDZ_tShqQ	Settlement transactions to be settled with special delivery.
+SettlementTransactionCondition16Code	SPST	SplitSettlement	_Kor4ofIOEfCMaqDZ_tShqQ	Money and financial instruments settle in different locations.
+SettlementTransactionCondition16Code	TRAN	Transformation	_KuC5wfIOEfCMaqDZ_tShqQ	Transaction resulting from a transformation.
+SettlementTransactionCondition16Code	TRIP	TripartySegregation	_K02FUfIOEfCMaqDZ_tShqQ	Securities are not be delivered but segregated following triparty collateral transaction.
+SettlementTransactionCondition16Code	UNEX	Unexposed	_K5XY8fIOEfCMaqDZ_tShqQ	Delivery cannot be performed until money is received.
