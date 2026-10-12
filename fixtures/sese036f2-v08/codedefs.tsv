@@ -1,0 +1,5 @@
+codeSet	code	enumName	isoId	text
+RepurchaseType8Code	PADJ	PrincipalExposureAdjustment	_CCDcYY-REeaVK-2bgpxeYw	Relates to a principal adjustment.
+RepurchaseType8Code	ROLP	RepoContractRollover	_CG9KgY-REeaVK-2bgpxeYw	Relates to a repo rollover of a contract extending the closing or maturity date without the underlying collateral impacted.
+RepurchaseType8Code	RATE	RepoRate	_CTApgY-REeaVK-2bgpxeYw	Is part of a pair-off.
+RepurchaseType8Code	CALL	RepurchaseCall	_ENc88Y-REeaVK-2bgpxeYw	Relates to the early closing/maturity date for a term repo or a termination date of an open repo with the underlying collateral.

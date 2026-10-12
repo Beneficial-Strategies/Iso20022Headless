@@ -1,0 +1,9 @@
+codeSet	code	enumName	isoId	text
+PendingProcessingReason8Code	BLOC	AccountBlocked	_2mtDYSm4EfGfZ9PfK70MMg	Your account is blocked, no instruction can settle over the account.
+PendingProcessingReason8Code	ADEA	AccountServicerDeadlineMissed	_2mtDYym4EfGfZ9PfK70MMg	Instruction was received after the account servicer's deadline. It will be managed as per the bilateral service agreement between the account servicer and account owner.
+PendingProcessingReason8Code	MINO	MinimumSettlementAmount	_2mtDZSm4EfGfZ9PfK70MMg	Quantity instructed is lower than the minimum existing settlement quantity for the financial instrument.
+PendingProcessingReason8Code	MUNO	MultipleSettlementAmount	_2mtDZym4EfGfZ9PfK70MMg	Quantity instructed is not a multiple of an existing settlement quantity lot for the financial instrument.
+PendingProcessingReason8Code	NEXT	NextProcess	_2mtDaSm4EfGfZ9PfK70MMg	Next process is launched. No processing pending problems to be reported.
+PendingProcessingReason8Code	OTHR	Other	_2mtDaym4EfGfZ9PfK70MMg	Other. See Narrative.
+PendingProcessingReason8Code	DENO	UnavailableDeliverableDenominatedQuantity	_2mtDbSm4EfGfZ9PfK70MMg	Quantity instructed does not match the denomination available/deliverable. Physical securities need to be obtained in deliverable denominated quantities.
+PendingProcessingReason8Code	CERT	WrongCertificatesNumbers	_2mtDbym4EfGfZ9PfK70MMg	Certificate number error.

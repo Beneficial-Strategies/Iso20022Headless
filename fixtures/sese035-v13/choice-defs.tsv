@@ -1,0 +1,17 @@
+choice	memberId	memberName	text
+SettlementDate18Choice	_dZeugbPvEeelzbgsFa3sqQ	Date	Date in ISO format.
+SettlementDate18Choice	_dZeuj7PvEeelzbgsFa3sqQ	DateCode	Date and time at which the securities are to be delivered or received.
+Reporting6Choice	_pdpd4TtCEeWRTLSN0i0tng	Code	Third party reporting information expressed as an ISO 20022 code.
+Reporting6Choice	_pdpd6TtCEeWRTLSN0i0tng	Proprietary	Third party reporting information expressed as a proprietary code.
+TradeOriginator3Choice	_69UZwTtCEeWRTLSN0i0tng	Code	Trading party capacity expressed as an ISO 20022 code.
+TradeOriginator3Choice	_69UZyTtCEeWRTLSN0i0tng	Proprietary	Trading party capacity expressed as a proprietary code.
+RevaluationIndicator3Choice	_CQyt4Tw0EeW3QqUkIQtIUA	Indicator	Specifies whether the collateral position should be subject to automatic revaluation by the account servicer.
+RevaluationIndicator3Choice	_CQyt6Tw0EeW3QqUkIQtIUA	Proprietary	Revaluation information provided as a proprietary code.
+RateOrName1Choice	_Q-xTadp-Ed-ak6NoX_4Aeg_-1848289996	Rate	Pricing expressed as a rate.
+RateOrName1Choice	_Q-xTatp-Ed-ak6NoX_4Aeg_-1877843628	RateName	Pricing expressed as a rate name.
+SettlementStandingInstructionDatabase4Choice	_O6Zr4TtGEeWRTLSN0i0tng	Code	Settlement standing instruction database expressed as an ISO 20022 code.
+SettlementStandingInstructionDatabase4Choice	_O6Zr6TtGEeWRTLSN0i0tng	Proprietary	Settlement standing instruction database expressed as a proprietary code.
+Counterparty15Choice	_t9laAyqDEeyR9JrVGfaMKw	Seller	Party that sells goods or services, or a financial instrument.
+Counterparty15Choice	_t9laCyqDEeyR9JrVGfaMKw	Buyer	Party that buys goods or services, or a financial instrument.
+SettlementTransactionCondition45Choice	_ri3chfHTEfChCaiL9q1LKg	Code	Settlement conditions expressed as an ISO 20022 code.
+SettlementTransactionCondition45Choice	_ri3ckfHTEfChCaiL9q1LKg	Proprietary	Settlement conditions expressed as a proprietary code.

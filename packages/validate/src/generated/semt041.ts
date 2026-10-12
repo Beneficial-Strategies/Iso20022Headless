@@ -53,6 +53,7 @@ import {
   Max140TextSchema,
   SecurityIdentification19Schema,
   FormOfSecurity1CodeSchema,
+  PhysicalTransferType1CodeSchema,
   DecimalNumberSchema,
   ImpliedCurrencyAndAmountSchema,
   FinancialInstrumentQuantity1ChoiceSchema,
@@ -121,8 +122,6 @@ export const BeneficialOwner2Schema = z.strictObject({
   CertificationType: BeneficiaryCertificationType9ChoiceSchema.optional(),
   DeclarationDetails: Max350TextSchema.optional(),
 });
-
-export const PhysicalTransferType1CodeSchema = z.enum(["DEMT", "PHYS"]);
 
 export const SecuritiesBalanceType14CodeSchema = z.enum(["AWAS", "BTRA", "BLOK", "BLOV", "BLCA", "BLOT", "BORR", "OPNT", "PNET", "COLI", "COLO", "MARG", "DRAW", "TRAN", "LOAN", "REGO", "BODE", "BORE", "PEDA", "PECA", "PEND", "LODE", "LORE", "PENR", "PLED", "RSTR", "OTHR", "WDOC", "GRP1", "GRP2"]);
 
@@ -422,12 +421,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "CertificationType", isoId: "_vq8-nbv-EeOgOuxYpBEzKg", xmlTag: "CertfctnTp", displayName: displayName("CertificationType"), kind: "choice", type: "BeneficiaryCertificationType9Choice", required: false }),
       f({ name: "DeclarationDetails", isoId: "_vq8-n7v-EeOgOuxYpBEzKg", xmlTag: "DclrtnDtls", displayName: displayName("DeclarationDetails"), kind: "text", type: "Max350Text", required: false }),
     ],
-  },
-  "PhysicalTransferType1Code": {
-    name: "PhysicalTransferType1Code",
-    isoId: "_sXY0QPrqEeCJc7cZxzE2fg",
-    kind: "code",
-    options: [{ value: "DEMT", name: "Dematerialised", isoId: "_kzEcnv8vEeCuNd2SpsBr7g" }, { value: "PHYS", name: "Physical", isoId: "_k2gLHv8vEeCuNd2SpsBr7g" }],
   },
   "SecuritiesBalanceType14Code": {
     name: "SecuritiesBalanceType14Code",
@@ -780,6 +773,7 @@ export const typeDescriptors: TypeDescriptors = {
   "Max140Text": sharedTypeDescriptors["Max140Text"]!,
   "SecurityIdentification19": sharedTypeDescriptors["SecurityIdentification19"]!,
   "FormOfSecurity1Code": sharedTypeDescriptors["FormOfSecurity1Code"]!,
+  "PhysicalTransferType1Code": sharedTypeDescriptors["PhysicalTransferType1Code"]!,
   "DecimalNumber": sharedTypeDescriptors["DecimalNumber"]!,
   "ImpliedCurrencyAndAmount": sharedTypeDescriptors["ImpliedCurrencyAndAmount"]!,
   "FinancialInstrumentQuantity1Choice": sharedTypeDescriptors["FinancialInstrumentQuantity1Choice"]!,

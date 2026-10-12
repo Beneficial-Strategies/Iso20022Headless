@@ -1,0 +1,4 @@
+codeSet	code	enumName	isoId	text
+SettlementDate1Code	ASAP	AsSoonAsPossible	_qeiUIUWrEe6RZYUnHXjemQ	Transfer is to be effected as soon as possible.
+SettlementDate1Code	ENDC	AtEndOfContract	_qeiUI0WrEe6RZYUnHXjemQ	Transfer is to be effected at the end of the contract.
+SettlementDate1Code	WHIF	WhenAndIfIssued	_qeiUJUWrEe6RZYUnHXjemQ	Settlement takes place when the financial instrument is issued by the issuer.

@@ -1,0 +1,2 @@
+name	isoId	xsiType	pattern	minLength	maxLength	totalDigits	fractionDigits	minInclusive	maxInclusive	other
+RestrictedFINMax16Text	_WOpRktp-Ed-ak6NoX_4Aeg_335664385	Text	([^/]+/)+([^/]+)|([^/]*)	1	16					

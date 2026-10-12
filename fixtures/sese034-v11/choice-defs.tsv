@@ -1,0 +1,51 @@
+choice	memberId	memberName	text
+ProcessingStatus102Choice	125f5a4d-8d49-43b0-9b40-dad709cbd461	PendingCancellation	Cancellation request from yourself for this instruction is pending waiting for further processing.
+ProcessingStatus102Choice	a48bbefa-2c1d-4bb9-9747-5903b2fe56ad	AcknowledgedAccepted	Instruction has been acknowledged by the account servicer.
+ProcessingStatus102Choice	3464bdad-634a-4911-b433-715823d953e6	PendingProcessing	Instruction has been acknowledged by the account servicer, but processing of the instruction is pending.
+ProcessingStatus102Choice	9234f0ff-75e6-4b39-93cf-6fe6ca048eb8	Rejected	Instruction/Request has been rejected for further processing.
+ProcessingStatus102Choice	db0716c3-fcd4-4fba-a104-4ceb02f6d78b	Repair	Instruction has been acknowledged by the account servicer but is in repair.
+ProcessingStatus102Choice	cb6e3304-caaa-426d-8f13-ceb1733b6124	Cancelled	Instruction has been cancelled (only as a response to a SecuritiesTransactionStatusQuery). The status on the processing of a cancellation request must be provided using a SecuritiesTransactionCancellationRequestStatusAdvice.
+ProcessingStatus102Choice	a829dcb7-48eb-4507-80a9-4698708f38d0	Proprietary	Status that cannot be reported using one of the available standard status.
+ProcessingStatus102Choice	b349fd32-901e-47fa-9704-2c9a32baacdb	CancellationRequested	Cancellation request from your counterparty for this transaction is pending waiting for your cancellation request or your consent.
+ProcessingStatus102Choice	4b664b0e-85ca-4039-8231-4c03c817a6fb	ModificationRequested	Modification request from your counterparty for this transaction is pending waiting for your cancellation request or your consent.
+PendingProcessingStatus21Choice	46128f72-5d21-4f0e-a813-6412e172f8c0	NoSpecifiedReason	Indicates that there is no reason available or to report.
+PendingProcessingStatus21Choice	ce34299c-4463-4965-9a64-65373171ed6a	Reason	Specifies the reason of the pending processing status.
+RejectionStatus36Choice	_NYgc0StVEeyhipY4f42fZQ	NoSpecifiedReason	Indicates that there is no reason available or to report.
+RejectionStatus36Choice	_NYgc1StVEeyhipY4f42fZQ	Reason	Specifies the reason of the rejection status.
+RejectionReason41Choice	_OJ-WAStVEeyhipY4f42fZQ	Code	Specifies the reason why the instruction/request has a repair or rejection status.
+RejectionReason41Choice	_OJ-WBStVEeyhipY4f42fZQ	Proprietary	Specifies the reason why the instruction/request has a repair or rejection status.
+RepairStatus14Choice	_i5XwUTw5EeW3QqUkIQtIUA	NoSpecifiedReason	Indicates that there is no reason available or to report.
+RepairStatus14Choice	_i5XwWTw5EeW3QqUkIQtIUA	Reason	Specifies the reason of the repair status.
+RepairReason12Choice	_j9EB8Tw5EeW3QqUkIQtIUA	Code	Specifies the reason why the instruction/request has a repair or rejection status.
+RepairReason12Choice	_j9EB-Tw5EeW3QqUkIQtIUA	Proprietary	Specifies the reason why the instruction/request has a repair or rejection status.
+CancellationStatus16Choice	_Do2eQTw6EeW3QqUkIQtIUA	NoSpecifiedReason	Indicates that there is no reason available or to report.
+CancellationStatus16Choice	_Do2eSTw6EeW3QqUkIQtIUA	Reason	Specifies the reason of the cancellation status.
+CancellationReason23Choice	_Et4MoTw6EeW3QqUkIQtIUA	Code	Specifies the reason why the related instruction is cancelled, or the related cancellation request is executed.
+CancellationReason23Choice	_Et4MqTw6EeW3QqUkIQtIUA	Proprietary	Specifies the reason why the related instruction is cancelled, or the related cancellation request is executed.
+MatchingStatus26Choice	_1bRVQTp4EeWVrPy0StzzSg	Matched	Status is matched.
+MatchingStatus26Choice	_1bRVRTp4EeWVrPy0StzzSg	Unmatched	Status is unmatched.
+MatchingStatus26Choice	_1bRVSTp4EeWVrPy0StzzSg	Proprietary	Proprietary status.
+UnmatchedStatus18Choice	_Ckz8cTw8EeW3QqUkIQtIUA	NoSpecifiedReason	Indicates that there is no reason available or to report.
+UnmatchedStatus18Choice	_Ckz8dTw8EeW3QqUkIQtIUA	Reason	Specifies the reason of the unmatched status.
+UnmatchedReason24Choice	_DmuFYTw8EeW3QqUkIQtIUA	Code	Specifies the reason why the instruction has an unmatched status.
+UnmatchedReason24Choice	_DmuFZTw8EeW3QqUkIQtIUA	Proprietary	Specifies the reason why the instruction has an unmatched status.
+SettlementStatus18Choice	_2dIa4zp4EeWVrPy0StzzSg	Pending	Instruction is pending. Settlement at the instructed settlement date is still possible.
+SettlementStatus18Choice	_2dIa6zp4EeWVrPy0StzzSg	Failing	Instruction is failing. Settlement at the instructed settlement date is no longer possible.
+SettlementStatus18Choice	_2dIa8zp4EeWVrPy0StzzSg	Proprietary	Proprietary status.
+PendingStatus40Choice	_qHzwITw9EeW3QqUkIQtIUA	NoSpecifiedReason	Indicates that there is no reason available or to report.
+PendingStatus40Choice	_qHzwKTw9EeW3QqUkIQtIUA	Reason	Specifies the reason of the pending status.
+PendingReason31Choice	_rKTu8Tw9EeW3QqUkIQtIUA	Code	Specifies the reason why the instruction has a pending status.
+PendingReason31Choice	_rKTu-Tw9EeW3QqUkIQtIUA	Proprietary	Specifies the reason why the instruction has a pending status.
+FailingStatus10Choice	_3jTWwTqOEeWyoP0PbocV1Q	NoSpecifiedReason	Indicates that there is no reason available or to report.
+FailingStatus10Choice	_3jTWyTqOEeWyoP0PbocV1Q	Reason	Specifies the reason of the failing status.
+FailingReason8Choice	_4kd40TqOEeWyoP0PbocV1Q	Code	Specifies the reason why the instruction has a failing settlement status.
+FailingReason8Choice	_4kd42TqOEeWyoP0PbocV1Q	Proprietary	Specifies the reason why the instruction has a failing settlement status.
+RepoCallRequestStatus7Choice	_3-jxYTp4EeWVrPy0StzzSg	AcknowledgedAccepted	Instruction has been acknowledged by the account servicer.
+RepoCallRequestStatus7Choice	_3-jxaTp4EeWVrPy0StzzSg	Denied	Instruction/Request will not be executed.
+RepoCallRequestStatus7Choice	_3-jxcTp4EeWVrPy0StzzSg	Proprietary	Proprietary status.
+AcknowledgedAcceptedStatus22Choice	_UBgzETqrEeWyoP0PbocV1Q	NoSpecifiedReason	Indicates that there is no reason available or to report.
+AcknowledgedAcceptedStatus22Choice	_UBgzGTqrEeWyoP0PbocV1Q	Reason	Specifies the reason of the acknowledged accepted status.
+DeniedStatus17Choice	__pmdoTw9EeW3QqUkIQtIUA	NoSpecifiedReason	Indicates that there is no reason available or to report.
+DeniedStatus17Choice	__pmdqTw9EeW3QqUkIQtIUA	Reason	Specifies the reason of the denied status.
+DeniedReason17Choice	_ArzhgTw-EeW3QqUkIQtIUA	Code	Specifies additional information about the processed instruction.
+DeniedReason17Choice	_ArzhiTw-EeW3QqUkIQtIUA	Proprietary	Specifies additional information about the processed instruction.

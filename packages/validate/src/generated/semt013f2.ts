@@ -27,6 +27,7 @@ import {
   RestrictedFINXMax30TextSchema,
   GenericIdentification86Schema,
   DocumentNumber6ChoiceSchema,
+  References50ChoiceSchema,
   AnyBICDec2014IdentifierSchema,
   RestrictedFINXMax34TextSchema,
   GenericIdentification84Schema,
@@ -96,6 +97,7 @@ import {
   RestrictedFINXMax350TextSchema,
   FinancialInstrumentAttributes119Schema,
   Exact4NumericTextSchema,
+  PriorityNumeric5ChoiceSchema,
   ISODateTimeSchema,
   DateAndDateTime2ChoiceSchema,
   SecuritiesBalanceType11CodeSchema,
@@ -108,26 +110,11 @@ import {
   sharedTypeDescriptors,
 } from './shared.ts';
 
-export const References50ChoiceSchema = choiceOf({
-  SecuritiesSettlementTransactionIdentification: RestrictedFINXMax16TextSchema,
-  IntraPositionMovementIdentification: RestrictedFINXMax16TextSchema,
-  IntraBalanceMovementIdentification: RestrictedFINXMax16TextSchema,
-  AccountServicerTransactionIdentification: RestrictedFINXMax16TextSchema,
-  MarketInfrastructureTransactionIdentification: RestrictedFINXMax16TextSchema,
-  PoolIdentification: RestrictedFINXMax16TextSchema,
-  OtherTransactionIdentification: RestrictedFINXMax16TextSchema,
-});
-
 export const Linkages60Schema = z.strictObject({
   ProcessingPosition: ProcessingPosition10ChoiceSchema.optional(),
   MessageNumber: DocumentNumber6ChoiceSchema.optional(),
   Reference: References50ChoiceSchema,
   ReferenceOwner: PartyIdentification136ChoiceSchema.optional(),
-});
-
-export const PriorityNumeric5ChoiceSchema = choiceOf({
-  Numeric: Exact4NumericTextSchema,
-  Proprietary: GenericIdentification47Schema,
 });
 
 export const IntraPositionDetails62Schema = z.strictObject({
@@ -158,20 +145,6 @@ export const IntraPositionMovementInstruction002V06Schema = z.strictObject({
 const f = (d: FieldDescriptor): FieldDescriptor => d;
 
 const ownTypeDescriptors: TypeDescriptors = {
-  "References50Choice": {
-    name: "References50Choice",
-    isoId: "_5Pat3ZNLEeWGlc8L7oPDIg",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "SecuritiesSettlementTransactionIdentification", isoId: "_5Pat35NLEeWGlc8L7oPDIg", xmlTag: "SctiesSttlmTxId", displayName: displayName("SecuritiesSettlementTransactionIdentification"), kind: "text", type: "RestrictedFINXMax16Text", required: true }),
-      f({ name: "IntraPositionMovementIdentification", isoId: "_5Pat55NLEeWGlc8L7oPDIg", xmlTag: "IntraPosMvmntId", displayName: displayName("IntraPositionMovementIdentification"), kind: "text", type: "RestrictedFINXMax16Text", required: true }),
-      f({ name: "IntraBalanceMovementIdentification", isoId: "_5Pat75NLEeWGlc8L7oPDIg", xmlTag: "IntraBalMvmntId", displayName: displayName("IntraBalanceMovementIdentification"), kind: "text", type: "RestrictedFINXMax16Text", required: true }),
-      f({ name: "AccountServicerTransactionIdentification", isoId: "_5Pat8ZNLEeWGlc8L7oPDIg", xmlTag: "AcctSvcrTxId", displayName: displayName("AccountServicerTransactionIdentification"), kind: "text", type: "RestrictedFINXMax16Text", required: true }),
-      f({ name: "MarketInfrastructureTransactionIdentification", isoId: "_5Pat-ZNLEeWGlc8L7oPDIg", xmlTag: "MktInfrstrctrTxId", displayName: displayName("MarketInfrastructureTransactionIdentification"), kind: "text", type: "RestrictedFINXMax16Text", required: true }),
-      f({ name: "PoolIdentification", isoId: "_5Pat-5NLEeWGlc8L7oPDIg", xmlTag: "PoolId", displayName: displayName("PoolIdentification"), kind: "text", type: "RestrictedFINXMax16Text", required: true }),
-      f({ name: "OtherTransactionIdentification", isoId: "_5PauA5NLEeWGlc8L7oPDIg", xmlTag: "OthrTxId", displayName: displayName("OtherTransactionIdentification"), kind: "text", type: "RestrictedFINXMax16Text", required: true }),
-    ],
-  },
   "Linkages60": {
     name: "Linkages60",
     isoId: "_jJP0yyAZEeu4a6pNulzZ4Q",
@@ -181,15 +154,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "MessageNumber", isoId: "_jJP01yAZEeu4a6pNulzZ4Q", xmlTag: "MsgNb", displayName: displayName("MessageNumber"), kind: "choice", type: "DocumentNumber6Choice", required: false }),
       f({ name: "Reference", isoId: "_jJP03yAZEeu4a6pNulzZ4Q", xmlTag: "Ref", displayName: displayName("Reference"), kind: "choice", type: "References50Choice", required: true }),
       f({ name: "ReferenceOwner", isoId: "_jJP05yAZEeu4a6pNulzZ4Q", xmlTag: "RefOwnr", displayName: displayName("ReferenceOwner"), kind: "choice", type: "PartyIdentification136Choice", required: false }),
-    ],
-  },
-  "PriorityNumeric5Choice": {
-    name: "PriorityNumeric5Choice",
-    isoId: "_5Pg0WJNLEeWGlc8L7oPDIg",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Numeric", isoId: "_5Pg0WpNLEeWGlc8L7oPDIg", xmlTag: "Nmrc", displayName: displayName("Numeric"), kind: "text", type: "Exact4NumericText", required: true }),
-      f({ name: "Proprietary", isoId: "_5Pg0YpNLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
     ],
   },
   "IntraPositionDetails62": {
@@ -251,6 +215,7 @@ export const typeDescriptors: TypeDescriptors = {
   "RestrictedFINXMax30Text": sharedTypeDescriptors["RestrictedFINXMax30Text"]!,
   "GenericIdentification86": sharedTypeDescriptors["GenericIdentification86"]!,
   "DocumentNumber6Choice": sharedTypeDescriptors["DocumentNumber6Choice"]!,
+  "References50Choice": sharedTypeDescriptors["References50Choice"]!,
   "AnyBICDec2014Identifier": sharedTypeDescriptors["AnyBICDec2014Identifier"]!,
   "RestrictedFINXMax34Text": sharedTypeDescriptors["RestrictedFINXMax34Text"]!,
   "GenericIdentification84": sharedTypeDescriptors["GenericIdentification84"]!,
@@ -320,6 +285,7 @@ export const typeDescriptors: TypeDescriptors = {
   "RestrictedFINXMax350Text": sharedTypeDescriptors["RestrictedFINXMax350Text"]!,
   "FinancialInstrumentAttributes119": sharedTypeDescriptors["FinancialInstrumentAttributes119"]!,
   "Exact4NumericText": sharedTypeDescriptors["Exact4NumericText"]!,
+  "PriorityNumeric5Choice": sharedTypeDescriptors["PriorityNumeric5Choice"]!,
   "ISODateTime": sharedTypeDescriptors["ISODateTime"]!,
   "DateAndDateTime2Choice": sharedTypeDescriptors["DateAndDateTime2Choice"]!,
   "SecuritiesBalanceType11Code": sharedTypeDescriptors["SecuritiesBalanceType11Code"]!,

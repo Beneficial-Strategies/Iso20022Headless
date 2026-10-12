@@ -1,0 +1,75 @@
+{
+  "identifier": "sese.004.001.09",
+  "name": "ReversalOfTransferOutConfirmationV09",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:sese.004.001.09",
+  "bodyTag": "RvslOfTrfOutConf",
+  "out": "sese004",
+  "isoId": "_TKCqsZDhEem7fvtoGpNpow",
+  "definition": "Scope|The ReversalOfTransferOutConfirmation message is sent by an executing party, for example, a transfer agent, to the instructing party, for example, an investment manager or its authorised representative, to cancel a previously sent transfer out confirmation.|Usage|The ReversalOfTransferOutConfirmation message is used to reverse a previously sent transfer out confirmation.|To request the reversal of a transfer out confirmation, the transfer reference of the transfer out instruction, as specified in the original TransferOutInstruction message, is specified in the transfer reference element. The executing party’s reference for the execution of the transfer may also be specified in the TransferConfirmationReference element.|The message identification of the original TransferOutConfirmation message may also be quoted in PreviousReference but this is not recommended.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "_TKCqs5DhEem7fvtoGpNpow",
+      "xmlTag": "MsgId",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "PoolReference",
+      "isoId": "_TKCqtZDhEem7fvtoGpNpow",
+      "xmlTag": "PoolRef",
+      "type": "AdditionalReference11",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "PreviousReference",
+      "isoId": "_TKCqt5DhEem7fvtoGpNpow",
+      "xmlTag": "PrvsRef",
+      "type": "AdditionalReference10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "RelatedReference",
+      "isoId": "_TKCquZDhEem7fvtoGpNpow",
+      "xmlTag": "RltdRef",
+      "type": "AdditionalReference10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "MasterReference",
+      "isoId": "_yFMdwZGxEem-9Y6mq5ZH3Q",
+      "xmlTag": "MstrRef",
+      "type": "Max35Text",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ReversalReferences",
+      "isoId": "_TKCqu5DhEem7fvtoGpNpow",
+      "xmlTag": "RvslRefs",
+      "type": "TransferReference16",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "MarketPracticeVersion",
+      "isoId": "_TKCqvZDhEem7fvtoGpNpow",
+      "xmlTag": "MktPrctcVrsn",
+      "type": "MarketPracticeVersion1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CopyDetails",
+      "isoId": "_TKCqv5DhEem7fvtoGpNpow",
+      "xmlTag": "CpyDtls",
+      "type": "CopyInformation5",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

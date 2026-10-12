@@ -1,0 +1,59 @@
+{
+  "identifier": "sese.010.001.07",
+  "name": "TransferCancellationStatusReportV07",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:sese.010.001.07",
+  "bodyTag": "TrfCxlStsRpt",
+  "out": "sese010",
+  "isoId": "_h5COsZDhEem7fvtoGpNpow",
+  "definition": "Scope|The TransferCancellationStatusReport message is sent by an executing party, for example, a transfer agent, to the instructing party, for example, an investment manager or one of its authorised representatives to provide the status of a previously received transfer cancellation instruction.|Usage|The TransferCancellationStatusReport message is used to report on the status of a transfer in or transfer out cancellation request.|The reference of the transfer instruction for which the cancellation status is reported is identified in TransferReference. The message identification of the transfer cancellation request message in which the transfer instruction was conveyed may also be quoted in RelatedReference.|The message identification of the transfer instruction request message in which the transfer instruction was conveyed may also be quoted in RelatedReference.|One of the following statuses can be reported:|- the transfer cancellation is accepted, or,|- the transfer cancellation has been sent to the next party, or,|- the transfer cancellation is complete and the reason for the status,|- the transfer cancellation pending and the reason for the status,|- the transfer cancellation is rejected and the reason for the status.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "_h5COt5DhEem7fvtoGpNpow",
+      "xmlTag": "MsgId",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CounterpartyReference",
+      "isoId": "_h5COuZDhEem7fvtoGpNpow",
+      "xmlTag": "CtrPtyRef",
+      "type": "AdditionalReference10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Reference",
+      "isoId": "_h5COu5DhEem7fvtoGpNpow",
+      "xmlTag": "Ref",
+      "type": "References64Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "StatusReport",
+      "isoId": "_h5COvZDhEem7fvtoGpNpow",
+      "xmlTag": "StsRpt",
+      "type": "CancellationStatusAndReason5",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "MarketPracticeVersion",
+      "isoId": "_h5COv5DhEem7fvtoGpNpow",
+      "xmlTag": "MktPrctcVrsn",
+      "type": "MarketPracticeVersion1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Extension",
+      "isoId": "_h5COwZDhEem7fvtoGpNpow",
+      "xmlTag": "Xtnsn",
+      "type": "Extension1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

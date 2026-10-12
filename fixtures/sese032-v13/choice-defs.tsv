@@ -1,0 +1,17 @@
+choice	memberId	memberName	text
+References86Choice	51e8fcea-4a11-4244-bfb4-bcf488ca3288	SecuritiesSettlementTransactionIdentification	Unambiguous identification of a securities settlement transaction as known by the account owner (or instructing party acting on its behalf).
+References86Choice	0577edb6-a64d-496d-b1fe-82f9a12a9d98	IntraPositionMovementIdentification	Unambiguous identification of the intra-position movement transaction as known by the account owner (or instructing party acting on its behalf).
+References86Choice	53570b77-2ac7-4941-8bd6-de65b1dfd3bd	IntraBalanceMovementIdentification	Unambiguous identification of the intra balance movement transaction as known by the account owner.
+References86Choice	3d992178-443c-4f4a-af1f-c43af8b1ed30	AccountServicerTransactionIdentification	Unambiguous identification of the transaction as known by the account servicer.
+References86Choice	910139b7-5f84-4d8b-bcac-56e2acb9051a	MarketInfrastructureTransactionIdentification	Identification of a transaction assigned by a market infrastructure other than a central securities depository, for example, Target2-Securities.
+References86Choice	1823c627-98b8-4eab-8e05-995eb001b895	CounterpartyMarketInfrastructureTransactionIdentification	Identification of a counterparty transaction assigned by a market infrastructure other than a central securities depository, for example, Target2-Securities.
+References86Choice	2f483e9f-8ff1-4c1d-a0ec-86b66f54d2db	PoolIdentification	Collective reference identifying a set of messages.
+References86Choice	5147c52c-cde1-4d2c-a81d-fb58f63537b2	OtherTransactionIdentification	Identification of a transaction that cannot be identified using a standard reference element present in the message.
+SettlementTransactionCondition44Choice	_EPinEfHTEfChCaiL9q1LKg	Code	Settlement conditions expressed as an ISO 20022 code.
+SettlementTransactionCondition44Choice	_EPinGfHTEfChCaiL9q1LKg	Proprietary	Settlement conditions expressed as a proprietary code.
+ProcessingStatus104Choice	558b70ae-0e9a-4aa9-961d-f9ebd0b11141	AcknowledgedAccepted	Instruction has been acknowledged by the account servicer.
+ProcessingStatus104Choice	321b4a23-9e06-499a-9fe2-db5e940b9023	PendingProcessing	Instruction has been acknowledged by the account servicer but processing of the instruction is pending.
+ProcessingStatus104Choice	13fccffd-ac25-4cbd-808e-196dec87fede	Repair	Instruction has been acknowledged by the account servicer but is in repair.
+ProcessingStatus104Choice	d2510a97-8d4a-4cac-b307-b867f3752efe	PendingCancellation	A cancellation request from yourself for this instruction is pending waiting for further processing (only as a response to a SecuritiesTransactionStatusQuery). The pending status on the processing of a cancellation request must be provided using a SecuritiesTransactionCancellationRequestStatusAdvice.
+ProcessingStatus104Choice	bff1ea2f-1ca9-4b44-aee6-a15370d9cb62	Proprietary	Status that cannot be reported using one of the available standard status.
+ProcessingStatus104Choice	5664f4df-9e82-459d-8d88-c23ef123e8af	CancellationRequested	Cancellation request from your counterparty for this transaction is pending waiting for your cancellation request.

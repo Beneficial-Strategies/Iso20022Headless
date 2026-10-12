@@ -1,0 +1,51 @@
+{
+  "identifier": "sese.027.001.09",
+  "name": "SecuritiesTransactionCancellationRequestStatusAdviceV09",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:sese.027.001.09",
+  "bodyTag": "SctiesTxCxlReqStsAdvc",
+  "out": "sese027",
+  "isoId": "_LpIawZaBEfC2_67yGLymgA",
+  "definition": "Scope|An account servicer sends an SecuritiesTransactionCancellationRequestStatusAdvice to an account owner to advise the status of a securities transaction cancellation request previously sent by the account owner.|The account servicer/owner relationship may be:|- a central securities depository or another settlement market infrastructure acting on behalf of their participants|- an agent (sub-custodian) acting on behalf of their global custodian customer, or|- a custodian acting on behalf of an investment management institution or a broker/dealer.||Usage|The message may also be used to:|- re-send a message previously sent,|- provide a third party with a copy of a message for information,|- re-send to a third party a copy of a message for information|using the relevant elements in the Business Application Header.",
+  "blocks": [
+    {
+      "name": "CancellationRequestReference",
+      "isoId": "_LpIa1ZaBEfC2_67yGLymgA",
+      "xmlTag": "CxlReqRef",
+      "type": "Max35Text",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "TransactionIdentification",
+      "isoId": "_LpIa25aBEfC2_67yGLymgA",
+      "xmlTag": "TxId",
+      "type": "TransactionIdentifications52",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ProcessingStatus",
+      "isoId": "_LpIa4ZaBEfC2_67yGLymgA",
+      "xmlTag": "PrcgSts",
+      "type": "ProcessingStatus105Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "TransactionDetails",
+      "isoId": "_LpIa55aBEfC2_67yGLymgA",
+      "xmlTag": "TxDtls",
+      "type": "TransactionDetails178",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_LpIa7ZaBEfC2_67yGLymgA",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

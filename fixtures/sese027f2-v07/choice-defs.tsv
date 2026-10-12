@@ -1,0 +1,12 @@
+choice	memberId	memberName	text
+References59Choice	_8ScaEZNLEeWGlc8L7oPDIg	OtherTransactionIdentification	Reference to a transaction that cannot be identified using a standard reference element present in the message.
+References59Choice	_8ScaE5NLEeWGlc8L7oPDIg	SecuritiesFinancingTransactionIdentification	Unambiguous identification of the underlying securities financing transaction (not the underlying securities financing trade) as assigned by the instructing party.
+References59Choice	_8ScaFZNLEeWGlc8L7oPDIg	SecuritiesSettlementTransactionIdentification	Unambiguous identification of the securities settlement transaction.
+References59Choice	_8ScaF5NLEeWGlc8L7oPDIg	IntraPositionMovementIdentification	Reference to the intra-position movement transaction requested to be cancelled as known by the account owner (or instructing party acting on its behalf).
+ProcessingStatus96Choice	_gBzJazi8Eeydid5dcNPKvg	PendingCancellation	Cancellation is pending processing.
+ProcessingStatus96Choice	_gBzJczi8Eeydid5dcNPKvg	Rejected	Instruction/Request has been rejected for further processing.
+ProcessingStatus96Choice	_gBzJezi8Eeydid5dcNPKvg	Repair	Instruction/Request is accepted but in repair.
+ProcessingStatus96Choice	_gBzJgzi8Eeydid5dcNPKvg	AcknowledgedAccepted	Instruction has been acknowledged by the account servicer.
+ProcessingStatus96Choice	_gBzJizi8Eeydid5dcNPKvg	Proprietary	Status that cannot be reported using one of the available standard status.
+ProcessingStatus96Choice	_gBzJkzi8Eeydid5dcNPKvg	Denied	Instruction/Request will not be executed.
+ProcessingStatus96Choice	_gBzJmzi8Eeydid5dcNPKvg	Cancelled	Cancellation requested executed.

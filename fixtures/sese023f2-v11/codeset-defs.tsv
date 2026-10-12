@@ -1,0 +1,3 @@
+codeSet	isoId	text
+SecuritiesTransactionType23Code	_7umhANEfEeiO-eodGv5iKQ	Specifies underlying information regarding the type of settlement transaction.
+SettlementTransactionCondition14Code	_RB7AOQzXEeuUZuaHWzkTew	Specifies the conditions under which the order/trade is to be settled.

@@ -1,0 +1,77 @@
+choice	memberId	memberName	text
+PartyIdentification126Choice	_WuxzUWpVEeipaMTLlhaKMQ	AnyBIC	Identification of the party expressed as a BIC.
+PartyIdentification126Choice	_WuxzU2pVEeipaMTLlhaKMQ	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to the party using a proprietary identification scheme.
+ClearingSystemMemberIdentification2Choice	_TCzAq9p-Ed-ak6NoX_4Aeg_1989939470	CHIPSUniversalIdentification	(United States) Clearing House Interbank Payments System (CHIPS) Universal Identification (UID) - identifies entities that own accounts at CHIPS participating financial institutions, through which CHIPS payments are effected. The CHIPS UID is assigned by the New York Clearing House.
+ClearingSystemMemberIdentification2Choice	_TC8KkNp-Ed-ak6NoX_4Aeg_1989939487	NewZealandNCCIdentification	New Zealand Bank/Branch Code - identifies New Zealand institutions on the New Zealand national clearing system. The code is assigned by the New Zealand Bankers' Association (NZBA).
+ClearingSystemMemberIdentification2Choice	_TC8Kkdp-Ed-ak6NoX_4Aeg_1989939747	IrishNSCIdentification	Irish National Sorting Code - identifies Irish financial institutions on the Irish national clearing system. The code is assigned by the Irish Payments Services Organisation (IPSO).
+ClearingSystemMemberIdentification2Choice	_TC8Kktp-Ed-ak6NoX_4Aeg_1989939782	UKDomesticSortCode	United Kingdom (UK) Sort Code - identifies British financial institutions on the British national clearing systems. The sort code is assigned by the Association for Payments and Clearing Services (APACS).
+ClearingSystemMemberIdentification2Choice	_TC8Kk9p-Ed-ak6NoX_4Aeg_1989939825	CHIPSParticipantIdentification	(United States) Clearing House Interbank Payment System (CHIPS) Participant Identifier (ID) - identifies financial institutions participating on CHIPS. The CHIPS Participant ID is assigned by the New York Clearing House.
+ClearingSystemMemberIdentification2Choice	_TC8KlNp-Ed-ak6NoX_4Aeg_1989939878	SwissBCIdentification	Swiss Bank Code - identifies Swiss institutions on the Swiss national clearing system.
+ClearingSystemMemberIdentification2Choice	_TC8Kldp-Ed-ak6NoX_4Aeg_1989940168	FedwireRoutingNumberIdentification	Fedwire Routing Number - identifies financial institutions, in the US, on the FedWire system. The routing number is assigned by the American Bankers Association (ABA).
+ClearingSystemMemberIdentification2Choice	_TC8Kltp-Ed-ak6NoX_4Aeg_1989940211	PortugueseNCCIdentification	Portuguese National Clearing Code - identifies Portuguese financial institutions on the Portuguese national clearing system.
+ClearingSystemMemberIdentification2Choice	_TC8Kl9p-Ed-ak6NoX_4Aeg_1989940228	RussianCentralBankIdentificationCode	Russian Central Bank Identification Code - identifies Russian financial institutions on the Russian national clearing system.
+ClearingSystemMemberIdentification2Choice	_TC8KmNp-Ed-ak6NoX_4Aeg_1989940263	ItalianDomesticIdentificationCode	Italian Domestic Identification Code - identifies Italian financial institutions on the Italian national clearing system. The code is assigned by the Associazione Bancaria Italiana (ABI).
+ClearingSystemMemberIdentification2Choice	_TC8Kmdp-Ed-ak6NoX_4Aeg_1989940306	AustrianBankleitzahlIdentification	Austrian Bankleitzahl - identifies Austrian financial institutions on the Austrian national clearing system.
+ClearingSystemMemberIdentification2Choice	_TDF7kNp-Ed-ak6NoX_4Aeg_1989940341	CanadianPaymentsAssociationRoutingNumberIdentification	Canadian Payments Association Routing Number - identifies Canadian financial institutions on the Canadian national clearing system.
+ClearingSystemMemberIdentification2Choice	_TDF7kdp-Ed-ak6NoX_4Aeg_1989940383	SwissSICIdentification	Swiss Interbank Clearing (SIC) Code - identifies Swiss financial institutions domestically, on the Swiss national clearing system.
+ClearingSystemMemberIdentification2Choice	_TDF7ktp-Ed-ak6NoX_4Aeg_1989940790	GermanBankleitzahlIdentification	German Bankleitzahl - identifies German financial institutions on the German national clearing systems.
+ClearingSystemMemberIdentification2Choice	_TDF7k9p-Ed-ak6NoX_4Aeg_1990860804	SpanishDomesticInterbankingIdentification	Spanish Domestic Interbanking Code - identifies Spanish financial institutions on the Spanish national clearing system. The code is assigned by the Centro de Cooperacion Interbancaria (CCI).
+ClearingSystemMemberIdentification2Choice	_TDF7lNp-Ed-ak6NoX_4Aeg_1990860839	SouthAfricanNCCIdentification	South African National Clearing Code (NCC) - identifies South African financial institutions on the South African national clearing system. The code is assigned by the South African Bankers Services Company Ltd. (BankServ).
+ClearingSystemMemberIdentification2Choice	_TDF7ldp-Ed-ak6NoX_4Aeg_1990860882	HongKongBankCode	Hong Kong Bank Code - identifies Hong Kong financial institutions on the Hong Kong local clearing system.
+ClearingSystemMemberIdentification2Choice	_TDPFgNp-Ed-ak6NoX_4Aeg_1990860899	AustralianExtensiveBranchNetworkIdentification	Extensive branch network list of the Australian Bank State Branch (BSB) Code. The codes are used for identifying Australian financial institutions, as assigned by the Australian Payments Clearing Association (APCA).
+ClearingSystemMemberIdentification2Choice	_TDPFgdp-Ed-ak6NoX_4Aeg_1990860942	AustralianSmallNetworkIdentification	Small network list of the Australian Bank State Branch (BSB) Code. The codes are used for identifying Australian financial institutions, as assigned by the Australian Payments Clearing Association (APCA).
+ClearingSystemMemberIdentification2Choice	_TDPFgtp-Ed-ak6NoX_4Aeg_2074902177	IndianFinancialSystemCode	Indian Financial System Code - identifies Indian financial institutions on the Indian local clearing system.
+ClearingSystemMemberIdentification2Choice	_TDPFg9p-Ed-ak6NoX_4Aeg_-1906990554	HellenicBankIdentificationCode	Hellenic Bank Identification Code - identifies Hellenic financial institutions on the Hellenic national clearing system.
+ClearingSystemMemberIdentification2Choice	_TDPFhNp-Ed-ak6NoX_4Aeg_-1877438256	PolishNationalClearingCode	Polish National Clearing Code - identifies Polish financial institutions on the Polish national clearing system.
+ClearingSystemMemberIdentification2Choice	_TDPFhdp-Ed-ak6NoX_4Aeg_-1854348245	OtherClearingCodeIdentification	Identification Code for a clearing system, that has not yet been identified in the list of clearing systems.
+FundPortfolio9Choice	_ZYn_welqEeuvhrZwLF0fDg	TaxEfficientProduct	Portfolio is a government scheme to encourage investment in securities based unit and investment trusts, offering certain tax benefits. These are not investments in their own right but are tax exempt 'wrappers' in which equities, bonds and funds can be held to shelter them from various types of tax.|In the UK, a typical tax wrapper product is known as an 'ISA' (Individual Savings Account).
+FundPortfolio9Choice	_ZYn_w-lqEeuvhrZwLF0fDg	GeneralInvestment	Portfolio is a general investment.
+FundPortfolio9Choice	_ZYn_xelqEeuvhrZwLF0fDg	Pension	Portfolio is a pension policy, plan or scheme.
+TaxEfficientProductType2Choice	_U2DS0ZNNEemQB_8XA98K0Q	Code	Type of tax efficient product expressed as a code.
+TaxEfficientProductType2Choice	_U2DS05NNEemQB_8XA98K0Q	Proprietary	Type of tax efficient product expressed as a proprietary code.
+PreviousYear2Choice	_dclD47NBEeex65jrLOfSTw	AllPreviousYears	Selection of all investment plans.
+PreviousYear2Choice	_dclD5bNBEeex65jrLOfSTw	SpecificPreviousYears	Selection of investment plans issued during previous years.
+GeneralInvestmentAccountType2Choice	_4Xg9MZNuEembCsVG-3f_AA	Code	Type of investment account expressed as a code.
+GeneralInvestmentAccountType2Choice	_4Xg9M5NuEembCsVG-3f_AA	Proprietary	Type of investment account expressed as a proprietary code.
+PensionSchemeType3Choice	_XqDlIelqEeuvhrZwLF0fDg	Code	Type of pension policy, plan or scheme expressed as a code.
+PensionSchemeType3Choice	_XqDlI-lqEeuvhrZwLF0fDg	Proprietary	Type of pension policy, plan or scheme expressed as a proprietary code.
+PensionTransferScope1Choice	_X3xmkE4YEeiQHa-q1Uephw	Code	Type of pension policy, plan or scheme transfer scope expressed as a code.
+PensionTransferScope1Choice	_YpUYQE4YEeiQHa-q1Uephw	Proprietary	Type of pension policy, plan or scheme transfer scope expressed as a proprietary code.
+TaxReferenceType1Choice	_SaQSIE4REeiQHa-q1Uephw	Code	Type of tax reference expressed as a code.
+TaxReferenceType1Choice	_T2MrsE4REeiQHa-q1Uephw	Proprietary	Type of tax reference expressed as a proprietary code.
+TaxReferenceParty1Choice	_Holp4E4SEeiQHa-q1Uephw	Code	Type of party expressed as a code.
+TaxReferenceParty1Choice	_JZEJAE4SEeiQHa-q1Uephw	Proprietary	Type of party expressed as a proprietary code.
+FinancialInstrument104Choice	726904dd-be75-46cd-a072-752c80e27789	Security	Identification of the security.
+FinancialInstrument104Choice	f40877a9-f27b-47f2-9367-68ab672a80bd	CashAsset	Identification of the cash asset.
+FinancialInstrument104Choice	6113ce1b-81e5-47e3-a177-487f426a0831	OtherAsset	Identification of another kind of asset in the holding that is not a security or cash.
+SecurityIdentification46Choice	256a59be-1564-4e1b-b0ed-604c6acbb3df	ISIN	International Securities Identification Number (ISIN). A numbering system designed by the United Nation's International Organisation for Standardisation (ISO). The ISIN is composed of a 2-character prefix representing the country of issue, followed by the national security number (if one exists), and a check digit. Each country has a national numbering agency that assigns ISIN numbers for securities in that country.
+SecurityIdentification46Choice	a19ffbd1-7fd5-453c-904d-0d1851517164	SEDOL	Stock Exchange Daily Official List (SEDOL) number. A code used by the London Stock Exchange to identify foreign stocks, especially those that aren't actively traded in the US and don't have a CUSIP number.
+SecurityIdentification46Choice	b9b0e0ad-2b61-4ac3-afb6-61bf36464ac2	CUSIP	Committee on Uniform Securities and Identification Procedures (CUSIP). The standards body that created and maintains the securities classification system in the US. The CUSIP is composed of a 9-character number that uniquely identifies a particular security. Non-US securities have a similar number called the CINS number.
+SecurityIdentification46Choice	4c0823c1-e6c9-4976-bee6-76d903c80b9a	RIC	Reuters Identification Code (RIC). A numbering system used within the Reuters system to identify instruments worldwide. The RIC contains an X-character market specific code (can be the CUSIP or EPIC codes) followed by a full stop, then the two-digit ISO country code, for example, IBM in UK is IBM.UK.
+SecurityIdentification46Choice	00afed4a-51d6-4330-b026-bdb61d7776b9	TickerSymbol	Letters that identify a stock traded on a stock exchange. The Ticker Symbol is a short and convenient way of identifying a stock, for example, RTR.L for Reuters quoted in London.
+SecurityIdentification46Choice	b2899719-5f62-48e8-9016-c3622ef01f7b	Bloomberg	Identifier of a security assigned by the Bloomberg organisation.
+SecurityIdentification46Choice	618f35dd-63f5-43ff-a9ac-094c37db5d49	CTA	Identifier of a security assigned by the Consolidated Tape Association.
+SecurityIdentification46Choice	de032459-0f5c-466c-9c83-322f87ed7fce	QUICK	Identifier of a security assigned by the Japanese QUICK identification scheme for financial instruments.
+SecurityIdentification46Choice	b9a360c7-fd09-4a12-8977-aaf366c4cb65	Wertpapier	Wertpapier Kenn-nummer. A number issued in Germany by the Wertpapier Mitteilungen. The Wertpapier Kenn-nummer, sometimes called WPK, contains 6-digits, but no check digit. There are different ranges of numbers representing different classes of securities.
+SecurityIdentification46Choice	fff15e36-e19e-47bd-bfcf-21bc8e6d2e93	Dutch	Identifier for Dutch securities.
+SecurityIdentification46Choice	c3d4b1a3-58db-4e54-9726-5b6c38247c73	Valoren	Identifier for Swiss securities assigned by Telekurs Financial, the Swiss numbering agency.
+SecurityIdentification46Choice	81d4d2d3-38cc-47aa-8e85-9216a8bfcf5c	Sicovam	Identifier for French securities assigned by the Societe Interprofessionnelle Pour La Compensation des Valeurs Mobilieres in France. The Sicovam is composed of 5-digits.
+SecurityIdentification46Choice	638ff3aa-692c-47da-b721-d3d0fd0d3e0c	Belgian	Identifier for Belgian securities.
+SecurityIdentification46Choice	150dc2a9-cf22-4ff5-a254-bed4b8c68e6a	Common	Identifier of securities issued in Luxembourg. The common code is a 9-digit code that replaces the CEDEL (Clearstream) and Euroclear codes.
+SecurityIdentification46Choice	9c6723a3-b418-4887-8927-6a251d1c4f20	DTI	Digital Token Identifier, as defined in ISO 24165.
+SecurityIdentification46Choice	4aeb15f2-9a90-4ce5-8ea9-a593e3e6532f	OtherProprietaryIdentification	Proprietary identification of the security assigned by an institution or organisation.
+CashAssetType1Choice	_1JOBIEyIEeir2sRRVd9XhA	Code	Type of cash expressed as a code.
+CashAssetType1Choice	__5TfkEyIEeir2sRRVd9XhA	Proprietary	Type of cash expressed as a proprietary code.
+OtherAsset2Choice	__RowIZNBEemQB_8XA98K0Q	Code	Other asset type specified as a code.
+OtherAsset2Choice	__RowI5NBEemQB_8XA98K0Q	Proprietary	Other asset type specified as a proprietary code.
+SafekeepingPlaceFormat28Choice	_ojrGYWpXEeipaMTLlhaKMQ	Identification	Place of safekeeping expressed as a code and a narrative description.
+SafekeepingPlaceFormat28Choice	_ojrGaWpXEeipaMTLlhaKMQ	Country	Place of safekeeping expressed with a country code.
+SafekeepingPlaceFormat28Choice	_ojrGcWpXEeipaMTLlhaKMQ	TypeAndIdentification	Place of safekeeping expressed with a type and identification.
+SafekeepingPlaceFormat28Choice	_ojrGeWpXEeipaMTLlhaKMQ	Proprietary	Place of safekeeping expressed with a propriety identification scheme.
+TradeTransactionCondition8Choice	_P2iDk0c9EeaBWtcfqEyXyw	Code	Trade condition expressed as a code.
+TradeTransactionCondition8Choice	_P2iDm0c9EeaBWtcfqEyXyw	Proprietary	Trade condition expressed as a proprietary code.
+SettlementTransactionCondition30Choice	_1wpf00c8EeaBWtcfqEyXyw	Code	Settlement condition expressed as a code.
+SettlementTransactionCondition30Choice	_1wpf20c8EeaBWtcfqEyXyw	Proprietary	Settlement condition expressed as a proprietary code.
+PartyIdentification123Choice	_OP_-QWpXEeipaMTLlhaKMQ	AnyBIC	Identification of the party expressed as a BIC.
+PartyIdentification123Choice	_OP_-Q2pXEeipaMTLlhaKMQ	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to the party, using a proprietary identification scheme.
+PartyIdentification123Choice	_OP_-RWpXEeipaMTLlhaKMQ	NameAndAddress	Name and address of the party.

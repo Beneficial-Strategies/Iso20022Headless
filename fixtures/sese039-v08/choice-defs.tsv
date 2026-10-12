@@ -1,0 +1,12 @@
+choice	memberId	memberName	text
+ModificationProcessingStatus12Choice	_rZrHVaohEfCG2_q2WT-90w	AcknowledgedAccepted	Instruction has been acknowledged by the account servicer.
+ModificationProcessingStatus12Choice	_rZrHYaohEfCG2_q2WT-90w	PendingProcessing	Modification is pending processing.
+ModificationProcessingStatus12Choice	_rZrHZ6ohEfCG2_q2WT-90w	Denied	Modification request will not be executed.
+ModificationProcessingStatus12Choice	_rZrHc6ohEfCG2_q2WT-90w	Rejected	Modification request has been rejected for further processing.
+ModificationProcessingStatus12Choice	_rZrHeaohEfCG2_q2WT-90w	Repaired	Modification request is accepted but in repair.
+ModificationProcessingStatus12Choice	_rZrHf6ohEfCG2_q2WT-90w	Modified	Instruction has been modified.
+ModificationProcessingStatus12Choice	_rZruZ6ohEfCG2_q2WT-90w	Proprietary	Proprietary status.
+PendingProcessingStatus23Choice	_rb4t1aohEfCG2_q2WT-90w	NoSpecifiedReason	Indicates that there is no reason available or to report.
+PendingProcessingStatus23Choice	_rb4t4aohEfCG2_q2WT-90w	Reason	Specifies the reason of the pending processing status.
+PendingProcessingReason22Choice	_rgRelaohEfCG2_q2WT-90w	Code	Specifies the reason why the instruction has a pending processing status.
+PendingProcessingReason22Choice	_rgReoaohEfCG2_q2WT-90w	Proprietary	Specifies the reason why the instruction has a pending processing status.

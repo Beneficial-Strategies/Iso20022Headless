@@ -1,0 +1,6 @@
+codeSet	code	enumName	isoId	text
+CancellationStatus5Code	RECE	Received	_Ar4IQZM8EemQB_8XA98K0Q	Cancellation instruction/request has been received, that is, technical validation of the message is ok, and the message is now at the receiving side.
+CancellationStatus5Code	PACK	Accepted	_EBOTcZM8EemQB_8XA98K0Q	Cancellation instruction / request has been received and has been acknowledged / accepted for further processing.
+CancellationStatus5Code	STNP	SentToNextParty	_ESebgZM8EemQB_8XA98K0Q	Cancellation instruction/request has been sent to the next party, that is, the next intermediary.
+CancellationRejectedReason1Code	CUTO	CutOffTime	_bYjKo9p-Ed-ak6NoX_4Aeg_-1041848	Instruction has been received after the cut-off time.
+CancellationRejectedReason1Code	COSE	AlreadyExecuted	_bYjKpNp-Ed-ak6NoX_4Aeg_-2116683787	Order or transfer has already been executed and confirmation has been sent.

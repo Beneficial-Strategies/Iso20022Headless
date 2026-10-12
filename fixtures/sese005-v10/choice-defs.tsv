@@ -1,0 +1,6 @@
+choice	memberId	memberName	text
+DateFormat1Choice	_RE37Zdp-Ed-ak6NoX_4Aeg_-1060377579	Date	Date expressed as a calendar date.
+DateFormat1Choice	_RE37Ztp-Ed-ak6NoX_4Aeg_-1019742655	Code	Date expressed as a code.
+DateFormat1Choice	_RE37Z9p-Ed-ak6NoX_4Aeg_251135632	DateTime	Date expressed as a calendar date and time.
+Quantity82Choice	9f2b4cc0-595f-4fb1-a54f-20fc6fc673c8	TotalUnitsNumber	Total quantity of securities to be transferred.
+Quantity82Choice	ee5ca458-191a-41e0-be61-3a033e1e3974	TransferRate	Quantity of securities to be transferred as a percentage of the holding.

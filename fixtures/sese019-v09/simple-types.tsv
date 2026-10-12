@@ -1,0 +1,5 @@
+name	isoId	xsiType	pattern	minLength	maxLength	totalDigits	fractionDigits	minInclusive	maxInclusive	other
+IndianFinancialSystemCodeIdentifier	_YYn10Np-Ed-ak6NoX_4Aeg_-1110573084	IdentifierSet	IN[a-zA-Z0-9]{11,11}							identificationScheme=Indian Financial System; Payment Routing Number
+HellenicBankIdentificationCodeIdentifier	_YYer59p-Ed-ak6NoX_4Aeg_527753128	IdentifierSet	GR[0-9]{7,7}							identificationScheme=Hellenic Central Bank; Payment Routing Number
+PolishNationalClearingCodeIdentifier	_YYn10dp-Ed-ak6NoX_4Aeg_1035690794	IdentifierSet	PL[0-9]{8,8}							identificationScheme=Polish Central Bank; Payment Routing Number
+PreviousAll	_YYxm2Np-Ed-ak6NoX_4Aeg_-1132097713	Text	ALL							

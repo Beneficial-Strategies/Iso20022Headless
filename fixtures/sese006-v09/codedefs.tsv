@@ -1,0 +1,3 @@
+codeSet	code	enumName	isoId	text
+TransferInFunction1Code	ADRE	AdviceAndRequest	_nxMJ0SVOEeWI0orciOKunQ	The transfer-in is an advice and request, that is, the message is used to inform the receiver to expect an unsolicited transfer in confirmation and to request account information for the transfer.
+TransferInFunction1Code	INST	Instruction	_n5X1cSVOEeWI0orciOKunQ	The transfer-in is an instruction.

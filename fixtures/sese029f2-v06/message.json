@@ -1,0 +1,75 @@
+{
+  "identifier": "sese.029.002.06",
+  "name": "SecuritiesSettlementAllegementRemovalAdvice002V06",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:sese.029.002.06",
+  "bodyTag": "SctiesSttlmAllgmtRmvlAdvc",
+  "out": "sese029f2",
+  "isoId": "_dhIjMzi8Eeydid5dcNPKvg",
+  "definition": "Scope|An account servicer sends a SecuritiesSettlementAllegementRemovalAdvice to an account owner to acknowledge that a previously sent allegement is no longer outstanding, because the alleged party sent its instruction.|The account servicer/owner relationship may be:|- a central securities depository or another settlement market infrastructure acting on behalf of their participants|- an agent (sub-custodian) acting on behalf of their global custodian customer, or|- a custodian acting on behalf of an investment management institution or a broker/dealer.||Usage|The message may also be used to:|- re-send a message previously sent,|- provide a third party with a copy of a message for information,|- re-send to a third party a copy of a message for information|using the relevant elements in the Business Application Header.",
+  "blocks": [
+    {
+      "name": "AccountServicerTransactionIdentification",
+      "isoId": "_dhIjQTi8Eeydid5dcNPKvg",
+      "xmlTag": "AcctSvcrTxId",
+      "type": "SettlementTypeAndIdentification22",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "MarketInfrastructureTransactionIdentification",
+      "isoId": "_dhIjQzi8Eeydid5dcNPKvg",
+      "xmlTag": "MktInfrstrctrTxId",
+      "type": "RestrictedFINXMax16Text",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CounterpartyMarketInfrastructureTransactionIdentification",
+      "isoId": "_dhIjRTi8Eeydid5dcNPKvg",
+      "xmlTag": "CtrPtyMktInfrstrctrTxId",
+      "type": "RestrictedFINXMax16Text",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AccountOwner",
+      "isoId": "_dhIjRzi8Eeydid5dcNPKvg",
+      "xmlTag": "AcctOwnr",
+      "type": "PartyIdentification156",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SafekeepingAccount",
+      "isoId": "_dhIjSTi8Eeydid5dcNPKvg",
+      "xmlTag": "SfkpgAcct",
+      "type": "SecuritiesAccount30",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "BlockChainAddressOrWallet",
+      "isoId": "_dhIjSzi8Eeydid5dcNPKvg",
+      "xmlTag": "BlckChainAdrOrWllt",
+      "type": "BlockChainAddressWallet7",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "TransactionDetails",
+      "isoId": "_dhIjTTi8Eeydid5dcNPKvg",
+      "xmlTag": "TxDtls",
+      "type": "TransactionDetails156",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_dhIjTzi8Eeydid5dcNPKvg",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

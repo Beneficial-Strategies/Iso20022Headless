@@ -1,0 +1,13 @@
+choice	memberId	memberName	text
+ProcessingPosition8Choice	_mZKJozt4EeW638lNyHKv7A	Code	Processing position expressed as an ISO 20022 code.
+ProcessingPosition8Choice	_mZKJqzt4EeW638lNyHKv7A	Proprietary	Processing position expressed as a proprietary code.
+ProcessingStatus106Choice	_lrsGRaogEfCG2_q2WT-90w	AcknowledgedAccepted	Request has been acknowledged by the account servicer.
+ProcessingStatus106Choice	_lrsGUaogEfCG2_q2WT-90w	Rejected	Modification Request has been rejected for further processing.
+ProcessingStatus106Choice	_lrsGXaogEfCG2_q2WT-90w	Completed	Modification request was completed.
+ProcessingStatus106Choice	_lrsGY6ogEfCG2_q2WT-90w	Denied	Modification request will not be executed.
+ProcessingStatus106Choice	_lrsGaaogEfCG2_q2WT-90w	Pending	Modification is pending. It is not known at this time whether modification can be affected.
+ProcessingStatus106Choice	_lrsGdaogEfCG2_q2WT-90w	Proprietary	Status that cannot be reported using one of the available standard status.
+PendingStatus83Choice	_ltv7xaogEfCG2_q2WT-90w	NoSpecifiedReason	Indicates that there is no reason available or to report.
+PendingStatus83Choice	_ltv70aogEfCG2_q2WT-90w	Reason	Specifies the reason of the pending status.
+PendingReason80Choice	_lyBXxaogEfCG2_q2WT-90w	Code	Specifies the reason code why the instruction or request is pending.
+PendingReason80Choice	_lyBX0aogEfCG2_q2WT-90w	Proprietary	Specifies the reason code why the instruction or request is pending, using a proprietary format.

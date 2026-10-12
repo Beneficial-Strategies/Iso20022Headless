@@ -1,0 +1,75 @@
+{
+  "identifier": "sese.024.001.14",
+  "name": "SecuritiesSettlementTransactionStatusAdviceV14",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:sese.024.001.14",
+  "bodyTag": "SctiesSttlmTxStsAdvc",
+  "out": "sese024",
+  "isoId": "2fd4cc36-b29b-4f27-9aa3-ff5b549a1a30",
+  "definition": "Scope|An account servicer sends a SecuritiesSettlementTransactionStatusAdvice to an account owner to advise the status of a securities settlement transaction instruction previously sent by the account owner or the status of a settlement transaction existing in the books of the servicer for the account of the owner. The status may be a processing, pending processing, internal matching, matching and/or settlement status.|The status advice may be sent as a response to the request of the account owner or not.|The account servicer/owner relationship may be:|- a central securities depository or another settlement market infrastructure acting on behalf of their participants|- an agent (sub-custodian) acting on behalf of their global custodian customer, or|- a custodian acting on behalf of an investment management institution or a broker/dealer.||Usage|The message may also be used to:|- re-send a message previously sent,|- provide a third party with a copy of a message for information,|- re-send to a third party a copy of a message for information using the relevant elements in the Business Application Header.",
+  "blocks": [
+    {
+      "name": "TransactionIdentification",
+      "isoId": "5ff2d998-232f-4ea6-aa3c-ac7f3234e933",
+      "xmlTag": "TxId",
+      "type": "TransactionIdentifications47",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Linkages",
+      "isoId": "88113ec0-d142-4806-bc34-334f98dd6b4e",
+      "xmlTag": "Lnkgs",
+      "type": "Linkages41",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ProcessingStatus",
+      "isoId": "07953089-c77e-4961-b46c-923ae41ea594",
+      "xmlTag": "PrcgSts",
+      "type": "ProcessingStatus101Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "InferredMatchingStatus",
+      "isoId": "bdb2360b-5767-42ce-9e0a-dd0db5a80a49",
+      "xmlTag": "IfrrdMtchgSts",
+      "type": "MatchingStatus24Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "MatchingStatus",
+      "isoId": "3b892ad7-e935-4b04-aa1d-6683345fb0d1",
+      "xmlTag": "MtchgSts",
+      "type": "MatchingStatus24Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SettlementStatus",
+      "isoId": "97cc2ab1-56b3-4a68-b573-f35e300665d8",
+      "xmlTag": "SttlmSts",
+      "type": "SettlementStatus30Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "TransactionDetails",
+      "isoId": "48e248a6-c568-4313-8c0e-039f5ef431a2",
+      "xmlTag": "TxDtls",
+      "type": "TransactionDetails177",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "0128a425-6cd3-41e3-9387-00ee596fa8cf",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

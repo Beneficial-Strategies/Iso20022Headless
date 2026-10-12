@@ -35,6 +35,7 @@ import {
   GenericIdentification47Schema,
   OtherIdentification3ChoiceSchema,
   GenericIdentification81Schema,
+  GenderCodeSchema,
   ISODateSchema,
   LEIIdentifierSchema,
   PartyIdentification139Schema,
@@ -47,8 +48,6 @@ export const LinkedMessage5ChoiceSchema = choiceOf({
 });
 
 export const AccountManagementType3CodeSchema = z.enum(["ACCM", "ACCO", "GACC", "ACST"]);
-
-export const GenderCodeSchema = z.enum(["MALE", "FEMA"]);
 
 export const IndividualPerson30Schema = z.strictObject({
   GivenName: Max35TextSchema.optional(),
@@ -110,12 +109,6 @@ const ownTypeDescriptors: TypeDescriptors = {
     isoId: "_5-DjoFSeEeatgN-VQ0eFlQ",
     kind: "code",
     options: [{ value: "ACCM", name: "AccountModification", isoId: "_Bak_kVSfEeatgN-VQ0eFlQ" }, { value: "ACCO", name: "AccountOpening", isoId: "_BxC-0VSfEeatgN-VQ0eFlQ" }, { value: "GACC", name: "GetAccountDetails", isoId: "_jN7kUVSqEeatgN-VQ0eFlQ" }, { value: "ACST", name: "AccountStatus", isoId: "_w6yBQaZsEea-RdGKJ0RADA" }],
-  },
-  "GenderCode": {
-    name: "GenderCode",
-    isoId: "_atyWZ9p-Ed-ak6NoX_4Aeg_275832843",
-    kind: "code",
-    options: [{ value: "MALE", name: "Male", isoId: "_atyWaNp-Ed-ak6NoX_4Aeg_319238514" }, { value: "FEMA", name: "Female", isoId: "_at8HYNp-Ed-ak6NoX_4Aeg_332166896" }],
   },
   "IndividualPerson30": {
     name: "IndividualPerson30",
@@ -208,6 +201,7 @@ export const typeDescriptors: TypeDescriptors = {
   "GenericIdentification47": sharedTypeDescriptors["GenericIdentification47"]!,
   "OtherIdentification3Choice": sharedTypeDescriptors["OtherIdentification3Choice"]!,
   "GenericIdentification81": sharedTypeDescriptors["GenericIdentification81"]!,
+  "GenderCode": sharedTypeDescriptors["GenderCode"]!,
   "ISODate": sharedTypeDescriptors["ISODate"]!,
   "LEIIdentifier": sharedTypeDescriptors["LEIIdentifier"]!,
   "PartyIdentification139": sharedTypeDescriptors["PartyIdentification139"]!,

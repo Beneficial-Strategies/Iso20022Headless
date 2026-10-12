@@ -19,6 +19,7 @@ import {
   Max35TextSchema,
   GenericIdentification36Schema,
   DocumentNumber5ChoiceSchema,
+  DocumentNumber13Schema,
   ISODateSchema,
   ISODateTimeSchema,
   DateAndDateTime2ChoiceSchema,
@@ -44,6 +45,7 @@ import {
   Max140TextSchema,
   BlockChainAddressWallet3Schema,
   AffirmationStatus1CodeSchema,
+  AffirmationStatus8ChoiceSchema,
   AllocationStatus1CodeSchema,
   RepoCallRequestStatus1CodeSchema,
   CorporateActionEventProcessingStatus1CodeSchema,
@@ -58,6 +60,7 @@ import {
   SecuritiesSettlementStatus2CodeSchema,
   SettlementConditionModificationStatus1CodeSchema,
   RepoCallAcknowledgementReason2CodeSchema,
+  AcknowledgementReason13ChoiceSchema,
   CancelledStatusReason12CodeSchema,
   GeneratedReason3CodeSchema,
   GeneratedReasons5ChoiceSchema,
@@ -65,6 +68,8 @@ import {
   AcknowledgementReason5CodeSchema,
   AcknowledgementReason12ChoiceSchema,
   FailingReason1CodeSchema,
+  PendingProcessingReason6CodeSchema,
+  PendingProcessingReason20ChoiceSchema,
   RejectionReason76CodeSchema,
   RepairReason6CodeSchema,
   PendingReason6CodeSchema,
@@ -82,10 +87,6 @@ import {
   sharedTypeDescriptors,
 } from './shared.ts';
 
-export const DocumentNumber13Schema = z.strictObject({
-  Number: DocumentNumber5ChoiceSchema,
-});
-
 export const StatementType5ChoiceSchema = choiceOf({
   Code: SecuritiesStatementType1CodeSchema,
   Proprietary: GenericIdentification30Schema,
@@ -97,11 +98,6 @@ export const Statement83Schema = z.strictObject({
   UpdateType: UpdateType15ChoiceSchema.optional(),
   StatementBasis: StatementBasis7ChoiceSchema.optional(),
   StatementType: StatementType5ChoiceSchema.optional(),
-});
-
-export const AffirmationStatus8ChoiceSchema = choiceOf({
-  Code: AffirmationStatus1CodeSchema,
-  Proprietary: GenericIdentification30Schema,
 });
 
 export const AllocationSatus3ChoiceSchema = choiceOf({
@@ -176,11 +172,6 @@ export const Status19ChoiceSchema = choiceOf({
   SettlementConditionModificationStatus: SettlementConditionModificationStatus3ChoiceSchema,
 });
 
-export const AcknowledgementReason13ChoiceSchema = choiceOf({
-  Code: RepoCallAcknowledgementReason2CodeSchema,
-  Proprietary: GenericIdentification30Schema,
-});
-
 export const CancellationReason20ChoiceSchema = choiceOf({
   Code: CancelledStatusReason12CodeSchema,
   Proprietary: GenericIdentification30Schema,
@@ -207,13 +198,6 @@ export const PendingReason78ChoiceSchema = choiceOf({
 
 export const FailingReason9ChoiceSchema = choiceOf({
   Code: FailingReason1CodeSchema,
-  Proprietary: GenericIdentification30Schema,
-});
-
-export const PendingProcessingReason6CodeSchema = z.enum(["BLOC", "ADEA", "DOCY", "CAIS", "YCOL", "GLOB", "LIQU", "MONY", "LACK", "FLIM", "MINO", "MUNO", "NEXT", "NOFX", "OTHR", "LALO", "COLL", "DENO", "CERT"]);
-
-export const PendingProcessingReason20ChoiceSchema = choiceOf({
-  Code: PendingProcessingReason6CodeSchema,
   Proprietary: GenericIdentification30Schema,
 });
 
@@ -267,14 +251,6 @@ export const SecuritiesStatementQueryV09Schema = z.strictObject({
 const f = (d: FieldDescriptor): FieldDescriptor => d;
 
 const ownTypeDescriptors: TypeDescriptors = {
-  "DocumentNumber13": {
-    name: "DocumentNumber13",
-    isoId: "_89qrcUAlEeWE6OHCSJh8BQ",
-    kind: "component",
-    fields: [
-      f({ name: "Number", isoId: "_9PiekUAlEeWE6OHCSJh8BQ", xmlTag: "Nb", displayName: displayName("Number"), kind: "choice", type: "DocumentNumber5Choice", required: true }),
-    ],
-  },
   "StatementType5Choice": {
     name: "StatementType5Choice",
     isoId: "_ufLsETqoEeWyoP0PbocV1Q",
@@ -298,15 +274,6 @@ const ownTypeDescriptors: TypeDescriptors = {
     rules: [
       { name: "StatementTypeRule", isoId: "_xstjsQzJEeuTPv2wqaotHg", text: "If StatementType is used, then the statement requested must be a SecuritiesBalanceAccountingReport, a SecuritiesBalanceCustodyReport or a SecuritiesTransactionPostingReport." },
       { name: "StatementBasisRule", isoId: "_xstjswzJEeuTPv2wqaotHg", text: "If StatementBasis is used, then the statement requested must be a SecuritiesBalanceAccountingReport or a SecuritiesBalanceCustodyReport." },
-    ],
-  },
-  "AffirmationStatus8Choice": {
-    name: "AffirmationStatus8Choice",
-    isoId: "_8H8LUTqpEeWyoP0PbocV1Q",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_8nU2ATqpEeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "AffirmationStatus1Code", required: true }),
-      f({ name: "Proprietary", isoId: "_8nU2CTqpEeWyoP0PbocV1Q", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
     ],
   },
   "AllocationSatus3Choice": {
@@ -432,15 +399,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       { name: "StatusRule", isoId: "_9HwpkTqpEeWyoP0PbocV1Q", text: "If a specific Status is requested, then it must be in line with the statuses available for the message type requested." },
     ],
   },
-  "AcknowledgementReason13Choice": {
-    name: "AcknowledgementReason13Choice",
-    isoId: "_TBij0TqrEeWyoP0PbocV1Q",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_ThE_gTqrEeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "RepoCallAcknowledgementReason2Code", required: true }),
-      f({ name: "Proprietary", isoId: "_ThE_iTqrEeWyoP0PbocV1Q", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
   "CancellationReason20Choice": {
     name: "CancellationReason20Choice",
     isoId: "_Wk3goTqrEeWyoP0PbocV1Q",
@@ -496,21 +454,6 @@ const ownTypeDescriptors: TypeDescriptors = {
     choiceOptions: [
       f({ name: "Code", isoId: "_-WP8UTqxEeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "FailingReason1Code", required: true }),
       f({ name: "Proprietary", isoId: "_-WP8WTqxEeWyoP0PbocV1Q", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
-  "PendingProcessingReason6Code": {
-    name: "PendingProcessingReason6Code",
-    isoId: "_I9eEwKoUEfCG2_q2WT-90w",
-    kind: "code",
-    options: [{ value: "BLOC", name: "AccountBlocked", isoId: "_zE4icSm4EfGfZ9PfK70MMg" }, { value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_zE4icym4EfGfZ9PfK70MMg" }, { value: "DOCY", name: "AwaitingDocumentsOrEndorsementsFromYou", isoId: "_zE4idSm4EfGfZ9PfK70MMg" }, { value: "CAIS", name: "AwaitingSecurities", isoId: "_zE4idym4EfGfZ9PfK70MMg" }, { value: "YCOL", name: "CollateralShortage", isoId: "_zE4ieSm4EfGfZ9PfK70MMg" }, { value: "GLOB", name: "GlobalFormSecurities", isoId: "_zE4ieym4EfGfZ9PfK70MMg" }, { value: "LIQU", name: "InsufficientCentralBankLiquidity", isoId: "_zE4ifSm4EfGfZ9PfK70MMg" }, { value: "MONY", name: "InsufficientMoney", isoId: "_zE4ifym4EfGfZ9PfK70MMg" }, { value: "LACK", name: "LackOfSecurities", isoId: "_zE4igSm4EfGfZ9PfK70MMg" }, { value: "FLIM", name: "MaximumForeignLimitReached", isoId: "_zE4igym4EfGfZ9PfK70MMg" }, { value: "MINO", name: "MinimumSettlementAmount", isoId: "_zE4ihSm4EfGfZ9PfK70MMg" }, { value: "MUNO", name: "MultipleSettlementAmount", isoId: "_zE4ihym4EfGfZ9PfK70MMg" }, { value: "NEXT", name: "NextProcess", isoId: "_zE4iiSm4EfGfZ9PfK70MMg" }, { value: "NOFX", name: "NoForeignExchangeInstruction", isoId: "_zE4iiym4EfGfZ9PfK70MMg" }, { value: "OTHR", name: "Other", isoId: "_zE4ijSm4EfGfZ9PfK70MMg" }, { value: "LALO", name: "SecuritiesLoanedOut", isoId: "_zE4ijym4EfGfZ9PfK70MMg" }, { value: "COLL", name: "SecuritiesPledgedAsCollateral", isoId: "_zE4ikSm4EfGfZ9PfK70MMg" }, { value: "DENO", name: "UnavailableDeliverableDenominatedQuantity", isoId: "_zE5JgSm4EfGfZ9PfK70MMg" }, { value: "CERT", name: "WrongCertificatesNumbers", isoId: "_zE5Jgym4EfGfZ9PfK70MMg" }],
-  },
-  "PendingProcessingReason20Choice": {
-    name: "PendingProcessingReason20Choice",
-    isoId: "75a6e078-5fd3-497f-8bb8-96a1032c109f",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "628af229-419a-4eed-8824-4269f8086714", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "PendingProcessingReason6Code", required: true }),
-      f({ name: "Proprietary", isoId: "51023b07-172a-4762-9603-76c59a03c3be", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
     ],
   },
   "RejectionReason45Choice": {
@@ -601,6 +544,7 @@ export const typeDescriptors: TypeDescriptors = {
   "Max35Text": sharedTypeDescriptors["Max35Text"]!,
   "GenericIdentification36": sharedTypeDescriptors["GenericIdentification36"]!,
   "DocumentNumber5Choice": sharedTypeDescriptors["DocumentNumber5Choice"]!,
+  "DocumentNumber13": sharedTypeDescriptors["DocumentNumber13"]!,
   "ISODate": sharedTypeDescriptors["ISODate"]!,
   "ISODateTime": sharedTypeDescriptors["ISODateTime"]!,
   "DateAndDateTime2Choice": sharedTypeDescriptors["DateAndDateTime2Choice"]!,
@@ -626,6 +570,7 @@ export const typeDescriptors: TypeDescriptors = {
   "Max140Text": sharedTypeDescriptors["Max140Text"]!,
   "BlockChainAddressWallet3": sharedTypeDescriptors["BlockChainAddressWallet3"]!,
   "AffirmationStatus1Code": sharedTypeDescriptors["AffirmationStatus1Code"]!,
+  "AffirmationStatus8Choice": sharedTypeDescriptors["AffirmationStatus8Choice"]!,
   "AllocationStatus1Code": sharedTypeDescriptors["AllocationStatus1Code"]!,
   "RepoCallRequestStatus1Code": sharedTypeDescriptors["RepoCallRequestStatus1Code"]!,
   "CorporateActionEventProcessingStatus1Code": sharedTypeDescriptors["CorporateActionEventProcessingStatus1Code"]!,
@@ -640,6 +585,7 @@ export const typeDescriptors: TypeDescriptors = {
   "SecuritiesSettlementStatus2Code": sharedTypeDescriptors["SecuritiesSettlementStatus2Code"]!,
   "SettlementConditionModificationStatus1Code": sharedTypeDescriptors["SettlementConditionModificationStatus1Code"]!,
   "RepoCallAcknowledgementReason2Code": sharedTypeDescriptors["RepoCallAcknowledgementReason2Code"]!,
+  "AcknowledgementReason13Choice": sharedTypeDescriptors["AcknowledgementReason13Choice"]!,
   "CancelledStatusReason12Code": sharedTypeDescriptors["CancelledStatusReason12Code"]!,
   "GeneratedReason3Code": sharedTypeDescriptors["GeneratedReason3Code"]!,
   "GeneratedReasons5Choice": sharedTypeDescriptors["GeneratedReasons5Choice"]!,
@@ -647,6 +593,8 @@ export const typeDescriptors: TypeDescriptors = {
   "AcknowledgementReason5Code": sharedTypeDescriptors["AcknowledgementReason5Code"]!,
   "AcknowledgementReason12Choice": sharedTypeDescriptors["AcknowledgementReason12Choice"]!,
   "FailingReason1Code": sharedTypeDescriptors["FailingReason1Code"]!,
+  "PendingProcessingReason6Code": sharedTypeDescriptors["PendingProcessingReason6Code"]!,
+  "PendingProcessingReason20Choice": sharedTypeDescriptors["PendingProcessingReason20Choice"]!,
   "RejectionReason76Code": sharedTypeDescriptors["RejectionReason76Code"]!,
   "RepairReason6Code": sharedTypeDescriptors["RepairReason6Code"]!,
   "PendingReason6Code": sharedTypeDescriptors["PendingReason6Code"]!,

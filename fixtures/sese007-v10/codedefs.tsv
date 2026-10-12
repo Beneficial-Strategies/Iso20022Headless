@@ -1,0 +1,79 @@
+codeSet	code	enumName	isoId	text
+TransferReason1Code	TRAU	UndividedPossession	_jmXjef8wEeCuNd2SpsBr7g	Transfer is an undivided possession.
+TransferReason1Code	TRAC	TransferBetweenSpouses	_jpfv_v8wEeCuNd2SpsBr7g	Transfer is between spouses.
+TransferReason1Code	TRAT	Trade	_jt-ATv8wEeCuNd2SpsBr7g	Transfer is a trade.
+TransferReason1Code	TRAO	OrdinaryTransfer	_jyIunv8wEeCuNd2SpsBr7g	Transfer is ordinary.
+TransferReason1Code	TRAI	Heritage	_j1kdHv8wEeCuNd2SpsBr7g	Transfer is a heritage.
+TransferReason1Code	TRAG	Gift	_j5cQfv8wEeCuNd2SpsBr7g	Transfer is a gift.
+TransferReason1Code	TPLD	PledgedAccountTransfer	_-i0zjv_YEeCq5NtzDTui4w	Transfer to pledged account (in certain circumstances distributors have to freeze and transfer total or partial holding to separate omnibus account e.g. investigation required by fiscal authority or police).
+TransferReason1Code	TTDT	TDTFrameworkTransfer	_-mZr9v_YEeCq5NtzDTui4w	Transfer instruction executed within TDT framework (TDT framework is the operation model promoted by the Italian Banking Association for transfer and most of transfers, but not all, will be executed in accordance with that process).
+TransferReason1Code	TRPE	TransferBetweenDifferentBeneficiaries	_-q38Tv_YEeCq5NtzDTui4w	Transfer between different beneficiaries with taxation to be applied (accounts with different owner).
+TransferReason1Code	TRAF	Demerger	_E7sZBgCoEeG3Ye2sV3fsog	Transfer is the result of a demerger or division.
+TransferReason1Code	TRAN	BetweenOwnAccounts	_-h3G4ENHEeGHJ_bHJRPaIQ_318694537	Transfer is between own accounts.
+HoldingsPlanType1Code	INVP	InvestmentPlan	_HrnWjv81EeC-e_lDNJKWcg	Holding to be transferred belongs to an investment plan.
+HoldingsPlanType1Code	SWIP	SwitchPlan	_H1dPBv81EeC-e_lDNJKWcg	Holding to be transferred belongs to a switch plan.
+HoldingsPlanType1Code	PLAR	WithdrawalPlan	_H5LRbv81EeC-e_lDNJKWcg	Holding to be transferred belongs to a withdrawal plan.
+RoundingDirection2Code	RDUP	RoundUp	_Y-LZ8tp-Ed-ak6NoX_4Aeg_498412566	Round up to the nearest whole number.
+RoundingDirection2Code	RDWN	RoundDown	_Y-LZ89p-Ed-ak6NoX_4Aeg_498413939	Round down to the nearest whole number.
+ChargePaymentMethod1Code	CASH	Cash	_T2UeMRXzEeOBE-jZfcm4KQ	Payment is with cash.
+ChargePaymentMethod1Code	UNIT	Unit	_UAJIkRXzEeOBE-jZfcm4KQ	Units are redeemed to cover payment.
+BeneficiaryCertificationCompletion1Code	NCER	CertificationNotRequired	_bdn35Np-Ed-ak6NoX_4Aeg_-737437594	Certification is not required for this fund.
+BeneficiaryCertificationCompletion1Code	ELEC	ElectronicCertification	_bdn35dp-Ed-ak6NoX_4Aeg_-737437577	Electronic certification is acceptable.
+BeneficiaryCertificationCompletion1Code	PHYS	PhysicalCertification	_bdn35tp-Ed-ak6NoX_4Aeg_-737437559	Electronic certification is not acceptable and is required in physical form.
+StampDutyType2Code	ASTD	Applicable	_Cd9Nnv8vEeC87tbx-VXRVA	Stamps duty is applicable.
+StampDutyType2Code	SDRN	NotApplicable	_CmdCSv8vEeC87tbx-VXRVA	Stamp duty not applicable.
+InvestmentFundFee2Code	BEND	BackEndLoad	_uPlWAa26EeerDLLe8bZJCA	Fee paid by the investor to the fund or fund management company when redeeming.
+InvestmentFundFee2Code	FEND	FrontEndLoad	_uhu18a26EeerDLLe8bZJCA	Fee paid by the investor to the fund or fund management company when subscribing.
+InvestmentFundFee2Code	TRAN	TransferFee	_uzbp8a26EeerDLLe8bZJCA	In investment funds, a fee charged for the transfer of ownership of an investment fund.
+InvestmentFundFee2Code	POST	PostageCharge	_0rY70a26EeerDLLe8bZJCA	Charge paid for the postage.
+InvestmentFundFee2Code	REGF	RegulatoryFee	_48070a26EeerDLLe8bZJCA	Fee charged by a regulatory authority, for example, securities and exchange fees.
+InvestmentFundFee2Code	SHIP	ShippingCharge	_6HEhYa26EeerDLLe8bZJCA	Charge for shipping, including the insurance of securities.
+InvestmentFundFee2Code	SPCN	SpecialConcessions	_uV2goa27EeerDLLe8bZJCA	Fees, drawdown, or other reduction from or in addition to the deal price.
+ChargeBearer1Code	OUR	BorneByDebtor	_a78HJ9p-Ed-ak6NoX_4Aeg_-676764336	All transaction charges are to be borne by the debtor.
+ChargeBearer1Code	BEN	BorneByCreditor	_a8F4INp-Ed-ak6NoX_4Aeg_-674914229	All transaction charges are to be borne by the creditor.
+ChargeBearer1Code	SHA	Shared	_a8F4Idp-Ed-ak6NoX_4Aeg_-671223087	Under the credit transfer scenario, transaction charges on the sender's side are to be borne by the debtor; transaction charges on the receiver's side are to be borne by the creditor.
+TaxType16Code	COAX	ConsumptionTax	_tcKxkRuGEeOqSdXzJ0oydA	Tax that is levied on goods and services purchased by customers, and is added to the retail price.
+TaxType16Code	CTAX	TaxCredit	_u4j3ERuGEeOqSdXzJ0oydA	Direct reduction of an individual's tax liability.
+TaxType16Code	EUTR	EUTaxRetention	_vqGowRuGEeOqSdXzJ0oydA	Tax withheld at source in the framework of the European Directive on taxation of savings in the form of interest payments.
+TaxType16Code	LEVY	PaymentLevyTax	_w-KRoRuGEeOqSdXzJ0oydA	Tax levied on a payment.
+TaxType16Code	LOCL	LocalTax	_y1CTsRuGEeOqSdXzJ0oydA	Tax that is charged by a local settlement system or local jurisdiction.
+TaxType16Code	NATI	NationalTax	_0ZTi0RuGEeOqSdXzJ0oydA	Tax is a national tax.
+TaxType16Code	PROV	Provincial	_3Ia0cRuGEeOqSdXzJ0oydA	Tax is a provincial tax.
+TaxType16Code	STAM	StampDuty	_359mIRuGEeOqSdXzJ0oydA	Tax is on certain documents and transactions.
+TaxType16Code	STAT	StateTax	_4Ts70RuGEeOqSdXzJ0oydA	Tax is a state tax.
+TaxType16Code	STEX	StockExchangeTax	_6NsjURuGEeOqSdXzJ0oydA	Tax collected by a stock exchange.
+TaxType16Code	TRAN	TransferTax	_7EclIRuGEeOqSdXzJ0oydA	Tax levied on a transfer.
+TaxType16Code	TRAX	TransactionTax	_7j_A0RuGEeOqSdXzJ0oydA	Tax levied on a transaction.
+TaxType16Code	VATA	ValueAddedTax	_8KOhcRuGEeOqSdXzJ0oydA	Tax is a value added tax.
+TaxType16Code	WITH	WithholdingTax	_9CUAARuGEeOqSdXzJ0oydA	Tax is on income deducted at source, which the paying agent is legally obliged to deduct from its payments of interest on deposits and other proceeds of a financial instrument.
+TaxType16Code	NKAP	CapitalLossCredit	_-E9v0RuGEeOqSdXzJ0oydA	Tax recovery is due to capital loss.
+TaxType16Code	KAPA	CapitalGainTax	___j0QRuGEeOqSdXzJ0oydA	Tax is on a capital gain (realised and unrealised), that is, the profit that is gained from the sale of a financial instrument.
+TaxExemptReason1Code	NONE	None	_YhHqgdp-Ed-ak6NoX_4Aeg_-1409527010	Account is not tax exempt.
+TaxExemptReason1Code	MASA	MaxiISA	_YhHqgtp-Ed-ak6NoX_4Aeg_-1409526967	Maxi Individual Savings Account (ISA). Account is an ISA with a single ISA manager that may contain cash, stocks and shares, investment funds and life assurance up to the prescribed annual subscription limit (required for UK). The Maxi ISA allows an investor to save all three of the different elements of ISA investments that are allowed, with one savings institution in a single account.
+TaxExemptReason1Code	MISA	MiniCashISA	_YhHqg9p-Ed-ak6NoX_4Aeg_-1409526932	Mini Cash Individual Savings Account (ISA). Account is an ISA with a single ISA manager that may contain cash, stocks and shares, investment funds and life assurance up to the prescribed annual subscription limit (required for UK). An investor can hold more than one Mini ISA to utilise the overall Mini ISA investment limit, and can invest with more than one savings institution, however only one of the three elements of ISA investment is allowed in a single account.
+TaxExemptReason1Code	SISA	MiniStocksAndSharesISA	_YhHqhNp-Ed-ak6NoX_4Aeg_-1409526915	Mini Stocks and Shares Individual Savings Account (ISA). Account is an ISA with an ISA manager that may only contain stocks, shares and collective investments up to the prescribed annual subscription limit (required for UK).
+TaxExemptReason1Code	IISA	MiniInsuranceISA	_YhHqhdp-Ed-ak6NoX_4Aeg_-1409526620	Mini Insurance Individual Savings Account (ISA). Account is an ISA with an ISA manager that may only contain life insurance investments up to the prescribed annual subscription limit (required for UK).
+TaxExemptReason1Code	CUYP	CurrentYearPayment	_YhHqhtp-Ed-ak6NoX_4Aeg_-1409526595	Account is for current year payments into an investment retirement account (required for US).
+TaxExemptReason1Code	PRYP	PriorYearPayment	_YhHqh9p-Ed-ak6NoX_4Aeg_-1409526543	Account is for a prior year payment into an investment retirement account (required for US).
+TaxExemptReason1Code	ASTR	AssetTransfer	_YhHqiNp-Ed-ak6NoX_4Aeg_-1409526252	Account is for an asset transfer into an investment retirement account (required for US).
+TaxExemptReason1Code	EMPY	EmployeePriorYear	_YhHqidp-Ed-ak6NoX_4Aeg_-1409526216	Account is for employee - prior year contributions into an investment retirement account (required for US).
+TaxExemptReason1Code	EMCY	EmployeeCurrentYear	_YhRbgNp-Ed-ak6NoX_4Aeg_-1409526174	Account is for employee - current year contributions into an investment retirement account (required for US).
+TaxExemptReason1Code	EPRY	EmployerPriorYear	_YhRbgdp-Ed-ak6NoX_4Aeg_-1409526114	Account is for employer - prior year contributions into an investment retirement account (required for US).
+TaxExemptReason1Code	ECYE	EmployerCurrentYear	_YhRbgtp-Ed-ak6NoX_4Aeg_-1409526079	Account is for employer - current year contributions into an investment retirement account (required for US).
+TaxExemptReason1Code	NFPI	NonFundPrototypeIRA	_YhRbg9p-Ed-ak6NoX_4Aeg_-1409526036	Account is for non-fund prototype Individual Retirement Account (IRA) into an investment retirement account (required for US).
+TaxExemptReason1Code	NFQP	NonFundQualifiedPlan	_YhRbhNp-Ed-ak6NoX_4Aeg_-1409525976	Account is for non-fund qualified plan into an investment retirement account (required for US).
+TaxExemptReason1Code	DECP	DefinedContributionPlan	_YhRbhdp-Ed-ak6NoX_4Aeg_-1409525724	Account is for a defined contribution plan (required for US).
+TaxExemptReason1Code	IRAC	IndividualRetirementAccount	_YhRbhtp-Ed-ak6NoX_4Aeg_-1409525647	Account is an Individual Retirement Account (IRA) (required for US).
+TaxExemptReason1Code	IRAR	IndividualRetirementAccountRollover	_YhRbh9p-Ed-ak6NoX_4Aeg_-1409525569	Account is for an Individual Retirement Account (IRA) - Rollover (required for US).
+TaxExemptReason1Code	KEOG	KEOGH	_YhRbiNp-Ed-ak6NoX_4Aeg_-1409525261	KEOGH. Account is a tax-deferred retirement plan designed to help self-employed workers or individuals who earn self-employed income establish a retirement savings program (required for US).
+TaxExemptReason1Code	PFSP	ProfitSharingPlan	_YhRbidp-Ed-ak6NoX_4Aeg_-1409525226	Account is a Profit Sharing Plan (required for US).
+TaxExemptReason1Code	401K	FourHundredAndOneK	_YhalcNp-Ed-ak6NoX_4Aeg_-1409525166	401k. Account is an optional retirement plan supported by many companies, in which income is invested before it is taxed (required for US).
+TaxExemptReason1Code	SIRA	SelfDirectedIRA	_Yhalcdp-Ed-ak6NoX_4Aeg_-1409525106	Self-Directed Individual Retirement Account (IRA) (required for US).
+TaxExemptReason1Code	403B	FourHundredAndThreeB	_Yhalctp-Ed-ak6NoX_4Aeg_-1409525046	403(b). Account is a tax-deferred investment and savings program for employees of hospitals, educational institutions and other non-profit organisations, to save and invest in their own retirement. The name refers to the relevant section in the US Internal Revenue Code (required for US).
+TaxExemptReason1Code	457X	FourHundredFiftySeven	_Yhalc9p-Ed-ak6NoX_4Aeg_-1409524994	457. Account is a non-qualified deferred compensation program that is available to state and local governments and not-for-profit employers (required for US).
+TaxExemptReason1Code	RIRA	RothIRAFundPrototype	_YhaldNp-Ed-ak6NoX_4Aeg_-1409524674	Roth Individual Retirement Account (IRA) Fund Prototype. Account is a tax-deferred retirement account based on the reverse principle of a traditional IRA. Retirement contributions are taxed upfront, but withdrawals may be made tax-free when a certain age is reached, provided the Roth IRA has been set up for a certain period of time (required for US).
+TaxExemptReason1Code	RIAN	RothIRANonPrototype	_Yhalddp-Ed-ak6NoX_4Aeg_-1408604590	Roth Individual Retirement Account (IRA) Non-Prototype. Account is a tax-deferred retirement account based on the reverse principle of a traditional IRA. Retirement contributions are taxed upfront, but withdrawals may be made tax-free when a certain age is reached, provided the Roth IRA has been set up for a certain period of time (required for US).
+TaxExemptReason1Code	RCRF	RothConversionIRAFundPrototype	_Yhaldtp-Ed-ak6NoX_4Aeg_-1408604530	Roth Conversion Individual Retirement Account (IRA) Fund Prototype. Account is a retirement account established when a party switches from a regular IRA ( required for US).
+TaxExemptReason1Code	RCIP	RothConversionIRANonPrototype	_Yhald9p-Ed-ak6NoX_4Aeg_-1408604400	Roth Conversion Individual Retirement Account (IRA) Non-Prototype. Account is a retirement account established when a party switches from a Regular IRA (required for US).
+TaxExemptReason1Code	EIFP	EducationIRAFundPrototype	_YhaleNp-Ed-ak6NoX_4Aeg_-1408603967	Education Individual Retirement Account Fund Prototype (also known as an Education Savings Account). Account is a savings plan open to anyone under the age of 18. When the account owner withdraws money to pay for qualified higher education expenses, the withdrawals are generally tax-free (required for US).
+TaxExemptReason1Code	EIOP	EducationIRANonPrototype	_Yhaledp-Ed-ak6NoX_4Aeg_-1408603642	Education Individual Retirement Account Non-Prototype (also known as an Education Savings Account). Account is a savings plan open to anyone under the age of 18. When the account owner withdraws money to pay for qualified higher education expenses, the withdrawals are generally tax-free (required in the US).

@@ -1,0 +1,75 @@
+{
+  "identifier": "sese.034.002.09",
+  "name": "SecuritiesFinancingStatusAdvice002V09",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:sese.034.002.09",
+  "bodyTag": "SctiesFincgStsAdvc",
+  "out": "sese034f2",
+  "isoId": "_ddARIzi8Eeydid5dcNPKvg",
+  "definition": "Scope|An securities financing transaction account servicer sends a SecuritiesFinancingStatusAdvice to an account owner to advise the status of a securities financing transaction previously instructed by the account owner.|The status advice may be sent as a response to the request of the account owner or not.|The account servicer/owner relationship may be:|- a central securities depository or another settlement market infrastructure managing securities financing transactions on behalf of their participants|- an agent (sub-custodian) managing securities financing transactions on behalf of their global custodian customer, or|- a custodian managing securities financing transactions on behalf of an investment management institution or a broker/dealer.||Usage|The message may also be used to:|- re-send a message previously sent,|- provide a third party with a copy of a message for information,|- re-send to a third party a copy of a message for information using the relevant elements in the Business Application Header.",
+  "blocks": [
+    {
+      "name": "TransactionIdentification",
+      "isoId": "_ddARKji8Eeydid5dcNPKvg",
+      "xmlTag": "TxId",
+      "type": "TransactionIdentifications35",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ProcessingStatus",
+      "isoId": "_ddARLDi8Eeydid5dcNPKvg",
+      "xmlTag": "PrcgSts",
+      "type": "ProcessingStatus90Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "MatchingStatus",
+      "isoId": "_ddARLji8Eeydid5dcNPKvg",
+      "xmlTag": "MtchgSts",
+      "type": "MatchingStatus29Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "InferredMatchingStatus",
+      "isoId": "_ddARMDi8Eeydid5dcNPKvg",
+      "xmlTag": "IfrrdMtchgSts",
+      "type": "MatchingStatus29Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SettlementStatus",
+      "isoId": "_ddARMji8Eeydid5dcNPKvg",
+      "xmlTag": "SttlmSts",
+      "type": "SettlementStatus21Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "RepoCallRequestStatus",
+      "isoId": "_ddARNDi8Eeydid5dcNPKvg",
+      "xmlTag": "RepoCallReqSts",
+      "type": "RepoCallRequestStatus9Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "TransactionDetails",
+      "isoId": "_ddARNji8Eeydid5dcNPKvg",
+      "xmlTag": "TxDtls",
+      "type": "SecuritiesFinancingTransactionDetails53",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_ddARODi8Eeydid5dcNPKvg",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

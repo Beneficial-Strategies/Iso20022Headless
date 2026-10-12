@@ -1,0 +1,3 @@
+codeSet	isoId	text
+SecuritiesTransactionType28Code	_YKldDAleEeuQ1MenzX1l-g	Specifies underlying information regarding the type of settlement transaction.
+SettlementTransactionCondition10Code	_T_gNcGaIEeWZev0W8F756g	Specifies the conditions under which the order/trade is to be settled.

@@ -1,0 +1,9 @@
+choice	memberId	memberName	text
+References68Choice	_HVRNUZGrEem-9Y6mq5ZH3Q	PreviousReference	Reference to a linked message that was previously sent.
+References68Choice	_HVRNU5GrEem-9Y6mq5ZH3Q	OtherReference	Reference to a linked message sent in a proprietary way or the reference of a system.
+TypeOfRequest1Choice	_1DwE4NvdEeqxGfKJubfhIw	Code	Type of request expressed as a code.
+TypeOfRequest1Choice	_2GjlsNvdEeqxGfKJubfhIw	Proprietary	Type of request expressed as a proprietary code.
+Role8Choice	_h6lO0dyREeqKxsvOxFQHKA	Code	Role of the party in the activity expressed as a code.
+Role8Choice	_h6lO09yREeqKxsvOxFQHKA	Proprietary	Role of the party in the activity expressed as a proprietary code.
+RejectedReason33Choice	_P7n1sQVHEeq4ZaI1b_-GPA	Code	Rejected reason expressed as a code.
+RejectedReason33Choice	_P7n1swVHEeq4ZaI1b_-GPA	Proprietary	Rejected reason expressed as a proprietary code.

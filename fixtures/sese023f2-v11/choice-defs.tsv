@@ -1,0 +1,5 @@
+choice	memberId	memberName	text
+SecuritiesTransactionType53Choice	_VALdpffYEeiNZp_PtLohLw	Code	Securities transaction type expressed as an ISO 20022 code.
+SecuritiesTransactionType53Choice	_VALdrffYEeiNZp_PtLohLw	Proprietary	Securities transaction type expressed as a proprietary code.
+SettlementTransactionCondition39Choice	_NIiaNSAdEeuyDZ-ukt4YRg	Code	Settlement conditions expressed as an ISO 20022 code.
+SettlementTransactionCondition39Choice	_NIiaPSAdEeuyDZ-ukt4YRg	Proprietary	Settlement conditions expressed as a proprietary code.

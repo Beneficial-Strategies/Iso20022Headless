@@ -1,0 +1,48 @@
+codeSet	code	enumName	isoId	text
+ProcessingPosition5Code	INFO	Information	_-jjQIWaxEeWZev0W8F756g	Specifies that the transactions/instructions are linked for information purposes only.
+OpeningClosing1Code	CLOP	ClosePosition	_aOytR9p-Ed-ak6NoX_4Aeg_1340458350	Indicates that the trade is to close a position.
+OpeningClosing1Code	OPEP	OpenPosition	_aOytSNp-Ed-ak6NoX_4Aeg_1926405376	Indicates that the trade is to open a position.
+SecuritiesTransactionType25Code	BSBK	BuySellBack	_xejhodYOEeiHVOfMzoKxnA	Relates to a buy sell back transaction.
+SecuritiesTransactionType25Code	BYIY	BuyIn	_xejho9YOEeiHVOfMzoKxnA	Relates to a buy-in by the market following a delivery transaction failure.
+SecuritiesTransactionType25Code	CNCB	CentralBankCollateralOperation	_xejhpdYOEeiHVOfMzoKxnA	Relates to a collateral delivery/receipt to a national central bank for central bank credit operations.
+SecuritiesTransactionType25Code	COLI	CollateralIn	_xejhp9YOEeiHVOfMzoKxnA	Relates to a collateral transaction, from the point of view of the collateral taker or its agent.
+SecuritiesTransactionType25Code	COLO	CollateralOut	_xejhqdYOEeiHVOfMzoKxnA	Relates to a collateral transaction, from the point of view of the collateral giver or its agent.
+SecuritiesTransactionType25Code	CONV	DepositoryReceiptConversion	_xejhq9YOEeiHVOfMzoKxnA	Relates to a depository receipt conversion.
+SecuritiesTransactionType25Code	FCTA	FactorUpdate	_xejhrdYOEeiHVOfMzoKxnA	Relates to a factor update.
+SecuritiesTransactionType25Code	INSP	MoveOfStock	_xejhr9YOEeiHVOfMzoKxnA	Relates to a movement of shares into or out of a pooled account.
+SecuritiesTransactionType25Code	ISSU	Issuance	_xejhsdYOEeiHVOfMzoKxnA	Relates to the issuance of a security such as an equity or a depositary receipt.
+SecuritiesTransactionType25Code	MKDW	MarkDown	_xejhs9YOEeiHVOfMzoKxnA	Relates to the decrease of positions held by an International Central Securities Depository (ICSD) at the common depository due to custody operations (repurchase, pre-release, proceeds of corporate event realigned).
+SecuritiesTransactionType25Code	MKUP	MarkUp	_xejhtdYOEeiHVOfMzoKxnA	Relates to the increase of positions held by an International Central Securities Depository (ICSD) at the common depository due to custody operations (repurchase, pre-release, proceeds of corporate event realigned).
+SecuritiesTransactionType25Code	NETT	Netting	_xejht9YOEeiHVOfMzoKxnA	Relates to the netting of settlement instructions.
+SecuritiesTransactionType25Code	NSYN	NonSyndicated	_xejhudYOEeiHVOfMzoKxnA	Relates to the issue of medium and short term paper (CP, CD, MTN, notes) under a program and without syndication arrangement.
+SecuritiesTransactionType25Code	OWNE	ExternalAccountTransfer	_xejhu9YOEeiHVOfMzoKxnA	Relates to an account transfer involving more than one instructing party (message sender) and/or account servicer (messages receiver).
+SecuritiesTransactionType25Code	OWNI	InternalAccountTransfer	_xejhvdYOEeiHVOfMzoKxnA	Relates to an account transfer involving one instructing party (message sender) at one account servicer (messages receiver).
+SecuritiesTransactionType25Code	PAIR	PairOff	_xejhv9YOEeiHVOfMzoKxnA	Relates to a pair-off: the transaction is paired off and netted against one or more previous transactions.
+SecuritiesTransactionType25Code	PLAC	Placement	_xejhwdYOEeiHVOfMzoKxnA	Relates to the placement/new issue of a financial instrument.
+SecuritiesTransactionType25Code	PORT	PortfolioMove	_xejhw9YOEeiHVOfMzoKxnA	Relates to a portfolio move from one investment manager to another and/or from an account servicer to another. It is generally charged differently than another account transfer, hence the need to identify this type of transfer as such.
+SecuritiesTransactionType25Code	REAL	Realignment	_xejhxdYOEeiHVOfMzoKxnA	Relates to a realignment of positions.
+SecuritiesTransactionType25Code	REDI	Withdrawal	_xejhx9YOEeiHVOfMzoKxnA	Relates to the withdrawal of specified amounts from specified subaccounts.
+SecuritiesTransactionType25Code	REDM	Redemption	_xejhydYOEeiHVOfMzoKxnA	Relates to a redemption of funds (funds industry only).
+SecuritiesTransactionType25Code	RELE	DepositoryReceiptReleaseCancellation	_xejhy9YOEeiHVOfMzoKxnA	Relates to a release (into/from local) of depository receipt operation.
+SecuritiesTransactionType25Code	REPU	Repo	_xejhzdYOEeiHVOfMzoKxnA	Relates to a repurchase agreement transaction.
+SecuritiesTransactionType25Code	RODE	ReturnDeliveryWithoutMatching	_xejhz9YOEeiHVOfMzoKxnA	Relates to the return of financial instruments resulting from a rejected delivery without a matching operation.
+SecuritiesTransactionType25Code	RVPO	ReverseRepurchaseAgreement	_xejh0dYOEeiHVOfMzoKxnA	Relates to a reverse repurchase agreement transaction.
+SecuritiesTransactionType25Code	SBBK	SellBuyBack	_xejh09YOEeiHVOfMzoKxnA	Relates to a sell buy back transaction.
+SecuritiesTransactionType25Code	SBRE	BorrowingReallocation	_xejh1dYOEeiHVOfMzoKxnA	Internal reallocation of a borrowed holding from one safekeeping account to another.
+SecuritiesTransactionType25Code	SECB	SecuritiesBorrowing	_xejh19YOEeiHVOfMzoKxnA	Relates to a securities borrowing operation.
+SecuritiesTransactionType25Code	SECL	SecuritiesLending	_xejh2dYOEeiHVOfMzoKxnA	Relates to a securities lending operation.
+SecuritiesTransactionType25Code	SLRE	LendingReallocation	_xejh29YOEeiHVOfMzoKxnA	Internal reallocation of a holding on loan from one safekeeping account to another.
+SecuritiesTransactionType25Code	SUBS	Subscription	_xejh3dYOEeiHVOfMzoKxnA	Relates to a subscription to funds (funds industry only).
+SecuritiesTransactionType25Code	SYND	SyndicateUnderwriters	_xejh39YOEeiHVOfMzoKxnA	Relates to the issue of financial instruments through a syndicate of underwriters and a lead manager.
+SecuritiesTransactionType25Code	TBAC	TBAClosing	_xejh4dYOEeiHVOfMzoKxnA	Relates to a To Be Announced (TBA) closing trade.
+SecuritiesTransactionType25Code	TRAD	Trade	_xejh49YOEeiHVOfMzoKxnA	Relates to the settlement of a trade.
+SecuritiesTransactionType25Code	TRPO	TripartyRepo	_xejh5dYOEeiHVOfMzoKxnA	Relates to a triparty repurchase agreement.
+SecuritiesTransactionType25Code	TRVO	TripartyReverseRepo	_xejh59YOEeiHVOfMzoKxnA	Relates to a triparty reverse repurchase agreement.
+SecuritiesTransactionType25Code	TURN	Turnaround	_xejh6dYOEeiHVOfMzoKxnA	Relates to a turnaround: the same security is bought and sold to settle the same day, to or from different brokers.
+SecuritiesTransactionType25Code	CLAI	MarketClaim	_xejh69YOEeiHVOfMzoKxnA	Relates to a market claim.
+SecuritiesTransactionType25Code	CORP	CorporateAction	_xejh7dYOEeiHVOfMzoKxnA	Relates to a corporate action.
+SecuritiesTransactionType25Code	AUTO	AutoCollateralisation	_xejh79YOEeiHVOfMzoKxnA	Relates to an auto-collateralisation movement.
+SecuritiesTransactionType25Code	SWIF	SwitchFrom	_xejh8dYOEeiHVOfMzoKxnA	Transaction is a change of an investment from one sub-fund to another sub-fund (redemption-leg).
+SecuritiesTransactionType25Code	SWIT	SwitchTo	_xejh89YOEeiHVOfMzoKxnA	Transaction is a change of an investment from one sub-fund to another sub-fund (subscription-leg).
+SecuritiesTransactionType25Code	ETFT	ExchangeTradedFunds	_xejh9dYOEeiHVOfMzoKxnA	Relates to an ETF creation or redemption.
+SecuritiesTransactionType25Code	REBL	Rebalancing	_Av_rYdYPEeiHVOfMzoKxnA	Relates to a rebalanced transaction.

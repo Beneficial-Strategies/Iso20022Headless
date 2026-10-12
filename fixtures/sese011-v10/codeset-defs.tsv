@@ -1,0 +1,9 @@
+codeSet	isoId	text
+TransferStatusType2Code	_16omUNydEeqzDbuoooxhdw	Specifies a type of transfer status or transfer event.
+TransferStatus6Code	_zBEicLshEeiTr4dQrTCaYA	Specifies a transfer or settlement instruction status.
+PendingSettlementStatusReason2Code	_aDxJA9p-Ed-ak6NoX_4Aeg_-1233849534	Specifies the reason for a transfer or settlement instruction settlement pending status.
+TransferUnmatchedReason3Code	_qfeCYJM5EemKz5EOjv82iQ	Specifies the reason the transaction, transfer or settlement instruction is unmatched.
+RejectedStatusReason13Code	_AlouseijEeuLe8v4JEtDDg	Specifies the reason for a transfer or settlement instruction rejected status.
+CancelledStatusReason3Code	_a0yWQtp-Ed-ak6NoX_4Aeg_2105332425	Specifies the underlying reason for cancellation of the associated transaction.
+ApplicableRules1Code	_MZLBYFNfEeijdq8ilaxyOA	Specifies applicable rules.
+BeneficiaryType1Code	_NtVGAFNhEeijdq8ilaxyOA	Specifies a type of beneficiary.

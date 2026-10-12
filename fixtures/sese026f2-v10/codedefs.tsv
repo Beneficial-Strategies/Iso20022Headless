@@ -1,0 +1,44 @@
+codeSet	code	enumName	isoId	text
+SecuritiesTransactionType22Code	BSBK	BuySellBack	_nc83odEdEeiO-eodGv5iKQ	Relates to a buy sell back transaction.
+SecuritiesTransactionType22Code	BYIY	BuyIn	_obb5IdEdEeiO-eodGv5iKQ	Relates to a buy-in by the market following a delivery transaction failure.
+SecuritiesTransactionType22Code	CNCB	CentralBankCollateralOperation	_qjRIUdEdEeiO-eodGv5iKQ	Relates to a collateral delivery/receipt to a national central bank for central bank credit operations.
+SecuritiesTransactionType22Code	COLI	CollateralIn	_rRYykdEdEeiO-eodGv5iKQ	Relates to a collateral transaction, from the point of view of the collateral taker or its agent.
+SecuritiesTransactionType22Code	COLO	CollateralOut	_rjiSgdEdEeiO-eodGv5iKQ	Relates to a collateral transaction, from the point of view of the collateral giver or its agent.
+SecuritiesTransactionType22Code	CONV	DepositoryReceiptConversion	_sO-cMdEdEeiO-eodGv5iKQ	Relates to a depository receipt conversion.
+SecuritiesTransactionType22Code	FCTA	FactorUpdate	_szuIAdEdEeiO-eodGv5iKQ	Relates to a factor update.
+SecuritiesTransactionType22Code	INSP	MoveOfStock	_uMsGEdEdEeiO-eodGv5iKQ	Relates to a movement of shares into or out of a pooled account.
+SecuritiesTransactionType22Code	ISSU	Issuance	_u3iZ4dEdEeiO-eodGv5iKQ	Relates to the issuance of a security such as an equity or a depositary receipt.
+SecuritiesTransactionType22Code	MKDW	MarkDown	_veqrUdEdEeiO-eodGv5iKQ	Relates to the decrease of positions held by an International Central Securities Depository (ICSD) at the common depository due to custody operations (repurchase, pre-release, proceeds of corporate event realigned).
+SecuritiesTransactionType22Code	MKUP	MarkUp	_wC9rMdEdEeiO-eodGv5iKQ	Relates to the increase of positions held by an International Central Securities Depository (ICSD) at the common depository due to custody operations (repurchase, pre-release, proceeds of corporate event realigned).
+SecuritiesTransactionType22Code	NETT	Netting	_wYsDkdEdEeiO-eodGv5iKQ	Relates to the netting of settlement instructions.
+SecuritiesTransactionType22Code	NSYN	NonSyndicated	_w8sIgdEdEeiO-eodGv5iKQ	Relates to the issue of medium and short term paper (CP, CD, MTN, notes) under a program and without syndication arrangement.
+SecuritiesTransactionType22Code	OWNE	ExternalAccountTransfer	_zpHSgdEdEeiO-eodGv5iKQ	Relates to an account transfer involving more than one instructing party (message sender) and/or account servicer (messages receiver).
+SecuritiesTransactionType22Code	OWNI	InternalAccountTransfer	_0PpuEdEdEeiO-eodGv5iKQ	Relates to an account transfer involving one instructing party (message sender) at one account servicer (messages receiver).
+SecuritiesTransactionType22Code	PAIR	PairOff	_1dmu8dEdEeiO-eodGv5iKQ	Relates to a pair-off: the transaction is paired off and netted against one or more previous transactions.
+SecuritiesTransactionType22Code	PLAC	Placement	_14PcgdEdEeiO-eodGv5iKQ	Relates to the placement/new issue of a financial instrument.
+SecuritiesTransactionType22Code	PORT	PortfolioMove	_2n_ecdEdEeiO-eodGv5iKQ	Relates to a portfolio move from one investment manager to another and/or from an account servicer to another. It is generally charged differently than another account transfer, hence the need to identify this type of transfer as such.
+SecuritiesTransactionType22Code	REAL	Realignment	_3IRhAdEdEeiO-eodGv5iKQ	Relates to a realignment of positions.
+SecuritiesTransactionType22Code	REDI	Withdrawal	_4xm2UdEdEeiO-eodGv5iKQ	Relates to the withdrawal of specified amounts from specified subaccounts.
+SecuritiesTransactionType22Code	REDM	Redemption	_5hqaQdEdEeiO-eodGv5iKQ	Relates to a redemption of funds (funds industry only).
+SecuritiesTransactionType22Code	RELE	DepositoryReceiptReleaseCancellation	_67q6IdEdEeiO-eodGv5iKQ	Relates to a release (into/from local) of depository receipt operation.
+SecuritiesTransactionType22Code	REPU	Repo	_8J7dAdEdEeiO-eodGv5iKQ	Relates to a repurchase agreement transaction.
+SecuritiesTransactionType22Code	RODE	ReturnDeliveryWithoutMatching	_85FpEdEdEeiO-eodGv5iKQ	Relates to the return of financial instruments resulting from a rejected delivery without a matching operation.
+SecuritiesTransactionType22Code	RVPO	ReverseRepurchaseAgreement	_9_TqQdEdEeiO-eodGv5iKQ	Relates to a reverse repurchase agreement transaction.
+SecuritiesTransactionType22Code	SBBK	SellBuyBack	_BB54kdEeEeiO-eodGv5iKQ	Relates to a sell buy back transaction.
+SecuritiesTransactionType22Code	SBRE	BorrowingReallocation	_ClSW4dEeEeiO-eodGv5iKQ	Internal reallocation of a borrowed holding from one safekeeping account to another.
+SecuritiesTransactionType22Code	SECB	SecuritiesBorrowing	_D8nWMdEeEeiO-eodGv5iKQ	Relates to a securities borrowing operation.
+SecuritiesTransactionType22Code	SECL	SecuritiesLending	_EOUKMdEeEeiO-eodGv5iKQ	Relates to a securities lending operation.
+SecuritiesTransactionType22Code	SLRE	LendingReallocation	_FdnO4dEeEeiO-eodGv5iKQ	Internal reallocation of a holding on loan from one safekeeping account to another.
+SecuritiesTransactionType22Code	SUBS	Subscription	_Gm9ckdEeEeiO-eodGv5iKQ	Relates to a subscription to funds (funds industry only).
+SecuritiesTransactionType22Code	SYND	SyndicateUnderwriters	_H3l-AdEeEeiO-eodGv5iKQ	Relates to the issue of financial instruments through a syndicate of underwriters and a lead manager.
+SecuritiesTransactionType22Code	TBAC	TBAClosing	_IZXOUdEeEeiO-eodGv5iKQ	Relates to a To Be Announced (TBA) closing trade.
+SecuritiesTransactionType22Code	TRAD	Trade	_Iyp4EdEeEeiO-eodGv5iKQ	Relates to the settlement of a trade.
+SecuritiesTransactionType22Code	TRPO	TripartyRepo	_Ja-cUdEeEeiO-eodGv5iKQ	Relates to a triparty repurchase agreement.
+SecuritiesTransactionType22Code	TRVO	TripartyReverseRepo	_JkMpwdEeEeiO-eodGv5iKQ	Relates to a triparty reverse repurchase agreement.
+SecuritiesTransactionType22Code	TURN	Turnaround	_J6g4AdEeEeiO-eodGv5iKQ	Relates to a turnaround: the same security is bought and sold to settle the same day, to or from different brokers.
+SecuritiesTransactionType22Code	CLAI	MarketClaim	_Lzd9sdEeEeiO-eodGv5iKQ	Relates to a market claim.
+SecuritiesTransactionType22Code	CORP	CorporateAction	_MktNYdEeEeiO-eodGv5iKQ	Relates to a corporate action.
+SecuritiesTransactionType22Code	AUTO	AutoCollateralisation	_NVXOQdEeEeiO-eodGv5iKQ	Relates to an auto-collateralisation movement.
+SecuritiesTransactionType22Code	SWIF	SwitchFrom	_Ux4DIdEeEeiO-eodGv5iKQ	Transaction is a change of an investment from one sub-fund to another sub-fund (redemption-leg).
+SecuritiesTransactionType22Code	SWIT	SwitchTo	_U4khAdEeEeiO-eodGv5iKQ	Transaction is a change of an investment from one sub-fund to another sub-fund (subscription-leg).
+SecuritiesTransactionType22Code	ETFT	ExchangeTradedFunds	_k1mlcdEeEeiO-eodGv5iKQ	Relates to an ETF creation or redemption.

@@ -1,0 +1,123 @@
+codeSet	code	enumName	isoId	text
+TransferStatusType2Code	S019	AccountHoldingInformationRequest	_4NeysdydEeqzDbuoooxhdw	Status report is sent in response to an account holding information request.
+TransferStatusType2Code	BCEV	BenefitCrystallisationEvent	_4ULQkdydEeqzDbuoooxhdw	Status report advises one or more Benefit Crystallisation Events (BCE) have occurred.
+TransferStatusType2Code	SETT	CSDorICSDSettlementInformation	_4ZrbodydEeqzDbuoooxhdw	Status report is sent to provide information required for a CSD or ICSD settlement leg.
+TransferStatusType2Code	DRAW	Drawdown	_4ghDcdydEeqzDbuoooxhdw	Status report advises one or more drawdowns.
+TransferStatusType2Code	PAYA	PaymentAdvice	_4ojlIdydEeqzDbuoooxhdw	Status report advises cash is or has been instructed.
+TransferStatusType2Code	S012	PortfolioTransferInstruction	_4t5_MdydEeqzDbuoooxhdw	Status report is sent in response to a portfolio transfer instruction.
+TransferStatusType2Code	INFO	Information	_42iWwdydEeqzDbuoooxhdw	Status report is sent to provide information pertinent to the transfer. May be sent in response to a request for transfer status.
+TransferStatusType2Code	STAT	Status	_48Ch0dydEeqzDbuoooxhdw	Status report is sent to provide the status of a transfer. May be sent in response to a request for transfer status.
+TransferStatusType2Code	S005	TransferInInstruction	_5CcEwdydEeqzDbuoooxhdw	Status report is sent in response to a transfer-in instruction.
+TransferStatusType2Code	S001	TransferOutInstruction	_5IY7wdydEeqzDbuoooxhdw	Status report is sent in response to a transfer-out instruction.
+TransferStatusType2Code	CONV	ConversionStatus	_mYWJ0XwiEeuQY_68iqAoCQ	Status report is sent to provide the number of units following a conversion.
+TransferStatus6Code	PACK	Accepted	_0cRVIbshEeiTr4dQrTCaYA	Transfer or settlement instruction has been acknowledged / accepted for further processing.
+TransferStatus6Code	COSE	AlreadyExecuted	_0i9zAbshEeiTr4dQrTCaYA	Transfer or settlement instruction is fully executed and the confirmation is sent.
+TransferStatus6Code	COMP	Complete	_1B6Y0bshEeiTr4dQrTCaYA	Portfolio transfer is complete.
+TransferStatus6Code	DELY	Delayed	_1IBA0bshEeiTr4dQrTCaYA	Transfer or settlement instruction is delayed.
+TransferStatus6Code	MACH	Matched	_1kSGEbshEeiTr4dQrTCaYA	Transfer or settlement instruction is matched.
+TransferStatus6Code	RECE	Received	_1wxp8bshEeiTr4dQrTCaYA	Instruction has been received, that is, technical validation of the message is ok, and the message is now at the receiving side.
+TransferStatus6Code	STNP	SentToNextParty	_59ds0bshEeiTr4dQrTCaYA	Transfer or settlement instruction has been sent to the next party, that is, the next intermediary.
+TransferStatus6Code	SETT	Settled	_6FfncbshEeiTr4dQrTCaYA	Transfer or settlement instruction is settled.
+PendingSettlementStatusReason2Code	AWSH	AwaitingSharesFromCounterparty	_aDxJBNp-Ed-ak6NoX_4Aeg_-1233849291	Securities have not yet been received from the counterparty.
+PendingSettlementStatusReason2Code	BLOC	AccountBlocked	_aDxJBdp-Ed-ak6NoX_4Aeg_-1233849275	Your account is blocked, no instruction can settle over the account.
+PendingSettlementStatusReason2Code	CAIS	AwaitingSecurities	_aDxJBtp-Ed-ak6NoX_4Aeg_-1233849257	Awaiting securities from corporate action issue or other procedures, for example, conversion, dematerialisation, exchange, registration, stamping, splitting, etc.
+PendingSettlementStatusReason2Code	CLAC	CounterpartyInsufficientSecurities	_aDxJB9p-Ed-ak6NoX_4Aeg_-1233849232	Insufficient deliverable securities in the counterparty's account, or counterparty does not hold the securities.
+PendingSettlementStatusReason2Code	DOCC	AwaitingDocumentsOrEndorsementsFromCounterparty	_aDxJCNp-Ed-ak6NoX_4Aeg_-1233849215	Awaiting documents or endorsements from the counterparty.
+PendingSettlementStatusReason2Code	DOCY	AwaitingDocumentsOrEndorsementsFromYou	_aDxJCdp-Ed-ak6NoX_4Aeg_-1233849196	Awaiting documents or endorsements from you.
+PendingSettlementStatusReason2Code	IAAD	StatusReasonInvestigation	_aD6S8Np-Ed-ak6NoX_4Aeg_-1233849171	Pending reason is being investigated.
+PendingSettlementStatusReason2Code	LACK	LackOfSecurities	_aD6S8dp-Ed-ak6NoX_4Aeg_-1233849154	Insufficient deliverable securities in your account.
+PendingSettlementStatusReason2Code	LINK	PendingLinkedInstruction	_aD6S8tp-Ed-ak6NoX_4Aeg_-1233849136	Your instruction is pending settlement because the instruction linked to it is pending.
+PendingSettlementStatusReason2Code	PHCK	PhysicalSecuritiesVerification	_aD6S89p-Ed-ak6NoX_4Aeg_-1233848853	Physical shares have been received and are being checked for authenticity.
+PendingSettlementStatusReason2Code	PHSE	PhysicalDeliveryDelay	_aD6S9Np-Ed-ak6NoX_4Aeg_-1233848828	Settlement is physical and securities are being delivered.
+PendingSettlementStatusReason2Code	SBLO	SecuritiesBlocked	_aD6S9dp-Ed-ak6NoX_4Aeg_-1233848811	Settlement is pending. The securities are blocked due to, for example, a corporate action event, re-alignment.
+PendingSettlementStatusReason2Code	MINF	MissingInformation	_aD6S9tp-Ed-ak6NoX_4Aeg_-1233848793	Information, for example, telephone number, contact person, is missing.
+PendingSettlementStatusReason2Code	ACOP	AccountNotOpen	_aD6S99p-Ed-ak6NoX_4Aeg_-2010200617	Account must already be opened in order to process the transfer.
+PendingSettlementStatusReason2Code	IINV	UnderInvestigation	_aD6S-Np-Ed-ak6NoX_4Aeg_-1483792246	Intermediary is investigating the reason why the transfer is pending.
+PendingSettlementStatusReason2Code	CINV	UnderClientInvestigation	_aD6S-dp-Ed-ak6NoX_4Aeg_1492449293	Client has been informed of a problem and is investigating.
+PendingSettlementStatusReason2Code	AINV	UnderTransferAgentInvestigation	_aEED8Np-Ed-ak6NoX_4Aeg_1868323412	Transfer agent is investigating.
+PendingSettlementStatusReason2Code	WTRF	AwaitingTransferAgentStatus	_aEED8dp-Ed-ak6NoX_4Aeg_-1972271569	Transfer is being processed by the transfer agent, awaiting status from transfer agent.
+PendingSettlementStatusReason2Code	USUA	UsualTransactionTime	_aEED8tp-Ed-ak6NoX_4Aeg_-192646664	Usual transfer agent's processing timeframe.
+PendingSettlementStatusReason2Code	ASTA	AwaitingStatus	_aEED89p-Ed-ak6NoX_4Aeg_180454812	At your request, the Intermediary is checking the status of your instruction with the transfer agent.
+PendingSettlementStatusReason2Code	AFST	ApplicationFormSent	_aEED9Np-Ed-ak6NoX_4Aeg_116465332	Application form has been sent to the transfer agent.
+PendingSettlementStatusReason2Code	STST	StockTransferFormSent	_aEED9dp-Ed-ak6NoX_4Aeg_521891765	Stock transfer form has been sent to the counterparty to sign and forward to the transfer agent.
+PendingSettlementStatusReason2Code	LPRO	LongerProcessing	_aEED9tp-Ed-ak6NoX_4Aeg_1023363327	Longer processing timeframe for this type of transfer, due to documentation requirements.
+PendingSettlementStatusReason2Code	ADRQ	AdditionalDocumentsRequested	_aEED99p-Ed-ak6NoX_4Aeg_-797492601	Additional documents have been requested by the transfer agent.
+PendingSettlementStatusReason2Code	ADS1	AdditionalDocumentsSent1	_aEED-Np-Ed-ak6NoX_4Aeg_-553683232	Additional documents have been sent.
+PendingSettlementStatusReason2Code	ADS2	AdditionalDocumentsSent2	_aEED-dp-Ed-ak6NoX_4Aeg_-181502211	Upon request of the transfer agent, the intermediary has sent additional documents. The transfer agent has confirmed that all the necessary information is now in place.
+PendingSettlementStatusReason2Code	DRJC	DocumentsRejected	_aEED-tp-Ed-ak6NoX_4Aeg_-93440871	Documents are rejected by the transfer agent.
+PendingSettlementStatusReason2Code	CYIN	AwaitingCounterpartyReceipt	_aEN08Np-Ed-ak6NoX_4Aeg_-1586114201	Counterparty has not sent an instruction to receive. Check with counterparty.
+PendingSettlementStatusReason2Code	CYDV	AwaitingCounterpartyDelivery	_aEN08dp-Ed-ak6NoX_4Aeg_-626574858	Counterparty has not sent an instruction to deliver or delivered the shares. Check with counterparty.
+PendingSettlementStatusReason2Code	OVER	NormalProcessingPeriodLapsed	_aEN08tp-Ed-ak6NoX_4Aeg_233223132	Normal processing period for the instruction has lapsed. The transfer agent has been or will be contacted.
+PendingSettlementStatusReason2Code	WCPA	WrongCounterpartyAccount	_aEN089p-Ed-ak6NoX_4Aeg_633107237	Wrong counterparty account details.
+PendingSettlementStatusReason2Code	SDUT	LackOfStampDutyInformation	_aEN09Np-Ed-ak6NoX_4Aeg_1897405770	Instruction is pending as stamp duty information is missing.
+PendingSettlementStatusReason2Code	TAPR	TransferAgentProcessing	_aFGlwNp-Ed-ak6NoX_4Aeg_-1973666314	Transfer is being processed by transfer agent.
+PendingSettlementStatusReason2Code	XCNF	ExpectedConfirmation	_aFGlwdp-Ed-ak6NoX_4Aeg_-1442639559	Confirmation is expected from transfer agent.
+PendingSettlementStatusReason2Code	ESCA	Escalation	_aFGlwtp-Ed-ak6NoX_4Aeg_-1442639421	Special follow-up is taking place.
+PendingSettlementStatusReason2Code	NRCP	TransferAgentNonReceipt	_aFGlw9p-Ed-ak6NoX_4Aeg_-1442639043	Transfer agent claims non-receipt of physical shares.
+PendingSettlementStatusReason2Code	FVER	FinalVerification	_aFGlxNp-Ed-ak6NoX_4Aeg_-1442638983	Confirmed but finality is to be verified.
+TransferUnmatchedReason3Code	CMIS	NoMatch	_zc_XAZM5EemKz5EOjv82iQ	No potential match has been found.
+TransferUnmatchedReason3Code	CPCA	CounterpartyCancelled	_zzADQZM5EemKz5EOjv82iQ	Counterparty has cancelled the transaction/instruction.
+TransferUnmatchedReason3Code	DELN	TransactionDirection	_0v_3AZM5EemKz5EOjv82iQ	Direction of transaction does not match: delivery instead of receipt or vice versa.
+TransferUnmatchedReason3Code	DSEC	FinancialInstrument	_3bFkQZM5EemKz5EOjv82iQ	Financial instrument identification does not match or a financial instrument attribute differs.
+TransferUnmatchedReason3Code	PHYS	PhysicalSettlement	_4uZmQZM5EemKz5EOjv82iQ	Settlement does not match: counterparty's instruction is for physical settlement, your instruction is not, or vice versa.
+TransferUnmatchedReason3Code	PODU	Duplicate	_5qgpMZM5EemKz5EOjv82iQ	Instruction has not been matched: it is a possible duplicate instruction.
+TransferUnmatchedReason3Code	DEPT	SettlementPlace	_7KUPEZM5EemKz5EOjv82iQ	Place of settlement does not match.
+TransferUnmatchedReason3Code	DDAT	SettlementDate	_8xavwZM5EemKz5EOjv82iQ	Settlement date or transfer date does not match.
+TransferUnmatchedReason3Code	DQUA	FinancialInstrumentQuantity	_-ZaBQZM5EemKz5EOjv82iQ	Financial instrument quantity does not match.
+TransferUnmatchedReason3Code	ICUS	ReceivingOrDeliveringCustodian	_Aa_egZM6EemKz5EOjv82iQ	Delivering or receiving custodian does not match.
+TransferUnmatchedReason3Code	SAFE	SafekeepingAccount	_BePEMZM6EemKz5EOjv82iQ	Safekeeping account used as a matching criteria on the market concerned does not match.
+RejectedStatusReason13Code	BLCA	AccountBlockedForCorporateAction	_A8SUIeijEeuLe8v4JEtDDg	Investment account is blocked due to a corporate action.
+RejectedStatusReason13Code	DOCC	AccountBlockedMissingDocuments	_A8SUI-ijEeuLe8v4JEtDDg	Investment account is blocked until certain legal proceedings are completed, for example, legal documents from the successor, legal proceedings due to bankruptcy.
+RejectedStatusReason13Code	IAQD	AcquisitionDate	_A8SUJeijEeuLe8v4JEtDDg	Acquisition date is not recognised or is invalid.
+RejectedStatusReason13Code	ICTN	CertificateNumber	_A8SUJ-ijEeuLe8v4JEtDDg	Certificate number is not recognised or is invalid.
+RejectedStatusReason13Code	CYPA	CurrentYearPartial	_A8SUKeijEeuLe8v4JEtDDg	Partial transfer of current year is not allowed, that is, it is not possible to transfer one asset for the current year as other assets are held for the current year.
+RejectedStatusReason13Code	TREF	DuplicateTransferReference	_A8SUK-ijEeuLe8v4JEtDDg	Transfer reference is a duplicate of a previously received transfer.
+RejectedStatusReason13Code	DSEC	FinancialInstrumentIdentification	_A8SULeijEeuLe8v4JEtDDg	Identification of the security is not recognised or is invalid.
+RejectedStatusReason13Code	IDNA	FinancialInstrumentIdentificationAndName	_A8SUL-ijEeuLe8v4JEtDDg	Identification of the security and the security name are not the same.
+RejectedStatusReason13Code	DQUA	FinancialInstrumentQuantity	_A8SUMeijEeuLe8v4JEtDDg	Financial instrument quantity is invalid.
+RejectedStatusReason13Code	FTAX	FinancialInstrumentTaxYear	_A8SUOeijEeuLe8v4JEtDDg	Financial instrument is not valid for the requested tax year.
+RejectedStatusReason13Code	INID	InsufficientInvestorData	_A8SUO-ijEeuLe8v4JEtDDg	Investor data is insufficient. Applicable when the mandated market practice is not followed.
+RejectedStatusReason13Code	INAC	InvalidAccountServicer	_A8SUPeijEeuLe8v4JEtDDg	Account servicer is not recognised or is invalid.
+RejectedStatusReason13Code	CASH	InvalidCashAccount	_A8SUP-ijEeuLe8v4JEtDDg	Cash account is not recognised or invalid.
+RejectedStatusReason13Code	INPM	InvalidNewPlanManager	_A8SUQeijEeuLe8v4JEtDDg	New plan manager is not recognised or is invalid.
+RejectedStatusReason13Code	INNA	InvalidNomineeAccount	_A8SUQ-ijEeuLe8v4JEtDDg	Nominee account is not recognised or is invalid.
+RejectedStatusReason13Code	SAFE	InvestmentAccount	_A8SUReijEeuLe8v4JEtDDg	Investment account identification is not recognised or is invalid.
+RejectedStatusReason13Code	INUK	InvestorNameAddressUnknown	_A8SUR-ijEeuLe8v4JEtDDg	Investor name and address is not recognised.
+RejectedStatusReason13Code	LEGL	LegallyImpossible	_A8SUSeijEeuLe8v4JEtDDg	Legally impossible to cancel.
+RejectedStatusReason13Code	NSLA	NotCompliantWithSLA	_A8SUS-ijEeuLe8v4JEtDDg	Instruction is not compliant with the service level agreement.
+RejectedStatusReason13Code	SECU	NotEnoughFinancialInstrument	_A8SUTeijEeuLe8v4JEtDDg	There are not enough securities in the account to process the instruction.
+RejectedStatusReason13Code	PTNS	PartialNotSupported	_A8SUT-ijEeuLe8v4JEtDDg	Partial transfer is not supported. Applicable when tax years are rolled up and because, for example, a transfer request for tax year 2000 only is received, it is not possible to process the transfer as the investor holds other tax years as well.
+RejectedStatusReason13Code	DLVY	PhysicalDeliveryImpossible	_A8SUUeijEeuLe8v4JEtDDg	Order contains physical delivery details but the fund can not be physically delivered.
+RejectedStatusReason13Code	DDAT	SettlementDate	_A8SUU-ijEeuLe8v4JEtDDg	Cash settlement date is not recognised or is invalid.
+RejectedStatusReason13Code	ISTP	SettlementParties	_A8SUW-ijEeuLe8v4JEtDDg	One or several settlement parties are not recognised or are invalid.
+RejectedStatusReason13Code	DEPT	SettlementPlace	_A8SUXeijEeuLe8v4JEtDDg	Place of settlement is not recognised or is invalid.
+RejectedStatusReason13Code	ISAT	InvalidISAType	_A8SUX-ijEeuLe8v4JEtDDg	ISA type is not recognised or invalid.
+RejectedStatusReason13Code	OTHR	Other	_A8SUYeijEeuLe8v4JEtDDg	Another reason for the status rejected.
+RejectedStatusReason13Code	NCON	NotConvertable	_A8SUY-ijEeuLe8v4JEtDDg	The two share classes are not part of the same fund.
+RejectedStatusReason13Code	ACLO	AssetClosed	_A8SUZeijEeuLe8v4JEtDDg	Asset instructed for transfer is closed.
+RejectedStatusReason13Code	NASS	AssetNotSupported	_A8SUZ-ijEeuLe8v4JEtDDg	Asset does not support reregistration.
+RejectedStatusReason13Code	NQTY	QuantityBelowMinimum	_A8SUaeijEeuLe8v4JEtDDg	Transfer quantity is too small.
+RejectedStatusReason13Code	BLTR	AccountBlockedForTransfer	_A8SUa-ijEeuLe8v4JEtDDg	Investment account is blocked due to a transfer out of investment funds.
+RejectedStatusReason13Code	COSE	AlreadyExecuted	_A8SUbeijEeuLe8v4JEtDDg	Order or transfer has already been executed and confirmation has been sent.
+RejectedStatusReason13Code	ILLI	AssetsIlliquid	_A8SUb-ijEeuLe8v4JEtDDg	Assets are illiquid.
+RejectedStatusReason13Code	BMRV	BelowMinimumRetainedAmount	_A8SUceijEeuLe8v4JEtDDg	Holding will be below the minimum retained value.
+RejectedStatusReason13Code	DINV	DataInvalid	_A8SUc-ijEeuLe8v4JEtDDg	Data in the order or transfer instruction is invalid.
+RejectedStatusReason13Code	ICAG	DeliveringAgent	_A8SUdeijEeuLe8v4JEtDDg	Delivering agent is not recognised or is invalid.
+RejectedStatusReason13Code	IPAC	InstructingPartyNotAllowedForAccount	_A8SUd-ijEeuLe8v4JEtDDg	Instructing party is not allowed to instruct for this investment account.
+RejectedStatusReason13Code	INTE	Intermediary	_A8SUeeijEeuLe8v4JEtDDg	Intermediary is not recognised or is invalid.
+RejectedStatusReason13Code	DMON	InvalidSettlementAmount	_A8SUe-ijEeuLe8v4JEtDDg	Unrecognised or invalid settlement amount.
+RejectedStatusReason13Code	PRCT	PercentageHoldingBreach	_A8SUfeijEeuLe8v4JEtDDg	Percentage holding breach, for example, PPM rules; taxation rules (ERISA).
+RejectedStatusReason13Code	IVAG	ReceivingAgent	_A8SUf-ijEeuLe8v4JEtDDg	Receiving agent is not recognised or is invalid.
+RejectedStatusReason13Code	NCRR	SettlementAmountCurrency	_A8SUgeijEeuLe8v4JEtDDg	Unrecognised or invalid Settlement Amount Currency.
+RejectedStatusReason13Code	DTRD	TradeDate	_A8SUg-ijEeuLe8v4JEtDDg	Unrecognised or invalid trade date or requested trade date or future trade date.
+RejectedStatusReason13Code	UPAY	UnacceptedPaymentMethod	_A8SUheijEeuLe8v4JEtDDg	Payment method, for example, cheque or payment card, is not accepted.
+RejectedStatusReason13Code	URSC	UnacceptedRequestedSettlementCurrency	_A8SUh-ijEeuLe8v4JEtDDg	Settlement currency requested is not supported.
+RejectedStatusReason13Code	NCMP	NotCompliantWithMarketPractice	_LQHUYeijEeuLe8v4JEtDDg	Instruction is not compliant with the relevant market practice.
+CancelledStatusReason3Code	CNTA	CancelledByTransferAgent	_a0yWQ9p-Ed-ak6NoX_4Aeg_2105332427	Transaction is cancelled by the transfer agent.
+CancelledStatusReason3Code	CNCL	CancelledByClient	_a0yWRNp-Ed-ak6NoX_4Aeg_2105332450	Transaction is cancelled by the client.
+CancelledStatusReason3Code	CNIN	CancelledByIntermediary	_a0yWRdp-Ed-ak6NoX_4Aeg_2105332467	Transaction is cancelled by the intermediary.
+ApplicableRules1Code	NPRE	NotPreADay	_NhLLQVNfEeijdq8ilaxyOA	Pre A Day rules do not apply.
+ApplicableRules1Code	YPRE	PreADay	_NlylgVNfEeijdq8ilaxyOA	Pre A Day rules applies.
+BeneficiaryType1Code	DEPE	Dependent	_Opuc0VNhEeijdq8ilaxyOA	Beneficiary is a dependent.
+BeneficiaryType1Code	NOMI	Nominee	_OtcfMVNhEeijdq8ilaxyOA	Beneficiary is a nominee.
+BeneficiaryType1Code	SUCC	Successor	_OxnNgVNhEeijdq8ilaxyOA	Beneficiary is a successor.

@@ -1,0 +1,5 @@
+codeSetName	isoId	restrictionOf	code	enumName
+RepurchaseType8Code	_3qOF4I-QEeaVK-2bgpxeYw	RepurchaseTypeV2Code	PADJ	PrincipalExposureAdjustment
+RepurchaseType8Code	_3qOF4I-QEeaVK-2bgpxeYw	RepurchaseTypeV2Code	ROLP	RepoContractRollover
+RepurchaseType8Code	_3qOF4I-QEeaVK-2bgpxeYw	RepurchaseTypeV2Code	RATE	RepoRate
+RepurchaseType8Code	_3qOF4I-QEeaVK-2bgpxeYw	RepurchaseTypeV2Code	CALL	RepurchaseCall

@@ -1,0 +1,30 @@
+choice	memberId	memberName	text
+AutomaticBorrowing11Choice	_6GVvTZNLEeWGlc8L7oPDIg	Code	Condition for automatic borrowing expressed as an ISO 20022 code.
+AutomaticBorrowing11Choice	_6GVvVZNLEeWGlc8L7oPDIg	Proprietary	Condition for automatic borrowing expressed as a proprietary code.
+LinkageType4Choice	_6GVvcZNLEeWGlc8L7oPDIg	Code	Linkage type expressed as an ISO 20022 code.
+LinkageType4Choice	_6GVveZNLEeWGlc8L7oPDIg	Proprietary	Linkage type expressed as a proprietary code.
+MatchingDenied4Choice	_6GWWD5NLEeWGlc8L7oPDIg	Code	Specifies the execution of a matching denial process.
+MatchingDenied4Choice	_6GWWF5NLEeWGlc8L7oPDIg	Proprietary	Specifies the execution of a matching denial process.
+UnilateralSplit4Choice	_6GWWM5NLEeWGlc8L7oPDIg	Code	Unilateral split expressed as an ISO 20022 code.
+UnilateralSplit4Choice	_6GWWO5NLEeWGlc8L7oPDIg	Proprietary	Unilateral split expressed as a proprietary code.
+ProcessingPosition18Choice	_6GWWd5NLEeWGlc8L7oPDIg	Code	Processing position expressed as an ISO 20022 code.
+ProcessingPosition18Choice	_6GWWf5NLEeWGlc8L7oPDIg	Proprietary	Processing position expressed as a proprietary code.
+DocumentNumber16Choice	_6GW8x5NLEeWGlc8L7oPDIg	ShortNumber	Message type number of the document referenced.
+DocumentNumber16Choice	_6GW8z5NLEeWGlc8L7oPDIg	LongNumber	MX Message identifier of the referenced document.
+DocumentNumber16Choice	_6GW815NLEeWGlc8L7oPDIg	ProprietaryNumber	Proprietary document identification.
+References76Choice	_diXStTi8Eeydid5dcNPKvg	SecuritiesSettlementTransactionIdentification	Unambiguous identification of a securities settlement transaction as known by the account owner (or instructing party acting on its behalf).
+References76Choice	_diXStzi8Eeydid5dcNPKvg	IntraPositionMovementIdentification	Unambiguous identification of the intra-position movement transaction as known by the account owner (or instructing party acting on its behalf).
+References76Choice	_diXSuTi8Eeydid5dcNPKvg	IntraBalanceMovementIdentification	Unambiguous identification of the intra balance movement transaction as known by the account owner.
+References76Choice	_diXSuzi8Eeydid5dcNPKvg	AccountServicerTransactionIdentification	Unambiguous identification of the transaction as known by the account servicer.
+References76Choice	_diXSwzi8Eeydid5dcNPKvg	MarketInfrastructureTransactionIdentification	Identification of a transaction assigned by a market infrastructure other than a central securities depository, for example, Target2-Securities.
+References76Choice	_diXSyzi8Eeydid5dcNPKvg	CounterpartyMarketInfrastructureTransactionIdentification	Identification of a counterparty transaction assigned by a market infrastructure other than a central securities depository, for example, Target2-Securities.
+References76Choice	_diXSzTi8Eeydid5dcNPKvg	PoolIdentification	Collective reference identifying a set of messages.
+References76Choice	_diXS1Ti8Eeydid5dcNPKvg	CommonIdentification	Unique reference agreed upon by the two trade counterparties to identify the trade.
+References76Choice	_diXS3Ti8Eeydid5dcNPKvg	TradeIdentification	Reference assigned to the trade by the investor or the trading party. This reference will be used throughout the trade life cycle to access/update the trade details.
+References76Choice	_diXS5Ti8Eeydid5dcNPKvg	OtherTransactionIdentification	Identification of a transaction that cannot be identified using a standard reference element present in the message.
+ProcessingStatus91Choice	_diXTBzi8Eeydid5dcNPKvg	AcknowledgedAccepted	Request has been acknowledged by the account servicer.
+ProcessingStatus91Choice	_diXTDzi8Eeydid5dcNPKvg	Rejected	Modification Request has been rejected for further processing.
+ProcessingStatus91Choice	_diXTFzi8Eeydid5dcNPKvg	Completed	Modification request was completed.
+ProcessingStatus91Choice	_diXTGTi8Eeydid5dcNPKvg	Denied	Modification request will not be executed.
+ProcessingStatus91Choice	_diXTGzi8Eeydid5dcNPKvg	Pending	Modification is pending. It is not known at this time whether modification can be affected.
+ProcessingStatus91Choice	_diXTIzi8Eeydid5dcNPKvg	Proprietary	Status that cannot be reported using one of the available standard status.

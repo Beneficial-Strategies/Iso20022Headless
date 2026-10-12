@@ -1,0 +1,13 @@
+choice	memberId	memberName	text
+UpdateType38Choice	_eZThlzi8Eeydid5dcNPKvg	Addition	Addition of information to the securities transaction.
+UpdateType38Choice	_eZThmTi8Eeydid5dcNPKvg	Deletion	Deletion of information in the securities transaction.
+UpdateType38Choice	_eZThmzi8Eeydid5dcNPKvg	Modification	Modification of information in the securities transaction.
+References58Choice	_61RR9ZNLEeWGlc8L7oPDIg	SecuritiesSettlementTransactionIdentification	Unambiguous identification of a securities settlement transaction as known by the account owner (or instructing party acting on its behalf).
+References58Choice	_61RR_ZNLEeWGlc8L7oPDIg	PoolIdentification	Collective reference identifying a set of messages.
+References58Choice	_61RSBZNLEeWGlc8L7oPDIg	IntraPositionMovementIdentification	Unambiguous identification of the intra-position movement transaction as known by the account owner (or instructing party acting on its behalf).
+References58Choice	_61RSDZNLEeWGlc8L7oPDIg	AccountServicerTransactionIdentification	Unambiguous identification of the transaction as known by the account servicer.
+References58Choice	_61RSFZNLEeWGlc8L7oPDIg	OtherTransactionIdentification	Identification of a transaction that cannot be identified using a standard reference element present in the message.
+SecuritiesTransactionType60Choice	_a7-VeyAdEeuyDZ-ukt4YRg	Code	Securities transaction type expressed as an ISO 20022 code.
+SecuritiesTransactionType60Choice	_a7-VgyAdEeuyDZ-ukt4YRg	Proprietary	Securities transaction type expressed as a proprietary code.
+SettlementTransactionCondition28Choice	_6SbDL5NLEeWGlc8L7oPDIg	Code	Settlement conditions expressed as an ISO 20022 code.
+SettlementTransactionCondition28Choice	_6SbDN5NLEeWGlc8L7oPDIg	Proprietary	Settlement conditions expressed as a proprietary code.

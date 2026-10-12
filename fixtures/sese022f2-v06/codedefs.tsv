@@ -1,0 +1,8 @@
+codeSet	code	enumName	isoId	text
+RejectionReason77Code	SAFE	SafekeepingAccountRejection	_4u9pIStYEeyF-PUIGuhxvA	Unrecognised or invalid message sender's safekeeping account.
+RejectionReason77Code	DSEC	InvalidSecurity	_4u9pIytYEeyF-PUIGuhxvA	Unrecognised or invalid financial instrument identification.
+RejectionReason77Code	LATE	MarketDeadlineMissed	_4u9pJStYEeyF-PUIGuhxvA	Received after market deadline.
+RejectionReason77Code	REFE	ReferenceRejection	_4u9pJytYEeyF-PUIGuhxvA	Instruction has a reference identical to another previously received instruction.
+RejectionReason77Code	ADEA	AccountServicerDeadlineMissed	_4u9pKStYEeyF-PUIGuhxvA	Transaction/instruction received after the account servicer's specified deadline.
+RejectionReason77Code	OTHR	Other	_4u9pKytYEeyF-PUIGuhxvA	Other. See Narrative.
+RejectionReason77Code	MISM	InvalidRequest	_4u9pLStYEeyF-PUIGuhxvA	Statement/status advice request cannot be executed. The message type requested is not valid for the message reference or statement period concerned.

@@ -1,0 +1,16 @@
+choice	memberId	memberName	text
+References44Choice	_IIcaszqoEeWyoP0PbocV1Q	OtherTransactionIdentification	Reference to a transaction that cannot be identified using a standard reference element present in the message.
+References44Choice	_IIcatTqoEeWyoP0PbocV1Q	SecuritiesFinancingTransactionIdentification	Unambiguous identification of the underlying securities financing transaction (not the underlying securities financing trade) as assigned by the instructing party.
+References44Choice	_IIcatzqoEeWyoP0PbocV1Q	SecuritiesSettlementTransactionIdentification	Unambiguous identification of the securities settlement transaction.
+References44Choice	_IIcauTqoEeWyoP0PbocV1Q	IntraPositionMovementIdentification	Reference to the intra-position movement transaction requested to be cancelled as known by the account owner (or instructing party acting on its behalf).
+ProcessingStatus105Choice	_u9CdNaodEfCG2_q2WT-90w	PendingCancellation	Cancellation is pending processing.
+ProcessingStatus105Choice	_u9CdQaodEfCG2_q2WT-90w	Rejected	Instruction/Request has been rejected for further processing.
+ProcessingStatus105Choice	_u9CdTaodEfCG2_q2WT-90w	Repair	Instruction/Request is accepted but in repair.
+ProcessingStatus105Choice	_u9CdWaodEfCG2_q2WT-90w	AcknowledgedAccepted	Instruction has been acknowledged by the account servicer.
+ProcessingStatus105Choice	_u9CdZaodEfCG2_q2WT-90w	Proprietary	Status that cannot be reported using one of the available standard status.
+ProcessingStatus105Choice	_u9CdcaodEfCG2_q2WT-90w	Denied	Instruction/Request will not be executed.
+ProcessingStatus105Choice	_u9DESaodEfCG2_q2WT-90w	Cancelled	Cancellation requested executed.
+PendingStatus82Choice	_u_FrpaodEfCG2_q2WT-90w	NoSpecifiedReason	Indicates that there is no reason available or to report.
+PendingStatus82Choice	_u_FrsaodEfCG2_q2WT-90w	Reason	Specifies the reason of the pending status.
+PendingReason79Choice	_vDBwdaodEfCG2_q2WT-90w	Code	Specifies the reason why the cancellation request is pending.
+PendingReason79Choice	_vDBwgaodEfCG2_q2WT-90w	Proprietary	Specifies the reason why the cancellation request is pending.

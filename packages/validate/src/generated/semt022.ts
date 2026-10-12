@@ -22,6 +22,7 @@ import {
   Exact4AlphaNumericTextSchema,
   GenericIdentification30Schema,
   Max70TextSchema,
+  SecuritiesAccount22Schema,
   Max140TextSchema,
   BlockChainAddressWallet3Schema,
   AnyBICDec2014IdentifierSchema,
@@ -39,6 +40,10 @@ import {
   Max210TextSchema,
   AcknowledgementReason9Schema,
   AcknowledgedAcceptedStatus21ChoiceSchema,
+  PendingProcessingReason7CodeSchema,
+  PendingProcessingReason21ChoiceSchema,
+  PendingProcessingReason19Schema,
+  PendingProcessingStatus22ChoiceSchema,
   RejectionReason73CodeSchema,
   RepairReason4CodeSchema,
   RepairReason10ChoiceSchema,
@@ -65,16 +70,36 @@ import {
   FailingStatus15ChoiceSchema,
   SettlementStatus32ChoiceSchema,
   AcknowledgementReason6CodeSchema,
+  AcknowledgementReason14ChoiceSchema,
+  AcknowledgementReason11Schema,
+  AcknowledgedAcceptedStatus23ChoiceSchema,
   PendingProcessingReason3CodeSchema,
   DeniedReason6CodeSchema,
+  DeniedReason15ChoiceSchema,
+  DeniedReason10Schema,
+  DeniedStatus15ChoiceSchema,
   RejectionReason72CodeSchema,
+  RejectionReason42ChoiceSchema,
+  RejectionReason57Schema,
+  RejectionStatus37ChoiceSchema,
+  RepairReason9Schema,
+  RepairStatus13ChoiceSchema,
   ModifiedStatusReason1CodeSchema,
+  ModificationReason4ChoiceSchema,
+  ModificationReason4Schema,
+  ModificationStatus6ChoiceSchema,
   PendingReason9CodeSchema,
   PendingReason30ChoiceSchema,
   PendingReason17Schema,
   PendingStatus39ChoiceSchema,
   RejectionReason74CodeSchema,
+  RejectionAndRepairReason38ChoiceSchema,
+  RejectionOrRepairReason38Schema,
+  RejectionOrRepairStatus43ChoiceSchema,
   RejectionReason71CodeSchema,
+  RejectionAndRepairReason37ChoiceSchema,
+  RejectionOrRepairReason37Schema,
+  RejectionOrRepairStatus42ChoiceSchema,
   AcknowledgementReason3CodeSchema,
   AcknowledgementReason15ChoiceSchema,
   AcknowledgementReason12Schema,
@@ -102,32 +127,9 @@ export const TransactionIdentifications56Schema = z.strictObject({
   ProcessorTransactionIdentification: Max35TextSchema.optional(),
 });
 
-export const SecuritiesAccount22Schema = z.strictObject({
-  Identification: Max35TextSchema,
-  Type: GenericIdentification30Schema.optional(),
-  Name: Max70TextSchema.optional(),
-});
-
 export const OrganisationIdentification31Schema = z.strictObject({
   AnyBIC: AnyBICDec2014IdentifierSchema.optional(),
   Other: z.array(GenericOrganisationIdentification1Schema).optional(),
-});
-
-export const PendingProcessingReason7CodeSchema = z.enum(["BLOC", "ADEA", "DOCY", "CAIS", "YCOL", "CDEL", "CDAC", "CDLR", "CSDH", "CVAL", "GLOB", "INBC", "LIQU", "MONY", "LACK", "FLIM", "MINO", "MUNO", "NEXT", "NOFX", "LALO", "COLL", "OTHR", "CERT", "DENO"]);
-
-export const PendingProcessingReason21ChoiceSchema = choiceOf({
-  Code: PendingProcessingReason7CodeSchema,
-  Proprietary: GenericIdentification30Schema,
-});
-
-export const PendingProcessingReason19Schema = z.strictObject({
-  Code: PendingProcessingReason21ChoiceSchema,
-  AdditionalReasonInformation: Max210TextSchema.optional(),
-});
-
-export const PendingProcessingStatus22ChoiceSchema = choiceOf({
-  NoSpecifiedReason: NoReasonCodeSchema,
-  Reason: PendingProcessingReason19Schema,
 });
 
 export const RejectionReason43ChoiceSchema = choiceOf({
@@ -178,21 +180,6 @@ export const MatchingStatus25ChoiceSchema = choiceOf({
   Proprietary: ProprietaryStatusAndReason6Schema,
 });
 
-export const AcknowledgementReason14ChoiceSchema = choiceOf({
-  Code: AcknowledgementReason6CodeSchema,
-  Proprietary: GenericIdentification30Schema,
-});
-
-export const AcknowledgementReason11Schema = z.strictObject({
-  Code: AcknowledgementReason14ChoiceSchema,
-  AdditionalReasonInformation: Max210TextSchema.optional(),
-});
-
-export const AcknowledgedAcceptedStatus23ChoiceSchema = choiceOf({
-  NoSpecifiedReason: NoReasonCodeSchema,
-  Reason: AcknowledgementReason11Schema,
-});
-
 export const PendingProcessingReason12ChoiceSchema = choiceOf({
   Code: PendingProcessingReason3CodeSchema,
   Proprietary: GenericIdentification30Schema,
@@ -208,61 +195,6 @@ export const PendingProcessingStatus13ChoiceSchema = choiceOf({
   Reason: PendingProcessingReason10Schema,
 });
 
-export const DeniedReason15ChoiceSchema = choiceOf({
-  Code: DeniedReason6CodeSchema,
-  Proprietary: GenericIdentification30Schema,
-});
-
-export const DeniedReason10Schema = z.strictObject({
-  Code: DeniedReason15ChoiceSchema,
-  AdditionalReasonInformation: Max210TextSchema.optional(),
-});
-
-export const DeniedStatus15ChoiceSchema = choiceOf({
-  NoSpecifiedReason: NoReasonCodeSchema,
-  Reason: DeniedReason10Schema,
-});
-
-export const RejectionReason42ChoiceSchema = choiceOf({
-  Code: RejectionReason72CodeSchema,
-  Proprietary: GenericIdentification30Schema,
-});
-
-export const RejectionReason57Schema = z.strictObject({
-  Code: RejectionReason42ChoiceSchema,
-  AdditionalReasonInformation: Max210TextSchema.optional(),
-});
-
-export const RejectionStatus37ChoiceSchema = choiceOf({
-  NoSpecifiedReason: NoReasonCodeSchema,
-  Reason: RejectionReason57Schema,
-});
-
-export const RepairReason9Schema = z.strictObject({
-  Code: RepairReason10ChoiceSchema,
-  AdditionalReasonInformation: Max210TextSchema.optional(),
-});
-
-export const RepairStatus13ChoiceSchema = choiceOf({
-  NoSpecifiedReason: NoReasonCodeSchema,
-  Reason: RepairReason9Schema,
-});
-
-export const ModificationReason4ChoiceSchema = choiceOf({
-  Code: ModifiedStatusReason1CodeSchema,
-  Proprietary: GenericIdentification30Schema,
-});
-
-export const ModificationReason4Schema = z.strictObject({
-  Code: ModificationReason4ChoiceSchema,
-  AdditionalReasonInformation: Max210TextSchema.optional(),
-});
-
-export const ModificationStatus6ChoiceSchema = choiceOf({
-  NoSpecifiedReason: NoReasonCodeSchema,
-  Reason: ModificationReason4Schema,
-});
-
 export const ModificationProcessingStatus13ChoiceSchema = choiceOf({
   AcknowledgedAccepted: AcknowledgedAcceptedStatus23ChoiceSchema,
   PendingProcessing: PendingProcessingStatus13ChoiceSchema,
@@ -271,36 +203,6 @@ export const ModificationProcessingStatus13ChoiceSchema = choiceOf({
   Repaired: RepairStatus13ChoiceSchema,
   Modified: ModificationStatus6ChoiceSchema,
   Proprietary: ProprietaryStatusAndReason6Schema,
-});
-
-export const RejectionAndRepairReason38ChoiceSchema = choiceOf({
-  Code: RejectionReason74CodeSchema,
-  Proprietary: GenericIdentification30Schema,
-});
-
-export const RejectionOrRepairReason38Schema = z.strictObject({
-  Code: RejectionAndRepairReason38ChoiceSchema,
-  AdditionalReasonInformation: Max210TextSchema.optional(),
-});
-
-export const RejectionOrRepairStatus43ChoiceSchema = choiceOf({
-  NoSpecifiedReason: NoReasonCodeSchema,
-  Reason: RejectionOrRepairReason38Schema,
-});
-
-export const RejectionAndRepairReason37ChoiceSchema = choiceOf({
-  Code: RejectionReason71CodeSchema,
-  Proprietary: GenericIdentification30Schema,
-});
-
-export const RejectionOrRepairReason37Schema = z.strictObject({
-  Code: RejectionAndRepairReason37ChoiceSchema,
-  AdditionalReasonInformation: Max210TextSchema.optional(),
-});
-
-export const RejectionOrRepairStatus42ChoiceSchema = choiceOf({
-  NoSpecifiedReason: NoReasonCodeSchema,
-  Reason: RejectionOrRepairReason37Schema,
 });
 
 export const ProcessingStatus86ChoiceSchema = choiceOf({
@@ -356,16 +258,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       { name: "NoAccountOwnerTransactionIdentificationRule", isoId: "_PmuxkaoxEfCG2_q2WT-90w", text: "If no reference is available for the AccountOwnerTransactionIdentification, for example, the transaction was sent by fax, then the AccountOwnerTransactionIdentification must be NONREF." },
     ],
   },
-  "SecuritiesAccount22": {
-    name: "SecuritiesAccount22",
-    isoId: "_Noeb0dTMEeKvJeoOII0e7w",
-    kind: "component",
-    fields: [
-      f({ name: "Identification", isoId: "_N_iQ8dTMEeKvJeoOII0e7w", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "Type", isoId: "_N_iRBdTMEeKvJeoOII0e7w", xmlTag: "Tp", displayName: displayName("Type"), kind: "component", type: "GenericIdentification30", required: false }),
-      f({ name: "Name", isoId: "_N_iRE9TMEeKvJeoOII0e7w", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max70Text", required: false }),
-    ],
-  },
   "OrganisationIdentification31": {
     name: "OrganisationIdentification31",
     isoId: "_wSg6Yf0gEeirrJEXIHs2JQ",
@@ -373,39 +265,6 @@ const ownTypeDescriptors: TypeDescriptors = {
     fields: [
       f({ name: "AnyBIC", isoId: "_wzjK4f0gEeirrJEXIHs2JQ", xmlTag: "AnyBIC", displayName: displayName("AnyBIC"), kind: "text", type: "AnyBICDec2014Identifier", required: false }),
       f({ name: "Other", isoId: "_wzjK4_0gEeirrJEXIHs2JQ", xmlTag: "Othr", displayName: displayName("Other"), kind: "component", type: "GenericOrganisationIdentification1", required: false, repeat: { min: 0, max: null } }),
-    ],
-  },
-  "PendingProcessingReason7Code": {
-    name: "PendingProcessingReason7Code",
-    isoId: "_tdvxgKoZEfCG2_q2WT-90w",
-    kind: "code",
-    options: [{ value: "BLOC", name: "AccountBlocked", isoId: "_0w5YUSm4EfGfZ9PfK70MMg" }, { value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_0w5YUym4EfGfZ9PfK70MMg" }, { value: "DOCY", name: "AwaitingDocumentsOrEndorsementsFromYou", isoId: "_0w5YVSm4EfGfZ9PfK70MMg" }, { value: "CAIS", name: "AwaitingSecurities", isoId: "_0w5YVym4EfGfZ9PfK70MMg" }, { value: "YCOL", name: "CollateralShortage", isoId: "_0w5YWSm4EfGfZ9PfK70MMg" }, { value: "CDEL", name: "ConditionalDelivery", isoId: "_0w5YWym4EfGfZ9PfK70MMg" }, { value: "CDAC", name: "ConditionalDeliveryAwaitingCancellation", isoId: "_0w5YXSm4EfGfZ9PfK70MMg" }, { value: "CDLR", name: "ConditionalDeliveryAwaitingRelease", isoId: "_0w5YXym4EfGfZ9PfK70MMg" }, { value: "CSDH", name: "CSDHold", isoId: "_0w5YYSm4EfGfZ9PfK70MMg" }, { value: "CVAL", name: "CSDValidation", isoId: "_0w5YYym4EfGfZ9PfK70MMg" }, { value: "GLOB", name: "GlobalFormSecurities", isoId: "_0w5YZSm4EfGfZ9PfK70MMg" }, { value: "INBC", name: "IncompleteNumberCount", isoId: "_0w5YZym4EfGfZ9PfK70MMg" }, { value: "LIQU", name: "InsufficientCentralBankLiquidity", isoId: "_0w5YaSm4EfGfZ9PfK70MMg" }, { value: "MONY", name: "InsufficientMoney", isoId: "_0w5Yaym4EfGfZ9PfK70MMg" }, { value: "LACK", name: "LackOfSecurities", isoId: "_0w5YbSm4EfGfZ9PfK70MMg" }, { value: "FLIM", name: "MaximumForeignLimitReached", isoId: "_0w5Ybym4EfGfZ9PfK70MMg" }, { value: "MINO", name: "MinimumSettlementAmount", isoId: "_0w5YcSm4EfGfZ9PfK70MMg" }, { value: "MUNO", name: "MultipleSettlementAmount", isoId: "_0w5Ycym4EfGfZ9PfK70MMg" }, { value: "NEXT", name: "NextProcess", isoId: "_0w5YdSm4EfGfZ9PfK70MMg" }, { value: "NOFX", name: "NoForeignExchangeInstruction", isoId: "_0w5Ydym4EfGfZ9PfK70MMg" }, { value: "LALO", name: "SecuritiesLoanedOut", isoId: "_0w5YeSm4EfGfZ9PfK70MMg" }, { value: "COLL", name: "SecuritiesPledgedAsCollateral", isoId: "_0w5Yeym4EfGfZ9PfK70MMg" }, { value: "OTHR", name: "Other", isoId: "_0w5YfSm4EfGfZ9PfK70MMg" }, { value: "CERT", name: "WrongCertificatesNumbers", isoId: "_0w5Yfym4EfGfZ9PfK70MMg" }, { value: "DENO", name: "UnavailableDeliverableDenominatedQuantity", isoId: "_0w5YgSm4EfGfZ9PfK70MMg" }],
-  },
-  "PendingProcessingReason21Choice": {
-    name: "PendingProcessingReason21Choice",
-    isoId: "_Xl2mQaobEfCG2_q2WT-90w",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_XoK6daobEfCG2_q2WT-90w", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "PendingProcessingReason7Code", required: true }),
-      f({ name: "Proprietary", isoId: "_XoK6gaobEfCG2_q2WT-90w", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
-  "PendingProcessingReason19": {
-    name: "PendingProcessingReason19",
-    isoId: "_hCkqQaoZEfCG2_q2WT-90w",
-    kind: "component",
-    fields: [
-      f({ name: "Code", isoId: "_hE0tBaoZEfCG2_q2WT-90w", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "PendingProcessingReason21Choice", required: true }),
-      f({ name: "AdditionalReasonInformation", isoId: "_hE0tEaoZEfCG2_q2WT-90w", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
-    ],
-  },
-  "PendingProcessingStatus22Choice": {
-    name: "PendingProcessingStatus22Choice",
-    isoId: "_g_04QKoZEfCG2_q2WT-90w",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "NoSpecifiedReason", isoId: "_hCkDNaoZEfCG2_q2WT-90w", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
-      f({ name: "Reason", isoId: "_hCkDQaoZEfCG2_q2WT-90w", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "PendingProcessingReason19", required: true }),
     ],
   },
   "RejectionReason43Choice": {
@@ -488,33 +347,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "Proprietary", isoId: "_04af4Tp4EeWVrPy0StzzSg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "ProprietaryStatusAndReason6", required: true }),
     ],
   },
-  "AcknowledgementReason14Choice": {
-    name: "AcknowledgementReason14Choice",
-    isoId: "_YhcWizq1EeWyoP0PbocV1Q",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_ZA-yMTq1EeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "AcknowledgementReason6Code", required: true }),
-      f({ name: "Proprietary", isoId: "_ZA-yOTq1EeWyoP0PbocV1Q", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
-  "AcknowledgementReason11": {
-    name: "AcknowledgementReason11",
-    isoId: "_YBdO6zq1EeWyoP0PbocV1Q",
-    kind: "component",
-    fields: [
-      f({ name: "Code", isoId: "_YhcWgTq1EeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "AcknowledgementReason14Choice", required: true }),
-      f({ name: "AdditionalReasonInformation", isoId: "_YhcWgzq1EeWyoP0PbocV1Q", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
-    ],
-  },
-  "AcknowledgedAcceptedStatus23Choice": {
-    name: "AcknowledgedAcceptedStatus23Choice",
-    isoId: "_XhBbUTq1EeWyoP0PbocV1Q",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "NoSpecifiedReason", isoId: "_YBdO4Tq1EeWyoP0PbocV1Q", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
-      f({ name: "Reason", isoId: "_YBdO6Tq1EeWyoP0PbocV1Q", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "AcknowledgementReason11", required: true }),
-    ],
-  },
   "PendingProcessingReason12Choice": {
     name: "PendingProcessingReason12Choice",
     isoId: "_snJgkTq1EeWyoP0PbocV1Q",
@@ -542,105 +374,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "Reason", isoId: "_sHBO-Tq1EeWyoP0PbocV1Q", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "PendingProcessingReason10", required: true }),
     ],
   },
-  "DeniedReason15Choice": {
-    name: "DeniedReason15Choice",
-    isoId: "__qgcwTq1EeWyoP0PbocV1Q",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_AKMpYTq2EeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "DeniedReason6Code", required: true }),
-      f({ name: "Proprietary", isoId: "_AKMpaTq2EeWyoP0PbocV1Q", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
-  "DeniedReason10": {
-    name: "DeniedReason10",
-    isoId: "__K0QETq1EeWyoP0PbocV1Q",
-    kind: "component",
-    fields: [
-      f({ name: "Code", isoId: "__qgcsTq1EeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "DeniedReason15Choice", required: true }),
-      f({ name: "AdditionalReasonInformation", isoId: "__qgcuTq1EeWyoP0PbocV1Q", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
-    ],
-  },
-  "DeniedStatus15Choice": {
-    name: "DeniedStatus15Choice",
-    isoId: "_-rIDUTq1EeWyoP0PbocV1Q",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "NoSpecifiedReason", isoId: "__K0QATq1EeWyoP0PbocV1Q", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
-      f({ name: "Reason", isoId: "__K0QCTq1EeWyoP0PbocV1Q", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "DeniedReason10", required: true }),
-    ],
-  },
-  "RejectionReason42Choice": {
-    name: "RejectionReason42Choice",
-    isoId: "_PcLIUStWEeyhipY4f42fZQ",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_P1g1UStWEeyhipY4f42fZQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "RejectionReason72Code", required: true }),
-      f({ name: "Proprietary", isoId: "_P1g1UytWEeyhipY4f42fZQ", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
-  "RejectionReason57": {
-    name: "RejectionReason57",
-    isoId: "_PDlpMStWEeyhipY4f42fZQ",
-    kind: "component",
-    fields: [
-      f({ name: "Code", isoId: "_PcLIQStWEeyhipY4f42fZQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "RejectionReason42Choice", required: true }),
-      f({ name: "AdditionalReasonInformation", isoId: "_PcLISStWEeyhipY4f42fZQ", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
-    ],
-  },
-  "RejectionStatus37Choice": {
-    name: "RejectionStatus37Choice",
-    isoId: "_OqjeNytWEeyhipY4f42fZQ",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "NoSpecifiedReason", isoId: "_PDlpIStWEeyhipY4f42fZQ", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
-      f({ name: "Reason", isoId: "_PDlpKStWEeyhipY4f42fZQ", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "RejectionReason57", required: true }),
-    ],
-  },
-  "RepairReason9": {
-    name: "RepairReason9",
-    isoId: "_07ksUTqeEeWyoP0PbocV1Q",
-    kind: "component",
-    fields: [
-      f({ name: "Code", isoId: "_1bjz4TqeEeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "RepairReason10Choice", required: true }),
-      f({ name: "AdditionalReasonInformation", isoId: "_1btk4TqeEeWyoP0PbocV1Q", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
-    ],
-  },
-  "RepairStatus13Choice": {
-    name: "RepairStatus13Choice",
-    isoId: "_0bSpwTqeEeWyoP0PbocV1Q",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "NoSpecifiedReason", isoId: "_07ksQTqeEeWyoP0PbocV1Q", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
-      f({ name: "Reason", isoId: "_07ksSTqeEeWyoP0PbocV1Q", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "RepairReason9", required: true }),
-    ],
-  },
-  "ModificationReason4Choice": {
-    name: "ModificationReason4Choice",
-    isoId: "_DdDr2zq3EeWyoP0PbocV1Q",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_D8v4gTq3EeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "ModifiedStatusReason1Code", required: true }),
-      f({ name: "Proprietary", isoId: "_D8v4gzq3EeWyoP0PbocV1Q", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
-  "ModificationReason4": {
-    name: "ModificationReason4",
-    isoId: "_C9XfKzq3EeWyoP0PbocV1Q",
-    kind: "component",
-    fields: [
-      f({ name: "Code", isoId: "_DdDr0Tq3EeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "ModificationReason4Choice", required: true }),
-      f({ name: "AdditionalReasonInformation", isoId: "_DdDr0zq3EeWyoP0PbocV1Q", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
-    ],
-  },
-  "ModificationStatus6Choice": {
-    name: "ModificationStatus6Choice",
-    isoId: "fab9457b-4791-44b9-930f-eb7aaa526e40",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "NoSpecifiedReason", isoId: "9c99c1cf-19b9-47da-b39b-648871101da7", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
-      f({ name: "Reason", isoId: "a7ea634d-4026-409c-8921-e68cd77303ed", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "ModificationReason4", required: true }),
-    ],
-  },
   "ModificationProcessingStatus13Choice": {
     name: "ModificationProcessingStatus13Choice",
     isoId: "89fa57e3-c398-4f59-ab4a-1a43d0a2d3dd",
@@ -653,60 +386,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "Repaired", isoId: "db49bf33-d1e2-40f0-b5ff-f98752e643b1", xmlTag: "Rprd", displayName: displayName("Repaired"), kind: "choice", type: "RepairStatus13Choice", required: true }),
       f({ name: "Modified", isoId: "60641b6f-c98f-457d-a68f-41df8eae06f6", xmlTag: "Modfd", displayName: displayName("Modified"), kind: "choice", type: "ModificationStatus6Choice", required: true }),
       f({ name: "Proprietary", isoId: "042f7d03-7a56-409b-ab0e-ff1c24b06c04", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "ProprietaryStatusAndReason6", required: true }),
-    ],
-  },
-  "RejectionAndRepairReason38Choice": {
-    name: "RejectionAndRepairReason38Choice",
-    isoId: "_ET1FcytXEeyhipY4f42fZQ",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_EtBBcytXEeyhipY4f42fZQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "RejectionReason74Code", required: true }),
-      f({ name: "Proprietary", isoId: "_EtBBeytXEeyhipY4f42fZQ", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
-  "RejectionOrRepairReason38": {
-    name: "RejectionOrRepairReason38",
-    isoId: "_D6DTgytXEeyhipY4f42fZQ",
-    kind: "component",
-    fields: [
-      f({ name: "Code", isoId: "_ET1FYytXEeyhipY4f42fZQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "RejectionAndRepairReason38Choice", required: true }),
-      f({ name: "AdditionalReasonInformation", isoId: "_ET1FaytXEeyhipY4f42fZQ", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
-    ],
-  },
-  "RejectionOrRepairStatus43Choice": {
-    name: "RejectionOrRepairStatus43Choice",
-    isoId: "_Df01kStXEeyhipY4f42fZQ",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "NoSpecifiedReason", isoId: "_D6DTcytXEeyhipY4f42fZQ", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
-      f({ name: "Reason", isoId: "_D6DTeytXEeyhipY4f42fZQ", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "RejectionOrRepairReason38", required: true }),
-    ],
-  },
-  "RejectionAndRepairReason37Choice": {
-    name: "RejectionAndRepairReason37Choice",
-    isoId: "_nOHI8ytVEeyhipY4f42fZQ",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_nnJT8ytVEeyhipY4f42fZQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "RejectionReason71Code", required: true }),
-      f({ name: "Proprietary", isoId: "_nnJT-ytVEeyhipY4f42fZQ", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
-  "RejectionOrRepairReason37": {
-    name: "RejectionOrRepairReason37",
-    isoId: "_m0oR8ytVEeyhipY4f42fZQ",
-    kind: "component",
-    fields: [
-      f({ name: "Code", isoId: "_nOHI4ytVEeyhipY4f42fZQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "RejectionAndRepairReason37Choice", required: true }),
-      f({ name: "AdditionalReasonInformation", isoId: "_nOHI6ytVEeyhipY4f42fZQ", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
-    ],
-  },
-  "RejectionOrRepairStatus42Choice": {
-    name: "RejectionOrRepairStatus42Choice",
-    isoId: "_mbmHCytVEeyhipY4f42fZQ",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "NoSpecifiedReason", isoId: "_m0oR4ytVEeyhipY4f42fZQ", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
-      f({ name: "Reason", isoId: "_m0oR6ytVEeyhipY4f42fZQ", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "RejectionOrRepairReason37", required: true }),
     ],
   },
   "ProcessingStatus86Choice": {
@@ -772,6 +451,7 @@ export const typeDescriptors: TypeDescriptors = {
   "Exact4AlphaNumericText": sharedTypeDescriptors["Exact4AlphaNumericText"]!,
   "GenericIdentification30": sharedTypeDescriptors["GenericIdentification30"]!,
   "Max70Text": sharedTypeDescriptors["Max70Text"]!,
+  "SecuritiesAccount22": sharedTypeDescriptors["SecuritiesAccount22"]!,
   "Max140Text": sharedTypeDescriptors["Max140Text"]!,
   "BlockChainAddressWallet3": sharedTypeDescriptors["BlockChainAddressWallet3"]!,
   "AnyBICDec2014Identifier": sharedTypeDescriptors["AnyBICDec2014Identifier"]!,
@@ -789,6 +469,10 @@ export const typeDescriptors: TypeDescriptors = {
   "Max210Text": sharedTypeDescriptors["Max210Text"]!,
   "AcknowledgementReason9": sharedTypeDescriptors["AcknowledgementReason9"]!,
   "AcknowledgedAcceptedStatus21Choice": sharedTypeDescriptors["AcknowledgedAcceptedStatus21Choice"]!,
+  "PendingProcessingReason7Code": sharedTypeDescriptors["PendingProcessingReason7Code"]!,
+  "PendingProcessingReason21Choice": sharedTypeDescriptors["PendingProcessingReason21Choice"]!,
+  "PendingProcessingReason19": sharedTypeDescriptors["PendingProcessingReason19"]!,
+  "PendingProcessingStatus22Choice": sharedTypeDescriptors["PendingProcessingStatus22Choice"]!,
   "RejectionReason73Code": sharedTypeDescriptors["RejectionReason73Code"]!,
   "RepairReason4Code": sharedTypeDescriptors["RepairReason4Code"]!,
   "RepairReason10Choice": sharedTypeDescriptors["RepairReason10Choice"]!,
@@ -815,16 +499,36 @@ export const typeDescriptors: TypeDescriptors = {
   "FailingStatus15Choice": sharedTypeDescriptors["FailingStatus15Choice"]!,
   "SettlementStatus32Choice": sharedTypeDescriptors["SettlementStatus32Choice"]!,
   "AcknowledgementReason6Code": sharedTypeDescriptors["AcknowledgementReason6Code"]!,
+  "AcknowledgementReason14Choice": sharedTypeDescriptors["AcknowledgementReason14Choice"]!,
+  "AcknowledgementReason11": sharedTypeDescriptors["AcknowledgementReason11"]!,
+  "AcknowledgedAcceptedStatus23Choice": sharedTypeDescriptors["AcknowledgedAcceptedStatus23Choice"]!,
   "PendingProcessingReason3Code": sharedTypeDescriptors["PendingProcessingReason3Code"]!,
   "DeniedReason6Code": sharedTypeDescriptors["DeniedReason6Code"]!,
+  "DeniedReason15Choice": sharedTypeDescriptors["DeniedReason15Choice"]!,
+  "DeniedReason10": sharedTypeDescriptors["DeniedReason10"]!,
+  "DeniedStatus15Choice": sharedTypeDescriptors["DeniedStatus15Choice"]!,
   "RejectionReason72Code": sharedTypeDescriptors["RejectionReason72Code"]!,
+  "RejectionReason42Choice": sharedTypeDescriptors["RejectionReason42Choice"]!,
+  "RejectionReason57": sharedTypeDescriptors["RejectionReason57"]!,
+  "RejectionStatus37Choice": sharedTypeDescriptors["RejectionStatus37Choice"]!,
+  "RepairReason9": sharedTypeDescriptors["RepairReason9"]!,
+  "RepairStatus13Choice": sharedTypeDescriptors["RepairStatus13Choice"]!,
   "ModifiedStatusReason1Code": sharedTypeDescriptors["ModifiedStatusReason1Code"]!,
+  "ModificationReason4Choice": sharedTypeDescriptors["ModificationReason4Choice"]!,
+  "ModificationReason4": sharedTypeDescriptors["ModificationReason4"]!,
+  "ModificationStatus6Choice": sharedTypeDescriptors["ModificationStatus6Choice"]!,
   "PendingReason9Code": sharedTypeDescriptors["PendingReason9Code"]!,
   "PendingReason30Choice": sharedTypeDescriptors["PendingReason30Choice"]!,
   "PendingReason17": sharedTypeDescriptors["PendingReason17"]!,
   "PendingStatus39Choice": sharedTypeDescriptors["PendingStatus39Choice"]!,
   "RejectionReason74Code": sharedTypeDescriptors["RejectionReason74Code"]!,
+  "RejectionAndRepairReason38Choice": sharedTypeDescriptors["RejectionAndRepairReason38Choice"]!,
+  "RejectionOrRepairReason38": sharedTypeDescriptors["RejectionOrRepairReason38"]!,
+  "RejectionOrRepairStatus43Choice": sharedTypeDescriptors["RejectionOrRepairStatus43Choice"]!,
   "RejectionReason71Code": sharedTypeDescriptors["RejectionReason71Code"]!,
+  "RejectionAndRepairReason37Choice": sharedTypeDescriptors["RejectionAndRepairReason37Choice"]!,
+  "RejectionOrRepairReason37": sharedTypeDescriptors["RejectionOrRepairReason37"]!,
+  "RejectionOrRepairStatus42Choice": sharedTypeDescriptors["RejectionOrRepairStatus42Choice"]!,
   "AcknowledgementReason3Code": sharedTypeDescriptors["AcknowledgementReason3Code"]!,
   "AcknowledgementReason15Choice": sharedTypeDescriptors["AcknowledgementReason15Choice"]!,
   "AcknowledgementReason12": sharedTypeDescriptors["AcknowledgementReason12"]!,

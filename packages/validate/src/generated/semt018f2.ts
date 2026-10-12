@@ -49,8 +49,23 @@ import {
   ProprietaryStatusAndReason7Schema,
   NoReasonCodeSchema,
   UnmatchedReason11CodeSchema,
+  UnmatchedReason27ChoiceSchema,
+  UnmatchedReason20Schema,
+  UnmatchedStatus21ChoiceSchema,
+  MatchingStatus32ChoiceSchema,
   PendingReason24CodeSchema,
+  PendingReason65ChoiceSchema,
+  PendingReason31Schema,
+  PendingStatus69ChoiceSchema,
   FailingReason4CodeSchema,
+  FailingReason17ChoiceSchema,
+  FailingReason12Schema,
+  FailingStatus14ChoiceSchema,
+  SettlementStatus31ChoiceSchema,
+  PendingProcessingReason4CodeSchema,
+  PendingProcessingReason18ChoiceSchema,
+  PendingProcessingReason16Schema,
+  PendingProcessingStatus19ChoiceSchema,
   AcknowledgementReason5CodeSchema,
   AcknowledgementReason16ChoiceSchema,
   AcknowledgementReason13Schema,
@@ -61,6 +76,7 @@ import {
   CancellationStatus25ChoiceSchema,
   GeneratedReason3CodeSchema,
   GeneratedReasons6ChoiceSchema,
+  GeneratedReason6Schema,
   RepairReason4CodeSchema,
   RepairReason14ChoiceSchema,
   RepairReason12Schema,
@@ -73,11 +89,15 @@ import {
   TransactionActivity1CodeSchema,
   TransactionActivity4ChoiceSchema,
   SecuritiesTransactionType26CodeSchema,
+  SecuritiesTransactionType52ChoiceSchema,
   CorporateActionEventType33CodeSchema,
   CorporateActionEventType101ChoiceSchema,
   ReceiveDelivery1CodeSchema,
   DeliveryReceiptType2CodeSchema,
   Registration2CodeSchema,
+  Registration12ChoiceSchema,
+  RegistrationReason6Schema,
+  HoldIndicator7Schema,
   SettlementTransactionCondition12CodeSchema,
   SettlementTransactionCondition37ChoiceSchema,
   SettlingCapacity2CodeSchema,
@@ -137,10 +157,13 @@ import {
   RestrictedFINActiveCurrencyAndAmountSchema,
   CreditDebitCodeSchema,
   RestrictedFINActiveOrHistoricCurrencyAndAmountSchema,
+  AmountAndDirection67Schema,
   DateType3CodeSchema,
   TradeDateCode4ChoiceSchema,
   TradeDate9ChoiceSchema,
   DateType4CodeSchema,
+  SettlementDateCode11ChoiceSchema,
+  SettlementDate32ChoiceSchema,
   NameAndAddress12Schema,
   PartyIdentification145ChoiceSchema,
   PartyIdentification191Schema,
@@ -163,85 +186,6 @@ export const Statement70Schema = z.strictObject({
   UpdateType: UpdateType16ChoiceSchema.optional(),
   StatementStructure: StatementStructure1CodeSchema,
   ActivityIndicator: YesNoIndicatorSchema,
-});
-
-export const UnmatchedReason27ChoiceSchema = choiceOf({
-  Code: UnmatchedReason11CodeSchema,
-  Proprietary: GenericIdentification47Schema,
-});
-
-export const UnmatchedReason20Schema = z.strictObject({
-  Code: UnmatchedReason27ChoiceSchema,
-  AdditionalReasonInformation: RestrictedFINXMax210TextSchema.optional(),
-});
-
-export const UnmatchedStatus21ChoiceSchema = choiceOf({
-  NoSpecifiedReason: NoReasonCodeSchema,
-  Reason: UnmatchedReason20Schema,
-});
-
-export const MatchingStatus32ChoiceSchema = choiceOf({
-  Matched: ProprietaryReason5Schema,
-  Unmatched: UnmatchedStatus21ChoiceSchema,
-  Proprietary: ProprietaryStatusAndReason7Schema,
-});
-
-export const PendingReason65ChoiceSchema = choiceOf({
-  Code: PendingReason24CodeSchema,
-  Proprietary: GenericIdentification47Schema,
-});
-
-export const PendingReason31Schema = z.strictObject({
-  Code: PendingReason65ChoiceSchema,
-  AdditionalReasonInformation: RestrictedFINXMax210TextSchema.optional(),
-});
-
-export const PendingStatus69ChoiceSchema = choiceOf({
-  NoSpecifiedReason: NoReasonCodeSchema,
-  Reason: PendingReason31Schema,
-});
-
-export const FailingReason17ChoiceSchema = choiceOf({
-  Code: FailingReason4CodeSchema,
-  Proprietary: GenericIdentification47Schema,
-});
-
-export const FailingReason12Schema = z.strictObject({
-  Code: FailingReason17ChoiceSchema,
-  AdditionalReasonInformation: RestrictedFINXMax210TextSchema.optional(),
-});
-
-export const FailingStatus14ChoiceSchema = choiceOf({
-  NoSpecifiedReason: NoReasonCodeSchema,
-  Reason: FailingReason12Schema,
-});
-
-export const SettlementStatus31ChoiceSchema = choiceOf({
-  Pending: PendingStatus69ChoiceSchema,
-  Failing: FailingStatus14ChoiceSchema,
-  Proprietary: ProprietaryStatusAndReason7Schema,
-});
-
-export const PendingProcessingReason4CodeSchema = z.enum(["ADEA", "CAIS", "DOCY", "NOFX", "BLOC", "MUNO", "GLOB", "YCOL", "COLL", "FLIM", "NEXT", "LACK", "LALO", "MONY", "MINO", "OTHR", "DENO", "LIQU", "CERT", "CSDH", "CVAL", "CDEL", "CDLR", "CDAC", "INBC", "PREA", "PRSY"]);
-
-export const PendingProcessingReason18ChoiceSchema = choiceOf({
-  Code: PendingProcessingReason4CodeSchema,
-  Proprietary: GenericIdentification47Schema,
-});
-
-export const PendingProcessingReason16Schema = z.strictObject({
-  Code: PendingProcessingReason18ChoiceSchema,
-  AdditionalReasonInformation: RestrictedFINXMax210TextSchema.optional(),
-});
-
-export const PendingProcessingStatus19ChoiceSchema = choiceOf({
-  NoSpecifiedReason: NoReasonCodeSchema,
-  Reason: PendingProcessingReason16Schema,
-});
-
-export const GeneratedReason6Schema = z.strictObject({
-  Code: GeneratedReasons6ChoiceSchema,
-  AdditionalReasonInformation: RestrictedFINXMax210TextSchema.optional(),
 });
 
 export const GeneratedStatus8ChoiceSchema = choiceOf({
@@ -268,29 +212,9 @@ export const Status39ChoiceSchema = choiceOf({
   InstructionProcessingStatus: InstructionProcessingStatus45ChoiceSchema,
 });
 
-export const SecuritiesTransactionType52ChoiceSchema = choiceOf({
-  Code: SecuritiesTransactionType26CodeSchema,
-  Proprietary: GenericIdentification47Schema,
-});
-
 export const SettlementOrCorporateActionEvent32ChoiceSchema = choiceOf({
   SecuritiesTransactionType: SecuritiesTransactionType52ChoiceSchema,
   CorporateActionEventType: CorporateActionEventType101ChoiceSchema,
-});
-
-export const Registration12ChoiceSchema = choiceOf({
-  Code: Registration2CodeSchema,
-  Proprietary: GenericIdentification47Schema,
-});
-
-export const RegistrationReason6Schema = z.strictObject({
-  Code: Registration12ChoiceSchema,
-  AdditionalInformation: RestrictedFINXMax210TextSchema.optional(),
-});
-
-export const HoldIndicator7Schema = z.strictObject({
-  Indicator: YesNoIndicatorSchema,
-  Reason: z.array(RegistrationReason6Schema).optional(),
 });
 
 export const SettlementDetails197Schema = z.strictObject({
@@ -312,22 +236,6 @@ export const SettlementDetails197Schema = z.strictObject({
   CCPEligibility: CentralCounterPartyEligibility5ChoiceSchema.optional(),
   LetterOfGuarantee: LetterOfGuarantee5ChoiceSchema.optional(),
   PartialSettlementIndicator: SettlementTransactionCondition5CodeSchema.optional(),
-});
-
-export const AmountAndDirection67Schema = z.strictObject({
-  Amount: RestrictedFINActiveCurrencyAndAmountSchema,
-  CreditDebitIndicator: CreditDebitCodeSchema,
-  OriginalCurrencyAndOrderedAmount: RestrictedFINActiveOrHistoricCurrencyAndAmountSchema.optional(),
-});
-
-export const SettlementDateCode11ChoiceSchema = choiceOf({
-  Code: DateType4CodeSchema,
-  Proprietary: GenericIdentification47Schema,
-});
-
-export const SettlementDate32ChoiceSchema = choiceOf({
-  Date: DateAndDateTime2ChoiceSchema,
-  DateCode: SettlementDateCode11ChoiceSchema,
 });
 
 export const TransactionDetails164Schema = z.strictObject({
@@ -427,152 +335,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       { name: "ReportNumberRule", isoId: "_7k4Jic32Eee5nJBZsW8MFQ", text: "If Long number (Exact5NumericTest) is used, then the report must be a delta reports (UpdateType: DELT).|If the report has multiple pages, then the ReportNumber must remain the same through all the pages. It is a unique number to the report.|Two reports of the same type sent one after the other to the same receiver in relation to the same safekeeping account must have different ReportNumbers. For example, a daily report sent on day 1 would have ReportNumber 001, on day 2, 002." },
     ],
   },
-  "UnmatchedReason27Choice": {
-    name: "UnmatchedReason27Choice",
-    isoId: "_6d89j5NLEeWGlc8L7oPDIg",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_6d89kZNLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "UnmatchedReason11Code", required: true }),
-      f({ name: "Proprietary", isoId: "_6d89lZNLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
-    ],
-  },
-  "UnmatchedReason20": {
-    name: "UnmatchedReason20",
-    isoId: "_6d89g5NLEeWGlc8L7oPDIg",
-    kind: "component",
-    fields: [
-      f({ name: "Code", isoId: "_6d89hZNLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "UnmatchedReason27Choice", required: true }),
-      f({ name: "AdditionalReasonInformation", isoId: "_6d89iZNLEeWGlc8L7oPDIg", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "RestrictedFINXMax210Text", required: false }),
-    ],
-  },
-  "UnmatchedStatus21Choice": {
-    name: "UnmatchedStatus21Choice",
-    isoId: "_6d89dZNLEeWGlc8L7oPDIg",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "NoSpecifiedReason", isoId: "_6d89d5NLEeWGlc8L7oPDIg", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
-      f({ name: "Reason", isoId: "_6d89e5NLEeWGlc8L7oPDIg", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "UnmatchedReason20", required: true }),
-    ],
-  },
-  "MatchingStatus32Choice": {
-    name: "MatchingStatus32Choice",
-    isoId: "_6d8XS5NLEeWGlc8L7oPDIg",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Matched", isoId: "_6d8XTZNLEeWGlc8L7oPDIg", xmlTag: "Mtchd", displayName: displayName("Matched"), kind: "component", type: "ProprietaryReason5", required: true }),
-      f({ name: "Unmatched", isoId: "_6d8XUZNLEeWGlc8L7oPDIg", xmlTag: "Umtchd", displayName: displayName("Unmatched"), kind: "choice", type: "UnmatchedStatus21Choice", required: true }),
-      f({ name: "Proprietary", isoId: "_6d8XVZNLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "ProprietaryStatusAndReason7", required: true }),
-    ],
-  },
-  "PendingReason65Choice": {
-    name: "PendingReason65Choice",
-    isoId: "_f99MPTi8Eeydid5dcNPKvg",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_f99MPzi8Eeydid5dcNPKvg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "PendingReason24Code", required: true }),
-      f({ name: "Proprietary", isoId: "_f99MRzi8Eeydid5dcNPKvg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
-    ],
-  },
-  "PendingReason31": {
-    name: "PendingReason31",
-    isoId: "_f99MKTi8Eeydid5dcNPKvg",
-    kind: "component",
-    fields: [
-      f({ name: "Code", isoId: "_f99MKzi8Eeydid5dcNPKvg", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "PendingReason65Choice", required: true }),
-      f({ name: "AdditionalReasonInformation", isoId: "_f99MMzi8Eeydid5dcNPKvg", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "RestrictedFINXMax210Text", required: false }),
-    ],
-  },
-  "PendingStatus69Choice": {
-    name: "PendingStatus69Choice",
-    isoId: "_f99MEzi8Eeydid5dcNPKvg",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "NoSpecifiedReason", isoId: "_f99MFTi8Eeydid5dcNPKvg", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
-      f({ name: "Reason", isoId: "_f99MHTi8Eeydid5dcNPKvg", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "PendingReason31", required: true }),
-    ],
-  },
-  "FailingReason17Choice": {
-    name: "FailingReason17Choice",
-    isoId: "_f99yLTi8Eeydid5dcNPKvg",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_f99yLzi8Eeydid5dcNPKvg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "FailingReason4Code", required: true }),
-      f({ name: "Proprietary", isoId: "_f99yNzi8Eeydid5dcNPKvg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
-    ],
-  },
-  "FailingReason12": {
-    name: "FailingReason12",
-    isoId: "_f99yGTi8Eeydid5dcNPKvg",
-    kind: "component",
-    fields: [
-      f({ name: "Code", isoId: "_f99yGzi8Eeydid5dcNPKvg", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "FailingReason17Choice", required: true }),
-      f({ name: "AdditionalReasonInformation", isoId: "_f99yIzi8Eeydid5dcNPKvg", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "RestrictedFINXMax210Text", required: false }),
-    ],
-  },
-  "FailingStatus14Choice": {
-    name: "FailingStatus14Choice",
-    isoId: "_f99yAzi8Eeydid5dcNPKvg",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "NoSpecifiedReason", isoId: "_f99yBTi8Eeydid5dcNPKvg", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
-      f({ name: "Reason", isoId: "_f99yDTi8Eeydid5dcNPKvg", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "FailingReason12", required: true }),
-    ],
-  },
-  "SettlementStatus31Choice": {
-    name: "SettlementStatus31Choice",
-    isoId: "_f99L9Ti8Eeydid5dcNPKvg",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Pending", isoId: "_f99L-Ti8Eeydid5dcNPKvg", xmlTag: "Pdg", displayName: displayName("Pending"), kind: "choice", type: "PendingStatus69Choice", required: true }),
-      f({ name: "Failing", isoId: "_f99MATi8Eeydid5dcNPKvg", xmlTag: "Flng", displayName: displayName("Failing"), kind: "choice", type: "FailingStatus14Choice", required: true }),
-      f({ name: "Proprietary", isoId: "_f99MCTi8Eeydid5dcNPKvg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "ProprietaryStatusAndReason7", required: true }),
-    ],
-    rules: [
-      { name: "PendingToFailingRule", isoId: "_f99L9zi8Eeydid5dcNPKvg", text: "A pending transaction (PEND) becomes a failing transaction (PENF) on the settlement date instructed in the message, during the end of day reporting." },
-    ],
-  },
-  "PendingProcessingReason4Code": {
-    name: "PendingProcessingReason4Code",
-    isoId: "_BYbMigpKEeup4r-PFG2T5Q",
-    kind: "code",
-    options: [{ value: "ADEA", name: "AccountServicerDeadlineMissed", isoId: "_BYbMowpKEeup4r-PFG2T5Q" }, { value: "CAIS", name: "AwaitingSecurities", isoId: "_BYbMngpKEeup4r-PFG2T5Q" }, { value: "DOCY", name: "AwaitingDocumentsOrEndorsementsFromYou", isoId: "_BYbMkApKEeup4r-PFG2T5Q" }, { value: "NOFX", name: "NoForeignExchangeInstruction", isoId: "_BYbMogpKEeup4r-PFG2T5Q" }, { value: "BLOC", name: "AccountBlocked", isoId: "_BYbMlApKEeup4r-PFG2T5Q" }, { value: "MUNO", name: "MultipleSettlementAmount", isoId: "_BYbMiwpKEeup4r-PFG2T5Q" }, { value: "GLOB", name: "GlobalFormSecurities", isoId: "_BYbMmApKEeup4r-PFG2T5Q" }, { value: "YCOL", name: "CollateralShortage", isoId: "_BYbMlQpKEeup4r-PFG2T5Q" }, { value: "COLL", name: "SecuritiesPledgedAsCollateral", isoId: "_BYbMnQpKEeup4r-PFG2T5Q" }, { value: "FLIM", name: "MaximumForeignLimitReached", isoId: "_BYbMnApKEeup4r-PFG2T5Q" }, { value: "NEXT", name: "NextProcess", isoId: "_BYbMkQpKEeup4r-PFG2T5Q" }, { value: "LACK", name: "LackOfSecurities", isoId: "_BYbMjApKEeup4r-PFG2T5Q" }, { value: "LALO", name: "SecuritiesLoanedOut", isoId: "_BYbMlgpKEeup4r-PFG2T5Q" }, { value: "MONY", name: "InsufficientMoney", isoId: "_BYbMmwpKEeup4r-PFG2T5Q" }, { value: "MINO", name: "MinimumSettlementAmount", isoId: "_BYbMkgpKEeup4r-PFG2T5Q" }, { value: "OTHR", name: "Other", isoId: "_BYbMjgpKEeup4r-PFG2T5Q" }, { value: "DENO", name: "UnavailableDeliverableDenominatedQuantity", isoId: "_BYbMmQpKEeup4r-PFG2T5Q" }, { value: "LIQU", name: "InsufficientCentralBankLiquidity", isoId: "_BYbMoApKEeup4r-PFG2T5Q" }, { value: "CERT", name: "WrongCertificatesNumbers", isoId: "_BYbMkwpKEeup4r-PFG2T5Q" }, { value: "CSDH", name: "CSDHold", isoId: "_BYbMoQpKEeup4r-PFG2T5Q" }, { value: "CVAL", name: "CSDValidation", isoId: "_BYbMlwpKEeup4r-PFG2T5Q" }, { value: "CDEL", name: "ConditionalDelivery", isoId: "_BYbMjQpKEeup4r-PFG2T5Q" }, { value: "CDLR", name: "ConditionalDeliveryAwaitingRelease", isoId: "_BYbMjwpKEeup4r-PFG2T5Q" }, { value: "CDAC", name: "ConditionalDeliveryAwaitingCancellation", isoId: "_BYbMmgpKEeup4r-PFG2T5Q" }, { value: "INBC", name: "IncompleteNumberCount", isoId: "_BYbMnwpKEeup4r-PFG2T5Q" }, { value: "PREA", name: "YourInstructionOnHold", isoId: "_GT-gcQpKEeup4r-PFG2T5Q" }, { value: "PRSY", name: "SystemOnHold", isoId: "_LRduIQpKEeup4r-PFG2T5Q" }],
-  },
-  "PendingProcessingReason18Choice": {
-    name: "PendingProcessingReason18Choice",
-    isoId: "_qTGQiSAdEeuyDZ-ukt4YRg",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_qTGQiyAdEeuyDZ-ukt4YRg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "PendingProcessingReason4Code", required: true }),
-      f({ name: "Proprietary", isoId: "_qTGQkyAdEeuyDZ-ukt4YRg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
-    ],
-  },
-  "PendingProcessingReason16": {
-    name: "PendingProcessingReason16",
-    isoId: "_qTGQdSAdEeuyDZ-ukt4YRg",
-    kind: "component",
-    fields: [
-      f({ name: "Code", isoId: "_qTGQdyAdEeuyDZ-ukt4YRg", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "PendingProcessingReason18Choice", required: true }),
-      f({ name: "AdditionalReasonInformation", isoId: "_qTGQfyAdEeuyDZ-ukt4YRg", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "RestrictedFINXMax210Text", required: false }),
-    ],
-  },
-  "PendingProcessingStatus19Choice": {
-    name: "PendingProcessingStatus19Choice",
-    isoId: "_qTGQXyAdEeuyDZ-ukt4YRg",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "NoSpecifiedReason", isoId: "_qTGQYSAdEeuyDZ-ukt4YRg", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
-      f({ name: "Reason", isoId: "_qTGQaSAdEeuyDZ-ukt4YRg", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "PendingProcessingReason16", required: true }),
-    ],
-  },
-  "GeneratedReason6": {
-    name: "GeneratedReason6",
-    isoId: "_6d7vSZNLEeWGlc8L7oPDIg",
-    kind: "component",
-    fields: [
-      f({ name: "Code", isoId: "_6d7vS5NLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "GeneratedReasons6Choice", required: true }),
-      f({ name: "AdditionalReasonInformation", isoId: "_6d7vT5NLEeWGlc8L7oPDIg", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "RestrictedFINXMax210Text", required: false }),
-    ],
-  },
   "GeneratedStatus8Choice": {
     name: "GeneratedStatus8Choice",
     isoId: "_8VJvzZNLEeWGlc8L7oPDIg",
@@ -613,15 +375,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       { name: "SettlementStatusAndMatchedRule", isoId: "_gEIFbji8Eeydid5dcNPKvg", text: "If settlement status/reason is used alone, then it means that the transaction is matched (if a matching process exists in the concerned market or at the concerned account servicer)." },
     ],
   },
-  "SecuritiesTransactionType52Choice": {
-    name: "SecuritiesTransactionType52Choice",
-    isoId: "_J4Cyy_fYEeiNZp_PtLohLw",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_J4CyzffYEeiNZp_PtLohLw", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "SecuritiesTransactionType26Code", required: true }),
-      f({ name: "Proprietary", isoId: "_J4Cy1ffYEeiNZp_PtLohLw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
-    ],
-  },
   "SettlementOrCorporateActionEvent32Choice": {
     name: "SettlementOrCorporateActionEvent32Choice",
     isoId: "_ipRlwAVVEeqjd8n6wD9JVw",
@@ -629,33 +382,6 @@ const ownTypeDescriptors: TypeDescriptors = {
     choiceOptions: [
       f({ name: "SecuritiesTransactionType", isoId: "_ipRlwgVVEeqjd8n6wD9JVw", xmlTag: "SctiesTxTp", displayName: displayName("SecuritiesTransactionType"), kind: "choice", type: "SecuritiesTransactionType52Choice", required: true }),
       f({ name: "CorporateActionEventType", isoId: "_ipRlygVVEeqjd8n6wD9JVw", xmlTag: "CorpActnEvtTp", displayName: displayName("CorporateActionEventType"), kind: "choice", type: "CorporateActionEventType101Choice", required: true }),
-    ],
-  },
-  "Registration12Choice": {
-    name: "Registration12Choice",
-    isoId: "_6GWV9ZNLEeWGlc8L7oPDIg",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_6GWV95NLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "Registration2Code", required: true }),
-      f({ name: "Proprietary", isoId: "_6GWV-ZNLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
-    ],
-  },
-  "RegistrationReason6": {
-    name: "RegistrationReason6",
-    isoId: "_6GWV7ZNLEeWGlc8L7oPDIg",
-    kind: "component",
-    fields: [
-      f({ name: "Code", isoId: "_6GWV75NLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "Registration12Choice", required: true }),
-      f({ name: "AdditionalInformation", isoId: "_6GWV8ZNLEeWGlc8L7oPDIg", xmlTag: "AddtlInf", displayName: displayName("AdditionalInformation"), kind: "text", type: "RestrictedFINXMax210Text", required: false }),
-    ],
-  },
-  "HoldIndicator7": {
-    name: "HoldIndicator7",
-    isoId: "_6GWV5ZNLEeWGlc8L7oPDIg",
-    kind: "component",
-    fields: [
-      f({ name: "Indicator", isoId: "_6GWV55NLEeWGlc8L7oPDIg", xmlTag: "Ind", displayName: displayName("Indicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
-      f({ name: "Reason", isoId: "_6GWV6ZNLEeWGlc8L7oPDIg", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "RegistrationReason6", required: false, repeat: { min: 0, max: null } }),
     ],
   },
   "SettlementDetails197": {
@@ -685,34 +411,6 @@ const ownTypeDescriptors: TypeDescriptors = {
     rules: [
       { name: "SettlementDetailsRule", isoId: "_waX7LyAeEeuyDZ-ukt4YRg", text: "If SettlementDetails elements are used, then their conditions of use must be pre-agreed between account owner and account servicer." },
       { name: "CashClearingSystemRule", isoId: "_waX7MSAeEeuyDZ-ukt4YRg", text: "The CashSettlementSystem codes are to be used only by agents directly involved in the settlement process, such as local settlement agents, CSD's and central banks." },
-    ],
-  },
-  "AmountAndDirection67": {
-    name: "AmountAndDirection67",
-    isoId: "_6BMwLZNLEeWGlc8L7oPDIg",
-    kind: "component",
-    fields: [
-      f({ name: "Amount", isoId: "_6BMwL5NLEeWGlc8L7oPDIg", xmlTag: "Amt", displayName: displayName("Amount"), kind: "amount", type: "RestrictedFINActiveCurrencyAndAmount", required: true }),
-      f({ name: "CreditDebitIndicator", isoId: "_6BMwN5NLEeWGlc8L7oPDIg", xmlTag: "CdtDbtInd", displayName: displayName("CreditDebitIndicator"), kind: "code", type: "CreditDebitCode", required: true }),
-      f({ name: "OriginalCurrencyAndOrderedAmount", isoId: "_6BMwP5NLEeWGlc8L7oPDIg", xmlTag: "OrgnlCcyAndOrdrdAmt", displayName: displayName("OriginalCurrencyAndOrderedAmount"), kind: "amount", type: "RestrictedFINActiveOrHistoricCurrencyAndAmount", required: false }),
-    ],
-  },
-  "SettlementDateCode11Choice": {
-    name: "SettlementDateCode11Choice",
-    isoId: "_6BMwg5NLEeWGlc8L7oPDIg",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_6BMwhZNLEeWGlc8L7oPDIg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "DateType4Code", required: true }),
-      f({ name: "Proprietary", isoId: "_6BMwjZNLEeWGlc8L7oPDIg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification47", required: true }),
-    ],
-  },
-  "SettlementDate32Choice": {
-    name: "SettlementDate32Choice",
-    isoId: "_vE8fa832Eee5nJBZsW8MFQ",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Date", isoId: "_vE8fbc32Eee5nJBZsW8MFQ", xmlTag: "Dt", displayName: displayName("Date"), kind: "choice", type: "DateAndDateTime2Choice", required: true }),
-      f({ name: "DateCode", isoId: "_vE8fe832Eee5nJBZsW8MFQ", xmlTag: "DtCd", displayName: displayName("DateCode"), kind: "choice", type: "SettlementDateCode11Choice", required: true }),
     ],
   },
   "TransactionDetails164": {
@@ -871,8 +569,23 @@ export const typeDescriptors: TypeDescriptors = {
   "ProprietaryStatusAndReason7": sharedTypeDescriptors["ProprietaryStatusAndReason7"]!,
   "NoReasonCode": sharedTypeDescriptors["NoReasonCode"]!,
   "UnmatchedReason11Code": sharedTypeDescriptors["UnmatchedReason11Code"]!,
+  "UnmatchedReason27Choice": sharedTypeDescriptors["UnmatchedReason27Choice"]!,
+  "UnmatchedReason20": sharedTypeDescriptors["UnmatchedReason20"]!,
+  "UnmatchedStatus21Choice": sharedTypeDescriptors["UnmatchedStatus21Choice"]!,
+  "MatchingStatus32Choice": sharedTypeDescriptors["MatchingStatus32Choice"]!,
   "PendingReason24Code": sharedTypeDescriptors["PendingReason24Code"]!,
+  "PendingReason65Choice": sharedTypeDescriptors["PendingReason65Choice"]!,
+  "PendingReason31": sharedTypeDescriptors["PendingReason31"]!,
+  "PendingStatus69Choice": sharedTypeDescriptors["PendingStatus69Choice"]!,
   "FailingReason4Code": sharedTypeDescriptors["FailingReason4Code"]!,
+  "FailingReason17Choice": sharedTypeDescriptors["FailingReason17Choice"]!,
+  "FailingReason12": sharedTypeDescriptors["FailingReason12"]!,
+  "FailingStatus14Choice": sharedTypeDescriptors["FailingStatus14Choice"]!,
+  "SettlementStatus31Choice": sharedTypeDescriptors["SettlementStatus31Choice"]!,
+  "PendingProcessingReason4Code": sharedTypeDescriptors["PendingProcessingReason4Code"]!,
+  "PendingProcessingReason18Choice": sharedTypeDescriptors["PendingProcessingReason18Choice"]!,
+  "PendingProcessingReason16": sharedTypeDescriptors["PendingProcessingReason16"]!,
+  "PendingProcessingStatus19Choice": sharedTypeDescriptors["PendingProcessingStatus19Choice"]!,
   "AcknowledgementReason5Code": sharedTypeDescriptors["AcknowledgementReason5Code"]!,
   "AcknowledgementReason16Choice": sharedTypeDescriptors["AcknowledgementReason16Choice"]!,
   "AcknowledgementReason13": sharedTypeDescriptors["AcknowledgementReason13"]!,
@@ -883,6 +596,7 @@ export const typeDescriptors: TypeDescriptors = {
   "CancellationStatus25Choice": sharedTypeDescriptors["CancellationStatus25Choice"]!,
   "GeneratedReason3Code": sharedTypeDescriptors["GeneratedReason3Code"]!,
   "GeneratedReasons6Choice": sharedTypeDescriptors["GeneratedReasons6Choice"]!,
+  "GeneratedReason6": sharedTypeDescriptors["GeneratedReason6"]!,
   "RepairReason4Code": sharedTypeDescriptors["RepairReason4Code"]!,
   "RepairReason14Choice": sharedTypeDescriptors["RepairReason14Choice"]!,
   "RepairReason12": sharedTypeDescriptors["RepairReason12"]!,
@@ -895,11 +609,15 @@ export const typeDescriptors: TypeDescriptors = {
   "TransactionActivity1Code": sharedTypeDescriptors["TransactionActivity1Code"]!,
   "TransactionActivity4Choice": sharedTypeDescriptors["TransactionActivity4Choice"]!,
   "SecuritiesTransactionType26Code": sharedTypeDescriptors["SecuritiesTransactionType26Code"]!,
+  "SecuritiesTransactionType52Choice": sharedTypeDescriptors["SecuritiesTransactionType52Choice"]!,
   "CorporateActionEventType33Code": sharedTypeDescriptors["CorporateActionEventType33Code"]!,
   "CorporateActionEventType101Choice": sharedTypeDescriptors["CorporateActionEventType101Choice"]!,
   "ReceiveDelivery1Code": sharedTypeDescriptors["ReceiveDelivery1Code"]!,
   "DeliveryReceiptType2Code": sharedTypeDescriptors["DeliveryReceiptType2Code"]!,
   "Registration2Code": sharedTypeDescriptors["Registration2Code"]!,
+  "Registration12Choice": sharedTypeDescriptors["Registration12Choice"]!,
+  "RegistrationReason6": sharedTypeDescriptors["RegistrationReason6"]!,
+  "HoldIndicator7": sharedTypeDescriptors["HoldIndicator7"]!,
   "SettlementTransactionCondition12Code": sharedTypeDescriptors["SettlementTransactionCondition12Code"]!,
   "SettlementTransactionCondition37Choice": sharedTypeDescriptors["SettlementTransactionCondition37Choice"]!,
   "SettlingCapacity2Code": sharedTypeDescriptors["SettlingCapacity2Code"]!,
@@ -959,10 +677,13 @@ export const typeDescriptors: TypeDescriptors = {
   "RestrictedFINActiveCurrencyAndAmount": sharedTypeDescriptors["RestrictedFINActiveCurrencyAndAmount"]!,
   "CreditDebitCode": sharedTypeDescriptors["CreditDebitCode"]!,
   "RestrictedFINActiveOrHistoricCurrencyAndAmount": sharedTypeDescriptors["RestrictedFINActiveOrHistoricCurrencyAndAmount"]!,
+  "AmountAndDirection67": sharedTypeDescriptors["AmountAndDirection67"]!,
   "DateType3Code": sharedTypeDescriptors["DateType3Code"]!,
   "TradeDateCode4Choice": sharedTypeDescriptors["TradeDateCode4Choice"]!,
   "TradeDate9Choice": sharedTypeDescriptors["TradeDate9Choice"]!,
   "DateType4Code": sharedTypeDescriptors["DateType4Code"]!,
+  "SettlementDateCode11Choice": sharedTypeDescriptors["SettlementDateCode11Choice"]!,
+  "SettlementDate32Choice": sharedTypeDescriptors["SettlementDate32Choice"]!,
   "NameAndAddress12": sharedTypeDescriptors["NameAndAddress12"]!,
   "PartyIdentification145Choice": sharedTypeDescriptors["PartyIdentification145Choice"]!,
   "PartyIdentification191": sharedTypeDescriptors["PartyIdentification191"]!,

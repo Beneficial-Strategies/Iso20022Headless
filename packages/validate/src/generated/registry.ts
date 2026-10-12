@@ -42,6 +42,7 @@ export const areaIndex: readonly AreaInfo[] = [
   { code: "head", name: "Business Application Header", definition: "Header that contains business information that is relevant before processing a message." },
   { code: "semt", name: "Securities Management", definition: "Messages that support post-settlement processes for securities (including reporting on securities movements, trades and balances), the processes required to protect beneficial owner's rights throughout settlement, plus any exceptions and investigations related to securities transactions." },
   { code: "seev", name: "Securities Events", definition: "Messages that support asset servicing, including proxy voting, income and corporate actions." },
+  { code: "sese", name: "Securities Settlement", definition: "Messages that support the settlement process for securities and report its status and confirmation." },
 ];
 
 export const messageIndex: readonly MessageInfo[] = [
@@ -3064,5 +3065,615 @@ export const messageIndex: readonly MessageInfo[] = [
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.067.001.01.xsd",
     load: () =>
       import('./seev067.ts').then((m) => ({ message: m.seev067Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.001.001.10",
+    name: "TransferOutInstructionV10",
+    title: "Transfer Out Instruction",
+    area: "sese",
+    module: "sese001",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.001.001.10.xsd",
+    load: () =>
+      import('./sese001.ts').then((m) => ({ message: m.sese001Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.002.001.09",
+    name: "TransferOutCancellationRequestV09",
+    title: "Transfer Out Cancellation Request",
+    area: "sese",
+    module: "sese002",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.002.001.09.xsd",
+    load: () =>
+      import('./sese002.ts').then((m) => ({ message: m.sese002Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.003.001.10",
+    name: "TransferOutConfirmationV10",
+    title: "Transfer Out Confirmation",
+    area: "sese",
+    module: "sese003",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.003.001.10.xsd",
+    load: () =>
+      import('./sese003.ts').then((m) => ({ message: m.sese003Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.004.001.09",
+    name: "ReversalOfTransferOutConfirmationV09",
+    title: "Reversal Of Transfer Out Confirmation",
+    area: "sese",
+    module: "sese004",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.004.001.09.xsd",
+    load: () =>
+      import('./sese004.ts').then((m) => ({ message: m.sese004Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.005.001.10",
+    name: "TransferInInstructionV10",
+    title: "Transfer In Instruction",
+    area: "sese",
+    module: "sese005",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.005.001.10.xsd",
+    load: () =>
+      import('./sese005.ts').then((m) => ({ message: m.sese005Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.006.001.09",
+    name: "TransferInCancellationRequestV09",
+    title: "Transfer In Cancellation Request",
+    area: "sese",
+    module: "sese006",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.006.001.09.xsd",
+    load: () =>
+      import('./sese006.ts').then((m) => ({ message: m.sese006Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.007.001.10",
+    name: "TransferInConfirmationV10",
+    title: "Transfer In Confirmation",
+    area: "sese",
+    module: "sese007",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.007.001.10.xsd",
+    load: () =>
+      import('./sese007.ts').then((m) => ({ message: m.sese007Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.008.001.09",
+    name: "ReversalOfTransferInConfirmationV09",
+    title: "Reversal Of Transfer In Confirmation",
+    area: "sese",
+    module: "sese008",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.008.001.09.xsd",
+    load: () =>
+      import('./sese008.ts').then((m) => ({ message: m.sese008Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.009.001.09",
+    name: "RequestForTransferStatusReportV09",
+    title: "Request For Transfer Status Report",
+    area: "sese",
+    module: "sese009",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.009.001.09.xsd",
+    load: () =>
+      import('./sese009.ts').then((m) => ({ message: m.sese009Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.010.001.07",
+    name: "TransferCancellationStatusReportV07",
+    title: "Transfer Cancellation Status Report",
+    area: "sese",
+    module: "sese010",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.010.001.07.xsd",
+    load: () =>
+      import('./sese010.ts').then((m) => ({ message: m.sese010Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.011.001.10",
+    name: "TransferInstructionStatusReportV10",
+    title: "Transfer Instruction Status Report",
+    area: "sese",
+    module: "sese011",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.011.001.10.xsd",
+    load: () =>
+      import('./sese011.ts').then((m) => ({ message: m.sese011Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.012.001.12",
+    name: "PortfolioTransferInstructionV12",
+    title: "Portfolio Transfer Instruction",
+    area: "sese",
+    module: "sese012",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.012.001.12.xsd",
+    load: () =>
+      import('./sese012.ts').then((m) => ({ message: m.sese012Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.013.001.12",
+    name: "PortfolioTransferConfirmationV12",
+    title: "Portfolio Transfer Confirmation",
+    area: "sese",
+    module: "sese013",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.013.001.12.xsd",
+    load: () =>
+      import('./sese013.ts').then((m) => ({ message: m.sese013Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.014.001.09",
+    name: "PortfolioTransferCancellationRequestV09",
+    title: "Portfolio Transfer Cancellation Request",
+    area: "sese",
+    module: "sese014",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.014.001.09.xsd",
+    load: () =>
+      import('./sese014.ts').then((m) => ({ message: m.sese014Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.018.001.10",
+    name: "AccountHoldingInformationV10",
+    title: "Account Holding Information",
+    area: "sese",
+    module: "sese018",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.018.001.10.xsd",
+    load: () =>
+      import('./sese018.ts').then((m) => ({ message: m.sese018Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.019.001.09",
+    name: "AccountHoldingInformationRequestV09",
+    title: "Account Holding Information Request",
+    area: "sese",
+    module: "sese019",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.019.001.09.xsd",
+    load: () =>
+      import('./sese019.ts').then((m) => ({ message: m.sese019Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.020.001.09",
+    name: "SecuritiesTransactionCancellationRequestV09",
+    title: "Securities Transaction Cancellation Request",
+    area: "sese",
+    module: "sese020",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.020.001.09.xsd",
+    load: () =>
+      import('./sese020.ts').then((m) => ({ message: m.sese020Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.020.002.07",
+    name: "SecuritiesTransactionCancellationRequest002V07",
+    title: "Securities Transaction Cancellation Request002",
+    area: "sese",
+    module: "sese020f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.020.002.07.xsd",
+    load: () =>
+      import('./sese020f2.ts').then((m) => ({ message: m.sese020f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.021.001.08",
+    name: "SecuritiesTransactionStatusQueryV08",
+    title: "Securities Transaction Status Query",
+    area: "sese",
+    module: "sese021",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.021.001.08.xsd",
+    load: () =>
+      import('./sese021.ts').then((m) => ({ message: m.sese021Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.021.002.06",
+    name: "SecuritiesTransactionStatusQuery002V06",
+    title: "Securities Transaction Status Query002",
+    area: "sese",
+    module: "sese021f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.021.002.06.xsd",
+    load: () =>
+      import('./sese021f2.ts').then((m) => ({ message: m.sese021f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.022.001.08",
+    name: "SecuritiesStatusOrStatementQueryStatusAdviceV08",
+    title: "Securities Status Or Statement Query Status Advice",
+    area: "sese",
+    module: "sese022",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.022.001.08.xsd",
+    load: () =>
+      import('./sese022.ts').then((m) => ({ message: m.sese022Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.022.002.06",
+    name: "SecuritiesStatusOrStatementQueryStatusAdvice002V06",
+    title: "Securities Status Or Statement Query Status Advice002",
+    area: "sese",
+    module: "sese022f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.022.002.06.xsd",
+    load: () =>
+      import('./sese022f2.ts').then((m) => ({ message: m.sese022f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.023.001.13",
+    name: "SecuritiesSettlementTransactionInstructionV13",
+    title: "Securities Settlement Transaction Instruction",
+    area: "sese",
+    module: "sese023",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.023.001.13.xsd",
+    load: () =>
+      import('./sese023.ts').then((m) => ({ message: m.sese023Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.023.002.11",
+    name: "SecuritiesSettlementTransactionInstruction002V11",
+    title: "Securities Settlement Transaction Instruction002",
+    area: "sese",
+    module: "sese023f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.023.002.11.xsd",
+    load: () =>
+      import('./sese023f2.ts').then((m) => ({ message: m.sese023f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.024.001.14",
+    name: "SecuritiesSettlementTransactionStatusAdviceV14",
+    title: "Securities Settlement Transaction Status Advice",
+    area: "sese",
+    module: "sese024",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.024.001.14.xsd",
+    load: () =>
+      import('./sese024.ts').then((m) => ({ message: m.sese024Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.024.002.12",
+    name: "SecuritiesSettlementTransactionStatusAdvice002V12",
+    title: "Securities Settlement Transaction Status Advice002",
+    area: "sese",
+    module: "sese024f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.024.002.12.xsd",
+    load: () =>
+      import('./sese024f2.ts').then((m) => ({ message: m.sese024f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.025.001.13",
+    name: "SecuritiesSettlementTransactionConfirmationV13",
+    title: "Securities Settlement Transaction Confirmation",
+    area: "sese",
+    module: "sese025",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.025.001.13.xsd",
+    load: () =>
+      import('./sese025.ts').then((m) => ({ message: m.sese025Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.025.002.11",
+    name: "SecuritiesSettlementTransactionConfirmation002V11",
+    title: "Securities Settlement Transaction Confirmation002",
+    area: "sese",
+    module: "sese025f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.025.002.11.xsd",
+    load: () =>
+      import('./sese025f2.ts').then((m) => ({ message: m.sese025f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.026.001.12",
+    name: "SecuritiesSettlementTransactionReversalAdviceV12",
+    title: "Securities Settlement Transaction Reversal Advice",
+    area: "sese",
+    module: "sese026",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.026.001.12.xsd",
+    load: () =>
+      import('./sese026.ts').then((m) => ({ message: m.sese026Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.026.002.10",
+    name: "SecuritiesSettlementTransactionReversalAdvice002V10",
+    title: "Securities Settlement Transaction Reversal Advice002",
+    area: "sese",
+    module: "sese026f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.026.002.10.xsd",
+    load: () =>
+      import('./sese026f2.ts').then((m) => ({ message: m.sese026f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.027.001.09",
+    name: "SecuritiesTransactionCancellationRequestStatusAdviceV09",
+    title: "Securities Transaction Cancellation Request Status Advice",
+    area: "sese",
+    module: "sese027",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.027.001.09.xsd",
+    load: () =>
+      import('./sese027.ts').then((m) => ({ message: m.sese027Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.027.002.07",
+    name: "SecuritiesTransactionCancellationRequestStatusAdvice002V07",
+    title: "Securities Transaction Cancellation Request Status Advice002",
+    area: "sese",
+    module: "sese027f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.027.002.07.xsd",
+    load: () =>
+      import('./sese027f2.ts').then((m) => ({ message: m.sese027f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.028.001.12",
+    name: "SecuritiesSettlementTransactionAllegementNotificationV12",
+    title: "Securities Settlement Transaction Allegement Notification",
+    area: "sese",
+    module: "sese028",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.028.001.12.xsd",
+    load: () =>
+      import('./sese028.ts').then((m) => ({ message: m.sese028Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.028.002.10",
+    name: "SecuritiesSettlementTransactionAllegementNotification002V10",
+    title: "Securities Settlement Transaction Allegement Notification002",
+    area: "sese",
+    module: "sese028f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.028.002.10.xsd",
+    load: () =>
+      import('./sese028f2.ts').then((m) => ({ message: m.sese028f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.029.001.08",
+    name: "SecuritiesSettlementAllegementRemovalAdviceV08",
+    title: "Securities Settlement Allegement Removal Advice",
+    area: "sese",
+    module: "sese029",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.029.001.08.xsd",
+    load: () =>
+      import('./sese029.ts').then((m) => ({ message: m.sese029Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.029.002.06",
+    name: "SecuritiesSettlementAllegementRemovalAdvice002V06",
+    title: "Securities Settlement Allegement Removal Advice002",
+    area: "sese",
+    module: "sese029f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.029.002.06.xsd",
+    load: () =>
+      import('./sese029f2.ts').then((m) => ({ message: m.sese029f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.030.001.10",
+    name: "SecuritiesSettlementConditionsModificationRequestV10",
+    title: "Securities Settlement Conditions Modification Request",
+    area: "sese",
+    module: "sese030",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.030.001.10.xsd",
+    load: () =>
+      import('./sese030.ts').then((m) => ({ message: m.sese030Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.030.002.09",
+    name: "SecuritiesSettlementConditionsModificationRequest002V09",
+    title: "Securities Settlement Conditions Modification Request002",
+    area: "sese",
+    module: "sese030f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.030.002.09.xsd",
+    load: () =>
+      import('./sese030f2.ts').then((m) => ({ message: m.sese030f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.031.001.11",
+    name: "SecuritiesSettlementConditionModificationStatusAdviceV11",
+    title: "Securities Settlement Condition Modification Status Advice",
+    area: "sese",
+    module: "sese031",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.031.001.11.xsd",
+    load: () =>
+      import('./sese031.ts').then((m) => ({ message: m.sese031Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.031.002.09",
+    name: "SecuritiesSettlementConditionModificationStatusAdvice002V09",
+    title: "Securities Settlement Condition Modification Status Advice002",
+    area: "sese",
+    module: "sese031f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.031.002.09.xsd",
+    load: () =>
+      import('./sese031f2.ts').then((m) => ({ message: m.sese031f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.032.001.13",
+    name: "SecuritiesSettlementTransactionGenerationNotificationV13",
+    title: "Securities Settlement Transaction Generation Notification",
+    area: "sese",
+    module: "sese032",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.032.001.13.xsd",
+    load: () =>
+      import('./sese032.ts').then((m) => ({ message: m.sese032Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.032.002.11",
+    name: "SecuritiesSettlementTransactionGenerationNotification002V11",
+    title: "Securities Settlement Transaction Generation Notification002",
+    area: "sese",
+    module: "sese032f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.032.002.11.xsd",
+    load: () =>
+      import('./sese032f2.ts').then((m) => ({ message: m.sese032f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.033.001.13",
+    name: "SecuritiesFinancingInstructionV13",
+    title: "Securities Financing Instruction",
+    area: "sese",
+    module: "sese033",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.033.001.13.xsd",
+    load: () =>
+      import('./sese033.ts').then((m) => ({ message: m.sese033Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.033.002.11",
+    name: "SecuritiesFinancingInstruction002V11",
+    title: "Securities Financing Instruction002",
+    area: "sese",
+    module: "sese033f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.033.002.11.xsd",
+    load: () =>
+      import('./sese033f2.ts').then((m) => ({ message: m.sese033f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.034.001.11",
+    name: "SecuritiesFinancingStatusAdviceV11",
+    title: "Securities Financing Status Advice",
+    area: "sese",
+    module: "sese034",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.034.001.11.xsd",
+    load: () =>
+      import('./sese034.ts').then((m) => ({ message: m.sese034Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.034.002.09",
+    name: "SecuritiesFinancingStatusAdvice002V09",
+    title: "Securities Financing Status Advice002",
+    area: "sese",
+    module: "sese034f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.034.002.09.xsd",
+    load: () =>
+      import('./sese034f2.ts').then((m) => ({ message: m.sese034f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.035.001.13",
+    name: "SecuritiesFinancingConfirmationV13",
+    title: "Securities Financing Confirmation",
+    area: "sese",
+    module: "sese035",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.035.001.13.xsd",
+    load: () =>
+      import('./sese035.ts').then((m) => ({ message: m.sese035Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.035.002.11",
+    name: "SecuritiesFinancingConfirmation002V11",
+    title: "Securities Financing Confirmation002",
+    area: "sese",
+    module: "sese035f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.035.002.11.xsd",
+    load: () =>
+      import('./sese035f2.ts').then((m) => ({ message: m.sese035f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.036.001.10",
+    name: "SecuritiesFinancingModificationInstructionV10",
+    title: "Securities Financing Modification Instruction",
+    area: "sese",
+    module: "sese036",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.036.001.10.xsd",
+    load: () =>
+      import('./sese036.ts').then((m) => ({ message: m.sese036Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.036.002.08",
+    name: "SecuritiesFinancingModificationInstruction002V08",
+    title: "Securities Financing Modification Instruction002",
+    area: "sese",
+    module: "sese036f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.036.002.08.xsd",
+    load: () =>
+      import('./sese036f2.ts').then((m) => ({ message: m.sese036f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.037.001.09",
+    name: "PortfolioTransferNotificationV09",
+    title: "Portfolio Transfer Notification",
+    area: "sese",
+    module: "sese037",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.037.001.09.xsd",
+    load: () =>
+      import('./sese037.ts').then((m) => ({ message: m.sese037Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.037.002.07",
+    name: "PortfolioTransferNotification002V07",
+    title: "Portfolio Transfer Notification002",
+    area: "sese",
+    module: "sese037f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.037.002.07.xsd",
+    load: () =>
+      import('./sese037f2.ts').then((m) => ({ message: m.sese037f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.038.001.11",
+    name: "SecuritiesSettlementTransactionModificationRequestV11",
+    title: "Securities Settlement Transaction Modification Request",
+    area: "sese",
+    module: "sese038",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.038.001.11.xsd",
+    load: () =>
+      import('./sese038.ts').then((m) => ({ message: m.sese038Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.038.002.09",
+    name: "SecuritiesSettlementTransactionModificationRequest002V09",
+    title: "Securities Settlement Transaction Modification Request002",
+    area: "sese",
+    module: "sese038f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.038.002.09.xsd",
+    load: () =>
+      import('./sese038f2.ts').then((m) => ({ message: m.sese038f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.039.001.08",
+    name: "SecuritiesSettlementTransactionModificationRequestStatusAdviceV08",
+    title: "Securities Settlement Transaction Modification Request Status Advice",
+    area: "sese",
+    module: "sese039",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.039.001.08.xsd",
+    load: () =>
+      import('./sese039.ts').then((m) => ({ message: m.sese039Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.039.002.06",
+    name: "SecuritiesSettlementTransactionModificationRequestStatusAdvice002V06",
+    title: "Securities Settlement Transaction Modification Request Status Advice002",
+    area: "sese",
+    module: "sese039f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.039.002.06.xsd",
+    load: () =>
+      import('./sese039f2.ts').then((m) => ({ message: m.sese039f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.040.001.06",
+    name: "SecuritiesSettlementTransactionCounterpartyResponseV06",
+    title: "Securities Settlement Transaction Counterparty Response",
+    area: "sese",
+    module: "sese040",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.040.001.06.xsd",
+    load: () =>
+      import('./sese040.ts').then((m) => ({ message: m.sese040Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.040.002.04",
+    name: "SecuritiesSettlementTransactionCounterpartyResponse002V04",
+    title: "Securities Settlement Transaction Counterparty Response002",
+    area: "sese",
+    module: "sese040f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.040.002.04.xsd",
+    load: () =>
+      import('./sese040f2.ts').then((m) => ({ message: m.sese040f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.041.001.02",
+    name: "BuyInRegulatoryAdviceV02",
+    title: "Buy In Regulatory Advice",
+    area: "sese",
+    module: "sese041",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.041.001.02.xsd",
+    load: () =>
+      import('./sese041.ts').then((m) => ({ message: m.sese041Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.042.001.02",
+    name: "BuyInRegulatoryAdviceResponseV02",
+    title: "Buy In Regulatory Advice Response",
+    area: "sese",
+    module: "sese042",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.042.001.02.xsd",
+    load: () =>
+      import('./sese042.ts').then((m) => ({ message: m.sese042Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "sese.043.001.02",
+    name: "PortfolioTransferCompletionV02",
+    title: "Portfolio Transfer Completion",
+    area: "sese",
+    module: "sese043",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/sese/schemas/sese.043.001.02.xsd",
+    load: () =>
+      import('./sese043.ts').then((m) => ({ message: m.sese043Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
 ];

@@ -1,0 +1,38 @@
+codeSet	code	enumName	isoId	text
+RejectionReason75Code	SAFE	SafekeepingAccountRejection	_7BcpIStYEeyF-PUIGuhxvA	Unrecognised or invalid message sender's safekeeping account.
+RejectionReason75Code	DQUA	QuantityRejection	_7BcpIytYEeyF-PUIGuhxvA	Unrecognised or invalid instructed quantity.
+RejectionReason75Code	ADEA	AccountServicerDeadlineMissed	_7BcpJStYEeyF-PUIGuhxvA	Transaction/instruction received after the account servicer's specified deadline.
+RejectionReason75Code	DSEC	InvalidSecurity	_7BcpJytYEeyF-PUIGuhxvA	Unrecognised or invalid financial instrument identification.
+RejectionReason75Code	LATE	MarketDeadlineMissed	_7BcpKStYEeyF-PUIGuhxvA	Received after market deadline.
+RejectionReason75Code	CASH	CashAccount	_7BcpKytYEeyF-PUIGuhxvA	Unrecognised or invalid cash account.
+RejectionReason75Code	DDEA	DealPrice	_7BcpLStYEeyF-PUIGuhxvA	Unrecognised or invalid deal price.
+RejectionReason75Code	DTRD	TradeDate	_7BcpLytYEeyF-PUIGuhxvA	Unrecognised or invalid trade date or requested trade date or future trade date.
+RejectionReason75Code	PLCE	PlaceOfTrade	_7BcpMStYEeyF-PUIGuhxvA	Unrecognised or invalid place of trade.
+RejectionReason75Code	RTGS	ImpossibleToUseTheRTGSSystemInstructed	_7BcpMytYEeyF-PUIGuhxvA	Not possible to use the RTGS system instructed (NRTG or YRTG).
+RejectionReason75Code	NCRR	SettlementAmountCurrencyRejection	_7BcpNStYEeyF-PUIGuhxvA	Unrecognised or invalid settlement amount currency.
+RejectionReason75Code	PHYS	PhysicalSettlementImpossible	_7BcpNytYEeyF-PUIGuhxvA	Physical settlement is impossible for the instructed financial instrument.
+RejectionReason75Code	REFE	ReferenceRejection	_7BcpOStYEeyF-PUIGuhxvA	Instruction has a reference identical to another previously received instruction.
+RejectionReason75Code	DMON	SettlementAmountRejection	_7BcpOytYEeyF-PUIGuhxvA	Unrecognised or invalid settlement amount.
+RejectionReason75Code	MINO	MinimumSettlementQuantity	_7BcpPStYEeyF-PUIGuhxvA	Quantity instructed is lower than the minimum existing settlement quantity for the financial instrument.
+RejectionReason75Code	BATC	ProcessingBatchRejection	_7BcpPytYEeyF-PUIGuhxvA	Unrecognised or invalid processing batch, that is, daytime/real-time while only possible to settle in overnight batch.
+RejectionReason75Code	MUNO	MultipleSettlementQuantity	_7BcpQStYEeyF-PUIGuhxvA	Quantity instructed is not a multiple of an existing settlement quantity lot for the financial instrument.
+RejectionReason75Code	TXST	TaxStatusRejection	_7BcpQytYEeyF-PUIGuhxvA	Unrecognised or invalid tax status of the securities instructed.
+RejectionReason75Code	SETS	SettlementSystemMethodRejection	_7BcpRStYEeyF-PUIGuhxvA	Unrecognised or invalid settlement system/method instructed.
+RejectionReason75Code	IIND	CommonReferenceRejection	_7BcpRytYEeyF-PUIGuhxvA	Unrecognised, invalid or missing common reference.
+RejectionReason75Code	CAEV	CorporateActionRejection	_7BcpSStYEeyF-PUIGuhxvA	Corporate action pending on the financial instrument instructed.
+RejectionReason75Code	CASY	ImpossibleCashSettlementSystem	_7BcpSytYEeyF-PUIGuhxvA	Impossible standing arrangements override instruction for the cash settlement system.
+RejectionReason75Code	DDAT	SettlementDateRejection	_7BcpTStYEeyF-PUIGuhxvA	Unrecognised or invalid settlement date.
+RejectionReason75Code	SETR	SettlementTransactionRejection	_7BcpTytYEeyF-PUIGuhxvA	Unrecognised or invalid settlement transaction type.
+RejectionReason75Code	SDUT	LackOfStampDuty	_7BcpUStYEeyF-PUIGuhxvA	Required stamp duty information is missing.
+RejectionReason75Code	INPS	PlaceOfSafekeeping	_7BcpUytYEeyF-PUIGuhxvA	Unrecognised, invalid or missing place of safekeeping.
+RejectionReason75Code	OTHR	Other	_7BcpVStYEeyF-PUIGuhxvA	Other. See Narrative.
+RejectionReason75Code	ICUS	ReceivingDeliveringParty2	_7BcpVytYEeyF-PUIGuhxvA	Unrecognised or invalid client of delivering or receiving party 1.
+RejectionReason75Code	ICAG	ReceivingDeliveringParty1	_7BcpWStYEeyF-PUIGuhxvA	Unrecognised or invalid participant of delivering or receiving depository.
+RejectionReason75Code	DEPT	ReceivingDeliveringDepository	_7BcpWytYEeyF-PUIGuhxvA	Unrecognised or invalid depository.
+RejectionReason75Code	IEXE	ReceivingDeliveringParty3	_7BcpXStYEeyF-PUIGuhxvA	Unrecognised or invalid client of delivering or receiving party 2.
+RejectionReason75Code	INVB	InvalidBalance	_7BmaIStYEeyF-PUIGuhxvA	Instruction aims at using an invalid balance.
+RejectionReason75Code	INVL	InvalidLink	_7BmaIytYEeyF-PUIGuhxvA	Invalid or unrecognized link.
+RejectionReason75Code	INVN	InvalidLotNumber	_7BmaJStYEeyF-PUIGuhxvA	Invalid or unrecognized lot number.
+RejectionReason75Code	VALR	InvalidRule	_7BmaJytYEeyF-PUIGuhxvA	Account servicer validation rule rejection.
+RejectionReason75Code	INVE	InvalidInvestorParty	_7BmaKStYEeyF-PUIGuhxvA	Unrecognised or invalid investor party. May be used by an executing party to reject an instruction for an investor (or portfolio) for which it is not authorised to act.
+RejectionReason75Code	PLIS	PlaceOfListing	_7BmaKytYEeyF-PUIGuhxvA	Unrecognised or invalid place of listing. Used when the security identified is not listed on the market supplied.

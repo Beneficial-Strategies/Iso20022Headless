@@ -152,6 +152,8 @@ export const pageEs: PageMessages = {
   areaDesc_semt: 'Mensajes que respaldan los procesos posteriores a la liquidación de valores (incluida la información sobre movimientos, operaciones y saldos de valores), los procesos necesarios para proteger los derechos del beneficiario final durante la liquidación, así como las excepciones e investigaciones relacionadas con operaciones con valores.',
   areaName_seev: 'Eventos de valores',
   areaDesc_seev: 'Mensajes que respaldan la gestión de activos, incluidos el voto por poderes, los ingresos y las operaciones societarias.',
+  areaName_sese: "Liquidación de valores",
+  areaDesc_sese: "Mensajes que respaldan el proceso de liquidación de valores e informan de su estado y confirmación.",
   xsdLabel: 'Validar XSD',
   xsdReady: 'Validar el texto del mensaje de abajo con {location}',
   xsdReadyFile: 'Validar el texto del mensaje de abajo con {file} (cargado desde su equipo)',

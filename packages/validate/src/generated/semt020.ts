@@ -17,6 +17,7 @@ import {
   Max35TextSchema,
   ReceiveDelivery1CodeSchema,
   DeliveryReceiptType2CodeSchema,
+  SettlementTypeAndIdentification18Schema,
   AnyBICDec2014IdentifierSchema,
   GenericIdentification36Schema,
   PartyIdentification127ChoiceSchema,
@@ -33,12 +34,6 @@ import {
   SupplementaryData1Schema,
   sharedTypeDescriptors,
 } from './shared.ts';
-
-export const SettlementTypeAndIdentification18Schema = z.strictObject({
-  TransactionIdentification: Max35TextSchema,
-  SecuritiesMovementType: ReceiveDelivery1CodeSchema,
-  Payment: DeliveryReceiptType2CodeSchema,
-});
 
 export const References69ChoiceSchema = choiceOf({
   SecuritiesSettlementTransactionConfirmationIdentification: SettlementTypeAndIdentification18Schema,
@@ -71,16 +66,6 @@ export const SecuritiesMessageCancellationAdviceV07Schema = z.strictObject({
 const f = (d: FieldDescriptor): FieldDescriptor => d;
 
 const ownTypeDescriptors: TypeDescriptors = {
-  "SettlementTypeAndIdentification18": {
-    name: "SettlementTypeAndIdentification18",
-    isoId: "_Gn1jkTqoEeWyoP0PbocV1Q",
-    kind: "component",
-    fields: [
-      f({ name: "TransactionIdentification", isoId: "_HIvRMzqoEeWyoP0PbocV1Q", xmlTag: "TxId", displayName: displayName("TransactionIdentification"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "SecuritiesMovementType", isoId: "_HIvRNTqoEeWyoP0PbocV1Q", xmlTag: "SctiesMvmntTp", displayName: displayName("SecuritiesMovementType"), kind: "code", type: "ReceiveDelivery1Code", required: true }),
-      f({ name: "Payment", isoId: "_HIvRNzqoEeWyoP0PbocV1Q", xmlTag: "Pmt", displayName: displayName("Payment"), kind: "code", type: "DeliveryReceiptType2Code", required: true }),
-    ],
-  },
   "References69Choice": {
     name: "References69Choice",
     isoId: "_zwc0sQzXEeuUZuaHWzkTew",
@@ -133,6 +118,7 @@ export const typeDescriptors: TypeDescriptors = {
   "Max35Text": sharedTypeDescriptors["Max35Text"]!,
   "ReceiveDelivery1Code": sharedTypeDescriptors["ReceiveDelivery1Code"]!,
   "DeliveryReceiptType2Code": sharedTypeDescriptors["DeliveryReceiptType2Code"]!,
+  "SettlementTypeAndIdentification18": sharedTypeDescriptors["SettlementTypeAndIdentification18"]!,
   "AnyBICDec2014Identifier": sharedTypeDescriptors["AnyBICDec2014Identifier"]!,
   "GenericIdentification36": sharedTypeDescriptors["GenericIdentification36"]!,
   "PartyIdentification127Choice": sharedTypeDescriptors["PartyIdentification127Choice"]!,

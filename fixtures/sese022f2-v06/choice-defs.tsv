@@ -1,0 +1,10 @@
+choice	memberId	memberName	text
+StatusOrStatement12Choice	_gBH0ETi8Eeydid5dcNPKvg	StatusAdvice	Identifies the status advice and the transaction for which the status advice was requested.
+StatusOrStatement12Choice	_gBH0Ezi8Eeydid5dcNPKvg	Statement	Identifies the statement/report that was requested.
+ProcessingStatus95Choice	_gBIaxTi8Eeydid5dcNPKvg	AcknowledgedAccepted	Instruction has been acknowledged by the account servicer.
+ProcessingStatus95Choice	_gBIazTi8Eeydid5dcNPKvg	Rejected	Instruction/Request has been rejected for further processing.
+ProcessingStatus95Choice	_gBIa1Ti8Eeydid5dcNPKvg	Proprietary	Status that cannot be reported using one of the available standard status.
+RejectionOrRepairStatus49Choice	_gBIbLzi8Eeydid5dcNPKvg	NoSpecifiedReason	Indicates that there is no reason available or to report.
+RejectionOrRepairStatus49Choice	_gBIbNzi8Eeydid5dcNPKvg	Reason	Specifies the reason of the rejection or repair status.
+RejectionAndRepairReason44Choice	_gBIbWTi8Eeydid5dcNPKvg	Code	Specifies the reason why the instruction/request has a repair or rejection status.
+RejectionAndRepairReason44Choice	_gBIbYTi8Eeydid5dcNPKvg	Proprietary	Specifies the reason why the instruction/request has a repair or rejection status.

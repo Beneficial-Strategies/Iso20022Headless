@@ -1,0 +1,4 @@
+codeSet	isoId	text
+ProcessingPosition5Code	_7_v2oGaxEeWZev0W8F756g	Specifies when a transaction/instruction is to be executed relative to a linked transaction/instruction.
+OpeningClosing1Code	_aOytRtp-Ed-ak6NoX_4Aeg_1505902353	Specifies additional information relative to the processing of the trade.
+SecuritiesTransactionType25Code	_xKn5AdYOEeiHVOfMzoKxnA	Specifies underlying information regarding the type of settlement transaction.

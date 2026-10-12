@@ -75,6 +75,10 @@ import {
   ProprietaryStatusAndReason6Schema,
   ProcessingStatus71ChoiceSchema,
   Max52TextSchema,
+  RestrictionReference1CodeSchema,
+  RestrictionIdentification1Schema,
+  AutoBorrowing2CodeSchema,
+  AutomaticBorrowing7ChoiceSchema,
   LinkageType1CodeSchema,
   LinkageType3ChoiceSchema,
   Exact4NumericTextSchema,
@@ -85,6 +89,10 @@ import {
   Registration10ChoiceSchema,
   RegistrationReason5Schema,
   HoldIndicator6Schema,
+  MatchingProcess1CodeSchema,
+  MatchingDenied3ChoiceSchema,
+  SecuritiesTransactionType5CodeSchema,
+  UnilateralSplit3ChoiceSchema,
   ProcessingPosition3CodeSchema,
   ProcessingPosition7ChoiceSchema,
   ISO20022MessageIdentificationTextSchema,
@@ -139,34 +147,6 @@ export const References32Schema = z.strictObject({
   PoolIdentification: Max35TextSchema.optional(),
   CommonIdentification: Max35TextSchema.optional(),
   TradeIdentification: Max52TextSchema.optional(),
-});
-
-export const RestrictionReference1CodeSchema = z.enum(["ADDC", "ADDS", "REMC", "REMS"]);
-
-export const RestrictionIdentification1Schema = z.strictObject({
-  Code: RestrictionReference1CodeSchema,
-  Identification: Max35TextSchema,
-});
-
-export const AutoBorrowing2CodeSchema = z.enum(["LAMI", "NBOR", "YBOR", "RTRN"]);
-
-export const AutomaticBorrowing7ChoiceSchema = choiceOf({
-  Code: AutoBorrowing2CodeSchema,
-  Proprietary: GenericIdentification30Schema,
-});
-
-export const MatchingProcess1CodeSchema = z.enum(["UNMT", "MTRE"]);
-
-export const MatchingDenied3ChoiceSchema = choiceOf({
-  Code: MatchingProcess1CodeSchema,
-  Proprietary: GenericIdentification30Schema,
-});
-
-export const SecuritiesTransactionType5CodeSchema = z.enum(["TRAD"]);
-
-export const UnilateralSplit3ChoiceSchema = choiceOf({
-  Code: SecuritiesTransactionType5CodeSchema,
-  Proprietary: GenericIdentification30Schema,
 });
 
 export const RequestDetails33Schema = z.strictObject({
@@ -228,66 +208,6 @@ const ownTypeDescriptors: TypeDescriptors = {
     ],
     rules: [
       { name: "ReferencePresenceRule", isoId: "_I8HEIeSmEe-qVZLXW4RRBw", text: "At least one reference must be present.", expression: {"mustBe":{"connector":"OR","rules":[{"op":"Presence","path":"/CommonIdentification"},{"op":"Presence","path":"/TradeIdentification"},{"op":"Presence","path":"/CounterpartyMarketInfrastructureTransactionIdentification"}]},"onCondition":{"connector":"AND","rules":[{"op":"Absence","path":"/AccountOwnerTransactionIdentification"},{"op":"Absence","path":"/AccountServicerTransactionIdentification"},{"op":"Absence","path":"/MarketInfrastructureTransactionIdentification"},{"op":"Absence","path":"/ProcessorTransactionIdentification"},{"op":"Absence","path":"/PoolIdentification"}]}} },
-    ],
-  },
-  "RestrictionReference1Code": {
-    name: "RestrictionReference1Code",
-    isoId: "_Q1UTcNavEei60tlze8Pqbw",
-    kind: "code",
-    options: [{ value: "ADDC", name: "AddCashRestrictionReference", isoId: "_jGoHcdj7EeiHnvcp3FV_5w" }, { value: "ADDS", name: "AddSecuritiesRestrictionReference", isoId: "_jNngQdj7EeiHnvcp3FV_5w" }, { value: "REMC", name: "RemoveCashRestrictionReference", isoId: "_jTuIQdj7EeiHnvcp3FV_5w" }, { value: "REMS", name: "RemoveSecuritiesRestrictionReference", isoId: "_jdPQodj7EeiHnvcp3FV_5w" }],
-  },
-  "RestrictionIdentification1": {
-    name: "RestrictionIdentification1",
-    isoId: "_3d1RINj7EeiHnvcp3FV_5w",
-    kind: "component",
-    fields: [
-      f({ name: "Code", isoId: "_DC-vUNj8EeiHnvcp3FV_5w", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "RestrictionReference1Code", required: true }),
-      f({ name: "Identification", isoId: "_E3muoNj8EeiHnvcp3FV_5w", xmlTag: "Id", displayName: displayName("Identification"), kind: "text", type: "Max35Text", required: true }),
-    ],
-  },
-  "AutoBorrowing2Code": {
-    name: "AutoBorrowing2Code",
-    isoId: "_bjuf4Np-Ed-ak6NoX_4Aeg_-875280899",
-    kind: "code",
-    options: [{ value: "LAMI", name: "LastResort", isoId: "_bjuf4dp-Ed-ak6NoX_4Aeg_-875280874" }, { value: "NBOR", name: "NoAutomatic", isoId: "_bjuf4tp-Ed-ak6NoX_4Aeg_-875280873" }, { value: "YBOR", name: "Automatic", isoId: "_bjuf49p-Ed-ak6NoX_4Aeg_-875280857" }, { value: "RTRN", name: "Return", isoId: "_bjuf5Np-Ed-ak6NoX_4Aeg_-871586494" }],
-  },
-  "AutomaticBorrowing7Choice": {
-    name: "AutomaticBorrowing7Choice",
-    isoId: "_GG1RwTt4EeW638lNyHKv7A",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_GoKdMTt4EeW638lNyHKv7A", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "AutoBorrowing2Code", required: true }),
-      f({ name: "Proprietary", isoId: "_GoKdOTt4EeW638lNyHKv7A", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
-  "MatchingProcess1Code": {
-    name: "MatchingProcess1Code",
-    isoId: "_aU58Vtp-Ed-ak6NoX_4Aeg_36425374",
-    kind: "code",
-    options: [{ value: "UNMT", name: "Unmatch", isoId: "_aU58V9p-Ed-ak6NoX_4Aeg_65054355" }, { value: "MTRE", name: "ResumeMatching", isoId: "_aU58WNp-Ed-ak6NoX_4Aeg_65054356" }],
-  },
-  "MatchingDenied3Choice": {
-    name: "MatchingDenied3Choice",
-    isoId: "_ZYK_kTt4EeW638lNyHKv7A",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_Z5MpATt4EeW638lNyHKv7A", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "MatchingProcess1Code", required: true }),
-      f({ name: "Proprietary", isoId: "_Z5MpCTt4EeW638lNyHKv7A", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
-  "SecuritiesTransactionType5Code": {
-    name: "SecuritiesTransactionType5Code",
-    isoId: "_ZIwSQNp-Ed-ak6NoX_4Aeg_1800982665",
-    kind: "code",
-    options: [{ value: "TRAD", name: "Trade", isoId: "_ZIwSQdp-Ed-ak6NoX_4Aeg_2040871426" }],
-  },
-  "UnilateralSplit3Choice": {
-    name: "UnilateralSplit3Choice",
-    isoId: "_eVzXMTt4EeW638lNyHKv7A",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_e2Y7wTt4EeW638lNyHKv7A", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "SecuritiesTransactionType5Code", required: true }),
-      f({ name: "Proprietary", isoId: "_e2Y7yTt4EeW638lNyHKv7A", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
     ],
   },
   "RequestDetails33": {
@@ -425,6 +345,10 @@ export const typeDescriptors: TypeDescriptors = {
   "ProprietaryStatusAndReason6": sharedTypeDescriptors["ProprietaryStatusAndReason6"]!,
   "ProcessingStatus71Choice": sharedTypeDescriptors["ProcessingStatus71Choice"]!,
   "Max52Text": sharedTypeDescriptors["Max52Text"]!,
+  "RestrictionReference1Code": sharedTypeDescriptors["RestrictionReference1Code"]!,
+  "RestrictionIdentification1": sharedTypeDescriptors["RestrictionIdentification1"]!,
+  "AutoBorrowing2Code": sharedTypeDescriptors["AutoBorrowing2Code"]!,
+  "AutomaticBorrowing7Choice": sharedTypeDescriptors["AutomaticBorrowing7Choice"]!,
   "LinkageType1Code": sharedTypeDescriptors["LinkageType1Code"]!,
   "LinkageType3Choice": sharedTypeDescriptors["LinkageType3Choice"]!,
   "Exact4NumericText": sharedTypeDescriptors["Exact4NumericText"]!,
@@ -435,6 +359,10 @@ export const typeDescriptors: TypeDescriptors = {
   "Registration10Choice": sharedTypeDescriptors["Registration10Choice"]!,
   "RegistrationReason5": sharedTypeDescriptors["RegistrationReason5"]!,
   "HoldIndicator6": sharedTypeDescriptors["HoldIndicator6"]!,
+  "MatchingProcess1Code": sharedTypeDescriptors["MatchingProcess1Code"]!,
+  "MatchingDenied3Choice": sharedTypeDescriptors["MatchingDenied3Choice"]!,
+  "SecuritiesTransactionType5Code": sharedTypeDescriptors["SecuritiesTransactionType5Code"]!,
+  "UnilateralSplit3Choice": sharedTypeDescriptors["UnilateralSplit3Choice"]!,
   "ProcessingPosition3Code": sharedTypeDescriptors["ProcessingPosition3Code"]!,
   "ProcessingPosition7Choice": sharedTypeDescriptors["ProcessingPosition7Choice"]!,
   "ISO20022MessageIdentificationText": sharedTypeDescriptors["ISO20022MessageIdentificationText"]!,

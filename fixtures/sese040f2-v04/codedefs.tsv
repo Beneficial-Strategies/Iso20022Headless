@@ -1,0 +1,4 @@
+codeSet	code	enumName	isoId	text
+CounterpartyResponseStatusReason1Code	CPTR	CounterpartyTransaction	_0mWuhQlIEeGATtfOBToyew_1912527419	Specifies that the response is related to an allegement from the counterparty.
+CounterpartyResponseStatusReason1Code	CPCX	CounterpartyCancellation	_0mgfgAlIEeGATtfOBToyew_1029294132	Specifies that the response is related to the cancellation request of the counterparty.
+CounterpartyResponseStatusReason1Code	CPMD	CounterpartyModification	_0mgfgQlIEeGATtfOBToyew_2030398404	Specifies that the response is related to the modification request of the counterparty.

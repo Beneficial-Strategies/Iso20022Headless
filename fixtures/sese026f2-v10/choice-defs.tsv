@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+SecuritiesTransactionType55Choice	_qIKqfffYEeiNZp_PtLohLw	Code	Securities transaction type expressed as an ISO 20022 code.
+SecuritiesTransactionType55Choice	_qIKqhffYEeiNZp_PtLohLw	Proprietary	Securities transaction type expressed as a proprietary code.

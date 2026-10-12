@@ -1,0 +1,14 @@
+choice	memberId	memberName	text
+ProcessingStatus94Choice	_f979Jzi8Eeydid5dcNPKvg	AcknowledgedAccepted	Instruction has been acknowledged by the account servicer.
+ProcessingStatus94Choice	_f979Kzi8Eeydid5dcNPKvg	PendingProcessing	Processing of the instruction/request is pending.
+ProcessingStatus94Choice	_f979Lzi8Eeydid5dcNPKvg	Rejected	Instruction/request has been rejected for further processing.
+ProcessingStatus94Choice	_f979Mzi8Eeydid5dcNPKvg	Repair	Instruction/request is accepted but in repair.
+ProcessingStatus94Choice	_f979Nzi8Eeydid5dcNPKvg	Cancelled	Instruction/request has been cancelled.
+ProcessingStatus94Choice	_f979Ozi8Eeydid5dcNPKvg	PendingCancellation	Cancellation request from yourself for this instruction is pending, waiting for further processing.
+ProcessingStatus94Choice	_f979Pzi8Eeydid5dcNPKvg	Proprietary	Status that cannot be reported using one of the available standard status.
+ProcessingStatus94Choice	_f979Qzi8Eeydid5dcNPKvg	CancellationRequested	Cancellation request from your counterparty for this transaction is pending waiting for your cancellation request or consent.
+ProcessingStatus94Choice	_f979Rzi8Eeydid5dcNPKvg	ModificationRequested	Modification request from your counterparty for this transaction is pending waiting for your cancellation request or your consent.
+RejectionStatus44Choice	_f9796Ti8Eeydid5dcNPKvg	NoSpecifiedReason	Indicates that there is no reason available or to report.
+RejectionStatus44Choice	_f9797Ti8Eeydid5dcNPKvg	Reason	Specifies the reason of the rejection status.
+RejectionReason50Choice	_f98j5Ti8Eeydid5dcNPKvg	Code	Specifies the reason why the instruction/request has a repair or rejection status.
+RejectionReason50Choice	_f98j6Ti8Eeydid5dcNPKvg	Proprietary	Specifies the reason why the instruction/request has a repair or rejection status.

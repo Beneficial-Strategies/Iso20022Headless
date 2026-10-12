@@ -1,0 +1,14 @@
+choice	memberId	memberName	text
+ProcessingStatus101Choice	082eed26-23f4-4c28-bf11-cffedabe370f	AcknowledgedAccepted	Instruction has been acknowledged by the account servicer.
+ProcessingStatus101Choice	5631332f-1b84-43d3-9fd3-2a6be8e40c2b	PendingProcessing	Instruction has been acknowledged by the account servicer, but processing of the instruction is pending.
+ProcessingStatus101Choice	8320b8e6-48e5-42ad-92a5-ae1a558156b6	Rejected	Instruction/request has been rejected for further processing.
+ProcessingStatus101Choice	327078f5-f62e-48f7-9fbc-6a1672e5a36f	Repair	Instruction has been acknowledged by the account servicer but is in repair.
+ProcessingStatus101Choice	d839e65e-74c4-4571-8e5f-3d02ee9e326d	Cancelled	Instruction/request has been cancelled.
+ProcessingStatus101Choice	1c0b1556-db68-4183-8d86-baf11eb70084	PendingCancellation	Cancellation request from yourself for this instruction is pending, waiting for further processing.
+ProcessingStatus101Choice	4dd7da73-fdc2-4ed7-a1b7-2e63eb8568a5	Proprietary	Status that cannot be reported using one of the available standard status.
+ProcessingStatus101Choice	15d2c53b-d8c2-4ef5-933c-d4387e817034	CancellationRequested	Cancellation request from your counterparty for this transaction is pending waiting for your cancellation request or consent.
+ProcessingStatus101Choice	e7ea8564-52c2-4bca-b3b1-c3ece0a8d9b2	ModificationRequested	Modification request from your counterparty for this transaction is pending waiting for your cancellation request or your consent.
+RejectionStatus39Choice	_hpszMStXEeyhipY4f42fZQ	NoSpecifiedReason	Indicates that there is no reason available or to report.
+RejectionStatus39Choice	_hpszNStXEeyhipY4f42fZQ	Reason	Specifies the reason of the rejection status.
+RejectionReason44Choice	_ialdkStXEeyhipY4f42fZQ	Code	Specifies the reason why the instruction/request has a repair or rejection status.
+RejectionReason44Choice	_ialdlStXEeyhipY4f42fZQ	Proprietary	Specifies the reason why the instruction/request has a repair or rejection status.

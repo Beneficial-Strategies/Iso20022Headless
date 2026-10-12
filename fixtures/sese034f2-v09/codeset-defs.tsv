@@ -1,0 +1,7 @@
+codeSet	isoId	text
+RejectionReason70Code	_11OY2ytUEeyhipY4f42fZQ	Specifies the reason why the securities financing instruction has a rejected status.
+RepairReason5Code	_ZuT2adp-Ed-ak6NoX_4Aeg_1118630481	Specifies the reason why the securities financing instruction has a repair status.
+CancelledStatusReason9Code	_a1PCMNp-Ed-ak6NoX_4Aeg_2048958201	Specifies the underlying reason for the cancellation of the associated transaction.
+UnmatchedReason13Code	_Tf020GXjEeWsrOWU209RUg	Specifies the reason the transaction, transfer or settlement instruction is unmatched.
+PendingReason1Code	_aAyGdNp-Ed-ak6NoX_4Aeg_1989206350	Specifies the reason the transaction/instruction is pending settlement. Settlement on the instructed settlement date is still possible.
+DeniedReason3Code	_a0CvaNp-Ed-ak6NoX_4Aeg_255961944	Specifies the denied reason.

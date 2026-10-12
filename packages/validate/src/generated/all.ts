@@ -300,6 +300,67 @@ import { typeDescriptors as semt040Descriptors } from './semt040.ts';
 import { typeDescriptors as semt041Descriptors } from './semt041.ts';
 import { typeDescriptors as semt042Descriptors } from './semt042.ts';
 import { typeDescriptors as semt044Descriptors } from './semt044.ts';
+import { typeDescriptors as sese001Descriptors } from './sese001.ts';
+import { typeDescriptors as sese002Descriptors } from './sese002.ts';
+import { typeDescriptors as sese003Descriptors } from './sese003.ts';
+import { typeDescriptors as sese004Descriptors } from './sese004.ts';
+import { typeDescriptors as sese005Descriptors } from './sese005.ts';
+import { typeDescriptors as sese006Descriptors } from './sese006.ts';
+import { typeDescriptors as sese007Descriptors } from './sese007.ts';
+import { typeDescriptors as sese008Descriptors } from './sese008.ts';
+import { typeDescriptors as sese009Descriptors } from './sese009.ts';
+import { typeDescriptors as sese010Descriptors } from './sese010.ts';
+import { typeDescriptors as sese011Descriptors } from './sese011.ts';
+import { typeDescriptors as sese012Descriptors } from './sese012.ts';
+import { typeDescriptors as sese013Descriptors } from './sese013.ts';
+import { typeDescriptors as sese014Descriptors } from './sese014.ts';
+import { typeDescriptors as sese018Descriptors } from './sese018.ts';
+import { typeDescriptors as sese019Descriptors } from './sese019.ts';
+import { typeDescriptors as sese020Descriptors } from './sese020.ts';
+import { typeDescriptors as sese020f2Descriptors } from './sese020f2.ts';
+import { typeDescriptors as sese021Descriptors } from './sese021.ts';
+import { typeDescriptors as sese021f2Descriptors } from './sese021f2.ts';
+import { typeDescriptors as sese022Descriptors } from './sese022.ts';
+import { typeDescriptors as sese022f2Descriptors } from './sese022f2.ts';
+import { typeDescriptors as sese023Descriptors } from './sese023.ts';
+import { typeDescriptors as sese023f2Descriptors } from './sese023f2.ts';
+import { typeDescriptors as sese024Descriptors } from './sese024.ts';
+import { typeDescriptors as sese024f2Descriptors } from './sese024f2.ts';
+import { typeDescriptors as sese025Descriptors } from './sese025.ts';
+import { typeDescriptors as sese025f2Descriptors } from './sese025f2.ts';
+import { typeDescriptors as sese026Descriptors } from './sese026.ts';
+import { typeDescriptors as sese026f2Descriptors } from './sese026f2.ts';
+import { typeDescriptors as sese027Descriptors } from './sese027.ts';
+import { typeDescriptors as sese027f2Descriptors } from './sese027f2.ts';
+import { typeDescriptors as sese028Descriptors } from './sese028.ts';
+import { typeDescriptors as sese028f2Descriptors } from './sese028f2.ts';
+import { typeDescriptors as sese029Descriptors } from './sese029.ts';
+import { typeDescriptors as sese029f2Descriptors } from './sese029f2.ts';
+import { typeDescriptors as sese030Descriptors } from './sese030.ts';
+import { typeDescriptors as sese030f2Descriptors } from './sese030f2.ts';
+import { typeDescriptors as sese031Descriptors } from './sese031.ts';
+import { typeDescriptors as sese031f2Descriptors } from './sese031f2.ts';
+import { typeDescriptors as sese032Descriptors } from './sese032.ts';
+import { typeDescriptors as sese032f2Descriptors } from './sese032f2.ts';
+import { typeDescriptors as sese033Descriptors } from './sese033.ts';
+import { typeDescriptors as sese033f2Descriptors } from './sese033f2.ts';
+import { typeDescriptors as sese034Descriptors } from './sese034.ts';
+import { typeDescriptors as sese034f2Descriptors } from './sese034f2.ts';
+import { typeDescriptors as sese035Descriptors } from './sese035.ts';
+import { typeDescriptors as sese035f2Descriptors } from './sese035f2.ts';
+import { typeDescriptors as sese036Descriptors } from './sese036.ts';
+import { typeDescriptors as sese036f2Descriptors } from './sese036f2.ts';
+import { typeDescriptors as sese037Descriptors } from './sese037.ts';
+import { typeDescriptors as sese037f2Descriptors } from './sese037f2.ts';
+import { typeDescriptors as sese038Descriptors } from './sese038.ts';
+import { typeDescriptors as sese038f2Descriptors } from './sese038f2.ts';
+import { typeDescriptors as sese039Descriptors } from './sese039.ts';
+import { typeDescriptors as sese039f2Descriptors } from './sese039f2.ts';
+import { typeDescriptors as sese040Descriptors } from './sese040.ts';
+import { typeDescriptors as sese040f2Descriptors } from './sese040f2.ts';
+import { typeDescriptors as sese041Descriptors } from './sese041.ts';
+import { typeDescriptors as sese042Descriptors } from './sese042.ts';
+import { typeDescriptors as sese043Descriptors } from './sese043.ts';
 import { typeDescriptors as trck001Descriptors } from './trck001.ts';
 import { typeDescriptors as trck002Descriptors } from './trck002.ts';
 import { typeDescriptors as trck004Descriptors } from './trck004.ts';
@@ -604,6 +665,67 @@ export const allTypeDescriptors: TypeDescriptors = {
   ...semt041Descriptors,
   ...semt042Descriptors,
   ...semt044Descriptors,
+  ...sese001Descriptors,
+  ...sese002Descriptors,
+  ...sese003Descriptors,
+  ...sese004Descriptors,
+  ...sese005Descriptors,
+  ...sese006Descriptors,
+  ...sese007Descriptors,
+  ...sese008Descriptors,
+  ...sese009Descriptors,
+  ...sese010Descriptors,
+  ...sese011Descriptors,
+  ...sese012Descriptors,
+  ...sese013Descriptors,
+  ...sese014Descriptors,
+  ...sese018Descriptors,
+  ...sese019Descriptors,
+  ...sese020Descriptors,
+  ...sese020f2Descriptors,
+  ...sese021Descriptors,
+  ...sese021f2Descriptors,
+  ...sese022Descriptors,
+  ...sese022f2Descriptors,
+  ...sese023Descriptors,
+  ...sese023f2Descriptors,
+  ...sese024Descriptors,
+  ...sese024f2Descriptors,
+  ...sese025Descriptors,
+  ...sese025f2Descriptors,
+  ...sese026Descriptors,
+  ...sese026f2Descriptors,
+  ...sese027Descriptors,
+  ...sese027f2Descriptors,
+  ...sese028Descriptors,
+  ...sese028f2Descriptors,
+  ...sese029Descriptors,
+  ...sese029f2Descriptors,
+  ...sese030Descriptors,
+  ...sese030f2Descriptors,
+  ...sese031Descriptors,
+  ...sese031f2Descriptors,
+  ...sese032Descriptors,
+  ...sese032f2Descriptors,
+  ...sese033Descriptors,
+  ...sese033f2Descriptors,
+  ...sese034Descriptors,
+  ...sese034f2Descriptors,
+  ...sese035Descriptors,
+  ...sese035f2Descriptors,
+  ...sese036Descriptors,
+  ...sese036f2Descriptors,
+  ...sese037Descriptors,
+  ...sese037f2Descriptors,
+  ...sese038Descriptors,
+  ...sese038f2Descriptors,
+  ...sese039Descriptors,
+  ...sese039f2Descriptors,
+  ...sese040Descriptors,
+  ...sese040f2Descriptors,
+  ...sese041Descriptors,
+  ...sese042Descriptors,
+  ...sese043Descriptors,
   ...trck001Descriptors,
   ...trck002Descriptors,
   ...trck004Descriptors,

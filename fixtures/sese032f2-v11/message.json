@@ -1,0 +1,155 @@
+{
+  "identifier": "sese.032.002.11",
+  "name": "SecuritiesSettlementTransactionGenerationNotification002V11",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:sese.032.002.11",
+  "bodyTag": "SctiesSttlmTxGnrtnNtfctn",
+  "out": "sese032f2",
+  "isoId": "_d_odEzi8Eeydid5dcNPKvg",
+  "definition": "Scope|An account servicer sends a SecuritiesSettlementTransactionGenerationNotification to an account owner to advise the account owner of a securities settlement transaction that has been generated/created by the account servicer for the account owner. The reason for creation can range from the automatic transformation of pending settlement instructions following a corporate event to the recovery of an account owner transactions' database initiated by its account servicer.|The account servicer/owner relationship may be:|- a central securities depository or another settlement market infrastructure acting on behalf of their participants|- an agent (sub-custodian) acting on behalf of their global custodian customer, or|- a custodian acting on behalf of an investment management institution or a broker/dealer||Usage|The message may also be used to:|- re-send a message previously sent,|- provide a third party with a copy of a message for information,|- re-send to a third party a copy of a message for information using the relevant elements in the Business Application Header.",
+  "blocks": [
+    {
+      "name": "TransactionIdentificationDetails",
+      "isoId": "_d_odJzi8Eeydid5dcNPKvg",
+      "xmlTag": "TxIdDtls",
+      "type": "SettlementTypeAndIdentification28",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "NumberCounts",
+      "isoId": "_d_odKTi8Eeydid5dcNPKvg",
+      "xmlTag": "NbCounts",
+      "type": "NumberCount2Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Linkages",
+      "isoId": "_d_odKzi8Eeydid5dcNPKvg",
+      "xmlTag": "Lnkgs",
+      "type": "Linkages68",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "TradeDetails",
+      "isoId": "_d_odLTi8Eeydid5dcNPKvg",
+      "xmlTag": "TradDtls",
+      "type": "SecuritiesTradeDetails130",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "FinancialInstrumentIdentification",
+      "isoId": "_d_odLzi8Eeydid5dcNPKvg",
+      "xmlTag": "FinInstrmId",
+      "type": "SecurityIdentification20",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "FinancialInstrumentAttributes",
+      "isoId": "_d_odMTi8Eeydid5dcNPKvg",
+      "xmlTag": "FinInstrmAttrbts",
+      "type": "FinancialInstrumentAttributes122",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "QuantityAndAccountDetails",
+      "isoId": "_d_odMzi8Eeydid5dcNPKvg",
+      "xmlTag": "QtyAndAcctDtls",
+      "type": "QuantityAndAccount104",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SettlementParameters",
+      "isoId": "_d_odNTi8Eeydid5dcNPKvg",
+      "xmlTag": "SttlmParams",
+      "type": "SettlementDetails212",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "DeliveringSettlementParties",
+      "isoId": "_d_odNzi8Eeydid5dcNPKvg",
+      "xmlTag": "DlvrgSttlmPties",
+      "type": "SettlementParties105",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ReceivingSettlementParties",
+      "isoId": "_d_odOTi8Eeydid5dcNPKvg",
+      "xmlTag": "RcvgSttlmPties",
+      "type": "SettlementParties105",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CashParties",
+      "isoId": "_d_odOzi8Eeydid5dcNPKvg",
+      "xmlTag": "CshPties",
+      "type": "CashParties38",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SettlementAmount",
+      "isoId": "_d_odPTi8Eeydid5dcNPKvg",
+      "xmlTag": "SttlmAmt",
+      "type": "AmountAndDirection96",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "OtherAmounts",
+      "isoId": "_d_odPzi8Eeydid5dcNPKvg",
+      "xmlTag": "OthrAmts",
+      "type": "OtherAmounts43",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "OtherBusinessParties",
+      "isoId": "_d_odQTi8Eeydid5dcNPKvg",
+      "xmlTag": "OthrBizPties",
+      "type": "OtherParties44",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AdditionalPhysicalOrRegistrationDetails",
+      "isoId": "_d_odQzi8Eeydid5dcNPKvg",
+      "xmlTag": "AddtlPhysOrRegnDtls",
+      "type": "RegistrationParameters7",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "GeneratedReason",
+      "isoId": "_d_odRTi8Eeydid5dcNPKvg",
+      "xmlTag": "GnrtdRsn",
+      "type": "GeneratedReason6",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "StatusAndReason",
+      "isoId": "_d_odRzi8Eeydid5dcNPKvg",
+      "xmlTag": "StsAndRsn",
+      "type": "StatusAndReason29",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_d_odSTi8Eeydid5dcNPKvg",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

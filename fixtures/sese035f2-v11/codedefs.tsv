@@ -1,0 +1,43 @@
+codeSet	code	enumName	isoId	text
+SecuritiesFinancingTransactionType2Code	REPU	Repo	_MNulQY7YEeaa5_S8lsRKCQ	Relates to a repurchase agreement transaction.
+SecuritiesFinancingTransactionType2Code	RVPO	ReverseRepo	_MNulQ47YEeaa5_S8lsRKCQ	Relates to a reverse repurchase agreement transaction.
+SecuritiesFinancingTransactionType2Code	SECB	SecuritiesBorrowing	_MNulRY7YEeaa5_S8lsRKCQ	Relates to a securities borrowing operation.
+SecuritiesFinancingTransactionType2Code	SECL	SecuritiesLending	_MNulR47YEeaa5_S8lsRKCQ	Relates to a securities lending operation.
+SecuritiesFinancingTransactionType2Code	BSBK	BuySellBack	_NiYrEY7YEeaa5_S8lsRKCQ	Relates to a buy sell back transaction.
+SecuritiesFinancingTransactionType2Code	SBBK	SellBuyBack	_O0WpQY7YEeaa5_S8lsRKCQ	Relates to a sell buy back transaction.
+PreConfirmation1Code	PRCA	PreConfirmCash	_zdcnYA93EeGeV5vP7Mvdig_1988763861	Pre-confirmation of the movement of the cash, pending the movement of securities.
+PreConfirmation1Code	PRSE	PreConfirmSecurities	_zdcnYQ93EeGeV5vP7Mvdig_-1228183097	Pre-confirmation of the movement of the securities, pending the movement of cash.
+Reporting2Code	STEX	StockExchange	_ZTMAo9p-Ed-ak6NoX_4Aeg_-495638960	Trade details are to be reported to a stock exchange.
+Reporting2Code	REGU	RegulatoryOrganisation	_ZTMApNp-Ed-ak6NoX_4Aeg_-255523631	Trade details are to be reported to a regulatory organisation.
+Reporting2Code	DEFR	DeferredReport	_ZTMApdp-Ed-ak6NoX_4Aeg_-210271843	Report is deferred, for example, because the order was executed in partial fills.
+OriginatorRole2Code	SINT	SystematicInternaliser	_Zw_W8Np-Ed-ak6NoX_4Aeg_-1595967242	Firms which, on an organised, frequent and systematic basis deal on their own account by executing client orders outside a regulated market or a Multilateral Trading Facility. SI's will have the obligation to provide, and make public, a definite bid and offer quote for liquid securities. They act as "mini"exchanges.
+OriginatorRole2Code	MLTF	MultilateralTradingFacility	_Zw_W8dp-Ed-ak6NoX_4Aeg_-1595967241	Multilateral system which brings together multiple third-party buying and selling interests in financial instruments in a way that results in a contract.
+OriginatorRole2Code	RMKT	RegulatedMarket	_Zw_W8tp-Ed-ak6NoX_4Aeg_-1595966959	Market on which financial instruments can be traded according to rules defined by the stock exchange.
+OriginatorRole2Code	MKTM	MarketMaker	_Zw_W89p-Ed-ak6NoX_4Aeg_-1595966882	Dealer or specialist that is trading for their own account in the OTC market. Market makers are expected to maintain an orderly market by being available to buy or sell.
+OriginatorRole2Code	INVE	Investor	_Zw_W9Np-Ed-ak6NoX_4Aeg_-1595966822	Party, either an individual or organisation, whose assets are being invested.
+OriginatorRole2Code	TAGT	TransfertAgent	_Zw_W9dp-Ed-ak6NoX_4Aeg_-1595966821	Party appointed by the fund management company. It updates records of investor accounts to reflect the daily investor purchases, redemptions, switches, transfers, and re-registrations. It ensures the timely settlement of transactions, and may provide tax information to the investor and/or to its intermediaries. It may calculate, collect, and rebate commissions. It prepares and distributes confirmations reflecting transactions, resulting in unit or cash account movements to the investor or the investor's intermediary. It responds to inquiries concerning account status, and processes the income distribution.
+SettlementStandingInstructionDatabase1Code	INTE	InternalDatabase	_ZMMAx9p-Ed-ak6NoX_4Aeg_-774171757	The settlement standing instruction database to be used is the receiver's internal database.
+SettlementStandingInstructionDatabase1Code	BRKR	BrokerDatabase	_ZMVKsNp-Ed-ak6NoX_4Aeg_-371277985	The settlement standing instruction database to be used is the broker's database.
+SettlementStandingInstructionDatabase1Code	VEND	VendorDatabase	_ZMVKsdp-Ed-ak6NoX_4Aeg_-1645817532	The settlement standing instruction database to be used is the database of the vendor.
+SettlementTransactionCondition6Code	ASGN	Assignement	_q6nXAmtdEeCY4-KZ9JEyUQ_-532387656	Transfer of ownership of the asset to another party during the closing of an option.
+SettlementTransactionCondition6Code	BUTC	BuytoCover	_q6nXA2tdEeCY4-KZ9JEyUQ_-1529460009	Transaction is a buy to cover.
+SettlementTransactionCondition6Code	CLEN	Clean	_q6nXBGtdEeCY4-KZ9JEyUQ_1570405019	Tax-exempt financial instruments are to be settled.
+SettlementTransactionCondition6Code	DIRT	Dirty	_q6nXBWtdEeCY4-KZ9JEyUQ_1559306242	Taxable financial instruments are to be settled.
+SettlementTransactionCondition6Code	DLWM	DeliveryWithoutMatching	_q6nXBmtdEeCY4-KZ9JEyUQ_562233889	Matching receipt instruction not required (only for concerned international or national central securities depositories).
+SettlementTransactionCondition6Code	DRAW	Drawn	_q6wg8GtdEeCY4-KZ9JEyUQ_-132873955	Settlement transactions relates to drawn securities.
+SettlementTransactionCondition6Code	EXER	Exercised	_q6wg8WtdEeCY4-KZ9JEyUQ_321213314	Settlement transaction relates to options, futures or derivatives that are exercised.
+SettlementTransactionCondition6Code	FRCL	FreeCleanSettlement	_q6wg8mtdEeCY4-KZ9JEyUQ_-675859039	Delivery will be made free of payment but a clean payment order will be sent.
+SettlementTransactionCondition6Code	KNOC	KnockedOut	_q7W94GtdEeCY4-KZ9JEyUQ_310114537	Settlement transaction relates to options, futures or derivatives that are expired worthless.
+SettlementTransactionCondition6Code	PHYS	Physical	_q7W94WtdEeCY4-KZ9JEyUQ_1232277847	Securities are to be physically settled.
+SettlementTransactionCondition6Code	RESI	Residual	_q7W94mtdEeCY4-KZ9JEyUQ_235205494	Relates to transaction on a security that is not eligible at the Central Security Depository (CSD) but for which the payment will be enacted by the central securities depository.
+SettlementTransactionCondition6Code	SHOR	ShortSell	_q7W942tdEeCY4-KZ9JEyUQ_-482621380	Account is used for short sale orders.
+SettlementTransactionCondition6Code	SPDL	SpecialDelivery	_q7W95GtdEeCY4-KZ9JEyUQ_-157503873	Settlement transactions to be settled with special delivery.
+SettlementTransactionCondition6Code	SPST	SplitSettlement	_q7gu4GtdEeCY4-KZ9JEyUQ_-1154576226	Money and financial instruments settle in different locations.
+SettlementTransactionCondition6Code	EXPI	Expired	_q7gu4WtdEeCY4-KZ9JEyUQ_1450643237	Settlement transaction relates to options, futures or derivatives that have expired.
+SettlementTransactionCondition6Code	PENS	PendingSale	_q7gu4mtdEeCY4-KZ9JEyUQ_1439544460	Position to cover the pending sale will be available by contractual settlement date (accounting information).
+SettlementTransactionCondition6Code	UNEX	Unexposed	_q7gu42tdEeCY4-KZ9JEyUQ_442472107	Delivery cannot be performed until money is received.
+SettlementTransactionCondition6Code	TRIP	TripartySegregation	_q7gu5GtdEeCY4-KZ9JEyUQ_1893631729	Securities are not be delivered but segregated following triparty collateral transaction.
+SettlementTransactionCondition6Code	NOMC	NoAutomaticMarketClaim	_q7gu5WtdEeCY4-KZ9JEyUQ_-1815388541	No market claim should be automatically generated.
+SettlementTransactionCondition6Code	TRAN	Transformation	_q7gu5mtdEeCY4-KZ9JEyUQ_1482506402	Transaction resulting from a transformation.
+SettlementTransactionCondition6Code	RHYP	Rehypothecation	_q7p40GtdEeCY4-KZ9JEyUQ_-1339988173	Collateral position is available for other purposes (for example, onwards delivery).
+SettlementTransactionCondition6Code	ADEA	AcceptAfterRegularSettlementDeadline	_q7p40WtdEeCY4-KZ9JEyUQ_-1209997474	Settlement is on a bilaterally accepted transaction that is to be accepted beyond the regular settlement deadline.

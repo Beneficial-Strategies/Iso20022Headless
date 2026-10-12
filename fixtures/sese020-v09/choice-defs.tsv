@@ -1,0 +1,7 @@
+choice	memberId	memberName	text
+References45Choice	_R6S2kztpEeWHYdqXF6YZmg	SecuritiesSettlementTransactionIdentification	Unambiguous identification of the securities settlement transaction.
+References45Choice	_R6S2mztpEeWHYdqXF6YZmg	SecuritiesFinancingTransactionIdentification	Unambiguous identification of the underlying securities financing transaction (not the underlying securities financing trade) as assigned by the instructing party.
+References45Choice	_R6S2oztpEeWHYdqXF6YZmg	IntraPositionMovementIdentification	Reference to the intra-position movement transaction requested to be cancelled as known by the account owner (or instructing party acting on its behalf).
+References45Choice	_R6S2qztpEeWHYdqXF6YZmg	OtherTransactionIdentification	Reference to a transaction that cannot be identified using a standard reference element present in the message.
+FXCancellation3Choice	_Io5B4T0EEeWjqIDN7tjEjQ	Indicator	Specifies whether the underlying forex transaction should also be cancelled. Yes means forex is to be cancelled. No means forex is to be retained.
+FXCancellation3Choice	_Io5B6T0EEeWjqIDN7tjEjQ	Proprietary	Forex cancellation information expressed as a proprietary code.

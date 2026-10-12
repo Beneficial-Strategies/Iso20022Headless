@@ -1,0 +1,147 @@
+{
+  "identifier": "sese.028.002.10",
+  "name": "SecuritiesSettlementTransactionAllegementNotification002V10",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:sese.028.002.10",
+  "bodyTag": "SctiesSttlmTxAllgmtNtfctn",
+  "out": "sese028f2",
+  "isoId": "_dkR90zi8Eeydid5dcNPKvg",
+  "definition": "Scope|An account servicer sends a SecuritiesSettlementTransactionAllegementNotification to an account owner to advise the account owner that a counterparty has alleged an instruction against the account owner's account at the account servicer and that the account servicer could not find the corresponding instruction of the account owner.|The account servicer/owner relationship may be:|- a central securities depository or another settlement market infrastructure acting on behalf of their participants|- an agent (sub-custodian) acting on behalf of their global custodian customer, or|- a custodian acting on behalf of an investment management institution or a broker/dealer.||Usage|The message may also be used to:|- re-send a message previously sent,|- provide a third party with a copy of a message for information,|- re-send to a third party a copy of a message for information using the relevant elements in the Business Application Header.",
+  "blocks": [
+    {
+      "name": "TransactionIdentification",
+      "isoId": "_dkR95zi8Eeydid5dcNPKvg",
+      "xmlTag": "TxId",
+      "type": "RestrictedFINXMax16Text",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SettlementTypeAndAdditionalParameters",
+      "isoId": "_dkR96Ti8Eeydid5dcNPKvg",
+      "xmlTag": "SttlmTpAndAddtlParams",
+      "type": "SettlementTypeAndAdditionalParameters15",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "MarketInfrastructureTransactionIdentification",
+      "isoId": "_dkR96zi8Eeydid5dcNPKvg",
+      "xmlTag": "MktInfrstrctrTxId",
+      "type": "RestrictedFINXMax16Text",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CounterpartyMarketInfrastructureTransactionIdentification",
+      "isoId": "_dkR97Ti8Eeydid5dcNPKvg",
+      "xmlTag": "CtrPtyMktInfrstrctrTxId",
+      "type": "Max35Text",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "TradeDetails",
+      "isoId": "_dkR97zi8Eeydid5dcNPKvg",
+      "xmlTag": "TradDtls",
+      "type": "SecuritiesTradeDetails126",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "FinancialInstrumentIdentification",
+      "isoId": "_dkR98Ti8Eeydid5dcNPKvg",
+      "xmlTag": "FinInstrmId",
+      "type": "SecurityIdentification20",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "FinancialInstrumentAttributes",
+      "isoId": "_dkR98zi8Eeydid5dcNPKvg",
+      "xmlTag": "FinInstrmAttrbts",
+      "type": "FinancialInstrumentAttributes122",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "QuantityAndAccountDetails",
+      "isoId": "_dkR99Ti8Eeydid5dcNPKvg",
+      "xmlTag": "QtyAndAcctDtls",
+      "type": "QuantityAndAccount106",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SecuritiesFinancingDetails",
+      "isoId": "_dkR99zi8Eeydid5dcNPKvg",
+      "xmlTag": "SctiesFincgDtls",
+      "type": "SecuritiesFinancingTransactionDetails50",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SettlementParameters",
+      "isoId": "_dkR9-Ti8Eeydid5dcNPKvg",
+      "xmlTag": "SttlmParams",
+      "type": "SettlementDetails191",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "DeliveringSettlementParties",
+      "isoId": "_dkR9-zi8Eeydid5dcNPKvg",
+      "xmlTag": "DlvrgSttlmPties",
+      "type": "SettlementParties105",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ReceivingSettlementParties",
+      "isoId": "_dkR9_Ti8Eeydid5dcNPKvg",
+      "xmlTag": "RcvgSttlmPties",
+      "type": "SettlementParties105",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CashParties",
+      "isoId": "_dkR9_zi8Eeydid5dcNPKvg",
+      "xmlTag": "CshPties",
+      "type": "CashParties40",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SettlementAmount",
+      "isoId": "_dkR-ATi8Eeydid5dcNPKvg",
+      "xmlTag": "SttlmAmt",
+      "type": "AmountAndDirection92",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "OtherAmounts",
+      "isoId": "_dkR-Azi8Eeydid5dcNPKvg",
+      "xmlTag": "OthrAmts",
+      "type": "OtherAmounts36",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "OtherBusinessParties",
+      "isoId": "_dkR-BTi8Eeydid5dcNPKvg",
+      "xmlTag": "OthrBizPties",
+      "type": "OtherParties37",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_dkR-Bzi8Eeydid5dcNPKvg",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

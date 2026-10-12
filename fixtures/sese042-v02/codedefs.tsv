@@ -1,0 +1,18 @@
+codeSet	code	enumName	isoId	text
+BuyInState1Code	BSSP	PartiallySuccessful	_q9Bo8ZwVEeqtp-LOti013g	Buy-in was partially successful.
+BuyInState1Code	BSSY	Successful	_rBfSMZwVEeqtp-LOti013g	Buy-in was successful.
+BuyInState1Code	BSSN	Unsuccesssful	_rF87cZwVEeqtp-LOti013g	Buy-in was unsuccessful.
+BuyInDeferral1Code	DEFY	BuyInDeferred	_L555sZwWEeqtp-LOti013g	Buy-in is deferred.
+BuyInDeferral1Code	DEFN	BuyInNotDeferred	_L-gs4ZwWEeqtp-LOti013g	Buy-in is not deferred.
+AcknowledgementReason10Code	ADEA	AccountServicerDeadlineMissed	_NDLHi5wZEeqtp-LOti013g	Received after the account servicer's deadline. Processed on best effort basis.
+AcknowledgementReason10Code	SMPG	MarketPracticeRuleDiscrepency	_NDLHjJwZEeqtp-LOti013g	Instruction is accepted but does not comply with the market practice rule published for the concerned market or process.
+AcknowledgementReason10Code	OTHR	Other	_NDLHkZwZEeqtp-LOti013g	Other. See Narrative.
+RejectionReason27Code	ADEA	AccountServicerDeadlineMissed	_Vyp3Ea2jEe-w1po74zkoTg	Transaction/instruction received after the account servicer's specified deadline.
+RejectionReason27Code	LATE	MarketDeadlineMissed	_Vyp3E62jEe-w1po74zkoTg	Received after market deadline.
+RejectionReason27Code	SAFE	SafekeepingAccountRejection	_Vyp3Fa2jEe-w1po74zkoTg	Unrecognised or invalid message sender's safekeeping account.
+RejectionReason27Code	NRGM	NoMatch	_Vyp3F62jEe-w1po74zkoTg	More than one instruction match the criteria.
+RejectionReason27Code	NRGN	NotFoundRejection	_VyqeIa2jEe-w1po74zkoTg	Instruction could not be found.
+RejectionReason27Code	OTHR	Other	_VyqeI62jEe-w1po74zkoTg	Other. See Narrative.
+RejectionReason27Code	REFE	ReferenceRejection	_VyqeJa2jEe-w1po74zkoTg	Instruction has a reference identical to another previously received instruction.
+RejectionReason27Code	INVM	InvalidModificationRequest	_VyqeJ62jEe-w1po74zkoTg	Invalid or unrecognized modification request.
+RejectionReason27Code	INVL	InvalidLink	_VyqeKa2jEe-w1po74zkoTg	Invalid or unrecognized link.

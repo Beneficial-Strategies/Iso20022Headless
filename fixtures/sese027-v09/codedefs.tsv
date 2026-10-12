@@ -1,0 +1,9 @@
+codeSet	code	enumName	isoId	text
+PendingReason35Code	ADEA	AccountServicerDeadlineMissed	_I0Gn8Sm5EfGfZ9PfK70MMg	Instruction was received after the account servicer's deadline. It will be managed as per the bilateral service agreement between the account servicer and account owner.
+PendingReason35Code	CONF	AwaitingConfirmation	_I0Gn8ym5EfGfZ9PfK70MMg	Awaiting confirmation from the counterparty.
+PendingReason35Code	CDCY	ConditionalCurrency	_I0Gn9Sm5EfGfZ9PfK70MMg	Execution is conditional to the execution of a process linked to the currency of the transaction.
+PendingReason35Code	CDAC	ConditionalDeliveryAwaitingCancellation	_I0Gn9ym5EfGfZ9PfK70MMg	Awaiting cancellation of one of the party.
+PendingReason35Code	CDRE	ConditionalRealignement	_I0Gn-Sm5EfGfZ9PfK70MMg	Execution is conditional to the execution of a process of realignment at the issuer CSD.
+PendingReason35Code	CDRG	ConditionalRegistrar	_I0Gn-ym5EfGfZ9PfK70MMg	Execution is conditional to the execution of a process at the registrar.
+PendingReason35Code	INBC	IncompleteNumberCount	_I0Gn_Sm5EfGfZ9PfK70MMg	Not all the instructions part of a pool have been received.
+PendingReason35Code	OTHR	Other	_I0Gn_ym5EfGfZ9PfK70MMg	Other. See Narrative.

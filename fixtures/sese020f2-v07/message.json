@@ -1,0 +1,99 @@
+{
+  "identifier": "sese.020.002.07",
+  "name": "SecuritiesTransactionCancellationRequest002V07",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:sese.020.002.07",
+  "bodyTag": "SctiesTxCxlReq",
+  "out": "sese020f2",
+  "isoId": "_gDDtYzi8Eeydid5dcNPKvg",
+  "definition": "Scope|An account owner sends a SecuritiesTransactionCancellationRequest to an account servicer to request the cancellation of a securities transaction.|The account owner/servicer relationship may be:|- a global custodian which has an account with a local custodian, or|- an investment management institution which manage a fund account opened at a custodian, or - a broker which has an account with a custodian, or|- a central securities depository participant which has an account with a central securities depository, or|- a central securities depository which has an account with a custodian, another central securities depository or another settlement market infrastructure, or|- a central counterparty or a stock exchange or a trade matching utility which need to instruct to a central securities depository or another settlement market infrastructure.||Usage|The transaction may be:|- a securities settlement transaction|- an intra-position movement|- a securities financing transaction|The instruction cannot be:|- a securities settlement conditions modification (another transaction processing command should be sent to reverse a processing change previously requested).|- a securities financing modification|The message may also be used to:|- re-send a message previously sent,|- provide a third party with a copy of a message for information,|- re-send to a third party a copy of a message for information using the relevant elements in the Business Application Header.",
+  "blocks": [
+    {
+      "name": "AccountOwnerTransactionIdentification",
+      "isoId": "_gDDtcTi8Eeydid5dcNPKvg",
+      "xmlTag": "AcctOwnrTxId",
+      "type": "References60Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountServicerTransactionIdentification",
+      "isoId": "_gDDtczi8Eeydid5dcNPKvg",
+      "xmlTag": "AcctSvcrTxId",
+      "type": "RestrictedFINXMax16Text",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "MarketInfrastructureTransactionIdentification",
+      "isoId": "_gDDtdTi8Eeydid5dcNPKvg",
+      "xmlTag": "MktInfrstrctrTxId",
+      "type": "RestrictedFINXMax16Text",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ProcessorTransactionIdentification",
+      "isoId": "_gDDtdzi8Eeydid5dcNPKvg",
+      "xmlTag": "PrcrTxId",
+      "type": "RestrictedFINXMax16Text",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AccountOwner",
+      "isoId": "_gDDteTi8Eeydid5dcNPKvg",
+      "xmlTag": "AcctOwnr",
+      "type": "PartyIdentification156",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SafekeepingAccount",
+      "isoId": "_gDDtezi8Eeydid5dcNPKvg",
+      "xmlTag": "SfkpgAcct",
+      "type": "SecuritiesAccount30",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "BlockChainAddressOrWallet",
+      "isoId": "_gDDtfTi8Eeydid5dcNPKvg",
+      "xmlTag": "BlckChainAdrOrWllt",
+      "type": "BlockChainAddressWallet7",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "TransactionDetails",
+      "isoId": "_gDDtfzi8Eeydid5dcNPKvg",
+      "xmlTag": "TxDtls",
+      "type": "TransactionDetails160",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CancellationReason",
+      "isoId": "_gDDtgTi8Eeydid5dcNPKvg",
+      "xmlTag": "CxlRsn",
+      "type": "CancellationReason27",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "FXCancellation",
+      "isoId": "_gDDtgzi8Eeydid5dcNPKvg",
+      "xmlTag": "FxCxl",
+      "type": "FXCancellation4Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_gDDthTi8Eeydid5dcNPKvg",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

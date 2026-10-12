@@ -56,6 +56,7 @@ import {
   Max4AlphaNumericTextSchema,
   ISODateSchema,
   DateAndDateTime2ChoiceSchema,
+  CancelledStatusReason1CodeSchema,
   Max256TextSchema,
   CreditDebitCodeSchema,
   Max3NumericTextSchema,
@@ -149,8 +150,6 @@ export const PaymentStatusCode6ChoiceSchema = choiceOf({
 });
 
 export const UnmatchedStatusReason1CodeSchema = z.enum(["CMIS", "DDAT", "DELN", "DEPT", "DMON", "DDEA", "DQUA", "CADE", "SETR", "DSEC", "VASU", "DTRA", "RSPR", "REPO", "CLAT", "RERT", "REPA", "REPP", "PHYS", "IIND", "FRAP", "PLCE", "PODU", "FORF", "REGD", "RTGS", "ICAG", "CPCA", "CHAR", "IEXE", "NCRR", "NMAS", "SAFE", "DTRD", "LATE", "TERM", "ICUS"]);
-
-export const CancelledStatusReason1CodeSchema = z.enum(["CANI", "CANS", "CSUB"]);
 
 export const SuspendedStatusReason1CodeSchema = z.enum(["SUBY", "SUBS"]);
 
@@ -328,12 +327,6 @@ const ownTypeDescriptors: TypeDescriptors = {
     isoId: "_Y7f5Z9p-Ed-ak6NoX_4Aeg_689720409",
     kind: "code",
     options: [{ value: "CMIS", name: "MatchingInstructionNotFound", isoId: "_Y7f5aNp-Ed-ak6NoX_4Aeg_689720427" }, { value: "DDAT", name: "DisagreementSettlementDate", isoId: "_Y7f5adp-Ed-ak6NoX_4Aeg_689720428" }, { value: "DELN", name: "DisagreementDirectionOfTrade", isoId: "_Y7pDUNp-Ed-ak6NoX_4Aeg_689720429" }, { value: "DEPT", name: "DisagreementPlaceOfSettlement", isoId: "_Y7pDUdp-Ed-ak6NoX_4Aeg_689720430" }, { value: "DMON", name: "DisagreementSettlementAmount", isoId: "_Y7pDUtp-Ed-ak6NoX_4Aeg_689720431" }, { value: "DDEA", name: "DisagreementDealPrice", isoId: "_Y7pDU9p-Ed-ak6NoX_4Aeg_689720439" }, { value: "DQUA", name: "DisagreementQuantity", isoId: "_Y7pDVNp-Ed-ak6NoX_4Aeg_689720440" }, { value: "CADE", name: "DisagreementRepurchaseCallDelay", isoId: "_Y7pDVdp-Ed-ak6NoX_4Aeg_689720441" }, { value: "SETR", name: "DisagreementSettlementTransaction", isoId: "_Y7pDVtp-Ed-ak6NoX_4Aeg_689720442" }, { value: "DSEC", name: "DisagreementSecurity", isoId: "_Y7pDV9p-Ed-ak6NoX_4Aeg_689720443" }, { value: "VASU", name: "DisagreementVariableRateSupport", isoId: "_Y7pDWNp-Ed-ak6NoX_4Aeg_689720444" }, { value: "DTRA", name: "NotRecognised", isoId: "_Y7pDWdp-Ed-ak6NoX_4Aeg_689720453" }, { value: "RSPR", name: "DisagreementRepurchaseSpreadRate", isoId: "_Y7y0UNp-Ed-ak6NoX_4Aeg_689720454" }, { value: "REPO", name: "DisagreementRepurchaseRate", isoId: "_Y7y0Udp-Ed-ak6NoX_4Aeg_689720455" }, { value: "CLAT", name: "CounterpartyTooLateForMatching", isoId: "_Y7y0Utp-Ed-ak6NoX_4Aeg_689720456" }, { value: "RERT", name: "DisagreementRepurchaseRateType", isoId: "_Y7y0U9p-Ed-ak6NoX_4Aeg_689720457" }, { value: "REPA", name: "DisagreementRepurchaseAmount", isoId: "_Y7y0VNp-Ed-ak6NoX_4Aeg_689720458" }, { value: "REPP", name: "DisagreementRepurchasePremiumAmount", isoId: "_Y7y0Vdp-Ed-ak6NoX_4Aeg_689720459" }, { value: "PHYS", name: "DisagreementPhysicalSettlement", isoId: "_Y7y0Vtp-Ed-ak6NoX_4Aeg_689720460" }, { value: "IIND", name: "DisagreementCommonReference", isoId: "_Y7y0V9p-Ed-ak6NoX_4Aeg_689720461" }, { value: "FRAP", name: "DisagreementPaymentCode", isoId: "_Y7y0WNp-Ed-ak6NoX_4Aeg_689720462" }, { value: "PLCE", name: "DisagreementPlaceOfTrade", isoId: "_Y7y0Wdp-Ed-ak6NoX_4Aeg_689720470" }, { value: "PODU", name: "PossibleDuplicateInstruction", isoId: "_Y77-QNp-Ed-ak6NoX_4Aeg_689720471" }, { value: "FORF", name: "DisagreementForfeitRepurchaseamount", isoId: "_Y77-Qdp-Ed-ak6NoX_4Aeg_689720472" }, { value: "REGD", name: "DisagreementRegistrationDetails", isoId: "_Y77-Qtp-Ed-ak6NoX_4Aeg_689720473" }, { value: "RTGS", name: "DisagreementRTGSSystem", isoId: "_Y77-Q9p-Ed-ak6NoX_4Aeg_689720474" }, { value: "ICAG", name: "IncorrectAgent", isoId: "_Y77-RNp-Ed-ak6NoX_4Aeg_689720475" }, { value: "CPCA", name: "CounterpartyCancelledInstruction", isoId: "_Y77-Rdp-Ed-ak6NoX_4Aeg_689720484" }, { value: "CHAR", name: "DisagreementChargesAmount", isoId: "_Y77-Rtp-Ed-ak6NoX_4Aeg_689720485" }, { value: "IEXE", name: "IncorrectBuyerOrSeller", isoId: "_Y77-R9p-Ed-ak6NoX_4Aeg_689720486" }, { value: "NCRR", name: "DisagreementCurrencySettlementAmount", isoId: "_Y77-SNp-Ed-ak6NoX_4Aeg_689720487" }, { value: "NMAS", name: "NoMatchingStarted", isoId: "_Y77-Sdp-Ed-ak6NoX_4Aeg_689720488" }, { value: "SAFE", name: "DisagreementSafekeepingAccount", isoId: "_Y77-Stp-Ed-ak6NoX_4Aeg_689720489" }, { value: "DTRD", name: "DisagreementTradeDate", isoId: "_Y8FvQNp-Ed-ak6NoX_4Aeg_689720490" }, { value: "LATE", name: "YourInstructionTooLateForMatching", isoId: "_Y8FvQdp-Ed-ak6NoX_4Aeg_689720491" }, { value: "TERM", name: "DisagreementClosingDateTime", isoId: "_Y8FvQtp-Ed-ak6NoX_4Aeg_689720492" }, { value: "ICUS", name: "DisagreementReceivingOrDeliveringCustodian", isoId: "_Y8FvQ9p-Ed-ak6NoX_4Aeg_689720493" }],
-  },
-  "CancelledStatusReason1Code": {
-    name: "CancelledStatusReason1Code",
-    isoId: "_a0pMUtp-Ed-ak6NoX_4Aeg_689720888",
-    kind: "code",
-    options: [{ value: "CANI", name: "CancelledByYourself", isoId: "_a0pMU9p-Ed-ak6NoX_4Aeg_689720889" }, { value: "CANS", name: "CancelledBySystem", isoId: "_a0pMVNp-Ed-ak6NoX_4Aeg_689720890" }, { value: "CSUB", name: "CancelledByAgent", isoId: "_a0pMVdp-Ed-ak6NoX_4Aeg_689720891" }],
   },
   "SuspendedStatusReason1Code": {
     name: "SuspendedStatusReason1Code",
@@ -598,6 +591,7 @@ export const typeDescriptors: TypeDescriptors = {
   "Max4AlphaNumericText": sharedTypeDescriptors["Max4AlphaNumericText"]!,
   "ISODate": sharedTypeDescriptors["ISODate"]!,
   "DateAndDateTime2Choice": sharedTypeDescriptors["DateAndDateTime2Choice"]!,
+  "CancelledStatusReason1Code": sharedTypeDescriptors["CancelledStatusReason1Code"]!,
   "Max256Text": sharedTypeDescriptors["Max256Text"]!,
   "CreditDebitCode": sharedTypeDescriptors["CreditDebitCode"]!,
   "Max3NumericText": sharedTypeDescriptors["Max3NumericText"]!,

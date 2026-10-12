@@ -1,0 +1,59 @@
+{
+  "identifier": "sese.037.002.07",
+  "name": "PortfolioTransferNotification002V07",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:sese.037.002.07",
+  "bodyTag": "PrtflTrfNtfctn",
+  "out": "sese037f2",
+  "isoId": "_cec-Mzi8Eeydid5dcNPKvg",
+  "definition": "Scope|The  PortfolioTransferNotification is sent by an account servicer to another account servicer to exchange transfer settlement details information during a retail or institutional client portfolio transfer.|The account servicer will typically be local agent or global custodian acting on behalf of an investment management institution, a broker/dealer or a retail client.||Usage|The exchange of transfer settlement details is the provision, by the delivering account servicer to the receiving account servicer, of the settlement data (such as trade date, settlement date, delivering settlement chain, quantities) of the individual transfers that will take place during a full or partial portfolio transfer. This delivering account servicer message may also include, for validation, the receiving settlement chain as provided by the client. In case the receiving settlement chain is not available to the delivering account servicer, the receiving account servicer may in return provide to the delivering account servicer the receiving settlement chain using the same message.||The message may also be used to:|- re-send a message previously sent,|- provide a third party with a copy of a message for information,|- re-send to a third party a copy of a message for information|using the relevant elements in the Business Application Header.",
+  "blocks": [
+    {
+      "name": "Pagination",
+      "isoId": "_cec-QDi8Eeydid5dcNPKvg",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "StatementGeneralDetails",
+      "isoId": "_cec-Qji8Eeydid5dcNPKvg",
+      "xmlTag": "StmtGnlDtls",
+      "type": "Statement68",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountOwner",
+      "isoId": "_cec-RDi8Eeydid5dcNPKvg",
+      "xmlTag": "AcctOwnr",
+      "type": "PartyIdentification156",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SafekeepingAccount",
+      "isoId": "_cec-Rji8Eeydid5dcNPKvg",
+      "xmlTag": "SfkpgAcct",
+      "type": "SecuritiesAccount30",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "BlockChainAddressOrWallet",
+      "isoId": "_cec-SDi8Eeydid5dcNPKvg",
+      "xmlTag": "BlckChainAdrOrWllt",
+      "type": "BlockChainAddressWallet7",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "TransferNotificationDetails",
+      "isoId": "_cec-Sji8Eeydid5dcNPKvg",
+      "xmlTag": "TrfNtfctnDtls",
+      "type": "SecuritiesTradeDetails139",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

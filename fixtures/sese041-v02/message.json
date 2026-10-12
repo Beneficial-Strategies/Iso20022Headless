@@ -1,0 +1,43 @@
+{
+  "identifier": "sese.041.001.02",
+  "name": "BuyInRegulatoryAdviceV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:sese.041.001.02",
+  "bodyTag": "BuyInRgltryAdvc",
+  "out": "sese041",
+  "isoId": "_azR0wYZFEe-6cOl7zMpJaA",
+  "definition": "Scope||An account owner sends a BuyInRegulatoryAdvice to an account servicer to  notify the results of the buy-in transactions executed under CSDR regulatory regime.|||The account owner/servicer relationship may be:|- a central securities depository participant which has an account with a central securities depository.|It could also be, if agreed in a service level agreement:|- a global custodian which has an account with its local agent (sub-custodian), or|- an investment management institution which manage a fund account opened at a custodian, or|- a broker which has an account with a custodian, or|- a central securities depository which has an account with a custodian, another central securities depository or another settlement market infrastructure.|The ultimate receiving party at the end of the settlement chain is a central securities depository or interational central securities depository.||||Usage||The message may also be used to:|- re-send a message previously sent,|- provide a third party with a copy of a message for information,|- re-send to a third party a copy of a message for information using the relevant elements in the Business Application Header.",
+  "blocks": [
+    {
+      "name": "AccountOwner",
+      "isoId": "_azR0y4ZFEe-6cOl7zMpJaA",
+      "xmlTag": "AcctOwnr",
+      "type": "PartyIdentification144",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SafekeepingAccount",
+      "isoId": "_azR0zYZFEe-6cOl7zMpJaA",
+      "xmlTag": "SfkpgAcct",
+      "type": "SecuritiesAccount19",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "BuyInAttributes",
+      "isoId": "_azR0z4ZFEe-6cOl7zMpJaA",
+      "xmlTag": "BuyInAttrbts",
+      "type": "BuyInAdviceDetails2",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_azR00YZFEe-6cOl7zMpJaA",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

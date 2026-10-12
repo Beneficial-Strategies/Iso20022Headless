@@ -61,6 +61,7 @@ import {
   PercentageRateSchema,
   ActiveOrHistoricCurrencyAnd13DecimalAmountSchema,
   PriceRateOrAmount3ChoiceSchema,
+  Price10Schema,
   Max3NumberSchema,
   ISINOct2015IdentifierSchema,
   Max16TextSchema,
@@ -106,6 +107,7 @@ import {
   IBAN2007IdentifierSchema,
   Max34TextSchema,
   CashAccountIdentification9ChoiceSchema,
+  QuantityBreakdown62Schema,
   SafekeepingPlace3CodeSchema,
   SafekeepingPlaceTypeAndText8Schema,
   CountryCodeSchema,
@@ -116,15 +118,21 @@ import {
   SafekeepingPlaceFormat41ChoiceSchema,
   SafeKeepingPlace5Schema,
   DateType5CodeSchema,
+  DateCode18ChoiceSchema,
+  TerminationDate6ChoiceSchema,
   RateType1CodeSchema,
+  RateType35ChoiceSchema,
   LegalFramework1CodeSchema,
+  LegalFramework3ChoiceSchema,
   Max8TextSchema,
+  RateName1Schema,
   PlusOrMinusIndicatorSchema,
   Rate2Schema,
   ActiveOrHistoricCurrencyAndAmountSchema,
   CreditDebitCodeSchema,
   AmountAndDirection21Schema,
   SecuritiesTransactionType24CodeSchema,
+  SecuritiesTransactionType45ChoiceSchema,
   SettlementTransactionCondition5CodeSchema,
   BeneficialOwnership4ChoiceSchema,
   CashSettlementSystem3CodeSchema,
@@ -134,6 +142,7 @@ import {
   Registration1CodeSchema,
   Registration9ChoiceSchema,
   RepurchaseType6CodeSchema,
+  RepurchaseType13ChoiceSchema,
   SecuritiesRTGS4ChoiceSchema,
   AddressType2CodeSchema,
   PostalAddress1Schema,
@@ -143,12 +152,23 @@ import {
   IdentificationType42ChoiceSchema,
   AlternatePartyIdentification7Schema,
   PartyTextInformation1Schema,
+  PartyIdentification315Schema,
   PartyIdentification120ChoiceSchema,
+  PartyIdentificationAndAccount196Schema,
+  SettlementParties126Schema,
   ActiveCurrencyAndAmountSchema,
   ActiveCurrencyCodeSchema,
   ForeignExchangeTerms23Schema,
+  AmountAndDirection88Schema,
+  AmountAndDirection47Schema,
+  OtherAmounts32Schema,
+  Quantity83ChoiceSchema,
   CashSettlementSystemPlace1ChoiceSchema,
+  DigitalPaymentSettlement1Schema,
+  PartyIdentification134ChoiceSchema,
+  PartyIdentification149Schema,
   PartyIdentification136Schema,
+  OtherParties34Schema,
   SupplementaryDataEnvelope1Schema,
   SupplementaryData1Schema,
   sharedTypeDescriptors,
@@ -169,50 +189,12 @@ export const AllegementStatus3ChoiceSchema = choiceOf({
   Proprietary: GenericIdentification30Schema,
 });
 
-export const Price10Schema = z.strictObject({
-  Type: YieldedOrValueType2ChoiceSchema,
-  Value: PriceRateOrAmount3ChoiceSchema,
-});
-
-export const QuantityBreakdown62Schema = z.strictObject({
-  LotNumber: GenericIdentification37Schema.optional(),
-  LotQuantity: FinancialInstrumentQuantity33ChoiceSchema.optional(),
-  LotDateTime: DateAndDateTime2ChoiceSchema.optional(),
-  LotPrice: Price7Schema.optional(),
-  TypeOfPrice: TypeOfPrice29ChoiceSchema.optional(),
-});
-
 export const QuantityAndAccount114Schema = z.strictObject({
   SettlementQuantity: FinancialInstrumentQuantity33ChoiceSchema,
   DenominationChoice: Max210TextSchema.optional(),
   CashAccount: CashAccountIdentification9ChoiceSchema.optional(),
   QuantityBreakdown: z.array(QuantityBreakdown62Schema).optional(),
   SafekeepingPlace: SafeKeepingPlace5Schema.optional(),
-});
-
-export const DateCode18ChoiceSchema = choiceOf({
-  Code: DateType5CodeSchema,
-  Proprietary: GenericIdentification30Schema,
-});
-
-export const TerminationDate6ChoiceSchema = choiceOf({
-  Date: DateAndDateTime2ChoiceSchema,
-  Code: DateCode18ChoiceSchema,
-});
-
-export const RateType35ChoiceSchema = choiceOf({
-  Code: RateType1CodeSchema,
-  Proprietary: GenericIdentification30Schema,
-});
-
-export const LegalFramework3ChoiceSchema = choiceOf({
-  Code: LegalFramework1CodeSchema,
-  Proprietary: GenericIdentification30Schema,
-});
-
-export const RateName1Schema = z.strictObject({
-  Issuer: Max8TextSchema.optional(),
-  RateName: Max35TextSchema,
 });
 
 export const SecuritiesFinancingTransactionDetails54Schema = z.strictObject({
@@ -232,20 +214,10 @@ export const SecuritiesFinancingTransactionDetails54Schema = z.strictObject({
   SecondLegNarrative: Max140TextSchema.optional(),
 });
 
-export const SecuritiesTransactionType45ChoiceSchema = choiceOf({
-  Code: SecuritiesTransactionType24CodeSchema,
-  Proprietary: GenericIdentification30Schema,
-});
-
 export const SettlementTransactionCondition22CodeSchema = z.enum(["CLEN", "DLWM", "DIRT", "GATE", "NOMC", "PHYS", "SPDL", "SPST"]);
 
 export const SettlementTransactionCondition46ChoiceSchema = choiceOf({
   Code: SettlementTransactionCondition22CodeSchema,
-  Proprietary: GenericIdentification30Schema,
-});
-
-export const RepurchaseType13ChoiceSchema = choiceOf({
-  Code: RepurchaseType6CodeSchema,
   Proprietary: GenericIdentification30Schema,
 });
 
@@ -261,94 +233,6 @@ export const SettlementDetails234Schema = z.strictObject({
   RepurchaseType: RepurchaseType13ChoiceSchema.optional(),
   SecuritiesRTGS: SecuritiesRTGS4ChoiceSchema.optional(),
   StampDutyTaxBasis: GenericIdentification30Schema.optional(),
-});
-
-export const PartyIdentification315Schema = z.strictObject({
-  Identification: PartyIdentification257ChoiceSchema,
-  LEI: LEIIdentifierSchema.optional(),
-  AlternateIdentification: AlternatePartyIdentification7Schema.optional(),
-  ProcessingDate: DateAndDateTime2ChoiceSchema.optional(),
-  ProcessingIdentification: Max35TextSchema.optional(),
-  AdditionalInformation: PartyTextInformation1Schema.optional(),
-});
-
-export const PartyIdentificationAndAccount196Schema = z.strictObject({
-  Identification: PartyIdentification120ChoiceSchema,
-  LEI: LEIIdentifierSchema.optional(),
-  AlternateIdentification: AlternatePartyIdentification7Schema.optional(),
-  SafekeepingAccount: SecuritiesAccount19Schema.optional(),
-  BlockChainAddressOrWallet: BlockChainAddressWallet3Schema.optional(),
-  ProcessingDate: DateAndDateTime2ChoiceSchema.optional(),
-  ProcessingIdentification: Max35TextSchema.optional(),
-  AdditionalInformation: PartyTextInformation1Schema.optional(),
-});
-
-export const SettlementParties126Schema = z.strictObject({
-  Depository: PartyIdentification315Schema.optional(),
-  Party1: PartyIdentificationAndAccount196Schema.optional(),
-  Party2: PartyIdentificationAndAccount196Schema.optional(),
-  Party3: PartyIdentificationAndAccount196Schema.optional(),
-  Party4: PartyIdentificationAndAccount196Schema.optional(),
-  Party5: PartyIdentificationAndAccount196Schema.optional(),
-});
-
-export const AmountAndDirection88Schema = z.strictObject({
-  Amount: ActiveCurrencyAndAmountSchema,
-  CreditDebitIndicator: CreditDebitCodeSchema,
-  OriginalCurrencyAndOrderedAmount: ActiveOrHistoricCurrencyAndAmountSchema.optional(),
-  ForeignExchangeDetails: ForeignExchangeTerms23Schema.optional(),
-  ValueDate: DateAndDateTime2ChoiceSchema.optional(),
-});
-
-export const AmountAndDirection47Schema = z.strictObject({
-  Amount: ActiveOrHistoricCurrencyAndAmountSchema,
-  CreditDebitIndicator: CreditDebitCodeSchema.optional(),
-  ForeignExchangeDetails: ForeignExchangeTerms23Schema.optional(),
-});
-
-export const OtherAmounts32Schema = z.strictObject({
-  AccruedInterestAmount: AmountAndDirection47Schema.optional(),
-  ChargesFees: AmountAndDirection47Schema.optional(),
-  TradeAmount: AmountAndDirection47Schema.optional(),
-  ExecutingBrokerAmount: AmountAndDirection47Schema.optional(),
-  LocalTax: AmountAndDirection47Schema.optional(),
-  LocalBrokerCommission: AmountAndDirection47Schema.optional(),
-  Other: AmountAndDirection47Schema.optional(),
-  StampDuty: AmountAndDirection47Schema.optional(),
-  TransactionTax: AmountAndDirection47Schema.optional(),
-  WithholdingTax: AmountAndDirection47Schema.optional(),
-  ConsumptionTax: AmountAndDirection47Schema.optional(),
-});
-
-export const Quantity83ChoiceSchema = choiceOf({
-  ElectronicMoneyTokenSettlementQuantity: Max30DecimalNumberSchema,
-  NetworkFeeQuantity: Max30DecimalNumberSchema,
-});
-
-export const DigitalPaymentSettlement1Schema = z.strictObject({
-  FinancialInstrumentIdentification: SecurityIdentification19Schema,
-  Quantity: Quantity83ChoiceSchema,
-  CashSettlementSystemPlace: CashSettlementSystemPlace1ChoiceSchema.optional(),
-});
-
-export const PartyIdentification134ChoiceSchema = choiceOf({
-  AnyBIC: AnyBICDec2014IdentifierSchema,
-  ProprietaryIdentification: GenericIdentification36Schema,
-  NameAndAddress: NameAndAddress5Schema,
-  Country: CountryCodeSchema,
-});
-
-export const PartyIdentification149Schema = z.strictObject({
-  Identification: PartyIdentification134ChoiceSchema,
-  LEI: LEIIdentifierSchema.optional(),
-});
-
-export const OtherParties34Schema = z.strictObject({
-  Investor: PartyIdentification149Schema.optional(),
-  QualifiedForeignIntermediary: PartyIdentification136Schema.optional(),
-  StockExchange: PartyIdentification136Schema.optional(),
-  TradeRegulator: PartyIdentification136Schema.optional(),
-  TripartyAgent: PartyIdentification136Schema.optional(),
 });
 
 export const SecuritiesTradeDetails152Schema = z.strictObject({
@@ -425,27 +309,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "Proprietary", isoId: "_UHLhyTqhEeWyoP0PbocV1Q", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
     ],
   },
-  "Price10": {
-    name: "Price10",
-    isoId: "_UjRo0QycEeuG8M5giQ2e0w",
-    kind: "component",
-    fields: [
-      f({ name: "Type", isoId: "_UyctQQycEeuG8M5giQ2e0w", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "YieldedOrValueType2Choice", required: true }),
-      f({ name: "Value", isoId: "_UyctQwycEeuG8M5giQ2e0w", xmlTag: "Val", displayName: displayName("Value"), kind: "choice", type: "PriceRateOrAmount3Choice", required: true }),
-    ],
-  },
-  "QuantityBreakdown62": {
-    name: "QuantityBreakdown62",
-    isoId: "_HNexESqEEeyR9JrVGfaMKw",
-    kind: "component",
-    fields: [
-      f({ name: "LotNumber", isoId: "_HlUpMSqEEeyR9JrVGfaMKw", xmlTag: "LotNb", displayName: displayName("LotNumber"), kind: "component", type: "GenericIdentification37", required: false }),
-      f({ name: "LotQuantity", isoId: "_HlUpOSqEEeyR9JrVGfaMKw", xmlTag: "LotQty", displayName: displayName("LotQuantity"), kind: "choice", type: "FinancialInstrumentQuantity33Choice", required: false }),
-      f({ name: "LotDateTime", isoId: "_HlUpQSqEEeyR9JrVGfaMKw", xmlTag: "LotDtTm", displayName: displayName("LotDateTime"), kind: "choice", type: "DateAndDateTime2Choice", required: false }),
-      f({ name: "LotPrice", isoId: "_HlUpSSqEEeyR9JrVGfaMKw", xmlTag: "LotPric", displayName: displayName("LotPrice"), kind: "component", type: "Price7", required: false }),
-      f({ name: "TypeOfPrice", isoId: "_HlUpUSqEEeyR9JrVGfaMKw", xmlTag: "TpOfPric", displayName: displayName("TypeOfPrice"), kind: "choice", type: "TypeOfPrice29Choice", required: false }),
-    ],
-  },
   "QuantityAndAccount114": {
     name: "QuantityAndAccount114",
     isoId: "_v_xRW4oiEe-efPejSUAtLw",
@@ -460,51 +323,6 @@ const ownTypeDescriptors: TypeDescriptors = {
     rules: [
       { name: "DenominationRule", isoId: "_wJJ2wYoiEe-efPejSUAtLw", text: "Unless bilaterally agreed between the account owner and servicer, if DenominationChoice is used, it must not contain information that can be provided in a structured field." },
       { name: "SafekeepingPlaceRule", isoId: "_wJJ2w4oiEe-efPejSUAtLw", text: "The SafekeepingPlace functionality in the settlement instructions is only to be used for global custodians that allow their clients to specify where the securities are to be held, for example, in an ICSD account versus an account at the local CSD." },
-    ],
-  },
-  "DateCode18Choice": {
-    name: "DateCode18Choice",
-    isoId: "_ZtQSJzqkEeWyoP0PbocV1Q",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_aM8ewTqkEeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "DateType5Code", required: true }),
-      f({ name: "Proprietary", isoId: "_aM8eyTqkEeWyoP0PbocV1Q", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
-  "TerminationDate6Choice": {
-    name: "TerminationDate6Choice",
-    isoId: "_hE2NAbPvEeelzbgsFa3sqQ",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Date", isoId: "_hUd9YbPvEeelzbgsFa3sqQ", xmlTag: "Dt", displayName: displayName("Date"), kind: "choice", type: "DateAndDateTime2Choice", required: true }),
-      f({ name: "Code", isoId: "_hUd9b7PvEeelzbgsFa3sqQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "DateCode18Choice", required: true }),
-    ],
-  },
-  "RateType35Choice": {
-    name: "RateType35Choice",
-    isoId: "_4YCkYTqkEeWyoP0PbocV1Q",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_43lAEzqkEeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "RateType1Code", required: true }),
-      f({ name: "Proprietary", isoId: "_43lAFTqkEeWyoP0PbocV1Q", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
-  "LegalFramework3Choice": {
-    name: "LegalFramework3Choice",
-    isoId: "_-5gGQTqkEeWyoP0PbocV1Q",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "__YvnATqkEeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "LegalFramework1Code", required: true }),
-      f({ name: "Proprietary", isoId: "__YvnCTqkEeWyoP0PbocV1Q", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
-  "RateName1": {
-    name: "RateName1",
-    isoId: "_Q-niZdp-Ed-ak6NoX_4Aeg_-1174778269",
-    kind: "component",
-    fields: [
-      f({ name: "Issuer", isoId: "_Q-niZtp-Ed-ak6NoX_4Aeg_-1174778268", xmlTag: "Issr", displayName: displayName("Issuer"), kind: "text", type: "Max8Text", required: false }),
-      f({ name: "RateName", isoId: "_Q-niZ9p-Ed-ak6NoX_4Aeg_-1174778267", xmlTag: "RateNm", displayName: displayName("RateName"), kind: "text", type: "Max35Text", required: true }),
     ],
   },
   "SecuritiesFinancingTransactionDetails54": {
@@ -528,15 +346,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "SecondLegNarrative", isoId: "_RJk-gYYaEe-Pv9KR9bv9IA", xmlTag: "ScndLegNrrtv", displayName: displayName("SecondLegNarrative"), kind: "text", type: "Max140Text", required: false }),
     ],
   },
-  "SecuritiesTransactionType45Choice": {
-    name: "SecuritiesTransactionType45Choice",
-    isoId: "_m2WakdExEeiO-eodGv5iKQ",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_nIy1c9ExEeiO-eodGv5iKQ", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "SecuritiesTransactionType24Code", required: true }),
-      f({ name: "Proprietary", isoId: "_nIy1e9ExEeiO-eodGv5iKQ", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
   "SettlementTransactionCondition22Code": {
     name: "SettlementTransactionCondition22Code",
     isoId: "_x1_o0PISEfCMaqDZ_tShqQ",
@@ -550,15 +359,6 @@ const ownTypeDescriptors: TypeDescriptors = {
     choiceOptions: [
       f({ name: "Code", isoId: "_mnUdpfHVEfChCaiL9q1LKg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "SettlementTransactionCondition22Code", required: true }),
       f({ name: "Proprietary", isoId: "_mnUdsfHVEfChCaiL9q1LKg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
-  "RepurchaseType13Choice": {
-    name: "RepurchaseType13Choice",
-    isoId: "_mUqXITqnEeWyoP0PbocV1Q",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_m0My0zqnEeWyoP0PbocV1Q", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "RepurchaseType6Code", required: true }),
-      f({ name: "Proprietary", isoId: "_m0My2zqnEeWyoP0PbocV1Q", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
     ],
   },
   "SettlementDetails234": {
@@ -581,154 +381,6 @@ const ownTypeDescriptors: TypeDescriptors = {
     rules: [
       { name: "SettlementDetailsRule", isoId: "_IHAnxZaVEfC2_67yGLymgA", text: "If SettlementDetails elements are used, then their conditions of use must be pre-agreed between account owner and account servicer." },
       { name: "CashClearingSystemRule", isoId: "_IHAnx5aVEfC2_67yGLymgA", text: "The CashClearingSystem codes are to be used only by agents directly involved in the settlement process, such as local settlement agents, CSDs and central banks." },
-    ],
-  },
-  "PartyIdentification315": {
-    name: "PartyIdentification315",
-    isoId: "_zZ3Y84otEe-efPejSUAtLw",
-    kind: "component",
-    fields: [
-      f({ name: "Identification", isoId: "_zjP-EYotEe-efPejSUAtLw", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "PartyIdentification257Choice", required: true }),
-      f({ name: "LEI", isoId: "_zjP-GYotEe-efPejSUAtLw", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
-      f({ name: "AlternateIdentification", isoId: "_zjP-G4otEe-efPejSUAtLw", xmlTag: "AltrnId", displayName: displayName("AlternateIdentification"), kind: "component", type: "AlternatePartyIdentification7", required: false }),
-      f({ name: "ProcessingDate", isoId: "_zjP-I4otEe-efPejSUAtLw", xmlTag: "PrcgDt", displayName: displayName("ProcessingDate"), kind: "choice", type: "DateAndDateTime2Choice", required: false }),
-      f({ name: "ProcessingIdentification", isoId: "_zjP-K4otEe-efPejSUAtLw", xmlTag: "PrcgId", displayName: displayName("ProcessingIdentification"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "AdditionalInformation", isoId: "_zjP-M4otEe-efPejSUAtLw", xmlTag: "AddtlInf", displayName: displayName("AdditionalInformation"), kind: "component", type: "PartyTextInformation1", required: false }),
-    ],
-  },
-  "PartyIdentificationAndAccount196": {
-    name: "PartyIdentificationAndAccount196",
-    isoId: "_sGq7wSqDEeyR9JrVGfaMKw",
-    kind: "component",
-    fields: [
-      f({ name: "Identification", isoId: "_sd6XAyqDEeyR9JrVGfaMKw", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "PartyIdentification120Choice", required: true }),
-      f({ name: "LEI", isoId: "_sd6XCyqDEeyR9JrVGfaMKw", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
-      f({ name: "AlternateIdentification", isoId: "_sd6XDSqDEeyR9JrVGfaMKw", xmlTag: "AltrnId", displayName: displayName("AlternateIdentification"), kind: "component", type: "AlternatePartyIdentification7", required: false }),
-      f({ name: "SafekeepingAccount", isoId: "_sd6XFSqDEeyR9JrVGfaMKw", xmlTag: "SfkpgAcct", displayName: displayName("SafekeepingAccount"), kind: "component", type: "SecuritiesAccount19", required: false }),
-      f({ name: "BlockChainAddressOrWallet", isoId: "_m5noAyqDEeyR9JrVGfaMKw", xmlTag: "BlckChainAdrOrWllt", displayName: displayName("BlockChainAddressOrWallet"), kind: "component", type: "BlockChainAddressWallet3", required: false }),
-      f({ name: "ProcessingDate", isoId: "_sd6XHSqDEeyR9JrVGfaMKw", xmlTag: "PrcgDt", displayName: displayName("ProcessingDate"), kind: "choice", type: "DateAndDateTime2Choice", required: false }),
-      f({ name: "ProcessingIdentification", isoId: "_sd6XJSqDEeyR9JrVGfaMKw", xmlTag: "PrcgId", displayName: displayName("ProcessingIdentification"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "AdditionalInformation", isoId: "_sd6XLSqDEeyR9JrVGfaMKw", xmlTag: "AddtlInf", displayName: displayName("AdditionalInformation"), kind: "component", type: "PartyTextInformation1", required: false }),
-    ],
-    rules: [
-      { name: "SafekeepingAccountOrBlockChainAddress1Rule", isoId: "_m5noBCqDEeyR9JrVGfaMKw", text: "If SafekeepingAccount is present, BlockChainAddressOrWallet must be absent.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/BlockChainAddressOrWallet"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/SafekeepingAccount"}]}} },
-      { name: "SafekeepingAccountOrBlockChainAddress2Rule", isoId: "_m5noBSqDEeyR9JrVGfaMKw", text: "If BlockChainAddressOrWallet is present, SafekeepingAccount must be absent.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Absence","path":"/SafekeepingAccount"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/BlockChainAddressOrWallet"}]}} },
-    ],
-  },
-  "SettlementParties126": {
-    name: "SettlementParties126",
-    isoId: "_s0KP4YotEe-efPejSUAtLw",
-    kind: "component",
-    fields: [
-      f({ name: "Depository", isoId: "_s-IrT4otEe-efPejSUAtLw", xmlTag: "Dpstry", displayName: displayName("Depository"), kind: "component", type: "PartyIdentification315", required: false }),
-      f({ name: "Party1", isoId: "_s-IrV4otEe-efPejSUAtLw", xmlTag: "Pty1", displayName: displayName("Party1"), kind: "component", type: "PartyIdentificationAndAccount196", required: false }),
-      f({ name: "Party2", isoId: "_s-IrX4otEe-efPejSUAtLw", xmlTag: "Pty2", displayName: displayName("Party2"), kind: "component", type: "PartyIdentificationAndAccount196", required: false }),
-      f({ name: "Party3", isoId: "_s-IreYotEe-efPejSUAtLw", xmlTag: "Pty3", displayName: displayName("Party3"), kind: "component", type: "PartyIdentificationAndAccount196", required: false }),
-      f({ name: "Party4", isoId: "_s-IrjYotEe-efPejSUAtLw", xmlTag: "Pty4", displayName: displayName("Party4"), kind: "component", type: "PartyIdentificationAndAccount196", required: false }),
-      f({ name: "Party5", isoId: "_s-Irm4otEe-efPejSUAtLw", xmlTag: "Pty5", displayName: displayName("Party5"), kind: "component", type: "PartyIdentificationAndAccount196", required: false }),
-    ],
-    rules: [
-      { name: "Party2PresenceRule", isoId: "_s-IrQYotEe-efPejSUAtLw", text: "If Party2 is present, then Party1 must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/Party1"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/Party2"}]}} },
-      { name: "Party3PresenceRule", isoId: "_s-IrQ4otEe-efPejSUAtLw", text: "If Party3 is present, then Party2 must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/Party2"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/Party3"}]}} },
-      { name: "Party4PresenceRule", isoId: "_s-IrRYotEe-efPejSUAtLw", text: "If Party4 is present, then Party3 must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/Party3"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/Party4"}]}} },
-      { name: "Party5PresenceRule", isoId: "_s-IrR4otEe-efPejSUAtLw", text: "If Party5 is present, then Party4 must be present.", expression: {"mustBe":{"connector":"AND","rules":[{"op":"Presence","path":"/Party4"}]},"onCondition":{"connector":"AND","rules":[{"op":"Presence","path":"/Party5"}]}} },
-      { name: "SettlementChainGuideline", isoId: "_s-IrSYotEe-efPejSUAtLw", text: "SMPG recommends that at least three settlement parties be instructed in equity or fixed income receive|free or against payment settlement instructions; the depository, the participant of the depository (Party1) and the client of Party1 (Party2).|The data format for the identification of Party1 depends on the market. If no country specific requirement is available, BIC is recommended.|For more details, see the relevant market practice document on www.smpg.info." },
-      { name: "DepositoryGuideline", isoId: "_s-IrS4otEe-efPejSUAtLw", text: "In a delivery, the receiving depository is to be understood as the requested depository of the receiving counterparty. |In a receive, the delivering depository is to be understood as the requested depository of the delivering counterparty.|The field must be populated with the BIC of a national or international CSD. When no CSD exists in a particular market, the stock exchange BIC is to be used.|Country code should be used for settlement taking place outside of an institution published in the PSET's BIC list. This includes physical deliveries and investment funds not settling at a CSD. |The format and content of the settlement party sequences will comply with the market practices published for the counterparty depository included in the message.|For more details, see the relevant market practice document on www.smpg.info." },
-      { name: "BookTransferGuideline", isoId: "_s-IrTYotEe-efPejSUAtLw", text: "In case of own account internal transfer, own account external transfer, portfolio transfer and in specie transfer (see SecuritiesTransactionType), the account of (delivering) Party2 at (delivering) Party1 must be provided.|For more details, see the relevant market practice document on www.smpg.info." },
-    ],
-  },
-  "AmountAndDirection88": {
-    name: "AmountAndDirection88",
-    isoId: "_4r9oQbPvEeelzbgsFa3sqQ",
-    kind: "component",
-    fields: [
-      f({ name: "Amount", isoId: "_47Sds7PvEeelzbgsFa3sqQ", xmlTag: "Amt", displayName: displayName("Amount"), kind: "amount", type: "ActiveCurrencyAndAmount", required: true }),
-      f({ name: "CreditDebitIndicator", isoId: "_47Sdu7PvEeelzbgsFa3sqQ", xmlTag: "CdtDbtInd", displayName: displayName("CreditDebitIndicator"), kind: "code", type: "CreditDebitCode", required: true }),
-      f({ name: "OriginalCurrencyAndOrderedAmount", isoId: "_47Sdw7PvEeelzbgsFa3sqQ", xmlTag: "OrgnlCcyAndOrdrdAmt", displayName: displayName("OriginalCurrencyAndOrderedAmount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: false }),
-      f({ name: "ForeignExchangeDetails", isoId: "_47Sdy7PvEeelzbgsFa3sqQ", xmlTag: "FXDtls", displayName: displayName("ForeignExchangeDetails"), kind: "component", type: "ForeignExchangeTerms23", required: false }),
-      f({ name: "ValueDate", isoId: "_47Sd07PvEeelzbgsFa3sqQ", xmlTag: "ValDt", displayName: displayName("ValueDate"), kind: "choice", type: "DateAndDateTime2Choice", required: false }),
-    ],
-  },
-  "AmountAndDirection47": {
-    name: "AmountAndDirection47",
-    isoId: "__Yf27Tp8EeWVrPy0StzzSg",
-    kind: "component",
-    fields: [
-      f({ name: "Amount", isoId: "__3lmVTp8EeWVrPy0StzzSg", xmlTag: "Amt", displayName: displayName("Amount"), kind: "amount", type: "ActiveOrHistoricCurrencyAndAmount", required: true }),
-      f({ name: "CreditDebitIndicator", isoId: "__3lmXTp8EeWVrPy0StzzSg", xmlTag: "CdtDbtInd", displayName: displayName("CreditDebitIndicator"), kind: "code", type: "CreditDebitCode", required: false }),
-      f({ name: "ForeignExchangeDetails", isoId: "__3lmZTp8EeWVrPy0StzzSg", xmlTag: "FXDtls", displayName: displayName("ForeignExchangeDetails"), kind: "component", type: "ForeignExchangeTerms23", required: false }),
-    ],
-  },
-  "OtherAmounts32": {
-    name: "OtherAmounts32",
-    isoId: "_-4p5Azp8EeWVrPy0StzzSg",
-    kind: "component",
-    fields: [
-      f({ name: "AccruedInterestAmount", isoId: "__Yf2lTp8EeWVrPy0StzzSg", xmlTag: "AcrdIntrstAmt", displayName: displayName("AccruedInterestAmount"), kind: "component", type: "AmountAndDirection47", required: false }),
-      f({ name: "ChargesFees", isoId: "__Yf2nTp8EeWVrPy0StzzSg", xmlTag: "ChrgsFees", displayName: displayName("ChargesFees"), kind: "component", type: "AmountAndDirection47", required: false }),
-      f({ name: "TradeAmount", isoId: "__Yf2pTp8EeWVrPy0StzzSg", xmlTag: "TradAmt", displayName: displayName("TradeAmount"), kind: "component", type: "AmountAndDirection47", required: false }),
-      f({ name: "ExecutingBrokerAmount", isoId: "__Yf2rTp8EeWVrPy0StzzSg", xmlTag: "ExctgBrkrAmt", displayName: displayName("ExecutingBrokerAmount"), kind: "component", type: "AmountAndDirection47", required: false }),
-      f({ name: "LocalTax", isoId: "__Yf2tTp8EeWVrPy0StzzSg", xmlTag: "LclTax", displayName: displayName("LocalTax"), kind: "component", type: "AmountAndDirection47", required: false }),
-      f({ name: "LocalBrokerCommission", isoId: "__Yf2vTp8EeWVrPy0StzzSg", xmlTag: "LclBrkrComssn", displayName: displayName("LocalBrokerCommission"), kind: "component", type: "AmountAndDirection47", required: false }),
-      f({ name: "Other", isoId: "__Yf2xTp8EeWVrPy0StzzSg", xmlTag: "Othr", displayName: displayName("Other"), kind: "component", type: "AmountAndDirection47", required: false }),
-      f({ name: "StampDuty", isoId: "__Yf2zTp8EeWVrPy0StzzSg", xmlTag: "StmpDty", displayName: displayName("StampDuty"), kind: "component", type: "AmountAndDirection47", required: false }),
-      f({ name: "TransactionTax", isoId: "__Yf21Tp8EeWVrPy0StzzSg", xmlTag: "TxTax", displayName: displayName("TransactionTax"), kind: "component", type: "AmountAndDirection47", required: false }),
-      f({ name: "WithholdingTax", isoId: "__Yf23Tp8EeWVrPy0StzzSg", xmlTag: "WhldgTax", displayName: displayName("WithholdingTax"), kind: "component", type: "AmountAndDirection47", required: false }),
-      f({ name: "ConsumptionTax", isoId: "__Yf25Tp8EeWVrPy0StzzSg", xmlTag: "CsmptnTax", displayName: displayName("ConsumptionTax"), kind: "component", type: "AmountAndDirection47", required: false }),
-    ],
-  },
-  "Quantity83Choice": {
-    name: "Quantity83Choice",
-    isoId: "_oLJNEJZdEfCShM_qO0U4ig",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "ElectronicMoneyTokenSettlementQuantity", isoId: "_YOu-QZZeEfCShM_qO0U4ig", xmlTag: "ElctrncMnyTknSttlmQty", displayName: displayName("ElectronicMoneyTokenSettlementQuantity"), kind: "number", type: "Max30DecimalNumber", required: true }),
-      f({ name: "NetworkFeeQuantity", isoId: "_aUJLkZZeEfCShM_qO0U4ig", xmlTag: "NtwkFeeQty", displayName: displayName("NetworkFeeQuantity"), kind: "number", type: "Max30DecimalNumber", required: true }),
-    ],
-  },
-  "DigitalPaymentSettlement1": {
-    name: "DigitalPaymentSettlement1",
-    isoId: "_0BvvAJZaEfCShM_qO0U4ig",
-    kind: "component",
-    fields: [
-      f({ name: "FinancialInstrumentIdentification", isoId: "_WqsOEJZdEfCShM_qO0U4ig", xmlTag: "FinInstrmId", displayName: displayName("FinancialInstrumentIdentification"), kind: "component", type: "SecurityIdentification19", required: true }),
-      f({ name: "Quantity", isoId: "_ghFEYJZdEfCShM_qO0U4ig", xmlTag: "Qty", displayName: displayName("Quantity"), kind: "choice", type: "Quantity83Choice", required: true }),
-      f({ name: "CashSettlementSystemPlace", isoId: "_DndtYZZgEfCShM_qO0U4ig", xmlTag: "CshSttlmSysPlc", displayName: displayName("CashSettlementSystemPlace"), kind: "choice", type: "CashSettlementSystemPlace1Choice", required: false }),
-    ],
-  },
-  "PartyIdentification134Choice": {
-    name: "PartyIdentification134Choice",
-    isoId: "_JGMJ1dXZEeiN28wlpBQScw",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "AnyBIC", isoId: "_JXJ-A9XZEeiN28wlpBQScw", xmlTag: "AnyBIC", displayName: displayName("AnyBIC"), kind: "text", type: "AnyBICDec2014Identifier", required: true }),
-      f({ name: "ProprietaryIdentification", isoId: "_JXJ-BdXZEeiN28wlpBQScw", xmlTag: "PrtryId", displayName: displayName("ProprietaryIdentification"), kind: "component", type: "GenericIdentification36", required: true }),
-      f({ name: "NameAndAddress", isoId: "_JXJ-DdXZEeiN28wlpBQScw", xmlTag: "NmAndAdr", displayName: displayName("NameAndAddress"), kind: "component", type: "NameAndAddress5", required: true }),
-      f({ name: "Country", isoId: "_JXJ-FdXZEeiN28wlpBQScw", xmlTag: "Ctry", displayName: displayName("Country"), kind: "code", type: "CountryCode", required: true }),
-    ],
-  },
-  "PartyIdentification149": {
-    name: "PartyIdentification149",
-    isoId: "_I0fV0dXZEeiN28wlpBQScw",
-    kind: "component",
-    fields: [
-      f({ name: "Identification", isoId: "_JGMJ0dXZEeiN28wlpBQScw", xmlTag: "Id", displayName: displayName("Identification"), kind: "choice", type: "PartyIdentification134Choice", required: true }),
-      f({ name: "LEI", isoId: "_JGMJ09XZEeiN28wlpBQScw", xmlTag: "LEI", displayName: displayName("LEI"), kind: "text", type: "LEIIdentifier", required: false }),
-    ],
-  },
-  "OtherParties34": {
-    name: "OtherParties34",
-    isoId: "__eyZsdLCEeiN28wlpBQScw",
-    kind: "component",
-    fields: [
-      f({ name: "Investor", isoId: "__wyvtdLCEeiN28wlpBQScw", xmlTag: "Invstr", displayName: displayName("Investor"), kind: "component", type: "PartyIdentification149", required: false }),
-      f({ name: "QualifiedForeignIntermediary", isoId: "__wyvvdLCEeiN28wlpBQScw", xmlTag: "QlfdFrgnIntrmy", displayName: displayName("QualifiedForeignIntermediary"), kind: "component", type: "PartyIdentification136", required: false }),
-      f({ name: "StockExchange", isoId: "__wyvxdLCEeiN28wlpBQScw", xmlTag: "StockXchg", displayName: displayName("StockExchange"), kind: "component", type: "PartyIdentification136", required: false }),
-      f({ name: "TradeRegulator", isoId: "__wyvzdLCEeiN28wlpBQScw", xmlTag: "TradRgltr", displayName: displayName("TradeRegulator"), kind: "component", type: "PartyIdentification136", required: false }),
-      f({ name: "TripartyAgent", isoId: "__wyv1dLCEeiN28wlpBQScw", xmlTag: "TrptyAgt", displayName: displayName("TripartyAgent"), kind: "component", type: "PartyIdentification136", required: false }),
-    ],
-    rules: [
-      { name: "InvestorCountryCodeRule", isoId: "__wyvsdLCEeiN28wlpBQScw", text: "If Investor is used with a country code, then the country code specifies the nationality of the investor, for example, for the settlement of certain securities (that is, airlines, defence manufacturers) under the EU legislation." },
     ],
   },
   "SecuritiesTradeDetails152": {
@@ -852,6 +504,7 @@ export const typeDescriptors: TypeDescriptors = {
   "PercentageRate": sharedTypeDescriptors["PercentageRate"]!,
   "ActiveOrHistoricCurrencyAnd13DecimalAmount": sharedTypeDescriptors["ActiveOrHistoricCurrencyAnd13DecimalAmount"]!,
   "PriceRateOrAmount3Choice": sharedTypeDescriptors["PriceRateOrAmount3Choice"]!,
+  "Price10": sharedTypeDescriptors["Price10"]!,
   "Max3Number": sharedTypeDescriptors["Max3Number"]!,
   "ISINOct2015Identifier": sharedTypeDescriptors["ISINOct2015Identifier"]!,
   "Max16Text": sharedTypeDescriptors["Max16Text"]!,
@@ -897,6 +550,7 @@ export const typeDescriptors: TypeDescriptors = {
   "IBAN2007Identifier": sharedTypeDescriptors["IBAN2007Identifier"]!,
   "Max34Text": sharedTypeDescriptors["Max34Text"]!,
   "CashAccountIdentification9Choice": sharedTypeDescriptors["CashAccountIdentification9Choice"]!,
+  "QuantityBreakdown62": sharedTypeDescriptors["QuantityBreakdown62"]!,
   "SafekeepingPlace3Code": sharedTypeDescriptors["SafekeepingPlace3Code"]!,
   "SafekeepingPlaceTypeAndText8": sharedTypeDescriptors["SafekeepingPlaceTypeAndText8"]!,
   "CountryCode": sharedTypeDescriptors["CountryCode"]!,
@@ -907,15 +561,21 @@ export const typeDescriptors: TypeDescriptors = {
   "SafekeepingPlaceFormat41Choice": sharedTypeDescriptors["SafekeepingPlaceFormat41Choice"]!,
   "SafeKeepingPlace5": sharedTypeDescriptors["SafeKeepingPlace5"]!,
   "DateType5Code": sharedTypeDescriptors["DateType5Code"]!,
+  "DateCode18Choice": sharedTypeDescriptors["DateCode18Choice"]!,
+  "TerminationDate6Choice": sharedTypeDescriptors["TerminationDate6Choice"]!,
   "RateType1Code": sharedTypeDescriptors["RateType1Code"]!,
+  "RateType35Choice": sharedTypeDescriptors["RateType35Choice"]!,
   "LegalFramework1Code": sharedTypeDescriptors["LegalFramework1Code"]!,
+  "LegalFramework3Choice": sharedTypeDescriptors["LegalFramework3Choice"]!,
   "Max8Text": sharedTypeDescriptors["Max8Text"]!,
+  "RateName1": sharedTypeDescriptors["RateName1"]!,
   "PlusOrMinusIndicator": sharedTypeDescriptors["PlusOrMinusIndicator"]!,
   "Rate2": sharedTypeDescriptors["Rate2"]!,
   "ActiveOrHistoricCurrencyAndAmount": sharedTypeDescriptors["ActiveOrHistoricCurrencyAndAmount"]!,
   "CreditDebitCode": sharedTypeDescriptors["CreditDebitCode"]!,
   "AmountAndDirection21": sharedTypeDescriptors["AmountAndDirection21"]!,
   "SecuritiesTransactionType24Code": sharedTypeDescriptors["SecuritiesTransactionType24Code"]!,
+  "SecuritiesTransactionType45Choice": sharedTypeDescriptors["SecuritiesTransactionType45Choice"]!,
   "SettlementTransactionCondition5Code": sharedTypeDescriptors["SettlementTransactionCondition5Code"]!,
   "BeneficialOwnership4Choice": sharedTypeDescriptors["BeneficialOwnership4Choice"]!,
   "CashSettlementSystem3Code": sharedTypeDescriptors["CashSettlementSystem3Code"]!,
@@ -925,6 +585,7 @@ export const typeDescriptors: TypeDescriptors = {
   "Registration1Code": sharedTypeDescriptors["Registration1Code"]!,
   "Registration9Choice": sharedTypeDescriptors["Registration9Choice"]!,
   "RepurchaseType6Code": sharedTypeDescriptors["RepurchaseType6Code"]!,
+  "RepurchaseType13Choice": sharedTypeDescriptors["RepurchaseType13Choice"]!,
   "SecuritiesRTGS4Choice": sharedTypeDescriptors["SecuritiesRTGS4Choice"]!,
   "AddressType2Code": sharedTypeDescriptors["AddressType2Code"]!,
   "PostalAddress1": sharedTypeDescriptors["PostalAddress1"]!,
@@ -934,12 +595,23 @@ export const typeDescriptors: TypeDescriptors = {
   "IdentificationType42Choice": sharedTypeDescriptors["IdentificationType42Choice"]!,
   "AlternatePartyIdentification7": sharedTypeDescriptors["AlternatePartyIdentification7"]!,
   "PartyTextInformation1": sharedTypeDescriptors["PartyTextInformation1"]!,
+  "PartyIdentification315": sharedTypeDescriptors["PartyIdentification315"]!,
   "PartyIdentification120Choice": sharedTypeDescriptors["PartyIdentification120Choice"]!,
+  "PartyIdentificationAndAccount196": sharedTypeDescriptors["PartyIdentificationAndAccount196"]!,
+  "SettlementParties126": sharedTypeDescriptors["SettlementParties126"]!,
   "ActiveCurrencyAndAmount": sharedTypeDescriptors["ActiveCurrencyAndAmount"]!,
   "ActiveCurrencyCode": sharedTypeDescriptors["ActiveCurrencyCode"]!,
   "ForeignExchangeTerms23": sharedTypeDescriptors["ForeignExchangeTerms23"]!,
+  "AmountAndDirection88": sharedTypeDescriptors["AmountAndDirection88"]!,
+  "AmountAndDirection47": sharedTypeDescriptors["AmountAndDirection47"]!,
+  "OtherAmounts32": sharedTypeDescriptors["OtherAmounts32"]!,
+  "Quantity83Choice": sharedTypeDescriptors["Quantity83Choice"]!,
   "CashSettlementSystemPlace1Choice": sharedTypeDescriptors["CashSettlementSystemPlace1Choice"]!,
+  "DigitalPaymentSettlement1": sharedTypeDescriptors["DigitalPaymentSettlement1"]!,
+  "PartyIdentification134Choice": sharedTypeDescriptors["PartyIdentification134Choice"]!,
+  "PartyIdentification149": sharedTypeDescriptors["PartyIdentification149"]!,
   "PartyIdentification136": sharedTypeDescriptors["PartyIdentification136"]!,
+  "OtherParties34": sharedTypeDescriptors["OtherParties34"]!,
   "SupplementaryDataEnvelope1": sharedTypeDescriptors["SupplementaryDataEnvelope1"]!,
   "SupplementaryData1": sharedTypeDescriptors["SupplementaryData1"]!,
   ...ownTypeDescriptors,

@@ -1,0 +1,11 @@
+choice	memberId	memberName	text
+References64Choice	_5wfiQWpYEeipaMTLlhaKMQ	RelatedReference	Reference to a linked message that was previously received.
+References64Choice	_5wfiQ2pYEeipaMTLlhaKMQ	OtherReference	Reference to a linked proprietary message or reference of a system that was previously received.
+Status31Choice	_ym2jwZM6EemKz5EOjv82iQ	Status	Status of the transfer cancellation is accepted or sent to next party.
+Status31Choice	_ym2jw5M6EemKz5EOjv82iQ	Rejected	Status of the transfer cancellation is rejected.
+Status31Choice	_ym2jxZM6EemKz5EOjv82iQ	Complete	Status of the transfer cancellation is complete. The cancellation instruction has been accepted and processed, the cancellation is complete.
+Status31Choice	_ym2jx5M6EemKz5EOjv82iQ	Pending	Status of the transfer cancellation is pending.
+RejectedReason17Choice	_-hqnMSYuEeW_ZNn8gbfY7Q	Code	Rejected reason expressed as a code.
+RejectedReason17Choice	_-hqnMyYuEeW_ZNn8gbfY7Q	Proprietary	Rejected reason expressed as a proprietary code.
+CancellationCompleteReason1Choice	_inS8ICYwEeW_ZNn8gbfY7Q	Code	Cancelled complete reason expressed as a code.
+CancellationCompleteReason1Choice	_juHaQCYwEeW_ZNn8gbfY7Q	Proprietary	Cancelled complete reason expressed as a proprietary code.
