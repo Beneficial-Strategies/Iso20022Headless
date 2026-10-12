@@ -1,0 +1,18 @@
+choice	memberId	memberName	text
+CorporateActionEventType111Choice	_qeWO04-uEe-KeYPogYaQJw	Code	Event types expressed as a code.
+CorporateActionEventType111Choice	_qeWO24-uEe-KeYPogYaQJw	Proprietary	Event types expressed as a proprietary code.
+MarketClaimCancellationRequestStatus3Choice	_Jg5gIa8xEfCx2aBifPEdRg	CancellationCompleted	Provides status information related to an instruction cancellation request that is completed.
+MarketClaimCancellationRequestStatus3Choice	_Jg5gKa8xEfCx2aBifPEdRg	Accepted	Provides status information related to a cancellation request accepted for further processing.
+MarketClaimCancellationRequestStatus3Choice	_Jg5gMa8xEfCx2aBifPEdRg	Rejected	Provides status information related to a cancellation request rejected for further processing due to system (data) reasons.
+MarketClaimCancellationRequestStatus3Choice	_Jg5gOa8xEfCx2aBifPEdRg	PendingCancellation	Provides status information related to a pending cancellation request.
+MarketClaimCancellationRequestStatus3Choice	_Jg5gQa8xEfCx2aBifPEdRg	ProprietaryStatus	Proprietary status related to an instruction cancellation request.
+RejectedStatus38Choice	_J5pkwRUNEeuYppTwWp55gA	NoSpecifiedReason	Reason not specified.
+RejectedStatus38Choice	_J5pkyRUNEeuYppTwWp55gA	Reason	Reason for the rejected status.
+RejectedReason38Choice	_KkDMoRUNEeuYppTwWp55gA	Code	Standard code to specify the reason why the instruction/cancellation request has a rejected status.
+RejectedReason38Choice	_KkDMqRUNEeuYppTwWp55gA	Proprietary	Proprietary identification of the reason why the instruction/cancellation request has a rejected status.
+PendingCancellationStatus22Choice	_JnvH8a8xEfCx2aBifPEdRg	NoSpecifiedReason	Reason not specified.
+PendingCancellationStatus22Choice	_JnvH-a8xEfCx2aBifPEdRg	Reason	Reason for the pending cancellation status.
+PendingCancellationReason13Choice	_J1blsa8xEfCx2aBifPEdRg	Code	Standard code to specify the reason why a cancellation request sent for the related instruction is pending.
+PendingCancellationReason13Choice	_J1blua8xEfCx2aBifPEdRg	Proprietary	Proprietary identification of the reason why a cancellation request sent for the related instruction is pending.
+DateFormat58Choice	_k8fcsa09EemDtrWpq90Ckg	DateOrDateTime	Date expressed as a calendar date.
+DateFormat58Choice	_k8fcua09EemDtrWpq90Ckg	DateCode	Type of date.

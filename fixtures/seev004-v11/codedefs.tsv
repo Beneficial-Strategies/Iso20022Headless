@@ -1,0 +1,49 @@
+codeSet	code	enumName	isoId	text
+DateMode1Code	BODY	BODY	_jKunEVuSEeSmO6RkXg92Lg	Beginning of day.
+DateMode1Code	EODY	EODY	_jT6_UVuSEeSmO6RkXg92Lg	End of day.
+PartyRole3Code	GATR	Guarantor	_0BtyYfRCEeqAradXpAelDQ	Legal entity, other than the issuer, who gives a guarantee. The guarantor becomes liable in case of default.
+ProxyType3Code	CHRM	Chairman	_cpOisRrfEeyhRdHRjakS2w	Chairman of the meeting is the proxy.
+ProxyType3Code	DISC	Discretionary	_ctjCARrfEeyhRdHRjakS2w	Any type of proxy is allowed.
+ProxyType3Code	NEPR	NeutralProxy	_cyUNQRrfEeyhRdHRjakS2w	Neutral proxy nominated by the issuer to execute votes on behalf of investors at the meeting.
+ProxyType3Code	HLDR	SecurityHolder	_c2ydkRrfEeyhRdHRjakS2w	Proxy can only be a security holder.
+DeliveryPlace3Code	EMAL	Email	_OY3KYQ1fEeu_4e16J8D_UA	Card needs to be sent via e-mail.
+DeliveryPlace3Code	EMPL	Employer	_OgTPIQ1fEeu_4e16J8D_UA	Card needs to be mailed to employer's address.
+DeliveryPlace3Code	INDI	Individual	_OoL_0Q1fEeu_4e16J8D_UA	Card needs to be mailed to the individual specified in PersonDetail.
+DeliveryPlace3Code	ENTR	MeetingEntrance	_Ot174Q1fEeu_4e16J8D_UA	Card needs to be available at the entrance of the meeting.
+DeliveryPlace3Code	OADR	OtherAddress	_O2KxcQ1fEeu_4e16J8D_UA	Cards needs to be send to another specified address.
+VoteInstruction7Code	ABST	Abstain	_JWnx8fNoEeqRfth943bvEA	Active vote expressed as abstain (no opinion).
+VoteInstruction7Code	CAGS	Against	_JWnx8_NoEeqRfth943bvEA	Vote against a meeting resolution.
+VoteInstruction7Code	AMGT	AgainstManagement	_JWnx9fNoEeqRfth943bvEA	Vote instruction is in against the voting recommendations of the management.
+VoteInstruction7Code	BLNK	Blank	_JWnx9_NoEeqRfth943bvEA	Vote is cast as empty but the vote is counted.
+VoteInstruction7Code	CFOR	For	_JWnx_fNoEeqRfth943bvEA	Vote in favour of a meeting resolution.
+VoteInstruction7Code	NOAC	NoAction	_JWnx__NoEeqRfth943bvEA	Do not vote.
+VoteInstruction7Code	ONEY	OneYear	_JWnyAfNoEeqRfth943bvEA	Vote in favour for one year for "say on pay" type of resolution.
+VoteInstruction7Code	THRY	ThreeYears	_JWnyA_NoEeqRfth943bvEA	Vote in favour for three years for "say on pay" type of resolution.
+VoteInstruction7Code	TWOY	TwoYears	_JWnyBfNoEeqRfth943bvEA	Vote in favour for two years for "say on pay" type of resolution.
+VoteInstruction7Code	WTHH	Withhold	_JWnyB_NoEeqRfth943bvEA	Participant to a meeting withholds its vote for a meeting resolution. This action is usually taken in order to indicate a strong disagreement with a resolution (US market).
+VoteInstruction7Code	WMGT	WithManagement	_JWnyCfNoEeqRfth943bvEA	Vote instruction is in line with the voting recommendations of the management.
+VoteInstruction6Code	ABST	Abstain	_1fAIga4IEemG7MmivSuE5g	Active vote expressed as abstain (no opinion).
+VoteInstruction6Code	CAGS	Against	_1kgTka4IEemG7MmivSuE5g	Vote against a meeting resolution.
+VoteInstruction6Code	AMGT	AgainstManagement	_2B9roa4IEemG7MmivSuE5g	Vote instruction is in against the voting recommendations of the management.
+VoteInstruction6Code	BLNK	Blank	_2HK7wa4IEemG7MmivSuE5g	Vote is cast as empty but the vote is counted.
+VoteInstruction6Code	CHRM	Chairman	_2PDFYq4IEemG7MmivSuE5g	Rights holder gives authority to the chairman to vote on his behalf.
+VoteInstruction6Code	DISC	Discretionary	_2RbrAa4IEemG7MmivSuE5g	Voting party is assigned discretionary right to vote for one resolution.
+VoteInstruction6Code	CFOR	For	_2T9aka4IEemG7MmivSuE5g	Vote in favour of a meeting resolution.
+VoteInstruction6Code	NOAC	NoAction	_2W72Ea4IEemG7MmivSuE5g	Do not vote.
+VoteInstruction6Code	ONEY	OneYear	_2bsaQa4IEemG7MmivSuE5g	Vote in favour for one year for "say on pay" type of resolution.
+VoteInstruction6Code	THRY	ThreeYears	_2i_VEa4IEemG7MmivSuE5g	Vote in favour for three years for "say on pay" type of resolution.
+VoteInstruction6Code	TWOY	TwoYears	_2nv5Qa4IEemG7MmivSuE5g	Vote in favour for two years for "say on pay" type of resolution.
+VoteInstruction6Code	WTHH	Withhold	_2s9JYa4IEemG7MmivSuE5g	Participant to a meeting withholds its vote for a meeting resolution. This action is usually taken in order to indicate a strong disagreement with a resolution (US market).
+VoteInstruction6Code	WMGT	WithManagement	_22oCwq4IEemG7MmivSuE5g	Vote instruction is in line with the voting recommendations of the management.
+InvestorClassificationType1Code	ELIG	Eligible	_Gl9V4a5pEfCUHaCK5HWOhg	Investors eligible for participation in the event.
+InvestorClassificationType1Code	NLIG	NonEligible	_Gpa5ka5pEfCUHaCK5HWOhg	Investors not eligible for participation in the event.
+InvestorClassificationType1Code	NQIB	NonQIB	_Gspzwa5pEfCUHaCK5HWOhg	Investors not eligible for participation in the event under US regulation.
+InvestorClassificationType1Code	OTHR	Other	_Gx-Yoa5pEfCUHaCK5HWOhg	Investors that may/may not be eligible to participate in the event as described by the issuer.
+InvestorClassificationType1Code	QUIB	QIB	_G1Bsoa5pEfCUHaCK5HWOhg	Investors eligible for participation in the event as deemed qualified under US regulation.
+VotingParticipationMethod2Code	PHNV	NotVoting	_F2nkAfNqEeqRfth943bvEA	Participation to the meeting is in person but the person is not voting.
+VotingParticipationMethod3Code	MAIL	Correspondence	_lwIDgRrkEeyhRdHRjakS2w	Vote participation is via documents sent through physical post / mail.
+VotingParticipationMethod3Code	EVOT	ElectronicVoting	_l1o1oRrkEeyhRdHRjakS2w	Vote participation is through electronic means like dedicated standards messaging or web based voting applications.
+VotingParticipationMethod3Code	PHYS	InPerson	_l6s70RrkEeyhRdHRjakS2w	Vote participation is through physical attendance.
+VotingParticipationMethod3Code	PHNV	NotVoting	_l_xpERrkEeyhRdHRjakS2w	Participation to the meeting is in person but the person is not voting.
+VotingParticipationMethod3Code	PRXY	Proxy	_mFIqMRrkEeyhRdHRjakS2w	Vote participation is through a proxy person.
+VotingParticipationMethod3Code	VIRT	Virtual	_mKgSYRrkEeyhRdHRjakS2w	Vote participation is through virtual meeting attendance method like multimedia and web based video or audio conferencing.

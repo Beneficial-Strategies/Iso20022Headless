@@ -1,0 +1,19 @@
+codeSet	code	enumName	isoId	text
+PendingReason38Code	ADEA	AccountServicerDeadlineMissed	6260988c-6eed-4b9e-9599-413991bd52cc	Instruction was received after the account servicer's deadline. It will be managed as per the bilateral service agreement between the account servicer and account owner.
+PendingReason38Code	BSTR	BeforeInstructionPeriod	c142d809-44bb-43a7-a630-68aecb01f86e	Instruction is submitted before instruction start date.
+PendingReason38Code	DQCS	DisagreementOnCashAmount	8bf454c3-a169-4b2b-b5ea-6a8dde633fc6	Unrecognised or invalid instructed cash amount.
+PendingReason38Code	NTAX	InconsistentTaxRate	b8544b61-7fc3-427d-a5ac-47fb5a3900a4	Tax rate is not consistent with the documentation in place.
+PendingReason38Code	ITAX	IncorrectTaxRate	c75954a9-80de-438c-b590-29352649ea24	Tax rate provided is incorrect. It falls outside the acceptable values for that investment country.
+PendingReason38Code	IPED	InstructionPriorToEntitlementDate	3b9ce602-75e8-429d-b404-ba901f84b56d	Instruction was received prior to entitlement date.
+PendingReason38Code	MONY	InsufficientMoney	53d8540e-71d9-476c-a50c-88f16dc41a13	Insufficient money in your account.
+PendingReason38Code	IPAW	InvalidPaperwork	327eef08-a523-4d8e-8462-05a432da568d	Required paperwork is invalid, incomplete or missing.
+PendingReason38Code	LACK	LackOfSecurities	794696d3-3592-4f08-8079-538912373ea5	Insufficient financial instruments in your account.
+PendingReason38Code	LATE	MarketDeadlineMissed	246f3bc4-ecc1-473b-8785-1422508b5fb7	Instruction was received after market deadline.
+PendingReason38Code	MCER	MissingCertification	093f221a-9784-4a13-b95c-0481908bb4af	Awaiting receipt of adequate certification.
+PendingReason38Code	MTAX	MissingTaxRate	5877a6c3-9b62-4e87-a428-40a2553e3810	Tax rate is missing.
+PendingReason38Code	OTHR	Other	3abcae19-2222-4fc5-8038-913f89ccc04c	Other. See Narrative.
+PendingReason38Code	FULL	PendingBeneficiaryOwnerDetails	863cbd4f-0205-492d-a092-9bba68675643	Pending receipt of beneficiary owner details.
+PendingReason38Code	PENR	PendingReceipt	61cf4999-a932-46a8-a087-7ba26becd6ee	Instruction is pending receipt of securities, for example, from a purchase or loan.
+PendingReason38Code	DQUA	QuantityDisagreement	e0236e41-df44-47d8-b0ad-f79cb68a81b1	Quantity of financial instruments does not match.
+PendingReason38Code	SNAV	SystemNotAvailable	9bfcaac0-4bb3-4673-a2e3-752c2bb0f058	System is not available. Instruction is sent outside of business hours.
+PendingReason38Code	CERT	WrongCertificatesNumbers	a644134e-8b71-4205-8aa5-25a325d54b6f	Certificate number error.

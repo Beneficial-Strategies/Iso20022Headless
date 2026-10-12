@@ -1,0 +1,11 @@
+codeSet	code	enumName	isoId	text
+AccountOwnershipType5Code	USUF	Usufructuary	_WUASAZNiEem9mu_a5rvrBw	Person having the temporary right to use and derive income or benefit from someone else's property.
+AccountOwnershipType5Code	OWNR	Owner	_YKOz0ZNiEem9mu_a5rvrBw	A person has full ownership on the asset.
+AccountOwnershipType5Code	BOWN	BareOwner	_Yr5WcZNiEem9mu_a5rvrBw	A person has bare ownership on the asset.
+ShareholdingType1Code	BENE	BeneficialShareholding	_7_n70T6JEemPvNTzinB5Vw	Shares are held on behalf of the beneficial owner. |Usage: this type should be used to report assets the intermediary holds on behalf of a final beneficial owner.
+ShareholdingType1Code	NOMI	NomineeShareholding	_8LX40j6JEemPvNTzinB5Vw	Shares are held on behalf of an intermediary.|Usage: this type should be used to report assets the intermediary holds on behalf of another intermediary.
+ShareholdingType1Code	OOAC	OnOwnAccount	_8Nc8cT6JEemPvNTzinB5Vw	Shares are held by the responding intermediary for its own account.|Usage: this type should only be used to report the intermediary’s own assets if and when the intermediary comingles them with the one of their clients.  Within jurisdictions where commingling is not allowed, this type should not be used.
+ShareholdingType1Code	UKWN	Unknown	_8Uc8UT6JEemPvNTzinB5Vw	Shareholding type is unknown.|Usage: this type should be used when the intermediary’s client hasn’t been classified.
+PartyRole2Code	DIST	Distributor	_nbvCcY6VEemzmeK8_tPygg	Party that act as an wholesaler of funds.
+PartyRole2Code	LGRD	LegalGuardian	_nzPjgo6VEemzmeK8_tPygg	Party that has been appointed by a legal authority to act on behalf of a person judged to be incapacitated.
+PartyRole2Code	DECM	DecisionMaker	_pQEt4o6VEemzmeK8_tPygg	Party that is authorised to take investment decisions on behalf of the shareholder.

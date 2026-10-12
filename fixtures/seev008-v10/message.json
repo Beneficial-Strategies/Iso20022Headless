@@ -1,0 +1,91 @@
+{
+  "identifier": "seev.008.001.10",
+  "name": "MeetingResultDisseminationV10",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.008.001.10",
+  "bodyTag": "MtgRsltDssmntn",
+  "out": "seev008",
+  "isoId": "_UbvJIX_5Ee-h086v0qPiyQ",
+  "definition": "Scope|The MeetingResultDissemination message is sent by an issuer, its agent or an intermediary to another intermediary, a party holding the right to vote, a registered security holder, or to a beneficial holder to provide information on the voting results of a shareholders meeting.|Usage|The MeetingResultDissemination message is used to provide the vote results per resolution. It may also provide information on the level of participation.|This message is also used to notify an update or amendment to a previously sent MeetingResultDissemination message.|This message definition is intended for use with the Business Application Header (BAH).",
+  "blocks": [
+    {
+      "name": "Pagination",
+      "isoId": "_UbvJK3_5Ee-h086v0qPiyQ",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "MeetingResultDisseminationIdentification",
+      "isoId": "_UbvJLX_5Ee-h086v0qPiyQ",
+      "xmlTag": "MtgRsltDssmntnId",
+      "type": "Max35Text",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "MeetingResultsDisseminationType",
+      "isoId": "_UbvJL3_5Ee-h086v0qPiyQ",
+      "xmlTag": "MtgRsltsDssmntnTp",
+      "type": "NotificationType2Code",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "PreviousMeetingResultsDisseminationIdentification",
+      "isoId": "_UbvJN3_5Ee-h086v0qPiyQ",
+      "xmlTag": "PrvsMtgRsltsDssmntnId",
+      "type": "Max35Text",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "MeetingReference",
+      "isoId": "_UbvJOX_5Ee-h086v0qPiyQ",
+      "xmlTag": "MtgRef",
+      "type": "MeetingReference10",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Security",
+      "isoId": "_UbvJO3_5Ee-h086v0qPiyQ",
+      "xmlTag": "Scty",
+      "type": "SecurityPosition22",
+      "min": 1,
+      "max": 200
+    },
+    {
+      "name": "VoteResult",
+      "isoId": "_UbvJPX_5Ee-h086v0qPiyQ",
+      "xmlTag": "VoteRslt",
+      "type": "Vote20",
+      "min": 1,
+      "max": 1000
+    },
+    {
+      "name": "Participation",
+      "isoId": "_UbvJP3_5Ee-h086v0qPiyQ",
+      "xmlTag": "Prtcptn",
+      "type": "Participation6",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AdditionalInformation",
+      "isoId": "_UbvJQX_5Ee-h086v0qPiyQ",
+      "xmlTag": "AddtlInf",
+      "type": "CommunicationAddress11",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_UbvJQ3_5Ee-h086v0qPiyQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

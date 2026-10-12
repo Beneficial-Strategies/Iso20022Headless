@@ -1,0 +1,2 @@
+name	isoId	xsiType	pattern	minLength	maxLength	totalDigits	fractionDigits	minInclusive	maxInclusive	other
+RestrictedFINZMax8000Text	_XZcQwtp-Ed-ak6NoX_4Aeg_-1877082870	Text	[0-9a-zA-Z!"%&\*;<> \.,\(\)\n\r/='\+:\?@#\{\-_]{1,8000}	1	8000					

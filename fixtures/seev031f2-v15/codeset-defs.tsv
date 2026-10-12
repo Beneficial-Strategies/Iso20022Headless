@@ -1,0 +1,8 @@
+codeSet	isoId	text
+FractionDispositionType9Code	_H0tJkGSCEeKFfdK0gKYFLQ	Indicates that fractional value should be retained; no rounding.
+EventSequenceType1Code	_WabLMLXIEeiTob_PrFFUxA	Specifies whether the event is an interim or a final event in a series of successive events.
+AdditionalBusinessProcess9Code	_WX4ycReoEeyroI8qKgB7Mg	Specifies the additional business process linked to a corporate action event.
+ElectionMovementType2Code	_ag-CYNp-Ed-ak6NoX_4Aeg_1842520223	Specifies the effect on the holdings of electing a Corporate Action option.
+BidRangeType1Code	_EsjOkO3NEeqc-LCjwLsUVg	Types of acceptable bid range values.
+ProrationBelowMinimumQuantity1Code	_MQkg4IDBEe-eGe8fbP3Zug	Specifies the type of proration when below the minimum quantity to instruct.
+Payment2Code	_-qqGELXOEeiTob_PrFFUxA	Indicates whether the cash payment occurs or will occur in advance of receipt of proceeds from the issuer and based on a contractual agreement established with the account servicer or upon receipt of proceeds from the issuer.

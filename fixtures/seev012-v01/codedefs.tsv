@@ -1,0 +1,19 @@
+codeSet	code	enumName	isoId	text
+ElectionType1Code	NEWM	NewElection	_ag-CaNp-Ed-ak6NoX_4Aeg_-1543884834	New election advice.
+ElectionType1Code	CHAN	OptionChange	_ahHzYNp-Ed-ak6NoX_4Aeg_-1543884803	Election advice which is the result of an option change.
+SecuritiesBalanceType10Code	AVLB	Available	_Y_N7wtp-Ed-ak6NoX_4Aeg_-2001716249	Balance of money or securities that is at the disposal of the account owner on the date specified.
+SecuritiesBalanceType10Code	REST	Restricted	_Y_N7w9p-Ed-ak6NoX_4Aeg_-2001716229	Balance of cash that may only be used under certain conditions.||Balance type is used to block securities/cash in the client account e.g., in relation to elections relating to certain corporate actions. The holding is under the direct control of the system paying agent, who us the only one who can transfer securities out of this balance type.|Also known as the "escrow balance" or "sequestered balance".
+SecuritiesBalanceType10Code	RDIS	ReservedForDistribution	_Y_N7xNp-Ed-ak6NoX_4Aeg_-2001716228	Balance of financial instruments that are reserved for the distribution of the proceeds.
+SecuritiesBalanceType10Code	RREM	ReservedForRemoval	_Y_N7xdp-Ed-ak6NoX_4Aeg_-2001715950	Balance of securities which are reserved temporarily in the SPA account before they will effectively be exchanged.
+PersonIdentificationType3Code	ARNU	AlienRegistrationNumber	_aGvkiNp-Ed-ak6NoX_4Aeg_266470202	Number assigned by a government agency to identify foreign nationals.
+PersonIdentificationType3Code	CCPT	PassportNumber	_aGvkidp-Ed-ak6NoX_4Aeg_266470231	Number assigned by a passport authority to a passport.
+PersonIdentificationType3Code	EMID	EmployerIdentificationNumber	_aG5VgNp-Ed-ak6NoX_4Aeg_266470232	Number assigned to an employer by a registration authority.
+PersonIdentificationType3Code	DRLC	DriversLicenseNumber	_aG5Vgdp-Ed-ak6NoX_4Aeg_266470233	Number assigned by a license authority to a driver's license.
+PersonIdentificationType3Code	FINN	ForeignInvestmentIdentityNumber	_aG5Vgtp-Ed-ak6NoX_4Aeg_266470261	Number assigned to a foreign investor (other than the alien number).
+PersonIdentificationType3Code	TXID	TaxIdentificationNumber	_aG5Vg9p-Ed-ak6NoX_4Aeg_266470262	Number assigned by a tax authority to an entity.
+BeneficiaryCertificationType1Code	ACCI	AccreditedInvestor	_bdxB09p-Ed-ak6NoX_4Aeg_609609119	The holder of the security has to irrevocably certify that it is an Accredited Investor as defined in US Securities and Exchange Commission Regulation D.
+BeneficiaryCertificationType1Code	DOMI	DomicileCountry	_bdxB1Np-Ed-ak6NoX_4Aeg_609609150	The holder of the security has to certify his domicile.
+BeneficiaryCertificationType1Code	FULL	FullBeneficialOwnerBreakdown	_bdxB1dp-Ed-ak6NoX_4Aeg_609609151	The holder of the security has to provide his beneficial owner details for disclosure/instruction purpose.
+BeneficiaryCertificationType1Code	QIBB	QIBCertification	_bdxB1tp-Ed-ak6NoX_4Aeg_609609160	The holder of the security has to irrevocably certify that it is a Qualified Institutional Buyer as defined in US Securities and Exchange Commission Rule 144A.
+BeneficiaryCertificationType1Code	TRBD	TaxRateBreakdown	_bdxB19p-Ed-ak6NoX_4Aeg_609609180	The holder of the security has to provide basic details on nominals and associated tax rate to be used by the account servicer.
+BeneficiaryCertificationType1Code	NCOM	NonCompany	_bdxB2Np-Ed-ak6NoX_4Aeg_609609181	The holder of the security has to certify he is an Non-Company related person.

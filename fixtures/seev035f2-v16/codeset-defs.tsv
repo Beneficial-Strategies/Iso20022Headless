@@ -1,0 +1,9 @@
+codeSet	isoId	text
+CorporateActionPreliminaryAdviceType1Code	_bRs7x9p-Ed-ak6NoX_4Aeg_-934341596	Type of movement preliminary advice.
+CorporateActionMovementPreliminaryAdviceFunction1Code	_IQ0_YDQUEe2o-K1dwNg8Gg	Specifies whether the message is a final eligible balance and entitlements message or a preliminary advice of payment message.
+CorporateActionReversalReason3Code	_XAJKUYCzEe-3UrLQHGsjgQ	Specifies the reason why a reversal of payment is taking place in corporate action processing.
+CorporateActionEventType36Code	_jQ9BMYCeEe-3UrLQHGsjgQ	Specifies the corporate action event type.
+AdditionalBusinessProcess10Code	_DyGCYRewEeyroI8qKgB7Mg	Specifies the additional business process linked to a corporate action event.
+OfferType5Code	_eKbfEISKEe-AUMVyVXihZg	Specifies the conditions that apply to the offer.
+OptionFeatures13Code	_bQETcWHGEe6yt_d72zQZeQ	Specifies the features that may apply to a corporate action option.
+NonEligibleProceedsIndicator1Code	_aNcpdtp-Ed-ak6NoX_4Aeg_1631723636	Specifies information regarding the non eligibility of the outturn resources.

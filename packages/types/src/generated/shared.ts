@@ -372,6 +372,45 @@ export interface ATMTotals4 {
   ATMCurrentNumber?: string;
 }
 
+export interface GenericIdentification30 {
+  Identification: string;
+  Issuer: string;
+  SchemeName?: string;
+}
+
+export type AcceptedReason10Choice =
+  | { Code: "NSTP" | "OTHR" }
+  | { Proprietary: GenericIdentification30 };
+
+export interface AcceptedStatusReason9 {
+  ReasonCode: AcceptedReason10Choice;
+  AdditionalReasonInformation?: string;
+}
+
+export type AcceptedStatus8Choice =
+  | { NoSpecifiedReason: "NORE" }
+  | { Reason: AcceptedStatusReason9 };
+
+export interface BlockChainAddressWallet3 {
+  Identification: string;
+  Type?: GenericIdentification30;
+  Name?: string;
+}
+
+export type CashAccountIdentification9Choice =
+  | { IBAN: string }
+  | { BlockChainCashWallet: BlockChainAddressWallet3 }
+  | { Proprietary: string };
+
+export type CashAccountIdentification5Choice =
+  | { IBAN: string }
+  | { Proprietary: string };
+
+export type Account10Choice =
+  | { CashAccount: CashAccountIdentification9Choice }
+  | { ChargesAccount: CashAccountIdentification5Choice }
+  | { TaxAccount: CashAccountIdentification5Choice };
+
 export interface GenericIdentification1 {
   Identification: string;
   SchemeName?: string;
@@ -520,16 +559,18 @@ export interface AccountForAction1 {
   Currency: string;
 }
 
+export interface AccountIdentification10 {
+  IdentificationCode: "GENR";
+}
+
+export type AccountIdentification2Choice =
+  | { CashAccountIdentification: string }
+  | { SecuritiesAccountIdentification: string };
+
 export interface AccountIdentification3 {
   Identification: AccountIdentification1;
   Issuer: string;
   Information: string;
-}
-
-export interface GenericIdentification30 {
-  Identification: string;
-  Issuer: string;
-  SchemeName?: string;
 }
 
 export interface SecuritiesAccount19 {
@@ -541,6 +582,49 @@ export interface SecuritiesAccount19 {
 export type AccountIdentification38Choice =
   | { SecuritiesAccountIdentification: SecuritiesAccount19 }
   | { CashAccountIdentification: AccountIdentification4Choice };
+
+export type PartyIdentification127Choice =
+  | { AnyBIC: string }
+  | { ProprietaryIdentification: GenericIdentification36 };
+
+export interface SafekeepingPlaceTypeAndText6 {
+  SafekeepingPlaceType: "SHHE" | "ALLP";
+  Identification?: string;
+}
+
+export interface SafekeepingPlaceTypeAndIdentification1 {
+  SafekeepingPlaceType: "CUST" | "ICSD" | "NCSD" | "SHHE";
+  Identification: string;
+}
+
+export interface GenericIdentification78 {
+  Type: GenericIdentification30;
+  Identification?: string;
+}
+
+export type SafekeepingPlaceFormat42Choice =
+  | { Identification: SafekeepingPlaceTypeAndText6 }
+  | { Country: string }
+  | { DigitalLedgerIdentification: string }
+  | { TypeAndIdentification: SafekeepingPlaceTypeAndIdentification1 }
+  | { Proprietary: GenericIdentification78 };
+
+export interface AccountIdentification69 {
+  SafekeepingAccount?: string;
+  BlockChainAddressOrWallet?: string;
+  AccountOwner?: PartyIdentification127Choice;
+  SafekeepingPlace?: SafekeepingPlaceFormat42Choice;
+}
+
+export interface AccountIdentification70 {
+  SafekeepingAccount: string;
+  AccountOwner?: PartyIdentification127Choice;
+  SafekeepingPlace?: SafekeepingPlaceFormat42Choice;
+}
+
+export type AccountIdentification73Choice =
+  | { ForAllAccounts: AccountIdentification10 }
+  | { AccountsList: AccountIdentification69 };
 
 export interface AccountIdentificationAndName5 {
   Identification: AccountIdentification4Choice;
@@ -1453,10 +1537,26 @@ export interface AlternatePartyIdentification7 {
   AlternateIdentification: string;
 }
 
+export type IdentificationType44Choice =
+  | { Code: "ARNU" | "CCPT" | "CHTY" | "CORP" | "DRLC" | "FIIN" | "TXID" }
+  | { Proprietary: GenericIdentification47 };
+
+export interface AlternatePartyIdentification9 {
+  IdentificationType: IdentificationType44Choice;
+  Country: string;
+  AlternateIdentification: string;
+}
+
 export interface AlternateSecurityIdentification1 {
   Identification: string;
   DomesticIdentificationSource: string;
   ProprietaryIdentificationSource: string;
+}
+
+export interface AlternateSecurityIdentification3 {
+  Identification: string;
+  DomesticIdentificationSource?: string;
+  ProprietaryIdentificationSource?: string;
 }
 
 export type IdentificationSource1Choice =
@@ -1772,6 +1872,11 @@ export interface AmountAndCurrencyExchange4 {
   ProprietaryAmount?: Array<AmountAndCurrencyExchangeDetails6>;
 }
 
+export interface AmountAndDirection110 {
+  Amount: ActiveCurrencyAndAmount;
+  CreditDebitIndicator: "CRDT" | "DBIT";
+}
+
 export interface RestrictedFINActiveOrHistoricCurrencyAndAmount {
   /** Currency code, serialized as the Ccy attribute. */
   Ccy: string;
@@ -1852,6 +1957,32 @@ export interface AmountAndQuantityBreakdown1 {
   CashSubBalanceType?: GenericIdentification30;
 }
 
+export interface AmountAndQuantityRatio4 {
+  Amount: ActiveCurrencyAnd13DecimalAmount;
+  Quantity: string;
+}
+
+export interface RestrictedFINActiveCurrencyAnd13DecimalAmount {
+  /** Currency code, serialized as the Ccy attribute. */
+  Ccy: string;
+  Value: string;
+}
+
+export interface AmountAndQuantityRatio5 {
+  Amount: RestrictedFINActiveCurrencyAnd13DecimalAmount;
+  Quantity: string;
+}
+
+export interface AmountAndRateStatus1 {
+  Amount: ActiveCurrencyAnd13DecimalAmount;
+  RateStatus: "ACTU" | "INDI";
+}
+
+export interface AmountAndRateStatus2 {
+  Amount: RestrictedFINActiveCurrencyAnd13DecimalAmount;
+  RateStatus: "ACTU" | "INDI";
+}
+
 export interface AmountModification1 {
   ModificationCode?: "NOCH" | "MODI" | "DELE" | "ADDD";
   Amount: string;
@@ -1864,6 +1995,82 @@ export type AmountOrRate1Choice =
 export type AmountOrRate3Choice =
   | { Amount: ActiveCurrencyAnd13DecimalAmount }
   | { Rate: string };
+
+export interface AmountPrice2 {
+  AmountPriceType: "ACTU";
+  PriceValue: ActiveCurrencyAnd13DecimalAmount;
+}
+
+export interface AmountPrice3 {
+  AmountPriceType: "ACTU" | "DISC" | "PLOT" | "PREM";
+  PriceValue: ActiveCurrencyAnd13DecimalAmount;
+}
+
+export interface AmountPrice4 {
+  AmountPriceType: "ACTU";
+  PriceValue: RestrictedFINActiveCurrencyAnd13DecimalAmount;
+}
+
+export interface AmountPrice5 {
+  AmountPriceType: "ACTU" | "DISC" | "PLOT" | "PREM";
+  PriceValue: RestrictedFINActiveCurrencyAnd13DecimalAmount;
+}
+
+export interface AmountPrice6 {
+  AmountPriceType: "ACTU" | "PLOT";
+  PriceValue: ActiveCurrencyAnd13DecimalAmount;
+}
+
+export interface AmountPrice7 {
+  AmountPriceType: "ACTU" | "PLOT";
+  PriceValue: RestrictedFINActiveCurrencyAnd13DecimalAmount;
+}
+
+export interface AmountPricePerAmount2 {
+  AmountPriceType: "ACTU" | "DISC" | "PLOT" | "PREM";
+  PriceValue: ActiveCurrencyAnd13DecimalAmount;
+  Amount: ActiveCurrencyAnd13DecimalAmount;
+}
+
+export interface AmountPricePerAmount3 {
+  AmountPriceType: "ACTU" | "DISC" | "PLOT" | "PREM";
+  PriceValue: RestrictedFINActiveCurrencyAnd13DecimalAmount;
+  Amount: RestrictedFINActiveCurrencyAnd13DecimalAmount;
+}
+
+export type FinancialInstrumentQuantity33Choice =
+  | { Unit: string }
+  | { FaceAmount: string }
+  | { AmortisedValue: string }
+  | { DigitalTokenUnit: string };
+
+export interface AmountPricePerFinancialInstrumentQuantity10 {
+  AmountPriceType: "ACTU" | "DISC" | "PLOT" | "PREM";
+  PriceValue: ActiveCurrencyAnd13DecimalAmount;
+  FinancialInstrumentQuantity: FinancialInstrumentQuantity33Choice;
+}
+
+export type FinancialInstrumentQuantity36Choice =
+  | { Unit: string }
+  | { FaceAmount: string }
+  | { AmortisedValue: string }
+  | { DigitalTokenUnit: string };
+
+export interface AmountPricePerFinancialInstrumentQuantity11 {
+  AmountPriceType: "ACTU" | "DISC" | "PLOT" | "PREM";
+  PriceValue: RestrictedFINActiveCurrencyAnd13DecimalAmount;
+  FinancialInstrumentQuantity: FinancialInstrumentQuantity36Choice;
+}
+
+export interface AmountToAmountRatio2 {
+  Amount1: ActiveCurrencyAnd13DecimalAmount;
+  Amount2: ActiveCurrencyAnd13DecimalAmount;
+}
+
+export interface AmountToAmountRatio3 {
+  Amount1: RestrictedFINActiveCurrencyAnd13DecimalAmount;
+  Amount2: RestrictedFINActiveCurrencyAnd13DecimalAmount;
+}
 
 export interface EquivalentAmount2 {
   Amount: ActiveOrHistoricCurrencyAndAmount;
@@ -1924,12 +2131,6 @@ export interface Authorisation2 {
   MaximumAmountByBulkSubmission?: FixedAmountOrUnlimited1Choice;
 }
 
-export type FinancialInstrumentQuantity33Choice =
-  | { Unit: string }
-  | { FaceAmount: string }
-  | { AmortisedValue: string }
-  | { DigitalTokenUnit: string };
-
 export interface OriginalAndCurrentQuantities1 {
   FaceAmount: string;
   AmortisedValue: string;
@@ -1959,12 +2160,6 @@ export interface Balance17 {
   ShortLongIndicator: "SHOR" | "LONG";
   Quantity: BalanceQuantity13Choice;
 }
-
-export type FinancialInstrumentQuantity36Choice =
-  | { Unit: string }
-  | { FaceAmount: string }
-  | { AmortisedValue: string }
-  | { DigitalTokenUnit: string };
 
 export interface OriginalAndCurrentQuantities4 {
   FaceAmount: string;
@@ -2003,6 +2198,72 @@ export interface BalanceAmounts3 {
   EligibleCollateralValue?: AmountAndDirection6;
   AccruedInterestAmount?: AmountAndDirection6;
 }
+
+export interface ProprietaryQuantity8 {
+  Quantity: string;
+  QuantityType: string;
+  Issuer: string;
+  SchemeName?: string;
+}
+
+export type Quantity48Choice =
+  | { Quantity: FinancialInstrumentQuantity33Choice }
+  | { ProprietaryQuantity: ProprietaryQuantity8 };
+
+export interface SignedQuantityFormat11 {
+  ShortLongPosition: "SHOR" | "LONG";
+  QuantityChoice: Quantity48Choice;
+}
+
+export interface SignedQuantityFormat10 {
+  ShortLongPosition: "SHOR" | "LONG";
+  Quantity: FinancialInstrumentQuantity33Choice;
+}
+
+export type BalanceFormat11Choice =
+  | { Balance: SignedQuantityFormat11 }
+  | { EligibleBalance: SignedQuantityFormat10 }
+  | { NotEligibleBalance: SignedQuantityFormat10 };
+
+export type BalanceFormat12Choice =
+  | { Balance: SignedQuantityFormat11 }
+  | { EligibleBalance: SignedQuantityFormat10 }
+  | { NotEligibleBalance: SignedQuantityFormat10 }
+  | { FullPeriodUnits: SignedQuantityFormat10 }
+  | { PartWayPeriodUnits: SignedQuantityFormat10 };
+
+export interface ProprietaryQuantity9 {
+  Quantity: string;
+  QuantityType: string;
+  Issuer: string;
+  SchemeName?: string;
+}
+
+export type Quantity53Choice =
+  | { Quantity: FinancialInstrumentQuantity36Choice }
+  | { ProprietaryQuantity: ProprietaryQuantity9 };
+
+export interface SignedQuantityFormat12 {
+  ShortLongPosition: "SHOR" | "LONG";
+  QuantityChoice: Quantity53Choice;
+}
+
+export interface SignedQuantityFormat13 {
+  ShortLongPosition: "SHOR" | "LONG";
+  Quantity: FinancialInstrumentQuantity36Choice;
+}
+
+export type BalanceFormat14Choice =
+  | { Balance: SignedQuantityFormat12 }
+  | { EligibleBalance: SignedQuantityFormat13 }
+  | { NotEligibleBalance: SignedQuantityFormat13 };
+
+export type BalanceFormat16Choice =
+  | { Balance: SignedQuantityFormat12 }
+  | { EligibleBalance: SignedQuantityFormat13 }
+  | { NotEligibleBalance: SignedQuantityFormat13 }
+  | { FullPeriodUnits: SignedQuantityFormat13 }
+  | { PartWayPeriodUnits: SignedQuantityFormat13 };
 
 export type BalanceQuantity14Choice =
   | { Quantity: FinancialInstrumentQuantity33Choice }
@@ -2418,6 +2679,49 @@ export interface BatchInformation2 {
   CreditDebitIndicator?: "CRDT" | "DBIT";
 }
 
+export interface GenericIdentification13 {
+  Identification: string;
+  SchemeName?: string;
+  Issuer: string;
+}
+
+export type PersonIdentificationType3Choice =
+  | { Code: "ARNU" | "CCPT" | "EMID" | "DRLC" | "FINN" | "TXID" }
+  | { Proprietary: GenericIdentification13 };
+
+export interface GenericIdentification16 {
+  Identification: string;
+  IdentificationType: PersonIdentificationType3Choice;
+  Issuer?: string;
+}
+
+export type BeneficiaryCertificationType1FormatChoice =
+  | { Code: "ACCI" | "DOMI" | "FULL" | "QIBB" | "TRBD" | "NCOM" }
+  | { Proprietary: GenericIdentification13 };
+
+export interface SecurityIdentification7 {
+  ISIN?: string;
+  OtherIdentification?: AlternateSecurityIdentification3;
+  Description?: string;
+}
+
+export type UnitOrFaceAmount1Choice =
+  | { Unit: string }
+  | { FaceAmount: ActiveCurrencyAndAmount };
+
+export interface BeneficialOwner1 {
+  BeneficialOwnerIdentification: PartyIdentification2Choice;
+  AdditionalIdentification?: GenericIdentification16;
+  Nationality?: string;
+  DomicileCountry?: string;
+  NonDomicileCountry?: string;
+  CertificationIndicator?: 'true' | 'false';
+  CertificationType?: BeneficiaryCertificationType1FormatChoice;
+  DeclarationDetails?: string;
+  SecurityIdentification?: SecurityIdentification7;
+  ElectedSecuritiesQuantity: UnitOrFaceAmount1Choice;
+}
+
 export type BeneficialOwnership4Choice =
   | { Indicator: 'true' | 'false' }
   | { Proprietary: GenericIdentification30 };
@@ -2425,6 +2729,10 @@ export type BeneficialOwnership4Choice =
 export type BeneficialOwnership5Choice =
   | { Indicator: 'true' | 'false' }
   | { Proprietary: GenericIdentification47 };
+
+export type BeneficiaryCertificationType13Choice =
+  | { Code: "ACCI" | "DOMI" | "NDOM" | "FULL" | "NCOM" | "QIBB" | "TRBD" | "PABD" | "FRAC" | "PAPW" | "DIOR" }
+  | { Proprietary: GenericIdentification30 };
 
 export type PurposeCode7Choice =
   | { Code: "MARG" | "SHOR" | "ABRD" | "CEND" | "DVPA" | "PHYS" }
@@ -2448,15 +2756,15 @@ export interface BlockChainAddressWallet10 {
   Designation?: string;
 }
 
-export interface BlockChainAddressWallet2 {
+export interface BlockChainAddressWallet11 {
   Identification: string;
-  Type?: PurposeCode7Choice;
+  Type?: GenericIdentification47;
   Name?: string;
 }
 
-export interface BlockChainAddressWallet3 {
+export interface BlockChainAddressWallet2 {
   Identification: string;
-  Type?: GenericIdentification30;
+  Type?: PurposeCode7Choice;
   Name?: string;
 }
 
@@ -2504,6 +2812,40 @@ export interface BlockedStatusReason2 {
 export type BlockedStatusReason2Choice =
   | { NoSpecifiedReason: "NORE" }
   | { Reason: BlockedStatusReason2 };
+
+export type DateAndDateTime2Choice =
+  | { Date: string }
+  | { DateTime: string };
+
+export type DateCode19Choice =
+  | { Code: "UKWN" | "ONGO" }
+  | { Proprietary: GenericIdentification30 };
+
+export type DateFormat43Choice =
+  | { Date: DateAndDateTime2Choice }
+  | { DateCode: DateCode19Choice };
+
+export interface BorrowerLendingDeadline5 {
+  StockLendingDeadline: DateFormat43Choice;
+  Borrower: PartyIdentification127Choice;
+}
+
+export type DateCode22Choice =
+  | { Code: "UKWN" | "ONGO" }
+  | { Proprietary: GenericIdentification47 };
+
+export type DateFormat49Choice =
+  | { Date: DateAndDateTime2Choice }
+  | { DateCode: DateCode22Choice };
+
+export type PartyIdentification136Choice =
+  | { AnyBIC: string }
+  | { ProprietaryIdentification: GenericIdentification84 };
+
+export interface BorrowerLendingDeadline6 {
+  StockLendingDeadline: DateFormat49Choice;
+  Borrower: PartyIdentification136Choice;
+}
 
 export interface FinancialInstrumentQuantity1 {
   Unit: string;
@@ -2696,6 +3038,36 @@ export type CancellationStatus25Choice =
   | { NoSpecifiedReason: "NORE" }
   | { Reason: CancellationReason24 };
 
+export type CancelledReason8Choice =
+  | { Code: "CANI" | "CANO" | "CANS" | "CSUB" | "OTHR" }
+  | { Proprietary: GenericIdentification30 };
+
+export type CancelledReason9Choice =
+  | { Code: "CANI" | "OTHR" }
+  | { Proprietary: GenericIdentification30 };
+
+export interface CancelledStatusReason12 {
+  ReasonCode: CancelledReason9Choice;
+  AdditionalReasonInformation?: string;
+}
+
+export type CancelledStatus11Choice =
+  | { NoSpecifiedReason: "NORE" }
+  | { Reason: CancelledStatusReason12 };
+
+export interface CancelledStatusReason11 {
+  ReasonCode: CancelledReason8Choice;
+  AdditionalReasonInformation?: string;
+}
+
+export type CancelledStatus12Choice =
+  | { NoSpecifiedReason: "NORE" }
+  | { Reason: CancelledStatusReason11 };
+
+export type CapitalGainFormat3Choice =
+  | { Code: "EUSI" | "EUSO" | "UKWN" }
+  | { Proprietary: GenericIdentification30 };
+
 export interface CardSequenceNumberRange1 {
   FirstTransaction?: string;
   LastTransaction?: string;
@@ -2862,6 +3234,25 @@ export interface CaseAssignment6 {
   CreationDateTime: string;
 }
 
+export type CashAccountIdentification1Choice =
+  | { IBAN: string }
+  | { BBAN: string }
+  | { UPIC: string }
+  | { DomesticAccount: SimpleIdentificationInformation };
+
+export interface CashAccount17 {
+  AccountIdentification: CashAccountIdentification1Choice;
+  PaymentCurrency: string;
+  AccountOwnerIdentification?: PartyIdentification2Choice;
+  CorrespondentBankIdentification: string;
+}
+
+export interface CashAccount19 {
+  CreditDebitIndicator: "CRDT" | "DBIT";
+  AccountOwnerIdentification?: PartyIdentification2Choice;
+  AccountIdentification: AccountIdentification2Choice;
+}
+
 export interface CashAccount38 {
   Identification: AccountIdentification4Choice;
   Type?: CashAccountType2Choice;
@@ -2880,7 +3271,7 @@ export interface CashAccount43 {
   Servicer?: BranchAndFinancialInstitutionIdentification8;
 }
 
-export type CashAccountIdentification5Choice =
+export type CashAccountIdentification6Choice =
   | { IBAN: string }
   | { Proprietary: string };
 
@@ -2923,10 +3314,6 @@ export interface CashBalance14 {
 export type CreditLineType1Choice =
   | { Code: string }
   | { Proprietary: string };
-
-export type DateAndDateTime2Choice =
-  | { Date: string }
-  | { DateTime: string };
 
 export interface CreditLine3 {
   Included: 'true' | 'false';
@@ -2997,12 +3384,49 @@ export interface CashInOutForecast7 {
   Amount: ActiveOrHistoricCurrencyAndAmount;
 }
 
+export interface CashMovement2 {
+  Amount: ActiveCurrencyAndAmount;
+  AccountDetails: Array<CashAccount19>;
+}
+
+export type RateType42Choice =
+  | { Code: "BWIT" | "FTCA" | "NRAT" }
+  | { Proprietary: GenericIdentification30 };
+
+export interface RateTypeAndPercentageRate12 {
+  RateType: RateType42Choice;
+  Rate: string;
+}
+
+export type RateAndAmountFormat55Choice =
+  | { Rate: string }
+  | { Amount: ActiveCurrencyAnd13DecimalAmount }
+  | { RateTypeAndRate: RateTypeAndPercentageRate12 };
+
+export interface CashOption106 {
+  CreditDebitIndicator: "CRDT" | "DBIT";
+  CashAccountIdentification?: CashAccountIdentification9Choice;
+  GrossCashAmount?: ActiveCurrencyAndAmount;
+  NetCashAmount?: ActiveCurrencyAndAmount;
+  EntitledAmount: ActiveCurrencyAndAmount;
+  WithholdingTaxRate?: Array<RateAndAmountFormat55Choice>;
+  WithholdingTaxAmount?: ActiveCurrencyAndAmount;
+  EarliestPaymentDate?: DateAndDateTime2Choice;
+  PaymentDate: DateFormat43Choice;
+}
+
 export interface CashOutForecast6 {
   CashSettlementDate: string;
   SubTotalAmount?: ActiveOrHistoricCurrencyAndAmount;
   SubTotalUnitsNumber?: FinancialInstrumentQuantity1;
   ExceptionalCashFlowIndicator?: 'true' | 'false';
   AdditionalBalance?: FundBalance1;
+}
+
+export interface CashProceeds1 {
+  PostingAmount: ActiveCurrencyAndAmount;
+  ReconciliationDetails?: string;
+  AccountDetails: Array<CashAccount19>;
 }
 
 export interface PaymentCard29 {
@@ -3086,6 +3510,10 @@ export type CentralCounterPartyEligibility5Choice =
   | { Indicator: 'true' | 'false' }
   | { Proprietary: GenericIdentification47 };
 
+export type CertificationTypeFormat3Choice =
+  | { Code: "ELEC" | "PHYS" }
+  | { Proprietary: GenericIdentification30 };
+
 export type Channel2Choice =
   | { Code: "EMAL" | "FAXI" | "POST" | "PHON" | "FILE" | "ONLI" }
   | { Proprietary: string };
@@ -3150,15 +3578,14 @@ export type ClearingSystemIdentification3Choice =
   | { Code: string }
   | { Proprietary: string };
 
-export interface GenericIdentification13 {
-  Identification: string;
-  SchemeName?: string;
-  Issuer: string;
-}
-
 export type CodeOrProprietary1Choice =
   | { Code: string }
   | { Proprietary: GenericIdentification13 };
+
+export interface CommunicationAddress11 {
+  EmailAddress?: string;
+  URLAddress?: string;
+}
 
 export interface CommunicationAddress8 {
   PostalAddress: LongPostalAddress1Choice;
@@ -3179,14 +3606,43 @@ export type CommunicationMethod3Choice =
   | { Code: "SWMT" | "SWMX" | "FAXI" | "EMAL" | "PROP" }
   | { Proprietary: GenericIdentification47 };
 
+export type ConsentTypeFormat4Choice =
+  | { Code: "CTRM" | "DUPY" }
+  | { Proprietary: GenericIdentification30 };
+
 export type ConsolidationType1Choice =
   | { Code: "GENL" | "PART" }
   | { Proprietary: GenericIdentification47 };
+
+export interface ContactIdentification1 {
+  Name: string;
+  NamePrefix?: "DOCT" | "MIST" | "MISS" | "MADM";
+  GivenName?: string;
+  Role?: string;
+  PhoneNumber?: string;
+  FaxNumber?: string;
+  EmailAddress?: string;
+}
+
+export interface ContactIdentification4 {
+  Name: string;
+  NamePrefix?: "DOCT" | "MIST" | "MISS" | "MADM";
+  GivenName?: string;
+  Role?: string;
+  PhoneNumber?: string;
+  FaxNumber?: string;
+  EmailAddress?: string;
+}
 
 export interface ContactIdentificationAndAddress1 {
   Name?: string;
   Role: "LQMG" | "LMMG" | "PYMG" | "REDR" | "BKMG" | "STMG";
   CommunicationAddress: CommunicationAddress8;
+}
+
+export interface ContactPerson1 {
+  ContactPerson: ContactIdentification4;
+  InstitutionIdentification?: PartyIdentification2Choice;
 }
 
 export interface EncryptedContent3 {
@@ -3238,13 +3694,518 @@ export interface CorporateAction82 {
   OfficialCorporateActionEventIdentification?: string;
 }
 
+export interface ProceedsDelivery1 {
+  SecuritiesAccountIdentification?: string;
+  CashAccountIdentification?: CashAccountIdentification1Choice;
+  AccountOwnerIdentification?: PartyIdentification2Choice;
+  AccountServicerIdentification?: PartyIdentification2Choice;
+}
+
+export interface CorporateActionAdditionalInformation1 {
+  BeneficialOwnerDetails?: Array<BeneficialOwner1>;
+  RegistrationDetails?: string;
+  ReceiverIdentification?: PartyIdentification2Choice;
+  CertificationIndicator?: 'true' | 'false';
+  CertificationType?: BeneficiaryCertificationType1FormatChoice;
+  DeliveryDetails?: Array<ProceedsDelivery1>;
+  AdditionalInstruction?: string;
+}
+
+export interface CorporateActionAmounts60 {
+  WithholdingTaxAmount?: ActiveCurrencyAndAmount;
+  SecondLevelTaxAmount?: ActiveCurrencyAndAmount;
+}
+
+export interface RestrictedFINActiveCurrencyAndAmount {
+  /** Currency code, serialized as the Ccy attribute. */
+  Ccy: string;
+  Value: string;
+}
+
+export interface CorporateActionAmounts61 {
+  WithholdingTaxAmount?: RestrictedFINActiveCurrencyAndAmount;
+  SecondLevelTaxAmount?: RestrictedFINActiveCurrencyAndAmount;
+}
+
+export interface CorporateActionAmounts77 {
+  GrossAmount?: ActiveCurrencyAndAmount;
+  NetAmount?: ActiveCurrencyAndAmount;
+  SolicitationFees?: ActiveCurrencyAndAmount;
+  CashInLieuOfShare?: ActiveCurrencyAndAmount;
+  CapitalGain?: ActiveCurrencyAndAmount;
+  InterestAmount?: ActiveCurrencyAndAmount;
+  IndemnityAmount?: ActiveCurrencyAndAmount;
+  ManufacturedDividendPaymentAmount?: ActiveCurrencyAndAmount;
+  ReinvestmentAmount?: ActiveCurrencyAndAmount;
+  FullyFrankedAmount?: ActiveCurrencyAndAmount;
+  UnfrankedAmount?: ActiveCurrencyAndAmount;
+  SundryOrOtherAmount?: ActiveCurrencyAndAmount;
+  TaxFreeAmount?: ActiveCurrencyAndAmount;
+  TaxDeferredAmount?: ActiveCurrencyAndAmount;
+  ValueAddedTaxAmount?: ActiveCurrencyAndAmount;
+  StampDutyAmount?: ActiveCurrencyAndAmount;
+  TaxReclaimAmount?: ActiveCurrencyAndAmount;
+  TaxCreditAmount?: ActiveCurrencyAndAmount;
+  AdditionalTaxAmount?: ActiveCurrencyAndAmount;
+  WithholdingTaxAmount?: ActiveCurrencyAndAmount;
+  SecondLevelTaxAmount?: ActiveCurrencyAndAmount;
+  FiscalStampAmount?: ActiveCurrencyAndAmount;
+  ExecutingBrokerAmount?: ActiveCurrencyAndAmount;
+  PayingAgentCommissionAmount?: ActiveCurrencyAndAmount;
+  LocalBrokerCommissionAmount?: ActiveCurrencyAndAmount;
+  RegulatoryFeesAmount?: ActiveCurrencyAndAmount;
+  ShippingFeesAmount?: ActiveCurrencyAndAmount;
+  ChargesAmount?: ActiveCurrencyAndAmount;
+  EntitledAmount?: ActiveCurrencyAndAmount;
+  OriginalAmount?: ActiveCurrencyAndAmount;
+  PrincipalOrCorpus?: ActiveCurrencyAndAmount;
+  RedemptionPremiumAmount?: ActiveCurrencyAndAmount;
+  IncomePortion?: ActiveCurrencyAndAmount;
+  StockExchangeTax?: ActiveCurrencyAndAmount;
+  EUTaxRetentionAmount?: ActiveCurrencyAndAmount;
+  AccruedInterestAmount?: ActiveCurrencyAndAmount;
+  EqualisationAmount?: ActiveCurrencyAndAmount;
+  FATCATaxAmount?: ActiveCurrencyAndAmount;
+  NRATaxAmount?: ActiveCurrencyAndAmount;
+  BackUpWithholdingTaxAmount?: ActiveCurrencyAndAmount;
+  TaxOnIncomeAmount?: ActiveCurrencyAndAmount;
+  TransactionTax?: ActiveCurrencyAndAmount;
+  DeemedAmount?: ActiveCurrencyAndAmount;
+  ForeignIncomeAmount?: ActiveCurrencyAndAmount;
+  DeemedDividendAmount?: ActiveCurrencyAndAmount;
+  DeemedFundAmount?: ActiveCurrencyAndAmount;
+  DeemedInterestAmount?: ActiveCurrencyAndAmount;
+  DeemedRoyaltiesAmount?: ActiveCurrencyAndAmount;
+  BuyUpAmount?: ActiveCurrencyAndAmount;
+}
+
+export interface OriginalAndCurrentQuantities6 {
+  ShortLongPosition: "SHOR" | "LONG";
+  FaceAmount: string;
+  AmortisedValue: string;
+}
+
+export type Quantity50Choice =
+  | { OriginalAndCurrentFaceAmount: OriginalAndCurrentQuantities6 }
+  | { SignedQuantity: SignedQuantityFormat10 };
+
+export interface ProprietaryQuantity7 {
+  ShortLongPosition?: "SHOR" | "LONG";
+  Quantity: string;
+  QuantityType: string;
+  Issuer: string;
+  SchemeName?: string;
+}
+
+export type Quantity49Choice =
+  | { QuantityChoice: Quantity50Choice }
+  | { ProprietaryQuantity: ProprietaryQuantity7 };
+
+export interface TotalEligibleBalanceFormat10 {
+  Balance?: Quantity49Choice;
+  FullPeriodUnits?: SignedQuantityFormat10;
+  PartWayPeriodUnits?: SignedQuantityFormat10;
+}
+
+export interface CorporateActionBalanceDetails43 {
+  TotalEligibleBalance?: TotalEligibleBalanceFormat10;
+  BlockedBalance?: BalanceFormat11Choice;
+  BorrowedBalance?: BalanceFormat11Choice;
+  CollateralInBalance?: BalanceFormat11Choice;
+  CollateralOutBalance?: BalanceFormat11Choice;
+  OnLoanBalance?: BalanceFormat11Choice;
+  PendingDeliveryBalance?: Array<BalanceFormat12Choice>;
+  PendingReceiptBalance?: Array<BalanceFormat12Choice>;
+  OutForRegistrationBalance?: BalanceFormat11Choice;
+  SettlementPositionBalance?: Array<BalanceFormat12Choice>;
+  StreetPositionBalance?: BalanceFormat11Choice;
+  TradeDatePositionBalance?: BalanceFormat11Choice;
+  InTransshipmentBalance?: BalanceFormat11Choice;
+  RegisteredBalance?: BalanceFormat11Choice;
+  ObligatedBalance?: BalanceFormat11Choice;
+  UninstructedBalance?: BalanceFormat11Choice;
+  InstructedBalance?: BalanceFormat11Choice;
+  AffectedBalance?: BalanceFormat11Choice;
+  UnaffectedBalance?: BalanceFormat11Choice;
+}
+
+export interface OriginalAndCurrentQuantities7 {
+  ShortLongPosition: "SHOR" | "LONG";
+  FaceAmount: string;
+  AmortisedValue: string;
+}
+
+export type Quantity57Choice =
+  | { OriginalAndCurrentFaceAmount: OriginalAndCurrentQuantities7 }
+  | { SignedQuantity: SignedQuantityFormat13 };
+
+export interface ProprietaryQuantity10 {
+  ShortLongPosition?: "SHOR" | "LONG";
+  Quantity: string;
+  QuantityType: string;
+  Issuer: string;
+  SchemeName?: string;
+}
+
+export type Quantity80Choice =
+  | { QuantityChoice: Quantity57Choice }
+  | { ProprietaryQuantity: ProprietaryQuantity10 };
+
+export interface TotalEligibleBalanceFormat11 {
+  Balance?: Quantity80Choice;
+  FullPeriodUnits?: SignedQuantityFormat13;
+  PartWayPeriodUnits?: SignedQuantityFormat13;
+}
+
+export interface CorporateActionBalanceDetails46 {
+  TotalEligibleBalance?: TotalEligibleBalanceFormat11;
+  BlockedBalance?: BalanceFormat14Choice;
+  BorrowedBalance?: BalanceFormat14Choice;
+  CollateralInBalance?: BalanceFormat14Choice;
+  CollateralOutBalance?: BalanceFormat14Choice;
+  OnLoanBalance?: BalanceFormat14Choice;
+  PendingDeliveryBalance?: Array<BalanceFormat16Choice>;
+  PendingReceiptBalance?: Array<BalanceFormat16Choice>;
+  OutForRegistrationBalance?: BalanceFormat14Choice;
+  SettlementPositionBalance?: Array<BalanceFormat16Choice>;
+  StreetPositionBalance?: BalanceFormat14Choice;
+  TradeDatePositionBalance?: BalanceFormat14Choice;
+  InTransshipmentBalance?: BalanceFormat14Choice;
+  RegisteredBalance?: BalanceFormat14Choice;
+  ObligatedBalance?: BalanceFormat14Choice;
+  UninstructedBalance?: BalanceFormat14Choice;
+  InstructedBalance?: BalanceFormat14Choice;
+  AffectedBalance?: BalanceFormat14Choice;
+  UnaffectedBalance?: BalanceFormat14Choice;
+}
+
+export type DateAndDateTimeChoice =
+  | { Date: string }
+  | { DateTime: string };
+
+export interface CorporateActionCashMovements2 {
+  PostingIdentification?: string;
+  PostingDateTime?: DateAndDateTimeChoice;
+  PostingAmount: ActiveCurrencyAndAmount;
+  AccountDetails: Array<CashAccount19>;
+}
+
+export type CorporateActionChangeTypeFormat5Choice =
+  | { Code: "BERE" | "CERT" | "DEPH" | "GPPH" | "GTGP" | "GTPH" | "NAME" | "PHDE" | "REBE" | "TERM" | "DECI" }
+  | { Proprietary: GenericIdentification30 };
+
+export type DateCode21Choice =
+  | { Code: "ONGO" }
+  | { Proprietary: GenericIdentification30 };
+
+export interface DateCodeAndTimeFormat3 {
+  DateCode: DateCode21Choice;
+  Time: string;
+}
+
+export type DateFormat44Choice =
+  | { Date: DateAndDateTime2Choice }
+  | { DateCodeAndTime: DateCodeAndTimeFormat3 }
+  | { DateCode: DateCode19Choice };
+
+export type DateCode33Choice =
+  | { Code: "PWAL" | "MKDT" | "MEET" | "PAYD" | "RDTE" | "RDDT" | "NARR" | "UKWN" }
+  | { Proprietary: GenericIdentification30 };
+
+export type DateFormat59Choice =
+  | { Date: DateAndDateTime2Choice }
+  | { DateCode: DateCode33Choice };
+
+export type DateCode20Choice =
+  | { Code: "UKWN" }
+  | { Proprietary: GenericIdentification30 };
+
+export type DateFormat46Choice =
+  | { Date: DateAndDateTime2Choice }
+  | { DateCode: DateCode20Choice };
+
+export interface CorporateActionDate110 {
+  EarlyResponseDeadline?: DateFormat43Choice;
+  CoverExpirationDeadline?: DateFormat43Choice;
+  ProtectDeadline?: DateFormat43Choice;
+  MarketDeadline?: DateFormat43Choice;
+  ResponseDeadline?: DateFormat44Choice;
+  ExpiryDate?: DateFormat43Choice;
+  SubscriptionCostDebitDate?: DateFormat43Choice;
+  DepositoryCoverExpirationDate?: DateFormat43Choice;
+  StockLendingDeadline?: DateFormat43Choice;
+  BorrowerStockLendingDeadline?: Array<BorrowerLendingDeadline5>;
+  EndOfSecuritiesBlockingPeriod?: DateFormat59Choice;
+  DocumentationDeadline?: DateFormat46Choice;
+}
+
+export type DateFormat30Choice =
+  | { Date: string }
+  | { DateCode: DateCode19Choice };
+
+export interface CorporateActionDate83 {
+  AnnouncementDate?: DateFormat43Choice;
+  CertificationDeadline?: DateFormat43Choice;
+  CourtApprovalDate?: DateFormat30Choice;
+  EarlyClosingDate?: DateFormat43Choice;
+  EffectiveDate?: DateFormat30Choice;
+  EqualisationDate?: DateFormat30Choice;
+  FurtherDetailedAnnouncementDate?: DateFormat43Choice;
+  FixingDate?: DateFormat43Choice;
+  LotteryDate?: DateFormat30Choice;
+  NewMaturityDate?: DateFormat30Choice;
+  MeetingDate?: DateFormat43Choice;
+  MarginFixingDate?: DateFormat30Choice;
+  ProrationDate?: DateFormat30Choice;
+  RecordDate?: DateFormat30Choice;
+  RegistrationDeadline?: DateFormat43Choice;
+  ResultsPublicationDate?: DateFormat43Choice;
+  DeadlineToSplit?: DateFormat43Choice;
+  DeadlineForTaxBreakdownInstruction?: DateFormat43Choice;
+  TradingSuspendedDate?: DateFormat43Choice;
+  UnconditionalDate?: DateFormat30Choice;
+  WhollyUnconditionalDate?: DateFormat30Choice;
+  ExDividendDate?: DateFormat30Choice;
+  OfficialAnnouncementPublicationDate?: DateFormat43Choice;
+  SpecialExDate?: DateFormat30Choice;
+  GuaranteedParticipationDate?: DateFormat30Choice;
+  ElectionToCounterpartyMarketDeadline?: DateFormat43Choice;
+  ElectionToCounterpartyResponseDeadline?: DateFormat43Choice;
+  LapsedDate?: DateFormat30Choice;
+  PaymentDate?: DateFormat30Choice;
+  ThirdPartyDeadline?: DateFormat43Choice;
+  EarlyThirdPartyDeadline?: DateFormat43Choice;
+  MarketClaimTrackingEndDate?: DateFormat30Choice;
+  LeadPlaintiffDeadline?: DateFormat43Choice;
+  FilingDate?: DateFormat30Choice;
+  HearingDate?: DateFormat30Choice;
+}
+
+export type DateFormat57Choice =
+  | { Date: string }
+  | { DateCode: DateCode20Choice };
+
+export interface CorporateActionDate84 {
+  PaymentDate: DateFormat30Choice;
+  ValueDate?: DateFormat57Choice;
+  ForeignExchangeRateFixingDate?: DateFormat43Choice;
+  EarliestPaymentDate?: DateFormat30Choice;
+}
+
+export interface CorporateActionDate86 {
+  RecordDate?: DateFormat30Choice;
+  ExDividendDate?: DateFormat30Choice;
+}
+
+export type DateFormat41Choice =
+  | { Date: string }
+  | { DateCode: DateCode22Choice };
+
+export interface CorporateActionDate89 {
+  RecordDate?: DateFormat41Choice;
+  ExDividendDate?: DateFormat41Choice;
+}
+
+export interface CorporateActionDate99 {
+  PostingDate: DateAndDateTime2Choice;
+  ValueDate?: string;
+  ForeignExchangeRateFixingDate?: DateAndDateTime2Choice;
+  EarliestPaymentDate?: string;
+  PaymentDate?: string;
+}
+
+export type CorporateActionOption1FormatChoice =
+  | { Code: "BSPL" | "BUYA" | "CASE" | "CASH" | "CEXC" | "CTEN" | "CONN" | "CONY" | "EXER" | "LAPS" | "MPUT" | "NOAC" | "OFFR" | "OVER" | "SECU" | "SLLE" | "SPLI" | "NOQU" | "OTHR" | "QINV" }
+  | { Proprietary: GenericIdentification13 };
+
+export interface CorporateActionOption2 {
+  OptionType: CorporateActionOption1FormatChoice;
+  OptionNumber: string;
+}
+
+export interface CorporateActionDeactivationInstruction1 {
+  DeactivationDateAndTime: string;
+  OptionDetails?: Array<CorporateActionOption2>;
+}
+
+export interface SecuritiesAccount7 {
+  AccountOwnerIdentification?: PartyIdentification2Choice;
+  AccountIdentification: string;
+}
+
+export type SecuritiesBalanceType10FormatChoice =
+  | { Code: "AVLB" | "REST" | "RDIS" | "RREM" }
+  | { Proprietary: GenericIdentification13 };
+
+export interface SecuritiesAccount9 {
+  CreditDebitIndicator: "CRDT" | "DBIT";
+  AccountOwnerIdentification?: PartyIdentification2Choice;
+  AccountIdentification: string;
+  BalanceType?: SecuritiesBalanceType10FormatChoice;
+  OptionType?: CorporateActionOption1FormatChoice;
+  OptionNumber?: string;
+  SecurityHoldingForm?: "BEAR" | "REGD";
+}
+
+export interface CorporateActionSecuritiesMovement2 {
+  SecurityIdentification: SecurityIdentification7;
+  PostingDateTime?: DateAndDateTimeChoice;
+  PostingIdentification?: string;
+  PostingQuantity: UnitOrFaceAmount1Choice;
+  AccountDetails: Array<SecuritiesAccount9>;
+}
+
+export interface CorporateActionElection3 {
+  AccountDetails?: SecuritiesAccount7;
+  OptionType?: CorporateActionOption1FormatChoice;
+  OptionNumber?: string;
+  InstructedUnderlyingSecuritiesQuantity?: UnitOrFaceAmount1Choice;
+  InstructedSecuritiesQuantityToReceive?: UnitOrFaceAmount1Choice;
+  ProposedRate?: string;
+  CashMovementDetails?: Array<CorporateActionCashMovements2>;
+  SecuritiesMovementDetails?: Array<CorporateActionSecuritiesMovement2>;
+}
+
+export type CorporateActionOption47Choice =
+  | { Code: "ABST" | "BSPL" | "CASE" | "CASH" | "CEXC" | "CONN" | "CONY" | "CTEN" | "EXER" | "LAPS" | "MPUT" | "NOAC" | "OFFR" | "OTHR" | "OVER" | "SECU" | "PRUN" }
+  | { Proprietary: GenericIdentification30 };
+
+export interface PercentagePrice1 {
+  PercentagePriceType: "DISC" | "PREM" | "PRCT" | "YIEL";
+  PriceValue: string;
+}
+
+export type PriceFormat66Choice =
+  | { PercentagePrice: PercentagePrice1 }
+  | { AmountPrice: AmountPrice3 }
+  | { NotSpecifiedPrice: "TBSP" | "UNSP" | "UKWN" }
+  | { AmountPricePerFinancialInstrumentQuantity: AmountPricePerFinancialInstrumentQuantity10 }
+  | { AmountPricePerAmount: AmountPricePerAmount2 }
+  | { IndexPoints: string };
+
+export type PriceFormat50Choice =
+  | { PercentagePrice: PercentagePrice1 }
+  | { AmountPrice: AmountPrice3 };
+
+export interface CorporateActionPrice99 {
+  GenericCashPriceReceivedPerProduct?: PriceFormat66Choice;
+  GenericCashPricePaidPerProduct?: PriceFormat50Choice;
+}
+
+export type IdentificationSource3Choice =
+  | { Code: string }
+  | { Proprietary: string };
+
+export interface OtherIdentification1 {
+  Identification: string;
+  Suffix?: string;
+  Type: IdentificationSource3Choice;
+}
+
+export interface SecurityIdentification19 {
+  ISIN?: string;
+  OtherIdentification?: Array<OtherIdentification1>;
+  Description?: string;
+}
+
+export interface CorporateActionElection4 {
+  OptionNumber: string;
+  OptionType: CorporateActionOption47Choice;
+  CurrencyOption?: string;
+  PriceDetails?: CorporateActionPrice99;
+  FinancialInstrumentIdentification?: SecurityIdentification19;
+}
+
+export type CorporateActionEventProcessingType1FormatChoice =
+  | { Code: "GENL" | "DISN" | "REOR" }
+  | { Proprietary: GenericIdentification13 };
+
+export type CorporateActionEventProcessingType2Choice =
+  | { Code: "GENL" | "DISN" | "REOR" }
+  | { Proprietary: GenericIdentification30 };
+
+export type CorporateActionEventProcessingType3Choice =
+  | { Code: "GENL" | "DISN" | "REOR" }
+  | { Proprietary: GenericIdentification47 };
+
+export type CorporateActionEventReference3Choice =
+  | { LinkedOfficialCorporateActionEventIdentification: string }
+  | { LinkedCorporateActionIdentification: string };
+
+export type ProcessingPosition7Choice =
+  | { Code: "AFTE" | "WITH" | "BEFO" | "INFO" }
+  | { Proprietary: GenericIdentification30 };
+
+export interface CorporateActionEventReference3 {
+  EventIdentification: CorporateActionEventReference3Choice;
+  LinkageType?: ProcessingPosition7Choice;
+}
+
+export type CorporateActionEventReference4Choice =
+  | { LinkedOfficialCorporateActionEventIdentification: string }
+  | { LinkedCorporateActionIdentification: string };
+
+export type ProcessingPosition10Choice =
+  | { Code: "AFTE" | "WITH" | "BEFO" | "INFO" }
+  | { Proprietary: GenericIdentification47 };
+
+export interface CorporateActionEventReference4 {
+  EventIdentification: CorporateActionEventReference4Choice;
+  LinkageType?: ProcessingPosition10Choice;
+}
+
+export type CorporateActionEventStageFormat13Choice =
+  | { Code: "APPD" | "CLDE" | "FULL" | "LAPS" | "PART" | "PWAL" | "RESC" | "SUAP" | "UNAC" | "WHOU" }
+  | { Proprietary: GenericIdentification30 };
+
+export type CorporateActionEventStageFormat14Choice =
+  | { Code: "FULL" | "PART" | "RESC" }
+  | { Proprietary: GenericIdentification30 };
+
+export type CorporateActionEventStageFormat15Choice =
+  | { Code: "FULL" | "PART" | "RESC" }
+  | { Proprietary: GenericIdentification47 };
+
+export interface CorporateActionEventStatus1 {
+  EventCompletenessStatus: "COMP" | "INCO";
+  EventConfirmationStatus: "CONF" | "UCON";
+}
+
 export type CorporateActionEventType101Choice =
   | { Code: "ACTV" | "ATTI" | "BRUP" | "DFLT" | "BONU" | "EXRI" | "CAPD" | "CAPG" | "CAPI" | "DRCA" | "DVCA" | "CHAN" | "COOP" | "CLSA" | "CONS" | "CONV" | "CREV" | "DECR" | "DETI" | "DSCL" | "DVOP" | "DRIP" | "DRAW" | "DTCH" | "EXOF" | "REDM" | "MCAL" | "INCR" | "PPMT" | "INTR" | "RHDI" | "LIQU" | "EXTM" | "MRGR" | "NOOF" | "CERT" | "ODLT" | "OTHR" | "PARI" | "PCAL" | "PRED" | "PINK" | "PLAC" | "PDEF" | "PRIO" | "BPUT" | "REDO" | "REMK" | "BIDS" | "SPLR" | "RHTS" | "DVSC" | "SHPR" | "SMAL" | "SOFF" | "DVSE" | "SPLF" | "TREC" | "TEND" | "DLST" | "SUSP" | "EXWA" | "WTRC" | "WRTH" | "ACCU" | "MTNG" | "INFO" | "TNDP" }
   | { Proprietary: GenericIdentification47 };
 
+export type CorporateActionEventType107Choice =
+  | { Code: "ACTV" | "ATTI" | "BRUP" | "DFLT" | "BONU" | "EXRI" | "CAPD" | "CAPG" | "CAPI" | "DRCA" | "DVCA" | "CHAN" | "COOP" | "CLSA" | "CONS" | "CONV" | "CREV" | "DECR" | "DETI" | "DSCL" | "DVOP" | "DRIP" | "DRAW" | "DTCH" | "EXOF" | "REDM" | "MCAL" | "INCR" | "PPMT" | "INTR" | "RHDI" | "LIQU" | "EXTM" | "MRGR" | "NOOF" | "CERT" | "ODLT" | "OTHR" | "PARI" | "PCAL" | "PRED" | "PINK" | "PLAC" | "PDEF" | "PRIO" | "BPUT" | "REDO" | "REMK" | "BIDS" | "SPLR" | "RHTS" | "DVSC" | "SHPR" | "SMAL" | "SOFF" | "DVSE" | "SPLF" | "TREC" | "TEND" | "DLST" | "SUSP" | "EXWA" | "WTRC" | "WRTH" | "ACCU" | "INFO" | "TNDP" | "RCLA" }
+  | { Proprietary: GenericIdentification30 };
+
+export type CorporateActionEventType108Choice =
+  | { Code: "ACTV" | "ATTI" | "BRUP" | "DFLT" | "BONU" | "EXRI" | "CAPD" | "CAPG" | "CAPI" | "DRCA" | "DVCA" | "CHAN" | "COOP" | "CLSA" | "CONS" | "CONV" | "CREV" | "DECR" | "DETI" | "DSCL" | "DVOP" | "DRIP" | "DRAW" | "DTCH" | "EXOF" | "REDM" | "MCAL" | "INCR" | "PPMT" | "INTR" | "RHDI" | "LIQU" | "EXTM" | "MRGR" | "NOOF" | "CERT" | "ODLT" | "OTHR" | "PARI" | "PCAL" | "PRED" | "PINK" | "PLAC" | "PDEF" | "PRIO" | "BPUT" | "REDO" | "REMK" | "BIDS" | "SPLR" | "RHTS" | "DVSC" | "SHPR" | "SMAL" | "SOFF" | "DVSE" | "SPLF" | "TREC" | "TEND" | "DLST" | "SUSP" | "EXWA" | "WTRC" | "WRTH" | "ACCU" | "TNDP" | "RCLA" }
+  | { Proprietary: GenericIdentification30 };
+
+export type CorporateActionEventType109Choice =
+  | { Code: "ACTV" | "ATTI" | "BRUP" | "DFLT" | "BONU" | "EXRI" | "CAPD" | "CAPG" | "CAPI" | "DRCA" | "DVCA" | "CHAN" | "COOP" | "CLSA" | "CONS" | "CONV" | "CREV" | "DECR" | "DETI" | "DSCL" | "DVOP" | "DRIP" | "DRAW" | "DTCH" | "EXOF" | "REDM" | "MCAL" | "INCR" | "PPMT" | "INTR" | "RHDI" | "LIQU" | "EXTM" | "MRGR" | "NOOF" | "CERT" | "ODLT" | "OTHR" | "PARI" | "PCAL" | "PRED" | "PINK" | "PLAC" | "PDEF" | "PRIO" | "BPUT" | "REDO" | "REMK" | "BIDS" | "SPLR" | "RHTS" | "DVSC" | "SHPR" | "SMAL" | "SOFF" | "DVSE" | "SPLF" | "TREC" | "TEND" | "DLST" | "SUSP" | "EXWA" | "WTRC" | "WRTH" | "ACCU" | "MTNG" | "TNDP" | "RCLA" }
+  | { Proprietary: GenericIdentification30 };
+
 export type CorporateActionEventType110Choice =
   | { Code: "ACTV" | "ATTI" | "BRUP" | "DFLT" | "BONU" | "EXRI" | "CAPD" | "CAPG" | "CAPI" | "DRCA" | "DVCA" | "CHAN" | "COOP" | "CLSA" | "CONS" | "CONV" | "CREV" | "DECR" | "DETI" | "DSCL" | "DVOP" | "DRIP" | "DRAW" | "DTCH" | "EXOF" | "REDM" | "MCAL" | "INCR" | "PPMT" | "INTR" | "RHDI" | "LIQU" | "EXTM" | "MRGR" | "NOOF" | "CERT" | "ODLT" | "OTHR" | "PARI" | "PCAL" | "PRED" | "PINK" | "PLAC" | "PDEF" | "PRIO" | "BPUT" | "REDO" | "REMK" | "BIDS" | "SPLR" | "RHTS" | "DVSC" | "SHPR" | "SMAL" | "SOFF" | "DVSE" | "SPLF" | "TREC" | "TEND" | "DLST" | "SUSP" | "EXWA" | "WTRC" | "WRTH" | "ACCU" | "MTNG" | "INFO" | "TNDP" | "RCLA" }
   | { Proprietary: GenericIdentification30 };
+
+export type CorporateActionEventType111Choice =
+  | { Code: "ACTV" | "ATTI" | "BRUP" | "DFLT" | "BONU" | "EXRI" | "CAPD" | "CAPG" | "CAPI" | "DRCA" | "DVCA" | "CHAN" | "COOP" | "CLSA" | "CONS" | "CONV" | "CREV" | "DECR" | "DETI" | "DSCL" | "DVOP" | "DRIP" | "DRAW" | "DTCH" | "EXOF" | "REDM" | "MCAL" | "INCR" | "PPMT" | "INTR" | "RHDI" | "LIQU" | "EXTM" | "MRGR" | "NOOF" | "CERT" | "ODLT" | "OTHR" | "PARI" | "PCAL" | "PRED" | "PINK" | "PLAC" | "PDEF" | "PRIO" | "BPUT" | "REDO" | "REMK" | "BIDS" | "SPLR" | "RHTS" | "DVSC" | "SHPR" | "SMAL" | "SOFF" | "DVSE" | "SPLF" | "TREC" | "TEND" | "DLST" | "SUSP" | "EXWA" | "WTRC" | "WRTH" }
+  | { Proprietary: GenericIdentification30 };
+
+export type CorporateActionEventType112Choice =
+  | { Code: "ACTV" | "ATTI" | "BRUP" | "DFLT" | "BONU" | "EXRI" | "CAPD" | "CAPG" | "CAPI" | "DRCA" | "DVCA" | "CHAN" | "COOP" | "CLSA" | "CONS" | "CONV" | "CREV" | "DECR" | "DETI" | "DSCL" | "DVOP" | "DRIP" | "DRAW" | "DTCH" | "EXOF" | "REDM" | "MCAL" | "INCR" | "PPMT" | "INTR" | "RHDI" | "LIQU" | "EXTM" | "MRGR" | "NOOF" | "CERT" | "ODLT" | "OTHR" | "PARI" | "PCAL" | "PRED" | "PINK" | "PLAC" | "PDEF" | "PRIO" | "BPUT" | "REDO" | "REMK" | "BIDS" | "SPLR" | "RHTS" | "DVSC" | "SHPR" | "SMAL" | "SOFF" | "DVSE" | "SPLF" | "TREC" | "TEND" | "DLST" | "SUSP" | "EXWA" | "WTRC" | "WRTH" | "ACCU" }
+  | { Proprietary: GenericIdentification30 };
+
+export type CorporateActionEventType125Choice =
+  | { Code: "DRIP" | "CAPG" | "DVCA" | "DVOP" | "MRGR" | "SOFF" | "TEND" | "BONU" | "REDO" | "EXOF" | "REDM" | "INTR" | "CONV" | "EXRI" | "CAPI" | "CONS" | "COOP" | "DRAW" | "DTCH" | "MCAL" | "EXTM" | "ODLT" | "OTHR" | "PCAL" | "PRED" | "PINK" | "PRIO" | "BPUT" | "REMK" | "BIDS" | "SPLR" | "SHPR" | "SPLF" | "EXWA" | "CAPD" | "ACCU" }
+  | { Proprietary: GenericIdentification30 };
+
+export type CorporateActionEventType2FormatChoice =
+  | { Code: "ACTV" | "ATTI" | "BIDS" | "BONU" | "BPUT" | "BRUP" | "CAPG" | "CAPI" | "CERT" | "CHAN" | "CLSA" | "CONS" | "CONV" | "COOP" | "DECR" | "DETI" | "DFLT" | "DLST" | "DRAW" | "DRIP" | "DSCL" | "DTCH" | "DVCA" | "DVOP" | "DVSC" | "DVSE" | "EXOF" | "EXRI" | "EXTM" | "EXWA" | "INCR" | "INTR" | "LIQU" | "MCAL" | "MRGR" | "ODLT" | "PARI" | "PCAL" | "PDEF" | "PINK" | "PLAC" | "PPMT" | "PRED" | "PRII" | "PRIO" | "REDM" | "REDO" | "REMK" | "RHDI" | "RHTS" | "SHPR" | "SMAL" | "SOFF" | "SPLF" | "SPLR" | "SUSP" | "TEND" | "TREC" | "WRTH" | "WTRC" | "OTHR" }
+  | { Proprietary: GenericIdentification13 };
 
 export type CorporateActionEventType56Choice =
   | { Code: "ACTV" | "ATTI" | "BRUP" | "DFLT" | "BONU" | "EXRI" | "CAPD" | "CAPG" | "CAPI" | "DRCA" | "DVCA" | "CHAN" | "COOP" | "CLSA" | "CONS" | "CONV" | "CREV" | "DECR" | "DETI" | "DSCL" | "DVOP" | "DRIP" | "DRAW" | "DTCH" | "EXOF" | "REDM" | "MCAL" | "INCR" | "PPMT" | "INTR" | "PRII" | "RHDI" | "LIQU" | "EXTM" | "MRGR" | "NOOF" | "CERT" | "ODLT" | "OTHR" | "PARI" | "PCAL" | "PRED" | "PINK" | "PLAC" | "PDEF" | "PRIO" | "BPUT" | "REDO" | "REMK" | "BIDS" | "SPLR" | "RHTS" | "DVSC" | "SHPR" | "SMAL" | "SOFF" | "DVSE" | "SPLF" | "TREC" | "TEND" | "DLST" | "SUSP" | "EXWA" | "WTRC" | "WRTH" | "ACCU" | "MTNG" | "INFO" }
@@ -3253,6 +4214,406 @@ export type CorporateActionEventType56Choice =
 export type CorporateActionEventType73Choice =
   | { Code: "ACTV" | "ATTI" | "BRUP" | "DFLT" | "BONU" | "EXRI" | "CAPD" | "CAPG" | "CAPI" | "DRCA" | "DVCA" | "CHAN" | "COOP" | "CLSA" | "CONS" | "CONV" | "CREV" | "DECR" | "DETI" | "DSCL" | "DVOP" | "DRIP" | "DRAW" | "DTCH" | "EXOF" | "REDM" | "MCAL" | "INCR" | "PPMT" | "INTR" | "PRII" | "RHDI" | "LIQU" | "EXTM" | "MRGR" | "NOOF" | "CERT" | "ODLT" | "OTHR" | "PARI" | "PCAL" | "PRED" | "PINK" | "PLAC" | "PDEF" | "PRIO" | "BPUT" | "REDO" | "REMK" | "BIDS" | "SPLR" | "RHTS" | "DVSC" | "SHPR" | "SMAL" | "SOFF" | "DVSE" | "SPLF" | "TREC" | "TEND" | "DLST" | "SUSP" | "EXWA" | "WTRC" | "WRTH" | "ACCU" | "MTNG" | "INFO" | "TNDP" }
   | { Proprietary: GenericIdentification30 };
+
+export interface CorporateActionGeneralInformation179 {
+  CorporateActionEventIdentification: string;
+  OfficialCorporateActionEventIdentification?: string;
+  ClassActionNumber?: string;
+  EventType: CorporateActionEventType109Choice;
+  FinancialInstrumentIdentification: SecurityIdentification19;
+  FractionalQuantity?: FinancialInstrumentQuantity33Choice;
+}
+
+export interface CorporateActionGeneralInformation181 {
+  CorporateActionEventIdentification: string;
+  OfficialCorporateActionEventIdentification?: string;
+  EventType: CorporateActionEventType111Choice;
+  FinancialInstrumentIdentification?: SecurityIdentification19;
+}
+
+export interface CorporateActionGeneralInformation182 {
+  CorporateActionEventIdentification: string;
+  OfficialCorporateActionEventIdentification?: string;
+  ClassActionNumber?: string;
+  EventType: CorporateActionEventType112Choice;
+}
+
+export interface CorporateActionGeneralInformation195 {
+  CorporateActionEventIdentification: string;
+  OfficialCorporateActionEventIdentification?: string;
+  EventType: CorporateActionEventType125Choice;
+  FinancialInstrumentIdentification?: string;
+}
+
+export type CorporateActionMandatoryVoluntary1FormatChoice =
+  | { Code: "MAND" | "CHOS" | "VOLU" }
+  | { Proprietary: GenericIdentification13 };
+
+export interface FinancialInstrumentDescription3 {
+  SecurityIdentification: SecurityIdentification7;
+  PlaceOfListing?: string;
+  SafekeepingPlace?: PartyIdentification2Choice;
+}
+
+export interface CorporateActionInformation1 {
+  AgentIdentification: PartyIdentification2Choice;
+  IssuerCorporateActionIdentification?: string;
+  CorporateActionProcessingIdentification?: string;
+  EventType: CorporateActionEventType2FormatChoice;
+  MandatoryVoluntaryEventType: CorporateActionMandatoryVoluntary1FormatChoice;
+  EventProcessingType?: CorporateActionEventProcessingType1FormatChoice;
+  UnderlyingSecurity: FinancialInstrumentDescription3;
+}
+
+export type CorporateActionMandatoryVoluntary3Choice =
+  | { Code: "MAND" | "CHOS" | "VOLU" }
+  | { Proprietary: GenericIdentification30 };
+
+export type CorporateActionMandatoryVoluntary4Choice =
+  | { Code: "MAND" | "CHOS" | "VOLU" }
+  | { Proprietary: GenericIdentification47 };
+
+export interface CorporateActionMovement1 {
+  OrderType: "GDEB" | "IDEB" | "GRET" | "CHAN" | "IRET";
+  HighPriorityIndicator: 'true' | 'false';
+  OptionNumber?: string;
+  OptionType?: CorporateActionOption1FormatChoice;
+  RequestedExecutionDate: string;
+  AccountOwnerIdentification?: PartyIdentification2Choice;
+  AccountIdentification?: string;
+  ConfirmedBalanceSecuritiesQuantity?: UnitOrFaceAmount1Choice;
+}
+
+export interface CorporateActionNarrative10 {
+  AdditionalText?: Array<string>;
+  PartyContactNarrative?: Array<string>;
+}
+
+export interface CorporateActionNarrative19 {
+  AdditionalText?: Array<string>;
+  PartyContactNarrative?: Array<string>;
+}
+
+export interface CorporateActionNarrative31 {
+  AdditionalText?: Array<string>;
+  NarrativeVersion?: Array<string>;
+  PartyContactNarrative?: Array<string>;
+  TaxationConditions?: Array<string>;
+}
+
+export interface CorporateActionNarrative35 {
+  AdditionalText?: Array<string>;
+  NarrativeVersion?: Array<string>;
+  PartyContactNarrative?: Array<string>;
+  TaxationConditions?: Array<string>;
+}
+
+export interface UpdatedURLlnformation6 {
+  Language: string;
+  URLAddress: string;
+}
+
+export interface CorporateActionNarrative58 {
+  Offeror?: Array<string>;
+  NewCompanyName?: string;
+  URLAddress?: Array<UpdatedURLlnformation6>;
+  EventProcessingWebSiteAddress?: string;
+}
+
+export type CorporateActionOption30Choice =
+  | { Code: "ABST" | "BSPL" | "BUYA" | "CASE" | "CASH" | "CEXC" | "CONN" | "CONY" | "CTEN" | "EXER" | "LAPS" | "MPUT" | "NOAC" | "NOQU" | "OFFR" | "OTHR" | "OVER" | "QINV" | "SECU" | "SLLE" | "PRUN" }
+  | { Proprietary: GenericIdentification30 };
+
+export type Quantity6Choice =
+  | { Quantity: FinancialInstrumentQuantity1Choice }
+  | { OriginalAndCurrentFace: OriginalAndCurrentQuantities1 };
+
+export type DateFormat58Choice =
+  | { DateOrDateTime: DateAndDateTime2Choice }
+  | { DateCode: "UKWN" };
+
+export interface SecuritiesOption76 {
+  FinancialInstrumentIdentification: SecurityIdentification19;
+  CreditDebitIndicator: "CRDT" | "DBIT";
+  EntitledQuantity: Quantity6Choice;
+  PaymentDate: DateFormat58Choice;
+}
+
+export interface CorporateActionOption234 {
+  OptionNumber: string;
+  OptionType: CorporateActionOption30Choice;
+  SecuritiesMovementDetails?: Array<SecuritiesOption76>;
+  CashMovementDetails?: Array<CashOption106>;
+}
+
+export type CorporateActionOption33Choice =
+  | { Code: "ABST" | "BSPL" | "BUYA" | "CASE" | "CASH" | "CEXC" | "CONN" | "CONY" | "CTEN" | "EXER" | "LAPS" | "MKDW" | "MKUP" | "MPUT" | "NOAC" | "NOQU" | "OFFR" | "OTHR" | "OVER" | "QINV" | "SECU" | "SLLE" | "PRUN" }
+  | { Proprietary: GenericIdentification30 };
+
+export type CorporateActionOption37Choice =
+  | { Code: "ABST" | "BSPL" | "BUYA" | "CASE" | "CASH" | "CEXC" | "CONN" | "CONY" | "CTEN" | "EXER" | "LAPS" | "MPUT" | "NOAC" | "NOQU" | "OFFR" | "OTHR" | "OVER" | "QINV" | "SECU" | "SLLE" | "PRUN" | "BOBD" }
+  | { Proprietary: GenericIdentification30 };
+
+export type CorporateActionOption39Choice =
+  | { Code: "ABST" | "BSPL" | "BUYA" | "CASE" | "CASH" | "CEXC" | "CONN" | "CONY" | "CTEN" | "EXER" | "LAPS" | "MKDW" | "MKUP" | "MPUT" | "NOAC" | "NOQU" | "OFFR" | "OTHR" | "OVER" | "QINV" | "SECU" | "SLLE" | "PRUN" }
+  | { Proprietary: GenericIdentification47 };
+
+export type CorporateActionOption40Choice =
+  | { Code: "ABST" | "BSPL" | "BUYA" | "CASE" | "CASH" | "CERT" | "CEXC" | "CONN" | "CONY" | "CTEN" | "EXER" | "LAPS" | "MKDW" | "MKUP" | "MPUT" | "NOAC" | "NOQU" | "OFFR" | "OTHR" | "OVER" | "QINV" | "SECU" | "SLLE" | "TAXI" | "PRUN" | "BOBD" }
+  | { Proprietary: GenericIdentification30 };
+
+export type CorporateActionOption41Choice =
+  | { Code: "ABST" | "BSPL" | "BUYA" | "CASE" | "CASH" | "CEXC" | "CONN" | "CONY" | "CTEN" | "EXER" | "LAPS" | "MKDW" | "MKUP" | "MPUT" | "NOAC" | "NOQU" | "OFFR" | "OTHR" | "OVER" | "QINV" | "SECU" | "SLLE" | "TAXI" | "PRUN" | "BOBD" }
+  | { Proprietary: GenericIdentification30 };
+
+export type CorporateActionOption42Choice =
+  | { Code: "ABST" | "BSPL" | "BUYA" | "CASE" | "CASH" | "CEXC" | "CONN" | "CONY" | "CTEN" | "EXER" | "LAPS" | "MKDW" | "MKUP" | "MPUT" | "NOAC" | "NOQU" | "OFFR" | "OTHR" | "OVER" | "QINV" | "SECU" | "SLLE" | "TAXI" | "PRUN" | "BOBD" }
+  | { Proprietary: GenericIdentification47 };
+
+export type CorporateActionOption43Choice =
+  | { Code: "ABST" | "BSPL" | "BUYA" | "CASE" | "CASH" | "CERT" | "CEXC" | "CONN" | "CONY" | "CTEN" | "EXER" | "LAPS" | "MKDW" | "MKUP" | "MPUT" | "NOAC" | "NOQU" | "OFFR" | "OTHR" | "OVER" | "QINV" | "SECU" | "SLLE" | "TAXI" | "PRUN" | "BOBD" }
+  | { Proprietary: GenericIdentification47 };
+
+export type CorporateActionOption46Choice =
+  | { Code: "ABST" | "BSPL" | "BUYA" | "CASE" | "CASH" | "CEXC" | "CONN" | "CONY" | "CTEN" | "EXER" | "LAPS" | "MPUT" | "NOAC" | "NOQU" | "OFFR" | "OTHR" | "OVER" | "QINV" | "SECU" | "SLLE" | "PRUN" | "BOBD" }
+  | { Proprietary: GenericIdentification47 };
+
+export type DateFormat45Choice =
+  | { Date: DateAndDateTime2Choice }
+  | { NotSpecifiedDate: "UKWN" | "ONGO" };
+
+export interface Period11 {
+  StartDate: DateFormat45Choice;
+  EndDate: DateFormat45Choice;
+}
+
+export type Period6Choice =
+  | { Period: Period11 }
+  | { PeriodCode: "UKWN" | "ONGO" };
+
+export interface CorporateActionPeriod12 {
+  PriceCalculationPeriod?: Period6Choice;
+  ParallelTradingPeriod?: Period6Choice;
+  ActionPeriod?: Period6Choice;
+  RevocabilityPeriod?: Period6Choice;
+  PrivilegeSuspensionPeriod?: Period6Choice;
+  AccountServicerRevocabilityPeriod?: Period6Choice;
+  DepositorySuspensionPeriodForWithdrawal?: Period6Choice;
+}
+
+export type DateFormat73Choice =
+  | { Date: string }
+  | { NotSpecifiedDate: "UKWN" | "ONGO" };
+
+export interface Period18 {
+  StartDate: DateFormat73Choice;
+  EndDate: DateFormat73Choice;
+}
+
+export type Period12Choice =
+  | { Period: Period18 }
+  | { PeriodCode: "UKWN" | "ONGO" };
+
+export interface CorporateActionPeriod17 {
+  InterestPeriod?: Period12Choice;
+  CompulsoryPurchasePeriod?: Period12Choice;
+  ClaimPeriod?: Period12Choice;
+  DepositorySuspensionPeriodForBookEntryTransfer?: Period12Choice;
+  DepositorySuspensionPeriodForDepositAtAgent?: Period12Choice;
+  DepositorySuspensionPeriodForDeposit?: Period12Choice;
+  DepositorySuspensionPeriodForPledge?: Period12Choice;
+  DepositorySuspensionPeriodForSegregation?: Period12Choice;
+  DepositorySuspensionPeriodForWithdrawalAtAgent?: Period12Choice;
+  DepositorySuspensionPeriodForWithdrawalInNomineeName?: Period12Choice;
+  DepositorySuspensionPeriodForWithdrawalInStreetName?: Period12Choice;
+  BookClosurePeriod?: Period12Choice;
+  CoDepositoriesSuspensionPeriod?: Period12Choice;
+  SplitPeriod?: Period12Choice;
+  FiscalYearPeriod?: Period12Choice;
+}
+
+export interface CorporateActionPeriod18 {
+  PriceCalculationPeriod?: Period12Choice;
+  ParallelTradingPeriod?: Period12Choice;
+  ActionPeriod?: Period6Choice;
+  RevocabilityPeriod?: Period6Choice;
+  PrivilegeSuspensionPeriod?: Period6Choice;
+  AccountServicerRevocabilityPeriod?: Period6Choice;
+  DepositorySuspensionPeriodForWithdrawal?: Period12Choice;
+}
+
+export interface PercentagePrice2 {
+  PercentagePriceType: "DISC" | "PREM" | "PRCT" | "YIEL";
+  PriceValue: string;
+}
+
+export type PriceFormat74Choice =
+  | { PercentagePrice: PercentagePrice2 }
+  | { AmountPrice: AmountPrice3 }
+  | { NotSpecifiedPrice: "UKWN" };
+
+export type IndicativeOrMarketPrice12Choice =
+  | { IndicativePrice: PriceFormat74Choice }
+  | { MarketPrice: PriceFormat74Choice };
+
+export type PriceFormat46Choice =
+  | { AmountPrice: AmountPrice2 }
+  | { NotSpecifiedPrice: "UKWN" };
+
+export type PriceFormat73Choice =
+  | { PercentagePrice: PercentagePrice2 }
+  | { AmountPrice: AmountPrice3 }
+  | { NotSpecifiedPrice: "UKWN" }
+  | { IndexPoints: string };
+
+export type PriceFormat72Choice =
+  | { PercentagePrice: PercentagePrice2 }
+  | { AmountPrice: AmountPrice3 }
+  | { NotSpecifiedPrice: "TBSP" | "UNSP" | "UKWN" | "NILP" }
+  | { AmountPricePerFinancialInstrumentQuantity: AmountPricePerFinancialInstrumentQuantity10 }
+  | { AmountPricePerAmount: AmountPricePerAmount2 }
+  | { IndexPoints: string };
+
+export interface CorporateActionPrice82 {
+  IndicativeOrMarketPrice?: IndicativeOrMarketPrice12Choice;
+  CashInLieuOfSharePrice?: PriceFormat74Choice;
+  CashValueForTax?: PriceFormat46Choice;
+  GenericCashPricePaidPerProduct?: PriceFormat73Choice;
+  GenericCashPriceReceivedPerProduct?: PriceFormat72Choice;
+}
+
+export interface CorporateActionPrice85 {
+  MaximumPrice?: PriceFormat73Choice;
+  MinimumPrice?: PriceFormat73Choice;
+  FirstBidIncrementPrice?: PriceFormat73Choice;
+  LastBidIncrementPrice?: PriceFormat73Choice;
+}
+
+export type PriceFormat61Choice =
+  | { AmountPrice: AmountPrice6 }
+  | { NotSpecifiedPrice: "UKWN" };
+
+export interface CorporateActionPrice87 {
+  CashInLieuOfSharePrice?: PriceFormat74Choice;
+  OverSubscriptionDepositPrice?: PriceFormat74Choice;
+  MaximumCashToInstruct?: PriceFormat61Choice;
+  MinimumCashToInstruct?: PriceFormat61Choice;
+  MinimumMultipleCashToInstruct?: PriceFormat61Choice;
+  MaximumPrice?: PriceFormat73Choice;
+  MinimumPrice?: PriceFormat73Choice;
+  FirstBidIncrementPrice?: PriceFormat73Choice;
+  LastBidIncrementPrice?: PriceFormat73Choice;
+}
+
+export type CorporateActionProcessingStatus5Choice =
+  | { Code: CorporateActionEventStatus1 }
+  | { Proprietary: GenericIdentification30 };
+
+export type FinancialInstrumentQuantity34Choice =
+  | { Unit: string }
+  | { FaceAmount: string }
+  | { AmortisedValue: string }
+  | { Code: "UKWN" | "ANYA" }
+  | { DigitalTokenUnit: string };
+
+export type FinancialInstrumentQuantity35Choice =
+  | { Unit: string }
+  | { FaceAmount: string }
+  | { AmortisedValue: string }
+  | { Code: "UKWN" }
+  | { DigitalTokenUnit: string };
+
+export interface CorporateActionQuantity15 {
+  MaximumQuantity?: FinancialInstrumentQuantity34Choice;
+  MinimumQuantitySought?: FinancialInstrumentQuantity34Choice;
+  NewBoardLotQuantity?: FinancialInstrumentQuantity35Choice;
+  NewDenominationQuantity?: FinancialInstrumentQuantity35Choice;
+  BaseDenomination?: FinancialInstrumentQuantity35Choice;
+  IncrementalDenomination?: FinancialInstrumentQuantity35Choice;
+  SecurityCalledQuantity?: FinancialInstrumentQuantity35Choice;
+  NewOutstandingQuantity?: FinancialInstrumentQuantity35Choice;
+  TotalOutstandingQuantity?: FinancialInstrumentQuantity35Choice;
+}
+
+export type RateAndAmountFormat57Choice =
+  | { Rate: string }
+  | { NotSpecifiedRate: "UKWN" }
+  | { Amount: ActiveCurrencyAnd13DecimalAmount };
+
+export type RateFormat25Choice =
+  | { Rate: string }
+  | { NotSpecifiedRate: "ANYA" | "UKWN" };
+
+export type RateFormat24Choice =
+  | { Rate: string }
+  | { NotSpecifiedRate: "UKWN" };
+
+export type RateAndAmountFormat58Choice =
+  | { Rate: string }
+  | { NotSpecifiedRate: "UKWN" }
+  | { Amount: ActiveCurrencyAnd13DecimalAmount }
+  | { IndexPoints: string };
+
+export type RateFormat12Choice =
+  | { Rate: string }
+  | { NotSpecifiedRate: "UKWN" };
+
+export type RateAndAmountFormat59Choice =
+  | { Rate: string }
+  | { Amount: ActiveCurrencyAnd13DecimalAmount };
+
+export interface CorporateActionRate122 {
+  InterestRate?: RateAndAmountFormat57Choice;
+  PercentageSought?: RateFormat25Choice;
+  RelatedIndex?: RateFormat24Choice;
+  Spread?: RateFormat24Choice;
+  BidInterval?: RateAndAmountFormat58Choice;
+  PreviousFactor?: RateFormat12Choice;
+  NextFactor?: RateFormat12Choice;
+  ReinvestmentDiscountRateToMarket?: RateFormat24Choice;
+  InterestShortfall?: RateAndAmountFormat59Choice;
+  RealisedLoss?: RateAndAmountFormat59Choice;
+  DeclaredRate?: RateAndAmountFormat59Choice;
+  IndexFactor?: RateAndAmountFormat57Choice;
+}
+
+export type CorporateActionReversalReason10Choice =
+  | { Code: "DCBD" | "FNRC" | "IRED" | "IETR" | "IPCU" | "IPRI" | "IVAD" | "UPAY" | "OTHR" }
+  | { Proprietary: GenericIdentification30 };
+
+export interface CorporateActionReversalReason8 {
+  Reason: CorporateActionReversalReason10Choice;
+  AdditionalReasonInformation?: string;
+}
+
+export interface SecuritiesAccount6 {
+  SecurityIdentification: SecurityIdentification7;
+  SecuritiesAccountIdentification: string;
+  AccountOwnerIdentification?: PartyIdentification2Choice;
+  SafekeepingPlace: PartyIdentification2Choice;
+  RegistrationDetails?: string;
+}
+
+export interface CorporateActionStandingInstruction1 {
+  NetOrGross?: "GROS" | "NETT";
+  CashDistributionDetails?: CashAccount17;
+  SecuritiesDistributionDetails?: SecuritiesAccount6;
+  AdditionalInformation?: string;
+}
+
+export interface IncludedAccount1 {
+  SecuritiesAccountIdentification: string;
+  IncludedIndicator: 'true' | 'false';
+}
+
+export interface CorporateActionStandingInstructionGeneralInformation1 {
+  StandingInstructionType: "CASH" | "PAYM" | "SECU";
+  EventType?: Array<CorporateActionEventType2FormatChoice>;
+  InstructingPartyIdentification: PartyIdentification2Choice;
+  ClientStandingInstructionIdentification: string;
+  AccountDetails?: Array<IncludedAccount1>;
+  UnderlyingSecurity?: FinancialInstrumentDescription3;
+}
 
 export type MandateClassification1Choice =
   | { Code: "FIXE" | "USGB" | "VARI" }
@@ -3671,10 +5032,6 @@ export type DateAndDateTime1Choice =
   | { Date: string }
   | { DateTime: string };
 
-export type DateAndDateTimeChoice =
-  | { Date: string }
-  | { DateTime: string };
-
 export type DateAndDateTimeSearch5Choice =
   | { Date: DatePeriodSearch1Choice }
   | { DateTime: DateTimeSearch2Choice };
@@ -3691,6 +5048,49 @@ export type Period7Choice =
 export type DateAndPeriod3Choice =
   | { StatementDate: DateAndDateTime2Choice }
   | { StatementPeriod: Period7Choice };
+
+export interface DateAndPlaceOfBirth2 {
+  BirthDate: string;
+  ProvinceOfBirth?: string;
+  CityOfBirth?: string;
+  CountryOfBirth?: string;
+}
+
+export type DateCode26Choice =
+  | { Code: "ONGO" }
+  | { Proprietary: GenericIdentification47 };
+
+export type DateCode27Choice =
+  | { Code: "UKWN" }
+  | { Proprietary: GenericIdentification47 };
+
+export interface DateCodeAndTimeFormat4 {
+  DateCode: DateCode26Choice;
+  Time: string;
+}
+
+export type DateFormat3Choice =
+  | { Date: string }
+  | { DateCode: "UKWN" };
+
+export interface DateFormat1 {
+  Date: DateFormat3Choice;
+  DateMode?: "BODY" | "EODY";
+}
+
+export type DateFormat4Choice =
+  | { Date: DateAndDateTimeChoice }
+  | { NotSpecifiedDate: "OPEN" | "UKWN" | "ONGO" }
+  | { Proprietary: GenericIdentification13 };
+
+export type DateFormat54Choice =
+  | { Date: DateAndDateTime2Choice }
+  | { DateCodeAndTime: DateCodeAndTimeFormat4 }
+  | { DateCode: DateCode22Choice };
+
+export type DateFormat64Choice =
+  | { Date: string }
+  | { DateCode: DateCode27Choice };
 
 export type DatePeriod1Choice =
   | { Date: string }
@@ -3735,6 +5135,18 @@ export type DeMinimus1Choice =
   | { DeMinimusApplicable: DeMinimusApplicable1 }
   | { DeMinimusNotApplicable: DeMinimusNotApplicable1 };
 
+export type DeemedRateType1Choice =
+  | { Code: "DEDI" | "DEFP" | "DEIT" | "DERY" }
+  | { Proprietary: GenericIdentification30 };
+
+export type DeemedRateType2Choice =
+  | { Code: "DEDI" | "DEFP" | "DEIT" | "DERY" }
+  | { Proprietary: GenericIdentification47 };
+
+export type DefaultProcessingOrStandingInstruction2Choice =
+  | { DefaultOptionIndicator: 'true' | 'false' }
+  | { StandingInstructionIndicator: 'true' | 'false' };
+
 export type DeniedReason16Choice =
   | { Code: "ADEA" | "DCAN" | "DPRG" | "DREP" | "DSET" | "LATE" | "OTHR" | "CDRG" | "CDCY" | "CDRE" }
   | { Proprietary: GenericIdentification30 };
@@ -3747,22 +5159,6 @@ export interface DeniedReason11 {
 export type DeniedStatus16Choice =
   | { NoSpecifiedReason: "NORE" }
   | { Reason: DeniedReason11 };
-
-export type IdentificationSource3Choice =
-  | { Code: string }
-  | { Proprietary: string };
-
-export interface OtherIdentification1 {
-  Identification: string;
-  Suffix?: string;
-  Type: IdentificationSource3Choice;
-}
-
-export interface SecurityIdentification19 {
-  ISIN?: string;
-  OtherIdentification?: Array<OtherIdentification1>;
-  Description?: string;
-}
 
 export interface DigitalPaymentSettlement2 {
   FinancialInstrumentIdentification: SecurityIdentification19;
@@ -3799,6 +5195,20 @@ export interface DirectDebitTransaction12 {
   PreNotificationIdentification?: string;
   PreNotificationDate?: string;
 }
+
+export interface DisclosureRequestIdentification1 {
+  IssuerDisclosureRequestIdentification: string;
+  FinancialInstrumentIdentification: SecurityIdentification19;
+  ShareholdersDisclosureRecordDate: DateFormat46Choice;
+}
+
+export type DistributionTypeFormat7Choice =
+  | { Code: "FINL" | "INTE" | "ONGO" | "ROLL" }
+  | { Proprietary: GenericIdentification30 };
+
+export type DividendTypeFormat9Choice =
+  | { Code: "FINL" | "INTE" | "REIN" | "REGR" | "SPEC" | "SPRE" }
+  | { Proprietary: GenericIdentification30 };
 
 export type DocumentType1Choice =
   | { Code: string }
@@ -3842,6 +5252,60 @@ export interface Document15 {
   Enclosure: string;
 }
 
+export interface DocumentIdentification17 {
+  Identification: string;
+}
+
+export interface DocumentIdentification31 {
+  Identification: string;
+  LinkageType?: ProcessingPosition7Choice;
+}
+
+export type DocumentIdentification3Choice =
+  | { AccountServicerDocumentIdentification: string }
+  | { AccountOwnerDocumentIdentification: string };
+
+export type DocumentNumber5Choice =
+  | { ShortNumber: string }
+  | { LongNumber: string }
+  | { ProprietaryNumber: GenericIdentification36 };
+
+export interface DocumentIdentification32 {
+  Identification: DocumentIdentification3Choice;
+  DocumentNumber?: DocumentNumber5Choice;
+  LinkageType?: ProcessingPosition7Choice;
+}
+
+export interface DocumentIdentification33 {
+  Identification: DocumentIdentification3Choice;
+  DocumentNumber?: DocumentNumber5Choice;
+}
+
+export type DocumentIdentification4Choice =
+  | { AccountServicerDocumentIdentification: string }
+  | { AccountOwnerDocumentIdentification: string };
+
+export type DocumentNumber6Choice =
+  | { ShortNumber: string }
+  | { LongNumber: string }
+  | { ProprietaryNumber: GenericIdentification86 };
+
+export interface DocumentIdentification34 {
+  Identification: DocumentIdentification4Choice;
+  DocumentNumber?: DocumentNumber6Choice;
+}
+
+export interface DocumentIdentification37 {
+  Identification: string;
+  LinkageType?: ProcessingPosition10Choice;
+}
+
+export interface DocumentIdentification38 {
+  Identification: DocumentIdentification4Choice;
+  DocumentNumber?: DocumentNumber6Choice;
+  LinkageType?: ProcessingPosition10Choice;
+}
+
 export interface PartyIdentification136 {
   Identification: PartyIdentification120Choice;
   LEI?: string;
@@ -3855,21 +5319,29 @@ export interface DocumentIdentification51 {
   MessageRecipient?: PartyIdentification136;
 }
 
-export type DocumentNumber5Choice =
-  | { ShortNumber: string }
-  | { LongNumber: string }
-  | { ProprietaryNumber: GenericIdentification36 };
+export interface DocumentIdentification57 {
+  BuyerProtectionInstructionIdentification: string;
+  ProcessorInstructionIdentification?: string;
+}
 
-export type DocumentNumber6Choice =
-  | { ShortNumber: string }
-  | { LongNumber: string }
-  | { ProprietaryNumber: GenericIdentification86 };
+export interface DocumentIdentification8 {
+  Identification: string;
+  CreationDateTime?: string;
+}
+
+export interface DocumentIdentification9 {
+  Identification: string;
+}
 
 export interface DocumentToSend4 {
   Type: string;
   Recipient: PartyIdentification125Choice;
   MethodOfTransmission: CommunicationMethod3Choice;
 }
+
+export type DutchAuctionTypeFormat1Choice =
+  | { Code: "MDFD" | "UNMD" }
+  | { Proprietary: GenericIdentification30 };
 
 export interface ProprietaryReference1 {
   Type: string;
@@ -4192,6 +5664,12 @@ export interface FileData1 {
 export interface FinancialInstitutionIdentification21 {
   BICFI?: string;
   ClearingSystemMemberIdentification?: ClearingSystemMemberIdentification2;
+  LEI?: string;
+  Other?: GenericFinancialIdentification1;
+}
+
+export interface FinancialInstitutionIdentification28 {
+  BICFI?: string;
   LEI?: string;
   Other?: GenericFinancialIdentification1;
 }
@@ -4615,6 +6093,63 @@ export interface FinancialInstrumentAttributes122 {
   FinancialInstrumentAttributeAdditionalDetails?: string;
 }
 
+export interface QuantityToQuantityRatio1 {
+  Quantity1: string;
+  Quantity2: string;
+}
+
+export interface FinancialInstrumentAttributes128 {
+  FinancialInstrumentIdentification: SecurityIdentification19;
+  PlaceOfListing?: MarketIdentification3Choice;
+  DayCountBasis?: InterestComputationMethodFormat4Choice;
+  ClassificationType?: ClassificationType32Choice;
+  OptionStyle?: OptionStyle8Choice;
+  DenominationCurrency?: string;
+  NextCouponDate?: string;
+  ExpiryDate?: string;
+  FloatingRateFixingDate?: string;
+  MaturityDate?: string;
+  IssueDate?: string;
+  NextCallableDate?: string;
+  PutableDate?: string;
+  DatedDate?: string;
+  ConversionDate?: string;
+  InterestRate?: RateFormat24Choice;
+  NextInterestRate?: RateFormat24Choice;
+  PercentageOfDebtClaim?: RateFormat24Choice;
+  PreviousFactor?: RateFormat12Choice;
+  NextFactor?: RateFormat12Choice;
+  WarrantParity?: QuantityToQuantityRatio1;
+  MinimumNominalQuantity?: FinancialInstrumentQuantity33Choice;
+  ContractSize?: FinancialInstrumentQuantity33Choice;
+}
+
+export interface FinancialInstrumentAttributes129 {
+  FinancialInstrumentIdentification: SecurityIdentification19;
+  PlaceOfListing?: MarketIdentification3Choice;
+  DayCountBasis?: InterestComputationMethodFormat4Choice;
+  ClassificationType?: ClassificationType32Choice;
+  OptionStyle?: OptionStyle8Choice;
+  DenominationCurrency?: string;
+  NextCouponDate?: string;
+  FloatingRateFixingDate?: string;
+  MaturityDate?: string;
+  IssueDate?: string;
+  NextCallableDate?: string;
+  PutableDate?: string;
+  DatedDate?: string;
+  ConversionDate?: string;
+  PreviousFactor?: RateFormat12Choice;
+  NextFactor?: RateFormat12Choice;
+  InterestRate?: RateFormat24Choice;
+  NextInterestRate?: RateFormat24Choice;
+  MinimumNominalQuantity?: FinancialInstrumentQuantity33Choice;
+  MinimumQuantityToInstruct?: FinancialInstrumentQuantity33Choice;
+  MinimumMultipleQuantityToInstruct?: FinancialInstrumentQuantity33Choice;
+  ContractSize?: FinancialInstrumentQuantity33Choice;
+  IssuePrice?: PriceFormat74Choice;
+}
+
 export interface QuantityBreakdown31 {
   LotNumber: GenericIdentification37;
   LotQuantity?: FinancialInstrumentQuantity1Choice;
@@ -4663,6 +6198,39 @@ export interface FinancialInstrumentAttributes92 {
   UnderlyingFinancialInstrumentIdentification?: Array<SecurityIdentification19>;
   FinancialInstrumentAttributeAdditionalDetails?: string;
 }
+
+export type FinancialInstrumentQuantity18Choice =
+  | { Unit: string }
+  | { FaceAmount: string };
+
+export type FinancialInstrumentQuantity31Choice =
+  | { Unit: string }
+  | { FaceAmount: string };
+
+export type FinancialInstrumentQuantity43Choice =
+  | { Unit: string }
+  | { FaceAmount: string }
+  | { AmortisedValue: string }
+  | { Code: "UKWN" }
+  | { DigitalTokenUnit: string };
+
+export type FinancialInstrumentQuantity44Choice =
+  | { Unit: string }
+  | { FaceAmount: string }
+  | { AmortisedValue: string }
+  | { Code: "UKWN" | "ANYA" }
+  | { DigitalTokenUnit: string };
+
+export type FinancialInstrumentQuantity45Choice =
+  | { Unit: string }
+  | { FaceAmount: string }
+  | { DigitalTokenUnit: string };
+
+export type FinancialInstrumentQuantity46Choice =
+  | { Unit: string }
+  | { FaceAmount: string }
+  | { DigitalTokenUnit: string }
+  | { Code: "QALL" };
 
 export interface FinancialInstrumentQuantitySearch2 {
   FaceAmount: ImpliedCurrencyAmountRange1Choice;
@@ -4717,6 +6285,19 @@ export interface ForeignExchangeTerms35 {
   QuotingInstitution?: PartyIdentification137Choice;
 }
 
+export interface ForeignExchangeTerms38 {
+  UnitCurrency: string;
+  QuotedCurrency: string;
+  ExchangeRate: string;
+}
+
+export interface ForeignExchangeTerms39 {
+  UnitCurrency: string;
+  QuotedCurrency: string;
+  ExchangeRate: string;
+  ResultingAmount?: ActiveCurrencyAndAmount;
+}
+
 export interface ForeignExchangeTerms6 {
   UnitCurrency: string;
   QuotedCurrency: string;
@@ -4724,6 +6305,22 @@ export interface ForeignExchangeTerms6 {
   QuotationDate?: string;
   QuotingInstitution?: PartyIdentification2Choice;
 }
+
+export interface ForeignExchangeTerms9 {
+  UnitCurrency: string;
+  QuotedCurrency: string;
+  ExchangeRate: string;
+  ResultingAmount: ActiveCurrencyAndAmount;
+  OriginalAmount?: ActiveCurrencyAndAmount;
+}
+
+export type FractionDispositionType26Choice =
+  | { Code: "BUYU" | "CINL" | "DIST" | "RDDN" | "STAN" | "RDUP" | "UKWN" }
+  | { Proprietary: GenericIdentification30 };
+
+export type FractionDispositionType31Choice =
+  | { Code: "BUYU" | "CINL" | "DIST" | "RDDN" | "STAN" | "RDUP" | "UKWN" }
+  | { Proprietary: GenericIdentification47 };
 
 export type Frequency20Choice =
   | { Code: "ADHO" | "YEAR" | "DAIL" | "FOMN" | "TOMN" | "TOWK" | "TYEA" | "INDA" | "MNTH" | "ONDE" | "OVNG" | "QUTR" | "SEMI" | "TWMN" | "WEEK" }
@@ -4888,11 +6485,6 @@ export interface GenericIdentification77 {
   ShortName?: string;
 }
 
-export interface GenericIdentification78 {
-  Type: GenericIdentification30;
-  Identification?: string;
-}
-
 export interface GenericIdentification80 {
   Type: GenericIdentification30;
   Identification?: string;
@@ -4907,6 +6499,62 @@ export interface GenericIdentification85 {
   Type: GenericIdentification47;
   Identification?: string;
 }
+
+export type RateType76Choice =
+  | { Code: "CAPO" | "FLFR" | "INCO" | "INTR" | "LTCG" | "REES" | "STCG" | "SOIC" | "TXBL" | "TXDF" | "TXFR" | "UNFR" | "CDFI" }
+  | { Proprietary: GenericIdentification30 };
+
+export type RateStatus3Choice =
+  | { Code: "ACTU" | "INDI" }
+  | { Proprietary: GenericIdentification30 };
+
+export interface RateTypeAndAmountAndStatus55 {
+  RateType: RateType76Choice;
+  Amount: ActiveCurrencyAnd13DecimalAmount;
+  RateStatus?: RateStatus3Choice;
+}
+
+export type GrossDividendRateFormat36Choice =
+  | { Amount: ActiveCurrencyAnd13DecimalAmount }
+  | { AmountAndRateStatus: AmountAndRateStatus1 }
+  | { RateTypeAndAmountAndRateStatus: RateTypeAndAmountAndStatus55 }
+  | { NotSpecifiedRate: "UKWN" | "NILP" };
+
+export type RateType78Choice =
+  | { Code: "CAPO" | "CDFI" | "FUPU" | "FLFR" | "INCO" | "INTR" | "LTCG" | "PAPU" | "REES" | "STCG" | "SOIC" | "TXBL" | "TXDF" | "TXFR" | "UNFR" }
+  | { Proprietary: GenericIdentification30 };
+
+export interface RateTypeAndAmountAndStatus57 {
+  RateType: RateType78Choice;
+  Amount: ActiveCurrencyAnd13DecimalAmount;
+  RateStatus?: RateStatus3Choice;
+}
+
+export type GrossDividendRateFormat38Choice =
+  | { Amount: ActiveCurrencyAnd13DecimalAmount }
+  | { AmountAndRateStatus: AmountAndRateStatus1 }
+  | { RateTypeAndAmountAndRateStatus: RateTypeAndAmountAndStatus57 }
+  | { NotSpecifiedRate: "UKWN" | "NILP" };
+
+export type RateType80Choice =
+  | { Code: "CAPO" | "FLFR" | "INCO" | "INTR" | "LTCG" | "REES" | "STCG" | "SOIC" | "TXBL" | "TXDF" | "TXFR" | "UNFR" | "CDFI" }
+  | { Proprietary: GenericIdentification47 };
+
+export type RateStatus4Choice =
+  | { Code: "ACTU" | "INDI" }
+  | { Proprietary: GenericIdentification47 };
+
+export interface RateTypeAndAmountAndStatus59 {
+  RateType: RateType80Choice;
+  Amount: RestrictedFINActiveCurrencyAnd13DecimalAmount;
+  RateStatus?: RateStatus4Choice;
+}
+
+export type GrossDividendRateFormat41Choice =
+  | { Amount: RestrictedFINActiveCurrencyAnd13DecimalAmount }
+  | { AmountAndRateStatus: AmountAndRateStatus2 }
+  | { RateTypeAndAmountAndRateStatus: RateTypeAndAmountAndStatus59 }
+  | { NotSpecifiedRate: "UKWN" | "NILP" };
 
 export interface PartyAndCertificate7 {
   ModificationCode?: "NOCH" | "MODI" | "DELE" | "ADDD";
@@ -5079,6 +6727,29 @@ export interface HoldIndicator6 {
   Reason?: Array<RegistrationReason5>;
 }
 
+export interface SignedQuantityFormat14 {
+  ShortLongPosition: "SHOR" | "LONG";
+  Quantity: FinancialInstrumentQuantity45Choice;
+}
+
+export interface HoldingBalance14 {
+  Balance: SignedQuantityFormat14;
+  BalanceType: "BLOK" | "ELIG" | "PEND" | "PENR" | "NOMI" | "SETD" | "BORR" | "LOAN" | "SPOS" | "TRAD" | "COLI" | "COLO" | "UNBA" | "INBA" | "REGO";
+  SafekeepingPlace?: SafekeepingPlaceFormat42Choice;
+  Date?: string;
+}
+
+export interface SignedQuantityFormat15 {
+  ShortLongPosition: "SHOR" | "LONG";
+  Quantity: FinancialInstrumentQuantity46Choice;
+}
+
+export interface HoldingBalance15 {
+  Balance: SignedQuantityFormat15;
+  BalanceType?: "BLOK" | "ELIG" | "PEND" | "PENR" | "NOMI" | "SETD" | "BORR" | "LOAN" | "SPOS" | "TRAD" | "COLI" | "COLO" | "UNBA" | "INBA" | "REGO";
+  SafekeepingPlace?: SafekeepingPlaceFormat42Choice;
+}
+
 export interface IdentificationAssignment4 {
   MessageIdentification: string;
   CreationDateTime: string;
@@ -5094,10 +6765,26 @@ export interface IdentificationInformation5 {
   Agent?: BranchAndFinancialInstitutionIdentification8;
 }
 
+export type IdentificationType45Choice =
+  | { Code: "ARNU" | "CUST" | "CORP" | "DRLC" | "IDCD" | "NRIN" | "CCPT" | "SOCS" | "TXID" }
+  | { Proprietary: GenericIdentification30 };
+
+export type PriceFormat77Choice =
+  | { PercentagePrice: PercentagePrice2 }
+  | { AmountPrice: AmountPrice3 };
+
+export type IndicativeOrMarketPrice13Choice =
+  | { IndicativePrice: PriceFormat77Choice }
+  | { MarketPrice: PriceFormat77Choice };
+
 export interface InformationQualifierType1 {
   IsFormatted?: 'true' | 'false';
   Priority?: "HIGH" | "NORM" | "LOWW";
 }
+
+export type InformationTypeFormat4Choice =
+  | { Code: "CONF" }
+  | { Proprietary: GenericIdentification30 };
 
 export type InitialAmount1Choice =
   | { InitialNumberOfInstalments: string }
@@ -5113,9 +6800,83 @@ export interface InstructionForInstructedAgent1 {
   InstructionInformation?: string;
 }
 
+export type RejectedReason65Choice =
+  | { Code: "OPTY" | "ULNK" | "DSEC" | "LATE" | "NMTY" | "CANC" | "INTV" | "OPNM" | "OTHR" | "EVNM" | "DQCC" | "DUPL" | "DSET" | "DCAN" | "TRTY" | "BUMM" | "ECMD" | "ECRD" | "DUCK" | "DUST" | "DSNA" }
+  | { Proprietary: GenericIdentification30 };
+
+export interface RejectedStatusReason62 {
+  ReasonCode: RejectedReason65Choice;
+  AdditionalReasonInformation?: string;
+}
+
+export type RejectedStatus63Choice =
+  | { NoSpecifiedReason: "NORE" }
+  | { Reason: RejectedStatusReason62 };
+
+export type PendingReason74Choice =
+  | { Code: "OTHR" | "BUMM" | "ECRD" | "WCTF" }
+  | { Proprietary: GenericIdentification30 };
+
+export interface PendingStatusReason32 {
+  ReasonCode: PendingReason74Choice;
+  AdditionalReasonInformation?: string;
+}
+
+export type PendingStatus78Choice =
+  | { NoSpecifiedReason: "NORE" }
+  | { Reason: PendingStatusReason32 };
+
+export interface ProprietaryReason4 {
+  Reason?: GenericIdentification30;
+  AdditionalReasonInformation?: string;
+}
+
+export interface ProprietaryStatusAndReason6 {
+  ProprietaryStatus: GenericIdentification30;
+  ProprietaryReason?: Array<ProprietaryReason4>;
+}
+
+export type InstructionProcessingStatus59Choice =
+  | { AcceptedAndConfirmed: "NORE" }
+  | { Rejected: RejectedStatus63Choice }
+  | { Pending: PendingStatus78Choice }
+  | { ProprietaryStatus: ProprietaryStatusAndReason6 };
+
 export type InsuranceType2Choice =
   | { Code: "LIFE" | "PDIS" }
   | { Proprietary: GenericIdentification47 };
+
+export type RateType33Choice =
+  | { Code: "SCHD" | "USCD" }
+  | { Proprietary: GenericIdentification30 };
+
+export interface RateTypeAndAmountAndStatus24 {
+  RateType: RateType33Choice;
+  Amount: ActiveCurrencyAnd13DecimalAmount;
+  RateStatus?: RateStatus3Choice;
+}
+
+export type InterestRateUsedForPaymentFormat11Choice =
+  | { Rate: string }
+  | { Amount: ActiveCurrencyAnd13DecimalAmount }
+  | { RateTypeAndAmountAndRateStatus: RateTypeAndAmountAndStatus24 }
+  | { NotSpecifiedRate: "UKWN" | "NILP" };
+
+export type RateType45Choice =
+  | { Code: "SCHD" | "USCD" }
+  | { Proprietary: GenericIdentification47 };
+
+export interface RateTypeAndAmountAndStatus32 {
+  RateType: RateType45Choice;
+  Amount: RestrictedFINActiveCurrencyAnd13DecimalAmount;
+  RateStatus?: RateStatus4Choice;
+}
+
+export type InterestRateUsedForPaymentFormat18Choice =
+  | { Rate: string }
+  | { Amount: RestrictedFINActiveCurrencyAnd13DecimalAmount }
+  | { RateTypeAndAmountAndRateStatus: RateTypeAndAmountAndStatus32 }
+  | { NotSpecifiedRate: "UKWN" | "NILP" };
 
 export interface Intermediary11 {
   Identification: PartyIdentification2Choice;
@@ -5170,6 +6931,14 @@ export interface Intermediary46 {
   SecondaryCommunicationAddress?: Array<CommunicationAddress6>;
   NameAndAddress?: NameAndAddress4;
 }
+
+export type IntermediateSecuritiesDistributionTypeFormat18Choice =
+  | { Code: "BIDS" | "DRIP" | "DVCA" | "DVOP" | "EXRI" | "PRIO" | "DVSC" | "DVSE" | "INTR" | "LIQU" | "SOFF" | "SPLF" | "BONU" | "EXOF" | "MRGR" }
+  | { Proprietary: GenericIdentification47 };
+
+export type IntermediateSecuritiesDistributionTypeFormat19Choice =
+  | { Code: "BIDS" | "DRIP" | "DVCA" | "DVOP" | "EXRI" | "PRIO" | "DVSC" | "DVSE" | "INTR" | "LIQU" | "SOFF" | "SPLF" | "BONU" | "EXOF" | "MRGR" | "UKWN" }
+  | { Proprietary: GenericIdentification30 };
 
 export type PriorityNumeric4Choice =
   | { Numeric: string }
@@ -5436,6 +7205,25 @@ export interface InvestorProfile2 {
   MarketMaker?: MarketMakerProfile2;
 }
 
+export interface InvestorTypeIdentification1 {
+  InvestorTypeIdentification: "ELIG" | "NLIG" | "NQIB" | "OTHR" | "QUIB";
+  InvestorTypeIdentificationNarrative?: string;
+}
+
+export type IssuerOfferorTaxabilityIndicator1Choice =
+  | { Code: "TXBL" }
+  | { Proprietary: GenericIdentification47 };
+
+export type IssuerOfferorTaxabilityIndicator2Choice =
+  | { Code: "TXBL" }
+  | { Proprietary: GenericIdentification30 };
+
+export interface ItemDescription2 {
+  Language: string;
+  Title?: string;
+  Description?: Array<string>;
+}
+
 export interface LetterIntent1 {
   LetterIntentReference: string;
   Amount?: ActiveCurrencyAnd13DecimalAmount;
@@ -5490,10 +7278,6 @@ export type LinkageType3Choice =
   | { Code: "LINK" | "UNLK" | "SOFT" }
   | { Proprietary: GenericIdentification30 };
 
-export type ProcessingPosition7Choice =
-  | { Code: "AFTE" | "WITH" | "BEFO" | "INFO" }
-  | { Proprietary: GenericIdentification30 };
-
 export type References34Choice =
   | { SecuritiesSettlementTransactionIdentification: string }
   | { IntraPositionMovementIdentification: string }
@@ -5502,10 +7286,6 @@ export type References34Choice =
   | { MarketInfrastructureTransactionIdentification: string }
   | { PoolIdentification: string }
   | { OtherTransactionIdentification: string };
-
-export type PartyIdentification127Choice =
-  | { AnyBIC: string }
-  | { ProprietaryIdentification: GenericIdentification36 };
 
 export interface Linkages57 {
   ProcessingPosition?: ProcessingPosition7Choice;
@@ -5535,6 +7315,14 @@ export interface LongPaymentIdentification4 {
   EntryType?: string;
   EndToEndIdentification?: string;
 }
+
+export type LotteryTypeFormat4Choice =
+  | { Code: "ORIG" | "SUPP" }
+  | { Proprietary: GenericIdentification30 };
+
+export type LotteryTypeFormat5Choice =
+  | { Code: "ORIG" | "SUPP" }
+  | { Proprietary: GenericIdentification47 };
 
 export interface MandateAuthentication1 {
   MessageAuthenticationCode?: string;
@@ -5689,11 +7477,6 @@ export interface MarketPracticeVersion1 {
   Number?: string;
 }
 
-export interface ProprietaryReason4 {
-  Reason?: GenericIdentification30;
-  AdditionalReasonInformation?: string;
-}
-
 export type UnmatchedReason21Choice =
   | { Code: "ADEA" | "ACRU" | "IIND" | "CPCA" | "CLAT" | "NCRR" | "DDEA" | "DMCT" | "DCMX" | "DSEC" | "DQUA" | "INVE" | "LEOG" | "LATE" | "MIME" | "CMIS" | "NMAS" | "DTRA" | "OTHR" | "FRAP" | "PHYS" | "PLIS" | "INPS" | "PLCE" | "PODU" | "DEPT" | "ICAG" | "ICUS" | "IEXE" | "REGD" | "RTGS" | "SAFE" | "DMON" | "DDAT" | "SETS" | "SETR" | "TXST" | "DTRD" | "DELN" | "UNBR" }
   | { Proprietary: GenericIdentification30 };
@@ -5707,11 +7490,6 @@ export type UnmatchedStatus16Choice =
   | { NoSpecifiedReason: "NORE" }
   | { Reason: UnmatchedReason15 };
 
-export interface ProprietaryStatusAndReason6 {
-  ProprietaryStatus: GenericIdentification30;
-  ProprietaryReason?: Array<ProprietaryReason4>;
-}
-
 export type MatchingStatus24Choice =
   | { Matched: ProprietaryReason4 }
   | { Unmatched: UnmatchedStatus16Choice }
@@ -5720,6 +7498,26 @@ export type MatchingStatus24Choice =
 export type MatchingStatus27Choice =
   | { Code: "MACH" | "NMAT" }
   | { Proprietary: GenericIdentification30 };
+
+export type MeetingTypeClassification2Choice =
+  | { Code: "AMET" | "CLAS" | "ISSU" | "OMET" | "VRHI" }
+  | { Proprietary: GenericIdentification13 };
+
+export type PartyIdentification129Choice =
+  | { AnyBIC: string }
+  | { ProprietaryIdentification: GenericIdentification36 }
+  | { NameAndAddress: NameAndAddress5 }
+  | { LEI: string };
+
+export interface MeetingReference10 {
+  MeetingIdentification: string;
+  IssuerMeetingIdentification?: string;
+  MeetingDateAndTime: string;
+  Type: "XMET" | "GMET" | "MIXD" | "SPCL" | "BMET" | "CMET";
+  Classification?: MeetingTypeClassification2Choice;
+  Location?: Array<PostalAddress1>;
+  Issuer?: PartyIdentification129Choice;
+}
 
 export type MemberIdentification3Choice =
   | { BICFI: string }
@@ -5776,11 +7574,64 @@ export interface NameAndAddress8 {
   AlternativeIdentifier?: Array<string>;
 }
 
+export interface NaturalPersonIdentification1 {
+  Identification: string;
+  IdentificationType?: IdentificationType45Choice;
+}
+
 export interface NetCashForecast3 {
   NetAmount?: ActiveOrHistoricCurrencyAndAmount;
   NetUnitsNumber?: FinancialInstrumentQuantity1;
   FlowDirection: "INCG" | "OUTG";
 }
+
+export type RateType77Choice =
+  | { Code: "CAPO" | "CDFI" | "FLFR" | "INCO" | "INTR" | "REES" | "SOIC" | "TXBL" | "TXDF" | "TXFR" | "UNFR" }
+  | { Proprietary: GenericIdentification30 };
+
+export interface RateTypeAndAmountAndStatus56 {
+  RateType: RateType77Choice;
+  Amount: ActiveCurrencyAnd13DecimalAmount;
+  RateStatus?: RateStatus3Choice;
+}
+
+export type NetDividendRateFormat38Choice =
+  | { Amount: ActiveCurrencyAnd13DecimalAmount }
+  | { AmountAndRateStatus: AmountAndRateStatus1 }
+  | { RateTypeAndAmountAndRateStatus: RateTypeAndAmountAndStatus56 }
+  | { NotSpecifiedRate: "UKWN" };
+
+export type RateType79Choice =
+  | { Code: "CAPO" | "CDFI" | "FUPU" | "FLFR" | "INCO" | "INTR" | "SOIC" | "TXBL" | "TXDF" | "TXFR" | "UNFR" | "PAPU" | "REES" }
+  | { Proprietary: GenericIdentification30 };
+
+export interface RateTypeAndAmountAndStatus58 {
+  RateType: RateType79Choice;
+  Amount: ActiveCurrencyAnd13DecimalAmount;
+  RateStatus?: RateStatus3Choice;
+}
+
+export type NetDividendRateFormat39Choice =
+  | { Amount: ActiveCurrencyAnd13DecimalAmount }
+  | { AmountAndRateStatus: AmountAndRateStatus1 }
+  | { RateTypeAndAmountAndRateStatus: RateTypeAndAmountAndStatus58 }
+  | { NotSpecifiedRate: "UKWN" };
+
+export type RateType81Choice =
+  | { Code: "CAPO" | "CDFI" | "FLFR" | "INCO" | "INTR" | "REES" | "SOIC" | "TXBL" | "TXDF" | "TXFR" | "UNFR" }
+  | { Proprietary: GenericIdentification47 };
+
+export interface RateTypeAndAmountAndStatus60 {
+  RateType: RateType81Choice;
+  Amount: RestrictedFINActiveCurrencyAnd13DecimalAmount;
+  RateStatus?: RateStatus4Choice;
+}
+
+export type NetDividendRateFormat43Choice =
+  | { Amount: RestrictedFINActiveCurrencyAnd13DecimalAmount }
+  | { AmountAndRateStatus: AmountAndRateStatus2 }
+  | { RateTypeAndAmountAndRateStatus: RateTypeAndAmountAndStatus60 }
+  | { NotSpecifiedRate: "UKWN" };
 
 export type NettingEligibility4Choice =
   | { Indicator: 'true' | 'false' }
@@ -5795,6 +7646,18 @@ export interface NewIssueAllocation2 {
   ExemptPersonReason?: string;
   DeMinimus?: DeMinimus1Choice;
 }
+
+export interface NoSpecifiedReason1 {
+  NoSpecifiedReason: "NORE";
+}
+
+export type NonEligibleProceedsIndicator5Choice =
+  | { Code: "NELC" | "ACLI" | "ONEL" | "NELS" }
+  | { Proprietary: GenericIdentification30 };
+
+export type NonEligibleProceedsIndicator6Choice =
+  | { Code: "NELC" | "ACLI" | "ONEL" | "NELS" }
+  | { Proprietary: GenericIdentification47 };
 
 export interface NumberAndSumOfTransactions1 {
   NumberOfEntries?: string;
@@ -5821,6 +7684,10 @@ export interface NumberOfTransactionsPerStatus5 {
   DetailedStatus: string;
   DetailedControlSum?: string;
 }
+
+export type OfferTypeFormat18Choice =
+  | { Code: "DISS" | "ERUN" | "FINL" | "PART" | "SQUE" | "NDIS" | "ACPR" }
+  | { Proprietary: GenericIdentification30 };
 
 export type PartyOrGroup3Choice =
   | { GroupIdentification: string }
@@ -5861,6 +7728,34 @@ export interface OperationMandate7 {
   StartDate?: string;
   EndDate?: string;
 }
+
+export type OptionAvailabilityStatus3Choice =
+  | { Code: "INTV" | "CANC" }
+  | { Proprietary: GenericIdentification30 };
+
+export type OptionAvailabilityStatus4Choice =
+  | { Code: "INTV" | "CANC" }
+  | { Proprietary: GenericIdentification47 };
+
+export type OptionFeaturesFormat25Choice =
+  | { Code: "OPLF" }
+  | { Proprietary: GenericIdentification30 };
+
+export type OptionFeaturesFormat27Choice =
+  | { Code: "OPLF" }
+  | { Proprietary: GenericIdentification47 };
+
+export type OptionFeaturesFormat31Choice =
+  | { Code: "ASVO" | "BOIS" | "COND" | "MAXC" | "MAXS" | "NOSE" | "OPLF" | "CAOS" | "PINS" | "PROR" | "VVPR" | "QCAS" | "SHAR" | "RGRS" | "RNET" }
+  | { Proprietary: GenericIdentification47 };
+
+export type OptionFeaturesFormat32Choice =
+  | { Code: "NOSE" | "CAOS" | "COND" | "MAXC" | "MAXS" | "OPLF" | "PROR" | "VVPR" | "PINS" | "ASVO" | "BOIS" | "QCAS" | "SHAR" | "RGRS" | "RNET" | "FCFS" }
+  | { Proprietary: GenericIdentification30 };
+
+export type OptionNumber1Choice =
+  | { Number: string }
+  | { Code: "UNSO" };
 
 export interface PartyIdentification274 {
   Name?: string;
@@ -6175,6 +8070,10 @@ export interface Pagination {
   LastPageIndicator: 'true' | 'false';
 }
 
+export type ParticipationMethod3Choice =
+  | { Code: "MAIL" | "EVOT" | "PHYS" | "PHNV" | "PRXY" | "VIRT" }
+  | { Proprietary: GenericIdentification30 };
+
 export type PartyIdentification71Choice =
   | { AnyBIC: string }
   | { ProprietaryIdentification: GenericIdentification36 }
@@ -6190,13 +8089,15 @@ export type PartyIdentification122Choice =
   | { NameAndAddress: NameAndAddress5 }
   | { Country: string };
 
-export type PartyIdentification136Choice =
-  | { AnyBIC: string }
-  | { ProprietaryIdentification: GenericIdentification84 };
-
 export interface PartyIdentification139 {
   Party: PartyIdentification125Choice;
   LEI?: string;
+}
+
+export interface PartyIdentification143 {
+  Identification: PartyIdentification122Choice;
+  ProcessingIdentification?: string;
+  AlternateIdentification?: Array<AlternatePartyIdentification7>;
 }
 
 export interface PartyIdentification144 {
@@ -6215,6 +8116,12 @@ export interface PartyIdentification148 {
   ProcessingIdentification?: string;
 }
 
+export type PartyIdentification151Choice =
+  | { AnyBIC: string }
+  | { ProprietaryIdentification: GenericIdentification84 }
+  | { NameAndAddress: NameAndAddress12 }
+  | { LEI: string };
+
 export interface PartyIdentification156 {
   Identification: PartyIdentification136Choice;
   LEI?: string;
@@ -6225,6 +8132,69 @@ export interface PartyIdentification191 {
   LEI?: string;
   ProcessingIdentification?: string;
 }
+
+export type PartyIdentification195Choice =
+  | { AnyBIC: string }
+  | { ProprietaryIdentification: GenericIdentification36 }
+  | { LEI: string };
+
+export type PartyIdentification198Choice =
+  | { NationalRegistrationNumber: string }
+  | { LEI: string }
+  | { AnyBIC: string }
+  | { ClientIdentification: string }
+  | { ProprietaryIdentification: GenericIdentification36 };
+
+export interface PartyIdentification215 {
+  Name: string;
+  Identification: PartyIdentification195Choice;
+}
+
+export interface PostalAddress26 {
+  AddressType?: "ADDR" | "PBOX" | "HOME" | "BIZZ" | "MLTO" | "DLVY";
+  AddressLine?: Array<string>;
+  StreetName?: string;
+  BuildingNumber?: string;
+  PostBox?: string;
+  PostCode?: string;
+  TownName?: string;
+  CountrySubDivision?: string;
+  Country: string;
+}
+
+export interface PersonName2 {
+  Name: string;
+  Address?: PostalAddress26;
+}
+
+export interface PartyIdentification221 {
+  NameAndAddress: PersonName2;
+  EmailAddress?: string;
+  Identification: PartyIdentification198Choice;
+}
+
+export interface PersonName3 {
+  NamePrefix?: "DOCT" | "MADM" | "MISS" | "MIST" | "MIKS";
+  FirstName: string;
+  Surname: string;
+  Address?: PostalAddress26;
+}
+
+export interface PartyIdentification238 {
+  NameAndAddress: PersonName3;
+  EmailAddress?: string;
+  Identification: NaturalPersonIdentification1;
+  Nationality?: string;
+  DateAndPlaceOfBirth?: DateAndPlaceOfBirth2;
+}
+
+export type PartyIdentification231Choice =
+  | { LegalPerson: PartyIdentification221 }
+  | { NaturalPerson: PartyIdentification238 };
+
+export type PartyIdentification232Choice =
+  | { LegalPerson: PartyIdentification221 }
+  | { NaturalPerson: PartyIdentification238 };
 
 export interface PartyIdentification265 {
   AnyBIC: string;
@@ -6245,6 +8215,27 @@ export type PartyIdentification242Choice =
   | { AnyBIC: PartyIdentification265 }
   | { PartyIdentification: PartyIdentification266 };
 
+export interface PartyIdentification269 {
+  NameAndAddress: PersonName2;
+  EmailAddress?: string;
+  Identification?: PartyIdentification198Choice;
+  CompanyRegisterShareholderIdentification?: string;
+  CountryOfIncorporation?: string;
+}
+
+export interface PartyIdentification250 {
+  NameAndAddress: PersonName3;
+  EmailAddress?: string;
+  Identification?: NaturalPersonIdentification1;
+  Nationality?: string;
+  DateAndPlaceOfBirth?: DateAndPlaceOfBirth2;
+  CompanyRegisterShareholderIdentification?: string;
+}
+
+export type PartyIdentification246Choice =
+  | { LegalPerson: PartyIdentification269 }
+  | { NaturalPerson: PartyIdentification250 };
+
 export type PartyIdentification257Choice =
   | { AnyBIC: string }
   | { NameAndAddress: NameAndAddress5 }
@@ -6259,6 +8250,12 @@ export interface PartyIdentification314 {
   Identification: PartyIdentification257Choice;
   LEI?: string;
   ProcessingIdentification?: string;
+}
+
+export interface PartyIdentification316 {
+  Identification: PartyIdentification257Choice;
+  ProcessingIdentification?: string;
+  AlternateIdentification?: Array<AlternatePartyIdentification7>;
 }
 
 export interface PartyIdentification44 {
@@ -6435,6 +8432,10 @@ export interface PaymentTypeInformation29 {
   CategoryPurpose?: CategoryPurpose1Choice;
 }
 
+export type PendingCancellationReason6Choice =
+  | { Code: "ADEA" | "DQUA" | "DQCS" | "LATE" | "OTHR" }
+  | { Proprietary: GenericIdentification47 };
+
 export type PendingProcessingReason19Choice =
   | { Code: "ADEA" | "CAIS" | "DOCY" | "BLOC" | "MUNO" | "GLOB" | "PREA" | "YCOL" | "COLL" | "FLIM" | "NOFX" | "LACK" | "LALO" | "MONY" | "MINO" | "OTHR" | "DENO" | "LIQU" | "CERT" | "NEXT" | "PRSY" | "CSDH" | "CDEL" | "CVAL" | "CDLR" | "INBC" | "CDAC" }
   | { Proprietary: GenericIdentification30 };
@@ -6539,6 +8540,12 @@ export type PendingStatus81Choice =
   | { NoSpecifiedReason: "NORE" }
   | { Reason: PendingReason35 };
 
+export interface PersonName1 {
+  FirstName: string;
+  Surname: string;
+  Address?: PostalAddress26;
+}
+
 export interface PlaceOfClearingIdentification2 {
   Identification?: string;
   LEI?: string;
@@ -6588,6 +8595,24 @@ export interface Pledgee4 {
   PledgeeTypeAndIdentification?: PledgeeFormat6Choice;
   LEI?: string;
 }
+
+export type PriceCalculationMethod2Choice =
+  | { Code: "VWAP" | "NAVF" | "MIMP" | "NAVA" | "AVCL" }
+  | { Proprietary: GenericIdentification30 };
+
+export interface PriceDetails38 {
+  GenericCashPricePaidPerProduct?: PriceFormat73Choice;
+  GenericCashPriceReceivedPerProduct?: PriceFormat72Choice;
+  CashInLieuOfSharePrice?: PriceFormat74Choice;
+}
+
+export type PriceFormat58Choice =
+  | { AmountPrice: AmountPrice4 }
+  | { NotSpecifiedPrice: "UKWN" };
+
+export type PriceFormat62Choice =
+  | { AmountPrice: AmountPrice7 }
+  | { NotSpecifiedPrice: "UKWN" };
 
 export type PriceRateOrAmountOrUnknownChoice =
   | { Rate: string }
@@ -6651,6 +8676,68 @@ export interface PriceInformation29 {
 export type Priority1Choice =
   | { Code: "HIGH" | "LOWW" | "NORM" | "URGT" }
   | { Proprietary: string };
+
+export type SecuritiesBalanceType9FormatChoice =
+  | { Code: "AVLB" | "ELEC" | "UNEL" | "RDIS" | "RREM" }
+  | { Proprietary: GenericIdentification13 };
+
+export interface SecuritiesAccount10 {
+  CreditDebitIndicator: "CRDT" | "DBIT";
+  AccountOwnerIdentification?: PartyIdentification2Choice;
+  AccountOwnerNationality?: string;
+  AccountIdentification: string;
+  BalanceType?: SecuritiesBalanceType9FormatChoice;
+  SecurityHoldingForm?: "BEAR" | "REGD";
+}
+
+export interface SecuritiesProceeds1 {
+  SecurityIdentification: SecurityIdentification7;
+  PostingQuantity: UnitOrFaceAmount1Choice;
+  AccountDetails: Array<SecuritiesAccount10>;
+  ReconciliationDetails?: string;
+}
+
+export interface TaxVoucher1 {
+  TaxVoucherRate: string;
+  TaxCredit?: ActiveCurrencyAndAmount;
+  TaxDeduction?: ActiveCurrencyAndAmount;
+  GrossAmount: ActiveCurrencyAndAmount;
+  NetAmount: ActiveCurrencyAndAmount;
+  RecordDateHolding: UnitOrFaceAmount1Choice;
+  TaxCreditRate?: string;
+  WithholdingTaxAmount?: ActiveCurrencyAndAmount;
+  WithholdingTaxRate?: string;
+  ScripDividendReinvestmentPricePerShare?: PriceValue1;
+  CashAmountBroughtForward?: ActiveCurrencyAndAmount;
+  AllotedSharesCost?: PriceValue1;
+  CashAmountCarriedForward?: ActiveCurrencyAndAmount;
+  NotionalTax?: ActiveCurrencyAndAmount;
+  NotionalDividendPayable?: ActiveCurrencyAndAmount;
+  BargainDate?: string;
+  BargainSettlementDate?: string;
+  StampDutyAmount?: ActiveCurrencyAndAmount;
+  ChargeAmount?: ActiveCurrencyAndAmount;
+  CommissionAmount?: ActiveCurrencyAndAmount;
+  ForeignExchangeDetails?: ForeignExchangeTerms9;
+}
+
+export interface ProceedsMovement1 {
+  CashProceedsMovementDetails?: Array<CashProceeds1>;
+  SecuritiesProceedsMovementDetails?: Array<SecuritiesProceeds1>;
+  TaxDetails?: TaxVoucher1;
+}
+
+export type ProcessedStatus2FormatChoice =
+  | { Code: "RECE" | "COMP" }
+  | { Proprietary: GenericIdentification13 };
+
+export type ProcessedStatus3FormatChoice =
+  | { Code: "RECE" | "PEND" | "PACK" }
+  | { Proprietary: GenericIdentification13 };
+
+export type ProcessedStatus5FormatChoice =
+  | { Code: "RECE" | "PACK" }
+  | { Proprietary: GenericIdentification13 };
 
 export type RejectionAndRepairReason32Choice =
   | { Code: "CASH" | "ADEA" | "DMON" | "NCRR" | "LATE" | "INVL" | "INVB" | "INVN" | "VALR" | "MONY" | "CAEV" | "DDAT" | "REFE" | "OTHR" | "DQUA" | "DSEC" | "MINO" | "MUNO" }
@@ -6739,9 +8826,24 @@ export interface ProprietaryStatusAndReason7 {
   ProprietaryReason?: Array<ProprietaryReason5>;
 }
 
-export type Quantity6Choice =
-  | { Quantity: FinancialInstrumentQuantity1Choice }
-  | { OriginalAndCurrentFace: OriginalAndCurrentQuantities1 };
+export interface ProprietaryVote2 {
+  Code: GenericIdentification30;
+  Quantity: FinancialInstrumentQuantity18Choice;
+}
+
+export type ProrationBelowMinimumQuantity3Choice =
+  | { Code: "FULL" | "MIEX" | "REJT" | "MILD" | "MILU" | "UKWN" }
+  | { Proprietary: GenericIdentification30 };
+
+export type Quantity52Choice =
+  | { Code: "QALL" }
+  | { OriginalAndCurrentFaceAmount: OriginalAndCurrentQuantities1 }
+  | { Quantity: FinancialInstrumentQuantity33Choice };
+
+export type Quantity55Choice =
+  | { Code: "QALL" }
+  | { OriginalAndCurrentFaceAmount: OriginalAndCurrentQuantities4 }
+  | { Quantity: FinancialInstrumentQuantity36Choice };
 
 export interface QuantityAndAvailability3 {
   Quantity: FinancialInstrumentQuantity33Choice;
@@ -6769,10 +8871,115 @@ export type QuantitySearch2Choice =
   | { Quantity: FinancialInstrumentQuantitySearch2Choice }
   | { OriginalAndCurrentFace: FinancialInstrumentQuantitySearch2 };
 
+export interface QuantityToQuantityRatio2 {
+  Quantity1: string;
+  Quantity2: string;
+}
+
 export interface Rate2 {
   Sign?: 'true' | 'false';
   Rate: string;
 }
+
+export type RateAndAmountFormat42Choice =
+  | { Amount: ActiveCurrencyAnd13DecimalAmount }
+  | { NotSpecifiedRate: "UKWN" };
+
+export type RateAndAmountFormat48Choice =
+  | { Amount: RestrictedFINActiveCurrencyAnd13DecimalAmount }
+  | { NotSpecifiedRate: "UKWN" };
+
+export type RateAndAmountFormat56Choice =
+  | { Rate: string }
+  | { NotSpecifiedRate: "UKWN" }
+  | { Amount: ActiveCurrencyAnd13DecimalAmount }
+  | { RateTypeAndRate: RateTypeAndPercentageRate12 };
+
+export interface RateTypeAndAmountAndStatus37 {
+  RateType: DeemedRateType1Choice;
+  Amount: ActiveCurrencyAnd13DecimalAmount;
+  RateStatus?: RateStatus3Choice;
+}
+
+export interface RateTypeAndPercentageRate14 {
+  RateType: DeemedRateType1Choice;
+  Rate: string;
+}
+
+export type RateAndAmountFormat61Choice =
+  | { Rate: string }
+  | { Amount: ActiveCurrencyAnd13DecimalAmount }
+  | { NotSpecifiedRate: "UKWN" }
+  | { RateTypeAndAmountAndRateStatus: RateTypeAndAmountAndStatus37 }
+  | { RateTypeAndRate: RateTypeAndPercentageRate14 };
+
+export type RateFormat26Choice =
+  | { Rate: string }
+  | { Amount: ActiveCurrencyAnd13DecimalAmount }
+  | { NotSpecifiedRate: "UKWN" };
+
+export type RateFormat31Choice =
+  | { Rate: string }
+  | { NotSpecifiedRate: "UKWN" }
+  | { Amount: ActiveCurrencyAnd13DecimalAmount };
+
+export type RateFormat32Choice =
+  | { Rate: string }
+  | { NotSpecifiedRate: "UKWN" | "JLID" };
+
+export type RateType36Choice =
+  | { Code: "TXBL" }
+  | { Proprietary: GenericIdentification30 };
+
+export type RateType46Choice =
+  | { Code: "BWIT" | "FTCA" | "NRAT" }
+  | { Proprietary: GenericIdentification47 };
+
+export type RateType47Choice =
+  | { Code: "TXBL" }
+  | { Proprietary: GenericIdentification47 };
+
+export interface RateTypeAndAmountAndStatus26 {
+  RateType: RateType36Choice;
+  Amount: ActiveCurrencyAnd13DecimalAmount;
+  RateStatus?: RateStatus3Choice;
+}
+
+export interface RateTypeAndAmountAndStatus33 {
+  RateType: RateType47Choice;
+  Amount: RestrictedFINActiveCurrencyAnd13DecimalAmount;
+  RateStatus?: RateStatus4Choice;
+}
+
+export interface RateTypeAndAmountAndStatus54 {
+  RateType: DeemedRateType2Choice;
+  Amount: RestrictedFINActiveCurrencyAnd13DecimalAmount;
+  RateStatus?: RateStatus4Choice;
+}
+
+export type RatioFormat17Choice =
+  | { QuantityToQuantity: QuantityToQuantityRatio1 }
+  | { NotSpecifiedRate: "UKWN" }
+  | { AmountToAmount: AmountToAmountRatio2 };
+
+export type RatioFormat18Choice =
+  | { QuantityToQuantity: QuantityToQuantityRatio1 }
+  | { NotSpecifiedRate: "UKWN" }
+  | { AmountToAmount: AmountToAmountRatio2 }
+  | { AmountToQuantity: AmountAndQuantityRatio4 }
+  | { QuantityToAmount: AmountAndQuantityRatio4 };
+
+export type RatioFormat23Choice =
+  | { QuantityToQuantity: QuantityToQuantityRatio2 }
+  | { NotSpecifiedRate: "UKWN" }
+  | { AmountToAmount: AmountToAmountRatio3 };
+
+export type RatioFormat24Choice =
+  | { QuantityToQuantity: QuantityToQuantityRatio2 }
+  | { NotSpecifiedRate: "UKWN" }
+  | { AmountToAmount: AmountToAmountRatio3 }
+  | { AmountToQuantity: AmountAndQuantityRatio5 }
+  | { QuantityToAmount: AmountAndQuantityRatio5 };
 
 export interface References14 {
   AccountOwnerTransactionIdentification?: string;
@@ -6780,6 +8987,12 @@ export interface References14 {
   MarketInfrastructureTransactionIdentification?: string;
   ProcessorTransactionIdentification?: string;
   PoolIdentification?: string;
+}
+
+export interface References26 {
+  AccountServicerTransactionIdentification: string;
+  MarketInfrastructureTransactionIdentification?: string;
+  ProcessorTransactionIdentification?: string;
 }
 
 export interface References3 {
@@ -6829,6 +9042,43 @@ export interface RelatedInvestigationData1 {
   Location?: Array<InvestigationLocationData1>;
 }
 
+export type TradeDateCode3Choice =
+  | { Code: "VARI" }
+  | { Proprietary: GenericIdentification30 };
+
+export type TradeDate8Choice =
+  | { Date: DateAndDateTime2Choice }
+  | { DateCode: TradeDateCode3Choice };
+
+export type SettlementDateCode7Choice =
+  | { Code: "WISS" }
+  | { Proprietary: GenericIdentification30 };
+
+export type SettlementDate17Choice =
+  | { Date: DateAndDateTime2Choice }
+  | { DateCode: SettlementDateCode7Choice };
+
+export interface RelatedSettlementInstruction3 {
+  MarketInfrastructureTransactionIdentification?: string;
+  ProcessorTransactionIdentification?: string;
+  UniqueTransactionIdentifier?: string;
+  RelatedSettlementInstructionIdentification?: string;
+  SecuritiesMovementType: "DELI" | "RECE";
+  Payment: "FREE" | "APMT";
+  TradeDate?: TradeDate8Choice;
+  SettlementDate: SettlementDate17Choice;
+  SettlementQuantity: Quantity51Choice;
+  SettlementAmount?: AmountAndDirection110;
+  CounterpartyDepository?: PartyIdentification143;
+}
+
+export interface RelatedSettlementInstruction4 {
+  MarketInfrastructureTransactionIdentification?: string;
+  ProcessorTransactionIdentification?: string;
+  RelatedSettlementInstructionIdentification?: string;
+  UniqueTransactionIdentifier?: string;
+}
+
 export interface RelatedTransactionData1 {
   MasterUETR?: string;
   SubUETR?: Array<string>;
@@ -6848,6 +9098,10 @@ export interface RemittanceLocation7 {
   RemittanceIdentification?: string;
   RemittanceLocationDetails?: Array<RemittanceLocationData1>;
 }
+
+export type RenounceableEntitlementStatusTypeFormat3Choice =
+  | { Code: "NREN" | "RENO" }
+  | { Proprietary: GenericIdentification30 };
 
 export type RepairReason10Choice =
   | { Code: "BATC" | "CAEV" | "CASH" | "CASY" | "DDAT" | "DDEA" | "DMON" | "DQUA" | "DSEC" | "DTRD" | "IIND" | "MINO" | "MUNO" | "NCRR" | "PHYS" | "PLCE" | "REFE" | "RTGS" | "SAFE" | "SETR" | "SETS" | "TXST" | "INPS" | "SDUT" | "OTHR" | "IEXE" | "ICAG" | "DEPT" | "ICUS" }
@@ -6961,12 +9215,6 @@ export interface ReservationIdentification4 {
   AccountIdentification?: AccountIdentification4Choice;
 }
 
-export interface RestrictedFINActiveCurrencyAndAmount {
-  /** Currency code, serialized as the Ccy attribute. */
-  Ccy: string;
-  Value: string;
-}
-
 export type Restriction5Choice =
   | { Code: "A144" | "NRST" | "RSTR" }
   | { Proprietary: GenericIdentification30 };
@@ -6974,6 +9222,32 @@ export type Restriction5Choice =
 export type Restriction6Choice =
   | { Code: "A144" | "NRST" | "RSTR" }
   | { Proprietary: GenericIdentification47 };
+
+export type ReturnedReason1Choice =
+  | { Code: "NARR" | "PROR" }
+  | { Proprietary: GenericIdentification47 };
+
+export type ReturnedReason2Choice =
+  | { Code: "NARR" | "PROR" }
+  | { Proprietary: GenericIdentification30 };
+
+export interface ReturnedStatusReason1 {
+  ReasonCode: ReturnedReason1Choice;
+  AdditionalReasonInformation?: string;
+}
+
+export type ReturnedStatus1Choice =
+  | { NoSpecifiedReason: "NORE" }
+  | { Reason: ReturnedStatusReason1 };
+
+export interface ReturnedStatusReason2 {
+  ReasonCode: ReturnedReason2Choice;
+  AdditionalReasonInformation?: string;
+}
+
+export type ReturnedStatus2Choice =
+  | { NoSpecifiedReason: "NORE" }
+  | { Reason: ReturnedStatusReason2 };
 
 export interface RoundingParameters1 {
   RoundingModulus?: string;
@@ -6983,11 +9257,6 @@ export interface RoundingParameters1 {
 export interface SafekeepingPlaceTypeAndText8 {
   SafekeepingPlaceType: "SHHE";
   Identification?: string;
-}
-
-export interface SafekeepingPlaceTypeAndIdentification1 {
-  SafekeepingPlaceType: "CUST" | "ICSD" | "NCSD" | "SHHE";
-  Identification: string;
 }
 
 export type SafekeepingPlaceFormat29Choice =
@@ -7050,6 +9319,11 @@ export type SafekeepingPlaceFormatChoice =
   | { IdentificationAsDSS: GenericIdentification5 }
   | { IdentificationAsCountry: string };
 
+export interface SafekeepingPlaceTypeAndText9 {
+  SafekeepingPlaceType: "SHHE" | "ALLP";
+  Identification?: string;
+}
+
 export interface SecuritiesAccount25 {
   Identification: string;
   Type?: PurposeCode7Choice;
@@ -7076,6 +9350,25 @@ export interface SecuritiesAccount42 {
   Designation?: string;
 }
 
+export type StampDutyType1FormatChoice =
+  | { Code: "SDRU" | "SDRT" | "SDRN" | "SDRQ" }
+  | { Proprietary: GenericIdentification13 };
+
+export interface SecuritiesAccount8 {
+  CreditDebitIndicator: "CRDT" | "DBIT";
+  AccountOwnerIdentification?: PartyIdentification2Choice;
+  AccountIdentification: string;
+  BalanceType?: SecuritiesBalanceType10FormatChoice;
+  OptionType?: CorporateActionOption1FormatChoice;
+  OptionNumber?: string;
+  SecurityHoldingForm?: "BEAR" | "REGD";
+  StampDuty?: StampDutyType1FormatChoice;
+}
+
+export type SecuritiesAccountIdentification1Choice =
+  | { SafekeepingAccount: string }
+  | { BlockChainAddressOrWallet: string };
+
 export type SecuritiesBalanceType7Choice =
   | { Code: "BLOK" | "AWAS" | "AVAI" | "NOMI" | "PLED" | "REGO" | "RSTR" | "OTHR" | "SPOS" | "UNRG" | "ISSU" | "QUAS" | "COLA" }
   | { Proprietary: GenericIdentification30 };
@@ -7083,6 +9376,26 @@ export type SecuritiesBalanceType7Choice =
 export type SecuritiesBalanceType8Choice =
   | { Code: "BLOK" | "AWAS" | "AVAI" | "BLCA" | "BLOT" | "BLOV" | "BORR" | "COLI" | "COLO" | "COLA" | "LOAN" | "MARG" | "PECA" | "PEDA" | "PLED" | "REGO" | "RSTR" | "OTHR" | "TRAN" | "DRAW" | "CLEN" | "DIRT" | "NOMI" | "SPOS" | "UNRG" | "ISSU" | "QUAS" | "LODE" }
   | { Proprietary: GenericIdentification47 };
+
+export interface SecuritiesOption81 {
+  MaximumQuantityToInstruct?: FinancialInstrumentQuantity34Choice;
+  MinimumQuantityToInstruct?: FinancialInstrumentQuantity34Choice;
+  MinimumMultipleQuantityToInstruct?: FinancialInstrumentQuantity35Choice;
+  NewBoardLotQuantity?: FinancialInstrumentQuantity35Choice;
+  NewDenominationQuantity?: FinancialInstrumentQuantity35Choice;
+  FrontEndOddLotQuantity?: FinancialInstrumentQuantity35Choice;
+  BackEndOddLotQuantity?: FinancialInstrumentQuantity35Choice;
+}
+
+export interface SecuritiesOption84 {
+  MaximumQuantityToInstruct?: FinancialInstrumentQuantity44Choice;
+  MinimumQuantityToInstruct?: FinancialInstrumentQuantity44Choice;
+  MinimumMultipleQuantityToInstruct?: FinancialInstrumentQuantity43Choice;
+  NewBoardLotQuantity?: FinancialInstrumentQuantity43Choice;
+  NewDenominationQuantity?: FinancialInstrumentQuantity43Choice;
+  FrontEndOddLotQuantity?: FinancialInstrumentQuantity43Choice;
+  BackEndOddLotQuantity?: FinancialInstrumentQuantity43Choice;
+}
 
 export type SecuritiesRTGS4Choice =
   | { Indicator: 'true' | 'false' }
@@ -7122,6 +9435,15 @@ export type SecuritiesTransactionType48Choice =
   | { Code: "BSBK" | "BYIY" | "CNCB" | "COLI" | "COLO" | "CONV" | "FCTA" | "INSP" | "ISSU" | "MKDW" | "MKUP" | "NETT" | "NSYN" | "OWNE" | "OWNI" | "PAIR" | "PLAC" | "PORT" | "REAL" | "REDI" | "REDM" | "RELE" | "REPU" | "RODE" | "RVPO" | "SBBK" | "SBRE" | "SECB" | "SECL" | "SLRE" | "SUBS" | "SYND" | "TBAC" | "TRAD" | "TRPO" | "TRVO" | "TURN" | "CLAI" | "CORP" | "AUTO" | "SWIF" | "SWIT" | "ETFT" | "REBL" | "TRIN" | "TOUT" }
   | { Proprietary: GenericIdentification30 };
 
+export interface SecurityDate20 {
+  PaymentDate: DateFormat30Choice;
+  AvailableDate?: DateFormat30Choice;
+  DividendRankingDate?: DateFormat30Choice;
+  EarliestPaymentDate?: DateFormat30Choice;
+  PariPassuDate?: DateFormat30Choice;
+  LastTradingDate?: DateFormat30Choice;
+}
+
 export interface SequenceRange1 {
   FromSequence: string;
   ToSequence: string;
@@ -7133,14 +9455,6 @@ export type SequenceRange1Choice =
   | { FromToSequence: SequenceRange1 }
   | { EqualSequence: string }
   | { NotEqualSequence: string };
-
-export type SettlementDateCode7Choice =
-  | { Code: "WISS" }
-  | { Proprietary: GenericIdentification30 };
-
-export type SettlementDate17Choice =
-  | { Date: DateAndDateTime2Choice }
-  | { DateCode: SettlementDateCode7Choice };
 
 export type SettlementDateCode8Choice =
   | { Code: "OPEN" | "UKWN" }
@@ -7187,14 +9501,6 @@ export interface SettlementInstruction9 {
   ThirdReimbursementAgent?: BranchAndFinancialInstitutionIdentification6;
   ThirdReimbursementAgentAccount?: CashAccount38;
 }
-
-export type TradeDateCode3Choice =
-  | { Code: "VARI" }
-  | { Proprietary: GenericIdentification30 };
-
-export type TradeDate8Choice =
-  | { Date: DateAndDateTime2Choice }
-  | { DateCode: TradeDateCode3Choice };
 
 export interface SettlementParties78 {
   Depository?: PartyIdentification148;
@@ -7290,6 +9596,12 @@ export type SettlingCapacity7Choice =
 export type SettlingCapacity8Choice =
   | { Code: "SAGE" | "CUST" | "SPRI" | "RISP" }
   | { Proprietary: GenericIdentification47 };
+
+export type SolicitationFeeRateFormat11Choice =
+  | { Rate: string }
+  | { AmountToQuantity: AmountAndQuantityRatio4 }
+  | { Amount: ActiveCurrencyAnd13DecimalAmount }
+  | { NotSpecifiedRate: "UKWN" };
 
 export interface StandingOrder10 {
   Amount?: Amount2Choice;
@@ -7454,6 +9766,18 @@ export type TaxCapacityParty4Choice =
 
 export type TaxCapacityParty5Choice =
   | { Code: "PRIN" | "AGEN" }
+  | { Proprietary: GenericIdentification47 };
+
+export type TaxableIncomePerShareCalculatedFormat3Choice =
+  | { Code: "TDIY" | "TDIN" | "UKWN" }
+  | { Proprietary: GenericIdentification30 };
+
+export type TemporaryFinancialInstrumentIndicator3Choice =
+  | { TemporaryIndicator: 'true' | 'false' }
+  | { Proprietary: GenericIdentification30 };
+
+export type TemporaryFinancialInstrumentIndicator4Choice =
+  | { TemporaryIndicator: 'true' | 'false' }
   | { Proprietary: GenericIdentification47 };
 
 export interface TotalCharges7 {
@@ -7673,6 +9997,14 @@ export type TransactionChannelType1Choice =
   | { Code: "FIAD" | "HOBA" | "BRAN" }
   | { Proprietary: GenericIdentification47 };
 
+export interface TransactionIdentification1 {
+  MarketInfrastructureTransactionIdentification: string;
+}
+
+export interface TransactionIdentification15 {
+  MarketInfrastructureTransactionIdentification: string;
+}
+
 export interface TransactionIdentifications34 {
   AccountOwnerTransactionIdentification: string;
   AccountServicerTransactionIdentification?: string;
@@ -7795,6 +10127,12 @@ export interface UnderlyingPaymentTransaction8 {
   OriginalServiceLevel?: ServiceLevel8Choice;
 }
 
+export interface UnderlyingSecurityMovement1 {
+  SecurityIdentification: SecurityIdentification7;
+  SecuritiesQuantity: UnitOrFaceAmount1Choice;
+  AccountDetails: Array<SecuritiesAccount8>;
+}
+
 export interface UnderlyingStatementEntry3 {
   OriginalGroupInformation?: OriginalGroupInformation29;
   OriginalStatementIdentification?: string;
@@ -7810,6 +10148,20 @@ export type UnderlyingTransaction8Choice =
 export type UpdateType16Choice =
   | { Code: "COMP" | "DELT" }
   | { Proprietary: GenericIdentification47 };
+
+export interface UpdatedAdditionalInformation19 {
+  Language: string;
+  AdditionalInformation: string;
+}
+
+export interface UpdatedAdditionalInformation21 {
+  Language: string;
+  AdditionalInformation: Array<string>;
+}
+
+export type VoteInstructionType1Choice =
+  | { Type: "ABST" | "CAGS" | "AMGT" | "BLNK" | "CHRM" | "DISC" | "CFOR" | "NOAC" | "ONEY" | "THRY" | "TWOY" | "WTHH" | "WMGT" }
+  | { Proprietary: GenericIdentification30 };
 
 export type YieldedOrValueType2Choice =
   | { Yielded: 'true' | 'false' }

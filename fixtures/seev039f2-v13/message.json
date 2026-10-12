@@ -1,0 +1,131 @@
+{
+  "identifier": "seev.039.002.13",
+  "name": "CorporateActionCancellationAdvice002V13",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.039.002.13",
+  "bodyTag": "CorpActnCxlAdvc",
+  "out": "seev039f2",
+  "isoId": "_jKsTE5t3Ee-wQIOX0djF2w",
+  "definition": "Scope|The CorporateActionCancellationAdvice message is sent by an account servicer to an account owner or its designated agent to cancel a previously announced corporate action event in case of error from the account servicer or in case of withdrawal by the issuer.|Usage|The message may also be used to:|- re-send a message previously sent (the sub-function of the message is Duplicate),|- provide a third party with a copy of a message for information (the sub-function of the message is Copy),|- re-send to a third party a copy of a message for information (the sub-function of the message is Copy Duplicate), using the relevant elements in the business application header (BAH).",
+  "blocks": [
+    {
+      "name": "CancellationAdviceGeneralInformation",
+      "isoId": "_jKsTF5t3Ee-wQIOX0djF2w",
+      "xmlTag": "CxlAdvcGnlInf",
+      "type": "CorporateActionCancellation4",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionGeneralInformation",
+      "isoId": "_jKsTGZt3Ee-wQIOX0djF2w",
+      "xmlTag": "CorpActnGnlInf",
+      "type": "CorporateActionGeneralInformation184",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountsDetails",
+      "isoId": "_jKsTG5t3Ee-wQIOX0djF2w",
+      "xmlTag": "AcctsDtls",
+      "type": "AccountIdentification74Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionDetails",
+      "isoId": "_jKsTHZt3Ee-wQIOX0djF2w",
+      "xmlTag": "CorpActnDtls",
+      "type": "CorporateAction74",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AdditionalText",
+      "isoId": "_jKsTH5t3Ee-wQIOX0djF2w",
+      "xmlTag": "AddtlTxt",
+      "type": "RestrictedFINZMax8000Text",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "IssuerAgent",
+      "isoId": "_jKsTIZt3Ee-wQIOX0djF2w",
+      "xmlTag": "IssrAgt",
+      "type": "PartyIdentification137Choice",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "PayingAgent",
+      "isoId": "_jKsTI5t3Ee-wQIOX0djF2w",
+      "xmlTag": "PngAgt",
+      "type": "PartyIdentification137Choice",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SubPayingAgent",
+      "isoId": "_jKsTJZt3Ee-wQIOX0djF2w",
+      "xmlTag": "SubPngAgt",
+      "type": "PartyIdentification137Choice",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "Registrar",
+      "isoId": "_jKsTJ5t3Ee-wQIOX0djF2w",
+      "xmlTag": "Regar",
+      "type": "PartyIdentification137Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ResellingAgent",
+      "isoId": "_jKsTKZt3Ee-wQIOX0djF2w",
+      "xmlTag": "RsellngAgt",
+      "type": "PartyIdentification137Choice",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "PhysicalSecuritiesAgent",
+      "isoId": "_jKsTK5t3Ee-wQIOX0djF2w",
+      "xmlTag": "PhysSctiesAgt",
+      "type": "PartyIdentification137Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "DropAgent",
+      "isoId": "_jKsTLZt3Ee-wQIOX0djF2w",
+      "xmlTag": "DrpAgt",
+      "type": "PartyIdentification137Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SolicitationAgent",
+      "isoId": "_jKsTL5t3Ee-wQIOX0djF2w",
+      "xmlTag": "SlctnAgt",
+      "type": "PartyIdentification137Choice",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "InformationAgent",
+      "isoId": "_jKsTMZt3Ee-wQIOX0djF2w",
+      "xmlTag": "InfAgt",
+      "type": "PartyIdentification137Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_jKsTM5t3Ee-wQIOX0djF2w",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

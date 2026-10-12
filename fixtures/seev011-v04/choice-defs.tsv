@@ -1,0 +1,30 @@
+choice	memberId	memberName	text
+AgentDocumentIdentificationAndStatus2Choice	ebcab647-ffac-4281-98fd-0ead226e6af6	AgentCANotificationAdviceIdentificationAndStatus	Identification of the linked Agent CA Notification Advice for which a status is given.
+AgentDocumentIdentificationAndStatus2Choice	f32375ec-55d1-45cd-83a6-b96133925c9c	AgentCANotificationCancellationRequestIdentificationAndStatus	Identification of the linked Agent CA Notification Cancellation Request for which a status is given.
+NotificationAdviceStatus4Choice	_4z1pYaUeEfCnE_wCEfCqTA	ProcessedStatus	Provides information about the processing status of advice.
+NotificationAdviceStatus4Choice	_4z1pY6UeEfCnE_wCEfCqTA	RejectedStatus	Provides information about the rejection status.
+NotificationAdviceStatus4Choice	_DYZ0UKUfEfCnE_wCEfCqTA	PendingStatus	Provides information about the pending status of advice.
+NotificationAdviceStatus4Choice	_MVTd4KUfEfCnE_wCEfCqTA	AcceptedWithWarningStatus	Provides information about the accepted with warning status.
+ProcessedStatus1Format1Choice	_V3RpUVuxEe6gDOpEK7Q4ig	Code	Standard code to specify to express the processing status of the notification advice.
+ProcessedStatus1Format1Choice	_V3RpU1uxEe6gDOpEK7Q4ig	Proprietary	Proprietary code to express the processing status of the notification advice.
+RejectionReason6Format2Choice	_92p3caUoEfCnE_wCEfCqTA	Code	Standard code to specify the reason of a rejection of the notification advice.
+RejectionReason6Format2Choice	_92p3c6UoEfCnE_wCEfCqTA	Proprietary	Proprietary code to express the reason of a rejection of the notification advice.
+PendingStatus1Format1Choice	_pRDGYaUdEfCnE_wCEfCqTA	Code	Standard code to specify to express the processing status of the notification advice.
+PendingStatus1Format1Choice	_pRDtcaUdEfCnE_wCEfCqTA	Proprietary	Proprietary code to express the processing status of the notification advice.
+AcceptedWithWarningStatus1Format1Choice	__1hY4aUdEfCnE_wCEfCqTA	Code	Standard code to specify to express the processing status of the notification advice.
+AcceptedWithWarningStatus1Format1Choice	__1hY46UdEfCnE_wCEfCqTA	Proprietary	Proprietary code to express the processing status of the notification advice.
+NotificationCancellationRequestStatus2Choice	_E6rOMVvFEe6gDOpEK7Q4ig	ProcessedStatus	Provides information about the processing status of the cancellation request.
+NotificationCancellationRequestStatus2Choice	_E6rOM1vFEe6gDOpEK7Q4ig	RejectedStatus	Provides information about the rejection status.
+ProcessedStatus2Format1Choice	_7fm0IW2aEe6CnszSwbRwFg	Code	Standard code to specify the processing status of a cancellation request.
+ProcessedStatus2Format1Choice	_7fm0I22aEe6CnszSwbRwFg	Proprietary	Proprietary code to express the processing status of a cancellation request.
+RejectionReason11Format1Choice	_FKxfsVvFEe6gDOpEK7Q4ig	Code	Standard code to specify the reason of a rejection of the notification cancellation request.
+RejectionReason11Format1Choice	_FKxfs1vFEe6gDOpEK7Q4ig	Proprietary	Proprietary code to express the reason of a rejection of the notification cancellation request.
+CorporateActionEventProcessingType4Choice	_RKmGMYboEe--EK81FcmyRA	Code	Standard code to specify the processing type of a corporate action event.
+CorporateActionEventProcessingType4Choice	_RKmGOYboEe--EK81FcmyRA	Proprietary	Proprietary identification of the processing type of a corporate action event.
+CorporateActionEventType107Choice	_hmVu84CdEe-3UrLQHGsjgQ	Code	Event type expressed as a code.
+CorporateActionEventType107Choice	_hmVu-4CdEe-3UrLQHGsjgQ	Proprietary	Event type expressed as a proprietary code.
+SafekeepingPlaceFormat42Choice	_4ECDkY-9Ee-COKgew96POA	Identification	Place of safekeeping expressed as a code and a narrative description.
+SafekeepingPlaceFormat42Choice	_4ECDmY-9Ee-COKgew96POA	Country	Place of safekeeping expressed with a country code.
+SafekeepingPlaceFormat42Choice	__YOp8Y-9Ee-COKgew96POA	DigitalLedgerIdentification	Place of safekeeping expressed with a Digital Ledger Identifier. It identifies a digital ledger or distributed ledger system (for example, blockchain or similar platforms).
+SafekeepingPlaceFormat42Choice	_4ECDoY-9Ee-COKgew96POA	TypeAndIdentification	Place of safekeeping expressed with a type and identification.
+SafekeepingPlaceFormat42Choice	_4ECDqY-9Ee-COKgew96POA	Proprietary	Place of safekeeping expressed with a propriety identification scheme.

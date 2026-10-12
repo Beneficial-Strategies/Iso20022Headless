@@ -1,0 +1,7 @@
+codeSetName	isoId	restrictionOf	code	enumName
+OfferType6Code	3727fe1f-7840-441f-b44b-9e17aa4a91bc	OfferTypeV2Code	DISS	DissenterRights
+OfferType6Code	3727fe1f-7840-441f-b44b-9e17aa4a91bc	OfferTypeV2Code	ERUN	RestrictionExchange
+OfferType6Code	3727fe1f-7840-441f-b44b-9e17aa4a91bc	OfferTypeV2Code	FINL	FinalOffer
+OfferType6Code	3727fe1f-7840-441f-b44b-9e17aa4a91bc	OfferTypeV2Code	PART	PartialOffer
+OfferType6Code	3727fe1f-7840-441f-b44b-9e17aa4a91bc	OfferTypeV2Code	SQUE	SqueezeOutBid
+OfferType6Code	3727fe1f-7840-441f-b44b-9e17aa4a91bc	OfferTypeV2Code	NDIS	DissenterRightsNotApplicable

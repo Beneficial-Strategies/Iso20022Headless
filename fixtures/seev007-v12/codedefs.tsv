@@ -1,0 +1,5 @@
+codeSet	code	enumName	isoId	text
+ModalityOfCounting1Code	EVAM	ElectronicAtMeeting	_OwH-kbLXEemDyeh7tbvg1w	Electronic vote recorded and counted at the meeting.
+ModalityOfCounting1Code	EVBM	ElectronicBefore	_O3HXYbLXEemDyeh7tbvg1w	Electronic vote recorded and counted ahead of the meeting.
+ModalityOfCounting1Code	PVBM	PaperBefore	_O98_MbLXEemDyeh7tbvg1w	Paper vote recorded and counted ahead of the meeting.
+ModalityOfCounting1Code	PVAM	PhysicalAtMeeting	_PE8_EbLXEemDyeh7tbvg1w	Physical attendance with vote at the meeting.

@@ -1,0 +1,51 @@
+{
+  "identifier": "seev.051.001.02",
+  "name": "MarketClaimCancellationRequestV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.051.001.02",
+  "bodyTag": "MktClmCxlReq",
+  "out": "seev051",
+  "isoId": "_g4ztO3_5Ee-h086v0qPiyQ",
+  "definition": "Scope and Usage|The MarketClaimCancellationRequest message is sent by the account holder to the account servicer. |It is sent to request the cancellation of a market claim transaction.|This message definition is intended for use with the Business Application Header (BAH).",
+  "blocks": [
+    {
+      "name": "MarketClaimCreationIdentification",
+      "isoId": "_g4ztQ3_5Ee-h086v0qPiyQ",
+      "xmlTag": "MktClmCreId",
+      "type": "DocumentIdentification9",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "TransactionReference",
+      "isoId": "_g4ztRX_5Ee-h086v0qPiyQ",
+      "xmlTag": "TxRef",
+      "type": "References26",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionGeneralInformation",
+      "isoId": "_g4ztSX_5Ee-h086v0qPiyQ",
+      "xmlTag": "CorpActnGnlInf",
+      "type": "CorporateActionGeneralInformation181",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountDetails",
+      "isoId": "_g4ztS3_5Ee-h086v0qPiyQ",
+      "xmlTag": "AcctDtls",
+      "type": "AccountIdentification70",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_g4ztTX_5Ee-h086v0qPiyQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

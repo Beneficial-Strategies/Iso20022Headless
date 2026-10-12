@@ -1,0 +1,5 @@
+choice	memberId	memberName	text
+StampDutyType1FormatChoice	_Ro8Rx9p-Ed-ak6NoX_4Aeg_-874099083	Code	Standard code to specify the stamp duty information.
+StampDutyType1FormatChoice	_RpFbsNp-Ed-ak6NoX_4Aeg_-874099114	Proprietary	Proprietary code to express the stamp duty information.
+SecuritiesBalanceType9FormatChoice	_Ro8Rwdp-Ed-ak6NoX_4Aeg_-1155770653	Code	Standard code to specify the type of securities balance.
+SecuritiesBalanceType9FormatChoice	_Ro8Rwtp-Ed-ak6NoX_4Aeg_-1155770714	Proprietary	Proprietary code to express the type of securities balance.

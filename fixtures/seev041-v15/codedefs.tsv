@@ -1,0 +1,25 @@
+codeSet	code	enumName	isoId	text
+RejectionReason90Code	ADEA	AccountServicerDeadlineMissed	_B_zNMaKvEfCHi7w3_0pcpw	Transaction/instruction received after the account servicer's specified deadline.
+RejectionReason90Code	INIR	InstructionIrrevocable	_B_zNM6KvEfCHi7w3_0pcpw	Instruction is irrevocable.
+RejectionReason90Code	ULNK	InvalidReference	_B_zNNaKvEfCHi7w3_0pcpw	Linked reference is unknown.
+RejectionReason90Code	LATE	MarketDeadlineMissed	_B_zNN6KvEfCHi7w3_0pcpw	Received after market deadline.
+RejectionReason90Code	OTHR	Other	_B_zNOaKvEfCHi7w3_0pcpw	Other. See Narrative.
+RejectionReason90Code	DCAN	RejectedSinceAlreadyCancelled	_B_zNO6KvEfCHi7w3_0pcpw	Cancellation request was rejected since the instruction has already been cancelled.
+RejectionReason90Code	DPRG	RejectedSinceInProgress	_B_zNPaKvEfCHi7w3_0pcpw	Cancellation request has been rejected because the instruction process is in progress or has been processed.
+RejectionReason90Code	REJA	RejectedByIssuerAgent	_B_zNP6KvEfCHi7w3_0pcpw	Instruction rejected by the issuer agent.
+RejectionReason90Code	CTCT	MissingContact	_B_zNQaKvEfCHi7w3_0pcpw	Contact information is missing.
+RejectionReason90Code	DQUA	QuantityRejection	_B_zNRaKvEfCHi7w3_0pcpw	Unrecognised or invalid instructed quantity.
+RejectionReason90Code	PROT	MissingProtectDate	_B_zNR6KvEfCHi7w3_0pcpw	Protect date is required for cover protect instructions.
+RejectionReason90Code	SAFE	SafekeepingAccountRejection	_B_zNSaKvEfCHi7w3_0pcpw	Unrecognised or invalid message sender's safekeeping account.
+RejectionReason90Code	PROI	MissingProtectIdentification	_B_zNS6KvEfCHi7w3_0pcpw	Protect identification is required for cover protect instructions.
+RejectionReason90Code	TRTI	MissingTransactionType	_B_zNTaKvEfCHi7w3_0pcpw	Transaction type is missing or invalid for protect or cover protect instructions.
+RejectionReason90Code	DUPL	DuplicateInstruction	_B_zNT6KvEfCHi7w3_0pcpw	Instruction is rejected due to duplicate business message identifier.
+RejectionReason90Code	ECMD	ElectionToCounterpartyMarketDeadlineMissed	_EStrAaKvEfCHi7w3_0pcpw	Received after the election to counterparty market deadline.
+RejectionReason90Code	ECRD	ElectionToCounterpartyResponseDeadlineMissed	_EW19EaKvEfCHi7w3_0pcpw	Received after the election to counterparty response market deadline.
+RejectionReason90Code	DSEC	InvalidSecurity	_D_NecbM9EfCBi5X7hHnGKA	Unrecognised or invalid financial instrument identification.
+PendingCancellationReason9Code	ADEA	AccountServicerDeadlineMissed	_OsiJEaKwEfCHi7w3_0pcpw	Transaction/instruction received after the account servicer's specified deadline.
+PendingCancellationReason9Code	DQUA	QuantityRejection	_OsiJE6KwEfCHi7w3_0pcpw	Unrecognised or invalid instructed quantity.
+PendingCancellationReason9Code	DQCS	AmountRejection	_OsiJFaKwEfCHi7w3_0pcpw	Unrecognised or invalid instructed cash amount.
+PendingCancellationReason9Code	LATE	MarketDeadlineMissed	_OsiJF6KwEfCHi7w3_0pcpw	Received after market deadline.
+PendingCancellationReason9Code	OTHR	Other	_OsiwIaKwEfCHi7w3_0pcpw	Other. See Narrative.
+PendingCancellationReason9Code	ECRD	ElectionToCounterpartyResponseDeadlineMissed	_X_4jwaKwEfCHi7w3_0pcpw	Received after the election to counterparty response market deadline.

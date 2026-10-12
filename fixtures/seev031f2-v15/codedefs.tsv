@@ -1,0 +1,31 @@
+codeSet	code	enumName	isoId	text
+FractionDispositionType9Code	DIST	IssueFraction	_O5HAcWSCEeKFfdK0gKYFLQ	Take distribution of fractions in the form of securities.
+FractionDispositionType9Code	RDDN	RoundDown	_Pm4FYWSCEeKFfdK0gKYFLQ	Round the entitlement down to the last full unit/minimum nominal quantity, fractions are discarded.
+FractionDispositionType9Code	STAN	RoundToNearest	_Pvz-8WSCEeKFfdK0gKYFLQ	If the fraction is greater than or equal to 0.5 of the resulting security then round up, else round down as specified in the respective RDUP and RDDN codes.
+FractionDispositionType9Code	RDUP	RoundUp	_PypQgWSCEeKFfdK0gKYFLQ	Round up to the next full unit/minimum nominal quantity at no cost.
+FractionDispositionType9Code	UKWN	Unknown	_QNn8UWSCEeKFfdK0gKYFLQ	Characteristics of the disposition of fractions are unknown.
+EventSequenceType1Code	FINL	Final	_OQhPYbXJEeiTob_PrFFUxA	Final event in a series of successive events.
+EventSequenceType1Code	INTE	Interim	_OWxBUbXJEeiTob_PrFFUxA	Interim event in a series of successive events.
+AdditionalBusinessProcess9Code	ACLA	AutomaticMarketClaim	_WtfPAReoEeyroI8qKgB7Mg	Will automatically give rise to market claims by the account servicer, for example, a Central Securities Depository (CSD).
+AdditionalBusinessProcess9Code	ATXF	SubjectToTransformation	_WtfPAxeoEeyroI8qKgB7Mg	As a result of the corporate action, all transactions in the underlying security will be cancelled by the system and replaced with transactions in the outturn resource(s).
+AdditionalBusinessProcess9Code	CNTR	CancelUnderlyingTrades	_WtfPBReoEeyroI8qKgB7Mg	As a result of the corporate action, all transactions in the underlying security will be cancelled by the system.
+AdditionalBusinessProcess9Code	NAMC	NoAutomaticMarketClaimsAndTransformations	_WtfPBxeoEeyroI8qKgB7Mg	Event will not automatically give rise to market claims and transformations by the account servicer, for example, a Central Securities Depository (CSD).
+AdditionalBusinessProcess9Code	NPLE	NoSplitElection	_WtfPCReoEeyroI8qKgB7Mg	Issuer only allows a single option to be selected per designated holding.
+AdditionalBusinessProcess9Code	SCHM	SchemeOrPlanOfArrangement	_WtfPCxeoEeyroI8qKgB7Mg	Component event of a scheme/plan of arrangement: a reorganisation of a company or a group of companies, and their capital.
+AdditionalBusinessProcess9Code	CONS	Consent	_WtfPDReoEeyroI8qKgB7Mg	Relates to a consent within a corporate action event other than a Consent event (: 22F:: CAEV//CONS).
+AdditionalBusinessProcess9Code	PPUT	PartialMandatoryPutRedemption	_WtfPDxeoEeyroI8qKgB7Mg	Partial mandatory exchange of a portion of bonds where the exchanged securities are usually remarketed. The issuer may offer holders the right to retain instead of exchanging their securities. A lottery will be used to determine eligibility for the event.
+AdditionalBusinessProcess9Code	FPRE	FullPrefunding	_WtfPEReoEeyroI8qKgB7Mg	Full pre-funding of a debt instrument by the issuer prior to original maturity when the issuer deposits assets in trust. Applicable only in the frame of a partial defeasance corporate action event.
+AdditionalBusinessProcess9Code	PPRE	PartialPreFunding	_WtfPExeoEeyroI8qKgB7Mg	Partial pre-funding of a debt instrument prior to maturity drawn through a lottery process. One new security is issued with an earlier maturity date for the refunded (called portion) and the other new security is issued with the original maturity date for the non refunded (remaining) portion. Applicable only in the frame of a partial defeasance corporate action event.
+AdditionalBusinessProcess9Code	REAC	RequiredAction	_WtfPFReoEeyroI8qKgB7Mg	Proceeds / entitlements of the mandatory event can only be paid if specified action is taken by the account owner.
+AdditionalBusinessProcess9Code	INCP	IncentivePremiumPayment	_aNwQwReoEeyroI8qKgB7Mg	The event is a payment of an incentive premium related to the voting conditions prescribed at a general meeting.
+ElectionMovementType2Code	DRCT	Direct	_ag-CYdp-Ed-ak6NoX_4Aeg_2033254774	Direct movement of resource, that is, cash or security that is directly credited to the paying agent account.
+ElectionMovementType2Code	SEQD	Sequestered	_ag-CYtp-Ed-ak6NoX_4Aeg_658329762	Election results in a change of balance type that transfers control of the securities rather than the securities themselves.
+BidRangeType1Code	DIVI	Divisible	_IuYsUe3NEeqc-LCjwLsUVg	All values (including minimum and maximum prices) are divisible by the bid interval.
+BidRangeType1Code	INCR	Incremental	_Iy9DQe3NEeqc-LCjwLsUVg	No values within the bid range are divisible by the bid interval including the minimum and maximum prices.  Each value between the minimum and maximum prices is incremented by the bid interval.
+BidRangeType1Code	MULT	InMultiple	_I3mSse3NEeqc-LCjwLsUVg	Minimum and maximum prices are not divisible by the bid interval.  All successive values between the minimum and maximum prices are in multiples of the bid interval.
+ProrationBelowMinimumQuantity1Code	FULL	AcceptedInFull	_OSJ2wYDEEe-eGe8fbP3Zug	Instructions will be accepted in full (with their original quantity of securities instructed).
+ProrationBelowMinimumQuantity1Code	MIEX	MinimumQuantity	_OVrr4YDEEe-eGe8fbP3Zug	Instructions will be accepted but prorated to the minimum quantity to instruct.
+ProrationBelowMinimumQuantity1Code	MILT	MultipleQuantity	_OaM_gYDEEe-eGe8fbP3Zug	Instructions will be accepted but rounded up or down to the specified minimum multiple quantity to instruct according to the value of the disposition of fraction indicator.
+ProrationBelowMinimumQuantity1Code	REJT	Rejected	_OeY78YDEEe-eGe8fbP3Zug	Instructions will be rejected.
+ProrationBelowMinimumQuantity1Code	UKWN	Unknown	_OjrEkYDEEe-eGe8fbP3Zug	Processing of instructions prorated below the minimum quantity to instruct is unknown.
+Payment2Code	ACTU	ActualPayment	_KIs2sbXPEeiTob_PrFFUxA	The cash payment occurs or will occur upon receipt of proceeds from the issuer.

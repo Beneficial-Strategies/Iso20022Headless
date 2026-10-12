@@ -1,0 +1,13 @@
+choice	memberId	memberName	text
+DocumentIdentification3Choice	_FGNkYznaEeWLJsP1cO-amg	AccountServicerDocumentIdentification	Identification of the document assigned by the account servicer.
+DocumentIdentification3Choice	_FGNkaznaEeWLJsP1cO-amg	AccountOwnerDocumentIdentification	Identification of the document assigned by the account owner.
+CorporateActionEventType112Choice	_-4WYY4-vEe-8QaP9hiQjxQ	Code	Event types expressed as a code.
+CorporateActionEventType112Choice	_-4WYa4-vEe-8QaP9hiQjxQ	Proprietary	Event types expressed as a proprietary code.
+EventProcessingStatus7Choice	_salnEZB0Ee-COKgew96POA	Complete	Specifies that a corporate action event processing has been completed.
+EventProcessingStatus7Choice	_salnGZB0Ee-COKgew96POA	Reconciled	Corporate action event processing specifying that the funds paid have been reconciled with the funds received from the agent (meaning that there is no more risk of payment to be reversed).
+EventProcessingStatus7Choice	_salnIZB0Ee-COKgew96POA	Pending	Specifies that a corporate action event processing has not been fully completed and is therefore pending.
+EventProcessingStatus7Choice	_salnKZB0Ee-COKgew96POA	ProprietaryStatus	Proprietary status related to the event processing.
+PendingStatus74Choice	_siCS4ZB0Ee-COKgew96POA	NoSpecifiedReason	Reason not specified.
+PendingStatus74Choice	_siCS6ZB0Ee-COKgew96POA	Reason	Reason for the pending status.
+PendingReason70Choice	_swpWoZB0Ee-COKgew96POA	Code	Standard code to specify the reason why the instruction/event has a pending status.
+PendingReason70Choice	_swpWqZB0Ee-COKgew96POA	Proprietary	Proprietary identification of the reason why the instruction/event has a pending status.

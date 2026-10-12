@@ -1,0 +1,112 @@
+choice	memberId	memberName	text
+CorporateActionEventType120Choice	_kv0fZZt3Ee-wQIOX0djF2w	Code	Event type expressed as a code.
+CorporateActionEventType120Choice	_kv0fbZt3Ee-wQIOX0djF2w	Proprietary	Event type expressed as a proprietary code.
+SafekeepingPlaceFormat49Choice	_kv1FQZt3Ee-wQIOX0djF2w	Identification	Place of safekeeping expressed as a code and a narrative description.
+SafekeepingPlaceFormat49Choice	_kv1FSZt3Ee-wQIOX0djF2w	Country	Place of safekeeping expressed with a country code.
+SafekeepingPlaceFormat49Choice	_kv1FUZt3Ee-wQIOX0djF2w	DigitalLedgerIdentification	Place of settlement expressed with a Digital Ledger Identifier. It identifies a digital ledger or distributed ledger system (for example, blockchain or similar platforms).
+SafekeepingPlaceFormat49Choice	_kv1FU5t3Ee-wQIOX0djF2w	TypeAndIdentification	Place of safekeeping expressed with a type and identification.
+SafekeepingPlaceFormat49Choice	_kv1FW5t3Ee-wQIOX0djF2w	Proprietary	Place of safekeeping expressed with a propriety identification scheme.
+BalanceFormat16Choice	_plN2JTi7Eeydid5dcNPKvg	Balance	Provides information about balance related to a corporate action.
+BalanceFormat16Choice	_plN2LTi7Eeydid5dcNPKvg	EligibleBalance	Provide eligible balance information in different formats.
+BalanceFormat16Choice	_plN2NTi7Eeydid5dcNPKvg	NotEligibleBalance	Provide not eligible balance information in different formats.
+BalanceFormat16Choice	_plN2PTi7Eeydid5dcNPKvg	FullPeriodUnits	Number of units of a fund that were purchased in a previous distribution period and/or held at the beginning of a distribution period, for example Group I Units in the UK.
+BalanceFormat16Choice	_plN2Pzi7Eeydid5dcNPKvg	PartWayPeriodUnits	Number of units of a fund that were purchased part way throughout a distribution period, for example Group II Units in the U.K.
+AdditionalBusinessProcessFormat24Choice	_kv5Xm5t3Ee-wQIOX0djF2w	Code	Standard code to specify the additional business process "tax refund" linked to a corporate action event.
+AdditionalBusinessProcessFormat24Choice	_kv5Xo5t3Ee-wQIOX0djF2w	Proprietary	Proprietary identification of the additional business process "tax refund" linked to a corporate action event.
+IntermediateSecuritiesDistributionTypeFormat18Choice	_cta-FZKQEeWHWpTQn1FFVg	Code	Standard code to specify the type of intermediate security distribution.
+IntermediateSecuritiesDistributionTypeFormat18Choice	_cta-F5KQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the type of intermediate security distribution.
+CorporateActionOption39Choice	_-lke6AVSEeqjd8n6wD9JVw	Code	Option type expressed as a code.
+CorporateActionOption39Choice	_-lke8AVSEeqjd8n6wD9JVw	Proprietary	Option type expressed as a proprietary identification.
+OptionFeaturesFormat30Choice	_Ur46zXSdEe6VWZz2tTgENw	Code	Standard code to specify the features that may apply to a corporate action option.
+OptionFeaturesFormat30Choice	_Ur46z3SdEe6VWZz2tTgENw	Proprietary	Proprietary identification of the features that may apply to a corporate action option.
+FractionDispositionType30Choice	_cj7rRZKQEeWHWpTQn1FFVg	Code	Standard code to specify how fractions resulting from derived securities will be processed or how prorated decisions will be rounding, if provided with a pro ration rate.
+FractionDispositionType30Choice	_cj7rR5KQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the type of fraction disposition.
+DateFormat67Choice	_XTYz4aAXEe-6zfgb2Rwrlw	Date	Date expressed as a calendar date.
+DateFormat67Choice	_XTYz6aAXEe-6zfgb2Rwrlw	DateCode	Specifies the type of date.
+DateCode35Choice	_XZc_oaAXEe-6zfgb2Rwrlw	Code	Standard code to specify the type of date.
+DateCode35Choice	_XZc_qaAXEe-6zfgb2Rwrlw	Proprietary	Proprietary identification of the type of date.
+GrossDividendRateFormat39Choice	_-lkhhgVSEeqjd8n6wD9JVw	Amount	Value expressed as an amount.
+GrossDividendRateFormat39Choice	_-lkhjgVSEeqjd8n6wD9JVw	AmountAndRateStatus	Specifies an amount and a rate status.
+GrossDividendRateFormat39Choice	_-lkhkAVSEeqjd8n6wD9JVw	RateTypeAndAmountAndRateStatus	Specifies different formats for the gross dividend rate.
+RateType80Choice	_-lkhugVSEeqjd8n6wD9JVw	Code	Standard code to specify the type of gross dividend rate.
+RateType80Choice	_-lkhvAVSEeqjd8n6wD9JVw	Proprietary	Proprietary identification of the type of gross dividend rate.
+RateStatus4Choice	_cj9gA5KQEeWHWpTQn1FFVg	Code	Standard code to specify the status of the rate.
+RateStatus4Choice	_cj9gBZKQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the status of the rate.
+NetDividendRateFormat41Choice	_-lkh8AVSEeqjd8n6wD9JVw	Amount	Number of monetary units specified in a currency.
+NetDividendRateFormat41Choice	_-lkh8gVSEeqjd8n6wD9JVw	AmountAndRateStatus	Specifies an amount and a rate status.
+NetDividendRateFormat41Choice	_-lkh9AVSEeqjd8n6wD9JVw	RateTypeAndAmountAndRateStatus	Specifies different formats for the net dividend rate.
+RateType81Choice	_-lkiHgVSEeqjd8n6wD9JVw	Code	Standard code to specify the type of net dividend rate.
+RateType81Choice	_-lkiIAVSEeqjd8n6wD9JVw	Proprietary	Proprietary identification of the type of net dividend rate.
+InterestRateUsedForPaymentFormat19Choice	_IQpF8aGiEe-4O7NbwmwJkQ	Rate	Value is expressed as a rate.
+InterestRateUsedForPaymentFormat19Choice	_IQpF-aGiEe-4O7NbwmwJkQ	Amount	Number of monetary units specified in a currency.
+InterestRateUsedForPaymentFormat19Choice	_IQpGAaGiEe-4O7NbwmwJkQ	RateTypeAndAmountAndRateStatus	Specifies different formats for interest rate used for payment.
+RateType45Choice	_cj-HKZKQEeWHWpTQn1FFVg	Code	Standard code to specify the type of rate.
+RateType45Choice	_cj-HK5KQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the type of rate.
+RateAndAmountFormat66Choice	_kv5-L5t3Ee-wQIOX0djF2w	Rate	Value expressed as a rate.
+RateAndAmountFormat66Choice	_kv5-N5t3Ee-wQIOX0djF2w	Amount	Value is expressed as a currency and amount.
+RateAndAmountFormat66Choice	_kv5-P5t3Ee-wQIOX0djF2w	RateTypeAndRate	Value is expressed as a rate type and a percentage rate.
+RateAndAmountFormat67Choice	_kv5-l5t3Ee-wQIOX0djF2w	Rate	Value is expressed as a rate.
+RateAndAmountFormat67Choice	_kv5-n5t3Ee-wQIOX0djF2w	Amount	Value is expressed as a currency and amount.
+RateType47Choice	_cj-uOZKQEeWHWpTQn1FFVg	Code	Standard code to specify the type of tax rate.
+RateType47Choice	_cj-uO5KQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the type of tax rate.
+PriceFormat85Choice	_kv5--Zt3Ee-wQIOX0djF2w	PercentagePrice	Price expressed as a percentage.
+PriceFormat85Choice	_kv5_AZt3Ee-wQIOX0djF2w	AmountPrice	Price expressed as a currency and amount.
+TemporaryFinancialInstrumentIndicator4Choice	_cj_8PZKQEeWHWpTQn1FFVg	TemporaryIndicator	Temporary financial instrument identification used for processing reasons.
+TemporaryFinancialInstrumentIndicator4Choice	_cj_8RZKQEeWHWpTQn1FFVg	Proprietary	Proprietary code to specify whether the security is a temporary security.
+IssuerOfferorTaxabilityIndicator1Choice	_dw_XMIlzEeavwKddCbm3hg	Code	Standard code to specify information regarding the issuer / offeror taxability status.
+IssuerOfferorTaxabilityIndicator1Choice	_hlkcEIlzEeavwKddCbm3hg	Proprietary	Proprietary identification to specify information regarding the issuer / offeror taxability status.
+SafekeepingPlaceFormat50Choice	_kv6mBZt3Ee-wQIOX0djF2w	Identification	Place of safekeeping expressed as a code and a narrative description.
+SafekeepingPlaceFormat50Choice	_kv6mDZt3Ee-wQIOX0djF2w	Country	Place of safekeeping expressed with a country code.
+SafekeepingPlaceFormat50Choice	_kv6mFZt3Ee-wQIOX0djF2w	DigitalLedgerIdentification	Place of settlement expressed with a Digital Ledger Identifier. It identifies a digital ledger or distributed ledger system (for example, blockchain or similar platforms).
+SafekeepingPlaceFormat50Choice	_kv6mF5t3Ee-wQIOX0djF2w	TypeAndIdentification	Place of safekeeping expressed with a type and identification.
+SafekeepingPlaceFormat50Choice	_kv6mH5t3Ee-wQIOX0djF2w	Proprietary	Place of safekeeping expressed with a propriety identification scheme.
+RatioFormat21Choice	_ckBxuZKQEeWHWpTQn1FFVg	QuantityToQuantity	Ratio expressed as a quotient of quantities.
+RatioFormat21Choice	_ckBxwZKQEeWHWpTQn1FFVg	AmountToAmount	Ratio expressed as a quotient of amounts.
+RatioFormat22Choice	_ckCYWpKQEeWHWpTQn1FFVg	QuantityToQuantity	Ratio expressed as a quotient of quantities.
+RatioFormat22Choice	_ckCYYpKQEeWHWpTQn1FFVg	AmountToAmount	Ratio expressed as a quotient of amounts.
+RatioFormat22Choice	_ckCYapKQEeWHWpTQn1FFVg	AmountToQuantity	Ratio expressed as an amount to quantity ratio.
+RatioFormat22Choice	_ckCYcpKQEeWHWpTQn1FFVg	QuantityToAmount	Ratio expressed as a quantity to amount ratio.
+RateFormat28Choice	_kv7y1Zt3Ee-wQIOX0djF2w	Rate	Value is expressed as a rate.
+RateFormat28Choice	_kv7y3Zt3Ee-wQIOX0djF2w	Amount	Cash amount.
+IndicativeOrMarketPrice16Choice	_kv7zl5t3Ee-wQIOX0djF2w	IndicativePrice	Estimated price, for example, for valuation purposes.
+IndicativeOrMarketPrice16Choice	_kv7zn5t3Ee-wQIOX0djF2w	MarketPrice	Last reported/known price of a financial instrument in a market.
+PriceFormat86Choice	_kv70H5t3Ee-wQIOX0djF2w	PercentagePrice	Price expressed as a percentage.
+PriceFormat86Choice	_kv70J5t3Ee-wQIOX0djF2w	AmountPrice	Price expressed as a currency and amount.
+PriceFormat86Choice	_kv70L5t3Ee-wQIOX0djF2w	IndexPoints	Price expressed as an index points.
+PriceFormat87Choice	_kv70VZt3Ee-wQIOX0djF2w	PercentagePrice	Price expressed as a percentage.
+PriceFormat87Choice	_kv70XZt3Ee-wQIOX0djF2w	AmountPrice	Price expressed as a currency and amount.
+PriceFormat87Choice	_kv70ZZt3Ee-wQIOX0djF2w	AmountPricePerFinancialInstrumentQuantity	Price expressed as a ratio: amount price per financial instrument quantity.
+PriceFormat87Choice	_kv70bZt3Ee-wQIOX0djF2w	AmountPricePerAmount	Price expressed as a ratio: amount price per amount.
+PriceFormat87Choice	_kv70dZt3Ee-wQIOX0djF2w	IndexPoints	Price expressed in index points.
+PartyIdentification258Choice	_kv8aVZt3Ee-wQIOX0djF2w	AnyBIC	Unique and unambiguous way to identify an organisation.
+PartyIdentification258Choice	_kv8aV5t3Ee-wQIOX0djF2w	NameAndAddress	Unique and unambiguous way to identify an organisation.
+PartyIdentification258Choice	_kv8aWZt3Ee-wQIOX0djF2w	Country	Unique and unambiguous way to identify an organisation.
+PartyIdentification258Choice	_kv8aW5t3Ee-wQIOX0djF2w	DigitalLedgerIdentification	Place of settlement expressed with a Digital Ledger Identifier. It identifies a digital ledger or distributed ledger system (for example, blockchain or similar platforms).
+Account11Choice	_kv-O35t3Ee-wQIOX0djF2w	CashAccount	Account in which cash is maintained.
+Account11Choice	_kv-O55t3Ee-wQIOX0djF2w	ChargesAccount	Account to be used for charges if different from the account for payment.
+Account11Choice	_kv-O75t3Ee-wQIOX0djF2w	TaxAccount	Account to be used for taxes if different from the account for payment.
+CashAccountIdentification12Choice	_kv-O-5t3Ee-wQIOX0djF2w	IBAN	International Bank Account Number (IBAN) - identifier used internationally by financial institutions to uniquely identify the account of a customer. Further specifications of the format and content of the IBAN can be found in the standard ISO 13616 "Banking and related financial services - International Bank Account Number (IBAN)" version 1997-10-01, or later revisions.
+CashAccountIdentification12Choice	_kv-PA5t3Ee-wQIOX0djF2w	BlockChainCashWallet	Block Chain Wallet where digital currencies are maintained. This is the equivalent of cash account for digital currencies.
+CashAccountIdentification12Choice	_kv-PBZt3Ee-wQIOX0djF2w	Proprietary	Unique identifier for an account. It is assigned by the account servicer using a proprietary identification scheme.
+PartyIdentification147Choice	_8GnIHffREeiNZp_PtLohLw	BICFI	Code allocated to a financial institution by the ISO 9362 Registration Authority, as described in ISO 9362 "Banking - Banking telecommunication messages - Business identifier code (BIC)".
+PartyIdentification147Choice	_8GnIH_fREeiNZp_PtLohLw	NameAndAddress	Name by which a party is known and which is usually used to identify that party.
+PartyIdentification147Choice	_8GnIJ_fREeiNZp_PtLohLw	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to a financial institution using a proprietary identification scheme.
+GrossDividendRateFormat40Choice	_-lv7QQVSEeqjd8n6wD9JVw	Amount	Value expressed as an amount.
+GrossDividendRateFormat40Choice	_-lv7SQVSEeqjd8n6wD9JVw	AmountAndRateStatus	Specifies an amount and a rate status.
+GrossDividendRateFormat40Choice	_-lv7SwVSEeqjd8n6wD9JVw	RateTypeAndAmountAndRateStatus	Specifies different formats for the gross dividend rate.
+RateType82Choice	_-lv7dQVSEeqjd8n6wD9JVw	Code	Standard code to specify the type of gross dividend rate.
+RateType82Choice	_-lv7dwVSEeqjd8n6wD9JVw	Proprietary	Proprietary identification of the type of gross dividend rate.
+SolicitationFeeRateFormat13Choice	_kv_drZt3Ee-wQIOX0djF2w	Rate	Value is expressed as a rate.
+SolicitationFeeRateFormat13Choice	_kv_dtZt3Ee-wQIOX0djF2w	AmountToQuantity	Ratio expressed as an amount to quantity ratio.
+SolicitationFeeRateFormat13Choice	_kv_dvZt3Ee-wQIOX0djF2w	Amount	Cash amount.
+NetDividendRateFormat42Choice	_-lxHIQVSEeqjd8n6wD9JVw	Amount	Value expressed as an amount.
+NetDividendRateFormat42Choice	_-lxHIwVSEeqjd8n6wD9JVw	AmountAndRateStatus	Specifies an amount and a rate status.
+NetDividendRateFormat42Choice	_-lxHJQVSEeqjd8n6wD9JVw	RateTypeAndAmountAndRateStatus	Specifies different formats for the net dividend rate.
+RateType83Choice	_-lxHTwVSEeqjd8n6wD9JVw	Code	Standard code to specify the type of net dividend rate.
+RateType83Choice	_-lxHUQVSEeqjd8n6wD9JVw	Proprietary	Proprietary identification of the type of net dividend rate.
+RateAndAmountFormat68Choice	_kwAEUZt3Ee-wQIOX0djF2w	Rate	Value expressed as a rate.
+RateAndAmountFormat68Choice	_kwAEWZt3Ee-wQIOX0djF2w	Amount	Value is expressed as a currency and amount.
+RateAndAmountFormat68Choice	_kwAEYZt3Ee-wQIOX0djF2w	RateTypeAndAmountAndRateStatus	Value is expressed as a rate type and an amount.
+RateAndAmountFormat68Choice	_kwAEY5t3Ee-wQIOX0djF2w	RateTypeAndRate	Value is expressed as a rate type and a percentage rate.
+DeemedRateType2Choice	_sH2RMdBbEee0mNiKMkpGNQ	Code	Standard code to specify the type of deemed rate.
+DeemedRateType2Choice	_sH2RM9BbEee0mNiKMkpGNQ	Proprietary	Proprietary identification of the type of deemed rate.

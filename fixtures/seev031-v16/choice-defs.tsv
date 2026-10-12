@@ -1,0 +1,20 @@
+choice	memberId	memberName	text
+AccountIdentification71Choice	_5lCjUY-9Ee-COKgew96POA	ForAllAccounts	All safekeeping accounts that own an underlying financial instrument.
+AccountIdentification71Choice	_5lCjWY-9Ee-COKgew96POA	AccountsListAndBalanceDetails	Selected safekeeping accounts list (and optionally balance information) to which the corporate action event applies.
+FractionDispositionType25Choice	_CNlY80ECEeWVgfuHGaKtRQ	Code	Standard code to specify how fractions resulting from derived securities will be processed or how prorated decisions will be rounding, if provided with a pro ration rate.
+FractionDispositionType25Choice	_CNlY9UECEeWVgfuHGaKtRQ	Proprietary	Proprietary identification of the type of fraction disposition.
+IdentificationFormat3Choice	_qmP-cUEFEeWVgfuHGaKtRQ	ShortIdentification	Format expressed as a short identification.
+IdentificationFormat3Choice	_qmP-eUEFEeWVgfuHGaKtRQ	LongIdentification	Format expressed as a long identification.
+IdentificationFormat3Choice	_qmP-gUEFEeWVgfuHGaKtRQ	ProprietaryIdentification	Format expressed as a proprietary identification.
+EventSequenceTypeFormat1Choice	_jkjDILXIEeiTob_PrFFUxA	Code	Type of an event sequence, in a coded format.
+EventSequenceTypeFormat1Choice	_jkicEbXIEeiTob_PrFFUxA	Proprietary	Type of an event sequence, in a proprietary format.
+AdditionalBusinessProcessFormat17Choice	_QnhWUReoEeyroI8qKgB7Mg	Code	Standard code to specify the additional business process linked to a corporate action event.
+AdditionalBusinessProcessFormat17Choice	_QnhWWReoEeyroI8qKgB7Mg	Proprietary	Proprietary identification of the additional business process linked to a corporate action event.
+ElectionTypeFormat3Choice	_TzuzcUEGEeWVgfuHGaKtRQ	Code	Standard code to specify the effect on the holdings of electing a corporate action option.
+ElectionTypeFormat3Choice	_Tzuzc0EGEeWVgfuHGaKtRQ	Proprietary	Proprietary identification of the type of election of a corporate action option.
+BidRangeType1Choice	_ZWOBQO3NEeqc-LCjwLsUVg	Code	Bid range type expressed as a code value.
+BidRangeType1Choice	_dYWZ8O3NEeqc-LCjwLsUVg	Proprietary	Bid range type expressed as a proprietary value.
+RateAndAmountFormat60Choice	_WwJawYV6Ee-oeNhl-Tk6YQ	Rate	Value expressed as a rate.
+RateAndAmountFormat60Choice	_WwJayYV6Ee-oeNhl-Tk6YQ	NotSpecifiedRate	Value of the rate not specified.
+RateAndAmountFormat60Choice	_WwJa0YV6Ee-oeNhl-Tk6YQ	Amount	Value is expressed as a currency and amount.
+RateAndAmountFormat60Choice	_WwJa2YV6Ee-oeNhl-Tk6YQ	RateTypeAndRate	Value is expressed as a rate type and a percentage rate.

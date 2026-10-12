@@ -1,0 +1,13 @@
+choice	memberId	memberName	text
+DocumentIdentification4Choice	_celQv5KQEeWHWpTQn1FFVg	AccountServicerDocumentIdentification	Identification of the document assigned by the account servicer.
+DocumentIdentification4Choice	_celQx5KQEeWHWpTQn1FFVg	AccountOwnerDocumentIdentification	Identification of the document assigned by the account owner.
+CorporateActionEventType114Choice	_jWq5vZt3Ee-wQIOX0djF2w	Code	Event types expressed as a code.
+CorporateActionEventType114Choice	_jWq5xZt3Ee-wQIOX0djF2w	Proprietary	Event types expressed as a proprietary code.
+EventProcessingStatus8Choice	_jWq53Zt3Ee-wQIOX0djF2w	Complete	Specifies that a corporate action event processing has been completed.
+EventProcessingStatus8Choice	_jWq55Zt3Ee-wQIOX0djF2w	Reconciled	Corporate action event processing specifying that the funds paid have been reconciled with the funds received from the agent (meaning that there is no more risk of payment to be reversed).
+EventProcessingStatus8Choice	_jWq57Zt3Ee-wQIOX0djF2w	Pending	Specifies that a corporate action event processing has not been fully completed and is therefore pending.
+EventProcessingStatus8Choice	_jWq59Zt3Ee-wQIOX0djF2w	ProprietaryStatus	Proprietary status related to the event processing.
+PendingStatus75Choice	_jWq6BZt3Ee-wQIOX0djF2w	NoSpecifiedReason	Reason not specified.
+PendingStatus75Choice	_jWq6DZt3Ee-wQIOX0djF2w	Reason	Reason for the pending status.
+PendingReason71Choice	_jWq6MZt3Ee-wQIOX0djF2w	Code	Standard code to specify the reason why the instruction/event has a pending status.
+PendingReason71Choice	_jWq6OZt3Ee-wQIOX0djF2w	Proprietary	Proprietary identification of the reason why the instruction/event has a pending status.

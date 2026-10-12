@@ -1,0 +1,30 @@
+choice	memberId	memberName	text
+MeetingEventReference1Choice	__b3CG67rEemG7MmivSuE5g	LinkedIssuerMeetingIdentification	Official and unique reference assigned by the official central body/ entity within each market at the beginning of a meeting event.
+MeetingEventReference1Choice	__b3CGq7rEemG7MmivSuE5g	LinkedMeetingIdentification	Reference assigned by the account servicer to unambiguously identify a related meeting event.
+AdditionalRightCode1Choice	_RDYtpNp-Ed-ak6NoX_4Aeg_1133173418	Code	Identifies the additional right code.
+AdditionalRightCode1Choice	_RDieoNp-Ed-ak6NoX_4Aeg_1874759869	Proprietary	This code can be used in case another reason is required.
+AdditionalRightThreshold2Choice	_doyqsZK5Ee-l-O3vIHRmRw	AdditionalRightThreshold	Additional right granted to specify the minimum stake in share capital or cash value or number of security holders required to table resolutions.
+AdditionalRightThreshold2Choice	_doyqs5K5Ee-l-O3vIHRmRw	AdditionalRightThresholdPercentage	Additional right granted to specify the minimum stake in share capital or cash value or number of security holders required to table resolutions. This minimum is expressed as a percentage.
+Proxy5Choice	_iTU-wRrfEeyhRdHRjakS2w	Proxy	Proxy assignment and registration information.
+Proxy5Choice	_iTU-wxrfEeyhRdHRjakS2w	ProxyNotAllowed	Indicates that no proxy is allowed for a meeting.
+DateFormat60Choice	_aBRhXTUIEe2tRf29bleifQ	Date	Date expressed as a calendar date.
+DateFormat60Choice	_aBRhXDUIEe2tRf29bleifQ	DateCode	Specifies the type of date.
+DateCode34Choice	_n92w8zUIEe2tRf29bleifQ	Code	Standard code to specify the type of date.
+DateCode34Choice	_n92w-zUIEe2tRf29bleifQ	Proprietary	Proprietary identification of the type of date.
+LocationFormat1Choice	_RXD3mNp-Ed-ak6NoX_4Aeg_-217471735	Address	Specifies physical address of the meeting.
+LocationFormat1Choice	_RXD3mdp-Ed-ak6NoX_4Aeg_33853992	LocationCode	Indicates that the location is unknown.
+QuorumQuantity2Choice	_iIYbcZK5Ee-l-O3vIHRmRw	QuorumQuantity	Minimum quantity of securities required to hold a meeting.
+QuorumQuantity2Choice	_iIYbc5K5Ee-l-O3vIHRmRw	QuorumQuantityPercentage	Minimum quantity of securities, expressed as a percentage, required to hold a meeting.
+Entitlement1Choice	_RDrol9p-Ed-ak6NoX_4Aeg_362471814	EntitlementRatio	Number of votes assigned to one security.
+Entitlement1Choice	_RDromNp-Ed-ak6NoX_4Aeg_362471815	EntitlementDescription	Specifies the calculation method of the number of votes assigned to one security. This element should be used when the entitlement calculation rule is complex.
+NumberOrPercentage2Choice	_TUODkZK5Ee-l-O3vIHRmRw	ThresholdPercentage	Threshold provided as a percentage rate.
+NumberOrPercentage2Choice	_TUODk5K5Ee-l-O3vIHRmRw	ThresholdNumber	Threshold provided as a decimal number.
+ThresholdBasis1Choice	_4JOLYBuMEeyhRdHRjakS2w	Code	Nature of the quantity used as a basis to set a threshold for voting on resolutions at general meetings and provided as a code value.
+ThresholdBasis1Choice	_925f4BuMEeyhRdHRjakS2w	Proprietary	Nature of the quantity used as a basis to set a threshold for voting on resolutions at general meetings and defined as a proprietary value.
+VoteThroughNetwork1Choice	_Cph1QDT8Ee2tRf29bleifQ	VoteChannel	Voting is performed via message sent through an alternate network channel, that is, either via the chain of intermediaries or via the channel as described in the processing text for next intermediary information field.
+VoteThroughNetwork1Choice	_LM16IDT8Ee2tRf29bleifQ	VoteDirectlyToIssuer	Voting is performed by sending a vote message directly to the issuer.
+PriceRateOrAmount8Choice	_qll4UZK5Ee-l-O3vIHRmRw	Rate	Price expressed as a rate, that is percentage.
+PriceRateOrAmount8Choice	_qll4U5K5Ee-l-O3vIHRmRw	Amount	Price expressed as a currency and value.
+IncentivePremiumType2Choice	_vMYu8fNBEeqRfth943bvEA	PerSecurity	Number of securities giving right to a premium.
+IncentivePremiumType2Choice	_vMYu8_NBEeqRfth943bvEA	PerVote	Quantity of votes per type of vote giving right to a premium.
+IncentivePremiumType2Choice	_vMYu9fNBEeqRfth943bvEA	PerAttendee	Indicates that the premium is given per attendee.

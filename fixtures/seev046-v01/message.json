@@ -1,0 +1,43 @@
+{
+  "identifier": "seev.046.001.01",
+  "name": "ShareholdersIdentificationDisclosureRequestCancellationAdviceV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.046.001.01",
+  "bodyTag": "ShrhldrsIdDsclsrReqCxlAdvc",
+  "out": "seev046",
+  "isoId": "_mKzuYDnYEemL_ewJY9QP1g",
+  "definition": "The ShareholdersIdentificationDisclosureCancellationAdvice message is sent by an issuer or by a third party nominated by the issuer (such as an issuer's agent) to the first intermediaries in a custody chain or is sent by any intermediaries in  a custody chain to the next intermediary down the chain of intermediaries (towards the investor side of the chain) in order to withdraw/cancel the disclosure request of shareholders identity previously sent.",
+  "blocks": [
+    {
+      "name": "IssuerDisclosureRequestReference",
+      "isoId": "_Yk74gbRAEem2T48lBgJbww",
+      "xmlTag": "IssrDsclsrReqRef",
+      "type": "DisclosureRequestIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CancellationReason",
+      "isoId": "_L7L5YDqUEemL_ewJY9QP1g",
+      "xmlTag": "CxlRsn",
+      "type": "DisclosureRequestCancellationReason1Code",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Issuer",
+      "isoId": "_OBOqxzqSEemL_ewJY9QP1g",
+      "xmlTag": "Issr",
+      "type": "PartyIdentification129Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_FGPFkT6LEemPvNTzinB5Vw",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

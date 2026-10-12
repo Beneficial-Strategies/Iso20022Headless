@@ -1,0 +1,13 @@
+choice	memberId	memberName	text
+CorporateActionReversalReason12Choice	_m45EFZt3Ee-wQIOX0djF2w	Code	Standard code to specify the reason for the reversal.
+CorporateActionReversalReason12Choice	_m45EF5t3Ee-wQIOX0djF2w	Proprietary	Proprietary identification for the reason of the reversal.
+CorporateActionEventType123Choice	_m45EZ5t3Ee-wQIOX0djF2w	Code	Event type expressed as a code.
+CorporateActionEventType123Choice	_m45Eb5t3Ee-wQIOX0djF2w	Proprietary	Event type expressed as a proprietary code.
+AdditionalBusinessProcessFormat14Choice	_979urpqZEeWNO_b7eN4F_w	Code	Standard code to specify the additional business process "tax refund" linked to a corporate action event.
+AdditionalBusinessProcessFormat14Choice	_979uqpqZEeWNO_b7eN4F_w	Proprietary	Proprietary identification of the additional business process "tax refund" linked to a corporate action event.
+Account12Choice	_m45sXZt3Ee-wQIOX0djF2w	CashAccount	Account in which cash is maintained.
+Account12Choice	_m45sZZt3Ee-wQIOX0djF2w	ChargesAccount	Account to be used for charges if different from the account for payment.
+Account12Choice	_m45sbZt3Ee-wQIOX0djF2w	TaxAccount	Account to be used for taxes if different from the account for payment.
+CashAccountIdentification14Choice	_m45seZt3Ee-wQIOX0djF2w	IBAN	International Bank Account Number (IBAN) - identifier used internationally by financial institutions to uniquely identify the account of a customer. Further specifications of the format and content of the IBAN can be found in the standard ISO 13616 "Banking and related financial services - International Bank Account Number (IBAN)" version 1997-10-01, or later revisions.
+CashAccountIdentification14Choice	_m45sgZt3Ee-wQIOX0djF2w	BlockChainCashWallet	Block Chain Wallet where digital currencies are maintained. This is the equivalent of cash account for digital currencies.
+CashAccountIdentification14Choice	_m45sg5t3Ee-wQIOX0djF2w	Proprietary	Unique identifier for an account. It is assigned by the account servicer using a proprietary identification scheme.

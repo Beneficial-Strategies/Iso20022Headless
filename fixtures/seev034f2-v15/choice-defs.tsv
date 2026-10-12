@@ -1,0 +1,37 @@
+choice	memberId	memberName	text
+CorporateActionEventType118Choice	_kLozVpt3Ee-wQIOX0djF2w	Code	Event types expressed as a code.
+CorporateActionEventType118Choice	_kLozXpt3Ee-wQIOX0djF2w	Proprietary	Event types expressed as a proprietary code.
+InstructionProcessingStatus58Choice	_kLozdpt3Ee-wQIOX0djF2w	Cancelled	Status and quantity information related to a cancelled instruction request.
+InstructionProcessingStatus58Choice	_kLozfpt3Ee-wQIOX0djF2w	AcceptedForFurtherProcessing	Status information related to an instruction request that is accepted. This means that the instruction has been received, is processable and has been validated for further processing.
+InstructionProcessingStatus58Choice	_kLozhpt3Ee-wQIOX0djF2w	Forwarded	Instruction has been accepted and forwarded to the next intermediary in the chain.
+InstructionProcessingStatus58Choice	_kLoziJt3Ee-wQIOX0djF2w	Rejected	Status information related to an instruction request rejected for further processing due to system reasons.
+InstructionProcessingStatus58Choice	_kLozkJt3Ee-wQIOX0djF2w	Pending	Status information related to a pending instruction.
+InstructionProcessingStatus58Choice	_kLozmJt3Ee-wQIOX0djF2w	Returned	Instructed units are returned or partially returned to the instructing party.
+InstructionProcessingStatus58Choice	_kLozmpt3Ee-wQIOX0djF2w	DefaultAction	Default action is taken.
+InstructionProcessingStatus58Choice	_kLozopt3Ee-wQIOX0djF2w	StandingInstruction	Standing instruction has been applied.
+InstructionProcessingStatus58Choice	_kLozqpt3Ee-wQIOX0djF2w	ReceivedByIssuerOrOfferor	Instruction has been received and accepted by the issuer or offeror.
+InstructionProcessingStatus58Choice	_kLozrJt3Ee-wQIOX0djF2w	ProprietaryStatus	Proprietary status related to an instruction.
+CancelledStatus17Choice	_uVJGEZznEe-DHYbvdRjdbA	NoSpecifiedReason	Reason not specified.
+CancelledStatus17Choice	_uVJtIZznEe-DHYbvdRjdbA	Reason	Reason for the cancelled status.
+CancelledReason13Choice	_uirLwZznEe-DHYbvdRjdbA	Code	Standard code to specify the reason why the instruction is cancelled.
+CancelledReason13Choice	_uirLyZznEe-DHYbvdRjdbA	Proprietary	Proprietary identification specifying the reason why the instruction is cancelled.
+AcceptedStatus13Choice	_lUYawZzoEe-DHYbvdRjdbA	NoSpecifiedReason	Reason not specified.
+AcceptedStatus13Choice	_lUYayZzoEe-DHYbvdRjdbA	Reason	Reason for the accepted status.
+AcceptedReason15Choice	_7duQcZzoEe-DHYbvdRjdbA	Code	Standard code to specify additional information about the processed instruction.
+AcceptedReason15Choice	_7duQeZzoEe-DHYbvdRjdbA	Proprietary	Proprietary identification of additional information about the processed instruction.
+RejectedStatus61Choice	_th4nsZzoEe-DHYbvdRjdbA	NoSpecifiedReason	Reason not specified.
+RejectedStatus61Choice	_th4nuZzoEe-DHYbvdRjdbA	Reason	Reason why the meeting instruction message or the individual meeting instruction is rejected.
+RejectedReason63Choice	_C-xnEZzpEe-DHYbvdRjdbA	Code	Rejection reason specified as a code.
+RejectedReason63Choice	_C-xnGZzpEe-DHYbvdRjdbA	Proprietary	Rejection reason specified as a proprietary code.
+PendingStatus76Choice	_xkSGIZzoEe-DHYbvdRjdbA	NoSpecifiedReason	Reason not specified.
+PendingStatus76Choice	_xkSGKZzoEe-DHYbvdRjdbA	Reason	Reason for the pending status.
+PendingReason72Choice	_FuMasZzpEe-DHYbvdRjdbA	Code	Pending reason specified as a code.
+PendingReason72Choice	_FuMauZzpEe-DHYbvdRjdbA	Proprietary	Pending reason specified as a proprietary code.
+CashAccountIdentification11Choice	_kLpaIJt3Ee-wQIOX0djF2w	IBAN	International Bank Account Number (IBAN) - identifier used internationally by financial institutions to uniquely identify the account of a customer. Further specifications of the format and content of the IBAN can be found in the standard ISO 13616 "Banking and related financial services - International Bank Account Number (IBAN)" version 1997-10-01, or later revisions.
+CashAccountIdentification11Choice	_kLpaKJt3Ee-wQIOX0djF2w	BlockChainCashWallet	Block Chain Wallet where digital currencies are maintained. This is the equivalent of cash account for digital currencies.
+CashAccountIdentification11Choice	_kLpaKpt3Ee-wQIOX0djF2w	Proprietary	Unique identifier for an account. It is assigned by the account servicer using a proprietary identification scheme.
+SafekeepingPlaceFormat47Choice	_kLpaOJt3Ee-wQIOX0djF2w	Identification	Place of safekeeping expressed as a code and a narrative description.
+SafekeepingPlaceFormat47Choice	_kLpaQJt3Ee-wQIOX0djF2w	Country	Place of safekeeping expressed with a country code.
+SafekeepingPlaceFormat47Choice	_kLpaSJt3Ee-wQIOX0djF2w	DigitalLedgerIdentification	Place of settlement expressed with a Digital Ledger Identifier. It identifies a digital ledger or distributed ledger system (for example, blockchain or similar platforms).
+SafekeepingPlaceFormat47Choice	_kLpaSpt3Ee-wQIOX0djF2w	TypeAndIdentification	Place of safekeeping expressed with a type and identification.
+SafekeepingPlaceFormat47Choice	_kLpaUpt3Ee-wQIOX0djF2w	Proprietary	Place of safekeeping expressed with a propriety identification scheme.

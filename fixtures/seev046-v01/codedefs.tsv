@@ -1,0 +1,3 @@
+codeSet	code	enumName	isoId	text
+DisclosureRequestCancellationReason1Code	PROC	Processing	_uyAM8UV5EemRx7jyevcLwg	The cancellation of the disclosure request is due to a processsing error.
+DisclosureRequestCancellationReason1Code	WITH	Withdrawal	_u4Zv4UV5EemRx7jyevcLwg	The cancellation of the discolure request is due to the withdrawal of the request  by the issuer.

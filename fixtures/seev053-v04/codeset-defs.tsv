@@ -1,0 +1,4 @@
+codeSet	isoId	text
+CorporateActionEventType39Code	_Sh9E8Y-fEe-PVZsedaAGaA	Specifies the corporate action event type.
+RejectionReason61Code	_4BgVEDDEEeunENYTWutRtQ	Specify the reason why the market claim cancellation request has a rejected status.
+PendingCancellationReason10Code	_TqgRcLMjEfC4pMi0W1Gykw	Specifies the reason why the cancellation request has a pending status.

@@ -36,8 +36,11 @@ import {
   Max16TextSchema,
   CountryCodeSchema,
   Max140TextSchema,
+  Eligibility1CodeSchema,
   SecuritiesAccountPurposeType1CodeSchema,
   IBAN2007IdentifierSchema,
+  BBANIdentifierSchema,
+  UPICIdentifierSchema,
   Max34TextSchema,
   CashAccountIdentification5ChoiceSchema,
   PartyTextInformation1Schema,
@@ -106,8 +109,6 @@ export const PartyTextInformation5Schema = z.strictObject({
   PartyContactDetails: Max140TextSchema.optional(),
 });
 
-export const Eligibility1CodeSchema = z.enum(["ELIG", "RETL", "PROF"]);
-
 export const InvestorCapacity4ChoiceSchema = choiceOf({
   Code: Eligibility1CodeSchema,
   Proprietary: GenericIdentification30Schema,
@@ -154,10 +155,6 @@ export const SecuritiesAccount35Schema = z.strictObject({
   Type: PurposeCode9ChoiceSchema.optional(),
   Name: Max70TextSchema.optional(),
 });
-
-export const BBANIdentifierSchema = textType({pattern: "[a-zA-Z0-9]{1,30}"});
-
-export const UPICIdentifierSchema = textType({pattern: "[0-9]{8,17}"});
 
 export const SimpleIdentificationInformation2Schema = z.strictObject({
   Identification: Max34TextSchema,
@@ -328,12 +325,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       { name: "AdditonalDetailsGuideline", isoId: "_AeLmQdokEeC60axPepSq7g_1057415409", text: "Unless bilaterally agreed between the Sender and Receiver, DeclarationlDetails and PartyContactDetails must not contain information that can be provided in a structured field." },
     ],
   },
-  "Eligibility1Code": {
-    name: "Eligibility1Code",
-    isoId: "_ahHzZNp-Ed-ak6NoX_4Aeg_-1375297258",
-    kind: "code",
-    options: [{ value: "ELIG", name: "EligibleCounterparty", isoId: "_ahHzZdp-Ed-ak6NoX_4Aeg_-1307879388" }, { value: "RETL", name: "RetailClient", isoId: "_ahHzZtp-Ed-ak6NoX_4Aeg_-1307879371" }, { value: "PROF", name: "ProfessionalClient", isoId: "_ahHzZ9p-Ed-ak6NoX_4Aeg_-1307879327" }],
-  },
   "InvestorCapacity4Choice": {
     name: "InvestorCapacity4Choice",
     isoId: "_0J3I8TtCEeWRTLSN0i0tng",
@@ -412,18 +403,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "Type", isoId: "_Vm9X35CAEeakHoV5BVecAQ", xmlTag: "Tp", displayName: displayName("Type"), kind: "choice", type: "PurposeCode9Choice", required: false }),
       f({ name: "Name", isoId: "_Vm9X55CAEeakHoV5BVecAQ", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max70Text", required: false }),
     ],
-  },
-  "BBANIdentifier": {
-    name: "BBANIdentifier",
-    isoId: "_YWr8Jtp-Ed-ak6NoX_4Aeg_-1329929778",
-    kind: "text",
-    pattern: "[a-zA-Z0-9]{1,30}",
-  },
-  "UPICIdentifier": {
-    name: "UPICIdentifier",
-    isoId: "_YXlUAdp-Ed-ak6NoX_4Aeg_-1872488862",
-    kind: "text",
-    pattern: "[0-9]{8,17}",
   },
   "SimpleIdentificationInformation2": {
     name: "SimpleIdentificationInformation2",
@@ -549,8 +528,11 @@ export const typeDescriptors: TypeDescriptors = {
   "Max16Text": sharedTypeDescriptors["Max16Text"]!,
   "CountryCode": sharedTypeDescriptors["CountryCode"]!,
   "Max140Text": sharedTypeDescriptors["Max140Text"]!,
+  "Eligibility1Code": sharedTypeDescriptors["Eligibility1Code"]!,
   "SecuritiesAccountPurposeType1Code": sharedTypeDescriptors["SecuritiesAccountPurposeType1Code"]!,
   "IBAN2007Identifier": sharedTypeDescriptors["IBAN2007Identifier"]!,
+  "BBANIdentifier": sharedTypeDescriptors["BBANIdentifier"]!,
+  "UPICIdentifier": sharedTypeDescriptors["UPICIdentifier"]!,
   "Max34Text": sharedTypeDescriptors["Max34Text"]!,
   "CashAccountIdentification5Choice": sharedTypeDescriptors["CashAccountIdentification5Choice"]!,
   "PartyTextInformation1": sharedTypeDescriptors["PartyTextInformation1"]!,

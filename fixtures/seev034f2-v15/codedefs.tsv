@@ -1,0 +1,45 @@
+codeSet	code	enumName	isoId	text
+AcknowledgementReason7Code	NSTP	NotStraightThroughProcessing	_D0GuMSqAEeO3oOoGGWHH4A	Instruction was not straight through processing and had to be processed manually.
+AcknowledgementReason7Code	OTHR	Other	_D7GHASqAEeO3oOoGGWHH4A	Other. See Narrative.
+RejectionReason85Code	ADEA	AccountServicerDeadlineMissed	_NKI0kWIIEe6Vre0WuwPTOg	Transaction/instruction received after the account servicer's specified deadline.
+RejectionReason85Code	CERT	IncorrectCertification	_NKI0k2IIEe6Vre0WuwPTOg	Instruction is rejected since the provided certification is incorrect or incomplete.
+RejectionReason85Code	INVA	InvalidForTaxAuthorities	_NKI0lWIIEe6Vre0WuwPTOg	For tax reclaim, the reclaim is invalid for the tax authorities.
+RejectionReason85Code	OPTY	InvalidOptionType	_NKI0l2IIEe6Vre0WuwPTOg	Invalid option type.
+RejectionReason85Code	ULNK	InvalidReference	_NKI0mWIIEe6Vre0WuwPTOg	Linked reference is unknown.
+RejectionReason85Code	DSEC	InvalidSecurity	_NKI0m2IIEe6Vre0WuwPTOg	Unrecognised or invalid financial instrument identification.
+RejectionReason85Code	LACK	LackofSecurities	_NKI0nWIIEe6Vre0WuwPTOg	Instructed position exceeds the eligible balance.
+RejectionReason85Code	LATE	MarketDeadlineMissed	_NKI0n2IIEe6Vre0WuwPTOg	Received after market deadline.
+RejectionReason85Code	NMTY	Mismatch	_NKI0oWIIEe6Vre0WuwPTOg	Mismatch between option number and option type.
+RejectionReason85Code	FULL	MissingBeneficiaryOwnerDetails	_NKI0o2IIEe6Vre0WuwPTOg	Rejected due to missing beneficiary owner details.
+RejectionReason85Code	CANC	OptionCancelled	_NKI0pWIIEe6Vre0WuwPTOg	Option is not valid; it has been cancelled by the market or service provider, and cannot be responded to. Any responses already processed against this option are considered void and new responses will be required.
+RejectionReason85Code	INTV	OptionInactive	_NKI0p2IIEe6Vre0WuwPTOg	Option is not active and can no longer be responded to. Any responses already processed against this option will remain valid, for example, expired option.
+RejectionReason85Code	OPNM	OptionNumberRejection	_NKI0qWIIEe6Vre0WuwPTOg	Unrecognised option number.
+RejectionReason85Code	OTHR	Other	_NKI0q2IIEe6Vre0WuwPTOg	Other. See Narrative.
+RejectionReason85Code	DQUA	QuantityRejection	_NKI0rWIIEe6Vre0WuwPTOg	Unrecognised or invalid instructed quantity.
+RejectionReason85Code	REFT	RefusedByTaxAuthorities	_NKI0r2IIEe6Vre0WuwPTOg	Reclaim is refused by the tax authorities.
+RejectionReason85Code	SAFE	SafekeepingAccountRejection	_NKI0sWIIEe6Vre0WuwPTOg	Unrecognised or invalid message sender's safekeeping account.
+RejectionReason85Code	EVNM	UnrecognisedIdentification	_NKI0s2IIEe6Vre0WuwPTOg	Unrecognised event number.
+RejectionReason85Code	DQCS	AmountRejection	_NKI0tWIIEe6Vre0WuwPTOg	Unrecognised or invalid instructed cash amount.
+RejectionReason85Code	DQCC	CurrencyRejection	_NKI0t2IIEe6Vre0WuwPTOg	Invalid instructed currency.
+RejectionReason85Code	DQAM	InstructionTypeRejection	_NKI0uWIIEe6Vre0WuwPTOg	Invalid use of instructed amount (QCAS) or of instructed quantity (QINS) qualifiers.
+RejectionReason85Code	IRDQ	InvalidUseRoundUpQuantity	_NKI0u2IIEe6Vre0WuwPTOg	Instruction is rejected due to invalid use of the additional round up quantity.
+RejectionReason85Code	DQBV	InvalidBidValue	_NKI0vWIIEe6Vre0WuwPTOg	Bid price / basis points / percentage falls outside of bid range for the event (generally used in Dutch Auctions or Bid Tenders).
+RejectionReason85Code	DQBI	InvalidBidIncrement	_NKI0v2IIEe6Vre0WuwPTOg	Bid price / basis points / percentage increments rejected due to invalid bid increment for the event (generally used in Dutch Auctions or Bid Tenders).
+RejectionReason85Code	SHAR	ShareholderNumberRejection	_NKI0wWIIEe6Vre0WuwPTOg	Unrecognised, missing or invalid shareholder number.
+RejectionReason85Code	ITAX	IncorrectTaxRate	_NKI0w2IIEe6Vre0WuwPTOg	Tax rate provided is incorrect. It falls outside the acceptable values for that investment country.
+RejectionReason85Code	NTAX	InconsistentTaxRate	_NKI0xWIIEe6Vre0WuwPTOg	Tax rate is not consistent with the documentation in place.
+RejectionReason85Code	MTAX	MissingTaxRate	_NKI0x2IIEe6Vre0WuwPTOg	Tax rate is missing.
+RejectionReason85Code	ISOL	InvalidSolicitationDealerFeeUse	_NKI0yWIIEe6Vre0WuwPTOg	Invalid use of solicitation dealer fee indicator.
+RejectionReason85Code	BSTR	BeforeInstructionPeriod	_NKI0y2IIEe6Vre0WuwPTOg	Instruction is submitted before instruction start date.
+RejectionReason85Code	CTCT	MissingContact	_NKI0zWIIEe6Vre0WuwPTOg	Contact information is missing.
+RejectionReason85Code	DUPL	DuplicateInstruction	_NKI0z2IIEe6Vre0WuwPTOg	Instruction is rejected due to duplicate business message identifier.
+RejectionReason85Code	PROI	MissingProtectIdentification	_NKI00WIIEe6Vre0WuwPTOg	Protect identification is required for cover protect instructions.
+RejectionReason85Code	PRON	NoProtectPrivilege	_NKI002IIEe6Vre0WuwPTOg	No protect privilege for this event.
+RejectionReason85Code	PROT	MissingProtectDate	_NKI01WIIEe6Vre0WuwPTOg	Protect date is required for cover protect instructions.
+RejectionReason85Code	TRTI	MissingTransactionType	_NKI012IIEe6Vre0WuwPTOg	Transaction type is missing or invalid for protect or cover protect instructions.
+RejectionReason85Code	IPAW	InvalidPaperwork	_NKI02WIIEe6Vre0WuwPTOg	Required paperwork is invalid, incomplete or missing.
+RejectionReason85Code	REJA	RejectedByIssuerAgent	_NKI022IIEe6Vre0WuwPTOg	Instruction rejected by the issuer agent.
+RejectionReason85Code	IPED	InstructionPriorToEntitlementDate	_QMJ0EWIIEe6Vre0WuwPTOg	Instruction was received prior to entitlement date.
+ProtectInstructionStatus3Code	OPEN	Open	_riQzIbpTEeilsanBGAzy4A	Protect instruction which has not been fully covered. Will include partial covers.
+ProtectInstructionStatus3Code	COVR	FullyCovered	_r-rpYrpTEeilsanBGAzy4A	Protect instruction has been fully covered.
+ProtectInstructionStatus3Code	EXPI	Expired	_vrX9krpTEeilsanBGAzy4A	Protect instruction has expired.

@@ -1,0 +1,4 @@
+codeSet	isoId	text
+RejectionReason20Code	_Zi-wJ9p-Ed-ak6NoX_4Aeg_1390539565	Specifies the reason of a rejection of the standing instruction request.
+ProcessedStatus4Code	_aKnX49p-Ed-ak6NoX_4Aeg_1007090482	Specifies the processing status of the standing instruction cancellation request.
+RejectionReason10Code	_ZgdAlNp-Ed-ak6NoX_4Aeg_1761795494	Specifies the reason of a rejection of a standing instruction cancellation request.

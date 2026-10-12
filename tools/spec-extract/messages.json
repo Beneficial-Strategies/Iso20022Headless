@@ -1831,5 +1831,573 @@
     "bodyTag": "StmtOfInvstmtFndTxsV02",
     "out": "semt006",
     "dir": "semt006-v02"
+  },
+  {
+    "name": "AgentCADeactivationCancellationRequestV01",
+    "id": "_TL9gGdEwEd-BzquC8wXy7w_1830397138",
+    "identifier": "seev.029.001.01",
+    "bodyTag": "AgtCADeactvtnCxlReq",
+    "out": "seev029",
+    "dir": "seev029-v01"
+  },
+  {
+    "name": "AgentCADeactivationInstructionV01",
+    "id": "_TMHRHdEwEd-BzquC8wXy7w_1150162088",
+    "identifier": "seev.028.001.01",
+    "bodyTag": "AgtCADeactvtnInstr",
+    "out": "seev028",
+    "dir": "seev028-v01"
+  },
+  {
+    "name": "AgentCADeactivationStatusAdviceV01",
+    "id": "_TMQbDNEwEd-BzquC8wXy7w_622567227",
+    "identifier": "seev.030.001.01",
+    "bodyTag": "AgtCADeactvtnStsAdvc",
+    "out": "seev030",
+    "dir": "seev030-v01"
+  },
+  {
+    "name": "AgentCADistributionBreakdownAdviceV01",
+    "id": "_TMj9DtEwEd-BzquC8wXy7w_707588589",
+    "identifier": "seev.016.001.01",
+    "bodyTag": "AgtCADstrbtnBrkdwnAdvc",
+    "out": "seev016",
+    "dir": "seev016-v01"
+  },
+  {
+    "name": "AgentCAElectionAdviceV01",
+    "id": "_TMtG-tEwEd-BzquC8wXy7w_1166385439",
+    "identifier": "seev.012.001.01",
+    "bodyTag": "AgtCAElctnAdvc",
+    "out": "seev012",
+    "dir": "seev012-v01"
+  },
+  {
+    "name": "AgentCAElectionAmendmentRequestV01",
+    "id": "_TNAo_tEwEd-BzquC8wXy7w_1507742806",
+    "identifier": "seev.013.001.01",
+    "bodyTag": "AgtCAElctnAmdmntReq",
+    "out": "seev013",
+    "dir": "seev013-v01"
+  },
+  {
+    "name": "AgentCAElectionCancellationRequestV01",
+    "id": "_TNTj4NEwEd-BzquC8wXy7w_-1473498229",
+    "identifier": "seev.014.001.01",
+    "bodyTag": "AgtCAElctnCxlReq",
+    "out": "seev014",
+    "dir": "seev014-v01"
+  },
+  {
+    "name": "AgentCAElectionStatusAdviceV01",
+    "id": "_TNct0NEwEd-BzquC8wXy7w_1059605864",
+    "identifier": "seev.015.001.01",
+    "bodyTag": "AgtCAElctnStsAdvc",
+    "out": "seev015",
+    "dir": "seev015-v01"
+  },
+  {
+    "name": "AgentCAGlobalDistributionStatusAdviceV01",
+    "id": "_TN5ZxdEwEd-BzquC8wXy7w_893376547",
+    "identifier": "seev.018.001.01",
+    "bodyTag": "AgtCAGblDstrbtnStsAdvc",
+    "out": "seev018",
+    "dir": "seev018-v01"
+  },
+  {
+    "name": "AgentCAInformationAdviceV01",
+    "id": "_TODKy9EwEd-BzquC8wXy7w_-190409931",
+    "identifier": "seev.023.001.01",
+    "bodyTag": "AgtCAInfAdvc",
+    "out": "seev023",
+    "dir": "seev023-v01"
+  },
+  {
+    "name": "AgentCAInformationStatusAdviceV01",
+    "id": "_TOM7y9EwEd-BzquC8wXy7w_11240695",
+    "identifier": "seev.024.001.01",
+    "bodyTag": "AgtCAInfStsAdvc",
+    "out": "seev024",
+    "dir": "seev024-v01"
+  },
+  {
+    "name": "AgentCAMovementCancellationRequestV01",
+    "id": "_TOWFvNEwEd-BzquC8wXy7w_1509391155",
+    "identifier": "seev.020.001.01",
+    "bodyTag": "AgtCAMvmntCxlReq",
+    "out": "seev020",
+    "dir": "seev020-v01"
+  },
+  {
+    "name": "AgentCAMovementInstructionV01",
+    "id": "_TQbwbNEwEd-BzquC8wXy7w_89976784",
+    "identifier": "seev.019.001.01",
+    "bodyTag": "AgtCAMvmntInstr",
+    "out": "seev019",
+    "dir": "seev019-v01"
+  },
+  {
+    "name": "AgentCAMovementStatusAdviceV01",
+    "id": "_TQurWdEwEd-BzquC8wXy7w_-1045499600",
+    "identifier": "seev.022.001.01",
+    "bodyTag": "AgtCAMvmntStsAdvc",
+    "out": "seev022",
+    "dir": "seev022-v01"
+  },
+  {
+    "name": "AgentCANotificationAdviceV03",
+    "id": "a62916a1-f130-404c-8c6f-2aa78713f931",
+    "identifier": "seev.009.001.03",
+    "bodyTag": "AgtCANtfctnAdvc",
+    "out": "seev009",
+    "dir": "seev009-v03"
+  },
+  {
+    "name": "AgentCANotificationCancellationRequestV01",
+    "id": "_TRVISdEwEd-BzquC8wXy7w_1381384285",
+    "identifier": "seev.010.001.01",
+    "bodyTag": "AgtCANtfctnCxlReq",
+    "out": "seev010",
+    "dir": "seev010-v01"
+  },
+  {
+    "name": "AgentCANotificationStatusAdviceV04",
+    "id": "_8j7dgaN2EfC3fPZ8CT0j3g",
+    "identifier": "seev.011.001.04",
+    "bodyTag": "AgtCANtfctnStsAdvc",
+    "out": "seev011",
+    "dir": "seev011-v04"
+  },
+  {
+    "name": "AgentCAStandingInstructionCancellationRequestV01",
+    "id": "_TRx0NdEwEd-BzquC8wXy7w_608970881",
+    "identifier": "seev.026.001.01",
+    "bodyTag": "AgtCAStgInstrCxlReq",
+    "out": "seev026",
+    "dir": "seev026-v01"
+  },
+  {
+    "name": "AgentCAStandingInstructionRequestV01",
+    "id": "_TR6-KdEwEd-BzquC8wXy7w_1831735017",
+    "identifier": "seev.025.001.01",
+    "bodyTag": "AgtCAStgInstrReq",
+    "out": "seev025",
+    "dir": "seev025-v01"
+  },
+  {
+    "name": "AgentCAStandingInstructionStatusAdviceV01",
+    "id": "_TSEvKdEwEd-BzquC8wXy7w_486290785",
+    "identifier": "seev.027.001.01",
+    "bodyTag": "AgtCAStgInstrStsAdvc",
+    "out": "seev027",
+    "dir": "seev027-v01"
+  },
+  {
+    "name": "BuyerProtectionInstructionAllegementNotificationV01",
+    "id": "_sPR98LbfEe-NMoTZ6Byg6A",
+    "identifier": "seev.064.001.01",
+    "bodyTag": "BuyrPrtcnInstrAllgmtNtfctn",
+    "out": "seev064",
+    "dir": "seev064-v01"
+  },
+  {
+    "name": "BuyerProtectionInstructionAllegementRemovalAdviceV01",
+    "id": "_9jQAILbfEe-NMoTZ6Byg6A",
+    "identifier": "seev.065.001.01",
+    "bodyTag": "BuyrPrtcnInstrAllgmtRmvlAdvc",
+    "out": "seev065",
+    "dir": "seev065-v01"
+  },
+  {
+    "name": "BuyerProtectionInstructionCancellationRequestStatusAdviceV01",
+    "id": "_6g6F8LbeEe-NMoTZ6Byg6A",
+    "identifier": "seev.063.001.01",
+    "bodyTag": "BuyrPrtcnInstrCxlReqStsAdvc",
+    "out": "seev063",
+    "dir": "seev063-v01"
+  },
+  {
+    "name": "BuyerProtectionInstructionCancellationRequestV01",
+    "id": "_xodUALbdEe-NMoTZ6Byg6A",
+    "identifier": "seev.062.001.01",
+    "bodyTag": "BuyrPrtcnInstrCxlReq",
+    "out": "seev062",
+    "dir": "seev062-v01"
+  },
+  {
+    "name": "BuyerProtectionInstructionReportRequestV01",
+    "id": "_ODdDELbgEe-NMoTZ6Byg6A",
+    "identifier": "seev.066.001.01",
+    "bodyTag": "BuyrPrtcnInstrRptReq",
+    "out": "seev066",
+    "dir": "seev066-v01"
+  },
+  {
+    "name": "BuyerProtectionInstructionReportV01",
+    "id": "_cscswLbgEe-NMoTZ6Byg6A",
+    "identifier": "seev.067.001.01",
+    "bodyTag": "BuyrPrtcnInstrRpt",
+    "out": "seev067",
+    "dir": "seev067-v01"
+  },
+  {
+    "name": "BuyerProtectionInstructionStatusAdviceV01",
+    "id": "_DFckwLbdEe-NMoTZ6Byg6A",
+    "identifier": "seev.061.001.01",
+    "bodyTag": "BuyrPrtcnInstrStsAdvc",
+    "out": "seev061",
+    "dir": "seev061-v01"
+  },
+  {
+    "name": "BuyerProtectionInstructionV01",
+    "id": "_PRLXQLbcEe-NMoTZ6Byg6A",
+    "identifier": "seev.060.001.01",
+    "bodyTag": "BuyrPrtcnInstr",
+    "out": "seev060",
+    "dir": "seev060-v01"
+  },
+  {
+    "name": "CorporateActionCancellationAdvice002V13",
+    "id": "_jKsTE5t3Ee-wQIOX0djF2w",
+    "identifier": "seev.039.002.13",
+    "bodyTag": "CorpActnCxlAdvc",
+    "out": "seev039f2",
+    "dir": "seev039f2-v13"
+  },
+  {
+    "name": "CorporateActionCancellationAdviceV13",
+    "id": "_4bkDGX_4Ee-h086v0qPiyQ",
+    "identifier": "seev.039.001.13",
+    "bodyTag": "CorpActnCxlAdvc",
+    "out": "seev039",
+    "dir": "seev039-v13"
+  },
+  {
+    "name": "CorporateActionEventProcessingStatusAdvice002V09",
+    "id": "_jWqSg5t3Ee-wQIOX0djF2w",
+    "identifier": "seev.032.002.09",
+    "bodyTag": "CorpActnEvtPrcgStsAdvc",
+    "out": "seev032f2",
+    "dir": "seev032f2-v09"
+  },
+  {
+    "name": "CorporateActionEventProcessingStatusAdviceV09",
+    "id": "_4baRtX_4Ee-h086v0qPiyQ",
+    "identifier": "seev.032.001.09",
+    "bodyTag": "CorpActnEvtPrcgStsAdvc",
+    "out": "seev032",
+    "dir": "seev032-v09"
+  },
+  {
+    "name": "CorporateActionInstruction002V13",
+    "id": "_kV1Qg5t3Ee-wQIOX0djF2w",
+    "identifier": "seev.033.002.13",
+    "bodyTag": "CorpActnInstr",
+    "out": "seev033f2",
+    "dir": "seev033f2-v13"
+  },
+  {
+    "name": "CorporateActionInstructionCancellationRequest002V13",
+    "id": "_jub5U5t3Ee-wQIOX0djF2w",
+    "identifier": "seev.040.002.13",
+    "bodyTag": "CorpActnInstrCxlReq",
+    "out": "seev040f2",
+    "dir": "seev040f2-v13"
+  },
+  {
+    "name": "CorporateActionInstructionCancellationRequestStatusAdvice002V14",
+    "id": "_jhj685t3Ee-wQIOX0djF2w",
+    "identifier": "seev.041.002.14",
+    "bodyTag": "CorpActnInstrCxlReqStsAdvc",
+    "out": "seev041f2",
+    "dir": "seev041f2-v14"
+  },
+  {
+    "name": "CorporateActionInstructionCancellationRequestStatusAdviceV15",
+    "id": "_iTS_MaKuEfCHi7w3_0pcpw",
+    "identifier": "seev.041.001.15",
+    "bodyTag": "CorpActnInstrCxlReqStsAdvc",
+    "out": "seev041",
+    "dir": "seev041-v15"
+  },
+  {
+    "name": "CorporateActionInstructionCancellationRequestV13",
+    "id": "_4bkDPX_4Ee-h086v0qPiyQ",
+    "identifier": "seev.040.001.13",
+    "bodyTag": "CorpActnInstrCxlReq",
+    "out": "seev040",
+    "dir": "seev040-v13"
+  },
+  {
+    "name": "CorporateActionInstructionStatementReport002V13",
+    "id": "_j2CWI5t3Ee-wQIOX0djF2w",
+    "identifier": "seev.042.002.13",
+    "bodyTag": "CorpActnInstrStmtRpt",
+    "out": "seev042f2",
+    "dir": "seev042f2-v13"
+  },
+  {
+    "name": "CorporateActionInstructionStatementReportV14",
+    "id": "_47-Ksa8vEfCx2aBifPEdRg",
+    "identifier": "seev.042.001.14",
+    "bodyTag": "CorpActnInstrStmtRpt",
+    "out": "seev042",
+    "dir": "seev042-v14"
+  },
+  {
+    "name": "CorporateActionInstructionStatusAdvice002V15",
+    "id": "_kLoys5t3Ee-wQIOX0djF2w",
+    "identifier": "seev.034.002.15",
+    "bodyTag": "CorpActnInstrStsAdvc",
+    "out": "seev034f2",
+    "dir": "seev034f2-v15"
+  },
+  {
+    "name": "CorporateActionInstructionStatusAdviceV16",
+    "id": "_QOYGMY7vEfCbNJ3GwkFTcw",
+    "identifier": "seev.034.001.16",
+    "bodyTag": "CorpActnInstrStsAdvc",
+    "out": "seev034",
+    "dir": "seev034-v16"
+  },
+  {
+    "name": "CorporateActionInstructionV14",
+    "id": "_9dBqoa3oEfCN-rGCydxGUA",
+    "identifier": "seev.033.001.14",
+    "bodyTag": "CorpActnInstr",
+    "out": "seev033",
+    "dir": "seev033-v14"
+  },
+  {
+    "name": "CorporateActionMovementConfirmation002V16",
+    "id": "_kvz2w5t3Ee-wQIOX0djF2w",
+    "identifier": "seev.036.002.16",
+    "bodyTag": "CorpActnMvmntConf",
+    "out": "seev036f2",
+    "dir": "seev036f2-v16"
+  },
+  {
+    "name": "CorporateActionMovementConfirmationV17",
+    "id": "_zx83gaLnEfCHi7w3_0pcpw",
+    "identifier": "seev.036.001.17",
+    "bodyTag": "CorpActnMvmntConf",
+    "out": "seev036",
+    "dir": "seev036-v17"
+  },
+  {
+    "name": "CorporateActionMovementPreliminaryAdvice002V16",
+    "id": "_l6MmQ5t3Ee-wQIOX0djF2w",
+    "identifier": "seev.035.002.16",
+    "bodyTag": "CorpActnMvmntPrlimryAdvc",
+    "out": "seev035f2",
+    "dir": "seev035f2-v16"
+  },
+  {
+    "name": "CorporateActionMovementPreliminaryAdviceCancellationAdvice002V13",
+    "id": "_lxVlM5t3Ee-wQIOX0djF2w",
+    "identifier": "seev.044.002.13",
+    "bodyTag": "CorpActnMvmntPrlimryAdvcCxlAdvc",
+    "out": "seev044f2",
+    "dir": "seev044f2-v13"
+  },
+  {
+    "name": "CorporateActionMovementPreliminaryAdviceCancellationAdviceV13",
+    "id": "_4bkDiX_4Ee-h086v0qPiyQ",
+    "identifier": "seev.044.001.13",
+    "bodyTag": "CorpActnMvmntPrlimryAdvcCxlAdvc",
+    "out": "seev044",
+    "dir": "seev044-v13"
+  },
+  {
+    "name": "CorporateActionMovementPreliminaryAdviceV17",
+    "id": "_BwiGYY5cEfCNdMvBaLxujg",
+    "identifier": "seev.035.001.17",
+    "bodyTag": "CorpActnMvmntPrlimryAdvc",
+    "out": "seev035",
+    "dir": "seev035-v17"
+  },
+  {
+    "name": "CorporateActionMovementReversalAdvice002V16",
+    "id": "_m44cE5t3Ee-wQIOX0djF2w",
+    "identifier": "seev.037.002.16",
+    "bodyTag": "CorpActnMvmntRvslAdvc",
+    "out": "seev037f2",
+    "dir": "seev037f2-v16"
+  },
+  {
+    "name": "CorporateActionMovementReversalAdviceV17",
+    "id": "_8gjZgaRfEfC9EJoPPbbyNQ",
+    "identifier": "seev.037.001.17",
+    "bodyTag": "CorpActnMvmntRvslAdvc",
+    "out": "seev037",
+    "dir": "seev037-v17"
+  },
+  {
+    "name": "CorporateActionNarrative002V09",
+    "id": "_nF16A5t3Ee-wQIOX0djF2w",
+    "identifier": "seev.038.002.09",
+    "bodyTag": "CorpActnNrrtv",
+    "out": "seev038f2",
+    "dir": "seev038f2-v09"
+  },
+  {
+    "name": "CorporateActionNarrativeV09",
+    "id": "_4bkDCX_4Ee-h086v0qPiyQ",
+    "identifier": "seev.038.001.09",
+    "bodyTag": "CorpActnNrrtv",
+    "out": "seev038",
+    "dir": "seev038-v09"
+  },
+  {
+    "name": "CorporateActionNotification002V15",
+    "id": "_nLWsI5t3Ee-wQIOX0djF2w",
+    "identifier": "seev.031.002.15",
+    "bodyTag": "CorpActnNtfctn",
+    "out": "seev031f2",
+    "dir": "seev031f2-v15"
+  },
+  {
+    "name": "CorporateActionNotificationV16",
+    "id": "702428b0-0cfa-48c6-ade5-3e4a4cf035d9",
+    "identifier": "seev.031.001.16",
+    "bodyTag": "CorpActnNtfctn",
+    "out": "seev031",
+    "dir": "seev031-v16"
+  },
+  {
+    "name": "MarketClaimCancellationRequestStatusAdviceV04",
+    "id": "_BKZIMa8xEfCx2aBifPEdRg",
+    "identifier": "seev.053.001.04",
+    "bodyTag": "MktClmCxlReqStsAdvc",
+    "out": "seev053",
+    "dir": "seev053-v04"
+  },
+  {
+    "name": "MarketClaimCancellationRequestV02",
+    "id": "_g4ztO3_5Ee-h086v0qPiyQ",
+    "identifier": "seev.051.001.02",
+    "bodyTag": "MktClmCxlReq",
+    "out": "seev051",
+    "dir": "seev051-v02"
+  },
+  {
+    "name": "MarketClaimCreationV04",
+    "id": "_FfUWEaN1EfCxxJ9emeyVvA",
+    "identifier": "seev.050.001.04",
+    "bodyTag": "MktClmCre",
+    "out": "seev050",
+    "dir": "seev050-v04"
+  },
+  {
+    "name": "MarketClaimStatusAdviceV04",
+    "id": "_yIku0a8wEfCx2aBifPEdRg",
+    "identifier": "seev.052.001.04",
+    "bodyTag": "MktClmStsAdvc",
+    "out": "seev052",
+    "dir": "seev052-v04"
+  },
+  {
+    "name": "MeetingCancellationV10",
+    "id": "_UbvIj3_5Ee-h086v0qPiyQ",
+    "identifier": "seev.002.001.10",
+    "bodyTag": "MtgCxl",
+    "out": "seev002",
+    "dir": "seev002-v10"
+  },
+  {
+    "name": "MeetingEntitlementNotificationV10",
+    "id": "_UbvIn3_5Ee-h086v0qPiyQ",
+    "identifier": "seev.003.001.10",
+    "bodyTag": "MtgEntitlmntNtfctn",
+    "out": "seev003",
+    "dir": "seev003-v10"
+  },
+  {
+    "name": "MeetingInstructionCancellationRequestV10",
+    "id": "_UbvI2X_5Ee-h086v0qPiyQ",
+    "identifier": "seev.005.001.10",
+    "bodyTag": "MtgInstrCxlReq",
+    "out": "seev005",
+    "dir": "seev005-v10"
+  },
+  {
+    "name": "MeetingInstructionStatusV12",
+    "id": "_9MhSoajIEfCzuLlmLrhIvA",
+    "identifier": "seev.006.001.12",
+    "bodyTag": "MtgInstrSts",
+    "out": "seev006",
+    "dir": "seev006-v12"
+  },
+  {
+    "name": "MeetingInstructionV11",
+    "id": "_ezLAgajGEfCzuLlmLrhIvA",
+    "identifier": "seev.004.001.11",
+    "bodyTag": "MtgInstr",
+    "out": "seev004",
+    "dir": "seev004-v11"
+  },
+  {
+    "name": "MeetingNotificationV13",
+    "id": "_6s844ajIEfCzuLlmLrhIvA",
+    "identifier": "seev.001.001.13",
+    "bodyTag": "MtgNtfctn",
+    "out": "seev001",
+    "dir": "seev001-v13"
+  },
+  {
+    "name": "MeetingResultDisseminationV10",
+    "id": "_UbvJIX_5Ee-h086v0qPiyQ",
+    "identifier": "seev.008.001.10",
+    "bodyTag": "MtgRsltDssmntn",
+    "out": "seev008",
+    "dir": "seev008-v10"
+  },
+  {
+    "name": "MeetingVoteExecutionConfirmationV12",
+    "id": "_7oj3cajGEfCzuLlmLrhIvA",
+    "identifier": "seev.007.001.12",
+    "bodyTag": "MtgVoteExctnConf",
+    "out": "seev007",
+    "dir": "seev007-v12"
+  },
+  {
+    "name": "ShareholderIdentificationDisclosureResponseCancellationAdviceV01",
+    "id": "_mi0doEV8EemRx7jyevcLwg",
+    "identifier": "seev.048.001.01",
+    "bodyTag": "ShrhldrIdDsclsrRspnCxlAdvc",
+    "out": "seev048",
+    "dir": "seev048-v01"
+  },
+  {
+    "name": "ShareholderIdentificationDisclosureResponseStatusAdviceV01",
+    "id": "_NCNMYHC5EemNhNOCZKENuw",
+    "identifier": "seev.049.001.01",
+    "bodyTag": "ShrhldrIdDsclsrRspnStsAdvc",
+    "out": "seev049",
+    "dir": "seev049-v01"
+  },
+  {
+    "name": "ShareholdersIdentificationDisclosureRequestCancellationAdviceV01",
+    "id": "_mKzuYDnYEemL_ewJY9QP1g",
+    "identifier": "seev.046.001.01",
+    "bodyTag": "ShrhldrsIdDsclsrReqCxlAdvc",
+    "out": "seev046",
+    "dir": "seev046-v01"
+  },
+  {
+    "name": "ShareholdersIdentificationDisclosureRequestV04",
+    "id": "_n1QvATWfEe2OzdGcZrUAEQ",
+    "identifier": "seev.045.001.04",
+    "bodyTag": "ShrhldrsIdDsclsrReq",
+    "out": "seev045",
+    "dir": "seev045-v04"
+  },
+  {
+    "name": "ShareholdersIdentificationDisclosureResponseV03",
+    "id": "_fWSaAVx4Ee6fgZt44_IqFA",
+    "identifier": "seev.047.001.03",
+    "bodyTag": "ShrhldrsIdDsclsrRspn",
+    "out": "seev047",
+    "dir": "seev047-v03"
   }
 ]

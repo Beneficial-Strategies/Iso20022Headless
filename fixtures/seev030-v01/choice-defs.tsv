@@ -1,0 +1,11 @@
+choice	memberId	memberName	text
+ProcessedStatus6FormatChoice	_RnmN9tp-Ed-ak6NoX_4Aeg_-1064962646	Code	Standard code to specify the processing status of a deactivation instruction.
+ProcessedStatus6FormatChoice	_RnmN99p-Ed-ak6NoX_4Aeg_-1064962645	Proprietary	Proprietary code to express the processing status of a deactivation instruction.
+RejectionReason12FormatChoice	_RoMq4Np-Ed-ak6NoX_4Aeg_319289821	Code	Standard code to specify the reason of a rejection of a deactivation instruction.
+RejectionReason12FormatChoice	_RoMq4dp-Ed-ak6NoX_4Aeg_319289790	Proprietary	Proprietary code to express the reason of a rejection of a deactivation instruction.
+CorporateActionDeactivationCancellationStatus1Choice	_RiYWwdp-Ed-ak6NoX_4Aeg_-416590020	ProcessedStatus	Provides information about the processing status of the cancellation request.
+CorporateActionDeactivationCancellationStatus1Choice	_RiYWwtp-Ed-ak6NoX_4Aeg_1549781490	RejectedStatus	Provides information about the rejection status.
+ProcessedStatus2FormatChoice	_RnJiB9p-Ed-ak6NoX_4Aeg_-2111312844	Code	Standard code to specify the processing status of a cancellation request.
+ProcessedStatus2FormatChoice	_RnTTANp-Ed-ak6NoX_4Aeg_1809629766	Proprietary	Proprietary code to express the processing status of a cancellation request.
+RejectionReason7FormatChoice	_RoovwNp-Ed-ak6NoX_4Aeg_255567701	Code	Standard code to specify the reason of a rejection cancellation request.
+RejectionReason7FormatChoice	_Roovwdp-Ed-ak6NoX_4Aeg_255567700	Proprietary	Proprietary code to express the reason of a rejection cancellation request.

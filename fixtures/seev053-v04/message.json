@@ -1,0 +1,59 @@
+{
+  "identifier": "seev.053.001.04",
+  "name": "MarketClaimCancellationRequestStatusAdviceV04",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.053.001.04",
+  "bodyTag": "MktClmCxlReqStsAdvc",
+  "out": "seev053",
+  "isoId": "_BKZIMa8xEfCx2aBifPEdRg",
+  "definition": "Scope and Usage|The MarketClaimCancellationRequestStatusAdvice message is sent by an account servicer to an account holder to provide the status of a market claim transaction cancellation request.|This message definition is intended for use with the Business Application Header (BAH).",
+  "blocks": [
+    {
+      "name": "MarketClaimCancellationRequestIdentification",
+      "isoId": "_BKZIOa8xEfCx2aBifPEdRg",
+      "xmlTag": "MktClmCxlReqId",
+      "type": "DocumentIdentification9",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "TransactionReference",
+      "isoId": "_BKZIO68xEfCx2aBifPEdRg",
+      "xmlTag": "TxRef",
+      "type": "References26",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionGeneralInformation",
+      "isoId": "_BKZIP68xEfCx2aBifPEdRg",
+      "xmlTag": "CorpActnGnlInf",
+      "type": "CorporateActionGeneralInformation181",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "MarketClaimCancellationRequestStatus",
+      "isoId": "_BKZIQa8xEfCx2aBifPEdRg",
+      "xmlTag": "MktClmCxlReqSts",
+      "type": "MarketClaimCancellationRequestStatus3Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "MarketClaimDetails",
+      "isoId": "_BKZIQ68xEfCx2aBifPEdRg",
+      "xmlTag": "MktClmDtls",
+      "type": "CorporateActionOption234",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_BKZIRa8xEfCx2aBifPEdRg",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

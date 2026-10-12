@@ -1,0 +1,4 @@
+codeSet	isoId	text
+FailedSettlementReason1Code	_amoliNp-Ed-ak6NoX_4Aeg_-707965689	Specifies the reason of a settlement failure.
+RejectionReason13Code	_Zgv7idp-Ed-ak6NoX_4Aeg_1920640283	Specifies the reason of a rejection of a movement.
+RejectionReason14Code	_Zg5Fddp-Ed-ak6NoX_4Aeg_1895706471	Specifies the reason of a rejection of a movement cancellation request.

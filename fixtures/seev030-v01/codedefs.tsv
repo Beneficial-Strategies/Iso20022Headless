@@ -1,0 +1,36 @@
+codeSet	code	enumName	isoId	text
+ProcessedStatus6Code	RECE	Received	_aKxI49p-Ed-ak6NoX_4Aeg_-1149003943	The instruction/request has been received.
+ProcessedStatus6Code	DEAC	WaitingDeactivationDate	_aKxI5Np-Ed-ak6NoX_4Aeg_-1149003942	Awaiting the deactivation date.
+ProcessedStatus6Code	COMP	Completed	_aKxI5dp-Ed-ak6NoX_4Aeg_-1149003664	The request has been completed.
+RejectionReason12Code	DEAC	EventAlreadyDeactivated	_ZgmKgtp-Ed-ak6NoX_4Aeg_-843380834	Rejected as the deactivation of the event is already completed.
+RejectionReason12Code	FAIL	FailedValidation	_ZgmKg9p-Ed-ak6NoX_4Aeg_-843380804	The validation of the advice/instruction/request failed.
+RejectionReason12Code	SAME	SameCAIdentification	_ZgmKhNp-Ed-ak6NoX_4Aeg_-843380803	An Agent Corporate Action Deactivation Instruction with the same identification already exists.
+RejectionReason12Code	REFI	InvalidCAIdentification	_ZgmKhdp-Ed-ak6NoX_4Aeg_-843380773	Invalid corporate action identification supplied.
+RejectionReason12Code	AGIN	InvalidAgent	_ZgmKhtp-Ed-ak6NoX_4Aeg_-843380742	Invalid agent identification supplied.
+RejectionReason12Code	MAIN	NotMainAgent	_ZgmKh9p-Ed-ak6NoX_4Aeg_-843380712	Agent Identification specified does not correspond to the main Agent of the relating event.
+RejectionReason12Code	OPTI	InvalidOption	_ZgmKiNp-Ed-ak6NoX_4Aeg_-843380681	Invalid combination of CA option code and CA option number.
+RejectionReason12Code	PEDA	PendingDeactivation	_Zgv7gNp-Ed-ak6NoX_4Aeg_-843380651	The specified Corporate Action option already has a pending deactivation instruction.
+RejectionReason12Code	NORO	NoRemainingOption	_Zgv7gdp-Ed-ak6NoX_4Aeg_-843380620	Specified Corporate Action has no remaining options to disable.
+RejectionReason12Code	INET	InvalidEventType	_Zgv7gtp-Ed-ak6NoX_4Aeg_-843380372	CA Event Type does not correspond with the relating Corporate Action.
+RejectionReason12Code	INUS	InvalidUnderlyingSecurity	_Zgv7g9p-Ed-ak6NoX_4Aeg_-843380342	Underlying Security Identification does not correspond with the Corporate Action Reference supplied.
+RejectionReason12Code	INPT	InvalidEventProcessingType	_Zgv7hNp-Ed-ak6NoX_4Aeg_-843380311	Event Processing Type does not correspond with the relating Corporate Action.
+RejectionReason12Code	INMV	InvalidMandatoryVoluntaryEventType	_Zgv7hdp-Ed-ak6NoX_4Aeg_-843379917	Mandatory/Voluntary Event Type does not correspond with the relating Corporate Action.
+RejectionReason12Code	SAID	SameIdentification	_Zgv7htp-Ed-ak6NoX_4Aeg_-843379886	Several message with the same identification.
+RejectionReason12Code	MICA	MismatchedCAIdentification	_Zgv7h9p-Ed-ak6NoX_4Aeg_-843379825	Issuer CA Identification does not correspond with the Corporate Action Identification supplied.
+RejectionReason12Code	NOAP	NotApplicable	_Zgv7iNp-Ed-ak6NoX_4Aeg_-843379764	This instruction type is not applicable for mandatory events.
+ProcessedStatus2Code	RECE	Received	_aKeN9tp-Ed-ak6NoX_4Aeg_1837333616	The instruction/request has been received.
+ProcessedStatus2Code	COMP	Completed	_aKeN99p-Ed-ak6NoX_4Aeg_1837333617	The request has been completed.
+RejectionReason7Code	DEAC	EventAlreadyDeactivated	_Zl9ysNp-Ed-ak6NoX_4Aeg_476926389	Rejected as the deactivation of the event is already completed.
+RejectionReason7Code	FAIL	FailedValidation	_Zl9ysdp-Ed-ak6NoX_4Aeg_476926419	The validation of the advice/instruction/request failed.
+RejectionReason7Code	PDEA	NoPendingDeactivationInstruction	_Zl9ystp-Ed-ak6NoX_4Aeg_476926450	The cancellation request is rejected as there is no pending deactivation instruction.
+RejectionReason7Code	INID	InvalidIdentification	_Zl9ys9p-Ed-ak6NoX_4Aeg_476926481	Instruction contains an invalid message identification, identification is unknown.
+RejectionReason7Code	REFI	InvalidCAIdentification	_Zl9ytNp-Ed-ak6NoX_4Aeg_476926728	Invalid corporate action identification supplied.
+RejectionReason7Code	AGIN	InvalidAgent	_Zl9ytdp-Ed-ak6NoX_4Aeg_476926759	Invalid agent identification supplied.
+RejectionReason7Code	SAID	SameIdentification	_Zl9yttp-Ed-ak6NoX_4Aeg_476926790	Several message with the same identification.
+RejectionReason7Code	DEAO	OptionAlreadyDeactivated	_Zl9yt9p-Ed-ak6NoX_4Aeg_476926820	Rejected as the deactivation of the option is already completed.
+RejectionReason7Code	INET	InvalidEventType	_Zl9yuNp-Ed-ak6NoX_4Aeg_476926851	CA Event Type does not correspond with the relating Corporate Action.
+RejectionReason7Code	INUS	InvalidUnderlyingSecurity	_Zl9yudp-Ed-ak6NoX_4Aeg_476926882	Underlying Security Identification does not correspond with the Corporate Action Reference supplied.
+RejectionReason7Code	INPT	InvalidEventProcessingType	_ZmG8oNp-Ed-ak6NoX_4Aeg_476927160	Event Processing Type does not correspond with the relating Corporate Action.
+RejectionReason7Code	INMV	InvalidMandatoryVoluntaryEventType	_ZmG8odp-Ed-ak6NoX_4Aeg_476927191	Mandatory/Voluntary Event Type does not correspond with the relating Corporate Action.
+RejectionReason7Code	INDE	InvalidCorporateActionInformation	_ZmG8otp-Ed-ak6NoX_4Aeg_476927244	Details specified in the Corporate Action General Information block are inconsistent with those that were specified in the relating original message.
+RejectionReason7Code	INDT	InvalidDetails	_ZmG8o9p-Ed-ak6NoX_4Aeg_476927275	Message details specified in the instruction/request are inconsistent with those that were specified in the relating original message.

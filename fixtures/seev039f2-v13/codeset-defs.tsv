@@ -1,0 +1,5 @@
+codeSet	isoId	text
+CorporateActionCancellationReason1Code	_bCpME9p-Ed-ak6NoX_4Aeg_-232047484	Specifies reasons for cancellation of a corporate action event.
+SafekeepingAccountIdentification1Code	_Y-eU49p-Ed-ak6NoX_4Aeg_1272441146	Specifies the account identification via a code.
+CorporateActionEventStage4Code	_nc7WUCUmEeO8eOSw0QN9mA	Specifies the stage of the CA lottery event.
+AdditionalBusinessProcess8Code	_4f5gkJcDEee8S7xwGG7Veg	Specifies the additional business process linked to a corporate action event such as an automatic market claim.

@@ -1,0 +1,4 @@
+choice	memberId	memberName	text
+PartyIdentification195Choice	_4aFsyjqdEemL_ewJY9QP1g	AnyBIC	Code allocated to a financial or non-financial institution by the ISO 9362 Registration Authority, as described in ISO 9362 "Banking - Banking telecommunication messages - Business identifier code (BIC)".
+PartyIdentification195Choice	_4aFsyzqdEemL_ewJY9QP1g	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to a financial institution using a proprietary identification scheme.
+PartyIdentification195Choice	_4aFsyDqdEemL_ewJY9QP1g	LEI	Legal entity identifier of the party.

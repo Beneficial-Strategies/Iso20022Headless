@@ -1,0 +1,147 @@
+{
+  "identifier": "seev.036.002.16",
+  "name": "CorporateActionMovementConfirmation002V16",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.036.002.16",
+  "bodyTag": "CorpActnMvmntConf",
+  "out": "seev036f2",
+  "isoId": "_kvz2w5t3Ee-wQIOX0djF2w",
+  "definition": "Scope|The CorporateActionMovementConfirmation message is sent by an account servicer to an account owner or its designated agent to confirm the posting of securities or cash as a result of a corporate action event.|Usage|The message may also be used to:|- re-send a message previously sent (the sub-function of the message is Duplicate),|- provide a third party with a copy of a message for information (the sub-function of the message is Copy),|- re-send to a third party a copy of a message for information (the sub-function of the message is Copy Duplicate), using the relevant elements in the business application header (BAH).",
+  "blocks": [
+    {
+      "name": "Pagination",
+      "isoId": "_kvz23pt3Ee-wQIOX0djF2w",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "MovementConfirmationIdentification",
+      "isoId": "_kvz24Jt3Ee-wQIOX0djF2w",
+      "xmlTag": "MvmntConfId",
+      "type": "RestrictedFINXMax16Text",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "NotificationIdentification",
+      "isoId": "_kvz24pt3Ee-wQIOX0djF2w",
+      "xmlTag": "NtfctnId",
+      "type": "DocumentIdentification37",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "MovementPreliminaryAdviceIdentification",
+      "isoId": "_kvz25Jt3Ee-wQIOX0djF2w",
+      "xmlTag": "MvmntPrlimryAdvcId",
+      "type": "DocumentIdentification37",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "InstructionIdentification",
+      "isoId": "_kv0d0Zt3Ee-wQIOX0djF2w",
+      "xmlTag": "InstrId",
+      "type": "DocumentIdentification17",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "OtherDocumentIdentification",
+      "isoId": "_kv0d05t3Ee-wQIOX0djF2w",
+      "xmlTag": "OthrDocId",
+      "type": "DocumentIdentification38",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "EventsLinkage",
+      "isoId": "_kv0d1Zt3Ee-wQIOX0djF2w",
+      "xmlTag": "EvtsLkg",
+      "type": "CorporateActionEventReference4",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "TransactionIdentification",
+      "isoId": "_kv0d15t3Ee-wQIOX0djF2w",
+      "xmlTag": "TxId",
+      "type": "TransactionIdentification1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionGeneralInformation",
+      "isoId": "_kv0d2Zt3Ee-wQIOX0djF2w",
+      "xmlTag": "CorpActnGnlInf",
+      "type": "CorporateActionGeneralInformation190",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountDetails",
+      "isoId": "_kv0d25t3Ee-wQIOX0djF2w",
+      "xmlTag": "AcctDtls",
+      "type": "AccountAndBalance63",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionDetails",
+      "isoId": "_kv0d3Zt3Ee-wQIOX0djF2w",
+      "xmlTag": "CorpActnDtls",
+      "type": "CorporateAction86",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionConfirmationDetails",
+      "isoId": "_kv0d35t3Ee-wQIOX0djF2w",
+      "xmlTag": "CorpActnConfDtls",
+      "type": "CorporateActionOption244",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AdditionalInformation",
+      "isoId": "_kv0d4Zt3Ee-wQIOX0djF2w",
+      "xmlTag": "AddtlInf",
+      "type": "CorporateActionNarrative35",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "IssuerAgent",
+      "isoId": "_kv0d45t3Ee-wQIOX0djF2w",
+      "xmlTag": "IssrAgt",
+      "type": "PartyIdentification137Choice",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "PayingAgent",
+      "isoId": "_kv0d5Zt3Ee-wQIOX0djF2w",
+      "xmlTag": "PngAgt",
+      "type": "PartyIdentification137Choice",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SubPayingAgent",
+      "isoId": "_kv0d55t3Ee-wQIOX0djF2w",
+      "xmlTag": "SubPngAgt",
+      "type": "PartyIdentification137Choice",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_kv0d6Zt3Ee-wQIOX0djF2w",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

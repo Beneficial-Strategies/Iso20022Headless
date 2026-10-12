@@ -1,0 +1,26 @@
+choice	memberId	memberName	text
+InstructionCancellationRequestStatus21Choice	_c8L7IaKvEfCHi7w3_0pcpw	CancellationCompleted	Provides status information related to an instruction cancellation request completed.
+InstructionCancellationRequestStatus21Choice	_c8L7KaKvEfCHi7w3_0pcpw	Accepted	Provides status information related to a cancellation request accepted for further processing.
+InstructionCancellationRequestStatus21Choice	_c8L7MaKvEfCHi7w3_0pcpw	Rejected	Provides status information related to a cancellation request rejected for further processing due to system (data) reasons.
+InstructionCancellationRequestStatus21Choice	_c8L7OaKvEfCHi7w3_0pcpw	PendingCancellation	Provides status information related to a pending cancellation request.
+InstructionCancellationRequestStatus21Choice	_c8L7QaKvEfCHi7w3_0pcpw	ProprietaryStatus	Proprietary status related to an instruction cancellation request.
+CancelledStatus11Choice	_85EWo0GWEeWqy4niLuXETA	NoSpecifiedReason	Reason not specified.
+CancelledStatus11Choice	_85EWq0GWEeWqy4niLuXETA	Reason	Reason for the cancelled status.
+CancelledReason9Choice	_9U4v80GWEeWqy4niLuXETA	Code	Standard code to specify the reason why the instruction is cancelled.
+CancelledReason9Choice	_9U4v-0GWEeWqy4niLuXETA	Proprietary	Proprietary identification specifying the reason why the instruction is cancelled.
+RejectedStatus65Choice	_V1Ri0aKvEfCHi7w3_0pcpw	NoSpecifiedReason	Reason not specified.
+RejectedStatus65Choice	_V1Ri2aKvEfCHi7w3_0pcpw	Reason	Reason for the rejected status.
+RejectedReason69Choice	_HhfUIaKvEfCHi7w3_0pcpw	Code	Standard code to specify the reason why the instruction/cancellation request has a rejected status.
+RejectedReason69Choice	_HhfUKaKvEfCHi7w3_0pcpw	Proprietary	Proprietary identification of the reason why the instruction/cancellation request has a rejected status.
+PendingCancellationStatus18Choice	_vtSHAaLNEfCHi7w3_0pcpw	NoSpecifiedReason	Reason not specified.
+PendingCancellationStatus18Choice	_vtSHCaLNEfCHi7w3_0pcpw	Reason	Reason for the pending cancellation status.
+PendingCancellationReason10Choice	_hPBtsaLNEfCHi7w3_0pcpw	Code	Standard code to specify the reason why a cancellation request sent for the related instruction is pending.
+PendingCancellationReason10Choice	_hPBtuaLNEfCHi7w3_0pcpw	Proprietary	Proprietary identification of the reason why a cancellation request sent for the related instruction is pending.
+CorporateActionOption41Choice	_i0DJoe35Eeqc-LCjwLsUVg	Code	Specifies the corporate action options available to the account owner.
+CorporateActionOption41Choice	_i0DJqe35Eeqc-LCjwLsUVg	Proprietary	Proprietary identification of the type of corporate action option.
+OptionFeaturesFormat25Choice	_r_ZgwLaSEeiN--kDwanlkA	Code	Standard code to specify the features that may apply to a corporate action option.
+OptionFeaturesFormat25Choice	_r_ZgwbaSEeiN--kDwanlkA	Proprietary	Proprietary identification of the features that may apply to a corporate action option.
+Quantity48Choice	_KADDMRuyEeyhRdHRjakS2w	Quantity	Quantity of security.
+Quantity48Choice	_KADDMxuyEeyhRdHRjakS2w	ProprietaryQuantity	Proprietary quantity of security format.
+FinancialInstrumentQuantity18Choice	_SrfnEdorEeCWg-hsBVGrDA_954573263	Unit	Quantity expressed as a number, for example, a number of shares.
+FinancialInstrumentQuantity18Choice	_SrfnEtorEeCWg-hsBVGrDA_71339976	FaceAmount	Quantity expressed as an amount representing the face amount, that is, the principal, of a debt instrument.

@@ -1,0 +1,29 @@
+choice	memberId	memberName	text
+CorporateActionEventReference3Choice	_4h3LozncEeWLJsP1cO-amg	LinkedOfficialCorporateActionEventIdentification	Official and unique reference assigned by the official central body/ entity within each market at the beginning of a corporate action event.
+CorporateActionEventReference3Choice	_4h3LqzncEeWLJsP1cO-amg	LinkedCorporateActionIdentification	Reference assigned by the account servicer to unambiguously identify a related corporate action event.
+PartyIdentification263Choice	_EnMLQa3pEfCN-rGCydxGUA	AnyBIC	Code allocated to a financial or non-financial institution by the ISO 9362 Registration Authority, as described in ISO 9362 "Banking - Banking telecommunication messages - Business identifier code (BIC)".
+PartyIdentification263Choice	_EnMLQ63pEfCN-rGCydxGUA	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to a financial institution using a proprietary identification scheme.
+PartyIdentification263Choice	_EnMLRa3pEfCN-rGCydxGUA	NameAndAddress	Name and address of a party.
+PartyIdentification263Choice	_EnMLR63pEfCN-rGCydxGUA	IndividualOwnerIdentification	Individual local country specific identification of the owner agreed between the account servicer and account owner.
+PartyIdentification263Choice	_GNgo0a3pEfCN-rGCydxGUA	LEI	Legal entity identification of the party.
+BeneficiaryCertificationType10Choice	_dXFBcUGUEeWqy4niLuXETA	Code	Standard code to specify the type of certification required.
+BeneficiaryCertificationType10Choice	_dXFBeUGUEeWqy4niLuXETA	Proprietary	Proprietary identification of the type of certification required.
+FractionDispositionType28Choice	_1zN1o0GTEeWqy4niLuXETA	Code	Specifies how fractions resulting from derived securities will be processed or how prorated decisions will be rounding, if provided with a pro ration rate.
+FractionDispositionType28Choice	_1zN1pUGTEeWqy4niLuXETA	Proprietary	Proprietary identification of the type of fraction disposition.
+CorporateActionChangeTypeFormat6Choice	_42kR4UGTEeWqy4niLuXETA	Code	Standard code to specify the type of changes.
+CorporateActionChangeTypeFormat6Choice	_42kR6UGTEeWqy4niLuXETA	Proprietary	Proprietary identification of the type of changes.
+SecuritiesQuantityOrAmount6Choice	_N-tRIRuyEeyhRdHRjakS2w	SecuritiesQuantity	Provides information about securities quantity linked to a corporate action option.
+SecuritiesQuantityOrAmount6Choice	_N-tRIxuyEeyhRdHRjakS2w	InstructedAmount	Cash amount to be instructed.
+RateAndAmountFormat55Choice	_2o1VgYV4Ee-oeNhl-Tk6YQ	Rate	Value expressed as a rate.
+RateAndAmountFormat55Choice	_2o1ViYV4Ee-oeNhl-Tk6YQ	Amount	Value is expressed as a currency and amount.
+RateAndAmountFormat55Choice	_2o1VkYV4Ee-oeNhl-Tk6YQ	RateTypeAndRate	Value is expressed as a rate type and a percentage rate.
+IndicativeOrMarketPrice13Choice	_DcoisYV6Ee-oeNhl-Tk6YQ	IndicativePrice	Estimated price, for example, for valuation purposes.
+IndicativeOrMarketPrice13Choice	_DcoiuYV6Ee-oeNhl-Tk6YQ	MarketPrice	Last reported/known price of a financial instrument in a market.
+PriceFormat77Choice	_DRhe4YV6Ee-oeNhl-Tk6YQ	PercentagePrice	Price expressed as a percentage.
+PriceFormat77Choice	_DRhe6YV6Ee-oeNhl-Tk6YQ	AmountPrice	Price expressed as a currency and amount.
+PriceFormat78Choice	_EEd-wYV6Ee-oeNhl-Tk6YQ	PercentagePrice	Price expressed as a percentage.
+PriceFormat78Choice	_EEd-yYV6Ee-oeNhl-Tk6YQ	AmountPrice	Price expressed as a currency and amount.
+PriceFormat78Choice	_EEd-0YV6Ee-oeNhl-Tk6YQ	NotSpecifiedPrice	Value of the price not specified.
+PriceFormat78Choice	_EEd-2YV6Ee-oeNhl-Tk6YQ	AmountPricePerFinancialInstrumentQuantity	Price expressed as a ratio: amount price per financial instrument quantity.
+PriceFormat78Choice	_EEd-4YV6Ee-oeNhl-Tk6YQ	AmountPricePerAmount	Price expressed as a ratio: amount price per amount.
+PriceFormat78Choice	_EEd-6YV6Ee-oeNhl-Tk6YQ	IndexPoints	Price expressed in index points.

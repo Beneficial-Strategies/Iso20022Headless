@@ -1,0 +1,4 @@
+name	isoId	xsiType	pattern	minLength	maxLength	totalDigits	fractionDigits	minInclusive	maxInclusive	other
+RestrictedFINXMax25Text	_a8G0YPyaEeiKOe8GCUL1Lg	Text	([0-9a-zA-Z\-\?:\(\)\.,'\+ ]([0-9a-zA-Z\-\?:\(\)\.,'\+ ]*(/[0-9a-zA-Z\-\?:\(\)\.,'\+ ])?)*)	1	25					
+RestrictedFINMax15Text	_WOpRkNp-Ed-ak6NoX_4Aeg_1507303120	Text		1	15					
+RestrictedFINActiveCurrencyAnd13DecimalAmount	_WN5Dptp-Ed-ak6NoX_4Aeg_-154812387	Amount				14	13	0		currencyIdentifierSet=ActiveCurrencyCode (_bqIp5tp-Ed-ak6NoX_4Aeg_-1326801359)

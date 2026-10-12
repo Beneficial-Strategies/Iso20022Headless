@@ -1,0 +1,123 @@
+{
+  "identifier": "seev.037.002.16",
+  "name": "CorporateActionMovementReversalAdvice002V16",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.037.002.16",
+  "bodyTag": "CorpActnMvmntRvslAdvc",
+  "out": "seev037f2",
+  "isoId": "_m44cE5t3Ee-wQIOX0djF2w",
+  "definition": "Scope|The CorporateActionMovementReversalAdvice message is sent by an account servicer to an account owner or its designated agent to reverse a previously confirmed posting of securities or cash.|Usage|The message may also be used to:|- re-send a message previously sent (the sub-function of the message is Duplicate),|- provide a third party with a copy of a message for information (the sub-function of the message is Copy),|- re-send to a third party a copy of a message for information (the sub-function of the message is Copy Duplicate), using the relevant elements in the business application header (BAH).",
+  "blocks": [
+    {
+      "name": "MovementConfirmationIdentification",
+      "isoId": "_m44cIJt3Ee-wQIOX0djF2w",
+      "xmlTag": "MvmntConfId",
+      "type": "DocumentIdentification37",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "OtherDocumentIdentification",
+      "isoId": "_m44cIpt3Ee-wQIOX0djF2w",
+      "xmlTag": "OthrDocId",
+      "type": "DocumentIdentification38",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "EventsLinkage",
+      "isoId": "_m44cJJt3Ee-wQIOX0djF2w",
+      "xmlTag": "EvtsLkg",
+      "type": "CorporateActionEventReference4",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "ReversalReason",
+      "isoId": "_m44cJpt3Ee-wQIOX0djF2w",
+      "xmlTag": "RvslRsn",
+      "type": "CorporateActionReversalReason10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "TransactionIdentification",
+      "isoId": "_m44cKJt3Ee-wQIOX0djF2w",
+      "xmlTag": "TxId",
+      "type": "TransactionIdentification1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionGeneralInformation",
+      "isoId": "_m44cKpt3Ee-wQIOX0djF2w",
+      "xmlTag": "CorpActnGnlInf",
+      "type": "CorporateActionGeneralInformation193",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountDetails",
+      "isoId": "_m44cLJt3Ee-wQIOX0djF2w",
+      "xmlTag": "AcctDtls",
+      "type": "AccountAndBalance54",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionDetails",
+      "isoId": "_m44cLpt3Ee-wQIOX0djF2w",
+      "xmlTag": "CorpActnDtls",
+      "type": "CorporateAction78",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionConfirmationDetails",
+      "isoId": "_m44cMJt3Ee-wQIOX0djF2w",
+      "xmlTag": "CorpActnConfDtls",
+      "type": "CorporateActionOption246",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AdditionalInformation",
+      "isoId": "_m44cMpt3Ee-wQIOX0djF2w",
+      "xmlTag": "AddtlInf",
+      "type": "CorporateActionNarrative35",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "IssuerAgent",
+      "isoId": "_m44cNJt3Ee-wQIOX0djF2w",
+      "xmlTag": "IssrAgt",
+      "type": "PartyIdentification137Choice",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "PayingAgent",
+      "isoId": "_m44cNpt3Ee-wQIOX0djF2w",
+      "xmlTag": "PngAgt",
+      "type": "PartyIdentification137Choice",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SubPayingAgent",
+      "isoId": "_m44cOJt3Ee-wQIOX0djF2w",
+      "xmlTag": "SubPngAgt",
+      "type": "PartyIdentification137Choice",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_m44cOpt3Ee-wQIOX0djF2w",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

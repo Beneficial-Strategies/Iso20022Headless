@@ -1,0 +1,110 @@
+codeSet	code	enumName	isoId	text
+CorporateActionNotificationType2Code	WITH	Withrawal	_bLJAwdp-Ed-ak6NoX_4Aeg_746682216	Notification sent to void a previously sent notification due to the withdrawal of the event by the issuer.
+CorporateActionNotificationType2Code	CANC	Cancellation	_bLJAwtp-Ed-ak6NoX_4Aeg_746682237	Notification requesting the cancellation of a previously sent notification.
+CorporateActionEventStage1Code	APPD	Approved	_bDsU8dp-Ed-ak6NoX_4Aeg_1114905475	Approved at the relevant meeting, eg, dividend.
+CorporateActionEventStage1Code	CLDE	Deactivated	_bDsU8tp-Ed-ak6NoX_4Aeg_1114905505	The offer is closed for acceptance.
+CorporateActionEventStage1Code	PWAL	ActionPeriod	_bDsU89p-Ed-ak6NoX_4Aeg_1114905506	Open for acceptance until the next specified deadline in the announcement (if any).
+CorporateActionEventStage1Code	SUAP	SubjectToApproval	_bDsU9Np-Ed-ak6NoX_4Aeg_1114905536	Subject to approval at the relevant meeting, eg, dividend.
+CorporateActionEventStage1Code	UNAC	UnconditionalAsToAcceptance	_bDsU9dp-Ed-ak6NoX_4Aeg_1114905537	The required level of acceptances specified in the terms of the offer has been achieved but there are still outstanding conditions to fulfil.
+CorporateActionEventStage1Code	WHOU	WhollyUnconditional	_bDsU9tp-Ed-ak6NoX_4Aeg_1114905566	Wholly unconditional; all conditions specified in the offer document have been satisfied.
+CorporateActionEventStage1Code	FULL	FullReversalLotteryNotification	_bDsU99p-Ed-ak6NoX_4Aeg_1114905567	An original or supplemental lottery is being reversed.
+CorporateActionEventStage1Code	LAPS	Lapsed	_bDsU-Np-Ed-ak6NoX_4Aeg_1114905597	The event/offer conditions have not been met and the event/offer is terminated or lapsed.
+CorporateActionEventStage1Code	PART	PartialReversalLotteryNotification	_bD1e4Np-Ed-ak6NoX_4Aeg_1114905598	Original call amount is reduced by the agent. The original announcement is cancelled and a new original lottery is issued.
+CorporateActionEventStage1Code	RESC	RescissionReversalLotteryNotification	_bD1e4dp-Ed-ak6NoX_4Aeg_1114905627	Original and or supplemental lottery details have changed and the lottery is being cancelled.
+CorporateActionCalculationMethod1Code	PROR	ProRata	_bCgCI9p-Ed-ak6NoX_4Aeg_-666370477	Pro-rata for drawings.
+CorporateActionCalculationMethod1Code	LOTT	Lottery	_bCgCJNp-Ed-ak6NoX_4Aeg_-666370476	Lottery for drawings.
+CorporateActionCalculationMethod1Code	NOMI	NominalReduction	_bCgCJdp-Ed-ak6NoX_4Aeg_-666370467	Reduction of nominal for partial redemption.
+CorporateActionCalculationMethod1Code	NNOM	NoNominalReduction	_bCgCJtp-Ed-ak6NoX_4Aeg_-666370446	Without reduction of nominal (via pool factor) for partial redemption.
+Quantity1Code	QALL	AllSecurities	_ZXWu9dp-Ed-ak6NoX_4Aeg_1332281018	Instruction applies to the entire eligible balance of underlying securities.
+OfferType1Code	DISS	DissenterRights	_aOMQVNp-Ed-ak6NoX_4Aeg_-426518453	Securities holder has the right to disagree with a mandatory event. This right is not inherent in all offers and therefore must be noted in announcements only when applicable.
+OfferType1Code	ERUN	RestrictionExchange	_aOMQVdp-Ed-ak6NoX_4Aeg_-426518452	Exchange of Restricted to Unrestricted (or vice versa).
+OfferType1Code	FCFS	FirstComeFirstServed	_aOMQVtp-Ed-ak6NoX_4Aeg_-426518451	Securities will be accepted in the order they have been submitted until the target number of quantity sought is reached.
+OfferType1Code	FINL	FinalOffer	_aOMQV9p-Ed-ak6NoX_4Aeg_-426518431	Final or last offer to holders subject to offer conditions being reached, for example, 50 percent accepted on a tender.
+OfferType1Code	MINI	MiniTender	_aOWBUNp-Ed-ak6NoX_4Aeg_-426518422	Tender offer for a security that is priced below the current trading price of that instrument.
+OfferType1Code	PART	PartialOffer	_aOWBUdp-Ed-ak6NoX_4Aeg_-426518400	Offer made by the offeror for a portion of the outstanding shares not already owned by the offeror.
+OfferType1Code	SQUE	SqueezeOutBid	_aOWBUtp-Ed-ak6NoX_4Aeg_-426518391	Offer launched by a company, in possession of a large number of the shares (90% - 95%) of a company (generally as a result of a tender offer), in order to acquire the remaining shares of that company.
+ElectionMovementType1Code	REST	Restricted	_ag04d9p-Ed-ak6NoX_4Aeg_1964804967	Election results in a change of balance type that transfers control of the securities rather than the securities themselves.
+ElectionMovementType1Code	DRCT	Direct	_ag04eNp-Ed-ak6NoX_4Aeg_1964804975	Direct movement of resource, that is, cash or security that is directly credited to the paying agent account.
+CorporateActionFrequencyType1Code	FINL	Final	_bJ8t-Np-Ed-ak6NoX_4Aeg_1457749703	Payment of a dividend, less amounts already paid through interim dividends.
+CorporateActionFrequencyType1Code	INTE	Interim	_bKGe8Np-Ed-ak6NoX_4Aeg_1457749980	Dividend declared and paid before annual earnings have been determined.
+CorporateActionFrequencyType1Code	REGR	Regular	_bKGe8dp-Ed-ak6NoX_4Aeg_1457749981	Dividend paid at regular interval, for example, quarterly.
+CorporateActionFrequencyType1Code	SPEC	Special	_bKGe8tp-Ed-ak6NoX_4Aeg_1457749982	Dividend in addition to the regular dividend being paid by the company.
+IntermediateSecurityDistributionType1Code	BIDS	ReverseRights	_aZ-CiNp-Ed-ak6NoX_4Aeg_1639683803	Distribution of reverser rights.
+IntermediateSecurityDistributionType1Code	BONU	BonusRights	_aaHMcNp-Ed-ak6NoX_4Aeg_1639683831	Distribution of bonus rights.
+IntermediateSecurityDistributionType1Code	DRIP	DividendReinvestment	_aaHMcdp-Ed-ak6NoX_4Aeg_1639683832	Distribution of dividend reinvestment securities.
+IntermediateSecurityDistributionType1Code	DVCA	CashDividend	_aaHMctp-Ed-ak6NoX_4Aeg_1639683862	Distribution of cash to shareholders, in proportion to their equity holding. Ordinary dividends are recurring and regular. Shareholder must take cash and may be offered a choice of currency.
+IntermediateSecurityDistributionType1Code	DVOP	DividendOption	_aaHMc9p-Ed-ak6NoX_4Aeg_1639683863	Distribution of dividend option.
+IntermediateSecurityDistributionType1Code	EXRI	SubscriptionRights	_aaHMdNp-Ed-ak6NoX_4Aeg_1639683864	Distribution of subscription rights.
+IntermediateSecurityDistributionType1Code	PRIO	OpenOfferRights	_aaHMddp-Ed-ak6NoX_4Aeg_1639683885	Distribution of open offer rights.
+IntermediateSecurityDistributionType1Code	DVSC	ScripDividendOrPayment	_aaHMdtp-Ed-ak6NoX_4Aeg_1639683893	Dividend or interest paid in the form of scrip.
+IntermediateSecurityDistributionType1Code	DVSE	StockDividend	_aaHMd9p-Ed-ak6NoX_4Aeg_1639683894	Dividend paid to shareholders in the form of shares of stock.
+IntermediateSecurityDistributionType1Code	INTR	InterestPayment	_aaHMeNp-Ed-ak6NoX_4Aeg_1639684133	Interest payment distributed to holders of an interest bearing asset.
+IntermediateSecurityDistributionType1Code	LIQU	LiquidationDividendOrPayment	_aaHMedp-Ed-ak6NoX_4Aeg_1639684141	A distribution of cash, assets or both.
+IntermediateSecurityDistributionType1Code	SOFF	SpinOff	_aaQ9cNp-Ed-ak6NoX_4Aeg_1639684164	A distribution of subsidiary stock to the shareholders.
+RateType12Code	OPEN	Open	_ZZJesdp-Ed-ak6NoX_4Aeg_-1551942185	Rate has not been established.
+RateType12Code	UKWN	Unknown	_ZZJestp-Ed-ak6NoX_4Aeg_-1551942164	Rate is unknown by the sender or has not been established.
+RateType12Code	NILP	NilPayment	_ZZJes9p-Ed-ak6NoX_4Aeg_-1551942163	Rate will not be paid.
+RateValueType6Code	UKWN	Unknown	_ZaVxgdp-Ed-ak6NoX_4Aeg_-1378979921	Rate is unknown by the sender or has not been established.
+RateValueType6Code	OPEN	Open	_ZaVxgtp-Ed-ak6NoX_4Aeg_-1378979892	Rate has not been established.
+TaxableIncomePerShareCalculated2Code	TSIY	FundCalculates	_ZSSoxdp-Ed-ak6NoX_4Aeg_206054111	Fund is calculating the taxable interest per share with the NAV.
+TaxableIncomePerShareCalculated2Code	TSIN	FundDoesNotCalculate	_ZSSoxtp-Ed-ak6NoX_4Aeg_206055154	Fund is not calculating the taxable interest per share with the NAV.
+TaxableIncomePerShareCalculated2Code	UKWN	FundCalculatesUnknown	_ZSSox9p-Ed-ak6NoX_4Aeg_206055214	Unknown whether the fund is calculating the taxable interest per share with the NAV.
+ConversionType1Code	FINL	Final	_bCNHN9p-Ed-ak6NoX_4Aeg_-371886103	This is a final conversion.
+ConversionType1Code	INTE	Interim	_bCNHONp-Ed-ak6NoX_4Aeg_-371886073	This is an interim conversion.
+DistributionType1Code	ROLL	RollingBasis	_aw6i4tp-Ed-ak6NoX_4Aeg_-1335531037	Event will have a number of acceptance and payment dates until further announcement by the Issuer or its agent.
+CorporateActionEventStatus2Code	ACTI	Active	_bEJA6Np-Ed-ak6NoX_4Aeg_2035657828	The CA event is active.
+CorporateActionEventStatus2Code	CANC	Cancelled	_bESK0Np-Ed-ak6NoX_4Aeg_2035657849	The CA event is cancelled.
+CorporateActionEventStatus2Code	INAC	Inactive	_bESK0dp-Ed-ak6NoX_4Aeg_2035657858	Option is not active and can no longer be responded to. Any responses already processed against this option will remain valid, eg, expired option.
+TaxType3Code	LIDT	GermanLocalTax2	_Ykix9tp-Ed-ak6NoX_4Aeg_1780697407	Local tax (ZAS pflichtige Zinsen) - interest liable for interest down payment tax (proportion of gross interest per unit/interim profits that is not covered by the credit in the interest pool).
+TaxType3Code	WITF	WithholdingOfForeignTax	_Ykix99p-Ed-ak6NoX_4Aeg_1780697436	Rate at which the income will be withheld by the jurisdiction in which the income was originally paid, for which relief at source and/or reclaim may be possible.
+TaxType3Code	WITL	WithholdingOfLocalTax	_Ykix-Np-Ed-ak6NoX_4Aeg_1780697437	Rate at which the income will be withheld by the jurisdiction in which the account owner is located, for which relief at source and/or reclaim may be possible.
+RateValueType2Code	UKWN	Unknown	_ZaMAhtp-Ed-ak6NoX_4Aeg_-1008646189	Rate is unknown by the sender or has not been established.
+RateValueType2Code	OPEN	Open	_ZaMAh9p-Ed-ak6NoX_4Aeg_-1008646188	Rate has not been established.
+RateValueType2Code	NILP	NilPayment	_ZaMAiNp-Ed-ak6NoX_4Aeg_-1008646168	Rate will not be paid.
+GrossDividendRateType1Code	CAPO	CapitalPortion	_auh9Qdp-Ed-ak6NoX_4Aeg_-75891242	Rate relating to the underlying security for which capital is distributed.
+GrossDividendRateType1Code	FLFR	FullyFranked	_auh9Qtp-Ed-ak6NoX_4Aeg_-75891214	Rate resulting from a fully franked dividend paid by a company; the rate includes tax credit for companies that have made sufficient tax payments during the fiscal period.
+GrossDividendRateType1Code	INCO	IncomePortion	_auh9Q9p-Ed-ak6NoX_4Aeg_-75891213	Rate relating to the underlying security for which income is distributed.
+GrossDividendRateType1Code	INTR	Interest	_auh9RNp-Ed-ak6NoX_4Aeg_-75891212	Rate relating to the underlying security for which interest is paid.
+GrossDividendRateType1Code	SOIC	SundryOrOtherIncome	_auh9Rdp-Ed-ak6NoX_4Aeg_-75891183	Rate relating to the underlying security for which other income is paid.
+GrossDividendRateType1Code	TXBL	TaxablePortion	_auh9Rtp-Ed-ak6NoX_4Aeg_-75891182	Rate relating to the underlying security for which tax is charged.
+GrossDividendRateType1Code	TXDF	TaxDeferred	_auh9R9p-Ed-ak6NoX_4Aeg_-75891181	Rate relating to the underlying security for which tax is deferred.
+GrossDividendRateType1Code	TXFR	TaxFree	_auh9SNp-Ed-ak6NoX_4Aeg_-75890936	Rate relating to the underlying security which is not taxable.
+GrossDividendRateType1Code	UNFR	Unfranked	_auruQNp-Ed-ak6NoX_4Aeg_-75890935	Rate resulting from an unfranked dividend paid by a company; the rate does not include tax credit and is subject to withholding tax.
+GrossDividendRateType1Code	LTCG	LongTermCapitalGain	_auruQdp-Ed-ak6NoX_4Aeg_-75890905	Long term capital gain.
+GrossDividendRateType1Code	STCG	ShortTermCapitalGain	_auruQtp-Ed-ak6NoX_4Aeg_-75890904	Short term capital gain.
+NetDividendRateType1Code	CAPO	CapitalPortion	_aNTfg9p-Ed-ak6NoX_4Aeg_284283232	Rate relating to the underlying security for which capital is distributed.
+NetDividendRateType1Code	FLFR	FullyFranked	_aNTfhNp-Ed-ak6NoX_4Aeg_284283241	Rate resulting from a fully franked dividend paid by a company; the rate includes tax credit for companies that have made sufficient tax payments during the fiscal period.
+NetDividendRateType1Code	INCO	IncomePortion	_aNTfhdp-Ed-ak6NoX_4Aeg_284283242	Rate relating to the underlying security for which income is distributed.
+NetDividendRateType1Code	INTR	Interest	_aNTfhtp-Ed-ak6NoX_4Aeg_284283263	Rate relating to the underlying security for which interest is paid.
+NetDividendRateType1Code	SOIC	SundryOrOtherIncome	_aNTfh9p-Ed-ak6NoX_4Aeg_284283272	Rate relating to the underlying security for which other income is paid.
+NetDividendRateType1Code	TXBL	TaxablePortion	_aNTfiNp-Ed-ak6NoX_4Aeg_284283273	Rate relating to the underlying security for which tax is charged.
+NetDividendRateType1Code	TXDF	TaxDeferred	_aNTfidp-Ed-ak6NoX_4Aeg_284283293	Rate relating to the underlying security for which tax is deferred.
+NetDividendRateType1Code	TXFR	TaxFree	_aNcpcNp-Ed-ak6NoX_4Aeg_284283294	Rate relating to the underlying security which is not taxable.
+NetDividendRateType1Code	UNFR	Unfranked	_aNcpcdp-Ed-ak6NoX_4Aeg_284283324	Rate resulting from an unfranked dividend paid by a company; the rate does not include tax credit and is subject to withholding tax.
+PriceValueType5Code	UKWN	Unknown	_aJk2FNp-Ed-ak6NoX_4Aeg_-647834596	Price is unknown by the sender or has not been established.
+PriceValueType5Code	OPEN	OpenDated	_aJk2Fdp-Ed-ak6NoX_4Aeg_-647834587	Price has not been established.
+PriceValueType6Code	UKWN	Unknown	_aJk2F9p-Ed-ak6NoX_4Aeg_-608123492	Price is unknown by the sender or has not been established.
+PriceValueType6Code	OPEN	OpenDated	_aJk2GNp-Ed-ak6NoX_4Aeg_-608123463	Price has not been established.
+PriceValueType6Code	UNSP	Unspecified	_aJunENp-Ed-ak6NoX_4Aeg_-608123462	Price is not required to be specified by account owner.
+PriceValueType6Code	TBSP	ToBeSpecified	_aJunEdp-Ed-ak6NoX_4Aeg_-608123441	Price to be specified by account owner.
+ShareRanking1Code	DIVI	Dividend	_ZOkmZtp-Ed-ak6NoX_4Aeg_1470328798	Payable on the date specified.
+ShareRanking1Code	PARI	PariPassu	_ZOkmZ9p-Ed-ak6NoX_4Aeg_1470328827	Pari Passu. With equal rights as other shares of the company.
+FractionDispositionType1Code	BUYU	BuyUp	_arP_xdp-Ed-ak6NoX_4Aeg_-1827765518	Buy securities up to next whole number.
+FractionDispositionType1Code	CINL	CashInLieuOfFraction	_arP_xtp-Ed-ak6NoX_4Aeg_-1827765517	Fractional part of cash. Take cash in lieu of fractions.
+FractionDispositionType1Code	DIST	IssueFraction	_arP_x9p-Ed-ak6NoX_4Aeg_-1827765498	Take distribution of fractions in the form of securities.
+FractionDispositionType1Code	RDDN	RoundDown	_arP_yNp-Ed-ak6NoX_4Aeg_-1827765497	Round down to the nearest whole number.
+FractionDispositionType1Code	RDUP	RoundUp	_arZwwNp-Ed-ak6NoX_4Aeg_-1827765467	Round up to the nearest whole number.
+FractionDispositionType1Code	STAN	RoundToNearest	_arZwwdp-Ed-ak6NoX_4Aeg_-1827765466	If the fraction is greater than or equal to 0.5 of the resulting security then round up, else round down.
+AgentRole2Code	SPAY	SystemPayingAgent	_boWhMNp-Ed-ak6NoX_4Aeg_211645175	The System Paying Agent (SPA) is the party within the CSD that is responsible for the distribution of cash and security proceeds related to a specific distribution to other CSD Parties.
+AgentRole2Code	CODO	CoDomicile	_boWhMdp-Ed-ak6NoX_4Aeg_211645184	Sub-agent appointed to execute the payment for the corporate action event on behalf of the issuer company/offeror.
+AgentRole2Code	ISAG	IssuerAgent	_boWhMtp-Ed-ak6NoX_4Aeg_211645206	Party appointed to administer the event on behalf of the issuer company/offeror. The party may be contacted for more information about the event.
+AgentRole2Code	REGR	Registrar	_bofrINp-Ed-ak6NoX_4Aeg_-1642045238	Party/agent responsible for maintaining the register of a security.
+AgentRole2Code	PAYA	PayingAgent	_bofrIdp-Ed-ak6NoX_4Aeg_-69287984	Agent (principal or fiscal paying agent) appointed to execute the payment for the corporate action event on behalf of the issuer company/offeror.
+OptionFeatures1Code	COND	Conditional	_aPYjJNp-Ed-ak6NoX_4Aeg_-906093895	Feature whereby the holder can elect to place a condition on the acceptance of the option.
+OptionFeatures1Code	MAXC	MaximumCash	_aPYjJdp-Ed-ak6NoX_4Aeg_-906093886	Maximum cash option, may be subject to scaling, as such you may receive a combination of cash and securities outturn.
+OptionFeatures1Code	MAXS	MaximumSecurities	_aPYjJtp-Ed-ak6NoX_4Aeg_-906093866	Maximum stock option, may be subject to scaling, as such you may receive a combination of securities and cash outturn.
+OptionFeatures1Code	OPLF	OddLotPreference	_aPiUINp-Ed-ak6NoX_4Aeg_-906093865	Tender or exchange with the odd lot preference.
+OptionFeatures1Code	PROR	Proration	_aPiUIdp-Ed-ak6NoX_4Aeg_-906093835	Feature whereby the option can be subject to pro ration in case, for example, of over-subscription.
+OptionFeatures1Code	QOVE	OverAndAbove	_aPiUItp-Ed-ak6NoX_4Aeg_-906093834	Feature whereby the holder can elect a quantity to receive over and above normal ensured entitlement.
+OptionFeatures1Code	QREC	QuantityToReceive	_aPiUI9p-Ed-ak6NoX_4Aeg_-906093833	Feature whereby the holder can elect a quantity to receive.
+OptionFeatures1Code	VVPR	ReducedWithholdingTax	_aPiUJNp-Ed-ak6NoX_4Aeg_-906093805	Reduced withholding tax rate applies to the option.

@@ -1,0 +1,67 @@
+{
+  "identifier": "seev.019.001.01",
+  "name": "AgentCAMovementInstructionV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.019.001.01",
+  "bodyTag": "AgtCAMvmntInstr",
+  "out": "seev019",
+  "isoId": "_TQbwbNEwEd-BzquC8wXy7w_89976784",
+  "definition": "Scope|This message is sent by an issuer (or its agent) to a CSD to order:|- the global or individual debit of exercised resources (cash and/or securities), per event and optionally per option and per resource for all or individual CSD client's accounts;|- and/or the individual credits of the outturn resources per event and optionally per option and per resource for a given CSD client's account.|Usage|This message is used to instruct:|- the global debit of the exercised resources from the CSD client's available or sequestered balance, in which case, the order type must be 'global debit order';|- the individual debits and credits:|- the individual debit of the exercised resources from the CSD client's available or sequestered balance and/or|- the individual credit of the outturn resources to the CSD client's account.|The order type must be 'individual order';|- a return order, in the case of a scaleback, i.e. the return of the exercised resources to the CSD client's account. The order type must be either 'global return order' or 'individual return order'; and|change of option, e.g. in the case of the closure of an option, by moving the exercised resources from one option to another option within the sequestered balances in accordance to the new option conditions. The order type must be 'option change order'.",
+  "blocks": [
+    {
+      "name": "Identification",
+      "isoId": "_TQbwbdEwEd-BzquC8wXy7w_-1830305628",
+      "xmlTag": "Id",
+      "type": "DocumentIdentification8",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AgentCAElectionAdviceIdentification",
+      "isoId": "_TQbwbtEwEd-BzquC8wXy7w_1167684393",
+      "xmlTag": "AgtCAElctnAdvcId",
+      "type": "DocumentIdentification8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionGeneralInformation",
+      "isoId": "_TQlhYNEwEd-BzquC8wXy7w_-1064437187",
+      "xmlTag": "CorpActnGnlInf",
+      "type": "CorporateActionInformation1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "MovementGeneralInformation",
+      "isoId": "_TQlhYdEwEd-BzquC8wXy7w_1865905670",
+      "xmlTag": "MvmntGnlInf",
+      "type": "CorporateActionMovement1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "UnderlyingSecuritiesMovementDetails",
+      "isoId": "_TQlhYtEwEd-BzquC8wXy7w_-380692038",
+      "xmlTag": "UndrlygSctiesMvmntDtls",
+      "type": "UnderlyingSecurityMovement1",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "UnderlyingCashMovementDetails",
+      "isoId": "_TQlhY9EwEd-BzquC8wXy7w_940386448",
+      "xmlTag": "UndrlygCshMvmntDtls",
+      "type": "CashMovement2",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "ProceedsMovementDetails",
+      "isoId": "_TQlhZNEwEd-BzquC8wXy7w_1511604786",
+      "xmlTag": "PrcdsMvmntDtls",
+      "type": "ProceedsMovement1",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

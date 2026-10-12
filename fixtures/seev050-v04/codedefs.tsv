@@ -1,0 +1,6 @@
+codeSet	code	enumName	isoId	text
+TransferOfProceedsType1Code	CLFT	FullTransferOfReceivedProceeds	_cM4TgYYaEe-haozGYc1X7Q	Market Claim is to transfer proceeds received from the issuer to the entitled party.
+TransferOfProceedsType1Code	CLPT	NoTransferOfReceivedProceeds	_cUFHsYYaEe-haozGYc1X7Q	Market Claim is to compensate the entitled party in cash by the party that failed to fulfil its obligation. No proceeds have been received from the issuer.
+TransferOfProceedsType1Code	CLNT	PartialTransferOfReceivedProceeds	_cXlHoYYaEe-haozGYc1X7Q	Market Claim is to transfer proceeds partially received from the issuer to the entitled party. Part is compensated in cash by the party that failed to fulfil its obligation.
+MarketClaimType1Code	MKTC	MarketClaim	_vZwygS2rEeuVt5XRmyhHiA	Market claim that has been created due to a pending/failing settlement transaction, to ensure the event proceeds are delivered from the seller to the buyer.
+MarketClaimType1Code	RVMC	ReverseMarketClaim	_vgJuYS2rEeuVt5XRmyhHiA	Market claim that has been created due to a settled settlement transaction, to ensure the event proceeds are delivered from the buyer to the seller.

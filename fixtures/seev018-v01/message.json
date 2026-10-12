@@ -1,0 +1,51 @@
+{
+  "identifier": "seev.018.001.01",
+  "name": "AgentCAGlobalDistributionStatusAdviceV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.018.001.01",
+  "bodyTag": "AgtCAGblDstrbtnStsAdvc",
+  "out": "seev018",
+  "isoId": "_TN5ZxdEwEd-BzquC8wXy7w_893376547",
+  "definition": "Scope|This message is sent by an issuer (or its agent) to the CSD to authorise/prohibit the CSD to process the entitlement movements.|Usage|This message is used to authorise/prohibit the CSD to process the movements requested in the Global Distribution Authorisation Request message.|Once the amendment request has been accepted by the issuer (or its agent), the CSD will process any resource movement and send an Agent Corporate Action Election Advice message with the function, option change, to confirm that the amendment has been booked at the CSD.|The issuer (or its agent) can provide the status in 2 different ways:|- Provide a global status, in which case the building block Global Movement Status must be present; or|- Provide a status by individual movements, in which case, the building block Individual Movement Status must be present. An individual movement cannot be rejected.",
+  "blocks": [
+    {
+      "name": "Identification",
+      "isoId": "_TN5ZxtEwEd-BzquC8wXy7w_1263163020",
+      "xmlTag": "Id",
+      "type": "DocumentIdentification8",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AgentCAGlobalDistributionAuthorisationRequestIdentification",
+      "isoId": "_TN5Zx9EwEd-BzquC8wXy7w_1294561939",
+      "xmlTag": "AgtCAGblDstrbtnAuthstnReqId",
+      "type": "DocumentIdentification8",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionGeneralInformation",
+      "isoId": "_TN5ZyNEwEd-BzquC8wXy7w_1839061522",
+      "xmlTag": "CorpActnGnlInf",
+      "type": "CorporateActionInformation1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "GlobalMovementStatus",
+      "isoId": "_TN5ZydEwEd-BzquC8wXy7w_-2081880842",
+      "xmlTag": "GblMvmntSts",
+      "type": "GlobalDistributionStatus1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "IndividualMovementStatus",
+      "isoId": "_TN5ZytEwEd-BzquC8wXy7w_-1885018018",
+      "xmlTag": "IndvMvmntSts",
+      "type": "IndividualMovementStatus1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

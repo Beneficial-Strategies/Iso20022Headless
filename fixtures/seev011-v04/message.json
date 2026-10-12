@@ -1,0 +1,27 @@
+{
+  "identifier": "seev.011.001.04",
+  "name": "AgentCANotificationStatusAdviceV04",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.011.001.04",
+  "bodyTag": "AgtCANtfctnStsAdvc",
+  "out": "seev011",
+  "isoId": "_8j7dgaN2EfC3fPZ8CT0j3g",
+  "definition": "Scope|This message is sent by a CSD to an issuer (or its agent) to report the status, or change in status, of a notification advice or notification cancellation request.|Usage|When this message is used to report the status of a notification advice then the building block Agent Corporate Action Notification Advice Identification must be present.|When this message is used to provide the status of a notification cancellation request then the building block Notification Cancellation Request Identification must be present.",
+  "blocks": [
+    {
+      "name": "AgentDocumentIdentificationAndStatus",
+      "isoId": "_8j8EmaN2EfC3fPZ8CT0j3g",
+      "xmlTag": "AgtDocIdAndSts",
+      "type": "AgentDocumentIdentificationAndStatus2Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionGeneralInformation",
+      "isoId": "_8j8Em6N2EfC3fPZ8CT0j3g",
+      "xmlTag": "CorpActnGnlInf",
+      "type": "CorporateActionGeneralInformation175",
+      "min": 1,
+      "max": 1
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "identifier": "seev.013.001.01",
+  "name": "AgentCAElectionAmendmentRequestV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.013.001.01",
+  "bodyTag": "AgtCAElctnAmdmntReq",
+  "out": "seev013",
+  "isoId": "_TNAo_tEwEd-BzquC8wXy7w_1507742806",
+  "definition": "Scope|This message is sent by a CSD to the issuer (or its agent) to request the authorisation of an amendment of a previously sent Agent Corporate Action Election Advice message.|Usage|This message is used to request the amendment of a previously sent Agent Corporate Action Election Advice message.|Once the amendment request has been accepted by the issuer (or its agent), the CSD will process any resource movement and send an Agent Corporate Action Election Advice message with the function, option change, to confirm that the amendment has been booked at the CSD.|This message is used when the terms and conditions of the corporate action event allow amendments.",
+  "blocks": [
+    {
+      "name": "Identification",
+      "isoId": "_TNAo_9EwEd-BzquC8wXy7w_32107139",
+      "xmlTag": "Id",
+      "type": "DocumentIdentification8",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AgentCAElectionAdviceIdentification",
+      "isoId": "_TNApANEwEd-BzquC8wXy7w_61660705",
+      "xmlTag": "AgtCAElctnAdvcId",
+      "type": "DocumentIdentification8",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionGeneralInformation",
+      "isoId": "_TNApAdEwEd-BzquC8wXy7w_-1916344559",
+      "xmlTag": "CorpActnGnlInf",
+      "type": "CorporateActionInformation1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountDetails",
+      "isoId": "_TNJy4NEwEd-BzquC8wXy7w_-148394854",
+      "xmlTag": "AcctDtls",
+      "type": "SecuritiesAccount7",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "OriginalElectionDetails",
+      "isoId": "_TNJy4dEwEd-BzquC8wXy7w_915892144",
+      "xmlTag": "OrgnlElctnDtls",
+      "type": "CorporateActionElection1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AmendedElectionDetails",
+      "isoId": "_TNJy4tEwEd-BzquC8wXy7w_934364367",
+      "xmlTag": "AmddElctnDtls",
+      "type": "CorporateActionElection2",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ContactDetails",
+      "isoId": "_TNJy49EwEd-BzquC8wXy7w_459673267",
+      "xmlTag": "CtctDtls",
+      "type": "ContactPerson1",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

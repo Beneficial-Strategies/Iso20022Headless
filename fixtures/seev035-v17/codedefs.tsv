@@ -1,0 +1,7 @@
+codeSet	code	enumName	isoId	text
+OfferType6Code	DISS	DissenterRights	10b93839-d74b-43bb-85be-ab3dcb3393a3	Securities holder has the right to disagree with a mandatory event. This right is not inherent in all offers and therefore must be noted in announcements only when applicable.
+OfferType6Code	ERUN	RestrictionExchange	fe1add81-8cae-4178-afee-27e61fd91e86	Exchange of Restricted to Unrestricted (or vice versa).
+OfferType6Code	FINL	FinalOffer	76e1e61b-7a42-44df-9e92-e626c4c1ae1a	Final or last offer to holders subject to offer conditions being reached, for example, 50 percent accepted on a tender.
+OfferType6Code	PART	PartialOffer	dace328c-b976-4ef9-8174-1ff99d9f178d	Offer made by the offeror for a portion of the outstanding shares not already owned by the offeror.
+OfferType6Code	SQUE	SqueezeOutBid	a68722d1-071f-4065-8bdb-392f8261dcb8	Offer launched by a company, in possession of a large number of the shares (90% - 95%) of a company (generally as a result of a tender offer), in order to acquire the remaining shares of that company.
+OfferType6Code	NDIS	DissenterRightsNotApplicable	eec326a5-a374-4497-988a-84ef03db3438	Dissenter’s rights are not applicable for this option of the offer.

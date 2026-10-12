@@ -1,0 +1,5 @@
+codeSet	isoId	text
+RejectionReason79Code	__SMwITQWEe2o-K1dwNg8Gg	Specifies the reason why the instruction/cancellation request has a rejected status.
+PendingCancellationReason5Code	_MImWcIluEeavwKddCbm3hg	Specifies the reason why the cancellation request has a pending status.
+CorporateActionOption17Code	_pUnToe35Eeqc-LCjwLsUVg	Specifies the type of corporate action options.
+ProtectInstructionStatus4Code	_3EeYcLpbEeilsanBGAzy4A	Specifies the status of the protect transaction.

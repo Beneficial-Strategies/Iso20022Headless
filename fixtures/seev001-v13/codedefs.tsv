@@ -1,0 +1,53 @@
+codeSet	code	enumName	isoId	text
+NotificationType3Code	NEWM	New	_1FTusa7PEemG7MmivSuE5g	New notification.
+NotificationType3Code	REPL	Replacement	_1SZvgq7PEemG7MmivSuE5g	Notification replacing a previously sent notification.
+NotificationType3Code	RMDR	Reminder	_1avMIq7PEemG7MmivSuE5g	Notification sent as a reminder of an event taking place.
+AttendanceAdmissionConditions2Code	MASH	AllowedForShareholder	_X7kGQfNhEeqRfth943bvEA	Any attendee must be a shareholder themselves.
+AttendanceAdmissionConditions2Code	MASL	AllowedIfRegisteredInStockLedger	_YBXMQfNhEeqRfth943bvEA	Attendee must be a shareholder registered in company stock ledger book.
+AttendanceAdmissionConditions2Code	MAPO	AllowedOnBehalf	_YGuNYfNhEeqRfth943bvEA	Attendees acting on behalf of registered holder must have a valid power of attorney (POA) and/or proof of holding.
+AttendanceAdmissionConditions2Code	MAAL	AllowedWithAttendeeList	_YLn7gfNhEeqRfth943bvEA	Attendees will be placed on a attendee list and must bring photographic identification with them.
+AttendanceAdmissionConditions2Code	MALR	AllowedWithLetterOfRepresentation	_YRbokfNhEeqRfth943bvEA	Attendees will be placed on a attendee list or issued with a letter of representation, and must bring photographic identification with them.
+AttendanceAdmissionConditions2Code	MAHI	AllowedWithProof	_YWV9wfNhEeqRfth943bvEA	Attendees must request proof of holding and register for attendance directly with Issuer.
+AttendanceAdmissionConditions2Code	MATK	AllowedWithTicket	_YaNKEfNhEeqRfth943bvEA	Attendees will be issued an admission ticket and must bring photographic identification with them.
+AttendanceAdmissionConditions2Code	MADS	DelegateAllowedIfRegisteredInStockLedger	_YeOHYfNhEeqRfth943bvEA	Attendee must be a delegate of the shareholder registered in the company stock ledger book.
+AttendanceAdmissionConditions2Code	MANP	NotPossible	_YhpO0fNhEeqRfth943bvEA	Meeting attendance is not possible.
+AdditionalRight1Code	WQPS	WrittenQuestionProposal	_bmjxd9p-Ed-ak6NoX_4Aeg_1593352605	Defines a written question proposal.
+AdditionalRight1Code	RSPS	ResolutionProposal	_bmjxeNp-Ed-ak6NoX_4Aeg_1593352636	Defines a resolution proposal.
+AdditionalRight1Code	AIPS	AgendaItemProposal	_bmticNp-Ed-ak6NoX_4Aeg_1593352666	Defines a resolution proposal.
+ProxyNotAllowed1Code	NPRO	NotAllowed	_jssAccjCEem7mOT-LZ2mYQ	Proxy not allowed.
+DateType10Code	MEET	BlockingTillMeetingDate	_vqyAYTUIEe2tRf29bleifQ	Blocking occurs until and inclusive of the meeting date.
+DateType10Code	UKWN	Unknown	_xUSU0TUIEe2tRf29bleifQ	Date is unknown by the sender or has not been established.
+DateType10Code	NARR	NarrativeUnblockingDate	_xjoYYTUIEe2tRf29bleifQ	Refer to additional information element for the date until when the securities are blocked.
+DateType10Code	RDTE	BlockingTillRecordDate	_yZbX8TUIEe2tRf29bleifQ	Blocking occurs until and inclusive of the record date of the event.
+DateType10Code	PPYD	BlockingTillPremiumPaymentDate	_p3ogkTUJEe2tRf29bleifQ	Unblocking will occur on payment date of the premium.
+MeetingDateStatus2Code	CNFR	Confirmed	_M6Qg8a4oEemG7MmivSuE5g	Meeting date is confirmed.
+MeetingDateStatus2Code	TNTA	Tentative	_NIP5oq4oEemG7MmivSuE5g	Meeting date is tentative.
+PlaceType1Code	UKWN	Unknown	_aHWBctp-Ed-ak6NoX_4Aeg_-1566893880	The type of place is unknown.
+AgentRole1Code	PRIN	PrincipalAgent	_bnmTR9p-Ed-ak6NoX_4Aeg_1607205276	Identification of the agent acting as main agent.
+AgentRole1Code	SUBA	SubAgent	_bnmTSNp-Ed-ak6NoX_4Aeg_1634910933	Identification of the agent acting as co-domicile or sub agent.
+ResolutionType2Code	EXTR	Extraordinary	_-9l88VuFEeSmO6RkXg92Lg	Meeting resolution is extraordinary and may be subject to specific voting requirements.
+ResolutionType2Code	SPCL	Special	__EcL0VuFEeSmO6RkXg92Lg	Resolution that is neither ordinary nor extraordinary (eg. decision on an investment strategy).
+VoteType1Code	ADVI	Advisory	_5URc0a37EemG7MmivSuE5g	Results of a vote on a proposal is for advice only.
+VoteType1Code	BNDG	Binding	_5fbj8q37EemG7MmivSuE5g	Results of a vote on a proposal is binding.
+ResolutionStatus1Code	ACTV	Active	_ZU0_Ztp-Ed-ak6NoX_4Aeg_268414544	Meeting resolution has to be voted for by the participants to a general meeting.
+ResolutionStatus1Code	WDRA	Withdrawn	_ZU0_Z9p-Ed-ak6NoX_4Aeg_268414545	Meeting resolution has been withdrawn.
+VoteInstruction5Code	ABST	Abstain	_aWN4Ia4aEemG7MmivSuE5g	Active vote expressed as abstain (no opinion).
+VoteInstruction5Code	CAGS	Against	_ahq6Mq4aEemG7MmivSuE5g	Vote against a meeting resolution.
+VoteInstruction5Code	CHRM	Chairman	_bHm40q4aEemG7MmivSuE5g	Rights holder gives authority to the chairman to vote on his behalf.
+VoteInstruction5Code	CFOR	For	_b0PVUq4aEemG7MmivSuE5g	Vote in favour of a meeting resolution.
+VoteInstruction5Code	NOAC	NoAction	_cTe2Eq4aEemG7MmivSuE5g	Do not vote.
+VoteInstruction5Code	WTHH	Withhold	_dLkUoq4aEemG7MmivSuE5g	Participant to a meeting withholds its vote for a meeting resolution. This action is usually taken in order to indicate a strong disagreement with a resolution (US market).
+VoteInstruction5Code	ONEY	OneYear	_d198gq4aEemG7MmivSuE5g	Vote in favour for one year for "say on pay" type of resolution.
+VoteInstruction5Code	THRY	ThreeYears	_eAYcwq4aEemG7MmivSuE5g	Vote in favour for three years for "say on pay" type of resolution.
+VoteInstruction5Code	TWOY	TwoYears	_eE2GAa4aEemG7MmivSuE5g	Vote in favour for two years for "say on pay" type of resolution.
+VoteInstruction5Code	BLNK	Blank	_fApm8q4aEemG7MmivSuE5g	Vote is cast as empty but the vote is counted.
+VoteInstruction5Code	NREC	NoRecommendation	_5gPEIa4aEemG7MmivSuE5g	No recommendation provided for the vote instruction type.
+ThresholdBasis1Code	ALSH	AllIssuedShares	_KOf5QRuOEeyhRdHRjakS2w	Basis is the total number of shares issued.
+ThresholdBasis1Code	ALSM	AllSharesRepresentedAtMeeting	_KUwSQRuOEeyhRdHRjakS2w	Basis is the total number of shares represented at the meeting by attendees.
+ThresholdBasis1Code	ALVO	AllVoteCast	_KbArQRuOEeyhRdHRjakS2w	Basis is the total number of vote cast for a resolution.
+VoteChannel1Code	VOPI	VoteAsPerIntermediaryInformation	_k3lkkTT9Ee2tRf29bleifQ	Vote is as per described in the processing text for next intermediary information field.
+VoteChannel1Code	VOCI	VoteThroughChain	_k-cagTT9Ee2tRf29bleifQ	Vote is via the chain of intermediaries.
+PowerOfAttorneyLegalisation1Code	NOTA	Notary	_aHo8ZNp-Ed-ak6NoX_4Aeg_-267216404	Indicates that the power of attorney must be legalised by a notary.
+PowerOfAttorneyLegalisation1Code	LOCA	LocalAuthority	_aHo8Zdp-Ed-ak6NoX_4Aeg_-254286026	Indicates that the power of attorney must be legalised by a local authority.
+PowerOfAttorneyLegalisation1Code	APOS	Apostilled	_aHo8Ztp-Ed-ak6NoX_4Aeg_-239508247	Indicates that the power of attorney must be legalised by a legal officer.
+PowerOfAttorneyLegalisation1Code	COUN	Consularized	_aHytYNp-Ed-ak6NoX_4Aeg_-224734417	Indicates that the power of attorney must be legalised by a consular officer.

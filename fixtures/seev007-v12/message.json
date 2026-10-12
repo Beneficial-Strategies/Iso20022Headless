@@ -1,0 +1,75 @@
+{
+  "identifier": "seev.007.001.12",
+  "name": "MeetingVoteExecutionConfirmationV12",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.007.001.12",
+  "bodyTag": "MtgVoteExctnConf",
+  "out": "seev007",
+  "isoId": "_7oj3cajGEfCzuLlmLrhIvA",
+  "definition": "Scope|The MeetingVoteExecutionConfirmation message is sent by an issuer, its agent, or an intermediary to another intermediary, a party holding the right to vote, a registered security holder or to a beneficial holder to confirm, to the Sender of the MeetingInstruction message, that their vote has been recorded and counted by the Issuer.|Usage|This message is sent after the shareholders meeting has taken place. The Sender of this message confirms the execution of the vote at the meeting.|This messages is sent if the Sender of the MeetingInstruction message has requested such a confirmation or if market practice or regulation stipulates the need for a full audit trail.|This message definition is intended for use with the Business Application Header (BAH).",
+  "blocks": [
+    {
+      "name": "Pagination",
+      "isoId": "_7oj3e6jGEfCzuLlmLrhIvA",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "VoteExecutionConfirmationIdentification",
+      "isoId": "_7oj3fajGEfCzuLlmLrhIvA",
+      "xmlTag": "VoteExctnConfId",
+      "type": "Max35Text",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "MeetingInstructionIdentification",
+      "isoId": "_7oj3f6jGEfCzuLlmLrhIvA",
+      "xmlTag": "MtgInstrId",
+      "type": "Max35Text",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "MeetingReference",
+      "isoId": "_7oj3gajGEfCzuLlmLrhIvA",
+      "xmlTag": "MtgRef",
+      "type": "MeetingReference10",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "FinancialInstrumentIdentification",
+      "isoId": "_7oj3g6jGEfCzuLlmLrhIvA",
+      "xmlTag": "FinInstrmId",
+      "type": "SecurityIdentification19",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "VoteInstructions",
+      "isoId": "_7oj3hajGEfCzuLlmLrhIvA",
+      "xmlTag": "VoteInstrs",
+      "type": "DetailedInstructionStatus22",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "VoteInstructionsConfirmationURLAddress",
+      "isoId": "_7oj3h6jGEfCzuLlmLrhIvA",
+      "xmlTag": "VoteInstrsConfURLAdr",
+      "type": "Max2048Text",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_7oj3iajGEfCzuLlmLrhIvA",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

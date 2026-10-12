@@ -1,0 +1,15 @@
+choice	memberId	memberName	text
+CorporateActionEventType125Choice	_zwH4c9_MEe-Ned3-G07x_A	Code	Event type expressed as a code.
+CorporateActionEventType125Choice	_zwH4e9_MEe-Ned3-G07x_A	Proprietary	Event type expressed as a proprietary code.
+SecuritiesAccountIdentification1Choice	_s5w_SN-5Ee-Ned3-G07x_A	SafekeepingAccount	Account where financial instruments are maintained.
+SecuritiesAccountIdentification1Choice	_s5w_Sd-5Ee-Ned3-G07x_A	BlockChainAddressOrWallet	Blockchain address or wallet where digital assets are maintained. This is the equivalent of safekeeping account for digital assets.
+CorporateActionOption47Choice	_Rh3a8Q7VEfC-6PbsYHIdig	Code	Standard code to specify the type of corporate action options.
+CorporateActionOption47Choice	_Rh4CBQ7VEfC-6PbsYHIdig	Proprietary	Proprietary identification of the type of corporate action options.
+PriceFormat66Choice	_PSmh8xuyEeyhRdHRjakS2w	PercentagePrice	Price expressed as a percentage.
+PriceFormat66Choice	_PSmh-xuyEeyhRdHRjakS2w	AmountPrice	Price expressed as a currency and amount.
+PriceFormat66Choice	_PSmiAxuyEeyhRdHRjakS2w	NotSpecifiedPrice	Value of the price not specified.
+PriceFormat66Choice	_PSmiCxuyEeyhRdHRjakS2w	AmountPricePerFinancialInstrumentQuantity	Price expressed as a ratio: amount price per financial instrument quantity.
+PriceFormat66Choice	_PSmiExuyEeyhRdHRjakS2w	AmountPricePerAmount	Price expressed as a ratio: amount price per amount.
+PriceFormat66Choice	_PSmiGxuyEeyhRdHRjakS2w	IndexPoints	Price expressed in index points.
+PriceFormat50Choice	_QCk_I0GMEeWqy4niLuXETA	PercentagePrice	Price expressed as a percentage.
+PriceFormat50Choice	_QCk_K0GMEeWqy4niLuXETA	AmountPrice	Price expressed as a currency and amount.

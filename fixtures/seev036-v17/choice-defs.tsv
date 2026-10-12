@@ -1,0 +1,62 @@
+choice	memberId	memberName	text
+CorporateActionEventType109Choice	_N8l2QYCfEe-3UrLQHGsjgQ	Code	Event type expressed as a code.
+CorporateActionEventType109Choice	_N8l2SYCfEe-3UrLQHGsjgQ	Proprietary	Event type expressed as a proprietary code.
+BalanceFormat12Choice	_KUd0ARuyEeyhRdHRjakS2w	Balance	Provides information about balance related to a corporate action.
+BalanceFormat12Choice	_KUd0CRuyEeyhRdHRjakS2w	EligibleBalance	Provide eligible balance information in different formats.
+BalanceFormat12Choice	_KUd0ERuyEeyhRdHRjakS2w	NotEligibleBalance	Provide not eligible balance information in different formats.
+BalanceFormat12Choice	_KUd0GRuyEeyhRdHRjakS2w	FullPeriodUnits	Number of units of a fund that were purchased in a previous distribution period and/or held at the beginning of a distribution period, for example Group I Units in the UK.
+BalanceFormat12Choice	_KUd0GxuyEeyhRdHRjakS2w	PartWayPeriodUnits	Number of units of a fund that were purchased part way throughout a distribution period, for example Group II Units in the U.K.
+AdditionalBusinessProcessFormat23Choice	_IAWiEYYVEe-haozGYc1X7Q	Code	Standard code to specify the additional business process "tax refund" linked to a corporate action event.
+AdditionalBusinessProcessFormat23Choice	_IAWiGYYVEe-haozGYc1X7Q	Proprietary	Proprietary identification of the additional business process "tax refund" linked to a corporate action event.
+CorporateActionOption33Choice	_xPNmgeasEemtTOaHuc_63w	Code	Option type expressed as a code.
+CorporateActionOption33Choice	_xPNmieasEemtTOaHuc_63w	Proprietary	Option type expressed as a proprietary identification.
+OptionFeaturesFormat29Choice	_94XSMWKMEe6iKbrXdnOlfA	Code	Standard code to specify the features that may apply to a corporate action option.
+OptionFeaturesFormat29Choice	_94XSM2KMEe6iKbrXdnOlfA	Proprietary	Proprietary identification of the features that may apply to a corporate action option.
+FractionDispositionType27Choice	_7Ci64UGLEeWqy4niLuXETA	Code	Standard code to specify how fractions resulting from derived securities will be processed or how prorated decisions will be rounding, if provided with a pro ration rate.
+FractionDispositionType27Choice	_7Ci640GLEeWqy4niLuXETA	Proprietary	Proprietary identification of the type of fraction disposition.
+GrossDividendRateFormat35Choice	_CCq1UeXsEemEj48jhmlA0Q	Amount	Value expressed as an amount.
+GrossDividendRateFormat35Choice	_CCq1WeXsEemEj48jhmlA0Q	AmountAndRateStatus	Specifies an amount and a rate status.
+GrossDividendRateFormat35Choice	_CCq1W-XsEemEj48jhmlA0Q	RateTypeAndAmountAndRateStatus	Specifies different formats for the gross dividend rate.
+NetDividendRateFormat37Choice	_OiLqA-XsEemEj48jhmlA0Q	Amount	Number of monetary units specified in a currency.
+NetDividendRateFormat37Choice	_OiLqBeXsEemEj48jhmlA0Q	AmountAndRateStatus	Specifies an amount and a rate status.
+NetDividendRateFormat37Choice	_OiLqB-XsEemEj48jhmlA0Q	RateTypeAndAmountAndRateStatus	Specifies different formats for the net dividend rate.
+InterestRateUsedForPaymentFormat12Choice	_EYi0gYV-Ee-ufOxNNkEXmg	Rate	Value is expressed as a rate.
+InterestRateUsedForPaymentFormat12Choice	_EYi0iYV-Ee-ufOxNNkEXmg	Amount	Number of monetary units specified in a currency.
+InterestRateUsedForPaymentFormat12Choice	_EYi0kYV-Ee-ufOxNNkEXmg	RateTypeAndAmountAndRateStatus	Specifies different formats for interest rate used for payment.
+IssuerOfferorTaxabilityIndicator2Choice	_2VuJxKGnEe-4O7NbwmwJkQ	Code	Standard code to specify information regarding the issuer / offeror taxability status.
+IssuerOfferorTaxabilityIndicator2Choice	_2VuJxaGnEe-4O7NbwmwJkQ	Proprietary	Proprietary identification to specify information regarding the issuer / offeror taxability status.
+RatioFormat20Choice	_DWMWpUGNEeWqy4niLuXETA	QuantityToQuantity	Ratio expressed as a quotient of quantities.
+RatioFormat20Choice	_DWMWrUGNEeWqy4niLuXETA	AmountToAmount	Ratio expressed as a quotient of amounts.
+RatioFormat19Choice	_8MHPpUEKEeWVgfuHGaKtRQ	QuantityToQuantity	Ratio expressed as a quotient of quantities.
+RatioFormat19Choice	_8MHPrUEKEeWVgfuHGaKtRQ	AmountToAmount	Ratio expressed as a quotient of amounts.
+RatioFormat19Choice	_gCEKtIlWEeWPSZi0kAOXhg	AmountToQuantity	Ratio expressed as an amount to quantity ratio.
+RatioFormat19Choice	_8MHPtUEKEeWVgfuHGaKtRQ	QuantityToAmount	Ratio expressed as a quantity to amount ratio.
+RateFormat27Choice	_Ki5d8YV-Ee-ufOxNNkEXmg	Rate	Value is expressed as a rate.
+RateFormat27Choice	_Ki5d-YV-Ee-ufOxNNkEXmg	Amount	Cash amount.
+PriceFormat75Choice	_DGWJoYV6Ee-oeNhl-Tk6YQ	PercentagePrice	Price expressed as a percentage.
+PriceFormat75Choice	_DGWJqYV6Ee-oeNhl-Tk6YQ	AmountPrice	Price expressed as a currency and amount.
+PriceFormat75Choice	_DGWJsYV6Ee-oeNhl-Tk6YQ	IndexPoints	Price expressed as an index points.
+PriceFormat76Choice	_DME-MYV6Ee-oeNhl-Tk6YQ	PercentagePrice	Price expressed as a percentage.
+PriceFormat76Choice	_DME-OYV6Ee-oeNhl-Tk6YQ	AmountPrice	Price expressed as a currency and amount.
+PriceFormat76Choice	_DME-QYV6Ee-oeNhl-Tk6YQ	AmountPricePerFinancialInstrumentQuantity	Price expressed as a ratio: amount price per financial instrument quantity.
+PriceFormat76Choice	_DME-SYV6Ee-oeNhl-Tk6YQ	AmountPricePerAmount	Price expressed as a ratio: amount price per amount.
+PriceFormat76Choice	_DME-UYV6Ee-oeNhl-Tk6YQ	IndexPoints	Price expressed in index points.
+Account10Choice	_osMpkZBPEe-COKgew96POA	CashAccount	Account in which cash is maintained.
+Account10Choice	_osMpmZBPEe-COKgew96POA	ChargesAccount	Account to be used for charges if different from the account for payment.
+Account10Choice	_osMpoZBPEe-COKgew96POA	TaxAccount	Account to be used for taxes if different from the account for payment.
+PartyIdentification133Choice	_H6i9c9XWEeiN28wlpBQScw	BICFI	Code allocated to a financial institution by the ISO 9362 Registration Authority, as described in ISO 9362 "Banking - Banking telecommunication messages - Business identifier code (BIC)".
+PartyIdentification133Choice	_H6i9ddXWEeiN28wlpBQScw	NameAndAddress	Name by which a party is known and which is usually used to identify that party.
+PartyIdentification133Choice	_H6i9fdXWEeiN28wlpBQScw	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to a financial institution using a proprietary identification scheme.
+GrossDividendRateFormat37Choice	_ZOsQAeXsEemEj48jhmlA0Q	Amount	Value expressed as an amount.
+GrossDividendRateFormat37Choice	_ZOsQCeXsEemEj48jhmlA0Q	AmountAndRateStatus	Specifies an amount and a rate status.
+GrossDividendRateFormat37Choice	_ZOsQC-XsEemEj48jhmlA0Q	RateTypeAndAmountAndRateStatus	Specifies different formats for the gross dividend rate.
+SolicitationFeeRateFormat12Choice	_OPOlwYV-Ee-ufOxNNkEXmg	Rate	Value is expressed as a rate.
+SolicitationFeeRateFormat12Choice	_OPOlyYV-Ee-ufOxNNkEXmg	AmountToQuantity	Ratio expressed as an amount to quantity ratio.
+SolicitationFeeRateFormat12Choice	_OPOl0YV-Ee-ufOxNNkEXmg	Amount	Cash amount.
+NetDividendRateFormat40Choice	_jASs8eXsEemEj48jhmlA0Q	Amount	Value expressed as an amount.
+NetDividendRateFormat40Choice	_jASs8-XsEemEj48jhmlA0Q	AmountAndRateStatus	Specifies an amount and a rate status.
+NetDividendRateFormat40Choice	_jASs9eXsEemEj48jhmlA0Q	RateTypeAndAmountAndRateStatus	Specifies different formats for the net dividend rate.
+RateAndAmountFormat62Choice	_Xoj-kYV8Ee-ufOxNNkEXmg	Rate	Value expressed as a rate.
+RateAndAmountFormat62Choice	_XokloYV8Ee-ufOxNNkEXmg	Amount	Value is expressed as a currency and amount.
+RateAndAmountFormat62Choice	_XoklqYV8Ee-ufOxNNkEXmg	RateTypeAndAmountAndRateStatus	Value is expressed as a rate type and an amount.
+RateAndAmountFormat62Choice	_Xoklq4V8Ee-ufOxNNkEXmg	RateTypeAndRate	Value is expressed as a rate type and a percentage rate.

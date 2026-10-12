@@ -1,0 +1,3 @@
+codeSet	isoId	text
+RejectionReason87Code	_o1t24d78Ee-NrtAAlrBEgQ	Specifies the reason why the instruction request has a rejected status.
+PendingReason30Code	_JBI74d8FEe-NrtAAlrBEgQ	Specifies the reason why the instruction has a pending status.

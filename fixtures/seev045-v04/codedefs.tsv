@@ -1,0 +1,5 @@
+codeSet	code	enumName	isoId	text
+DisclosureRequestType1Code	NEWM	New	_SWm1QUV3EemRx7jyevcLwg	New disclosure request.
+DisclosureRequestType1Code	REPL	Replacement	_SdTTIUV3EemRx7jyevcLwg	Disclosure request replacing a previously sent request.
+DateCalculationMethod1Code	FIFO	Fifo	_U1m4wVSVEempisJfoIfvvQ	First in, first out.
+DateCalculationMethod1Code	LIFO	Lifo	_U6qX4VSVEempisJfoIfvvQ	Last in, first out.

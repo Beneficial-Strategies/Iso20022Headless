@@ -1,0 +1,10 @@
+choice	memberId	memberName	text
+CorporateActionMovementStatus1Choice	_RiPM1tp-Ed-ak6NoX_4Aeg_-1805228847	ProcessedStatus	Provides information about the processing status of the movement.
+CorporateActionMovementStatus1Choice	_RiPM19p-Ed-ak6NoX_4Aeg_-1878187408	FailedStatus	Provides information about the settlement failure.
+CorporateActionMovementStatus1Choice	_RiPM2Np-Ed-ak6NoX_4Aeg_-1502312147	RejectedStatus	Provides information about the rejection status.
+FailedSettlementReason1FormatChoice	_RmjsI9p-Ed-ak6NoX_4Aeg_-183406333	Code	Standard code to specify the reason of a settlement failure.
+FailedSettlementReason1FormatChoice	_RmjsJNp-Ed-ak6NoX_4Aeg_1874576299	Proprietary	Proprietary code for specifying the reason of a settlement failure.
+RejectionReason13FormatChoice	_RoMq49p-Ed-ak6NoX_4Aeg_331296664	Code	Standard code to specify the reason of a rejection of a movement.
+RejectionReason13FormatChoice	_RoMq5Np-Ed-ak6NoX_4Aeg_331296633	Proprietary	Proprietary code to express the reason of a rejection of a movement.
+RejectionReason14FormatChoice	_RoMq5tp-Ed-ak6NoX_4Aeg_345150396	Code	Standard code to specify the reason of a rejection of a movement cancellation request.
+RejectionReason14FormatChoice	_RoMq59p-Ed-ak6NoX_4Aeg_345150395	Proprietary	Proprietary code to express the reason of a rejection of a movement cancellation request.

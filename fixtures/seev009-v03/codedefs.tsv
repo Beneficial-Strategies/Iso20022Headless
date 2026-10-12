@@ -1,0 +1,430 @@
+codeSet	code	enumName	isoId	text
+CorporateActionNotificationType1Code	NEWM	New	_bK_Pxtp-Ed-ak6NoX_4Aeg_724518620	New notification.
+CorporateActionNotificationType1Code	REPL	Replacement	_bK_Px9p-Ed-ak6NoX_4Aeg_724518628	Notification replacing a previously sent notification.
+CorporateActionNotificationType1Code	RMDR	Reminder	_bK_PyNp-Ed-ak6NoX_4Aeg_724518629	Notification sent as a reminder of an event taking place.
+EventCompletenessStatus1Code	COMP	Complete	_ajDtFdp-Ed-ak6NoX_4Aeg_1572153086	Event details are complete.
+EventCompletenessStatus1Code	INCO	Incomplete	_ajDtFtp-Ed-ak6NoX_4Aeg_1572153199	Event details are not complete.
+EventConfirmationStatus1Code	CONF	Confirmed	_ajNeEtp-Ed-ak6NoX_4Aeg_-181611544	Occurrence of the event has been confirmed.
+EventConfirmationStatus1Code	UCON	Unconfirmed	_ajNeE9p-Ed-ak6NoX_4Aeg_-176071125	Occurrence of the event has not been confirmed.
+CorporateActionEventProcessingType2Code	DISN	Distribution	_Za07AUmzEe-NocYul3BKXQ	Holder of the relevant security on a certain date, for example, the record date, will receive a benefit without giving up the underlying security.
+CorporateActionEventProcessingType2Code	GENL	General	_ZjnqokmzEe-NocYul3BKXQ	No debit or credit of resources.
+CorporateActionEventProcessingType2Code	REDM	Redemption	_ZkNggUmzEe-NocYul3BKXQ	Indicates that the announcement is for a redemption of securities for events including full and partial calls, maturities partial prerefunding and partial defeasance events.
+CorporateActionEventProcessingType2Code	REOR	Reorganisation	_ZrEWckmzEe-NocYul3BKXQ	Underlying security will be debited and may be replaced by another resource (or resources).
+CorporateActionEventType35Code	ACTV	ActiveTradingStatus	_Qr5hgYyaEe-JbfQhweKSKQ	Trading in the security has commenced or security has been re-activated after a suspension in trading.
+CorporateActionEventType35Code	ATTI	Attachment	_Qr5hg4yaEe-JbfQhweKSKQ	Combination of different security types to create a unit. Units are usually comprised of warrants and bonds or warrants and equities. Securities may be combined at the request of the security holder or based on market convention.
+CorporateActionEventType35Code	BRUP	Bankruptcy	_Qr5hhYyaEe-JbfQhweKSKQ	Legal status of a company unable to pay creditors. Bankruptcy usually involves a formal court ruling. Securities may become valueless.
+CorporateActionEventType35Code	DFLT	BondDefault	_Qr5hh4yaEe-JbfQhweKSKQ	Failure by the company to perform obligations defined as default events under the bond agreement and that have not been remedied.
+CorporateActionEventType35Code	BONU	BonusIssue	_Qr5hiYyaEe-JbfQhweKSKQ	Bonus or capitalisation issue. Security holders receive additional assets free of payment from the issuer, in proportion to their holding.
+CorporateActionEventType35Code	EXRI	CallOnIntermediateSecurities	_Qr5hi4yaEe-JbfQhweKSKQ	Call or exercise on nil paid securities or intermediate securities resulting from an intermediate securities distribution (RHDI). This code is used for the second event, when an intermediate securities' issue (rights/coupons) is composed of two events, the first event being the distribution of intermediate securities.
+CorporateActionEventType35Code	CAPD	CapitalDistribution	_Qr5hjYyaEe-JbfQhweKSKQ	Corporate event pays shareholders an amount in cash issued from the capital account. There is no reduction to the face value of a single share (or the share has no par value). The number of circulating shares remains unchanged.
+CorporateActionEventType35Code	CAPG	CapitalGainsDistribution	_Qr5hj4yaEe-JbfQhweKSKQ	Event is the distribution of profits resulting from the sale of securities. Shareholders of mutual funds, unit trusts, or SICAVs are recipients of capital gains distributions and are often reinvested in additional shares of the fund.
+CorporateActionEventType35Code	CAPI	Capitalisation	_Qr5hkYyaEe-JbfQhweKSKQ	Increase of the current principal of a debt instrument without increasing the nominal value. It normally arises from the incorporation of due but unpaid interest into the principal. This is commonly done by increasing the pool factor value, for example, capitalisation, and negative amortisation.
+CorporateActionEventType35Code	DRCA	CashDistributionFromNonEligibleSecuritiesSales	_Qr5hk4yaEe-JbfQhweKSKQ	Distribution to shareholders of cash resulting from the selling of non-eligible securities, for example, in the frame of a depositary receipt program.
+CorporateActionEventType35Code	DVCA	CashDividend	_Qr5hlYyaEe-JbfQhweKSKQ	Distribution of cash to holders, in proportion to their equity holding. Ordinary dividends are recurring and regular. Holder must take cash and may be offered a choice of currencies.
+CorporateActionEventType35Code	CHAN	Change	_Qr5hl4yaEe-JbfQhweKSKQ	Information regarding a change further described in the corporate action details.
+CorporateActionEventType35Code	COOP	CompanyOption	_Qr5hmYyaEe-JbfQhweKSKQ	Company option may be granted by the company, allowing the holder to take up shares at some future date(s) at a pre arranged price in the company. A company may not grant options which enable the holder to take up unissued shares at a time which is five or more years from the date of the grant. Option holders are not members of a company. They are contingent creditors of a company and hence may, in some instances, be entitled to vote on and be bound by a scheme of arrangement between the creditors and the company. As many options have multiple exercise periods a company option will either lapse or carry on to the next expiry date.
+CorporateActionEventType35Code	CLSA	ClassActionProposedSettlement	_Qr5hm4yaEe-JbfQhweKSKQ	Situation where interested parties seek restitution for financial loss. The security holder may be offered the opportunity to join a class action proceeding and would need to respond with an instruction.
+CorporateActionEventType35Code	CONS	Consent	_Qr5hnYyaEe-JbfQhweKSKQ	Procedure that aims to obtain consent of holder to a proposal by the issuer or a third party without convening a meeting. For example, consent to change the terms of a bond.
+CorporateActionEventType35Code	CONV	Conversion	_Qr5hn4yaEe-JbfQhweKSKQ	Conversion of securities (generally convertible bonds or preferred shares) into another form of securities (usually common shares) at a pre-stated price/ratio.
+CorporateActionEventType35Code	CREV	CreditEvent	_Qr5hoYyaEe-JbfQhweKSKQ	Occurrence of credit derivative for which the issuer of one or several underlying securities is unable to fulfill its financial obligations (as defined in terms and conditions).
+CorporateActionEventType35Code	DECR	DecreaseInValue	_Qr5ho4yaEe-JbfQhweKSKQ	Reduction of face value of a single share or the value of fund assets. The number of circulating shares/units remains unchanged. This event may include a cash payout to holders.
+CorporateActionEventType35Code	DETI	Detachment	_Qr5hpYyaEe-JbfQhweKSKQ	Separation of components that comprise a security, for example, usually units comprised of warrants and bond or warrants and equity. Units may be broken up at the request of the security holder or based on market convention.
+CorporateActionEventType35Code	DSCL	Disclosure	_Qr5hp4yaEe-JbfQhweKSKQ	Requirement for holders or beneficial owners to disclose their name, location and holdings of any issue to the issuer.
+CorporateActionEventType35Code	DVOP	DividendOption	_Qr5hqYyaEe-JbfQhweKSKQ	Distribution of a dividend to holders with a choice of benefit to receive additional securities or cash. To be distinguished from DRIP as the company creates new share capital in exchange for the dividend rather than investing the dividend in the market.
+CorporateActionEventType35Code	DRIP	DividendReinvestment	_Qr5hq4yaEe-JbfQhweKSKQ	Dividend payment where holders can keep cash or have the cash reinvested in the market by the issuer into additional shares in the issuing company. To be distinguished from DVOP as the company invests the dividend in the market rather than creating new share capital in exchange for the dividend.
+CorporateActionEventType35Code	DRAW	Drawing	_Qr5hrYyaEe-JbfQhweKSKQ	Securities are redeemed in part before the scheduled final maturity date. It is done without any pool factor reduction. The redemption is reflected in a debit of the face amount (FAMT). Drawing is distinct from partial call since drawn bonds are chosen by lottery. Therefore, not every holder is affected in the same way.
+CorporateActionEventType35Code	DTCH	DutchAuction	_Qr5hr4yaEe-JbfQhweKSKQ	Action by a party wishing to acquire a security. Holders of the security are invited to make an offer to sell, within a specific price range. The acquiring party will buy from the holder with lowest offer.
+CorporateActionEventType35Code	EXOF	Exchange	_Qr5hsYyaEe-JbfQhweKSKQ	Exchange of holdings for other securities and/or cash. The exchange can be either mandatory or voluntary involving the exchange of outstanding securities for different securities and/or cash. For example "exchange offer", "capital reorganisation" or "funds separation".
+CorporateActionEventType35Code	REDM	FinalMaturity	_Qr5hs4yaEe-JbfQhweKSKQ	Redemption of an entire issue outstanding of securities, for example, bonds, preferred equity, funds, by the issuer or its agent, for example, asset manager, at final maturity.
+CorporateActionEventType35Code	MCAL	FullCall	_Qr5htYyaEe-JbfQhweKSKQ	Redemption of an entire issue outstanding of securities, for example, bonds, preferred equity, funds, by the issuer or its agent, for example, asset manager, before final maturity.
+CorporateActionEventType35Code	INCR	IncreaseInValue	_Qr5ht4yaEe-JbfQhweKSKQ	Increase in the face value of a single security. The number of circulating securities remains unchanged.
+CorporateActionEventType35Code	PPMT	InstalmentCall	_Qr5huYyaEe-JbfQhweKSKQ	Instalment towards the purchase of equity capital, subject to an agreement between an issuer and a purchaser.
+CorporateActionEventType35Code	INTR	InterestPayment	_Qr5hu4yaEe-JbfQhweKSKQ	Interest payment distributed to holders of an interest bearing asset.
+CorporateActionEventType35Code	RHDI	IntermediateSecuritiesDistribution	_Qr5hvYyaEe-JbfQhweKSKQ	Distribution of intermediate securities that gives the holder the right to take part in a future event.
+CorporateActionEventType35Code	LIQU	LiquidationDividend	_Qr5hv4yaEe-JbfQhweKSKQ	Distribution of cash, assets or both. Debt may be paid in order of priority based on preferred claims to assets specified by the security.
+CorporateActionEventType35Code	EXTM	MaturityExtension	_Qr5hwYyaEe-JbfQhweKSKQ	As stipulated in the security's Terms and Conditions, the issuer or the holder may prolong the maturity date of a security. After extension, the security details may differ from the original issue. An issuer initiated extension may be subject to holder's approval.
+CorporateActionEventType35Code	MRGR	Merger	_Qr5hw4yaEe-JbfQhweKSKQ	Exchange of outstanding securities, initiated by the issuer which may include options, as the result of two or more companies combining assets, that is, an external, third party company. Cash payments may accompany share exchange.
+CorporateActionEventType35Code	NOOF	NonOfficialOffer	_Qr5hxYyaEe-JbfQhweKSKQ	Offers that are not supervised or regulated by an official entity and being offered by a party, for example a broker, usually at a discount price, for example broker offer, mini-tender, mini odd lot offer or third party offer.
+CorporateActionEventType35Code	CERT	NonUSTEFRADCertification	_Qr5hx4yaEe-JbfQhweKSKQ	Non-US beneficial owner certification requirement for exchange of temporary to permanent notes.
+CorporateActionEventType35Code	ODLT	OddLotSalePurchase	_Qr5hyYyaEe-JbfQhweKSKQ	Sale or purchase of odd-lots to/from the issuing company, initiated either by the holder of the security or through an offer made by the issuer.
+CorporateActionEventType35Code	OTHR	OtherEvent	_Qr5hy4yaEe-JbfQhweKSKQ	Other event, use only when no other event type applies, for example, a new event type.
+CorporateActionEventType35Code	PARI	PariPassu	_Qr5hzYyaEe-JbfQhweKSKQ	Occurs when securities with different characteristics, for example, shares with different entitlements to dividend or voting rights, become identical in all respects, for example, pari-passu or assimilation. May be scheduled in advance, for example, shares resulting from a bonus may become fungible after a pre-set period of time, or may result from outside events, for example, merger, reorganisation, issue of supplementary tranches.
+CorporateActionEventType35Code	PCAL	PartialRedemptionWithoutPoolFactorReduction	_Qr5hz4yaEe-JbfQhweKSKQ	Securities are redeemed in part before their scheduled final maturity date. It is done without any pool factor reduction. The redemption is reflected in a debit of the face amount (FAMT).
+CorporateActionEventType35Code	PRED	PartialRedemptionWithPoolFactorReduction	_Qr5h0YyaEe-JbfQhweKSKQ	Securities are redeemed in part before their scheduled final maturity date. The redemption is reflected in a pool factor reduction. No movement of securities occurs.
+CorporateActionEventType35Code	PINK	PayInKind	_Qr5h04yaEe-JbfQhweKSKQ	Interest payment, in any kind except cash, distributed to holders of an interest bearing asset.
+CorporateActionEventType35Code	PLAC	PlaceOfIncorporation	_Qr5h1YyaEe-JbfQhweKSKQ	Changes in the state of incorporation for US companies and changes in the place of incorporation for foreign companies. Where shares need to be registered following the incorporation change, the holder(s) may have to elect the registrar.
+CorporateActionEventType35Code	PDEF	Prefunding	_Qr5h14yaEe-JbfQhweKSKQ	Also called partial defeasance. Issuer has money set aside to redeem a portion of an issue and the indenture states that the securities could be called earlier than the stated maturity.
+CorporateActionEventType35Code	PRIO	PriorityIssue	_Qr5h2YyaEe-JbfQhweKSKQ	Form of open or public offer where, due to a limited amount of securities available, priority is given to existing shareholders.
+CorporateActionEventType35Code	BPUT	PutRedemption	_Qr5h24yaEe-JbfQhweKSKQ	Early redemption of a security at the election of the holder subject to the terms and condition of the issue with no reduction in nominal value.
+CorporateActionEventType35Code	REDO	Redenomination	_Qr5h3YyaEe-JbfQhweKSKQ	Event by which the unit (currency and/or nominal) of a security is restated, for example, nominal/par value of security in a national currency is restated in another currency.
+CorporateActionEventType35Code	REMK	RemarketingAgreement	_Qr5h34yaEe-JbfQhweKSKQ	Purchase and sale of remarketed preferred equities/bonds through the negotiation of interest rate between the issuers and the holders.
+CorporateActionEventType35Code	BIDS	RepurchaseOffer	_Qr5h4YyaEe-JbfQhweKSKQ	Repurchase offer / issuer bid / reverse rights. Offer to existing holders by the issuing company to repurchase its own securities. The objective of the offer is to reduce the number of outstanding securities.
+CorporateActionEventType35Code	SPLR	ReverseStockSplit	_Qr5h44yaEe-JbfQhweKSKQ	Decrease in a company's number of outstanding equities without any change in the shareholder's equity or the aggregate market value at the time of the split. Equity price and nominal value are increased accordingly.
+CorporateActionEventType35Code	RHTS	RightsIssue	_Qr5h5YyaEe-JbfQhweKSKQ	Offer to holders of a security to subscribe for additional securities via the distribution of an intermediate security. Both processes are included in the same event.
+CorporateActionEventType35Code	DVSC	ScripDividend	_Qr5h54yaEe-JbfQhweKSKQ	Dividend or interest paid in the form of scrip.
+CorporateActionEventType35Code	SHPR	SharesPremiumDividend	_Qr5h6YyaEe-JbfQhweKSKQ	Corporate event pays shareholders an amount in cash issued from the shares premium reserve. It is similar to a dividend but with different tax implications.
+CorporateActionEventType35Code	SMAL	SmallestNegotiableUnit	_Qr5h64yaEe-JbfQhweKSKQ	Modification of the smallest negotiable unit of shares in order to obtain a new negotiable unit.
+CorporateActionEventType35Code	SOFF	SpinOff	_Qr5h7YyaEe-JbfQhweKSKQ	Distribution of securities issued by another company. The distributed securities may either be of a newly created or of an existing company. For example, spin-off, demerger, unbundling, divestment.
+CorporateActionEventType35Code	DVSE	StockDividend	_Qr5h74yaEe-JbfQhweKSKQ	Dividend paid to shareholders in the form of equities of the issuing corporation.
+CorporateActionEventType35Code	SPLF	StockSplit	_Qr5h8YyaEe-JbfQhweKSKQ	Increase in a corporation's number of outstanding equities without any change in the shareholder's equity or the aggregate market value at the time of the split. Equity price and nominal value are reduced accordingly.
+CorporateActionEventType35Code	TREC	TaxReclaim	_Qr5h84yaEe-JbfQhweKSKQ	Event related to tax reclaim activities.
+CorporateActionEventType35Code	TEND	Tender	_Qr5h9YyaEe-JbfQhweKSKQ	Offer made to holders by a third party, requesting them to sell (tender) or exchange their securities.
+CorporateActionEventType35Code	DLST	TradingStatusDelisted	_Qr5h94yaEe-JbfQhweKSKQ	Security is no longer able to comply with the listing requirements of a stock exchange and is removed from official board quotation.
+CorporateActionEventType35Code	SUSP	TradingStatusSuspended	_Qr5h-YyaEe-JbfQhweKSKQ	Trading in the security has been suspended.
+CorporateActionEventType35Code	EXWA	WarrantExercise	_Qr5h-4yaEe-JbfQhweKSKQ	Option offered to holders to buy (call warrant) or to sell (put warrant) a specific amount of stock, cash, or commodity, at a predetermined price, during a predetermined period of time (which usually corresponds to the life of the issue).
+CorporateActionEventType35Code	WTRC	WithholdingTaxReliefCertification	_Qr5h_YyaEe-JbfQhweKSKQ	Certification process for withholding tax reduction or exemption based on the tax status of the holder.
+CorporateActionEventType35Code	WRTH	Worthless	_Qr5h_4yaEe-JbfQhweKSKQ	Booking out of valueless securities.
+CorporateActionEventType35Code	ACCU	Accumulation	_Qr5iAYyaEe-JbfQhweKSKQ	Funds related event in which the income (for example accumulation units) that accrues during an accounting period is retained within the fund instead of being paid away to investors. The retained income is nonetheless deemed to have been distributed to investors for tax purposes.
+CorporateActionEventType35Code	INFO	Information	_Qr5iA4yaEe-JbfQhweKSKQ	Information provided by the issuer having no accounting/financial impact on the holder.
+CorporateActionEventType35Code	TNDP	TaxOnNonDistributedProceeds	_Qr5iBYyaEe-JbfQhweKSKQ	Taxable component on non-distributed proceeds, for example, Australian deemed income or US 871m income regulation.
+CorporateActionEventType35Code	RCLA	Reclassification	_Qr5iB4yaEe-JbfQhweKSKQ	Securities related event which reclassifies the distribution in various types of income for US tax withholding purposes.
+ExtendedEventType8Code	CDRD	CertificateOfDepositEarlyRedemption	_my3rIaNZEfC9id413JK-Ig	Feature of a security that allows an issuer to make a payment to the security holder. This event will be used for securities subject to redemptions other than those categorised as full and partial calls (for example early Certificate of Deposit redemptions).
+ExtendedEventType8Code	FPAY	FinalPaydown	_my3rI6NZEfC9id413JK-Ig	Final distribution of principal due on a security, typically Collateralised Mortgage Obligations.
+ExtendedEventType8Code	REDW	RedemptionOfWarrant	_my3rJaNZEfC9id413JK-Ig	Event is a redemption of warrant.
+ExtendedEventType8Code	TMTN	Termination	_my3rJ6NZEfC9id413JK-Ig	Security, usually a form of a derivative, for which the agent or issuer has decided to terminate the derivative based on a change to the underlying security(ies) or a change in strategy. Distinguishes from Mandatory Exchange, Exchange Offer event types mapped to the same ISO event type code.
+ExtendedEventType8Code	FPRE	FullPrefunding	_oKhakaNZEfC9id413JK-Ig	Exercise of a privilege by the issuer to repay, in full, any debt security prior to maturity when the issuer deposits assets in trust. This irrevocably restricts their use to satisfaction of the debt.
+DTCCSubEventType9Code	OPTO	OptOut	_XI7dsTDqEey2N-DB7H7A5A	Identifies an event (for example Cash Dividend) where DTC (the Depository Trust Company) offers a DRIP option as a default option (holder must opt out of the DRIP Option).
+DTCCSubEventType9Code	DRPD	DividendReinvestmentByDTC	_XI7dszDqEey2N-DB7H7A5A	Identifies an event where the Issue is eligible for a Dividend Reinvestment program at DTCC (The Depository Trust and Clearing Corporation).
+DTCCSubEventType9Code	PLCL	PlaceOfListing	_XI7dtTDqEey2N-DB7H7A5A	Identifies a change in the place where the security is listed.
+DTCCSubEventType9Code	BLOT	BoardLot	_XI7dtzDqEey2N-DB7H7A5A	Identifies a change in Board Lot size.
+DTCCSubEventType9Code	RMRK	Remarketing	_XI7duTDqEey2N-DB7H7A5A	Identifies an event that involves a Stock Purchase Contract product that is offering an early settlement or remarketing feature prior to the contract's expiration.
+DTCCSubEventType9Code	UNWD	Unwind	_XI7duzDqEey2N-DB7H7A5A	Identifies an event where "unwinding" of the basket of securities occurs.
+DTCCSubEventType9Code	SHEX	ShareExchange	_XI7dvTDqEey2N-DB7H7A5A	Identifies an event where two companies exchange their shares during a merger. After the share exchange, one company becomes a subsidiary of the other and is no longer listed. Usually applicable to an event in JP markets.
+DTCCSubEventType9Code	STDT	Standard	_XI7dvzDqEey2N-DB7H7A5A	Identifies an event where one company merges with the other and assumes the name of the surviving company. It is the standard market-accepted merger. Usually applicable to an event in JP markets.
+DTCCSubEventType9Code	XFER	Transfer	_XI7dwTDqEey2N-DB7H7A5A	Identifies an event where one company transfers all of its shares to a newly created company. Usually applicable to an event in JP markets.
+DTCCSubEventType9Code	SOPT	SurvivorOptions	_XI7dwzDqEey2N-DB7H7A5A	Indicates an event where the Issue has an early redemption feature. This feature allows the holder to elect to sell bonds back to the issuer on a predetermined basis (excluding monthly) according to specific priorities.
+DTCCSubEventType9Code	MBCK	MortgageBacked	_XI7dxTDqEey2N-DB7H7A5A	Indicates an event where the issue has an early redemption feature that allows the holder to elect to sell bonds back to the issuer on a monthly basis, according to specified conditions.
+DTCCSubEventType9Code	SALE	SaleOfAssets	_XI7dxzDqEey2N-DB7H7A5A	Identifies an event where the distribution is from the proceeds of the sale of assets.
+DTCCSubEventType9Code	PRNI	PhysicalRightsNotIssued	_XI7dyTDqEey2N-DB7H7A5A	Identifies an event where the company is not issuing a security with the right to subscribe for additional shares. In these instances, a User CUSIP is created by DTC (The Depository Trust Company) as opposed to a company-issued CUSIP in order to identify these issues.
+DTCCSubEventType9Code	POPI	PoisonPill	_XI7dyzDqEey2N-DB7H7A5A	Identifies sale of rights event where issuers redeem poison pill rights.
+DTCCSubEventType9Code	DRPI	DividendReinvestmentByIssuer	_XI7dzTDqEey2N-DB7H7A5A	Identifies an event where the issuer offers a dividend reinvestment program that is not processed by DTC (the Depository Trust Company).
+DTCCSubEventType9Code	MROS	MandatoryRedemptionOfShares	_XI7dzzDqEey2N-DB7H7A5A	Identifies an event where redemption shares are issued in addition to shares of the original security. This is related to the Mandatory Exchange event with the same sub-event type name.
+DTCCSubEventType9Code	SHPP	SharePurchasePlan	_XI7d0TDqEey2N-DB7H7A5A	Identifies an event involving the offer of shares by a corporation listed on the Australia Stock Exchange, in which ASIC will give relief so that the company can offer existing shareholders the opportunity to acquire small numbers of additional shares without needing a disclosure document or Product Disclosure Statement (PDS).
+DTCCSubEventType9Code	OPOF	OpenOffer	_XI7d0zDqEey2N-DB7H7A5A	Identifies an event in certain markets where underlying rights are not issued.
+DTCCSubEventType9Code	TWRI	TenderWithRights	_XI7d1TDqEey2N-DB7H7A5A	Identifies a tender offer event on a Rights security. Holders must submit both the ordinary share(s) and right(s) to be eligible to receive the tender consideration. The ratio of ordinary shares to rights is defined in the offer.
+DTCCSubEventType9Code	CILI	CashinLieu	_XI7d1zDqEey2N-DB7H7A5A	Identifies DTC (the Depository Trust Company) specific sub-event where holders can elect to "sell" whole shares to satisfy fractional entitlements (usually as a result of a merger) at the beneficial owner level.
+DTCCSubEventType9Code	BTST	BidTenderSealedTender	_XI7d2TDqEey2N-DB7H7A5A	Identifies a tender offer event in which the holder can choose the price at which they are willing to tender their securities. This price may or may not be accepted by the offeror.
+DTCCSubEventType9Code	FTPR	OfferToPurchase	_XI7d2zDqEey2N-DB7H7A5A	Identifies a tender offer event made by another company to purchase a portion or all of the outstanding shares.
+DTCCSubEventType9Code	ADRS	ADR	_XI7d3TDqEey2N-DB7H7A5A	Identifies when the event security is an ADR. The underlying security is American Depositary Receipt.
+DTCCSubEventType9Code	WITH	WithPayout	_XI7d3zDqEey2N-DB7H7A5A	Identifies a consent event with payout.
+DTCCSubEventType9Code	WITO	WithoutPayout	_XI7d4TDqEey2N-DB7H7A5A	Identifies a consent event without payout.
+DTCCSubEventType9Code	CTAX	TaxCredit	_XI7d4zDqEey2N-DB7H7A5A	Identifies an event where a tax credit relating to the Build America Bonds will occur.
+DTCCSubEventType9Code	A144	USLegal144A	_XI7d5TDqEey2N-DB7H7A5A	Identifies an exchange offer on securities that are subject to Securities Rule 144A.
+DTCCSubEventType9Code	CASE	CashAndSecurities	_XI7d5zDqEey2N-DB7H7A5A	Identifies an event where the payout will be both cash and securities.
+DTCCSubEventType9Code	REGS	RegulationS	_XI7d6TDqEey2N-DB7H7A5A	Identifies an exchange offer on securities that are subject to securities rule Reg S.
+DTCCSubEventType9Code	NOTI	ImportantNotice	_XI7d6zDqEey2N-DB7H7A5A	Identifies a MMI Important Notice.
+DTCCSubEventType9Code	RDTH	BasedOnRecordDateHoldings	_XI7d7TDqEey2N-DB7H7A5A	Identifies an event which will be based on record date holdings.
+DTCCSubEventType9Code	CASH	Cash	_XI7d7zDqEey2N-DB7H7A5A	Identifies an event where the payout will be cash.
+DTCCSubEventType9Code	PREQ	PresentationRequired	_XI7d8TDqEey2N-DB7H7A5A	Identifies an event where the presentation of securities will be required.
+DTCCSubEventType9Code	SECU	Securities	_XI7d8zDqEey2N-DB7H7A5A	Identifies an event where the payout will be securities.
+DTCCSubEventType9Code	COTE	ConvertAndTender	_XI7d9TDqEey2N-DB7H7A5A	Identifies a tender offer with a convert feature.
+DTCCSubEventType9Code	MITE	MiniTender	_XI7d9zDqEey2N-DB7H7A5A	Identifies when a tender offer is a mini tender.
+DTCCSubEventType9Code	SETE	SelfTender	_XI7d-TDqEey2N-DB7H7A5A	Identifies when a tender offer is a self tender.
+DTCCSubEventType9Code	GDRS	GDR	_XI7d-zDqEey2N-DB7H7A5A	Identifies when the event security is a GDR. The underlying security is a global depositary receipt.
+DTCCSubEventType9Code	M871	DividendEquivalentPayment871M	_XI7d_TDqEey2N-DB7H7A5A	Identifies an event which has been considered a dividend equivalent payment under Section 871(m) of the United States Internal Revenue Code.
+DTCCSubEventType9Code	C305	DeemedDividend305C	_XI7d_zDqEey2N-DB7H7A5A	Identifies an event which has been considered a deemed distribution under Section 305(c) of the United States  Internal Revenue Code.
+DTCCSubEventType9Code	CONV	Conversion	_XI7eATDqEey2N-DB7H7A5A	Identifies an event which is a full call or a maturity with conversion.
+DTCCSubEventType9Code	CUSP	NameAndCUSIPChange	_XI7eAzDqEey2N-DB7H7A5A	Name change with CUSIP change.
+DTCCSubEventType9Code	CUPR	NameAndCUSIPChangeAndPresentationRequired	_XI7eBTDqEey2N-DB7H7A5A	Name change with both CUSIP change and presentation required.
+DTCCSubEventType9Code	RCLA	Classification1042S	_e-qD0TDqEey2N-DB7H7A5A	Identifies distributions that have multiple components for tax withholding and 1042-S reporting purposes.
+DTCCSubEventType9Code	QN92	ExemptionQualifiedNotice92Days	_fHAHgTDqEey2N-DB7H7A5A	Identifies a qualified notice issued by a publicly traded partnership that states applicability of the 10 percent exception under IRS regulation 1.1446(f)-4(b)(3).
+DTCCSubEventType9Code	UNIT	UnitCombination	_h8V88TDqEey2N-DB7H7A5A	Identifies a combination of assets or types of assets packaged together and sold as one. For example, a shareholder buying one unit of company stock may get preferred shares, ordinary shares and even warrants in the unit.
+DTCCSubEventType9Code	ECNI	AmountsInExcessOfCumulativeNetIncome	_l21ckTDqEey2N-DB7H7A5A	Identifies when a publicly traded partnership identifies the amount realised on such portion of the distribution as an amount in excess of cumulative net income under IRS regulation 1.1446(f)-4(c)(2)(iii).
+DTCCSubEventType9Code	SPAC	SpecialPurposeAcquisitionCompany	_pdzjQTDqEey2N-DB7H7A5A	Specified purpose acquisition companies (SPACs) are public companies comprised of cash available to investors in financial markets. The sole purpose of SPACs is to use the proceeds to finance a future acquisition. SPACs generally commit to identify a target operating company and complete a business combination transaction within a specified timeframe. SPACS have a feature where funds are put into a trust account and when the target investment is identified the investor can have their proceeds returned or participate in the business combination.
+RateType5Code	UKWN	Unknown	_ZZmKo9p-Ed-ak6NoX_4Aeg_1553034192	Rate is unknown by the sender or has not been established.
+DateType8Code	UKWN	Unknown	_q3yFcmtdEeCY4-KZ9JEyUQ_98980666	Date is unknown by the sender or has not been established.
+DateType8Code	ONGO	Ongoing	_q3yFc2tdEeCY4-KZ9JEyUQ_-1984793229	Ongoing basis, which indicates that the date is determined by "ongoing basis" process, for example "au fil de l'eau".
+RateValueType7Code	UKWN	Unknown	_q5kOI2tdEeCY4-KZ9JEyUQ_-1063133934	Rate is unknown by the sender or has not been established.
+RateType10Code	ANYA	AnyAndAll	_uBZyFQCoEeGt2odvTAOpog	Any and all rate is sought.
+RateType10Code	UKWN	Unknown	_wN7UAgCoEeGt2odvTAOpog	Rate is unknown by the sender or has not been established.
+PriceRateType3Code	DISC	Discount	_aI_ANNp-Ed-ak6NoX_4Aeg_2030331253	Price expressed as a number of percentage points below par, for example, a discount price of 2.0% equals a price of 98 when par is 100.
+PriceRateType3Code	PREM	Premium	_aI_ANdp-Ed-ak6NoX_4Aeg_2030331282	Price expressed as a number of percentage points above par, for example, a premium price of 2.0% equals a price of 102 when par is 100.
+PriceRateType3Code	PRCT	Percentage	_aI_ANtp-Ed-ak6NoX_4Aeg_2030331283	Price expressed as a percentage of par.
+PriceRateType3Code	YIEL	Yield	_aI_AN9p-Ed-ak6NoX_4Aeg_2030331312	Price expressed as a yield.
+AmountPriceType1Code	ACTU	ActualAmount	_begouNp-Ed-ak6NoX_4Aeg_150966940	Price expressed as a currency and amount per unit or per share.
+AmountPriceType1Code	DISC	Discount	_beqZsNp-Ed-ak6NoX_4Aeg_150966971	Price expressed as a discount amount.
+AmountPriceType1Code	PLOT	Lot	_beqZsdp-Ed-ak6NoX_4Aeg_150966972	Price expressed as an amount of money per lot.
+AmountPriceType1Code	PREM	Premium	_beqZstp-Ed-ak6NoX_4Aeg_150966973	Price expressed as a premium.
+PriceValueType10Code	UKWN	Unknown	_q5RTNWtdEeCY4-KZ9JEyUQ_1587696077	Price is unknown by the sender or has not been established.
+Quantity4Code	UKWN	UnknownQuantity	_mxyqZQCgEeGqP72A5EmwKQ	Quantity is unknown by the sender or has not been established.
+Quantity4Code	ANYA	AnyAndAll	_n0ZW7gCgEeGqP72A5EmwKQ	Instruction applies to the entire eligible balance of underlying securities.
+Quantity5Code	UKWN	UnknownQuantity	_lYgM6QFIEeGhYJiRaPcH8g	Quantity is unknown by the sender or has not been established.
+CorporateActionFrequencyType5Code	FINL	Final	_2DlLkWK-EeWR9ZSfjmHwUA	Payment of a dividend, less amounts already paid through interim dividends.
+CorporateActionFrequencyType5Code	INTE	Interim	_2DlLk2K-EeWR9ZSfjmHwUA	Dividend declared and paid before annual earnings have been determined.
+CorporateActionFrequencyType5Code	REIN	Reinvestment	_2DlLlWK-EeWR9ZSfjmHwUA	Reinvestment of cash distributed.
+CorporateActionFrequencyType5Code	REGR	Regular	_2DlLl2K-EeWR9ZSfjmHwUA	Dividend paid at regular interval, for example, quarterly.
+CorporateActionFrequencyType5Code	SPEC	Special	_2DlLmWK-EeWR9ZSfjmHwUA	Dividend in addition to the regular dividend being paid by the company.
+CorporateActionFrequencyType5Code	SPRE	SpecialDividendWithReinvestment	_5TuGoWK-EeWR9ZSfjmHwUA	Special Dividend with reinvestment component.
+DistributionType3Code	FINL	Final	_5ixRYSXWEeOL3KXg7zAfKA	Final payment.
+DistributionType3Code	INTE	Interim	_5nYEkSXWEeOL3KXg7zAfKA	Interim payment.
+DistributionType3Code	ONGO	Ongoing	_5uOTcSXWEeOL3KXg7zAfKA	Event is ongoing for acceptance on an unsolicited basis.
+DistributionType3Code	ROLL	RollingBasis	_5y1GoSXWEeOL3KXg7zAfKA	Event will have a number of acceptance and payment dates until further announcement by the Issuer or its agent.
+OfferType7Code	DISS	DissenterRights	_7scvYfH4EfCS-OXqezZQmw	Securities holder has the right to disagree with a mandatory event. This right is not inherent in all offers and therefore must be noted in announcements only when applicable.
+OfferType7Code	ERUN	RestrictionExchange	_7scvY_H4EfCS-OXqezZQmw	Exchange of Restricted to Unrestricted (or vice versa).
+OfferType7Code	FINL	FinalOffer	_7scvZfH4EfCS-OXqezZQmw	Final or last offer to holders subject to offer conditions being reached, for example, 50 percent accepted on a tender.
+OfferType7Code	PART	PartialOffer	_7scvZ_H4EfCS-OXqezZQmw	Offer made by the offeror for a portion of the outstanding shares not already owned by the offeror.
+OfferType7Code	SQUE	SqueezeOutBid	_7scvafH4EfCS-OXqezZQmw	Offer launched by a company, in possession of a large number of the shares (90% - 95%) of a company (generally as a result of a tender offer), in order to acquire the remaining shares of that company.
+OfferType7Code	NDIS	DissenterRightsNotApplicable	_7scva_H4EfCS-OXqezZQmw	Dissenter’s rights are not applicable for this option of the offer.
+OfferType7Code	ACPR	AcceptancePriority	_9xlP4fH4EfCS-OXqezZQmw	Event will be paid in a particular priority stated in the offering documentation. Higher tiers of securities will be paid ahead of lower tiers of securities.
+RenounceableStatus1Code	NREN	NonRenounceable	_Zsq3oNp-Ed-ak6NoX_4Aeg_-603219863	Intermediate securities cannot be sold.
+RenounceableStatus1Code	RENO	Renounceable	_Zsq3odp-Ed-ak6NoX_4Aeg_-603219862	Intermediate securities can be sold.
+CorporateActionEventStage3Code	APPD	Approved	_JJnNASUfEeOxdNEux54C3Q	Approved at the relevant meeting, for example, dividend.
+CorporateActionEventStage3Code	CLDE	Deactivated	_KRBhASUfEeOxdNEux54C3Q	Offer is closed for acceptance.
+CorporateActionEventStage3Code	FULL	CancellationAndReRun	_LD5vcSUfEeOxdNEux54C3Q	Cancellation and re-run of an original lottery or an original and supplemental lottery. A subsequent lottery will be performed under a new event.
+CorporateActionEventStage3Code	LAPS	Lapsed	_LiQfYSUfEeOxdNEux54C3Q	Event/offer conditions have not been met and the event/offer is terminated or lapsed.
+CorporateActionEventStage3Code	PART	SupplementalCancellationAndReRun	_MFz4YSUfEeOxdNEux54C3Q	Cancellation and re-run of a supplemental lottery only. A subsequent new supplemental lottery will be performed under the original event.
+CorporateActionEventStage3Code	PWAL	ActionPeriod	_MoCbsSUfEeOxdNEux54C3Q	Open for acceptance until the next specified deadline in the announcement (if any).
+CorporateActionEventStage3Code	RESC	SupplementalCancellation	_N53P8SUfEeOxdNEux54C3Q	A supplemental lottery is being cancelled by the issuer. No subsequent lottery will be performed.
+CorporateActionEventStage3Code	SUAP	SubjectToApproval	_OFeDASUfEeOxdNEux54C3Q	Subject to approval at the relevant meeting, for example, dividend.
+CorporateActionEventStage3Code	UNAC	UnconditionalAsToAcceptance	_OokwESUfEeOxdNEux54C3Q	The required level of acceptances specified in the terms of the offer has been achieved but there are still outstanding conditions to fulfil.
+CorporateActionEventStage3Code	WHOU	WhollyUnconditional	_O8g_wSUfEeOxdNEux54C3Q	Wholly unconditional; all conditions specified in the offer document have been satisfied.
+AdditionalBusinessProcess13Code	ACLA	AutomaticMarketClaim	_Q83doaNYEfC9id413JK-Ig	Will automatically give rise to market claims by the account servicer, for example, a Central Securities Depository (CSD).
+AdditionalBusinessProcess13Code	ATXF	SubjectToTransformation	_Q83do6NYEfC9id413JK-Ig	As a result of the corporate action, all transactions in the underlying security will be cancelled by the system and replaced with transactions in the outturn resource(s).
+AdditionalBusinessProcess13Code	CNTR	CancelUnderlyingTrades	_Q83dpaNYEfC9id413JK-Ig	As a result of the corporate action, all transactions in the underlying security will be cancelled by the system.
+AdditionalBusinessProcess13Code	NAMC	NoAutomaticMarketClaimsAndTransformations	_Q83dp6NYEfC9id413JK-Ig	Event will not automatically give rise to market claims and transformations by the account servicer, for example, a Central Securities Depository (CSD).
+AdditionalBusinessProcess13Code	NPLE	NoSplitElection	_Q83dqaNYEfC9id413JK-Ig	Issuer only allows a single option to be selected per designated holding.
+AdditionalBusinessProcess13Code	SCHM	SchemeOrPlanOfArrangement	_Q83dq6NYEfC9id413JK-Ig	Component event of a scheme/plan of arrangement: a reorganisation of a company or a group of companies, and their capital.
+AdditionalBusinessProcess13Code	CONS	Consent	_Q83draNYEfC9id413JK-Ig	Relates to a consent within a corporate action event other than a Consent event (: 22F:: CAEV//CONS).
+AdditionalBusinessProcess13Code	PPUT	PartialMandatoryPutRedemption	_Q83dr6NYEfC9id413JK-Ig	Partial mandatory exchange of a portion of bonds where the exchanged securities are usually remarketed. The issuer may offer holders the right to retain instead of exchanging their securities. A lottery will be used to determine eligibility for the event.
+AdditionalBusinessProcess13Code	PPRE	PartialPreFunding	_Q83ds6NYEfC9id413JK-Ig	Partial pre-funding of a debt instrument prior to maturity drawn through a lottery process. One new security is issued with an earlier maturity date for the refunded (called portion) and the other new security is issued with the original maturity date for the non refunded (remaining) portion. Applicable only in the frame of a partial defeasance corporate action event.
+AdditionalBusinessProcess13Code	REAC	RequiredAction	_Q83dtaNYEfC9id413JK-Ig	Proceeds / entitlements of the mandatory event can only be paid if specified action is taken by the account owner.
+AdditionalBusinessProcess13Code	INCP	IncentivePremiumPayment	_Q83dt6NYEfC9id413JK-Ig	The event is a payment of an incentive premium related to the voting conditions prescribed at a general meeting.
+CorporateActionChangeType1Code	BERE	BearToRegistered	_bCy9Edp-Ed-ak6NoX_4Aeg_1029236452	Change from bearer into registered form.
+CorporateActionChangeType1Code	CERT	Certificates	_bCy9Etp-Ed-ak6NoX_4Aeg_1029236481	Change of all instruments into certificates.
+CorporateActionChangeType1Code	DEPH	DematerialisedToPhysical	_bCy9E9p-Ed-ak6NoX_4Aeg_1029236482	Change from dematerialised into physical form.
+CorporateActionChangeType1Code	GPPH	GlobalPermanentToPhysical	_bCy9FNp-Ed-ak6NoX_4Aeg_1029236483	Change from global permanent to physical form.
+CorporateActionChangeType1Code	GTGP	GlobalTemporaryToGlobalPermanent	_bCy9Fdp-Ed-ak6NoX_4Aeg_1029236504	Change from global temporary to global permanent form.
+CorporateActionChangeType1Code	GTPH	GlobalTemporaryToPhysical	_bCy9Ftp-Ed-ak6NoX_4Aeg_1029236512	Change from global temporary to physical form.
+CorporateActionChangeType1Code	NAME	Name	_bCy9F9p-Ed-ak6NoX_4Aeg_1029236752	The issuing company changes its name. CA event shows the change from old name to new name and may involve surrendering physical shares with the old name to the registrar.
+CorporateActionChangeType1Code	PHDE	PhysicalToDematerialised	_bC8uENp-Ed-ak6NoX_4Aeg_1029236760	Change from physical into dematerialised form.
+CorporateActionChangeType1Code	REBE	RegisteredToBearer	_bC8uEdp-Ed-ak6NoX_4Aeg_1029236761	Change from registered into bearer form.
+CorporateActionChangeType1Code	TERM	Terms	_bC8uEtp-Ed-ak6NoX_4Aeg_1029236783	Change in the terms of the security.
+CorporateActionChangeType1Code	DECI	Decimalisation	_bC8uE9p-Ed-ak6NoX_4Aeg_1029236791	Process of changing the accounting method of a security, for example, mutual fund, from units to a quantity with decimals.
+IntermediateSecurityDistributionType6Code	BIDS	ReverseRights	_l8aI4aQ4EfC7Z_RW6qWkKA	Offer to existing holders by the issuing company to repurchase its own securities. The objective of the offer is to reduce the number of outstanding securities.
+IntermediateSecurityDistributionType6Code	DRIP	DividendReinvestment	_l8aI46Q4EfC7Z_RW6qWkKA	Dividend payment where holders can keep cash or have the cash reinvested in the market by the issuer into additional shares in the issuing company. To be distinguished from DVOP as the company invests the dividend in the market rather than creating new share capital in exchange for the dividend.
+IntermediateSecurityDistributionType6Code	DVCA	CashDividend	_l8aI5aQ4EfC7Z_RW6qWkKA	Distribution of cash to shareholders, in proportion to their equity holding. Ordinary dividends are recurring and regular. Shareholder must take cash and may be offered a choice of currency.
+IntermediateSecurityDistributionType6Code	DVOP	DividendOption	_l8aI56Q4EfC7Z_RW6qWkKA	Distribution of dividend option.
+IntermediateSecurityDistributionType6Code	EXRI	SubscriptionRights	_l8aI6aQ4EfC7Z_RW6qWkKA	Call or exercise on nil paid securities or intermediate securities resulting from an intermediate securities distribution (RHDI). This code is used for the second event, when an intermediate securities' issue (rights/coupons) is composed of two events, the first event being the distribution of intermediate securities.
+IntermediateSecurityDistributionType6Code	PRIO	OpenOfferRights	_l8aI66Q4EfC7Z_RW6qWkKA	Form of open or public offer where, due to a limited amount of securities available, priority is given to existing shareholders.
+IntermediateSecurityDistributionType6Code	DVSC	ScripDividendOrPayment	_l8aI7aQ4EfC7Z_RW6qWkKA	Dividend or interest paid in the form of scrip.
+IntermediateSecurityDistributionType6Code	DVSE	StockDividend	_l8aI76Q4EfC7Z_RW6qWkKA	Dividend paid to shareholders in the form of equities of the issuing corporation.
+IntermediateSecurityDistributionType6Code	INTR	InterestPayment	_l8aI8aQ4EfC7Z_RW6qWkKA	Interest payment distributed to holders of an interest bearing asset.
+IntermediateSecurityDistributionType6Code	LIQU	LiquidationDividendOrPayment	_l8aI86Q4EfC7Z_RW6qWkKA	Distribution of cash, assets or both. Debt may be paid in order of priority based on preferred claims to assets specified by the security.
+IntermediateSecurityDistributionType6Code	SOFF	SpinOff	_l8aI9aQ4EfC7Z_RW6qWkKA	Distribution of subsidiary stock to the shareholders.
+IntermediateSecurityDistributionType6Code	SPLF	StockSplit	_l8aI96Q4EfC7Z_RW6qWkKA	Also known as change in nominal value or subdivision.|Increase in a corporation's number of outstanding equities without any change in the shareholder's equity or the aggregate market value at the time of the split. Equity price and nominal value are reduced accordingly.
+IntermediateSecurityDistributionType6Code	BONU	BonusRights	_l8aI-aQ4EfC7Z_RW6qWkKA	Bonus or capitalisation issue. Security holders receive additional assets free of payment from the issuer, in proportion to their holding.
+IntermediateSecurityDistributionType6Code	EXOF	Exchange	_l8aI-6Q4EfC7Z_RW6qWkKA	Exchange of holdings for other securities and/or cash. The exchange can be either mandatory or voluntary involving the exchange of outstanding securities for different securities and/or cash. For example "exchange offer", "capital reorganisation" or "funds separation".
+IntermediateSecurityDistributionType6Code	MRGR	Merger	_l8aI_aQ4EfC7Z_RW6qWkKA	Exchange of outstanding securities, initiated by the issuer which may include options, as the result of two or more companies combining assets, that is, an external, third party company. Cash payments may accompany share exchange.
+IntermediateSecurityDistributionType6Code	UKWN	Unknown	_StcUcaRKEfC9EJoPPbbyNQ	Intermediate securities are distributed before the use of them has been established.
+EUCapitalGain2Code	EUSI	CapitalGainInScope	_aiBLRNp-Ed-ak6NoX_4Aeg_1764162246	Capital gain is in the scope of the directive.
+EUCapitalGain2Code	EUSO	CapitalGainOutScope	_aiBLRdp-Ed-ak6NoX_4Aeg_1764162306	Capital gain is out of the scope of the directive.
+EUCapitalGain2Code	UKWN	CapitalGainUnknown	_aiBLRtp-Ed-ak6NoX_4Aeg_1764162323	Unknown whether capital gain is in or out of the scope of the directive.
+CorporateActionTaxableIncomePerShareCalculated1Code	TDIY	Calculated	_bTVTcdp-Ed-ak6NoX_4Aeg_-1786544873	Fund is calculating the taxable income per dividend/taxable income per share.
+CorporateActionTaxableIncomePerShareCalculated1Code	TDIN	NotCalculated	_bTVTctp-Ed-ak6NoX_4Aeg_-1786544858	Fund is not calculating the taxable income per dividend/taxable income per share.
+CorporateActionTaxableIncomePerShareCalculated1Code	UKWN	Unknown	_bTVTc9p-Ed-ak6NoX_4Aeg_-1786544857	Unknown whether the fund is calculating the taxable income per dividend/taxable income per share.
+LotteryType1Code	ORIG	OriginalLotteryNotification	_afolotp-Ed-ak6NoX_4Aeg_-1740647868	Original lottery that has been announced for a specific amount and date.
+LotteryType1Code	SUPP	SupplementalLotteryNotification	_afolo9p-Ed-ak6NoX_4Aeg_-1740647840	Supplemental or additional quantity called on a previously announced original lottery.
+LotteryFeatureType1Code	XTRA	Extraordinary	_WLShwZSbEfCQbtmJ-bHX4Q	Extraordinary redemption. Extraordinary redemption allows the issuer to call its bonds before maturity if certain specified events occur, such as the project for which the bond was issued to finance has been damaged or destroyed. This feature must be specified in the bond’s offering statement.
+LotteryFeatureType1Code	OPTL	Optional	_WWWiQZSbEfCQbtmJ-bHX4Q	Issuer has the right to redeem all or part of the bonds before their maturity dates.
+LotteryFeatureType1Code	SINK	SinkingFund	_WY6HAZSbEfCQbtmJ-bHX4Q	Bond sinking fund. Bond sinking fund is a financial mechanism used by bond issuers to set aside money for the purpose of repaying bondholders at maturity or through periodic redemptions.
+LotteryFeatureType1Code	SPCL	Special	_WbEqMZSbEfCQbtmJ-bHX4Q	Special redemption bond. Bond that can be redeemed before maturity due to an unusual event, such as a catastrophe that impacts the source of the bond’s revenue. This feature must be specified in the bond’s offering statement. Special redemption can be done pursuant to the provisions of the indenture.
+CertificationFormatType1Code	ELEC	Electronic	_a78HIdp-Ed-ak6NoX_4Aeg_-1559890547	Certification must be provided in electronic format.
+CertificationFormatType1Code	PHYS	Physical	_a78HItp-Ed-ak6NoX_4Aeg_-1559890529	Certification must be provided in physical format.
+ConsentType1Code	CTRM	ChangeInTerms	_Wr3YgSHnEeOQ7qT4JUI53A	Change in the terms and conditions of the bond.
+ConsentType1Code	DUPY	DueAndPayable	_WzTdQSHnEeOQ7qT4JUI53A	Change in the due and payable conditions.
+CorporateActionInformationType1Code	CONF	ConferenceCall	_qcrNQSXcEeOFIcNWlDEvdQ	Information is about an informal call when an issuer, trustee, agent wishes to talk to note holders to discuss a certain issue or potential change to the notes; nothing said being binding.
+DutchAuctionType1Code	MDFD	Modified	_lU3gUYAHEe-DNerJibcigw	All instructions are accepted at the same price (issuer bid).
+DutchAuctionType1Code	UNMD	Unmodified	_lYy-EYAHEe-DNerJibcigw	All instructions are accepted at the instructed price (offering bid).
+RedemptionAnnouncementNoticeType1Code	DEPT	Depository	_7adFoaD8Ee-4O7NbwmwJkQ	Event announcement will refer only to certificates held at the depository.  Used for Redemption events only.
+RedemptionAnnouncementNoticeType1Code	UNVL	Universal	_7iNTcqD8Ee-4O7NbwmwJkQ	Event announcement will refer to certificates held outside of depository.
+ProrationReturnQuantityTreatment1Code	ACPT	Accept	_6ZqSEXGzEe6S2Llv74R19w	Prorated instructions which result in less than the minimum denominations will be accepted in full.
+ProrationReturnQuantityTreatment1Code	ADJT	Adjust	_6dr2cXGzEe6S2Llv74R19w	Prorated instructions which result in less than the minimum denominations will be adjusted up.
+ProrationReturnQuantityTreatment1Code	REJT	Reject	_6iAVwXGzEe6S2Llv74R19w	Prorated instructions which result in less than the minimum denominations will be rejected in full.
+CorporateActionOption15Code	ABST	Abstain	_D6zPce33Eeqc-LCjwLsUVg	Vote expressed as abstain. In this case, the issuing company will add the number of shares to the quorum of the meeting.|If the voting right is not executed, it will not be added to the quorum. In this case, code NOAC should be used.
+CorporateActionOption15Code	BSPL	BonusSharePlan	_D6zPc-33Eeqc-LCjwLsUVg	Receive equities from the share premium reserve of the company and considered as a capital distribution rather than a disbursement of income with different tax implications (typically found in Australia).
+CorporateActionOption15Code	BUYA	BuyUp	_D6zPde33Eeqc-LCjwLsUVg	Buy additional securities to round up position.
+CorporateActionOption15Code	CASE	CashAndSecurity	_D6zPd-33Eeqc-LCjwLsUVg	Option to choose between different security and cash options.
+CorporateActionOption15Code	CASH	Cash	_D6zPee33Eeqc-LCjwLsUVg	Option to choose cash.
+CorporateActionOption15Code	CEXC	ConsentAndExchange	_D6zPe-33Eeqc-LCjwLsUVg	Vote to consent to change the terms of the securities agreement and to exchange securities.
+CorporateActionOption15Code	CONN	ConsentDenied	_D6zPfe33Eeqc-LCjwLsUVg	Vote not to approve the event or proposal.
+CorporateActionOption15Code	CONY	ConsentGranted	_D6zPf-33Eeqc-LCjwLsUVg	Vote to approve the event or proposal.
+CorporateActionOption15Code	CTEN	ConsentAndTender	_D6zPge33Eeqc-LCjwLsUVg	Vote to consent to change the terms of the securities agreement and to tender securities for cash.
+CorporateActionOption15Code	EXER	Exercise	_D6zPg-33Eeqc-LCjwLsUVg	Exercise intermediate securities or warrants.
+CorporateActionOption15Code	LAPS	Lapse	_D6zPhe33Eeqc-LCjwLsUVg	Allow event or entitled security to expire.
+CorporateActionOption15Code	MPUT	Retain	_D6zPh-33Eeqc-LCjwLsUVg	Option that allows a holder to elect to retain their holding, for example, a putable bond.
+CorporateActionOption15Code	NOAC	NoAction	_D6zPie33Eeqc-LCjwLsUVg	Option for the account owner not to take part in the event. This would include opt-out for class actions and lodging of dissenters' rights.
+CorporateActionOption15Code	NOQU	NonQualifiedInvestor	_D6zPi-33Eeqc-LCjwLsUVg	Account owner is a non-qualified investor.
+CorporateActionOption15Code	OFFR	ProposedRate	_D6zPje33Eeqc-LCjwLsUVg	In a remarketing of variable notes, the margin that shareholders can propose in respect of the next interest period.
+CorporateActionOption15Code	OTHR	Other	_D6zPj-33Eeqc-LCjwLsUVg	Generic corporate action option to be used in case that no other specific code is appropriate.
+CorporateActionOption15Code	OVER	Oversubscribe	_D6zPke33Eeqc-LCjwLsUVg	Subscribe to more equities than underlying securities position allows.
+CorporateActionOption15Code	QINV	QualifiedInvestor	_D6zPk-33Eeqc-LCjwLsUVg	Account owner is a qualified investor.
+CorporateActionOption15Code	SECU	Security	_D6zPle33Eeqc-LCjwLsUVg	Distribution of securities to holders.
+CorporateActionOption15Code	SLLE	SellEntitlement	_D6zPl-33Eeqc-LCjwLsUVg	Sell the intermediate securities.
+CorporateActionOption15Code	PRUN	UnknownProceeds	_D6zPme33Eeqc-LCjwLsUVg	Proceeds not known during election period. The option can result in cash and/or securities.
+CorporateActionOption15Code	BOBD	BeneficialOwnerBreakdownRequest	_dhiZEe33Eeqc-LCjwLsUVg	Breakdown of beneficial ownership required for withholding tax reclaim event.
+FractionDispositionType8Code	BUYU	BuyUp	_DFXFkWSCEeKFfdK0gKYFLQ	Buy securities up to next whole number.
+FractionDispositionType8Code	CINL	CashInLieuOfFraction	_DOwSIWSCEeKFfdK0gKYFLQ	Fractional part of cash. Take cash in lieu of fractions.
+FractionDispositionType8Code	DIST	IssueFraction	_DoirIWSCEeKFfdK0gKYFLQ	Take distribution of fractions in the form of securities.
+FractionDispositionType8Code	RDDN	RoundDown	_EX8u0WSCEeKFfdK0gKYFLQ	Round the entitlement down to the last full unit/minimum nominal quantity, fractions are discarded.
+FractionDispositionType8Code	STAN	RoundToNearest	_EgvecWSCEeKFfdK0gKYFLQ	If the fraction is greater than or equal to 0.5 of the resulting security then round up, else round down as specified in the respective RDUP and RDDN codes.
+FractionDispositionType8Code	RDUP	RoundUp	_E6h3cWSCEeKFfdK0gKYFLQ	Round up to the next full unit/minimum nominal quantity at no cost.
+FractionDispositionType8Code	UKWN	Unknown	_FUUQcWSCEeKFfdK0gKYFLQ	Characteristics of the disposition of fractions are unknown.
+OptionFeatures15Code	NOSE	NoServiceOffered	c82b1662-7025-4e3c-a580-4fc8038a2a18	Feature whereby the holder must elect directly to the issuer's agent (issuer only supported option).
+OptionFeatures15Code	CAOS	OptionApplicability	94b9c260-cf03-43a2-b54d-ab1fcf701c31	Option applicability is not subject to the account owner decision but depends on the terms defined by the issuer, for example in the case of equity linked notes or warrants.
+OptionFeatures15Code	COND	Conditional	070d2fa1-47d7-4274-a7dd-ff1380d2c667	Feature whereby the holder can elect to place a condition on the acceptance of the option.
+OptionFeatures15Code	MAXC	MaximumCash	b39ac9a4-0ba8-472f-9b18-c9f4d7d1a698	Maximum cash option, may be subject to scaling, as such you may receive a combination of cash and securities outturn.
+OptionFeatures15Code	MAXS	MaximumSecurities	a19fa64b-4361-46e2-a060-721f83b3338b	Maximum stock option, may be subject to scaling, as such you may receive a combination of securities and cash outturn.
+OptionFeatures15Code	OPLF	OddLotPreference	740632a5-9367-4a51-b165-37ce12cca401	Tender or exchange with the odd lot preference.
+OptionFeatures15Code	PROR	Proration	d77aba1a-131e-4608-9999-f07a4ca50ec6	Feature whereby the option can be subject to pro ration in case, for example, of over-subscription.
+OptionFeatures15Code	VVPR	ReducedWithholdingTax	93370390-e3f6-4824-b676-841ebc3cb63d	Reduced withholding tax rate applies to the option.
+OptionFeatures15Code	PINS	PreviousInstructionInvalidity	81b1cf4d-25fd-4ad4-93b3-97bc784af920	Indicates the previously sent instructions becomes invalid. This is only applicable after a market deadline extension.
+OptionFeatures15Code	ASVO	AccountServicerOption	6a9d9f31-2362-4815-a626-b68f2f9960f0	Option is offered by the account servicer only.
+OptionFeatures15Code	BOIS	BeneficiaryOwnerInstruction	91ed66eb-30d1-482b-8c0e-2d499d455b6f	Indicates that the holder needs to instruct at beneficiary owner level only.
+OptionFeatures15Code	QCAS	InstructCashAmount	dcba59e6-8a32-4bc6-a219-412bc21620b1	Feature whereby the holder should only instruct a cash amount.
+OptionFeatures15Code	SHAR	ShareholderNumber	164f86ff-3420-4015-8011-8cbd1810f5b9	Indicates usage of a reference number to identify an investor or a shareholder with the issuer or the registration provider (for instance allocation code).
+OptionFeatures15Code	RGRS	GrossDividendReinvestment	37e248f6-b508-4f80-b2fe-4ab3840887c3	Gross dividend is reinvested.
+OptionFeatures15Code	RNET	NetDividendReinvestment	e2f53ac6-db3b-4ac9-a377-224f416ddc6f	Dividend reinvestment is processed net of withholding tax.
+OptionFeatures15Code	FCFS	FirstComeFirstServed	57b6b0f8-9276-4083-a887-810f6fdcbc63	Securities will be accepted in the order they have been submitted until the target number of quantity sought is reached.
+ExtendedOptionFeature2Code	FORU	ForeignTaxUnfavorable	_c0WawYbsEe--EK81FcmyRA	DTC (The Depository Trust Company) only option. The event and security are eligible for the Foreign Tax Relief service at DTC. Option to select unfavourable tax rate. The Foreign Tax Unfavourable option is the default option.
+ExtendedOptionFeature2Code	FORF	ForeignTaxFavorable	_c0Waw4bsEe--EK81FcmyRA	DTC (The Depository Trust Company) only option. The event and security are eligible for the Foreign Tax Relief service at DTC. An election into this option ensures the participant receives their payment at a favourable tax withholding rate.
+ExtendedOptionFeature2Code	FORX	ForeignTaxExempt	_c0WaxYbsEe--EK81FcmyRA	DTC (The Depository Trust Company) only option. The event and security are eligible for the Foreign Tax Relief service at DTC. An election into this option ensures the participant is exempt from any tax withholding.
+ExtendedOptionFeature2Code	DRPU	DRIPUnfavorable	_c0Wax4bsEe--EK81FcmyRA	DTC (The Depository Trust Company) only option. The event and security are eligible for both the Dividend Reinvestment and Foreign Tax services at DTC. Participants electing this option will receive additional shares and the tax withholding on those shares will be at the unfavourable tax rate.
+ExtendedOptionFeature2Code	DRPF	DRIPFavorable	_c0WayYbsEe--EK81FcmyRA	DTC (The Depository Trust Company) only option. The event and security are eligible for both the Dividend Reinvestment and Foreign Tax Relief services at DTC. Participants electing this option will receive additional shares and the tax withholding on those shares will be at the favourable tax rate.
+ExtendedOptionFeature2Code	DRPX	DRIPExempt	_c0Way4bsEe--EK81FcmyRA	DTC (The Depository Trust Company) only option. The event and security are eligible for both the Dividend Reinvestment and the Foreign Tax Relief services at DTC. Participants electing this option will receive additional shares and will be exempt from any tax withholding.
+ExtendedOptionFeature2Code	FCPP	ForeignCurrencyPayment	_c0WazYbsEe--EK81FcmyRA	DTC (The Depository Trust Company) only option. The event and security are eligible for Foreign Currency Payment service at DTC. Participants electing this option will receive their distribution in the foreign currency instructed.
+ExtendedOptionFeature2Code	FCPU	ForeignCurrencyPaymentUnfavorable	_c0Waz4bsEe--EK81FcmyRA	DTC (The Depository Trust Company) only option. The event and security are eligible for both the Foreign Currency and Foreign Tax services at DTC. Participants electing this option will receive their distribution in a foreign currency and the tax withholding on that distribution will be subject to unfavourable tax withholding.
+ExtendedOptionFeature2Code	FCPF	ForeignCurrencyPaymentFavorable	_c0Wa0YbsEe--EK81FcmyRA	DTC (The Depository Trust Company) only option. The event and security are eligible for both the Foreign Currency and Foreign Tax services at DTC. Participants electing the option will receive their distribution in foreign currency and the tax withholding on that distribution will be subject to favourable tax withholding.
+ExtendedOptionFeature2Code	FCPX	ForeignCurrencyPaymentExempt	_c0Wa04bsEe--EK81FcmyRA	DTC (The Depository Trust Company) only option. The event and security are eligible for both the Foreign Currency and Foreign Tax services at DTC. Participants electing this option will receive their distribution in a foreign currency and will be exempt from any tax withholding.
+ExtendedOptionFeature2Code	NSHR	ShareholderNumberNotAllowed	_efaOYYbsEe--EK81FcmyRA	Indicates option in which holders must not provide a shareholder number if provided will be rejected.
+OptionAvailabilityStatus1Code	INTV	Inactive	_aPPZN9p-Ed-ak6NoX_4Aeg_-1302299836	Option is not active and can no longer be responded to. Any responses already processed against this option will remain valid, for example, expired option.
+OptionAvailabilityStatus1Code	CANC	Cancelled	_aPPZONp-Ed-ak6NoX_4Aeg_-1302299783	Option is not valid; it has been cancelled by the market or service provider, and cannot be responded to. Any responses already processed against this option are considered void and new responses will be required.
+BeneficiaryCertificationType6Code	ACCI	AccreditedInvestor	_vwXAwYFlEe-L4fccMJVoAw	The holder of the security has to irrevocably certify that it is an Accredited Investor as defined in US Securities and Exchange Commission Regulation D.
+BeneficiaryCertificationType6Code	DOMI	DomicileCountry	_vwXAw4FlEe-L4fccMJVoAw	The holder of the security has to certify his domicile.
+BeneficiaryCertificationType6Code	NDOM	NonDomicileCountry	_vwXAxYFlEe-L4fccMJVoAw	The holder of the security has to certify, in line with the terms of the corporate action, that it is not domiciled in the country indicated.
+BeneficiaryCertificationType6Code	FULL	FullBeneficialOwnerBreakdown	_vwXAx4FlEe-L4fccMJVoAw	The holder of the security has to provide his beneficial owner details for disclosure/instruction purpose.
+BeneficiaryCertificationType6Code	NCOM	NonCompany	_vwXAyYFlEe-L4fccMJVoAw	The holder of the security has to certify he is an Non-Company related person.
+BeneficiaryCertificationType6Code	QIBB	QIBCertification	_vwXAy4FlEe-L4fccMJVoAw	The holder of the security has to irrevocably certify that it is a Qualified Institutional Buyer as defined in US Securities and Exchange Commission Rule 144A.
+BeneficiaryCertificationType6Code	TRBD	TaxRateBreakdown	_vwXAzYFlEe-L4fccMJVoAw	The holder of the security has to provide basic details on nominals and associated tax rate to be used by the account servicer.
+BeneficiaryCertificationType6Code	PABD	ICSDParticipantBreakdown	_vwXA0YFlEe-L4fccMJVoAw	The (I)CSD has to provide its participants' details for disclosure purpose to the issuer/issuer’s agent.
+BeneficiaryCertificationType6Code	FRAC	FractionBreakdown	_vwXA04FlEe-L4fccMJVoAw	Indicates that the rounding rule in the Fraction Disposition component at the option level can be offered at the beneficial owner level.
+BeneficiaryCertificationType6Code	PAPW	BeneficialOwnerPaperwork	_4QDJ4YFlEe-L4fccMJVoAw	Indicates if the Beneficial Owner is responsible to fill in the paperwork.
+BeneficiaryCertificationType6Code	DIOR	IntermediaryDocumentationRequired	_B0CooYFmEe-L4fccMJVoAw	Documentation required on or prior to the documentation deadline date.
+DateType7Code	ONGO	Ongoing	_ayjhptp-Ed-ak6NoX_4Aeg_24028541	Ongoing basis, which indicates that the date is determined by "ongoing basis" process, for example "au fil de l'eau".
+DateType9Code	PWAL	BlockingTillEndOfElectionPeriod	_fv2X0e4EEeqc-LCjwLsUVg	Blocking occurs until and inclusive of the end of the election period of the option.
+DateType9Code	MKDT	BlockingTillMarketDeadline	_f1gT4e4EEeqc-LCjwLsUVg	Blocking occurs until and inclusive of the market deadline of the option.
+DateType9Code	MEET	BlockingTillMeetingDate	_f7Ae8e4EEeqc-LCjwLsUVg	Blocking occurs until and inclusive of the meeting date.
+DateType9Code	PAYD	BlockingTillPaymentDate	_gAqbAe4EEeqc-LCjwLsUVg	Unblocking will occur on payment date of the option.
+DateType9Code	RDTE	BlockingTillRecordDate	_gGKmEe4EEeqc-LCjwLsUVg	Blocking occurs until and inclusive of the record date of the event.
+DateType9Code	RDDT	BlockingTillResponseDeadline	_gMROEe4EEeqc-LCjwLsUVg	Blocking occurs until and inclusive of the account servicer deadline for the option.
+DateType9Code	NARR	NarrativeUnblockingDate	_gUv0oe4EEeqc-LCjwLsUVg	Refer to additional information element for the date until when the securities are blocked.
+DateType9Code	UKWN	Unknown	_gordQe4EEeqc-LCjwLsUVg	Date is unknown by the sender or has not been established.
+DateType1Code	UKWN	Unknown	_ayQmuNp-Ed-ak6NoX_4Aeg_-6438361	Date is unknown by the sender or has not been established.
+RateStatus1Code	ACTU	ActualRate	_ZY_ttNp-Ed-ak6NoX_4Aeg_1472885768	Rate is actual.
+RateStatus1Code	INDI	IndicativeRate	_ZY_ttdp-Ed-ak6NoX_4Aeg_1472885797	Rate is indicative.
+GrossDividendRateType6Code	CAPO	CapitalPortion	_T4kKweXqEemEj48jhmlA0Q	Rate relating to the underlying security for which capital is distributed.
+GrossDividendRateType6Code	FLFR	FullyFranked	_UZS5QeXqEemEj48jhmlA0Q	Rate resulting from a fully franked dividend paid by a company; the rate includes tax credit for companies that have made sufficient tax payments during the fiscal period.
+GrossDividendRateType6Code	INCO	IncomePortion	_UxZQMeXqEemEj48jhmlA0Q	Rate relating to the underlying security for which income is distributed.
+GrossDividendRateType6Code	INTR	Interest	_VN0GceXqEemEj48jhmlA0Q	Rate relating to the underlying security for which interest is paid.
+GrossDividendRateType6Code	LTCG	LongTermCapitalGain	_VlwsYeXqEemEj48jhmlA0Q	Long term capital gain.
+GrossDividendRateType6Code	REES	RealEstatePropertyIncomePortion	_WCoOkeXqEemEj48jhmlA0Q	Rate of income distribution originated by real estate investment.
+GrossDividendRateType6Code	STCG	ShortTermCapitalGain	_Wr1joeXqEemEj48jhmlA0Q	Short term capital gain.
+GrossDividendRateType6Code	SOIC	SundryOrOtherIncome	_XF30QeXqEemEj48jhmlA0Q	Rate relating to the underlying security for which other income is paid.
+GrossDividendRateType6Code	TXBL	TaxablePortion	_Xce9ceXqEemEj48jhmlA0Q	Rate relating to the underlying security for which tax is charged.
+GrossDividendRateType6Code	TXDF	TaxDeferred	_YgVAEeXqEemEj48jhmlA0Q	Rate relating to the underlying security for which tax is deferred.
+GrossDividendRateType6Code	TXFR	TaxFree	_Ym3s8eXqEemEj48jhmlA0Q	Rate relating to the underlying security which is not taxable.
+GrossDividendRateType6Code	UNFR	Unfranked	_ZdUz0eXqEemEj48jhmlA0Q	Rate resulting from an unfranked dividend paid by a company; the rate does not include tax credit and is subject to withholding tax.
+GrossDividendRateType6Code	CDFI	ForeignIncome	_ax-SkeXqEemEj48jhmlA0Q	Rate relating to a foreign income type such as a conduit foreign income.
+RateType13Code	UKWN	Unknown	_q5kOIWtdEeCY4-KZ9JEyUQ_1754715972	Rate is unknown by the sender or has not been established.
+RateType13Code	NILP	NilPayment	_q5kOImtdEeCY4-KZ9JEyUQ_-228191112	Rate will not be paid.
+NetDividendRateType6Code	CAPO	CapitalPortion	_AI664eXrEemEj48jhmlA0Q	Rate relating to the underlying security for which capital is distributed.
+NetDividendRateType6Code	CDFI	ForeignIncome	_AlMnMeXrEemEj48jhmlA0Q	Rate relating to a foreign income type such as a conduit foreign income.
+NetDividendRateType6Code	FLFR	FullyFranked	_BKPN8eXrEemEj48jhmlA0Q	Rate resulting from a fully franked dividend paid by a company; the rate includes tax credit for companies that have made sufficient tax payments during the fiscal period.
+NetDividendRateType6Code	INCO	IncomePortion	_BiMa8eXrEemEj48jhmlA0Q	Rate relating to the underlying security for which income is distributed.
+NetDividendRateType6Code	INTR	Interest	_BpeuseXrEemEj48jhmlA0Q	Rate relating to the underlying security for which interest is paid.
+NetDividendRateType6Code	REES	RealEstatePropertyIncomePortion	_CrF8seXrEemEj48jhmlA0Q	Rate of income distribution originated by real estate investment.
+NetDividendRateType6Code	SOIC	SundryOrOtherIncome	_DTG-8eXrEemEj48jhmlA0Q	Rate relating to the underlying security for which other income is paid.
+NetDividendRateType6Code	TXBL	TaxablePortion	_DssjoeXrEemEj48jhmlA0Q	Rate relating to the underlying security for which tax is charged.
+NetDividendRateType6Code	TXDF	TaxDeferred	_D5ykceXrEemEj48jhmlA0Q	Rate relating to the underlying security for which tax is deferred.
+NetDividendRateType6Code	TXFR	TaxFree	_EHVRMeXrEemEj48jhmlA0Q	Rate relating to the underlying security which is not taxable.
+NetDividendRateType6Code	UNFR	Unfranked	_EWgVoeXrEemEj48jhmlA0Q	Rate resulting from an unfranked dividend paid by a company; the rate does not include tax credit and is subject to withholding tax.
+RateType7Code	SCHD	Scheduled	_ZZmKpdp-Ed-ak6NoX_4Aeg_-218272353	Rate of the scheduled payment.
+RateType7Code	USCD	Unscheduled	_ZZmKptp-Ed-ak6NoX_4Aeg_-218272323	Rate of the unscheduled payment.
+RateType14Code	UKWN	Unknown	_hqEEkakHEfCG_LQaXOxwew	Rate is unknown by the sender or has not been established.
+RateType14Code	JLID	IssuerDiscretion	_h5scAakHEfCG_LQaXOxwew	Indicates that there will not be a uniform proration rate that applies to all instructions or accounts.
+WithholdingTaxRateType1Code	BWIT	BackUpWithholding	_dtVUQSeGEeOXAt_43VmZGw	Withholding tax related to payments subject to back up withholding.
+WithholdingTaxRateType1Code	FTCA	FATCATax	_d4CvcSeGEeOXAt_43VmZGw	Withholding tax related to income subject to FATCA (Foreign Account Tax Compliance Act).
+WithholdingTaxRateType1Code	NRAT	NRATax	_d8qJsSeGEeOXAt_43VmZGw	Withholding tax related to income subject to NRA (Non Resident Alien).
+DividendRateType1Code	TXBL	TaxablePortion	_q3yFdGtdEeCY4-KZ9JEyUQ_-747091417	Rate relating to the underlying security for which tax is charged.
+AmountPriceType3Code	ACTU	ActualAmount	_i3gHgZbREee8S7xwGG7Veg	Price expressed as a currency and amount per unit or per share.
+AmountPriceType3Code	PLOT	Lot	_i9wggZbREee8S7xwGG7Veg	Price expressed as an amount of money per lot.
+ProrationBelowMinimumQuantity2Code	FULL	AcceptedInFull	_KyqXYaj5EfCG_LQaXOxwew	Instructions will be accepted in full (with their original quantity of securities instructed).
+ProrationBelowMinimumQuantity2Code	MIEX	MinimumQuantity	_K1fo8aj5EfCG_LQaXOxwew	Instructions will be accepted but prorated to the minimum quantity to instruct.
+ProrationBelowMinimumQuantity2Code	REJT	Rejected	_K9BNQaj5EfCG_LQaXOxwew	Instructions will be rejected.
+ProrationBelowMinimumQuantity2Code	MILD	RoundDown	_LAGWcaj5EfCG_LQaXOxwew	Instructions will be accepted but rounded down to the specified minimum multiple quantity to instruct.
+ProrationBelowMinimumQuantity2Code	MILU	RoundUp	_LCcf0aj5EfCG_LQaXOxwew	Instructions will be accepted but rounded up to the specified minimum multiple quantity to instruct.
+ProrationBelowMinimumQuantity2Code	UKWN	Unknown	_LFoWsaj5EfCG_LQaXOxwew	Processing of instructions prorated below the minimum quantity to instruct is unknown.
+FractionDispositionType12Code	RDDN	RoundDown	_Of_qMZFGEeanIpS4qvJ1tw	Round down to the nearest whole number.
+FractionDispositionType12Code	RDUP	RoundUp	_OqaKcZFGEeanIpS4qvJ1tw	Round up to the nearest whole number.
+NonEligibleProceedsIndicator2Code	NELC	NonEligibleCurrency	_04YFMWHYEe6yt_d72zQZeQ	Currency not eligible for settlement in the Central Securities Depository (CSD).
+NonEligibleProceedsIndicator2Code	ACLI	AccountLimitation	_04YFM2HYEe6yt_d72zQZeQ	Participant's account limitation.
+NonEligibleProceedsIndicator2Code	ONEL	OtherNonEligibility	_04YFNWHYEe6yt_d72zQZeQ	Other source of non eligibility.
+NonEligibleProceedsIndicator2Code	NELS	NonEligibleSecurity	_3MyX0WHYEe6yt_d72zQZeQ	Security not eligible in the Central Securities Depository (CSD).
+NewSecuritiesIssuanceType5Code	DEFE	DefeasedSecurityIndicator	_59TO8WKZEeWR9ZSfjmHwUA	Funds have been placed in escrow by a trustee or agent to ensure payment on a portion of the outstanding balance of the original security on maturity date. Applicable only in the frame of a Partial Defeasance PDEF corporate action event.
+NewSecuritiesIssuanceType5Code	EXIS	ExistingIssue	_59TO82KZEeWR9ZSfjmHwUA	Securities proceeds are not new issues.
+NewSecuritiesIssuanceType5Code	NEIS	NewIssue	_59TO9WKZEeWR9ZSfjmHwUA	Securities proceeds are newly issued.
+NewSecuritiesIssuanceType5Code	NDEF	NonDefeasedSecurityIndicator	_59TO92KZEeWR9ZSfjmHwUA	Funds will not be guaranteed at maturity by the issuer or paying agent for this newly issued non-defeased security. Applicable only in the frame of a Partial Defeasance PDEF corporate action event.
+NewSecuritiesIssuanceType5Code	UKWN	Unknown	_59TO-WKZEeWR9ZSfjmHwUA	Not known whether the securities proceeds are newly issued or not.
+NewSecuritiesIssuanceType5Code	NREF	NonRefundedSecurityIndicator	_QnFfQWKaEeWR9ZSfjmHwUA	New Security issued that has not been refunded and the maturity date of the original underlying security is unchanged. Applicable only in the frame of a Partial Defeasance PDEF corporate action event.
+NewSecuritiesIssuanceType5Code	REFU	RefundedSecurityIndicator	_xauNEWKdEeWR9ZSfjmHwUA	New security issued that has been refunded to an earlier maturity date. Applicable only in the frame of a partial defeasance PDEF corporate action event.
+AmountPriceType2Code	ACTU	ActualAmount	_beqZtNp-Ed-ak6NoX_4Aeg_-777647527	Price expressed as a currency and amount per unit or per share.
+PriceValueType8Code	TBSP	ToBeSpecified	_q5RTNmtdEeCY4-KZ9JEyUQ_2120036301	Price to be specified by account owner.
+PriceValueType8Code	UNSP	Unspecified	_q5bEMGtdEeCY4-KZ9JEyUQ_945022265	Price is not required to be specified by account owner.
+PriceValueType8Code	UKWN	Unknown	_q5bEMWtdEeCY4-KZ9JEyUQ_-52050088	Price is unknown by the sender or has not been established.
+PriceValueType8Code	NILP	NilPayment	_q5bEMmtdEeCY4-KZ9JEyUQ_1399109534	Price will not be paid.
+DTCBaseDisbursed1Code	BASE	Base	_1qBZhDL3EeKU9IrkkToqcw_-1482681313	Based on base security.
+DTCBaseDisbursed1Code	DISB	Disbursed	_1qBZhTL3EeKU9IrkkToqcw_-1596520379	Based on disbursed security.
+ReinvestmentIncomeClassification2Code	CAPG	CapitalGains	_ZGVDQXngEeO2o_OAyvnbZw	Cash proceeds being reinvested is classified as capital gains.
+ReinvestmentIncomeClassification2Code	DVCA	CashDividend	_aOY3gHngEeO2o_OAyvnbZw	Cash proceeds being reinvested is classified as cash dividend.
+ReinvestmentIncomeClassification2Code	CDPS	CashDividendSpecial	_akEMkXngEeO2o_OAyvnbZw	Cash proceeds being reinvested is classified as special cash dividend.
+ReinvestmentIncomeClassification2Code	INTR	Interest	_byd5YXngEeO2o_OAyvnbZw	Cash proceeds being reinvested is classified as interest.
+ReinvestmentIncomeClassification2Code	LTCG	LongTermCapitalGains	_b8HkoXngEeO2o_OAyvnbZw	Cash proceeds being reinvested is classified as long term capital gains.
+ReinvestmentIncomeClassification2Code	PRPL	Principal	_cDn60XngEeO2o_OAyvnbZw	Cash proceeds being reinvested is classified as principal.
+ReinvestmentIncomeClassification2Code	ROCA	ReturnOfCapital	_cJHe0XngEeO2o_OAyvnbZw	Cash proceeds being reinvested is classified as return of capital.
+ReinvestmentIncomeClassification2Code	STCG	ShortTermCapitalGains	_cOV9EXngEeO2o_OAyvnbZw	Cash proceeds being reinvested is classified as short term capital gains.
+PriceCalculationMethod1Code	VWAP	VolumeWeightedAveragePrice	_2ch54YDNEe-eGe8fbP3Zug	The price is based on a volume-weighted average price which is a ratio of the cumulative share price to the cumulative volume traded over a given time period.
+PriceCalculationMethod1Code	NAVF	FinalAssetValue	_2gYfIYDNEe-eGe8fbP3Zug	Final asset value at the liquidation of the fund.
+PriceCalculationMethod1Code	MIMP	MidMarketPrice	_2pKAoYDNEe-eGe8fbP3Zug	Price at a certain amount of time prior to the date it is announced.
+PriceCalculationMethod1Code	NAVA	NetAssetValue	_2wPgEYDNEe-eGe8fbP3Zug	Net value of an investment fund's assets less its liabilities, divided by the number of shares outstanding.
+PriceCalculationMethod1Code	AVCL	AverageClosingPrice	_24oAAYDNEe-eGe8fbP3Zug	Price of the asset at close of a given day.
+GrossDividendRateType7Code	CAPO	CapitalPortion	_ojdsgeXqEemEj48jhmlA0Q	Rate relating to the underlying security for which capital is distributed.
+GrossDividendRateType7Code	CDFI	ForeignIncome	_oy7r4eXqEemEj48jhmlA0Q	Rate relating to a foreign income type such as a conduit foreign income.
+GrossDividendRateType7Code	FUPU	FullPeriodUnitsIncomePortion	_pWfr8eXqEemEj48jhmlA0Q	Distribution rate relating to the full period units, for example Group I units in UK.
+GrossDividendRateType7Code	FLFR	FullyFranked	_psz6MeXqEemEj48jhmlA0Q	Rate resulting from a fully franked dividend paid by a company; the rate includes tax credit for companies that have made sufficient tax payments during the fiscal period.
+GrossDividendRateType7Code	INCO	IncomePortion	_qGPt4eXqEemEj48jhmlA0Q	Rate relating to the underlying security for which income is distributed.
+GrossDividendRateType7Code	INTR	Interest	_qSv40eXqEemEj48jhmlA0Q	Rate relating to the underlying security for which interest is paid.
+GrossDividendRateType7Code	LTCG	LongTermCapitalGain	_qeDJ4eXqEemEj48jhmlA0Q	Long term capital gain.
+GrossDividendRateType7Code	PAPU	PartWayPeriodUnitsIncomePortion	_q4PLgeXqEemEj48jhmlA0Q	Distribution rate relating to the part way period units, for example Group II units in UK.
+GrossDividendRateType7Code	REES	RealEstatePropertyIncomePortion	_sZh_IeXqEemEj48jhmlA0Q	Rate of income distribution originated by real estate investment.
+GrossDividendRateType7Code	STCG	ShortTermCapitalGain	_skQBYeXqEemEj48jhmlA0Q	Short term capital gain.
+GrossDividendRateType7Code	SOIC	SundryOrOtherIncome	_s4LqAeXqEemEj48jhmlA0Q	Rate relating to the underlying security for which other income is paid.
+GrossDividendRateType7Code	TXBL	TaxablePortion	_tPZQIeXqEemEj48jhmlA0Q	Rate relating to the underlying security for which tax is charged.
+GrossDividendRateType7Code	TXDF	TaxDeferred	_taP1QeXqEemEj48jhmlA0Q	Rate relating to the underlying security for which tax is deferred.
+GrossDividendRateType7Code	TXFR	TaxFree	_tvOmweXqEemEj48jhmlA0Q	Rate relating to the underlying security which is not taxable.
+GrossDividendRateType7Code	UNFR	Unfranked	_uKKPQeXqEemEj48jhmlA0Q	Rate resulting from an unfranked dividend paid by a company; the rate does not include tax credit and is subject to withholding tax.
+NetDividendRateType7Code	CAPO	CapitalPortion	_PPgfgeXrEemEj48jhmlA0Q	Rate relating to the underlying security for which capital is distributed.
+NetDividendRateType7Code	CDFI	ForeignIncome	_VD448eXrEemEj48jhmlA0Q	Rate relating to a foreign income type such as a conduit foreign income.
+NetDividendRateType7Code	FUPU	FullPeriodUnitsIncomePortion	_V9UbUeXrEemEj48jhmlA0Q	Distribution rate relating to the full period units, for example Group I units in UK.
+NetDividendRateType7Code	FLFR	FullyFranked	_WuQwEeXrEemEj48jhmlA0Q	Rate resulting from a fully franked dividend paid by a company; the rate includes tax credit for companies that have made sufficient tax payments during the fiscal period.
+NetDividendRateType7Code	INCO	IncomePortion	_XJWJkeXrEemEj48jhmlA0Q	Rate relating to the underlying security for which income is distributed.
+NetDividendRateType7Code	INTR	Interest	_XVr8ceXrEemEj48jhmlA0Q	Rate relating to the underlying security for which interest is paid.
+NetDividendRateType7Code	SOIC	SundryOrOtherIncome	_X2bSAeXrEemEj48jhmlA0Q	Rate relating to the underlying security for which other income is paid.
+NetDividendRateType7Code	TXBL	TaxablePortion	_YX5nYeXrEemEj48jhmlA0Q	Rate relating to the underlying security for which tax is charged.
+NetDividendRateType7Code	TXDF	TaxDeferred	_YwS5QeXrEemEj48jhmlA0Q	Rate relating to the underlying security for which tax is deferred.
+NetDividendRateType7Code	TXFR	TaxFree	_Y-4H0eXrEemEj48jhmlA0Q	Rate relating to the underlying security which is not taxable.
+NetDividendRateType7Code	UNFR	Unfranked	_ZH8kQeXrEemEj48jhmlA0Q	Rate resulting from an unfranked dividend paid by a company; the rate does not include tax credit and is subject to withholding tax.
+NetDividendRateType7Code	PAPU	PartWayPeriodUnitsIncomePortion	_aMPS0eXrEemEj48jhmlA0Q	Distribution rate relating to the part way period units, for example Group II units in UK.
+NetDividendRateType7Code	REES	RealEstatePropertyIncomePortion	_akL4weXrEemEj48jhmlA0Q	Rate of income distribution originated by real estate investment.
+DeemedRateType1Code	DEDI	DeemedDividendProceeds	_qLgTQZSlEeeh5JjedkaA_g	Deemed rate of dividend proceeds attributed to the security holder.
+DeemedRateType1Code	DEFP	DeemedFundProceeds	_qaYcwZSlEeeh5JjedkaA_g	Deemed rate of fund proceeds attributed to the security holder.
+DeemedRateType1Code	DEIT	DeemedInterestProceeds	_qfvd4ZSlEeeh5JjedkaA_g	Deemed rate of interest proceeds attributed to the security holder.
+DeemedRateType1Code	DERY	DeemedRoyaltiesProceeds	_qm4AoZSlEeeh5JjedkaA_g	Deemed rate of royalties proceeds attributed to the security holder.

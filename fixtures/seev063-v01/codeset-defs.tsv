@@ -1,0 +1,3 @@
+codeSet	isoId	text
+RejectionReason88Code	_qoVJYd8PEe-NrtAAlrBEgQ	Specifies the reason why the instruction/cancellation request has a rejected status.
+PendingCancellationReason8Code	_f26Ywd8QEe-NrtAAlrBEgQ	Specifies the reason why the cancellation request has a pending status.

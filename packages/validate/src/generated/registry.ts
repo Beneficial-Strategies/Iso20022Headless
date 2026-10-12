@@ -41,6 +41,7 @@ export const areaIndex: readonly AreaInfo[] = [
   { code: "acmt", name: "Account Management", definition: "Messages that support the management of account related activities, such as the opening and maintenance of an account." },
   { code: "head", name: "Business Application Header", definition: "Header that contains business information that is relevant before processing a message." },
   { code: "semt", name: "Securities Management", definition: "Messages that support post-settlement processes for securities (including reporting on securities movements, trades and balances), the processes required to protect beneficial owner's rights throughout settlement, plus any exceptions and investigations related to securities transactions." },
+  { code: "seev", name: "Securities Events", definition: "Messages that support asset servicing, including proxy voting, income and corporate actions." },
 ];
 
 export const messageIndex: readonly MessageInfo[] = [
@@ -2353,5 +2354,715 @@ export const messageIndex: readonly MessageInfo[] = [
     xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/semt/schemas/semt.044.001.01.xsd",
     load: () =>
       import('./semt044.ts').then((m) => ({ message: m.semt044Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.001.001.13",
+    name: "MeetingNotificationV13",
+    title: "Meeting Notification",
+    area: "seev",
+    module: "seev001",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.001.001.13.xsd",
+    load: () =>
+      import('./seev001.ts').then((m) => ({ message: m.seev001Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.002.001.10",
+    name: "MeetingCancellationV10",
+    title: "Meeting Cancellation",
+    area: "seev",
+    module: "seev002",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.002.001.10.xsd",
+    load: () =>
+      import('./seev002.ts').then((m) => ({ message: m.seev002Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.003.001.10",
+    name: "MeetingEntitlementNotificationV10",
+    title: "Meeting Entitlement Notification",
+    area: "seev",
+    module: "seev003",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.003.001.10.xsd",
+    load: () =>
+      import('./seev003.ts').then((m) => ({ message: m.seev003Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.004.001.11",
+    name: "MeetingInstructionV11",
+    title: "Meeting Instruction",
+    area: "seev",
+    module: "seev004",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.004.001.11.xsd",
+    load: () =>
+      import('./seev004.ts').then((m) => ({ message: m.seev004Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.005.001.10",
+    name: "MeetingInstructionCancellationRequestV10",
+    title: "Meeting Instruction Cancellation Request",
+    area: "seev",
+    module: "seev005",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.005.001.10.xsd",
+    load: () =>
+      import('./seev005.ts').then((m) => ({ message: m.seev005Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.006.001.12",
+    name: "MeetingInstructionStatusV12",
+    title: "Meeting Instruction Status",
+    area: "seev",
+    module: "seev006",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.006.001.12.xsd",
+    load: () =>
+      import('./seev006.ts').then((m) => ({ message: m.seev006Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.007.001.12",
+    name: "MeetingVoteExecutionConfirmationV12",
+    title: "Meeting Vote Execution Confirmation",
+    area: "seev",
+    module: "seev007",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.007.001.12.xsd",
+    load: () =>
+      import('./seev007.ts').then((m) => ({ message: m.seev007Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.008.001.10",
+    name: "MeetingResultDisseminationV10",
+    title: "Meeting Result Dissemination",
+    area: "seev",
+    module: "seev008",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.008.001.10.xsd",
+    load: () =>
+      import('./seev008.ts').then((m) => ({ message: m.seev008Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.009.001.03",
+    name: "AgentCANotificationAdviceV03",
+    title: "Agent CA Notification Advice",
+    area: "seev",
+    module: "seev009",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.009.001.03.xsd",
+    load: () =>
+      import('./seev009.ts').then((m) => ({ message: m.seev009Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.010.001.01",
+    name: "AgentCANotificationCancellationRequestV01",
+    title: "Agent CA Notification Cancellation Request",
+    area: "seev",
+    module: "seev010",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.010.001.01.xsd",
+    load: () =>
+      import('./seev010.ts').then((m) => ({ message: m.seev010Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.011.001.04",
+    name: "AgentCANotificationStatusAdviceV04",
+    title: "Agent CA Notification Status Advice",
+    area: "seev",
+    module: "seev011",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.011.001.04.xsd",
+    load: () =>
+      import('./seev011.ts').then((m) => ({ message: m.seev011Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.012.001.01",
+    name: "AgentCAElectionAdviceV01",
+    title: "Agent CA Election Advice",
+    area: "seev",
+    module: "seev012",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.012.001.01.xsd",
+    load: () =>
+      import('./seev012.ts').then((m) => ({ message: m.seev012Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.013.001.01",
+    name: "AgentCAElectionAmendmentRequestV01",
+    title: "Agent CA Election Amendment Request",
+    area: "seev",
+    module: "seev013",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.013.001.01.xsd",
+    load: () =>
+      import('./seev013.ts').then((m) => ({ message: m.seev013Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.014.001.01",
+    name: "AgentCAElectionCancellationRequestV01",
+    title: "Agent CA Election Cancellation Request",
+    area: "seev",
+    module: "seev014",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.014.001.01.xsd",
+    load: () =>
+      import('./seev014.ts').then((m) => ({ message: m.seev014Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.015.001.01",
+    name: "AgentCAElectionStatusAdviceV01",
+    title: "Agent CA Election Status Advice",
+    area: "seev",
+    module: "seev015",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.015.001.01.xsd",
+    load: () =>
+      import('./seev015.ts').then((m) => ({ message: m.seev015Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.016.001.01",
+    name: "AgentCADistributionBreakdownAdviceV01",
+    title: "Agent CA Distribution Breakdown Advice",
+    area: "seev",
+    module: "seev016",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.016.001.01.xsd",
+    load: () =>
+      import('./seev016.ts').then((m) => ({ message: m.seev016Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.018.001.01",
+    name: "AgentCAGlobalDistributionStatusAdviceV01",
+    title: "Agent CA Global Distribution Status Advice",
+    area: "seev",
+    module: "seev018",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.018.001.01.xsd",
+    load: () =>
+      import('./seev018.ts').then((m) => ({ message: m.seev018Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.019.001.01",
+    name: "AgentCAMovementInstructionV01",
+    title: "Agent CA Movement Instruction",
+    area: "seev",
+    module: "seev019",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.019.001.01.xsd",
+    load: () =>
+      import('./seev019.ts').then((m) => ({ message: m.seev019Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.020.001.01",
+    name: "AgentCAMovementCancellationRequestV01",
+    title: "Agent CA Movement Cancellation Request",
+    area: "seev",
+    module: "seev020",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.020.001.01.xsd",
+    load: () =>
+      import('./seev020.ts').then((m) => ({ message: m.seev020Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.022.001.01",
+    name: "AgentCAMovementStatusAdviceV01",
+    title: "Agent CA Movement Status Advice",
+    area: "seev",
+    module: "seev022",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.022.001.01.xsd",
+    load: () =>
+      import('./seev022.ts').then((m) => ({ message: m.seev022Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.023.001.01",
+    name: "AgentCAInformationAdviceV01",
+    title: "Agent CA Information Advice",
+    area: "seev",
+    module: "seev023",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.023.001.01.xsd",
+    load: () =>
+      import('./seev023.ts').then((m) => ({ message: m.seev023Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.024.001.01",
+    name: "AgentCAInformationStatusAdviceV01",
+    title: "Agent CA Information Status Advice",
+    area: "seev",
+    module: "seev024",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.024.001.01.xsd",
+    load: () =>
+      import('./seev024.ts').then((m) => ({ message: m.seev024Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.025.001.01",
+    name: "AgentCAStandingInstructionRequestV01",
+    title: "Agent CA Standing Instruction Request",
+    area: "seev",
+    module: "seev025",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.025.001.01.xsd",
+    load: () =>
+      import('./seev025.ts').then((m) => ({ message: m.seev025Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.026.001.01",
+    name: "AgentCAStandingInstructionCancellationRequestV01",
+    title: "Agent CA Standing Instruction Cancellation Request",
+    area: "seev",
+    module: "seev026",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.026.001.01.xsd",
+    load: () =>
+      import('./seev026.ts').then((m) => ({ message: m.seev026Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.027.001.01",
+    name: "AgentCAStandingInstructionStatusAdviceV01",
+    title: "Agent CA Standing Instruction Status Advice",
+    area: "seev",
+    module: "seev027",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.027.001.01.xsd",
+    load: () =>
+      import('./seev027.ts').then((m) => ({ message: m.seev027Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.028.001.01",
+    name: "AgentCADeactivationInstructionV01",
+    title: "Agent CA Deactivation Instruction",
+    area: "seev",
+    module: "seev028",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.028.001.01.xsd",
+    load: () =>
+      import('./seev028.ts').then((m) => ({ message: m.seev028Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.029.001.01",
+    name: "AgentCADeactivationCancellationRequestV01",
+    title: "Agent CA Deactivation Cancellation Request",
+    area: "seev",
+    module: "seev029",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.029.001.01.xsd",
+    load: () =>
+      import('./seev029.ts').then((m) => ({ message: m.seev029Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.030.001.01",
+    name: "AgentCADeactivationStatusAdviceV01",
+    title: "Agent CA Deactivation Status Advice",
+    area: "seev",
+    module: "seev030",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.030.001.01.xsd",
+    load: () =>
+      import('./seev030.ts').then((m) => ({ message: m.seev030Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.031.001.16",
+    name: "CorporateActionNotificationV16",
+    title: "Corporate Action Notification",
+    area: "seev",
+    module: "seev031",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.031.001.16.xsd",
+    load: () =>
+      import('./seev031.ts').then((m) => ({ message: m.seev031Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.031.002.15",
+    name: "CorporateActionNotification002V15",
+    title: "Corporate Action Notification002",
+    area: "seev",
+    module: "seev031f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.031.002.15.xsd",
+    load: () =>
+      import('./seev031f2.ts').then((m) => ({ message: m.seev031f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.032.001.09",
+    name: "CorporateActionEventProcessingStatusAdviceV09",
+    title: "Corporate Action Event Processing Status Advice",
+    area: "seev",
+    module: "seev032",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.032.001.09.xsd",
+    load: () =>
+      import('./seev032.ts').then((m) => ({ message: m.seev032Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.032.002.09",
+    name: "CorporateActionEventProcessingStatusAdvice002V09",
+    title: "Corporate Action Event Processing Status Advice002",
+    area: "seev",
+    module: "seev032f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.032.002.09.xsd",
+    load: () =>
+      import('./seev032f2.ts').then((m) => ({ message: m.seev032f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.033.001.14",
+    name: "CorporateActionInstructionV14",
+    title: "Corporate Action Instruction",
+    area: "seev",
+    module: "seev033",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.033.001.14.xsd",
+    load: () =>
+      import('./seev033.ts').then((m) => ({ message: m.seev033Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.033.002.13",
+    name: "CorporateActionInstruction002V13",
+    title: "Corporate Action Instruction002",
+    area: "seev",
+    module: "seev033f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.033.002.13.xsd",
+    load: () =>
+      import('./seev033f2.ts').then((m) => ({ message: m.seev033f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.034.001.16",
+    name: "CorporateActionInstructionStatusAdviceV16",
+    title: "Corporate Action Instruction Status Advice",
+    area: "seev",
+    module: "seev034",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.034.001.16.xsd",
+    load: () =>
+      import('./seev034.ts').then((m) => ({ message: m.seev034Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.034.002.15",
+    name: "CorporateActionInstructionStatusAdvice002V15",
+    title: "Corporate Action Instruction Status Advice002",
+    area: "seev",
+    module: "seev034f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.034.002.15.xsd",
+    load: () =>
+      import('./seev034f2.ts').then((m) => ({ message: m.seev034f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.035.001.17",
+    name: "CorporateActionMovementPreliminaryAdviceV17",
+    title: "Corporate Action Movement Preliminary Advice",
+    area: "seev",
+    module: "seev035",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.035.001.17.xsd",
+    load: () =>
+      import('./seev035.ts').then((m) => ({ message: m.seev035Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.035.002.16",
+    name: "CorporateActionMovementPreliminaryAdvice002V16",
+    title: "Corporate Action Movement Preliminary Advice002",
+    area: "seev",
+    module: "seev035f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.035.002.16.xsd",
+    load: () =>
+      import('./seev035f2.ts').then((m) => ({ message: m.seev035f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.036.001.17",
+    name: "CorporateActionMovementConfirmationV17",
+    title: "Corporate Action Movement Confirmation",
+    area: "seev",
+    module: "seev036",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.036.001.17.xsd",
+    load: () =>
+      import('./seev036.ts').then((m) => ({ message: m.seev036Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.036.002.16",
+    name: "CorporateActionMovementConfirmation002V16",
+    title: "Corporate Action Movement Confirmation002",
+    area: "seev",
+    module: "seev036f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.036.002.16.xsd",
+    load: () =>
+      import('./seev036f2.ts').then((m) => ({ message: m.seev036f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.037.001.17",
+    name: "CorporateActionMovementReversalAdviceV17",
+    title: "Corporate Action Movement Reversal Advice",
+    area: "seev",
+    module: "seev037",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.037.001.17.xsd",
+    load: () =>
+      import('./seev037.ts').then((m) => ({ message: m.seev037Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.037.002.16",
+    name: "CorporateActionMovementReversalAdvice002V16",
+    title: "Corporate Action Movement Reversal Advice002",
+    area: "seev",
+    module: "seev037f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.037.002.16.xsd",
+    load: () =>
+      import('./seev037f2.ts').then((m) => ({ message: m.seev037f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.038.001.09",
+    name: "CorporateActionNarrativeV09",
+    title: "Corporate Action Narrative",
+    area: "seev",
+    module: "seev038",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.038.001.09.xsd",
+    load: () =>
+      import('./seev038.ts').then((m) => ({ message: m.seev038Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.038.002.09",
+    name: "CorporateActionNarrative002V09",
+    title: "Corporate Action Narrative002",
+    area: "seev",
+    module: "seev038f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.038.002.09.xsd",
+    load: () =>
+      import('./seev038f2.ts').then((m) => ({ message: m.seev038f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.039.001.13",
+    name: "CorporateActionCancellationAdviceV13",
+    title: "Corporate Action Cancellation Advice",
+    area: "seev",
+    module: "seev039",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.039.001.13.xsd",
+    load: () =>
+      import('./seev039.ts').then((m) => ({ message: m.seev039Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.039.002.13",
+    name: "CorporateActionCancellationAdvice002V13",
+    title: "Corporate Action Cancellation Advice002",
+    area: "seev",
+    module: "seev039f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.039.002.13.xsd",
+    load: () =>
+      import('./seev039f2.ts').then((m) => ({ message: m.seev039f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.040.001.13",
+    name: "CorporateActionInstructionCancellationRequestV13",
+    title: "Corporate Action Instruction Cancellation Request",
+    area: "seev",
+    module: "seev040",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.040.001.13.xsd",
+    load: () =>
+      import('./seev040.ts').then((m) => ({ message: m.seev040Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.040.002.13",
+    name: "CorporateActionInstructionCancellationRequest002V13",
+    title: "Corporate Action Instruction Cancellation Request002",
+    area: "seev",
+    module: "seev040f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.040.002.13.xsd",
+    load: () =>
+      import('./seev040f2.ts').then((m) => ({ message: m.seev040f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.041.001.15",
+    name: "CorporateActionInstructionCancellationRequestStatusAdviceV15",
+    title: "Corporate Action Instruction Cancellation Request Status Advice",
+    area: "seev",
+    module: "seev041",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.041.001.15.xsd",
+    load: () =>
+      import('./seev041.ts').then((m) => ({ message: m.seev041Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.041.002.14",
+    name: "CorporateActionInstructionCancellationRequestStatusAdvice002V14",
+    title: "Corporate Action Instruction Cancellation Request Status Advice002",
+    area: "seev",
+    module: "seev041f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.041.002.14.xsd",
+    load: () =>
+      import('./seev041f2.ts').then((m) => ({ message: m.seev041f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.042.001.14",
+    name: "CorporateActionInstructionStatementReportV14",
+    title: "Corporate Action Instruction Statement Report",
+    area: "seev",
+    module: "seev042",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.042.001.14.xsd",
+    load: () =>
+      import('./seev042.ts').then((m) => ({ message: m.seev042Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.042.002.13",
+    name: "CorporateActionInstructionStatementReport002V13",
+    title: "Corporate Action Instruction Statement Report002",
+    area: "seev",
+    module: "seev042f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.042.002.13.xsd",
+    load: () =>
+      import('./seev042f2.ts').then((m) => ({ message: m.seev042f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.044.001.13",
+    name: "CorporateActionMovementPreliminaryAdviceCancellationAdviceV13",
+    title: "Corporate Action Movement Preliminary Advice Cancellation Advice",
+    area: "seev",
+    module: "seev044",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.044.001.13.xsd",
+    load: () =>
+      import('./seev044.ts').then((m) => ({ message: m.seev044Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.044.002.13",
+    name: "CorporateActionMovementPreliminaryAdviceCancellationAdvice002V13",
+    title: "Corporate Action Movement Preliminary Advice Cancellation Advice002",
+    area: "seev",
+    module: "seev044f2",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.044.002.13.xsd",
+    load: () =>
+      import('./seev044f2.ts').then((m) => ({ message: m.seev044f2Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.045.001.04",
+    name: "ShareholdersIdentificationDisclosureRequestV04",
+    title: "Shareholders Identification Disclosure Request",
+    area: "seev",
+    module: "seev045",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.045.001.04.xsd",
+    load: () =>
+      import('./seev045.ts').then((m) => ({ message: m.seev045Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.046.001.01",
+    name: "ShareholdersIdentificationDisclosureRequestCancellationAdviceV01",
+    title: "Shareholders Identification Disclosure Request Cancellation Advice",
+    area: "seev",
+    module: "seev046",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.046.001.01.xsd",
+    load: () =>
+      import('./seev046.ts').then((m) => ({ message: m.seev046Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.047.001.03",
+    name: "ShareholdersIdentificationDisclosureResponseV03",
+    title: "Shareholders Identification Disclosure Response",
+    area: "seev",
+    module: "seev047",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.047.001.03.xsd",
+    load: () =>
+      import('./seev047.ts').then((m) => ({ message: m.seev047Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.048.001.01",
+    name: "ShareholderIdentificationDisclosureResponseCancellationAdviceV01",
+    title: "Shareholder Identification Disclosure Response Cancellation Advice",
+    area: "seev",
+    module: "seev048",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.048.001.01.xsd",
+    load: () =>
+      import('./seev048.ts').then((m) => ({ message: m.seev048Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.049.001.01",
+    name: "ShareholderIdentificationDisclosureResponseStatusAdviceV01",
+    title: "Shareholder Identification Disclosure Response Status Advice",
+    area: "seev",
+    module: "seev049",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.049.001.01.xsd",
+    load: () =>
+      import('./seev049.ts').then((m) => ({ message: m.seev049Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.050.001.04",
+    name: "MarketClaimCreationV04",
+    title: "Market Claim Creation",
+    area: "seev",
+    module: "seev050",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.050.001.04.xsd",
+    load: () =>
+      import('./seev050.ts').then((m) => ({ message: m.seev050Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.051.001.02",
+    name: "MarketClaimCancellationRequestV02",
+    title: "Market Claim Cancellation Request",
+    area: "seev",
+    module: "seev051",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.051.001.02.xsd",
+    load: () =>
+      import('./seev051.ts').then((m) => ({ message: m.seev051Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.052.001.04",
+    name: "MarketClaimStatusAdviceV04",
+    title: "Market Claim Status Advice",
+    area: "seev",
+    module: "seev052",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.052.001.04.xsd",
+    load: () =>
+      import('./seev052.ts').then((m) => ({ message: m.seev052Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.053.001.04",
+    name: "MarketClaimCancellationRequestStatusAdviceV04",
+    title: "Market Claim Cancellation Request Status Advice",
+    area: "seev",
+    module: "seev053",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.053.001.04.xsd",
+    load: () =>
+      import('./seev053.ts').then((m) => ({ message: m.seev053Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.060.001.01",
+    name: "BuyerProtectionInstructionV01",
+    title: "Buyer Protection Instruction",
+    area: "seev",
+    module: "seev060",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.060.001.01.xsd",
+    load: () =>
+      import('./seev060.ts').then((m) => ({ message: m.seev060Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.061.001.01",
+    name: "BuyerProtectionInstructionStatusAdviceV01",
+    title: "Buyer Protection Instruction Status Advice",
+    area: "seev",
+    module: "seev061",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.061.001.01.xsd",
+    load: () =>
+      import('./seev061.ts').then((m) => ({ message: m.seev061Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.062.001.01",
+    name: "BuyerProtectionInstructionCancellationRequestV01",
+    title: "Buyer Protection Instruction Cancellation Request",
+    area: "seev",
+    module: "seev062",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.062.001.01.xsd",
+    load: () =>
+      import('./seev062.ts').then((m) => ({ message: m.seev062Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.063.001.01",
+    name: "BuyerProtectionInstructionCancellationRequestStatusAdviceV01",
+    title: "Buyer Protection Instruction Cancellation Request Status Advice",
+    area: "seev",
+    module: "seev063",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.063.001.01.xsd",
+    load: () =>
+      import('./seev063.ts').then((m) => ({ message: m.seev063Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.064.001.01",
+    name: "BuyerProtectionInstructionAllegementNotificationV01",
+    title: "Buyer Protection Instruction Allegement Notification",
+    area: "seev",
+    module: "seev064",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.064.001.01.xsd",
+    load: () =>
+      import('./seev064.ts').then((m) => ({ message: m.seev064Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.065.001.01",
+    name: "BuyerProtectionInstructionAllegementRemovalAdviceV01",
+    title: "Buyer Protection Instruction Allegement Removal Advice",
+    area: "seev",
+    module: "seev065",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.065.001.01.xsd",
+    load: () =>
+      import('./seev065.ts').then((m) => ({ message: m.seev065Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.066.001.01",
+    name: "BuyerProtectionInstructionReportRequestV01",
+    title: "Buyer Protection Instruction Report Request",
+    area: "seev",
+    module: "seev066",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.066.001.01.xsd",
+    load: () =>
+      import('./seev066.ts').then((m) => ({ message: m.seev066Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
+  },
+  {
+    identifier: "seev.067.001.01",
+    name: "BuyerProtectionInstructionReportV01",
+    title: "Buyer Protection Instruction Report",
+    area: "seev",
+    module: "seev067",
+    xsdUrl: "https://www.iso20022.org/sites/default/files/documents/messages/seev/schemas/seev.067.001.01.xsd",
+    load: () =>
+      import('./seev067.ts').then((m) => ({ message: m.seev067Message as unknown as MessageBundle['message'], schemas: m.schemas as unknown as Record<string, ZodType>, typeDescriptors: m.typeDescriptors })),
   },
 ];

@@ -1,0 +1,83 @@
+{
+  "identifier": "seev.003.001.10",
+  "name": "MeetingEntitlementNotificationV10",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.003.001.10",
+  "bodyTag": "MtgEntitlmntNtfctn",
+  "out": "seev003",
+  "isoId": "_UbvIn3_5Ee-h086v0qPiyQ",
+  "definition": "Scope|The MeetingEntitlementNotification is sent by an account servicer to the account owner to advise the entitlement in relation to a meeting.|Usage|This message is sent to advise the quantity of securities held by an account owner. The balance is specified for the securities for which the meeting is taking place. The message is also used to amend a previously sent MeetingEntitlementNotification. |The MeetingEntitlementNotification message may be sent either before receiving a voting instruction to confirm the entitlement; or after having received a voting instruction to confirm details of the person attending the meeting. |The message may also be used in place of an attendance card or to confirm entitlements in the case of bearer shares.|This message definition is intended for use with the Business Application Header (BAH).",
+  "blocks": [
+    {
+      "name": "NotificationType",
+      "isoId": "_UbvIqX_5Ee-h086v0qPiyQ",
+      "xmlTag": "NtfctnTp",
+      "type": "NotificationType2Code",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "PreviousEntitlementNotificationIdentification",
+      "isoId": "_UbvIsX_5Ee-h086v0qPiyQ",
+      "xmlTag": "PrvsEntitlmntNtfctnId",
+      "type": "Max35Text",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "MeetingReference",
+      "isoId": "_UbvIs3_5Ee-h086v0qPiyQ",
+      "xmlTag": "MtgRef",
+      "type": "MeetingReference10",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Issuer",
+      "isoId": "_UbvItX_5Ee-h086v0qPiyQ",
+      "xmlTag": "Issr",
+      "type": "PartyIdentification129Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Security",
+      "isoId": "_UbvIt3_5Ee-h086v0qPiyQ",
+      "xmlTag": "Scty",
+      "type": "SecurityPosition21",
+      "min": 1,
+      "max": 200
+    },
+    {
+      "name": "Eligibility",
+      "isoId": "_UbvIuX_5Ee-h086v0qPiyQ",
+      "xmlTag": "Elgblty",
+      "type": "EligibilityDates1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "MeetingAttendee",
+      "isoId": "_UbvIu3_5Ee-h086v0qPiyQ",
+      "xmlTag": "MtgAttndee",
+      "type": "PartyIdentification232Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Proxy",
+      "isoId": "_UbvIvX_5Ee-h086v0qPiyQ",
+      "xmlTag": "Prxy",
+      "type": "PartyIdentification232Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_UbvIv3_5Ee-h086v0qPiyQ",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

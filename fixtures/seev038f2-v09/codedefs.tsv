@@ -1,0 +1,7 @@
+codeSet	code	enumName	isoId	text
+CorporateActionNarrative1Code	TAXE	TaxationConditions	_bK2F0dp-Ed-ak6NoX_4Aeg_24208786	Provides taxation conditions that cannot be included within the structured fields of this message.
+CorporateActionNarrative1Code	REGI	RegistrationDetails	_bK2F0tp-Ed-ak6NoX_4Aeg_24208815	Provides information required for the registration.
+CorporateActionNarrative1Code	WTRC	WithholdingTaxReliefCertification	_bK2F09p-Ed-ak6NoX_4Aeg_24209063	Certification process for withholding tax reduction or exemption based on the tax status of the holder.
+CorporateActionNarrative1Code	RFMC	ICSDRefusalOfMarkUpDownConfirmation	_bK2F1Np-Ed-ak6NoX_4Aeg_24209085	In the context of a corporate action, an International Central Securities Depository (ICSD) refuses a mark-up/mark-down confirmation sent by the account servicer.
+CorporateActionNarrative1Code	PAUT	ChasingOfPriorAuthorization	_bK2F1dp-Ed-ak6NoX_4Aeg_24209116	International Central Securities Depository (ICSD) chases the authorisation from the account servicer in order to process the exchange from global temporary to global permanent.
+CorporateActionNarrative1Code	CTIN	ConfirmationOfHoldingTransfer	_bK2F1tp-Ed-ak6NoX_4Aeg_24209125	Confirmation of transfer of interests between International Central Securities Depositories (ICSDs) following a corporate actions.

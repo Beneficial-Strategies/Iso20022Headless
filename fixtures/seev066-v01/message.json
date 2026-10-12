@@ -1,0 +1,35 @@
+{
+  "identifier": "seev.066.001.01",
+  "name": "BuyerProtectionInstructionReportRequestV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.066.001.01",
+  "bodyTag": "BuyrPrtcnInstrRptReq",
+  "out": "seev066",
+  "isoId": "_ODdDELbgEe-NMoTZ6Byg6A",
+  "definition": "Scope|The BuyerProtectionInstructionReportRequest message is sent by an account owner or its designated agent to an account servicer to request a report of all buyer protection instructions at the safekeeping account level for one or more corporate action events or at the corporate action event level for one or more safekeeping accounts.||Usage|The message may also be used to:|- re-send a message previously sent (the sub-function of the message is Duplicate),|- provide a third party with a copy of a message for information (the sub-function of the message is Copy),|- re-send to a third party a copy of a message for information (the sub-function of the message is Copy Duplicate), using the relevant elements in the business application header (BAH).",
+  "blocks": [
+    {
+      "name": "QueryReference",
+      "isoId": "_Dy1OVDunEfCaEpAt6MBG7g",
+      "xmlTag": "QryRef",
+      "type": "Max35Text",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "BuyerProtectionSelectionCriteria",
+      "isoId": "_bBGo8N8nEe-NrtAAlrBEgQ",
+      "xmlTag": "BuyrPrtcnSelctnCrit",
+      "type": "BuyerProtectionSelectionCriteria1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_1zKB0d-5Ee-Ned3-G07x_A",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

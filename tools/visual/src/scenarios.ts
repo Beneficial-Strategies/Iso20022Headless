@@ -2126,7 +2126,7 @@ function areaScenarios(): Scenario[] {
       expect: async (page) => {
         const o = await optionsOf(page);
         const problems: string[] = [];
-        if (o.length !== 10) problems.push(`expected ten areas, found ${o.length}`);
+        if (o.length !== 11) problems.push(`expected eleven areas, found ${o.length}`);
         if (!o.some((x) => /^pain.*Payments Initiation: Messages that support the initiation of a payment/.test(x))) problems.push(`pain is not described: ${JSON.stringify(o)}`);
         if (!o.some((x) => /^pacs.*Payments Clearing and Settlement: Messages that support the clearing and settlement/.test(x))) problems.push(`pacs is not described: ${JSON.stringify(o)}`);
         if (!o.some((x) => /^caam.*ATM Management: Messages that support card related terminal management/.test(x))) problems.push(`caam is not described: ${JSON.stringify(o)}`);
@@ -2137,6 +2137,7 @@ function areaScenarios(): Scenario[] {
         if (!o.some((x) => /^acmt.*Account Management: Messages that support the management of account related activities/.test(x))) problems.push(`acmt is not described: ${JSON.stringify(o)}`);
         if (!o.some((x) => /^head.*Business Application Header: Header that contains business information/.test(x))) problems.push(`head is not described: ${JSON.stringify(o)}`);
         if (!o.some((x) => /^semt.*Securities Management: Messages that support post-settlement processes for securities/.test(x))) problems.push(`semt is not described: ${JSON.stringify(o)}`);
+        if (!o.some((x) => /^seev.*Securities Events: Messages that support asset servicing/.test(x))) problems.push(`seev is not described: ${JSON.stringify(o)}`);
         return problems;
       },
     },

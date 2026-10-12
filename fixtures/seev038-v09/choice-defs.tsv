@@ -1,0 +1,5 @@
+choice	memberId	memberName	text
+AccountIdentification72Choice	_6G3eAY-9Ee-COKgew96POA	ForAllAccounts	All safekeeping accounts that own underlying financial instrument.
+AccountIdentification72Choice	_6G3eCY-9Ee-COKgew96POA	AccountsListAndBalanceDetails	Selected safekeeping accounts list (and optionally balance information) to which the corporate action event applies.
+CorporateActionNarrative3Choice	_76NXIUGVEeWqy4niLuXETA	Code	Standard code to specify the narrative type of the message.
+CorporateActionNarrative3Choice	_76NXKUGVEeWqy4niLuXETA	Proprietary	Proprietary identification of the narrative type of the message.

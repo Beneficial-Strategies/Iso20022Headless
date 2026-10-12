@@ -1,0 +1,31 @@
+choice	memberId	memberName	text
+InstructionType2Choice	_5wAlwbmwEemdEs93hOkPKA	InstructionIdentification	Identification of the original meeting instruction message for which the global status or the status(es) of one or more individual instructions are provided.
+InstructionType2Choice	_5wAlw7mwEemdEs93hOkPKA	InstructionCancellationIdentification	Identification of the original meeting instruction cancellation request message for which the global status or the status(es) of one or more individual instruction cancellation requests are provided.
+InstructionTypeStatus8Choice	_D2yUwajVEfCzuLlmLrhIvA	InstructionStatus	Status of each individual meeting instruction(s) included in the instruction message identified in InstructionType/InstructionIdentification.
+InstructionTypeStatus8Choice	_D2yUw6jVEfCzuLlmLrhIvA	CancellationStatus	Status of the meeting instruction cancellation request message or of the individual meeting instruction cancellation request(s). The message is identified in InstructionType/InstructionCancellationIdentification.
+InstructionStatus14Choice	_EFISwajVEfCzuLlmLrhIvA	ProcessingStatus	Status advising on the processing of the instruction.
+InstructionStatus14Choice	_EFISw6jVEfCzuLlmLrhIvA	Rejected	Status advising on the rejection of the instruction and on the reason for the rejection.
+InstructionStatus14Choice	_EFISxajVEfCzuLlmLrhIvA	Pending	Status advising that the instruction is pending and advising on the reason for the pending status.
+RejectedStatus66Choice	_EMQ1gajVEfCzuLlmLrhIvA	NoSpecifiedReason	Reason not specified.
+RejectedStatus66Choice	_EMRclajVEfCzuLlmLrhIvA	Reason	Reason why the meeting instruction message or the individual meeting instruction is rejected.
+RejectedReason70Choice	_Eah7AajVEfCzuLlmLrhIvA	Code	Rejection reason specified as a code.
+RejectedReason70Choice	_Eah7CajVEfCzuLlmLrhIvA	Proprietary	Rejection reason specified as a proprietary code.
+PendingStatus84Choice	_RlgcMbMVEfCEXew4g5B5oA	NoSpecifiedReason	Reason not specified.
+PendingStatus84Choice	_RlhDQbMVEfCEXew4g5B5oA	Reason	Reason why the meeting instruction message or the individual meeting instruction is pending.
+PendingReason81Choice	_RzB60bMVEfCEXew4g5B5oA	Code	Pending reason specified as a code.
+PendingReason81Choice	_RzB62bMVEfCEXew4g5B5oA	Proprietary	Pending reason specified as a proprietary code.
+CancellationStatus34Choice	_c87iYa8uEfCx2aBifPEdRg	GlobalCancellationStatus	Status applicable globally to the meeting instruction cancellation request message.
+CancellationStatus34Choice	_c87iY68uEfCx2aBifPEdRg	DetailedCancellationStatus	Status of individual instruction cancellation request that were received within the instruction cancellation  message identified in InstructionType/InstructionCancellationIdentification.
+CancellationStatus35Choice	_dFg2oa8uEfCx2aBifPEdRg	ProcessingStatus	Status advising on the processing of the instruction cancellation request.
+CancellationStatus35Choice	_dFg2o68uEfCx2aBifPEdRg	Rejected	Status advising on the rejection of the instruction cancellation request and on the reason for the rejection.
+CancellationStatus35Choice	_dFg2pa8uEfCx2aBifPEdRg	PendingCancellation	Status advising that the instruction cancellation request is pending and advising on the reason for the pending status.
+RejectedStatus31Choice	_g_hzSrKgEemux5trsZcCpw	NoSpecifiedReason	Reason not specified.
+RejectedStatus31Choice	_g_hzS7KgEemux5trsZcCpw	Reason	Reason why the meeting instruction cancellation request message or the individual meeting instruction cancellation request is rejected.
+RejectedReason29Choice	_lrhy6rKhEemux5trsZcCpw	Code	Standard code to specify the reason why the instruction/cancellation request has a rejected status.
+RejectedReason29Choice	_lrhy67KhEemux5trsZcCpw	Proprietary	Proprietary identification of the reason why the instruction/cancellation request has a rejected status.
+PendingCancellationStatus19Choice	_dNXyIa8uEfCx2aBifPEdRg	NoSpecifiedReason	Reason not specified.
+PendingCancellationStatus19Choice	_dNXyKa8uEfCx2aBifPEdRg	Reason	Reason why the meeting instruction cancellation request message or the individual meeting instruction cancellation request is pending.
+PendingCancellationReason7Choice	_ccJAQbKjEemux5trsZcCpw	Code	Pending reason specified as a code.
+PendingCancellationReason7Choice	_ccJASbKjEemux5trsZcCpw	Proprietary	Pending reason specified as a proprietary code.
+PartyIdentification226Choice	_nbVCNK-kEemJ1NnLPsTFaw	LegalPerson	Legal entity.
+PartyIdentification226Choice	_nbVCNa-kEemJ1NnLPsTFaw	NaturalPerson	Private person.

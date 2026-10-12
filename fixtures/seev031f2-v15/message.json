@@ -1,0 +1,211 @@
+{
+  "identifier": "seev.031.002.15",
+  "name": "CorporateActionNotification002V15",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.031.002.15",
+  "bodyTag": "CorpActnNtfctn",
+  "out": "seev031f2",
+  "isoId": "_nLWsI5t3Ee-wQIOX0djF2w",
+  "definition": "Scope|The CorporateActionNotification message is sent by an account servicer to an account owner or its designated agent to notify details of a corporate action event and optionally account information and preliminary information about eligible balance and entitlements.||It may also include possible elections or choices available to the account owner. The account servicer can initially send the CorporateActionNotification message as a preliminary advice, subsequently replaced by another CorporateActionNotification message with complete or confirmed information.||It may also be sent to an account owner or its designated agent, to remind of event details and/or of missing or incomplete instructions for a corporate action event.|Usage|The message may also be used to:|- re-send a message previously sent (the sub-function of the message is Duplicate),|- provide a third party with a copy of a message for information (the sub-function of the message is Copy),|- re-send to a third party a copy of a message for information (the sub-function of the message is Copy Duplicate), using the relevant elements in the business application header (BAH).",
+  "blocks": [
+    {
+      "name": "Pagination",
+      "isoId": "_nLWsdpt3Ee-wQIOX0djF2w",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "NotificationGeneralInformation",
+      "isoId": "_nLWseJt3Ee-wQIOX0djF2w",
+      "xmlTag": "NtfctnGnlInf",
+      "type": "CorporateActionNotification11",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "PreviousNotificationIdentification",
+      "isoId": "_nLWsept3Ee-wQIOX0djF2w",
+      "xmlTag": "PrvsNtfctnId",
+      "type": "DocumentIdentification37",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "InstructionIdentification",
+      "isoId": "_nLWsfJt3Ee-wQIOX0djF2w",
+      "xmlTag": "InstrId",
+      "type": "DocumentIdentification17",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "OtherDocumentIdentification",
+      "isoId": "_nLWsfpt3Ee-wQIOX0djF2w",
+      "xmlTag": "OthrDocId",
+      "type": "DocumentIdentification38",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "EventsLinkage",
+      "isoId": "_nLWsgJt3Ee-wQIOX0djF2w",
+      "xmlTag": "EvtsLkg",
+      "type": "CorporateActionEventReference4",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "CorporateActionGeneralInformation",
+      "isoId": "_nLWsgpt3Ee-wQIOX0djF2w",
+      "xmlTag": "CorpActnGnlInf",
+      "type": "CorporateActionGeneralInformation194",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountDetails",
+      "isoId": "_nLWshJt3Ee-wQIOX0djF2w",
+      "xmlTag": "AcctDtls",
+      "type": "AccountIdentification78Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "IntermediateSecurity",
+      "isoId": "_nLWshpt3Ee-wQIOX0djF2w",
+      "xmlTag": "IntrmdtScty",
+      "type": "FinancialInstrumentAttributes117",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionDetails",
+      "isoId": "_nLWsiJt3Ee-wQIOX0djF2w",
+      "xmlTag": "CorpActnDtls",
+      "type": "CorporateAction87",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionOptionDetails",
+      "isoId": "_nLWsipt3Ee-wQIOX0djF2w",
+      "xmlTag": "CorpActnOptnDtls",
+      "type": "CorporateActionOption247",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "AdditionalInformation",
+      "isoId": "_nLWsjJt3Ee-wQIOX0djF2w",
+      "xmlTag": "AddtlInf",
+      "type": "CorporateActionNarrative65",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "IssuerAgent",
+      "isoId": "_nLWsjpt3Ee-wQIOX0djF2w",
+      "xmlTag": "IssrAgt",
+      "type": "PartyIdentification151Choice",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "PayingAgent",
+      "isoId": "_nLWskJt3Ee-wQIOX0djF2w",
+      "xmlTag": "PngAgt",
+      "type": "PartyIdentification137Choice",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SubPayingAgent",
+      "isoId": "_nLWskpt3Ee-wQIOX0djF2w",
+      "xmlTag": "SubPngAgt",
+      "type": "PartyIdentification137Choice",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "Registrar",
+      "isoId": "_nLWslJt3Ee-wQIOX0djF2w",
+      "xmlTag": "Regar",
+      "type": "PartyIdentification137Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ResellingAgent",
+      "isoId": "_nLWslpt3Ee-wQIOX0djF2w",
+      "xmlTag": "RsellngAgt",
+      "type": "PartyIdentification137Choice",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "PhysicalSecuritiesAgent",
+      "isoId": "_nLWsmJt3Ee-wQIOX0djF2w",
+      "xmlTag": "PhysSctiesAgt",
+      "type": "PartyIdentification137Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "DropAgent",
+      "isoId": "_nLWsmpt3Ee-wQIOX0djF2w",
+      "xmlTag": "DrpAgt",
+      "type": "PartyIdentification137Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SolicitationAgent",
+      "isoId": "_nLWsnJt3Ee-wQIOX0djF2w",
+      "xmlTag": "SlctnAgt",
+      "type": "PartyIdentification137Choice",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "InformationAgent",
+      "isoId": "_nLWsnpt3Ee-wQIOX0djF2w",
+      "xmlTag": "InfAgt",
+      "type": "PartyIdentification137Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Issuer",
+      "isoId": "_nLWsoJt3Ee-wQIOX0djF2w",
+      "xmlTag": "Issr",
+      "type": "PartyIdentification151Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Offeror",
+      "isoId": "_nLWsopt3Ee-wQIOX0djF2w",
+      "xmlTag": "Offerr",
+      "type": "PartyIdentification151Choice",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "TransferAgent",
+      "isoId": "_nLWspJt3Ee-wQIOX0djF2w",
+      "xmlTag": "TrfAgt",
+      "type": "PartyIdentification151Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_nLWsppt3Ee-wQIOX0djF2w",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

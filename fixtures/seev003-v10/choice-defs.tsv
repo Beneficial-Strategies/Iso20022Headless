@@ -1,0 +1,5 @@
+choice	memberId	memberName	text
+PartyAdditionalIdentification2Choice	_Qo3U0tp-Ed-ak6NoX_4Aeg_-86602673	BirthDate	Date of birth of an individual person.
+PartyAdditionalIdentification2Choice	_Qo3U09p-Ed-ak6NoX_4Aeg_136820808	RegistrationIdentification	Official identification of an organisation in a specific register.
+PartyIdentification232Choice	_pY464fQ0EeqAradXpAelDQ	LegalPerson	Legal entity.
+PartyIdentification232Choice	_pY464_Q0EeqAradXpAelDQ	NaturalPerson	Private person.

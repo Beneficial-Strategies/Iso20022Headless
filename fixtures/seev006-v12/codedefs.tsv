@@ -1,0 +1,79 @@
+codeSet	code	enumName	isoId	text
+Status11Code	PACK	Accepted	_9MqHcYY_Ee-5eN4DwJpixA	Instruction has been accepted and is validated for further processing.
+Status11Code	ATTC	AttendanceConfirmed	_9MqHc4Y_Ee-5eN4DwJpixA	Attendance is confirmed at the meeting.
+Status11Code	CAND	Cancelled	_9MqHdYY_Ee-5eN4DwJpixA	Instruction has been cancelled.
+Status11Code	CSUB	CancelledBySubcustodian	_9MqHd4Y_Ee-5eN4DwJpixA	Instruction has been cancelled by the agent, for example, due to an event deadline extension.
+Status11Code	FRWD	Forwarded	_9MqHeYY_Ee-5eN4DwJpixA	Accepted and sent along the chain.
+Status11Code	RCIS	ReceivedByIssuerOrRegistrar	_9MqHe4Y_Ee-5eN4DwJpixA	Instruction has been received by Issuer, equivalent to the confirmation of receipt of votes cast electronically.
+Status11Code	REGM	RegisteredToParticipateAtMeeting	_9MqHfYY_Ee-5eN4DwJpixA	Rights holder has been registered to participate to the meeting.
+Status11Code	STIN	StandingInstruction	_9MqHf4Y_Ee-5eN4DwJpixA	Standing instruction is applied.
+Status11Code	DREG	DeregistrationCompleted	_-7x7sYY_Ee-5eN4DwJpixA	Rights holder has been deregistered from the meeting participants list.
+RejectionReason91Code	ULNK	InvalidReference	2cd47858-30fb-4d40-8d53-7b2d2e9b1a44	Linked reference is unknown.
+RejectionReason91Code	SAFE	SafekeepingAccountRejection	e0780978-4e7e-43d9-8064-744fd14c5539	Unrecognised or invalid message sender's safekeeping account.
+RejectionReason91Code	IPOS	InsufficientThresholdPosition	68ee81e0-4ed1-4857-9c39-1fb3f86357a7	Position is less than required threshold.
+RejectionReason91Code	DQUA	QuantityRejection	101bdbf9-e278-418a-a38f-704e11c9114e	Unrecognised or invalid instructed quantity.
+RejectionReason91Code	ADEA	AccountServicerDeadlineMissed	e3d6cac1-c096-437c-b98b-9dc2da3f513f	Transaction/instruction received after the account servicer's specified deadline.
+RejectionReason91Code	SPLT	SplitVoteNotAllowed	a3f3dab0-4a81-4666-a289-06e9c4752ac0	Split voting is not allowed.
+RejectionReason91Code	PART	PartialVoteNotAllowed	7eed3634-abba-4ef0-869a-8acafe3dd944	Partial voting is not allowed.
+RejectionReason91Code	IPOA	MissingOrInvalidPOA	3b7c75a7-223d-4d60-a900-1a0e9d726881	Missing or invalid power of attorney.
+RejectionReason91Code	PRXY	ProxyCardDiscrepancy	7f6375ed-c779-4476-bcb8-15db04a8d30f	Invalid proxy information.
+RejectionReason91Code	IREG	RegistrationDiscrepancy	495cbaca-3001-4515-a5e0-f3386cd82a25	Invalid registration information.
+RejectionReason91Code	RBIS	RejectedByIssuerOrRegistrar	5d025a97-1bc7-4b34-bbe3-9f1aa44b80c5	Issuer or registrar has rejected the instruction.
+RejectionReason91Code	LACK	LackofSecurities	97e50f1e-72bb-4cbd-8791-75a315fdb2ad	Instructed position exceeds the eligible balance.
+RejectionReason91Code	LATE	MarketDeadlineMissed	9c490f46-9a63-4f51-8d2b-7a9fe2dcaf3b	Received after market deadline.
+RejectionReason91Code	OPTY	InvalidOptionType	e45c1fb6-89e3-4183-9bec-02ab9dadcf89	Invalid option type.
+RejectionReason91Code	EVNM	UnrecognisedIdentification	9bca3d66-a6c9-41be-a905-1423951c7e6d	Unrecognised event number.
+RejectionReason91Code	OTHR	Other	2b22b97e-718f-4c17-84ce-8a3480887640	Other. See Narrative.
+RejectionReason91Code	FULL	MissingBeneficiaryOwnerDetails	45b9bc71-3575-4d7b-8218-595bc46503ad	Rejected due to missing beneficiary owner details.
+RejectionReason91Code	ADDM	AdditionalDocumentationMissing	24b9cf54-3e20-4ddf-845e-e232f80576ac	Requested additional documentation is missing.
+RejectionReason91Code	MCAN	EventCancelled	581f1137-893a-45e3-9f7a-361d8267fa7a	Event has been cancelled.
+RejectionReason91Code	DREM	DeadlineToRegisterMissed	6d2f953d-cf72-429a-b549-797acf1c3a6e	Deadline to register is missed.
+RejectionReason91Code	NPOS	NoRegisteredPosition	e6e1ee0f-1011-481e-b46e-02cbb59f352c	Insufficient or no registered position.
+RejectionReason91Code	RESN	ResolutionNumberDiscrepancy	d5a21018-bff5-4d84-943d-6b3650c41d21	Resolution number provided discrepancy.
+RejectionReason91Code	DUPL	DuplicateInstruction	fb8fb7d7-ee9b-445b-95d8-e410e8047847	Instruction is rejected due to duplicate business message identifier.
+RejectionReason91Code	LIST	InvalidVoteInFavourInGroupListing	d3dc6f9c-6924-42f8-841d-4f02aae81378	Instruction is invalid due to multiple resolutions instructed as vote "For” and belonging to the same listing group resolution label number.
+RejectionReason91Code	NOSL	NotRegisteredInInStockLedger	39dcf212-88f7-4aa7-80d2-44e8706f0d21	Invalid instruction as the shareholder or its delegate is not registered in the company stock ledger book.
+RejectionReason91Code	PMNS	ParticipationMethodNotSupported	7bb8bcdb-76be-4afb-9943-08fcb9793423	Instruction rejected due to the method of participation not supported by the account servicer.
+RejectionReason91Code	IPED	InstructionPriorToEntitlementDate	e6602a5a-e9f3-46ff-b9eb-1924b8215666	Instruction was received prior to entitlement date.
+RejectionReason91Code	NACD	NotAcceptedEmailAddressMissing	ee067b9a-a4c6-475f-9155-84fc3afcfcfe	Instruction to virtually attend meeting is rejected due to missing attendee email address.
+RejectionReason91Code	EFDM	MissingOrIncorrectEntitlementFixingDate	370b4c04-8986-4c61-95ec-7500b7888ba2	Entitlement fixing date is missing or incorrect.
+RejectionReason91Code	ADIM	AdditionalDisclosureInformationMissing	686b47e9-57d2-4096-be3c-0655b0c686d0	(I)CSD failed to receive (from underlying) or provide (to the issuer agent) the disclosure information required.
+RejectionReason91Code	MINC	MissingInvestorClassificationDetails	555a483c-cdfe-4585-bb7b-81d224b55590	Classification submitted in the instruction does not match the investor classification in the notification.
+RejectionReason91Code	DSEC	InvalidSecurity	_ikTZsbAiEfCVt6rBUi-YSg	Unrecognised or invalid financial instrument identification.
+PendingReason41Code	ADEA	AccountServicerDeadlineMissed	eace5e1d-e16b-4604-80f5-56726a75cadc	Instruction was received after the account servicer's deadline. It will be managed as per the bilateral service agreement between the account servicer and account owner.
+PendingReason41Code	ADDM	AdditionalDocumentationMissing	d69aafda-2bae-41e9-9217-c7cdce5c364e	Additional documents requested missing.
+PendingReason41Code	DREM	DeadlineToRegisterMissed	ee875bd5-680a-485a-ac2d-9fd9b8681174	Deadline to register is missed.
+PendingReason41Code	IPED	InstructionPriorToEntitlementDate	81223344-abd7-4987-acca-3ae65acf3829	Instruction was received prior to entitlement date.
+PendingReason41Code	IPOS	InsufficientThresholdPosition	cd984b28-8410-4569-9714-1d5cdaceeffb	Position is less than required threshold.
+PendingReason41Code	LACK	LackOfSecurities	1b467426-c6fa-4648-8d28-42e05b3d51d8	Insufficient financial instruments in your account.
+PendingReason41Code	LATE	MarketDeadlineMissed	1cc1825e-5652-4ea2-a9fa-a6bc89cb64a5	Instruction was received after market deadline.
+PendingReason41Code	IPOA	MissingOrInvalidPOA	3360c645-736a-40bd-a64d-c25a13628c4d	Missing or invalid power of attorney.
+PendingReason41Code	NPOS	NoRegisteredPosition	6926d7ef-b722-4dc9-af3c-d80f398b62e0	Insufficient or no registered position.
+PendingReason41Code	OTHR	Other	31801b89-e664-4cb3-aa9a-746034b4f055	Other. See Narrative.
+PendingReason41Code	FULL	PendingBeneficiaryOwnerDetails	dcdc8ed5-3b06-45e6-8acb-4d32b34ed376	Pending receipt of beneficiary owner details.
+PendingReason41Code	PENR	PendingReceipt	e25beab7-fe37-4d89-a7f5-8ea270b80be8	Instruction is pending receipt of securities, for example, from a purchase or loan.
+PendingReason41Code	PRXY	ProxyCardDiscrepancy	44ac464c-d5bb-42a2-b9e4-049384f1faa2	Invalid Proxy Information.
+PendingReason41Code	DQUA	QuantityDisagreement	f01d8be8-c3f3-4c99-b15d-e5e87d12b4e8	Quantity of financial instruments does not match.
+PendingReason41Code	IREG	RegistrationDiscrepancy	482cbfb5-4c36-40e2-bfa7-eb9444935c8d	Invalid registration discrepancy.
+CancellationStatus6Code	PACK	Accepted	_RaR74bLQEemDyeh7tbvg1w	Cancellation instruction / request has been received and has been acknowledged / accepted for further processing.
+CancellationStatus6Code	CAND	Complete	_RaR75bLQEemDyeh7tbvg1w	Cancellation instruction / request has been accepted and processed, the cancellation is complete.
+CancellationStatus6Code	RCIS	ReceivedByIssuerOrRegistrar	_RaR757LQEemDyeh7tbvg1w	Cancellation instruction / request has been received by issuer or registrar.
+RejectionReason51Code	ADEA	AccountServicerDeadlineMissed	_uT2FAbLMEemDyeh7tbvg1w	Transaction/instruction received after the account servicer's specified deadline.
+RejectionReason51Code	DQUA	QuantityRejection	_xwyF8bLMEemDyeh7tbvg1w	Unrecognised or invalid instructed quantity.
+RejectionReason51Code	DCAN	RejectedSinceAlreadyCancelled	_zaaWMbLMEemDyeh7tbvg1w	Cancellation request was rejected since the instruction has already been cancelled.
+RejectionReason51Code	DPRG	RejectedSinceInProgress	_00txAbLMEemDyeh7tbvg1w	Cancellation request has been rejected because the instruction process is in progress or has been processed.
+RejectionReason51Code	DSEC	InvalidSecurity	_3UgNMbLMEemDyeh7tbvg1w	Unrecognised or invalid financial instrument identification.
+RejectionReason51Code	EVNM	UnrecognisedIdentification	_6LyjYbLMEemDyeh7tbvg1w	Unrecognised event number.
+RejectionReason51Code	INIR	InstructionIrrevocable	_9PSJkbLMEemDyeh7tbvg1w	Instruction is irrevocable.
+RejectionReason51Code	LATE	MarketDeadlineMissed	__hh5AbLMEemDyeh7tbvg1w	Received after market deadline.
+RejectionReason51Code	OTHR	Other	_CC8s4bLNEemDyeh7tbvg1w	Other. See Narrative.
+RejectionReason51Code	RBIS	RejectedByIssuerOrRegistrar	_GEoZobLNEemDyeh7tbvg1w	Issuer or registrar has rejected the instruction.
+RejectionReason51Code	SAFE	SafekeepingAccountRejection	_OfV8IbLNEemDyeh7tbvg1w	Unrecognised or invalid message sender's safekeeping account.
+RejectionReason51Code	ULNK	InvalidReference	_ayz44bLNEemDyeh7tbvg1w	Linked reference is unknown.
+PendingCancellationReason6Code	DQUA	QuantityRejection	_v3pvMbLOEemDyeh7tbvg1w	Unrecognised or invalid instructed quantity.
+PendingCancellationReason6Code	LATE	MarketDeadlineMissed	_v3pvNbLOEemDyeh7tbvg1w	Received after market deadline.
+PendingCancellationReason6Code	OTHR	Other	_v3pvN7LOEemDyeh7tbvg1w	Other. See Narrative.
+PendingCancellationReason6Code	ADEA	AccountServicerDeadlineMissed	_zDeK8bLOEemDyeh7tbvg1w	Transaction/instruction received after the account servicer's specified deadline.
+SecuritiesEntryType3Code	ELIG	Eligible	_RmChwTUFEe2tRf29bleifQ	Total number of securities eligible for this event.
+SecuritiesEntryType3Code	UNBA	UninstructedBalance	_SBw0cTUFEe2tRf29bleifQ	Balance of uninstructed position.
+SecuritiesEntryType3Code	INBA	InstructedBalance	_SrfG4TUFEe2tRf29bleifQ	Balance of instructed position.

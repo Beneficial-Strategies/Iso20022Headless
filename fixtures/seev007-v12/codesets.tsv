@@ -1,0 +1,5 @@
+codeSetName	isoId	restrictionOf	code	enumName
+ModalityOfCounting1Code	_QzPaAK-vEemJ1NnLPsTFaw	ModalityOfCountingCode	EVAM	ElectronicAtMeeting
+ModalityOfCounting1Code	_QzPaAK-vEemJ1NnLPsTFaw	ModalityOfCountingCode	EVBM	ElectronicBefore
+ModalityOfCounting1Code	_QzPaAK-vEemJ1NnLPsTFaw	ModalityOfCountingCode	PVBM	PaperBefore
+ModalityOfCounting1Code	_QzPaAK-vEemJ1NnLPsTFaw	ModalityOfCountingCode	PVAM	PhysicalAtMeeting

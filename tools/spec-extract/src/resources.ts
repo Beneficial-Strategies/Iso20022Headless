@@ -135,7 +135,7 @@ function exclusiveGroups(component: Node, members: Node[]): ExclusiveGroup[] {
   const out: ExclusiveGroup[] = [];
   for (const x of component.children ?? []) {
     if (x.xmlElementName !== 'xors') continue;
-    const named = new Set((x.references ?? []).filter((r) => r.relation === 'impactedElements').map((r) => r.name));
+    const named = new Set((x.references ?? []).filter((r) => r.relation === 'impactedElements' || r.relation === 'impactedMessageBuildingBlocks').map((r) => r.name));
     const group = members.filter((m) => named.has(m.name ?? ''));
     if (group.length < 2) continue;
     out.push({ id: id(x), name: x.name ?? '', text: clean(x.definition), members: group.map((m) => m.name!), required: group.every((m) => (m.minOccurs ?? '1') !== '0') });
@@ -290,9 +290,15 @@ export function loadResources(dir: string, areaKinds: string[] = []): Resources 
         spec.messages.set(info.isoId, { name: info.name, isoId: info.isoId, area: info.area, status: info.status, definition: info.definition });
         // MSGBLOCK: messageName blockId blockName xmlTag componentName minOccurs maxOccurs status definition
         const blocks = (m.children ?? []).filter((c) => c.xmlElementName === 'messageBuildingBlock');
-        const rows = blocks.map((b) => [m.name!, id(b), b.name!, b.xmlTag ?? '', typeRef(b) ?? '', b.minOccurs ?? '', b.maxOccurs ?? '', status(b), clean(b.definition)]);
+        // building blocks of which exactly one must be present are optional on their own, as members of a component are (see exclusiveGroups)
+        const groups = exclusiveGroups(m, blocks);
+        const exclusive = new Set(groups.filter((g) => g.required).flatMap((g) => g.members));
+        const rows = blocks.map((b) => [m.name!, id(b), b.name!, b.xmlTag ?? '', typeRef(b) ?? '', exclusive.has(b.name!) ? '0' : (b.minOccurs ?? ''), b.maxOccurs ?? '', status(b), clean(b.definition)]);
         if (spec.blocks.has(m.name!)) warn(`duplicate message name ${m.name}`);
-        else spec.blocks.set(m.name!, rows);
+        else {
+          spec.blocks.set(m.name!, rows);
+          for (const g of groups) rules.push(...exclusiveRules(m.name!, g));
+        }
         memberOrder.set(`message:${info.isoId}`, blocks.map((b) => b.xmlTag ?? ''));
         addRules(m.name!, id(m), m);
       }

@@ -1,0 +1,59 @@
+{
+  "identifier": "seev.047.001.03",
+  "name": "ShareholdersIdentificationDisclosureResponseV03",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.047.001.03",
+  "bodyTag": "ShrhldrsIdDsclsrRspn",
+  "out": "seev047",
+  "isoId": "_fWSaAVx4Ee6fgZt44_IqFA",
+  "definition": "The ShareholdersIdentificationDisclosureResponse message is sent in response to a shareholder identification disclosure request message by any intermediaries to the recipient designated by the issuer (such as an issuer's agent) in the disclosure request message in order to provide the requested information on the identity of the shareholders and their accounts holdings serviced by the intermediary for the requested financial instrument.",
+  "blocks": [
+    {
+      "name": "Pagination",
+      "isoId": "_fWSaCVx4Ee6fgZt44_IqFA",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "IssuerDisclosureRequestReference",
+      "isoId": "_fWSaC1x4Ee6fgZt44_IqFA",
+      "xmlTag": "IssrDsclsrReqRef",
+      "type": "DisclosureRequestIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "DisclosureResponseIdentification",
+      "isoId": "_fWSaDVx4Ee6fgZt44_IqFA",
+      "xmlTag": "DsclsrRspnId",
+      "type": "Max35Text",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "RespondingIntermediary",
+      "isoId": "_fWSaD1x4Ee6fgZt44_IqFA",
+      "xmlTag": "RspndgIntrmy",
+      "type": "PartyIdentification219",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "DisclosureInformation",
+      "isoId": "_fWSaEVx4Ee6fgZt44_IqFA",
+      "xmlTag": "DsclsrInf",
+      "type": "Disclosure3Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_fWSaE1x4Ee6fgZt44_IqFA",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

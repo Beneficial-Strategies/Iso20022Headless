@@ -1,0 +1,75 @@
+{
+  "identifier": "seev.015.001.01",
+  "name": "AgentCAElectionStatusAdviceV01",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.015.001.01",
+  "bodyTag": "AgtCAElctnStsAdvc",
+  "out": "seev015",
+  "isoId": "_TNct0NEwEd-BzquC8wXy7w_1059605864",
+  "definition": "Scope|This message is sent by an issuer (or its agent) to the CSD to report the status, or a change in status, of:|- a corporate action election advice;|- an election cancellation request; or|- an election amendment request.|Usage|This message must be sent in response to an:|- Agent Corporation Action Election Advice to provide the status of an election advice in the case of a rejection. However, it may also be used in all other situations, in which case, the building blocks Election Advice Identification and the Election Advice Status must be present.|- Agent Corporation Action Election Cancellation Request to provide the status of the cancellation request, in which case, the building blocks Election Cancellation Request Identification and the Election Cancellation Request Status must be present.|- Agent Corporation Action Election Amendment Request to provide the status of the amendment request, in which case, the building blocks Election Amendment Request Identification and the Election Amendment Request Status must be present.",
+  "blocks": [
+    {
+      "name": "Identification",
+      "isoId": "_TNct0dEwEd-BzquC8wXy7w_790316963",
+      "xmlTag": "Id",
+      "type": "DocumentIdentification8",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AgentCAElectionAdviceIdentification",
+      "isoId": "_TNct0tEwEd-BzquC8wXy7w_530213864",
+      "xmlTag": "AgtCAElctnAdvcId",
+      "type": "DocumentIdentification8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AgentCAElectionCancellationRequestIdentification",
+      "isoId": "_TNct09EwEd-BzquC8wXy7w_532984396",
+      "xmlTag": "AgtCAElctnCxlReqId",
+      "type": "DocumentIdentification8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AgentCAElectionAmendmentRequestIdentification",
+      "isoId": "_TNct1NEwEd-BzquC8wXy7w_-2098719707",
+      "xmlTag": "AgtCAElctnAmdmntReqId",
+      "type": "DocumentIdentification8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionGeneralInformation",
+      "isoId": "_TNct1dEwEd-BzquC8wXy7w_276354236",
+      "xmlTag": "CorpActnGnlInf",
+      "type": "CorporateActionInformation1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ElectionAdviceStatus",
+      "isoId": "_TNct1tEwEd-BzquC8wXy7w_995320668",
+      "xmlTag": "ElctnAdvcSts",
+      "type": "ElectionAdviceStatus1Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ElectionCancellationRequestStatus",
+      "isoId": "_TNct19EwEd-BzquC8wXy7w_1701814671",
+      "xmlTag": "ElctnCxlReqSts",
+      "type": "ElectionCancellationStatus1Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ElectionAmendmentRequestStatus",
+      "isoId": "_TNme0NEwEd-BzquC8wXy7w_-2039764418",
+      "xmlTag": "ElctnAmdmntReqSts",
+      "type": "ElectionAmendmentStatus1Choice",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

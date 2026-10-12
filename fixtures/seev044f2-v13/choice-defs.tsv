@@ -1,0 +1,10 @@
+choice	memberId	memberName	text
+CorporateActionEventType121Choice	_lxWMT5t3Ee-wQIOX0djF2w	Code	Event type expressed as a code.
+CorporateActionEventType121Choice	_lxWMV5t3Ee-wQIOX0djF2w	Proprietary	Event type expressed as a proprietary code.
+AccountIdentification75Choice	_lxWMt5t3Ee-wQIOX0djF2w	ForAllAccounts	All safekeeping accounts that own underlying financial instrument.
+AccountIdentification75Choice	_lxWMv5t3Ee-wQIOX0djF2w	AccountsList	Selected safekeeping accounts list to which the corporate action event applies.
+SafekeepingPlaceFormat51Choice	_lxWNC5t3Ee-wQIOX0djF2w	Identification	Place of safekeeping expressed as a code and a narrative description.
+SafekeepingPlaceFormat51Choice	_lxWNE5t3Ee-wQIOX0djF2w	Country	Place of safekeeping expressed with a country code.
+SafekeepingPlaceFormat51Choice	_lxWNG5t3Ee-wQIOX0djF2w	DigitalLedgerIdentification	Place of settlement expressed with a Digital Ledger Identifier. It identifies a digital ledger or distributed ledger system (for example, blockchain or similar platforms).
+SafekeepingPlaceFormat51Choice	_lxWNHZt3Ee-wQIOX0djF2w	TypeAndIdentification	Place of safekeeping expressed with a type and identification.
+SafekeepingPlaceFormat51Choice	_lxWNJZt3Ee-wQIOX0djF2w	Proprietary	Place of safekeeping expressed with a propriety identification scheme.

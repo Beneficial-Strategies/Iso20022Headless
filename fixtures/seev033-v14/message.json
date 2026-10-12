@@ -1,0 +1,107 @@
+{
+  "identifier": "seev.033.001.14",
+  "name": "CorporateActionInstructionV14",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.033.001.14",
+  "bodyTag": "CorpActnInstr",
+  "out": "seev033",
+  "isoId": "_9dBqoa3oEfCN-rGCydxGUA",
+  "definition": "Scope|The CorporateActionInstruction message is sent by an account owner to an account servicer to instruct election on a corporate action event.||This message is used to provide the custodian with instructions on how the account owner wishes to proceed with a corporate action event. Instructions include investment decisions regarding the exercise of rights issues, the election of stock or cash when the option is available, and decisions on the conversion or tendering of securities.|Usage|The message may also be used to:|- re-send a message previously sent (the sub-function of the message is Duplicate),|- provide a third party with a copy of a message for information (the sub-function of the message is Copy),|- re-send to a third party a copy of a message for information (the sub-function of the message is Copy Duplicate), using the relevant elements in the business application header (BAH).",
+  "blocks": [
+    {
+      "name": "ChangeInstructionIndicator",
+      "isoId": "_9dCRw63oEfCN-rGCydxGUA",
+      "xmlTag": "ChngInstrInd",
+      "type": "YesNoIndicator",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CancelledInstructionIdentification",
+      "isoId": "_9dCRxa3oEfCN-rGCydxGUA",
+      "xmlTag": "CancInstrId",
+      "type": "DocumentIdentification31",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "InstructionCancellationRequestIdentification",
+      "isoId": "_9dCRx63oEfCN-rGCydxGUA",
+      "xmlTag": "InstrCxlReqId",
+      "type": "DocumentIdentification31",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "OtherDocumentIdentification",
+      "isoId": "_9dCRya3oEfCN-rGCydxGUA",
+      "xmlTag": "OthrDocId",
+      "type": "DocumentIdentification32",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "EventsLinkage",
+      "isoId": "_9dCRy63oEfCN-rGCydxGUA",
+      "xmlTag": "EvtsLkg",
+      "type": "CorporateActionEventReference3",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "CorporateActionGeneralInformation",
+      "isoId": "_9dCRza3oEfCN-rGCydxGUA",
+      "xmlTag": "CorpActnGnlInf",
+      "type": "CorporateActionGeneralInformation180",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountDetails",
+      "isoId": "_9dCRz63oEfCN-rGCydxGUA",
+      "xmlTag": "AcctDtls",
+      "type": "AccountAndBalance61",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "BeneficialOwnerDetails",
+      "isoId": "_9dCR0a3oEfCN-rGCydxGUA",
+      "xmlTag": "BnfclOwnrDtls",
+      "type": "PartyIdentification340",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "CorporateActionInstruction",
+      "isoId": "_9dCR063oEfCN-rGCydxGUA",
+      "xmlTag": "CorpActnInstr",
+      "type": "CorporateActionOption237",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ProtectInstruction",
+      "isoId": "_9dCR1a3oEfCN-rGCydxGUA",
+      "xmlTag": "PrtctInstr",
+      "type": "ProtectInstruction1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AdditionalInformation",
+      "isoId": "_9dCR163oEfCN-rGCydxGUA",
+      "xmlTag": "AddtlInf",
+      "type": "CorporateActionNarrative30",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_9dCR2a3oEfCN-rGCydxGUA",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

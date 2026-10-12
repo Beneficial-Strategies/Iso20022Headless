@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+CorporateActionEventType108Choice	_rrtnA4CeEe-3UrLQHGsjgQ	Code	Event type expressed as a code.
+CorporateActionEventType108Choice	_rrtnC4CeEe-3UrLQHGsjgQ	Proprietary	Event type expressed as a proprietary code.

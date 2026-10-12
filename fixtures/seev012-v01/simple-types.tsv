@@ -1,0 +1,2 @@
+name	isoId	xsiType	pattern	minLength	maxLength	totalDigits	fractionDigits	minInclusive	maxInclusive	other
+IBANIdentifier	_YW1tI9p-Ed-ak6NoX_4Aeg_34949374	IdentifierSet	[a-zA-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}							identificationScheme=National Banking Association; International Bank Account Number (ISO 13616)

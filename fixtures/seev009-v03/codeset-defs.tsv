@@ -1,0 +1,65 @@
+codeSet	isoId	text
+CorporateActionNotificationType1Code	_bK_Pxdp-Ed-ak6NoX_4Aeg_724518589	Type of notification advice.
+EventCompletenessStatus1Code	_ajDtFNp-Ed-ak6NoX_4Aeg_1571232805	Indicates whether the details provided about an event are complete or incomplete.
+EventConfirmationStatus1Code	_ajNeEdp-Ed-ak6NoX_4Aeg_-477138119	Indicates the status of the occurrence of an event.
+CorporateActionEventProcessingType2Code	_W2UW4EmzEe-NocYul3BKXQ	Specifies the type of event processing.
+CorporateActionEventType35Code	_ky8fwYCbEe-3UrLQHGsjgQ	Specifies the corporate action event type.
+ExtendedEventType8Code	_mrreAaNZEfC9id413JK-Ig	Specifies DTCC (The Depository Trust and Clearing Corporation) defined corporate action event type.
+DTCCSubEventType9Code	_WpV-sTDqEey2N-DB7H7A5A	Specifies DTCC (The Depository Trust and Clearing Corporation) defined sub event types.
+RateType5Code	_ZZmKotp-Ed-ak6NoX_4Aeg_1481923249	Specifies the type of rate.
+DateType8Code	_m23dkeEMEd-qUMZtd_eZuQ	Specifies the type of dates.
+RateValueType7Code	_jWIcIeGYEd-1Ktb5rVaajw	Specifies the value of a rate.
+RateType10Code	_uBQBEQCoEeGt2odvTAOpog	Specifies the type of rate.
+PriceRateType3Code	_aI_AM9p-Ed-ak6NoX_4Aeg_2030331251	Specifies the type of price rate.
+AmountPriceType1Code	_begot9p-Ed-ak6NoX_4Aeg_150966910	Specifies the amount price type.
+PriceValueType10Code	_yb9UkeEQEd-1Ktb5rVaajw	Specifies the value of a price.
+Quantity4Code	_mxo5YQCgEeGqP72A5EmwKQ	Specifies quantity of a financial instrument.
+Quantity5Code	_lYWb4QFIEeGhYJiRaPcH8g	Specifies quantity of a financial instrument.
+CorporateActionFrequencyType5Code	_1vys4WK-EeWR9ZSfjmHwUA	Automatic Reinvestment of Cash distributed by accumulating funds.
+DistributionType3Code	_wahTcCXWEeOL3KXg7zAfKA	Specifies whether the proceeds of the event will be distributed on a rolling basis rather than on a specific date.
+OfferType7Code	_7dEPkfH4EfCS-OXqezZQmw	Specifies the conditions that apply to the offer.
+RenounceableStatus1Code	_ZshGqNp-Ed-ak6NoX_4Aeg_-603219895	Specifies the renounceable status.
+CorporateActionEventStage3Code	_0WDegCUeEeOxdNEux54C3Q	Specifies the stage of the CA event.
+AdditionalBusinessProcess13Code	_Q0TXgaNYEfC9id413JK-Ig	Specifies the additional business process linked to a corporate action event.
+CorporateActionChangeType1Code	_bCy9ENp-Ed-ak6NoX_4Aeg_1029236450	Specifies the type of changes.
+IntermediateSecurityDistributionType6Code	_KTYwsKQzEfCieoAD4BflNw	Specifies the type of intermediate security distribution.
+EUCapitalGain2Code	_aiBLQ9p-Ed-ak6NoX_4Aeg_1447392602	Specifies whether capital gain is in the scope of the European directive on taxation of savings income in the form of interest payments (Council Directive 2003/48/EC 3 June) for an income realised upon sale, a refund or redemption of shares and units etc.
+CorporateActionTaxableIncomePerShareCalculated1Code	_bTVTcNp-Ed-ak6NoX_4Aeg_-1786544875	Specifies whether the fund calculates the taxable income per dividend/taxable income per share (TID/TIS).
+LotteryType1Code	_afolodp-Ed-ak6NoX_4Aeg_-1740647870	Specifies the type of lottery.
+LotteryFeatureType1Code	_Tl5z4JSbEfCQbtmJ-bHX4Q	Specifies the lottery feature.
+CertificationFormatType1Code	_a78HINp-Ed-ak6NoX_4Aeg_-1603295237	Specifies the certification format required, that is, physical or electronic format.
+ConsentType1Code	_Ux3xACHnEeOQ7qT4JUI53A	Specifies the type of consent announced.
+CorporateActionInformationType1Code	_ioVuQCXcEeOFIcNWlDEvdQ	Specifies the type of information event.
+DutchAuctionType1Code	_h1z_gIAHEe-DNerJibcigw	Specifies the type of Dutch auction.
+RedemptionAnnouncementNoticeType1Code	_5csYcKD8Ee-4O7NbwmwJkQ	Specifies whether the redemption event announcement refers to certificates held only at depository or outside of depository.
+ProrationReturnQuantityTreatment1Code	_2bAEIHGzEe6S2Llv74R19w	Indicates how prorated instructions will be handled when the prorated entitlement results in less than the minimum denomination.
+CorporateActionOption15Code	_DnUSwe33Eeqc-LCjwLsUVg	Specifies the type of corporate action options.
+FractionDispositionType8Code	_1T0BQGSBEeKFfdK0gKYFLQ	Indicates that fractional value should be retained; no rounding.
+OptionFeatures15Code	dd2c5fe5-ddea-445e-a717-756b5d1257b6	Specifies the features that may apply to a corporate action option.
+ExtendedOptionFeature2Code	_cs5H4YbsEe--EK81FcmyRA	Specifies DTCC (The Depository Trust and Clearing Corporation) specific options.
+OptionAvailabilityStatus1Code	_aPPZNtp-Ed-ak6NoX_4Aeg_2092234536	Specifies the status of the option availability.
+BeneficiaryCertificationType6Code	_voNKUYFlEe-L4fccMJVoAw	Specifies the type of certification required.
+DateType7Code	_ayjhpdp-Ed-ak6NoX_4Aeg_-1957925382	Type of date.
+DateType9Code	_cgm0oO4EEeqc-LCjwLsUVg	Date is specified as a fixed code value.
+DateType1Code	_ayQmt9p-Ed-ak6NoX_4Aeg_-400780880	Specifies when date is unknown.
+RateStatus1Code	_ZY_ts9p-Ed-ak6NoX_4Aeg_1472885519	Specifies the type of rate.
+GrossDividendRateType6Code	_Mk-BUOXqEemEj48jhmlA0Q	Specifies the type of dividend rate.
+RateType13Code	_NxoFMeEREd-1Ktb5rVaajw	Specifies the type of rate.
+NetDividendRateType6Code	_5NR-cOXqEemEj48jhmlA0Q	Specifies the type of dividend rate.
+RateType7Code	_ZZmKpNp-Ed-ak6NoX_4Aeg_-218272633	Specifies the type of rate.
+RateType14Code	_cIQo4KkHEfCG_LQaXOxwew	Specifies the type of rate.
+WithholdingTaxRateType1Code	_Y7v0kCeGEeOXAt_43VmZGw	Specifies the type of withholding tax rate.
+DividendRateType1Code	_pWIogfPoEd-_UpPm03UNGQ	Specifies the type of dividend rate.
+AmountPriceType3Code	_eiyKAJbREee8S7xwGG7Veg	Specifies the amount price type.
+ProrationBelowMinimumQuantity2Code	_CkKE4Kj5EfCG_LQaXOxwew	Specifies the type of proration when below the minimum quantity to instruct.
+FractionDispositionType12Code	_KmzLEJFGEeanIpS4qvJ1tw	Indicates the processing to apply to fractions of securities.
+NonEligibleProceedsIndicator2Code	_0vxi0WHYEe6yt_d72zQZeQ	Specifies information regarding the non eligibility of the outturn resources.
+NewSecuritiesIssuanceType5Code	_5Y2eEWKZEeWR9ZSfjmHwUA	Specifies the type of securities proceeds; whether they are newly issued or not, defeased or non-defeased.
+AmountPriceType2Code	_beqZs9p-Ed-ak6NoX_4Aeg_-1075944972	Specifies the amount price type.
+PriceValueType8Code	_UVsIweEJEd-udr336SN7mQ	Specifies a type of price value.
+DTCBaseDisbursed1Code	_1qBZgzL3EeKU9IrkkToqcw_633983663	Code qualifying whether the calculation basis is on base (original) or disbursed (distributed) security.
+ReinvestmentIncomeClassification2Code	_WqyN4HngEeO2o_OAyvnbZw	Specifies the type of cash proceeds that the holder is eligible to reinvest.
+PriceCalculationMethod1Code	_Qv5VcIDNEe-eGe8fbP3Zug	Standard code to specify the method applied for the calculation of the price.
+GrossDividendRateType7Code	_jy6uoOXqEemEj48jhmlA0Q	Specifies the type of dividend rate.
+NetDividendRateType7Code	_LkTZEOXrEemEj48jhmlA0Q	Specifies the type of dividend rate.
+DeemedRateType1Code	_moeRYJSlEeeh5JjedkaA_g	Specifies the type of a deemed rate.

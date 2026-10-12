@@ -1,0 +1,25 @@
+codeSet	isoId	text
+CorporateActionNotificationType2Code	_bLJAwNp-Ed-ak6NoX_4Aeg_746682206	Type of notification cancellation request.
+CorporateActionEventStage1Code	_bDsU8Np-Ed-ak6NoX_4Aeg_1114905444	Specifies the stage of the CA event.
+CorporateActionCalculationMethod1Code	_bCgCItp-Ed-ak6NoX_4Aeg_-666370508	Specifies the calculation method for drawings.
+Quantity1Code	_ZXWu9Np-Ed-ak6NoX_4Aeg_1332281009	Specifies quantity of a financial instrument.
+OfferType1Code	_aOMQU9p-Ed-ak6NoX_4Aeg_-426518701	Specifies the conditions that apply to the offer.
+ElectionMovementType1Code	_ag04dtp-Ed-ak6NoX_4Aeg_1964804965	Specifies the effect on the holdings of electing a Corporate Action option.
+CorporateActionFrequencyType1Code	_bJ8t99p-Ed-ak6NoX_4Aeg_1457749701	Specifies the frequency of a CA event.
+IntermediateSecurityDistributionType1Code	_aZ-Ch9p-Ed-ak6NoX_4Aeg_1639683801	Specifies the type of intermediate security distribution.
+RateType12Code	_ZZJesNp-Ed-ak6NoX_4Aeg_-1551942195	Specifies the type of rate.
+RateValueType6Code	_ZaVxgNp-Ed-ak6NoX_4Aeg_-1378979923	Specifies the value of a rate.
+TaxableIncomePerShareCalculated2Code	_ZSSoxNp-Ed-ak6NoX_4Aeg_162652014	Specifies whether the fund calculates a taxable interest per share (TIS).
+ConversionType1Code	_bCNHNtp-Ed-ak6NoX_4Aeg_-673877093	Specifies the type of conversion.
+DistributionType1Code	_aw6i4dp-Ed-ak6NoX_4Aeg_-1335531039	Specifies whether the proceeds of the event will be distributed on a rolling basis rather than on a specific date.
+CorporateActionEventStatus2Code	_bEJA59p-Ed-ak6NoX_4Aeg_2035657818	Specifies the status of the CA option.
+TaxType3Code	_Ykix9dp-Ed-ak6NoX_4Aeg_1780697405	Type of tax.
+RateValueType2Code	_ZaMAhdp-Ed-ak6NoX_4Aeg_-1008646416	Specifies the value of a rate.
+GrossDividendRateType1Code	_auh9QNp-Ed-ak6NoX_4Aeg_-75891244	Specifies the type of gross dividend rate.
+NetDividendRateType1Code	_aNTfgtp-Ed-ak6NoX_4Aeg_284282984	Specifies the type of net dividend rate.
+PriceValueType5Code	_aJk2E9p-Ed-ak6NoX_4Aeg_-647834844	Specifies the value of a price.
+PriceValueType6Code	_aJk2Ftp-Ed-ak6NoX_4Aeg_-608123494	Specifies the value of a price.
+ShareRanking1Code	_ZOkmZdp-Ed-ak6NoX_4Aeg_1470328796	Specifies whether the shares are ranking for dividend or pari passu.
+FractionDispositionType1Code	_arP_xNp-Ed-ak6NoX_4Aeg_-1827765528	Specifies how fractions resulting from derived securities will be processed or how prorated decisions will be rounding, if provided with a pro ration rate.
+AgentRole2Code	_bnwEQNp-Ed-ak6NoX_4Aeg_-79264456	Specifies the role of the agent.
+OptionFeatures1Code	_aPYjI9p-Ed-ak6NoX_4Aeg_-906093897	Specifies the feature of an option.

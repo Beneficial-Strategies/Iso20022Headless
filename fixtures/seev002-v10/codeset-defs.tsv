@@ -1,0 +1,6 @@
+codeSet	isoId	text
+MeetingType4Code	_ccCwYK7DEemG7MmivSuE5g	Specifies a type of security holders meeting.
+MeetingTypeClassification2Code	_QC-WYK7NEemG7MmivSuE5g	Classifies the meeting type.
+TypeOfIdentification4Code	_RoFDgI6CEemzmeK8_tPygg	Specifies the type of alternate identification which can be used to give an alternate identification of the party identified.
+SecuritiesEntryType2Code	_ZFCP4tp-Ed-ak6NoX_4Aeg_1321594079	Specifies the type of securities entry on an account.
+MeetingCancellationReason2Code	_aVM3QNp-Ed-ak6NoX_4Aeg_-990079523	Specifies the reason for cancelling a meeting.

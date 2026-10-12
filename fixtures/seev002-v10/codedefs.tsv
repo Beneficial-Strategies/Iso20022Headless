@@ -1,0 +1,39 @@
+codeSet	code	enumName	isoId	text
+MeetingType4Code	XMET	Extraordinary	_iaPNIa7DEemG7MmivSuE5g	Meeting that takes place as needed, in addition to the general meetings, is extraordinary as per the bylaws. The resolutions are related to the unusual business of the company, for example, approval of takeovers or mergers or spin-offs. These meetings are always issuer initiated.
+MeetingType4Code	GMET	General	_izrn4q7DEemG7MmivSuE5g	Includes annual and ordinary meetings. Statutory meeting(s) usually held at least once a year. The resolutions are related to the usual business of the company, for example, approval of dividends and directors. These meetings are always issuer initiated.
+MeetingType4Code	MIXD	Mixed	_jAxosq7DEemG7MmivSuE5g	Meeting which contains both ordinary and extraordinary resolutions.
+MeetingType4Code	SPCL	Special	_jYIYwq7DEemG7MmivSuE5g	Meeting that takes place as needed that is neither ordinary nor extraordinary.
+MeetingType4Code	BMET	BondHolderMeeting	_j02J8q7DEemG7MmivSuE5g	Physical meeting of bond holders.
+MeetingType4Code	CMET	CourtMeeting	_kb-bYq7DEemG7MmivSuE5g	Meeting is the result of a legal proceeding.
+MeetingTypeClassification2Code	AMET	Annual	_UKTYIa7NEemG7MmivSuE5g	Meeting held periodically to approve the financial statements and to elect the board members and the auditors.
+MeetingTypeClassification2Code	CLAS	Class	_UUa9cq7NEemG7MmivSuE5g	Meeting for holders of a specific type of asset, for example, preferred shares, bonds.
+MeetingTypeClassification2Code	ISSU	IssuerInitiated	_UcdfIq7NEemG7MmivSuE5g	Meeting is the result of an obligation or a decision made by the issuer as opposed to voting rights holder initiated, for example, contested meeting.
+MeetingTypeClassification2Code	OMET	Ordinary	_Un6hMq7NEemG7MmivSuE5g	Meeting which is planned in the by-laws.
+MeetingTypeClassification2Code	VRHI	VotingRightsHolderInitiated	_UvzR4q7NEemG7MmivSuE5g	Meeting is the result of a request or an action of a voting right holder(s), for example, contested meeting.
+TypeOfIdentification4Code	ARNU	AlienRegistrationNumber	_VQxBcY6CEemzmeK8_tPygg	Number assigned by a government agency to identify foreign nationals.
+TypeOfIdentification4Code	CUST	Concat	_VbVSso6CEemzmeK8_tPygg	Number assigned by an issuer to identify a customer via the concatenation of the birthdate and characters of the first name and surname.
+TypeOfIdentification4Code	CORP	CorporateIdentification	_Viecgo6CEemzmeK8_tPygg	Number assigned to a corporate entity.
+TypeOfIdentification4Code	DRLC	DriverLicenseNumber	_Vp6hQo6CEemzmeK8_tPygg	Number assigned to a driver's license.
+TypeOfIdentification4Code	IDCD	IdentityCardNumber	_XbksIY6CEemzmeK8_tPygg	Number assigned by a national authority to an identity card.
+TypeOfIdentification4Code	NRIN	NationalRegistrationIdentificationNumber	_Xk8qko6CEemzmeK8_tPygg	National registration identification number. In Singapore this is known as the NRIC.
+TypeOfIdentification4Code	CCPT	PassportNumber	_Xrf-go6CEemzmeK8_tPygg	Number assigned by a passport authority.
+TypeOfIdentification4Code	SOCS	SocialSecurityNumber	_X-PUUo6CEemzmeK8_tPygg	Number assigned by a social security agency.
+TypeOfIdentification4Code	TXID	TaxIdentificationNumber	_Yqk14Y6CEemzmeK8_tPygg	Number assigned by a tax authority to an entity.
+SecuritiesEntryType2Code	BLOK	Blocked	_ZFCP49p-Ed-ak6NoX_4Aeg_1321594081	Balance of securities that are blocked or frozen. A financial instrument may be unavailable due to external circumstances such as a court order, death of beneficiary or account owner, or bankruptcy.
+SecuritiesEntryType2Code	ELIG	Eligible	_ZFCP5Np-Ed-ak6NoX_4Aeg_1321594097	Total number of securities eligible for this event.
+SecuritiesEntryType2Code	PEND	PendingDelivery	_ZFCP5dp-Ed-ak6NoX_4Aeg_1321594098	Balance of securities that are pending delivery.
+SecuritiesEntryType2Code	PENR	PendingReceipt	_ZFCP5tp-Ed-ak6NoX_4Aeg_1321594099	Balance of securities that are pending receipt.
+SecuritiesEntryType2Code	NOMI	Registered	_ZFCP59p-Ed-ak6NoX_4Aeg_1321594370	Balance of securities that are registered (in the name of a nominee or of the beneficial owner).
+SecuritiesEntryType2Code	SETD	Settled	_ZFCP6Np-Ed-ak6NoX_4Aeg_1321594387	Balance of securities representing only settled transactions.
+SecuritiesEntryType2Code	BORR	Borrowed	_ZFCP6dp-Ed-ak6NoX_4Aeg_1321594388	Balance of securities that have been borrowed from another party.
+SecuritiesEntryType2Code	LOAN	OnLoan	_ZFLZ0Np-Ed-ak6NoX_4Aeg_1321594405	Balance of securities that have been loaned to a third party.
+SecuritiesEntryType2Code	SPOS	StreetPosition	_ZFLZ0dp-Ed-ak6NoX_4Aeg_1321594406	Balance of securities that remain registered in the name of the prior beneficial owner of securities.
+SecuritiesEntryType2Code	TRAD	Traded	_ZFLZ0tp-Ed-ak6NoX_4Aeg_1321594407	Balance of securities representing traded transactions.
+SecuritiesEntryType2Code	COLI	CollateralIn	_ZFLZ09p-Ed-ak6NoX_4Aeg_1421332994	Balance of securities that belong to a third party and that are held for the purpose of collateralisation.
+SecuritiesEntryType2Code	COLO	CollateralOut	_ZFLZ1Np-Ed-ak6NoX_4Aeg_1450886956	Balance of securities that belong to the safekeeping account indicated within this message, and are deposited with a third party for the purpose of collateralisation.
+SecuritiesEntryType2Code	UNBA	UninstructedBalance	_ZFLZ1dp-Ed-ak6NoX_4Aeg_1462894155	Balance of uninstructed position.
+SecuritiesEntryType2Code	INBA	InstructedBalance	_ZFLZ1tp-Ed-ak6NoX_4Aeg_1478592079	Balance of instructed position.
+SecuritiesEntryType2Code	REGO	OutForRegistration	_ZFLZ19p-Ed-ak6NoX_4Aeg_1504452105	Balance of securities currently being processed by the institution responsible for registering the new beneficial owner (or nominee) of securities after a transaction has settled.
+MeetingCancellationReason2Code	QORM	Quorum	_aVM3Qdp-Ed-ak6NoX_4Aeg_-990079521	Cancellation due to insufficient participation to the vote.
+MeetingCancellationReason2Code	PROC	Processing	_aVM3Qtp-Ed-ak6NoX_4Aeg_-990079505	Cancellation due to a processing error.
+MeetingCancellationReason2Code	WITH	Withdrawal	_aVM3Q9p-Ed-ak6NoX_4Aeg_-918047442	Cancellation due to the meeting being cancelled by the issuer.

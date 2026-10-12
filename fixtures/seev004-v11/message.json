@@ -1,0 +1,83 @@
+{
+  "identifier": "seev.004.001.11",
+  "name": "MeetingInstructionV11",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.004.001.11",
+  "bodyTag": "MtgInstr",
+  "out": "seev004",
+  "isoId": "_ezLAgajGEfCzuLlmLrhIvA",
+  "definition": "Scope|The MeetingInstruction message is sent by a party holding the right to vote to an intermediary, the issuer or its agent to request the receiving party to act upon one or several instructions.|Usage|The MeetingInstruction message is used to vote, to require attendance to a meeting, to request registration of securities, and assign a proxy. One instruction or multiple instructions can be carried within the same message.|Once the message is sent, it cannot be modified. It must be cancelled by a MeetingInstructionCancellationRequest. Only after receipt of a confirmed cancelled status via the|MeetingInstructionStatus message, a new MeetingInstruction message can be sent.|This message definition is intended for use with the Business Application Header (BAH).",
+  "blocks": [
+    {
+      "name": "Pagination",
+      "isoId": "_ezLAiajGEfCzuLlmLrhIvA",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "MeetingInstructionIdentification",
+      "isoId": "_ezLAi6jGEfCzuLlmLrhIvA",
+      "xmlTag": "MtgInstrId",
+      "type": "Max35Text",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "MeetingReference",
+      "isoId": "_ezLAjajGEfCzuLlmLrhIvA",
+      "xmlTag": "MtgRef",
+      "type": "MeetingReference11",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "FinancialInstrumentIdentification",
+      "isoId": "_ezLAj6jGEfCzuLlmLrhIvA",
+      "xmlTag": "FinInstrmId",
+      "type": "SecurityIdentification19",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "InstructionCancellationRequestIdentification",
+      "isoId": "_ezLAkajGEfCzuLlmLrhIvA",
+      "xmlTag": "InstrCxlReqId",
+      "type": "MeetingInstructionCancellation1",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "CancelledInstructionIdentification",
+      "isoId": "_ezLAk6jGEfCzuLlmLrhIvA",
+      "xmlTag": "CancInstrId",
+      "type": "MeetingInstructionIdentification1",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "OtherDocumentIdentification",
+      "isoId": "_ezLAlajGEfCzuLlmLrhIvA",
+      "xmlTag": "OthrDocId",
+      "type": "DocumentIdentification32",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "Instruction",
+      "isoId": "_ezLAl6jGEfCzuLlmLrhIvA",
+      "xmlTag": "Instr",
+      "type": "Instruction9",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_ezLAmajGEfCzuLlmLrhIvA",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

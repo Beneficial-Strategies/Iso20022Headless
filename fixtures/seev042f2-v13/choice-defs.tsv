@@ -1,0 +1,49 @@
+choice	memberId	memberName	text
+SafekeepingPlaceFormat46Choice	_j2C9d5t3Ee-wQIOX0djF2w	Identification	Place of safekeeping expressed as a code and a narrative description.
+SafekeepingPlaceFormat46Choice	_j2C9f5t3Ee-wQIOX0djF2w	Country	Place of safekeeping expressed with a country code.
+SafekeepingPlaceFormat46Choice	_j2C9h5t3Ee-wQIOX0djF2w	DigitalLedgerIdentification	Place of settlement expressed with a Digital Ledger Identifier. It identifies a digital ledger or distributed ledger system (for example, blockchain or similar platforms).
+SafekeepingPlaceFormat46Choice	_j2C9iZt3Ee-wQIOX0djF2w	TypeAndIdentification	Place of safekeeping expressed with a type and identification.
+SafekeepingPlaceFormat46Choice	_j2C9kZt3Ee-wQIOX0djF2w	Proprietary	Place of safekeeping expressed with a propriety identification scheme.
+CorporateActionEventType117Choice	_j2C-A5t3Ee-wQIOX0djF2w	Code	Event types expressed as a code.
+CorporateActionEventType117Choice	_j2C-C5t3Ee-wQIOX0djF2w	Proprietary	Event types expressed as a proprietary code.
+CorporateActionOption36Choice	_DkeR6QVSEeqjd8n6wD9JVw	Code	Standard code to specify the type of corporate action options.
+CorporateActionOption36Choice	_DkeR8QVSEeqjd8n6wD9JVw	Proprietary	Proprietary identification of the type of corporate action options.
+DefaultProcessingOrStandingInstruction2Choice	_frv78YudEe-ia-YMBhg53w	DefaultOptionIndicator	Indicates whether the option, for example, currency option, will be selected by default if no instruction is provided by the account owner.
+DefaultProcessingOrStandingInstruction2Choice	_frv7-YudEe-ia-YMBhg53w	StandingInstructionIndicator	Indicates whether an account owner has placed a standing order to select this corporate action option.|The standing instruction may or may not be overridden, depending on account or event terms.
+DateFormat49Choice	_nlQDMckdEee7W-rN1yqPMg	Date	Date expressed as a calendar date.
+DateFormat49Choice	_nlQDOckdEee7W-rN1yqPMg	DateCode	Specifies the type of date.
+DateFormat54Choice	_k9m0sc3xEee5nJBZsW8MFQ	Date	Date expressed as a calendar date.
+DateFormat54Choice	_k9m0uc3xEee5nJBZsW8MFQ	DateCodeAndTime	Specifies a date code and a time.
+DateFormat54Choice	_k9m0u83xEee5nJBZsW8MFQ	DateCode	Specifies the type of date.
+DateCode26Choice	_ctczF5KQEeWHWpTQn1FFVg	Code	Standard code to specify the type of date.
+DateCode26Choice	_ctczH5KQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the type of date.
+PriceFormat82Choice	_j2FaoZt3Ee-wQIOX0djF2w	PercentagePrice	Price expressed as a percentage.
+PriceFormat82Choice	_j2FaqZt3Ee-wQIOX0djF2w	AmountPrice	Price expressed as a currency and amount.
+PriceFormat82Choice	_j2FasZt3Ee-wQIOX0djF2w	NotSpecifiedPrice	Value of the price not specified.
+InstructionProcessingStatus57Choice	_j2GAnZt3Ee-wQIOX0djF2w	Accepted	Instruction is accepted.
+InstructionProcessingStatus57Choice	_j2GAn5t3Ee-wQIOX0djF2w	Cancelled	Instruction cancelled by client cancellation instruction.
+InstructionProcessingStatus57Choice	_j2GAp5t3Ee-wQIOX0djF2w	AcceptedForFurtherProcessing	Provides status information related to an instruction request that is accepted. This means that the instruction has been received, is processable and has been validated for further processing.
+InstructionProcessingStatus57Choice	_j2GAr5t3Ee-wQIOX0djF2w	Rejected	Instruction rejected by the receiver.
+InstructionProcessingStatus57Choice	_j2GAt5t3Ee-wQIOX0djF2w	Pending	Instruction has not been completed.
+InstructionProcessingStatus57Choice	_j2GAv5t3Ee-wQIOX0djF2w	PendingCancellation	Cancellation instruction is pending.
+InstructionProcessingStatus57Choice	_j2GAwZt3Ee-wQIOX0djF2w	Covered	Protect Instruction has been full covered.
+InstructionProcessingStatus57Choice	_j2GAw5t3Ee-wQIOX0djF2w	Uncovered	Cover protect instruction accepted but it has not fully covered the protect instruction.
+InstructionProcessingStatus57Choice	_j2GAxZt3Ee-wQIOX0djF2w	Returned	Instructed units are returned or partially returned to the instructing party.
+CancelledStatus15Choice	_cgnRmZKQEeWHWpTQn1FFVg	NoSpecifiedReason	Reason not specified.
+CancelledStatus15Choice	_cgnRoZKQEeWHWpTQn1FFVg	Reason	Reason for the cancelled status.
+CancelledReason11Choice	_cgnRxZKQEeWHWpTQn1FFVg	Code	Standard code to specify the reason why the instruction is cancelled.
+CancelledReason11Choice	_cgnRzZKQEeWHWpTQn1FFVg	Proprietary	Proprietary identification specifying the reason why the instruction is cancelled.
+RejectedStatus59Choice	_Uo2Nu3SdEe6VWZz2tTgENw	NoSpecifiedReason	Reason not specified.
+RejectedStatus59Choice	_Uo2Nw3SdEe6VWZz2tTgENw	Reason	Reason why the meeting instruction message or the individual meeting instruction is rejected.
+RejectedReason61Choice	_Uo2N53SdEe6VWZz2tTgENw	Code	Rejection reason specified as a code.
+RejectedReason61Choice	_Uo2N73SdEe6VWZz2tTgENw	Proprietary	Rejection reason specified as a proprietary code.
+PendingStatus72Choice	_Uqcwe3SdEe6VWZz2tTgENw	NoSpecifiedReason	Reason not specified.
+PendingStatus72Choice	_Uqcwg3SdEe6VWZz2tTgENw	Reason	Reason for the pending status.
+PendingReason68Choice	_Uqcwp3SdEe6VWZz2tTgENw	Code	Pending reason specified as a code.
+PendingReason68Choice	_UqdW13SdEe6VWZz2tTgENw	Proprietary	Pending reason specified as a proprietary code.
+PendingCancellationStatus16Choice	_j2GBs5t3Ee-wQIOX0djF2w	NoSpecifiedReason	Reason not specified.
+PendingCancellationStatus16Choice	_j2GBu5t3Ee-wQIOX0djF2w	Reason	Reason for the pending cancellation status.
+ReturnedStatus1Choice	_ohK2VIS_Ee-1WeOqsw_6eA	NoSpecifiedReason	Reason not specified.
+ReturnedStatus1Choice	_ohK2VYS_Ee-1WeOqsw_6eA	Reason	Reason why the meeting instruction message or the individual meeting instruction is returned.
+ReturnedReason1Choice	_sEEo6qGpEe-4O7NbwmwJkQ	Code	Returned reason specified as a code.
+ReturnedReason1Choice	_sEXj0KGpEe-4O7NbwmwJkQ	Proprietary	Returned reason specified as a proprietary code.

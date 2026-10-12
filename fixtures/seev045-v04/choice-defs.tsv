@@ -1,0 +1,5 @@
+choice	memberId	memberName	text
+RequestShareHeldDate1Choice	_zKTRMFSTEempisJfoIfvvQ	DateCalculationMethod	Indicates what is the logical method to be used to determine and communicate from which date the shares have been held.
+RequestShareHeldDate1Choice	_3b5pQFSTEempisJfoIfvvQ	DateCalculationDescription	Provides the description on how the date from which the shares have been held should be determined and communicated.
+PartyIdentification203Choice	_Y37MwlSXEempisJfoIfvvQ	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to a financial institution using a proprietary identification scheme.
+PartyIdentification203Choice	_Y37Mw1SXEempisJfoIfvvQ	LEI	Legal entity identifier of the party.

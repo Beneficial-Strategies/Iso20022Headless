@@ -1,0 +1,19 @@
+choice	memberId	memberName	text
+MeetingTypeClassification2Choice	_e0JEoa7NEemG7MmivSuE5g	Code	Type of meeting expressed as a code.
+MeetingTypeClassification2Choice	_e0JEo67NEemG7MmivSuE5g	Proprietary	Type of meeting expressed as a proprietary code.
+PartyIdentification231Choice	_ow34ofQ0EeqAradXpAelDQ	LegalPerson	Legal entity.
+PartyIdentification231Choice	_ow34o_Q0EeqAradXpAelDQ	NaturalPerson	Private person.
+PartyIdentification198Choice	_E0OYgTtqEemIf7eyjCwinw	NationalRegistrationNumber	Number assigned by a national registration authority to an entity.
+PartyIdentification198Choice	_z8lF9TtpEemIf7eyjCwinw	LEI	Legal entity identifier of the party.
+PartyIdentification198Choice	_z8lF8ztpEemIf7eyjCwinw	AnyBIC	Code allocated to a financial or non-financial institution by the ISO 9362 Registration Authority, as described in ISO 9362 "Banking - Banking telecommunication messages - Business identifier code (BIC)".
+PartyIdentification198Choice	_pDdK0TtqEemIf7eyjCwinw	ClientIdentification	Unique and unambiguous identification of the client's counterparty.
+PartyIdentification198Choice	_z8lF9DtpEemIf7eyjCwinw	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to a financial institution using a proprietary identification scheme.
+IdentificationType45Choice	_ql4v04d6EemJ1cSJJmVYRQ	Code	Type of identification expressed as a code.
+IdentificationType45Choice	_ql4v0Yd6EemJ1cSJJmVYRQ	Proprietary	Type of identification expressed as a proprietary code.
+FinancialInstrumentQuantity45Choice	_xCFj4TQ_Ee2id-MjcNoBdw	Unit	Quantity expressed as a number, for example, a number of shares.
+FinancialInstrumentQuantity45Choice	_xCFj6TQ_Ee2id-MjcNoBdw	FaceAmount	Quantity expressed as an amount representing the face amount, that is, the principal, of a debt instrument.
+FinancialInstrumentQuantity45Choice	_C_3YETRAEe2id-MjcNoBdw	DigitalTokenUnit	Quantity of digital tokens expressed as a number, for example, a number of blockchain tokens.
+PartyIdentification246Choice	_ATj_QTUDEe2tRf29bleifQ	LegalPerson	Legal entity.
+PartyIdentification246Choice	_ATj_QzUDEe2tRf29bleifQ	NaturalPerson	Private person.
+MeetingCancellationReason1Choice	_RCWL0tp-Ed-ak6NoX_4Aeg_-1788860770	Code	Specifies the reason for cancelling a meeting in coded form.
+MeetingCancellationReason1Choice	_RCWL09p-Ed-ak6NoX_4Aeg_-1788860739	Proprietary	Specifies the reason for cancelling a meeting in free text form.

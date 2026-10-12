@@ -1,0 +1,115 @@
+choice	memberId	memberName	text
+CorporateActionProcessingStatus6Choice	_XOanAZmtEeWLs7cvLxlyAg	Code	Specifies the status of the details of the corporate action event.
+CorporateActionProcessingStatus6Choice	_XOanA5mtEeWLs7cvLxlyAg	Proprietary	Information related to an identification, for example, party identification or account identification.
+CorporateActionEventType124Choice	_nLXUvZt3Ee-wQIOX0djF2w	Code	Event type expressed as a code.
+CorporateActionEventType124Choice	_nLXUxZt3Ee-wQIOX0djF2w	Proprietary	Event type expressed as a proprietary code.
+AccountIdentification78Choice	_nLX7A5t3Ee-wQIOX0djF2w	ForAllAccounts	All safekeeping accounts that own an underlying financial instrument.
+AccountIdentification78Choice	_nLX7C5t3Ee-wQIOX0djF2w	AccountsListAndBalanceDetails	Selected safekeeping accounts list (and optionally balance information) to which the corporate action event applies.
+SafekeepingPlaceFormat55Choice	_nLX7WZt3Ee-wQIOX0djF2w	Identification	Place of safekeeping expressed as a code and a narrative description.
+SafekeepingPlaceFormat55Choice	_nLX7YZt3Ee-wQIOX0djF2w	Country	Place of safekeeping expressed with a country code.
+SafekeepingPlaceFormat55Choice	_nLX7aZt3Ee-wQIOX0djF2w	DigitalLedgerIdentification	Place of settlement expressed with a Digital Ledger Identifier. It identifies a digital ledger or distributed ledger system (for example, blockchain or similar platforms).
+SafekeepingPlaceFormat55Choice	_nLX7a5t3Ee-wQIOX0djF2w	TypeAndIdentification	Place of safekeeping expressed with a type and identification.
+SafekeepingPlaceFormat55Choice	_nLX7c5t3Ee-wQIOX0djF2w	Proprietary	Place of safekeeping expressed with a propriety identification scheme.
+RenounceableEntitlementStatusTypeFormat4Choice	_c5Lh5ZKQEeWHWpTQn1FFVg	Code	Standard code to specify the renounceable status.
+RenounceableEntitlementStatusTypeFormat4Choice	_c5Lh55KQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the renounceable status.
+FractionDispositionType32Choice	_c5Lh_ZKQEeWHWpTQn1FFVg	Code	Standard code to specify how fractions resulting from derived securities will be processed or how prorated decisions will be rounding, if provided with a pro ration rate.
+FractionDispositionType32Choice	_c5Lh_5KQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the type of fraction disposition.
+RateAndAmountFormat72Choice	_nLgdz5t3Ee-wQIOX0djF2w	Rate	Value expressed as a rate.
+RateAndAmountFormat72Choice	_nLgd15t3Ee-wQIOX0djF2w	NotSpecifiedRate	Value of the rate not specified.
+RateAndAmountFormat72Choice	_nLgd35t3Ee-wQIOX0djF2w	Amount	Value is expressed as a currency and amount.
+RateAndAmountFormat73Choice	_nLgd9Zt3Ee-wQIOX0djF2w	Rate	Value expressed as a rate.
+RateAndAmountFormat73Choice	_nLgd_Zt3Ee-wQIOX0djF2w	NotSpecifiedRate	Value of the rate not specified.
+RateAndAmountFormat73Choice	_nLgeBZt3Ee-wQIOX0djF2w	Amount	Value is expressed as a currency and amount.
+RateAndAmountFormat73Choice	_nLgeDZt3Ee-wQIOX0djF2w	IndexPoints	Price expressed in index points.
+RateAndAmountFormat74Choice	_nLgeI5t3Ee-wQIOX0djF2w	Rate	Value is expressed as a rate.
+RateAndAmountFormat74Choice	_nLgeK5t3Ee-wQIOX0djF2w	Amount	Value is expressed as a currency and amount.
+PriceFormat91Choice	_nLgef5t3Ee-wQIOX0djF2w	PercentagePrice	Price expressed as a percentage.
+PriceFormat91Choice	_nLgeh5t3Ee-wQIOX0djF2w	AmountPrice	Price expressed as a currency and amount.
+PriceFormat91Choice	_nLgej5t3Ee-wQIOX0djF2w	NotSpecifiedPrice	Value of the price not specified.
+PriceFormat91Choice	_nLgel5t3Ee-wQIOX0djF2w	IndexPoints	Price expressed as an index points.
+IdentificationFormat4Choice	_c5VTN5KQEeWHWpTQn1FFVg	ShortIdentification	Format expressed as a short identification.
+IdentificationFormat4Choice	_c5VTP5KQEeWHWpTQn1FFVg	LongIdentification	Format expressed as a long identification.
+IdentificationFormat4Choice	_c5VTR5KQEeWHWpTQn1FFVg	ProprietaryIdentification	Format expressed as a proprietary identification.
+DividendTypeFormat10Choice	_c5VTWZKQEeWHWpTQn1FFVg	Code	Standard code to specify the frequency of the corporate action event.
+DividendTypeFormat10Choice	_c5VTW5KQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the frequency of the corporate action event.
+EventSequenceTypeFormat2Choice	_6UsaIfyVEeiKOe8GCUL1Lg	Code	Type of an event sequence, in a coded format.
+EventSequenceTypeFormat2Choice	_6UsaKfyVEeiKOe8GCUL1Lg	Proprietary	Type of an event sequence, in a proprietary format.
+DistributionTypeFormat8Choice	_c5VTlZKQEeWHWpTQn1FFVg	Code	Standard code to specify whether the proceeds of the event will be distributed on a rolling basis rather than on a specific date.
+DistributionTypeFormat8Choice	_c5VTl5KQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the type of distribution.
+OfferTypeFormat16Choice	_nLhFf5t3Ee-wQIOX0djF2w	Code	Standard code to specify the conditions that apply to the offer.
+OfferTypeFormat16Choice	_nLhFgZt3Ee-wQIOX0djF2w	Proprietary	Proprietary identification of the conditions that apply to the offer.
+CorporateActionEventStageFormat20Choice	_c5V6JZKQEeWHWpTQn1FFVg	Code	Standard code to specify the stage of the corporate action event.
+CorporateActionEventStageFormat20Choice	_c5V6LZKQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the stage of the corporate action event.
+AdditionalBusinessProcessFormat22Choice	_p4YCtzi7Eeydid5dcNPKvg	Code	Standard code to specify the additional business process linked to a corporate action event.
+AdditionalBusinessProcessFormat22Choice	_p4YCvzi7Eeydid5dcNPKvg	Proprietary	Proprietary identification of the additional business process linked to a corporate action event.
+CorporateActionChangeTypeFormat8Choice	_c5V6bZKQEeWHWpTQn1FFVg	Code	Standard code to specify the type of changes.
+CorporateActionChangeTypeFormat8Choice	_c5V6dZKQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the type of changes.
+CapitalGainFormat4Choice	_c5V6qZKQEeWHWpTQn1FFVg	Code	Specifies whether capital gain is in the scope of the European directive on taxation of savings income in the form of interest payments (Council Directive 2003/48/EC 3 June) for an income realised upon sale, a refund or redemption of shares and units etc.
+CapitalGainFormat4Choice	_c5V6sZKQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the type of capital gain.
+TaxableIncomePerShareCalculatedFormat4Choice	_c5WhFZKQEeWHWpTQn1FFVg	Code	Standard code to specify whether the fund calculates the taxable income per dividend/taxable income per share (TID/TIS).
+TaxableIncomePerShareCalculatedFormat4Choice	_c5WhF5KQEeWHWpTQn1FFVg	Proprietary	Proprietary identification to specify whether the fund calculates the taxable income per dividend/taxable income per share (TID/TIS).
+ElectionTypeFormat4Choice	_c5WhLZKQEeWHWpTQn1FFVg	Code	Standard code to specify the effect on the holdings of electing a corporate action option.
+ElectionTypeFormat4Choice	_c5WhL5KQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the type of election of a corporate action option.
+CertificationTypeFormat4Choice	_c5WhXZKQEeWHWpTQn1FFVg	Code	Standard code to specify the certification format required, that is, physical or electronic format.
+CertificationTypeFormat4Choice	_c5WhZZKQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the certification format.
+ConsentTypeFormat5Choice	_c5WhgZKQEeWHWpTQn1FFVg	Code	Standard code to specify the consent type required.
+ConsentTypeFormat5Choice	_c5Whg5KQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the consent type.
+InformationTypeFormat5Choice	_c5WhmZKQEeWHWpTQn1FFVg	Code	Standard code to specify the information type required.
+InformationTypeFormat5Choice	_c5Whm5KQEeWHWpTQn1FFVg	Proprietary	Proprietary identification of the information type.
+DutchAuctionTypeFormat2Choice	_uCa38aAUEe-BUYcGJFWBWA	Code	Standard code to specify the Dutch auction type required.
+DutchAuctionTypeFormat2Choice	_uCa386AUEe-BUYcGJFWBWA	Proprietary	Proprietary identification of the Dutch auction type.
+BeneficiaryCertificationType15Choice	_nLhtV5t3Ee-wQIOX0djF2w	Code	Beneficial owner certification type expressed in a coded form.
+BeneficiaryCertificationType15Choice	_nLhtW5t3Ee-wQIOX0djF2w	Proprietary	Beneficial owner certification type expressed in a proprietary form.
+BidRangeType2Choice	_QvokQaAdEe-6zfgb2Rwrlw	Code	Bid range type expressed as a code value.
+BidRangeType2Choice	_QvokQ6AdEe-6zfgb2Rwrlw	Proprietary	Bid range type expressed as a proprietary value.
+ProrationBelowMinimumQuantity1Choice	_ETpRJIDCEe-eGe8fbP3Zug	Code	Standard code to specify the type of proration below minimum quantity.
+ProrationBelowMinimumQuantity1Choice	_ETpRJYDCEe-eGe8fbP3Zug	Proprietary	Proprietary identification of the proration below minimum quantity type.
+DateFormat71Choice	_zEMZoaAdEe-6zfgb2Rwrlw	Date	Date expressed as a calendar date.
+DateFormat71Choice	_zEMZqaAdEe-6zfgb2Rwrlw	DateCode	Specifies the type of date.
+DateCode39Choice	_zKTosaAdEe-6zfgb2Rwrlw	Code	Standard code to specify the type of date.
+DateCode39Choice	_zKTouaAdEe-6zfgb2Rwrlw	Proprietary	Proprietary identification of the type of date.
+RateAndAmountFormat75Choice	_nLi6X5t3Ee-wQIOX0djF2w	Rate	Value expressed as a rate.
+RateAndAmountFormat75Choice	_nLi6Z5t3Ee-wQIOX0djF2w	NotSpecifiedRate	Value of the rate not specified.
+RateAndAmountFormat75Choice	_nLi6b5t3Ee-wQIOX0djF2w	Amount	Value is expressed as a currency and amount.
+RateAndAmountFormat75Choice	_nLi6d5t3Ee-wQIOX0djF2w	RateTypeAndRate	Value is expressed as a rate type and a percentage rate.
+PriceFormat92Choice	_nLjgjZt3Ee-wQIOX0djF2w	PercentagePrice	Price expressed as a percentage.
+PriceFormat92Choice	_nLjglZt3Ee-wQIOX0djF2w	AmountPrice	Price expressed as a currency and amount.
+PriceFormat92Choice	_nLjgnZt3Ee-wQIOX0djF2w	NotSpecifiedPrice	Value of the price not specified.
+PriceFormat93Choice	_nLjhh5t3Ee-wQIOX0djF2w	PercentagePrice	Price expressed as a percentage.
+PriceFormat93Choice	_nLjhj5t3Ee-wQIOX0djF2w	AmountPrice	Price expressed as a currency and amount.
+PriceFormat93Choice	_nLjhl5t3Ee-wQIOX0djF2w	NotSpecifiedPrice	Value of the price not specified.
+PriceFormat93Choice	_nLjhn5t3Ee-wQIOX0djF2w	IndexPoints	Price expressed as an index points.
+SafekeepingPlaceFormat56Choice	_nLkvmZt3Ee-wQIOX0djF2w	Identification	Place of safekeeping expressed as a code and a narrative description.
+SafekeepingPlaceFormat56Choice	_nLkvoZt3Ee-wQIOX0djF2w	Country	Place of safekeeping expressed with a country code.
+SafekeepingPlaceFormat56Choice	_nLkvqZt3Ee-wQIOX0djF2w	DigitalLedgerIdentification	Place of settlement expressed with a Digital Ledger Identifier. It identifies a digital ledger or distributed ledger system (for example, blockchain or similar platforms).
+SafekeepingPlaceFormat56Choice	_nLkvq5t3Ee-wQIOX0djF2w	TypeAndIdentification	Place of safekeeping expressed with a type and identification.
+SafekeepingPlaceFormat56Choice	_nLkvs5t3Ee-wQIOX0djF2w	Proprietary	Place of safekeeping expressed with a propriety identification scheme.
+RateFormat30Choice	_nLl9E5t3Ee-wQIOX0djF2w	Rate	Value is expressed as a rate.
+RateFormat30Choice	_nLl9G5t3Ee-wQIOX0djF2w	Amount	Cash amount.
+RateFormat30Choice	_nLl9HZt3Ee-wQIOX0djF2w	NotSpecifiedRate	Value of the rate not specified.
+RateAndAmountFormat76Choice	_nLi6nZt3Ee-wQIOX0djF2w	Rate	Value expressed as a rate.
+RateAndAmountFormat76Choice	_nLi6pZt3Ee-wQIOX0djF2w	NotSpecifiedRate	Value of the rate not specified.
+RateAndAmountFormat76Choice	_nLi6rZt3Ee-wQIOX0djF2w	Amount	Value is expressed as a currency and amount.
+RateAndAmountFormat76Choice	_nLi6tZt3Ee-wQIOX0djF2w	RateTypeAndRate	Value is expressed as a rate type and a percentage rate.
+IndicativeOrMarketPrice18Choice	_nLl9x5t3Ee-wQIOX0djF2w	IndicativePrice	Estimated price, for example, for valuation purposes.
+IndicativeOrMarketPrice18Choice	_nLl9z5t3Ee-wQIOX0djF2w	MarketPrice	Last reported/known price of a financial instrument in a market.
+PriceFormat94Choice	_nLmjxZt3Ee-wQIOX0djF2w	PercentagePrice	Price expressed as a percentage.
+PriceFormat94Choice	_nLmjzZt3Ee-wQIOX0djF2w	AmountPrice	Price expressed as a currency and amount.
+PriceFormat94Choice	_nLmj1Zt3Ee-wQIOX0djF2w	NotSpecifiedPrice	Value of the price not specified.
+PriceFormat94Choice	_nLmj3Zt3Ee-wQIOX0djF2w	AmountPricePerFinancialInstrumentQuantity	Price expressed as a ratio: amount price per financial instrument quantity.
+PriceFormat94Choice	_nLmj5Zt3Ee-wQIOX0djF2w	AmountPricePerAmount	Price expressed as a ratio: amount price per amount.
+PriceFormat94Choice	_nLmj7Zt3Ee-wQIOX0djF2w	IndexPoints	Price expressed in index points.
+PriceCalculationMethod1Choice	_3E9TNYDKEe-eGe8fbP3Zug	Code	Standard code to specify the method applied for the calculation of the price.
+PriceCalculationMethod1Choice	_3E9TNIDKEe-eGe8fbP3Zug	Proprietary	Proprietary identification to specify the method applied for the calculation of the price.
+CashAccountIdentification15Choice	_nLmlD5t3Ee-wQIOX0djF2w	IBAN	International Bank Account Number (IBAN) - identifier used internationally by financial institutions to uniquely identify the account of a customer. Further specifications of the format and content of the IBAN can be found in the standard ISO 13616 "Banking and related financial services - International Bank Account Number (IBAN)" version 1997-10-01, or later revisions.
+CashAccountIdentification15Choice	_nLmlF5t3Ee-wQIOX0djF2w	BlockChainCashWallet	Block Chain Wallet where digital currencies are maintained. This is the equivalent of cash account for digital currencies.
+CashAccountIdentification15Choice	_nLmlGZt3Ee-wQIOX0djF2w	Proprietary	Unique identifier for an account. It is assigned by the account servicer using a proprietary identification scheme.
+SolicitationFeeRateFormat15Choice	_nLnydZt3Ee-wQIOX0djF2w	Rate	Value is expressed as a rate.
+SolicitationFeeRateFormat15Choice	_nLnyfZt3Ee-wQIOX0djF2w	AmountToQuantity	Ratio expressed as an amount to quantity ratio.
+SolicitationFeeRateFormat15Choice	_nLnyhZt3Ee-wQIOX0djF2w	Amount	Cash amount.
+SolicitationFeeRateFormat15Choice	_nLnyh5t3Ee-wQIOX0djF2w	NotSpecifiedRate	Value of the rate not specified.
+RateAndAmountFormat77Choice	_nLnzW5t3Ee-wQIOX0djF2w	Rate	Value expressed as a rate.
+RateAndAmountFormat77Choice	_nLnzY5t3Ee-wQIOX0djF2w	Amount	Value is expressed as a currency and amount.
+RateAndAmountFormat77Choice	_nLnza5t3Ee-wQIOX0djF2w	NotSpecifiedRate	Value of the rate not specified.
+RateAndAmountFormat77Choice	_nLnzc5t3Ee-wQIOX0djF2w	RateTypeAndAmountAndRateStatus	Value is expressed as a rate type and an amount.
+RateAndAmountFormat77Choice	_nLnzdZt3Ee-wQIOX0djF2w	RateTypeAndRate	Value is expressed as a rate type and a percentage rate.

@@ -1,0 +1,32 @@
+choice	memberId	memberName	text
+CorporateActionEventType115Choice	_jhlJK5t3Ee-wQIOX0djF2w	Code	Event types expressed as a code.
+CorporateActionEventType115Choice	_jhlJM5t3Ee-wQIOX0djF2w	Proprietary	Event types expressed as a proprietary code.
+InstructionCancellationRequestStatus18Choice	_jhlJS5t3Ee-wQIOX0djF2w	CancellationCompleted	Provides status information related to an instruction cancellation request completed.
+InstructionCancellationRequestStatus18Choice	_jhlJU5t3Ee-wQIOX0djF2w	Accepted	Provides status information related to a cancellation request accepted for further processing.
+InstructionCancellationRequestStatus18Choice	_jhlJW5t3Ee-wQIOX0djF2w	Rejected	Provides status information related to a cancellation request rejected for further processing due to system (data) reasons.
+InstructionCancellationRequestStatus18Choice	_jhlJY5t3Ee-wQIOX0djF2w	PendingCancellation	Provides status information related to a pending cancellation request.
+InstructionCancellationRequestStatus18Choice	_jhlJa5t3Ee-wQIOX0djF2w	ProprietaryStatus	Proprietary status related to an instruction cancellation request.
+CancelledStatus14Choice	_ce-52ZKQEeWHWpTQn1FFVg	NoSpecifiedReason	Reason not specified.
+CancelledStatus14Choice	_ce-54ZKQEeWHWpTQn1FFVg	Reason	Reason for the cancelled status.
+CancelledReason10Choice	_ce-6BZKQEeWHWpTQn1FFVg	Code	Standard code to specify the reason why the instruction is cancelled.
+CancelledReason10Choice	_ce-6DZKQEeWHWpTQn1FFVg	Proprietary	Proprietary identification specifying the reason why the instruction is cancelled.
+RejectedStatus54Choice	_NpuWOl99Ee262vCSVgjImg	NoSpecifiedReason	Reason not specified.
+RejectedStatus54Choice	_NpuWQl99Ee262vCSVgjImg	Reason	Reason for the rejected status.
+RejectedReason56Choice	_NpuWZl99Ee262vCSVgjImg	Code	Standard code to specify the reason why the instruction/cancellation request has a rejected status.
+RejectedReason56Choice	_NpuWbl99Ee262vCSVgjImg	Proprietary	Proprietary identification of the reason why the instruction/cancellation request has a rejected status.
+PendingCancellationStatus15Choice	_jhlwh5t3Ee-wQIOX0djF2w	NoSpecifiedReason	Reason not specified.
+PendingCancellationStatus15Choice	_jhlwj5t3Ee-wQIOX0djF2w	Reason	Reason for the pending cancellation status.
+PendingCancellationReason6Choice	_86aToZwtEeazcsnODTksnQ	Code	Standard code to specify the reason why a cancellation request sent for the related instruction is pending.
+PendingCancellationReason6Choice	_86aTqZwtEeazcsnODTksnQ	Proprietary	Proprietary identification of the reason why a cancellation request sent for the related instruction is pending.
+CorporateActionOption42Choice	_BHW2ax9QEeuFz_FaCzCLgQ	Code	Specifies the corporate action options available to the account owner.
+CorporateActionOption42Choice	_BHW2cx9QEeuFz_FaCzCLgQ	Proprietary	Proprietary identification of the type of corporate action option.
+CashAccountIdentification10Choice	_jhnlX5t3Ee-wQIOX0djF2w	IBAN	International Bank Account Number (IBAN) - identifier used internationally by financial institutions to uniquely identify the account of a customer. Further specifications of the format and content of the IBAN can be found in the standard ISO 13616 "Banking and related financial services - International Bank Account Number (IBAN)" version 1997-10-01, or later revisions.
+CashAccountIdentification10Choice	_jhnlZ5t3Ee-wQIOX0djF2w	BlockChainCashWallet	Block Chain Wallet where digital currencies are maintained. This is the equivalent of cash account for digital currencies.
+CashAccountIdentification10Choice	_jhnlaZt3Ee-wQIOX0djF2w	Proprietary	Unique identifier for an account. It is assigned by the account servicer using a proprietary identification scheme.
+SafekeepingPlaceFormat44Choice	_jhnld5t3Ee-wQIOX0djF2w	Identification	Place of safekeeping expressed as a code and a narrative description.
+SafekeepingPlaceFormat44Choice	_jhnlf5t3Ee-wQIOX0djF2w	Country	Place of safekeeping expressed with a country code.
+SafekeepingPlaceFormat44Choice	_jhnlh5t3Ee-wQIOX0djF2w	DigitalLedgerIdentification	Place of settlement expressed with a Digital Ledger Identifier. It identifies a digital ledger or distributed ledger system (for example, blockchain or similar platforms).
+SafekeepingPlaceFormat44Choice	_jhnliZt3Ee-wQIOX0djF2w	TypeAndIdentification	Place of safekeeping expressed with a type and identification.
+SafekeepingPlaceFormat44Choice	_jhnlkZt3Ee-wQIOX0djF2w	Proprietary	Place of safekeeping expressed with a propriety identification scheme.
+FinancialInstrumentQuantity31Choice	_CUJfus9pEee4rfBIKt5cSg	Unit	Quantity expressed as a number, for example, a number of shares.
+FinancialInstrumentQuantity31Choice	_CUJfuc9pEee4rfBIKt5cSg	FaceAmount	Quantity expressed as an amount representing the face amount, that is, the principal of a debt instrument.

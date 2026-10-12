@@ -1,0 +1,99 @@
+{
+  "identifier": "seev.050.001.04",
+  "name": "MarketClaimCreationV04",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.050.001.04",
+  "bodyTag": "MktClmCre",
+  "out": "seev050",
+  "isoId": "_FfUWEaN1EfCxxJ9emeyVvA",
+  "definition": "Scope and Usage|The MarketClaimCreation message is sent by an account servicer to an account holder to advise the creation of a market claim transaction on a securities account, that has been automatically generated (for example by a CSD) on a mandatory distribution type of corporate action event. |This message definition is intended for use with the Business Application Header (BAH).",
+  "blocks": [
+    {
+      "name": "TransactionReference",
+      "isoId": "_FfUWGaN1EfCxxJ9emeyVvA",
+      "xmlTag": "TxRef",
+      "type": "References25",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionGeneralInformation",
+      "isoId": "_FfUWHaN1EfCxxJ9emeyVvA",
+      "xmlTag": "CorpActnGnlInf",
+      "type": "CorporateActionGeneralInformation181",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "RelatedSettlementInstructionDetails",
+      "isoId": "_FfUWH6N1EfCxxJ9emeyVvA",
+      "xmlTag": "RltdSttlmInstrDtls",
+      "type": "RelatedSettlementInstruction2",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountDetails",
+      "isoId": "_FfUWIaN1EfCxxJ9emeyVvA",
+      "xmlTag": "AcctDtls",
+      "type": "AccountIdentification70",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionDetails",
+      "isoId": "_FfUWI6N1EfCxxJ9emeyVvA",
+      "xmlTag": "CorpActnDtls",
+      "type": "CorporateAction59",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "MarketClaimType",
+      "isoId": "_FfUWJaN1EfCxxJ9emeyVvA",
+      "xmlTag": "MktClmTp",
+      "type": "MarketClaimType1Code",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "MarketClaimSettlementIndicator",
+      "isoId": "_k0dM8KN1EfCxxJ9emeyVvA",
+      "xmlTag": "MktClmSttlmInd",
+      "type": "YesNoIndicator",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "MarketClaimDetails",
+      "isoId": "_FfUWJ6N1EfCxxJ9emeyVvA",
+      "xmlTag": "MktClmDtls",
+      "type": "CorporateActionOption234",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "DeliveringSettlementParties",
+      "isoId": "_FfUWKaN1EfCxxJ9emeyVvA",
+      "xmlTag": "DlvrgSttlmPties",
+      "type": "SettlementParties123",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ReceivingSettlementParties",
+      "isoId": "_FfUWMaN1EfCxxJ9emeyVvA",
+      "xmlTag": "RcvgSttlmPties",
+      "type": "SettlementParties124",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_FfUWOaN1EfCxxJ9emeyVvA",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

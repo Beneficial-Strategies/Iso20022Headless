@@ -1,0 +1,123 @@
+{
+  "identifier": "seev.001.001.13",
+  "name": "MeetingNotificationV13",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.001.001.13",
+  "bodyTag": "MtgNtfctn",
+  "out": "seev001",
+  "isoId": "_6s844ajIEfCzuLlmLrhIvA",
+  "definition": "Scope|The MeetingNotification message is sent by a notifying party, for example, an issuer, its agent or an intermediary to another intermediary, a party holding the right to vote, a registered security holder or to a beneficial holder to announce a meeting.|Usage|The MeetingNotification message is used to announce a meeting, for example, it provides information on the participation details and requirements for the meeting, the vote parameters and the resolutions. The MeetingNotification message may also be used to announce an update.|This message definition is intended for use with the Business Application Header (BAH).",
+  "blocks": [
+    {
+      "name": "Pagination",
+      "isoId": "_6s849ajIEfCzuLlmLrhIvA",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "NotificationGeneralInformation",
+      "isoId": "_6s8496jIEfCzuLlmLrhIvA",
+      "xmlTag": "NtfctnGnlInf",
+      "type": "NotificationGeneralInformation4",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "NotificationUpdate",
+      "isoId": "_6s84-ajIEfCzuLlmLrhIvA",
+      "xmlTag": "NtfctnUpd",
+      "type": "NotificationUpdate2",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "EventsLinkage",
+      "isoId": "_6s84-6jIEfCzuLlmLrhIvA",
+      "xmlTag": "EvtsLkg",
+      "type": "MeetingEventReference1",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "Meeting",
+      "isoId": "_6s84_ajIEfCzuLlmLrhIvA",
+      "xmlTag": "Mtg",
+      "type": "MeetingNotice10",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "MeetingDetails",
+      "isoId": "_6s84_6jIEfCzuLlmLrhIvA",
+      "xmlTag": "MtgDtls",
+      "type": "Meeting7",
+      "min": 1,
+      "max": 5
+    },
+    {
+      "name": "Issuer",
+      "isoId": "_6s85AajIEfCzuLlmLrhIvA",
+      "xmlTag": "Issr",
+      "type": "IssuerInformation3",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "IssuerAgent",
+      "isoId": "_6s85A6jIEfCzuLlmLrhIvA",
+      "xmlTag": "IssrAgt",
+      "type": "IssuerAgent3",
+      "min": 0,
+      "max": 10
+    },
+    {
+      "name": "Security",
+      "isoId": "_6s85BajIEfCzuLlmLrhIvA",
+      "xmlTag": "Scty",
+      "type": "SecurityPosition20",
+      "min": 1,
+      "max": 200
+    },
+    {
+      "name": "Resolution",
+      "isoId": "_6s85B6jIEfCzuLlmLrhIvA",
+      "xmlTag": "Rsltn",
+      "type": "Resolution8",
+      "min": 0,
+      "max": 1000
+    },
+    {
+      "name": "Vote",
+      "isoId": "_6s85CajIEfCzuLlmLrhIvA",
+      "xmlTag": "Vote",
+      "type": "VoteParameters10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "PowerOfAttorneyRequirements",
+      "isoId": "_6s85C6jIEfCzuLlmLrhIvA",
+      "xmlTag": "PwrOfAttnyRqrmnts",
+      "type": "PowerOfAttorneyRequirements4",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AdditionalInformation",
+      "isoId": "_6s85DajIEfCzuLlmLrhIvA",
+      "xmlTag": "AddtlInf",
+      "type": "CorporateEventNarrative4",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_6s85D6jIEfCzuLlmLrhIvA",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

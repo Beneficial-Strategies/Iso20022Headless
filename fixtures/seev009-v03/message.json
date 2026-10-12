@@ -1,0 +1,75 @@
+{
+  "identifier": "seev.009.001.03",
+  "name": "AgentCANotificationAdviceV03",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:seev.009.001.03",
+  "bodyTag": "AgtCANtfctnAdvc",
+  "out": "seev009",
+  "isoId": "a62916a1-f130-404c-8c6f-2aa78713f931",
+  "definition": "Scope|This message is sent by an issuer (or its agent) to a CSD to:|- Provide a CSD with the details of a corporate action along with the possible options available to the clients of that CSD; and|- to update a corporate action notification. A notification advice can be initially sent as a preliminary advice and subsequently replaced by another notification advice with updated information.|Usage|This message is used:|- to provide a CSD with the details of a corporate action along with the possible options available to the clients of that CSD. The information can be complete or incomplete.|- to update a corporate action notification advice. A notification advice can be initially sent as a preliminary advice and subsequently replaced by another notification advice with updated information. As per SMPG recommendation, all the information should be provided in the update, not only updated information.|An Agent Corporate Action Notification Status Advice is sent in reply to the Agent Corporate Action Notification Advice.|Note: The amendment of a corporate action notification is done through a replacement mechanism in line with both the ISO 15022 messages used in the flow between the CSD and its clients, and the ISO 20022 proxy voting messages.",
+  "blocks": [
+    {
+      "name": "Pagination",
+      "isoId": "28588c20-c93f-4c53-b2ca-cd941d4348ea",
+      "xmlTag": "Pgntn",
+      "type": "Pagination1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "NotificationGeneralInformation",
+      "isoId": "950428f1-af16-4f2c-bd62-984e50a4aaa6",
+      "xmlTag": "NtfctnGnlInf",
+      "type": "CorporateActionNotification12",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "PreviousNotificationIdentification",
+      "isoId": "a64ce21c-05c9-4b75-8bcf-247333c70cbe",
+      "xmlTag": "PrvsNtfctnId",
+      "type": "DocumentIdentification31",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AgentInformation",
+      "isoId": "ff9ce9dd-789f-40b0-a158-2938e3349142",
+      "xmlTag": "AgtInf",
+      "type": "CorporateActionAgent2",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "CorporateActionGeneralInformation",
+      "isoId": "9e188da1-a39d-4306-9092-ae7ae0c1dccc",
+      "xmlTag": "CorpActnGnlInf",
+      "type": "CorporateActionGeneralInformation196",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionDetails",
+      "isoId": "ca84c953-a764-493e-bd52-516089bd4034",
+      "xmlTag": "CorpActnDtls",
+      "type": "CorporateAction88",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CorporateActionOptionDetails",
+      "isoId": "6dc6a5d6-ad03-43a3-a764-7d202a701c6b",
+      "xmlTag": "CorpActnOptnDtls",
+      "type": "CorporateActionOption250",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "AdditionalInformation",
+      "isoId": "9eee3762-e242-4a7b-a67b-8510700bef20",
+      "xmlTag": "AddtlInf",
+      "type": "CorporateActionNarrative2",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

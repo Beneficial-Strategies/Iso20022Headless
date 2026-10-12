@@ -150,6 +150,8 @@ export const pageDe: PageMessages = {
   areaDesc_head: 'Header, der geschäftliche Informationen enthält, die vor der Verarbeitung einer Nachricht relevant sind.',
   areaName_semt: 'Wertpapierverwaltung',
   areaDesc_semt: 'Nachrichten, die die Prozesse nach der Abwicklung von Wertpapieren unterstützen (einschließlich der Berichterstattung über Wertpapierbewegungen, Geschäfte und Bestände), die Prozesse zum Schutz der Rechte des wirtschaftlich Berechtigten während der Abwicklung sowie Ausnahmen und Untersuchungen im Zusammenhang mit Wertpapiergeschäften.',
+  areaName_seev: 'Wertpapierereignisse',
+  areaDesc_seev: 'Nachrichten, die die Verwaltung von Vermögenswerten unterstützen, einschließlich Stimmrechtsvertretung, Erträgen und Kapitalmaßnahmen.',
   xsdLabel: 'XSD prüfen',
   xsdReady: 'Den Text der Nachricht unten mit {location} prüfen',
   xsdReadyFile: 'Den Text der Nachricht unten mit {file} prüfen (von Ihrem Computer geladen)',
