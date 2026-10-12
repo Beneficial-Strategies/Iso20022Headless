@@ -1,0 +1,11 @@
+choice	memberId	memberName	text
+TransferReason1Choice	_hvAgYa51EeeMy7TnJ3e__g	Code	Transfer reason expressed as an ISO 20022 code.
+TransferReason1Choice	_hvAgY651EeeMy7TnJ3e__g	Proprietary	Transfer reason expressed as a proprietary code.
+ChargePaymentMethod1Choice	_8BZF4BXxEeOBE-jZfcm4KQ	Code	Charge payment method expressed as a code.
+ChargePaymentMethod1Choice	_Ca0GEBXyEeOBE-jZfcm4KQ	Proprietary	Charge payment method expressed as a proprietary code.
+ChargeType6Choice	_iOF94YjKEeeqaMoyJI1HbA	Code	Type of fee expressed as a code.
+ChargeType6Choice	_iOF944jKEeeqaMoyJI1HbA	Proprietary	Type of fee expressed as a proprietary code.
+TaxType1Choice	_4SMDcBuHEeOqSdXzJ0oydA	Code	Type of tax expressed as a code.
+TaxType1Choice	_-oW7UBuHEeOqSdXzJ0oydA	Proprietary	Type of tax expressed as a proprietary code.
+ExemptionReason1Choice	_loHfEBuJEeOqSdXzJ0oydA	Code	Exemption reason expressed as a code.
+ExemptionReason1Choice	_tuUKIBuJEeOqSdXzJ0oydA	Proprietary	Exemption reason expressed as a proprietary code.

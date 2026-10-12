@@ -1,0 +1,21 @@
+choice	memberId	memberName	text
+SettlementDate22Choice	_5TmBnc3yEee5nJBZsW8MFQ	Date	Date in ISO format.
+SettlementDate22Choice	_5TmBq83yEee5nJBZsW8MFQ	DateCode	Date and time at which the securities are to be delivered or received.
+Reporting9Choice	_5mslk5NLEeWGlc8L7oPDIg	Code	Third party reporting information expressed as an ISO 20022 code.
+Reporting9Choice	_5mslm5NLEeWGlc8L7oPDIg	Proprietary	Third party reporting information expressed as a proprietary code.
+InvestorCapacity5Choice	_5mtMZZNLEeWGlc8L7oPDIg	Code	Investor capacity expressed as an ISO 20022 code.
+InvestorCapacity5Choice	_5mtMbZNLEeWGlc8L7oPDIg	Proprietary	Investor capacity expressed as a proprietary code.
+TradeOriginator4Choice	_5mtMiZNLEeWGlc8L7oPDIg	Code	Trading party capacity expressed as an ISO 20022 code.
+TradeOriginator4Choice	_5mtMkZNLEeWGlc8L7oPDIg	Proprietary	Trading party capacity expressed as a proprietary code.
+RevaluationIndicator4Choice	_5mw3_5NLEeWGlc8L7oPDIg	Indicator	Specifies whether the collateral position should be subject to automatic revaluation by the account servicer.
+RevaluationIndicator4Choice	_5mw4B5NLEeWGlc8L7oPDIg	Proprietary	Revaluation information provided as a proprietary code.
+RateOrName2Choice	_XO3Yd9p-Ed-ak6NoX_4Aeg_1588721411	Rate	Pricing expressed as a rate.
+RateOrName2Choice	_XO3YeNp-Ed-ak6NoX_4Aeg_-1288656582	RateName	Pricing expressed as a rate name.
+SettlementStandingInstructionDatabase5Choice	_5myE3pNLEeWGlc8L7oPDIg	Code	Settlement standing instruction database expressed as an ISO 20022 code.
+SettlementStandingInstructionDatabase5Choice	_5myE5pNLEeWGlc8L7oPDIg	Proprietary	Settlement standing instruction database expressed as a proprietary code.
+Counterparty16Choice	_c69UxTi8Eeydid5dcNPKvg	Seller	Party that sells goods or services, or a financial instrument.
+Counterparty16Choice	_c69UzTi8Eeydid5dcNPKvg	Buyer	Party that buys goods or services, or a financial instrument.
+SettlementTransactionCondition22Choice	_5m5aZ5NLEeWGlc8L7oPDIg	Code	Settlement conditions expressed as an ISO 20022 code.
+SettlementTransactionCondition22Choice	_5m5ab5NLEeWGlc8L7oPDIg	Proprietary	Settlement conditions expressed as a proprietary code.
+AutomaticBorrowing8Choice	_5m6oV5NLEeWGlc8L7oPDIg	Code	Condition for automatic borrowing expressed as an ISO 20022 code.
+AutomaticBorrowing8Choice	_5m6oX5NLEeWGlc8L7oPDIg	Proprietary	Condition for automatic borrowing expressed as a proprietary code.

@@ -94,6 +94,7 @@ import {
   GenericIdentification1Schema,
   PartyIdentification125ChoiceSchema,
   PartyIdentification139Schema,
+  AdditionalReference10Schema,
   TransactionActivity1CodeSchema,
   TransactionActivity3ChoiceSchema,
   SecuritiesTransactionType27CodeSchema,
@@ -238,12 +239,6 @@ export const ClosingBalance6ChoiceSchema = choiceOf({
 export const ClosingBalance5Schema = z.strictObject({
   ShortLongIndicator: ShortLong1CodeSchema,
   ClosingBalance: ClosingBalance6ChoiceSchema,
-});
-
-export const AdditionalReference10Schema = z.strictObject({
-  Reference: Max35TextSchema,
-  ReferenceIssuer: PartyIdentification139Schema.optional(),
-  MessageName: Max35TextSchema.optional(),
 });
 
 export const SettlementOrCorporateActionEvent35ChoiceSchema = choiceOf({
@@ -551,16 +546,6 @@ const ownTypeDescriptors: TypeDescriptors = {
     ],
     rules: [
       { name: "ShortLongDefaultRule", isoId: "_BpAVYSp8EeyR9JrVGfaMKw", text: "If Shortlong is absent, then the default is long, that is, balance is positive." },
-    ],
-  },
-  "AdditionalReference10": {
-    name: "AdditionalReference10",
-    isoId: "_ZBypsWpTEeipaMTLlhaKMQ",
-    kind: "component",
-    fields: [
-      f({ name: "Reference", isoId: "_ZSms42pTEeipaMTLlhaKMQ", xmlTag: "Ref", displayName: displayName("Reference"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "ReferenceIssuer", isoId: "_ZSms5WpTEeipaMTLlhaKMQ", xmlTag: "RefIssr", displayName: displayName("ReferenceIssuer"), kind: "component", type: "PartyIdentification139", required: false }),
-      f({ name: "MessageName", isoId: "_ZSms52pTEeipaMTLlhaKMQ", xmlTag: "MsgNm", displayName: displayName("MessageName"), kind: "text", type: "Max35Text", required: false }),
     ],
   },
   "SettlementOrCorporateActionEvent35Choice": {
@@ -893,6 +878,7 @@ export const typeDescriptors: TypeDescriptors = {
   "GenericIdentification1": sharedTypeDescriptors["GenericIdentification1"]!,
   "PartyIdentification125Choice": sharedTypeDescriptors["PartyIdentification125Choice"]!,
   "PartyIdentification139": sharedTypeDescriptors["PartyIdentification139"]!,
+  "AdditionalReference10": sharedTypeDescriptors["AdditionalReference10"]!,
   "TransactionActivity1Code": sharedTypeDescriptors["TransactionActivity1Code"]!,
   "TransactionActivity3Choice": sharedTypeDescriptors["TransactionActivity3Choice"]!,
   "SecuritiesTransactionType27Code": sharedTypeDescriptors["SecuritiesTransactionType27Code"]!,

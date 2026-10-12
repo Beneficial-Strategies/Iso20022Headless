@@ -1,0 +1,11 @@
+choice	memberId	memberName	text
+NumberCount2Choice	_JaoZcygdEey2k_sfZmJz4g	CurrentInstructionNumber	Sequential number of the instruction in a range of linked settlement instructions.
+NumberCount2Choice	_JaoZeygdEey2k_sfZmJz4g	TotalNumber	Total numbers of settlement transactions, receipts and deliveries, and the concerned settlement transaction number.
+PairedOrTurnedQuantity6Choice	_dJccjzi8Eeydid5dcNPKvg	PairedOffQuantity	Quantity of financial instruments of the linked transaction to be paired-off.
+PairedOrTurnedQuantity6Choice	_dJcclzi8Eeydid5dcNPKvg	TurnedQuantity	Quantity of financial instruments of the linked transaction to be turned.
+CurrencyToBuyOrSell1Choice	_QsvIMtp-Ed-ak6NoX_4Aeg_-894055874	CurrencyToBuy	Account servicer is instructed to buy the indicated currency after the receipt of cash proceeds.
+CurrencyToBuyOrSell1Choice	_QsvIM9p-Ed-ak6NoX_4Aeg_-894055934	CurrencyToSell	Account servicer is instructed to sell the indicated currency in order to obtain the necessary currency to fund the transaction.
+FXStandingInstruction5Choice	_5xrHD5NLEeWGlc8L7oPDIg	Indicator	Specifies whether the forex standing instruction in place should apply.
+FXStandingInstruction5Choice	_5xrHF5NLEeWGlc8L7oPDIg	Proprietary	FX Standing instruction information expressed as a proprietary code.
+Tracking5Choice	_5xrt9ZNLEeWGlc8L7oPDIg	Indicator	Specifies whether the loan and/or collateral is tracked.
+Tracking5Choice	_5xrt_ZNLEeWGlc8L7oPDIg	Proprietary	Tracking information expressed as a proprietary code.

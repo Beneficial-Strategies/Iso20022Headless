@@ -99,14 +99,19 @@ import {
   BlockTrade1CodeSchema,
   BlockTrade4ChoiceSchema,
   CentralCounterPartyEligibility4ChoiceSchema,
+  DeliveryReturn1CodeSchema,
+  DeliveryReturn3ChoiceSchema,
   CashSettlementSystem2CodeSchema,
   ExposureType15CodeSchema,
   ExposureType25ChoiceSchema,
+  FXStandingInstruction4ChoiceSchema,
   MarketClientSide1CodeSchema,
   MarketClientSide6ChoiceSchema,
   NettingEligibility4ChoiceSchema,
   Registration1CodeSchema,
   Registration9ChoiceSchema,
+  RepurchaseType10CodeSchema,
+  RepurchaseType23ChoiceSchema,
   OwnershipLegalRestrictions1CodeSchema,
   Restriction5ChoiceSchema,
   SecuritiesRTGS4ChoiceSchema,
@@ -116,7 +121,11 @@ import {
   SettlementSystemMethod4ChoiceSchema,
   TaxLiability1CodeSchema,
   TaxCapacityParty4ChoiceSchema,
+  Tracking4ChoiceSchema,
+  AutoBorrowing1CodeSchema,
+  AutomaticBorrowing6ChoiceSchema,
   LetterOfGuarantee4ChoiceSchema,
+  ModificationCancellationAllowed4ChoiceSchema,
   MICIdentifierSchema,
   MarketIdentification1ChoiceSchema,
   MarketType2CodeSchema,
@@ -201,44 +210,8 @@ export const SettlementOrCorporateActionEvent26ChoiceSchema = choiceOf({
   CorporateActionEventType: CorporateActionEventType73ChoiceSchema,
 });
 
-export const DeliveryReturn1CodeSchema = z.enum(["UNRE", "DQUA", "DMON", "PART", "SAFE", "DUEB", "PARD"]);
-
-export const DeliveryReturn3ChoiceSchema = choiceOf({
-  Code: DeliveryReturn1CodeSchema,
-  Proprietary: GenericIdentification30Schema,
-});
-
 export const CashSettlementSystem4ChoiceSchema = choiceOf({
   Code: CashSettlementSystem2CodeSchema,
-  Proprietary: GenericIdentification30Schema,
-});
-
-export const FXStandingInstruction4ChoiceSchema = choiceOf({
-  Indicator: YesNoIndicatorSchema,
-  Proprietary: GenericIdentification30Schema,
-});
-
-export const RepurchaseType10CodeSchema = z.enum(["PAIR", "ROLP", "RATE", "CALL", "CADJ", "TOPU", "WTHD"]);
-
-export const RepurchaseType23ChoiceSchema = choiceOf({
-  Code: RepurchaseType10CodeSchema,
-  Proprietary: GenericIdentification30Schema,
-});
-
-export const Tracking4ChoiceSchema = choiceOf({
-  Indicator: YesNoIndicatorSchema,
-  Proprietary: GenericIdentification30Schema,
-});
-
-export const AutoBorrowing1CodeSchema = z.enum(["LAMI", "NBOR", "YBOR"]);
-
-export const AutomaticBorrowing6ChoiceSchema = choiceOf({
-  Code: AutoBorrowing1CodeSchema,
-  Proprietary: GenericIdentification30Schema,
-});
-
-export const ModificationCancellationAllowed4ChoiceSchema = choiceOf({
-  Indicator: YesNoIndicatorSchema,
   Proprietary: GenericIdentification30Schema,
 });
 
@@ -412,21 +385,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "CorporateActionEventType", isoId: "_eS0_idEfEeiO-eodGv5iKQ", xmlTag: "CorpActnEvtTp", displayName: displayName("CorporateActionEventType"), kind: "choice", type: "CorporateActionEventType73Choice", required: true }),
     ],
   },
-  "DeliveryReturn1Code": {
-    name: "DeliveryReturn1Code",
-    isoId: "_azTIg9p-Ed-ak6NoX_4Aeg_-1245884336",
-    kind: "code",
-    options: [{ value: "UNRE", name: "UnrecognisedDelivery", isoId: "_azTIhNp-Ed-ak6NoX_4Aeg_-959595290" }, { value: "DQUA", name: "WrongQuantity", isoId: "_azTIhdp-Ed-ak6NoX_4Aeg_-917110811" }, { value: "DMON", name: "WrongSettlementAmount", isoId: "_azTIhtp-Ed-ak6NoX_4Aeg_-872782203" }, { value: "PART", name: "PartialDelivery", isoId: "_azTIh9p-Ed-ak6NoX_4Aeg_-845078527" }, { value: "SAFE", name: "AccountMissing", isoId: "_azc5gNp-Ed-ak6NoX_4Aeg_-829378346" }, { value: "DUEB", name: "DueBiillMissing", isoId: "_azc5gdp-Ed-ak6NoX_4Aeg_-573562488" }, { value: "PARD", name: "PartialReturn", isoId: "_azc5gtp-Ed-ak6NoX_4Aeg_-502450366" }],
-  },
-  "DeliveryReturn3Choice": {
-    name: "DeliveryReturn3Choice",
-    isoId: "_LtShkTtEEeWRTLSN0i0tng",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_MOLBETtEEeWRTLSN0i0tng", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "DeliveryReturn1Code", required: true }),
-      f({ name: "Proprietary", isoId: "_MOLBGTtEEeWRTLSN0i0tng", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
   "CashSettlementSystem4Choice": {
     name: "CashSettlementSystem4Choice",
     isoId: "_AF_qMTqHEeWVrPy0StzzSg",
@@ -434,63 +392,6 @@ const ownTypeDescriptors: TypeDescriptors = {
     choiceOptions: [
       f({ name: "Code", isoId: "_AlY78TqHEeWVrPy0StzzSg", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "CashSettlementSystem2Code", required: true }),
       f({ name: "Proprietary", isoId: "_AlY7-TqHEeWVrPy0StzzSg", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
-  "FXStandingInstruction4Choice": {
-    name: "FXStandingInstruction4Choice",
-    isoId: "_aJUtUTtEEeWRTLSN0i0tng",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Indicator", isoId: "_aqW90TtEEeWRTLSN0i0tng", xmlTag: "Ind", displayName: displayName("Indicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
-      f({ name: "Proprietary", isoId: "_aqW92TtEEeWRTLSN0i0tng", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
-  "RepurchaseType10Code": {
-    name: "RepurchaseType10Code",
-    isoId: "_4b9vEI-UEeaVK-2bgpxeYw",
-    kind: "code",
-    options: [{ value: "PAIR", name: "Pairoff", isoId: "_62sFEY-UEeaVK-2bgpxeYw" }, { value: "ROLP", name: "RepoContractRollover", isoId: "_691O4Y-UEeaVK-2bgpxeYw" }, { value: "RATE", name: "RepoRate", isoId: "_7E0nsY-UEeaVK-2bgpxeYw" }, { value: "CALL", name: "RepurchaseCall", isoId: "_7Prz4Y-UEeaVK-2bgpxeYw" }, { value: "CADJ", name: "Swap", isoId: "_7WhbsY-UEeaVK-2bgpxeYw" }, { value: "TOPU", name: "TopUp", isoId: "_7b4c0Y-UEeaVK-2bgpxeYw" }, { value: "WTHD", name: "Withdrawal", isoId: "_7gyyAY-UEeaVK-2bgpxeYw" }],
-  },
-  "RepurchaseType23Choice": {
-    name: "RepurchaseType23Choice",
-    isoId: "_ATHRgY-VEeaVK-2bgpxeYw",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_AiJMAY-VEeaVK-2bgpxeYw", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "RepurchaseType10Code", required: true }),
-      f({ name: "Proprietary", isoId: "_AiJMCY-VEeaVK-2bgpxeYw", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
-  "Tracking4Choice": {
-    name: "Tracking4Choice",
-    isoId: "_YKnvgTtFEeWRTLSN0i0tng",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Indicator", isoId: "_YrWeATtFEeWRTLSN0i0tng", xmlTag: "Ind", displayName: displayName("Indicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
-      f({ name: "Proprietary", isoId: "_YrWeCTtFEeWRTLSN0i0tng", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
-  "AutoBorrowing1Code": {
-    name: "AutoBorrowing1Code",
-    isoId: "_bjlV9dp-Ed-ak6NoX_4Aeg_-1856844468",
-    kind: "code",
-    options: [{ value: "LAMI", name: "LastResort", isoId: "_bjlV9tp-Ed-ak6NoX_4Aeg_-1856844449" }, { value: "NBOR", name: "NoAutomatic", isoId: "_bjlV99p-Ed-ak6NoX_4Aeg_-1856844448" }, { value: "YBOR", name: "Automatic", isoId: "_bjlV-Np-Ed-ak6NoX_4Aeg_-1856844433" }],
-  },
-  "AutomaticBorrowing6Choice": {
-    name: "AutomaticBorrowing6Choice",
-    isoId: "_lL50gTtFEeWRTLSN0i0tng",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_ltFO8TtFEeWRTLSN0i0tng", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "AutoBorrowing1Code", required: true }),
-      f({ name: "Proprietary", isoId: "_ltFO-TtFEeWRTLSN0i0tng", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
-  "ModificationCancellationAllowed4Choice": {
-    name: "ModificationCancellationAllowed4Choice",
-    isoId: "_421HATtFEeWRTLSN0i0tng",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Indicator", isoId: "_5WrEsTtFEeWRTLSN0i0tng", xmlTag: "Ind", displayName: displayName("Indicator"), kind: "boolean", type: "YesNoIndicator", required: true }),
-      f({ name: "Proprietary", isoId: "_5WrEuTtFEeWRTLSN0i0tng", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
     ],
   },
   "SettlementDetails235": {
@@ -742,14 +643,19 @@ export const typeDescriptors: TypeDescriptors = {
   "BlockTrade1Code": sharedTypeDescriptors["BlockTrade1Code"]!,
   "BlockTrade4Choice": sharedTypeDescriptors["BlockTrade4Choice"]!,
   "CentralCounterPartyEligibility4Choice": sharedTypeDescriptors["CentralCounterPartyEligibility4Choice"]!,
+  "DeliveryReturn1Code": sharedTypeDescriptors["DeliveryReturn1Code"]!,
+  "DeliveryReturn3Choice": sharedTypeDescriptors["DeliveryReturn3Choice"]!,
   "CashSettlementSystem2Code": sharedTypeDescriptors["CashSettlementSystem2Code"]!,
   "ExposureType15Code": sharedTypeDescriptors["ExposureType15Code"]!,
   "ExposureType25Choice": sharedTypeDescriptors["ExposureType25Choice"]!,
+  "FXStandingInstruction4Choice": sharedTypeDescriptors["FXStandingInstruction4Choice"]!,
   "MarketClientSide1Code": sharedTypeDescriptors["MarketClientSide1Code"]!,
   "MarketClientSide6Choice": sharedTypeDescriptors["MarketClientSide6Choice"]!,
   "NettingEligibility4Choice": sharedTypeDescriptors["NettingEligibility4Choice"]!,
   "Registration1Code": sharedTypeDescriptors["Registration1Code"]!,
   "Registration9Choice": sharedTypeDescriptors["Registration9Choice"]!,
+  "RepurchaseType10Code": sharedTypeDescriptors["RepurchaseType10Code"]!,
+  "RepurchaseType23Choice": sharedTypeDescriptors["RepurchaseType23Choice"]!,
   "OwnershipLegalRestrictions1Code": sharedTypeDescriptors["OwnershipLegalRestrictions1Code"]!,
   "Restriction5Choice": sharedTypeDescriptors["Restriction5Choice"]!,
   "SecuritiesRTGS4Choice": sharedTypeDescriptors["SecuritiesRTGS4Choice"]!,
@@ -759,7 +665,11 @@ export const typeDescriptors: TypeDescriptors = {
   "SettlementSystemMethod4Choice": sharedTypeDescriptors["SettlementSystemMethod4Choice"]!,
   "TaxLiability1Code": sharedTypeDescriptors["TaxLiability1Code"]!,
   "TaxCapacityParty4Choice": sharedTypeDescriptors["TaxCapacityParty4Choice"]!,
+  "Tracking4Choice": sharedTypeDescriptors["Tracking4Choice"]!,
+  "AutoBorrowing1Code": sharedTypeDescriptors["AutoBorrowing1Code"]!,
+  "AutomaticBorrowing6Choice": sharedTypeDescriptors["AutomaticBorrowing6Choice"]!,
   "LetterOfGuarantee4Choice": sharedTypeDescriptors["LetterOfGuarantee4Choice"]!,
+  "ModificationCancellationAllowed4Choice": sharedTypeDescriptors["ModificationCancellationAllowed4Choice"]!,
   "MICIdentifier": sharedTypeDescriptors["MICIdentifier"]!,
   "MarketIdentification1Choice": sharedTypeDescriptors["MarketIdentification1Choice"]!,
   "MarketType2Code": sharedTypeDescriptors["MarketType2Code"]!,

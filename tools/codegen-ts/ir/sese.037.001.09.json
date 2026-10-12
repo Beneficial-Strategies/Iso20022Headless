@@ -1,0 +1,4857 @@
+{
+  "message": {
+    "identifier": "sese.037.001.09",
+    "name": "PortfolioTransferNotificationV09",
+    "namespace": "urn:iso:std:iso:20022:tech:xsd:sese.037.001.09",
+    "bodyTag": "PrtflTrfNtfctn",
+    "out": "sese037",
+    "isoId": "_uLnIoZaHEfC2_67yGLymgA",
+    "definition": "Scope|The  PortfolioTransferNotification is sent by an account servicer to another account servicer to exchange transfer settlement details information during a retail or institutional client portfolio transfer.|The account servicer will typically be local agent or global custodian acting on behalf of an investment management institution, a broker/dealer or a retail client.||Usage|The exchange of transfer settlement details is the provision, by the delivering account servicer to the receiving account servicer, of the settlement data (such as trade date, settlement date, delivering settlement chain, quantities) of the individual transfers that will take place during a full or partial portfolio transfer. This delivering account servicer message may also include, for validation, the receiving settlement chain as provided by the client. In case the receiving settlement chain is not available to the delivering account servicer, the receiving account servicer may in return provide to the delivering account servicer the receiving settlement chain using the same message.||The message may also be used to:|- re-send a message previously sent,|- provide a third party with a copy of a message for information,|- re-send to a third party a copy of a message for information|using the relevant elements in the Business Application Header.",
+    "blocks": [
+      {
+        "name": "Pagination",
+        "isoId": "_uLnItZaHEfC2_67yGLymgA",
+        "xmlTag": "Pgntn",
+        "type": "Pagination1",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "StatementGeneralDetails",
+        "isoId": "_uLnIu5aHEfC2_67yGLymgA",
+        "xmlTag": "StmtGnlDtls",
+        "type": "Statement62",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "AccountOwner",
+        "isoId": "_uLnIwZaHEfC2_67yGLymgA",
+        "xmlTag": "AcctOwnr",
+        "type": "PartyIdentification144",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "name": "SafekeepingAccount",
+        "isoId": "_uLnIx5aHEfC2_67yGLymgA",
+        "xmlTag": "SfkpgAcct",
+        "type": "SecuritiesAccount19",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "name": "BlockChainAddressOrWallet",
+        "isoId": "_uLnIzZaHEfC2_67yGLymgA",
+        "xmlTag": "BlckChainAdrOrWllt",
+        "type": "BlockChainAddressWallet3",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "name": "TransferNotificationDetails",
+        "isoId": "_uLnI05aHEfC2_67yGLymgA",
+        "xmlTag": "TrfNtfctnDtls",
+        "type": "SecuritiesTradeDetails154",
+        "min": 0,
+        "max": null
+      }
+    ]
+  },
+  "root": "PortfolioTransferNotificationV09",
+  "order": [
+    "Max5NumericText",
+    "YesNoIndicator",
+    "Pagination1",
+    "Max35Text",
+    "Exact3NumericText",
+    "Exact5NumericText",
+    "Number3Choice",
+    "ISODate",
+    "ISODateTime",
+    "DateAndDateTime2Choice",
+    "StatementUpdateType1Code",
+    "Exact4AlphaNumericText",
+    "GenericIdentification30",
+    "UpdateType15Choice",
+    "Statement62",
+    "AnyBICDec2014Identifier",
+    "GenericIdentification36",
+    "PartyIdentification127Choice",
+    "LEIIdentifier",
+    "PartyIdentification144",
+    "Max70Text",
+    "SecuritiesAccount19",
+    "Max140Text",
+    "BlockChainAddressWallet3",
+    "ReceiveDelivery1Code",
+    "DeliveryReceiptType2Code",
+    "NoReasonCode",
+    "AcknowledgementReason9Code",
+    "AcknowledgementReason23Choice",
+    "Max210Text",
+    "AcknowledgementReason20",
+    "AcknowledgedAcceptedStatus32Choice",
+    "PendingFailingReason1Code",
+    "PendingProcessingReason16Choice",
+    "PendingProcessingReason14",
+    "PendingProcessingStatus17Choice",
+    "RejectionReason55Code",
+    "RejectionReason37Choice",
+    "RejectionReason49",
+    "RejectionStatus30Choice",
+    "ProprietaryReason4",
+    "ProprietaryStatusAndReason6",
+    "PortfolioTransferStatus2Choice",
+    "DateType3Code",
+    "TradeDateCode3Choice",
+    "TradeDate8Choice",
+    "SettlementDate4Code",
+    "SettlementDateCode7Choice",
+    "SettlementDate17Choice",
+    "Max3Number",
+    "ISINOct2015Identifier",
+    "Max16Text",
+    "ExternalFinancialInstrumentIdentificationType1Code",
+    "IdentificationSource3Choice",
+    "OtherIdentification1",
+    "SecurityIdentification19",
+    "MICIdentifier",
+    "MarketIdentification3Choice",
+    "InterestComputationMethod2Code",
+    "InterestComputationMethodFormat4Choice",
+    "FormOfSecurity1Code",
+    "FormOfSecurity6Choice",
+    "EventFrequency3Code",
+    "Frequency23Choice",
+    "SecuritiesPaymentStatus1Code",
+    "SecuritiesPaymentStatus5Choice",
+    "CFIOct2015Identifier",
+    "ClassificationType32Choice",
+    "OptionStyle2Code",
+    "OptionStyle8Choice",
+    "OptionType1Code",
+    "OptionType6Choice",
+    "ActiveOrHistoricCurrencyCode",
+    "BaseOneRate",
+    "PercentageRate",
+    "GenericIdentification1",
+    "Number22Choice",
+    "GenericIdentification37",
+    "PriceValueType1Code",
+    "YieldedOrValueType1Choice",
+    "ActiveOrHistoricCurrencyAnd13DecimalAmount",
+    "PriceRateOrAmount3Choice",
+    "Price7",
+    "PriceType4Choice",
+    "DecimalNumber",
+    "ImpliedCurrencyAndAmount",
+    "Max30DecimalNumber",
+    "FinancialInstrumentQuantity33Choice",
+    "Max350Text",
+    "FinancialInstrumentAttributes111",
+    "Reporting1Code",
+    "Reporting7Choice",
+    "SecuritiesCertificate4",
+    "TypeOfPrice14Code",
+    "TypeOfPrice29Choice",
+    "QuantityBreakdown62",
+    "Quantity48",
+    "SettlementTransactionCondition21Code",
+    "SettlementTransactionCondition47Choice",
+    "Registration1Code",
+    "Registration9Choice",
+    "OwnershipLegalRestrictions1Code",
+    "Restriction5Choice",
+    "SecuritiesRTGS4Choice",
+    "SettlementSystemMethod1Code",
+    "SettlementSystemMethod4Choice",
+    "TaxLiability1Code",
+    "TaxCapacityParty4Choice",
+    "SettlementDetails236",
+    "AddressType2Code",
+    "CountryCode",
+    "PostalAddress1",
+    "NameAndAddress5",
+    "DTI2024Identifier",
+    "PartyIdentification257Choice",
+    "TypeOfIdentification1Code",
+    "IdentificationType42Choice",
+    "AlternatePartyIdentification7",
+    "PartyTextInformation1",
+    "PartyIdentification315",
+    "PartyIdentification120Choice",
+    "PartyIdentificationAndAccount196",
+    "SettlementParties128",
+    "ActiveCurrencyAndAmount",
+    "CreditDebitCode",
+    "AmountAndDirection52",
+    "ActiveOrHistoricCurrencyAndAmount",
+    "ActiveCurrencyCode",
+    "ForeignExchangeTerms23",
+    "AmountAndDirection44",
+    "OtherAmounts29",
+    "Quantity83Choice",
+    "CashSettlementSystemPlace1Choice",
+    "DigitalPaymentSettlement1",
+    "PartyIdentification134Choice",
+    "PartyIdentification149",
+    "PartyIdentification136",
+    "OtherParties39",
+    "SupplementaryDataEnvelope1",
+    "SupplementaryData1",
+    "SecuritiesTradeDetails154",
+    "PortfolioTransferNotificationV09"
+  ],
+  "types": {
+    "Max5NumericText": {
+      "name": "Max5NumericText",
+      "kind": "text",
+      "isoId": "_YYU65Np-Ed-ak6NoX_4Aeg_1112774407",
+      "pattern": "[0-9]{1,5}"
+    },
+    "YesNoIndicator": {
+      "name": "YesNoIndicator",
+      "kind": "boolean",
+      "isoId": "_YXbjA9p-Ed-ak6NoX_4Aeg_-2040117978"
+    },
+    "Pagination1": {
+      "name": "Pagination1",
+      "isoId": "_xhMHQa6XEees_ufOy2ci-g",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "PageNumber",
+          "isoId": "_xsy6Ua6XEees_ufOy2ci-g",
+          "xmlTag": "PgNb",
+          "type": "Max5NumericText",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "LastPageIndicator",
+          "isoId": "_xsy6U66XEees_ufOy2ci-g",
+          "xmlTag": "LastPgInd",
+          "type": "YesNoIndicator",
+          "kind": "boolean",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Max35Text": {
+      "name": "Max35Text",
+      "kind": "text",
+      "isoId": "_YW1tKdp-Ed-ak6NoX_4Aeg_1913463446",
+      "minLength": 1,
+      "maxLength": 35
+    },
+    "Exact3NumericText": {
+      "name": "Exact3NumericText",
+      "kind": "text",
+      "isoId": "_YYxm0Np-Ed-ak6NoX_4Aeg_862142896",
+      "pattern": "[0-9]{3}"
+    },
+    "Exact5NumericText": {
+      "name": "Exact5NumericText",
+      "kind": "text",
+      "isoId": "_YWiyMtp-Ed-ak6NoX_4Aeg_-1431118919",
+      "pattern": "[0-9]{5}"
+    },
+    "Number3Choice": {
+      "name": "Number3Choice",
+      "isoId": "_QrP6dNp-Ed-ak6NoX_4Aeg_-1147595422",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Short",
+          "isoId": "_QrP6ddp-Ed-ak6NoX_4Aeg_-969476750",
+          "xmlTag": "Shrt",
+          "type": "Exact3NumericText",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Long",
+          "isoId": "_QrP6dtp-Ed-ak6NoX_4Aeg_1752980794",
+          "xmlTag": "Lng",
+          "type": "Exact5NumericText",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ISODate": {
+      "name": "ISODate",
+      "kind": "date",
+      "isoId": "_YXSZFtp-Ed-ak6NoX_4Aeg_2032498111"
+    },
+    "ISODateTime": {
+      "name": "ISODateTime",
+      "kind": "datetime",
+      "isoId": "_YW1tKtp-Ed-ak6NoX_4Aeg_-1624336183"
+    },
+    "DateAndDateTime2Choice": {
+      "name": "DateAndDateTime2Choice",
+      "isoId": "_fGuzgZlhEeeE1Ya-LgRsuQ",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Date",
+          "isoId": "_fPH6gZlhEeeE1Ya-LgRsuQ",
+          "xmlTag": "Dt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "DateTime",
+          "isoId": "_fPH6g5lhEeeE1Ya-LgRsuQ",
+          "xmlTag": "DtTm",
+          "type": "ISODateTime",
+          "kind": "datetime",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "StatementUpdateType1Code": {
+      "name": "StatementUpdateType1Code",
+      "isoId": "_ZQM-F9p-Ed-ak6NoX_4Aeg_1112854815",
+      "kind": "code",
+      "options": [
+        {
+          "value": "COMP",
+          "name": "Complete",
+          "isoId": "_ZQM-GNp-Ed-ak6NoX_4Aeg_1368668707"
+        },
+        {
+          "value": "DELT",
+          "name": "Delta",
+          "isoId": "_ZQWvENp-Ed-ak6NoX_4Aeg_1368668708"
+        }
+      ]
+    },
+    "Exact4AlphaNumericText": {
+      "name": "Exact4AlphaNumericText",
+      "kind": "text",
+      "isoId": "_YYLJ6Np-Ed-ak6NoX_4Aeg_-1265890753",
+      "pattern": "[a-zA-Z0-9]{4}"
+    },
+    "GenericIdentification30": {
+      "name": "GenericIdentification30",
+      "isoId": "_P-Pqgtp-Ed-ak6NoX_4Aeg_-1987897352",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_P-Pqg9p-Ed-ak6NoX_4Aeg_-2101736418",
+          "xmlTag": "Id",
+          "type": "Exact4AlphaNumericText",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "isoId": "_P-PqhNp-Ed-ak6NoX_4Aeg_1196158525",
+          "xmlTag": "Issr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SchemeName",
+          "isoId": "_P-Pqhdp-Ed-ak6NoX_4Aeg_491043910",
+          "xmlTag": "SchmeNm",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "UpdateType15Choice": {
+      "name": "UpdateType15Choice",
+      "isoId": "_XMoFcTeQEeWm5uvLSn0jEw",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_Xt8p0zeQEeWm5uvLSn0jEw",
+          "xmlTag": "Cd",
+          "type": "StatementUpdateType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_Xt8p1TeQEeWm5uvLSn0jEw",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Statement62": {
+      "name": "Statement62",
+      "isoId": "_nocSUbPuEeelzbgsFa3sqQ",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "CounterpartyPortfolioTransferNotificationReference",
+          "isoId": "_n5GkgbPuEeelzbgsFa3sqQ",
+          "xmlTag": "CtrPtyPrtflTrfNtfctnRef",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ReportNumber",
+          "isoId": "_n5Gkg7PuEeelzbgsFa3sqQ",
+          "xmlTag": "RptNb",
+          "type": "Number3Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "StatementIdentification",
+          "isoId": "_n5Gki7PuEeelzbgsFa3sqQ",
+          "xmlTag": "StmtId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "StatementDateTime",
+          "isoId": "_n5GkjbPuEeelzbgsFa3sqQ",
+          "xmlTag": "StmtDtTm",
+          "type": "DateAndDateTime2Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "UpdateType",
+          "isoId": "_n5GklbPuEeelzbgsFa3sqQ",
+          "xmlTag": "UpdTp",
+          "type": "UpdateType15Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ActivityIndicator",
+          "isoId": "_n5GknbPuEeelzbgsFa3sqQ",
+          "xmlTag": "ActvtyInd",
+          "type": "YesNoIndicator",
+          "kind": "boolean",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "AnyBICDec2014Identifier": {
+      "name": "AnyBICDec2014Identifier",
+      "kind": "text",
+      "isoId": "_jp-90kI6EeirV6K70JJQ8Q",
+      "pattern": "[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}"
+    },
+    "GenericIdentification36": {
+      "name": "GenericIdentification36",
+      "isoId": "_ARhDQNokEeC60axPepSq7g_-809870990",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_ARhDQdokEeC60axPepSq7g_-923710056",
+          "xmlTag": "Id",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "isoId": "_ARqNMNokEeC60axPepSq7g_-1920782409",
+          "xmlTag": "Issr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SchemeName",
+          "isoId": "_ARqNMdokEeC60axPepSq7g_1669070272",
+          "xmlTag": "SchmeNm",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "PartyIdentification127Choice": {
+      "name": "PartyIdentification127Choice",
+      "isoId": "_Y-_MD7XDEeiTob_PrFFUxA",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "AnyBIC",
+          "isoId": "_ZQ1w87XDEeiTob_PrFFUxA",
+          "xmlTag": "AnyBIC",
+          "type": "AnyBICDec2014Identifier",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ProprietaryIdentification",
+          "isoId": "_ZQ1w9bXDEeiTob_PrFFUxA",
+          "xmlTag": "PrtryId",
+          "type": "GenericIdentification36",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "LEIIdentifier": {
+      "name": "LEIIdentifier",
+      "kind": "text",
+      "isoId": "_h7Yn9yjAEeKnA5P_jl2DUw",
+      "pattern": "[A-Z0-9]{18,18}[0-9]{2,2}"
+    },
+    "PartyIdentification144": {
+      "name": "PartyIdentification144",
+      "isoId": "_XnxoYdLCEeiN28wlpBQScw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_X6X0QdLCEeiN28wlpBQScw",
+          "xmlTag": "Id",
+          "type": "PartyIdentification127Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "LEI",
+          "isoId": "_X6X0Q9LCEeiN28wlpBQScw",
+          "xmlTag": "LEI",
+          "type": "LEIIdentifier",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "Max70Text": {
+      "name": "Max70Text",
+      "kind": "text",
+      "isoId": "_YX4O8Np-Ed-ak6NoX_4Aeg_-282989098",
+      "minLength": 1,
+      "maxLength": 70
+    },
+    "SecuritiesAccount19": {
+      "name": "SecuritiesAccount19",
+      "isoId": "_T_JUKtp-Ed-ak6NoX_4Aeg_1976638301",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_T_JUK9p-Ed-ak6NoX_4Aeg_1862799235",
+          "xmlTag": "Id",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Type",
+          "isoId": "_T_JULNp-Ed-ak6NoX_4Aeg_865726882",
+          "xmlTag": "Tp",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Name",
+          "isoId": "_T_JULdp-Ed-ak6NoX_4Aeg_-54306770",
+          "xmlTag": "Nm",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "Max140Text": {
+      "name": "Max140Text",
+      "kind": "text",
+      "isoId": "_YXlUAtp-Ed-ak6NoX_4Aeg_2103068114",
+      "minLength": 1,
+      "maxLength": 140
+    },
+    "BlockChainAddressWallet3": {
+      "name": "BlockChainAddressWallet3",
+      "isoId": "_l7F8gSp-EeyR9JrVGfaMKw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_mTrboSp-EeyR9JrVGfaMKw",
+          "xmlTag": "Id",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Type",
+          "isoId": "_mTrbtSp-EeyR9JrVGfaMKw",
+          "xmlTag": "Tp",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Name",
+          "isoId": "_mTrbySp-EeyR9JrVGfaMKw",
+          "xmlTag": "Nm",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "ReceiveDelivery1Code": {
+      "name": "ReceiveDelivery1Code",
+      "isoId": "_ZafihNp-Ed-ak6NoX_4Aeg_-212858839",
+      "kind": "code",
+      "options": [
+        {
+          "value": "DELI",
+          "name": "Delivery",
+          "isoId": "_Zafihdp-Ed-ak6NoX_4Aeg_-99264763"
+        },
+        {
+          "value": "RECE",
+          "name": "Receive",
+          "isoId": "_Zafihtp-Ed-ak6NoX_4Aeg_-69712465"
+        }
+      ]
+    },
+    "DeliveryReceiptType2Code": {
+      "name": "DeliveryReceiptType2Code",
+      "isoId": "_azJXhdp-Ed-ak6NoX_4Aeg_11908462",
+      "kind": "code",
+      "options": [
+        {
+          "value": "FREE",
+          "name": "SeparateSettlement",
+          "isoId": "_azJXhtp-Ed-ak6NoX_4Aeg_-2033362077"
+        },
+        {
+          "value": "APMT",
+          "name": "AgainstPaymentSettlement",
+          "isoId": "_azJXh9p-Ed-ak6NoX_4Aeg_-2033361692"
+        }
+      ]
+    },
+    "NoReasonCode": {
+      "name": "NoReasonCode",
+      "isoId": "_aNmad9p-Ed-ak6NoX_4Aeg_1937897714",
+      "kind": "code",
+      "options": [
+        {
+          "value": "NORE",
+          "name": "NoReason",
+          "isoId": "_aNmaeNp-Ed-ak6NoX_4Aeg_1957291337"
+        }
+      ]
+    },
+    "AcknowledgementReason9Code": {
+      "name": "AcknowledgementReason9Code",
+      "isoId": "_WLJIwekIEemm4qhb2yFPOw",
+      "kind": "code",
+      "options": [
+        {
+          "value": "OTHR",
+          "name": "Other",
+          "isoId": "_dJBg4ekIEemm4qhb2yFPOw"
+        }
+      ]
+    },
+    "AcknowledgementReason23Choice": {
+      "name": "AcknowledgementReason23Choice",
+      "isoId": "_MNvhAekHEemm4qhb2yFPOw",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_M6X9cekHEemm4qhb2yFPOw",
+          "xmlTag": "Cd",
+          "type": "AcknowledgementReason9Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_M6X9eekHEemm4qhb2yFPOw",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Max210Text": {
+      "name": "Max210Text",
+      "kind": "text",
+      "isoId": "_YWiyNNp-Ed-ak6NoX_4Aeg_1281143207",
+      "minLength": 1,
+      "maxLength": 210
+    },
+    "AcknowledgementReason20": {
+      "name": "AcknowledgementReason20",
+      "isoId": "_LhthcekHEemm4qhb2yFPOw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Code",
+          "isoId": "_MNvg8ekHEemm4qhb2yFPOw",
+          "xmlTag": "Cd",
+          "type": "AcknowledgementReason23Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "AdditionalReasonInformation",
+          "isoId": "_MNvg-ekHEemm4qhb2yFPOw",
+          "xmlTag": "AddtlRsnInf",
+          "type": "Max210Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "AcknowledgedAcceptedStatus32Choice": {
+      "name": "AcknowledgedAcceptedStatus32Choice",
+      "isoId": "_K3A-kekHEemm4qhb2yFPOw",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "NoSpecifiedReason",
+          "isoId": "_LhthYekHEemm4qhb2yFPOw",
+          "xmlTag": "NoSpcfdRsn",
+          "type": "NoReasonCode",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Reason",
+          "isoId": "_LhthaekHEemm4qhb2yFPOw",
+          "xmlTag": "Rsn",
+          "type": "AcknowledgementReason20",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "PendingFailingReason1Code": {
+      "name": "PendingFailingReason1Code",
+      "isoId": "_4P-VgOkHEemm4qhb2yFPOw",
+      "kind": "code",
+      "options": [
+        {
+          "value": "OTHR",
+          "name": "Other",
+          "isoId": "_jpvb4ekIEemm4qhb2yFPOw"
+        }
+      ]
+    },
+    "PendingProcessingReason16Choice": {
+      "name": "PendingProcessingReason16Choice",
+      "isoId": "_gTcrAekHEemm4qhb2yFPOw",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_g9tI4ekHEemm4qhb2yFPOw",
+          "xmlTag": "Cd",
+          "type": "PendingFailingReason1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_g9tI6ekHEemm4qhb2yFPOw",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "PendingProcessingReason14": {
+      "name": "PendingProcessingReason14",
+      "isoId": "_fsBeoekHEemm4qhb2yFPOw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Code",
+          "isoId": "_gTcq8ekHEemm4qhb2yFPOw",
+          "xmlTag": "Cd",
+          "type": "PendingProcessingReason16Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "AdditionalReasonInformation",
+          "isoId": "_gTcq-ekHEemm4qhb2yFPOw",
+          "xmlTag": "AddtlRsnInf",
+          "type": "Max210Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "PendingProcessingStatus17Choice": {
+      "name": "PendingProcessingStatus17Choice",
+      "isoId": "_fAcK8ekHEemm4qhb2yFPOw",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "NoSpecifiedReason",
+          "isoId": "_fsBekekHEemm4qhb2yFPOw",
+          "xmlTag": "NoSpcfdRsn",
+          "type": "NoReasonCode",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Reason",
+          "isoId": "_fsBemekHEemm4qhb2yFPOw",
+          "xmlTag": "Rsn",
+          "type": "PendingProcessingReason14",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "RejectionReason55Code": {
+      "name": "RejectionReason55Code",
+      "isoId": "_-IH_MOkIEemm4qhb2yFPOw",
+      "kind": "code",
+      "options": [
+        {
+          "value": "BENO",
+          "name": "BeneficialOwnershipDisagreement",
+          "isoId": "_8E9YIekJEemm4qhb2yFPOw"
+        },
+        {
+          "value": "CAEV",
+          "name": "CorporateActionRejection",
+          "isoId": "_AXmSAekKEemm4qhb2yFPOw"
+        },
+        {
+          "value": "DQUA",
+          "name": "QuantityRejection",
+          "isoId": "_CvfWcekKEemm4qhb2yFPOw"
+        },
+        {
+          "value": "OTHR",
+          "name": "Other",
+          "isoId": "_T9KjYekKEemm4qhb2yFPOw"
+        },
+        {
+          "value": "PODU",
+          "name": "PossibleDuplicate",
+          "isoId": "_P4QuEekLEemm4qhb2yFPOw"
+        },
+        {
+          "value": "SAFE",
+          "name": "SafekeepingAccountRejection",
+          "isoId": "_V9wFoekLEemm4qhb2yFPOw"
+        },
+        {
+          "value": "SSID",
+          "name": "StandingSettlementInstructionRejection",
+          "isoId": "_kHyicekLEemm4qhb2yFPOw"
+        },
+        {
+          "value": "DSEC",
+          "name": "InvalidSecurity",
+          "isoId": "_FJq80emtEemUgrefIx730g"
+        }
+      ]
+    },
+    "RejectionReason37Choice": {
+      "name": "RejectionReason37Choice",
+      "isoId": "_uaQ_OekIEemm4qhb2yFPOw",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_vEEKIekIEemm4qhb2yFPOw",
+          "xmlTag": "Cd",
+          "type": "RejectionReason55Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_vEEKJekIEemm4qhb2yFPOw",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "RejectionReason49": {
+      "name": "RejectionReason49",
+      "isoId": "_tzlZuekIEemm4qhb2yFPOw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Code",
+          "isoId": "_uaQ_MekIEemm4qhb2yFPOw",
+          "xmlTag": "Cd",
+          "type": "RejectionReason37Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "AdditionalReasonInformation",
+          "isoId": "_uaQ_NekIEemm4qhb2yFPOw",
+          "xmlTag": "AddtlRsnInf",
+          "type": "Max210Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "RejectionStatus30Choice": {
+      "name": "RejectionStatus30Choice",
+      "isoId": "_tJ7YsekIEemm4qhb2yFPOw",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "NoSpecifiedReason",
+          "isoId": "_tzlZsekIEemm4qhb2yFPOw",
+          "xmlTag": "NoSpcfdRsn",
+          "type": "NoReasonCode",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Reason",
+          "isoId": "_tzlZtekIEemm4qhb2yFPOw",
+          "xmlTag": "Rsn",
+          "type": "RejectionReason49",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ProprietaryReason4": {
+      "name": "ProprietaryReason4",
+      "isoId": "_QgvGsTp5EeWVrPy0StzzSg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Reason",
+          "isoId": "_RA3_Uzp5EeWVrPy0StzzSg",
+          "xmlTag": "Rsn",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "AdditionalReasonInformation",
+          "isoId": "_RA3_Wzp5EeWVrPy0StzzSg",
+          "xmlTag": "AddtlRsnInf",
+          "type": "Max210Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "AdditionalReasonInforrmationRule",
+          "isoId": "_RA3_UTp5EeWVrPy0StzzSg",
+          "text": "The AdditionalReasonInformation element must not contain information that can be provided in a structured field unless bilaterally agreed."
+        }
+      ]
+    },
+    "ProprietaryStatusAndReason6": {
+      "name": "ProprietaryStatusAndReason6",
+      "isoId": "_yRcdkTp4EeWVrPy0StzzSg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "ProprietaryStatus",
+          "isoId": "_y0NzcTp4EeWVrPy0StzzSg",
+          "xmlTag": "PrtrySts",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ProprietaryReason",
+          "isoId": "_y0OagTp4EeWVrPy0StzzSg",
+          "xmlTag": "PrtryRsn",
+          "type": "ProprietaryReason4",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    },
+    "PortfolioTransferStatus2Choice": {
+      "name": "PortfolioTransferStatus2Choice",
+      "isoId": "_bClDsekGEemm4qhb2yFPOw",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "AcknowledgedAccepted",
+          "isoId": "_o9uv8ukGEemm4qhb2yFPOw",
+          "xmlTag": "AckdAccptd",
+          "type": "AcknowledgedAcceptedStatus32Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "PendingProcessing",
+          "isoId": "_sRb8YukGEemm4qhb2yFPOw",
+          "xmlTag": "PdgPrcg",
+          "type": "PendingProcessingStatus17Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Rejected",
+          "isoId": "_WLfY8ukGEemm4qhb2yFPOw",
+          "xmlTag": "Rjctd",
+          "type": "RejectionStatus30Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_5VZh8ukGEemm4qhb2yFPOw",
+          "xmlTag": "Prtry",
+          "type": "ProprietaryStatusAndReason6",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "DateType3Code": {
+      "name": "DateType3Code",
+      "isoId": "_ayZwotp-Ed-ak6NoX_4Aeg_-1375472823",
+      "kind": "code",
+      "options": [
+        {
+          "value": "VARI",
+          "name": "Various",
+          "isoId": "_ayZwo9p-Ed-ak6NoX_4Aeg_-1348690126"
+        }
+      ]
+    },
+    "TradeDateCode3Choice": {
+      "name": "TradeDateCode3Choice",
+      "isoId": "_HSmeHTqLEeWVrPy0StzzSg",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_Hx_vwTqLEeWVrPy0StzzSg",
+          "xmlTag": "Cd",
+          "type": "DateType3Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_Hx_vyTqLEeWVrPy0StzzSg",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "TradeDate8Choice": {
+      "name": "TradeDate8Choice",
+      "isoId": "_vej6AbPuEeelzbgsFa3sqQ",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Date",
+          "isoId": "_vt4vcbPuEeelzbgsFa3sqQ",
+          "xmlTag": "Dt",
+          "type": "DateAndDateTime2Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "DateCode",
+          "isoId": "_vuB5bLPuEeelzbgsFa3sqQ",
+          "xmlTag": "DtCd",
+          "type": "TradeDateCode3Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "SettlementDate4Code": {
+      "name": "SettlementDate4Code",
+      "isoId": "_ZLby1dp-Ed-ak6NoX_4Aeg_1690826366",
+      "kind": "code",
+      "options": [
+        {
+          "value": "WISS",
+          "name": "WhenIssued",
+          "isoId": "_kgJqIUWrEe6RZYUnHXjemQ"
+        }
+      ]
+    },
+    "SettlementDateCode7Choice": {
+      "name": "SettlementDateCode7Choice",
+      "isoId": "_b0UOpzqLEeWVrPy0StzzSg",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_cU5zITqLEeWVrPy0StzzSg",
+          "xmlTag": "Cd",
+          "type": "SettlementDate4Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_cU5zKTqLEeWVrPy0StzzSg",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "SettlementDate17Choice": {
+      "name": "SettlementDate17Choice",
+      "isoId": "_-3KbsbPuEeelzbgsFa3sqQ",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Date",
+          "isoId": "__G7WAbPuEeelzbgsFa3sqQ",
+          "xmlTag": "Dt",
+          "type": "DateAndDateTime2Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "DateCode",
+          "isoId": "__G7WD7PuEeelzbgsFa3sqQ",
+          "xmlTag": "DtCd",
+          "type": "SettlementDateCode7Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Max3Number": {
+      "name": "Max3Number",
+      "kind": "number",
+      "isoId": "_YWiyNtp-Ed-ak6NoX_4Aeg_-1077902096",
+      "totalDigits": 3,
+      "fractionDigits": 0
+    },
+    "ISINOct2015Identifier": {
+      "name": "ISINOct2015Identifier",
+      "kind": "text",
+      "isoId": "_rMvjUYIXEeWE0I8iABxEQA",
+      "pattern": "[A-Z]{2,2}[A-Z0-9]{9,9}[0-9]{1,1}"
+    },
+    "Max16Text": {
+      "name": "Max16Text",
+      "kind": "text",
+      "isoId": "_YW1tJ9p-Ed-ak6NoX_4Aeg_-185393449",
+      "minLength": 1,
+      "maxLength": 16
+    },
+    "ExternalFinancialInstrumentIdentificationType1Code": {
+      "name": "ExternalFinancialInstrumentIdentificationType1Code",
+      "isoId": "_Yajvhtp-Ed-ak6NoX_4Aeg_-705317158",
+      "kind": "code",
+      "external": true,
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "IdentificationSource3Choice": {
+      "name": "IdentificationSource3Choice",
+      "isoId": "_QmL0Sdp-Ed-ak6NoX_4Aeg_12523031",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_QmU-MNp-Ed-ak6NoX_4Aeg_-1238582323",
+          "xmlTag": "Cd",
+          "type": "ExternalFinancialInstrumentIdentificationType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_QmU-Mdp-Ed-ak6NoX_4Aeg_1058919953",
+          "xmlTag": "Prtry",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "OtherIdentification1": {
+      "name": "OtherIdentification1",
+      "isoId": "_UokEk9p-Ed-ak6NoX_4Aeg_462750527",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_UokElNp-Ed-ak6NoX_4Aeg_-843603921",
+          "xmlTag": "Id",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Suffix",
+          "isoId": "_UokEldp-Ed-ak6NoX_4Aeg_-130667248",
+          "xmlTag": "Sfx",
+          "type": "Max16Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Type",
+          "isoId": "_UokEltp-Ed-ak6NoX_4Aeg_1403030983",
+          "xmlTag": "Tp",
+          "type": "IdentificationSource3Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "SecurityIdentification19": {
+      "name": "SecurityIdentification19",
+      "isoId": "_ho6XQYlXEeWPSZi0kAOXhg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "ISIN",
+          "isoId": "_iDjE24lXEeWPSZi0kAOXhg",
+          "xmlTag": "ISIN",
+          "type": "ISINOct2015Identifier",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "OtherIdentification",
+          "isoId": "_iDjE3YlXEeWPSZi0kAOXhg",
+          "xmlTag": "OthrId",
+          "type": "OtherIdentification1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "Description",
+          "isoId": "_iDjE34lXEeWPSZi0kAOXhg",
+          "xmlTag": "Desc",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "DescriptionPresenceRule",
+          "isoId": "_iDjE0YlXEeWPSZi0kAOXhg",
+          "text": "If Description is not present then either ISIN or at least one occurrence of OtherIdentification must be present.",
+          "expression": {
+            "mustBe": {
+              "connector": "OR",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/ISIN"
+                },
+                {
+                  "op": "Presence",
+                  "path": "/OtherIdentification[*]"
+                }
+              ]
+            },
+            "onCondition": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Absence",
+                  "path": "/Description"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "OtherIdentificationPresenceRule",
+          "isoId": "_iDjE04lXEeWPSZi0kAOXhg",
+          "text": "If OtherIdentification is not present then either ISIN or Description must be present.",
+          "expression": {
+            "mustBe": {
+              "connector": "OR",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/ISIN"
+                },
+                {
+                  "op": "Presence",
+                  "path": "/Description"
+                }
+              ]
+            },
+            "onCondition": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Absence",
+                  "path": "/OtherIdentification[*]"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "ISINPresenceRule",
+          "isoId": "_iDjE1YlXEeWPSZi0kAOXhg",
+          "text": "If ISIN is not present then either Description or at least one occurrence of OtherIdentification must be present.",
+          "expression": {
+            "mustBe": {
+              "connector": "OR",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/OtherIdentification[*]"
+                },
+                {
+                  "op": "Presence",
+                  "path": "/Description"
+                }
+              ]
+            },
+            "onCondition": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Absence",
+                  "path": "/ISIN"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "DescriptionUsageRule",
+          "isoId": "_iDjE14lXEeWPSZi0kAOXhg",
+          "text": "Description must be used alone as the last resort."
+        },
+        {
+          "name": "ISINGuideline",
+          "isoId": "_iDjE2YlXEeWPSZi0kAOXhg",
+          "text": "When an ISIN code exists, it is strongly recommended that the ISIN be used."
+        }
+      ]
+    },
+    "MICIdentifier": {
+      "name": "MICIdentifier",
+      "kind": "text",
+      "isoId": "_YXvFANp-Ed-ak6NoX_4Aeg_1224758022",
+      "pattern": "[A-Z0-9]{4,4}"
+    },
+    "MarketIdentification3Choice": {
+      "name": "MarketIdentification3Choice",
+      "isoId": "_AcingtokEeC60axPepSq7g_278659251",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "MarketIdentifierCode",
+          "isoId": "_Acing9okEeC60axPepSq7g_164820185",
+          "xmlTag": "MktIdrCd",
+          "type": "MICIdentifier",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Description",
+          "isoId": "_AcinhNokEeC60axPepSq7g_-718413102",
+          "xmlTag": "Desc",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "InterestComputationMethod2Code": {
+      "name": "InterestComputationMethod2Code",
+      "isoId": "_aZhWkNp-Ed-ak6NoX_4Aeg_163960764",
+      "kind": "code",
+      "options": [
+        {
+          "value": "A001",
+          "name": "IC30360ISDAor30360AmericanBasicRule",
+          "isoId": "_aZhWkdp-Ed-ak6NoX_4Aeg_1728403415"
+        },
+        {
+          "value": "A002",
+          "name": "IC30365",
+          "isoId": "_aZhWktp-Ed-ak6NoX_4Aeg_1728403804"
+        },
+        {
+          "value": "A003",
+          "name": "IC30Actual",
+          "isoId": "_aZhWk9p-Ed-ak6NoX_4Aeg_1728404207"
+        },
+        {
+          "value": "A004",
+          "name": "Actual360",
+          "isoId": "_aZhWlNp-Ed-ak6NoX_4Aeg_1728404362"
+        },
+        {
+          "value": "A005",
+          "name": "Actual365Fixed",
+          "isoId": "_aZhWldp-Ed-ak6NoX_4Aeg_1728404752"
+        },
+        {
+          "value": "A006",
+          "name": "ActualActualICMA",
+          "isoId": "_aZhWltp-Ed-ak6NoX_4Aeg_1728405190"
+        },
+        {
+          "value": "A007",
+          "name": "IC30E360orEuroBondBasismodel1",
+          "isoId": "_aZhWl9p-Ed-ak6NoX_4Aeg_1728405353"
+        },
+        {
+          "value": "A008",
+          "name": "ActualActualISDA",
+          "isoId": "_aZhWmNp-Ed-ak6NoX_4Aeg_1728405743"
+        },
+        {
+          "value": "A009",
+          "name": "Actual365LorActuActubasisRule",
+          "isoId": "_aZhWmdp-Ed-ak6NoX_4Aeg_1728406163"
+        },
+        {
+          "value": "A010",
+          "name": "ActualActualAFB",
+          "isoId": "_aZrHkNp-Ed-ak6NoX_4Aeg_1728406336"
+        },
+        {
+          "value": "A011",
+          "name": "IC30360ICMAor30360basicrule",
+          "isoId": "_aZrHkdp-Ed-ak6NoX_4Aeg_1728406708"
+        },
+        {
+          "value": "A012",
+          "name": "IC30E2360orEurobondbasismodel2",
+          "isoId": "_aZrHktp-Ed-ak6NoX_4Aeg_1729326859"
+        },
+        {
+          "value": "A013",
+          "name": "IC30E3360orEurobondbasismodel3",
+          "isoId": "_aZrHk9p-Ed-ak6NoX_4Aeg_1729327284"
+        },
+        {
+          "value": "A014",
+          "name": "Actual365NL",
+          "isoId": "_aZrHlNp-Ed-ak6NoX_4Aeg_1729327843"
+        },
+        {
+          "value": "NARR",
+          "name": "Narrative",
+          "isoId": "_aZrHldp-Ed-ak6NoX_4Aeg_1729328300"
+        }
+      ]
+    },
+    "InterestComputationMethodFormat4Choice": {
+      "name": "InterestComputationMethodFormat4Choice",
+      "isoId": "_atvUATm6EeWV5sr121Fc8A",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_bMY-4Tm6EeWV5sr121Fc8A",
+          "xmlTag": "Cd",
+          "type": "InterestComputationMethod2Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_bMY-4zm6EeWV5sr121Fc8A",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "FormOfSecurity1Code": {
+      "name": "FormOfSecurity1Code",
+      "isoId": "_arP_wdp-Ed-ak6NoX_4Aeg_1608809377",
+      "kind": "code",
+      "options": [
+        {
+          "value": "BEAR",
+          "name": "Bearer",
+          "isoId": "_1Gk9wN1OEeGAp99n2TKigg_1287612204"
+        },
+        {
+          "value": "REGD",
+          "name": "Registered",
+          "isoId": "_3TsVkN1OEeGAp99n2TKigg_1858924413"
+        }
+      ]
+    },
+    "FormOfSecurity6Choice": {
+      "name": "FormOfSecurity6Choice",
+      "isoId": "_MBPGgTm-EeWV5sr121Fc8A",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_MhX_Izm-EeWV5sr121Fc8A",
+          "xmlTag": "Cd",
+          "type": "FormOfSecurity1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_MhX_Kzm-EeWV5sr121Fc8A",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "EventFrequency3Code": {
+      "name": "EventFrequency3Code",
+      "isoId": "_ajpi8dp-Ed-ak6NoX_4Aeg_1482517785",
+      "kind": "code",
+      "options": [
+        {
+          "value": "YEAR",
+          "name": "Annual",
+          "isoId": "_ajpi8tp-Ed-ak6NoX_4Aeg_1482517787"
+        },
+        {
+          "value": "MNTH",
+          "name": "Monthly",
+          "isoId": "_ajpi89p-Ed-ak6NoX_4Aeg_1482517810"
+        },
+        {
+          "value": "QUTR",
+          "name": "Quarterly",
+          "isoId": "_ajpi9Np-Ed-ak6NoX_4Aeg_1482517811"
+        },
+        {
+          "value": "SEMI",
+          "name": "SemiAnnual",
+          "isoId": "_ajpi9dp-Ed-ak6NoX_4Aeg_1482517827"
+        },
+        {
+          "value": "WEEK",
+          "name": "Weekly",
+          "isoId": "_ajzT8Np-Ed-ak6NoX_4Aeg_1482517828"
+        }
+      ]
+    },
+    "Frequency23Choice": {
+      "name": "Frequency23Choice",
+      "isoId": "_XpKWcTm_EeWV5sr121Fc8A",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_YIsyIzm_EeWV5sr121Fc8A",
+          "xmlTag": "Cd",
+          "type": "EventFrequency3Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_YIsyKzm_EeWV5sr121Fc8A",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "SecuritiesPaymentStatus1Code": {
+      "name": "SecuritiesPaymentStatus1Code",
+      "isoId": "_ZFoFxtp-Ed-ak6NoX_4Aeg_-1237282418",
+      "kind": "code",
+      "options": [
+        {
+          "value": "FULL",
+          "name": "FullyPaid",
+          "isoId": "_ZFoFx9p-Ed-ak6NoX_4Aeg_-1185567647"
+        },
+        {
+          "value": "NILL",
+          "name": "NillPaid",
+          "isoId": "_ZFoFyNp-Ed-ak6NoX_4Aeg_-899273641"
+        },
+        {
+          "value": "PART",
+          "name": "PartiallyPaid",
+          "isoId": "_ZFx2wNp-Ed-ak6NoX_4Aeg_-862334871"
+        }
+      ]
+    },
+    "SecuritiesPaymentStatus5Choice": {
+      "name": "SecuritiesPaymentStatus5Choice",
+      "isoId": "_cBDuUTnAEeWV5sr121Fc8A",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_cgvT8znAEeWV5sr121Fc8A",
+          "xmlTag": "Cd",
+          "type": "SecuritiesPaymentStatus1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_cgvT-znAEeWV5sr121Fc8A",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "CFIOct2015Identifier": {
+      "name": "CFIOct2015Identifier",
+      "kind": "text",
+      "isoId": "_7njI4YIXEeWE0I8iABxEQA",
+      "pattern": "[A-Z]{6,6}"
+    },
+    "ClassificationType32Choice": {
+      "name": "ClassificationType32Choice",
+      "isoId": "_IbgeMYlYEeWPSZi0kAOXhg",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "ClassificationFinancialInstrument",
+          "isoId": "_IyRYZYlYEeWPSZi0kAOXhg",
+          "xmlTag": "ClssfctnFinInstrm",
+          "type": "CFIOct2015Identifier",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "AlternateClassification",
+          "isoId": "_IyRYbYlYEeWPSZi0kAOXhg",
+          "xmlTag": "AltrnClssfctn",
+          "type": "GenericIdentification36",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "OptionStyle2Code": {
+      "name": "OptionStyle2Code",
+      "isoId": "_aQIxFtp-Ed-ak6NoX_4Aeg_-1177091144",
+      "kind": "code",
+      "options": [
+        {
+          "value": "AMER",
+          "name": "American",
+          "isoId": "_aQIxF9p-Ed-ak6NoX_4Aeg_-1107826186"
+        },
+        {
+          "value": "EURO",
+          "name": "European",
+          "isoId": "_aQIxGNp-Ed-ak6NoX_4Aeg_-1107826168"
+        }
+      ]
+    },
+    "OptionStyle8Choice": {
+      "name": "OptionStyle8Choice",
+      "isoId": "_g3ipUTq2EeWQ1Y7f8kds2A",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_hDvSQTq2EeWQ1Y7f8kds2A",
+          "xmlTag": "Cd",
+          "type": "OptionStyle2Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_hDvSSTq2EeWQ1Y7f8kds2A",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "OptionType1Code": {
+      "name": "OptionType1Code",
+      "isoId": "_aQbsAdp-Ed-ak6NoX_4Aeg_-835357153",
+      "kind": "code",
+      "options": [
+        {
+          "value": "CALL",
+          "name": "Call",
+          "isoId": "_aQbsAtp-Ed-ak6NoX_4Aeg_-539829511"
+        },
+        {
+          "value": "PUTO",
+          "name": "Put",
+          "isoId": "_aQbsA9p-Ed-ak6NoX_4Aeg_-539829469"
+        }
+      ]
+    },
+    "OptionType6Choice": {
+      "name": "OptionType6Choice",
+      "isoId": "_tfykITnCEeWV5sr121Fc8A",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_uAXhoznCEeWV5sr121Fc8A",
+          "xmlTag": "Cd",
+          "type": "OptionType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_uAXhqznCEeWV5sr121Fc8A",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ActiveOrHistoricCurrencyCode": {
+      "name": "ActiveOrHistoricCurrencyCode",
+      "isoId": "_bqIp6tp-Ed-ak6NoX_4Aeg_1823330336",
+      "kind": "code",
+      "pattern": "[A-Z]{3,3}"
+    },
+    "BaseOneRate": {
+      "name": "BaseOneRate",
+      "kind": "number",
+      "isoId": "_YXbjAdp-Ed-ak6NoX_4Aeg_1236114363",
+      "totalDigits": 11,
+      "fractionDigits": 10
+    },
+    "PercentageRate": {
+      "name": "PercentageRate",
+      "kind": "number",
+      "isoId": "_YW1tK9p-Ed-ak6NoX_4Aeg_1604891692",
+      "totalDigits": 11,
+      "fractionDigits": 10
+    },
+    "GenericIdentification1": {
+      "name": "GenericIdentification1",
+      "isoId": "_QALkN9p-Ed-ak6NoX_4Aeg_-1748202225",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_QALkONp-Ed-ak6NoX_4Aeg_-1748202217",
+          "xmlTag": "Id",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SchemeName",
+          "isoId": "_QAVVMNp-Ed-ak6NoX_4Aeg_-1748202215",
+          "xmlTag": "SchmeNm",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "isoId": "_QAVVMdp-Ed-ak6NoX_4Aeg_-1748202216",
+          "xmlTag": "Issr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "Number22Choice": {
+      "name": "Number22Choice",
+      "isoId": "_GgDHITnEEeWV5sr121Fc8A",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Short",
+          "isoId": "_HAL_wznEEeWV5sr121Fc8A",
+          "xmlTag": "Shrt",
+          "type": "Exact3NumericText",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Long",
+          "isoId": "_HAL_yznEEeWV5sr121Fc8A",
+          "xmlTag": "Lng",
+          "type": "GenericIdentification1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "GenericIdentification37": {
+      "name": "GenericIdentification37",
+      "isoId": "_ARqNMtokEeC60axPepSq7g_-67133832",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_ARqNM9okEeC60axPepSq7g_-180972898",
+          "xmlTag": "Id",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "isoId": "_ARqNNNokEeC60axPepSq7g_-1178045251",
+          "xmlTag": "Issr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "PriceValueType1Code": {
+      "name": "PriceValueType1Code",
+      "isoId": "_aJIKJ9p-Ed-ak6NoX_4Aeg_1793790743",
+      "kind": "code",
+      "options": [
+        {
+          "value": "DISC",
+          "name": "Discount",
+          "isoId": "_aJIKKNp-Ed-ak6NoX_4Aeg_-2127153341"
+        },
+        {
+          "value": "PREM",
+          "name": "Premium",
+          "isoId": "_aJR7INp-Ed-ak6NoX_4Aeg_-2125306944"
+        },
+        {
+          "value": "PARV",
+          "name": "Par",
+          "isoId": "_aJR7Idp-Ed-ak6NoX_4Aeg_1927701255"
+        }
+      ]
+    },
+    "YieldedOrValueType1Choice": {
+      "name": "YieldedOrValueType1Choice",
+      "isoId": "_RdBVptp-Ed-ak6NoX_4Aeg_510883553",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Yielded",
+          "isoId": "_RdBVp9p-Ed-ak6NoX_4Aeg_599544874",
+          "xmlTag": "Yldd",
+          "type": "YesNoIndicator",
+          "kind": "boolean",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ValueType",
+          "isoId": "_RdBVqNp-Ed-ak6NoX_4Aeg_599544875",
+          "xmlTag": "ValTp",
+          "type": "PriceValueType1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ActiveOrHistoricCurrencyAnd13DecimalAmount": {
+      "name": "ActiveOrHistoricCurrencyAnd13DecimalAmount",
+      "isoId": "_YYB_9Np-Ed-ak6NoX_4Aeg_-771372619",
+      "kind": "amount",
+      "pattern": "[A-Z]{3,3}",
+      "totalDigits": 18,
+      "fractionDigits": 13,
+      "minInclusive": 0
+    },
+    "PriceRateOrAmount3Choice": {
+      "name": "PriceRateOrAmount3Choice",
+      "isoId": "_dnG1obQBEee1Ke-6rZgsrA",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Rate",
+          "isoId": "_d3Bg8bQBEee1Ke-6rZgsrA",
+          "xmlTag": "Rate",
+          "type": "PercentageRate",
+          "kind": "number",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Amount",
+          "isoId": "_d3Bg87QBEee1Ke-6rZgsrA",
+          "xmlTag": "Amt",
+          "type": "ActiveOrHistoricCurrencyAnd13DecimalAmount",
+          "kind": "amount",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Price7": {
+      "name": "Price7",
+      "isoId": "_yPMT8bQBEee1Ke-6rZgsrA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Type",
+          "isoId": "_yehJYbQBEee1Ke-6rZgsrA",
+          "xmlTag": "Tp",
+          "type": "YieldedOrValueType1Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Value",
+          "isoId": "_yehJY7QBEee1Ke-6rZgsrA",
+          "xmlTag": "Val",
+          "type": "PriceRateOrAmount3Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "PriceType4Choice": {
+      "name": "PriceType4Choice",
+      "isoId": "_ys8oMbQBEee1Ke-6rZgsrA",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Market",
+          "isoId": "_y7YrkbQBEee1Ke-6rZgsrA",
+          "xmlTag": "Mkt",
+          "type": "Price7",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Indicative",
+          "isoId": "_y7Yrk7QBEee1Ke-6rZgsrA",
+          "xmlTag": "Indctv",
+          "type": "Price7",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "DecimalNumber": {
+      "name": "DecimalNumber",
+      "kind": "number",
+      "isoId": "_YXlUA9p-Ed-ak6NoX_4Aeg_1283031972",
+      "totalDigits": 18,
+      "fractionDigits": 17
+    },
+    "ImpliedCurrencyAndAmount": {
+      "name": "ImpliedCurrencyAndAmount",
+      "isoId": "_YXbjBNp-Ed-ak6NoX_4Aeg_-1934687468",
+      "kind": "number",
+      "totalDigits": 18,
+      "fractionDigits": 5,
+      "minInclusive": 0
+    },
+    "Max30DecimalNumber": {
+      "name": "Max30DecimalNumber",
+      "kind": "number",
+      "isoId": "_xNcaMBrKEeyhRdHRjakS2w",
+      "totalDigits": 30,
+      "fractionDigits": 29
+    },
+    "FinancialInstrumentQuantity33Choice": {
+      "name": "FinancialInstrumentQuantity33Choice",
+      "isoId": "_Gu-7FRuyEeyhRdHRjakS2w",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Unit",
+          "isoId": "_HEcNsRuyEeyhRdHRjakS2w",
+          "xmlTag": "Unit",
+          "type": "DecimalNumber",
+          "kind": "number",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "FaceAmount",
+          "isoId": "_HEcNuRuyEeyhRdHRjakS2w",
+          "xmlTag": "FaceAmt",
+          "type": "ImpliedCurrencyAndAmount",
+          "kind": "number",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "AmortisedValue",
+          "isoId": "_HEcNuxuyEeyhRdHRjakS2w",
+          "xmlTag": "AmtsdVal",
+          "type": "ImpliedCurrencyAndAmount",
+          "kind": "number",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "DigitalTokenUnit",
+          "isoId": "_5UlWABuyEeyhRdHRjakS2w",
+          "xmlTag": "DgtlTknUnit",
+          "type": "Max30DecimalNumber",
+          "kind": "number",
+          "min": 1,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "DigitalTokenUnitUsageRule",
+          "isoId": "_ldGFESTwEeyFBYL3tbKzsg",
+          "text": "DigitalTokenUnit format may only be used for instruments identified with a digital token identifier."
+        }
+      ]
+    },
+    "Max350Text": {
+      "name": "Max350Text",
+      "kind": "text",
+      "isoId": "_YW1tKNp-Ed-ak6NoX_4Aeg_1778996852",
+      "minLength": 1,
+      "maxLength": 350
+    },
+    "FinancialInstrumentAttributes111": {
+      "name": "FinancialInstrumentAttributes111",
+      "isoId": "_0OOdMSp5EeyR9JrVGfaMKw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "PlaceOfListing",
+          "isoId": "_0mz8Vyp5EeyR9JrVGfaMKw",
+          "xmlTag": "PlcOfListg",
+          "type": "MarketIdentification3Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "DayCountBasis",
+          "isoId": "_0mz8Xyp5EeyR9JrVGfaMKw",
+          "xmlTag": "DayCntBsis",
+          "type": "InterestComputationMethodFormat4Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "RegistrationForm",
+          "isoId": "_0mz8Zyp5EeyR9JrVGfaMKw",
+          "xmlTag": "RegnForm",
+          "type": "FormOfSecurity6Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PaymentFrequency",
+          "isoId": "_0mz8byp5EeyR9JrVGfaMKw",
+          "xmlTag": "PmtFrqcy",
+          "type": "Frequency23Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PaymentStatus",
+          "isoId": "_0mz8dyp5EeyR9JrVGfaMKw",
+          "xmlTag": "PmtSts",
+          "type": "SecuritiesPaymentStatus5Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "VariableRateChangeFrequency",
+          "isoId": "_0mz8fyp5EeyR9JrVGfaMKw",
+          "xmlTag": "VarblRateChngFrqcy",
+          "type": "Frequency23Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ClassificationType",
+          "isoId": "_0mz8hyp5EeyR9JrVGfaMKw",
+          "xmlTag": "ClssfctnTp",
+          "type": "ClassificationType32Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "OptionStyle",
+          "isoId": "_0mz8jyp5EeyR9JrVGfaMKw",
+          "xmlTag": "OptnStyle",
+          "type": "OptionStyle8Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "OptionType",
+          "isoId": "_0mz8lyp5EeyR9JrVGfaMKw",
+          "xmlTag": "OptnTp",
+          "type": "OptionType6Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "DenominationCurrency",
+          "isoId": "_0mz8nyp5EeyR9JrVGfaMKw",
+          "xmlTag": "DnmtnCcy",
+          "type": "ActiveOrHistoricCurrencyCode",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CouponDate",
+          "isoId": "_0mz8pyp5EeyR9JrVGfaMKw",
+          "xmlTag": "CpnDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ExpiryDate",
+          "isoId": "_0mz8ryp5EeyR9JrVGfaMKw",
+          "xmlTag": "XpryDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "FloatingRateFixingDate",
+          "isoId": "_0mz8typ5EeyR9JrVGfaMKw",
+          "xmlTag": "FltgRateFxgDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "MaturityDate",
+          "isoId": "_0mz8vyp5EeyR9JrVGfaMKw",
+          "xmlTag": "MtrtyDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "IssueDate",
+          "isoId": "_0mz8xyp5EeyR9JrVGfaMKw",
+          "xmlTag": "IsseDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "NextCallableDate",
+          "isoId": "_0mz8zyp5EeyR9JrVGfaMKw",
+          "xmlTag": "NxtCllblDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PutableDate",
+          "isoId": "_0mz81yp5EeyR9JrVGfaMKw",
+          "xmlTag": "PutblDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "DatedDate",
+          "isoId": "_0mz83yp5EeyR9JrVGfaMKw",
+          "xmlTag": "DtdDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "FirstPaymentDate",
+          "isoId": "_0mz85yp5EeyR9JrVGfaMKw",
+          "xmlTag": "FrstPmtDt",
+          "type": "ISODate",
+          "kind": "date",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PreviousFactor",
+          "isoId": "_0mz87yp5EeyR9JrVGfaMKw",
+          "xmlTag": "PrvsFctr",
+          "type": "BaseOneRate",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CurrentFactor",
+          "isoId": "_0mz89yp5EeyR9JrVGfaMKw",
+          "xmlTag": "CurFctr",
+          "type": "BaseOneRate",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "NextFactor",
+          "isoId": "_0mz8_yp5EeyR9JrVGfaMKw",
+          "xmlTag": "NxtFctr",
+          "type": "BaseOneRate",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "InterestRate",
+          "isoId": "_0mz9Byp5EeyR9JrVGfaMKw",
+          "xmlTag": "IntrstRate",
+          "type": "PercentageRate",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "YieldToMaturityRate",
+          "isoId": "_0mz9Dyp5EeyR9JrVGfaMKw",
+          "xmlTag": "YldToMtrtyRate",
+          "type": "PercentageRate",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "NextInterestRate",
+          "isoId": "_0mz9ESp5EeyR9JrVGfaMKw",
+          "xmlTag": "NxtIntrstRate",
+          "type": "PercentageRate",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "IndexRateBasis",
+          "isoId": "_0mz9GSp5EeyR9JrVGfaMKw",
+          "xmlTag": "IndxRateBsis",
+          "type": "PercentageRate",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CouponAttachedNumber",
+          "isoId": "_0mz9ISp5EeyR9JrVGfaMKw",
+          "xmlTag": "CpnAttchdNb",
+          "type": "Number22Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PoolNumber",
+          "isoId": "_0mz9KSp5EeyR9JrVGfaMKw",
+          "xmlTag": "PoolNb",
+          "type": "GenericIdentification37",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "VariableRateIndicator",
+          "isoId": "_0mz9MSp5EeyR9JrVGfaMKw",
+          "xmlTag": "VarblRateInd",
+          "type": "YesNoIndicator",
+          "kind": "boolean",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CallableIndicator",
+          "isoId": "_0mz9OSp5EeyR9JrVGfaMKw",
+          "xmlTag": "CllblInd",
+          "type": "YesNoIndicator",
+          "kind": "boolean",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PutableIndicator",
+          "isoId": "_0mz9QSp5EeyR9JrVGfaMKw",
+          "xmlTag": "PutblInd",
+          "type": "YesNoIndicator",
+          "kind": "boolean",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "MarketOrIndicativePrice",
+          "isoId": "_0mz9SSp5EeyR9JrVGfaMKw",
+          "xmlTag": "MktOrIndctvPric",
+          "type": "PriceType4Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ExercisePrice",
+          "isoId": "_0mz9USp5EeyR9JrVGfaMKw",
+          "xmlTag": "ExrcPric",
+          "type": "Price7",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SubscriptionPrice",
+          "isoId": "_0mz9WSp5EeyR9JrVGfaMKw",
+          "xmlTag": "SbcptPric",
+          "type": "Price7",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ConversionPrice",
+          "isoId": "_0mz9YSp5EeyR9JrVGfaMKw",
+          "xmlTag": "ConvsPric",
+          "type": "Price7",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "StrikePrice",
+          "isoId": "_0mz9aSp5EeyR9JrVGfaMKw",
+          "xmlTag": "StrkPric",
+          "type": "Price7",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "MinimumNominalQuantity",
+          "isoId": "_0mz9cSp5EeyR9JrVGfaMKw",
+          "xmlTag": "MinNmnlQty",
+          "type": "FinancialInstrumentQuantity33Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ContractSize",
+          "isoId": "_0mz9eSp5EeyR9JrVGfaMKw",
+          "xmlTag": "CtrctSz",
+          "type": "FinancialInstrumentQuantity33Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "UnderlyingFinancialInstrumentIdentification",
+          "isoId": "_0mz9gSp5EeyR9JrVGfaMKw",
+          "xmlTag": "UndrlygFinInstrmId",
+          "type": "SecurityIdentification19",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "FinancialInstrumentAttributeAdditionalDetails",
+          "isoId": "_0mz9iSp5EeyR9JrVGfaMKw",
+          "xmlTag": "FinInstrmAttrAddtlDtls",
+          "type": "Max350Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "PlaceOfListingRule",
+          "isoId": "_0mz8USp5EeyR9JrVGfaMKw",
+          "text": "If PlaceOfListing is used and an ISO 10383 MIC exists for the market to be identified, the ISO 10383 Market Identifier Code (MIC) must be used."
+        },
+        {
+          "name": "AdditionalDetailsRule",
+          "isoId": "_0mz8Uyp5EeyR9JrVGfaMKw",
+          "text": "Unless bilaterally agreed between the Sender and Receiver, if FinancialInstrumentAttributeAdditionalDetails is present, then it must not contain information that can be provided in a structured field."
+        }
+      ]
+    },
+    "Reporting1Code": {
+      "name": "Reporting1Code",
+      "isoId": "_ZTCPqNp-Ed-ak6NoX_4Aeg_-1780982221",
+      "kind": "code",
+      "options": [
+        {
+          "value": "STEX",
+          "name": "StockExchange",
+          "isoId": "_ZTMAoNp-Ed-ak6NoX_4Aeg_-1707100866"
+        },
+        {
+          "value": "REGU",
+          "name": "RegulatoryOrganisation",
+          "isoId": "_ZTMAodp-Ed-ak6NoX_4Aeg_-1707100823"
+        }
+      ]
+    },
+    "Reporting7Choice": {
+      "name": "Reporting7Choice",
+      "isoId": "_u3ZOQTxJEeW5v6FXICU4Ew",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_vZnKgTxJEeW5v6FXICU4Ew",
+          "xmlTag": "Cd",
+          "type": "Reporting1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_vZnKiTxJEeW5v6FXICU4Ew",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "SecuritiesCertificate4": {
+      "name": "SecuritiesCertificate4",
+      "isoId": "_fTKNkTtHEeWRTLSN0i0tng",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Number",
+          "isoId": "_f0oi9ztHEeWRTLSN0i0tng",
+          "xmlTag": "Nb",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Issuer",
+          "isoId": "_f0oi_ztHEeWRTLSN0i0tng",
+          "xmlTag": "Issr",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SchemeName",
+          "isoId": "_f0ojBztHEeWRTLSN0i0tng",
+          "xmlTag": "SchmeNm",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "ISO8532AndIssuerSchemeNameRule",
+          "isoId": "_f0oi8TtHEeWRTLSN0i0tng",
+          "text": "If Number is ISO 8532 (Format for transmission of certificate numbers), then Issuer and SchemeName must not be used."
+        }
+      ]
+    },
+    "TypeOfPrice14Code": {
+      "name": "TypeOfPrice14Code",
+      "isoId": "_Yx9i4Np-Ed-ak6NoX_4Aeg_-1404906082",
+      "kind": "code",
+      "options": [
+        {
+          "value": "AVER",
+          "name": "Average",
+          "isoId": "_Yx9i4dp-Ed-ak6NoX_4Aeg_-1357807596"
+        }
+      ]
+    },
+    "TypeOfPrice29Choice": {
+      "name": "TypeOfPrice29Choice",
+      "isoId": "_Qih-PznXEeWV5sr121Fc8A",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_RBB38znXEeWV5sr121Fc8A",
+          "xmlTag": "Cd",
+          "type": "TypeOfPrice14Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_RBB3-znXEeWV5sr121Fc8A",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "QuantityBreakdown62": {
+      "name": "QuantityBreakdown62",
+      "isoId": "_HNexESqEEeyR9JrVGfaMKw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "LotNumber",
+          "isoId": "_HlUpMSqEEeyR9JrVGfaMKw",
+          "xmlTag": "LotNb",
+          "type": "GenericIdentification37",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "LotQuantity",
+          "isoId": "_HlUpOSqEEeyR9JrVGfaMKw",
+          "xmlTag": "LotQty",
+          "type": "FinancialInstrumentQuantity33Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "LotDateTime",
+          "isoId": "_HlUpQSqEEeyR9JrVGfaMKw",
+          "xmlTag": "LotDtTm",
+          "type": "DateAndDateTime2Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "LotPrice",
+          "isoId": "_HlUpSSqEEeyR9JrVGfaMKw",
+          "xmlTag": "LotPric",
+          "type": "Price7",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TypeOfPrice",
+          "isoId": "_HlUpUSqEEeyR9JrVGfaMKw",
+          "xmlTag": "TpOfPric",
+          "type": "TypeOfPrice29Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "Quantity48": {
+      "name": "Quantity48",
+      "isoId": "_G0mW4SqEEeyR9JrVGfaMKw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "SettlementQuantity",
+          "isoId": "_HNew8SqEEeyR9JrVGfaMKw",
+          "xmlTag": "SttlmQty",
+          "type": "FinancialInstrumentQuantity33Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "DenominationChoice",
+          "isoId": "_HNew-SqEEeyR9JrVGfaMKw",
+          "xmlTag": "DnmtnChc",
+          "type": "Max210Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CertificateNumber",
+          "isoId": "_HNexASqEEeyR9JrVGfaMKw",
+          "xmlTag": "CertNb",
+          "type": "SecuritiesCertificate4",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "QuantityBreakdown",
+          "isoId": "_HNexCSqEEeyR9JrVGfaMKw",
+          "xmlTag": "QtyBrkdwn",
+          "type": "QuantityBreakdown62",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ]
+    },
+    "SettlementTransactionCondition21Code": {
+      "name": "SettlementTransactionCondition21Code",
+      "isoId": "_VQ7F0PISEfCMaqDZ_tShqQ",
+      "kind": "code",
+      "options": [
+        {
+          "value": "ASGN",
+          "name": "Assignement",
+          "isoId": "_aVSXkfISEfCMaqDZ_tShqQ"
+        },
+        {
+          "value": "CLEN",
+          "name": "Clean",
+          "isoId": "_abtIofISEfCMaqDZ_tShqQ"
+        },
+        {
+          "value": "DLWM",
+          "name": "DeliveryWithoutMatching",
+          "isoId": "_agDdIfISEfCMaqDZ_tShqQ"
+        },
+        {
+          "value": "DIRT",
+          "name": "Dirty",
+          "isoId": "_aj2YAfISEfCMaqDZ_tShqQ"
+        },
+        {
+          "value": "DRAW",
+          "name": "Drawn",
+          "isoId": "_an_RIfISEfCMaqDZ_tShqQ"
+        },
+        {
+          "value": "EXER",
+          "name": "Exercised",
+          "isoId": "_atZVkfISEfCMaqDZ_tShqQ"
+        },
+        {
+          "value": "GATE",
+          "name": "GatingEventParticipation",
+          "isoId": "_a-JuYfISEfCMaqDZ_tShqQ"
+        },
+        {
+          "value": "FRCL",
+          "name": "FreeCleanSettlement",
+          "isoId": "_c9jaUfISEfCMaqDZ_tShqQ"
+        },
+        {
+          "value": "KNOC",
+          "name": "KnockedOut",
+          "isoId": "_dH5pIfISEfCMaqDZ_tShqQ"
+        },
+        {
+          "value": "PHYS",
+          "name": "Physical",
+          "isoId": "_fVilYfISEfCMaqDZ_tShqQ"
+        },
+        {
+          "value": "RESI",
+          "name": "Residual",
+          "isoId": "_fcyc4fISEfCMaqDZ_tShqQ"
+        },
+        {
+          "value": "SPDL",
+          "name": "SpecialDelivery",
+          "isoId": "_fnqQIfISEfCMaqDZ_tShqQ"
+        },
+        {
+          "value": "SPST",
+          "name": "SplitSettlement",
+          "isoId": "_hGry4fISEfCMaqDZ_tShqQ"
+        },
+        {
+          "value": "UNEX",
+          "name": "Unexposed",
+          "isoId": "_hOaLgfISEfCMaqDZ_tShqQ"
+        }
+      ]
+    },
+    "SettlementTransactionCondition47Choice": {
+      "name": "SettlementTransactionCondition47Choice",
+      "isoId": "_mzGLofHcEfChCaiL9q1LKg",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_m1cVBfHcEfChCaiL9q1LKg",
+          "xmlTag": "Cd",
+          "type": "SettlementTransactionCondition21Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_m1cVEfHcEfChCaiL9q1LKg",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "Registration1Code": {
+      "name": "Registration1Code",
+      "isoId": "_Za7nY9p-Ed-ak6NoX_4Aeg_-423738675",
+      "kind": "code",
+      "options": [
+        {
+          "value": "NREG",
+          "name": "StreetName",
+          "isoId": "_Za7nZNp-Ed-ak6NoX_4Aeg_-365554140"
+        },
+        {
+          "value": "YREG",
+          "name": "Registered",
+          "isoId": "_Za7nZdp-Ed-ak6NoX_4Aeg_-165149890"
+        }
+      ]
+    },
+    "Registration9Choice": {
+      "name": "Registration9Choice",
+      "isoId": "_C_MhYTqGEeWVrPy0StzzSg",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_DgFA4TqGEeWVrPy0StzzSg",
+          "xmlTag": "Cd",
+          "type": "Registration1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_DgFA6TqGEeWVrPy0StzzSg",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "OwnershipLegalRestrictions1Code": {
+      "name": "OwnershipLegalRestrictions1Code",
+      "isoId": "_ZxJH9Np-Ed-ak6NoX_4Aeg_1692772034",
+      "kind": "code",
+      "options": [
+        {
+          "value": "A144",
+          "name": "USLegal144A",
+          "isoId": "_ZxJH9dp-Ed-ak6NoX_4Aeg_1752799563"
+        },
+        {
+          "value": "NRST",
+          "name": "NoRestrictions",
+          "isoId": "_ZxJH9tp-Ed-ak6NoX_4Aeg_1767574892"
+        },
+        {
+          "value": "RSTR",
+          "name": "Restrictions",
+          "isoId": "_ZxJH99p-Ed-ak6NoX_4Aeg_1780503706"
+        }
+      ]
+    },
+    "Restriction5Choice": {
+      "name": "Restriction5Choice",
+      "isoId": "_EFd7ATqIEeWVrPy0StzzSg",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_ElAWsTqIEeWVrPy0StzzSg",
+          "xmlTag": "Cd",
+          "type": "OwnershipLegalRestrictions1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_ElAWuTqIEeWVrPy0StzzSg",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "SecuritiesRTGS4Choice": {
+      "name": "SecuritiesRTGS4Choice",
+      "isoId": "_90cwnzqEEeWVrPy0StzzSg",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Indicator",
+          "isoId": "_-T2CATqEEeWVrPy0StzzSg",
+          "xmlTag": "Ind",
+          "type": "YesNoIndicator",
+          "kind": "boolean",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_-T2CCTqEEeWVrPy0StzzSg",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "SettlementSystemMethod1Code": {
+      "name": "SettlementSystemMethod1Code",
+      "isoId": "_ZMoFqdp-Ed-ak6NoX_4Aeg_-1301881011",
+      "kind": "code",
+      "options": [
+        {
+          "value": "NSET",
+          "name": "Default",
+          "isoId": "_ZMx2oNp-Ed-ak6NoX_4Aeg_-1225226401"
+        },
+        {
+          "value": "YSET",
+          "name": "Alternative",
+          "isoId": "_ZMx2odp-Ed-ak6NoX_4Aeg_-1170737712"
+        }
+      ]
+    },
+    "SettlementSystemMethod4Choice": {
+      "name": "SettlementSystemMethod4Choice",
+      "isoId": "_R9Xe8TqIEeWVrPy0StzzSg",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_Scm_sTqIEeWVrPy0StzzSg",
+          "xmlTag": "Cd",
+          "type": "SettlementSystemMethod1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_Scm_uTqIEeWVrPy0StzzSg",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "TaxLiability1Code": {
+      "name": "TaxLiability1Code",
+      "isoId": "_YiBCYdp-Ed-ak6NoX_4Aeg_230817252",
+      "kind": "code",
+      "options": [
+        {
+          "value": "PRIN",
+          "name": "TaxPrincipal",
+          "isoId": "_YiBCYtp-Ed-ak6NoX_4Aeg_-1137204905"
+        },
+        {
+          "value": "AGEN",
+          "name": "TaxAgent",
+          "isoId": "_YiBCY9p-Ed-ak6NoX_4Aeg_1016400725"
+        }
+      ]
+    },
+    "TaxCapacityParty4Choice": {
+      "name": "TaxCapacityParty4Choice",
+      "isoId": "_PeuuwTqHEeWVrPy0StzzSg",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_P9-PgTqHEeWVrPy0StzzSg",
+          "xmlTag": "Cd",
+          "type": "TaxLiability1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_P9-PiTqHEeWVrPy0StzzSg",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "SettlementDetails236": {
+      "name": "SettlementDetails236",
+      "isoId": "_muweMfHcEfChCaiL9q1LKg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "SettlementTransactionCondition",
+          "isoId": "_mzFkl_HcEfChCaiL9q1LKg",
+          "xmlTag": "SttlmTxCond",
+          "type": "SettlementTransactionCondition47Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "Registration",
+          "isoId": "_mzFko_HcEfChCaiL9q1LKg",
+          "xmlTag": "Regn",
+          "type": "Registration9Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "LegalRestrictions",
+          "isoId": "_mzFkr_HcEfChCaiL9q1LKg",
+          "xmlTag": "LglRstrctns",
+          "type": "Restriction5Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SecuritiesRTGS",
+          "isoId": "_mzFku_HcEfChCaiL9q1LKg",
+          "xmlTag": "SctiesRTGS",
+          "type": "SecuritiesRTGS4Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SettlementSystemMethod",
+          "isoId": "_mzFkx_HcEfChCaiL9q1LKg",
+          "xmlTag": "SttlmSysMtd",
+          "type": "SettlementSystemMethod4Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TaxCapacity",
+          "isoId": "_mzFk0_HcEfChCaiL9q1LKg",
+          "xmlTag": "TaxCpcty",
+          "type": "TaxCapacityParty4Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "StampDutyTaxBasis",
+          "isoId": "_mzFk3_HcEfChCaiL9q1LKg",
+          "xmlTag": "StmpDtyTaxBsis",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "SettlementDetailsRule",
+          "isoId": "_mzFklfHcEfChCaiL9q1LKg",
+          "text": "If SettlementDetails elements are used, then their conditions of use must be pre-agreed between account owner and account servicer."
+        }
+      ]
+    },
+    "AddressType2Code": {
+      "name": "AddressType2Code",
+      "isoId": "_bm2sYNp-Ed-ak6NoX_4Aeg_595056355",
+      "kind": "code",
+      "options": [
+        {
+          "value": "ADDR",
+          "name": "Postal",
+          "isoId": "_bm2sYdp-Ed-ak6NoX_4Aeg_878577717"
+        },
+        {
+          "value": "PBOX",
+          "name": "POBox",
+          "isoId": "_bm2sYtp-Ed-ak6NoX_4Aeg_878578132"
+        },
+        {
+          "value": "HOME",
+          "name": "Residential",
+          "isoId": "_bm2sY9p-Ed-ak6NoX_4Aeg_2106193409"
+        },
+        {
+          "value": "BIZZ",
+          "name": "Business",
+          "isoId": "_bm2sZNp-Ed-ak6NoX_4Aeg_2106193529"
+        },
+        {
+          "value": "MLTO",
+          "name": "MailTo",
+          "isoId": "_bm2sZdp-Ed-ak6NoX_4Aeg_2106193606"
+        },
+        {
+          "value": "DLVY",
+          "name": "DeliveryTo",
+          "isoId": "_bm2sZtp-Ed-ak6NoX_4Aeg_2106193624"
+        }
+      ]
+    },
+    "CountryCode": {
+      "name": "CountryCode",
+      "isoId": "_bTfEctp-Ed-ak6NoX_4Aeg_-804722522",
+      "kind": "code",
+      "pattern": "[A-Z]{2,2}"
+    },
+    "PostalAddress1": {
+      "name": "PostalAddress1",
+      "isoId": "_QG4pKNp-Ed-ak6NoX_4Aeg_-839174134",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "AddressType",
+          "isoId": "_QG4pKdp-Ed-ak6NoX_4Aeg_-293371907",
+          "xmlTag": "AdrTp",
+          "type": "AddressType2Code",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "AddressLine",
+          "isoId": "_QG4pKtp-Ed-ak6NoX_4Aeg_-484540115",
+          "xmlTag": "AdrLine",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 0,
+          "max": 5
+        },
+        {
+          "name": "StreetName",
+          "isoId": "_QG4pK9p-Ed-ak6NoX_4Aeg_-1702876782",
+          "xmlTag": "StrtNm",
+          "type": "Max70Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "BuildingNumber",
+          "isoId": "_QG4pLNp-Ed-ak6NoX_4Aeg_-1628995660",
+          "xmlTag": "BldgNb",
+          "type": "Max16Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PostCode",
+          "isoId": "_QHCaINp-Ed-ak6NoX_4Aeg_-14467862",
+          "xmlTag": "PstCd",
+          "type": "Max16Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TownName",
+          "isoId": "_QHCaIdp-Ed-ak6NoX_4Aeg_15083256",
+          "xmlTag": "TwnNm",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CountrySubDivision",
+          "isoId": "_QHCaItp-Ed-ak6NoX_4Aeg_44636499",
+          "xmlTag": "CtrySubDvsn",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Country",
+          "isoId": "_QHCaI9p-Ed-ak6NoX_4Aeg_-34786848",
+          "xmlTag": "Ctry",
+          "type": "CountryCode",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "NameAndAddress5": {
+      "name": "NameAndAddress5",
+      "isoId": "_PZcUWdp-Ed-ak6NoX_4Aeg_-1177692250",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Name",
+          "isoId": "_PZcUWtp-Ed-ak6NoX_4Aeg_-1177692231",
+          "xmlTag": "Nm",
+          "type": "Max350Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Address",
+          "isoId": "_PZleQNp-Ed-ak6NoX_4Aeg_670261447",
+          "xmlTag": "Adr",
+          "type": "PostalAddress1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "DTI2024Identifier": {
+      "name": "DTI2024Identifier",
+      "kind": "text",
+      "isoId": "_W1-MobBoEe6MwO7YY4latA",
+      "pattern": "[1-9B-DF-HJ-NP-TV-XZ][0-9B-DF-HJ-NP-TV-XZ]{8,8}"
+    },
+    "PartyIdentification257Choice": {
+      "name": "PartyIdentification257Choice",
+      "isoId": "_PXUt4ZajEe-Rg9SagunFVg",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "AnyBIC",
+          "isoId": "_PgHdgZajEe-Rg9SagunFVg",
+          "xmlTag": "AnyBIC",
+          "type": "AnyBICDec2014Identifier",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "NameAndAddress",
+          "isoId": "_PgHdg5ajEe-Rg9SagunFVg",
+          "xmlTag": "NmAndAdr",
+          "type": "NameAndAddress5",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Country",
+          "isoId": "_PgHdhZajEe-Rg9SagunFVg",
+          "xmlTag": "Ctry",
+          "type": "CountryCode",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "DigitalLedgerIdentification",
+          "isoId": "_SaFUQZajEe-Rg9SagunFVg",
+          "xmlTag": "DgtlLdgrId",
+          "type": "DTI2024Identifier",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "TypeOfIdentification1Code": {
+      "name": "TypeOfIdentification1Code",
+      "isoId": "_YwnfFdp-Ed-ak6NoX_4Aeg_-1079654789",
+      "kind": "code",
+      "options": [
+        {
+          "value": "ARNU",
+          "name": "AlienRegistrationNumber",
+          "isoId": "_YwnfFtp-Ed-ak6NoX_4Aeg_-632668460"
+        },
+        {
+          "value": "CCPT",
+          "name": "PassportNumber",
+          "isoId": "_YwnfF9p-Ed-ak6NoX_4Aeg_-334369828"
+        },
+        {
+          "value": "CHTY",
+          "name": "TaxExemptIdentificationNumber",
+          "isoId": "_YwxQENp-Ed-ak6NoX_4Aeg_-332526291"
+        },
+        {
+          "value": "CORP",
+          "name": "CorporateIdentification",
+          "isoId": "_YwxQEdp-Ed-ak6NoX_4Aeg_-332522818"
+        },
+        {
+          "value": "DRLC",
+          "name": "DriverLicenseNumber",
+          "isoId": "_YwxQEtp-Ed-ak6NoX_4Aeg_-331599633"
+        },
+        {
+          "value": "FIIN",
+          "name": "ForeignInvestmentIdentityNumber",
+          "isoId": "_YwxQE9p-Ed-ak6NoX_4Aeg_-330676223"
+        },
+        {
+          "value": "TXID",
+          "name": "TaxIdentificationNumber",
+          "isoId": "_YwxQFNp-Ed-ak6NoX_4Aeg_-329752873"
+        }
+      ]
+    },
+    "IdentificationType42Choice": {
+      "name": "IdentificationType42Choice",
+      "isoId": "_m6TxQR5gEeWE3PufGMdJ3w",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "Code",
+          "isoId": "_nacp4x5gEeWE3PufGMdJ3w",
+          "xmlTag": "Cd",
+          "type": "TypeOfIdentification1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Proprietary",
+          "isoId": "_nalz0R5gEeWE3PufGMdJ3w",
+          "xmlTag": "Prtry",
+          "type": "GenericIdentification30",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "AlternatePartyIdentification7": {
+      "name": "AlternatePartyIdentification7",
+      "isoId": "_A7zZ3R5gEeWE3PufGMdJ3w",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "IdentificationType",
+          "isoId": "_BbMrdR5gEeWE3PufGMdJ3w",
+          "xmlTag": "IdTp",
+          "type": "IdentificationType42Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Country",
+          "isoId": "_BbMrfR5gEeWE3PufGMdJ3w",
+          "xmlTag": "Ctry",
+          "type": "CountryCode",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "AlternateIdentification",
+          "isoId": "_BbMrhR5gEeWE3PufGMdJ3w",
+          "xmlTag": "AltrnId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "PartyTextInformation1": {
+      "name": "PartyTextInformation1",
+      "isoId": "_RAQhItp-Ed-ak6NoX_4Aeg_1770128629",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "DeclarationDetails",
+          "isoId": "_RAQhI9p-Ed-ak6NoX_4Aeg_1822769662",
+          "xmlTag": "DclrtnDtls",
+          "type": "Max350Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PartyContactDetails",
+          "isoId": "_RAQhJNp-Ed-ak6NoX_4Aeg_1835700869",
+          "xmlTag": "PtyCtctDtls",
+          "type": "Max140Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "RegistrationDetails",
+          "isoId": "_RAQhJdp-Ed-ak6NoX_4Aeg_1825541125",
+          "xmlTag": "RegnDtls",
+          "type": "Max350Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "AdditonalDetailsGuideline",
+          "isoId": "_RAQhJtp-Ed-ak6NoX_4Aeg_-1058129563",
+          "text": "Unless bilaterally agreed between the Sender and Receiver, DeclarationlDetails, RegistrationDetails and PartyContactDetails must not contain information that can be provided in a structured field."
+        }
+      ]
+    },
+    "PartyIdentification315": {
+      "name": "PartyIdentification315",
+      "isoId": "_zZ3Y84otEe-efPejSUAtLw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_zjP-EYotEe-efPejSUAtLw",
+          "xmlTag": "Id",
+          "type": "PartyIdentification257Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "LEI",
+          "isoId": "_zjP-GYotEe-efPejSUAtLw",
+          "xmlTag": "LEI",
+          "type": "LEIIdentifier",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "AlternateIdentification",
+          "isoId": "_zjP-G4otEe-efPejSUAtLw",
+          "xmlTag": "AltrnId",
+          "type": "AlternatePartyIdentification7",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ProcessingDate",
+          "isoId": "_zjP-I4otEe-efPejSUAtLw",
+          "xmlTag": "PrcgDt",
+          "type": "DateAndDateTime2Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ProcessingIdentification",
+          "isoId": "_zjP-K4otEe-efPejSUAtLw",
+          "xmlTag": "PrcgId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "AdditionalInformation",
+          "isoId": "_zjP-M4otEe-efPejSUAtLw",
+          "xmlTag": "AddtlInf",
+          "type": "PartyTextInformation1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "PartyIdentification120Choice": {
+      "name": "PartyIdentification120Choice",
+      "isoId": "_Vul5MbpYEeifFaUMRKyMMw",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "AnyBIC",
+          "isoId": "_V5dscbpYEeifFaUMRKyMMw",
+          "xmlTag": "AnyBIC",
+          "type": "AnyBICDec2014Identifier",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ProprietaryIdentification",
+          "isoId": "_V5dsc7pYEeifFaUMRKyMMw",
+          "xmlTag": "PrtryId",
+          "type": "GenericIdentification36",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "NameAndAddress",
+          "isoId": "_V5dsdbpYEeifFaUMRKyMMw",
+          "xmlTag": "NmAndAdr",
+          "type": "NameAndAddress5",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "PartyIdentificationAndAccount196": {
+      "name": "PartyIdentificationAndAccount196",
+      "isoId": "_sGq7wSqDEeyR9JrVGfaMKw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_sd6XAyqDEeyR9JrVGfaMKw",
+          "xmlTag": "Id",
+          "type": "PartyIdentification120Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "LEI",
+          "isoId": "_sd6XCyqDEeyR9JrVGfaMKw",
+          "xmlTag": "LEI",
+          "type": "LEIIdentifier",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "AlternateIdentification",
+          "isoId": "_sd6XDSqDEeyR9JrVGfaMKw",
+          "xmlTag": "AltrnId",
+          "type": "AlternatePartyIdentification7",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SafekeepingAccount",
+          "isoId": "_sd6XFSqDEeyR9JrVGfaMKw",
+          "xmlTag": "SfkpgAcct",
+          "type": "SecuritiesAccount19",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "BlockChainAddressOrWallet",
+          "isoId": "_m5noAyqDEeyR9JrVGfaMKw",
+          "xmlTag": "BlckChainAdrOrWllt",
+          "type": "BlockChainAddressWallet3",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ProcessingDate",
+          "isoId": "_sd6XHSqDEeyR9JrVGfaMKw",
+          "xmlTag": "PrcgDt",
+          "type": "DateAndDateTime2Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ProcessingIdentification",
+          "isoId": "_sd6XJSqDEeyR9JrVGfaMKw",
+          "xmlTag": "PrcgId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "AdditionalInformation",
+          "isoId": "_sd6XLSqDEeyR9JrVGfaMKw",
+          "xmlTag": "AddtlInf",
+          "type": "PartyTextInformation1",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "SafekeepingAccountOrBlockChainAddress1Rule",
+          "isoId": "_m5noBCqDEeyR9JrVGfaMKw",
+          "text": "If SafekeepingAccount is present, BlockChainAddressOrWallet must be absent.",
+          "expression": {
+            "mustBe": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Absence",
+                  "path": "/BlockChainAddressOrWallet"
+                }
+              ]
+            },
+            "onCondition": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/SafekeepingAccount"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "SafekeepingAccountOrBlockChainAddress2Rule",
+          "isoId": "_m5noBSqDEeyR9JrVGfaMKw",
+          "text": "If BlockChainAddressOrWallet is present, SafekeepingAccount must be absent.",
+          "expression": {
+            "mustBe": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Absence",
+                  "path": "/SafekeepingAccount"
+                }
+              ]
+            },
+            "onCondition": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/BlockChainAddressOrWallet"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "SettlementParties128": {
+      "name": "SettlementParties128",
+      "isoId": "_zsyVLYotEe-efPejSUAtLw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Depository",
+          "isoId": "_z2UrH4otEe-efPejSUAtLw",
+          "xmlTag": "Dpstry",
+          "type": "PartyIdentification315",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Party1",
+          "isoId": "_z2UrJ4otEe-efPejSUAtLw",
+          "xmlTag": "Pty1",
+          "type": "PartyIdentificationAndAccount196",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Party2",
+          "isoId": "_z2UrL4otEe-efPejSUAtLw",
+          "xmlTag": "Pty2",
+          "type": "PartyIdentificationAndAccount196",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Party3",
+          "isoId": "_z2UrSYotEe-efPejSUAtLw",
+          "xmlTag": "Pty3",
+          "type": "PartyIdentificationAndAccount196",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Party4",
+          "isoId": "_z2UrXYotEe-efPejSUAtLw",
+          "xmlTag": "Pty4",
+          "type": "PartyIdentificationAndAccount196",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Party5",
+          "isoId": "_z2Ura4otEe-efPejSUAtLw",
+          "xmlTag": "Pty5",
+          "type": "PartyIdentificationAndAccount196",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "Party2PresenceRule",
+          "isoId": "_z2UrEYotEe-efPejSUAtLw",
+          "text": "If Party2 is present, then Party1 must be present.",
+          "expression": {
+            "mustBe": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/Party1"
+                }
+              ]
+            },
+            "onCondition": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/Party2"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Party3PresenceRule",
+          "isoId": "_z2UrE4otEe-efPejSUAtLw",
+          "text": "If Party3 is present, then Party2 must be present.",
+          "expression": {
+            "mustBe": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/Party2"
+                }
+              ]
+            },
+            "onCondition": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/Party3"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Party4PresenceRule",
+          "isoId": "_z2UrFYotEe-efPejSUAtLw",
+          "text": "If Party4 is present, then Party3 must be present.",
+          "expression": {
+            "mustBe": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/Party3"
+                }
+              ]
+            },
+            "onCondition": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/Party4"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Party5PresenceRule",
+          "isoId": "_z2UrF4otEe-efPejSUAtLw",
+          "text": "If Party5 is present, then Party4 must be present.",
+          "expression": {
+            "mustBe": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/Party4"
+                }
+              ]
+            },
+            "onCondition": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/Party5"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "SettlementChainGuideline",
+          "isoId": "_z2UrGYotEe-efPejSUAtLw",
+          "text": "SMPG recommends that at least three settlement parties be instructed in equity or fixed income receive|free or against payment settlement instructions; the depository, the participant of the depository (Party1) and the client of Party1 (Party2).|The data format for the identification of Party1 depends on the market. If no country specific requirement is available, BIC is recommended.|For more details, see the relevant market practice document on www.smpg.info."
+        },
+        {
+          "name": "DepositoryGuideline",
+          "isoId": "_z2UrG4otEe-efPejSUAtLw",
+          "text": "In a delivery, the receiving depository is to be understood as the requested depository of the receiving counterparty. |In a receive, the delivering depository is to be understood as the requested depository of the delivering counterparty.|The field must be populated with the BIC of a national or international CSD. When no CSD exists in a particular market, the stock exchange BIC will be used.|Country code should be used for settlement taking place outside of an institution published in the PSET's BIC list. This includes physical deliveries and investment funds not settling at a CSD. |The format and content of the settlement party sequences will comply with the market practices published for the counterparty depository included in the message.|For more details, see the relevant market practice document on www.smpg.info."
+        },
+        {
+          "name": "BookTransferGuideline",
+          "isoId": "_z2UrHYotEe-efPejSUAtLw",
+          "text": "In the case of an own account internal transfer, own account external transfer, portfolio transfer and in specie transfer (see SecuritiesTransactionType), the account of (delivering) Party2 at (delivering) Party1 must be provided.|For more details, see the relevant market practice document on www.smpg.info."
+        }
+      ]
+    },
+    "ActiveCurrencyAndAmount": {
+      "name": "ActiveCurrencyAndAmount",
+      "isoId": "_YX4O9tp-Ed-ak6NoX_4Aeg_-836081793",
+      "kind": "amount",
+      "pattern": "[A-Z]{3,3}",
+      "totalDigits": 18,
+      "fractionDigits": 5,
+      "minInclusive": 0
+    },
+    "CreditDebitCode": {
+      "name": "CreditDebitCode",
+      "isoId": "_bTfEdtp-Ed-ak6NoX_4Aeg_826087773",
+      "kind": "code",
+      "options": [
+        {
+          "value": "CRDT",
+          "name": "Credit",
+          "isoId": "_bTfEd9p-Ed-ak6NoX_4Aeg_-635010261"
+        },
+        {
+          "value": "DBIT",
+          "name": "Debit",
+          "isoId": "_bTfEeNp-Ed-ak6NoX_4Aeg_-610075163"
+        }
+      ]
+    },
+    "AmountAndDirection52": {
+      "name": "AmountAndDirection52",
+      "isoId": "__DhHMTtPEeWRTLSN0i0tng",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Amount",
+          "isoId": "__jzJwztPEeWRTLSN0i0tng",
+          "xmlTag": "Amt",
+          "type": "ActiveCurrencyAndAmount",
+          "kind": "amount",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CreditDebitIndicator",
+          "isoId": "__jzJyztPEeWRTLSN0i0tng",
+          "xmlTag": "CdtDbtInd",
+          "type": "CreditDebitCode",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "ActiveOrHistoricCurrencyAndAmount": {
+      "name": "ActiveOrHistoricCurrencyAndAmount",
+      "isoId": "_YYB_9tp-Ed-ak6NoX_4Aeg_-1587763373",
+      "kind": "amount",
+      "pattern": "[A-Z]{3,3}",
+      "totalDigits": 18,
+      "fractionDigits": 5,
+      "minInclusive": 0
+    },
+    "ActiveCurrencyCode": {
+      "name": "ActiveCurrencyCode",
+      "isoId": "_bqIp5tp-Ed-ak6NoX_4Aeg_-1326801359",
+      "kind": "code",
+      "pattern": "[A-Z]{3,3}"
+    },
+    "ForeignExchangeTerms23": {
+      "name": "ForeignExchangeTerms23",
+      "isoId": "_96UogTp8EeWVrPy0StzzSg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "UnitCurrency",
+          "isoId": "_-ZtTEzp8EeWVrPy0StzzSg",
+          "xmlTag": "UnitCcy",
+          "type": "ActiveCurrencyCode",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "QuotedCurrency",
+          "isoId": "_-ZtTGzp8EeWVrPy0StzzSg",
+          "xmlTag": "QtdCcy",
+          "type": "ActiveCurrencyCode",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ExchangeRate",
+          "isoId": "_-ZtTIzp8EeWVrPy0StzzSg",
+          "xmlTag": "XchgRate",
+          "type": "BaseOneRate",
+          "kind": "number",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ResultingAmount",
+          "isoId": "_-ZtTKzp8EeWVrPy0StzzSg",
+          "xmlTag": "RsltgAmt",
+          "type": "ActiveCurrencyAndAmount",
+          "kind": "amount",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "AmountAndDirection44": {
+      "name": "AmountAndDirection44",
+      "isoId": "_tCgW4zp8EeWVrPy0StzzSg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Amount",
+          "isoId": "_tiCyYzp8EeWVrPy0StzzSg",
+          "xmlTag": "Amt",
+          "type": "ActiveOrHistoricCurrencyAndAmount",
+          "kind": "amount",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CreditDebitIndicator",
+          "isoId": "_tiCyazp8EeWVrPy0StzzSg",
+          "xmlTag": "CdtDbtInd",
+          "type": "CreditDebitCode",
+          "kind": "code",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "OriginalCurrencyAndOrderedAmount",
+          "isoId": "_tiCyczp8EeWVrPy0StzzSg",
+          "xmlTag": "OrgnlCcyAndOrdrdAmt",
+          "type": "ActiveOrHistoricCurrencyAndAmount",
+          "kind": "amount",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ForeignExchangeDetails",
+          "isoId": "_tiCyezp8EeWVrPy0StzzSg",
+          "xmlTag": "FXDtls",
+          "type": "ForeignExchangeTerms23",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "OtherAmounts29": {
+      "name": "OtherAmounts29",
+      "isoId": "_tiCygzp8EeWVrPy0StzzSg",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "AccruedInterestAmount",
+          "isoId": "_uA_YMzp8EeWVrPy0StzzSg",
+          "xmlTag": "AcrdIntrstAmt",
+          "type": "AmountAndDirection44",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ChargesFees",
+          "isoId": "_uA_YOzp8EeWVrPy0StzzSg",
+          "xmlTag": "ChrgsFees",
+          "type": "AmountAndDirection44",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CountryNationalFederalTax",
+          "isoId": "_uA_YQzp8EeWVrPy0StzzSg",
+          "xmlTag": "CtryNtlFdrlTax",
+          "type": "AmountAndDirection44",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "PaymentLevyTax",
+          "isoId": "_uA_YSzp8EeWVrPy0StzzSg",
+          "xmlTag": "PmtLevyTax",
+          "type": "AmountAndDirection44",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "LocalTax",
+          "isoId": "_uA_YUzp8EeWVrPy0StzzSg",
+          "xmlTag": "LclTax",
+          "type": "AmountAndDirection44",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Other",
+          "isoId": "_uA_YWzp8EeWVrPy0StzzSg",
+          "xmlTag": "Othr",
+          "type": "AmountAndDirection44",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "RegulatoryAmount",
+          "isoId": "_uA_YYzp8EeWVrPy0StzzSg",
+          "xmlTag": "RgltryAmt",
+          "type": "AmountAndDirection44",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ShippingAmount",
+          "isoId": "_uA_Yazp8EeWVrPy0StzzSg",
+          "xmlTag": "ShppgAmt",
+          "type": "AmountAndDirection44",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "StampDuty",
+          "isoId": "_uA_Yczp8EeWVrPy0StzzSg",
+          "xmlTag": "StmpDty",
+          "type": "AmountAndDirection44",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "StockExchangeTax",
+          "isoId": "_uA_Yezp8EeWVrPy0StzzSg",
+          "xmlTag": "StockXchgTax",
+          "type": "AmountAndDirection44",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TransferTax",
+          "isoId": "_uA_Ygzp8EeWVrPy0StzzSg",
+          "xmlTag": "TrfTax",
+          "type": "AmountAndDirection44",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TransactionTax",
+          "isoId": "_uA_Yizp8EeWVrPy0StzzSg",
+          "xmlTag": "TxTax",
+          "type": "AmountAndDirection44",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ValueAddedTax",
+          "isoId": "_uA_Ykzp8EeWVrPy0StzzSg",
+          "xmlTag": "ValAddedTax",
+          "type": "AmountAndDirection44",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "WithholdingTax",
+          "isoId": "_uA_Ymzp8EeWVrPy0StzzSg",
+          "xmlTag": "WhldgTax",
+          "type": "AmountAndDirection44",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ConsumptionTax",
+          "isoId": "_uA_Yozp8EeWVrPy0StzzSg",
+          "xmlTag": "CsmptnTax",
+          "type": "AmountAndDirection44",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "AccruedCapitalisationAmount",
+          "isoId": "_uA_Yqzp8EeWVrPy0StzzSg",
+          "xmlTag": "AcrdCptlstnAmt",
+          "type": "AmountAndDirection44",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "Quantity83Choice": {
+      "name": "Quantity83Choice",
+      "isoId": "_oLJNEJZdEfCShM_qO0U4ig",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "ElectronicMoneyTokenSettlementQuantity",
+          "isoId": "_YOu-QZZeEfCShM_qO0U4ig",
+          "xmlTag": "ElctrncMnyTknSttlmQty",
+          "type": "Max30DecimalNumber",
+          "kind": "number",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "NetworkFeeQuantity",
+          "isoId": "_aUJLkZZeEfCShM_qO0U4ig",
+          "xmlTag": "NtwkFeeQty",
+          "type": "Max30DecimalNumber",
+          "kind": "number",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "CashSettlementSystemPlace1Choice": {
+      "name": "CashSettlementSystemPlace1Choice",
+      "isoId": "_57FSMJZgEfCShM_qO0U4ig",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "DigitalLedgerIdentification",
+          "isoId": "_g5qmsZZhEfCShM_qO0U4ig",
+          "xmlTag": "DgtlLdgrId",
+          "type": "DTI2024Identifier",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "AnyBIC",
+          "isoId": "_vRpY45ZhEfCShM_qO0U4ig",
+          "xmlTag": "AnyBIC",
+          "type": "AnyBICDec2014Identifier",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "LEI",
+          "isoId": "_YKiTY5ZhEfCShM_qO0U4ig",
+          "xmlTag": "LEI",
+          "type": "LEIIdentifier",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "DigitalPaymentSettlement1": {
+      "name": "DigitalPaymentSettlement1",
+      "isoId": "_0BvvAJZaEfCShM_qO0U4ig",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "FinancialInstrumentIdentification",
+          "isoId": "_WqsOEJZdEfCShM_qO0U4ig",
+          "xmlTag": "FinInstrmId",
+          "type": "SecurityIdentification19",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Quantity",
+          "isoId": "_ghFEYJZdEfCShM_qO0U4ig",
+          "xmlTag": "Qty",
+          "type": "Quantity83Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "CashSettlementSystemPlace",
+          "isoId": "_DndtYZZgEfCShM_qO0U4ig",
+          "xmlTag": "CshSttlmSysPlc",
+          "type": "CashSettlementSystemPlace1Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "PartyIdentification134Choice": {
+      "name": "PartyIdentification134Choice",
+      "isoId": "_JGMJ1dXZEeiN28wlpBQScw",
+      "kind": "choice",
+      "choiceOptions": [
+        {
+          "name": "AnyBIC",
+          "isoId": "_JXJ-A9XZEeiN28wlpBQScw",
+          "xmlTag": "AnyBIC",
+          "type": "AnyBICDec2014Identifier",
+          "kind": "text",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "ProprietaryIdentification",
+          "isoId": "_JXJ-BdXZEeiN28wlpBQScw",
+          "xmlTag": "PrtryId",
+          "type": "GenericIdentification36",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "NameAndAddress",
+          "isoId": "_JXJ-DdXZEeiN28wlpBQScw",
+          "xmlTag": "NmAndAdr",
+          "type": "NameAndAddress5",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Country",
+          "isoId": "_JXJ-FdXZEeiN28wlpBQScw",
+          "xmlTag": "Ctry",
+          "type": "CountryCode",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "PartyIdentification149": {
+      "name": "PartyIdentification149",
+      "isoId": "_I0fV0dXZEeiN28wlpBQScw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_JGMJ0dXZEeiN28wlpBQScw",
+          "xmlTag": "Id",
+          "type": "PartyIdentification134Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "LEI",
+          "isoId": "_JGMJ09XZEeiN28wlpBQScw",
+          "xmlTag": "LEI",
+          "type": "LEIIdentifier",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "PartyIdentification136": {
+      "name": "PartyIdentification136",
+      "isoId": "_Vht60bpYEeifFaUMRKyMMw",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Identification",
+          "isoId": "_VulSIbpYEeifFaUMRKyMMw",
+          "xmlTag": "Id",
+          "type": "PartyIdentification120Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "LEI",
+          "isoId": "_VulSI7pYEeifFaUMRKyMMw",
+          "xmlTag": "LEI",
+          "type": "LEIIdentifier",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    "OtherParties39": {
+      "name": "OtherParties39",
+      "isoId": "_mtxTt-mvEemUgrefIx730g",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Investor",
+          "isoId": "_nbcSBemvEemUgrefIx730g",
+          "xmlTag": "Invstr",
+          "type": "PartyIdentification149",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "StockExchange",
+          "isoId": "_nbcSDemvEemUgrefIx730g",
+          "xmlTag": "StockXchg",
+          "type": "PartyIdentification136",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TradeRegulator",
+          "isoId": "_nbcSFemvEemUgrefIx730g",
+          "xmlTag": "TradRgltr",
+          "type": "PartyIdentification136",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "InvestorCountryCodeRule",
+          "isoId": "_nbcSAemvEemUgrefIx730g",
+          "text": "If Investor is used with a country code, then the country code specifies the nationality of the investor, for example for the settlement of certain securities (that is airlines, defence manufacturers) under the EU legislation."
+        }
+      ]
+    },
+    "SupplementaryDataEnvelope1": {
+      "name": "SupplementaryDataEnvelope1",
+      "kind": "any",
+      "isoId": "_Kz9KwJDrEeSLQ8ob-qtemg"
+    },
+    "SupplementaryData1": {
+      "name": "SupplementaryData1",
+      "isoId": "_Qn0zC9p-Ed-ak6NoX_4Aeg_468227563",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "PlaceAndName",
+          "isoId": "_Qn988Np-Ed-ak6NoX_4Aeg_354388497",
+          "xmlTag": "PlcAndNm",
+          "type": "Max350Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Envelope",
+          "isoId": "_Qn988dp-Ed-ak6NoX_4Aeg_-642683856",
+          "xmlTag": "Envlp",
+          "type": "SupplementaryDataEnvelope1",
+          "kind": "any",
+          "min": 1,
+          "max": 1
+        }
+      ],
+      "rules": [
+        {
+          "name": "SupplementaryDataRule",
+          "isoId": "_Qn988tp-Ed-ak6NoX_4Aeg_-1492355109",
+          "text": "This component may not be used without the explicit approval of a SEG and submission to the RA of ISO 20022 compliant structure(s) to be used in the Envelope element."
+        }
+      ]
+    },
+    "SecuritiesTradeDetails154": {
+      "name": "SecuritiesTradeDetails154",
+      "isoId": "_1eqfgZaHEfC2_67yGLymgA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "NotificationSenderTransactionIdentification",
+          "isoId": "_1hTj3ZaHEfC2_67yGLymgA",
+          "xmlTag": "NtfctnSndrTxId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "NotificationReceiverTransactionIdentification",
+          "isoId": "_1hTj6ZaHEfC2_67yGLymgA",
+          "xmlTag": "NtfctnRcvrTxId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "CommonIdentification",
+          "isoId": "_1hTj9ZaHEfC2_67yGLymgA",
+          "xmlTag": "CmonId",
+          "type": "Max35Text",
+          "kind": "text",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SecuritiesMovementType",
+          "isoId": "_1hTkAZaHEfC2_67yGLymgA",
+          "xmlTag": "SctiesMvmntTp",
+          "type": "ReceiveDelivery1Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Payment",
+          "isoId": "_1hTkDZaHEfC2_67yGLymgA",
+          "xmlTag": "Pmt",
+          "type": "DeliveryReceiptType2Code",
+          "kind": "code",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "Status",
+          "isoId": "_1hTkGZaHEfC2_67yGLymgA",
+          "xmlTag": "Sts",
+          "type": "PortfolioTransferStatus2Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TradeDate",
+          "isoId": "_1hTkH5aHEfC2_67yGLymgA",
+          "xmlTag": "TradDt",
+          "type": "TradeDate8Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SettlementDate",
+          "isoId": "_1hTkK5aHEfC2_67yGLymgA",
+          "xmlTag": "SttlmDt",
+          "type": "SettlementDate17Choice",
+          "kind": "choice",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "NumberOfDaysAccrued",
+          "isoId": "_1hTkN5aHEfC2_67yGLymgA",
+          "xmlTag": "NbOfDaysAcrd",
+          "type": "Max3Number",
+          "kind": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "FinancialInstrumentIdentification",
+          "isoId": "_1hTkQ5aHEfC2_67yGLymgA",
+          "xmlTag": "FinInstrmId",
+          "type": "SecurityIdentification19",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "FinancialInstrumentAttributes",
+          "isoId": "_1hTkT5aHEfC2_67yGLymgA",
+          "xmlTag": "FinInstrmAttrbts",
+          "type": "FinancialInstrumentAttributes111",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "Reporting",
+          "isoId": "_1hTkW5aHEfC2_67yGLymgA",
+          "xmlTag": "Rptg",
+          "type": "Reporting7Choice",
+          "kind": "choice",
+          "min": 0,
+          "max": null
+        },
+        {
+          "name": "QuantityDetails",
+          "isoId": "_1hTkZ5aHEfC2_67yGLymgA",
+          "xmlTag": "QtyDtls",
+          "type": "Quantity48",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "SettlementParameters",
+          "isoId": "_1hTkc5aHEfC2_67yGLymgA",
+          "xmlTag": "SttlmParams",
+          "type": "SettlementDetails236",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "DeliveringSettlementParties",
+          "isoId": "_1hTkf5aHEfC2_67yGLymgA",
+          "xmlTag": "DlvrgSttlmPties",
+          "type": "SettlementParties128",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "ReceivingSettlementParties",
+          "isoId": "_1hTki5aHEfC2_67yGLymgA",
+          "xmlTag": "RcvgSttlmPties",
+          "type": "SettlementParties128",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SettlementAmount",
+          "isoId": "_1hTkl5aHEfC2_67yGLymgA",
+          "xmlTag": "SttlmAmt",
+          "type": "AmountAndDirection52",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "OtherAmounts",
+          "isoId": "_1hTko5aHEfC2_67yGLymgA",
+          "xmlTag": "OthrAmts",
+          "type": "OtherAmounts29",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "DigitalPaymentSettlement",
+          "isoId": "_PSSrEZaHEfC2_67yGLymgA",
+          "xmlTag": "DgtlPmtSttlm",
+          "type": "DigitalPaymentSettlement1",
+          "kind": "component",
+          "min": 0,
+          "max": 2
+        },
+        {
+          "name": "OtherBusinessParties",
+          "isoId": "_1hTkr5aHEfC2_67yGLymgA",
+          "xmlTag": "OthrBizPties",
+          "type": "OtherParties39",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SupplementaryData",
+          "isoId": "_1hTku5aHEfC2_67yGLymgA",
+          "xmlTag": "SplmtryData",
+          "type": "SupplementaryData1",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ],
+      "rules": [
+        {
+          "name": "TradeDateRule",
+          "isoId": "_1hTj1ZaHEfC2_67yGLymgA",
+          "text": "If Trade Date/Time is used with a time or a time + UTC indicator, then it must be the local time of the place of trade, for example, of the stock exchange, or of the selling broker for OTC."
+        },
+        {
+          "name": "SettlementAmountRule",
+          "isoId": "_1hTj15aHEfC2_67yGLymgA",
+          "text": "If the instruction is against payment, then SettlementAmount must be present.",
+          "expression": {
+            "mustBe": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/SettlementAmount"
+                }
+              ]
+            },
+            "onCondition": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "EqualToValue",
+                  "path": "/Payment",
+                  "value": "AgainstPaymentSettlement"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "ReceivingParty1Rule",
+          "isoId": "_1hTj2ZaHEfC2_67yGLymgA",
+          "text": "If the instruction is a delivery, then ReceivingParty 1 must be present.",
+          "expression": {
+            "mustBe": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/ReceivingSettlementParties"
+                },
+                {
+                  "op": "Presence",
+                  "path": "/ReceivingSettlementParties/Party1"
+                }
+              ]
+            },
+            "onCondition": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "EqualToValue",
+                  "path": "/SecuritiesMovementType",
+                  "value": "Delivery"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "DeliveringParty1Rule",
+          "isoId": "_1hTj25aHEfC2_67yGLymgA",
+          "text": "If the instruction is a receive, then DeliveringParty1 must be present.",
+          "expression": {
+            "mustBe": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/DeliveringSettlementParties"
+                },
+                {
+                  "op": "Presence",
+                  "path": "/DeliveringSettlementParties/Party1"
+                }
+              ]
+            },
+            "onCondition": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "EqualToValue",
+                  "path": "/SecuritiesMovementType",
+                  "value": "Receive"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "PortfolioTransferNotificationV09": {
+      "name": "PortfolioTransferNotificationV09",
+      "isoId": "_uLnIoZaHEfC2_67yGLymgA",
+      "kind": "component",
+      "fields": [
+        {
+          "name": "Pagination",
+          "isoId": "_uLnItZaHEfC2_67yGLymgA",
+          "xmlTag": "Pgntn",
+          "type": "Pagination1",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "StatementGeneralDetails",
+          "isoId": "_uLnIu5aHEfC2_67yGLymgA",
+          "xmlTag": "StmtGnlDtls",
+          "type": "Statement62",
+          "kind": "component",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "name": "AccountOwner",
+          "isoId": "_uLnIwZaHEfC2_67yGLymgA",
+          "xmlTag": "AcctOwnr",
+          "type": "PartyIdentification144",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "SafekeepingAccount",
+          "isoId": "_uLnIx5aHEfC2_67yGLymgA",
+          "xmlTag": "SfkpgAcct",
+          "type": "SecuritiesAccount19",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "BlockChainAddressOrWallet",
+          "isoId": "_uLnIzZaHEfC2_67yGLymgA",
+          "xmlTag": "BlckChainAdrOrWllt",
+          "type": "BlockChainAddressWallet3",
+          "kind": "component",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "TransferNotificationDetails",
+          "isoId": "_uLnI05aHEfC2_67yGLymgA",
+          "xmlTag": "TrfNtfctnDtls",
+          "type": "SecuritiesTradeDetails154",
+          "kind": "component",
+          "min": 0,
+          "max": null
+        }
+      ],
+      "rules": [
+        {
+          "name": "SecuritiesMarketPracticeGroupGuideline",
+          "isoId": "_uLnIp5aHEfC2_67yGLymgA",
+          "text": "The Securities Market Practice Group (SMPG) has published market practice recommendations on the use of this message.|These market practices are available on www.smpg.info."
+        },
+        {
+          "name": "SafekeepingAccountOrBlockChainAddress1Rule",
+          "isoId": "_uLnIqZaHEfC2_67yGLymgA",
+          "text": "If SafekeepingAccount is present, BlockChainAddressOrWallet must be absent.",
+          "expression": {
+            "mustBe": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Absence",
+                  "path": "/BlockChainAddressOrWallet"
+                }
+              ]
+            },
+            "onCondition": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/SafekeepingAccount"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "SafekeepingAccountOrBlockChainAddress2Rule",
+          "isoId": "_uLnIq5aHEfC2_67yGLymgA",
+          "text": "If BlockChainAddressOrWallet is present, SafekeepingAccount must be absent.",
+          "expression": {
+            "mustBe": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Absence",
+                  "path": "/SafekeepingAccount"
+                }
+              ]
+            },
+            "onCondition": {
+              "connector": "AND",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/BlockChainAddressOrWallet"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "SafekeepingAccountOrBlockChainAddress3Rule",
+          "isoId": "_uLnIrZaHEfC2_67yGLymgA",
+          "text": "Either SafekeepingAccount or BlockChainAddressOrWallet must be present but not both.",
+          "expression": {
+            "mustBe": {
+              "connector": "OR",
+              "rules": [
+                {
+                  "op": "Presence",
+                  "path": "/SafekeepingAccount"
+                },
+                {
+                  "op": "Presence",
+                  "path": "/BlockChainAddressOrWallet"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

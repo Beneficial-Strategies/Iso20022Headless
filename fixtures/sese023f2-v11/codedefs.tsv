@@ -1,0 +1,69 @@
+codeSet	code	enumName	isoId	text
+SecuritiesTransactionType23Code	BSBK	BuySellBack	_M0NXEdEgEeiO-eodGv5iKQ	Relates to a buy sell back transaction.
+SecuritiesTransactionType23Code	COLI	CollateralIn	_NMxoEdEgEeiO-eodGv5iKQ	Relates to a collateral transaction, from the point of view of the collateral taker or its agent.
+SecuritiesTransactionType23Code	COLO	CollateralOut	_NTHgodEgEeiO-eodGv5iKQ	Relates to a collateral transaction, from the point of view of the collateral giver or its agent.
+SecuritiesTransactionType23Code	MKDW	MarkDown	_QcqrgdEgEeiO-eodGv5iKQ	Relates to the decrease of positions held by an International Central Securities Depository (ICSD) at the common depository due to custody operations (repurchase, pre-release, proceeds of corporate event realigned).
+SecuritiesTransactionType23Code	MKUP	MarkUp	_Qs9KQdEgEeiO-eodGv5iKQ	Relates to the increase of positions held by an International Central Securities Depository (ICSD) at the common depository due to custody operations (repurchase, pre-release, proceeds of corporate event realigned).
+SecuritiesTransactionType23Code	NETT	Netting	_Q_7wodEgEeiO-eodGv5iKQ	Relates to the netting of settlement instructions.
+SecuritiesTransactionType23Code	NSYN	NonSyndicated	_RKgB4dEgEeiO-eodGv5iKQ	Relates to the issue of medium and short term paper (CP, CD, MTN, notes) under a program and without syndication arrangement.
+SecuritiesTransactionType23Code	PAIR	PairOff	_RcFhIdEgEeiO-eodGv5iKQ	Relates to a pair-off: the transaction is paired off and netted against one or more previous transactions.
+SecuritiesTransactionType23Code	PLAC	Placement	_RlOPAdEgEeiO-eodGv5iKQ	Relates to the placement/new issue of a financial instrument.
+SecuritiesTransactionType23Code	PORT	PortfolioMove	_Rs_q8dEgEeiO-eodGv5iKQ	Relates to a portfolio move from one investment manager to another and/or from an account servicer to another. It is generally charged differently than another account transfer, hence the need to identify this type of transfer as such.
+SecuritiesTransactionType23Code	REAL	Realignment	_SKIS4dEgEeiO-eodGv5iKQ	Relates to a realignment of positions.
+SecuritiesTransactionType23Code	REDM	Redemption	_SSqj0dEgEeiO-eodGv5iKQ	Relates to a redemption of funds (funds industry only).
+SecuritiesTransactionType23Code	REPU	Repo	_Si6mUdEgEeiO-eodGv5iKQ	Relates to a repurchase agreement transaction.
+SecuritiesTransactionType23Code	RODE	ReturnDeliveryWithoutMatching	_S3o5IdEgEeiO-eodGv5iKQ	Relates to the return of financial instruments resulting from a rejected delivery without a matching operation.
+SecuritiesTransactionType23Code	RVPO	ReverseRepurchaseAgreement	_S-S6wdEgEeiO-eodGv5iKQ	Relates to a reverse repurchase agreement transaction.
+SecuritiesTransactionType23Code	SECB	SecuritiesBorrowing	_TNRK4dEgEeiO-eodGv5iKQ	Relates to a securities borrowing operation.
+SecuritiesTransactionType23Code	SECL	SecuritiesLending	_TUP8odEgEeiO-eodGv5iKQ	Relates to a securities lending operation.
+SecuritiesTransactionType23Code	SUBS	Subscription	_UE_dEdEgEeiO-eodGv5iKQ	Relates to a subscription to funds (funds industry only).
+SecuritiesTransactionType23Code	SYND	SyndicateUnderwriters	_UXvZ8dEgEeiO-eodGv5iKQ	Relates to the issue of financial instruments through a syndicate of underwriters and a lead manager.
+SecuritiesTransactionType23Code	TBAC	TBAClosing	_UeGgodEgEeiO-eodGv5iKQ	Relates to a To Be Announced (TBA) closing trade.
+SecuritiesTransactionType23Code	TRAD	Trade	_Us05IdEgEeiO-eodGv5iKQ	Relates to the settlement of a trade.
+SecuritiesTransactionType23Code	TRPO	TripartyRepo	_Uy7hIdEgEeiO-eodGv5iKQ	Relates to a triparty repurchase agreement.
+SecuritiesTransactionType23Code	TRVO	TripartyReverseRepo	_U5LTEdEgEeiO-eodGv5iKQ	Relates to a triparty reverse repurchase agreement.
+SecuritiesTransactionType23Code	TURN	Turnaround	_VDRqQdEgEeiO-eodGv5iKQ	Relates to a turnaround: the same security is bought and sold to settle the same day, to or from different brokers.
+SecuritiesTransactionType23Code	BYIY	BuyIn	_fsV6sdEgEeiO-eodGv5iKQ	Relates to a buy-in by the market following a delivery transaction failure.
+SecuritiesTransactionType23Code	CNCB	CentralBankCollateralOperation	_jOsAEdEgEeiO-eodGv5iKQ	Relates to a collateral delivery/receipt to a national central bank for central bank credit operations.
+SecuritiesTransactionType23Code	OWNE	ExternalAccountTransfer	_2_R1sdEgEeiO-eodGv5iKQ	Relates to an account transfer involving more than one instructing party (message sender) and/or account servicer (messages receiver).
+SecuritiesTransactionType23Code	FCTA	FactorUpdate	_4k5IodEgEeiO-eodGv5iKQ	Relates to a factor update.
+SecuritiesTransactionType23Code	OWNI	InternalAccountTransfer	_7OV3IdEgEeiO-eodGv5iKQ	Relates to an account transfer involving one instructing party (message sender) at one account servicer (messages receiver).
+SecuritiesTransactionType23Code	RELE	DepositoryReceiptReleaseCancellation	_qK8DsdEkEeiO-eodGv5iKQ	Relates to a release (into/from local) of depository receipt operation.
+SecuritiesTransactionType23Code	SBRE	BorrowingReallocation	_yOlKAdEkEeiO-eodGv5iKQ	Internal reallocation of a borrowed holding from one safekeeping account to another.
+SecuritiesTransactionType23Code	CORP	CorporateAction	_5Mc7EdEkEeiO-eodGv5iKQ	Relates to a corporate action.
+SecuritiesTransactionType23Code	CLAI	MarketClaim	_77absdEkEeiO-eodGv5iKQ	Relates to a market claim.
+SecuritiesTransactionType23Code	AUTO	AutoCollateralisation	_9jGyQdEkEeiO-eodGv5iKQ	Relates to an auto-collateralisation movement.
+SecuritiesTransactionType23Code	SWIF	SwitchFrom	_DQfy4dElEeiO-eodGv5iKQ	Transaction is a change of an investment from one sub-fund to another sub-fund (redemption-leg).
+SecuritiesTransactionType23Code	SWIT	SwitchTo	_DWvk0dElEeiO-eodGv5iKQ	Transaction is a change of an investment from one sub-fund to another sub-fund (subscription-leg).
+SecuritiesTransactionType23Code	CONV	DepositoryReceiptConversion	_RromwdElEeiO-eodGv5iKQ	Relates to a depository receipt conversion.
+SecuritiesTransactionType23Code	ETFT	ExchangeTradedFunds	_czqEEdElEeiO-eodGv5iKQ	Relates to an ETF creation or redemption.
+SecuritiesTransactionType23Code	ISSU	Issuance	_iyTz0dElEeiO-eodGv5iKQ	Relates to the issuance of a security such as an equity or a depositary receipt.
+SecuritiesTransactionType23Code	SLRE	LendingReallocation	_kIvbQdElEeiO-eodGv5iKQ	Internal reallocation of a holding on loan from one safekeeping account to another.
+SecuritiesTransactionType23Code	INSP	MoveOfStock	_mXt0QdElEeiO-eodGv5iKQ	Relates to a movement of shares into or out of a pooled account.
+SecuritiesTransactionType23Code	SBBK	SellBuyBack	_zWKnsdElEeiO-eodGv5iKQ	Relates to a sell buy back transaction.
+SecuritiesTransactionType23Code	REDI	Withdrawal	_4zCgEdElEeiO-eodGv5iKQ	Relates to the withdrawal of specified amounts from specified subaccounts.
+SettlementTransactionCondition14Code	ADEA	AcceptAfterRegularSettlementDeadline	_RCEKGAzXEeuUZuaHWzkTew	Settlement is on a bilaterally accepted transaction that is to be accepted beyond the regular settlement deadline.
+SettlementTransactionCondition14Code	ASGN	Assignement	_RB7AQQzXEeuUZuaHWzkTew	Transfer of ownership of the asset to another party during the closing of an option.
+SettlementTransactionCondition14Code	BUTC	BuytoCover	_RB7AQgzXEeuUZuaHWzkTew	Transaction is a buy to cover.
+SettlementTransactionCondition14Code	CLEN	Clean	_RCEKFAzXEeuUZuaHWzkTew	Tax-exempt financial instruments are to be settled.
+SettlementTransactionCondition14Code	DLWM	DeliveryWithoutMatching	_RCEKEwzXEeuUZuaHWzkTew	Matching receipt instruction not required (only for concerned international or national central securities depositories).
+SettlementTransactionCondition14Code	DIRT	Dirty	_RB7APwzXEeuUZuaHWzkTew	Taxable financial instruments are to be settled.
+SettlementTransactionCondition14Code	DRAW	Drawn	_RB7ARwzXEeuUZuaHWzkTew	Settlement transactions relates to drawn securities.
+SettlementTransactionCondition14Code	EXER	Exercised	_RB7ARgzXEeuUZuaHWzkTew	Settlement transaction relates to options, futures or derivatives that are exercised.
+SettlementTransactionCondition14Code	EXPI	Expired	_RB7ASAzXEeuUZuaHWzkTew	Settlement transaction relates to options, futures or derivatives that have expired.
+SettlementTransactionCondition14Code	FRCL	FreeCleanSettlement	_RCEKEQzXEeuUZuaHWzkTew	Delivery will be made free of payment but a clean payment order will be sent.
+SettlementTransactionCondition14Code	KNOC	KnockedOut	_RCEKFgzXEeuUZuaHWzkTew	Settlement transaction relates to options, futures or derivatives that are expired worthless.
+SettlementTransactionCondition14Code	NOMC	NoAutomaticMarketClaim	_RCEKFQzXEeuUZuaHWzkTew	No market claim should be automatically generated.
+SettlementTransactionCondition14Code	NACT	NotAccountingRelated	_RB7AOwzXEeuUZuaHWzkTew	Security transaction is not for accounting.
+SettlementTransactionCondition14Code	PENS	PendingSale	_RCEKEgzXEeuUZuaHWzkTew	Position to cover the pending sale will be available by contractual settlement date (accounting information).
+SettlementTransactionCondition14Code	PHYS	Physical	_RB7AQwzXEeuUZuaHWzkTew	Securities are to be physically settled.
+SettlementTransactionCondition14Code	RHYP	Rehypothecation	_RB7APAzXEeuUZuaHWzkTew	Collateral position is available for other purposes (for example, onwards delivery).
+SettlementTransactionCondition14Code	RPTO	Reporting	_RB7ARAzXEeuUZuaHWzkTew	Relates to a transaction that is for reporting purposes only.
+SettlementTransactionCondition14Code	RESI	Residual	_RB7APQzXEeuUZuaHWzkTew	Relates to transaction on a security that is not eligible at the Central Security Depository (CSD) but for which the payment will be enacted by the central securities depository.
+SettlementTransactionCondition14Code	SHOR	ShortSell	_RCEKFwzXEeuUZuaHWzkTew	Account is used for short sale orders.
+SettlementTransactionCondition14Code	SPDL	SpecialDelivery	_RB7AQAzXEeuUZuaHWzkTew	Settlement transactions to be settled with special delivery.
+SettlementTransactionCondition14Code	SPST	SplitSettlement	_RCEKEAzXEeuUZuaHWzkTew	Money and financial instruments settle in different locations.
+SettlementTransactionCondition14Code	TRAN	Transformation	_RB7APgzXEeuUZuaHWzkTew	Transaction resulting from a transformation.
+SettlementTransactionCondition14Code	TRIP	TripartySegregation	_RB7ARQzXEeuUZuaHWzkTew	Securities are not be delivered but segregated following triparty collateral transaction.
+SettlementTransactionCondition14Code	UNEX	Unexposed	_RB7AOgzXEeuUZuaHWzkTew	Delivery cannot be performed until money is received.
+SettlementTransactionCondition14Code	BPSS	PartialSuccessfulBuyIn	_Vu5FkQzXEeuUZuaHWzkTew	Identification of settlement instructions created as a result of a partial successful buy-in.

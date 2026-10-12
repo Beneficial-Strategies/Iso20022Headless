@@ -64,5 +64,11 @@
     "name": "Securities Events",
     "isoId": "_sP2rq2tdEeCY4-KZ9JEyUQ_-735475843",
     "definition": "Messages that support asset servicing, including proxy voting, income and corporate actions."
+  },
+  {
+    "code": "sese",
+    "name": "Securities Settlement",
+    "isoId": "_sQvceGtdEeCY4-KZ9JEyUQ_-735475843",
+    "definition": "Messages that support the settlement process for securities and report its status and confirmation."
   }
 ]

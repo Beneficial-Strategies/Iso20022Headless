@@ -1,0 +1,23 @@
+choice	memberId	memberName	text
+References78Choice	_d_pEXzi8Eeydid5dcNPKvg	SecuritiesSettlementTransactionIdentification	Unambiguous identification of a securities settlement transaction as known by the account owner (or instructing party acting on its behalf).
+References78Choice	_d_pEZzi8Eeydid5dcNPKvg	IntraPositionMovementIdentification	Unambiguous identification of the intra-position movement transaction as known by the account owner (or instructing party acting on its behalf).
+References78Choice	_d_pEbzi8Eeydid5dcNPKvg	IntraBalanceMovementIdentification	Unambiguous identification of the intra balance movement transaction as known by the account owner.
+References78Choice	_d_pEcTi8Eeydid5dcNPKvg	AccountServicerTransactionIdentification	Unambiguous identification of the transaction as known by the account servicer.
+References78Choice	_d_pEeTi8Eeydid5dcNPKvg	MarketInfrastructureTransactionIdentification	Identification of a transaction assigned by a market infrastructure other than a central securities depository, for example, Target2-Securities.
+References78Choice	_d_pEezi8Eeydid5dcNPKvg	CounterpartyMarketInfrastructureTransactionIdentification	Identification of a counterparty transaction assigned by a market infrastructure other than a central securities depository, for example, Target2-Securities.
+References78Choice	_d_pEfTi8Eeydid5dcNPKvg	PoolIdentification	Collective reference identifying a set of messages.
+References78Choice	_d_pEhTi8Eeydid5dcNPKvg	OtherTransactionIdentification	Identification of a transaction that cannot be identified using a standard reference element present in the message.
+SettlementTransactionCondition29Choice	_6dqpqZNLEeWGlc8L7oPDIg	Code	Settlement conditions expressed as an ISO 20022 code.
+SettlementTransactionCondition29Choice	_6dqpsZNLEeWGlc8L7oPDIg	Proprietary	Settlement conditions expressed as a proprietary code.
+DeliveryReturn4Choice	_6dqqN5NLEeWGlc8L7oPDIg	Code	Delivery return expressed as an ISO 20022 code.
+DeliveryReturn4Choice	_6dqqP5NLEeWGlc8L7oPDIg	Proprietary	Delivery return expressed as a proprietary code.
+RepurchaseType26Choice	_R52IB5wyEeazcsnODTksnQ	Code	Type of securities financing transaction process expressed as an ISO 20022 code.
+RepurchaseType26Choice	_R52ID5wyEeazcsnODTksnQ	Proprietary	Type of securities financing transaction process expressed as a proprietary code.
+ModificationCancellationAllowed5Choice	_6dr4jZNLEeWGlc8L7oPDIg	Indicator	Specifies whether a third party is allowed to modify or cancel the transaction.
+ModificationCancellationAllowed5Choice	_6dr4lZNLEeWGlc8L7oPDIg	Proprietary	Modification, cancellation allowed information expressed as a proprietary code.
+ProcessingStatus62Choice	_6d7viZNLEeWGlc8L7oPDIg	AcknowledgedAccepted	Instruction has been acknowledged by the account servicer.
+ProcessingStatus62Choice	_6d7vkZNLEeWGlc8L7oPDIg	PendingProcessing	Processing of the instruction/request is pending.
+ProcessingStatus62Choice	_6d7vmZNLEeWGlc8L7oPDIg	Repair	Instruction/Request is accepted but in repair.
+ProcessingStatus62Choice	_6d7voZNLEeWGlc8L7oPDIg	PendingCancellation	A cancellation request from yourself for this instruction is pending waiting for further processing (only as a response to a SecuritiesTransactionStatusQuery). The pending status on the processing of a cancellation request must be provided using a SecuritiesTransactionCancellationRequestStatusAdvice.
+ProcessingStatus62Choice	_6d7vqZNLEeWGlc8L7oPDIg	Proprietary	Status that cannot be reported using one of the available standard status.
+ProcessingStatus62Choice	_6d7vsZNLEeWGlc8L7oPDIg	CancellationRequested	Cancellation request from your counterparty for this transaction is pending waiting for your cancellation request.

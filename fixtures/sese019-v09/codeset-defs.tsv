@@ -1,0 +1,13 @@
+codeSet	isoId	text
+BusinessFlowDirectionType1Code	_HUJJQPslEeCIi9ZETLBv8g	Identifies the business flow, in order to determine the role of the parties in the business process. This indicator is very important when there are multiple intermediaries in the exchange of information process.
+TaxEfficientProductType2Code	_qS2hUJy-Eem54rMzia0iag	Specifies a type of tax efficient product.
+GeneralInvestmentAccountType2Code	_HO62UJNvEembCsVG-3f_AA	Specifies a type of investment account.
+AccountOwnershipType6Code	_NptcQDOQEeqjy7_SkdcoGg	Specifies the type of account ownership.
+PensionSchemeType3Code	_ufPCkelpEeuvhrZwLF0fDg	Specifies a type of pension scheme.
+PensionTransferScope1Code	_5Ej7kE4YEeiQHa-q1Uephw	Specifies the scope of a pension transfer.
+PersonIdentificationType7Code	_A351sE4REeiQHa-q1Uephw	Specifies a type of tax reference.
+HolderType1Code	_i8_PME4SEeiQHa-q1Uephw	Specifies a type of holder.
+CashAssetType1Code	_w1c-gEyLEeiepssxrmRw1A	Specifies a source of the cash asset.
+OtherAsset2Code	_c7iNMJNCEemQB_8XA98K0Q	Specifies a type of asset.
+TradeTransactionCondition5Code	_Y_FjgEc9EeaBWtcfqEyXyw	Specifies the conditions under which the order/trade is to be/was executed.
+SettlementTransactionCondition11Code	_6sgV0Ec8EeaBWtcfqEyXyw	Specifies the conditions under which a order/trade is to be settled.

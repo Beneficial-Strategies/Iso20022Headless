@@ -1,0 +1,50 @@
+choice	memberId	memberName	text
+TransferStatusType3Choice	_SoQd0dydEeqzDbuoooxhdw	Code	Type of event expressed as a code.
+TransferStatusType3Choice	_SoQd09ydEeqzDbuoooxhdw	Proprietary	Type of event expressed as a proprietary code.
+TransferStatus5Choice	_WY1VQeijEeuLe8v4JEtDDg	Status	Status of the transfer is received, accepted, sent to next party, matched, already executed, or settled.
+TransferStatus5Choice	_WY1VQ-ijEeuLe8v4JEtDDg	PendingSettlement	Status of the transfer is pending settlement.
+TransferStatus5Choice	_WY1VReijEeuLe8v4JEtDDg	Unmatched	Status of the transfer is unmatched.
+TransferStatus5Choice	_WY1VR-ijEeuLe8v4JEtDDg	InRepair	Status of the transfer is in repair.
+TransferStatus5Choice	_WY1VSeijEeuLe8v4JEtDDg	Rejected	Status of the transfer is rejected.
+TransferStatus5Choice	_WY1VS-ijEeuLe8v4JEtDDg	FailedSettlement	Status of the transfer is failed settlement, that is, settlement in the International Central Securities Depository (ICSD) or Central Securities Depository (CSD) failed.
+TransferStatus5Choice	_WY1VTeijEeuLe8v4JEtDDg	Cancelled	Status of the transfer is cancelled.
+TransferStatus5Choice	_WY1VT-ijEeuLe8v4JEtDDg	Reversed	Status of the transfer is reversed.
+TransferStatus5Choice	_WY1VUeijEeuLe8v4JEtDDg	CancellationPending	Status of the transfer is cancellation pending.
+PendingSettlementStatus3Choice	_LrsCYyY4EeW_ZNn8gbfY7Q	Reason	Reason for the settlement pending status.
+PendingSettlementStatus3Choice	_LrsCZSY4EeW_ZNn8gbfY7Q	ExtendedReason	Reason for the settlement pending status.
+PendingSettlementStatus3Choice	_LrsCZyY4EeW_ZNn8gbfY7Q	DataSourceScheme	Proprietary identification of the reason for the pending settlement status.
+PendingSettlementStatus3Choice	_LrsCaSY4EeW_ZNn8gbfY7Q	NoSpecifiedReason	Indicates that there is no reason available or to report.
+TransferUnmatchedStatus4Choice	_k75sIZM5EemKz5EOjv82iQ	NoSpecifiedReason	Indicates that there is no reason available or to report.
+TransferUnmatchedStatus4Choice	_k75sI5M5EemKz5EOjv82iQ	Reason	Reason for the unmatched status.
+TransferUnmatchedStatus4Choice	_k75sJZM5EemKz5EOjv82iQ	ExtendedReason	Reason for the unmatched status.
+TransferUnmatchedStatus4Choice	_k75sJ5M5EemKz5EOjv82iQ	DataSourceScheme	Proprietary identification of the reason for the unmatched status.
+InRepairStatus4Choice	_yOuqYyY4EeW_ZNn8gbfY7Q	Reason	Reason for the in-repair status.
+InRepairStatus4Choice	_yOuqZSY4EeW_ZNn8gbfY7Q	DataSourceScheme	Proprietary identification of the reason for the in-repair status.
+InRepairStatus4Choice	_yOuqZyY4EeW_ZNn8gbfY7Q	NoSpecifiedReason	Indicates that there is no reason available or to report.
+RejectedReason45Choice	_XD5rgeijEeuLe8v4JEtDDg	Code	Rejected reason expressed as a code.
+RejectedReason45Choice	_XD5rg-ijEeuLe8v4JEtDDg	Proprietary	Rejected reason expressed as a proprietary code.
+FailedSettlementStatus2Choice	_DqHjMyY5EeW_ZNn8gbfY7Q	Reason	Reason for the failed settlement status.
+FailedSettlementStatus2Choice	_DqHjNSY5EeW_ZNn8gbfY7Q	DataSourceScheme	Proprietary identification of the reason for the failed settlement status.
+FailedSettlementStatus2Choice	_DqHjNyY5EeW_ZNn8gbfY7Q	NoSpecifiedReason	Indicates that there is no reason available or to report.
+CancelledStatus13Choice	_P3gGEyY5EeW_ZNn8gbfY7Q	NoSpecifiedReason	Indicates that there is no reason available or to report.
+CancelledStatus13Choice	_P3gGFSY5EeW_ZNn8gbfY7Q	Reason	Reason for the cancelled status.
+CancelledStatus13Choice	_P3gGFyY5EeW_ZNn8gbfY7Q	ExtendedReason	Reason for the cancelled status.
+CancelledStatus13Choice	_P3gGGSY5EeW_ZNn8gbfY7Q	DataSourceScheme	Proprietary identification of the reason for the cancelled status.
+ReversedStatus2Choice	_bUFeIyY5EeW_ZNn8gbfY7Q	Reason	Reason for the reversal status.
+ReversedStatus2Choice	_bUFeJSY5EeW_ZNn8gbfY7Q	DataSourceScheme	Proprietary identification of the reason for the reversed status.
+ReversedStatus2Choice	_bUFeJyY5EeW_ZNn8gbfY7Q	NoSpecifiedReason	Indicates that there is no reason available or to report.
+CancellationPendingStatus7Choice	_nF77kyY5EeW_ZNn8gbfY7Q	Reason	Reason for the cancellation pending status.
+CancellationPendingStatus7Choice	_nF77lSY5EeW_ZNn8gbfY7Q	DataSourceScheme	Proprietary identification of the reason for the cancellation pending status.
+CancellationPendingStatus7Choice	_nF77lyY5EeW_ZNn8gbfY7Q	NoSpecifiedReason	Indicates that there is no reason available or to report.
+PaymentInstrument31Choice	40322fcc-d11a-48d9-9d86-84c2545f9b99	CreditTransferDetails	Payment instrument between a debtor and a creditor that flows through one or more financial institutions or systems.
+PaymentInstrument31Choice	4613b0ed-26a6-45db-8c7e-f14a71bb25fb	ChequeDetails	Written order on which instructions are given to an account holder (a financial institution) to pay a stated sum to a named recipient (the payee).
+FinancialInstitutionIdentification10Choice	_Rou1EWAZEeiH9-hkDDXUHA	NameAndAddress	Name and address of the party.
+FinancialInstitutionIdentification10Choice	_Rou1E2AZEeiH9-hkDDXUHA	BICFI	Identification of the financial institution expressed as a BIC.
+FinancialInstitutionIdentification10Choice	_Rou1FWAZEeiH9-hkDDXUHA	ClearingSystemMemberIdentification	Choice of identifier for a clearing system member, as assigned by the clearing system. In some clearing systems, the accounts of the clearing system members are also assigned an identifier.
+FinancialInstitutionIdentification10Choice	_Rou1F2AZEeiH9-hkDDXUHA	ProprietaryIdentification	Unique and unambiguous identifier, as assigned to a financial institution using a proprietary identification scheme.
+ApplicableRules1Choice	_zP4owFNeEeijdq8ilaxyOA	Code	Applicable rules expressed as a code.
+ApplicableRules1Choice	_3OvD8FNeEeijdq8ilaxyOA	Proprietary	Applicable rules expressed as a proprietary code.
+BeneficiaryType1Choice	_3a4XoFNgEeijdq8ilaxyOA	Code	Type of beneficiary expressed as a code.
+BeneficiaryType1Choice	_69nekFNgEeijdq8ilaxyOA	Proprietary	Type of beneficiary expressed as a proprietary code.
+DateFormat42Choice	_xXmZwpBrEeaGiLsfv6g8MA	YearMonth	Year and month.
+DateFormat42Choice	_xXmZw5BrEeaGiLsfv6g8MA	YearMonthDay	Year, month and day.

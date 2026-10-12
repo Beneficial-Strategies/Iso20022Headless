@@ -1,0 +1,51 @@
+{
+  "identifier": "sese.021.002.06",
+  "name": "SecuritiesTransactionStatusQuery002V06",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:sese.021.002.06",
+  "bodyTag": "SctiesTxStsQry",
+  "out": "sese021f2",
+  "isoId": "_gOMmYzi8Eeydid5dcNPKvg",
+  "definition": "Scope|An account owner sends a SecuritiesTransactionStatusQuery to an account servicer to request a status on a securities transaction.|The account owner/servicer relationship may be:|- a global custodian which has an account with a local custodian, or|- an investment management institution which manage a fund account opened at a custodian, or|- a broker which has an account with a custodian, or|- a central securities depository participant which has an account with a central securities depository, or|- a central securities depository which has an account with a custodian, another central securities depository or another settlement market infrastructure, or|- a central counterparty or a stock exchange or a trade matching utility which need to instruct to a central securities depository or another settlement market infrastructure.||Usage|The message may also be used to:|- re-send a message previously sent,|- provide a third party with a copy of a message for information,|- re-send to a third party a copy of a message for information using the relevant elements in the Business Application Header.",
+  "blocks": [
+    {
+      "name": "StatusAdviceRequested",
+      "isoId": "_gOMmbTi8Eeydid5dcNPKvg",
+      "xmlTag": "StsAdvcReqd",
+      "type": "DocumentNumber19",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountOwner",
+      "isoId": "_gOMmbzi8Eeydid5dcNPKvg",
+      "xmlTag": "AcctOwnr",
+      "type": "PartyIdentification156",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SafekeepingAccount",
+      "isoId": "_gOMmcTi8Eeydid5dcNPKvg",
+      "xmlTag": "SfkpgAcct",
+      "type": "SecuritiesAccount37",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "BlockChainAddressOrWallet",
+      "isoId": "_gOMmczi8Eeydid5dcNPKvg",
+      "xmlTag": "BlckChainAdrOrWllt",
+      "type": "BlockChainAddressWallet7",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_gOMmdTi8Eeydid5dcNPKvg",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

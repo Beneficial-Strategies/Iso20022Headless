@@ -1,0 +1,5 @@
+codeSet	isoId	text
+BuyInState1Code	_pvXjAJwVEeqtp-LOti013g	Specifies the state of the buy-in transaction.
+BuyInDeferral1Code	_KuU3YJwWEeqtp-LOti013g	Specifies if the buy-in transaction was deferred or not.
+AcknowledgementReason10Code	_NDLHipwZEeqtp-LOti013g	Specifies additional information about the processed instruction.
+RejectionReason27Code	_BhhR0P4vEeClUvPNHKL9Zw	Specifies the reason why the instruction/cancellation request has a rejected status.

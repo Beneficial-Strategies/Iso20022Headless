@@ -50,7 +50,14 @@ import {
   UnmatchedStatus16ChoiceSchema,
   MatchingStatus24ChoiceSchema,
   PendingReason24CodeSchema,
+  PendingReason63ChoiceSchema,
+  PendingReason30Schema,
+  PendingStatus67ChoiceSchema,
   FailingReason4CodeSchema,
+  FailingReason16ChoiceSchema,
+  FailingReason11Schema,
+  FailingStatus13ChoiceSchema,
+  SettlementStatus30ChoiceSchema,
   PendingProcessingReason5CodeSchema,
   PendingProcessingReason19ChoiceSchema,
   PendingProcessingReason17Schema,
@@ -177,42 +184,6 @@ export const Statement64Schema = z.strictObject({
   UpdateType: UpdateType15ChoiceSchema.optional(),
   StatementStructure: StatementStructure1CodeSchema,
   ActivityIndicator: YesNoIndicatorSchema,
-});
-
-export const PendingReason63ChoiceSchema = choiceOf({
-  Code: PendingReason24CodeSchema,
-  Proprietary: GenericIdentification30Schema,
-});
-
-export const PendingReason30Schema = z.strictObject({
-  Code: PendingReason63ChoiceSchema,
-  AdditionalReasonInformation: Max210TextSchema.optional(),
-});
-
-export const PendingStatus67ChoiceSchema = choiceOf({
-  NoSpecifiedReason: NoReasonCodeSchema,
-  Reason: PendingReason30Schema,
-});
-
-export const FailingReason16ChoiceSchema = choiceOf({
-  Code: FailingReason4CodeSchema,
-  Proprietary: GenericIdentification30Schema,
-});
-
-export const FailingReason11Schema = z.strictObject({
-  Code: FailingReason16ChoiceSchema,
-  AdditionalReasonInformation: Max210TextSchema.optional(),
-});
-
-export const FailingStatus13ChoiceSchema = choiceOf({
-  NoSpecifiedReason: NoReasonCodeSchema,
-  Reason: FailingReason11Schema,
-});
-
-export const SettlementStatus30ChoiceSchema = choiceOf({
-  Pending: PendingStatus67ChoiceSchema,
-  Failing: FailingStatus13ChoiceSchema,
-  Proprietary: ProprietaryStatusAndReason6Schema,
 });
 
 export const InstructionProcessingStatus61ChoiceSchema = choiceOf({
@@ -358,73 +329,6 @@ const ownTypeDescriptors: TypeDescriptors = {
     ],
     rules: [
       { name: "ReportNumberRule", isoId: "_11OPMbPwEeelzbgsFa3sqQ", text: "If Long number (Exact5NumericTest) is used, then the report must be a delta reports (UpdateType: DELT).|If the report has multiple pages, then the ReportNumber must remain the same through all the pages. It is a unique number to the report.|Two reports of the same type sent one after the other to the same receiver in relation to the same safekeeping account must have different ReportNumbers. For example, a daily report sent on day 1 would have ReportNumber 001, on day 2, 002." },
-    ],
-  },
-  "PendingReason63Choice": {
-    name: "PendingReason63Choice",
-    isoId: "_d0YbsSW-EeygjNFjAlVoPA",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_eOBDoSW-EeygjNFjAlVoPA", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "PendingReason24Code", required: true }),
-      f({ name: "Proprietary", isoId: "_eOBDqSW-EeygjNFjAlVoPA", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
-  "PendingReason30": {
-    name: "PendingReason30",
-    isoId: "_dbWQoSW-EeygjNFjAlVoPA",
-    kind: "component",
-    fields: [
-      f({ name: "Code", isoId: "_d0YboSW-EeygjNFjAlVoPA", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "PendingReason63Choice", required: true }),
-      f({ name: "AdditionalReasonInformation", isoId: "_d0YbqSW-EeygjNFjAlVoPA", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
-    ],
-  },
-  "PendingStatus67Choice": {
-    name: "PendingStatus67Choice",
-    isoId: "_dCK7qyW-EeygjNFjAlVoPA",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "NoSpecifiedReason", isoId: "_dbWQkSW-EeygjNFjAlVoPA", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
-      f({ name: "Reason", isoId: "_dbWQmSW-EeygjNFjAlVoPA", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "PendingReason30", required: true }),
-    ],
-  },
-  "FailingReason16Choice": {
-    name: "FailingReason16Choice",
-    isoId: "_-e4jASW-EeygjNFjAlVoPA",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_-11qYSW-EeygjNFjAlVoPA", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "FailingReason4Code", required: true }),
-      f({ name: "Proprietary", isoId: "_-11qaSW-EeygjNFjAlVoPA", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
-  "FailingReason11": {
-    name: "FailingReason11",
-    isoId: "_-H8CoSW-EeygjNFjAlVoPA",
-    kind: "component",
-    fields: [
-      f({ name: "Code", isoId: "_-e4i8SW-EeygjNFjAlVoPA", xmlTag: "Cd", displayName: displayName("Code"), kind: "choice", type: "FailingReason16Choice", required: true }),
-      f({ name: "AdditionalReasonInformation", isoId: "_-e4i-SW-EeygjNFjAlVoPA", xmlTag: "AddtlRsnInf", displayName: displayName("AdditionalReasonInformation"), kind: "text", type: "Max210Text", required: false }),
-    ],
-  },
-  "FailingStatus13Choice": {
-    name: "FailingStatus13Choice",
-    isoId: "_9wP7USW-EeygjNFjAlVoPA",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "NoSpecifiedReason", isoId: "_-H8CkSW-EeygjNFjAlVoPA", xmlTag: "NoSpcfdRsn", displayName: displayName("NoSpecifiedReason"), kind: "code", type: "NoReasonCode", required: true }),
-      f({ name: "Reason", isoId: "_-H8CmSW-EeygjNFjAlVoPA", xmlTag: "Rsn", displayName: displayName("Reason"), kind: "component", type: "FailingReason11", required: true }),
-    ],
-  },
-  "SettlementStatus30Choice": {
-    name: "SettlementStatus30Choice",
-    isoId: "_coFnuSW-EeygjNFjAlVoPA",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Pending", isoId: "_dCK7kyW-EeygjNFjAlVoPA", xmlTag: "Pdg", displayName: displayName("Pending"), kind: "choice", type: "PendingStatus67Choice", required: true }),
-      f({ name: "Failing", isoId: "_dCK7myW-EeygjNFjAlVoPA", xmlTag: "Flng", displayName: displayName("Failing"), kind: "choice", type: "FailingStatus13Choice", required: true }),
-      f({ name: "Proprietary", isoId: "_dCK7oyW-EeygjNFjAlVoPA", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "ProprietaryStatusAndReason6", required: true }),
-    ],
-    rules: [
-      { name: "PendingToFailingRule", isoId: "_dCK7kSW-EeygjNFjAlVoPA", text: "A pending transaction (PEND) becomes a failing transaction (PENF) on the settlement date instructed in the message, during the end of day reporting." },
     ],
   },
   "InstructionProcessingStatus61Choice": {
@@ -656,7 +560,14 @@ export const typeDescriptors: TypeDescriptors = {
   "UnmatchedStatus16Choice": sharedTypeDescriptors["UnmatchedStatus16Choice"]!,
   "MatchingStatus24Choice": sharedTypeDescriptors["MatchingStatus24Choice"]!,
   "PendingReason24Code": sharedTypeDescriptors["PendingReason24Code"]!,
+  "PendingReason63Choice": sharedTypeDescriptors["PendingReason63Choice"]!,
+  "PendingReason30": sharedTypeDescriptors["PendingReason30"]!,
+  "PendingStatus67Choice": sharedTypeDescriptors["PendingStatus67Choice"]!,
   "FailingReason4Code": sharedTypeDescriptors["FailingReason4Code"]!,
+  "FailingReason16Choice": sharedTypeDescriptors["FailingReason16Choice"]!,
+  "FailingReason11": sharedTypeDescriptors["FailingReason11"]!,
+  "FailingStatus13Choice": sharedTypeDescriptors["FailingStatus13Choice"]!,
+  "SettlementStatus30Choice": sharedTypeDescriptors["SettlementStatus30Choice"]!,
   "PendingProcessingReason5Code": sharedTypeDescriptors["PendingProcessingReason5Code"]!,
   "PendingProcessingReason19Choice": sharedTypeDescriptors["PendingProcessingReason19Choice"]!,
   "PendingProcessingReason17": sharedTypeDescriptors["PendingProcessingReason17"]!,

@@ -1,0 +1,83 @@
+{
+  "identifier": "sese.006.001.09",
+  "name": "TransferInCancellationRequestV09",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:sese.006.001.09",
+  "bodyTag": "TrfInCxlReq",
+  "out": "sese006",
+  "isoId": "_Yga5gZDhEem7fvtoGpNpow",
+  "definition": "Scope|The TransferInCancellationRequest message is sent by an instructing party, for example, an investment manager or its authorised representative, to the executing party, for example, a transfer agent, to request the cancellation of a previously sent transfer in instruction.|Usage|The TransferInCancellationRequest message is used to request the cancellation of one or more transfer in instructions.|There is no amendment, but a cancellation and re-instruct policy.|To request the cancellation of one or more transfer in instructions, the transfer reference of the transfer, as specified in the original TransferInInstruction message, is specified in the transfer reference element.|The message identification of the original TransferOutInstruction message may also be quoted in PreviousReference but this is not recommended.|The deadline and acceptance of a cancellation request is subject to a service level agreement (SLA). This cancellation message is a cancellation request. There is no automatic acceptance of the cancellation.|The rejection or acceptance of a TransferInCancellationRequest is made using a TransferCancellationStatusReport message.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "_YgkDcZDhEem7fvtoGpNpow",
+      "xmlTag": "MsgId",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "PoolReference",
+      "isoId": "_YgkDc5DhEem7fvtoGpNpow",
+      "xmlTag": "PoolRef",
+      "type": "AdditionalReference11",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "PreviousReference",
+      "isoId": "_YgkDdZDhEem7fvtoGpNpow",
+      "xmlTag": "PrvsRef",
+      "type": "AdditionalReference10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "RelatedReference",
+      "isoId": "_YgkDd5DhEem7fvtoGpNpow",
+      "xmlTag": "RltdRef",
+      "type": "AdditionalReference10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "MasterReference",
+      "isoId": "_L3FugZGyEem-9Y6mq5ZH3Q",
+      "xmlTag": "MstrRef",
+      "type": "Max35Text",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Function",
+      "isoId": "_YgkDeZDhEem7fvtoGpNpow",
+      "xmlTag": "Fctn",
+      "type": "TransferInFunction1Code",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "TransferReferences",
+      "isoId": "_YgkDe5DhEem7fvtoGpNpow",
+      "xmlTag": "TrfRefs",
+      "type": "TransferReference15",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "MarketPracticeVersion",
+      "isoId": "_YgkDfZDhEem7fvtoGpNpow",
+      "xmlTag": "MktPrctcVrsn",
+      "type": "MarketPracticeVersion1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CopyDetails",
+      "isoId": "_YgkDf5DhEem7fvtoGpNpow",
+      "xmlTag": "CpyDtls",
+      "type": "CopyInformation5",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

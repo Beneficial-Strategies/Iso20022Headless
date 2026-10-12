@@ -157,6 +157,7 @@ import {
   RestrictedFINX2Max34TextSchema,
   CashAccountIdentification6ChoiceSchema,
   BICFIDec2014IdentifierSchema,
+  PartyIdentification147ChoiceSchema,
   CorporateActionDate99Schema,
   BaseOne14RateSchema,
   GrossDividendRateType7CodeSchema,
@@ -463,12 +464,6 @@ export const PartyIdentificationAndAccount231Schema = z.strictObject({
   CashAccount: CashAccountIdentification12ChoiceSchema.optional(),
   ProcessingIdentification: RestrictedFINXMax16TextSchema.optional(),
   AlternateIdentification: AlternatePartyIdentification9Schema.optional(),
-});
-
-export const PartyIdentification147ChoiceSchema = choiceOf({
-  BICFI: BICFIDec2014IdentifierSchema,
-  NameAndAddress: NameAndAddress12Schema,
-  ProprietaryIdentification: GenericIdentification84Schema,
 });
 
 export const PartyIdentificationAndAccount232Schema = z.strictObject({
@@ -1199,16 +1194,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       { name: "AdditionalInforrmationRule", isoId: "_kv-PV5t3Ee-wQIOX0djF2w", text: "The AdditionalInformation field in all elements must not contain information that can be provided in a structured field unless bilaterally agreed or advised differently in the element definition as in NarrativeVersion." },
     ],
   },
-  "PartyIdentification147Choice": {
-    name: "PartyIdentification147Choice",
-    isoId: "_8GnIGffREeiNZp_PtLohLw",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "BICFI", isoId: "_8GnIHffREeiNZp_PtLohLw", xmlTag: "BICFI", displayName: displayName("BICFI"), kind: "text", type: "BICFIDec2014Identifier", required: true }),
-      f({ name: "NameAndAddress", isoId: "_8GnIH_fREeiNZp_PtLohLw", xmlTag: "NmAndAdr", displayName: displayName("NameAndAddress"), kind: "component", type: "NameAndAddress12", required: true }),
-      f({ name: "ProprietaryIdentification", isoId: "_8GnIJ_fREeiNZp_PtLohLw", xmlTag: "PrtryId", displayName: displayName("ProprietaryIdentification"), kind: "component", type: "GenericIdentification84", required: true }),
-    ],
-  },
   "PartyIdentificationAndAccount232": {
     name: "PartyIdentificationAndAccount232",
     isoId: "_kv-P45t3Ee-wQIOX0djF2w",
@@ -1688,6 +1673,7 @@ export const typeDescriptors: TypeDescriptors = {
   "RestrictedFINX2Max34Text": sharedTypeDescriptors["RestrictedFINX2Max34Text"]!,
   "CashAccountIdentification6Choice": sharedTypeDescriptors["CashAccountIdentification6Choice"]!,
   "BICFIDec2014Identifier": sharedTypeDescriptors["BICFIDec2014Identifier"]!,
+  "PartyIdentification147Choice": sharedTypeDescriptors["PartyIdentification147Choice"]!,
   "CorporateActionDate99": sharedTypeDescriptors["CorporateActionDate99"]!,
   "BaseOne14Rate": sharedTypeDescriptors["BaseOne14Rate"]!,
   "GrossDividendRateType7Code": sharedTypeDescriptors["GrossDividendRateType7Code"]!,

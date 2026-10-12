@@ -1,0 +1,9 @@
+codeSet	code	enumName	isoId	text
+SettlementTransactionCondition13Code	CLEN	Clean	_tm2EEgzVEeuUZuaHWzkTew	Tax-exempt financial instruments are to be settled.
+SettlementTransactionCondition13Code	DIRT	Dirty	_tm2EFAzVEeuUZuaHWzkTew	Taxable financial instruments are to be settled.
+SettlementTransactionCondition13Code	DLWM	DeliveryWithoutMatching	_tm2EEQzVEeuUZuaHWzkTew	Matching receipt instruction not required (only for concerned international or national central securities depositories).
+SettlementTransactionCondition13Code	PHYS	Physical	_tm2EFQzVEeuUZuaHWzkTew	Securities are to be physically settled.
+SettlementTransactionCondition13Code	SPDL	SpecialDelivery	_tm2EFgzVEeuUZuaHWzkTew	Settlement transactions to be settled with special delivery.
+SettlementTransactionCondition13Code	SPST	SplitSettlement	_tm2EFwzVEeuUZuaHWzkTew	Money and financial instruments settle in different locations.
+SettlementTransactionCondition13Code	NOMC	NoAutomaticMarketClaim	_tm2EEwzVEeuUZuaHWzkTew	No market claim should be automatically generated.
+SettlementTransactionCondition13Code	BPSS	PartialSuccessfulBuyIn	_ySxnsAzVEeuUZuaHWzkTew	Identification of settlement instructions created as a result of a partial successful buy-in.

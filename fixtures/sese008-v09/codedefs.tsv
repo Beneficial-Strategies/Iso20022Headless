@@ -1,0 +1,3 @@
+codeSet	code	enumName	isoId	text
+TransferInFunction2Code	CONF	Confirmation	_ukgQsSVOEeWI0orciOKunQ	The transfer-in is a confirmation (rather than an advice).
+TransferInFunction2Code	ADVI	Advice	_uw_0kSVOEeWI0orciOKunQ	The transfer-in provides advice about account information for a transfer.

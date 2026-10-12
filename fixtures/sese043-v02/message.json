@@ -1,0 +1,147 @@
+{
+  "identifier": "sese.043.001.02",
+  "name": "PortfolioTransferCompletionV02",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:sese.043.001.02",
+  "bodyTag": "PrtflTrfCmpltn",
+  "out": "sese043",
+  "isoId": "49cb0930-126e-4033-b84e-5ed1b1588f81",
+  "definition": "Scope|The PortfolioTransferCompletion message is sent by an executing party, for example, a (old) plan manager (transferor), to the instructing party for example, a (new) plan manager (transferee), to confirm that the transfer of financial instruments from the client’s account at the old plan manager (transferor) to the clients account at the new plan manager (transferee) has been completed.|Usage|The PortfolioTransferCompletion message is used to confirm one or more portfolio transfers for one client.|The reference of each portfolio transfer completion is identified in ProductTransfer/TransferCompletionIdentification. The reference of the original portfolio transfer as assigned by the instructing party is specified in TransferInstructionReference. The message identification of the PortfolioTransferInstruction message in which the portfolio transfers were conveyed may also be quoted in RelatedReference but this is not recommended.",
+  "blocks": [
+    {
+      "name": "MessageReference",
+      "isoId": "301e27e8-d11f-46e4-86de-ddde7c179cca",
+      "xmlTag": "MsgRef",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "PoolReference",
+      "isoId": "a8f7a1d5-0b0b-42ad-ab29-4705b75ab843",
+      "xmlTag": "PoolRef",
+      "type": "AdditionalReference11",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "PreviousReference",
+      "isoId": "2700f892-4a8d-48af-9b76-c8d85a4a652f",
+      "xmlTag": "PrvsRef",
+      "type": "AdditionalReference10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "RelatedReference",
+      "isoId": "bad80573-feac-4b07-86c8-ee749ac703a9",
+      "xmlTag": "RltdRef",
+      "type": "AdditionalReference10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "PrimaryIndividualInvestor",
+      "isoId": "fe92d065-77ec-4073-bce2-2acac9d8f609",
+      "xmlTag": "PmryIndvInvstr",
+      "type": "IndividualPerson8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "RegisteredHolder",
+      "isoId": "7ba771e1-1225-4b81-b305-795774e624ff",
+      "xmlTag": "RegdHldr",
+      "type": "IndividualPerson8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SecondaryIndividualInvestor",
+      "isoId": "de615512-2404-4d96-9145-6ee3b0965c19",
+      "xmlTag": "ScndryIndvInvstr",
+      "type": "IndividualPerson8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "OtherIndividualInvestor",
+      "isoId": "484c4982-f01c-4e3c-88a2-9f931c57a331",
+      "xmlTag": "OthrIndvInvstr",
+      "type": "IndividualPerson8",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "PrimaryCorporateInvestor",
+      "isoId": "7a66983f-84dd-4047-813a-00a5b525818e",
+      "xmlTag": "PmryCorpInvstr",
+      "type": "Organisation36",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SecondaryCorporateInvestor",
+      "isoId": "e7871df8-d93a-41a6-ba5b-3500c0642506",
+      "xmlTag": "ScndryCorpInvstr",
+      "type": "Organisation36",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "OtherCorporateInvestor",
+      "isoId": "db60a70d-ea8f-4863-a2a4-77983a11b768",
+      "xmlTag": "OthrCorpInvstr",
+      "type": "Organisation36",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "TransferorAccount",
+      "isoId": "94e9860f-eac2-4285-835d-3490937d6196",
+      "xmlTag": "TrfrAcct",
+      "type": "InvestmentAccount69",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "NomineeAccount",
+      "isoId": "d61a04b1-6b65-4016-b0f3-f8ef68d3644c",
+      "xmlTag": "NmneeAcct",
+      "type": "InvestmentAccount69",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Transferee",
+      "isoId": "e6693f47-58af-44f8-ab32-9d8a35445bbb",
+      "xmlTag": "Trfee",
+      "type": "PartyIdentification132",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ProductTransfer",
+      "isoId": "4cdea6bd-a05b-4910-973e-52605262967d",
+      "xmlTag": "PdctTrf",
+      "type": "PortfolioTransfer18",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "MarketPracticeVersion",
+      "isoId": "5d2545fd-d556-4457-9e59-e094535b4815",
+      "xmlTag": "MktPrctcVrsn",
+      "type": "MarketPracticeVersion1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Extension",
+      "isoId": "1bc5382f-6e68-4e2d-9439-ee7c7e5aaeff",
+      "xmlTag": "Xtnsn",
+      "type": "Extension1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

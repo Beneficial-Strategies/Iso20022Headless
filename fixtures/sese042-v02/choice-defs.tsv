@@ -1,0 +1,13 @@
+choice	memberId	memberName	text
+RateAndAmountFormat39Choice	_7k005UEEEeWVgfuHGaKtRQ	Rate	Value is expressed as a rate.
+RateAndAmountFormat39Choice	_7k007UEEEeWVgfuHGaKtRQ	Amount	Value is expressed as a currency and amount.
+ProcessingStatus79Choice	_HqnHYZwZEeqtp-LOti013g	AcknowledgedAccepted	Buy-in advice is acknowledged by the account servicer.
+ProcessingStatus79Choice	_HqnHaZwZEeqtp-LOti013g	Rejected	Buy-in advice is rejected for further processing.
+AcknowledgedAcceptedStatus33Choice	_HwRDcZwZEeqtp-LOti013g	NoSpecifiedReason	Indicates that there is no reason available or to report.
+AcknowledgedAcceptedStatus33Choice	_HwRDeZwZEeqtp-LOti013g	Reason	Further information about the reason of the acknowledged accepted status.
+AcknowledgementReason24Choice	_H732gZwZEeqtp-LOti013g	Code	Specifies additional information about the processed instruction expressed as a code.
+AcknowledgementReason24Choice	_H732iZwZEeqtp-LOti013g	Proprietary	Specifies additional information about the processed instruction expressed as a proprietary code.
+RejectionOrRepairStatus31Choice	_oL_cczq4EeWyoP0PbocV1Q	NoSpecifiedReason	Indicates that there is no reason available or to report.
+RejectionOrRepairStatus31Choice	_oL_cezq4EeWyoP0PbocV1Q	Reason	Specifies the reason for the status.
+RejectionAndRepairReason25Choice	_pMaXozq4EeWyoP0PbocV1Q	Code	Specifies the reason why the instruction/request has a repair or rejection status.
+RejectionAndRepairReason25Choice	_pMaXqzq4EeWyoP0PbocV1Q	Proprietary	Specifies the reason why the instruction/request has a repair or rejection status.

@@ -17,6 +17,7 @@ import {
   RestrictedFINXMax16TextSchema,
   ReceiveDelivery1CodeSchema,
   DeliveryReceiptType2CodeSchema,
+  SettlementTypeAndIdentification22Schema,
   AnyBICDec2014IdentifierSchema,
   RestrictedFINXMax34TextSchema,
   Max4AlphaNumericTextSchema,
@@ -37,12 +38,6 @@ import {
   SupplementaryData1Schema,
   sharedTypeDescriptors,
 } from './shared.ts';
-
-export const SettlementTypeAndIdentification22Schema = z.strictObject({
-  TransactionIdentification: RestrictedFINXMax16TextSchema,
-  SecuritiesMovementType: ReceiveDelivery1CodeSchema,
-  Payment: DeliveryReceiptType2CodeSchema,
-});
 
 export const References79ChoiceSchema = choiceOf({
   SecuritiesSettlementTransactionConfirmationIdentification: SettlementTypeAndIdentification22Schema,
@@ -75,16 +70,6 @@ export const SecuritiesMessageCancellationAdvice002V07Schema = z.strictObject({
 const f = (d: FieldDescriptor): FieldDescriptor => d;
 
 const ownTypeDescriptors: TypeDescriptors = {
-  "SettlementTypeAndIdentification22": {
-    name: "SettlementTypeAndIdentification22",
-    isoId: "_6EvMUZNLEeWGlc8L7oPDIg",
-    kind: "component",
-    fields: [
-      f({ name: "TransactionIdentification", isoId: "_6EvMU5NLEeWGlc8L7oPDIg", xmlTag: "TxId", displayName: displayName("TransactionIdentification"), kind: "text", type: "RestrictedFINXMax16Text", required: true }),
-      f({ name: "SecuritiesMovementType", isoId: "_6EvMVZNLEeWGlc8L7oPDIg", xmlTag: "SctiesMvmntTp", displayName: displayName("SecuritiesMovementType"), kind: "code", type: "ReceiveDelivery1Code", required: true }),
-      f({ name: "Payment", isoId: "_6EvMV5NLEeWGlc8L7oPDIg", xmlTag: "Pmt", displayName: displayName("Payment"), kind: "code", type: "DeliveryReceiptType2Code", required: true }),
-    ],
-  },
   "References79Choice": {
     name: "References79Choice",
     isoId: "_WVQM4UfGEey6Is2iMqV8fg",
@@ -137,6 +122,7 @@ export const typeDescriptors: TypeDescriptors = {
   "RestrictedFINXMax16Text": sharedTypeDescriptors["RestrictedFINXMax16Text"]!,
   "ReceiveDelivery1Code": sharedTypeDescriptors["ReceiveDelivery1Code"]!,
   "DeliveryReceiptType2Code": sharedTypeDescriptors["DeliveryReceiptType2Code"]!,
+  "SettlementTypeAndIdentification22": sharedTypeDescriptors["SettlementTypeAndIdentification22"]!,
   "AnyBICDec2014Identifier": sharedTypeDescriptors["AnyBICDec2014Identifier"]!,
   "RestrictedFINXMax34Text": sharedTypeDescriptors["RestrictedFINXMax34Text"]!,
   "Max4AlphaNumericText": sharedTypeDescriptors["Max4AlphaNumericText"]!,

@@ -1,0 +1,15 @@
+codeSet	code	enumName	isoId	text
+SettlementTransactionCondition21Code	ASGN	Assignement	_aVSXkfISEfCMaqDZ_tShqQ	Transfer of ownership of the asset to another party during the closing of an option.
+SettlementTransactionCondition21Code	CLEN	Clean	_abtIofISEfCMaqDZ_tShqQ	Tax-exempt financial instruments are to be settled.
+SettlementTransactionCondition21Code	DLWM	DeliveryWithoutMatching	_agDdIfISEfCMaqDZ_tShqQ	Matching receipt instruction not required (only for concerned international or national central securities depositories).
+SettlementTransactionCondition21Code	DIRT	Dirty	_aj2YAfISEfCMaqDZ_tShqQ	Taxable financial instruments are to be settled.
+SettlementTransactionCondition21Code	DRAW	Drawn	_an_RIfISEfCMaqDZ_tShqQ	Settlement transactions relates to drawn securities.
+SettlementTransactionCondition21Code	EXER	Exercised	_atZVkfISEfCMaqDZ_tShqQ	Settlement transaction relates to options, futures or derivatives that are exercised.
+SettlementTransactionCondition21Code	GATE	GatingEventParticipation	_a-JuYfISEfCMaqDZ_tShqQ	Gating event participation. Hold until event start time.
+SettlementTransactionCondition21Code	FRCL	FreeCleanSettlement	_c9jaUfISEfCMaqDZ_tShqQ	Delivery will be made free of payment but a clean payment order will be sent.
+SettlementTransactionCondition21Code	KNOC	KnockedOut	_dH5pIfISEfCMaqDZ_tShqQ	Settlement transaction relates to options, futures or derivatives that are expired worthless.
+SettlementTransactionCondition21Code	PHYS	Physical	_fVilYfISEfCMaqDZ_tShqQ	Securities are to be physically settled.
+SettlementTransactionCondition21Code	RESI	Residual	_fcyc4fISEfCMaqDZ_tShqQ	Relates to transaction on a security that is not eligible at the Central Security Depository (CSD) but for which the payment will be enacted by the central securities depository.
+SettlementTransactionCondition21Code	SPDL	SpecialDelivery	_fnqQIfISEfCMaqDZ_tShqQ	Settlement transactions to be settled with special delivery.
+SettlementTransactionCondition21Code	SPST	SplitSettlement	_hGry4fISEfCMaqDZ_tShqQ	Money and financial instruments settle in different locations.
+SettlementTransactionCondition21Code	UNEX	Unexposed	_hOaLgfISEfCMaqDZ_tShqQ	Delivery cannot be performed until money is received.

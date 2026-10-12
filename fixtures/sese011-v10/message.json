@@ -1,0 +1,59 @@
+{
+  "identifier": "sese.011.001.10",
+  "name": "TransferInstructionStatusReportV10",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:sese.011.001.10",
+  "bodyTag": "TrfInstrStsRpt",
+  "out": "sese011",
+  "isoId": "6d8aabaf-c569-4b9f-a38e-8ad74f74ecba",
+  "definition": "Scope|The TransferInstructionStatusReport message is sent by an executing party, for example, a transfer agent, to the instructing party, for example, an investment manager or one of its authorised representatives to provide the status of a previously received request for holdings information, portfolio transfer or transfer instruction.| It may also be used to report the status of an event related to the asset being transferred or provide additional information.|The TransferInstructionStatusReport message may also be sent by any party in the transfer transaction to another party in the transfer transaction chain to provide information relevant for the settlement of a transfer transaction. |Usage|The TransferInstructionStatusReport message is used to provide the status of a previously received request for holdings information, portfolio transfer or transfer instruction, or in response to a RequestForTransferStatus message. It may also be used to report the status of an event related to the asset being transferred or provide additional information.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "678c5717-b790-4354-a86d-e0af873031e5",
+      "xmlTag": "MsgId",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "CounterpartyReference",
+      "isoId": "765038d8-a7cd-4694-a3bf-6d2a9d5f65c2",
+      "xmlTag": "CtrPtyRef",
+      "type": "AdditionalReference10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Reference",
+      "isoId": "e1d42992-d90f-47e1-8682-9b7c50050034",
+      "xmlTag": "Ref",
+      "type": "References64Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "StatusReport",
+      "isoId": "de7392bc-4ee5-4eb3-ab44-d1c2a9466ba3",
+      "xmlTag": "StsRpt",
+      "type": "TransferStatusAndReason09",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "MarketPracticeVersion",
+      "isoId": "dcc04d43-e523-4bb2-8250-0197a2b44719",
+      "xmlTag": "MktPrctcVrsn",
+      "type": "MarketPracticeVersion1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Extension",
+      "isoId": "6ff7d1b5-95dc-4d37-b31b-ac5709fc5f4d",
+      "xmlTag": "Xtnsn",
+      "type": "Extension1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

@@ -9,9 +9,11 @@ below). Same method as `PROVENANCE-tier2-semt.md` (staging ISO 20022 MCP **resou
 reads those the same way: the blocks of a required-one group become optional on their own and the group gets an at-least-one rule
 plus `<Name>NotBoth` rules.
 
-**Left out: `seev.017.001.01` and `seev.021.001.01`.** Both use `CashBalanceType1FormatType`, whose members are all mandatory in the
-resources with no `xors` constraint, while ISO's schema makes them an `xs:choice`. The resources do not say that, so the messages are
-not generated until they do (reported to the MCP team together with `PortfolioBalance1`, which blocks `semt.024.001.01`).
+**Left out: `seev.017.001.01` and `seev.021.001.01`.** Both use `CashBalanceType1FormatType`, an obsolete plain component whose two
+members are mandatory in ISO's repository with no `xors` constraint (only the definition says "Choice"), while ISO's XSD makes them
+an `xs:choice` (`Cd | Prtry`). The gap is in ISO's repository data, not in the resources. The messages are skipped on purpose; the
+same holds for `semt.024.001.01` (`PortfolioBalance1`, `SummryBal | DtldBal`). They can be added by taking the choice from the XSD
+for these two components only (many other components whose definition starts "Choice of" are not choices).
 
 **Rule engine change.** Nine rules (`DissenterRights1` and `DissenterRights2` on `CorporateAction88`/`87`/`94` and
 `CorporateActionOption245`/`247`/`252`) say that when one occurrence of a list has a value, every occurrence of the same list must have

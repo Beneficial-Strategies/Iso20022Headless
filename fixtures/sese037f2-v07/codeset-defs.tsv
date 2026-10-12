@@ -1,0 +1,6 @@
+codeSet	isoId	text
+AcknowledgementReason9Code	_WLJIwekIEemm4qhb2yFPOw	Specifies additional information about a processed instruction.
+PendingFailingReason1Code	_4P-VgOkHEemm4qhb2yFPOw	Specifies the reason the transaction/instruction is pending or failing settlement. Settlement on the instructed settlement date is still possible, status is pending. Settlement on the instructed settlement date is no longer possible, status is failing.
+RejectionReason55Code	_-IH_MOkIEemm4qhb2yFPOw	Specifies the reason the instruction/cancellation request has a rejected status.
+Reporting1Code	_ZTCPqNp-Ed-ak6NoX_4Aeg_-1780982221	Identifies to which institution the reporting must be done.
+SettlementTransactionCondition3Code	_ZNYTk9p-Ed-ak6NoX_4Aeg_-969430836	Specifies the conditions under which the order/trade is to be settled.

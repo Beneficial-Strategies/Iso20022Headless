@@ -1,0 +1,5 @@
+codeSet	code	enumName	isoId	text
+TransferType4Code	CASH	Cash	_y8KKgaxWEemRcYBAkJyjkg	Transfer as cash.
+TransferType4Code	CONV	Conversion	_zABW0axWEemRcYBAkJyjkg	ISIN is converted to another ISIN and then transferred.
+TransferType4Code	EXCL	Excluded	_zE7sAaxWEemRcYBAkJyjkg	Asset excluded from transfer.
+TransferType4Code	SECU	InSpecie	_zJGaUaxWEemRcYBAkJyjkg	Transfer the security as an asset in specie, that is, 'in its actual form'.

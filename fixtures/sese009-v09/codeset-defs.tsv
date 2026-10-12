@@ -1,0 +1,4 @@
+codeSet	isoId	text
+TypeOfRequest1Code	_EuVucNveEeqxGfKJubfhIw	Specifies a type of request.
+InvestmentFundRole8Code	_nVhNgNyREeqKxsvOxFQHKA	Specifies the role of the party.
+RejectedStatusReason12Code	_aP3ssAVHEeq4ZaI1b_-GPA	Specifies the reason for a transfer or settlement instruction rejected status.

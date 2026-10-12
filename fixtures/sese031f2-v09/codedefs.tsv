@@ -1,0 +1,4 @@
+codeSet	code	enumName	isoId	text
+ProcessingPosition4Code	AFTE	After	_DsSH0REhEeKG5rB3aM9OkQ	Specifies that the transaction/instruction is to be executed after the linked transaction/instruction.
+ProcessingPosition4Code	BEFO	Before	_D2RKQREhEeKG5rB3aM9OkQ	Specifies that the transaction/instruction is to be executed before the linked transaction/instruction.
+ProcessingPosition4Code	WITH	With	_EAs4oREhEeKG5rB3aM9OkQ	Specifies that the transaction/instruction is to be executed with the linked transaction/instruction.

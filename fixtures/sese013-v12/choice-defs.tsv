@@ -1,0 +1,4 @@
+choice	memberId	memberName	text
+FinancialInstrument101Choice	64495029-266c-457d-84d7-67b21490005e	Security	Identification of the security.
+FinancialInstrument101Choice	28d4e3e2-75b8-41ff-8f73-1ed96c839a7a	CashAsset	Identification of the cash asset.
+FinancialInstrument101Choice	c86d92d0-d349-47cd-bbcb-702e5719a681	OtherAsset	Identification of another kind of asset in the holding that is not a security or cash.

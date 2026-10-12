@@ -47,6 +47,7 @@ import {
   NamePrefix1CodeSchema,
   PhoneNumberSchema,
   Max256TextSchema,
+  ContactIdentification2Schema,
   NoReasonCodeSchema,
   DecimalNumberSchema,
   ImpliedCurrencyAndAmountSchema,
@@ -68,16 +69,6 @@ import {
   SupplementaryData1Schema,
   sharedTypeDescriptors,
 } from './shared.ts';
-
-export const ContactIdentification2Schema = z.strictObject({
-  NamePrefix: NamePrefix1CodeSchema.optional(),
-  GivenName: Max35TextSchema.optional(),
-  Name: Max35TextSchema,
-  PhoneNumber: PhoneNumberSchema.optional(),
-  MobileNumber: PhoneNumberSchema.optional(),
-  FaxNumber: PhoneNumberSchema.optional(),
-  EmailAddress: Max256TextSchema.optional(),
-});
 
 export const PartyIdentification219Schema = z.strictObject({
   NameAndAddress: PersonName2Schema,
@@ -216,20 +207,6 @@ export const ShareholdersIdentificationDisclosureResponseV03Schema = z.strictObj
 const f = (d: FieldDescriptor): FieldDescriptor => d;
 
 const ownTypeDescriptors: TypeDescriptors = {
-  "ContactIdentification2": {
-    name: "ContactIdentification2",
-    isoId: "_QB-T89p-Ed-ak6NoX_4Aeg_-1034387476",
-    kind: "component",
-    fields: [
-      f({ name: "NamePrefix", isoId: "_QB-T9Np-Ed-ak6NoX_4Aeg_-1034386173", xmlTag: "NmPrfx", displayName: displayName("NamePrefix"), kind: "code", type: "NamePrefix1Code", required: false }),
-      f({ name: "GivenName", isoId: "_QB-T9dp-Ed-ak6NoX_4Aeg_-1034386605", xmlTag: "GvnNm", displayName: displayName("GivenName"), kind: "text", type: "Max35Text", required: false }),
-      f({ name: "Name", isoId: "_QB-T9tp-Ed-ak6NoX_4Aeg_-1034387034", xmlTag: "Nm", displayName: displayName("Name"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "PhoneNumber", isoId: "_QB-T99p-Ed-ak6NoX_4Aeg_-1034386493", xmlTag: "PhneNb", displayName: displayName("PhoneNumber"), kind: "text", type: "PhoneNumber", required: false }),
-      f({ name: "MobileNumber", isoId: "_QB-T-Np-Ed-ak6NoX_4Aeg_700909475", xmlTag: "MobNb", displayName: displayName("MobileNumber"), kind: "text", type: "PhoneNumber", required: false }),
-      f({ name: "FaxNumber", isoId: "_QCHd4Np-Ed-ak6NoX_4Aeg_-1034386528", xmlTag: "FaxNb", displayName: displayName("FaxNumber"), kind: "text", type: "PhoneNumber", required: false }),
-      f({ name: "EmailAddress", isoId: "_QCHd4dp-Ed-ak6NoX_4Aeg_-1034386570", xmlTag: "EmailAdr", displayName: displayName("EmailAddress"), kind: "text", type: "Max256Text", required: false }),
-    ],
-  },
   "PartyIdentification219": {
     name: "PartyIdentification219",
     isoId: "_aF_Eo1VCEembSPFgeLJ9eg",
@@ -500,6 +477,7 @@ export const typeDescriptors: TypeDescriptors = {
   "NamePrefix1Code": sharedTypeDescriptors["NamePrefix1Code"]!,
   "PhoneNumber": sharedTypeDescriptors["PhoneNumber"]!,
   "Max256Text": sharedTypeDescriptors["Max256Text"]!,
+  "ContactIdentification2": sharedTypeDescriptors["ContactIdentification2"]!,
   "NoReasonCode": sharedTypeDescriptors["NoReasonCode"]!,
   "DecimalNumber": sharedTypeDescriptors["DecimalNumber"]!,
   "ImpliedCurrencyAndAmount": sharedTypeDescriptors["ImpliedCurrencyAndAmount"]!,

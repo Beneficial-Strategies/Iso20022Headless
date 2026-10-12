@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+RepurchaseType21Choice	_RbiH04-REeaVK-2bgpxeYw	Code	Type of securities financing transaction process expressed as an ISO 20022 code.
+RepurchaseType21Choice	_RbiH24-REeaVK-2bgpxeYw	Proprietary	Type of securities financing transaction process expressed as a proprietary code.

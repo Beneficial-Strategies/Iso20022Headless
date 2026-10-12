@@ -1,0 +1,10 @@
+codeSet	code	enumName	isoId	text
+SettlementTransactionCondition18Code	CLEN	Clean	_HkgrEfIQEfCMaqDZ_tShqQ	Tax-exempt financial instruments are to be settled.
+SettlementTransactionCondition18Code	DLWM	DeliveryWithoutMatching	_Ho40wfIQEfCMaqDZ_tShqQ	Matching receipt instruction not required (only for concerned international or national central securities depositories).
+SettlementTransactionCondition18Code	DIRT	Dirty	_HvJNwfIQEfCMaqDZ_tShqQ	Taxable financial instruments are to be settled.
+SettlementTransactionCondition18Code	GATE	GatingEventParticipation	_H9-7AfIQEfCMaqDZ_tShqQ	Gating event participation. Hold until event start time.
+SettlementTransactionCondition18Code	NOMC	NoAutomaticMarketClaim	_ILHYEfIQEfCMaqDZ_tShqQ	No market claim should be automatically generated.
+SettlementTransactionCondition18Code	BPSS	PartialSuccessfulBuyIn	_JoZ1cfIQEfCMaqDZ_tShqQ	Identification of settlement instructions created as a result of a partial successful buy-in.
+SettlementTransactionCondition18Code	PHYS	Physical	_J1zYQfIQEfCMaqDZ_tShqQ	Securities are to be physically settled.
+SettlementTransactionCondition18Code	SPDL	SpecialDelivery	_La_NYfIQEfCMaqDZ_tShqQ	Settlement transactions to be settled with special delivery.
+SettlementTransactionCondition18Code	SPST	SplitSettlement	_LiuNEfIQEfCMaqDZ_tShqQ	Money and financial instruments settle in different locations.

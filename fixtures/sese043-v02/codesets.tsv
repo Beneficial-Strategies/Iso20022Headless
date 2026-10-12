@@ -1,0 +1,5 @@
+codeSetName	isoId	restrictionOf	code	enumName
+TransferType4Code	_xvY1YKxWEemRcYBAkJyjkg	TransferTypeCode	CASH	Cash
+TransferType4Code	_xvY1YKxWEemRcYBAkJyjkg	TransferTypeCode	CONV	Conversion
+TransferType4Code	_xvY1YKxWEemRcYBAkJyjkg	TransferTypeCode	EXCL	Excluded
+TransferType4Code	_xvY1YKxWEemRcYBAkJyjkg	TransferTypeCode	SECU	InSpecie

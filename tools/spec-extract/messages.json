@@ -2399,5 +2399,493 @@
     "bodyTag": "ShrhldrsIdDsclsrRspn",
     "out": "seev047",
     "dir": "seev047-v03"
+  },
+  {
+    "name": "AccountHoldingInformationRequestV09",
+    "id": "63260a88-fea4-472a-9340-2372d65772b1",
+    "identifier": "sese.019.001.09",
+    "bodyTag": "AcctHldgInfReq",
+    "out": "sese019",
+    "dir": "sese019-v09"
+  },
+  {
+    "name": "AccountHoldingInformationV10",
+    "id": "19beff8e-0f2e-46d6-9ea4-8e1932a4ae2b",
+    "identifier": "sese.018.001.10",
+    "bodyTag": "AcctHldgInf",
+    "out": "sese018",
+    "dir": "sese018-v10"
+  },
+  {
+    "name": "BuyInRegulatoryAdviceResponseV02",
+    "id": "_gW0V0YZFEe-6cOl7zMpJaA",
+    "identifier": "sese.042.001.02",
+    "bodyTag": "BuyInRgltryAdvcRspn",
+    "out": "sese042",
+    "dir": "sese042-v02"
+  },
+  {
+    "name": "BuyInRegulatoryAdviceV02",
+    "id": "_azR0wYZFEe-6cOl7zMpJaA",
+    "identifier": "sese.041.001.02",
+    "bodyTag": "BuyInRgltryAdvc",
+    "out": "sese041",
+    "dir": "sese041-v02"
+  },
+  {
+    "name": "PortfolioTransferCancellationRequestV09",
+    "id": "_OSc-8XhFEeij0vbhRaNJcw",
+    "identifier": "sese.014.001.09",
+    "bodyTag": "PrtflTrfCxlReq",
+    "out": "sese014",
+    "dir": "sese014-v09"
+  },
+  {
+    "name": "PortfolioTransferCompletionV02",
+    "id": "49cb0930-126e-4033-b84e-5ed1b1588f81",
+    "identifier": "sese.043.001.02",
+    "bodyTag": "PrtflTrfCmpltn",
+    "out": "sese043",
+    "dir": "sese043-v02"
+  },
+  {
+    "name": "PortfolioTransferConfirmationV12",
+    "id": "8f9b446f-86fc-4ebd-bb28-8057ab4929a4",
+    "identifier": "sese.013.001.12",
+    "bodyTag": "PrtflTrfConf",
+    "out": "sese013",
+    "dir": "sese013-v12"
+  },
+  {
+    "name": "PortfolioTransferInstructionV12",
+    "id": "baa836d4-ff0a-4ffb-90c2-8c5a1f09e696",
+    "identifier": "sese.012.001.12",
+    "bodyTag": "PrtflTrfInstr",
+    "out": "sese012",
+    "dir": "sese012-v12"
+  },
+  {
+    "name": "PortfolioTransferNotification002V07",
+    "id": "_cec-Mzi8Eeydid5dcNPKvg",
+    "identifier": "sese.037.002.07",
+    "bodyTag": "PrtflTrfNtfctn",
+    "out": "sese037f2",
+    "dir": "sese037f2-v07"
+  },
+  {
+    "name": "PortfolioTransferNotificationV09",
+    "id": "_uLnIoZaHEfC2_67yGLymgA",
+    "identifier": "sese.037.001.09",
+    "bodyTag": "PrtflTrfNtfctn",
+    "out": "sese037",
+    "dir": "sese037-v09"
+  },
+  {
+    "name": "RequestForTransferStatusReportV09",
+    "id": "94d317c4-9d3e-437f-b76c-5cb52917d23e",
+    "identifier": "sese.009.001.09",
+    "bodyTag": "ReqForTrfStsRpt",
+    "out": "sese009",
+    "dir": "sese009-v09"
+  },
+  {
+    "name": "ReversalOfTransferInConfirmationV09",
+    "id": "_dPLusZDhEem7fvtoGpNpow",
+    "identifier": "sese.008.001.09",
+    "bodyTag": "RvslOfTrfInConf",
+    "out": "sese008",
+    "dir": "sese008-v09"
+  },
+  {
+    "name": "ReversalOfTransferOutConfirmationV09",
+    "id": "_TKCqsZDhEem7fvtoGpNpow",
+    "identifier": "sese.004.001.09",
+    "bodyTag": "RvslOfTrfOutConf",
+    "out": "sese004",
+    "dir": "sese004-v09"
+  },
+  {
+    "name": "SecuritiesFinancingConfirmation002V11",
+    "id": "_c65Ckzi8Eeydid5dcNPKvg",
+    "identifier": "sese.035.002.11",
+    "bodyTag": "SctiesFincgConf",
+    "out": "sese035f2",
+    "dir": "sese035f2-v11"
+  },
+  {
+    "name": "SecuritiesFinancingConfirmationV13",
+    "id": "_heMswZaFEfC2_67yGLymgA",
+    "identifier": "sese.035.001.13",
+    "bodyTag": "SctiesFincgConf",
+    "out": "sese035",
+    "dir": "sese035-v13"
+  },
+  {
+    "name": "SecuritiesFinancingInstruction002V11",
+    "id": "_dJb04zi8Eeydid5dcNPKvg",
+    "identifier": "sese.033.002.11",
+    "bodyTag": "SctiesFincgInstr",
+    "out": "sese033f2",
+    "dir": "sese033f2-v11"
+  },
+  {
+    "name": "SecuritiesFinancingInstructionV13",
+    "id": "_ZCLYIZaEEfC2_67yGLymgA",
+    "identifier": "sese.033.001.13",
+    "bodyTag": "SctiesFincgInstr",
+    "out": "sese033",
+    "dir": "sese033-v13"
+  },
+  {
+    "name": "SecuritiesFinancingModificationInstruction002V08",
+    "id": "_daqHwzi8Eeydid5dcNPKvg",
+    "identifier": "sese.036.002.08",
+    "bodyTag": "SctiesFincgModInstr",
+    "out": "sese036f2",
+    "dir": "sese036f2-v08"
+  },
+  {
+    "name": "SecuritiesFinancingModificationInstructionV10",
+    "id": "__g5O4ZaGEfC2_67yGLymgA",
+    "identifier": "sese.036.001.10",
+    "bodyTag": "SctiesFincgModInstr",
+    "out": "sese036",
+    "dir": "sese036-v10"
+  },
+  {
+    "name": "SecuritiesFinancingStatusAdvice002V09",
+    "id": "_ddARIzi8Eeydid5dcNPKvg",
+    "identifier": "sese.034.002.09",
+    "bodyTag": "SctiesFincgStsAdvc",
+    "out": "sese034f2",
+    "dir": "sese034f2-v09"
+  },
+  {
+    "name": "SecuritiesFinancingStatusAdviceV11",
+    "id": "afaac4eb-f9ce-46de-8490-d6273e64a0b5",
+    "identifier": "sese.034.001.11",
+    "bodyTag": "SctiesFincgStsAdvc",
+    "out": "sese034",
+    "dir": "sese034-v11"
+  },
+  {
+    "name": "SecuritiesSettlementAllegementRemovalAdvice002V06",
+    "id": "_dhIjMzi8Eeydid5dcNPKvg",
+    "identifier": "sese.029.002.06",
+    "bodyTag": "SctiesSttlmAllgmtRmvlAdvc",
+    "out": "sese029f2",
+    "dir": "sese029f2-v06"
+  },
+  {
+    "name": "SecuritiesSettlementAllegementRemovalAdviceV08",
+    "id": "_rn4Z4ZaCEfC2_67yGLymgA",
+    "identifier": "sese.029.001.08",
+    "bodyTag": "SctiesSttlmAllgmtRmvlAdvc",
+    "out": "sese029",
+    "dir": "sese029-v08"
+  },
+  {
+    "name": "SecuritiesSettlementConditionModificationStatusAdvice002V09",
+    "id": "_diWEIzi8Eeydid5dcNPKvg",
+    "identifier": "sese.031.002.09",
+    "bodyTag": "SctiesSttlmCondModStsAdvc",
+    "out": "sese031f2",
+    "dir": "sese031f2-v09"
+  },
+  {
+    "name": "SecuritiesSettlementConditionModificationStatusAdviceV11",
+    "id": "_INcVAaofEfCG2_q2WT-90w",
+    "identifier": "sese.031.001.11",
+    "bodyTag": "SctiesSttlmCondModStsAdvc",
+    "out": "sese031",
+    "dir": "sese031-v11"
+  },
+  {
+    "name": "SecuritiesSettlementConditionsModificationRequest002V09",
+    "id": "_djPcAzi8Eeydid5dcNPKvg",
+    "identifier": "sese.030.002.09",
+    "bodyTag": "SctiesSttlmCondsModReq",
+    "out": "sese030f2",
+    "dir": "sese030f2-v09"
+  },
+  {
+    "name": "SecuritiesSettlementConditionsModificationRequestV10",
+    "id": "_TuNWsYYdEe-Pv9KR9bv9IA",
+    "identifier": "sese.030.001.10",
+    "bodyTag": "SctiesSttlmCondsModReq",
+    "out": "sese030",
+    "dir": "sese030-v10"
+  },
+  {
+    "name": "SecuritiesSettlementTransactionAllegementNotification002V10",
+    "id": "_dkR90zi8Eeydid5dcNPKvg",
+    "identifier": "sese.028.002.10",
+    "bodyTag": "SctiesSttlmTxAllgmtNtfctn",
+    "out": "sese028f2",
+    "dir": "sese028f2-v10"
+  },
+  {
+    "name": "SecuritiesSettlementTransactionAllegementNotificationV12",
+    "id": "c823296c-d10f-4bbd-840b-79ce3b0ce014",
+    "identifier": "sese.028.001.12",
+    "bodyTag": "SctiesSttlmTxAllgmtNtfctn",
+    "out": "sese028",
+    "dir": "sese028-v12"
+  },
+  {
+    "name": "SecuritiesSettlementTransactionConfirmation002V11",
+    "id": "_duaxQzi8Eeydid5dcNPKvg",
+    "identifier": "sese.025.002.11",
+    "bodyTag": "SctiesSttlmTxConf",
+    "out": "sese025f2",
+    "dir": "sese025f2-v11"
+  },
+  {
+    "name": "SecuritiesSettlementTransactionConfirmationV13",
+    "id": "e0b47442-ea51-477e-8f3f-53d0d777f733",
+    "identifier": "sese.025.001.13",
+    "bodyTag": "SctiesSttlmTxConf",
+    "out": "sese025",
+    "dir": "sese025-v13"
+  },
+  {
+    "name": "SecuritiesSettlementTransactionCounterpartyResponse002V04",
+    "id": "_d-BTgzi8Eeydid5dcNPKvg",
+    "identifier": "sese.040.002.04",
+    "bodyTag": "SctiesSttlmTxCtrPtyRspn",
+    "out": "sese040f2",
+    "dir": "sese040f2-v04"
+  },
+  {
+    "name": "SecuritiesSettlementTransactionCounterpartyResponseV06",
+    "id": "_X-uLgZaOEfC2_67yGLymgA",
+    "identifier": "sese.040.001.06",
+    "bodyTag": "SctiesSttlmTxCtrPtyRspn",
+    "out": "sese040",
+    "dir": "sese040-v06"
+  },
+  {
+    "name": "SecuritiesSettlementTransactionGenerationNotification002V11",
+    "id": "_d_odEzi8Eeydid5dcNPKvg",
+    "identifier": "sese.032.002.11",
+    "bodyTag": "SctiesSttlmTxGnrtnNtfctn",
+    "out": "sese032f2",
+    "dir": "sese032f2-v11"
+  },
+  {
+    "name": "SecuritiesSettlementTransactionGenerationNotificationV13",
+    "id": "5bc15e3c-d47e-47be-b829-1f6cc76a9206",
+    "identifier": "sese.032.001.13",
+    "bodyTag": "SctiesSttlmTxGnrtnNtfctn",
+    "out": "sese032",
+    "dir": "sese032-v13"
+  },
+  {
+    "name": "SecuritiesSettlementTransactionInstruction002V11",
+    "id": "_eJlqUzi8Eeydid5dcNPKvg",
+    "identifier": "sese.023.002.11",
+    "bodyTag": "SctiesSttlmTxInstr",
+    "out": "sese023f2",
+    "dir": "sese023f2-v11"
+  },
+  {
+    "name": "SecuritiesSettlementTransactionInstructionV13",
+    "id": "191cd2e6-a552-456d-ac1c-20ed86a77dce",
+    "identifier": "sese.023.001.13",
+    "bodyTag": "SctiesSttlmTxInstr",
+    "out": "sese023",
+    "dir": "sese023-v13"
+  },
+  {
+    "name": "SecuritiesSettlementTransactionModificationRequest002V09",
+    "id": "_eZPP4zi8Eeydid5dcNPKvg",
+    "identifier": "sese.038.002.09",
+    "bodyTag": "SctiesSttlmTxModReq",
+    "out": "sese038f2",
+    "dir": "sese038f2-v09"
+  },
+  {
+    "name": "SecuritiesSettlementTransactionModificationRequestStatusAdvice002V06",
+    "id": "_eXqikzi8Eeydid5dcNPKvg",
+    "identifier": "sese.039.002.06",
+    "bodyTag": "SctiesSttlmTxModReqStsAdvc",
+    "out": "sese039f2",
+    "dir": "sese039f2-v06"
+  },
+  {
+    "name": "SecuritiesSettlementTransactionModificationRequestStatusAdviceV08",
+    "id": "_ID_0MZaOEfC2_67yGLymgA",
+    "identifier": "sese.039.001.08",
+    "bodyTag": "SctiesSttlmTxModReqStsAdvc",
+    "out": "sese039",
+    "dir": "sese039-v08"
+  },
+  {
+    "name": "SecuritiesSettlementTransactionModificationRequestV11",
+    "id": "_wdtmwZaKEfC2_67yGLymgA",
+    "identifier": "sese.038.001.11",
+    "bodyTag": "SctiesSttlmTxModReq",
+    "out": "sese038",
+    "dir": "sese038-v11"
+  },
+  {
+    "name": "SecuritiesSettlementTransactionReversalAdvice002V10",
+    "id": "_fz0-kzi8Eeydid5dcNPKvg",
+    "identifier": "sese.026.002.10",
+    "bodyTag": "SctiesSttlmTxRvslAdvc",
+    "out": "sese026f2",
+    "dir": "sese026f2-v10"
+  },
+  {
+    "name": "SecuritiesSettlementTransactionReversalAdviceV12",
+    "id": "b95ef421-1781-4bd7-9a54-88b26d6a57f7",
+    "identifier": "sese.026.001.12",
+    "bodyTag": "SctiesSttlmTxRvslAdvc",
+    "out": "sese026",
+    "dir": "sese026-v12"
+  },
+  {
+    "name": "SecuritiesSettlementTransactionStatusAdvice002V12",
+    "id": "_f97Vwzi8Eeydid5dcNPKvg",
+    "identifier": "sese.024.002.12",
+    "bodyTag": "SctiesSttlmTxStsAdvc",
+    "out": "sese024f2",
+    "dir": "sese024f2-v12"
+  },
+  {
+    "name": "SecuritiesSettlementTransactionStatusAdviceV14",
+    "id": "2fd4cc36-b29b-4f27-9aa3-ff5b549a1a30",
+    "identifier": "sese.024.001.14",
+    "bodyTag": "SctiesSttlmTxStsAdvc",
+    "out": "sese024",
+    "dir": "sese024-v14"
+  },
+  {
+    "name": "SecuritiesStatusOrStatementQueryStatusAdvice002V06",
+    "id": "_gBHMozi8Eeydid5dcNPKvg",
+    "identifier": "sese.022.002.06",
+    "bodyTag": "SctiesStsOrStmtQryStsAdvc",
+    "out": "sese022f2",
+    "dir": "sese022f2-v06"
+  },
+  {
+    "name": "SecuritiesStatusOrStatementQueryStatusAdviceV08",
+    "id": "__tNJkaovEfCG2_q2WT-90w",
+    "identifier": "sese.022.001.08",
+    "bodyTag": "SctiesStsOrStmtQryStsAdvc",
+    "out": "sese022",
+    "dir": "sese022-v08"
+  },
+  {
+    "name": "SecuritiesTransactionCancellationRequest002V07",
+    "id": "_gDDtYzi8Eeydid5dcNPKvg",
+    "identifier": "sese.020.002.07",
+    "bodyTag": "SctiesTxCxlReq",
+    "out": "sese020f2",
+    "dir": "sese020f2-v07"
+  },
+  {
+    "name": "SecuritiesTransactionCancellationRequestStatusAdvice002V07",
+    "id": "_gByiEzi8Eeydid5dcNPKvg",
+    "identifier": "sese.027.002.07",
+    "bodyTag": "SctiesTxCxlReqStsAdvc",
+    "out": "sese027f2",
+    "dir": "sese027f2-v07"
+  },
+  {
+    "name": "SecuritiesTransactionCancellationRequestStatusAdviceV09",
+    "id": "_LpIawZaBEfC2_67yGLymgA",
+    "identifier": "sese.027.001.09",
+    "bodyTag": "SctiesTxCxlReqStsAdvc",
+    "out": "sese027",
+    "dir": "sese027-v09"
+  },
+  {
+    "name": "SecuritiesTransactionCancellationRequestV09",
+    "id": "_CtVcEZaPEfC2_67yGLymgA",
+    "identifier": "sese.020.001.09",
+    "bodyTag": "SctiesTxCxlReq",
+    "out": "sese020",
+    "dir": "sese020-v09"
+  },
+  {
+    "name": "SecuritiesTransactionStatusQuery002V06",
+    "id": "_gOMmYzi8Eeydid5dcNPKvg",
+    "identifier": "sese.021.002.06",
+    "bodyTag": "SctiesTxStsQry",
+    "out": "sese021f2",
+    "dir": "sese021f2-v06"
+  },
+  {
+    "name": "SecuritiesTransactionStatusQueryV08",
+    "id": "_3ailQaouEfCG2_q2WT-90w",
+    "identifier": "sese.021.001.08",
+    "bodyTag": "SctiesTxStsQry",
+    "out": "sese021",
+    "dir": "sese021-v08"
+  },
+  {
+    "name": "TransferCancellationStatusReportV07",
+    "id": "_h5COsZDhEem7fvtoGpNpow",
+    "identifier": "sese.010.001.07",
+    "bodyTag": "TrfCxlStsRpt",
+    "out": "sese010",
+    "dir": "sese010-v07"
+  },
+  {
+    "name": "TransferInCancellationRequestV09",
+    "id": "_Yga5gZDhEem7fvtoGpNpow",
+    "identifier": "sese.006.001.09",
+    "bodyTag": "TrfInCxlReq",
+    "out": "sese006",
+    "dir": "sese006-v09"
+  },
+  {
+    "name": "TransferInConfirmationV10",
+    "id": "c14d73b8-4189-4922-86cb-8217e0074a3e",
+    "identifier": "sese.007.001.10",
+    "bodyTag": "TrfInConf",
+    "out": "sese007",
+    "dir": "sese007-v10"
+  },
+  {
+    "name": "TransferInInstructionV10",
+    "id": "0921dad1-0931-4efc-9509-6c7e2fb2d4c6",
+    "identifier": "sese.005.001.10",
+    "bodyTag": "TrfInInstr",
+    "out": "sese005",
+    "dir": "sese005-v10"
+  },
+  {
+    "name": "TransferInstructionStatusReportV10",
+    "id": "6d8aabaf-c569-4b9f-a38e-8ad74f74ecba",
+    "identifier": "sese.011.001.10",
+    "bodyTag": "TrfInstrStsRpt",
+    "out": "sese011",
+    "dir": "sese011-v10"
+  },
+  {
+    "name": "TransferOutCancellationRequestV09",
+    "id": "_LctLkZDhEem7fvtoGpNpow",
+    "identifier": "sese.002.001.09",
+    "bodyTag": "TrfOutCxlReq",
+    "out": "sese002",
+    "dir": "sese002-v09"
+  },
+  {
+    "name": "TransferOutConfirmationV10",
+    "id": "1a898413-4a9d-439b-8eff-42101e5b78cf",
+    "identifier": "sese.003.001.10",
+    "bodyTag": "TrfOutConf",
+    "out": "sese003",
+    "dir": "sese003-v10"
+  },
+  {
+    "name": "TransferOutInstructionV10",
+    "id": "f32bbd62-3b8d-47b1-b0d0-0f810e0efd68",
+    "identifier": "sese.001.001.10",
+    "bodyTag": "TrfOutInstr",
+    "out": "sese001",
+    "dir": "sese001-v10"
   }
 ]

@@ -1,0 +1,83 @@
+{
+  "identifier": "sese.008.001.09",
+  "name": "ReversalOfTransferInConfirmationV09",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:sese.008.001.09",
+  "bodyTag": "RvslOfTrfInConf",
+  "out": "sese008",
+  "isoId": "_dPLusZDhEem7fvtoGpNpow",
+  "definition": "Scope|The ReversalOfTransferInConfirmation message is sent by an executing party, for example, a transfer agent, to the instructing party, for example, an investment manager or its authorised representative, to cancel a previously sent transfer in confirmation.|Usage|The ReversalOfTransferInConfirmation message is used to reverse a previously sent transfer in confirmation.|To request the reversal of a transfer in confirmation, the transfer reference of the transfer in instruction, as specified in the original TransferInInstruction message, is specified in the transfer reference element. The executing party’s reference for the execution of the transfer may also be specified in the TransferConfirmationReference element.|The message identification of the original TransferInConfirmation message may also be quoted in PreviousReference but this is not recommended.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "_dPLus5DhEem7fvtoGpNpow",
+      "xmlTag": "MsgId",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "PoolReference",
+      "isoId": "_dPLutZDhEem7fvtoGpNpow",
+      "xmlTag": "PoolRef",
+      "type": "AdditionalReference11",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "PreviousReference",
+      "isoId": "_dPLut5DhEem7fvtoGpNpow",
+      "xmlTag": "PrvsRef",
+      "type": "AdditionalReference10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "RelatedReference",
+      "isoId": "_dPLuuZDhEem7fvtoGpNpow",
+      "xmlTag": "RltdRef",
+      "type": "AdditionalReference10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "MasterReference",
+      "isoId": "_dPLuu5DhEem7fvtoGpNpow",
+      "xmlTag": "MstrRef",
+      "type": "Max35Text",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Function",
+      "isoId": "_dPLuvZDhEem7fvtoGpNpow",
+      "xmlTag": "Fctn",
+      "type": "TransferInFunction2Code",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ReversalReferences",
+      "isoId": "_dPLuv5DhEem7fvtoGpNpow",
+      "xmlTag": "RvslRefs",
+      "type": "TransferReference16",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "MarketPracticeVersion",
+      "isoId": "_dPLuwZDhEem7fvtoGpNpow",
+      "xmlTag": "MktPrctcVrsn",
+      "type": "MarketPracticeVersion1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CopyDetails",
+      "isoId": "_dPLuw5DhEem7fvtoGpNpow",
+      "xmlTag": "CpyDtls",
+      "type": "CopyInformation5",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

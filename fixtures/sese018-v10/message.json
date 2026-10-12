@@ -1,0 +1,147 @@
+{
+  "identifier": "sese.018.001.10",
+  "name": "AccountHoldingInformationV10",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:sese.018.001.10",
+  "bodyTag": "AcctHldgInf",
+  "out": "sese018",
+  "isoId": "19beff8e-0f2e-46d6-9ea4-8e1932a4ae2b",
+  "definition": "Scope|The AccountHoldingInformation message is sent by an executing party, for example, a (old) plan manager (transferor), to the instructing party, for example, a (new) plan manager (transferee), to provide information about financial instruments held on behalf of a client.|Usage|The AccountHoldingInformation message is used to provide information on the individual assets held in a client's account. The assets may be part of a tax efficient product, a pension of general investment product.",
+  "blocks": [
+    {
+      "name": "MessageReference",
+      "isoId": "b37973f2-d665-4757-922d-7c4060330b0e",
+      "xmlTag": "MsgRef",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "PoolReference",
+      "isoId": "e154fb29-f613-4287-80bb-65bd9059d0ac",
+      "xmlTag": "PoolRef",
+      "type": "AdditionalReference11",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "PreviousReference",
+      "isoId": "bd8bfb49-e940-4b85-8420-e1f2307989f5",
+      "xmlTag": "PrvsRef",
+      "type": "AdditionalReference10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "RelatedReference",
+      "isoId": "5c8ded00-d605-42e3-a128-1e76007d032b",
+      "xmlTag": "RltdRef",
+      "type": "AdditionalReference10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "BusinessFlowDirectionType",
+      "isoId": "58e67aa9-6e35-4104-92b9-f95dc1ee80a8",
+      "xmlTag": "BizFlowDrctnTp",
+      "type": "BusinessFlowDirectionType1Code",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "PrimaryIndividualInvestor",
+      "isoId": "42fddf4c-1bba-49fe-8519-b9631ca36cdf",
+      "xmlTag": "PmryIndvInvstr",
+      "type": "IndividualPerson8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SecondaryIndividualInvestor",
+      "isoId": "9b9ac5ca-feee-4b6b-8c3e-6db97cf73f5b",
+      "xmlTag": "ScndryIndvInvstr",
+      "type": "IndividualPerson8",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "OtherIndividualInvestor",
+      "isoId": "1b0f8d7e-fb92-41c9-b835-b38cb9e4a1ea",
+      "xmlTag": "OthrIndvInvstr",
+      "type": "IndividualPerson8",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "PrimaryCorporateInvestor",
+      "isoId": "0462fbc9-c66e-4209-a466-8965906dc416",
+      "xmlTag": "PmryCorpInvstr",
+      "type": "Organisation36",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SecondaryCorporateInvestor",
+      "isoId": "f9372c82-ae11-47b0-8abe-10af27f8568b",
+      "xmlTag": "ScndryCorpInvstr",
+      "type": "Organisation36",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "OtherCorporateInvestor",
+      "isoId": "6cabf330-e960-4b71-9254-56e614515268",
+      "xmlTag": "OthrCorpInvstr",
+      "type": "Organisation36",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "TransferorAccount",
+      "isoId": "2b2edea6-b3f4-49e6-8107-2529c43ea5c0",
+      "xmlTag": "TrfrAcct",
+      "type": "InvestmentAccount69",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "NomineeAccount",
+      "isoId": "20f23fa1-360b-4c79-b266-cb7608a43e41",
+      "xmlTag": "NmneeAcct",
+      "type": "InvestmentAccount69",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Transferee",
+      "isoId": "9e845422-8d1c-45dd-b43d-83c8388c88d6",
+      "xmlTag": "Trfee",
+      "type": "PartyIdentification132",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "ProductTransfer",
+      "isoId": "166890e3-c21b-4729-a3fd-2eb21fc2de6a",
+      "xmlTag": "PdctTrf",
+      "type": "PortfolioTransfer16",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "MarketPracticeVersion",
+      "isoId": "edd6fd6b-d348-4baf-a059-95c7242aeda3",
+      "xmlTag": "MktPrctcVrsn",
+      "type": "MarketPracticeVersion1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Extension",
+      "isoId": "0ebbf71d-df57-4658-ba95-ffc6a800f294",
+      "xmlTag": "Xtnsn",
+      "type": "Extension1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

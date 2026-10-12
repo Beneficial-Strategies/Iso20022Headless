@@ -1,0 +1,78 @@
+codeSet	code	enumName	isoId	text
+BusinessFlowDirectionType1Code	ADLV	AssetstoBeDelivered	_ShZ7tv8yEeC-e_lDNJKWcg	Assets to be delivered.
+BusinessFlowDirectionType1Code	ARCV	AssetsToBeReceived	_SlRvHv8yEeC-e_lDNJKWcg	Assets to be received.
+TaxEfficientProductType2Code	CASH	Cash	_sDLPcZy-Eem54rMzia0iag	Cash individual savings account. In the UK, this is known as a cash ISA.
+TaxEfficientProductType2Code	CLIS	CashLISA	_sOMMoZy-Eem54rMzia0iag	Cash lifetime individual savings account. In the UK, this is known as a cash LISA.
+TaxEfficientProductType2Code	FISA	Flexible	_sUu5gZy-Eem54rMzia0iag	Flexible individual savings account. In the UK, this is known as a FISA.
+TaxEfficientProductType2Code	GISK	GeneralInvestmentSavingsAccount	_sa1hgZy-Eem54rMzia0iag	General investment savings account. (Known as Investeringssparkonto (ISK) in some markets.)
+TaxEfficientProductType2Code	GASK	GeneralShareSavingsAccount	_skM44Zy-Eem54rMzia0iag	General shares or equity savings account. (Known as ASK in some markets.)
+TaxEfficientProductType2Code	HISA	HelpToBuy	_spaJAZy-Eem54rMzia0iag	Help to buy individual savings account. In the UK, this is known as a HISA.
+TaxEfficientProductType2Code	INNF	InnovativeFinance	_svqiAZy-Eem54rMzia0iag	Innovative finance individual savings account. In the UK, this is known as an innovative ISA.
+TaxEfficientProductType2Code	JCSH	JuniorCash	_s4u-cZy-Eem54rMzia0iag	Junior cash individual savings account. In the UK, this is known as a cash JISA.
+TaxEfficientProductType2Code	JISA	JuniorStocksAndSharesISA	_s-irgZy-Eem54rMzia0iag	Junior stocks and shares individual savings account. In the UK, this is known as a stocks and shares  JISA.
+TaxEfficientProductType2Code	LISA	Lifetime	_tEfigZy-Eem54rMzia0iag	Stocks and shares lifetime individual savings account. In the UK, this is known as a stocks and shares LISA.
+TaxEfficientProductType2Code	CCTF	NonStakeholderChildTrustFund	_tM-JEZy-Eem54rMzia0iag	Non-stakeholder child trust fund individual savings account. In the UK, this is known as a non-stakeholder CTF ISA.
+TaxEfficientProductType2Code	SCTF	StakeholderChildTrustFund	_tS7AEZy-Eem54rMzia0iag	Stakeholder child trust fund individual savings account. In the UK, this is known as a stakeholder CTF ISA.
+TaxEfficientProductType2Code	EQUI	StocksAndShares	_tZ6Y4Zy-Eem54rMzia0iag	Stocks and shares individual savings account. In the UK, this is known as a stocks and shares ISA.
+GeneralInvestmentAccountType2Code	ANYY	Any	_PDJ8YZgJEemu1vK8dsrXIw	Any type of general investment account.
+GeneralInvestmentAccountType2Code	EQUI	ShareSavingsAccount	_PI9CYZgJEemu1vK8dsrXIw	General shares or equity savings account.
+AccountOwnershipType6Code	BOWN	BareOwner	_QtJ_ITOQEeqjy7_SkdcoGg	A person has bare ownership on the asset.
+AccountOwnershipType6Code	CORP	Corporation	_QxoPcTOQEeqjy7_SkdcoGg	Account owner is a corporate.
+AccountOwnershipType6Code	CUST	CustodialAccount	_Q3OhITOQEeqjy7_SkdcoGg	Minor's account, registered in the minor's name. Since the minor cannot legally own property, the custodian of the account maintains control of the account.
+AccountOwnershipType6Code	ENTR	Entrepreneurial	_Q76z4TOQEeqjy7_SkdcoGg	Entrepreneurial account.
+AccountOwnershipType6Code	EURE	EUResidualEntity	_Q_tHsTOQEeqjy7_SkdcoGg	Account owner is an entity located in the European Union which can be considered neither as a legal entity (for example, company, corporate), nor as an individual person, nor as a UCITS (Undertakings for Collective Investment of Transferable Securities) fund.
+AccountOwnershipType6Code	PART	FormalPartnership	_RD65UTOQEeqjy7_SkdcoGg	Account owner is a contractual business organisation in which two or more individuals agree to pool their funds to manage and operate a business.
+AccountOwnershipType6Code	TRUS	FormalTrust	_RIfQQDOQEeqjy7_SkdcoGg	Account owner is an organisation which is engaged as a trustee for individuals or businesses in the administration of services such as stock transfer, registration, trust funds.
+AccountOwnershipType6Code	GOVO	GovernmentOrganisation	_RMpXgTOQEeqjy7_SkdcoGg	Account owner is a government organisation.
+AccountOwnershipType6Code	JOIT	JointAccount	_RRcX8TOQEeqjy7_SkdcoGg	Two or more individuals of legal age own shares of the same account.
+AccountOwnershipType6Code	COMO	JointAccountInCommon	_RViNwTOQEeqjy7_SkdcoGg	Two or more individuals of legal age own shares of the same account. Upon the death of one of the account owners, the respective percentage of the ownership is transferred to the deceased's estate.
+AccountOwnershipType6Code	JOIN	JointAccountWithSurvivorshipRights	_RZgHwTOQEeqjy7_SkdcoGg	Two or more individuals own shares of the same account. Upon the death of one of the account owners, the entire account ownership is passed onto the surviving owners.
+AccountOwnershipType6Code	LLCO	LimitedLiabilityCompany	_RdyK0TOQEeqjy7_SkdcoGg	Account is for a limited liability company.
+AccountOwnershipType6Code	LIPA	LimitedPartnership	_RiZlETOQEeqjy7_SkdcoGg	Account owner is a limited partnership or is of sole proprietorship.
+AccountOwnershipType6Code	NOMI	Nominee	_RmkTYTOQEeqjy7_SkdcoGg	Account owner is a person or firm into whose name securities or other properties are transferred in order to facilitate transactions whilst leaving the customer as the actual owner.
+AccountOwnershipType6Code	NFPO	NonProfitOrganisation	_Rri6ATOQEeqjy7_SkdcoGg	Account owner is an association that is given tax-free status due to the nature of their activities such as charity organisation.
+AccountOwnershipType6Code	ONIS	OtherNonIndividual	_RwJGITOQEeqjy7_SkdcoGg	Account owner is another type of non individual organisation.
+AccountOwnershipType6Code	OWNR	Owner	_R0faoTOQEeqjy7_SkdcoGg	A person has full ownership on the asset.
+AccountOwnershipType6Code	RGIC	RegisteredInvestmentCompany	_R4tzUTOQEeqjy7_SkdcoGg	Account is for a registered investment company.
+AccountOwnershipType6Code	SIGL	SingleOwnerAccount	_R87k8TOQEeqjy7_SkdcoGg	Account has only one individual owner.
+AccountOwnershipType6Code	UNCO	Unincorporated	_SBpF0TOQEeqjy7_SkdcoGg	Account owner is an unincorporated partnership or is of sole proprietorship.
+AccountOwnershipType6Code	USUF	Usufructuary	_SFqqMTOQEeqjy7_SkdcoGg	Person having the temporary right to use and derive income or benefit from someone else's property.
+PensionSchemeType3Code	AAVC	AdditionalVoluntaryContribution	_u01fIelpEeuvhrZwLF0fDg	Pension plan is an additional voluntary contribution plan.
+PensionSchemeType3Code	DBEN	DefinedBenefit	_u01fI-lpEeuvhrZwLF0fDg	Pension plan is a defined benefit plan.
+PensionSchemeType3Code	EXPP	ExecutivePensionPlan	_u01fJelpEeuvhrZwLF0fDg	Pension plan is an executive pension plan.
+PensionSchemeType3Code	FAVC	FreeStandingAdditionalVoluntaryContribution	_u01fJ-lpEeuvhrZwLF0fDg	Pension plan is a free standing additional voluntary contribution plan.
+PensionSchemeType3Code	GPPS	GroupPersonalPension	_u01fKelpEeuvhrZwLF0fDg	Pension is a group personal pension.
+PensionSchemeType3Code	SIPG	GroupSelfInvestedPension	_u01fK-lpEeuvhrZwLF0fDg	Pension plan is a group self-invested pension plan.
+PensionSchemeType3Code	STKG	GroupStakeholder	_u01fLelpEeuvhrZwLF0fDg	Pension plan is a group stakeholder pension plan.
+PensionSchemeType3Code	IPST	IndividualPensionWithTaxBenefit	_u01fL-lpEeuvhrZwLF0fDg	Pension is an individual pension savings plan with a tax benefit. This is known as an Individual Pension Schema (IPS) in some markets.
+PensionSchemeType3Code	STKI	IndividualStakeholder	_u01fMelpEeuvhrZwLF0fDg	Pension plan is an individual stakeholder pension.
+PensionSchemeType3Code	OTPM	MandatoryOccupationalPension	_u01fM-lpEeuvhrZwLF0fDg	Pension is a mandatory occupational pension. This is known as an Obligatory Occupation Pension (OTP) in some markets.
+PensionSchemeType3Code	OCDC	OccupationalDefinedContribution	_u01fNelpEeuvhrZwLF0fDg	Pension plan is an occupational defined contribution plan.
+PensionSchemeType3Code	PPNS	PersonalPension	_u01fN-lpEeuvhrZwLF0fDg	Pension is a personal pension plan.
+PensionSchemeType3Code	EPKA	PersonalPensionAccount	_u01fOelpEeuvhrZwLF0fDg	Pension is a personal pension account. This is known as Employee Pension Kapital (EPK) in some markets.
+PensionSchemeType3Code	ITPO	PrivateOccupationalPension	_u01fO-lpEeuvhrZwLF0fDg	Pension is a private occupational pension. This is known as an industrial and trade supplementary pension (ITP) in some markets.
+PensionSchemeType3Code	REAN	RetirementAnnuity	_u01fPelpEeuvhrZwLF0fDg	Pension plan is a retirement annuity.
+PensionSchemeType3Code	SC32	Section32	_u01fP-lpEeuvhrZwLF0fDg	Pension type covered by section 32.
+PensionSchemeType3Code	S32A	Section32A	_u01fQelpEeuvhrZwLF0fDg	Pension type covered by section 32A.
+PensionSchemeType3Code	SIPP	SelfInvestedPersonalPension	_u01fQ-lpEeuvhrZwLF0fDg	Pension is a self-invested personal pension plan.
+PensionSchemeType3Code	SSAS	SmallSelfAdministeredScheme	_u01fRelpEeuvhrZwLF0fDg	Pension is a small self-administered pension scheme.
+PensionSchemeType3Code	NWRP	NonWrapperPension	_xgf0IelpEeuvhrZwLF0fDg	Indicates that the party does not operate the pension wrapper.
+PensionTransferScope1Code	CRYS	CrystallisedPart	_6W9-oU4YEeiQHa-q1Uephw	Transfer is for the crystallised portion.
+PensionTransferScope1Code	SDDT	DrawdownTranche	_6b_okU4YEeiQHa-q1Uephw	Transfer is for a specific drawdown tranche.
+PensionTransferScope1Code	FULP	FullPension	_6hnvcU4YEeiQHa-q1Uephw	Transfer is for the full pension.
+PensionTransferScope1Code	UCRY	UncrystallisedPart	_6lp64U4YEeiQHa-q1Uephw	Transfer is for the uncrystallised portion.
+PersonIdentificationType7Code	ATIN	AdoptionTaxpayerIdentificationNumber	_CZgLUU4REeiQHa-q1Uephw	Temporary tax processing number (used in the domestic adoption of a child).
+PersonIdentificationType7Code	GTIN	GenericTaxIdentificationNumber	_C_cJ8U4REeiQHa-q1Uephw	Generic tax identification number.
+PersonIdentificationType7Code	ITIN	IndividualTaxpayerIdentificationNumber	_D1vf0U4REeiQHa-q1Uephw	Tax processing number.
+HolderType1Code	TFEE	Transferee	_nUYtQU4SEeiQHa-q1Uephw	Holder is the transferee party. The transferee party may also be known as the acquiring party.
+HolderType1Code	TFOR	Transferor	_naLzQU4SEeiQHa-q1Uephw	Holder is the transferor party. The transferee party may also be known as the ceding party.
+CashAssetType1Code	CSH2	CashInHolding	_z92S0UyLEeiepssxrmRw1A	Cash is cash in the holding not yet invested.
+CashAssetType1Code	CSH1	CashInvestment	_0EGEwUyLEeiepssxrmRw1A	Cash is attributed to a cash investment.
+OtherAsset2Code	DIMA	Discretionary	_fnEmYZNCEemQB_8XA98K0Q	Asset is a discretionary investment manager account
+OtherAsset2Code	EXIA	ExternalAccount	_fsbAcZNCEemQB_8XA98K0Q	Asset is an external investment account.
+OtherAsset2Code	MOVE	MovableProperty	_fyX3cZNCEemQB_8XA98K0Q	Property that is not real estate. Also known as 'movable chattels'.
+OtherAsset2Code	PROP	Property	_f5EVUZNCEemQB_8XA98K0Q	Property that is real estate.
+OtherAsset2Code	TIPP	TrusteeInvestmentPlan	_f_UuUZNCEemQB_8XA98K0Q	Asset is a trustee investment plan (TIP).
+TradeTransactionCondition5Code	XCPN	ExCoupon	_iNUDEV-mEeavlvCtut5bgg	Indicates whether the trade is executed ex coupon.
+TradeTransactionCondition5Code	CCPN	CumCoupon	_iYxsMV-mEeavlvCtut5bgg	Indicates whether the trade is executed cum coupon.
+SettlementTransactionCondition11Code	NOMC	NoAutomaticMarketClaim	_87Lz4Uc8EeaBWtcfqEyXyw	No market claim should be automatically generated.

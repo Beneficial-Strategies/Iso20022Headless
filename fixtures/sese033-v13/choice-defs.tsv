@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+PairedOrTurnedQuantity7Choice	abd8ef64-ab7c-4d91-b1dd-eeae46299fc8	PairedOffQuantity	Quantity of financial instruments of the linked transaction to be paired-off.
+PairedOrTurnedQuantity7Choice	48c897fd-16b3-4c8a-a983-c5b64a832434	TurnedQuantity	Quantity of financial instruments of the linked transaction to be turned.

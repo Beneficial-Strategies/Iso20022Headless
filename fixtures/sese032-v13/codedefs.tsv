@@ -1,0 +1,25 @@
+codeSet	code	enumName	isoId	text
+SettlementTransactionCondition19Code	ADEA	AcceptAfterRegularSettlementDeadline	_rEZEEfIQEfCMaqDZ_tShqQ	Settlement is on a bilaterally accepted transaction that is to be accepted beyond the regular settlement deadline.
+SettlementTransactionCondition19Code	ASGN	Assignement	_rIPpUfIQEfCMaqDZ_tShqQ	Transfer of ownership of the asset to another party during the closing of an option.
+SettlementTransactionCondition19Code	BUTC	BuytoCover	_rQEIkfIQEfCMaqDZ_tShqQ	Transaction is a buy to cover.
+SettlementTransactionCondition19Code	CLEN	Clean	_rUKlcfIQEfCMaqDZ_tShqQ	Tax-exempt financial instruments are to be settled.
+SettlementTransactionCondition19Code	DLWM	DeliveryWithoutMatching	_rYQbQfIQEfCMaqDZ_tShqQ	Matching receipt instruction not required (only for concerned international or national central securities depositories).
+SettlementTransactionCondition19Code	DIRT	Dirty	_rcIOofIQEfCMaqDZ_tShqQ	Taxable financial instruments are to be settled.
+SettlementTransactionCondition19Code	DRAW	Drawn	_rhP_MfIQEfCMaqDZ_tShqQ	Settlement transactions relates to drawn securities.
+SettlementTransactionCondition19Code	EXER	Exercised	_rlkegfIQEfCMaqDZ_tShqQ	Settlement transaction relates to options, futures or derivatives that are exercised.
+SettlementTransactionCondition19Code	EXPI	Expired	_rrgucfIQEfCMaqDZ_tShqQ	Settlement transaction relates to options, futures or derivatives that have expired.
+SettlementTransactionCondition19Code	FRCL	FreeCleanSettlement	_r29JcfIQEfCMaqDZ_tShqQ	Delivery will be made free of payment but a clean payment order will be sent.
+SettlementTransactionCondition19Code	GATE	GatingEventParticipation	_r9jgsPIQEfCMaqDZ_tShqQ	Gating event participation. Hold until event start time.
+SettlementTransactionCondition19Code	KNOC	KnockedOut	_s5in0fIQEfCMaqDZ_tShqQ	Settlement transaction relates to options, futures or derivatives that are expired worthless.
+SettlementTransactionCondition19Code	NOMC	NoAutomaticMarketClaim	_s-uCwfIQEfCMaqDZ_tShqQ	No market claim should be automatically generated.
+SettlementTransactionCondition19Code	PENS	PendingSale	_uyP14fIQEfCMaqDZ_tShqQ	Position to cover the pending sale will be available by contractual settlement date (accounting information).
+SettlementTransactionCondition19Code	PHYS	Physical	_u2uGMfIQEfCMaqDZ_tShqQ	Securities are to be physically settled.
+SettlementTransactionCondition19Code	RHYP	Rehypothecation	_u6qyEfIQEfCMaqDZ_tShqQ	Collateral position is available for other purposes (for example, onwards delivery).
+SettlementTransactionCondition19Code	RPTO	Reporting	_u-rIUfIQEfCMaqDZ_tShqQ	Relates to a transaction that is for reporting purposes only.
+SettlementTransactionCondition19Code	RESI	Residual	_vCwXEfIQEfCMaqDZ_tShqQ	Relates to transaction on a security that is not eligible at the Central Security Depository (CSD) but for which the payment will be enacted by the central securities depository.
+SettlementTransactionCondition19Code	SHOR	ShortSell	_vcqr4fIQEfCMaqDZ_tShqQ	Account is used for short sale orders.
+SettlementTransactionCondition19Code	SPDL	SpecialDelivery	_vlzZwfIQEfCMaqDZ_tShqQ	Settlement transactions to be settled with special delivery.
+SettlementTransactionCondition19Code	SPST	SplitSettlement	_vsc0UfIQEfCMaqDZ_tShqQ	Money and financial instruments settle in different locations.
+SettlementTransactionCondition19Code	TRAN	Transformation	_vwC64fIQEfCMaqDZ_tShqQ	Transaction resulting from a transformation.
+SettlementTransactionCondition19Code	TRIP	TripartySegregation	_vzvIEfIQEfCMaqDZ_tShqQ	Securities are not be delivered but segregated following triparty collateral transaction.
+SettlementTransactionCondition19Code	UNEX	Unexposed	_v5HXUfIQEfCMaqDZ_tShqQ	Delivery cannot be performed until money is received.

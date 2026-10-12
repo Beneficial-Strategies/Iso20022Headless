@@ -1,0 +1,147 @@
+{
+  "identifier": "sese.035.001.13",
+  "name": "SecuritiesFinancingConfirmationV13",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:sese.035.001.13",
+  "bodyTag": "SctiesFincgConf",
+  "out": "sese035",
+  "isoId": "_heMswZaFEfC2_67yGLymgA",
+  "definition": "Scope|A securities financing transaction account servicer sends a SecuritiesFinancingConfirmation to an account owner to confirm or advise of the partial or full settlement of the opening or closing leg of a securities financing transaction. ||The account servicer/owner relationship may be:|- a central securities depository or another settlement market infrastructure managing securities financing transactions on behalf of their participants|- an agent (sub-custodian) managing securities financing transactions on behalf of their global custodian customer, or |- a custodian managing securities financing transactions on behalf of an investment management institution or a broker/dealer.|||Usage|The message may also be used to:|- re-send a message previously sent,|- provide a third party with a copy of a message for information,|- re-send to a third party a copy of a message for information using the relevant elements in the Business Application Header.",
+  "blocks": [
+    {
+      "name": "TransactionIdentificationDetails",
+      "isoId": "_heNT55aFEfC2_67yGLymgA",
+      "xmlTag": "TxIdDtls",
+      "type": "TransactionTypeAndAdditionalParameters22",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AdditionalParameters",
+      "isoId": "_heNT7ZaFEfC2_67yGLymgA",
+      "xmlTag": "AddtlParams",
+      "type": "AdditionalParameters24",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "TradeDetails",
+      "isoId": "_heNT85aFEfC2_67yGLymgA",
+      "xmlTag": "TradDtls",
+      "type": "SecuritiesTradeDetails115",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "FinancialInstrumentIdentification",
+      "isoId": "_heNT-ZaFEfC2_67yGLymgA",
+      "xmlTag": "FinInstrmId",
+      "type": "SecurityIdentification19",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "FinancialInstrumentAttributes",
+      "isoId": "_heNT_5aFEfC2_67yGLymgA",
+      "xmlTag": "FinInstrmAttrbts",
+      "type": "FinancialInstrumentAttributes111",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "QuantityAndAccountDetails",
+      "isoId": "_heNUBZaFEfC2_67yGLymgA",
+      "xmlTag": "QtyAndAcctDtls",
+      "type": "QuantityAndAccount120",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SecuritiesFinancingDetails",
+      "isoId": "_heNUC5aFEfC2_67yGLymgA",
+      "xmlTag": "SctiesFincgDtls",
+      "type": "SecuritiesFinancingTransactionDetails56",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "StandingSettlementInstructionDetails",
+      "isoId": "_heNUEZaFEfC2_67yGLymgA",
+      "xmlTag": "StgSttlmInstrDtls",
+      "type": "StandingSettlementInstruction20",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SettlementParameters",
+      "isoId": "_heNUF5aFEfC2_67yGLymgA",
+      "xmlTag": "SttlmParams",
+      "type": "SettlementDetails228",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "DeliveringSettlementParties",
+      "isoId": "_heNUHZaFEfC2_67yGLymgA",
+      "xmlTag": "DlvrgSttlmPties",
+      "type": "SettlementParties126",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ReceivingSettlementParties",
+      "isoId": "_heNUI5aFEfC2_67yGLymgA",
+      "xmlTag": "RcvgSttlmPties",
+      "type": "SettlementParties126",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CashParties",
+      "isoId": "_heNUKZaFEfC2_67yGLymgA",
+      "xmlTag": "CshPties",
+      "type": "CashParties41",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SettledAmount",
+      "isoId": "_heNUL5aFEfC2_67yGLymgA",
+      "xmlTag": "SttldAmt",
+      "type": "AmountAndDirection94",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "OtherAmounts",
+      "isoId": "_heNUNZaFEfC2_67yGLymgA",
+      "xmlTag": "OthrAmts",
+      "type": "OtherAmounts47",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "DigitalPaymentSettlement",
+      "isoId": "_FgfrwZaFEfC2_67yGLymgA",
+      "xmlTag": "DgtlPmtSttlm",
+      "type": "DigitalPaymentSettlement1",
+      "min": 0,
+      "max": 2
+    },
+    {
+      "name": "OtherBusinessParties",
+      "isoId": "_heNUPZaFEfC2_67yGLymgA",
+      "xmlTag": "OthrBizPties",
+      "type": "OtherParties43",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_heNUQ5aFEfC2_67yGLymgA",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

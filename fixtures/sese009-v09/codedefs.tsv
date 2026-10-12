@@ -1,0 +1,63 @@
+codeSet	code	enumName	isoId	text
+TypeOfRequest1Code	INFO	Information	_GYj0kdveEeqxGfKJubfhIw	Request for information.
+TypeOfRequest1Code	STAT	Status	_GhCbIdveEeqxGfKJubfhIw	Request for status.
+InvestmentFundRole8Code	CUST	Custodian	_REphkdyTEeqzDbuoooxhdw	Party that safekeeps and administers assets on behalf of the owner.
+InvestmentFundRole8Code	DIST	Distributor	_RUab4dyTEeqzDbuoooxhdw	Party that act as an wholesaler of funds.
+InvestmentFundRole8Code	FMCO	FundManagementCompany	_R02PcdyTEeqzDbuoooxhdw	Party that sets up a fund, decides upon the investment strategy, appoints agents, and is responsible for the promotion and the marketing of the fund. This party makes all the strategic decisions related to a fund.
+InvestmentFundRole8Code	INTR	Intermediary	_R_G-sdyTEeqzDbuoooxhdw	Party that provides services to investors relating to financial products. These services may include some, or all of, provision of information and advice on products, placement of investment orders, transmission of payment, custody of assets, and the administration of rights and benefits. In the specific framework of investment funds industry, an intermediary may present information about funds to potential investors, and solicit orders for the fund. This intermediary may facilitate the transmission of the orders and information from/to the investors and/or other intermediaries. The intermediary receives commission from the Fund and/or fees from the investor.
+InvestmentFundRole8Code	INVE	InvestmentManager	_SIe9IdyTEeqzDbuoooxhdw	Party that implements the investment strategy, that is, selects portfolio investments in accordance with the objectives and strategy in the fund's prospectus, and places orders to effect or liquidate selected investments in accordance with net flow of capital into or out of the fund.
+InvestmentFundRole8Code	INVS	Investor	_SSTngdyTEeqzDbuoooxhdw	Party, either an individual or organisation, whose assets are being invested.
+InvestmentFundRole8Code	TRAG	TransferAgent	_TMLOwdyTEeqzDbuoooxhdw	Party appointed by the fund management company. This party updates records of investor accounts to reflect the daily investor purchases, redemptions, switches, transfers, and re-registrations. It ensures the timely settlement of transactions, and may provide tax information to the investor and/or to its intermediaries. It may calculate, collect, and rebate commissions. It prepares and distributes confirmations reflecting transactions, resulting in unit or cash account movements to the investor or the investor's intermediary. It responds to inquiries concerning account status, and processes the income distribution.
+InvestmentFundRole8Code	TRAN	TransmittingAgent	_TZ3FcdyTEeqzDbuoooxhdw	Party that transmits the instruction, advice, notification or report.
+InvestmentFundRole8Code	UCL1	UnderlyingClient1	_TfhBgdyTEeqzDbuoooxhdw	Underlying client of the intermediary.
+InvestmentFundRole8Code	UCL2	UnderlyingClient2	_TkbWsdyTEeqzDbuoooxhdw	Underlying client of underlying client 1.
+InvestmentFundRole8Code	REGI	Registrar	_AQgqcdydEeqzDbuoooxhdw	Party responsible for keeping track of the owners of securities. In the investment fund business, this party keeps the investor registry of the fund, and administers investor accounts and related records. It is appointed by the fund management company.
+InvestmentFundRole8Code	CACO	CashCorrespondent	_CoZu4dydEeqzDbuoooxhdw	Financial institution that executes cash transfers on behalf of its clients.
+InvestmentFundRole8Code	CONC	Concentrator	_Ctm_AdydEeqzDbuoooxhdw	Party that acts as an aggregator of funds, also called a funds hub.
+InvestmentFundRole8Code	DATP	DataProvider	_ErUo4dydEeqzDbuoooxhdw	Source of financial information. Provides financial news and data (for example, facts, statistics and analysis), for professional and individual investors through various media, for example, the Internet, magazines.
+RejectedStatusReason12Code	BLCA	AccountBlockedForCorporateAction	_ujZ3UQVHEeq4ZaI1b_-GPA	Investment account is blocked due to a corporate action.
+RejectedStatusReason12Code	DOCC	AccountBlockedMissingDocuments	_veeYcQVHEeq4ZaI1b_-GPA	Investment account is blocked until certain legal proceedings are completed, for example, legal documents from the successor, legal proceedings due to bankruptcy.
+RejectedStatusReason12Code	IAQD	AcquisitionDate	_v0MJwQVHEeq4ZaI1b_-GPA	Acquisition date is not recognised or is invalid.
+RejectedStatusReason12Code	ICTN	CertificateNumber	_x_JlcQVHEeq4ZaI1b_-GPA	Certificate number is not recognised or is invalid.
+RejectedStatusReason12Code	CYPA	CurrentYearPartial	_ycKRkQVHEeq4ZaI1b_-GPA	Partial transfer of current year is not allowed, that is, it is not possible to transfer one asset for the current year as other assets are held for the current year.
+RejectedStatusReason12Code	TREF	DuplicateTransferReference	_zNGmUQVHEeq4ZaI1b_-GPA	Transfer reference is a duplicate of a previously received transfer.
+RejectedStatusReason12Code	DSEC	FinancialInstrumentIdentification	_1lTMwQVHEeq4ZaI1b_-GPA	Identification of the security is not recognised or is invalid.
+RejectedStatusReason12Code	IDNA	FinancialInstrumentIdentificationAndName	_2Aq6IQVHEeq4ZaI1b_-GPA	Identification of the security and the security name are not the same.
+RejectedStatusReason12Code	DQUA	FinancialInstrumentQuantity	_2yD60QVHEeq4ZaI1b_-GPA	Financial instrument quantity is invalid.
+RejectedStatusReason12Code	FTAX	FinancialInstrumentTaxYear	_3C3-AQVHEeq4ZaI1b_-GPA	Financial instrument is not valid for the requested tax year.
+RejectedStatusReason12Code	INID	InsufficientInvestorData	_3kpOUQVHEeq4ZaI1b_-GPA	Investor data is insufficient. Applicable when the mandated market practice is not followed.
+RejectedStatusReason12Code	INAC	InvalidAccountServicer	_4maNUQVHEeq4ZaI1b_-GPA	Account servicer is not recognised or is invalid.
+RejectedStatusReason12Code	CASH	InvalidCashAccount	_5C0cgQVHEeq4ZaI1b_-GPA	Cash account is not recognised or invalid.
+RejectedStatusReason12Code	INPM	InvalidNewPlanManager	_6FUbUQVHEeq4ZaI1b_-GPA	New plan manager is not recognised or is invalid.
+RejectedStatusReason12Code	INNA	InvalidNomineeAccount	_6XnsQQVHEeq4ZaI1b_-GPA	Nominee account is not recognised or is invalid.
+RejectedStatusReason12Code	SAFE	InvestmentAccount	_-SAeMQVHEeq4ZaI1b_-GPA	Investment account identification is not recognised or is invalid.
+RejectedStatusReason12Code	INUK	InvestorNameAddressUnknown	_-4--oQVHEeq4ZaI1b_-GPA	Investor name and address is not recognised.
+RejectedStatusReason12Code	LEGL	LegallyImpossible	__RiBgQVHEeq4ZaI1b_-GPA	Legally impossible to cancel.
+RejectedStatusReason12Code	NSLA	NotCompliantWithSLA	_AFAs4QVIEeq4ZaI1b_-GPA	Instruction is not compliant with the service level agreement.
+RejectedStatusReason12Code	SECU	NotEnoughFinancialInstrument	_Aug84QVIEeq4ZaI1b_-GPA	There are not enough securities in the account to process the instruction.
+RejectedStatusReason12Code	PTNS	PartialNotSupported	_BL0j8QVIEeq4ZaI1b_-GPA	Partial transfer is not supported. Applicable when tax years are rolled up and because, for example, a transfer request for tax year 2000 only is received, it is not possible to process the transfer as the investor holds other tax years as well.
+RejectedStatusReason12Code	DLVY	PhysicalDeliveryImpossible	_Bj7h8QVIEeq4ZaI1b_-GPA	Order contains physical delivery details but the fund can not be physically delivered.
+RejectedStatusReason12Code	DDAT	SettlementDate	_CMPfIQVIEeq4ZaI1b_-GPA	Cash settlement date is not recognised or is invalid.
+RejectedStatusReason12Code	ISTP	SettlementParties	_CcBAgQVIEeq4ZaI1b_-GPA	One or several settlement parties are not recognised or are invalid.
+RejectedStatusReason12Code	DEPT	SettlementPlace	_CsOmwQVIEeq4ZaI1b_-GPA	Place of settlement is not recognised or is invalid.
+RejectedStatusReason12Code	ISAT	InvalidISAType	_IhDsIQVIEeq4ZaI1b_-GPA	ISA type is not recognised or invalid.
+RejectedStatusReason12Code	OTHR	Other	_NaEpgQVIEeq4ZaI1b_-GPA	Another reason for the status rejected.
+RejectedStatusReason12Code	NCON	NotConvertable	_-GIeMBaGEeqoX-WM86RAxQ	The two share classes are not part of the same fund.
+RejectedStatusReason12Code	ACLO	AssetClosed	_-4V-QRaGEeqoX-WM86RAxQ	Asset instructed for transfer is closed.
+RejectedStatusReason12Code	NASS	AssetNotSupported	__ank4RaGEeqoX-WM86RAxQ	Asset does not support reregistration.
+RejectedStatusReason12Code	NQTY	QuantityBelowMinimum	_BpcM4RaHEeqoX-WM86RAxQ	Transfer quantity is too small.
+RejectedStatusReason12Code	BLTR	AccountBlockedForTransfer	_R9VSIRaHEeqoX-WM86RAxQ	Investment account is blocked due to a transfer out of investment funds.
+RejectedStatusReason12Code	COSE	AlreadyExecuted	_SjWwURaHEeqoX-WM86RAxQ	Order or transfer has already been executed and confirmation has been sent.
+RejectedStatusReason12Code	ILLI	AssetsIlliquid	_S9RFIRaHEeqoX-WM86RAxQ	Assets are illiquid.
+RejectedStatusReason12Code	BMRV	BelowMinimumRetainedAmount	_T8OAsRaHEeqoX-WM86RAxQ	Holding will be below the minimum retained value.
+RejectedStatusReason12Code	DINV	DataInvalid	_UxIPcRaHEeqoX-WM86RAxQ	Data in the order or transfer instruction is invalid.
+RejectedStatusReason12Code	ICAG	DeliveringAgent	_VeMJwRaHEeqoX-WM86RAxQ	Delivering agent is not recognised or is invalid.
+RejectedStatusReason12Code	IPAC	InstructingPartyNotAllowedForAccount	_YVkmkRaHEeqoX-WM86RAxQ	Instructing party is not allowed to instruct for this investment account.
+RejectedStatusReason12Code	INTE	Intermediary	_ZygeoRaHEeqoX-WM86RAxQ	Intermediary is not recognised or is invalid.
+RejectedStatusReason12Code	DMON	InvalidSettlementAmount	_cALQERaHEeqoX-WM86RAxQ	Unrecognised or invalid settlement amount.
+RejectedStatusReason12Code	PRCT	PercentageHoldingBreach	_dFEbkRaHEeqoX-WM86RAxQ	Percentage holding breach, for example, PPM rules; taxation rules (ERISA).
+RejectedStatusReason12Code	IVAG	ReceivingAgent	_dxSoYRaHEeqoX-WM86RAxQ	Receiving agent is not recognised or is invalid.
+RejectedStatusReason12Code	NCRR	SettlementAmountCurrency	_fExpgRaHEeqoX-WM86RAxQ	Unrecognised or invalid Settlement Amount Currency.
+RejectedStatusReason12Code	DTRD	TradeDate	_f77T8RaHEeqoX-WM86RAxQ	Unrecognised or invalid trade date or requested trade date or future trade date.
+RejectedStatusReason12Code	UPAY	UnacceptedPaymentMethod	_gxKS0RaHEeqoX-WM86RAxQ	Payment method, for example, cheque or payment card, is not accepted.
+RejectedStatusReason12Code	URSC	UnacceptedRequestedSettlementCurrency	_ha8PoRaHEeqoX-WM86RAxQ	Settlement currency requested is not supported.

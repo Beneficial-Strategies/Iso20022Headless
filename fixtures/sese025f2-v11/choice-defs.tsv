@@ -1,0 +1,7 @@
+choice	memberId	memberName	text
+ProcessingPosition23Choice	_BngMob-DEeW_u_CSZtGM1g	Code	Processing position expressed as an ISO 20022 code.
+ProcessingPosition23Choice	_BngMqb-DEeW_u_CSZtGM1g	Proprietary	Processing position expressed as a proprietary code.
+OpeningClosing4Choice	_6SXYs5NLEeWGlc8L7oPDIg	Code	Opening closing information expressed as an ISO 20022 code.
+OpeningClosing4Choice	_6SXYu5NLEeWGlc8L7oPDIg	Proprietary	Opening closing information expressed as a proprietary code.
+SecuritiesTransactionType51Choice	_5-eRgffXEeiNZp_PtLohLw	Code	Securities transaction type expressed as an ISO 20022 code.
+SecuritiesTransactionType51Choice	_5-eRiffXEeiNZp_PtLohLw	Proprietary	Securities transaction type expressed as a proprietary code.

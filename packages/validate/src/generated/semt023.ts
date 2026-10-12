@@ -37,6 +37,7 @@ import {
   CountryCodeSchema,
   Max140TextSchema,
   Eligibility1CodeSchema,
+  InvestorCapacity4ChoiceSchema,
   SecuritiesAccountPurposeType1CodeSchema,
   IBAN2007IdentifierSchema,
   BBANIdentifierSchema,
@@ -107,11 +108,6 @@ export const AlternatePartyIdentification8Schema = z.strictObject({
 export const PartyTextInformation5Schema = z.strictObject({
   DeclarationDetails: Max350TextSchema.optional(),
   PartyContactDetails: Max140TextSchema.optional(),
-});
-
-export const InvestorCapacity4ChoiceSchema = choiceOf({
-  Code: Eligibility1CodeSchema,
-  Proprietary: GenericIdentification30Schema,
 });
 
 export const TradingCapacity4CodeSchema = z.enum(["PRIN", "CPRN", "RISP", "PROP", "AGEN", "CAGN", "OAGN", "PRAG", "BAGN", "INFI", "MKTM", "MLTF", "RMKT", "SINT", "TAGT"]);
@@ -325,15 +321,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       { name: "AdditonalDetailsGuideline", isoId: "_AeLmQdokEeC60axPepSq7g_1057415409", text: "Unless bilaterally agreed between the Sender and Receiver, DeclarationlDetails and PartyContactDetails must not contain information that can be provided in a structured field." },
     ],
   },
-  "InvestorCapacity4Choice": {
-    name: "InvestorCapacity4Choice",
-    isoId: "_0J3I8TtCEeWRTLSN0i0tng",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "Code", isoId: "_0p2QkTtCEeWRTLSN0i0tng", xmlTag: "Cd", displayName: displayName("Code"), kind: "code", type: "Eligibility1Code", required: true }),
-      f({ name: "Proprietary", isoId: "_0p2QmTtCEeWRTLSN0i0tng", xmlTag: "Prtry", displayName: displayName("Proprietary"), kind: "component", type: "GenericIdentification30", required: true }),
-    ],
-  },
   "TradingCapacity4Code": {
     name: "TradingCapacity4Code",
     isoId: "__zHQANojEeC60axPepSq7g_1923931952",
@@ -529,6 +516,7 @@ export const typeDescriptors: TypeDescriptors = {
   "CountryCode": sharedTypeDescriptors["CountryCode"]!,
   "Max140Text": sharedTypeDescriptors["Max140Text"]!,
   "Eligibility1Code": sharedTypeDescriptors["Eligibility1Code"]!,
+  "InvestorCapacity4Choice": sharedTypeDescriptors["InvestorCapacity4Choice"]!,
   "SecuritiesAccountPurposeType1Code": sharedTypeDescriptors["SecuritiesAccountPurposeType1Code"]!,
   "IBAN2007Identifier": sharedTypeDescriptors["IBAN2007Identifier"]!,
   "BBANIdentifier": sharedTypeDescriptors["BBANIdentifier"]!,

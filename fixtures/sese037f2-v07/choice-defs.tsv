@@ -1,0 +1,21 @@
+choice	memberId	memberName	text
+PortfolioTransferStatus2Choice	_o9uv8ukGEemm4qhb2yFPOw	AcknowledgedAccepted	Instruction has been acknowledged by the account servicer.
+PortfolioTransferStatus2Choice	_sRb8YukGEemm4qhb2yFPOw	PendingProcessing	Processing of the instruction/request is pending.
+PortfolioTransferStatus2Choice	_WLfY8ukGEemm4qhb2yFPOw	Rejected	Instruction/request has been rejected for further processing.
+PortfolioTransferStatus2Choice	_5VZh8ukGEemm4qhb2yFPOw	Proprietary	Status that cannot be reported using one of the available standard status.
+AcknowledgedAcceptedStatus32Choice	_LhthYekHEemm4qhb2yFPOw	NoSpecifiedReason	Indicates that there is no reason available or to report.
+AcknowledgedAcceptedStatus32Choice	_LhthaekHEemm4qhb2yFPOw	Reason	Specifies the reason of the acknowledged accepted status.
+AcknowledgementReason23Choice	_M6X9cekHEemm4qhb2yFPOw	Code	Specifies additional information about the processed instruction.
+AcknowledgementReason23Choice	_M6X9eekHEemm4qhb2yFPOw	Proprietary	Specifies additional information about the processed instruction.
+PendingProcessingStatus17Choice	_fsBekekHEemm4qhb2yFPOw	NoSpecifiedReason	Indicates that there is no reason available or to report.
+PendingProcessingStatus17Choice	_fsBemekHEemm4qhb2yFPOw	Reason	Specifies the reason of the pending processing status.
+PendingProcessingReason16Choice	_g9tI4ekHEemm4qhb2yFPOw	Code	Specifies the reason why the instruction has a pending processing status.
+PendingProcessingReason16Choice	_g9tI6ekHEemm4qhb2yFPOw	Proprietary	Specifies the reason why the instruction has a pending processing status.
+RejectionStatus30Choice	_tzlZsekIEemm4qhb2yFPOw	NoSpecifiedReason	Indicates that there is no reason available or to report.
+RejectionStatus30Choice	_tzlZtekIEemm4qhb2yFPOw	Reason	Specifies the reason of the rejection status.
+RejectionReason37Choice	_vEEKIekIEemm4qhb2yFPOw	Code	Specifies the reason why the instruction/request has a repair or rejection status.
+RejectionReason37Choice	_vEEKJekIEemm4qhb2yFPOw	Proprietary	Specifies the reason why the instruction/request has a repair or rejection status.
+Reporting8Choice	_5TJXJZNLEeWGlc8L7oPDIg	Code	Third party reporting information expressed as an ISO 20022 code.
+Reporting8Choice	_5TJXLZNLEeWGlc8L7oPDIg	Proprietary	Third party reporting information expressed as a proprietary code.
+SettlementTransactionCondition21Choice	_5TJ-l5NLEeWGlc8L7oPDIg	Code	Settlement conditions expressed as an ISO 20022 code.
+SettlementTransactionCondition21Choice	_5TJ-n5NLEeWGlc8L7oPDIg	Proprietary	Settlement conditions expressed as a proprietary code.

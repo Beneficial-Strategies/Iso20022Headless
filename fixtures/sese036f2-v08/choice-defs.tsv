@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+RepurchaseType31Choice	_yYMhn5w2EeazcsnODTksnQ	Code	Type of securities financing transaction process expressed as an ISO 20022 code.
+RepurchaseType31Choice	_yYMhp5w2EeazcsnODTksnQ	Proprietary	Type of securities financing transaction process expressed as a proprietary code.

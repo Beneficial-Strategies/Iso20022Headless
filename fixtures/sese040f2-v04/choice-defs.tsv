@@ -1,0 +1,12 @@
+choice	memberId	memberName	text
+ResponseStatus8Choice	_Vl2wJ5NSEeWGlc8L7oPDIg	Consented	Reason provided for the status.
+ResponseStatus8Choice	_Vl2wKZNSEeWGlc8L7oPDIg	Rejected	Rejected status of an instruction, advice or request.
+ResponseStatus8Choice	_Vl2wK5NSEeWGlc8L7oPDIg	Pending	Pending status of an instruction, advice or request.
+ConsentStatus5Choice	_Vl2wMZNSEeWGlc8L7oPDIg	NoSpecifiedReason	Indicates that there is no reason available or to report.
+ConsentStatus5Choice	_Vl2wOZNSEeWGlc8L7oPDIg	Reason	Reason provided for the status.
+ConsentOrRejectionReason5Choice	_Vl2wT5NSEeWGlc8L7oPDIg	Code	Specifies the reason why the counterparty response has a rejection status.
+ConsentOrRejectionReason5Choice	_Vl2wV5NSEeWGlc8L7oPDIg	Proprietary	Specifies the reason why the counterparty response has a rejection status.
+RejectionStatus27Choice	_Vl2wc5NSEeWGlc8L7oPDIg	NoSpecifiedReason	Indicates that there is no reason available or to report.
+RejectionStatus27Choice	_Vl2we5NSEeWGlc8L7oPDIg	Reason	Specifies the reason of the rejection or repair status.
+PendingStatus20Choice	_0k3gwwlIEeGATtfOBToyew_-935306155	Forwarded	Allegement is forwarded.
+PendingStatus20Choice	_0k3gxAlIEeGATtfOBToyew_1137213663	UnderInvestigation	Allegement is under investigation.

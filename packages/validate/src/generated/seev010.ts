@@ -66,6 +66,7 @@ import {
   BeneficiaryCertificationType1CodeSchema,
   BeneficiaryCertificationType1FormatChoiceSchema,
   EUCapitalGain2CodeSchema,
+  TaxableIncomePerShareCalculated2CodeSchema,
   RenounceableStatus1CodeSchema,
   AccountIdentification2ChoiceSchema,
   QuantityToQuantityRatio1Schema,
@@ -270,8 +271,6 @@ export const CorporateActionNarrative1Schema = z.strictObject({
   URLAddress: Max256TextSchema.optional(),
   AdditionalText: Max350TextSchema.optional(),
 });
-
-export const TaxableIncomePerShareCalculated2CodeSchema = z.enum(["TSIY", "TSIN", "UKWN"]);
 
 export const RenounceableStatus1FormatChoiceSchema = choiceOf({
   Code: RenounceableStatus1CodeSchema,
@@ -1065,12 +1064,6 @@ const ownTypeDescriptors: TypeDescriptors = {
       f({ name: "AdditionalText", isoId: "_UMZtANp-Ed-ak6NoX_4Aeg_-1766454729", xmlTag: "AddtlTxt", displayName: displayName("AdditionalText"), kind: "text", type: "Max350Text", required: false }),
     ],
   },
-  "TaxableIncomePerShareCalculated2Code": {
-    name: "TaxableIncomePerShareCalculated2Code",
-    isoId: "_ZSSoxNp-Ed-ak6NoX_4Aeg_162652014",
-    kind: "code",
-    options: [{ value: "TSIY", name: "FundCalculates", isoId: "_ZSSoxdp-Ed-ak6NoX_4Aeg_206054111" }, { value: "TSIN", name: "FundDoesNotCalculate", isoId: "_ZSSoxtp-Ed-ak6NoX_4Aeg_206055154" }, { value: "UKWN", name: "FundCalculatesUnknown", isoId: "_ZSSox9p-Ed-ak6NoX_4Aeg_206055214" }],
-  },
   "RenounceableStatus1FormatChoice": {
     name: "RenounceableStatus1FormatChoice",
     isoId: "_RoygwNp-Ed-ak6NoX_4Aeg_-1304409096",
@@ -1811,6 +1804,7 @@ export const typeDescriptors: TypeDescriptors = {
   "BeneficiaryCertificationType1Code": sharedTypeDescriptors["BeneficiaryCertificationType1Code"]!,
   "BeneficiaryCertificationType1FormatChoice": sharedTypeDescriptors["BeneficiaryCertificationType1FormatChoice"]!,
   "EUCapitalGain2Code": sharedTypeDescriptors["EUCapitalGain2Code"]!,
+  "TaxableIncomePerShareCalculated2Code": sharedTypeDescriptors["TaxableIncomePerShareCalculated2Code"]!,
   "RenounceableStatus1Code": sharedTypeDescriptors["RenounceableStatus1Code"]!,
   "AccountIdentification2Choice": sharedTypeDescriptors["AccountIdentification2Choice"]!,
   "QuantityToQuantityRatio1": sharedTypeDescriptors["QuantityToQuantityRatio1"]!,

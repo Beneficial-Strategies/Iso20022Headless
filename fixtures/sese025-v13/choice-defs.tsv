@@ -1,0 +1,7 @@
+choice	memberId	memberName	text
+ProcessingPosition9Choice	_0_e442axEeWZev0W8F756g	Code	Processing position expressed as an ISO 20022 code.
+ProcessingPosition9Choice	_0_e462axEeWZev0W8F756g	Proprietary	Processing position expressed as a proprietary code.
+OpeningClosing3Choice	_hE31ETtCEeWRTLSN0i0tng	Code	Opening closing information expressed as an ISO 20022 code.
+OpeningClosing3Choice	_hE31GTtCEeWRTLSN0i0tng	Proprietary	Opening closing information expressed as a proprietary code.
+SecuritiesTransactionType43Choice	_durwodEfEeiO-eodGv5iKQ	Code	Securities transaction type expressed as an ISO 20022 code.
+SecuritiesTransactionType43Choice	_durwqdEfEeiO-eodGv5iKQ	Proprietary	Securities transaction type expressed as a proprietary code.

@@ -1,0 +1,45 @@
+choice	memberId	memberName	text
+FundPortfolio7Choice	_X-C5IelfEeu9cf4XM82AQQ	TaxEfficientProduct	Portfolio is a government scheme to encourage investment in securities based unit and investment trusts, offering certain tax benefits. These are not investments in their own right but are tax exempt 'wrappers' in which equities, bonds and funds can be held to shelter them from various types of tax.|In the UK, a typical tax wrapper product is known as an 'ISA' (Individual Savings Account).
+FundPortfolio7Choice	_X-C5I-lfEeu9cf4XM82AQQ	GeneralInvestment	Portfolio is a general investment.
+FundPortfolio7Choice	_X-C5JelfEeu9cf4XM82AQQ	Pension	Portfolio is a pension policy, plan or scheme.
+PreviousYear1Choice	_3fxSckXfEeGY6MkiuzuPOA_2074459636	AllPreviousYears	Selection of all investment plans.
+PreviousYear1Choice	_3fxSc0XfEeGY6MkiuzuPOA_1191226349	SpecificPreviousYears	Selection of investment plans issued during previous years.
+TypeOfAmount1Choice	_g7_wgF24EeiFXdiLi_Nf4A	Code	Type of amount expressed as a code.
+TypeOfAmount1Choice	_MuAXwF25EeiFXdiLi_Nf4A	Proprietary	Type of amount expressed as a proprietary code.
+WithdrawalReason1Choice	_SpFGUE7XEeifNrXGwadPmg	Code	Withdrawal reason expressed as a code.
+WithdrawalReason1Choice	_VsksgE7XEeifNrXGwadPmg	Proprietary	Withdrawal reason expressed as a proprietary code.
+DrawdownStatus1Choice	_kMkhAFKiEeiSDqv62fL07g	Code	Status expressed as a code.
+DrawdownStatus1Choice	_oVF1kFKiEeiSDqv62fL07g	Proprietary	Status expressed as a proprietary code.
+DrawdownType2Choice	_m7wmEZNwEembCsVG-3f_AA	Code	Type of drawdown expressed as a code.
+DrawdownType2Choice	_m7wmE5NwEembCsVG-3f_AA	Proprietary	Type of drawdown expressed as a proprietary code.
+LumpSumType1Choice	_GJThoLKdEeiXL6Ccd-oU8g	Code	Type of lump sum expressed as a code.
+LumpSumType1Choice	_HK6IkLKdEeiXL6Ccd-oU8g	Proprietary	Type of lump sum expressed as a proprietary code.
+PensionOrderType1Choice	_BlYN0LTqEeiENt6AoDfPXg	Code	Type of order attached to the pension policy, plan or scheme expressed as a code.
+PensionOrderType1Choice	_I7gG0LTqEeiENt6AoDfPXg	Proprietary	Type of order attached to the pension policy, plan or scheme expressed as a proprietary code.
+FinancialInstrument102Choice	4fa97e60-c7bf-4279-a6e2-09c96dfc97e9	Security	Identification of the security.
+FinancialInstrument102Choice	3b7afbaa-480f-448c-b651-d17b4ff69dc5	CashAsset	Identification of the cash asset.
+FinancialInstrument102Choice	c5b8016e-736b-4733-9af3-49ee54a882c6	OtherAsset	Identification of another kind of asset in the holding that is not a security or cash.
+Unit1Choice	95fcab82-8696-4195-8d32-436e0645910b	UnitsNumber	Quantity of units.
+Unit1Choice	9e68fec5-b4c6-428c-b733-07867fef6d4d	DigitalTokenUnit	Quantity of digital tokens expressed as a number, for example, a number of blockchain tokens.
+TypeOfPrice46Choice	_JNG9gjhgEeamLZQeccJa7w	Code	Type expressed as a code.
+TypeOfPrice46Choice	_JNG9gzhgEeamLZQeccJa7w	Proprietary	Type expressed as a proprietary code.
+TaxableIncomePerShareCalculated2Choice	_wmTxcThgEeamLZQeccJa7w	Code	Taxable income per share (TIS) calculated expressed as a code.
+TaxableIncomePerShareCalculated2Choice	_wmTxczhgEeamLZQeccJa7w	Proprietary	Taxable income per share calculated (TIS) expressed as a proprietary code.
+ChargeType10Choice	128dd115-fcaf-4228-9621-441a7a659f6e	Code	Fee (charge/commission) expressed as a code.
+ChargeType10Choice	5ae48e39-09ea-4301-b128-bb77923ca924	Proprietary	Fee (charge/commission) expressed as a proprietary code.
+ChargeBasis2Choice	_9tIUYjh5EeaH-93K5JKmzw	Code	Fee (charge/commission) basis expressed as a code.
+ChargeBasis2Choice	_9tIUYzh5EeaH-93K5JKmzw	Proprietary	Fee (charge/commission) basis expressed as a proprietary code.
+WaivingInstruction2Choice	_PL1e8ViPEeaMNZxYNthMeA	Code	Type of discount or waiving expressed as a code.
+WaivingInstruction2Choice	_PL1e81iPEeaMNZxYNthMeA	Proprietary	Type of discount or waiving expressed as a proprietary code.
+TaxType3Choice	_NCW8gjh7EeaH-93K5JKmzw	Code	Type of tax expressed as a code.
+TaxType3Choice	_NCW8gzh7EeaH-93K5JKmzw	Proprietary	Type of tax expressed as a proprietary code.
+TaxBasis1Choice	_kri-kBuIEeOqSdXzJ0oydA	Code	Tax basis expressed as a code.
+TaxBasis1Choice	_rxNZsBuIEeOqSdXzJ0oydA	Proprietary	Tax basis expressed as a proprietary code.
+IdentificationSource6Choice	89198044-a9a9-4533-97f0-a96aa633ec3f	Code	Unique and unambiguous identification source, as assigned via a pre-determined code list.
+IdentificationSource6Choice	3f962c98-e0be-447a-8528-56e8508a79d8	Proprietary	Unique and unambiguous identification source using a proprietary identification scheme.
+OtherAmountType1Choice	_fJLzgI2NEeeNN9vGwZc5aA	Code	Type of amount expressed as a code.
+OtherAmountType1Choice	_i3ZxsI2NEeeNN9vGwZc5aA	ProprietaryCode	Type of amount expressed as a proprietary code.
+Role4Choice	_vrgEwB6YEeOolf0-cMYhrw	Code	Role of the party in the activity expressed as a code.
+Role4Choice	_Io5WcB6ZEeOolf0-cMYhrw	Proprietary	Role of the party in the activity expressed as a proprietary code.
+DateQuarter1Choice	_VvvzMaFTEei_VZq-6SQkuQ	Date	Date as year, month and day.
+DateQuarter1Choice	_ft10AaFTEei_VZq-6SQkuQ	Period	Proprietary description of the timeframe.

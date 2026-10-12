@@ -1,0 +1,27 @@
+codeSet	code	enumName	isoId	text
+SettlementTransactionCondition15Code	ADEA	AcceptAfterRegularSettlementDeadline	_HGNF0fINEfCMaqDZ_tShqQ	Settlement is on a bilaterally accepted transaction that is to be accepted beyond the regular settlement deadline.
+SettlementTransactionCondition15Code	ASGN	Assignement	_HKRtgfINEfCMaqDZ_tShqQ	Transfer of ownership of the asset to another party during the closing of an option.
+SettlementTransactionCondition15Code	BUTC	BuytoCover	_HOTR4fINEfCMaqDZ_tShqQ	Transaction is a buy to cover.
+SettlementTransactionCondition15Code	CLEN	Clean	_HTYmMfINEfCMaqDZ_tShqQ	Tax-exempt financial instruments are to be settled.
+SettlementTransactionCondition15Code	DLWM	DeliveryWithoutMatching	_HXPLcfINEfCMaqDZ_tShqQ	Matching receipt instruction not required (only for concerned international or national central securities depositories).
+SettlementTransactionCondition15Code	DIRT	Dirty	_HcFPMfINEfCMaqDZ_tShqQ	Taxable financial instruments are to be settled.
+SettlementTransactionCondition15Code	DRAW	Drawn	_HgwT0fINEfCMaqDZ_tShqQ	Settlement transactions relates to drawn securities.
+SettlementTransactionCondition15Code	EXER	Exercised	_Hloz0fINEfCMaqDZ_tShqQ	Settlement transaction relates to options, futures or derivatives that are exercised.
+SettlementTransactionCondition15Code	EXPI	Expired	_HqzAofINEfCMaqDZ_tShqQ	Settlement transaction relates to options, futures or derivatives that have expired.
+SettlementTransactionCondition15Code	FRCL	FreeCleanSettlement	_HvIHAfINEfCMaqDZ_tShqQ	Delivery will be made free of payment but a clean payment order will be sent.
+SettlementTransactionCondition15Code	GATE	GatingEventParticipation	_H0KYAfINEfCMaqDZ_tShqQ	Gating event participation. Hold until event start time.
+SettlementTransactionCondition15Code	KNOC	KnockedOut	_JLHj4fINEfCMaqDZ_tShqQ	Settlement transaction relates to options, futures or derivatives that are expired worthless.
+SettlementTransactionCondition15Code	NOMC	NoAutomaticMarketClaim	_JPYY0fINEfCMaqDZ_tShqQ	No market claim should be automatically generated.
+SettlementTransactionCondition15Code	NACT	NotAccountingRelated	_JUQRwfINEfCMaqDZ_tShqQ	Security transaction is not for accounting.
+SettlementTransactionCondition15Code	BPSS	PartialSuccessfulBuyIn	_MKrsUfINEfCMaqDZ_tShqQ	Identification of settlement instructions created as a result of a partial successful buy-in.
+SettlementTransactionCondition15Code	PENS	PendingSale	_MPHgYfINEfCMaqDZ_tShqQ	Position to cover the pending sale will be available by contractual settlement date (accounting information).
+SettlementTransactionCondition15Code	PHYS	Physical	_MTIdsfINEfCMaqDZ_tShqQ	Securities are to be physically settled.
+SettlementTransactionCondition15Code	RHYP	Rehypothecation	_MYZYMfINEfCMaqDZ_tShqQ	Collateral position is available for other purposes (for example, onwards delivery).
+SettlementTransactionCondition15Code	RPTO	Reporting	_Mc3BcfINEfCMaqDZ_tShqQ	Relates to a transaction that is for reporting purposes only.
+SettlementTransactionCondition15Code	RESI	Residual	_MhH2YfINEfCMaqDZ_tShqQ	Relates to transaction on a security that is not eligible at the Central Security Depository (CSD) but for which the payment will be enacted by the central securities depository.
+SettlementTransactionCondition15Code	SHOR	ShortSell	_MlQvgfINEfCMaqDZ_tShqQ	Account is used for short sale orders.
+SettlementTransactionCondition15Code	SPDL	SpecialDelivery	_MpdTAfINEfCMaqDZ_tShqQ	Settlement transactions to be settled with special delivery.
+SettlementTransactionCondition15Code	SPST	SplitSettlement	_NJMjAfINEfCMaqDZ_tShqQ	Money and financial instruments settle in different locations.
+SettlementTransactionCondition15Code	TRAN	Transformation	_NNhpYfINEfCMaqDZ_tShqQ	Transaction resulting from a transformation.
+SettlementTransactionCondition15Code	TRIP	TripartySegregation	_NUcwwfINEfCMaqDZ_tShqQ	Securities are not be delivered but segregated following triparty collateral transaction.
+SettlementTransactionCondition15Code	UNEX	Unexposed	_NdA24fINEfCMaqDZ_tShqQ	Delivery cannot be performed until money is received.

@@ -1,0 +1,67 @@
+{
+  "identifier": "sese.022.002.06",
+  "name": "SecuritiesStatusOrStatementQueryStatusAdvice002V06",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:sese.022.002.06",
+  "bodyTag": "SctiesStsOrStmtQryStsAdvc",
+  "out": "sese022f2",
+  "isoId": "_gBHMozi8Eeydid5dcNPKvg",
+  "definition": "Scope|An account servicer sends a SecuritiesStatusOrStatementQueryStatusAdvice to an account owner to advise the status of a status query or statement query previously sent by the account owner.|The account servicer/owner relationship may be:|- a central securities depository or another settlement market infrastructure acting on behalf of their participants|- an agent (sub-custodian) acting on behalf of their global custodian customer, or|- a custodian acting on behalf of an investment management institution or a broker/dealer.||Usage|The message may also be used to:|- re-send a message previously sent,|- provide a third party with a copy of a message for information,|- re-send to a third party a copy of a message for information using the relevant elements in the Business Application Header.",
+  "blocks": [
+    {
+      "name": "QueryDetails",
+      "isoId": "_gBHMrDi8Eeydid5dcNPKvg",
+      "xmlTag": "QryDtls",
+      "type": "DocumentIdentification55",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountOwner",
+      "isoId": "_gBHMrji8Eeydid5dcNPKvg",
+      "xmlTag": "AcctOwnr",
+      "type": "PartyIdentification156",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SafekeepingAccount",
+      "isoId": "_gBHMsDi8Eeydid5dcNPKvg",
+      "xmlTag": "SfkpgAcct",
+      "type": "SecuritiesAccount30",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "BlockChainAddressOrWallet",
+      "isoId": "_gBHMsji8Eeydid5dcNPKvg",
+      "xmlTag": "BlckChainAdrOrWllt",
+      "type": "BlockChainAddressWallet7",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "StatusOrStatementRequested",
+      "isoId": "_gBHMtDi8Eeydid5dcNPKvg",
+      "xmlTag": "StsOrStmtReqd",
+      "type": "StatusOrStatement12Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ProcessingStatus",
+      "isoId": "_gBHMtji8Eeydid5dcNPKvg",
+      "xmlTag": "PrcgSts",
+      "type": "ProcessingStatus95Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_gBHMuDi8Eeydid5dcNPKvg",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

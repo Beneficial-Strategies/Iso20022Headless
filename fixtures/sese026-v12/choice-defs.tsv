@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+SecuritiesTransactionType46Choice	_Gv1G4dYPEeiHVOfMzoKxnA	Code	Securities transaction type expressed as an ISO 20022 code.
+SecuritiesTransactionType46Choice	_Gv1G6dYPEeiHVOfMzoKxnA	Proprietary	Securities transaction type expressed as a proprietary code.

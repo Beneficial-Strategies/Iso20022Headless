@@ -1,0 +1,26 @@
+codeSet	code	enumName	isoId	text
+AcknowledgementReason9Code	OTHR	Other	_dJBg4ekIEemm4qhb2yFPOw	Other. See Narrative.
+PendingFailingReason1Code	OTHR	Other	_jpvb4ekIEemm4qhb2yFPOw	Other. See Narrative.
+RejectionReason55Code	BENO	BeneficialOwnershipDisagreement	_8E9YIekJEemm4qhb2yFPOw	Disagreement in beneficial ownership.
+RejectionReason55Code	CAEV	CorporateActionRejection	_AXmSAekKEemm4qhb2yFPOw	Corporate action pending on the financial instrument instructed.
+RejectionReason55Code	DQUA	QuantityRejection	_CvfWcekKEemm4qhb2yFPOw	Unrecognised or invalid instructed quantity.
+RejectionReason55Code	OTHR	Other	_T9KjYekKEemm4qhb2yFPOw	Other. See Narrative.
+RejectionReason55Code	PODU	PossibleDuplicate	_P4QuEekLEemm4qhb2yFPOw	Instruction has not been matched. It is a possible duplicate instruction.
+RejectionReason55Code	SAFE	SafekeepingAccountRejection	_V9wFoekLEemm4qhb2yFPOw	Unrecognised or invalid message sender's safekeeping account.
+RejectionReason55Code	SSID	StandingSettlementInstructionRejection	_kHyicekLEemm4qhb2yFPOw	Standing Settlement Instruction is unknown or invalid.
+RejectionReason55Code	DSEC	InvalidSecurity	_FJq80emtEemUgrefIx730g	Unrecognised or invalid financial instrument identification.
+Reporting1Code	STEX	StockExchange	_ZTMAoNp-Ed-ak6NoX_4Aeg_-1707100866	Trade details are to be reported to a stock exchange.
+Reporting1Code	REGU	RegulatoryOrganisation	_ZTMAodp-Ed-ak6NoX_4Aeg_-1707100823	Trade details are to be reported to a regulatory organisation.
+SettlementTransactionCondition3Code	ASGN	Assignement	_ZNYTlNp-Ed-ak6NoX_4Aeg_-905151230	Transfer of ownership of the asset to another party during the closing of an option.
+SettlementTransactionCondition3Code	CLEN	Clean	_ZNYTldp-Ed-ak6NoX_4Aeg_-1788384517	Tax-exempt financial instruments are to be settled.
+SettlementTransactionCondition3Code	DIRT	Dirty	_ZNYTltp-Ed-ak6NoX_4Aeg_-2080342255	Taxable financial instruments are to be settled.
+SettlementTransactionCondition3Code	DLWM	DeliveryWithoutMatching	_ZNYTl9p-Ed-ak6NoX_4Aeg_-1902223583	Matching receipt instruction not required (only for concerned international or national central securities depositories).
+SettlementTransactionCondition3Code	DRAW	Drawn	_ZNYTmNp-Ed-ak6NoX_4Aeg_1331391754	Settlement transactions relates to drawn securities.
+SettlementTransactionCondition3Code	EXER	Exercised	_ZNYTmdp-Ed-ak6NoX_4Aeg_1509510426	Settlement transaction relates to options, futures or derivatives that are exercised.
+SettlementTransactionCondition3Code	FRCL	FreeCleanSettlement	_ZNhdgNp-Ed-ak6NoX_4Aeg_1217552688	Delivery will be made free of payment but a clean payment order will be sent.
+SettlementTransactionCondition3Code	KNOC	KnockedOut	_ZNhdgdp-Ed-ak6NoX_4Aeg_1395671360	Settlement transaction relates to options, futures or derivatives that are expired worthless.
+SettlementTransactionCondition3Code	PHYS	Physical	_ZNhdgtp-Ed-ak6NoX_4Aeg_334319401	Securities are to be physically settled.
+SettlementTransactionCondition3Code	RESI	Residual	_ZNhdg9p-Ed-ak6NoX_4Aeg_512438073	Relates to transaction on a security that is not eligible at the Central Security Depository (CSD) but for which the payment will be enacted by the central securities depository.
+SettlementTransactionCondition3Code	SPDL	SpecialDelivery	_ZNhdhNp-Ed-ak6NoX_4Aeg_-662752952	Settlement transactions to be settled with special delivery.
+SettlementTransactionCondition3Code	SPST	SplitSettlement	_ZNhdhdp-Ed-ak6NoX_4Aeg_-484634280	Money and financial instruments settle in different locations.
+SettlementTransactionCondition3Code	UNEX	Unexposed	_ZNhdhtp-Ed-ak6NoX_4Aeg_-2125897437	Delivery cannot be performed until money is received.

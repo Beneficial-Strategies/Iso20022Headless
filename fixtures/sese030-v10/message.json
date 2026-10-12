@@ -1,0 +1,59 @@
+{
+  "identifier": "sese.030.001.10",
+  "name": "SecuritiesSettlementConditionsModificationRequestV10",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:sese.030.001.10",
+  "bodyTag": "SctiesSttlmCondsModReq",
+  "out": "sese030",
+  "isoId": "_TuNWsYYdEe-Pv9KR9bv9IA",
+  "definition": "Scope|An account owner sends a SecuritiesSettlementConditionsModificationRequest to an account servicer to request the modification of a processing indicator or another non-matching information.||The account owner/servicer relationship may be:|- a central securities depository participant which has an account with a central securities depository.|It could also be, if agreed in a service level agreement:|- a global custodian which has an account with its local agent (sub-custodian), or|- an investment management institution which manage a fund account opened at a custodian, or|- a broker which has an account with a custodian, or|- a central securities depository which has an account with a custodian, another central securities depository or another settlement market infrastructure.||Usage|The message may also be used to:|- re-send a message previously sent,|- provide a third party with a copy of a message for information,|- re-send to a third party a copy of a message for information using the relevant elements in the Business Application Header.||In markets where this applies (for example, securities market infrastructures with no pre-settlement matching process), it is used by a party to approve, cancel or reject a transaction instructed by the counterparty.||This message cannot be used to request the modification of trade or event details.|The use of AdditionalInformation and its fields must be pre-agreed between account servicer and account owner. The fields in that sequence cannot be used to amend a trade or event detail unless authorised by country market practice.",
+  "blocks": [
+    {
+      "name": "AccountOwner",
+      "isoId": "_TuNWv4YdEe-Pv9KR9bv9IA",
+      "xmlTag": "AcctOwnr",
+      "type": "PartyIdentification144",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SafekeepingAccount",
+      "isoId": "_TuNWwYYdEe-Pv9KR9bv9IA",
+      "xmlTag": "SfkpgAcct",
+      "type": "SecuritiesAccount19",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "BlockChainAddressOrWallet",
+      "isoId": "_TuNWw4YdEe-Pv9KR9bv9IA",
+      "xmlTag": "BlckChainAdrOrWllt",
+      "type": "BlockChainAddressWallet3",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "RequestDetails",
+      "isoId": "_TuNWxYYdEe-Pv9KR9bv9IA",
+      "xmlTag": "ReqDtls",
+      "type": "RequestDetails31",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "AdditionalInformation",
+      "isoId": "_TuNWx4YdEe-Pv9KR9bv9IA",
+      "xmlTag": "AddtlInf",
+      "type": "AdditionalInformation26",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_TuNWyYYdEe-Pv9KR9bv9IA",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

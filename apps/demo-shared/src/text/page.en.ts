@@ -151,6 +151,8 @@ export const pageEn: PageMessages = {
   areaDesc_semt: 'Messages that support post-settlement processes for securities (including reporting on securities movements, trades and balances), the processes required to protect beneficial owner\'s rights throughout settlement, plus any exceptions and investigations related to securities transactions.',
   areaName_seev: 'Securities Events',
   areaDesc_seev: 'Messages that support asset servicing, including proxy voting, income and corporate actions.',
+  areaName_sese: "Securities Settlement",
+  areaDesc_sese: "Messages that support the settlement process for securities and report its status and confirmation.",
   xsdLabel: 'XSD Validate',
   xsdReady: 'Validate the text of the message below using {location}',
   xsdReadyFile: 'Validate the text of the message below using {file} (loaded from your computer)',

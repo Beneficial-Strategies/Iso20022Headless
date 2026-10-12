@@ -1,0 +1,6 @@
+choice	memberId	memberName	text
+FinancialInstrument103Choice	93c88c7f-3a87-478e-9f5a-f9a87587a4c3	Security	Identification of the security.
+FinancialInstrument103Choice	9ee32154-c997-4e83-b09c-9f4b20a085fe	CashAsset	Identification of the cash asset.
+FinancialInstrument103Choice	204caace-b233-43a2-ba7a-4cd4c70ea350	OtherAsset	Identification of another kind of asset in the holding that is not a security or cash.
+TransferType2Choice	_3m40Q6xWEemRcYBAkJyjkg	Code	Transfer type expressed as a code.
+TransferType2Choice	_3m40RaxWEemRcYBAkJyjkg	Proprietary	Transfer type expressed as a proprietary code.

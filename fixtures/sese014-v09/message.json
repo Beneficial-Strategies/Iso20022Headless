@@ -1,0 +1,67 @@
+{
+  "identifier": "sese.014.001.09",
+  "name": "PortfolioTransferCancellationRequestV09",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:sese.014.001.09",
+  "bodyTag": "PrtflTrfCxlReq",
+  "out": "sese014",
+  "isoId": "_OSc-8XhFEeij0vbhRaNJcw",
+  "definition": "Scope|The PortfolioTransferCancellationRequest message is sent by, for example, an investment manager or its authorised representative, to the executing party, for example, a transfer agent, to request the cancellation of a previously sent PortfolioTransferInstruction message.|Usage|The PortfolioTransferCancellationRequest message is used to request the cancellation of a portfolio transfer instruction.|There is no amendment, but a cancellation and re-instruct policy.|To request the cancellation of a portfolio transfer instruction, the transfer reference of the portfolio transfer, as specified in the original PortfolioTransferInstruction message, is specified in the transfer reference element.|The message identification of the original PortfolioTransferInstruction message may also be quoted in PreviousReference but this is not recommended.|The deadline and acceptance of a cancellation request is subject to a service level agreement (SLA). This cancellation message is a cancellation request. There is no automatic acceptance of the cancellation.|The rejection or acceptance of a PortfolioTransferCancellationRequest is made using an TransferCancellationStatusReport message.",
+  "blocks": [
+    {
+      "name": "MessageReference",
+      "isoId": "_OSc-83hFEeij0vbhRaNJcw",
+      "xmlTag": "MsgRef",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "PoolReference",
+      "isoId": "_OSc-9XhFEeij0vbhRaNJcw",
+      "xmlTag": "PoolRef",
+      "type": "AdditionalReference11",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "PreviousReference",
+      "isoId": "_OSc-93hFEeij0vbhRaNJcw",
+      "xmlTag": "PrvsRef",
+      "type": "AdditionalReference10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "RelatedReference",
+      "isoId": "_OSc--XhFEeij0vbhRaNJcw",
+      "xmlTag": "RltdRef",
+      "type": "AdditionalReference10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "MasterReference",
+      "isoId": "_OSc--3hFEeij0vbhRaNJcw",
+      "xmlTag": "MstrRef",
+      "type": "Max35Text",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "TransferReferences",
+      "isoId": "_OSc-_XhFEeij0vbhRaNJcw",
+      "xmlTag": "TrfRefs",
+      "type": "TransferReference14",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "MarketPracticeVersion",
+      "isoId": "_OSc-_3hFEeij0vbhRaNJcw",
+      "xmlTag": "MktPrctcVrsn",
+      "type": "MarketPracticeVersion1",
+      "min": 0,
+      "max": 1
+    }
+  ]
+}

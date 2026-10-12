@@ -1,0 +1,3 @@
+choice	memberId	memberName	text
+SettlementTransactionCondition36Choice	_lfXiISAaEeu4a6pNulzZ4Q	Code	Settlement conditions expressed as an ISO 20022 code.
+SettlementTransactionCondition36Choice	_lfXiKSAaEeu4a6pNulzZ4Q	Proprietary	Settlement conditions expressed as a proprietary code.

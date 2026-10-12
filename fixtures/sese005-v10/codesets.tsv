@@ -1,0 +1,4 @@
+codeSetName	isoId	restrictionOf	code	enumName
+SettlementDate1Code	_ZK_t9tp-Ed-ak6NoX_4Aeg_581713028	SettlementDateV2Code	ASAP	AsSoonAsPossible
+SettlementDate1Code	_ZK_t9tp-Ed-ak6NoX_4Aeg_581713028	SettlementDateV2Code	ENDC	AtEndOfContract
+SettlementDate1Code	_ZK_t9tp-Ed-ak6NoX_4Aeg_581713028	SettlementDateV2Code	WHIF	WhenAndIfIssued

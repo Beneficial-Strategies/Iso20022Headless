@@ -1,0 +1,197 @@
+codeSet	code	enumName	isoId	text
+RejectionReason70Code	SAFE	SafekeepingAccountRejection	_BwVtkStaEeyF-PUIGuhxvA	Unrecognised or invalid message sender's safekeeping account.
+RejectionReason70Code	DQUA	QuantityRejection	_BwVtkytaEeyF-PUIGuhxvA	Unrecognised or invalid instructed quantity.
+RejectionReason70Code	ADEA	AccountServicerDeadlineMissed	_BwVtlStaEeyF-PUIGuhxvA	Transaction/instruction received after the account servicer's specified deadline.
+RejectionReason70Code	DSEC	InvalidSecurity	_BwVtlytaEeyF-PUIGuhxvA	Unrecognised or invalid financial instrument identification.
+RejectionReason70Code	LATE	MarketDeadlineMissed	_BwVtmStaEeyF-PUIGuhxvA	Received after market deadline.
+RejectionReason70Code	CASH	CashAccount	_BwVtmytaEeyF-PUIGuhxvA	Unrecognised or invalid cash account.
+RejectionReason70Code	DDEA	DealPrice	_BwVtnStaEeyF-PUIGuhxvA	Unrecognised or invalid deal price.
+RejectionReason70Code	DTRD	TradeDate	_BwVtnytaEeyF-PUIGuhxvA	Unrecognised or invalid trade date or requested trade date or future trade date.
+RejectionReason70Code	PLCE	PlaceOfTrade	_BwVtoStaEeyF-PUIGuhxvA	Unrecognised or invalid place of trade.
+RejectionReason70Code	RTGS	ImpossibleToUseTheRTGSSystemInstructed	_BwVtoytaEeyF-PUIGuhxvA	Not possible to use the RTGS system instructed (NRTG or YRTG).
+RejectionReason70Code	NCRR	SettlementAmountCurrencyRejection	_BwVtpStaEeyF-PUIGuhxvA	Unrecognised or invalid settlement amount currency.
+RejectionReason70Code	PHYS	PhysicalSettlementImpossible	_BwVtpytaEeyF-PUIGuhxvA	Physical settlement is impossible for the instructed financial instrument.
+RejectionReason70Code	REFE	ReferenceRejection	_BwVtqStaEeyF-PUIGuhxvA	Instruction has a reference identical to another previously received instruction.
+RejectionReason70Code	DMON	SettlementAmountRejection	_BwVtqytaEeyF-PUIGuhxvA	Unrecognised or invalid settlement amount.
+RejectionReason70Code	MINO	MinimumSettlementQuantity	_BwVtrStaEeyF-PUIGuhxvA	Quantity instructed is lower than the minimum existing settlement quantity for the financial instrument.
+RejectionReason70Code	BATC	ProcessingBatchRejection	_BwVtrytaEeyF-PUIGuhxvA	Unrecognised or invalid processing batch, that is, daytime/real-time while only possible to settle in overnight batch.
+RejectionReason70Code	MUNO	MultipleSettlementQuantity	_BwVtsStaEeyF-PUIGuhxvA	Quantity instructed is not a multiple of an existing settlement quantity lot for the financial instrument.
+RejectionReason70Code	TXST	TaxStatusRejection	_BwVtsytaEeyF-PUIGuhxvA	Unrecognised or invalid tax status of the securities instructed.
+RejectionReason70Code	SETS	SettlementSystemMethodRejection	_BwVttStaEeyF-PUIGuhxvA	Unrecognised or invalid settlement system/method instructed.
+RejectionReason70Code	IIND	CommonReferenceRejection	_BwVttytaEeyF-PUIGuhxvA	Unrecognised, invalid or missing common reference.
+RejectionReason70Code	CAEV	CorporateActionRejection	_BwVtuStaEeyF-PUIGuhxvA	Corporate action pending on the financial instrument instructed.
+RejectionReason70Code	CASY	ImpossibleCashSettlementSystem	_BwVtuytaEeyF-PUIGuhxvA	Impossible standing arrangements override instruction for the cash settlement system.
+RejectionReason70Code	DDAT	SettlementDateRejection	_BwVtvStaEeyF-PUIGuhxvA	Unrecognised or invalid settlement date.
+RejectionReason70Code	SETR	SettlementTransactionRejection	_BwVtvytaEeyF-PUIGuhxvA	Unrecognised or invalid settlement transaction type.
+RejectionReason70Code	SDUT	LackOfStampDuty	_BwVtwStaEeyF-PUIGuhxvA	Required stamp duty information is missing.
+RejectionReason70Code	CADE	TransactionCallDelay	_BwVtwytaEeyF-PUIGuhxvA	Unrecognised or invalid transaction call delay.
+RejectionReason70Code	FORF	ForfeitAmount	_BwVtxStaEeyF-PUIGuhxvA	Unrecognised or invalid forfeit amount.
+RejectionReason70Code	TERM	ClosingDateTimeRejection	_BwVtxytaEeyF-PUIGuhxvA	Unrecognised or invalid closing date/time.
+RejectionReason70Code	VASU	VariableRateSupportRejection	_BwVtyStaEeyF-PUIGuhxvA	Unrecognised or invalid variable rate support (repurchase agreement).
+RejectionReason70Code	REPA	TerminationTransactionAmount	_BwVtyytaEeyF-PUIGuhxvA	Unrecognised or invalid termination transaction amount.
+RejectionReason70Code	REPO	RepurchaseRate	_BwVtzStaEeyF-PUIGuhxvA	Unrecognised or invalid repurchase rate.
+RejectionReason70Code	REPP	PremiumAmount	_BwVtzytaEeyF-PUIGuhxvA	Unrecognised or invalid premium amount.
+RejectionReason70Code	RERT	RepurchaseRateType	_BwVt0StaEeyF-PUIGuhxvA	Unrecognised or invalid repurchase rate type.
+RejectionReason70Code	RSPR	SpreadRate	_BwVt0ytaEeyF-PUIGuhxvA	Unrecognised or invalid spread rate.
+RejectionReason70Code	ICAG	ReceivingDeliveringParty1	_BwVt1StaEeyF-PUIGuhxvA	Unrecognised or invalid participant of delivering or receiving depository.
+RejectionReason70Code	INPS	PlaceOfSafekeeping	_BwVt1ytaEeyF-PUIGuhxvA	Unrecognised, invalid or missing place of safekeeping.
+RejectionReason70Code	ICUS	ReceivingDeliveringParty2	_BwVt2StaEeyF-PUIGuhxvA	Unrecognised or invalid client of delivering or receiving party 1.
+RejectionReason70Code	DEPT	ReceivingDeliveringDepository	_BwVt2ytaEeyF-PUIGuhxvA	Unrecognised or invalid depository.
+RejectionReason70Code	OTHR	Other	_BwVt3StaEeyF-PUIGuhxvA	Other. See Narrative.
+RejectionReason70Code	IEXE	ReceivingDeliveringParty3	_BwVt3ytaEeyF-PUIGuhxvA	Unrecognised or invalid client of delivering or receiving party 2.
+RejectionReason70Code	INVE	InvalidInvestorParty	_BwVt4StaEeyF-PUIGuhxvA	Unrecognised or invalid investor party. May be used by an executing party to reject an instruction for an investor (or portfolio) for which it is not authorised to act.
+RejectionReason70Code	PLIS	PlaceOfListing	_BwVt4ytaEeyF-PUIGuhxvA	Unrecognised or invalid place of listing. Used when the security identified is not listed on the market supplied.
+RepairReason5Code	BATC	ProcessingBatch	_ZudAUNp-Ed-ak6NoX_4Aeg_-1531069380	Unrecognised or invalid processing batch, that is, daytime/real-time while only possible to settle in overnight batch.
+RepairReason5Code	CAEV	CorporateAction	_ZudAUdp-Ed-ak6NoX_4Aeg_121558128	Corporate action pending on the financial instrument instructed.
+RepairReason5Code	CASH	CashAccount	_ZudAUtp-Ed-ak6NoX_4Aeg_-170399610	Unrecognised or invalid cash account.
+RepairReason5Code	CASY	ImpossibleCashSettlementSystem	_ZudAU9p-Ed-ak6NoX_4Aeg_7719062	Impossible standing arrangements override instruction for the cash settlement system.
+RepairReason5Code	DDAT	SettlementDate	_ZudAVNp-Ed-ak6NoX_4Aeg_1766825563	Unrecognised or invalid settlement date.
+RepairReason5Code	DDEA	DealPrice	_ZudAVdp-Ed-ak6NoX_4Aeg_-875514225	Unrecognised or invalid deal price.
+RepairReason5Code	DMON	SettlementAmount	_ZudAVtp-Ed-ak6NoX_4Aeg_-1167471963	Unrecognised or invalid settlement amount.
+RepairReason5Code	DQUA	Quantity	_ZudAV9p-Ed-ak6NoX_4Aeg_-989353291	Unrecognised or invalid settlement quantity.
+RepairReason5Code	DSEC	Security	_ZudAWNp-Ed-ak6NoX_4Aeg_769753210	Unrecognised or invalid financial instrument identification.
+RepairReason5Code	DTRD	TradeDate	_ZudAWdp-Ed-ak6NoX_4Aeg_-1872586578	Unrecognised or invalid trade date.
+RepairReason5Code	IIND	CommonReference	_ZumxUNp-Ed-ak6NoX_4Aeg_2130422980	Unrecognised, invalid or missing common reference.
+RepairReason5Code	MINO	MinimumSettlementQuantity	_ZumxUdp-Ed-ak6NoX_4Aeg_-1986425644	Quantity instructed is lower than the minimum existing settlement quantity for the financial instrument.
+RepairReason5Code	MUNO	MultipleSettlementQuantity	_ZumxUtp-Ed-ak6NoX_4Aeg_-227319143	Quantity instructed is not a multiple of an existing settlement quantity lot for the financial instrument.
+RepairReason5Code	NCRR	SettlementAmountCurrency	_ZumxU9p-Ed-ak6NoX_4Aeg_1425308365	Unrecognised or invalid settlement amount currency.
+RepairReason5Code	PHYS	PhysicalSettlementImpossible	_ZumxVNp-Ed-ak6NoX_4Aeg_1133350627	Physical settlement is impossible for the instructed financial instrument.
+RepairReason5Code	PLCE	PlaceOfTrade	_ZumxVdp-Ed-ak6NoX_4Aeg_1311469299	Unrecognised or invalid place of trade.
+RepairReason5Code	REFE	Reference	_ZumxVtp-Ed-ak6NoX_4Aeg_-1224391496	Instruction has a reference identical to another previously received instruction.
+RepairReason5Code	RTGS	ImpossibleToUseTheRTGSSystemInstructed	_ZumxV9p-Ed-ak6NoX_4Aeg_428236012	Impossible to use the RTGS system instructed (NRTG or YRTG).
+RepairReason5Code	SAFE	SafekeepingAccount	_ZumxWNp-Ed-ak6NoX_4Aeg_136278274	Unrecognised or invalid message sender's safekeeping account.
+RepairReason5Code	SETR	SettlementTransaction	_ZumxWdp-Ed-ak6NoX_4Aeg_314396946	Unrecognised or invalid settlement transaction type.
+RepairReason5Code	SETS	SettlementSystemMethod	_ZumxWtp-Ed-ak6NoX_4Aeg_2073503447	Unrecognised or invalid settlement system/method instructed.
+RepairReason5Code	TXST	TaxStatus	_ZuwiUNp-Ed-ak6NoX_4Aeg_-568836341	Unrecognised or invalid tax status of the securities instructed.
+RepairReason5Code	INPS	PlaceOfSafekeeping	_ZuwiUdp-Ed-ak6NoX_4Aeg_-860794079	Unrecognised, invalid or missing Place of Safekeeping.
+RepairReason5Code	SDUT	StampDuty	_ZuwiUtp-Ed-ak6NoX_4Aeg_-682675407	Required stamp duty information is missing.
+RepairReason5Code	OTHR	Other	_ZuwiU9p-Ed-ak6NoX_4Aeg_1076431094	Other. See Narrative.
+RepairReason5Code	IEXE	ReceivingDeliveringParty3	_ZuwiVNp-Ed-ak6NoX_4Aeg_-1679747760	Client of delivering or receiving party 2 mismatch.
+RepairReason5Code	ICAG	ReceivingDeliveringParty1	_ZuwiVdp-Ed-ak6NoX_4Aeg_1440028511	Participant of delivering or receiving depository mismatch.
+RepairReason5Code	DEPT	ReceivingDeliveringDepository	_ZuwiVtp-Ed-ak6NoX_4Aeg_734913896	Depository mismatch.
+RepairReason5Code	ICUS	ReceivingDeliveringParty2	_ZuwiV9p-Ed-ak6NoX_4Aeg_-1914785965	Client of delivering or receiving party 1 mismatch.
+RepairReason5Code	REPA	TerminationTransactionAmount	_ZuwiWNp-Ed-ak6NoX_4Aeg_851101673	Unrecognised or invalid termination transaction amount.
+RepairReason5Code	CADE	TransactionCallDelay	_ZuwiWdp-Ed-ak6NoX_4Aeg_737262607	Unrecognised or invalid transaction call delay.
+RepairReason5Code	RERT	RepurchaseRateType	_Zu5sQNp-Ed-ak6NoX_4Aeg_-145970680	Unrecognised or invalid repurchase rate type.
+RepairReason5Code	RSPR	SpreadRate	_Zu5sQdp-Ed-ak6NoX_4Aeg_-259809746	Unrecognised or invalid spread rate.
+RepairReason5Code	VASU	VariableRateSupport	_Zu5sQtp-Ed-ak6NoX_4Aeg_-1143043033	Unrecognised or invalid variable rate support (repurchase agreement).
+RepairReason5Code	REPO	RepurchaseRate	_Zu5sQ9p-Ed-ak6NoX_4Aeg_-1256882099	Unrecognised or invalid repurchase rate.
+RepairReason5Code	REPP	PremiumAmount	_Zu5sRNp-Ed-ak6NoX_4Aeg_-2140115386	Unrecognised or invalid premium amount.
+RepairReason5Code	TERM	ClosingDateTime	_Zu5sRdp-Ed-ak6NoX_4Aeg_2041012844	Unrecognised or invalid closing date/time.
+RepairReason5Code	FORF	ForfeitAmount	_Zu5sRtp-Ed-ak6NoX_4Aeg_1157779557	Unrecognised or invalid forfeit amount.
+CancelledStatusReason9Code	CANI	CancelledByYourself	_a1PCMdp-Ed-ak6NoX_4Aeg_-1509031315	Transaction is cancelled by yourself.
+CancelledStatusReason9Code	CANS	CancelledBySystem	_a1PCMtp-Ed-ak6NoX_4Aeg_1407253038	Transaction is cancelled by the system.
+CancelledStatusReason9Code	CSUB	CancelledByAgent	_a1PCM9p-Ed-ak6NoX_4Aeg_1732370545	Instruction has been cancelled by the agent due to an event deadline extension.
+CancelledStatusReason9Code	CXLR	EndOfLife	_a1PCNNp-Ed-ak6NoX_4Aeg_-277586313	Transaction is rejected by the executing party, the rejection is final therefore the order is cancelled in the system.
+CancelledStatusReason9Code	CANT	CancelledDueToTransformation	_a1PCNdp-Ed-ak6NoX_4Aeg_-1589278862	Original transaction has been cancelled and replaced due to a corporate action.
+CancelledStatusReason9Code	CANZ	CancelledSplitPartialSettlement	_a1PCNtp-Ed-ak6NoX_4Aeg_450686600	Original transaction has been cancelled and replaced to allow a partial or split settlement.
+CancelledStatusReason9Code	CORP	CancelledDueToCorporateAction	_a1PCN9p-Ed-ak6NoX_4Aeg_-1241493597	Transaction has been cancelled due to a corporate action.
+CancelledStatusReason9Code	SCEX	SecuritiesNoLongerEligible	_a1PCONp-Ed-ak6NoX_4Aeg_736361235	Transaction has been cancelled; the security no longer exists or is no longer eligible on the market instructed. For corporate action related cancellation, CORP should be used.
+CancelledStatusReason9Code	OTHR	Other	_a1PCOdp-Ed-ak6NoX_4Aeg_1658524545	Other. See Narrative.
+UnmatchedReason13Code	ADEA	AccountServicerDeadlineMissed	_dX9ZkmXjEeWsrOWU209RUg	Received after the account servicer's deadline. Processed on best effort basis.
+UnmatchedReason13Code	ACRU	AccruedInterestAmount1	_ddeLsWXjEeWsrOWU209RUg	Accrued interest amount does not match.
+UnmatchedReason13Code	TERM	ClosingDateTime	_fqp08WXjEeWsrOWU209RUg	Closing date/time does not match.
+UnmatchedReason13Code	IIND	CommonReference	_gEi7oWXjEeWsrOWU209RUg	Common reference does not match.
+UnmatchedReason13Code	CPCA	CounterpartyCancelled	_gTuAEWXjEeWsrOWU209RUg	Counterparty cancelled their instruction.
+UnmatchedReason13Code	CLAT	CounterpartyTooLateForMatching	_g6sggWXjEeWsrOWU209RUg	Counterparty's instruction was too late for matching.
+UnmatchedReason13Code	NCRR	CurrencySettlementAmount	_hIPNQWXjEeWsrOWU209RUg	Settlement amount currency does not match.
+UnmatchedReason13Code	DDEA	DealPrice	_hhrA8WXjEeWsrOWU209RUg	Deal price does not match.
+UnmatchedReason13Code	DSEC	FinancialInstrument	_kJWN0mXjEeWsrOWU209RUg	Financial instrument identification does not match, for example, ISIN, financial instrument attributes differs.
+UnmatchedReason13Code	DQUA	FinancialInstrumentQuantity	_kSkbQWXjEeWsrOWU209RUg	Quantity of financial instruments does not match.
+UnmatchedReason13Code	FORF	ForfeitRepurchaseAmount	_k4Dt8WXjEeWsrOWU209RUg	Forfeit amount does not match.
+UnmatchedReason13Code	INVE	InvestorParty	_lS_WcWXjEeWsrOWU209RUg	Investor party does not match.
+UnmatchedReason13Code	LEOG	LetterOfGuarantee	_oSwTMWXjEeWsrOWU209RUg	Counterparty is for settlement through letter of guarantee, your instruction is not, or vice versa.
+UnmatchedReason13Code	LATE	MarketDeadlineMissed	_okwpMWXjEeWsrOWU209RUg	Your instruction was too late for matching.
+UnmatchedReason13Code	CMIS	NoMatch	_o0OokWXjEeWsrOWU209RUg	A matching instruction from your counterparty could not be found.
+UnmatchedReason13Code	NMAS	NoMatchingStarted	_pDGyEWXjEeWsrOWU209RUg	Matching process has not yet started.
+UnmatchedReason13Code	DTRA	NotRecognised	_pRiPoWXjEeWsrOWU209RUg	Counterparty has been contacted or contacted us, and does not recognise the transaction.
+UnmatchedReason13Code	OTHR	Other	_rdZDMmXjEeWsrOWU209RUg	Proprietary unmatched reason code described in a narrative field.
+UnmatchedReason13Code	FRAP	PaymentCode	_r0JWUWXjEeWsrOWU209RUg	Payment type does not match: your instruction is free of payment, your counterparty's instruction is against payment or vice versa.
+UnmatchedReason13Code	PHYS	PhysicalSettlement	_sCR48WXjEeWsrOWU209RUg	Counterparty's instruction is physical settlement, your instruction is not, or vice versa.
+UnmatchedReason13Code	PLIS	PlaceOfListing	_sWEXoWXjEeWsrOWU209RUg	Place of listing does not match.
+UnmatchedReason13Code	INPS	PlaceOfSafekeeping	_sk8hIWXjEeWsrOWU209RUg	Place of safekeeping information does not allow matching to take place.
+UnmatchedReason13Code	PLCE	PlaceOfTrade	_s_uYoWXjEeWsrOWU209RUg	Place of trade does not match.
+UnmatchedReason13Code	PODU	PossibleDuplicate	_thWfAWXjEeWsrOWU209RUg	Instruction has not been matched. It is a possible duplicate instruction.
+UnmatchedReason13Code	DEPT	ReceivingDeliveringDepository	_tvoLkWXjEeWsrOWU209RUg	Depository does not match.
+UnmatchedReason13Code	ICAG	ReceivingDeliveringParty1	_t1lCkWXjEeWsrOWU209RUg	Participant of delivering or receiving depository does not match.
+UnmatchedReason13Code	ICUS	ReceivingDeliveringParty2	_xHp3UWXjEeWsrOWU209RUg	Client of delivering or receiving party 1 does not match.
+UnmatchedReason13Code	IEXE	ReceivingDeliveringParty3	_xMQqgWXjEeWsrOWU209RUg	Client of delivering or receiving party 2 does not match.
+UnmatchedReason13Code	REGD	RegistrationDetails	_xRK_sWXjEeWsrOWU209RUg	Registration details linked to the transaction are incorrect.
+UnmatchedReason13Code	REPA	RepurchaseAmount	_xWFU4WXjEeWsrOWU209RUg	Termination transaction amount does not match.
+UnmatchedReason13Code	CADE	RepurchaseCallDelay	_xej7cWXjEeWsrOWU209RUg	Transaction call delay does not match.
+UnmatchedReason13Code	REPP	RepurchasePremiumAmount	_xuLr0WXjEeWsrOWU209RUg	Premium amount does not match.
+UnmatchedReason13Code	REPO	RepurchaseRate	_yEDOIWXjEeWsrOWU209RUg	Repurchase rate does not match.
+UnmatchedReason13Code	RERT	RepurchaseRateType	_yOKzcWXjEeWsrOWU209RUg	Repurchase rate type does not match.
+UnmatchedReason13Code	RTGS	RTGSSystem	_ynKiQWXjEeWsrOWU209RUg	Counterparty is for Real Time Gross Settlement (RTGS) system, you are for non-RTGS or vice versa.
+UnmatchedReason13Code	SAFE	SafekeepingAccount	_yzqGIWXjEeWsrOWU209RUg	Safekeeping account used as matching criteria on the market concerned does not match. This includes Buyer/seller's account, direct client's account at the receiving/delivering agent, or receiving/delivering agent's account at the CSD.
+UnmatchedReason13Code	DMON	SettlementAmount	_1iK60WXjEeWsrOWU209RUg	Settlement amount does not match.
+UnmatchedReason13Code	DDAT	SettlementDate	_1zuk4WXjEeWsrOWU209RUg	Settlement date/time does not match.
+UnmatchedReason13Code	SETS	SettlementSystemMethod	_2UAncWXjEeWsrOWU209RUg	Settlement system/method does not match (for example, instruction is to settle using settlement system/method A. Counterparty expects settlement to occur using settlement system/method B).
+UnmatchedReason13Code	SETR	SettlementTransaction	_2o_Y8WXjEeWsrOWU209RUg	Settlement transaction type does not match (relates to the settlement transaction type codes available for field: 22F:: SETR.).
+UnmatchedReason13Code	TXST	TaxStatus	_2-RFYWXjEeWsrOWU209RUg	Disagreement on the tax status of the financial instruments to be settled.
+UnmatchedReason13Code	DTRD	TradeDate	_3JRbgWXjEeWsrOWU209RUg	Trade date does not match.
+UnmatchedReason13Code	DELN	TransactionDirection	_6t8cIWXjEeWsrOWU209RUg	Direction of the trade does not match. Counterparty expects a delivery from you, not a receipt or vice versa.
+UnmatchedReason13Code	VASU	VariableRateSupport	_7DNhgWXjEeWsrOWU209RUg	Variable rate support does not match (repo).
+UnmatchedReason13Code	DMCT	AutomaticGeneration	_A0LakWXkEeWsrOWU209RUg	Disagreement on automatic generation of market claim or transformation.
+UnmatchedReason13Code	DCMX	CumEx	_A7duUWXkEeWsrOWU209RUg	Disagreement if trade was executed cum or ex.
+PendingReason1Code	AWMO	AwaitingMoney	_aAyGddp-Ed-ak6NoX_4Aeg_1284091735	Financial instruments are delivered, but still awaiting money from counterparty.
+PendingReason1Code	ADEA	AccountServicerDeadlineMissed	_aAyGdtp-Ed-ak6NoX_4Aeg_992133997	Instruction was received after the account servicer's deadline. Processed on best effort basis.
+PendingReason1Code	CAIS	AwaitingSecurities	_aAyGd9p-Ed-ak6NoX_4Aeg_1170252669	Awaiting financial instruments from a corporate action or other procedure, for example, conversion, dematerialisation, exchange, registration, stamping, splitting.
+PendingReason1Code	REFU	InstructionRefusedOrNotRecognised	_aAyGeNp-Ed-ak6NoX_4Aeg_-1365608126	Instruction has been refused or not recognised and is represented automatically.
+PendingReason1Code	AWSH	AwaitingSecuritiesFromCounterparty	_aAyGedp-Ed-ak6NoX_4Aeg_287019382	Financial instruments have not yet been received from the counterparty (if receive against payment trade), the money has been delivered.
+PendingReason1Code	PHSE	PhysicalDeliveryDelay	_aA73cNp-Ed-ak6NoX_4Aeg_-4938356	Settlement is physical. Financial instruments are being delivered.
+PendingReason1Code	TAMM	TradeAmendedInMarket	_aA73cdp-Ed-ak6NoX_4Aeg_173180316	Trade is being amended in the market.
+PendingReason1Code	DOCY	AwaitingDocumentsOrEndorsementsFromYou	_aA73ctp-Ed-ak6NoX_4Aeg_1932286817	Awaiting documents or endorsements from you.
+PendingReason1Code	DOCC	AwaitingDocumentsOrEndorsementsFromCounterparty	_aA73c9p-Ed-ak6NoX_4Aeg_-710052971	Awaiting documents or endorsements from counterparty.
+PendingReason1Code	BLOC	AccountBlocked	_aA73dNp-Ed-ak6NoX_4Aeg_-1002010709	Your account is blocked, no instruction can settle over the account.
+PendingReason1Code	CHAS	EnquirySent	_aA73ddp-Ed-ak6NoX_4Aeg_-823892037	A chaser/enquiry has been sent.
+PendingReason1Code	NEWI	NewIssues	_aA73dtp-Ed-ak6NoX_4Aeg_935214464	Financial instrument is a new issue and not yet available/tradable.
+PendingReason1Code	CLAC	CounterpartyInsufficientSecurities	_aA73d9p-Ed-ak6NoX_4Aeg_-1707125324	Insufficient deliverable financial instruments in counterparty's account or counterparty does not hold financial instruments.
+PendingReason1Code	MUNO	MultipleSettlementAmount	_aA73eNp-Ed-ak6NoX_4Aeg_-1999083062	Quantity instructed is not a multiple of an existing settlement quantity lot for the financial instrument.
+PendingReason1Code	GLOB	GlobalFormSecurities	_aA73edp-Ed-ak6NoX_4Aeg_-1820964390	Settlement cannot be executed; financial instruments are in global form.
+PendingReason1Code	PREA	YourInstructionOnHold	_aBFBYNp-Ed-ak6NoX_4Aeg_-61857889	Your instruction is a preadvice, that is, for matching only.
+PendingReason1Code	PART	TradeSettlesInPartials	_aBFBYdp-Ed-ak6NoX_4Aeg_1298811881	Trade will settle in partials.
+PendingReason1Code	NMAS	NoMatchingRequired	_aBFBYtp-Ed-ak6NoX_4Aeg_1476930553	Instruction has not been matched; matching process is not required.
+PendingReason1Code	NOFX	NoForeignExchangeInstruction	_aBFBY9p-Ed-ak6NoX_4Aeg_-1058930242	A foreign exchange instruction from you is missing.
+PendingReason1Code	CMON	CounterpartyInsufficientMoney	_aBFBZNp-Ed-ak6NoX_4Aeg_593697266	Insufficient money in counterparty's account.
+PendingReason1Code	YCOL	CollateralShortage	_aBFBZdp-Ed-ak6NoX_4Aeg_301739528	Insufficient collateral in your account to execute the instruction.
+PendingReason1Code	COLL	SecuritiesPledgedAsCollateral	_aBFBZtp-Ed-ak6NoX_4Aeg_479858200	Financial instruments are not deliverable as they are pledged as collateral.
+PendingReason1Code	DEPO	RefusedDepositForIssueOfDepositaryReceipts	_aBFBZ9p-Ed-ak6NoX_4Aeg_-2056002595	Deposit of shares for the issuing of depositary receipts has been refused. The allotment granted by the issuer is exceeded by your transaction.
+PendingReason1Code	FLIM	MaximumForeignLimitReached	_aBFBaNp-Ed-ak6NoX_4Aeg_-403375087	Insufficient deliverable financial instruments in your account as maximum foreign limit has been reached.
+PendingReason1Code	INCA	IncomeAdjustementRequired	_aBFBadp-Ed-ak6NoX_4Aeg_-695332825	Financial instruments require income adjustment, for example, dividend or interest.
+PendingReason1Code	LINK	PendingLinkedInstruction	_aBOyYNp-Ed-ak6NoX_4Aeg_-517214153	Your instruction is pending settlement because the instruction linked to it is pending.
+PendingReason1Code	FUTU	AwaitingSettlementDate	_aBOyYdp-Ed-ak6NoX_4Aeg_1241892348	Awaiting settlement date. No settlement problems to be reported.
+PendingReason1Code	LACK	LackOfSecurities	_aBOyYtp-Ed-ak6NoX_4Aeg_-1400447440	Insufficient financial instruments in your account.
+PendingReason1Code	LALO	SecuritiesLoanedOut	_aBOyY9p-Ed-ak6NoX_4Aeg_-1692405178	Financial instruments are out on loan.
+PendingReason1Code	MONY	InsufficientMoney	_aBOyZNp-Ed-ak6NoX_4Aeg_-1514286506	Insufficient money in your account.
+PendingReason1Code	NCON	ConfirmationNotReceived	_aBOyZdp-Ed-ak6NoX_4Aeg_244819995	Confirmation of settlement has not yet been received.
+PendingReason1Code	REFS	NotInGoodOrder	_aBOyZtp-Ed-ak6NoX_4Aeg_1897447503	Delivery/receipt was refused because physical financial instruments are not in good order.
+PendingReason1Code	SDUT	LackOfStampDutyInformation	_aBOyZ9p-Ed-ak6NoX_4Aeg_1605489765	Stamp duty information is missing.
+PendingReason1Code	BATC	ProcessingBatchDifference	_aBOyaNp-Ed-ak6NoX_4Aeg_1783608437	Processing batch differs in the counterparty's instruction, for example, daytime/real-time versus overnight.
+PendingReason1Code	CYCL	AwaitingNextSettlementCycle	_aBOyadp-Ed-ak6NoX_4Aeg_-752252358	Your instruction is confirmed in the local market or is ready for settlement, awaiting next settlement cycle.
+PendingReason1Code	SBLO	SecuritiesBlocked	_aBYjYNp-Ed-ak6NoX_4Aeg_900375150	Financial instruments are blocked due to, for example, a corporate action event, realignment.
+PendingReason1Code	CPEC	CounterpartyInReceivership	_aBYjYdp-Ed-ak6NoX_4Aeg_608417412	Counterparty is in receivership (form of bankruptcy where a court appointed person - the receiver - manages the affairs of the business).
+PendingReason1Code	MINO	MinimumSettlementAmount	_aBYjYtp-Ed-ak6NoX_4Aeg_786536084	Quantity instructed is lower than the minimum existing settlement quantity for the financial instrument.
+PendingReason1Code	IAAD	StatusReasonInvestigation	_aBYjY9p-Ed-ak6NoX_4Aeg_-1749324711	Pending reason being investigated.
+PendingReason1Code	OTHR	Other	_aBYjZNp-Ed-ak6NoX_4Aeg_-96697203	Other. See Narrative.
+PendingReason1Code	PHCK	PhysicalSecuritiesVerification	_aBYjZdp-Ed-ak6NoX_4Aeg_-388654941	Physical financial instruments have been received and are being checked for authenticity.
+PendingReason1Code	BENO	BeneficialOwnershipDisagreement	_aBYjZtp-Ed-ak6NoX_4Aeg_-210536269	Disagreement in beneficial ownership.
+PendingReason1Code	BOTH	BothInstructionsOnHold	_aBYjZ9p-Ed-ak6NoX_4Aeg_1548570232	Counterparty's instruction and your instruction are on hold/frozen/ in a preadvice mode.
+PendingReason1Code	CLHT	ClearingHouseTrade	_aBYjaNp-Ed-ak6NoX_4Aeg_-1093769556	Instructed settlement date does not agree with the settlement date on the clearing house trade, that is, a specific type of trade in India.
+PendingReason1Code	DENO	UnavailableDeliverableDenominatedQuantity	_aBYjadp-Ed-ak6NoX_4Aeg_-1385727294	Quantity instructed does not match the denomination available/deliverable. Physical securities need to be obtained in deliverable denominated quantities.
+PendingReason1Code	DISA	NaturalDisaster	_aBYjatp-Ed-ak6NoX_4Aeg_-1207608622	Exceptional closing of all financial institutions due to natural disaster, for example, earthquake.
+PendingReason1Code	DKNY	CounterpartyReturnedShares	_aBhtUNp-Ed-ak6NoX_4Aeg_551497879	Counterparty has returned or refuses the securities.
+PendingReason1Code	FROZ	SecuritiesFrozenAtCSD	_aBhtUdp-Ed-ak6NoX_4Aeg_-2090841909	Financial instruments are blocked at the Central Security Depository (CSD) following a corporate event.
+PendingReason1Code	LAAW	AwaitingOtherTransaction	_aBhtUtp-Ed-ak6NoX_4Aeg_1912167649	Awaiting settlement of a purchase to cover failing positions.
+PendingReason1Code	LATE	MarketDeadlineMissed	_aBhtU9p-Ed-ak6NoX_4Aeg_2090286321	Instruction was received after market deadline.
+PendingReason1Code	LIQU	InsufficientCentralBankLiquidity	_aBhtVNp-Ed-ak6NoX_4Aeg_-445574474	Central bank liquidity is insufficient.
+PendingReason1Code	PRCY	CounterpartyInstructionOnHold	_aBhtVdp-Ed-ak6NoX_4Aeg_1207053034	Counterparty's instruction is a preadvice, that is, for matching only.
+PendingReason1Code	REGT	CertificatesRejected	_aBhtVtp-Ed-ak6NoX_4Aeg_915095296	Certificates have been lodged with the registrar but rejected due to incomplete documentation or foreign ownership limitation reached.
+PendingReason1Code	SETS	SettlementSystemMethodModified	_aBhtV9p-Ed-ak6NoX_4Aeg_1093213968	Settlement system/method has been modified at central securities depository to allow settlement.
+PendingReason1Code	CERT	WrongCertificatesNumbers	_aBhtWNp-Ed-ak6NoX_4Aeg_-1442646827	Certificate number error.
+PendingReason1Code	PRSY	SystemOnHold	_aBhtWdp-Ed-ak6NoX_4Aeg_1818301938	Transaction was put on hold/frozen by the system.
+DeniedReason3Code	ADEA	AccountServicerDeadlineMissed	_a0MgYNp-Ed-ak6NoX_4Aeg_255961976	Received after the account servicer's deadline.
+DeniedReason3Code	DCAL	CallDeniedSinceAlreadyApplied	_a0MgYdp-Ed-ak6NoX_4Aeg_255961977	Repo call request was denied since another call already applies.
+DeniedReason3Code	DFOR	DeniedSinceNotAllowed	_a0MgYtp-Ed-ak6NoX_4Aeg_255962253	Repo call request was denied. Call not allowed on the concerned repo, for example, out of delay.
+DeniedReason3Code	LATE	MarketDeadlineMissed	_a0MgY9p-Ed-ak6NoX_4Aeg_255962345	Received after market deadline.
+DeniedReason3Code	OTHR	Other	_a0MgZNp-Ed-ak6NoX_4Aeg_59995441	Other. See Narrative.

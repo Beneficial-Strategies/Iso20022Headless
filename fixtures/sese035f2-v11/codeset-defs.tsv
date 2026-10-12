@@ -1,0 +1,7 @@
+codeSet	isoId	text
+SecuritiesFinancingTransactionType2Code	_L_THsY7YEeaa5_S8lsRKCQ	Specifies the type of securities financing transaction.
+PreConfirmation1Code	_zdTddg93EeGeV5vP7Mvdig_-976669402	Specifies if there is a pre-confirmation of cash or securities.
+Reporting2Code	_ZTMAotp-Ed-ak6NoX_4Aeg_-582451382	Specifies information with regards to reporting.
+OriginatorRole2Code	_Zw1l-dp-Ed-ak6NoX_4Aeg_-30528564	Specifies the role of the trading party in the transaction.
+SettlementStandingInstructionDatabase1Code	_ZMMAxtp-Ed-ak6NoX_4Aeg_-1452828987	Indicates what settlement standing instruction database is to be used to derive the settlement parties involved in the transaction.
+SettlementTransactionCondition6Code	_-eXJweEAEd-udr336SN7mQ	Specifies the conditions under which the order/trade is to be settled.

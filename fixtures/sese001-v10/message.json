@@ -1,0 +1,99 @@
+{
+  "identifier": "sese.001.001.10",
+  "name": "TransferOutInstructionV10",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:sese.001.001.10",
+  "bodyTag": "TrfOutInstr",
+  "out": "sese001",
+  "isoId": "f32bbd62-3b8d-47b1-b0d0-0f810e0efd68",
+  "definition": "Scope|The TransferOutInstruction message is sent by an instructing party, for example, an investment manager or its authorised representative, to the executing party, for example, a transfer agent, to instruct the delivery of a financial instrument, free of payment, on a given date from a specified party.|This message may also be used to instruct the delivery of a financial instrument, free of payment, to another of the instructing parties own accounts or to a third party.|Usage|The TransferOutInstruction message is used to instruct the withdrawal of a financial instrument from one account and deliver it to either another account or to a third party.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "68a0fbd0-d334-442b-8aea-f1274064439a",
+      "xmlTag": "MsgId",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "PoolReference",
+      "isoId": "0eac76d7-e5c0-479d-9969-949a6d171925",
+      "xmlTag": "PoolRef",
+      "type": "AdditionalReference11",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "PreviousReference",
+      "isoId": "4609ee6e-3c3f-4923-afb6-d18c762cc114",
+      "xmlTag": "PrvsRef",
+      "type": "AdditionalReference10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "RelatedReference",
+      "isoId": "c1475fe4-7e40-44e1-89ce-635844854ad4",
+      "xmlTag": "RltdRef",
+      "type": "AdditionalReference10",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "MasterReference",
+      "isoId": "aeaa3ade-b605-404a-9046-73bbe63d8beb",
+      "xmlTag": "MstrRef",
+      "type": "Max35Text",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "TransferDetails",
+      "isoId": "094dda12-7f28-494e-bd10-6abaea4f5659",
+      "xmlTag": "TrfDtls",
+      "type": "Transfer39",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "AccountDetails",
+      "isoId": "ad673bf1-2a2b-4b5d-842d-0a6d154bff8c",
+      "xmlTag": "AcctDtls",
+      "type": "InvestmentAccount82",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SettlementDetails",
+      "isoId": "4300b100-2edb-464e-8d0b-932fc205e368",
+      "xmlTag": "SttlmDtls",
+      "type": "ReceiveInformation22",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "MarketPracticeVersion",
+      "isoId": "6aafa3e5-5604-4a07-952d-4c5b4cc6af86",
+      "xmlTag": "MktPrctcVrsn",
+      "type": "MarketPracticeVersion1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CopyDetails",
+      "isoId": "8901ab64-d2d2-4896-b5e9-199121d5e0d3",
+      "xmlTag": "CpyDtls",
+      "type": "CopyInformation5",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Extension",
+      "isoId": "261094a8-a2e3-41ce-8117-d8f782062496",
+      "xmlTag": "Xtnsn",
+      "type": "Extension1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

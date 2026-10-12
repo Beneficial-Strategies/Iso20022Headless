@@ -25,6 +25,7 @@ import {
   ISO20022MessageIdentificationTextSchema,
   GenericIdentification36Schema,
   DocumentNumber5ChoiceSchema,
+  References41ChoiceSchema,
   AnyBICDec2014IdentifierSchema,
   PartyIdentification127ChoiceSchema,
   Max70TextSchema,
@@ -95,16 +96,6 @@ import {
   sharedTypeDescriptors,
 } from './shared.ts';
 
-export const References41ChoiceSchema = choiceOf({
-  SecuritiesSettlementTransactionIdentification: Max35TextSchema,
-  IntraPositionMovementIdentification: Max35TextSchema,
-  IntraBalanceMovementIdentification: Max35TextSchema,
-  AccountServicerTransactionIdentification: Max35TextSchema,
-  MarketInfrastructureTransactionIdentification: Max35TextSchema,
-  PoolIdentification: Max35TextSchema,
-  OtherTransactionIdentification: Max35TextSchema,
-});
-
 export const Linkages59Schema = z.strictObject({
   ProcessingPosition: ProcessingPosition7ChoiceSchema.optional(),
   MessageNumber: DocumentNumber5ChoiceSchema.optional(),
@@ -140,20 +131,6 @@ export const IntraPositionMovementInstructionV07Schema = z.strictObject({
 const f = (d: FieldDescriptor): FieldDescriptor => d;
 
 const ownTypeDescriptors: TypeDescriptors = {
-  "References41Choice": {
-    name: "References41Choice",
-    isoId: "_P5VgATnrEeWfSKvvZlhRKg",
-    kind: "choice",
-    choiceOptions: [
-      f({ name: "SecuritiesSettlementTransactionIdentification", isoId: "_QaEOhTnrEeWfSKvvZlhRKg", xmlTag: "SctiesSttlmTxId", displayName: displayName("SecuritiesSettlementTransactionIdentification"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "IntraPositionMovementIdentification", isoId: "_QaEOjTnrEeWfSKvvZlhRKg", xmlTag: "IntraPosMvmntId", displayName: displayName("IntraPositionMovementIdentification"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "IntraBalanceMovementIdentification", isoId: "_QaEOlTnrEeWfSKvvZlhRKg", xmlTag: "IntraBalMvmntId", displayName: displayName("IntraBalanceMovementIdentification"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "AccountServicerTransactionIdentification", isoId: "_QaEOlznrEeWfSKvvZlhRKg", xmlTag: "AcctSvcrTxId", displayName: displayName("AccountServicerTransactionIdentification"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "MarketInfrastructureTransactionIdentification", isoId: "_QaEOnznrEeWfSKvvZlhRKg", xmlTag: "MktInfrstrctrTxId", displayName: displayName("MarketInfrastructureTransactionIdentification"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "PoolIdentification", isoId: "_QaEOoTnrEeWfSKvvZlhRKg", xmlTag: "PoolId", displayName: displayName("PoolIdentification"), kind: "text", type: "Max35Text", required: true }),
-      f({ name: "OtherTransactionIdentification", isoId: "_QaEOqTnrEeWfSKvvZlhRKg", xmlTag: "OthrTxId", displayName: displayName("OtherTransactionIdentification"), kind: "text", type: "Max35Text", required: true }),
-    ],
-  },
   "Linkages59": {
     name: "Linkages59",
     isoId: "_7wWsgQzBEeuTPv2wqaotHg",
@@ -222,6 +199,7 @@ export const typeDescriptors: TypeDescriptors = {
   "ISO20022MessageIdentificationText": sharedTypeDescriptors["ISO20022MessageIdentificationText"]!,
   "GenericIdentification36": sharedTypeDescriptors["GenericIdentification36"]!,
   "DocumentNumber5Choice": sharedTypeDescriptors["DocumentNumber5Choice"]!,
+  "References41Choice": sharedTypeDescriptors["References41Choice"]!,
   "AnyBICDec2014Identifier": sharedTypeDescriptors["AnyBICDec2014Identifier"]!,
   "PartyIdentification127Choice": sharedTypeDescriptors["PartyIdentification127Choice"]!,
   "Max70Text": sharedTypeDescriptors["Max70Text"]!,

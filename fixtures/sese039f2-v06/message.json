@@ -1,0 +1,75 @@
+{
+  "identifier": "sese.039.002.06",
+  "name": "SecuritiesSettlementTransactionModificationRequestStatusAdvice002V06",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:sese.039.002.06",
+  "bodyTag": "SctiesSttlmTxModReqStsAdvc",
+  "out": "sese039f2",
+  "isoId": "_eXqikzi8Eeydid5dcNPKvg",
+  "definition": "Scope|An account servicer sends a SecuritiesSettlementTransactionModificationRequestStatusAdvice to an account owner to advise the status of a SecuritiesSettlementModificationRequest message previously sent by the account owner.|The account servicer may be:|- a central securities depository or another settlement market infrastructure managing securities settlement transactions on behalf of their participants|- an custodian acting as an accounting and/or settlement agent.||Usage|The message may also be used to:|- re-send a message sent by the account owner to the account servicer,|- provide a third party with a copy of a message being sent by the account owner for information,|- re-send to a third party a copy of a message being sent by the account owner for information|using the relevant elements in the Business Application Header.",
+  "blocks": [
+    {
+      "name": "ModificationRequestReference",
+      "isoId": "_eXqinji8Eeydid5dcNPKvg",
+      "xmlTag": "ModReqRef",
+      "type": "RestrictedFINXMax16Text",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "AccountOwner",
+      "isoId": "_eXqioDi8Eeydid5dcNPKvg",
+      "xmlTag": "AcctOwnr",
+      "type": "PartyIdentification156",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SafekeepingAccount",
+      "isoId": "_eXqioji8Eeydid5dcNPKvg",
+      "xmlTag": "SfkpgAcct",
+      "type": "SecuritiesAccount30",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "BlockChainAddressOrWallet",
+      "isoId": "_eXqipDi8Eeydid5dcNPKvg",
+      "xmlTag": "BlckChainAdrOrWllt",
+      "type": "BlockChainAddressWallet7",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "TransactionIdentification",
+      "isoId": "_eXqipji8Eeydid5dcNPKvg",
+      "xmlTag": "TxId",
+      "type": "TransactionIdentifications37",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ModificationProcessingStatus",
+      "isoId": "_eXqiqDi8Eeydid5dcNPKvg",
+      "xmlTag": "ModPrcgSts",
+      "type": "ModificationProcessingStatus11Choice",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "TransactionDetails",
+      "isoId": "_eXqiqji8Eeydid5dcNPKvg",
+      "xmlTag": "TxDtls",
+      "type": "TransactionDetails158",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_eXqirDi8Eeydid5dcNPKvg",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

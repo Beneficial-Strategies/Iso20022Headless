@@ -15,9 +15,10 @@ and the group gets rules in the specification's rule language: the repository's 
 `<Name>NotBoth` rules say that if one is present the later ones are not (one rule per member but the last). A group of optional members
 gets only the "not both" rules, under the repository's own rule name. All carry the repository's text.
 
-**Left out: `semt.024.001.01`.** Its balance block uses `PortfolioBalance1`, whose two members (`SummaryBalance`, `DetailedBalance`) are
-both mandatory in the resources and have no `xors` constraint, while ISO's schema makes them an `xs:choice`. The resources do not
-say that, so the message is not generated until they do (reported to the MCP team).
+**Left out: `semt.024.001.01`.** Its balance block uses `PortfolioBalance1`, an obsolete plain component whose two members
+(`SummaryBalance`, `DetailedBalance`) are both mandatory in ISO's repository with no `xors` constraint (only the definition says
+"Choice"), while ISO's XSD makes them an `xs:choice`. The gap is in ISO's repository data, not in the resources. The message is
+skipped on purpose (see `PROVENANCE-tier2-seev.md`).
 
 Checks: the opt-in XSD sequence test passes for every message with a published schema (its sample keeps only the first member of an
 exclusive group), and the order of members and codes from the resources matches ISO's XSDs.

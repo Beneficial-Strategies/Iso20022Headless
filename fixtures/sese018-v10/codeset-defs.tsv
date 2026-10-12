@@ -1,0 +1,16 @@
+codeSet	isoId	text
+TaxWrapperAmountType1Code	_Cjj9AF25EeiFXdiLi_Nf4A	Specifies a type of amount.
+PortfolioWithdrawalReason1Code	_LZZ2wE7bEeifNrXGwadPmg	Specifies a reason for a withdrawal from the investment product.
+DrawdownStatus1Code	_InkecFKjEeiSDqv62fL07g	Specifies a drawdown status.
+DrawdownType2Code	_hZrdkJNwEembCsVG-3f_AA	Specifies a type of drawdown.
+LumpSumType1Code	_TQu1cLKeEeiXL6Ccd-oU8g	Specifies a type of lump sum.
+PensionOrderType1Code	_bGxkcLTqEeiENt6AoDfPXg	Specifies a type of order attached to a pension.
+UKTaxGroupUnit1Code	_LV94AIoQEeahcZ3Nzs1Qag	Specifies the UK tax group to which units belong. For UK tax, the first dividend that an investor receives from a funds investment is deemed to be part income and part return of capital. The capital element is 'equalisation', and is exempt from income tax.
+InvestmentFundFee3Code	98d73747-a658-4807-96a7-26dc66736303	Specifies the type of service for which a fee e is asked or paid.
+TaxationBasis5Code	_pfehUDkTEeahTcrfPSjpxA	Specifies the tax or charge basis.
+WaivingInstruction1Code	_Y9k9B9p-Ed-ak6NoX_4Aeg_-1179652008	Specifies the form of the rebate when commission is waived.
+TaxType17Code	_Y3eIUDiGEeaH-93K5JKmzw	Specifies the type of tax.
+TaxationBasis2Code	_ZScZxNp-Ed-ak6NoX_4Aeg_986778431	Specifies the tax basis.
+FinancialInstrumentIdentificationType1Code	af2e4a21-1f5f-4da6-82a6-b1715e1d5d9f	Specifies the financial instrument identification type.
+OtherAmountType1Code	_0W9oEK53Eee6Q7mFsDuJBA	Type of other amount.
+BusinessFlowType1Code	_p7MmMPsMEeCZF5_uug7xyA	Identifies the business process in which the actors are involved. This is important to trigger the right business process, according to the market business model, which may require matching instructions in a CSD environment (double leg process) or not (single leg process).

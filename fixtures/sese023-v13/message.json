@@ -1,0 +1,163 @@
+{
+  "identifier": "sese.023.001.13",
+  "name": "SecuritiesSettlementTransactionInstructionV13",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:sese.023.001.13",
+  "bodyTag": "SctiesSttlmTxInstr",
+  "out": "sese023",
+  "isoId": "191cd2e6-a552-456d-ac1c-20ed86a77dce",
+  "definition": "Scope|An account owner sends a SecuritiesSettlementTransactionInstruction to an account servicer to instruct the receipt or delivery of financial instruments with or without payment, physically or by book-entry.|The account owner/servicer relationship may be:|- a global custodian which has an account with a local custodian, or|- an investment management institution which manages a fund account opened at a custodian, or|- a broker which has an account with a custodian, or|- a central securities depository participant which has an account with a central securities depository, or|- a central securities depository which has an account with a custodian, another central securities depository or another settlement market infrastructure, or|- a central counterparty or a stock exchange or a trade matching utility which need to instruct the settlement of transactions to a central securities depository or another settlement market infrastructure.||Usage|The instruction may be linked to other settlement instructions, for example, for a turnaround or back-to-back, or other transactions, for example, foreign exchange deal, using the linkage functionality.|The message may also be used to:|- re-send a message previously sent,|- provide a third party with a copy of a message for information,|- re-send to a third party a copy of a message for information using the relevant elements in the Business Application Header.",
+  "blocks": [
+    {
+      "name": "TransactionIdentification",
+      "isoId": "3bdfcac8-3842-47af-b5a4-646ee33c2dbc",
+      "xmlTag": "TxId",
+      "type": "Max35Text",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SettlementTypeAndAdditionalParameters",
+      "isoId": "55448155-c4b1-4cf2-a64b-78df734f6f34",
+      "xmlTag": "SttlmTpAndAddtlParams",
+      "type": "SettlementTypeAndAdditionalParameters23",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "NumberCounts",
+      "isoId": "4151bf80-6270-47fc-be21-a01902e17e1b",
+      "xmlTag": "NbCounts",
+      "type": "NumberCount2Choice",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Linkages",
+      "isoId": "2ce00bcd-a242-4d58-b291-085e5fc89534",
+      "xmlTag": "Lnkgs",
+      "type": "Linkages79",
+      "min": 0,
+      "max": null
+    },
+    {
+      "name": "TradeDetails",
+      "isoId": "2216736c-2b0d-4ffd-8a4d-40062b2ce4a5",
+      "xmlTag": "TradDtls",
+      "type": "SecuritiesTradeDetails149",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "FinancialInstrumentIdentification",
+      "isoId": "02d76527-7250-4b82-b601-94102eca1bf7",
+      "xmlTag": "FinInstrmId",
+      "type": "SecurityIdentification19",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "FinancialInstrumentAttributes",
+      "isoId": "06c2c46f-3fcc-4a02-9c6c-7ba3f627f104",
+      "xmlTag": "FinInstrmAttrbts",
+      "type": "FinancialInstrumentAttributes111",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "QuantityAndAccountDetails",
+      "isoId": "9873e91b-2ae8-45fc-8319-e4c8467f2dd2",
+      "xmlTag": "QtyAndAcctDtls",
+      "type": "QuantityAndAccount117",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SettlementParameters",
+      "isoId": "c2f95e95-948b-4784-8f92-ceeba1e30b5c",
+      "xmlTag": "SttlmParams",
+      "type": "SettlementDetails220",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "StandingSettlementInstructionDetails",
+      "isoId": "838b09c6-5246-48fb-8bb2-4b2c1df7ea52",
+      "xmlTag": "StgSttlmInstrDtls",
+      "type": "StandingSettlementInstruction20",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "DeliveringSettlementParties",
+      "isoId": "a136eafa-1341-40fa-8202-158274863d8e",
+      "xmlTag": "DlvrgSttlmPties",
+      "type": "SettlementParties126",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ReceivingSettlementParties",
+      "isoId": "752c7dd7-57df-4eee-875d-05cf91d4904c",
+      "xmlTag": "RcvgSttlmPties",
+      "type": "SettlementParties126",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CashParties",
+      "isoId": "5281aaa5-c499-4516-9455-2e70f55949e7",
+      "xmlTag": "CshPties",
+      "type": "CashParties41",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SettlementAmount",
+      "isoId": "a4a073b9-60b9-44b6-9888-88412a1281e5",
+      "xmlTag": "SttlmAmt",
+      "type": "AmountAndDirection94",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "OtherAmounts",
+      "isoId": "efdbdd6d-1d2a-4b68-b5bf-922dd08a0e19",
+      "xmlTag": "OthrAmts",
+      "type": "OtherAmounts45",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "DigitalPaymentSettlement",
+      "isoId": "0aa2c3f3-f943-4569-8211-3aeb4c0395a0",
+      "xmlTag": "DgtlPmtSttlm",
+      "type": "DigitalPaymentSettlement1",
+      "min": 0,
+      "max": 2
+    },
+    {
+      "name": "OtherBusinessParties",
+      "isoId": "faa7e693-9a9e-4264-8ef5-3d25e841413f",
+      "xmlTag": "OthrBizPties",
+      "type": "OtherParties43",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AdditionalPhysicalOrRegistrationDetails",
+      "isoId": "0bec89a7-5933-49f6-acb7-98a80d86d507",
+      "xmlTag": "AddtlPhysOrRegnDtls",
+      "type": "RegistrationParameters6",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "ffd4660d-c91e-4328-a40d-21e2c3cc2e05",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

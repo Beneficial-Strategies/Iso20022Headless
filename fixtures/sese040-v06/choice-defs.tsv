@@ -1,0 +1,10 @@
+choice	memberId	memberName	text
+ResponseStatus6Choice	_mdrUkTzpEeWeNtT0s2RbkQ	Consented	Reason provided for the status.
+ResponseStatus6Choice	_mdrUkzzpEeWeNtT0s2RbkQ	Rejected	Rejected status of an instruction, advice or request.
+ResponseStatus6Choice	_mdrUlTzpEeWeNtT0s2RbkQ	Pending	Pending status of an instruction, advice or request.
+ConsentStatus4Choice	_oftdwTzpEeWeNtT0s2RbkQ	NoSpecifiedReason	Indicates that there is no reason available or to report.
+ConsentStatus4Choice	_oftdyTzpEeWeNtT0s2RbkQ	Reason	Reason provided for the status.
+ConsentOrRejectionReason4Choice	_n--vQTzpEeWeNtT0s2RbkQ	Code	Specifies the reason why the counterparty response has a rejection status.
+ConsentOrRejectionReason4Choice	_n--vSTzpEeWeNtT0s2RbkQ	Proprietary	Specifies the reason why the counterparty response has a rejection status.
+RejectionStatus20Choice	_m-aDETzpEeWeNtT0s2RbkQ	NoSpecifiedReason	Indicates that there is no reason available or to report.
+RejectionStatus20Choice	_m-aDGTzpEeWeNtT0s2RbkQ	Reason	Specifies the reason of the rejection or repair status.

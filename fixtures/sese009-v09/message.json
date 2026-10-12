@@ -1,0 +1,43 @@
+{
+  "identifier": "sese.009.001.09",
+  "name": "RequestForTransferStatusReportV09",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:sese.009.001.09",
+  "bodyTag": "ReqForTrfStsRpt",
+  "out": "sese009",
+  "isoId": "94d317c4-9d3e-437f-b76c-5cb52917d23e",
+  "definition": "Scope|The RequestForTransferStatusReport is sent by an instructing party, for example, an investment manager or its authorised representative, to the executing party, for example, a transfer agent to request the status of a previously instructed transfer.|The RequestForTransferStatusReport may also be sent by any party in the transfer transaction to another party in the transfer transaction chain to request information relevant for the settlement of a transfer transaction.|Usage|The RequestForTransferStatusReport is used to request either:|- the status of one or several information requests or transfer instructions or,|- the status of one or several transfer cancellation instructions, or|- information relevant to one or more transfer instructions.",
+  "blocks": [
+    {
+      "name": "MessageIdentification",
+      "isoId": "64ea7842-6788-4268-a5e1-2c35cd7513e6",
+      "xmlTag": "MsgId",
+      "type": "MessageIdentification1",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "RequestDetails",
+      "isoId": "60ee6c20-0722-4cb8-ae24-88a0b8e60e49",
+      "xmlTag": "ReqDtls",
+      "type": "MessageAndBusinessReference14",
+      "min": 1,
+      "max": null
+    },
+    {
+      "name": "MarketPracticeVersion",
+      "isoId": "62db9912-b9bc-4b6e-8df7-9794ad0ac6c7",
+      "xmlTag": "MktPrctcVrsn",
+      "type": "MarketPracticeVersion1",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "Extension",
+      "isoId": "2986050c-b94f-4c21-ae2b-614d90dc61b8",
+      "xmlTag": "Xtnsn",
+      "type": "Extension1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}

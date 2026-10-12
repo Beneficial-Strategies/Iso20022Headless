@@ -1,0 +1,11 @@
+codeSet	isoId	text
+TransferReason1Code	_SGnRUPr5EeCu2Z1WwxJVWA	Specifies the reason for the assets transfer.
+HoldingsPlanType1Code	_15H24PuzEeC3VvXpH76gow	Specifies the holdings plan of the assets to transfer.
+RoundingDirection2Code	_Y-LZ8dp-Ed-ak6NoX_4Aeg_114226731	Specifies the rounding direction applied to nearest unit.
+ChargePaymentMethod1Code	_ZFE3gBXyEeOBE-jZfcm4KQ	Specifies how expenses are paid.
+BeneficiaryCertificationCompletion1Code	_bdn349p-Ed-ak6NoX_4Aeg_-737437637	Specifies the type of certification completion required for a beneficiary.
+StampDutyType2Code	_suw7QPpiEeCG_oUHBFcYXA	Specifies if the stamp duty is applicable.
+InvestmentFundFee2Code	_qWiA0K26EeerDLLe8bZJCA	Type of service for which a charge is asked or paid.
+ChargeBearer1Code	_a78HJtp-Ed-ak6NoX_4Aeg_230427680	Specifies which party(ies) will pay charges due for processing of the payment transaction.
+TaxType16Code	_kiNHQBuGEeOqSdXzJ0oydA	Specifies the type of tax.
+TaxExemptReason1Code	_YhHqgNp-Ed-ak6NoX_4Aeg_1468189274	Specifies the reason a specific tax has not been levied/deducted on a given transaction.

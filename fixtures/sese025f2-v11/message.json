@@ -1,0 +1,147 @@
+{
+  "identifier": "sese.025.002.11",
+  "name": "SecuritiesSettlementTransactionConfirmation002V11",
+  "namespace": "urn:iso:std:iso:20022:tech:xsd:sese.025.002.11",
+  "bodyTag": "SctiesSttlmTxConf",
+  "out": "sese025f2",
+  "isoId": "_duaxQzi8Eeydid5dcNPKvg",
+  "definition": "Scope|An account servicer sends a SecuritiesSettlementTransactionConfirmation to an account owner to confirm the partial or full delivery or receipt of financial instruments, free or against of payment, physically or by book-entry.|The account servicer/owner relationship may be:|- a central securities depository or another settlement market infrastructure acting on behalf of their participants|- an agent (sub-custodian) acting on behalf of their global custodian customer, or|- a custodian acting on behalf of an investment management institution or a broker/dealer.||Usage|The message may also be used to:|- re-send a message previously sent,|- provide a third party with a copy of a message for information,|- re-send to a third party a copy of a message for information using the relevant elements in the Business Application Header.",
+  "blocks": [
+    {
+      "name": "TransactionIdentificationDetails",
+      "isoId": "_duaxWzi8Eeydid5dcNPKvg",
+      "xmlTag": "TxIdDtls",
+      "type": "SettlementTypeAndIdentification28",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "Linkages",
+      "isoId": "_duaxXTi8Eeydid5dcNPKvg",
+      "xmlTag": "Lnkgs",
+      "type": "Linkages50",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AdditionalParameters",
+      "isoId": "_duaxXzi8Eeydid5dcNPKvg",
+      "xmlTag": "AddtlParams",
+      "type": "AdditionalParameters31",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "TradeDetails",
+      "isoId": "_dubYUTi8Eeydid5dcNPKvg",
+      "xmlTag": "TradDtls",
+      "type": "SecuritiesTradeDetails128",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "FinancialInstrumentIdentification",
+      "isoId": "_dubYUzi8Eeydid5dcNPKvg",
+      "xmlTag": "FinInstrmId",
+      "type": "SecurityIdentification20",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "FinancialInstrumentAttributes",
+      "isoId": "_dubYVTi8Eeydid5dcNPKvg",
+      "xmlTag": "FinInstrmAttrbts",
+      "type": "FinancialInstrumentAttributes122",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "QuantityAndAccountDetails",
+      "isoId": "_dubYVzi8Eeydid5dcNPKvg",
+      "xmlTag": "QtyAndAcctDtls",
+      "type": "QuantityAndAccount108",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "SettlementParameters",
+      "isoId": "_dubYWTi8Eeydid5dcNPKvg",
+      "xmlTag": "SttlmParams",
+      "type": "SettlementDetails211",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "name": "StandingSettlementInstructionDetails",
+      "isoId": "_dubYWzi8Eeydid5dcNPKvg",
+      "xmlTag": "StgSttlmInstrDtls",
+      "type": "StandingSettlementInstruction19",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "DeliveringSettlementParties",
+      "isoId": "_dubYXTi8Eeydid5dcNPKvg",
+      "xmlTag": "DlvrgSttlmPties",
+      "type": "SettlementParties105",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "ReceivingSettlementParties",
+      "isoId": "_dubYXzi8Eeydid5dcNPKvg",
+      "xmlTag": "RcvgSttlmPties",
+      "type": "SettlementParties105",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "CashParties",
+      "isoId": "_dubYYTi8Eeydid5dcNPKvg",
+      "xmlTag": "CshPties",
+      "type": "CashParties38",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SettledAmount",
+      "isoId": "_dubYYzi8Eeydid5dcNPKvg",
+      "xmlTag": "SttldAmt",
+      "type": "AmountAndDirection96",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "OtherAmounts",
+      "isoId": "_dubYZTi8Eeydid5dcNPKvg",
+      "xmlTag": "OthrAmts",
+      "type": "OtherAmounts44",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "OtherBusinessParties",
+      "isoId": "_dubYZzi8Eeydid5dcNPKvg",
+      "xmlTag": "OthrBizPties",
+      "type": "OtherParties44",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "AdditionalPhysicalOrRegistrationDetails",
+      "isoId": "_dubYaTi8Eeydid5dcNPKvg",
+      "xmlTag": "AddtlPhysOrRegnDtls",
+      "type": "RegistrationParameters7",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "name": "SupplementaryData",
+      "isoId": "_dubYazi8Eeydid5dcNPKvg",
+      "xmlTag": "SplmtryData",
+      "type": "SupplementaryData1",
+      "min": 0,
+      "max": null
+    }
+  ]
+}
