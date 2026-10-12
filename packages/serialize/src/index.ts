@@ -1,5 +1,6 @@
 import {
   pruneEmpty,
+  pruneForOutput,
   type FieldDescriptor,
   type TypeDescriptors,
 } from '@beneficial-strategies/iso20022-validate';
@@ -67,7 +68,7 @@ function emitChildren(
 
 /** The lines of one message (`<Document …>` with its body, or an own-root message such as `<AppHdr …>`), indented. */
 function xmlMessageLines(message: MessageDefinition, values: unknown, indent: string): string[] {
-  const pruned = (pruneEmpty(values) ?? {}) as Record<string, unknown>;
+  const pruned = pruneForOutput(message.typeDescriptors, message.rootType, values);
   const root = message.typeDescriptors[message.rootType]!;
   const own = isOwnRoot(message);
   const out: string[] = [`${indent}<${message.rootTag} xmlns="${message.namespace}">`];
@@ -151,7 +152,7 @@ function jsonOne(types: TypeDescriptors, f: FieldDescriptor, value: unknown): Js
 }
 
 function isoJsonRoot(message: MessageDefinition, values: unknown): Json {
-  const pruned = (pruneEmpty(values) ?? {}) as Record<string, unknown>;
+  const pruned = pruneForOutput(message.typeDescriptors, message.rootType, values);
   const root = message.typeDescriptors[message.rootType]!;
   const body = jsonChildren(message.typeDescriptors, root.fields ?? [], pruned);
   return isOwnRoot(message) ? body : { [message.bodyTag]: body };
@@ -171,20 +172,20 @@ export function serializeEnvelopeToIsoJson(header: { message: MessageDefinition;
 
 /** A single component/choice as ISO JSON, wrapped in a property named after the type. */
 export function serializeFragmentIsoJson(types: TypeDescriptors, typeName: string, values: unknown): string {
-  const pruned = pruneEmpty(values);
+  const pruned = pruneForOutput(types, typeName, values);
   const t = types[typeName]!;
   const fields = t.kind === 'choice' ? (t.choiceOptions ?? []) : (t.fields ?? []);
-  return JSON.stringify({ [typeName]: pruned === undefined ? {} : jsonChildren(types, fields, pruned as Record<string, unknown>) }, null, 2) + '\n';
+  return JSON.stringify({ [typeName]: jsonChildren(types, fields, pruned) }, null, 2) + '\n';
 }
 
 /** Serialize a single component/choice on its own, wrapped in an element named after the type. */
 export function serializeFragment(types: TypeDescriptors, typeName: string, values: unknown): string {
-  const pruned = pruneEmpty(values);
+  const pruned = pruneForOutput(types, typeName, values);
   const t = types[typeName]!;
   const out: string[] = [];
   const fields = t.kind === 'choice' ? (t.choiceOptions ?? []) : (t.fields ?? []);
   out.push(`<${typeName}>`);
-  if (pruned !== undefined) emitChildren(types, fields, pruned as Record<string, unknown>, '  ', out);
+  emitChildren(types, fields, pruned, '  ', out);
   out.push(`</${typeName}>`);
   return out.join('\n') + '\n';
 }
