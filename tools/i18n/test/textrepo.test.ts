@@ -89,7 +89,7 @@ describe('an en-US repository', () => {
     const r = run('textrepo', 'add', '--repo', repo, '--kind', 'members', '--key', 'PaymentTypeInformation28/ServiceLevel');
     expect(r.out).toMatch(/added to areas\/shared\/members\.json/);
     expect(json<Record<string, string>>(join(repo, 'areas/shared/members.json'))['PaymentTypeInformation28/ServiceLevel']).toMatch(/Agreement under which/);
-    expect(json<Record<string, string>>(join(repo, 'text.lock.json'))['members/PaymentTypeInformation28/ServiceLevel']).toMatch(/\w/);
+    expect(json<Record<string, string>>(join(repo, 'areas/shared/text.lock.json'))['members/PaymentTypeInformation28/ServiceLevel']).toMatch(/\w/); // the lock sits beside the entries
     const label = run('textrepo', 'add', '--repo', repo, '--kind', 'labels', '--key', 'GroupHeader');
     expect(label.out).toMatch(/added to labels\.json/);
   }, 60_000);
@@ -137,4 +137,33 @@ describe('an en-US repository', () => {
     expect(Object.keys(m.members).length).toBeGreaterThan(10);
     expect(m.codeNames['AddressType2Code/BIZZ'] ?? Object.values(m.codeNames)[0]).toBeTruthy();
   }, 60_000);
+});
+
+describe('a translated repository seeded from a catalog', () => {
+  it('matches each name to the entries of its elements, takes the most common label (a reviewed one first) and the hash the translation was made against', async () => {
+    const { allTypeDescriptors } = await import('../../../packages/validate/src/generated/all.ts');
+    const ids = Object.values(allTypeDescriptors).flatMap((t) => (t.fields ?? []).filter((f) => f.name === 'GroupHeader' && f.isoId).map((f) => f.isoId!));
+    expect(ids.length).toBeGreaterThan(3);
+    const post = Object.values(allTypeDescriptors).flatMap((t) => (t.fields ?? []).filter((f) => f.name === 'PostCode' && f.isoId).map((f) => f.isoId!));
+    const entries: Record<string, unknown> = {};
+    ids.forEach((id, i) => (entries[`label:${id}`] = { text: i === 0 ? 'Autre' : 'En-tête de groupe', source: 'aaaaaaaaaaaa', status: 'machine' }));
+    post.forEach((id, i) => (entries[`label:${id}`] = { text: i === 0 ? 'Code postal (revu)' : 'Code postal', source: 'bbbbbbbbbbbb', status: i === 0 ? 'reviewed' : 'machine' }));
+    const memberType = Object.values(allTypeDescriptors).find((t) => t.name === 'PostalAddress27')!;
+    const postField = memberType.fields!.find((f) => f.name === 'PostCode')!;
+    entries[`field:${postField.isoId}`] = { text: 'Identifiant postal.', source: 'cccccccccccc', status: 'machine' };
+    const catalog = join(work, 'mini.catalog.json');
+    writeFileSync(catalog, JSON.stringify({ locale: 'fr', entries }));
+    const frRepo = join(work, 'text-fr');
+    expect(run('textseed', '--lang', 'fr', '--source', artifactDir, '--repo', frRepo, '--catalog', catalog).code).toBe(0);
+    const labels = json<Record<string, string>>(join(frRepo, 'labels.json'));
+    expect(labels.GroupHeader).toBe('En-tête de groupe'); // most common
+    expect(labels.PostCode).toBe('Code postal (revu)'); // a reviewed translation comes first
+    expect(json<Record<string, string>>(join(frRepo, 'areas/shared/members.json'))['PostalAddress27/PostCode']).toBe('Identifiant postal.');
+    expect(json<Record<string, string>>(join(frRepo, 'areas/shared/text.lock.json'))['members/PostalAddress27/PostCode']).toBe('cccccccccccc');
+    expect(json<string[]>(join(frRepo, 'reviewed.json'))).toEqual(['labels/PostCode']);
+    expect(json<Record<string, { chosen: string }>>(join(frRepo, 'review/label-conflicts.json')).GroupHeader!.chosen).toBe('En-tête de groupe');
+    expect(json<{ kind: string }>(join(frRepo, 'text.config.json')).kind).toBe('translation');
+    // an entry the catalog lacks is simply not written: it shows the English
+    expect(Object.keys(labels)).toHaveLength(2);
+  }, 120_000);
 });

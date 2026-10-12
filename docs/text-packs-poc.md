@@ -50,13 +50,15 @@ What the people who own a language edit. Three pieces, kept apart on purpose:
 | Piece | Needs the library? | Where |
 |---|---|---|
 | **Source artifact**: the English of every text with a note, which area each type belongs to, which types each message uses | yes (it is built from the library) | `tools/i18n/src/sourceArtifact.ts` |
-| **Seed**: a one-time migration that fills a repository from what the library does today (en-US rules) | yes | `tools/i18n/src/textseed.ts` |
+| **Seed**: a one-time migration that fills a repository from what the library has today: the en-US rules, or a language's catalog | yes | `tools/i18n/src/textseed.ts` |
 | **Language tools**: `sync`, `status`, `check`, `add`, `build` | **no**: they read only the artifact (a test checks their imports) | `tools/i18n/src/textrepo.ts`, `textrepoLib.ts`, `packFormat.ts` |
 
 ```sh
 cd tools/i18n
 pnpm text-source build --out /tmp/text-source                                             # publish the English (the library's release does this)
-pnpm text-seed --lang en-US --source /tmp/text-source --repo ../../text-repos/en-US       # once
+pnpm text-seed --lang en-US --source /tmp/text-source --repo ../../text-repos/en-US       # once (en-US rules)
+pnpm text-seed --lang fr --source /tmp/text-source --repo ../../../iso-20022-text-fr \
+     --catalog ../../packages/validate/src/locales/fr.catalog.json --glossary ../../i18n/glossary.fr.json   # once (a catalog)
 pnpm text sync   --repo ../../text-repos/en-US --from /tmp/text-source                    # take a version of the artifact into source/
 pnpm text status --repo ../../text-repos/en-US                                            # overridden, reviewed, stale, orphaned, misplaced
 pnpm text add    --repo ../../text-repos/en-US --kind labels --key PostCode               # copy the English in, ready to edit
@@ -76,3 +78,20 @@ The README of each repository explains this to its editors.
 Finding from building it: the en-US spelling rules were also rewriting element and message names inside rule and definition text
 (`CreditTransferTransactionInformation/CheckInstruction` for the real `ChequeInstruction`). `check` caught it; element names in prose
 are now left alone (code names are still rewritten), in the seed and in the library's runtime rule.
+
+## Seeding the translated languages
+
+`fr`, `de`, `es` and `pt` were seeded from their catalogs into **separate local git repositories** next to this one
+(`iso-20022-text-fr`, `-de`, `-es`, `-pt`; not pushed anywhere). Each holds the whole translation by name: 54,023 entries
+(4,107 labels, 20,685 member definitions, 4,636 types, 10,464 codes and code names each, 899 code sets, 2,768 rules) in `labels.json` and
+`areas/<area>/`, about 10 MB, plus `glossary.json`, `reviewed.json` (empty: all machine drafts), the staleness locks and a README. The first
+commit records the origin; who and when is git's from there.
+
+* **The same text:** the packs built from these repositories are identical to those built from the catalogs (16 files, 4 languages).
+* **Labels by name:** the catalogs had one label per element id. Where one element name had several translations the most common
+  (a reviewed one first) is taken, and `review/label-conflicts.json` lists each name with the candidates and counts: fr 73, de 150,
+  es 85, pt 94. The owner settles them and deletes the file. Nothing in the layout yet lets a name differ by place.
+* **Staleness kept:** each entry's lock is the hash of the English the catalog entry was made against, so a translation that was already
+  stale stays stale (none were).
+* **Checks:** `check` runs the existing rules (placeholders, element names, acronyms, glossary) on all 54,023 entries per language: 0 errors.
+* **Still in the library:** the catalogs themselves, and the interface and validation messages. Nothing was removed from the library.

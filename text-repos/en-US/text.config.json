@@ -1,5 +1,6 @@
 {
  "lang": "en-US",
+ "kind": "regional",
  "base": "ISO English",
  "schema": 1,
  "seededFrom": "the en-US rewrite rules of the library (variants.ts)",

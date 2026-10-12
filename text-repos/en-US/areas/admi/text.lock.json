@@ -1,0 +1,5 @@
+{
+ "members/SystemEventAcknowledgementV01/OriginatorReference": "4f126e06e19d",
+ "types/ReceiptAcknowledgementV01": "e8af9b6c68b3",
+ "types/ResendRequestV01": "fa0d15f3f272"
+}

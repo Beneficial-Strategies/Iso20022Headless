@@ -12,7 +12,7 @@
 import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { hashOf } from './catalog.ts';
-import { checkTranslation } from './validate.ts';
+import { checkTranslation, type GlossaryTerm } from './validate.ts';
 import { codeKey, memberKey, ruleKey, type LabelsPack, type MessagePack, type PackEntry } from './packFormat.ts';
 
 export const KINDS = ['labels', 'types', 'members', 'codeSets', 'codes', 'codeNames', 'rules'] as const;
@@ -108,10 +108,35 @@ export function writeOverrides(repo: string, ov: Overrides, placement: Record<st
   if (!groups.has(FILE.labels)) writeSorted(join(repo, FILE.labels), {});
 }
 
-export const README = (lang: string): string => `# ISO 20022 text: ${lang}
+/** The staleness lock lives beside the entries it covers (`text.lock.json` for the labels, `areas/<area>/text.lock.json` for an area), so no file grows large. */
+const lockPath = (repo: string, area: string | undefined): string => (area === undefined ? join(repo, 'text.lock.json') : join(repo, 'areas', area, 'text.lock.json'));
+export function readLock(repo: string): Record<string, string> {
+  const lock = readJson<Record<string, string>>(lockPath(repo, undefined), {});
+  const areas = existsSync(join(repo, 'areas')) ? readdirSync(join(repo, 'areas')) : [];
+  for (const a of areas) Object.assign(lock, readJson<Record<string, string>>(lockPath(repo, a), {}));
+  return lock;
+}
+export function writeLock(repo: string, lock: Record<string, string>, placement: Record<string, string>): void {
+  const areasDir = join(repo, 'areas');
+  if (existsSync(areasDir)) for (const a of readdirSync(areasDir)) rmSync(lockPath(repo, a), { force: true });
+  const groups = new Map<string | undefined, Record<string, string>>();
+  for (const [id, hash] of Object.entries(lock)) {
+    const slash = id.indexOf('/');
+    const kind = id.slice(0, slash) as RepoKind;
+    const area = areaOfKey(placement, kind, id.slice(slash + 1));
+    (groups.get(area) ?? groups.set(area, {}).get(area)!)[id] = hash;
+  }
+  if (!groups.has(undefined)) groups.set(undefined, {});
+  for (const [area, entries] of groups) writeSorted(lockPath(repo, area), entries);
+}
 
-The ${lang} text of the ISO 20022 message explorer and library. This repository holds **only what differs from the ISO English**: anything
-not written here shows the ISO English text.
+export const README = (lang: string, mode: 'regional' | 'translation' = 'regional'): string => `# ISO 20022 text: ${lang}
+
+The ${lang} text of the ISO 20022 message explorer and library. ${
+  mode === 'regional'
+    ? 'This repository holds **only what differs from the ISO English**: anything not written here shows the ISO English text.'
+    : 'This repository holds the **translation** of the ISO English text. Anything not written here shows the ISO English text. Every entry was first drafted by a machine and is shown as such until a person has reviewed it.'
+}
 
 ## What to edit
 
@@ -136,7 +161,9 @@ You do not decide which area folder an entry goes in: \`add\` puts it in the rig
 * \`status\` lists what is overridden, reviewed, stale (the English changed after the entry was written) and orphaned (no longer in the English).
 * \`check\` lints the files; it runs on every pull request.
 * \`reviewed.json\` lists the entries a person has approved. Anything else is a machine draft and is shown as such.
-* \`text.lock.json\` records the English each entry was written against; the tools keep it. Who changed what and when is the repository's history.
+* \`text.lock.json\` (and \`areas/<area>/text.lock.json\`) records the English each entry was written against; the tools keep them. Who changed what and when is the repository's history.
+* \`glossary.json\` lists terms that must be translated one way; \`check\` warns when an entry does not use them.
+* \`review/label-conflicts.json\` (when present) lists the element names the old catalog had translated more than one way, with the choice made. Settle them, then delete the file.
 `;
 
 export interface Report {
@@ -152,7 +179,8 @@ export interface Report {
 
 export function analyse(repo: string, art: Artifact): Report {
   const { ov, where, duplicates } = readOverrides(repo);
-  const lock = readJson<Record<string, string>>(join(repo, 'text.lock.json'), {});
+  const lock = readLock(repo);
+  const glossary = readJson<GlossaryTerm[]>(join(repo, 'glossary.json'), []);
   const reviewed = new Set(readJson<string[]>(join(repo, 'reviewed.json'), []));
   const r: Report = { overrides: 0, reviewed: 0, stale: [], orphans: [], misplaced: [], duplicates, sameAsEnglish: [], problems: [] };
   for (const k of KINDS) {
@@ -168,7 +196,7 @@ export function analyse(repo: string, art: Artifact): Report {
       if (where[id] !== areaOfKey(art.placement, k, key)) r.misplaced.push(`${id} is in ${where[id] ?? 'the root'} but belongs in ${areaOfKey(art.placement, k, key) ?? 'the root'}`);
       if (text === src.text) r.sameAsEnglish.push(id);
       if (lock[id] !== undefined && lock[id] !== hashOf(src.text)) r.stale.push(id);
-      for (const p of checkTranslation(UNIT_KIND[k], src.text, text)) {
+      for (const p of checkTranslation(UNIT_KIND[k], src.text, text, glossary)) {
         if (/tab or line break/.test(p.message) && /[\t\n\r]/.test(src.text)) continue; // the English has it too
         r.problems.push(`${p.severity}: ${id}: ${p.message}`);
       }
@@ -182,9 +210,10 @@ export function status(repo: string, art: Artifact): Report {
   const { ov } = readOverrides(repo);
   console.log(KINDS.map((k) => `${FILE[k]}: ${Object.keys(ov[k]).length}`).join('   '));
   console.log(`${r.overrides} entries, ${r.reviewed} reviewed, ${r.stale.length} stale, ${r.orphans.length} orphaned, ${r.misplaced.length} misplaced, ${r.sameAsEnglish.length} identical to the English`);
-  const config = readJson<{ source?: { sourceHash?: string } }>(join(repo, 'text.config.json'), {});
+  const config = readJson<{ kind?: string; source?: { sourceHash?: string } }>(join(repo, 'text.config.json'), {});
+  const identical = config.kind === 'translation' ? 'identical to the English (often intentional: acronyms, names)' : 'identical to the English (can be removed)';
   if (config.source?.sourceHash && config.source.sourceHash !== art.manifest.sourceHash) console.log(`the source in use (${art.manifest.sourceHash.slice(0, 8)}) is not the one this repository was last synced with (${config.source.sourceHash.slice(0, 8)}): run sync`);
-  for (const [label, list] of [['stale (the English changed since the entry was written)', r.stale], ['orphaned (no longer in the English)', r.orphans], ['misplaced', r.misplaced], ['identical to the English (can be removed)', r.sameAsEnglish]] as const) {
+  for (const [label, list] of [['stale (the English changed since the entry was written)', r.stale], ['orphaned (no longer in the English)', r.orphans], ['misplaced', r.misplaced], [identical, r.sameAsEnglish]] as const) {
     if (list.length) console.log(`${label}:\n${list.slice(0, 10).map((x) => '  ' + x).join('\n')}${list.length > 10 ? `\n  … ${list.length - 10} more` : ''}`);
   }
   return r;
@@ -210,9 +239,9 @@ export function add(repo: string, art: Artifact, kind: string, key: string): voi
   }
   ov[k][key] = src.text;
   writeOverrides(repo, ov, art.placement);
-  const lock = readJson<Record<string, string>>(join(repo, 'text.lock.json'), {});
+  const lock = readLock(repo);
   lock[`${k}/${key}`] = hashOf(src.text);
-  writeSorted(join(repo, 'text.lock.json'), lock);
+  writeLock(repo, lock, art.placement);
   const area = areaOfKey(art.placement, k, key);
   console.log(`added to ${fileOfKey(k, area)}: ${key}\n  English: ${src.text}\n  ${src.note}\nEdit the text in that file.`);
 }
@@ -228,6 +257,7 @@ export function sync(repo: string, from: string): Artifact {
     return area !== areaOfKey(incoming.placement, k as RepoKind, rest.join('/'));
   }).length;
   writeOverrides(repo, ov, incoming.placement);
+  writeLock(repo, readLock(repo), incoming.placement);
   const configFile = join(repo, 'text.config.json');
   writeFileSync(configFile, JSON.stringify({ ...readJson<Record<string, unknown>>(configFile, {}), source: { sourceHash: incoming.manifest.sourceHash, core: incoming.manifest.core } }, null, 1) + '\n');
   const r = analyse(repo, incoming);

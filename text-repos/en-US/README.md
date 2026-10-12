@@ -1,7 +1,6 @@
 # ISO 20022 text: en-US
 
-The en-US text of the ISO 20022 message explorer and library. This repository holds **only what differs from the ISO English**: anything
-not written here shows the ISO English text.
+The en-US text of the ISO 20022 message explorer and library. This repository holds **only what differs from the ISO English**: anything not written here shows the ISO English text.
 
 ## What to edit
 
@@ -26,4 +25,6 @@ You do not decide which area folder an entry goes in: `add` puts it in the right
 * `status` lists what is overridden, reviewed, stale (the English changed after the entry was written) and orphaned (no longer in the English).
 * `check` lints the files; it runs on every pull request.
 * `reviewed.json` lists the entries a person has approved. Anything else is a machine draft and is shown as such.
-* `text.lock.json` records the English each entry was written against; the tools keep it. Who changed what and when is the repository's history.
+* `text.lock.json` (and `areas/<area>/text.lock.json`) records the English each entry was written against; the tools keep them. Who changed what and when is the repository's history.
+* `glossary.json` lists terms that must be translated one way; `check` warns when an entry does not use them.
+* `review/label-conflicts.json` (when present) lists the element names the old catalog had translated more than one way, with the choice made. Settle them, then delete the file.

@@ -1,0 +1,9 @@
+{
+ "members/AdditionalDateTime1/AcceptanceDateTime": "7186dbbe1cb3",
+ "members/GroupHeader123/Authorisation": "086d679c18b2",
+ "members/GroupHeader125/Authorisation": "086d679c18b2",
+ "members/GroupHeader127/Authorisation": "086d679c18b2",
+ "members/OriginalTransactionReference45/RequestedExecutionDate": "4268abcd07a4",
+ "members/PaymentTransaction171/AcceptanceDateTime": "7186dbbe1cb3",
+ "members/PaymentTransaction177/AcceptanceDateTime": "7186dbbe1cb3"
+}

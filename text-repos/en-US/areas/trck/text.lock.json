@@ -1,0 +1,8 @@
+{
+ "members/TrackerParty2Choice/FinancialInstitutionIdentification": "7fc90805a77d",
+ "members/TrackerParty2Choice/OrganisationIdentification": "114dd35839c9",
+ "members/TrackerPaymentTransaction15/AcceptanceDateTime": "7186dbbe1cb3",
+ "members/TrackerPaymentTransaction15/RequestedExecutionDate": "4268abcd07a4",
+ "types/PaymentStatusCustomerTrackerReportV04": "d05b830ab7bc",
+ "types/TrackerPartyIdentification2": "9edcf07aa348"
+}
