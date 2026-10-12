@@ -188,3 +188,23 @@ describe('the committed Spanish catalog', () => {
     expect(s.orphans).toEqual([]);
   });
 });
+
+describe('slimCatalog (what the built sites ship)', () => {
+  it('keeps each entry\'s text and status and drops the workflow bookkeeping', async () => {
+    const { slimCatalog } = await import('../src/slimCatalogs.ts');
+    const full = { locale: 'fr', message: 'x', entries: { 'label:a': { text: 'Bonjour', source: 'abc', status: 'machine', by: 'assistant', date: '2026-10-11' } } };
+    expect(JSON.parse(slimCatalog(JSON.stringify(full)))).toEqual({ locale: 'fr', message: 'x', entries: { 'label:a': { text: 'Bonjour', status: 'machine' } } });
+  });
+
+  it('loses no text from any shipped catalog', async () => {
+    const { slimCatalog } = await import('../src/slimCatalogs.ts');
+    const { readFileSync } = await import('node:fs');
+    for (const lang of ['es', 'fr', 'de', 'pt']) {
+      const raw = readFileSync(new URL(`../../../packages/validate/src/locales/${lang}.catalog.json`, import.meta.url), 'utf8');
+      const [a, b] = [JSON.parse(raw).entries, JSON.parse(slimCatalog(raw)).entries];
+      expect(Object.keys(b).length, lang).toBe(Object.keys(a).length);
+      for (const k of Object.keys(a)) if (a[k].text !== b[k].text || a[k].status !== b[k].status) throw new Error(`${lang} ${k}`);
+      expect(raw.length / slimCatalog(raw).length, lang).toBeGreaterThan(1.5);
+    }
+  });
+});
