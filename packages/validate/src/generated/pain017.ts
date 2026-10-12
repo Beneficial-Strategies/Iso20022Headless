@@ -150,6 +150,7 @@ const ownTypeDescriptors: TypeDescriptors = {
     minLength: 1,
     maxLength: 4,
     external: true,
+    options: [{ value: "ACTV", name: "Active", isoId: "_uYrBtfRYEeuLhpyIdtJzwg" }, { value: "CANC", name: "Cancelled", isoId: "_uYrBuPRYEeuLhpyIdtJzwg" }, { value: "EXPI", name: "Expired", isoId: "_uYrBu_RYEeuLhpyIdtJzwg" }, { value: "SUSP", name: "Suspended", isoId: "_uY0ysvRYEeuLhpyIdtJzwg" }, { value: "RCVD", name: "Received", isoId: "_5oQaQoJ_EfCff8wf3dEAMw" }, { value: "RJCT", name: "Rejected", isoId: "_GlUtoYKAEfCff8wf3dEAMw" }, { value: "PATC", name: "PartiallyAcceptedTechnicalCorrect", isoId: "_OrzskoKAEfCff8wf3dEAMw" }],
   },
   "MandateStatus1Choice": {
     name: "MandateStatus1Choice",

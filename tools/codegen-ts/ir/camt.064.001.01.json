@@ -150,7 +150,29 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "AIIN",
+          "name": "IssuerIdentificationNumber",
+          "isoId": "_teaY4vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BBAN",
+          "name": "BBANIdentifier",
+          "isoId": "_teaY5fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CUID",
+          "name": "CHIPSUniversalIdentifier",
+          "isoId": "_teaY6PRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "UPIC",
+          "name": "UPICIdentifier",
+          "isoId": "_teji0vRYEeuLhpyIdtJzwg"
+        }
+      ]
     },
     "AccountSchemeName1Choice": {
       "name": "AccountSchemeName1Choice",

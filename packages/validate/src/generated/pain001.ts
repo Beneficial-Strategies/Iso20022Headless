@@ -297,6 +297,7 @@ const ownTypeDescriptors: TypeDescriptors = {
     minLength: 1,
     maxLength: 4,
     external: true,
+    options: [{ value: "HOLD", name: "HoldCashForCreditor", isoId: "_g9aYZ0i6Ee6rhpmMgC3iPQ" }, { value: "CHQB", name: "PayCreditorByCheque", isoId: "_g9a_cEi6Ee6rhpmMgC3iPQ" }, { value: "PRTK", name: "PayerTokenRequested", isoId: "_g9a_cUi6Ee6rhpmMgC3iPQ" }, { value: "PHOB", name: "PhoneBeneficiary", isoId: "_g9a_cki6Ee6rhpmMgC3iPQ" }, { value: "TELB", name: "Telecom", isoId: "_g9a_c0i6Ee6rhpmMgC3iPQ" }, { value: "TOKN", name: "Token", isoId: "_g9a_dEi6Ee6rhpmMgC3iPQ" }, { value: "VLTK", name: "TokenValidation", isoId: "_g9a_dUi6Ee6rhpmMgC3iPQ" }],
   },
   "InstructionForDebtorAgent1": {
     name: "InstructionForDebtorAgent1",

@@ -538,7 +538,84 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "BANK",
+          "name": "BankPartyIdentification",
+          "isoId": "_tsHdsvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CBID",
+          "name": "CentralBankIdentificationNumber",
+          "isoId": "_tsHdtfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CHID",
+          "name": "ClearingIdentificationNumber",
+          "isoId": "_tsHduPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CINC",
+          "name": "CertificateOfIncorporationNumber",
+          "isoId": "_tsHdu_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "COID",
+          "name": "CountryIdentificationCode",
+          "isoId": "_tsHdvvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CUST",
+          "name": "CustomerNumber",
+          "isoId": "_tsROsvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DUNS",
+          "name": "DataUniversalNumberingSystem",
+          "isoId": "_tsROtfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "EMPL",
+          "name": "EmployerIdentificationNumber",
+          "isoId": "_tsROuPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "GS1G",
+          "name": "GS1GLNIdentifier",
+          "isoId": "_tsROu_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SREN",
+          "name": "SIREN",
+          "isoId": "_tsROvvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SRET",
+          "name": "SIRET",
+          "isoId": "_tsaYovRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TXID",
+          "name": "TaxIdentificationNumber",
+          "isoId": "_tsaYpfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BDID",
+          "name": "BusinessDomainIdentifier",
+          "isoId": "_kx6PsVEGEey6cYDbEubNXg"
+        },
+        {
+          "value": "BOID",
+          "name": "BusinessOtherIdentification",
+          "isoId": "_k59YcVEGEey6cYDbEubNXg"
+        },
+        {
+          "value": "USID",
+          "name": "UniqueSuperannuationIdentifier",
+          "isoId": "_q7eA8qF9EfG_Et71c0fVfg"
+        }
+      ]
     },
     "OrganisationIdentificationSchemeName1Choice": {
       "name": "OrganisationIdentificationSchemeName1Choice",
@@ -687,7 +764,64 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "ARNU",
+          "name": "AlienRegistrationNumber",
+          "isoId": "_tsaYqPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CCPT",
+          "name": "PassportNumber",
+          "isoId": "_tsaYq_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CUST",
+          "name": "CustomerIdentificationNumber",
+          "isoId": "_tsaYrvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DRLC",
+          "name": "DriversLicenseNumber",
+          "isoId": "_tskJovRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "EMPL",
+          "name": "EmployeeIdentificationNumber",
+          "isoId": "_tskJpfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "NIDN",
+          "name": "NationalIdentityNumber",
+          "isoId": "_tskJqPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SOSE",
+          "name": "SocialSecurityNumber",
+          "isoId": "_tskJq_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TELE",
+          "name": "TelephoneNumber",
+          "isoId": "_tskJrvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TXID",
+          "name": "TaxIdentificationNumber",
+          "isoId": "_tst6ovRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "POID",
+          "name": "PersonCommercialIdentification",
+          "isoId": "_vcc8QVEFEey6cYDbEubNXg"
+        },
+        {
+          "value": "BANK",
+          "name": "BankPartyIdentification",
+          "isoId": "_U461kfXXEe-Ig-GynGPh9A"
+        }
+      ]
     },
     "PersonIdentificationSchemeName1Choice": {
       "name": "PersonIdentificationSchemeName1Choice",
@@ -1101,7 +1235,174 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "AC02",
+          "name": "InvalidDebtorAccountNumber",
+          "isoId": "_9Apesdo7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "AC03",
+          "name": "InvalidCreditorAccountNumber",
+          "isoId": "_9Apes9o7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "AGNT",
+          "name": "IncorrectAgent",
+          "isoId": "_9Apetdo7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "AM09",
+          "name": "WrongAmount",
+          "isoId": "_9Apet9o7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "BE16",
+          "name": "InvalidDebtorIdentificationCode",
+          "isoId": "_9Apeudo7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "COVR",
+          "name": "CoverCancelledOrReturned",
+          "isoId": "_9Apeu9o7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "CURR",
+          "name": "IncorrectCurrency",
+          "isoId": "_9Apevdo7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "CUST",
+          "name": "RequestedByCustomer",
+          "isoId": "_9Apev9o7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "CUTA",
+          "name": "CancelUponUnableToApply",
+          "isoId": "_9Apewdo7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "DS24",
+          "name": "TimeOut",
+          "isoId": "_9Apew9o7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "DT01",
+          "name": "InvalidDate",
+          "isoId": "_9Apexdo7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "DUPL",
+          "name": "DuplicatePayment",
+          "isoId": "_9Apex9o7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "FRAD",
+          "name": "FraudulentOrigin",
+          "isoId": "_9Apeydo7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "FRNA",
+          "name": "ForwardToNextAgent",
+          "isoId": "_9Apey9o7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "FRTR",
+          "name": "FinalResponse",
+          "isoId": "_9Apezdo7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "INDM",
+          "name": "IndemnityRequired",
+          "isoId": "_9Apez9o7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "MODT",
+          "name": "ModifiedTransaction",
+          "isoId": "_9Ape0do7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "PAID",
+          "name": "TransactionAlreadyPaid",
+          "isoId": "_9Ape09o7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "SVNR",
+          "name": "ServiceNotRendered",
+          "isoId": "_9AqFwdo7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "SYAD",
+          "name": "RequestToSettlementSystemAdministrator",
+          "isoId": "_9AqFw9o7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "TECH",
+          "name": "TechnicalProblem",
+          "isoId": "_9AqFxdo7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "UPAY",
+          "name": "UnduePayment",
+          "isoId": "_9AqFx9o7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "ENUE",
+          "name": "EndUserError",
+          "isoId": "_9AqFydo7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "UAPA",
+          "name": "UnauthorizedPayment",
+          "isoId": "_9AqFy9o7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "NARR",
+          "name": "Narrative",
+          "isoId": "_9AqFzdo7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "INCR",
+          "name": "InvalidCancellationRequest",
+          "isoId": "_9AqFz9o7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "BIAS",
+          "name": "BatchInstructionAlreadySettled",
+          "isoId": "_9AqF0do7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "DRTP",
+          "name": "DuplicationRequestToPay",
+          "isoId": "_9AqF09o7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "WNTB",
+          "name": "WarrantyBreach",
+          "isoId": "_9AqF1do7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "MD06",
+          "name": "RefundRequestByEndCustomer",
+          "isoId": "_9AqF19o7Ee6Elb7HgKqKkA"
+        },
+        {
+          "value": "PPRC",
+          "name": "PayeeParticipantRTPCancellation",
+          "isoId": "_9XT8sWXcEe-25NN5iis_kQ"
+        },
+        {
+          "value": "ECAG",
+          "name": "ErrorCreditorAgent",
+          "isoId": "_JZLMEmXdEe-25NN5iis_kQ"
+        },
+        {
+          "value": "NFNA",
+          "name": "NeverForwardToNextAgent",
+          "isoId": "_U313gfXXEe-Ig-GynGPh9A"
+        }
+      ]
     },
     "CancellationReason33Choice": {
       "name": "CancellationReason33Choice",

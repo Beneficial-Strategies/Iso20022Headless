@@ -126,6 +126,7 @@ const ownTypeDescriptors: TypeDescriptors = {
     minLength: 1,
     maxLength: 4,
     external: true,
+    options: [{ value: "BKMG", name: "BackupManager", isoId: "_umh3i_RYEeuLhpyIdtJzwg" }, { value: "LMMG", name: "LimitManager", isoId: "_umh3jvRYEeuLhpyIdtJzwg" }, { value: "LQMG", name: "LiquidityManager", isoId: "_umrogvRYEeuLhpyIdtJzwg" }, { value: "PYMG", name: "PaymentManager", isoId: "_umrohfRYEeuLhpyIdtJzwg" }, { value: "REDR", name: "Reader", isoId: "_um0ycvRYEeuLhpyIdtJzwg" }, { value: "STMG", name: "SettlementManager", isoId: "_um0ydfRYEeuLhpyIdtJzwg" }],
   },
   "PaymentRole1Choice": {
     name: "PaymentRole1Choice",

@@ -160,7 +160,12 @@ function Leaf(p: NodeProps) {
         <S.Select
           id={props.id}
           value={props.value}
-          options={type.options.map((o) => ({ value: o.value, label: `${o.value} — ${defs.codeName(o, o.name).text}`, description: defs.code(o)?.text }))}
+          options={[
+            // an external code set accepts any value of the right length (an outside body keeps the list): a value that is not listed,
+            // pasted in or loaded, is shown as it is instead of looking empty
+            ...(type.external && props.value !== '' && !selected ? [{ value: props.value, label: props.value }] : []),
+            ...type.options.map((o) => ({ value: o.value, label: `${o.value} — ${defs.codeName(o, o.name).text}`, description: defs.code(o)?.text })),
+          ]}
           onChange={props.onChange}
           onBlur={props.onBlur}
           invalid={props['aria-invalid'] === true}

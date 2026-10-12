@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { simpleTypeRows, simpleTypesTsv, closureOf, messageJson, writeStructure, type Closure, type MessageSpec } from './extract.ts';
 import { loadSnapshots } from './snapshot.ts';
 import { runResources } from './resources-write.ts';
+import { writeExternalCodes } from './externalCodes.ts';
 import { codeOrders, mergeOrders, orderFileText, parseOrderFile, typeOrders } from './xsd-order.ts';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../../..');
@@ -35,6 +36,16 @@ const arg = (name: string): string | undefined => {
 function main(): number {
   const cmd = process.argv[2];
   if (cmd === 'order') return writeOrder();
+  if (cmd === 'external-codes') {
+    const pages = arg('--pages');
+    if (!pages) {
+      console.error('usage: spec-extract external-codes --pages <dir of saved resource pages> [--fixtures <dir>]');
+      return 2;
+    }
+    const { written, withoutValues, duplicates } = writeExternalCodes(pages, arg('--fixtures') ?? fixtures);
+    console.log(`wrote the values of ${written.length} external code sets; ${withoutValues.length} have none in the repository (they stay free text)${duplicates.length ? `; a repeated value was kept once: ${duplicates.join(', ')}` : ''}`);
+    return 0;
+  }
   if (cmd === 'resources') {
     const pages = arg('--pages');
     const list = arg('--messages');

@@ -1201,7 +1201,29 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "AIIN",
+          "name": "IssuerIdentificationNumber",
+          "isoId": "_teaY4vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BBAN",
+          "name": "BBANIdentifier",
+          "isoId": "_teaY5fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CUID",
+          "name": "CHIPSUniversalIdentifier",
+          "isoId": "_teaY6PRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "UPIC",
+          "name": "UPICIdentifier",
+          "isoId": "_teji0vRYEeuLhpyIdtJzwg"
+        }
+      ]
     },
     "AccountSchemeName1Choice": {
       "name": "AccountSchemeName1Choice",
@@ -1615,7 +1637,129 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "BELC",
+          "name": "CodeSRWSecretariaatVoorRoerendeWaardenOrSVMSecrétariatDesValeursMobilières",
+          "isoId": "_uI4SM_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BLOM",
+          "name": "Bloomberg",
+          "isoId": "_uI4SN_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CCCD",
+          "name": "OtherNationalSecuritiesIdentificationNumber",
+          "isoId": "_uI4SO_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CMED",
+          "name": "ChicagoMercantileExchangeCME",
+          "isoId": "_uJCDM_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "COMM",
+          "name": "CommonCode",
+          "isoId": "_uJCDN_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CTAC",
+          "name": "ConsolidatedTapeAssociationCTA",
+          "isoId": "_uJCDO_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CUSP",
+          "name": "CommitteeOnUniformSecurityIdentificationProceduresCUSIP",
+          "isoId": "_uJLNI_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FIGC",
+          "name": "FinancialInstrumentGlobalIdentifierComposite",
+          "isoId": "_uJLNJ_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FIGG",
+          "name": "FinancialInstrumentGlobalIdentifierShareClass",
+          "isoId": "_uJLNK_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FIGI",
+          "name": "FinancialInstrumentGlobalIdentifier",
+          "isoId": "_uJLNL_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ISDU",
+          "name": "ISDAAndFpMLProductURLInSecurityID",
+          "isoId": "_uJU-I_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ISDX",
+          "name": "ISDAAndFpMLProductSpecificationXMLInEncodedSecurityDesc",
+          "isoId": "_uJU-J_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LCHD",
+          "name": "LCHClearnet",
+          "isoId": "_uJU-K_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "OCCS",
+          "name": "OptionsClearingCorpOCC",
+          "isoId": "_uJU-L_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "OPRA",
+          "name": "OptionsPriceReportingAuthorityOPRA",
+          "isoId": "_uJU-M_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RCMD",
+          "name": "MarkitRedCode",
+          "isoId": "_uJeIE_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RICC",
+          "name": "ReutersInstrumentCodeRIC",
+          "isoId": "_uJeIF_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SEDL",
+          "name": "StockExchangeDailyOfficialListSEDOL",
+          "isoId": "_uJeIG_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SICC",
+          "name": "SecuritiesIdentificationCodeCommittee",
+          "isoId": "_uJeIH_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TIKR",
+          "name": "TickerSymbolTS",
+          "isoId": "_uJn5E_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "VALO",
+          "name": "VALOR",
+          "isoId": "_uJn5F_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "WKNR",
+          "name": "WertpapierkennummerWKN",
+          "isoId": "_uJn5G_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CCDC",
+          "name": "BondIdentificationCodeListChina",
+          "isoId": "_opiOcY5EEeyANo-d7JlQ1A"
+        },
+        {
+          "value": "DTID",
+          "name": "DigitalTokenIdentifier",
+          "isoId": "_8WZMImvWEe2F6NrIyOmXcA"
+        }
+      ]
     },
     "IdentificationSource3Choice": {
       "name": "IdentificationSource3Choice",
@@ -3519,7 +3663,84 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "BANK",
+          "name": "BankPartyIdentification",
+          "isoId": "_tsHdsvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CBID",
+          "name": "CentralBankIdentificationNumber",
+          "isoId": "_tsHdtfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CHID",
+          "name": "ClearingIdentificationNumber",
+          "isoId": "_tsHduPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CINC",
+          "name": "CertificateOfIncorporationNumber",
+          "isoId": "_tsHdu_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "COID",
+          "name": "CountryIdentificationCode",
+          "isoId": "_tsHdvvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CUST",
+          "name": "CustomerNumber",
+          "isoId": "_tsROsvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DUNS",
+          "name": "DataUniversalNumberingSystem",
+          "isoId": "_tsROtfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "EMPL",
+          "name": "EmployerIdentificationNumber",
+          "isoId": "_tsROuPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "GS1G",
+          "name": "GS1GLNIdentifier",
+          "isoId": "_tsROu_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SREN",
+          "name": "SIREN",
+          "isoId": "_tsROvvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SRET",
+          "name": "SIRET",
+          "isoId": "_tsaYovRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TXID",
+          "name": "TaxIdentificationNumber",
+          "isoId": "_tsaYpfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BDID",
+          "name": "BusinessDomainIdentifier",
+          "isoId": "_kx6PsVEGEey6cYDbEubNXg"
+        },
+        {
+          "value": "BOID",
+          "name": "BusinessOtherIdentification",
+          "isoId": "_k59YcVEGEey6cYDbEubNXg"
+        },
+        {
+          "value": "USID",
+          "name": "UniqueSuperannuationIdentifier",
+          "isoId": "_q7eA8qF9EfG_Et71c0fVfg"
+        }
+      ]
     },
     "OrganisationIdentificationSchemeName1Choice": {
       "name": "OrganisationIdentificationSchemeName1Choice",
@@ -3663,7 +3884,64 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "ARNU",
+          "name": "AlienRegistrationNumber",
+          "isoId": "_tsaYqPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CCPT",
+          "name": "PassportNumber",
+          "isoId": "_tsaYq_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CUST",
+          "name": "CustomerIdentificationNumber",
+          "isoId": "_tsaYrvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DRLC",
+          "name": "DriversLicenseNumber",
+          "isoId": "_tskJovRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "EMPL",
+          "name": "EmployeeIdentificationNumber",
+          "isoId": "_tskJpfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "NIDN",
+          "name": "NationalIdentityNumber",
+          "isoId": "_tskJqPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SOSE",
+          "name": "SocialSecurityNumber",
+          "isoId": "_tskJq_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TELE",
+          "name": "TelephoneNumber",
+          "isoId": "_tskJrvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TXID",
+          "name": "TaxIdentificationNumber",
+          "isoId": "_tst6ovRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "POID",
+          "name": "PersonCommercialIdentification",
+          "isoId": "_vcc8QVEFEey6cYDbEubNXg"
+        },
+        {
+          "value": "BANK",
+          "name": "BankPartyIdentification",
+          "isoId": "_U461kfXXEe-Ig-GynGPh9A"
+        }
+      ]
     },
     "PersonIdentificationSchemeName1Choice": {
       "name": "PersonIdentificationSchemeName1Choice",
@@ -4491,7 +4769,119 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "CRCO",
+          "name": "CashReservationCutOff",
+          "isoId": "_uhK2ZfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CUSC",
+          "name": "CustomerCutOff",
+          "isoId": "_uhUAUvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ESTF",
+          "name": "EndOfStandingFacilities",
+          "isoId": "_uhUAVfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "EUCO",
+          "name": "Euro1CutOff",
+          "isoId": "_uhUAWPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "EUSU",
+          "name": "Euro1StartUp",
+          "isoId": "_uhdxUvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FIRE",
+          "name": "FinalReporting",
+          "isoId": "_uhdxVfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "IBKC",
+          "name": "InterbankCutOff",
+          "isoId": "_uhdxWPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LTDC",
+          "name": "LTDCutOff",
+          "isoId": "_uhniUvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LTGC",
+          "name": "LTGCutOff",
+          "isoId": "_uhniVfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LTNC",
+          "name": "LTNCutOff",
+          "isoId": "_uhniWPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LVCC",
+          "name": "LVPCancellationCutOff",
+          "isoId": "_uhniW_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LVCO",
+          "name": "LVPCutOff",
+          "isoId": "_uhwsQvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LVRT",
+          "name": "LVPCutOffReportTime",
+          "isoId": "_uhwsRfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LWSU",
+          "name": "LimitWarningStartUp",
+          "isoId": "_uhwsSPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "NPCT",
+          "name": "NewPaymentCutOffTime",
+          "isoId": "_uhwsS_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "PCOT",
+          "name": "ProcessingCutOffTime",
+          "isoId": "_uhwsTvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RECC",
+          "name": "RecCutOff",
+          "isoId": "_uh6dQvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "REOP",
+          "name": "ResumeOperation",
+          "isoId": "_uh6dRfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SSSC",
+          "name": "NetSSSReservationCutOff",
+          "isoId": "_uh6dSPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "STDY",
+          "name": "StartOfDay",
+          "isoId": "_uh6dS_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "STSU",
+          "name": "Step1StartUp",
+          "isoId": "_uh6dTvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SYSC",
+          "name": "SystemCutOff",
+          "isoId": "_uiDnMvRYEeuLhpyIdtJzwg"
+        }
+      ]
     },
     "SystemEventType4Choice": {
       "name": "SystemEventType4Choice",

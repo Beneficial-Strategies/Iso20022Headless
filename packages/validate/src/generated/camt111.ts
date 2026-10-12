@@ -402,6 +402,7 @@ const ownTypeDescriptors: TypeDescriptors = {
     minLength: 1,
     maxLength: 4,
     external: true,
+    options: [{ value: "CLSD", name: "InvestigationClosed", isoId: "___asy9YUEe68t8Cw380-tA" }, { value: "PDNG", name: "InvestigationPending", isoId: "___aszdYUEe68t8Cw380-tA" }, { value: "RJCT", name: "InvestigationRejected", isoId: "___asz9YUEe68t8Cw380-tA" }],
   },
   "ExternalInvestigationStatusReason1Code": {
     name: "ExternalInvestigationStatusReason1Code",
@@ -410,6 +411,7 @@ const ownTypeDescriptors: TypeDescriptors = {
     minLength: 1,
     maxLength: 4,
     external: true,
+    options: [{ value: "AGNT", name: "IncorrectAgentOrParty", isoId: "___as0dYUEe68t8Cw380-tA" }, { value: "DU01", name: "DuplicateRequest", isoId: "___as09YUEe68t8Cw380-tA" }, { value: "NARR", name: "Narrative", isoId: "___as1dYUEe68t8Cw380-tA" }, { value: "FTNA", name: "InvestigationRequestForwardedToAgentOrParty", isoId: "___as19YUEe68t8Cw380-tA" }, { value: "CAPR", name: "ClosedAsPerRequest", isoId: "___as2dYUEe68t8Cw380-tA" }, { value: "CACR", name: "ClosedAsCancellationRequestSent", isoId: "___as29YUEe68t8Cw380-tA" }, { value: "ADAC", name: "AwaitingDebitAuthorityFromCustomer", isoId: "___as3dYUEe68t8Cw380-tA" }, { value: "ARPL", name: "AwaitingReplyFromCustomer", isoId: "___as39YUEe68t8Cw380-tA" }, { value: "NOAS", name: "NoAnswerFromCustomer", isoId: "___as4dYUEe68t8Cw380-tA" }, { value: "INPO", name: "InProgress", isoId: "___as49YUEe68t8Cw380-tA" }, { value: "NOOR", name: "NoOriginalTransactionReceived", isoId: "___as5dYUEe68t8Cw380-tA" }, { value: "ARJT", name: "AlreadyRejectedTransaction", isoId: "___as59YUEe68t8Cw380-tA" }, { value: "ARDT", name: "AlreadyReturned", isoId: "___as6dYUEe68t8Cw380-tA" }, { value: "RR04", name: "RegulatoryReason", isoId: "___as69YUEe68t8Cw380-tA" }, { value: "LEGL", name: "LegalDecision", isoId: "___as7dYUEe68t8Cw380-tA" }, { value: "ESCA", name: "Escalation", isoId: "___as79YUEe68t8Cw380-tA" }, { value: "INIT", name: "IncorrectInvestigationType", isoId: "___as8dYUEe68t8Cw380-tA" }, { value: "PARE", name: "PartialResponse", isoId: "___as89YUEe68t8Cw380-tA" }, { value: "NOAD", name: "NoAdditionalInformationAvailable", isoId: "___as9dYUEe68t8Cw380-tA" }, { value: "G004", name: "WaitingForCover", isoId: "__bI0cvg-Ee-qYYWvwsxo3Q" }, { value: "CMPI", name: "CorrectionMadeAsPerInquiry", isoId: "_o9w9cYKAEfCff8wf3dEAMw" }],
   },
   "InvestigationStatusReason1Choice": {
     name: "InvestigationStatusReason1Choice",

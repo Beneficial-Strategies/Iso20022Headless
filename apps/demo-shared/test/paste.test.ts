@@ -5,9 +5,11 @@ import { namespaceOf, planPaste, type PastePlan } from '../src/paste.ts';
 
 const bundles = new Map<string, MessageBundle>();
 const load = async (id: string): Promise<MessageBundle> => bundles.get(id) ?? (await messageIndex.find((m) => m.identifier === id)!.load());
+// only the messages these tests use: loading every message in the library took longer than the hook's timeout on a small CI machine
+const USED = ['pain.001.001.13', 'pain.002.001.15', 'camt.053.001.14', 'head.001.001.04'];
 beforeAll(async () => {
-  for (const m of messageIndex) bundles.set(m.identifier, await m.load());
-});
+  for (const id of USED) bundles.set(id, await messageIndex.find((m) => m.identifier === id)!.load());
+}, 60_000);
 
 const current = (identifier: string, typeName?: string) => {
   const bundle = bundles.get(identifier)!;
@@ -92,11 +94,11 @@ describe('a whole message with a namespace', () => {
 
   it('switches for every message we have', async () => {
     for (const m of messageIndex) {
-      const b = bundles.get(m.identifier)!;
+      const b = await load(m.identifier);
       const p = await planPaste(serializeToXml(b.message, {}), current('pain.002.001.15'), load);
       expect(p, m.identifier).toMatchObject({ ok: true, target: { identifier: m.identifier }, switched: m.identifier !== 'pain.002.001.15' });
     }
-  });
+  }, 180_000);
 
   it('refuses a namespace no message uses, and changes nothing', async () => {
     const xml = USER_XML.replace('pain.002.001.15', 'pain.999.001.01');

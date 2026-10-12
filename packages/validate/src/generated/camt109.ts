@@ -127,6 +127,7 @@ const ownTypeDescriptors: TypeDescriptors = {
     minLength: 1,
     maxLength: 4,
     external: true,
+    options: [{ value: "RJCR", name: "RejectedCancellationOrStopChequeRequest", isoId: "_8D_nwkDxEe6lGub-LSlOyg" }, { value: "ACCR", name: "AcceptedCancellationOrStopChequeRequest", isoId: "_iwuXQkDyEe6lGub-LSlOyg" }],
   },
   "ChequeCancellationStatus1Choice": {
     name: "ChequeCancellationStatus1Choice",

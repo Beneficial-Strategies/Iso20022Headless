@@ -127,6 +127,7 @@ const ownTypeDescriptors: TypeDescriptors = {
     minLength: 1,
     maxLength: 4,
     external: true,
+    options: [{ value: "CUST", name: "RequestedByCustomer", isoId: "_gjEe0kDwEe6lGub-LSlOyg" }, { value: "LOST", name: "Lost", isoId: "_v4UKgkDwEe6lGub-LSlOyg" }, { value: "FRAD", name: "Fraud", isoId: "_Qf1PQkDxEe6lGub-LSlOyg" }, { value: "DUPL", name: "Duplicate", isoId: "_a97l0kDxEe6lGub-LSlOyg" }, { value: "NARR", name: "Narrative", isoId: "_k_bf8kDxEe6lGub-LSlOyg" }],
   },
   "ChequeCancellationReason1Choice": {
     name: "ChequeCancellationReason1Choice",

@@ -1416,7 +1416,129 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "BELC",
+          "name": "CodeSRWSecretariaatVoorRoerendeWaardenOrSVMSecrétariatDesValeursMobilières",
+          "isoId": "_uI4SM_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BLOM",
+          "name": "Bloomberg",
+          "isoId": "_uI4SN_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CCCD",
+          "name": "OtherNationalSecuritiesIdentificationNumber",
+          "isoId": "_uI4SO_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CMED",
+          "name": "ChicagoMercantileExchangeCME",
+          "isoId": "_uJCDM_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "COMM",
+          "name": "CommonCode",
+          "isoId": "_uJCDN_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CTAC",
+          "name": "ConsolidatedTapeAssociationCTA",
+          "isoId": "_uJCDO_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CUSP",
+          "name": "CommitteeOnUniformSecurityIdentificationProceduresCUSIP",
+          "isoId": "_uJLNI_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FIGC",
+          "name": "FinancialInstrumentGlobalIdentifierComposite",
+          "isoId": "_uJLNJ_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FIGG",
+          "name": "FinancialInstrumentGlobalIdentifierShareClass",
+          "isoId": "_uJLNK_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FIGI",
+          "name": "FinancialInstrumentGlobalIdentifier",
+          "isoId": "_uJLNL_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ISDU",
+          "name": "ISDAAndFpMLProductURLInSecurityID",
+          "isoId": "_uJU-I_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ISDX",
+          "name": "ISDAAndFpMLProductSpecificationXMLInEncodedSecurityDesc",
+          "isoId": "_uJU-J_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LCHD",
+          "name": "LCHClearnet",
+          "isoId": "_uJU-K_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "OCCS",
+          "name": "OptionsClearingCorpOCC",
+          "isoId": "_uJU-L_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "OPRA",
+          "name": "OptionsPriceReportingAuthorityOPRA",
+          "isoId": "_uJU-M_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RCMD",
+          "name": "MarkitRedCode",
+          "isoId": "_uJeIE_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RICC",
+          "name": "ReutersInstrumentCodeRIC",
+          "isoId": "_uJeIF_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SEDL",
+          "name": "StockExchangeDailyOfficialListSEDOL",
+          "isoId": "_uJeIG_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SICC",
+          "name": "SecuritiesIdentificationCodeCommittee",
+          "isoId": "_uJeIH_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TIKR",
+          "name": "TickerSymbolTS",
+          "isoId": "_uJn5E_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "VALO",
+          "name": "VALOR",
+          "isoId": "_uJn5F_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "WKNR",
+          "name": "WertpapierkennummerWKN",
+          "isoId": "_uJn5G_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CCDC",
+          "name": "BondIdentificationCodeListChina",
+          "isoId": "_opiOcY5EEeyANo-d7JlQ1A"
+        },
+        {
+          "value": "DTID",
+          "name": "DigitalTokenIdentifier",
+          "isoId": "_8WZMImvWEe2F6NrIyOmXcA"
+        }
+      ]
     },
     "RestrictedFINExact2Text": {
       "name": "RestrictedFINExact2Text",

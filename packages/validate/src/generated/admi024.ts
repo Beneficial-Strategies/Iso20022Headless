@@ -147,6 +147,7 @@ const ownTypeDescriptors: TypeDescriptors = {
     minLength: 1,
     maxLength: 4,
     external: true,
+    options: [{ value: "CUHO", name: "CurrencyHoliday", isoId: "_GC3v4mXjEe-25NN5iis_kQ" }, { value: "ATAC", name: "AccountTermsAndConditions", isoId: "_SVk3omXjEe-25NN5iis_kQ" }, { value: "SUSP", name: "Suspension", isoId: "_YHNfEWXjEe-25NN5iis_kQ" }, { value: "COUP", name: "ContactDetailsUpdate", isoId: "_dWBGQmXjEe-25NN5iis_kQ" }, { value: "OTHR", name: "Other", isoId: "_nKBW8WXjEe-25NN5iis_kQ" }, { value: "INFO", name: "InformationSharing", isoId: "_AnLoQrFbEe-6m-PwtIJ7WQ" }, { value: "ADDR", name: "ChangeOfAddress", isoId: "_Q0oHQrFbEe-6m-PwtIJ7WQ" }, { value: "TERM", name: "ServiceTermination", isoId: "_b6bXAbFbEe-6m-PwtIJ7WQ" }, { value: "SSIS", name: "StandingSettlementInstructionsUpdate", isoId: "_oXwaYbFbEe-6m-PwtIJ7WQ" }, { value: "MERG", name: "AdviceOfAMerger", isoId: "_GCPGQrFcEe-6m-PwtIJ7WQ" }, { value: "SYST", name: "SystemAccessRequest", isoId: "_YkuxErFcEe-6m-PwtIJ7WQ" }, { value: "OPEN", name: "ChangeOfBankBranchOpeningHours", isoId: "_lSJe4rFcEe-6m-PwtIJ7WQ" }, { value: "INCH", name: "IndustryChanges", isoId: "_10i6MrFcEe-6m-PwtIJ7WQ" }],
   },
   "NotificationType1Choice": {
     name: "NotificationType1Choice",
@@ -164,6 +165,7 @@ const ownTypeDescriptors: TypeDescriptors = {
     minLength: 1,
     maxLength: 4,
     external: true,
+    options: [{ value: "SALE", name: "Sales", isoId: "_6JdccmXjEe-25NN5iis_kQ" }, { value: "SERV", name: "Servicing", isoId: "_Bk1B0mXkEe-25NN5iis_kQ" }, { value: "LIQI", name: "Liquidity", isoId: "_IVlj8WXkEe-25NN5iis_kQ" }, { value: "PAOP", name: "PaymentOperations", isoId: "_PyVpYWXkEe-25NN5iis_kQ" }, { value: "CRED", name: "Credit", isoId: "_VNzMgmXkEe-25NN5iis_kQ" }, { value: "LOAN", name: "Loans", isoId: "_abRW8mXkEe-25NN5iis_kQ" }],
   },
   "NotificationSubType1Choice": {
     name: "NotificationSubType1Choice",

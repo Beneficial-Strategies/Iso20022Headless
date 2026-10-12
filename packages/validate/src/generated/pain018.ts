@@ -158,6 +158,7 @@ const ownTypeDescriptors: TypeDescriptors = {
     minLength: 1,
     maxLength: 4,
     external: true,
+    options: [{ value: "CTAM", name: "ContractAmended", isoId: "_uY0ytfRYEeuLhpyIdtJzwg" }, { value: "CTCA", name: "ContractCancellationInitiatedByDebtor", isoId: "_uY98ovRYEeuLhpyIdtJzwg" }, { value: "CTEX", name: "ContractExpired", isoId: "_uY98pfRYEeuLhpyIdtJzwg" }, { value: "MCFC", name: "MandateSuspendedFinalCollection", isoId: "_uY98qPRYEeuLhpyIdtJzwg" }, { value: "MCOC", name: "MandateSuspendedOnceOffCollection", isoId: "_uY98q_RYEeuLhpyIdtJzwg" }, { value: "MSUC", name: "MandateSuspended7ConsecutiveUnsuccessfulCollections", isoId: "_uY98rvRYEeuLhpyIdtJzwg" }],
   },
   "MandateSuspensionReason1Choice": {
     name: "MandateSuspensionReason1Choice",

@@ -547,7 +547,84 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "BANK",
+          "name": "BankPartyIdentification",
+          "isoId": "_tsHdsvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CBID",
+          "name": "CentralBankIdentificationNumber",
+          "isoId": "_tsHdtfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CHID",
+          "name": "ClearingIdentificationNumber",
+          "isoId": "_tsHduPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CINC",
+          "name": "CertificateOfIncorporationNumber",
+          "isoId": "_tsHdu_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "COID",
+          "name": "CountryIdentificationCode",
+          "isoId": "_tsHdvvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CUST",
+          "name": "CustomerNumber",
+          "isoId": "_tsROsvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DUNS",
+          "name": "DataUniversalNumberingSystem",
+          "isoId": "_tsROtfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "EMPL",
+          "name": "EmployerIdentificationNumber",
+          "isoId": "_tsROuPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "GS1G",
+          "name": "GS1GLNIdentifier",
+          "isoId": "_tsROu_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SREN",
+          "name": "SIREN",
+          "isoId": "_tsROvvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SRET",
+          "name": "SIRET",
+          "isoId": "_tsaYovRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TXID",
+          "name": "TaxIdentificationNumber",
+          "isoId": "_tsaYpfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BDID",
+          "name": "BusinessDomainIdentifier",
+          "isoId": "_kx6PsVEGEey6cYDbEubNXg"
+        },
+        {
+          "value": "BOID",
+          "name": "BusinessOtherIdentification",
+          "isoId": "_k59YcVEGEey6cYDbEubNXg"
+        },
+        {
+          "value": "USID",
+          "name": "UniqueSuperannuationIdentifier",
+          "isoId": "_q7eA8qF9EfG_Et71c0fVfg"
+        }
+      ]
     },
     "OrganisationIdentificationSchemeName2Choice": {
       "name": "OrganisationIdentificationSchemeName2Choice",

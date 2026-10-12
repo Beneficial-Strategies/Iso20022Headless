@@ -465,7 +465,29 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "AIIN",
+          "name": "IssuerIdentificationNumber",
+          "isoId": "_teaY4vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BBAN",
+          "name": "BBANIdentifier",
+          "isoId": "_teaY5fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CUID",
+          "name": "CHIPSUniversalIdentifier",
+          "isoId": "_teaY6PRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "UPIC",
+          "name": "UPICIdentifier",
+          "isoId": "_teji0vRYEeuLhpyIdtJzwg"
+        }
+      ]
     },
     "AccountSchemeName1Choice": {
       "name": "AccountSchemeName1Choice",
@@ -557,7 +579,149 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "CACC",
+          "name": "Current",
+          "isoId": "_uLQ32_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CARD",
+          "name": "CardAccount",
+          "isoId": "_uLQ33vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CASH",
+          "name": "CashPayment",
+          "isoId": "_uLao0vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CHAR",
+          "name": "Charges",
+          "isoId": "_uLao1fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CISH",
+          "name": "CashIncome",
+          "isoId": "_uLao2PRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "COMM",
+          "name": "Commission",
+          "isoId": "_uLao2_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CPAC",
+          "name": "ClearingParticipantSettlementAccount",
+          "isoId": "_uLjywvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LLSV",
+          "name": "LimitedLiquiditySavingsAccount",
+          "isoId": "_uLjyxfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LOAN",
+          "name": "Loan",
+          "isoId": "_uLjyyPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "MGLD",
+          "name": "MarginalLending",
+          "isoId": "_uLjyy_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "MOMA",
+          "name": "MoneyMarket",
+          "isoId": "_uLjyzvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "NREX",
+          "name": "NonResidentExternal",
+          "isoId": "_uLtjwvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ODFT",
+          "name": "Overdraft",
+          "isoId": "_uLtjxfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ONDP",
+          "name": "OverNightDeposit",
+          "isoId": "_uLtjyPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "OTHR",
+          "name": "OtherAccount",
+          "isoId": "_uLtjy_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SACC",
+          "name": "Settlement",
+          "isoId": "_uLtjzvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SLRY",
+          "name": "Salary",
+          "isoId": "_uL2tsvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SVGS",
+          "name": "Savings",
+          "isoId": "_uL2ttfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TAXE",
+          "name": "Tax",
+          "isoId": "_uL2tuPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TRAN",
+          "name": "TransactingAccount",
+          "isoId": "_uL2tu_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TRAS",
+          "name": "CashTrading",
+          "isoId": "_uL2tvvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "VACC",
+          "name": "VirtualAccount",
+          "isoId": "_n1HScY5FEeyANo-d7JlQ1A"
+        },
+        {
+          "value": "NFCA",
+          "name": "NonResidentForeignCurrencyAccount",
+          "isoId": "_YbOMAmvbEe2F6NrIyOmXcA"
+        },
+        {
+          "value": "RFCA",
+          "name": "ResidentIndividualForeignCurrencyAccount",
+          "isoId": "_YVteccnvEfCY0M4eFzOwyQ"
+        },
+        {
+          "value": "REFC",
+          "name": "ResidentEntityForeignCurrency",
+          "isoId": "_gXlqMsnvEfCY0M4eFzOwyQ"
+        },
+        {
+          "value": "NLCY",
+          "name": "NonResidentLocalDomesticCurrencyAccount",
+          "isoId": "_mhoKksnvEfCY0M4eFzOwyQ"
+        },
+        {
+          "value": "RLCY",
+          "name": "ResidentLocalDomesticCurrency",
+          "isoId": "_tdo6ccnvEfCY0M4eFzOwyQ"
+        },
+        {
+          "value": "ODEP",
+          "name": "OrdinaryDeposit",
+          "isoId": "_oGNKYqGFEfG_Et71c0fVfg"
+        }
+      ]
     },
     "CashAccountType2Choice": {
       "name": "CashAccountType2Choice",
@@ -603,7 +767,119 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "TELE",
+          "name": "TelephoneNumber",
+          "isoId": "_um0yePRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "EMAL",
+          "name": "EmailAddress",
+          "isoId": "_um0ye_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DNAM",
+          "name": "DomainName",
+          "isoId": "_um-jcvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CINC",
+          "name": "CertificateOfIncorporationNumber",
+          "isoId": "_D2324ZuVEeya_t2LwNmi4g"
+        },
+        {
+          "value": "COTX",
+          "name": "CorporateTaxIdentification",
+          "isoId": "_D8_F8ZuVEeya_t2LwNmi4g"
+        },
+        {
+          "value": "COID",
+          "name": "CountryAuthorityIdentification",
+          "isoId": "_EC8kAZuVEeya_t2LwNmi4g"
+        },
+        {
+          "value": "CUST",
+          "name": "CustomerIdentificationNumber",
+          "isoId": "_EJM9AZuVEeya_t2LwNmi4g"
+        },
+        {
+          "value": "DRLC",
+          "name": "DriverLicenseNumber",
+          "isoId": "_ERQFwZuVEeya_t2LwNmi4g"
+        },
+        {
+          "value": "EIDN",
+          "name": "ElectronicIdentification",
+          "isoId": "_EXNj0ZuVEeya_t2LwNmi4g"
+        },
+        {
+          "value": "EWAL",
+          "name": "EWalletIdentification",
+          "isoId": "_EcuV8ZuVEeya_t2LwNmi4g"
+        },
+        {
+          "value": "PVTX",
+          "name": "IndividualTaxIdentification",
+          "isoId": "_EiY5EZuVEeya_t2LwNmi4g"
+        },
+        {
+          "value": "LEIC",
+          "name": "LegalEntityIdentifierCode",
+          "isoId": "_En5rMZuVEeya_t2LwNmi4g"
+        },
+        {
+          "value": "MBNO",
+          "name": "MobilePhoneNumber",
+          "isoId": "_Eq4GsZuVEeya_t2LwNmi4g"
+        },
+        {
+          "value": "NIDN",
+          "name": "NationalIdentificationNumber",
+          "isoId": "_EvgIAZuVEeya_t2LwNmi4g"
+        },
+        {
+          "value": "CCPT",
+          "name": "PassportNumber",
+          "isoId": "_E0kOMZuVEeya_t2LwNmi4g"
+        },
+        {
+          "value": "SHID",
+          "name": "SchemeIdentificationNumber",
+          "isoId": "_E3Gk0ZuVEeya_t2LwNmi4g"
+        },
+        {
+          "value": "SOSE",
+          "name": "SocialSecurityNumber",
+          "isoId": "_E-sakZuVEeya_t2LwNmi4g"
+        },
+        {
+          "value": "TOKN",
+          "name": "TokenIdentification",
+          "isoId": "_FDxH0ZuVEeya_t2LwNmi4g"
+        },
+        {
+          "value": "UBIL",
+          "name": "UtilitiesSubscriptionIdentification",
+          "isoId": "_FI1OAZuVEeya_t2LwNmi4g"
+        },
+        {
+          "value": "VIPN",
+          "name": "VehicleIdentificationPlateNumber",
+          "isoId": "_FLNzoZuVEeya_t2LwNmi4g"
+        },
+        {
+          "value": "BIID",
+          "name": "BillerSubscriberIdentification",
+          "isoId": "_Z40uUZuZEeya_t2LwNmi4g"
+        },
+        {
+          "value": "OSID",
+          "name": "OtherSchemeIdentificationNumber",
+          "isoId": "_sddT8qGEEfG_Et71c0fVfg"
+        }
+      ]
     },
     "ProxyAccountType1Choice": {
       "name": "ProxyAccountType1Choice",
@@ -978,7 +1254,84 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "BANK",
+          "name": "BankPartyIdentification",
+          "isoId": "_tsHdsvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CBID",
+          "name": "CentralBankIdentificationNumber",
+          "isoId": "_tsHdtfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CHID",
+          "name": "ClearingIdentificationNumber",
+          "isoId": "_tsHduPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CINC",
+          "name": "CertificateOfIncorporationNumber",
+          "isoId": "_tsHdu_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "COID",
+          "name": "CountryIdentificationCode",
+          "isoId": "_tsHdvvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CUST",
+          "name": "CustomerNumber",
+          "isoId": "_tsROsvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DUNS",
+          "name": "DataUniversalNumberingSystem",
+          "isoId": "_tsROtfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "EMPL",
+          "name": "EmployerIdentificationNumber",
+          "isoId": "_tsROuPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "GS1G",
+          "name": "GS1GLNIdentifier",
+          "isoId": "_tsROu_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SREN",
+          "name": "SIREN",
+          "isoId": "_tsROvvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SRET",
+          "name": "SIRET",
+          "isoId": "_tsaYovRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TXID",
+          "name": "TaxIdentificationNumber",
+          "isoId": "_tsaYpfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BDID",
+          "name": "BusinessDomainIdentifier",
+          "isoId": "_kx6PsVEGEey6cYDbEubNXg"
+        },
+        {
+          "value": "BOID",
+          "name": "BusinessOtherIdentification",
+          "isoId": "_k59YcVEGEey6cYDbEubNXg"
+        },
+        {
+          "value": "USID",
+          "name": "UniqueSuperannuationIdentifier",
+          "isoId": "_q7eA8qF9EfG_Et71c0fVfg"
+        }
+      ]
     },
     "OrganisationIdentificationSchemeName1Choice": {
       "name": "OrganisationIdentificationSchemeName1Choice",
@@ -1122,7 +1475,64 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "ARNU",
+          "name": "AlienRegistrationNumber",
+          "isoId": "_tsaYqPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CCPT",
+          "name": "PassportNumber",
+          "isoId": "_tsaYq_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CUST",
+          "name": "CustomerIdentificationNumber",
+          "isoId": "_tsaYrvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DRLC",
+          "name": "DriversLicenseNumber",
+          "isoId": "_tskJovRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "EMPL",
+          "name": "EmployeeIdentificationNumber",
+          "isoId": "_tskJpfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "NIDN",
+          "name": "NationalIdentityNumber",
+          "isoId": "_tskJqPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SOSE",
+          "name": "SocialSecurityNumber",
+          "isoId": "_tskJq_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TELE",
+          "name": "TelephoneNumber",
+          "isoId": "_tskJrvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TXID",
+          "name": "TaxIdentificationNumber",
+          "isoId": "_tst6ovRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "POID",
+          "name": "PersonCommercialIdentification",
+          "isoId": "_vcc8QVEFEey6cYDbEubNXg"
+        },
+        {
+          "value": "BANK",
+          "name": "BankPartyIdentification",
+          "isoId": "_U461kfXXEe-Ig-GynGPh9A"
+        }
+      ]
     },
     "PersonIdentificationSchemeName1Choice": {
       "name": "PersonIdentificationSchemeName1Choice",
@@ -1535,7 +1945,869 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 5
+      "maxLength": 5,
+      "options": [
+        {
+          "value": "MA",
+          "name": "MoroccoClearingSystemID",
+          "isoId": "b59f939b-32c8-4fe7-b4a0-420339a2c719"
+        },
+        {
+          "value": "DZ",
+          "name": "AlgeriaClearingSystemID",
+          "isoId": "d0da1ae3-c659-40bb-9f0d-a31c1fc39330"
+        },
+        {
+          "value": "MU",
+          "name": "MauritiusClearingSystemID",
+          "isoId": "3b55a15a-423c-471e-8545-1893feea420b"
+        },
+        {
+          "value": "RS",
+          "name": "SerbiaClearingSystemID",
+          "isoId": "f7112572-d25a-4c0e-ae82-cb4eacbeb314"
+        },
+        {
+          "value": "ATBLZ",
+          "name": "AustrianBankleitzahl",
+          "isoId": "_tlQnxfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "AUBSB",
+          "name": "AustralianBankStateBranchCodeBSB",
+          "isoId": "_tlQnyPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CACPA",
+          "name": "CanadianPaymentsAssociationPaymentRoutingNumber",
+          "isoId": "_tlQny_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CHBCC",
+          "name": "SwissFinancialInstitutionIdentificationShort",
+          "isoId": "_tlQnzvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CHSIC",
+          "name": "SwissFinancialInstitutionIdentificationLong",
+          "isoId": "_tlQn0fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CNAPS",
+          "name": "CNAPSIdentifier",
+          "isoId": "_tlaYwvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DEBLZ",
+          "name": "GermanBankleitzahl",
+          "isoId": "_tlaYxfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ESNCC",
+          "name": "SpanishDomesticInterbankingCode",
+          "isoId": "_tlaYyPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "GBDSC",
+          "name": "UKDomesticSortCode",
+          "isoId": "_tlaYy_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "GRBIC",
+          "name": "HelenicBankIdentificationCode",
+          "isoId": "_tlkJwvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "HKNCC",
+          "name": "HongKongBankCode",
+          "isoId": "_tlkJxfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "IENCC",
+          "name": "IrishNationalClearingCode",
+          "isoId": "_tlkJyPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "INFSC",
+          "name": "IndianFinancialSystemCode",
+          "isoId": "_tlkJy_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ITNCC",
+          "name": "ItalianDomesticIdentificationCode",
+          "isoId": "_tlkJzvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "JPZGN",
+          "name": "JapanZenginClearingCode",
+          "isoId": "_tltTsvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "NZNCC",
+          "name": "NewZealandNationalClearingCode",
+          "isoId": "_tltTtfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "PLKNR",
+          "name": "PolishNationalClearingCode",
+          "isoId": "_tltTuPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "PTNCC",
+          "name": "PortugueseNationalClearingCode",
+          "isoId": "_tltTu_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RUCBC",
+          "name": "RussianCentralBankIdentificationCode",
+          "isoId": "_tltTvvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SESBA",
+          "name": "SwedenBankgiroClearingCode",
+          "isoId": "_tl3EsvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SGIBG",
+          "name": "IBGSortCode",
+          "isoId": "_tl3EtfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "THCBC",
+          "name": "ThaiCentralBankIdentificationCode",
+          "isoId": "_tl3EuPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TWNCC",
+          "name": "FinancialInstitutionCode",
+          "isoId": "_tl3Eu_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "USABA",
+          "name": "UnitedStatesRoutingNumberFedwireNACHA",
+          "isoId": "_tl3EvvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "USPID",
+          "name": "CHIPSParticipantIdentifier",
+          "isoId": "_tmA1svRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ZANCC",
+          "name": "SouthAfricanNationalClearingCode",
+          "isoId": "_tmA1tfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "NZRSA",
+          "name": "NewZealandRTGSClearingCode",
+          "isoId": "_c_XdsQTZEey95qpfbNuEwg"
+        },
+        {
+          "value": "MZBMO",
+          "name": "BancoDeMocambiqueRTGS",
+          "isoId": "_v84qEmvcEe2F6NrIyOmXcA"
+        },
+        {
+          "value": "CNCIP",
+          "name": "CrossBorderInterbankPaymentSystem",
+          "isoId": "_LNkXkmveEe2F6NrIyOmXcA"
+        },
+        {
+          "value": "KRBOK",
+          "name": "SouthKoreaCentralBankIdentificationCode",
+          "isoId": "_BwCmYv7MEe2ORYPQEd-Clg"
+        },
+        {
+          "value": "BRISP",
+          "name": "BrazilianBankIdentificationCode",
+          "isoId": "_eMZt8WXeEe-25NN5iis_kQ"
+        },
+        {
+          "value": "NACSC",
+          "name": "NamibiaClearingSystemCode",
+          "isoId": "_cIBUAWXhEe-25NN5iis_kQ"
+        },
+        {
+          "value": "ZWTSS",
+          "name": "ZimbabweClearingSystemCode",
+          "isoId": "_yncMYbFZEe-6m-PwtIJ7WQ"
+        },
+        {
+          "value": "AD",
+          "name": "AndorraClearingSystemID",
+          "isoId": "9d5c79bf-c65c-42c3-8df0-4cbdcde8acda"
+        },
+        {
+          "value": "EGNCC",
+          "name": "EgyptianNationalClearingCode",
+          "isoId": "_Mn_kMrFaEe-6m-PwtIJ7WQ"
+        },
+        {
+          "value": "AE",
+          "name": "UnitedArabEmiratesClearingSystemID",
+          "isoId": "05aa82b0-f382-4226-bdf5-4777948b8284"
+        },
+        {
+          "value": "AF",
+          "name": "AfghanistanClearingSystemID",
+          "isoId": "e3edb72c-64d2-477d-b3d8-f316dba0d470"
+        },
+        {
+          "value": "AI",
+          "name": "AntiguaandBermudaClearingSystemID",
+          "isoId": "a6c1b061-7f74-451e-b6fe-9347fd712f1e"
+        },
+        {
+          "value": "AL",
+          "name": "AlbaniaClearingSystemID",
+          "isoId": "f75ca894-10af-4517-945c-74639eb31a9a"
+        },
+        {
+          "value": "AM",
+          "name": "ArmeniaClearingSystemID",
+          "isoId": "5fa118ab-89ef-4f03-a200-8ee84cce50f0"
+        },
+        {
+          "value": "AO",
+          "name": "AngolaClearingSystemID",
+          "isoId": "c4b98691-4e8d-4594-aab8-d2a8847cfea9"
+        },
+        {
+          "value": "AR",
+          "name": "ArgentinaClearingSystemID",
+          "isoId": "9f7e06a9-f83f-44ec-ab8a-dea30c88f043"
+        },
+        {
+          "value": "AS",
+          "name": "AmericanSamoaClearingSystemID",
+          "isoId": "7a2e0625-40f1-430f-ae29-c7e30449f8c0"
+        },
+        {
+          "value": "AW",
+          "name": "ArubaClearingSystemID",
+          "isoId": "736dbe2b-5de4-4960-b80a-7edaa48b2769"
+        },
+        {
+          "value": "AZ",
+          "name": "AzerbaijanClearingSystemID",
+          "isoId": "91afc316-2bed-477e-ad93-0081f309d83c"
+        },
+        {
+          "value": "BA",
+          "name": "BosniaandHerzegovinaClearingSystemID",
+          "isoId": "6142e5fc-1a4d-48b3-bb4b-2091cea842c9"
+        },
+        {
+          "value": "BD",
+          "name": "BangladeshClearingSystemID",
+          "isoId": "eb4a76f1-e69c-4f1d-b362-da387664892f"
+        },
+        {
+          "value": "BG",
+          "name": "BulgariaClearingSystemID",
+          "isoId": "66925c5d-ee0b-42fd-8a3e-8ccba0778f1c"
+        },
+        {
+          "value": "BH",
+          "name": "BahrainClearingSystemID",
+          "isoId": "cd74046f-6641-4cfd-b96d-ac30ffb5c7c9"
+        },
+        {
+          "value": "BI",
+          "name": "BurundiClearingSystemID",
+          "isoId": "a3458500-c0fa-4174-b3fb-3d2281838162"
+        },
+        {
+          "value": "BL",
+          "name": "SaintBarthelemyClearingSystemID",
+          "isoId": "a92026aa-37c6-4f6d-8237-ac40e34c4b3a"
+        },
+        {
+          "value": "BM",
+          "name": "BermudaClearingSystemID",
+          "isoId": "a23bf970-ec07-43a9-9f57-2104ee6e4a27"
+        },
+        {
+          "value": "BN",
+          "name": "BruneiDarussalamClearingSystemID",
+          "isoId": "013082d8-9d5f-49f2-83c5-dcee8de5ba49"
+        },
+        {
+          "value": "BO",
+          "name": "BoliviaClearingSystemID",
+          "isoId": "dcedda89-6892-4991-88f8-44077cdf16df"
+        },
+        {
+          "value": "BS",
+          "name": "BahamasClearingSystemID",
+          "isoId": "0b2d64a0-c20b-4ef6-865a-5ae65b2a0c9f"
+        },
+        {
+          "value": "BT",
+          "name": "BhutanClearingSystemID",
+          "isoId": "fb33f6ca-70e4-4aa5-b39b-b467467d4f03"
+        },
+        {
+          "value": "BW",
+          "name": "BotswanaClearingSystemID",
+          "isoId": "50c39974-e9ce-4c9e-aaa4-347a1d4f0068"
+        },
+        {
+          "value": "BY",
+          "name": "BelarusClearingSystemID",
+          "isoId": "740fea28-6b57-487d-9f00-0444fec061c2"
+        },
+        {
+          "value": "BZ",
+          "name": "BelizeClearingSystemID",
+          "isoId": "7c1ca4df-fa01-444f-981a-3539ea3c6ff0"
+        },
+        {
+          "value": "CD",
+          "name": "DemocraticRepublicofTheCongoClearingSystemID",
+          "isoId": "8b959eb2-8c76-44a3-aca8-a5bc36fa6a89"
+        },
+        {
+          "value": "CL",
+          "name": "ChileClearingSystemID",
+          "isoId": "7a8c29eb-1800-421d-8e7d-63636090c5e2"
+        },
+        {
+          "value": "CO",
+          "name": "ColombiaClearingSystemID",
+          "isoId": "8a6f84ae-b67a-4f71-aa2d-a2d29ad4e09b"
+        },
+        {
+          "value": "CR",
+          "name": "CostaRicaClearingSystemID",
+          "isoId": "177c97d3-31be-40fc-a028-2b2b4cbf7cfe"
+        },
+        {
+          "value": "CV",
+          "name": "CaboVerdeClearingSystemID",
+          "isoId": "9e9c3fea-f9a0-455c-9fd4-460a8d1c8105"
+        },
+        {
+          "value": "CW",
+          "name": "CuracaoClearingSystemID",
+          "isoId": "23f4608a-5bb1-48eb-a50a-46f1f47e28b7"
+        },
+        {
+          "value": "CY",
+          "name": "CyprusClearingSystemID",
+          "isoId": "fb30f999-471c-40aa-b2a8-b76ba850028d"
+        },
+        {
+          "value": "CZ",
+          "name": "CzechRepublicClearingSystemID",
+          "isoId": "ea61c564-05e5-4959-8860-cc99e8421f66"
+        },
+        {
+          "value": "DO",
+          "name": "DominicanRepublicClearingSystemID",
+          "isoId": "b3be8a05-b59d-4bc1-aefc-32f2b7329440"
+        },
+        {
+          "value": "EC",
+          "name": "EcuadorClearingSystemID",
+          "isoId": "ce44949f-b0fe-4553-9a87-db64a5b25b47"
+        },
+        {
+          "value": "EE",
+          "name": "EstoniaClearingSystemID",
+          "isoId": "f261f7d9-6c26-40df-894a-8f7f9c2850d4"
+        },
+        {
+          "value": "GE",
+          "name": "GeorgiaClearingSystemID",
+          "isoId": "3c827d1f-2bba-4089-85f1-33a7f432baf7"
+        },
+        {
+          "value": "GH",
+          "name": "GhanaClearingSystemID",
+          "isoId": "188a8d55-20cd-42cf-ac96-6c425bac7e17"
+        },
+        {
+          "value": "GN",
+          "name": "GuineaClearingSystemID",
+          "isoId": "a6faead8-672f-4e9c-b491-086de0445d69"
+        },
+        {
+          "value": "GT",
+          "name": "GuatemalaClearingSystemID",
+          "isoId": "be870ce4-a0d7-45b9-a5ea-a7e327de1635"
+        },
+        {
+          "value": "GY",
+          "name": "GuyanaClearingSystemID",
+          "isoId": "4bf2a4c6-7f75-4795-a333-d37b7b0be741"
+        },
+        {
+          "value": "HN",
+          "name": "HondurasClearingSystemID",
+          "isoId": "0dc59507-1fd8-409f-b67c-873f72501343"
+        },
+        {
+          "value": "HR",
+          "name": "CroatiaClearingSystemID",
+          "isoId": "fe0a134b-6432-45b2-9123-45d0e03a68c3"
+        },
+        {
+          "value": "HT",
+          "name": "HaitiClearingSystemID",
+          "isoId": "a87c05ee-6a6f-4e94-a31b-ae4a6dca2f63"
+        },
+        {
+          "value": "HU",
+          "name": "HungaryClearingSystemID",
+          "isoId": "b3300a53-3cde-402a-91c5-b55a5c85538a"
+        },
+        {
+          "value": "ID",
+          "name": "IndonesiaClearingSystemID",
+          "isoId": "041af2f9-961b-4220-a088-fe3f71fe773e"
+        },
+        {
+          "value": "IL",
+          "name": "IsraelClearingSystemID",
+          "isoId": "6971cbce-ca7a-4dc3-9f42-537f2d50f104"
+        },
+        {
+          "value": "IQ",
+          "name": "IraqClearingSystemID",
+          "isoId": "4040415b-b9c6-4da1-a2fd-88544477c7cb"
+        },
+        {
+          "value": "IS",
+          "name": "IcelandClearingSystemID",
+          "isoId": "4abd533f-8599-4077-8bb3-4fb928eccf8b"
+        },
+        {
+          "value": "JM",
+          "name": "JamaicaClearingSystemID",
+          "isoId": "c4d2f26e-0e42-46c7-aa51-baa16986efed"
+        },
+        {
+          "value": "JO",
+          "name": "JordanClearingSystemID",
+          "isoId": "9686d4a7-1230-4fba-8b3c-1b07716bd178"
+        },
+        {
+          "value": "KE",
+          "name": "KenyaClearingSystemID",
+          "isoId": "011f34ed-3c6d-4eee-beed-4097a340e5ab"
+        },
+        {
+          "value": "KG",
+          "name": "TheKyrgyzRepublicClearingSystemID",
+          "isoId": "aa2ad5a9-4965-40e5-9f3e-e289fe03cc7b"
+        },
+        {
+          "value": "KH",
+          "name": "CambodiaClearingSystemID",
+          "isoId": "5035b60b-ecfd-4c47-89c4-2237fd8a9f1f"
+        },
+        {
+          "value": "KM",
+          "name": "ComorosClearingSystemID",
+          "isoId": "b621e8e8-89a2-4ead-af59-9fb80b3d4f32"
+        },
+        {
+          "value": "KW",
+          "name": "KuwaitClearingSystemID",
+          "isoId": "43e17c02-16bc-45ad-8bd9-cc03136a3fbb"
+        },
+        {
+          "value": "KZ",
+          "name": "KazakhstanClearingSystemID",
+          "isoId": "9f437f8c-aae7-4b77-b457-d8813ae2685c"
+        },
+        {
+          "value": "LB",
+          "name": "LebanonClearingSystemID",
+          "isoId": "2ac4cfd3-851e-417d-9b8c-49b456c5d870"
+        },
+        {
+          "value": "LK",
+          "name": "SriLankaClearingSystemID",
+          "isoId": "9aed3eac-3f8e-424c-b807-5365190cf3e9"
+        },
+        {
+          "value": "LR",
+          "name": "LiberiaClearingSystemID",
+          "isoId": "8cb453d6-197d-4e3c-909b-e6fb22807beb"
+        },
+        {
+          "value": "LS",
+          "name": "LesothoClearingSystemID",
+          "isoId": "6d10256e-793d-4449-b6c2-fb64153313de"
+        },
+        {
+          "value": "LT",
+          "name": "LithuaniaClearingSystemID",
+          "isoId": "3451fcc5-384a-40c8-9a62-a036691e9c22"
+        },
+        {
+          "value": "LV",
+          "name": "LatviaClearingSystemID",
+          "isoId": "ffff1b6f-3438-4f32-9143-1c8191800c13"
+        },
+        {
+          "value": "LY",
+          "name": "LibyaClearingSystemID",
+          "isoId": "5d4d0dd6-6057-4175-8fca-fd5d412de6f3"
+        },
+        {
+          "value": "MD",
+          "name": "MoldovaClearingSystemID",
+          "isoId": "6a1db3cd-5476-4752-9378-32d7e63d462e"
+        },
+        {
+          "value": "ME",
+          "name": "MontenegroClearingSystemID",
+          "isoId": "8c34b9f0-6d97-49f7-9200-09a6454247ab"
+        },
+        {
+          "value": "MG",
+          "name": "MadagascarClearingSystemID",
+          "isoId": "fcaa10a0-c12a-4634-8c41-56160892813d"
+        },
+        {
+          "value": "MK",
+          "name": "NorthMacedoniaClearingSystemID",
+          "isoId": "9b5d4590-db07-4c68-be84-a526fedc1edb"
+        },
+        {
+          "value": "MN",
+          "name": "MongoliaClearingSystemID",
+          "isoId": "8ab366aa-a19b-401c-b3f0-b321281a44b9"
+        },
+        {
+          "value": "MO",
+          "name": "MacaoClearingSystemID",
+          "isoId": "513be092-88e6-4d27-8bc1-442136295c9c"
+        },
+        {
+          "value": "MR",
+          "name": "MauritaniaClearingSystemID",
+          "isoId": "a944eff2-ce95-48e5-937c-db1b5ee84f1c"
+        },
+        {
+          "value": "MT",
+          "name": "MaltaClearingSystemID",
+          "isoId": "71ae1ec0-9db2-4eda-8017-4b6fba2fde6e"
+        },
+        {
+          "value": "MW",
+          "name": "MalawiClearingSystemID",
+          "isoId": "72c5a9c7-2139-4b9c-b7e2-488cee4cf1a0"
+        },
+        {
+          "value": "MX",
+          "name": "MexicoClearingSystemID",
+          "isoId": "ef360e3d-be82-492e-a0ff-4770d34eb4ca"
+        },
+        {
+          "value": "MY",
+          "name": "MalaysiaClearingSystemID",
+          "isoId": "92f5f48c-16a9-43f9-a6db-0d690eb39e5a"
+        },
+        {
+          "value": "NG",
+          "name": "NigeriaClearingSystemID",
+          "isoId": "7a410652-4ed0-4e76-820c-eb2df1cd2637"
+        },
+        {
+          "value": "NI",
+          "name": "NicaraguaClearingSystemID",
+          "isoId": "f5d6d56f-8fa6-42bc-a5ee-5602e4d1bf3b"
+        },
+        {
+          "value": "NP",
+          "name": "NepalClearingSystemID",
+          "isoId": "71a1b862-bf69-4209-a939-eb6c45abaee9"
+        },
+        {
+          "value": "OM",
+          "name": "OmanClearingSystemID",
+          "isoId": "f3ffc7cd-497f-4345-8f95-9da66084dbe4"
+        },
+        {
+          "value": "PA",
+          "name": "PanamaClearingSystemID",
+          "isoId": "57d5c58a-80cb-4e5d-8a97-fd8782a4af25"
+        },
+        {
+          "value": "PE",
+          "name": "PeruClearingSystemID",
+          "isoId": "04b15fc2-272f-4e6f-9dbc-14606137edd4"
+        },
+        {
+          "value": "PG",
+          "name": "PapuaNewGuineaClearingSystemID",
+          "isoId": "16292b4a-9ab6-47a1-8ad9-fb3c8b998044"
+        },
+        {
+          "value": "PH",
+          "name": "PhilippinesClearingSystemID",
+          "isoId": "056040dc-efd1-4aee-b7ea-c35225e68b91"
+        },
+        {
+          "value": "PK",
+          "name": "PakistanClearingSystemID",
+          "isoId": "ebf1e10b-6e67-4745-909e-798e3a610084"
+        },
+        {
+          "value": "PS",
+          "name": "PalestineClearingSystemID",
+          "isoId": "408d8411-d229-4636-80e2-ee0bf38c4668"
+        },
+        {
+          "value": "PY",
+          "name": "ParaguayClearingSystemID",
+          "isoId": "c1b9dba0-dbf6-44f5-852b-a29410924d84"
+        },
+        {
+          "value": "QA",
+          "name": "QatarClearingSystemID",
+          "isoId": "cae29409-e5e1-46cd-a927-dc2e53842144"
+        },
+        {
+          "value": "RO",
+          "name": "RomaniaClearingSystemID",
+          "isoId": "6b05d1bf-0b8e-4d62-b045-9a1bbeb8032a"
+        },
+        {
+          "value": "RW",
+          "name": "RwandaClearingSystemID",
+          "isoId": "110e45f1-4013-468a-986b-6bd1a9a61d72"
+        },
+        {
+          "value": "SA",
+          "name": "SaudiArabiaClearingSystemID",
+          "isoId": "91ff85b1-e881-4296-bce1-0e5f4434b7df"
+        },
+        {
+          "value": "SC",
+          "name": "SeychellesClearingSystemID",
+          "isoId": "49f45f45-c4e1-43ae-b32a-aa8a227bd4c5"
+        },
+        {
+          "value": "SD",
+          "name": "SudanClearingSystemID",
+          "isoId": "f981ed26-76e7-4a40-9ba4-aa11e8c3cd4f"
+        },
+        {
+          "value": "SI",
+          "name": "SloveniaClearingSystemID",
+          "isoId": "4675c8bc-85d6-4404-8916-68f69125d9d5"
+        },
+        {
+          "value": "SK",
+          "name": "SlovakiaClearingSystemID",
+          "isoId": "b3a61732-ce02-4a08-aeb8-ffa6494e71bf"
+        },
+        {
+          "value": "SL",
+          "name": "SierraLeoneClearingSystemID",
+          "isoId": "1bc0bfdd-bd5a-4791-998f-8e447a2f901e"
+        },
+        {
+          "value": "ST",
+          "name": "SaoTomeandPrincipeClearingSystemID",
+          "isoId": "5c1aecc6-a09e-4fe9-adc1-32b6da351417"
+        },
+        {
+          "value": "SV",
+          "name": "ElSalvadorClearingSystemID",
+          "isoId": "601f6861-efa7-4d70-a215-bac0d7f63a21"
+        },
+        {
+          "value": "SZ",
+          "name": "EswatiniClearingSystemID",
+          "isoId": "8dd8b79f-c1bd-42e4-8d7a-12ac3f0706fd"
+        },
+        {
+          "value": "TJ",
+          "name": "TajikistanClearingSystemID",
+          "isoId": "eaf6fdb2-499b-442d-bf3e-5f0930f65dc2"
+        },
+        {
+          "value": "TL",
+          "name": "Timor-LesteClearingSystemID",
+          "isoId": "5ec86848-1e5f-4250-a1f9-64468738a8f5"
+        },
+        {
+          "value": "TM",
+          "name": "TurkmenistanClearingSystemID",
+          "isoId": "4331cb7a-70f4-4bd3-ad99-7350b48cb221"
+        },
+        {
+          "value": "TN",
+          "name": "TunisiaClearingSystemID",
+          "isoId": "86914607-07e6-4cf4-b2ca-5f26bd641bab"
+        },
+        {
+          "value": "TR",
+          "name": "TurkeyClearingSystemID",
+          "isoId": "0104a755-2696-4ef1-b003-ce731d558814"
+        },
+        {
+          "value": "TT",
+          "name": "TrinidadandTobagoClearingSystemID",
+          "isoId": "60caa13f-b3c6-439f-b322-4035a58e5ec8"
+        },
+        {
+          "value": "TZ",
+          "name": "TanzaniaClearingSystemID",
+          "isoId": "d91dab5b-b180-4679-86d6-121b7628b4b9"
+        },
+        {
+          "value": "UA",
+          "name": "UkraineClearingSystemID",
+          "isoId": "647f8d43-9ca2-427e-83ee-c82cad4db6e4"
+        },
+        {
+          "value": "UG",
+          "name": "UgandaClearingSystemID",
+          "isoId": "4e9bfe28-272d-424d-b4b3-b82604d027cc"
+        },
+        {
+          "value": "UY",
+          "name": "UruguayClearingSystemID",
+          "isoId": "314cdc57-4a64-4e4e-9d85-99664761c1b7"
+        },
+        {
+          "value": "UZ",
+          "name": "UzbekistanClearingSystemID",
+          "isoId": "96e58928-c2b9-489c-8945-4cc137d2dc74"
+        },
+        {
+          "value": "VA",
+          "name": "VaticanCityClearingSystemID",
+          "isoId": "9f7d1204-6bba-44e7-9c60-da7a451ce4bb"
+        },
+        {
+          "value": "VE",
+          "name": "VenezuelaClearingSystemID",
+          "isoId": "cf46344a-c7dd-40b0-8d39-79e488542901"
+        },
+        {
+          "value": "VN",
+          "name": "VietnamClearingSystemID",
+          "isoId": "233fa2d8-aa75-4283-8411-1a9a661858fa"
+        },
+        {
+          "value": "XK",
+          "name": "KosovoClearingSystemID",
+          "isoId": "6617ef7d-6bb9-4ed6-aceb-15f76a18635d"
+        },
+        {
+          "value": "ZM",
+          "name": "ZambiaClearingSystemID",
+          "isoId": "83dbe431-ea0e-4d05-8de6-0716d46e94c0"
+        },
+        {
+          "value": "MARPA",
+          "name": "MoroccoRTGSParticipantIdentificationCode",
+          "isoId": "_U4Mc0fXXEe-Ig-GynGPh9A"
+        },
+        {
+          "value": "MARAC",
+          "name": "MoroccoRTGSNationalClearingCode",
+          "isoId": "_U4Mc0_XXEe-Ig-GynGPh9A"
+        },
+        {
+          "value": "CEAPA",
+          "name": "BankOfCentralAfricanStateParticipantIdentificationCode",
+          "isoId": "_Yt4V0YJ9EfCff8wf3dEAMw"
+        },
+        {
+          "value": "CEAAC",
+          "name": "BankOfCentralAfricanStateParticipantAccountIdentificationCode",
+          "isoId": "_VYB-4YJ-EfCff8wf3dEAMw"
+        },
+        {
+          "value": "RSDPA",
+          "name": "SerbiaRTGSParticipantIdentificationCode",
+          "isoId": "_BaUhAoKDEfCff8wf3dEAMw"
+        },
+        {
+          "value": "RSDAC",
+          "name": "SerbiaRTGSAccountIdentificationCode",
+          "isoId": "_VIf70oKDEfCff8wf3dEAMw"
+        },
+        {
+          "value": "RSEPA",
+          "name": "SerbiaNationalClearingParticipantIdentificationCode",
+          "isoId": "_oMl30YKDEfCff8wf3dEAMw"
+        },
+        {
+          "value": "RSEAC",
+          "name": "SerbiaNationalClearingAccountIdentificationCode",
+          "isoId": "_1Qnu0YKDEfCff8wf3dEAMw"
+        },
+        {
+          "value": "MUPPA",
+          "name": "MauritiusRTGSParticipantIdentificationCode",
+          "isoId": "_01Ty8cnsEfCY0M4eFzOwyQ"
+        },
+        {
+          "value": "MUPAC",
+          "name": "MauritiusRTGSAccountIdentificationCode",
+          "isoId": "_DP9eosntEfCY0M4eFzOwyQ"
+        },
+        {
+          "value": "CBHPA",
+          "name": "COMESAREPSSParticipantIdentificationCode",
+          "isoId": "_afb18sntEfCY0M4eFzOwyQ"
+        },
+        {
+          "value": "CBHAC",
+          "name": "COMESAREPSSAccountIdentificationCode",
+          "isoId": "_uApLwsntEfCY0M4eFzOwyQ"
+        },
+        {
+          "value": "CBPPA",
+          "name": "COMESASSParticipantIdentificationCode",
+          "isoId": "_MLMe0snuEfCY0M4eFzOwyQ"
+        },
+        {
+          "value": "CBPAC",
+          "name": "COMESASSAccountIdentificationCode",
+          "isoId": "_aTiSgcnuEfCY0M4eFzOwyQ"
+        },
+        {
+          "value": "DZRPA",
+          "name": "AlgeriaAgentIdentificationCode",
+          "isoId": "_nhs88cnuEfCY0M4eFzOwyQ"
+        },
+        {
+          "value": "DZRAC",
+          "name": "AlgeriaAcсountIdentificationCode",
+          "isoId": "_xyOxksnuEfCY0M4eFzOwyQ"
+        },
+        {
+          "value": "UGDPA",
+          "name": "UgandaRTGSParticipantIdentificationCode",
+          "isoId": "_Ut0QERDPEfGq-eDWPqCtlw"
+        },
+        {
+          "value": "UGDAC",
+          "name": "UgandaRTGSAccountIdentificationCode",
+          "isoId": "_iGT7MRDPEfGq-eDWPqCtlw"
+        },
+        {
+          "value": "MGRPA",
+          "name": "MadagascarRTGSParticipantIdentificationCode",
+          "isoId": "_dZFxIqFpEfG_Et71c0fVfg"
+        },
+        {
+          "value": "MGRAC",
+          "name": "MadagascarRTGSAccountIdentificationCode",
+          "isoId": "_tOYO0aFpEfG_Et71c0fVfg"
+        }
+      ]
     },
     "ClearingSystemIdentification2Choice": {
       "name": "ClearingSystemIdentification2Choice",
@@ -1943,7 +3215,154 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "BKTR",
+          "name": "BookTransaction",
+          "isoId": "_t8zlGPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "G001",
+          "name": "TrackedCustomerCreditTransfer",
+          "isoId": "_t8zlG_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "G002",
+          "name": "TrackedStopAndRecall",
+          "isoId": "_t8zlHvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "G003",
+          "name": "TrackedOutboundCorporateTransfer",
+          "isoId": "_t89WEvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "G004",
+          "name": "TrackedFinancialInstitutionTransfer",
+          "isoId": "_t89WFfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "NPCA",
+          "name": "NordicPaymentsCouncilAreaTransfer",
+          "isoId": "_t89WGPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "NUGP",
+          "name": "NonurgentPriorityPayment",
+          "isoId": "_t9GgAvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "NURG",
+          "name": "NonurgentPayment",
+          "isoId": "_t9GgBfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "PRPT",
+          "name": "EBAPriorityService",
+          "isoId": "_t9GgCPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SDVA",
+          "name": "SameDayValue",
+          "isoId": "_t9GgC_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SEPA",
+          "name": "SingleEuroPaymentsArea",
+          "isoId": "_t9GgDvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SVDE",
+          "name": "DomesticChequeClearingAndSettlement",
+          "isoId": "_t9QRAvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "URGP",
+          "name": "UrgentPayment",
+          "isoId": "_t9QRBfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "URNS",
+          "name": "UrgentPaymentNetSettlement",
+          "isoId": "_t9aCAvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "INST",
+          "name": "InstantCreditTransferOrInstantDirectDebit",
+          "isoId": "_ThOEoVD-Eey6cYDbEubNXg"
+        },
+        {
+          "value": "SRTP",
+          "name": "ServiceRequestToPay",
+          "isoId": "_Tt5OsVD-Eey6cYDbEubNXg"
+        },
+        {
+          "value": "SVAT",
+          "name": "ScheckVerarbeitungAustria",
+          "isoId": "_HouqgY5FEeyANo-d7JlQ1A"
+        },
+        {
+          "value": "G006",
+          "name": "TrackedCaseManagement",
+          "isoId": "_G0Cf4eAjEey0k8vo1GQhqQ"
+        },
+        {
+          "value": "G007",
+          "name": "TrackedInboundCustomerCreditTransfer",
+          "isoId": "_HFnYEeAjEey0k8vo1GQhqQ"
+        },
+        {
+          "value": "G005",
+          "name": "TrackedInstantCustomerCreditTransfer",
+          "isoId": "_HTL6AeAjEey0k8vo1GQhqQ"
+        },
+        {
+          "value": "G009",
+          "name": "TrackedLowValueCrossBorderCustomerCreditTransfer",
+          "isoId": "_HdnBUeAjEey0k8vo1GQhqQ"
+        },
+        {
+          "value": "WFSM",
+          "name": "WaitForSettlement",
+          "isoId": "_T8HuAmvcEe2F6NrIyOmXcA"
+        },
+        {
+          "value": "EOLO",
+          "name": "EuroOneLegOut",
+          "isoId": "_9m6qUv7KEe2ORYPQEd-Clg"
+        },
+        {
+          "value": "SPLI",
+          "name": "SplitPayment",
+          "isoId": "_PKH4ctVNEe62uOJHIwvcig"
+        },
+        {
+          "value": "IRCA",
+          "name": "IcelandicRulebookCouncilArea",
+          "isoId": "_bnz20DowEfCAEqSMW_k_Rg"
+        },
+        {
+          "value": "EAPS",
+          "name": "EastAfricanPaymentSystem",
+          "isoId": "_2FBBIcoJEfCY0M4eFzOwyQ"
+        },
+        {
+          "value": "SPSC",
+          "name": "SwiftScheme",
+          "isoId": "_CZ4wQhDQEfGq-eDWPqCtlw"
+        },
+        {
+          "value": "SD01",
+          "name": "SwiftDigitalServiceSwiftLedger",
+          "isoId": "_KprSolKvEfGRO-1vbb6Img"
+        },
+        {
+          "value": "NOLO",
+          "name": "NPCOneLegOut",
+          "isoId": "_n10KwVKxEfGRO-1vbb6Img"
+        }
+      ]
     },
     "ServiceLevel8Choice": {
       "name": "ServiceLevel8Choice",
@@ -1976,7 +3395,579 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 35
+      "maxLength": 35,
+      "options": [
+        {
+          "value": "0090",
+          "name": "MassPaymentBeneficiary",
+          "isoId": "_tn8va_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "0091",
+          "name": "MassPaymentOurs",
+          "isoId": "_tn8vbvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "0092",
+          "name": "MassPaymentShared",
+          "isoId": "_toF5UvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "0002",
+          "name": "StandingOrder",
+          "isoId": "_toF5VfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "0221",
+          "name": "OneOffAuthorisation",
+          "isoId": "_toF5WPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "0224",
+          "name": "OneOffAuthorisationCharities",
+          "isoId": "_toF5W_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "0226",
+          "name": "OneOffAuthorisationConstructionIndustry",
+          "isoId": "_toPqUvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "0225",
+          "name": "OneOffAuthorisationTuitionFees",
+          "isoId": "_toPqVfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "0222",
+          "name": "StandingAuthorisationCompanies",
+          "isoId": "_toPqWPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "0227",
+          "name": "StandingAuthorisationCompaniesWithoutDebtorRevocationRight",
+          "isoId": "_toZbUvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "0220",
+          "name": "StandingAuthorisationGeneral",
+          "isoId": "_toZbVfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "0223",
+          "name": "StandingAuthorisationLotteries",
+          "isoId": "_toilQvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "0001",
+          "name": "ConvertedBankPayment",
+          "isoId": "_toilRfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "0000",
+          "name": "BusinessPayment",
+          "isoId": "_toilSPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BTR",
+          "name": "BankTransfer",
+          "isoId": "_tpb9IvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CKS",
+          "name": "CheckSameDaySettlementWire",
+          "isoId": "_tpb9JfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CTR",
+          "name": "CustomerTransfer",
+          "isoId": "_tpluIvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CTP",
+          "name": "CustomerTransferPlus",
+          "isoId": "_tpluJfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DEP",
+          "name": "DepositToSendersAccount",
+          "isoId": "_tpluKPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FFR",
+          "name": "FedFundsReturned",
+          "isoId": "_tpluK_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FFS",
+          "name": "FedFundsSold",
+          "isoId": "_tpvfIvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SVC",
+          "name": "NonValueServiceMessage",
+          "isoId": "_tpvfJfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DRW",
+          "name": "DrawdownResponseValueToHonorADrawdownRequest",
+          "isoId": "_tpvfKPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DRB",
+          "name": "BankToBankDrawdownRequestOrResponseNonvalue",
+          "isoId": "_tpvfK_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DRC",
+          "name": "CustomerOrCorporateDrawdownRequestOrResponseNonvalue",
+          "isoId": "_tpvfLvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DDMC",
+          "name": "DirectDebitConfirmedElectronicMandate",
+          "isoId": "_tmA1uPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DDMP",
+          "name": "DirectDebitPaperMandateWithPaperAuthorization",
+          "isoId": "_tmA1u_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DDMU",
+          "name": "DirectDebitUnconfirmedElectronicMandate",
+          "isoId": "_tmJ_ovRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BPA",
+          "name": "BatchPaymentsAruba",
+          "isoId": "_tmJ_pfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "IPA",
+          "name": "InstantPaymentsAruba",
+          "isoId": "_tmJ_qPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TRF",
+          "name": "CreditTransfers",
+          "isoId": "_tmJ_q_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "82",
+          "name": "NonPreauthorisedDirectDebitAT",
+          "isoId": "_tmTwovRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "83",
+          "name": "PreauthorisedDirectDebitAT",
+          "isoId": "_tmTwpfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CPP",
+          "name": "CashPerPost",
+          "isoId": "_tmTwqPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RTR",
+          "name": "ReturnedCreditTransfers",
+          "isoId": "_tmTwq_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "GST",
+          "name": "TruncatedCreditTransfers",
+          "isoId": "_tmc6kvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DDT",
+          "name": "DirectDebits",
+          "isoId": "_tmc6lfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RDD",
+          "name": "ReturnedDirectDebits",
+          "isoId": "_tmc6mPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CHN",
+          "name": "TruncatedChecks",
+          "isoId": "_tmmrkvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "STR",
+          "name": "RevokedCreditTransfers",
+          "isoId": "_tmmrlfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SDD",
+          "name": "RevokedDirectDebits",
+          "isoId": "_tmmrmPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SRT",
+          "name": "RevokedReturnedCreditTransfers",
+          "isoId": "_tmmrm_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SRD",
+          "name": "RevokedReturnedDirectDebits",
+          "isoId": "_tmmrnvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SCN",
+          "name": "RevokedTruncatedChecks",
+          "isoId": "_tmwckvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SGT",
+          "name": "RevokedTruncatedCreditTransfers",
+          "isoId": "_tmwclfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CARD",
+          "name": "CardClearing",
+          "isoId": "_tmwcmPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "05",
+          "name": "NonPreauthorisedDirectDebitDE",
+          "isoId": "_tm5mgvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "04",
+          "name": "PreauthorisedDirectDebitDE",
+          "isoId": "_tm5mhfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ISE",
+          "name": "ImageBasedChequeCollection",
+          "isoId": "_tm5miPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BSE",
+          "name": "PaperlessChequeCollection",
+          "isoId": "_tm5mi_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "58",
+          "name": "BusinessToBusinessDirectDebit",
+          "isoId": "_tm5mjvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "19",
+          "name": "BusinessToCustomerDirectDebit",
+          "isoId": "_tnDXgvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ASTI",
+          "name": "AncillarySystemTransferInitiation",
+          "isoId": "_tnDXhfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BACP",
+          "name": "BackupPayment",
+          "isoId": "_tnDXiPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "MANP",
+          "name": "MandatedPayment",
+          "isoId": "_tnDXi_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SBTI",
+          "name": "SettlementBankTransferInitiation",
+          "isoId": "_tnNIgvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "85",
+          "name": "PreauthorisedDirectDebitAccéléréAcceleratedClearing2DayOrdinaireNormalClearing4Day",
+          "isoId": "_tnNIhfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "08",
+          "name": "PreauthorisedDirectDebitOrdinaireNormalClearing4Day",
+          "isoId": "_tnNIiPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "89",
+          "name": "PreauthorisedDirectDebitVérifiéVerifiedClearing",
+          "isoId": "_tnNIi_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "60",
+          "name": "RecoveredBillofExchangeorPromissoryNote",
+          "isoId": "_tnNIjvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RIBA",
+          "name": "NonPreauthorisedDirectDebitRIBA",
+          "isoId": "_tnW5gvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RIDO",
+          "name": "PreauthorisedRevocableDirectDebit",
+          "isoId": "_tnW5hfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RIDV",
+          "name": "PreauthorisedRevocableUrgentDirectDebit",
+          "isoId": "_tngDcvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "IDEAL",
+          "name": "PaymentsViaInternetOwnedByCurrence",
+          "isoId": "_tngDdfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "INSTNT01",
+          "name": "InstantCreditTransferNotTimeCritical",
+          "isoId": "_tngDePRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "INSTTC01",
+          "name": "InstantCreditTransferTimeCritical",
+          "isoId": "_tngDe_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "INSTIDEAL",
+          "name": "PaymentsViaInternetOwnedByCurrenceUsingInstantCreditTransfer",
+          "isoId": "_tngDfvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "INSTNT01IDEAL",
+          "name": "PaymentsViaInternetOwnedByCurrenceUsingInstantCreditTransferNotTimeCritical",
+          "isoId": "_tnp0cvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "INSTTC01IDEAL",
+          "name": "PaymentsViaInternetOwnedByCurrenceUsingInstantCreditTransferTimeCritical",
+          "isoId": "_tnp0dfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "NLDO",
+          "name": "DutchDomesticBulkPayment",
+          "isoId": "_tnp0ePRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "NLUP",
+          "name": "DutchUrgentPayment",
+          "isoId": "_tny-YvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SDN",
+          "name": "PaymentsViaStandaardDigitaleNota",
+          "isoId": "_tny-ZfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ACCEPT",
+          "name": "PaymentViaAcceptgiroOwnedByCurrence",
+          "isoId": "_tn8vYvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ICMC",
+          "name": "IncidentManagementCorrection",
+          "isoId": "_tn8vZfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "NLGOV",
+          "name": "DirectDebitInitiatedByTheGovernmentWithSpecialConditions",
+          "isoId": "_tn8vaPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "IN",
+          "name": "CrossBorderCustomerCreditTransfer",
+          "isoId": "_tosWQvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ONCL",
+          "name": "Overnight",
+          "isoId": "_tosWRfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "PERI",
+          "name": "PaymentWithERI",
+          "isoId": "_tosWSPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SDCL",
+          "name": "SameDayClearedPayments",
+          "isoId": "_tosWS_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DDNR",
+          "name": "CoreNoRefund",
+          "isoId": "_tosWTvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DDFA",
+          "name": "DirectDebitFixedAmount",
+          "isoId": "_to2HQvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CORE",
+          "name": "SEPADirectDebitCore",
+          "isoId": "_to2HRfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "B2BAMIPM",
+          "name": "SEPAB2BDirectDebitAMI",
+          "isoId": "_to_RMvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "B2B",
+          "name": "SEPABusinessToBusinessDirectDebit",
+          "isoId": "_to_RNfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CR1AMIPM",
+          "name": "SEPACoreD1DirectDebitAMI",
+          "isoId": "_to_ROPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CORAMIPM",
+          "name": "SEPACoreDirectDebitAMI",
+          "isoId": "_to_RO_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "COR1",
+          "name": "SEPADirectDebit1DaySettlement",
+          "isoId": "_to_RPvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FADAMIPM",
+          "name": "SEPAFADirectDebitAMI",
+          "isoId": "_tpJCMvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CLSCCPERX",
+          "name": "CLSClearedFXForEurex",
+          "isoId": "_tpJCNfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CLSCCPLCH",
+          "name": "CLSClearedFXForLCH",
+          "isoId": "_tpJCOPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "INST",
+          "name": "InstantCreditTransfer",
+          "isoId": "_tpJCO_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ADD",
+          "name": "AuthenticatedDirectDebit",
+          "isoId": "_tpJCPvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "UDD",
+          "name": "UnauthenticatedDirectDebit",
+          "isoId": "_tpSzMvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CCI",
+          "name": "CashConcentrationIntragroup",
+          "isoId": "_tpSzNfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "IAT",
+          "name": "InternationalACH",
+          "isoId": "_tp4pEvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CCD",
+          "name": "CashConcentrationOrDisbursementCorporateCounterparty",
+          "isoId": "_tp4pFfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CTX",
+          "name": "CorporateTradeExchange",
+          "isoId": "_tp4pGPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "PPD",
+          "name": "PrearrangedPaymentOrDepositConsumerCounterparty",
+          "isoId": "_tp4pG_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CIE",
+          "name": "CustomerInitiatedEntry",
+          "isoId": "_tp4pHvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RCK",
+          "name": "RepresentedCheckEntry",
+          "isoId": "_tqCaEvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ARC",
+          "name": "AccountsReceivableCheck",
+          "isoId": "_tqCaFfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "WEB",
+          "name": "InternetInitiatedEntry",
+          "isoId": "_tqCaGPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "POP",
+          "name": "PointOfPurchase",
+          "isoId": "_tqLkAvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "POS",
+          "name": "PointOfSale",
+          "isoId": "_tqLkBfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TEL",
+          "name": "TelephoneInitiatedEntry",
+          "isoId": "_tqLkCPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ITP",
+          "name": "InstantCreditTransferPreferred",
+          "isoId": "_It7dAVEFEey6cYDbEubNXg"
+        },
+        {
+          "value": "MDP",
+          "name": "MultiDayPayment",
+          "isoId": "_yIC_seAnEey0k8vo1GQhqQ"
+        },
+        {
+          "value": "IMD",
+          "name": "ImmediatePayment",
+          "isoId": "_vWKcgkDsEe6lGub-LSlOyg"
+        },
+        {
+          "value": "SOP",
+          "name": "StandingOrderPayment",
+          "isoId": "_FTyxckDtEe6lGub-LSlOyg"
+        },
+        {
+          "value": "FDP",
+          "name": "ForwardDatedPayment",
+          "isoId": "_SNeZokDtEe6lGub-LSlOyg"
+        },
+        {
+          "value": "NACH",
+          "name": "NACHClearing",
+          "isoId": "_kA_QMqF_EfG_Et71c0fVfg"
+        },
+        {
+          "value": "NEFT",
+          "name": "NEFTClearing",
+          "isoId": "_u0cywqF_EfG_Et71c0fVfg"
+        },
+        {
+          "value": "IMPS",
+          "name": "IMPSClearing",
+          "isoId": "_0BxzQqF_EfG_Et71c0fVfg"
+        },
+        {
+          "value": "IUPI",
+          "name": "UPIClearing",
+          "isoId": "_E2TgYqGAEfG_Et71c0fVfg"
+        }
+      ]
     },
     "LocalInstrument2Choice": {
       "name": "LocalInstrument2Choice",
@@ -2009,7 +4000,254 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "BONU",
+          "name": "BonusPayment",
+          "isoId": "_tjxaAvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CASH",
+          "name": "CashManagementTransfer",
+          "isoId": "_tjxaBfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CBLK",
+          "name": "CardBulkClearing",
+          "isoId": "_tjxaCPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CCRD",
+          "name": "CreditCardPayment",
+          "isoId": "_tjxaC_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CORT",
+          "name": "TradeSettlementPayment",
+          "isoId": "_tjxaDvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DCRD",
+          "name": "DebitCardPayment",
+          "isoId": "_tkEU8vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DIVI",
+          "name": "Dividend",
+          "isoId": "_tkEU9fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DVPM",
+          "name": "DeliverAgainstPayment",
+          "isoId": "_tkEU-PRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "EPAY",
+          "name": "Epayment",
+          "isoId": "_tkOF8vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FCIN",
+          "name": "FeeCollectionAndInterest",
+          "isoId": "_tkOF9fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FCOL",
+          "name": "FeeCollection",
+          "isoId": "_tkOF-PRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "GP2P",
+          "name": "PersontoPersonPayment",
+          "isoId": "_tkX28vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "GOVT",
+          "name": "GovernmentPayment",
+          "isoId": "_tkX29fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "HEDG",
+          "name": "Hedging",
+          "isoId": "_tkX2-PRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ICCP",
+          "name": "IrrevocableCreditCardPayment",
+          "isoId": "_tkhA4vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "IDCP",
+          "name": "IrrevocableDebitCardPayment",
+          "isoId": "_tkhA5fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "INTC",
+          "name": "IntraCompanyPayment",
+          "isoId": "_tkhA6PRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "INTE",
+          "name": "Interest",
+          "isoId": "_tkhA6_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LBOX",
+          "name": "LockboxTransactions",
+          "isoId": "_tkhA7vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LOAN",
+          "name": "Loan",
+          "isoId": "_tkqx4vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "MP2B",
+          "name": "Commercial",
+          "isoId": "_tkqx5fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "MP2P",
+          "name": "Consumer",
+          "isoId": "_tkqx6PRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "OTHR",
+          "name": "OtherPayment",
+          "isoId": "_tk0i4vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "PENS",
+          "name": "PensionPayment",
+          "isoId": "_tk0i5fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RPRE",
+          "name": "Represented",
+          "isoId": "_tk0i6PRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RRCT",
+          "name": "ReimbursementReceivedCreditTransfer",
+          "isoId": "_tk0i6_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RVPM",
+          "name": "ReceiveAgainstPayment",
+          "isoId": "_tk0i7vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SALA",
+          "name": "SalaryPayment",
+          "isoId": "_tk9s0vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SECU",
+          "name": "Securities",
+          "isoId": "_tk9s1fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SSBE",
+          "name": "SocialSecurityBenefit",
+          "isoId": "_tk9s2PRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SUPP",
+          "name": "SupplierPayment",
+          "isoId": "_tk9s2_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TAXS",
+          "name": "TaxPayment",
+          "isoId": "_tlHd0vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TRAD",
+          "name": "Trade",
+          "isoId": "_tlHd1fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TREA",
+          "name": "TreasuryPayment",
+          "isoId": "_tlHd2PRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "VATX",
+          "name": "ValueAddedTaxPayment",
+          "isoId": "_tlHd2_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "WHLD",
+          "name": "WithHolding",
+          "isoId": "_tlQnwvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SWEP",
+          "name": "CashManagementSweepAccount",
+          "isoId": "_TAl1QVEpEey6cYDbEubNXg"
+        },
+        {
+          "value": "TOPG",
+          "name": "CashManagementTopAccount",
+          "isoId": "_TJ-awVEpEey6cYDbEubNXg"
+        },
+        {
+          "value": "ZABA",
+          "name": "CashManagementZeroBalanceAccount",
+          "isoId": "_1y1sMVEpEey6cYDbEubNXg"
+        },
+        {
+          "value": "VOST",
+          "name": "CrossborderMIPayments",
+          "isoId": "_CgcksiepEe2VkIu7jTuNaA"
+        },
+        {
+          "value": "FCDT",
+          "name": "ForeignCurrencyDomesticTransfer",
+          "isoId": "_2MVrYmvbEe2F6NrIyOmXcA"
+        },
+        {
+          "value": "CIPC",
+          "name": "CashInPreCredit",
+          "isoId": "_TiiT4mvdEe2F6NrIyOmXcA"
+        },
+        {
+          "value": "CONC",
+          "name": "CashOutNotesCoins",
+          "isoId": "_fXXz4mvdEe2F6NrIyOmXcA"
+        },
+        {
+          "value": "CGWV",
+          "name": "CarrierGuardedWholesaleValuables",
+          "isoId": "_rF1cAtRdEe2vd-PLFk_9fA"
+        },
+        {
+          "value": "SAVG",
+          "name": "Savings",
+          "isoId": "_GHcSYWXZEe-25NN5iis_kQ"
+        },
+        {
+          "value": "CTDF",
+          "name": "DoddFrank1073Payment",
+          "isoId": "_XCHicWXnEe-25NN5iis_kQ"
+        },
+        {
+          "value": "CPAY",
+          "name": "ClaimPayment",
+          "isoId": "_aYpkYVKYEfGwtbbXfZvtsw"
+        },
+        {
+          "value": "CDIS",
+          "name": "AdditionalClaimDisposition",
+          "isoId": "_0cvYYVKYEfGwtbbXfZvtsw"
+        },
+        {
+          "value": "CRYP",
+          "name": "CryptoAssets",
+          "isoId": "_Tn9RsVKuEfGRO-1vbb6Img"
+        }
+      ]
     },
     "CategoryPurpose1Choice": {
       "name": "CategoryPurpose1Choice",
@@ -2761,7 +4999,79 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "CHQB",
+          "name": "PayCreditorByCheque",
+          "isoId": "_uwEOAvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "HOLD",
+          "name": "HoldCashForCreditor",
+          "isoId": "_uwEOBfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "PHOB",
+          "name": "PhoneBeneficiary",
+          "isoId": "_uwEOCPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "PRTK",
+          "name": "PayerTokenRequested",
+          "isoId": "_uwN_AvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RECI",
+          "name": "ReceiverCustomerInformation",
+          "isoId": "_uwN_BfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TELB",
+          "name": "Telecom",
+          "isoId": "_uwN_CPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TKCM",
+          "name": "TokenCounterpartyMismatch",
+          "isoId": "_uwN_C_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TKSG",
+          "name": "TokenSingleUse",
+          "isoId": "_uwXwAvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TKSP",
+          "name": "TokenSuspended",
+          "isoId": "_uwXwBfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TKVE",
+          "name": "TokenValueLimitExceeded",
+          "isoId": "_uwXwCPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TKXP",
+          "name": "TokenExpired",
+          "isoId": "_uwXwC_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TOKN",
+          "name": "Token",
+          "isoId": "_uwg58vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "VLTK",
+          "name": "TokenValidation",
+          "isoId": "_uwg59fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SEID",
+          "name": "SecondaryIdentification",
+          "isoId": "_f1OAskD4Ee6lGub-LSlOyg"
+        }
+      ]
     },
     "InstructionForCreditorAgent3": {
       "name": "InstructionForCreditorAgent3",
@@ -2794,7 +5104,1839 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "BKDF",
+          "name": "BankLoanDelayedDrawFunding",
+          "isoId": "_tst6pfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BKFE",
+          "name": "BankLoanFees",
+          "isoId": "_tst6qPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BKFM",
+          "name": "BankLoanFundingMemo",
+          "isoId": "_tst6q_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BKIP",
+          "name": "BankLoanAccruedInterestPayment",
+          "isoId": "_ts3EkvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BKPP",
+          "name": "BankLoanPrincipalPaydown",
+          "isoId": "_ts3ElfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CBLK",
+          "name": "CardBulkClearing",
+          "isoId": "_ts3EmPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CDCB",
+          "name": "CardPaymentWithCashBack",
+          "isoId": "_ts3Em_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CDCD",
+          "name": "CashDisbursementCashSettlement",
+          "isoId": "_ts3EnvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CDCS",
+          "name": "CashDisbursementWithSurcharging",
+          "isoId": "_ttA1kvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CDDP",
+          "name": "CardDeferredPayment",
+          "isoId": "_ttA1lfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CDOC",
+          "name": "OriginalCredit",
+          "isoId": "_ttA1mPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CDQC",
+          "name": "QuasiCash",
+          "isoId": "_ttA1m_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ETUP",
+          "name": "EPurseTopUp",
+          "isoId": "_ttKmkvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FCOL",
+          "name": "FeeCollection",
+          "isoId": "_ttKmlfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "MTUP",
+          "name": "MobileTopUp",
+          "isoId": "_ttKmmPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ACCT",
+          "name": "AccountManagement",
+          "isoId": "_ttKmm_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CASH",
+          "name": "CashManagementTransfer",
+          "isoId": "_ttKmnvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "COLL",
+          "name": "CollectionPayment",
+          "isoId": "_ttTwgvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CSDB",
+          "name": "CashDisbursementCashManagement",
+          "isoId": "_ttTwhfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DEPT",
+          "name": "Deposit",
+          "isoId": "_ttTwiPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "INTC",
+          "name": "IntraCompanyPayment",
+          "isoId": "_ttTwi_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "INTP",
+          "name": "IntraPartyPayment",
+          "isoId": "_ttdhgvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LIMA",
+          "name": "LiquidityManagement",
+          "isoId": "_ttdhhfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "NETT",
+          "name": "Netting",
+          "isoId": "_ttdhiPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BFWD",
+          "name": "BondForward",
+          "isoId": "_ttdhi_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CCIR",
+          "name": "CrossCurrencyIRS",
+          "isoId": "_ttdhjvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CCPC",
+          "name": "CCPClearedInitialMargin",
+          "isoId": "_ttmrcvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CCPM",
+          "name": "CCPClearedVariationMargin",
+          "isoId": "_ttmrdfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CCSM",
+          "name": "CCPClearedInitialMarginSegregatedCash",
+          "isoId": "_ttmrePRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CRDS",
+          "name": "CreditDefaultSwap",
+          "isoId": "_ttwccvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CRPR",
+          "name": "CrossProduct",
+          "isoId": "_ttwcdfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CRSP",
+          "name": "CreditSupport",
+          "isoId": "_ttwcePRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CRTL",
+          "name": "CreditLine",
+          "isoId": "_ttwce_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "EQPT",
+          "name": "EquityOption",
+          "isoId": "_ttwcfvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "EQUS",
+          "name": "EquitySwap",
+          "isoId": "_tt6NcvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "EXPT",
+          "name": "ExoticOption",
+          "isoId": "_tt6NdfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "EXTD",
+          "name": "ExchangeTradedDerivatives",
+          "isoId": "_tt6NePRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FIXI",
+          "name": "FixedIncome",
+          "isoId": "_tt6Ne_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FWBC",
+          "name": "ForwardBrokerOwnedCashCollateral",
+          "isoId": "_tuD-cvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FWCC",
+          "name": "ForwardClientOwnedCashCollateral",
+          "isoId": "_tuD-dfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FWSB",
+          "name": "ForwardBrokerOwnedCashCollateralSegregated",
+          "isoId": "_tuD-ePRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FWSC",
+          "name": "ForwardClientOwnedSegregatedCashCollateral",
+          "isoId": "_tuD-e_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "MARG",
+          "name": "DailyMarginOnListedDerivatives",
+          "isoId": "_tuD-fvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "MBSB",
+          "name": "MBSBrokerOwnedCashCollateral",
+          "isoId": "_tuNIYvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "MBSC",
+          "name": "MBSClientOwnedCashCollateral",
+          "isoId": "_tuNIZfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "MGCC",
+          "name": "FuturesInitialMargin",
+          "isoId": "_tuNIaPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "MGSC",
+          "name": "FuturesInitialMarginClientOwnedSegregatedCashCollateral",
+          "isoId": "_tuNIa_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "OCCC",
+          "name": "ClientOwnedOCCPledgedCollateral",
+          "isoId": "_tuW5YvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "OPBC",
+          "name": "OTCOptionBrokerOwnedCashCollateral",
+          "isoId": "_tuW5ZfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "OPCC",
+          "name": "OTCOptionClientOwnedCashCollateral",
+          "isoId": "_tuW5aPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "OPSB",
+          "name": "OTCOptionBrokerOwnedSegregatedCashCollateral",
+          "isoId": "_tuW5a_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "OPSC",
+          "name": "OTCOptionClientOwnedCashSegregatedCashCollateral",
+          "isoId": "_tuW5bvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "OPTN",
+          "name": "FXOption",
+          "isoId": "_tugqYvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "OTCD",
+          "name": "OTCDerivatives",
+          "isoId": "_tugqZfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "REPO",
+          "name": "RepurchaseAgreement",
+          "isoId": "_tugqaPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RPBC",
+          "name": "BilateralRepoBrokerOwnedCollateral",
+          "isoId": "_tugqa_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RPCC",
+          "name": "RepoClientOwnedCollateral",
+          "isoId": "_tugqbvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RPSB",
+          "name": "BilateralRepoBrokerOwnedSegregatedCashCollateral",
+          "isoId": "_tup0UvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RPSC",
+          "name": "BilateralRepoClientOwnedSegregatedCashCollateral",
+          "isoId": "_tup0VfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RVPO",
+          "name": "ReverseRepurchaseAgreement",
+          "isoId": "_tup0WPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SBSC",
+          "name": "SecuritiesBuySellSellBuyBack",
+          "isoId": "_tup0W_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SCIE",
+          "name": "SingleCurrencyIRSExotic",
+          "isoId": "_tup0XvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SCIR",
+          "name": "SingleCurrencyIRS",
+          "isoId": "_tuzlUvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SCRP",
+          "name": "SecuritiesCrossProducts",
+          "isoId": "_tuzlVfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SHBC",
+          "name": "BrokerOwnedCollateralShortSale",
+          "isoId": "_tuzlWPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SHCC",
+          "name": "ClientOwnedCollateralShortSale",
+          "isoId": "_tuzlW_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SHSL",
+          "name": "ShortSell",
+          "isoId": "_tuzlXvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SLEB",
+          "name": "SecuritiesLendingAndBorrowing",
+          "isoId": "_tu8vQvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SLOA",
+          "name": "SecuredLoan",
+          "isoId": "_tu8vRfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SWBC",
+          "name": "SwapBrokerOwnedCashCollateral",
+          "isoId": "_tu8vSPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SWCC",
+          "name": "SwapClientOwnedCashCollateral",
+          "isoId": "_tu8vS_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SWPT",
+          "name": "Swaption",
+          "isoId": "_tvGgQvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SWSB",
+          "name": "SwapsBrokerOwnedSegregatedCashCollateral",
+          "isoId": "_tvGgRfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SWSC",
+          "name": "SwapsClientOwnedSegregatedCashCollateral",
+          "isoId": "_tvGgSPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TBAS",
+          "name": "ToBeAnnounced",
+          "isoId": "_tvGgS_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TBBC",
+          "name": "TBABrokerOwnedCashCollateral",
+          "isoId": "_tvGgTvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TBCC",
+          "name": "TBAClientOwnedCashCollateral",
+          "isoId": "_tvPqMvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TRCP",
+          "name": "TreasuryCrossProduct",
+          "isoId": "_tvPqNfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "AGRT",
+          "name": "AgriculturalTransfer",
+          "isoId": "_tvPqOPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "AREN",
+          "name": "AccountsReceivablesEntry",
+          "isoId": "_tvPqO_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BEXP",
+          "name": "BusinessExpenses",
+          "isoId": "_tvPqPvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BOCE",
+          "name": "BackOfficeConversionEntry",
+          "isoId": "_tvZbMvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "COMC",
+          "name": "CommercialPayment",
+          "isoId": "_tvZbNfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CPYR",
+          "name": "Copyright",
+          "isoId": "_tvZbOPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "GDDS",
+          "name": "PurchaseSaleOfGoods",
+          "isoId": "_tvjMMvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "GDSV",
+          "name": "PurchaseSaleOfGoodsAndServices",
+          "isoId": "_tvjMNfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "GSCB",
+          "name": "PurchaseSaleOfGoodsAndServicesWithCashBack",
+          "isoId": "_tvjMOPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LICF",
+          "name": "LicenseFee",
+          "isoId": "_tvjMO_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "MP2B",
+          "name": "MobileP2BPayment",
+          "isoId": "_tvjMPvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "POPE",
+          "name": "PointOfPurchaseEntry",
+          "isoId": "_tvsWIvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ROYA",
+          "name": "Royalties",
+          "isoId": "_tvsWJfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SCVE",
+          "name": "PurchaseSaleOfServices",
+          "isoId": "_tvsWKPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SERV",
+          "name": "ServiceCharges",
+          "isoId": "_tv2HIvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SUBS",
+          "name": "Subscription",
+          "isoId": "_tv2HJfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SUPP",
+          "name": "SupplierPayment",
+          "isoId": "_tv2HKPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TRAD",
+          "name": "Commercial",
+          "isoId": "_tv2HK_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CHAR",
+          "name": "CharityPayment",
+          "isoId": "_tv_REvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "COMT",
+          "name": "ConsumerThirdPartyConsolidatedPayment",
+          "isoId": "_tv_RFfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "MP2P",
+          "name": "MobileP2PPayment",
+          "isoId": "_tv_RGPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ECPG",
+          "name": "GuaranteedEPayment",
+          "isoId": "_tv_RG_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ECPR",
+          "name": "EPaymentReturn",
+          "isoId": "_tv_RHvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ECPU",
+          "name": "NonGuaranteedEPayment",
+          "isoId": "_twJCEvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "EPAY",
+          "name": "Epayment",
+          "isoId": "_twJCFfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CLPR",
+          "name": "CarLoanPrincipalRepayment",
+          "isoId": "_twJCGPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "COMP",
+          "name": "CompensationPayment",
+          "isoId": "_twJCG_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DBTC",
+          "name": "DebitCollectionPayment",
+          "isoId": "_twSzEvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "GOVI",
+          "name": "GovernmentInsurance",
+          "isoId": "_twSzFfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "HLRP",
+          "name": "PropertyLoanRepayment",
+          "isoId": "_twSzGPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "HLST",
+          "name": "PropertyLoanSettlement",
+          "isoId": "_twSzG_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "INPC",
+          "name": "InsurancePremiumCar",
+          "isoId": "_twSzHvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "INPR",
+          "name": "InsurancePremiumRefund",
+          "isoId": "_twckEvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "INSC",
+          "name": "PaymentOfInsuranceClaim",
+          "isoId": "_twckFfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "INSU",
+          "name": "InsurancePremium",
+          "isoId": "_twckGPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "INTE",
+          "name": "Interest",
+          "isoId": "_twluAvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LBRI",
+          "name": "LaborInsurance",
+          "isoId": "_twluBfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LIFI",
+          "name": "LifeInsurance",
+          "isoId": "_twluCPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LOAN",
+          "name": "Loan",
+          "isoId": "_twluC_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LOAR",
+          "name": "LoanRepayment",
+          "isoId": "_twluDvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "PENO",
+          "name": "PaymentBasedOnEnforcementOrder",
+          "isoId": "_twvfAvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "PPTI",
+          "name": "PropertyInsurance",
+          "isoId": "_twvfBfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RELG",
+          "name": "RentalLeaseGeneral",
+          "isoId": "_twvfCPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RINP",
+          "name": "RecurringInstallmentPayment",
+          "isoId": "_twvfC_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TRFD",
+          "name": "TrustFund",
+          "isoId": "_twvfDvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FORW",
+          "name": "ForwardForeignExchange",
+          "isoId": "_tw4o8vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FXNT",
+          "name": "ForeignExchangeRelatedNetting",
+          "isoId": "_tw4o9fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ADMG",
+          "name": "AdministrativeManagement",
+          "isoId": "_tw4o-PRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ADVA",
+          "name": "AdvancePayment",
+          "isoId": "_tw4o-_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BCDM",
+          "name": "BearerChequeDomestic",
+          "isoId": "_tw4o_vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BCFG",
+          "name": "BearerChequeForeign",
+          "isoId": "_txCZ8vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BLDM",
+          "name": "BuildingMaintenance",
+          "isoId": "_txCZ9fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BNET",
+          "name": "BondForwardNetting",
+          "isoId": "_txCZ-PRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CBFF",
+          "name": "CapitalBuilding",
+          "isoId": "_txMK8vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CBFR",
+          "name": "CapitalBuildingRetirement",
+          "isoId": "_txMK9fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CCRD",
+          "name": "CreditCardPayment",
+          "isoId": "_txMK-PRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CDBL",
+          "name": "CreditCardBill",
+          "isoId": "_txMK-_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CFEE",
+          "name": "CancellationFee",
+          "isoId": "_txMK_vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CGDD",
+          "name": "CardGeneratedDirectDebit",
+          "isoId": "_txVU4vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CORT",
+          "name": "TradeSettlementPayment",
+          "isoId": "_txVU5fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "COST",
+          "name": "Costs",
+          "isoId": "_txVU6PRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CPKC",
+          "name": "CarparkCharges",
+          "isoId": "_txfF4vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DCRD",
+          "name": "DebitCardPayment",
+          "isoId": "_txfF5fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DSMT",
+          "name": "PrintedOrderDisbursement",
+          "isoId": "_txfF6PRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DVPM",
+          "name": "DeliverAgainstPayment",
+          "isoId": "_txfF6_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "EDUC",
+          "name": "Education",
+          "isoId": "_txfF7vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FACT",
+          "name": "FactorUpdateRelatedPayment",
+          "isoId": "_txo24vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FAND",
+          "name": "FinancialAidInCaseOfNaturalDisaster",
+          "isoId": "_txo25fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FCPM",
+          "name": "LatePaymentOfFeesAndCharges",
+          "isoId": "_txo26PRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FEES",
+          "name": "PaymentOfFees",
+          "isoId": "_txo26_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "GIFT",
+          "name": "Gift",
+          "isoId": "_txo27vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "GOVT",
+          "name": "GovernmentPayment",
+          "isoId": "_txyA0vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ICCP",
+          "name": "IrrevocableCreditCardPayment",
+          "isoId": "_txyA1fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "IDCP",
+          "name": "IrrevocableDebitCardPayment",
+          "isoId": "_txyA2PRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "IHRP",
+          "name": "InstalmentHirePurchaseAgreement",
+          "isoId": "_txyA2_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "INSM",
+          "name": "Installment",
+          "isoId": "_txyA3vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "IVPT",
+          "name": "InvoicePayment",
+          "isoId": "_tx7x0vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "MCDM",
+          "name": "MultiCurrenyChequeDomestic",
+          "isoId": "_tx7x1fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "MCFG",
+          "name": "MultiCurrenyChequeForeign",
+          "isoId": "_tyE7wvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "MSVC",
+          "name": "MultipleServiceTypes",
+          "isoId": "_tyE7xfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "NOWS",
+          "name": "NotOtherwiseSpecified",
+          "isoId": "_tyE7yPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "OCDM",
+          "name": "OrderChequeDomestic",
+          "isoId": "_tyE7y_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "OCFG",
+          "name": "OrderChequeForeign",
+          "isoId": "_tyE7zvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "OFEE",
+          "name": "OpeningFee",
+          "isoId": "_tyOswvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "OTHR",
+          "name": "Other",
+          "isoId": "_tyOsxfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "PADD",
+          "name": "PreauthorizedDebit",
+          "isoId": "_tyYdwvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "PTSP",
+          "name": "PaymentTerms",
+          "isoId": "_tyYdxfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RCKE",
+          "name": "RepresentedCheckEntry",
+          "isoId": "_tyhnsvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RCPT",
+          "name": "ReceiptPayment",
+          "isoId": "_tyhntfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "REBT",
+          "name": "Rebate",
+          "isoId": "_tyhnuPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "REFU",
+          "name": "Refund",
+          "isoId": "_tyhnu_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RENT",
+          "name": "Rent",
+          "isoId": "_tyrYsvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "REOD",
+          "name": "AccountOverdraftRepayment",
+          "isoId": "_tyrYtfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RIMB",
+          "name": "ReimbursementOfAPreviousErroneousTransaction",
+          "isoId": "_ty1JsvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RPNT",
+          "name": "BilateralRepoInternetNetting",
+          "isoId": "_ty1JtfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RRBN",
+          "name": "RoundRobin",
+          "isoId": "_ty1JuPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RRCT",
+          "name": "ReimbursementReceivedCreditTransfer",
+          "isoId": "_ty-TovRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RRTP",
+          "name": "RelatedRequestToPay",
+          "isoId": "_ty-TpfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RVPM",
+          "name": "ReceiveAgainstPayment",
+          "isoId": "_tzIEovRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SLPI",
+          "name": "PaymentSlipInstruction",
+          "isoId": "_tzIEpfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SPLT",
+          "name": "SplitPayments",
+          "isoId": "_tzIEqPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "STDY",
+          "name": "Study",
+          "isoId": "_tzIEq_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TBAN",
+          "name": "TBAPairOffNetting",
+          "isoId": "_tzROkvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TBIL",
+          "name": "TelecommunicationsBill",
+          "isoId": "_tzROlfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TCSC",
+          "name": "TownCouncilServiceCharges",
+          "isoId": "_tzROmPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TELI",
+          "name": "TelephoneInitiatedTransaction",
+          "isoId": "_tzROm_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TMPG",
+          "name": "TMPGClaimPayment",
+          "isoId": "_tzROnvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TPRI",
+          "name": "TriPartyRepoInterest",
+          "isoId": "_tza_kvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TPRP",
+          "name": "TriPartyRepoNetting",
+          "isoId": "_tza_lfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TRNC",
+          "name": "TruncatedPaymentSlip",
+          "isoId": "_tzkwkvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TRVC",
+          "name": "TravellerCheque",
+          "isoId": "_tzkwlfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "WEBI",
+          "name": "InternetInitiatedTransaction",
+          "isoId": "_tzkwmPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "IPAY",
+          "name": "InstantPayments",
+          "isoId": "_tzkwm_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "IPCA",
+          "name": "InstantPaymentsCancellation",
+          "isoId": "_tzt6gvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "IPDO",
+          "name": "InstantPaymentsForDonations",
+          "isoId": "_tzt6hfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "IPEA",
+          "name": "InstantPaymentsInECommerceWithoutAddressData",
+          "isoId": "_tzt6iPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "IPEC",
+          "name": "InstantPaymentsInECommerceWithAddressData",
+          "isoId": "_tzt6i_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "IPEW",
+          "name": "InstantPaymentsInECommerce",
+          "isoId": "_tzt6jvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "IPPS",
+          "name": "InstantPaymentsAtPOS",
+          "isoId": "_tz3rgvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "IPRT",
+          "name": "InstantPaymentsReturn",
+          "isoId": "_tz3rhfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "IPU2",
+          "name": "InstantPaymentsUnattendedVendingMachineWith2FA",
+          "isoId": "_tz3riPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "IPUW",
+          "name": "InstantPaymentsUnattendedVendingMachineWithout2FA",
+          "isoId": "_tz3ri_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ANNI",
+          "name": "Annuity",
+          "isoId": "_tz3rjvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CAFI",
+          "name": "CustodianManagementFeeInhouse",
+          "isoId": "_t0BcgvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CFDI",
+          "name": "CapitalFallingDueInhouse",
+          "isoId": "_t0BchfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CMDT",
+          "name": "CommodityTransfer",
+          "isoId": "_t0KmcvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DERI",
+          "name": "Derivatives",
+          "isoId": "_t0KmdfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DIVD",
+          "name": "Dividend",
+          "isoId": "_t0KmePRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FREX",
+          "name": "ForeignExchange",
+          "isoId": "_t0Kme_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "HEDG",
+          "name": "Hedging",
+          "isoId": "_t0UXcvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "INVS",
+          "name": "InvestmentAndSecurities",
+          "isoId": "_t0UXdfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "PRME",
+          "name": "PreciousMetal",
+          "isoId": "_t0dhYvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SAVG",
+          "name": "Savings",
+          "isoId": "_t0dhZfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SECU",
+          "name": "Securities",
+          "isoId": "_t0dhaPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SEPI",
+          "name": "SecuritiesPurchaseInhouse",
+          "isoId": "_t0nSYvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TREA",
+          "name": "TreasuryPayment",
+          "isoId": "_t0nSZfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "UNIT",
+          "name": "UnitTrustPurchase",
+          "isoId": "_t0nSaPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FNET",
+          "name": "FuturesNettingPayment",
+          "isoId": "_t0nSa_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FUTR",
+          "name": "Futures",
+          "isoId": "_t0xDYvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ANTS",
+          "name": "AnesthesiaServices",
+          "isoId": "_t0xDZfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CVCF",
+          "name": "ConvalescentCareFacility",
+          "isoId": "_t0xDaPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DMEQ",
+          "name": "DurableMedicaleEquipment",
+          "isoId": "_t0xDa_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DNTS",
+          "name": "DentalServices",
+          "isoId": "_t0xDbvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "HLTC",
+          "name": "HomeHealthCare",
+          "isoId": "_t06NUvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "HLTI",
+          "name": "HealthInsurance",
+          "isoId": "_t06NVfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "HSPC",
+          "name": "HospitalCare",
+          "isoId": "_t06NWPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ICRF",
+          "name": "IntermediateCareFacility",
+          "isoId": "_t1D-UvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LTCF",
+          "name": "LongTermCareFacility",
+          "isoId": "_t1D-VfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "MAFC",
+          "name": "MedicalAidFundContribution",
+          "isoId": "_t1NvUvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "MARF",
+          "name": "MedicalAidRefund",
+          "isoId": "_t1NvVfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "MDCS",
+          "name": "MedicalServices",
+          "isoId": "_t1NvWPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "VIEW",
+          "name": "VisionCare",
+          "isoId": "_t1W5QvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CDEP",
+          "name": "CreditDefaultEventPayment",
+          "isoId": "_t1W5RfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SWFP",
+          "name": "SwapContractFinalPayment",
+          "isoId": "_t1W5SPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SWPP",
+          "name": "SwapContractPartialPayment",
+          "isoId": "_t1W5S_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SWRS",
+          "name": "SwapContractResetPayment",
+          "isoId": "_t1W5TvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SWUF",
+          "name": "SwapContractUpfrontPayment",
+          "isoId": "_t1gqQvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ADCS",
+          "name": "AdvisoryDonationCopyrightServices",
+          "isoId": "_t1gqRfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "AEMP",
+          "name": "ActiveEmploymentPolicy",
+          "isoId": "_t1gqSPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ALLW",
+          "name": "Allowance",
+          "isoId": "_t1gqS_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ALMY",
+          "name": "AlimonyPayment",
+          "isoId": "_t1p0MvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BBSC",
+          "name": "BabyBonusScheme",
+          "isoId": "_t1p0NfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BECH",
+          "name": "ChildBenefit",
+          "isoId": "_t1p0OPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BENE",
+          "name": "UnemploymentDisabilityBenefit",
+          "isoId": "_t1p0O_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BONU",
+          "name": "BonusPayment.",
+          "isoId": "_t1zlMvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CCHD",
+          "name": "CashCompensationHelplessnessDisability",
+          "isoId": "_t1zlNfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "COMM",
+          "name": "Commission",
+          "isoId": "_t1zlOPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CSLP",
+          "name": "CompanySocialLoanPaymentToBank",
+          "isoId": "_t1zlO_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "GFRP",
+          "name": "GuaranteeFundRightsPayment",
+          "isoId": "_t19WMvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "GVEA",
+          "name": "AustrianGovernmentEmployeesCategoryA",
+          "isoId": "_t19WNfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "GVEB",
+          "name": "AustrianGovernmentEmployeesCategoryB",
+          "isoId": "_t19WOPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "GVEC",
+          "name": "AustrianGovernmentEmployeesCategoryC",
+          "isoId": "_t19WO_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "GVED",
+          "name": "AustrianGovernmentEmployeesCategoryD",
+          "isoId": "_t2GgIvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "GWLT",
+          "name": "GovermentWarLegislationTransfer",
+          "isoId": "_t2GgJfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "HREC",
+          "name": "HousingRelatedContribution",
+          "isoId": "_t2GgKPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "PAYR",
+          "name": "Payroll",
+          "isoId": "_t2GgK_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "PEFC",
+          "name": "PensionFundContribution",
+          "isoId": "_t2GgLvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "PENS",
+          "name": "PensionPayment",
+          "isoId": "_t2QRIvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "PRCP",
+          "name": "PricePayment",
+          "isoId": "_t2QRJfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RHBS",
+          "name": "RehabilitationSupport",
+          "isoId": "_t2ZbEvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SALA",
+          "name": "SalaryPayment",
+          "isoId": "_t2ZbFfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SPSP",
+          "name": "SalaryPensionSumPayment",
+          "isoId": "_t2jMEvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SSBE",
+          "name": "SocialSecurityBenefit",
+          "isoId": "_t2jMFfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LBIN",
+          "name": "LendingBuyInNetting",
+          "isoId": "_t2jMGPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LCOL",
+          "name": "LendingCashCollateralFreeMovement",
+          "isoId": "_t2s9EvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LFEE",
+          "name": "LendingFees",
+          "isoId": "_t2s9FfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LMEQ",
+          "name": "LendingEquityMarkedToMarketCashCollateral",
+          "isoId": "_t2s9GPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LMFI",
+          "name": "LendingFixedIncomeMarkedToMarketCashCollateral",
+          "isoId": "_t2s9G_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LMRK",
+          "name": "LendingUnspecifiedTypeOfMarkedToMarketCashCollateral",
+          "isoId": "_t2s9HvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LREB",
+          "name": "LendingRebatePayments",
+          "isoId": "_t22HAvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LREV",
+          "name": "LendingRevenuePayments",
+          "isoId": "_t22HBfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LSFL",
+          "name": "LendingClaimPayment",
+          "isoId": "_t22HCPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ESTX",
+          "name": "EstateTax",
+          "isoId": "_t22HC_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FWLV",
+          "name": "ForeignWorkerLevy",
+          "isoId": "_t2_4AvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "GSTX",
+          "name": "GoodsServicesTax",
+          "isoId": "_t2_4BfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "HSTX",
+          "name": "HousingTax",
+          "isoId": "_t2_4CPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "INTX",
+          "name": "IncomeTax",
+          "isoId": "_t2_4C_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "NITX",
+          "name": "NetIncomeTax",
+          "isoId": "_t2_4DvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "PTXP",
+          "name": "PropertyTax",
+          "isoId": "_t3JB8vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RDTX",
+          "name": "RoadTax",
+          "isoId": "_t3JB9fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TAXS",
+          "name": "TaxPayment",
+          "isoId": "_t3Sy8vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "VATX",
+          "name": "ValueAddedTaxPayment",
+          "isoId": "_t3Sy9fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "WHLD",
+          "name": "WithHolding",
+          "isoId": "_t3Sy-PRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TAXR",
+          "name": "TaxRefund",
+          "isoId": "_t3Sy-_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "B112",
+          "name": "TrailerFeePayment",
+          "isoId": "_t3Sy_vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BR12",
+          "name": "TrailerFeeRebate",
+          "isoId": "_t3cj8vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TLRF",
+          "name": "NonUSMutualFundTrailerFeePayment",
+          "isoId": "_t3cj9fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TLRR",
+          "name": "NonUSMutualFundTrailerFeeRebatePayment",
+          "isoId": "_t3cj-PRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "AIRB",
+          "name": "Air",
+          "isoId": "_t3cj-_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BUSB",
+          "name": "Bus",
+          "isoId": "_t3lt4vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "FERB",
+          "name": "Ferry",
+          "isoId": "_t3lt5fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "RLWY",
+          "name": "Railway",
+          "isoId": "_t3ve4vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TRPT",
+          "name": "RoadPricing",
+          "isoId": "_t3ve5fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CBTV",
+          "name": "CableTVBill",
+          "isoId": "_t3ve6PRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ELEC",
+          "name": "ElectricityBill",
+          "isoId": "_t35P4vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ENRG",
+          "name": "Energies",
+          "isoId": "_t35P5fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "GASB",
+          "name": "GasBill",
+          "isoId": "_t35P6PRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "NWCH",
+          "name": "NetworkCharge",
+          "isoId": "_t4DA4vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "NWCM",
+          "name": "NetworkCommunication",
+          "isoId": "_t4MK0vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "OTLC",
+          "name": "OtherTelecomRelatedBill",
+          "isoId": "_t4V70vRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "PHON",
+          "name": "TelephoneBill",
+          "isoId": "_t4V71fRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "UBIL",
+          "name": "Utilities",
+          "isoId": "_t4fFwvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "WTER",
+          "name": "WaterBill",
+          "isoId": "_t4fFxfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "BOND",
+          "name": "Bonds",
+          "isoId": "_kI13gQQ5Eey95qpfbNuEwg"
+        },
+        {
+          "value": "CABD",
+          "name": "CorporateActions-Bonds",
+          "isoId": "_lDjMQQQ5Eey95qpfbNuEwg"
+        },
+        {
+          "value": "CAEQ",
+          "name": "CorporateActions-Equities",
+          "isoId": "_lMo20QQ5Eey95qpfbNuEwg"
+        },
+        {
+          "value": "CBCR",
+          "name": "CreditCard",
+          "isoId": "_lXXgIQQ5Eey95qpfbNuEwg"
+        },
+        {
+          "value": "DBCR",
+          "name": "DebitCard",
+          "isoId": "_lsO84QQ5Eey95qpfbNuEwg"
+        },
+        {
+          "value": "DICL",
+          "name": "Diners",
+          "isoId": "_mCuxUQQ5Eey95qpfbNuEwg"
+        },
+        {
+          "value": "EQTS",
+          "name": "Equities",
+          "isoId": "_mffl0QQ5Eey95qpfbNuEwg"
+        },
+        {
+          "value": "FLCR",
+          "name": "FleetCard",
+          "isoId": "_m0gMgQQ5Eey95qpfbNuEwg"
+        },
+        {
+          "value": "EFTC",
+          "name": "LowValueCredit",
+          "isoId": "_nryZ0QQ5Eey95qpfbNuEwg"
+        },
+        {
+          "value": "EFTD",
+          "name": "LowValueDebit",
+          "isoId": "_n29vEQQ5Eey95qpfbNuEwg"
+        },
+        {
+          "value": "MOMA",
+          "name": "MoneyMarket",
+          "isoId": "_oCSOQQQ5Eey95qpfbNuEwg"
+        },
+        {
+          "value": "RAPI",
+          "name": "RapidPaymentInstruction",
+          "isoId": "_orHv4QQ5Eey95qpfbNuEwg"
+        },
+        {
+          "value": "GAMB",
+          "name": "GamblingOrWageringPayment",
+          "isoId": "_CWArYQTXEey95qpfbNuEwg"
+        },
+        {
+          "value": "LOTT",
+          "name": "LotteryPayment",
+          "isoId": "_DyZJ0QTXEey95qpfbNuEwg"
+        },
+        {
+          "value": "AMEX",
+          "name": "Amex",
+          "isoId": "_xQYWUQZ6EeyDDbdCShcrUQ"
+        },
+        {
+          "value": "SASW",
+          "name": "ATM",
+          "isoId": "_xkMqMQZ6EeyDDbdCShcrUQ"
+        },
+        {
+          "value": "AUCO",
+          "name": "AuthenticatedCollections",
+          "isoId": "_x-30AQZ6EeyDDbdCShcrUQ"
+        },
+        {
+          "value": "PCOM",
+          "name": "PropertyCompletionPayment",
+          "isoId": "_UqjFgRxLEeylJ55yLxtujQ"
+        },
+        {
+          "value": "PDEP",
+          "name": "PropertyDeposit",
+          "isoId": "_VAmOARxLEeylJ55yLxtujQ"
+        },
+        {
+          "value": "PLDS",
+          "name": "PropertyLoanDisbursement",
+          "isoId": "_VPgMsRxLEeylJ55yLxtujQ"
+        },
+        {
+          "value": "PLRF",
+          "name": "PropertyLoanRefinancing",
+          "isoId": "_VetGURxLEeylJ55yLxtujQ"
+        },
+        {
+          "value": "GAFA",
+          "name": "GovernmentFamilyAllowance",
+          "isoId": "_1pgzQY5BEeyANo-d7JlQ1A"
+        },
+        {
+          "value": "GAHO",
+          "name": "GovernmentHousingAllowance",
+          "isoId": "_16M6oY5BEeyANo-d7JlQ1A"
+        },
+        {
+          "value": "CPEN",
+          "name": "CashPenalties",
+          "isoId": "_FxtDseAkEey0k8vo1GQhqQ"
+        },
+        {
+          "value": "DEPD",
+          "name": "DependentSupportPayment",
+          "isoId": "_-MDecslmEe2OhfSCsNFang"
+        },
+        {
+          "value": "RETL",
+          "name": "RetailPayment",
+          "isoId": "_b2dR0slnEe2OhfSCsNFang"
+        },
+        {
+          "value": "DEBT",
+          "name": "ChargesBorneByDebtor",
+          "isoId": "_1pKqAo9sEe6qf99bCU7sXQ"
+        },
+        {
+          "value": "RMCO",
+          "name": "RegisteredMandate",
+          "isoId": "_1q1BsbFVEe-6m-PwtIJ7WQ"
+        },
+        {
+          "value": "INBC",
+          "name": "InterbankCharges",
+          "isoId": "_YhnJgYJ_EfCff8wf3dEAMw"
+        },
+        {
+          "value": "LBXX",
+          "name": "LongBoxTransfer",
+          "isoId": "_GHhQ4soJEfCY0M4eFzOwyQ"
+        },
+        {
+          "value": "MFSR",
+          "name": "MutualFundSubscriptionRedemption",
+          "isoId": "_ajDg8soJEfCY0M4eFzOwyQ"
+        },
+        {
+          "value": "CRYP",
+          "name": "CryptoAssets",
+          "isoId": "_7RXOMVKVEfGwtbbXfZvtsw"
+        },
+        {
+          "value": "MDEP",
+          "name": "MicroDeposit",
+          "isoId": "_tKQKwVKvEfGRO-1vbb6Img"
+        },
+        {
+          "value": "BROK",
+          "name": "BrokerageFunding",
+          "isoId": "_7rIaQlKvEfGRO-1vbb6Img"
+        },
+        {
+          "value": "ACTF",
+          "name": "AccountFunding",
+          "isoId": "_NSX9wlKwEfGRO-1vbb6Img"
+        },
+        {
+          "value": "WALM",
+          "name": "WalletFundingMultiUse",
+          "isoId": "_VfphMlKwEfGRO-1vbb6Img"
+        },
+        {
+          "value": "WALS",
+          "name": "WalletFundingSingle",
+          "isoId": "_bbso4lKwEfGRO-1vbb6Img"
+        },
+        {
+          "value": "CHDF",
+          "name": "CharitableDonationDAF",
+          "isoId": "_jLmT0VKwEfGRO-1vbb6Img"
+        },
+        {
+          "value": "CHFN",
+          "name": "CharitableDonationFoundation",
+          "isoId": "_p2ISIlKwEfGRO-1vbb6Img"
+        },
+        {
+          "value": "CHCP",
+          "name": "CharitableDonationCorporate",
+          "isoId": "_w_EqwVKwEfGRO-1vbb6Img"
+        },
+        {
+          "value": "TNTP",
+          "name": "TaxNeutralPensionTransfer",
+          "isoId": "_ASIlIVKxEfGRO-1vbb6Img"
+        },
+        {
+          "value": "ALDS",
+          "name": "AutoLoanDisbursement",
+          "isoId": "_iQ7TsqFyEfG_Et71c0fVfg"
+        },
+        {
+          "value": "PSDS",
+          "name": "PersonalLoanDisbursement",
+          "isoId": "_s5XSAqFyEfG_Et71c0fVfg"
+        },
+        {
+          "value": "BLDS",
+          "name": "BusinessLoanDisbursement",
+          "isoId": "_0RzfMqFyEfG_Et71c0fVfg"
+        },
+        {
+          "value": "SLDS",
+          "name": "StudentLoanDisbursement",
+          "isoId": "_8g0vEqFyEfG_Et71c0fVfg"
+        },
+        {
+          "value": "CLDS",
+          "name": "ConstructionLoanDisbursement",
+          "isoId": "_XnGY0qFzEfG_Et71c0fVfg"
+        },
+        {
+          "value": "PDLN",
+          "name": "PayDayLoan",
+          "isoId": "_haDgoqFzEfG_Et71c0fVfg"
+        },
+        {
+          "value": "BNPL",
+          "name": "BuyNowPayLater",
+          "isoId": "_wocWYqFzEfG_Et71c0fVfg"
+        },
+        {
+          "value": "ESCR",
+          "name": "EscrowPayment",
+          "isoId": "_5mKfUqFzEfG_Et71c0fVfg"
+        },
+        {
+          "value": "ODPY",
+          "name": "OnDemandPayment",
+          "isoId": "_IO4cMqF0EfG_Et71c0fVfg"
+        },
+        {
+          "value": "FUEL",
+          "name": "Fuel",
+          "isoId": "_vYD3IqF0EfG_Et71c0fVfg"
+        },
+        {
+          "value": "TOLL",
+          "name": "Tolls",
+          "isoId": "_34m74qF0EfG_Et71c0fVfg"
+        },
+        {
+          "value": "CARL",
+          "name": "CarLeaseRental",
+          "isoId": "_8rVEAqF0EfG_Et71c0fVfg"
+        },
+        {
+          "value": "TRVL",
+          "name": "TravelAndHospitality",
+          "isoId": "_GQ7sUqF1EfG_Et71c0fVfg"
+        },
+        {
+          "value": "GYMM",
+          "name": "GymMembership",
+          "isoId": "_OSpgAqF1EfG_Et71c0fVfg"
+        },
+        {
+          "value": "HMMS",
+          "name": "HomeMaintenanceServices",
+          "isoId": "_X2z94qF1EfG_Et71c0fVfg"
+        },
+        {
+          "value": "STRM",
+          "name": "StreamingServices",
+          "isoId": "_dX8rMqF1EfG_Et71c0fVfg"
+        },
+        {
+          "value": "HRPS",
+          "name": "HomeRepairServices",
+          "isoId": "_jiKxwqF1EfG_Et71c0fVfg"
+        },
+        {
+          "value": "RHSV",
+          "name": "RideHailingServices",
+          "isoId": "_slUNQqF1EfG_Et71c0fVfg"
+        },
+        {
+          "value": "FGDL",
+          "name": "FoodGroceryDelivery",
+          "isoId": "_8SxkoqF1EfG_Et71c0fVfg"
+        },
+        {
+          "value": "ERPM",
+          "name": "EmergencyReliefPayment",
+          "isoId": "_FkwtYqF2EfG_Et71c0fVfg"
+        },
+        {
+          "value": "GOVG",
+          "name": "GovernmentGrants",
+          "isoId": "_L5okwqF2EfG_Et71c0fVfg"
+        },
+        {
+          "value": "TIPS",
+          "name": "TipsGratuity",
+          "isoId": "_TPMdEqF2EfG_Et71c0fVfg"
+        },
+        {
+          "value": "SCAC",
+          "name": "SchoolActivities",
+          "isoId": "_ZyqKEqF2EfG_Et71c0fVfg"
+        },
+        {
+          "value": "WALT",
+          "name": "WalletTransactions",
+          "isoId": "_kuu2EqF2EfG_Et71c0fVfg"
+        }
+      ]
     },
     "Purpose2Choice": {
       "name": "Purpose2Choice",
@@ -2874,7 +7016,34 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "DECL",
+          "name": "Declaration",
+          "isoId": "_FltTIqF3EfG_Et71c0fVfg"
+        },
+        {
+          "value": "CIST",
+          "name": "CitizenshipStatus",
+          "isoId": "_XUIcsqF3EfG_Et71c0fVfg"
+        },
+        {
+          "value": "CRST",
+          "name": "CreditorStatus",
+          "isoId": "_dEFzsqF4EfG_Et71c0fVfg"
+        },
+        {
+          "value": "TAXS",
+          "name": "TaxStatus",
+          "isoId": "_qqGWYqF4EfG_Et71c0fVfg"
+        },
+        {
+          "value": "PURP",
+          "name": "NewCode",
+          "isoId": "_MjUTkaF5EfG_Et71c0fVfg"
+        }
+      ]
     },
     "RegulatoryReportingType1Choice": {
       "name": "RegulatoryReportingType1Choice",
@@ -3660,7 +7829,124 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "CINV",
+          "name": "CommercialInvoice",
+          "isoId": "_uHPTdfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CNFA",
+          "name": "CreditNoteRelatedToFinancialAdjustment",
+          "isoId": "_uHPTePRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CONT",
+          "name": "Contract",
+          "isoId": "_uHZEcvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CREN",
+          "name": "CreditNote",
+          "isoId": "_uHZEdfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DEBN",
+          "name": "DebitNote",
+          "isoId": "_uHZEePRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DISP",
+          "name": "DispatchAdvice",
+          "isoId": "_uHZEe_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DNFA",
+          "name": "DebitNoteRelatedToFinancialAdjustment",
+          "isoId": "_uHZEfvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "HIRI",
+          "name": "HireInvoice",
+          "isoId": "_uHiOYvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "INVS",
+          "name": "InvoiceSigned",
+          "isoId": "_uHiOZfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "MSIN",
+          "name": "MeteredServiceInvoice",
+          "isoId": "_uHiOaPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "PROF",
+          "name": "ProformaInvoice",
+          "isoId": "_uHiOa_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "PUOR",
+          "name": "PurchaseOrder",
+          "isoId": "_uHiObvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "QUOT",
+          "name": "Quotation",
+          "isoId": "_uHr_YvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SBIN",
+          "name": "SelfBilledInvoice",
+          "isoId": "_uHr_ZfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SPRR",
+          "name": "SellerPresentment",
+          "isoId": "_uH1JUvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TISH",
+          "name": "TimeSheet",
+          "isoId": "_uH1JVfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "USAR",
+          "name": "UsageReport",
+          "isoId": "_uH1JWPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "AROI",
+          "name": "AccountReceivableOpenItem",
+          "isoId": "_bI_n1dVZEe6lC6Aj9xJrCw"
+        },
+        {
+          "value": "BOLD",
+          "name": "BillOfLading",
+          "isoId": "_bI_n19VZEe6lC6Aj9xJrCw"
+        },
+        {
+          "value": "CMCN",
+          "name": "CommercialContract",
+          "isoId": "_bI_n2dVZEe6lC6Aj9xJrCw"
+        },
+        {
+          "value": "SOAC",
+          "name": "StatementOfAccount",
+          "isoId": "_bI_n29VZEe6lC6Aj9xJrCw"
+        },
+        {
+          "value": "TSUT",
+          "name": "TradeServicesUtilityTransaction",
+          "isoId": "_bI_n3dVZEe6lC6Aj9xJrCw"
+        },
+        {
+          "value": "VCHR",
+          "name": "Voucher",
+          "isoId": "_bI_n39VZEe6lC6Aj9xJrCw"
+        }
+      ]
     },
     "DocumentType2Choice": {
       "name": "DocumentType2Choice",
@@ -3718,7 +8004,34 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "INDA",
+          "name": "InvoiceDate",
+          "isoId": "_bI_nzdVZEe6lC6Aj9xJrCw"
+        },
+        {
+          "value": "PADD",
+          "name": "PaymentDueDate",
+          "isoId": "_bI_nz9VZEe6lC6Aj9xJrCw"
+        },
+        {
+          "value": "NXBD",
+          "name": "NextBillingDate",
+          "isoId": "_bI_n0dVZEe6lC6Aj9xJrCw"
+        },
+        {
+          "value": "NTAV",
+          "name": "NotAvailable",
+          "isoId": "_bI_n09VZEe6lC6Aj9xJrCw"
+        },
+        {
+          "value": "PYDT",
+          "name": "PayrollDate",
+          "isoId": "_4TfVgqF-EfG_Et71c0fVfg"
+        }
+      ]
     },
     "DateType2Choice": {
       "name": "DateType2Choice",
@@ -3776,7 +8089,104 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "ADPI",
+          "name": "AdditionalProductIdentificationAssignedByTheManufacturer",
+          "isoId": "_uSQ3vvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "AISB",
+          "name": "AlternateISBN",
+          "isoId": "_uSaosvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ASNB",
+          "name": "AssetNumber",
+          "isoId": "_uSaotfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "CTNB",
+          "name": "CatalogNumber",
+          "isoId": "_uSaouPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "DBSP",
+          "name": "DunBradstreetStandardProductAndServiceCode",
+          "isoId": "_uSjyovRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "EANN",
+          "name": "EuropeanArticleNumberEAN2551",
+          "isoId": "_uSjypfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "EINB",
+          "name": "EquipmentIdentificationNumber",
+          "isoId": "_uSjyqPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "GSNB",
+          "name": "GeneralSpecificationNumber",
+          "isoId": "_uStjovRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "HIBC",
+          "name": "HIBCHealthCareIndustryBarCode",
+          "isoId": "_uStjpfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "ISBN",
+          "name": "InternationalStandardBookNumberISBN",
+          "isoId": "_uStjqPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "LTNB",
+          "name": "LotNumber",
+          "isoId": "_uS3UovRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "MDNB",
+          "name": "ModelNumber",
+          "isoId": "_uS3UpfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "PRNB",
+          "name": "PartNumber",
+          "isoId": "_uS3UqPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "PTCD",
+          "name": "ProductTypeCode",
+          "isoId": "_uS3Uq_RYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "SKNB",
+          "name": "StockNumber",
+          "isoId": "_uS3UrvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "STNB",
+          "name": "StyleNumber",
+          "isoId": "_uTAekvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "TONB",
+          "name": "TechnicalOrderNumber",
+          "isoId": "_uTAelfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "UPCC",
+          "name": "UPCConsumerPackageCode",
+          "isoId": "_uTAemPRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "UPNB",
+          "name": "UniversalProductNumber",
+          "isoId": "_uTKPkvRYEeuLhpyIdtJzwg"
+        }
+      ]
     },
     "DocumentLineType1Choice": {
       "name": "DocumentLineType1Choice",
@@ -3868,7 +8278,144 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "APDS",
+          "name": "AdditionalPromotionalDiscount",
+          "isoId": "_vOwMetVqEe647PgBHdWfVw"
+        },
+        {
+          "value": "STDS",
+          "name": "StandingDiscount",
+          "isoId": "_vOwMfNVqEe647PgBHdWfVw"
+        },
+        {
+          "value": "TMDS",
+          "name": "TermsDiscount",
+          "isoId": "_vOwMftVqEe647PgBHdWfVw"
+        },
+        {
+          "value": "CITY",
+          "name": "CityTax",
+          "isoId": "_vOwMgNVqEe647PgBHdWfVw"
+        },
+        {
+          "value": "CNTY",
+          "name": "CountyTax",
+          "isoId": "_vOwMgtVqEe647PgBHdWfVw"
+        },
+        {
+          "value": "LOCL",
+          "name": "LocalTax",
+          "isoId": "_vOwMhNVqEe647PgBHdWfVw"
+        },
+        {
+          "value": "PROV",
+          "name": "ProvinceTax",
+          "isoId": "_vOwMhtVqEe647PgBHdWfVw"
+        },
+        {
+          "value": "STAT",
+          "name": "StateTax",
+          "isoId": "_vOwMiNVqEe647PgBHdWfVw"
+        },
+        {
+          "value": "CREN",
+          "name": "CreditNote",
+          "isoId": "_vOwMitVqEe647PgBHdWfVw"
+        },
+        {
+          "value": "DUPA",
+          "name": "DuePayable",
+          "isoId": "_vOwMjNVqEe647PgBHdWfVw"
+        },
+        {
+          "value": "PRIN",
+          "name": "OutstandingPrincipal",
+          "isoId": "_vOwMjtVqEe647PgBHdWfVw"
+        },
+        {
+          "value": "TOTA",
+          "name": "TotalPayment",
+          "isoId": "_vOwMkNVqEe647PgBHdWfVw"
+        },
+        {
+          "value": "INTE",
+          "name": "InterestPayment",
+          "isoId": "_vOwMktVqEe647PgBHdWfVw"
+        },
+        {
+          "value": "ESCO",
+          "name": "Escrow",
+          "isoId": "_vOwMlNVqEe647PgBHdWfVw"
+        },
+        {
+          "value": "TAXS",
+          "name": "Tax",
+          "isoId": "_vOwMltVqEe647PgBHdWfVw"
+        },
+        {
+          "value": "INSU",
+          "name": "Insurance",
+          "isoId": "_vOwMmNVqEe647PgBHdWfVw"
+        },
+        {
+          "value": "OBAL",
+          "name": "OutstandingBalance",
+          "isoId": "_vOwMmtVqEe647PgBHdWfVw"
+        },
+        {
+          "value": "SBAL",
+          "name": "StatementBalance",
+          "isoId": "_vOwMnNVqEe647PgBHdWfVw"
+        },
+        {
+          "value": "MIDU",
+          "name": "MinimumDue",
+          "isoId": "_vOwMntVqEe647PgBHdWfVw"
+        },
+        {
+          "value": "PADU",
+          "name": "PastDue",
+          "isoId": "_vOwMoNVqEe647PgBHdWfVw"
+        },
+        {
+          "value": "CRTL",
+          "name": "AvailableCredit",
+          "isoId": "_vOwMotVqEe647PgBHdWfVw"
+        },
+        {
+          "value": "PBAL",
+          "name": "PreviousBalance",
+          "isoId": "_vOwMpNVqEe647PgBHdWfVw"
+        },
+        {
+          "value": "CHAR",
+          "name": "NewCharges",
+          "isoId": "_vOwMptVqEe647PgBHdWfVw"
+        },
+        {
+          "value": "FEES",
+          "name": "Fees",
+          "isoId": "_vOwMqNVqEe647PgBHdWfVw"
+        },
+        {
+          "value": "INTC",
+          "name": "InterestCharges",
+          "isoId": "_vOwMqtVqEe647PgBHdWfVw"
+        },
+        {
+          "value": "REMI",
+          "name": "Remitted",
+          "isoId": "_vOwMrNVqEe647PgBHdWfVw"
+        },
+        {
+          "value": "DISC",
+          "name": "DiscountApplied",
+          "isoId": "_aPhHYqGFEfG_Et71c0fVfg"
+        }
+      ]
     },
     "DocumentAmountType1Choice": {
       "name": "DocumentAmountType1Choice",
@@ -4095,7 +8642,44 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "DISP",
+          "name": "DispatchAdvice",
+          "isoId": "_bI_n4dVZEe6lC6Aj9xJrCw"
+        },
+        {
+          "value": "FXDR",
+          "name": "ForeignExchangeDealReference",
+          "isoId": "_bI_n49VZEe6lC6Aj9xJrCw"
+        },
+        {
+          "value": "PUOR",
+          "name": "PurchaseOrder",
+          "isoId": "_bI_n5dVZEe6lC6Aj9xJrCw"
+        },
+        {
+          "value": "RPIN",
+          "name": "RelatedPaymentInstruction",
+          "isoId": "_bI_n59VZEe6lC6Aj9xJrCw"
+        },
+        {
+          "value": "RADM",
+          "name": "RemittanceAdviceMessage",
+          "isoId": "_bI_n6dVZEe6lC6Aj9xJrCw"
+        },
+        {
+          "value": "SCOR",
+          "name": "StructuredCommunicationReference",
+          "isoId": "_bI_n69VZEe6lC6Aj9xJrCw"
+        },
+        {
+          "value": "PRNB",
+          "name": "PaymentReferenceNumber",
+          "isoId": "_YYJaQqF-EfG_Et71c0fVfg"
+        }
+      ]
     },
     "CreditorReferenceType2Choice": {
       "name": "CreditorReferenceType2Choice",
@@ -4178,7 +8762,24 @@
       "kind": "code",
       "external": true,
       "minLength": 1,
-      "maxLength": 4
+      "maxLength": 4,
+      "options": [
+        {
+          "value": "GNCS",
+          "name": "GarnishmentForChildSupport",
+          "isoId": "_uTKPlfRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "GNDP",
+          "name": "GarnishmentForChildSupportFromDirectPayer",
+          "isoId": "_uTUAkvRYEeuLhpyIdtJzwg"
+        },
+        {
+          "value": "GTPP",
+          "name": "GarnishmentToTaxingAgency",
+          "isoId": "_uTUAlfRYEeuLhpyIdtJzwg"
+        }
+      ]
     },
     "GarnishmentType1Choice": {
       "name": "GarnishmentType1Choice",
