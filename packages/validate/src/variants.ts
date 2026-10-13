@@ -83,5 +83,9 @@ export const enUS: TextVariant = {
   ],
 };
 
-/** Variants shipped with the library, keyed by locale tag. Add your own with `createDefinitions(..., variants)`. */
-export const englishVariants: Record<string, TextVariant> = { 'en-US': enUS };
+/**
+ * Variants the library applies by itself, keyed by locale tag: none. American English is the en-US language repository's glossary
+ * (iso-20022-text-en-US, which carries these same rules as data); `enUS` stays here as that data's source, and a consumer can still pass it:
+ * `createDefinitions(locale, {}, locales, { 'en-US': enUS })`.
+ */
+export const englishVariants: Record<string, TextVariant> = {};

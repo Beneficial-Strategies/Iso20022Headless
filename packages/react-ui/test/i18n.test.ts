@@ -3,56 +3,66 @@ import { areaIndex, messageIndex } from '@beneficial-strategies/iso20022-validat
 import { allTypeDescriptors as typeDescriptors } from '@beneficial-strategies/iso20022-validate/all';
 import { createI18n, supportedLocales } from '../src/i18n/context.tsx';
 import { UI_KEYS, uiEn, uiLocales } from '../src/i18n/messages.ts';
+// the languages the library used to carry (the text hosts' now): still files, passed in here to exercise the mechanism and keep them complete
+import { uiEs } from '../src/i18n/ui.es.ts';
+import { uiDe } from '../src/i18n/ui.de.ts';
+import { uiFr } from '../src/i18n/ui.fr.ts';
+import { uiPt } from '../src/i18n/ui.pt.ts';
+import { es as validationEs, fr as validationFr } from '../../validate/src/legacy/messages.ts';
 
+const LEGACY = { es: uiEs, fr: uiFr, de: uiDe, pt: uiPt } as const;
 const SHIPPED = ['es', 'fr', 'de', 'pt'] as const;
 
 const method = typeDescriptors.PaymentInstruction51!.fields!.find((f) => f.name === 'PaymentMethod')!;
 
 describe('interface catalogs', () => {
   it.each(SHIPPED)('%s has every key that English has, and nothing extra', (lang) => {
-    expect(Object.keys(uiLocales[lang]!).sort()).toEqual(Object.keys(uiEn).sort());
+    expect(Object.keys(LEGACY[lang]).sort()).toEqual(Object.keys(uiEn).sort());
     expect(UI_KEYS.length).toBe(Object.keys(uiEn).length);
   });
 
   it.each(SHIPPED)('every %s message has the same placeholders as English (plain templates)', (lang) => {
     const slots = (m: unknown) => (typeof m === 'string' ? [...m.matchAll(/\{(\w+)\}/g)].map((x) => x[1]).sort() : null);
     for (const k of UI_KEYS) {
-      const [e, s] = [slots(uiEn[k]), slots(uiLocales[lang]![k])];
+      const [e, s] = [slots(uiEn[k]), slots(LEGACY[lang][k])];
       if (e && s) expect(s, `${lang}.${k}`).toEqual(e);
     }
   });
 
-  it('English text is the library default', () => {
+  it('English is the only language the library carries', () => {
+    expect(Object.keys(uiLocales)).toEqual(['en']);
     const en = createI18n('en');
-    const es = createI18n('es');
     expect(en.t('optional')).toBe('(optional)');
     expect(en.t('removeItem', { label: 'Payment', n: 2 })).toBe('Remove Payment 2');
-    expect(es.t('add', { label: 'Pago' })).toBe('+ Añadir Pago');
+    // any other language is English until a text host (or the consumer) supplies it
+    expect(createI18n('es').t('add', { label: 'Pago' })).toBe('+ Add Pago');
+    expect(createI18n('fr').t('now')).toBe('Now');
+    expect(createI18n('fr').validation.required).toBe('Required');
   });
 
-  it('French, German and Portuguese are shipped and use their own text', () => {
-    expect(createI18n('fr').t('now')).toBe('Maintenant');
-    expect(createI18n('de').t('now')).toBe('Jetzt');
-    expect(createI18n('pt-BR').t('now')).toBe('Agora');
-    expect(createI18n('fr').validation.required).toBe('Obligatoire');
+  it('a language passed in is used', () => {
+    expect(createI18n('fr', { ui: { fr: uiFr }, validation: { fr: validationFr } }).t('now')).toBe('Maintenant');
+    expect(createI18n('de', { ui: { de: uiDe } }).t('now')).toBe('Jetzt');
+    expect(createI18n('pt-BR', { ui: { pt: uiPt } }).t('now')).toBe('Agora');
+    expect(createI18n('fr', { validation: { fr: validationFr } }).validation.required).toBe('Obligatoire');
   });
 
-  it('American English shares the ISO interface text and rewrites the ISO spec text', () => {
+  it('American English is the ISO text unless a text host (the en-US glossary) rewrites it', () => {
     expect(createI18n('en-US').t('now')).toBe('Now');
     expect(createI18n('en-US').lang).toBe('en');
     expect(createI18n('en').defs.label({ isoId: undefined }, 'Organisation Identification').text).toBe('Organisation Identification');
-    expect(createI18n('en-US').defs.label({ isoId: undefined }, 'Organisation Identification').text).toBe('Organization Identification');
+    expect(createI18n('en-US').defs.label({ isoId: undefined }, 'Organisation Identification').text).toBe('Organisation Identification');
   });
 
-  it('regional tags and unknown languages fall back sensibly', () => {
-    expect(createI18n('es-MX').t('now')).toBe('Ahora');
+  it('regional tags use their language, and unknown languages fall back to English', () => {
+    expect(createI18n('es-MX', { ui: { es: uiEs } }).t('now')).toBe('Ahora');
     expect(createI18n('it').t('now')).toBe('Now');
   });
 });
 
 describe('consumer overrides', () => {
   it('override one message and keep the rest of the shipped language', () => {
-    const i = createI18n('es', { ui: { es: { now: 'Ya' } }, validation: { es: { required: 'Campo obligatorio' } } });
+    const i = createI18n('es', { ui: { es: { ...uiEs, now: 'Ya' } }, validation: { es: { ...validationEs, required: 'Campo obligatorio' } } });
     expect(i.t('now')).toBe('Ya');
     expect(i.t('remove')).toBe('Quitar'); // untouched shipped Spanish
     expect(i.validation.required).toBe('Campo obligatorio');
@@ -65,7 +75,7 @@ describe('consumer overrides', () => {
     expect(i.t('now')).toBe('Adesso');
     expect(i.t('remove')).toBe('Remove');
     expect(i.validation.required).toBe('Obbligatorio');
-    expect(supportedLocales(overrides)).toEqual(['en', 'en-US', 'es', 'fr', 'de', 'pt', 'it']);
+    expect(supportedLocales(overrides)).toEqual(['en', 'it']);
   });
 
   it('spec text and labels: English fallback is reported, translations win and are marked as such', () => {

@@ -1,7 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import { buildScreenModel, type ScreenNode } from '../src/screenModel.ts';
 import { DEFAULT_OPTIONS, toHtml, toJson, toMarkdown, toOutline, toTsv, type ExportOptions } from '../src/screenExport.ts';
-import { demoText } from '../src/demoText.ts';
+import { demoText, demoTextTables } from '../src/demoText.ts';
+// the Spanish table the Explorer no longer carries (a text host's now), passed in to keep exercising the copy in another language
+import { ES } from '../src/demoText.es.ts';
+const withEs = { en: demoTextTables.en!, es: ES };
 import { defsEn, defsEs, groupHeaderForm } from './screenfixture.ts';
 
 const t = demoText('en');
@@ -214,7 +217,7 @@ describe('Word / rich text (HTML)', () => {
 
 describe('Spanish', () => {
   it('the words in the copy follow the page language; the ISO names do not', () => {
-    const es = demoText('es');
+    const es = demoText('es', undefined, withEs);
     const m = buildScreenModel(form(), defsEs, { identifier: 'pain.001.001.13' });
     const out = toMarkdown(m, es, opts());
     expect(out).toContain('- **Identificación del mensaje** (obligatorio): MSG-1');

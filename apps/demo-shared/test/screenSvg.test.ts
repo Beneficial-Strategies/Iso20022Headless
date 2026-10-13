@@ -2,7 +2,10 @@ import { describe, expect, it } from 'vitest';
 import { buildScreenModel, type ScreenNode } from '../src/screenModel.ts';
 import { DEFAULT_OPTIONS, visible, type ExportOptions } from '../src/screenExport.ts';
 import { estimateText, svgId, toFigmaSvg } from '../src/screenSvg.ts';
-import { demoText } from '../src/demoText.ts';
+import { demoText, demoTextTables } from '../src/demoText.ts';
+// the Spanish table the Explorer no longer carries (a text host's now), passed in to keep exercising the copy in another language
+import { ES } from '../src/demoText.es.ts';
+const withEs = { en: demoTextTables.en!, es: ES };
 import { defsEn, defsEs, groupHeaderForm } from './screenfixture.ts';
 
 const values = {
@@ -15,7 +18,7 @@ const errors = { NumberOfTransactions: 'Invalid format. Expected: 1 to 15 digits
 const model = (v: unknown = values, e: Record<string, string> = errors, defs = defsEn) => buildScreenModel(groupHeaderForm(v, e), defs, { identifier: 'pain.001.001.13' });
 const opts = (o: Partial<ExportOptions> = {}): ExportOptions => ({ ...DEFAULT_OPTIONS, ...o });
 const parse = (svg: string): Document => new DOMParser().parseFromString(svg, 'image/svg+xml');
-const draw = (o: Partial<ExportOptions> = {}, m = model(), lang = 'en'): string => toFigmaSvg(m, demoText(lang), opts(o), estimateText);
+const draw = (o: Partial<ExportOptions> = {}, m = model(), lang = 'en'): string => toFigmaSvg(m, demoText(lang, undefined, withEs), opts(o), estimateText);
 
 const flat = (nodes: ScreenNode[], out: ScreenNode[] = []): ScreenNode[] => {
   for (const n of nodes) {

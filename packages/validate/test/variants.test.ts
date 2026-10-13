@@ -34,9 +34,17 @@ describe('American English rewrite rules', () => {
   });
 });
 
+describe('the library applies no regional variant by itself', () => {
+  it('en-US is the ISO English unless rules are passed in', () => {
+    const f = Object.values(typeDescriptors).flatMap((t) => t.fields ?? []).find((x) => /Organisation/.test(x.displayName) && x.isoId)!;
+    expect(createDefinitions('en-US').label(f, f.displayName).text).toBe(createDefinitions('en').label(f, f.displayName).text);
+  });
+});
+
 describe('en-US definitions', () => {
   const en = createDefinitions('en');
-  const enUs = createDefinitions('en-US');
+  // the library applies no variant by itself (the en-US language repository's glossary is where American English lives now); a consumer can pass these rules
+  const enUs = createDefinitions('en-US', {}, undefined, { 'en-US': enUS });
 
   it('en is the ISO text exactly; en-US rewrites it and says it is still English', () => {
     const f = fields.find((x) => /Organisation/.test(displayName(x.name)))!;
@@ -71,7 +79,7 @@ describe('en-US definitions', () => {
 
   it('text a catalog wrote for en-US itself is kept as written', () => {
     const f = fields[0]!;
-    const d = createDefinitions('en-US', {}, { 'en-US': { labels: { [f.isoId!]: 'Organisation, on purpose' } } });
+    const d = createDefinitions('en-US', {}, { 'en-US': { labels: { [f.isoId!]: 'Organisation, on purpose' } } }, { 'en-US': enUS });
     expect(d.label(f, 'x').text).toBe('Organisation, on purpose');
   });
 });

@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { schemas, typeDescriptors } from '@beneficial-strategies/iso20022-validate/pain001';
 import { Iso20022Form } from '../src/index.ts';
+import { es as validationEs } from '../../validate/src/legacy/messages.ts';
 
 const TYPE = 'BranchAndFinancialInstitutionIdentification8';
 
@@ -35,13 +36,14 @@ describe('Iso20022Form', () => {
     });
   });
 
-  it('works in Spanish by passing a locale', async () => {
+  it('works in another language when its text is passed in with a locale', async () => {
     const user = userEvent.setup();
-    render(<Iso20022Form type={TYPE} schemas={schemas} typeDescriptors={typeDescriptors} locale="es" />);
+    render(<Iso20022Form type={TYPE} schemas={schemas} typeDescriptors={typeDescriptors} locale="es" overrides={{ validation: { es: validationEs } }} />);
     const bic = screen.getByRole('textbox', { name: /BICFI/ });
     await user.type(bic, 'x');
     await user.tab();
-    expect(await screen.findByText(/No es un BIC \(8 u 11 caracteres\)/, {}, { timeout: 3000 })).toBeTruthy();
+    // the pattern description in Spanish was the library's; the legacy table's generic text is what is left of it
+    expect(await screen.findByText(/Formato no válido/, {}, { timeout: 3000 })).toBeTruthy();
   });
 
   it('names the problem when the type is not in the module', () => {
