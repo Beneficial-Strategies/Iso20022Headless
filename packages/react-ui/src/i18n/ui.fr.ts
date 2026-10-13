@@ -1,6 +1,6 @@
 import type { UiMessages } from './messages.ts';
 
-/** French interface text. Machine-drafted; corrections are welcome as GitHub issues. */
+/** French interface text. NOT imported by anything (the text hosts carry the languages; see ui.es.ts). Machine-drafted; corrections are welcome as GitHub issues. */
 export const uiFr: UiMessages = {
   required: '(obligatoire)',
   optional: '(facultatif)',

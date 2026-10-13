@@ -20,11 +20,11 @@ import { zoomExtra } from './ZoomButton.tsx';
 import { enterZoom, leaveZoom, type EditorValues, type ZoomFrame } from './zoom.ts';
 import { FieldModeSwitch } from './FieldModeSwitch.tsx';
 import { HoverHelp } from './HoverHelp.tsx';
-import { DEMO_ENGLISH_ONLY, DemoTextOverridesContext, demoText, useDemoText } from './demoText.ts';
+import { DemoTextOverridesContext, demoText, useDemoText } from './demoText.ts';
 import { HostCatalogContext, createHostI18n, mergeI18nOverrides, parseTextHosts, useHostText } from './textHost.ts';
 import { CopyAsMenu } from './CopyAsMenu.tsx';
 import { DEFAULT_OPTIONS, type ExportOptions } from './screenExport.ts';
-import { ENGLISH_ONLY, PageTextOverridesContext, makePageText, usePageText, type PageKey } from './text/messages.ts';
+import { PageTextOverridesContext, makePageText, usePageText, type PageKey } from './text/messages.ts';
 
 const messageIds = messageIndex.map((m) => m.identifier);
 const bundleCache = new Map<string, MessageBundle>();
@@ -615,9 +615,9 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
   // the host's text is the base; what the embedding page passes as `i18n` still wins over it
   const merged = useMemo(() => mergeI18nOverrides(hostText?.i18n, overrides), [hostText, overrides]);
   const i18n = useMemo(() => createHostI18n(locale, merged), [locale, merged]);
-  const dt = demoText(i18n.locale, hostText?.controls, DEMO_ENGLISH_ONLY);
+  const dt = demoText(i18n.locale, hostText?.controls);
   const pagePerLocale = useMemo(() => (hostText ? { [locale]: hostText.page } : undefined), [hostText, locale]);
-  const pageText = useMemo(() => makePageText(i18n, pagePerLocale, ENGLISH_ONLY), [i18n, pagePerLocale]);
+  const pageText = useMemo(() => makePageText(i18n, pagePerLocale), [i18n, pagePerLocale]);
   const skin = skins.find((s) => s.id === settings.skin) ?? skins[0]!;
   return (
     <I18nProvider value={i18n}>

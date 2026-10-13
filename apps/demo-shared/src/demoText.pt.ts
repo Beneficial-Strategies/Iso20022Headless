@@ -1,6 +1,6 @@
 import type { DemoKey } from './demoText.ts';
 
-/** Portuguese text for the Copy as menu, field modes and the words in what they copy. Machine-drafted; corrections welcome as GitHub issues. */
+/** Portuguese text for the Copy as menu, field modes and the words in what they copy. NOT imported by anything (the Explorer carries English only; see demoText.es.ts). Machine-drafted; corrections welcome as GitHub issues. */
 export const PT: Record<DemoKey, string> = {
   helpAreaTitle: 'Área de negócio',
   helpArea: 'A ISO 20022 agrupa as suas mensagens em áreas de negócio, como iniciação de pagamentos (pain), compensação e liquidação (pacs) e gestão de caixas automáticas (caam). Escolha uma área para ver as respetivas mensagens.',

@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import type { ZodType } from 'zod';
-import { collectIssues, createMessages, en, es, formatIssue, formatIssues, formatMessage, ISSUE_CODES } from '../src/index.ts';
+import { collectIssues, createMessages, en, formatIssue, formatIssues, formatMessage, ISSUE_CODES } from '../src/index.ts';
+// the Spanish table the library no longer carries (src/legacy: the text hosts' now); passed in, it still exercises the mechanism
+import { es } from '../src/legacy/messages.ts';
 import { schemas } from '../src/generated/pain001.ts';
 import { isoTime } from '../src/runtime.ts';
 
@@ -67,8 +69,8 @@ describe('catalogs', () => {
     }
   });
 
-  it('Spanish is used when asked, with plural-aware wording', () => {
-    const m = createMessages('es');
+  it('a language passed in is used when asked, with plural-aware wording', () => {
+    const m = createMessages('es', {}, { es });
     expect(formatIssue({ code: 'required' }, m)).toBe('Obligatorio');
     expect(formatIssue({ code: 'too_long', params: { max: 35 } }, m)).toBe('Debe tener como máximo 35 caracteres');
     expect(formatIssue({ code: 'too_short', params: { min: 1 } }, m)).toBe('Debe tener al menos 1 carácter');
@@ -77,13 +79,13 @@ describe('catalogs', () => {
   });
 
   it('a regional tag falls back to its language, then to English', () => {
-    expect(formatIssue({ code: 'required' }, createMessages('es-MX'))).toBe('Obligatorio');
+    expect(formatIssue({ code: 'required' }, createMessages('es-MX', {}, { es }))).toBe('Obligatorio');
     expect(formatIssue({ code: 'required' }, createMessages('it'))).toBe('Required');
     expect(formatIssue({ code: 'required' }, createMessages())).toBe('Required');
   });
 
   it('consumer overrides win and can be partial', () => {
-    const m = createMessages('es', { required: 'Campo obligatorio', too_long: ({ max }) => `Máx. ${max}` });
+    const m = createMessages('es', { required: 'Campo obligatorio', too_long: ({ max }) => `Máx. ${max}` }, { es });
     expect(formatIssue({ code: 'required' }, m)).toBe('Campo obligatorio');
     expect(formatIssue({ code: 'too_long', params: { max: 5 } }, m)).toBe('Máx. 5');
     expect(formatIssue({ code: 'select_one' }, m)).toBe('Seleccione una opción'); // untouched

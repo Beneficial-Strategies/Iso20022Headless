@@ -1,6 +1,6 @@
 import type { DemoKey } from './demoText.ts';
 
-/** German text for the Copy as menu, field modes and the words in what they copy. Machine-drafted; corrections welcome as GitHub issues. */
+/** German text for the Copy as menu, field modes and the words in what they copy. NOT imported by anything (the Explorer carries English only; see demoText.es.ts). Machine-drafted; corrections welcome as GitHub issues. */
 export const DE: Record<DemoKey, string> = {
   helpAreaTitle: 'Geschäftsbereich',
   helpArea: 'ISO 20022 gruppiert seine Nachrichten in Geschäftsbereiche, etwa Zahlungsinitiierung (pain), Clearing und Abwicklung (pacs) und Geldautomatenverwaltung (caam). Wählen Sie einen Bereich, um seine Nachrichten zu sehen.',

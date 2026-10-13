@@ -3,7 +3,10 @@ import type { FieldExtraContext, FieldMode } from '@beneficial-strategies/iso200
 import { buildScreenModel, type ScreenNode } from '../src/screenModel.ts';
 import { DEFAULT_OPTIONS, toHtml, toJson, toMarkdown, toOutline, toTsv, type ExportOptions } from '../src/screenExport.ts';
 import { estimateText, toFigmaSvg } from '../src/screenSvg.ts';
-import { demoText } from '../src/demoText.ts';
+import { demoText, demoTextTables } from '../src/demoText.ts';
+// the Spanish table the Explorer no longer carries (a text host's now), passed in to keep exercising the copy in another language
+import { ES } from '../src/demoText.es.ts';
+const withEs = { en: demoTextTables.en!, es: ES };
 import { defsEn, defsEs, groupHeaderForm } from './screenfixture.ts';
 
 const t = demoText('en');
@@ -109,7 +112,7 @@ describe('the text formats say the mode where it is set', () => {
   });
 
   it('Spanish words', () => {
-    const es = demoText('es');
+    const es = demoText('es', undefined, withEs);
     const md = toMarkdown(model(MODES, defsEs), es, opts());
     expect(md).toContain('(obligatorio, oculto): DEFAULT-1');
     expect(md).toContain('(obligatorio, etiqueta)');

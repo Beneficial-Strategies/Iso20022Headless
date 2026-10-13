@@ -1,0 +1,26 @@
+import type { UiMessages } from './messages.ts';
+
+/** Spanish interface text. NOT imported by anything: the library carries English only (messages.ts), and the other languages are the text hosts' (tools/headless/ui in iso-20022-text). Kept as the source for that translation. */
+export const uiEs: UiMessages = {
+  required: '(obligatorio)',
+  optional: '(opcional)',
+  remove: 'Quitar',
+  add: '+ Añadir {label}',
+  removeItem: 'Quitar {label} {n}',
+  now: 'Ahora',
+  nowAria: 'Establecer {label} en la hora local actual',
+  chooseOne: '{label} — elija uno',
+  select: '— seleccione —',
+  include: 'Incluir {label}',
+  aboutLabel: 'Acerca de {label}',
+  listRequired: 'obligatorio, ',
+  currencyOf: 'Moneda de {label}',
+  amountOf: 'Importe de {label}',
+  options: 'Opciones',
+  rawXml: '<xml/> (XML sin procesar)',
+  errorPrefix: 'Error:',
+  englishNote: 'Se muestra en inglés (sin traducir)',
+  machineNote: 'Traducción automática, pendiente de revisión',
+  specTip: 'Ver la documentación oficial de ISO 20022 de {type}',
+  helpClickHint: 'Haga clic para verlo en el formulario',
+};
