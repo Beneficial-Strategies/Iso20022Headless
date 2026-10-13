@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { createContext, useContext, useMemo } from 'react';
 import { formatMessage, type MessageParams } from '@beneficial-strategies/iso20022-validate';
 import { useI18n, type I18n, type UiKey } from '@beneficial-strategies/iso20022-react-ui';
 import { pageDe } from './page.de.ts';
@@ -83,8 +83,8 @@ const isPageKey = (key: string): key is PageKey => (PAGE_KEYS as readonly string
 export type PageTextOverrides = Record<string, Partial<PageMessages>>;
 
 /** Demo keys from the demo catalog, library keys from the library's. A key nobody defined reads as an empty string. */
-export function makePageText(i18n: Pick<I18n, 'locale' | 't'>, overrides?: PageTextOverrides): PageText {
-  const messages = createPageMessages(i18n.locale, {}, mergeLocales(pageLocales, overrides));
+export function makePageText(i18n: Pick<I18n, 'locale' | 't'>, overrides?: PageTextOverrides, base: Record<string, Partial<PageMessages>> = pageLocales): PageText {
+  const messages = createPageMessages(i18n.locale, {}, mergeLocales(base, overrides));
   return {
     t: (key, params) => {
       if (!isPageKey(key)) return i18n.t(key, params);
@@ -94,10 +94,17 @@ export function makePageText(i18n: Pick<I18n, 'locale' | 't'>, overrides?: PageT
   };
 }
 
+/** What the Explorer carries for language support: the English, and nothing else. Every other language comes from a text host (see textHost.ts). */
+export const ENGLISH_ONLY: Record<string, Partial<PageMessages>> = { en: pageEn };
+
+/** Page text that a host supplies, per locale tag (see textHost.ts). The demo's own tables are used where it has none. */
+export const PageTextOverridesContext = createContext<PageTextOverrides | undefined>(undefined);
+
 /** The text function for the current language. */
 export function usePageText(overrides?: PageTextOverrides): PageText {
   const i18n = useI18n();
-  return useMemo(() => makePageText(i18n, overrides), [i18n, overrides]);
+  const fromHost = useContext(PageTextOverridesContext);
+  return useMemo(() => makePageText(i18n, overrides ?? fromHost, ENGLISH_ONLY), [i18n, overrides, fromHost]);
 }
 
 function mergeLocales(base: Record<string, Partial<PageMessages>>, extra: PageTextOverrides = {}): Record<string, Partial<PageMessages>> {
