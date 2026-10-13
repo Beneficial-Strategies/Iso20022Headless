@@ -97,6 +97,8 @@ describe('the overrides a host becomes', () => {
     const invalid = o.i18n.validation!.fr!.invalid_format as (p: Record<string, string>) => string;
     expect(invalid({ pattern: '[A-Z]{4}' })).toBe('Format requis : 4 lettres');
     expect(invalid({ pattern: 'unknown' })).toBe('Format non valide');
+    // the issue carries the compiled expression
+    expect(invalid({ pattern: '^(?:[A-Z]{4})$' })).toBe('Format requis : 4 lettres');
   });
   it('takes the date and time messages from the format of their types', () => expect(o.i18n.validation!.fr!.datetime_format).toBe('Utilisez AAAA-MM-JJThh:mm:ss'));
   it('puts the ISO text in the definitions of the locale', () => expect(o.i18n.definitions!.fr!.labels).toEqual({ F1: 'Code postal' }));

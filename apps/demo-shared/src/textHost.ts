@@ -16,7 +16,7 @@
  */
 import { createContext, useEffect, useMemo, useState } from 'react';
 import { createUiMessages, translate, type I18n, type I18nOverrides, type UiMessages } from '@beneficial-strategies/iso20022-react-ui';
-import { createMessages, type TypeDescriptor, type TypeDescriptors, type ValidationMessages } from '@beneficial-strategies/iso20022-validate';
+import { createMessages, normalizePattern, type TypeDescriptor, type TypeDescriptors, type ValidationMessages } from '@beneficial-strategies/iso20022-validate';
 import { createDefinitions, definitionLocales, type DefinitionCatalog } from '@beneficial-strategies/iso20022-validate/definitions';
 import { DEFAULT_LOCALES } from './settings.ts';
 import { formatIcu, type IcuParams } from './icu.ts';
@@ -177,11 +177,12 @@ export function hostOverrides(locale: string, res: HostResources, descriptors: T
   const byPattern = new Map<string, string>();
   for (const t of Object.values(descriptors)) {
     const format = res.types[t.name]?.format;
-    if (t.kind === 'text' && t.pattern && format && !byPattern.has(t.pattern)) byPattern.set(t.pattern, format);
+    // an issue carries the regular expression as it was compiled (`^(?:...)$`); the descriptor has the ISO pattern
+    if (t.kind === 'text' && t.pattern && format && !byPattern.has(normalizePattern(t.pattern))) byPattern.set(normalizePattern(t.pattern), format);
   }
   const generic = validation.invalid_format;
   if (byPattern.size || generic) {
-    validation.invalid_format = (p: IcuParams) => byPattern.get(String(p.pattern)) ?? (typeof generic === 'function' ? generic(p) : generic ?? 'Invalid format');
+    validation.invalid_format = (p: IcuParams) => byPattern.get(normalizePattern(String(p.pattern ?? ''))) ?? (typeof generic === 'function' ? generic(p) : generic ?? 'Invalid format');
   }
   if (Object.keys(validation).length) i18n.validation = { [locale]: validation as Partial<ValidationMessages> };
   if (Object.keys(res.types).length) i18n.definitions = { [locale]: catalogFromTypes(descriptors, res.types) };
