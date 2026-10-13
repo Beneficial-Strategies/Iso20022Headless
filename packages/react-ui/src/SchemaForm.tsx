@@ -442,7 +442,8 @@ function SchemaFormBody({ form }: { form: FormApi }) {
   const labelOf = useLabel();
   const { defs } = useI18n();
   const root = form.typeDescriptors[form.rootType]!;
-  const title = displayName(root.name);
+  // a catalog may name the type in its language (a text host does); the English is the name derived from the ISO name
+  const title = defs.typeName(root, displayName(root.name)).text;
   const rootHelp = useHelp(defs.type(root), title, false, undefined, root.name);
   const fields = root.kind === 'choice' ? [] : (root.fields ?? []);
   return (
