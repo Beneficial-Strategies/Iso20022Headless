@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Command } from 'cmdk';
 import type { z } from 'zod';
 import { APPLICATION_HEADER, areaIndex, evaluateRules, formatIssue, messageIndex, pruneEmpty, ruleCodeLists, withApplicationHeader, type MessageBundle, type RuleResult } from '@beneficial-strategies/iso20022-validate';
-import { DescribedSelect, I18nProvider, Popup, SchemaForm, SkinProvider, skinIds, skins, supportedLocales, useCreateI18n, useI18n, type FieldExtraContext, type FieldMode, type I18nOverrides, type UiKey, type UseForm } from '@beneficial-strategies/iso20022-react-ui';
+import { DescribedSelect, I18nProvider, Popup, SchemaForm, SkinProvider, skinIds, skins, useI18n, type FieldExtraContext, type FieldMode, type I18nOverrides, type UiKey, type UseForm } from '@beneficial-strategies/iso20022-react-ui';
 import { serializeEnvelopeToIsoJson, serializeEnvelopeToXml, serializeFragment, serializeFragmentIsoJson, serializeToIsoJson, serializeToXml } from '@beneficial-strategies/iso20022-serialize';
 import { XmlPane } from './XmlPane.tsx';
 import { SettingsPanel } from './SettingsPanel.tsx';
@@ -20,10 +20,11 @@ import { zoomExtra } from './ZoomButton.tsx';
 import { enterZoom, leaveZoom, type EditorValues, type ZoomFrame } from './zoom.ts';
 import { FieldModeSwitch } from './FieldModeSwitch.tsx';
 import { HoverHelp } from './HoverHelp.tsx';
-import { demoText, useDemoText } from './demoText.ts';
+import { DEMO_ENGLISH_ONLY, DemoTextOverridesContext, demoText, useDemoText } from './demoText.ts';
+import { HostCatalogContext, createHostI18n, mergeI18nOverrides, parseTextHosts, useHostText } from './textHost.ts';
 import { CopyAsMenu } from './CopyAsMenu.tsx';
 import { DEFAULT_OPTIONS, type ExportOptions } from './screenExport.ts';
-import { makePageText, usePageText, type PageKey } from './text/messages.ts';
+import { ENGLISH_ONLY, PageTextOverridesContext, makePageText, usePageText, type PageKey } from './text/messages.ts';
 
 const messageIds = messageIndex.map((m) => m.identifier);
 const bundleCache = new Map<string, MessageBundle>();
@@ -64,9 +65,9 @@ function useMessageBundle(identifier: string): MessageBundle | undefined {
 
 /** The first choice: which business area (pain, pacs, ...). Names and descriptions are the repository's, translated where we have it. */
 function AreaPicker({ value, onChange }: { value: string; onChange: (code: string) => void }) {
-  const { lang } = useI18n();
   const { t } = usePageText();
   const dt = useDemoText();
+  const host = useContext(HostCatalogContext);
   return (
     <HoverHelp className="w-[min(6.5rem,100%)] min-w-0 shrink-0" title={dt('helpAreaTitle')} text={dt('helpArea')}>
       <DescribedSelect
@@ -76,10 +77,8 @@ function AreaPicker({ value, onChange }: { value: string; onChange: (code: strin
         options={[...areaIndex].sort((a, b) => a.code.localeCompare(b.code)).map((a) => ({
           value: a.code,
           label: a.code,
-          description:
-            lang === 'en'
-              ? [a.name, a.definition].filter(Boolean).join(': ')
-              : [t(`areaName_${a.code}` as PageKey), t(`areaDesc_${a.code}` as PageKey)].filter(Boolean).join(': '),
+          // the area's name and description are ISO's: a text host has them in its language, else the specification's English
+          description: [host?.areas[a.code]?.name ?? a.name, host?.areas[a.code]?.definition ?? a.definition].filter(Boolean).join(': '),
         }))}
         onChange={(v) => v && onChange(v)}
         placeholder={t('areaLabel')}
@@ -93,13 +92,14 @@ function AreaPicker({ value, onChange }: { value: string; onChange: (code: strin
 function MessagePicker({ area, value, onChange }: { area: string; value: string; onChange: (id: string) => void }) {
   const { t } = usePageText();
   const dt = useDemoText();
+  const host = useContext(HostCatalogContext);
   return (
     <HoverHelp className="w-[min(9rem,100%)] min-w-0 shrink-0" title={dt('helpMessageTitle')} text={dt('helpMessage')}>
       <DescribedSelect
         id="message-picker"
         ariaLabel={t('messageLabel')}
         value={value}
-        options={messageIndex.filter((m) => m.area === area).map((m) => ({ value: m.identifier, label: m.identifier, description: m.title }))}
+        options={messageIndex.filter((m) => m.area === area).map((m) => ({ value: m.identifier, label: m.identifier, description: host?.messages[m.identifier]?.name ?? m.title }))}
         onChange={(v) => v && onChange(v)}
         placeholder={t('messageLabel')}
         allowEmpty={false}
@@ -551,7 +551,13 @@ const DEV_XSD_PROXY = viteEnv?.VITE_XSD_PROXY === 'on' || (viteEnv?.DEV === true
  * spec text per locale (keep the object stable, e.g. define it outside the component).
  */
 export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form' | 'zod'; useForm: UseForm; i18n?: I18nOverrides }) {
-  const locales = useMemo(() => supportedLocales(overrides), [overrides]);
+  // where each language's text comes from, if the address says so (?textHosts=... or ?textHost=...): see textHost.ts
+  const hostConfig = useMemo(
+    () => parseTextHosts(typeof window === 'undefined' ? '' : window.location.search, undefined, { textHosts: viteEnv?.VITE_TEXT_HOSTS as string | undefined, textHost: viteEnv?.VITE_TEXT_HOST as string | undefined, textLangs: viteEnv?.VITE_TEXT_LANGS as string | undefined }),
+    [],
+  );
+  // English is all the Explorer carries; every other language is one a text host (or the embedding page) supplies
+  const locales = useMemo(() => [...new Set(['en', ...Object.keys(overrides?.ui ?? {}), ...hostConfig.languages])], [overrides, hostConfig]);
   const { settings, resolvedTheme, locale, update } = useSettings(skinIds, locales, messageIds);
   // ?ImplementationBanner=true brings back the original banner; the settings code keeps unknown query parameters
   const implementationBanner = useMemo(() => (typeof window === 'undefined' ? false : wantsImplementationBanner(window.location.search)), []);
@@ -605,12 +611,19 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
   const area = messageIndex.find((m) => m.identifier === settings.message)?.area ?? areaIndex[0]!.code;
   const lastInArea = useRef<Record<string, string>>({});
   lastInArea.current[area] = settings.message;
-  const i18n = useCreateI18n(locale, overrides);
-  const dt = demoText(i18n.locale);
-  const pageText = useMemo(() => makePageText(i18n), [i18n]);
+  const hostText = useHostText(hostConfig, locale, [settings.message, HEADER_IDENTIFIER], bundle?.typeDescriptors);
+  // the host's text is the base; what the embedding page passes as `i18n` still wins over it
+  const merged = useMemo(() => mergeI18nOverrides(hostText?.i18n, overrides), [hostText, overrides]);
+  const i18n = useMemo(() => createHostI18n(locale, merged), [locale, merged]);
+  const dt = demoText(i18n.locale, hostText?.controls, DEMO_ENGLISH_ONLY);
+  const pagePerLocale = useMemo(() => (hostText ? { [locale]: hostText.page } : undefined), [hostText, locale]);
+  const pageText = useMemo(() => makePageText(i18n, pagePerLocale, ENGLISH_ONLY), [i18n, pagePerLocale]);
   const skin = skins.find((s) => s.id === settings.skin) ?? skins[0]!;
   return (
     <I18nProvider value={i18n}>
+     <PageTextOverridesContext.Provider value={pagePerLocale}>
+      <DemoTextOverridesContext.Provider value={hostText?.controls}>
+      <HostCatalogContext.Provider value={hostText?.catalog}>
       <div className="flex h-screen flex-col bg-surface p-4 text-fg">
         <header className="mb-3">
           {implementationBanner ? (
@@ -669,6 +682,9 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
           )}
         </SkinProvider>
       </div>
+      </HostCatalogContext.Provider>
+      </DemoTextOverridesContext.Provider>
+     </PageTextOverridesContext.Provider>
     </I18nProvider>
   );
 }

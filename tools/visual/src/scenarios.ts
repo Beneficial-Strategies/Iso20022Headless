@@ -2250,7 +2250,7 @@ export const scenarios: Scenario[] = [
     app: 'demo-form',
     viewport: { width: 1440, height: 900 },
     steps: async (page) => {
-      await page.locator("button[aria-label='About Customer Credit Transfer Initiation V13']").click();
+      await page.locator("button[aria-label='About Customer Credit Transfer Initiation V 13']").click();
       await settle();
     },
     expect: async (page) => {
@@ -2264,7 +2264,7 @@ export const scenarios: Scenario[] = [
         return { title: h?.textContent ?? '', h: size(h), legend: size(legend), first: first === h || first?.firstElementChild === h, note };
       });
       const problems: string[] = [];
-      if (!/Customer Credit Transfer Initiation V13/.test(r.title)) problems.push(`title is "${r.title}"`);
+      if (!/Customer Credit Transfer Initiation V 13/.test(r.title)) problems.push(`title is "${r.title}"`);
       if (!(r.h > r.legend)) problems.push(`title font (${r.h}px) is not larger than the group heading (${r.legend}px)`);
       if (!r.first) problems.push('the title is not the first thing in the form');
       if (!r.note.includes('sent by the initiating party')) problems.push(`the message description is missing from the help note: "${r.note}"`);
@@ -2278,7 +2278,8 @@ export const scenarios: Scenario[] = [
     viewport: { width: 1440, height: 900 },
     expect: async (page) => {
       const r = await page.evaluate(() => document.querySelector('[data-schema-form] h2')?.textContent ?? '');
-      return /Customer Payment Status Report V15/.test(r) ? [] : [`title is "${r}"`];
+      // the Spanish title is the host's; how much of it is Spanish depends on the glossary, the version is spaced from the words either way
+      return /Status Report V 15/.test(r) ? [] : [`title is "${r}"`];
     },
   },
   { name: 'pain002-dark-spanish', app: 'demo-zod', query: '?message=pain.002.001.15&theme=dark&lang=es', viewport: { width: 1440, height: 900 } },
@@ -2513,7 +2514,7 @@ export const scenarios: Scenario[] = [
     steps: addPaymentAndOpenMethod,
     expect: async (page) => {
       const t = await popupText(page);
-      const missing = ['CHK — Cheque', 'TRA — TransferAdvice', 'TRF — CreditTransfer', 'Written order to a bank', 'in the books of the account servicer'].filter((s) => !t.includes(s));
+      const missing = ['CHK — Cheque', 'TRA — Transfer Advice', 'TRF — Credit Transfer', 'Written order to a bank', 'in the books of the account servicer'].filter((s) => !t.includes(s));
       return missing.length ? [`dropdown is missing: ${missing.join('; ')}`] : [];
     },
   },

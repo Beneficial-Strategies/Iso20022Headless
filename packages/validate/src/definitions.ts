@@ -22,6 +22,8 @@ export interface DefinitionCatalog {
   labels?: Record<string, CatalogEntry>;
   /** Translated code names (the word after the code in a dropdown, e.g. `CHK — Cheque`). */
   codeNames?: Record<string, CatalogEntry>;
+  /** Translated type names, keyed by the type's repository id (the title of a form, for one). Without one, the English name derived from the ISO name is used. */
+  typeNames?: Record<string, CatalogEntry>;
   /** Translated text of business rules, keyed by constraint id. */
   rules?: Record<string, CatalogEntry>;
 }
@@ -46,6 +48,8 @@ export interface Definitions {
   code: (option: { isoId?: string | undefined }) => Localized | undefined;
   /** Element label: a translation when one exists, else `fallback` (English). */
   label: (field: { isoId?: string | undefined }, fallback: string) => Localized;
+  /** Type name (the title of a form): a translation when one exists, else `fallback` (the English name). */
+  typeName: (type: { isoId?: string | undefined }, fallback: string) => Localized;
   /** Code name: a translation when one exists, else `fallback` (the English name). */
   codeName: (option: { isoId?: string | undefined }, fallback: string) => Localized;
   /** Business rule text: a translation when one exists, else `fallback` (the English spec text). */
@@ -95,6 +99,7 @@ export function createDefinitions(
     type: (type) => find((c) => c.types, type?.isoId),
     code: (option) => find((c) => c.codes, option.isoId),
     label: (field, fallback) => find((c) => c.labels, field.isoId) ?? iso({ text: fallback, lang: 'en' }),
+    typeName: (type, fallback) => find((c) => c.typeNames, type.isoId) ?? iso({ text: fallback, lang: 'en' }),
     codeName: (option, fallback) => find((c) => c.codeNames, option.isoId) ?? iso({ text: fallback, lang: 'en' }),
     rule: (rule, fallback) => find((c) => c.rules, rule.isoId) ?? iso({ text: fallback, lang: 'en' }),
   };

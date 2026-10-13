@@ -81,4 +81,7 @@ export const FR: Record<DemoKey, string> = {
   statusChoice: 'choix',
   yes: 'oui',
   no: 'non',
+  zoomLabel: 'Zoom in to {type}',
+  zoomShort: 'Zoom',
+  zoomTip: 'This message subset is based upon the ISO 20022 type {type}. If you are adding or editing lookup values that may be persisted somewhere, you might need a control based on this subset of message data. Click Zoom to zoom in to that data type in isolation from the outer message.',
 };

@@ -1,4 +1,6 @@
+import { createContext, useContext, useMemo } from 'react';
 import { useI18n } from '@beneficial-strategies/iso20022-react-ui';
+import { formatIcu } from './icu.ts';
 import { DE } from './demoText.de.ts';
 import { FR } from './demoText.fr.ts';
 import { PT } from './demoText.pt.ts';
@@ -90,6 +92,9 @@ const EN = {
   statusChoice: 'choice',
   yes: 'yes',
   no: 'no',
+  zoomLabel: 'Zoom in to {type}',
+  zoomShort: 'Zoom',
+  zoomTip: 'This message subset is based upon the ISO 20022 type {type}. If you are adding or editing lookup values that may be persisted somewhere, you might need a control based on this subset of message data. Click Zoom to zoom in to that data type in isolation from the outer message.',
 } as const;
 
 export type DemoKey = keyof typeof EN;
@@ -174,6 +179,9 @@ const ES: Record<DemoKey, string> = {
   statusChoice: 'elección',
   yes: 'sí',
   no: 'no',
+  zoomLabel: 'Hacer zoom en {type}',
+  zoomShort: 'Zoom',
+  zoomTip: 'Este subconjunto del mensaje se basa en el tipo ISO 20022 {type}. Si está agregando o editando valores de consulta que quizá se guarden en algún lugar, puede necesitar un control basado en este subconjunto de datos del mensaje. Haga clic en Zoom para acercarse a ese tipo de datos, aislado del mensaje que lo contiene.',
 };
 
 export type DemoText = (key: DemoKey, params?: Record<string, string | number>) => string;
@@ -181,13 +189,20 @@ export type DemoText = (key: DemoKey, params?: Record<string, string | number>) 
 /** Tables by language. The fallback is this file's own English, not the ISO text. */
 export const demoTextTables: Record<string, Record<DemoKey, string>> = { en: EN, es: ES, fr: FR, de: DE, pt: PT };
 
-/** The text function for a locale: its language's table (`es-MX` uses `es`), else the English. Plain, so exports can be built and tested without React. */
-export function demoText(locale: string): DemoText {
-  const table = demoTextTables[locale.split('-')[0] ?? 'en'] ?? EN;
-  return (key, params) => (params ? table[key].replace(/\{(\w+)\}/g, (m, k: string) => (k in params ? String(params[k]) : m)) : table[key]);
+/** The text function for a locale: its language's table (`es-MX` uses `es`), else the English, with `overrides` (for example from a text host) on top. Plain, so exports can be built and tested without React. */
+export function demoText(locale: string, overrides?: Partial<Record<DemoKey, string>>, tables: Record<string, Record<DemoKey, string>> = demoTextTables): DemoText {
+  const table = { ...(tables[locale.split('-')[0] ?? 'en'] ?? EN), ...overrides };
+  return (key, params) => (params ? formatIcu(table[key], params) : table[key]);
 }
 
+/** What the Explorer carries for language support: the English, and nothing else. Every other language comes from a text host (see textHost.ts). */
+export const DEMO_ENGLISH_ONLY: Record<string, Record<DemoKey, string>> = { en: EN };
+
+/** Text for the current language that a host supplies (see textHost.ts); absent means the tables above. */
+export const DemoTextOverridesContext = createContext<Partial<Record<DemoKey, string>> | undefined>(undefined);
+
 export function useDemoText(): DemoText {
-  const { lang } = useI18n();
-  return demoText(lang);
+  const { locale } = useI18n();
+  const overrides = useContext(DemoTextOverridesContext);
+  return useMemo(() => demoText(locale, overrides, DEMO_ENGLISH_ONLY), [locale, overrides]);
 }

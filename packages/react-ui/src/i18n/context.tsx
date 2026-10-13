@@ -36,7 +36,7 @@ function mergeLocales<T extends object>(base: Record<string, T>, extra: Record<s
   return out;
 }
 
-const CATALOG_MAPS = ['types', 'fields', 'codes', 'codeSets', 'labels', 'codeNames', 'rules'] as const;
+const CATALOG_MAPS = ['types', 'fields', 'codes', 'codeSets', 'labels', 'codeNames', 'typeNames', 'rules'] as const;
 
 function mergeDefinitionLocales(base: Record<string, DefinitionCatalog>, extra: Record<string, DefinitionCatalog> = {}): Record<string, DefinitionCatalog> {
   const out: Record<string, DefinitionCatalog> = { ...base };
