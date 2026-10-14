@@ -611,7 +611,7 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
   const area = messageIndex.find((m) => m.identifier === settings.message)?.area ?? areaIndex[0]!.code;
   const lastInArea = useRef<Record<string, string>>({});
   lastInArea.current[area] = settings.message;
-  const hostText = useHostText(hostConfig, locale, [settings.message, HEADER_IDENTIFIER], bundle?.typeDescriptors);
+  const hostText = useHostText(hostConfig, locale, bundle?.typeDescriptors);
   // the host's text is the base; what the embedding page passes as `i18n` still wins over it
   const merged = useMemo(() => mergeI18nOverrides(hostText?.i18n, overrides), [hostText, overrides]);
   const i18n = useMemo(() => createHostI18n(locale, merged), [locale, merged]);
