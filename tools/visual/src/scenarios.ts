@@ -2283,8 +2283,8 @@ export const scenarios: Scenario[] = [
     viewport: { width: 1440, height: 900 },
     expect: async (page) => {
       const r = await page.evaluate(() => document.querySelector('[data-schema-form] h2')?.textContent ?? '');
-      // the Spanish title is the host's; how much of it is Spanish depends on the glossary, the version is spaced from the words either way
-      return /Status Report V 15/.test(r) ? [] : [`title is "${r}"`];
+      // the Spanish title is the host's (the es glossary translates the words of the name); the version is spaced from the words either way
+      return /\bV 15\b/.test(r) && /Estado/.test(r) ? [] : [`title is "${r}"`];
     },
   },
   { name: 'pain002-dark-spanish', app: 'demo-zod', query: '?message=pain.002.001.15&theme=dark&lang=es', viewport: { width: 1440, height: 900 } },
