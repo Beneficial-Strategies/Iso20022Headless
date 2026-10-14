@@ -1,10 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { buildScreenModel, type ScreenNode } from '../src/screenModel.ts';
 import { DEFAULT_OPTIONS, toHtml, toJson, toMarkdown, toOutline, toTsv, type ExportOptions } from '../src/screenExport.ts';
-import { demoText, demoTextTables } from '../src/demoText.ts';
+import { demoText, demoTextTables, type DemoKey } from '../src/demoText.ts';
 // the Spanish table the Explorer no longer carries (a text host's now), passed in to keep exercising the copy in another language
-import { ES } from '../src/demoText.es.ts';
-const withEs = { en: demoTextTables.en!, es: ES };
+// the Spanish text of the Copy as menu as a text host serves it (tools/explorer/controls in iso-20022-text-es), used to exercise the language mechanism
+import ES from './fixtures/controls.es.json' with { type: 'json' };
+const withEs = { en: demoTextTables.en!, es: ES as Record<DemoKey, string> };
 import { defsEn, defsEs, groupHeaderForm } from './screenfixture.ts';
 
 const t = demoText('en');

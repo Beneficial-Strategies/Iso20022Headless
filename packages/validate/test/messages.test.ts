@@ -1,10 +1,19 @@
 import { describe, expect, it } from 'vitest';
 import type { ZodType } from 'zod';
 import { collectIssues, createMessages, en, formatIssue, formatIssues, formatMessage, ISSUE_CODES } from '../src/index.ts';
-// the Spanish table the library no longer carries (src/legacy: the text hosts' now); passed in, it still exercises the mechanism
-import { es } from '../src/legacy/messages.ts';
 import { schemas } from '../src/generated/pain001.ts';
 import { isoTime } from '../src/runtime.ts';
+
+// a language the library does not carry (the text hosts' are); passed in, as a consumer would pass what a host serves, it exercises the mechanism
+const plural = (n: number | string | undefined, one: string, many: string): string => (Number(n) === 1 ? one : many);
+const es: Partial<typeof en> = {
+  required: 'Obligatorio',
+  too_short: ({ min }) => `Debe tener al menos ${min} ${plural(min, 'carácter', 'caracteres')}`,
+  too_long: ({ max }) => `Debe tener como máximo ${max} ${plural(max, 'carácter', 'caracteres')}`,
+  select_one: 'Seleccione una opción',
+  fraction_digits: ({ max }) => `Como máximo ${max} ${plural(max, 'decimal', 'decimales')}`,
+  rule_literal_not_code_value: 'el literal "{value}" no es un valor de un conjunto de códigos en {path}',
+};
 
 const errors = (schema: ZodType, v: unknown) => {
   const r = schema.safeParse(v);
@@ -49,7 +58,7 @@ describe('English default wording', () => {
     const e = errors(schemas.AmountType4Choice, { InstructedAmount: { Ccy: 'EUR', Value: '1.1234567' } });
     expect(collectIssues(e)['InstructedAmount.Value']).toEqual({ code: 'fraction_digits', params: { max: 5 } });
     expect(formatIssues(e)['InstructedAmount.Value']).toBe('At most 5 fraction digits');
-    expect(formatIssues(e, es)['InstructedAmount.Value']).toBe('Como máximo 5 decimales');
+    expect(formatIssues(e, { ...en, ...es })['InstructedAmount.Value']).toBe('Como máximo 5 decimales');
   });
 
   it('array and union messages match the historical strings', () => {
@@ -62,11 +71,8 @@ describe('English default wording', () => {
 });
 
 describe('catalogs', () => {
-  it('every issue code has a message in every shipped language', () => {
-    for (const code of ISSUE_CODES) {
-      expect(en[code], `en.${code}`).toBeTruthy();
-      expect(es[code], `es.${code}`).toBeTruthy();
-    }
+  it('every issue code has a message in English, the only language the library carries', () => {
+    for (const code of ISSUE_CODES) expect(en[code], `en.${code}`).toBeTruthy();
   });
 
   it('a language passed in is used when asked, with plural-aware wording', () => {
@@ -105,7 +111,7 @@ describe('catalogs', () => {
   it('rule diagnostics are localizable too', () => {
     const issue = { code: 'rule_literal_not_code_value', params: { value: 'Branch', path: '/Name' } } as const;
     expect(formatIssue(issue, en)).toBe('literal "Branch" is not a value of a code set at /Name');
-    expect(formatIssue(issue, es)).toContain('no es un valor');
+    expect(formatIssue(issue, { ...en, ...es })).toContain('no es un valor');
   });
 });
 

@@ -1,11 +1,10 @@
-import { slimCatalogs } from '../../tools/i18n/src/slimCatalogs.ts';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 
 // xmllint-wasm starts a worker from a file next to itself: Vite must not pre-bundle it
 export default defineConfig({
-  plugins: [slimCatalogs(), react(), tailwindcss()],
+  plugins: [react(), tailwindcss()],
   // the favicon and the link-preview card are shared by every deployment (tools/pages/brand)
   publicDir: '../../tools/pages/brand',
   optimizeDeps: { exclude: ['xmllint-wasm'] },

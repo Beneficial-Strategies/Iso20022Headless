@@ -4,9 +4,9 @@ import userEvent from '@testing-library/user-event';
 import { I18nProvider, SchemaForm, createI18n, type I18nOverrides } from '@beneficial-strategies/iso20022-react-ui';
 import { pain001Message, schemas } from '@beneficial-strategies/iso20022-validate/pain001';
 import { useZodForm } from '../src/useZodForm.ts';
-// the Spanish interface text and validation messages the library no longer carries (a text host's now), passed in as a consumer would
-import { uiEs } from '../../../packages/react-ui/src/i18n/ui.es.ts';
-import { es as validationEs } from '../../../packages/validate/src/legacy/messages.ts';
+// the Spanish interface text and validation messages as a text host serves them (the library carries English only), passed in as a consumer would
+import uiEs from './ui.es.fixture.json' with { type: 'json' };
+import validationEs from './validation.es.fixture.json' with { type: 'json' };
 
 /** `overrides` with the Spanish tables under them. */
 const withSpanish = (overrides: I18nOverrides = {}): I18nOverrides => ({

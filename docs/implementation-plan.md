@@ -53,13 +53,9 @@ published; nothing here has been run through CI. Decisions and changes versus th
   validation messages are shipped; Spanish element names, definitions, code names and rule text are not.
   English fallbacks are labelled in the UI. Translating them is a separate, reviewable piece of work
   (about 460 definitions plus ~230 element names); check licensing of ISO text before shipping translations (tracked in issue #1).
-- **Translation workflow (built 2026-10-06).** Spec text is translated through catalogs in
-  `packages/validate/src/locales/<lang>.catalog.json` (entry = text + status `machine`/`reviewed` + hash of the
-  English). `tools/i18n` extracts units, lints and merges machine drafts (never overwriting reviewed entries),
-  exports/imports **XLIFF 2.0** for a human reviewer or a translation platform, and flags stale entries
-  (`pnpm i18n check es`, for CI). Spanish was machine-drafted in full (1035 units) with a glossary; it loads lazily
-  (about 38 KB gzipped) and the UI marks it "machine translated, not yet reviewed" until reviewed. See
-  `i18n/README.md` for the hand-off process.
+- **Translation workflow (replaced 2026-10-14).** The catalogs, `tools/i18n` and XLIFF export were retired once every text was mined into the language
+  repositories (`iso-20022-text-{lang}`; see `docs/languages.md`). The library carries English only; the other languages are text hosts'. The old catalogs
+  and tooling are in git history before the commit "Remove the bundled languages".
 - **Ids are per message version.** Catalogs keyed by element id do not carry over to the next version of a
   message. The stable business-layer link (`businessElementTrace` / `trace` in the MCP) is not captured yet;
   capturing it would let a translation be written once per business element.

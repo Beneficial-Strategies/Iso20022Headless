@@ -25,9 +25,3 @@ What prevents it now:
   so a new area cannot silently go unchecked: copy one of the small files.
 
 If another package grows a synchronous test file past about 30 seconds, give it the same hook (a `setupFiles` entry with the same content).
-
-## Heavy tests need their own limit
-
-A test has 5 seconds by default. `tools/i18n` extracts all 72,890 texts and reads the four catalogs (72 MB) in a few of its tests, which take
-about 5.3 seconds on a CI machine and 2 seconds on a development one, so they failed a run with `Test timed out in 5000ms`. That package has a
-one-minute limit in its `vitest.config.ts`. A new test that does that kind of work should not rely on the default.
