@@ -1,6 +1,7 @@
 import { pain001Message } from '@beneficial-strategies/iso20022-validate/pain001';
 import { createDefinitions, definitionLocales } from '@beneficial-strategies/iso20022-validate/definitions';
-import { loadDefinitionCatalog } from '@beneficial-strategies/iso20022-validate/locales';
+import type { DefinitionCatalog } from '@beneficial-strategies/iso20022-validate/definitions';
+import es from './fixtures/definitions.es.json' with { type: 'json' };
 import type { FormApi } from '@beneficial-strategies/iso20022-react-ui';
 
 /** A form over the group header of pain.001 with some data, the way the screen would hold it. Only what the model reads is real. */
@@ -39,5 +40,5 @@ export function groupHeaderForm(values: unknown, errors: Record<string, string> 
 }
 
 export const defsEn = createDefinitions('en');
-// the Spanish text is loaded on demand, as the app does
-export const defsEs = createDefinitions('es', {}, { ...definitionLocales, es: await loadDefinitionCatalog('es') });
+// the Spanish text of GroupHeader114 and what is below it, as a text host serves it (a small sample; the Explorer carries English only)
+export const defsEs = createDefinitions('es', {}, { ...definitionLocales, es: es as DefinitionCatalog });

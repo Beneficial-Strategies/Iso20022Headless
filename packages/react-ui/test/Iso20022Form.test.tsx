@@ -3,7 +3,8 @@ import userEvent from '@testing-library/user-event';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { schemas, typeDescriptors } from '@beneficial-strategies/iso20022-validate/pain001';
 import { Iso20022Form } from '../src/index.ts';
-import { es as validationEs } from '../../validate/src/legacy/messages.ts';
+// the text of another language, as a text host would serve it
+const validationEs = { invalid_format: 'Formato no válido' };
 
 const TYPE = 'BranchAndFinancialInstitutionIdentification8';
 
@@ -42,7 +43,6 @@ describe('Iso20022Form', () => {
     const bic = screen.getByRole('textbox', { name: /BICFI/ });
     await user.type(bic, 'x');
     await user.tab();
-    // the pattern description in Spanish was the library's; the legacy table's generic text is what is left of it
     expect(await screen.findByText(/Formato no válido/, {}, { timeout: 3000 })).toBeTruthy();
   });
 

@@ -3,33 +3,19 @@ import { areaIndex, messageIndex } from '@beneficial-strategies/iso20022-validat
 import { allTypeDescriptors as typeDescriptors } from '@beneficial-strategies/iso20022-validate/all';
 import { createI18n, supportedLocales } from '../src/i18n/context.tsx';
 import { UI_KEYS, uiEn, uiLocales } from '../src/i18n/messages.ts';
-// the languages the library used to carry (the text hosts' now): still files, passed in here to exercise the mechanism and keep them complete
-import { uiEs } from '../src/i18n/ui.es.ts';
-import { uiDe } from '../src/i18n/ui.de.ts';
-import { uiFr } from '../src/i18n/ui.fr.ts';
-import { uiPt } from '../src/i18n/ui.pt.ts';
-import { es as validationEs, fr as validationFr } from '../../validate/src/legacy/messages.ts';
-
-const LEGACY = { es: uiEs, fr: uiFr, de: uiDe, pt: uiPt } as const;
-const SHIPPED = ['es', 'fr', 'de', 'pt'] as const;
+// a few texts of other languages, as a text host would serve them, passed in to exercise the mechanism
+const uiEs = { now: 'Ahora', remove: 'Quitar' };
+const uiFr = { now: 'Maintenant' };
+const uiDe = { now: 'Jetzt' };
+const uiPt = { now: 'Agora' };
+const validationFr = { required: 'Obligatoire' };
+const validationEs = { required: 'Obligatorio', select_one: 'Seleccione una opción' };
 
 const method = typeDescriptors.PaymentInstruction51!.fields!.find((f) => f.name === 'PaymentMethod')!;
 
 describe('interface catalogs', () => {
-  it.each(SHIPPED)('%s has every key that English has, and nothing extra', (lang) => {
-    expect(Object.keys(LEGACY[lang]).sort()).toEqual(Object.keys(uiEn).sort());
+  it('English is the only language the library carries, and has a text for every key', () => {
     expect(UI_KEYS.length).toBe(Object.keys(uiEn).length);
-  });
-
-  it.each(SHIPPED)('every %s message has the same placeholders as English (plain templates)', (lang) => {
-    const slots = (m: unknown) => (typeof m === 'string' ? [...m.matchAll(/\{(\w+)\}/g)].map((x) => x[1]).sort() : null);
-    for (const k of UI_KEYS) {
-      const [e, s] = [slots(uiEn[k]), slots(LEGACY[lang][k])];
-      if (e && s) expect(s, `${lang}.${k}`).toEqual(e);
-    }
-  });
-
-  it('English is the only language the library carries', () => {
     expect(Object.keys(uiLocales)).toEqual(['en']);
     const en = createI18n('en');
     expect(en.t('optional')).toBe('(optional)');

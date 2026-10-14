@@ -1,5 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import { loadDefinitionCatalog } from '@beneficial-strategies/iso20022-validate/locales';
+import { createContext, useContext, useMemo } from 'react';
 import { createMessages, validationLocales, type MessageParams, type ValidationMessages } from '@beneficial-strategies/iso20022-validate';
 import {
   createDefinitions,
@@ -49,14 +48,12 @@ function mergeDefinitionLocales(base: Record<string, DefinitionCatalog>, extra: 
   return out;
 }
 
-/**
- * `shipped` is extra base catalogs (for example the lazily loaded Spanish text); `overrides` always win over them.
- */
-export function createI18n(locale = 'en', overrides: I18nOverrides = {}, shipped: Record<string, DefinitionCatalog> = {}): I18n {
+/** English, plus whatever `overrides` say for a locale (for example what a text host serves). */
+export function createI18n(locale = 'en', overrides: I18nOverrides = {}): I18n {
   const lang = locale.split('-')[0] ?? 'en';
   const ui = createUiMessages(locale, {}, mergeLocales(uiLocales, overrides.ui));
   const validation = createMessages(locale, {}, mergeLocales(validationLocales, overrides.validation));
-  const defs = createDefinitions(locale, {}, mergeDefinitionLocales(mergeDefinitionLocales(definitionLocales, shipped), overrides.definitions));
+  const defs = createDefinitions(locale, {}, mergeDefinitionLocales(definitionLocales, overrides.definitions));
   return { locale, lang, t: (key, params) => translate(ui, key, params), validation, defs };
 }
 
@@ -65,30 +62,12 @@ const I18nContext = createContext<I18n>(createI18n('en'));
 export const I18nProvider = I18nContext.Provider;
 export const useI18n = (): I18n => useContext(I18nContext);
 
-/** The shipped spec-text catalog for a locale, loaded on demand (undefined while loading or when none exists). */
-export function useShippedCatalog(locale: string): Record<string, DefinitionCatalog> {
-  const lang = locale.split('-')[0] ?? 'en';
-  const [loaded, setLoaded] = useState<Record<string, DefinitionCatalog>>({});
-  useEffect(() => {
-    if (lang === 'en' || loaded[lang]) return;
-    let live = true;
-    void loadDefinitionCatalog(lang).then((c) => {
-      if (live && c) setLoaded((cur) => ({ ...cur, [lang]: c }));
-    });
-    return () => {
-      live = false;
-    };
-  }, [lang, loaded]);
-  return loaded;
-}
-
-/** Build (and memoize) an I18n for a locale. Pass a stable `overrides` object. Spec text for the locale loads lazily. */
+/** Build (and memoize) an I18n for a locale. Pass a stable `overrides` object. */
 export function useCreateI18n(locale: string, overrides?: I18nOverrides): I18n {
-  const shipped = useShippedCatalog(locale);
-  return useMemo(() => createI18n(locale, overrides, shipped), [locale, overrides, shipped]);
+  return useMemo(() => createI18n(locale, overrides), [locale, overrides]);
 }
 
-/** Locale tags with any text of their own: shipped ones plus anything the consumer adds. */
+/** Locale tags with any text of their own: English plus anything the consumer adds. */
 export function supportedLocales(overrides: I18nOverrides = {}): string[] {
   return [...new Set([...Object.keys(uiLocales), ...Object.keys(overrides.ui ?? {})])];
 }
