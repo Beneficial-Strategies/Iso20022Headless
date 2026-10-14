@@ -1,6 +1,6 @@
 {
   "name": "@beneficial-strategies/iso20022-react",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.1",
   "description": "React hooks that drive an ISO 20022 form from the validate schemas (TanStack Form). No markup.",
   "license": "MIT",
   "author": "Beneficial Strategies",

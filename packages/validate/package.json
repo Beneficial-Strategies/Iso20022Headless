@@ -1,6 +1,6 @@
 {
   "name": "@beneficial-strategies/iso20022-validate",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.1",
   "description": "ISO 20022 message schemas (Zod), field rules and English validation text, for 363 messages. Headless: logic only, no UI and no translations.",
   "license": "MIT",
   "author": "Beneficial Strategies",
