@@ -18,11 +18,6 @@ describe('describePattern', () => {
     expect(describePattern('/^(?:[A-Z]{3,3})$/')).toBe('3 uppercase letters');
   });
 
-  it('describes in Spanish', () => {
-    expect(describePattern('[A-Z]{2,2}[0-9]{2,2}', 'es')).toBe('2 letras mayúsculas, luego 2 dígitos');
-    expect(describePattern('[0-9]{1,15}', 'es')).toBe('1 a 15 dígitos');
-  });
-
   it('describes a literal character and a hexadecimal class', () => {
     expect(describePattern('[a-f0-9]{8}-[a-f0-9]{4}')).toContain('8 lowercase hexadecimal digits, then the character "-"');
   });
@@ -33,7 +28,7 @@ describe('describePattern', () => {
 
   it('describes alternatives, one after the other', () => {
     expect(describePattern('([0-9]{4})-[0-9]{2}|[0-9]{2}-[0-9]{2}')).toBe('4 digits, then the character "-", then 2 digits; or 2 digits, then the character "-", then 2 digits');
-    expect(describePattern('[0-9]{2}|[a-z]', 'es')).toBe('2 dígitos; o 1 letra minúscula');
+    expect(describePattern('[0-9]{2}|[a-z]')).toBe('2 digits; or 1 lowercase letter');
   });
 
   it('describes every text pattern the generated schemas use', () => {
@@ -53,7 +48,6 @@ describe('formatHint', () => {
     expect(formatHint('[A-Z0-9]{18,18}[0-9]{2,2}')).toBe(
       'Not a valid LEI (20 characters). Expected: 18 uppercase letters or digits, then 2 digits. Example: 529900T8BM49AURSDO55',
     );
-    expect(formatHint('[A-Z0-9]{18,18}[0-9]{2,2}', 'es')).toContain('No es un LEI (20 caracteres)');
   });
 
   it('says what is expected for other patterns, and says nothing without one', () => {
@@ -77,8 +71,7 @@ describe('format errors in the form messages', () => {
     expect(run(withBic('bad'))[path]).toContain('Example: DEUTDEFF');
   });
 
-  it('is localized, and a consumer override still wins', () => {
-    expect(run(withBic('bad'), 'es')[path]).toMatch(/^No es un BIC \(8 u 11 caracteres\)/);
+  it('a consumer override still wins', () => {
     expect(run(withBic('bad'), 'en', { invalid_format: 'Bad BIC' })[path]).toBe('Bad BIC');
   });
 

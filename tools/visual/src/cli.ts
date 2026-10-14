@@ -29,8 +29,31 @@ function arg(argv: string[], flag: string): string | undefined {
 
 const settle = (ms = 300) => new Promise((r) => setTimeout(r, ms));
 
+/**
+ * The Explorer takes its text from the live text hosts, about 175 small requests per page load. A check loads the page for every state (over a hundred times), which
+ * is thousands of requests to one host in minutes and ends with the host not answering. So each host address is fetched once and every later load is answered from
+ * memory; the hosts see what a person's browser would send.
+ */
+const hostResponses = new Map<string, Promise<{ status: number; contentType: string; body: Buffer } | undefined>>();
+async function answerHostRequests(page: Page): Promise<void> {
+  await page.setRequestInterception(true);
+  page.on('request', (req) => {
+    const url = req.url();
+    if (req.method() !== 'GET' || !new URL(url).hostname.endsWith('.beneficialstrategies.com')) return void req.continue();
+    let pending = hostResponses.get(url);
+    if (!pending) {
+      pending = fetch(url, { headers: { 'user-agent': req.headers()['user-agent'] ?? '' } })
+        .then(async (r) => ({ status: r.status, contentType: r.headers.get('content-type') ?? 'application/json', body: Buffer.from(await r.arrayBuffer()) }))
+        .catch(() => undefined);
+      hostResponses.set(url, pending);
+    }
+    void pending.then((r) => (r ? req.respond({ status: r.status, contentType: r.contentType, headers: { 'access-control-allow-origin': '*' }, body: r.body }) : req.abort('failed')));
+  });
+}
+
 async function open(browser: Browser, base: string, s: Pick<Scenario, 'query' | 'viewport' | 'clipboard'>): Promise<{ page: Page; problems: string[] }> {
   const page = await browser.newPage();
+  await answerHostRequests(page);
   if (s.clipboard) {
     // granted: the page may read and write the clipboard without a prompt; denied: all permissions off
     await browser.defaultBrowserContext().overridePermissions(new URL(base).origin, s.clipboard.access === 'granted' ? ['clipboard-read', 'clipboard-write', 'clipboard-sanitized-write'] : []);

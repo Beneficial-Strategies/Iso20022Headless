@@ -1,6 +1,6 @@
 import type { DemoKey } from './demoText.ts';
 
-/** French text for the Copy as menu, field modes and the words in what they copy. Machine-drafted; corrections welcome as GitHub issues. */
+/** French text for the Copy as menu, field modes and the words in what they copy. NOT imported by anything (the Explorer carries English only; see demoText.es.ts). Machine-drafted; corrections welcome as GitHub issues. */
 export const FR: Record<DemoKey, string> = {
   helpAreaTitle: 'Domaine métier',
   helpArea: 'ISO 20022 regroupe ses messages en domaines métier, tels que l’initiation de paiements (pain), la compensation et le règlement (pacs) et la gestion des distributeurs automatiques (caam). Choisissez un domaine pour voir ses messages.',

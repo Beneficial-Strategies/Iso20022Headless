@@ -125,14 +125,17 @@ describe('loading from a host', () => {
     const fetcher = async (url: string) => {
       calls.push(url);
       if (url.endsWith('/tools/explorer/page')) return { ok: true, json: async () => ({ copyXml: 'Copier' }) };
-      if (url.endsWith('/pain.001.001.13')) return { ok: true, json: async () => ({ types: { Bic: { isoType: 'Bic' } } }) };
-      if (url.endsWith('/head.001.001.04')) throw new Error('network');
+      if (url.endsWith('/Bic')) return { ok: true, json: async () => ({ isoType: 'Bic', name: 'BIC' }) };
+      if (url.endsWith('/Iban')) throw new Error('network');
       return { ok: false, json: async () => ({}) };
     };
-    const r = await loadHostResources('http://h:8803', ['pain.001.001.13', 'head.001.001.04'], fetcher);
+    const r = await loadHostResources('http://h:8803', ['Bic', 'Iban', 'Missing'], fetcher);
     expect(r.page).toEqual({ copyXml: 'Copier' });
     expect(r.controls).toBeUndefined();
+    // one request per type name, at /{TypeName}: no per-message bundle
     expect(Object.keys(r.types)).toEqual(['Bic']);
+    expect(calls).toContain('http://h:8803/Bic');
+    expect(calls).toContain('http://h:8803/Missing');
     expect(calls).toContain('http://h:8803/tools/headless/ui');
     expect(calls).toContain('http://h:8803/tools/headless/validation');
     expect(calls).toContain('http://h:8803/areas');

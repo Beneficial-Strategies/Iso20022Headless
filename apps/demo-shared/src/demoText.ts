@@ -1,9 +1,6 @@
 import { createContext, useContext, useMemo } from 'react';
 import { useI18n } from '@beneficial-strategies/iso20022-react-ui';
 import { formatIcu } from './icu.ts';
-import { DE } from './demoText.de.ts';
-import { FR } from './demoText.fr.ts';
-import { PT } from './demoText.pt.ts';
 
 /**
  * The demo's own wording (not the form library's): the "Copy as" menu and the words in what it copies. English, Spanish, French, German and Portuguese; any other language uses the English.
@@ -99,95 +96,10 @@ const EN = {
 
 export type DemoKey = keyof typeof EN;
 
-const ES: Record<DemoKey, string> = {
-  helpAreaTitle: 'Área de negocio',
-  helpArea: 'ISO 20022 agrupa sus mensajes en áreas de negocio, como iniciación de pagos (pain), compensación y liquidación (pacs) y gestión de cajeros automáticos (caam). Elija un área para ver sus mensajes.',
-  helpMessageTitle: 'Mensaje',
-  helpMessage: 'El mensaje ISO 20022 que quiere explorar, por su identificador (área, función, variante y versión). Elija uno para ver cada elemento que puede contener.',
-  helpTypeTitle: 'Qué muestra el formulario',
-  helpType: 'El mensaje completo, o solo una parte. Elija una parte para trabajar con ella sola, igual que la lupa junto a un elemento.',
-  helpDisplayTitle: 'Configuración de pantalla',
-  helpDisplay: 'Idioma, tema claro u oscuro, tamaño del texto, densidad, si la salida es XML o JSON y el estilo del formulario.',
-  copyAs: 'Copiar como',
-  copyAsTitle: 'Copiar lo que muestra el formulario ahora, en un formato para su documento o herramienta',
-  copyAsMenu: 'Copiar la pantalla como',
-  optDefinitions: 'Incluir las definiciones de ISO 20022',
-  optExcluded: 'Mostrar las secciones opcionales que no están incluidas',
-  optEmpty: 'Mostrar los elementos opcionales que están vacíos',
-  fmtWord: 'Word / texto enriquecido',
-  fmtWordDesc: 'Una tabla que se pega en Word, Outlook o Google Docs',
-  fmtMarkdown: 'Markdown',
-  fmtMarkdownDesc: 'Un esquema para wikis, GitHub, Confluence y chats',
-  fmtSpreadsheet: 'Hoja de cálculo',
-  fmtSpreadsheetDesc: 'Filas que se pegan en Excel o Google Sheets: un diccionario de datos de la pantalla',
-  fmtOutline: 'Esquema de texto',
-  fmtOutlineDesc: 'Un árbol con sangría de la pantalla',
-  fmtJson: 'JSON',
-  fmtJsonDesc: 'La misma estructura, para herramientas',
-  fmtImage: 'Imagen (PNG)',
-  fmtImageDesc: 'Una imagen del formulario, para cualquier documento',
-  fmtFigma: 'SVG para Figma',
-  fmtFigmaDesc: 'Pegue en un lienzo de Figma (Ctrl/⌘+V): capas editables con los nombres de los elementos ISO, en estilo de boceto',
-  fmtSvgFile: 'Archivo SVG',
-  fmtSvgFileDesc: 'El mismo dibujo guardado como archivo, para arrastrarlo a Figma',
-  saved: 'Se guardó {format}',
-  include: 'Incluir',
-  add: 'Añadir',
-  fieldModeTitle: 'Modo de campo de {element}: {mode}. Haga clic para cambiarlo.',
-  fieldModeMenu: 'Modo de campo',
-  fieldModeTipTitle: 'Modo de campo: {mode}',
-  fieldModeTip: 'Cómo se presenta este elemento en la pantalla que está diseñando. Editable: el control habitual. Etiqueta: se muestra como texto, no editable. Oculto: no se muestra, pero el valor que deje aquí permanece en el mensaje como valor por defecto. Haga clic para elegir.',
-  modeEditable: 'Editable',
-  modeEditableDesc: 'El control habitual',
-  modeLabel: 'Etiqueta',
-  modeLabelDesc: 'Se muestra como texto, no editable',
-  modeHidden: 'Oculto',
-  modeHiddenDesc: 'No se muestra; el valor que deje aquí permanece en el mensaje',
-  previewAsDesigned: 'Vista previa del diseño',
-  previewTitle: 'Mostrar las etiquetas como texto y omitir los elementos ocultos, como lo haría una aplicación que use estos modos. Desactivado: todo sigue editable y los demás aparecen sombreados.',
-  copied: 'Copiado como {format}',
-  copiedDownload: 'Se guardó {format} como archivo (este navegador no lo copió)',
-  copyFailed: 'No se pudo copiar: {why}',
-  required: 'obligatorio',
-  optional: 'opcional',
-  notIncluded: 'no incluido',
-  empty: '(vacío)',
-  noneChosen: '(nada elegido)',
-  items: '{n} elementos',
-  oneItem: '1 elemento',
-  list: 'lista',
-  error: 'Error',
-  colElement: 'Elemento',
-  colRequired: 'Obligatorio',
-  colValue: 'Valor',
-  colDefinition: 'Definición',
-  colPath: 'Ruta',
-  colIso: 'Elemento ISO',
-  colType: 'Tipo ISO',
-  colKind: 'Clase',
-  colStatus: 'Estado',
-  colError: 'Error',
-  colLevel: 'Nivel',
-  colMode: 'Modo',
-  modeWordLabel: 'etiqueta',
-  modeWordHidden: 'oculto',
-  statusFilled: 'con valor',
-  statusEmpty: 'vacío',
-  statusGroup: 'sección',
-  statusExcluded: 'no incluido',
-  statusList: 'lista',
-  statusChoice: 'elección',
-  yes: 'sí',
-  no: 'no',
-  zoomLabel: 'Hacer zoom en {type}',
-  zoomShort: 'Zoom',
-  zoomTip: 'Este subconjunto del mensaje se basa en el tipo ISO 20022 {type}. Si está agregando o editando valores de consulta que quizá se guarden en algún lugar, puede necesitar un control basado en este subconjunto de datos del mensaje. Haga clic en Zoom para acercarse a ese tipo de datos, aislado del mensaje que lo contiene.',
-};
-
 export type DemoText = (key: DemoKey, params?: Record<string, string | number>) => string;
 
-/** Tables by language. The fallback is this file's own English, not the ISO text. */
-export const demoTextTables: Record<string, Record<DemoKey, string>> = { en: EN, es: ES, fr: FR, de: DE, pt: PT };
+/** Tables by language: English only. Every other language is a text host's, passed as `overrides` (textHost.ts). */
+export const demoTextTables: Record<string, Record<DemoKey, string>> = { en: EN };
 
 /** The text function for a locale: its language's table (`es-MX` uses `es`), else the English, with `overrides` (for example from a text host) on top. Plain, so exports can be built and tested without React. */
 export function demoText(locale: string, overrides?: Partial<Record<DemoKey, string>>, tables: Record<string, Record<DemoKey, string>> = demoTextTables): DemoText {
@@ -195,14 +107,11 @@ export function demoText(locale: string, overrides?: Partial<Record<DemoKey, str
   return (key, params) => (params ? formatIcu(table[key], params) : table[key]);
 }
 
-/** What the Explorer carries for language support: the English, and nothing else. Every other language comes from a text host (see textHost.ts). */
-export const DEMO_ENGLISH_ONLY: Record<string, Record<DemoKey, string>> = { en: EN };
-
 /** Text for the current language that a host supplies (see textHost.ts); absent means the tables above. */
 export const DemoTextOverridesContext = createContext<Partial<Record<DemoKey, string>> | undefined>(undefined);
 
 export function useDemoText(): DemoText {
   const { locale } = useI18n();
   const overrides = useContext(DemoTextOverridesContext);
-  return useMemo(() => demoText(locale, overrides, DEMO_ENGLISH_ONLY), [locale, overrides]);
+  return useMemo(() => demoText(locale, overrides), [locale, overrides]);
 }

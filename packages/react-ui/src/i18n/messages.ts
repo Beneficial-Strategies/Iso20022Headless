@@ -1,7 +1,4 @@
 import { formatMessage, type MessageParams } from '@beneficial-strategies/iso20022-validate';
-import { uiDe } from './ui.de.ts';
-import { uiFr } from './ui.fr.ts';
-import { uiPt } from './ui.pt.ts';
 
 export { plural } from './plural.ts';
 
@@ -53,41 +50,9 @@ export const uiEn: UiMessages = {
   helpClickHint: 'Click to view in form',
 };
 
-
-
-export const uiEs: UiMessages = {
-  required: '(obligatorio)',
-  optional: '(opcional)',
-  remove: 'Quitar',
-  add: '+ Añadir {label}',
-  removeItem: 'Quitar {label} {n}',
-  now: 'Ahora',
-  nowAria: 'Establecer {label} en la hora local actual',
-  chooseOne: '{label} — elija uno',
-  select: '— seleccione —',
-  include: 'Incluir {label}',
-  aboutLabel: 'Acerca de {label}',
-  listRequired: 'obligatorio, ',
-  currencyOf: 'Moneda de {label}',
-  amountOf: 'Importe de {label}',
-  options: 'Opciones',
-  rawXml: '<xml/> (XML sin procesar)',
-  errorPrefix: 'Error:',
-  englishNote: 'Se muestra en inglés (sin traducir)',
-  machineNote: 'Traducción automática, pendiente de revisión',
-  specTip: 'Ver la documentación oficial de ISO 20022 de {type}',
-  helpClickHint: 'Haga clic para verlo en el formulario',
-};
-
-/** Languages shipped with the library. Others can be added through `createI18n` / `DemoApp`'s `i18n` prop. */
+/** English is the only language the library carries. Any other language is a text host's, passed as `locales` (see createUiMessages) or as `I18nOverrides.ui`. */
 export const uiLocales: Record<string, Partial<UiMessages>> = {
   en: uiEn,
-  // American English changes the ISO text's spelling and a few terms (see the validate package's `enUS`); the interface wording needs nothing of its own
-  'en-US': {},
-  es: uiEs,
-  fr: uiFr,
-  de: uiDe,
-  pt: uiPt,
 };
 
 export function createUiMessages(locale: string, overrides: Partial<UiMessages> = {}, locales: Record<string, Partial<UiMessages>> = uiLocales): UiMessages {

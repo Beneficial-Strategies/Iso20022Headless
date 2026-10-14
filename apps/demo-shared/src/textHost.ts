@@ -81,7 +81,7 @@ export interface HostResources {
   /** The business areas (`/areas`) and the names of the messages (`/messages`), ISO's own text. */
   areas?: { isoAreas?: Record<string, { name?: string; definition?: string }> };
   messages?: { isoMessages?: Record<string, { name?: string }> };
-  /** The type resources of the messages asked for, by type name. */
+  /** The type resources asked for, by type name. */
   types: Record<string, TypeResource>;
 }
 
@@ -97,19 +97,25 @@ async function getJson<T>(url: string, fetcher: Fetcher): Promise<T | undefined>
   return (await pending) as T | undefined;
 }
 
-/** Everything a host has for the Explorer. A resource it does not have is simply missing. */
-export async function loadHostResources(host: string, messageIds: readonly string[], fetcher: Fetcher = (u) => fetch(u)): Promise<HostResources> {
-  const [page, controls, ui, validation, areas, messages, ...bundles] = await Promise.all([
+/**
+ * Everything a host has for the Explorer: its own text, the areas, the message names, and one type resource per type name asked for (`/{TypeName}`).
+ * The caller knows which types it shows (the library's descriptors), so the host publishes no per-message bundle. A resource it does not have is simply missing.
+ */
+export async function loadHostResources(host: string, typeNames: readonly string[], fetcher: Fetcher = (u) => fetch(u)): Promise<HostResources> {
+  const [page, controls, ui, validation, areas, messages, ...resources] = await Promise.all([
     getJson<Texts>(`${host}/tools/explorer/page`, fetcher),
     getJson<Texts>(`${host}/tools/explorer/controls`, fetcher),
     getJson<Texts>(`${host}/tools/headless/ui`, fetcher),
     getJson<Texts>(`${host}/tools/headless/validation`, fetcher),
     getJson<NonNullable<HostResources['areas']>>(`${host}/areas`, fetcher),
     getJson<NonNullable<HostResources['messages']>>(`${host}/messages`, fetcher),
-    ...messageIds.map((id) => getJson<{ types?: Record<string, TypeResource> }>(`${host}/${id}`, fetcher)),
+    ...typeNames.map((name) => getJson<TypeResource>(`${host}/${name}`, fetcher)),
   ]);
   const types: Record<string, TypeResource> = {};
-  for (const b of bundles) Object.assign(types, b?.types);
+  typeNames.forEach((name, i) => {
+    const r = resources[i];
+    if (r) types[name] = r;
+  });
   return { ...(page ? { page } : {}), ...(controls ? { controls } : {}), ...(ui ? { ui } : {}), ...(validation ? { validation } : {}), ...(areas ? { areas } : {}), ...(messages ? { messages } : {}), types };
 }
 
@@ -190,19 +196,20 @@ export function hostOverrides(locale: string, res: HostResources, descriptors: T
 }
 
 /** Load a locale's resources from its host (if the configuration has one) and convert them. Undefined until loaded, and when there is no host. */
-export function useHostText(config: TextHostConfig, locale: string, messageIds: readonly string[], descriptors: TypeDescriptors | undefined): HostOverrides | undefined {
+export function useHostText(config: TextHostConfig, locale: string, descriptors: TypeDescriptors | undefined): HostOverrides | undefined {
   const host = hostFor(config, locale);
-  const ids = messageIds.join(',');
+  // the types to fetch are those the message shows: the library's own list, not a list the host keeps
+  const names = useMemo(() => (descriptors ? Object.keys(descriptors).sort().join(',') : ''), [descriptors]);
   const [loaded, setLoaded] = useState<{ key: string; res: HostResources } | undefined>();
   useEffect(() => {
-    if (!host) return;
+    if (!host || !names) return;
     let live = true;
-    void loadHostResources(host, ids ? ids.split(',') : []).then((res) => live && setLoaded({ key: `${host}|${ids}`, res }));
+    void loadHostResources(host, names.split(',')).then((res) => live && setLoaded({ key: `${host}|${names}`, res }));
     return () => {
       live = false;
     };
-  }, [host, ids]);
-  return useMemo(() => (host && loaded?.key === `${host}|${ids}` && descriptors ? hostOverrides(locale, loaded.res, descriptors) : undefined), [host, ids, loaded, locale, descriptors]);
+  }, [host, names]);
+  return useMemo(() => (host && loaded?.key === `${host}|${names}` && descriptors ? hostOverrides(locale, loaded.res, descriptors) : undefined), [host, names, loaded, locale, descriptors]);
 }
 
 /** Layer `top` over `base`, per section and locale, so that overriding one message keeps the rest of that locale. */
