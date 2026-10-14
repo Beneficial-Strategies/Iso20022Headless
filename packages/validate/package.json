@@ -1,8 +1,29 @@
 {
   "name": "@beneficial-strategies/iso20022-validate",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.1.0-alpha.0",
+  "description": "ISO 20022 message schemas (Zod), field rules and English validation text, for 363 messages. Headless: logic only, no UI and no translations.",
+  "license": "MIT",
+  "author": "Beneficial Strategies",
+  "homepage": "https://github.com/Beneficial-Strategies/Iso20022Headless#readme",
+  "bugs": {
+    "url": "https://github.com/Beneficial-Strategies/Iso20022Headless/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Beneficial-Strategies/Iso20022Headless.git",
+    "directory": "packages/validate"
+  },
+  "keywords": [
+    "iso20022",
+    "iso-20022",
+    "payments",
+    "pain.001",
+    "camt",
+    "pacs",
+    "financial-messaging"
+  ],
   "type": "module",
+  "sideEffects": false,
   "exports": {
     ".": "./src/index.ts",
     "./definitions": "./src/definitions.ts",
@@ -371,9 +392,1485 @@
     "./sese042": "./src/generated/sese042.ts",
     "./sese043": "./src/generated/sese043.ts"
   },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "./definitions": {
+        "types": "./dist/definitions.d.ts",
+        "default": "./dist/definitions.js"
+      },
+      "./pain001": {
+        "types": "./dist/generated/pain001.d.ts",
+        "default": "./dist/generated/pain001.js"
+      },
+      "./pain002": {
+        "types": "./dist/generated/pain002.d.ts",
+        "default": "./dist/generated/pain002.js"
+      },
+      "./pain007": {
+        "types": "./dist/generated/pain007.d.ts",
+        "default": "./dist/generated/pain007.js"
+      },
+      "./pain008": {
+        "types": "./dist/generated/pain008.d.ts",
+        "default": "./dist/generated/pain008.js"
+      },
+      "./pain009": {
+        "types": "./dist/generated/pain009.d.ts",
+        "default": "./dist/generated/pain009.js"
+      },
+      "./pain010": {
+        "types": "./dist/generated/pain010.d.ts",
+        "default": "./dist/generated/pain010.js"
+      },
+      "./pain011": {
+        "types": "./dist/generated/pain011.d.ts",
+        "default": "./dist/generated/pain011.js"
+      },
+      "./pain012": {
+        "types": "./dist/generated/pain012.d.ts",
+        "default": "./dist/generated/pain012.js"
+      },
+      "./pain013": {
+        "types": "./dist/generated/pain013.d.ts",
+        "default": "./dist/generated/pain013.js"
+      },
+      "./pain014": {
+        "types": "./dist/generated/pain014.d.ts",
+        "default": "./dist/generated/pain014.js"
+      },
+      "./pain017": {
+        "types": "./dist/generated/pain017.d.ts",
+        "default": "./dist/generated/pain017.js"
+      },
+      "./pain018": {
+        "types": "./dist/generated/pain018.d.ts",
+        "default": "./dist/generated/pain018.js"
+      },
+      "./pacs002": {
+        "types": "./dist/generated/pacs002.d.ts",
+        "default": "./dist/generated/pacs002.js"
+      },
+      "./pacs003": {
+        "types": "./dist/generated/pacs003.d.ts",
+        "default": "./dist/generated/pacs003.js"
+      },
+      "./pacs004": {
+        "types": "./dist/generated/pacs004.d.ts",
+        "default": "./dist/generated/pacs004.js"
+      },
+      "./pacs007": {
+        "types": "./dist/generated/pacs007.d.ts",
+        "default": "./dist/generated/pacs007.js"
+      },
+      "./pacs008": {
+        "types": "./dist/generated/pacs008.d.ts",
+        "default": "./dist/generated/pacs008.js"
+      },
+      "./pacs009": {
+        "types": "./dist/generated/pacs009.d.ts",
+        "default": "./dist/generated/pacs009.js"
+      },
+      "./pacs010": {
+        "types": "./dist/generated/pacs010.d.ts",
+        "default": "./dist/generated/pacs010.js"
+      },
+      "./pacs028": {
+        "types": "./dist/generated/pacs028.d.ts",
+        "default": "./dist/generated/pacs028.js"
+      },
+      "./pacs029": {
+        "types": "./dist/generated/pacs029.d.ts",
+        "default": "./dist/generated/pacs029.js"
+      },
+      "./all": {
+        "types": "./dist/generated/all.d.ts",
+        "default": "./dist/generated/all.js"
+      },
+      "./caam001": {
+        "types": "./dist/generated/caam001.d.ts",
+        "default": "./dist/generated/caam001.js"
+      },
+      "./caam002": {
+        "types": "./dist/generated/caam002.d.ts",
+        "default": "./dist/generated/caam002.js"
+      },
+      "./caam003": {
+        "types": "./dist/generated/caam003.d.ts",
+        "default": "./dist/generated/caam003.js"
+      },
+      "./caam004": {
+        "types": "./dist/generated/caam004.d.ts",
+        "default": "./dist/generated/caam004.js"
+      },
+      "./caam005": {
+        "types": "./dist/generated/caam005.d.ts",
+        "default": "./dist/generated/caam005.js"
+      },
+      "./caam006": {
+        "types": "./dist/generated/caam006.d.ts",
+        "default": "./dist/generated/caam006.js"
+      },
+      "./caam007": {
+        "types": "./dist/generated/caam007.d.ts",
+        "default": "./dist/generated/caam007.js"
+      },
+      "./caam008": {
+        "types": "./dist/generated/caam008.d.ts",
+        "default": "./dist/generated/caam008.js"
+      },
+      "./caam009": {
+        "types": "./dist/generated/caam009.d.ts",
+        "default": "./dist/generated/caam009.js"
+      },
+      "./caam010": {
+        "types": "./dist/generated/caam010.d.ts",
+        "default": "./dist/generated/caam010.js"
+      },
+      "./caam011": {
+        "types": "./dist/generated/caam011.d.ts",
+        "default": "./dist/generated/caam011.js"
+      },
+      "./caam012": {
+        "types": "./dist/generated/caam012.d.ts",
+        "default": "./dist/generated/caam012.js"
+      },
+      "./caam013": {
+        "types": "./dist/generated/caam013.d.ts",
+        "default": "./dist/generated/caam013.js"
+      },
+      "./caam014": {
+        "types": "./dist/generated/caam014.d.ts",
+        "default": "./dist/generated/caam014.js"
+      },
+      "./caam015": {
+        "types": "./dist/generated/caam015.d.ts",
+        "default": "./dist/generated/caam015.js"
+      },
+      "./caam016": {
+        "types": "./dist/generated/caam016.d.ts",
+        "default": "./dist/generated/caam016.js"
+      },
+      "./camt003": {
+        "types": "./dist/generated/camt003.d.ts",
+        "default": "./dist/generated/camt003.js"
+      },
+      "./camt004": {
+        "types": "./dist/generated/camt004.d.ts",
+        "default": "./dist/generated/camt004.js"
+      },
+      "./camt005": {
+        "types": "./dist/generated/camt005.d.ts",
+        "default": "./dist/generated/camt005.js"
+      },
+      "./camt006": {
+        "types": "./dist/generated/camt006.d.ts",
+        "default": "./dist/generated/camt006.js"
+      },
+      "./camt007": {
+        "types": "./dist/generated/camt007.d.ts",
+        "default": "./dist/generated/camt007.js"
+      },
+      "./camt008": {
+        "types": "./dist/generated/camt008.d.ts",
+        "default": "./dist/generated/camt008.js"
+      },
+      "./camt009": {
+        "types": "./dist/generated/camt009.d.ts",
+        "default": "./dist/generated/camt009.js"
+      },
+      "./camt010": {
+        "types": "./dist/generated/camt010.d.ts",
+        "default": "./dist/generated/camt010.js"
+      },
+      "./camt011": {
+        "types": "./dist/generated/camt011.d.ts",
+        "default": "./dist/generated/camt011.js"
+      },
+      "./camt012": {
+        "types": "./dist/generated/camt012.d.ts",
+        "default": "./dist/generated/camt012.js"
+      },
+      "./camt013": {
+        "types": "./dist/generated/camt013.d.ts",
+        "default": "./dist/generated/camt013.js"
+      },
+      "./camt014": {
+        "types": "./dist/generated/camt014.d.ts",
+        "default": "./dist/generated/camt014.js"
+      },
+      "./camt015": {
+        "types": "./dist/generated/camt015.d.ts",
+        "default": "./dist/generated/camt015.js"
+      },
+      "./camt016": {
+        "types": "./dist/generated/camt016.d.ts",
+        "default": "./dist/generated/camt016.js"
+      },
+      "./camt017": {
+        "types": "./dist/generated/camt017.d.ts",
+        "default": "./dist/generated/camt017.js"
+      },
+      "./camt018": {
+        "types": "./dist/generated/camt018.d.ts",
+        "default": "./dist/generated/camt018.js"
+      },
+      "./camt019": {
+        "types": "./dist/generated/camt019.d.ts",
+        "default": "./dist/generated/camt019.js"
+      },
+      "./camt020": {
+        "types": "./dist/generated/camt020.d.ts",
+        "default": "./dist/generated/camt020.js"
+      },
+      "./camt021": {
+        "types": "./dist/generated/camt021.d.ts",
+        "default": "./dist/generated/camt021.js"
+      },
+      "./camt023": {
+        "types": "./dist/generated/camt023.d.ts",
+        "default": "./dist/generated/camt023.js"
+      },
+      "./camt024": {
+        "types": "./dist/generated/camt024.d.ts",
+        "default": "./dist/generated/camt024.js"
+      },
+      "./camt025": {
+        "types": "./dist/generated/camt025.d.ts",
+        "default": "./dist/generated/camt025.js"
+      },
+      "./camt026": {
+        "types": "./dist/generated/camt026.d.ts",
+        "default": "./dist/generated/camt026.js"
+      },
+      "./camt027": {
+        "types": "./dist/generated/camt027.d.ts",
+        "default": "./dist/generated/camt027.js"
+      },
+      "./camt028": {
+        "types": "./dist/generated/camt028.d.ts",
+        "default": "./dist/generated/camt028.js"
+      },
+      "./camt029": {
+        "types": "./dist/generated/camt029.d.ts",
+        "default": "./dist/generated/camt029.js"
+      },
+      "./camt030": {
+        "types": "./dist/generated/camt030.d.ts",
+        "default": "./dist/generated/camt030.js"
+      },
+      "./camt031": {
+        "types": "./dist/generated/camt031.d.ts",
+        "default": "./dist/generated/camt031.js"
+      },
+      "./camt032": {
+        "types": "./dist/generated/camt032.d.ts",
+        "default": "./dist/generated/camt032.js"
+      },
+      "./camt033": {
+        "types": "./dist/generated/camt033.d.ts",
+        "default": "./dist/generated/camt033.js"
+      },
+      "./camt034": {
+        "types": "./dist/generated/camt034.d.ts",
+        "default": "./dist/generated/camt034.js"
+      },
+      "./camt035": {
+        "types": "./dist/generated/camt035.d.ts",
+        "default": "./dist/generated/camt035.js"
+      },
+      "./camt036": {
+        "types": "./dist/generated/camt036.d.ts",
+        "default": "./dist/generated/camt036.js"
+      },
+      "./camt037": {
+        "types": "./dist/generated/camt037.d.ts",
+        "default": "./dist/generated/camt037.js"
+      },
+      "./camt038": {
+        "types": "./dist/generated/camt038.d.ts",
+        "default": "./dist/generated/camt038.js"
+      },
+      "./camt039": {
+        "types": "./dist/generated/camt039.d.ts",
+        "default": "./dist/generated/camt039.js"
+      },
+      "./camt040": {
+        "types": "./dist/generated/camt040.d.ts",
+        "default": "./dist/generated/camt040.js"
+      },
+      "./camt041": {
+        "types": "./dist/generated/camt041.d.ts",
+        "default": "./dist/generated/camt041.js"
+      },
+      "./camt042": {
+        "types": "./dist/generated/camt042.d.ts",
+        "default": "./dist/generated/camt042.js"
+      },
+      "./camt043": {
+        "types": "./dist/generated/camt043.d.ts",
+        "default": "./dist/generated/camt043.js"
+      },
+      "./camt044": {
+        "types": "./dist/generated/camt044.d.ts",
+        "default": "./dist/generated/camt044.js"
+      },
+      "./camt045": {
+        "types": "./dist/generated/camt045.d.ts",
+        "default": "./dist/generated/camt045.js"
+      },
+      "./camt046": {
+        "types": "./dist/generated/camt046.d.ts",
+        "default": "./dist/generated/camt046.js"
+      },
+      "./camt047": {
+        "types": "./dist/generated/camt047.d.ts",
+        "default": "./dist/generated/camt047.js"
+      },
+      "./camt048": {
+        "types": "./dist/generated/camt048.d.ts",
+        "default": "./dist/generated/camt048.js"
+      },
+      "./camt049": {
+        "types": "./dist/generated/camt049.d.ts",
+        "default": "./dist/generated/camt049.js"
+      },
+      "./camt050": {
+        "types": "./dist/generated/camt050.d.ts",
+        "default": "./dist/generated/camt050.js"
+      },
+      "./camt051": {
+        "types": "./dist/generated/camt051.d.ts",
+        "default": "./dist/generated/camt051.js"
+      },
+      "./camt052": {
+        "types": "./dist/generated/camt052.d.ts",
+        "default": "./dist/generated/camt052.js"
+      },
+      "./camt053": {
+        "types": "./dist/generated/camt053.d.ts",
+        "default": "./dist/generated/camt053.js"
+      },
+      "./camt054": {
+        "types": "./dist/generated/camt054.d.ts",
+        "default": "./dist/generated/camt054.js"
+      },
+      "./camt055": {
+        "types": "./dist/generated/camt055.d.ts",
+        "default": "./dist/generated/camt055.js"
+      },
+      "./camt056": {
+        "types": "./dist/generated/camt056.d.ts",
+        "default": "./dist/generated/camt056.js"
+      },
+      "./camt057": {
+        "types": "./dist/generated/camt057.d.ts",
+        "default": "./dist/generated/camt057.js"
+      },
+      "./camt058": {
+        "types": "./dist/generated/camt058.d.ts",
+        "default": "./dist/generated/camt058.js"
+      },
+      "./camt059": {
+        "types": "./dist/generated/camt059.d.ts",
+        "default": "./dist/generated/camt059.js"
+      },
+      "./camt060": {
+        "types": "./dist/generated/camt060.d.ts",
+        "default": "./dist/generated/camt060.js"
+      },
+      "./camt061": {
+        "types": "./dist/generated/camt061.d.ts",
+        "default": "./dist/generated/camt061.js"
+      },
+      "./camt062": {
+        "types": "./dist/generated/camt062.d.ts",
+        "default": "./dist/generated/camt062.js"
+      },
+      "./camt063": {
+        "types": "./dist/generated/camt063.d.ts",
+        "default": "./dist/generated/camt063.js"
+      },
+      "./camt064": {
+        "types": "./dist/generated/camt064.d.ts",
+        "default": "./dist/generated/camt064.js"
+      },
+      "./camt065": {
+        "types": "./dist/generated/camt065.d.ts",
+        "default": "./dist/generated/camt065.js"
+      },
+      "./camt066": {
+        "types": "./dist/generated/camt066.d.ts",
+        "default": "./dist/generated/camt066.js"
+      },
+      "./camt067": {
+        "types": "./dist/generated/camt067.d.ts",
+        "default": "./dist/generated/camt067.js"
+      },
+      "./camt068": {
+        "types": "./dist/generated/camt068.d.ts",
+        "default": "./dist/generated/camt068.js"
+      },
+      "./camt069": {
+        "types": "./dist/generated/camt069.d.ts",
+        "default": "./dist/generated/camt069.js"
+      },
+      "./camt070": {
+        "types": "./dist/generated/camt070.d.ts",
+        "default": "./dist/generated/camt070.js"
+      },
+      "./camt071": {
+        "types": "./dist/generated/camt071.d.ts",
+        "default": "./dist/generated/camt071.js"
+      },
+      "./camt072": {
+        "types": "./dist/generated/camt072.d.ts",
+        "default": "./dist/generated/camt072.js"
+      },
+      "./camt073": {
+        "types": "./dist/generated/camt073.d.ts",
+        "default": "./dist/generated/camt073.js"
+      },
+      "./camt074": {
+        "types": "./dist/generated/camt074.d.ts",
+        "default": "./dist/generated/camt074.js"
+      },
+      "./camt075": {
+        "types": "./dist/generated/camt075.d.ts",
+        "default": "./dist/generated/camt075.js"
+      },
+      "./camt076": {
+        "types": "./dist/generated/camt076.d.ts",
+        "default": "./dist/generated/camt076.js"
+      },
+      "./camt077": {
+        "types": "./dist/generated/camt077.d.ts",
+        "default": "./dist/generated/camt077.js"
+      },
+      "./camt078": {
+        "types": "./dist/generated/camt078.d.ts",
+        "default": "./dist/generated/camt078.js"
+      },
+      "./camt079": {
+        "types": "./dist/generated/camt079.d.ts",
+        "default": "./dist/generated/camt079.js"
+      },
+      "./camt080": {
+        "types": "./dist/generated/camt080.d.ts",
+        "default": "./dist/generated/camt080.js"
+      },
+      "./camt081": {
+        "types": "./dist/generated/camt081.d.ts",
+        "default": "./dist/generated/camt081.js"
+      },
+      "./camt082": {
+        "types": "./dist/generated/camt082.d.ts",
+        "default": "./dist/generated/camt082.js"
+      },
+      "./camt083": {
+        "types": "./dist/generated/camt083.d.ts",
+        "default": "./dist/generated/camt083.js"
+      },
+      "./camt084": {
+        "types": "./dist/generated/camt084.d.ts",
+        "default": "./dist/generated/camt084.js"
+      },
+      "./camt085": {
+        "types": "./dist/generated/camt085.d.ts",
+        "default": "./dist/generated/camt085.js"
+      },
+      "./camt086": {
+        "types": "./dist/generated/camt086.d.ts",
+        "default": "./dist/generated/camt086.js"
+      },
+      "./camt087": {
+        "types": "./dist/generated/camt087.d.ts",
+        "default": "./dist/generated/camt087.js"
+      },
+      "./camt088": {
+        "types": "./dist/generated/camt088.d.ts",
+        "default": "./dist/generated/camt088.js"
+      },
+      "./camt101": {
+        "types": "./dist/generated/camt101.d.ts",
+        "default": "./dist/generated/camt101.js"
+      },
+      "./camt102": {
+        "types": "./dist/generated/camt102.d.ts",
+        "default": "./dist/generated/camt102.js"
+      },
+      "./camt103": {
+        "types": "./dist/generated/camt103.d.ts",
+        "default": "./dist/generated/camt103.js"
+      },
+      "./camt104": {
+        "types": "./dist/generated/camt104.d.ts",
+        "default": "./dist/generated/camt104.js"
+      },
+      "./camt105": {
+        "types": "./dist/generated/camt105.d.ts",
+        "default": "./dist/generated/camt105.js"
+      },
+      "./camt106": {
+        "types": "./dist/generated/camt106.d.ts",
+        "default": "./dist/generated/camt106.js"
+      },
+      "./camt107": {
+        "types": "./dist/generated/camt107.d.ts",
+        "default": "./dist/generated/camt107.js"
+      },
+      "./camt108": {
+        "types": "./dist/generated/camt108.d.ts",
+        "default": "./dist/generated/camt108.js"
+      },
+      "./camt109": {
+        "types": "./dist/generated/camt109.d.ts",
+        "default": "./dist/generated/camt109.js"
+      },
+      "./camt110": {
+        "types": "./dist/generated/camt110.d.ts",
+        "default": "./dist/generated/camt110.js"
+      },
+      "./camt111": {
+        "types": "./dist/generated/camt111.d.ts",
+        "default": "./dist/generated/camt111.js"
+      },
+      "./camt113": {
+        "types": "./dist/generated/camt113.d.ts",
+        "default": "./dist/generated/camt113.js"
+      },
+      "./camt114": {
+        "types": "./dist/generated/camt114.d.ts",
+        "default": "./dist/generated/camt114.js"
+      },
+      "./camt115": {
+        "types": "./dist/generated/camt115.d.ts",
+        "default": "./dist/generated/camt115.js"
+      },
+      "./camt116": {
+        "types": "./dist/generated/camt116.d.ts",
+        "default": "./dist/generated/camt116.js"
+      },
+      "./acmt012": {
+        "types": "./dist/generated/acmt012.d.ts",
+        "default": "./dist/generated/acmt012.js"
+      },
+      "./acmt021": {
+        "types": "./dist/generated/acmt021.d.ts",
+        "default": "./dist/generated/acmt021.js"
+      },
+      "./acmt020": {
+        "types": "./dist/generated/acmt020.d.ts",
+        "default": "./dist/generated/acmt020.js"
+      },
+      "./acmt019": {
+        "types": "./dist/generated/acmt019.d.ts",
+        "default": "./dist/generated/acmt019.js"
+      },
+      "./acmt002": {
+        "types": "./dist/generated/acmt002.d.ts",
+        "default": "./dist/generated/acmt002.js"
+      },
+      "./acmt016": {
+        "types": "./dist/generated/acmt016.d.ts",
+        "default": "./dist/generated/acmt016.js"
+      },
+      "./acmt015": {
+        "types": "./dist/generated/acmt015.d.ts",
+        "default": "./dist/generated/acmt015.js"
+      },
+      "./acmt006": {
+        "types": "./dist/generated/acmt006.d.ts",
+        "default": "./dist/generated/acmt006.js"
+      },
+      "./acmt018": {
+        "types": "./dist/generated/acmt018.d.ts",
+        "default": "./dist/generated/acmt018.js"
+      },
+      "./acmt017": {
+        "types": "./dist/generated/acmt017.d.ts",
+        "default": "./dist/generated/acmt017.js"
+      },
+      "./acmt003": {
+        "types": "./dist/generated/acmt003.d.ts",
+        "default": "./dist/generated/acmt003.js"
+      },
+      "./acmt009": {
+        "types": "./dist/generated/acmt009.d.ts",
+        "default": "./dist/generated/acmt009.js"
+      },
+      "./acmt008": {
+        "types": "./dist/generated/acmt008.d.ts",
+        "default": "./dist/generated/acmt008.js"
+      },
+      "./acmt001": {
+        "types": "./dist/generated/acmt001.d.ts",
+        "default": "./dist/generated/acmt001.js"
+      },
+      "./acmt007": {
+        "types": "./dist/generated/acmt007.d.ts",
+        "default": "./dist/generated/acmt007.js"
+      },
+      "./acmt013": {
+        "types": "./dist/generated/acmt013.d.ts",
+        "default": "./dist/generated/acmt013.js"
+      },
+      "./acmt014": {
+        "types": "./dist/generated/acmt014.d.ts",
+        "default": "./dist/generated/acmt014.js"
+      },
+      "./acmt010": {
+        "types": "./dist/generated/acmt010.d.ts",
+        "default": "./dist/generated/acmt010.js"
+      },
+      "./acmt011": {
+        "types": "./dist/generated/acmt011.d.ts",
+        "default": "./dist/generated/acmt011.js"
+      },
+      "./acmt032": {
+        "types": "./dist/generated/acmt032.d.ts",
+        "default": "./dist/generated/acmt032.js"
+      },
+      "./acmt029": {
+        "types": "./dist/generated/acmt029.d.ts",
+        "default": "./dist/generated/acmt029.js"
+      },
+      "./acmt027": {
+        "types": "./dist/generated/acmt027.d.ts",
+        "default": "./dist/generated/acmt027.js"
+      },
+      "./acmt028": {
+        "types": "./dist/generated/acmt028.d.ts",
+        "default": "./dist/generated/acmt028.js"
+      },
+      "./acmt033": {
+        "types": "./dist/generated/acmt033.d.ts",
+        "default": "./dist/generated/acmt033.js"
+      },
+      "./acmt035": {
+        "types": "./dist/generated/acmt035.d.ts",
+        "default": "./dist/generated/acmt035.js"
+      },
+      "./acmt031": {
+        "types": "./dist/generated/acmt031.d.ts",
+        "default": "./dist/generated/acmt031.js"
+      },
+      "./acmt034": {
+        "types": "./dist/generated/acmt034.d.ts",
+        "default": "./dist/generated/acmt034.js"
+      },
+      "./acmt030": {
+        "types": "./dist/generated/acmt030.d.ts",
+        "default": "./dist/generated/acmt030.js"
+      },
+      "./acmt037": {
+        "types": "./dist/generated/acmt037.d.ts",
+        "default": "./dist/generated/acmt037.js"
+      },
+      "./acmt036": {
+        "types": "./dist/generated/acmt036.d.ts",
+        "default": "./dist/generated/acmt036.js"
+      },
+      "./acmt022": {
+        "types": "./dist/generated/acmt022.d.ts",
+        "default": "./dist/generated/acmt022.js"
+      },
+      "./acmt024": {
+        "types": "./dist/generated/acmt024.d.ts",
+        "default": "./dist/generated/acmt024.js"
+      },
+      "./acmt023": {
+        "types": "./dist/generated/acmt023.d.ts",
+        "default": "./dist/generated/acmt023.js"
+      },
+      "./acmt005": {
+        "types": "./dist/generated/acmt005.d.ts",
+        "default": "./dist/generated/acmt005.js"
+      },
+      "./admi002": {
+        "types": "./dist/generated/admi002.d.ts",
+        "default": "./dist/generated/admi002.js"
+      },
+      "./admi004": {
+        "types": "./dist/generated/admi004.d.ts",
+        "default": "./dist/generated/admi004.js"
+      },
+      "./admi005": {
+        "types": "./dist/generated/admi005.d.ts",
+        "default": "./dist/generated/admi005.js"
+      },
+      "./admi006": {
+        "types": "./dist/generated/admi006.d.ts",
+        "default": "./dist/generated/admi006.js"
+      },
+      "./admi007": {
+        "types": "./dist/generated/admi007.d.ts",
+        "default": "./dist/generated/admi007.js"
+      },
+      "./admi009": {
+        "types": "./dist/generated/admi009.d.ts",
+        "default": "./dist/generated/admi009.js"
+      },
+      "./admi010": {
+        "types": "./dist/generated/admi010.d.ts",
+        "default": "./dist/generated/admi010.js"
+      },
+      "./admi011": {
+        "types": "./dist/generated/admi011.d.ts",
+        "default": "./dist/generated/admi011.js"
+      },
+      "./admi017": {
+        "types": "./dist/generated/admi017.d.ts",
+        "default": "./dist/generated/admi017.js"
+      },
+      "./admi024": {
+        "types": "./dist/generated/admi024.d.ts",
+        "default": "./dist/generated/admi024.js"
+      },
+      "./remt001": {
+        "types": "./dist/generated/remt001.d.ts",
+        "default": "./dist/generated/remt001.js"
+      },
+      "./remt002": {
+        "types": "./dist/generated/remt002.d.ts",
+        "default": "./dist/generated/remt002.js"
+      },
+      "./trck001": {
+        "types": "./dist/generated/trck001.d.ts",
+        "default": "./dist/generated/trck001.js"
+      },
+      "./trck002": {
+        "types": "./dist/generated/trck002.d.ts",
+        "default": "./dist/generated/trck002.js"
+      },
+      "./trck004": {
+        "types": "./dist/generated/trck004.d.ts",
+        "default": "./dist/generated/trck004.js"
+      },
+      "./head001": {
+        "types": "./dist/generated/head001.d.ts",
+        "default": "./dist/generated/head001.js"
+      },
+      "./semt005": {
+        "types": "./dist/generated/semt005.d.ts",
+        "default": "./dist/generated/semt005.js"
+      },
+      "./semt004": {
+        "types": "./dist/generated/semt004.d.ts",
+        "default": "./dist/generated/semt004.js"
+      },
+      "./semt015f2": {
+        "types": "./dist/generated/semt015f2.d.ts",
+        "default": "./dist/generated/semt015f2.js"
+      },
+      "./semt015": {
+        "types": "./dist/generated/semt015.d.ts",
+        "default": "./dist/generated/semt015.js"
+      },
+      "./semt013f2": {
+        "types": "./dist/generated/semt013f2.d.ts",
+        "default": "./dist/generated/semt013f2.js"
+      },
+      "./semt013": {
+        "types": "./dist/generated/semt013.d.ts",
+        "default": "./dist/generated/semt013.js"
+      },
+      "./semt034": {
+        "types": "./dist/generated/semt034.d.ts",
+        "default": "./dist/generated/semt034.js"
+      },
+      "./semt016f2": {
+        "types": "./dist/generated/semt016f2.d.ts",
+        "default": "./dist/generated/semt016f2.js"
+      },
+      "./semt016": {
+        "types": "./dist/generated/semt016.d.ts",
+        "default": "./dist/generated/semt016.js"
+      },
+      "./semt029": {
+        "types": "./dist/generated/semt029.d.ts",
+        "default": "./dist/generated/semt029.js"
+      },
+      "./semt028": {
+        "types": "./dist/generated/semt028.d.ts",
+        "default": "./dist/generated/semt028.js"
+      },
+      "./semt014f2": {
+        "types": "./dist/generated/semt014f2.d.ts",
+        "default": "./dist/generated/semt014f2.js"
+      },
+      "./semt014": {
+        "types": "./dist/generated/semt014.d.ts",
+        "default": "./dist/generated/semt014.js"
+      },
+      "./semt025": {
+        "types": "./dist/generated/semt025.d.ts",
+        "default": "./dist/generated/semt025.js"
+      },
+      "./semt040": {
+        "types": "./dist/generated/semt040.d.ts",
+        "default": "./dist/generated/semt040.js"
+      },
+      "./semt003f2": {
+        "types": "./dist/generated/semt003f2.d.ts",
+        "default": "./dist/generated/semt003f2.js"
+      },
+      "./semt003": {
+        "types": "./dist/generated/semt003.d.ts",
+        "default": "./dist/generated/semt003.js"
+      },
+      "./semt002f2": {
+        "types": "./dist/generated/semt002f2.d.ts",
+        "default": "./dist/generated/semt002f2.js"
+      },
+      "./semt002": {
+        "types": "./dist/generated/semt002.d.ts",
+        "default": "./dist/generated/semt002.js"
+      },
+      "./semt042": {
+        "types": "./dist/generated/semt042.d.ts",
+        "default": "./dist/generated/semt042.js"
+      },
+      "./semt041": {
+        "types": "./dist/generated/semt041.d.ts",
+        "default": "./dist/generated/semt041.js"
+      },
+      "./semt023": {
+        "types": "./dist/generated/semt023.d.ts",
+        "default": "./dist/generated/semt023.js"
+      },
+      "./semt020f2": {
+        "types": "./dist/generated/semt020f2.d.ts",
+        "default": "./dist/generated/semt020f2.js"
+      },
+      "./semt020": {
+        "types": "./dist/generated/semt020.d.ts",
+        "default": "./dist/generated/semt020.js"
+      },
+      "./semt001": {
+        "types": "./dist/generated/semt001.d.ts",
+        "default": "./dist/generated/semt001.js"
+      },
+      "./semt030": {
+        "types": "./dist/generated/semt030.d.ts",
+        "default": "./dist/generated/semt030.js"
+      },
+      "./semt031": {
+        "types": "./dist/generated/semt031.d.ts",
+        "default": "./dist/generated/semt031.js"
+      },
+      "./semt019f2": {
+        "types": "./dist/generated/semt019f2.d.ts",
+        "default": "./dist/generated/semt019f2.js"
+      },
+      "./semt019": {
+        "types": "./dist/generated/semt019.d.ts",
+        "default": "./dist/generated/semt019.js"
+      },
+      "./semt022f2": {
+        "types": "./dist/generated/semt022f2.d.ts",
+        "default": "./dist/generated/semt022f2.js"
+      },
+      "./semt022": {
+        "types": "./dist/generated/semt022.d.ts",
+        "default": "./dist/generated/semt022.js"
+      },
+      "./semt027": {
+        "types": "./dist/generated/semt027.d.ts",
+        "default": "./dist/generated/semt027.js"
+      },
+      "./semt026": {
+        "types": "./dist/generated/semt026.d.ts",
+        "default": "./dist/generated/semt026.js"
+      },
+      "./semt021f2": {
+        "types": "./dist/generated/semt021f2.d.ts",
+        "default": "./dist/generated/semt021f2.js"
+      },
+      "./semt021": {
+        "types": "./dist/generated/semt021.d.ts",
+        "default": "./dist/generated/semt021.js"
+      },
+      "./semt032": {
+        "types": "./dist/generated/semt032.d.ts",
+        "default": "./dist/generated/semt032.js"
+      },
+      "./semt033": {
+        "types": "./dist/generated/semt033.d.ts",
+        "default": "./dist/generated/semt033.js"
+      },
+      "./semt044": {
+        "types": "./dist/generated/semt044.d.ts",
+        "default": "./dist/generated/semt044.js"
+      },
+      "./semt018f2": {
+        "types": "./dist/generated/semt018f2.d.ts",
+        "default": "./dist/generated/semt018f2.js"
+      },
+      "./semt018": {
+        "types": "./dist/generated/semt018.d.ts",
+        "default": "./dist/generated/semt018.js"
+      },
+      "./semt017f2": {
+        "types": "./dist/generated/semt017f2.d.ts",
+        "default": "./dist/generated/semt017f2.js"
+      },
+      "./semt017": {
+        "types": "./dist/generated/semt017.d.ts",
+        "default": "./dist/generated/semt017.js"
+      },
+      "./semt007": {
+        "types": "./dist/generated/semt007.d.ts",
+        "default": "./dist/generated/semt007.js"
+      },
+      "./semt006": {
+        "types": "./dist/generated/semt006.d.ts",
+        "default": "./dist/generated/semt006.js"
+      },
+      "./seev029": {
+        "types": "./dist/generated/seev029.d.ts",
+        "default": "./dist/generated/seev029.js"
+      },
+      "./seev028": {
+        "types": "./dist/generated/seev028.d.ts",
+        "default": "./dist/generated/seev028.js"
+      },
+      "./seev030": {
+        "types": "./dist/generated/seev030.d.ts",
+        "default": "./dist/generated/seev030.js"
+      },
+      "./seev016": {
+        "types": "./dist/generated/seev016.d.ts",
+        "default": "./dist/generated/seev016.js"
+      },
+      "./seev012": {
+        "types": "./dist/generated/seev012.d.ts",
+        "default": "./dist/generated/seev012.js"
+      },
+      "./seev013": {
+        "types": "./dist/generated/seev013.d.ts",
+        "default": "./dist/generated/seev013.js"
+      },
+      "./seev014": {
+        "types": "./dist/generated/seev014.d.ts",
+        "default": "./dist/generated/seev014.js"
+      },
+      "./seev015": {
+        "types": "./dist/generated/seev015.d.ts",
+        "default": "./dist/generated/seev015.js"
+      },
+      "./seev018": {
+        "types": "./dist/generated/seev018.d.ts",
+        "default": "./dist/generated/seev018.js"
+      },
+      "./seev023": {
+        "types": "./dist/generated/seev023.d.ts",
+        "default": "./dist/generated/seev023.js"
+      },
+      "./seev024": {
+        "types": "./dist/generated/seev024.d.ts",
+        "default": "./dist/generated/seev024.js"
+      },
+      "./seev020": {
+        "types": "./dist/generated/seev020.d.ts",
+        "default": "./dist/generated/seev020.js"
+      },
+      "./seev019": {
+        "types": "./dist/generated/seev019.d.ts",
+        "default": "./dist/generated/seev019.js"
+      },
+      "./seev022": {
+        "types": "./dist/generated/seev022.d.ts",
+        "default": "./dist/generated/seev022.js"
+      },
+      "./seev009": {
+        "types": "./dist/generated/seev009.d.ts",
+        "default": "./dist/generated/seev009.js"
+      },
+      "./seev010": {
+        "types": "./dist/generated/seev010.d.ts",
+        "default": "./dist/generated/seev010.js"
+      },
+      "./seev011": {
+        "types": "./dist/generated/seev011.d.ts",
+        "default": "./dist/generated/seev011.js"
+      },
+      "./seev026": {
+        "types": "./dist/generated/seev026.d.ts",
+        "default": "./dist/generated/seev026.js"
+      },
+      "./seev025": {
+        "types": "./dist/generated/seev025.d.ts",
+        "default": "./dist/generated/seev025.js"
+      },
+      "./seev027": {
+        "types": "./dist/generated/seev027.d.ts",
+        "default": "./dist/generated/seev027.js"
+      },
+      "./seev064": {
+        "types": "./dist/generated/seev064.d.ts",
+        "default": "./dist/generated/seev064.js"
+      },
+      "./seev065": {
+        "types": "./dist/generated/seev065.d.ts",
+        "default": "./dist/generated/seev065.js"
+      },
+      "./seev063": {
+        "types": "./dist/generated/seev063.d.ts",
+        "default": "./dist/generated/seev063.js"
+      },
+      "./seev062": {
+        "types": "./dist/generated/seev062.d.ts",
+        "default": "./dist/generated/seev062.js"
+      },
+      "./seev066": {
+        "types": "./dist/generated/seev066.d.ts",
+        "default": "./dist/generated/seev066.js"
+      },
+      "./seev067": {
+        "types": "./dist/generated/seev067.d.ts",
+        "default": "./dist/generated/seev067.js"
+      },
+      "./seev061": {
+        "types": "./dist/generated/seev061.d.ts",
+        "default": "./dist/generated/seev061.js"
+      },
+      "./seev060": {
+        "types": "./dist/generated/seev060.d.ts",
+        "default": "./dist/generated/seev060.js"
+      },
+      "./seev039f2": {
+        "types": "./dist/generated/seev039f2.d.ts",
+        "default": "./dist/generated/seev039f2.js"
+      },
+      "./seev039": {
+        "types": "./dist/generated/seev039.d.ts",
+        "default": "./dist/generated/seev039.js"
+      },
+      "./seev032f2": {
+        "types": "./dist/generated/seev032f2.d.ts",
+        "default": "./dist/generated/seev032f2.js"
+      },
+      "./seev032": {
+        "types": "./dist/generated/seev032.d.ts",
+        "default": "./dist/generated/seev032.js"
+      },
+      "./seev033f2": {
+        "types": "./dist/generated/seev033f2.d.ts",
+        "default": "./dist/generated/seev033f2.js"
+      },
+      "./seev040f2": {
+        "types": "./dist/generated/seev040f2.d.ts",
+        "default": "./dist/generated/seev040f2.js"
+      },
+      "./seev041f2": {
+        "types": "./dist/generated/seev041f2.d.ts",
+        "default": "./dist/generated/seev041f2.js"
+      },
+      "./seev041": {
+        "types": "./dist/generated/seev041.d.ts",
+        "default": "./dist/generated/seev041.js"
+      },
+      "./seev040": {
+        "types": "./dist/generated/seev040.d.ts",
+        "default": "./dist/generated/seev040.js"
+      },
+      "./seev042f2": {
+        "types": "./dist/generated/seev042f2.d.ts",
+        "default": "./dist/generated/seev042f2.js"
+      },
+      "./seev042": {
+        "types": "./dist/generated/seev042.d.ts",
+        "default": "./dist/generated/seev042.js"
+      },
+      "./seev034f2": {
+        "types": "./dist/generated/seev034f2.d.ts",
+        "default": "./dist/generated/seev034f2.js"
+      },
+      "./seev034": {
+        "types": "./dist/generated/seev034.d.ts",
+        "default": "./dist/generated/seev034.js"
+      },
+      "./seev033": {
+        "types": "./dist/generated/seev033.d.ts",
+        "default": "./dist/generated/seev033.js"
+      },
+      "./seev036f2": {
+        "types": "./dist/generated/seev036f2.d.ts",
+        "default": "./dist/generated/seev036f2.js"
+      },
+      "./seev036": {
+        "types": "./dist/generated/seev036.d.ts",
+        "default": "./dist/generated/seev036.js"
+      },
+      "./seev035f2": {
+        "types": "./dist/generated/seev035f2.d.ts",
+        "default": "./dist/generated/seev035f2.js"
+      },
+      "./seev044f2": {
+        "types": "./dist/generated/seev044f2.d.ts",
+        "default": "./dist/generated/seev044f2.js"
+      },
+      "./seev044": {
+        "types": "./dist/generated/seev044.d.ts",
+        "default": "./dist/generated/seev044.js"
+      },
+      "./seev035": {
+        "types": "./dist/generated/seev035.d.ts",
+        "default": "./dist/generated/seev035.js"
+      },
+      "./seev037f2": {
+        "types": "./dist/generated/seev037f2.d.ts",
+        "default": "./dist/generated/seev037f2.js"
+      },
+      "./seev037": {
+        "types": "./dist/generated/seev037.d.ts",
+        "default": "./dist/generated/seev037.js"
+      },
+      "./seev038f2": {
+        "types": "./dist/generated/seev038f2.d.ts",
+        "default": "./dist/generated/seev038f2.js"
+      },
+      "./seev038": {
+        "types": "./dist/generated/seev038.d.ts",
+        "default": "./dist/generated/seev038.js"
+      },
+      "./seev031f2": {
+        "types": "./dist/generated/seev031f2.d.ts",
+        "default": "./dist/generated/seev031f2.js"
+      },
+      "./seev031": {
+        "types": "./dist/generated/seev031.d.ts",
+        "default": "./dist/generated/seev031.js"
+      },
+      "./seev053": {
+        "types": "./dist/generated/seev053.d.ts",
+        "default": "./dist/generated/seev053.js"
+      },
+      "./seev051": {
+        "types": "./dist/generated/seev051.d.ts",
+        "default": "./dist/generated/seev051.js"
+      },
+      "./seev050": {
+        "types": "./dist/generated/seev050.d.ts",
+        "default": "./dist/generated/seev050.js"
+      },
+      "./seev052": {
+        "types": "./dist/generated/seev052.d.ts",
+        "default": "./dist/generated/seev052.js"
+      },
+      "./seev002": {
+        "types": "./dist/generated/seev002.d.ts",
+        "default": "./dist/generated/seev002.js"
+      },
+      "./seev003": {
+        "types": "./dist/generated/seev003.d.ts",
+        "default": "./dist/generated/seev003.js"
+      },
+      "./seev005": {
+        "types": "./dist/generated/seev005.d.ts",
+        "default": "./dist/generated/seev005.js"
+      },
+      "./seev006": {
+        "types": "./dist/generated/seev006.d.ts",
+        "default": "./dist/generated/seev006.js"
+      },
+      "./seev004": {
+        "types": "./dist/generated/seev004.d.ts",
+        "default": "./dist/generated/seev004.js"
+      },
+      "./seev001": {
+        "types": "./dist/generated/seev001.d.ts",
+        "default": "./dist/generated/seev001.js"
+      },
+      "./seev008": {
+        "types": "./dist/generated/seev008.d.ts",
+        "default": "./dist/generated/seev008.js"
+      },
+      "./seev007": {
+        "types": "./dist/generated/seev007.d.ts",
+        "default": "./dist/generated/seev007.js"
+      },
+      "./seev048": {
+        "types": "./dist/generated/seev048.d.ts",
+        "default": "./dist/generated/seev048.js"
+      },
+      "./seev049": {
+        "types": "./dist/generated/seev049.d.ts",
+        "default": "./dist/generated/seev049.js"
+      },
+      "./seev046": {
+        "types": "./dist/generated/seev046.d.ts",
+        "default": "./dist/generated/seev046.js"
+      },
+      "./seev045": {
+        "types": "./dist/generated/seev045.d.ts",
+        "default": "./dist/generated/seev045.js"
+      },
+      "./seev047": {
+        "types": "./dist/generated/seev047.d.ts",
+        "default": "./dist/generated/seev047.js"
+      },
+      "./sese001": {
+        "types": "./dist/generated/sese001.d.ts",
+        "default": "./dist/generated/sese001.js"
+      },
+      "./sese002": {
+        "types": "./dist/generated/sese002.d.ts",
+        "default": "./dist/generated/sese002.js"
+      },
+      "./sese003": {
+        "types": "./dist/generated/sese003.d.ts",
+        "default": "./dist/generated/sese003.js"
+      },
+      "./sese004": {
+        "types": "./dist/generated/sese004.d.ts",
+        "default": "./dist/generated/sese004.js"
+      },
+      "./sese005": {
+        "types": "./dist/generated/sese005.d.ts",
+        "default": "./dist/generated/sese005.js"
+      },
+      "./sese006": {
+        "types": "./dist/generated/sese006.d.ts",
+        "default": "./dist/generated/sese006.js"
+      },
+      "./sese007": {
+        "types": "./dist/generated/sese007.d.ts",
+        "default": "./dist/generated/sese007.js"
+      },
+      "./sese008": {
+        "types": "./dist/generated/sese008.d.ts",
+        "default": "./dist/generated/sese008.js"
+      },
+      "./sese009": {
+        "types": "./dist/generated/sese009.d.ts",
+        "default": "./dist/generated/sese009.js"
+      },
+      "./sese010": {
+        "types": "./dist/generated/sese010.d.ts",
+        "default": "./dist/generated/sese010.js"
+      },
+      "./sese011": {
+        "types": "./dist/generated/sese011.d.ts",
+        "default": "./dist/generated/sese011.js"
+      },
+      "./sese012": {
+        "types": "./dist/generated/sese012.d.ts",
+        "default": "./dist/generated/sese012.js"
+      },
+      "./sese013": {
+        "types": "./dist/generated/sese013.d.ts",
+        "default": "./dist/generated/sese013.js"
+      },
+      "./sese014": {
+        "types": "./dist/generated/sese014.d.ts",
+        "default": "./dist/generated/sese014.js"
+      },
+      "./sese018": {
+        "types": "./dist/generated/sese018.d.ts",
+        "default": "./dist/generated/sese018.js"
+      },
+      "./sese019": {
+        "types": "./dist/generated/sese019.d.ts",
+        "default": "./dist/generated/sese019.js"
+      },
+      "./sese020": {
+        "types": "./dist/generated/sese020.d.ts",
+        "default": "./dist/generated/sese020.js"
+      },
+      "./sese020f2": {
+        "types": "./dist/generated/sese020f2.d.ts",
+        "default": "./dist/generated/sese020f2.js"
+      },
+      "./sese021": {
+        "types": "./dist/generated/sese021.d.ts",
+        "default": "./dist/generated/sese021.js"
+      },
+      "./sese021f2": {
+        "types": "./dist/generated/sese021f2.d.ts",
+        "default": "./dist/generated/sese021f2.js"
+      },
+      "./sese022": {
+        "types": "./dist/generated/sese022.d.ts",
+        "default": "./dist/generated/sese022.js"
+      },
+      "./sese022f2": {
+        "types": "./dist/generated/sese022f2.d.ts",
+        "default": "./dist/generated/sese022f2.js"
+      },
+      "./sese023": {
+        "types": "./dist/generated/sese023.d.ts",
+        "default": "./dist/generated/sese023.js"
+      },
+      "./sese023f2": {
+        "types": "./dist/generated/sese023f2.d.ts",
+        "default": "./dist/generated/sese023f2.js"
+      },
+      "./sese024": {
+        "types": "./dist/generated/sese024.d.ts",
+        "default": "./dist/generated/sese024.js"
+      },
+      "./sese024f2": {
+        "types": "./dist/generated/sese024f2.d.ts",
+        "default": "./dist/generated/sese024f2.js"
+      },
+      "./sese025": {
+        "types": "./dist/generated/sese025.d.ts",
+        "default": "./dist/generated/sese025.js"
+      },
+      "./sese025f2": {
+        "types": "./dist/generated/sese025f2.d.ts",
+        "default": "./dist/generated/sese025f2.js"
+      },
+      "./sese026": {
+        "types": "./dist/generated/sese026.d.ts",
+        "default": "./dist/generated/sese026.js"
+      },
+      "./sese026f2": {
+        "types": "./dist/generated/sese026f2.d.ts",
+        "default": "./dist/generated/sese026f2.js"
+      },
+      "./sese027": {
+        "types": "./dist/generated/sese027.d.ts",
+        "default": "./dist/generated/sese027.js"
+      },
+      "./sese027f2": {
+        "types": "./dist/generated/sese027f2.d.ts",
+        "default": "./dist/generated/sese027f2.js"
+      },
+      "./sese028": {
+        "types": "./dist/generated/sese028.d.ts",
+        "default": "./dist/generated/sese028.js"
+      },
+      "./sese028f2": {
+        "types": "./dist/generated/sese028f2.d.ts",
+        "default": "./dist/generated/sese028f2.js"
+      },
+      "./sese029": {
+        "types": "./dist/generated/sese029.d.ts",
+        "default": "./dist/generated/sese029.js"
+      },
+      "./sese029f2": {
+        "types": "./dist/generated/sese029f2.d.ts",
+        "default": "./dist/generated/sese029f2.js"
+      },
+      "./sese030": {
+        "types": "./dist/generated/sese030.d.ts",
+        "default": "./dist/generated/sese030.js"
+      },
+      "./sese030f2": {
+        "types": "./dist/generated/sese030f2.d.ts",
+        "default": "./dist/generated/sese030f2.js"
+      },
+      "./sese031": {
+        "types": "./dist/generated/sese031.d.ts",
+        "default": "./dist/generated/sese031.js"
+      },
+      "./sese031f2": {
+        "types": "./dist/generated/sese031f2.d.ts",
+        "default": "./dist/generated/sese031f2.js"
+      },
+      "./sese032": {
+        "types": "./dist/generated/sese032.d.ts",
+        "default": "./dist/generated/sese032.js"
+      },
+      "./sese032f2": {
+        "types": "./dist/generated/sese032f2.d.ts",
+        "default": "./dist/generated/sese032f2.js"
+      },
+      "./sese033": {
+        "types": "./dist/generated/sese033.d.ts",
+        "default": "./dist/generated/sese033.js"
+      },
+      "./sese033f2": {
+        "types": "./dist/generated/sese033f2.d.ts",
+        "default": "./dist/generated/sese033f2.js"
+      },
+      "./sese034": {
+        "types": "./dist/generated/sese034.d.ts",
+        "default": "./dist/generated/sese034.js"
+      },
+      "./sese034f2": {
+        "types": "./dist/generated/sese034f2.d.ts",
+        "default": "./dist/generated/sese034f2.js"
+      },
+      "./sese035": {
+        "types": "./dist/generated/sese035.d.ts",
+        "default": "./dist/generated/sese035.js"
+      },
+      "./sese035f2": {
+        "types": "./dist/generated/sese035f2.d.ts",
+        "default": "./dist/generated/sese035f2.js"
+      },
+      "./sese036": {
+        "types": "./dist/generated/sese036.d.ts",
+        "default": "./dist/generated/sese036.js"
+      },
+      "./sese036f2": {
+        "types": "./dist/generated/sese036f2.d.ts",
+        "default": "./dist/generated/sese036f2.js"
+      },
+      "./sese037": {
+        "types": "./dist/generated/sese037.d.ts",
+        "default": "./dist/generated/sese037.js"
+      },
+      "./sese037f2": {
+        "types": "./dist/generated/sese037f2.d.ts",
+        "default": "./dist/generated/sese037f2.js"
+      },
+      "./sese038": {
+        "types": "./dist/generated/sese038.d.ts",
+        "default": "./dist/generated/sese038.js"
+      },
+      "./sese038f2": {
+        "types": "./dist/generated/sese038f2.d.ts",
+        "default": "./dist/generated/sese038f2.js"
+      },
+      "./sese039": {
+        "types": "./dist/generated/sese039.d.ts",
+        "default": "./dist/generated/sese039.js"
+      },
+      "./sese039f2": {
+        "types": "./dist/generated/sese039f2.d.ts",
+        "default": "./dist/generated/sese039f2.js"
+      },
+      "./sese040": {
+        "types": "./dist/generated/sese040.d.ts",
+        "default": "./dist/generated/sese040.js"
+      },
+      "./sese040f2": {
+        "types": "./dist/generated/sese040f2.d.ts",
+        "default": "./dist/generated/sese040f2.js"
+      },
+      "./sese041": {
+        "types": "./dist/generated/sese041.d.ts",
+        "default": "./dist/generated/sese041.js"
+      },
+      "./sese042": {
+        "types": "./dist/generated/sese042.d.ts",
+        "default": "./dist/generated/sese042.js"
+      },
+      "./sese043": {
+        "types": "./dist/generated/sese043.d.ts",
+        "default": "./dist/generated/sese043.js"
+      }
+    }
+  },
   "scripts": {
     "typecheck": "tsc -p tsconfig.json",
-    "test": "vitest run"
+    "test": "vitest run",
+    "build": "tsc -p tsconfig.build.json && node ../../tools/publish/postbuild.mjs",
+    "prepack": "node ../../tools/publish/prepack.mjs"
   },
   "dependencies": {
     "zod": "^4.0.0"

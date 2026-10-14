@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": "dist",
+    "rootDir": "src",
+    "rewriteRelativeImportExtensions": true,
+    "paths": {
+      "@beneficial-strategies/iso20022-validate": [
+        "../validate/dist/index.d.ts"
+      ],
+      "@beneficial-strategies/iso20022-validate/*": [
+        "../validate/dist/*.d.ts"
+      ],
+      "@beneficial-strategies/iso20022-react": [
+        "../react/dist/index.d.ts"
+      ]
+    }
+  },
+  "include": [
+    "src"
+  ]
+}

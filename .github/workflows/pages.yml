@@ -28,6 +28,9 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm -r run typecheck
       - run: pnpm -r run test
+      # the published packages: manifests in step with `exports`, and everything compiles to dist/ (what npm would receive)
+      - run: node tools/publish/sync-manifests.mjs --check
+      - run: pnpm --filter "./packages/*" run build
 
       # The apps the "Implement!" instructions describe; they must build exactly as the instructions say
       - name: Build the quickstart apps
