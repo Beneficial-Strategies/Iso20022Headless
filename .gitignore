@@ -7,3 +7,6 @@ site
 .vite
 fixtures/*/needs.json
 .wrangler
+
+# copied in by `pnpm pack` (tools/publish/prepack.mjs)
+packages/*/LICENSE

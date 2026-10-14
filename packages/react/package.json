@@ -1,14 +1,51 @@
 {
   "name": "@beneficial-strategies/iso20022-react",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.1.0-alpha.0",
+  "description": "React hooks that drive an ISO 20022 form from the validate schemas (TanStack Form). No markup.",
+  "license": "MIT",
+  "author": "Beneficial Strategies",
+  "homepage": "https://github.com/Beneficial-Strategies/Iso20022Headless#readme",
+  "bugs": {
+    "url": "https://github.com/Beneficial-Strategies/Iso20022Headless/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Beneficial-Strategies/Iso20022Headless.git",
+    "directory": "packages/react"
+  },
+  "keywords": [
+    "iso20022",
+    "iso-20022",
+    "payments",
+    "pain.001",
+    "camt",
+    "pacs",
+    "financial-messaging"
+  ],
   "type": "module",
+  "sideEffects": false,
   "exports": {
     ".": "./src/index.ts"
   },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  },
   "scripts": {
     "typecheck": "tsc -p tsconfig.json",
-    "test": "vitest run --passWithNoTests"
+    "test": "vitest run --passWithNoTests",
+    "build": "tsc -p tsconfig.build.json && node ../../tools/publish/postbuild.mjs",
+    "prepack": "node ../../tools/publish/prepack.mjs"
   },
   "dependencies": {
     "@beneficial-strategies/iso20022-validate": "workspace:*",

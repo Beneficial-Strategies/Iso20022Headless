@@ -1,15 +1,55 @@
 {
   "name": "@beneficial-strategies/iso20022-react-ui",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.1.0-alpha.0",
+  "description": "React components that render an ISO 20022 form from the validate schemas, with English text and replaceable skins.",
+  "license": "MIT",
+  "author": "Beneficial Strategies",
+  "homepage": "https://github.com/Beneficial-Strategies/Iso20022Headless#readme",
+  "bugs": {
+    "url": "https://github.com/Beneficial-Strategies/Iso20022Headless/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Beneficial-Strategies/Iso20022Headless.git",
+    "directory": "packages/react-ui"
+  },
+  "keywords": [
+    "iso20022",
+    "iso-20022",
+    "payments",
+    "pain.001",
+    "camt",
+    "pacs",
+    "financial-messaging"
+  ],
   "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
   "exports": {
     ".": "./src/index.ts",
     "./theme.css": "./src/theme.css"
   },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "./theme.css": "./dist/theme.css"
+    }
+  },
   "scripts": {
     "typecheck": "tsc -p tsconfig.json",
-    "test": "vitest run"
+    "test": "vitest run",
+    "build": "tsc -p tsconfig.build.json && node ../../tools/publish/postbuild.mjs",
+    "prepack": "node ../../tools/publish/prepack.mjs"
   },
   "dependencies": {
     "@beneficial-strategies/iso20022-validate": "workspace:*",
