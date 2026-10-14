@@ -1,6 +1,6 @@
 {
   "name": "@beneficial-strategies/iso20022-serialize",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.1",
   "description": "Read and write ISO 20022 messages as XML and as ISO JSON, from and to the values of the validate schemas.",
   "license": "MIT",
   "author": "Beneficial Strategies",
