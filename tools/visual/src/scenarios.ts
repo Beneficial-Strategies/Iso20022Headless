@@ -1142,7 +1142,12 @@ function xsdScenarios(): Scenario[] {
         const first = await panel(page);
         if (!first.open) return [...problems, 'the validation window did not open'];
         if (!/Validation Errors/.test(first.text)) problems.push('the window has no title');
-        if (!first.lines.some((l) => /MsgId|CreDtTm|Missing child/.test(l))) problems.push(`no complaint about the empty group header: ${JSON.stringify(first.lines)} (count "${first.count}", window "${first.text.slice(0, 120)}")`);
+        if (!first.lines.some((l) => /MsgId|CreDtTm|Missing child/.test(l))) {
+          // slow or stuck? give the check half a minute more and say what the window holds then
+          await settle(30000);
+          const later = await panel(page);
+          problems.push(`no complaint about the empty group header: ${JSON.stringify(first.lines)} (count "${first.count}", window "${first.text.slice(0, 120)}"); 30 s later: count "${later.count}", ${later.lines.length} lines, "${later.text.slice(0, 120)}"`);
+        }
         if (!first.lines.every((l) => /^Line \d+/.test(l))) problems.push(`some errors carry no line number: ${JSON.stringify(first.lines)}`);
         const n = first.lines.length;
         // correcting the data refreshes the window, and the errors go away
