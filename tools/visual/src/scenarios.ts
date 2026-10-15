@@ -1805,7 +1805,7 @@ function languageScenarios(): Scenario[] {
           return { values: sel ? [...sel.options].map((o) => `${o.value}=${o.textContent}`) : [], selected: sel?.value, href: a?.href ?? '', target: a?.target };
         });
         const problems: string[] = [];
-        const want = ['auto=Automatisch (Browser)', 'en=English (ISO)', 'en-US=English (US)', 'es=Español', 'fr=Français', 'de=Deutsch', 'pt=Português'];
+        const want = ['auto=Automatisch (Browser)', 'en=English (ISO)', 'en-US=English (US)', 'fr=Français', 'de=Deutsch', 'es=Español', 'pt=Português'];
         if (JSON.stringify(facts.values) !== JSON.stringify(want)) problems.push(`the language list is ${JSON.stringify(facts.values)}`);
         if (facts.selected !== 'de') problems.push(`the dropdown shows ${facts.selected}, not de`);
         if (!/title=Wording\+%28de%29/.test(facts.href)) problems.push(`the report link does not name the language: ${facts.href}`);
