@@ -6,10 +6,9 @@ A free, browser-based way to see what is really inside ISO 20022 payment message
 against the official schema, and lift illustrations into your analysis documents. Under it is an open-source
 TypeScript library that puts the same behavior into your own application.
 
-> **Status: early and being tested.** The Message Explorer is live and free to use. The npm packages are
-> **not published yet**; we are still testing, and the commands in the in-app "Implement!" dialog describe what
-> will work once they are. We are considering asking for voluntary funding to support the work, even though the
-> source is public. If this is useful to you, tell us by opening a GitHub issue.
+> **Status: early pre-release.** The Message Explorer is live and free to use. The npm packages are published as
+> **pre-releases** (`0.1.x-alpha`, dist-tag `alpha`): the API may still change. We are considering asking for voluntary
+> funding to support the work, even though the source is public. If this is useful to you, tell us by opening a GitHub issue.
 
 ## The Message Explorer
 
@@ -84,7 +83,7 @@ rules, so you can embed a small, correct editor for just that fragment and get b
 | `@beneficial-strategies/iso20022-react` | Form state hook (TanStack Form) |
 | `@beneficial-strategies/iso20022-react-ui` | React renderer, skins, language support |
 
-Not yet published to npm (see status above).
+Published to npm as pre-releases: `npm install @beneficial-strategies/iso20022-react-ui@alpha` (see [docs/publishing.md](docs/publishing.md)).
 
 ## Demos for programmers
 
@@ -110,6 +109,22 @@ pnpm visual                                                         # browser la
 Requires Node 24. More detail in [docs/](docs/): [languages](docs/languages.md),
 [XSD validation](docs/xsd-validation.md), [copy as](docs/copy-as.md), [field mode](docs/field-mode.md),
 [Cloudflare deployment](docs/cloudflare-deploy.md), and the original [implementation plan](docs/implementation-plan.md).
+
+## Help wanted, and reviews
+
+We are not specialists in every part of this: React and TypeScript library design, accessibility, or the payment domains it covers. **We are
+asking for outside review**, and welcome contributions of any size.
+
+- **Read the code and tell us what is wrong with it.** [REVIEWING.md](REVIEWING.md) says where the hand-written code is (about 4,600 lines; the rest is
+  generated), and lists the questions we most want answered. Use the **Review or critique** form: [new issue](https://github.com/Beneficial-Strategies/Iso20022Headless/issues/new/choose).
+- **Report precisely.** A bug with a failing test is usually fixed fastest. See [CONTRIBUTING.md](CONTRIBUTING.md).
+- **Pick up an issue.** [`help wanted`](https://github.com/Beneficial-Strategies/Iso20022Headless/labels/help%20wanted) and
+  [`good first issue`](https://github.com/Beneficial-Strategies/Iso20022Headless/labels/good%20first%20issue).
+- **Your language.** Wording lives in the [language repositories](https://github.com/Beneficial-Strategies/iso-20022-text#readme), one per language.
+  A word that reads wrongly is a glossary form there, not an issue here.
+- **Fund or co-maintain.** Write to [support@beneficialstrategies.com](mailto:support@beneficialstrategies.com).
+
+Security problems go through [SECURITY.md](SECURITY.md), not a public issue.
 
 ## Feedback
 
