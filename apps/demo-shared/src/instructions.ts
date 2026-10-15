@@ -93,7 +93,7 @@ function reactComponent(o: ImplementOptions): string {
 
 const TAILWIND_CSS = `@import "tailwindcss";
 @import "${PKG}/iso20022-react-ui/theme.css";
-@source "../node_modules/${PKG}/iso20022-react-ui/src";
+@source "../node_modules/${PKG}/iso20022-react-ui";
 `;
 
 /** Validation, messages and (optionally) output with no UI library: the part every framework shares. */
