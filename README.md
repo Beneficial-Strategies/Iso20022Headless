@@ -108,7 +108,7 @@ pnpm visual                                                         # browser la
 
 Requires Node 24. More detail in [docs/](docs/): [languages](docs/languages.md),
 [XSD validation](docs/xsd-validation.md), [copy as](docs/copy-as.md), [field mode](docs/field-mode.md),
-[Cloudflare deployment](docs/cloudflare-deploy.md), and the original [implementation plan](docs/implementation-plan.md).
+and the original [implementation plan](docs/implementation-plan.md).
 
 ## Help wanted, and reviews
 
