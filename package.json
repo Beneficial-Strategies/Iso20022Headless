@@ -7,7 +7,6 @@
     "typecheck": "pnpm -r run typecheck",
     "test": "pnpm -r run test",
     "visual": "pnpm --filter @beneficial-strategies/iso20022-visual run visual",
-    "pages:cloudflare": "VITE_XSD_PROXY=on pnpm --filter @beneficial-strategies/iso20022-demo-form run build:pages && node tools/pages/assemble-cloudflare.mjs",
     "pages:build": "pnpm --filter @beneficial-strategies/iso20022-demo-form run build:pages && pnpm --filter @beneficial-strategies/iso20022-demo-zod run build:pages && node tools/pages/assemble.mjs"
   }
 }

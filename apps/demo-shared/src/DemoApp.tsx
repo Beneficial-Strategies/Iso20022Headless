@@ -541,7 +541,7 @@ function Editor({
 
 /**
  * Whether the page's own site passes ISO's schemas through (`/iso20022-xsd/...`): the dev server does, unless
- * VITE_XSD_PROXY=off; a deployed build asks for it with VITE_XSD_PROXY=on (the Cloudflare Worker, docs/cloudflare-deploy.md).
+ * VITE_XSD_PROXY=off; a deployed build asks for it with VITE_XSD_PROXY=on (the Message Explorer's Cloudflare Worker, which lives in the private iso-20022-explorer repository).
  */
 const viteEnv = (import.meta as unknown as { env?: Record<string, string | boolean | undefined> }).env;
 const DEV_XSD_PROXY = viteEnv?.VITE_XSD_PROXY === 'on' || (viteEnv?.DEV === true && viteEnv.VITE_XSD_PROXY !== 'off');
