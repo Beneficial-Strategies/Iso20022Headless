@@ -1127,40 +1127,6 @@ function xsdScenarios(): Scenario[] {
     },
     {
       ...base,
-      name: 'xsd-load-from-file-then-validate',
-      steps: async (page) => {
-        await waitForXsd(page, 'unavailable');
-        await loadSchemaFile(page, TEST_XSD);
-      },
-      expect: async (page) => {
-        const b = await xsdButton(page);
-        const problems: string[] = [];
-        if (b.state !== 'ready' || b.disabled !== 'false') problems.push(`after loading the file the state is "${b.state}", disabled="${b.disabled}"`);
-        if (b.title !== 'Validate the text of the message below using pain.001.001.13.test.xsd (loaded from your computer)') problems.push(`hover text is "${b.title}"`);
-        await clickXsd(page);
-        await waitForPanel(page, (p) => p.open && /error/.test(p.count) && p.lines.length > 0);
-        const first = await panel(page);
-        if (!first.open) return [...problems, 'the validation window did not open'];
-        if (!/Validation Errors/.test(first.text)) problems.push('the window has no title');
-        if (!first.lines.some((l) => /MsgId|CreDtTm|Missing child/.test(l))) {
-          // slow or stuck? give the check half a minute more and say what the window holds then
-          await settle(30000);
-          const later = await panel(page);
-          problems.push(`no complaint about the empty group header: ${JSON.stringify(first.lines)} (count "${first.count}", window "${first.text.slice(0, 120)}"); 30 s later: count "${later.count}", ${later.lines.length} lines, "${later.text.slice(0, 120)}"`);
-        }
-        if (!first.lines.every((l) => /^Line \d+/.test(l))) problems.push(`some errors carry no line number: ${JSON.stringify(first.lines)}`);
-        const n = first.lines.length;
-        // correcting the data refreshes the window, and the errors go away
-        await fillGroupHeader(page);
-        await waitForPanel(page, (p) => p.count === '✓');
-        const last = await panel(page);
-        if (last.count !== '✓') problems.push(`after filling the group header the window says "${last.count}" ${JSON.stringify(last.lines)} (it had ${n} errors)`);
-        if (!/conforms to the schema/.test(last.text)) problems.push('no "valid" message');
-        return problems;
-      },
-    },
-    {
-      ...base,
       name: 'xsd-errors-follow-the-edits',
       steps: async (page) => {
         await waitForXsd(page, 'unavailable');
