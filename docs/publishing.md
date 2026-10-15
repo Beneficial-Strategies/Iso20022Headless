@@ -33,3 +33,10 @@ To look at what would be published, without publishing: build, then `pnpm pack -
    It publishes with no stored token and with provenance. A prerelease (`-alpha.1`) goes under the dist-tag `alpha`; a plain version under `latest`.
 
 The workflow does not run on a branch or a pull request.
+
+## Trying a branch before it is published
+
+`node tools/publish/pack-all.mjs` builds the five packages from the checkout and packs them as `npm publish` would, into `../_work/headless-packs`
+(or `--out <folder>`), without publishing. A project installs those tarballs to see an unreleased change as a consumer would. Every pull request
+also uploads them as the `headless-packs` artifact (`.github/workflows/packs.yml`), so a branch of another repository can use a pull request's build.
+The private Message Explorer does this (`use-branch`).
