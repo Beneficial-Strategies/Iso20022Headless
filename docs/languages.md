@@ -41,4 +41,4 @@ Create `iso-20022-text-{tag}` from an existing language repository (see the hub'
 ## Reporting a wording problem
 
 The demos' language menu links to a prefilled GitHub issue that names the language and page. The tool is free; wording fixes land when they can.
-All translations so far are machine-drafted.
+All translations so far are machine-drafted. **Translations.** Translated versions are machine translated, may contain errors, and are provided for convenience only. They are not binding. All matters are to be resolved on the untranslated English (US) version, under United States law.
