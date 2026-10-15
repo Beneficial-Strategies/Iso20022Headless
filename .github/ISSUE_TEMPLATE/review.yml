@@ -1,0 +1,77 @@
+name: Review or critique
+description: You read some of the code, the API or the docs and have an opinion. Praise, doubts and "I would not do it this way" are all welcome
+labels: ["review", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reading it. We are not experts in every area this library touches, and an honest outside view is worth more to us than a polite one. The [reviewer's guide](https://github.com/Beneficial-Strategies/Iso20022Headless/blob/main/REVIEWING.md) says where to look and what we are unsure about.
+
+        One issue per point makes it possible to answer, link a fix and close it. Several points are fine as several issues.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - API design (public types, props, naming)
+        - Skin interface and rendering
+        - Accessibility
+        - Validation engine and business rules
+        - Generated code and the generator
+        - Types
+        - Serialization (XML and ISO JSON)
+        - Internationalization and text hosts
+        - Packaging, bundle size and the npm layout
+        - Build, tests and CI
+        - Documentation
+        - Something else
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of remark
+      options:
+        - A defect or risk I see
+        - A better way to do it
+        - A convention in your ecosystem this does not follow
+        - Something that is confusing to use or read
+        - Something done well that should be kept
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: What you looked at
+      description: A link to the file and line, the commit, or the docs page. A permalink is best.
+      placeholder: https://github.com/Beneficial-Strategies/Iso20022Headless/blob/<commit>/packages/react-ui/src/skin/types.ts#L20
+    validations:
+      required: true
+  - type: textarea
+    id: remark
+    attributes:
+      label: Your remark
+      description: What you saw and why it matters. If you know a library or project that does it well, name it.
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: What you would do instead
+      description: Optional. A sketch of code is enough.
+  - type: dropdown
+    id: follow-up
+    attributes:
+      label: Would you take it further?
+      options:
+        - "No, the remark is all I can give. Thank you"
+        - "I can answer questions about it"
+        - "I would open a pull request"
+        - "I can review the pull request that fixes it"
+    validations:
+      required: true
+  - type: input
+    id: credit
+    attributes:
+      label: How to credit you (optional)
+      description: A name or handle for the release notes or the contributors list. Leave empty to stay unnamed.
