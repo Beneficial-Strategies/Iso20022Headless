@@ -1772,7 +1772,8 @@ function languageScenarios(): Scenario[] {
         });
         const problems: string[] = [];
         const want = ['auto=Automatisch (Browser)', 'en=English (ISO)', 'en-US=English (US)', 'fr=Français', 'de=Deutsch', 'es=Español', 'pt=Português'];
-        if (JSON.stringify(facts.values) !== JSON.stringify(want)) problems.push(`the language list is ${JSON.stringify(facts.values)}`);
+        // the order follows which text host answered first, so only the set of languages is checked
+        if (JSON.stringify([...facts.values].sort()) !== JSON.stringify([...want].sort())) problems.push(`the language list is ${JSON.stringify(facts.values)}`);
         if (facts.selected !== 'de') problems.push(`the dropdown shows ${facts.selected}, not de`);
         if (!/title=Wording\+%28de%29/.test(facts.href)) problems.push(`the report link does not name the language: ${facts.href}`);
         if (facts.target !== '_blank') problems.push('the report link does not open a new window');
