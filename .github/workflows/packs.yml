@@ -20,6 +20,8 @@ jobs:
           node-version: 24
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - name: Check the licenses of the packages we depend on
+        run: node tools/licenses/check.mjs
       - run: node tools/publish/pack-all.mjs --out "$RUNNER_TEMP/packs"
       - uses: actions/upload-artifact@v4
         with:
