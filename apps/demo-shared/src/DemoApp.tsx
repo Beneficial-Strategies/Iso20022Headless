@@ -8,11 +8,10 @@ import { XmlPane } from './XmlPane.tsx';
 import { SettingsPanel } from './SettingsPanel.tsx';
 import { useClipboard } from './clipboard.ts';
 import { downloadText, readTextFile, saveFileName } from './files.ts';
-import { AboutDialog, Banner } from './Banner.tsx';
 import { ImplementDialog } from './ImplementDialog.tsx';
 import { HEADER_IDENTIFIER, planPaste } from './paste.ts';
 import { PasteReport, type PasteReportData, type TextSource } from './PasteReport.tsx';
-import { useSettings, wantsImplementationBanner, type Format } from './settings.ts';
+import { useSettings, type Format } from './settings.ts';
 import { useXsd, type XsdHandle } from './useXsd.ts';
 import { devProxyUrl, documentLineOffset, HEADER_LINE_OFFSET } from './xsd.ts';
 import { XsdButton, XsdNotice, XsdPanel } from './XsdValidate.tsx';
@@ -559,9 +558,6 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
   // English is all the Explorer carries; every other language is one a text host (or the embedding page) supplies
   const locales = useMemo(() => [...new Set(['en', ...Object.keys(overrides?.ui ?? {}), ...hostConfig.languages])], [overrides, hostConfig]);
   const { settings, resolvedTheme, locale, update } = useSettings(skinIds, locales, messageIds);
-  // ?ImplementationBanner=true brings back the original banner; the settings code keeps unknown query parameters
-  const implementationBanner = useMemo(() => (typeof window === 'undefined' ? false : wantsImplementationBanner(window.location.search)), []);
-  const [aboutOpen, setAboutOpen] = useState(false);
   const [copyOptions, setCopyOptions] = useState<ExportOptions>(DEFAULT_OPTIONS);
   // how elements are presented (field mode), and whether the form shows them that way; kept while only the type changes
   const [modes, setModes] = useState<Record<string, FieldMode>>({});
@@ -626,16 +622,13 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
       <HostCatalogContext.Provider value={hostText?.catalog}>
       <div className="flex h-screen flex-col bg-surface p-4 text-fg">
         <header className="mb-3">
-          {implementationBanner ? (
-            <div className="-mx-4 -mt-4 mb-3 border-b border-bar-from bg-linear-to-r from-bar-from to-bar-to px-4 py-3 shadow-md">
-              <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-                <h1 className="text-xl font-bold tracking-tight text-bar-fg">{pageText.t(`title_${variant}` as PageKey)}</h1>
-                <p className="min-w-0 max-w-2xl text-xs text-bar-muted sm:text-right">{pageText.t(`blurb_${variant}` as PageKey)}</p>
-              </div>
+          {/* the demos are demos, not the Message Explorer: this banner, and no other, whatever the address says */}
+          <div className="-mx-4 -mt-4 mb-3 border-b border-bar-from bg-linear-to-r from-bar-from to-bar-to px-4 py-3 shadow-md">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+              <h1 className="text-xl font-bold tracking-tight text-bar-fg">{pageText.t(`title_${variant}` as PageKey)}</h1>
+              <p className="min-w-0 max-w-2xl text-xs text-bar-muted sm:text-right">{pageText.t(`blurb_${variant}` as PageKey)}</p>
             </div>
-          ) : (
-            <Banner onAbout={() => setAboutOpen(true)} />
-          )}
+          </div>
           <div className="flex min-w-0 flex-wrap items-end justify-start gap-2 sm:flex-nowrap sm:justify-end">
             <AreaPicker value={area} onChange={(code) => update({ message: lastInArea.current[code] ?? messageIndex.find((m) => m.area === code)!.identifier })} />
             <MessagePicker area={area} value={settings.message} onChange={(message) => update({ message })} />
@@ -645,7 +638,6 @@ export function DemoApp({ variant, useForm, i18n: overrides }: { variant: 'form'
             </HoverHelp>
           </div>
         </header>
-        {aboutOpen ? <AboutDialog onClose={() => setAboutOpen(false)} /> : null}
         <SkinProvider value={skin}>
           {bundle && headerBundle && typeName ? (
             <Editor

@@ -168,8 +168,8 @@ async function pagesSmokeTest(argv: string[]): Promise<number> {
       path: '',
       expect: async (page) => {
         const links = await page.evaluate(() => [...document.querySelectorAll('a.button')].map((a) => (a as HTMLAnchorElement).href));
-        const ok = links.length === 2 && links.every((l) => l.startsWith(served.url) && /[?&]ImplementationBanner=true$/.test(l));
-        return ok ? [] : [`expected two demo links under ${served.url}, each asking for the implementation banner, got ${JSON.stringify(links)}`];
+        const ok = links.length === 2 && links.every((l) => l.startsWith(served.url) && !l.includes('?'));
+        return ok ? [] : [`expected two plain demo links under ${served.url} (no query), got ${JSON.stringify(links)}`];
       },
     },
     { name: 'form demo', path: 'form/', expect: async (page) => ((await page.$('#GroupHeader-MessageIdentification')) ? [] : ['the form did not render']) },
@@ -190,9 +190,9 @@ async function pagesSmokeTest(argv: string[]): Promise<number> {
       },
     },
     {
-      name: 'form demo from the landing page link (original banner)',
-      path: 'form/?ImplementationBanner=true',
-      expect: async (page) => ((await page.evaluate(() => document.querySelector('header h1')?.textContent ?? '')).includes('TanStack Form hook') ? [] : ['the original banner is not shown']),
+      name: 'form demo from the landing page link (the demo banner)',
+      path: 'form/',
+      expect: async (page) => ((await page.evaluate(() => document.querySelector('header h1')?.textContent ?? '')).includes('TanStack Form hook') ? [] : ['the demo banner is not shown']),
     },
     {
       name: 'XSD validation in the built site (the worker and the WebAssembly are served)',
@@ -214,9 +214,9 @@ async function pagesSmokeTest(argv: string[]): Promise<number> {
       },
     },
     {
-      name: 'form demo opened directly (Beneficial Strategies banner)',
-      path: 'form/',
-      expect: async (page) => ((await page.evaluate(() => document.querySelector('header h1')?.textContent ?? '')) === 'ISO 20022 Message Explorer' ? [] : ['the new banner is not shown']),
+      name: 'form demo told to hide its banner (the old switch is ignored)',
+      path: 'form/?ImplementationBanner=false',
+      expect: async (page) => ((await page.evaluate(() => document.querySelector('header h1')?.textContent ?? '')).includes('TanStack Form hook') ? [] : ['the demo banner is not shown']),
     },
     { name: 'zod demo', path: 'zod/', expect: async (page) => ((await page.$('#GroupHeader-MessageIdentification')) ? [] : ['the form did not render']) },
     {

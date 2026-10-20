@@ -1,40 +1,22 @@
-# Beneficial Strategies ISO 20022 Message Explorer
+# Beneficial Strategies ISO 20022 headless libraries
 
-**Try it, free: https://iso20022-explorer.beneficialstrategies.com/**
+The TypeScript libraries, published to npm, that put ISO 20022 behavior into your own application: a type for every message, validation
+(including the business rules), language support, XML and ISO JSON serialization, a form hook and a React renderer. **This repository is
+the home of those libraries.** It is not where the Message Explorer application lives (see the end of this page).
 
-A free, browser-based way to see what is really inside ISO 20022 payment messages, build your own, check them
-against the official schema, and lift illustrations into your analysis documents. Under it is an open-source
-TypeScript library that puts the same behavior into your own application.
+There are three consumers of the libraries:
 
-> **Status: early pre-release.** The Message Explorer is live and free to use. The npm packages are published as
-> **pre-releases** (`0.1.x-alpha`, dist-tag `alpha`): the API may still change. We are considering asking for voluntary
-> funding to support the work, even though the source is public. If this is useful to you, tell us by opening a GitHub issue.
+- **Two demos in this repository**, deployed to GitHub Pages, that show how little code the integration takes: [with the form hook (TanStack Form)](https://beneficial-strategies.github.io/Iso20022Headless/form/) and [Zod only, no form library](https://beneficial-strategies.github.io/Iso20022Headless/zod/). They are demos, for programmers reading the code, nothing more.
+- **The Beneficial Strategies ISO 20022 Message Explorer**, a separate application that is maintained elsewhere and built on the published npm packages (see [The Message Explorer](#the-message-explorer)).
+- **Your application.**
 
-## The Message Explorer
-
-Pick an area and a message and the form shows every element it can hold:
-
-- **Explore.** Each element's official definition (hover the **i**), its allowed values and code lists, which
-  elements are required or repeat, and the business rules that tie fields together. One click opens the
-  official ISO 20022 page for a type.
-- **Create.** Fill in the form to build a message. Your entries are checked as you type, and the finished
-  message appears beside the form as ISO 20022 XML or the ISO 20022 JSON syntax.
-- **Check against the schema.** *XSD Validate* checks the XML against the official XSD and lists each error by line.
-- **Save, load and paste.** Save to a file, load it again, or paste a message you already have to see it laid
-  out as a form. Everything stays in your browser.
-- **Illustrate.** *Copy as* puts the screen on your clipboard as a Word-ready table, Markdown, an outline, a
-  spreadsheet, JSON, HTML, or a Figma-ready wireframe, so analysts can lift a form into a requirements document.
-  *Field mode* lets you mark which values are fixed, defaulted or left open, for design discussions.
-- **Zoom** into any part of a message, such as a single Debtor Agent, and work on just that piece.
-
-Currently covers **363 messages** across Payments Initiation (`pain`), Payments Clearing and Settlement (`pacs`),
-ATM Management (`caam`), Cash Management (`camt`: account reports, statements and notifications, payment
-cancellation requests and investigations, cash management and charges messages), Administration (`admi`), Payments
-Remittance Advice (`remt`), Transaction Tracker (`trck`), Account Management (`acmt`), Securities Management (`semt`), Securities Events (`seev`), Securities Settlement (`sese`) and the Business Application Header (`head`, which is its own root: `<AppHdr>`, not `<Document>`). Spec data comes from the ISO 20022 repository.
+> **Status: early pre-release.** The npm packages are published as **pre-releases** (`0.1.x-alpha`, dist-tag `alpha`): the API may still change.
+> We are considering asking for voluntary funding to support the work, even though the source is public. If this is useful to you, tell us by
+> opening a GitHub issue.
 
 ## The library
 
-The same engine is built to be embedded. It is **headless**, which matters if the term is new to you.
+The engine is built to be embedded. It is **headless**, which matters if the term is new to you.
 
 ### Why headless
 
@@ -67,6 +49,13 @@ You do not write the ISO 20022 rules; they ship with the library, generated from
 - **Serialization.** Round-trips ISO 20022 XML and the ISO JSON syntax, and reads a pasted message back into
   the form, reporting anything it could not place.
 
+### Coverage
+
+The spec data currently covers **363 messages** across Payments Initiation (`pain`), Payments Clearing and Settlement (`pacs`),
+ATM Management (`caam`), Cash Management (`camt`: account reports, statements and notifications, payment
+cancellation requests and investigations, cash management and charges messages), Administration (`admi`), Payments
+Remittance Advice (`remt`), Transaction Tracker (`trck`), Account Management (`acmt`), Securities Management (`semt`), Securities Events (`seev`), Securities Settlement (`sese`) and the Business Application Header (`head`, which is its own root: `<AppHdr>`, not `<Document>`). Spec data comes from the ISO 20022 repository.
+
 ### Good for snippets, not only whole messages
 
 Real applications rarely need an entire `pain.001`. They need to edit *one piece*: the Debtor Agent a user just
@@ -85,17 +74,15 @@ rules, so you can embed a small, correct editor for just that fragment and get b
 
 Published to npm as pre-releases: `npm install @beneficial-strategies/iso20022-react-ui@alpha` (see [docs/publishing.md](docs/publishing.md)).
 
-## Demos for programmers
+## The demos
 
-Two small apps show how the library is used. They are for reference, so you can read how little code the
-integration takes:
+Two small apps in this repository show how the library is used. They are for reference, so you can read how little code the integration takes.
+They are deployed to GitHub Pages and open with their own banner:
 
 - **With the form hook (TanStack Form):** https://beneficial-strategies.github.io/Iso20022Headless/form/
 - **Zod only, no form library:** https://beneficial-strategies.github.io/Iso20022Headless/zod/
 
-Both are hosted on GitHub Pages. If you want to *use* the tool rather than study the code, use the more
-capable free version at **https://iso20022-explorer.beneficialstrategies.com/** (served from Cloudflare, with
-the schema checker and the copy and export features).
+They are demos, not tools. To *use* the thing the libraries make possible, see [The Message Explorer](#the-message-explorer).
 
 ## Working in this repository
 
@@ -144,3 +131,12 @@ repository. We intend to improve them over time (named maintainers, required rev
 sponsorship. Taking over the care of a part of it, a language for example, is welcome.
 
 **ISO 20022 material.** The ISO 20022 specification, its schemas, code sets and their text are ISO's. ISO and its Registration Authority publish them to be used and reproduced freely under the [ISO 20022 Terms of use](https://www.iso20022.org/terms-use) and the [Intellectual Property Rights Policy](https://www.iso20022.org/intellectual-property-rights). **This is not the official ISO 20022 site. The sole source of up-to-date material is <https://www.iso20022.org/>.** ISO's material is provided "as is", without warranty. The license of this repository covers what we wrote, not ISO's material. This is not legal advice.
+
+## The Message Explorer
+
+The **Beneficial Strategies ISO 20022 Message Explorer** is a free, browser-based application built on these libraries and maintained elsewhere:
+**https://iso20022-explorer.beneficialstrategies.com/**. It is the fully functional version: pick an area and a message and the form shows every
+element it can hold, with each element's official definition, allowed values, which elements are required or repeat, and the business rules that
+tie fields together. You can build a message and see it as ISO 20022 XML or JSON, check it against the official XSD, save, load and paste messages
+(everything stays in your browser), copy the screen as a Word-ready table, Markdown, a spreadsheet or a Figma-ready wireframe, and zoom into any
+part of a message. Issues about the application itself do not belong in this repository; issues about the libraries do.
