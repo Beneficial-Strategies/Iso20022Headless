@@ -84,8 +84,11 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm visual check
       - uses: actions/upload-artifact@v4
-        if: always()
+        # Only a failure needs the screenshots, and they are about 30 MB a run: the 0.5 GB of Actions storage of the
+        # account ran out when every run kept them for 90 days.
+        if: failure()
         with:
           name: visual-screenshots
           path: tools/visual/out
           if-no-files-found: ignore
+          retention-days: 3
